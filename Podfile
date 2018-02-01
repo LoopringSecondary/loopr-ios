@@ -6,6 +6,7 @@ target 'loopr-ios' do
   use_frameworks!
 
   # Pods for loopr-ios
+  pod 'Charts'
 
   target 'loopr-iosTests' do
     inherit! :search_paths
