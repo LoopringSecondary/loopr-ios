@@ -1,0 +1,6 @@
+framework module Pods_loopr_iosUITests {
+  umbrella header "Pods-loopr-iosUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
