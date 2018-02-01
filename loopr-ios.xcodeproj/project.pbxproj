@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9AACD1A68297585D93FB6182 /* Pods_loopr_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFC6AA9DC8C999B66FFD8AA /* Pods_loopr_iosTests.framework */; };
+		AC01A2412022D94600FE8317 /* PortfolioNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC01A2402022D94600FE8317 /* PortfolioNavigationController.swift */; };
+		AC01A2442022D9BE00FE8317 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC01A2422022D9BE00FE8317 /* PortfolioViewController.swift */; };
+		AC01A2452022D9BE00FE8317 /* PortfolioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC01A2432022D9BE00FE8317 /* PortfolioViewController.xib */; };
 		AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E422022B93A0071D477 /* AppDelegate.swift */; };
 		AC798E452022B93A0071D477 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E442022B93A0071D477 /* FirstViewController.swift */; };
 		AC798E472022B93A0071D477 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E462022B93A0071D477 /* SecondViewController.swift */; };
@@ -46,6 +49,9 @@
 		5FFC6AA9DC8C999B66FFD8AA /* Pods_loopr_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69BC13297FDFA52B8E089485 /* Pods-loopr-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-iosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-iosTests/Pods-loopr-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		929BB32EF62C4BD6BC1DFC8F /* Pods_loopr_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC01A2402022D94600FE8317 /* PortfolioNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioNavigationController.swift; sourceTree = "<group>"; };
+		AC01A2422022D9BE00FE8317 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
+		AC01A2432022D9BE00FE8317 /* PortfolioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioViewController.xib; sourceTree = "<group>"; };
 		AC798E3F2022B93A0071D477 /* loopr-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "loopr-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC798E422022B93A0071D477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC798E442022B93A0071D477 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +149,9 @@
 				AC798E442022B93A0071D477 /* FirstViewController.swift */,
 				AC798E462022B93A0071D477 /* SecondViewController.swift */,
 				AC798E482022B93A0071D477 /* Main.storyboard */,
+				AC01A2402022D94600FE8317 /* PortfolioNavigationController.swift */,
+				AC01A2422022D9BE00FE8317 /* PortfolioViewController.swift */,
+				AC01A2432022D9BE00FE8317 /* PortfolioViewController.xib */,
 				AC798E4B2022B93A0071D477 /* Assets.xcassets */,
 				AC798E4D2022B93A0071D477 /* LaunchScreen.storyboard */,
 				AC798E502022B93A0071D477 /* Info.plist */,
@@ -285,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC798E4F2022B93A0071D477 /* LaunchScreen.storyboard in Resources */,
+				AC01A2452022D9BE00FE8317 /* PortfolioViewController.xib in Resources */,
 				AC798E4C2022B93A0071D477 /* Assets.xcassets in Resources */,
 				AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */,
 			);
@@ -462,6 +472,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC798E472022B93A0071D477 /* SecondViewController.swift in Sources */,
+				AC01A2442022D9BE00FE8317 /* PortfolioViewController.swift in Sources */,
+				AC01A2412022D94600FE8317 /* PortfolioNavigationController.swift in Sources */,
 				AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */,
 				AC798E452022B93A0071D477 /* FirstViewController.swift in Sources */,
 			);
