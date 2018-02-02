@@ -17,6 +17,11 @@
 		AC798E4F2022B93A0071D477 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC798E4D2022B93A0071D477 /* LaunchScreen.storyboard */; };
 		AC798E5A2022B93B0071D477 /* loopr_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E592022B93B0071D477 /* loopr_iosTests.swift */; };
 		AC798E652022B93B0071D477 /* loopr_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E642022B93B0071D477 /* loopr_iosUITests.swift */; };
+		ACB911522024254F00F14644 /* WalletNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911512024254F00F14644 /* WalletNavigationViewController.swift */; };
+		ACB911552024260E00F14644 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911532024260E00F14644 /* WalletViewController.swift */; };
+		ACB911562024260E00F14644 /* WalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB911542024260E00F14644 /* WalletViewController.xib */; };
+		ACB9115A20242B9D00F14644 /* AssetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9115820242B9D00F14644 /* AssetTableViewCell.swift */; };
+		ACB9115B20242B9D00F14644 /* AssetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB9115920242B9D00F14644 /* AssetTableViewCell.xib */; };
 		D9524CB21C9A148B2F4D503B /* Pods_loopr_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */; };
 		EE817669636361AFF682A8F5 /* Pods_loopr_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929BB32EF62C4BD6BC1DFC8F /* Pods_loopr_ios.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +67,11 @@
 		AC798E602022B93B0071D477 /* loopr-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "loopr-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC798E642022B93B0071D477 /* loopr_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loopr_iosUITests.swift; sourceTree = "<group>"; };
 		AC798E662022B93B0071D477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACB911512024254F00F14644 /* WalletNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletNavigationViewController.swift; sourceTree = "<group>"; };
+		ACB911532024260E00F14644 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		ACB911542024260E00F14644 /* WalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletViewController.xib; sourceTree = "<group>"; };
+		ACB9115820242B9D00F14644 /* AssetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTableViewCell.swift; sourceTree = "<group>"; };
+		ACB9115920242B9D00F14644 /* AssetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetTableViewCell.xib; sourceTree = "<group>"; };
 		CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -143,9 +153,8 @@
 			children = (
 				AC798E422022B93A0071D477 /* AppDelegate.swift */,
 				AC798E482022B93A0071D477 /* Main.storyboard */,
-				AC01A2402022D94600FE8317 /* PortfolioNavigationController.swift */,
-				AC01A2422022D9BE00FE8317 /* PortfolioViewController.swift */,
-				AC01A2432022D9BE00FE8317 /* PortfolioViewController.xib */,
+				ACB9115C20242D8900F14644 /* Portfolio */,
+				ACB9115D20242D9900F14644 /* Wallet */,
 				AC798E4B2022B93A0071D477 /* Assets.xcassets */,
 				AC798E4D2022B93A0071D477 /* LaunchScreen.storyboard */,
 				AC798E502022B93A0071D477 /* Info.plist */,
@@ -169,6 +178,28 @@
 				AC798E662022B93B0071D477 /* Info.plist */,
 			);
 			path = "loopr-iosUITests";
+			sourceTree = "<group>";
+		};
+		ACB9115C20242D8900F14644 /* Portfolio */ = {
+			isa = PBXGroup;
+			children = (
+				AC01A2402022D94600FE8317 /* PortfolioNavigationController.swift */,
+				AC01A2422022D9BE00FE8317 /* PortfolioViewController.swift */,
+				AC01A2432022D9BE00FE8317 /* PortfolioViewController.xib */,
+			);
+			path = Portfolio;
+			sourceTree = "<group>";
+		};
+		ACB9115D20242D9900F14644 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				ACB911512024254F00F14644 /* WalletNavigationViewController.swift */,
+				ACB911532024260E00F14644 /* WalletViewController.swift */,
+				ACB911542024260E00F14644 /* WalletViewController.xib */,
+				ACB9115820242B9D00F14644 /* AssetTableViewCell.swift */,
+				ACB9115920242B9D00F14644 /* AssetTableViewCell.xib */,
+			);
+			path = Wallet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +319,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC798E4F2022B93A0071D477 /* LaunchScreen.storyboard in Resources */,
+				ACB911562024260E00F14644 /* WalletViewController.xib in Resources */,
+				ACB9115B20242B9D00F14644 /* AssetTableViewCell.xib in Resources */,
 				AC01A2452022D9BE00FE8317 /* PortfolioViewController.xib in Resources */,
 				AC798E4C2022B93A0071D477 /* Assets.xcassets in Resources */,
 				AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */,
@@ -467,7 +500,10 @@
 			files = (
 				AC01A2442022D9BE00FE8317 /* PortfolioViewController.swift in Sources */,
 				AC01A2412022D94600FE8317 /* PortfolioNavigationController.swift in Sources */,
+				ACB9115A20242B9D00F14644 /* AssetTableViewCell.swift in Sources */,
 				AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */,
+				ACB911522024254F00F14644 /* WalletNavigationViewController.swift in Sources */,
+				ACB911552024260E00F14644 /* WalletViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
