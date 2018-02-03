@@ -27,7 +27,7 @@ class MarketTableViewCell: UITableViewCell {
     
     func update() {
         if let market = market {
-            nameLabel.text = "\(market.tradingPair.tradingA) " + "/" + "\(market.tradingPair.tradingA)"
+            nameLabel.text = "\(market.tradingPair.tradingA)" + " / " + "\(market.tradingPair.tradingB)"
         }
     }
     

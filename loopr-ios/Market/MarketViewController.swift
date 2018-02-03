@@ -51,6 +51,15 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell!
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let marketDetailViewController = MarketDetailViewController();
+        let market = MarketDataManager.shared.getMarkets()[indexPath.row]
+        marketDetailViewController.market = market
+        marketDetailViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(marketDetailViewController, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

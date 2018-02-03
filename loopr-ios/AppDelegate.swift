@@ -17,8 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // Generate mock data
         AssetDataManager.shared.generateMockData();
         MarketDataManager.shared.generateMockData();
+        
+        self.window?.backgroundColor = UIColor.white
         
         return true
     }
