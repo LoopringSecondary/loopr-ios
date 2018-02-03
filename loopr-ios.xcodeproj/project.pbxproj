@@ -34,6 +34,9 @@
 		ACB9117820256B0300F14644 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9117720256B0300F14644 /* Market.swift */; };
 		ACB9117A20256B3C00F14644 /* MarketDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9117920256B3C00F14644 /* MarketDataManager.swift */; };
 		ACB9117C20256BBA00F14644 /* TradingPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9117B20256BBA00F14644 /* TradingPair.swift */; };
+		ACB9117F2026385100F14644 /* SettingNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9117E2026385100F14644 /* SettingNavigationViewController.swift */; };
+		ACB911842026388700F14644 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911822026388700F14644 /* SettingViewController.swift */; };
+		ACB911852026388700F14644 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB911832026388700F14644 /* SettingViewController.xib */; };
 		D9524CB21C9A148B2F4D503B /* Pods_loopr_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */; };
 		EE817669636361AFF682A8F5 /* Pods_loopr_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929BB32EF62C4BD6BC1DFC8F /* Pods_loopr_ios.framework */; };
 /* End PBXBuildFile section */
@@ -96,6 +99,9 @@
 		ACB9117720256B0300F14644 /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		ACB9117920256B3C00F14644 /* MarketDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDataManager.swift; sourceTree = "<group>"; };
 		ACB9117B20256BBA00F14644 /* TradingPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingPair.swift; sourceTree = "<group>"; };
+		ACB9117E2026385100F14644 /* SettingNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNavigationViewController.swift; sourceTree = "<group>"; };
+		ACB911822026388700F14644 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		ACB911832026388700F14644 /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -182,6 +188,7 @@
 				ACB9116C2025572700F14644 /* Market */,
 				ACB9115C20242D8900F14644 /* Portfolio */,
 				ACB9115D20242D9900F14644 /* Wallet */,
+				ACB9117D2026381A00F14644 /* Setting */,
 				AC798E4B2022B93A0071D477 /* Assets.xcassets */,
 				AC798E4D2022B93A0071D477 /* LaunchScreen.storyboard */,
 				AC798E502022B93A0071D477 /* Info.plist */,
@@ -260,6 +267,16 @@
 				ACB9117420255A6600F14644 /* MarketTableViewCell.xib */,
 			);
 			path = Market;
+			sourceTree = "<group>";
+		};
+		ACB9117D2026381A00F14644 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				ACB9117E2026385100F14644 /* SettingNavigationViewController.swift */,
+				ACB911822026388700F14644 /* SettingViewController.swift */,
+				ACB911832026388700F14644 /* SettingViewController.xib */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC798E4F2022B93A0071D477 /* LaunchScreen.storyboard in Resources */,
+				ACB911852026388700F14644 /* SettingViewController.xib in Resources */,
 				ACB911562024260E00F14644 /* WalletViewController.xib in Resources */,
 				ACB9115B20242B9D00F14644 /* AssetTableViewCell.xib in Resources */,
 				AC01A2452022D9BE00FE8317 /* PortfolioViewController.xib in Resources */,
@@ -562,8 +580,10 @@
 			files = (
 				AC01A2442022D9BE00FE8317 /* PortfolioViewController.swift in Sources */,
 				ACB9117C20256BBA00F14644 /* TradingPair.swift in Sources */,
+				ACB9117F2026385100F14644 /* SettingNavigationViewController.swift in Sources */,
 				ACB9116020242E3F00F14644 /* Asset.swift in Sources */,
 				ACB9116E2025575A00F14644 /* MarketNavigationViewController.swift in Sources */,
+				ACB911842026388700F14644 /* SettingViewController.swift in Sources */,
 				ACB911642024504E00F14644 /* Order.swift in Sources */,
 				ACB91171202557B100F14644 /* MarketViewController.swift in Sources */,
 				AC01A2412022D94600FE8317 /* PortfolioNavigationController.swift in Sources */,
