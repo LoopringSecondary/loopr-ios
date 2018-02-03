@@ -10,6 +10,14 @@ import UIKit
 
 class AssetTableViewCell: UITableViewCell {
 
+    var asset: Asset?
+    
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var symbolLabel: UILabel!
+    @IBOutlet weak var enableSwitch: UISwitch!
+    
+    @IBOutlet weak var balanceLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,7 +29,16 @@ class AssetTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func update() {
+        if let asset = asset {
+            iconImageView.image = asset.icon
+            symbolLabel.text = asset.symbol
+            enableSwitch.isOn = asset.enable
+            balanceLabel.text = "\(asset.balance) \(asset.symbol)"
+        }
+    }
+    
     class func getHeight() -> CGFloat {
-        return 115
+        return 90
     }
 }

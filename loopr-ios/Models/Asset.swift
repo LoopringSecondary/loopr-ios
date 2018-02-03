@@ -7,15 +7,23 @@
 //
 
 import Foundation
+import UIKit
 
 class Asset {
     
+    let symbol: String
     let name: String
+    let icon: UIImage
     let enable: Bool
     
-    init(name: String, enable: Bool) {
+    let balance: Double
+    
+    init(symbol: String, name: String, icon: UIImage, enable: Bool, balance: Double) {
+        self.symbol = symbol
         self.name = name
         self.enable = enable
+        self.icon = icon
+        self.balance = balance
     }
     
 }

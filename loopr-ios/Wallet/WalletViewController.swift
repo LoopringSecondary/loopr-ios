@@ -26,7 +26,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return AssetDataManager.shared.getAssets().count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -46,7 +46,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         // Configure the cell...
-        
+        cell?.asset = AssetDataManager.shared.getAssets()[indexPath.row]
+        cell?.update()
         return cell!
     }
     
