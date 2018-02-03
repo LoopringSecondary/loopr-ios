@@ -6,5 +6,6 @@ Please refer
 
 ## How to setup
 After ```git clone```
+1. Install cocoapods ```sudo gem install cocoapods```
 1. ```pod install```
 2. Open ```loopr-ios.xcworkspace```
