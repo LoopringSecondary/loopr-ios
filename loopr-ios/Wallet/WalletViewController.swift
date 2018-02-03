@@ -18,11 +18,22 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
         assetTableView.dataSource = self
         assetTableView.delegate = self
-    }
+        
+        self.title = "Wallet"
 
+        let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
+        self.navigationItem.rightBarButtonItem = addButton
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func pressAddButton(_ button: UIBarButtonItem) {
+        let viewController = AddAssetViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,6 +60,14 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell?.asset = AssetDataManager.shared.getAssets()[indexPath.row]
         cell?.update()
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let assetDetailViewController = AssetDetailViewController();
+        let asset = AssetDataManager.shared.getAssets()[indexPath.row]
+        assetDetailViewController.asset = asset
+        assetDetailViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(assetDetailViewController, animated: true)
     }
     
     /*
