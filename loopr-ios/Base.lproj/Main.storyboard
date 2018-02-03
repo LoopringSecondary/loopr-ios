@@ -23,6 +23,20 @@
             </objects>
             <point key="canvasLocation" x="750" y="-1062"/>
         </scene>
+        <!--Market-->
+        <scene sceneID="eBG-PF-gcM">
+            <objects>
+                <navigationController id="zdQ-Zw-gzE" customClass="MarketNavigationViewController" customModule="loopr_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Market" id="Y7G-HR-RiD"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="k17-Ju-2nd">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="miO-sH-sZS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="750" y="-322"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -34,6 +48,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="gag-oc-XEf" kind="relationship" relationship="viewControllers" id="6n2-uf-xT5"/>
+                        <segue destination="zdQ-Zw-gzE" kind="relationship" relationship="viewControllers" id="4WO-IM-Fdw"/>
                         <segue destination="wXN-eN-cuh" kind="relationship" relationship="viewControllers" id="89W-KO-6Bt"/>
                     </connections>
                 </tabBarController>
@@ -53,7 +68,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qc-jb-PCs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="102"/>
+            <point key="canvasLocation" x="750" y="488"/>
         </scene>
     </scenes>
 </document>
