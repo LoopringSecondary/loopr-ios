@@ -30,7 +30,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return MarketDataManager.shared.getMarkets().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,6 +46,8 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         // Configure the cell...
+        cell?.market = MarketDataManager.shared.getMarkets()[indexPath.row]
+        cell?.update()
         return cell!
     }
     

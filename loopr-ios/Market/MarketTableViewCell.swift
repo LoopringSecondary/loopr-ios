@@ -10,6 +10,10 @@ import UIKit
 
 class MarketTableViewCell: UITableViewCell {
 
+    var market: Market?
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,7 +25,13 @@ class MarketTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func update() {
+        if let market = market {
+            nameLabel.text = "\(market.tradingPair.tradingA) " + "/" + "\(market.tradingPair.tradingA)"
+        }
+    }
+    
     class func getHeight() -> CGFloat {
-        return 90
+        return 44
     }
 }

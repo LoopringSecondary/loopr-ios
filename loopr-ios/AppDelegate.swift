@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         AssetDataManager.shared.generateMockData();
+        MarketDataManager.shared.generateMockData();
         
         return true
     }

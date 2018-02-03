@@ -31,6 +31,9 @@
 		ACB91172202557B100F14644 /* MarketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB91170202557B100F14644 /* MarketViewController.xib */; };
 		ACB9117520255A6600F14644 /* MarketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9117320255A6600F14644 /* MarketTableViewCell.swift */; };
 		ACB9117620255A6600F14644 /* MarketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB9117420255A6600F14644 /* MarketTableViewCell.xib */; };
+		ACB9117820256B0300F14644 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9117720256B0300F14644 /* Market.swift */; };
+		ACB9117A20256B3C00F14644 /* MarketDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9117920256B3C00F14644 /* MarketDataManager.swift */; };
+		ACB9117C20256BBA00F14644 /* TradingPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9117B20256BBA00F14644 /* TradingPair.swift */; };
 		D9524CB21C9A148B2F4D503B /* Pods_loopr_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */; };
 		EE817669636361AFF682A8F5 /* Pods_loopr_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929BB32EF62C4BD6BC1DFC8F /* Pods_loopr_ios.framework */; };
 /* End PBXBuildFile section */
@@ -90,6 +93,9 @@
 		ACB91170202557B100F14644 /* MarketViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketViewController.xib; sourceTree = "<group>"; };
 		ACB9117320255A6600F14644 /* MarketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketTableViewCell.swift; sourceTree = "<group>"; };
 		ACB9117420255A6600F14644 /* MarketTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketTableViewCell.xib; sourceTree = "<group>"; };
+		ACB9117720256B0300F14644 /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
+		ACB9117920256B3C00F14644 /* MarketDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDataManager.swift; sourceTree = "<group>"; };
+		ACB9117B20256BBA00F14644 /* TradingPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingPair.swift; sourceTree = "<group>"; };
 		CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -229,6 +235,8 @@
 				ACB9115F20242E3F00F14644 /* Asset.swift */,
 				ACB911632024504E00F14644 /* Order.swift */,
 				ACB911652024505D00F14644 /* Trade.swift */,
+				ACB9117720256B0300F14644 /* Market.swift */,
+				ACB9117B20256BBA00F14644 /* TradingPair.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -237,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				ACB911682025472A00F14644 /* AssetDataManager.swift */,
+				ACB9117920256B3C00F14644 /* MarketDataManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -552,6 +561,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC01A2442022D9BE00FE8317 /* PortfolioViewController.swift in Sources */,
+				ACB9117C20256BBA00F14644 /* TradingPair.swift in Sources */,
 				ACB9116020242E3F00F14644 /* Asset.swift in Sources */,
 				ACB9116E2025575A00F14644 /* MarketNavigationViewController.swift in Sources */,
 				ACB911642024504E00F14644 /* Order.swift in Sources */,
@@ -559,7 +569,9 @@
 				AC01A2412022D94600FE8317 /* PortfolioNavigationController.swift in Sources */,
 				ACB9117520255A6600F14644 /* MarketTableViewCell.swift in Sources */,
 				ACB9115A20242B9D00F14644 /* AssetTableViewCell.swift in Sources */,
+				ACB9117A20256B3C00F14644 /* MarketDataManager.swift in Sources */,
 				ACB911662024505D00F14644 /* Trade.swift in Sources */,
+				ACB9117820256B0300F14644 /* Market.swift in Sources */,
 				ACB911692025472A00F14644 /* AssetDataManager.swift in Sources */,
 				AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */,
 				ACB911522024254F00F14644 /* WalletNavigationViewController.swift in Sources */,
