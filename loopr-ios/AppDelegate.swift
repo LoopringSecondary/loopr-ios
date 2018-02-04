@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = UIColor.white
 
         // Call an example request to backend.
-        Request.sendExampleRequest()
+        Request.getOrder()
         
         return true
     }
