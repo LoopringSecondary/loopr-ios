@@ -46,6 +46,8 @@
 		ACB9119520278A4000F14644 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9119420278A4000F14644 /* Request.swift */; };
 		C8BF959920267D8D00343B9A /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BF959720267D8D00343B9A /* SetupViewController.swift */; };
 		C8BF959D202696A900343B9A /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BF959C202696A900343B9A /* MainTabController.swift */; };
+		C8BF95A62027A10E00343B9A /* GenerateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BF95A42027A10E00343B9A /* GenerateWalletViewController.swift */; };
+		C8BF95A72027A10E00343B9A /* GenerateWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8BF95A52027A10E00343B9A /* GenerateWalletViewController.xib */; };
 		D9524CB21C9A148B2F4D503B /* Pods_loopr_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */; };
 		EE817669636361AFF682A8F5 /* Pods_loopr_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929BB32EF62C4BD6BC1DFC8F /* Pods_loopr_ios.framework */; };
 /* End PBXBuildFile section */
@@ -120,6 +122,8 @@
 		ACB9119420278A4000F14644 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		C8BF959720267D8D00343B9A /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		C8BF959C202696A900343B9A /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		C8BF95A42027A10E00343B9A /* GenerateWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateWalletViewController.swift; sourceTree = "<group>"; };
+		C8BF95A52027A10E00343B9A /* GenerateWalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenerateWalletViewController.xib; sourceTree = "<group>"; };
 		CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -318,6 +322,8 @@
 			isa = PBXGroup;
 			children = (
 				C8BF959720267D8D00343B9A /* SetupViewController.swift */,
+				C8BF95A42027A10E00343B9A /* GenerateWalletViewController.swift */,
+				C8BF95A52027A10E00343B9A /* GenerateWalletViewController.xib */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -450,6 +456,7 @@
 				ACB91172202557B100F14644 /* MarketViewController.xib in Resources */,
 				ACB9117620255A6600F14644 /* MarketTableViewCell.xib in Resources */,
 				ACB9119120266EC200F14644 /* AddAssetViewController.xib in Resources */,
+				C8BF95A72027A10E00343B9A /* GenerateWalletViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,6 +636,7 @@
 				AC01A2442022D9BE00FE8317 /* PortfolioViewController.swift in Sources */,
 				ACB9119520278A4000F14644 /* Request.swift in Sources */,
 				ACB9117C20256BBA00F14644 /* TradingPair.swift in Sources */,
+				C8BF95A62027A10E00343B9A /* GenerateWalletViewController.swift in Sources */,
 				ACB9117F2026385100F14644 /* SettingNavigationViewController.swift in Sources */,
 				ACB9116020242E3F00F14644 /* Asset.swift in Sources */,
 				ACB9116E2025575A00F14644 /* MarketNavigationViewController.swift in Sources */,
