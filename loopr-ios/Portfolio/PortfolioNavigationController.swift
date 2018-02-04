@@ -11,7 +11,7 @@ import UIKit
 class PortfolioNavigationController: UINavigationController {
     
     //TODO: Create Account Manager
-    var userAccountExists = false
+    var userAccountExists = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,11 +20,7 @@ class PortfolioNavigationController: UINavigationController {
         let viewController = PortfolioViewController(nibName: nil, bundle: nil)
         self.setViewControllers([viewController], animated: false)
 
-        
-        
-        
     }
-
     
     override func viewWillAppear(_ animated: Bool) {
         checkForAccout()
