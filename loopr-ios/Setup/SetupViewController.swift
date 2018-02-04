@@ -12,8 +12,6 @@ class SetupViewController: UIViewController {
 
     @IBOutlet weak var unlockWalletButton: UIButton!
     @IBOutlet weak var generateWalletButton: UIButton!
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +28,9 @@ class SetupViewController: UIViewController {
     }
     
 
+    @IBAction func generateWalletButtonPressed(_ sender: Any) {
+        
+    }
     
     /*
     // MARK: - Navigation

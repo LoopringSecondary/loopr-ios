@@ -67,6 +67,9 @@
                                 <state key="normal" title="Generate Wallet">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="generateWalletButtonPressed:" destination="J8F-HN-sTN" eventType="touchUpInside" id="FRB-hl-SEd"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Loopring Wallet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VB8-9o-fEE">
                                 <rect key="frame" x="35" y="315.5" width="305" height="36"/>

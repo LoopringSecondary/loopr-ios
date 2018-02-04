@@ -30,6 +30,10 @@ class GenerateWalletViewController: UIViewController {
         
     }
     
+    func checkPasswordStrength(){
+        
+    }
+    
     
     /*
     // MARK: - Navigation
