@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MarketDataManager.shared.generateMockData();
         
         self.window?.backgroundColor = UIColor.white
-        
+    
         return true
     }
     
