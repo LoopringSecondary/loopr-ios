@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -38,94 +37,6 @@
             </objects>
             <point key="canvasLocation" x="750" y="-322"/>
         </scene>
-        <!--Setup View Controller-->
-        <scene sceneID="Ufu-uW-BXn">
-            <objects>
-                <viewController id="J8F-HN-sTN" customClass="SetupViewController" customModule="loopr_ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HVM-9V-3nd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RiR-TI-VgQ">
-                                <rect key="frame" x="16" y="466" width="343" height="74"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="74" id="5P0-Hj-15I"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Unlock Wallet">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oUe-df-xk1">
-                                <rect key="frame" x="16" y="573" width="343" height="74"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="74" id="Jt0-hw-I2L"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Generate Wallet">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="generateWalletButtonPressed:" destination="J8F-HN-sTN" eventType="touchUpInside" id="FRB-hl-SEd"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Loopring Wallet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VB8-9o-fEE">
-                                <rect key="frame" x="35" y="315.5" width="305" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="58Y-aT-XxI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secure token trading right from your own phone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="dh9-il-4XO">
-                                <rect key="frame" x="42" y="353.5" width="290" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="9fB-1M-X0a"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Wl4-5L-I8o">
-                                <rect key="frame" x="83" y="90" width="208" height="208"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="208" id="Dog-Gh-aOF"/>
-                                    <constraint firstAttribute="width" constant="208" id="zZt-OM-XLj"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="VB8-9o-fEE" firstAttribute="centerY" secondItem="HVM-9V-3nd" secondAttribute="centerY" id="1f8-VW-hhv"/>
-                            <constraint firstItem="VB8-9o-fEE" firstAttribute="top" secondItem="Wl4-5L-I8o" secondAttribute="bottom" constant="17.5" id="6gX-Np-61F"/>
-                            <constraint firstItem="dh9-il-4XO" firstAttribute="centerX" secondItem="HVM-9V-3nd" secondAttribute="centerX" id="GdU-US-mJC"/>
-                            <constraint firstItem="Hp5-dh-YHH" firstAttribute="trailing" secondItem="oUe-df-xk1" secondAttribute="trailing" constant="16" id="HMT-Sb-x7e"/>
-                            <constraint firstItem="RiR-TI-VgQ" firstAttribute="leading" secondItem="Hp5-dh-YHH" secondAttribute="leading" constant="16" id="IaJ-1N-5Cl"/>
-                            <constraint firstItem="Hp5-dh-YHH" firstAttribute="bottom" secondItem="oUe-df-xk1" secondAttribute="bottom" constant="20" id="MMk-ha-yUn"/>
-                            <constraint firstItem="oUe-df-xk1" firstAttribute="top" secondItem="RiR-TI-VgQ" secondAttribute="bottom" constant="33" id="NHx-iV-yen"/>
-                            <constraint firstItem="oUe-df-xk1" firstAttribute="top" secondItem="RiR-TI-VgQ" secondAttribute="bottom" constant="33" id="P12-Eo-TJs"/>
-                            <constraint firstItem="VB8-9o-fEE" firstAttribute="centerX" secondItem="HVM-9V-3nd" secondAttribute="centerX" id="QKp-mJ-VG6"/>
-                            <constraint firstItem="oUe-df-xk1" firstAttribute="centerX" secondItem="HVM-9V-3nd" secondAttribute="centerX" id="T3a-Ua-4aP"/>
-                            <constraint firstItem="oUe-df-xk1" firstAttribute="leading" secondItem="Hp5-dh-YHH" secondAttribute="leading" constant="16" id="akV-F7-IVx"/>
-                            <constraint firstItem="Wl4-5L-I8o" firstAttribute="centerX" secondItem="HVM-9V-3nd" secondAttribute="centerX" id="kfe-Fh-8Pa"/>
-                            <constraint firstItem="RiR-TI-VgQ" firstAttribute="centerX" secondItem="HVM-9V-3nd" secondAttribute="centerX" id="r9j-Ce-uev"/>
-                            <constraint firstItem="dh9-il-4XO" firstAttribute="top" secondItem="VB8-9o-fEE" secondAttribute="bottom" constant="2" id="vmG-JD-nJq"/>
-                            <constraint firstItem="Hp5-dh-YHH" firstAttribute="trailing" secondItem="RiR-TI-VgQ" secondAttribute="trailing" constant="16" id="xSg-Kn-S2f"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Hp5-dh-YHH"/>
-                    </view>
-                    <connections>
-                        <outlet property="generateWalletButton" destination="oUe-df-xk1" id="8cJ-C1-7F2"/>
-                        <outlet property="unlockWalletButton" destination="RiR-TI-VgQ" id="Kw0-jT-5ZF"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="noX-Iq-ndi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-727.20000000000005" y="-1063.7181409295354"/>
-        </scene>
         <!--Main Tab Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -140,7 +51,6 @@
                         <segue destination="zdQ-Zw-gzE" kind="relationship" relationship="viewControllers" id="4WO-IM-Fdw"/>
                         <segue destination="wXN-eN-cuh" kind="relationship" relationship="viewControllers" id="89W-KO-6Bt"/>
                         <segue destination="JQ5-jc-efn" kind="relationship" relationship="viewControllers" id="93v-w5-YyZ"/>
-                        <segue destination="J8F-HN-sTN" kind="presentation" identifier="showSetup" animates="NO" id="Mt0-cd-X3c"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -176,7 +86,4 @@
             <point key="canvasLocation" x="769" y="1231"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Logo" width="1225" height="1075"/>
-    </resources>
 </document>

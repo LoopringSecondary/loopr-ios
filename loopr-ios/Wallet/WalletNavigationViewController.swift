@@ -10,12 +10,13 @@ import UIKit
 
 class WalletNavigationViewController: UINavigationController {
 
+    var walletExists = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let viewController = WalletViewController(nibName: nil, bundle: nil)
-        self.setViewControllers([viewController], animated: false)
+        showWallet()
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,6 +25,19 @@ class WalletNavigationViewController: UINavigationController {
     }
     
 
+    //Present Wallet UI if wallet is present
+    func showWallet(){
+        if walletExists == true {
+            let viewController = WalletViewController(nibName: nil, bundle: nil)
+            self.setViewControllers([viewController], animated: false)
+        }else{
+            let viewController = SetupViewController(nibName: nil, bundle: nil)
+            self.setViewControllers([viewController], animated: false)
+            
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 

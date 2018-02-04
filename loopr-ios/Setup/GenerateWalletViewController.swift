@@ -34,6 +34,9 @@ class GenerateWalletViewController: UIViewController {
         
     }
     
+    @IBAction func viewPasswordPressed(_ sender: Any) {
+        passwordTextfield.isSecureTextEntry = !passwordTextfield.isSecureTextEntry
+    }
     
     /*
     // MARK: - Navigation
