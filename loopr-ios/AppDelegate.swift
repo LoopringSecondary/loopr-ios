@@ -22,7 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MarketDataManager.shared.generateMockData();
         
         self.window?.backgroundColor = UIColor.white
-    
+
+        // Call an example request to backend.
+        Request.sendExampleRequest()
+        
         return true
     }
     
