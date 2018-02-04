@@ -13,6 +13,7 @@ class MarketTableViewCell: UITableViewCell {
     var market: Market?
     
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var balanceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,10 +29,11 @@ class MarketTableViewCell: UITableViewCell {
     func update() {
         if let market = market {
             nameLabel.text = "\(market.tradingPair.tradingA)" + " / " + "\(market.tradingPair.tradingB)"
+            balanceLabel.text = "\(market.balance) \(market.tradingPair.tradingA)"
         }
     }
     
     class func getHeight() -> CGFloat {
-        return 44
+        return 90
     }
 }

@@ -13,11 +13,19 @@ class Market: CustomStringConvertible {
     var description: String
     
     final let tradingPair: TradingPair
+
+    // TODO: Use random generators
+    var balance: Double = 0
+    var volumeInPast24: Double = 0
     
+    // TODO: We assume ETH is always tradingB.
     init(tradingA: String, tradingB: String) {
         tradingPair = TradingPair(tradingA, tradingB)
         
         description = "\(tradingA) " + " / " + "\(tradingB)"
+        
+        balance = Double(arc4random_uniform(1000))
+        volumeInPast24 = Double(arc4random_uniform(6)) * 100 + Double(arc4random_uniform(100))
     }
 
 }

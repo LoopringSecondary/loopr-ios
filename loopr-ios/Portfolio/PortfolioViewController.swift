@@ -67,6 +67,7 @@ class PortfolioViewController: UIViewController {
         portfolioChartView.highlightValues(nil)
         
         portfolioChartView.chartDescription?.text = ""
+        portfolioChartView.rotationEnabled = false
     }
     
     /*

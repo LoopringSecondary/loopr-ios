@@ -30,5 +30,11 @@ class MarketDataManager {
 
         let market2 = Market(tradingA: "REP", tradingB: "ETH")
         markets.append(market2)
+        
+        let market3 = Market(tradingA: "OMG", tradingB: "ETH")
+        markets.append(market3)
+        
+        let market4 = Market(tradingA: "RDN", tradingB: "ETH")
+        markets.append(market4)
     }
 }
