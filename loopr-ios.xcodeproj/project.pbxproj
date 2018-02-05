@@ -15,7 +15,7 @@
 		AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC798E482022B93A0071D477 /* Main.storyboard */; };
 		AC798E4C2022B93A0071D477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC798E4B2022B93A0071D477 /* Assets.xcassets */; };
 		AC798E4F2022B93A0071D477 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC798E4D2022B93A0071D477 /* LaunchScreen.storyboard */; };
-		AC798E5A2022B93B0071D477 /* loopr_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E592022B93B0071D477 /* loopr_iosTests.swift */; };
+		AC798E5A2022B93B0071D477 /* JSON_RPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E592022B93B0071D477 /* JSON_RPCTests.swift */; };
 		AC798E652022B93B0071D477 /* loopr_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E642022B93B0071D477 /* loopr_iosUITests.swift */; };
 		ACB911522024254F00F14644 /* WalletNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911512024254F00F14644 /* WalletNavigationViewController.swift */; };
 		ACB911552024260E00F14644 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911532024260E00F14644 /* WalletViewController.swift */; };
@@ -90,7 +90,7 @@
 		AC798E4E2022B93A0071D477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC798E502022B93A0071D477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC798E552022B93B0071D477 /* loopr-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "loopr-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC798E592022B93B0071D477 /* loopr_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loopr_iosTests.swift; sourceTree = "<group>"; };
+		AC798E592022B93B0071D477 /* JSON_RPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON_RPCTests.swift; sourceTree = "<group>"; };
 		AC798E5B2022B93B0071D477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC798E602022B93B0071D477 /* loopr-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "loopr-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC798E642022B93B0071D477 /* loopr_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loopr_iosUITests.swift; sourceTree = "<group>"; };
@@ -228,7 +228,7 @@
 		AC798E582022B93B0071D477 /* loopr-iosTests */ = {
 			isa = PBXGroup;
 			children = (
-				AC798E592022B93B0071D477 /* loopr_iosTests.swift */,
+				AC798E592022B93B0071D477 /* JSON_RPCTests.swift */,
 				AC798E5B2022B93B0071D477 /* Info.plist */,
 			);
 			path = "loopr-iosTests";
@@ -673,7 +673,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC798E5A2022B93B0071D477 /* loopr_iosTests.swift in Sources */,
+				AC798E5A2022B93B0071D477 /* JSON_RPCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

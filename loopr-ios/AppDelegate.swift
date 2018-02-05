@@ -23,27 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MarketDataManager.shared.generateMockData();
         
         self.window?.backgroundColor = UIColor.white
-
-        // Call an example request to backend.
-        JSON_RPC.getOrder() { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(String(describing: error))")
-                return
-            }
-            
-            let json = JSON(data)
-            // print("response = \(json)")
-        }
-        
-        JSON_RPC.getBalance() { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(String(describing: error))")
-                return
-            }
-            
-            let json = JSON(data)
-            print("response = \(json)")
-        }
         
         return true
     }
