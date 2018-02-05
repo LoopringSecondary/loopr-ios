@@ -23,7 +23,6 @@ class JSON_RPC {
         
         Request.send(body: body) { data, response, error in
             guard let data = data, error == nil else {
-                // check for fundamental networking error
                 print("error=\(String(describing: error))")
                 return
             }
@@ -39,7 +38,7 @@ class JSON_RPC {
         body["id"] = "1a715e2557abc0bd"
         
         Request.send(body: body) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+            guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
             }
@@ -55,7 +54,7 @@ class JSON_RPC {
         body["id"] = "1a715e2557abc0bd"
         
         Request.send(body: body) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+            guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
             }
@@ -63,6 +62,7 @@ class JSON_RPC {
         }
     }
 
+    // FIXME: Get an error - "The method loopring_getTickers does not exist\/is not available"
     static func getTickers(completionHandler: @escaping CompletionHandler) {
         var body: JSON = JSON()
         body["method"] = "loopring_getTickers"
@@ -70,7 +70,7 @@ class JSON_RPC {
         body["id"] = "1a715e2557abc0bd"
         
         Request.send(body: body) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+            guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
             }
@@ -78,14 +78,56 @@ class JSON_RPC {
         }
     }
     
-    // TODO:
-    static func getFills(completionHandler: @escaping CompletionHandler) {
+    static func getFills(market: String, owner: String, orderHash: String, ringHash: String, pageIndex: UInt, pageSize: UInt, completionHandler: @escaping CompletionHandler) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_getFills"
+        body["params"] = [["market": market]]
         
+        // TODO: support other params
+        /*
+        body["params"]["contractVersion"] = JSON(contractVersion)
+        body["params"]["owner"] = JSON(owner)
+        body["params"]["orderHash"] = JSON(orderHash)
+        body["params"]["ringHash"] = JSON(ringHash)
+        body["params"]["pageIndex"] = JSON(pageIndex)
+        body["params"]["pageSize"] = JSON(pageSize)
+        */
+        body["id"] = "1a715e2557abc0bd"
+        
+        Request.send(body: body) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            completionHandler(data, response, error)
+        }
     }
     
-    // TODO:
-    static func getTrend(completionHandler: @escaping CompletionHandler) {
+    // FIXME:
+    /*
+    response = {
+        "id" : "1a715e2557abc0bd",
+        "error" : {
+            "code" : -32602,
+            "message" : "invalid argument 0: json: cannot unmarshal object into Go value of type string"
+        },
+        "jsonrpc" : "2.0"
+    }
+    */
+    static func getTrend(market: String, interval: String, completionHandler: @escaping CompletionHandler) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_getTrend"
+        body["params"] = [["market": market, "interval": interval]]
+        body["params"]["contractVersion"] = JSON(contractVersion)
+        body["id"] = "1a715e2557abc0bd"
         
+        Request.send(body: body) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            completionHandler(data, response, error)
+        }
     }
     
     // TODO:
