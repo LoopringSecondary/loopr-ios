@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetupViewController" customModule="loopr_ios" customModuleProvider="target">
+            <connections>
+                <outlet property="generateWalletButton" destination="Q1g-wc-kTG" id="3jA-yF-D09"/>
+                <outlet property="unlockWalletButton" destination="khC-LX-8we" id="LE7-Nv-eQD"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khC-LX-8we">
+                    <rect key="frame" x="16" y="466" width="343" height="74"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="74" id="8ib-GA-JI5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <state key="normal" title="Unlock Wallet">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="unlockButtonPressed:" destination="-1" eventType="touchUpInside" id="xwH-vz-VEl"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1g-wc-kTG">
+                    <rect key="frame" x="16" y="573" width="343" height="74"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="74" id="xRh-wr-KJZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <state key="normal" title="Generate Wallet">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="generateWalletButtonPressed:" destination="-1" eventType="touchUpInside" id="XbX-An-iAO"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Loopring Wallet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xu6-o4-1jG">
+                    <rect key="frame" x="35" y="279" width="305" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="aaH-wS-qcD"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secure token trading right from your own phone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="FLV-jg-Kmv">
+                    <rect key="frame" x="42" y="317" width="290" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="v0T-hW-eyp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="yM7-Fs-vNz">
+                    <rect key="frame" x="83" y="55" width="208" height="208"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="166" id="Dlc-YH-Fjs"/>
+                        <constraint firstAttribute="width" secondItem="yM7-Fs-vNz" secondAttribute="height" multiplier="1:1" id="Wdk-rN-Oeo"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="166" id="nTJ-bY-UU0"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="khC-LX-8we" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="1ed-YZ-rtO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yM7-Fs-vNz" secondAttribute="trailing" constant="84" id="1ub-TF-eu4"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="FLV-jg-Kmv" secondAttribute="trailing" constant="43" id="2Eq-7o-Me3"/>
+                <constraint firstItem="Q1g-wc-kTG" firstAttribute="height" secondItem="khC-LX-8we" secondAttribute="height" id="3Mj-UV-eC5"/>
+                <constraint firstItem="yM7-Fs-vNz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="83" id="4Xc-OM-utr"/>
+                <constraint firstItem="Q1g-wc-kTG" firstAttribute="width" secondItem="khC-LX-8we" secondAttribute="width" id="CX5-EN-g2V"/>
+                <constraint firstItem="Q1g-wc-kTG" firstAttribute="top" secondItem="khC-LX-8we" secondAttribute="bottom" constant="33" id="Fc4-lq-Z3q"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Q1g-wc-kTG" secondAttribute="trailing" constant="16" id="MDB-V0-l8r"/>
+                <constraint firstItem="xu6-o4-1jG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="35" id="Wv7-Ys-Xrn"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xu6-o4-1jG" secondAttribute="trailing" constant="35" id="Xaj-Fr-nWI"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Q1g-wc-kTG" secondAttribute="bottom" constant="20" id="eGE-Yl-oJl"/>
+                <constraint firstItem="yM7-Fs-vNz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="35" id="olH-pm-Z5P"/>
+                <constraint firstItem="FLV-jg-Kmv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="42" id="pxf-rq-kkL"/>
+                <constraint firstItem="xu6-o4-1jG" firstAttribute="top" secondItem="yM7-Fs-vNz" secondAttribute="bottom" constant="16" id="qCc-iA-rU6"/>
+                <constraint firstItem="Q1g-wc-kTG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="qvh-2E-7Yt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="khC-LX-8we" secondAttribute="trailing" constant="16" id="yJw-Yq-Atq"/>
+                <constraint firstItem="FLV-jg-Kmv" firstAttribute="top" secondItem="xu6-o4-1jG" secondAttribute="bottom" constant="2" id="zXr-pR-axR"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="34.5" y="54.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Logo" width="1225" height="1075"/>
+    </resources>
+</document>
