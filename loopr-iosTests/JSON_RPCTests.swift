@@ -23,31 +23,35 @@ class JSON_RPCTests: XCTestCase {
     }
     
     func testGetBalance() {
-        JSON_RPC.getBalance() { data, response, error in
+        let expectation = XCTestExpectation()
+
+        JSON_RPC.getBalance(owner: "0x847983c3a34afa192cfee860698584c030f4c9db1") { data, response, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
             }
             
             let json = JSON(data)
-            // print("response = \(json)")
+            print("response = \(json)")
             
             // TODO: verify the response
+            
+            expectation.fulfill()
         }
+        
+        wait(for: [expectation], timeout: 10.0)
     }
     
     func testGetOrder() {
-        JSON_RPC.getOrders() { data, response, error in
-            guard let data = data, error == nil else {
-                print("error=\(String(describing: error))")
-                return
-            }
+        let expectation = XCTestExpectation()
+
+        JSON_RPC.getOrders(pageSize: 10) { orders, error in
+            XCTAssert(orders.count == 10)
             
-            let json = JSON(data)
-            // print("response = \(json)")
-            
-            // TODO: verify the response
+            expectation.fulfill()
         }
+
+        wait(for: [expectation], timeout: 10.0)
     }
     
     func testGetDepth() {

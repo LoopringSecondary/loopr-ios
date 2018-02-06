@@ -14,10 +14,10 @@ class JSON_RPC {
     
     static let contractVersion = "v1.0"
     
-    public static func getBalance(completionHandler: @escaping CompletionHandler) {
+    public static func getBalance(owner: String, completionHandler: @escaping CompletionHandler) {
         var body: JSON = JSON()
         body["method"] = "loopring_getBalance"
-        body["params"] = [["owner": "0x847983c3a34afa192cfee860698584c030f4c9db1"]]
+        body["params"] = [["owner": owner]]
         body["params"]["contractVersion"] = JSON(contractVersion)
         body["id"] = "1a715e2557abc0bd"
         
@@ -30,19 +30,40 @@ class JSON_RPC {
         }
     }
 
-    static func getOrders(completionHandler: @escaping CompletionHandler) {
+    static func getOrders(ringHash: String? = nil, pageIndex: UInt = 0, pageSize: UInt = 20, completionHandler: @escaping (_ orders: [Order], _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getOrders"
-        body["params"] = [["ringHash": nil, "pageIndex": 0, "pageSize": 20]]
+        body["params"] = [["ringHash": ringHash, "pageIndex": pageIndex, "pageSize": pageSize]]
         body["params"]["contractVersion"] = JSON(contractVersion)
         body["id"] = "1a715e2557abc0bd"
         
         Request.send(body: body) { data, response, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
+                completionHandler([], error)
                 return
             }
-            completionHandler(data, response, error)
+            
+            var orders: [Order] = []
+            
+            let json = JSON(data)
+            let resultJson = json["result"]
+            let offerData = resultJson["data"]
+            for subJson in offerData.arrayValue {
+                let originalOrderJson = subJson["originalOrder"]
+                let originalOrder = OriginalOrder(json: originalOrderJson)
+                
+                // TODO: how to handle unknown status?
+                let orderStatus = OrderStatus(rawValue: subJson["status"].stringValue)!
+                
+                let dealtAmountB = subJson["dealtAmountB"].stringValue
+                let dealtAmountS = subJson["dealtAmountS"].stringValue
+                let order = Order(originalOrder: originalOrder, orderStatus: orderStatus, dealtAmountB: dealtAmountB, dealtAmountS: dealtAmountS)
+                
+                orders.append(order)
+            }
+            
+            completionHandler(orders, nil)
         }
     }
 

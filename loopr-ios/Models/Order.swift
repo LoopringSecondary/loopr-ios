@@ -10,10 +10,16 @@ import Foundation
 
 class Order {
     
-    let id: String
+    let originalOrder: OriginalOrder
+    let orderStatus: OrderStatus
+    let dealtAmountB: String
+    let dealtAmountS: String
     
-    init(id: String) {
-        self.id = id
+    init(originalOrder: OriginalOrder, orderStatus: OrderStatus, dealtAmountB: String, dealtAmountS: String) {
+        self.originalOrder = originalOrder
+        self.orderStatus = orderStatus
+        self.dealtAmountB = dealtAmountB
+        self.dealtAmountS = dealtAmountS
     }
     
 }
