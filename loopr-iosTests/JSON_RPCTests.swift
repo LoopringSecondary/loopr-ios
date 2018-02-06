@@ -223,23 +223,19 @@ class JSON_RPCTests: XCTestCase {
     func testGetSupportedMarket() {
         let expectation = XCTestExpectation()
         
-        JSON_RPC.getSupportedMarket() { data, response, error in
-            guard let data = data, error == nil else {
+        JSON_RPC.getSupportedMarket() { markets, error in
+            guard error == nil else {
                 print("error=\(String(describing: error))")
-                
                 // TODO: Fails to catch the error.
                 XCTFail()
                 return
             }
-            
-            let json = JSON(data)
-            print("response = \(json)")
-            
-            // TODO: verify the response
-            
+
+            // If the relay support more tokens, we will know.
+            XCTAssert(markets.count == 64)
             expectation.fulfill()
         }
-        
+
         wait(for: [expectation], timeout: 10.0)
     }
     

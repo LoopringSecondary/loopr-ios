@@ -238,7 +238,7 @@ class JSON_RPC {
         }
     }
     
-    static func getSupportedMarket(completionHandler: @escaping CompletionHandler) {
+    static func getSupportedMarket(completionHandler: @escaping (_ market: [Market], _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getSupportedMarket"
         body["params"] = [["contractVersion": contractVersion]]
@@ -247,9 +247,26 @@ class JSON_RPC {
         Request.send(body: body) { data, response, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
+                completionHandler([], error)
                 return
             }
-            completionHandler(data, response, error)
+            
+            var markets: [Market] = []
+            
+            let json = JSON(data)
+            let resultJson = json["result"]
+            for tradingPairStringJson in resultJson.arrayValue {
+                let tradingPairString = tradingPairStringJson.stringValue
+                let tokens = tradingPairString.components(separatedBy: "-")
+                guard tokens.count == 2 else {
+                    // TODO: how to handle invalid results
+                    continue
+                }
+                let market = Market(tradingA: tokens[0], tradingB: tokens[1])
+                markets.append(market)
+            }
+            
+            completionHandler(markets, error)
         }
     }
     

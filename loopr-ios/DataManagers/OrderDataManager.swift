@@ -18,7 +18,11 @@ class OrderDataManager {
         orders = []
     }
     
-    func getOrders() {
+    func getOrders() -> [Order] {
+        return orders
+    }
+    
+    func getOrdersFromServer() {
         JSON_RPC.getOrders() { orders, error in
             self.orders = orders
         }

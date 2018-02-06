@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Generate mock data
         AssetDataManager.shared.generateMockData();
-        MarketDataManager.shared.generateMockData();
         
         self.window?.backgroundColor = UIColor.white
 

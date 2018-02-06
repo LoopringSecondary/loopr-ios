@@ -18,7 +18,6 @@ class Market: CustomStringConvertible {
     var balance: Double = 0
     var volumeInPast24: Double = 0
     
-    // TODO: We assume ETH is always tradingB.
     init(tradingA: String, tradingB: String) {
         tradingPair = TradingPair(tradingA, tradingB)
         

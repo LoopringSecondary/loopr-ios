@@ -18,6 +18,17 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
         marketTableView.dataSource = self
         marketTableView.delegate = self
+        
+        MarketDataManager.shared.getMarketsFromServer { (markets, error) in
+            guard error == nil else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.marketTableView.reloadData()
+            }
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -22,19 +22,11 @@ class MarketDataManager {
         return markets
     }
     
-    func generateMockData() {
-        markets = []
-        
-        let market1 = Market(tradingA: "ZRX", tradingB: "ETH")
-        markets.append(market1)
-
-        let market2 = Market(tradingA: "REP", tradingB: "ETH")
-        markets.append(market2)
-        
-        let market3 = Market(tradingA: "OMG", tradingB: "ETH")
-        markets.append(market3)
-        
-        let market4 = Market(tradingA: "RDN", tradingB: "ETH")
-        markets.append(market4)
+    func getMarketsFromServer(completionHandler: @escaping (_ market: [Market], _ error: Error?) -> Void) {
+        JSON_RPC.getSupportedMarket() { markets, error in
+            self.markets = markets
+            completionHandler(markets, error)
+        }
     }
+
 }
