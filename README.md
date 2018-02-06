@@ -9,6 +9,7 @@ Please refer
 ##### Stack
 
 - No storyboard. It's ok to use xib in the early development.
+- [Lottie](https://github.com/airbnb/lottie-ios): an iOS library to natively render After Effects vector animations
 
 #### start
 1. Install cocoapods ```sudo gem install cocoapods```
