@@ -11,20 +11,30 @@ import UIKit
 class MarketDetailViewController: UIViewController {
 
     var market: Market? = nil
-
-    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var mainScrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.title = market?.description
+        
+        let lineChartViewController = MarketLineChartViewController()
+
+        mainScrollView.addSubview(lineChartViewController.view)
+
+        lineChartViewController.view.leadingAnchor.constraint(equalTo: mainScrollView.leadingAnchor, constant: 0.0).isActive = true
+        lineChartViewController.view.leftAnchor.constraint(equalTo: mainScrollView.leftAnchor, constant: 0.0).isActive = true
+        lineChartViewController.view.rightAnchor.constraint(equalTo: mainScrollView.rightAnchor, constant: 0.0).isActive = true
+        lineChartViewController.view.frame.size.height = 550
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
     /*

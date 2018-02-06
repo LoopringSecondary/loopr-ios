@@ -27,7 +27,6 @@ class OriginalOrder {
     let s: String
  
     init(json: JSON) {
-        // TODO: use force wrap now. Will replace it in the future.
         self.protocol_value = json["protocol"].stringValue
         self.owner = json["owner"].stringValue
         self.tokenS = json["tokenS"].stringValue

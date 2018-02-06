@@ -1,24 +1,22 @@
 //
-//  MarketDetailViewController.swift
+//  MarketLineChartViewController.swift
 //  loopr-ios
 //
-//  Created by Xiao Dou Dou on 2/3/18.
+//  Created by xiaoruby on 2/6/18.
 //  Copyright © 2018 Loopring. All rights reserved.
 //
 
 import UIKit
+import Charts
 
-class MarketDetailViewController: UIViewController {
+class MarketLineChartViewController: UIViewController {
 
-    var market: Market? = nil
+    @IBOutlet weak var lineChartView: LineChartView!
 
-    @IBOutlet weak var tableView: UITableView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.title = market?.description
     }
 
     override func didReceiveMemoryWarning() {
