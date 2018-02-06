@@ -124,4 +124,164 @@ class JSON_RPCTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
 
+    func testGetRingMined() {
+        let expectation = XCTestExpectation()
+        
+        JSON_RPC.getRingMined(ringHash: "0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238", pageIndex: 1, pageSize: 20) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                
+                // TODO: Fails to catch the error.
+                XCTFail()
+                return
+            }
+            
+            let json = JSON(data)
+            print("response = \(json)")
+            
+            // TODO: verify the response
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testGetCutoff() {
+        let expectation = XCTestExpectation()
+        
+        JSON_RPC.getCutoff(address: nil) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                
+                // TODO: Fails to catch the error.
+                XCTFail()
+                return
+            }
+            
+            let json = JSON(data)
+            print("response = \(json)")
+            
+            // TODO: verify the response
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testGetPriceQuote() {
+        let expectation = XCTestExpectation()
+        
+        JSON_RPC.getPriceQuote(currency: "USD") { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                
+                // TODO: Fails to catch the error.
+                XCTFail()
+                return
+            }
+            
+            let json = JSON(data)
+            print("response = \(json)")
+            
+            // TODO: verify the response
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testGetEstimatedAllocatedAllowance() {
+        let expectation = XCTestExpectation()
+        
+        JSON_RPC.getEstimatedAllocatedAllowance(token: "WETH") { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                
+                // TODO: Fails to catch the error.
+                XCTFail()
+                return
+            }
+            
+            let json = JSON(data)
+            print("response = \(json)")
+            
+            // TODO: verify the response
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testGetSupportedMarket() {
+        let expectation = XCTestExpectation()
+        
+        JSON_RPC.getSupportedMarket() { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                
+                // TODO: Fails to catch the error.
+                XCTFail()
+                return
+            }
+            
+            let json = JSON(data)
+            print("response = \(json)")
+            
+            // TODO: verify the response
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testGetPortfolio() {
+        let expectation = XCTestExpectation()
+        
+        JSON_RPC.getPortfolio(owner: "0x847983c3a34afa192cfee860698584c030f4c9db1") { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                
+                // TODO: Fails to catch the error.
+                XCTFail()
+                return
+            }
+            
+            let json = JSON(data)
+            print("response = \(json)")
+            
+            // TODO: verify the response
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testGetTransactions() {
+        let expectation = XCTestExpectation()
+        
+        JSON_RPC.getTransactions(owner: "0x847983c3a34afa192cfee860698584c030f4c9db1", thxHash: "0xc7756d5d556383b2f965094464bdff3ebe658f263f552858cc4eff4ed0aeafeb", pageIndex: 1, pageSize: 20) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                
+                // TODO: Fails to catch the error.
+                XCTFail()
+                return
+            }
+            
+            let json = JSON(data)
+            print("response = \(json)")
+            
+            // TODO: verify the response
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 10.0)
+    }
 }

@@ -130,8 +130,159 @@ class JSON_RPC {
         }
     }
     
-    // TODO:
-    static func getRingMined(completionHandler: @escaping CompletionHandler) {
+    static func getRingMined(ringHash: String, pageIndex: UInt, pageSize: UInt, completionHandler: @escaping CompletionHandler) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_getRingMined"
+        body["params"] = [["ringHash": ringHash, "pageIndex": pageIndex, "pageSize": pageSize]]
+        body["params"]["contractVersion"] = JSON(contractVersion)
+        body["id"] = "1a715e2557abc0bd"
         
+        Request.send(body: body) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            completionHandler(data, response, error)
+        }
+    }
+    
+    // FIXME:
+    /*
+     response = {
+        "id" : "1a715e2557abc0bd",
+        "error" : {
+            "code" : -32602,
+            "message" : "invalid argument 0: json: cannot unmarshal object into Go value of type string"
+     },
+        "jsonrpc" : "2.0"
+     }
+     */
+    static func getCutoff(address: String?, blockNumber: String = "latest", completionHandler: @escaping CompletionHandler) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_getCutoff"
+        body["params"] = [["address": address, "blockNumber": blockNumber]]
+        body["params"]["contractVersion"] = JSON(contractVersion)
+        body["id"] = "1a715e2557abc0bd"
+        
+        Request.send(body: body) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            completionHandler(data, response, error)
+        }
+    }
+    
+    // FIXME:
+    /*
+    response = {
+        "id" : "1a715e2557abc0bd",
+        "error" : {
+            "code" : -32602,
+            "message" : "invalid argument 0: json: cannot unmarshal object into Go value of type string"
+        },
+        "jsonrpc" : "2.0"
+    }
+    */
+    static func getPriceQuote(currency: String, completionHandler: @escaping CompletionHandler) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_getPriceQuote"
+        body["params"] = [["currency": currency]]
+        body["params"]["contractVersion"] = JSON(contractVersion)
+        body["id"] = "1a715e2557abc0bd"
+        
+        Request.send(body: body) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            completionHandler(data, response, error)
+        }
+    }
+    
+    // FIXME:
+    static func getEstimatedAllocatedAllowance(owner: String? = nil, token: String, completionHandler: @escaping CompletionHandler) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_getEstimatedAllocatedAllowance"
+        body["params"] = [["owner": owner, "token": token]]
+        body["params"]["contractVersion"] = JSON(contractVersion)
+        body["id"] = "1a715e2557abc0bd"
+        
+        Request.send(body: body) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            completionHandler(data, response, error)
+        }
+    }
+    
+    static func getSupportedMarket(completionHandler: @escaping CompletionHandler) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_getSupportedMarket"
+        body["params"] = [["contractVersion": contractVersion]]
+        body["id"] = "1a715e2557abc0bd"
+
+        Request.send(body: body) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            completionHandler(data, response, error)
+        }
+    }
+    
+    // FIXME:
+    /*
+    response = {
+        "id" : "1a715e2557abc0bd",
+        "error" : {
+            "code" : -32601,
+            "message" : "The method loopring_getPortfolio does not exist\/is not available"
+        },
+        "jsonrpc" : "2.0"
+    }
+    */
+    static func getPortfolio(owner: String, completionHandler: @escaping CompletionHandler) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_getPortfolio"
+        body["params"] = [["owner": owner]]
+        body["params"]["contractVersion"] = JSON(contractVersion)
+        body["id"] = "1a715e2557abc0bd"
+        
+        Request.send(body: body) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            completionHandler(data, response, error)
+        }
+    }
+    
+    // FIXME:
+    /*
+    response = {
+        "id" : "1a715e2557abc0bd",
+        "error" : {
+            "code" : -32601,
+            "message" : "The method loopring_getTransactions does not exist\/is not available"
+        },
+        "jsonrpc" : "2.0"
+    }
+    */
+    static func getTransactions(owner: String, thxHash: String, pageIndex: UInt = 1, pageSize: UInt = 10, completionHandler: @escaping CompletionHandler) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_getTransactions"
+        body["params"] = [["owner": owner, "thxHash": thxHash, "pageIndex": pageIndex, "pageSize": pageSize]]
+        body["params"]["contractVersion"] = JSON(contractVersion)
+        body["id"] = "1a715e2557abc0bd"
+        
+        Request.send(body: body) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            completionHandler(data, response, error)
+        }
     }
 }
