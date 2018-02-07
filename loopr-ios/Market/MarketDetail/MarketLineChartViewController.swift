@@ -13,6 +13,13 @@ class MarketLineChartViewController: UIViewController {
 
     @IBOutlet weak var lineChartView: LineChartView!
 
+    @IBOutlet weak var oneDayButton: CustomUIButtonForUIToolbar!
+    @IBOutlet weak var oneWeekButton: CustomUIButtonForUIToolbar!
+    @IBOutlet weak var oneMonthButton: CustomUIButtonForUIToolbar!
+    @IBOutlet weak var threeMonthButton: CustomUIButtonForUIToolbar!
+    @IBOutlet weak var oneYearButton: CustomUIButtonForUIToolbar!
+    @IBOutlet weak var fiveYearButton: CustomUIButtonForUIToolbar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -113,6 +120,65 @@ class MarketLineChartViewController: UIViewController {
         lineChartView.data = data
         lineChartView.xAxis.enabled = false
         lineChartView.leftAxis.enabled = false
+    }
+
+    
+    @IBAction func pressedOneDayButton(_ sender: Any) {
+        oneDayButton.selected()
+        oneWeekButton.unselected()
+        oneMonthButton.unselected()
+        threeMonthButton.unselected()
+        oneYearButton.unselected()
+        fiveYearButton.unselected()
+    }
+    
+    @IBAction func pressedOneWeekButton(_ sender: Any) {
+        oneDayButton.unselected()
+        oneWeekButton.selected()
+        oneMonthButton.unselected()
+        threeMonthButton.unselected()
+        oneYearButton.unselected()
+        fiveYearButton.unselected()
+    }
+    
+    @IBAction func pressedOneMonthButton(_ sender: Any) {
+        oneDayButton.unselected()
+        oneWeekButton.unselected()
+        oneMonthButton.selected()
+        threeMonthButton.unselected()
+        oneYearButton.unselected()
+        fiveYearButton.unselected()
+    }
+    
+    @IBAction func pressedThreeMonthButton(_ sender: Any) {
+        oneDayButton.unselected()
+        oneWeekButton.unselected()
+        oneMonthButton.unselected()
+        threeMonthButton.selected()
+        oneYearButton.unselected()
+        fiveYearButton.unselected()
+    }
+    
+    @IBAction func pressedOneYearButton(_ sender: Any) {
+        oneDayButton.unselected()
+        oneWeekButton.unselected()
+        oneMonthButton.unselected()
+        threeMonthButton.unselected()
+        oneYearButton.selected()
+        fiveYearButton.unselected()
+    }
+    
+    @IBAction func pressedFiveYearButton(_ sender: Any) {
+        oneDayButton.unselected()
+        oneWeekButton.unselected()
+        oneMonthButton.unselected()
+        threeMonthButton.unselected()
+        oneYearButton.unselected()
+        fiveYearButton.selected()
+    }
+    
+    @IBAction func pressedBuyButton(_ sender: Any) {
+        print("pressedBuyButton")
     }
     
     /*

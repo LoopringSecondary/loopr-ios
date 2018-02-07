@@ -20,6 +20,7 @@
 		ACB5DD7C202A203900140A09 /* MarketLineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD7A202A203900140A09 /* MarketLineChartViewController.swift */; };
 		ACB5DD7D202A203900140A09 /* MarketLineChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD7B202A203900140A09 /* MarketLineChartViewController.xib */; };
 		ACB5DD80202AC26000140A09 /* button1.json in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD7F202AC26000140A09 /* button1.json */; };
+		ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */; };
 		ACB911522024254F00F14644 /* WalletNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911512024254F00F14644 /* WalletNavigationViewController.swift */; };
 		ACB911552024260E00F14644 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911532024260E00F14644 /* WalletViewController.swift */; };
 		ACB911562024260E00F14644 /* WalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB911542024260E00F14644 /* WalletViewController.xib */; };
@@ -104,6 +105,7 @@
 		ACB5DD7A202A203900140A09 /* MarketLineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketLineChartViewController.swift; sourceTree = "<group>"; };
 		ACB5DD7B202A203900140A09 /* MarketLineChartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketLineChartViewController.xib; sourceTree = "<group>"; };
 		ACB5DD7F202AC26000140A09 /* button1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = button1.json; sourceTree = "<group>"; };
+		ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIButtonForUIToolbar.swift; sourceTree = "<group>"; };
 		ACB911512024254F00F14644 /* WalletNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletNavigationViewController.swift; sourceTree = "<group>"; };
 		ACB911532024260E00F14644 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		ACB911542024260E00F14644 /* WalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletViewController.xib; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 		AC798E412022B93A0071D477 /* loopr-ios */ = {
 			isa = PBXGroup;
 			children = (
+				ACB5DD84202AD74200140A09 /* Common */,
 				ACB9119320278A0E00F14644 /* RelayAPI */,
 				ACB911672025470B00F14644 /* DataManagers */,
 				ACB9115E20242E2400F14644 /* Models */,
@@ -273,6 +276,22 @@
 				ACB5DD7F202AC26000140A09 /* button1.json */,
 			);
 			path = AfterEffectsAnimations;
+			sourceTree = "<group>";
+		};
+		ACB5DD84202AD74200140A09 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				ACB5DD85202AD74D00140A09 /* UIComponents */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		ACB5DD85202AD74D00140A09 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */,
+			);
+			path = UIComponents;
 			sourceTree = "<group>";
 		};
 		ACB9115C20242D8900F14644 /* Portfolio */ = {
@@ -696,6 +715,7 @@
 				C8BF95B02027AC9400343B9A /* SetupViewController.swift in Sources */,
 				ACB9115A20242B9D00F14644 /* AssetTableViewCell.swift in Sources */,
 				ACB9117A20256B3C00F14644 /* MarketDataManager.swift in Sources */,
+				ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */,
 				ACB9118820265DEA00F14644 /* MarketDetailViewController.swift in Sources */,
 				ACB911662024505D00F14644 /* Trade.swift in Sources */,
 				ACB9117820256B0300F14644 /* Market.swift in Sources */,

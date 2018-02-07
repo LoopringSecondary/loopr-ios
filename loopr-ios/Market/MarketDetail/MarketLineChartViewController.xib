@@ -12,7 +12,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MarketLineChartViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="fiveYearButton" destination="Elb-kH-ueS" id="eXM-VP-gri"/>
                 <outlet property="lineChartView" destination="yUV-TH-hi7" id="MqC-b1-Kcm"/>
+                <outlet property="oneDayButton" destination="TgI-cW-D6X" id="bWC-Wb-VkR"/>
+                <outlet property="oneMonthButton" destination="hlc-gX-pjN" id="Uy1-Gt-99a"/>
+                <outlet property="oneWeekButton" destination="dEp-Ic-eU6" id="INM-We-BqL"/>
+                <outlet property="oneYearButton" destination="GQF-02-sla" id="V58-D7-AtO"/>
+                <outlet property="threeMonthButton" destination="lGI-nG-90F" id="2hw-DO-W2o"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,38 +34,69 @@
                         <constraint firstAttribute="height" constant="360" id="5I8-LL-T82"/>
                     </constraints>
                 </view>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="6e7-CJ-755">
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6e7-CJ-755">
                     <rect key="frame" x="20" y="388" width="335" height="30"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgI-cW-D6X">
-                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgI-cW-D6X" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="47.5" height="30"/>
                             <state key="normal" title="1D"/>
+                            <connections>
+                                <action selector="pressedOneDayButton:" destination="-1" eventType="touchUpInside" id="YaV-JI-aj8"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hlc-gX-pjN">
-                            <rect key="frame" x="61" y="0.0" width="30" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEp-Ic-eU6" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
+                            <rect key="frame" x="57.5" y="0.0" width="47.5" height="30"/>
                             <state key="normal" title="1W"/>
+                            <connections>
+                                <action selector="pressedOneWeekButton:" destination="-1" eventType="touchUpInside" id="b4o-v4-Qxr"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGI-nG-90F">
-                            <rect key="frame" x="122" y="0.0" width="30" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hlc-gX-pjN" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
+                            <rect key="frame" x="115" y="0.0" width="47.5" height="30"/>
                             <state key="normal" title="1M"/>
+                            <connections>
+                                <action selector="pressedOneMonthButton:" destination="-1" eventType="touchUpInside" id="cWQ-Lc-ii5"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEp-Ic-eU6">
-                            <rect key="frame" x="183" y="0.0" width="30" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGI-nG-90F" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
+                            <rect key="frame" x="172.5" y="0.0" width="47.5" height="30"/>
                             <state key="normal" title="3M"/>
+                            <connections>
+                                <action selector="pressedThreeMonthButton:" destination="-1" eventType="touchUpInside" id="prC-Fw-1e2"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GQF-02-sla">
-                            <rect key="frame" x="244" y="0.0" width="30" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GQF-02-sla" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
+                            <rect key="frame" x="230" y="0.0" width="47.5" height="30"/>
                             <state key="normal" title="1Y"/>
+                            <connections>
+                                <action selector="pressedOneYearButton:" destination="-1" eventType="touchUpInside" id="OLC-Tb-Bpw"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Elb-kH-ueS">
-                            <rect key="frame" x="305" y="0.0" width="30" height="30"/>
-                            <state key="normal" title="All"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Elb-kH-ueS" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
+                            <rect key="frame" x="287.5" y="0.0" width="47.5" height="30"/>
+                            <state key="normal" title="5Y"/>
+                            <connections>
+                                <action selector="pressedFiveYearButton:" destination="-1" eventType="touchUpInside" id="4jN-9I-oBh"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="lYA-5F-KhN"/>
                     </constraints>
                 </stackView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4P0-1h-mzn">
+                    <rect key="frame" x="16" y="436" width="160" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Buy"/>
+                    <connections>
+                        <action selector="pressedBuyButton:" destination="-1" eventType="touchUpInside" id="nrr-Cw-cyx"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7VI-YY-yiK">
+                    <rect key="frame" x="199" y="436" width="160" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Sell"/>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yUV-TH-hi7" secondAttribute="trailing" constant="-8" id="Im8-7h-3sV"/>
