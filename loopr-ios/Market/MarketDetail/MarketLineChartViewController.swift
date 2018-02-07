@@ -88,7 +88,7 @@ class MarketLineChartViewController: UIViewController {
         set1.highlightLineDashLengths = [5, 2.5]
         set1.setColor(UIColor(red: 34/255, green: 53/255, blue: 89/255, alpha: 1))
         // set1.setCircleColor(.black)
-        set1.lineWidth = 2
+        set1.lineWidth = 1
         set1.circleRadius = 0
         set1.drawCircleHoleEnabled = false
         set1.valueFont = .systemFont(ofSize: 0)
@@ -103,10 +103,10 @@ class MarketLineChartViewController: UIViewController {
         
         set1.fillAlpha = 1
         set1.fill = Fill(linearGradient: gradient, angle: 90) //.linearGradient(gradient, angle: 90)
-        // set1.fillColor = UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)
+        set1.fillColor = UIColor(red: 115/255, green: 127/255, blue: 150/255, alpha: 1)
 
         // Enable the filled.
-        // set1.drawFilledEnabled = true
+        set1.drawFilledEnabled = true
         
         let data = LineChartData(dataSet: set1)
         

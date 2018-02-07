@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 class SettingViewController: UIViewController {
 
@@ -14,13 +15,22 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // playSampleLottieAnimation()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    func playSampleLottieAnimation() {
+        let animationView = LOTAnimationView(name: "button1")
+        animationView.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
+        self.view.addSubview(animationView)
+        animationView.play{ (finished) in
+            // Do Something
+        }
+    }
 
     /*
     // MARK: - Navigation
