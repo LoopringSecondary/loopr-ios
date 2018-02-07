@@ -27,7 +27,7 @@ class MarketDetailViewController: UIViewController {
         lineChartViewController.view.leadingAnchor.constraint(equalTo: mainScrollView.leadingAnchor, constant: 0.0).isActive = true
         lineChartViewController.view.leftAnchor.constraint(equalTo: mainScrollView.leftAnchor, constant: 0.0).isActive = true
         lineChartViewController.view.rightAnchor.constraint(equalTo: mainScrollView.rightAnchor, constant: 0.0).isActive = true
-        lineChartViewController.view.frame.size.height = 550
+        lineChartViewController.view.frame.size.height = 400
     }
 
     override func didReceiveMemoryWarning() {

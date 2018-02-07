@@ -22,18 +22,52 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yUV-TH-hi7" customClass="LineChartView" customModule="Charts">
-                    <rect key="frame" x="16" y="20" width="343" height="500"/>
+                    <rect key="frame" x="-8" y="20" width="391" height="360"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="500" id="5I8-LL-T82"/>
+                        <constraint firstAttribute="height" constant="360" id="5I8-LL-T82"/>
                     </constraints>
                 </view>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="6e7-CJ-755">
+                    <rect key="frame" x="20" y="388" width="335" height="30"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgI-cW-D6X">
+                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            <state key="normal" title="1D"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hlc-gX-pjN">
+                            <rect key="frame" x="61" y="0.0" width="30" height="30"/>
+                            <state key="normal" title="1W"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGI-nG-90F">
+                            <rect key="frame" x="122" y="0.0" width="30" height="30"/>
+                            <state key="normal" title="1M"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEp-Ic-eU6">
+                            <rect key="frame" x="183" y="0.0" width="30" height="30"/>
+                            <state key="normal" title="3M"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GQF-02-sla">
+                            <rect key="frame" x="244" y="0.0" width="30" height="30"/>
+                            <state key="normal" title="1Y"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Elb-kH-ueS">
+                            <rect key="frame" x="305" y="0.0" width="30" height="30"/>
+                            <state key="normal" title="All"/>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="lYA-5F-KhN"/>
+                    </constraints>
+                </stackView>
             </subviews>
-            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yUV-TH-hi7" secondAttribute="trailing" constant="16" id="Im8-7h-3sV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yUV-TH-hi7" secondAttribute="trailing" constant="-8" id="Im8-7h-3sV"/>
+                <constraint firstItem="6e7-CJ-755" firstAttribute="top" secondItem="yUV-TH-hi7" secondAttribute="bottom" constant="8" id="LKA-aM-aBQ"/>
                 <constraint firstItem="yUV-TH-hi7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="YnX-OI-PXE"/>
-                <constraint firstItem="yUV-TH-hi7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="dhr-vw-tk5"/>
+                <constraint firstItem="yUV-TH-hi7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="-8" id="dhr-vw-tk5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6e7-CJ-755" secondAttribute="trailing" constant="20" id="pNF-1k-qdw"/>
+                <constraint firstItem="6e7-CJ-755" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="tb6-Ch-vK5"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="120.5"/>
