@@ -23,7 +23,7 @@ class OrderDataManager {
     }
     
     func getOrdersFromServer() {
-        JSON_RPC.getOrders() { orders, error in
+        loopring_JSON_RPC.getOrders() { orders, error in
             self.orders = orders
         }
     }

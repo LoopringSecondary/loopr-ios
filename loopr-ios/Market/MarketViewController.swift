@@ -19,6 +19,8 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         marketTableView.dataSource = self
         marketTableView.delegate = self
         
+        self.navigationController?.navigationBar.topItem?.title = "Market"
+        
         MarketDataManager.shared.getMarketsFromServer { (markets, error) in
             guard error == nil else {
                 return
