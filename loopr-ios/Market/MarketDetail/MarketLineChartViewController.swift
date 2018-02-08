@@ -25,6 +25,13 @@ class MarketLineChartViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         drawLineChartView()
+        
+        oneDayButton.selected()
+        oneWeekButton.unselected()
+        oneMonthButton.unselected()
+        threeMonthButton.unselected()
+        oneYearButton.unselected()
+        fiveYearButton.unselected()
     }
 
     override func didReceiveMemoryWarning() {

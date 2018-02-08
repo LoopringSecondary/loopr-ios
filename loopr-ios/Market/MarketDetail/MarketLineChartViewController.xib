@@ -84,24 +84,37 @@
                         <constraint firstAttribute="height" constant="30" id="lYA-5F-KhN"/>
                     </constraints>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4P0-1h-mzn">
-                    <rect key="frame" x="16" y="436" width="160" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Buy"/>
-                    <connections>
-                        <action selector="pressedBuyButton:" destination="-1" eventType="touchUpInside" id="nrr-Cw-cyx"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7VI-YY-yiK">
-                    <rect key="frame" x="199" y="436" width="160" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Sell"/>
-                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6TC-nB-pso">
+                    <rect key="frame" x="10" y="428" width="355" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4P0-1h-mzn">
+                            <rect key="frame" x="0.0" y="0.0" width="172.5" height="40"/>
+                            <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Buy"/>
+                            <connections>
+                                <action selector="pressedBuyButton:" destination="-1" eventType="touchUpInside" id="nrr-Cw-cyx"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7VI-YY-yiK">
+                            <rect key="frame" x="182.5" y="0.0" width="172.5" height="40"/>
+                            <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Sell"/>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="bBF-fL-JcF"/>
+                    </constraints>
+                </stackView>
             </subviews>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yUV-TH-hi7" secondAttribute="trailing" constant="-8" id="Im8-7h-3sV"/>
                 <constraint firstItem="6e7-CJ-755" firstAttribute="top" secondItem="yUV-TH-hi7" secondAttribute="bottom" constant="8" id="LKA-aM-aBQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6TC-nB-pso" secondAttribute="trailing" constant="10" id="UZB-y2-iKu"/>
                 <constraint firstItem="yUV-TH-hi7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="YnX-OI-PXE"/>
+                <constraint firstItem="6TC-nB-pso" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="dPQ-mr-Ccl"/>
+                <constraint firstItem="6TC-nB-pso" firstAttribute="top" secondItem="6e7-CJ-755" secondAttribute="bottom" constant="10" id="dUb-Xm-Bjp"/>
                 <constraint firstItem="yUV-TH-hi7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="-8" id="dhr-vw-tk5"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6e7-CJ-755" secondAttribute="trailing" constant="20" id="pNF-1k-qdw"/>
                 <constraint firstItem="6e7-CJ-755" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="tb6-Ch-vK5"/>
