@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AssetDataManager.shared.generateMockData();
         
         self.window?.backgroundColor = UIColor.white
-
         return true
     }
     
