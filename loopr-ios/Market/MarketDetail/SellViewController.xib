@@ -15,6 +15,11 @@
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="Us5-6M-wAa">
+            <connections>
+                <action selector="handleGesture:" destination="-1" id="A9r-QU-dOy"/>
+            </connections>
+        </panGestureRecognizer>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -49,6 +54,9 @@
                 <constraint firstItem="NJT-CC-RpB" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ozj-Fj-bMB"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="Us5-6M-wAa" appends="YES" id="fqa-ob-xiY"/>
+            </connections>
         </view>
     </objects>
 </document>

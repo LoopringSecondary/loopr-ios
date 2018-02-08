@@ -20,6 +20,8 @@ class MarketLineChartViewController: UIViewController {
     @IBOutlet weak var oneYearButton: CustomUIButtonForUIToolbar!
     @IBOutlet weak var fiveYearButton: CustomUIButtonForUIToolbar!
     
+    let interactor = Interactor()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -188,6 +190,9 @@ class MarketLineChartViewController: UIViewController {
         print("pressedBuyButton")
         
         let buyViewController = BuyViewController()
+        buyViewController.transitioningDelegate = self
+        buyViewController.interactor = interactor
+        
         self.present(buyViewController, animated: true) {
             
         }
@@ -195,6 +200,9 @@ class MarketLineChartViewController: UIViewController {
     
     @IBAction func pressedSellButton(_ sender: Any) {
         let sellViewController = SellViewController()
+        sellViewController.transitioningDelegate = self
+        sellViewController.interactor = interactor
+        
         self.present(sellViewController, animated: true) {
             
         }
@@ -209,4 +217,14 @@ class MarketLineChartViewController: UIViewController {
     }
     */
 
+}
+
+extension MarketLineChartViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return DismissAnimator()
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactor.hasStarted ? interactor : nil
+    }
 }

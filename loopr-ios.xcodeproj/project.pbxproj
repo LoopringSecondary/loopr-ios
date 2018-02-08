@@ -25,6 +25,8 @@
 		ACB5DD8B202BF23100140A09 /* BuyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD89202BF23100140A09 /* BuyViewController.xib */; };
 		ACB5DD8E202C048E00140A09 /* SellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD8C202C048E00140A09 /* SellViewController.swift */; };
 		ACB5DD8F202C048E00140A09 /* SellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD8D202C048E00140A09 /* SellViewController.xib */; };
+		ACB5DD91202C06FF00140A09 /* DismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */; };
+		ACB5DD93202C09DC00140A09 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD92202C09DC00140A09 /* Interactor.swift */; };
 		ACB911522024254F00F14644 /* WalletNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911512024254F00F14644 /* WalletNavigationViewController.swift */; };
 		ACB911552024260E00F14644 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911532024260E00F14644 /* WalletViewController.swift */; };
 		ACB911562024260E00F14644 /* WalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB911542024260E00F14644 /* WalletViewController.xib */; };
@@ -114,6 +116,8 @@
 		ACB5DD89202BF23100140A09 /* BuyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyViewController.xib; sourceTree = "<group>"; };
 		ACB5DD8C202C048E00140A09 /* SellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellViewController.swift; sourceTree = "<group>"; };
 		ACB5DD8D202C048E00140A09 /* SellViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SellViewController.xib; sourceTree = "<group>"; };
+		ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAnimator.swift; sourceTree = "<group>"; };
+		ACB5DD92202C09DC00140A09 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		ACB911512024254F00F14644 /* WalletNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletNavigationViewController.swift; sourceTree = "<group>"; };
 		ACB911532024260E00F14644 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		ACB911542024260E00F14644 /* WalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletViewController.xib; sourceTree = "<group>"; };
@@ -302,6 +306,8 @@
 			isa = PBXGroup;
 			children = (
 				ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */,
+				ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */,
+				ACB5DD92202C09DC00140A09 /* Interactor.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -723,7 +729,9 @@
 				ACB911842026388700F14644 /* SettingViewController.swift in Sources */,
 				ACB911642024504E00F14644 /* Order.swift in Sources */,
 				ACB91171202557B100F14644 /* MarketViewController.swift in Sources */,
+				ACB5DD93202C09DC00140A09 /* Interactor.swift in Sources */,
 				ACB9118C20266A9C00F14644 /* AssetDetailViewController.swift in Sources */,
+				ACB5DD91202C06FF00140A09 /* DismissAnimator.swift in Sources */,
 				AC01A2412022D94600FE8317 /* PortfolioNavigationController.swift in Sources */,
 				ACB9119F202967A500F14644 /* OrderStatus.swift in Sources */,
 				ACB9117520255A6600F14644 /* MarketTableViewCell.swift in Sources */,
