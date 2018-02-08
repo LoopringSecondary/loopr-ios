@@ -188,12 +188,17 @@ class MarketLineChartViewController: UIViewController {
         print("pressedBuyButton")
         
         let buyViewController = BuyViewController()
-        
         self.present(buyViewController, animated: true) {
             
         }
     }
     
+    @IBAction func pressedSellButton(_ sender: Any) {
+        let sellViewController = SellViewController()
+        self.present(sellViewController, animated: true) {
+            
+        }
+    }
     /*
     // MARK: - Navigation
 

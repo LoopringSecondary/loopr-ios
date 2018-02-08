@@ -101,6 +101,9 @@
                             <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Sell"/>
+                            <connections>
+                                <action selector="pressedSellButton:" destination="-1" eventType="touchUpInside" id="t7K-cc-ggm"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
