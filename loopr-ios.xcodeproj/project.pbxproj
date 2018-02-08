@@ -27,6 +27,7 @@
 		ACB5DD8F202C048E00140A09 /* SellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD8D202C048E00140A09 /* SellViewController.xib */; };
 		ACB5DD91202C06FF00140A09 /* DismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */; };
 		ACB5DD93202C09DC00140A09 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD92202C09DC00140A09 /* Interactor.swift */; };
+		ACB5DD95202C434B00140A09 /* eth_JSON_RPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD94202C434B00140A09 /* eth_JSON_RPC.swift */; };
 		ACB911522024254F00F14644 /* WalletNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911512024254F00F14644 /* WalletNavigationViewController.swift */; };
 		ACB911552024260E00F14644 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911532024260E00F14644 /* WalletViewController.swift */; };
 		ACB911562024260E00F14644 /* WalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB911542024260E00F14644 /* WalletViewController.xib */; };
@@ -118,6 +119,7 @@
 		ACB5DD8D202C048E00140A09 /* SellViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SellViewController.xib; sourceTree = "<group>"; };
 		ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAnimator.swift; sourceTree = "<group>"; };
 		ACB5DD92202C09DC00140A09 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
+		ACB5DD94202C434B00140A09 /* eth_JSON_RPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eth_JSON_RPC.swift; sourceTree = "<group>"; };
 		ACB911512024254F00F14644 /* WalletNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletNavigationViewController.swift; sourceTree = "<group>"; };
 		ACB911532024260E00F14644 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		ACB911542024260E00F14644 /* WalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletViewController.xib; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 			children = (
 				ACB9119420278A4000F14644 /* Request.swift */,
 				ACB911982027F65800F14644 /* loopring_JSON_RPC.swift */,
+				ACB5DD94202C434B00140A09 /* eth_JSON_RPC.swift */,
 			);
 			path = RelayAPI;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				AC01A2442022D9BE00FE8317 /* PortfolioViewController.swift in Sources */,
 				ACB5DD8A202BF23100140A09 /* BuyViewController.swift in Sources */,
 				ACB9119520278A4000F14644 /* Request.swift in Sources */,
+				ACB5DD95202C434B00140A09 /* eth_JSON_RPC.swift in Sources */,
 				ACB9117C20256BBA00F14644 /* TradingPair.swift in Sources */,
 				C8BF95A62027A10E00343B9A /* GenerateWalletViewController.swift in Sources */,
 				ACB5DD8E202C048E00140A09 /* SellViewController.swift in Sources */,
