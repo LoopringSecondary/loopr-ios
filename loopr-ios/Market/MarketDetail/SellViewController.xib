@@ -6,12 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SellViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="keyboardView" destination="0kp-MD-ulc" id="Vao-Re-uh5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -46,17 +48,28 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0kp-MD-ulc" customClass="DefaultNumericKeyboard" customModule="loopr_ios" customModuleProvider="target">
+                    <rect key="frame" x="10" y="302" width="355" height="355"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="0kp-MD-ulc" secondAttribute="height" id="0k7-Zk-3YY"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="NJT-CC-RpB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7mI-zM-3pS"/>
                 <constraint firstItem="NJT-CC-RpB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="X8Q-kN-5BC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="0kp-MD-ulc" secondAttribute="bottom" constant="10" id="n8m-ly-f6a"/>
                 <constraint firstItem="NJT-CC-RpB" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ozj-Fj-bMB"/>
+                <constraint firstItem="0kp-MD-ulc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="uOM-5Q-f4i"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0kp-MD-ulc" secondAttribute="trailing" constant="10" id="yT9-Ke-EUF"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <connections>
                 <outletCollection property="gestureRecognizers" destination="Us5-6M-wAa" appends="YES" id="fqa-ob-xiY"/>
             </connections>
+            <point key="canvasLocation" x="39.5" y="53.5"/>
         </view>
     </objects>
 </document>
