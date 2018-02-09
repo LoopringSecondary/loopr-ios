@@ -6,12 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BuyViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="keyboardView" destination="Mwp-fI-bWc" id="GoI-FK-Gt4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -46,12 +48,22 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mwp-fI-bWc" customClass="DefaultNumericKeyboard" customModule="loopr_ios" customModuleProvider="target">
+                    <rect key="frame" x="10" y="302" width="355" height="355"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Mwp-fI-bWc" secondAttribute="height" id="HSk-lu-7lf"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Mwp-fI-bWc" secondAttribute="bottom" constant="10" id="AAf-Bu-viS"/>
                 <constraint firstItem="hAR-Zg-93m" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="F85-UD-6a0"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Mwp-fI-bWc" secondAttribute="trailing" constant="10" id="MkZ-SG-dhO"/>
                 <constraint firstItem="hAR-Zg-93m" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Rrs-eX-tRN"/>
                 <constraint firstItem="hAR-Zg-93m" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="hsd-VD-xtc"/>
+                <constraint firstItem="Mwp-fI-bWc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="t1A-c0-7Aa"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <connections>

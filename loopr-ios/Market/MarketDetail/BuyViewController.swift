@@ -10,18 +10,29 @@ import UIKit
 
 class BuyViewController: UIViewController {
 
-    var interactor:Interactor? = nil
+    var interactor: Interactor? = nil
+    
+    @IBOutlet weak var keyboardView: DefaultNumericKeyboard!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        
+        keyboardView.delegate = self
+        keyboardView.translatesAutoresizingMaskIntoConstraints = false
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        // numericKeyboard.invalidateLayout()
     }
     
     @IBAction func pressedCloseButton(_ sender: Any) {
@@ -70,7 +81,6 @@ class BuyViewController: UIViewController {
     }
     
     
-
     /*
     // MARK: - Navigation
 
@@ -81,4 +91,17 @@ class BuyViewController: UIViewController {
     }
     */
 
+}
+
+extension BuyViewController: NumericKeyboardDelegate {
+    
+    func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemTapped item: NumericKeyboardItem, atPosition position: Position) {
+        print("pressed keyboard: (\(position.row), \(position.column))")
+        
+        switch (position.row, position.column) {
+            default:
+                return
+        }
+    }
+    
 }
