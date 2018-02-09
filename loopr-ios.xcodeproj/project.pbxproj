@@ -17,6 +17,7 @@
 		AC798E4F2022B93A0071D477 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC798E4D2022B93A0071D477 /* LaunchScreen.storyboard */; };
 		AC798E5A2022B93B0071D477 /* loopring_JSON_RPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E592022B93B0071D477 /* loopring_JSON_RPCTests.swift */; };
 		AC798E652022B93B0071D477 /* loopr_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E642022B93B0071D477 /* loopr_iosUITests.swift */; };
+		AC9280DD202E0F9F0009B574 /* eth_JSON_RPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280DC202E0F9F0009B574 /* eth_JSON_RPCTests.swift */; };
 		ACB5DD7C202A203900140A09 /* MarketLineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD7A202A203900140A09 /* MarketLineChartViewController.swift */; };
 		ACB5DD7D202A203900140A09 /* MarketLineChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD7B202A203900140A09 /* MarketLineChartViewController.xib */; };
 		ACB5DD80202AC26000140A09 /* button1.json in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD7F202AC26000140A09 /* button1.json */; };
@@ -117,6 +118,7 @@
 		AC798E602022B93B0071D477 /* loopr-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "loopr-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC798E642022B93B0071D477 /* loopr_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loopr_iosUITests.swift; sourceTree = "<group>"; };
 		AC798E662022B93B0071D477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC9280DC202E0F9F0009B574 /* eth_JSON_RPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eth_JSON_RPCTests.swift; sourceTree = "<group>"; };
 		ACB5DD7A202A203900140A09 /* MarketLineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketLineChartViewController.swift; sourceTree = "<group>"; };
 		ACB5DD7B202A203900140A09 /* MarketLineChartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketLineChartViewController.xib; sourceTree = "<group>"; };
 		ACB5DD7F202AC26000140A09 /* button1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = button1.json; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 		AC798E582022B93B0071D477 /* loopr-iosTests */ = {
 			isa = PBXGroup;
 			children = (
+				AC9280DC202E0F9F0009B574 /* eth_JSON_RPCTests.swift */,
 				AC798E592022B93B0071D477 /* loopring_JSON_RPCTests.swift */,
 				AC798E5B2022B93B0071D477 /* Info.plist */,
 			);
@@ -812,6 +815,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC798E5A2022B93B0071D477 /* loopring_JSON_RPCTests.swift in Sources */,
+				AC9280DD202E0F9F0009B574 /* eth_JSON_RPCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
