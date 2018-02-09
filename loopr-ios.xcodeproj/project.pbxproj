@@ -32,7 +32,10 @@
 		ACB5DD9A202D5B7100140A09 /* DefaultNumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD99202D5B7100140A09 /* DefaultNumericKeyboard.swift */; };
 		ACB5DD9C202D5B8000140A09 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD9B202D5B8000140A09 /* Cell.swift */; };
 		ACB5DD9E202D5B8D00140A09 /* NumericKeyboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD9D202D5B8D00140A09 /* NumericKeyboardItem.swift */; };
-		ACB5DDA0202D5B9900140A09 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD9F202D5B9900140A09 /* Extensions.swift */; };
+		ACB5DDA0202D5B9900140A09 /* CGSizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD9F202D5B9900140A09 /* CGSizeExtension.swift */; };
+		ACB5DDA2202D6F9400140A09 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DDA1202D6F9400140A09 /* UIViewExtension.swift */; };
+		ACB5DDA4202D6FC300140A09 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DDA3202D6FC300140A09 /* UIImageExtension.swift */; };
+		ACB5DDA6202D704200140A09 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DDA5202D704200140A09 /* UIButtonExtension.swift */; };
 		ACB911522024254F00F14644 /* WalletNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911512024254F00F14644 /* WalletNavigationViewController.swift */; };
 		ACB911552024260E00F14644 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911532024260E00F14644 /* WalletViewController.swift */; };
 		ACB911562024260E00F14644 /* WalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB911542024260E00F14644 /* WalletViewController.xib */; };
@@ -129,7 +132,10 @@
 		ACB5DD99202D5B7100140A09 /* DefaultNumericKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNumericKeyboard.swift; sourceTree = "<group>"; };
 		ACB5DD9B202D5B8000140A09 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		ACB5DD9D202D5B8D00140A09 /* NumericKeyboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeyboardItem.swift; sourceTree = "<group>"; };
-		ACB5DD9F202D5B9900140A09 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		ACB5DD9F202D5B9900140A09 /* CGSizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeExtension.swift; sourceTree = "<group>"; };
+		ACB5DDA1202D6F9400140A09 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		ACB5DDA3202D6FC300140A09 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		ACB5DDA5202D704200140A09 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		ACB911512024254F00F14644 /* WalletNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletNavigationViewController.swift; sourceTree = "<group>"; };
 		ACB911532024260E00F14644 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		ACB911542024260E00F14644 /* WalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletViewController.xib; sourceTree = "<group>"; };
@@ -317,11 +323,11 @@
 		ACB5DD85202AD74D00140A09 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				ACB5DDA7202D712F00140A09 /* Extensions */,
 				ACB5DD96202D5A6D00140A09 /* NumericKeyboard */,
 				ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */,
 				ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */,
 				ACB5DD92202C09DC00140A09 /* Interactor.swift */,
-				ACB5DD9F202D5B9900140A09 /* Extensions.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -335,6 +341,17 @@
 				ACB5DD9D202D5B8D00140A09 /* NumericKeyboardItem.swift */,
 			);
 			path = NumericKeyboard;
+			sourceTree = "<group>";
+		};
+		ACB5DDA7202D712F00140A09 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ACB5DD9F202D5B9900140A09 /* CGSizeExtension.swift */,
+				ACB5DDA5202D704200140A09 /* UIButtonExtension.swift */,
+				ACB5DDA1202D6F9400140A09 /* UIViewExtension.swift */,
+				ACB5DDA3202D6FC300140A09 /* UIImageExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		ACB9115C20242D8900F14644 /* Portfolio */ = {
@@ -744,6 +761,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC01A2442022D9BE00FE8317 /* PortfolioViewController.swift in Sources */,
+				ACB5DDA6202D704200140A09 /* UIButtonExtension.swift in Sources */,
 				ACB5DD8A202BF23100140A09 /* BuyViewController.swift in Sources */,
 				ACB9119520278A4000F14644 /* Request.swift in Sources */,
 				ACB5DD95202C434B00140A09 /* eth_JSON_RPC.swift in Sources */,
@@ -761,13 +779,14 @@
 				ACB9118C20266A9C00F14644 /* AssetDetailViewController.swift in Sources */,
 				ACB5DD91202C06FF00140A09 /* DismissAnimator.swift in Sources */,
 				AC01A2412022D94600FE8317 /* PortfolioNavigationController.swift in Sources */,
+				ACB5DDA2202D6F9400140A09 /* UIViewExtension.swift in Sources */,
 				ACB9119F202967A500F14644 /* OrderStatus.swift in Sources */,
 				ACB9117520255A6600F14644 /* MarketTableViewCell.swift in Sources */,
 				ACB5DD9E202D5B8D00140A09 /* NumericKeyboardItem.swift in Sources */,
 				ACB9119020266EC200F14644 /* AddAssetViewController.swift in Sources */,
 				ACB5DD9A202D5B7100140A09 /* DefaultNumericKeyboard.swift in Sources */,
 				C8BF95B02027AC9400343B9A /* SetupViewController.swift in Sources */,
-				ACB5DDA0202D5B9900140A09 /* Extensions.swift in Sources */,
+				ACB5DDA0202D5B9900140A09 /* CGSizeExtension.swift in Sources */,
 				ACB9115A20242B9D00F14644 /* AssetTableViewCell.swift in Sources */,
 				ACB9117A20256B3C00F14644 /* MarketDataManager.swift in Sources */,
 				ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */,
@@ -777,6 +796,7 @@
 				ACB911692025472A00F14644 /* AssetDataManager.swift in Sources */,
 				ACB911A120296AE500F14644 /* OrderDataManager.swift in Sources */,
 				ACB911992027F65800F14644 /* loopring_JSON_RPC.swift in Sources */,
+				ACB5DDA4202D6FC300140A09 /* UIImageExtension.swift in Sources */,
 				AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */,
 				ACB5DD7C202A203900140A09 /* MarketLineChartViewController.swift in Sources */,
 				C8BF959D202696A900343B9A /* MainTabController.swift in Sources */,
