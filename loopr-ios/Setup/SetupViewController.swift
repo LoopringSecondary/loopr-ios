@@ -37,6 +37,12 @@ class SetupViewController: UIViewController {
         generateWalletViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(generateWalletViewController, animated: true)
     }
+    @IBAction func SkipButtonPressed(_ sender: Any) {
+        //Prevent multiple instanes of WalletVC existing.
+        //Temporary implementation. 
+        let  viewController =  self.navigationController?.viewControllers.filter({$0 is WalletViewController}).first
+        self.navigationController?.popToViewController(viewController!, animated: true)
+    }
     
     /*
     // MARK: - Navigation

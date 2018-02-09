@@ -27,14 +27,9 @@ class WalletNavigationViewController: UINavigationController {
 
     //Present Wallet UI if wallet is present
     func showWallet(){
-        if walletExists == true {
             let viewController = WalletViewController(nibName: nil, bundle: nil)
-            self.setViewControllers([viewController], animated: false)
-        }else{
-            let viewController = SetupViewController(nibName: nil, bundle: nil)
-            self.setViewControllers([viewController], animated: false)
-            
-        }
+            let setupViewController = SetupViewController(nibName: nil, bundle: nil)
+            self.setViewControllers([viewController,setupViewController], animated: false)
     }
     
     
