@@ -36,11 +36,13 @@
                     <items>
                         <navigationItem title="Market Sell" id="oh6-pa-2DA">
                             <barButtonItem key="leftBarButtonItem" systemItem="stop" id="hsw-b3-wVV">
+                                <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="pressedCloseButton:" destination="-1" id="TQm-oM-nFE"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem key="rightBarButtonItem" title="Order Types" id="byz-Gj-8H8">
+                                <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="pressedOrderTypesButton:" destination="-1" id="QVo-jX-0gb"/>
                                 </connections>

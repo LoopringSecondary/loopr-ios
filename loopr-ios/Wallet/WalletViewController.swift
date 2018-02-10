@@ -51,9 +51,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if (cell == nil) {
             let nib = Bundle.main.loadNibNamed("AssetTableViewCell", owner: self, options: nil)
             cell = nib![0] as? AssetTableViewCell
-            
-            // TODO: Tried to have a better animation when the user clicks the cell
-            cell?.selectionStyle = .none
         }
         
         // Configure the cell...
@@ -63,6 +60,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let assetDetailViewController = AssetDetailViewController();
         let asset = AssetDataManager.shared.getAssets()[indexPath.row]
         assetDetailViewController.asset = asset

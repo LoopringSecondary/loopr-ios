@@ -21,6 +21,7 @@
 		AC9280E1202EC53D0009B574 /* TradeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280E0202EC53D0009B574 /* TradeNavigationViewController.swift */; };
 		AC9280E4202EC5810009B574 /* TradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280E2202EC5810009B574 /* TradeViewController.swift */; };
 		AC9280E5202EC5810009B574 /* TradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9280E3202EC5810009B574 /* TradeViewController.xib */; };
+		AC9280E7202F5A010009B574 /* UIStyleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280E6202F5A010009B574 /* UIStyleConfig.swift */; };
 		ACB5DD7C202A203900140A09 /* MarketLineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD7A202A203900140A09 /* MarketLineChartViewController.swift */; };
 		ACB5DD7D202A203900140A09 /* MarketLineChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD7B202A203900140A09 /* MarketLineChartViewController.xib */; };
 		ACB5DD80202AC26000140A09 /* button1.json in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD7F202AC26000140A09 /* button1.json */; };
@@ -125,6 +126,7 @@
 		AC9280E0202EC53D0009B574 /* TradeNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeNavigationViewController.swift; sourceTree = "<group>"; };
 		AC9280E2202EC5810009B574 /* TradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewController.swift; sourceTree = "<group>"; };
 		AC9280E3202EC5810009B574 /* TradeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeViewController.xib; sourceTree = "<group>"; };
+		AC9280E6202F5A010009B574 /* UIStyleConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStyleConfig.swift; sourceTree = "<group>"; };
 		ACB5DD7A202A203900140A09 /* MarketLineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketLineChartViewController.swift; sourceTree = "<group>"; };
 		ACB5DD7B202A203900140A09 /* MarketLineChartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketLineChartViewController.xib; sourceTree = "<group>"; };
 		ACB5DD7F202AC26000140A09 /* button1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = button1.json; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				ACB5DD85202AD74D00140A09 /* UIComponents */,
+				AC9280E6202F5A010009B574 /* UIStyleConfig.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -805,6 +808,7 @@
 				AC9280E1202EC53D0009B574 /* TradeNavigationViewController.swift in Sources */,
 				AC01A2412022D94600FE8317 /* PortfolioNavigationController.swift in Sources */,
 				ACB5DDA2202D6F9400140A09 /* UIViewExtension.swift in Sources */,
+				AC9280E7202F5A010009B574 /* UIStyleConfig.swift in Sources */,
 				ACB9119F202967A500F14644 /* OrderStatus.swift in Sources */,
 				ACB9117520255A6600F14644 /* MarketTableViewCell.swift in Sources */,
 				ACB5DD9E202D5B8D00140A09 /* NumericKeyboardItem.swift in Sources */,

@@ -25,10 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = UIColor.white
         
         let colorView = UIView()
-        colorView.backgroundColor = UIColor(white: 0.1, alpha: 0.5)
+        colorView.backgroundColor = tableCellSelectedBackgroundColor
         UITableViewCell.appearance().selectedBackgroundView = colorView
 
-        UITabBar.appearance().tintColor = UIColor(white: 0, alpha: 1)
+        UITabBar.appearance().tintColor = tabBarTintColor
         
         return true
     }

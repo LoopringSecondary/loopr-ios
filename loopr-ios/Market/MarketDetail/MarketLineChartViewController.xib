@@ -39,6 +39,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgI-cW-D6X" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="47.5" height="30"/>
+                            <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="1D"/>
                             <connections>
                                 <action selector="pressedOneDayButton:" destination="-1" eventType="touchUpInside" id="YaV-JI-aj8"/>
@@ -46,6 +47,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEp-Ic-eU6" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
                             <rect key="frame" x="57.5" y="0.0" width="47.5" height="30"/>
+                            <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="1W"/>
                             <connections>
                                 <action selector="pressedOneWeekButton:" destination="-1" eventType="touchUpInside" id="b4o-v4-Qxr"/>
@@ -53,6 +55,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hlc-gX-pjN" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
                             <rect key="frame" x="115" y="0.0" width="47.5" height="30"/>
+                            <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="1M"/>
                             <connections>
                                 <action selector="pressedOneMonthButton:" destination="-1" eventType="touchUpInside" id="cWQ-Lc-ii5"/>
@@ -60,6 +63,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGI-nG-90F" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
                             <rect key="frame" x="172.5" y="0.0" width="47.5" height="30"/>
+                            <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="3M"/>
                             <connections>
                                 <action selector="pressedThreeMonthButton:" destination="-1" eventType="touchUpInside" id="prC-Fw-1e2"/>
@@ -67,6 +71,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GQF-02-sla" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
                             <rect key="frame" x="230" y="0.0" width="47.5" height="30"/>
+                            <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="1Y"/>
                             <connections>
                                 <action selector="pressedOneYearButton:" destination="-1" eventType="touchUpInside" id="OLC-Tb-Bpw"/>
@@ -74,6 +79,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Elb-kH-ueS" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
                             <rect key="frame" x="287.5" y="0.0" width="47.5" height="30"/>
+                            <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="5Y"/>
                             <connections>
                                 <action selector="pressedFiveYearButton:" destination="-1" eventType="touchUpInside" id="4jN-9I-oBh"/>
@@ -89,7 +95,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4P0-1h-mzn">
                             <rect key="frame" x="0.0" y="0.0" width="172.5" height="40"/>
-                            <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Buy"/>
                             <connections>
@@ -98,7 +104,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7VI-YY-yiK">
                             <rect key="frame" x="182.5" y="0.0" width="172.5" height="40"/>
-                            <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Sell"/>
                             <connections>

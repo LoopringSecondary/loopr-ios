@@ -83,7 +83,7 @@ class MarketLineChartViewController: UIViewController {
         
         // lineChartView.animate(xAxisDuration: 2.5)
         
-        setDataCount(50, range: 10)
+        setDataCount(30, range: 10)
         
         for set in lineChartView.data!.dataSets as! [LineChartDataSet] {
             set.mode = (set.mode == .cubicBezier) ? .horizontalBezier : .cubicBezier
@@ -119,7 +119,7 @@ class MarketLineChartViewController: UIViewController {
         
         set1.fillAlpha = 1
         set1.fill = Fill(linearGradient: gradient, angle: 90) //.linearGradient(gradient, angle: 90)
-        set1.fillColor = UIColor(red: 115/255, green: 127/255, blue: 150/255, alpha: 1)
+        set1.fillColor = lineChartFillColor // UIColor(red: 115/255, green: 127/255, blue: 150/255, alpha: 1)
 
         // Enable the filled.
         set1.drawFilledEnabled = true

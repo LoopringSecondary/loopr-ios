@@ -19,10 +19,12 @@ class CustomUIButtonForUIToolbar: UIButton {
         self.clipsToBounds = true
         // self.setTitleColor(UIColor.blue, for: .normal)
         // self.setTitleColor(UIColor.white, for: .highlighted)
+        
+        self.tintColor = defaultTintColor
     }
     
     func selected() {
-        self.backgroundColor = UIColor.blue
+        self.backgroundColor = defaultTintColor
         self.setTitleColor(UIColor.white, for: .normal)
     }
     
