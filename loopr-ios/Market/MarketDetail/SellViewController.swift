@@ -12,11 +12,16 @@ class SellViewController: UIViewController {
     
     var interactor:Interactor? = nil
 
+    @IBOutlet weak var keyboardView: DefaultNumericKeyboard!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        
+        keyboardView.delegate = self
+        keyboardView.translatesAutoresizingMaskIntoConstraints = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,3 +85,18 @@ class SellViewController: UIViewController {
     */
 
 }
+
+
+extension SellViewController: NumericKeyboardDelegate {
+    
+    func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemTapped item: NumericKeyboardItem, atPosition position: Position) {
+        print("pressed keyboard: (\(position.row), \(position.column))")
+        
+        switch (position.row, position.column) {
+        default:
+            return
+        }
+    }
+    
+}
+

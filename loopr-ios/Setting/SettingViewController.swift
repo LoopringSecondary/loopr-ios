@@ -16,6 +16,8 @@ class SettingViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         // playSampleLottieAnimation()
+        
+        self.navigationController?.navigationBar.topItem?.title = "Settings"
     }
 
     override func didReceiveMemoryWarning() {

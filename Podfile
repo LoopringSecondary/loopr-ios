@@ -9,6 +9,7 @@ target 'loopr-ios' do
   pod 'Charts'
   pod 'SwiftyJSON'
   pod 'lottie-ios'
+  pod 'pop'
 
   target 'loopr-iosTests' do
     inherit! :search_paths
