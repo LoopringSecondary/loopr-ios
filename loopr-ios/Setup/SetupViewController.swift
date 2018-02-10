@@ -39,9 +39,11 @@ class SetupViewController: UIViewController {
     }
     @IBAction func SkipButtonPressed(_ sender: Any) {
         //Prevent multiple instanes of WalletVC existing.
-        //Temporary implementation. 
+        //Temporary implementation.
+        //Add back the nav bar
         let  viewController =  self.navigationController?.viewControllers.filter({$0 is WalletViewController}).first
         self.navigationController?.popToViewController(viewController!, animated: true)
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     /*
