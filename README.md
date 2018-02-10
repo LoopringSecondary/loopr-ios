@@ -10,6 +10,7 @@ Please refer
 
 - No storyboard. It's ok to use xib in the early development.
 - [Lottie](https://github.com/airbnb/lottie-ios): an iOS library to natively render After Effects vector animations
+- [Pop](https://github.com/facebook/pop): An extensible iOS and OS X animation library, useful for physics-based interactions.
 
 #### start
 1. Install cocoapods ```sudo gem install cocoapods```
