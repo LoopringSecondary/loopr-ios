@@ -53,11 +53,8 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if (cell == nil) {
             let nib = Bundle.main.loadNibNamed("MarketTableViewCell", owner: self, options: nil)
             cell = nib![0] as? MarketTableViewCell
-            
-            // TODO: Tried to have a better animation when the user clicks the cell
-            cell?.selectionStyle = .none
         }
-        
+
         // Configure the cell...
         cell?.market = MarketDataManager.shared.getMarkets()[indexPath.row]
         cell?.update()

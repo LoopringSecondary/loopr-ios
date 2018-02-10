@@ -21,7 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Generate mock data
         AssetDataManager.shared.generateMockData();
         
+        // Setup color in the app.
         self.window?.backgroundColor = UIColor.white
+        
+        let colorView = UIView()
+        colorView.backgroundColor = UIColor(white: 0.1, alpha: 0.5)
+        
+        // use UITableViewCell.appearance() to configure
+        // the default appearance of all UITableViewCells in your app
+        UITableViewCell.appearance().selectedBackgroundView = colorView
+        
         return true
     }
     
