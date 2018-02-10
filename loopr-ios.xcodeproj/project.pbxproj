@@ -259,7 +259,6 @@
 		AC798E412022B93A0071D477 /* loopr-ios */ = {
 			isa = PBXGroup;
 			children = (
-				AC9280DE202EC50C0009B574 /* New Group */,
 				ACB5DD84202AD74200140A09 /* Common */,
 				ACB9119320278A0E00F14644 /* RelayAPI */,
 				ACB911672025470B00F14644 /* DataManagers */,
@@ -298,13 +297,6 @@
 				AC798E662022B93B0071D477 /* Info.plist */,
 			);
 			path = "loopr-iosUITests";
-			sourceTree = "<group>";
-		};
-		AC9280DE202EC50C0009B574 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		AC9280DF202EC5130009B574 /* Trade */ = {
