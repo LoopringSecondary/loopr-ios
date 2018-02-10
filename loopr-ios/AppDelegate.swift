@@ -26,10 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let colorView = UIView()
         colorView.backgroundColor = UIColor(white: 0.1, alpha: 0.5)
-        
-        // use UITableViewCell.appearance() to configure
-        // the default appearance of all UITableViewCells in your app
         UITableViewCell.appearance().selectedBackgroundView = colorView
+
+        UITabBar.appearance().tintColor = UIColor(white: 0, alpha: 1)
         
         return true
     }

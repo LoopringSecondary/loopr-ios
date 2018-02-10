@@ -23,6 +23,20 @@
             </objects>
             <point key="canvasLocation" x="750" y="-1062"/>
         </scene>
+        <!--Trade-->
+        <scene sceneID="kat-Dv-4gt">
+            <objects>
+                <navigationController id="Yqy-5f-6sG" customClass="TradeNavigationViewController" customModule="loopr_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Trade" id="omp-e1-QTw"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YeD-Z8-rDy">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ei6-gs-Um6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="750" y="-1846"/>
+        </scene>
         <!--Market-->
         <scene sceneID="eBG-PF-gcM">
             <objects>
@@ -41,15 +55,16 @@
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController storyboardIdentifier="tabBar" id="49e-Tb-3d3" customClass="MainTabController" customModule="loopr_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="vvs-y7-hAw"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="gag-oc-XEf" kind="relationship" relationship="viewControllers" id="6n2-uf-xT5"/>
-                        <segue destination="zdQ-Zw-gzE" kind="relationship" relationship="viewControllers" id="4WO-IM-Fdw"/>
                         <segue destination="wXN-eN-cuh" kind="relationship" relationship="viewControllers" id="89W-KO-6Bt"/>
+                        <segue destination="zdQ-Zw-gzE" kind="relationship" relationship="viewControllers" id="4WO-IM-Fdw"/>
+                        <segue destination="Yqy-5f-6sG" kind="relationship" relationship="viewControllers" id="ZfN-ct-hCD"/>
                         <segue destination="JQ5-jc-efn" kind="relationship" relationship="viewControllers" id="93v-w5-YyZ"/>
                     </connections>
                 </tabBarController>
