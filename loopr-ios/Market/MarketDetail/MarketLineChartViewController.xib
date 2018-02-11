@@ -28,14 +28,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yUV-TH-hi7" customClass="LineChartView" customModule="Charts">
-                    <rect key="frame" x="-8" y="20" width="391" height="360"/>
+                    <rect key="frame" x="-8" y="20" width="391" height="462"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="360" id="5I8-LL-T82"/>
-                    </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6e7-CJ-755">
-                    <rect key="frame" x="20" y="388" width="335" height="30"/>
+                    <rect key="frame" x="20" y="492" width="335" height="30"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgI-cW-D6X" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="47.5" height="30"/>
@@ -87,11 +84,11 @@
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="lYA-5F-KhN"/>
+                        <constraint firstAttribute="height" constant="30" id="XMZ-wb-HIA"/>
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6TC-nB-pso">
-                    <rect key="frame" x="10" y="428" width="355" height="40"/>
+                    <rect key="frame" x="10" y="537" width="355" height="40"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4P0-1h-mzn">
                             <rect key="frame" x="0.0" y="0.0" width="172.5" height="40"/>
@@ -113,20 +110,21 @@
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="bBF-fL-JcF"/>
+                        <constraint firstAttribute="height" constant="40" id="pkE-f0-EVB"/>
                     </constraints>
                 </stackView>
             </subviews>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yUV-TH-hi7" secondAttribute="trailing" constant="-8" id="Im8-7h-3sV"/>
-                <constraint firstItem="6e7-CJ-755" firstAttribute="top" secondItem="yUV-TH-hi7" secondAttribute="bottom" constant="8" id="LKA-aM-aBQ"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6TC-nB-pso" secondAttribute="trailing" constant="10" id="UZB-y2-iKu"/>
-                <constraint firstItem="yUV-TH-hi7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="YnX-OI-PXE"/>
-                <constraint firstItem="6TC-nB-pso" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="dPQ-mr-Ccl"/>
-                <constraint firstItem="6TC-nB-pso" firstAttribute="top" secondItem="6e7-CJ-755" secondAttribute="bottom" constant="10" id="dUb-Xm-Bjp"/>
-                <constraint firstItem="yUV-TH-hi7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="-8" id="dhr-vw-tk5"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6e7-CJ-755" secondAttribute="trailing" constant="20" id="pNF-1k-qdw"/>
-                <constraint firstItem="6e7-CJ-755" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="tb6-Ch-vK5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="6TC-nB-pso" secondAttribute="bottom" constant="90" id="Aio-zY-pDS"/>
+                <constraint firstItem="6TC-nB-pso" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="KGz-Af-nMR"/>
+                <constraint firstItem="6e7-CJ-755" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="SaY-BS-fY5"/>
+                <constraint firstAttribute="trailing" secondItem="yUV-TH-hi7" secondAttribute="trailing" constant="-8" id="ZVf-MO-gGz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6e7-CJ-755" secondAttribute="trailing" constant="20" id="bKH-lh-oEi"/>
+                <constraint firstItem="yUV-TH-hi7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-8" id="e4i-c8-fFa"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6TC-nB-pso" secondAttribute="trailing" constant="10" id="f9o-QH-eDa"/>
+                <constraint firstItem="6TC-nB-pso" firstAttribute="top" secondItem="6e7-CJ-755" secondAttribute="bottom" constant="15" id="k9U-Ju-QjY"/>
+                <constraint firstItem="6e7-CJ-755" firstAttribute="top" secondItem="yUV-TH-hi7" secondAttribute="bottom" constant="10" id="nq2-yT-AUp"/>
+                <constraint firstItem="yUV-TH-hi7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="z5k-3d-63k"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="120.5"/>
