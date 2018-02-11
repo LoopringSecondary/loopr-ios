@@ -61,9 +61,9 @@ class TradeViewController: UIViewController, TradePlaceOrderDelegate {
         // Pop
         // Show tradePlaceOrderViewController
         let basicAnimation = POPSpringAnimation()
-        basicAnimation.springBounciness = 9
-        basicAnimation.springSpeed = 10
-        basicAnimation.dynamicsFriction = 23 // The value of 25 seems ok too.
+        basicAnimation.springBounciness = 10
+        basicAnimation.springSpeed = 8
+        basicAnimation.dynamicsFriction = 25 // The value of 25 seems ok too.
         
         basicAnimation.property = POPAnimatableProperty.property(withName: kPOPViewFrame) as! POPAnimatableProperty
 
