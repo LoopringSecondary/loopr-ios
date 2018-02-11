@@ -22,6 +22,9 @@
 		AC9280E4202EC5810009B574 /* TradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280E2202EC5810009B574 /* TradeViewController.swift */; };
 		AC9280E5202EC5810009B574 /* TradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9280E3202EC5810009B574 /* TradeViewController.xib */; };
 		AC9280E7202F5A010009B574 /* UIStyleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280E6202F5A010009B574 /* UIStyleConfig.swift */; };
+		AC9280E92030C7440009B574 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280E82030C7440009B574 /* UIColorExtensions.swift */; };
+		AC9280EC2030D34B0009B574 /* TradePlaceOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280EA2030D34B0009B574 /* TradePlaceOrderViewController.swift */; };
+		AC9280ED2030D34B0009B574 /* TradePlaceOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9280EB2030D34B0009B574 /* TradePlaceOrderViewController.xib */; };
 		ACB5DD7C202A203900140A09 /* MarketLineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD7A202A203900140A09 /* MarketLineChartViewController.swift */; };
 		ACB5DD7D202A203900140A09 /* MarketLineChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD7B202A203900140A09 /* MarketLineChartViewController.xib */; };
 		ACB5DD80202AC26000140A09 /* button1.json in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD7F202AC26000140A09 /* button1.json */; };
@@ -127,6 +130,9 @@
 		AC9280E2202EC5810009B574 /* TradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewController.swift; sourceTree = "<group>"; };
 		AC9280E3202EC5810009B574 /* TradeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeViewController.xib; sourceTree = "<group>"; };
 		AC9280E6202F5A010009B574 /* UIStyleConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStyleConfig.swift; sourceTree = "<group>"; };
+		AC9280E82030C7440009B574 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		AC9280EA2030D34B0009B574 /* TradePlaceOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradePlaceOrderViewController.swift; sourceTree = "<group>"; };
+		AC9280EB2030D34B0009B574 /* TradePlaceOrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradePlaceOrderViewController.xib; sourceTree = "<group>"; };
 		ACB5DD7A202A203900140A09 /* MarketLineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketLineChartViewController.swift; sourceTree = "<group>"; };
 		ACB5DD7B202A203900140A09 /* MarketLineChartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketLineChartViewController.xib; sourceTree = "<group>"; };
 		ACB5DD7F202AC26000140A09 /* button1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = button1.json; sourceTree = "<group>"; };
@@ -307,6 +313,8 @@
 				AC9280E0202EC53D0009B574 /* TradeNavigationViewController.swift */,
 				AC9280E2202EC5810009B574 /* TradeViewController.swift */,
 				AC9280E3202EC5810009B574 /* TradeViewController.xib */,
+				AC9280EA2030D34B0009B574 /* TradePlaceOrderViewController.swift */,
+				AC9280EB2030D34B0009B574 /* TradePlaceOrderViewController.xib */,
 			);
 			path = Trade;
 			sourceTree = "<group>";
@@ -373,6 +381,7 @@
 				ACB5DDA5202D704200140A09 /* UIButtonExtension.swift */,
 				ACB5DDA1202D6F9400140A09 /* UIViewExtension.swift */,
 				ACB5DDA3202D6FC300140A09 /* UIImageExtension.swift */,
+				AC9280E82030C7440009B574 /* UIColorExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -589,6 +598,7 @@
 			files = (
 				AC798E4F2022B93A0071D477 /* LaunchScreen.storyboard in Resources */,
 				C8BF95B12027AC9400343B9A /* SetupViewController.xib in Resources */,
+				AC9280ED2030D34B0009B574 /* TradePlaceOrderViewController.xib in Resources */,
 				ACB911852026388700F14644 /* SettingViewController.xib in Resources */,
 				ACB5DD7D202A203900140A09 /* MarketLineChartViewController.xib in Resources */,
 				ACB911562024260E00F14644 /* WalletViewController.xib in Resources */,
@@ -791,6 +801,7 @@
 				ACB5DD8A202BF23100140A09 /* BuyViewController.swift in Sources */,
 				AC9280E4202EC5810009B574 /* TradeViewController.swift in Sources */,
 				ACB9119520278A4000F14644 /* Request.swift in Sources */,
+				AC9280EC2030D34B0009B574 /* TradePlaceOrderViewController.swift in Sources */,
 				ACB5DD95202C434B00140A09 /* eth_JSON_RPC.swift in Sources */,
 				ACB9117C20256BBA00F14644 /* TradingPair.swift in Sources */,
 				ACB5DD9C202D5B8000140A09 /* Cell.swift in Sources */,
@@ -801,6 +812,7 @@
 				ACB9116E2025575A00F14644 /* MarketNavigationViewController.swift in Sources */,
 				ACB911842026388700F14644 /* SettingViewController.swift in Sources */,
 				ACB911642024504E00F14644 /* Order.swift in Sources */,
+				AC9280E92030C7440009B574 /* UIColorExtensions.swift in Sources */,
 				ACB91171202557B100F14644 /* MarketViewController.swift in Sources */,
 				ACB5DD93202C09DC00140A09 /* Interactor.swift in Sources */,
 				ACB9118C20266A9C00F14644 /* AssetDetailViewController.swift in Sources */,
