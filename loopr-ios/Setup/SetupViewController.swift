@@ -21,6 +21,10 @@ class SetupViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+         self.navigationController?.isNavigationBarHidden = false
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -37,6 +41,7 @@ class SetupViewController: UIViewController {
         generateWalletViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(generateWalletViewController, animated: true)
     }
+    
     @IBAction func SkipButtonPressed(_ sender: Any) {
         //Prevent multiple instanes of WalletVC existing.
         //Temporary implementation.
