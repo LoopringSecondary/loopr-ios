@@ -11,7 +11,8 @@ import pop
 
 class TradeViewController: UIViewController, TradePlaceOrderDelegate {
     
-    var tradePlaceOrderViewController: TradePlaceOrderViewController = TradePlaceOrderViewController()
+    let tradePlaceOrderViewController: TradePlaceOrderViewController = TradePlaceOrderViewController()
+    let tradePlaceOrderBackgroundView: UIView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,10 +59,11 @@ class TradeViewController: UIViewController, TradePlaceOrderDelegate {
         */
 
         // Pop
+        // Show tradePlaceOrderViewController
         let basicAnimation = POPSpringAnimation()
         basicAnimation.springBounciness = 9
         basicAnimation.springSpeed = 10
-        basicAnimation.dynamicsFriction = 22
+        basicAnimation.dynamicsFriction = 23 // The value of 25 seems ok too.
         
         basicAnimation.property = POPAnimatableProperty.property(withName: kPOPViewFrame) as! POPAnimatableProperty
 
@@ -71,6 +73,21 @@ class TradeViewController: UIViewController, TradePlaceOrderDelegate {
         basicAnimation.delegate = self
         
         tradePlaceOrderViewController.view.pop_add(basicAnimation, forKey: "loopring_animation")
+        
+        // Add tradePlaceOrderBackgroundView
+        tradePlaceOrderBackgroundView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
+        self.view.insertSubview(tradePlaceOrderBackgroundView, belowSubview: tradePlaceOrderViewController.view)
+        
+        // background color before the animation
+        tradePlaceOrderBackgroundView.backgroundColor = UIColor(white: 0, alpha: 0)
+        
+        let backgroundColorAnimation = POPBasicAnimation()
+        backgroundColorAnimation.property = POPAnimatableProperty.property(withName: kPOPViewBackgroundColor) as! POPAnimatableProperty
+        backgroundColorAnimation.toValue = UIColor(white: 0, alpha: 0.3)
+
+        backgroundColorAnimation.name = "loopring_background_color"
+        backgroundColorAnimation.delegate = self
+        tradePlaceOrderBackgroundView.pop_add(backgroundColorAnimation, forKey: "loopring_background_color")
     }
     
     func closeTradePlaceOrderViewController() {
@@ -80,7 +97,7 @@ class TradeViewController: UIViewController, TradePlaceOrderDelegate {
 
         // Pop
         let basicAnimation = POPSpringAnimation()
-        basicAnimation.springBounciness = 9
+        basicAnimation.springBounciness = 10
         basicAnimation.springSpeed = 10
         basicAnimation.dynamicsFriction = 22
         
@@ -92,6 +109,9 @@ class TradeViewController: UIViewController, TradePlaceOrderDelegate {
         basicAnimation.delegate = self
         
         tradePlaceOrderViewController.view.pop_add(basicAnimation, forKey: "loopring_animation")
+
+        tradePlaceOrderBackgroundView.backgroundColor = UIColor(white: 1, alpha: 0)
+        tradePlaceOrderBackgroundView.removeFromSuperview()
     }
     
 
