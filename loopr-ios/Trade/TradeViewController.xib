@@ -89,6 +89,9 @@
                     <state key="normal" title="Buy LRC">
                         <color key="titleColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
                     </state>
+                    <connections>
+                        <action selector="pressedBuyButton:" destination="-1" eventType="touchUpInside" id="zGX-vw-9ZT"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH Balance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxj-DS-7y8">
                     <rect key="frame" x="16" y="56" width="103" height="21"/>

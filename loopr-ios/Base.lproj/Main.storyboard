@@ -27,7 +27,7 @@
         <scene sceneID="kat-Dv-4gt">
             <objects>
                 <navigationController id="Yqy-5f-6sG" customClass="TradeNavigationViewController" customModule="loopr_ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Trade" id="omp-e1-QTw"/>
+                    <tabBarItem key="tabBarItem" title="Trade" image="Trade" id="omp-e1-QTw"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YeD-Z8-rDy">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -41,7 +41,7 @@
         <scene sceneID="eBG-PF-gcM">
             <objects>
                 <navigationController id="zdQ-Zw-gzE" customClass="MarketNavigationViewController" customModule="loopr_ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Market" id="Y7G-HR-RiD"/>
+                    <tabBarItem key="tabBarItem" title="Market" image="Market" id="Y7G-HR-RiD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="k17-Ju-2nd">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -76,7 +76,7 @@
         <scene sceneID="TLd-To-BDc">
             <objects>
                 <navigationController id="wXN-eN-cuh" customClass="WalletNavigationViewController" customModule="loopr_ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Wallet" id="U12-P7-3w7"/>
+                    <tabBarItem key="tabBarItem" title="Wallet" image="Assets" id="U12-P7-3w7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UAn-dq-7KZ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -90,7 +90,7 @@
         <scene sceneID="8uh-QB-omb">
             <objects>
                 <navigationController id="JQ5-jc-efn" customClass="SettingNavigationViewController" customModule="loopr_ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="00u-fT-AFr"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="Settings" id="00u-fT-AFr"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="D0j-OU-3Um">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -101,5 +101,11 @@
             <point key="canvasLocation" x="769" y="1231"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Assets" width="24" height="24"/>
+        <image name="Market" width="23" height="23"/>
+        <image name="Settings" width="23" height="20"/>
+        <image name="Trade" width="24" height="24"/>
+    </resources>
     <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
