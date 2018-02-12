@@ -9,8 +9,13 @@
 import UIKit
 import Lottie
 
-class SettingViewController: UIViewController {
+class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var settingsTableView: UITableView!
+    
+    let sectionTitles = ["User Preferences","Tools", "Trading", "Relay"]
+    let sectionRows = [3,3,3]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,7 +38,98 @@ class SettingViewController: UIViewController {
             // Do Something
         }
     }
+    
+    //Table view configuration
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.section {
+        case 0:
+            return section0Cell(row: indexPath.row)
+        case 1:
+            return section1Cell(row: indexPath.row)
+        case 2:
+            return section2Cell(row: indexPath.row)
+        default:
+            return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sectionRows[section]
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionTitles[section]
+    }
+    
+    func section0Cell(row: Int) -> UITableViewCell {
+        switch row {
+        case 0:
+            return createDetailTableCell(title: "Language", detailTitle: "English")
+        case 1:
+            return createDetailTableCell(title: "Currency", detailTitle: "USD")
+        case 2:
+            return createDetailTableCell(title: "Timzone", detailTitle: TimeZone.current.identifier)
+        default:
+            return UITableViewCell()
+        }
+        
+    }
+    
+    func section1Cell(row: Int) -> UITableViewCell {
+        switch row {
+        case 0:
+            return createDetailTableCell(title: "Backup Wallet")
+        case 1:
+            return createDetailTableCell(title: "Display Private Keys")
+        case 2:
+            return createDetailTableCell(title: "Pair Devices")
+        default:
+            return UITableViewCell()
+        }
+        
+    }
+    
+    func section2Cell(row: Int) -> UITableViewCell {
+        switch row {
+        case 0:
+            return createDetailTableCell(title: "Contract Version", detailTitle: "1.0.1")
+        case 1:
+            return createDetailTableCell(title: "LRC Fee", detailTitle: "12.3020%")
+        case 2:
+            return createDetailTableCell(title: "Margin Split", detailTitle: "0.0000")
+        default:
+            return UITableViewCell()
+        }
+        
+    }
+    
 
+    func createDetailTableCell (title : String, detailTitle : String) -> UITableViewCell {
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: title)
+        cell.accessoryType = .disclosureIndicator
+        cell.selectionStyle = .blue
+        cell.textLabel?.text = title
+        cell.detailTextLabel?.text = detailTitle
+        return cell
+    }
+    
+    func createDetailTableCell (title : String) -> UITableViewCell {
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: title)
+        cell.accessoryType = .detailButton
+        cell.selectionStyle = .blue
+        cell.textLabel?.text = title
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 45
+    }
+    
+    
     /*
     // MARK: - Navigation
 
