@@ -13,22 +13,26 @@ class MarketDetailViewController: UIViewController {
     var market: Market? = nil
     
     @IBOutlet weak var mainScrollView: UIScrollView!
-    
+    @IBOutlet weak var stackView: UIStackView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.title = market?.description
         
+        // TODO: The auto layout in this part just works. Need improvement.
         let lineChartViewController = MarketLineChartViewController()
-
         self.addChildViewController(lineChartViewController)
-        mainScrollView.addSubview(lineChartViewController.view)
+        stackView.addArrangedSubview(lineChartViewController.view)
 
-        lineChartViewController.view.leadingAnchor.constraint(equalTo: mainScrollView.leadingAnchor, constant: 0.0).isActive = true
-        lineChartViewController.view.leftAnchor.constraint(equalTo: mainScrollView.leftAnchor, constant: 0.0).isActive = true
-        lineChartViewController.view.rightAnchor.constraint(equalTo: mainScrollView.rightAnchor, constant: 0.0).isActive = true
+        let screen = UIScreen.main.bounds
+        let screenHeight = screen.height
+        lineChartViewController.view.heightAnchor.constraint(equalToConstant: screenHeight).isActive = true
         
+        let openOrderViewController = OpenOrderViewController()
+        self.addChildViewController(openOrderViewController)
+        stackView.addArrangedSubview(openOrderViewController.view)
     }
 
     override func didReceiveMemoryWarning() {
