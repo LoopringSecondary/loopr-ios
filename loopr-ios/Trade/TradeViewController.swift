@@ -21,7 +21,9 @@ class TradeViewController: UIViewController, TradePlaceOrderDelegate {
         self.navigationController?.navigationBar.topItem?.title = "Trade"
 
         tradePlaceOrderViewController.delegate = self
-        self.addChildViewController(tradePlaceOrderViewController)
+        
+        // tradePlaceOrderViewController will be added to the window.
+        // self.addChildViewController(tradePlaceOrderViewController)
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,26 +39,8 @@ class TradeViewController: UIViewController, TradePlaceOrderDelegate {
         
         tradePlaceOrderViewController.view.frame = beforeAnimationRect
         
-        self.view.addSubview(tradePlaceOrderViewController.view)
-
-        // UIView default animation
-        /*
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.1, options: UIViewAnimationOptions.curveLinear, animations: {
-            
-            self.tmpView!.center.y -= self.tmpView!.bounds.height
-            
-        }) { (finished) in
-            print("Animation completed.")
-            
-            // self.tmpView?.removeFromSuperview()
-        }
-        */
-        
-        /*
-        UIView.animate(withDuration: 0.5) {
-            
-        }
-        */
+        let window = UIApplication.shared.keyWindow!
+        window.addSubview(tradePlaceOrderViewController.view)
 
         // Pop
         // Show tradePlaceOrderViewController
@@ -75,19 +59,20 @@ class TradeViewController: UIViewController, TradePlaceOrderDelegate {
         tradePlaceOrderViewController.view.pop_add(basicAnimation, forKey: "loopring_animation")
         
         // Add tradePlaceOrderBackgroundView
-        tradePlaceOrderBackgroundView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
-        self.view.insertSubview(tradePlaceOrderBackgroundView, belowSubview: tradePlaceOrderViewController.view)
+        tradePlaceOrderBackgroundView.frame = CGRect(x: 0, y: -100, width: self.view.bounds.width, height: self.view.bounds.height)
+        
+        window.insertSubview(tradePlaceOrderBackgroundView, belowSubview: tradePlaceOrderViewController.view)
+        // window.addSubview(tradePlaceOrderBackgroundView)
         
         // background color before the animation
         tradePlaceOrderBackgroundView.backgroundColor = UIColor(white: 0, alpha: 0)
-        
-        let backgroundColorAnimation = POPBasicAnimation()
-        backgroundColorAnimation.property = POPAnimatableProperty.property(withName: kPOPViewBackgroundColor) as! POPAnimatableProperty
-        backgroundColorAnimation.toValue = UIColor(white: 0, alpha: 0.3)
 
-        backgroundColorAnimation.name = "loopring_background_color"
-        backgroundColorAnimation.delegate = self
-        tradePlaceOrderBackgroundView.pop_add(backgroundColorAnimation, forKey: "loopring_background_color")
+        UIView.animate(withDuration: 0.2) {
+            // statusBarView and UIView use different methods to render. So the values in UIColor are different.
+            UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 178/255, alpha: 1)
+            self.tradePlaceOrderBackgroundView.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        }
+        
     }
     
     func closeTradePlaceOrderViewController() {
@@ -112,6 +97,8 @@ class TradeViewController: UIViewController, TradePlaceOrderDelegate {
 
         tradePlaceOrderBackgroundView.backgroundColor = UIColor(white: 1, alpha: 0)
         tradePlaceOrderBackgroundView.removeFromSuperview()
+        
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 1, alpha: 1)
     }
     
 
