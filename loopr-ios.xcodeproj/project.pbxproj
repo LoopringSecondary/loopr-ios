@@ -11,6 +11,7 @@
 		AC01A2412022D94600FE8317 /* PortfolioNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC01A2402022D94600FE8317 /* PortfolioNavigationController.swift */; };
 		AC01A2442022D9BE00FE8317 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC01A2422022D9BE00FE8317 /* PortfolioViewController.swift */; };
 		AC01A2452022D9BE00FE8317 /* PortfolioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC01A2432022D9BE00FE8317 /* PortfolioViewController.xib */; };
+		AC6E95E520313D8A00C6EB7C /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */; };
 		AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E422022B93A0071D477 /* AppDelegate.swift */; };
 		AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC798E482022B93A0071D477 /* Main.storyboard */; };
 		AC798E4C2022B93A0071D477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC798E4B2022B93A0071D477 /* Assets.xcassets */; };
@@ -113,6 +114,7 @@
 		AC01A2402022D94600FE8317 /* PortfolioNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioNavigationController.swift; sourceTree = "<group>"; };
 		AC01A2422022D9BE00FE8317 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		AC01A2432022D9BE00FE8317 /* PortfolioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioViewController.xib; sourceTree = "<group>"; };
+		AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		AC798E3F2022B93A0071D477 /* loopr-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "loopr-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC798E422022B93A0071D477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC798E492022B93A0071D477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				ACB5DDA1202D6F9400140A09 /* UIViewExtension.swift */,
 				ACB5DDA3202D6FC300140A09 /* UIImageExtension.swift */,
 				AC9280E82030C7440009B574 /* UIColorExtensions.swift */,
+				AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -808,6 +811,7 @@
 				C8BF95A62027A10E00343B9A /* GenerateWalletViewController.swift in Sources */,
 				ACB5DD8E202C048E00140A09 /* SellViewController.swift in Sources */,
 				ACB9117F2026385100F14644 /* SettingNavigationViewController.swift in Sources */,
+				AC6E95E520313D8A00C6EB7C /* UIApplicationExtension.swift in Sources */,
 				ACB9116020242E3F00F14644 /* Asset.swift in Sources */,
 				ACB9116E2025575A00F14644 /* MarketNavigationViewController.swift in Sources */,
 				ACB911842026388700F14644 /* SettingViewController.swift in Sources */,
