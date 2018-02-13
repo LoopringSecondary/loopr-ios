@@ -202,7 +202,7 @@ class MarketLineChartTableViewCell: UITableViewCell {
         }
     }
     
-    class func getHeight(navigationBarHeight: CGFloat) -> CGFloat {
+    class func getHeight(navigationBarHeight: CGFloat = 0) -> CGFloat {
         let screen = UIScreen.main.bounds
         let screenHeight = screen.height
         return screenHeight - navigationBarHeight

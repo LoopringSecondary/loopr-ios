@@ -37,9 +37,26 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (indexPath.row == 0) {
-            let navBarHeight = (self.navigationController?.navigationBar.intrinsicContentSize.height)!
-                + UIApplication.shared.statusBarFrame.height
-            return MarketLineChartTableViewCell.getHeight(navigationBarHeight: navBarHeight)
+            // TODO: Simplify the code and make it reusable in other places.
+            // window only available after iOS 11.0
+            guard #available(iOS 11.0, *),
+                let window = UIApplication.shared.keyWindow else {
+                    let navBarHeight = (self.navigationController?.navigationBar.intrinsicContentSize.height)!
+                        + UIApplication.shared.statusBarFrame.height
+                    return MarketLineChartTableViewCell.getHeight(navigationBarHeight: navBarHeight)
+            }
+
+            let safeAreaHeight = window.safeAreaInsets.top + window.safeAreaInsets.bottom
+            // Check if it's an iPhone X
+            if (safeAreaHeight > 0) {
+                let navBarHeight = (self.navigationController?.navigationBar.intrinsicContentSize.height)!
+                return MarketLineChartTableViewCell.getHeight(navigationBarHeight: navBarHeight) - safeAreaHeight
+            } else {
+                let navBarHeight = (self.navigationController?.navigationBar.intrinsicContentSize.height)!
+                    + UIApplication.shared.statusBarFrame.height
+                return MarketLineChartTableViewCell.getHeight(navigationBarHeight: navBarHeight)
+            }
+
         } else {
             return OpenOrderTableViewCell.getHeight()
         }
