@@ -32,45 +32,64 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 4
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let navBarHeight = (self.navigationController?.navigationBar.intrinsicContentSize.height)!
-            + UIApplication.shared.statusBarFrame.height
-        return MarketLineChartTableViewCell.getHeight(navigationBarHeight: navBarHeight)
+        if (indexPath.row == 0) {
+            let navBarHeight = (self.navigationController?.navigationBar.intrinsicContentSize.height)!
+                + UIApplication.shared.statusBarFrame.height
+            return MarketLineChartTableViewCell.getHeight(navigationBarHeight: navBarHeight)
+        } else {
+            return OpenOrderTableViewCell.getHeight()
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "MarketLineChartTableViewCellIdentifier"
-        
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? MarketLineChartTableViewCell
-        if (cell == nil) {
-            let nib = Bundle.main.loadNibNamed("MarketLineChartTableViewCell", owner: self, options: nil)
-            cell = nib![0] as? MarketLineChartTableViewCell
-            cell?.selectionStyle = .none
-        }
-        
-        cell!.pressedBuyButtonClosure = {
-            let buyViewController = BuyViewController()
-            buyViewController.transitioningDelegate = self
-            buyViewController.interactor = self.interactor
-            self.present(buyViewController, animated: true) {
-                
+        if (indexPath.row == 0) {
+            let cellIdentifier = "MarketLineChartTableViewCellIdentifier"
+            
+            var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? MarketLineChartTableViewCell
+            if (cell == nil) {
+                let nib = Bundle.main.loadNibNamed("MarketLineChartTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? MarketLineChartTableViewCell
+                cell?.selectionStyle = .none
             }
-        }
-
-        cell!.pressedSellButtonClosure = {
-            let sellViewController = SellViewController()
-            sellViewController.transitioningDelegate = self
-            sellViewController.interactor = self.interactor
-            self.present(sellViewController, animated: true) {
-                
+            
+            cell!.pressedBuyButtonClosure = {
+                let buyViewController = BuyViewController()
+                buyViewController.transitioningDelegate = self
+                buyViewController.interactor = self.interactor
+                self.present(buyViewController, animated: true) {
+                    
+                }
             }
-        }
-        
-        // Configure the cell...
-        return cell!
+            
+            cell!.pressedSellButtonClosure = {
+                let sellViewController = SellViewController()
+                sellViewController.transitioningDelegate = self
+                sellViewController.interactor = self.interactor
+                self.present(sellViewController, animated: true) {
+                    
+                }
+            }
+            
+            // Configure the cell...
+            return cell!
+        } else {
+            let cellIdentifier = "OpenOrderTableViewCellIdentifier"
+            
+            var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? OpenOrderTableViewCell
+            if (cell == nil) {
+                let nib = Bundle.main.loadNibNamed("OpenOrderTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? OpenOrderTableViewCell
+                cell?.selectionStyle = .none
+            }
+            
+            // Configure the cell...
+            return cell!
+        }       
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

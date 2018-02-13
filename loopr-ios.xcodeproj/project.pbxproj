@@ -78,6 +78,8 @@
 		ACB9119F202967A500F14644 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9119E202967A500F14644 /* OrderStatus.swift */; };
 		ACB911A120296AE500F14644 /* OrderDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911A020296AE500F14644 /* OrderDataManager.swift */; };
 		ACB911A320296B9900F14644 /* OriginalOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911A220296B9900F14644 /* OriginalOrder.swift */; };
+		ACBDB1C52032D050003463A4 /* OpenOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBDB1C32032D050003463A4 /* OpenOrderTableViewCell.swift */; };
+		ACBDB1C62032D050003463A4 /* OpenOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBDB1C42032D050003463A4 /* OpenOrderTableViewCell.xib */; };
 		C87E226E2031708000323584 /* ToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E226D2031708000323584 /* ToggleTableViewCell.swift */; };
 		C8BF959D202696A900343B9A /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BF959C202696A900343B9A /* MainTabController.swift */; };
 		C8BF95A62027A10E00343B9A /* GenerateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BF95A42027A10E00343B9A /* GenerateWalletViewController.swift */; };
@@ -190,6 +192,8 @@
 		ACB9119E202967A500F14644 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
 		ACB911A020296AE500F14644 /* OrderDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDataManager.swift; sourceTree = "<group>"; };
 		ACB911A220296B9900F14644 /* OriginalOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginalOrder.swift; sourceTree = "<group>"; };
+		ACBDB1C32032D050003463A4 /* OpenOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOrderTableViewCell.swift; sourceTree = "<group>"; };
+		ACBDB1C42032D050003463A4 /* OpenOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenOrderTableViewCell.xib; sourceTree = "<group>"; };
 		C87E226D2031708000323584 /* ToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleTableViewCell.swift; sourceTree = "<group>"; };
 		C8BF959C202696A900343B9A /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		C8BF95A42027A10E00343B9A /* GenerateWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateWalletViewController.swift; sourceTree = "<group>"; };
@@ -348,6 +352,8 @@
 				ACB5DD89202BF23100140A09 /* BuyViewController.xib */,
 				ACB5DD8C202C048E00140A09 /* SellViewController.swift */,
 				ACB5DD8D202C048E00140A09 /* SellViewController.xib */,
+				ACBDB1C32032D050003463A4 /* OpenOrderTableViewCell.swift */,
+				ACBDB1C42032D050003463A4 /* OpenOrderTableViewCell.xib */,
 			);
 			path = MarketDetail;
 			sourceTree = "<group>";
@@ -624,6 +630,7 @@
 				ACB5DD7D202A203900140A09 /* MarketLineChartViewController.xib in Resources */,
 				ACB911562024260E00F14644 /* WalletViewController.xib in Resources */,
 				ACB5DD80202AC26000140A09 /* button1.json in Resources */,
+				ACBDB1C62032D050003463A4 /* OpenOrderTableViewCell.xib in Resources */,
 				ACB9118920265DEA00F14644 /* MarketDetailViewController.xib in Resources */,
 				ACB9115B20242B9D00F14644 /* AssetTableViewCell.xib in Resources */,
 				ACB9118D20266A9C00F14644 /* AssetDetailViewController.xib in Resources */,
@@ -846,6 +853,7 @@
 				AC9280E7202F5A010009B574 /* UIStyleConfig.swift in Sources */,
 				ACB9119F202967A500F14644 /* OrderStatus.swift in Sources */,
 				ACB9117520255A6600F14644 /* MarketTableViewCell.swift in Sources */,
+				ACBDB1C52032D050003463A4 /* OpenOrderTableViewCell.swift in Sources */,
 				ACB5DD9E202D5B8D00140A09 /* NumericKeyboardItem.swift in Sources */,
 				ACB9119020266EC200F14644 /* AddAssetViewController.swift in Sources */,
 				ACB5DD9A202D5B7100140A09 /* DefaultNumericKeyboard.swift in Sources */,
