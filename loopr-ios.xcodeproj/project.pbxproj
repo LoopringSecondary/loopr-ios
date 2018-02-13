@@ -12,8 +12,8 @@
 		AC01A2442022D9BE00FE8317 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC01A2422022D9BE00FE8317 /* PortfolioViewController.swift */; };
 		AC01A2452022D9BE00FE8317 /* PortfolioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC01A2432022D9BE00FE8317 /* PortfolioViewController.xib */; };
 		AC6E95E520313D8A00C6EB7C /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */; };
-		AC6E95F020320A5000C6EB7C /* OpenOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95EE20320A5000C6EB7C /* OpenOrderViewController.swift */; };
-		AC6E95F120320A5000C6EB7C /* OpenOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC6E95EF20320A5000C6EB7C /* OpenOrderViewController.xib */; };
+		AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */; };
+		AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */; };
 		AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E422022B93A0071D477 /* AppDelegate.swift */; };
 		AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC798E482022B93A0071D477 /* Main.storyboard */; };
 		AC798E4C2022B93A0071D477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC798E4B2022B93A0071D477 /* Assets.xcassets */; };
@@ -118,8 +118,8 @@
 		AC01A2422022D9BE00FE8317 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		AC01A2432022D9BE00FE8317 /* PortfolioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioViewController.xib; sourceTree = "<group>"; };
 		AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
-		AC6E95EE20320A5000C6EB7C /* OpenOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOrderViewController.swift; sourceTree = "<group>"; };
-		AC6E95EF20320A5000C6EB7C /* OpenOrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenOrderViewController.xib; sourceTree = "<group>"; };
+		AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketLineChartTableViewCell.swift; sourceTree = "<group>"; };
+		AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketLineChartTableViewCell.xib; sourceTree = "<group>"; };
 		AC798E3F2022B93A0071D477 /* loopr-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "loopr-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC798E422022B93A0071D477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC798E492022B93A0071D477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -250,6 +250,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AC6E95F62032CBE900C6EB7C /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				ACB5DD7A202A203900140A09 /* MarketLineChartViewController.swift */,
+				ACB5DD7B202A203900140A09 /* MarketLineChartViewController.xib */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
 		AC798E362022B93A0071D477 = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +284,7 @@
 		AC798E412022B93A0071D477 /* loopr-ios */ = {
 			isa = PBXGroup;
 			children = (
+				AC6E95F62032CBE900C6EB7C /* Archive */,
 				ACB5DD84202AD74200140A09 /* Common */,
 				ACB9119320278A0E00F14644 /* RelayAPI */,
 				ACB911672025470B00F14644 /* DataManagers */,
@@ -332,14 +342,12 @@
 			children = (
 				ACB9118620265DEA00F14644 /* MarketDetailViewController.swift */,
 				ACB9118720265DEA00F14644 /* MarketDetailViewController.xib */,
-				ACB5DD7A202A203900140A09 /* MarketLineChartViewController.swift */,
-				ACB5DD7B202A203900140A09 /* MarketLineChartViewController.xib */,
+				AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */,
+				AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */,
 				ACB5DD88202BF23100140A09 /* BuyViewController.swift */,
 				ACB5DD89202BF23100140A09 /* BuyViewController.xib */,
 				ACB5DD8C202C048E00140A09 /* SellViewController.swift */,
 				ACB5DD8D202C048E00140A09 /* SellViewController.xib */,
-				AC6E95EE20320A5000C6EB7C /* OpenOrderViewController.swift */,
-				AC6E95EF20320A5000C6EB7C /* OpenOrderViewController.xib */,
 			);
 			path = MarketDetail;
 			sourceTree = "<group>";
@@ -611,7 +619,7 @@
 				AC798E4F2022B93A0071D477 /* LaunchScreen.storyboard in Resources */,
 				C8BF95B12027AC9400343B9A /* SetupViewController.xib in Resources */,
 				AC9280ED2030D34B0009B574 /* TradePlaceOrderViewController.xib in Resources */,
-				AC6E95F120320A5000C6EB7C /* OpenOrderViewController.xib in Resources */,
+				AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */,
 				ACB911852026388700F14644 /* SettingViewController.xib in Resources */,
 				ACB5DD7D202A203900140A09 /* MarketLineChartViewController.xib in Resources */,
 				ACB911562024260E00F14644 /* WalletViewController.xib in Resources */,
@@ -849,8 +857,8 @@
 				ACB9118820265DEA00F14644 /* MarketDetailViewController.swift in Sources */,
 				ACB911662024505D00F14644 /* Trade.swift in Sources */,
 				ACB9117820256B0300F14644 /* Market.swift in Sources */,
+				AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */,
 				ACB911692025472A00F14644 /* AssetDataManager.swift in Sources */,
-				AC6E95F020320A5000C6EB7C /* OpenOrderViewController.swift in Sources */,
 				ACB911A120296AE500F14644 /* OrderDataManager.swift in Sources */,
 				ACB911992027F65800F14644 /* loopring_JSON_RPC.swift in Sources */,
 				ACB5DDA4202D6FC300140A09 /* UIImageExtension.swift in Sources */,

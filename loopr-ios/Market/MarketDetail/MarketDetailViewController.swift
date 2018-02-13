@@ -8,31 +8,22 @@
 
 import UIKit
 
-class MarketDetailViewController: UIViewController {
+class MarketDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var market: Market? = nil
     
-    @IBOutlet weak var mainScrollView: UIScrollView!
-    @IBOutlet weak var stackView: UIStackView!
-
+    @IBOutlet weak var tableView: UITableView!
+    
+    let interactor = Interactor()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         self.title = market?.description
-        
-        // TODO: The auto layout in this part just works. Need improvement.
-        let lineChartViewController = MarketLineChartViewController()
-        self.addChildViewController(lineChartViewController)
-        stackView.addArrangedSubview(lineChartViewController.view)
-
-        let screen = UIScreen.main.bounds
-        let screenHeight = screen.height
-        lineChartViewController.view.heightAnchor.constraint(equalToConstant: screenHeight).isActive = true
-        
-        let openOrderViewController = OpenOrderViewController()
-        self.addChildViewController(openOrderViewController)
-        stackView.addArrangedSubview(openOrderViewController.view)
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,16 +31,60 @@ class MarketDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
-    */
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let navBarHeight = (self.navigationController?.navigationBar.intrinsicContentSize.height)!
+            + UIApplication.shared.statusBarFrame.height
+        return MarketLineChartTableViewCell.getHeight(navigationBarHeight: navBarHeight)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "MarketLineChartTableViewCellIdentifier"
+        
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? MarketLineChartTableViewCell
+        if (cell == nil) {
+            let nib = Bundle.main.loadNibNamed("MarketLineChartTableViewCell", owner: self, options: nil)
+            cell = nib![0] as? MarketLineChartTableViewCell
+            cell?.selectionStyle = .none
+        }
+        
+        cell!.pressedBuyButtonClosure = {
+            let buyViewController = BuyViewController()
+            buyViewController.transitioningDelegate = self
+            buyViewController.interactor = self.interactor
+            self.present(buyViewController, animated: true) {
+                
+            }
+        }
 
+        cell!.pressedSellButtonClosure = {
+            let sellViewController = SellViewController()
+            sellViewController.transitioningDelegate = self
+            sellViewController.interactor = self.interactor
+            self.present(sellViewController, animated: true) {
+                
+            }
+        }
+        
+        // Configure the cell...
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+}
+
+extension MarketDetailViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return DismissAnimator()
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactor.hasStarted ? interactor : nil
+    }
 }
