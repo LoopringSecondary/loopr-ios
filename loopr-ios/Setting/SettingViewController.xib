@@ -37,7 +37,6 @@
                 <constraint firstItem="OKf-sZ-zE1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cIF-LG-0cM"/>
                 <constraint firstItem="OKf-sZ-zE1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="d1X-LM-yN3"/>
                 <constraint firstItem="OKf-sZ-zE1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lu8-N8-8tE"/>
-                <constraint firstItem="OKf-sZ-zE1" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="ujM-vG-OGW"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="34.5" y="54.5"/>
@@ -110,6 +109,24 @@
                 <outlet property="settingToggle" destination="KNU-U1-6yY" id="prQ-Jz-oWJ"/>
             </connections>
             <point key="canvasLocation" x="550.5" y="60"/>
+        </tableViewCell>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="detailButton" indentationWidth="10" textLabel="F2R-cg-XuF" style="IBUITableViewCellStyleDefault" id="DE5-HZ-LQd">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DE5-HZ-LQd" id="lO7-7G-i7H">
+                <rect key="frame" x="0.0" y="0.0" width="327" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F2R-cg-XuF">
+                        <rect key="frame" x="16" y="0.0" width="311" height="43.5"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="551" y="186"/>
         </tableViewCell>
     </objects>
 </document>

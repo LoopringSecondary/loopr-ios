@@ -13,8 +13,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var settingsTableView: UITableView!
     
-    let sectionTitles = ["User Preferences","Tools", "Trading", "Relay"]
-    let sectionRows = [3,3,3]
+    let sectionTitles = ["User Preferences","Tools", "Trading", "Relay", "About"]
+    let sectionRows = [3,3,3,3,6]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     //Table view configuration
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return sectionTitles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -52,6 +52,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             return section1Cell(row: indexPath.row)
         case 2:
             return section2Cell(row: indexPath.row)
+        case 3:
+            return section3Cell(row: indexPath.row)
+        case 4:
+            return section4Cell(row: indexPath.row)
         default:
             return UITableViewCell()
         }
@@ -65,6 +69,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return sectionTitles[section]
     }
     
+    
+    //Sections
     func section0Cell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
@@ -96,7 +102,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func section2Cell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
-            return createDetailTableCell(title: "Contract Version", detailTitle: "1.0.1")
+            return createBasicTableCell(title: "Contract Version", detailTitle: "1.0.1")
         case 1:
             return createDetailTableCell(title: "LRC Fee", detailTitle: "12.3020%")
         case 2:
@@ -107,7 +113,41 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
-
+    func section3Cell(row: Int) -> UITableViewCell {
+        switch row {
+        case 0:
+            return createBasicTableCell(title: "Default Loopring Relay", detailTitle: "27.0.0.01")
+        case 1:
+            return createBasicTableCell(title: "Backup Loopring Relay", detailTitle: "27.0.0.01")
+        case 2:
+            return createBasicTableCell(title: "Test Loopring Relay", detailTitle: "27.0.0.01")
+        default:
+            return UITableViewCell()
+        }
+        
+    }
+    
+    func section4Cell(row: Int) -> UITableViewCell {
+        switch row {
+        case 0:
+            return createBasicTableCell(title: "App Version", detailTitle: "1.0.1")
+        case 1:
+            return createDetailTableCell(title: "Website", detailTitle: "loopring.org")
+        case 2:
+            return createDetailTableCell(title: "Privacy Policy")
+        case 3:
+            return createDetailTableCell(title: "Terms Of Service")
+        case 4:
+            return createBasicTableCell(title: "Support", detailTitle: "help@loopring.org")
+        case 5:
+            return createBasicTableCell(title: "Copyright", detailTitle: "Loopring 2018")
+        default:
+            return UITableViewCell()
+        }
+        
+    }
+    
+    //Cell Types
     func createDetailTableCell (title : String, detailTitle : String) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: title)
         cell.accessoryType = .disclosureIndicator
@@ -122,6 +162,16 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.accessoryType = .detailButton
         cell.selectionStyle = .blue
         cell.textLabel?.text = title
+        return cell
+    }
+    
+    func createBasicTableCell (title : String, detailTitle : String) -> UITableViewCell {
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: title)
+        cell.accessoryType = .none
+        cell.selectionStyle = .none
+        cell.selectionStyle = .blue
+        cell.textLabel?.text = title
+        cell.detailTextLabel?.text = detailTitle
         return cell
     }
     
