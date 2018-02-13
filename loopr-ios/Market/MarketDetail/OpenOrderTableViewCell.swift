@@ -10,6 +10,11 @@ import UIKit
 
 class OpenOrderTableViewCell: UITableViewCell {
 
+    var order: Order?
+    
+    @IBOutlet weak var tradingPairLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +24,13 @@ class OpenOrderTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func update() {
+        guard let order = order else {
+            return
+        }
+        tradingPairLabel.text = order.tradingPairDescription
     }
     
     class func getHeight() -> CGFloat {

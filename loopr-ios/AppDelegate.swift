@@ -19,7 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // Generate mock data
-        AssetDataManager.shared.generateMockData();
+        AssetDataManager.shared.generateMockData()
+        
+        // Get data from Relay
+        OrderDataManager.shared.getOrdersFromServer()
         
         // Setup color in the app.
         self.window?.backgroundColor = UIColor.white

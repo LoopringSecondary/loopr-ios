@@ -32,7 +32,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 1 + OrderDataManager.shared.getOrders().count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -103,6 +103,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 cell = nib![0] as? OpenOrderTableViewCell
                 cell?.selectionStyle = .none
             }
+            
+            cell?.order = OrderDataManager.shared.getOrders()[indexPath.row-1]
+            cell?.update()
             
             // Configure the cell...
             return cell!
