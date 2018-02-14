@@ -4,20 +4,23 @@ PODS:
   - Charts/Core (3.0.4)
   - lottie-ios (2.1.5)
   - pop (1.0.10)
+  - PopupDialog (0.6.2)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - Charts
   - lottie-ios
   - pop
+  - PopupDialog
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Charts: 0705898046257443f0afbbc3179f4b67507b6e48
   lottie-ios: 836cdbba92f62f3c6a00e37a4ce485321fe317cf
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
+  PopupDialog: d4336d7274a6aa3af4cb26d8b6691510eba90cc3
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 6726255558da1c890a69785fa4a9f07604128976
+PODFILE CHECKSUM: d48b50f8db95aeeaf8cc8c727c331924ac7558ec
 
 COCOAPODS: 1.3.1

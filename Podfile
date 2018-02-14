@@ -10,6 +10,7 @@ target 'loopr-ios' do
   pod 'SwiftyJSON'
   pod 'lottie-ios'
   pod 'pop'
+  pod 'PopupDialog'
 
   target 'loopr-iosTests' do
     inherit! :search_paths

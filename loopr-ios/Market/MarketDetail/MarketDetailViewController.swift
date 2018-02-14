@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PopupDialog
 
 class MarketDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -155,6 +156,31 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        
+        if (indexPath.section != 0) {
+            // TODO: Use UIAlertController or PopupDialog
+            // TODO: Pass a view controller to PopupDialog https://github.com/Orderella/PopupDialog#custom-view-controller
+            
+            let dialogAppearance = PopupDialogDefaultView.appearance()
+            dialogAppearance.titleFont = .boldSystemFont(ofSize: 17)
+            dialogAppearance.titleColor = UIColor(white: 0, alpha: 1)
+            dialogAppearance.titleTextAlignment = .center
+            dialogAppearance.messageFont = .systemFont(ofSize: 17)
+            dialogAppearance.messageTextAlignment = .left
+            dialogAppearance.messageColor = UIColor(white: 0.2, alpha: 1)
+            
+            // Prepare the popup assets
+            let title = "Order"
+            let message = "This is the message section of the popup dialog default view"
+            // let image = UIImage(named: "REP")
+            
+            // Create the dialog
+            let popup = PopupDialog(title: title, message: message, transitionStyle: PopupDialogTransitionStyle.zoomIn)
+
+            // Present dialog
+            self.present(popup, animated: true, completion: nil)
+        }
     }
 
 }
