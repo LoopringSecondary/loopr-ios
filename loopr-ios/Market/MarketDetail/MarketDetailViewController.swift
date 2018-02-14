@@ -31,12 +31,34 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         // Dispose of any resources that can be recreated.
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1 + OrderDataManager.shared.getOrders().count
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return OrderDataManager.shared.getOrders().count
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return nil
+        case 1:
+            return "Open Orders"
+        default:
+            return nil
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (indexPath.row == 0) {
+        if (indexPath.section == 0 && indexPath.row == 0) {
             // TODO: Simplify the code and make it reusable in other places.
             // window only available after iOS 11.0
             guard #available(iOS 11.0, *),
@@ -64,7 +86,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (indexPath.row == 0) {
+        if (indexPath.section == 0 && indexPath.row == 0) {
             let cellIdentifier = "MarketLineChartTableViewCellIdentifier"
             
             var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? MarketLineChartTableViewCell
@@ -104,7 +126,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 cell?.selectionStyle = .none
             }
             
-            cell?.order = OrderDataManager.shared.getOrders()[indexPath.row-1]
+            cell?.order = OrderDataManager.shared.getOrders()[indexPath.row]
             cell?.update()
             
             // Configure the cell...
