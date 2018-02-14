@@ -157,9 +157,8 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        
-        if (indexPath.section != 0) {
-            // TODO: Use UIAlertController or PopupDialog
+        // TODO: Use UIAlertController or PopupDialog
+        if (indexPath.section == 1) {
             // TODO: Pass a view controller to PopupDialog https://github.com/Orderella/PopupDialog#custom-view-controller
             
             let dialogAppearance = PopupDialogDefaultView.appearance()
@@ -173,13 +172,19 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             // Prepare the popup assets
             let title = "Order"
             let message = "This is the message section of the popup dialog default view"
-            // let image = UIImage(named: "REP")
+            let image = UIImage(named: "Logo")
             
             // Create the dialog
-            let popup = PopupDialog(title: title, message: message, transitionStyle: PopupDialogTransitionStyle.zoomIn)
+            let popup = PopupDialog(title: title, message: message, image: image, transitionStyle: PopupDialogTransitionStyle.zoomIn)
 
             // Present dialog
             self.present(popup, animated: true, completion: nil)
+        } else if (indexPath.section == 2) {
+            let alert = UIAlertController(title: "My Alert", message: "This is an alert.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { _ in
+                NSLog("The \"OK\" alert occured.")
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 
