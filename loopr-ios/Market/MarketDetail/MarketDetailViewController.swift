@@ -25,11 +25,19 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         tableView.delegate = self
         
         self.title = market?.description
+        
+        let starIcon = UIImage (named: "Star")?.withRenderingMode(.alwaysOriginal)
+        let starButton = UIBarButtonItem(image: starIcon, style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.pressStarButton(_:)))
+        self.navigationItem.rightBarButtonItem = starButton
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func pressStarButton(_ button: UIBarButtonItem) {
+        print("pressStarButton")
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
