@@ -12,6 +12,10 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var marketTableView: UITableView!
     
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    var filteredMarkets = [Market]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,8 +33,19 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             DispatchQueue.main.async {
                 self.marketTableView.reloadData()
             }
-            
         }
+
+        // Setup the Search Controller
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "LRC"
+        searchController.searchBar.tintColor = defaultTintColor
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
+        // Setup the Scope Bar
+        // searchController.searchBar.scopeButtonTitles = ["All", "ETH", "LRC", "Other"]
+        // searchController.searchBar.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,12 +53,35 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Private instance methods
+    func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+
+    func isFiltering() -> Bool {
+        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+        return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredMarkets = MarketDataManager.shared.getMarkets().filter({(market: Market) -> Bool in
+            return market.tradingPair.tradingA.lowercased().contains(searchText.lowercased()) || market.tradingPair.tradingB.lowercased().contains(searchText.lowercased())
+        })
+
+        marketTableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return MarketTableViewCell.getHeight()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MarketDataManager.shared.getMarkets().count
+        if isFiltering() {
+            return filteredMarkets.count
+        } else {
+            return MarketDataManager.shared.getMarkets().count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -54,9 +92,15 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let nib = Bundle.main.loadNibNamed("MarketTableViewCell", owner: self, options: nil)
             cell = nib![0] as? MarketTableViewCell
         }
+        
+        let market: Market
+        if isFiltering() {
+            market = filteredMarkets[indexPath.row]
+        } else {
+            market = MarketDataManager.shared.getMarkets()[indexPath.row]
+        }
 
-        // Configure the cell...
-        cell?.market = MarketDataManager.shared.getMarkets()[indexPath.row]
+        cell?.market = market
         cell?.update()
         return cell!
     }
@@ -80,4 +124,20 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     */
 
+}
+
+extension MarketViewController: UISearchBarDelegate {
+    // MARK: - UISearchBar Delegate
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+    }
+}
+
+extension MarketViewController: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        // let searchBar = searchController.searchBar
+        // let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
 }
