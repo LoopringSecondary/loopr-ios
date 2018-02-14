@@ -8,6 +8,7 @@
 
 enum OrderStatus : String, CustomStringConvertible {
 
+    // TODO: What is the status for an open order?
     case new = "ORDER_NEW"
     case partial = "ORDER_PARTIAL"
     case finished = "ORDER_FINISHED"

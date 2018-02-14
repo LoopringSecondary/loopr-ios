@@ -80,6 +80,8 @@
 		ACB911A320296B9900F14644 /* OriginalOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911A220296B9900F14644 /* OriginalOrder.swift */; };
 		ACBDB1C52032D050003463A4 /* OpenOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBDB1C32032D050003463A4 /* OpenOrderTableViewCell.swift */; };
 		ACBDB1C62032D050003463A4 /* OpenOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBDB1C42032D050003463A4 /* OpenOrderTableViewCell.xib */; };
+		ACF71CB42033E723000E7618 /* TradeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */; };
+		ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */; };
 		C87E226E2031708000323584 /* ToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E226D2031708000323584 /* ToggleTableViewCell.swift */; };
 		C8BF959D202696A900343B9A /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BF959C202696A900343B9A /* MainTabController.swift */; };
 		C8BF95A62027A10E00343B9A /* GenerateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BF95A42027A10E00343B9A /* GenerateWalletViewController.swift */; };
@@ -194,6 +196,8 @@
 		ACB911A220296B9900F14644 /* OriginalOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginalOrder.swift; sourceTree = "<group>"; };
 		ACBDB1C32032D050003463A4 /* OpenOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOrderTableViewCell.swift; sourceTree = "<group>"; };
 		ACBDB1C42032D050003463A4 /* OpenOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenOrderTableViewCell.xib; sourceTree = "<group>"; };
+		ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeTableViewCell.swift; sourceTree = "<group>"; };
+		ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeTableViewCell.xib; sourceTree = "<group>"; };
 		C87E226D2031708000323584 /* ToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleTableViewCell.swift; sourceTree = "<group>"; };
 		C8BF959C202696A900343B9A /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		C8BF95A42027A10E00343B9A /* GenerateWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateWalletViewController.swift; sourceTree = "<group>"; };
@@ -354,6 +358,8 @@
 				ACB5DD8D202C048E00140A09 /* SellViewController.xib */,
 				ACBDB1C32032D050003463A4 /* OpenOrderTableViewCell.swift */,
 				ACBDB1C42032D050003463A4 /* OpenOrderTableViewCell.xib */,
+				ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */,
+				ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */,
 			);
 			path = MarketDetail;
 			sourceTree = "<group>";
@@ -644,6 +650,7 @@
 				ACB5DD8B202BF23100140A09 /* BuyViewController.xib in Resources */,
 				ACB5DD8F202C048E00140A09 /* SellViewController.xib in Resources */,
 				C8BF95A72027A10E00343B9A /* GenerateWalletViewController.xib in Resources */,
+				ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -864,6 +871,7 @@
 				ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */,
 				ACB9118820265DEA00F14644 /* MarketDetailViewController.swift in Sources */,
 				ACB911662024505D00F14644 /* Trade.swift in Sources */,
+				ACF71CB42033E723000E7618 /* TradeTableViewCell.swift in Sources */,
 				ACB9117820256B0300F14644 /* Market.swift in Sources */,
 				AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */,
 				ACB911692025472A00F14644 /* AssetDataManager.swift in Sources */,

@@ -18,14 +18,21 @@ class OrderDataManager {
         orders = []
     }
     
-    func getOrders() -> [Order] {
-        return orders
+    func getOrders(orderStatuses: [OrderStatus]? = nil) -> [Order] {
+        guard let orderStatuses = orderStatuses else {
+            return orders
+        }
+        
+        return orders.filter { (order) -> Bool in
+            orderStatuses.contains(order.orderStatus)
+        }
     }
-    
+
     func getOrdersFromServer() {
-        loopring_JSON_RPC.getOrders() { orders, error in
+        loopring_JSON_RPC.getOrders(pageSize: 40) { orders, error in
             self.orders = orders
         }
     }
+
 }
 

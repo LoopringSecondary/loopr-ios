@@ -30,6 +30,7 @@ class loopring_JSON_RPC {
         }
     }
 
+    // TODO: How to get a list of orders for an address
     static func getOrders(ringHash: String? = nil, pageIndex: UInt = 0, pageSize: UInt = 20, completionHandler: @escaping (_ orders: [Order], _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getOrders"

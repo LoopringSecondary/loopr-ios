@@ -32,7 +32,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,9 +40,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         case 0:
             return 1
         case 1:
-            return OrderDataManager.shared.getOrders().count
+            return OrderDataManager.shared.getOrders(orderStatuses: [.new, .partial]).count
         default:
-            return 0
+            return OrderDataManager.shared.getOrders(orderStatuses: [.finished]).count
         }
     }
     
@@ -52,6 +52,8 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             return nil
         case 1:
             return "Open Orders"
+        case 2:
+            return "Recent Trade"
         default:
             return nil
         }
@@ -79,8 +81,10 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 return MarketLineChartTableViewCell.getHeight(navigationBarHeight: navBarHeight)
             }
 
-        } else {
+        } else if (indexPath.section == 1) {
             return OpenOrderTableViewCell.getHeight()
+        } else {
+            return TradeTableViewCell.getHeight()
         }
         
     }
@@ -116,7 +120,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             
             // Configure the cell...
             return cell!
-        } else {
+        } else if (indexPath.section == 1) {
             let cellIdentifier = "OpenOrderTableViewCellIdentifier"
             
             var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? OpenOrderTableViewCell
@@ -126,12 +130,27 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 cell?.selectionStyle = .none
             }
             
-            cell?.order = OrderDataManager.shared.getOrders()[indexPath.row]
+            cell?.order = OrderDataManager.shared.getOrders(orderStatuses: [.new, .partial])[indexPath.row]
             cell?.update()
             
             // Configure the cell...
             return cell!
-        }       
+        } else {
+            let cellIdentifier = "TradeTableViewCellIdentifier"
+            
+            var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? TradeTableViewCell
+            if (cell == nil) {
+                let nib = Bundle.main.loadNibNamed("TradeTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? TradeTableViewCell
+                cell?.selectionStyle = .none
+            }
+            
+            cell?.order = OrderDataManager.shared.getOrders(orderStatuses: [.finished])[indexPath.row]
+            cell?.update()
+            
+            // Configure the cell...
+            return cell!
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
