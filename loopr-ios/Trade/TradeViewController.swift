@@ -69,7 +69,7 @@ class TradeViewController: UIViewController, TradePlaceOrderDelegate {
 
         UIView.animate(withDuration: 0.2) {
             // statusBarView and UIView use different methods to render. So the values in UIColor are different.
-            UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 178/255, alpha: 1)
+            // UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 178/255, alpha: 1)
             self.tradePlaceOrderBackgroundView.backgroundColor = UIColor(white: 0, alpha: 0.3)
         }
         
@@ -98,7 +98,7 @@ class TradeViewController: UIViewController, TradePlaceOrderDelegate {
         tradePlaceOrderBackgroundView.backgroundColor = UIColor(white: 1, alpha: 0)
         tradePlaceOrderBackgroundView.removeFromSuperview()
         
-        UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 1, alpha: 1)
+        // UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 1, alpha: 1)
     }
     
 
