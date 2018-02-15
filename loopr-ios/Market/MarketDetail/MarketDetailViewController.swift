@@ -68,6 +68,19 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return 0
+        case 1:
+            return 45
+        case 2:
+            return 45
+        default:
+            return 0
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (indexPath.section == 0 && indexPath.row == 0) {
             // TODO: Simplify the code and make it reusable in other places.
