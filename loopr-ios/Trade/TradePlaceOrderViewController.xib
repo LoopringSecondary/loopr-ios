@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uNH-gz-HUl">
+                <navigationBar contentMode="scaleToFill" translucent="NO" shadowImage="ClearImage" translatesAutoresizingMaskIntoConstraints="NO" id="uNH-gz-HUl">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="j1b-c9-dGd"/>
@@ -46,4 +46,7 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
+    <resources>
+        <image name="ClearImage" width="16" height="16"/>
+    </resources>
 </document>

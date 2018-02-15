@@ -33,9 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UITabBar.appearance().tintColor = tabBarTintColor
         
-        // TODO: The following code is to hide the bottom line of the navigation bar.
+        // The following code is to hide the bottom line of the navigation bar.
         // It's not easy to implement in iPhone x and other models. It also breaks
         // UIAlertController animation.
+        // It's resolved by adding an empty image to the shadow.
         
         // Hide the bottom line in the navigation bar.
         // UINavigationBar.appearance().shadowImage = UIImage()

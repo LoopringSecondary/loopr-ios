@@ -34,8 +34,8 @@ class TradeViewController: UIViewController, TradePlaceOrderDelegate {
     @IBAction func pressedBuyButton(_ sender: Any) {
         print("pressedBuyButton")
         
-        let beforeAnimationRect = CGRect(x: 0, y: self.view.bounds.height, width: self.view.bounds.width, height: self.view.bounds.height*0.8)
-        let AfterAnimationRect = CGRect(x: 0, y: self.view.bounds.height*0.2, width: self.view.bounds.width, height: self.view.bounds.height*0.8)
+        let beforeAnimationRect = CGRect(x: 0, y: self.view.bounds.height * 1.2, width: self.view.bounds.width, height: self.view.bounds.height*0.8)
+        let AfterAnimationRect = CGRect(x: 0, y: self.view.bounds.height*0.2, width: self.view.bounds.width, height: self.view.bounds.height*0.9)
         
         tradePlaceOrderViewController.view.frame = beforeAnimationRect
         
@@ -78,7 +78,7 @@ class TradeViewController: UIViewController, TradePlaceOrderDelegate {
     func closeTradePlaceOrderViewController() {
         print("close TradePlaceOrderViewController")
         
-        let beforeAnimationRect = CGRect(x: 0, y: self.view.bounds.height, width: self.view.bounds.width, height: self.view.bounds.height*0.8)
+        let beforeAnimationRect = CGRect(x: 0, y: self.view.bounds.height * 1.2, width: self.view.bounds.width, height: self.view.bounds.height*0.8)
 
         // Pop
         let basicAnimation = POPSpringAnimation()
