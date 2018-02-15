@@ -17,11 +17,24 @@ class MarketDataManager {
     private init() {
         markets = []
     }
-    
-    func getMarkets() -> [Market] {
-        return markets
+
+    func getMarkets(type: MarketSwipeViewType = .all) -> [Market] {
+        switch type {
+        case .all:
+            return markets
+        case .favorite:
+            return markets
+        case .ETH:
+            return markets.filter({ (market) -> Bool in
+                return market.tradingPair.tradingA == "WETH" || market.tradingPair.tradingB == "WETH"
+            })
+        case .LRC:
+            return markets.filter({ (market) -> Bool in
+                return market.tradingPair.tradingA == "LRC" || market.tradingPair.tradingB == "LRC"
+            })
+        }
     }
-    
+
     func getMarketsFromServer(completionHandler: @escaping (_ market: [Market], _ error: Error?) -> Void) {
         loopring_JSON_RPC.getSupportedMarket() { markets, error in
             self.markets = markets

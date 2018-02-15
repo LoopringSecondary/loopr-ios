@@ -10,7 +10,7 @@ import UIKit
 
 class MarketSwipeViewController: SwipeViewController {
 
-    private var titles: [String] = ["Favorite", "LRC", "ETH", "All"]
+    private var types: [MarketSwipeViewType] = [.favorite, .ETH, .LRC, .all]
     var options = SwipeViewOptions()
 
     override func viewDidLoad() {
@@ -59,16 +59,15 @@ class MarketSwipeViewController: SwipeViewController {
 
     // MARK - DataSource
     override func numberOfPages(in swipeView: SwipeView) -> Int {
-        return titles.count
+        return types.count
     }
     
     override func swipeView(_ swipeView: SwipeView, titleForPageAt index: Int) -> String {
-        return titles[index]
+        return types[index].rawValue
     }
-    
-    // let vc = MarketSwipeViewController(nibName: nil, bundle: nil)
+
     override func swipeView(_ swipeView: SwipeView, viewControllerForPageAt index: Int) -> UIViewController {
-        let vc = MarketViewController(nibName: nil, bundle: nil)
+        let vc = MarketViewController(type: types[index])
         self.addChildViewController(vc)
         return vc
     }

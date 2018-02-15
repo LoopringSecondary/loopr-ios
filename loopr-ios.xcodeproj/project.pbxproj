@@ -19,6 +19,7 @@
 		AC4141F920352DA70089861D /* SwipeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141F820352DA70089861D /* SwipeTabView.swift */; };
 		AC4141FB20352DE50089861D /* SwipeTabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141FA20352DE50089861D /* SwipeTabItemView.swift */; };
 		AC4141FD203532ED0089861D /* SwipeViewOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141FC203532ED0089861D /* SwipeViewOptions.swift */; };
+		AC4141FF20356A4D0089861D /* MarketSwipeViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141FE20356A4D0089861D /* MarketSwipeViewType.swift */; };
 		AC6E95E520313D8A00C6EB7C /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */; };
 		AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */; };
 		AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */; };
@@ -137,6 +138,7 @@
 		AC4141F820352DA70089861D /* SwipeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTabView.swift; sourceTree = "<group>"; };
 		AC4141FA20352DE50089861D /* SwipeTabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTabItemView.swift; sourceTree = "<group>"; };
 		AC4141FC203532ED0089861D /* SwipeViewOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewOptions.swift; sourceTree = "<group>"; };
+		AC4141FE20356A4D0089861D /* MarketSwipeViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketSwipeViewType.swift; sourceTree = "<group>"; };
 		AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketLineChartTableViewCell.swift; sourceTree = "<group>"; };
 		AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketLineChartTableViewCell.xib; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 			children = (
 				ACB9116D2025575A00F14644 /* MarketNavigationViewController.swift */,
 				AC4141ED203524280089861D /* MarketSwipeViewController.swift */,
+				AC4141FE20356A4D0089861D /* MarketSwipeViewType.swift */,
 				AC4141EE203524280089861D /* MarketSwipeViewController.xib */,
 				ACB9116F202557B100F14644 /* MarketViewController.swift */,
 				ACB91170202557B100F14644 /* MarketViewController.xib */,
@@ -891,6 +894,7 @@
 				ACB91171202557B100F14644 /* MarketViewController.swift in Sources */,
 				ACB5DD93202C09DC00140A09 /* Interactor.swift in Sources */,
 				ACB9118C20266A9C00F14644 /* AssetDetailViewController.swift in Sources */,
+				AC4141FF20356A4D0089861D /* MarketSwipeViewType.swift in Sources */,
 				ACB5DD91202C06FF00140A09 /* DismissAnimator.swift in Sources */,
 				AC9280E1202EC53D0009B574 /* TradeNavigationViewController.swift in Sources */,
 				AC01A2412022D94600FE8317 /* PortfolioNavigationController.swift in Sources */,

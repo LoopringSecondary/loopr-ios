@@ -12,9 +12,25 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var marketTableView: UITableView!
     
-    let searchController = UISearchController(searchResultsController: nil)
+    var type: MarketSwipeViewType
     
+    // TODO: searchController conflicts to SwipeViewController.
+    let searchController = UISearchController(searchResultsController: nil)
     var filteredMarkets = [Market]()
+    
+    convenience init(type: MarketSwipeViewType) {
+        self.init(nibName: nil, bundle: nil)
+        self.type = type
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        type = .all
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +81,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        filteredMarkets = MarketDataManager.shared.getMarkets().filter({(market: Market) -> Bool in
+        filteredMarkets = MarketDataManager.shared.getMarkets(type: type).filter({(market: Market) -> Bool in
             return market.tradingPair.tradingA.lowercased().contains(searchText.lowercased()) || market.tradingPair.tradingB.lowercased().contains(searchText.lowercased())
         })
 
@@ -80,7 +96,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if isFiltering() {
             return filteredMarkets.count
         } else {
-            return MarketDataManager.shared.getMarkets().count
+            return MarketDataManager.shared.getMarkets(type: type).count
         }
     }
     
@@ -97,7 +113,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if isFiltering() {
             market = filteredMarkets[indexPath.row]
         } else {
-            market = MarketDataManager.shared.getMarkets()[indexPath.row]
+            market = MarketDataManager.shared.getMarkets(type: type)[indexPath.row]
         }
 
         cell?.market = market
@@ -108,21 +124,11 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let marketDetailViewController = MarketDetailViewController();
-        let market = MarketDataManager.shared.getMarkets()[indexPath.row]
+        let market = MarketDataManager.shared.getMarkets(type: type)[indexPath.row]
         marketDetailViewController.market = market
         marketDetailViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(marketDetailViewController, animated: true)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
