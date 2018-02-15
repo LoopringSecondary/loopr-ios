@@ -28,4 +28,10 @@ extension UIView {
         return constraints
     }
     
+    var hasSafeAreaInsets: Bool {
+        guard #available (iOS 11, *) else {
+            return false
+        }
+        return safeAreaInsets != .zero
+    }
 }
