@@ -14,7 +14,7 @@ class MarketNavigationViewController: UINavigationController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let viewController = MarketViewController(nibName: nil, bundle: nil)
+        let viewController = MarketSwipeViewController(nibName: nil, bundle: nil)
         self.setViewControllers([viewController], animated: false)
     }
 

@@ -11,6 +11,14 @@
 		AC01A2412022D94600FE8317 /* PortfolioNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC01A2402022D94600FE8317 /* PortfolioNavigationController.swift */; };
 		AC01A2442022D9BE00FE8317 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC01A2422022D9BE00FE8317 /* PortfolioViewController.swift */; };
 		AC01A2452022D9BE00FE8317 /* PortfolioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC01A2432022D9BE00FE8317 /* PortfolioViewController.xib */; };
+		AC4141EF203524280089861D /* MarketSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141ED203524280089861D /* MarketSwipeViewController.swift */; };
+		AC4141F0203524280089861D /* MarketSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4141EE203524280089861D /* MarketSwipeViewController.xib */; };
+		AC4141F320352C460089861D /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141F220352C460089861D /* SwipeViewController.swift */; };
+		AC4141F520352D300089861D /* SwipeContentScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141F420352D300089861D /* SwipeContentScrollView.swift */; };
+		AC4141F720352D6B0089861D /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141F620352D6B0089861D /* SwipeView.swift */; };
+		AC4141F920352DA70089861D /* SwipeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141F820352DA70089861D /* SwipeTabView.swift */; };
+		AC4141FB20352DE50089861D /* SwipeTabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141FA20352DE50089861D /* SwipeTabItemView.swift */; };
+		AC4141FD203532ED0089861D /* SwipeViewOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141FC203532ED0089861D /* SwipeViewOptions.swift */; };
 		AC6E95E520313D8A00C6EB7C /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */; };
 		AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */; };
 		AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */; };
@@ -121,6 +129,14 @@
 		AC01A2402022D94600FE8317 /* PortfolioNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioNavigationController.swift; sourceTree = "<group>"; };
 		AC01A2422022D9BE00FE8317 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		AC01A2432022D9BE00FE8317 /* PortfolioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioViewController.xib; sourceTree = "<group>"; };
+		AC4141ED203524280089861D /* MarketSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketSwipeViewController.swift; sourceTree = "<group>"; };
+		AC4141EE203524280089861D /* MarketSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketSwipeViewController.xib; sourceTree = "<group>"; };
+		AC4141F220352C460089861D /* SwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
+		AC4141F420352D300089861D /* SwipeContentScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeContentScrollView.swift; sourceTree = "<group>"; };
+		AC4141F620352D6B0089861D /* SwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
+		AC4141F820352DA70089861D /* SwipeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTabView.swift; sourceTree = "<group>"; };
+		AC4141FA20352DE50089861D /* SwipeTabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTabItemView.swift; sourceTree = "<group>"; };
+		AC4141FC203532ED0089861D /* SwipeViewOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewOptions.swift; sourceTree = "<group>"; };
 		AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketLineChartTableViewCell.swift; sourceTree = "<group>"; };
 		AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketLineChartTableViewCell.xib; sourceTree = "<group>"; };
@@ -258,6 +274,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AC4141F120352C130089861D /* SwipeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AC4141F220352C460089861D /* SwipeViewController.swift */,
+				AC4141F620352D6B0089861D /* SwipeView.swift */,
+				AC4141F420352D300089861D /* SwipeContentScrollView.swift */,
+				AC4141F820352DA70089861D /* SwipeTabView.swift */,
+				AC4141FA20352DE50089861D /* SwipeTabItemView.swift */,
+				AC4141FC203532ED0089861D /* SwipeViewOptions.swift */,
+			);
+			path = SwipeViewController;
+			sourceTree = "<group>";
+		};
 		AC6E95F62032CBE900C6EB7C /* Archive */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,8 +413,9 @@
 		ACB5DD85202AD74D00140A09 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
-				ACB5DDA7202D712F00140A09 /* Extensions */,
+				AC4141F120352C130089861D /* SwipeViewController */,
 				ACB5DD96202D5A6D00140A09 /* NumericKeyboard */,
+				ACB5DDA7202D712F00140A09 /* Extensions */,
 				ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */,
 				ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */,
 				ACB5DD92202C09DC00140A09 /* Interactor.swift */,
@@ -471,6 +501,8 @@
 			isa = PBXGroup;
 			children = (
 				ACB9116D2025575A00F14644 /* MarketNavigationViewController.swift */,
+				AC4141ED203524280089861D /* MarketSwipeViewController.swift */,
+				AC4141EE203524280089861D /* MarketSwipeViewController.xib */,
 				ACB9116F202557B100F14644 /* MarketViewController.swift */,
 				ACB91170202557B100F14644 /* MarketViewController.xib */,
 				ACB9117320255A6600F14644 /* MarketTableViewCell.swift */,
@@ -629,6 +661,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC798E4F2022B93A0071D477 /* LaunchScreen.storyboard in Resources */,
+				AC4141F0203524280089861D /* MarketSwipeViewController.xib in Resources */,
 				C8BF95B12027AC9400343B9A /* SetupViewController.xib in Resources */,
 				AC9280ED2030D34B0009B574 /* TradePlaceOrderViewController.xib in Resources */,
 				AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */,
@@ -847,19 +880,24 @@
 				ACB9117F2026385100F14644 /* SettingNavigationViewController.swift in Sources */,
 				AC6E95E520313D8A00C6EB7C /* UIApplicationExtension.swift in Sources */,
 				ACB9116020242E3F00F14644 /* Asset.swift in Sources */,
+				AC4141FB20352DE50089861D /* SwipeTabItemView.swift in Sources */,
 				ACB9116E2025575A00F14644 /* MarketNavigationViewController.swift in Sources */,
 				ACB911842026388700F14644 /* SettingViewController.swift in Sources */,
 				C87E226E2031708000323584 /* ToggleTableViewCell.swift in Sources */,
 				ACB911642024504E00F14644 /* Order.swift in Sources */,
 				AC9280E92030C7440009B574 /* UIColorExtensions.swift in Sources */,
+				AC4141F920352DA70089861D /* SwipeTabView.swift in Sources */,
+				AC4141F320352C460089861D /* SwipeViewController.swift in Sources */,
 				ACB91171202557B100F14644 /* MarketViewController.swift in Sources */,
 				ACB5DD93202C09DC00140A09 /* Interactor.swift in Sources */,
 				ACB9118C20266A9C00F14644 /* AssetDetailViewController.swift in Sources */,
 				ACB5DD91202C06FF00140A09 /* DismissAnimator.swift in Sources */,
 				AC9280E1202EC53D0009B574 /* TradeNavigationViewController.swift in Sources */,
 				AC01A2412022D94600FE8317 /* PortfolioNavigationController.swift in Sources */,
+				AC4141F520352D300089861D /* SwipeContentScrollView.swift in Sources */,
 				ACB5DDA2202D6F9400140A09 /* UIViewExtension.swift in Sources */,
 				AC9280E7202F5A010009B574 /* UIStyleConfig.swift in Sources */,
+				AC4141FD203532ED0089861D /* SwipeViewOptions.swift in Sources */,
 				ACB9119F202967A500F14644 /* OrderStatus.swift in Sources */,
 				ACB9117520255A6600F14644 /* MarketTableViewCell.swift in Sources */,
 				ACBDB1C52032D050003463A4 /* OpenOrderTableViewCell.swift in Sources */,
@@ -870,6 +908,7 @@
 				ACB5DDA0202D5B9900140A09 /* CGSizeExtension.swift in Sources */,
 				ACB9115A20242B9D00F14644 /* AssetTableViewCell.swift in Sources */,
 				ACB9117A20256B3C00F14644 /* MarketDataManager.swift in Sources */,
+				AC4141F720352D6B0089861D /* SwipeView.swift in Sources */,
 				ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */,
 				ACB9118820265DEA00F14644 /* MarketDetailViewController.swift in Sources */,
 				ACB911662024505D00F14644 /* Trade.swift in Sources */,
@@ -886,6 +925,7 @@
 				ACB911522024254F00F14644 /* WalletNavigationViewController.swift in Sources */,
 				ACB911552024260E00F14644 /* WalletViewController.swift in Sources */,
 				ACB911A320296B9900F14644 /* OriginalOrder.swift in Sources */,
+				AC4141EF203524280089861D /* MarketSwipeViewController.swift in Sources */,
 				ACB5DD98202D5A8400140A09 /* NumericKeyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
