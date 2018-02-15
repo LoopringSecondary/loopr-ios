@@ -45,7 +45,7 @@ extension DefaultNumericKeyboard: NumericKeyboardDataSource {
             case (3, 1):
                 return "0"
             case (3, 2):
-                return "00"
+                return "x"
             default:
                 var index = (0..<position.row).map { self.numericKeyboard(self, numberOfColumnsInRow: $0) }.reduce(0, +)
                 index += position.column
