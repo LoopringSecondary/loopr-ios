@@ -15,12 +15,13 @@ protocol TradePlaceOrderDelegate {
 class TradePlaceOrderViewController: UIViewController {
 
     var delegate: TradePlaceOrderDelegate?
-    
+    @IBOutlet weak var navigationBar: UINavigationBar!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        navigationBar.shadowImage = UIImage()
     }
 
     override func didReceiveMemoryWarning() {

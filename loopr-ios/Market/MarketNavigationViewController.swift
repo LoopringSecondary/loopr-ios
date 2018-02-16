@@ -14,6 +14,8 @@ class MarketNavigationViewController: UINavigationController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        navigationBar.shadowImage = UIImage()
+
         let viewController = MarketSwipeViewController(nibName: nil, bundle: nil)
         self.setViewControllers([viewController], animated: false)
     }

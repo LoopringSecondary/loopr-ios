@@ -14,6 +14,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SellViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="keyboardView" destination="0kp-MD-ulc" id="Vao-Re-uh5"/>
+                <outlet property="navigationBar" destination="NJT-CC-RpB" id="DTK-tQ-Fk7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

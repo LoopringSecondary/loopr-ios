@@ -21,7 +21,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         // Do any additional setup after loading the view.
         // playSampleLottieAnimation()
-        
+
         self.navigationController?.navigationBar.topItem?.title = "Settings"
     }
 

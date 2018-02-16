@@ -12,14 +12,15 @@ class SellViewController: UIViewController {
     
     var interactor:Interactor? = nil
 
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var keyboardView: DefaultNumericKeyboard!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-        
+        navigationBar.shadowImage = UIImage()
+
         keyboardView.delegate = self
         keyboardView.translatesAutoresizingMaskIntoConstraints = false
     }
