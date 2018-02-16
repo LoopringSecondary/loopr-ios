@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Market: CustomStringConvertible {
+class Market: Equatable, CustomStringConvertible {
     
     var description: String
     
@@ -25,6 +25,14 @@ class Market: CustomStringConvertible {
         
         balance = Double(arc4random_uniform(1000))
         volumeInPast24 = Double(arc4random_uniform(6)) * 100 + Double(arc4random_uniform(100))
+    }
+    
+    func isFavorite() -> Bool {
+        return MarketDataManager.shared.getFavoriteMarketKeys().contains(description)
+    }
+
+    static func ==(lhs: Market, rhs: Market) -> Bool {
+        return lhs.tradingPair == rhs.tradingPair
     }
 
 }

@@ -26,9 +26,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         
         self.title = market?.description
         
-        let starIcon = UIImage (named: "Star")?.withRenderingMode(.alwaysOriginal)
-        let starButton = UIBarButtonItem(image: starIcon, style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.pressStarButton(_:)))
-        self.navigationItem.rightBarButtonItem = starButton
+        udpateStarButton()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,8 +34,31 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         // Dispose of any resources that can be recreated.
     }
     
+    func udpateStarButton() {
+        var icon: UIImage?
+        if market!.isFavorite() {
+            icon = UIImage (named: "Star")?.withRenderingMode(.alwaysOriginal)
+        } else {
+            icon = UIImage (named: "StarOutline")?.withRenderingMode(.alwaysOriginal)
+        }
+        
+        let starButton = UIBarButtonItem(image: icon, style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.pressStarButton(_:)))
+        self.navigationItem.rightBarButtonItem = starButton
+    }
+    
     @objc func pressStarButton(_ button: UIBarButtonItem) {
         print("pressStarButton")
+        
+        guard let market = market else {
+            return
+        }
+
+        if market.isFavorite() {
+            MarketDataManager.shared.removeFavoriteMarket(market: market)
+        } else {
+            MarketDataManager.shared.setFavoriteMarket(market: market)
+        }
+        udpateStarButton()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

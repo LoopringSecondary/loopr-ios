@@ -41,6 +41,8 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         self.navigationController?.navigationBar.topItem?.title = "Market"
         
+        // TODO: putting getMarketsFromServer() here may cause a race condition.
+        // It's not perfect, but works. Need improvement in the future.
         MarketDataManager.shared.getMarketsFromServer { (markets, error) in
             guard error == nil else {
                 return
@@ -62,6 +64,13 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Setup the Scope Bar
         // searchController.searchBar.scopeButtonTitles = ["All", "ETH", "LRC", "Other"]
         // searchController.searchBar.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if (type == .favorite) {
+            self.marketTableView.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {

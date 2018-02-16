@@ -12,6 +12,8 @@ class MarketDataManager {
     
     static let shared = MarketDataManager()
     
+    private let favoriteMarketKeyConstant = "favoriteMarketKeyConstant"
+    private lazy var favoriteMarketKeys: [String] = self.getFavoriteMarketKeysFromLocal()
     private var markets: [Market]
     
     private init() {
@@ -23,7 +25,9 @@ class MarketDataManager {
         case .all:
             return markets
         case .favorite:
-            return markets
+            return markets.filter({ (market) -> Bool in
+                return favoriteMarketKeys.contains(market.description)
+            })
         case .ETH:
             return markets.filter({ (market) -> Bool in
                 return market.tradingPair.tradingA == "WETH" || market.tradingPair.tradingB == "WETH"
@@ -40,6 +44,39 @@ class MarketDataManager {
             self.markets = markets
             completionHandler(markets, error)
         }
+    }
+
+    func getFavoriteMarketKeys() -> [String] {
+        return favoriteMarketKeys
+    }
+    
+    func getFavoriteMarketKeysFromLocal() -> [String] {
+        let defaults = UserDefaults.standard
+        if let favoriteMarkets = defaults.stringArray(forKey: favoriteMarketKeyConstant) {
+            return favoriteMarkets
+        }
+        return []
+    }
+    
+    func updateFavoriteMarketKeysOnLocal() {
+        let defaults = UserDefaults.standard
+        defaults.set(favoriteMarketKeys, forKey: favoriteMarketKeyConstant)
+    }
+
+    func setFavoriteMarket(market: Market) {
+        // Update the array in the memory
+        favoriteMarketKeys.append(market.description)
+        
+        // Update the array in the disk
+        updateFavoriteMarketKeysOnLocal()
+    }
+    
+    func removeFavoriteMarket(market: Market) {
+        // Update the array in the memory
+        favoriteMarketKeys = favoriteMarketKeys.filter { $0 != market.description }
+
+        // Update the array in the disk
+        updateFavoriteMarketKeysOnLocal()
     }
 
 }
