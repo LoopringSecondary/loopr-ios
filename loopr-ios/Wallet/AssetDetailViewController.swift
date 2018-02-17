@@ -17,6 +17,9 @@ class AssetDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.title = asset?.symbol
+        
+        let button = UIBarButtonItem(image: UIImage.init(named: "QRCode"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.pressQRCodeButton(_:)))
+        self.navigationItem.rightBarButtonItem = button
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,6 +27,10 @@ class AssetDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @objc func pressQRCodeButton(_ button: UIBarButtonItem) {
+        print("pressQRCodeButton")
+        
+    }
 
     /*
     // MARK: - Navigation
