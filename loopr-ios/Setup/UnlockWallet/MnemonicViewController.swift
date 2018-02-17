@@ -10,10 +10,18 @@ import UIKit
 
 class MnemonicViewController: UIViewController {
 
+    @IBOutlet weak var mnemonicWordTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        mnemonicWordTextView.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
