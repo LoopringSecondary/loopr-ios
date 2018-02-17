@@ -23,11 +23,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please input your private key." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ujb-qZ-KOa">
-                    <rect key="frame" x="16" y="36" width="343" height="274.5"/>
+                    <rect key="frame" x="16" y="36" width="343" height="307.5"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <color key="tintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="Ujb-qZ-KOa" secondAttribute="height" multiplier="370:296" id="EJB-LP-qlx"/>
+                        <constraint firstAttribute="width" secondItem="Ujb-qZ-KOa" secondAttribute="height" multiplier="330:296" id="EJB-LP-qlx"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
