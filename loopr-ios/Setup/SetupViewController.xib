@@ -34,7 +34,7 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
-                        <action selector="unlockButtonPressed:" destination="-1" eventType="touchUpInside" id="xwH-vz-VEl"/>
+                        <action selector="unlockWalletButtonPressed:" destination="-1" eventType="touchUpInside" id="xwH-vz-VEl"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1g-wc-kTG">

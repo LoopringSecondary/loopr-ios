@@ -28,17 +28,17 @@ class SetupViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func unlockButtonPressed(_ sender: Any) {
-    
+    @IBAction func unlockWalletButtonPressed(_ sender: Any) {
+        let viewController = UnlockWalletSwipeViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction func generateWalletButtonPressed(_ sender: Any) {
-        let generateWalletViewController = GenerateWalletViewController();
-        generateWalletViewController.hidesBottomBarWhenPushed = true
+        let generateWalletViewController = GenerateWalletViewController()
         self.navigationController?.pushViewController(generateWalletViewController, animated: true)
     }
     
-    @IBAction func skipButtonPressed(_ sender: Any) {
+    @objc func skipButtonPressed(_ sender: Any) {
         self.dismiss(animated: true) {
             
         }
