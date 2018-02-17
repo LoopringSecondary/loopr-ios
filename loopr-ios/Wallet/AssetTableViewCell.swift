@@ -14,7 +14,6 @@ class AssetTableViewCell: UITableViewCell {
     
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var symbolLabel: UILabel!
-    @IBOutlet weak var enableSwitch: UISwitch!
     
     @IBOutlet weak var balanceLabel: UILabel!
 
@@ -33,7 +32,6 @@ class AssetTableViewCell: UITableViewCell {
         if let asset = asset {
             iconImageView.image = asset.icon
             symbolLabel.text = asset.symbol
-            enableSwitch.isOn = asset.enable
             balanceLabel.text = "\(asset.balance) \(asset.symbol)"
         }
     }

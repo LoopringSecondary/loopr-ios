@@ -20,13 +20,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="395" height="93.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YWz-Vm-C6m">
-                        <rect key="frame" x="328" y="27" width="51" height="31"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="49" id="4zk-Ja-LCi"/>
-                            <constraint firstAttribute="height" constant="31" id="lG0-3l-6hv"/>
-                        </constraints>
-                    </switch>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bitcoin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzi-Me-Sla">
                         <rect key="frame" x="80" y="19" width="241" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -50,16 +43,13 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="YWz-Vm-C6m" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="16" id="BaO-U0-Cnn"/>
                     <constraint firstItem="8vB-Bh-nJn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Cpi-bu-gUf"/>
-                    <constraint firstItem="YWz-Vm-C6m" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="2" id="Hnt-pX-M0O"/>
                     <constraint firstItem="8vB-Bh-nJn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="MPS-BF-CuM"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="balanceLabel" destination="MHg-k2-b9U" id="3bG-3Q-J3o"/>
-                <outlet property="enableSwitch" destination="YWz-Vm-C6m" id="a9A-bX-0fc"/>
                 <outlet property="iconImageView" destination="8vB-Bh-nJn" id="Mqd-Jo-eEH"/>
                 <outlet property="symbolLabel" destination="zzi-Me-Sla" id="ZWZ-xa-bCi"/>
             </connections>
