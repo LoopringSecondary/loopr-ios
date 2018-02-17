@@ -18,11 +18,9 @@ class SetupViewController: UIViewController {
         
         unlockWalletButton.layer.cornerRadius = 10
         generateWalletButton.layer.cornerRadius = 10
-        self.navigationController?.isNavigationBarHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-         self.navigationController?.isNavigationBarHidden = false
+
+        let skipButton = UIBarButtonItem(title: "Skip", style: .plain, target: self, action: #selector(self.skipButtonPressed(_:)))
+        self.navigationItem.rightBarButtonItem = skipButton
     }
 
     override func didReceiveMemoryWarning() {
