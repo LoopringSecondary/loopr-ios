@@ -20,6 +20,10 @@
 		AC4141FB20352DE50089861D /* SwipeTabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141FA20352DE50089861D /* SwipeTabItemView.swift */; };
 		AC4141FD203532ED0089861D /* SwipeViewOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141FC203532ED0089861D /* SwipeViewOptions.swift */; };
 		AC4141FF20356A4D0089861D /* MarketSwipeViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141FE20356A4D0089861D /* MarketSwipeViewType.swift */; };
+		AC4142042038B6370089861D /* WalletDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4142032038B6370089861D /* WalletDataManager.swift */; };
+		AC4142062038B66F0089861D /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4142052038B66F0089861D /* Wallet.swift */; };
+		AC41420A2038BF380089861D /* SetupDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4142092038BF380089861D /* SetupDataManager.swift */; };
+		AC41420C2038BFB70089861D /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41420B2038BFB70089861D /* UserDefaultsKeys.swift */; };
 		AC6E95E520313D8A00C6EB7C /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */; };
 		AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */; };
 		AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */; };
@@ -139,6 +143,10 @@
 		AC4141FA20352DE50089861D /* SwipeTabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTabItemView.swift; sourceTree = "<group>"; };
 		AC4141FC203532ED0089861D /* SwipeViewOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewOptions.swift; sourceTree = "<group>"; };
 		AC4141FE20356A4D0089861D /* MarketSwipeViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketSwipeViewType.swift; sourceTree = "<group>"; };
+		AC4142032038B6370089861D /* WalletDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDataManager.swift; sourceTree = "<group>"; };
+		AC4142052038B66F0089861D /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		AC4142092038BF380089861D /* SetupDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupDataManager.swift; sourceTree = "<group>"; };
+		AC41420B2038BFB70089861D /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketLineChartTableViewCell.swift; sourceTree = "<group>"; };
 		AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketLineChartTableViewCell.xib; sourceTree = "<group>"; };
@@ -485,6 +493,7 @@
 				ACB911652024505D00F14644 /* Trade.swift */,
 				ACB9117720256B0300F14644 /* Market.swift */,
 				ACB9117B20256BBA00F14644 /* TradingPair.swift */,
+				AC4142052038B66F0089861D /* Wallet.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -495,6 +504,9 @@
 				ACB911682025472A00F14644 /* AssetDataManager.swift */,
 				ACB9117920256B3C00F14644 /* MarketDataManager.swift */,
 				ACB911A020296AE500F14644 /* OrderDataManager.swift */,
+				AC4142032038B6370089861D /* WalletDataManager.swift */,
+				AC4142092038BF380089861D /* SetupDataManager.swift */,
+				AC41420B2038BFB70089861D /* UserDefaultsKeys.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -872,6 +884,7 @@
 				AC01A2442022D9BE00FE8317 /* PortfolioViewController.swift in Sources */,
 				ACB5DDA6202D704200140A09 /* UIButtonExtension.swift in Sources */,
 				ACB5DD8A202BF23100140A09 /* BuyViewController.swift in Sources */,
+				AC41420A2038BF380089861D /* SetupDataManager.swift in Sources */,
 				AC9280E4202EC5810009B574 /* TradeViewController.swift in Sources */,
 				ACB9119520278A4000F14644 /* Request.swift in Sources */,
 				AC9280EC2030D34B0009B574 /* TradePlaceOrderViewController.swift in Sources */,
@@ -885,6 +898,7 @@
 				ACB9116020242E3F00F14644 /* Asset.swift in Sources */,
 				AC4141FB20352DE50089861D /* SwipeTabItemView.swift in Sources */,
 				ACB9116E2025575A00F14644 /* MarketNavigationViewController.swift in Sources */,
+				AC4142062038B66F0089861D /* Wallet.swift in Sources */,
 				ACB911842026388700F14644 /* SettingViewController.swift in Sources */,
 				C87E226E2031708000323584 /* ToggleTableViewCell.swift in Sources */,
 				ACB911642024504E00F14644 /* Order.swift in Sources */,
@@ -921,8 +935,10 @@
 				AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */,
 				ACB911692025472A00F14644 /* AssetDataManager.swift in Sources */,
 				ACB911A120296AE500F14644 /* OrderDataManager.swift in Sources */,
+				AC41420C2038BFB70089861D /* UserDefaultsKeys.swift in Sources */,
 				ACB911992027F65800F14644 /* loopring_JSON_RPC.swift in Sources */,
 				ACB5DDA4202D6FC300140A09 /* UIImageExtension.swift in Sources */,
+				AC4142042038B6370089861D /* WalletDataManager.swift in Sources */,
 				AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */,
 				ACB5DD7C202A203900140A09 /* MarketLineChartViewController.swift in Sources */,
 				C8BF959D202696A900343B9A /* MainTabController.swift in Sources */,

@@ -10,29 +10,40 @@ import UIKit
 
 class MainTabController: UITabBarController {
 
-    //TODO: Create Account Manager Class
-    var accountExists = true
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if (!SetupDataManager.shared.hasPresented) {
+            SetupDataManager.shared.hasPresented = true
+
+            if (SetupDataManager.shared.hasBeenSetup()) {
+                
+            } else {
+                let setupViewController = SetupViewController(nibName: nil, bundle: nil)
+                self.present(setupViewController, animated: false) {
+                    
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

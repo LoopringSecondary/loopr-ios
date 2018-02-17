@@ -19,7 +19,6 @@ class SetupViewController: UIViewController {
         unlockWalletButton.layer.cornerRadius = 10
         generateWalletButton.layer.cornerRadius = 10
         self.navigationController?.isNavigationBarHidden = true
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -35,20 +34,16 @@ class SetupViewController: UIViewController {
     
     }
     
-    
     @IBAction func generateWalletButtonPressed(_ sender: Any) {
         let generateWalletViewController = GenerateWalletViewController();
         generateWalletViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(generateWalletViewController, animated: true)
     }
     
-    @IBAction func SkipButtonPressed(_ sender: Any) {
-        //Prevent multiple instanes of WalletVC existing.
-        //Temporary implementation.
-        //Add back the nav bar
-        let  viewController =  self.navigationController?.viewControllers.filter({$0 is WalletViewController}).first
-        self.navigationController?.popToViewController(viewController!, animated: true)
-        self.navigationController?.isNavigationBarHidden = false
+    @IBAction func skipButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true) {
+            
+        }
     }
     
     /*

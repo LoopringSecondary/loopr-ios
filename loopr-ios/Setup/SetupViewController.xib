@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -85,7 +81,7 @@
                     </constraints>
                     <state key="normal" title="Skip"/>
                     <connections>
-                        <action selector="SkipButtonPressed:" destination="-1" eventType="touchUpInside" id="zs3-RI-SJh"/>
+                        <action selector="skipButtonPressed:" destination="-1" eventType="touchUpInside" id="zs3-RI-SJh"/>
                     </connections>
                 </button>
             </subviews>

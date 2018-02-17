@@ -12,7 +12,6 @@ class MarketDataManager {
     
     static let shared = MarketDataManager()
     
-    private let favoriteMarketKeyConstant = "favoriteMarketKeyConstant"
     private lazy var favoriteMarketKeys: [String] = self.getFavoriteMarketKeysFromLocal()
     private var markets: [Market]
     
@@ -52,7 +51,7 @@ class MarketDataManager {
     
     func getFavoriteMarketKeysFromLocal() -> [String] {
         let defaults = UserDefaults.standard
-        if let favoriteMarkets = defaults.stringArray(forKey: favoriteMarketKeyConstant) {
+        if let favoriteMarkets = defaults.stringArray(forKey: UserDefaultsKeys.favoriteMarkets.rawValue) {
             return favoriteMarkets
         }
         return []
@@ -60,7 +59,7 @@ class MarketDataManager {
     
     func updateFavoriteMarketKeysOnLocal() {
         let defaults = UserDefaults.standard
-        defaults.set(favoriteMarketKeys, forKey: favoriteMarketKeyConstant)
+        defaults.set(favoriteMarketKeys, forKey: UserDefaultsKeys.favoriteMarkets.rawValue)
     }
 
     func setFavoriteMarket(market: Market) {
