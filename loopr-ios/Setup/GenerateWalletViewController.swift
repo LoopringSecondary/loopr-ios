@@ -19,6 +19,9 @@ class GenerateWalletViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,7 +30,8 @@ class GenerateWalletViewController: UIViewController {
     }
     
     @IBAction func generateWalletButtonPressed(_ sender: Any) {
-        
+        let viewController = GenerateMnemonicViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func checkPasswordStrength(){

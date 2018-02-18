@@ -21,6 +21,8 @@
 		AC3756792038D7E200AADC60 /* KeystoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC3756772038D7E200AADC60 /* KeystoreViewController.xib */; };
 		AC37567C2038D80300AADC60 /* PrivateKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37567A2038D80300AADC60 /* PrivateKeyViewController.swift */; };
 		AC37567D2038D80300AADC60 /* PrivateKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC37567B2038D80300AADC60 /* PrivateKeyViewController.xib */; };
+		AC3756802039198300AADC60 /* GenerateMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37567E2039198300AADC60 /* GenerateMnemonicViewController.swift */; };
+		AC3756812039198300AADC60 /* GenerateMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC37567F2039198300AADC60 /* GenerateMnemonicViewController.xib */; };
 		AC4141EF203524280089861D /* MarketSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141ED203524280089861D /* MarketSwipeViewController.swift */; };
 		AC4141F0203524280089861D /* MarketSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4141EE203524280089861D /* MarketSwipeViewController.xib */; };
 		AC4141F320352C460089861D /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141F220352C460089861D /* SwipeViewController.swift */; };
@@ -154,6 +156,8 @@
 		AC3756772038D7E200AADC60 /* KeystoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeystoreViewController.xib; sourceTree = "<group>"; };
 		AC37567A2038D80300AADC60 /* PrivateKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeyViewController.swift; sourceTree = "<group>"; };
 		AC37567B2038D80300AADC60 /* PrivateKeyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivateKeyViewController.xib; sourceTree = "<group>"; };
+		AC37567E2039198300AADC60 /* GenerateMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMnemonicViewController.swift; sourceTree = "<group>"; };
+		AC37567F2039198300AADC60 /* GenerateMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenerateMnemonicViewController.xib; sourceTree = "<group>"; };
 		AC4141ED203524280089861D /* MarketSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketSwipeViewController.swift; sourceTree = "<group>"; };
 		AC4141EE203524280089861D /* MarketSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketSwipeViewController.xib; sourceTree = "<group>"; };
 		AC4141F220352C460089861D /* SwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
@@ -592,6 +596,8 @@
 				C8BF95AF2027AC9400343B9A /* SetupViewController.xib */,
 				C8BF95A42027A10E00343B9A /* GenerateWalletViewController.swift */,
 				C8BF95A52027A10E00343B9A /* GenerateWalletViewController.xib */,
+				AC37567E2039198300AADC60 /* GenerateMnemonicViewController.swift */,
+				AC37567F2039198300AADC60 /* GenerateMnemonicViewController.xib */,
 				AC3756752038D70D00AADC60 /* UnlockWallet */,
 			);
 			path = Setup;
@@ -741,6 +747,7 @@
 				ACB5DD8F202C048E00140A09 /* SellViewController.xib in Resources */,
 				C8BF95A72027A10E00343B9A /* GenerateWalletViewController.xib in Resources */,
 				ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */,
+				AC3756812039198300AADC60 /* GenerateMnemonicViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -926,6 +933,7 @@
 				AC01A2442022D9BE00FE8317 /* PortfolioViewController.swift in Sources */,
 				ACB5DDA6202D704200140A09 /* UIButtonExtension.swift in Sources */,
 				ACB5DD8A202BF23100140A09 /* BuyViewController.swift in Sources */,
+				AC3756802039198300AADC60 /* GenerateMnemonicViewController.swift in Sources */,
 				AC41420A2038BF380089861D /* SetupDataManager.swift in Sources */,
 				AC9280E4202EC5810009B574 /* TradeViewController.swift in Sources */,
 				ACB9119520278A4000F14644 /* Request.swift in Sources */,
