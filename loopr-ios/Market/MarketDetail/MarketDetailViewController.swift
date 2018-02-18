@@ -26,6 +26,10 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         
         self.title = market?.description
         
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
         udpateStarButton()
     }
 

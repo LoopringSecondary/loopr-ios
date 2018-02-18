@@ -18,6 +18,9 @@ class UnlockWalletSwipeViewController: SwipeViewController {
 
         // Do any additional setup after loading the view.
         self.title = "Unlock Wallet"
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
         options.swipeTabView.height = 44
         options.swipeTabView.itemView.width = 66

@@ -17,6 +17,11 @@ class AssetDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.title = asset?.symbol
+
+        // For back button in navigation bar
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
         let button = UIBarButtonItem(image: UIImage.init(named: "QRCode"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.pressQRCodeButton(_:)))
         self.navigationItem.rightBarButtonItem = button
