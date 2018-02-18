@@ -38,9 +38,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
         marketTableView.dataSource = self
         marketTableView.delegate = self
-        
-        self.navigationController?.navigationBar.topItem?.title = "Market"
-        
+                
         // TODO: putting getMarketsFromServer() here may cause a race condition.
         // It's not perfect, but works. Need improvement in the future.
         MarketDataManager.shared.getMarketsFromServer { (markets, error) in
@@ -139,28 +137,42 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationController?.pushViewController(marketDetailViewController, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
-        let more = UITableViewRowAction(style: .normal, title: "More") { action, index in
-            print("more button tapped")
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        if (type == .favorite) {
+            // return nil
         }
-        more.backgroundColor = .lightGray
+
+        let action = UIContextualAction(style: .normal, title:  "Favorite", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            print("OK, marked as Favorite")
+            
+            let market = MarketDataManager.shared.getMarkets(type: self.type)[indexPath.row]
+            MarketDataManager.shared.setFavoriteMarket(market: market)
+            // self.marketTableView.reloadData()
+            success(true)
+        })
+        action.backgroundColor = defaultTintColor
         
-        let favorite = UITableViewRowAction(style: .normal, title: "Favorite") { action, index in
-            print("favorite button tapped")
+        return UISwipeActionsConfiguration(actions: [action])
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        if (type == .favorite) {
+            let action = UIContextualAction(style: .normal, title:  "Unfavourite", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+                print("OK, marked as Unfavourite")
+                
+                let market = MarketDataManager.shared.getMarkets(type: self.type)[indexPath.row]
+                MarketDataManager.shared.removeFavoriteMarket(market: market)
+                // self.marketTableView.reloadData()
+                success(true)
+            })
+            action.backgroundColor = defaultTintColor
+            
+            return UISwipeActionsConfiguration(actions: [action])
         }
-        favorite.backgroundColor = .orange
         
-        let share = UITableViewRowAction(style: .normal, title: "Share") { action, index in
-            print("share button tapped")
-        }
-        share.backgroundColor = .blue
-        
-        return [share, favorite, more]
+        return nil
     }
 
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
 }
 
 extension MarketViewController: UISearchBarDelegate {

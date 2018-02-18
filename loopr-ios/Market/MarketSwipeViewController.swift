@@ -11,12 +11,15 @@ import UIKit
 class MarketSwipeViewController: SwipeViewController {
 
     private var types: [MarketSwipeViewType] = [.favorite, .ETH, .LRC, .all]
+    private var viewControllers: [MarketViewController] = [MarketViewController(type: .favorite), MarketViewController(type: .ETH), MarketViewController(type: .LRC), MarketViewController(type: .all)]
     var options = SwipeViewOptions()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.title = "Market"
+        
         options.swipeTabView.height = 44
         options.swipeTabView.itemView.width = 66
         
@@ -32,6 +35,10 @@ class MarketSwipeViewController: SwipeViewController {
         options.swipeContentScrollView.isScrollEnabled = false
         
         swipeView.reloadData(options: options)
+        
+        for viewController in viewControllers {
+            self.addChildViewController(viewController)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,6 +62,8 @@ class MarketSwipeViewController: SwipeViewController {
 
     override func swipeView(_ swipeView: SwipeView, willChangeIndexFrom fromIndex: Int, to toIndex: Int) {
         print("will change from item \(fromIndex) to item \(toIndex)")
+        let viewController = viewControllers[toIndex]
+        viewController.marketTableView.reloadData()
     }
 
     override func swipeView(_ swipeView: SwipeView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
@@ -71,9 +80,7 @@ class MarketSwipeViewController: SwipeViewController {
     }
 
     override func swipeView(_ swipeView: SwipeView, viewControllerForPageAt index: Int) -> UIViewController {
-        let vc = MarketViewController(type: types[index])
-        self.addChildViewController(vc)
-        return vc
+        return viewControllers[index]
     }
 
 }
