@@ -27,6 +27,10 @@ class MarketSwipeViewController: SwipeViewController {
         options.swipeTabView.style = .segmented
         
         options.swipeTabView.itemView.font = UIFont.boldSystemFont(ofSize: 17)
+        
+        // This conflicts to the swipe action in the table view cell.
+        options.swipeContentScrollView.isScrollEnabled = false
+        
         swipeView.reloadData(options: options)
     }
 

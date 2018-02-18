@@ -138,7 +138,29 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         marketDetailViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(marketDetailViewController, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
+        let more = UITableViewRowAction(style: .normal, title: "More") { action, index in
+            print("more button tapped")
+        }
+        more.backgroundColor = .lightGray
+        
+        let favorite = UITableViewRowAction(style: .normal, title: "Favorite") { action, index in
+            print("favorite button tapped")
+        }
+        favorite.backgroundColor = .orange
+        
+        let share = UITableViewRowAction(style: .normal, title: "Share") { action, index in
+            print("share button tapped")
+        }
+        share.backgroundColor = .blue
+        
+        return [share, favorite, more]
+    }
 
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
 }
 
 extension MarketViewController: UISearchBarDelegate {
