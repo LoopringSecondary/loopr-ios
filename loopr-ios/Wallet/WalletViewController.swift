@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate {
 
     @IBOutlet weak var assetTableView: UITableView!
     
@@ -35,7 +35,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationItem.titleView = button
         
         let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
-        self.navigationItem.rightBarButtonItem = addButton
+        // self.navigationItem.rightBarButtonItem = addButton
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,43 +57,61 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return AssetDataManager.shared.getAssets().count
+        return 1 + AssetDataManager.shared.getAssets().count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return AssetTableViewCell.getHeight()
+        if (indexPath.row == 0) {
+            return WalletBalanceTableViewCell.getHeight()
+        } else {
+            return AssetTableViewCell.getHeight()
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: AssetTableViewCell.getCellIdentifier()) as? AssetTableViewCell
-        if (cell == nil) {
-            let nib = Bundle.main.loadNibNamed("AssetTableViewCell", owner: self, options: nil)
-            cell = nib![0] as? AssetTableViewCell
+        if (indexPath.row == 0) {
+            var cell = tableView.dequeueReusableCell(withIdentifier: WalletBalanceTableViewCell.getCellIdentifier()) as? WalletBalanceTableViewCell
+            if (cell == nil) {
+                let nib = Bundle.main.loadNibNamed("WalletBalanceTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? WalletBalanceTableViewCell
+                cell?.selectionStyle = .none
+                cell?.delegate = self
+            }
+            
+            cell?.totalBalanceLabel.text = "12000"
+            return cell!
+
+        } else {
+            var cell = tableView.dequeueReusableCell(withIdentifier: AssetTableViewCell.getCellIdentifier()) as? AssetTableViewCell
+            if (cell == nil) {
+                let nib = Bundle.main.loadNibNamed("AssetTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? AssetTableViewCell
+            }
+
+            cell?.asset = AssetDataManager.shared.getAssets()[indexPath.row-1]
+            cell?.update()
+            return cell!
         }
-        
-        // Configure the cell...
-        cell?.asset = AssetDataManager.shared.getAssets()[indexPath.row]
-        cell?.update()
-        return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let assetDetailViewController = AssetDetailViewController();
-        let asset = AssetDataManager.shared.getAssets()[indexPath.row]
-        assetDetailViewController.asset = asset
-        assetDetailViewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(assetDetailViewController, animated: true)
+        if (indexPath.row == 0) {
+            
+        } else {
+            tableView.deselectRow(at: indexPath, animated: true)
+            let assetDetailViewController = AssetDetailViewController();
+            let asset = AssetDataManager.shared.getAssets()[indexPath.row-1]
+            assetDetailViewController.asset = asset
+            assetDetailViewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(assetDetailViewController, animated: true)
+        }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func navigatToAddAssetViewController() {
+        print("navigatToAddAssetViewController")
+        let viewController = AddAssetViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
-    */
 
 }

@@ -24,7 +24,9 @@ class AddAssetViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.title = "Add Custom Token"
-        
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
 
     }
 
