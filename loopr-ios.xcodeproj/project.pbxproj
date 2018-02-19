@@ -356,6 +356,17 @@
 			path = SwipeViewController;
 			sourceTree = "<group>";
 		};
+		AC5E0DD2203A848300AF03C7 /* GenerateWallet */ = {
+			isa = PBXGroup;
+			children = (
+				C8BF95A42027A10E00343B9A /* GenerateWalletViewController.swift */,
+				C8BF95A52027A10E00343B9A /* GenerateWalletViewController.xib */,
+				AC37567E2039198300AADC60 /* GenerateMnemonicViewController.swift */,
+				AC37567F2039198300AADC60 /* GenerateMnemonicViewController.xib */,
+			);
+			path = GenerateWallet;
+			sourceTree = "<group>";
+		};
 		AC6E95F62032CBE900C6EB7C /* Archive */ = {
 			isa = PBXGroup;
 			children = (
@@ -614,10 +625,7 @@
 				AC3756652038CD7E00AADC60 /* SetupNavigationController.swift */,
 				C8BF95AE2027AC9400343B9A /* SetupViewController.swift */,
 				C8BF95AF2027AC9400343B9A /* SetupViewController.xib */,
-				C8BF95A42027A10E00343B9A /* GenerateWalletViewController.swift */,
-				C8BF95A52027A10E00343B9A /* GenerateWalletViewController.xib */,
-				AC37567E2039198300AADC60 /* GenerateMnemonicViewController.swift */,
-				AC37567F2039198300AADC60 /* GenerateMnemonicViewController.xib */,
+				AC5E0DD2203A848300AF03C7 /* GenerateWallet */,
 				AC3756752038D70D00AADC60 /* UnlockWallet */,
 			);
 			path = Setup;
