@@ -23,6 +23,8 @@
 		AC37567D2038D80300AADC60 /* PrivateKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC37567B2038D80300AADC60 /* PrivateKeyViewController.xib */; };
 		AC3756802039198300AADC60 /* GenerateMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37567E2039198300AADC60 /* GenerateMnemonicViewController.swift */; };
 		AC3756812039198300AADC60 /* GenerateMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC37567F2039198300AADC60 /* GenerateMnemonicViewController.xib */; };
+		AC375684203A641200AADC60 /* SelectWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC375682203A641200AADC60 /* SelectWalletViewController.swift */; };
+		AC375685203A641200AADC60 /* SelectWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC375683203A641200AADC60 /* SelectWalletViewController.xib */; };
 		AC4141EF203524280089861D /* MarketSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141ED203524280089861D /* MarketSwipeViewController.swift */; };
 		AC4141F0203524280089861D /* MarketSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4141EE203524280089861D /* MarketSwipeViewController.xib */; };
 		AC4141F320352C460089861D /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141F220352C460089861D /* SwipeViewController.swift */; };
@@ -158,6 +160,8 @@
 		AC37567B2038D80300AADC60 /* PrivateKeyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivateKeyViewController.xib; sourceTree = "<group>"; };
 		AC37567E2039198300AADC60 /* GenerateMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMnemonicViewController.swift; sourceTree = "<group>"; };
 		AC37567F2039198300AADC60 /* GenerateMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenerateMnemonicViewController.xib; sourceTree = "<group>"; };
+		AC375682203A641200AADC60 /* SelectWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletViewController.swift; sourceTree = "<group>"; };
+		AC375683203A641200AADC60 /* SelectWalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWalletViewController.xib; sourceTree = "<group>"; };
 		AC4141ED203524280089861D /* MarketSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketSwipeViewController.swift; sourceTree = "<group>"; };
 		AC4141EE203524280089861D /* MarketSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketSwipeViewController.xib; sourceTree = "<group>"; };
 		AC4141F220352C460089861D /* SwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
@@ -519,6 +523,8 @@
 				ACB9118B20266A9C00F14644 /* AssetDetailViewController.xib */,
 				ACB9118E20266EC200F14644 /* AddAssetViewController.swift */,
 				ACB9118F20266EC200F14644 /* AddAssetViewController.xib */,
+				AC375682203A641200AADC60 /* SelectWalletViewController.swift */,
+				AC375683203A641200AADC60 /* SelectWalletViewController.xib */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -736,6 +742,7 @@
 				ACB9115B20242B9D00F14644 /* AssetTableViewCell.xib in Resources */,
 				ACB9118D20266A9C00F14644 /* AssetDetailViewController.xib in Resources */,
 				AC01A2452022D9BE00FE8317 /* PortfolioViewController.xib in Resources */,
+				AC375685203A641200AADC60 /* SelectWalletViewController.xib in Resources */,
 				AC798E4C2022B93A0071D477 /* Assets.xcassets in Resources */,
 				AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */,
 				AC3756792038D7E200AADC60 /* KeystoreViewController.xib in Resources */,
@@ -984,6 +991,7 @@
 				ACB9117A20256B3C00F14644 /* MarketDataManager.swift in Sources */,
 				AC4141F720352D6B0089861D /* SwipeView.swift in Sources */,
 				ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */,
+				AC375684203A641200AADC60 /* SelectWalletViewController.swift in Sources */,
 				ACB9118820265DEA00F14644 /* MarketDetailViewController.swift in Sources */,
 				ACB911662024505D00F14644 /* Trade.swift in Sources */,
 				ACF71CB42033E723000E7618 /* TradeTableViewCell.swift in Sources */,

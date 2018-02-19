@@ -19,15 +19,30 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.dataSource = self
         assetTableView.delegate = self
         
-        self.title = "Wallet"
+        let button =  UIButton(type: .custom)
+        button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        button.setTitle("Wallet", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        button.setTitleColor(defaultTintColor, for: .normal)
+        button.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
 
+        button.addTarget(self, action: #selector(self.clickOnButton(_:)), for: .touchUpInside)
+        self.navigationItem.titleView = button
+        
         let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
         self.navigationItem.rightBarButtonItem = addButton
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func clickOnButton(_ button: UIButton) {
+        print("select another wallet.")
+        let viewController = SelectWalletViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc func pressAddButton(_ button: UIBarButtonItem) {
