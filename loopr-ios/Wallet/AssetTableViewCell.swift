@@ -36,6 +36,10 @@ class AssetTableViewCell: UITableViewCell {
         }
     }
     
+    class func getCellIdentifier() -> String {
+        return "AssetTableViewCell"
+    }
+    
     class func getHeight() -> CGFloat {
         return 90
     }

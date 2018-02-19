@@ -21,7 +21,12 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let button =  UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
-        button.setTitle("Wallet", for: .normal)
+        
+        var buttonTitle = WalletDataManager.shared.getCurrentWallet()?.name
+        if buttonTitle == nil {
+            buttonTitle = "Wallet"
+        }
+        button.setTitle(buttonTitle, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         button.setTitleColor(defaultTintColor, for: .normal)
         button.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
@@ -60,9 +65,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "AssetCellIdentifier"
-        
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? AssetTableViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: AssetTableViewCell.getCellIdentifier()) as? AssetTableViewCell
         if (cell == nil) {
             let nib = Bundle.main.loadNibNamed("AssetTableViewCell", owner: self, options: nil)
             cell = nib![0] as? AssetTableViewCell

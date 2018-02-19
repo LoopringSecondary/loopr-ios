@@ -1,19 +1,19 @@
 //
-//  OpenOrderTableViewCell.swift
+//  SelectWalletTableViewCell.swift
 //  loopr-ios
 //
-//  Created by xiaoruby on 2/12/18.
+//  Created by xiaoruby on 2/18/18.
 //  Copyright © 2018 Loopring. All rights reserved.
 //
 
 import UIKit
 
-class OpenOrderTableViewCell: UITableViewCell {
-
-    var order: Order?
+class SelectWalletTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var tradingPairLabel: UILabel!
-    @IBOutlet weak var amountLabel: UILabel!
+    var wallet: Wallet? = nil
+
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,17 +27,18 @@ class OpenOrderTableViewCell: UITableViewCell {
     }
     
     func update() {
-        guard let order = order else {
-            return
+        if let wallet = wallet {
+            nameLabel.text = wallet.name
+            addressLabel.text = wallet.address
         }
-        tradingPairLabel.text = order.tradingPairDescription
     }
-    
+
     class func getCellIdentifier() -> String {
-        return "OpenOrderTableViewCell"
+        return "SelectWalletTableViewCell"
     }
     
     class func getHeight() -> CGFloat {
         return 90
     }
+
 }

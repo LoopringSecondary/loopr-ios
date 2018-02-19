@@ -108,9 +108,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "MarketCellIdentifier"
-        
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? MarketTableViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: MarketTableViewCell.getCellIdentifier()) as? MarketTableViewCell
         if (cell == nil) {
             let nib = Bundle.main.loadNibNamed("MarketTableViewCell", owner: self, options: nil)
             cell = nib![0] as? MarketTableViewCell

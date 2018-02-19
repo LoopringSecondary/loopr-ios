@@ -137,10 +137,8 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (indexPath.section == 0 && indexPath.row == 0) {
-            let cellIdentifier = "MarketLineChartTableViewCellIdentifier"
-            
-            var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? MarketLineChartTableViewCell
+        if (indexPath.section == 0 && indexPath.row == 0) {            
+            var cell = tableView.dequeueReusableCell(withIdentifier: MarketLineChartTableViewCell.getCellIdentifier()) as? MarketLineChartTableViewCell
             if (cell == nil) {
                 let nib = Bundle.main.loadNibNamed("MarketLineChartTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? MarketLineChartTableViewCell
@@ -164,13 +162,10 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                     
                 }
             }
-            
-            // Configure the cell...
             return cell!
-        } else if (indexPath.section == 1) {
-            let cellIdentifier = "OpenOrderTableViewCellIdentifier"
-            
-            var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? OpenOrderTableViewCell
+
+        } else if (indexPath.section == 1) {            
+            var cell = tableView.dequeueReusableCell(withIdentifier: OpenOrderTableViewCell.getCellIdentifier()) as? OpenOrderTableViewCell
             if (cell == nil) {
                 let nib = Bundle.main.loadNibNamed("OpenOrderTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? OpenOrderTableViewCell
@@ -179,13 +174,10 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             
             cell?.order = OrderDataManager.shared.getOrders(orderStatuses: [.new, .partial])[indexPath.row]
             cell?.update()
-            
-            // Configure the cell...
             return cell!
-        } else {
-            let cellIdentifier = "TradeTableViewCellIdentifier"
-            
-            var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? TradeTableViewCell
+
+        } else {            
+            var cell = tableView.dequeueReusableCell(withIdentifier: TradeTableViewCell.getCellIdentifier()) as? TradeTableViewCell
             if (cell == nil) {
                 let nib = Bundle.main.loadNibNamed("TradeTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? TradeTableViewCell
@@ -194,8 +186,6 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             
             cell?.order = OrderDataManager.shared.getOrders(orderStatuses: [.finished])[indexPath.row]
             cell?.update()
-            
-            // Configure the cell...
             return cell!
         }
     }

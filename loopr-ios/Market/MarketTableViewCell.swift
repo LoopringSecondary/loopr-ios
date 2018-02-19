@@ -33,6 +33,10 @@ class MarketTableViewCell: UITableViewCell {
         }
     }
     
+    class func getCellIdentifier() -> String {
+        return "MarketTableViewCell"
+    }
+    
     class func getHeight() -> CGFloat {
         return 90
     }

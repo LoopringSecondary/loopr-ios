@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Generate mock data
         AssetDataManager.shared.generateMockData()
+        WalletDataManager.shared.generateMockData()
         
         // Get data from Relay
         OrderDataManager.shared.getOrdersFromServer()

@@ -38,6 +38,8 @@
 		AC4142062038B66F0089861D /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4142052038B66F0089861D /* Wallet.swift */; };
 		AC41420A2038BF380089861D /* SetupDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4142092038BF380089861D /* SetupDataManager.swift */; };
 		AC41420C2038BFB70089861D /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41420B2038BFB70089861D /* UserDefaultsKeys.swift */; };
+		AC5E0DD0203A7C5800AF03C7 /* SelectWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0DCE203A7C5800AF03C7 /* SelectWalletTableViewCell.swift */; };
+		AC5E0DD1203A7C5800AF03C7 /* SelectWalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E0DCF203A7C5800AF03C7 /* SelectWalletTableViewCell.xib */; };
 		AC6E95E520313D8A00C6EB7C /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */; };
 		AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */; };
 		AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */; };
@@ -175,6 +177,8 @@
 		AC4142052038B66F0089861D /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		AC4142092038BF380089861D /* SetupDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupDataManager.swift; sourceTree = "<group>"; };
 		AC41420B2038BFB70089861D /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
+		AC5E0DCE203A7C5800AF03C7 /* SelectWalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletTableViewCell.swift; sourceTree = "<group>"; };
+		AC5E0DCF203A7C5800AF03C7 /* SelectWalletTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWalletTableViewCell.xib; sourceTree = "<group>"; };
 		AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketLineChartTableViewCell.swift; sourceTree = "<group>"; };
 		AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketLineChartTableViewCell.xib; sourceTree = "<group>"; };
@@ -326,6 +330,17 @@
 				AC37567B2038D80300AADC60 /* PrivateKeyViewController.xib */,
 			);
 			path = UnlockWallet;
+			sourceTree = "<group>";
+		};
+		AC375686203A7B0A00AADC60 /* SelectWallet */ = {
+			isa = PBXGroup;
+			children = (
+				AC375682203A641200AADC60 /* SelectWalletViewController.swift */,
+				AC375683203A641200AADC60 /* SelectWalletViewController.xib */,
+				AC5E0DCE203A7C5800AF03C7 /* SelectWalletTableViewCell.swift */,
+				AC5E0DCF203A7C5800AF03C7 /* SelectWalletTableViewCell.xib */,
+			);
+			path = SelectWallet;
 			sourceTree = "<group>";
 		};
 		AC4141F120352C130089861D /* SwipeViewController */ = {
@@ -523,8 +538,7 @@
 				ACB9118B20266A9C00F14644 /* AssetDetailViewController.xib */,
 				ACB9118E20266EC200F14644 /* AddAssetViewController.swift */,
 				ACB9118F20266EC200F14644 /* AddAssetViewController.xib */,
-				AC375682203A641200AADC60 /* SelectWalletViewController.swift */,
-				AC375683203A641200AADC60 /* SelectWalletViewController.xib */,
+				AC375686203A7B0A00AADC60 /* SelectWallet */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -739,6 +753,7 @@
 				AC3756742038D64B00AADC60 /* MnemonicViewController.xib in Resources */,
 				ACBDB1C62032D050003463A4 /* OpenOrderTableViewCell.xib in Resources */,
 				ACB9118920265DEA00F14644 /* MarketDetailViewController.xib in Resources */,
+				AC5E0DD1203A7C5800AF03C7 /* SelectWalletTableViewCell.xib in Resources */,
 				ACB9115B20242B9D00F14644 /* AssetTableViewCell.xib in Resources */,
 				ACB9118D20266A9C00F14644 /* AssetDetailViewController.xib in Resources */,
 				AC01A2452022D9BE00FE8317 /* PortfolioViewController.xib in Resources */,
@@ -995,6 +1010,7 @@
 				ACB9118820265DEA00F14644 /* MarketDetailViewController.swift in Sources */,
 				ACB911662024505D00F14644 /* Trade.swift in Sources */,
 				ACF71CB42033E723000E7618 /* TradeTableViewCell.swift in Sources */,
+				AC5E0DD0203A7C5800AF03C7 /* SelectWalletTableViewCell.swift in Sources */,
 				ACB9117820256B0300F14644 /* Market.swift in Sources */,
 				AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */,
 				ACB911692025472A00F14644 /* AssetDataManager.swift in Sources */,

@@ -33,6 +33,10 @@ class TradeTableViewCell: UITableViewCell {
         tradingPairLabel.text = order.tradingPairDescription
     }
     
+    class func getCellIdentifier() -> String {
+        return "TradeTableViewCell"
+    }
+    
     class func getHeight() -> CGFloat {
         return 90
     }

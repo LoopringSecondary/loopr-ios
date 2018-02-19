@@ -18,4 +18,26 @@ class WalletDataManager {
         wallets = []
     }
 
+    private var currentWallet: Wallet?
+    
+    func getCurrentWallet() -> Wallet? {
+        return currentWallet
+    }
+    
+    func setCurrentWallet(_ wallet: Wallet) {
+        currentWallet = wallet
+    }
+    
+    func getWallets() -> [Wallet] {
+        return wallets
+    }
+
+    func generateMockData() {
+        let wallet1 = Wallet(address: "#1234567890qwertyuiop1", name: "Wallet 1", active: true)
+        let wallet2 = Wallet(address: "#1234567890qwertyuiop2", name: "Wallet 2", active: true)
+        let wallet3 = Wallet(address: "#1234567890qwertyuiop3", name: "Wallet 3", active: true)
+
+        wallets = [wallet1, wallet2, wallet3]
+        setCurrentWallet(wallet1)
+    }
 }
