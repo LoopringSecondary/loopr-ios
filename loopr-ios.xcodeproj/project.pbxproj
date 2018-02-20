@@ -117,6 +117,7 @@
 		ACBDB1C52032D050003463A4 /* OpenOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBDB1C32032D050003463A4 /* OpenOrderTableViewCell.swift */; };
 		ACBDB1C62032D050003463A4 /* OpenOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBDB1C42032D050003463A4 /* OpenOrderTableViewCell.xib */; };
 		ACCCFDCE203BEF2200B98F99 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */; };
+		ACCCFDD0203BF1D100B98F99 /* FloatLabelTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCFDCF203BF1D100B98F99 /* FloatLabelTextView.swift */; };
 		ACF71CB42033E723000E7618 /* TradeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */; };
 		ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */; };
 		C87E226E2031708000323584 /* ToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E226D2031708000323584 /* ToggleTableViewCell.swift */; };
@@ -270,6 +271,7 @@
 		ACBDB1C32032D050003463A4 /* OpenOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOrderTableViewCell.swift; sourceTree = "<group>"; };
 		ACBDB1C42032D050003463A4 /* OpenOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenOrderTableViewCell.xib; sourceTree = "<group>"; };
 		ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		ACCCFDCF203BF1D100B98F99 /* FloatLabelTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatLabelTextView.swift; sourceTree = "<group>"; };
 		ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeTableViewCell.swift; sourceTree = "<group>"; };
 		ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeTableViewCell.xib; sourceTree = "<group>"; };
 		C87E226D2031708000323584 /* ToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleTableViewCell.swift; sourceTree = "<group>"; };
@@ -536,6 +538,7 @@
 				ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */,
 				ACB5DD92202C09DC00140A09 /* Interactor.swift */,
 				AC5E0DE3203BC4B100AF03C7 /* FloatLabelTextField.swift */,
+				ACCCFDCF203BF1D100B98F99 /* FloatLabelTextView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -1033,6 +1036,7 @@
 				AC9280E92030C7440009B574 /* UIColorExtensions.swift in Sources */,
 				AC4141F920352DA70089861D /* SwipeTabView.swift in Sources */,
 				AC4141F320352C460089861D /* SwipeViewController.swift in Sources */,
+				ACCCFDD0203BF1D100B98F99 /* FloatLabelTextView.swift in Sources */,
 				AC5E0DDE203B447700AF03C7 /* WalletBalanceTableViewCell.swift in Sources */,
 				ACB91171202557B100F14644 /* MarketViewController.swift in Sources */,
 				ACB5DD93202C09DC00140A09 /* Interactor.swift in Sources */,
