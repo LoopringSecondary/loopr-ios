@@ -12,6 +12,8 @@ import UIKit
 // Colors
 let defaultTintColor = UIColor.init(white: 0.2, alpha: 1)
 
+let systemDefaultBlueTintColor = UIColor.init(red: 0.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1)
+
 let lineChartFillColor = UIColor(red: 44/255, green: 44/255, blue: 44/255, alpha: 0.4)
 
 let tabBarTintColor = UIColor(white: 0, alpha: 1)
