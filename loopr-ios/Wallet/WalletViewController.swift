@@ -78,7 +78,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 cell?.delegate = self
             }
             
-            cell?.totalBalanceLabel.text = "12000"
+            cell?.setup()
+            // cell?.totalBalanceLabel.text = "12000"
             return cell!
 
         } else {

@@ -20,7 +20,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="395" height="159.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7U-cy-vgg">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7U-cy-vgg" customClass="EFCountingLabel" customModule="EFCountingLabel">
                         <rect key="frame" x="36" y="39" width="323" height="43"/>
                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                         <nil key="textColor"/>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EFCountingLabel
 
 protocol WalletBalanceTableViewCellDelegate {
     func navigatToAddAssetViewController()
@@ -16,7 +17,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
     
     var delegate: WalletBalanceTableViewCellDelegate?
 
-    @IBOutlet weak var totalBalanceLabel: UILabel!
+    @IBOutlet weak var totalBalanceLabel: EFCountingLabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +28,10 @@ class WalletBalanceTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setup() {
+        totalBalanceLabel.countFrom(1, to: 10, withDuration: 3.0)
     }
 
     @IBAction func pressAddButton(_ sender: Any) {

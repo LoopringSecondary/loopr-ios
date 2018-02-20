@@ -2,6 +2,7 @@ PODS:
   - Charts (3.0.4):
     - Charts/Core (= 3.0.4)
   - Charts/Core (3.0.4)
+  - EFCountingLabel (4.0.1)
   - lottie-ios (2.1.5)
   - pop (1.0.10)
   - PopupDialog (0.6.2)
@@ -9,6 +10,7 @@ PODS:
 
 DEPENDENCIES:
   - Charts
+  - EFCountingLabel
   - lottie-ios
   - pop
   - PopupDialog
@@ -16,11 +18,12 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Charts: 0705898046257443f0afbbc3179f4b67507b6e48
+  EFCountingLabel: 1beb6707761ad00b97efc8bde5c3fceaa7cb9eec
   lottie-ios: 836cdbba92f62f3c6a00e37a4ce485321fe317cf
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   PopupDialog: d4336d7274a6aa3af4cb26d8b6691510eba90cc3
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: d48b50f8db95aeeaf8cc8c727c331924ac7558ec
+PODFILE CHECKSUM: a5ab2fd09b404af4cf030b58f0be4e4416844117
 
 COCOAPODS: 1.3.1
