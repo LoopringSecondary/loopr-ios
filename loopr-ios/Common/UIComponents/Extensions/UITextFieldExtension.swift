@@ -19,5 +19,21 @@ extension UITextField {
         self.layer.shadowOpacity = 1.0
         self.layer.shadowRadius = 0.0
     }
+    
+    func setDefault() {
+        self.textColor = UIColor.black
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 5.0
+        self.layer.masksToBounds = true
+        self.layer.borderColor = UIColor.init(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1).cgColor
+    }
+    
+    func setActive() {
+        self.textColor = systemDefaultBlueTintColor
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 5.0
+        self.layer.masksToBounds = true
+        self.layer.borderColor = systemDefaultBlueTintColor.cgColor
+    }
 }
 

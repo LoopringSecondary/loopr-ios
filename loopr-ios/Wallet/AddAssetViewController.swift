@@ -33,6 +33,7 @@ class AddAssetViewController: UIViewController, UITextFieldDelegate {
 
         tokenNameTextField.becomeFirstResponder()
         tokenNameTitleLabel.textColor = systemDefaultBlueTintColor
+        tokenNameTextField.setActive()
 
         tokenNameTextField.delegate = self
         tokenContractAddressTextField.delegate = self
@@ -50,34 +51,55 @@ class AddAssetViewController: UIViewController, UITextFieldDelegate {
         
         if (textField == tokenNameTextField) {
             tokenNameTitleLabel.textColor = systemDefaultBlueTintColor
-            tokenSymbolTextField.textColor = systemDefaultBlueTintColor
-            /*
-            tokenNameTextField.layer.borderWidth = 0.5
-            tokenNameTextField.layer.cornerRadius = 8.0
-            tokenNameTextField.layer.masksToBounds = true
-            tokenNameTextField.layer.borderColor = UIColor.init(red: 0.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1).cgColor
-            */
+            tokenNameTextField.setActive()
+            
             tokenContractAddressTitleLabel.textColor = UIColor.black
+            tokenContractAddressTextField.setDefault()
+            
             tokenSymbolTitleLabel.textColor = UIColor.black
+            tokenSymbolTextField.setDefault()
+            
             decimalsTitleLabel.textColor = UIColor.black
+            decimalsTextField.setDefault()
             
         } else if (textField == tokenContractAddressTextField) {
             tokenNameTitleLabel.textColor = UIColor.black
+            tokenNameTextField.setDefault()
+            
             tokenContractAddressTitleLabel.textColor = systemDefaultBlueTintColor
+            tokenContractAddressTextField.setActive()
+            
             tokenSymbolTitleLabel.textColor = UIColor.black
+            tokenSymbolTextField.setDefault()
+            
             decimalsTitleLabel.textColor = UIColor.black
+            decimalsTextField.setDefault()
             
         } else if (textField == tokenSymbolTextField) {
             tokenNameTitleLabel.textColor = UIColor.black
+            tokenNameTextField.setDefault()
+            
             tokenContractAddressTitleLabel.textColor = UIColor.black
+            tokenContractAddressTextField.setDefault()
+            
             tokenSymbolTitleLabel.textColor = systemDefaultBlueTintColor
+            tokenSymbolTextField.setActive()
+            
             decimalsTitleLabel.textColor = UIColor.black
+            decimalsTextField.setDefault()
             
         } else if (textField == decimalsTextField) {
             tokenNameTitleLabel.textColor = UIColor.black
+            tokenNameTextField.setDefault()
+            
             tokenContractAddressTitleLabel.textColor = UIColor.black
+            tokenContractAddressTextField.setDefault()
+            
             tokenSymbolTitleLabel.textColor = UIColor.black
+            tokenSymbolTextField.setDefault()
+            
             decimalsTitleLabel.textColor = systemDefaultBlueTintColor
+            decimalsTextField.setActive()
         }
     }
 }
