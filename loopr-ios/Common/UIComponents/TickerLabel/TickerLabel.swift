@@ -30,8 +30,10 @@ class TickerLabel: UIView {
     var font: UIFont = UIFont.systemFont(ofSize: 30)
     @IBInspectable var textColor: UIColor = UIColor.black
     
-    var scrollDirection: TickerLabelScrollDirection = .down
-    
+    // TODO: This may conflict to isOneDirection
+    var scrollDirection: TickerLabelScrollDirection = .up
+    var isOneDirection = true
+
     var shadowColor: UIColor = UIColor.clear
     
     var shadowOffset: CGSize = CGSize()
@@ -116,6 +118,15 @@ class TickerLabel: UIView {
             }
         }
         
+        var oldValue = Double(self.text)
+        if oldValue == nil {
+            oldValue = 0
+        }
+        var newValue = Double(text)
+        if newValue == nil {
+            newValue = 0
+        }
+        let oneScrollDirection: TickerLabelScrollDirection = oldValue! > newValue! ? .up : .down
         
         for i in 0 ..< characterViews.count {
             
@@ -130,19 +141,24 @@ class TickerLabel: UIView {
                 let newValue = Int(character) ?? 0
                 // jump from 9 to 0 should be animated in the correct direction
                 if oldValue == 9 && newValue != 8 {
-                    self.addLabelAnimation(characterView, direction: TickerLabelScrollDirection.down)
+                    let direction = isOneDirection ? oneScrollDirection: TickerLabelScrollDirection.down
+                    self.addLabelAnimation(characterView, direction: direction)
                 }
                 else if (oldValue == 0 || oldValue == 1) && newValue == 9 {
-                    self.addLabelAnimation(characterView, direction: TickerLabelScrollDirection.up)
+                    let direction = isOneDirection ? oneScrollDirection:TickerLabelScrollDirection.up
+                    self.addLabelAnimation(characterView, direction: direction)
                 }
                 else if oldValue > newValue {
-                    self.addLabelAnimation(characterView, direction: TickerLabelScrollDirection.up)
+                    let direction = isOneDirection ? oneScrollDirection:TickerLabelScrollDirection.up
+                    self.addLabelAnimation(characterView, direction: direction)
                 }
                 else if oldValue < newValue {
-                    self.addLabelAnimation(characterView, direction: TickerLabelScrollDirection.down)
+                    let direction = isOneDirection ? oneScrollDirection:TickerLabelScrollDirection.down
+                    self.addLabelAnimation(characterView, direction: direction)
                 }
                 else {
-                    self.addLabelAnimation(characterView, direction: TickerLabelScrollDirection.down)
+                    let direction = isOneDirection ? oneScrollDirection:TickerLabelScrollDirection.down
+                    self.addLabelAnimation(characterView, direction: direction)
                 }
             }
         }
