@@ -38,6 +38,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // self.navigationItem.rightBarButtonItem = addButton
     }
 
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

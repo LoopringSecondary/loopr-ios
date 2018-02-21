@@ -22,7 +22,7 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rb9-5m-PRj">
                         <rect key="frame" x="36" y="37" width="323" height="43"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="36"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>

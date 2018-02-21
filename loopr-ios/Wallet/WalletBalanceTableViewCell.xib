@@ -20,12 +20,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="395" height="159.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7U-cy-vgg" customClass="EFCountingLabel" customModule="EFCountingLabel">
-                        <rect key="frame" x="36" y="39" width="323" height="43"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EnQ-Fk-Jne">
                         <rect key="frame" x="0.0" y="115" width="395" height="44"/>
                         <constraints>
@@ -42,20 +36,27 @@
                             </navigationItem>
                         </items>
                     </navigationBar>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1FF-gI-ta8" customClass="TickerLabel" customModule="loopr_ios" customModuleProvider="target">
+                        <rect key="frame" x="20" y="37" width="355" height="50"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="mCn-zs-TbZ"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="u7U-cy-vgg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="28" id="1wB-Kq-yju"/>
                     <constraint firstItem="EnQ-Fk-Jne" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="3Eq-ae-29p"/>
-                    <constraint firstItem="u7U-cy-vgg" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="7F2-bE-H61"/>
-                    <constraint firstItem="u7U-cy-vgg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="16" id="Miy-SQ-VD0"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="u7U-cy-vgg" secondAttribute="trailing" constant="16" id="NXx-PA-bVs"/>
+                    <constraint firstItem="1FF-gI-ta8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="7js-j9-vGL"/>
+                    <constraint firstItem="1FF-gI-ta8" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Jla-Wc-dit"/>
+                    <constraint firstItem="1FF-gI-ta8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="26" id="ThD-iX-ro7"/>
                     <constraint firstAttribute="bottom" secondItem="EnQ-Fk-Jne" secondAttribute="bottom" id="aj1-nS-eDE"/>
+                    <constraint firstItem="1FF-gI-ta8" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="pIg-Gd-Bxq"/>
                     <constraint firstAttribute="trailing" secondItem="EnQ-Fk-Jne" secondAttribute="trailing" id="pRh-xC-JK2"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="totalBalanceLabel" destination="u7U-cy-vgg" id="q9H-Aj-K5y"/>
+                <outlet property="balanceLabel" destination="1FF-gI-ta8" id="8V6-xP-grM"/>
             </connections>
             <point key="canvasLocation" x="81.5" y="125"/>
         </tableViewCell>

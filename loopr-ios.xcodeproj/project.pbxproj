@@ -11,6 +11,9 @@
 		AC01A2412022D94600FE8317 /* PortfolioNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC01A2402022D94600FE8317 /* PortfolioNavigationController.swift */; };
 		AC01A2442022D9BE00FE8317 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC01A2422022D9BE00FE8317 /* PortfolioViewController.swift */; };
 		AC01A2452022D9BE00FE8317 /* PortfolioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC01A2432022D9BE00FE8317 /* PortfolioViewController.xib */; };
+		AC0C5C82203D153F00C8618D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0C5C81203D153F00C8618D /* CoreGraphics.framework */; };
+		AC0C5C84203D154700C8618D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0C5C83203D154700C8618D /* QuartzCore.framework */; };
+		AC0C5C86203D168C00C8618D /* TickerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C5C85203D168C00C8618D /* TickerLabel.swift */; };
 		AC3756662038CD7E00AADC60 /* SetupNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3756652038CD7E00AADC60 /* SetupNavigationController.swift */; };
 		AC37566D2038D37400AADC60 /* UnlockWalletSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37566B2038D37400AADC60 /* UnlockWalletSwipeViewController.swift */; };
 		AC37566E2038D37400AADC60 /* UnlockWalletSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC37566C2038D37400AADC60 /* UnlockWalletSwipeViewController.xib */; };
@@ -159,6 +162,10 @@
 		AC01A2402022D94600FE8317 /* PortfolioNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioNavigationController.swift; sourceTree = "<group>"; };
 		AC01A2422022D9BE00FE8317 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		AC01A2432022D9BE00FE8317 /* PortfolioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioViewController.xib; sourceTree = "<group>"; };
+		AC0C5C7A203D131200C8618D /* loopr-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "loopr-ios-Bridging-Header.h"; sourceTree = "<group>"; };
+		AC0C5C81203D153F00C8618D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AC0C5C83203D154700C8618D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AC0C5C85203D168C00C8618D /* TickerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerLabel.swift; sourceTree = "<group>"; };
 		AC3756652038CD7E00AADC60 /* SetupNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNavigationController.swift; sourceTree = "<group>"; };
 		AC37566B2038D37400AADC60 /* UnlockWalletSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWalletSwipeViewController.swift; sourceTree = "<group>"; };
 		AC37566C2038D37400AADC60 /* UnlockWalletSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnlockWalletSwipeViewController.xib; sourceTree = "<group>"; };
@@ -288,6 +295,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC0C5C84203D154700C8618D /* QuartzCore.framework in Frameworks */,
+				AC0C5C82203D153F00C8618D /* CoreGraphics.framework in Frameworks */,
 				EE817669636361AFF682A8F5 /* Pods_loopr_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,6 +323,8 @@
 		573126224A6973A7617FB170 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC0C5C83203D154700C8618D /* QuartzCore.framework */,
+				AC0C5C81203D153F00C8618D /* CoreGraphics.framework */,
 				929BB32EF62C4BD6BC1DFC8F /* Pods_loopr_ios.framework */,
 				5FFC6AA9DC8C999B66FFD8AA /* Pods_loopr_iosTests.framework */,
 				CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */,
@@ -457,6 +468,7 @@
 				ACB5DD83202ACBF800140A09 /* AfterEffectsAnimations */,
 				AC798E4D2022B93A0071D477 /* LaunchScreen.storyboard */,
 				AC798E502022B93A0071D477 /* Info.plist */,
+				AC0C5C7A203D131200C8618D /* loopr-ios-Bridging-Header.h */,
 			);
 			path = "loopr-ios";
 			sourceTree = "<group>";
@@ -535,6 +547,7 @@
 				ACB5DD96202D5A6D00140A09 /* NumericKeyboard */,
 				ACB5DDA7202D712F00140A09 /* Extensions */,
 				ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */,
+				AC0C5C85203D168C00C8618D /* TickerLabel.swift */,
 				ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */,
 				ACB5DD92202C09DC00140A09 /* Interactor.swift */,
 				AC5E0DE3203BC4B100AF03C7 /* FloatLabelTextField.swift */,
@@ -751,6 +764,7 @@
 				TargetAttributes = {
 					AC798E3E2022B93A0071D477 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					AC798E542022B93B0071D477 = {
@@ -1082,6 +1096,7 @@
 				AC4142042038B6370089861D /* WalletDataManager.swift in Sources */,
 				AC5E0DD6203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift in Sources */,
 				AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */,
+				AC0C5C86203D168C00C8618D /* TickerLabel.swift in Sources */,
 				ACB5DD7C202A203900140A09 /* MarketLineChartViewController.swift in Sources */,
 				C8BF959D202696A900343B9A /* MainTabController.swift in Sources */,
 				ACB911522024254F00F14644 /* WalletNavigationViewController.swift in Sources */,
@@ -1256,12 +1271,15 @@
 			baseConfigurationReference = 39749EB6C85A60ED73F83B9E /* Pods-loopr-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.dev.loopr-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1272,12 +1290,14 @@
 			baseConfigurationReference = 0C8EC92DEC13D2448238E02B /* Pods-loopr-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.dev.loopr-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
