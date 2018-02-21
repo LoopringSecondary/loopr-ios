@@ -30,7 +30,7 @@ class TickerLabel: UIView {
     var font: UIFont = UIFont.systemFont(ofSize: 30)
     @IBInspectable var textColor: UIColor = UIColor.black
     
-    var scrollDirection: TickerLabelScrollDirection = .up
+    var scrollDirection: TickerLabelScrollDirection = .down
     
     var shadowColor: UIColor = UIColor.clear
     
@@ -97,7 +97,7 @@ class TickerLabel: UIView {
         let newTextLength: Int = text.count
         if newTextLength > oldTextLength {
             let textLengthDelta: Int = newTextLength - oldTextLength
-            for i in 0..<textLengthDelta {
+            for _ in 0..<textLengthDelta {
                 insertNewCharacterLabel()
             }
             invalidateIntrinsicContentSize()
@@ -106,7 +106,7 @@ class TickerLabel: UIView {
         }
         else if newTextLength < oldTextLength {
             let textLengthDelta: Int = oldTextLength - newTextLength
-            for i in 0..<textLengthDelta {
+            for _ in 0..<textLengthDelta {
                 removeLastCharacterLabel(animated)
             }
             if !animated {
@@ -146,23 +146,21 @@ class TickerLabel: UIView {
                 }
             }
         }
-        
-//        (characterViews as NSArray).enumerateObjects({(_ label: UILabel, _ idx: Int, _ stop: Bool) -> Void in
-//
-//        })
+
         self.text = text
     }
     
     
     // MARK: - Character Animation
     func addLabelAnimation(_ label: UILabel, direction scrollDirection: TickerLabelScrollDirection) {
-        addLabelAnimation(label, direction: scrollDirection, notifyDelegate: false)
+        _ = addLabelAnimation(label, direction: scrollDirection, notifyDelegate: false)
     }
     
-    func addLabelAnimation(_ label: UILabel, direction scrollDirection: TickerLabelScrollDirection, notifyDelegate: Bool) -> CATransition {
+    func addLabelAnimation(_ label: UILabel, direction aScrollDirection: TickerLabelScrollDirection, notifyDelegate: Bool) -> CATransition {
+        var scrollDirection = aScrollDirection
         // inverse the scrolldirection, if the direction is going up
         if self.scrollDirection == TickerLabelScrollDirection.up {
-            // scrollDirection = !scrollDirection
+            scrollDirection = aScrollDirection == .up ? .up : .down
         }
         
         let transition = CATransition()
@@ -214,7 +212,7 @@ class TickerLabel: UIView {
             label?.animationDidCompleteBlock = {(_ label: TickerCharacterLabel) -> Void in
                 weakSelf?.labelDidCompleteRemovealAnimation(label)
             }
-            addLabelAnimation(label!, direction: TickerLabelScrollDirection.up, notifyDelegate: true)
+            _ = addLabelAnimation(label!, direction: TickerLabelScrollDirection.up, notifyDelegate: true)
         }
         else {
             label?.removeFromSuperview()
@@ -269,7 +267,6 @@ class TickerLabel: UIView {
     func intrinsicContentSize() -> CGSize {
         return CGSize(width: characterWidth * CGFloat(text.count), height: UIViewNoIntrinsicMetric)
     }
-
     
     // MARK: - Text Appearance
     func setShadowOffset(_ shadowOffset: CGSize) {
@@ -277,18 +274,10 @@ class TickerLabel: UIView {
         for characterView in characterViews {
             characterView.shadowOffset = shadowOffset
         }
-        /*
-        characterViews.enumerateObjects({(_ label: UILabel, _ idx: Int, _ stop: Bool) -> Void in
-            label.shadowOffset = shadowOffset
-        })
- */
     }
     
     func setShadowColor(_ shadowColor: UIColor) {
         self.shadowColor = shadowColor
-//        characterViews.enumerateObjects({(_ label: UILabel, _ idx: Int, _ stop: Bool) -> Void in
-//            label.shadowColor = shadowColor
-//        })
         for characterView in characterViews {
             characterView.shadowColor = shadowColor
         }
@@ -297,10 +286,6 @@ class TickerLabel: UIView {
     func setTextColor(_ textColor: UIColor) {
         if !(self.textColor == textColor) {
             self.textColor = textColor
-            
-//            characterViews.enumerateObjects({(_ label: UILabel, _ idx: Int, _ stop: Bool) -> Void in
-//                label.textColor = textColor
-//            })
             for characterView in characterViews {
                 characterView.textColor = textColor
             }
@@ -308,20 +293,14 @@ class TickerLabel: UIView {
     }
     
     func setFont(_ font: UIFont) {
-        // if !(self.font == font) {
-            self.font = font
-            characterWidth = "8".size(withAttributes: [NSAttributedStringKey.font: font]).width
-//            characterViews.enumerateObjects({(_ label: UILabel, _ idx: Int, _ stop: Bool) -> Void in
-//                label.font = self.font
-//            })
-            
-            for characterView in characterViews {
-                characterView.font = font
-            }
-            
-            setNeedsLayout()
-            invalidateIntrinsicContentSize()
-        // }
+        self.font = font
+        characterWidth = "8".size(withAttributes: [NSAttributedStringKey.font: font]).width
+        for characterView in characterViews {
+            characterView.font = font
+        }
+        
+        setNeedsLayout()
+        invalidateIntrinsicContentSize()
     }
     
     func setTextAlignment(_ textAlignment: NSTextAlignment) {
