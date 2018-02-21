@@ -18,6 +18,11 @@ class MarketDataManager {
     private init() {
         markets = []
     }
+    
+    // TODO:
+    func updateMarket() {
+        
+    }
 
     func getMarkets(type: MarketSwipeViewType = .all) -> [Market] {
         switch type {

@@ -18,6 +18,9 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let searchController = UISearchController(searchResultsController: nil)
     var filteredMarkets = [Market]()
     
+    // TODO: copy data from MarketDataManager.shared.getMarkets()
+    var markets = [Market]()
+    
     convenience init(type: MarketSwipeViewType) {
         self.init(nibName: nil, bundle: nil)
         self.type = type
@@ -47,7 +50,10 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             
             DispatchQueue.main.async {
+                self.markets = MarketDataManager.shared.getMarkets(type: self.type)
                 self.marketTableView.reloadData()
+                self.marketTableView.isEditing = true
+                self.marketTableView.allowsSelectionDuringEditing = true
             }
         }
 
@@ -62,6 +68,8 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Setup the Scope Bar
         // searchController.searchBar.scopeButtonTitles = ["All", "ETH", "LRC", "Other"]
         // searchController.searchBar.delegate = self
+        
+        markets = MarketDataManager.shared.getMarkets(type: type)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -118,7 +126,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if isFiltering() {
             market = filteredMarkets[indexPath.row]
         } else {
-            market = MarketDataManager.shared.getMarkets(type: type)[indexPath.row]
+            market = markets[indexPath.row] // MarketDataManager.shared.getMarkets(type: type)[indexPath.row]
         }
 
         cell?.market = market
@@ -170,6 +178,26 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         return nil
     }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedObject = markets[sourceIndexPath.row]
+        markets.remove(at: sourceIndexPath.row)
+        markets.insert(movedObject, at: destinationIndexPath.row)
+        self.marketTableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
 
 }
 
