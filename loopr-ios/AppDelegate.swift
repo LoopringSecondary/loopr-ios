@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Get data from Relay
         OrderDataManager.shared.getOrdersFromServer()
+        MarketDataManager.shared.getMarketsFromServer { (markets, error) in
+            
+        }
         
         // Setup color in the app.
         self.window?.backgroundColor = UIColor.white
