@@ -70,6 +70,10 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // searchController.searchBar.delegate = self
         
         markets = MarketDataManager.shared.getMarkets(type: type)
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGestureRecognized(_:)))
+        self.marketTableView.addGestureRecognizer(longPress)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -199,6 +203,92 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
 
+    var snapshot: UIView? = nil
+    var sourceIndexPath: IndexPath? = nil
+    
+    @objc func longPressGestureRecognized(_ sender: UILongPressGestureRecognizer) {
+        print("longPressGestureRecognized")
+        
+        let state = sender.state
+        let location = sender.location(in: self.marketTableView)
+        let indexPath = self.marketTableView.indexPathForRow(at: location)
+        
+        switch state {
+        case .began:
+            guard let indexPath = indexPath else {
+                return
+            }
+            sourceIndexPath = indexPath
+            let cell = self.marketTableView.cellForRow(at: sourceIndexPath!)!
+            snapshot = self.customSnapshotFromView(inputView: cell)
+            
+            var center = cell.center
+            snapshot?.center = center
+            snapshot?.alpha = 0
+            self.marketTableView.addSubview(snapshot!)
+            
+            UIView.animate(withDuration: 0.25, animations: {
+                // Offset for gesture location
+                center.y = location.y
+                self.snapshot?.center = center
+                self.snapshot?.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+                self.snapshot?.alpha = 0.98
+                cell.alpha = 0.0
+                cell.isHidden = true
+            })
+            
+            break
+        
+        case .changed:
+            
+            var center = snapshot!.center
+            center.y = location.y
+            snapshot!.center = center
+            
+            if (indexPath != nil && indexPath == sourceIndexPath) {
+                markets.swapAt(indexPath!.row, sourceIndexPath!.row)
+                // swap(&markets[indexPath!.row], &markets[sourceIndexPath!.row])
+                self.marketTableView.moveRow(at: sourceIndexPath!, to: indexPath!)
+                sourceIndexPath = indexPath
+            }
+            
+            break
+        
+        default:
+            let cell = self.marketTableView.cellForRow(at: sourceIndexPath!)!
+            cell.alpha = 0.0
+            
+            UIView.animate(withDuration: 0.25, animations: {
+                self.snapshot?.center = cell.center
+                self.snapshot?.transform = CGAffineTransform.identity
+                self.snapshot?.alpha = 0.0
+                cell.alpha = 1.0
+            }, completion: { (finished) in
+                cell.isHidden = false
+                self.sourceIndexPath = nil
+                self.snapshot?.removeFromSuperview()
+                self.snapshot = nil
+            })
+
+        }
+    }
+    
+    func customSnapshotFromView(inputView: UIView) -> UIView {
+        UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, false, 0)
+        inputView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        // Create an image view
+        let snapshot = UIImageView.init(image: image)
+        snapshot.layer.masksToBounds = false
+        snapshot.layer.cornerRadius = 0.0
+        snapshot.layer.shadowOffset = CGSize(width: -5.0, height: 0)
+        snapshot.layer.shadowRadius = 5.0
+        snapshot.layer.shadowOpacity = 0.4
+
+        return snapshot
+    }
 }
 
 extension MarketViewController: UISearchBarDelegate {
