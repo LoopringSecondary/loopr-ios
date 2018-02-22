@@ -47,7 +47,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
     
     @objc func updateBalance() {
         // Something cool
-        print("timer update")
+        // print("timer update")
         let decimal = Double(arc4random_uniform(100))
         balance = balance + Double(arc4random_uniform(100)) + decimal/100.0
         balanceLabel.setText("\(balance)", animated: true)
