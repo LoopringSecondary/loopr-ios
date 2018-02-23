@@ -52,8 +52,6 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             DispatchQueue.main.async {
                 self.markets = MarketDataManager.shared.getMarkets(type: self.type)
                 self.marketTableView.reloadData()
-                // self.marketTableView.isEditing = true
-                // self.marketTableView.allowsSelectionDuringEditing = true
             }
         }
 
@@ -70,10 +68,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // searchController.searchBar.delegate = self
         
         markets = MarketDataManager.shared.getMarkets(type: type)
-        
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGestureRecognized(_:)))
-        self.marketTableView.addGestureRecognizer(longPress)
-        
+        marketTableView.reorder.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,6 +115,10 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let spacer = marketTableView.reorder.spacerCell(for: indexPath) {
+            return spacer
+        }
+        
         var cell = tableView.dequeueReusableCell(withIdentifier: MarketTableViewCell.getCellIdentifier()) as? MarketTableViewCell
         if (cell == nil) {
             let nib = Bundle.main.loadNibNamed("MarketTableViewCell", owner: self, options: nil)
@@ -182,170 +181,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         return nil
     }
-    
-    /*
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let movedObject = markets[sourceIndexPath.row]
-        markets.remove(at: sourceIndexPath.row)
-        markets.insert(movedObject, at: destinationIndexPath.row)
-        self.marketTableView.reloadData()
-    }
-    */
-    
-    /*
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return .none
-    }
-    
-    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-    */
 
-    var snapshot: UIView? = nil
-    var sourceIndexPath: IndexPath? = nil
-    
-    @objc func longPressGestureRecognized(_ sender: UILongPressGestureRecognizer) {
-        // print("longPressGestureRecognized")
-        
-        let state = sender.state
-        let location = sender.location(in: self.marketTableView)
-        let indexPath = self.marketTableView.indexPathForRow(at: location)
-        
-        switch state {
-        case .began:
-            print("began")
-            guard let indexPath = indexPath else {
-                return
-            }
-            sourceIndexPath = indexPath
-            let cell = self.marketTableView.cellForRow(at: indexPath)!
-            let colorView = UIView()
-            colorView.backgroundColor = UIColor.white
-            cell.selectedBackgroundView = colorView
-            
-            snapshot = self.customSnapshotFromView(inputView: cell)
-            
-            var center = cell.center
-            print("center: \(center)")
-            snapshot!.center = center
-            snapshot!.alpha = 0
-            self.marketTableView.addSubview(snapshot!)
-            
-            UIView.animate(withDuration: 0.25, animations: {
-                // Offset for gesture location
-                center.y = location.y
-                self.snapshot!.center = center
-                self.snapshot!.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
-                self.snapshot!.alpha = 1 // 0.98
-                cell.alpha = 0.0
-                cell.isHidden = true
-            })
-            
-            break
-        
-        case .changed:
-            
-            var center = snapshot!.center
-            
-            print(center.y)
-            
-            if (abs(location.y-center.y) > 10) {
-                
-            
-                center.y = location.y
-                snapshot!.center = center
-                return
-            }
-            
-            
-            // Is destination valid and is it different from source?
-            if (indexPath != nil && indexPath != sourceIndexPath) {
-                
-                /*
-                if abs(indexPath!.row - sourceIndexPath!.row) > 1 {
-                    print(indexPath)
-                    print(sourceIndexPath)
-                }
-                */
-                // print("indexPath: \(indexPath)")
-                // print("sourceIndexPath: \(sourceIndexPath)")
-                // print(abs(indexPath!.row - sourceIndexPath!.row))
-                
-                let market1 = markets[indexPath!.row]
-                let market2 = markets[sourceIndexPath!.row]
-                
-                markets[indexPath!.row] = market2
-                markets[sourceIndexPath!.row] = market1
-                
-                // markets.swapAt(indexPath!.row, sourceIndexPath!.row)
-                // swap(&markets[indexPath!.row], &markets[sourceIndexPath!.row])
-                // self.marketTableView.beginUpdates()
-                if (indexPath!.row < sourceIndexPath!.row) {
-                    self.marketTableView.moveRow(at: sourceIndexPath!, to: indexPath!)
-                } else {
-                    self.marketTableView.moveRow(at: indexPath!, to: sourceIndexPath!)
-                }
-                
-                // self.marketTableView.endUpdates()
-                sourceIndexPath = indexPath
-            }
-            
-            break
-        
-        case .possible:
-            print("possible")
-            break
-            
-        case .failed:
-            print("failed")
-            break
-            
-        case .cancelled:
-            print("cancelled")
-            break
-            
-        default:
-            print("default\n")
-            let cell = self.marketTableView.cellForRow(at: sourceIndexPath!)!
-            cell.alpha = 0.0
-            
-            UIView.animate(withDuration: 0.15, animations: {
-                self.snapshot!.center = cell.center
-                self.snapshot!.transform = CGAffineTransform.identity
-                self.snapshot!.alpha = 0.0
-                cell.alpha = 1.0
-            }, completion: { (finished) in
-                cell.isHidden = false
-                self.sourceIndexPath = nil
-                self.snapshot!.removeFromSuperview()
-                self.snapshot = nil
-                // self.marketTableView.reloadData()
-            })
-
-        }
-    }
-    
-    func customSnapshotFromView(inputView: UIView) -> UIView {
-        UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, false, 0)
-        inputView.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        // Create an image view
-        let snapshot = UIImageView.init(image: image)
-        snapshot.layer.masksToBounds = false
-        snapshot.layer.cornerRadius = 0.0
-        snapshot.layer.shadowOffset = CGSize(width: -5.0, height: 0)
-        snapshot.layer.shadowRadius = 5.0
-        snapshot.layer.shadowOpacity = 0.4
-
-        return snapshot
-    }
 }
 
 extension MarketViewController: UISearchBarDelegate {
@@ -361,5 +197,14 @@ extension MarketViewController: UISearchResultsUpdating {
         // let searchBar = searchController.searchBar
         // let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
         filterContentForSearchText(searchController.searchBar.text!)
+    }
+}
+
+extension MarketViewController: TableViewReorderDelegate {
+    // MARK: - Reorder Delegate
+    func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedObject = markets[sourceIndexPath.row]
+        markets.remove(at: sourceIndexPath.row)
+        markets.insert(movedObject, at: destinationIndexPath.row)
     }
 }
