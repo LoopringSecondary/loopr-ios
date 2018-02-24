@@ -36,9 +36,6 @@
                                             <action selector="toggleHideAssetSwitch:" destination="KGk-i7-Jjw" eventType="valueChanged" id="NUV-X0-04N"/>
                                         </connections>
                                     </switch>
-                                    <connections>
-                                        <action selector="toggleHideAssetButton:" destination="KGk-i7-Jjw" id="o1r-H4-2HS"/>
-                                    </connections>
                                 </barButtonItem>
                             </navigationItem>
                         </items>

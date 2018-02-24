@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import SwiftTheme
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -48,7 +49,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set unsafe area background color for iPhone X
         // UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 1, alpha: 1)
         
+        // updateTheme()
         return true
+    }
+    
+    func updateTheme() {
+        // status bar
+        UIApplication.shared.theme_setStatusBarStyle([.lightContent, .default, .lightContent, .lightContent], animated: true)
+        
+        // navigation bar
+        let navigationBar = UINavigationBar.appearance()
+        
+        let shadow = NSShadow()
+        shadow.shadowOffset = CGSize(width: 0, height: 0)
+        
+        let titleAttributes = GlobalPicker.barTextColors.map { hexString in
+            return [
+                NSAttributedStringKey.foregroundColor: UIColor(rgba: hexString),
+                NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16),
+                NSAttributedStringKey.shadow: shadow
+            ]
+        }
+        
+        navigationBar.theme_tintColor = GlobalPicker.barTextColor
+        navigationBar.theme_barTintColor = GlobalPicker.barTintColor
+        navigationBar.theme_titleTextAttributes = ThemeDictionaryPicker.pickerWithAttributes(titleAttributes)
+        
+        // tab bar
+        let tabBar = UITabBar.appearance()
+        
+        tabBar.theme_tintColor = GlobalPicker.barTextColor
+        tabBar.theme_barTintColor = GlobalPicker.barTintColor
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -71,6 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        Themes.saveLastTheme()
     }
 
 }

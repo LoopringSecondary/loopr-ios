@@ -11,4 +11,5 @@ import Foundation
 enum UserDefaultsKeys: String {
     case hasBeenSetup = "UserDefaultsKeys.hasBeenSetup"
     case favoriteMarkets = "UserDefaultsKeys.favoriteMarkets"
+    case lastedThemeIndex = "UserDefaultsKeys.lastedThemeIndex"
 }

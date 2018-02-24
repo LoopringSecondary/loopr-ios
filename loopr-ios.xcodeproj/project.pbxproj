@@ -133,6 +133,8 @@
 		ACE6F71C204211470039273D /* DashedLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F71B204211470039273D /* DashedLineView.swift */; };
 		ACE6F71F20421D950039273D /* NewVersionTradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F71D20421D950039273D /* NewVersionTradeViewController.swift */; };
 		ACE6F72020421D950039273D /* NewVersionTradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE6F71E20421D950039273D /* NewVersionTradeViewController.xib */; };
+		ACE6F722204221260039273D /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F721204221260039273D /* Themes.swift */; };
+		ACE6F7242042228A0039273D /* GlobalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F7232042228A0039273D /* GlobalPicker.swift */; };
 		ACF71CB42033E723000E7618 /* TradeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */; };
 		ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */; };
 		C87E226E2031708000323584 /* ToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E226D2031708000323584 /* ToggleTableViewCell.swift */; };
@@ -303,6 +305,8 @@
 		ACE6F71B204211470039273D /* DashedLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedLineView.swift; sourceTree = "<group>"; };
 		ACE6F71D20421D950039273D /* NewVersionTradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewVersionTradeViewController.swift; sourceTree = "<group>"; };
 		ACE6F71E20421D950039273D /* NewVersionTradeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewVersionTradeViewController.xib; sourceTree = "<group>"; };
+		ACE6F721204221260039273D /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
+		ACE6F7232042228A0039273D /* GlobalPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalPicker.swift; sourceTree = "<group>"; };
 		ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeTableViewCell.swift; sourceTree = "<group>"; };
 		ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeTableViewCell.xib; sourceTree = "<group>"; };
 		C87E226D2031708000323584 /* ToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleTableViewCell.swift; sourceTree = "<group>"; };
@@ -739,6 +743,8 @@
 			isa = PBXGroup;
 			children = (
 				AC9280E6202F5A010009B574 /* UIStyleConfig.swift */,
+				ACE6F721204221260039273D /* Themes.swift */,
+				ACE6F7232042228A0039273D /* GlobalPicker.swift */,
 			);
 			path = UIConfig;
 			sourceTree = "<group>";
@@ -1127,10 +1133,12 @@
 				ACB5DD95202C434B00140A09 /* eth_JSON_RPC.swift in Sources */,
 				ACDBF10C203FEA3E000F0DEC /* ReorderGestureRecognizer.swift in Sources */,
 				ACDBF105203FE7D5000F0DEC /* ReorderSnapshotView.swift in Sources */,
+				ACE6F722204221260039273D /* Themes.swift in Sources */,
 				ACB9117C20256BBA00F14644 /* TradingPair.swift in Sources */,
 				ACB5DD9C202D5B8000140A09 /* Cell.swift in Sources */,
 				C8BF95A62027A10E00343B9A /* GenerateWalletViewController.swift in Sources */,
 				ACB5DD8E202C048E00140A09 /* SellViewController.swift in Sources */,
+				ACE6F7242042228A0039273D /* GlobalPicker.swift in Sources */,
 				ACB9117F2026385100F14644 /* SettingNavigationViewController.swift in Sources */,
 				AC6E95E520313D8A00C6EB7C /* UIApplicationExtension.swift in Sources */,
 				ACB9116020242E3F00F14644 /* Asset.swift in Sources */,
