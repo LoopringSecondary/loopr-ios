@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import EFCountingLabel
 
 protocol WalletBalanceTableViewCellDelegate {
     func navigatToAddAssetViewController()
@@ -17,8 +16,6 @@ class WalletBalanceTableViewCell: UITableViewCell {
     
     var balance = 1000.23
     var delegate: WalletBalanceTableViewCellDelegate?
-
-    @IBOutlet weak var totalBalanceLabel: EFCountingLabel!
     
     @IBOutlet weak var balanceLabel: TickerLabel!
     

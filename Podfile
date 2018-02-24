@@ -11,7 +11,6 @@ target 'loopr-ios' do
   pod 'lottie-ios'
   pod 'pop'
   pod 'PopupDialog'
-  pod 'EFCountingLabel'
 
   target 'loopr-iosTests' do
     inherit! :search_paths
