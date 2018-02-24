@@ -41,20 +41,8 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
         marketTableView.dataSource = self
         marketTableView.delegate = self
-                
-        // TODO: putting getMarketsFromServer() here may cause a race condition.
-        // It's not perfect, but works. Need improvement in the future.
-        MarketDataManager.shared.getMarketsFromServer { (markets, error) in
-            guard error == nil else {
-                return
-            }
-            
-            DispatchQueue.main.async {
-                self.markets = MarketDataManager.shared.getMarkets(type: self.type)
-                self.marketTableView.reloadData()
-            }
-        }
-
+        marketTableView.reorder.delegate = self
+        
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -67,8 +55,23 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // searchController.searchBar.scopeButtonTitles = ["All", "ETH", "LRC", "Other"]
         // searchController.searchBar.delegate = self
         
+        // Get a copy from get markets.
         markets = MarketDataManager.shared.getMarkets(type: type)
-        marketTableView.reorder.delegate = self
+        
+        // TODO: putting getMarketsFromServer() here may cause a race condition.
+        // It's not perfect, but works. Need improvement in the future.
+        if (markets.count == 0) {
+            MarketDataManager.shared.getMarketsFromServer { (markets, error) in
+                guard error == nil else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self.markets = MarketDataManager.shared.getMarkets(type: self.type)
+                    self.marketTableView.reloadData()
+                }
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -147,39 +150,33 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        if (type == .favorite) {
-            // return nil
-        }
-
-        let action = UIContextualAction(style: .normal, title:  "Favorite", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            print("OK, marked as Favorite")
-            
-            let market = MarketDataManager.shared.getMarkets(type: self.type)[indexPath.row]
-            MarketDataManager.shared.setFavoriteMarket(market: market)
-            // self.marketTableView.reloadData()
-            success(true)
-        })
-        action.backgroundColor = defaultTintColor
-        
-        return UISwipeActionsConfiguration(actions: [action])
-    }
-    
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        if (type == .favorite) {
-            let action = UIContextualAction(style: .normal, title:  "Unfavourite", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-                print("OK, marked as Unfavourite")
-                
-                let market = MarketDataManager.shared.getMarkets(type: self.type)[indexPath.row]
+        let market = MarketDataManager.shared.getMarkets(type: self.type)[indexPath.row]
+        if (market.isFavorite()) {
+            let action = UIContextualAction(style: .normal, title:  "Unfavorite", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+                print("OK, marked as Unfavorite")
                 MarketDataManager.shared.removeFavoriteMarket(market: market)
-                // self.marketTableView.reloadData()
+                success(true)
+                
+                // TODO: need to improve the animation
+                if (self.type == .favorite) {
+                    self.markets.remove(at: indexPath.row)
+                    self.marketTableView.deleteRows(at: [indexPath], with: .fade)
+                }
+            })
+            action.backgroundColor = defaultTintColor
+            
+            return UISwipeActionsConfiguration(actions: [action])
+            
+        } else {
+            let action = UIContextualAction(style: .normal, title:  "Favorite", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+                print("OK, marked as Favorite")
+                MarketDataManager.shared.setFavoriteMarket(market: market)
                 success(true)
             })
             action.backgroundColor = defaultTintColor
             
             return UISwipeActionsConfiguration(actions: [action])
         }
-        
-        return nil
     }
 
 }
