@@ -18,6 +18,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
         assetTableView.dataSource = self
         assetTableView.delegate = self
+        assetTableView.reorder.delegate = self
         
         let button =  UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
@@ -80,10 +81,13 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             
             cell?.setup()
-            // cell?.totalBalanceLabel.text = "12000"
             return cell!
 
         } else {
+            if let spacer = assetTableView.reorder.spacerCell(for: indexPath) {
+                return spacer
+            }
+
             var cell = tableView.dequeueReusableCell(withIdentifier: AssetTableViewCell.getCellIdentifier()) as? AssetTableViewCell
             if (cell == nil) {
                 let nib = Bundle.main.loadNibNamed("AssetTableViewCell", owner: self, options: nil)
@@ -115,5 +119,20 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+}
 
+
+extension WalletViewController: TableViewReorderDelegate {
+    // MARK: - Reorder Delegate
+    func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        AssetDataManager.shared.exchangeAssets(at: sourceIndexPath.row-1, to: destinationIndexPath.row-1)
+    }
+
+    func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {
+        if (indexPath.row >= 1) {
+            return true
+        } else {
+            return false
+        }
+    }
 }

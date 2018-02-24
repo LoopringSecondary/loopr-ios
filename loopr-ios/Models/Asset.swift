@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-class Asset {
-    
+class Asset: CustomStringConvertible {
+
     let symbol: String
     let name: String
     let icon: UIImage
@@ -18,12 +18,16 @@ class Asset {
     
     let balance: Double
     
+    var description: String
+    
     init(symbol: String, name: String, icon: UIImage, enable: Bool, balance: Double) {
         self.symbol = symbol
         self.name = name
         self.enable = enable
         self.icon = icon
         self.balance = balance
+        self.description = self.name
     }
+    
     
 }
