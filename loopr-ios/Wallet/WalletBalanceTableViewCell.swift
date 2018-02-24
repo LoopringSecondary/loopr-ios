@@ -26,7 +26,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
         balanceLabel.setText("\(balance)", animated: false)
         balanceLabel.setFont(UIFont.systemFont(ofSize: 36))
         balanceLabel.animationDuration = 0.5
-        balanceLabel.textAlignment = NSTextAlignment.center;
+        balanceLabel.textAlignment = NSTextAlignment.center
         
         _ = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
     }
@@ -43,7 +43,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
     
     @objc func updateBalance() {
         let decimal = Double(arc4random_uniform(100))
-        balance = balance + Double(arc4random_uniform(100)) + decimal/100.0
+        balance += Double(arc4random_uniform(100)) + decimal/100.0
         balanceLabel.setText("\(balance)", animated: true)
     }
 
