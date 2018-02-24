@@ -30,9 +30,11 @@ class OrderDataManager {
 
     func getOrdersFromServer() {
         loopring_JSON_RPC.getOrders(pageSize: 40) { orders, error in
+            guard error != nil else {
+                return
+            }
             self.orders = orders
         }
     }
 
 }
-

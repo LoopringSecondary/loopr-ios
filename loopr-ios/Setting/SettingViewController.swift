@@ -13,8 +13,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var settingsTableView: UITableView!
     
-    let sectionTitles = ["User Preferences","Tools", "Trading", "Relay", "About"]
-    let sectionRows = [3,3,3,3,6]
+    let sectionTitles = ["User Preferences", "Tools", "Trading", "Relay", "About"]
+    let sectionRows = [3, 3, 3, 3, 6]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +30,12 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Dispose of any resources that can be recreated.
     }
 
+    // TODO: Remove unused code
     func playSampleLottieAnimation() {
         let animationView = LOTAnimationView(name: "button1")
         animationView.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
         self.view.addSubview(animationView)
-        animationView.play{ (finished) in
+        animationView.play {(_) in
             // Do Something
         }
     }
@@ -143,11 +144,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         default:
             return UITableViewCell()
         }
-        
     }
     
-    //Cell Types
-    func createDetailTableCell (title : String, detailTitle : String) -> UITableViewCell {
+    // Cell Types
+    func createDetailTableCell(title: String, detailTitle: String) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: title)
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .blue
@@ -156,7 +156,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
-    func createDetailTableCell (title : String) -> UITableViewCell {
+    func createDetailTableCell(title: String) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: title)
         cell.accessoryType = .detailButton
         cell.selectionStyle = .blue
@@ -164,7 +164,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
-    func createBasicTableCell (title : String, detailTitle : String) -> UITableViewCell {
+    func createBasicTableCell(title: String, detailTitle: String) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: title)
         cell.accessoryType = .none
         cell.selectionStyle = .none
@@ -177,16 +177,5 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 45
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

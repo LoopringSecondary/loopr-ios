@@ -33,7 +33,7 @@ class PortfolioNavigationController: UINavigationController {
         // Dispose of any resources that can be recreated.
     }
     
-    func checkForAccout(){
+    func checkForAccout() {
         if userAccountExists == false {
             tabBarController?.performSegue(withIdentifier: "showSetup", sender: tabBarController)
         }

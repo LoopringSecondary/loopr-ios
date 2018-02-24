@@ -133,7 +133,6 @@ class MarketLineChartTableViewCell: UITableViewCell {
         lineChartView.leftAxis.enabled = false
     }
     
-    
     @IBAction func pressedOneDayButton(_ sender: Any) {
         oneDayButton.selected()
         oneWeekButton.unselected()

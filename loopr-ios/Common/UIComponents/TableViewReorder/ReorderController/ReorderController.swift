@@ -90,8 +90,7 @@ public class ReorderController: NSObject {
     public func spacerCell(for indexPath: IndexPath) -> UITableViewCell? {
         if case let .reordering(context) = reorderState, indexPath == context.destinationRow {
             return createSpacerCell()
-        }
-        else if case let .ready(snapshotRow) = reorderState, indexPath == snapshotRow {
+        } else if case let .ready(snapshotRow) = reorderState, indexPath == snapshotRow {
             return createSpacerCell()
         }
         return nil

@@ -60,7 +60,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // TODO: putting getMarketsFromServer() here may cause a race condition.
         // It's not perfect, but works. Need improvement in the future.
-        if (markets.count == 0) {
+        if markets.count == 0 {
             MarketDataManager.shared.getMarketsFromServer { (markets, error) in
                 guard error == nil else {
                     return
@@ -76,7 +76,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if (type == .favorite) {
+        if type == .favorite {
             reload()
         }
     }
@@ -128,7 +128,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         var cell = tableView.dequeueReusableCell(withIdentifier: MarketTableViewCell.getCellIdentifier()) as? MarketTableViewCell
-        if (cell == nil) {
+        if cell == nil {
             let nib = Bundle.main.loadNibNamed("MarketTableViewCell", owner: self, options: nil)
             cell = nib![0] as? MarketTableViewCell
         }
@@ -147,7 +147,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let marketDetailViewController = MarketDetailViewController();
+        let marketDetailViewController = MarketDetailViewController()
         let market = MarketDataManager.shared.getMarkets(type: type)[indexPath.row]
         marketDetailViewController.market = market
         marketDetailViewController.hidesBottomBarWhenPushed = true
@@ -156,14 +156,14 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let market = MarketDataManager.shared.getMarkets(type: self.type)[indexPath.row]
-        if (market.isFavorite()) {
-            let action = UIContextualAction(style: .normal, title:  "Unfavorite", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+        if market.isFavorite() {
+            let action = UIContextualAction(style: .normal, title: "Unfavorite", handler: { (_: UIContextualAction, _:  UIView, success: (Bool) -> Void) in
                 print("OK, marked as Unfavorite")
                 MarketDataManager.shared.removeFavoriteMarket(market: market)
                 success(true)
                 
                 // TODO: need to improve the animation
-                if (self.type == .favorite) {
+                if self.type == .favorite {
                     self.markets.remove(at: indexPath.row)
                     self.marketTableView.deleteRows(at: [indexPath], with: .fade)
                 }
@@ -173,7 +173,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return UISwipeActionsConfiguration(actions: [action])
             
         } else {
-            let action = UIContextualAction(style: .normal, title:  "Favorite", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            let action = UIContextualAction(style: .normal, title: "Favorite", handler: { (_: UIContextualAction, _: UIView, success: (Bool) -> Void) in
                 print("OK, marked as Favorite")
                 MarketDataManager.shared.setFavoriteMarket(market: market)
                 success(true)

@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -24,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Get data from Relay
         OrderDataManager.shared.getOrdersFromServer()
-        MarketDataManager.shared.getMarketsFromServer { (markets, error) in
+        MarketDataManager.shared.getMarketsFromServer { (_, _) in
             
         }
         
@@ -75,4 +74,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-

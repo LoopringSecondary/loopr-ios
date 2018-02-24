@@ -10,7 +10,7 @@ import UIKit
 
 class SelectWalletTableViewCell: UITableViewCell {
     
-    var wallet: Wallet? = nil
+    var wallet: Wallet?
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!

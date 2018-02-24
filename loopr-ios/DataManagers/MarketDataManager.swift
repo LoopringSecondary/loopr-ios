@@ -52,10 +52,10 @@ class MarketDataManager {
     }
 
     func getMarketsFromServer(completionHandler: @escaping (_ market: [Market], _ error: Error?) -> Void) {
-        loopring_JSON_RPC.getSupportedMarket() { markets, error in
+        loopring_JSON_RPC.getSupportedMarket(completionHandler: { markets, error in
             self.markets = markets
             completionHandler(markets, error)
-        }
+        })
     }
 
     func getFavoriteMarketKeys() -> [String] {

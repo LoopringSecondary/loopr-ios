@@ -10,7 +10,7 @@ import UIKit
 
 class BuyViewController: UIViewController {
 
-    var interactor: Interactor? = nil
+    var interactor: Interactor?
 
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var keyboardView: DefaultNumericKeyboard!
@@ -80,17 +80,6 @@ class BuyViewController: UIViewController {
             break
         }
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -100,8 +89,8 @@ extension BuyViewController: NumericKeyboardDelegate {
         print("pressed keyboard: (\(position.row), \(position.column))")
         
         switch (position.row, position.column) {
-            default:
-                return
+        default:
+            return
         }
     }
     

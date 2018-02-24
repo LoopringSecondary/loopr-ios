@@ -122,4 +122,3 @@ public struct SwipeViewOptions {
     
     public init() { }
 }
-

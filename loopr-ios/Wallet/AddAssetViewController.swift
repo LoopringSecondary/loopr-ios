@@ -75,7 +75,7 @@ class AddAssetViewController: UIViewController, UITextFieldDelegate {
             decimalsTitleLabel.textColor = UIColor.black
             decimalsTextField.setDefault()
             
-        } else if (textField == tokenSymbolTextField) {
+        } else if textField == tokenSymbolTextField {
             tokenNameTitleLabel.textColor = UIColor.black
             tokenNameTextField.setDefault()
             
@@ -88,7 +88,7 @@ class AddAssetViewController: UIViewController, UITextFieldDelegate {
             decimalsTitleLabel.textColor = UIColor.black
             decimalsTextField.setDefault()
             
-        } else if (textField == decimalsTextField) {
+        } else if textField == decimalsTextField {
             tokenNameTitleLabel.textColor = UIColor.black
             tokenNameTextField.setDefault()
             

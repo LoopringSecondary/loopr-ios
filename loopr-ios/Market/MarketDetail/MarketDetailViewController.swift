@@ -11,7 +11,7 @@ import PopupDialog
 
 class MarketDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var market: Market? = nil
+    var market: Market?
     
     @IBOutlet weak var tableView: UITableView!
     

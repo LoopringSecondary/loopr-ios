@@ -8,7 +8,6 @@
 
 import XCTest
 
-
 class loopr_iosUITests: XCTestCase {
         
     override func setUp() {

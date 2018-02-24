@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 enum MarketSwipeViewType: String, CustomStringConvertible {
     
     case favorite = "Favorite"

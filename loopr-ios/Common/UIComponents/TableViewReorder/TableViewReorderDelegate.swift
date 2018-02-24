@@ -53,7 +53,7 @@ public extension TableViewReorderDelegate {
     func tableViewDidBeginReordering(_ tableView: UITableView) {
     }
     
-    func tableViewDidFinishReordering(_ tableView: UITableView, from initialSourceIndexPath: IndexPath, to finalDestinationIndexPath:IndexPath) {
+    func tableViewDidFinishReordering(_ tableView: UITableView, from initialSourceIndexPath: IndexPath, to finalDestinationIndexPath: IndexPath) {
     }
     
 }
