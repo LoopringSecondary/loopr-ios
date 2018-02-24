@@ -16,7 +16,8 @@ class AssetTableViewCell: UITableViewCell {
     @IBOutlet weak var symbolLabel: UILabel!
     
     @IBOutlet weak var balanceLabel: UILabel!
-
+    @IBOutlet weak var amountLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,7 +33,11 @@ class AssetTableViewCell: UITableViewCell {
         if let asset = asset {
             iconImageView.image = asset.icon
             symbolLabel.text = asset.symbol
-            balanceLabel.text = "\(asset.balance) \(asset.symbol)"
+            
+            // TODO: Use values from Relay API.
+            let balance = asset.balance * 120
+            balanceLabel.text = "$\(balance)"
+            amountLabel.text = "\(asset.balance) \(asset.symbol)"
         }
     }
     
@@ -41,6 +46,6 @@ class AssetTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 90
+        return 84
     }
 }
