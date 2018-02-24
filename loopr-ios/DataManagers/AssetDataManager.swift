@@ -23,12 +23,10 @@ class AssetDataManager {
         return assets
     }
     
-    func exchangeAssets(at sourceIndex: Int, to destinationIndex: Int) {
+    func exchange(at sourceIndex: Int, to destinationIndex: Int) {
         if destinationIndex < assets.count && sourceIndex < assets.count {
             assets.swapAt(sourceIndex, destinationIndex)
         }
-        
-        print(assets)
     }
     
     func generateMockData() {

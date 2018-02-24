@@ -24,6 +24,14 @@ class MarketDataManager {
         
     }
 
+    func exchange(at sourceIndex: Int, to destinationIndex: Int) {
+        if destinationIndex < markets.count && sourceIndex < markets.count {
+            markets.swapAt(sourceIndex, destinationIndex)
+            // Update the array in the disk
+            updateFavoriteMarketKeysOnLocal()
+        }
+    }
+    
     func getMarkets(type: MarketSwipeViewType = .all) -> [Market] {
         switch type {
         case .all:

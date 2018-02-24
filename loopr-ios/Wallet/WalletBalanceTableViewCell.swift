@@ -38,23 +38,19 @@ class WalletBalanceTableViewCell: UITableViewCell {
     }
     
     func setup() {
-        // balanceLabel.text = "1000"
-        // balanceLabel.setText("1999", animated: true)
+        
     }
     
     @objc func updateBalance() {
-        // Something cool
-        // print("timer update")
         let decimal = Double(arc4random_uniform(100))
         balance = balance + Double(arc4random_uniform(100)) + decimal/100.0
         balanceLabel.setText("\(balance)", animated: true)
     }
 
+    // The add button has been removed. However, we may still put it back in the future. Keep the code.
     @IBAction func pressAddButton(_ sender: Any) {
         print("pressAddButton")
         delegate?.navigatToAddAssetViewController()
-        // balanceLabel.setText("10090", animated: true)
-        // balanceLabel.text = "10090"
     }
     
     class func getCellIdentifier() -> String {

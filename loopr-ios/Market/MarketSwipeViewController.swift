@@ -63,7 +63,7 @@ class MarketSwipeViewController: SwipeViewController {
     override func swipeView(_ swipeView: SwipeView, willChangeIndexFrom fromIndex: Int, to toIndex: Int) {
         print("will change from item \(fromIndex) to item \(toIndex)")
         let viewController = viewControllers[toIndex]
-        viewController.marketTableView.reloadData()
+        viewController.reload()
     }
 
     override func swipeView(_ swipeView: SwipeView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {

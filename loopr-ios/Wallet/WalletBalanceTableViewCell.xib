@@ -27,11 +27,11 @@
                         </constraints>
                         <items>
                             <navigationItem id="zdZ-1B-5mX">
-                                <barButtonItem key="rightBarButtonItem" systemItem="add" id="QrD-Cn-nhD">
-                                    <color key="tintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <connections>
-                                        <action selector="pressAddButton:" destination="KGk-i7-Jjw" id="Di9-ph-3Fs"/>
-                                    </connections>
+                                <barButtonItem key="rightBarButtonItem" style="plain" id="dk4-tL-62c">
+                                    <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="2sA-jg-rU4">
+                                        <rect key="frame" x="324" y="6.5" width="51" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </switch>
                                 </barButtonItem>
                             </navigationItem>
                         </items>

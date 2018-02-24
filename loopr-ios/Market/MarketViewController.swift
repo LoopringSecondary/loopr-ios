@@ -77,13 +77,18 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if (type == .favorite) {
-            self.marketTableView.reloadData()
+            reload()
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func reload() {
+        markets = MarketDataManager.shared.getMarkets(type: type)
+        marketTableView.reloadData()
     }
     
     // MARK: - Private instance methods
@@ -203,5 +208,6 @@ extension MarketViewController: TableViewReorderDelegate {
         let movedObject = markets[sourceIndexPath.row]
         markets.remove(at: sourceIndexPath.row)
         markets.insert(movedObject, at: destinationIndexPath.row)
+        MarketDataManager.shared.exchange(at: sourceIndexPath.row, to: destinationIndexPath.row)
     }
 }

@@ -36,7 +36,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationItem.titleView = button
         
         let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
-        // self.navigationItem.rightBarButtonItem = addButton
+        self.navigationItem.rightBarButtonItem = addButton
     }
 
 
@@ -125,7 +125,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 extension WalletViewController: TableViewReorderDelegate {
     // MARK: - Reorder Delegate
     func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        AssetDataManager.shared.exchangeAssets(at: sourceIndexPath.row-1, to: destinationIndexPath.row-1)
+        AssetDataManager.shared.exchange(at: sourceIndexPath.row-1, to: destinationIndexPath.row-1)
     }
 
     func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {
