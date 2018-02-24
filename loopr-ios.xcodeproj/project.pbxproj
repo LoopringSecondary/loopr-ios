@@ -478,7 +478,7 @@
 			children = (
 				ACDBF10F203FEC96000F0DEC /* UIConfig */,
 				AC6E95F62032CBE900C6EB7C /* Archive */,
-				ACB5DD84202AD74200140A09 /* Common */,
+				ACB5DD85202AD74D00140A09 /* UIComponents */,
 				ACB9119320278A0E00F14644 /* RelayAPI */,
 				ACB911672025470B00F14644 /* DataManagers */,
 				ACB9115E20242E2400F14644 /* Models */,
@@ -558,14 +558,6 @@
 				ACB5DD7F202AC26000140A09 /* button1.json */,
 			);
 			path = AfterEffectsAnimations;
-			sourceTree = "<group>";
-		};
-		ACB5DD84202AD74200140A09 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				ACB5DD85202AD74D00140A09 /* UIComponents */,
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 		ACB5DD85202AD74D00140A09 /* UIComponents */ = {
