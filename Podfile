@@ -12,6 +12,7 @@ target 'loopr-ios' do
   pod 'pop'
   pod 'PopupDialog'
   pod 'SwiftLint'
+  pod 'SwiftTheme'
 
   target 'loopr-iosTests' do
     inherit! :search_paths
