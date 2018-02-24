@@ -18,6 +18,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
     weak var delegate: WalletBalanceTableViewCellDelegate?
     
     @IBOutlet weak var balanceLabel: TickerLabel!
+    @IBOutlet weak var hideAssetSwitch: UISwitch!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,6 +42,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
         
     }
     
+    // TODO: Use websocket API to get the latest price.
     @objc func updateBalance() {
         let decimal = Double(arc4random_uniform(100))
         balance += Double(arc4random_uniform(100)) + decimal/100.0
@@ -51,6 +53,14 @@ class WalletBalanceTableViewCell: UITableViewCell {
     @IBAction func pressAddButton(_ sender: Any) {
         print("pressAddButton")
         delegate?.navigatToAddAssetViewController()
+    }
+
+    @IBAction func toggleHideAssetSwitch(_ sender: Any) {
+        if hideAssetSwitch.isOn {
+            print("toggleHideAssetSwitch ON")
+        } else {
+            print ("toggleHideAssetSwitch OFF")
+        }
     }
     
     class func getCellIdentifier() -> String {

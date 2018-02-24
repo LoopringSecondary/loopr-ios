@@ -31,7 +31,14 @@
                                     <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="2sA-jg-rU4">
                                         <rect key="frame" x="324" y="6.5" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="onTintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="toggleHideAssetSwitch:" destination="KGk-i7-Jjw" eventType="valueChanged" id="NUV-X0-04N"/>
+                                        </connections>
                                     </switch>
+                                    <connections>
+                                        <action selector="toggleHideAssetButton:" destination="KGk-i7-Jjw" id="o1r-H4-2HS"/>
+                                    </connections>
                                 </barButtonItem>
                             </navigationItem>
                         </items>
@@ -57,6 +64,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="balanceLabel" destination="1FF-gI-ta8" id="8V6-xP-grM"/>
+                <outlet property="hideAssetSwitch" destination="2sA-jg-rU4" id="Fnb-rU-bir"/>
             </connections>
             <point key="canvasLocation" x="81.5" y="125"/>
         </tableViewCell>
