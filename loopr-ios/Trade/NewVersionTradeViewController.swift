@@ -1,23 +1,21 @@
 //
-//  TradeViewController.swift
+//  NewVersionTradeViewController.swift
 //  loopr-ios
 //
-//  Created by xiaoruby on 2/9/18.
+//  Created by xiaoruby on 2/24/18.
 //  Copyright © 2018 Loopring. All rights reserved.
 //
 
 import UIKit
 
-class TradeNavigationViewController: UINavigationController {
+class NewVersionTradeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        navigationBar.shadowImage = UIImage()
-
-        let viewController = NewVersionTradeViewController(nibName: nil, bundle: nil)
-        self.setViewControllers([viewController], animated: false)
+        
+        title = "LRC/ETH"
     }
 
     override func didReceiveMemoryWarning() {

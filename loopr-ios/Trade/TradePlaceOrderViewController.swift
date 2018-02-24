@@ -30,9 +30,7 @@ class TradePlaceOrderViewController: UIViewController {
     }
     
     @IBAction func pressedCloseButton(_ sender: Any) {
-        
         delegate?.closeTradePlaceOrderViewController()
-        
     }
 
 }
