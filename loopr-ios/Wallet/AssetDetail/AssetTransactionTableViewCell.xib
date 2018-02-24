@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,23 +14,54 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="AssetTransactionTableViewCell" customModule="loopr_ios" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="395" height="90"/>
+            <rect key="frame" x="0.0" y="0.0" width="395" height="84"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="395" height="89.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="395" height="83.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Received ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7V-32-L6z">
-                        <rect key="frame" x="20" y="20" width="229" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Received" translatesAutoresizingMaskIntoConstraints="NO" id="SeF-AR-g4w">
+                        <rect key="frame" x="20" y="19" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="Pbg-Lh-y12"/>
+                            <constraint firstAttribute="height" constant="44" id="pmO-GS-mfZ"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Received ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7V-32-L6z">
+                        <rect key="frame" x="83" y="19" width="150" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="nHc-1F-5ao"/>
+                            <constraint firstAttribute="height" constant="21" id="qAx-Go-Skd"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From 0xqwerty1234567890" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vq6-Vt-8yE">
+                        <rect key="frame" x="83" y="42" width="250" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="250" id="CZ9-OE-TcD"/>
+                            <constraint firstAttribute="height" constant="21" id="RZX-ZF-tkN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="Vq6-Vt-8yE" firstAttribute="leading" secondItem="SeF-AR-g4w" secondAttribute="trailing" constant="19" id="JiL-5Z-pmK"/>
+                    <constraint firstItem="Q7V-32-L6z" firstAttribute="leading" secondItem="SeF-AR-g4w" secondAttribute="trailing" constant="19" id="Oc3-ax-E1U"/>
+                    <constraint firstItem="Q7V-32-L6z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="T33-9D-BD3"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Vq6-Vt-8yE" secondAttribute="bottom" constant="10" id="gs7-Td-oFJ"/>
+                    <constraint firstItem="SeF-AR-g4w" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="oAU-g7-8f6"/>
+                    <constraint firstItem="SeF-AR-g4w" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="yGz-Eq-dSY"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <point key="canvasLocation" x="34.5" y="54"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Received" width="33" height="33"/>
+    </resources>
 </document>

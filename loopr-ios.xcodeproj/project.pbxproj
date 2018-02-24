@@ -128,6 +128,9 @@
 		ACDBF10A203FEA07000F0DEC /* ReorderAutoScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF109203FEA07000F0DEC /* ReorderAutoScroll.swift */; };
 		ACDBF10C203FEA3E000F0DEC /* ReorderGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF10B203FEA3E000F0DEC /* ReorderGestureRecognizer.swift */; };
 		ACDBF10E203FEBAD000F0DEC /* TableViewReorderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF10D203FEBAD000F0DEC /* TableViewReorderDelegate.swift */; };
+		ACE6F7182041FDAD0039273D /* AssetTransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F7162041FDAD0039273D /* AssetTransactionDetailViewController.swift */; };
+		ACE6F7192041FDAD0039273D /* AssetTransactionDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE6F7172041FDAD0039273D /* AssetTransactionDetailViewController.xib */; };
+		ACE6F71C204211470039273D /* DashedLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F71B204211470039273D /* DashedLineView.swift */; };
 		ACF71CB42033E723000E7618 /* TradeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */; };
 		ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */; };
 		C87E226E2031708000323584 /* ToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E226D2031708000323584 /* ToggleTableViewCell.swift */; };
@@ -293,6 +296,9 @@
 		ACDBF109203FEA07000F0DEC /* ReorderAutoScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderAutoScroll.swift; sourceTree = "<group>"; };
 		ACDBF10B203FEA3E000F0DEC /* ReorderGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderGestureRecognizer.swift; sourceTree = "<group>"; };
 		ACDBF10D203FEBAD000F0DEC /* TableViewReorderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewReorderDelegate.swift; sourceTree = "<group>"; };
+		ACE6F7162041FDAD0039273D /* AssetTransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTransactionDetailViewController.swift; sourceTree = "<group>"; };
+		ACE6F7172041FDAD0039273D /* AssetTransactionDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetTransactionDetailViewController.xib; sourceTree = "<group>"; };
+		ACE6F71B204211470039273D /* DashedLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedLineView.swift; sourceTree = "<group>"; };
 		ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeTableViewCell.swift; sourceTree = "<group>"; };
 		ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeTableViewCell.xib; sourceTree = "<group>"; };
 		C87E226D2031708000323584 /* ToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleTableViewCell.swift; sourceTree = "<group>"; };
@@ -419,6 +425,8 @@
 				AC5E0DD5203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib */,
 				AC5E0DD8203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift */,
 				AC5E0DD9203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib */,
+				ACE6F7162041FDAD0039273D /* AssetTransactionDetailViewController.swift */,
+				ACE6F7172041FDAD0039273D /* AssetTransactionDetailViewController.xib */,
 			);
 			path = AssetDetail;
 			sourceTree = "<group>";
@@ -557,6 +565,7 @@
 		ACB5DD85202AD74D00140A09 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				ACE6F71A204210E80039273D /* LineView */,
 				ACDBF0FF203FE6F3000F0DEC /* TableViewReorder */,
 				AC4141F120352C130089861D /* SwipeViewController */,
 				ACB5DD96202D5A6D00140A09 /* NumericKeyboard */,
@@ -736,6 +745,14 @@
 			path = UIConfig;
 			sourceTree = "<group>";
 		};
+		ACE6F71A204210E80039273D /* LineView */ = {
+			isa = PBXGroup;
+			children = (
+				ACE6F71B204211470039273D /* DashedLineView.swift */,
+			);
+			path = LineView;
+			sourceTree = "<group>";
+		};
 		C8BF959B20267FB600343B9A /* Setup */ = {
 			isa = PBXGroup;
 			children = (
@@ -873,6 +890,7 @@
 				AC9280ED2030D34B0009B574 /* TradePlaceOrderViewController.xib in Resources */,
 				AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */,
 				ACB911852026388700F14644 /* SettingViewController.xib in Resources */,
+				ACE6F7192041FDAD0039273D /* AssetTransactionDetailViewController.xib in Resources */,
 				ACB5DD7D202A203900140A09 /* MarketLineChartViewController.xib in Resources */,
 				AC37566E2038D37400AADC60 /* UnlockWalletSwipeViewController.xib in Resources */,
 				AC37567D2038D80300AADC60 /* PrivateKeyViewController.xib in Resources */,
@@ -1155,6 +1173,7 @@
 				ACB5DDA0202D5B9900140A09 /* CGSizeExtension.swift in Sources */,
 				ACB9115A20242B9D00F14644 /* AssetTableViewCell.swift in Sources */,
 				AC3756662038CD7E00AADC60 /* SetupNavigationController.swift in Sources */,
+				ACE6F71C204211470039273D /* DashedLineView.swift in Sources */,
 				ACDBF10A203FEA07000F0DEC /* ReorderAutoScroll.swift in Sources */,
 				ACB9117A20256B3C00F14644 /* MarketDataManager.swift in Sources */,
 				ACDBF108203FE9D2000F0DEC /* ReorderDestinationRow.swift in Sources */,
@@ -1168,6 +1187,7 @@
 				ACB9117820256B0300F14644 /* Market.swift in Sources */,
 				AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */,
 				ACB911692025472A00F14644 /* AssetDataManager.swift in Sources */,
+				ACE6F7182041FDAD0039273D /* AssetTransactionDetailViewController.swift in Sources */,
 				ACB911A120296AE500F14644 /* OrderDataManager.swift in Sources */,
 				AC41420C2038BFB70089861D /* UserDefaultsKeys.swift in Sources */,
 				ACB911992027F65800F14644 /* loopring_JSON_RPC.swift in Sources */,

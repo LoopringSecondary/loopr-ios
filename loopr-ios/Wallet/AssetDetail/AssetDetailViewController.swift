@@ -74,7 +74,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1 + 5
+        return 1 + 10
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -102,14 +102,18 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
             if cell == nil {
                 let nib = Bundle.main.loadNibNamed("AssetTransactionTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? AssetTransactionTableViewCell
-                cell?.selectionStyle = .none
             }
             return cell!
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row >= 1 {
+            tableView.deselectRow(at: indexPath, animated: true)
+            let viewController = AssetTransactionDetailViewController()
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+        
     }
 
 }
