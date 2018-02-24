@@ -63,7 +63,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (indexPath.row == 0) {
+        if indexPath.row == 0 {
             return WalletBalanceTableViewCell.getHeight()
         } else {
             return AssetTableViewCell.getHeight()
@@ -71,9 +71,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (indexPath.row == 0) {
+        if indexPath.row == 0 {
             var cell = tableView.dequeueReusableCell(withIdentifier: WalletBalanceTableViewCell.getCellIdentifier()) as? WalletBalanceTableViewCell
-            if (cell == nil) {
+            if cell == nil {
                 let nib = Bundle.main.loadNibNamed("WalletBalanceTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? WalletBalanceTableViewCell
                 cell?.selectionStyle = .none
@@ -89,7 +89,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
 
             var cell = tableView.dequeueReusableCell(withIdentifier: AssetTableViewCell.getCellIdentifier()) as? AssetTableViewCell
-            if (cell == nil) {
+            if cell == nil {
                 let nib = Bundle.main.loadNibNamed("AssetTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? AssetTableViewCell
             }
@@ -101,11 +101,11 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.row == 0) {
+        if indexPath.row == 0 {
             
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
-            let assetDetailViewController = AssetDetailViewController();
+            let assetDetailViewController = AssetDetailViewController()
             let asset = AssetDataManager.shared.getAssets()[indexPath.row-1]
             assetDetailViewController.asset = asset
             assetDetailViewController.hidesBottomBarWhenPushed = true
@@ -121,7 +121,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 }
 
-
 extension WalletViewController: TableViewReorderDelegate {
     // MARK: - Reorder Delegate
     func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -129,7 +128,7 @@ extension WalletViewController: TableViewReorderDelegate {
     }
 
     func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {
-        if (indexPath.row >= 1) {
+        if indexPath.row >= 1 {
             return true
         } else {
             return false

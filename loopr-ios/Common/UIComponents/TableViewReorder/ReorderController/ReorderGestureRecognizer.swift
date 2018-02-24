@@ -6,7 +6,6 @@
 //  Copyright © 2018 Loopring. All rights reserved.
 //
 
-
 import UIKit
 
 extension ReorderController {
@@ -42,4 +41,3 @@ extension ReorderController: UIGestureRecognizerDelegate {
     }
     
 }
-

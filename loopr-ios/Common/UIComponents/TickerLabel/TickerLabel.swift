@@ -15,8 +15,8 @@ enum TickerLabelScrollDirection {
     case down
 }
 
-class TickerCharacterLabel : UILabel {
-    var animationDidCompleteBlock: ((_ label: TickerCharacterLabel) -> Void)? = nil
+class TickerCharacterLabel: UILabel {
+    var animationDidCompleteBlock: ((_ label: TickerCharacterLabel) -> Void)?
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if animationDidCompleteBlock != nil {
@@ -92,7 +92,7 @@ class TickerLabel: UIView {
     }
     
     func setText(_ text: String, animated: Bool) {
-        if (self.text == text) {
+        if self.text == text {
             return
         }
         let oldTextLength: Int = self.text.count
@@ -105,8 +105,7 @@ class TickerLabel: UIView {
             invalidateIntrinsicContentSize()
             setNeedsLayout()
             layoutCharacterLabels()
-        }
-        else if newTextLength < oldTextLength {
+        } else if newTextLength < oldTextLength {
             let textLengthDelta: Int = oldTextLength - newTextLength
             for _ in 0..<textLengthDelta {
                 removeLastCharacterLabel(animated)
@@ -143,20 +142,16 @@ class TickerLabel: UIView {
                 if oldValue == 9 && newValue != 8 {
                     let direction = isOneDirection ? oneScrollDirection: TickerLabelScrollDirection.down
                     self.addLabelAnimation(characterView, direction: direction)
-                }
-                else if (oldValue == 0 || oldValue == 1) && newValue == 9 {
+                } else if (oldValue == 0 || oldValue == 1) && newValue == 9 {
                     let direction = isOneDirection ? oneScrollDirection:TickerLabelScrollDirection.up
                     self.addLabelAnimation(characterView, direction: direction)
-                }
-                else if oldValue > newValue {
+                } else if oldValue > newValue {
                     let direction = isOneDirection ? oneScrollDirection:TickerLabelScrollDirection.up
                     self.addLabelAnimation(characterView, direction: direction)
-                }
-                else if oldValue < newValue {
+                } else if oldValue < newValue {
                     let direction = isOneDirection ? oneScrollDirection:TickerLabelScrollDirection.down
                     self.addLabelAnimation(characterView, direction: direction)
-                }
-                else {
+                } else {
                     let direction = isOneDirection ? oneScrollDirection:TickerLabelScrollDirection.down
                     self.addLabelAnimation(characterView, direction: direction)
                 }
@@ -165,7 +160,6 @@ class TickerLabel: UIView {
 
         self.text = text
     }
-    
     
     // MARK: - Character Animation
     func addLabelAnimation(_ label: UILabel, direction scrollDirection: TickerLabelScrollDirection) {
@@ -210,15 +204,18 @@ class TickerLabel: UIView {
         var label: TickerCharacterLabel? = nil
         if textAlignment == .right {
             label = characterViews.first
-        }
-        else {
+        } else {
             label = characterViews.last
         }
+
         if label == nil {
             return
         }
 
-        while let elementIndex = characterViews.index(of: label!) { characterViews.remove(at: elementIndex) }
+        while let elementIndex = characterViews.index(of: label!) {
+            characterViews.remove(at: elementIndex)
+        }
+
         if animated {
             label?.text = nil
             if let aLabel = label {
@@ -229,8 +226,7 @@ class TickerLabel: UIView {
                 weakSelf?.labelDidCompleteRemovealAnimation(label)
             }
             _ = addLabelAnimation(label!, direction: TickerLabelScrollDirection.up, notifyDelegate: true)
-        }
-        else {
+        } else {
             label?.removeFromSuperview()
         }
     }

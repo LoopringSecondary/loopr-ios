@@ -25,4 +25,3 @@ public struct NumericKeyboardItem {
         self.image = image
     }
 }
-

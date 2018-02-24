@@ -21,7 +21,6 @@ public enum ReorderSpacerCellStyle {
     case transparent
 }
 
-
 // MARK: - ReorderController
 
 /**
@@ -115,7 +114,7 @@ public class ReorderController: NSObject {
     weak var tableView: UITableView?
     
     var reorderState: ReorderState = .ready(snapshotRow: nil)
-    var snapshotView: UIView? = nil
+    var snapshotView: UIView?
     
     var autoScrollDisplayLink: CADisplayLink?
     var lastAutoScrollTimeStamp: CFTimeInterval?
@@ -254,6 +253,5 @@ public class ReorderController: NSObject {
         
         return cell
     }
-    
-}
 
+}

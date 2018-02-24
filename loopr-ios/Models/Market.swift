@@ -31,7 +31,7 @@ class Market: Equatable, CustomStringConvertible {
         return MarketDataManager.shared.getFavoriteMarketKeys().contains(description)
     }
 
-    static func ==(lhs: Market, rhs: Market) -> Bool {
+    static func == (lhs: Market, rhs: Market) -> Bool {
         return lhs.tradingPair == rhs.tradingPair
     }
 

@@ -86,8 +86,7 @@ extension ReorderController {
                 
                 let path = IndexPath(row: 0, section: section)
                 return (path, abs(snapshotFrame.maxY - rect.minY))
-            }
-            else if section < context.destinationRow.section {
+            } else if section < context.destinationRow.section {
                 let rect: CGRect
                 if rowsInSection == 0 {
                     rect = rectForEmptySection(section)
@@ -97,8 +96,7 @@ extension ReorderController {
                 
                 let path = IndexPath(row: rowsInSection, section: section)
                 return (path, abs(snapshotFrame.minY - rect.maxY))
-            }
-            else {
+            } else {
                 return nil
             }
         }
@@ -116,4 +114,3 @@ extension ReorderController {
     }
     
 }
-

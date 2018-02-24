@@ -34,7 +34,7 @@ class GenerateWalletViewController: UIViewController {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func checkPasswordStrength(){
+    func checkPasswordStrength() {
         
     }
     

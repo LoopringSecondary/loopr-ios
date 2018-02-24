@@ -361,4 +361,3 @@ extension SwipeView: SwipeContentScrollViewDataSource {
         return dataSource?.swipeView(self, viewControllerForPageAt: index).view
     }
 }
-

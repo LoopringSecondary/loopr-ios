@@ -20,8 +20,8 @@ class MarketLineChartTableViewCell: UITableViewCell {
     @IBOutlet weak var oneYearButton: CustomUIButtonForUIToolbar!
     @IBOutlet weak var fiveYearButton: CustomUIButtonForUIToolbar!
     
-    var pressedBuyButtonClosure: (() -> Void)? = nil
-    var pressedSellButtonClosure: (() -> Void)? = nil
+    var pressedBuyButtonClosure: (() -> Void)?
+    var pressedSellButtonClosure: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,7 +42,6 @@ class MarketLineChartTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
     
     func drawLineChartView() {
         lineChartView.chartDescription?.enabled = false

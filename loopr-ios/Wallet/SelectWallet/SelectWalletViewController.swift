@@ -49,7 +49,7 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: SelectWalletTableViewCell.getCellIdentifier()) as? SelectWalletTableViewCell
-        if (cell == nil) {
+        if cell == nil {
             let nib = Bundle.main.loadNibNamed("SelectWalletTableViewCell", owner: self, options: nil)
             cell = nib![0] as? SelectWalletTableViewCell
         }

@@ -19,4 +19,3 @@ let lineChartFillColor = UIColor(red: 44/255, green: 44/255, blue: 44/255, alpha
 let tabBarTintColor = UIColor(white: 0, alpha: 1)
 
 let tableCellSelectedBackgroundColor = UIColor(white: 0.1, alpha: 0.3)
-

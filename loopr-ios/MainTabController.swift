@@ -29,17 +29,17 @@ class MainTabController: UITabBarController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if (!SetupDataManager.shared.hasPresented && setupViewController != nil) {
+        if !SetupDataManager.shared.hasPresented && setupViewController != nil {
             SetupDataManager.shared.hasPresented = true
 
-            if (SetupDataManager.shared.hasBeenSetup()) {
+            if SetupDataManager.shared.hasBeenSetup() {
                 
             } else {
                 self.present(setupViewController!, animated: false) {
                     
                 }
             }
-        } else if (setupViewController != nil) {
+        } else if setupViewController != nil {
             setupViewController = nil
         }
     }

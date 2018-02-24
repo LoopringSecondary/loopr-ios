@@ -22,7 +22,7 @@ class Order {
         self.dealtAmountB = dealtAmountB
         self.dealtAmountS = dealtAmountS
         
-        if (originalOrder.tokenB == "WETH") {
+        if originalOrder.tokenB == "WETH" {
             tradingPairDescription = "\(originalOrder.tokenS) / \(originalOrder.tokenB)"
         } else {
             tradingPairDescription = "\(originalOrder.tokenB) / \(originalOrder.tokenS)"

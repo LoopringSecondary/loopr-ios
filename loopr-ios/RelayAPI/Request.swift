@@ -21,8 +21,8 @@ class Request {
         request.httpMethod = "POST"
 
         do {
-           try request.httpBody = body.rawData()
-        } catch (_) {
+            try request.httpBody = body.rawData()
+        } catch {
             return
         }
         

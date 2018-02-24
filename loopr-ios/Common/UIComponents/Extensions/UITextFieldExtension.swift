@@ -36,4 +36,3 @@ extension UITextField {
         self.layer.borderColor = systemDefaultBlueTintColor.cgColor
     }
 }
-

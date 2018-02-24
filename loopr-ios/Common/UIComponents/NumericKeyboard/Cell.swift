@@ -48,6 +48,5 @@ class Cell: UICollectionViewCell {
     @IBAction func _buttonTapped(_ button: UIButton) {
         buttonTapped?(button)
     }
-    
-}
 
+}

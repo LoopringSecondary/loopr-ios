@@ -6,7 +6,7 @@
 //  Copyright © 2018 Loopring. All rights reserved.
 //
 
-enum OrderStatus : String, CustomStringConvertible {
+enum OrderStatus: String, CustomStringConvertible {
 
     // TODO: What is the status for an open order?
     case new = "ORDER_NEW"
@@ -17,11 +17,11 @@ enum OrderStatus : String, CustomStringConvertible {
 
     var description: String {
         switch self {
-            case .new: return "New"
-            case .partial: return "Partial"
-            case .cutoff: return "Cutoff"
-            case .finished: return "Finished"
-            case .cancel: return "Cancel"
+        case .new: return "New"
+        case .partial: return "Partial"
+        case .cutoff: return "Cutoff"
+        case .finished: return "Finished"
+        case .cancel: return "Cancel"
         }
     }
     

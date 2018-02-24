@@ -10,7 +10,7 @@ import UIKit
 
 class SellViewController: UIViewController {
     
-    var interactor:Interactor? = nil
+    var interactor: Interactor?
 
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var keyboardView: DefaultNumericKeyboard!
@@ -30,7 +30,6 @@ class SellViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
     @IBAction func pressedCloseButton(_ sender: Any) {
         print("pressedCloseButton")
         self.dismiss(animated: true) {
@@ -44,7 +43,7 @@ class SellViewController: UIViewController {
     }
     
     @IBAction func handleGesture(_ sender: UIPanGestureRecognizer) {
-        let percentThreshold:CGFloat = 0.3
+        let percentThreshold: CGFloat = 0.3
         
         // convert y-position to downward pull progress (percentage)
         let translation = sender.translation(in: view)

@@ -29,5 +29,4 @@ class Asset: CustomStringConvertible {
         self.description = self.name
     }
     
-    
 }

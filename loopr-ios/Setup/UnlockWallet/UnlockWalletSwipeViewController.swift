@@ -59,7 +59,7 @@ class UnlockWalletSwipeViewController: SwipeViewController {
         print("did change from item \(fromIndex) to section \(toIndex)")
     }
     
-    // MARK - DataSource
+    // MARK: DataSource
     override func numberOfPages(in swipeView: SwipeView) -> Int {
         return types.count
     }
@@ -75,13 +75,10 @@ class UnlockWalletSwipeViewController: SwipeViewController {
         switch type {
         case .mnemonic:
             viewController = MnemonicViewController()
-            break
         case .keystore:
             viewController = KeystoreViewController()
-            break
         case .privateKey:
             viewController = PrivateKeyViewController()
-            break
         }
 
         self.addChildViewController(viewController)

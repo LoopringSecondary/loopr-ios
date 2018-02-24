@@ -57,7 +57,6 @@ public struct SwipeViewOptions {
             public var animationDuration: CGFloat = 0.3
         }
         
-        
         /// SwipeTabView height. Defaults to `44.0`.
         public var height: CGFloat = 44.0
         

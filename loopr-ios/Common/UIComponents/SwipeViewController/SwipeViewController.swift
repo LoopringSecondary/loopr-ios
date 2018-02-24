@@ -71,4 +71,3 @@ open class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDa
     }
 
 }
-

@@ -18,8 +18,8 @@ class TradingPair: Equatable {
         self.tradingB = tradingB
     }
 
-    static func ==(lhs: TradingPair, rhs: TradingPair) -> Bool {
-        if ((lhs.tradingA == rhs.tradingA && lhs.tradingB == rhs.tradingB) || (lhs.tradingA == rhs.tradingB && lhs.tradingB == rhs.tradingA)) {
+    static func == (lhs: TradingPair, rhs: TradingPair) -> Bool {
+        if (lhs.tradingA == rhs.tradingA && lhs.tradingB == rhs.tradingB) || (lhs.tradingA == rhs.tradingB && lhs.tradingB == rhs.tradingA) {
             return true
         } else {
             return false

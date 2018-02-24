@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 /**
  The delegate of a `ReorderController` must adopt the `TableViewReorderDelegate` protocol. This protocol defines methods for handling the reordering of rows.
  */

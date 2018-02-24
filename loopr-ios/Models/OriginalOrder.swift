@@ -42,4 +42,3 @@ class OriginalOrder {
         self.s = json["s"].stringValue
     }
 }
-

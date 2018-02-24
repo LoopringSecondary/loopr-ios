@@ -69,8 +69,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return sectionTitles[section]
     }
     
-    
-    //Sections
+    // Sections
     func section0Cell(row: Int) -> UITableViewCell {
         switch row {
         case 0:

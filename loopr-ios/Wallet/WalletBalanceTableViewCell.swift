@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol WalletBalanceTableViewCellDelegate {
+protocol WalletBalanceTableViewCellDelegate: class {
     func navigatToAddAssetViewController()
 }
 
 class WalletBalanceTableViewCell: UITableViewCell {
     
     var balance = 1000.23
-    var delegate: WalletBalanceTableViewCellDelegate?
+    weak var delegate: WalletBalanceTableViewCellDelegate?
     
     @IBOutlet weak var balanceLabel: TickerLabel!
     

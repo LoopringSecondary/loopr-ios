@@ -50,7 +50,7 @@ class BuyViewController: UIViewController {
     }
     
     @IBAction func handleGuesture(_ sender: UIPanGestureRecognizer) {
-        let percentThreshold:CGFloat = 0.3
+        let percentThreshold: CGFloat = 0.3
         
         // convert y-position to downward pull progress (percentage)
         let translation = sender.translation(in: view)

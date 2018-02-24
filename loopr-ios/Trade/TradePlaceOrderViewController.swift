@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol TradePlaceOrderDelegate {
+protocol TradePlaceOrderDelegate: class {
     func closeTradePlaceOrderViewController()
 }
 
 class TradePlaceOrderViewController: UIViewController {
 
-    var delegate: TradePlaceOrderDelegate?
+    weak var delegate: TradePlaceOrderDelegate?
     @IBOutlet weak var navigationBar: UINavigationBar!
 
     override func viewDidLoad() {
@@ -34,16 +34,5 @@ class TradePlaceOrderViewController: UIViewController {
         delegate?.closeTradePlaceOrderViewController()
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -20,7 +20,7 @@ class Wallet: Equatable {
         self.active = active
     }
     
-    static func ==(lhs: Wallet, rhs: Wallet) -> Bool {
+    static func == (lhs: Wallet, rhs: Wallet) -> Bool {
         return lhs.address == rhs.address
     }
 

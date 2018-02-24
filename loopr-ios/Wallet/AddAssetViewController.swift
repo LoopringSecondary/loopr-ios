@@ -49,7 +49,7 @@ class AddAssetViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         print("textFieldDidBeginEditing")
         
-        if (textField == tokenNameTextField) {
+        if textField == tokenNameTextField {
             tokenNameTitleLabel.textColor = systemDefaultBlueTintColor
             tokenNameTextField.setActive()
             
@@ -62,7 +62,7 @@ class AddAssetViewController: UIViewController, UITextFieldDelegate {
             decimalsTitleLabel.textColor = UIColor.black
             decimalsTextField.setDefault()
             
-        } else if (textField == tokenContractAddressTextField) {
+        } else if textField == tokenContractAddressTextField {
             tokenNameTitleLabel.textColor = UIColor.black
             tokenNameTextField.setDefault()
             

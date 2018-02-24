@@ -14,10 +14,10 @@ class FloatLabelTextView: UITextView {
     fileprivate var isIB = false
     fileprivate var title = UILabel()
     fileprivate var hintLabel = UILabel()
-    fileprivate var initialTopInset:CGFloat = 0
+    fileprivate var initialTopInset: CGFloat = 0
     
-    // MARK:- Properties
-    override var accessibilityLabel:String? {
+    // MARK: Properties
+    override var accessibilityLabel: String? {
         get {
             if text.isEmpty {
                 return title.text!
@@ -29,13 +29,13 @@ class FloatLabelTextView: UITextView {
         }
     }
     
-    var titleFont:UIFont = UIFont.systemFont(ofSize: 12.0) {
+    var titleFont: UIFont = UIFont.systemFont(ofSize: 12.0) {
         didSet {
             title.font = titleFont
         }
     }
     
-    var hint:String = "" {
+    var hint: String = "" {
         didSet {
             title.text = hint
             title.sizeToFit()
@@ -47,13 +47,13 @@ class FloatLabelTextView: UITextView {
         }
     }
     
-    var hintYPadding:CGFloat = 0.0 {
+    var hintYPadding: CGFloat = 0.0 {
         didSet {
             adjustTopTextInset()
         }
     }
     
-    var titleYPadding:CGFloat = 0.0 {
+    var titleYPadding: CGFloat = 0.0 {
         didSet {
             var r = title.frame
             r.origin.y = titleYPadding
@@ -61,7 +61,7 @@ class FloatLabelTextView: UITextView {
         }
     }
     
-    var titleTextColour:UIColor = UIColor.gray {
+    var titleTextColour: UIColor = UIColor.gray {
         didSet {
             if !isFirstResponder {
                 title.textColor = titleTextColour
@@ -69,7 +69,7 @@ class FloatLabelTextView: UITextView {
         }
     }
     
-    var titleActiveTextColour:UIColor = UIColor.cyan {
+    var titleActiveTextColour: UIColor = UIColor.cyan {
         didSet {
             if isFirstResponder {
                 title.textColor = titleActiveTextColour
@@ -77,27 +77,27 @@ class FloatLabelTextView: UITextView {
         }
     }
     
-    // MARK:- Init
-    required init?(coder aDecoder:NSCoder) {
-        super.init(coder:aDecoder)
+    // MARK: Init
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         setup()
     }
     
-    override init(frame:CGRect, textContainer:NSTextContainer?) {
-        super.init(frame:frame, textContainer:textContainer)
+    override init(frame: CGRect, textContainer: NSTextContainer?) {
+        super.init(frame: frame, textContainer: textContainer)
         setup()
     }
     
     deinit {
         if !isIB {
             let nc = NotificationCenter.default
-            nc.removeObserver(self, name:NSNotification.Name.UITextViewTextDidChange, object:self)
-            nc.removeObserver(self, name:NSNotification.Name.UITextViewTextDidBeginEditing, object:self)
-            nc.removeObserver(self, name:NSNotification.Name.UITextViewTextDidEndEditing, object:self)
+            nc.removeObserver(self, name: NSNotification.Name.UITextViewTextDidChange, object: self)
+            nc.removeObserver(self, name: NSNotification.Name.UITextViewTextDidBeginEditing, object: self)
+            nc.removeObserver(self, name: NSNotification.Name.UITextViewTextDidEndEditing, object: self)
         }
     }
     
-    // MARK:- Overrides
+    // MARK: Overrides
     override func prepareForInterfaceBuilder() {
         isIB = true
         setup()
@@ -108,7 +108,7 @@ class FloatLabelTextView: UITextView {
         adjustTopTextInset()
         hintLabel.alpha = text.isEmpty ? 1.0 : 0.0
         let r = textRect()
-        hintLabel.frame = CGRect(x:r.origin.x, y:r.origin.y, width:hintLabel.frame.size.width, height:hintLabel.frame.size.height)
+        hintLabel.frame = CGRect(x: r.origin.x, y: r.origin.y, width: hintLabel.frame.size.width, height: hintLabel.frame.size.height)
         setTitlePositionForTextAlignment()
         let isResp = isFirstResponder
         if isResp && !text.isEmpty {
@@ -126,7 +126,7 @@ class FloatLabelTextView: UITextView {
         }
     }
     
-    // MARK:- Private Methods
+    // MARK: Private Methods
     fileprivate func setup() {
         initialTopInset = textContainerInset.top
         textContainer.lineFragmentPadding = 0.0
@@ -138,7 +138,7 @@ class FloatLabelTextView: UITextView {
         hintLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
         hintLabel.backgroundColor = UIColor.clear
         hintLabel.textColor = placeholderTextColor
-        insertSubview(hintLabel, at:0)
+        insertSubview(hintLabel, at: 0)
         // Set up title label
         title.alpha = 0.0
         title.font = titleFont
@@ -152,9 +152,9 @@ class FloatLabelTextView: UITextView {
         // Observers
         if !isIB {
             let nc = NotificationCenter.default
-            nc.addObserver(self, selector:#selector(UIView.layoutSubviews), name:NSNotification.Name.UITextViewTextDidChange, object:self)
-            nc.addObserver(self, selector:#selector(UIView.layoutSubviews), name:NSNotification.Name.UITextViewTextDidBeginEditing, object:self)
-            nc.addObserver(self, selector:#selector(UIView.layoutSubviews), name:NSNotification.Name.UITextViewTextDidEndEditing, object:self)
+            nc.addObserver(self, selector: #selector(UIView.layoutSubviews), name: NSNotification.Name.UITextViewTextDidChange, object: self)
+            nc.addObserver(self, selector: #selector(UIView.layoutSubviews), name: NSNotification.Name.UITextViewTextDidBeginEditing, object: self)
+            nc.addObserver(self, selector: #selector(UIView.layoutSubviews), name: NSNotification.Name.UITextViewTextDidEndEditing, object: self)
         }
     }
     
@@ -164,7 +164,7 @@ class FloatLabelTextView: UITextView {
         textContainerInset = inset
     }
     
-    fileprivate func textRect()->CGRect {
+    fileprivate func textRect() -> CGRect {
         var r = UIEdgeInsetsInsetRect(bounds, contentInset)
         r.origin.x += textContainer.lineFragmentPadding
         r.origin.y += textContainerInset.top
@@ -189,26 +189,25 @@ class FloatLabelTextView: UITextView {
         hintLabel.frame = r
     }
     
-    fileprivate func showTitle(_ animated:Bool) {
+    fileprivate func showTitle(_ animated: Bool) {
         let dur = animated ? animationDuration : 0
-        UIView.animate(withDuration: dur, delay:0, options: [UIViewAnimationOptions.beginFromCurrentState, UIViewAnimationOptions.curveEaseOut], animations:{
+        UIView.animate(withDuration: dur, delay: 0, options: [UIViewAnimationOptions.beginFromCurrentState, UIViewAnimationOptions.curveEaseOut], animations: {
             // Animation
             self.title.alpha = 1.0
             var r = self.title.frame
             r.origin.y = self.titleYPadding + self.contentOffset.y
             self.title.frame = r
-        }, completion:nil)
+        }, completion: nil)
     }
     
-    fileprivate func hideTitle(_ animated:Bool) {
+    fileprivate func hideTitle(_ animated: Bool) {
         let dur = animated ? animationDuration : 0
-        UIView.animate(withDuration: dur, delay:0, options: [UIViewAnimationOptions.beginFromCurrentState, UIViewAnimationOptions.curveEaseIn], animations:{
+        UIView.animate(withDuration: dur, delay: 0, options: [UIViewAnimationOptions.beginFromCurrentState, UIViewAnimationOptions.curveEaseIn], animations: {
             // Animation
             self.title.alpha = 0.0
             var r = self.title.frame
             r.origin.y = self.title.font.lineHeight + self.hintYPadding
             self.title.frame = r
-        }, completion:nil)
+        }, completion: nil)
     }
 }
-

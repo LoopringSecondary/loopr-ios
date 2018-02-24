@@ -10,7 +10,7 @@ import UIKit
 
 class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var asset: Asset? = nil
+    var asset: Asset?
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -78,7 +78,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (indexPath.row == 0) {
+        if indexPath.row == 0 {
             return AssetBalanceTableViewCell.getHeight()
         } else {
             return AssetTransactionTableViewCell.getHeight()
@@ -86,9 +86,9 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (indexPath.row == 0) {
+        if indexPath.row == 0 {
             var cell = tableView.dequeueReusableCell(withIdentifier: AssetBalanceTableViewCell.getCellIdentifier()) as? AssetBalanceTableViewCell
-            if (cell == nil) {
+            if cell == nil {
                 let nib = Bundle.main.loadNibNamed("AssetBalanceTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? AssetBalanceTableViewCell
                 cell?.selectionStyle = .none
@@ -99,7 +99,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
             return cell!
         } else {
             var cell = tableView.dequeueReusableCell(withIdentifier: AssetTransactionTableViewCell.getCellIdentifier()) as? AssetTransactionTableViewCell
-            if (cell == nil) {
+            if cell == nil {
                 let nib = Bundle.main.loadNibNamed("AssetTransactionTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? AssetTransactionTableViewCell
                 cell?.selectionStyle = .none

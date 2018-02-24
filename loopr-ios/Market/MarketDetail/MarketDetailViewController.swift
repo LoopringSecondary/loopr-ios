@@ -107,7 +107,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (indexPath.section == 0 && indexPath.row == 0) {
+        if indexPath.section == 0 && indexPath.row == 0 {
             // TODO: Simplify the code and make it reusable in other places.
             // window only available after iOS 11.0
             guard #available(iOS 11.0, *),
@@ -119,7 +119,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
 
             let safeAreaHeight = window.safeAreaInsets.top + window.safeAreaInsets.bottom
             // Check if it's an iPhone X
-            if (safeAreaHeight > 0) {
+            if safeAreaHeight > 0 {
                 let navBarHeight = (self.navigationController?.navigationBar.intrinsicContentSize.height)!
                 return MarketLineChartTableViewCell.getHeight(navigationBarHeight: navBarHeight) - safeAreaHeight
             } else {
@@ -128,7 +128,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 return MarketLineChartTableViewCell.getHeight(navigationBarHeight: navBarHeight)
             }
 
-        } else if (indexPath.section == 1) {
+        } else if indexPath.section == 1 {
             return OpenOrderTableViewCell.getHeight()
         } else {
             return TradeTableViewCell.getHeight()
@@ -137,9 +137,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (indexPath.section == 0 && indexPath.row == 0) {            
+        if indexPath.section == 0 && indexPath.row == 0 {
             var cell = tableView.dequeueReusableCell(withIdentifier: MarketLineChartTableViewCell.getCellIdentifier()) as? MarketLineChartTableViewCell
-            if (cell == nil) {
+            if cell == nil {
                 let nib = Bundle.main.loadNibNamed("MarketLineChartTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? MarketLineChartTableViewCell
                 cell?.selectionStyle = .none
@@ -164,9 +164,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             }
             return cell!
 
-        } else if (indexPath.section == 1) {            
+        } else if indexPath.section == 1 {
             var cell = tableView.dequeueReusableCell(withIdentifier: OpenOrderTableViewCell.getCellIdentifier()) as? OpenOrderTableViewCell
-            if (cell == nil) {
+            if cell == nil {
                 let nib = Bundle.main.loadNibNamed("OpenOrderTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? OpenOrderTableViewCell
                 cell?.selectionStyle = .none
@@ -178,7 +178,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
 
         } else {            
             var cell = tableView.dequeueReusableCell(withIdentifier: TradeTableViewCell.getCellIdentifier()) as? TradeTableViewCell
-            if (cell == nil) {
+            if cell == nil {
                 let nib = Bundle.main.loadNibNamed("TradeTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? TradeTableViewCell
                 cell?.selectionStyle = .none
@@ -194,7 +194,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         tableView.deselectRow(at: indexPath, animated: true)
         
         // TODO: Use UIAlertController or PopupDialog
-        if (indexPath.section == 1) {
+        if indexPath.section == 1 {
             // TODO: Pass a view controller to PopupDialog https://github.com/Orderella/PopupDialog#custom-view-controller
             
             let dialogAppearance = PopupDialogDefaultView.appearance()
@@ -215,7 +215,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
 
             // Present dialog
             self.present(popup, animated: true, completion: nil)
-        } else if (indexPath.section == 2) {
+        } else if indexPath.section == 2 {
             let alert = UIAlertController(title: "My Alert", message: "This is an alert.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { _ in
                 NSLog("The \"OK\" alert occured.")
