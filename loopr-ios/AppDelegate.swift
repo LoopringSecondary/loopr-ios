@@ -49,13 +49,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set unsafe area background color for iPhone X
         // UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 1, alpha: 1)
         
-        // updateTheme()
+        updateTheme()
         return true
     }
     
     func updateTheme() {
         // status bar
-        UIApplication.shared.theme_setStatusBarStyle([.lightContent, .default, .lightContent, .lightContent], animated: true)
+        UIApplication.shared.theme_setStatusBarStyle([.default, .default, .lightContent, .lightContent], animated: true)
         
         // navigation bar
         let navigationBar = UINavigationBar.appearance()
@@ -66,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let titleAttributes = GlobalPicker.barTextColors.map { hexString in
             return [
                 NSAttributedStringKey.foregroundColor: UIColor(rgba: hexString),
-                NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16),
+                NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18),
                 NSAttributedStringKey.shadow: shadow
             ]
         }

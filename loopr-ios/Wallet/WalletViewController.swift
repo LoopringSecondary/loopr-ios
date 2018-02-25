@@ -28,7 +28,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             buttonTitle = "Wallet"
         }
         button.setTitle(buttonTitle, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.setTitleColor(defaultTintColor, for: .normal)
         button.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
 

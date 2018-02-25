@@ -20,26 +20,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="395" height="159.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EnQ-Fk-Jne">
-                        <rect key="frame" x="0.0" y="115" width="395" height="44"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="44" id="cOG-x8-37q"/>
-                        </constraints>
-                        <items>
-                            <navigationItem id="zdZ-1B-5mX">
-                                <barButtonItem key="rightBarButtonItem" style="plain" id="dk4-tL-62c">
-                                    <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="2sA-jg-rU4">
-                                        <rect key="frame" x="324" y="6.5" width="51" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="onTintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <action selector="toggleHideAssetSwitch:" destination="KGk-i7-Jjw" eventType="valueChanged" id="NUV-X0-04N"/>
-                                        </connections>
-                                    </switch>
-                                </barButtonItem>
-                            </navigationItem>
-                        </items>
-                    </navigationBar>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1FF-gI-ta8" customClass="TickerLabel" customModule="loopr_ios" customModuleProvider="target">
                         <rect key="frame" x="20" y="37" width="355" height="50"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -47,21 +27,28 @@
                             <constraint firstAttribute="height" constant="50" id="mCn-zs-TbZ"/>
                         </constraints>
                     </view>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RBU-Bt-tYb">
+                        <rect key="frame" x="328" y="118" width="49" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="31" id="3h4-pl-fLX"/>
+                            <constraint firstAttribute="width" constant="47" id="PZd-6t-qSv"/>
+                        </constraints>
+                        <color key="onTintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </switch>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="EnQ-Fk-Jne" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="3Eq-ae-29p"/>
+                    <constraint firstItem="RBU-Bt-tYb" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="622-XC-paM"/>
                     <constraint firstItem="1FF-gI-ta8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="7js-j9-vGL"/>
                     <constraint firstItem="1FF-gI-ta8" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Jla-Wc-dit"/>
                     <constraint firstItem="1FF-gI-ta8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="26" id="ThD-iX-ro7"/>
-                    <constraint firstAttribute="bottom" secondItem="EnQ-Fk-Jne" secondAttribute="bottom" id="aj1-nS-eDE"/>
                     <constraint firstItem="1FF-gI-ta8" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="pIg-Gd-Bxq"/>
-                    <constraint firstAttribute="trailing" secondItem="EnQ-Fk-Jne" secondAttribute="trailing" id="pRh-xC-JK2"/>
+                    <constraint firstItem="RBU-Bt-tYb" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="wr2-Xt-lOt"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="balanceLabel" destination="1FF-gI-ta8" id="8V6-xP-grM"/>
-                <outlet property="hideAssetSwitch" destination="2sA-jg-rU4" id="Fnb-rU-bir"/>
+                <outlet property="hideAssetSwitch" destination="RBU-Bt-tYb" id="0Wc-hO-Stp"/>
             </connections>
             <point key="canvasLocation" x="81.5" y="125"/>
         </tableViewCell>
