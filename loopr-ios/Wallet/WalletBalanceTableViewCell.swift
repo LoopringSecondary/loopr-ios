@@ -23,6 +23,10 @@ class WalletBalanceTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        balanceLabel.theme_backgroundColor = ["#fff", "#212121"]
+        self.theme_backgroundColor = ["#fff", "#212121"]
+        
+        update()
         
         balanceLabel.setText("\(balance)", animated: false)
         balanceLabel.setFont(UIFont.systemFont(ofSize: 36))
@@ -30,6 +34,14 @@ class WalletBalanceTableViewCell: UITableViewCell {
         balanceLabel.textAlignment = NSTextAlignment.center
         
         _ = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    
+    func update() {
+        balanceLabel.textColor = Themes.isNight() ? UIColor.white : defaultTintColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -20,6 +20,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.delegate = self
         assetTableView.reorder.delegate = self
         
+        view.theme_backgroundColor = ["#fff", "#212121"]
+        assetTableView.theme_backgroundColor = ["#fff", "#212121"]
+        
         let button =  UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
         
@@ -29,7 +32,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         button.setTitle(buttonTitle, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        button.setTitleColor(defaultTintColor, for: .normal)
+        button.theme_setTitleColor(["#212121", "#fff"], forState: .normal)
         button.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
 
         button.addTarget(self, action: #selector(self.clickOnButton(_:)), for: .touchUpInside)
@@ -37,6 +40,11 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
         self.navigationItem.rightBarButtonItem = addButton
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        assetTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,6 +105,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell?.update()
             return cell!
         }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -82,6 +82,7 @@
             <connections>
                 <outlet property="amountLabel" destination="RjM-Ph-pMw" id="X50-2f-HvZ"/>
                 <outlet property="balanceLabel" destination="MHg-k2-b9U" id="3bG-3Q-J3o"/>
+                <outlet property="forwardImageView" destination="5oe-WW-UcK" id="9jn-Up-zJj"/>
                 <outlet property="iconImageView" destination="8vB-Bh-nJn" id="Mqd-Jo-eEH"/>
                 <outlet property="symbolLabel" destination="zzi-Me-Sla" id="ZWZ-xa-bCi"/>
             </connections>

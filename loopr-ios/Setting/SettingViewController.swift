@@ -14,7 +14,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var settingsTableView: UITableView!
     
     let sectionTitles = ["User Preferences", "Tools", "Trading", "Relay", "About"]
-    let sectionRows = [3, 3, 3, 3, 6]
+    let sectionRows = [4, 3, 3, 3, 6]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,10 +74,12 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func section0Cell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
-            return createDetailTableCell(title: "Language", detailTitle: "English")
+            return createThemeMode()
         case 1:
-            return createDetailTableCell(title: "Currency", detailTitle: "USD")
+            return createDetailTableCell(title: "Language", detailTitle: "English")
         case 2:
+            return createDetailTableCell(title: "Currency", detailTitle: "USD")
+        case 3:
             return createDetailTableCell(title: "Timzone", detailTitle: TimeZone.current.identifier)
         default:
             return UITableViewCell()
@@ -147,6 +149,16 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     // Cell Types
+    func createThemeMode() -> UITableViewCell {
+        var cell = settingsTableView.dequeueReusableCell(withIdentifier: SettingThemeModeTableViewCell.getCellIdentifier()) as? SettingThemeModeTableViewCell
+        if cell == nil {
+            let nib = Bundle.main.loadNibNamed("SettingThemeModeTableViewCell", owner: self, options: nil)
+            cell = nib![0] as? SettingThemeModeTableViewCell
+        }
+        
+        return cell!
+    }
+    
     func createDetailTableCell(title: String, detailTitle: String) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: title)
         cell.accessoryType = .disclosureIndicator
@@ -178,4 +190,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return 45
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
+    }
 }

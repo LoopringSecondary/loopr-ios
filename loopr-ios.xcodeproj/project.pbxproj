@@ -135,6 +135,8 @@
 		ACE6F72020421D950039273D /* NewVersionTradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE6F71E20421D950039273D /* NewVersionTradeViewController.xib */; };
 		ACE6F722204221260039273D /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F721204221260039273D /* Themes.swift */; };
 		ACE6F7242042228A0039273D /* GlobalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F7232042228A0039273D /* GlobalPicker.swift */; };
+		ACE6F72720426BAC0039273D /* SettingThemeModeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F72520426BAC0039273D /* SettingThemeModeTableViewCell.swift */; };
+		ACE6F72820426BAC0039273D /* SettingThemeModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE6F72620426BAC0039273D /* SettingThemeModeTableViewCell.xib */; };
 		ACF71CB42033E723000E7618 /* TradeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */; };
 		ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */; };
 		C87E226E2031708000323584 /* ToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E226D2031708000323584 /* ToggleTableViewCell.swift */; };
@@ -307,6 +309,8 @@
 		ACE6F71E20421D950039273D /* NewVersionTradeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewVersionTradeViewController.xib; sourceTree = "<group>"; };
 		ACE6F721204221260039273D /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		ACE6F7232042228A0039273D /* GlobalPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalPicker.swift; sourceTree = "<group>"; };
+		ACE6F72520426BAC0039273D /* SettingThemeModeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingThemeModeTableViewCell.swift; sourceTree = "<group>"; };
+		ACE6F72620426BAC0039273D /* SettingThemeModeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingThemeModeTableViewCell.xib; sourceTree = "<group>"; };
 		ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeTableViewCell.swift; sourceTree = "<group>"; };
 		ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeTableViewCell.xib; sourceTree = "<group>"; };
 		C87E226D2031708000323584 /* ToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleTableViewCell.swift; sourceTree = "<group>"; };
@@ -684,6 +688,8 @@
 			children = (
 				ACB9117E2026385100F14644 /* SettingNavigationViewController.swift */,
 				ACB911822026388700F14644 /* SettingViewController.swift */,
+				ACE6F72520426BAC0039273D /* SettingThemeModeTableViewCell.swift */,
+				ACE6F72620426BAC0039273D /* SettingThemeModeTableViewCell.xib */,
 				ACB911832026388700F14644 /* SettingViewController.xib */,
 				C87E226D2031708000323584 /* ToggleTableViewCell.swift */,
 			);
@@ -892,6 +898,7 @@
 				AC4141F0203524280089861D /* MarketSwipeViewController.xib in Resources */,
 				C8BF95B12027AC9400343B9A /* SetupViewController.xib in Resources */,
 				AC9280ED2030D34B0009B574 /* TradePlaceOrderViewController.xib in Resources */,
+				ACE6F72820426BAC0039273D /* SettingThemeModeTableViewCell.xib in Resources */,
 				AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */,
 				ACB911852026388700F14644 /* SettingViewController.xib in Resources */,
 				ACE6F7192041FDAD0039273D /* AssetTransactionDetailViewController.xib in Resources */,
@@ -1199,6 +1206,7 @@
 				ACE6F7182041FDAD0039273D /* AssetTransactionDetailViewController.swift in Sources */,
 				ACB911A120296AE500F14644 /* OrderDataManager.swift in Sources */,
 				AC41420C2038BFB70089861D /* UserDefaultsKeys.swift in Sources */,
+				ACE6F72720426BAC0039273D /* SettingThemeModeTableViewCell.swift in Sources */,
 				ACB911992027F65800F14644 /* loopring_JSON_RPC.swift in Sources */,
 				ACB5DDA4202D6FC300140A09 /* UIImageExtension.swift in Sources */,
 				AC4142042038B6370089861D /* WalletDataManager.swift in Sources */,

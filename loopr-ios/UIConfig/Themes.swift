@@ -13,21 +13,25 @@ private let defaults = UserDefaults.standard
 
 enum Themes: Int {
     
-    case red   = 0
-    case yello = 1
-    case blue  = 2
-    case night = 3
+    case day = 0
+    case night = 1
     
     // MARK: -
     
-    static var current: Themes { return Themes(rawValue: ThemeManager.currentThemeIndex)! }
-    static var before = Themes.red
+    static var current: Themes {
+        // TODO: Remove the force wrap
+        return Themes(rawValue: ThemeManager.currentThemeIndex)!
+    }
+    static var before = Themes.day
     
     // MARK: - Switch Theme
     
     static func switchTo(theme: Themes) {
         before = current
         ThemeManager.setTheme(index: theme.rawValue)
+        
+        // TODO: doesn't work.
+        Themes.saveLastTheme()
     }
     
     static func switchToNext() {

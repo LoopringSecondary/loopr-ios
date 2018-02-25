@@ -17,10 +17,18 @@ class AssetTableViewCell: UITableViewCell {
     
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
+
+    @IBOutlet weak var forwardImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        theme_backgroundColor = ["#fff", "#212121"]
+        symbolLabel.theme_textColor = ["#212121", "#fff"]
+        balanceLabel.theme_textColor = ["#a0a0a0", "#fff"]
+        amountLabel.theme_textColor = ["#a0a0a0", "#fff"]
+        forwardImageView.theme_image = ["Forward", "Forward-white"]
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
