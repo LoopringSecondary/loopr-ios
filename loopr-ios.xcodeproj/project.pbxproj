@@ -672,8 +672,8 @@
 			children = (
 				ACB9116D2025575A00F14644 /* MarketNavigationViewController.swift */,
 				AC4141ED203524280089861D /* MarketSwipeViewController.swift */,
-				AC4141FE20356A4D0089861D /* MarketSwipeViewType.swift */,
 				AC4141EE203524280089861D /* MarketSwipeViewController.xib */,
+				AC4141FE20356A4D0089861D /* MarketSwipeViewType.swift */,
 				ACB9116F202557B100F14644 /* MarketViewController.swift */,
 				ACB91170202557B100F14644 /* MarketViewController.xib */,
 				ACB9117320255A6600F14644 /* MarketTableViewCell.swift */,

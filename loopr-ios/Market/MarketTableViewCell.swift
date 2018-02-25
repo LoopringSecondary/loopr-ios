@@ -18,6 +18,10 @@ class MarketTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        theme_backgroundColor = GlobalPicker.backgroundColor
+        nameLabel.theme_textColor = GlobalPicker.textColor
+        balanceLabel.theme_textColor = ["#a0a0a0", "#fff"]
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

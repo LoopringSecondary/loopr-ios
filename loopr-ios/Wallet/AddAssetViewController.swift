@@ -26,6 +26,8 @@ class AddAssetViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        
         self.title = "Add Custom Token"
         let backButton = UIBarButtonItem()
         backButton.title = ""

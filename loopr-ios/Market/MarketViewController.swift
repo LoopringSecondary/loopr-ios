@@ -39,6 +39,9 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        marketTableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        
         marketTableView.dataSource = self
         marketTableView.delegate = self
         marketTableView.reorder.delegate = self

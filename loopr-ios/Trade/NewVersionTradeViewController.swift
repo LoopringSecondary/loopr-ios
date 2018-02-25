@@ -14,6 +14,7 @@ class NewVersionTradeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
         
         title = "LRC/ETH"
     }

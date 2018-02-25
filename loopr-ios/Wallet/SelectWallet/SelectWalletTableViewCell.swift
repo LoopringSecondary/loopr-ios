@@ -18,6 +18,10 @@ class SelectWalletTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        theme_backgroundColor = GlobalPicker.backgroundColor
+        nameLabel.theme_textColor = GlobalPicker.textColor
+        addressLabel.theme_textColor = GlobalPicker.textColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

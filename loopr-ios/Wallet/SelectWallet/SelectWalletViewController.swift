@@ -16,6 +16,9 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        walletTableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        
         self.title = "Switch Wallet"
         let backButton = UIBarButtonItem()
         backButton.title = ""
@@ -26,6 +29,11 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
         
         walletTableView.delegate = self
         walletTableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        walletTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
