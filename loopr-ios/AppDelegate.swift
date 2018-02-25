@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         Themes.restoreLastTheme()
-        Themes.switchTo(theme: .day)
         ThemeManager.animationDuration = 1.0
         
         // Generate mock data

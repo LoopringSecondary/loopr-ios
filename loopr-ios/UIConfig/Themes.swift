@@ -20,17 +20,28 @@ enum Themes: Int {
     
     static var current: Themes {
         // TODO: Remove the force wrap
-        return Themes(rawValue: ThemeManager.currentThemeIndex)!
+        let theme = Themes(rawValue: ThemeManager.currentThemeIndex)
+        guard theme != nil else {
+            return Themes.day
+        }
+        return theme!
     }
     static var before = Themes.day
     
     // MARK: - Switch Theme
     
+    static func switchTo(themeIndex: Int) {
+        let theme = Themes(rawValue: themeIndex)
+        guard theme != nil else {
+            return
+        }
+        
+        switchTo(theme: theme!)
+    }
+    
     static func switchTo(theme: Themes) {
         before = current
         ThemeManager.setTheme(index: theme.rawValue)
-        
-        // TODO: doesn't work.
         Themes.saveLastTheme()
     }
     
@@ -53,8 +64,8 @@ enum Themes: Int {
     // MARK: - Save & Restore
     
     static func restoreLastTheme() {
-        // TODO: Remove the force wrap
-        switchTo(theme: Themes(rawValue: defaults.integer(forKey: UserDefaultsKeys.lastedThemeIndex.rawValue))!)
+        let lastedThemeIndex = defaults.integer(forKey: UserDefaultsKeys.lastedThemeIndex.rawValue)
+        switchTo(themeIndex: lastedThemeIndex)
     }
     
     static func saveLastTheme() {
