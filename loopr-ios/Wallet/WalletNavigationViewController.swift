@@ -18,7 +18,7 @@ class WalletNavigationViewController: UINavigationController {
         let viewController = WalletViewController(nibName: nil, bundle: nil)
         self.setViewControllers([viewController], animated: false)
         
-        view.theme_backgroundColor = ["#fff", "#212121"]
+        view.theme_backgroundColor = ["#fff", "#000"]
     }
     
     override func viewDidLayoutSubviews() {

@@ -43,5 +43,10 @@ class AssetDataManager {
         
         let asset4 = Asset(symbol: "REP", name: "Augur", icon: UIImage(named: "REP")!, enable: true, balance: Double(5.33133))
         assets.append(asset4)
+        
+        assets.append(asset3)
+        assets.append(asset3)
+        assets.append(asset3)
+        assets.append(asset3)
     }
 }

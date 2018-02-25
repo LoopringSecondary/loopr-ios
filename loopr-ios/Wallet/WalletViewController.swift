@@ -20,8 +20,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.delegate = self
         assetTableView.reorder.delegate = self
         
-        view.theme_backgroundColor = ["#fff", "#212121"]
-        assetTableView.theme_backgroundColor = ["#fff", "#212121"]
+        view.theme_backgroundColor = ["#fff", "#000"]
+        assetTableView.theme_backgroundColor = ["#fff", "#000"]
         
         let button =  UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
@@ -32,7 +32,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         button.setTitle(buttonTitle, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        button.theme_setTitleColor(["#212121", "#fff"], forState: .normal)
+        button.theme_setTitleColor(["#000", "#fff"], forState: .normal)
         button.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
 
         button.addTarget(self, action: #selector(self.clickOnButton(_:)), for: .touchUpInside)

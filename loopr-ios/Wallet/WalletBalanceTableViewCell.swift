@@ -23,8 +23,8 @@ class WalletBalanceTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        balanceLabel.theme_backgroundColor = ["#fff", "#212121"]
-        self.theme_backgroundColor = ["#fff", "#212121"]
+        balanceLabel.theme_backgroundColor = ["#fff", "#000"]
+        self.theme_backgroundColor = ["#fff", "#000"]
         
         update()
         

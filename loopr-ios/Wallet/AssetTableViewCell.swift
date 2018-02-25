@@ -24,8 +24,8 @@ class AssetTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        theme_backgroundColor = ["#fff", "#212121"]
-        symbolLabel.theme_textColor = ["#212121", "#fff"]
+        theme_backgroundColor = ["#fff", "#000"]
+        symbolLabel.theme_textColor = ["#000", "#fff"]
         balanceLabel.theme_textColor = ["#a0a0a0", "#fff"]
         amountLabel.theme_textColor = ["#a0a0a0", "#fff"]
         forwardImageView.theme_image = ["Forward", "Forward-white"]
