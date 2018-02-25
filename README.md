@@ -12,6 +12,7 @@ Please refer
 - [Lottie](https://github.com/airbnb/lottie-ios): an iOS library to natively render After Effects vector animations
 - [Pop](https://github.com/facebook/pop): An extensible iOS and OS X animation library, useful for physics-based interactions.
 - [SwiftLint](https://github.com/realm/SwiftLint): A tool to enforce Swift style and conventions.
+- [SwiftTheme](https://github.com/jiecao-fm/SwiftTheme): Powerful theme/skin manager
 
 #### start
 1. Install cocoapods ```sudo gem install cocoapods```
