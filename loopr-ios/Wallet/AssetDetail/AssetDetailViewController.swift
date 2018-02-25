@@ -21,8 +21,10 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.theme_backgroundColor = ["#fff", "#000"]
+        tableView.theme_backgroundColor = ["#fff", "#000"]
         setupNavigationBar()
-        
+
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -58,6 +60,11 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     // Not going to use a singleton pattern to store asset data.
     func getDataFromServer() {
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
