@@ -46,11 +46,12 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         let sendBarButton = UIBarButtonItem(customView: sendButton)
         
         let qrCodebutton = UIButton(type: UIButtonType.custom)
-        qrCodebutton.setImage(UIImage.init(named: "QRCode"), for: UIControlState.normal)
+        qrCodebutton.theme_setImage(["QRCode-black", "QRCode-white"], forState: UIControlState.normal)
+        qrCodebutton.theme_setImage(["QRCode-grey", "QRCode-grey"], forState: UIControlState.highlighted)
         
         // TODO: add a QRCode-highlight icon
         
-        qrCodebutton.addTarget(self, action: #selector(self.pressSendButton(_:)), for: UIControlEvents.touchUpInside)
+        qrCodebutton.addTarget(self, action: #selector(self.pressQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
         qrCodebutton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let qrCodeBarButton = UIBarButtonItem(customView: qrCodebutton)
         

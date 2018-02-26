@@ -39,7 +39,19 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationItem.titleView = button
         
         let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
-        self.navigationItem.rightBarButtonItem = addButton
+        // addButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        
+        let qrCodebutton = UIButton(type: UIButtonType.custom)
+        
+        // TODO: smaller images.
+        qrCodebutton.theme_setImage(["QRCode-black", "QRCode-white"], forState: UIControlState.normal)
+        qrCodebutton.theme_setImage(["QRCode-grey", "QRCode-grey"], forState: UIControlState.highlighted)
+
+        qrCodebutton.addTarget(self, action: #selector(self.pressQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
+        qrCodebutton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let qrCodeBarButton = UIBarButtonItem(customView: qrCodebutton)
+        
+        self.navigationItem.rightBarButtonItems = [addButton, qrCodeBarButton]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,6 +67,13 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @objc func clickOnButton(_ button: UIButton) {
         print("select another wallet.")
         let viewController = SelectWalletViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc func pressQRCodeButton(_ button: UIBarButtonItem) {
+        print("pressQRCodeButton")
+        let viewController = QRCodeViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
