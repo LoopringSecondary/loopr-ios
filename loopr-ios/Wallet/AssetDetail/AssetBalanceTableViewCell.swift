@@ -15,6 +15,10 @@ class AssetBalanceTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+
+        balanceLabel.theme_textColor = ["#000", "#fff"]
+        balanceLabel.theme_backgroundColor = ["#fff", "#000"]
+        self.theme_backgroundColor = ["#fff", "#000"]
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
