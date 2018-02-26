@@ -16,7 +16,7 @@ class NewVersionTradeViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         
-        title = "LRC/ETH"
+        self.navigationItem.title = "LRC/ETH"
     }
 
     override func didReceiveMemoryWarning() {
