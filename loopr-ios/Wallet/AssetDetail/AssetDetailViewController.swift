@@ -75,6 +75,9 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     @objc func pressQRCodeButton(_ button: UIBarButtonItem) {
         print("pressQRCodeButton")
+        let viewController = QRCodeViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc func pressSendButton(_ button: UIBarButtonItem) {
