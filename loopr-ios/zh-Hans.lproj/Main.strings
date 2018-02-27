@@ -1,0 +1,15 @@
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "00u-fT-AFr"; */
+"00u-fT-AFr.title" = "设置";
+
+/* Class = "UITabBarItem"; title = "Portfolio"; ObjectID = "0eD-ed-xom"; */
+"0eD-ed-xom.title" = "组合";
+
+/* Class = "UITabBarItem"; title = "Wallet"; ObjectID = "U12-P7-3w7"; */
+"U12-P7-3w7.title" = "钱包";
+
+/* Class = "UITabBarItem"; title = "Market"; ObjectID = "Y7G-HR-RiD"; */
+"Y7G-HR-RiD.title" = "市场";
+
+/* Class = "UITabBarItem"; title = "Trade"; ObjectID = "omp-e1-QTw"; */
+"omp-e1-QTw.title" = "交易";
