@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,6 +13,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MnemonicViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="mnemonicWordTextView" destination="wnQ-al-rIC" id="8Ym-9j-LR3"/>
+                <outlet property="unlockButton" destination="T0O-fl-KJI" id="ZT5-Pd-eFc"/>
+                <outlet property="unlockButtonBottonLayoutConstraint" destination="80I-li-298" id="gLX-7P-wpU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,21 +24,35 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" text="Please use space to seperate the mnemonic words" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wnQ-al-rIC">
-                    <rect key="frame" x="16" y="36" width="343" height="307.5"/>
+                    <rect key="frame" x="16" y="36" width="343" height="275"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <color key="tintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="wnQ-al-rIC" secondAttribute="height" multiplier="330:296" id="yeF-qy-skc"/>
-                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0O-fl-KJI">
+                    <rect key="frame" x="16" y="327" width="343" height="40"/>
+                    <color key="backgroundColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="MpU-ba-qC9"/>
+                    </constraints>
+                    <state key="normal" title="Unlock">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="pressUnlockButton:" destination="-1" eventType="touchUpInside" id="aZ7-UM-uaa"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="T0O-fl-KJI" secondAttribute="bottom" constant="300" id="80I-li-298"/>
+                <constraint firstItem="T0O-fl-KJI" firstAttribute="top" secondItem="wnQ-al-rIC" secondAttribute="bottom" constant="16" id="AEm-Ud-rti"/>
                 <constraint firstItem="wnQ-al-rIC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="UBY-om-phR"/>
                 <constraint firstItem="wnQ-al-rIC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="pjD-ZM-Uks"/>
+                <constraint firstItem="T0O-fl-KJI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="rlX-jG-n6I"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wnQ-al-rIC" secondAttribute="trailing" constant="16" id="wZj-UN-n3b"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="T0O-fl-KJI" secondAttribute="trailing" constant="16" id="zcT-cY-DFZ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="34.5" y="107.5"/>

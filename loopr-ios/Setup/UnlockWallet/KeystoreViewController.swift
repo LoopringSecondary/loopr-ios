@@ -16,6 +16,7 @@ class KeystoreViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        keystoreContentTextView.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,7 +26,7 @@ class KeystoreViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        keystoreContentTextView.becomeFirstResponder()
+        
     }
 
 }

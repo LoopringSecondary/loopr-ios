@@ -130,6 +130,7 @@
 		ACDBF10A203FEA07000F0DEC /* ReorderAutoScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF109203FEA07000F0DEC /* ReorderAutoScroll.swift */; };
 		ACDBF10C203FEA3E000F0DEC /* ReorderGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF10B203FEA3E000F0DEC /* ReorderGestureRecognizer.swift */; };
 		ACDBF10E203FEBAD000F0DEC /* TableViewReorderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF10D203FEBAD000F0DEC /* TableViewReorderDelegate.swift */; };
+		ACE5BF95204523F9005D75DD /* UIStyleKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5BF94204523F9005D75DD /* UIStyleKeyboard.swift */; };
 		ACE6F7182041FDAD0039273D /* AssetTransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F7162041FDAD0039273D /* AssetTransactionDetailViewController.swift */; };
 		ACE6F7192041FDAD0039273D /* AssetTransactionDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE6F7172041FDAD0039273D /* AssetTransactionDetailViewController.xib */; };
 		ACE6F71C204211470039273D /* DashedLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F71B204211470039273D /* DashedLineView.swift */; };
@@ -306,6 +307,7 @@
 		ACDBF109203FEA07000F0DEC /* ReorderAutoScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderAutoScroll.swift; sourceTree = "<group>"; };
 		ACDBF10B203FEA3E000F0DEC /* ReorderGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderGestureRecognizer.swift; sourceTree = "<group>"; };
 		ACDBF10D203FEBAD000F0DEC /* TableViewReorderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewReorderDelegate.swift; sourceTree = "<group>"; };
+		ACE5BF94204523F9005D75DD /* UIStyleKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStyleKeyboard.swift; sourceTree = "<group>"; };
 		ACE6F7162041FDAD0039273D /* AssetTransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTransactionDetailViewController.swift; sourceTree = "<group>"; };
 		ACE6F7172041FDAD0039273D /* AssetTransactionDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetTransactionDetailViewController.xib; sourceTree = "<group>"; };
 		ACE6F71B204211470039273D /* DashedLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedLineView.swift; sourceTree = "<group>"; };
@@ -765,6 +767,7 @@
 				AC9280E6202F5A010009B574 /* UIStyleConfig.swift */,
 				ACE6F721204221260039273D /* Themes.swift */,
 				ACE6F7232042228A0039273D /* GlobalPicker.swift */,
+				ACE5BF94204523F9005D75DD /* UIStyleKeyboard.swift */,
 			);
 			path = UIConfig;
 			sourceTree = "<group>";
@@ -1237,6 +1240,7 @@
 				ACB911A320296B9900F14644 /* OriginalOrder.swift in Sources */,
 				ACE6F71F20421D950039273D /* NewVersionTradeViewController.swift in Sources */,
 				AC4141EF203524280089861D /* MarketSwipeViewController.swift in Sources */,
+				ACE5BF95204523F9005D75DD /* UIStyleKeyboard.swift in Sources */,
 				ACB5DD98202D5A8400140A09 /* NumericKeyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

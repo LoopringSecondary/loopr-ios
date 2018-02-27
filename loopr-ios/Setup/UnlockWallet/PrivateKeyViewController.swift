@@ -16,6 +16,7 @@ class PrivateKeyViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        privateKeyTextView.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,7 +26,7 @@ class PrivateKeyViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        privateKeyTextView.becomeFirstResponder()
+        
     }
 
 }
