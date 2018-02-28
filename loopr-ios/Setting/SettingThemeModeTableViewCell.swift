@@ -11,6 +11,7 @@ import UIKit
 class SettingThemeModeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nightModeSwitch: UISwitch!
+    @IBOutlet weak var nightModeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,6 +22,8 @@ class SettingThemeModeTableViewCell: UITableViewCell {
         } else {
             nightModeSwitch.setOn(false, animated: false)
         }
+        
+        nightModeLabel.text = NSLocalizedString("Night Mode", comment: "")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

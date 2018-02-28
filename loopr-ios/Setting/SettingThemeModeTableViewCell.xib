@@ -51,6 +51,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="nightModeLabel" destination="HpL-s0-dS8" id="jXW-qw-5qS"/>
                 <outlet property="nightModeSwitch" destination="aTd-qa-fYO" id="Yyf-Id-rlb"/>
             </connections>
             <point key="canvasLocation" x="91" y="123.5"/>
