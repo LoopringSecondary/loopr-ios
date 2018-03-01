@@ -15,6 +15,10 @@ class MarketTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
     
+    @IBOutlet weak var marketPriceInBitcoinLabel: UILabel!
+    @IBOutlet weak var marketPriceInFiatCurrencyLabel: UILabel!
+    @IBOutlet weak var percentageChangeLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,6 +26,9 @@ class MarketTableViewCell: UITableViewCell {
         theme_backgroundColor = GlobalPicker.backgroundColor
         nameLabel.theme_textColor = GlobalPicker.textColor
         balanceLabel.theme_textColor = ["#a0a0a0", "#fff"]
+        
+        marketPriceInBitcoinLabel.theme_textColor = GlobalPicker.textColor
+        marketPriceInFiatCurrencyLabel.theme_textColor = ["#a0a0a0", "#fff"]
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -42,6 +49,6 @@ class MarketTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 90
+        return 84
     }
 }
