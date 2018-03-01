@@ -17,11 +17,16 @@ class TradePlaceOrderViewController: UIViewController {
     weak var delegate: TradePlaceOrderDelegate?
     @IBOutlet weak var navigationBar: UINavigationBar!
 
+    @IBAction func pressedPlaceButton(_ sender: UIButton) {
+        let vc = TradePlaceReplyViewController()
+        self.present(vc, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        navigationBar.shadowImage = UIImage()
+//        navigationBar.shadowImage = UIImage()
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,7 +35,8 @@ class TradePlaceOrderViewController: UIViewController {
     }
     
     @IBAction func pressedCloseButton(_ sender: Any) {
-        delegate?.closeTradePlaceOrderViewController()
+//        delegate?.closeTradePlaceOrderViewController()
+        self.dismiss(animated: true, completion: nil)
     }
 
 }

@@ -11,6 +11,7 @@ target 'loopr-ios' do
   pod 'lottie-ios'
   pod 'pop'
   pod 'PopupDialog'
+  pod 'DottedLineView'
   pod 'SwiftLint'
   pod 'SwiftTheme'
 

@@ -16,7 +16,7 @@ class TradeNavigationViewController: UINavigationController {
         // Do any additional setup after loading the view.
         navigationBar.shadowImage = UIImage()
 
-        let viewController = NewVersionTradeViewController(nibName: nil, bundle: nil)
+        let viewController = SampleViewController(nibName: nil, bundle: nil)
         self.setViewControllers([viewController], animated: false)
     }
 

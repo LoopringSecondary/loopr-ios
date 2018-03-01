@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		949C49442046976E0074466D /* TradePlaceReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949C49422046976E0074466D /* TradePlaceReplyViewController.swift */; };
+		949C49452046976E0074466D /* TradePlaceReplyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949C49432046976E0074466D /* TradePlaceReplyViewController.xib */; };
+		949C49482046A4A80074466D /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949C49462046A4A80074466D /* SampleViewController.swift */; };
+		949C49492046A4A80074466D /* SampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949C49472046A4A80074466D /* SampleViewController.xib */; };
+		94BAE3DE204811C1001A271A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BAE3DD204811C1001A271A /* UIView+Extension.swift */; };
 		9AACD1A68297585D93FB6182 /* Pods_loopr_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFC6AA9DC8C999B66FFD8AA /* Pods_loopr_iosTests.framework */; };
 		AC01A2412022D94600FE8317 /* PortfolioNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC01A2402022D94600FE8317 /* PortfolioNavigationController.swift */; };
 		AC01A2442022D9BE00FE8317 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC01A2422022D9BE00FE8317 /* PortfolioViewController.swift */; };
@@ -180,6 +185,11 @@
 		5FFC6AA9DC8C999B66FFD8AA /* Pods_loopr_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69BC13297FDFA52B8E089485 /* Pods-loopr-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-iosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-iosTests/Pods-loopr-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		929BB32EF62C4BD6BC1DFC8F /* Pods_loopr_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		949C49422046976E0074466D /* TradePlaceReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradePlaceReplyViewController.swift; sourceTree = "<group>"; };
+		949C49432046976E0074466D /* TradePlaceReplyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradePlaceReplyViewController.xib; sourceTree = "<group>"; };
+		949C49462046A4A80074466D /* SampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
+		949C49472046A4A80074466D /* SampleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SampleViewController.xib; sourceTree = "<group>"; };
+		94BAE3DD204811C1001A271A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		AC01A2402022D94600FE8317 /* PortfolioNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioNavigationController.swift; sourceTree = "<group>"; };
 		AC01A2422022D9BE00FE8317 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		AC01A2432022D9BE00FE8317 /* PortfolioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioViewController.xib; sourceTree = "<group>"; };
@@ -377,6 +387,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		94BAE3DC20481194001A271A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				94BAE3DD204811C1001A271A /* UIView+Extension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		970E368BCD1AFC73151579EF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,6 +501,7 @@
 		AC798E362022B93A0071D477 = {
 			isa = PBXGroup;
 			children = (
+				94BAE3DC20481194001A271A /* Utils */,
 				AC798E412022B93A0071D477 /* loopr-ios */,
 				AC798E582022B93B0071D477 /* loopr-iosTests */,
 				AC798E632022B93B0071D477 /* loopr-iosUITests */,
@@ -560,6 +579,10 @@
 				AC9280E3202EC5810009B574 /* TradeViewController.xib */,
 				AC9280EA2030D34B0009B574 /* TradePlaceOrderViewController.swift */,
 				AC9280EB2030D34B0009B574 /* TradePlaceOrderViewController.xib */,
+				949C49422046976E0074466D /* TradePlaceReplyViewController.swift */,
+				949C49432046976E0074466D /* TradePlaceReplyViewController.xib */,
+				949C49462046A4A80074466D /* SampleViewController.swift */,
+				949C49472046A4A80074466D /* SampleViewController.xib */,
 			);
 			path = Trade;
 			sourceTree = "<group>";
@@ -960,8 +983,10 @@
 				AC5E0DD7203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib in Resources */,
 				ACB91172202557B100F14644 /* MarketViewController.xib in Resources */,
 				ACB9117620255A6600F14644 /* MarketTableViewCell.xib in Resources */,
+				949C49452046976E0074466D /* TradePlaceReplyViewController.xib in Resources */,
 				ACB9119120266EC200F14644 /* AddAssetViewController.xib in Resources */,
 				ACB5DD8B202BF23100140A09 /* BuyViewController.xib in Resources */,
+				949C49492046A4A80074466D /* SampleViewController.xib in Resources */,
 				AC5E0DDB203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib in Resources */,
 				ACB5DD8F202C048E00140A09 /* SellViewController.xib in Resources */,
 				C8BF95A72027A10E00343B9A /* GenerateWalletViewController.xib in Resources */,
@@ -995,6 +1020,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-loopr-ios/Pods-loopr-ios-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/DottedLineView/DottedLineView.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -1004,6 +1030,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DottedLineView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTheme.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -1209,6 +1236,7 @@
 				AC4141FF20356A4D0089861D /* MarketSwipeViewType.swift in Sources */,
 				ACB5DD91202C06FF00140A09 /* DismissAnimator.swift in Sources */,
 				AC9280E1202EC53D0009B574 /* TradeNavigationViewController.swift in Sources */,
+				949C49482046A4A80074466D /* SampleViewController.swift in Sources */,
 				AC37566D2038D37400AADC60 /* UnlockWalletSwipeViewController.swift in Sources */,
 				AC01A2412022D94600FE8317 /* PortfolioNavigationController.swift in Sources */,
 				AC4141F520352D300089861D /* SwipeContentScrollView.swift in Sources */,
@@ -1227,8 +1255,10 @@
 				C8BF95B02027AC9400343B9A /* SetupViewController.swift in Sources */,
 				ACB5DDA0202D5B9900140A09 /* CGSizeExtension.swift in Sources */,
 				ACB9115A20242B9D00F14644 /* AssetTableViewCell.swift in Sources */,
+				949C49442046976E0074466D /* TradePlaceReplyViewController.swift in Sources */,
 				AC3756662038CD7E00AADC60 /* SetupNavigationController.swift in Sources */,
 				ACE6F71C204211470039273D /* DashedLineView.swift in Sources */,
+				94BAE3DE204811C1001A271A /* UIView+Extension.swift in Sources */,
 				ACDBF10A203FEA07000F0DEC /* ReorderAutoScroll.swift in Sources */,
 				ACB9117A20256B3C00F14644 /* MarketDataManager.swift in Sources */,
 				ACDBF108203FE9D2000F0DEC /* ReorderDestinationRow.swift in Sources */,
@@ -1481,6 +1511,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QHAE3FQGK4;
 				INFOPLIST_FILE = "loopr-iosTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.loopr-iosTests";
@@ -1498,6 +1529,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QHAE3FQGK4;
 				INFOPLIST_FILE = "loopr-iosTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.loopr-iosTests";
@@ -1514,6 +1546,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QHAE3FQGK4;
 				INFOPLIST_FILE = "loopr-iosUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.loopr-iosUITests";
@@ -1530,6 +1563,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QHAE3FQGK4;
 				INFOPLIST_FILE = "loopr-iosUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.loopr-iosUITests";
