@@ -126,12 +126,14 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="buyButton" destination="IUx-2B-hVz" id="jOc-44-VIH"/>
                 <outlet property="fiveYearButton" destination="dfP-dl-ff4" id="epu-Be-wXx"/>
                 <outlet property="lineChartView" destination="foM-Qt-wIu" id="zY8-CF-4m9"/>
                 <outlet property="oneDayButton" destination="anW-Oa-CMA" id="ZTW-xv-rdw"/>
                 <outlet property="oneMonthButton" destination="Bfq-aW-lRl" id="3wH-g6-rzi"/>
                 <outlet property="oneWeekButton" destination="dRM-h1-EcE" id="RDp-VW-bq4"/>
                 <outlet property="oneYearButton" destination="k5S-qZ-X7R" id="q7N-Hu-zHf"/>
+                <outlet property="sellButton" destination="7Xm-T7-7is" id="CVa-33-Hmn"/>
                 <outlet property="threeMonthButton" destination="qlF-ym-Z3F" id="TgJ-W0-cGa"/>
             </connections>
             <point key="canvasLocation" x="112.5" y="53.5"/>

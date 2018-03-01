@@ -14,10 +14,16 @@ class OpenOrderTableViewCell: UITableViewCell {
     
     @IBOutlet weak var tradingPairLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var filledPieChart: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        theme_backgroundColor = GlobalPicker.backgroundColor
+        tradingPairLabel.theme_textColor = GlobalPicker.textColor
+        amountLabel.theme_textColor = ["#a0a0a0", "#fff"]
+        filledPieChart.theme_backgroundColor = GlobalPicker.backgroundColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

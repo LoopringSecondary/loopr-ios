@@ -13,6 +13,9 @@ class MarketLineChartTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lineChartView: LineChartView!
     
+    @IBOutlet weak var buyButton: UIButton!
+    @IBOutlet weak var sellButton: UIButton!
+    
     @IBOutlet weak var oneDayButton: CustomUIButtonForUIToolbar!
     @IBOutlet weak var oneWeekButton: CustomUIButtonForUIToolbar!
     @IBOutlet weak var oneMonthButton: CustomUIButtonForUIToolbar!
@@ -27,6 +30,8 @@ class MarketLineChartTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        theme_backgroundColor = ["#fff", "#000"]
+        
         drawLineChartView()
         
         oneDayButton.selected()
@@ -35,6 +40,11 @@ class MarketLineChartTableViewCell: UITableViewCell {
         threeMonthButton.unselected()
         oneYearButton.unselected()
         fiveYearButton.unselected()
+        
+        buyButton.theme_backgroundColor = ["#000", "#fff"]
+        buyButton.theme_setTitleColor(["#fff", "#000"], forState: .normal)
+        sellButton.theme_backgroundColor = ["#000", "#fff"]
+        sellButton.theme_setTitleColor(["#fff", "#000"], forState: .normal)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

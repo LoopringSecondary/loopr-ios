@@ -20,11 +20,10 @@ class MarketSwipeViewController: SwipeViewController {
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = GlobalPicker.backgroundColor
 
-        self.title = "Market"
+        self.navigationItem.title = "Market"
         
         options.swipeTabView.height = 44
         options.swipeTabView.itemView.width = 66
-        
         
         // TODO: needsAdjustItemViewWidth will trigger expensive computation.
         // options.swipeTabView.needsAdjustItemViewWidth = false
