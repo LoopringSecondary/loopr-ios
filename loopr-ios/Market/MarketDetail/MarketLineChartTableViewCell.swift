@@ -45,6 +45,9 @@ class MarketLineChartTableViewCell: UITableViewCell {
         buyButton.theme_setTitleColor(["#fff", "#000"], forState: .normal)
         sellButton.theme_backgroundColor = ["#000", "#fff"]
         sellButton.theme_setTitleColor(["#fff", "#000"], forState: .normal)
+        
+        buyButton.setTitle(NSLocalizedString("Buy", comment: ""), for: .normal)
+        sellButton.setTitle(NSLocalizedString("Sell", comment: ""), for: .normal)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
