@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Lottie
 
 class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -20,8 +19,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        // playSampleLottieAnimation()
-
         self.navigationController?.navigationBar.topItem?.title = "Settings"
     }
 
@@ -30,16 +27,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Dispose of any resources that can be recreated.
     }
 
-    // TODO: Remove unused code
-    func playSampleLottieAnimation() {
-        let animationView = LOTAnimationView(name: "button1")
-        animationView.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
-        self.view.addSubview(animationView)
-        animationView.play {(_) in
-            // Do Something
-        }
-    }
-    
     //Table view configuration
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count
