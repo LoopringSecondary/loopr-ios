@@ -71,8 +71,8 @@
 		AC798E652022B93B0071D477 /* loopr_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E642022B93B0071D477 /* loopr_iosUITests.swift */; };
 		AC9280DD202E0F9F0009B574 /* eth_JSON_RPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280DC202E0F9F0009B574 /* eth_JSON_RPCTests.swift */; };
 		AC9280E1202EC53D0009B574 /* TradeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280E0202EC53D0009B574 /* TradeNavigationViewController.swift */; };
-		AC9280E4202EC5810009B574 /* TradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280E2202EC5810009B574 /* TradeViewController.swift */; };
-		AC9280E5202EC5810009B574 /* TradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9280E3202EC5810009B574 /* TradeViewController.xib */; };
+		AC9280E4202EC5810009B574 /* ArchiveTradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280E2202EC5810009B574 /* ArchiveTradeViewController.swift */; };
+		AC9280E5202EC5810009B574 /* ArchiveTradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9280E3202EC5810009B574 /* ArchiveTradeViewController.xib */; };
 		AC9280E7202F5A010009B574 /* UIStyleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280E6202F5A010009B574 /* UIStyleConfig.swift */; };
 		AC9280E92030C7440009B574 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280E82030C7440009B574 /* UIColorExtensions.swift */; };
 		AC9280EC2030D34B0009B574 /* TradePlaceOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280EA2030D34B0009B574 /* TradePlaceOrderViewController.swift */; };
@@ -259,8 +259,8 @@
 		AC798E662022B93B0071D477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC9280DC202E0F9F0009B574 /* eth_JSON_RPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eth_JSON_RPCTests.swift; sourceTree = "<group>"; };
 		AC9280E0202EC53D0009B574 /* TradeNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeNavigationViewController.swift; sourceTree = "<group>"; };
-		AC9280E2202EC5810009B574 /* TradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewController.swift; sourceTree = "<group>"; };
-		AC9280E3202EC5810009B574 /* TradeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeViewController.xib; sourceTree = "<group>"; };
+		AC9280E2202EC5810009B574 /* ArchiveTradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTradeViewController.swift; sourceTree = "<group>"; };
+		AC9280E3202EC5810009B574 /* ArchiveTradeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArchiveTradeViewController.xib; sourceTree = "<group>"; };
 		AC9280E6202F5A010009B574 /* UIStyleConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStyleConfig.swift; sourceTree = "<group>"; };
 		AC9280E82030C7440009B574 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		AC9280EA2030D34B0009B574 /* TradePlaceOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradePlaceOrderViewController.swift; sourceTree = "<group>"; };
@@ -494,6 +494,8 @@
 			children = (
 				ACB5DD7A202A203900140A09 /* MarketLineChartViewController.swift */,
 				ACB5DD7B202A203900140A09 /* MarketLineChartViewController.xib */,
+				AC9280E2202EC5810009B574 /* ArchiveTradeViewController.swift */,
+				AC9280E3202EC5810009B574 /* ArchiveTradeViewController.xib */,
 			);
 			path = Archive;
 			sourceTree = "<group>";
@@ -594,8 +596,6 @@
 				AC9280E0202EC53D0009B574 /* TradeNavigationViewController.swift */,
 				ACE6F71D20421D950039273D /* NewVersionTradeViewController.swift */,
 				ACE6F71E20421D950039273D /* NewVersionTradeViewController.xib */,
-				AC9280E2202EC5810009B574 /* TradeViewController.swift */,
-				AC9280E3202EC5810009B574 /* TradeViewController.xib */,
 				AC9280EA2030D34B0009B574 /* TradePlaceOrderViewController.swift */,
 				AC9280EB2030D34B0009B574 /* TradePlaceOrderViewController.xib */,
 				949C49422046976E0074466D /* TradePlaceReplyViewController.swift */,
@@ -1001,7 +1001,7 @@
 				AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */,
 				AC31B93620493FB900B16155 /* SettingLanguageTableViewCell.xib in Resources */,
 				AC3756792038D7E200AADC60 /* KeystoreViewController.xib in Resources */,
-				AC9280E5202EC5810009B574 /* TradeViewController.xib in Resources */,
+				AC9280E5202EC5810009B574 /* ArchiveTradeViewController.xib in Resources */,
 				AC5E0DD7203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib in Resources */,
 				ACB91172202557B100F14644 /* MarketViewController.xib in Resources */,
 				ACB9117620255A6600F14644 /* MarketTableViewCell.xib in Resources */,
@@ -1221,7 +1221,7 @@
 				AC5E0DE4203BC4B100AF03C7 /* FloatLabelTextField.swift in Sources */,
 				AC3756802039198300AADC60 /* GenerateMnemonicViewController.swift in Sources */,
 				AC41420A2038BF380089861D /* SetupDataManager.swift in Sources */,
-				AC9280E4202EC5810009B574 /* TradeViewController.swift in Sources */,
+				AC9280E4202EC5810009B574 /* ArchiveTradeViewController.swift in Sources */,
 				ACB9119520278A4000F14644 /* Request.swift in Sources */,
 				AC76E47320493CAE008BA229 /* SettingLanguageViewController.swift in Sources */,
 				AC9280EC2030D34B0009B574 /* TradePlaceOrderViewController.swift in Sources */,

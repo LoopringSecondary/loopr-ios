@@ -9,7 +9,7 @@
 import UIKit
 import pop
 
-class TradeViewController: UIViewController, TradePlaceOrderDelegate {
+class ArchiveTradeViewController: UIViewController, TradePlaceOrderDelegate {
     
     let tradePlaceOrderViewController: TradePlaceOrderViewController = TradePlaceOrderViewController()
     let tradePlaceOrderBackgroundView: UIView = UIView()
