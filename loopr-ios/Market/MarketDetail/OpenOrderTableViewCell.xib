@@ -30,6 +30,9 @@
                         <state key="normal" title="Cancel">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
+                        <connections>
+                            <action selector="pressedCancelButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Y2Q-UB-O9D"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LRC/ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNj-bm-Kfb">
                         <rect key="frame" x="98" y="18" width="121" height="21"/>

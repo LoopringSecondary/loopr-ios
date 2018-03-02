@@ -16,7 +16,7 @@ class SetupNavigationController: UINavigationController {
         // Do any additional setup after loading the view.
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = false
-        navigationBar.tintColor = defaultTintColor
+        navigationBar.tintColor = UIStyleConfig.defaultTintColor
 
         let viewController = SetupViewController(nibName: nil, bundle: nil)
         self.setViewControllers([viewController], animated: false)

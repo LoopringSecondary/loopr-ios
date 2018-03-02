@@ -17,6 +17,7 @@ class Market: Equatable, CustomStringConvertible {
     // TODO: Use random generators
     var balance: Double = 0
     var volumeInPast24: Double = 0
+    var changeInPat24: Double = 0
     
     init(tradingA: String, tradingB: String) {
         tradingPair = TradingPair(tradingA, tradingB)
@@ -25,6 +26,7 @@ class Market: Equatable, CustomStringConvertible {
         
         balance = Double(arc4random_uniform(1000))
         volumeInPast24 = Double(arc4random_uniform(6)) * 100 + Double(arc4random_uniform(100))
+        changeInPat24 = (Double(arc4random_uniform(10000)) - 5000)/10000
     }
     
     func isFavorite() -> Bool {

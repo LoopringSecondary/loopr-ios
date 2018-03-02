@@ -34,7 +34,7 @@ class AddAssetViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
 
         tokenNameTextField.becomeFirstResponder()
-        tokenNameTitleLabel.textColor = systemDefaultBlueTintColor
+        tokenNameTitleLabel.textColor = UIStyleConfig.systemDefaultBlueTintColor
         tokenNameTextField.setActive()
 
         tokenNameTextField.delegate = self
@@ -52,7 +52,7 @@ class AddAssetViewController: UIViewController, UITextFieldDelegate {
         print("textFieldDidBeginEditing")
         
         if textField == tokenNameTextField {
-            tokenNameTitleLabel.textColor = systemDefaultBlueTintColor
+            tokenNameTitleLabel.textColor = UIStyleConfig.systemDefaultBlueTintColor
             tokenNameTextField.setActive()
             
             tokenContractAddressTitleLabel.textColor = UIColor.black
@@ -68,7 +68,7 @@ class AddAssetViewController: UIViewController, UITextFieldDelegate {
             tokenNameTitleLabel.textColor = UIColor.black
             tokenNameTextField.setDefault()
             
-            tokenContractAddressTitleLabel.textColor = systemDefaultBlueTintColor
+            tokenContractAddressTitleLabel.textColor = UIStyleConfig.systemDefaultBlueTintColor
             tokenContractAddressTextField.setActive()
             
             tokenSymbolTitleLabel.textColor = UIColor.black
@@ -84,7 +84,7 @@ class AddAssetViewController: UIViewController, UITextFieldDelegate {
             tokenContractAddressTitleLabel.textColor = UIColor.black
             tokenContractAddressTextField.setDefault()
             
-            tokenSymbolTitleLabel.textColor = systemDefaultBlueTintColor
+            tokenSymbolTitleLabel.textColor = UIStyleConfig.systemDefaultBlueTintColor
             tokenSymbolTextField.setActive()
             
             decimalsTitleLabel.textColor = UIColor.black
@@ -100,7 +100,7 @@ class AddAssetViewController: UIViewController, UITextFieldDelegate {
             tokenSymbolTitleLabel.textColor = UIColor.black
             tokenSymbolTextField.setDefault()
             
-            decimalsTitleLabel.textColor = systemDefaultBlueTintColor
+            decimalsTitleLabel.textColor = UIStyleConfig.systemDefaultBlueTintColor
             decimalsTextField.setActive()
         }
     }

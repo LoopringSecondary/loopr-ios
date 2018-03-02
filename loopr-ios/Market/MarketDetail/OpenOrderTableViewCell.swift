@@ -46,6 +46,10 @@ class OpenOrderTableViewCell: UITableViewCell {
         tradingPairLabel.text = order.tradingPairDescription
     }
     
+    @IBAction func pressedCancelButton(_ sender: Any) {
+        print("pressedCancelButton")
+    }
+    
     class func getCellIdentifier() -> String {
         return "OpenOrderTableViewCell"
     }

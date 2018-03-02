@@ -41,6 +41,13 @@ class MarketTableViewCell: UITableViewCell {
         if let market = market {
             nameLabel.text = "\(market.tradingPair.tradingA)" + " / " + "\(market.tradingPair.tradingB)"
             balanceLabel.text = "\(market.balance) \(market.tradingPair.tradingA)"
+            
+            if market.changeInPat24 >= 0 {
+                percentageChangeLabel.text = "+\(market.changeInPat24*100)%"
+            } else {
+                percentageChangeLabel.text = "\(market.changeInPat24*100)%"
+            }
+            percentageChangeLabel.textColor = UIStyleConfig.getChangeColor(change: market.changeInPat24)
         }
     }
     
