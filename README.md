@@ -8,7 +8,7 @@ Please refer
 
 ##### Stack
 
-- No storyboard. It's ok to use xib in the early development.
+- No storyboard. It's ok to use xib in the early development. However, if the UI is complicated, please write UI programmatically.
 - [Lottie](https://github.com/airbnb/lottie-ios): an iOS library to natively render After Effects vector animations
 - [Pop](https://github.com/facebook/pop): An extensible iOS and OS X animation library, useful for physics-based interactions.
 - [SwiftLint](https://github.com/realm/SwiftLint): A tool to enforce Swift style and conventions.
