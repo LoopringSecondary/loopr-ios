@@ -41,7 +41,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
     }
     
     func update() {
-        balanceLabel.textColor = Themes.isNight() ? UIColor.white : defaultTintColor
+        balanceLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

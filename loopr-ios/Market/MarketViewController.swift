@@ -50,7 +50,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "LRC"
-        searchController.searchBar.tintColor = defaultTintColor
+        searchController.searchBar.tintColor = UIStyleConfig.defaultTintColor
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
@@ -171,7 +171,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.marketTableView.deleteRows(at: [indexPath], with: .fade)
                 }
             })
-            action.backgroundColor = defaultTintColor
+            action.backgroundColor = UIStyleConfig.defaultTintColor
             
             return UISwipeActionsConfiguration(actions: [action])
             
@@ -181,7 +181,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 MarketDataManager.shared.setFavoriteMarket(market: market)
                 success(true)
             })
-            action.backgroundColor = defaultTintColor
+            action.backgroundColor = UIStyleConfig.defaultTintColor
             
             return UISwipeActionsConfiguration(actions: [action])
         }

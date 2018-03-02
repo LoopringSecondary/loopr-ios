@@ -35,10 +35,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = UIColor.white
         
         let colorView = UIView()
-        colorView.backgroundColor = tableCellSelectedBackgroundColor
+        colorView.backgroundColor = UIStyleConfig.tableCellSelectedBackgroundColor
         UITableViewCell.appearance().selectedBackgroundView = colorView
 
-        UITabBar.appearance().tintColor = tabBarTintColor
+        // UITabBar.appearance().tintColor = UIStyleConfig.tabBarTintColor
         
         // The following code is to hide the bottom line of the navigation bar.
         // It's not easy to implement in iPhone x and other models. It also breaks

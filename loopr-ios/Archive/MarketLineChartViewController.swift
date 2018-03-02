@@ -119,7 +119,7 @@ class MarketLineChartViewController: UIViewController {
         
         set1.fillAlpha = 1
         set1.fill = Fill(linearGradient: gradient, angle: 90) //.linearGradient(gradient, angle: 90)
-        set1.fillColor = lineChartFillColor // UIColor(red: 115/255, green: 127/255, blue: 150/255, alpha: 1)
+        set1.fillColor = UIStyleConfig.lineChartFillColor // UIColor(red: 115/255, green: 127/255, blue: 150/255, alpha: 1)
 
         // Enable the filled.
         set1.drawFilledEnabled = true

@@ -29,10 +29,10 @@ extension UITextField {
     }
     
     func setActive() {
-        self.textColor = systemDefaultBlueTintColor
+        self.textColor = UIStyleConfig.systemDefaultBlueTintColor
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 5.0
         self.layer.masksToBounds = true
-        self.layer.borderColor = systemDefaultBlueTintColor.cgColor
+        self.layer.borderColor = UIStyleConfig.systemDefaultBlueTintColor.cgColor
     }
 }
