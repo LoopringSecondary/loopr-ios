@@ -20,9 +20,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.delegate = self
         assetTableView.reorder.delegate = self
         
-        view.theme_backgroundColor = ["#fff", "#000"]
-        assetTableView.theme_backgroundColor = ["#fff", "#000"]
-        
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        assetTableView.theme_backgroundColor = GlobalPicker.backgroundColor
+
         let button =  UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
         

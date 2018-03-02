@@ -20,6 +20,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.topItem?.title = "Settings"
+        
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,6 +51,24 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 1:
+                print("Language")
+                let viewController = SettingLanguageViewController()
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            default:
+                break
+            }
+        default:
+            break
+        }
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sectionRows[section]
     }
@@ -141,6 +161,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         if cell == nil {
             let nib = Bundle.main.loadNibNamed("SettingThemeModeTableViewCell", owner: self, options: nil)
             cell = nib![0] as? SettingThemeModeTableViewCell
+            cell?.selectionStyle = .none
         }
         
         return cell!
