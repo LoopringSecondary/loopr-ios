@@ -38,11 +38,6 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="noo-pn-2pb">
-                        <rect key="frame" x="20" y="9" width="70" height="70"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amount 75/100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yv-Fi-4jd">
                         <rect key="frame" x="98" y="47" width="173" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -50,10 +45,20 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="noo-pn-2pb" customClass="CircleChart" customModule="loopr_ios" customModuleProvider="target">
+                        <rect key="frame" x="16" y="9" width="70" height="70"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="MaI-kf-opn"/>
+                            <constraint firstAttribute="width" constant="70" id="S9P-rf-c6D"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="7Q5-qP-66f" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="PvB-8t-HYq"/>
+                    <constraint firstItem="noo-pn-2pb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Q0e-r7-A82"/>
                     <constraint firstItem="7Q5-qP-66f" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="i6u-tS-iPN"/>
+                    <constraint firstItem="noo-pn-2pb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="z8Z-Yo-Bhu"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
