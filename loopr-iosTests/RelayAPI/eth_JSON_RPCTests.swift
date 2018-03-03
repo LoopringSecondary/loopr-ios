@@ -23,9 +23,6 @@ class eth_JSON_RPCTests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
         let expectation = XCTestExpectation()
         
         eth_JSON_RPC.eth_getBalance() { data, response, error in
@@ -41,13 +38,6 @@ class eth_JSON_RPCTests: XCTestCase {
         }
         
         wait(for: [expectation], timeout: 10.0)
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
     }
     
 }

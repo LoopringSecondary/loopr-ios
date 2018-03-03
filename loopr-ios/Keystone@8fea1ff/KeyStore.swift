@@ -103,7 +103,7 @@ public final class KeyStore {
 
     func createWallet(password: String) throws -> Account {
         let mnemonic = Mnemonic.generate(strength: 256)
-        let wallet = KeystoneWallet(mnemonic: mnemonic, password: password)
+        let wallet = Wallet(mnemonic: mnemonic, password: password)
         let address = wallet.getKey(at: 0).address
         let url = makeAccountURL(for: address, type: .hierarchicalDeterministicWallet)
         let wd = WalletDescriptor(mnemonic: mnemonic, address: address)
@@ -152,7 +152,7 @@ public final class KeyStore {
     ///   - password: password
     /// - Returns: new account
     public func `import`(mnemonic: String, password: String) throws -> Account {
-        let wallet = KeystoneWallet(mnemonic: mnemonic, password: password)
+        let wallet = Wallet(mnemonic: mnemonic, password: password)
         let address = wallet.getKey(at: 0).address
         if self.account(for: address) != nil {
             throw Error.accountAlreadyExists
@@ -243,7 +243,7 @@ public final class KeyStore {
                 fatalError("Missing account wallet")
             }
 
-            let wallet = KeystoneWallet(mnemonic: wd.mnemonic, password: password)
+            let wallet = Wallet(mnemonic: wd.mnemonic, password: password)
             if wallet.getKey(at: 0).address != wd.address {
                 // Wrong password
                 return
@@ -275,7 +275,7 @@ public final class KeyStore {
             guard let wd = walletsByAddress[account.address] else {
                 throw KeyStore.Error.accountNotFound
             }
-            let wallet = KeystoneWallet(mnemonic: wd.mnemonic, password: password)
+            let wallet = Wallet(mnemonic: wd.mnemonic, password: password)
             return try wallet.getKey(at: 0).sign(hash: data)
         }
     }

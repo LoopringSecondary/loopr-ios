@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Wallet: Equatable {
+class AppWallet: Equatable {
     
     final let address: String
     final let name: String
@@ -20,7 +20,7 @@ class Wallet: Equatable {
         self.active = active
     }
     
-    static func == (lhs: Wallet, rhs: Wallet) -> Bool {
+    static func == (lhs: AppWallet, rhs: AppWallet) -> Bool {
         return lhs.address == rhs.address
     }
 

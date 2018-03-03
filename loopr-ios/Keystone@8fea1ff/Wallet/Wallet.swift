@@ -7,7 +7,7 @@
 import TrezorCrypto
 
 /// A hierarchical deterministic wallet.
-public class KeystoneWallet {
+public class Wallet {
     public static let defaultPath = "m/44'/60'/0'/0/x"
 
     /// Wallet seed.
@@ -20,14 +20,14 @@ public class KeystoneWallet {
     public var path: String
 
     /// Initializes a wallet from a mnemonic string and a password.
-    public init(mnemonic: String, password: String, path: String = KeystoneWallet.defaultPath) {
+    public init(mnemonic: String, password: String, path: String = Wallet.defaultPath) {
         seed = Mnemonic.deriveSeed(mnemonic: mnemonic, password: password)
         self.mnemonic = mnemonic
         self.path = path
     }
 
     /// Initializes a wallet from a wallet seed.
-    public init(seed: Data, path: String = KeystoneWallet.defaultPath) {
+    public init(seed: Data, path: String = Wallet.defaultPath) {
         self.seed = seed
         self.mnemonic = Mnemonic.generate(from: seed)
         self.path = path

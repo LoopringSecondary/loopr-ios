@@ -12,30 +12,30 @@ class WalletDataManager {
     
     static let shared = WalletDataManager()
     
-    private var wallets: [Wallet]
+    private var wallets: [AppWallet]
     
     private init() {
         wallets = []
     }
 
-    private var currentWallet: Wallet?
+    private var currentWallet: AppWallet?
     
-    func getCurrentWallet() -> Wallet? {
+    func getCurrentWallet() -> AppWallet? {
         return currentWallet
     }
     
-    func setCurrentWallet(_ wallet: Wallet) {
+    func setCurrentWallet(_ wallet: AppWallet) {
         currentWallet = wallet
     }
     
-    func getWallets() -> [Wallet] {
+    func getWallets() -> [AppWallet] {
         return wallets
     }
 
     func generateMockData() {
-        let wallet1 = Wallet(address: "#1234567890qwertyuiop1", name: "Wallet 1", active: true)
-        let wallet2 = Wallet(address: "#1234567890qwertyuiop2", name: "Wallet 2", active: true)
-        let wallet3 = Wallet(address: "#1234567890qwertyuiop3", name: "Wallet 3", active: true)
+        let wallet1 = AppWallet(address: "#1234567890qwertyuiop1", name: "Wallet 1", active: true)
+        let wallet2 = AppWallet(address: "#1234567890qwertyuiop2", name: "Wallet 2", active: true)
+        let wallet3 = AppWallet(address: "#1234567890qwertyuiop3", name: "Wallet 3", active: true)
 
         wallets = [wallet1, wallet2, wallet3]
         setCurrentWallet(wallet1)
