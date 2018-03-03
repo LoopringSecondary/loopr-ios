@@ -20,6 +20,7 @@
 		AC0C5C84203D154700C8618D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0C5C83203D154700C8618D /* QuartzCore.framework */; };
 		AC0C5C86203D168C00C8618D /* TickerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C5C85203D168C00C8618D /* TickerLabel.swift */; };
 		AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */; };
+		AC1E4BBC204B420D00C6B1FA /* KeystoneIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBB204B420D00C6B1FA /* KeystoneIntegrationTests.swift */; };
 		AC31B93520493FB900B16155 /* SettingLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B93320493FB900B16155 /* SettingLanguageTableViewCell.swift */; };
 		AC31B93620493FB900B16155 /* SettingLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31B93420493FB900B16155 /* SettingLanguageTableViewCell.xib */; };
 		AC31B938204A4E1300B16155 /* SettingDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B937204A4E1300B16155 /* SettingDataManager.swift */; };
@@ -222,6 +223,7 @@
 		AC0C5C83203D154700C8618D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AC0C5C85203D168C00C8618D /* TickerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerLabel.swift; sourceTree = "<group>"; };
 		AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
+		AC1E4BBB204B420D00C6B1FA /* KeystoneIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeystoneIntegrationTests.swift; sourceTree = "<group>"; };
 		AC31B93320493FB900B16155 /* SettingLanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageTableViewCell.swift; sourceTree = "<group>"; };
 		AC31B93420493FB900B16155 /* SettingLanguageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLanguageTableViewCell.xib; sourceTree = "<group>"; };
 		AC31B937204A4E1300B16155 /* SettingDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDataManager.swift; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 			isa = PBXGroup;
 			children = (
 				AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */,
+				AC1E4BBB204B420D00C6B1FA /* KeystoneIntegrationTests.swift */,
 			);
 			path = Keystone;
 			sourceTree = "<group>";
@@ -1448,6 +1451,7 @@
 			files = (
 				AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */,
 				AC798E5A2022B93B0071D477 /* loopring_JSON_RPCTests.swift in Sources */,
+				AC1E4BBC204B420D00C6B1FA /* KeystoneIntegrationTests.swift in Sources */,
 				AC9280DD202E0F9F0009B574 /* eth_JSON_RPCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
