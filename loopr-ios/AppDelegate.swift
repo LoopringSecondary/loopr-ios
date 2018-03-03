@@ -31,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         
+        SettingDataManager.shared.getCurrentLanguage()
+        
         // Setup color in the app.
         self.window?.backgroundColor = UIColor.white
         

@@ -19,7 +19,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.dataSource = self
         assetTableView.delegate = self
         assetTableView.reorder.delegate = self
-        
+        assetTableView.tableFooterView = UIView()
+
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         assetTableView.theme_backgroundColor = GlobalPicker.backgroundColor
 

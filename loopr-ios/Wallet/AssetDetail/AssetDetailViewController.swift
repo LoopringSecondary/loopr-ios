@@ -27,6 +27,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
 
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.tableFooterView = UIView()
     }
 
     func setupNavigationBar() {

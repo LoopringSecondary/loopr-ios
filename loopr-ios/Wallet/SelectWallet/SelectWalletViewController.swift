@@ -29,6 +29,7 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
         
         walletTableView.delegate = self
         walletTableView.dataSource = self
+        walletTableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {

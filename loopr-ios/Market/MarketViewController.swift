@@ -45,6 +45,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         marketTableView.dataSource = self
         marketTableView.delegate = self
         marketTableView.reorder.delegate = self
+        marketTableView.tableFooterView = UIView()
         
         // Setup the Search Controller
         searchController.searchResultsUpdater = self

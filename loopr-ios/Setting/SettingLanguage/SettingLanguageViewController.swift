@@ -12,14 +12,18 @@ class SettingLanguageViewController: UIViewController, UITableViewDelegate, UITa
 
     @IBOutlet weak var tableView: UITableView!
     
-    let languages = ["English", "简体中文"]
+    var languages: [Language] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        languages = SettingDataManager.shared.getSupportedLanguages()
+        
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.tableFooterView = UIView()
 
         self.navigationItem.title = "Language"
         let backButton = UIBarButtonItem()
@@ -45,15 +49,21 @@ class SettingLanguageViewController: UIViewController, UITableViewDelegate, UITa
             let nib = Bundle.main.loadNibNamed("SettingLanguageTableViewCell", owner: self, options: nil)
             cell = nib![0] as? SettingLanguageTableViewCell
             cell?.selectionStyle = .none
+            
+        }
+
+        cell?.textLabel?.text = languages[indexPath.row].displayName
+        
+        if SettingDataManager.shared.getCurrentLanguage() == languages[indexPath.row] {
             cell?.accessoryType = UITableViewCellAccessoryType.checkmark
         }
-        
-        cell?.textLabel?.text = languages[indexPath.row]
-        
+
         return cell!
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        SettingDataManager.shared.setCurrentLanguage(languages[indexPath.row])
+        tableView.reloadData()
     }
 }
