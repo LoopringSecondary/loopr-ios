@@ -21,6 +21,10 @@
 		AC0C5C86203D168C00C8618D /* TickerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C5C85203D168C00C8618D /* TickerLabel.swift */; };
 		AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */; };
 		AC1E4BBC204B420D00C6B1FA /* KeystoneIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBB204B420D00C6B1FA /* KeystoneIntegrationTests.swift */; };
+		AC1E4BC0204B51AB00C6B1FA /* ImportWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */; };
+		AC1E4BC2204B52FD00C6B1FA /* wallet.json in Resources */ = {isa = PBXBuildFile; fileRef = AC1E4BC1204B52FD00C6B1FA /* wallet.json */; };
+		AC1E4BC4204B533000C6B1FA /* key.json in Resources */ = {isa = PBXBuildFile; fileRef = AC1E4BC3204B533000C6B1FA /* key.json */; };
+		AC1E4BC6204B58D400C6B1FA /* KeystoreKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BC5204B58D400C6B1FA /* KeystoreKeyTests.swift */; };
 		AC31B93520493FB900B16155 /* SettingLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B93320493FB900B16155 /* SettingLanguageTableViewCell.swift */; };
 		AC31B93620493FB900B16155 /* SettingLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31B93420493FB900B16155 /* SettingLanguageTableViewCell.xib */; };
 		AC31B938204A4E1300B16155 /* SettingDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B937204A4E1300B16155 /* SettingDataManager.swift */; };
@@ -224,6 +228,10 @@
 		AC0C5C85203D168C00C8618D /* TickerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerLabel.swift; sourceTree = "<group>"; };
 		AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
 		AC1E4BBB204B420D00C6B1FA /* KeystoneIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeystoneIntegrationTests.swift; sourceTree = "<group>"; };
+		AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletTests.swift; sourceTree = "<group>"; };
+		AC1E4BC1204B52FD00C6B1FA /* wallet.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = wallet.json; sourceTree = "<group>"; };
+		AC1E4BC3204B533000C6B1FA /* key.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = key.json; sourceTree = "<group>"; };
+		AC1E4BC5204B58D400C6B1FA /* KeystoreKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeystoreKeyTests.swift; sourceTree = "<group>"; };
 		AC31B93320493FB900B16155 /* SettingLanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageTableViewCell.swift; sourceTree = "<group>"; };
 		AC31B93420493FB900B16155 /* SettingLanguageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLanguageTableViewCell.xib; sourceTree = "<group>"; };
 		AC31B937204A4E1300B16155 /* SettingDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDataManager.swift; sourceTree = "<group>"; };
@@ -473,6 +481,10 @@
 			children = (
 				AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */,
 				AC1E4BBB204B420D00C6B1FA /* KeystoneIntegrationTests.swift */,
+				AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */,
+				AC1E4BC5204B58D400C6B1FA /* KeystoreKeyTests.swift */,
+				AC1E4BC1204B52FD00C6B1FA /* wallet.json */,
+				AC1E4BC3204B533000C6B1FA /* key.json */,
 			);
 			path = Keystone;
 			sourceTree = "<group>";
@@ -1118,6 +1130,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC1E4BC2204B52FD00C6B1FA /* wallet.json in Resources */,
+				AC1E4BC4204B533000C6B1FA /* key.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1451,6 +1465,8 @@
 			files = (
 				AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */,
 				AC798E5A2022B93B0071D477 /* loopring_JSON_RPCTests.swift in Sources */,
+				AC1E4BC0204B51AB00C6B1FA /* ImportWalletTests.swift in Sources */,
+				AC1E4BC6204B58D400C6B1FA /* KeystoreKeyTests.swift in Sources */,
 				AC1E4BBC204B420D00C6B1FA /* KeystoneIntegrationTests.swift in Sources */,
 				AC9280DD202E0F9F0009B574 /* eth_JSON_RPCTests.swift in Sources */,
 			);
