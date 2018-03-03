@@ -10,6 +10,7 @@ import UIKit
 
 class NewVersionTradeViewController: UIViewController {
 
+    // TODO: Not use system tintColor.
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var sellButton: UIButton!
     
@@ -38,6 +39,7 @@ class NewVersionTradeViewController: UIViewController {
         updateLayoutForUnderline(underlineToBuyBtn, underlineToSellBtn)
     }
     
+    // TODO: Use SwipeViewController. Buy and Sell are complicated UI. It's better to hold them as two seperate view controller.
     func updateLayoutForUnderline(_ originConstraint: NSLayoutConstraint, _ currentConstraint: NSLayoutConstraint) {
         
         originConstraint.priority = .defaultLow
