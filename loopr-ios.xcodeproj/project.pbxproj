@@ -23,6 +23,23 @@
 		AC31B93620493FB900B16155 /* SettingLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31B93420493FB900B16155 /* SettingLanguageTableViewCell.xib */; };
 		AC31B938204A4E1300B16155 /* SettingDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B937204A4E1300B16155 /* SettingDataManager.swift */; };
 		AC31B93A204A4F9000B16155 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B939204A4F9000B16155 /* Language.swift */; };
+		AC31B948204A8DF400B16155 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B93C204A8DF300B16155 /* Address.swift */; };
+		AC31B949204A8DF400B16155 /* Scrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B93D204A8DF300B16155 /* Scrypt.swift */; };
+		AC31B94A204A8DF400B16155 /* KeystoreKeyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B93E204A8DF300B16155 /* KeystoreKeyHeader.swift */; };
+		AC31B94C204A8DF400B16155 /* KeyStore.Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B941204A8DF400B16155 /* KeyStore.Error.swift */; };
+		AC31B94D204A8DF400B16155 /* KeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B942204A8DF400B16155 /* KeyStore.swift */; };
+		AC31B94E204A8DF400B16155 /* KeystoreKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B943204A8DF400B16155 /* KeystoreKey.swift */; };
+		AC31B94F204A8DF400B16155 /* ScryptParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B944204A8DF400B16155 /* ScryptParams.swift */; };
+		AC31B950204A8DF400B16155 /* Secp256k1.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B945204A8DF400B16155 /* Secp256k1.swift */; };
+		AC31B951204A8DF400B16155 /* DataHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B946204A8DF400B16155 /* DataHex.swift */; };
+		AC31B952204A8DF400B16155 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B947204A8DF400B16155 /* Account.swift */; };
+		AC31B95C204A8E4F00B16155 /* HDKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B955204A8E4E00B16155 /* HDKey.swift */; };
+		AC31B95D204A8E4F00B16155 /* DerivationPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B956204A8E4E00B16155 /* DerivationPath.swift */; };
+		AC31B95E204A8E4F00B16155 /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B957204A8E4E00B16155 /* Mnemonic.swift */; };
+		AC31B95F204A8E4F00B16155 /* WalletDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B958204A8E4E00B16155 /* WalletDescriptor.swift */; };
+		AC31B960204A8E4F00B16155 /* KeystoneWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B959204A8E4E00B16155 /* KeystoneWallet.swift */; };
+		AC31B961204A8E4F00B16155 /* MnemonicWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B95A204A8E4E00B16155 /* MnemonicWords.swift */; };
+		AC31B962204A8E4F00B16155 /* DerivationPath.Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B95B204A8E4F00B16155 /* DerivationPath.Index.swift */; };
 		AC3756662038CD7E00AADC60 /* SetupNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3756652038CD7E00AADC60 /* SetupNavigationController.swift */; };
 		AC37566D2038D37400AADC60 /* UnlockWalletSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37566B2038D37400AADC60 /* UnlockWalletSwipeViewController.swift */; };
 		AC37566E2038D37400AADC60 /* UnlockWalletSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC37566C2038D37400AADC60 /* UnlockWalletSwipeViewController.xib */; };
@@ -207,6 +224,24 @@
 		AC31B93420493FB900B16155 /* SettingLanguageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLanguageTableViewCell.xib; sourceTree = "<group>"; };
 		AC31B937204A4E1300B16155 /* SettingDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDataManager.swift; sourceTree = "<group>"; };
 		AC31B939204A4F9000B16155 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		AC31B93C204A8DF300B16155 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		AC31B93D204A8DF300B16155 /* Scrypt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrypt.swift; sourceTree = "<group>"; };
+		AC31B93E204A8DF300B16155 /* KeystoreKeyHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeystoreKeyHeader.swift; sourceTree = "<group>"; };
+		AC31B93F204A8DF300B16155 /* TrustKeystore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrustKeystore.h; sourceTree = "<group>"; };
+		AC31B941204A8DF400B16155 /* KeyStore.Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyStore.Error.swift; sourceTree = "<group>"; };
+		AC31B942204A8DF400B16155 /* KeyStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyStore.swift; sourceTree = "<group>"; };
+		AC31B943204A8DF400B16155 /* KeystoreKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeystoreKey.swift; sourceTree = "<group>"; };
+		AC31B944204A8DF400B16155 /* ScryptParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScryptParams.swift; sourceTree = "<group>"; };
+		AC31B945204A8DF400B16155 /* Secp256k1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secp256k1.swift; sourceTree = "<group>"; };
+		AC31B946204A8DF400B16155 /* DataHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHex.swift; sourceTree = "<group>"; };
+		AC31B947204A8DF400B16155 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		AC31B955204A8E4E00B16155 /* HDKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HDKey.swift; sourceTree = "<group>"; };
+		AC31B956204A8E4E00B16155 /* DerivationPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DerivationPath.swift; sourceTree = "<group>"; };
+		AC31B957204A8E4E00B16155 /* Mnemonic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mnemonic.swift; sourceTree = "<group>"; };
+		AC31B958204A8E4E00B16155 /* WalletDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletDescriptor.swift; sourceTree = "<group>"; };
+		AC31B959204A8E4E00B16155 /* KeystoneWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeystoneWallet.swift; sourceTree = "<group>"; };
+		AC31B95A204A8E4E00B16155 /* MnemonicWords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MnemonicWords.swift; sourceTree = "<group>"; };
+		AC31B95B204A8E4F00B16155 /* DerivationPath.Index.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DerivationPath.Index.swift; sourceTree = "<group>"; };
 		AC3756652038CD7E00AADC60 /* SetupNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNavigationController.swift; sourceTree = "<group>"; };
 		AC37566B2038D37400AADC60 /* UnlockWalletSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWalletSwipeViewController.swift; sourceTree = "<group>"; };
 		AC37566C2038D37400AADC60 /* UnlockWalletSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnlockWalletSwipeViewController.xib; sourceTree = "<group>"; };
@@ -420,6 +455,39 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AC31B93B204A8D1F00B16155 /* Keystone@8fea1ff */ = {
+			isa = PBXGroup;
+			children = (
+				AC31B954204A8E2700B16155 /* Wallet */,
+				AC31B947204A8DF400B16155 /* Account.swift */,
+				AC31B93C204A8DF300B16155 /* Address.swift */,
+				AC31B946204A8DF400B16155 /* DataHex.swift */,
+				AC31B941204A8DF400B16155 /* KeyStore.Error.swift */,
+				AC31B942204A8DF400B16155 /* KeyStore.swift */,
+				AC31B943204A8DF400B16155 /* KeystoreKey.swift */,
+				AC31B93E204A8DF300B16155 /* KeystoreKeyHeader.swift */,
+				AC31B93D204A8DF300B16155 /* Scrypt.swift */,
+				AC31B944204A8DF400B16155 /* ScryptParams.swift */,
+				AC31B945204A8DF400B16155 /* Secp256k1.swift */,
+				AC31B93F204A8DF300B16155 /* TrustKeystore.h */,
+			);
+			path = "Keystone@8fea1ff";
+			sourceTree = "<group>";
+		};
+		AC31B954204A8E2700B16155 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				AC31B95B204A8E4F00B16155 /* DerivationPath.Index.swift */,
+				AC31B956204A8E4E00B16155 /* DerivationPath.swift */,
+				AC31B955204A8E4E00B16155 /* HDKey.swift */,
+				AC31B957204A8E4E00B16155 /* Mnemonic.swift */,
+				AC31B95A204A8E4E00B16155 /* MnemonicWords.swift */,
+				AC31B959204A8E4E00B16155 /* KeystoneWallet.swift */,
+				AC31B958204A8E4E00B16155 /* WalletDescriptor.swift */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
 		AC3756752038D70D00AADC60 /* UnlockWallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -549,6 +617,7 @@
 		AC798E412022B93A0071D477 /* loopr-ios */ = {
 			isa = PBXGroup;
 			children = (
+				AC31B93B204A8D1F00B16155 /* Keystone@8fea1ff */,
 				ACB746E22043C5CC006C2BF5 /* QRCode */,
 				ACDBF10F203FEC96000F0DEC /* UIConfig */,
 				AC6E95F62032CBE900C6EB7C /* Archive */,
@@ -1047,23 +1116,33 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-loopr-ios/Pods-loopr-ios-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/DottedLineView/DottedLineView.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
+				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TrezorCrypto/TrezorCrypto.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
+				"${BUILT_PRODUCTS_DIR}/secp256k1_ios/secp256k1_ios.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DottedLineView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTheme.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrezorCrypto.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/secp256k1_ios.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1219,10 +1298,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC31B960204A8E4F00B16155 /* KeystoneWallet.swift in Sources */,
 				AC76E4702047F1D3008BA229 /* CircleChart.swift in Sources */,
 				AC01A2442022D9BE00FE8317 /* PortfolioViewController.swift in Sources */,
 				AC31B93520493FB900B16155 /* SettingLanguageTableViewCell.swift in Sources */,
 				ACB5DDA6202D704200140A09 /* UIButtonExtension.swift in Sources */,
+				AC31B948204A8DF400B16155 /* Address.swift in Sources */,
 				ACB5DD8A202BF23100140A09 /* BuyViewController.swift in Sources */,
 				AC5E0DE4203BC4B100AF03C7 /* FloatLabelTextField.swift in Sources */,
 				AC3756802039198300AADC60 /* GenerateMnemonicViewController.swift in Sources */,
@@ -1240,6 +1321,7 @@
 				ACB5DD9C202D5B8000140A09 /* Cell.swift in Sources */,
 				C8BF95A62027A10E00343B9A /* GenerateWalletViewController.swift in Sources */,
 				ACB5DD8E202C048E00140A09 /* SellViewController.swift in Sources */,
+				AC31B949204A8DF400B16155 /* Scrypt.swift in Sources */,
 				ACB746E52043C5F5006C2BF5 /* QRCodeViewController.swift in Sources */,
 				ACE6F7242042228A0039273D /* GlobalPicker.swift in Sources */,
 				ACB9117F2026385100F14644 /* SettingNavigationViewController.swift in Sources */,
@@ -1261,14 +1343,18 @@
 				AC4141F320352C460089861D /* SwipeViewController.swift in Sources */,
 				ACCCFDD0203BF1D100B98F99 /* FloatLabelTextView.swift in Sources */,
 				AC5E0DDE203B447700AF03C7 /* WalletBalanceTableViewCell.swift in Sources */,
+				AC31B962204A8E4F00B16155 /* DerivationPath.Index.swift in Sources */,
 				ACB91171202557B100F14644 /* MarketViewController.swift in Sources */,
 				ACB5DD93202C09DC00140A09 /* Interactor.swift in Sources */,
 				ACB9118C20266A9C00F14644 /* AssetDetailViewController.swift in Sources */,
 				AC4141FF20356A4D0089861D /* MarketSwipeViewType.swift in Sources */,
 				ACB5DD91202C06FF00140A09 /* DismissAnimator.swift in Sources */,
+				AC31B94D204A8DF400B16155 /* KeyStore.swift in Sources */,
 				AC9280E1202EC53D0009B574 /* TradeNavigationViewController.swift in Sources */,
 				949C49482046A4A80074466D /* SampleViewController.swift in Sources */,
+				AC31B95F204A8E4F00B16155 /* WalletDescriptor.swift in Sources */,
 				AC37566D2038D37400AADC60 /* UnlockWalletSwipeViewController.swift in Sources */,
+				AC31B951204A8DF400B16155 /* DataHex.swift in Sources */,
 				AC01A2412022D94600FE8317 /* PortfolioNavigationController.swift in Sources */,
 				AC4141F520352D300089861D /* SwipeContentScrollView.swift in Sources */,
 				ACB5DDA2202D6F9400140A09 /* UIViewExtension.swift in Sources */,
@@ -1278,6 +1364,8 @@
 				ACB9119F202967A500F14644 /* OrderStatus.swift in Sources */,
 				ACB9117520255A6600F14644 /* MarketTableViewCell.swift in Sources */,
 				ACBDB1C52032D050003463A4 /* OpenOrderTableViewCell.swift in Sources */,
+				AC31B94C204A8DF400B16155 /* KeyStore.Error.swift in Sources */,
+				AC31B94E204A8DF400B16155 /* KeystoreKey.swift in Sources */,
 				AC3756732038D64B00AADC60 /* MnemonicViewController.swift in Sources */,
 				ACB5DD9E202D5B8D00140A09 /* NumericKeyboardItem.swift in Sources */,
 				ACB9119020266EC200F14644 /* AddAssetViewController.swift in Sources */,
@@ -1288,9 +1376,11 @@
 				AC31B93A204A4F9000B16155 /* Language.swift in Sources */,
 				ACB9115A20242B9D00F14644 /* AssetTableViewCell.swift in Sources */,
 				949C49442046976E0074466D /* TradePlaceReplyViewController.swift in Sources */,
+				AC31B961204A8E4F00B16155 /* MnemonicWords.swift in Sources */,
 				AC3756662038CD7E00AADC60 /* SetupNavigationController.swift in Sources */,
 				ACE6F71C204211470039273D /* DashedLineView.swift in Sources */,
 				94BAE3DE204811C1001A271A /* UIView+Extension.swift in Sources */,
+				AC31B94A204A8DF400B16155 /* KeystoreKeyHeader.swift in Sources */,
 				ACDBF10A203FEA07000F0DEC /* ReorderAutoScroll.swift in Sources */,
 				ACB9117A20256B3C00F14644 /* MarketDataManager.swift in Sources */,
 				ACDBF108203FE9D2000F0DEC /* ReorderDestinationRow.swift in Sources */,
@@ -1299,18 +1389,23 @@
 				AC375684203A641200AADC60 /* SelectWalletViewController.swift in Sources */,
 				ACB9118820265DEA00F14644 /* MarketDetailViewController.swift in Sources */,
 				ACB911662024505D00F14644 /* Trade.swift in Sources */,
+				AC31B95E204A8E4F00B16155 /* Mnemonic.swift in Sources */,
+				AC31B95C204A8E4F00B16155 /* HDKey.swift in Sources */,
+				AC31B94F204A8DF400B16155 /* ScryptParams.swift in Sources */,
 				ACF71CB42033E723000E7618 /* TradeTableViewCell.swift in Sources */,
 				AC5E0DD0203A7C5800AF03C7 /* SelectWalletTableViewCell.swift in Sources */,
 				ACB9117820256B0300F14644 /* Market.swift in Sources */,
 				AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */,
 				ACB911692025472A00F14644 /* AssetDataManager.swift in Sources */,
 				ACE6F7182041FDAD0039273D /* AssetTransactionDetailViewController.swift in Sources */,
+				AC31B95D204A8E4F00B16155 /* DerivationPath.swift in Sources */,
 				ACB911A120296AE500F14644 /* OrderDataManager.swift in Sources */,
 				AC41420C2038BFB70089861D /* UserDefaultsKeys.swift in Sources */,
 				ACE6F72720426BAC0039273D /* SettingThemeModeTableViewCell.swift in Sources */,
 				ACB911992027F65800F14644 /* loopring_JSON_RPC.swift in Sources */,
 				ACB5DDA4202D6FC300140A09 /* UIImageExtension.swift in Sources */,
 				AC4142042038B6370089861D /* WalletDataManager.swift in Sources */,
+				AC31B952204A8DF400B16155 /* Account.swift in Sources */,
 				AC5E0DD6203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift in Sources */,
 				AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */,
 				ACDBF103203FE790000F0DEC /* ReorderUITableView.swift in Sources */,
@@ -1319,6 +1414,7 @@
 				C8BF959D202696A900343B9A /* MainTabController.swift in Sources */,
 				ACB911522024254F00F14644 /* WalletNavigationViewController.swift in Sources */,
 				ACB911552024260E00F14644 /* WalletViewController.swift in Sources */,
+				AC31B950204A8DF400B16155 /* Secp256k1.swift in Sources */,
 				ACB911A320296B9900F14644 /* OriginalOrder.swift in Sources */,
 				ACE6F71F20421D950039273D /* NewVersionTradeViewController.swift in Sources */,
 				AC4141EF203524280089861D /* MarketSwipeViewController.swift in Sources */,

@@ -14,6 +14,12 @@ target 'loopr-ios' do
   pod 'DottedLineView'
   pod 'SwiftLint'
   pod 'SwiftTheme'
+  
+  # Pods for keystone
+  pod 'BigInt'
+  pod 'CryptoSwift'
+  pod 'secp256k1_ios', git: 'https://github.com/shamatar/secp256k1_ios.git', inhibit_warnings: true
+  pod 'TrezorCrypto', inhibit_warnings: true
 
   target 'loopr-iosTests' do
     inherit! :search_paths
