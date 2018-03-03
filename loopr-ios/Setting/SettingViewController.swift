@@ -23,6 +23,11 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        settingsTableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -83,7 +88,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 0:
             return createThemeMode()
         case 1:
-            return createDetailTableCell(title: "Language", detailTitle: "English")
+            return createDetailTableCell(title: NSLocalizedString("Language", comment: ""), detailTitle: SettingDataManager.shared.getCurrentLanguage().displayName)
         case 2:
             return createDetailTableCell(title: "Currency", detailTitle: "USD")
         case 3:

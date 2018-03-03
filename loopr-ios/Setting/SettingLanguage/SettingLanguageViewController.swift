@@ -25,7 +25,7 @@ class SettingLanguageViewController: UIViewController, UITableViewDelegate, UITa
         tableView.delegate = self
         tableView.tableFooterView = UIView()
 
-        self.navigationItem.title = "Language"
+        self.navigationItem.title = NSLocalizedString("Language", comment: "")
         let backButton = UIBarButtonItem()
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
