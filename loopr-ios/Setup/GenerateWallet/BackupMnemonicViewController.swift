@@ -38,6 +38,7 @@ class BackupMnemonicViewController: UIViewController {
             tagListView.addTag(value)
         }
 
+        verifyNowButton.title = NSLocalizedString("Verify Now", comment: "Go to VerifyMnemonicViewController")
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,7 +48,8 @@ class BackupMnemonicViewController: UIViewController {
 
     @IBAction func pressedVerifyNowButton(_ sender: Any) {
         print("pressedVerifyNowButton")
-        
+        let viewController = VerifyMnemonicViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
