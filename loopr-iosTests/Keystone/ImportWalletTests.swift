@@ -59,7 +59,6 @@ class ImportWalletTests: XCTestCase {
         XCTAssertNotNil(walletAccount)
     }
     
-    // TODO: This test takes more than 60 seconds.
     func testCreateKey() {
         let keyStore = try! KeyStore(keyDirectory: keyDirectory, walletDirectory: walletDirectory)
 
