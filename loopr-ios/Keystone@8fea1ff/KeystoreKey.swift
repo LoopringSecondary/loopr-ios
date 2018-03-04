@@ -46,6 +46,7 @@ public struct KeystoreKey {
             fatalError("Failed to extract new private key")
         }
         let key = keyRepresentation[(keyRepresentation.count - 32)...]
+        
         try self.init(password: password, key: key)
     }
 
@@ -63,17 +64,23 @@ public struct KeystoreKey {
         let kdfParams = ScryptParams()
 
         let scrypt = Scrypt(params: kdfParams)
-        let derivedKey = try scrypt.calculate(password: password)
-
+        print("line67")
+        let derivedKey = try scrypt.calculate(password: password)  // Very slow
+        print("line69")
         let encryptionKey = derivedKey[0...15]
         let aecCipher = try AES(key: encryptionKey.bytes, blockMode: .CTR(iv: cipherParams.iv.bytes), padding: .noPadding)
-
+        // get key bytes
         let encryptedKey = try aecCipher.encrypt(key.bytes)
         let prefix = derivedKey[(derivedKey.count - 16) ..< derivedKey.count]
+        
+        print("line76")
         let mac = KeystoreKey.computeMAC(prefix: prefix, key: Data(bytes: encryptedKey))
-
+        print("line78")
+        
         crypto = KeystoreKeyHeader(cipherText: Data(bytes: encryptedKey), cipherParams: cipherParams, kdfParams: kdfParams, mac: mac)
 
+        print("line82")
+        
         let pubKey = Secp256k1.shared.pubicKey(from: key)
         address = KeystoreKey.decodeAddress(from: pubKey)
     }

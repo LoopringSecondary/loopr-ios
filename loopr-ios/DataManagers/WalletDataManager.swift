@@ -35,11 +35,13 @@ class WalletDataManager {
     func unlockWalletUsingPrivateKey(_ privateKeyString: String) {
         print("Start to unlock a new wallet using the private key")
         let privateKey = Data(hexString: privateKeyString)!
-        let key = try! KeystoreKey(password: "password", key: privateKey)
+        print("Get private key data")
+        let key = try! KeystoreKey(password: "testpassword", key: privateKey)
+        print("Finished unlocking a new wallet")
+        
         let newAppWallet = AppWallet(address: key.address.description, name: "Wallet", active: true)
         appWallets.append(newAppWallet)
         setCurrentAppWallet(newAppWallet)
-        print("Finished unlocking a new wallet")
     }
 
     func generateMockData() {
