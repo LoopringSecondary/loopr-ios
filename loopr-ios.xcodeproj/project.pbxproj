@@ -91,6 +91,7 @@
 		AC72AED9204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC72AED7204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib */; };
 		AC72AEDC204C9F6300E9D3B0 /* VerifyMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEDA204C9F6300E9D3B0 /* VerifyMnemonicViewController.swift */; };
 		AC72AEDD204C9F6300E9D3B0 /* VerifyMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEDB204C9F6300E9D3B0 /* VerifyMnemonicViewController.xib */; };
+		AC72AEDF204CA50600E9D3B0 /* GenerateWalletDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEDE204CA50600E9D3B0 /* GenerateWalletDataManager.swift */; };
 		AC76E4702047F1D3008BA229 /* CircleChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76E46F2047F1D3008BA229 /* CircleChart.swift */; };
 		AC76E47320493CAE008BA229 /* SettingLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76E47120493CAE008BA229 /* SettingLanguageViewController.swift */; };
 		AC76E47420493CAE008BA229 /* SettingLanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */; };
@@ -305,6 +306,7 @@
 		AC72AED7204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackupMnemonicViewController.xib; sourceTree = "<group>"; };
 		AC72AEDA204C9F6300E9D3B0 /* VerifyMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyMnemonicViewController.swift; sourceTree = "<group>"; };
 		AC72AEDB204C9F6300E9D3B0 /* VerifyMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerifyMnemonicViewController.xib; sourceTree = "<group>"; };
+		AC72AEDE204CA50600E9D3B0 /* GenerateWalletDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateWalletDataManager.swift; sourceTree = "<group>"; };
 		AC76E46F2047F1D3008BA229 /* CircleChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleChart.swift; sourceTree = "<group>"; };
 		AC76E47120493CAE008BA229 /* SettingLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageViewController.swift; sourceTree = "<group>"; };
 		AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLanguageViewController.xib; sourceTree = "<group>"; };
@@ -863,6 +865,7 @@
 				ACB9117920256B3C00F14644 /* MarketDataManager.swift */,
 				ACB911A020296AE500F14644 /* OrderDataManager.swift */,
 				AC4142032038B6370089861D /* WalletDataManager.swift */,
+				AC72AEDE204CA50600E9D3B0 /* GenerateWalletDataManager.swift */,
 				AC4142092038BF380089861D /* SetupDataManager.swift */,
 				AC31B937204A4E1300B16155 /* SettingDataManager.swift */,
 				AC41420B2038BFB70089861D /* UserDefaultsKeys.swift */,
@@ -1437,6 +1440,7 @@
 				AC31B93A204A4F9000B16155 /* Language.swift in Sources */,
 				ACB9115A20242B9D00F14644 /* AssetTableViewCell.swift in Sources */,
 				949C49442046976E0074466D /* TradePlaceReplyViewController.swift in Sources */,
+				AC72AEDF204CA50600E9D3B0 /* GenerateWalletDataManager.swift in Sources */,
 				AC31B961204A8E4F00B16155 /* MnemonicWords.swift in Sources */,
 				AC3756662038CD7E00AADC60 /* SetupNavigationController.swift in Sources */,
 				ACE6F71C204211470039273D /* DashedLineView.swift in Sources */,

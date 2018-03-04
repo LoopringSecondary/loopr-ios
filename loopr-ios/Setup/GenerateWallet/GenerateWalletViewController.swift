@@ -24,6 +24,8 @@ class GenerateWalletViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
+
+        _ = GenerateWalletDataManager.shared.new()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,7 +37,9 @@ class GenerateWalletViewController: UIViewController {
         print("pressedContinueButton")
         
         // TODO: Check if walletNameTextField and walletPasswordTextField have valid input.
-
+        
+        GenerateWalletDataManager.shared.setWalletName(walletNameTextField.text!)
+        
         let viewController = GenerateMnemonicViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
