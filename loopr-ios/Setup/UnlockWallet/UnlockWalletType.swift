@@ -16,9 +16,9 @@ enum UnlockWalletType: CustomStringConvertible {
     
     var description: String {
         switch self {
-        case .mnemonic: return "Mnemonic"
-        case .keystore: return "Keystore"
-        case .privateKey: return "Private Key"
+        case .mnemonic: return NSLocalizedString("Mnemonic", comment: "")
+        case .keystore: return NSLocalizedString("Keystore", comment: "")
+        case .privateKey: return NSLocalizedString("Private Key", comment: "")
         }
     }
 

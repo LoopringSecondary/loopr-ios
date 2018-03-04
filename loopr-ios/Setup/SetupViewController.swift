@@ -17,7 +17,10 @@ class SetupViewController: UIViewController {
         super.viewDidLoad()
         
         unlockWalletButton.layer.cornerRadius = 10
+        unlockWalletButton.title = NSLocalizedString("Unlock Wallet", comment: "")
+        
         generateWalletButton.layer.cornerRadius = 10
+        generateWalletButton.title = NSLocalizedString("Generate Wallet", comment: "")
 
         let skipButton = UIBarButtonItem(title: "Skip", style: .plain, target: self, action: #selector(self.skipButtonPressed(_:)))
         self.navigationItem.rightBarButtonItem = skipButton
@@ -43,15 +46,5 @@ class SetupViewController: UIViewController {
             
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

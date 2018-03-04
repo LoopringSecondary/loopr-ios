@@ -11,3 +11,10 @@
 "Sell" = "Sell";
 "Language" = "Language";
 "Manage Wallet" = "Manage Wallet";
+"Unlock Wallet" = "Unlock Wallet";
+"Generate Wallet" = "Generate Wallet";
+"Mnemonic" = "Mnemonic";
+"Keystore" = "Keystore";
+"Private Key" = "Private Key";
+"Unlock" = "Unlock";
+"Please input your private key" = "Please input your private key";

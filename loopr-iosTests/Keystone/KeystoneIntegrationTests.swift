@@ -39,6 +39,7 @@ class KeystoneIntegrationTests: XCTestCase {
         }
     }
 
+    // About 20s
     func testSetAddress() {
         let privateKey = Data(hexString: "7a28b5ba57c53603b0b07b56bba752f7784bf506fa95edc395f5cf6c7514fe9d")!
 

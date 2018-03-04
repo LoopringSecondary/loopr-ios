@@ -27,7 +27,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let button =  UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 120, height: 40)
         
-        var buttonTitle = WalletDataManager.shared.getCurrentWallet()?.name
+        var buttonTitle = WalletDataManager.shared.getCurrentAppWallet()?.name
         if buttonTitle == nil {
             buttonTitle = "Wallet"
         }

@@ -12,24 +12,34 @@ class WalletDataManager {
     
     static let shared = WalletDataManager()
     
-    private var wallets: [AppWallet]
+    private var appWallets: [AppWallet]
     
     private init() {
-        wallets = []
+        appWallets = []
     }
 
-    private var currentWallet: AppWallet?
+    private var currentAppWallet: AppWallet?
     
-    func getCurrentWallet() -> AppWallet? {
-        return currentWallet
+    func getCurrentAppWallet() -> AppWallet? {
+        return currentAppWallet
     }
     
-    func setCurrentWallet(_ wallet: AppWallet) {
-        currentWallet = wallet
+    func setCurrentAppWallet(_ appWallet: AppWallet) {
+        currentAppWallet = appWallet
     }
     
     func getWallets() -> [AppWallet] {
-        return wallets
+        return appWallets
+    }
+    
+    func unlockWalletUsingPrivateKey(_ privateKeyString: String) {
+        print("Start to unlock a new wallet using the private key")
+        let privateKey = Data(hexString: privateKeyString)!
+        let key = try! KeystoreKey(password: "password", key: privateKey)
+        let newAppWallet = AppWallet(address: key.address.description, name: "Wallet", active: true)
+        appWallets.append(newAppWallet)
+        setCurrentAppWallet(newAppWallet)
+        print("Finished unlocking a new wallet")
     }
 
     func generateMockData() {
@@ -37,7 +47,7 @@ class WalletDataManager {
         let wallet2 = AppWallet(address: "#1234567890qwertyuiop2", name: "Wallet 2", active: true)
         let wallet3 = AppWallet(address: "#1234567890qwertyuiop3", name: "Wallet 3", active: true)
 
-        wallets = [wallet1, wallet2, wallet3]
-        setCurrentWallet(wallet1)
+        appWallets = [wallet1, wallet2, wallet3]
+        setCurrentAppWallet(wallet1)
     }
 }

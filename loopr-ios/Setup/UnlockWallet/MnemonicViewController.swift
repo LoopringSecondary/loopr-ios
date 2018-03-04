@@ -22,8 +22,7 @@ class MnemonicViewController: UIViewController {
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
-        
-        mnemonicWordTextView.becomeFirstResponder()
+        unlockButton.setTitle(NSLocalizedString("Unlock", comment: ""), for: .normal)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -32,6 +31,7 @@ class MnemonicViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        mnemonicWordTextView.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {

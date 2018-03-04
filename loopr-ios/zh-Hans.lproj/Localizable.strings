@@ -11,3 +11,10 @@
 "Sell" = "卖";
 "Language" = "语言";
 "Manage Wallet" = "管理钱包";
+"Unlock Wallet" = "解锁钱包";
+"Generate Wallet" = "生成钱包";
+"Mnemonic" = "助记词";
+"Keystore" = "密钥库";
+"Private Key" = "私钥";
+"Unlock" = "解锁";
+"Please input your private key" = "请输入您的私钥";
