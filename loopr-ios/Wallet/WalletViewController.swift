@@ -25,22 +25,29 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.theme_backgroundColor = GlobalPicker.backgroundColor
 
         let button =  UIButton(type: .custom)
-        button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        button.frame = CGRect(x: 0, y: 0, width: 120, height: 40)
         
         var buttonTitle = WalletDataManager.shared.getCurrentWallet()?.name
         if buttonTitle == nil {
             buttonTitle = "Wallet"
         }
-        button.setTitle(buttonTitle, for: .normal)
+        
+        // TODO: Use an elegant method to set the title to center.
+        button.setTitle( "          " + buttonTitle! + "  ", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.theme_setTitleColor(["#000", "#fff"], forState: .normal)
         button.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
+        
+        button.theme_setImage(["Arrow-down-black", "Arrow-down-white"], forState: .normal)
+        button.setImage(UIImage.init(named: "Arrow-down-grey"), for: .highlighted)
+        
+        button.semanticContentAttribute = .forceRightToLeft
+        // button.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 50, bottom: 0, right: -50)
 
         button.addTarget(self, action: #selector(self.clickOnButton(_:)), for: .touchUpInside)
         self.navigationItem.titleView = button
         
         let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
-        // addButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         
         let qrCodebutton = UIButton(type: UIButtonType.custom)
         
