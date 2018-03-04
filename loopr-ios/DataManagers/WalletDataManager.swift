@@ -42,6 +42,12 @@ class WalletDataManager {
         print("Finished unlocking a new wallet")
     }
 
+    func generateWalletAndReturnMnemonic() -> [String] {
+        let mnemonicString = Mnemonic.generate(strength: 256)
+        let mnemonic = mnemonicString.components(separatedBy: " ")
+        return mnemonic
+    }
+
     func generateMockData() {
         let wallet1 = AppWallet(address: "#1234567890qwertyuiop1", name: "Wallet 1", active: true)
         let wallet2 = AppWallet(address: "#1234567890qwertyuiop2", name: "Wallet 2", active: true)
