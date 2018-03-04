@@ -13,7 +13,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var settingsTableView: UITableView!
     
     let sectionTitles = ["User Preferences", "Tools", "Trading", "Relay", "About"]
-    let sectionRows = [4, 3, 3, 3, 6]
+    let sectionRows = [5, 3, 3, 3, 6]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,8 +61,13 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         switch indexPath.section {
         case 0:
             switch indexPath.row {
-            case 1:
-                print("Language")
+            case 0:
+                print("Setting wallet")
+                let viewController = SelectWalletViewController()
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            case 2:
+                print("Setting language")
                 let viewController = SettingLanguageViewController()
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
@@ -86,12 +91,18 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func section0Cell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
-            return createThemeMode()
+            var currentWalletName = WalletDataManager.shared.getCurrentWallet()?.name
+            if currentWalletName == nil {
+                currentWalletName = ""
+            }
+            return createDetailTableCell(title: NSLocalizedString("Manage Wallet", comment: ""), detailTitle: currentWalletName!)
         case 1:
-            return createDetailTableCell(title: NSLocalizedString("Language", comment: ""), detailTitle: SettingDataManager.shared.getCurrentLanguage().displayName)
+            return createThemeMode()
         case 2:
-            return createDetailTableCell(title: "Currency", detailTitle: "USD")
+            return createDetailTableCell(title: NSLocalizedString("Language", comment: ""), detailTitle: SettingDataManager.shared.getCurrentLanguage().displayName)
         case 3:
+            return createDetailTableCell(title: "Currency", detailTitle: "USD")
+        case 4:
             return createDetailTableCell(title: "Timzone", detailTitle: TimeZone.current.identifier)
         default:
             return UITableViewCell()
