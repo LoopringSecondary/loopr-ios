@@ -24,7 +24,7 @@
 		AC1E4BC0204B51AB00C6B1FA /* ImportWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */; };
 		AC1E4BC2204B52FD00C6B1FA /* wallet.json in Resources */ = {isa = PBXBuildFile; fileRef = AC1E4BC1204B52FD00C6B1FA /* wallet.json */; };
 		AC1E4BC4204B533000C6B1FA /* key.json in Resources */ = {isa = PBXBuildFile; fileRef = AC1E4BC3204B533000C6B1FA /* key.json */; };
-		AC1E4BC6204B58D400C6B1FA /* CreateAddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BC5204B58D400C6B1FA /* CreateAddressTests.swift */; };
+		AC1E4BC6204B58D400C6B1FA /* CreatePrivateKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BC5204B58D400C6B1FA /* CreatePrivateKeyTests.swift */; };
 		AC31B93520493FB900B16155 /* SettingLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B93320493FB900B16155 /* SettingLanguageTableViewCell.swift */; };
 		AC31B93620493FB900B16155 /* SettingLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31B93420493FB900B16155 /* SettingLanguageTableViewCell.xib */; };
 		AC31B938204A4E1300B16155 /* SettingDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B937204A4E1300B16155 /* SettingDataManager.swift */; };
@@ -176,6 +176,7 @@
 		ACE6F7242042228A0039273D /* GlobalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F7232042228A0039273D /* GlobalPicker.swift */; };
 		ACE6F72720426BAC0039273D /* SettingThemeModeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F72520426BAC0039273D /* SettingThemeModeTableViewCell.swift */; };
 		ACE6F72820426BAC0039273D /* SettingThemeModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE6F72620426BAC0039273D /* SettingThemeModeTableViewCell.xib */; };
+		ACF06A06204C736A00C3FF86 /* CreateMnemonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF06A05204C736A00C3FF86 /* CreateMnemonicTests.swift */; };
 		ACF71CB42033E723000E7618 /* TradeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */; };
 		ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */; };
 		C87E226E2031708000323584 /* ToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E226D2031708000323584 /* ToggleTableViewCell.swift */; };
@@ -231,7 +232,7 @@
 		AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletTests.swift; sourceTree = "<group>"; };
 		AC1E4BC1204B52FD00C6B1FA /* wallet.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = wallet.json; sourceTree = "<group>"; };
 		AC1E4BC3204B533000C6B1FA /* key.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = key.json; sourceTree = "<group>"; };
-		AC1E4BC5204B58D400C6B1FA /* CreateAddressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAddressTests.swift; sourceTree = "<group>"; };
+		AC1E4BC5204B58D400C6B1FA /* CreatePrivateKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePrivateKeyTests.swift; sourceTree = "<group>"; };
 		AC31B93320493FB900B16155 /* SettingLanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageTableViewCell.swift; sourceTree = "<group>"; };
 		AC31B93420493FB900B16155 /* SettingLanguageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLanguageTableViewCell.xib; sourceTree = "<group>"; };
 		AC31B937204A4E1300B16155 /* SettingDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDataManager.swift; sourceTree = "<group>"; };
@@ -393,6 +394,7 @@
 		ACE6F7232042228A0039273D /* GlobalPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalPicker.swift; sourceTree = "<group>"; };
 		ACE6F72520426BAC0039273D /* SettingThemeModeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingThemeModeTableViewCell.swift; sourceTree = "<group>"; };
 		ACE6F72620426BAC0039273D /* SettingThemeModeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingThemeModeTableViewCell.xib; sourceTree = "<group>"; };
+		ACF06A05204C736A00C3FF86 /* CreateMnemonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMnemonicTests.swift; sourceTree = "<group>"; };
 		ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeTableViewCell.swift; sourceTree = "<group>"; };
 		ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeTableViewCell.xib; sourceTree = "<group>"; };
 		C87E226D2031708000323584 /* ToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleTableViewCell.swift; sourceTree = "<group>"; };
@@ -482,7 +484,8 @@
 				AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */,
 				AC1E4BBB204B420D00C6B1FA /* KeystoneIntegrationTests.swift */,
 				AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */,
-				AC1E4BC5204B58D400C6B1FA /* CreateAddressTests.swift */,
+				AC1E4BC5204B58D400C6B1FA /* CreatePrivateKeyTests.swift */,
+				ACF06A05204C736A00C3FF86 /* CreateMnemonicTests.swift */,
 				AC1E4BC1204B52FD00C6B1FA /* wallet.json */,
 				AC1E4BC3204B533000C6B1FA /* key.json */,
 			);
@@ -1463,10 +1466,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACF06A06204C736A00C3FF86 /* CreateMnemonicTests.swift in Sources */,
 				AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */,
 				AC798E5A2022B93B0071D477 /* loopring_JSON_RPCTests.swift in Sources */,
 				AC1E4BC0204B51AB00C6B1FA /* ImportWalletTests.swift in Sources */,
-				AC1E4BC6204B58D400C6B1FA /* CreateAddressTests.swift in Sources */,
+				AC1E4BC6204B58D400C6B1FA /* CreatePrivateKeyTests.swift in Sources */,
 				AC1E4BBC204B420D00C6B1FA /* KeystoneIntegrationTests.swift in Sources */,
 				AC9280DD202E0F9F0009B574 /* eth_JSON_RPCTests.swift in Sources */,
 			);

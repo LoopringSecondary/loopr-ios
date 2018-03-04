@@ -10,7 +10,7 @@ import XCTest
 @testable import loopr_ios
 import CryptoSwift
 
-class CreateAddressTests: XCTestCase {
+class CreatePrivateKeyTests: XCTestCase {
     
     let password: String = "password"
     
