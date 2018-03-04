@@ -37,10 +37,10 @@ class SetupViewController: UIViewController {
     }
     
     @IBAction func generateWalletButtonPressed(_ sender: Any) {
-        let generateWalletViewController = GenerateWalletViewController()
-        self.navigationController?.pushViewController(generateWalletViewController, animated: true)
+        let viewController = GenerateWalletViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
-    
+
     @objc func skipButtonPressed(_ sender: Any) {
         self.dismiss(animated: true) {
             
