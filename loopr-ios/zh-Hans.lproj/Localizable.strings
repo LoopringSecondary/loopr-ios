@@ -18,6 +18,7 @@
 "Private Key" = "私钥";
 "Unlock" = "解锁";
 "Please input your private key" = "请输入您的私钥";
+"Please use space to seperate the mnemonic words" = "请用空格隔开助记词";
 "Backup Mnemonic" = "备份助记词";
 "Verify Now" = "验证";
 "Verification" = "验证";

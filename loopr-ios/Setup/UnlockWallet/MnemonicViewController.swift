@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MnemonicViewController: UIViewController {
+class MnemonicViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var mnemonicWordTextView: UITextView!
     @IBOutlet weak var unlockButtonBottonLayoutConstraint: NSLayoutConstraint!
@@ -23,6 +23,10 @@ class MnemonicViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
         unlockButton.setTitle(NSLocalizedString("Unlock", comment: ""), for: .normal)
+        
+        mnemonicWordTextView.delegate = self
+        mnemonicWordTextView.text = NSLocalizedString("Please use space to seperate the mnemonic words", comment: "")
+        mnemonicWordTextView.textColor = .lightGray
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -31,7 +35,7 @@ class MnemonicViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        mnemonicWordTextView.becomeFirstResponder()
+        // mnemonicWordTextView.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,6 +64,22 @@ class MnemonicViewController: UIViewController {
     @objc func keyboardWillDisappear(notification: NSNotification?) {
         print("keyboardWillDisappear")
         // unlockButtonBottonLayoutContraint.constant = 16.0
+    }
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if mnemonicWordTextView.text == NSLocalizedString("Please use space to seperate the mnemonic words", comment: "") {
+            mnemonicWordTextView.text = ""
+            mnemonicWordTextView.textColor = .black
+        }
+        mnemonicWordTextView.becomeFirstResponder() // Optional
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if mnemonicWordTextView.text == "" {
+            mnemonicWordTextView.text = NSLocalizedString("Please use space to seperate the mnemonic words", comment: "")
+            mnemonicWordTextView.textColor = .lightGray
+        }
+        mnemonicWordTextView.resignFirstResponder()
     }
     
     @IBAction func pressUnlockButton(_ sender: Any) {

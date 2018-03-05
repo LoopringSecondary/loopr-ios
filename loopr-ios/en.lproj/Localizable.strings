@@ -18,6 +18,7 @@
 "Private Key" = "Private Key";
 "Unlock" = "Unlock";
 "Please input your private key" = "Please input your private key";
+"Please use space to seperate the mnemonic words" = "Please use space to seperate the mnemonic words";
 "Backup Mnemonic" = "Backup Mnemonic";
 "Verify Now" = "Verify Now";
 "Verification" = "Verification";
