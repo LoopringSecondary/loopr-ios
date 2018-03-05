@@ -92,6 +92,7 @@
 		AC72AEDC204C9F6300E9D3B0 /* VerifyMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEDA204C9F6300E9D3B0 /* VerifyMnemonicViewController.swift */; };
 		AC72AEDD204C9F6300E9D3B0 /* VerifyMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEDB204C9F6300E9D3B0 /* VerifyMnemonicViewController.xib */; };
 		AC72AEDF204CA50600E9D3B0 /* GenerateWalletDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEDE204CA50600E9D3B0 /* GenerateWalletDataManager.swift */; };
+		AC72AEE2204D084500E9D3B0 /* WalletDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEE1204D084500E9D3B0 /* WalletDataManagerTests.swift */; };
 		AC76E4702047F1D3008BA229 /* CircleChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76E46F2047F1D3008BA229 /* CircleChart.swift */; };
 		AC76E47320493CAE008BA229 /* SettingLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76E47120493CAE008BA229 /* SettingLanguageViewController.swift */; };
 		AC76E47420493CAE008BA229 /* SettingLanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */; };
@@ -307,6 +308,7 @@
 		AC72AEDA204C9F6300E9D3B0 /* VerifyMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyMnemonicViewController.swift; sourceTree = "<group>"; };
 		AC72AEDB204C9F6300E9D3B0 /* VerifyMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerifyMnemonicViewController.xib; sourceTree = "<group>"; };
 		AC72AEDE204CA50600E9D3B0 /* GenerateWalletDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateWalletDataManager.swift; sourceTree = "<group>"; };
+		AC72AEE1204D084500E9D3B0 /* WalletDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDataManagerTests.swift; sourceTree = "<group>"; };
 		AC76E46F2047F1D3008BA229 /* CircleChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleChart.swift; sourceTree = "<group>"; };
 		AC76E47120493CAE008BA229 /* SettingLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageViewController.swift; sourceTree = "<group>"; };
 		AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLanguageViewController.xib; sourceTree = "<group>"; };
@@ -627,6 +629,14 @@
 			path = Archive;
 			sourceTree = "<group>";
 		};
+		AC72AEE0204D082800E9D3B0 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				AC72AEE1204D084500E9D3B0 /* WalletDataManagerTests.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
 		AC76E46E2047F1AE008BA229 /* CircleChart */ = {
 			isa = PBXGroup;
 			children = (
@@ -702,6 +712,7 @@
 		AC798E582022B93B0071D477 /* loopr-iosTests */ = {
 			isa = PBXGroup;
 			children = (
+				AC72AEE0204D082800E9D3B0 /* DataManager */,
 				AC1E4BB9204B2AE200C6B1FA /* RelayAPI */,
 				AC1E4BBA204B2AF700C6B1FA /* Keystone */,
 				AC798E5B2022B93B0071D477 /* Info.plist */,
@@ -1494,6 +1505,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC72AEE2204D084500E9D3B0 /* WalletDataManagerTests.swift in Sources */,
 				ACF06A06204C736A00C3FF86 /* CreateMnemonicTests.swift in Sources */,
 				AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */,
 				AC798E5A2022B93B0071D477 /* loopring_JSON_RPCTests.swift in Sources */,

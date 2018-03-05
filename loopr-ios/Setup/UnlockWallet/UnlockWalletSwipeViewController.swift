@@ -11,6 +11,7 @@ import UIKit
 class UnlockWalletSwipeViewController: SwipeViewController {
 
     private var types: [UnlockWalletType] = [.mnemonic, .keystore, .privateKey]
+    private var viewControllers: [UIViewController] = [MnemonicViewController(), KeystoreViewController(), PrivateKeyViewController()]
     var options = SwipeViewOptions()
 
     override func viewDidLoad() {
@@ -74,11 +75,11 @@ class UnlockWalletSwipeViewController: SwipeViewController {
 
         switch type {
         case .mnemonic:
-            viewController = MnemonicViewController()
+            viewController = viewControllers[0]
         case .keystore:
-            viewController = KeystoreViewController()
+            viewController = viewControllers[1]
         case .privateKey:
-            viewController = PrivateKeyViewController()
+            viewController = viewControllers[2]
         }
 
         self.addChildViewController(viewController)
