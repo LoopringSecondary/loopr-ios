@@ -24,6 +24,24 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         assetTableView.theme_backgroundColor = GlobalPicker.backgroundColor
 
+        let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
+        
+        let qrCodebutton = UIButton(type: UIButtonType.custom)
+        
+        // TODO: smaller images.
+        qrCodebutton.theme_setImage(["QRCode-black", "QRCode-white"], forState: UIControlState.normal)
+        qrCodebutton.theme_setImage(["QRCode-grey", "QRCode-grey"], forState: UIControlState.highlighted)
+
+        qrCodebutton.addTarget(self, action: #selector(self.pressQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
+        qrCodebutton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let qrCodeBarButton = UIBarButtonItem(customView: qrCodebutton)
+        
+        self.navigationItem.rightBarButtonItems = [addButton, qrCodeBarButton]
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         let button =  UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 120, height: 40)
         
@@ -43,27 +61,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         button.semanticContentAttribute = .forceRightToLeft
         // button.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 50, bottom: 0, right: -50)
-
+        
         button.addTarget(self, action: #selector(self.clickOnButton(_:)), for: .touchUpInside)
         self.navigationItem.titleView = button
         
-        let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
-        
-        let qrCodebutton = UIButton(type: UIButtonType.custom)
-        
-        // TODO: smaller images.
-        qrCodebutton.theme_setImage(["QRCode-black", "QRCode-white"], forState: UIControlState.normal)
-        qrCodebutton.theme_setImage(["QRCode-grey", "QRCode-grey"], forState: UIControlState.highlighted)
-
-        qrCodebutton.addTarget(self, action: #selector(self.pressQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
-        qrCodebutton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        let qrCodeBarButton = UIBarButtonItem(customView: qrCodebutton)
-        
-        self.navigationItem.rightBarButtonItems = [addButton, qrCodeBarButton]
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         assetTableView.reloadData()
     }
 
