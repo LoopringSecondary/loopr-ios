@@ -28,27 +28,24 @@ class TradePlaceOrderViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-//        navigationBar.shadowImage = UIImage()
-        
-        
+    }
+    
+    override func viewDidLayoutSubviews() {
         for view in informationStackView.subviews {
             let dashedLine = DashedLineView(frame: CGRect(x: informationStackView.frame.origin.x, y: informationStackView.frame.origin.y + view.frame.origin.y + view.frame.size.height, width: informationStackView.frame.size.width, height: 1))
             dashedLine.lineColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
             self.view.addSubview(dashedLine)
         }
-
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-
+//    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)
-        
 //        for view in informationStackView.subviews {
 //            let dashedLine = DashedLineView(frame: CGRect(x: informationStackView.frame.origin.x, y: informationStackView.frame.origin.y + view.frame.origin.y + view.frame.size.height, width: informationStackView.frame.size.width, height: 1))
 //            dashedLine.lineColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
 //            self.view.addSubview(dashedLine)
 //        }
-    }
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

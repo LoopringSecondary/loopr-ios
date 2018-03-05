@@ -60,7 +60,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0T-Ps-PYK">
-                    <rect key="frame" x="95" y="351.5" width="185" height="30"/>
+                    <rect key="frame" x="95" y="363" width="185" height="30"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" link="YES"/>
                     </accessibility>
@@ -184,6 +184,7 @@
                 <constraint firstItem="Spz-7W-Vsx" firstAttribute="trailing" secondItem="BNx-Ao-Bzy" secondAttribute="trailing" constant="5" id="YW8-at-7Ej"/>
                 <constraint firstItem="Xme-tR-Ob8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ZxJ-xT-SiX"/>
                 <constraint firstItem="Xme-tR-Ob8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="b4m-tX-eSF"/>
+                <constraint firstItem="V0T-Ps-PYK" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" multiplier="1.1" id="c7V-hq-4Vk"/>
                 <constraint firstItem="V0T-Ps-PYK" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="c8W-5P-MFy"/>
                 <constraint firstItem="nQm-2M-drd" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.8" id="ckb-gF-qmP"/>
                 <constraint firstItem="nQm-2M-drd" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="fIB-T4-Mga"/>
@@ -191,7 +192,6 @@
                 <constraint firstItem="PyS-gI-ELt" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="gTc-iy-8GS"/>
                 <constraint firstItem="PyS-gI-ELt" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.8" id="hTi-xc-LgM"/>
                 <constraint firstItem="51g-0a-OXp" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="iEX-8Y-WIP"/>
-                <constraint firstItem="V0T-Ps-PYK" firstAttribute="top" secondItem="51g-0a-OXp" secondAttribute="bottom" id="ifW-Ta-tYi"/>
                 <constraint firstItem="PKX-x6-Rht" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="jcM-TY-njm"/>
                 <constraint firstItem="pJn-3R-Use" firstAttribute="trailing" secondItem="PyS-gI-ELt" secondAttribute="trailing" constant="5" id="kiu-1j-qKZ"/>
                 <constraint firstItem="PyS-gI-ELt" firstAttribute="top" secondItem="PKX-x6-Rht" secondAttribute="bottom" multiplier="1.2" id="kjG-SQ-u2i"/>

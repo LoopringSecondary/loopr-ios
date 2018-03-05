@@ -12,10 +12,13 @@ class TradePlaceReplyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        placedReply("successed!")
         // Do any additional setup after loading the view.
+        
     }
-
+    override func viewDidLayoutSubviews() {
+        placedReply("Congratulations! Your order has been submitted!")
+    }
+    
     @IBAction func pressedCloseButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -30,8 +33,11 @@ class TradePlaceReplyViewController: UIViewController {
         let a = CGRect(x: view.center.x, y: view.center.y, width: 100, height: 10)
         let label = UILabel(frame: a)
         label.text = message
-        label.textAlignment = .center
+        label.frame.size.width = self.view.frame.width
         label.center = self.view.center
+        label.font = UIFont.systemFont(ofSize: 13)
+        label.textAlignment = .center
+        
         self.view.addSubview(label)
     }
 

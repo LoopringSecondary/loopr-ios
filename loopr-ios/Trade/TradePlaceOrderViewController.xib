@@ -82,8 +82,8 @@
                         </label>
                     </subviews>
                 </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Psj-no-lUB">
-                    <rect key="frame" x="32" y="236" width="256" height="219.5"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Psj-no-lUB">
+                    <rect key="frame" x="32" y="224.5" width="256" height="219.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="CEN-z7-epF">
                             <rect key="frame" x="0.0" y="0.0" width="256" height="20.5"/>
@@ -112,13 +112,13 @@
                             <rect key="frame" x="0.0" y="50" width="256" height="20.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Order Expires in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kye-gv-6nl">
-                                    <rect key="frame" x="0.0" y="0.0" width="189.5" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="0.5" width="189.5" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Grv-2G-S3j">
-                                    <rect key="frame" x="194.5" y="0.0" width="61.5" height="20.5"/>
+                                    <rect key="frame" x="194.5" y="0.5" width="61.5" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -176,22 +176,22 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lNb-dO-39R">
-                            <rect key="frame" x="0.0" y="149" width="256" height="20.5"/>
+                            <rect key="frame" x="0.0" y="149.5" width="256" height="20.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Margin Split" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xgx-BW-CeX">
-                                    <rect key="frame" x="0.0" y="0.0" width="216" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="0.5" width="216" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="34" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBW-34-6js">
-                                    <rect key="frame" x="216" y="0.0" width="21" height="20.5"/>
+                                    <rect key="frame" x="216" y="0.5" width="21" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="‰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leX-bL-tsd">
-                                    <rect key="frame" x="237" y="0.0" width="19" height="20.5"/>
+                                    <rect key="frame" x="237" y="0.5" width="19" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -250,7 +250,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uNH-gz-HUl" secondAttribute="trailing" id="YOI-Q8-aJk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="uNH-gz-HUl" secondAttribute="top" id="b9T-rG-YGb"/>
                 <constraint firstItem="Psj-no-lUB" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.8" id="bcZ-F4-jjS"/>
-                <constraint firstAttribute="centerY" secondItem="Psj-no-lUB" secondAttribute="centerY" multiplier="0.85" constant="-9.8999999999999773" id="clK-85-ajq"/>
+                <constraint firstAttribute="centerY" secondItem="Psj-no-lUB" secondAttribute="centerY" multiplier="0.85" id="clK-85-ajq"/>
                 <constraint firstItem="Psj-no-lUB" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.4" id="eBs-Lf-HoX"/>
                 <constraint firstItem="Psj-no-lUB" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="iMb-3u-eQb"/>
                 <constraint firstItem="GMn-Vk-IGA" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="jck-Zo-Tlb"/>

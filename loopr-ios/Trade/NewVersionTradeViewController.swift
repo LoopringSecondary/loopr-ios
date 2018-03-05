@@ -35,7 +35,6 @@ class NewVersionTradeViewController: UIViewController {
     }
     
     @IBAction func pressSellButton(_ sender: UIButton) {
-        
         updateLayoutForUnderline(underlineToBuyBtn, underlineToSellBtn)
     }
     

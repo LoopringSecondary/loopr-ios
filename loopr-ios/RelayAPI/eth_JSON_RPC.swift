@@ -55,7 +55,7 @@ class eth_JSON_RPC {
     }
     
     // TODO:
-    public static func eth_sendRawTransaction() {
+    public static func eth_senxdRawTransaction() {
         
     }
     
