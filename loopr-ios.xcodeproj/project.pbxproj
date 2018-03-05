@@ -69,7 +69,7 @@
 		AC4141FB20352DE50089861D /* SwipeTabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141FA20352DE50089861D /* SwipeTabItemView.swift */; };
 		AC4141FD203532ED0089861D /* SwipeViewOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141FC203532ED0089861D /* SwipeViewOptions.swift */; };
 		AC4141FF20356A4D0089861D /* MarketSwipeViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141FE20356A4D0089861D /* MarketSwipeViewType.swift */; };
-		AC4142042038B6370089861D /* WalletDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4142032038B6370089861D /* WalletDataManager.swift */; };
+		AC4142042038B6370089861D /* AppWalletDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4142032038B6370089861D /* AppWalletDataManager.swift */; };
 		AC4142062038B66F0089861D /* AppWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4142052038B66F0089861D /* AppWallet.swift */; };
 		AC41420A2038BF380089861D /* SetupDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4142092038BF380089861D /* SetupDataManager.swift */; };
 		AC41420C2038BFB70089861D /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41420B2038BFB70089861D /* UserDefaultsKeys.swift */; };
@@ -285,7 +285,7 @@
 		AC4141FA20352DE50089861D /* SwipeTabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTabItemView.swift; sourceTree = "<group>"; };
 		AC4141FC203532ED0089861D /* SwipeViewOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewOptions.swift; sourceTree = "<group>"; };
 		AC4141FE20356A4D0089861D /* MarketSwipeViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketSwipeViewType.swift; sourceTree = "<group>"; };
-		AC4142032038B6370089861D /* WalletDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDataManager.swift; sourceTree = "<group>"; };
+		AC4142032038B6370089861D /* AppWalletDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWalletDataManager.swift; sourceTree = "<group>"; };
 		AC4142052038B66F0089861D /* AppWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWallet.swift; sourceTree = "<group>"; };
 		AC4142092038BF380089861D /* SetupDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupDataManager.swift; sourceTree = "<group>"; };
 		AC41420B2038BFB70089861D /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
@@ -875,7 +875,7 @@
 				ACB911682025472A00F14644 /* AssetDataManager.swift */,
 				ACB9117920256B3C00F14644 /* MarketDataManager.swift */,
 				ACB911A020296AE500F14644 /* OrderDataManager.swift */,
-				AC4142032038B6370089861D /* WalletDataManager.swift */,
+				AC4142032038B6370089861D /* AppWalletDataManager.swift */,
 				AC72AEDE204CA50600E9D3B0 /* GenerateWalletDataManager.swift */,
 				AC4142092038BF380089861D /* SetupDataManager.swift */,
 				AC31B937204A4E1300B16155 /* SettingDataManager.swift */,
@@ -1480,7 +1480,7 @@
 				ACE6F72720426BAC0039273D /* SettingThemeModeTableViewCell.swift in Sources */,
 				ACB911992027F65800F14644 /* loopring_JSON_RPC.swift in Sources */,
 				ACB5DDA4202D6FC300140A09 /* UIImageExtension.swift in Sources */,
-				AC4142042038B6370089861D /* WalletDataManager.swift in Sources */,
+				AC4142042038B6370089861D /* AppWalletDataManager.swift in Sources */,
 				AC31B952204A8DF400B16155 /* Account.swift in Sources */,
 				AC5E0DD6203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift in Sources */,
 				AC72AEDC204C9F6300E9D3B0 /* VerifyMnemonicViewController.swift in Sources */,

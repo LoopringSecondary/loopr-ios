@@ -57,7 +57,7 @@ class GenerateWalletDataManager {
 
     // TODO: use error handling
     func complete() -> AppWallet {
-        let appWallet = WalletDataManager.shared.addWallet(walletName: walletName, mnemonic: mnemonic)
+        let appWallet = AppWalletDataManager.shared.addWallet(walletName: walletName, mnemonic: mnemonic)
         
         walletName = nil
         mnemonic = []

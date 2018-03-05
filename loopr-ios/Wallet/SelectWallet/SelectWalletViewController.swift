@@ -49,7 +49,7 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return WalletDataManager.shared.getWallets().count
+        return AppWalletDataManager.shared.getWallets().count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -64,7 +64,7 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
         }
         
         // Configure the cell...
-        cell?.wallet = WalletDataManager.shared.getWallets()[indexPath.row]
+        cell?.wallet = AppWalletDataManager.shared.getWallets()[indexPath.row]
         cell?.update()
         return cell!
     }

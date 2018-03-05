@@ -85,7 +85,7 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
 
     @IBAction func pressedUnlockButton(_ sender: Any) {
         print("pressedUnlockButton")
-        WalletDataManager.shared.unlockWallet(privateKey: privateKeyTextView.text)
+        AppWalletDataManager.shared.unlockWallet(privateKey: privateKeyTextView.text)
         self.dismiss(animated: true) {
             
         }

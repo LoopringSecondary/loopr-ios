@@ -8,9 +8,9 @@
 
 import Foundation
 
-class WalletDataManager {
+class AppWalletDataManager {
     
-    static let shared = WalletDataManager()
+    static let shared = AppWalletDataManager()
     
     private var appWallets: [AppWallet]
     
