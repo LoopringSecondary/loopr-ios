@@ -12,7 +12,7 @@ class TradePlaceReplyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        placedReply("successed!")
         // Do any additional setup after loading the view.
     }
 
@@ -23,6 +23,16 @@ class TradePlaceReplyViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func placedReply(_ message: String) {
+        
+        let a = CGRect(x: view.center.x, y: view.center.y, width: 100, height: 10)
+        let label = UILabel(frame: a)
+        label.text = message
+        label.textAlignment = .center
+        label.center = self.view.center
+        self.view.addSubview(label)
     }
 
     /*

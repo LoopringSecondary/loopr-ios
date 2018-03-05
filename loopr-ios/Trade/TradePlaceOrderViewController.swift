@@ -17,6 +17,8 @@ class TradePlaceOrderViewController: UIViewController {
     weak var delegate: TradePlaceOrderDelegate?
     @IBOutlet weak var navigationBar: UINavigationBar!
 
+    @IBOutlet weak var informationStackView: UIStackView!
+    
     @IBAction func pressedPlaceButton(_ sender: UIButton) {
         let vc = TradePlaceReplyViewController()
         self.present(vc, animated: true, completion: nil)
@@ -27,6 +29,25 @@ class TradePlaceOrderViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 //        navigationBar.shadowImage = UIImage()
+        
+        
+        for view in informationStackView.subviews {
+            let dashedLine = DashedLineView(frame: CGRect(x: informationStackView.frame.origin.x, y: informationStackView.frame.origin.y + view.frame.origin.y + view.frame.size.height, width: informationStackView.frame.size.width, height: 1))
+            dashedLine.lineColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
+            self.view.addSubview(dashedLine)
+        }
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+
+//        super.viewWillAppear(animated)
+        
+//        for view in informationStackView.subviews {
+//            let dashedLine = DashedLineView(frame: CGRect(x: informationStackView.frame.origin.x, y: informationStackView.frame.origin.y + view.frame.origin.y + view.frame.size.height, width: informationStackView.frame.size.width, height: 1))
+//            dashedLine.lineColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
+//            self.view.addSubview(dashedLine)
+//        }
     }
 
     override func didReceiveMemoryWarning() {
