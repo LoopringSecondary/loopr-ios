@@ -20,24 +20,41 @@ class AppWalletDataManager {
 
     private var currentAppWallet: AppWallet?
     
+    func getCurrentAppWalletFromLocalStorage() {
+        let defaults = UserDefaults.standard
+        if let privateKeyString = defaults.string(forKey: UserDefaultsKeys.currentAppWallet.rawValue) {
+            let privateKey = Data(hexString: privateKeyString)!
+            let key = try! KeystoreKey(password: "password", key: privateKey)
+            let newAppWallet = AppWallet(address: key.address.description, privateKey: privateKeyString, name: "Wallet private key", active: true)
+            appWallets.append(newAppWallet)
+            setCurrentAppWallet(newAppWallet)
+        }
+    }
+    
     func getCurrentAppWallet() -> AppWallet? {
         return currentAppWallet
     }
     
     func setCurrentAppWallet(_ appWallet: AppWallet) {
+        let defaults = UserDefaults.standard
+        defaults.set(appWallet.privateKey, forKey: UserDefaultsKeys.currentAppWallet.rawValue)
         currentAppWallet = appWallet
     }
     
     func getWallets() -> [AppWallet] {
         return appWallets
     }
-    
+
+    func getAppWalletsFromLocalStorage() {
+        
+    }
+
     // TODO: Use error handling
     func unlockWallet(privateKey privateKeyString: String) {
         print("Start to unlock a new wallet using the private key")
         let privateKey = Data(hexString: privateKeyString)!
         let key = try! KeystoreKey(password: "password", key: privateKey)
-        let newAppWallet = AppWallet(address: key.address.description, name: "Wallet private key", active: true)
+        let newAppWallet = AppWallet(address: key.address.description, privateKey: privateKeyString, name: "Wallet private key", active: true)
         appWallets.append(newAppWallet)
         setCurrentAppWallet(newAppWallet)
         print("Finished unlocking a new wallet")
@@ -47,12 +64,13 @@ class AppWalletDataManager {
     func unlockWallet(mnemonic: String) {
         let wallet = Wallet(mnemonic: mnemonic, password: "")
         let address = wallet.getKey(at: 0).address
-        let newAppWallet = AppWallet(address: address.description, name: "Wallet mnemonic", active: true)
+        let newAppWallet = AppWallet(address: address.description, privateKey: "", name: "Wallet mnemonic", active: true)
         appWallets.append(newAppWallet)
         setCurrentAppWallet(newAppWallet)
         print("Finished unlocking a new wallet")
     }
 
+    /*
     func generateMockData() {
         let wallet1 = AppWallet(address: "#1234567890qwertyuiop1", name: "Wallet 1", active: true)
         let wallet2 = AppWallet(address: "#1234567890qwertyuiop2", name: "Wallet 2", active: true)
@@ -61,6 +79,7 @@ class AppWalletDataManager {
         appWallets = [wallet1, wallet2, wallet3]
         setCurrentAppWallet(wallet1)
     }
+    */
     
     // TODO: Use error handling instead of returning a Bool value
     func addWallet(walletName: String?, mnemonic: [String]) -> AppWallet? {
@@ -86,7 +105,7 @@ class AppWalletDataManager {
             walletNameLocal = walletName!
         }
 
-        let newAppWallet = AppWallet(address: address.description, name: walletNameLocal, active: true)
+        let newAppWallet = AppWallet(address: address.description, privateKey: privateKey.hexString, name: walletNameLocal, active: true)
         appWallets.append(newAppWallet)
         setCurrentAppWallet(newAppWallet)
 

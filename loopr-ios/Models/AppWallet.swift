@@ -11,11 +11,14 @@ import Foundation
 class AppWallet: Equatable {
     
     final let address: String
+    final let privateKey: String
+    
     final let name: String
     final let active: Bool
     
-    init(address: String, name: String, active: Bool) {
+    init(address: String, privateKey: String, name: String, active: Bool) {
         self.address = address
+        self.privateKey = privateKey
         self.name = name
         self.active = active
     }
