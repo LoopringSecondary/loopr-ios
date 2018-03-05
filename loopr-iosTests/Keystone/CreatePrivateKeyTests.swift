@@ -10,7 +10,7 @@ import XCTest
 @testable import loopr_ios
 import CryptoSwift
 
-class CreateAddressTests: XCTestCase {
+class CreatePrivateKeyTests: XCTestCase {
     
     let password: String = "password"
     
@@ -24,7 +24,6 @@ class CreateAddressTests: XCTestCase {
         super.tearDown()
     }
     
-    // About 60s
     func testCreateKey_1() {
         // Generate a key
         let keystoreKey1 = try! KeystoreKey(password: password)
@@ -67,8 +66,7 @@ class CreateAddressTests: XCTestCase {
         }
     }
     
-    // about 20s for one run
-    func _testMeasure() {
+    func testMeasure() {
         self.measure {
            _ = try! KeystoreKey(password: password)
         }

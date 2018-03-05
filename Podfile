@@ -14,6 +14,7 @@ target 'loopr-ios' do
   pod 'DottedLineView'
   pod 'SwiftLint'
   pod 'SwiftTheme'
+  pod 'TagListView'
   
   # Pods for keystone
   pod 'BigInt'

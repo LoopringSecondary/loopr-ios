@@ -49,7 +49,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="P2b-0n-nl1"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>

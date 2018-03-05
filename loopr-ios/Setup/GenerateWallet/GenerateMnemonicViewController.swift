@@ -17,11 +17,19 @@ class GenerateMnemonicViewController: UIViewController {
         let backButton = UIBarButtonItem()
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func pressedBackupNowButton(_ sender: Any) {
+        print("pressedBackupNowButton")
+        let viewController = BackupMnemonicViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
 }
