@@ -55,6 +55,7 @@ class loopring_JSON_RPCTests: XCTestCase {
     }
     
     func testGetDepth() {
+        let expectation = XCTestExpectation()
         loopring_JSON_RPC.getDepth() { data, response, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
@@ -62,10 +63,14 @@ class loopring_JSON_RPCTests: XCTestCase {
             }
             
             let json = JSON(data)
-            // print("response = \(json)")
+            print("response = \(json)")
             
             // TODO: verify the response
+            
+            expectation.fulfill()
         }
+        
+        wait(for: [expectation], timeout: 10.0)
     }
     
     func testGetTickers() {
