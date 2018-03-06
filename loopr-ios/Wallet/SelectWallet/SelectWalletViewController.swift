@@ -19,7 +19,7 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         walletTableView.theme_backgroundColor = GlobalPicker.backgroundColor
         
-        self.title = "Switch Wallet"
+        self.navigationItem.title = "Switch Wallet"
         let backButton = UIBarButtonItem()
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
@@ -71,5 +71,23 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let appWallet = AppWalletDataManager.shared.getWallets()[indexPath.row]
+
+        let alertController = UIAlertController(title: "Choose Wallet: \(appWallet.name)",
+            message: nil,
+            preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: "Confirm", style: .default, handler: { _ in
+            AppWalletDataManager.shared.setCurrentAppWallet(appWallet)
+        })
+        alertController.addAction(defaultAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            
+        })
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 }

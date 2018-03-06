@@ -12,25 +12,27 @@ class AppWalletDataManager {
     
     static let shared = AppWalletDataManager()
     
+    private var currentAppWallet: AppWallet?
     private var appWallets: [AppWallet]
     
     private init() {
         appWallets = []
     }
 
-    private var currentAppWallet: AppWallet?
-    
+    func setup() {
+        getAppWalletsFromLocalStorage()
+        getCurrentAppWalletFromLocalStorage()
+    }
+
     func getCurrentAppWalletFromLocalStorage() {
         let defaults = UserDefaults.standard
         if let privateKeyString = defaults.string(forKey: UserDefaultsKeys.currentAppWallet.rawValue) {
-            let privateKey = Data(hexString: privateKeyString)!
-            let key = try! KeystoreKey(password: "password", key: privateKey)
-            let newAppWallet = AppWallet(address: key.address.description, privateKey: privateKeyString, name: "Wallet private key", active: true)
-            appWallets.append(newAppWallet)
-            setCurrentAppWallet(newAppWallet)
+            for appWallet in appWallets where appWallet.privateKey == privateKeyString {
+                setCurrentAppWallet(appWallet)
+            }
         }
     }
-    
+
     func getCurrentAppWallet() -> AppWallet? {
         return currentAppWallet
     }
@@ -56,6 +58,9 @@ class AppWalletDataManager {
     }
     
     func AddAndUpdateAppWalletsInLocalStorage(newAppWallet: AppWallet) {
+        for appWallet in appWallets where appWallet == newAppWallet {
+            return
+        }
         appWallets.append(newAppWallet)
         let defaults = UserDefaults.standard
         let encodedData = NSKeyedArchiver.archivedData(withRootObject: appWallets)
@@ -114,7 +119,6 @@ class AppWalletDataManager {
         let newAppWallet = AppWallet(address: address.description, privateKey: privateKey.hexString, name: walletNameLocal, active: true)
         
         AddAndUpdateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
-        
         setCurrentAppWallet(newAppWallet)
 
         return newAppWallet

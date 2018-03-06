@@ -24,7 +24,7 @@ class AppWallet: NSObject, NSCoding {
     }
     
     static func == (lhs: AppWallet, rhs: AppWallet) -> Bool {
-        return lhs.address == rhs.address
+        return lhs.address == rhs.address && lhs.privateKey == rhs.privateKey
     }
 
     func encode(with aCoder: NSCoder) {

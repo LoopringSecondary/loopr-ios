@@ -18,15 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        AppWalletDataManager.shared.getAppWalletsFromLocalStorage()
-        AppWalletDataManager.shared.getCurrentAppWalletFromLocalStorage()
-        
+        AppWalletDataManager.shared.setup()
+
         Themes.restoreLastTheme()
         ThemeManager.animationDuration = 1.0
         
         // Generate mock data
         AssetDataManager.shared.generateMockData()
-        // AppWalletDataManager.shared.generateMockData()
         
         // Get data from Relay
         OrderDataManager.shared.getOrdersFromServer()
