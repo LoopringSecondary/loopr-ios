@@ -93,7 +93,7 @@ class AppWalletDataManager {
     }
 
     // TODO: Use error handling instead of returning a Bool value
-    func addWallet(walletName: String?, mnemonic: [String]) -> AppWallet? {
+    func addWallet(walletName: String, mnemonic: [String]) -> AppWallet? {
         guard mnemonic.count == 24 else {
             return nil
         }
@@ -110,10 +110,10 @@ class AppWalletDataManager {
         print(privateKey.hexString)
         
         var walletNameLocal: String
-        if walletName == nil {
+        if walletName.trimmingCharacters(in: NSCharacterSet.whitespaces).count == 0 {
             walletNameLocal = "Wallet \(appWallets.count+1)"
         } else {
-            walletNameLocal = walletName!
+            walletNameLocal = walletName
         }
 
         let newAppWallet = AppWallet(address: address.description, privateKey: privateKey.hexString, name: walletNameLocal, active: true)
