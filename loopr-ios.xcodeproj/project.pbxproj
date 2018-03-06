@@ -92,7 +92,7 @@
 		AC72AEDC204C9F6300E9D3B0 /* VerifyMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEDA204C9F6300E9D3B0 /* VerifyMnemonicViewController.swift */; };
 		AC72AEDD204C9F6300E9D3B0 /* VerifyMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEDB204C9F6300E9D3B0 /* VerifyMnemonicViewController.xib */; };
 		AC72AEDF204CA50600E9D3B0 /* GenerateWalletDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEDE204CA50600E9D3B0 /* GenerateWalletDataManager.swift */; };
-		AC72AEE2204D084500E9D3B0 /* WalletDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEE1204D084500E9D3B0 /* WalletDataManagerTests.swift */; };
+		AC72AEE2204D084500E9D3B0 /* AppWalletDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEE1204D084500E9D3B0 /* AppWalletDataManagerTests.swift */; };
 		AC76E4702047F1D3008BA229 /* CircleChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76E46F2047F1D3008BA229 /* CircleChart.swift */; };
 		AC76E47320493CAE008BA229 /* SettingLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76E47120493CAE008BA229 /* SettingLanguageViewController.swift */; };
 		AC76E47420493CAE008BA229 /* SettingLanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */; };
@@ -308,7 +308,7 @@
 		AC72AEDA204C9F6300E9D3B0 /* VerifyMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyMnemonicViewController.swift; sourceTree = "<group>"; };
 		AC72AEDB204C9F6300E9D3B0 /* VerifyMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerifyMnemonicViewController.xib; sourceTree = "<group>"; };
 		AC72AEDE204CA50600E9D3B0 /* GenerateWalletDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateWalletDataManager.swift; sourceTree = "<group>"; };
-		AC72AEE1204D084500E9D3B0 /* WalletDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDataManagerTests.swift; sourceTree = "<group>"; };
+		AC72AEE1204D084500E9D3B0 /* AppWalletDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWalletDataManagerTests.swift; sourceTree = "<group>"; };
 		AC76E46F2047F1D3008BA229 /* CircleChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleChart.swift; sourceTree = "<group>"; };
 		AC76E47120493CAE008BA229 /* SettingLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageViewController.swift; sourceTree = "<group>"; };
 		AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLanguageViewController.xib; sourceTree = "<group>"; };
@@ -632,7 +632,7 @@
 		AC72AEE0204D082800E9D3B0 /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
-				AC72AEE1204D084500E9D3B0 /* WalletDataManagerTests.swift */,
+				AC72AEE1204D084500E9D3B0 /* AppWalletDataManagerTests.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -856,6 +856,7 @@
 		ACB9115E20242E2400F14644 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AC4142052038B66F0089861D /* AppWallet.swift */,
 				ACB9115F20242E3F00F14644 /* Asset.swift */,
 				ACB911632024504E00F14644 /* Order.swift */,
 				ACB911A220296B9900F14644 /* OriginalOrder.swift */,
@@ -863,7 +864,6 @@
 				ACB911652024505D00F14644 /* Trade.swift */,
 				ACB9117720256B0300F14644 /* Market.swift */,
 				ACB9117B20256BBA00F14644 /* TradingPair.swift */,
-				AC4142052038B66F0089861D /* AppWallet.swift */,
 				AC31B939204A4F9000B16155 /* Language.swift */,
 			);
 			path = Models;
@@ -1505,7 +1505,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC72AEE2204D084500E9D3B0 /* WalletDataManagerTests.swift in Sources */,
+				AC72AEE2204D084500E9D3B0 /* AppWalletDataManagerTests.swift in Sources */,
 				ACF06A06204C736A00C3FF86 /* CreateMnemonicTests.swift in Sources */,
 				AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */,
 				AC798E5A2022B93B0071D477 /* loopring_JSON_RPCTests.swift in Sources */,

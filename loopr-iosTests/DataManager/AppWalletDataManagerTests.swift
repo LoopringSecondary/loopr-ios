@@ -9,7 +9,7 @@
 import XCTest
 @testable import loopr_ios
 
-class WalletDataManagerTests: XCTestCase {
+class AppWalletDataManagerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

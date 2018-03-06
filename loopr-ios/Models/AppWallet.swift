@@ -8,8 +8,8 @@
 
 import Foundation
 
-class AppWallet: Equatable {
-    
+class AppWallet: NSObject, NSCoding {
+
     final let address: String
     final let privateKey: String
     
@@ -27,4 +27,22 @@ class AppWallet: Equatable {
         return lhs.address == rhs.address
     }
 
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(address, forKey: "address")
+        aCoder.encode(privateKey, forKey: "privateKey")
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(active, forKey: "active")
+    }
+
+    required convenience init?(coder aDecoder: NSCoder) {
+        let address = aDecoder.decodeObject(forKey: "address") as? String
+        let privateKey = aDecoder.decodeObject(forKey: "privateKey") as? String
+        let name = aDecoder.decodeObject(forKey: "name") as? String
+        let active = aDecoder.decodeBool(forKey: "active")
+        if let address = address, let privateKey = privateKey, let name = name {
+            self.init(address: address, privateKey: privateKey, name: name, active: active)
+        } else {
+            return nil
+        }
+    }
 }
