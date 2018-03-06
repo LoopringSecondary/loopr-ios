@@ -49,7 +49,11 @@ class SetupViewController: UIViewController {
         } else {
             SetupDataManager.shared.hasPresented = true
             let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+            
+            // TODO: improve the animation between two view controllers.
+            UIView.transition(with: appDelegate!.window!, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+                appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+            }, completion: nil)
         }
     }
 
