@@ -14,9 +14,28 @@ class AppWalletDataManager {
     
     private var currentAppWallet: AppWallet?
     private var appWallets: [AppWallet]
+
+    private var confirmedToLogout: Bool = false
     
     private init() {
         appWallets = []
+    }
+
+    // MARK: Logout
+    func setConfirmedToLogout() {
+        confirmedToLogout = true
+    }
+    
+    func logout() -> Bool {
+        if confirmedToLogout {
+            appWallets = []
+            let defaults = UserDefaults.standard
+            let encodedData = NSKeyedArchiver.archivedData(withRootObject: appWallets)
+            defaults.set(encodedData, forKey: UserDefaultsKeys.appWallets.rawValue)
+            confirmedToLogout = false
+            return true
+        }
+        return false
     }
 
     func setup() {
