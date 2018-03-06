@@ -10,8 +10,6 @@ import UIKit
 
 class MainTabController: UITabBarController {
 
-    var setupViewController: SetupNavigationController? = SetupNavigationController(nibName: nil, bundle: nil)
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,22 +24,12 @@ class MainTabController: UITabBarController {
         super.viewDidLayoutSubviews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        if !SetupDataManager.shared.hasPresented && setupViewController != nil {
-            SetupDataManager.shared.hasPresented = true
-
-            if SetupDataManager.shared.hasBeenSetup() {
-                
-            } else {
-                self.present(setupViewController!, animated: false) {
-                    
-                }
-            }
-        } else if setupViewController != nil {
-            setupViewController = nil
-        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -85,8 +85,15 @@ class MnemonicViewController: UIViewController, UITextViewDelegate {
     @IBAction func pressUnlockButton(_ sender: Any) {
         print("pressUnlockButton")
         AppWalletDataManager.shared.unlockWallet(mnemonic: mnemonicWordTextView.text)
-        self.dismiss(animated: true) {
-            
+        
+        if SetupDataManager.shared.hasPresented {
+            self.dismiss(animated: true, completion: {
+                
+            })
+        } else {
+            SetupDataManager.shared.hasPresented = true
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
         }
     }
 

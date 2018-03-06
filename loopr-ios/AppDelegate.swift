@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AppWalletDataManager.shared.setup()
 
+        if AppWalletDataManager.shared.getWallets().isEmpty {
+            self.window?.rootViewController = SetupNavigationController(nibName: nil, bundle: nil)
+        }
+        
         Themes.restoreLastTheme()
         ThemeManager.animationDuration = 1.0
         

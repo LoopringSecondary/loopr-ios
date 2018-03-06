@@ -86,8 +86,15 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
     @IBAction func pressedUnlockButton(_ sender: Any) {
         print("pressedUnlockButton")
         AppWalletDataManager.shared.unlockWallet(privateKey: privateKeyTextView.text)
-        self.dismiss(animated: true) {
-            
+        
+        if SetupDataManager.shared.hasPresented {
+            self.dismiss(animated: true, completion: {
+                
+            })
+        } else {
+            SetupDataManager.shared.hasPresented = true
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
         }
     }
     
