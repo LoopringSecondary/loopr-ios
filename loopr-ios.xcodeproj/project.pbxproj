@@ -77,6 +77,90 @@
 		AC41420C2038BFB70089861D /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41420B2038BFB70089861D /* UserDefaultsKeys.swift */; };
 		AC4C144B204C825900D6B1E2 /* GenerateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4C1449204C825900D6B1E2 /* GenerateWalletViewController.swift */; };
 		AC4C144C204C825900D6B1E2 /* GenerateWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4C144A204C825900D6B1E2 /* GenerateWalletViewController.xib */; };
+		AC54FD3D204FC69D007E1DEB /* DIN-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2A204FC652007E1DEB /* DIN-Bold.otf */; };
+		AC54FD3E204FC69D007E1DEB /* DIN-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2A204FC652007E1DEB /* DIN-Bold.otf */; };
+		AC54FD3F204FC69E007E1DEB /* DIN-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2A204FC652007E1DEB /* DIN-Bold.otf */; };
+		AC54FD40204FC6A1007E1DEB /* DINNextLTPro-UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD29204FC652007E1DEB /* DINNextLTPro-UltraLight.ttf */; };
+		AC54FD41204FC6A1007E1DEB /* DINNextLTPro-UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD29204FC652007E1DEB /* DINNextLTPro-UltraLight.ttf */; };
+		AC54FD42204FC6A2007E1DEB /* DINNextLTPro-UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD29204FC652007E1DEB /* DINNextLTPro-UltraLight.ttf */; };
+		AC54FD43204FC6A4007E1DEB /* DINNextCYR-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2B204FC653007E1DEB /* DINNextCYR-UltraLight.otf */; };
+		AC54FD44204FC6A5007E1DEB /* DINNextCYR-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2B204FC653007E1DEB /* DINNextCYR-UltraLight.otf */; };
+		AC54FD45204FC6A5007E1DEB /* DINNextCYR-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2B204FC653007E1DEB /* DINNextCYR-UltraLight.otf */; };
+		AC54FD46204FC6A7007E1DEB /* DINNextLTPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2F204FC654007E1DEB /* DINNextLTPro-Light.otf */; };
+		AC54FD47204FC6A8007E1DEB /* DINNextLTPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2F204FC654007E1DEB /* DINNextLTPro-Light.otf */; };
+		AC54FD48204FC6A8007E1DEB /* DINNextLTPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2F204FC654007E1DEB /* DINNextLTPro-Light.otf */; };
+		AC54FD49204FC6AB007E1DEB /* DINNextLTPro-LightCondensed.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2E204FC654007E1DEB /* DINNextLTPro-LightCondensed.otf */; };
+		AC54FD4A204FC6AB007E1DEB /* DINNextLTPro-LightCondensed.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2E204FC654007E1DEB /* DINNextLTPro-LightCondensed.otf */; };
+		AC54FD4B204FC6AC007E1DEB /* DINNextLTPro-LightCondensed.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2E204FC654007E1DEB /* DINNextLTPro-LightCondensed.otf */; };
+		AC54FD4C204FC6AF007E1DEB /* DINNextLTPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2C204FC653007E1DEB /* DINNextLTPro-Medium.otf */; };
+		AC54FD4D204FC6B0007E1DEB /* DINNextLTPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2C204FC653007E1DEB /* DINNextLTPro-Medium.otf */; };
+		AC54FD4E204FC6B0007E1DEB /* DINNextLTPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2C204FC653007E1DEB /* DINNextLTPro-Medium.otf */; };
+		AC54FD4F204FC6B5007E1DEB /* DINNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2D204FC653007E1DEB /* DINNextLTPro-Regular.otf */; };
+		AC54FD50204FC6B5007E1DEB /* DINNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2D204FC653007E1DEB /* DINNextLTPro-Regular.otf */; };
+		AC54FD51204FC6B6007E1DEB /* DINNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2D204FC653007E1DEB /* DINNextLTPro-Regular.otf */; };
+		AC54FD52204FC6B8007E1DEB /* DINNextW1G-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD28204FC652007E1DEB /* DINNextW1G-Light.otf */; };
+		AC54FD53204FC6B9007E1DEB /* DINNextW1G-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD28204FC652007E1DEB /* DINNextW1G-Light.otf */; };
+		AC54FD54204FC6B9007E1DEB /* DINNextW1G-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD28204FC652007E1DEB /* DINNextW1G-Light.otf */; };
+		AC54FD55204FC6BD007E1DEB /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD37204FC686007E1DEB /* Lato-Black.ttf */; };
+		AC54FD56204FC6BE007E1DEB /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD37204FC686007E1DEB /* Lato-Black.ttf */; };
+		AC54FD57204FC6BF007E1DEB /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD37204FC686007E1DEB /* Lato-Black.ttf */; };
+		AC54FD58204FC6C1007E1DEB /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD39204FC687007E1DEB /* Lato-BlackItalic.ttf */; };
+		AC54FD59204FC6C1007E1DEB /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD39204FC687007E1DEB /* Lato-BlackItalic.ttf */; };
+		AC54FD5A204FC6C2007E1DEB /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD39204FC687007E1DEB /* Lato-BlackItalic.ttf */; };
+		AC54FD5B204FC6C4007E1DEB /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD3A204FC687007E1DEB /* Lato-Bold.ttf */; };
+		AC54FD5C204FC6C4007E1DEB /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD3A204FC687007E1DEB /* Lato-Bold.ttf */; };
+		AC54FD5D204FC6C5007E1DEB /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD3A204FC687007E1DEB /* Lato-Bold.ttf */; };
+		AC54FD5E204FC6C7007E1DEB /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD38204FC687007E1DEB /* Lato-BoldItalic.ttf */; };
+		AC54FD5F204FC6C8007E1DEB /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD38204FC687007E1DEB /* Lato-BoldItalic.ttf */; };
+		AC54FD60204FC6C8007E1DEB /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD38204FC687007E1DEB /* Lato-BoldItalic.ttf */; };
+		AC54FD61204FC6CA007E1DEB /* Lato-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD34204FC686007E1DEB /* Lato-Hairline.ttf */; };
+		AC54FD62204FC6CB007E1DEB /* Lato-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD34204FC686007E1DEB /* Lato-Hairline.ttf */; };
+		AC54FD63204FC6CB007E1DEB /* Lato-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD34204FC686007E1DEB /* Lato-Hairline.ttf */; };
+		AC54FD64204FC6CE007E1DEB /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD3B204FC687007E1DEB /* Lato-HairlineItalic.ttf */; };
+		AC54FD65204FC6CE007E1DEB /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD3B204FC687007E1DEB /* Lato-HairlineItalic.ttf */; };
+		AC54FD66204FC6CF007E1DEB /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD3B204FC687007E1DEB /* Lato-HairlineItalic.ttf */; };
+		AC54FD67204FC6D1007E1DEB /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD35204FC686007E1DEB /* Lato-Italic.ttf */; };
+		AC54FD68204FC6D2007E1DEB /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD35204FC686007E1DEB /* Lato-Italic.ttf */; };
+		AC54FD69204FC6D2007E1DEB /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD35204FC686007E1DEB /* Lato-Italic.ttf */; };
+		AC54FD6A204FC6D5007E1DEB /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD3C204FC688007E1DEB /* Lato-Light.ttf */; };
+		AC54FD6B204FC6D5007E1DEB /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD3C204FC688007E1DEB /* Lato-Light.ttf */; };
+		AC54FD6C204FC6D6007E1DEB /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD3C204FC688007E1DEB /* Lato-Light.ttf */; };
+		AC54FD6D204FC6D9007E1DEB /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD33204FC685007E1DEB /* Lato-LightItalic.ttf */; };
+		AC54FD6E204FC6D9007E1DEB /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD33204FC685007E1DEB /* Lato-LightItalic.ttf */; };
+		AC54FD6F204FC6DA007E1DEB /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD33204FC685007E1DEB /* Lato-LightItalic.ttf */; };
+		AC54FD70204FC6DC007E1DEB /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD36204FC686007E1DEB /* Lato-Regular.ttf */; };
+		AC54FD71204FC6DC007E1DEB /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD36204FC686007E1DEB /* Lato-Regular.ttf */; };
+		AC54FD72204FC6DD007E1DEB /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD36204FC686007E1DEB /* Lato-Regular.ttf */; };
+		AC54FD73204FC6E1007E1DEB /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD21204FC3F9007E1DEB /* OpenSans-Bold.ttf */; };
+		AC54FD74204FC6E2007E1DEB /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD21204FC3F9007E1DEB /* OpenSans-Bold.ttf */; };
+		AC54FD75204FC6E2007E1DEB /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD21204FC3F9007E1DEB /* OpenSans-Bold.ttf */; };
+		AC54FD76204FC6E5007E1DEB /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD24204FC3FA007E1DEB /* OpenSans-BoldItalic.ttf */; };
+		AC54FD77204FC6E5007E1DEB /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD24204FC3FA007E1DEB /* OpenSans-BoldItalic.ttf */; };
+		AC54FD78204FC6E6007E1DEB /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD24204FC3FA007E1DEB /* OpenSans-BoldItalic.ttf */; };
+		AC54FD79204FC6E8007E1DEB /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD1C204FC3F8007E1DEB /* OpenSans-ExtraBold.ttf */; };
+		AC54FD7A204FC6E8007E1DEB /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD1C204FC3F8007E1DEB /* OpenSans-ExtraBold.ttf */; };
+		AC54FD7B204FC6E9007E1DEB /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD1C204FC3F8007E1DEB /* OpenSans-ExtraBold.ttf */; };
+		AC54FD7C204FC6EB007E1DEB /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD1E204FC3F9007E1DEB /* OpenSans-ExtraBoldItalic.ttf */; };
+		AC54FD7D204FC6EC007E1DEB /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD1E204FC3F9007E1DEB /* OpenSans-ExtraBoldItalic.ttf */; };
+		AC54FD7E204FC6EC007E1DEB /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD1E204FC3F9007E1DEB /* OpenSans-ExtraBoldItalic.ttf */; };
+		AC54FD7F204FC6EE007E1DEB /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD20204FC3F9007E1DEB /* OpenSans-Italic.ttf */; };
+		AC54FD80204FC6EF007E1DEB /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD20204FC3F9007E1DEB /* OpenSans-Italic.ttf */; };
+		AC54FD81204FC6F0007E1DEB /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD20204FC3F9007E1DEB /* OpenSans-Italic.ttf */; };
+		AC54FD82204FC6F2007E1DEB /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD1D204FC3F8007E1DEB /* OpenSans-Light.ttf */; };
+		AC54FD83204FC6F3007E1DEB /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD1D204FC3F8007E1DEB /* OpenSans-Light.ttf */; };
+		AC54FD84204FC6F3007E1DEB /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD1D204FC3F8007E1DEB /* OpenSans-Light.ttf */; };
+		AC54FD85204FC6F5007E1DEB /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD22204FC3F9007E1DEB /* OpenSans-LightItalic.ttf */; };
+		AC54FD86204FC6F6007E1DEB /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD22204FC3F9007E1DEB /* OpenSans-LightItalic.ttf */; };
+		AC54FD87204FC6F6007E1DEB /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD22204FC3F9007E1DEB /* OpenSans-LightItalic.ttf */; };
+		AC54FD88204FC6F8007E1DEB /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD1F204FC3F9007E1DEB /* OpenSans-Regular.ttf */; };
+		AC54FD89204FC6F9007E1DEB /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD1F204FC3F9007E1DEB /* OpenSans-Regular.ttf */; };
+		AC54FD8A204FC6FA007E1DEB /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD1F204FC3F9007E1DEB /* OpenSans-Regular.ttf */; };
+		AC54FD8B204FC6FC007E1DEB /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD23204FC3FA007E1DEB /* OpenSans-SemiBold.ttf */; };
+		AC54FD8C204FC6FC007E1DEB /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD23204FC3FA007E1DEB /* OpenSans-SemiBold.ttf */; };
+		AC54FD8D204FC6FD007E1DEB /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD23204FC3FA007E1DEB /* OpenSans-SemiBold.ttf */; };
+		AC54FD8E204FC6FF007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD25204FC3FA007E1DEB /* OpenSans-SemiBoldItalic.ttf */; };
+		AC54FD8F204FC700007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD25204FC3FA007E1DEB /* OpenSans-SemiBoldItalic.ttf */; };
+		AC54FD90204FC701007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD25204FC3FA007E1DEB /* OpenSans-SemiBoldItalic.ttf */; };
 		AC5E0DD0203A7C5800AF03C7 /* SelectWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0DCE203A7C5800AF03C7 /* SelectWalletTableViewCell.swift */; };
 		AC5E0DD1203A7C5800AF03C7 /* SelectWalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E0DCF203A7C5800AF03C7 /* SelectWalletTableViewCell.xib */; };
 		AC5E0DD6203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0DD4203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift */; };
@@ -99,14 +183,6 @@
 		AC72AEE6204F000600E9D3B0 /* OrderTradeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEE5204F000600E9D3B0 /* OrderTradeDataManager.swift */; };
 		AC72AEE8204F020B00E9D3B0 /* OrderTradeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEE7204F020B00E9D3B0 /* OrderTradeState.swift */; };
 		AC72AEEA204F038300E9D3B0 /* OrderTradeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEE9204F038300E9D3B0 /* OrderTradeError.swift */; };
-		AC72AEF7204FB36C00E9D3B0 /* D-DIN-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEF4204FB2D300E9D3B0 /* D-DIN-Bold.otf */; };
-		AC72AEF8204FB37000E9D3B0 /* D-DIN-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEF0204FB2D200E9D3B0 /* D-DIN-Italic.otf */; };
-		AC72AEF9204FB37200E9D3B0 /* D-DIN.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEF1204FB2D300E9D3B0 /* D-DIN.otf */; };
-		AC72AEFA204FB37400E9D3B0 /* D-DINCondensed-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEF5204FB2D300E9D3B0 /* D-DINCondensed-Bold.otf */; };
-		AC72AEFB204FB37700E9D3B0 /* D-DINCondensed.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEF2204FB2D300E9D3B0 /* D-DINCondensed.otf */; };
-		AC72AEFC204FB37900E9D3B0 /* D-DINExp-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEEF204FB2D200E9D3B0 /* D-DINExp-Bold.otf */; };
-		AC72AEFD204FB37B00E9D3B0 /* D-DINExp-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEF6204FB2D400E9D3B0 /* D-DINExp-Italic.otf */; };
-		AC72AEFE204FB37D00E9D3B0 /* D-DINExp.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEF3204FB2D300E9D3B0 /* D-DINExp.otf */; };
 		AC76E4702047F1D3008BA229 /* CircleChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76E46F2047F1D3008BA229 /* CircleChart.swift */; };
 		AC76E47320493CAE008BA229 /* SettingLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76E47120493CAE008BA229 /* SettingLanguageViewController.swift */; };
 		AC76E47420493CAE008BA229 /* SettingLanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */; };
@@ -307,6 +383,34 @@
 		AC41420B2038BFB70089861D /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		AC4C1449204C825900D6B1E2 /* GenerateWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateWalletViewController.swift; sourceTree = "<group>"; };
 		AC4C144A204C825900D6B1E2 /* GenerateWalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenerateWalletViewController.xib; sourceTree = "<group>"; };
+		AC54FD1C204FC3F8007E1DEB /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		AC54FD1D204FC3F8007E1DEB /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		AC54FD1E204FC3F9007E1DEB /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		AC54FD1F204FC3F9007E1DEB /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		AC54FD20204FC3F9007E1DEB /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		AC54FD21204FC3F9007E1DEB /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		AC54FD22204FC3F9007E1DEB /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		AC54FD23204FC3FA007E1DEB /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		AC54FD24204FC3FA007E1DEB /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		AC54FD25204FC3FA007E1DEB /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		AC54FD28204FC652007E1DEB /* DINNextW1G-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINNextW1G-Light.otf"; sourceTree = "<group>"; };
+		AC54FD29204FC652007E1DEB /* DINNextLTPro-UltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINNextLTPro-UltraLight.ttf"; sourceTree = "<group>"; };
+		AC54FD2A204FC652007E1DEB /* DIN-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-Bold.otf"; sourceTree = "<group>"; };
+		AC54FD2B204FC653007E1DEB /* DINNextCYR-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINNextCYR-UltraLight.otf"; sourceTree = "<group>"; };
+		AC54FD2C204FC653007E1DEB /* DINNextLTPro-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINNextLTPro-Medium.otf"; sourceTree = "<group>"; };
+		AC54FD2D204FC653007E1DEB /* DINNextLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINNextLTPro-Regular.otf"; sourceTree = "<group>"; };
+		AC54FD2E204FC654007E1DEB /* DINNextLTPro-LightCondensed.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINNextLTPro-LightCondensed.otf"; sourceTree = "<group>"; };
+		AC54FD2F204FC654007E1DEB /* DINNextLTPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINNextLTPro-Light.otf"; sourceTree = "<group>"; };
+		AC54FD33204FC685007E1DEB /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
+		AC54FD34204FC686007E1DEB /* Lato-Hairline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Hairline.ttf"; sourceTree = "<group>"; };
+		AC54FD35204FC686007E1DEB /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
+		AC54FD36204FC686007E1DEB /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		AC54FD37204FC686007E1DEB /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		AC54FD38204FC687007E1DEB /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
+		AC54FD39204FC687007E1DEB /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
+		AC54FD3A204FC687007E1DEB /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		AC54FD3B204FC687007E1DEB /* Lato-HairlineItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HairlineItalic.ttf"; sourceTree = "<group>"; };
+		AC54FD3C204FC688007E1DEB /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		AC5E0DCE203A7C5800AF03C7 /* SelectWalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletTableViewCell.swift; sourceTree = "<group>"; };
 		AC5E0DCF203A7C5800AF03C7 /* SelectWalletTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWalletTableViewCell.xib; sourceTree = "<group>"; };
 		AC5E0DD4203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetBalanceTableViewCell.swift; sourceTree = "<group>"; };
@@ -329,14 +433,6 @@
 		AC72AEE5204F000600E9D3B0 /* OrderTradeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTradeDataManager.swift; sourceTree = "<group>"; };
 		AC72AEE7204F020B00E9D3B0 /* OrderTradeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTradeState.swift; sourceTree = "<group>"; };
 		AC72AEE9204F038300E9D3B0 /* OrderTradeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTradeError.swift; sourceTree = "<group>"; };
-		AC72AEEF204FB2D200E9D3B0 /* D-DINExp-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "D-DINExp-Bold.otf"; sourceTree = "<group>"; };
-		AC72AEF0204FB2D200E9D3B0 /* D-DIN-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "D-DIN-Italic.otf"; sourceTree = "<group>"; };
-		AC72AEF1204FB2D300E9D3B0 /* D-DIN.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "D-DIN.otf"; sourceTree = "<group>"; };
-		AC72AEF2204FB2D300E9D3B0 /* D-DINCondensed.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "D-DINCondensed.otf"; sourceTree = "<group>"; };
-		AC72AEF3204FB2D300E9D3B0 /* D-DINExp.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "D-DINExp.otf"; sourceTree = "<group>"; };
-		AC72AEF4204FB2D300E9D3B0 /* D-DIN-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "D-DIN-Bold.otf"; sourceTree = "<group>"; };
-		AC72AEF5204FB2D300E9D3B0 /* D-DINCondensed-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "D-DINCondensed-Bold.otf"; sourceTree = "<group>"; };
-		AC72AEF6204FB2D400E9D3B0 /* D-DINExp-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "D-DINExp-Italic.otf"; sourceTree = "<group>"; };
 		AC76E46F2047F1D3008BA229 /* CircleChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleChart.swift; sourceTree = "<group>"; };
 		AC76E47120493CAE008BA229 /* SettingLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageViewController.swift; sourceTree = "<group>"; };
 		AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLanguageViewController.xib; sourceTree = "<group>"; };
@@ -607,6 +703,48 @@
 			path = SwipeViewController;
 			sourceTree = "<group>";
 		};
+		AC54FD26204FC61C007E1DEB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				AC54FD27204FC645007E1DEB /* DIN */,
+				AC54FD32204FC672007E1DEB /* Lato */,
+				AC72AEEB204FB29600E9D3B0 /* Open_Sans */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		AC54FD27204FC645007E1DEB /* DIN */ = {
+			isa = PBXGroup;
+			children = (
+				AC54FD2A204FC652007E1DEB /* DIN-Bold.otf */,
+				AC54FD29204FC652007E1DEB /* DINNextLTPro-UltraLight.ttf */,
+				AC54FD2B204FC653007E1DEB /* DINNextCYR-UltraLight.otf */,
+				AC54FD2F204FC654007E1DEB /* DINNextLTPro-Light.otf */,
+				AC54FD2E204FC654007E1DEB /* DINNextLTPro-LightCondensed.otf */,
+				AC54FD2C204FC653007E1DEB /* DINNextLTPro-Medium.otf */,
+				AC54FD2D204FC653007E1DEB /* DINNextLTPro-Regular.otf */,
+				AC54FD28204FC652007E1DEB /* DINNextW1G-Light.otf */,
+			);
+			path = DIN;
+			sourceTree = "<group>";
+		};
+		AC54FD32204FC672007E1DEB /* Lato */ = {
+			isa = PBXGroup;
+			children = (
+				AC54FD37204FC686007E1DEB /* Lato-Black.ttf */,
+				AC54FD39204FC687007E1DEB /* Lato-BlackItalic.ttf */,
+				AC54FD3A204FC687007E1DEB /* Lato-Bold.ttf */,
+				AC54FD38204FC687007E1DEB /* Lato-BoldItalic.ttf */,
+				AC54FD34204FC686007E1DEB /* Lato-Hairline.ttf */,
+				AC54FD3B204FC687007E1DEB /* Lato-HairlineItalic.ttf */,
+				AC54FD35204FC686007E1DEB /* Lato-Italic.ttf */,
+				AC54FD3C204FC688007E1DEB /* Lato-Light.ttf */,
+				AC54FD33204FC685007E1DEB /* Lato-LightItalic.ttf */,
+				AC54FD36204FC686007E1DEB /* Lato-Regular.ttf */,
+			);
+			path = Lato;
+			sourceTree = "<group>";
+		};
 		AC5E0DD2203A848300AF03C7 /* GenerateWallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -665,27 +803,21 @@
 			path = DataManager;
 			sourceTree = "<group>";
 		};
-		AC72AEEB204FB29600E9D3B0 /* Fonts */ = {
+		AC72AEEB204FB29600E9D3B0 /* Open_Sans */ = {
 			isa = PBXGroup;
 			children = (
-				AC72AEEE204FB2B900E9D3B0 /* d-din */,
+				AC54FD21204FC3F9007E1DEB /* OpenSans-Bold.ttf */,
+				AC54FD24204FC3FA007E1DEB /* OpenSans-BoldItalic.ttf */,
+				AC54FD1C204FC3F8007E1DEB /* OpenSans-ExtraBold.ttf */,
+				AC54FD1E204FC3F9007E1DEB /* OpenSans-ExtraBoldItalic.ttf */,
+				AC54FD20204FC3F9007E1DEB /* OpenSans-Italic.ttf */,
+				AC54FD1D204FC3F8007E1DEB /* OpenSans-Light.ttf */,
+				AC54FD22204FC3F9007E1DEB /* OpenSans-LightItalic.ttf */,
+				AC54FD1F204FC3F9007E1DEB /* OpenSans-Regular.ttf */,
+				AC54FD23204FC3FA007E1DEB /* OpenSans-SemiBold.ttf */,
+				AC54FD25204FC3FA007E1DEB /* OpenSans-SemiBoldItalic.ttf */,
 			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
-		AC72AEEE204FB2B900E9D3B0 /* d-din */ = {
-			isa = PBXGroup;
-			children = (
-				AC72AEF4204FB2D300E9D3B0 /* D-DIN-Bold.otf */,
-				AC72AEF0204FB2D200E9D3B0 /* D-DIN-Italic.otf */,
-				AC72AEF1204FB2D300E9D3B0 /* D-DIN.otf */,
-				AC72AEF5204FB2D300E9D3B0 /* D-DINCondensed-Bold.otf */,
-				AC72AEF2204FB2D300E9D3B0 /* D-DINCondensed.otf */,
-				AC72AEEF204FB2D200E9D3B0 /* D-DINExp-Bold.otf */,
-				AC72AEF6204FB2D400E9D3B0 /* D-DINExp-Italic.otf */,
-				AC72AEF3204FB2D300E9D3B0 /* D-DINExp.otf */,
-			);
-			path = "d-din";
+			path = Open_Sans;
 			sourceTree = "<group>";
 		};
 		AC76E46E2047F1AE008BA229 /* CircleChart */ = {
@@ -751,7 +883,7 @@
 				AC9280DF202EC5130009B574 /* Trade */,
 				ACB9117D2026381A00F14644 /* Setting */,
 				AC798E4B2022B93A0071D477 /* Assets.xcassets */,
-				AC72AEEB204FB29600E9D3B0 /* Fonts */,
+				AC54FD26204FC61C007E1DEB /* Fonts */,
 				ACB5DD83202ACBF800140A09 /* AfterEffectsAnimations */,
 				AC798E4D2022B93A0071D477 /* LaunchScreen.storyboard */,
 				AC798E502022B93A0071D477 /* Info.plist */,
@@ -1172,59 +1304,79 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC798E4F2022B93A0071D477 /* LaunchScreen.storyboard in Resources */,
-				AC72AEFA204FB37400E9D3B0 /* D-DINCondensed-Bold.otf in Resources */,
 				AC5E0DDF203B447700AF03C7 /* WalletBalanceTableViewCell.xib in Resources */,
-				AC72AEFC204FB37900E9D3B0 /* D-DINExp-Bold.otf in Resources */,
-				AC72AEF7204FB36C00E9D3B0 /* D-DIN-Bold.otf in Resources */,
+				AC54FD64204FC6CE007E1DEB /* Lato-HairlineItalic.ttf in Resources */,
 				AC4141F0203524280089861D /* MarketSwipeViewController.xib in Resources */,
 				C8BF95B12027AC9400343B9A /* SetupViewController.xib in Resources */,
 				ACE5BFA720466EFD005D75DD /* Localizable.strings in Resources */,
-				AC72AEFD204FB37B00E9D3B0 /* D-DINExp-Italic.otf in Resources */,
 				AC9280ED2030D34B0009B574 /* TradePlaceOrderViewController.xib in Resources */,
-				AC72AEFE204FB37D00E9D3B0 /* D-DINExp.otf in Resources */,
 				ACE6F72820426BAC0039273D /* SettingThemeModeTableViewCell.xib in Resources */,
 				AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */,
 				ACB911852026388700F14644 /* SettingViewController.xib in Resources */,
 				ACE6F7192041FDAD0039273D /* AssetTransactionDetailViewController.xib in Resources */,
+				AC54FD49204FC6AB007E1DEB /* DINNextLTPro-LightCondensed.otf in Resources */,
 				ACB5DD7D202A203900140A09 /* MarketLineChartViewController.xib in Resources */,
 				AC37566E2038D37400AADC60 /* UnlockWalletSwipeViewController.xib in Resources */,
 				AC37567D2038D80300AADC60 /* PrivateKeyViewController.xib in Resources */,
+				AC54FD79204FC6E8007E1DEB /* OpenSans-ExtraBold.ttf in Resources */,
 				ACB911562024260E00F14644 /* WalletViewController.xib in Resources */,
+				AC54FD85204FC6F5007E1DEB /* OpenSans-LightItalic.ttf in Resources */,
 				ACB5DD80202AC26000140A09 /* button1.json in Resources */,
+				AC54FD58204FC6C1007E1DEB /* Lato-BlackItalic.ttf in Resources */,
+				AC54FD8B204FC6FC007E1DEB /* OpenSans-SemiBold.ttf in Resources */,
 				AC3756742038D64B00AADC60 /* MnemonicViewController.xib in Resources */,
-				AC72AEF9204FB37200E9D3B0 /* D-DIN.otf in Resources */,
+				AC54FD8E204FC6FF007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				ACBDB1C62032D050003463A4 /* OpenOrderTableViewCell.xib in Resources */,
 				ACE6F72020421D950039273D /* NewVersionTradeViewController.xib in Resources */,
 				ACB9118920265DEA00F14644 /* MarketDetailViewController.xib in Resources */,
 				ACB746E62043C5F5006C2BF5 /* QRCodeViewController.xib in Resources */,
+				AC54FD73204FC6E1007E1DEB /* OpenSans-Bold.ttf in Resources */,
+				AC54FD6A204FC6D5007E1DEB /* Lato-Light.ttf in Resources */,
 				AC5E0DD1203A7C5800AF03C7 /* SelectWalletTableViewCell.xib in Resources */,
 				ACB9115B20242B9D00F14644 /* AssetTableViewCell.xib in Resources */,
 				ACB9118D20266A9C00F14644 /* AssetDetailViewController.xib in Resources */,
+				AC54FD70204FC6DC007E1DEB /* Lato-Regular.ttf in Resources */,
 				AC01A2452022D9BE00FE8317 /* PortfolioViewController.xib in Resources */,
+				AC54FD61204FC6CA007E1DEB /* Lato-Hairline.ttf in Resources */,
 				AC4C144C204C825900D6B1E2 /* GenerateWalletViewController.xib in Resources */,
 				AC72AED9204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib in Resources */,
 				AC375685203A641200AADC60 /* SelectWalletViewController.xib in Resources */,
+				AC54FD7C204FC6EB007E1DEB /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				AC54FD55204FC6BD007E1DEB /* Lato-Black.ttf in Resources */,
 				AC76E47420493CAE008BA229 /* SettingLanguageViewController.xib in Resources */,
-				AC72AEFB204FB37700E9D3B0 /* D-DINCondensed.otf in Resources */,
+				AC54FD76204FC6E5007E1DEB /* OpenSans-BoldItalic.ttf in Resources */,
+				AC54FD6D204FC6D9007E1DEB /* Lato-LightItalic.ttf in Resources */,
 				AC798E4C2022B93A0071D477 /* Assets.xcassets in Resources */,
 				AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */,
+				AC54FD5E204FC6C7007E1DEB /* Lato-BoldItalic.ttf in Resources */,
 				AC31B93620493FB900B16155 /* SettingLanguageTableViewCell.xib in Resources */,
+				AC54FD4F204FC6B5007E1DEB /* DINNextLTPro-Regular.otf in Resources */,
 				AC3756792038D7E200AADC60 /* KeystoreViewController.xib in Resources */,
+				AC54FD3D204FC69D007E1DEB /* DIN-Bold.otf in Resources */,
+				AC54FD40204FC6A1007E1DEB /* DINNextLTPro-UltraLight.ttf in Resources */,
+				AC54FD4C204FC6AF007E1DEB /* DINNextLTPro-Medium.otf in Resources */,
 				AC9280E5202EC5810009B574 /* ArchiveTradeViewController.xib in Resources */,
 				AC5E0DD7203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib in Resources */,
+				AC54FD67204FC6D1007E1DEB /* Lato-Italic.ttf in Resources */,
+				AC54FD52204FC6B8007E1DEB /* DINNextW1G-Light.otf in Resources */,
 				ACB91172202557B100F14644 /* MarketViewController.xib in Resources */,
 				ACB9117620255A6600F14644 /* MarketTableViewCell.xib in Resources */,
 				949C49452046976E0074466D /* TradePlaceReplyViewController.xib in Resources */,
-				AC72AEF8204FB37000E9D3B0 /* D-DIN-Italic.otf in Resources */,
 				ACB9119120266EC200F14644 /* AddAssetViewController.xib in Resources */,
+				AC54FD7F204FC6EE007E1DEB /* OpenSans-Italic.ttf in Resources */,
+				AC54FD82204FC6F2007E1DEB /* OpenSans-Light.ttf in Resources */,
 				ACB5DD8B202BF23100140A09 /* BuyViewController.xib in Resources */,
+				AC54FD46204FC6A7007E1DEB /* DINNextLTPro-Light.otf in Resources */,
 				949C49492046A4A80074466D /* SampleViewController.xib in Resources */,
+				AC54FD5B204FC6C4007E1DEB /* Lato-Bold.ttf in Resources */,
 				AC72AEDD204C9F6300E9D3B0 /* VerifyMnemonicViewController.xib in Resources */,
 				AC5E0DDB203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib in Resources */,
 				ACB5DD8F202C048E00140A09 /* SellViewController.xib in Resources */,
 				C8BF95A72027A10E00343B9A /* ArchiveGenerateWalletViewController.xib in Resources */,
 				ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */,
 				AC3756812039198300AADC60 /* GenerateMnemonicViewController.xib in Resources */,
+				AC54FD88204FC6F8007E1DEB /* OpenSans-Regular.ttf in Resources */,
+				AC54FD43204FC6A4007E1DEB /* DINNextCYR-UltraLight.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1232,8 +1384,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC54FD83204FC6F3007E1DEB /* OpenSans-Light.ttf in Resources */,
+				AC54FD4A204FC6AB007E1DEB /* DINNextLTPro-LightCondensed.otf in Resources */,
+				AC54FD69204FC6D2007E1DEB /* Lato-Italic.ttf in Resources */,
+				AC54FD8C204FC6FC007E1DEB /* OpenSans-SemiBold.ttf in Resources */,
+				AC54FD50204FC6B5007E1DEB /* DINNextLTPro-Regular.otf in Resources */,
+				AC54FD7A204FC6E8007E1DEB /* OpenSans-ExtraBold.ttf in Resources */,
+				AC54FD6B204FC6D5007E1DEB /* Lato-Light.ttf in Resources */,
+				AC54FD65204FC6CE007E1DEB /* Lato-HairlineItalic.ttf in Resources */,
+				AC54FD3E204FC69D007E1DEB /* DIN-Bold.otf in Resources */,
+				AC54FD7D204FC6EC007E1DEB /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				AC54FD80204FC6EF007E1DEB /* OpenSans-Italic.ttf in Resources */,
+				AC54FD89204FC6F9007E1DEB /* OpenSans-Regular.ttf in Resources */,
+				AC54FD41204FC6A1007E1DEB /* DINNextLTPro-UltraLight.ttf in Resources */,
+				AC54FD71204FC6DC007E1DEB /* Lato-Regular.ttf in Resources */,
+				AC54FD74204FC6E2007E1DEB /* OpenSans-Bold.ttf in Resources */,
+				AC54FD44204FC6A5007E1DEB /* DINNextCYR-UltraLight.otf in Resources */,
+				AC54FD5F204FC6C8007E1DEB /* Lato-BoldItalic.ttf in Resources */,
+				AC54FD5C204FC6C4007E1DEB /* Lato-Bold.ttf in Resources */,
 				AC1E4BC2204B52FD00C6B1FA /* wallet.json in Resources */,
+				AC54FD56204FC6BE007E1DEB /* Lato-Black.ttf in Resources */,
+				AC54FD77204FC6E5007E1DEB /* OpenSans-BoldItalic.ttf in Resources */,
 				AC1E4BC4204B533000C6B1FA /* key.json in Resources */,
+				AC54FD59204FC6C1007E1DEB /* Lato-BlackItalic.ttf in Resources */,
+				AC54FD62204FC6CB007E1DEB /* Lato-Hairline.ttf in Resources */,
+				AC54FD8F204FC700007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */,
+				AC54FD6E204FC6D9007E1DEB /* Lato-LightItalic.ttf in Resources */,
+				AC54FD47204FC6A8007E1DEB /* DINNextLTPro-Light.otf in Resources */,
+				AC54FD4D204FC6B0007E1DEB /* DINNextLTPro-Medium.otf in Resources */,
+				AC54FD53204FC6B9007E1DEB /* DINNextW1G-Light.otf in Resources */,
+				AC54FD86204FC6F6007E1DEB /* OpenSans-LightItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1241,6 +1421,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC54FD63204FC6CB007E1DEB /* Lato-Hairline.ttf in Resources */,
+				AC54FD5D204FC6C5007E1DEB /* Lato-Bold.ttf in Resources */,
+				AC54FD7B204FC6E9007E1DEB /* OpenSans-ExtraBold.ttf in Resources */,
+				AC54FD3F204FC69E007E1DEB /* DIN-Bold.otf in Resources */,
+				AC54FD57204FC6BF007E1DEB /* Lato-Black.ttf in Resources */,
+				AC54FD66204FC6CF007E1DEB /* Lato-HairlineItalic.ttf in Resources */,
+				AC54FD75204FC6E2007E1DEB /* OpenSans-Bold.ttf in Resources */,
+				AC54FD60204FC6C8007E1DEB /* Lato-BoldItalic.ttf in Resources */,
+				AC54FD5A204FC6C2007E1DEB /* Lato-BlackItalic.ttf in Resources */,
+				AC54FD7E204FC6EC007E1DEB /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				AC54FD4E204FC6B0007E1DEB /* DINNextLTPro-Medium.otf in Resources */,
+				AC54FD81204FC6F0007E1DEB /* OpenSans-Italic.ttf in Resources */,
+				AC54FD90204FC701007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */,
+				AC54FD42204FC6A2007E1DEB /* DINNextLTPro-UltraLight.ttf in Resources */,
+				AC54FD45204FC6A5007E1DEB /* DINNextCYR-UltraLight.otf in Resources */,
+				AC54FD6F204FC6DA007E1DEB /* Lato-LightItalic.ttf in Resources */,
+				AC54FD68204FC6D2007E1DEB /* Lato-Italic.ttf in Resources */,
+				AC54FD48204FC6A8007E1DEB /* DINNextLTPro-Light.otf in Resources */,
+				AC54FD78204FC6E6007E1DEB /* OpenSans-BoldItalic.ttf in Resources */,
+				AC54FD84204FC6F3007E1DEB /* OpenSans-Light.ttf in Resources */,
+				AC54FD8D204FC6FD007E1DEB /* OpenSans-SemiBold.ttf in Resources */,
+				AC54FD87204FC6F6007E1DEB /* OpenSans-LightItalic.ttf in Resources */,
+				AC54FD72204FC6DD007E1DEB /* Lato-Regular.ttf in Resources */,
+				AC54FD54204FC6B9007E1DEB /* DINNextW1G-Light.otf in Resources */,
+				AC54FD51204FC6B6007E1DEB /* DINNextLTPro-Regular.otf in Resources */,
+				AC54FD4B204FC6AC007E1DEB /* DINNextLTPro-LightCondensed.otf in Resources */,
+				AC54FD8A204FC6FA007E1DEB /* OpenSans-Regular.ttf in Resources */,
+				AC54FD6C204FC6D6007E1DEB /* Lato-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

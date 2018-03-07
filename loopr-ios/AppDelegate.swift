@@ -25,14 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Set font
-        UILabel.appearance().font = UIFont(name: "D-DIN", size: 17.0)
-        UIButton.appearance().titleLabel?.font = UIFont(name: "D-DIN", size: 17.0)
-        
-        let attributes = [NSAttributedStringKey.font: UIFont(name: "D-DIN", size: 12)!]
-        UINavigationBar.appearance().titleTextAttributes = attributes
+        UILabel.appearance().font = UIFont(name: "DINNextLTPro-Regular", size: 17.0)
+        UIButton.appearance().titleLabel?.font = UIFont(name: "DINNextLTPro-Regular", size: 17.0)
 
-        UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .selected)
+        let tabBarItemAttributes = [NSAttributedStringKey.font: UIFont(name: "DINNextLTPro-Regular", size: 10)!]
+        UITabBarItem.appearance().setTitleTextAttributes(tabBarItemAttributes, for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes(tabBarItemAttributes, for: .selected)
 
         AppWalletDataManager.shared.setup()
 

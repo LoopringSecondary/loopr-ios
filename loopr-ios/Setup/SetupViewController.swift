@@ -15,11 +15,16 @@ class SetupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        unlockWalletButton.layer.cornerRadius = 10
+
+        unlockWalletButton.backgroundColor = UIColor.clear
+        unlockWalletButton.titleColor = UIColor.black
+        unlockWalletButton.layer.cornerRadius = 23
+        unlockWalletButton.layer.borderWidth = 1
+        unlockWalletButton.layer.borderColor = UIColor.black.cgColor
         unlockWalletButton.title = NSLocalizedString("Unlock Wallet", comment: "")
         
-        generateWalletButton.layer.cornerRadius = 10
+        generateWalletButton.backgroundColor = UIColor.black
+        generateWalletButton.layer.cornerRadius = 23
         generateWalletButton.title = NSLocalizedString("Generate Wallet", comment: "")
 
         let skipButton = UIBarButtonItem(title: "Skip", style: .plain, target: self, action: #selector(self.skipButtonPressed(_:)))

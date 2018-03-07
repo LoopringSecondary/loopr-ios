@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -769,7 +769,7 @@
 		02199B57DF267F515BBE367E1153FBAD /* BarLineScatterCandleBubbleChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarLineScatterCandleBubbleChartDataProvider.swift; path = Source/Charts/Interfaces/BarLineScatterCandleBubbleChartDataProvider.swift; sourceTree = "<group>"; };
 		0231F82CDDAC494CECD1F989DFD7FEE2 /* check_mem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = check_mem.h; path = "trezor-crypto/check_mem.h"; sourceTree = "<group>"; };
 		0238912173D90E02373FF61A8DE78FDA /* SHA2.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SHA2.swift; path = Sources/CryptoSwift/SHA2.swift; sourceTree = "<group>"; };
-		025444C2F454C19C65F2DB09ECFAB3FA /* ed25519-donna-32bit-tables.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "ed25519-donna-32bit-tables.c"; path = "trezor-crypto/ed25519-donna/ed25519-donna-32bit-tables.c"; sourceTree = "<group>"; };
+		025444C2F454C19C65F2DB09ECFAB3FA /* ed25519-donna-32bit-tables.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "ed25519-donna-32bit-tables.c"; path = "trezor-crypto/ed25519-donna/ed25519-donna-32bit-tables.c"; sourceTree = "<group>"; };
 		02C796B29E65D3047F44C0287E17B77B /* ThemeManager+Index.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ThemeManager+Index.swift"; path = "Source/ThemeManager+Index.swift"; sourceTree = "<group>"; };
 		03DF69AE130872A6703AD9945F39D6C3 /* PieChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieChartView.swift; path = Source/Charts/Charts/PieChartView.swift; sourceTree = "<group>"; };
 		03EEB37B3CF1CC422D984F8CC6D8A363 /* LOTShapeStroke.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTShapeStroke.h; path = "lottie-ios/Classes/Models/LOTShapeStroke.h"; sourceTree = "<group>"; };
@@ -780,12 +780,12 @@
 		06244BDBF07205E084D2615628E6DC51 /* LOTCacheProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTCacheProvider.m; path = "lottie-ios/Classes/Private/LOTCacheProvider.m"; sourceTree = "<group>"; };
 		06356C1095AD2373E721709A5224C9FD /* IFillFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IFillFormatter.swift; path = Source/Charts/Formatters/IFillFormatter.swift; sourceTree = "<group>"; };
 		0651936C2459872BBD6D40860FE2A689 /* Array+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Array+Extensions.swift"; path = "Sources/CryptoSwift/Array+Extensions.swift"; sourceTree = "<group>"; };
-		0694359E833373B4AA18BC9A3F07664F /* bip32.c */ = {isa = PBXFileReference; includeInIndex = 1; name = bip32.c; path = "trezor-crypto/bip32.c"; sourceTree = "<group>"; };
+		0694359E833373B4AA18BC9A3F07664F /* bip32.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = bip32.c; path = "trezor-crypto/bip32.c"; sourceTree = "<group>"; };
 		07129623222E1EBA56F17C0782D4C076 /* TrezorCrypto-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TrezorCrypto-prefix.pch"; sourceTree = "<group>"; };
 		073B77F21DC9F955B9ED1D16571DB169 /* XAxisRendererRadarChart.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XAxisRendererRadarChart.swift; path = Source/Charts/Renderers/XAxisRendererRadarChart.swift; sourceTree = "<group>"; };
 		078102EDDAFA5EA997471AD83097E0A8 /* UInt64+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UInt64+Extension.swift"; path = "Sources/CryptoSwift/UInt64+Extension.swift"; sourceTree = "<group>"; };
 		083EBD6D86D9A90FDAC4DE2FFC4E6792 /* LegendRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LegendRenderer.swift; path = Source/Charts/Renderers/LegendRenderer.swift; sourceTree = "<group>"; };
-		083F0E29E8B01B104DEDE27879273CCE /* address.c */ = {isa = PBXFileReference; includeInIndex = 1; name = address.c; path = "trezor-crypto/address.c"; sourceTree = "<group>"; };
+		083F0E29E8B01B104DEDE27879273CCE /* address.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = address.c; path = "trezor-crypto/address.c"; sourceTree = "<group>"; };
 		086D6B1422BD3F1909147055960FD9BE /* PieChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieChartData.swift; path = Source/Charts/Data/Implementations/Standard/PieChartData.swift; sourceTree = "<group>"; };
 		089801F6C1C4BB2CDD8905DA6BEC26B8 /* POPGeometry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPGeometry.h; path = pop/POPGeometry.h; sourceTree = "<group>"; };
 		08FBB100F132F3DE7268C654F18E667D /* Utils+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Utils+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/Utils+Foundation.swift"; sourceTree = "<group>"; };
@@ -794,7 +794,7 @@
 		09A7913AB7C6E220DB1BDCD5038770C8 /* CandleChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CandleChartDataProvider.swift; path = Source/Charts/Interfaces/CandleChartDataProvider.swift; sourceTree = "<group>"; };
 		09BEDA637D9BAC8D7FF0E810AF2AFBE9 /* lottie-ios-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "lottie-ios-prefix.pch"; sourceTree = "<group>"; };
 		09F1BE9B52D055B8205EA09F7D0CC020 /* LOTPathInterpolator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTPathInterpolator.h; path = "lottie-ios/Classes/RenderSystem/InterpolatorNodes/LOTPathInterpolator.h"; sourceTree = "<group>"; };
-		0A419504CFCDA48A0820EF6D31736003 /* BigInt.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = BigInt.modulemap; sourceTree = "<group>"; };
+		0A419504CFCDA48A0820EF6D31736003 /* BigInt.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BigInt.modulemap; sourceTree = "<group>"; };
 		0A898E35D1A9362ECF65444CD9D59CDA /* LOTShapeCircle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTShapeCircle.h; path = "lottie-ios/Classes/Models/LOTShapeCircle.h"; sourceTree = "<group>"; };
 		0AF917C708066684A47D3EBC478B0F7B /* LOTPathAnimator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTPathAnimator.m; path = "lottie-ios/Classes/RenderSystem/AnimatorNodes/LOTPathAnimator.m"; sourceTree = "<group>"; };
 		0CFBEB2989AE7FA6A11CA54802961E9E /* ThemeManager+OC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ThemeManager+OC.swift"; path = "Source/ThemeManager+OC.swift"; sourceTree = "<group>"; };
@@ -809,12 +809,12 @@
 		0F83E418E8E494B5C7B90521B20DD0CE /* pbkdf2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pbkdf2.h; path = "trezor-crypto/pbkdf2.h"; sourceTree = "<group>"; };
 		0FA2A2653E63B37350170C6120696837 /* CombinedChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombinedChartRenderer.swift; path = Source/Charts/Renderers/CombinedChartRenderer.swift; sourceTree = "<group>"; };
 		1045E4200649EF4D1E222B6BBA1A1E65 /* LineScatterCandleRadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineScatterCandleRadarChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/LineScatterCandleRadarChartDataSet.swift; sourceTree = "<group>"; };
-		104681FFE8E55FDB61DBCC1F11A356BF /* CryptoSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CryptoSwift.modulemap; sourceTree = "<group>"; };
+		104681FFE8E55FDB61DBCC1F11A356BF /* CryptoSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = CryptoSwift.modulemap; sourceTree = "<group>"; };
 		112B16660A90FDF20D2705C2AE9D4566 /* field_5x52_asm_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = field_5x52_asm_impl.h; path = secp256k1_ios/src/field_5x52_asm_impl.h; sourceTree = "<group>"; };
 		112E98451419B5F5BFB4D50042EF23C1 /* nem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = nem.h; path = "trezor-crypto/nem.h"; sourceTree = "<group>"; };
 		1158F3A8EBE21CB1D7D84251C98549B5 /* UIKit+Theme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIKit+Theme.swift"; path = "Source/UIKit+Theme.swift"; sourceTree = "<group>"; };
 		120CC3C00C3591B30CA5E2D98D8FCE47 /* bip39_english.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bip39_english.h; path = "trezor-crypto/bip39_english.h"; sourceTree = "<group>"; };
-		1225EC645382B96C8EDEC41A053D7E8A /* SwiftTheme.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftTheme.framework; path = SwiftTheme.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1225EC645382B96C8EDEC41A053D7E8A /* SwiftTheme.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftTheme.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		128479623CBF8C9E8870220E4429F8CA /* LOTAnimationTransitionController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTAnimationTransitionController.h; path = "lottie-ios/Classes/PublicHeaders/LOTAnimationTransitionController.h"; sourceTree = "<group>"; };
 		12B6203A8C78741FEA7A0E09E4B2C842 /* Addition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Addition.swift; path = sources/Addition.swift; sourceTree = "<group>"; };
 		135787D95895FFF8F7695EE35428718F /* RadarChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/RadarChartDataEntry.swift; sourceTree = "<group>"; };
@@ -825,7 +825,7 @@
 		140A7071C5ACDF6A7480F2C16203876C /* LOTAssetGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTAssetGroup.m; path = "lottie-ios/Classes/Models/LOTAssetGroup.m"; sourceTree = "<group>"; };
 		15116B020AC2518143B4087B1B676DC1 /* SipHash-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SipHash-umbrella.h"; sourceTree = "<group>"; };
 		1679DE802457AA7BAABE72FC0FE31C95 /* POPBasicAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPBasicAnimation.h; path = pop/POPBasicAnimation.h; sourceTree = "<group>"; };
-		16C56A0F767599CDA1694BCC0B4E9493 /* ed25519-donna-impl-base.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "ed25519-donna-impl-base.c"; path = "trezor-crypto/ed25519-donna/ed25519-donna-impl-base.c"; sourceTree = "<group>"; };
+		16C56A0F767599CDA1694BCC0B4E9493 /* ed25519-donna-impl-base.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "ed25519-donna-impl-base.c"; path = "trezor-crypto/ed25519-donna/ed25519-donna-impl-base.c"; sourceTree = "<group>"; };
 		16DE4F265750EA55F8141D92F151ACF0 /* BarLineScatterCandleBubbleRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarLineScatterCandleBubbleRenderer.swift; path = Source/Charts/Renderers/BarLineScatterCandleBubbleRenderer.swift; sourceTree = "<group>"; };
 		17AF2FB08E7ABB2755FB4D953F707F81 /* MarkerImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkerImage.swift; path = Source/Charts/Components/MarkerImage.swift; sourceTree = "<group>"; };
 		17C47C7F94E4BB4B61A028F2056EE126 /* Pods-loopr-iosTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-loopr-iosTests-umbrella.h"; sourceTree = "<group>"; };
@@ -834,7 +834,7 @@
 		18B123D3E1C2C064584C338AF5D7FCFA /* TrezorCrypto-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TrezorCrypto-dummy.m"; sourceTree = "<group>"; };
 		18E5BBAC07AF2B29A06BA7DAE568E842 /* ThemeColorPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeColorPicker.swift; path = Source/ThemeColorPicker.swift; sourceTree = "<group>"; };
 		18EAB2E29258AB5D302AA9B4F55B3DB5 /* LOTBezierData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTBezierData.h; path = "lottie-ios/Classes/AnimatableProperties/LOTBezierData.h"; sourceTree = "<group>"; };
-		19A8E0C9974C3DAC9F75093609FCB4CF /* secp256k1.c */ = {isa = PBXFileReference; includeInIndex = 1; name = secp256k1.c; path = secp256k1_ios/src/secp256k1.c; sourceTree = "<group>"; };
+		19A8E0C9974C3DAC9F75093609FCB4CF /* secp256k1.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = secp256k1.c; path = secp256k1_ios/src/secp256k1.c; sourceTree = "<group>"; };
 		19C37618C495DBE86006801F7EE1BA1C /* curve25519-donna-helpers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "curve25519-donna-helpers.h"; path = "trezor-crypto/ed25519-donna/curve25519-donna-helpers.h"; sourceTree = "<group>"; };
 		19C7FF6EF3972808A306C16C091CCA8C /* LegendEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LegendEntry.swift; path = Source/Charts/Components/LegendEntry.swift; sourceTree = "<group>"; };
 		1A4AC9D5AF012C163E59794F4D8284A2 /* TagView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TagView.swift; path = TagListView/TagView.swift; sourceTree = "<group>"; };
@@ -843,12 +843,12 @@
 		1CA62401CB833CA94D2F1A3EF20DCE46 /* Pods-loopr-iosTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-loopr-iosTests-resources.sh"; sourceTree = "<group>"; };
 		1D29A83B67036CC795BBE4A8982A0B8D /* LOTShapeFill.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTShapeFill.m; path = "lottie-ios/Classes/Models/LOTShapeFill.m"; sourceTree = "<group>"; };
 		1D2AC6525D5C7D92B5F8BE6E6F5E5CEC /* SipHasher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SipHasher.swift; path = SipHash/SipHasher.swift; sourceTree = "<group>"; };
-		1D8EA0CCC0553871CB1F0BA654A5BFF5 /* secp256k1_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = secp256k1_ios.framework; path = secp256k1_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D8EA0CCC0553871CB1F0BA654A5BFF5 /* secp256k1_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = secp256k1_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D9E55D8068E1338AA13A103778A2F99 /* LineChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineChartRenderer.swift; path = Source/Charts/Renderers/LineChartRenderer.swift; sourceTree = "<group>"; };
 		1DE4F4EF5474BD633D8134373253DF43 /* TransformationMatrix.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TransformationMatrix.h; path = pop/WebCore/TransformationMatrix.h; sourceTree = "<group>"; };
 		1E347D8D6287FFA030306EF6EB02DC8D /* Subtraction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Subtraction.swift; path = sources/Subtraction.swift; sourceTree = "<group>"; };
-		1E387B734902CF6E19B91482015D903C /* PopupDialog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PopupDialog.framework; path = PopupDialog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1EA6F83715EF0A6912FF49FDFF361D26 /* POPSpringAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPSpringAnimation.mm; path = pop/POPSpringAnimation.mm; sourceTree = "<group>"; };
+		1E387B734902CF6E19B91482015D903C /* PopupDialog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PopupDialog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EA6F83715EF0A6912FF49FDFF361D26 /* POPSpringAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPSpringAnimation.mm; path = pop/POPSpringAnimation.mm; sourceTree = "<group>"; };
 		1EC833C7BF56FD82B33A5FEF80E869D1 /* Highlight.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Highlight.swift; path = Source/Charts/Highlight/Highlight.swift; sourceTree = "<group>"; };
 		1F19EF53040F5471CB95D6D8BAE3975B /* LOTBezierData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTBezierData.m; path = "lottie-ios/Classes/AnimatableProperties/LOTBezierData.m"; sourceTree = "<group>"; };
 		1F20173ED325D42874FC6A9BBDA9148C /* AES+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "AES+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/AES+Foundation.swift"; sourceTree = "<group>"; };
@@ -863,12 +863,12 @@
 		216390673693CBA2B5532866DBF3C43A /* CombinedHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombinedHighlighter.swift; path = Source/Charts/Highlight/CombinedHighlighter.swift; sourceTree = "<group>"; };
 		2332818309AEE8310CA1BA3D785ED2CA /* LOTShapeStar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTShapeStar.m; path = "lottie-ios/Classes/Models/LOTShapeStar.m"; sourceTree = "<group>"; };
 		236834B6737F6B7AD61FE4A2B2E50D7C /* LOTTrimPathNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTTrimPathNode.h; path = "lottie-ios/Classes/RenderSystem/ManipulatorNodes/LOTTrimPathNode.h"; sourceTree = "<group>"; };
-		239957BE17512532BDC5C87B605941FB /* Pods_loopr_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_loopr_ios.framework; path = "Pods-loopr-ios.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		239957BE17512532BDC5C87B605941FB /* Pods_loopr_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		23C3539720388DF17A6170EC8C3F251F /* Pods-loopr-iosUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-loopr-iosUITests-dummy.m"; sourceTree = "<group>"; };
 		2417B79DA43CB1567CE29B270F76B331 /* CrossShapeRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CrossShapeRenderer.swift; path = Source/Charts/Renderers/Scatter/CrossShapeRenderer.swift; sourceTree = "<group>"; };
 		244E8F83CEBB90241BD406F8728F9195 /* pop-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "pop-umbrella.h"; sourceTree = "<group>"; };
 		24545CD11420B2B71CABD45E1056E1C3 /* ZeroPadding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZeroPadding.swift; path = Sources/CryptoSwift/ZeroPadding.swift; sourceTree = "<group>"; };
-		246C982C77516BC931385DD511185F00 /* POPMath.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPMath.mm; path = pop/POPMath.mm; sourceTree = "<group>"; };
+		246C982C77516BC931385DD511185F00 /* POPMath.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPMath.mm; path = pop/POPMath.mm; sourceTree = "<group>"; };
 		24AF39EE8A87311DFB84E76BF6F0C571 /* Comparable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Comparable.swift; path = sources/Comparable.swift; sourceTree = "<group>"; };
 		24E3940181F9F9061246F1C203FB74DF /* BigInt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BigInt.swift; path = sources/BigInt.swift; sourceTree = "<group>"; };
 		24FC3E17B26A45B826DE11DC70F36A0F /* LOTRenderNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTRenderNode.m; path = "lottie-ios/Classes/RenderSystem/LOTRenderNode.m"; sourceTree = "<group>"; };
@@ -876,19 +876,19 @@
 		253723CC525A3B0E0621D940574B22DD /* BarLineChartViewBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarLineChartViewBase.swift; path = Source/Charts/Charts/BarLineChartViewBase.swift; sourceTree = "<group>"; };
 		25C579596A292514F55F7002E21D2E4C /* LOTRenderGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTRenderGroup.m; path = "lottie-ios/Classes/RenderSystem/RenderNodes/LOTRenderGroup.m"; sourceTree = "<group>"; };
 		25E9CED7529C026FCC7D3390ACCD56FE /* YAxisRendererHorizontalBarChart.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAxisRendererHorizontalBarChart.swift; path = Source/Charts/Renderers/YAxisRendererHorizontalBarChart.swift; sourceTree = "<group>"; };
-		26427EA3F552CA86FF5F8C493123E35B /* pbkdf2.c */ = {isa = PBXFileReference; includeInIndex = 1; name = pbkdf2.c; path = "trezor-crypto/pbkdf2.c"; sourceTree = "<group>"; };
+		26427EA3F552CA86FF5F8C493123E35B /* pbkdf2.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = pbkdf2.c; path = "trezor-crypto/pbkdf2.c"; sourceTree = "<group>"; };
 		266C931EB2D8839CE52E483B2EAF55A9 /* LOTNumberInterpolator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTNumberInterpolator.m; path = "lottie-ios/Classes/RenderSystem/InterpolatorNodes/LOTNumberInterpolator.m"; sourceTree = "<group>"; };
-		269491A9F4B280BA826AB71B49C2DF44 /* secp256k1.table */ = {isa = PBXFileReference; includeInIndex = 1; name = secp256k1.table; path = "trezor-crypto/secp256k1.table"; sourceTree = "<group>"; };
-		26D960638248272933F64334E1D0992F /* memzero.c */ = {isa = PBXFileReference; includeInIndex = 1; name = memzero.c; path = "trezor-crypto/memzero.c"; sourceTree = "<group>"; };
+		269491A9F4B280BA826AB71B49C2DF44 /* secp256k1.table */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = secp256k1.table; path = "trezor-crypto/secp256k1.table"; sourceTree = "<group>"; };
+		26D960638248272933F64334E1D0992F /* memzero.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = memzero.c; path = "trezor-crypto/memzero.c"; sourceTree = "<group>"; };
 		27307BBD837C313B32810F05F512FB64 /* POPAnimationTracer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationTracer.h; path = pop/POPAnimationTracer.h; sourceTree = "<group>"; };
 		274C743476EE3E1C1A38FE6B2A7020C7 /* DefaultValueFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultValueFormatter.swift; path = Source/Charts/Formatters/DefaultValueFormatter.swift; sourceTree = "<group>"; };
-		28A8ACD791D79361BA7BC890CD94B7D3 /* segwit_addr.c */ = {isa = PBXFileReference; includeInIndex = 1; name = segwit_addr.c; path = "trezor-crypto/segwit_addr.c"; sourceTree = "<group>"; };
+		28A8ACD791D79361BA7BC890CD94B7D3 /* segwit_addr.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = segwit_addr.c; path = "trezor-crypto/segwit_addr.c"; sourceTree = "<group>"; };
 		28BF2A3246EFE59DF56810F9987D76C7 /* aestab.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aestab.h; path = "trezor-crypto/aes/aestab.h"; sourceTree = "<group>"; };
 		28C5A1698896A03615D173EC5D71360A /* poly1305-donna.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "poly1305-donna.h"; path = "trezor-crypto/chacha20poly1305/poly1305-donna.h"; sourceTree = "<group>"; };
-		28D13416405F04FDAF8DE211462A4C42 /* POPCustomAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPCustomAnimation.mm; path = pop/POPCustomAnimation.mm; sourceTree = "<group>"; };
+		28D13416405F04FDAF8DE211462A4C42 /* POPCustomAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPCustomAnimation.mm; path = pop/POPCustomAnimation.mm; sourceTree = "<group>"; };
 		28ED997CF431A5BA2F6051E261BD4EE6 /* UnitBezier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UnitBezier.h; path = pop/WebCore/UnitBezier.h; sourceTree = "<group>"; };
 		290E8ECD46B9815992CEF0DED73BF555 /* secp256k1_ecdh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = secp256k1_ecdh.h; path = secp256k1_ios/include/secp256k1_ecdh.h; sourceTree = "<group>"; };
-		292E0F7FABF8346DCB4AD486E411E90A /* nist256p1.c */ = {isa = PBXFileReference; includeInIndex = 1; name = nist256p1.c; path = "trezor-crypto/nist256p1.c"; sourceTree = "<group>"; };
+		292E0F7FABF8346DCB4AD486E411E90A /* nist256p1.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = nist256p1.c; path = "trezor-crypto/nist256p1.c"; sourceTree = "<group>"; };
 		2A7E780980474B9DD02195829A57CBEB /* LOTStrokeRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTStrokeRenderer.h; path = "lottie-ios/Classes/RenderSystem/RenderNodes/LOTStrokeRenderer.h"; sourceTree = "<group>"; };
 		2A87E3BB947BBB16EAB8FADD590AE87E /* field_5x52_int128_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = field_5x52_int128_impl.h; path = secp256k1_ios/src/field_5x52_int128_impl.h; sourceTree = "<group>"; };
 		2AF729C10870DE3D49A8920BB5AB184E /* CircleShapeRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CircleShapeRenderer.swift; path = Source/Charts/Renderers/Scatter/CircleShapeRenderer.swift; sourceTree = "<group>"; };
@@ -897,11 +897,11 @@
 		2D2752492C541964F01143746FE4C437 /* POPAnimatorPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimatorPrivate.h; path = pop/POPAnimatorPrivate.h; sourceTree = "<group>"; };
 		2D774476F07F9DD1C6B02E77D89482C3 /* BubbleChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartDataProvider.swift; path = Source/Charts/Interfaces/BubbleChartDataProvider.swift; sourceTree = "<group>"; };
 		2D7BF02664F3BDF14347AF53AD100DCF /* PresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PresentationController.swift; path = PopupDialog/Classes/PresentationController.swift; sourceTree = "<group>"; };
-		2DBA0DE8BA507E865D2B8CFAE240F2B1 /* POPAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimation.mm; path = pop/POPAnimation.mm; sourceTree = "<group>"; };
+		2DBA0DE8BA507E865D2B8CFAE240F2B1 /* POPAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimation.mm; path = pop/POPAnimation.mm; sourceTree = "<group>"; };
 		2DD18CFCDBD210304651FD1B9A84287F /* LOTAnimationTransitionController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTAnimationTransitionController.m; path = "lottie-ios/Classes/Private/LOTAnimationTransitionController.m"; sourceTree = "<group>"; };
 		2DDAABE3183FD2477F5C6DC2B4D9F0E4 /* Square Root.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Square Root.swift"; path = "sources/Square Root.swift"; sourceTree = "<group>"; };
 		2ECBDDC24587DBD558089BF3CB8FD52D /* brg_types.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = brg_types.h; path = "trezor-crypto/aes/brg_types.h"; sourceTree = "<group>"; };
-		2F2BC45C6E356BF0B5BF6F00835EE08D /* chacha_merged.c */ = {isa = PBXFileReference; includeInIndex = 1; name = chacha_merged.c; path = "trezor-crypto/chacha20poly1305/chacha_merged.c"; sourceTree = "<group>"; };
+		2F2BC45C6E356BF0B5BF6F00835EE08D /* chacha_merged.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = chacha_merged.c; path = "trezor-crypto/chacha20poly1305/chacha_merged.c"; sourceTree = "<group>"; };
 		2F5BA82E74266AE8BFE633665015F713 /* LOTRepeaterRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTRepeaterRenderer.h; path = "lottie-ios/Classes/RenderSystem/RenderNodes/LOTRepeaterRenderer.h"; sourceTree = "<group>"; };
 		2F9A9D57E26DAFA79E996F3FD135BC09 /* IValueFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IValueFormatter.swift; path = Source/Charts/Formatters/IValueFormatter.swift; sourceTree = "<group>"; };
 		2FA96057A6A81AC23E57429FBDECFA10 /* LOTMask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTMask.h; path = "lottie-ios/Classes/Models/LOTMask.h"; sourceTree = "<group>"; };
@@ -917,7 +917,7 @@
 		3391FB80844C40185D8977B5B24D17B9 /* SecureBytes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SecureBytes.swift; path = Sources/CryptoSwift/SecureBytes.swift; sourceTree = "<group>"; };
 		33AD24BEE1C1BB0DE0CB2AFC0EA92D0A /* UIColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UIColor.h; path = "lottie-ios/Classes/MacCompatability/UIColor.h"; sourceTree = "<group>"; };
 		33CFF39B9A54B6C0597E3C5FE35F4F86 /* CryptoSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CryptoSwift-prefix.pch"; sourceTree = "<group>"; };
-		35044A2BB1AE035F43E0E3995071A3C9 /* TrezorCrypto.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = TrezorCrypto.modulemap; sourceTree = "<group>"; };
+		35044A2BB1AE035F43E0E3995071A3C9 /* TrezorCrypto.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TrezorCrypto.modulemap; sourceTree = "<group>"; };
 		35264EF1A15208C8C35E8EC2673D4968 /* BlockModeOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlockModeOptions.swift; path = Sources/CryptoSwift/BlockMode/BlockModeOptions.swift; sourceTree = "<group>"; };
 		35ADEDC0E5286B6603ABA2212A06B16B /* Pods-loopr-ios-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-loopr-ios-frameworks.sh"; sourceTree = "<group>"; };
 		3666C461DCC50BFC2DCBE1467D02053A /* PopupDialogOverlayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupDialogOverlayView.swift; path = PopupDialog/Classes/PopupDialogOverlayView.swift; sourceTree = "<group>"; };
@@ -927,7 +927,7 @@
 		3948D9A89A4D5BF5CFFE0C80A737E044 /* LOTHelpers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTHelpers.h; path = "lottie-ios/Classes/Extensions/LOTHelpers.h"; sourceTree = "<group>"; };
 		398F0751804CC0572B1B6A8FFFDA5034 /* ECB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ECB.swift; path = Sources/CryptoSwift/BlockMode/ECB.swift; sourceTree = "<group>"; };
 		399F4A748C08130292AB8B7BBAD64836 /* field_5x52_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = field_5x52_impl.h; path = secp256k1_ios/src/field_5x52_impl.h; sourceTree = "<group>"; };
-		39B4BF64F4B34C3620C7D2B24280E895 /* POPAnimator.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimator.mm; path = pop/POPAnimator.mm; sourceTree = "<group>"; };
+		39B4BF64F4B34C3620C7D2B24280E895 /* POPAnimator.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimator.mm; path = pop/POPAnimator.mm; sourceTree = "<group>"; };
 		39C35CEAA77534C75345BABCA83130DC /* BigUInt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BigUInt.swift; path = sources/BigUInt.swift; sourceTree = "<group>"; };
 		39F036CC381238CB274377401CD5FB51 /* Rabbit+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Rabbit+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/Rabbit+Foundation.swift"; sourceTree = "<group>"; };
 		3A23386D65FFDB12D4ABE0A81FA82F6D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -937,7 +937,7 @@
 		3B010E423A55425658CEE3E735C9CA88 /* BlockCipher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlockCipher.swift; path = Sources/CryptoSwift/BlockCipher.swift; sourceTree = "<group>"; };
 		3BA355F265DC3374C377B3EEDA8D3C7D /* CandleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CandleChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/CandleChartDataSet.swift; sourceTree = "<group>"; };
 		3BD77CD9E6038B15E14E775E3E09557B /* ThemeImagePicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeImagePicker.swift; path = Source/ThemeImagePicker.swift; sourceTree = "<group>"; };
-		3C1C0FD2BB6C770EB528A3CBC3F1F7D8 /* POPVector.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPVector.mm; path = pop/POPVector.mm; sourceTree = "<group>"; };
+		3C1C0FD2BB6C770EB528A3CBC3F1F7D8 /* POPVector.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPVector.mm; path = pop/POPVector.mm; sourceTree = "<group>"; };
 		3C2FEB8DBC0BECAA06CEF5804CD7DF30 /* TagListView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TagListView-umbrella.h"; sourceTree = "<group>"; };
 		3C628CCD4EDF8B746743B7DE336EA539 /* ecmult_gen_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ecmult_gen_impl.h; path = secp256k1_ios/src/ecmult_gen_impl.h; sourceTree = "<group>"; };
 		3D30E82FA1A155CF5682793A29470501 /* field_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = field_impl.h; path = secp256k1_ios/src/field_impl.h; sourceTree = "<group>"; };
@@ -947,23 +947,23 @@
 		3DA82CA8F915AA4555D201C8B824A9DB /* AnimatedViewPortJob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedViewPortJob.swift; path = Source/Charts/Jobs/AnimatedViewPortJob.swift; sourceTree = "<group>"; };
 		3E1E6BCF4817D92DB6063FEB4FDF7BBF /* bip32.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bip32.h; path = "trezor-crypto/bip32.h"; sourceTree = "<group>"; };
 		3E4D66914E7C1CAB3DE182FEF8028846 /* ChartColorTemplates.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartColorTemplates.swift; path = Source/Charts/Utils/ChartColorTemplates.swift; sourceTree = "<group>"; };
-		3E7367E6398ECFFF35F9CE8945D8C82F /* poly1305-donna.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "poly1305-donna.c"; path = "trezor-crypto/chacha20poly1305/poly1305-donna.c"; sourceTree = "<group>"; };
+		3E7367E6398ECFFF35F9CE8945D8C82F /* poly1305-donna.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "poly1305-donna.c"; path = "trezor-crypto/chacha20poly1305/poly1305-donna.c"; sourceTree = "<group>"; };
 		3ED73390957403C0A4AB98B6B4F6DF8E /* Pods-loopr-iosTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-loopr-iosTests-dummy.m"; sourceTree = "<group>"; };
 		3EED37CB996FBD7B1946A95333A69A65 /* rand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rand.h; path = "trezor-crypto/rand.h"; sourceTree = "<group>"; };
 		3F054FD3096D29CA3D0C055C1E642C95 /* PopupDialogContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupDialogContainerView.swift; path = PopupDialog/Classes/PopupDialogContainerView.swift; sourceTree = "<group>"; };
 		3F2EC3DAF178125C33A4CAE250C6B98D /* PopupDialog.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PopupDialog.xcconfig; sourceTree = "<group>"; };
 		3F545D5E9297616A21D74CEAF137D319 /* IScatterChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IScatterChartDataSet.swift; path = Source/Charts/Data/Interfaces/IScatterChartDataSet.swift; sourceTree = "<group>"; };
-		3F95D6A50EC7F5D9341100CF6BA1192D /* bignum.c */ = {isa = PBXFileReference; includeInIndex = 1; name = bignum.c; path = "trezor-crypto/bignum.c"; sourceTree = "<group>"; };
+		3F95D6A50EC7F5D9341100CF6BA1192D /* bignum.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = bignum.c; path = "trezor-crypto/bignum.c"; sourceTree = "<group>"; };
 		3FD082304D7EB383F736716489B3C21F /* LineChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineChartData.swift; path = Source/Charts/Data/Implementations/Standard/LineChartData.swift; sourceTree = "<group>"; };
 		3FD47ABF7F32654600EAAB3AA8C8FBA8 /* ScatterChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScatterChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/ScatterChartDataSet.swift; sourceTree = "<group>"; };
 		3FFE2C000FE7D8AD67090C84009C6858 /* FontBlaster.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontBlaster.swift; path = Sources/FontBlaster.swift; sourceTree = "<group>"; };
-		4013891A9B3629D7A7D20B1C917C0574 /* TagListView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TagListView.framework; path = TagListView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4013891A9B3629D7A7D20B1C917C0574 /* TagListView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TagListView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4071D1DB9F6317EB5AF22E488955D3A0 /* RadarChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarChartRenderer.swift; path = Source/Charts/Renderers/RadarChartRenderer.swift; sourceTree = "<group>"; };
 		407A45A8167FFE9899822E6D89890C94 /* POPSpringAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPSpringAnimationInternal.h; path = pop/POPSpringAnimationInternal.h; sourceTree = "<group>"; };
 		41115259E8D92447FCD3303C8A10CCA1 /* Authenticator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Authenticator.swift; path = Sources/CryptoSwift/Authenticator.swift; sourceTree = "<group>"; };
 		4113CD53BFBB42EC991445F528A95952 /* BarChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarChartView.swift; path = Source/Charts/Charts/BarChartView.swift; sourceTree = "<group>"; };
 		41375B4CBE35432E3E9DBB139CA63F52 /* LOTPathAnimator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTPathAnimator.h; path = "lottie-ios/Classes/RenderSystem/AnimatorNodes/LOTPathAnimator.h"; sourceTree = "<group>"; };
-		4220607FB9E706834FDAC10C998A5C00 /* base32.c */ = {isa = PBXFileReference; includeInIndex = 1; name = base32.c; path = "trezor-crypto/base32.c"; sourceTree = "<group>"; };
+		4220607FB9E706834FDAC10C998A5C00 /* base32.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = base32.c; path = "trezor-crypto/base32.c"; sourceTree = "<group>"; };
 		4278C5CB21E3E80E6085936DCE229B59 /* ChartHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartHighlighter.swift; path = Source/Charts/Highlight/ChartHighlighter.swift; sourceTree = "<group>"; };
 		429CB39C9BEE4A20501AD1BC65AF8A48 /* field_10x26_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = field_10x26_impl.h; path = secp256k1_ios/src/field_10x26_impl.h; sourceTree = "<group>"; };
 		42C2A2CA1067AFFBC2C1DA089157DB23 /* pop-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "pop-dummy.m"; sourceTree = "<group>"; };
@@ -981,14 +981,14 @@
 		472DB5231111D751A396C48814670DD7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		476929C0F2F807E1FB081A9DD1CE1D39 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47F5860C5E0D0A2D9516B894957A7AC7 /* aes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aes.h; path = "trezor-crypto/aes/aes.h"; sourceTree = "<group>"; };
-		48407F2B07918ED81C471E46F83C5BF6 /* POPAnimationExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimationExtras.mm; path = pop/POPAnimationExtras.mm; sourceTree = "<group>"; };
+		48407F2B07918ED81C471E46F83C5BF6 /* POPAnimationExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationExtras.mm; path = pop/POPAnimationExtras.mm; sourceTree = "<group>"; };
 		497421133B0441CF7166D5C8946D99FE /* LOTAsset.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTAsset.h; path = "lottie-ios/Classes/Models/LOTAsset.h"; sourceTree = "<group>"; };
 		498AAF4FA699E7FE92027992D9738B36 /* LOTModels.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTModels.h; path = "lottie-ios/Classes/Models/LOTModels.h"; sourceTree = "<group>"; };
 		49CD556D7B20871033474ACAA9D47A6D /* BatchedCollection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BatchedCollection.swift; path = Sources/CryptoSwift/BatchedCollection.swift; sourceTree = "<group>"; };
 		49F5F3C1D1FDAD72CD01AAC59B0C4B57 /* MoveViewJob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MoveViewJob.swift; path = Source/Charts/Jobs/MoveViewJob.swift; sourceTree = "<group>"; };
 		4A042E8BDC485810E11B0B655D4C7037 /* PBKDF1.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PBKDF1.swift; path = Sources/CryptoSwift/PKCS/PBKDF1.swift; sourceTree = "<group>"; };
-		4A4A758883639656C46C5C10DB9CF066 /* FontBlaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FontBlaster.framework; path = FontBlaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B031094397B0E8102E614E9FC2FB300 /* hmac.c */ = {isa = PBXFileReference; includeInIndex = 1; name = hmac.c; path = "trezor-crypto/hmac.c"; sourceTree = "<group>"; };
+		4A4A758883639656C46C5C10DB9CF066 /* FontBlaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FontBlaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B031094397B0E8102E614E9FC2FB300 /* hmac.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = hmac.c; path = "trezor-crypto/hmac.c"; sourceTree = "<group>"; };
 		4B2821B40C54902F1EC1057DF6D83E43 /* ThemeActivityIndicatorViewStylePicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeActivityIndicatorViewStylePicker.swift; path = Source/ThemeActivityIndicatorViewStylePicker.swift; sourceTree = "<group>"; };
 		4B2FB8C228C16EE15604D7579C15032C /* LOTLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTLayer.m; path = "lottie-ios/Classes/Models/LOTLayer.m"; sourceTree = "<group>"; };
 		4B3D6F1165B94C348D4903C2D7C157AB /* LOTPolygonAnimator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTPolygonAnimator.h; path = "lottie-ios/Classes/RenderSystem/AnimatorNodes/LOTPolygonAnimator.h"; sourceTree = "<group>"; };
@@ -1007,15 +1007,15 @@
 		500E18E159C1A1831365415D47A5B40B /* secp256k1_ios-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "secp256k1_ios-prefix.pch"; sourceTree = "<group>"; };
 		5021FB1184E5CE957A2AE0E278179959 /* LOTAsset.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTAsset.m; path = "lottie-ios/Classes/Models/LOTAsset.m"; sourceTree = "<group>"; };
 		505CC283A0EBE4363E6CC69A659A1EED /* ViewPortJob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewPortJob.swift; path = Source/Charts/Jobs/ViewPortJob.swift; sourceTree = "<group>"; };
-		50EF249618E4BA2FFF34A0482D81DE69 /* sha3.c */ = {isa = PBXFileReference; includeInIndex = 1; name = sha3.c; path = "trezor-crypto/sha3.c"; sourceTree = "<group>"; };
+		50EF249618E4BA2FFF34A0482D81DE69 /* sha3.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = sha3.c; path = "trezor-crypto/sha3.c"; sourceTree = "<group>"; };
 		51030E3F8B3EE2D52FD8B7CA64ACF668 /* CryptoSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CryptoSwift-umbrella.h"; sourceTree = "<group>"; };
 		510A52E24DB8B1734D7DDB4CC58A91BA /* LineChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/LineChartDataSet.swift; sourceTree = "<group>"; };
 		510EEFC68E8F178CB562D98AE445A423 /* LOTStrokeRenderer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTStrokeRenderer.m; path = "lottie-ios/Classes/RenderSystem/RenderNodes/LOTStrokeRenderer.m"; sourceTree = "<group>"; };
-		51677B0826F680F73C287E5BA45AFD10 /* ripemd160.c */ = {isa = PBXFileReference; includeInIndex = 1; name = ripemd160.c; path = "trezor-crypto/ripemd160.c"; sourceTree = "<group>"; };
-		520597ACCB0F4A0F0264A1E510F9CD8E /* base58.c */ = {isa = PBXFileReference; includeInIndex = 1; name = base58.c; path = "trezor-crypto/base58.c"; sourceTree = "<group>"; };
+		51677B0826F680F73C287E5BA45AFD10 /* ripemd160.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ripemd160.c; path = "trezor-crypto/ripemd160.c"; sourceTree = "<group>"; };
+		520597ACCB0F4A0F0264A1E510F9CD8E /* base58.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = base58.c; path = "trezor-crypto/base58.c"; sourceTree = "<group>"; };
 		5381487122FF3B7A7464834A539B4FAC /* ScatterChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScatterChartData.swift; path = Source/Charts/Data/Implementations/Standard/ScatterChartData.swift; sourceTree = "<group>"; };
 		5530FD014A47DBA7EAD8E12DFE606899 /* LOTBezierPath.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTBezierPath.m; path = "lottie-ios/Classes/Extensions/LOTBezierPath.m"; sourceTree = "<group>"; };
-		55A47743B70E29757A2016DF76CA6083 /* SipHash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SipHash.framework; path = SipHash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55A47743B70E29757A2016DF76CA6083 /* SipHash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SipHash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55ED5203C6F4FA7F53AF09958B32D85B /* chacha20poly1305.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = chacha20poly1305.h; path = "trezor-crypto/chacha20poly1305/chacha20poly1305.h"; sourceTree = "<group>"; };
 		560B58207EF3DAE77F1E23E5AB675F48 /* IAxisValueFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IAxisValueFormatter.swift; path = Source/Charts/Formatters/IAxisValueFormatter.swift; sourceTree = "<group>"; };
 		56877C809C1B070BA36636550F31C606 /* ComponentBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ComponentBase.swift; path = Source/Charts/Components/ComponentBase.swift; sourceTree = "<group>"; };
@@ -1031,25 +1031,25 @@
 		5B65C5343BBD2D7BEB4CC06225F68B98 /* LOTValueInterpolator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTValueInterpolator.m; path = "lottie-ios/Classes/RenderSystem/InterpolatorNodes/LOTValueInterpolator.m"; sourceTree = "<group>"; };
 		5BC8457D7F13B5BAFB5CBE7BA101C378 /* hash_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = hash_impl.h; path = secp256k1_ios/src/hash_impl.h; sourceTree = "<group>"; };
 		5CA16FAF032E1DCA7A10DB9F9F1191DD /* BigInt-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BigInt-dummy.m"; sourceTree = "<group>"; };
-		5CD010104B425C49AFB1D9F0C80450D6 /* blake2s.c */ = {isa = PBXFileReference; includeInIndex = 1; name = blake2s.c; path = "trezor-crypto/blake2s.c"; sourceTree = "<group>"; };
-		5D9B4384103CB8412DECAD6616592B26 /* ed25519-keccak.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "ed25519-keccak.c"; path = "trezor-crypto/ed25519-donna/ed25519-keccak.c"; sourceTree = "<group>"; };
+		5CD010104B425C49AFB1D9F0C80450D6 /* blake2s.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = blake2s.c; path = "trezor-crypto/blake2s.c"; sourceTree = "<group>"; };
+		5D9B4384103CB8412DECAD6616592B26 /* ed25519-keccak.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "ed25519-keccak.c"; path = "trezor-crypto/ed25519-donna/ed25519-keccak.c"; sourceTree = "<group>"; };
 		5DC8A15CEB2F552BDEBE071A75FDC6CC /* ed25519-keccak.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ed25519-keccak.h"; path = "trezor-crypto/ed25519-donna/ed25519-keccak.h"; sourceTree = "<group>"; };
-		5DCFAC10550EE1433DBE2A2666E1CBA1 /* SwiftTheme.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftTheme.modulemap; sourceTree = "<group>"; };
+		5DCFAC10550EE1433DBE2A2666E1CBA1 /* SwiftTheme.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftTheme.modulemap; sourceTree = "<group>"; };
 		5DE47BF11FCDF445B7BF5B1BC6379BC0 /* TransformerHorizontalBarChart.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransformerHorizontalBarChart.swift; path = Source/Charts/Utils/TransformerHorizontalBarChart.swift; sourceTree = "<group>"; };
 		5DF01738D6100D241C6A011D58C4FC9E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5DFB525935721FE3ACA7A7B193DEDE16 /* POPAnimatableProperty.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimatableProperty.mm; path = pop/POPAnimatableProperty.mm; sourceTree = "<group>"; };
-		5E624E696D79E37DB5B8179A7A94BA31 /* BigInt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BigInt.framework; path = BigInt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5EB67C356DD8F5D32B74729F97B7FD86 /* secp256k1.c */ = {isa = PBXFileReference; includeInIndex = 1; name = secp256k1.c; path = "trezor-crypto/secp256k1.c"; sourceTree = "<group>"; };
+		5DFB525935721FE3ACA7A7B193DEDE16 /* POPAnimatableProperty.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimatableProperty.mm; path = pop/POPAnimatableProperty.mm; sourceTree = "<group>"; };
+		5E624E696D79E37DB5B8179A7A94BA31 /* BigInt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BigInt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EB67C356DD8F5D32B74729F97B7FD86 /* secp256k1.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = secp256k1.c; path = "trezor-crypto/secp256k1.c"; sourceTree = "<group>"; };
 		5F180DAAC15089EA8DCC8C8E2EB5A292 /* SHA3.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SHA3.swift; path = Sources/CryptoSwift/SHA3.swift; sourceTree = "<group>"; };
 		5F3A8F4D7B6AD75C7E7354E245FEF04B /* BubbleChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/BubbleChartDataEntry.swift; sourceTree = "<group>"; };
-		60194336436FDE1AE808E5CB0C06391D /* aes_modes.c */ = {isa = PBXFileReference; includeInIndex = 1; name = aes_modes.c; path = "trezor-crypto/aes/aes_modes.c"; sourceTree = "<group>"; };
+		60194336436FDE1AE808E5CB0C06391D /* aes_modes.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = aes_modes.c; path = "trezor-crypto/aes/aes_modes.c"; sourceTree = "<group>"; };
 		6061A045F4C1EDE6A1AC725B2DC95ABD /* SipHash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SipHash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60774A59754FD146E1DB0F608AA6A2E0 /* LOTAnimatorNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTAnimatorNode.h; path = "lottie-ios/Classes/RenderSystem/LOTAnimatorNode.h"; sourceTree = "<group>"; };
 		619F9141C33E61390B65ABF7C134CAFD /* Animator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Animator.swift; path = Source/Charts/Animation/Animator.swift; sourceTree = "<group>"; };
 		61F9166AC7B4C53D9E98FC12C45369DD /* POPSpringSolver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPSpringSolver.h; path = pop/POPSpringSolver.h; sourceTree = "<group>"; };
 		621C4BE70D323523F1558D55448E8438 /* Int+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Int+Extension.swift"; path = "Sources/CryptoSwift/Int+Extension.swift"; sourceTree = "<group>"; };
 		633BDFEC38BB4C7E26B4228D81EDD9B9 /* LineChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineChartView.swift; path = Source/Charts/Charts/LineChartView.swift; sourceTree = "<group>"; };
-		63C849FA9DF583B8E806FEB3DF6CB796 /* script.c */ = {isa = PBXFileReference; includeInIndex = 1; name = script.c; path = "trezor-crypto/script.c"; sourceTree = "<group>"; };
+		63C849FA9DF583B8E806FEB3DF6CB796 /* script.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = script.c; path = "trezor-crypto/script.c"; sourceTree = "<group>"; };
 		64703EE748BFB7F66387593EC835EB86 /* String+FoundationExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+FoundationExtension.swift"; path = "Sources/CryptoSwift/Foundation/String+FoundationExtension.swift"; sourceTree = "<group>"; };
 		649AEB2FF246589F6DFF8A0E59269B8D /* scalar_low_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = scalar_low_impl.h; path = secp256k1_ios/src/scalar_low_impl.h; sourceTree = "<group>"; };
 		64E29709930B5F203EC27997877D3426 /* ed25519-donna-32bit-tables.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ed25519-donna-32bit-tables.h"; path = "trezor-crypto/ed25519-donna/ed25519-donna-32bit-tables.h"; sourceTree = "<group>"; };
@@ -1060,13 +1060,13 @@
 		65EFBF1C610BDED9F9EC5ED61D128F5C /* POPPropertyAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPPropertyAnimation.h; path = pop/POPPropertyAnimation.h; sourceTree = "<group>"; };
 		66139537B41EAABCDBEA62E77E03F08C /* PopupDialogDefaultView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupDialogDefaultView.swift; path = PopupDialog/Classes/PopupDialogDefaultView.swift; sourceTree = "<group>"; };
 		665D92E780F5898844F81FE36FAF4FF9 /* ed25519-hash-custom.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ed25519-hash-custom.h"; path = "trezor-crypto/ed25519-donna/ed25519-hash-custom.h"; sourceTree = "<group>"; };
-		67E3AC18F461FE548616FB0609AB6EF7 /* lax_der_parsing.c */ = {isa = PBXFileReference; includeInIndex = 1; name = lax_der_parsing.c; path = secp256k1_ios/contrib/lax_der_parsing.c; sourceTree = "<group>"; };
+		67E3AC18F461FE548616FB0609AB6EF7 /* lax_der_parsing.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = lax_der_parsing.c; path = secp256k1_ios/contrib/lax_der_parsing.c; sourceTree = "<group>"; };
 		681B3EA3C12FAE9D0BC33DFB5612E2AE /* MarkerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkerView.swift; path = Source/Charts/Components/MarkerView.swift; sourceTree = "<group>"; };
 		6887BA6671794A41B36742585B6847E5 /* HKDF.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HKDF.swift; path = Sources/CryptoSwift/HKDF.swift; sourceTree = "<group>"; };
-		68E5AEB83711D2674B4502895E62092E /* curves.c */ = {isa = PBXFileReference; includeInIndex = 1; name = curves.c; path = "trezor-crypto/curves.c"; sourceTree = "<group>"; };
+		68E5AEB83711D2674B4502895E62092E /* curves.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = curves.c; path = "trezor-crypto/curves.c"; sourceTree = "<group>"; };
 		694BAE819CA3A6DAB68C4161D25D1949 /* BarChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarChartRenderer.swift; path = Source/Charts/Renderers/BarChartRenderer.swift; sourceTree = "<group>"; };
 		69CF28FFD1F1E0FC4AC461B0278E6CE1 /* LOTCompositionContainer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTCompositionContainer.m; path = "lottie-ios/Classes/AnimatableLayers/LOTCompositionContainer.m"; sourceTree = "<group>"; };
-		69EF9FE519B97CAA2A6AF7E1141ADAA3 /* blake2b.c */ = {isa = PBXFileReference; includeInIndex = 1; name = blake2b.c; path = "trezor-crypto/blake2b.c"; sourceTree = "<group>"; };
+		69EF9FE519B97CAA2A6AF7E1141ADAA3 /* blake2b.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = blake2b.c; path = "trezor-crypto/blake2b.c"; sourceTree = "<group>"; };
 		6A09635F1A71A0187D080EADDF81DCA6 /* LOTRepeaterRenderer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTRepeaterRenderer.m; path = "lottie-ios/Classes/RenderSystem/RenderNodes/LOTRepeaterRenderer.m"; sourceTree = "<group>"; };
 		6A2D830CDA6C4B8D375E47C2C08B4954 /* LOTShapeGradientFill.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTShapeGradientFill.h; path = "lottie-ios/Classes/Models/LOTShapeGradientFill.h"; sourceTree = "<group>"; };
 		6A428F8AA73758E05A1B9FE064531D92 /* PieRadarChartViewBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieRadarChartViewBase.swift; path = Source/Charts/Charts/PieRadarChartViewBase.swift; sourceTree = "<group>"; };
@@ -1077,9 +1077,9 @@
 		6DA8A0EEC0B48E58CABEC10DB6177A6D /* DottedLineView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DottedLineView-dummy.m"; sourceTree = "<group>"; };
 		6DC803732488E132A9B918597FD932B3 /* Bit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bit.swift; path = Sources/CryptoSwift/Bit.swift; sourceTree = "<group>"; };
 		6E05BC212EB95A87B1350F9157FAC7D7 /* SwiftTheme-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftTheme-umbrella.h"; sourceTree = "<group>"; };
-		6E8115946CDDC1F30199359C01919784 /* rand.c */ = {isa = PBXFileReference; includeInIndex = 1; name = rand.c; path = "trezor-crypto/rand.c"; sourceTree = "<group>"; };
+		6E8115946CDDC1F30199359C01919784 /* rand.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = rand.c; path = "trezor-crypto/rand.c"; sourceTree = "<group>"; };
 		6EC54898714EE95C4A6790210F80CF55 /* Padding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Padding.swift; path = Sources/CryptoSwift/Padding.swift; sourceTree = "<group>"; };
-		6F707D165BECB103BB0947AA9904B467 /* sha2.c */ = {isa = PBXFileReference; includeInIndex = 1; name = sha2.c; path = "trezor-crypto/sha2.c"; sourceTree = "<group>"; };
+		6F707D165BECB103BB0947AA9904B467 /* sha2.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = sha2.c; path = "trezor-crypto/sha2.c"; sourceTree = "<group>"; };
 		6FC38D89BF78D0F3278D8D0A19C97F0B /* SipHash-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SipHash-dummy.m"; sourceTree = "<group>"; };
 		708EDCB9DCADB3B4E9ACBDA3088E12FF /* LOTShapePath.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTShapePath.m; path = "lottie-ios/Classes/Models/LOTShapePath.m"; sourceTree = "<group>"; };
 		70A59754C80FC7EC3C048BBD56F286C3 /* secp256k1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = secp256k1.h; path = secp256k1_ios/include/secp256k1.h; sourceTree = "<group>"; };
@@ -1092,7 +1092,7 @@
 		71EE9D56E9BB2F43F2DF8F1ADC234696 /* basic-config.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "basic-config.h"; path = "secp256k1_ios/src/basic-config.h"; sourceTree = "<group>"; };
 		7250B485F35FBD42FB78FA61310C84E7 /* ThemeCGFloatPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeCGFloatPicker.swift; path = Source/ThemeCGFloatPicker.swift; sourceTree = "<group>"; };
 		729D8CD9984961F10997D60137F2658D /* LOTNumberInterpolator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTNumberInterpolator.h; path = "lottie-ios/Classes/RenderSystem/InterpolatorNodes/LOTNumberInterpolator.h"; sourceTree = "<group>"; };
-		736562CB877BC6C9BCC70C66CFA69BA6 /* Pods_loopr_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_loopr_iosUITests.framework; path = "Pods-loopr-iosUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		736562CB877BC6C9BCC70C66CFA69BA6 /* Pods_loopr_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		738A99891205FF48C1CBC4B491216BDE /* Division.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Division.swift; path = sources/Division.swift; sourceTree = "<group>"; };
 		75267EC4018CDAAF991FDE996D92F078 /* blake2s.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = blake2s.h; path = "trezor-crypto/blake2s.h"; sourceTree = "<group>"; };
 		752CED8754DEEF3A6C7F297A906E4540 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1105,9 +1105,9 @@
 		78382C4290EB7A1C30263E4D762F2198 /* PKCS7.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKCS7.swift; path = Sources/CryptoSwift/PKCS/PKCS7.swift; sourceTree = "<group>"; };
 		79F09554E61668C44CC643BA89E394E4 /* YAxis.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAxis.swift; path = Source/Charts/Components/YAxis.swift; sourceTree = "<group>"; };
 		7A5E2BE3DB1C950FF8441B2BA17101FD /* LOTShapeRepeater.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTShapeRepeater.h; path = "lottie-ios/Classes/Models/LOTShapeRepeater.h"; sourceTree = "<group>"; };
-		7A603A87D95F9DBEA9ACF40E84B92633 /* POPBasicAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPBasicAnimation.mm; path = pop/POPBasicAnimation.mm; sourceTree = "<group>"; };
+		7A603A87D95F9DBEA9ACF40E84B92633 /* POPBasicAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPBasicAnimation.mm; path = pop/POPBasicAnimation.mm; sourceTree = "<group>"; };
 		7A60F83546DE21288AC196483482693E /* Array+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Array+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/Array+Foundation.swift"; sourceTree = "<group>"; };
-		7AA9A045E82CF759D3F5CC74670B91B3 /* aestab.c */ = {isa = PBXFileReference; includeInIndex = 1; name = aestab.c; path = "trezor-crypto/aes/aestab.c"; sourceTree = "<group>"; };
+		7AA9A045E82CF759D3F5CC74670B91B3 /* aestab.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = aestab.c; path = "trezor-crypto/aes/aestab.c"; sourceTree = "<group>"; };
 		7AEBD745A10D16FD19F36BF572EF108A /* ChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartDataProvider.swift; path = Source/Charts/Interfaces/ChartDataProvider.swift; sourceTree = "<group>"; };
 		7B0FE695BF8805826D243399FE49F55F /* AnimatedMoveViewJob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedMoveViewJob.swift; path = Source/Charts/Jobs/AnimatedMoveViewJob.swift; sourceTree = "<group>"; };
 		7B8A7D94AAA8F75B4A8C94E0EDF5938C /* NSValue+Compat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSValue+Compat.m"; path = "lottie-ios/Classes/MacCompatability/NSValue+Compat.m"; sourceTree = "<group>"; };
@@ -1118,14 +1118,14 @@
 		7C51F81ABAD2275FA45E3D491CD78EE2 /* LOTPolystarAnimator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTPolystarAnimator.m; path = "lottie-ios/Classes/RenderSystem/AnimatorNodes/LOTPolystarAnimator.m"; sourceTree = "<group>"; };
 		7C9BA1910D219E43AE8E1A2FA3F6A7EA /* POPAnimator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimator.h; path = pop/POPAnimator.h; sourceTree = "<group>"; };
 		7CD487DB225704A12F7BAEDD4A59C59E /* sha2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sha2.h; path = "trezor-crypto/sha2.h"; sourceTree = "<group>"; };
-		7D2AB9BE702627343792D5A9D20530BE /* Pods-loopr-iosTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-loopr-iosTests.modulemap"; sourceTree = "<group>"; };
+		7D2AB9BE702627343792D5A9D20530BE /* Pods-loopr-iosTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-loopr-iosTests.modulemap"; sourceTree = "<group>"; };
 		7D2CB71836F89B53DB8726BBEF1AFB23 /* rfc7539.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rfc7539.h; path = "trezor-crypto/chacha20poly1305/rfc7539.h"; sourceTree = "<group>"; };
 		7D8FBD1DECAFE5A46F03B1FD08CEABE9 /* SHA1.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SHA1.swift; path = Sources/CryptoSwift/SHA1.swift; sourceTree = "<group>"; };
 		7D99043407E86E7972DF76EE45D76555 /* TagListView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TagListView.swift; path = TagListView/TagListView.swift; sourceTree = "<group>"; };
 		7EB6A928D984353B72C0833C2964731B /* IBarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IBarChartDataSet.swift; path = Source/Charts/Data/Interfaces/IBarChartDataSet.swift; sourceTree = "<group>"; };
 		7F0A8801A2835728C2A21A7B955E7060 /* bip39.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bip39.h; path = "trezor-crypto/bip39.h"; sourceTree = "<group>"; };
 		7F60FE5BC59DE90A899ACB3061E793F0 /* ThemeCGColorPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeCGColorPicker.swift; path = Source/ThemeCGColorPicker.swift; sourceTree = "<group>"; };
-		8004C6C81329E8902F422463D56027AB /* TrezorCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TrezorCrypto.framework; path = TrezorCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8004C6C81329E8902F422463D56027AB /* TrezorCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TrezorCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8008E767DDB33124F3CA945A681068F7 /* LOTAnimatedSwitch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTAnimatedSwitch.h; path = "lottie-ios/Classes/PublicHeaders/LOTAnimatedSwitch.h"; sourceTree = "<group>"; };
 		803F5117F2A6CDBD2D7668A8526C598B /* ed25519.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ed25519.h; path = "trezor-crypto/ed25519-donna/ed25519.h"; sourceTree = "<group>"; };
 		8083CC76204CB06305EDA61200D1FEC2 /* LOTAnimationView_Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTAnimationView_Internal.h; path = "lottie-ios/Classes/Private/LOTAnimationView_Internal.h"; sourceTree = "<group>"; };
@@ -1137,16 +1137,16 @@
 		827726DA9E53F1686B82BEB56B915FFD /* LOTAnimatedSwitch.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTAnimatedSwitch.m; path = "lottie-ios/Classes/Private/LOTAnimatedSwitch.m"; sourceTree = "<group>"; };
 		82853A76F62FFF42ECEB7D0B6EC0733E /* poly1305-donna-32.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "poly1305-donna-32.h"; path = "trezor-crypto/chacha20poly1305/poly1305-donna-32.h"; sourceTree = "<group>"; };
 		829290B0598FE5066E9115731CCF2579 /* num_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = num_impl.h; path = secp256k1_ios/src/num_impl.h; sourceTree = "<group>"; };
-		82948A1846A088F8576E46B0811275F9 /* secp256k1_ios.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = secp256k1_ios.modulemap; sourceTree = "<group>"; };
+		82948A1846A088F8576E46B0811275F9 /* secp256k1_ios.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = secp256k1_ios.modulemap; sourceTree = "<group>"; };
 		82D7CD54ECC9EFEAA1C27B3E77C7B30F /* CALayer+Compat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CALayer+Compat.h"; path = "lottie-ios/Classes/MacCompatability/CALayer+Compat.h"; sourceTree = "<group>"; };
 		82F0EA41D9E08D2FAEE97560EFADD33F /* LOTFillRenderer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTFillRenderer.m; path = "lottie-ios/Classes/RenderSystem/RenderNodes/LOTFillRenderer.m"; sourceTree = "<group>"; };
-		830B2D57A6DAE7970A6C39373FB4B764 /* POPAnimationTracer.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimationTracer.mm; path = pop/POPAnimationTracer.mm; sourceTree = "<group>"; };
+		830B2D57A6DAE7970A6C39373FB4B764 /* POPAnimationTracer.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationTracer.mm; path = pop/POPAnimationTracer.mm; sourceTree = "<group>"; };
 		832475A5F43FC76AFF1BC6C8DEEF1990 /* PieHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieHighlighter.swift; path = Source/Charts/Highlight/PieHighlighter.swift; sourceTree = "<group>"; };
 		8373349656A2E678674EC74BFFB2D8C1 /* ILineScatterCandleRadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ILineScatterCandleRadarChartDataSet.swift; path = Source/Charts/Data/Interfaces/ILineScatterCandleRadarChartDataSet.swift; sourceTree = "<group>"; };
 		83870435DDD735C34BD819C07329CF6C /* CombinedChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombinedChartData.swift; path = Source/Charts/Data/Implementations/Standard/CombinedChartData.swift; sourceTree = "<group>"; };
 		83CAB849CEB10AC3096177D07E07FC40 /* BarHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarHighlighter.swift; path = Source/Charts/Highlight/BarHighlighter.swift; sourceTree = "<group>"; };
 		844A31B82F11FBB1C677BC71AB8BBF4B /* TrezorCrypto.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TrezorCrypto.xcconfig; sourceTree = "<group>"; };
-		844D528B9977FA3BCB9A45FD4E22B1B9 /* ed25519.c */ = {isa = PBXFileReference; includeInIndex = 1; name = ed25519.c; path = "trezor-crypto/ed25519-donna/ed25519.c"; sourceTree = "<group>"; };
+		844D528B9977FA3BCB9A45FD4E22B1B9 /* ed25519.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ed25519.c; path = "trezor-crypto/ed25519-donna/ed25519.c"; sourceTree = "<group>"; };
 		8492C61174189E38D74D48DF66DB7E8A /* ChartUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartUtils.swift; path = Source/Charts/Utils/ChartUtils.swift; sourceTree = "<group>"; };
 		85F3BDFD454A9794CB9B3C575C55ED89 /* String+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+Extension.swift"; path = "Sources/CryptoSwift/String+Extension.swift"; sourceTree = "<group>"; };
 		8629869063D8BDB2719DC14A5C011A40 /* ChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/ChartDataEntry.swift; sourceTree = "<group>"; };
@@ -1157,7 +1157,7 @@
 		8918D8D94C48A22227F7585B6476B201 /* IRadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IRadarChartDataSet.swift; path = Source/Charts/Data/Interfaces/IRadarChartDataSet.swift; sourceTree = "<group>"; };
 		892A92B23AEAAC92F9575CA1F443F873 /* LOTCircleAnimator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTCircleAnimator.h; path = "lottie-ios/Classes/RenderSystem/AnimatorNodes/LOTCircleAnimator.h"; sourceTree = "<group>"; };
 		892D8AA8CE862E40F4D26850DEBD2AC5 /* LOTPointInterpolator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTPointInterpolator.h; path = "lottie-ios/Classes/RenderSystem/InterpolatorNodes/LOTPointInterpolator.h"; sourceTree = "<group>"; };
-		89F71F7CD29C5797C9E19E1B3DCB4A7C /* curve25519-donna-helpers.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "curve25519-donna-helpers.c"; path = "trezor-crypto/ed25519-donna/curve25519-donna-helpers.c"; sourceTree = "<group>"; };
+		89F71F7CD29C5797C9E19E1B3DCB4A7C /* curve25519-donna-helpers.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "curve25519-donna-helpers.c"; path = "trezor-crypto/ed25519-donna/curve25519-donna-helpers.c"; sourceTree = "<group>"; };
 		8A4BA7FC88F14AFB7B982B0C4E4A45C8 /* ed25519-donna-impl-base.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ed25519-donna-impl-base.h"; path = "trezor-crypto/ed25519-donna/ed25519-donna-impl-base.h"; sourceTree = "<group>"; };
 		8A9D4C08CFAAC27830AE3FB305DE1A5A /* options.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = options.h; path = "trezor-crypto/options.h"; sourceTree = "<group>"; };
 		8B90971BD099C97FFC2B902825548BFD /* ecmult_const_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ecmult_const_impl.h; path = secp256k1_ios/src/ecmult_const_impl.h; sourceTree = "<group>"; };
@@ -1187,12 +1187,12 @@
 		91B4BB504EBF4396B133BFE700632F1B /* Strideable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Strideable.swift; path = sources/Strideable.swift; sourceTree = "<group>"; };
 		91B6531EEDDF355BC611CB2BB27255A6 /* Pods-loopr-ios-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-loopr-ios-umbrella.h"; sourceTree = "<group>"; };
 		9217F8334150394B98F09A7D51635B87 /* IBarLineScatterCandleBubbleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IBarLineScatterCandleBubbleChartDataSet.swift; path = Source/Charts/Data/Interfaces/IBarLineScatterCandleBubbleChartDataSet.swift; sourceTree = "<group>"; };
-		92C4EF60C9E6AE92502442026CBFA662 /* PopupDialog.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = PopupDialog.modulemap; sourceTree = "<group>"; };
+		92C4EF60C9E6AE92502442026CBFA662 /* PopupDialog.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PopupDialog.modulemap; sourceTree = "<group>"; };
 		92E1718F64E3CDA0893F3BF7275B8834 /* LOTComposition.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTComposition.h; path = "lottie-ios/Classes/PublicHeaders/LOTComposition.h"; sourceTree = "<group>"; };
 		930B8362A960F6917E42B20D67CC7E6B /* InteractiveTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InteractiveTransition.swift; path = PopupDialog/Classes/InteractiveTransition.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93ED0711A96E962B61F258D90D2701DC /* Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Sources/CryptoSwift/Utils.swift; sourceTree = "<group>"; };
-		945510434D159619882DEA8914C0F649 /* Pods-loopr-iosUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-loopr-iosUITests.modulemap"; sourceTree = "<group>"; };
+		945510434D159619882DEA8914C0F649 /* Pods-loopr-iosUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-loopr-iosUITests.modulemap"; sourceTree = "<group>"; };
 		946CA7F096A1AB0B1C41DC6086095D6B /* PopupDialog-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PopupDialog-umbrella.h"; sourceTree = "<group>"; };
 		946D0C40D05288EBB452ECE95624FBCD /* LOTColorInterpolator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTColorInterpolator.h; path = "lottie-ios/Classes/RenderSystem/InterpolatorNodes/LOTColorInterpolator.h"; sourceTree = "<group>"; };
 		94A497AE8A082C15398D6B16804B984F /* ecmult_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ecmult_impl.h; path = secp256k1_ios/src/ecmult_impl.h; sourceTree = "<group>"; };
@@ -1209,16 +1209,16 @@
 		98F2DB007F6BAA6C7B55F2D0EDDB9854 /* LOTComposition.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTComposition.m; path = "lottie-ios/Classes/Private/LOTComposition.m"; sourceTree = "<group>"; };
 		992D2DCB14234EFCF165935116B40B97 /* POPDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPDefines.h; path = pop/POPDefines.h; sourceTree = "<group>"; };
 		9A553A410B4E9CDA021AEEFE7BD35E52 /* blake2b.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = blake2b.h; path = "trezor-crypto/blake2b.h"; sourceTree = "<group>"; };
-		9A59FAB364ACD2E385200B27990D5F06 /* TagListView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = TagListView.modulemap; sourceTree = "<group>"; };
+		9A59FAB364ACD2E385200B27990D5F06 /* TagListView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TagListView.modulemap; sourceTree = "<group>"; };
 		9A7D1C17AE771340E3FA410749B8D571 /* ecdsa.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ecdsa.h; path = secp256k1_ios/src/ecdsa.h; sourceTree = "<group>"; };
 		9AC4FFBA4F71E0DE6998C7B4C076857A /* ecdsa_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ecdsa_impl.h; path = secp256k1_ios/src/ecdsa_impl.h; sourceTree = "<group>"; };
-		9AD258D6181C5EE86A28C754C3EBCEA3 /* bip39.c */ = {isa = PBXFileReference; includeInIndex = 1; name = bip39.c; path = "trezor-crypto/bip39.c"; sourceTree = "<group>"; };
-		9AED609D4202081E205006647595EC82 /* pop.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = pop.modulemap; sourceTree = "<group>"; };
+		9AD258D6181C5EE86A28C754C3EBCEA3 /* bip39.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = bip39.c; path = "trezor-crypto/bip39.c"; sourceTree = "<group>"; };
+		9AED609D4202081E205006647595EC82 /* pop.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = pop.modulemap; sourceTree = "<group>"; };
 		9B328B192DA3B39704C08686E6EF3AD1 /* DottedLineView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DottedLineView.swift; path = DottedLineView/Classes/DottedLineView.swift; sourceTree = "<group>"; };
 		9B8A65CD87A7C0C29395EAD03EAB8E77 /* scalar_8x32_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = scalar_8x32_impl.h; path = secp256k1_ios/src/scalar_8x32_impl.h; sourceTree = "<group>"; };
-		9BB59A200BB92FD6CC3DEE7903557E21 /* rc4.c */ = {isa = PBXFileReference; includeInIndex = 1; name = rc4.c; path = "trezor-crypto/rc4.c"; sourceTree = "<group>"; };
+		9BB59A200BB92FD6CC3DEE7903557E21 /* rc4.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = rc4.c; path = "trezor-crypto/rc4.c"; sourceTree = "<group>"; };
 		9BB8D2C95D640193CE2CE56CBB465483 /* Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Sources/CryptoSwift/Operators.swift; sourceTree = "<group>"; };
-		9C004B0C818342A2A2D2196F1196F8AE /* FontBlaster.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = FontBlaster.modulemap; sourceTree = "<group>"; };
+		9C004B0C818342A2A2D2196F1196F8AE /* FontBlaster.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FontBlaster.modulemap; sourceTree = "<group>"; };
 		9C1A683A0A79E8EB6A2024DF42BFF192 /* secp256k1_ios.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = secp256k1_ios.h; path = secp256k1_ios/secp256k1_ios.h; sourceTree = "<group>"; };
 		9D5127013A6FE2DFBAEDB4970BD83CB1 /* POPSpringAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPSpringAnimation.h; path = pop/POPSpringAnimation.h; sourceTree = "<group>"; };
 		9D8BD9D61E541A988B7083EE0CE4E3A8 /* LOTShapeStar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTShapeStar.h; path = "lottie-ios/Classes/Models/LOTShapeStar.h"; sourceTree = "<group>"; };
@@ -1227,7 +1227,7 @@
 		9DCC5A29E96ACAE19F017B53EB0C3B01 /* LOTShapeStroke.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTShapeStroke.m; path = "lottie-ios/Classes/Models/LOTShapeStroke.m"; sourceTree = "<group>"; };
 		9DE13B2E23821D9F24054BFEA86F8839 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
 		9DEF364B11615070BE8069AD3D9035D6 /* BarChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/BarChartDataEntry.swift; sourceTree = "<group>"; };
-		9E233A1CFFDA5663E6A2524C2632DA18 /* POPAnimationRuntime.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimationRuntime.mm; path = pop/POPAnimationRuntime.mm; sourceTree = "<group>"; };
+		9E233A1CFFDA5663E6A2524C2632DA18 /* POPAnimationRuntime.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationRuntime.mm; path = pop/POPAnimationRuntime.mm; sourceTree = "<group>"; };
 		9E6AF5DB8537024AE9953774EB4B97BB /* Data Conversion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Data Conversion.swift"; path = "sources/Data Conversion.swift"; sourceTree = "<group>"; };
 		9F42D203636A02F7AFBD6F51669815D6 /* Charts.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Charts.xcconfig; sourceTree = "<group>"; };
 		9FC6980BF1028FB6DBB1D35A43569EA7 /* PopupDialog+Keyboard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PopupDialog+Keyboard.swift"; path = "PopupDialog/Classes/PopupDialog+Keyboard.swift"; sourceTree = "<group>"; };
@@ -1237,13 +1237,13 @@
 		A180083B4615370A4F5ABAD65B30EA34 /* ILineRadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ILineRadarChartDataSet.swift; path = Source/Charts/Data/Interfaces/ILineRadarChartDataSet.swift; sourceTree = "<group>"; };
 		A1CE7706161D58DCCDCAED51BF89122C /* LOTLayerContainer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTLayerContainer.h; path = "lottie-ios/Classes/AnimatableLayers/LOTLayerContainer.h"; sourceTree = "<group>"; };
 		A1FC1531766C426DFAFF591B4A7E8602 /* ecmult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ecmult.h; path = secp256k1_ios/src/ecmult.h; sourceTree = "<group>"; };
-		A276660C4B6484B44B3B87A0E4B0C0C5 /* ed25519-sha3.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "ed25519-sha3.c"; path = "trezor-crypto/ed25519-donna/ed25519-sha3.c"; sourceTree = "<group>"; };
+		A276660C4B6484B44B3B87A0E4B0C0C5 /* ed25519-sha3.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "ed25519-sha3.c"; path = "trezor-crypto/ed25519-donna/ed25519-sha3.c"; sourceTree = "<group>"; };
 		A39EB93D1BD3A0E9293EFF4CA2C621DB /* DigestType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DigestType.swift; path = Sources/CryptoSwift/DigestType.swift; sourceTree = "<group>"; };
 		A4100146BE65180B9B8A5E0DC4B6DAB8 /* Pods-loopr-ios-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-loopr-ios-acknowledgements.plist"; sourceTree = "<group>"; };
 		A4C32D9C1DDFF7359B2F1339188050D6 /* XAxisRendererHorizontalBarChart.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XAxisRendererHorizontalBarChart.swift; path = Source/Charts/Renderers/XAxisRendererHorizontalBarChart.swift; sourceTree = "<group>"; };
 		A5315BCA1D03171B5541B5F16DA0A4C6 /* BubbleChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartRenderer.swift; path = Source/Charts/Renderers/BubbleChartRenderer.swift; sourceTree = "<group>"; };
 		A58771661210F418051D0D5484AAA938 /* ThemeStatusBarStylePicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeStatusBarStylePicker.swift; path = Source/ThemeStatusBarStylePicker.swift; sourceTree = "<group>"; };
-		A59CCA925F5D73CA4791AF3E1ED0DBAF /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Charts.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A59CCA925F5D73CA4791AF3E1ED0DBAF /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5E6FF735D33D83349EA64DB1F689F8C /* LOTAnimationCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTAnimationCache.m; path = "lottie-ios/Classes/Private/LOTAnimationCache.m"; sourceTree = "<group>"; };
 		A6C356BE223E0BC15B1EA47883A12643 /* ICandleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ICandleChartDataSet.swift; path = Source/Charts/Data/Interfaces/ICandleChartDataSet.swift; sourceTree = "<group>"; };
 		A6E72704FF2E32B320D842517EC5A899 /* Pods-loopr-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-loopr-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1256,25 +1256,25 @@
 		A994BA9387797858FE6863C2A20C7A38 /* BarLineScatterCandleBubbleChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarLineScatterCandleBubbleChartData.swift; path = Source/Charts/Data/Implementations/Standard/BarLineScatterCandleBubbleChartData.swift; sourceTree = "<group>"; };
 		AA0D9591A19212BD8EE8E546B2DA6F6E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA0EDE8C2E1EF45C553630BECBF408B0 /* PBKDF2.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PBKDF2.swift; path = Sources/CryptoSwift/PKCS/PBKDF2.swift; sourceTree = "<group>"; };
-		AAE4D032211CAC434C2513526CD52534 /* aeskey.c */ = {isa = PBXFileReference; includeInIndex = 1; name = aeskey.c; path = "trezor-crypto/aes/aeskey.c"; sourceTree = "<group>"; };
+		AAE4D032211CAC434C2513526CD52534 /* aeskey.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = aeskey.c; path = "trezor-crypto/aes/aeskey.c"; sourceTree = "<group>"; };
 		AAFF37C403A595B8EE6A37CB3AB13E7A /* LOTPathInterpolator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTPathInterpolator.m; path = "lottie-ios/Classes/RenderSystem/InterpolatorNodes/LOTPathInterpolator.m"; sourceTree = "<group>"; };
 		AB561E48430F57668DD75EED417D4371 /* POPAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimation.h; path = pop/POPAnimation.h; sourceTree = "<group>"; };
 		ABB313E6940E73EB808F8670C38AEE7E /* Rabbit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Rabbit.swift; path = Sources/CryptoSwift/Rabbit.swift; sourceTree = "<group>"; };
-		ABE9EE43A5DFA5B18BC24149D1C10AD8 /* lax_der_privatekey_parsing.c */ = {isa = PBXFileReference; includeInIndex = 1; name = lax_der_privatekey_parsing.c; path = secp256k1_ios/contrib/lax_der_privatekey_parsing.c; sourceTree = "<group>"; };
+		ABE9EE43A5DFA5B18BC24149D1C10AD8 /* lax_der_privatekey_parsing.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = lax_der_privatekey_parsing.c; path = secp256k1_ios/contrib/lax_der_privatekey_parsing.c; sourceTree = "<group>"; };
 		AC3835237ABA2F245B8AA7DD4E0329A7 /* ed25519-donna-basepoint-table.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ed25519-donna-basepoint-table.h"; path = "trezor-crypto/ed25519-donna/ed25519-donna-basepoint-table.h"; sourceTree = "<group>"; };
 		AC77FF22EE34BBE55DE01D93189C6649 /* LOTCompositionContainer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTCompositionContainer.h; path = "lottie-ios/Classes/AnimatableLayers/LOTCompositionContainer.h"; sourceTree = "<group>"; };
-		ACB3491030F008C5449E79AAEC143FA6 /* POPAnimationEvent.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimationEvent.mm; path = pop/POPAnimationEvent.mm; sourceTree = "<group>"; };
+		ACB3491030F008C5449E79AAEC143FA6 /* POPAnimationEvent.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationEvent.mm; path = pop/POPAnimationEvent.mm; sourceTree = "<group>"; };
 		ACC7929C0A843989E9B4FD7DBCEF9394 /* CombinedChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombinedChartView.swift; path = Source/Charts/Charts/CombinedChartView.swift; sourceTree = "<group>"; };
 		ACF20FA605B441C5B7381734540A8FE6 /* IHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IHighlighter.swift; path = Source/Charts/Highlight/IHighlighter.swift; sourceTree = "<group>"; };
 		AD39D831FEE787DF4C6FC1627C5529D3 /* LOTKeyframe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTKeyframe.m; path = "lottie-ios/Classes/AnimatableProperties/LOTKeyframe.m"; sourceTree = "<group>"; };
-		AD95C130CA6AE4753F45DBE97F9E903E /* Pods_loopr_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_loopr_iosTests.framework; path = "Pods-loopr-iosTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD95C130CA6AE4753F45DBE97F9E903E /* Pods_loopr_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE4B91550D37745BD205CF351FD3771 /* Hashable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Hashable.swift; path = sources/Hashable.swift; sourceTree = "<group>"; };
 		AE5A5CAC875B88D6E2878246575E7A22 /* PKCS7Padding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKCS7Padding.swift; path = Sources/CryptoSwift/PKCS/PKCS7Padding.swift; sourceTree = "<group>"; };
 		AE755455DBDB184C0B16235DDA819107 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEAD7B940AEA6661FAE9488B691F95A5 /* POPBasicAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPBasicAnimationInternal.h; path = pop/POPBasicAnimationInternal.h; sourceTree = "<group>"; };
 		AF988113638EC9A3B57EA37950BD7BF9 /* BubbleChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartData.swift; path = Source/Charts/Data/Implementations/Standard/BubbleChartData.swift; sourceTree = "<group>"; };
 		AFD2DE80D599D223C8EC9024F62D806B /* memzero.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = memzero.h; path = "trezor-crypto/memzero.h"; sourceTree = "<group>"; };
-		B0967CB4EF95CE1AEE176C906AABD889 /* hasher.c */ = {isa = PBXFileReference; includeInIndex = 1; name = hasher.c; path = "trezor-crypto/hasher.c"; sourceTree = "<group>"; };
+		B0967CB4EF95CE1AEE176C906AABD889 /* hasher.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = hasher.c; path = "trezor-crypto/hasher.c"; sourceTree = "<group>"; };
 		B1452B0BDE1AD4679534A3454F3F8D76 /* PKCS5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKCS5.swift; path = Sources/CryptoSwift/PKCS/PKCS5.swift; sourceTree = "<group>"; };
 		B1527FEF84C45BED602EB93783ABBAF8 /* AnimatedZoomViewJob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedZoomViewJob.swift; path = Source/Charts/Jobs/AnimatedZoomViewJob.swift; sourceTree = "<group>"; };
 		B1B75DF2289DDAD060B0C8AF1A844A06 /* lax_der_parsing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = lax_der_parsing.h; path = secp256k1_ios/contrib/lax_der_parsing.h; sourceTree = "<group>"; };
@@ -1283,28 +1283,28 @@
 		B22847B1FA4E39F11F7FCA1D79B41BFE /* LOTRadialGradientLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTRadialGradientLayer.h; path = "lottie-ios/Classes/Extensions/LOTRadialGradientLayer.h"; sourceTree = "<group>"; };
 		B2BC3E8D6916A0D2B9D96B26A82FA4CB /* NSValue+Compat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSValue+Compat.h"; path = "lottie-ios/Classes/MacCompatability/NSValue+Compat.h"; sourceTree = "<group>"; };
 		B3040231FFEC48BC798CAA69802AE3FF /* LOTGradientFillRender.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTGradientFillRender.m; path = "lottie-ios/Classes/RenderSystem/RenderNodes/LOTGradientFillRender.m"; sourceTree = "<group>"; };
-		B36EACC24C65C954714BD4C91E57DBAE /* DottedLineView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = DottedLineView.modulemap; sourceTree = "<group>"; };
+		B36EACC24C65C954714BD4C91E57DBAE /* DottedLineView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = DottedLineView.modulemap; sourceTree = "<group>"; };
 		B4DDBE44B9BBBA7DE1350A0DDF591BD3 /* LOTRadialGradientLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTRadialGradientLayer.m; path = "lottie-ios/Classes/Extensions/LOTRadialGradientLayer.m"; sourceTree = "<group>"; };
 		B5B2C66BEE4BAF5A7C4BFEE7C1E0434E /* Pods-loopr-ios-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-loopr-ios-dummy.m"; sourceTree = "<group>"; };
 		B68F71913DE42A09AC2C1EC53C3151DB /* Platform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Platform.swift; path = Source/Charts/Utils/Platform.swift; sourceTree = "<group>"; };
-		B6CD1CB5D00C4B9C2E8B8A4B3053B45E /* nem.c */ = {isa = PBXFileReference; includeInIndex = 1; name = nem.c; path = "trezor-crypto/nem.c"; sourceTree = "<group>"; };
-		B6E23BC252E6A1F24933951C34CE1D99 /* lottie-ios.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "lottie-ios.modulemap"; sourceTree = "<group>"; };
+		B6CD1CB5D00C4B9C2E8B8A4B3053B45E /* nem.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = nem.c; path = "trezor-crypto/nem.c"; sourceTree = "<group>"; };
+		B6E23BC252E6A1F24933951C34CE1D99 /* lottie-ios.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "lottie-ios.modulemap"; sourceTree = "<group>"; };
 		B7D1E70D13DE3963D8C5AF354C35A187 /* Digest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Digest.swift; path = Sources/CryptoSwift/Digest.swift; sourceTree = "<group>"; };
 		B8BDCF150B6B30B54120037DDCEF1DC6 /* Pods-loopr-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-loopr-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B8C3574153E53AA804BBAC00F17A7FFC /* curve25519-donna-32bit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "curve25519-donna-32bit.h"; path = "trezor-crypto/ed25519-donna/curve25519-donna-32bit.h"; sourceTree = "<group>"; };
 		B8CB79C1C33DC47DA52346F993257F85 /* PopupDialogDefaultViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupDialogDefaultViewController.swift; path = PopupDialog/Classes/PopupDialogDefaultViewController.swift; sourceTree = "<group>"; };
-		B95D743E26EDB6DDF21598996556D515 /* blake256.c */ = {isa = PBXFileReference; includeInIndex = 1; name = blake256.c; path = "trezor-crypto/blake256.c"; sourceTree = "<group>"; };
+		B95D743E26EDB6DDF21598996556D515 /* blake256.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = blake256.c; path = "trezor-crypto/blake256.c"; sourceTree = "<group>"; };
 		B98511E330E0FAD8D818364440113025 /* PopupDialog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupDialog.swift; path = PopupDialog/Classes/PopupDialog.swift; sourceTree = "<group>"; };
 		B9AA855F39C3D967349654FFCB18EBE0 /* hmac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = hmac.h; path = "trezor-crypto/hmac.h"; sourceTree = "<group>"; };
 		B9F80188BA8ADA2D7D27A1B4869C1FC8 /* DefaultFillFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultFillFormatter.swift; path = Source/Charts/Formatters/DefaultFillFormatter.swift; sourceTree = "<group>"; };
 		BADEB07AC0BABCEF6C5FD91E31BBCCC5 /* POPAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationInternal.h; path = pop/POPAnimationInternal.h; sourceTree = "<group>"; };
 		BB3F5FE3E60D4E7B3B1240D4230EE5B3 /* BigInt-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BigInt-umbrella.h"; sourceTree = "<group>"; };
 		BD012A7FADEEF9553835583B078388E7 /* Cipher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cipher.swift; path = Sources/CryptoSwift/Cipher.swift; sourceTree = "<group>"; };
-		BD0C1A220CA4E0B6FE404DC4BAA0B0F6 /* POPDecayAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPDecayAnimation.mm; path = pop/POPDecayAnimation.mm; sourceTree = "<group>"; };
+		BD0C1A220CA4E0B6FE404DC4BAA0B0F6 /* POPDecayAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPDecayAnimation.mm; path = pop/POPDecayAnimation.mm; sourceTree = "<group>"; };
 		BD23FACCAFA6BC4EF302890259B5D44E /* PopupDialogDefaultButtons.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupDialogDefaultButtons.swift; path = PopupDialog/Classes/PopupDialogDefaultButtons.swift; sourceTree = "<group>"; };
 		BD3B2AC1B3FCD25EE26D7E935CD1EDD0 /* BarLineScatterCandleBubbleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarLineScatterCandleBubbleChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/BarLineScatterCandleBubbleChartDataSet.swift; sourceTree = "<group>"; };
 		BDCCB62096549A225B068305DB893948 /* IMarker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IMarker.swift; path = Source/Charts/Components/IMarker.swift; sourceTree = "<group>"; };
-		BE17F79CA1A82AB20B5D59B1687A5BF1 /* DottedLineView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DottedLineView.framework; path = DottedLineView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE17F79CA1A82AB20B5D59B1687A5BF1 /* DottedLineView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DottedLineView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE842311304F2B9E9C6C0E13801FE6F5 /* nem_serialize.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = nem_serialize.h; path = "trezor-crypto/nem_serialize.h"; sourceTree = "<group>"; };
 		BE84339F1955AE6C6E10DE06785CF1C8 /* Prime Test.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Prime Test.swift"; path = "sources/Prime Test.swift"; sourceTree = "<group>"; };
 		BE942C48778C401A794EAFAAD05F9713 /* PopupDialog-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PopupDialog-prefix.pch"; sourceTree = "<group>"; };
@@ -1319,21 +1319,21 @@
 		C29E81588485B9D8AF391E54A71F410B /* ScatterChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScatterChartView.swift; path = Source/Charts/Charts/ScatterChartView.swift; sourceTree = "<group>"; };
 		C2A69F442210363146659249E259187D /* lottie-ios-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "lottie-ios-dummy.m"; sourceTree = "<group>"; };
 		C34C20CEE206AAB7DE019CD4CAA6FB11 /* CandleStickChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CandleStickChartView.swift; path = Source/Charts/Charts/CandleStickChartView.swift; sourceTree = "<group>"; };
-		C34E5743F6189E82110891131A2D6788 /* modm-donna-32bit.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "modm-donna-32bit.c"; path = "trezor-crypto/ed25519-donna/modm-donna-32bit.c"; sourceTree = "<group>"; };
+		C34E5743F6189E82110891131A2D6788 /* modm-donna-32bit.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "modm-donna-32bit.c"; path = "trezor-crypto/ed25519-donna/modm-donna-32bit.c"; sourceTree = "<group>"; };
 		C388814C2764574754551DFADFA87EBC /* bignum.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bignum.h; path = "trezor-crypto/bignum.h"; sourceTree = "<group>"; };
 		C4297E8502304682629E87D411617F46 /* scalar_4x64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = scalar_4x64.h; path = secp256k1_ios/src/scalar_4x64.h; sourceTree = "<group>"; };
 		C460CE70A88624ABE05E51E2E3BFC0DA /* Bitwise Ops.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Bitwise Ops.swift"; path = "sources/Bitwise Ops.swift"; sourceTree = "<group>"; };
 		C491AD5BEBB671E63613D79A9047E723 /* LOTAnimatedControl.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTAnimatedControl.m; path = "lottie-ios/Classes/Private/LOTAnimatedControl.m"; sourceTree = "<group>"; };
 		C4F7A335A36C0B69A2ABD81150C81F72 /* field_5x52.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = field_5x52.h; path = secp256k1_ios/src/field_5x52.h; sourceTree = "<group>"; };
-		C546ACAD15D2623F9ADF7E494E6A80AA /* chacha20poly1305.c */ = {isa = PBXFileReference; includeInIndex = 1; name = chacha20poly1305.c; path = "trezor-crypto/chacha20poly1305/chacha20poly1305.c"; sourceTree = "<group>"; };
+		C546ACAD15D2623F9ADF7E494E6A80AA /* chacha20poly1305.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = chacha20poly1305.c; path = "trezor-crypto/chacha20poly1305/chacha20poly1305.c"; sourceTree = "<group>"; };
 		C5939EB84371CE9D093B68DF1989726F /* address.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = address.h; path = "trezor-crypto/address.h"; sourceTree = "<group>"; };
 		C6413F45887FEC97A6CEC59FF594D07E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		C6966F2F9262A04EF25D2F3D1C7EADC5 /* ecdsa.c */ = {isa = PBXFileReference; includeInIndex = 1; name = ecdsa.c; path = "trezor-crypto/ecdsa.c"; sourceTree = "<group>"; };
+		C6966F2F9262A04EF25D2F3D1C7EADC5 /* ecdsa.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ecdsa.c; path = "trezor-crypto/ecdsa.c"; sourceTree = "<group>"; };
 		C7268781520AB68C3A77155B5DFEB827 /* POPAnimationPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationPrivate.h; path = pop/POPAnimationPrivate.h; sourceTree = "<group>"; };
 		C7D7621EF7F1D801A1822E8F902549B8 /* Exponentiation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Exponentiation.swift; path = sources/Exponentiation.swift; sourceTree = "<group>"; };
-		C891E5DEC17ADE6F214BCB62F831A467 /* pop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = pop.framework; path = pop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C891E5DEC17ADE6F214BCB62F831A467 /* pop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = pop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8951328B992C27ACE5C4D6722FF7191 /* LOTAnimationView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTAnimationView.h; path = "lottie-ios/Classes/PublicHeaders/LOTAnimationView.h"; sourceTree = "<group>"; };
-		C8A9E3A4AE52250118C92B3E3CEC988C /* TransformationMatrix.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = TransformationMatrix.cpp; path = pop/WebCore/TransformationMatrix.cpp; sourceTree = "<group>"; };
+		C8A9E3A4AE52250118C92B3E3CEC988C /* TransformationMatrix.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = TransformationMatrix.cpp; path = pop/WebCore/TransformationMatrix.cpp; sourceTree = "<group>"; };
 		C8C4B636415E60A50716C764C6B2D672 /* pop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = pop.xcconfig; sourceTree = "<group>"; };
 		CA020B3D058AE76FD6367F8111EB42C8 /* IPieChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IPieChartDataSet.swift; path = Source/Charts/Data/Interfaces/IPieChartDataSet.swift; sourceTree = "<group>"; };
 		CA632C152B5DD9EB6B31E7C9CD6B6F94 /* ZoomViewJob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZoomViewJob.swift; path = Source/Charts/Jobs/ZoomViewJob.swift; sourceTree = "<group>"; };
@@ -1354,7 +1354,7 @@
 		D06E2BB51DEB647B9E326AF3F626F3AF /* Description.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Description.swift; path = Source/Charts/Components/Description.swift; sourceTree = "<group>"; };
 		D081F196225F380B1B6F153D8A719563 /* hash.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = hash.h; path = secp256k1_ios/src/hash.h; sourceTree = "<group>"; };
 		D0AD6A11F18F70F2DC2FC100028ACBEB /* NSObject+Theme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+Theme.swift"; path = "Source/NSObject+Theme.swift"; sourceTree = "<group>"; };
-		D0EE1F06795D583DB8283031022E3967 /* curve25519-donna-scalarmult-base.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "curve25519-donna-scalarmult-base.c"; path = "trezor-crypto/ed25519-donna/curve25519-donna-scalarmult-base.c"; sourceTree = "<group>"; };
+		D0EE1F06795D583DB8283031022E3967 /* curve25519-donna-scalarmult-base.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "curve25519-donna-scalarmult-base.c"; path = "trezor-crypto/ed25519-donna/curve25519-donna-scalarmult-base.c"; sourceTree = "<group>"; };
 		D1E849F1EA03714D518A309733424C35 /* util.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = util.h; path = secp256k1_ios/src/util.h; sourceTree = "<group>"; };
 		D1F96868678B8350C5DECCED8657E7D8 /* ed25519-hash-custom-sha3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ed25519-hash-custom-sha3.h"; path = "trezor-crypto/ed25519-donna/ed25519-hash-custom-sha3.h"; sourceTree = "<group>"; };
 		D23FE349B70E44A700EFE1F0FD538B3A /* Renderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Renderer.swift; path = Source/Charts/Renderers/Renderer.swift; sourceTree = "<group>"; };
@@ -1364,8 +1364,8 @@
 		D3A47159F84E13A3884C5E0943B66F7D /* LOTPolygonAnimator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTPolygonAnimator.m; path = "lottie-ios/Classes/RenderSystem/AnimatorNodes/LOTPolygonAnimator.m"; sourceTree = "<group>"; };
 		D3F5B9C53CD6AE18E10983BDAB898E2D /* IChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IChartDataSet.swift; path = Source/Charts/Data/Interfaces/IChartDataSet.swift; sourceTree = "<group>"; };
 		D4C242192C0A2F2C66E52E24747F77D1 /* RandomUInt64.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RandomUInt64.swift; path = SipHash/RandomUInt64.swift; sourceTree = "<group>"; };
-		D50B3BCF5F9158E587A21A82D35AC5BA /* curve25519-donna-32bit.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "curve25519-donna-32bit.c"; path = "trezor-crypto/ed25519-donna/curve25519-donna-32bit.c"; sourceTree = "<group>"; };
-		D55E9907378B7852B90539629334CD43 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Lottie.framework; path = "lottie-ios.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D50B3BCF5F9158E587A21A82D35AC5BA /* curve25519-donna-32bit.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "curve25519-donna-32bit.c"; path = "trezor-crypto/ed25519-donna/curve25519-donna-32bit.c"; sourceTree = "<group>"; };
+		D55E9907378B7852B90539629334CD43 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D66D3711E38B0E1AAE14ADC1E2A12AE7 /* POPDecayAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPDecayAnimation.h; path = pop/POPDecayAnimation.h; sourceTree = "<group>"; };
 		D68A25C4DE61663ED5A9667C9A58380B /* ChartAnimationEasing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartAnimationEasing.swift; path = Source/Charts/Animation/ChartAnimationEasing.swift; sourceTree = "<group>"; };
 		D71A06997537E7B4CA2A183E8CC93E05 /* ecmult_gen.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ecmult_gen.h; path = secp256k1_ios/src/ecmult_gen.h; sourceTree = "<group>"; };
@@ -1405,14 +1405,14 @@
 		E01F19B02C46F634BC1991B1DF3A9716 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E03AC165071352F70F00D4B8249A73B1 /* POPVector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPVector.h; path = pop/POPVector.h; sourceTree = "<group>"; };
 		E1160FED22322951FC064AD0D3539B66 /* ecdsa.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ecdsa.h; path = "trezor-crypto/ecdsa.h"; sourceTree = "<group>"; };
-		E19323CD8D1FC54EDC0817CB7C66F24D /* Charts.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Charts.modulemap; sourceTree = "<group>"; };
-		E1BD2C775F934BEBCEE471173FD94020 /* POPGeometry.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPGeometry.mm; path = pop/POPGeometry.mm; sourceTree = "<group>"; };
+		E19323CD8D1FC54EDC0817CB7C66F24D /* Charts.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Charts.modulemap; sourceTree = "<group>"; };
+		E1BD2C775F934BEBCEE471173FD94020 /* POPGeometry.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPGeometry.mm; path = pop/POPGeometry.mm; sourceTree = "<group>"; };
 		E2640F38368E6C3D667629B439A56876 /* eckey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = eckey.h; path = secp256k1_ios/src/eckey.h; sourceTree = "<group>"; };
 		E271369132176C0DDBAAE6FB52FDA4EC /* BlockModeWorker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlockModeWorker.swift; path = Sources/CryptoSwift/BlockMode/BlockModeWorker.swift; sourceTree = "<group>"; };
 		E2A27E7DEFE614923F6CAFE7A7A59B97 /* curve25519-donna-scalarmult-base.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "curve25519-donna-scalarmult-base.h"; path = "trezor-crypto/ed25519-donna/curve25519-donna-scalarmult-base.h"; sourceTree = "<group>"; };
 		E2F7DCB36409C9B65D9FB07543065ABF /* Pods-loopr-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-loopr-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		E354CF0EE2AB00AFCF97A53F0C152856 /* ChartDataRendererBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartDataRendererBase.swift; path = Source/Charts/Renderers/ChartDataRendererBase.swift; sourceTree = "<group>"; };
-		E393B46B8FE753F5C17D4C6E970CDFA1 /* Pods-loopr-ios.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-loopr-ios.modulemap"; sourceTree = "<group>"; };
+		E393B46B8FE753F5C17D4C6E970CDFA1 /* Pods-loopr-ios.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-loopr-ios.modulemap"; sourceTree = "<group>"; };
 		E3A3BFF397E29E138D387FCD94A09D98 /* ChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/ChartDataSet.swift; sourceTree = "<group>"; };
 		E3BC298BF37CC1F5B95AC2555F2335B0 /* rc4.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rc4.h; path = "trezor-crypto/rc4.h"; sourceTree = "<group>"; };
 		E42DDEFE9E50F319444313FE707F041B /* ed25519-donna.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ed25519-donna.h"; path = "trezor-crypto/ed25519-donna/ed25519-donna.h"; sourceTree = "<group>"; };
@@ -1424,15 +1424,15 @@
 		E6699A2626E6AEF7F3BCF49AE2CE7332 /* ThemeManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeManager.swift; path = Source/ThemeManager.swift; sourceTree = "<group>"; };
 		E67E1FC1379D0274E443BCC345FB9B0B /* LOTTrimPathNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTTrimPathNode.m; path = "lottie-ios/Classes/RenderSystem/ManipulatorNodes/LOTTrimPathNode.m"; sourceTree = "<group>"; };
 		E692932674F3445CD41532B0FEA35981 /* pop-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "pop-prefix.pch"; sourceTree = "<group>"; };
-		E7CA9658083B909CB2C89FF92E7C8EB7 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
+		E7CA9658083B909CB2C89FF92E7C8EB7 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
 		E7EA52E6F1BA85898EFA98C99F2F643E /* TransitionAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionAnimator.swift; path = PopupDialog/Classes/TransitionAnimator.swift; sourceTree = "<group>"; };
 		E9A41B95A9DA7BA303AA631BB15C6AEF /* DottedLineView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DottedLineView-umbrella.h"; sourceTree = "<group>"; };
 		EA2632EF9996BF91B6258715B20712E9 /* LOTAnimatedControl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTAnimatedControl.h; path = "lottie-ios/Classes/PublicHeaders/LOTAnimatedControl.h"; sourceTree = "<group>"; };
 		EA449CCCE6BA77CBA47BE905B9FA5538 /* eckey_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = eckey_impl.h; path = secp256k1_ios/src/eckey_impl.h; sourceTree = "<group>"; };
 		EA76D5BECF6FEF0803E3DD14A92C3CEB /* PopupDialog-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PopupDialog-dummy.m"; sourceTree = "<group>"; };
-		EA94D95F56E41ADCC9C95F1659308B2B /* nist256p1.table */ = {isa = PBXFileReference; includeInIndex = 1; name = nist256p1.table; path = "trezor-crypto/nist256p1.table"; sourceTree = "<group>"; };
-		EAC556A72FDD5E462D0403A065DB662B /* ed25519-donna-basepoint-table.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "ed25519-donna-basepoint-table.c"; path = "trezor-crypto/ed25519-donna/ed25519-donna-basepoint-table.c"; sourceTree = "<group>"; };
-		EB87465D01EB52CB38519F8E6422D37A /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyJSON.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA94D95F56E41ADCC9C95F1659308B2B /* nist256p1.table */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = nist256p1.table; path = "trezor-crypto/nist256p1.table"; sourceTree = "<group>"; };
+		EAC556A72FDD5E462D0403A065DB662B /* ed25519-donna-basepoint-table.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "ed25519-donna-basepoint-table.c"; path = "trezor-crypto/ed25519-donna/ed25519-donna-basepoint-table.c"; sourceTree = "<group>"; };
+		EB87465D01EB52CB38519F8E6422D37A /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA3D79D313E1FF947CE0E7D61FABED6 /* Charts-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Charts-dummy.m"; sourceTree = "<group>"; };
 		EC3B1D4198DD8B638E2B6BEC8EF67934 /* LOTShapePath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTShapePath.h; path = "lottie-ios/Classes/Models/LOTShapePath.h"; sourceTree = "<group>"; };
 		EC4224CA8946A39E20FAF52E5A073B92 /* LOTShapeTrimPath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTShapeTrimPath.h; path = "lottie-ios/Classes/Models/LOTShapeTrimPath.h"; sourceTree = "<group>"; };
@@ -1440,7 +1440,7 @@
 		EDEFA19BD8F27C3A3D480869309891E4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE2A3DFE4673A4BA038ACD661E2FD08D /* secp256k1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = secp256k1.h; path = "trezor-crypto/secp256k1.h"; sourceTree = "<group>"; };
 		EE857219F16A19BA30D9A1AC21A8CF8C /* Pods-loopr-iosTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-loopr-iosTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		EECF136BB312505977E28C9BFE90BEF4 /* POPCGUtils.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPCGUtils.mm; path = pop/POPCGUtils.mm; sourceTree = "<group>"; };
+		EECF136BB312505977E28C9BFE90BEF4 /* POPCGUtils.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPCGUtils.mm; path = pop/POPCGUtils.mm; sourceTree = "<group>"; };
 		EEE4E65113E196BDE905F9A41FB2244E /* scalar_low.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = scalar_low.h; path = secp256k1_ios/src/scalar_low.h; sourceTree = "<group>"; };
 		EF8BB854D9B74D475292E4EB8BA82704 /* hasher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = hasher.h; path = "trezor-crypto/hasher.h"; sourceTree = "<group>"; };
 		EFEFE68E7DCE939E8B45E90DCCB7A76B /* ThemeBarStylePicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeBarStylePicker.swift; path = Source/ThemeBarStylePicker.swift; sourceTree = "<group>"; };
@@ -1449,29 +1449,29 @@
 		F2E58787E206E1C1ED43A8993F423066 /* OFB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OFB.swift; path = Sources/CryptoSwift/BlockMode/OFB.swift; sourceTree = "<group>"; };
 		F2E72EB9627AEDE5A3592BB96AA6BF2A /* BlockMode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlockMode.swift; path = Sources/CryptoSwift/BlockMode/BlockMode.swift; sourceTree = "<group>"; };
 		F30F229EEF4F978A72F9839D174118E4 /* Fill.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Fill.swift; path = Source/Charts/Utils/Fill.swift; sourceTree = "<group>"; };
-		F31D424C1E897C08FB6B00ACB6B56DC0 /* rfc7539.c */ = {isa = PBXFileReference; includeInIndex = 1; name = rfc7539.c; path = "trezor-crypto/chacha20poly1305/rfc7539.c"; sourceTree = "<group>"; };
+		F31D424C1E897C08FB6B00ACB6B56DC0 /* rfc7539.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = rfc7539.c; path = "trezor-crypto/chacha20poly1305/rfc7539.c"; sourceTree = "<group>"; };
 		F370C4AED2766368F3EB08A4B7B81F3D /* UInt8+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UInt8+Extension.swift"; path = "Sources/CryptoSwift/UInt8+Extension.swift"; sourceTree = "<group>"; };
-		F378DBF6D02C98CA953CEC90FB69D00C /* POPPropertyAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPPropertyAnimation.mm; path = pop/POPPropertyAnimation.mm; sourceTree = "<group>"; };
+		F378DBF6D02C98CA953CEC90FB69D00C /* POPPropertyAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPPropertyAnimation.mm; path = pop/POPPropertyAnimation.mm; sourceTree = "<group>"; };
 		F3D6F939EE65D94FD57DE7BE60DC18DF /* LOTRenderNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTRenderNode.h; path = "lottie-ios/Classes/RenderSystem/LOTRenderNode.h"; sourceTree = "<group>"; };
 		F407944D6D8BF3ED77507B4626DDFC75 /* XShapeRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XShapeRenderer.swift; path = Source/Charts/Renderers/Scatter/XShapeRenderer.swift; sourceTree = "<group>"; };
 		F40B6B7234D44AF5180F9FD35823FA56 /* XAxisRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XAxisRenderer.swift; path = Source/Charts/Renderers/XAxisRenderer.swift; sourceTree = "<group>"; };
 		F41B1FACBFF14B4C0BB3F1D627F4ED89 /* POPDecayAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPDecayAnimationInternal.h; path = pop/POPDecayAnimationInternal.h; sourceTree = "<group>"; };
 		F4500368B59C3CFDAF1A4A850367F583 /* CandleChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CandleChartData.swift; path = Source/Charts/Data/Implementations/Standard/CandleChartData.swift; sourceTree = "<group>"; };
 		F59A96814B3744A68205101E57BD9B7E /* POPAnimationEventInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationEventInternal.h; path = pop/POPAnimationEventInternal.h; sourceTree = "<group>"; };
-		F5AB1D4479D07B25125552DE835585A9 /* POPLayerExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPLayerExtras.mm; path = pop/POPLayerExtras.mm; sourceTree = "<group>"; };
+		F5AB1D4479D07B25125552DE835585A9 /* POPLayerExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPLayerExtras.mm; path = pop/POPLayerExtras.mm; sourceTree = "<group>"; };
 		F5F77ED94E1DBDEC9C3A8A66C12BD8A0 /* LOTLayerGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTLayerGroup.h; path = "lottie-ios/Classes/Models/LOTLayerGroup.h"; sourceTree = "<group>"; };
 		F6215DBB90706EB6DEBA5C94C178BF1C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F64DFFD9AA5C59320C25ABCDA7CB2565 /* group_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = group_impl.h; path = secp256k1_ios/src/group_impl.h; sourceTree = "<group>"; };
 		F6931BCAAEDD3BE14C69C1147F87649F /* LineChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineChartDataProvider.swift; path = Source/Charts/Interfaces/LineChartDataProvider.swift; sourceTree = "<group>"; };
 		F6AF05177E59CB350A496A1EBACA67E6 /* RadarChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarChartView.swift; path = Source/Charts/Charts/RadarChartView.swift; sourceTree = "<group>"; };
-		F6D10846E435EDA426C00AE3FE36523A /* aescrypt.c */ = {isa = PBXFileReference; includeInIndex = 1; name = aescrypt.c; path = "trezor-crypto/aes/aescrypt.c"; sourceTree = "<group>"; };
+		F6D10846E435EDA426C00AE3FE36523A /* aescrypt.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = aescrypt.c; path = "trezor-crypto/aes/aescrypt.c"; sourceTree = "<group>"; };
 		F6D3B10D305AA2C37DF7F0D4830FB906 /* FontBlaster.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FontBlaster.xcconfig; sourceTree = "<group>"; };
 		F75BA57D6F68DD1713437660DE6AFE48 /* CryptoSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CryptoSwift-dummy.m"; sourceTree = "<group>"; };
 		F7732799B1B86A7AF8AB80F42A304305 /* LOTMaskContainer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTMaskContainer.m; path = "lottie-ios/Classes/AnimatableLayers/LOTMaskContainer.m"; sourceTree = "<group>"; };
 		F8A2B150916922B6790BCB0D6D882CB2 /* scratch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = scratch.h; path = secp256k1_ios/src/scratch.h; sourceTree = "<group>"; };
 		F8DCB07C9733ECAD5FBE6EC62A7E483E /* nist256p1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = nist256p1.h; path = "trezor-crypto/nist256p1.h"; sourceTree = "<group>"; };
 		F8F565651692E9450DE352866541EAF7 /* POPCustomAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPCustomAnimation.h; path = pop/POPCustomAnimation.h; sourceTree = "<group>"; };
-		F98274AC4E12587B6B6B3468E6FCF825 /* CryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CryptoSwift.framework; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F98274AC4E12587B6B6B3468E6FCF825 /* CryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9B6AC4A641A4E36EF1E5861740109A3 /* XAxis.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XAxis.swift; path = Source/Charts/Components/XAxis.swift; sourceTree = "<group>"; };
 		F9CD26AE81ED08B7E6F624F5E36DC2BF /* UIColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UIColor.m; path = "lottie-ios/Classes/MacCompatability/UIColor.m"; sourceTree = "<group>"; };
 		FA527799F6489D68C69E0DA022CAB8F6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1482,7 +1482,7 @@
 		FE3FB2E837964C48DB051819FB7934E4 /* Array+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Array+Extension.swift"; path = "Sources/CryptoSwift/Array+Extension.swift"; sourceTree = "<group>"; };
 		FE5EDCE53F2FFE836B836647B333E981 /* LOTCircleAnimator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTCircleAnimator.m; path = "lottie-ios/Classes/RenderSystem/AnimatorNodes/LOTCircleAnimator.m"; sourceTree = "<group>"; };
 		FE8414A0C56258283EBABAD024B5DD6C /* LOTLayerGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTLayerGroup.m; path = "lottie-ios/Classes/Models/LOTLayerGroup.m"; sourceTree = "<group>"; };
-		FECB9387CCD1823C3722B7748B218AA7 /* SipHash.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SipHash.modulemap; sourceTree = "<group>"; };
+		FECB9387CCD1823C3722B7748B218AA7 /* SipHash.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SipHash.modulemap; sourceTree = "<group>"; };
 		FF25EA71904706688F84053B96444767 /* ThemeFontPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeFontPicker.swift; path = Source/ThemeFontPicker.swift; sourceTree = "<group>"; };
 		FF26387A424CC07853972B36DB16A9E1 /* Pods-loopr-ios-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-loopr-ios-acknowledgements.markdown"; sourceTree = "<group>"; };
 		FF928B3A057EDDA8094005CAC2B86319 /* LOTRenderGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTRenderGroup.h; path = "lottie-ios/Classes/RenderSystem/RenderNodes/LOTRenderGroup.h"; sourceTree = "<group>"; };
@@ -1689,7 +1689,6 @@
 				C1FC663A695296606FCDED5B4198E97B /* UIViewController+Visibility.swift */,
 				94FA242EDD06D86AF0CB727939B0D36F /* Support Files */,
 			);
-			name = PopupDialog;
 			path = PopupDialog;
 			sourceTree = "<group>";
 		};
@@ -1699,7 +1698,6 @@
 				9955C6038F0844B8AE38EA5E6898632E /* Core */,
 				771157BB37FA1DC996ED3263173486BF /* Support Files */,
 			);
-			name = Charts;
 			path = Charts;
 			sourceTree = "<group>";
 		};
@@ -1711,7 +1709,6 @@
 				1A4AC9D5AF012C163E59794F4D8284A2 /* TagView.swift */,
 				18CDBCD857AB97843E530086E541343A /* Support Files */,
 			);
-			name = TagListView;
 			path = TagListView;
 			sourceTree = "<group>";
 		};
@@ -1890,7 +1887,6 @@
 				F08BF174D2CF48DD115CA314075086B3 /* UIColor+Expanded.m */,
 				F29FAD085ABB3875BEB8AD492D5497BF /* Support Files */,
 			);
-			name = "lottie-ios";
 			path = "lottie-ios";
 			sourceTree = "<group>";
 		};
@@ -1924,7 +1920,6 @@
 				9B328B192DA3B39704C08686E6EF3AD1 /* DottedLineView.swift */,
 				0B9AB03C48884254C679D3B3BB0D0F7C /* Support Files */,
 			);
-			name = DottedLineView;
 			path = DottedLineView;
 			sourceTree = "<group>";
 		};
@@ -1955,7 +1950,6 @@
 				DBD40E19E8E66C681594FC4F1E8085DA /* Words and Bits.swift */,
 				5CBA16F27A7E88DA0C4AA54CAD2375B1 /* Support Files */,
 			);
-			name = BigInt;
 			path = BigInt;
 			sourceTree = "<group>";
 		};
@@ -1963,7 +1957,6 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = SwiftLint;
 			path = SwiftLint;
 			sourceTree = "<group>";
 		};
@@ -2039,7 +2032,6 @@
 				CF103160DB097432FFF205B662307D93 /* SwiftyJSON.swift */,
 				AA093AE9618B91904599FBFDB13F2776 /* Support Files */,
 			);
-			name = SwiftyJSON;
 			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
@@ -2112,7 +2104,6 @@
 				24545CD11420B2B71CABD45E1056E1C3 /* ZeroPadding.swift */,
 				05F4FFAB7ACB3966DD926DA61D08DFD2 /* Support Files */,
 			);
-			name = CryptoSwift;
 			path = CryptoSwift;
 			sourceTree = "<group>";
 		};
@@ -2321,7 +2312,6 @@
 				1D2AC6525D5C7D92B5F8BE6E6F5E5CEC /* SipHasher.swift */,
 				F6F2F38FBD1D5610E46322FB8AF7B19F /* Support Files */,
 			);
-			name = SipHash;
 			path = SipHash;
 			sourceTree = "<group>";
 		};
@@ -2382,7 +2372,6 @@
 				28ED997CF431A5BA2F6051E261BD4EE6 /* UnitBezier.h */,
 				DA94460DBE60E5BAB8EC475FF9A0EF6F /* Support Files */,
 			);
-			name = pop;
 			path = pop;
 			sourceTree = "<group>";
 		};
@@ -2509,7 +2498,6 @@
 				0E6A0F5BF69E93864EA3E1E75A4DE92B /* TrezorCrypto.h */,
 				C12E8388E6A5596C542B3028823F934D /* Support Files */,
 			);
-			name = TrezorCrypto;
 			path = TrezorCrypto;
 			sourceTree = "<group>";
 		};
@@ -2564,7 +2552,6 @@
 				1158F3A8EBE21CB1D7D84251C98549B5 /* UIKit+Theme.swift */,
 				11FB7A41CB189989152CB2DEBE2DD40D /* Support Files */,
 			);
-			name = SwiftTheme;
 			path = SwiftTheme;
 			sourceTree = "<group>";
 		};
@@ -2574,7 +2561,6 @@
 				3FFE2C000FE7D8AD67090C84009C6858 /* FontBlaster.swift */,
 				BCD8E34914A9191847F50BE538D61EDC /* Support Files */,
 			);
-			name = FontBlaster;
 			path = FontBlaster;
 			sourceTree = "<group>";
 		};
@@ -2665,7 +2651,6 @@
 				D1E849F1EA03714D518A309733424C35 /* util.h */,
 				904ACAC990C41A309E295AD834E03D17 /* Support Files */,
 			);
-			name = secp256k1_ios;
 			path = secp256k1_ios;
 			sourceTree = "<group>";
 		};
@@ -3352,7 +3337,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0920;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -4781,6 +4766,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
