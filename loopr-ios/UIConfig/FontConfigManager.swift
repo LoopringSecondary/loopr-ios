@@ -6,6 +6,7 @@
 //  Copyright © 2018 Loopring. All rights reserved.
 //
 
+import FontBlaster
 import Foundation
 import UIKit
 
@@ -23,6 +24,21 @@ class FontConfigManager {
     
     private init() {
         // currentFont = getCurrentFontFromLocalStorage()
+    }
+    
+    func setup() {
+        FontBlaster.debugEnabled = true
+        FontBlaster.blast { (fonts) -> Void in
+            print("Loaded Fonts", fonts)
+        }
+
+        UILabel.appearance().font = FontConfigManager.shared.getLabelFont()
+        UIButton.appearance().titleLabel?.font = FontConfigManager.shared.getLabelFont()
+        
+        // TODO: unsafe. Fix it.
+        let tabBarItemAttributes = [NSAttributedStringKey.font: UIFont(name: FontConfigManager.shared.getCurrentFontName(), size: 10)!]
+        UITabBarItem.appearance().setTitleTextAttributes(tabBarItemAttributes, for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes(tabBarItemAttributes, for: .selected)
     }
 
     func setCurrentFont(_ font: SupportedFonts) {

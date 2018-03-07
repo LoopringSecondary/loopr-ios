@@ -9,7 +9,6 @@
 import UIKit
 import SwiftyJSON
 import SwiftTheme
-import FontBlaster
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,18 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        FontBlaster.debugEnabled = true
-        FontBlaster.blast { (fonts) -> Void in
-            print("Loaded Fonts", fonts)
-        }
-        
-        // Set font
-        UILabel.appearance().font = FontConfigManager.shared.getLabelFont()
-        UIButton.appearance().titleLabel?.font = FontConfigManager.shared.getLabelFont()
-
-        let tabBarItemAttributes = [NSAttributedStringKey.font: UIFont(name: FontConfigManager.shared.getCurrentFontName(), size: 10)!]
-        UITabBarItem.appearance().setTitleTextAttributes(tabBarItemAttributes, for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes(tabBarItemAttributes, for: .selected)
+        FontConfigManager.shared.setup()
 
         AppWalletDataManager.shared.setup()
 
