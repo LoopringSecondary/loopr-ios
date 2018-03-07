@@ -708,7 +708,7 @@
 			children = (
 				AC54FD27204FC645007E1DEB /* DIN */,
 				AC54FD32204FC672007E1DEB /* Lato */,
-				AC72AEEB204FB29600E9D3B0 /* Open_Sans */,
+				AC72AEEB204FB29600E9D3B0 /* OpenSans */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -803,7 +803,7 @@
 			path = DataManager;
 			sourceTree = "<group>";
 		};
-		AC72AEEB204FB29600E9D3B0 /* Open_Sans */ = {
+		AC72AEEB204FB29600E9D3B0 /* OpenSans */ = {
 			isa = PBXGroup;
 			children = (
 				AC54FD21204FC3F9007E1DEB /* OpenSans-Bold.ttf */,
@@ -817,7 +817,7 @@
 				AC54FD23204FC3FA007E1DEB /* OpenSans-SemiBold.ttf */,
 				AC54FD25204FC3FA007E1DEB /* OpenSans-SemiBoldItalic.ttf */,
 			);
-			path = Open_Sans;
+			path = OpenSans;
 			sourceTree = "<group>";
 		};
 		AC76E46E2047F1AE008BA229 /* CircleChart */ = {
