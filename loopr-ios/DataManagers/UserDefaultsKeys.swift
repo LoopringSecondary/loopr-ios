@@ -13,6 +13,7 @@ enum UserDefaultsKeys: String {
     case favoriteMarkets = "UserDefaultsKeys.favoriteMarkets"
     case lastedThemeIndex = "UserDefaultsKeys.lastedThemeIndex"
     case currentLanguage = "UserDefaultsKeys.currentLanguage"
+    case currentFont = "UserDefaultsKeys.currentcurrentFont"
     case hideSmallAssets = "UserDefaultsKeys.hideSmallAssets"
 
     // Wallet

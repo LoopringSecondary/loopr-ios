@@ -25,10 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Set font
-        UILabel.appearance().font = UIFont(name: "DINNextLTPro-Regular", size: 17.0)
-        UIButton.appearance().titleLabel?.font = UIFont(name: "DINNextLTPro-Regular", size: 17.0)
+        UILabel.appearance().font = FontConfigManager.shared.getLabelFont()
+        UIButton.appearance().titleLabel?.font = FontConfigManager.shared.getLabelFont()
 
-        let tabBarItemAttributes = [NSAttributedStringKey.font: UIFont(name: "DINNextLTPro-Regular", size: 10)!]
+        let tabBarItemAttributes = [NSAttributedStringKey.font: UIFont(name: FontConfigManager.shared.getCurrentFontName(), size: 10)!]
         UITabBarItem.appearance().setTitleTextAttributes(tabBarItemAttributes, for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes(tabBarItemAttributes, for: .selected)
 

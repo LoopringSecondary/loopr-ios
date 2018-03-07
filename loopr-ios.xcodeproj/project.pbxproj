@@ -161,6 +161,7 @@
 		AC54FD8E204FC6FF007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD25204FC3FA007E1DEB /* OpenSans-SemiBoldItalic.ttf */; };
 		AC54FD8F204FC700007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD25204FC3FA007E1DEB /* OpenSans-SemiBoldItalic.ttf */; };
 		AC54FD90204FC701007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD25204FC3FA007E1DEB /* OpenSans-SemiBoldItalic.ttf */; };
+		AC54FD92204FD291007E1DEB /* FontConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54FD91204FD291007E1DEB /* FontConfigManager.swift */; };
 		AC5E0DD0203A7C5800AF03C7 /* SelectWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0DCE203A7C5800AF03C7 /* SelectWalletTableViewCell.swift */; };
 		AC5E0DD1203A7C5800AF03C7 /* SelectWalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E0DCF203A7C5800AF03C7 /* SelectWalletTableViewCell.xib */; };
 		AC5E0DD6203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0DD4203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift */; };
@@ -411,6 +412,7 @@
 		AC54FD3A204FC687007E1DEB /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		AC54FD3B204FC687007E1DEB /* Lato-HairlineItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HairlineItalic.ttf"; sourceTree = "<group>"; };
 		AC54FD3C204FC688007E1DEB /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		AC54FD91204FD291007E1DEB /* FontConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontConfigManager.swift; sourceTree = "<group>"; };
 		AC5E0DCE203A7C5800AF03C7 /* SelectWalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletTableViewCell.swift; sourceTree = "<group>"; };
 		AC5E0DCF203A7C5800AF03C7 /* SelectWalletTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWalletTableViewCell.xib; sourceTree = "<group>"; };
 		AC5E0DD4203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetBalanceTableViewCell.swift; sourceTree = "<group>"; };
@@ -745,6 +747,13 @@
 			path = Lato;
 			sourceTree = "<group>";
 		};
+		AC54FD93204FD357007E1DEB /* SettingFont */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SettingFont;
+			sourceTree = "<group>";
+		};
 		AC5E0DD2203A848300AF03C7 /* GenerateWallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -870,10 +879,10 @@
 				C8BF959C202696A900343B9A /* MainTabController.swift */,
 				AC31B93B204A8D1F00B16155 /* Keystone@8fea1ff */,
 				ACB746E22043C5CC006C2BF5 /* QRCode */,
-				ACDBF10F203FEC96000F0DEC /* UIConfig */,
 				AC6E95F62032CBE900C6EB7C /* Archive */,
 				ACB5DD85202AD74D00140A09 /* UIComponents */,
 				ACB9119320278A0E00F14644 /* RelayAPI */,
+				ACDBF10F203FEC96000F0DEC /* UIConfig */,
 				ACB911672025470B00F14644 /* DataManagers */,
 				ACB9115E20242E2400F14644 /* Models */,
 				C8BF959B20267FB600343B9A /* Setup */,
@@ -1100,6 +1109,7 @@
 				ACE6F72620426BAC0039273D /* SettingThemeModeTableViewCell.xib */,
 				C87E226D2031708000323584 /* ToggleTableViewCell.swift */,
 				AC76E47520493CB7008BA229 /* SettingLanguage */,
+				AC54FD93204FD357007E1DEB /* SettingFont */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1160,6 +1170,7 @@
 				ACE6F721204221260039273D /* Themes.swift */,
 				ACE6F7232042228A0039273D /* GlobalPicker.swift */,
 				ACE5BF94204523F9005D75DD /* UIStyleKeyboard.swift */,
+				AC54FD91204FD291007E1DEB /* FontConfigManager.swift */,
 			);
 			path = UIConfig;
 			sourceTree = "<group>";
@@ -1710,6 +1721,7 @@
 				ACB5DDA2202D6F9400140A09 /* UIViewExtension.swift in Sources */,
 				AC37567C2038D80300AADC60 /* PrivateKeyViewController.swift in Sources */,
 				AC9280E7202F5A010009B574 /* UIStyleConfig.swift in Sources */,
+				AC54FD92204FD291007E1DEB /* FontConfigManager.swift in Sources */,
 				AC4141FD203532ED0089861D /* SwipeViewOptions.swift in Sources */,
 				ACB9119F202967A500F14644 /* OrderStatus.swift in Sources */,
 				ACB9117520255A6600F14644 /* MarketTableViewCell.swift in Sources */,
