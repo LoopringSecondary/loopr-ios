@@ -26,9 +26,13 @@ class AssetTableViewCell: UITableViewCell {
         
         theme_backgroundColor = ["#fff", "#000"]
         symbolLabel.theme_textColor = ["#000", "#fff"]
-        balanceLabel.theme_textColor = ["#a0a0a0", "#fff"]
-        amountLabel.theme_textColor = ["#a0a0a0", "#fff"]
+        balanceLabel.theme_textColor = ["#000", "#fff"]
+        amountLabel.theme_textColor = ["#000", "#fff"]
         // forwardImageView.theme_image = ["Forward", "Forward-white"]
+        
+        symbolLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17)
+        balanceLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17)
+        amountLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 14)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
