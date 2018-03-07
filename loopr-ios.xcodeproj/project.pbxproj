@@ -99,6 +99,14 @@
 		AC72AEE6204F000600E9D3B0 /* OrderTradeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEE5204F000600E9D3B0 /* OrderTradeDataManager.swift */; };
 		AC72AEE8204F020B00E9D3B0 /* OrderTradeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEE7204F020B00E9D3B0 /* OrderTradeState.swift */; };
 		AC72AEEA204F038300E9D3B0 /* OrderTradeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEE9204F038300E9D3B0 /* OrderTradeError.swift */; };
+		AC72AEF7204FB36C00E9D3B0 /* D-DIN-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEF4204FB2D300E9D3B0 /* D-DIN-Bold.otf */; };
+		AC72AEF8204FB37000E9D3B0 /* D-DIN-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEF0204FB2D200E9D3B0 /* D-DIN-Italic.otf */; };
+		AC72AEF9204FB37200E9D3B0 /* D-DIN.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEF1204FB2D300E9D3B0 /* D-DIN.otf */; };
+		AC72AEFA204FB37400E9D3B0 /* D-DINCondensed-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEF5204FB2D300E9D3B0 /* D-DINCondensed-Bold.otf */; };
+		AC72AEFB204FB37700E9D3B0 /* D-DINCondensed.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEF2204FB2D300E9D3B0 /* D-DINCondensed.otf */; };
+		AC72AEFC204FB37900E9D3B0 /* D-DINExp-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEEF204FB2D200E9D3B0 /* D-DINExp-Bold.otf */; };
+		AC72AEFD204FB37B00E9D3B0 /* D-DINExp-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEF6204FB2D400E9D3B0 /* D-DINExp-Italic.otf */; };
+		AC72AEFE204FB37D00E9D3B0 /* D-DINExp.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEF3204FB2D300E9D3B0 /* D-DINExp.otf */; };
 		AC76E4702047F1D3008BA229 /* CircleChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76E46F2047F1D3008BA229 /* CircleChart.swift */; };
 		AC76E47320493CAE008BA229 /* SettingLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76E47120493CAE008BA229 /* SettingLanguageViewController.swift */; };
 		AC76E47420493CAE008BA229 /* SettingLanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */; };
@@ -321,6 +329,14 @@
 		AC72AEE5204F000600E9D3B0 /* OrderTradeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTradeDataManager.swift; sourceTree = "<group>"; };
 		AC72AEE7204F020B00E9D3B0 /* OrderTradeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTradeState.swift; sourceTree = "<group>"; };
 		AC72AEE9204F038300E9D3B0 /* OrderTradeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTradeError.swift; sourceTree = "<group>"; };
+		AC72AEEF204FB2D200E9D3B0 /* D-DINExp-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "D-DINExp-Bold.otf"; sourceTree = "<group>"; };
+		AC72AEF0204FB2D200E9D3B0 /* D-DIN-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "D-DIN-Italic.otf"; sourceTree = "<group>"; };
+		AC72AEF1204FB2D300E9D3B0 /* D-DIN.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "D-DIN.otf"; sourceTree = "<group>"; };
+		AC72AEF2204FB2D300E9D3B0 /* D-DINCondensed.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "D-DINCondensed.otf"; sourceTree = "<group>"; };
+		AC72AEF3204FB2D300E9D3B0 /* D-DINExp.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "D-DINExp.otf"; sourceTree = "<group>"; };
+		AC72AEF4204FB2D300E9D3B0 /* D-DIN-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "D-DIN-Bold.otf"; sourceTree = "<group>"; };
+		AC72AEF5204FB2D300E9D3B0 /* D-DINCondensed-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "D-DINCondensed-Bold.otf"; sourceTree = "<group>"; };
+		AC72AEF6204FB2D400E9D3B0 /* D-DINExp-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "D-DINExp-Italic.otf"; sourceTree = "<group>"; };
 		AC76E46F2047F1D3008BA229 /* CircleChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleChart.swift; sourceTree = "<group>"; };
 		AC76E47120493CAE008BA229 /* SettingLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageViewController.swift; sourceTree = "<group>"; };
 		AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLanguageViewController.xib; sourceTree = "<group>"; };
@@ -649,6 +665,29 @@
 			path = DataManager;
 			sourceTree = "<group>";
 		};
+		AC72AEEB204FB29600E9D3B0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				AC72AEEE204FB2B900E9D3B0 /* d-din */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		AC72AEEE204FB2B900E9D3B0 /* d-din */ = {
+			isa = PBXGroup;
+			children = (
+				AC72AEF4204FB2D300E9D3B0 /* D-DIN-Bold.otf */,
+				AC72AEF0204FB2D200E9D3B0 /* D-DIN-Italic.otf */,
+				AC72AEF1204FB2D300E9D3B0 /* D-DIN.otf */,
+				AC72AEF5204FB2D300E9D3B0 /* D-DINCondensed-Bold.otf */,
+				AC72AEF2204FB2D300E9D3B0 /* D-DINCondensed.otf */,
+				AC72AEEF204FB2D200E9D3B0 /* D-DINExp-Bold.otf */,
+				AC72AEF6204FB2D400E9D3B0 /* D-DINExp-Italic.otf */,
+				AC72AEF3204FB2D300E9D3B0 /* D-DINExp.otf */,
+			);
+			path = "d-din";
+			sourceTree = "<group>";
+		};
 		AC76E46E2047F1AE008BA229 /* CircleChart */ = {
 			isa = PBXGroup;
 			children = (
@@ -694,6 +733,9 @@
 		AC798E412022B93A0071D477 /* loopr-ios */ = {
 			isa = PBXGroup;
 			children = (
+				AC798E422022B93A0071D477 /* AppDelegate.swift */,
+				AC798E482022B93A0071D477 /* Main.storyboard */,
+				C8BF959C202696A900343B9A /* MainTabController.swift */,
 				AC31B93B204A8D1F00B16155 /* Keystone@8fea1ff */,
 				ACB746E22043C5CC006C2BF5 /* QRCode */,
 				ACDBF10F203FEC96000F0DEC /* UIConfig */,
@@ -702,9 +744,6 @@
 				ACB9119320278A0E00F14644 /* RelayAPI */,
 				ACB911672025470B00F14644 /* DataManagers */,
 				ACB9115E20242E2400F14644 /* Models */,
-				AC798E422022B93A0071D477 /* AppDelegate.swift */,
-				AC798E482022B93A0071D477 /* Main.storyboard */,
-				C8BF959C202696A900343B9A /* MainTabController.swift */,
 				C8BF959B20267FB600343B9A /* Setup */,
 				ACB9115C20242D8900F14644 /* Portfolio */,
 				ACB9116C2025572700F14644 /* Market */,
@@ -712,6 +751,7 @@
 				AC9280DF202EC5130009B574 /* Trade */,
 				ACB9117D2026381A00F14644 /* Setting */,
 				AC798E4B2022B93A0071D477 /* Assets.xcassets */,
+				AC72AEEB204FB29600E9D3B0 /* Fonts */,
 				ACB5DD83202ACBF800140A09 /* AfterEffectsAnimations */,
 				AC798E4D2022B93A0071D477 /* LaunchScreen.storyboard */,
 				AC798E502022B93A0071D477 /* Info.plist */,
@@ -1132,11 +1172,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC798E4F2022B93A0071D477 /* LaunchScreen.storyboard in Resources */,
+				AC72AEFA204FB37400E9D3B0 /* D-DINCondensed-Bold.otf in Resources */,
 				AC5E0DDF203B447700AF03C7 /* WalletBalanceTableViewCell.xib in Resources */,
+				AC72AEFC204FB37900E9D3B0 /* D-DINExp-Bold.otf in Resources */,
+				AC72AEF7204FB36C00E9D3B0 /* D-DIN-Bold.otf in Resources */,
 				AC4141F0203524280089861D /* MarketSwipeViewController.xib in Resources */,
 				C8BF95B12027AC9400343B9A /* SetupViewController.xib in Resources */,
 				ACE5BFA720466EFD005D75DD /* Localizable.strings in Resources */,
+				AC72AEFD204FB37B00E9D3B0 /* D-DINExp-Italic.otf in Resources */,
 				AC9280ED2030D34B0009B574 /* TradePlaceOrderViewController.xib in Resources */,
+				AC72AEFE204FB37D00E9D3B0 /* D-DINExp.otf in Resources */,
 				ACE6F72820426BAC0039273D /* SettingThemeModeTableViewCell.xib in Resources */,
 				AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */,
 				ACB911852026388700F14644 /* SettingViewController.xib in Resources */,
@@ -1147,6 +1192,7 @@
 				ACB911562024260E00F14644 /* WalletViewController.xib in Resources */,
 				ACB5DD80202AC26000140A09 /* button1.json in Resources */,
 				AC3756742038D64B00AADC60 /* MnemonicViewController.xib in Resources */,
+				AC72AEF9204FB37200E9D3B0 /* D-DIN.otf in Resources */,
 				ACBDB1C62032D050003463A4 /* OpenOrderTableViewCell.xib in Resources */,
 				ACE6F72020421D950039273D /* NewVersionTradeViewController.xib in Resources */,
 				ACB9118920265DEA00F14644 /* MarketDetailViewController.xib in Resources */,
@@ -1159,6 +1205,7 @@
 				AC72AED9204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib in Resources */,
 				AC375685203A641200AADC60 /* SelectWalletViewController.xib in Resources */,
 				AC76E47420493CAE008BA229 /* SettingLanguageViewController.xib in Resources */,
+				AC72AEFB204FB37700E9D3B0 /* D-DINCondensed.otf in Resources */,
 				AC798E4C2022B93A0071D477 /* Assets.xcassets in Resources */,
 				AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */,
 				AC31B93620493FB900B16155 /* SettingLanguageTableViewCell.xib in Resources */,
@@ -1168,6 +1215,7 @@
 				ACB91172202557B100F14644 /* MarketViewController.xib in Resources */,
 				ACB9117620255A6600F14644 /* MarketTableViewCell.xib in Resources */,
 				949C49452046976E0074466D /* TradePlaceReplyViewController.xib in Resources */,
+				AC72AEF8204FB37000E9D3B0 /* D-DIN-Italic.otf in Resources */,
 				ACB9119120266EC200F14644 /* AddAssetViewController.xib in Resources */,
 				ACB5DD8B202BF23100140A09 /* BuyViewController.xib in Resources */,
 				949C49492046A4A80074466D /* SampleViewController.xib in Resources */,
@@ -1210,6 +1258,7 @@
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/DottedLineView/DottedLineView.framework",
+				"${BUILT_PRODUCTS_DIR}/FontBlaster/FontBlaster.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework",
@@ -1226,6 +1275,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DottedLineView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontBlaster.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTheme.framework",

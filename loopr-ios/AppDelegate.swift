@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import SwiftTheme
+import FontBlaster
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        FontBlaster.debugEnabled = true
+        FontBlaster.blast { (fonts) -> Void in
+            print("Loaded Fonts", fonts)
+        }
+        
+        // Set font
+        UILabel.appearance().font = UIFont(name: "D-DIN", size: 17.0)
+        UIButton.appearance().titleLabel?.font = UIFont(name: "D-DIN", size: 17.0)
+        
+        let attributes = [NSAttributedStringKey.font: UIFont(name: "D-DIN", size: 12)!]
+        UINavigationBar.appearance().titleTextAttributes = attributes
+
+        UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .selected)
+
         AppWalletDataManager.shared.setup()
 
         if AppWalletDataManager.shared.getWallets().isEmpty {
