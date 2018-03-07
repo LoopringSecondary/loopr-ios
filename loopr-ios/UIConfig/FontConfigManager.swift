@@ -63,11 +63,25 @@ class FontConfigManager {
         return "\(currentFont.rawValue)-Regular"
     }
     
+    func getRegular() -> String {
+        if currentFont == .DIN {
+            return "DINNextLTPro-Regular"
+        }
+        return "\(currentFont.rawValue)-Regular"
+    }
+    
     func getLight() -> String {
         if currentFont == .DIN {
             return "DINNextW1G-Light"
         }
         return "\(currentFont.rawValue)-Light"
+    }
+    
+    func getBold() -> String {
+        if currentFont == .DIN {
+            return "DIN-Bold"
+        }
+        return "\(currentFont.rawValue)-Bold"
     }
 
     func getLabelFont() -> UIFont {
