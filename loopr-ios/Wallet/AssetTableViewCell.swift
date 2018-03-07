@@ -18,7 +18,7 @@ class AssetTableViewCell: UITableViewCell {
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
 
-    @IBOutlet weak var forwardImageView: UIImageView!
+    // @IBOutlet weak var forwardImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,7 +28,7 @@ class AssetTableViewCell: UITableViewCell {
         symbolLabel.theme_textColor = ["#000", "#fff"]
         balanceLabel.theme_textColor = ["#a0a0a0", "#fff"]
         amountLabel.theme_textColor = ["#a0a0a0", "#fff"]
-        forwardImageView.theme_image = ["Forward", "Forward-white"]
+        // forwardImageView.theme_image = ["Forward", "Forward-white"]
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

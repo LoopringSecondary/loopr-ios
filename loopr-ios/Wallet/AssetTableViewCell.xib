@@ -28,7 +28,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHg-k2-b9U">
-                        <rect key="frame" x="226" y="17" width="117" height="21"/>
+                        <rect key="frame" x="250" y="17" width="117" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="117" id="0nO-FH-xuL"/>
                             <constraint firstAttribute="height" constant="21" id="QFi-18-atJ"/>
@@ -38,7 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RjM-Ph-pMw">
-                        <rect key="frame" x="218" y="44" width="125" height="21"/>
+                        <rect key="frame" x="242" y="44" width="125" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="125" id="e9a-OS-ITO"/>
                             <constraint firstAttribute="height" constant="21" id="rQF-0R-QJ0"/>
@@ -47,13 +47,6 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Forward" translatesAutoresizingMaskIntoConstraints="NO" id="5oe-WW-UcK">
-                        <rect key="frame" x="355" y="26.5" width="30" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="30" id="FkQ-fa-GmC"/>
-                            <constraint firstAttribute="height" constant="30" id="qyc-2H-KHM"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitcoin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzi-Me-Sla">
                         <rect key="frame" x="76" y="20" width="141" height="44"/>
                         <constraints>
@@ -66,15 +59,13 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="5oe-WW-UcK" firstAttribute="leading" secondItem="RjM-Ph-pMw" secondAttribute="trailing" constant="12" id="6ww-zU-XfB"/>
                     <constraint firstItem="zzi-Me-Sla" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="EpD-Pd-LzL"/>
                     <constraint firstItem="zzi-Me-Sla" firstAttribute="leading" secondItem="8vB-Bh-nJn" secondAttribute="trailing" constant="12" id="Gyg-87-MB2"/>
                     <constraint firstAttribute="bottomMargin" secondItem="RjM-Ph-pMw" secondAttribute="bottom" constant="8" id="LNQ-kH-0hD"/>
                     <constraint firstItem="MHg-k2-b9U" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="MdA-Wb-1vp"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="RjM-Ph-pMw" secondAttribute="trailing" constant="8" id="Mpx-Lh-qdM"/>
                     <constraint firstItem="8vB-Bh-nJn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ebc-ZQ-gWO"/>
-                    <constraint firstItem="5oe-WW-UcK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="pVW-7j-JMv"/>
-                    <constraint firstAttribute="trailing" secondItem="5oe-WW-UcK" secondAttribute="trailing" constant="10" id="rqD-FS-z9H"/>
-                    <constraint firstItem="5oe-WW-UcK" firstAttribute="leading" secondItem="MHg-k2-b9U" secondAttribute="trailing" constant="12" id="udk-Xa-StU"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="MHg-k2-b9U" secondAttribute="trailing" constant="8" id="mcw-wq-5by"/>
                     <constraint firstItem="8vB-Bh-nJn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="z0c-yY-bjz"/>
                 </constraints>
             </tableViewCellContentView>
@@ -82,14 +73,10 @@
             <connections>
                 <outlet property="amountLabel" destination="RjM-Ph-pMw" id="X50-2f-HvZ"/>
                 <outlet property="balanceLabel" destination="MHg-k2-b9U" id="3bG-3Q-J3o"/>
-                <outlet property="forwardImageView" destination="5oe-WW-UcK" id="9jn-Up-zJj"/>
                 <outlet property="iconImageView" destination="8vB-Bh-nJn" id="Mqd-Jo-eEH"/>
                 <outlet property="symbolLabel" destination="zzi-Me-Sla" id="ZWZ-xa-bCi"/>
             </connections>
             <point key="canvasLocation" x="71.5" y="79"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="Forward" width="33" height="33"/>
-    </resources>
 </document>

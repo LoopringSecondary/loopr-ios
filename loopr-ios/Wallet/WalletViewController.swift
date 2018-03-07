@@ -127,6 +127,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if cell == nil {
                 let nib = Bundle.main.loadNibNamed("AssetTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? AssetTableViewCell
+                cell?.accessoryType = .disclosureIndicator
             }
 
             cell?.asset = AssetDataManager.shared.getAssets()[indexPath.row-1]
