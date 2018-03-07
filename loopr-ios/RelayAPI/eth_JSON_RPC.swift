@@ -11,9 +11,14 @@ import SwiftyJSON
 
 class eth_JSON_RPC {
     
-    // TODO:
-    public static func eth_call() {
-        
+    static let url = URL(string: "http://13.112.62.24/eth")!
+    
+    public static func eth_call(from: String? = nil, to: String) {
+        var body: JSON = JSON()
+        body["method"] = "eth_call"
+        body["params"] = [["owner": "0x407d73d8a49eeb85d32cf465507dd71d507100c1"]]
+        body["params"]["contractVersion"] = "v1.0"
+        body["id"] = "1a715e2557abc0bd"
     }
 
     // TODO:
@@ -39,7 +44,7 @@ class eth_JSON_RPC {
         body["params"]["contractVersion"] = "v1.0"
         body["id"] = "1a715e2557abc0bd"
         
-        Request.send(body: body) { data, response, error in
+        Request.send(body: body, url: url) { data, response, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return

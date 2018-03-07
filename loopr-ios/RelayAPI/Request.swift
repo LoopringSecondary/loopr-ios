@@ -13,9 +13,7 @@ public typealias CompletionHandler = (_ data: Data?, _ response: URLResponse?, _
 
 class Request {
     
-    static let url = URL(string: "https://relay1.loopring.io/rpc/v2/")!
-
-    static func send(body: JSON, completionHandler: @escaping CompletionHandler) {
+    static func send(body: JSON, url: URL, completionHandler: @escaping CompletionHandler) {
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"

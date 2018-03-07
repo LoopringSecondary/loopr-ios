@@ -30,6 +30,7 @@ class TradePlaceOrderViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // FIXME: error drawing layout --kenshin
     override func viewDidLayoutSubviews() {
         for view in informationStackView.subviews {
             let dashedLine = DashedLineView(frame: CGRect(x: informationStackView.frame.origin.x, y: informationStackView.frame.origin.y + view.frame.origin.y + view.frame.size.height, width: informationStackView.frame.size.width, height: 1))

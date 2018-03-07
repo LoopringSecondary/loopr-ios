@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		949629DB204E836400858F03 /* Depth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DA204E836400858F03 /* Depth.swift */; };
+		949629DF204E9C9800858F03 /* MinedRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DE204E9C9800858F03 /* MinedRing.swift */; };
 		949C49442046976E0074466D /* TradePlaceReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949C49422046976E0074466D /* TradePlaceReplyViewController.swift */; };
 		949C49452046976E0074466D /* TradePlaceReplyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949C49432046976E0074466D /* TradePlaceReplyViewController.xib */; };
 		949C49482046A4A80074466D /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949C49462046A4A80074466D /* SampleViewController.swift */; };
 		949C49492046A4A80074466D /* SampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949C49472046A4A80074466D /* SampleViewController.xib */; };
 		94BAE3DE204811C1001A271A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BAE3DD204811C1001A271A /* UIView+Extension.swift */; };
+		94E5788F204E71850014AD4B /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E5788E204E71850014AD4B /* Token.swift */; };
 		9AACD1A68297585D93FB6182 /* Pods_loopr_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFC6AA9DC8C999B66FFD8AA /* Pods_loopr_iosTests.framework */; };
 		AC01A2412022D94600FE8317 /* PortfolioNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC01A2402022D94600FE8317 /* PortfolioNavigationController.swift */; };
 		AC01A2442022D9BE00FE8317 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC01A2422022D9BE00FE8317 /* PortfolioViewController.swift */; };
@@ -223,11 +226,14 @@
 		5FFC6AA9DC8C999B66FFD8AA /* Pods_loopr_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69BC13297FDFA52B8E089485 /* Pods-loopr-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-iosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-iosTests/Pods-loopr-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		929BB32EF62C4BD6BC1DFC8F /* Pods_loopr_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		949629DA204E836400858F03 /* Depth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Depth.swift; sourceTree = "<group>"; };
+		949629DE204E9C9800858F03 /* MinedRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinedRing.swift; sourceTree = "<group>"; };
 		949C49422046976E0074466D /* TradePlaceReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradePlaceReplyViewController.swift; sourceTree = "<group>"; };
 		949C49432046976E0074466D /* TradePlaceReplyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradePlaceReplyViewController.xib; sourceTree = "<group>"; };
 		949C49462046A4A80074466D /* SampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
 		949C49472046A4A80074466D /* SampleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SampleViewController.xib; sourceTree = "<group>"; };
 		94BAE3DD204811C1001A271A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		94E5788E204E71850014AD4B /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		AC01A2402022D94600FE8317 /* PortfolioNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioNavigationController.swift; sourceTree = "<group>"; };
 		AC01A2422022D9BE00FE8317 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		AC01A2432022D9BE00FE8317 /* PortfolioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioViewController.xib; sourceTree = "<group>"; };
@@ -865,6 +871,9 @@
 				ACB9117B20256BBA00F14644 /* TradingPair.swift */,
 				AC4142052038B66F0089861D /* AppWallet.swift */,
 				AC31B939204A4F9000B16155 /* Language.swift */,
+				94E5788E204E71850014AD4B /* Token.swift */,
+				949629DA204E836400858F03 /* Depth.swift */,
+				949629DE204E9C9800858F03 /* MinedRing.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1442,9 +1451,11 @@
 				AC31B94E204A8DF400B16155 /* KeystoreKey.swift in Sources */,
 				AC3756732038D64B00AADC60 /* MnemonicViewController.swift in Sources */,
 				ACB5DD9E202D5B8D00140A09 /* NumericKeyboardItem.swift in Sources */,
+				949629DF204E9C9800858F03 /* MinedRing.swift in Sources */,
 				ACB9119020266EC200F14644 /* AddAssetViewController.swift in Sources */,
 				ACDBF10E203FEBAD000F0DEC /* TableViewReorderDelegate.swift in Sources */,
 				AC72AED8204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift in Sources */,
+				949629DB204E836400858F03 /* Depth.swift in Sources */,
 				ACB5DD9A202D5B7100140A09 /* DefaultNumericKeyboard.swift in Sources */,
 				C8BF95B02027AC9400343B9A /* SetupViewController.swift in Sources */,
 				ACB5DDA0202D5B9900140A09 /* CGSizeExtension.swift in Sources */,
@@ -1474,6 +1485,7 @@
 				AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */,
 				ACB911692025472A00F14644 /* AssetDataManager.swift in Sources */,
 				ACE6F7182041FDAD0039273D /* AssetTransactionDetailViewController.swift in Sources */,
+				94E5788F204E71850014AD4B /* Token.swift in Sources */,
 				AC31B95D204A8E4F00B16155 /* DerivationPath.swift in Sources */,
 				ACB911A120296AE500F14644 /* OrderDataManager.swift in Sources */,
 				AC41420C2038BFB70089861D /* UserDefaultsKeys.swift in Sources */,
@@ -1686,10 +1698,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = QHAE3FQGK4;
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.dev.loopr-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = com.chenwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1705,10 +1717,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = QHAE3FQGK4;
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.dev.loopr-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = com.chenwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;

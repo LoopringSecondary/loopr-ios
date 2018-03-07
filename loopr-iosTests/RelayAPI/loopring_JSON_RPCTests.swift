@@ -22,51 +22,47 @@ class loopring_JSON_RPCTests: XCTestCase {
         super.tearDown()
     }
     
+    // its ok to pass nil or real value to method, e.g. owner, same as below
     func testGetBalance() {
         let expectation = XCTestExpectation()
-
-        loopring_JSON_RPC.getBalance(owner: "0x847983c3a34afa192cfee860698584c030f4c9db1") { data, response, error in
-            guard let data = data, error == nil else {
+        loopring_JSON_RPC.getBalance(owner: "0x847983c3a34afa192cfee860698584c030f4c9db1") { tokens, error in
+            guard error == nil else {
                 print("error=\(String(describing: error))")
                 return
             }
-            
-            let json = JSON(data)
-            print("response = \(json)")
-            
-            // TODO: verify the response
-            
+            // 66 is the num of our current supported token list
+            XCTAssertNotNil(tokens)
+            XCTAssert(tokens!.count == 66)
             expectation.fulfill()
         }
-        
         wait(for: [expectation], timeout: 10.0)
     }
     
-    func testGetOrder() {
+    func testGetOrders() {
         let expectation = XCTestExpectation()
-
-        loopring_JSON_RPC.getOrders(pageSize: 10) { orders, error in
-            XCTAssert(orders.count == 10)
-            
+        
+//        loopring_JSON_RPC.getOrders(owner: "0x847983c3a34afa192cfee860698584c030f4c9db1", orderHash: "0xf0b75ed18109403b88713cd7a1a8423352b9ed9260e39cb1ea0f423e2b6664f0", status: OrderStatus.new.rawValue, market: "lrc-weth") { orders, error in
+        
+        loopring_JSON_RPC.getOrders(owner: nil, orderHash: nil, status: nil, market: "lrc-weth") { orders, error in
+            XCTAssert(orders.count == 20)
             expectation.fulfill()
         }
-
         wait(for: [expectation], timeout: 10.0)
     }
     
     func testGetDepth() {
-        loopring_JSON_RPC.getDepth() { data, response, error in
-            guard let data = data, error == nil else {
+        let expectation = XCTestExpectation()
+        loopring_JSON_RPC.getDepth() { depth, error in
+            guard error == nil else {
                 print("error=\(String(describing: error))")
                 return
             }
-            
-            let json = JSON(data)
-            // print("response = \(json)")
-            
-            // TODO: verify the response
+            XCTAssertNotNil(depth)
+            expectation.fulfill()
         }
+        wait(for: [expectation], timeout: 10.0)
     }
+    
     
     func testGetTickers() {
         let expectation = XCTestExpectation()
@@ -86,27 +82,19 @@ class loopring_JSON_RPCTests: XCTestCase {
         
         wait(for: [expectation], timeout: 10.0)
     }
-    
+
     func testGetFills() {
         let expectation = XCTestExpectation()
-
-        loopring_JSON_RPC.getFills(market: "LRC-WETH", owner: "0x8888f1f195afa192cfee860698584c030f4c9db1", orderHash: "0xee0b482d9b704070c970df1e69297392a8bb73f4ed91213ae5c1725d4d1923fd", ringHash: "0x2794f8e4d2940a2695c7ecc68e10e4f479b809601fa1d07f5b4ce03feec289d5", pageIndex: 1, pageSize: 20) { data, response, error in
-            guard let data = data, error == nil else {
+        
+        loopring_JSON_RPC.getFills(market: "LRC-WETH", owner: "0xF243c002A1Ec6eA0466ec3C9Dbd745f782B1F058", orderHash: nil, ringHash: nil) { trades, error in
+            guard error == nil else {
                 print("error=\(String(describing: error))")
-                
-                // TODO: Fails to catch the error.
                 XCTFail()
                 return
             }
-            
-            let json = JSON(data)
-            print("response = \(json)")
-            
-            // TODO: verify the response
-            
+            XCTAssert(trades.count == 10)
             expectation.fulfill()
         }
-        
         wait(for: [expectation], timeout: 10.0)
     }
     
@@ -134,25 +122,18 @@ class loopring_JSON_RPCTests: XCTestCase {
     }
 
     func testGetRingMined() {
-        let expectation = XCTestExpectation()
         
-        loopring_JSON_RPC.getRingMined(ringHash: "0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238", pageIndex: 1, pageSize: 20) { data, response, error in
-            guard let data = data, error == nil else {
+        let expectation = XCTestExpectation()
+        loopring_JSON_RPC.getRingMined(ringHash: nil, pageIndex: 1, pageSize: 20) { minedRings, error in
+            guard error == nil else {
                 print("error=\(String(describing: error))")
-                
-                // TODO: Fails to catch the error.
                 XCTFail()
                 return
             }
-            
-            let json = JSON(data)
-            print("response = \(json)")
-            
-            // TODO: verify the response
-            
+            XCTAssertNotNil(minedRings)
+            XCTAssertEqual(minedRings!.count, 20)
             expectation.fulfill()
         }
-        
         wait(for: [expectation], timeout: 10.0)
     }
     
@@ -235,7 +216,6 @@ class loopring_JSON_RPCTests: XCTestCase {
                 XCTFail()
                 return
             }
-
             // If the relay support more tokens, we will know.
             XCTAssert(markets.count == 64)
             expectation.fulfill()
