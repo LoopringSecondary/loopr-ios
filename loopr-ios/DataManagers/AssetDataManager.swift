@@ -29,6 +29,7 @@ class AssetDataManager {
         }
     }
     
+    // TODO: deprecated this function.
     func generateMockData() {
         assets = []
 

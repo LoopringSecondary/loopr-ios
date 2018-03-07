@@ -52,8 +52,14 @@ class VerifyMnemonicViewController: UIViewController {
     }
 
     func dismissGenerateWallet() {
-        self.dismiss(animated: true) {
-            
+        if SetupDataManager.shared.hasPresented {
+            self.dismiss(animated: true, completion: {
+                
+            })
+        } else {
+            SetupDataManager.shared.hasPresented = true
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
         }
     }
 

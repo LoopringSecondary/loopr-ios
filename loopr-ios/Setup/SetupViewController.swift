@@ -42,8 +42,18 @@ class SetupViewController: UIViewController {
     }
 
     @objc func skipButtonPressed(_ sender: Any) {
-        self.dismiss(animated: true) {
+        if SetupDataManager.shared.hasPresented {
+            self.dismiss(animated: true, completion: {
+                
+            })
+        } else {
+            SetupDataManager.shared.hasPresented = true
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
             
+            // TODO: improve the animation between two view controllers.
+            UIView.transition(with: appDelegate!.window!, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+                appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+            }, completion: nil)
         }
     }
 

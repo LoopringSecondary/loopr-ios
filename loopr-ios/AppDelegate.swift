@@ -18,12 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        AppWalletDataManager.shared.setup()
+
+        if AppWalletDataManager.shared.getWallets().isEmpty {
+            self.window?.rootViewController = SetupNavigationController(nibName: nil, bundle: nil)
+        }
+        
         Themes.restoreLastTheme()
         ThemeManager.animationDuration = 1.0
         
         // Generate mock data
         AssetDataManager.shared.generateMockData()
-        WalletDataManager.shared.generateMockData()
         
         // Get data from Relay
         OrderDataManager.shared.getOrdersFromServer()

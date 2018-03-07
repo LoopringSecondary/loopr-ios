@@ -9,6 +9,11 @@
 import Foundation
 import SwiftyJSON
 
+enum TradeType {
+    case buy
+    case sell
+}
+
 class Trade {
     
     let id: String

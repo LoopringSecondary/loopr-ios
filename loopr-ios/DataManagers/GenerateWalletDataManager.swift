@@ -12,7 +12,7 @@ class GenerateWalletDataManager {
     
     static let shared = GenerateWalletDataManager()
     
-    var walletName: String?
+    var walletName: String = ""
     private var mnemonic: [String] = []
 
     // Used in the verification.
@@ -57,9 +57,9 @@ class GenerateWalletDataManager {
 
     // TODO: use error handling
     func complete() -> AppWallet {
-        let appWallet = WalletDataManager.shared.addWallet(walletName: walletName, mnemonic: mnemonic)
+        let appWallet = AppWalletDataManager.shared.addWallet(walletName: walletName, mnemonic: mnemonic)
         
-        walletName = nil
+        walletName = ""
         mnemonic = []
         userInputMnemonic = []
     

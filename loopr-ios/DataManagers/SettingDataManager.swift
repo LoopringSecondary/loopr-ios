@@ -16,6 +16,7 @@ class SettingDataManager {
         
     }
 
+    // MARK: Language
     func getSupportedLanguages() -> [Language] {
         let languageNames = Bundle.main.localizations
         let languages = languageNames.filter ({ (languageName) -> Bool in
@@ -42,6 +43,18 @@ class SettingDataManager {
         }
         
         return Language(name: "en")
+    }
+
+    // MARK: Hide small assets
+    func getHideSmallAssets() -> Bool {
+        let defaults = UserDefaults.standard
+        let hideSmallAssets = defaults.bool(forKey: UserDefaultsKeys.hideSmallAssets.rawValue)
+        return hideSmallAssets
+    }
+    
+    func setHideSmallAssets(_ hide: Bool) {
+        let defaults = UserDefaults.standard
+        defaults.set(hide, forKey: UserDefaultsKeys.hideSmallAssets.rawValue)
     }
 
 }

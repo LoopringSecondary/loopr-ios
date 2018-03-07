@@ -17,17 +17,5 @@ class SetupDataManager {
     private init() {
         
     }
-    
-    // Has been setup is different than an empty list of wallet.
-    // It could happen that users disable all wallets.
-    func hasBeenSetup() -> Bool {
-        let defaults = UserDefaults.standard
-        let hasBeenSetup = defaults.bool(forKey: UserDefaultsKeys.hasBeenSetup.rawValue)
-        return hasBeenSetup
-    }
-    
-    func completeSetup() {
-        let defaults = UserDefaults.standard
-        defaults.set(true, forKey: UserDefaultsKeys.hasBeenSetup.rawValue)
-    }
+
 }
