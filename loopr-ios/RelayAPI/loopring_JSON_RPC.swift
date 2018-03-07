@@ -29,6 +29,7 @@ class loopring_JSON_RPC {
                 completionHandler(nil, error)
                 return
             }
+            
             let json = JSON(data)
             var tokens: [Token] = []
             let offerData = json["result"]["tokens"]

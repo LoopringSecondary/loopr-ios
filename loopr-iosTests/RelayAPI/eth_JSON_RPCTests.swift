@@ -22,21 +22,18 @@ class eth_JSON_RPCTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    // its ok to pass nil or real value to method, e.g. owner, same as below
+    func testCall() {
         let expectation = XCTestExpectation()
-        
-        eth_JSON_RPC.eth_getBalance() { data, response, error in
-            guard let data = data, error == nil else {
+        eth_JSON_RPC.eth_call(from: nil, to: "0x98C9D14a894d19a38744d41CD016D89Cf9699a51", gas: nil, gasPrice: nil, value: nil, data: nil) { data, response, error in
+            guard error == nil else {
                 print("error=\(String(describing: error))")
                 return
             }
             
-            let json = JSON(data)
-            print("response = \(json)")
+            print(data)
             
-            // TODO: verify the response
         }
-        
         wait(for: [expectation], timeout: 10.0)
     }
     

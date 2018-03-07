@@ -13,12 +13,30 @@ class eth_JSON_RPC {
     
     static let url = URL(string: "http://13.112.62.24/eth")!
     
-    public static func eth_call(from: String? = nil, to: String) {
+    static func eth_call(from: String?, to: String, gas: UInt?, gasPrice: UInt?, value: UInt?, data: String?, completionHandler: @escaping CompletionHandler) {
         var body: JSON = JSON()
         body["method"] = "eth_call"
-        body["params"] = [["owner": "0x407d73d8a49eeb85d32cf465507dd71d507100c1"]]
-        body["params"]["contractVersion"] = "v1.0"
+        body["params"] = [["from": from, "to": to, "gas": gas, "gasPrice": gasPrice, "value": value, "data": data]]
         body["id"] = "1a715e2557abc0bd"
+        print(body)
+        
+        Request.send(body: body, url: url) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            
+            print(data)
+            
+            let json = JSON(data)
+            var tokens: [Token] = []
+            let offerData = json["result"]["tokens"]
+            for subJson in offerData.arrayValue {
+                let token = Token(json: subJson)
+                tokens.append(token)
+            }
+            completionHandler(data, response, error)
+        }
     }
 
     // TODO:
