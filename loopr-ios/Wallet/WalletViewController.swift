@@ -24,19 +24,18 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         assetTableView.theme_backgroundColor = GlobalPicker.backgroundColor
 
-        let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
-        
         let qrCodebutton = UIButton(type: UIButtonType.custom)
         
         // TODO: smaller images.
         qrCodebutton.theme_setImage(["QRCode-black", "QRCode-white"], forState: UIControlState.normal)
         qrCodebutton.theme_setImage(["QRCode-grey", "QRCode-grey"], forState: UIControlState.highlighted)
-
         qrCodebutton.addTarget(self, action: #selector(self.pressQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
         qrCodebutton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let qrCodeBarButton = UIBarButtonItem(customView: qrCodebutton)
-        
-        self.navigationItem.rightBarButtonItems = [addButton, qrCodeBarButton]
+        self.navigationItem.leftBarButtonItem = qrCodeBarButton
+
+        let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
+        self.navigationItem.rightBarButtonItem = addButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,7 +51,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // TODO: Use an elegant method to set the title to center.
         button.setTitle( "          " + buttonTitle! + "  ", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 18.0)
         button.theme_setTitleColor(["#000", "#fff"], forState: .normal)
         button.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
         

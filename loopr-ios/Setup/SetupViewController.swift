@@ -22,12 +22,12 @@ class SetupViewController: UIViewController {
         unlockWalletButton.layer.borderWidth = 1
         unlockWalletButton.layer.borderColor = UIColor.black.cgColor
         unlockWalletButton.title = NSLocalizedString("Unlock Wallet", comment: "")
-        unlockWalletButton.titleLabel?.font = UIFont(name: "DIN-Bold", size: 17.0)
+        unlockWalletButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)
         
         generateWalletButton.backgroundColor = UIColor.black
         generateWalletButton.layer.cornerRadius = 23
         generateWalletButton.title = NSLocalizedString("Generate Wallet", comment: "")
-        generateWalletButton.titleLabel?.font = UIFont(name: "DIN-Bold", size: 17.0)
+        generateWalletButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)
 
         let skipButton = UIBarButtonItem(title: "Skip", style: .plain, target: self, action: #selector(self.skipButtonPressed(_:)))
         self.navigationItem.rightBarButtonItem = skipButton
