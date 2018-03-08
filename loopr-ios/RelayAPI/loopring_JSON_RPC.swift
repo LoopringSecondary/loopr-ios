@@ -50,8 +50,6 @@ class loopring_JSON_RPC {
         body["params"] = [["owner": owner, "orderHash": orderHash, "contractVersion": contractVersion, "status": status, "market": market, "pageIndex": pageIndex, "pageSize": pageSize]]
         body["id"] = "1a715e2557abc0bd"
         
-        print(body)
-        
         Request.send(body: body, url: url) { data, response, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
@@ -79,10 +77,10 @@ class loopring_JSON_RPC {
     }
 
     // READY
-    static func getDepth(completionHandler: @escaping (_ depth: Depth?, _ error: Error?) -> Void) {
+    static func getDepth(market: String, length: UInt, completionHandler: @escaping (_ depth: Depth?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getDepth"
-        body["params"] = [["contractVersion": contractVersion, "market": "LRC-WETH", "length": 10]]
+        body["params"] = [["contractVersion": contractVersion, "market": market, "length": length]]
         body["id"] = "1a715e2557abc0bd"
         
         Request.send(body: body, url: url) { data, response, error in
@@ -210,6 +208,7 @@ class loopring_JSON_RPC {
                 print("error=\(String(describing: error))")
                 return
             }
+            let json = JSON(data)
             completionHandler(data, response, error)
         }
     }

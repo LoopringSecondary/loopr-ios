@@ -52,7 +52,7 @@ class loopring_JSON_RPCTests: XCTestCase {
     
     func testGetDepth() {
         let expectation = XCTestExpectation()
-        loopring_JSON_RPC.getDepth() { depth, error in
+        loopring_JSON_RPC.getDepth(market: "LRC-WETH", length: 10) { depth, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 return
