@@ -8,32 +8,37 @@
 
 import Foundation
 
-enum BlockTag: CustomStringConvertible {
+protocol DefaultBlock {
+    func description() -> String
+}
 
+enum BlockTag: DefaultBlock {
+    
     case latest
     case earliest
     case pending
-
-    var description: String {
+    
+    func description() -> String {
         switch self {
         case .latest:
-        return "latest"
+            return "latest"
         case .earliest:
-        return "earliest"
+            return "earliest"
         case .pending:
-        return "pending"
+            return "pending"
         }
     }
 }
 
-class BlockNumber: CustomStringConvertible {
+class BlockNumber: DefaultBlock {
     
     let number: UInt
-    var description: String
     
     init(number: UInt) {
         self.number = number
-        self.description = String(number)
     }
-
+    
+    func description() -> String {
+        return String(self.number)
+    }
 }
