@@ -32,10 +32,10 @@ class QRCodeViewController: UIViewController {
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
 
-        let address = AppWalletDataManager.shared.getCurrentAppWallet()!.address
+        let address = AppWalletDataManager.shared.getCurrentAppWallet()?.address
         addressLabel.text = address
 
-        let data = address.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
+        let data = address?.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
         let filter = CIFilter(name: "CIQRCodeGenerator")
         filter?.setValue(data, forKey: "inputMessage")
         filter?.setValue("Q", forKey: "inputCorrectionLevel")

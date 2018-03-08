@@ -81,9 +81,11 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @objc func pressQRCodeButton(_ button: UIBarButtonItem) {
         print("pressQRCodeButton")
-        let viewController = QRCodeViewController()
-        viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
+        if AppWalletDataManager.shared.getCurrentAppWallet() != nil {
+            let viewController = QRCodeViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
     
     @objc func pressAddButton(_ button: UIBarButtonItem) {
