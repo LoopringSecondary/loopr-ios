@@ -27,11 +27,11 @@ enum UIStyleConfig {
             if change > 0 {
                 return UIColor.red
             } else {
-                return UIColor.green
+                return UIColor.init(rgba: "#24DF93")
             }
         } else {
             if change > 0 {
-                return UIColor.green
+                return UIColor.init(rgba: "#24DF93")
             } else {
                 return UIColor.red
             }

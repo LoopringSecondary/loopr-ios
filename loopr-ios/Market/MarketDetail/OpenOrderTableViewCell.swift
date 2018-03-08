@@ -16,6 +16,8 @@ class OpenOrderTableViewCell: UITableViewCell {
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var filledPieChart: CircleChart!
     
+    @IBOutlet weak var cancelButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,12 +27,23 @@ class OpenOrderTableViewCell: UITableViewCell {
         amountLabel.theme_textColor = ["#a0a0a0", "#fff"]
         filledPieChart.theme_backgroundColor = GlobalPicker.backgroundColor
         
+        tradingPairLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17.0)
+        amountLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 14.0)
+        
         filledPieChart.strokeColor = Themes.isNight() ? UIColor.white.cgColor : UIColor.black.cgColor
         filledPieChart.textColor = Themes.isNight() ? UIColor.white : UIColor.black
-        filledPieChart.textFont = UIFont.systemFont(ofSize: 12)
+        filledPieChart.textFont = UIFont(name: FontConfigManager.shared.getLight(), size: 10.0)!
+        filledPieChart.desiredLineWidth = 1
         
         let num = Int(arc4random_uniform(100))
         filledPieChart.percentage = CGFloat(num)/100
+
+        cancelButton.backgroundColor = UIColor.clear
+        cancelButton.titleColor = UIColor.black
+        cancelButton.layer.borderWidth = 0.5
+        cancelButton.layer.borderColor = UIColor.black.cgColor
+        cancelButton.layer.cornerRadius = 15
+        cancelButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 12.0)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -13,8 +13,8 @@ class MarketLineChartTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lineChartView: LineChartView!
     
-    @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var sellButton: UIButton!
+    @IBOutlet weak var buyButton: UIButton!
     
     @IBOutlet weak var oneDayButton: CustomUIButtonForUIToolbar!
     @IBOutlet weak var oneWeekButton: CustomUIButtonForUIToolbar!
@@ -41,13 +41,26 @@ class MarketLineChartTableViewCell: UITableViewCell {
         oneYearButton.unselected()
         fiveYearButton.unselected()
         
-        buyButton.theme_backgroundColor = ["#000", "#fff"]
-        buyButton.theme_setTitleColor(["#fff", "#000"], forState: .normal)
+        // Sell button
+        sellButton.setTitle(NSLocalizedString("Sell", comment: ""), for: .normal)
         sellButton.theme_backgroundColor = ["#000", "#fff"]
         sellButton.theme_setTitleColor(["#fff", "#000"], forState: .normal)
+
+        sellButton.backgroundColor = UIColor.clear
+        sellButton.titleColor = UIColor.black
+        sellButton.layer.cornerRadius = 23
+        sellButton.layer.borderWidth = 0.5
+        sellButton.layer.borderColor = UIColor.black.cgColor
+        sellButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
         
+        // Buy button
         buyButton.setTitle(NSLocalizedString("Buy", comment: ""), for: .normal)
-        sellButton.setTitle(NSLocalizedString("Sell", comment: ""), for: .normal)
+        buyButton.theme_backgroundColor = ["#000", "#fff"]
+        buyButton.theme_setTitleColor(["#fff", "#000"], forState: .normal)
+
+        buyButton.backgroundColor = UIColor.black
+        buyButton.layer.cornerRadius = 23
+        buyButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -200,15 +213,15 @@ class MarketLineChartTableViewCell: UITableViewCell {
         fiveYearButton.selected()
     }
     
-    @IBAction func pressedBuyButton(_ sender: Any) {
+    @IBAction func pressedSellButton(_ sender: Any) {
         print("pressedBuyButton")
-        if let btnAction = self.pressedBuyButtonClosure {
+        if let btnAction = self.pressedSellButtonClosure {
             btnAction()
         }
     }
     
-    @IBAction func pressedSellButton(_ sender: Any) {
-        if let btnAction = self.pressedSellButtonClosure {
+    @IBAction func pressedBuyButton(_ sender: Any) {
+        if let btnAction = self.pressedBuyButtonClosure {
             btnAction()
         }
     }

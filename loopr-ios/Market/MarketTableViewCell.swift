@@ -29,6 +29,14 @@ class MarketTableViewCell: UITableViewCell {
         
         marketPriceInBitcoinLabel.theme_textColor = GlobalPicker.textColor
         marketPriceInFiatCurrencyLabel.theme_textColor = ["#a0a0a0", "#fff"]
+        
+        nameLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17)
+        balanceLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 14)
+
+        marketPriceInBitcoinLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17)
+        marketPriceInFiatCurrencyLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 14)
+        
+        percentageChangeLabel.font = UIFont(name: FontConfigManager.shared.getRegular(), size: 17)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
