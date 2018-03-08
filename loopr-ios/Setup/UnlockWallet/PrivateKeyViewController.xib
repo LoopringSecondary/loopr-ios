@@ -24,10 +24,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVD-JS-FJ5">
-                    <rect key="frame" x="16" y="327" width="343" height="40"/>
+                    <rect key="frame" x="16" y="320" width="343" height="47"/>
                     <color key="backgroundColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="Vx5-tC-yFI"/>
+                        <constraint firstAttribute="height" constant="47" id="Vx5-tC-yFI"/>
                     </constraints>
                     <state key="normal" title="Unlock">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -37,7 +37,7 @@
                     </connections>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please input your private key" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ujb-qZ-KOa">
-                    <rect key="frame" x="16" y="36" width="343" height="275"/>
+                    <rect key="frame" x="16" y="36" width="343" height="268"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <color key="tintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>

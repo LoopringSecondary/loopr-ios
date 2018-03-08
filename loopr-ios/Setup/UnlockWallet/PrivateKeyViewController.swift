@@ -24,6 +24,10 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
 
         unlockButton.setTitle(NSLocalizedString("Unlock", comment: ""), for: .normal)
+        
+        unlockButton.backgroundColor = UIColor.black
+        unlockButton.layer.cornerRadius = 23
+        unlockButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)
 
         privateKeyTextView.delegate = self
         privateKeyTextView.text = NSLocalizedString("Please input your private key", comment: "")

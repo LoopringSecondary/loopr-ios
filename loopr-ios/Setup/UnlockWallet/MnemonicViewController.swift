@@ -22,7 +22,12 @@ class MnemonicViewController: UIViewController, UITextViewDelegate {
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
+
         unlockButton.setTitle(NSLocalizedString("Unlock", comment: ""), for: .normal)
+        
+        unlockButton.backgroundColor = UIColor.black
+        unlockButton.layer.cornerRadius = 23
+        unlockButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)        
         
         mnemonicWordTextView.delegate = self
         mnemonicWordTextView.text = NSLocalizedString("Please use space to seperate the mnemonic words", comment: "")

@@ -24,17 +24,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" text="Please use space to seperate the mnemonic words" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wnQ-al-rIC">
-                    <rect key="frame" x="16" y="36" width="343" height="275"/>
+                    <rect key="frame" x="16" y="36" width="343" height="268"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <color key="tintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0O-fl-KJI">
-                    <rect key="frame" x="16" y="327" width="343" height="40"/>
+                    <rect key="frame" x="16" y="320" width="343" height="47"/>
                     <color key="backgroundColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="MpU-ba-qC9"/>
+                        <constraint firstAttribute="height" constant="47" id="MpU-ba-qC9"/>
                     </constraints>
                     <state key="normal" title="Unlock">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
