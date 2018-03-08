@@ -34,6 +34,7 @@ class FontConfigManager {
 
         UILabel.appearance().font = FontConfigManager.shared.getLabelFont()
         UIButton.appearance().titleLabel?.font = FontConfigManager.shared.getLabelFont()
+        UITextField.appearance().font = FontConfigManager.shared.getLabelFont()
         
         // TODO: unsafe. Fix it.
         let tabBarItemAttributes = [NSAttributedStringKey.font: UIFont(name: FontConfigManager.shared.getCurrentFontName(), size: 10)!]

@@ -23,6 +23,10 @@ class GenerateWalletViewController: UIViewController {
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
+        continueButton.backgroundColor = UIColor.black
+        continueButton.layer.cornerRadius = 23
+        continueButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)
+
         view.theme_backgroundColor = GlobalPicker.backgroundColor
 
         _ = GenerateWalletDataManager.shared.new()

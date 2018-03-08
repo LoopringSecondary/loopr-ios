@@ -42,10 +42,10 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYj-M0-IFi">
-                    <rect key="frame" x="16" y="196" width="343" height="40"/>
+                    <rect key="frame" x="15" y="196" width="345" height="47"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="gbH-xG-1yC"/>
+                        <constraint firstAttribute="height" constant="47" id="gbH-xG-1yC"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" title="Continue">
@@ -62,10 +62,10 @@
                 <constraint firstItem="yQO-Qm-cfh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="32" id="PfF-kR-Ncr"/>
                 <constraint firstItem="zYj-M0-IFi" firstAttribute="top" secondItem="9uX-OO-zcf" secondAttribute="bottom" constant="32" id="Qoh-ym-oMU"/>
                 <constraint firstItem="9uX-OO-zcf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="WRh-5N-P0h"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zYj-M0-IFi" secondAttribute="trailing" constant="16" id="Wcf-Jg-6Ne"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zYj-M0-IFi" secondAttribute="trailing" constant="15" id="Wcf-Jg-6Ne"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9uX-OO-zcf" secondAttribute="trailing" constant="16" id="Xj7-RB-gWZ"/>
                 <constraint firstItem="9uX-OO-zcf" firstAttribute="top" secondItem="yQO-Qm-cfh" secondAttribute="bottom" constant="32" id="lfN-jg-pXT"/>
-                <constraint firstItem="zYj-M0-IFi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="tPt-di-H2Y"/>
+                <constraint firstItem="zYj-M0-IFi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="tPt-di-H2Y"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yQO-Qm-cfh" secondAttribute="trailing" constant="16" id="zEi-go-0fO"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

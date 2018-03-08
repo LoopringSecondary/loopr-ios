@@ -12,6 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GenerateMnemonicViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="backupNowButton" destination="V6N-iT-Fll" id="xdQ-2I-2lS"/>
+                <outlet property="congratulationsLabel" destination="wfc-Ty-5fu" id="bWL-58-wY7"/>
+                <outlet property="detailTextView" destination="UmX-GN-H8e" id="QQv-rk-PoI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,21 +23,20 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfc-Ty-5fu">
-                    <rect key="frame" x="37" y="91" width="300" height="43"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfc-Ty-5fu">
+                    <rect key="frame" x="15" y="38" width="345" height="43"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="rZQ-WB-eJB"/>
-                        <constraint firstAttribute="width" constant="300" id="xcx-Xe-2GZ"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmX-GN-H8e">
-                    <rect key="frame" x="32" y="174" width="311" height="171"/>
+                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmX-GN-H8e">
+                    <rect key="frame" x="15" y="93" width="345" height="200"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="171" id="Shf-H6-gjK"/>
+                        <constraint firstAttribute="height" constant="200" id="Shf-H6-gjK"/>
                     </constraints>
                     <string key="text">Your wallet has been generated. Please take a moment to backup your wallet by writting down the mnemonic words on paper. Mnemonic words are required to restore your wallets. Please do not share your mnemonic words with anyone, nor save them on cloud storage.</string>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -42,10 +44,10 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6N-iT-Fll">
-                    <rect key="frame" x="32" y="405" width="311" height="40"/>
+                    <rect key="frame" x="15" y="353" width="345" height="47"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="b7p-17-Paf"/>
+                        <constraint firstAttribute="height" constant="47" id="b7p-17-Paf"/>
                     </constraints>
                     <state key="normal" title="Backup Now">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -57,14 +59,16 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="V6N-iT-Fll" secondAttribute="trailing" constant="32" id="D5F-19-lSL"/>
-                <constraint firstItem="UmX-GN-H8e" firstAttribute="top" secondItem="wfc-Ty-5fu" secondAttribute="bottom" constant="40" id="GmA-cM-wij"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wfc-Ty-5fu" secondAttribute="trailing" constant="15" id="3kq-vT-7ac"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="V6N-iT-Fll" secondAttribute="trailing" constant="15" id="D5F-19-lSL"/>
+                <constraint firstItem="UmX-GN-H8e" firstAttribute="top" secondItem="wfc-Ty-5fu" secondAttribute="bottom" constant="12" id="GmA-cM-wij"/>
                 <constraint firstItem="V6N-iT-Fll" firstAttribute="top" secondItem="UmX-GN-H8e" secondAttribute="bottom" constant="60" id="MjT-a4-Eu5"/>
-                <constraint firstItem="V6N-iT-Fll" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="arm-aK-kHv"/>
+                <constraint firstItem="wfc-Ty-5fu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="Mud-M0-BZd"/>
+                <constraint firstItem="V6N-iT-Fll" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="arm-aK-kHv"/>
                 <constraint firstItem="wfc-Ty-5fu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cFA-hP-2wR"/>
-                <constraint firstItem="wfc-Ty-5fu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="71" id="dfX-Hk-n93"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UmX-GN-H8e" secondAttribute="trailing" constant="32" id="gif-v8-OF1"/>
-                <constraint firstItem="UmX-GN-H8e" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="k0k-qQ-6Jj"/>
+                <constraint firstItem="wfc-Ty-5fu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="18" id="dfX-Hk-n93"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UmX-GN-H8e" secondAttribute="trailing" constant="15" id="gif-v8-OF1"/>
+                <constraint firstItem="UmX-GN-H8e" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="k0k-qQ-6Jj"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="34.5" y="124.5"/>

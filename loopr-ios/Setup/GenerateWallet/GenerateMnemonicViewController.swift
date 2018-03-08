@@ -10,6 +10,10 @@ import UIKit
 
 class GenerateMnemonicViewController: UIViewController {
 
+    @IBOutlet weak var congratulationsLabel: UILabel!
+    @IBOutlet weak var backupNowButton: UIButton!
+    @IBOutlet weak var detailTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,6 +21,13 @@ class GenerateMnemonicViewController: UIViewController {
         let backButton = UIBarButtonItem()
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+
+        backupNowButton.backgroundColor = UIColor.black
+        backupNowButton.layer.cornerRadius = 23
+        backupNowButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)
+        
+        congratulationsLabel.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: 21)
+        detailTextView.font = FontConfigManager.shared.getLabelFont()
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
     }
