@@ -15,7 +15,6 @@
 		949C49492046A4A80074466D /* SampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949C49472046A4A80074466D /* SampleViewController.xib */; };
 		94B5CA8A204FB4E20081BA93 /* DefaultBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5CA89204FB4E20081BA93 /* DefaultBlock.swift */; };
 		94B5CA8C204FE8E40081BA93 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5CA8B204FE8E40081BA93 /* Transaction.swift */; };
-		94BAE3DE204811C1001A271A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BAE3DD204811C1001A271A /* UIView+Extension.swift */; };
 		94E185972051451C00D86FFA /* Initable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185962051451C00D86FFA /* Initable.swift */; };
 		94E185992051455C00D86FFA /* SimpleRespond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185982051455C00D86FFA /* SimpleRespond.swift */; };
 		94E5788F204E71850014AD4B /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E5788E204E71850014AD4B /* Token.swift */; };
@@ -328,7 +327,6 @@
 		949C49472046A4A80074466D /* SampleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SampleViewController.xib; sourceTree = "<group>"; };
 		94B5CA89204FB4E20081BA93 /* DefaultBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBlock.swift; sourceTree = "<group>"; };
 		94B5CA8B204FE8E40081BA93 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
-		94BAE3DD204811C1001A271A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		94E185962051451C00D86FFA /* Initable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initable.swift; sourceTree = "<group>"; };
 		94E185982051455C00D86FFA /* SimpleRespond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRespond.swift; sourceTree = "<group>"; };
 		94E5788E204E71850014AD4B /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
@@ -601,14 +599,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		94BAE3DC20481194001A271A /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				94BAE3DD204811C1001A271A /* UIView+Extension.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		970E368BCD1AFC73151579EF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -864,7 +854,6 @@
 		AC798E362022B93A0071D477 = {
 			isa = PBXGroup;
 			children = (
-				94BAE3DC20481194001A271A /* Utils */,
 				AC798E412022B93A0071D477 /* loopr-ios */,
 				AC798E582022B93B0071D477 /* loopr-iosTests */,
 				AC798E632022B93B0071D477 /* loopr-iosUITests */,
@@ -1774,7 +1763,6 @@
 				AC31B961204A8E4F00B16155 /* MnemonicWords.swift in Sources */,
 				AC3756662038CD7E00AADC60 /* SetupNavigationController.swift in Sources */,
 				ACE6F71C204211470039273D /* DashedLineView.swift in Sources */,
-				94BAE3DE204811C1001A271A /* UIView+Extension.swift in Sources */,
 				AC31B94A204A8DF400B16155 /* KeystoreKeyHeader.swift in Sources */,
 				ACDBF10A203FEA07000F0DEC /* ReorderAutoScroll.swift in Sources */,
 				ACB9117A20256B3C00F14644 /* MarketDataManager.swift in Sources */,
@@ -2012,7 +2000,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4SCJSCZ3VM;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.dev.loopr-ios";
@@ -2031,7 +2019,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4SCJSCZ3VM;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.dev.loopr-ios";
