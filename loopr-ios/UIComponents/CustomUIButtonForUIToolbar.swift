@@ -15,7 +15,7 @@ class CustomUIButtonForUIToolbar: UIButton {
         
         // self.layer.borderColor = UIColor.blue.cgColor
         // self.layer.borderWidth = 1.0
-        self.layer.cornerRadius = 5.0
+        self.layer.cornerRadius = 14.0
         self.clipsToBounds = true
         // self.setTitleColor(UIColor.blue, for: .normal)
         // self.setTitleColor(UIColor.white, for: .highlighted)

@@ -11,7 +11,7 @@ import UIKit
 
 // Colors
 enum UIStyleConfig {
-    static let defaultTintColor = UIColor.init(white: 0.2, alpha: 1)
+    static let defaultTintColor = UIColor.black // UIColor.init(white: 0.2, alpha: 1)
     
     static let systemDefaultBlueTintColor = UIColor.init(red: 0.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1)
     

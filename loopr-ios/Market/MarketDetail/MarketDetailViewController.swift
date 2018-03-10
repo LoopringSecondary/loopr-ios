@@ -25,7 +25,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         tableView.delegate = self
         tableView.tableFooterView = UIView()
         
-        self.title = market?.description
+        self.navigationItem.title = market?.description
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor

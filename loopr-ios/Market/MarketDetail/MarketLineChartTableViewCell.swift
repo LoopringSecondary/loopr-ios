@@ -30,7 +30,7 @@ class MarketLineChartTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        theme_backgroundColor = ["#fff", "#000"]
+        theme_backgroundColor = GlobalPicker.backgroundColor
         
         drawLineChartView()
         
