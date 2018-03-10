@@ -25,7 +25,6 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         tableView.delegate = self
         tableView.tableFooterView = UIView()
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getLight(), size: 16) ?? UIFont.systemFont(ofSize: 16)]
         self.navigationItem.title = market?.description
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
@@ -152,20 +151,22 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             
             cell!.pressedBuyButtonClosure = {
                 let buyViewController = BuyViewController()
+                self.navigationController?.pushViewController(buyViewController, animated: true)
+                
+                // We may use this part of code in the future.
+                /*
+                let buyViewController = ArchiveBuyViewController()
                 buyViewController.transitioningDelegate = self
                 buyViewController.interactor = self.interactor
                 self.present(buyViewController, animated: true) {
                     
                 }
+                */
             }
             
             cell!.pressedSellButtonClosure = {
-                let sellViewController = SellViewController()
-                sellViewController.transitioningDelegate = self
-                sellViewController.interactor = self.interactor
-                self.present(sellViewController, animated: true) {
-                    
-                }
+                let buyViewController = BuyViewController()
+                self.navigationController?.pushViewController(buyViewController, animated: true)
             }
             return cell!
 

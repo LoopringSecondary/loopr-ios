@@ -10,6 +10,9 @@ import UIKit
 
 open class DefaultNumericKeyboard: NumericKeyboard {
     
+    var textColor: UIColor! = UIColor.black
+    var font: UIFont! = UIFont.init(name: FontConfigManager.shared.getLight(), size: 36) ?? UIFont.systemFont(ofSize: 36)
+
     override public init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
@@ -55,12 +58,12 @@ extension DefaultNumericKeyboard: NumericKeyboardDataSource {
         item.titleColor = {
             switch position {
             case (3, 0):
-                return UIColor(white: 0.3, alpha: 1) // .blue
+                return textColor // .blue
             default:
-                return UIColor(white: 0.3, alpha: 1)
+                return textColor
             }
         }()
-        item.font = .systemFont(ofSize: 40)
+        item.font = font
         return item
     }
     

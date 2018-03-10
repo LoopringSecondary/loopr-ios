@@ -214,7 +214,7 @@ class MarketLineChartTableViewCell: UITableViewCell {
     }
     
     @IBAction func pressedSellButton(_ sender: Any) {
-        print("pressedBuyButton")
+        print("pressedSellButton")
         if let btnAction = self.pressedSellButtonClosure {
             btnAction()
         }

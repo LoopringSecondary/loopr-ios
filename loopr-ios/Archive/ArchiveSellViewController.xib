@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SellViewController" customModule="loopr_ios" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ArchiveSellViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="keyboardView" destination="0kp-MD-ulc" id="Vao-Re-uh5"/>
                 <outlet property="navigationBar" destination="NJT-CC-RpB" id="DTK-tQ-Fk7"/>

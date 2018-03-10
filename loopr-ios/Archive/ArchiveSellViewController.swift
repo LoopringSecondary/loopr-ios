@@ -1,5 +1,5 @@
 //
-//  BuyViewController.swift
+//  SellViewController.swift
 //  loopr-ios
 //
 //  Created by xiaoruby on 2/7/18.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class BuyViewController: UIViewController {
-
+class ArchiveSellViewController: UIViewController {
+    
     var interactor: Interactor?
 
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var keyboardView: DefaultNumericKeyboard!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,15 +30,8 @@ class BuyViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        // numericKeyboard.invalidateLayout()
-    }
-    
     @IBAction func pressedCloseButton(_ sender: Any) {
         print("pressedCloseButton")
-                
         self.dismiss(animated: true) {
             
         }
@@ -46,10 +39,11 @@ class BuyViewController: UIViewController {
     
     @IBAction func pressedOrderTypesButton(_ sender: Any) {
         print("pressedOrderTypesButton")
-        
+
     }
     
-    @IBAction func handleGuesture(_ sender: UIPanGestureRecognizer) {
+    // Handle drag down to close gesture
+    @IBAction func handleGesture(_ sender: UIPanGestureRecognizer) {
         let percentThreshold: CGFloat = 0.3
         
         // convert y-position to downward pull progress (percentage)
@@ -83,7 +77,7 @@ class BuyViewController: UIViewController {
 
 }
 
-extension BuyViewController: NumericKeyboardDelegate {
+extension ArchiveSellViewController: NumericKeyboardDelegate {
     
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemTapped item: NumericKeyboardItem, atPosition position: Position) {
         print("pressed keyboard: (\(position.row), \(position.column))")

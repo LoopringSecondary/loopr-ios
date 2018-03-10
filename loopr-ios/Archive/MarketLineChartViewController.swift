@@ -188,7 +188,7 @@ class MarketLineChartViewController: UIViewController {
     @IBAction func pressedBuyButton(_ sender: Any) {
         print("pressedBuyButton")
         
-        let buyViewController = BuyViewController()
+        let buyViewController = ArchiveBuyViewController()
         buyViewController.transitioningDelegate = self
         buyViewController.interactor = interactor
         
@@ -198,7 +198,7 @@ class MarketLineChartViewController: UIViewController {
     }
     
     @IBAction func pressedSellButton(_ sender: Any) {
-        let sellViewController = SellViewController()
+        let sellViewController = ArchiveSellViewController()
         sellViewController.transitioningDelegate = self
         sellViewController.interactor = interactor
         
