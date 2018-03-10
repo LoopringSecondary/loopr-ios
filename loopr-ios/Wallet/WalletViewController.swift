@@ -20,6 +20,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.delegate = self
         assetTableView.reorder.delegate = self
         assetTableView.tableFooterView = UIView()
+        assetTableView.separatorStyle = .none
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         assetTableView.theme_backgroundColor = GlobalPicker.backgroundColor

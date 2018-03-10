@@ -62,7 +62,7 @@ class TickerLabel: UIView {
         charactersView.clipsToBounds = true
         charactersView.backgroundColor = UIColor.clear
         addSubview(charactersView)
-        font = UIFont.systemFont(ofSize: 36.0)
+        // font = UIFont.systemFont(ofSize: 36.0)
         textColor = UIColor.black
         animationDuration = 1.0
         

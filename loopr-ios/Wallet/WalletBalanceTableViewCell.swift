@@ -19,20 +19,28 @@ class WalletBalanceTableViewCell: UITableViewCell {
     
     @IBOutlet weak var balanceLabel: TickerLabel!
     @IBOutlet weak var hideAssetSwitch: UISwitch!
-    
+    @IBOutlet weak var hideAssetsLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        balanceLabel.theme_backgroundColor = ["#fff", "#000"]
-        self.theme_backgroundColor = ["#fff", "#000"]
         
-        update()
-        
-        balanceLabel.setText("\(balance)", animated: false)
-        balanceLabel.setFont(UIFont.systemFont(ofSize: 36))
+        balanceLabel.setFont(UIFont.init(name: FontConfigManager.shared.getLight(), size: 34)!)
         balanceLabel.animationDuration = 0.5
         balanceLabel.textAlignment = NSTextAlignment.center
+        balanceLabel.initializeLabel()
+        balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
+        balanceLabel.setText("\(balance)", animated: false)
         
+        hideAssetSwitch.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
+
+        self.theme_backgroundColor = GlobalPicker.backgroundColor
+        
+        hideAssetsLabel.theme_textColor = GlobalPicker.textColor
+        hideAssetsLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)
+
+        // TODO: Get the data from Relay API
+        update()
         _ = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
     }
     
