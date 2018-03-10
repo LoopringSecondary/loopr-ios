@@ -26,7 +26,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
         // Initialization code
         
         balanceLabel.setFont(UIFont.init(name: FontConfigManager.shared.getLight(), size: 34)!)
-        balanceLabel.animationDuration = 0.5
+        balanceLabel.animationDuration = 0.25
         balanceLabel.textAlignment = NSTextAlignment.center
         balanceLabel.initializeLabel()
         balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
@@ -88,6 +88,6 @@ class WalletBalanceTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 160
+        return 150
     }
 }

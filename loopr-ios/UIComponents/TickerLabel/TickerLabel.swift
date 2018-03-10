@@ -64,7 +64,7 @@ class TickerLabel: UIView {
         addSubview(charactersView)
         // font = UIFont.systemFont(ofSize: 36.0)
         textColor = UIColor.black
-        animationDuration = 1.0
+        // animationDuration = 1.0
         
         // setFont(UIFont.systemFont(ofSize: 36.0))
         // characterWidth = "8".size(withAttributes: [NSAttributedStringKey.font: font]).width

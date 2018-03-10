@@ -47,12 +47,12 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         var buttonTitle = AppWalletDataManager.shared.getCurrentAppWallet()?.name
         if buttonTitle == nil {
-            buttonTitle = "Wallet"
+            buttonTitle = NSLocalizedString("Wallet", comment: "")
         }
         
         // TODO: Use an elegant method to set the title to center.
         button.setTitle( "          " + buttonTitle! + "  ", for: .normal)
-        button.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 18.0)
+        button.titleLabel?.font = UIFont(name: FontConfigManager.shared.getLight(), size: 16.0)
         button.theme_setTitleColor(["#000", "#fff"], forState: .normal)
         button.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
         

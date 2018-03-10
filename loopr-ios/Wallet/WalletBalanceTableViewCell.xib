@@ -28,10 +28,10 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1FF-gI-ta8" customClass="TickerLabel" customModule="loopr_ios" customModuleProvider="target">
-                        <rect key="frame" x="20" y="37" width="355" height="50"/>
+                        <rect key="frame" x="20" y="31" width="355" height="36"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="mCn-zs-TbZ"/>
+                            <constraint firstAttribute="height" constant="36" id="mCn-zs-TbZ"/>
                         </constraints>
                     </view>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RBU-Bt-tYb">
@@ -59,7 +59,7 @@
                     <constraint firstAttribute="trailing" secondItem="bom-wH-aAn" secondAttribute="trailing" id="DQo-N9-7Oa"/>
                     <constraint firstItem="1FF-gI-ta8" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Jla-Wc-dit"/>
                     <constraint firstItem="bom-wH-aAn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="LZM-Zi-4p0"/>
-                    <constraint firstItem="1FF-gI-ta8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="26" id="ThD-iX-ro7"/>
+                    <constraint firstItem="1FF-gI-ta8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="20" id="ThD-iX-ro7"/>
                     <constraint firstAttribute="bottom" secondItem="bom-wH-aAn" secondAttribute="bottom" id="VQ8-ip-dtE"/>
                     <constraint firstAttribute="trailing" secondItem="RBU-Bt-tYb" secondAttribute="trailing" constant="15" id="cFs-mA-Vvh"/>
                     <constraint firstItem="RBU-Bt-tYb" firstAttribute="centerY" secondItem="bom-wH-aAn" secondAttribute="centerY" id="eMA-Es-87c"/>
