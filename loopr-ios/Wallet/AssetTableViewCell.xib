@@ -21,10 +21,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8vB-Bh-nJn">
-                        <rect key="frame" x="20" y="20" width="44" height="44"/>
+                        <rect key="frame" x="20" y="26" width="32" height="32"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="44" id="Nu4-WL-m4k"/>
-                            <constraint firstAttribute="height" constant="44" id="hED-Oy-lNb"/>
+                            <constraint firstAttribute="width" constant="32" id="Nu4-WL-m4k"/>
+                            <constraint firstAttribute="height" constant="32" id="hED-Oy-lNb"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHg-k2-b9U">
@@ -48,7 +48,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitcoin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzi-Me-Sla">
-                        <rect key="frame" x="76" y="20" width="141" height="44"/>
+                        <rect key="frame" x="64" y="20" width="141" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="KSG-jA-kjR"/>
                             <constraint firstAttribute="width" constant="141" id="mLH-7U-8pk"/>

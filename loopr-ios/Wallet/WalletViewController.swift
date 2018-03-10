@@ -29,7 +29,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // TODO: smaller images.
         qrCodebutton.theme_setImage(["QRCode-black", "QRCode-white"], forState: UIControlState.normal)
-        qrCodebutton.theme_setImage(["QRCode-grey", "QRCode-grey"], forState: UIControlState.highlighted)
+        qrCodebutton.setImage(UIImage(named: "QRCode-black")?.alpha(0.3), for: .highlighted)
         qrCodebutton.addTarget(self, action: #selector(self.pressQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
         qrCodebutton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let qrCodeBarButton = UIBarButtonItem(customView: qrCodebutton)
