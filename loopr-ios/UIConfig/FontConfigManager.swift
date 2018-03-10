@@ -20,7 +20,7 @@ class FontConfigManager {
 
     static let shared = FontConfigManager()
     
-    var currentFont: SupportedFonts = .OpenSans
+    var currentFont: SupportedFonts = .DIN
     
     private init() {
         // currentFont = getCurrentFontFromLocalStorage()
