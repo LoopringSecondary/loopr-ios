@@ -789,6 +789,8 @@
 		AC5E0DE0203B44EA00AF03C7 /* AddAsset */ = {
 			isa = PBXGroup;
 			children = (
+				ACB9118E20266EC200F14644 /* AddAssetViewController.swift */,
+				ACB9118F20266EC200F14644 /* AddAssetViewController.xib */,
 			);
 			path = AddAsset;
 			sourceTree = "<group>";
@@ -1044,8 +1046,6 @@
 				ACB911512024254F00F14644 /* WalletNavigationViewController.swift */,
 				ACB911532024260E00F14644 /* WalletViewController.swift */,
 				ACB911542024260E00F14644 /* WalletViewController.xib */,
-				ACB9118E20266EC200F14644 /* AddAssetViewController.swift */,
-				ACB9118F20266EC200F14644 /* AddAssetViewController.xib */,
 				AC5E0DDC203B447700AF03C7 /* WalletBalanceTableViewCell.swift */,
 				AC5E0DDD203B447700AF03C7 /* WalletBalanceTableViewCell.xib */,
 				ACB9115820242B9D00F14644 /* AssetTableViewCell.swift */,

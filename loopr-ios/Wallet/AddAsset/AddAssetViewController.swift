@@ -36,6 +36,7 @@ class AddAssetViewController: UIViewController, UITextFieldDelegate {
         tokenNameTextField.becomeFirstResponder()
         tokenNameTitleLabel.textColor = UIStyleConfig.systemDefaultBlueTintColor
         tokenNameTextField.setActive()
+        tokenNameTextField.keyboardAppearance = .dark
 
         tokenNameTextField.delegate = self
         tokenContractAddressTextField.delegate = self
