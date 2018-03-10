@@ -21,17 +21,18 @@ class MarketSwipeViewController: SwipeViewController {
         view.theme_backgroundColor = GlobalPicker.backgroundColor
 
         self.navigationItem.title = NSLocalizedString("Market", comment: "")
-        
+
         options.swipeTabView.height = 44
-        options.swipeTabView.itemView.width = 66
-        
+        options.swipeTabView.underlineView.height = 1
+        options.swipeTabView.underlineView.margin = 20
+
         // TODO: needsAdjustItemViewWidth will trigger expensive computation.
         // options.swipeTabView.needsAdjustItemViewWidth = false
         
         // TODO: .segmented will disable the value of width
         options.swipeTabView.style = .segmented
         
-        options.swipeTabView.itemView.font = UIFont.boldSystemFont(ofSize: 17)
+        options.swipeTabView.itemView.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 21) ?? UIFont.systemFont(ofSize: 21)
         
         // This conflicts to the swipe action in the table view cell.
         options.swipeContentScrollView.isScrollEnabled = false

@@ -38,8 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         
-        SettingDataManager.shared.getCurrentLanguage()
-        
+        _ = SettingDataManager.shared.getCurrentLanguage()
+
         // Setup color in the app.
         self.window?.backgroundColor = UIColor.white
         
@@ -47,21 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         colorView.backgroundColor = UIStyleConfig.tableCellSelectedBackgroundColor
         UITableViewCell.appearance().selectedBackgroundView = colorView
 
-        // UITabBar.appearance().tintColor = UIStyleConfig.tabBarTintColor
-        
-        // The following code is to hide the bottom line of the navigation bar.
-        // It's not easy to implement in iPhone x and other models. It also breaks
-        // UIAlertController animation.
-        // It's resolved by adding an empty image to the shadow.
-        
-        // Hide the bottom line in the navigation bar.
-        // UINavigationBar.appearance().shadowImage = UIImage()
-        // UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-        
-        // Set unsafe area background color for iPhone X
-        // UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 1, alpha: 1)
-        
         updateTheme()
+
         return true
     }
     
@@ -78,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let titleAttributes = GlobalPicker.barTextColors.map { hexString in
             return [
                 NSAttributedStringKey.foregroundColor: UIColor(rgba: hexString),
-                NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18),
+                NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)!,
                 NSAttributedStringKey.shadow: shadow
             ]
         }

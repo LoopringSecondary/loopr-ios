@@ -25,8 +25,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         tableView.delegate = self
         tableView.tableFooterView = UIView()
         
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getLight(), size: 16) ?? UIFont.systemFont(ofSize: 16)]
         self.navigationItem.title = market?.description
-        
+
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
 

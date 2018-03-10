@@ -36,8 +36,7 @@ class FontConfigManager {
         UIButton.appearance().titleLabel?.font = FontConfigManager.shared.getLabelFont()
         UITextField.appearance().font = FontConfigManager.shared.getLabelFont()
         
-        // TODO: unsafe. Fix it.
-        let tabBarItemAttributes = [NSAttributedStringKey.font: UIFont(name: FontConfigManager.shared.getCurrentFontName(), size: 10)!]
+        let tabBarItemAttributes = [NSAttributedStringKey.font: UIFont(name: FontConfigManager.shared.getCurrentFontName(), size: 10) ?? UIFont.systemFont(ofSize: 10)]
         UITabBarItem.appearance().setTitleTextAttributes(tabBarItemAttributes, for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes(tabBarItemAttributes, for: .selected)
     }
@@ -87,19 +86,16 @@ class FontConfigManager {
 
     func getLabelFont() -> UIFont {
         if currentFont == .DIN {
-            // TODO: unsafe. fix it.
-            return UIFont(name: "DINNextLTPro-Regular", size: 17.0)!
+            return UIFont(name: "DINNextLTPro-Regular", size: 17.0) ?? UIFont.systemFont(ofSize: 17)
         }
-        // TODO: unsafe. fix it.
-        return UIFont(name: "\(currentFont.rawValue)-Regular", size: 17.0)!
+        return UIFont(name: "\(currentFont.rawValue)-Regular", size: 17.0) ?? UIFont.systemFont(ofSize: 17)
     }
 
     func getButtonTitleLabelFont() -> UIFont {
         if currentFont == .DIN {
-            // TODO: unsafe. fix it.
-            return UIFont(name: "DIN-Bold", size: 17.0)!
+            return UIFont(name: "DIN-Bold", size: 17.0) ?? UIFont.boldSystemFont(ofSize: 17)
         }
-        // TODO: unsafe. fix it.
-        return UIFont(name: "\(currentFont.rawValue)-Bold", size: 17.0)!
+        return UIFont(name: "\(currentFont.rawValue)-Bold", size: 17.0) ?? UIFont.boldSystemFont(ofSize: 17)
     }
+
 }

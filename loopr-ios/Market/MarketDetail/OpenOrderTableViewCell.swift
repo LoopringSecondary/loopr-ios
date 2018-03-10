@@ -35,6 +35,7 @@ class OpenOrderTableViewCell: UITableViewCell {
         filledPieChart.textFont = UIFont(name: FontConfigManager.shared.getLight(), size: 10.0)!
         filledPieChart.desiredLineWidth = 1
         
+        // TODO: Use data from Replay API
         let num = Int(arc4random_uniform(100))
         filledPieChart.percentage = CGFloat(num)/100
 
