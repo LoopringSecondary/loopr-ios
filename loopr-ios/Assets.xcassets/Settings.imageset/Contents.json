@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "settings copy 3.png",
+      "filename" : "settings_active-25.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "settings copy 2.png",
+      "filename" : "settings_active-50.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "settings.png",
+      "filename" : "settings_active-75.png",
       "scale" : "3x"
     }
   ],

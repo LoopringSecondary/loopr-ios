@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "market copy-1.png",
+      "filename" : "market_active-25.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "market copy.png",
+      "filename" : "market_active-50.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "market.png",
+      "filename" : "market_active-75.png",
       "scale" : "3x"
     }
   ],

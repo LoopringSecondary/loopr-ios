@@ -57,7 +57,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         button.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
         
         button.theme_setImage(["Arrow-down-black", "Arrow-down-white"], forState: .normal)
-        button.setImage(UIImage.init(named: "Arrow-down-grey"), for: .highlighted)
+        button.setImage(UIImage.init(named: "Arrow-down-black")?.alpha(0.3), for: .highlighted)
         
         button.semanticContentAttribute = .forceRightToLeft
         // button.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 50, bottom: 0, right: -50)
