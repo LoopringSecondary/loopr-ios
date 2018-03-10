@@ -16,6 +16,7 @@ class QRCodeViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     
     @IBOutlet weak var copyAddressButton: UIButton!
+    @IBOutlet weak var saveToAlbumButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +26,23 @@ class QRCodeViewController: UIViewController {
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         addressLabel.theme_textColor = GlobalPicker.textColor
-        copyAddressButton.theme_backgroundColor = ["#000", "#fff"]
-        copyAddressButton.theme_setTitleColor(["#fff", "#000"], forState: .normal)
+        
+        // copyAddressButton.theme_backgroundColor = ["#000", "#fff"]
+        // copyAddressButton.theme_setTitleColor(["#fff", "#000"], forState: .normal)
 
+        copyAddressButton.setTitle(NSLocalizedString("Copy Wallet Address", comment: ""), for: .normal)
+        copyAddressButton.backgroundColor = UIColor.clear
+        copyAddressButton.titleColor = UIColor.black
+        copyAddressButton.layer.cornerRadius = 23
+        copyAddressButton.layer.borderWidth = 0.5
+        copyAddressButton.layer.borderColor = UIColor.black.cgColor
+        copyAddressButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+
+        saveToAlbumButton.setTitle(NSLocalizedString("Save to Album", comment: ""), for: .normal)
+        saveToAlbumButton.backgroundColor = UIColor.black
+        saveToAlbumButton.layer.cornerRadius = 23
+        saveToAlbumButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+        
         let backButton = UIBarButtonItem()
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
@@ -62,5 +77,10 @@ class QRCodeViewController: UIViewController {
         let address = AppWalletDataManager.shared.getCurrentAppWallet()!.address
         print("pressedCopyAddressButton address: \(address)")
     }
-    
+
+    @IBAction func pressedSaveToAlbum(_ sender: Any) {
+        let address = AppWalletDataManager.shared.getCurrentAppWallet()!.address
+        print("pressedSaveToAlbum address: \(address)")
+    }
+
 }
