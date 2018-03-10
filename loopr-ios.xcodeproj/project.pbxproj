@@ -205,6 +205,8 @@
 		AC9280E92030C7440009B574 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280E82030C7440009B574 /* UIColorExtensions.swift */; };
 		AC9280EC2030D34B0009B574 /* TradePlaceOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280EA2030D34B0009B574 /* TradePlaceOrderViewController.swift */; };
 		AC9280ED2030D34B0009B574 /* TradePlaceOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9280EB2030D34B0009B574 /* TradePlaceOrderViewController.xib */; };
+		AC952A142053A84800C78562 /* OrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC952A122053A84800C78562 /* OrderHistoryViewController.swift */; };
+		AC952A152053A84800C78562 /* OrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC952A132053A84800C78562 /* OrderHistoryViewController.xib */; };
 		ACB5DD7C202A203900140A09 /* MarketLineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD7A202A203900140A09 /* MarketLineChartViewController.swift */; };
 		ACB5DD7D202A203900140A09 /* MarketLineChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD7B202A203900140A09 /* MarketLineChartViewController.xib */; };
 		ACB5DD80202AC26000140A09 /* button1.json in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD7F202AC26000140A09 /* button1.json */; };
@@ -466,6 +468,8 @@
 		AC9280E82030C7440009B574 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		AC9280EA2030D34B0009B574 /* TradePlaceOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradePlaceOrderViewController.swift; sourceTree = "<group>"; };
 		AC9280EB2030D34B0009B574 /* TradePlaceOrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradePlaceOrderViewController.xib; sourceTree = "<group>"; };
+		AC952A122053A84800C78562 /* OrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryViewController.swift; sourceTree = "<group>"; };
+		AC952A132053A84800C78562 /* OrderHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistoryViewController.xib; sourceTree = "<group>"; };
 		ACB5DD7A202A203900140A09 /* MarketLineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketLineChartViewController.swift; sourceTree = "<group>"; };
 		ACB5DD7B202A203900140A09 /* MarketLineChartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketLineChartViewController.xib; sourceTree = "<group>"; };
 		ACB5DD7F202AC26000140A09 /* button1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = button1.json; sourceTree = "<group>"; };
@@ -802,6 +806,7 @@
 		AC6E95F62032CBE900C6EB7C /* Archive */ = {
 			isa = PBXGroup;
 			children = (
+				ACB9115C20242D8900F14644 /* Portfolio */,
 				ACB5DD7A202A203900140A09 /* MarketLineChartViewController.swift */,
 				ACB5DD7B202A203900140A09 /* MarketLineChartViewController.xib */,
 				AC9280E2202EC5810009B574 /* ArchiveTradeViewController.swift */,
@@ -894,8 +899,8 @@
 				ACB911672025470B00F14644 /* DataManagers */,
 				ACB9115E20242E2400F14644 /* Models */,
 				C8BF959B20267FB600343B9A /* Setup */,
-				ACB9115C20242D8900F14644 /* Portfolio */,
 				ACB9116C2025572700F14644 /* Market */,
+				AC952A112053A7DB00C78562 /* OrderHistory */,
 				ACB9115D20242D9900F14644 /* Wallet */,
 				AC9280DF202EC5130009B574 /* Trade */,
 				ACB9117D2026381A00F14644 /* Setting */,
@@ -944,6 +949,15 @@
 				949C49472046A4A80074466D /* SampleViewController.xib */,
 			);
 			path = Trade;
+			sourceTree = "<group>";
+		};
+		AC952A112053A7DB00C78562 /* OrderHistory */ = {
+			isa = PBXGroup;
+			children = (
+				AC952A122053A84800C78562 /* OrderHistoryViewController.swift */,
+				AC952A132053A84800C78562 /* OrderHistoryViewController.xib */,
+			);
+			path = OrderHistory;
 			sourceTree = "<group>";
 		};
 		ACB5DD79202A1F3000140A09 /* MarketDetail */ = {
@@ -1346,6 +1360,7 @@
 				AC54FD85204FC6F5007E1DEB /* OpenSans-LightItalic.ttf in Resources */,
 				ACB5DD80202AC26000140A09 /* button1.json in Resources */,
 				AC54FD58204FC6C1007E1DEB /* Lato-BlackItalic.ttf in Resources */,
+				AC952A152053A84800C78562 /* OrderHistoryViewController.xib in Resources */,
 				AC54FD8B204FC6FC007E1DEB /* OpenSans-SemiBold.ttf in Resources */,
 				AC3756742038D64B00AADC60 /* MnemonicViewController.xib in Resources */,
 				AC54FD8E204FC6FF007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */,
@@ -1785,6 +1800,7 @@
 				AC31B95D204A8E4F00B16155 /* DerivationPath.swift in Sources */,
 				ACB911A120296AE500F14644 /* OrderDataManager.swift in Sources */,
 				AC41420C2038BFB70089861D /* UserDefaultsKeys.swift in Sources */,
+				AC952A142053A84800C78562 /* OrderHistoryViewController.swift in Sources */,
 				ACE6F72720426BAC0039273D /* SettingThemeModeTableViewCell.swift in Sources */,
 				ACB911992027F65800F14644 /* loopring_JSON_RPC.swift in Sources */,
 				ACB5DDA4202D6FC300140A09 /* UIImageExtension.swift in Sources */,

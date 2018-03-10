@@ -20,7 +20,7 @@ class MarketSwipeViewController: SwipeViewController {
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = GlobalPicker.backgroundColor
 
-        self.navigationItem.title = "Market"
+        self.navigationItem.title = NSLocalizedString("Market", comment: "")
         
         options.swipeTabView.height = 44
         options.swipeTabView.itemView.width = 66
@@ -41,6 +41,16 @@ class MarketSwipeViewController: SwipeViewController {
         for viewController in viewControllers {
             self.addChildViewController(viewController)
         }
+
+        let orderHistoryButton = UIButton(type: UIButtonType.custom)
+        let image = UIImage(named: "Order-history-black")
+        orderHistoryButton.setBackgroundImage(image, for: .normal)
+        orderHistoryButton.setBackgroundImage(image?.alpha(0.3), for: .highlighted)
+        
+        orderHistoryButton.addTarget(self, action: #selector(self.pressOrderHistoryButton(_:)), for: UIControlEvents.touchUpInside)
+        orderHistoryButton.frame = CGRect(x: 0, y: 0, width: 23, height: 23)
+        let orderHistoryBarButton = UIBarButtonItem(customView: orderHistoryButton)
+        self.navigationItem.rightBarButtonItem = orderHistoryBarButton
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,6 +74,13 @@ class MarketSwipeViewController: SwipeViewController {
     private func reload() {
         // Reload view controllers.
         swipeView.reloadData(options: options)
+    }
+    
+    @objc func pressOrderHistoryButton(_ button: UIBarButtonItem) {
+        print("pressOrderHistoryButton")
+        let viewController = OrderHistoryViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     // MARK: - Delegate

@@ -19,7 +19,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationController?.navigationBar.topItem?.title = "Settings"
+        self.navigationController?.navigationBar.topItem?.title = NSLocalizedString("Settings", comment: "")
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
     }
