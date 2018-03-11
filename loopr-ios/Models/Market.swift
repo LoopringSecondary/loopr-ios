@@ -22,7 +22,7 @@ class Market: Equatable, CustomStringConvertible {
     init(tradingA: String, tradingB: String) {
         tradingPair = TradingPair(tradingA, tradingB)
         
-        description = "\(tradingA) " + " / " + "\(tradingB)"
+        description = "\(tradingA)" + " / " + "\(tradingB)"
         
         balance = Double(arc4random_uniform(1000))
         volumeInPast24 = Double(arc4random_uniform(6)) * 100 + Double(arc4random_uniform(100))

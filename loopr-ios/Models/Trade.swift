@@ -9,9 +9,16 @@
 import Foundation
 import SwiftyJSON
 
-enum TradeType {
+enum TradeType: CustomStringConvertible {
     case buy
     case sell
+    
+    var description: String {
+        switch self {
+        case .buy: return NSLocalizedString("Buy", comment: "")
+        case .sell: return NSLocalizedString("Sell", comment: "")
+        }
+    }
 }
 
 class Trade {
