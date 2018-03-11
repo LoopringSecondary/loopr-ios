@@ -33,6 +33,14 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
     var totalUnderLine: UIView = UIView()
     var availableLabel: UILabel = UILabel()
     
+    // Expire
+    var expireLabel: UILabel = UILabel()
+    var stackView: UIStackView   = UIStackView()
+    var oneHourButton: CustomUIButtonForUIToolbar = CustomUIButtonForUIToolbar()
+    var oneDayButton: CustomUIButtonForUIToolbar = CustomUIButtonForUIToolbar()
+    var oneWeekButton: CustomUIButtonForUIToolbar = CustomUIButtonForUIToolbar()
+    var oneMonthButton: CustomUIButtonForUIToolbar = CustomUIButtonForUIToolbar()
+
     // Keyboard
     var isKeyboardShow: Bool = false
     var keyboardView: DefaultNumericKeyboard!
@@ -148,7 +156,49 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         // estimateValueInCurrency.backgroundColor = UIColor.green
         scrollView.addSubview(availableLabel)
         
-        scrollView.contentSize = CGSize(width: screenWidth, height: availableLabel.frame.maxY + 30)
+        // Fourth Row
+        expireLabel.text = "Order Expires in"
+        expireLabel.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: 14)
+        expireLabel.textAlignment = .left
+        // expireLabel.backgroundColor = UIColor.green
+        expireLabel.frame = CGRect(x: padding, y: availableLabel.frame.maxY + 30, width: 300, height: 40)
+        scrollView.addSubview(expireLabel)
+
+        stackView.axis  = UILayoutConstraintAxis.horizontal
+        stackView.distribution  = UIStackViewDistribution.fillEqually
+        stackView.alignment = UIStackViewAlignment.center
+        stackView.spacing   = 20.0
+        
+        oneHourButton.setTitle("1 Hour", for: .normal)
+        oneHourButton.titleLabel?.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: 14)
+        oneHourButton.addTarget(self, action: #selector(self.pressedOneHourButton(_:)), for: .touchUpInside)
+        stackView.addArrangedSubview(oneHourButton)
+        
+        oneDayButton.setTitle("1 Day", for: .normal)
+        oneDayButton.titleLabel?.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: 14)
+        oneDayButton.addTarget(self, action: #selector(self.pressedOneDayButton(_:)), for: .touchUpInside)
+        stackView.addArrangedSubview(oneDayButton)
+
+        oneWeekButton.setTitle("1 Week", for: .normal)
+        oneWeekButton.titleLabel?.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: 14)
+        oneWeekButton.addTarget(self, action: #selector(self.pressedOneWeekButton(_:)), for: .touchUpInside)
+        stackView.addArrangedSubview(oneWeekButton)
+
+        oneMonthButton.setTitle("1 Month", for: .normal)
+        oneMonthButton.titleLabel?.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: 14)
+        oneMonthButton.addTarget(self, action: #selector(self.pressedOneMonthButton(_:)), for: .touchUpInside)
+        stackView.addArrangedSubview(oneMonthButton)
+
+        // TODO: how to get the initial value
+        oneHourButton.selected()
+        oneDayButton.unselected()
+        oneWeekButton.unselected()
+        oneMonthButton.unselected()
+
+        stackView.frame = CGRect(x: 20.0, y: expireLabel.frame.maxY, width: screenWidth - 2 * 20.0, height: 29)
+        scrollView.addSubview(stackView)
+        
+        scrollView.contentSize = CGSize(width: screenWidth, height: stackView.frame.maxY + 30)
         
         // keyboardView.delegate = self
         // keyboardView.translatesAutoresizingMaskIntoConstraints = false
@@ -157,6 +207,38 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func pressedOneHourButton(_ button: UIButton) {
+        print("pressOneHourButton")
+        oneHourButton.selected()
+        oneDayButton.unselected()
+        oneWeekButton.unselected()
+        oneMonthButton.unselected()
+    }
+    
+    @objc func pressedOneDayButton(_ button: UIButton) {
+        print("pressedOneDayButton")
+        oneHourButton.unselected()
+        oneDayButton.selected()
+        oneWeekButton.unselected()
+        oneMonthButton.unselected()
+    }
+    
+    @objc func pressedOneWeekButton(_ button: UIButton) {
+        print("pressedOneWeekButton")
+        oneHourButton.unselected()
+        oneDayButton.unselected()
+        oneWeekButton.selected()
+        oneMonthButton.unselected()
+    }
+    
+    @objc func pressedOneMonthButton(_ button: UIButton) {
+        print("pressedOneMonthButton")
+        oneHourButton.unselected()
+        oneDayButton.unselected()
+        oneWeekButton.unselected()
+        oneMonthButton.selected()
     }
 
     @IBAction func pressedPlaceOrderButton(_ sender: Any) {
@@ -175,22 +257,24 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
 
         if !isKeyboardShow {
             let width = self.view.frame.width
-            let height = self.view.frame.height
+            let height = self.placeOrderBackgroundView.frame.origin.y
             
-            let keyboardHeight: CGFloat = 296
+            let keyboardHeight: CGFloat = 200
             
             scrollViewButtonLayoutConstraint.constant = keyboardHeight
             
-            keyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: keyboardHeight-77))
+            keyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: keyboardHeight))
             keyboardView.delegate = self
             // keyboardView.backgroundColor = UIColor.blue
             view.addSubview(keyboardView)
             view.bringSubview(toFront: placeOrderBackgroundView)
             view.bringSubview(toFront: placeOrderButton)
             
+            let destinateY = height - keyboardHeight
+
             // TODO: improve the animation.
-            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
-                self.keyboardView.frame = CGRect(x: 0, y: height - keyboardHeight, width: width, height: keyboardHeight-77)
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
             }, completion: { finished in
                 self.isKeyboardShow = true
                 if finished {

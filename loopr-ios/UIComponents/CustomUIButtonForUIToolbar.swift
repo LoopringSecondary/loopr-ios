@@ -30,7 +30,7 @@ class CustomUIButtonForUIToolbar: UIButton {
     
     func unselected() {
         self.backgroundColor = UIColor.clear
-        self.setTitleColor(self.tintColor, for: .normal)
+        self.setTitleColor(UIStyleConfig.defaultTintColor, for: .normal)
     }
 
 }
