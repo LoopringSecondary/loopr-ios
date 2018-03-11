@@ -10,6 +10,7 @@ import UIKit
 
 class BuyAndSellSwipeViewController: SwipeViewController {
 
+    var initialType: TradeType = .buy
     private var types: [TradeType] = [.buy, .sell]
     private var viewControllers: [UIViewController] = [BuyViewController(), BuyViewController()]
     var options = SwipeViewOptions()
@@ -18,7 +19,7 @@ class BuyAndSellSwipeViewController: SwipeViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+
         let backButton = UIBarButtonItem()
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
@@ -55,23 +56,19 @@ class BuyAndSellSwipeViewController: SwipeViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        let initIndex = initialType == .buy ? 0 : 1
         super.viewWillAppear(animated)
         if Themes.isNight() {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.white
-            swipeView.reloadData(options: options)
+            swipeView.reloadData(options: options, default: initIndex)
         } else {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.black
-            swipeView.reloadData(options: options)
+            swipeView.reloadData(options: options, default: initIndex)
         }
     }
-    
-    private func reload() {
-        // Reload view controllers.
-        swipeView.reloadData(options: options)
-    }
-    
+
     // MARK: - Delegate
     override func swipeView(_ swipeView: SwipeView, viewWillSetupAt currentIndex: Int) {
         print("will setup SwipeView")

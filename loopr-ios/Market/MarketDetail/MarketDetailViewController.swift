@@ -152,6 +152,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             cell!.pressedBuyButtonClosure = {
                 PlaceOrderDataManager.shared.new(tokenS: self.market!.tradingPair.tradingA, tokenB: self.market!.tradingPair.tradingB)
                 let viewController = BuyAndSellSwipeViewController()
+                viewController.initialType = .buy
                 self.navigationController?.pushViewController(viewController, animated: true)
                 
                 // We may use this part of code in the future.
@@ -168,6 +169,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             cell!.pressedSellButtonClosure = {
                 PlaceOrderDataManager.shared.new(tokenS: self.market!.tradingPair.tradingA, tokenB: self.market!.tradingPair.tradingB)
                 let viewController = BuyAndSellSwipeViewController()
+                viewController.initialType = .sell
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
             return cell!
