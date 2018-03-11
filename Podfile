@@ -16,6 +16,7 @@ target 'loopr-ios' do
   pod 'SwiftTheme'
   pod 'TagListView'
   pod 'FontBlaster'
+  pod 'Starscream'
   
   # Pods for keystone
   pod 'BigInt'
