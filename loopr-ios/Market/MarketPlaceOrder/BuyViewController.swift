@@ -12,6 +12,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var placeOrderButton: UIButton!
+    @IBOutlet weak var placeOrderBackgroundView: UIView!
+    @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
     
     // Price
     var tokenSLabel: UILabel = UILabel()
@@ -31,10 +33,15 @@ class BuyViewController: UIViewController, UITextFieldDelegate {
     var totalUnderLine: UIView = UIView()
     var availableLabel: UILabel = UILabel()
     
+    // Keyboard
+    var isKeyboardShow: Bool = false
+    var keyboardView: DefaultNumericKeyboard = DefaultNumericKeyboard()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        scrollViewButtonLayoutConstraint.constant = 77
 
         placeOrderButton.title = NSLocalizedString("Place Order", comment: "")
         placeOrderButton.backgroundColor = UIColor.black
@@ -59,6 +66,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate {
         scrollView.addSubview(tokenSLabel)
         
         tokenSPriceTextField.delegate = self
+        tokenSPriceTextField.tag = 0
         tokenSPriceTextField.inputView = UIView()
         tokenSPriceTextField.font = FontConfigManager.shared.getLabelFont() // UIFont.init(name: FontConfigManager.shared.getLight(), size: 24)
         // tokenSPriceTextField.backgroundColor = UIColor.blue
@@ -87,6 +95,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate {
         scrollView.addSubview(tokenBLabel)
         
         amountTextField.delegate = self
+        amountTextField.tag = 1
         amountTextField.inputView = UIView()
         amountTextField.font = FontConfigManager.shared.getLabelFont() // UIFont.init(name: FontConfigManager.shared.getLight(), size: 24)
         // amountTextField.backgroundColor = UIColor.blue
@@ -118,6 +127,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate {
         scrollView.addSubview(tokenSTotalLabel)
         
         totalTextField.delegate = self
+        totalTextField.tag = 2
         totalTextField.inputView = UIView()
         totalTextField.font = FontConfigManager.shared.getLabelFont() // UIFont.init(name: FontConfigManager.shared.getLight(), size: 24)
         // amountTextField.backgroundColor = UIColor.blue
@@ -137,6 +147,9 @@ class BuyViewController: UIViewController, UITextFieldDelegate {
         scrollView.addSubview(availableLabel)
         
         scrollView.contentSize = CGSize(width: screenWidth, height: availableLabel.frame.maxY + 30)
+        
+        keyboardView.delegate = self
+        keyboardView.translatesAutoresizingMaskIntoConstraints = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -148,11 +161,51 @@ class BuyViewController: UIViewController, UITextFieldDelegate {
         print("pressedPlaceOrderButton")
     }
 
-
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         print("textFieldShouldBeginEditing")
-        
+
+        if !isKeyboardShow {
+            let width = self.view.frame.width
+            let height = self.view.frame.height
+            
+            let keyboardHeight: CGFloat = 296
+            
+            scrollViewButtonLayoutConstraint.constant = keyboardHeight
+            
+            keyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: keyboardHeight-77))
+            // keyboardView.backgroundColor = UIColor.blue
+            view.addSubview(keyboardView)
+            view.bringSubview(toFront: placeOrderBackgroundView)
+            view.bringSubview(toFront: placeOrderButton)
+            
+            // TODO: improve the animation.
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+                self.keyboardView.frame = CGRect(x: 0, y: height - keyboardHeight, width: width, height: keyboardHeight-77)
+            }, completion: { finished in
+                self.isKeyboardShow = true
+                if finished {
+                    if textField.tag == 2 {
+                        let bottomOffset = CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.size.height)
+                        self.scrollView.setContentOffset(bottomOffset, animated: true)
+                    }
+                }
+            })
+        }
+
         return true
     }
 
+}
+
+extension BuyViewController: NumericKeyboardDelegate {
+    
+    func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemTapped item: NumericKeyboardItem, atPosition position: Position) {
+        print("pressed keyboard: (\(position.row), \(position.column))")
+        
+        switch (position.row, position.column) {
+        default:
+            return
+        }
+    }
+    
 }

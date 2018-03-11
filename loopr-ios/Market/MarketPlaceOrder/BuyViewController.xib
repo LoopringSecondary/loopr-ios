@@ -12,8 +12,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BuyViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="placeOrderBackgroundView" destination="rvS-Xb-Gs5" id="2OZ-jh-j9s"/>
                 <outlet property="placeOrderButton" destination="qq9-su-9q9" id="Wa9-a2-9Pa"/>
                 <outlet property="scrollView" destination="nOw-H2-Tbj" id="esU-2F-FPt"/>
+                <outlet property="scrollViewButtonLayoutConstraint" destination="t2G-Cj-kKQ" id="HZt-KA-hTk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,6 +24,13 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rvS-Xb-Gs5">
+                    <rect key="frame" x="0.0" y="590" width="375" height="77"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="77" id="yxT-a3-VLV"/>
+                    </constraints>
+                </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nOw-H2-Tbj">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="590"/>
                 </scrollView>
@@ -43,11 +52,14 @@
             <constraints>
                 <constraint firstItem="nOw-H2-Tbj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0Wc-Ck-6rc"/>
                 <constraint firstItem="qq9-su-9q9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="9kb-pI-X0C"/>
-                <constraint firstItem="qq9-su-9q9" firstAttribute="top" secondItem="nOw-H2-Tbj" secondAttribute="bottom" constant="15" id="HZf-Dh-ACR"/>
+                <constraint firstItem="rvS-Xb-Gs5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HPQ-la-66S"/>
+                <constraint firstItem="rvS-Xb-Gs5" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="P4h-hW-9aB"/>
+                <constraint firstItem="rvS-Xb-Gs5" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="VNV-RE-T6V"/>
                 <constraint firstItem="nOw-H2-Tbj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="W9o-nH-U5x"/>
                 <constraint firstItem="nOw-H2-Tbj" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="cyf-eM-fVG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qq9-su-9q9" secondAttribute="trailing" constant="15" id="lQs-EV-Y9a"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qq9-su-9q9" secondAttribute="bottom" constant="15" id="p4H-6y-hx7"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="nOw-H2-Tbj" secondAttribute="bottom" constant="77" id="t2G-Cj-kKQ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="102.5"/>
