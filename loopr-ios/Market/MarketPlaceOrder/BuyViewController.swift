@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BuyViewController: UIViewController, UITextFieldDelegate {
+class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var placeOrderButton: UIButton!
@@ -35,7 +35,9 @@ class BuyViewController: UIViewController, UITextFieldDelegate {
     
     // Keyboard
     var isKeyboardShow: Bool = false
-    var keyboardView: DefaultNumericKeyboard = DefaultNumericKeyboard()
+    var keyboardView: DefaultNumericKeyboard!
+    
+    var activeTextFieldTag = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +53,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate {
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
-        let screenHeight = screensize.height
+        // let screenHeight = screensize.height
         
         let originY: CGFloat = 50
         let padding: CGFloat = 15
@@ -148,8 +150,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate {
         
         scrollView.contentSize = CGSize(width: screenWidth, height: availableLabel.frame.maxY + 30)
         
-        keyboardView.delegate = self
-        keyboardView.translatesAutoresizingMaskIntoConstraints = false
+        // keyboardView.delegate = self
+        // keyboardView.translatesAutoresizingMaskIntoConstraints = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -163,6 +165,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate {
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         print("textFieldShouldBeginEditing")
+        
+        activeTextFieldTag = textField.tag
 
         if !isKeyboardShow {
             let width = self.view.frame.width
@@ -173,6 +177,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate {
             scrollViewButtonLayoutConstraint.constant = keyboardHeight
             
             keyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: keyboardHeight-77))
+            keyboardView.delegate = self
             // keyboardView.backgroundColor = UIColor.blue
             view.addSubview(keyboardView)
             view.bringSubview(toFront: placeOrderBackgroundView)
@@ -190,22 +195,52 @@ class BuyViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
             })
+        } else {
+            if textField.tag == 2 {
+                let bottomOffset = CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.size.height)
+                self.scrollView.setContentOffset(bottomOffset, animated: true)
+            }
         }
 
         return true
     }
-
-}
-
-extension BuyViewController: NumericKeyboardDelegate {
+    
+    func getActiveTextField() -> UITextField? {
+        if activeTextFieldTag == tokenSPriceTextField.tag {
+            return tokenSPriceTextField
+        } else if activeTextFieldTag == amountTextField.tag {
+            return amountTextField
+        } else if activeTextFieldTag == totalTextField.tag {
+            return totalTextField
+        } else {
+            return nil
+        }
+    }
     
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemTapped item: NumericKeyboardItem, atPosition position: Position) {
         print("pressed keyboard: (\(position.row), \(position.column))")
         
-        switch (position.row, position.column) {
-        default:
+        let activeTextField = getActiveTextField()
+        guard activeTextField != nil else {
             return
         }
+
+        var currentText = activeTextField!.text ?? ""
+
+        switch (position.row, position.column) {
+        case (3, 0):
+            activeTextField!.text = currentText + "."
+        case (3, 1):
+            activeTextField!.text = currentText + "0"
+        case (3, 2):
+            if currentText.count > 0 {
+                currentText = String(currentText.dropLast())
+            }
+            activeTextField!.text = currentText
+        default:
+            let itemValue = position.row * 3 + position.column + 1
+            activeTextField!.text = currentText + String(itemValue)
+        }
     }
-    
+
 }
