@@ -31,6 +31,8 @@
 		AC13B30720548A95008A72C0 /* PlaceOrderDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13B30620548A95008A72C0 /* PlaceOrderDataManager.swift */; };
 		AC13B30A2054A766008A72C0 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13B3082054A766008A72C0 /* BuyViewController.swift */; };
 		AC13B30B2054A766008A72C0 /* BuyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC13B3092054A766008A72C0 /* BuyViewController.xib */; };
+		AC13B30E2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13B30C2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift */; };
+		AC13B30F2055A646008A72C0 /* PlaceOrderConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC13B30D2055A646008A72C0 /* PlaceOrderConfirmationViewController.xib */; };
 		AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */; };
 		AC1E4BBC204B420D00C6B1FA /* KeystoneIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBB204B420D00C6B1FA /* KeystoneIntegrationTests.swift */; };
 		AC1E4BC0204B51AB00C6B1FA /* ImportWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */; };
@@ -349,6 +351,8 @@
 		AC13B30620548A95008A72C0 /* PlaceOrderDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrderDataManager.swift; sourceTree = "<group>"; };
 		AC13B3082054A766008A72C0 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		AC13B3092054A766008A72C0 /* BuyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyViewController.xib; sourceTree = "<group>"; };
+		AC13B30C2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrderConfirmationViewController.swift; sourceTree = "<group>"; };
+		AC13B30D2055A646008A72C0 /* PlaceOrderConfirmationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceOrderConfirmationViewController.xib; sourceTree = "<group>"; };
 		AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
 		AC1E4BBB204B420D00C6B1FA /* KeystoneIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeystoneIntegrationTests.swift; sourceTree = "<group>"; };
 		AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletTests.swift; sourceTree = "<group>"; };
@@ -631,6 +635,8 @@
 				AC13B30220548767008A72C0 /* BuyAndSellSwipeViewController.xib */,
 				AC13B3082054A766008A72C0 /* BuyViewController.swift */,
 				AC13B3092054A766008A72C0 /* BuyViewController.xib */,
+				AC13B30C2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift */,
+				AC13B30D2055A646008A72C0 /* PlaceOrderConfirmationViewController.xib */,
 			);
 			path = MarketPlaceOrder;
 			sourceTree = "<group>";
@@ -1387,6 +1393,7 @@
 				AC54FD6A204FC6D5007E1DEB /* Lato-Light.ttf in Resources */,
 				AC5E0DD1203A7C5800AF03C7 /* SelectWalletTableViewCell.xib in Resources */,
 				ACB9115B20242B9D00F14644 /* AssetTableViewCell.xib in Resources */,
+				AC13B30F2055A646008A72C0 /* PlaceOrderConfirmationViewController.xib in Resources */,
 				ACB9118D20266A9C00F14644 /* AssetDetailViewController.xib in Resources */,
 				AC54FD70204FC6DC007E1DEB /* Lato-Regular.ttf in Resources */,
 				AC01A2452022D9BE00FE8317 /* PortfolioViewController.xib in Resources */,
@@ -1833,6 +1840,7 @@
 				ACDBF103203FE790000F0DEC /* ReorderUITableView.swift in Sources */,
 				AC72AEEA204F038300E9D3B0 /* OrderTradeError.swift in Sources */,
 				AC0C5C86203D168C00C8618D /* TickerLabel.swift in Sources */,
+				AC13B30E2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift in Sources */,
 				ACB5DD7C202A203900140A09 /* MarketLineChartViewController.swift in Sources */,
 				AC4C144B204C825900D6B1E2 /* GenerateWalletViewController.swift in Sources */,
 				940076B220554A4100DDA37D /* LoopringWebSocketCaller.swift in Sources */,

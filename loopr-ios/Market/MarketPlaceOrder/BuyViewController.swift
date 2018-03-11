@@ -161,6 +161,11 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
 
     @IBAction func pressedPlaceOrderButton(_ sender: Any) {
         print("pressedPlaceOrderButton")
+        
+        if PlaceOrderDataManager.shared.verify() {
+            let viewController = PlaceOrderConfirmationViewController()
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
