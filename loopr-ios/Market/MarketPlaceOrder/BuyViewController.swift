@@ -259,7 +259,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
             let width = self.view.frame.width
             let height = self.placeOrderBackgroundView.frame.origin.y
             
-            let keyboardHeight: CGFloat = 200
+            let keyboardHeight: CGFloat = 220
             
             scrollViewButtonLayoutConstraint.constant = keyboardHeight
             
