@@ -112,9 +112,7 @@ open class SwipeView: UIView {
         
         isLayoutingSubviews = true
         super.layoutSubviews()
-        // No need to reload data when layoutSubviews is called.
-        // reloadData(isOrientationChange: true)
-        isLayoutingSubviews = false
+        reloadData(isOrientationChange: true)
     }
     
     open override func didMoveToSuperview() {
@@ -150,7 +148,8 @@ open class SwipeView: UIView {
         }
         jumpingToIndex = index
         
-        swipeTabView.jump(to: index)
+        // No need to update. It will retrigger the layout update.
+        // swipeTabView.jump(to: index)
         swipeContentScrollView.jump(to: index, animated: animated)
     }
     

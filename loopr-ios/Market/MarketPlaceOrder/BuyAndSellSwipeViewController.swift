@@ -14,7 +14,7 @@ class BuyAndSellSwipeViewController: SwipeViewController {
     private var types: [TradeType] = [.buy, .sell]
     private var viewControllers: [UIViewController] = [BuyViewController(), BuyViewController()]
     var options = SwipeViewOptions()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,7 +42,11 @@ class BuyAndSellSwipeViewController: SwipeViewController {
         // This conflicts to the swipe action in the table view cell.
         options.swipeContentScrollView.isScrollEnabled = false
         
-        // swipeView.reloadData(options: options, default: 1)
+        // swipeView.reloadData(options: options)
+        
+        let initIndex = initialType == .buy ? 0 : 1
+        
+        swipeView.reloadData(options: options, default: initIndex)
         
         for viewController in viewControllers {
             self.addChildViewController(viewController)
@@ -65,12 +69,6 @@ class BuyAndSellSwipeViewController: SwipeViewController {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.black
             // swipeView.reloadData(options: options, default: initIndex)
-        }
-        
-        let initIndex = initialType == .buy ? 0 : 1
-        if swipeView.currentIndex != initIndex {
-            // swipeView.reloadData(options: options, default: initIndex)
-            // swipeView.jump(to: initIndex, animated: false)
         }
     }
 

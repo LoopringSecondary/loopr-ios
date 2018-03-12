@@ -11,7 +11,7 @@ import UIKit
 open class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSource {
     
     open var swipeView: SwipeView!
-    
+        
     open override func viewDidLoad() {
         super.viewDidLoad()
         

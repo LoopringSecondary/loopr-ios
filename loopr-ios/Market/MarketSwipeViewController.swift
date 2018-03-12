@@ -9,7 +9,7 @@
 import UIKit
 
 class MarketSwipeViewController: SwipeViewController {
-
+    
     private var types: [MarketSwipeViewType] = [.favorite, .ETH, .LRC, .all]
     private var viewControllers: [MarketViewController] = [MarketViewController(type: .favorite), MarketViewController(type: .ETH), MarketViewController(type: .LRC), MarketViewController(type: .all)]
     var options = SwipeViewOptions()
@@ -61,22 +61,19 @@ class MarketSwipeViewController: SwipeViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // TODO: no reload data in the viewWIllAppear. Need to implement the night mode.
         if Themes.isNight() {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.white
-            // swipeView.reloadData(options: options)
+            // swipeView.reloadData(options: options, default: swipeView.currentIndex)
         } else {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.black
-            // swipeView.reloadData(options: options)
+            // swipeView.reloadData(options: options, default: swipeView.currentIndex)
         }
     }
-    
-    private func reload() {
-        // Reload view controllers.
-        swipeView.reloadData(options: options)
-    }
-    
+
     @objc func pressOrderHistoryButton(_ button: UIBarButtonItem) {
         print("pressOrderHistoryButton")
         let viewController = OrderHistoryViewController()
