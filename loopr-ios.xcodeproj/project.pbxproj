@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		940076B220554A4100DDA37D /* LoopringWebSocketCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940076B120554A4100DDA37D /* LoopringWebSocketCaller.swift */; };
+		940076B220554A4100DDA37D /* LoopringSocketIORequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940076B120554A4100DDA37D /* LoopringSocketIORequest.swift */; };
+		943BDED32056350000D5BF81 /* PriceQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943BDED22056350000D5BF81 /* PriceQuote.swift */; };
+		943BDED52056539C00D5BF81 /* LoopringSocketIORequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943BDED42056539C00D5BF81 /* LoopringSocketIORequestTests.swift */; };
 		949629DB204E836400858F03 /* Depth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DA204E836400858F03 /* Depth.swift */; };
 		949629DF204E9C9800858F03 /* MinedRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DE204E9C9800858F03 /* MinedRing.swift */; };
 		949C49442046976E0074466D /* TradePlaceReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949C49422046976E0074466D /* TradePlaceReplyViewController.swift */; };
@@ -206,9 +208,9 @@
 		AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC798E482022B93A0071D477 /* Main.storyboard */; };
 		AC798E4C2022B93A0071D477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC798E4B2022B93A0071D477 /* Assets.xcassets */; };
 		AC798E4F2022B93A0071D477 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC798E4D2022B93A0071D477 /* LaunchScreen.storyboard */; };
-		AC798E5A2022B93B0071D477 /* loopring_JSON_RPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E592022B93B0071D477 /* loopring_JSON_RPCTests.swift */; };
+		AC798E5A2022B93B0071D477 /* LoopringAPIRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E592022B93B0071D477 /* LoopringAPIRequestTests.swift */; };
 		AC798E652022B93B0071D477 /* loopr_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E642022B93B0071D477 /* loopr_iosUITests.swift */; };
-		AC9280DD202E0F9F0009B574 /* eth_JSON_RPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280DC202E0F9F0009B574 /* eth_JSON_RPCTests.swift */; };
+		AC9280DD202E0F9F0009B574 /* EthereumAPIRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280DC202E0F9F0009B574 /* EthereumAPIRequestTests.swift */; };
 		AC9280E1202EC53D0009B574 /* TradeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280E0202EC53D0009B574 /* TradeNavigationViewController.swift */; };
 		AC9280E4202EC5810009B574 /* ArchiveTradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280E2202EC5810009B574 /* ArchiveTradeViewController.swift */; };
 		AC9280E5202EC5810009B574 /* ArchiveTradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9280E3202EC5810009B574 /* ArchiveTradeViewController.xib */; };
@@ -228,7 +230,7 @@
 		ACB5DD8F202C048E00140A09 /* ArchiveSellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD8D202C048E00140A09 /* ArchiveSellViewController.xib */; };
 		ACB5DD91202C06FF00140A09 /* DismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */; };
 		ACB5DD93202C09DC00140A09 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD92202C09DC00140A09 /* Interactor.swift */; };
-		ACB5DD95202C434B00140A09 /* EthereumAPICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD94202C434B00140A09 /* EthereumAPICaller.swift */; };
+		ACB5DD95202C434B00140A09 /* EthereumAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD94202C434B00140A09 /* EthereumAPIRequest.swift */; };
 		ACB5DD98202D5A8400140A09 /* NumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD97202D5A8400140A09 /* NumericKeyboard.swift */; };
 		ACB5DD9A202D5B7100140A09 /* DefaultNumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD99202D5B7100140A09 /* DefaultNumericKeyboard.swift */; };
 		ACB5DD9C202D5B8000140A09 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD9B202D5B8000140A09 /* Cell.swift */; };
@@ -266,7 +268,7 @@
 		ACB9119020266EC200F14644 /* AddAssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9118E20266EC200F14644 /* AddAssetViewController.swift */; };
 		ACB9119120266EC200F14644 /* AddAssetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB9118F20266EC200F14644 /* AddAssetViewController.xib */; };
 		ACB9119520278A4000F14644 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9119420278A4000F14644 /* Request.swift */; };
-		ACB911992027F65800F14644 /* LoopringAPICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911982027F65800F14644 /* LoopringAPICaller.swift */; };
+		ACB911992027F65800F14644 /* LoopringAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911982027F65800F14644 /* LoopringAPIRequest.swift */; };
 		ACB9119F202967A500F14644 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9119E202967A500F14644 /* OrderStatus.swift */; };
 		ACB911A120296AE500F14644 /* OrderDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911A020296AE500F14644 /* OrderDataManager.swift */; };
 		ACB911A320296B9900F14644 /* OriginalOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911A220296B9900F14644 /* OriginalOrder.swift */; };
@@ -331,7 +333,9 @@
 		5FFC6AA9DC8C999B66FFD8AA /* Pods_loopr_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69BC13297FDFA52B8E089485 /* Pods-loopr-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-iosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-iosTests/Pods-loopr-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		929BB32EF62C4BD6BC1DFC8F /* Pods_loopr_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		940076B120554A4100DDA37D /* LoopringWebSocketCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopringWebSocketCaller.swift; sourceTree = "<group>"; };
+		940076B120554A4100DDA37D /* LoopringSocketIORequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopringSocketIORequest.swift; sourceTree = "<group>"; };
+		943BDED22056350000D5BF81 /* PriceQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceQuote.swift; sourceTree = "<group>"; };
+		943BDED42056539C00D5BF81 /* LoopringSocketIORequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopringSocketIORequestTests.swift; sourceTree = "<group>"; };
 		949629DA204E836400858F03 /* Depth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Depth.swift; sourceTree = "<group>"; };
 		949629DE204E9C9800858F03 /* MinedRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinedRing.swift; sourceTree = "<group>"; };
 		949C49422046976E0074466D /* TradePlaceReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradePlaceReplyViewController.swift; sourceTree = "<group>"; };
@@ -477,12 +481,12 @@
 		AC798E4E2022B93A0071D477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC798E502022B93A0071D477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC798E552022B93B0071D477 /* loopr-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "loopr-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC798E592022B93B0071D477 /* loopring_JSON_RPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loopring_JSON_RPCTests.swift; sourceTree = "<group>"; };
+		AC798E592022B93B0071D477 /* LoopringAPIRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopringAPIRequestTests.swift; sourceTree = "<group>"; };
 		AC798E5B2022B93B0071D477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC798E602022B93B0071D477 /* loopr-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "loopr-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC798E642022B93B0071D477 /* loopr_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loopr_iosUITests.swift; sourceTree = "<group>"; };
 		AC798E662022B93B0071D477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AC9280DC202E0F9F0009B574 /* eth_JSON_RPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eth_JSON_RPCTests.swift; sourceTree = "<group>"; };
+		AC9280DC202E0F9F0009B574 /* EthereumAPIRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumAPIRequestTests.swift; sourceTree = "<group>"; };
 		AC9280E0202EC53D0009B574 /* TradeNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeNavigationViewController.swift; sourceTree = "<group>"; };
 		AC9280E2202EC5810009B574 /* ArchiveTradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTradeViewController.swift; sourceTree = "<group>"; };
 		AC9280E3202EC5810009B574 /* ArchiveTradeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArchiveTradeViewController.xib; sourceTree = "<group>"; };
@@ -502,7 +506,7 @@
 		ACB5DD8D202C048E00140A09 /* ArchiveSellViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArchiveSellViewController.xib; sourceTree = "<group>"; };
 		ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAnimator.swift; sourceTree = "<group>"; };
 		ACB5DD92202C09DC00140A09 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
-		ACB5DD94202C434B00140A09 /* EthereumAPICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumAPICaller.swift; sourceTree = "<group>"; };
+		ACB5DD94202C434B00140A09 /* EthereumAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumAPIRequest.swift; sourceTree = "<group>"; };
 		ACB5DD97202D5A8400140A09 /* NumericKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeyboard.swift; sourceTree = "<group>"; };
 		ACB5DD99202D5B7100140A09 /* DefaultNumericKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNumericKeyboard.swift; sourceTree = "<group>"; };
 		ACB5DD9B202D5B8000140A09 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
@@ -540,7 +544,7 @@
 		ACB9118E20266EC200F14644 /* AddAssetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAssetViewController.swift; sourceTree = "<group>"; };
 		ACB9118F20266EC200F14644 /* AddAssetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAssetViewController.xib; sourceTree = "<group>"; };
 		ACB9119420278A4000F14644 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		ACB911982027F65800F14644 /* LoopringAPICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopringAPICaller.swift; sourceTree = "<group>"; };
+		ACB911982027F65800F14644 /* LoopringAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopringAPIRequest.swift; sourceTree = "<group>"; };
 		ACB9119E202967A500F14644 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
 		ACB911A020296AE500F14644 /* OrderDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDataManager.swift; sourceTree = "<group>"; };
 		ACB911A220296B9900F14644 /* OriginalOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginalOrder.swift; sourceTree = "<group>"; };
@@ -652,8 +656,9 @@
 		AC1E4BB9204B2AE200C6B1FA /* RelayAPI */ = {
 			isa = PBXGroup;
 			children = (
-				AC9280DC202E0F9F0009B574 /* eth_JSON_RPCTests.swift */,
-				AC798E592022B93B0071D477 /* loopring_JSON_RPCTests.swift */,
+				AC9280DC202E0F9F0009B574 /* EthereumAPIRequestTests.swift */,
+				AC798E592022B93B0071D477 /* LoopringAPIRequestTests.swift */,
+				943BDED42056539C00D5BF81 /* LoopringSocketIORequestTests.swift */,
 			);
 			path = RelayAPI;
 			sourceTree = "<group>";
@@ -1119,6 +1124,7 @@
 				94B5CA8B204FE8E40081BA93 /* Transaction.swift */,
 				94E185962051451C00D86FFA /* Initable.swift */,
 				94E185982051455C00D86FFA /* SimpleRespond.swift */,
+				943BDED22056350000D5BF81 /* PriceQuote.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1176,9 +1182,9 @@
 			isa = PBXGroup;
 			children = (
 				ACB9119420278A4000F14644 /* Request.swift */,
-				ACB911982027F65800F14644 /* LoopringAPICaller.swift */,
-				ACB5DD94202C434B00140A09 /* EthereumAPICaller.swift */,
-				940076B120554A4100DDA37D /* LoopringWebSocketCaller.swift */,
+				ACB911982027F65800F14644 /* LoopringAPIRequest.swift */,
+				ACB5DD94202C434B00140A09 /* EthereumAPIRequest.swift */,
+				940076B120554A4100DDA37D /* LoopringSocketIORequest.swift */,
 			);
 			path = RelayAPI;
 			sourceTree = "<group>";
@@ -1545,6 +1551,7 @@
 				"${BUILT_PRODUCTS_DIR}/FontBlaster/FontBlaster.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -1563,6 +1570,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontBlaster.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTheme.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -1742,7 +1750,7 @@
 				AC76E47320493CAE008BA229 /* SettingLanguageViewController.swift in Sources */,
 				AC9280EC2030D34B0009B574 /* TradePlaceOrderViewController.swift in Sources */,
 				AC3756782038D7E200AADC60 /* KeystoreViewController.swift in Sources */,
-				ACB5DD95202C434B00140A09 /* EthereumAPICaller.swift in Sources */,
+				ACB5DD95202C434B00140A09 /* EthereumAPIRequest.swift in Sources */,
 				ACDBF10C203FEA3E000F0DEC /* ReorderGestureRecognizer.swift in Sources */,
 				ACDBF105203FE7D5000F0DEC /* ReorderSnapshotView.swift in Sources */,
 				ACE6F722204221260039273D /* Themes.swift in Sources */,
@@ -1818,6 +1826,7 @@
 				AC3756662038CD7E00AADC60 /* SetupNavigationController.swift in Sources */,
 				ACE6F71C204211470039273D /* DashedLineView.swift in Sources */,
 				AC31B94A204A8DF400B16155 /* KeystoreKeyHeader.swift in Sources */,
+				943BDED32056350000D5BF81 /* PriceQuote.swift in Sources */,
 				ACDBF10A203FEA07000F0DEC /* ReorderAutoScroll.swift in Sources */,
 				ACB9117A20256B3C00F14644 /* MarketDataManager.swift in Sources */,
 				ACDBF108203FE9D2000F0DEC /* ReorderDestinationRow.swift in Sources */,
@@ -1846,7 +1855,7 @@
 				AC41420C2038BFB70089861D /* UserDefaultsKeys.swift in Sources */,
 				AC952A142053A84800C78562 /* OrderHistoryViewController.swift in Sources */,
 				ACE6F72720426BAC0039273D /* SettingThemeModeTableViewCell.swift in Sources */,
-				ACB911992027F65800F14644 /* LoopringAPICaller.swift in Sources */,
+				ACB911992027F65800F14644 /* LoopringAPIRequest.swift in Sources */,
 				ACB5DDA4202D6FC300140A09 /* UIImageExtension.swift in Sources */,
 				AC4142042038B6370089861D /* AppWalletDataManager.swift in Sources */,
 				AC31B952204A8DF400B16155 /* Account.swift in Sources */,
@@ -1859,7 +1868,7 @@
 				AC13B30E2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift in Sources */,
 				ACB5DD7C202A203900140A09 /* MarketLineChartViewController.swift in Sources */,
 				AC4C144B204C825900D6B1E2 /* GenerateWalletViewController.swift in Sources */,
-				940076B220554A4100DDA37D /* LoopringWebSocketCaller.swift in Sources */,
+				940076B220554A4100DDA37D /* LoopringSocketIORequest.swift in Sources */,
 				C8BF959D202696A900343B9A /* MainTabController.swift in Sources */,
 				ACB911522024254F00F14644 /* WalletNavigationViewController.swift in Sources */,
 				ACB911552024260E00F14644 /* WalletViewController.swift in Sources */,
@@ -1880,11 +1889,12 @@
 				AC72AEE2204D084500E9D3B0 /* AppWalletDataManagerTests.swift in Sources */,
 				ACF06A06204C736A00C3FF86 /* CreateMnemonicTests.swift in Sources */,
 				AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */,
-				AC798E5A2022B93B0071D477 /* loopring_JSON_RPCTests.swift in Sources */,
+				AC798E5A2022B93B0071D477 /* LoopringAPIRequestTests.swift in Sources */,
 				AC1E4BC0204B51AB00C6B1FA /* ImportWalletTests.swift in Sources */,
 				AC1E4BC6204B58D400C6B1FA /* CreatePrivateKeyTests.swift in Sources */,
+				943BDED52056539C00D5BF81 /* LoopringSocketIORequestTests.swift in Sources */,
 				AC1E4BBC204B420D00C6B1FA /* KeystoneIntegrationTests.swift in Sources */,
-				AC9280DD202E0F9F0009B574 /* eth_JSON_RPCTests.swift in Sources */,
+				AC9280DD202E0F9F0009B574 /* EthereumAPIRequestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

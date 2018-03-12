@@ -9,10 +9,10 @@
 import Foundation
 import SwiftyJSON
 
-class eth_JSON_RPC {
+class EthereumAPIRequest {
     
     static let url = URL(string: "http://13.112.62.24/eth")!
-    
+
     static func removeNilParams(json: inout JSON) {
         
         if let dict = json.dictionary {

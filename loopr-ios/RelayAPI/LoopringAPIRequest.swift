@@ -10,11 +10,11 @@ import Foundation
 import SwiftyJSON
 
 // https://github.com/Loopring/relay/blob/wallet_v2/LOOPRING_RELAY_API_SPEC_V2.md#loopring_getorders
-class loopring_JSON_RPC {
+class LoopringAPIRequest {
     
     static let contractVersion = "v1.0"
     
-    static let url = URL(string: "https://relay1.loopring.io/rpc")!
+    static let url = URL(string: "http://13.112.62.24/rpc/v2")!
     
     // READY
     public static func getBalance(owner: String? = nil, completionHandler: @escaping (_ tokens: [Token]?, _ error: Error?) -> Void) {
@@ -41,6 +41,7 @@ class loopring_JSON_RPC {
         }
     }
 
+    // get transaction
     // TODO: How to get a list of orders for an address
     static func getOrders(owner: String? = nil, orderHash: String? = nil, status: String? = nil, market: String? = nil, pageIndex: UInt = 1, pageSize: UInt = 20, completionHandler: @escaping (_ orders: [Order], _ error: Error?) -> Void) {
         
@@ -183,9 +184,6 @@ class loopring_JSON_RPC {
         body["method"] = "loopring_getCutoff"
         body["params"] = [["contractVersion": contractVersion, "address": address, "blockNumber": blockNumber]]
         body["id"] = "1a715e2557abc0bd"
-        
-        print(body)
-        
         Request.send(body: body, url: url) { data, response, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
@@ -195,8 +193,8 @@ class loopring_JSON_RPC {
         }
     }
     
-    // TODO: backend will modify later in test env, and then complete this method --kenshin
-    static func getPriceQuote(currency: String, completionHandler: @escaping CompletionHandler) {
+    // READY
+    static func getPriceQuote(currency: String, completionHandler: @escaping (_ price: PriceQuote?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getPriceQuote"
         body["params"] = [["currency": currency]]
@@ -206,10 +204,13 @@ class loopring_JSON_RPC {
         Request.send(body: body, url: url) { data, response, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
+                completionHandler(nil, error)
                 return
             }
             let json = JSON(data)
-            completionHandler(data, response, error)
+            let offerData = json["result"]
+            let price = PriceQuote(json: offerData)
+            completionHandler(price, nil)
         }
     }
     

@@ -52,7 +52,7 @@ class MarketDataManager {
     }
 
     func getMarketsFromServer(completionHandler: @escaping (_ market: [Market], _ error: Error?) -> Void) {
-        loopring_JSON_RPC.getSupportedMarket(completionHandler: { markets, error in
+        LoopringAPIRequest.getSupportedMarket(completionHandler: { markets, error in
             self.markets = markets
             completionHandler(markets, error)
         })
