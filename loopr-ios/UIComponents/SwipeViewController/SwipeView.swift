@@ -112,7 +112,9 @@ open class SwipeView: UIView {
         
         isLayoutingSubviews = true
         super.layoutSubviews()
-        reloadData(isOrientationChange: true)
+        // No need to reload data when layoutSubviews is called.
+        // reloadData(isOrientationChange: true)
+        isLayoutingSubviews = false
     }
     
     open override func didMoveToSuperview() {

@@ -42,7 +42,7 @@ class BuyAndSellSwipeViewController: SwipeViewController {
         // This conflicts to the swipe action in the table view cell.
         options.swipeContentScrollView.isScrollEnabled = false
         
-        swipeView.reloadData(options: options)
+        // swipeView.reloadData(options: options, default: 1)
         
         for viewController in viewControllers {
             self.addChildViewController(viewController)
@@ -56,16 +56,21 @@ class BuyAndSellSwipeViewController: SwipeViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        let initIndex = initialType == .buy ? 0 : 1
         super.viewWillAppear(animated)
         if Themes.isNight() {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.white
-            swipeView.reloadData(options: options, default: initIndex)
+            // swipeView.reloadData(options: options, default: initIndex)
         } else {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.black
-            swipeView.reloadData(options: options, default: initIndex)
+            // swipeView.reloadData(options: options, default: initIndex)
+        }
+        
+        let initIndex = initialType == .buy ? 0 : 1
+        if swipeView.currentIndex != initIndex {
+            // swipeView.reloadData(options: options, default: initIndex)
+            // swipeView.jump(to: initIndex, animated: false)
         }
     }
 
@@ -80,8 +85,6 @@ class BuyAndSellSwipeViewController: SwipeViewController {
     
     override func swipeView(_ swipeView: SwipeView, willChangeIndexFrom fromIndex: Int, to toIndex: Int) {
         print("will change from item \(fromIndex) to item \(toIndex)")
-        // let viewController = viewControllers[toIndex]
-        // viewController.reload()
     }
     
     override func swipeView(_ swipeView: SwipeView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {

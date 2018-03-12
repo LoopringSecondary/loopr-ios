@@ -332,8 +332,9 @@ extension SwipeTabView {
             adjustCellWidth = (frame.width - options.margin * 2) / CGFloat(dataSource.numberOfItems(in: self)) - options.underlineView.margin * 2
         }
         
-        // underlineView.frame.origin.x = adjustCellWidth * CGFloat(index) + options.underlineView.margin
-        // underlineView.frame.size.width = adjustCellWidth
+        underlineView.frame.origin.x = adjustCellWidth * CGFloat(index) + options.underlineView.margin
+        underlineView.frame.size.width = adjustCellWidth
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             let x = adjustCellWidth * CGFloat(index) + self.options.underlineView.margin * CGFloat(index*2+1)
             let y = self.containerView.frame.size.height

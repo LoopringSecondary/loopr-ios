@@ -2,22 +2,18 @@
 //  TradeViewController.swift
 //  loopr-ios
 //
-//  Created by xiaoruby on 2/9/18.
+//  Created by xiaoruby on 3/11/18.
 //  Copyright © 2018 Loopring. All rights reserved.
 //
 
 import UIKit
 
-class TradeNavigationViewController: UINavigationController {
+class TradeSwipeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        navigationBar.shadowImage = UIImage()
-
-        let viewController = TradeSwipeViewController()
-        self.setViewControllers([viewController], animated: false)
     }
 
     override func didReceiveMemoryWarning() {
