@@ -51,7 +51,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        scrollViewButtonLayoutConstraint.constant = 77
+        scrollViewButtonLayoutConstraint.constant = 0
 
         placeOrderButton.title = NSLocalizedString("Place Order", comment: "")
         placeOrderButton.backgroundColor = UIColor.black
