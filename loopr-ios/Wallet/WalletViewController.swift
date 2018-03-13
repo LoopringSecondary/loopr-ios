@@ -37,6 +37,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
         self.navigationItem.rightBarButtonItem = addButton
+        
+        // Test socket io connection
+        LoopringSocketIORequest.shared.setup()
+        LoopringSocketIORequest.shared.getBalance(owner: "0x847983c3a34afa192cfee860698584c030f4c9db1")
     }
     
     override func viewWillAppear(_ animated: Bool) {
