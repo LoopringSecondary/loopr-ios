@@ -278,14 +278,14 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
             }, completion: { finished in
                 self.isKeyboardShow = true
                 if finished {
-                    if textField.tag == 2 {
+                    if textField.tag == self.totalTextField.tag {
                         let bottomOffset = CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.size.height)
                         self.scrollView.setContentOffset(bottomOffset, animated: true)
                     }
                 }
             })
         } else {
-            if textField.tag == 2 {
+            if textField.tag == totalTextField.tag {
                 let bottomOffset = CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.size.height)
                 self.scrollView.setContentOffset(bottomOffset, animated: true)
             }

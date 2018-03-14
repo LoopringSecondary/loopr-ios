@@ -29,6 +29,12 @@ class TradeBuyViewController: UIViewController, UITextFieldDelegate, NumericKeyb
     var totalTextField: UITextField = UITextField()
     var totalUnderLine: UIView = UIView()
     var availableLabel: UILabel = UILabel()
+
+    // Keyboard
+    var isKeyboardShow: Bool = false
+    var keyboardView: DefaultNumericKeyboard!
+
+    var activeTextFieldTag = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,11 +122,24 @@ class TradeBuyViewController: UIViewController, UITextFieldDelegate, NumericKeyb
         scrollView.addSubview(availableLabel)
 
         scrollView.contentSize = CGSize(width: screenWidth, height: availableLabel.frame.maxY + 30)
+        
+        let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
+        scrollViewTap.numberOfTapsRequired = 1
+        scrollView.addGestureRecognizer(scrollViewTap)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func scrollViewTapped() {
+        print("scrollViewTapped")
+
+        tokenSPriceTextField.resignFirstResponder()
+        totalTextField.resignFirstResponder()
+
+        hideKeyboard()
     }
     
     @IBAction func pressedNextButton(_ sender: Any) {
@@ -132,14 +151,91 @@ class TradeBuyViewController: UIViewController, UITextFieldDelegate, NumericKeyb
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         print("textFieldShouldBeginEditing")
+
+        activeTextFieldTag = textField.tag
         
+        showKeyboard(textField: textField)
+
         return true
+    }
+    
+    func getActiveTextField() -> UITextField? {
+        if activeTextFieldTag == tokenSPriceTextField.tag {
+            return tokenSPriceTextField
+        } else if activeTextFieldTag == totalTextField.tag {
+            return totalTextField
+        } else {
+            return nil
+        }
+    }
+    
+    func showKeyboard(textField: UITextField) {
+        if !isKeyboardShow {
+            let width = self.view.frame.width
+            let height = self.nextBackgroundView.frame.origin.y
+            
+            let keyboardHeight: CGFloat = 220
+            
+            scrollViewButtonLayoutConstraint.constant = keyboardHeight
+            
+            keyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: keyboardHeight))
+            keyboardView.delegate = self
+            // keyboardView.backgroundColor = UIColor.blue
+            view.addSubview(keyboardView)
+            view.bringSubview(toFront: nextBackgroundView)
+            view.bringSubview(toFront: nextButton)
+            
+            let destinateY = height - keyboardHeight
+            
+            // TODO: improve the animation.
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
+            }, completion: { finished in
+                self.isKeyboardShow = true
+                if finished {
+                    if textField.tag == self.totalTextField.tag {
+                        let bottomOffset = CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.size.height)
+                        self.scrollView.setContentOffset(bottomOffset, animated: true)
+                    }
+                }
+            })
+        } else {
+            if textField.tag == totalTextField.tag {
+                let bottomOffset = CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.size.height)
+                self.scrollView.setContentOffset(bottomOffset, animated: true)
+            }
+        }
+    }
+    
+    func hideKeyboard() {
+        if isKeyboardShow {
+            let width = self.view.frame.width
+            let height = self.nextBackgroundView.frame.origin.y
+            
+            let keyboardHeight: CGFloat = 220
+
+            scrollViewButtonLayoutConstraint.constant = 0
+
+            let destinateY = height
+            
+            // TODO: improve the animation.
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
+            }, completion: { finished in
+                self.isKeyboardShow = false
+                if finished {
+                    self.scrollView.setContentOffset(CGPoint.zero, animated: true)
+                }
+            })
+        } else {
+            self.scrollView.setContentOffset(CGPoint.zero, animated: true)
+        }
     }
 
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemTapped item: NumericKeyboardItem, atPosition position: Position) {
         print("pressed keyboard: (\(position.row), \(position.column))")
         
-        let activeTextField: UITextField? = nil  // getActiveTextField()
+        let activeTextField: UITextField? = getActiveTextField()
         guard activeTextField != nil else {
             return
         }
