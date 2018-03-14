@@ -7,20 +7,42 @@
 //
 
 import Foundation
-import UIKit
+import SwiftyJSON
 
 class AssetDataManager {
 
     static let shared = AssetDataManager()
     
+    private var totalAsset: Double
     private var assets: [Asset]
+    private var tokens: [Token]
     
     private init() {
-        assets = []
+        self.assets = []
+        self.tokens = []
+        self.totalAsset = 0
+        self.loadTokensFromJson()
+    }
+    
+    func getTokens() -> [Token] {
+        return tokens
     }
     
     func getAssets() -> [Asset] {
         return assets
+    }
+    
+    func getTotalAsset() -> Double {
+        return totalAsset
+    }
+    
+    func getTokenNameBySymbol(_ symbol: String) -> String? {
+        var result: String? = nil
+        for case let token in tokens where token.symbol.lowercased() == symbol.lowercased() {
+            result = token.source
+            break
+        }
+        return result
     }
     
     func exchange(at sourceIndex: Int, to destinationIndex: Int) {
@@ -29,23 +51,43 @@ class AssetDataManager {
         }
     }
     
-    // TODO: deprecated this function.
-    func generateMockData() {
+    // MARK: whether stop method is useful?
+    func startGetBalance(_ owner: String) {
+        LoopringSocketIORequest.getBalance(owner: owner)
+    }
+    
+    // load tokens esp. their names from json file to avoid http request
+    func loadTokensFromJson() {
+        if let path = Bundle.main.path(forResource: "tokens", ofType: "json") {
+            let jsonString = try? String(contentsOfFile: path, encoding: String.Encoding.utf8)
+            let json = JSON(parseJSON: jsonString!)
+            for subJson in json.arrayValue {
+                let token = Token(json: subJson)
+                tokens.append(token)
+            }
+        }
+    }
+    
+    // this func should be called every 10 secs when emitted
+    func onBalanceResponse(json: JSON) {
+        
+        print(json)
+        
         assets = []
-
-        let asset1 = Asset(symbol: "ETH", name: "Ethereum", icon: UIImage(named: "ETH")!, enable: true, balance: Double(1.1212))
-        assets.append(asset1)
-        
-        let asset2 = Asset(symbol: "WETH", name: "Wrapped ETH", icon: UIImage(named: "ETH")!, enable: true, balance: Double(3.1))
-        assets.append(asset2)
-
-        let asset4 = Asset(symbol: "LRC", name: "Loopring", icon: UIImage(named: "LRC")!, enable: true, balance: Double(5.33133))
-        assets.append(asset4)
-        
-        assets.append(asset4)
-        assets.append(asset4)
-        assets.append(asset4)
-        assets.append(asset4)
-        assets.append(asset4)
+        totalAsset = 0
+        for subJson in json["tokens"].arrayValue {
+            let asset = Asset(json: subJson)
+            if let price = PriceQuoteDataManager.shared.getPriceQuote() {
+                for case let priceToken in price.tokens where priceToken.symbol.lowercased() == asset.symbol.lowercased() {
+                    if let balance = Double(asset.balance) {
+                        asset.display = balance * priceToken.price
+                        asset.icon = UIImage(named: asset.symbol) ?? nil
+                        asset.name = getTokenNameBySymbol(asset.symbol) ?? "unknown"
+                        totalAsset += asset.display
+                    }
+                }
+            }
+            assets.append(asset)
+        }
     }
 }

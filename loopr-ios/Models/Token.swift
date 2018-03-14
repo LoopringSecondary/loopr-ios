@@ -10,16 +10,20 @@ import Foundation
 import SwiftyJSON
 
 class Token {
-    
+
     let symbol: String
-    var balance: String
-    var allowance: String
-    var display: Double
+    let source: String
+    let isMarket: Bool
+    let decimals: UInt
+    let protocol_value: String
+    let deny: Bool
     
     init(json: JSON) {
-        self.display = 0
-        self.symbol = json["symbol"].stringValue
-        self.balance = json["balance"].stringValue
-        self.allowance = json["allowance"].stringValue
+        self.symbol = json["Symbol"].stringValue
+        self.source = json["Source"].stringValue
+        self.isMarket = json["IsMarket"].boolValue
+        self.decimals = json["Decimals"].uIntValue
+        self.protocol_value = json["Protocol"].stringValue
+        self.deny = json["Deny"].boolValue
     }
 }

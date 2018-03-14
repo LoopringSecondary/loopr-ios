@@ -7,26 +7,29 @@
 //
 
 import Foundation
-import UIKit
+import SwiftyJSON
 
 class Asset: CustomStringConvertible {
 
     let symbol: String
-    let name: String
-    let icon: UIImage
-    let enable: Bool
-    
-    let balance: Double
-    
+    var name: String
+    var icon: UIImage?
+    var enable: Bool
+    var balance: String
+    var allowance: String
+    var display: Double
     var description: String
     
-    init(symbol: String, name: String, icon: UIImage, enable: Bool, balance: Double) {
-        self.symbol = symbol
-        self.name = name
-        self.enable = enable
-        self.icon = icon
-        self.balance = balance
+    init(json: JSON) {
+        
+        self.name = ""
+        self.enable = true
+        self.icon = nil
+        self.display = 0
         self.description = self.name
+        self.symbol = json["symbol"].stringValue
+        self.balance = json["balance"].stringValue
+        self.allowance = json["allowance"].stringValue
     }
     
 }

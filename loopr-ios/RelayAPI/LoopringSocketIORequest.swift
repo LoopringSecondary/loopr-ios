@@ -13,21 +13,28 @@ import SwiftyJSON
 public class LoopringSocketIORequest {
     
     static let url = "http://13.112.62.24"
-    static var handlers: [String: [(JSON) -> Void]] = [:]
+//    static let url = "10.137.104.180:8087"
+    
     static let manager = SocketManager(socketURL: URL(string: url)!, config: [.compress, .forceWebsockets(true)])
     static let socket = manager.defaultSocket
+    static var handlers: [String: [(JSON) -> Void]] = [:]
     
     static func setup() {
         
-        if handlers.count == 0 {
+        if handlers.isEmpty {
             // add more requests using socketio here
-            handlers["balance_res"] = [BalanceDataManager.shared.onBalanceResponse]
+            handlers["balance_res"] = [AssetDataManager.shared.onBalanceResponse]
             handlers["marketcap_res"] = [PriceQuoteDataManager.shared.onPriceQuoteResponse]
             addHandlers(handlers)
         }
         if socket.status != .connected {
             socket.connect()
         }
+    }
+    
+    static func tearDown() {
+        socket.removeAllHandlers()
+        socket.disconnect()
     }
     
     static func addHandlers(_ handlers: [String: [(JSON) -> Void]]) {

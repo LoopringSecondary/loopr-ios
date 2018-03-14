@@ -14,7 +14,7 @@ protocol WalletBalanceTableViewCellDelegate: class {
 
 class WalletBalanceTableViewCell: UITableViewCell {
     
-    var balance = 1000.23
+    var balance = AssetDataManager.shared.getTotalAsset()
     weak var delegate: WalletBalanceTableViewCellDelegate?
     
     @IBOutlet weak var balanceLabel: TickerLabel!
@@ -39,7 +39,6 @@ class WalletBalanceTableViewCell: UITableViewCell {
         hideAssetsLabel.theme_textColor = GlobalPicker.textColor
         hideAssetsLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)
 
-        // TODO: Get the data from Relay API
         update()
         _ = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
     }
@@ -59,11 +58,10 @@ class WalletBalanceTableViewCell: UITableViewCell {
     }
     
     func setup() {
-        LoopringSocketIORequest.setup()
     }
     
     @objc func updateBalance() {
-        balance = BalanceDataManager.shared.totalBalance
+        balance = AssetDataManager.shared.getTotalAsset()
         balanceLabel.setText("\(balance)", animated: true)
     }
 

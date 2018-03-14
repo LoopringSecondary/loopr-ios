@@ -65,6 +65,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         button.addTarget(self, action: #selector(self.clickOnButton(_:)), for: .touchUpInside)
         self.navigationItem.titleView = button
         
+        // TODO: check whether is properly
+        PriceQuoteDataManager.shared.startGetPriceQuote("USD")
+        AssetDataManager.shared.startGetBalance("0x750ad4351bb728cec7d639a9511f9d6488f1e259")
+        
         assetTableView.reloadData()
     }
 
@@ -116,22 +120,18 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 cell?.selectionStyle = .none
                 cell?.delegate = self
             }
-            
             cell?.setup()
             return cell!
-
         } else {
             if let spacer = assetTableView.reorder.spacerCell(for: indexPath) {
                 return spacer
             }
-
             var cell = tableView.dequeueReusableCell(withIdentifier: AssetTableViewCell.getCellIdentifier()) as? AssetTableViewCell
             if cell == nil {
                 let nib = Bundle.main.loadNibNamed("AssetTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? AssetTableViewCell
                 cell?.accessoryType = .disclosureIndicator
             }
-
             cell?.asset = AssetDataManager.shared.getAssets()[indexPath.row-1]
             cell?.update()
             return cell!

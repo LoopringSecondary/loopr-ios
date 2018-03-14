@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Themes.restoreLastTheme()
         ThemeManager.animationDuration = 1.0
         
-        // Generate mock data
-        AssetDataManager.shared.generateMockData()
+        // MARK: check whether it is properly: socket.io must be established befor startxxx method
+        LoopringSocketIORequest.setup()
         
         // Get data from Relay
         OrderDataManager.shared.getOrdersFromServer()

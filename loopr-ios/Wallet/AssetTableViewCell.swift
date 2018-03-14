@@ -45,10 +45,8 @@ class AssetTableViewCell: UITableViewCell {
         if let asset = asset {
             iconImageView.image = asset.icon
             symbolLabel.text = asset.symbol
-            
-            // TODO: Use values from Relay API.
-            let balance = asset.balance * 120
-            balanceLabel.text = "$\(balance)"
+            // TODO: price unit get from setting
+            balanceLabel.text = "$\(asset.display)"
             amountLabel.text = "\(asset.balance) \(asset.symbol)"
         }
     }

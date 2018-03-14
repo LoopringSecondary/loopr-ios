@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		940076B220554A4100DDA37D /* LoopringSocketIORequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940076B120554A4100DDA37D /* LoopringSocketIORequest.swift */; };
 		943BDED32056350000D5BF81 /* PriceQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943BDED22056350000D5BF81 /* PriceQuote.swift */; };
-		943BDED52056539C00D5BF81 /* LoopringSocketIORequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943BDED42056539C00D5BF81 /* LoopringSocketIORequestTests.swift */; };
-		9459D5B42057BD1300B1F664 /* BalanceDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459D5B32057BD1300B1F664 /* BalanceDataManager.swift */; };
+		945800212058FEB500E08DEF /* tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = 945800202058FEB500E08DEF /* tokens.json */; };
+		945800232059006200E08DEF /* AssetDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945800222059006200E08DEF /* AssetDataManagerTests.swift */; };
+		94580025205921D600E08DEF /* PriceQuoteDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94580024205921D600E08DEF /* PriceQuoteDataManagerTests.swift */; };
 		9459D5B62057C69100B1F664 /* PriceQuoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459D5B52057C69100B1F664 /* PriceQuoteDataManager.swift */; };
 		949629DB204E836400858F03 /* Depth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DA204E836400858F03 /* Depth.swift */; };
 		949629DF204E9C9800858F03 /* MinedRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DE204E9C9800858F03 /* MinedRing.swift */; };
@@ -339,8 +340,9 @@
 		929BB32EF62C4BD6BC1DFC8F /* Pods_loopr_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		940076B120554A4100DDA37D /* LoopringSocketIORequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopringSocketIORequest.swift; sourceTree = "<group>"; };
 		943BDED22056350000D5BF81 /* PriceQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceQuote.swift; sourceTree = "<group>"; };
-		943BDED42056539C00D5BF81 /* LoopringSocketIORequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopringSocketIORequestTests.swift; sourceTree = "<group>"; };
-		9459D5B32057BD1300B1F664 /* BalanceDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceDataManager.swift; sourceTree = "<group>"; };
+		945800202058FEB500E08DEF /* tokens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tokens.json; sourceTree = "<group>"; };
+		945800222059006200E08DEF /* AssetDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDataManagerTests.swift; sourceTree = "<group>"; };
+		94580024205921D600E08DEF /* PriceQuoteDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceQuoteDataManagerTests.swift; sourceTree = "<group>"; };
 		9459D5B52057C69100B1F664 /* PriceQuoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceQuoteDataManager.swift; sourceTree = "<group>"; };
 		949629DA204E836400858F03 /* Depth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Depth.swift; sourceTree = "<group>"; };
 		949629DE204E9C9800858F03 /* MinedRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinedRing.swift; sourceTree = "<group>"; };
@@ -666,7 +668,6 @@
 			children = (
 				AC9280DC202E0F9F0009B574 /* EthereumAPIRequestTests.swift */,
 				AC798E592022B93B0071D477 /* LoopringAPIRequestTests.swift */,
-				943BDED42056539C00D5BF81 /* LoopringSocketIORequestTests.swift */,
 			);
 			path = RelayAPI;
 			sourceTree = "<group>";
@@ -867,6 +868,8 @@
 			isa = PBXGroup;
 			children = (
 				AC72AEE1204D084500E9D3B0 /* AppWalletDataManagerTests.swift */,
+				945800222059006200E08DEF /* AssetDataManagerTests.swift */,
+				94580024205921D600E08DEF /* PriceQuoteDataManagerTests.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -1099,6 +1102,7 @@
 		ACB9115D20242D9900F14644 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				945800202058FEB500E08DEF /* tokens.json */,
 				ACB911512024254F00F14644 /* WalletNavigationViewController.swift */,
 				ACB911532024260E00F14644 /* WalletViewController.swift */,
 				ACB911542024260E00F14644 /* WalletViewController.xib */,
@@ -1152,7 +1156,6 @@
 				AC31B937204A4E1300B16155 /* SettingDataManager.swift */,
 				AC72AEE3204E7FA900E9D3B0 /* SetupDataManager.swift */,
 				AC41420B2038BFB70089861D /* UserDefaultsKeys.swift */,
-				9459D5B32057BD1300B1F664 /* BalanceDataManager.swift */,
 				9459D5B52057C69100B1F664 /* PriceQuoteDataManager.swift */,
 			);
 			path = DataManagers;
@@ -1462,6 +1465,7 @@
 				ACB5DD8B202BF23100140A09 /* ArchiveBuyViewController.xib in Resources */,
 				AC54FD46204FC6A7007E1DEB /* DINNextLTPro-Light.otf in Resources */,
 				949C49492046A4A80074466D /* SampleViewController.xib in Resources */,
+				945800212058FEB500E08DEF /* tokens.json in Resources */,
 				AC54FD5B204FC6C4007E1DEB /* Lato-Bold.ttf in Resources */,
 				AC72AEDD204C9F6300E9D3B0 /* VerifyMnemonicViewController.xib in Resources */,
 				AC13B30B2054A766008A72C0 /* BuyViewController.xib in Resources */,
@@ -1820,7 +1824,6 @@
 				ACB9117520255A6600F14644 /* MarketTableViewCell.swift in Sources */,
 				ACBDB1C52032D050003463A4 /* OpenOrderTableViewCell.swift in Sources */,
 				AC31B94C204A8DF400B16155 /* KeyStore.Error.swift in Sources */,
-				9459D5B42057BD1300B1F664 /* BalanceDataManager.swift in Sources */,
 				AC31B94E204A8DF400B16155 /* KeystoreKey.swift in Sources */,
 				AC3756732038D64B00AADC60 /* MnemonicViewController.swift in Sources */,
 				ACB5DD9E202D5B8D00140A09 /* NumericKeyboardItem.swift in Sources */,
@@ -1904,11 +1907,12 @@
 			files = (
 				AC72AEE2204D084500E9D3B0 /* AppWalletDataManagerTests.swift in Sources */,
 				ACF06A06204C736A00C3FF86 /* CreateMnemonicTests.swift in Sources */,
+				945800232059006200E08DEF /* AssetDataManagerTests.swift in Sources */,
 				AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */,
+				94580025205921D600E08DEF /* PriceQuoteDataManagerTests.swift in Sources */,
 				AC798E5A2022B93B0071D477 /* LoopringAPIRequestTests.swift in Sources */,
 				AC1E4BC0204B51AB00C6B1FA /* ImportWalletTests.swift in Sources */,
 				AC1E4BC6204B58D400C6B1FA /* CreatePrivateKeyTests.swift in Sources */,
-				943BDED52056539C00D5BF81 /* LoopringSocketIORequestTests.swift in Sources */,
 				AC1E4BBC204B420D00C6B1FA /* KeystoneIntegrationTests.swift in Sources */,
 				AC9280DD202E0F9F0009B574 /* EthereumAPIRequestTests.swift in Sources */,
 			);
