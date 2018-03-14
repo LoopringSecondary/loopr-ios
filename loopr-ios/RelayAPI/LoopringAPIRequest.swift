@@ -13,7 +13,6 @@ import SwiftyJSON
 class LoopringAPIRequest {
     
     static let contractVersion = "v1.0"
-    
     static let url = URL(string: "http://13.112.62.24/rpc/v2")!
     
     // READY

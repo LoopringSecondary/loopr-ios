@@ -10,6 +10,8 @@
 		940076B220554A4100DDA37D /* LoopringSocketIORequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940076B120554A4100DDA37D /* LoopringSocketIORequest.swift */; };
 		943BDED32056350000D5BF81 /* PriceQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943BDED22056350000D5BF81 /* PriceQuote.swift */; };
 		943BDED52056539C00D5BF81 /* LoopringSocketIORequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943BDED42056539C00D5BF81 /* LoopringSocketIORequestTests.swift */; };
+		9459D5B42057BD1300B1F664 /* BalanceDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459D5B32057BD1300B1F664 /* BalanceDataManager.swift */; };
+		9459D5B62057C69100B1F664 /* PriceQuoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459D5B52057C69100B1F664 /* PriceQuoteDataManager.swift */; };
 		949629DB204E836400858F03 /* Depth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DA204E836400858F03 /* Depth.swift */; };
 		949629DF204E9C9800858F03 /* MinedRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DE204E9C9800858F03 /* MinedRing.swift */; };
 		949C49442046976E0074466D /* TradePlaceReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949C49422046976E0074466D /* TradePlaceReplyViewController.swift */; };
@@ -338,6 +340,8 @@
 		940076B120554A4100DDA37D /* LoopringSocketIORequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopringSocketIORequest.swift; sourceTree = "<group>"; };
 		943BDED22056350000D5BF81 /* PriceQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceQuote.swift; sourceTree = "<group>"; };
 		943BDED42056539C00D5BF81 /* LoopringSocketIORequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopringSocketIORequestTests.swift; sourceTree = "<group>"; };
+		9459D5B32057BD1300B1F664 /* BalanceDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceDataManager.swift; sourceTree = "<group>"; };
+		9459D5B52057C69100B1F664 /* PriceQuoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceQuoteDataManager.swift; sourceTree = "<group>"; };
 		949629DA204E836400858F03 /* Depth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Depth.swift; sourceTree = "<group>"; };
 		949629DE204E9C9800858F03 /* MinedRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinedRing.swift; sourceTree = "<group>"; };
 		949C49422046976E0074466D /* TradePlaceReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradePlaceReplyViewController.swift; sourceTree = "<group>"; };
@@ -1148,6 +1152,8 @@
 				AC31B937204A4E1300B16155 /* SettingDataManager.swift */,
 				AC72AEE3204E7FA900E9D3B0 /* SetupDataManager.swift */,
 				AC41420B2038BFB70089861D /* UserDefaultsKeys.swift */,
+				9459D5B32057BD1300B1F664 /* BalanceDataManager.swift */,
+				9459D5B52057C69100B1F664 /* PriceQuoteDataManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -1814,6 +1820,7 @@
 				ACB9117520255A6600F14644 /* MarketTableViewCell.swift in Sources */,
 				ACBDB1C52032D050003463A4 /* OpenOrderTableViewCell.swift in Sources */,
 				AC31B94C204A8DF400B16155 /* KeyStore.Error.swift in Sources */,
+				9459D5B42057BD1300B1F664 /* BalanceDataManager.swift in Sources */,
 				AC31B94E204A8DF400B16155 /* KeystoreKey.swift in Sources */,
 				AC3756732038D64B00AADC60 /* MnemonicViewController.swift in Sources */,
 				ACB5DD9E202D5B8D00140A09 /* NumericKeyboardItem.swift in Sources */,
@@ -1863,6 +1870,7 @@
 				AC41420C2038BFB70089861D /* UserDefaultsKeys.swift in Sources */,
 				AC952A142053A84800C78562 /* OrderHistoryViewController.swift in Sources */,
 				ACE6F72720426BAC0039273D /* SettingThemeModeTableViewCell.swift in Sources */,
+				9459D5B62057C69100B1F664 /* PriceQuoteDataManager.swift in Sources */,
 				ACB911992027F65800F14644 /* LoopringAPIRequest.swift in Sources */,
 				ACB5DDA4202D6FC300140A09 /* UIImageExtension.swift in Sources */,
 				AC4142042038B6370089861D /* AppWalletDataManager.swift in Sources */,

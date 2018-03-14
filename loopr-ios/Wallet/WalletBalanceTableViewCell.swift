@@ -41,7 +41,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
 
         // TODO: Get the data from Relay API
         update()
-        _ = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
+        _ = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
     }
     
     override func layoutSubviews() {
@@ -59,13 +59,11 @@ class WalletBalanceTableViewCell: UITableViewCell {
     }
     
     func setup() {
-        
+        LoopringSocketIORequest.setup()
     }
     
-    // TODO: Use websocket API to get the latest price.
     @objc func updateBalance() {
-        let decimal = Double(arc4random_uniform(100))
-        balance += Double(arc4random_uniform(100)) + decimal/100.0
+        balance = BalanceDataManager.shared.totalBalance
         balanceLabel.setText("\(balance)", animated: true)
     }
 

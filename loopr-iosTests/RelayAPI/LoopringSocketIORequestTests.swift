@@ -16,7 +16,7 @@ class LoopringSocketIORequestTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        LoopringSocketIORequest.shared.setup()
+        LoopringSocketIORequest.setup()
     }
     
     override func tearDown() {
@@ -26,10 +26,14 @@ class LoopringSocketIORequestTests: XCTestCase {
     
     func testGetBalance() {
         let expectation = XCTestExpectation()
-        LoopringSocketIORequest.shared.getBalance(owner: "0x847983c3a34afa192cfee860698584c030f4c9db1")
-        
-//        expectation.fulfill()
-        
+        LoopringSocketIORequest.getPriceQuote(currency: "USD")
+        LoopringSocketIORequest.getBalance(owner: "0x847983c3a34afa192cfee860698584c030f4c9db1")
+        wait(for: [expectation], timeout: 100.0)
+    }
+    
+    func testGetPriceQuote() {
+        let expectation = XCTestExpectation()
+        LoopringSocketIORequest.getPriceQuote(currency: "USD")
         wait(for: [expectation], timeout: 100.0)
     }
     

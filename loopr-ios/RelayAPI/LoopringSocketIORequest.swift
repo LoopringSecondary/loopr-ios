@@ -12,34 +12,52 @@ import SwiftyJSON
 
 public class LoopringSocketIORequest {
     
-    static let shared = LoopringSocketIORequest()
+    static let url = "http://13.112.62.24"
+    static var handlers: [String: [(JSON) -> Void]] = [:]
+    static let manager = SocketManager(socketURL: URL(string: url)!, config: [.compress, .forceWebsockets(true)])
+    static let socket = manager.defaultSocket
     
-    var manager: SocketManager
-    var socket: SocketIOClient
-
-    private init() {
-        manager = SocketManager(socketURL: URL(string: "http://13.112.62.24")!, config: [.log(true), .compress, .forceWebsockets(true), .forcePolling(false)])
-        socket = manager.defaultSocket
-    }
-    
-    func setup() {
-        addHandlers()
-        socket.connect()
-    }
-    
-    func addHandlers() {
-        socket.on("balance_res") { data, _ in
-            let json = JSON(data)
-            print(json)
-            return
+    static func setup() {
+        
+        if handlers.count == 0 {
+            // add more requests using socketio here
+            handlers["balance_res"] = [BalanceDataManager.shared.onBalanceResponse]
+            handlers["marketcap_res"] = [PriceQuoteDataManager.shared.onPriceQuoteResponse]
+            addHandlers(handlers)
+        }
+        if socket.status != .connected {
+            socket.connect()
         }
     }
     
-    public func getBalance(owner: String?) {
+    static func addHandlers(_ handlers: [String: [(JSON) -> Void]]) {
+        
+        for (key, methods) in handlers {
+            for method in methods {
+                socket.on(key, callback: { (data, _) in
+                    if let string = data[0] as? String {
+                        if let json = try? JSON(data: string.data(using: .utf8)!) {
+                            method(json)
+                        }
+                    }
+                })
+            }
+        }
+    }
+    
+    static func getBalance(owner: String) {
         var body: JSON = JSON()
-        body["owner"] = JSON(owner!)
-        print("\nemitting......\n")
-        print("\n\(socket.status.description)\n") // always connecting, could not emit!!!
-        socket.emit("balance_req", [body])
+        body["owner"] = JSON(owner)
+        socket.on(clientEvent: .connect) {_, _ in
+            self.socket.emit("balance_req", body.rawString()!)
+        }
+    }
+    
+    static func getPriceQuote(currency: String) {
+        var body: JSON = JSON()
+        body["currency"] = JSON(currency)
+        socket.on(clientEvent: .connect) {_, _ in
+            self.socket.emit("marketcap_req", body.rawString()!)
+        }
     }
 }

@@ -11,12 +11,14 @@ import SwiftyJSON
 
 class Token {
     
-    let token: String
-    let balance: String
-    let allowance: String
+    let symbol: String
+    var balance: String
+    var allowance: String
+    var display: Double
     
     init(json: JSON) {
-        self.token = json["token"].stringValue
+        self.display = 0
+        self.symbol = json["symbol"].stringValue
         self.balance = json["balance"].stringValue
         self.allowance = json["allowance"].stringValue
     }

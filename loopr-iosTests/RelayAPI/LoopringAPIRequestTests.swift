@@ -32,7 +32,7 @@ class LoopringAPIRequestTests: XCTestCase {
             }
             // 66 is the num of our current supported token list
             XCTAssertNotNil(tokens)
-            XCTAssert(tokens!.count == 66)
+            XCTAssert(tokens!.count == 4)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)
