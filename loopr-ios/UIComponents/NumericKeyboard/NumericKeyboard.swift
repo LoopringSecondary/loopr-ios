@@ -56,7 +56,7 @@ open class NumericKeyboard: UIView {
         collectionView.allowsSelection = false
         collectionView.isScrollEnabled = false
         collectionView.backgroundColor = .clear
-        collectionView.register(Cell.self, forCellWithReuseIdentifier: String(describing: Cell.self))
+        collectionView.register(NumericKeyboardCell.self, forCellWithReuseIdentifier: String(describing: NumericKeyboardCell.self))
         self.addSubview(collectionView)
         collectionView.constrainToEdges()
         return collectionView
@@ -93,8 +93,8 @@ extension NumericKeyboard: UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let position = self.position(forIndexPath: indexPath)
-        guard let item = dataSource?.numericKeyboard(self, itemAtPosition: position) else { return Cell() }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: Cell.self), for: indexPath) as! Cell
+        guard let item = dataSource?.numericKeyboard(self, itemAtPosition: position) else { return NumericKeyboardCell() }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: NumericKeyboardCell.self), for: indexPath) as! NumericKeyboardCell
         cell.item = item
         cell.buttonTapped = { [unowned self] _ in
             self.delegate?.numericKeyboard(self, itemTapped: item, atPosition: position)
@@ -128,7 +128,7 @@ public extension NumericKeyboard {
     func item(for position: Position) -> NumericKeyboardItem? {
         let indexPath = self.indexPath(for: position)
         let cell = collectionView.cellForItem(at: indexPath)
-        return (cell as? Cell)?.item
+        return (cell as? NumericKeyboardCell)?.item
     }
     
 }

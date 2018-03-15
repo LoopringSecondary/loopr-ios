@@ -239,7 +239,7 @@
 		ACB5DD95202C434B00140A09 /* EthereumAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD94202C434B00140A09 /* EthereumAPIRequest.swift */; };
 		ACB5DD98202D5A8400140A09 /* NumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD97202D5A8400140A09 /* NumericKeyboard.swift */; };
 		ACB5DD9A202D5B7100140A09 /* DefaultNumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD99202D5B7100140A09 /* DefaultNumericKeyboard.swift */; };
-		ACB5DD9C202D5B8000140A09 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD9B202D5B8000140A09 /* Cell.swift */; };
+		ACB5DD9C202D5B8000140A09 /* NumericKeyboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD9B202D5B8000140A09 /* NumericKeyboardCell.swift */; };
 		ACB5DD9E202D5B8D00140A09 /* NumericKeyboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD9D202D5B8D00140A09 /* NumericKeyboardItem.swift */; };
 		ACB5DDA0202D5B9900140A09 /* CGSizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD9F202D5B9900140A09 /* CGSizeExtension.swift */; };
 		ACB5DDA2202D6F9400140A09 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DDA1202D6F9400140A09 /* UIViewExtension.swift */; };
@@ -521,7 +521,7 @@
 		ACB5DD94202C434B00140A09 /* EthereumAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumAPIRequest.swift; sourceTree = "<group>"; };
 		ACB5DD97202D5A8400140A09 /* NumericKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeyboard.swift; sourceTree = "<group>"; };
 		ACB5DD99202D5B7100140A09 /* DefaultNumericKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNumericKeyboard.swift; sourceTree = "<group>"; };
-		ACB5DD9B202D5B8000140A09 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		ACB5DD9B202D5B8000140A09 /* NumericKeyboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeyboardCell.swift; sourceTree = "<group>"; };
 		ACB5DD9D202D5B8D00140A09 /* NumericKeyboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeyboardItem.swift; sourceTree = "<group>"; };
 		ACB5DD9F202D5B9900140A09 /* CGSizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeExtension.swift; sourceTree = "<group>"; };
 		ACB5DDA1202D6F9400140A09 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -1063,7 +1063,7 @@
 				ACB5DD97202D5A8400140A09 /* NumericKeyboard.swift */,
 				AC31CE16205A121000A30335 /* NumericKeyboardProtocol.swift */,
 				ACB5DD99202D5B7100140A09 /* DefaultNumericKeyboard.swift */,
-				ACB5DD9B202D5B8000140A09 /* Cell.swift */,
+				ACB5DD9B202D5B8000140A09 /* NumericKeyboardCell.swift */,
 				ACB5DD9D202D5B8D00140A09 /* NumericKeyboardItem.swift */,
 			);
 			path = NumericKeyboard;
@@ -1775,7 +1775,7 @@
 				ACDBF105203FE7D5000F0DEC /* ReorderSnapshotView.swift in Sources */,
 				ACE6F722204221260039273D /* Themes.swift in Sources */,
 				ACB9117C20256BBA00F14644 /* TradingPair.swift in Sources */,
-				ACB5DD9C202D5B8000140A09 /* Cell.swift in Sources */,
+				ACB5DD9C202D5B8000140A09 /* NumericKeyboardCell.swift in Sources */,
 				C8BF95A62027A10E00343B9A /* ArchiveGenerateWalletViewController.swift in Sources */,
 				ACB5DD8E202C048E00140A09 /* ArchiveSellViewController.swift in Sources */,
 				AC31B949204A8DF400B16155 /* Scrypt.swift in Sources */,

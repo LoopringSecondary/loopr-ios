@@ -1,5 +1,5 @@
 //
-//  Cell.swift
+//  NumericKeyboardCell.swift
 //  loopr-ios
 //
 //  Created by xiaoruby on 2/8/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Cell: UICollectionViewCell {
+class NumericKeyboardCell: UICollectionViewCell {
     
     lazy var button: UIButton = { [unowned self] in
         let button = UIButton(type: .custom)
