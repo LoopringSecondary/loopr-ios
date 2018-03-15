@@ -69,6 +69,7 @@
 		AC31B962204A8E4F00B16155 /* DerivationPath.Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B95B204A8E4F00B16155 /* DerivationPath.Index.swift */; };
 		AC31CE142057B5A400A30335 /* TradeConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31CE122057B5A400A30335 /* TradeConfirmationViewController.swift */; };
 		AC31CE152057B5A400A30335 /* TradeConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE132057B5A400A30335 /* TradeConfirmationViewController.xib */; };
+		AC31CE17205A121000A30335 /* NumericKeyboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31CE16205A121000A30335 /* NumericKeyboardProtocol.swift */; };
 		AC3756662038CD7E00AADC60 /* SetupNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3756652038CD7E00AADC60 /* SetupNavigationController.swift */; };
 		AC37566D2038D37400AADC60 /* UnlockWalletSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37566B2038D37400AADC60 /* UnlockWalletSwipeViewController.swift */; };
 		AC37566E2038D37400AADC60 /* UnlockWalletSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC37566C2038D37400AADC60 /* UnlockWalletSwipeViewController.xib */; };
@@ -400,6 +401,7 @@
 		AC31B95B204A8E4F00B16155 /* DerivationPath.Index.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DerivationPath.Index.swift; sourceTree = "<group>"; };
 		AC31CE122057B5A400A30335 /* TradeConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeConfirmationViewController.swift; sourceTree = "<group>"; };
 		AC31CE132057B5A400A30335 /* TradeConfirmationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeConfirmationViewController.xib; sourceTree = "<group>"; };
+		AC31CE16205A121000A30335 /* NumericKeyboardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeyboardProtocol.swift; sourceTree = "<group>"; };
 		AC3756652038CD7E00AADC60 /* SetupNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNavigationController.swift; sourceTree = "<group>"; };
 		AC37566B2038D37400AADC60 /* UnlockWalletSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWalletSwipeViewController.swift; sourceTree = "<group>"; };
 		AC37566C2038D37400AADC60 /* UnlockWalletSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnlockWalletSwipeViewController.xib; sourceTree = "<group>"; };
@@ -1059,6 +1061,7 @@
 			isa = PBXGroup;
 			children = (
 				ACB5DD97202D5A8400140A09 /* NumericKeyboard.swift */,
+				AC31CE16205A121000A30335 /* NumericKeyboardProtocol.swift */,
 				ACB5DD99202D5B7100140A09 /* DefaultNumericKeyboard.swift */,
 				ACB5DD9B202D5B8000140A09 /* Cell.swift */,
 				ACB5DD9D202D5B8D00140A09 /* NumericKeyboardItem.swift */,
@@ -1817,6 +1820,7 @@
 				94B5CA8C204FE8E40081BA93 /* Transaction.swift in Sources */,
 				AC37567C2038D80300AADC60 /* PrivateKeyViewController.swift in Sources */,
 				AC9280E7202F5A010009B574 /* UIStyleConfig.swift in Sources */,
+				AC31CE17205A121000A30335 /* NumericKeyboardProtocol.swift in Sources */,
 				AC31CE142057B5A400A30335 /* TradeConfirmationViewController.swift in Sources */,
 				AC54FD92204FD291007E1DEB /* FontConfigManager.swift in Sources */,
 				AC4141FD203532ED0089861D /* SwipeViewOptions.swift in Sources */,

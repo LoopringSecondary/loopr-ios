@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TradeBuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate {
+class TradeBuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
@@ -180,7 +180,6 @@ class TradeBuyViewController: UIViewController, UITextFieldDelegate, NumericKeyb
             
             keyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: keyboardHeight))
             keyboardView.delegate = self
-            // keyboardView.backgroundColor = UIColor.blue
             view.addSubview(keyboardView)
             view.bringSubview(toFront: nextBackgroundView)
             view.bringSubview(toFront: nextButton)
@@ -190,6 +189,7 @@ class TradeBuyViewController: UIViewController, UITextFieldDelegate, NumericKeyb
             // TODO: improve the animation.
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
                 self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
+                
             }, completion: { finished in
                 self.isKeyboardShow = true
                 if finished {
@@ -214,17 +214,20 @@ class TradeBuyViewController: UIViewController, UITextFieldDelegate, NumericKeyb
             
             let keyboardHeight: CGFloat = 220
 
-            scrollViewButtonLayoutConstraint.constant = 0
-
             let destinateY = height
             
-            // TODO: improve the animation.
+            self.scrollViewButtonLayoutConstraint.constant = 0
+            
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                // animation for layout constraint change.
+                self.view.layoutIfNeeded()
+
                 self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
+                
             }, completion: { finished in
                 self.isKeyboardShow = false
                 if finished {
-                    self.scrollView.setContentOffset(CGPoint.zero, animated: true)
+                    
                 }
             })
         } else {

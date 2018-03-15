@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate {
+class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var placeOrderButton: UIButton!
@@ -255,6 +255,24 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         
         activeTextFieldTag = textField.tag
 
+        showKeyboard(textField: textField)
+
+        return true
+    }
+    
+    func getActiveTextField() -> UITextField? {
+        if activeTextFieldTag == tokenSPriceTextField.tag {
+            return tokenSPriceTextField
+        } else if activeTextFieldTag == amountTextField.tag {
+            return amountTextField
+        } else if activeTextFieldTag == totalTextField.tag {
+            return totalTextField
+        } else {
+            return nil
+        }
+    }
+
+    func showKeyboard(textField: UITextField) {
         if !isKeyboardShow {
             let width = self.view.frame.width
             let height = self.placeOrderBackgroundView.frame.origin.y
@@ -271,7 +289,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
             view.bringSubview(toFront: placeOrderButton)
             
             let destinateY = height - keyboardHeight
-
+            
             // TODO: improve the animation.
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
                 self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
@@ -290,19 +308,34 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
                 self.scrollView.setContentOffset(bottomOffset, animated: true)
             }
         }
-
-        return true
     }
     
-    func getActiveTextField() -> UITextField? {
-        if activeTextFieldTag == tokenSPriceTextField.tag {
-            return tokenSPriceTextField
-        } else if activeTextFieldTag == amountTextField.tag {
-            return amountTextField
-        } else if activeTextFieldTag == totalTextField.tag {
-            return totalTextField
+    func hideKeyboard() {
+        if isKeyboardShow {
+            let width = self.view.frame.width
+            let height = self.placeOrderBackgroundView.frame.origin.y
+            
+            let keyboardHeight: CGFloat = 220
+            
+            let destinateY = height
+            
+            self.scrollViewButtonLayoutConstraint.constant = 0
+            
+            // TODO: improve the animation.
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                // animation for layout constraint change.
+                self.view.layoutIfNeeded()
+                
+                self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
+                
+            }, completion: { finished in
+                self.isKeyboardShow = false
+                if finished {
+                    
+                }
+            })
         } else {
-            return nil
+            self.scrollView.setContentOffset(CGPoint.zero, animated: true)
         }
     }
     
