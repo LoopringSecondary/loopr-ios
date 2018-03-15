@@ -16,7 +16,7 @@ class TradeBuyViewController: UIViewController, UITextFieldDelegate, NumericKeyb
     @IBOutlet weak var nextButton: UIButton!
 
     // TokenS
-    var tokenSLabel: UILabel = UILabel()
+    var tokenSButton: UIButton = UIButton()
     var tokenSPriceTextField: UITextField = UITextField()
     var tokenSUnderLine: UIView = UIView()
     var estimateValueInCurrency: UILabel = UILabel()
@@ -25,7 +25,7 @@ class TradeBuyViewController: UIViewController, UITextFieldDelegate, NumericKeyb
     var exchangeLabel: UILabel = UILabel()
     
     // TokenB
-    var tokenSTotalLabel: UILabel = UILabel()
+    var tokenBButton: UIButton = UIButton()
     var totalTextField: UITextField = UITextField()
     var totalUnderLine: UIView = UIView()
     var availableLabel: UILabel = UILabel()
@@ -57,12 +57,13 @@ class TradeBuyViewController: UIViewController, UITextFieldDelegate, NumericKeyb
         
         // First row: TokenS
 
-        tokenSLabel.text = "LRC"
-        tokenSLabel.font = FontConfigManager.shared.getLabelFont()
-        tokenSLabel.textAlignment = .right
-        // tokenSLabel.backgroundColor = UIColor.green
-        tokenSLabel.frame = CGRect(x: screenWidth-80-padding, y: originY, width: 80, height: 40)
-        scrollView.addSubview(tokenSLabel)
+        tokenSButton.setTitle(OrderTradeDataManager.shared.tradingPairA, for: .normal)
+        tokenSButton.setTitleColor(UIColor.black, for: .normal)
+        tokenSButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
+        tokenSButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
+        tokenSButton.frame = CGRect(x: screenWidth-55-padding, y: originY, width: 80, height: 40)
+        tokenSButton.addTarget(self, action: #selector(pressedSwitchTokenSButton), for: .touchUpInside)
+        scrollView.addSubview(tokenSButton)
         
         tokenSPriceTextField.delegate = self
         tokenSPriceTextField.tag = 0
@@ -74,7 +75,7 @@ class TradeBuyViewController: UIViewController, UITextFieldDelegate, NumericKeyb
         tokenSPriceTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(tokenSPriceTextField)
         
-        tokenSUnderLine.frame = CGRect(x: padding, y: tokenSLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
+        tokenSUnderLine.frame = CGRect(x: padding, y: tokenSButton.frame.maxY, width: screenWidth - padding * 2, height: 1)
         tokenSUnderLine.backgroundColor = UIColor.black
         scrollView.addSubview(tokenSUnderLine)
         
@@ -94,12 +95,13 @@ class TradeBuyViewController: UIViewController, UITextFieldDelegate, NumericKeyb
         
         // Thrid row: TokenB
         
-        tokenSTotalLabel.text = "BNB"
-        tokenSTotalLabel.font = FontConfigManager.shared.getLabelFont()
-        tokenSTotalLabel.textAlignment = .right
-        // tokenSTotalLabel.backgroundColor = UIColor.green
-        tokenSTotalLabel.frame = CGRect(x: screenWidth-80-padding, y: exchangeLabel.frame.maxY + padding*2, width: 80, height: 40)
-        scrollView.addSubview(tokenSTotalLabel)
+        tokenBButton.setTitle(OrderTradeDataManager.shared.tradingPairB, for: .normal)
+        tokenBButton.setTitleColor(UIColor.black, for: .normal)
+        tokenBButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
+        tokenBButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
+        tokenBButton.frame = CGRect(x: screenWidth-55-padding, y: exchangeLabel.frame.maxY + padding*2, width: 80, height: 40)
+        tokenBButton.addTarget(self, action: #selector(pressedSwitchTokenBButton), for: .touchUpInside)
+        scrollView.addSubview(tokenBButton)
         
         totalTextField.delegate = self
         totalTextField.tag = 2
@@ -111,7 +113,7 @@ class TradeBuyViewController: UIViewController, UITextFieldDelegate, NumericKeyb
         totalTextField.frame = CGRect(x: padding, y: exchangeLabel.frame.maxY + padding*2, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(totalTextField)
         
-        totalUnderLine.frame = CGRect(x: padding, y: tokenSTotalLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
+        totalUnderLine.frame = CGRect(x: padding, y: tokenBButton.frame.maxY, width: screenWidth - padding * 2, height: 1)
         totalUnderLine.backgroundColor = UIColor.black
         scrollView.addSubview(totalUnderLine)
         
@@ -140,6 +142,20 @@ class TradeBuyViewController: UIViewController, UITextFieldDelegate, NumericKeyb
         totalTextField.resignFirstResponder()
 
         hideKeyboard()
+    }
+    
+    @objc func pressedSwitchTokenSButton(_ sender: Any) {
+        print("pressedSwitchTokenSButton")
+        let viewController = SwitchTradeTokenViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc func pressedSwitchTokenBButton(_ sender: Any) {
+        print("pressedSwitchTokenBButton")
+        let viewController = SwitchTradeTokenViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction func pressedNextButton(_ sender: Any) {

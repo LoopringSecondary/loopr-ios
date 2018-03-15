@@ -70,6 +70,8 @@
 		AC31CE142057B5A400A30335 /* TradeConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31CE122057B5A400A30335 /* TradeConfirmationViewController.swift */; };
 		AC31CE152057B5A400A30335 /* TradeConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE132057B5A400A30335 /* TradeConfirmationViewController.xib */; };
 		AC31CE17205A121000A30335 /* NumericKeyboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31CE16205A121000A30335 /* NumericKeyboardProtocol.swift */; };
+		AC31CE1C205A2F0100A30335 /* SwitchTradeTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31CE1A205A2F0100A30335 /* SwitchTradeTokenViewController.swift */; };
+		AC31CE1D205A2F0100A30335 /* SwitchTradeTokenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE1B205A2F0100A30335 /* SwitchTradeTokenViewController.xib */; };
 		AC3756662038CD7E00AADC60 /* SetupNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3756652038CD7E00AADC60 /* SetupNavigationController.swift */; };
 		AC37566D2038D37400AADC60 /* UnlockWalletSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37566B2038D37400AADC60 /* UnlockWalletSwipeViewController.swift */; };
 		AC37566E2038D37400AADC60 /* UnlockWalletSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC37566C2038D37400AADC60 /* UnlockWalletSwipeViewController.xib */; };
@@ -402,6 +404,8 @@
 		AC31CE122057B5A400A30335 /* TradeConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeConfirmationViewController.swift; sourceTree = "<group>"; };
 		AC31CE132057B5A400A30335 /* TradeConfirmationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeConfirmationViewController.xib; sourceTree = "<group>"; };
 		AC31CE16205A121000A30335 /* NumericKeyboardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeyboardProtocol.swift; sourceTree = "<group>"; };
+		AC31CE1A205A2F0100A30335 /* SwitchTradeTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTradeTokenViewController.swift; sourceTree = "<group>"; };
+		AC31CE1B205A2F0100A30335 /* SwitchTradeTokenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchTradeTokenViewController.xib; sourceTree = "<group>"; };
 		AC3756652038CD7E00AADC60 /* SetupNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNavigationController.swift; sourceTree = "<group>"; };
 		AC37566B2038D37400AADC60 /* UnlockWalletSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWalletSwipeViewController.swift; sourceTree = "<group>"; };
 		AC37566C2038D37400AADC60 /* UnlockWalletSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnlockWalletSwipeViewController.xib; sourceTree = "<group>"; };
@@ -993,6 +997,8 @@
 				AC13B31120563889008A72C0 /* TradeSwipeViewController.xib */,
 				AC56625920563C05003C925C /* TradeBuyViewController.swift */,
 				AC56625A20563C05003C925C /* TradeBuyViewController.xib */,
+				AC31CE1A205A2F0100A30335 /* SwitchTradeTokenViewController.swift */,
+				AC31CE1B205A2F0100A30335 /* SwitchTradeTokenViewController.xib */,
 				AC31CE122057B5A400A30335 /* TradeConfirmationViewController.swift */,
 				AC31CE132057B5A400A30335 /* TradeConfirmationViewController.xib */,
 				ACE6F71D20421D950039273D /* NewVersionTradeViewController.swift */,
@@ -1421,6 +1427,7 @@
 				AC952A152053A84800C78562 /* OrderHistoryViewController.xib in Resources */,
 				AC54FD8B204FC6FC007E1DEB /* OpenSans-SemiBold.ttf in Resources */,
 				AC3756742038D64B00AADC60 /* MnemonicViewController.xib in Resources */,
+				AC31CE1D205A2F0100A30335 /* SwitchTradeTokenViewController.xib in Resources */,
 				AC54FD8E204FC6FF007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				ACBDB1C62032D050003463A4 /* OpenOrderTableViewCell.xib in Resources */,
 				ACE6F72020421D950039273D /* NewVersionTradeViewController.xib in Resources */,
@@ -1783,6 +1790,7 @@
 				ACE6F7242042228A0039273D /* GlobalPicker.swift in Sources */,
 				ACB9117F2026385100F14644 /* SettingNavigationViewController.swift in Sources */,
 				AC6E95E520313D8A00C6EB7C /* UIApplicationExtension.swift in Sources */,
+				AC31CE1C205A2F0100A30335 /* SwitchTradeTokenViewController.swift in Sources */,
 				ACB9116020242E3F00F14644 /* Asset.swift in Sources */,
 				AC4141FB20352DE50089861D /* SwipeTabItemView.swift in Sources */,
 				ACB9116E2025575A00F14644 /* MarketNavigationViewController.swift in Sources */,
