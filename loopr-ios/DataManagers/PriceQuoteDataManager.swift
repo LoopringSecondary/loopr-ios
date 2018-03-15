@@ -29,6 +29,9 @@ class PriceQuoteDataManager {
     
     // this func should be called every 10 secs when emitted
     func onPriceQuoteResponse(json: JSON) {
+        
+        print(json)
+        
         priceQuote = PriceQuote(json: json)
     }
 }

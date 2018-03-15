@@ -2,45 +2,37 @@
 //  Transaction.swift
 //  loopr-ios
 //
-//  Created by kenshin on 2018/3/7.
+//  Created by kenshin on 2018/3/15.
 //  Copyright © 2018年 Loopring. All rights reserved.
 //
 
 import Foundation
 import SwiftyJSON
 
-class Transaction: Initable {
+class Transaction {
 
-    let blockNumber: String
-    let value: String
-    let v: String
-    let input: String
-    let hash: String
-    let to: String
-    let transactionIndex: String
-    let gasPrice: String
-    let r: String
-    let nonce: String
-    let blockHash: String
     let from: String
-    let s: String
-    let gas: String
-
-    required init(_ json: JSON) {
-
-        self.blockNumber = json["blockNumber"].stringValue
-        self.value = json["value"].stringValue
-        self.v = json["v"].stringValue
-        self.input = json["input"].stringValue
-        self.hash = json["hash"].stringValue
-        self.to = json["to"].stringValue
-        self.transactionIndex = json["transactionIndex"].stringValue
-        self.gasPrice = json["gasPrice"].stringValue
-        self.r = json["r"].stringValue
-        self.nonce = json["nonce"].stringValue
-        self.blockHash = json["blockHash"].stringValue
+    let to: String
+    let type: String
+    let status: String
+    let symbol: String
+    let value: Double
+    let owner: String
+    let txHash: String
+    let createTime: String
+    let updateTime: String
+    
+    init(json: JSON) {
         self.from = json["from"].stringValue
-        self.s = json["s"].stringValue
-        self.gas = json["gas"].stringValue
+        self.to = json["to"].stringValue
+        self.type = json["type"].stringValue
+        self.status = json["status"].stringValue
+        self.symbol = json["symbol"].stringValue
+        self.value = json["value"].doubleValue
+        self.owner = json["owner"].stringValue
+        self.txHash = json["txHash"].stringValue
+        self.createTime = json["createTime"].stringValue
+        self.updateTime = json["updateTime"].stringValue
     }
+    
 }

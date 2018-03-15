@@ -65,13 +65,28 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         button.addTarget(self, action: #selector(self.clickOnButton(_:)), for: .touchUpInside)
         self.navigationItem.titleView = button
         
-        // TODO: check whether is properly
-        PriceQuoteDataManager.shared.startGetPriceQuote("USD")
-        AssetDataManager.shared.startGetBalance("0x750ad4351bb728cec7d639a9511f9d6488f1e259")
-        
         assetTableView.reloadData()
     }
 
+//    @objc func updateBalance() {
+//        
+////        let range = Range(0, in:5)
+//        
+////        IndexSet(integersIn: range)
+//        
+////        NSIndexSet *indexSet = [[NSIndexSet alloc]initWithIndexesInRange:NSMakeRange(0, 2)];
+////
+////        [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
+////
+////        self.
+////
+////        assetTableView.data
+////        assetTableView.reloadRows(at: [1...7], with: nil)
+////
+////
+////        assetTableView.rea
+//    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

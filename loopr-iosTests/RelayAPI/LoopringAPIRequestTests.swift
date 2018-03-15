@@ -242,19 +242,15 @@ class LoopringAPIRequestTests: XCTestCase {
     func testGetTransactions() {
         let expectation = XCTestExpectation()
         
-        LoopringAPIRequest.getTransactions(owner: "0x847983c3a34afa192cfee860698584c030f4c9db1", thxHash: "0xc7756d5d556383b2f965094464bdff3ebe658f263f552858cc4eff4ed0aeafeb", pageIndex: 1, pageSize: 20) { data, response, error in
-            guard let data = data, error == nil else {
+        
+        LoopringAPIRequest.getTransactions(owner: "0x48ff2269e58a373120FFdBBdEE3FBceA854AC30A", symbol: "LRC", thxHash: nil, pageIndex: 1, pageSize: 20) { transactions, error in
+            guard error == nil else {
                 print("error=\(String(describing: error))")
-                
-                // TODO: Fails to catch the error.
                 XCTFail()
                 return
             }
-            
-            let json = JSON(data)
-            print("response = \(json)")
-            
-            // TODO: verify the response
+            XCTAssertNotNil(transactions)
+            XCTAssertFalse(transactions!.isEmpty)
             
             expectation.fulfill()
         }

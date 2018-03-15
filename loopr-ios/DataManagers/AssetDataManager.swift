@@ -36,10 +36,10 @@ class AssetDataManager {
         return totalAsset
     }
     
-    func getTokenNameBySymbol(_ symbol: String) -> String? {
-        var result: String? = nil
+    func getTokenBySymbol(_ symbol: String) -> Token? {
+        var result: Token? = nil
         for case let token in tokens where token.symbol.lowercased() == symbol.lowercased() {
-            result = token.source
+            result = token
             break
         }
         return result
@@ -68,11 +68,14 @@ class AssetDataManager {
         }
     }
     
+    func getAmount(of symbol: String, from weiAmount: UInt64) {
+        if let token = getTokenBySymbol(symbol) {
+            token.decimals
+        }
+    }
+    
     // this func should be called every 10 secs when emitted
     func onBalanceResponse(json: JSON) {
-        
-        print(json)
-        
         assets = []
         totalAsset = 0
         for subJson in json["tokens"].arrayValue {
@@ -82,7 +85,7 @@ class AssetDataManager {
                     if let balance = Double(asset.balance) {
                         asset.display = balance * priceToken.price
                         asset.icon = UIImage(named: asset.symbol) ?? nil
-                        asset.name = getTokenNameBySymbol(asset.symbol) ?? "unknown"
+                        asset.name = getTokenBySymbol(asset.symbol)?.source ?? "unknown"
                         totalAsset += asset.display
                     }
                 }

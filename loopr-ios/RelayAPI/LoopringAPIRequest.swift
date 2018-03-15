@@ -279,19 +279,31 @@ class LoopringAPIRequest {
     }
     
     // TODO: backend will modify later in test env, and then complete this method --kenshin
-    static func getTransactions(owner: String, thxHash: String, pageIndex: UInt = 1, pageSize: UInt = 10, completionHandler: @escaping CompletionHandler) {
+    static func getTransactions(owner: String, symbol: String, thxHash: String?, pageIndex: UInt = 1, pageSize: UInt = 10, completionHandler: @escaping (_ transactions: [Transaction]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getTransactions"
-        body["params"] = [["owner": owner, "thxHash": thxHash, "pageIndex": pageIndex, "pageSize": pageSize]]
+        body["params"] = [["owner": owner, "symbol": symbol, "thxHash": thxHash, "pageIndex": pageIndex, "pageSize": pageSize]]
         body["params"]["contractVersion"] = JSON(contractVersion)
         body["id"] = "1a715e2557abc0bd"
         
         Request.send(body: body, url: url) { data, response, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
+                completionHandler(nil, error)
                 return
             }
-            completionHandler(data, response, error)
+            let json = JSON(data)
+            let offerData = json["result"]["data"]
+            
+            print(offerData)
+            
+            var transactions: [Transaction] = []
+
+            for subJson in offerData.arrayValue {
+                let transaction = Transaction(json: subJson)
+                transactions.append(transaction)
+            }
+            completionHandler(transactions, nil)
         }
     }
 }

@@ -44,7 +44,7 @@ public class LoopringSocketIORequest {
                 socket.on(key, callback: { (data, _) in
                     if let string = data[0] as? String {
                         if let json = try? JSON(data: string.data(using: .utf8)!) {
-                            method(json)
+                            method(json["data"])
                         }
                     }
                 })

@@ -17,7 +17,7 @@ class Token {
     let decimals: UInt
     let protocol_value: String
     let deny: Bool
-    
+
     init(json: JSON) {
         self.symbol = json["Symbol"].stringValue
         self.source = json["Source"].stringValue

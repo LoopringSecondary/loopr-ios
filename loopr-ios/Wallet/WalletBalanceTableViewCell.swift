@@ -63,6 +63,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
     @objc func updateBalance() {
         balance = AssetDataManager.shared.getTotalAsset()
         balanceLabel.setText("\(balance)", animated: true)
+        layoutIfNeeded()
     }
 
     // The add button has been removed. However, we may still put it back in the future. Keep the code.

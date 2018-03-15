@@ -91,7 +91,7 @@ class EthereumAPIRequest {
     }
 
     // READY
-    static func eth_getTransactionByHash(data: String, completionHandler: @escaping (_ response: Transaction?, _ error: Error?) -> Void) {
+    static func eth_getTransactionByHash(data: String, completionHandler: @escaping (_ response: ETH_Transaction?, _ error: Error?) -> Void) {
 
         var body: JSON = JSON()
         body["params"] = [data]

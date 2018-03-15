@@ -102,7 +102,7 @@ class EthereumAPIRequestTests: XCTestCase {
                 return
             }
             XCTAssertNotNil(data)
-            let transaction = data! as Transaction
+            let transaction = data! as ETH_Transaction
             print("\ntransaction_hash: \(transaction.hash)\n")
             expectation.fulfill()
         }
