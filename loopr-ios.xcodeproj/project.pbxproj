@@ -97,6 +97,7 @@
 		AC31CE46205B604800A30335 /* Linotype-DINNextW1G-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2D205B5FFF00A30335 /* Linotype-DINNextW1G-Light.otf */; };
 		AC31CE47205B604900A30335 /* Linotype-DINNextW1G-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2D205B5FFF00A30335 /* Linotype-DINNextW1G-Light.otf */; };
 		AC31CE48205B604A00A30335 /* Linotype-DINNextW1G-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2D205B5FFF00A30335 /* Linotype-DINNextW1G-Light.otf */; };
+		AC31CE4B205B83B600A30335 /* TradeTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31CE4A205B83B600A30335 /* TradeTokenView.swift */; };
 		AC3756662038CD7E00AADC60 /* SetupNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3756652038CD7E00AADC60 /* SetupNavigationController.swift */; };
 		AC37566D2038D37400AADC60 /* UnlockWalletSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37566B2038D37400AADC60 /* UnlockWalletSwipeViewController.swift */; };
 		AC37566E2038D37400AADC60 /* UnlockWalletSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC37566C2038D37400AADC60 /* UnlockWalletSwipeViewController.xib */; };
@@ -416,6 +417,7 @@
 		AC31CE2E205B5FFF00A30335 /* Linotype-DINNextCYR-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Linotype-DINNextCYR-UltraLight.otf"; sourceTree = "<group>"; };
 		AC31CE2F205B5FFF00A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Linotype-DIN-Next-LT-Pro-UltraLight.ttf"; sourceTree = "<group>"; };
 		AC31CE30205B600000A30335 /* Linotype-DINNextLTPro-LightCondensed.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Linotype-DINNextLTPro-LightCondensed.otf"; sourceTree = "<group>"; };
+		AC31CE4A205B83B600A30335 /* TradeTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeTokenView.swift; sourceTree = "<group>"; };
 		AC3756652038CD7E00AADC60 /* SetupNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNavigationController.swift; sourceTree = "<group>"; };
 		AC37566B2038D37400AADC60 /* UnlockWalletSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWalletSwipeViewController.swift; sourceTree = "<group>"; };
 		AC37566C2038D37400AADC60 /* UnlockWalletSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnlockWalletSwipeViewController.xib; sourceTree = "<group>"; };
@@ -1019,6 +1021,7 @@
 				AC31CE1B205A2F0100A30335 /* SwitchTradeTokenViewController.xib */,
 				AC31CE122057B5A400A30335 /* TradeConfirmationViewController.swift */,
 				AC31CE132057B5A400A30335 /* TradeConfirmationViewController.xib */,
+				AC31CE4A205B83B600A30335 /* TradeTokenView.swift */,
 			);
 			path = Trade;
 			sourceTree = "<group>";
@@ -1827,6 +1830,7 @@
 				AC4141FF20356A4D0089861D /* MarketSwipeViewType.swift in Sources */,
 				ACB5DD91202C06FF00140A09 /* DismissAnimator.swift in Sources */,
 				AC31B94D204A8DF400B16155 /* KeyStore.swift in Sources */,
+				AC31CE4B205B83B600A30335 /* TradeTokenView.swift in Sources */,
 				AC9280E1202EC53D0009B574 /* TradeNavigationViewController.swift in Sources */,
 				949C49482046A4A80074466D /* SampleViewController.swift in Sources */,
 				AC31B95F204A8E4F00B16155 /* WalletDescriptor.swift in Sources */,

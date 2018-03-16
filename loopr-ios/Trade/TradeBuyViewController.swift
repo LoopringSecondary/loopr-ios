@@ -53,7 +53,7 @@ class TradeBuyViewController: UIViewController, UITextFieldDelegate, NumericKeyb
         // let screenHeight = screensize.height
         
         let originY: CGFloat = 60
-        let padding: CGFloat = 25
+        let padding: CGFloat = 15
         
         // First row: TokenS
 
