@@ -73,6 +73,30 @@
 		AC31CE17205A121000A30335 /* NumericKeyboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31CE16205A121000A30335 /* NumericKeyboardProtocol.swift */; };
 		AC31CE1C205A2F0100A30335 /* SwitchTradeTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31CE1A205A2F0100A30335 /* SwitchTradeTokenViewController.swift */; };
 		AC31CE1D205A2F0100A30335 /* SwitchTradeTokenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE1B205A2F0100A30335 /* SwitchTradeTokenViewController.xib */; };
+		AC31CE31205B602D00A30335 /* DIN-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2A205B5FFE00A30335 /* DIN-Bold.otf */; };
+		AC31CE32205B602E00A30335 /* DIN-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2A205B5FFE00A30335 /* DIN-Bold.otf */; };
+		AC31CE33205B602F00A30335 /* DIN-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2A205B5FFE00A30335 /* DIN-Bold.otf */; };
+		AC31CE34205B603200A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2F205B5FFF00A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf */; };
+		AC31CE35205B603300A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2F205B5FFF00A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf */; };
+		AC31CE36205B603400A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2F205B5FFF00A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf */; };
+		AC31CE37205B603600A30335 /* Linotype-DINNextCYR-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2E205B5FFF00A30335 /* Linotype-DINNextCYR-UltraLight.otf */; };
+		AC31CE38205B603700A30335 /* Linotype-DINNextCYR-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2E205B5FFF00A30335 /* Linotype-DINNextCYR-UltraLight.otf */; };
+		AC31CE39205B603700A30335 /* Linotype-DINNextCYR-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2E205B5FFF00A30335 /* Linotype-DINNextCYR-UltraLight.otf */; };
+		AC31CE3A205B603A00A30335 /* Linotype-DINNextLTPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2B205B5FFE00A30335 /* Linotype-DINNextLTPro-Light.otf */; };
+		AC31CE3B205B603B00A30335 /* Linotype-DINNextLTPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2B205B5FFE00A30335 /* Linotype-DINNextLTPro-Light.otf */; };
+		AC31CE3C205B603B00A30335 /* Linotype-DINNextLTPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2B205B5FFE00A30335 /* Linotype-DINNextLTPro-Light.otf */; };
+		AC31CE3D205B603E00A30335 /* Linotype-DINNextLTPro-LightCondensed.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE30205B600000A30335 /* Linotype-DINNextLTPro-LightCondensed.otf */; };
+		AC31CE3E205B603E00A30335 /* Linotype-DINNextLTPro-LightCondensed.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE30205B600000A30335 /* Linotype-DINNextLTPro-LightCondensed.otf */; };
+		AC31CE3F205B603F00A30335 /* Linotype-DINNextLTPro-LightCondensed.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE30205B600000A30335 /* Linotype-DINNextLTPro-LightCondensed.otf */; };
+		AC31CE40205B604100A30335 /* Linotype-DINNextLTPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE29205B5FFE00A30335 /* Linotype-DINNextLTPro-Medium.otf */; };
+		AC31CE41205B604200A30335 /* Linotype-DINNextLTPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE29205B5FFE00A30335 /* Linotype-DINNextLTPro-Medium.otf */; };
+		AC31CE42205B604200A30335 /* Linotype-DINNextLTPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE29205B5FFE00A30335 /* Linotype-DINNextLTPro-Medium.otf */; };
+		AC31CE43205B604500A30335 /* Linotype-DINNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2C205B5FFF00A30335 /* Linotype-DINNextLTPro-Regular.otf */; };
+		AC31CE44205B604600A30335 /* Linotype-DINNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2C205B5FFF00A30335 /* Linotype-DINNextLTPro-Regular.otf */; };
+		AC31CE45205B604600A30335 /* Linotype-DINNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2C205B5FFF00A30335 /* Linotype-DINNextLTPro-Regular.otf */; };
+		AC31CE46205B604800A30335 /* Linotype-DINNextW1G-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2D205B5FFF00A30335 /* Linotype-DINNextW1G-Light.otf */; };
+		AC31CE47205B604900A30335 /* Linotype-DINNextW1G-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2D205B5FFF00A30335 /* Linotype-DINNextW1G-Light.otf */; };
+		AC31CE48205B604A00A30335 /* Linotype-DINNextW1G-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2D205B5FFF00A30335 /* Linotype-DINNextW1G-Light.otf */; };
 		AC3756662038CD7E00AADC60 /* SetupNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3756652038CD7E00AADC60 /* SetupNavigationController.swift */; };
 		AC37566D2038D37400AADC60 /* UnlockWalletSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37566B2038D37400AADC60 /* UnlockWalletSwipeViewController.swift */; };
 		AC37566E2038D37400AADC60 /* UnlockWalletSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC37566C2038D37400AADC60 /* UnlockWalletSwipeViewController.xib */; };
@@ -101,30 +125,6 @@
 		AC41420C2038BFB70089861D /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41420B2038BFB70089861D /* UserDefaultsKeys.swift */; };
 		AC4C144B204C825900D6B1E2 /* GenerateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4C1449204C825900D6B1E2 /* GenerateWalletViewController.swift */; };
 		AC4C144C204C825900D6B1E2 /* GenerateWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4C144A204C825900D6B1E2 /* GenerateWalletViewController.xib */; };
-		AC54FD3D204FC69D007E1DEB /* DIN-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2A204FC652007E1DEB /* DIN-Bold.otf */; };
-		AC54FD3E204FC69D007E1DEB /* DIN-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2A204FC652007E1DEB /* DIN-Bold.otf */; };
-		AC54FD3F204FC69E007E1DEB /* DIN-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2A204FC652007E1DEB /* DIN-Bold.otf */; };
-		AC54FD40204FC6A1007E1DEB /* DINNextLTPro-UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD29204FC652007E1DEB /* DINNextLTPro-UltraLight.ttf */; };
-		AC54FD41204FC6A1007E1DEB /* DINNextLTPro-UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD29204FC652007E1DEB /* DINNextLTPro-UltraLight.ttf */; };
-		AC54FD42204FC6A2007E1DEB /* DINNextLTPro-UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD29204FC652007E1DEB /* DINNextLTPro-UltraLight.ttf */; };
-		AC54FD43204FC6A4007E1DEB /* DINNextCYR-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2B204FC653007E1DEB /* DINNextCYR-UltraLight.otf */; };
-		AC54FD44204FC6A5007E1DEB /* DINNextCYR-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2B204FC653007E1DEB /* DINNextCYR-UltraLight.otf */; };
-		AC54FD45204FC6A5007E1DEB /* DINNextCYR-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2B204FC653007E1DEB /* DINNextCYR-UltraLight.otf */; };
-		AC54FD46204FC6A7007E1DEB /* DINNextLTPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2F204FC654007E1DEB /* DINNextLTPro-Light.otf */; };
-		AC54FD47204FC6A8007E1DEB /* DINNextLTPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2F204FC654007E1DEB /* DINNextLTPro-Light.otf */; };
-		AC54FD48204FC6A8007E1DEB /* DINNextLTPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2F204FC654007E1DEB /* DINNextLTPro-Light.otf */; };
-		AC54FD49204FC6AB007E1DEB /* DINNextLTPro-LightCondensed.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2E204FC654007E1DEB /* DINNextLTPro-LightCondensed.otf */; };
-		AC54FD4A204FC6AB007E1DEB /* DINNextLTPro-LightCondensed.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2E204FC654007E1DEB /* DINNextLTPro-LightCondensed.otf */; };
-		AC54FD4B204FC6AC007E1DEB /* DINNextLTPro-LightCondensed.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2E204FC654007E1DEB /* DINNextLTPro-LightCondensed.otf */; };
-		AC54FD4C204FC6AF007E1DEB /* DINNextLTPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2C204FC653007E1DEB /* DINNextLTPro-Medium.otf */; };
-		AC54FD4D204FC6B0007E1DEB /* DINNextLTPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2C204FC653007E1DEB /* DINNextLTPro-Medium.otf */; };
-		AC54FD4E204FC6B0007E1DEB /* DINNextLTPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2C204FC653007E1DEB /* DINNextLTPro-Medium.otf */; };
-		AC54FD4F204FC6B5007E1DEB /* DINNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2D204FC653007E1DEB /* DINNextLTPro-Regular.otf */; };
-		AC54FD50204FC6B5007E1DEB /* DINNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2D204FC653007E1DEB /* DINNextLTPro-Regular.otf */; };
-		AC54FD51204FC6B6007E1DEB /* DINNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD2D204FC653007E1DEB /* DINNextLTPro-Regular.otf */; };
-		AC54FD52204FC6B8007E1DEB /* DINNextW1G-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD28204FC652007E1DEB /* DINNextW1G-Light.otf */; };
-		AC54FD53204FC6B9007E1DEB /* DINNextW1G-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD28204FC652007E1DEB /* DINNextW1G-Light.otf */; };
-		AC54FD54204FC6B9007E1DEB /* DINNextW1G-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD28204FC652007E1DEB /* DINNextW1G-Light.otf */; };
 		AC54FD55204FC6BD007E1DEB /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD37204FC686007E1DEB /* Lato-Black.ttf */; };
 		AC54FD56204FC6BE007E1DEB /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD37204FC686007E1DEB /* Lato-Black.ttf */; };
 		AC54FD57204FC6BF007E1DEB /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD37204FC686007E1DEB /* Lato-Black.ttf */; };
@@ -408,6 +408,14 @@
 		AC31CE16205A121000A30335 /* NumericKeyboardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeyboardProtocol.swift; sourceTree = "<group>"; };
 		AC31CE1A205A2F0100A30335 /* SwitchTradeTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTradeTokenViewController.swift; sourceTree = "<group>"; };
 		AC31CE1B205A2F0100A30335 /* SwitchTradeTokenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchTradeTokenViewController.xib; sourceTree = "<group>"; };
+		AC31CE29205B5FFE00A30335 /* Linotype-DINNextLTPro-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Linotype-DINNextLTPro-Medium.otf"; sourceTree = "<group>"; };
+		AC31CE2A205B5FFE00A30335 /* DIN-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-Bold.otf"; sourceTree = "<group>"; };
+		AC31CE2B205B5FFE00A30335 /* Linotype-DINNextLTPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Linotype-DINNextLTPro-Light.otf"; sourceTree = "<group>"; };
+		AC31CE2C205B5FFF00A30335 /* Linotype-DINNextLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Linotype-DINNextLTPro-Regular.otf"; sourceTree = "<group>"; };
+		AC31CE2D205B5FFF00A30335 /* Linotype-DINNextW1G-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Linotype-DINNextW1G-Light.otf"; sourceTree = "<group>"; };
+		AC31CE2E205B5FFF00A30335 /* Linotype-DINNextCYR-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Linotype-DINNextCYR-UltraLight.otf"; sourceTree = "<group>"; };
+		AC31CE2F205B5FFF00A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Linotype-DIN-Next-LT-Pro-UltraLight.ttf"; sourceTree = "<group>"; };
+		AC31CE30205B600000A30335 /* Linotype-DINNextLTPro-LightCondensed.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Linotype-DINNextLTPro-LightCondensed.otf"; sourceTree = "<group>"; };
 		AC3756652038CD7E00AADC60 /* SetupNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNavigationController.swift; sourceTree = "<group>"; };
 		AC37566B2038D37400AADC60 /* UnlockWalletSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWalletSwipeViewController.swift; sourceTree = "<group>"; };
 		AC37566C2038D37400AADC60 /* UnlockWalletSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnlockWalletSwipeViewController.xib; sourceTree = "<group>"; };
@@ -446,14 +454,6 @@
 		AC54FD23204FC3FA007E1DEB /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		AC54FD24204FC3FA007E1DEB /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		AC54FD25204FC3FA007E1DEB /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		AC54FD28204FC652007E1DEB /* DINNextW1G-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINNextW1G-Light.otf"; sourceTree = "<group>"; };
-		AC54FD29204FC652007E1DEB /* DINNextLTPro-UltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINNextLTPro-UltraLight.ttf"; sourceTree = "<group>"; };
-		AC54FD2A204FC652007E1DEB /* DIN-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-Bold.otf"; sourceTree = "<group>"; };
-		AC54FD2B204FC653007E1DEB /* DINNextCYR-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINNextCYR-UltraLight.otf"; sourceTree = "<group>"; };
-		AC54FD2C204FC653007E1DEB /* DINNextLTPro-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINNextLTPro-Medium.otf"; sourceTree = "<group>"; };
-		AC54FD2D204FC653007E1DEB /* DINNextLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINNextLTPro-Regular.otf"; sourceTree = "<group>"; };
-		AC54FD2E204FC654007E1DEB /* DINNextLTPro-LightCondensed.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINNextLTPro-LightCondensed.otf"; sourceTree = "<group>"; };
-		AC54FD2F204FC654007E1DEB /* DINNextLTPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINNextLTPro-Light.otf"; sourceTree = "<group>"; };
 		AC54FD33204FC685007E1DEB /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
 		AC54FD34204FC686007E1DEB /* Lato-Hairline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Hairline.ttf"; sourceTree = "<group>"; };
 		AC54FD35204FC686007E1DEB /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
@@ -779,14 +779,14 @@
 		AC54FD27204FC645007E1DEB /* DIN */ = {
 			isa = PBXGroup;
 			children = (
-				AC54FD2A204FC652007E1DEB /* DIN-Bold.otf */,
-				AC54FD29204FC652007E1DEB /* DINNextLTPro-UltraLight.ttf */,
-				AC54FD2B204FC653007E1DEB /* DINNextCYR-UltraLight.otf */,
-				AC54FD2F204FC654007E1DEB /* DINNextLTPro-Light.otf */,
-				AC54FD2E204FC654007E1DEB /* DINNextLTPro-LightCondensed.otf */,
-				AC54FD2C204FC653007E1DEB /* DINNextLTPro-Medium.otf */,
-				AC54FD2D204FC653007E1DEB /* DINNextLTPro-Regular.otf */,
-				AC54FD28204FC652007E1DEB /* DINNextW1G-Light.otf */,
+				AC31CE2A205B5FFE00A30335 /* DIN-Bold.otf */,
+				AC31CE2F205B5FFF00A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf */,
+				AC31CE2E205B5FFF00A30335 /* Linotype-DINNextCYR-UltraLight.otf */,
+				AC31CE2B205B5FFE00A30335 /* Linotype-DINNextLTPro-Light.otf */,
+				AC31CE30205B600000A30335 /* Linotype-DINNextLTPro-LightCondensed.otf */,
+				AC31CE29205B5FFE00A30335 /* Linotype-DINNextLTPro-Medium.otf */,
+				AC31CE2C205B5FFF00A30335 /* Linotype-DINNextLTPro-Regular.otf */,
+				AC31CE2D205B5FFF00A30335 /* Linotype-DINNextW1G-Light.otf */,
 			);
 			path = DIN;
 			sourceTree = "<group>";
@@ -1418,7 +1418,6 @@
 				ACB911852026388700F14644 /* SettingViewController.xib in Resources */,
 				AC56625C20563C05003C925C /* TradeBuyViewController.xib in Resources */,
 				ACE6F7192041FDAD0039273D /* AssetTransactionDetailViewController.xib in Resources */,
-				AC54FD49204FC6AB007E1DEB /* DINNextLTPro-LightCondensed.otf in Resources */,
 				ACB5DD7D202A203900140A09 /* MarketLineChartViewController.xib in Resources */,
 				AC37566E2038D37400AADC60 /* UnlockWalletSwipeViewController.xib in Resources */,
 				AC37567D2038D80300AADC60 /* PrivateKeyViewController.xib in Resources */,
@@ -1435,10 +1434,13 @@
 				ACBDB1C62032D050003463A4 /* OpenOrderTableViewCell.xib in Resources */,
 				ACE6F72020421D950039273D /* NewVersionTradeViewController.xib in Resources */,
 				ACB9118920265DEA00F14644 /* MarketDetailViewController.xib in Resources */,
+				AC31CE34205B603200A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf in Resources */,
 				ACB746E62043C5F5006C2BF5 /* QRCodeViewController.xib in Resources */,
 				AC54FD73204FC6E1007E1DEB /* OpenSans-Bold.ttf in Resources */,
 				AC54FD6A204FC6D5007E1DEB /* Lato-Light.ttf in Resources */,
 				AC5E0DD1203A7C5800AF03C7 /* SelectWalletTableViewCell.xib in Resources */,
+				AC31CE46205B604800A30335 /* Linotype-DINNextW1G-Light.otf in Resources */,
+				AC31CE31205B602D00A30335 /* DIN-Bold.otf in Resources */,
 				ACB9115B20242B9D00F14644 /* AssetTableViewCell.xib in Resources */,
 				AC13B30F2055A646008A72C0 /* PlaceOrderConfirmationViewController.xib in Resources */,
 				ACB9118D20266A9C00F14644 /* AssetDetailViewController.xib in Resources */,
@@ -1457,29 +1459,28 @@
 				AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */,
 				AC54FD5E204FC6C7007E1DEB /* Lato-BoldItalic.ttf in Resources */,
 				AC31B93620493FB900B16155 /* SettingLanguageTableViewCell.xib in Resources */,
-				AC54FD4F204FC6B5007E1DEB /* DINNextLTPro-Regular.otf in Resources */,
+				AC31CE40205B604100A30335 /* Linotype-DINNextLTPro-Medium.otf in Resources */,
 				AC13B30420548767008A72C0 /* BuyAndSellSwipeViewController.xib in Resources */,
 				AC31CE152057B5A400A30335 /* TradeConfirmationViewController.xib in Resources */,
 				AC3756792038D7E200AADC60 /* KeystoreViewController.xib in Resources */,
-				AC54FD3D204FC69D007E1DEB /* DIN-Bold.otf in Resources */,
 				AC13B31320563889008A72C0 /* TradeSwipeViewController.xib in Resources */,
-				AC54FD40204FC6A1007E1DEB /* DINNextLTPro-UltraLight.ttf in Resources */,
-				AC54FD4C204FC6AF007E1DEB /* DINNextLTPro-Medium.otf in Resources */,
 				AC9280E5202EC5810009B574 /* ArchiveTradeViewController.xib in Resources */,
 				AC5E0DD7203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib in Resources */,
 				AC54FD67204FC6D1007E1DEB /* Lato-Italic.ttf in Resources */,
-				AC54FD52204FC6B8007E1DEB /* DINNextW1G-Light.otf in Resources */,
 				ACB91172202557B100F14644 /* MarketViewController.xib in Resources */,
+				AC31CE43205B604500A30335 /* Linotype-DINNextLTPro-Regular.otf in Resources */,
 				ACB9117620255A6600F14644 /* MarketTableViewCell.xib in Resources */,
 				949C49452046976E0074466D /* TradePlaceReplyViewController.xib in Resources */,
 				ACB9119120266EC200F14644 /* AddAssetViewController.xib in Resources */,
 				AC54FD7F204FC6EE007E1DEB /* OpenSans-Italic.ttf in Resources */,
 				AC54FD82204FC6F2007E1DEB /* OpenSans-Light.ttf in Resources */,
 				ACB5DD8B202BF23100140A09 /* ArchiveBuyViewController.xib in Resources */,
-				AC54FD46204FC6A7007E1DEB /* DINNextLTPro-Light.otf in Resources */,
+				AC31CE3A205B603A00A30335 /* Linotype-DINNextLTPro-Light.otf in Resources */,
+				AC31CE3D205B603E00A30335 /* Linotype-DINNextLTPro-LightCondensed.otf in Resources */,
 				949C49492046A4A80074466D /* SampleViewController.xib in Resources */,
 				945800212058FEB500E08DEF /* tokens.json in Resources */,
 				AC54FD5B204FC6C4007E1DEB /* Lato-Bold.ttf in Resources */,
+				AC31CE37205B603600A30335 /* Linotype-DINNextCYR-UltraLight.otf in Resources */,
 				AC72AEDD204C9F6300E9D3B0 /* VerifyMnemonicViewController.xib in Resources */,
 				AC13B30B2054A766008A72C0 /* BuyViewController.xib in Resources */,
 				AC5E0DDB203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib in Resources */,
@@ -1488,7 +1489,6 @@
 				ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */,
 				AC3756812039198300AADC60 /* GenerateMnemonicViewController.xib in Resources */,
 				AC54FD88204FC6F8007E1DEB /* OpenSans-Regular.ttf in Resources */,
-				AC54FD43204FC6A4007E1DEB /* DINNextCYR-UltraLight.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1497,21 +1497,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC54FD83204FC6F3007E1DEB /* OpenSans-Light.ttf in Resources */,
-				AC54FD4A204FC6AB007E1DEB /* DINNextLTPro-LightCondensed.otf in Resources */,
+				AC31CE44205B604600A30335 /* Linotype-DINNextLTPro-Regular.otf in Resources */,
 				AC54FD69204FC6D2007E1DEB /* Lato-Italic.ttf in Resources */,
 				AC54FD8C204FC6FC007E1DEB /* OpenSans-SemiBold.ttf in Resources */,
-				AC54FD50204FC6B5007E1DEB /* DINNextLTPro-Regular.otf in Resources */,
 				AC54FD7A204FC6E8007E1DEB /* OpenSans-ExtraBold.ttf in Resources */,
 				AC54FD6B204FC6D5007E1DEB /* Lato-Light.ttf in Resources */,
+				AC31CE32205B602E00A30335 /* DIN-Bold.otf in Resources */,
 				AC54FD65204FC6CE007E1DEB /* Lato-HairlineItalic.ttf in Resources */,
-				AC54FD3E204FC69D007E1DEB /* DIN-Bold.otf in Resources */,
+				AC31CE3B205B603B00A30335 /* Linotype-DINNextLTPro-Light.otf in Resources */,
 				AC54FD7D204FC6EC007E1DEB /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				AC54FD80204FC6EF007E1DEB /* OpenSans-Italic.ttf in Resources */,
+				AC31CE41205B604200A30335 /* Linotype-DINNextLTPro-Medium.otf in Resources */,
 				AC54FD89204FC6F9007E1DEB /* OpenSans-Regular.ttf in Resources */,
-				AC54FD41204FC6A1007E1DEB /* DINNextLTPro-UltraLight.ttf in Resources */,
 				AC54FD71204FC6DC007E1DEB /* Lato-Regular.ttf in Resources */,
 				AC54FD74204FC6E2007E1DEB /* OpenSans-Bold.ttf in Resources */,
-				AC54FD44204FC6A5007E1DEB /* DINNextCYR-UltraLight.otf in Resources */,
 				AC54FD5F204FC6C8007E1DEB /* Lato-BoldItalic.ttf in Resources */,
 				AC54FD5C204FC6C4007E1DEB /* Lato-Bold.ttf in Resources */,
 				AC1E4BC2204B52FD00C6B1FA /* wallet.json in Resources */,
@@ -1519,12 +1518,13 @@
 				AC54FD77204FC6E5007E1DEB /* OpenSans-BoldItalic.ttf in Resources */,
 				AC1E4BC4204B533000C6B1FA /* key.json in Resources */,
 				AC54FD59204FC6C1007E1DEB /* Lato-BlackItalic.ttf in Resources */,
+				AC31CE35205B603300A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf in Resources */,
 				AC54FD62204FC6CB007E1DEB /* Lato-Hairline.ttf in Resources */,
 				AC54FD8F204FC700007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */,
+				AC31CE47205B604900A30335 /* Linotype-DINNextW1G-Light.otf in Resources */,
 				AC54FD6E204FC6D9007E1DEB /* Lato-LightItalic.ttf in Resources */,
-				AC54FD47204FC6A8007E1DEB /* DINNextLTPro-Light.otf in Resources */,
-				AC54FD4D204FC6B0007E1DEB /* DINNextLTPro-Medium.otf in Resources */,
-				AC54FD53204FC6B9007E1DEB /* DINNextW1G-Light.otf in Resources */,
+				AC31CE3E205B603E00A30335 /* Linotype-DINNextLTPro-LightCondensed.otf in Resources */,
+				AC31CE38205B603700A30335 /* Linotype-DINNextCYR-UltraLight.otf in Resources */,
 				AC54FD86204FC6F6007E1DEB /* OpenSans-LightItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1536,29 +1536,29 @@
 				AC54FD63204FC6CB007E1DEB /* Lato-Hairline.ttf in Resources */,
 				AC54FD5D204FC6C5007E1DEB /* Lato-Bold.ttf in Resources */,
 				AC54FD7B204FC6E9007E1DEB /* OpenSans-ExtraBold.ttf in Resources */,
-				AC54FD3F204FC69E007E1DEB /* DIN-Bold.otf in Resources */,
+				AC31CE33205B602F00A30335 /* DIN-Bold.otf in Resources */,
 				AC54FD57204FC6BF007E1DEB /* Lato-Black.ttf in Resources */,
 				AC54FD66204FC6CF007E1DEB /* Lato-HairlineItalic.ttf in Resources */,
 				AC54FD75204FC6E2007E1DEB /* OpenSans-Bold.ttf in Resources */,
 				AC54FD60204FC6C8007E1DEB /* Lato-BoldItalic.ttf in Resources */,
 				AC54FD5A204FC6C2007E1DEB /* Lato-BlackItalic.ttf in Resources */,
 				AC54FD7E204FC6EC007E1DEB /* OpenSans-ExtraBoldItalic.ttf in Resources */,
-				AC54FD4E204FC6B0007E1DEB /* DINNextLTPro-Medium.otf in Resources */,
 				AC54FD81204FC6F0007E1DEB /* OpenSans-Italic.ttf in Resources */,
 				AC54FD90204FC701007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */,
-				AC54FD42204FC6A2007E1DEB /* DINNextLTPro-UltraLight.ttf in Resources */,
-				AC54FD45204FC6A5007E1DEB /* DINNextCYR-UltraLight.otf in Resources */,
+				AC31CE3F205B603F00A30335 /* Linotype-DINNextLTPro-LightCondensed.otf in Resources */,
 				AC54FD6F204FC6DA007E1DEB /* Lato-LightItalic.ttf in Resources */,
 				AC54FD68204FC6D2007E1DEB /* Lato-Italic.ttf in Resources */,
-				AC54FD48204FC6A8007E1DEB /* DINNextLTPro-Light.otf in Resources */,
 				AC54FD78204FC6E6007E1DEB /* OpenSans-BoldItalic.ttf in Resources */,
+				AC31CE3C205B603B00A30335 /* Linotype-DINNextLTPro-Light.otf in Resources */,
 				AC54FD84204FC6F3007E1DEB /* OpenSans-Light.ttf in Resources */,
+				AC31CE45205B604600A30335 /* Linotype-DINNextLTPro-Regular.otf in Resources */,
+				AC31CE48205B604A00A30335 /* Linotype-DINNextW1G-Light.otf in Resources */,
+				AC31CE42205B604200A30335 /* Linotype-DINNextLTPro-Medium.otf in Resources */,
 				AC54FD8D204FC6FD007E1DEB /* OpenSans-SemiBold.ttf in Resources */,
+				AC31CE39205B603700A30335 /* Linotype-DINNextCYR-UltraLight.otf in Resources */,
+				AC31CE36205B603400A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf in Resources */,
 				AC54FD87204FC6F6007E1DEB /* OpenSans-LightItalic.ttf in Resources */,
 				AC54FD72204FC6DD007E1DEB /* Lato-Regular.ttf in Resources */,
-				AC54FD54204FC6B9007E1DEB /* DINNextW1G-Light.otf in Resources */,
-				AC54FD51204FC6B6007E1DEB /* DINNextLTPro-Regular.otf in Resources */,
-				AC54FD4B204FC6AC007E1DEB /* DINNextLTPro-LightCondensed.otf in Resources */,
 				AC54FD8A204FC6FA007E1DEB /* OpenSans-Regular.ttf in Resources */,
 				AC54FD6C204FC6D6007E1DEB /* Lato-Light.ttf in Resources */,
 			);
