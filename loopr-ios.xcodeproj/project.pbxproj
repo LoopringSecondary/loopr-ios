@@ -726,6 +726,21 @@
 			path = Wallet;
 			sourceTree = "<group>";
 		};
+		AC31CE49205B677900A30335 /* Trade */ = {
+			isa = PBXGroup;
+			children = (
+				ACE6F71D20421D950039273D /* NewVersionTradeViewController.swift */,
+				ACE6F71E20421D950039273D /* NewVersionTradeViewController.xib */,
+				AC9280EA2030D34B0009B574 /* TradePlaceOrderViewController.swift */,
+				AC9280EB2030D34B0009B574 /* TradePlaceOrderViewController.xib */,
+				949C49422046976E0074466D /* TradePlaceReplyViewController.swift */,
+				949C49432046976E0074466D /* TradePlaceReplyViewController.xib */,
+				949C49462046A4A80074466D /* SampleViewController.swift */,
+				949C49472046A4A80074466D /* SampleViewController.xib */,
+			);
+			path = Trade;
+			sourceTree = "<group>";
+		};
 		AC3756752038D70D00AADC60 /* UnlockWallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -857,6 +872,7 @@
 		AC6E95F62032CBE900C6EB7C /* Archive */ = {
 			isa = PBXGroup;
 			children = (
+				AC31CE49205B677900A30335 /* Trade */,
 				ACB9115C20242D8900F14644 /* Portfolio */,
 				ACB5DD7A202A203900140A09 /* MarketLineChartViewController.swift */,
 				ACB5DD7B202A203900140A09 /* MarketLineChartViewController.xib */,
@@ -1003,14 +1019,6 @@
 				AC31CE1B205A2F0100A30335 /* SwitchTradeTokenViewController.xib */,
 				AC31CE122057B5A400A30335 /* TradeConfirmationViewController.swift */,
 				AC31CE132057B5A400A30335 /* TradeConfirmationViewController.xib */,
-				ACE6F71D20421D950039273D /* NewVersionTradeViewController.swift */,
-				ACE6F71E20421D950039273D /* NewVersionTradeViewController.xib */,
-				AC9280EA2030D34B0009B574 /* TradePlaceOrderViewController.swift */,
-				AC9280EB2030D34B0009B574 /* TradePlaceOrderViewController.xib */,
-				949C49422046976E0074466D /* TradePlaceReplyViewController.swift */,
-				949C49432046976E0074466D /* TradePlaceReplyViewController.xib */,
-				949C49462046A4A80074466D /* SampleViewController.swift */,
-				949C49472046A4A80074466D /* SampleViewController.xib */,
 			);
 			path = Trade;
 			sourceTree = "<group>";

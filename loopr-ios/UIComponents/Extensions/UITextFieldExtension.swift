@@ -9,6 +9,7 @@
 import UIKit
 
 extension UITextField {
+
     func setBottomBorder() {
         self.borderStyle = .none
         self.layer.backgroundColor = UIColor.white.cgColor
@@ -34,5 +35,17 @@ extension UITextField {
         self.layer.cornerRadius = 5.0
         self.layer.masksToBounds = true
         self.layer.borderColor = UIStyleConfig.systemDefaultBlueTintColor.cgColor
+    }
+
+    func setLeftPaddingPoints(_ padding: CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: self.frame.size.height))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+    }
+    
+    func setRightPaddingPoints(_ padding: CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: self.frame.size.height))
+        self.rightView = paddingView
+        self.rightViewMode = .always
     }
 }
