@@ -13,14 +13,16 @@ import UIKit
 enum SupportedFonts: String {
     case DIN
     case Lato
+    case Montserrat
     case OpenSans
+    case Roboto
 }
 
 class FontConfigManager {
 
     static let shared = FontConfigManager()
     
-    var currentFont: SupportedFonts = .DIN
+    var currentFont: SupportedFonts = .Montserrat
     
     private init() {
         // currentFont = getCurrentFontFromLocalStorage()
