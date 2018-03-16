@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import loopr_ios
+@testable import BigInt
 
 class AssetDataManagerTests: XCTestCase {
     
@@ -35,9 +36,20 @@ class AssetDataManagerTests: XCTestCase {
         wait(for: [expectation], timeout: 100.0)
     }
     
+    func testGetAmount() {
+        let amount = "19990000202034074497799998999"
+        let num = AssetDataManager.shared.getAmount(of: "ETH", from: amount)
+        XCTAssertNotNil(num)
+        XCTAssertEqual(num, 19990000202.0340)
+    }
+    
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let a = OrderStatus(rawValue: "ORDER_NEW")!
+        print(a)
+        
     }
     
     func testPerformanceExample() {

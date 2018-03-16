@@ -27,14 +27,25 @@ public class LoopringSocketIORequest {
             handlers["marketcap_res"] = [PriceQuoteDataManager.shared.onPriceQuoteResponse]
             addHandlers(handlers)
         }
+        connect()
+    }
+    
+    static func tearDown() {
+        handlers = [:]
+        socket.removeAllHandlers()
+        disconnect()
+    }
+    
+    static func connect() {
         if socket.status != .connected {
             socket.connect()
         }
     }
     
-    static func tearDown() {
-        socket.removeAllHandlers()
-        socket.disconnect()
+    static func disconnect() {
+        if socket.status != .disconnected {
+            socket.disconnect()
+        }
     }
     
     static func addHandlers(_ handlers: [String: [(JSON) -> Void]]) {

@@ -24,5 +24,4 @@ enum OrderStatus: String, CustomStringConvertible {
         case .cancel: return "Cancel"
         }
     }
-    
 }

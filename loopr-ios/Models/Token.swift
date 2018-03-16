@@ -14,7 +14,7 @@ class Token {
     let symbol: String
     let source: String
     let isMarket: Bool
-    let decimals: UInt
+    let decimals: Int
     let protocol_value: String
     let deny: Bool
 
@@ -22,7 +22,7 @@ class Token {
         self.symbol = json["Symbol"].stringValue
         self.source = json["Source"].stringValue
         self.isMarket = json["IsMarket"].boolValue
-        self.decimals = json["Decimals"].uIntValue
+        self.decimals = json["Decimals"].intValue
         self.protocol_value = json["Protocol"].stringValue
         self.deny = json["Deny"].boolValue
     }

@@ -11,11 +11,8 @@ import UIKit
 class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var asset: Asset?
-    
+    var transactions: [Transaction]?
     @IBOutlet weak var tableView: UITableView!
-
-    // TODO: is Transaction the same as Order?
-    var orders: [Order] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +28,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func setupNavigationBar() {
-        self.title = asset?.symbol
+        self.title = asset?.name
         
         // For back button in navigation bar
         let backButton = UIBarButtonItem()
@@ -84,7 +81,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1 + 10
+        return 1 + AssetDataManager.shared.getTransactions().count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -103,16 +100,17 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
                 cell = nib![0] as? AssetBalanceTableViewCell
                 cell?.selectionStyle = .none
             }
-            
             cell?.balanceLabel.text = asset?.balance.description
-            
             return cell!
         } else {
             var cell = tableView.dequeueReusableCell(withIdentifier: AssetTransactionTableViewCell.getCellIdentifier()) as? AssetTransactionTableViewCell
             if cell == nil {
                 let nib = Bundle.main.loadNibNamed("AssetTransactionTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? AssetTransactionTableViewCell
+                cell?.accessoryType = .disclosureIndicator
             }
+            cell?.transaction = AssetDataManager.shared.getTransactions()[indexPath.row - 1]
+            cell?.update()
             return cell!
         }
     }
@@ -120,10 +118,11 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row >= 1 {
             tableView.deselectRow(at: indexPath, animated: true)
-            let viewController = AssetTransactionDetailViewController()
-            self.navigationController?.pushViewController(viewController, animated: true)
+            let transaction = AssetDataManager.shared.getTransactions()[indexPath.row - 1]
+            let vc = AssetTransactionDetailViewController()
+            vc.transaction = transaction
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
         }
-        
     }
-
 }

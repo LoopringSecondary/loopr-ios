@@ -24,12 +24,12 @@ class Asset: CustomStringConvertible {
         
         self.name = ""
         self.enable = true
-        self.icon = nil
         self.display = 0
         self.description = self.name
         self.symbol = json["symbol"].stringValue
         self.balance = json["balance"].stringValue
         self.allowance = json["allowance"].stringValue
+        self.icon = UIImage(named: self.symbol) ?? nil
     }
     
 }

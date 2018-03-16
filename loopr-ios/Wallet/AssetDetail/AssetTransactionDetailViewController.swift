@@ -10,6 +10,8 @@ import UIKit
 
 class AssetTransactionDetailViewController: UIViewController {
 
+    var transaction: Transaction?
+    
     @IBOutlet weak var typeImageView: UIImageView!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var amountInCurrencyLabel: UILabel!
@@ -66,6 +68,29 @@ class AssetTransactionDetailViewController: UIViewController {
         let line4 = DashedLineView(frame: CGRect(x: label7.frame.origin.x, y: label7.frame.origin.y + label7.frame.size.height * 0.5, width: self.view.frame.size.width - label7.frame.origin.x * 2, height: 1))
         line4.lineColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
         self.view.addSubview(line4)
+        update()
+    }
+    
+    func update() {
+        if let transaction = transaction {
+            typeImageView.image = transaction.icon
+            amountLabel.text = transaction.value + " " + transaction.symbol
+            amountInCurrencyLabel.text = "≈ $\(transaction.display)"
+            switch transaction.type {
+            case .received:
+                label1.text = "From"
+                label2.text = transaction.from
+            case .sent:
+                label1.text = "To"
+                label2.text = transaction.to
+            default:
+                label1.text = transaction.type.description
+                label2.text = ""
+            }
+            label4.text = transaction.txHash
+            label6.text = transaction.createTime
+            label8.text = transaction.status.description
+        }
     }
 
     override func didReceiveMemoryWarning() {

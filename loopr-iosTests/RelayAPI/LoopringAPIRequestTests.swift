@@ -251,7 +251,6 @@ class LoopringAPIRequestTests: XCTestCase {
             }
             XCTAssertNotNil(transactions)
             XCTAssertFalse(transactions!.isEmpty)
-            
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)

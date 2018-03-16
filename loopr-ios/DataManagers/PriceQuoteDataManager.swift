@@ -22,6 +22,16 @@ class PriceQuoteDataManager {
         return self.priceQuote ?? nil
     }
     
+    func getPriceBySymbol(of symbol: String) -> Double? {
+        var result: Double? = nil
+        if let price = priceQuote {
+            for case let token in price.tokens where token.symbol.lowercased() == symbol.lowercased() {
+                result = token.price
+            }
+        }
+        return result
+    }
+    
     // MARK: whether stop method is useful?
     func startGetPriceQuote(_ currency: String) {
         LoopringSocketIORequest.getPriceQuote(currency: currency)

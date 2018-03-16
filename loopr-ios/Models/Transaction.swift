@@ -10,25 +10,67 @@ import Foundation
 import SwiftyJSON
 
 class Transaction {
-
-    let from: String
-    let to: String
-    let type: String
-    let status: String
-    let symbol: String
-    let value: Double
-    let owner: String
-    let txHash: String
-    let createTime: String
-    let updateTime: String
+    
+    enum TxType: String, CustomStringConvertible {
+        case approved = "approve"
+        case sent = "send"
+        case received = "receive"
+        case sold = "sell"
+        case bought = "buy"
+        case converted = "convert"
+        case canceledOrder = "cancel_order"
+        case cutoff = "cutoff"
+        
+        var description: String {
+            switch self {
+            case .approved: return "Approved"
+            case .sent: return "Sent"
+            case .received: return "Received"
+            case .sold: return "Sold"
+            case .bought: return "Bought"
+            case .converted: return "Converted" // eth <-> weth
+            case .canceledOrder: return "Canceled Order"
+            case .cutoff: return "Cutoff"
+            }
+        }
+    }
+    
+    enum TxStatus: String, CustomStringConvertible {
+        case pending
+        case success
+        case failed
+        
+        var description: String {
+            switch self {
+            case .pending: return "Pending"
+            case .success: return "Complete"
+            case .failed: return "Failed"
+            }
+        }
+    }
+    
+    var from: String
+    var to: String
+    var type: TxType
+    var status: TxStatus
+    var icon: UIImage?
+    var symbol: String
+    var value: String
+    var owner: String
+    var txHash: String
+    var display: Double
+    var createTime: String
+    var updateTime: String
     
     init(json: JSON) {
+        self.display = 0
         self.from = json["from"].stringValue
         self.to = json["to"].stringValue
-        self.type = json["type"].stringValue
-        self.status = json["status"].stringValue
+        self.type = TxType(rawValue: json["type"].stringValue)!
+        self.status = TxStatus(rawValue: json["status"].stringValue)!
+        self.icon = UIImage(named: self.type.description) ?? nil
         self.symbol = json["symbol"].stringValue
-        self.value = json["value"].doubleValue
+        self.value = json["value"].stringValue
         self.owner = json["owner"].stringValue
         self.txHash = json["txHash"].stringValue
         self.createTime = json["createTime"].stringValue

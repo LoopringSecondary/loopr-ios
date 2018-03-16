@@ -68,25 +68,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.reloadData()
     }
 
-//    @objc func updateBalance() {
-//        
-////        let range = Range(0, in:5)
-//        
-////        IndexSet(integersIn: range)
-//        
-////        NSIndexSet *indexSet = [[NSIndexSet alloc]initWithIndexesInRange:NSMakeRange(0, 2)];
-////
-////        [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
-////
-////        self.
-////
-////        assetTableView.data
-////        assetTableView.reloadRows(at: [1...7], with: nil)
-////
-////
-////        assetTableView.rea
-//    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -147,7 +128,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 cell = nib![0] as? AssetTableViewCell
                 cell?.accessoryType = .disclosureIndicator
             }
-            cell?.asset = AssetDataManager.shared.getAssets()[indexPath.row-1]
+            cell?.asset = AssetDataManager.shared.getAssets()[indexPath.row - 1]
             cell?.update()
             return cell!
         }
@@ -161,8 +142,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
+            let asset = AssetDataManager.shared.getAssets()[indexPath.row - 1]
+            AssetDataManager.shared.getTransactionsFromServer(asset: asset)
             let assetDetailViewController = AssetDetailViewController()
-            let asset = AssetDataManager.shared.getAssets()[indexPath.row-1]
             assetDetailViewController.asset = asset
             assetDetailViewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(assetDetailViewController, animated: true)

@@ -278,7 +278,7 @@ class LoopringAPIRequest {
         }
     }
     
-    // TODO: backend will modify later in test env, and then complete this method --kenshin
+    // READY
     static func getTransactions(owner: String, symbol: String, thxHash: String?, pageIndex: UInt = 1, pageSize: UInt = 10, completionHandler: @escaping (_ transactions: [Transaction]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getTransactions"
@@ -294,9 +294,6 @@ class LoopringAPIRequest {
             }
             let json = JSON(data)
             let offerData = json["result"]["data"]
-            
-            print(offerData)
-            
             var transactions: [Transaction] = []
 
             for subJson in offerData.arrayValue {

@@ -11,6 +11,8 @@ import UIKit
 //TODO: AssetTransactionTableViewCell is similar to OpenOrderTableViewCell and TradeTableViewCell. Keep AssetTransactionTableViewCell empty now.
 class AssetTransactionTableViewCell: UITableViewCell {
 
+    var transaction: Transaction?
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var typeImageView: UIImageView!
@@ -29,6 +31,21 @@ class AssetTransactionTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func update() {
+        if let transaction = transaction {
+            typeImageView.image = transaction.icon
+            titleLabel.text = transaction.type.description + " " + transaction.symbol
+            switch transaction.type {
+            case .received:
+                descriptionLabel.text = "From " + transaction.from
+            case .sent:
+                descriptionLabel.text = "To " + transaction.to
+            default:
+                descriptionLabel.text = transaction.type.description
+            }
+        }
     }
 
     class func getCellIdentifier() -> String {
