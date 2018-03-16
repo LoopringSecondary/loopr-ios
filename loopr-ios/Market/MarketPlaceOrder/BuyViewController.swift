@@ -199,14 +199,25 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         scrollView.addSubview(stackView)
         
         scrollView.contentSize = CGSize(width: screenWidth, height: stackView.frame.maxY + 30)
-        
-        // keyboardView.delegate = self
-        // keyboardView.translatesAutoresizingMaskIntoConstraints = false
+
+        let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
+        scrollViewTap.numberOfTapsRequired = 1
+        scrollView.addGestureRecognizer(scrollViewTap)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func scrollViewTapped() {
+        print("scrollViewTapped")
+        
+        tokenSPriceTextField.resignFirstResponder()
+        amountTextField.resignFirstResponder()
+        totalTextField.resignFirstResponder()
+
+        hideKeyboard()
     }
     
     @objc func pressedOneHourButton(_ button: UIButton) {
@@ -291,7 +302,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
             let destinateY = height - keyboardHeight
             
             // TODO: improve the animation.
-            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
                 self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
             }, completion: { finished in
                 self.isKeyboardShow = true

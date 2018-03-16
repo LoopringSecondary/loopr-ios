@@ -203,7 +203,7 @@ class TradeBuyViewController: UIViewController, UITextFieldDelegate, NumericKeyb
             let destinateY = height - keyboardHeight
             
             // TODO: improve the animation.
-            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
                 self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
                 
             }, completion: { finished in
