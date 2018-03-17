@@ -13,8 +13,7 @@ protocol WalletBalanceTableViewCellDelegate: class {
 }
 
 class WalletBalanceTableViewCell: UITableViewCell {
-    
-    var balance = AssetDataManager.shared.getTotalAsset()
+
     weak var delegate: WalletBalanceTableViewCellDelegate?
     
     @IBOutlet weak var balanceLabel: TickerLabel!
@@ -30,6 +29,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
         balanceLabel.textAlignment = NSTextAlignment.center
         balanceLabel.initializeLabel()
         balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
+        let balance = AssetDataManager.shared.getTotalAsset()
         balanceLabel.setText("\(balance)", animated: false)
         
         hideAssetSwitch.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
@@ -61,7 +61,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
     }
     
     @objc func updateBalance() {
-        balance = AssetDataManager.shared.getTotalAsset()
+        let balance = AssetDataManager.shared.getTotalAsset()
         balanceLabel.setText("\(balance)", animated: true)
         layoutIfNeeded()
     }
