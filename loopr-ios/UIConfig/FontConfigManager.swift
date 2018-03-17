@@ -22,7 +22,7 @@ class FontConfigManager {
 
     static let shared = FontConfigManager()
     
-    var currentFont: SupportedFonts = .Montserrat
+    var currentFont: SupportedFonts = .DIN
     
     private init() {
         // currentFont = getCurrentFontFromLocalStorage()
