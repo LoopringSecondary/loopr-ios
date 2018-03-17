@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TradeBuyViewController" customModule="loopr_ios" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TradeViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="nextBackgroundView" destination="KOm-5M-oep" id="tdb-PS-7F7"/>
                 <outlet property="nextButton" destination="Fb9-mL-KG5" id="9JP-fm-qQp"/>

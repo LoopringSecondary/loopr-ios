@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Themes.restoreLastTheme()
         ThemeManager.animationDuration = 1.0
         
-        // MARK: check whether it is properly: socket.io must be established befor startxxx method
+        // TODO: check whether it is properly: socket.io must be established befor startxxx method
         LoopringSocketIORequest.setup()
         PriceQuoteDataManager.shared.startGetPriceQuote("USD")
         AssetDataManager.shared.startGetBalance("0x750ad4351bb728cec7d639a9511f9d6488f1e259")

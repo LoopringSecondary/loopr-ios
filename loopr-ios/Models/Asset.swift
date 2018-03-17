@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyJSON
 
+// TODO: What is difference between Asset and Token? Could we merge these two classes?
 class Asset: CustomStringConvertible {
 
     let symbol: String

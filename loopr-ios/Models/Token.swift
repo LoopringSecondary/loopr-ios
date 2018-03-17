@@ -26,4 +26,19 @@ class Token {
         self.protocol_value = json["Protocol"].stringValue
         self.deny = json["Deny"].boolValue
     }
+    
+    // TODO: do we need this initialization?
+    init?(symbol: String) {
+        let token = AssetDataManager.shared.getTokenBySymbol(symbol)
+        guard token != nil else {
+            return nil
+        }
+        self.symbol = token!.symbol
+        self.source = token!.source
+        self.isMarket = token!.isMarket
+        self.decimals = token!.decimals
+        self.protocol_value = token!.protocol_value
+        self.deny = token!.deny
+    }
+
 }

@@ -27,6 +27,7 @@ class AssetDataManager {
         self.loadTokensFromJson()
     }
     
+    // Get a list of tokens
     func getTokens() -> [Token] {
         return tokens
     }
@@ -68,7 +69,7 @@ class AssetDataManager {
         }
     }
     
-    // MARK: whether stop method is useful?
+    // TODO: whether stop method is useful?
     func startGetBalance(_ owner: String) {
         LoopringSocketIORequest.getBalance(owner: owner)
     }
@@ -129,7 +130,7 @@ class AssetDataManager {
     
     // this func should be called every 10 secs when emitted
     func onBalanceResponse(json: JSON) {
-        
+        print("onBalanceResponse")
         assets = []
         totalAsset = 0
         for subJson in json["tokens"].arrayValue {
