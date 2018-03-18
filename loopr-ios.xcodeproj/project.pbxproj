@@ -290,6 +290,8 @@
 		AC5E0DE4203BC4B100AF03C7 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0DE3203BC4B100AF03C7 /* FloatLabelTextField.swift */; };
 		AC5E3E6B205DEAC00051ACFC /* TradeCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E3E69205DEAC00051ACFC /* TradeCompleteViewController.swift */; };
 		AC5E3E6C205DEAC00051ACFC /* TradeCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E3E6A205DEAC00051ACFC /* TradeCompleteViewController.xib */; };
+		AC5E3E70205DFB700051ACFC /* SendAssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E3E6E205DFB700051ACFC /* SendAssetViewController.swift */; };
+		AC5E3E71205DFB700051ACFC /* SendAssetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E3E6F205DFB700051ACFC /* SendAssetViewController.xib */; };
 		AC6E95E520313D8A00C6EB7C /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */; };
 		AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */; };
 		AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */; };
@@ -606,6 +608,8 @@
 		AC5E0DE3203BC4B100AF03C7 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 		AC5E3E69205DEAC00051ACFC /* TradeCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeCompleteViewController.swift; sourceTree = "<group>"; };
 		AC5E3E6A205DEAC00051ACFC /* TradeCompleteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeCompleteViewController.xib; sourceTree = "<group>"; };
+		AC5E3E6E205DFB700051ACFC /* SendAssetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendAssetViewController.swift; sourceTree = "<group>"; };
+		AC5E3E6F205DFB700051ACFC /* SendAssetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendAssetViewController.xib; sourceTree = "<group>"; };
 		AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketLineChartTableViewCell.swift; sourceTree = "<group>"; };
 		AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketLineChartTableViewCell.xib; sourceTree = "<group>"; };
@@ -1049,6 +1053,15 @@
 			path = AddAsset;
 			sourceTree = "<group>";
 		};
+		AC5E3E6D205DFABD0051ACFC /* SendAsset */ = {
+			isa = PBXGroup;
+			children = (
+				AC5E3E6E205DFB700051ACFC /* SendAssetViewController.swift */,
+				AC5E3E6F205DFB700051ACFC /* SendAssetViewController.xib */,
+			);
+			path = SendAsset;
+			sourceTree = "<group>";
+		};
 		AC6E95F62032CBE900C6EB7C /* Archive */ = {
 			isa = PBXGroup;
 			children = (
@@ -1317,6 +1330,7 @@
 				ACB9115820242B9D00F14644 /* AssetTableViewCell.swift */,
 				ACB9115920242B9D00F14644 /* AssetTableViewCell.xib */,
 				AC5E0DE0203B44EA00AF03C7 /* AddAsset */,
+				AC5E3E6D205DFABD0051ACFC /* SendAsset */,
 				AC5E0DD3203A9D7D00AF03C7 /* AssetDetail */,
 				AC375686203A7B0A00AADC60 /* SelectWallet */,
 			);
@@ -1640,6 +1654,7 @@
 				AC3756742038D64B00AADC60 /* MnemonicViewController.xib in Resources */,
 				AC31CE1D205A2F0100A30335 /* SwitchTradeTokenViewController.xib in Resources */,
 				AC31CE68205B994E00A30335 /* Roboto-Light.ttf in Resources */,
+				AC5E3E71205DFB700051ACFC /* SendAssetViewController.xib in Resources */,
 				AC54FD8E204FC6FF007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				ACBDB1C62032D050003463A4 /* OpenOrderTableViewCell.xib in Resources */,
 				ACE6F72020421D950039273D /* NewVersionTradeViewController.xib in Resources */,
@@ -2171,6 +2186,7 @@
 				AC5E0DD0203A7C5800AF03C7 /* SelectWalletTableViewCell.swift in Sources */,
 				ACB9117820256B0300F14644 /* Market.swift in Sources */,
 				AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */,
+				AC5E3E70205DFB700051ACFC /* SendAssetViewController.swift in Sources */,
 				94E185972051451C00D86FFA /* Initable.swift in Sources */,
 				ACB911692025472A00F14644 /* AssetDataManager.swift in Sources */,
 				ACE6F7182041FDAD0039273D /* AssetTransactionDetailViewController.swift in Sources */,

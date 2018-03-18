@@ -12,6 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AssetDetailViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="receiveButton" destination="oU0-Pm-y7X" id="k1W-vG-cy6"/>
+                <outlet property="sendButton" destination="IV9-Ck-OQ7" id="cY1-E0-ieZ"/>
                 <outlet property="tableView" destination="Ze1-7w-Ov8" id="2Ct-vg-4VP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,16 +24,47 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ze1-7w-Ov8">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="592"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="U8R-q4-vAw">
+                    <rect key="frame" x="15" y="607" width="345" height="45"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oU0-Pm-y7X">
+                            <rect key="frame" x="0.0" y="0.0" width="165" height="45"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Receive">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="pressedReceiveButton:" destination="-1" eventType="touchUpInside" id="QPC-bc-hPV"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IV9-Ck-OQ7">
+                            <rect key="frame" x="180" y="0.0" width="165" height="45"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Send">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="pressedSendButton:" destination="-1" eventType="touchUpInside" id="Ro2-v8-0G1"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="To1-dR-8PD"/>
+                    </constraints>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Ze1-7w-Ov8" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="DJR-KI-62g"/>
-                <constraint firstItem="Ze1-7w-Ov8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="EnE-uO-hIq"/>
-                <constraint firstItem="Ze1-7w-Ov8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="O9f-2R-OhT"/>
-                <constraint firstItem="Ze1-7w-Ov8" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="h1W-aW-OkC"/>
+                <constraint firstItem="U8R-q4-vAw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="Gsr-mR-qOE"/>
+                <constraint firstItem="Ze1-7w-Ov8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="H4N-2a-4fX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="U8R-q4-vAw" secondAttribute="bottom" constant="15" id="Lua-pN-YhS"/>
+                <constraint firstItem="U8R-q4-vAw" firstAttribute="top" secondItem="Ze1-7w-Ov8" secondAttribute="bottom" constant="15" id="NQF-xP-CC3"/>
+                <constraint firstItem="Ze1-7w-Ov8" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Ve5-Vf-O7r"/>
+                <constraint firstItem="Ze1-7w-Ov8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lLz-NY-zJB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="U8R-q4-vAw" secondAttribute="trailing" constant="15" id="qHa-q8-Ug3"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="81.5" y="95.5"/>

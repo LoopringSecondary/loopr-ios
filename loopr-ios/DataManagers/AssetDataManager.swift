@@ -45,6 +45,7 @@ class AssetDataManager {
         }
     }
 
+    // TODO: Add filter by token.
     func getTransactions(txStatuses: [Transaction.TxStatus]? = nil) -> [Transaction] {
         guard let txStatuses = txStatuses else {
             return self.transactions

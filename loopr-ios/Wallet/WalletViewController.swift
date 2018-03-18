@@ -11,7 +11,7 @@ import UIKit
 class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate {
 
     @IBOutlet weak var assetTableView: UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -62,7 +62,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         button.semanticContentAttribute = .forceRightToLeft
         // button.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 50, bottom: 0, right: -50)
         
-        button.addTarget(self, action: #selector(self.clickOnButton(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(self.clickNavigationTitleButton(_:)), for: .touchUpInside)
         self.navigationItem.titleView = button
         
         assetTableView.reloadData()
@@ -73,7 +73,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-    @objc func clickOnButton(_ button: UIButton) {
+    @objc func clickNavigationTitleButton(_ button: UIButton) {
         print("select another wallet.")
         let viewController = SelectWalletViewController()
         viewController.hidesBottomBarWhenPushed = true
