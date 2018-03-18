@@ -146,5 +146,8 @@ class AssetDataManager {
                 }
             }
         }
+        
+        NotificationCenter.default.post(name: .balanceResponseReceived, object: nil)
     }
+
 }

@@ -43,5 +43,7 @@ class PriceQuoteDataManager {
         print(json)
         
         priceQuote = PriceQuote(json: json)
+        
+        NotificationCenter.default.post(name: .priceQuoteResponseReceived, object: nil)
     }
 }

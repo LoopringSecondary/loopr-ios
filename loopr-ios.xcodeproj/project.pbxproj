@@ -292,6 +292,7 @@
 		AC5E3E6C205DEAC00051ACFC /* TradeCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E3E6A205DEAC00051ACFC /* TradeCompleteViewController.xib */; };
 		AC5E3E70205DFB700051ACFC /* SendAssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E3E6E205DFB700051ACFC /* SendAssetViewController.swift */; };
 		AC5E3E71205DFB700051ACFC /* SendAssetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E3E6F205DFB700051ACFC /* SendAssetViewController.xib */; };
+		AC5E3E74205E22080051ACFC /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E3E73205E22080051ACFC /* NotificationName.swift */; };
 		AC6E95E520313D8A00C6EB7C /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */; };
 		AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */; };
 		AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */; };
@@ -610,6 +611,7 @@
 		AC5E3E6A205DEAC00051ACFC /* TradeCompleteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeCompleteViewController.xib; sourceTree = "<group>"; };
 		AC5E3E6E205DFB700051ACFC /* SendAssetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendAssetViewController.swift; sourceTree = "<group>"; };
 		AC5E3E6F205DFB700051ACFC /* SendAssetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendAssetViewController.xib; sourceTree = "<group>"; };
+		AC5E3E73205E22080051ACFC /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketLineChartTableViewCell.swift; sourceTree = "<group>"; };
 		AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketLineChartTableViewCell.xib; sourceTree = "<group>"; };
@@ -1062,6 +1064,14 @@
 			path = SendAsset;
 			sourceTree = "<group>";
 		};
+		AC5E3E72205E21E00051ACFC /* NotificationCenter */ = {
+			isa = PBXGroup;
+			children = (
+				AC5E3E73205E22080051ACFC /* NotificationName.swift */,
+			);
+			path = NotificationCenter;
+			sourceTree = "<group>";
+		};
 		AC6E95F62032CBE900C6EB7C /* Archive */ = {
 			isa = PBXGroup;
 			children = (
@@ -1159,6 +1169,7 @@
 				ACB746E22043C5CC006C2BF5 /* QRCode */,
 				AC6E95F62032CBE900C6EB7C /* Archive */,
 				ACB5DD85202AD74D00140A09 /* UIComponents */,
+				AC5E3E72205E21E00051ACFC /* NotificationCenter */,
 				ACB9119320278A0E00F14644 /* RelayAPI */,
 				ACDBF10F203FEC96000F0DEC /* UIConfig */,
 				ACB911672025470B00F14644 /* DataManagers */,
@@ -2128,6 +2139,7 @@
 				ACB729D4205DE21B00DD4DF3 /* TradeConfirmationViewController.swift in Sources */,
 				AC9280E1202EC53D0009B574 /* TradeNavigationViewController.swift in Sources */,
 				949C49482046A4A80074466D /* SampleViewController.swift in Sources */,
+				AC5E3E74205E22080051ACFC /* NotificationName.swift in Sources */,
 				AC31B95F204A8E4F00B16155 /* WalletDescriptor.swift in Sources */,
 				AC37566D2038D37400AADC60 /* UnlockWalletSwipeViewController.swift in Sources */,
 				AC31B951204A8DF400B16155 /* DataHex.swift in Sources */,

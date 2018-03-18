@@ -37,6 +37,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
         self.navigationItem.rightBarButtonItem = addButton
+        
+        // Add observer.
+        NotificationCenter.default.addObserver(self, selector: #selector(receivedBalanceResponseReceivedNotification), name: .balanceResponseReceived, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,6 +98,13 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
+    @objc func receivedBalanceResponseReceivedNotification() {
+        print("receivedBalanceResponseReceivedNotification")
+
+        // TODO: Perform a diff algorithm
+        assetTableView.reloadData()
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1 + AssetDataManager.shared.getAssets().count
     }
