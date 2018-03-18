@@ -20,7 +20,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setup()
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
@@ -51,9 +51,31 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         sendButton.layer.cornerRadius = 23
         sendButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
     }
+    
+    func setup() {
+        // TODO: putting getMarketsFromServer() here may cause a race condition.
+        // It's not perfect, but works. Need improvement in the future.
+        self.transactions = AssetDataManager.shared.getTransactions()
+        if let asset = asset {
+            AssetDataManager.shared.getTransactionsFromServer(owner: "", asset: asset) { (transactions, error) in
+                guard error == nil else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.transactions = transactions
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.transactions = []
+    }
 
     func setupNavigationBar() {
-        self.title = asset?.name
+        self.title = asset!.name
         
         // For back button in navigation bar
         let backButton = UIBarButtonItem()
@@ -121,7 +143,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1 + AssetDataManager.shared.getTransactions().count
+        return 1 + self.transactions.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -140,7 +162,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
                 cell = nib![0] as? AssetBalanceTableViewCell
                 cell?.selectionStyle = .none
             }
-            cell?.balanceLabel.text = asset?.balance.description
+            cell?.balanceLabel.text = asset!.balance.description
             return cell!
         } else {
             var cell = tableView.dequeueReusableCell(withIdentifier: AssetTransactionTableViewCell.getCellIdentifier()) as? AssetTransactionTableViewCell
@@ -149,7 +171,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
                 cell = nib![0] as? AssetTransactionTableViewCell
                 cell?.accessoryType = .disclosureIndicator
             }
-            cell?.transaction = AssetDataManager.shared.getTransactions()[indexPath.row - 1]
+            cell?.transaction = self.transactions[indexPath.row - 1]
             cell?.update()
             return cell!
         }
@@ -158,7 +180,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row >= 1 {
             tableView.deselectRow(at: indexPath, animated: true)
-            let transaction = AssetDataManager.shared.getTransactions()[indexPath.row - 1]
+            let transaction = self.transactions[indexPath.row - 1]
             let vc = AssetTransactionDetailViewController()
             vc.transaction = transaction
             vc.hidesBottomBarWhenPushed = true

@@ -11,6 +11,34 @@ import SwiftyJSON
 
 class Transaction {
     
+    var from: String
+    var to: String
+    var type: TxType
+    var status: TxStatus
+    var icon: UIImage?
+    var symbol: String
+    var value: String
+    var owner: String
+    var txHash: String
+    var display: Double
+    var createTime: String
+    var updateTime: String
+    
+    init(json: JSON) {
+        self.display = 0
+        self.from = json["from"].stringValue
+        self.to = json["to"].stringValue
+        self.type = TxType(rawValue: json["type"].stringValue)!
+        self.status = TxStatus(rawValue: json["status"].stringValue)!
+        self.icon = UIImage(named: self.type.description) ?? nil
+        self.symbol = json["symbol"].stringValue
+        self.value = json["value"].stringValue
+        self.owner = json["owner"].stringValue
+        self.txHash = json["txHash"].stringValue
+        self.createTime = Transaction.convertToDate(json["createTime"].stringValue)
+        self.updateTime = Transaction.convertToDate(json["updateTime"].stringValue)
+    }
+
     enum TxType: String, CustomStringConvertible {
         case approved = "approve"
         case sent = "send"
@@ -48,33 +76,13 @@ class Transaction {
             }
         }
     }
-    
-    var from: String
-    var to: String
-    var type: TxType
-    var status: TxStatus
-    var icon: UIImage?
-    var symbol: String
-    var value: String
-    var owner: String
-    var txHash: String
-    var display: Double
-    var createTime: String
-    var updateTime: String
-    
-    init(json: JSON) {
-        self.display = 0
-        self.from = json["from"].stringValue
-        self.to = json["to"].stringValue
-        self.type = TxType(rawValue: json["type"].stringValue)!
-        self.status = TxStatus(rawValue: json["status"].stringValue)!
-        self.icon = UIImage(named: self.type.description) ?? nil
-        self.symbol = json["symbol"].stringValue
-        self.value = json["value"].stringValue
-        self.owner = json["owner"].stringValue
-        self.txHash = json["txHash"].stringValue
-        self.createTime = json["createTime"].stringValue
-        self.updateTime = json["updateTime"].stringValue
+
+    class func convertToDate(_ timeStamp: String) -> String {
+        let timeInterval: TimeInterval = TimeInterval(Double(timeStamp)!)
+        let date = Date(timeIntervalSince1970: timeInterval)
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "HH:mm - MMM dd, yyyy"
+        let time = dateformatter.string(from: date)
+        return time
     }
-    
 }
