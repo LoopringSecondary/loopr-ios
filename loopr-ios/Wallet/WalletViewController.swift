@@ -8,12 +8,14 @@
 
 import UIKit
 
-class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate {
+class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate, ContextMenuDelegate {
 
     private var assets: [Asset] = []
     
     @IBOutlet weak var assetTableView: UITableView!
 
+    var contextMenuSourceView: UIView = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,8 +39,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let qrCodeBarButton = UIBarButtonItem(customView: qrCodebutton)
         self.navigationItem.leftBarButtonItem = qrCodeBarButton
 
-        let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
-        self.navigationItem.rightBarButtonItem = addButton
+        let addBarButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
+        self.navigationItem.rightBarButtonItem = addBarButton
         
         // Add observer.
         NotificationCenter.default.addObserver(self, selector: #selector(receivedBalanceResponseReceivedNotification), name: .balanceResponseReceived, object: nil)
@@ -105,9 +107,41 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func pressAddButton(_ button: UIBarButtonItem) {
-        let viewController = AddCustomizedTokenViewController()
-        viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
+        contextMenuSourceView.frame = CGRect(x: self.view.frame.width-10, y: -5, width: 1, height: 1)
+        view.addSubview(contextMenuSourceView)
+
+        let menuViewController = AddMenuViewController()
+        menuViewController.didSelectRowClosure = { (index) -> Void in
+            if index == 0 {
+                print("Selected Scan QR code")
+                let viewController = ScanQRCodeViewController()
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            } else if index == 1 {
+                print("Selected Add Token")
+                let viewController = AddTokenViewController()
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+        }
+
+        ContextMenu.shared.show(
+            sourceViewController: self,
+            viewController: menuViewController,
+            options: ContextMenu.Options(containerStyle: ContextMenu.ContainerStyle(backgroundColor: UIColor.black), menuStyle: .minimal),
+            sourceView: contextMenuSourceView,
+            delegate: self
+        )
+    }
+    
+    func contextMenuWillDismiss(viewController: UIViewController, animated: Bool) {
+        print("will dismiss")
+    }
+    
+    func contextMenuDidDismiss(viewController: UIViewController, animated: Bool) {
+        print("did dismiss")
+        
+        contextMenuSourceView.removeFromSuperview()
     }
     
     @objc func receivedBalanceResponseReceivedNotification() {
@@ -174,13 +208,15 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.navigationController?.pushViewController(assetDetailViewController, animated: true)
         }
     }
-    
+
+    // TODO: no used
     func navigatToAddAssetViewController() {
         print("navigatToAddAssetViewController")
         let viewController = AddCustomizedTokenViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+
 }
 
 extension WalletViewController: TableViewReorderDelegate {

@@ -22,7 +22,7 @@ class QRCodeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = "QR Code"
+        self.navigationItem.title = NSLocalizedString("QR Code", comment: "")
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         addressLabel.theme_textColor = GlobalPicker.textColor
