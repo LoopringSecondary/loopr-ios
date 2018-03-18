@@ -10,11 +10,14 @@ import UIKit
 
 class SetupViewController: UIViewController {
 
+    @IBOutlet weak var taglineLabel: UILabel!
     @IBOutlet weak var unlockWalletButton: UIButton!
     @IBOutlet weak var generateWalletButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        taglineLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 15)
 
         unlockWalletButton.backgroundColor = UIColor.clear
         unlockWalletButton.titleColor = UIColor.black
@@ -29,8 +32,11 @@ class SetupViewController: UIViewController {
         generateWalletButton.title = NSLocalizedString("Generate Wallet", comment: "")
         generateWalletButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)
 
+        // TODO: skip button is not in the design. Add "Go to Market" button.
+        /*
         let skipButton = UIBarButtonItem(title: "Skip", style: .plain, target: self, action: #selector(self.skipButtonPressed(_:)))
         self.navigationItem.rightBarButtonItem = skipButton
+        */
     }
 
     override func didReceiveMemoryWarning() {
