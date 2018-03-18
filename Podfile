@@ -17,6 +17,7 @@ target 'loopr-ios' do
   pod 'TagListView'
   pod 'FontBlaster'
   pod 'Socket.IO-Client-Swift', '~> 13.1.0'
+  pod 'NotificationBannerSwift'
   
   # Pods for keystone
   pod 'BigInt'
