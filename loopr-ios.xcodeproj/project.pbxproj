@@ -377,8 +377,8 @@
 		ACB9118920265DEA00F14644 /* MarketDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB9118720265DEA00F14644 /* MarketDetailViewController.xib */; };
 		ACB9118C20266A9C00F14644 /* AssetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9118A20266A9C00F14644 /* AssetDetailViewController.swift */; };
 		ACB9118D20266A9C00F14644 /* AssetDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB9118B20266A9C00F14644 /* AssetDetailViewController.xib */; };
-		ACB9119020266EC200F14644 /* AddAssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9118E20266EC200F14644 /* AddAssetViewController.swift */; };
-		ACB9119120266EC200F14644 /* AddAssetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB9118F20266EC200F14644 /* AddAssetViewController.xib */; };
+		ACB9119020266EC200F14644 /* AddCustomizedTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9118E20266EC200F14644 /* AddCustomizedTokenViewController.swift */; };
+		ACB9119120266EC200F14644 /* AddCustomizedTokenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB9118F20266EC200F14644 /* AddCustomizedTokenViewController.xib */; };
 		ACB9119520278A4000F14644 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9119420278A4000F14644 /* Request.swift */; };
 		ACB911992027F65800F14644 /* LoopringAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911982027F65800F14644 /* LoopringAPIRequest.swift */; };
 		ACB9119F202967A500F14644 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9119E202967A500F14644 /* OrderStatus.swift */; };
@@ -705,8 +705,8 @@
 		ACB9118720265DEA00F14644 /* MarketDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketDetailViewController.xib; sourceTree = "<group>"; };
 		ACB9118A20266A9C00F14644 /* AssetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDetailViewController.swift; sourceTree = "<group>"; };
 		ACB9118B20266A9C00F14644 /* AssetDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetDetailViewController.xib; sourceTree = "<group>"; };
-		ACB9118E20266EC200F14644 /* AddAssetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAssetViewController.swift; sourceTree = "<group>"; };
-		ACB9118F20266EC200F14644 /* AddAssetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAssetViewController.xib; sourceTree = "<group>"; };
+		ACB9118E20266EC200F14644 /* AddCustomizedTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomizedTokenViewController.swift; sourceTree = "<group>"; };
+		ACB9118F20266EC200F14644 /* AddCustomizedTokenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCustomizedTokenViewController.xib; sourceTree = "<group>"; };
 		ACB9119420278A4000F14644 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		ACB911982027F65800F14644 /* LoopringAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopringAPIRequest.swift; sourceTree = "<group>"; };
 		ACB9119E202967A500F14644 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
@@ -1055,8 +1055,8 @@
 		AC5E0DE0203B44EA00AF03C7 /* AddAsset */ = {
 			isa = PBXGroup;
 			children = (
-				ACB9118E20266EC200F14644 /* AddAssetViewController.swift */,
-				ACB9118F20266EC200F14644 /* AddAssetViewController.xib */,
+				ACB9118E20266EC200F14644 /* AddCustomizedTokenViewController.swift */,
+				ACB9118F20266EC200F14644 /* AddCustomizedTokenViewController.xib */,
 			);
 			path = AddAsset;
 			sourceTree = "<group>";
@@ -1741,7 +1741,7 @@
 				ACB9117620255A6600F14644 /* MarketTableViewCell.xib in Resources */,
 				ACB729D5205DE21B00DD4DF3 /* TradeConfirmationViewController.xib in Resources */,
 				949C49452046976E0074466D /* TradePlaceReplyViewController.xib in Resources */,
-				ACB9119120266EC200F14644 /* AddAssetViewController.xib in Resources */,
+				ACB9119120266EC200F14644 /* AddCustomizedTokenViewController.xib in Resources */,
 				AC54FD7F204FC6EE007E1DEB /* OpenSans-Italic.ttf in Resources */,
 				AC31CE99205B9C0D00A30335 /* Montserrat-BoldItalic.ttf in Resources */,
 				AC54FD82204FC6F2007E1DEB /* OpenSans-Light.ttf in Resources */,
@@ -2188,7 +2188,7 @@
 				AC3756732038D64B00AADC60 /* MnemonicViewController.swift in Sources */,
 				ACB5DD9E202D5B8D00140A09 /* NumericKeyboardItem.swift in Sources */,
 				949629DF204E9C9800858F03 /* MinedRing.swift in Sources */,
-				ACB9119020266EC200F14644 /* AddAssetViewController.swift in Sources */,
+				ACB9119020266EC200F14644 /* AddCustomizedTokenViewController.swift in Sources */,
 				ACDBF10E203FEBAD000F0DEC /* TableViewReorderDelegate.swift in Sources */,
 				AC72AED8204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift in Sources */,
 				949629DB204E836400858F03 /* Depth.swift in Sources */,

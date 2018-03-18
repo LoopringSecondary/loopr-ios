@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddAssetViewController: UIViewController, UITextFieldDelegate {
+class AddCustomizedTokenViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var tokenNameTitleLabel: UILabel!
     @IBOutlet weak var tokenNameTextField: UITextField!

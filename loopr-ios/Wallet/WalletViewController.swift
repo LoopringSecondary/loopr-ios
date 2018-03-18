@@ -105,7 +105,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func pressAddButton(_ button: UIBarButtonItem) {
-        let viewController = AddAssetViewController()
+        let viewController = AddCustomizedTokenViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -177,7 +177,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func navigatToAddAssetViewController() {
         print("navigatToAddAssetViewController")
-        let viewController = AddAssetViewController()
+        let viewController = AddCustomizedTokenViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
