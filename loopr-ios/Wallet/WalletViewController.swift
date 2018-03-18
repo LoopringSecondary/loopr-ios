@@ -10,8 +10,7 @@ import UIKit
 
 class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate {
 
-    
-    private var assets: [Asset]? = []
+    private var assets: [Asset] = []
     
     @IBOutlet weak var assetTableView: UITableView!
 
@@ -115,11 +114,14 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("receivedBalanceResponseReceivedNotification")
 
         // TODO: Perform a diff algorithm
-        // assetTableView.reloadData()
+        if self.assets.count == 0 {
+            self.assets = AssetDataManager.shared.getAssets()
+            assetTableView.reloadData()
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1 + (assets?.count)!
+        return 1 + (assets.count)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -151,7 +153,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 cell = nib![0] as? AssetTableViewCell
                 cell?.accessoryType = .disclosureIndicator
             }
-            cell?.asset = assets?[indexPath.row - 1]
+            cell?.asset = assets[indexPath.row - 1]
             cell?.update()
             return cell!
         }
@@ -165,7 +167,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
-            let asset = assets?[indexPath.row - 1]
+            let asset = assets[indexPath.row - 1]
             let assetDetailViewController = AssetDetailViewController()
             assetDetailViewController.asset = asset
             assetDetailViewController.hidesBottomBarWhenPushed = true
