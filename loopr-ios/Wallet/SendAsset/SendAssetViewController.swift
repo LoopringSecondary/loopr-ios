@@ -15,6 +15,20 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
     @IBOutlet weak var sendButtonBackgroundView: UIView!
     @IBOutlet weak var sendButton: UIButton!
 
+    // Token
+    var tokenIconImageView = UIImageView()
+    var tokenLabel = UILabel()
+    
+    
+    // Address
+    
+    // Amount
+    
+    // Transaction Fee
+    
+    // Advanced
+    
+    
     // Keyboard
     var isKeyboardShow: Bool = false
     var keyboardView: DefaultNumericKeyboard!
@@ -32,6 +46,28 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
         sendButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
         
         scrollViewButtonLayoutConstraint.constant = 0
+        
+        // Setup UI in the scroll view
+        let screensize: CGRect = UIScreen.main.bounds
+        let screenWidth = screensize.width
+        let screenHeight = screensize.height
+        
+        let originY: CGFloat = 50
+        let padding: CGFloat = 15
+        
+        // First row: token
+        tokenIconImageView.frame = CGRect(center: CGPoint(x: screenWidth*0.5, y: originY), size: CGSize(width: 54, height: 54))
+        tokenIconImageView.image = UIImage(named: "ETH")
+        scrollView.addSubview(tokenIconImageView)
+        
+        tokenLabel.frame = CGRect(center: CGPoint(x: screenWidth*0.5, y: tokenIconImageView.frame.maxY + 30), size: CGSize(width: screenWidth - 2*padding, height: 21))
+        tokenLabel.text = "123123.422 LRC  Available"
+        tokenLabel.textAlignment = .center
+        tokenLabel.font = FontConfigManager.shared.getLabelFont()
+        scrollView.addSubview(tokenLabel)
+        
+        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight)
+        
     }
 
     override func didReceiveMemoryWarning() {
