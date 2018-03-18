@@ -29,10 +29,13 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
         unlockButton.layer.cornerRadius = 23
         unlockButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)
 
+        privateKeyTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
+        privateKeyTextView.cornerRadius = 12
+        privateKeyTextView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17.0)
+        privateKeyTextView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
         privateKeyTextView.delegate = self
         privateKeyTextView.text = NSLocalizedString("Please input your private key", comment: "")
         privateKeyTextView.textColor = .lightGray
-        privateKeyTextView.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {

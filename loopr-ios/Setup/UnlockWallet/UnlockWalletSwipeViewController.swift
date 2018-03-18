@@ -24,9 +24,13 @@ class UnlockWalletSwipeViewController: SwipeViewController {
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
         options.swipeTabView.height = 44
-        options.swipeTabView.itemView.width = 66
+        options.swipeTabView.underlineView.height = 1
+        options.swipeTabView.underlineView.margin = 30
+
         options.swipeTabView.style = .segmented
-        options.swipeTabView.itemView.font = UIFont.boldSystemFont(ofSize: 17)
+
+        options.swipeTabView.itemView.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 21) ?? UIFont.systemFont(ofSize: 17)
+
         swipeView.reloadData(options: options)
         
         let button = UIBarButtonItem(image: UIImage.init(named: "Scan"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.pressScanButton(_:)))

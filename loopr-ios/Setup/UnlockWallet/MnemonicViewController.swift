@@ -13,9 +13,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var mnemonicWordTextView: UITextView!
     @IBOutlet weak var unlockButtonBottonLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var unlockButton: UIButton!
-    
-    var keyboardHeight: CGFloat = 0.0
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,7 +26,13 @@ class MnemonicViewController: UIViewController, UITextViewDelegate {
         unlockButton.backgroundColor = UIColor.black
         unlockButton.layer.cornerRadius = 23
         unlockButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)        
-        
+
+        // TODO: This setting doesn't work.
+        mnemonicWordTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
+
+        mnemonicWordTextView.cornerRadius = 12
+        mnemonicWordTextView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17.0)
+        mnemonicWordTextView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
         mnemonicWordTextView.delegate = self
         mnemonicWordTextView.text = NSLocalizedString("Please use space to seperate the mnemonic words", comment: "")
         mnemonicWordTextView.textColor = .lightGray
@@ -40,7 +44,6 @@ class MnemonicViewController: UIViewController, UITextViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // mnemonicWordTextView.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,7 +57,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate {
             return
         }
         
-        keyboardHeight = keyboardFrame.cgRectValue.height
+        let keyboardHeight = keyboardFrame.cgRectValue.height
         
         if #available(iOS 11.0, *) {
             // Get the the distance from the bottom safe area edge to the bottom of the screen
