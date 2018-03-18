@@ -56,20 +56,21 @@ class AssetTransactionDetailViewController: UIViewController {
         let screenWidth = screensize.width
         let screenHeight = screensize.height
         
-        let originY: CGFloat = screenHeight * 0.4
+        let originY: CGFloat = screenHeight * 0.5
         let padding: CGFloat = 15
+        let labelHeight: CGFloat = 40
         
         // Row 1
         label1.theme_textColor = GlobalPicker.textColor
-        label1.font = FontConfigManager.shared.getLabelFont()
-        label1.frame = CGRect(x: padding, y: originY, width: 80, height: 40)
+        label1.font = FontConfigManager.shared.getLabelFont(size: 14)
+        label1.frame = CGRect(x: padding, y: originY, width: 80, height: labelHeight)
         view.addSubview(label1)
         
         label2.text = "Completed"
         label2.theme_textColor = GlobalPicker.textColor
         label2.textAlignment = .right
-        label2.font = FontConfigManager.shared.getLabelFont()
-        label2.frame = CGRect(x: padding + 80, y: originY, width: screenWidth-80-2*padding, height: 40)
+        label2.font = FontConfigManager.shared.getLabelFont(size: 14)
+        label2.frame = CGRect(x: padding + 80 - 40, y: originY, width: screenWidth-80-2*padding + 40, height: labelHeight)
         view.addSubview(label2)
         
         row1Underline.backgroundColor = UIColor.black.withAlphaComponent(0.3)
@@ -79,16 +80,17 @@ class AssetTransactionDetailViewController: UIViewController {
         // Row 2
         label3.text = "From"
         label3.theme_textColor = GlobalPicker.textColor
-        label3.font = FontConfigManager.shared.getLabelFont()
-        label3.frame = CGRect(x: padding, y: row1Underline.frame.maxY + padding, width: 80, height: 40)
+        label3.font = FontConfigManager.shared.getLabelFont(size: 14)
+        label3.frame = CGRect(x: padding, y: row1Underline.frame.maxY + padding, width: 80, height: labelHeight)
         view.addSubview(label3)
         
         label4.theme_textColor = GlobalPicker.textColor
         label4.textAlignment = .right
-        label4.font = FontConfigManager.shared.getLabelFont()
-        label4.frame = CGRect(x: padding + 80, y: row1Underline.frame.maxY + padding, width: screenWidth-80-2*padding, height: 40)
+        label4.font = FontConfigManager.shared.getLabelFont(size: 14)
+        // label 4 may
+        label4.frame = CGRect(x: padding + 80, y: row1Underline.frame.maxY + padding, width: screenWidth-80-2*padding, height: labelHeight)
         view.addSubview(label4)
-        
+
         row2Underline.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         row2Underline.frame = CGRect(x: padding, y: label3.frame.maxY, width: screenWidth - 2*padding, height: 1)
         view.addSubview(row2Underline)
@@ -96,14 +98,14 @@ class AssetTransactionDetailViewController: UIViewController {
         // Row 3
         label5.text = "ID"
         label5.theme_textColor = GlobalPicker.textColor
-        label5.font = FontConfigManager.shared.getLabelFont()
-        label5.frame = CGRect(x: padding, y: row2Underline.frame.maxY + padding, width: 80, height: 40)
+        label5.font = FontConfigManager.shared.getLabelFont(size: 14)
+        label5.frame = CGRect(x: padding, y: row2Underline.frame.maxY + padding, width: 80, height: labelHeight)
         view.addSubview(label5)
         
         label6.theme_textColor = GlobalPicker.textColor
         label6.textAlignment = .right
-        label6.font = FontConfigManager.shared.getLabelFont()
-        label6.frame = CGRect(x: padding + 80, y: row2Underline.frame.maxY + padding, width: screenWidth-80-2*padding, height: 40)
+        label6.font = FontConfigManager.shared.getLabelFont(size: 14)
+        label6.frame = CGRect(x: padding + 80, y: row2Underline.frame.maxY + padding, width: screenWidth-80-2*padding, height: labelHeight)
         view.addSubview(label6)
 
         row3Underline.backgroundColor = UIColor.black.withAlphaComponent(0.3)
@@ -113,14 +115,14 @@ class AssetTransactionDetailViewController: UIViewController {
         // Row 4
         label7.text = "Date"
         label7.theme_textColor = GlobalPicker.textColor
-        label7.font = FontConfigManager.shared.getLabelFont()
-        label7.frame = CGRect(x: padding, y: row3Underline.frame.maxY + padding, width: 80, height: 40)
+        label7.font = FontConfigManager.shared.getLabelFont(size: 14)
+        label7.frame = CGRect(x: padding, y: row3Underline.frame.maxY + padding, width: 80, height: labelHeight)
         view.addSubview(label7)
         
         label8.theme_textColor = GlobalPicker.textColor
         label8.textAlignment = .right
-        label8.font = FontConfigManager.shared.getLabelFont()
-        label8.frame = CGRect(x: padding + 80, y: row3Underline.frame.maxY + padding, width: screenWidth-80-2*padding, height: 40)
+        label8.font = FontConfigManager.shared.getLabelFont(size: 14)
+        label8.frame = CGRect(x: padding + 80, y: row3Underline.frame.maxY + padding, width: screenWidth-80-2*padding, height: labelHeight)
         view.addSubview(label8)
 
         update()
@@ -137,6 +139,8 @@ class AssetTransactionDetailViewController: UIViewController {
             typeImageView.image = transaction.icon
             amountLabel.text = transaction.value + " " + transaction.symbol
             amountInCurrencyLabel.text = "≈ $\(transaction.display)"
+            
+            // TODO: cover all cases
             switch transaction.type {
             case .received:
                 label1.text = "From"
@@ -144,9 +148,12 @@ class AssetTransactionDetailViewController: UIViewController {
             case .sent:
                 label1.text = "To"
                 label2.text = transaction.to
+            case .approved:
+                label1.text = "Status"
+                label2.text = transaction.from
             default:
                 label1.text = transaction.type.description
-                label2.text = ""
+                label2.text = transaction.from
             }
             label4.text = transaction.txHash
             label6.text = transaction.createTime
