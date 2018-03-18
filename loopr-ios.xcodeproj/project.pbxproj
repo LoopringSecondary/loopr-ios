@@ -325,6 +325,9 @@
 		AC9280ED2030D34B0009B574 /* TradePlaceOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9280EB2030D34B0009B574 /* TradePlaceOrderViewController.xib */; };
 		AC952A142053A84800C78562 /* OrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC952A122053A84800C78562 /* OrderHistoryViewController.swift */; };
 		AC952A152053A84800C78562 /* OrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC952A132053A84800C78562 /* OrderHistoryViewController.xib */; };
+		AC9ADF91205EE3B900CBE368 /* ConvertETHViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9ADF8F205EE3B900CBE368 /* ConvertETHViewController.swift */; };
+		AC9ADF92205EE3B900CBE368 /* ConvertETHViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9ADF90205EE3B900CBE368 /* ConvertETHViewController.xib */; };
+		AC9ADF94205EF34500CBE368 /* ConvertDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9ADF93205EF34500CBE368 /* ConvertDataManager.swift */; };
 		ACB5DD7C202A203900140A09 /* MarketLineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD7A202A203900140A09 /* MarketLineChartViewController.swift */; };
 		ACB5DD7D202A203900140A09 /* MarketLineChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD7B202A203900140A09 /* MarketLineChartViewController.xib */; };
 		ACB5DD80202AC26000140A09 /* button1.json in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD7F202AC26000140A09 /* button1.json */; };
@@ -650,6 +653,9 @@
 		AC9280EB2030D34B0009B574 /* TradePlaceOrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradePlaceOrderViewController.xib; sourceTree = "<group>"; };
 		AC952A122053A84800C78562 /* OrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryViewController.swift; sourceTree = "<group>"; };
 		AC952A132053A84800C78562 /* OrderHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistoryViewController.xib; sourceTree = "<group>"; };
+		AC9ADF8F205EE3B900CBE368 /* ConvertETHViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertETHViewController.swift; sourceTree = "<group>"; };
+		AC9ADF90205EE3B900CBE368 /* ConvertETHViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConvertETHViewController.xib; sourceTree = "<group>"; };
+		AC9ADF93205EF34500CBE368 /* ConvertDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertDataManager.swift; sourceTree = "<group>"; };
 		ACB5DD7A202A203900140A09 /* MarketLineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketLineChartViewController.swift; sourceTree = "<group>"; };
 		ACB5DD7B202A203900140A09 /* MarketLineChartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketLineChartViewController.xib; sourceTree = "<group>"; };
 		ACB5DD7F202AC26000140A09 /* button1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = button1.json; sourceTree = "<group>"; };
@@ -1168,10 +1174,10 @@
 				AC31B93B204A8D1F00B16155 /* Keystone@8fea1ff */,
 				ACB746E22043C5CC006C2BF5 /* QRCode */,
 				AC6E95F62032CBE900C6EB7C /* Archive */,
+				ACDBF10F203FEC96000F0DEC /* UIConfig */,
 				ACB5DD85202AD74D00140A09 /* UIComponents */,
 				AC5E3E72205E21E00051ACFC /* NotificationCenter */,
 				ACB9119320278A0E00F14644 /* RelayAPI */,
-				ACDBF10F203FEC96000F0DEC /* UIConfig */,
 				ACB911672025470B00F14644 /* DataManagers */,
 				ACB9115E20242E2400F14644 /* Models */,
 				C8BF959B20267FB600343B9A /* Setup */,
@@ -1241,6 +1247,15 @@
 				AC952A132053A84800C78562 /* OrderHistoryViewController.xib */,
 			);
 			path = OrderHistory;
+			sourceTree = "<group>";
+		};
+		AC9ADF8E205EE2E800CBE368 /* ConvertETH */ = {
+			isa = PBXGroup;
+			children = (
+				AC9ADF8F205EE3B900CBE368 /* ConvertETHViewController.swift */,
+				AC9ADF90205EE3B900CBE368 /* ConvertETHViewController.xib */,
+			);
+			path = ConvertETH;
 			sourceTree = "<group>";
 		};
 		ACB5DD79202A1F3000140A09 /* MarketDetail */ = {
@@ -1340,6 +1355,7 @@
 				AC5E0DDD203B447700AF03C7 /* WalletBalanceTableViewCell.xib */,
 				ACB9115820242B9D00F14644 /* AssetTableViewCell.swift */,
 				ACB9115920242B9D00F14644 /* AssetTableViewCell.xib */,
+				AC9ADF8E205EE2E800CBE368 /* ConvertETH */,
 				AC5E0DE0203B44EA00AF03C7 /* AddAsset */,
 				AC5E3E6D205DFABD0051ACFC /* SendAsset */,
 				AC5E0DD3203A9D7D00AF03C7 /* AssetDetail */,
@@ -1385,6 +1401,7 @@
 				AC72AEDE204CA50600E9D3B0 /* GenerateWalletDataManager.swift */,
 				AC13B30620548A95008A72C0 /* PlaceOrderDataManager.swift */,
 				AC72AEE5204F000600E9D3B0 /* TradeDataManager.swift */,
+				AC9ADF93205EF34500CBE368 /* ConvertDataManager.swift */,
 				AC31B937204A4E1300B16155 /* SettingDataManager.swift */,
 				AC72AEE3204E7FA900E9D3B0 /* SetupDataManager.swift */,
 				AC41420B2038BFB70089861D /* UserDefaultsKeys.swift */,
@@ -1686,6 +1703,7 @@
 				AC13B30F2055A646008A72C0 /* PlaceOrderConfirmationViewController.xib in Resources */,
 				ACB9118D20266A9C00F14644 /* AssetDetailViewController.xib in Resources */,
 				AC54FD70204FC6DC007E1DEB /* Lato-Regular.ttf in Resources */,
+				AC9ADF92205EE3B900CBE368 /* ConvertETHViewController.xib in Resources */,
 				AC31CE74205B996000A30335 /* Roboto-Regular.ttf in Resources */,
 				AC01A2452022D9BE00FE8317 /* PortfolioViewController.xib in Resources */,
 				AC54FD61204FC6CA007E1DEB /* Lato-Hairline.ttf in Resources */,
@@ -2085,10 +2103,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC31B960204A8E4F00B16155 /* Wallet.swift in Sources */,
+				AC9ADF94205EF34500CBE368 /* ConvertDataManager.swift in Sources */,
 				AC76E4702047F1D3008BA229 /* CircleChart.swift in Sources */,
 				AC5E3E6B205DEAC00051ACFC /* TradeCompleteViewController.swift in Sources */,
 				AC72AEE6204F000600E9D3B0 /* TradeDataManager.swift in Sources */,
 				AC01A2442022D9BE00FE8317 /* PortfolioViewController.swift in Sources */,
+				AC9ADF91205EE3B900CBE368 /* ConvertETHViewController.swift in Sources */,
 				ACB729D0205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.swift in Sources */,
 				AC31B93520493FB900B16155 /* SettingLanguageTableViewCell.swift in Sources */,
 				AC13B30320548767008A72C0 /* BuyAndSellSwipeViewController.swift in Sources */,

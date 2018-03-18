@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConvertETHViewController" customModule="loopr_ios" customModuleProvider="target">
+            <connections>
+                <outlet property="convertBackgroundView" destination="SPJ-Zq-umT" id="gP7-Cc-nGc"/>
+                <outlet property="convertButton" destination="s5v-5I-uis" id="dgh-9E-RWv"/>
+                <outlet property="scrollView" destination="jgg-vL-AdJ" id="CW8-bl-i7y"/>
+                <outlet property="scrollViewButtonLayoutConstraint" destination="CoX-Jy-JYR" id="5Md-oh-tED"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgg-vL-AdJ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="590"/>
+                </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPJ-Zq-umT">
+                    <rect key="frame" x="0.0" y="590" width="375" height="77"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s5v-5I-uis">
+                            <rect key="frame" x="15" y="15" width="345" height="47"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="47" id="4jL-S9-Mag"/>
+                            </constraints>
+                            <state key="normal" title="Yes, Convert Now!">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="pressedConvertButton:" destination="-1" eventType="touchUpInside" id="yIY-yh-yNd"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="s5v-5I-uis" secondAttribute="bottom" constant="15" id="CaA-PY-kx0"/>
+                        <constraint firstAttribute="trailing" secondItem="s5v-5I-uis" secondAttribute="trailing" constant="15" id="T9h-If-9AY"/>
+                        <constraint firstItem="s5v-5I-uis" firstAttribute="leading" secondItem="SPJ-Zq-umT" secondAttribute="leading" constant="15" id="ebU-YB-rVm"/>
+                        <constraint firstAttribute="height" constant="77" id="fv3-H7-ZfU"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="SPJ-Zq-umT" firstAttribute="top" secondItem="jgg-vL-AdJ" secondAttribute="bottom" id="CoX-Jy-JYR"/>
+                <constraint firstItem="jgg-vL-AdJ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="K6N-nq-Tc6"/>
+                <constraint firstItem="SPJ-Zq-umT" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="Psd-1G-f58"/>
+                <constraint firstItem="SPJ-Zq-umT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="R0T-Ov-daF"/>
+                <constraint firstItem="SPJ-Zq-umT" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="TCa-VB-zwz"/>
+                <constraint firstItem="jgg-vL-AdJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kRw-fM-eZE"/>
+                <constraint firstItem="jgg-vL-AdJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lbZ-A9-by3"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="34.5" y="105.5"/>
+        </view>
+    </objects>
+</document>

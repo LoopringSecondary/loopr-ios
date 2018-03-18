@@ -35,16 +35,21 @@ class TradeTokenView: UIView {
         addSubview(iconImageView)
         addSubview(amountLabel)
     }
+
+    // Used in ConvertETHViewController
+    func update(symbol: String) {
+        amountLabel.text = symbol
+        iconImageView.image = UIImage(named: symbol) ?? nil
+    }
     
     func update(title: String, symbol: String, amount: Double) {
-        
-        self.titleLabel.text = title
-        self.amountLabel.text = "\(amount) \(symbol)"
+        titleLabel.text = title
+        amountLabel.text = "\(amount) \(symbol)"
 
         // TODO: use symbol icon
         iconImageView.image = UIImage(named: symbol) ?? nil
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

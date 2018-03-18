@@ -83,14 +83,15 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func setupNavigationBar() {
-        self.title = asset!.name
-        
+        self.navigationItem.title = asset?.name.capitalized ?? ""
+
         // For back button in navigation bar
         let backButton = UIBarButtonItem()
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
         // TODO: Remove the button.
+        /*
         // We need to reduce the spacing between two UIBarButtonItems
         let sendButton = UIButton(type: UIButtonType.custom)
         sendButton.setImage(UIImage.init(named: "Send"), for: UIControlState.normal)
@@ -108,6 +109,25 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         let qrCodeBarButton = UIBarButtonItem(customView: qrCodebutton)
         
         self.navigationItem.rightBarButtonItems = [sendBarButton, qrCodeBarButton]
+         */
+
+        if let asset = asset, asset.symbol == "ETH" {
+            let convertButton = UIButton()
+            convertButton.setTitle("   Convert   ", for: .normal)
+            convertButton.setTitleColor(UIColor.black, for: .normal)
+            convertButton.setTitleColor(UIColor.init(white: 0, alpha: 0.3), for: .highlighted)
+            convertButton.titleLabel?.font = FontConfigManager.shared.getButtonTitleLabelFont(size: 13)
+            convertButton.addTarget(self, action: #selector(self.pressedConvertButton(_:)), for: UIControlEvents.touchUpInside)
+            
+            convertButton.backgroundColor = UIColor.clear
+            convertButton.layer.cornerRadius = 14
+            convertButton.layer.borderWidth = 0.5
+            convertButton.layer.borderColor = UIColor.black.cgColor
+            
+            let convertBarButtton = UIBarButtonItem(customView: convertButton)
+            self.navigationItem.rightBarButtonItem = convertBarButtton
+        }
+
     }
 
     // Not going to use a singleton pattern to store asset data.
@@ -128,6 +148,12 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     */
     
+    @objc func pressedConvertButton(_ sender: Any) {
+        print("pressedConvertButton")
+        let viewController = ConvertETHViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     @IBAction func pressedSendButton(_ sender: Any) {
         print("pressedSendButton")
         let viewController = SendAssetViewController()
@@ -139,7 +165,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         // TODO: the design doesn't have the receive page.
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1 + self.transactions.count
     }

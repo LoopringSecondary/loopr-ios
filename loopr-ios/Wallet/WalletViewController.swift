@@ -8,8 +8,6 @@
 
 import UIKit
 
-import NotificationBannerSwift
-
 class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate {
 
     private var assets: [Asset] = []
@@ -166,11 +164,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            
-            // This is a test.
-            let banner = NotificationBanner(title: "Test", subtitle: "subtitle", style: .success)
-            banner.duration = 1.0
-            banner.show()
             
         } else {
             tableView.deselectRow(at: indexPath, animated: true)

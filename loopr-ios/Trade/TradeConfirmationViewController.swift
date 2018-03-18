@@ -55,7 +55,7 @@ class TradeConfirmationViewController: UIViewController {
         tokenBView = TradeTokenView(frame: CGRect(x: (screenWidth+10)/2, y: tokenViewMinY, width: (screenWidth-30)/2, height: 200))
         view.addSubview(tokenBView)
         
-        arrowRightImageView = UIImageView(frame: CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY), size: CGSize(width: 45, height: 45)))
+        arrowRightImageView = UIImageView(frame: CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY), size: CGSize(width: 32, height: 32)))
         arrowRightImageView.image = UIImage.init(named: "Arrow-right-black")
         view.addSubview(arrowRightImageView)
         

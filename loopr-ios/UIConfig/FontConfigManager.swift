@@ -75,7 +75,7 @@ class FontConfigManager {
     
     func getLight() -> String {
         if currentFont == .DIN {
-            return "DINNextW1G-Light"
+            return "DINNextLTPro-Light"
         }
         return "\(currentFont.rawValue)-Light"
     }
