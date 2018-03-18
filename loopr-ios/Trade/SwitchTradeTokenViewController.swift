@@ -49,8 +49,14 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
             let nib = Bundle.main.loadNibNamed("SwitchTradeTokenTableViewCell", owner: self, options: nil)
             cell = nib![0] as? SwitchTradeTokenTableViewCell
         }
+
         let token = AssetDataManager.shared.getTokens()[indexPath.row]
         cell?.titleLabel.text = "\(token.symbol)(\(token.source.capitalized))"
+
+        if (type == .tokenS && token.symbol == TradeDataManager.shared.tokenS.symbol) || (type == .tokenB && token.symbol == TradeDataManager.shared.tokenB.symbol) {
+            cell?.accessoryType = UITableViewCellAccessoryType.checkmark
+        }
+
         return cell!
     }
 

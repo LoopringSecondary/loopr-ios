@@ -17,7 +17,9 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
         // Initialization code
         
         titleLabel.font = FontConfigManager.shared.getLabelFont()
-        titleLabel.textColor = UIColor.black
+
+        theme_backgroundColor = GlobalPicker.backgroundColor
+        titleLabel.theme_textColor = GlobalPicker.textColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,7 +31,7 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
     class func getCellIdentifier() -> String {
         return "SwitchTradeTokenTableViewCell"
     }
-    
+
     class func getHeight() -> CGFloat {
         return 45
     }

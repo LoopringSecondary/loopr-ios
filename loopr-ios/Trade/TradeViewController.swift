@@ -166,7 +166,12 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     @IBAction func pressedNextButton(_ sender: Any) {
         print("pressedNextButton")
-        let viewController = TradeConfirmationViewController()
+        
+        // Get the latest value from TextFields
+        TradeDataManager.shared.amountTokenS = Double(tokenSPriceTextField.text ?? "") ?? 0
+        TradeDataManager.shared.amountTokenB = Double(totalTextField.text ?? "") ?? 0
+        
+        let viewController = TradeReviewViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -179,6 +184,10 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         showKeyboard(textField: textField)
 
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("textFieldDidEndEditing")
     }
     
     func getActiveTextField() -> UITextField? {

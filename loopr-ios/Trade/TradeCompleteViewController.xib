@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TradeConfirmationViewController" customModule="loopr_ios" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TradeCompleteViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
-                <outlet property="closeOrderButton" destination="RXZ-sL-MIg" id="5ag-d0-0Ad"/>
-                <outlet property="shareOrderButton" destination="lmP-25-jqo" id="7w4-6q-GIy"/>
+                <outlet property="checkDetailsButton" destination="x5h-LB-SzY" id="Hh8-Z3-Oa7"/>
+                <outlet property="doneButton" destination="kgb-As-R0v" id="JNI-wA-Ulx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,44 +22,44 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXZ-sL-MIg">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgb-As-R0v">
                     <rect key="frame" x="15" y="607" width="345" height="45"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="45" id="pTt-P0-Rz3"/>
+                        <constraint firstAttribute="height" constant="45" id="ZC6-80-rlt"/>
                     </constraints>
                     <state key="normal" title="Button">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
-                        <action selector="pressedCloseOrderButton:" destination="-1" eventType="touchUpInside" id="IJO-uy-7ik"/>
+                        <action selector="pressedDoneButton:" destination="-1" eventType="touchUpInside" id="6Qb-bV-ORy"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmP-25-jqo">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5h-LB-SzY">
                     <rect key="frame" x="15" y="547" width="345" height="45"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="45" id="BhI-CW-FEo"/>
+                        <constraint firstAttribute="height" constant="45" id="4re-U1-mJr"/>
                     </constraints>
                     <state key="normal" title="Button">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
-                        <action selector="pressedShareOrderButton:" destination="-1" eventType="touchUpInside" id="kSM-gN-fXD"/>
+                        <action selector="pressedCheckDetailsButton:" destination="-1" eventType="touchUpInside" id="Y6J-yt-vff"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="RXZ-sL-MIg" firstAttribute="top" secondItem="lmP-25-jqo" secondAttribute="bottom" constant="15" id="0OX-pA-H5e"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lmP-25-jqo" secondAttribute="trailing" constant="15" id="0Od-pe-ehd"/>
-                <constraint firstItem="RXZ-sL-MIg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="Agj-aT-ycz"/>
-                <constraint firstItem="lmP-25-jqo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="UXt-y9-Kwu"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="RXZ-sL-MIg" secondAttribute="bottom" constant="15" id="cHc-B4-axM"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="RXZ-sL-MIg" secondAttribute="trailing" constant="15" id="lW4-UW-RLD"/>
+                <constraint firstItem="x5h-LB-SzY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="71T-jW-m8B"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kgb-As-R0v" secondAttribute="trailing" constant="15" id="9lr-bN-l0N"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="x5h-LB-SzY" secondAttribute="trailing" constant="15" id="AFu-kf-g9W"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="kgb-As-R0v" secondAttribute="bottom" constant="15" id="NW0-mv-RCl"/>
+                <constraint firstItem="kgb-As-R0v" firstAttribute="top" secondItem="x5h-LB-SzY" secondAttribute="bottom" constant="15" id="hlQ-Y1-dLU"/>
+                <constraint firstItem="kgb-As-R0v" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="jIf-uK-5lz"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="35.5" y="54.5"/>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
     </objects>
 </document>

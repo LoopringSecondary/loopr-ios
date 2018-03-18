@@ -36,7 +36,7 @@ class TradeTokenView: UIView {
         addSubview(amountLabel)
     }
     
-    func update(title: String, amount: Double, symbol: String) {
+    func update(title: String, symbol: String, amount: Double) {
         
         self.titleLabel.text = title
         self.amountLabel.text = "\(amount) \(symbol)"
