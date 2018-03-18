@@ -10,6 +10,9 @@ import UIKit
 
 class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate {
 
+    
+    private var assets: [Asset]? = []
+    
     @IBOutlet weak var assetTableView: UITableView!
 
     override func viewDidLoad() {
@@ -40,8 +43,18 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // Add observer.
         NotificationCenter.default.addObserver(self, selector: #selector(receivedBalanceResponseReceivedNotification), name: .balanceResponseReceived, object: nil)
+        setup()
     }
     
+    func setup() {
+        // TODO: putting getMarketsFromServer() here may cause a race condition.
+        // It's not perfect, but works. Need improvement in the future.
+        DispatchQueue.main.async {
+            self.assets = AssetDataManager.shared.getAssets()
+            self.assetTableView.reloadData()
+        }
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -102,11 +115,11 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("receivedBalanceResponseReceivedNotification")
 
         // TODO: Perform a diff algorithm
-        assetTableView.reloadData()
+        // assetTableView.reloadData()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1 + AssetDataManager.shared.getAssets().count
+        return 1 + (assets?.count)!
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -138,7 +151,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 cell = nib![0] as? AssetTableViewCell
                 cell?.accessoryType = .disclosureIndicator
             }
-            cell?.asset = AssetDataManager.shared.getAssets()[indexPath.row - 1]
+            cell?.asset = assets?[indexPath.row - 1]
             cell?.update()
             return cell!
         }
@@ -152,8 +165,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
-            let asset = AssetDataManager.shared.getAssets()[indexPath.row - 1]
-            AssetDataManager.shared.getTransactionsFromServer(asset: asset)
+            let asset = assets?[indexPath.row - 1]
             let assetDetailViewController = AssetDetailViewController()
             assetDetailViewController.asset = asset
             assetDetailViewController.hidesBottomBarWhenPushed = true

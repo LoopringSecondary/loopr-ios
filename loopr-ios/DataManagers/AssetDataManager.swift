@@ -106,27 +106,29 @@ class AssetDataManager {
         return result
     }
     
-    func getTransactionsFromServer(asset: Asset) {
+    func getTransactionsFromServer(owner: String, asset: Asset, completionHandler: @escaping (_ transactions: [Transaction], _ error: Error?) -> Void) {
         
         transactions = []
         let ownerx = "0x48ff2269e58a373120FFdBBdEE3FBceA854AC30A"
         
-//        if let owner = AppWalletDataManager.shared.getCurrentAppWallet()?.address {
-            LoopringAPIRequest.getTransactions(owner: ownerx, symbol: asset.symbol, thxHash: nil, completionHandler: { (transactions, error) in
-                guard error == nil && transactions != nil else {
-                    return
-                }
-                for transaction in transactions! {
-                    if let value = self.getAmount(of: transaction.symbol, from: transaction.value) {
-                        if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
-                            transaction.value = value.description
-                            transaction.display = value * price
-                            self.transactions.append(transaction)
-                        }
+        LoopringAPIRequest.getTransactions(owner: ownerx, symbol: asset.symbol, thxHash: nil, completionHandler: { (transactions, error) in
+            guard error == nil && transactions != nil else {
+                return
+            }
+            
+            print("\n\n\(transactions!.count)\n\n")
+            
+            for transaction in transactions! {
+                if let value = self.getAmount(of: transaction.symbol, from: transaction.value) {
+                    if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
+                        transaction.value = value.description
+                        transaction.display = value * price
+                        self.transactions.append(transaction)
                     }
                 }
-            })
-//        }
+            }
+            completionHandler(self.transactions, nil)
+        })
     }
     
     // this func should be called every 10 secs when emitted
