@@ -300,6 +300,7 @@
 		AC5E0992205F256500801738 /* AddTokenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E0990205F256500801738 /* AddTokenViewController.xib */; };
 		AC5E0995205F270000801738 /* ScanQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0993205F270000801738 /* ScanQRCodeViewController.swift */; };
 		AC5E0996205F270000801738 /* ScanQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E0994205F270000801738 /* ScanQRCodeViewController.xib */; };
+		AC5E0998205F773D00801738 /* SendAssetDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0997205F773D00801738 /* SendAssetDataManager.swift */; };
 		AC5E0DD0203A7C5800AF03C7 /* SelectWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0DCE203A7C5800AF03C7 /* SelectWalletTableViewCell.swift */; };
 		AC5E0DD1203A7C5800AF03C7 /* SelectWalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E0DCF203A7C5800AF03C7 /* SelectWalletTableViewCell.xib */; };
 		AC5E0DD6203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0DD4203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift */; };
@@ -643,6 +644,7 @@
 		AC5E0990205F256500801738 /* AddTokenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTokenViewController.xib; sourceTree = "<group>"; };
 		AC5E0993205F270000801738 /* ScanQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRCodeViewController.swift; sourceTree = "<group>"; };
 		AC5E0994205F270000801738 /* ScanQRCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanQRCodeViewController.xib; sourceTree = "<group>"; };
+		AC5E0997205F773D00801738 /* SendAssetDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendAssetDataManager.swift; sourceTree = "<group>"; };
 		AC5E0DCE203A7C5800AF03C7 /* SelectWalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletTableViewCell.swift; sourceTree = "<group>"; };
 		AC5E0DCF203A7C5800AF03C7 /* SelectWalletTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWalletTableViewCell.xib; sourceTree = "<group>"; };
 		AC5E0DD4203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetBalanceTableViewCell.swift; sourceTree = "<group>"; };
@@ -1473,6 +1475,7 @@
 				AC13B30620548A95008A72C0 /* PlaceOrderDataManager.swift */,
 				AC72AEE5204F000600E9D3B0 /* TradeDataManager.swift */,
 				AC9ADF93205EF34500CBE368 /* ConvertDataManager.swift */,
+				AC5E0997205F773D00801738 /* SendAssetDataManager.swift */,
 				AC31B937204A4E1300B16155 /* SettingDataManager.swift */,
 				AC72AEE3204E7FA900E9D3B0 /* SetupDataManager.swift */,
 				AC41420B2038BFB70089861D /* UserDefaultsKeys.swift */,
@@ -2187,6 +2190,7 @@
 				AC13B30320548767008A72C0 /* BuyAndSellSwipeViewController.swift in Sources */,
 				ACB5DDA6202D704200140A09 /* UIButtonExtension.swift in Sources */,
 				AC31B948204A8DF400B16155 /* Address.swift in Sources */,
+				AC5E0998205F773D00801738 /* SendAssetDataManager.swift in Sources */,
 				ACB5DD8A202BF23100140A09 /* ArchiveBuyViewController.swift in Sources */,
 				AC387518205F12F100A76637 /* ContextMenu+MenuStyle.swift in Sources */,
 				AC5E0DE4203BC4B100AF03C7 /* FloatLabelTextField.swift in Sources */,

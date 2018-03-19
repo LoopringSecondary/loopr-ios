@@ -67,8 +67,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         tokenSPriceTextField.delegate = self
         tokenSPriceTextField.tag = 0
         tokenSPriceTextField.inputView = UIView()
-        tokenSPriceTextField.font = FontConfigManager.shared.getLabelFont() // UIFont.init(name: FontConfigManager.shared.getLight(), size: 24)
-        // tokenSPriceTextField.backgroundColor = UIColor.blue
+        tokenSPriceTextField.font = FontConfigManager.shared.getLabelFont()
         tokenSPriceTextField.placeholder = "Enter the amount you have"
         tokenSPriceTextField.contentMode = UIViewContentMode.bottom
         tokenSPriceTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2-80, height: 40)
