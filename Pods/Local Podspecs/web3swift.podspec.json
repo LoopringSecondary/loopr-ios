@@ -1,0 +1,38 @@
+{
+  "name": "web3swift",
+  "version": "0.0.9",
+  "summary": "A short description of web3swift.",
+  "description": "web3swift is a library currently only built for iOS platform. It's built on top of the [go-ethereum](https://github.com/ethereum/go-ethereum). This allows you to work with the Ethereum blockchain, without the additional overhead of having to write your own integration code for the platform.",
+  "homepage": "http://www.mercuryprotocol.com/web3swift",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Sameer Khavanekar": "sameer@mercuryprotocol.com",
+    "Rohit Kotian": "rohit@mercuryprotocol.com"
+  },
+  "social_media_url": "https://twitter.com/mercuryprotocol",
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "https://github.com/MercuryProtocol/web3.swift.git",
+    "tag": "0.0.9",
+    "submodules": true
+  },
+  "source_files": "Source/**/*.{h,swift}",
+  "requires_arc": true,
+  "static_framework": true,
+  "dependencies": {
+    "CryptoSwift": [
+
+    ],
+    "Geth": [
+
+    ]
+  },
+  "pod_target_xcconfig": {
+    "ENABLE_BITCODE": "NO"
+  }
+}

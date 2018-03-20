@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import web3swift
+import Geth
 
 class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
 
@@ -180,30 +182,40 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
     }
 
     @IBAction func pressedSendButton(_ sender: Any) {
-        /*
-         nonce: max(eth_gettransactioncount, local)
-         gasPrice:
-         gasLimit:
-         to: label
-         value: label
-         data:
-         */
-        
-        
-        print("pressedSendButton")
-        
-        
-        guard let asset = self.asset else { return }
-        //        EthereumAPIRequest.eth_sendRawTransaction(data: String, completionHandler: <#T##(SimpleRespond?, Error?) -> Void#>)
+        guard let toAddress = addressTextField.text, let amount = amountTextField.text else {
+            // TODO: tip in ui
+            print("Invalid Entry")
+            return
+        }
+        guard let gethAmount = GethBigInt.bigInt(amount) else {
+            // TODO: tip in ui
+            print("Invalid amount")
+            return
+        }
+        if let token =  AssetDataManager.shared.getTokenBySymbol(asset!.symbol) {
+            if token.protocol_value.isHexAddress() && toAddress.isHexAddress() {
+                var error: NSError? = nil
+                let toAddress = GethNewAddressFromHex(toAddress, &error)!
+                let contractAddress = GethNewAddressFromHex(token.protocol_value, &error)!
+                _transfer(contractAddress: contractAddress, toAddress: toAddress, amount: gethAmount)
+            } else {
+                // TODO: tip in ui
+                print("Invalid address")
+                return
+            }
+        } else {
+            // TODO: tip in ui
+            print("Invalid asset or token")
+            return
+        }
     }
     
     @objc func pressedMaxButton(_ sender: Any) {
         print("pressedMaxButton")
-        
-        // TODO: Get the max value from SendAssetDataManager
-
+        amountTextField.text = asset?.balance
+        amountInfoLabel.text = "$ \((asset?.display.description)!)"
     }
-    
+
     @objc func sliderValueDidChange(_ sender: UISlider!) {
         print("Slider value changed")
         let step: Float = 10
@@ -252,5 +264,70 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
     func hideKeyboard() {
         
     }
+}
 
+extension SendAssetViewController {
+    
+    var function: String {
+        return "transfer"
+    }
+    
+    var gasLimit: Int64 {
+        var symbol = "token_transfer"
+        if let asset = self.asset {
+            if asset.symbol.uppercased() == "ETH" {
+                symbol = "eth_transfer"
+            }
+        }
+        return SendAssetDataManager.shared.getGasLimitByType(type: symbol)!
+    }
+    
+    var gasPrice: Int64 {
+        // TODO: get value from transactionSpeedSlider
+        return 20000000000
+    }
+
+    func getNonce() -> Int64 {
+        var result: Int64 = 0
+        DispatchQueue.main.async {
+            SendAssetDataManager.shared.getNonceFromServer { (nonce, error) in
+                guard error == nil else {
+                    // TODO: get from local
+                    return
+                }
+                result = nonce!
+            }
+        }
+        return result
+    }
+
+    func executeContract(_ signedTransaction: String) {
+        SendAssetDataManager.shared.sendTransactionToServer(signedTransaction) { (txHash, error) in
+            guard error == nil && txHash != nil else {
+                // TODO
+                print("Failed to get valid response from server: \(error!)")
+                return
+            }
+            print("Result of transfer is \(txHash!)")
+        }
+    }
+
+    func _transfer(contractAddress: GethAddress, toAddress: GethAddress, amount: GethBigInt) {
+        let transferFunction = EthFunction(name: function, inputParameters: [toAddress, amount])
+        let encodedTransferFunction = web3swift.encode(transferFunction)
+
+        do {
+            let nonce: Int64 = getNonce()
+            let signedTransaction = web3swift.sign(address: contractAddress, encodedFunctionData: encodedTransferFunction, nonce: nonce, gasLimit: GethNewBigInt(gasLimit), gasPrice: GethNewBigInt(gasPrice))
+            if let signedTransactionData = try signedTransaction?.encodeRLP() {
+                let encodedSignedTransaction = signedTransactionData.base64EncodedString()
+                print("Encoded transaction sent to server \(encodedSignedTransaction)")
+                executeContract(encodedSignedTransaction)
+            } else {
+                print("Failed to sign/encode")
+            }
+        } catch {
+            print("Failed in encoding transaction ")
+        }
+    }
 }

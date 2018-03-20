@@ -40,5 +40,4 @@ class Token {
         self.protocol_value = token!.protocol_value
         self.deny = token!.deny
     }
-
 }

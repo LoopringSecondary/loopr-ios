@@ -22,6 +22,7 @@ target 'loopr-ios' do
   pod 'BigInt'
   pod 'CryptoSwift'
   pod 'secp256k1_ios', git: 'https://github.com/shamatar/secp256k1_ios.git', inhibit_warnings: true
+  pod 'web3swift', :git => 'https://github.com/MercuryProtocol/web3.swift.git', :branch => 'master', inhibit_warnings: true
   pod 'TrezorCrypto', inhibit_warnings: true
 
   target 'loopr-iosTests' do

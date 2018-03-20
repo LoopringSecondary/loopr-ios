@@ -32,5 +32,4 @@ class Asset: CustomStringConvertible {
         self.allowance = json["allowance"].stringValue
         self.icon = UIImage(named: self.symbol) ?? nil
     }
-    
 }

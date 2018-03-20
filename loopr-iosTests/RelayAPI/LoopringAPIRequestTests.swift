@@ -25,14 +25,13 @@ class LoopringAPIRequestTests: XCTestCase {
     // its ok to pass nil or real value to method, e.g. owner, same as below
     func testGetBalance() {
         let expectation = XCTestExpectation()
-        LoopringAPIRequest.getBalance(owner: "0x847983c3a34afa192cfee860698584c030f4c9db1") { tokens, error in
+        LoopringAPIRequest.getBalance(owner: "0x750ad4351bb728cec7d639a9511f9d6488f1e259") { assets, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 return
             }
-            // 66 is the num of our current supported token list
-            XCTAssertNotNil(tokens)
-            XCTAssertNotEqual(tokens!.count, 0)
+            XCTAssertNotNil(assets)
+            XCTAssertNotEqual(assets!.count, 0)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)
@@ -40,8 +39,6 @@ class LoopringAPIRequestTests: XCTestCase {
     
     func testGetOrders() {
         let expectation = XCTestExpectation()
-//        loopring_JSON_RPC.getOrders(owner: "0x847983c3a34afa192cfee860698584c030f4c9db1", orderHash: "0xf0b75ed18109403b88713cd7a1a8423352b9ed9260e39cb1ea0f423e2b6664f0", status: OrderStatus.new.rawValue, market: "lrc-weth") { orders, error in
-        
         LoopringAPIRequest.getOrders(owner: nil, orderHash: nil, status: nil, market: "lrc-weth") { orders, error in
             XCTAssertNotNil(orders)
             XCTAssertNotEqual(orders!.count, 0)

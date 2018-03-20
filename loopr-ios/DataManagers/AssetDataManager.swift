@@ -87,11 +87,18 @@ class AssetDataManager {
         }
     }
     
+    func getContractAddressBySymbol(symbol: String) -> String? {
+        if let token = getTokenBySymbol(symbol) {
+            return token.protocol_value
+        } else {
+            return nil
+        }
+    }
+    
     func getAmount(of symbol: String, from gweiAmount: String, to precision: Int = 4) -> Double? {
         var result: Double? = nil
         if gweiAmount.lowercased().starts(with: "0x") {
-            let range = gweiAmount.lowercased().range(of: "0x")
-            let hexString = gweiAmount.suffix(from: range!.upperBound)
+            let hexString = gweiAmount.dropFirst(2)
             let decString = BigUInt(hexString, radix: 16)!.description
             return getAmount(of: symbol, from: decString, to: precision)
         } else if let token = getTokenBySymbol(symbol) {
@@ -130,6 +137,18 @@ class AssetDataManager {
             }
             completionHandler(self.transactions, nil)
         })
+    }
+    
+    func formatAsset(asset: inout Asset) {
+        if let balance = getAmount(of: asset.symbol, from: asset.balance) {
+            if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
+                asset.balance = balance.description
+                asset.display = balance * price
+                asset.name = getTokenBySymbol(asset.symbol)?.source ?? "unknown token"
+                totalAsset += asset.display
+                assets.append(asset)
+            }
+        }
     }
     
     // this func should be called every 10 secs when emitted

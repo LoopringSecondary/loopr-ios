@@ -16,7 +16,7 @@ class LoopringAPIRequest {
     static let url = URL(string: "http://13.112.62.24/rpc/v2")!
     
     // READY
-    public static func getBalance(owner: String? = nil, completionHandler: @escaping (_ tokens: [Token]?, _ error: Error?) -> Void) {
+    public static func getBalance(owner: String? = nil, completionHandler: @escaping (_ assets: [Asset]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getBalance"
         body["params"] = [["contractVersion": contractVersion, "owner": owner]]
@@ -30,13 +30,13 @@ class LoopringAPIRequest {
             }
             
             let json = JSON(data)
-            var tokens: [Token] = []
+            var assets: [Asset] = []
             let offerData = json["result"]["tokens"]
             for subJson in offerData.arrayValue {
-                let token = Token(json: subJson)
-                tokens.append(token)
+                let asset = Asset(json: subJson)
+                assets.append(asset)
             }
-            completionHandler(tokens, error)
+            completionHandler(assets, error)
         }
     }
 
