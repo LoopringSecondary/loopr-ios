@@ -10,6 +10,8 @@ import UIKit
 
 class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
 
+    var asset: Asset?
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var sendButtonBackgroundView: UIView!
@@ -176,8 +178,21 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
     }
 
     @IBAction func pressedSendButton(_ sender: Any) {
+        /*
+         nonce: max(eth_gettransactioncount, local)
+         gasPrice:
+         gasLimit:
+         to: label
+         value: label
+         data:
+         */
+        
+        
         print("pressedSendButton")
-
+        
+        
+        guard let asset = self.asset else { return }
+        //        EthereumAPIRequest.eth_sendRawTransaction(data: String, completionHandler: <#T##(SimpleRespond?, Error?) -> Void#>)
     }
     
     @objc func pressedMaxButton(_ sender: Any) {

@@ -12,7 +12,7 @@ import SwiftyJSON
 // https://github.com/Loopring/relay/blob/wallet_v2/LOOPRING_RELAY_API_SPEC_V2.md#loopring_getorders
 class LoopringAPIRequest {
     
-    static let contractVersion = "v1.0"
+    static let contractVersion = "v1.2"
     static let url = URL(string: "http://13.112.62.24/rpc/v2")!
     
     // READY
@@ -22,7 +22,7 @@ class LoopringAPIRequest {
         body["params"] = [["contractVersion": contractVersion, "owner": owner]]
         body["id"] = "1a715e2557abc0bd"
         
-        Request.send(body: body, url: url) { data, response, error in
+        Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -40,9 +40,8 @@ class LoopringAPIRequest {
         }
     }
 
-    // get transaction
-    // TODO: How to get a list of orders for an address
-    static func getOrders(owner: String? = nil, orderHash: String? = nil, status: String? = nil, market: String? = nil, pageIndex: UInt = 1, pageSize: UInt = 20, completionHandler: @escaping (_ orders: [Order], _ error: Error?) -> Void) {
+    // TODO: how to handle unknown status?
+    static func getOrders(owner: String? = nil, orderHash: String? = nil, status: String? = nil, market: String? = nil, pageIndex: UInt = 1, pageSize: UInt = 20, completionHandler: @escaping (_ orders: [Order]?, _ error: Error?) -> Void) {
         
         var body: JSON = JSON()
         
@@ -50,7 +49,7 @@ class LoopringAPIRequest {
         body["params"] = [["owner": owner, "orderHash": orderHash, "contractVersion": contractVersion, "status": status, "market": market, "pageIndex": pageIndex, "pageSize": pageSize]]
         body["id"] = "1a715e2557abc0bd"
         
-        Request.send(body: body, url: url) { data, response, error in
+        Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler([], error)
@@ -58,18 +57,15 @@ class LoopringAPIRequest {
             }
             var orders: [Order] = []
             let json = JSON(data)
-            let resultJson = json["result"]
-            let offerData = resultJson["data"]
+            let offerData = json["result"]["data"]
+            
             for subJson in offerData.arrayValue {
                 let originalOrderJson = subJson["originalOrder"]
                 let originalOrder = OriginalOrder(json: originalOrderJson)
-                
-                // TODO: how to handle unknown status?
                 let orderStatus = OrderStatus(rawValue: subJson["status"].stringValue)!
                 let dealtAmountB = subJson["dealtAmountB"].stringValue
                 let dealtAmountS = subJson["dealtAmountS"].stringValue
                 let order = Order(originalOrder: originalOrder, orderStatus: orderStatus, dealtAmountB: dealtAmountB, dealtAmountS: dealtAmountS)
-                
                 orders.append(order)
             }
             completionHandler(orders, nil)
@@ -83,7 +79,7 @@ class LoopringAPIRequest {
         body["params"] = [["contractVersion": contractVersion, "market": market, "length": length]]
         body["id"] = "1a715e2557abc0bd"
         
-        Request.send(body: body, url: url) { data, response, error in
+        Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -98,37 +94,43 @@ class LoopringAPIRequest {
         }
     }
 
-    // TODO: backend will modify later in test env, and then complete this method --kenshin
-    static func getTickers(completionHandler: @escaping CompletionHandler) {
+    // READY
+    static func getTicker(completionHandler: @escaping (_ tikers: [Ticker]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
-        body["method"] = "loopring_getTickers"
+        body["method"] = "loopring_getTicker"
         body["params"] = [["contractVersion": contractVersion]]
         body["id"] = "1a715e2557abc0bd"
         
-        Request.send(body: body, url: url) { data, response, error in
+        Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
             }
-            completionHandler(data, response, error)
+            var tickers: [Ticker] = []
+            let json = JSON(data)
+            let offerData = json["result"]
+            for subJson in offerData.arrayValue {
+                let ticker = Ticker(json: subJson)
+                tickers.append(ticker)
+            }
+            completionHandler(tickers, nil)
         }
     }
     
     // READY
-    static func getFills(market: String, owner: String?, orderHash: String?, ringHash: String?, pageIndex: UInt = 1, pageSize: UInt = 20, completionHandler: @escaping (_ trades: [Trade], _ error: Error?) -> Void) {
+    static func getFills(market: String, owner: String?, orderHash: String?, ringHash: String?, pageIndex: UInt = 1, pageSize: UInt = 20, completionHandler: @escaping (_ trades: [Trade]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getFills"
         body["params"] = [["market": market, "contractVersion": contractVersion, "owner": owner, "orderHash": orderHash, "ringHash": ringHash]]
         body["id"] = "1a715e2557abc0bd"
-        Request.send(body: body, url: url) { data, response, error in
+        Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
             }
             var trades: [Trade] = []
             let json = JSON(data)
-            let resultJson = json["result"]
-            let offerData = resultJson["data"]
+            let offerData = json["result"]["data"]
             for subJson in offerData.arrayValue {
                 let trade = Trade(json: subJson)
                 trades.append(trade)
@@ -137,19 +139,27 @@ class LoopringAPIRequest {
         }
     }
     
-    // TODO: backend will modify later in test env, and then complete this method --kenshin
-    static func getTrend(market: String, interval: String, completionHandler: @escaping CompletionHandler) {
+    // READY
+    static func getTrend(market: String, interval: String, completionHandler: @escaping (_ trends: [Trend]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getTrend"
         body["params"] = [["market": market, "interval": interval]]
         body["params"]["contractVersion"] = JSON(contractVersion)
         body["id"] = "1a715e2557abc0bd"
-        Request.send(body: body, url: url) { data, response, error in
+        Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
+                completionHandler(nil, error)
                 return
             }
-            completionHandler(data, response, error)
+            var trends: [Trend] = []
+            let json = JSON(data)
+            let offerData = json["result"]
+            for subJson in offerData.arrayValue {
+                let trend = Trend(json: subJson)
+                trends.append(trend)
+            }
+            completionHandler(trends, nil)
         }
     }
 
@@ -160,7 +170,7 @@ class LoopringAPIRequest {
         body["params"] = [["ringHash": ringHash, "contractVersion": contractVersion, "pageIndex": pageIndex, "pageSize": pageSize]]
         body["id"] = "1a715e2557abc0bd"
         
-        Request.send(body: body, url: url) { data, response, error in
+        Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -173,22 +183,25 @@ class LoopringAPIRequest {
                 let minedRing = MinedRing(json: subJson)
                 minedRings.append(minedRing)
             }
-            completionHandler(minedRings, error)
+            completionHandler(minedRings, nil)
         }
     }
     
-    // TODO: backend will modify later in test env, and then complete this method --kenshin
-    static func getCutoff(address: String?, blockNumber: String = "latest", completionHandler: @escaping CompletionHandler) {
+    // READY
+    static func getCutoff(address: String, blockNumber: String = "latest", completionHandler: @escaping (_ date: String?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getCutoff"
         body["params"] = [["contractVersion": contractVersion, "address": address, "blockNumber": blockNumber]]
         body["id"] = "1a715e2557abc0bd"
-        Request.send(body: body, url: url) { data, response, error in
+        Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
             }
-            completionHandler(data, response, error)
+            let json = JSON(data)
+            let offerData = json["result"]
+            let date = Transaction.convertToDate(offerData.uIntValue)
+            completionHandler(date, nil)
         }
     }
     
@@ -199,8 +212,7 @@ class LoopringAPIRequest {
         body["params"] = [["currency": currency]]
         body["params"]["contractVersion"] = JSON(contractVersion)
         body["id"] = "1a715e2557abc0bd"
-        
-        Request.send(body: body, url: url) { data, response, error in
+        Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -213,38 +225,40 @@ class LoopringAPIRequest {
         }
     }
     
-    // TODO: backend will modify later in test env, and then complete this method --kenshin
-    static func getEstimatedAllocatedAllowance(owner: String? = nil, token: String, completionHandler: @escaping CompletionHandler) {
+    // READY
+    static func getEstimatedAllocatedAllowance(owner: String, token: String, completionHandler: @escaping (_ result: Double?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getEstimatedAllocatedAllowance"
         body["params"] = [["owner": owner, "token": token]]
         body["params"]["contractVersion"] = JSON(contractVersion)
         body["id"] = "1a715e2557abc0bd"
         
-        Request.send(body: body, url: url) { data, response, error in
+        Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
             }
-            completionHandler(data, response, error)
+            let json = JSON(data)
+            let result = json["result"].stringValue
+            if let amount = AssetDataManager.shared.getAmount(of: token, from: result) {
+                completionHandler(amount, nil)
+            }
         }
     }
     
     // READY
-    static func getSupportedMarket(completionHandler: @escaping (_ market: [Market], _ error: Error?) -> Void) {
+    static func getSupportedMarket(completionHandler: @escaping (_ market: [Market]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getSupportedMarket"
         body["params"] = [["contractVersion": contractVersion]]
         body["id"] = "1a715e2557abc0bd"
-        Request.send(body: body, url: url) { data, response, error in
+        Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
-                completionHandler([], error)
+                completionHandler(nil, error)
                 return
             }
-            
             var markets: [Market] = []
-            
             let json = JSON(data)
             let resultJson = json["result"]
             for tradingPairStringJson in resultJson.arrayValue {
@@ -257,24 +271,7 @@ class LoopringAPIRequest {
                 let market = Market(tradingA: tokens[0], tradingB: tokens[1])
                 markets.append(market)
             }
-            completionHandler(markets, error)
-        }
-    }
-    
-    // TODO: backend will modify later in test env, and then complete this method --kenshin
-    static func getPortfolio(owner: String, completionHandler: @escaping CompletionHandler) {
-        var body: JSON = JSON()
-        body["method"] = "loopring_getPortfolio"
-        body["params"] = [["owner": owner]]
-        body["params"]["contractVersion"] = JSON(contractVersion)
-        body["id"] = "1a715e2557abc0bd"
-        
-        Request.send(body: body, url: url) { data, response, error in
-            guard let data = data, error == nil else {
-                print("error=\(String(describing: error))")
-                return
-            }
-            completionHandler(data, response, error)
+            completionHandler(markets, nil)
         }
     }
     
@@ -286,7 +283,7 @@ class LoopringAPIRequest {
         body["params"]["contractVersion"] = JSON(contractVersion)
         body["id"] = "1a715e2557abc0bd"
         
-        Request.send(body: body, url: url) { data, response, error in
+        Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -295,12 +292,29 @@ class LoopringAPIRequest {
             let json = JSON(data)
             let offerData = json["result"]["data"]
             var transactions: [Transaction] = []
-
             for subJson in offerData.arrayValue {
                 let transaction = Transaction(json: subJson)
                 transactions.append(transaction)
             }
             completionHandler(transactions, nil)
+        }
+    }
+    
+    // READY -- must be invoked from unlock method
+    static func unlockWallet(owner: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_unlockWallet"
+        body["params"] = [["owner": owner]]
+        body["id"] = "1a715e2557abc0bd"
+        Request.send(body: body, url: url) { data, _, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                completionHandler(nil, error)
+                return
+            }
+            let json = JSON(data)
+            let offerData = json["result"]
+            completionHandler(offerData.description, nil)
         }
     }
 }

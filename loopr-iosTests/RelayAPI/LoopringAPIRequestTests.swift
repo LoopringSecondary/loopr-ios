@@ -32,7 +32,7 @@ class LoopringAPIRequestTests: XCTestCase {
             }
             // 66 is the num of our current supported token list
             XCTAssertNotNil(tokens)
-            XCTAssert(tokens!.count == 4)
+            XCTAssertNotEqual(tokens!.count, 0)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)
@@ -40,11 +40,11 @@ class LoopringAPIRequestTests: XCTestCase {
     
     func testGetOrders() {
         let expectation = XCTestExpectation()
-        
 //        loopring_JSON_RPC.getOrders(owner: "0x847983c3a34afa192cfee860698584c030f4c9db1", orderHash: "0xf0b75ed18109403b88713cd7a1a8423352b9ed9260e39cb1ea0f423e2b6664f0", status: OrderStatus.new.rawValue, market: "lrc-weth") { orders, error in
         
         LoopringAPIRequest.getOrders(owner: nil, orderHash: nil, status: nil, market: "lrc-weth") { orders, error in
-            XCTAssert(orders.count == 20)
+            XCTAssertNotNil(orders)
+            XCTAssertNotEqual(orders!.count, 0)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)
@@ -58,41 +58,37 @@ class LoopringAPIRequestTests: XCTestCase {
                 return
             }
             XCTAssertNotNil(depth)
+            XCTAssertNotEqual(depth!.sell.count, 0)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)
     }
     
-    
-    func testGetTickers() {
+    func testGetTicker() {
         let expectation = XCTestExpectation()
-        LoopringAPIRequest.getTickers() { data, response, error in
-            guard let data = data, error == nil else {
+        LoopringAPIRequest.getTicker() { tickers, error in
+            guard error == nil else {
                 print("error=\(String(describing: error))")
                 return
             }
-            
-            let json = JSON(data)
-            print("response = \(json)")
-            
-            // TODO: verify the response
-            
+            XCTAssertNotNil(tickers)
+            XCTAssertNotEqual(tickers!.count, 0)
             expectation.fulfill()
         }
-        
         wait(for: [expectation], timeout: 10.0)
     }
 
     func testGetFills() {
         let expectation = XCTestExpectation()
         
-        LoopringAPIRequest.getFills(market: "LRC-WETH", owner: "0xF243c002A1Ec6eA0466ec3C9Dbd745f782B1F058", orderHash: nil, ringHash: nil) { trades, error in
+        LoopringAPIRequest.getFills(market: "LRC-WETH", owner: nil, orderHash: nil, ringHash: nil) { trades, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 XCTFail()
                 return
             }
-            XCTAssert(trades.count == 10)
+            XCTAssertNotNil(trades)
+            XCTAssertNotEqual(trades!.count, 0)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)
@@ -100,24 +96,16 @@ class LoopringAPIRequestTests: XCTestCase {
     
     func testGetTrend() {
         let expectation = XCTestExpectation()
-        
-        LoopringAPIRequest.getTrend(market: "LRC-WETH", interval: "2hr") { data, response, error in
-            guard let data = data, error == nil else {
+        LoopringAPIRequest.getTrend(market: "LRC-WETH", interval: "2Hr") { trends, error in
+            guard error == nil else {
                 print("error=\(String(describing: error))")
-                
-                // TODO: Fails to catch the error.
                 XCTFail()
                 return
             }
-            
-            let json = JSON(data)
-            print("response = \(json)")
-            
-            // TODO: verify the response
-            
+            XCTAssertNotNil(trends)
+            XCTAssertNotEqual(trends!.count, 0)
             expectation.fulfill()
         }
-        
         wait(for: [expectation], timeout: 10.0)
     }
 
@@ -131,7 +119,7 @@ class LoopringAPIRequestTests: XCTestCase {
                 return
             }
             XCTAssertNotNil(minedRings)
-            XCTAssertEqual(minedRings!.count, 20)
+            XCTAssertEqual(minedRings!.count, 2)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)
@@ -139,24 +127,15 @@ class LoopringAPIRequestTests: XCTestCase {
     
     func testGetCutoff() {
         let expectation = XCTestExpectation()
-        
-        LoopringAPIRequest.getCutoff(address: nil) { data, response, error in
-            guard let data = data, error == nil else {
+        LoopringAPIRequest.getCutoff(address: "0x750ad4351bb728cec7d639a9511f9d6488f1e259") { date, error in
+            guard error == nil else {
                 print("error=\(String(describing: error))")
-                
-                // TODO: Fails to catch the error.
                 XCTFail()
                 return
             }
-            
-            let json = JSON(data)
-            print("response = \(json)")
-            
-            // TODO: verify the response
-            
+            XCTAssertNotNil(date)
             expectation.fulfill()
         }
-        
         wait(for: [expectation], timeout: 10.0)
     }
     
@@ -177,24 +156,16 @@ class LoopringAPIRequestTests: XCTestCase {
     
     func testGetEstimatedAllocatedAllowance() {
         let expectation = XCTestExpectation()
-        
-        LoopringAPIRequest.getEstimatedAllocatedAllowance(token: "WETH") { data, response, error in
-            guard let data = data, error == nil else {
+        LoopringAPIRequest.getEstimatedAllocatedAllowance(owner: "0x750ad4351bb728cec7d639a9511f9d6488f1e259", token: "WETH") { amount, error in
+            guard error == nil else {
                 print("error=\(String(describing: error))")
-                
-                // TODO: Fails to catch the error.
                 XCTFail()
                 return
             }
-            
-            let json = JSON(data)
-            print("response = \(json)")
-            
-            // TODO: verify the response
-            
+            XCTAssertNotNil(amount)
+            print(amount!)
             expectation.fulfill()
         }
-        
         wait(for: [expectation], timeout: 10.0)
     }
     
@@ -204,44 +175,20 @@ class LoopringAPIRequestTests: XCTestCase {
         LoopringAPIRequest.getSupportedMarket() { markets, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
-                // TODO: Fails to catch the error.
                 XCTFail()
                 return
             }
             // If the relay support more tokens, we will know.
-            XCTAssert(markets.count == 64)
+            XCTAssertNotNil(markets)
+            XCTAssertNotEqual(markets!.count, 0)
             expectation.fulfill()
         }
 
         wait(for: [expectation], timeout: 10.0)
     }
     
-    func testGetPortfolio() {
-        let expectation = XCTestExpectation()
-        
-        LoopringAPIRequest.getPortfolio(owner: "0x847983c3a34afa192cfee860698584c030f4c9db1") { data, response, error in
-            guard let data = data, error == nil else {
-                print("error=\(String(describing: error))")
-                
-                // TODO: Fails to catch the error.
-                XCTFail()
-                return
-            }
-            
-            let json = JSON(data)
-            print("response = \(json)")
-            
-            // TODO: verify the response
-            
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 10.0)
-    }
-    
     func testGetTransactions() {
         let expectation = XCTestExpectation()
-        
         
         LoopringAPIRequest.getTransactions(owner: "0x48ff2269e58a373120FFdBBdEE3FBceA854AC30A", symbol: "LRC", thxHash: nil, pageIndex: 1, pageSize: 20) { transactions, error in
             guard error == nil else {
@@ -250,9 +197,24 @@ class LoopringAPIRequestTests: XCTestCase {
                 return
             }
             XCTAssertNotNil(transactions)
-            XCTAssertFalse(transactions!.isEmpty)
+            XCTAssertNotEqual(transactions!.count, 0)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)
     }
+    
+    func testUnlockWallet() {
+        let expectation = XCTestExpectation()
+        LoopringAPIRequest.unlockWallet(owner: "0x48ff2269e58a373120FFdBBdEE3FBceA854AC30A") { result, error in
+            guard error == nil && result != nil else {
+                print("error=\(String(describing: error))")
+                XCTFail()
+                return
+            }
+            XCTAssertEqual(result!, "unlock_notice_success")
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
 }

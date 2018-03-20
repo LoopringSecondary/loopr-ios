@@ -78,7 +78,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         case 0:
             return 1
         case 1:
-            return OrderDataManager.shared.getOrders(orderStatuses: [.new, .partial]).count
+            return OrderDataManager.shared.getOrders(orderStatuses: [.opened]).count
         default:
             return OrderDataManager.shared.getOrders(orderStatuses: [.finished]).count
         }
@@ -182,7 +182,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 cell?.selectionStyle = .none
             }
             
-            cell?.order = OrderDataManager.shared.getOrders(orderStatuses: [.new, .partial])[indexPath.row]
+            cell?.order = OrderDataManager.shared.getOrders(orderStatuses: [.opened])[indexPath.row]
             cell?.update()
             return cell!
 

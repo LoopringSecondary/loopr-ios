@@ -96,6 +96,10 @@ class AssetDataManager {
             return getAmount(of: symbol, from: decString, to: precision)
         } else if let token = getTokenBySymbol(symbol) {
             var amount = gweiAmount
+            if token.decimals >= amount.count {
+                let prepend = String(repeating: "0", count: token.decimals - amount.count + 1)
+                amount = prepend + amount
+            }
             let offset = precision - token.decimals
             var index = amount.index(amount.endIndex, offsetBy: offset)
             amount.removeSubrange(index...)
@@ -115,9 +119,6 @@ class AssetDataManager {
             guard error == nil && transactions != nil else {
                 return
             }
-            
-            print("\n\n\(transactions!.count)\n\n")
-            
             for transaction in transactions! {
                 if let value = self.getAmount(of: transaction.symbol, from: transaction.value) {
                     if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
@@ -148,7 +149,6 @@ class AssetDataManager {
                 }
             }
         }
-        
         NotificationCenter.default.post(name: .balanceResponseReceived, object: nil)
     }
 

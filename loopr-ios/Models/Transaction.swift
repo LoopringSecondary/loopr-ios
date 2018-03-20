@@ -35,8 +35,8 @@ class Transaction {
         self.value = json["value"].stringValue
         self.owner = json["owner"].stringValue
         self.txHash = json["txHash"].stringValue
-        self.createTime = Transaction.convertToDate(json["createTime"].stringValue)
-        self.updateTime = Transaction.convertToDate(json["updateTime"].stringValue)
+        self.createTime = Transaction.convertToDate(json["createTime"].uIntValue)
+        self.updateTime = Transaction.convertToDate(json["updateTime"].uIntValue)
     }
 
     enum TxType: String, CustomStringConvertible {
@@ -77,8 +77,8 @@ class Transaction {
         }
     }
 
-    class func convertToDate(_ timeStamp: String) -> String {
-        let timeInterval: TimeInterval = TimeInterval(Double(timeStamp)!)
+    class func convertToDate(_ timeStamp: UInt) -> String {
+        let timeInterval: TimeInterval = TimeInterval(timeStamp)
         let date = Date(timeIntervalSince1970: timeInterval)
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "HH:mm - MMM dd, yyyy"

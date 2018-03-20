@@ -157,6 +157,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func pressedSendButton(_ sender: Any) {
         print("pressedSendButton")
         let viewController = SendAssetViewController()
+        viewController.asset = self.asset
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 

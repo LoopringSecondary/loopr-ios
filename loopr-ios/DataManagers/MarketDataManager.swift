@@ -53,8 +53,8 @@ class MarketDataManager {
 
     func getMarketsFromServer(completionHandler: @escaping (_ market: [Market], _ error: Error?) -> Void) {
         LoopringAPIRequest.getSupportedMarket(completionHandler: { markets, error in
-            self.markets = markets
-            completionHandler(markets, error)
+            self.markets = markets!
+            completionHandler(markets!, error)
         })
     }
 

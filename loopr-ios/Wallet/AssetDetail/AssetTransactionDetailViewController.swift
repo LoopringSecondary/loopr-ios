@@ -61,12 +61,12 @@ class AssetTransactionDetailViewController: UIViewController {
         let labelHeight: CGFloat = 40
         
         // Row 1
+        label1.text = "Status"
         label1.theme_textColor = GlobalPicker.textColor
         label1.font = FontConfigManager.shared.getLabelFont(size: 14)
         label1.frame = CGRect(x: padding, y: originY, width: 80, height: labelHeight)
         view.addSubview(label1)
         
-        label2.text = "Completed"
         label2.theme_textColor = GlobalPicker.textColor
         label2.textAlignment = .right
         label2.font = FontConfigManager.shared.getLabelFont(size: 14)
@@ -109,7 +109,7 @@ class AssetTransactionDetailViewController: UIViewController {
         view.addSubview(label6)
 
         row3Underline.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-        row3Underline.frame = CGRect(x: padding, y: label5.frame.maxY, width: screenWidth - 2*padding, height: 1)
+        row3Underline.frame = CGRect(x: padding, y: label5.frame.maxY, width: screenWidth - 2*padding, height: 0.5)
         view.addSubview(row3Underline)
 
         // Row 4
@@ -134,30 +134,24 @@ class AssetTransactionDetailViewController: UIViewController {
     
     func update() {
         if let transaction = transaction {
-            print(transaction.from)
-
             typeImageView.image = transaction.icon
             amountLabel.text = transaction.value + " " + transaction.symbol
             amountInCurrencyLabel.text = "≈ $\(transaction.display)"
-            
+            label2.text = transaction.status.description
             // TODO: cover all cases
             switch transaction.type {
             case .received:
-                label1.text = "From"
-                label2.text = transaction.from
+                label3.text = "From"
+                label4.text = transaction.from
             case .sent:
-                label1.text = "To"
-                label2.text = transaction.to
-            case .approved:
-                label1.text = "Status"
-                label2.text = transaction.from
+                label3.text = "To"
+                label4.text = transaction.to
             default:
-                label1.text = transaction.type.description
-                label2.text = transaction.from
+                label3.text = transaction.type.description
+                label4.text = transaction.status.description
             }
-            label4.text = transaction.txHash
-            label6.text = transaction.createTime
-            label8.text = transaction.status.description
+            label6.text = transaction.txHash
+            label8.text = transaction.updateTime
         }
     }
 

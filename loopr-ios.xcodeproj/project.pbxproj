@@ -22,6 +22,8 @@
 		949C49492046A4A80074466D /* SampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949C49472046A4A80074466D /* SampleViewController.xib */; };
 		94B5CA8A204FB4E20081BA93 /* DefaultBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5CA89204FB4E20081BA93 /* DefaultBlock.swift */; };
 		94B5CA8C204FE8E40081BA93 /* ETH_Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5CA8B204FE8E40081BA93 /* ETH_Transaction.swift */; };
+		94DCE54F205F9E71005618E4 /* Ticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCE54E205F9E71005618E4 /* Ticker.swift */; };
+		94DCE551205FAC07005618E4 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCE550205FAC07005618E4 /* Trend.swift */; };
 		94E185972051451C00D86FFA /* Initable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185962051451C00D86FFA /* Initable.swift */; };
 		94E185992051455C00D86FFA /* SimpleRespond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185982051455C00D86FFA /* SimpleRespond.swift */; };
 		94E5788F204E71850014AD4B /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E5788E204E71850014AD4B /* Token.swift */; };
@@ -482,6 +484,8 @@
 		949C49472046A4A80074466D /* SampleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SampleViewController.xib; sourceTree = "<group>"; };
 		94B5CA89204FB4E20081BA93 /* DefaultBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBlock.swift; sourceTree = "<group>"; };
 		94B5CA8B204FE8E40081BA93 /* ETH_Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETH_Transaction.swift; sourceTree = "<group>"; };
+		94DCE54E205F9E71005618E4 /* Ticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticker.swift; sourceTree = "<group>"; };
+		94DCE550205FAC07005618E4 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
 		94E185962051451C00D86FFA /* Initable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initable.swift; sourceTree = "<group>"; };
 		94E185982051455C00D86FFA /* SimpleRespond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRespond.swift; sourceTree = "<group>"; };
 		94E5788E204E71850014AD4B /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
@@ -1460,6 +1464,8 @@
 				94E185982051455C00D86FFA /* SimpleRespond.swift */,
 				943BDED22056350000D5BF81 /* PriceQuote.swift */,
 				948952D2205A74BE009B03FE /* Transaction.swift */,
+				94DCE54E205F9E71005618E4 /* Ticker.swift */,
+				94DCE550205FAC07005618E4 /* Trend.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2203,6 +2209,7 @@
 				AC3756782038D7E200AADC60 /* KeystoreViewController.swift in Sources */,
 				ACB5DD95202C434B00140A09 /* EthereumAPIRequest.swift in Sources */,
 				ACDBF10C203FEA3E000F0DEC /* ReorderGestureRecognizer.swift in Sources */,
+				94DCE54F205F9E71005618E4 /* Ticker.swift in Sources */,
 				ACDBF105203FE7D5000F0DEC /* ReorderSnapshotView.swift in Sources */,
 				ACE6F722204221260039273D /* Themes.swift in Sources */,
 				ACB9117C20256BBA00F14644 /* TradingPair.swift in Sources */,
@@ -2243,6 +2250,7 @@
 				AC31B94D204A8DF400B16155 /* KeyStore.swift in Sources */,
 				AC31CE4B205B83B600A30335 /* TradeTokenView.swift in Sources */,
 				AC387521205F12F100A76637 /* ContextMenu.swift in Sources */,
+				94DCE551205FAC07005618E4 /* Trend.swift in Sources */,
 				ACB729D4205DE21B00DD4DF3 /* TradeConfirmationViewController.swift in Sources */,
 				AC387523205F141000A76637 /* AddMenuViewController.swift in Sources */,
 				AC9280E1202EC53D0009B574 /* TradeNavigationViewController.swift in Sources */,

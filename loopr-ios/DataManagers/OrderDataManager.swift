@@ -30,10 +30,10 @@ class OrderDataManager {
 
     func getOrdersFromServer() {
         LoopringAPIRequest.getOrders(pageSize: 40) { orders, error in
-            guard error == nil else {
+            guard error == nil && orders != nil else {
                 return
             }
-            self.orders = orders
+            self.orders = orders!
         }
     }
 
