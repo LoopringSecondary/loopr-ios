@@ -83,7 +83,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
 
         addressTextField.delegate = self
         addressTextField.tag = 0
-        addressTextField.inputView = UIView()
         addressTextField.font = FontConfigManager.shared.getLabelFont()
         addressTextField.placeholder = "Enter the address"
         addressTextField.contentMode = UIViewContentMode.bottom
@@ -164,6 +163,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
         scrollView.addSubview(transactionSpeedSlider)
         
         scrollView.contentSize = CGSize(width: screenWidth, height: transactionSpeedSlider.frame.maxY + 30)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -210,9 +212,38 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
         // Get value from Replay API.
     }
     
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        print("textFieldShouldBeginEditing")
+        
+        return true
+    }
+    
     func getActiveTextField() -> UITextField? {
         return nil
     }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        guard let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
+            return
+        }
+        
+        let keyboardHeight = keyboardFrame.cgRectValue.height
+        
+        if #available(iOS 11.0, *) {
+            // Get the the distance from the bottom safe area edge to the bottom of the screen
+            let window = UIApplication.shared.keyWindow
+            let bottomPadding = window?.safeAreaInsets.bottom
+            scrollViewButtonLayoutConstraint.constant = keyboardHeight
+        } else {
+            scrollViewButtonLayoutConstraint.constant = keyboardHeight
+        }
+    }
+    
+    @objc func keyboardWillDisappear(notification: NSNotification?) {
+        print("keyboardWillDisappear")
+        scrollViewButtonLayoutConstraint.constant = 0
+    }
+
     
     func showKeyboard(textField: UITextField) {
         
