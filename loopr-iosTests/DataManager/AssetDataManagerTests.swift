@@ -37,8 +37,8 @@ class AssetDataManagerTests: XCTestCase {
     }
     
     func testGetAmount() {
-        let amount = "1999000020203407"
-        let num = AssetDataManager.shared.getAmount(of: "ETH", from: amount)
+        let amount = "0x56bc75e2d63100000"
+        let num = AssetDataManager.shared.getAmount(of: "LRC", from: amount)
         XCTAssertNotNil(num)
         XCTAssertEqual(num, 0.0019)
     }

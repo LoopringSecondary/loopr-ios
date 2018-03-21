@@ -180,7 +180,6 @@ class LoopringAPIRequestTests: XCTestCase {
             XCTAssertNotEqual(markets!.count, 0)
             expectation.fulfill()
         }
-
         wait(for: [expectation], timeout: 10.0)
     }
     

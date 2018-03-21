@@ -303,17 +303,7 @@ extension SendAssetViewController {
     }
 
     func getNonce() -> Int64 {
-        var result: Int64 = 0
-        DispatchQueue.main.async {
-            SendAssetDataManager.shared.getNonceFromServer { (nonce, error) in
-                guard error == nil else {
-                    // TODO: get from local
-                    return
-                }
-                result = nonce!
-            }
-        }
-        return result
+        return SendAssetDataManager.shared.getNonce()
     }
 
     func executeContract(_ signedTransaction: String) {
@@ -328,6 +318,10 @@ extension SendAssetViewController {
     }
 
     func _transfer(contractAddress: GethAddress, toAddress: GethAddress, amount: GethBigInt) {
+        
+        let configuration = EthAccountConfiguration(namespace: "wallet", password: "pwd")
+        EthAccountCoordinator.default.launch(configuration)
+        
         let transferFunction = EthFunction(name: function, inputParameters: [toAddress, amount])
         let encodedTransferFunction = web3swift.encode(transferFunction)
         do {

@@ -25,12 +25,19 @@ class SendAssetDataManager {
     var amount: Double
     private var maxAmount: Double // ??
     private var gasLimits: [GasLimit]
+    private var nonce: Int64
     
     private init() {
         self.amount = 0.0
         self.maxAmount = 0.0
         self.gasLimits = []
+        self.nonce = 0
         self.loadGasLimitsFromJson()
+        self.getNonceFromServer()
+    }
+    
+    func getNonce() -> Int64 {
+        return self.nonce
     }
     
     func getGasLimits() -> [GasLimit] {
@@ -58,18 +65,18 @@ class SendAssetDataManager {
         return result
     }
     
-    func getNonceFromServer(completion: @escaping (Int64?, Error?) -> Void) {
+    func getNonceFromServer() {
         if let address = AppWalletDataManager.shared.getCurrentAppWallet()?.address {
             EthereumAPIRequest.eth_getTransactionCount(data: address, block: BlockTag.pending, completionHandler: { (data, error) in
-                guard error == nil && data != nil else {
-                    completion(nil, error)
+                guard error == nil, let data = data else {
                     return
                 }
-                completion(Int64(data!.respond), nil)
+                if data.respond.isHex() {
+                    self.nonce = Int64(data.respond.dropFirst(2), radix: 16)!
+                } else {
+                    self.nonce = Int64(data.respond)!
+                }
             })
-        } else {
-            let error = NSError(domain: "getNonce", code: 0, userInfo: ["reason": "wallet address is nil"])
-            completion(nil, error)
         }
     }
     

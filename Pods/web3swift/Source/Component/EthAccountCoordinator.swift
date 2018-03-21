@@ -180,7 +180,4 @@ public extension EthAccountCoordinator {
         }
         return Sign.sign(keystore: keystore, account: account, address: address, encodedFunctionData: encodedFunctionData, nonce: nonce, gasLimit: gasLimit, gasPrice: gasPrice, password: password)
     }
-    
 }
-
-
