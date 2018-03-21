@@ -16,6 +16,7 @@
                 <outlet property="scrollViewButtonLayoutConstraint" destination="bay-N1-xQt" id="nQ7-I1-UWl"/>
                 <outlet property="sendButton" destination="JlJ-XA-Yl0" id="W3R-iM-8cG"/>
                 <outlet property="sendButtonBackgroundView" destination="tFK-Lz-tMt" id="GL6-Qi-QKx"/>
+                <outlet property="sendButtonLayoutContraint" destination="Agh-9O-oTv" id="yOM-0w-yvc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -45,7 +46,7 @@
                     </connections>
                 </button>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Lg-WH-CTm">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="592"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="590"/>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -53,7 +54,7 @@
                 <constraint firstItem="6Lg-WH-CTm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4Bz-c7-hJ7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="JlJ-XA-Yl0" secondAttribute="bottom" constant="15" id="Agh-9O-oTv"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JlJ-XA-Yl0" secondAttribute="trailing" constant="15" id="FTR-qv-IIb"/>
-                <constraint firstItem="tFK-Lz-tMt" firstAttribute="top" secondItem="6Lg-WH-CTm" secondAttribute="bottom" id="bay-N1-xQt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="6Lg-WH-CTm" secondAttribute="bottom" constant="77" id="bay-N1-xQt"/>
                 <constraint firstItem="tFK-Lz-tMt" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="fbn-jj-LEc"/>
                 <constraint firstAttribute="bottom" secondItem="tFK-Lz-tMt" secondAttribute="bottom" id="p6Q-Zw-mpZ"/>
                 <constraint firstItem="6Lg-WH-CTm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="rGU-hw-e4k"/>

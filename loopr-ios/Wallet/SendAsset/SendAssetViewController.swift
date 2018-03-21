@@ -18,6 +18,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var sendButtonBackgroundView: UIView!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var sendButtonLayoutContraint: NSLayoutConstraint!
 
     // Token
     var tokenIconImageView = UIImageView()
@@ -60,7 +61,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
         sendButton.layer.cornerRadius = 23
         sendButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
         
-        scrollViewButtonLayoutConstraint.constant = 0
+        scrollViewButtonLayoutConstraint.constant = 77
+        sendButtonLayoutContraint.constant = 15
         
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
@@ -245,15 +247,19 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
             // Get the the distance from the bottom safe area edge to the bottom of the screen
             let window = UIApplication.shared.keyWindow
             let bottomPadding = window?.safeAreaInsets.bottom
-            scrollViewButtonLayoutConstraint.constant = keyboardHeight
+            
+            scrollViewButtonLayoutConstraint.constant = keyboardHeight + 77
+            sendButtonLayoutContraint.constant = keyboardHeight + 15 - bottomPadding!
+            
         } else {
-            scrollViewButtonLayoutConstraint.constant = keyboardHeight
+            sendButtonLayoutContraint.constant = keyboardHeight
         }
     }
     
     @objc func keyboardWillDisappear(notification: NSNotification?) {
         print("keyboardWillDisappear")
-        scrollViewButtonLayoutConstraint.constant = 0
+        scrollViewButtonLayoutConstraint.constant = 77
+        sendButtonLayoutContraint.constant = 15
     }
 
     func showKeyboard(textField: UITextField) {
