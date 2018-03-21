@@ -36,6 +36,9 @@ class EthereumAPIRequest {
                 completionHandler(nil, error)
                 return
             }
+            
+            // TODO: need to check the status code.
+            
             var json = JSON(data)
             if json["result"] != JSON.null {
                 completionHandler(T.init(json["result"]), nil)

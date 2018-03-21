@@ -25,6 +25,11 @@ class Token {
         self.decimals = json["Decimals"].intValue
         self.protocol_value = json["Protocol"].stringValue
         self.deny = json["Deny"].boolValue
+        
+        // TODO: ETH doesn't have a protocol value in tokens.json
+        if symbol == "ETH" {
+            print(protocol_value)
+        }
     }
     
     // TODO: do we need this initialization?

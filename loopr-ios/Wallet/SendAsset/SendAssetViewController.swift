@@ -78,7 +78,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
         scrollView.addSubview(tokenIconImageView)
         
         tokenTotalAmountLabel.frame = CGRect(center: CGPoint(x: screenWidth*0.5, y: tokenIconImageView.frame.maxY + 30), size: CGSize(width: screenWidth - 2*padding, height: 21))
-        tokenTotalAmountLabel.text = "123123.422 LRC  Available"
         tokenTotalAmountLabel.textAlignment = .center
         tokenTotalAmountLabel.font = FontConfigManager.shared.getLabelFont()
         scrollView.addSubview(tokenTotalAmountLabel)
@@ -90,7 +89,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
         addressTextField.font = FontConfigManager.shared.getLabelFont()
         addressTextField.placeholder = "Enter the address"
         addressTextField.contentMode = UIViewContentMode.bottom
-        addressTextField.frame = CGRect(x: padding, y: tokenTotalAmountLabel.frame.maxY + padding*3, width: screenWidth-padding*2-80, height: 40)
+        addressTextField.frame = CGRect(x: padding, y: tokenTotalAmountLabel.frame.maxY + padding*3, width: screenWidth-padding*2, height: 40)
         scrollView.addSubview(addressTextField)
         
         addressUnderLine.frame = CGRect(x: padding, y: addressTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
@@ -112,8 +111,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
         amountTextField.contentMode = UIViewContentMode.bottom
         amountTextField.frame = CGRect(x: padding, y: addressInfoLabel.frame.maxY + padding*1.5, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(amountTextField)
-        
-        tokenSymbolLabel.text = "LRC"
+
         tokenSymbolLabel.font = FontConfigManager.shared.getLabelFont()
         tokenSymbolLabel.textAlignment = .right
         tokenSymbolLabel.frame = CGRect(x: screenWidth-padding-80, y: amountTextField.frame.origin.y, width: 80, height: 40)
@@ -181,6 +179,13 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
         super.viewWillAppear(animated)
         
         // TODO: Update the transaction fee is needed. in SendAssetDataManager
+        addressTextField.text = "0xf459a1a5fF88e5A886BAE471140d36B77367D942"
+        amountTextField.text = "0.001"
+        
+        tokenSymbolLabel.text = asset?.symbol ?? ""
+        
+        // TODO: Use mock data
+        tokenTotalAmountLabel.text = "123123.422 \(String(describing: asset!.symbol)) Available"
     }
 
     @IBAction func pressedSendButton(_ sender: Any) {
@@ -195,16 +200,21 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
             return
         }
         if let token =  AssetDataManager.shared.getTokenBySymbol(asset!.symbol) {
-            if token.protocol_value.isHexAddress() && toAddress.isHexAddress() {
-                var error: NSError? = nil
-                let toAddress = GethNewAddressFromHex(toAddress, &error)!
-                let contractAddress = GethNewAddressFromHex(token.protocol_value, &error)!
-                _transfer(contractAddress: contractAddress, toAddress: toAddress, amount: gethAmount)
-            } else {
-                // TODO: tip in ui
-                print("Invalid address")
+            if !token.protocol_value.isHexAddress() {
+                print("token protocol \(token.protocol_value) is invalid")
                 return
             }
+            
+            if toAddress.isHexAddress() {
+                print("address \(toAddress) is invalide")
+                return
+            }
+            
+            var error: NSError? = nil
+            let toAddress = GethNewAddressFromHex(toAddress, &error)!
+            let contractAddress = GethNewAddressFromHex(token.protocol_value, &error)!
+            _transfer(contractAddress: contractAddress, toAddress: toAddress, amount: gethAmount)
+
         } else {
             // TODO: tip in ui
             print("Invalid asset or token")
