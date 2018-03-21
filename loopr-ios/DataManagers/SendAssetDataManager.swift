@@ -23,13 +23,14 @@ class SendAssetDataManager {
     static let shared = SendAssetDataManager()
     
     var amount: Double
-    
-    // TODO: Use mock data
-    private var maxAmount: Double = 96.3236
-    private var gasLimits: [GasLimit] = []
+    private var maxAmount: Double // ??
+    private var gasLimits: [GasLimit]
     
     private init() {
-        amount = 0.0
+        self.amount = 0.0
+        self.maxAmount = 0.0
+        self.gasLimits = []
+        self.loadGasLimitsFromJson()
     }
     
     func getGasLimits() -> [GasLimit] {

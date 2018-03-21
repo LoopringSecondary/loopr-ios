@@ -5,7 +5,7 @@
     },
     {
         "type":"token_transfer",
-        "gasLimit":50000
+        "gasLimit":90000
     },
     {
         "type":"approve",

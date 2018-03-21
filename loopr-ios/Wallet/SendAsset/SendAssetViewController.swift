@@ -256,7 +256,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
         scrollViewButtonLayoutConstraint.constant = 0
     }
 
-    
     func showKeyboard(textField: UITextField) {
         
     }
@@ -315,7 +314,6 @@ extension SendAssetViewController {
     func _transfer(contractAddress: GethAddress, toAddress: GethAddress, amount: GethBigInt) {
         let transferFunction = EthFunction(name: function, inputParameters: [toAddress, amount])
         let encodedTransferFunction = web3swift.encode(transferFunction)
-
         do {
             let nonce: Int64 = getNonce()
             let signedTransaction = web3swift.sign(address: contractAddress, encodedFunctionData: encodedTransferFunction, nonce: nonce, gasLimit: GethNewBigInt(gasLimit), gasPrice: GethNewBigInt(gasPrice))
