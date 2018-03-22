@@ -22,6 +22,7 @@ class SelectWalletTableViewCell: UITableViewCell {
         theme_backgroundColor = GlobalPicker.backgroundColor
         nameLabel.theme_textColor = GlobalPicker.textColor
         addressLabel.theme_textColor = GlobalPicker.textColor
+        addressLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 14)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

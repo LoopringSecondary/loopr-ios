@@ -26,7 +26,8 @@ class QRCodeViewController: UIViewController {
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         addressLabel.theme_textColor = GlobalPicker.textColor
-        
+        addressLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 14)
+
         // copyAddressButton.theme_backgroundColor = ["#000", "#fff"]
         // copyAddressButton.theme_setTitleColor(["#fff", "#000"], forState: .normal)
 
@@ -76,6 +77,7 @@ class QRCodeViewController: UIViewController {
     @IBAction func pressedCopyAddressButton(_ sender: Any) {
         let address = AppWalletDataManager.shared.getCurrentAppWallet()!.address
         print("pressedCopyAddressButton address: \(address)")
+        UIPasteboard.general.string = address
     }
 
     @IBAction func pressedSaveToAlbum(_ sender: Any) {

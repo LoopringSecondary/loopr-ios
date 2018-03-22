@@ -68,7 +68,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         // TODO: Use an elegant method to set the title to center.
-        button.setTitle( "          " + buttonTitle! + "  ", for: .normal)
+        button.setTitle(buttonTitle! + "  ", for: .normal)
         button.titleLabel?.font = UIFont(name: FontConfigManager.shared.getLight(), size: 16.0)
         button.theme_setTitleColor(["#000", "#fff"], forState: .normal)
         button.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
