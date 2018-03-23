@@ -27,12 +27,12 @@ public struct KeystoreKey {
     @available(iOS 10.0, *)
     public init(password: String) throws {
         let privateAttributes: [String: Any] = [
-            kSecAttrIsExtractable as String: true,
+            kSecAttrIsExtractable as String: true
         ]
         let parameters: [String: Any] = [
             kSecAttrKeyType as String: kSecAttrKeyTypeEC,
             kSecAttrKeySizeInBits as String: 256,
-            kSecPrivateKeyAttrs as String: privateAttributes,
+            kSecPrivateKeyAttrs as String: privateAttributes
         ]
 
         var pubKey: SecKey?

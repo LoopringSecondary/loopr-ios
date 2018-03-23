@@ -40,16 +40,12 @@ class AssetDataManagerTests: XCTestCase {
         let amount = "0x56bc75e2d63100000"
         let num = AssetDataManager.shared.getAmount(of: "LRC", from: amount)
         XCTAssertNotNil(num)
-        XCTAssertEqual(num, 0.0019)
+        XCTAssertEqual(num, 100)
     }
     
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
-        let a = OrderStatus(rawValue: "ORDER_NEW")!
-        print(a)
-        
     }
 
 }

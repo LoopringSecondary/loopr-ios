@@ -13,6 +13,7 @@ import SwiftyJSON
 public class LoopringSocketIORequest {
     
     static let url = "http://13.112.62.24"
+    static let contractVersion = "v1.2"
 //    static let url = "10.137.104.180:8087"
     
     static let manager = SocketManager(socketURL: URL(string: url)!, config: [.compress, .forceWebsockets(true)])
@@ -66,6 +67,7 @@ public class LoopringSocketIORequest {
     static func getBalance(owner: String) {
         var body: JSON = JSON()
         body["owner"] = JSON(owner)
+        body["contractVersion"] = JSON(contractVersion)
         socket.on(clientEvent: .connect) {_, _ in
             self.socket.emit("balance_req", body.rawString()!)
         }

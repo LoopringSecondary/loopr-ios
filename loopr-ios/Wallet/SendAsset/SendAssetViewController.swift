@@ -9,6 +9,7 @@
 import UIKit
 import web3swift
 import Geth
+import SwiftyJSON
 
 class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
 
@@ -179,8 +180,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
         super.viewWillAppear(animated)
         
         // TODO: Update the transaction fee is needed. in SendAssetDataManager
-        addressTextField.text = "0xf459a1a5fF88e5A886BAE471140d36B77367D942"
-        amountTextField.text = "0.001"
+        addressTextField.text = "0x2ef680f87989bce2a9f458e450cffd6589b549fa"
+        amountTextField.text = "100"
         
         tokenSymbolLabel.text = asset?.symbol ?? ""
         
@@ -205,7 +206,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
                 return
             }
             
-            if toAddress.isHexAddress() {
+            if !toAddress.isHexAddress() {
                 print("address \(toAddress) is invalide")
                 return
             }
@@ -323,7 +324,7 @@ extension SendAssetViewController {
         EthAccountCoordinator.default.launch(configuration)
         
         let transferFunction = EthFunction(name: function, inputParameters: [toAddress, amount])
-        let encodedTransferFunction = web3swift.encode(transferFunction)
+        let encodedTransferFunction = web3swift.encode(transferFunction) // ok here
         do {
             let nonce: Int64 = getNonce()
             let signedTransaction = web3swift.sign(address: contractAddress, encodedFunctionData: encodedTransferFunction, nonce: nonce, gasLimit: GethNewBigInt(gasLimit), gasPrice: GethNewBigInt(gasPrice))
