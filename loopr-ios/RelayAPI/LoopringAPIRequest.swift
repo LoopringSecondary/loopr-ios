@@ -232,7 +232,7 @@ class LoopringAPIRequest {
         body["params"] = [["owner": owner, "token": token]]
         body["params"]["contractVersion"] = JSON(contractVersion)
         body["id"] = "1a715e2557abc0bd"
-        
+
         Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
@@ -246,8 +246,29 @@ class LoopringAPIRequest {
         }
     }
     
+    static func getSupportedTokens(completionHandler: @escaping (_ tokens: [Token]?, _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_getSupportedTokens"
+        body["id"] = "1a715e2557abc0bd"
+        Request.send(body: body, url: url) { data, _, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                completionHandler(nil, error)
+                return
+            }
+            var tokens: [Token] = []
+            let json = JSON(data)
+            let offerData = json["result"]
+            for subJson in offerData.arrayValue {
+                let token = Token(json: subJson)
+                tokens.append(token)
+            }
+            completionHandler(tokens, nil)
+        }
+    }
+    
     // READY
-    static func getSupportedMarket(completionHandler: @escaping (_ market: [Market]?, _ error: Error?) -> Void) {
+    static func getSupportedMarket(completionHandler: @escaping (_ pairs: [TradingPair]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getSupportedMarket"
         body["params"] = [["contractVersion": contractVersion]]
@@ -258,20 +279,15 @@ class LoopringAPIRequest {
                 completionHandler(nil, error)
                 return
             }
-            var markets: [Market] = []
+            var pairs: [TradingPair] = []
             let json = JSON(data)
             let resultJson = json["result"]
-            for tradingPairStringJson in resultJson.arrayValue {
-                let tradingPairString = tradingPairStringJson.stringValue
-                let tokens = tradingPairString.components(separatedBy: "-")
-                guard tokens.count == 2 else {
-                    // TODO: how to handle invalid results
-                    continue
-                }
-                let market = Market(tradingA: tokens[0], tradingB: tokens[1])
-                markets.append(market)
+            for pair in resultJson.arrayValue {
+                let tokens = pair.stringValue.components(separatedBy: "-")
+                let pair = TradingPair(tokens[0], tokens[1])
+                pairs.append(pair)
             }
-            completionHandler(markets, nil)
+            completionHandler(pairs, nil)
         }
     }
     

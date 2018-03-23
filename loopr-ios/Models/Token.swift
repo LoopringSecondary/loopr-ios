@@ -19,12 +19,12 @@ class Token {
     let deny: Bool
 
     init(json: JSON) {
-        self.symbol = json["Symbol"].stringValue
-        self.source = json["Source"].stringValue
-        self.isMarket = json["IsMarket"].boolValue
-        self.decimals = json["Decimals"].intValue
-        self.protocol_value = json["Protocol"].stringValue
-        self.deny = json["Deny"].boolValue
+        self.symbol = json["symbol"].stringValue
+        self.source = json["source"].stringValue
+        self.isMarket = json["isMarket"].boolValue
+        self.decimals = json["decimals"].intValue
+        self.protocol_value = json["protocol"].stringValue
+        self.deny = json["deny"].boolValue
         
         // TODO: ETH doesn't have a protocol value in tokens.json
         if symbol == "ETH" {

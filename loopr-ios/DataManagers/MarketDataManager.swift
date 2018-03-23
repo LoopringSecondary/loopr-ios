@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class MarketDataManager {
     
     static let shared = MarketDataManager()
     
-    private lazy var favoriteMarketKeys: [String] = self.getFavoriteMarketKeysFromLocal()
     private var markets: [Market]
+    private lazy var favoriteMarketKeys: [String] = self.getFavoriteMarketKeysFromLocal()
     
     private init() {
         markets = []
@@ -42,20 +43,15 @@ class MarketDataManager {
             })
         case .ETH:
             return markets.filter({ (market) -> Bool in
+                // TODO: make sure
                 return market.tradingPair.tradingA == "WETH" || market.tradingPair.tradingB == "WETH"
             })
         case .LRC:
             return markets.filter({ (market) -> Bool in
+                // TODO: make sure
                 return market.tradingPair.tradingA == "LRC" || market.tradingPair.tradingB == "LRC"
             })
         }
-    }
-
-    func getMarketsFromServer(completionHandler: @escaping (_ market: [Market], _ error: Error?) -> Void) {
-        LoopringAPIRequest.getSupportedMarket(completionHandler: { markets, error in
-            self.markets = markets!
-            completionHandler(markets!, error)
-        })
     }
 
     func getFavoriteMarketKeys() -> [String] {
@@ -90,5 +86,22 @@ class MarketDataManager {
         // Update the array in the disk
         updateFavoriteMarketKeysOnLocal()
     }
-
+    
+    // TODO: whether stop method is useful?
+    func startGetTicker() {
+        LoopringSocketIORequest.getTiker()
+    }
+    
+    func onTickerResponse(json: JSON) {
+        markets = []
+        print(json)
+        for subJson in json.arrayValue {
+            if let market = Market(json: subJson) {
+                let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: market.tradingPair.tradingA)
+                market.display = price ?? 0
+                markets.append(market)
+            }
+        }
+        NotificationCenter.default.post(name: .tickerResponseReceived, object: nil)
+    }
 }

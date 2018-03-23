@@ -26,6 +26,7 @@ public class LoopringSocketIORequest {
             // add more requests using socketio here
             handlers["balance_res"] = [AssetDataManager.shared.onBalanceResponse]
             handlers["marketcap_res"] = [PriceQuoteDataManager.shared.onPriceQuoteResponse]
+            handlers["loopringTickers_res"] = [MarketDataManager.shared.onTickerResponse]
             addHandlers(handlers)
         }
         connect()
@@ -40,6 +41,7 @@ public class LoopringSocketIORequest {
     static func connect() {
         if socket.status != .connected {
             socket.connect()
+
         }
     }
     
@@ -50,7 +52,6 @@ public class LoopringSocketIORequest {
     }
     
     static func addHandlers(_ handlers: [String: [(JSON) -> Void]]) {
-        
         for (key, methods) in handlers {
             for method in methods {
                 socket.on(key, callback: { (data, _) in
@@ -78,6 +79,14 @@ public class LoopringSocketIORequest {
         body["currency"] = JSON(currency)
         socket.on(clientEvent: .connect) {_, _ in
             self.socket.emit("marketcap_req", body.rawString()!)
+        }
+    }
+    
+    static func getTiker() {
+        var body: JSON = JSON()
+        body["contractVersion"] = JSON(contractVersion)
+        socket.on(clientEvent: .connect) {_, _ in
+            self.socket.emit("loopringTickers_req", body.rawString()!)
         }
     }
 }

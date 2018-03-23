@@ -33,12 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LoopringSocketIORequest.setup()
         PriceQuoteDataManager.shared.startGetPriceQuote("USD")
         AssetDataManager.shared.startGetBalance("0x750ad4351bb728cec7d639a9511f9d6488f1e259")
-        
-        // Get data from Relay
-        // OrderDataManager.shared.getOrdersFromServer()
-        MarketDataManager.shared.getMarketsFromServer { (_, _) in
-            
-        }
+        MarketDataManager.shared.startGetTicker()
         
         _ = SettingDataManager.shared.getCurrentLanguage()
 

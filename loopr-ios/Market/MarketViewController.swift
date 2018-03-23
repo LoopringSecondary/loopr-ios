@@ -61,20 +61,16 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // Get a copy from get markets.
         markets = MarketDataManager.shared.getMarkets(type: type)
-        
-        // TODO: putting getMarketsFromServer() here may cause a race condition.
-        // It's not perfect, but works. Need improvement in the future.
-        if markets.count == 0 {
-            MarketDataManager.shared.getMarketsFromServer { (markets, error) in
-                guard error == nil else {
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    self.markets = MarketDataManager.shared.getMarkets(type: self.type)
-                    self.marketTableView.reloadData()
-                }
-            }
+        // Add observer.
+        NotificationCenter.default.addObserver(self, selector: #selector(tickerResponseReceivedNotification), name: .tickerResponseReceived, object: nil)
+    }
+
+    @objc func tickerResponseReceivedNotification() {
+        print("tickerReceivedNotification")
+        // TODO: Perform a diff algorithm
+        if self.markets.count == 0 {
+            self.markets = MarketDataManager.shared.getMarkets()
+            marketTableView.reloadData()
         }
     }
     
@@ -102,15 +98,15 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     func isFiltering() -> Bool {
-        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
-        return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
+//        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+//        return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
+        return false
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         filteredMarkets = MarketDataManager.shared.getMarkets(type: type).filter({(market: Market) -> Bool in
             return market.tradingPair.tradingA.lowercased().contains(searchText.lowercased()) || market.tradingPair.tradingB.lowercased().contains(searchText.lowercased())
         })
-
         marketTableView.reloadData()
     }
     
@@ -130,20 +126,17 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let spacer = marketTableView.reorder.spacerCell(for: indexPath) {
             return spacer
         }
-        
         var cell = tableView.dequeueReusableCell(withIdentifier: MarketTableViewCell.getCellIdentifier()) as? MarketTableViewCell
         if cell == nil {
             let nib = Bundle.main.loadNibNamed("MarketTableViewCell", owner: self, options: nil)
             cell = nib![0] as? MarketTableViewCell
         }
-        
         let market: Market
         if isFiltering() {
             market = filteredMarkets[indexPath.row]
         } else {
-            market = markets[indexPath.row] // MarketDataManager.shared.getMarkets(type: type)[indexPath.row]
+            market = markets[indexPath.row]
         }
-
         cell?.market = market
         cell?.update()
         return cell!

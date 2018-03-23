@@ -13,4 +13,6 @@ extension Notification.Name {
     static let balanceResponseReceived = Notification.Name("balanceResponseReceived")
     
     static let priceQuoteResponseReceived = Notification.Name("priceQuoteResponseReceived")
+    
+    static let tickerResponseReceived = Notification.Name("tickerResponseReceived")
 }

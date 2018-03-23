@@ -169,17 +169,33 @@ class LoopringAPIRequestTests: XCTestCase {
     func testGetSupportedMarket() {
         let expectation = XCTestExpectation()
         
-        LoopringAPIRequest.getSupportedMarket() { markets, error in
+        LoopringAPIRequest.getSupportedMarket() { pairs, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 XCTFail()
                 return
             }
             // If the relay support more tokens, we will know.
-            XCTAssertNotNil(markets)
-            XCTAssertNotEqual(markets!.count, 0)
+            XCTAssertNotNil(pairs)
+            XCTAssertNotEqual(pairs!.count, 0)
             expectation.fulfill()
         }
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testGetSupportedTokens() {
+        let expectation = XCTestExpectation()
+        LoopringAPIRequest.getSupportedTokens(completionHandler: { (tokens, error) in
+            guard error == nil else {
+                print("error=\(String(describing: error))")
+                XCTFail()
+                return
+            }
+            // If the relay support more tokens, we will know.
+            XCTAssertNotNil(tokens)
+            XCTAssertNotEqual(tokens!.count, 0)
+            expectation.fulfill()
+        })
         wait(for: [expectation], timeout: 10.0)
     }
     

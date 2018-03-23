@@ -21,16 +21,16 @@ enum UIStyleConfig {
     
     static let tableCellSelectedBackgroundColor = UIColor(white: 0.1, alpha: 0.3)
     
-    static func getChangeColor(change: Double) -> UIColor {
+    static func getChangeColor(sign: String) -> UIColor {
         let language = Bundle.main.preferredLocalizations.first
         if language == "zh-Hans" {
-            if change > 0 {
+            if sign == "+" {
                 return UIColor.red
             } else {
                 return UIColor.init(rgba: "#24DF93")
             }
         } else {
-            if change > 0 {
+            if sign == "+" {
                 return UIColor.init(rgba: "#24DF93")
             } else {
                 return UIColor.red

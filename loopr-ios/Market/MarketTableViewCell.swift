@@ -11,7 +11,8 @@ import UIKit
 class MarketTableViewCell: UITableViewCell {
 
     var market: Market?
-    
+
+    @IBOutlet weak var tokenImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
     
@@ -47,15 +48,13 @@ class MarketTableViewCell: UITableViewCell {
     
     func update() {
         if let market = market {
+            tokenImage.image = market.icon
             nameLabel.text = "\(market.tradingPair.tradingA)" + " / " + "\(market.tradingPair.tradingB)"
-            balanceLabel.text = "\(market.balance) \(market.tradingPair.tradingA)"
-            
-            if market.changeInPat24 >= 0 {
-                percentageChangeLabel.text = "+\(market.changeInPat24*100)%"
-            } else {
-                percentageChangeLabel.text = "\(market.changeInPat24*100)%"
-            }
-            percentageChangeLabel.textColor = UIStyleConfig.getChangeColor(change: market.changeInPat24)
+            balanceLabel.text = "Vol \(market.volumeInPast24)"
+            marketPriceInBitcoinLabel.text = market.balance.description
+            marketPriceInFiatCurrencyLabel.text = market.display.description
+            percentageChangeLabel.text = market.changeInPat24
+            percentageChangeLabel.textColor = UIStyleConfig.getChangeColor(sign: market.changeInPat24.first?.description ?? "+")
         }
     }
     

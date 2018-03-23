@@ -24,7 +24,7 @@ class AssetDataManager {
         self.tokens = []
         self.transactions = []
         self.totalAsset = 0
-        self.loadTokensFromJson()
+        self.loadTokens()
     }
     
     // Get a list of tokens
@@ -75,6 +75,11 @@ class AssetDataManager {
         LoopringSocketIORequest.getBalance(owner: owner)
     }
     
+    func loadTokens() {
+        loadTokensFromJson()
+        loadTokensFromServer()
+    }
+    
     // load tokens esp. their names from json file to avoid http request
     func loadTokensFromJson() {
         if let path = Bundle.main.path(forResource: "tokens", ofType: "json") {
@@ -83,6 +88,21 @@ class AssetDataManager {
             for subJson in json.arrayValue {
                 let token = Token(json: subJson)
                 tokens.append(token)
+            }
+        }
+    }
+    
+    func loadTokensFromServer() {
+        LoopringAPIRequest.getSupportedTokens { (tokens, error) in
+            guard let tokens = tokens, error == nil else {
+                return
+            }
+            for token in tokens {
+                if !self.tokens.contains(where: { (element) -> Bool in
+                    return element.symbol.lowercased() == token.symbol.lowercased()
+                }) {
+                    self.tokens.append(token)
+                }
             }
         }
     }
@@ -170,5 +190,4 @@ class AssetDataManager {
         }
         NotificationCenter.default.post(name: .balanceResponseReceived, object: nil)
     }
-
 }
