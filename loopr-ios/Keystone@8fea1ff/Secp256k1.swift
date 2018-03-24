@@ -45,9 +45,8 @@ public final class Secp256k1 {
     /// - Throws: `Secp256k1Error` if the private key is invalid.
     public func sign(hash: Data, privateKey: Data) throws -> Data {
         
-        // why error here ??? 
-//        precondition(hash.count == 32, "Expect hash size to be 32")
-//        precondition(privateKey.count == 32, "Expect private key size to be 32")
+        precondition(hash.count == 32, "Expect hash size to be 32")
+        precondition(privateKey.count == 32, "Expect private key size to be 32")
 
         var signature = secp256k1_ecdsa_recoverable_signature()
         try privateKey.withUnsafeBytes { (key: UnsafePointer<UInt8>) in
