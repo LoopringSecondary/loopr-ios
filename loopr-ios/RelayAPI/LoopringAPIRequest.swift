@@ -20,7 +20,7 @@ class LoopringAPIRequest {
         var body: JSON = JSON()
         body["method"] = "loopring_getBalance"
         body["params"] = [["contractVersion": contractVersion, "owner": owner]]
-        body["id"] = "1a715e2557abc0bd"
+        body["id"] = JSON(UUID().uuidString)
         
         Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
@@ -47,7 +47,7 @@ class LoopringAPIRequest {
         
         body["method"] = "loopring_getOrders"
         body["params"] = [["owner": owner, "orderHash": orderHash, "contractVersion": contractVersion, "status": status, "market": market, "pageIndex": pageIndex, "pageSize": pageSize]]
-        body["id"] = "1a715e2557abc0bd"
+        body["id"] = JSON(UUID().uuidString)
         
         Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
@@ -77,7 +77,7 @@ class LoopringAPIRequest {
         var body: JSON = JSON()
         body["method"] = "loopring_getDepth"
         body["params"] = [["contractVersion": contractVersion, "market": market, "length": length]]
-        body["id"] = "1a715e2557abc0bd"
+        body["id"] = JSON(UUID().uuidString)
         
         Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
@@ -99,7 +99,7 @@ class LoopringAPIRequest {
         var body: JSON = JSON()
         body["method"] = "loopring_getTicker"
         body["params"] = [["contractVersion": contractVersion]]
-        body["id"] = "1a715e2557abc0bd"
+        body["id"] = JSON(UUID().uuidString)
         
         Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
@@ -122,7 +122,7 @@ class LoopringAPIRequest {
         var body: JSON = JSON()
         body["method"] = "loopring_getFills"
         body["params"] = [["market": market, "contractVersion": contractVersion, "owner": owner, "orderHash": orderHash, "ringHash": ringHash]]
-        body["id"] = "1a715e2557abc0bd"
+        body["id"] = JSON(UUID().uuidString)
         Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
@@ -145,7 +145,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_getTrend"
         body["params"] = [["market": market, "interval": interval]]
         body["params"]["contractVersion"] = JSON(contractVersion)
-        body["id"] = "1a715e2557abc0bd"
+        body["id"] = JSON(UUID().uuidString)
         Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
@@ -168,7 +168,7 @@ class LoopringAPIRequest {
         var body: JSON = JSON()
         body["method"] = "loopring_getRingMined"
         body["params"] = [["ringHash": ringHash, "contractVersion": contractVersion, "pageIndex": pageIndex, "pageSize": pageSize]]
-        body["id"] = "1a715e2557abc0bd"
+        body["id"] = JSON(UUID().uuidString)
         
         Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
@@ -192,7 +192,7 @@ class LoopringAPIRequest {
         var body: JSON = JSON()
         body["method"] = "loopring_getCutoff"
         body["params"] = [["contractVersion": contractVersion, "address": address, "blockNumber": blockNumber]]
-        body["id"] = "1a715e2557abc0bd"
+        body["id"] = JSON(UUID().uuidString)
         Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
@@ -211,7 +211,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_getPriceQuote"
         body["params"] = [["currency": currency]]
         body["params"]["contractVersion"] = JSON(contractVersion)
-        body["id"] = "1a715e2557abc0bd"
+        body["id"] = JSON(UUID().uuidString)
         Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
@@ -231,7 +231,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_getEstimatedAllocatedAllowance"
         body["params"] = [["owner": owner, "token": token]]
         body["params"]["contractVersion"] = JSON(contractVersion)
-        body["id"] = "1a715e2557abc0bd"
+        body["id"] = JSON(UUID().uuidString)
 
         Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
@@ -249,7 +249,7 @@ class LoopringAPIRequest {
     static func getSupportedTokens(completionHandler: @escaping (_ tokens: [Token]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getSupportedTokens"
-        body["id"] = "1a715e2557abc0bd"
+        body["id"] = JSON(UUID().uuidString)
         Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
@@ -272,7 +272,7 @@ class LoopringAPIRequest {
         var body: JSON = JSON()
         body["method"] = "loopring_getSupportedMarket"
         body["params"] = [["contractVersion": contractVersion]]
-        body["id"] = "1a715e2557abc0bd"
+        body["id"] = JSON(UUID().uuidString)
         Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
@@ -297,7 +297,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_getTransactions"
         body["params"] = [["owner": owner, "symbol": symbol, "thxHash": thxHash, "pageIndex": pageIndex, "pageSize": pageSize]]
         body["params"]["contractVersion"] = JSON(contractVersion)
-        body["id"] = "1a715e2557abc0bd"
+        body["id"] = JSON(UUID().uuidString)
         
         Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
@@ -321,7 +321,7 @@ class LoopringAPIRequest {
         var body: JSON = JSON()
         body["method"] = "loopring_unlockWallet"
         body["params"] = [["owner": owner]]
-        body["id"] = "1a715e2557abc0bd"
+        body["id"] = JSON(UUID().uuidString)
         Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")

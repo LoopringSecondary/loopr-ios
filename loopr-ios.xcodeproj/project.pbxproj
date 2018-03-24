@@ -1174,6 +1174,15 @@
 			path = Archive;
 			sourceTree = "<group>";
 		};
+		AC70E848206604F000451047 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				945800202058FEB500E08DEF /* tokens.json */,
+				940B451B2060F67E00ADE2B9 /* gas_limit.json */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
 		AC72AEE0204D082800E9D3B0 /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1264,6 +1273,7 @@
 				ACB9115D20242D9900F14644 /* Wallet */,
 				AC9280DF202EC5130009B574 /* Trade */,
 				ACB9117D2026381A00F14644 /* Setting */,
+				AC70E848206604F000451047 /* Files */,
 				AC798E4B2022B93A0071D477 /* Assets.xcassets */,
 				AC54FD26204FC61C007E1DEB /* Fonts */,
 				ACB5DD83202ACBF800140A09 /* AfterEffectsAnimations */,
@@ -1428,7 +1438,6 @@
 		ACB9115D20242D9900F14644 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
-				945800202058FEB500E08DEF /* tokens.json */,
 				ACB911512024254F00F14644 /* WalletNavigationViewController.swift */,
 				ACB911532024260E00F14644 /* WalletViewController.swift */,
 				ACB911542024260E00F14644 /* WalletViewController.xib */,
@@ -1481,7 +1490,6 @@
 				940B45112060F67B00ADE2B9 /* AppWalletDataManager.swift */,
 				940B45152060F67C00ADE2B9 /* AssetDataManager.swift */,
 				940B45182060F67D00ADE2B9 /* ConvertDataManager.swift */,
-				940B451B2060F67E00ADE2B9 /* gas_limit.json */,
 				940B45102060F67B00ADE2B9 /* GenerateWalletDataManager.swift */,
 				940B451C2060F67E00ADE2B9 /* MarketDataManager.swift */,
 				940B45122060F67B00ADE2B9 /* OrderDataManager.swift */,

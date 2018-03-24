@@ -30,7 +30,7 @@ class AssetTableViewCell: UITableViewCell {
         amountLabel.theme_textColor = ["#000", "#fff"]
         // forwardImageView.theme_image = ["Forward", "Forward-white"]
         
-        symbolLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17)
+        symbolLabel.font = UIFont(name: FontConfigManager.shared.getRegular(), size: 17)
         balanceLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17)
         amountLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 14)
     }

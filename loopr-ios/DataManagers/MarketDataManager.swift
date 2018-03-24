@@ -94,7 +94,7 @@ class MarketDataManager {
     
     func onTickerResponse(json: JSON) {
         markets = []
-        print(json)
+        // print(json)
         for subJson in json.arrayValue {
             if let market = Market(json: subJson) {
                 let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: market.tradingPair.tradingA)

@@ -80,7 +80,7 @@ class AssetDataManager {
         loadTokensFromServer()
     }
     
-    // load tokens esp. their names from json file to avoid http request
+    // load tokens from json file to avoid http request
     func loadTokensFromJson() {
         if let path = Bundle.main.path(forResource: "tokens", ofType: "json") {
             let jsonString = try? String(contentsOfFile: path, encoding: String.Encoding.utf8)
@@ -98,6 +98,7 @@ class AssetDataManager {
                 return
             }
             for token in tokens {
+                // Check if the token exists in self.tokens.
                 if !self.tokens.contains(where: { (element) -> Bool in
                     return element.symbol.lowercased() == token.symbol.lowercased()
                 }) {
@@ -159,6 +160,7 @@ class AssetDataManager {
         })
     }
     
+    // TODO: No used?
     func formatAsset(asset: inout Asset) {
         if let balance = getAmount(of: asset.symbol, from: asset.balance) {
             if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
@@ -173,7 +175,6 @@ class AssetDataManager {
     
     // this func should be called every 10 secs when emitted
     func onBalanceResponse(json: JSON) {
-        print("onBalanceResponse")
         assets = []
         totalAsset = 0
         for subJson in json["tokens"].arrayValue {

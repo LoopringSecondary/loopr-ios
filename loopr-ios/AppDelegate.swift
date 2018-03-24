@@ -32,17 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // TODO: check whether it is properly: socket.io must be established befor startxxx method
         LoopringSocketIORequest.setup()
         PriceQuoteDataManager.shared.startGetPriceQuote("USD")
+        
+        // TODO: mock data
         AssetDataManager.shared.startGetBalance("0x750ad4351bb728cec7d639a9511f9d6488f1e259")
         MarketDataManager.shared.startGetTicker()
         
         _ = SettingDataManager.shared.getCurrentLanguage()
-
-        // Setup color in the app.
-        self.window?.backgroundColor = UIColor.white
-        
-        let colorView = UIView()
-        colorView.backgroundColor = UIStyleConfig.tableCellSelectedBackgroundColor
-        UITableViewCell.appearance().selectedBackgroundView = colorView
 
         updateTheme()
 
@@ -50,6 +45,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func updateTheme() {
+        // Setup color in the app.
+        self.window?.backgroundColor = UIColor.white
+        
+        // table cell background color.
+        let colorView = UIView()
+        colorView.backgroundColor = UIStyleConfig.tableCellSelectedBackgroundColor
+        UITableViewCell.appearance().selectedBackgroundView = colorView
+        
         // status bar
         UIApplication.shared.theme_setStatusBarStyle([.default, .lightContent, .lightContent, .lightContent], animated: true)
         
