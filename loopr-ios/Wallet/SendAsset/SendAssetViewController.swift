@@ -320,15 +320,17 @@ extension SendAssetViewController {
 
     func _transfer(contractAddress: GethAddress, toAddress: GethAddress, amount: GethBigInt) {
         
-        let configuration = EthAccountConfiguration(namespace: "wallet", password: "pwd")
-        EthAccountCoordinator.default.launch(configuration)
+        // _keystore = _createKeystore(configuration.namespace)
+        let configuration = EthAccountConfiguration(namespace: "wallet", password: "password")
+        let (_, _) = EthAccountCoordinator.default.launch(configuration)
         
         let transferFunction = EthFunction(name: function, inputParameters: [toAddress, amount])
         let encodedTransferFunction = web3swift.encode(transferFunction) // ok here
+        
         do {
             let nonce: Int64 = getNonce()
             let signedTransaction = web3swift.sign(address: contractAddress, encodedFunctionData: encodedTransferFunction, nonce: nonce, gasLimit: GethNewBigInt(gasLimit), gasPrice: GethNewBigInt(gasPrice))
-            if let signedTransactionData = try signedTransaction?.encodeRLP() {
+            if let signedTransactionData = try signedTransaction?.encodeRLP() { // also ok here
                 let encodedSignedTransaction = signedTransactionData.base64EncodedString()
                 print("Encoded transaction sent to server \(encodedSignedTransaction)")
                 executeContract(encodedSignedTransaction)

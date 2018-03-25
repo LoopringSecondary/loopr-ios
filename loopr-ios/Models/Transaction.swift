@@ -45,7 +45,8 @@ class Transaction {
         case received = "receive"
         case sold = "sell"
         case bought = "buy"
-        case converted = "convert"
+        case convert_income = "convert_income"
+        case convert_outcome = "convert_outcome"
         case canceledOrder = "cancel_order"
         case cutoff = "cutoff"
         
@@ -56,7 +57,8 @@ class Transaction {
             case .received: return "Received"
             case .sold: return "Sold"
             case .bought: return "Bought"
-            case .converted: return "Converted" // eth <-> weth
+            case .convert_income: return "Income" // eth <-> weth
+            case .convert_outcome: return "Outcome" // eth <-> weth
             case .canceledOrder: return "Canceled Order"
             case .cutoff: return "Cutoff"
             }
