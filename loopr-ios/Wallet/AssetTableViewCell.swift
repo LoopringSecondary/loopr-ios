@@ -13,6 +13,8 @@ class AssetTableViewCell: UITableViewCell {
     var asset: Asset?
     
     @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var iconView: IconView!
+    
     @IBOutlet weak var symbolLabel: UILabel!
     
     @IBOutlet weak var balanceLabel: UILabel!
@@ -43,7 +45,17 @@ class AssetTableViewCell: UITableViewCell {
     
     func update() {
         if let asset = asset {
-            iconImageView.image = asset.icon
+            if asset.icon != nil {
+                iconImageView.image = asset.icon
+                iconImageView.isHidden = false
+                iconView.isHidden = true
+            } else {
+                iconView.isHidden = false
+                iconView.symbol = asset.symbol
+                iconView.symbolLabel.text = asset.symbol
+                iconImageView.isHidden = true
+            }
+
             symbolLabel.text = asset.symbol
             // TODO: price unit get from setting
             balanceLabel.text = "$\(asset.display)"

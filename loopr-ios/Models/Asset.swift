@@ -22,7 +22,6 @@ class Asset: CustomStringConvertible {
     var description: String
     
     init(json: JSON) {
-        
         self.name = ""
         self.enable = true
         self.display = 0

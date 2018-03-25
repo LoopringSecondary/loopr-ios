@@ -57,15 +57,23 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BGI-Fq-1SI" customClass="IconView" customModule="loopr_ios" customModuleProvider="target">
+                        <rect key="frame" x="20" y="26" width="32" height="32"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="BGI-Fq-1SI" firstAttribute="width" secondItem="8vB-Bh-nJn" secondAttribute="width" id="EWI-5X-4S5"/>
                     <constraint firstItem="zzi-Me-Sla" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="EpD-Pd-LzL"/>
                     <constraint firstItem="zzi-Me-Sla" firstAttribute="leading" secondItem="8vB-Bh-nJn" secondAttribute="trailing" constant="12" id="Gyg-87-MB2"/>
                     <constraint firstAttribute="bottomMargin" secondItem="RjM-Ph-pMw" secondAttribute="bottom" constant="8" id="LNQ-kH-0hD"/>
+                    <constraint firstItem="BGI-Fq-1SI" firstAttribute="height" secondItem="8vB-Bh-nJn" secondAttribute="height" id="LYM-O2-FSo"/>
                     <constraint firstItem="MHg-k2-b9U" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="MdA-Wb-1vp"/>
                     <constraint firstAttribute="trailingMargin" secondItem="RjM-Ph-pMw" secondAttribute="trailing" constant="8" id="Mpx-Lh-qdM"/>
                     <constraint firstItem="8vB-Bh-nJn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ebc-ZQ-gWO"/>
+                    <constraint firstItem="BGI-Fq-1SI" firstAttribute="leading" secondItem="8vB-Bh-nJn" secondAttribute="leading" id="j1l-Vn-aIA"/>
                     <constraint firstAttribute="trailingMargin" secondItem="MHg-k2-b9U" secondAttribute="trailing" constant="8" id="mcw-wq-5by"/>
+                    <constraint firstItem="BGI-Fq-1SI" firstAttribute="top" secondItem="8vB-Bh-nJn" secondAttribute="top" id="uZi-15-YPw"/>
                     <constraint firstItem="8vB-Bh-nJn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="z0c-yY-bjz"/>
                 </constraints>
             </tableViewCellContentView>
@@ -74,6 +82,7 @@
                 <outlet property="amountLabel" destination="RjM-Ph-pMw" id="X50-2f-HvZ"/>
                 <outlet property="balanceLabel" destination="MHg-k2-b9U" id="3bG-3Q-J3o"/>
                 <outlet property="iconImageView" destination="8vB-Bh-nJn" id="Mqd-Jo-eEH"/>
+                <outlet property="iconView" destination="BGI-Fq-1SI" id="GlZ-pf-wTz"/>
                 <outlet property="symbolLabel" destination="zzi-Me-Sla" id="ZWZ-xa-bCi"/>
             </connections>
             <point key="canvasLocation" x="71.5" y="79"/>
