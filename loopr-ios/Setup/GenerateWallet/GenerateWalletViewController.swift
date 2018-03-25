@@ -10,8 +10,8 @@ import UIKit
 
 class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var titleLabel: UILabel!
-    
+    var titleLabel: UILabel =  UILabel()
+
     var walletNameTextField: UITextField = UITextField()
     var walletNameUnderLine: UIView = UIView()
     
@@ -28,44 +28,47 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         let backButton = UIBarButtonItem()
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
-
-        titleLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 27)
         
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         // let screenHeight = screensize.height
         
-        let originY: CGFloat = 134
+        let originY: CGFloat = 30
         let padding: CGFloat = 15
+
+        titleLabel.frame = CGRect(x: padding, y: originY, width: screenWidth - padding * 2, height: 30)
+        titleLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 27)
+        titleLabel.text = "Create a new wallet"
+        view.addSubview(titleLabel)
 
         walletNameTextField.delegate = self
         walletNameTextField.tag = 0
-        walletNameTextField.inputView = UIView()
+        // walletNameTextField.inputView = UIView()
         walletNameTextField.font = FontConfigManager.shared.getLabelFont(size: 19)
         walletNameTextField.placeholder = "Give your wallet an awesome name"
         walletNameTextField.contentMode = UIViewContentMode.bottom
-        walletNameTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 40)
+        walletNameTextField.frame = CGRect(x: padding, y: titleLabel.frame.maxY + 80, width: screenWidth-padding*2, height: 40)
         view.addSubview(walletNameTextField)
-        
+
         walletNameUnderLine.frame = CGRect(x: padding, y: walletNameTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
         walletNameUnderLine.backgroundColor = UIColor.black
         view.addSubview(walletNameUnderLine)
 
         walletPasswordTextField.delegate = self
         walletPasswordTextField.tag = 1
-        walletPasswordTextField.inputView = UIView()
+        // walletPasswordTextField.inputView = UIView()
         walletPasswordTextField.font = FontConfigManager.shared.getLabelFont(size: 19)
         walletPasswordTextField.placeholder = "Set a password"
         walletPasswordTextField.contentMode = UIViewContentMode.bottom
-        walletPasswordTextField.frame = CGRect(x: padding, y: walletNameUnderLine.frame.maxY + 47, width: screenWidth-padding*2, height: 40)
+        walletPasswordTextField.frame = CGRect(x: padding, y: walletNameUnderLine.frame.maxY + 45, width: screenWidth-padding*2, height: 40)
         view.addSubview(walletPasswordTextField)
         
         walletPasswordUnderLine.frame = CGRect(x: padding, y: walletPasswordTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
         walletPasswordUnderLine.backgroundColor = UIColor.black
         view.addSubview(walletPasswordUnderLine)
         
-        continueButton.frame = CGRect(x: padding, y: walletPasswordUnderLine.frame.maxY + 54, width: screenWidth - padding * 2, height: 47)
+        continueButton.frame = CGRect(x: padding, y: walletPasswordUnderLine.frame.maxY + 50, width: screenWidth - padding * 2, height: 47)
         continueButton.backgroundColor = UIColor.black
         continueButton.layer.cornerRadius = 23
         continueButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)

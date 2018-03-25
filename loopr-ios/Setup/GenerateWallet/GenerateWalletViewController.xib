@@ -13,7 +13,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GenerateWalletViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="continueButton" destination="zYj-M0-IFi" id="jZD-Ru-Uuz"/>
-                <outlet property="titleLabel" destination="Uqm-QA-pDu" id="bso-K7-NYm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -34,22 +33,8 @@
                         <action selector="pressedContinueButton:" destination="-1" eventType="touchUpInside" id="Va4-u2-Fbi"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set up your wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqm-QA-pDu">
-                    <rect key="frame" x="15" y="50" width="250" height="35"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="250" id="U4S-g9-Whm"/>
-                        <constraint firstAttribute="height" constant="35" id="xx7-gk-wDV"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="Uqm-QA-pDu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="6GV-6v-P2u"/>
-                <constraint firstItem="Uqm-QA-pDu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="h0x-cO-Ne5"/>
-            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>

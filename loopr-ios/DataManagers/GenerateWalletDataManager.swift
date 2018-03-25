@@ -13,6 +13,8 @@ class GenerateWalletDataManager {
     static let shared = GenerateWalletDataManager()
     
     var walletName: String = ""
+    var password: String = ""
+
     private var mnemonic: [String] = []
 
     // Used in the verification.
