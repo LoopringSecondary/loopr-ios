@@ -27,6 +27,7 @@ public class LoopringSocketIORequest {
             handlers["balance_res"] = [AssetDataManager.shared.onBalanceResponse]
             handlers["marketcap_res"] = [PriceQuoteDataManager.shared.onPriceQuoteResponse]
             handlers["loopringTickers_res"] = [MarketDataManager.shared.onTickerResponse]
+            handlers["trends_res"] = [MarketDataManager.shared.onTrendResponse]
             addHandlers(handlers)
         }
         connect()
@@ -87,6 +88,15 @@ public class LoopringSocketIORequest {
         body["contractVersion"] = JSON(contractVersion)
         socket.on(clientEvent: .connect) {_, _ in
             self.socket.emit("loopringTickers_req", body.rawString()!)
+        }
+    }
+    
+    static func getTrend(market: String, interval: String) {
+        var body: JSON = JSON()
+        body["market"] = JSON(market)
+        body["interval"] = JSON(interval)
+        socket.on(clientEvent: .connect) {_, _ in
+            self.socket.emit("trends_req", body.rawString()!)
         }
     }
 }

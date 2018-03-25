@@ -15,4 +15,6 @@ extension Notification.Name {
     static let priceQuoteResponseReceived = Notification.Name("priceQuoteResponseReceived")
     
     static let tickerResponseReceived = Notification.Name("tickerResponseReceived")
+    
+    static let trendResponseReceived = Notification.Name("trendResponseReceived")
 }

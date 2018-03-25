@@ -8,14 +8,16 @@
 
 import Foundation
 
-class TradingPair: Equatable {
-
+class TradingPair: Equatable, CustomStringConvertible {
+    
+    var description: String
     final let tradingA: String
     final let tradingB: String
     
     init(_ tradingA: String, _ tradingB: String) {
         self.tradingA = tradingA
         self.tradingB = tradingB
+        self.description = tradingA + "-" + tradingB
     }
 
     static func == (lhs: TradingPair, rhs: TradingPair) -> Bool {

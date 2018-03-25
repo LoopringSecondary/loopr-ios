@@ -14,10 +14,12 @@ class MarketDataManager {
     static let shared = MarketDataManager()
     
     private var markets: [Market]
+    private var trends: [Trend]
     private lazy var favoriteMarketKeys: [String] = self.getFavoriteMarketKeysFromLocal()
     
     private init() {
         markets = []
+        trends = []
     }
     
     // TODO:
@@ -31,6 +33,25 @@ class MarketDataManager {
             // Update the array in the disk
             updateFavoriteMarketKeysOnLocal()
         }
+    }
+    
+    func getTrends(market: String, interval: String = "2Hr") -> [Trend]? {
+        var result: [Trend]? = nil
+        result = self.trends.filter { (trend) -> Bool in
+            return trend.market.lowercased() == market.lowercased() &&
+            trend.intervals.lowercased() == interval.lowercased()
+        }
+        if result == nil {
+            DispatchQueue.main.sync {
+                LoopringAPIRequest.getTrend(market: market, interval: interval, completionHandler: { (trends, error) in
+                    guard error == nil else {
+                        return
+                    }
+                    result = trends
+                })
+            }
+        }
+        return result
     }
     
     func getMarkets(type: MarketSwipeViewType = .all) -> [Market] {
@@ -92,9 +113,26 @@ class MarketDataManager {
         LoopringSocketIORequest.getTiker()
     }
     
+    func startGetTrend(market: String, interval: String) {
+        LoopringSocketIORequest.getTrend(market: market, interval: interval)
+    }
+    
     func onTickerResponse(json: JSON) {
         markets = []
         // print(json)
+        for subJson in json.arrayValue {
+            if let market = Market(json: subJson) {
+                let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: market.tradingPair.tradingA)
+                market.display = price ?? 0
+                markets.append(market)
+            }
+        }
+        NotificationCenter.default.post(name: .tickerResponseReceived, object: nil)
+    }
+    
+    func onTrendResponse(json: JSON) {
+        trends = []
+        print(json)
         for subJson in json.arrayValue {
             if let market = Market(json: subJson) {
                 let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: market.tradingPair.tradingA)

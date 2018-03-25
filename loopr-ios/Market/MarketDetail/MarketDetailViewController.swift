@@ -12,6 +12,7 @@ import PopupDialog
 class MarketDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var market: Market?
+    var trends: [Trend]?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -35,8 +36,20 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
         udpateStarButton()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(trendResponseReceivedNotification), name: .trendResponseReceived, object: nil)
     }
 
+    @objc func trendResponseReceivedNotification() {
+        print("tickerReceivedNotification")
+        if self.trends == nil {
+            self.trends = MarketDataManager.shared.getTrends(market: market!.tradingPair.description)
+            self.tableView.reloadData()
+        } else {
+            // TODO: Perform a diff algorithm
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -49,7 +62,6 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         } else {
             icon = UIImage (named: "StarOutline")?.withRenderingMode(.alwaysOriginal)
         }
-        
         let starButton = UIBarButtonItem(image: icon, style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.pressStarButton(_:)))
         self.navigationItem.rightBarButtonItem = starButton
     }
@@ -60,7 +72,6 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         guard let market = market else {
             return
         }
-
         if market.isFavorite() {
             MarketDataManager.shared.removeFavoriteMarket(market: market)
         } else {
