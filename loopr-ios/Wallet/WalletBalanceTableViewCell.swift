@@ -24,7 +24,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        balanceLabel.setFont(UIFont.init(name: FontConfigManager.shared.getLight(), size: 34)!)
+        balanceLabel.setFont(UIFont.init(name: FontConfigManager.shared.getRegular(), size: 39)!)
         balanceLabel.animationDuration = 0.25
         balanceLabel.textAlignment = NSTextAlignment.center
         balanceLabel.initializeLabel()

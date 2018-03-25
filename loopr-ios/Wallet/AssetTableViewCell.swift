@@ -12,6 +12,7 @@ class AssetTableViewCell: UITableViewCell {
 
     var asset: Asset?
     
+    // TODO: We may deprecate IBOutlet
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var iconView: IconView!
     
@@ -26,15 +27,17 @@ class AssetTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        theme_backgroundColor = ["#fff", "#000"]
-        symbolLabel.theme_textColor = ["#000", "#fff"]
-        balanceLabel.theme_textColor = ["#000", "#fff"]
-        amountLabel.theme_textColor = ["#000", "#fff"]
+        theme_backgroundColor = GlobalPicker.backgroundColor
+        symbolLabel.theme_textColor = GlobalPicker.textColor
+        balanceLabel.theme_textColor = GlobalPicker.textColor
+        amountLabel.theme_textColor = GlobalPicker.textColor
         // forwardImageView.theme_image = ["Forward", "Forward-white"]
         
-        symbolLabel.font = UIFont(name: FontConfigManager.shared.getRegular(), size: 17)
-        balanceLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17)
+        symbolLabel.font = UIFont(name: FontConfigManager.shared.getRegular(), size: 21)
+        balanceLabel.font = UIFont(name: FontConfigManager.shared.getRegular(), size: 17)
         amountLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 14)
+        
+        // TODO: Setup UI
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -68,6 +71,6 @@ class AssetTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 84
+        return 72
     }
 }

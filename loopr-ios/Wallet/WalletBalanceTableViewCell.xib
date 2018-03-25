@@ -21,7 +21,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bom-wH-aAn">
-                        <rect key="frame" x="0.0" y="118" width="395" height="42"/>
+                        <rect key="frame" x="0.0" y="117.5" width="395" height="42"/>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="42" id="RmP-SP-Suu"/>
@@ -35,7 +35,7 @@
                         </constraints>
                     </view>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RBU-Bt-tYb">
-                        <rect key="frame" x="333" y="123.5" width="49" height="31"/>
+                        <rect key="frame" x="333" y="123" width="49" height="31"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="31" id="3h4-pl-fLX"/>
                             <constraint firstAttribute="width" constant="47" id="PZd-6t-qSv"/>
@@ -43,7 +43,7 @@
                         <color key="onTintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </switch>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hide Small Assets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tw-09-XWM">
-                        <rect key="frame" x="14" y="128" width="200" height="21"/>
+                        <rect key="frame" x="14" y="127.5" width="200" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="200" id="URs-Cc-MHc"/>
                             <constraint firstAttribute="height" constant="21" id="X6Y-D1-y5l"/>
