@@ -28,46 +28,29 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="IhC-Aw-x9m">
-                    <rect key="frame" x="16" y="604" width="343" height="47"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khC-LX-8we">
-                            <rect key="frame" x="0.0" y="0.0" width="163.5" height="47"/>
-                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" name="D-DIN-Bold" family="D-DIN" pointSize="16"/>
-                            <state key="normal" title="Unlock Wallet">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="unlockWalletButtonPressed:" destination="-1" eventType="touchUpInside" id="xwH-vz-VEl"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1g-wc-kTG">
-                            <rect key="frame" x="179.5" y="0.0" width="163.5" height="47"/>
-                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" name="D-DIN-Bold" family="D-DIN" pointSize="16"/>
-                            <color key="tintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <state key="normal" title="Generate Wallet">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="generateWalletButtonPressed:" destination="-1" eventType="touchUpInside" id="XbX-An-iAO"/>
-                            </connections>
-                        </button>
-                    </subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khC-LX-8we">
+                    <rect key="frame" x="15" y="557" width="345" height="47"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="47" id="Ryp-AV-M42"/>
+                        <constraint firstAttribute="height" constant="47" id="AEz-YZ-aZh"/>
                     </constraints>
-                </stackView>
+                    <fontDescription key="fontDescription" name="D-DIN-Bold" family="D-DIN" pointSize="16"/>
+                    <state key="normal" title="Import Wallet">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="unlockWalletButtonPressed:" destination="-1" eventType="touchUpInside" id="xwH-vz-VEl"/>
+                    </connections>
+                </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loopring_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ndb-6h-SZu">
-                    <rect key="frame" x="16" y="20" width="160" height="60"/>
+                    <rect key="frame" x="20" y="20" width="160" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="160" id="MPw-HG-wLO"/>
                         <constraint firstAttribute="height" constant="60" id="qLf-OM-Vqm"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secure token trading right from your own wallet." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwj-yH-xwd">
-                    <rect key="frame" x="16" y="88" width="343" height="25"/>
+                    <rect key="frame" x="20" y="94" width="335" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="tDq-Qq-Oz7"/>
                     </constraints>
@@ -75,17 +58,35 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1g-wc-kTG">
+                    <rect key="frame" x="15" y="495" width="345" height="47"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="47" id="dkP-Tq-mL8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="D-DIN-Bold" family="D-DIN" pointSize="16"/>
+                    <color key="tintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Generate Wallet">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="generateWalletButtonPressed:" destination="-1" eventType="touchUpInside" id="XbX-An-iAO"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="ndb-6h-SZu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="EG7-h0-BSt"/>
-                <constraint firstItem="ndb-6h-SZu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Gfy-jf-M8C"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IhC-Aw-x9m" secondAttribute="trailing" constant="16" id="N1s-eZ-RIf"/>
-                <constraint firstItem="Vwj-yH-xwd" firstAttribute="top" secondItem="ndb-6h-SZu" secondAttribute="bottom" constant="8" id="Osf-hZ-nvS"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vwj-yH-xwd" secondAttribute="trailing" constant="16" id="d2V-rq-dYL"/>
-                <constraint firstItem="Vwj-yH-xwd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="rpZ-ty-8bO"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="IhC-Aw-x9m" secondAttribute="bottom" constant="16" id="vVX-9D-wa9"/>
-                <constraint firstItem="IhC-Aw-x9m" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="y5s-3r-ckf"/>
+                <constraint firstItem="ndb-6h-SZu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Gfy-jf-M8C"/>
+                <constraint firstItem="Vwj-yH-xwd" firstAttribute="top" secondItem="ndb-6h-SZu" secondAttribute="bottom" constant="14" id="Osf-hZ-nvS"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="khC-LX-8we" secondAttribute="trailing" constant="15" id="PIy-43-efh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="khC-LX-8we" secondAttribute="bottom" constant="63" id="UKw-22-Dtn"/>
+                <constraint firstItem="khC-LX-8we" firstAttribute="top" secondItem="Q1g-wc-kTG" secondAttribute="bottom" constant="15" id="W4e-q4-OWe"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vwj-yH-xwd" secondAttribute="trailing" constant="20" id="d2V-rq-dYL"/>
+                <constraint firstItem="Q1g-wc-kTG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="kcd-lV-f9z"/>
+                <constraint firstItem="Vwj-yH-xwd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="rpZ-ty-8bO"/>
+                <constraint firstItem="khC-LX-8we" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="s5d-nu-Ivq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Q1g-wc-kTG" secondAttribute="trailing" constant="15" id="vYl-fq-bv8"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="34.5" y="54.5"/>

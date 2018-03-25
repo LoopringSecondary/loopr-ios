@@ -13,9 +13,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GenerateWalletViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="continueButton" destination="zYj-M0-IFi" id="jZD-Ru-Uuz"/>
+                <outlet property="titleLabel" destination="Uqm-QA-pDu" id="bso-K7-NYm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="walletNameTextField" destination="yQO-Qm-cfh" id="Kab-hE-tEs"/>
-                <outlet property="walletPasswordTextField" destination="9uX-OO-zcf" id="aby-4H-fwc"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,30 +22,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Wallet Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yQO-Qm-cfh">
-                    <rect key="frame" x="16" y="52" width="343" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="AeO-N3-Yv4"/>
-                    </constraints>
-                    <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password (optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9uX-OO-zcf">
-                    <rect key="frame" x="16" y="124" width="343" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="vPe-Zb-7oV"/>
-                    </constraints>
-                    <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYj-M0-IFi">
-                    <rect key="frame" x="15" y="196" width="345" height="47"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYj-M0-IFi">
+                    <rect key="frame" x="15" y="298" width="344" height="47"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="47" id="gbH-xG-1yC"/>
-                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" title="Continue">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -55,18 +34,21 @@
                         <action selector="pressedContinueButton:" destination="-1" eventType="touchUpInside" id="Va4-u2-Fbi"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set up your wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqm-QA-pDu">
+                    <rect key="frame" x="15" y="50" width="250" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="U4S-g9-Whm"/>
+                        <constraint firstAttribute="height" constant="35" id="xx7-gk-wDV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="yQO-Qm-cfh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="KGM-sM-FYY"/>
-                <constraint firstItem="yQO-Qm-cfh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="32" id="PfF-kR-Ncr"/>
-                <constraint firstItem="zYj-M0-IFi" firstAttribute="top" secondItem="9uX-OO-zcf" secondAttribute="bottom" constant="32" id="Qoh-ym-oMU"/>
-                <constraint firstItem="9uX-OO-zcf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="WRh-5N-P0h"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zYj-M0-IFi" secondAttribute="trailing" constant="15" id="Wcf-Jg-6Ne"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9uX-OO-zcf" secondAttribute="trailing" constant="16" id="Xj7-RB-gWZ"/>
-                <constraint firstItem="9uX-OO-zcf" firstAttribute="top" secondItem="yQO-Qm-cfh" secondAttribute="bottom" constant="32" id="lfN-jg-pXT"/>
-                <constraint firstItem="zYj-M0-IFi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="tPt-di-H2Y"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yQO-Qm-cfh" secondAttribute="trailing" constant="16" id="zEi-go-0fO"/>
+                <constraint firstItem="Uqm-QA-pDu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="6GV-6v-P2u"/>
+                <constraint firstItem="Uqm-QA-pDu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="h0x-cO-Ne5"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="54.5"/>

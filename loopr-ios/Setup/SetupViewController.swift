@@ -10,21 +10,26 @@ import UIKit
 
 class SetupViewController: UIViewController {
 
+    
     @IBOutlet weak var taglineLabel: UILabel!
     @IBOutlet weak var unlockWalletButton: UIButton!
     @IBOutlet weak var generateWalletButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        taglineLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 15)
 
-        unlockWalletButton.backgroundColor = UIColor.clear
+        // TODO: update the background color to #ECEEF0
+        view.backgroundColor = UIColor.white // UIColor.init(rgba: "#ECEEF0")
+        // self.navigationController?.navigationBar.barTintColor = UIColor.init(rgba: "#ECEEF0")
+
+        taglineLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 16)
+
+        unlockWalletButton.backgroundColor = UIColor.white
         unlockWalletButton.titleColor = UIColor.black
         unlockWalletButton.layer.cornerRadius = 23
         unlockWalletButton.layer.borderWidth = 1
         unlockWalletButton.layer.borderColor = UIColor.black.cgColor
-        unlockWalletButton.title = NSLocalizedString("Unlock Wallet", comment: "")
+        unlockWalletButton.title = NSLocalizedString("Import Wallet", comment: "")
         unlockWalletButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)
         
         generateWalletButton.backgroundColor = UIColor.black
@@ -46,11 +51,13 @@ class SetupViewController: UIViewController {
     
     @IBAction func unlockWalletButtonPressed(_ sender: Any) {
         let viewController = UnlockWalletSwipeViewController()
+        // viewController.navigationController?.navigationBar.theme_barTintColor = GlobalPicker.barTintColor
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction func generateWalletButtonPressed(_ sender: Any) {
         let viewController = GenerateWalletViewController()
+        // viewController.navigationController?.navigationBar.theme_barTintColor = GlobalPicker.barTintColor
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 

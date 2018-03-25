@@ -49,19 +49,19 @@ class UnlockWalletSwipeViewController: SwipeViewController {
     
     // MARK: - Delegate
     override func swipeView(_ swipeView: SwipeView, viewWillSetupAt currentIndex: Int) {
-        print("will setup SwipeView")
+        // print("will setup SwipeView")
     }
     
     override func swipeView(_ swipeView: SwipeView, viewDidSetupAt currentIndex: Int) {
-        print("did setup SwipeView")
+        // print("did setup SwipeView")
     }
     
     override func swipeView(_ swipeView: SwipeView, willChangeIndexFrom fromIndex: Int, to toIndex: Int) {
-        print("will change from item \(fromIndex) to item \(toIndex)")
+        // print("will change from item \(fromIndex) to item \(toIndex)")
     }
     
     override func swipeView(_ swipeView: SwipeView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
-        print("did change from item \(fromIndex) to section \(toIndex)")
+        // print("did change from item \(fromIndex) to section \(toIndex)")
     }
     
     // MARK: DataSource

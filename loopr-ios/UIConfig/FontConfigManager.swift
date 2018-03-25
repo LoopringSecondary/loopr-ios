@@ -66,6 +66,13 @@ class FontConfigManager {
         return "\(currentFont.rawValue)-Regular"
     }
     
+    func getLight() -> String {
+        if currentFont == .DIN {
+            return "DINNextLTPro-Light"
+        }
+        return "\(currentFont.rawValue)-Light"
+    }
+
     func getRegular() -> String {
         if currentFont == .DIN {
             return "DINNextLTPro-Regular"
@@ -73,11 +80,19 @@ class FontConfigManager {
         return "\(currentFont.rawValue)-Regular"
     }
     
-    func getLight() -> String {
-        if currentFont == .DIN {
-            return "DINNextLTPro-Light"
+    func getMedium() -> String {
+        switch currentFont {
+        case .DIN:
+            return "DINNextLTPro-Medium"
+        case .Lato:
+            return "Lato-Bold"
+        case .Montserrat:
+            return "Montserrat-Medium"
+        case .OpenSans:
+            return "OpenSans-SemiBold"
+        case .Roboto:
+            return "Roboto-Medium"
         }
-        return "\(currentFont.rawValue)-Light"
     }
     
     func getBold() -> String {
