@@ -12,6 +12,7 @@
 "Receive" = "收";
 "Send" = "发";
 "Language" = "语言";
+"Create a new wallet" = "生成新钱包";
 "Manage Wallet" = "管理钱包";
 "Import Wallet" = "解锁钱包";
 "Generate Wallet" = "生成钱包";

@@ -18,8 +18,8 @@ class MnemonicViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
 
         unlockButton.setTitle(NSLocalizedString("Unlock", comment: ""), for: .normal)
         
@@ -52,7 +52,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate {
     }
 
     // keyboardWillShow is called after viewDidAppear
-    @objc func keyboardWillShow(_ notification: Notification) {
+    @objc func systemKeyboardWillShow(_ notification: Notification) {
         guard let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
             return
         }
@@ -69,7 +69,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    @objc func keyboardWillDisappear(notification: NSNotification?) {
+    @objc func systemKeyboardWillDisappear(notification: NSNotification?) {
         print("keyboardWillDisappear")
         // unlockButtonBottonLayoutContraint.constant = 16.0
     }

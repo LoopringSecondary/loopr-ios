@@ -35,6 +35,8 @@ class SetupViewController: UIViewController {
         generateWalletButton.backgroundColor = UIColor.black
         generateWalletButton.layer.cornerRadius = 23
         generateWalletButton.title = NSLocalizedString("Generate Wallet", comment: "")
+        generateWalletButton.setBackgroundColor(UIColor.init(white: 0.3, alpha: 1), for: .highlighted)
+        generateWalletButton.clipsToBounds = true
         generateWalletButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)
 
         // TODO: skip button is not in the design. Add "Go to Market" button.
