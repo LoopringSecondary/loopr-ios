@@ -68,7 +68,7 @@ class AssetTableViewCell: UITableViewCell {
 
             symbolLabel.text = asset.symbol
             // TODO: price unit get from setting
-            balanceLabel.text = "$\(asset.display)"
+            balanceLabel.text = "$ \(asset.display)"
             amountLabel.text = "\(asset.balance) \(asset.symbol)"
         }
     }

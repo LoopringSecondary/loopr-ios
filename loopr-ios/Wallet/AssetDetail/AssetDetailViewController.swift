@@ -29,6 +29,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
         
         // Receive button
         receiveButton.setTitle(NSLocalizedString("Receive", comment: ""), for: .normal)
@@ -57,6 +58,8 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         // It's not perfect, but works. Need improvement in the future.
         self.transactions = AssetDataManager.shared.getTransactions()
         if let asset = asset {
+            
+            // TODO: pass the address
             AssetDataManager.shared.getTransactionsFromServer(owner: "", asset: asset) { (transactions, error) in
                 guard error == nil else {
                     return
@@ -187,14 +190,17 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
                 cell = nib![0] as? AssetBalanceTableViewCell
                 cell?.selectionStyle = .none
             }
-            cell?.balanceLabel.text = asset!.balance.description
+
+            if let asset = asset {
+                cell?.update(asset: asset)
+            }
+
             return cell!
         } else {
             var cell = tableView.dequeueReusableCell(withIdentifier: AssetTransactionTableViewCell.getCellIdentifier()) as? AssetTransactionTableViewCell
             if cell == nil {
                 let nib = Bundle.main.loadNibNamed("AssetTransactionTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? AssetTransactionTableViewCell
-                cell?.accessoryType = .disclosureIndicator
             }
             cell?.transaction = self.transactions[indexPath.row - 1]
             cell?.update()

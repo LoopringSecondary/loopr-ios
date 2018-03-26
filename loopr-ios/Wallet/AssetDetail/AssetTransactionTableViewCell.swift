@@ -17,14 +17,18 @@ class AssetTransactionTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var typeImageView: UIImageView!
     
+    @IBOutlet weak var seperateLine: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        theme_backgroundColor = ["#fff", "#000"]
-        titleLabel.theme_textColor = ["#000", "#fff"]
+        theme_backgroundColor = GlobalPicker.backgroundColor
+        titleLabel.theme_textColor = GlobalPicker.textColor
         descriptionLabel.theme_textColor = ["#a0a0a0", "#fff"]
         typeImageView.theme_image = ["Received", "Received-white"]
+        
+        seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
