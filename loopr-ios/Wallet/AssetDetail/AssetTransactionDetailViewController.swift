@@ -92,7 +92,7 @@ class AssetTransactionDetailViewController: UIViewController {
         view.addSubview(label4)
 
         row2Underline.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-        row2Underline.frame = CGRect(x: padding, y: label3.frame.maxY, width: screenWidth - 2*padding, height: 1)
+        row2Underline.frame = CGRect(x: padding, y: label3.frame.maxY, width: screenWidth - 2*padding, height: 0.5)
         view.addSubview(row2Underline)
         
         // Row 3

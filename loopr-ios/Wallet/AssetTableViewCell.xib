@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,23 +20,23 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8vB-Bh-nJn">
-                        <rect key="frame" x="20" y="18.5" width="32" height="32"/>
+                        <rect key="frame" x="15" y="18.5" width="32" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="32" id="Nu4-WL-m4k"/>
                             <constraint firstAttribute="height" constant="32" id="hED-Oy-lNb"/>
                         </constraints>
                     </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gvg-n7-Dn3">
-                        <rect key="frame" x="183" y="13.5" width="200" height="42"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gvg-n7-Dn3">
+                        <rect key="frame" x="191" y="13" width="200" height="52"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHg-k2-b9U">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="21"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RjM-Ph-pMw">
-                                <rect key="frame" x="0.0" y="21" width="200" height="21"/>
+                                <rect key="frame" x="0.0" y="20" width="200" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -45,11 +44,11 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="width" constant="200" id="5Gd-85-4w0"/>
-                            <constraint firstAttribute="height" constant="42" id="dco-wN-3kv"/>
+                            <constraint firstAttribute="height" constant="52" id="dco-wN-3kv"/>
                         </constraints>
                     </stackView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitcoin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzi-Me-Sla">
-                        <rect key="frame" x="66" y="12.5" width="141" height="44"/>
+                        <rect key="frame" x="61" y="12.5" width="141" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="KSG-jA-kjR"/>
                             <constraint firstAttribute="width" constant="141" id="mLH-7U-8pk"/>
@@ -59,8 +58,15 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BGI-Fq-1SI" customClass="IconView" customModule="loopr_ios" customModuleProvider="target">
-                        <rect key="frame" x="20" y="18.5" width="32" height="32"/>
+                        <rect key="frame" x="15" y="18.5" width="32" height="32"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2K3-aV-tP8">
+                        <rect key="frame" x="59" y="68" width="395" height="0.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="buH-fD-5GB"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <constraints>
@@ -68,10 +74,13 @@
                     <constraint firstItem="zzi-Me-Sla" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="EpD-Pd-LzL"/>
                     <constraint firstItem="zzi-Me-Sla" firstAttribute="leading" secondItem="8vB-Bh-nJn" secondAttribute="trailing" constant="14" id="Gyg-87-MB2"/>
                     <constraint firstItem="BGI-Fq-1SI" firstAttribute="height" secondItem="8vB-Bh-nJn" secondAttribute="height" id="LYM-O2-FSo"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="gvg-n7-Dn3" secondAttribute="trailing" constant="-8" id="VW1-Sg-DPY"/>
-                    <constraint firstItem="gvg-n7-Dn3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Xdo-hT-yTf"/>
-                    <constraint firstItem="8vB-Bh-nJn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ebc-ZQ-gWO"/>
+                    <constraint firstItem="2K3-aV-tP8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="59" id="OYN-17-ueD"/>
+                    <constraint firstAttribute="trailing" secondItem="gvg-n7-Dn3" secondAttribute="trailing" constant="4" id="VW1-Sg-DPY"/>
+                    <constraint firstItem="8vB-Bh-nJn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ebc-ZQ-gWO"/>
+                    <constraint firstItem="gvg-n7-Dn3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="fuT-Sh-79f"/>
                     <constraint firstItem="BGI-Fq-1SI" firstAttribute="leading" secondItem="8vB-Bh-nJn" secondAttribute="leading" id="j1l-Vn-aIA"/>
+                    <constraint firstAttribute="bottom" secondItem="2K3-aV-tP8" secondAttribute="bottom" id="qhI-ji-mfe"/>
+                    <constraint firstAttribute="trailing" secondItem="2K3-aV-tP8" secondAttribute="trailing" constant="-59" id="uA9-x4-CJA"/>
                     <constraint firstItem="BGI-Fq-1SI" firstAttribute="top" secondItem="8vB-Bh-nJn" secondAttribute="top" id="uZi-15-YPw"/>
                     <constraint firstItem="8vB-Bh-nJn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="z0c-yY-bjz"/>
                 </constraints>
@@ -82,6 +91,7 @@
                 <outlet property="balanceLabel" destination="MHg-k2-b9U" id="3bG-3Q-J3o"/>
                 <outlet property="iconImageView" destination="8vB-Bh-nJn" id="Mqd-Jo-eEH"/>
                 <outlet property="iconView" destination="BGI-Fq-1SI" id="GlZ-pf-wTz"/>
+                <outlet property="seperateLine" destination="2K3-aV-tP8" id="QaL-Cy-j8e"/>
                 <outlet property="symbolLabel" destination="zzi-Me-Sla" id="ZWZ-xa-bCi"/>
             </connections>
             <point key="canvasLocation" x="71.5" y="79"/>

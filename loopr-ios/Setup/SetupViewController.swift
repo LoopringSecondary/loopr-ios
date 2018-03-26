@@ -35,7 +35,9 @@ class SetupViewController: UIViewController {
         generateWalletButton.backgroundColor = UIColor.black
         generateWalletButton.layer.cornerRadius = 23
         generateWalletButton.title = NSLocalizedString("Generate Wallet", comment: "")
-        generateWalletButton.setBackgroundColor(UIColor.init(white: 0.3, alpha: 1), for: .highlighted)
+        
+        // TODO: what is the color for highlighted state
+        generateWalletButton.setBackgroundColor(UIColor.init(rgba: "#333333"), for: .highlighted)
         generateWalletButton.clipsToBounds = true
         generateWalletButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)
 
