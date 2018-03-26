@@ -56,51 +56,43 @@
                         <rect key="frame" x="26" y="524" width="323" height="30"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anW-Oa-CMA" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="56.5" height="30"/>
                                 <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="1D"/>
+                                <state key="normal" title="1H"/>
                                 <connections>
-                                    <action selector="pressedOneDayButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cSp-T9-AxL"/>
+                                    <action selector="pressedIntervalButtons:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qdY-Wa-WbP"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRM-h1-EcE" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
-                                <rect key="frame" x="55.5" y="0.0" width="45.5" height="30"/>
+                                <rect key="frame" x="66.5" y="0.0" width="56.5" height="30"/>
                                 <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="1W"/>
+                                <state key="normal" title="2H"/>
                                 <connections>
-                                    <action selector="pressedOneWeekButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="RVR-98-mMH"/>
+                                    <action selector="pressedIntervalButtons:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9Pu-ju-VcZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bfq-aW-lRl" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
-                                <rect key="frame" x="111" y="0.0" width="45.5" height="30"/>
+                                <rect key="frame" x="133" y="0.0" width="57" height="30"/>
                                 <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="1M"/>
+                                <state key="normal" title="4H"/>
                                 <connections>
-                                    <action selector="pressedOneMonthButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NAK-ek-HpK"/>
+                                    <action selector="pressedIntervalButtons:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="WwM-Kz-iRt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qlF-ym-Z3F" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
-                                <rect key="frame" x="166.5" y="0.0" width="45.5" height="30"/>
+                                <rect key="frame" x="200" y="0.0" width="56.5" height="30"/>
                                 <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="3M"/>
+                                <state key="normal" title="1D"/>
                                 <connections>
-                                    <action selector="pressedThreeMonthButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ieb-c9-6zb"/>
+                                    <action selector="pressedIntervalButtons:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qwz-OM-LJO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k5S-qZ-X7R" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
-                                <rect key="frame" x="222" y="0.0" width="45.5" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8C9-of-h1R" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
+                                <rect key="frame" x="266.5" y="0.0" width="56.5" height="30"/>
                                 <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="1Y"/>
+                                <state key="normal" title="1W"/>
                                 <connections>
-                                    <action selector="pressedOneYearButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="EFt-Qu-HSK"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfP-dl-ff4" customClass="CustomUIButtonForUIToolbar" customModule="loopr_ios" customModuleProvider="target">
-                                <rect key="frame" x="277.5" y="0.0" width="45.5" height="30"/>
-                                <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="5Y"/>
-                                <connections>
-                                    <action selector="pressedFiveYearButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="T4i-Oq-TMB"/>
+                                    <action selector="pressedIntervalButtons:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ta3-tx-9Vn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -127,14 +119,13 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="buyButton" destination="7Xm-T7-7is" id="CVa-33-Hmn"/>
-                <outlet property="fiveYearButton" destination="dfP-dl-ff4" id="epu-Be-wXx"/>
+                <outlet property="fourHourButton" destination="Bfq-aW-lRl" id="a4D-53-7p3"/>
                 <outlet property="lineChartView" destination="foM-Qt-wIu" id="zY8-CF-4m9"/>
-                <outlet property="oneDayButton" destination="anW-Oa-CMA" id="ZTW-xv-rdw"/>
-                <outlet property="oneMonthButton" destination="Bfq-aW-lRl" id="3wH-g6-rzi"/>
-                <outlet property="oneWeekButton" destination="dRM-h1-EcE" id="RDp-VW-bq4"/>
-                <outlet property="oneYearButton" destination="k5S-qZ-X7R" id="q7N-Hu-zHf"/>
+                <outlet property="oneDayButton" destination="qlF-ym-Z3F" id="4uy-ld-r9z"/>
+                <outlet property="oneHourButton" destination="anW-Oa-CMA" id="vLx-Ke-JVM"/>
+                <outlet property="oneWeekButton" destination="8C9-of-h1R" id="kNP-ku-2Ip"/>
                 <outlet property="sellButton" destination="IUx-2B-hVz" id="jOc-44-VIH"/>
-                <outlet property="threeMonthButton" destination="qlF-ym-Z3F" id="TgJ-W0-cGa"/>
+                <outlet property="twoHourButton" destination="dRM-h1-EcE" id="PYI-IK-sQU"/>
             </connections>
             <point key="canvasLocation" x="112.5" y="53.5"/>
         </tableViewCell>

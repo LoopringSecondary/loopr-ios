@@ -16,13 +16,12 @@ class MarketLineChartTableViewCell: UITableViewCell {
     @IBOutlet weak var sellButton: UIButton!
     @IBOutlet weak var buyButton: UIButton!
     
+    @IBOutlet weak var oneHourButton: CustomUIButtonForUIToolbar!
+    @IBOutlet weak var twoHourButton: CustomUIButtonForUIToolbar!
+    @IBOutlet weak var fourHourButton: CustomUIButtonForUIToolbar!
     @IBOutlet weak var oneDayButton: CustomUIButtonForUIToolbar!
     @IBOutlet weak var oneWeekButton: CustomUIButtonForUIToolbar!
-    @IBOutlet weak var oneMonthButton: CustomUIButtonForUIToolbar!
-    @IBOutlet weak var threeMonthButton: CustomUIButtonForUIToolbar!
-    @IBOutlet weak var oneYearButton: CustomUIButtonForUIToolbar!
-    @IBOutlet weak var fiveYearButton: CustomUIButtonForUIToolbar!
-    
+
     var pressedBuyButtonClosure: (() -> Void)?
     var pressedSellButtonClosure: (() -> Void)?
     
@@ -34,12 +33,8 @@ class MarketLineChartTableViewCell: UITableViewCell {
         
         drawLineChartView()
         
-        oneDayButton.selected()
-        oneWeekButton.unselected()
-        oneMonthButton.unselected()
-        threeMonthButton.unselected()
-        oneYearButton.unselected()
-        fiveYearButton.unselected()
+        // interval buttons group
+        oneHourButton.selected()
         
         // Sell button
         sellButton.setTitle(NSLocalizedString("Sell", comment: ""), for: .normal)
@@ -158,61 +153,15 @@ class MarketLineChartTableViewCell: UITableViewCell {
         lineChartView.xAxis.enabled = false
         lineChartView.leftAxis.enabled = false
     }
-    
-    @IBAction func pressedOneDayButton(_ sender: Any) {
-        oneDayButton.selected()
-        oneWeekButton.unselected()
-        oneMonthButton.unselected()
-        threeMonthButton.unselected()
-        oneYearButton.unselected()
-        fiveYearButton.unselected()
+
+    @IBAction func pressedIntervalButtons(_ sender: CustomUIButtonForUIToolbar) {
+        let buttonArray = [oneHourButton, twoHourButton, fourHourButton, oneDayButton, oneWeekButton]
+        buttonArray.forEach {
+            $0?.unselected()
+        }
+        sender.selected()
     }
-    
-    @IBAction func pressedOneWeekButton(_ sender: Any) {
-        oneDayButton.unselected()
-        oneWeekButton.selected()
-        oneMonthButton.unselected()
-        threeMonthButton.unselected()
-        oneYearButton.unselected()
-        fiveYearButton.unselected()
-    }
-    
-    @IBAction func pressedOneMonthButton(_ sender: Any) {
-        oneDayButton.unselected()
-        oneWeekButton.unselected()
-        oneMonthButton.selected()
-        threeMonthButton.unselected()
-        oneYearButton.unselected()
-        fiveYearButton.unselected()
-    }
-    
-    @IBAction func pressedThreeMonthButton(_ sender: Any) {
-        oneDayButton.unselected()
-        oneWeekButton.unselected()
-        oneMonthButton.unselected()
-        threeMonthButton.selected()
-        oneYearButton.unselected()
-        fiveYearButton.unselected()
-    }
-    
-    @IBAction func pressedOneYearButton(_ sender: Any) {
-        oneDayButton.unselected()
-        oneWeekButton.unselected()
-        oneMonthButton.unselected()
-        threeMonthButton.unselected()
-        oneYearButton.selected()
-        fiveYearButton.unselected()
-    }
-    
-    @IBAction func pressedFiveYearButton(_ sender: Any) {
-        oneDayButton.unselected()
-        oneWeekButton.unselected()
-        oneMonthButton.unselected()
-        threeMonthButton.unselected()
-        oneYearButton.unselected()
-        fiveYearButton.selected()
-    }
-    
+
     @IBAction func pressedSellButton(_ sender: Any) {
         print("pressedSellButton")
         if let btnAction = self.pressedSellButtonClosure {
