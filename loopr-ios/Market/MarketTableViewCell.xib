@@ -78,6 +78,14 @@
                         <color key="textColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hDa-sj-rCH" customClass="IconView" customModule="loopr_ios" customModuleProvider="target">
+                        <rect key="frame" x="22" y="22" width="40" height="40"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="TmO-8w-dHu"/>
+                            <constraint firstAttribute="width" constant="40" id="stz-1a-Wp3"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="XLy-7r-jbc" firstAttribute="leading" secondItem="KbS-9j-hkE" secondAttribute="trailing" constant="20" id="6u6-jJ-wgN"/>
@@ -90,20 +98,23 @@
                     <constraint firstItem="8TL-QV-n4f" firstAttribute="centerY" secondItem="kQ9-wh-pvu" secondAttribute="centerY" id="X1D-Jp-ENZ"/>
                     <constraint firstItem="evx-bi-hhH" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="XSF-mt-ttK"/>
                     <constraint firstItem="POG-5X-TsA" firstAttribute="leading" secondItem="XLy-7r-jbc" secondAttribute="leadingMargin" constant="100" id="ZTi-Wx-Sja"/>
+                    <constraint firstItem="hDa-sj-rCH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="afe-2v-HZU"/>
                     <constraint firstItem="KbS-9j-hkE" firstAttribute="leftMargin" secondItem="H2p-sc-9uM" secondAttribute="leftMargin" constant="10" id="u5m-2e-gwy"/>
+                    <constraint firstItem="hDa-sj-rCH" firstAttribute="leadingMargin" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="uby-3k-ue0"/>
                     <constraint firstItem="POG-5X-TsA" firstAttribute="centerY" secondItem="XLy-7r-jbc" secondAttribute="centerY" id="weR-zM-xCh"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="balanceLabel" destination="kQ9-wh-pvu" id="mbn-R0-7Pf"/>
+                <outlet property="iconView" destination="hDa-sj-rCH" id="X29-1Q-v2g"/>
                 <outlet property="marketPriceInBitcoinLabel" destination="POG-5X-TsA" id="OES-Bs-PtE"/>
                 <outlet property="marketPriceInFiatCurrencyLabel" destination="8TL-QV-n4f" id="Aap-DH-Ovl"/>
                 <outlet property="nameLabel" destination="XLy-7r-jbc" id="ug4-Pc-RV8"/>
                 <outlet property="percentageChangeLabel" destination="evx-bi-hhH" id="VfT-Im-Mgt"/>
                 <outlet property="tokenImage" destination="KbS-9j-hkE" id="zrR-gs-Gxg"/>
             </connections>
-            <point key="canvasLocation" x="45.5" y="118.5"/>
+            <point key="canvasLocation" x="45.5" y="118"/>
         </tableViewCell>
     </objects>
 </document>

@@ -12,6 +12,7 @@ class MarketTableViewCell: UITableViewCell {
 
     var market: Market?
 
+    @IBOutlet weak var iconView: IconView!
     @IBOutlet weak var tokenImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
@@ -48,7 +49,16 @@ class MarketTableViewCell: UITableViewCell {
     
     func update() {
         if let market = market {
-            tokenImage.image = market.icon
+            if market.icon != nil {
+                tokenImage.image = market.icon
+                tokenImage.isHidden = false
+                iconView.isHidden = true
+            } else {
+                iconView.isHidden = false
+                iconView.symbol = market.tradingPair.tradingA
+                iconView.symbolLabel.text = market.tradingPair.tradingA
+                tokenImage.isHidden = true
+            }
             nameLabel.text = "\(market.tradingPair.tradingA)" + " / " + "\(market.tradingPair.tradingB)"
             balanceLabel.text = "Vol \(market.volumeInPast24)"
             marketPriceInBitcoinLabel.text = market.balance.description
