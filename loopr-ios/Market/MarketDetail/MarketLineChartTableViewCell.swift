@@ -103,14 +103,7 @@ class MarketLineChartTableViewCell: UITableViewCell {
         lineChartView.pinchZoomEnabled = true
         lineChartView.drawGridBackgroundEnabled = false
         
-        // x-axis limit line
-        let llXAxis = ChartLimitLine(limit: 10, label: "Index 10")
-        llXAxis.lineWidth = 4
-        llXAxis.lineDashLengths = [10, 10, 0]
-        llXAxis.labelPosition = .rightBottom
-        llXAxis.valueFont = .systemFont(ofSize: 10)
-        
-        lineChartView.xAxis.gridLineDashLengths = [10, 10]
+        lineChartView.xAxis.gridLineDashLengths = [5, 5]
         lineChartView.xAxis.gridLineDashPhase = 0
         lineChartView.xAxis.valueFormatter = DataUtil(format: self.dateFormat) // 这里
         
@@ -161,10 +154,16 @@ class MarketLineChartTableViewCell: UITableViewCell {
         set1.lineDashLengths = [5, 2.5]
         set1.highlightLineDashLengths = [5, 2.5]
         set1.setColor(UIColor(red: 34/255, green: 53/255, blue: 89/255, alpha: 1))
-        // set1.setCircleColor(.black)
         set1.lineWidth = 1
-        set1.circleRadius = 0
-        set1.drawCircleHoleEnabled = false
+        //外圆
+        set1.setCircleColor(.gray)
+        //画外圆
+        set1.drawCirclesEnabled = true
+        //内圆
+        set1.circleHoleColor = NSUIColor.black
+        //画内圆
+        set1.drawCircleHoleEnabled = true
+        
         set1.valueFont = .systemFont(ofSize: 0)
         set1.formLineDashLengths = [5, 2.5]
         set1.formLineWidth = 1
