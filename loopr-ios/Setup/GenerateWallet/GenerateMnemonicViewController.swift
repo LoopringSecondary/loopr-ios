@@ -12,9 +12,9 @@ class GenerateMnemonicViewController: UIViewController {
 
     var congratulationIconView = UIImageView()
     var congratulationsLabel: UILabel = UILabel()
+    var infoTextView: UITextView = UITextView()
     @IBOutlet weak var backupNowButton: UIButton!
-    @IBOutlet weak var detailTextView: UITextView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,7 +42,12 @@ class GenerateMnemonicViewController: UIViewController {
         congratulationsLabel.text = "Congratualations!"
         view.addSubview(congratulationsLabel)
 
-        detailTextView.font = FontConfigManager.shared.getLabelFont()
+        infoTextView.frame = CGRect(x: padding-3, y: 72, width: screenWidth - (padding-3) * 2, height: 150)
+        infoTextView.isEditable = false
+        infoTextView.text = "Your wallet has been generated. Please take a moment to backup your wallet by writing down the mnemonic words on paper. Mnemonic words are required to resotre your wallets. Please do not share your mnemonic words with anyone, nor save them on cloud storage."
+        infoTextView.textColor = UIColor.black.withAlphaComponent(0.6)
+        infoTextView.font = FontConfigManager.shared.getLabelFont()
+        view.addSubview(infoTextView)
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
     }

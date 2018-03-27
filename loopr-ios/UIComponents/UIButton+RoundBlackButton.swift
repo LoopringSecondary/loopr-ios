@@ -10,13 +10,14 @@ import UIKit
 
 extension UIButton {
     
-    func setupRoundBlack() {
+    func setupRoundBlack(height: CGFloat = 47) {
         backgroundColor = UIColor.black
-        setBackgroundColor(UIColor.init(white: 0.1, alpha: 1), for: .highlighted)
+        // TODO: update the color in the highlighted state.
+        setBackgroundColor(UIColor.init(white: 0.15, alpha: 1), for: .highlighted)
         clipsToBounds = true
         setTitleColor(UIColor.white, for: .normal)
         titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
-        layer.cornerRadius = 23
+        layer.cornerRadius = height * 0.5
     }
     
 }

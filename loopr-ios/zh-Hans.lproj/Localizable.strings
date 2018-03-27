@@ -16,6 +16,7 @@
 "Manage Wallet" = "管理钱包";
 "Import Wallet" = "解锁钱包";
 "Generate Wallet" = "生成钱包";
+"Confirm password" = "确认密码";
 "Mnemonic" = "助记词";
 "Keystore" = "密钥库";
 "Private Key" = "私钥";

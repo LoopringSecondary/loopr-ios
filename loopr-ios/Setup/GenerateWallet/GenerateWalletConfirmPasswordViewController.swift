@@ -36,13 +36,14 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
         
         titleLabel.frame = CGRect(x: padding, y: originY, width: screenWidth - padding * 2, height: 30)
         titleLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 27)
-        titleLabel.text = "Confirm password"
+        titleLabel.text = NSLocalizedString("Confirm password", comment: "")
         view.addSubview(titleLabel)
         
         walletPasswordTextField.isSecureTextEntry = true
         walletPasswordTextField.delegate = self
         walletPasswordTextField.tag = 1
         // walletPasswordTextField.inputView = UIView()
+        walletPasswordTextField.tintColor = UIColor.black
         walletPasswordTextField.font = FontConfigManager.shared.getLabelFont(size: 19)
         walletPasswordTextField.placeholder = "Set a password"
         walletPasswordTextField.contentMode = UIViewContentMode.bottom
@@ -50,7 +51,7 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
         view.addSubview(walletPasswordTextField)
         
         walletPasswordUnderLine.frame = CGRect(x: padding, y: walletPasswordTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        walletPasswordUnderLine.backgroundColor = UIColor.black
+        walletPasswordUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
         view.addSubview(walletPasswordUnderLine)
         
         continueButton.setupRoundBlack()
@@ -63,6 +64,20 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newLength = (textField.text?.utf16.count)! + (string.utf16.count) - range.length
+        print("textField shouldChangeCharactersIn \(newLength)")
+        
+        if textField.tag == walletPasswordTextField.tag {
+            if newLength > 0 {
+                walletPasswordUnderLine.backgroundColor = UIColor.black
+            } else {
+                walletPasswordUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+            }
+        }
+        return true
     }
 
     @IBAction func pressedContinueButton(_ sender: Any) {

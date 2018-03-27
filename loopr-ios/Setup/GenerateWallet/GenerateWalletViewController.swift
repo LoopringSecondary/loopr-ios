@@ -170,7 +170,6 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
     }
 
     @objc func systemKeyboardWillShow(_ notification: Notification) {
-        
         if !isKeyboardShown {
             guard let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
                 return
