@@ -37,6 +37,7 @@
 		949C49492046A4A80074466D /* SampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949C49472046A4A80074466D /* SampleViewController.xib */; };
 		94B5CA8A204FB4E20081BA93 /* DefaultBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5CA89204FB4E20081BA93 /* DefaultBlock.swift */; };
 		94B5CA8C204FE8E40081BA93 /* ETH_Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5CA8B204FE8E40081BA93 /* ETH_Transaction.swift */; };
+		94B828CF206A0736002AB470 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B828CE206A0736002AB470 /* DateUtil.swift */; };
 		94DCE54F205F9E71005618E4 /* Ticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCE54E205F9E71005618E4 /* Ticker.swift */; };
 		94DCE551205FAC07005618E4 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCE550205FAC07005618E4 /* Trend.swift */; };
 		94E185972051451C00D86FFA /* Initable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185962051451C00D86FFA /* Initable.swift */; };
@@ -505,6 +506,7 @@
 		949C49472046A4A80074466D /* SampleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SampleViewController.xib; sourceTree = "<group>"; };
 		94B5CA89204FB4E20081BA93 /* DefaultBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBlock.swift; sourceTree = "<group>"; };
 		94B5CA8B204FE8E40081BA93 /* ETH_Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETH_Transaction.swift; sourceTree = "<group>"; };
+		94B828CE206A0736002AB470 /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		94DCE54E205F9E71005618E4 /* Ticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticker.swift; sourceTree = "<group>"; };
 		94DCE550205FAC07005618E4 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
 		94E185962051451C00D86FFA /* Initable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initable.swift; sourceTree = "<group>"; };
@@ -849,6 +851,15 @@
 				CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		94B828CD206A06A8002AB470 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				94B828CE206A0736002AB470 /* DateUtil.swift */,
+			);
+			name = Utils;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		970E368BCD1AFC73151579EF /* Pods */ = {
@@ -1265,6 +1276,7 @@
 		AC798E412022B93A0071D477 /* loopr-ios */ = {
 			isa = PBXGroup;
 			children = (
+				94B828CD206A06A8002AB470 /* Utils */,
 				AC798E422022B93A0071D477 /* AppDelegate.swift */,
 				AC798E482022B93A0071D477 /* Main.storyboard */,
 				C8BF959C202696A900343B9A /* MainTabController.swift */,
@@ -2019,6 +2031,7 @@
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
 				"${BUILT_PRODUCTS_DIR}/FontBlaster/FontBlaster.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
@@ -2040,6 +2053,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontBlaster.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
@@ -2301,6 +2315,7 @@
 				AC387511205F12F100A76637 /* ContextMenuDismissing.swift in Sources */,
 				AC31CE142057B5A400A30335 /* TradeReviewViewController.swift in Sources */,
 				AC387519205F12F100A76637 /* CGRect+Area.swift in Sources */,
+				94B828CF206A0736002AB470 /* DateUtil.swift in Sources */,
 				AC54FD92204FD291007E1DEB /* FontConfigManager.swift in Sources */,
 				AC4141FD203532ED0089861D /* SwipeViewOptions.swift in Sources */,
 				ACB9119F202967A500F14644 /* OrderStatus.swift in Sources */,

@@ -35,23 +35,31 @@ class MarketDataManager {
         }
     }
     
-    func getTrends(market: String, interval: String = "2Hr") -> [Trend]? {
+    func getTrends(market: String, interval: String = "1Hr") -> [Trend]? {
         var result: [Trend]? = nil
         result = self.trends.filter { (trend) -> Bool in
             return trend.market.lowercased() == market.lowercased() &&
             trend.intervals.lowercased() == interval.lowercased()
         }
-        if result == nil {
-            DispatchQueue.main.sync {
-                LoopringAPIRequest.getTrend(market: market, interval: interval, completionHandler: { (trends, error) in
-                    guard error == nil else {
-                        return
-                    }
-                    result = trends
-                })
-            }
+        if result?.count == 0 {
+            // TODO: how to handle here?
+            self.getTrendsFromServer(market: market, interval: interval, completionHandler: { (trends, error) in
+                guard error == nil else {
+                    return
+                }
+                result = trends
+            })
         }
         return result
+    }
+    
+    func getTrendsFromServer(market: String, interval: String = "1Hr", completionHandler: @escaping (_ trends: [Trend]?, _ error: Error?) -> Void) {
+        LoopringAPIRequest.getTrend(market: market, interval: interval, completionHandler: { (trends, error) in
+            guard error == nil else {
+                return
+            }
+            completionHandler(trends, nil)
+        })
     }
     
     func getMarkets(type: MarketSwipeViewType = .all) -> [Market] {
@@ -113,7 +121,7 @@ class MarketDataManager {
         LoopringSocketIORequest.getTiker()
     }
     
-    func startGetTrend(market: String, interval: String) {
+    func startGetTrend(market: String, interval: String = "1Hr") {
         LoopringSocketIORequest.getTrend(market: market, interval: interval)
     }
     
@@ -134,12 +142,11 @@ class MarketDataManager {
         trends = []
         print(json)
         for subJson in json.arrayValue {
-            if let market = Market(json: subJson) {
-                let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: market.tradingPair.tradingA)
-                market.display = price ?? 0
-                markets.append(market)
-            }
+            let trend = Trend(json: subJson)
+            print(DataUtil.convertToDate(trend.start, format: "HH:mm"))
+            print(DataUtil.convertToDate(trend.end, format: "HH:mm"))
+            trends.append(trend)
         }
-        NotificationCenter.default.post(name: .tickerResponseReceived, object: nil)
+        NotificationCenter.default.post(name: .trendResponseReceived, object: nil)
     }
 }

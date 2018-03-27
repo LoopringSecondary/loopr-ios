@@ -70,7 +70,11 @@ public class LoopringSocketIORequest {
         var body: JSON = JSON()
         body["owner"] = JSON(owner)
         body["contractVersion"] = JSON(contractVersion)
-        socket.on(clientEvent: .connect) {_, _ in
+        if socket.status != .connected {
+            socket.on(clientEvent: .connect) {_, _ in
+                self.socket.emit("balance_req", body.rawString()!)
+            }
+        } else {
             self.socket.emit("balance_req", body.rawString()!)
         }
     }
@@ -78,7 +82,11 @@ public class LoopringSocketIORequest {
     static func getPriceQuote(currency: String) {
         var body: JSON = JSON()
         body["currency"] = JSON(currency)
-        socket.on(clientEvent: .connect) {_, _ in
+        if socket.status != .connected {
+            socket.on(clientEvent: .connect) {_, _ in
+                self.socket.emit("marketcap_req", body.rawString()!)
+            }
+        } else {
             self.socket.emit("marketcap_req", body.rawString()!)
         }
     }
@@ -86,7 +94,11 @@ public class LoopringSocketIORequest {
     static func getTiker() {
         var body: JSON = JSON()
         body["contractVersion"] = JSON(contractVersion)
-        socket.on(clientEvent: .connect) {_, _ in
+        if socket.status != .connected {
+            socket.on(clientEvent: .connect) {_, _ in
+                self.socket.emit("loopringTickers_req", body.rawString()!)
+            }
+        } else {
             self.socket.emit("loopringTickers_req", body.rawString()!)
         }
     }
@@ -95,7 +107,12 @@ public class LoopringSocketIORequest {
         var body: JSON = JSON()
         body["market"] = JSON(market)
         body["interval"] = JSON(interval)
-        socket.on(clientEvent: .connect) {_, _ in
+        self.socket.emit("trends_req", body.rawString()!)
+        if socket.status != .connected {
+            socket.on(clientEvent: .connect) {_, _ in
+                self.socket.emit("trends_req", body.rawString()!)
+            }
+        } else {
             self.socket.emit("trends_req", body.rawString()!)
         }
     }

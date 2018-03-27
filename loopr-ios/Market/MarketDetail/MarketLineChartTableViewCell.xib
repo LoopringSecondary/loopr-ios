@@ -21,7 +21,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="foM-Qt-wIu" customClass="LineChartView" customModule="Charts">
-                        <rect key="frame" x="-8" y="0.0" width="391" height="514"/>
+                        <rect key="frame" x="8" y="0.0" width="359" height="514"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Vxf-s0-ykH">
@@ -106,14 +106,14 @@
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="6kI-DU-RWY" secondAttribute="trailing" constant="10" id="9ij-0Z-ZTk"/>
                     <constraint firstItem="Vxf-s0-ykH" firstAttribute="top" secondItem="6kI-DU-RWY" secondAttribute="bottom" constant="20" id="B0U-f2-zuY"/>
-                    <constraint firstAttribute="trailing" secondItem="foM-Qt-wIu" secondAttribute="trailing" constant="-8" id="FVJ-b6-7Dh"/>
                     <constraint firstItem="foM-Qt-wIu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="IvY-Pc-Xdj"/>
-                    <constraint firstItem="foM-Qt-wIu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="-8" id="K6R-BS-vCW"/>
                     <constraint firstItem="6kI-DU-RWY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="QRM-mk-uc2"/>
                     <constraint firstItem="Vxf-s0-ykH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="UjY-dh-wdD"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Vxf-s0-ykH" secondAttribute="trailing" id="Xck-9d-rv9"/>
                     <constraint firstItem="Vxf-s0-ykH" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" constant="-15" id="bTS-LS-MaK"/>
                     <constraint firstItem="6kI-DU-RWY" firstAttribute="top" secondItem="foM-Qt-wIu" secondAttribute="bottom" constant="10" id="e92-Zx-xaA"/>
+                    <constraint firstItem="foM-Qt-wIu" firstAttribute="leadingMargin" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="mND-mv-qXC"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="foM-Qt-wIu" secondAttribute="trailingMargin" id="ydA-bB-mIV"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

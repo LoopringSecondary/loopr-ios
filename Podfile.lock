@@ -1,23 +1,25 @@
 PODS:
   - BigInt (3.0.1):
     - SipHash (~> 1.2)
-  - Charts (3.0.4):
-    - Charts/Core (= 3.0.4)
-  - Charts/Core (3.0.4)
-  - CryptoSwift (0.8.2)
-  - FontBlaster (4.0.1)
+  - Charts (3.0.5):
+    - Charts/Core (= 3.0.5)
+  - Charts/Core (3.0.5)
+  - CryptoSwift (0.8.3)
+  - DynamicBlurView (2.0.2)
+  - FontBlaster (4.0.3)
   - Geth (1.8.2)
-  - lottie-ios (2.1.5)
+  - lottie-ios (2.5.0)
   - MarqueeLabel/Swift (3.1.4)
-  - NotificationBannerSwift (1.6.1):
+  - NotificationBannerSwift (1.6.2):
     - MarqueeLabel/Swift
     - SnapKit (~> 4.0)
   - pop (1.0.10)
-  - PopupDialog (0.6.2)
+  - PopupDialog (0.7.1):
+    - DynamicBlurView (~> 2.0)
   - secp256k1_ios (0.1.2)
   - SipHash (1.2.0)
   - SnapKit (4.0.0)
-  - Socket.IO-Client-Swift (13.1.1):
+  - Socket.IO-Client-Swift (13.1.2):
     - Starscream (~> 3.0.2)
   - Starscream (3.0.4)
   - SwiftLint (0.25.0)
@@ -64,19 +66,20 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   BigInt: 8e8a52161c745cd3ab78e3dc346a9fbee51e6cf6
-  Charts: 0705898046257443f0afbbc3179f4b67507b6e48
-  CryptoSwift: 6b90cb3227de5ad1b034a0156f5c027399aea60c
-  FontBlaster: 84229df8e3a7a6dacb190565bc543747a0c323f9
+  Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
+  CryptoSwift: 033efc3523865d19cc6ab6612fa17a62613b5dfa
+  DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
+  FontBlaster: f18031f5dde2ce689f5330e7005edfe3c0815957
   Geth: 683cf31f60d46479803484611505e2424230e0a0
-  lottie-ios: 836cdbba92f62f3c6a00e37a4ce485321fe317cf
+  lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
   MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
-  NotificationBannerSwift: 1fc2955381e6eb26d958ba32160fc41721b9b689
+  NotificationBannerSwift: 4eceb2add9d5eaa0596c63d49690b4d6476e74ec
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
-  PopupDialog: d4336d7274a6aa3af4cb26d8b6691510eba90cc3
+  PopupDialog: 39598b7d41719f5c025b4b70e62728bae7734fef
   secp256k1_ios: 168c6c49ed9771db51875f5255c8f9847e4cf554
   SipHash: c6e9e43e9c531b5bc6602545130c26194a6d31ce
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  Socket.IO-Client-Swift: f22222913f29801e30ae0df712db663ec096edc2
+  Socket.IO-Client-Swift: 010d2f464bdd1849b859c0cd0500d68194401ac8
   Starscream: f5da93fe6984c77b694366bf7299b7dc63a76f26
   SwiftLint: e14651157288e9e01d6e1a71db7014fb5744a8ea
   SwiftTheme: 36d71c4eed4b2c401c782cf036e4586c749a8173

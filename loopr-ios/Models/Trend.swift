@@ -13,12 +13,12 @@ class Trend {
     let amount: Double
     let close: Double
     let market: String
-    let start: String
-    let end: String
+    let start: UInt
+    let end: UInt
     let intervals: String
     let open: Double
     let low: Double
-    let createTime: String
+    let createTime: UInt
     let high: Double
     let vol: Double
 
@@ -31,8 +31,8 @@ class Trend {
 		self.low = json["low"].doubleValue
         self.high = json["high"].doubleValue
         self.vol = json["vol"].doubleValue
-        self.start = Transaction.convertToDate(json["start"].uIntValue)
-        self.end = Transaction.convertToDate(json["end"].uIntValue)
-        self.createTime = Transaction.convertToDate(json["createTime"].uIntValue)
+        self.start = json["start"].uIntValue
+        self.end = json["end"].uIntValue
+        self.createTime = json["createTime"].uIntValue
 	}
 }

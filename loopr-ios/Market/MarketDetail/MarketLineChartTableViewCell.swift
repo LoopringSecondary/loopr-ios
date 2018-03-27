@@ -11,6 +11,13 @@ import Charts
 
 class MarketLineChartTableViewCell: UITableViewCell {
 
+    var market: Market?
+    var trends: [Trend]?
+    var interval: String = "1Hr"
+    var dateFormat: String = "HH:mm"
+    var lowLimit: Double = Double(Int.max)
+    var highLimit: Double = Double(Int.min)
+    
     @IBOutlet weak var lineChartView: LineChartView!
     
     @IBOutlet weak var sellButton: UIButton!
@@ -28,10 +35,9 @@ class MarketLineChartTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
         theme_backgroundColor = GlobalPicker.backgroundColor
         
-        drawLineChartView()
+        refreshTrend()
         
         // interval buttons group
         oneHourButton.selected()
@@ -57,18 +63,44 @@ class MarketLineChartTableViewCell: UITableViewCell {
         buyButton.layer.cornerRadius = 23
         buyButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
+
+    func refreshTrend() {
+        if let market = self.market {
+//            let pair = market.tradingPair.description
+//            if let trends = MarketDataManager.shared.getTrends(market: pair, interval: self.interval) {
+            if let trends = self.trends {
+                for trend in trends {
+                    if self.highLimit < trend.high {
+                        self.highLimit = trend.high
+                    }
+                    if self.lowLimit > trend.low {
+                        self.lowLimit = trend.low
+                    }
+                }
+                switch self.interval {
+                case "1H", "2H", "4H":
+                    self.dateFormat = "HH:mm"
+                case "1D", "1W":
+                    self.dateFormat = "dd MMM HH:mm"
+                default:
+                    self.dateFormat = "HH:mm"
+                }
+                self.drawLineChartView()
+            }
+        }
+    }
     
     func drawLineChartView() {
         lineChartView.chartDescription?.enabled = false
         lineChartView.dragEnabled = true
-        lineChartView.setScaleEnabled(false)
-        lineChartView.pinchZoomEnabled = false
+        lineChartView.setScaleEnabled(true)
+        lineChartView.pinchZoomEnabled = true
         lineChartView.drawGridBackgroundEnabled = false
         
         // x-axis limit line
@@ -80,50 +112,53 @@ class MarketLineChartTableViewCell: UITableViewCell {
         
         lineChartView.xAxis.gridLineDashLengths = [10, 10]
         lineChartView.xAxis.gridLineDashPhase = 0
+        lineChartView.xAxis.valueFormatter = DataUtil(format: self.dateFormat) // 这里
         
-        /*
-         let ll1 = ChartLimitLine(limit: 20, label: "Upper Limit")
-         ll1.lineWidth = 4
-         // ll1.lineDashLengths = [5, 5]
-         ll1.labelPosition = .rightTop
-         ll1.valueFont = .systemFont(ofSize: 10)
-         */
+        let ll1 = ChartLimitLine(limit: self.highLimit, label: "Upper Limit")   // 这里
+        ll1.lineWidth = 2
+        ll1.lineDashLengths = [5, 5]
+        ll1.labelPosition = .rightTop
+        ll1.valueFont = .systemFont(ofSize: 10)
+        
+        let ll2 = ChartLimitLine(limit: self.lowLimit, label: "Lower Limit")  // 这里
+        ll2.lineWidth = 2
+        ll2.lineDashLengths = [5, 5]
+        ll2.labelPosition = .rightBottom
+        ll2.valueFont = .systemFont(ofSize: 10)
         
         let leftAxis = lineChartView.leftAxis
         leftAxis.removeAllLimitLines()
-        // leftAxis.addLimitLine(ll1)
-        leftAxis.axisMaximum = 45
-        leftAxis.axisMinimum = 15
-        // leftAxis.gridLineDashLengths = [5, 5]
+        leftAxis.addLimitLine(ll1)
+        leftAxis.addLimitLine(ll2)
+        leftAxis.axisMaximum = self.highLimit * 1.2 // 这里
+        leftAxis.axisMinimum = -0.0002  // 这里
+        leftAxis.gridLineDashLengths = [5, 5]
         leftAxis.drawLimitLinesBehindDataEnabled = true
         
         lineChartView.rightAxis.enabled = false
+        lineChartView.viewPortHandler.setMaximumScaleY(2)
+        lineChartView.viewPortHandler.setMaximumScaleX(2)
+        lineChartView.legend.enabled = false
+        lineChartView.animate(yAxisDuration: 2.5)
         
-        //[_chartView.viewPortHandler setMaximumScaleY: 2.f];
-        //[_chartView.viewPortHandler setMaximumScaleX: 2.f];
-        
-        lineChartView.legend.enabled = false // .form = .line
-        
-        // lineChartView.animate(xAxisDuration: 2.5)
-        
-        setDataCount(30, range: 10)
+        setDataCount(trends?.count ?? 0)
         
         for set in lineChartView.data!.dataSets as! [LineChartDataSet] {
-            set.mode = (set.mode == .cubicBezier) ? .horizontalBezier : .cubicBezier
+            set.mode = .linear
         }
         lineChartView.setNeedsDisplay()
     }
     
-    func setDataCount(_ count: Int, range: UInt32) {
-        let values = (0..<count).map { (i) -> ChartDataEntry in
-            let val = Double(arc4random_uniform(range) + 20) + Double(i) * 0.3
-            return ChartDataEntry(x: Double(i), y: val)
-        }
-        
+    func setDataCount(_ count: Int) {
+        let values = trends?.map({ (trend) -> ChartDataEntry in
+            let x = trend.start
+            let y = trend.close
+            return ChartDataEntry(x: Double(x), y: y)
+        })
         let set1 = LineChartDataSet(values: values, label: "")
         set1.drawIconsEnabled = false
         
-        // set1.lineDashLengths = [5, 2.5]
+        set1.lineDashLengths = [5, 2.5]
         set1.highlightLineDashLengths = [5, 2.5]
         set1.setColor(UIColor(red: 34/255, green: 53/255, blue: 89/255, alpha: 1))
         // set1.setCircleColor(.black)
@@ -136,22 +171,15 @@ class MarketLineChartTableViewCell: UITableViewCell {
         set1.formSize = 15
         set1.highlightColor = UIColor(red: 244/255, green: 117/255, blue: 117/255, alpha: 1)
         
-        let gradientColors = [ChartColorTemplates.colorFromString("#005685df").cgColor,
+        let gradientColors = [ChartColorTemplates.colorFromString("#00f0f0f0").cgColor,
                               ChartColorTemplates.colorFromString("#ff080d16").cgColor]
         let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
-        
         set1.fillAlpha = 1
-        set1.fill = Fill(linearGradient: gradient, angle: 90) //.linearGradient(gradient, angle: 90)
-        set1.fillColor = UIStyleConfig.lineChartFillColor // UIColor(red: 115/255, green: 127/255, blue: 150/255, alpha: 1)
-        
+        set1.fill = Fill(linearGradient: gradient, angle: 90)
         // Enable the filled.
         set1.drawFilledEnabled = true
-        
         let data = LineChartData(dataSet: set1)
-        
         lineChartView.data = data
-        lineChartView.xAxis.enabled = false
-        lineChartView.leftAxis.enabled = false
     }
 
     @IBAction func pressedIntervalButtons(_ sender: CustomUIButtonForUIToolbar) {
@@ -160,6 +188,8 @@ class MarketLineChartTableViewCell: UITableViewCell {
             $0?.unselected()
         }
         sender.selected()
+        interval = sender.title!
+        refreshTrend()
     }
 
     @IBAction func pressedSellButton(_ sender: Any) {

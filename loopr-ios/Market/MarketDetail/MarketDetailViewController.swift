@@ -22,6 +22,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setup()
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
@@ -39,9 +40,27 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         
         NotificationCenter.default.addObserver(self, selector: #selector(trendResponseReceivedNotification), name: .trendResponseReceived, object: nil)
     }
+    
+    func setup() {
+        // TODO: putting getMarketsFromServer() here may cause a race condition.
+        // It's not perfect, but works. Need improvement in the future.
+        if let market = market {
+            let tokenPair = market.tradingPair.description
+            MarketDataManager.shared.startGetTrend(market: tokenPair)
+            MarketDataManager.shared.getTrendsFromServer(market: tokenPair, completionHandler: { (trends, error) in
+                guard error == nil else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.trends = trends
+                    self.tableView.reloadData()
+                }
+            })
+        }
+    }
 
     @objc func trendResponseReceivedNotification() {
-        print("tickerReceivedNotification")
+        print("trendReceivedNotification")
         if self.trends == nil {
             self.trends = MarketDataManager.shared.getTrends(market: market!.tradingPair.description)
             self.tableView.reloadData()
@@ -148,7 +167,6 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         } else {
             return TradeTableViewCell.getHeight()
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -159,7 +177,12 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 cell = nib![0] as? MarketLineChartTableViewCell
                 cell?.selectionStyle = .none
             }
-            
+            if let market = self.market {
+                cell?.market = market
+            }
+            if let trends = self.trends {
+                cell?.trends = trends
+            }
             cell!.pressedBuyButtonClosure = {
                 PlaceOrderDataManager.shared.new(tokenS: self.market!.tradingPair.tradingA, tokenB: self.market!.tradingPair.tradingB)
                 let viewController = BuyAndSellSwipeViewController()
