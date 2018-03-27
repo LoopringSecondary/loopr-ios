@@ -77,7 +77,9 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         
         continueButton.setTitle("Continue", for: .normal)
         continueButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
-        continueButton.setBackgroundColor(UIColor.init(white: 0.3, alpha: 1), for: .highlighted)
+        
+        // TODO: what is the color for highlighted state
+        continueButton.setBackgroundColor(UIColor.init(white: 0.2, alpha: 1), for: .highlighted)
         continueButton.clipsToBounds = true
         continueButton.frame = CGRect(x: padding, y: walletPasswordUnderLine.frame.maxY + 50, width: screenWidth - padding * 2, height: 47)
         continueButton.backgroundColor = UIColor.black

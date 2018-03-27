@@ -9,7 +9,6 @@
 import UIKit
 
 class SetupViewController: UIViewController {
-
     
     @IBOutlet weak var taglineLabel: UILabel!
     @IBOutlet weak var unlockWalletButton: UIButton!
@@ -35,9 +34,9 @@ class SetupViewController: UIViewController {
         generateWalletButton.backgroundColor = UIColor.black
         generateWalletButton.layer.cornerRadius = 23
         generateWalletButton.title = NSLocalizedString("Generate Wallet", comment: "")
-        
+
         // TODO: what is the color for highlighted state
-        generateWalletButton.setBackgroundColor(UIColor.init(rgba: "#333333"), for: .highlighted)
+        generateWalletButton.setBackgroundColor(UIColor.init(white: 0.1, alpha: 1), for: .highlighted)
         generateWalletButton.clipsToBounds = true
         generateWalletButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)
 

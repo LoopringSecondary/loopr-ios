@@ -54,7 +54,7 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
         
         continueButton.setTitle("Enter Wallet", for: .normal)
         continueButton.setTitleColor(UIColor.white, for: .normal)
-        continueButton.setBackgroundColor(UIColor.init(white: 0.3, alpha: 1), for: .highlighted)
+        continueButton.setBackgroundColor(UIColor.init(white: 0.1, alpha: 1), for: .highlighted)
         continueButton.frame = CGRect(x: padding, y: walletPasswordUnderLine.frame.maxY + 103, width: screenWidth - padding * 2, height: 47)
         continueButton.backgroundColor = UIColor.black
         continueButton.layer.cornerRadius = 23
