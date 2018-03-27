@@ -31,7 +31,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     var availableLabel: UILabel = UILabel()
 
     // Keyboard
-    var isKeyboardShow: Bool = false
+    var isKeyboardShown: Bool = false
     var keyboardView: DefaultNumericKeyboard!
 
     var activeTextFieldTag = -1
@@ -200,7 +200,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     }
     
     func showKeyboard(textField: UITextField) {
-        if !isKeyboardShow {
+        if !isKeyboardShown {
             let width = self.view.frame.width
             let height = self.nextBackgroundView.frame.origin.y
             
@@ -221,7 +221,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
                 self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
                 
             }, completion: { finished in
-                self.isKeyboardShow = true
+                self.isKeyboardShown = true
                 if finished {
                     if textField.tag == self.totalTextField.tag {
                         let bottomOffset = CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.size.height)
@@ -238,7 +238,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     }
     
     func hideKeyboard() {
-        if isKeyboardShow {
+        if isKeyboardShown {
             let width = self.view.frame.width
             let height = self.nextBackgroundView.frame.origin.y
             
@@ -255,7 +255,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
                 self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
                 
             }, completion: { finished in
-                self.isKeyboardShow = false
+                self.isKeyboardShown = false
                 if finished {
                     
                 }

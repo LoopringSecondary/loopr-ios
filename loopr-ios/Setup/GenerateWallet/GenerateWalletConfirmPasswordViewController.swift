@@ -39,6 +39,7 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
         titleLabel.text = "Confirm password"
         view.addSubview(titleLabel)
         
+        walletPasswordTextField.isSecureTextEntry = true
         walletPasswordTextField.delegate = self
         walletPasswordTextField.tag = 1
         // walletPasswordTextField.inputView = UIView()
@@ -52,14 +53,9 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
         walletPasswordUnderLine.backgroundColor = UIColor.black
         view.addSubview(walletPasswordUnderLine)
         
+        continueButton.setupRoundBlack()
         continueButton.setTitle("Enter Wallet", for: .normal)
-        continueButton.setTitleColor(UIColor.white, for: .normal)
-        continueButton.setBackgroundColor(UIColor.init(white: 0.1, alpha: 1), for: .highlighted)
         continueButton.frame = CGRect(x: padding, y: walletPasswordUnderLine.frame.maxY + 103, width: screenWidth - padding * 2, height: 47)
-        continueButton.backgroundColor = UIColor.black
-        continueButton.layer.cornerRadius = 23
-        continueButton.clipsToBounds = true
-        continueButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
         continueButton.addTarget(self, action: #selector(self.pressedContinueButton(_:)), for: .touchUpInside)
         view.addSubview(continueButton)
     }

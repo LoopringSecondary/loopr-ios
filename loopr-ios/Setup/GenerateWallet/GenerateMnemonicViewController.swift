@@ -23,10 +23,8 @@ class GenerateMnemonicViewController: UIViewController {
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
 
-        backupNowButton.backgroundColor = UIColor.black
-        backupNowButton.layer.cornerRadius = 23
-        backupNowButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)
-        
+        backupNowButton.setupRoundBlack()
+
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width

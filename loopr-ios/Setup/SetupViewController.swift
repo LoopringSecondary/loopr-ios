@@ -29,17 +29,12 @@ class SetupViewController: UIViewController {
         unlockWalletButton.layer.borderWidth = 1
         unlockWalletButton.layer.borderColor = UIColor.black.cgColor
         unlockWalletButton.title = NSLocalizedString("Import Wallet", comment: "")
-        unlockWalletButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)
-        
-        generateWalletButton.backgroundColor = UIColor.black
-        generateWalletButton.layer.cornerRadius = 23
+        unlockWalletButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+
         generateWalletButton.title = NSLocalizedString("Generate Wallet", comment: "")
 
-        // TODO: what is the color for highlighted state
-        generateWalletButton.setBackgroundColor(UIColor.init(white: 0.1, alpha: 1), for: .highlighted)
-        generateWalletButton.clipsToBounds = true
-        generateWalletButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)
-
+        generateWalletButton.setupRoundBlack()
+        
         // TODO: skip button is not in the design. Add "Go to Market" button.
         /*
         let skipButton = UIBarButtonItem(title: "Skip", style: .plain, target: self, action: #selector(self.skipButtonPressed(_:)))

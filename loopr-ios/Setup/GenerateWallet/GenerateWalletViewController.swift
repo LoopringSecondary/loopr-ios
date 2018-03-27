@@ -21,6 +21,10 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
     
     var continueButton: UIButton = UIButton()
     
+    // Keyboard
+    var isKeyboardShown: Bool = false
+    var keyboardOffsetY: CGFloat = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -58,9 +62,10 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(walletNameTextField)
 
         walletNameUnderLine.frame = CGRect(x: padding, y: walletNameTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        walletNameUnderLine.backgroundColor = UIColor.black
+        walletNameUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
         view.addSubview(walletNameUnderLine)
 
+        walletPasswordTextField.isSecureTextEntry = true
         walletPasswordTextField.delegate = self
         walletPasswordTextField.tag = 1
         // walletPasswordTextField.inputView = UIView()
@@ -72,29 +77,63 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(walletPasswordTextField)
         
         walletPasswordUnderLine.frame = CGRect(x: padding, y: walletPasswordTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        walletPasswordUnderLine.backgroundColor = UIColor.black
+        walletPasswordUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
         view.addSubview(walletPasswordUnderLine)
         
+        continueButton.setupRoundBlack()
         continueButton.setTitle("Continue", for: .normal)
-        continueButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
-        
-        // TODO: what is the color for highlighted state
-        continueButton.setBackgroundColor(UIColor.init(white: 0.2, alpha: 1), for: .highlighted)
-        continueButton.clipsToBounds = true
         continueButton.frame = CGRect(x: padding, y: walletPasswordUnderLine.frame.maxY + 50, width: screenWidth - padding * 2, height: 47)
-        continueButton.backgroundColor = UIColor.black
-        continueButton.layer.cornerRadius = 23
         continueButton.addTarget(self, action: #selector(pressedContinueButton), for: .touchUpInside)
         view.addSubview(continueButton)
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
 
         _ = GenerateWalletDataManager.shared.new()
+        
+        let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
+        scrollViewTap.numberOfTapsRequired = 1
+        view.addGestureRecognizer(scrollViewTap)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func scrollViewTapped() {
+        print("scrollViewTapped")
+        
+        // Hide the keyboard and adjust the position
+        walletNameTextField.resignFirstResponder()
+        walletPasswordTextField.resignFirstResponder()
+        
+        if isKeyboardShown {
+            UIView.animate(withDuration: 0.4, animations: {
+                // Wallet Name
+                var walletNameFrame = self.walletNameTextField.frame
+                walletNameFrame.origin.y += self.keyboardOffsetY
+                self.walletNameTextField.frame = walletNameFrame
+                
+                var walletNameUnderlineFrame = self.walletNameUnderLine.frame
+                walletNameUnderlineFrame.origin.y += self.keyboardOffsetY
+                self.walletNameUnderLine.frame = walletNameUnderlineFrame
+                
+                // Wallet Password
+                var walletPasswordFrame = self.walletPasswordTextField.frame
+                walletPasswordFrame.origin.y += self.keyboardOffsetY
+                self.walletPasswordTextField.frame = walletPasswordFrame
+                
+                var walletPasswordUnderLineFrame = self.walletPasswordUnderLine.frame
+                walletPasswordUnderLineFrame.origin.y += self.keyboardOffsetY
+                self.walletPasswordUnderLine.frame = walletPasswordUnderLineFrame
+                
+                // continueButton
+                var continueButtonFrame = self.continueButton.frame
+                continueButtonFrame.origin.y += self.keyboardOffsetY
+                self.continueButton.frame = continueButtonFrame
+            })
+            isKeyboardShown = false
+        }
     }
 
     @objc func pressedContinueButton(_ sender: Any) {
@@ -108,58 +147,81 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newLength = (textField.text?.utf16.count)! + (string.utf16.count) - range.length
+        print("textField shouldChangeCharactersIn \(newLength)")
+        
+        switch textField.tag {
+        case walletNameTextField.tag:
+            if newLength > 0 {
+                walletNameUnderLine.backgroundColor = UIColor.black
+            } else {
+                walletNameUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+            }
+        case walletPasswordTextField.tag:
+            if newLength > 0 {
+                walletPasswordUnderLine.backgroundColor = UIColor.black
+            } else {
+                walletPasswordUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+            }
+        default: ()
+        }
         return true
     }
 
     @objc func systemKeyboardWillShow(_ notification: Notification) {
-        guard let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
-            return
-        }
-
-        let keyboardHeight = keyboardFrame.cgRectValue.height
-
-        if #available(iOS 11.0, *) {
-            let window = UIApplication.shared.keyWindow
-            let bottomPadding = window?.safeAreaInsets.bottom ?? 0
-            let keyboardMinY = self.view.frame.height - keyboardHeight - bottomPadding
-            
-            let offsetY = (continueButton.frame.maxY + 20.0) - keyboardMinY
-
-            if offsetY > 0 {
-                UIView.animate(withDuration: 1.0, animations: {
-                    // Wallet Name
-                    var walletNameFrame = self.walletNameTextField.frame
-                    walletNameFrame.origin.y -= offsetY
-                    self.walletNameTextField.frame = walletNameFrame
-
-                    var walletNameUnderlineFrame = self.walletNameUnderLine.frame
-                    walletNameUnderlineFrame.origin.y -= offsetY
-                    self.walletNameUnderLine.frame = walletNameUnderlineFrame
-
-                    // Wallet Password
-                    var walletPasswordFrame = self.walletPasswordTextField.frame
-                    walletPasswordFrame.origin.y -= offsetY
-                    self.walletPasswordTextField.frame = walletPasswordFrame
-                    
-                    var walletPasswordUnderLineFrame = self.walletPasswordUnderLine.frame
-                    walletPasswordUnderLineFrame.origin.y -= offsetY
-                    self.walletPasswordUnderLine.frame = walletPasswordUnderLineFrame
-                    
-                    // continueButton
-                    var continueButtonFrame = self.continueButton.frame
-                    continueButtonFrame.origin.y -= offsetY
-                    self.continueButton.frame = continueButtonFrame
-                })
+        
+        if !isKeyboardShown {
+            guard let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
+                return
             }
-        } else {
-
+            
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            
+            if #available(iOS 11.0, *) {
+                let window = UIApplication.shared.keyWindow
+                let bottomPadding = window?.safeAreaInsets.bottom ?? 0
+                let keyboardMinY = self.view.frame.height - keyboardHeight - bottomPadding
+                
+                keyboardOffsetY = (continueButton.frame.maxY + 20.0) - keyboardMinY
+                
+                if keyboardOffsetY > 0 {
+                    UIView.animate(withDuration: 1.0, animations: {
+                        // Wallet Name
+                        var walletNameFrame = self.walletNameTextField.frame
+                        walletNameFrame.origin.y -= self.keyboardOffsetY
+                        self.walletNameTextField.frame = walletNameFrame
+                        
+                        var walletNameUnderlineFrame = self.walletNameUnderLine.frame
+                        walletNameUnderlineFrame.origin.y -= self.keyboardOffsetY
+                        self.walletNameUnderLine.frame = walletNameUnderlineFrame
+                        
+                        // Wallet Password
+                        var walletPasswordFrame = self.walletPasswordTextField.frame
+                        walletPasswordFrame.origin.y -= self.keyboardOffsetY
+                        self.walletPasswordTextField.frame = walletPasswordFrame
+                        
+                        var walletPasswordUnderLineFrame = self.walletPasswordUnderLine.frame
+                        walletPasswordUnderLineFrame.origin.y -= self.keyboardOffsetY
+                        self.walletPasswordUnderLine.frame = walletPasswordUnderLineFrame
+                        
+                        // continueButton
+                        var continueButtonFrame = self.continueButton.frame
+                        continueButtonFrame.origin.y -= self.keyboardOffsetY
+                        self.continueButton.frame = continueButtonFrame
+                    })
+                    
+                    isKeyboardShown = true
+                }
+            } else {
+                
+            }
         }
+
     }
     
     @objc func systemKeyboardWillDisappear(notification: NSNotification?) {
         print("keyboardWillDisappear")
-        // unlockButtonBottonLayoutContraint.constant = 16.0
     }
 
 }
