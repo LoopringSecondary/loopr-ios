@@ -16,7 +16,9 @@ class BackupMnemonicViewController: UIViewController {
 
     @IBOutlet weak var tagListView: TagListView!
     @IBOutlet weak var verifyNowButton: UIButton!
-
+    
+    var blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,8 +50,9 @@ class BackupMnemonicViewController: UIViewController {
         infoTextView.font = FontConfigManager.shared.getLabelFont(size: 17)
         view.addSubview(infoTextView)
         
-        tagListView.textFont = UIFont.systemFont(ofSize: 14)
-        tagListView.tagBackgroundColor = UIColor.black
+        tagListView.textFont = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 14)!
+        tagListView.tagBackgroundColor = UIColor.white
+        tagListView.textColor = UIColor.black
         tagListView.cornerRadius = 15
         tagListView.paddingX = 15
         tagListView.paddingY = 10
@@ -63,17 +66,74 @@ class BackupMnemonicViewController: UIViewController {
 
         verifyNowButton.title = NSLocalizedString("Verify Now", comment: "Go to VerifyMnemonicViewController")
         verifyNowButton.setupRoundBlack()
+
+        blurVisualEffectView.alpha = 1
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+    }
 
     @IBAction func pressedVerifyNowButton(_ sender: Any) {
         print("pressedVerifyNowButton")
-        let viewController = VerifyMnemonicViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
+        
+        // TODO: need to improve the blur effect
+        let screenSize: CGRect = UIScreen.main.bounds
+        blurVisualEffectView.frame = screenSize
+
+        self.blurVisualEffectView.alpha = 1.0
+        
+        let attributedString = NSAttributedString(string: "Please make sure you have backed up mnemonic.", attributes: [
+            NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getMedium(), size: 17) ?? UIFont.systemFont(ofSize: 17),
+            NSAttributedStringKey.foregroundColor: UIColor.init(rgba: "#030303")
+        ])
+
+        let alertController = UIAlertController(title: nil,
+            message: nil,
+            preferredStyle: .alert)
+
+        alertController.setValue(attributedString, forKey: "attributedMessage")
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: { _ in
+            UIView.animate(withDuration: 0.1, animations: {
+                self.blurVisualEffectView.alpha = 0.0
+            }, completion: {(_) in
+                self.blurVisualEffectView.removeFromSuperview()
+            })
+            
+        })
+        alertController.addAction(cancelAction)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: { _ in
+            // Avoid a delay in the animation
+            let viewController = VerifyMnemonicViewController()
+            self.navigationController?.pushViewController(viewController, animated: true)
+            
+            UIView.animate(withDuration: 0.1, animations: {
+                self.blurVisualEffectView.alpha = 0.0
+            }, completion: {(_) in
+                self.blurVisualEffectView.removeFromSuperview()
+                
+            })
+            
+        })
+        alertController.addAction(confirmAction)
+        
+        let backView = alertController.view.subviews.last?.subviews.last
+        backView?.layer.cornerRadius = 10.0
+        backView?.backgroundColor = UIColor.white
+        
+        // Add a blur view to the whole screen
+        self.navigationController?.view.addSubview(blurVisualEffectView)
+        
+        // Show the UIAlertController
+        self.present(alertController, animated: true, completion: nil)
     }
     
 }
