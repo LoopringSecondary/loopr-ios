@@ -79,6 +79,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         tokenSPriceTextField.tag = 0
         tokenSPriceTextField.inputView = UIView()
         tokenSPriceTextField.font = FontConfigManager.shared.getLabelFont() // UIFont.init(name: FontConfigManager.shared.getLight(), size: 24)
+        tokenSPriceTextField.theme_tintColor = GlobalPicker.textColor
         // tokenSPriceTextField.backgroundColor = UIColor.blue
         tokenSPriceTextField.placeholder = "Limited Price"
         tokenSPriceTextField.contentMode = UIViewContentMode.bottom
@@ -109,6 +110,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         amountTextField.inputView = UIView()
         amountTextField.font = FontConfigManager.shared.getLabelFont() // UIFont.init(name: FontConfigManager.shared.getLight(), size: 24)
         // amountTextField.backgroundColor = UIColor.blue
+        amountTextField.theme_tintColor = GlobalPicker.textColor
+        amountTextField.theme_tintColor = GlobalPicker.textColor
         amountTextField.placeholder = "Amount"
         amountTextField.contentMode = UIViewContentMode.bottom
         amountTextField.frame = CGRect(x: padding, y: estimateValueInCurrency.frame.maxY + 30, width: screenWidth-padding*2-80, height: 40)
@@ -141,6 +144,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         totalTextField.inputView = UIView()
         totalTextField.font = FontConfigManager.shared.getLabelFont() // UIFont.init(name: FontConfigManager.shared.getLight(), size: 24)
         // amountTextField.backgroundColor = UIColor.blue
+        totalTextField.theme_tintColor = GlobalPicker.textColor
         totalTextField.placeholder = "Total"
         totalTextField.contentMode = UIViewContentMode.bottom
         totalTextField.frame = CGRect(x: padding, y: maxButton.frame.maxY + 30, width: screenWidth-padding*2-80, height: 40)

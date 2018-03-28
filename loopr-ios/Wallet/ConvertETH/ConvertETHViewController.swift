@@ -86,6 +86,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         amountTextField.tag = 1
         amountTextField.inputView = UIView()
         amountTextField.font = FontConfigManager.shared.getLabelFont() // UIFont.init(name: FontConfigManager.shared.getLight(), size: 24)
+        amountTextField.theme_tintColor = GlobalPicker.textColor
         amountTextField.placeholder = "Amount"
         amountTextField.contentMode = UIViewContentMode.bottom
         amountTextField.frame = CGRect(x: padding, y: tokenSView.frame.maxY + padding, width: screenWidth-padding*2-80, height: 40)

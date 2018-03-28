@@ -88,6 +88,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
         addressTextField.delegate = self
         addressTextField.tag = 0
         addressTextField.font = FontConfigManager.shared.getLabelFont()
+        addressInfoLabel.theme_tintColor = GlobalPicker.textColor
         addressTextField.placeholder = "Enter the address"
         addressTextField.contentMode = UIViewContentMode.bottom
         addressTextField.frame = CGRect(x: padding, y: tokenTotalAmountLabel.frame.maxY + padding*3, width: screenWidth-padding*2, height: 40)
@@ -108,6 +109,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
         amountTextField.tag = 1
         amountTextField.inputView = UIView()
         amountTextField.font = FontConfigManager.shared.getLabelFont()
+        amountTextField.theme_tintColor = GlobalPicker.textColor
         amountTextField.placeholder = "Enter the amount"
         amountTextField.contentMode = UIViewContentMode.bottom
         amountTextField.frame = CGRect(x: padding, y: addressInfoLabel.frame.maxY + padding*1.5, width: screenWidth-padding*2-80, height: 40)

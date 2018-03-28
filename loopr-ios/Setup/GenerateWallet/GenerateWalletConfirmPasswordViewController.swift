@@ -43,7 +43,7 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
         walletPasswordTextField.delegate = self
         walletPasswordTextField.tag = 1
         // walletPasswordTextField.inputView = UIView()
-        walletPasswordTextField.tintColor = UIColor.black
+        walletPasswordTextField.theme_tintColor = GlobalPicker.textColor
         walletPasswordTextField.font = FontConfigManager.shared.getLabelFont(size: 19)
         walletPasswordTextField.placeholder = "Set a password"
         walletPasswordTextField.contentMode = UIViewContentMode.bottom

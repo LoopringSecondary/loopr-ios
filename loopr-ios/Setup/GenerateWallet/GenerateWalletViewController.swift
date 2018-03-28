@@ -54,7 +54,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         walletNameTextField.delegate = self
         walletNameTextField.tag = 0
         // walletNameTextField.inputView = UIView()
-        walletNameTextField.tintColor = UIColor.black
+        walletNameTextField.theme_tintColor = GlobalPicker.textColor
         walletNameTextField.font = FontConfigManager.shared.getLabelFont(size: 19)
         walletNameTextField.placeholder = "Give your wallet an awesome name"
         walletNameTextField.contentMode = UIViewContentMode.bottom
@@ -69,7 +69,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         walletPasswordTextField.delegate = self
         walletPasswordTextField.tag = 1
         // walletPasswordTextField.inputView = UIView()
-        walletPasswordTextField.tintColor = UIColor.black
+        walletPasswordTextField.theme_tintColor = GlobalPicker.textColor
         walletPasswordTextField.font = FontConfigManager.shared.getLabelFont(size: 19)
         walletPasswordTextField.placeholder = "Set a password"
         walletPasswordTextField.contentMode = UIViewContentMode.bottom
