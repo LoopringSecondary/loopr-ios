@@ -10,16 +10,17 @@ import UIKit
 
 class SetupViewController: UIViewController {
     
+    @IBOutlet weak var loopringLogoImageView: UIImageView!
     @IBOutlet weak var taglineLabel: UILabel!
-    @IBOutlet weak var unlockWalletButton: UIButton!
-    @IBOutlet weak var generateWalletButton: UIButton!
+    var unlockWalletButton = UIButton()
+    var generateWalletButton = UIButton()
+    
+    var backgrondImageView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // TODO: update the background color to #ECEEF0
-        view.backgroundColor = UIColor.white // UIColor.init(rgba: "#ECEEF0")
-        // self.navigationController?.navigationBar.barTintColor = UIColor.init(rgba: "#ECEEF0")
+        view.backgroundColor = UIColor.clear
 
         taglineLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 16)
 
@@ -30,10 +31,28 @@ class SetupViewController: UIViewController {
         unlockWalletButton.layer.borderColor = UIColor.black.cgColor
         unlockWalletButton.title = NSLocalizedString("Import Wallet", comment: "")
         unlockWalletButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+        unlockWalletButton.addTarget(self, action: #selector(unlockWalletButtonPressed), for: .touchUpInside)
 
         generateWalletButton.title = NSLocalizedString("Generate Wallet", comment: "")
-
         generateWalletButton.setupRoundBlack()
+        generateWalletButton.addTarget(self, action: #selector(generateWalletButtonPressed), for: .touchUpInside)
+        
+        let screenSize: CGRect = UIScreen.main.bounds
+        backgrondImageView.frame = screenSize
+        backgrondImageView.image = UIImage(named: "Background")
+        
+        /*
+        self.navigationController?.view.addSubview(backgrondImageView)
+        backgrondImageView.addSubview(loopringLogoImageView)
+        backgrondImageView.addSubview(taglineLabel)
+        backgrondImageView.addSubview(unlockWalletButton)
+        backgrondImageView.addSubview(generateWalletButton)
+        */
+        
+        view.addSubview(loopringLogoImageView)
+        view.addSubview(taglineLabel)
+        view.addSubview(unlockWalletButton)
+        view.addSubview(generateWalletButton)
         
         // TODO: skip button is not in the design. Add "Go to Market" button.
         /*
@@ -41,19 +60,33 @@ class SetupViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = skipButton
         */
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // TODO: May need to use auto layout.
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        loopringLogoImageView.frame = CGRect(x: 24, y: 64, width: 136, height: 41)
+        taglineLabel.frame = CGRect(x: 24, y: 119, width: screenWidth - 24 * 2, height: 20)
+        
+        unlockWalletButton.frame = CGRect(x: 15, y: screenHeight - 47 - 63, width: screenWidth - 15 * 2, height: 47)
+        generateWalletButton.frame = CGRect(x: 15, y: screenHeight - 47 - 125, width: screenWidth - 15 * 2, height: 47)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func unlockWalletButtonPressed(_ sender: Any) {
+    @objc func unlockWalletButtonPressed(_ sender: Any) {
         let viewController = UnlockWalletSwipeViewController()
         // viewController.navigationController?.navigationBar.theme_barTintColor = GlobalPicker.barTintColor
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    @IBAction func generateWalletButtonPressed(_ sender: Any) {
+    @objc func generateWalletButtonPressed(_ sender: Any) {
         let viewController = GenerateWalletViewController()
         // viewController.navigationController?.navigationBar.theme_barTintColor = GlobalPicker.barTintColor
         self.navigationController?.pushViewController(viewController, animated: true)

@@ -12,9 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetupViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
-                <outlet property="generateWalletButton" destination="Q1g-wc-kTG" id="3jA-yF-D09"/>
+                <outlet property="loopringLogoImageView" destination="ndb-6h-SZu" id="a8P-xw-Gbm"/>
                 <outlet property="taglineLabel" destination="Vwj-yH-xwd" id="lnE-Sj-DcW"/>
-                <outlet property="unlockWalletButton" destination="khC-LX-8we" id="LE7-Nv-eQD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,64 +22,19 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khC-LX-8we">
-                    <rect key="frame" x="15" y="557" width="345" height="47"/>
-                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="47" id="AEz-YZ-aZh"/>
-                    </constraints>
-                    <state key="normal" title="Import Wallet">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="unlockWalletButtonPressed:" destination="-1" eventType="touchUpInside" id="xwH-vz-VEl"/>
-                    </connections>
-                </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loopring_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ndb-6h-SZu">
-                    <rect key="frame" x="20" y="20" width="160" height="60"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="160" id="MPw-HG-wLO"/>
-                        <constraint firstAttribute="height" constant="60" id="qLf-OM-Vqm"/>
-                    </constraints>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Loopring_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ndb-6h-SZu">
+                    <rect key="frame" x="20" y="20" width="272" height="82"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secure token trading right from your own wallet." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwj-yH-xwd">
-                    <rect key="frame" x="20" y="94" width="335" height="25"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="25" id="tDq-Qq-Oz7"/>
-                    </constraints>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Secure token trading right from your own wallet." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwj-yH-xwd">
+                    <rect key="frame" x="20" y="116" width="329" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1g-wc-kTG">
-                    <rect key="frame" x="15" y="495" width="345" height="47"/>
-                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="47" id="dkP-Tq-mL8"/>
-                    </constraints>
-                    <color key="tintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <state key="normal" title="Generate Wallet">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="generateWalletButtonPressed:" destination="-1" eventType="touchUpInside" id="XbX-An-iAO"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="ndb-6h-SZu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="EG7-h0-BSt"/>
-                <constraint firstItem="ndb-6h-SZu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Gfy-jf-M8C"/>
-                <constraint firstItem="Vwj-yH-xwd" firstAttribute="top" secondItem="ndb-6h-SZu" secondAttribute="bottom" constant="14" id="Osf-hZ-nvS"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="khC-LX-8we" secondAttribute="trailing" constant="15" id="PIy-43-efh"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="khC-LX-8we" secondAttribute="bottom" constant="63" id="UKw-22-Dtn"/>
-                <constraint firstItem="khC-LX-8we" firstAttribute="top" secondItem="Q1g-wc-kTG" secondAttribute="bottom" constant="15" id="W4e-q4-OWe"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vwj-yH-xwd" secondAttribute="trailing" constant="20" id="d2V-rq-dYL"/>
-                <constraint firstItem="Q1g-wc-kTG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="kcd-lV-f9z"/>
-                <constraint firstItem="Vwj-yH-xwd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="rpZ-ty-8bO"/>
-                <constraint firstItem="khC-LX-8we" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="s5d-nu-Ivq"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Q1g-wc-kTG" secondAttribute="trailing" constant="15" id="vYl-fq-bv8"/>
-            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>

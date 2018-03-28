@@ -9,7 +9,7 @@
 import UIKit
 
 class SetupNavigationController: UINavigationController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,7 +17,7 @@ class SetupNavigationController: UINavigationController {
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = false
         navigationBar.tintColor = UIStyleConfig.defaultTintColor
-
+        
         let viewController = SetupViewController(nibName: nil, bundle: nil)
         self.setViewControllers([viewController], animated: false)
     }
