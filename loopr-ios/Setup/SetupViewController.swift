@@ -40,20 +40,16 @@ class SetupViewController: UIViewController {
         let screenSize: CGRect = UIScreen.main.bounds
         backgrondImageView.frame = screenSize
         backgrondImageView.image = UIImage(named: "Background")
+        backgrondImageView.isUserInteractionEnabled = true
         
-        /*
-        self.navigationController?.view.addSubview(backgrondImageView)
+        view.addSubview(backgrondImageView)
         backgrondImageView.addSubview(loopringLogoImageView)
         backgrondImageView.addSubview(taglineLabel)
         backgrondImageView.addSubview(unlockWalletButton)
         backgrondImageView.addSubview(generateWalletButton)
-        */
         
-        view.addSubview(loopringLogoImageView)
-        view.addSubview(taglineLabel)
-        view.addSubview(unlockWalletButton)
-        view.addSubview(generateWalletButton)
-        
+        self.navigationController?.isNavigationBarHidden = true
+
         // TODO: skip button is not in the design. Add "Go to Market" button.
         /*
         let skipButton = UIBarButtonItem(title: "Skip", style: .plain, target: self, action: #selector(self.skipButtonPressed(_:)))
@@ -61,8 +57,15 @@ class SetupViewController: UIViewController {
         */
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = true
 
         // TODO: May need to use auto layout.
         let screenSize: CGRect = UIScreen.main.bounds
@@ -74,21 +77,18 @@ class SetupViewController: UIViewController {
         unlockWalletButton.frame = CGRect(x: 15, y: screenHeight - 47 - 63, width: screenWidth - 15 * 2, height: 47)
         generateWalletButton.frame = CGRect(x: 15, y: screenHeight - 47 - 125, width: screenWidth - 15 * 2, height: 47)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @objc func unlockWalletButtonPressed(_ sender: Any) {
+        print("unlockWalletButtonPressed")
+        // backgrondImageView.removeFromSuperview()
         let viewController = UnlockWalletSwipeViewController()
-        // viewController.navigationController?.navigationBar.theme_barTintColor = GlobalPicker.barTintColor
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc func generateWalletButtonPressed(_ sender: Any) {
+        print("generateWalletButtonPressed")
+        // backgrondImageView.removeFromSuperview()
         let viewController = GenerateWalletViewController()
-        // viewController.navigationController?.navigationBar.theme_barTintColor = GlobalPicker.barTintColor
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 

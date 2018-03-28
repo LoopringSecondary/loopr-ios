@@ -30,13 +30,15 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
 
         // Do any additional setup after loading the view.
         // self.navigationItem.title = NSLocalizedString("Generate Wallet", comment: "")
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
         
         let backButton = UIBarButtonItem()
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
+        self.navigationController?.isNavigationBarHidden = false
         
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
@@ -98,6 +100,11 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     @objc func scrollViewTapped() {

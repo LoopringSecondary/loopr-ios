@@ -23,6 +23,8 @@ class UnlockWalletSwipeViewController: SwipeViewController {
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
+        self.navigationController?.isNavigationBarHidden = false
+        
         options.swipeTabView.height = 44
         options.swipeTabView.underlineView.height = 1
         options.swipeTabView.underlineView.margin = 30
@@ -40,6 +42,11 @@ class UnlockWalletSwipeViewController: SwipeViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     @objc func pressScanButton(_ button: UIBarButtonItem) {
