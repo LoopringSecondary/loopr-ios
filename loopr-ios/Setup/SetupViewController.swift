@@ -23,14 +23,9 @@ class SetupViewController: UIViewController {
         view.backgroundColor = UIColor.clear
 
         taglineLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 16)
-
-        unlockWalletButton.backgroundColor = UIColor.white
-        unlockWalletButton.titleColor = UIColor.black
-        unlockWalletButton.layer.cornerRadius = 23
-        unlockWalletButton.layer.borderWidth = 1
-        unlockWalletButton.layer.borderColor = UIColor.black.cgColor
+        
         unlockWalletButton.title = NSLocalizedString("Import Wallet", comment: "")
-        unlockWalletButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+        unlockWalletButton.setupRoundWhite()
         unlockWalletButton.addTarget(self, action: #selector(unlockWalletButtonPressed), for: .touchUpInside)
 
         generateWalletButton.title = NSLocalizedString("Generate Wallet", comment: "")

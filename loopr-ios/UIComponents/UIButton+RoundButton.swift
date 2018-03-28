@@ -20,4 +20,15 @@ extension UIButton {
         layer.cornerRadius = height * 0.5
     }
     
+    func setupRoundWhite(height: CGFloat = 47) {
+        titleColor = UIColor.black
+        setBackgroundColor(UIColor.white, for: .normal)
+        setBackgroundColor(UIColor.init(white: 0.85, alpha: 1), for: .highlighted)
+        clipsToBounds = true
+        titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.black.cgColor
+        layer.cornerRadius = height * 0.5
+    }
+
 }
