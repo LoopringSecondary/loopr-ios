@@ -15,7 +15,7 @@ protocol WalletBalanceTableViewCellDelegate: class {
 class WalletBalanceTableViewCell: UITableViewCell {
 
     weak var delegate: WalletBalanceTableViewCellDelegate?
-    
+
     @IBOutlet weak var balanceLabel: TickerLabel!
     @IBOutlet weak var hideAssetSwitch: UISwitch!
     @IBOutlet weak var hideAssetsLabel: UILabel!
@@ -23,15 +23,15 @@ class WalletBalanceTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        balanceLabel.setFont(UIFont.init(name: FontConfigManager.shared.getRegular(), size: 39)!)
+
+        balanceLabel.setFont(UIFont.init(name: FontConfigManager.shared.getRegular(), size: 27)!)
         balanceLabel.animationDuration = 0.25
         balanceLabel.textAlignment = NSTextAlignment.center
         balanceLabel.initializeLabel()
         balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
-        let balance = AssetDataManager.shared.getTotalAsset()
-        balanceLabel.setText("\(balance)", animated: false)
-        
+        let balance = AssetDataManager.shared.getTotalAssetCurrencyFormmat()
+        balanceLabel.setText("\(balance)", animated: true)
+
         hideAssetSwitch.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
 
         self.theme_backgroundColor = GlobalPicker.backgroundColor
@@ -61,7 +61,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
     }
     
     @objc func updateBalance() {
-        let balance = AssetDataManager.shared.getTotalAsset()
+        let balance = AssetDataManager.shared.getTotalAssetCurrencyFormmat()
         balanceLabel.setText("\(balance)", animated: true)
         layoutIfNeeded()
     }

@@ -36,6 +36,14 @@ class AssetDataManager {
         return totalAsset
     }
     
+    func getTotalAssetCurrencyFormmat() -> String {
+        let currentyFormatter = NumberFormatter()
+        currentyFormatter.usesGroupingSeparator = true
+        currentyFormatter.numberStyle = .currency
+        let formattedNumber = currentyFormatter.string(from: NSNumber(value: totalAsset)) ?? "\(totalAsset)"
+        return formattedNumber
+    }
+    
     func getAssets(enable: Bool? = nil) -> [Asset] {
         guard let enable = enable else {
             return self.assets

@@ -82,7 +82,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         button.addTarget(self, action: #selector(self.clickNavigationTitleButton(_:)), for: .touchUpInside)
         self.navigationItem.titleView = button
         
-        assetTableView.reloadData()
+        // assetTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
