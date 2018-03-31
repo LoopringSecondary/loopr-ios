@@ -27,7 +27,7 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gvg-n7-Dn3">
-                        <rect key="frame" x="191" y="13" width="200" height="52"/>
+                        <rect key="frame" x="191" y="10.5" width="200" height="52"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHg-k2-b9U">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="32"/>
@@ -74,10 +74,10 @@
                     <constraint firstItem="zzi-Me-Sla" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="EpD-Pd-LzL"/>
                     <constraint firstItem="zzi-Me-Sla" firstAttribute="leading" secondItem="8vB-Bh-nJn" secondAttribute="trailing" constant="14" id="Gyg-87-MB2"/>
                     <constraint firstItem="BGI-Fq-1SI" firstAttribute="height" secondItem="8vB-Bh-nJn" secondAttribute="height" id="LYM-O2-FSo"/>
+                    <constraint firstItem="gvg-n7-Dn3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="2" id="OTQ-n4-T3p"/>
                     <constraint firstItem="2K3-aV-tP8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="59" id="OYN-17-ueD"/>
                     <constraint firstAttribute="trailing" secondItem="gvg-n7-Dn3" secondAttribute="trailing" constant="4" id="VW1-Sg-DPY"/>
                     <constraint firstItem="8vB-Bh-nJn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ebc-ZQ-gWO"/>
-                    <constraint firstItem="gvg-n7-Dn3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="fuT-Sh-79f"/>
                     <constraint firstItem="BGI-Fq-1SI" firstAttribute="leading" secondItem="8vB-Bh-nJn" secondAttribute="leading" id="j1l-Vn-aIA"/>
                     <constraint firstAttribute="bottom" secondItem="2K3-aV-tP8" secondAttribute="bottom" id="qhI-ji-mfe"/>
                     <constraint firstAttribute="trailing" secondItem="2K3-aV-tP8" secondAttribute="trailing" constant="-59" id="uA9-x4-CJA"/>

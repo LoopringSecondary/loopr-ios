@@ -24,21 +24,22 @@ class MarketTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+
         theme_backgroundColor = GlobalPicker.backgroundColor
+
         nameLabel.theme_textColor = GlobalPicker.textColor
-        balanceLabel.theme_textColor = ["#a0a0a0", "#fff"]
-        
-        marketPriceInBitcoinLabel.theme_textColor = GlobalPicker.textColor
-        marketPriceInFiatCurrencyLabel.theme_textColor = ["#a0a0a0", "#fff"]
-        
-        nameLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17)
+        nameLabel.font = FontConfigManager.shared.getLabelFont()
+
+        balanceLabel.textColor = UIColor.init(white: 0, alpha: 0.3)
         balanceLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 14)
 
-        marketPriceInBitcoinLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17)
+        marketPriceInBitcoinLabel.theme_textColor = GlobalPicker.textColor
+        marketPriceInBitcoinLabel.font = FontConfigManager.shared.getLabelFont()
+
+        marketPriceInFiatCurrencyLabel.textColor = UIColor.init(white: 0, alpha: 0.3)
         marketPriceInFiatCurrencyLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 14)
-        
-        percentageChangeLabel.font = UIFont(name: FontConfigManager.shared.getRegular(), size: 17)
+
+        percentageChangeLabel.font = FontConfigManager.shared.getLabelFont()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -72,7 +73,8 @@ class MarketTableViewCell: UITableViewCell {
         return "MarketTableViewCell"
     }
     
+    //TODO: The height of MarketTableViewCell is different from the height of AssetTableViewCell.
     class func getHeight() -> CGFloat {
-        return 84
+        return 64
     }
 }

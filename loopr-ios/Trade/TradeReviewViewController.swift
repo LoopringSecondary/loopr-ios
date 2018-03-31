@@ -32,6 +32,7 @@ class TradeReviewViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // self.navigationController?.isNavigationBarHidden = false
         
         let backButton = UIBarButtonItem()
         backButton.title = ""
@@ -123,7 +124,8 @@ class TradeReviewViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        // self.navigationController?.isNavigationBarHidden = false
+
         tokenSView.update(title: "You send", symbol: TradeDataManager.shared.tokenS.symbol, amount: TradeDataManager.shared.amountTokenS)
         tokenBView.update(title: "You get", symbol: TradeDataManager.shared.tokenB.symbol, amount: TradeDataManager.shared.amountTokenB)
         

@@ -31,7 +31,7 @@ class TradeSwipeViewController: SwipeViewController {
         // TODO: .segmented will disable the value of width
         options.swipeTabView.style = .segmented
         
-        options.swipeTabView.itemView.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 21) ?? UIFont.systemFont(ofSize: 21)
+        options.swipeTabView.itemView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 21) ?? UIFont.systemFont(ofSize: 21)
         
         // This conflicts to the swipe action in the table view cell.
         options.swipeContentScrollView.isScrollEnabled = false
@@ -41,7 +41,6 @@ class TradeSwipeViewController: SwipeViewController {
         for viewController in viewControllers {
             self.addChildViewController(viewController)
         }
-
     }
 
     override func didReceiveMemoryWarning() {
