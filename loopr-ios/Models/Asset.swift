@@ -18,13 +18,13 @@ class Asset: CustomStringConvertible {
     var enable: Bool
     var balance: String
     var allowance: String
-    var display: Double
+    var display: String
     var description: String
     
     init(json: JSON) {
         self.name = ""
         self.enable = true
-        self.display = 0
+        self.display = "0"
         self.description = self.name
         self.symbol = json["symbol"].stringValue
         self.balance = json["balance"].stringValue

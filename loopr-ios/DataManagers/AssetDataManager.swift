@@ -172,11 +172,17 @@ class AssetDataManager {
     func formatAsset(asset: inout Asset) {
         if let balance = getAmount(of: asset.symbol, from: asset.balance) {
             if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
-                asset.balance = balance.description
-                asset.display = balance * price
                 asset.name = getTokenBySymbol(asset.symbol)?.source ?? "unknown token"
-                totalAsset += asset.display
+                asset.balance = balance.description
+                
+                let currentyFormatter = NumberFormatter()
+                currentyFormatter.usesGroupingSeparator = true
+                currentyFormatter.numberStyle = .currency
+                let formattedNumber = currentyFormatter.string(from: NSNumber(value: balance * price)) ?? "\(balance * price)"
+                asset.display = "$ " + String(formattedNumber.dropFirst())
+                
                 assets.append(asset)
+                totalAsset += balance * price
             }
         }
     }
@@ -189,11 +195,17 @@ class AssetDataManager {
             let asset = Asset(json: subJson)
             if let balance = getAmount(of: asset.symbol, from: asset.balance) {
                 if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
-                    asset.balance = balance.description
-                    asset.display = balance * price
                     asset.name = getTokenBySymbol(asset.symbol)?.source ?? "unknown token"
-                    totalAsset += asset.display
+                    asset.balance = balance.description
+
+                    let currentyFormatter = NumberFormatter()
+                    currentyFormatter.usesGroupingSeparator = true
+                    currentyFormatter.numberStyle = .currency
+                    let formattedNumber = currentyFormatter.string(from: NSNumber(value: balance * price)) ?? "\(balance * price)"
+                    asset.display = "$ " + String(formattedNumber.dropFirst())
+
                     assets.append(asset)
+                    totalAsset += balance * price
                 }
             }
         }
