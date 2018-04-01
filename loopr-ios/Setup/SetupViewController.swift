@@ -22,7 +22,7 @@ class SetupViewController: UIViewController {
 
         view.backgroundColor = UIColor.clear
 
-        taglineLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 16)
+        taglineLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 15)
         
         unlockWalletButton.title = NSLocalizedString("Import Wallet", comment: "")
         unlockWalletButton.setupRoundWhite()
