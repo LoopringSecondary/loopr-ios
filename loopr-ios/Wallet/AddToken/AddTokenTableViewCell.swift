@@ -1,15 +1,15 @@
 //
-//  SwitchTradeTokenTableViewCell.swift
+//  AddTokenTableViewCell.swift
 //  loopr-ios
 //
-//  Created by xiaoruby on 3/17/18.
+//  Created by xiaoruby on 3/31/18.
 //  Copyright © 2018 Loopring. All rights reserved.
 //
 
 import UIKit
 
-class SwitchTradeTokenTableViewCell: UITableViewCell {
-
+class AddTokenTableViewCell: UITableViewCell {
+    
     var token: Token?
 
     // TODO: We may deprecate IBOutlet
@@ -19,14 +19,11 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
     @IBOutlet weak var symbolLabel: UILabel!
 
     @IBOutlet weak var seperateLine: UIView!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-
-        theme_backgroundColor = GlobalPicker.backgroundColor
-        symbolLabel.theme_textColor = GlobalPicker.textColor
-
+        
         symbolLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17)
 
         seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
@@ -37,7 +34,7 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
     func update() {
         if let token = token {
             let icon = UIImage(named: token.symbol) ?? nil
@@ -57,11 +54,10 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
     }
 
     class func getCellIdentifier() -> String {
-        return "SwitchTradeTokenTableViewCell"
+        return "AddTokenTableViewCell"
     }
-
+    
     class func getHeight() -> CGFloat {
         return 62
     }
-
 }

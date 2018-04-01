@@ -30,6 +30,7 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
 
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.separatorStyle = .none
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,10 +59,13 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         }
 
         let token = AssetDataManager.shared.getTokens()[indexPath.row]
-        cell?.titleLabel.text = "\(token.symbol)(\(token.source.capitalized))"
+        cell?.token = token
+        cell?.update()
 
         if (type == .tokenS && token.symbol == TradeDataManager.shared.tokenS.symbol) || (type == .tokenB && token.symbol == TradeDataManager.shared.tokenB.symbol) {
             cell?.accessoryType = UITableViewCellAccessoryType.checkmark
+        } else {
+            cell?.accessoryType = .none
         }
 
         return cell!

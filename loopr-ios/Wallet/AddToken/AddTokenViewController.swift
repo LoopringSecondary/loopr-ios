@@ -22,6 +22,7 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.separatorStyle = .none
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,18 +35,19 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return SwitchTradeTokenTableViewCell.getHeight()
+        return AddTokenTableViewCell.getHeight()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: SwitchTradeTokenTableViewCell.getCellIdentifier()) as? SwitchTradeTokenTableViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: AddTokenTableViewCell.getCellIdentifier()) as? AddTokenTableViewCell
         if cell == nil {
-            let nib = Bundle.main.loadNibNamed("SwitchTradeTokenTableViewCell", owner: self, options: nil)
-            cell = nib![0] as? SwitchTradeTokenTableViewCell
+            let nib = Bundle.main.loadNibNamed("AddTokenTableViewCell", owner: self, options: nil)
+            cell = nib![0] as? AddTokenTableViewCell
         }
         
         let token = AssetDataManager.shared.getTokens()[indexPath.row]
-        cell?.titleLabel.text = "\(token.symbol)(\(token.source.capitalized))"
+        cell?.token = token
+        cell?.update()
         
         return cell!
     }

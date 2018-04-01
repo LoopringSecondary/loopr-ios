@@ -116,7 +116,7 @@ class MarketDataManager {
         updateFavoriteMarketKeysOnLocal()
     }
     
-    // TODO: whether stop method is useful?
+    // TODO: whether stop method is useful? Yes.
     func startGetTicker() {
         LoopringSocketIORequest.getTiker()
     }
@@ -126,12 +126,11 @@ class MarketDataManager {
     }
     
     func onTickerResponse(json: JSON) {
+        // TODO: Apply diff algorithm.
         markets = []
         // print(json)
         for subJson in json.arrayValue {
             if let market = Market(json: subJson) {
-                let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: market.tradingPair.tradingA)
-                market.display = price ?? 0
                 markets.append(market)
             }
         }
@@ -139,6 +138,7 @@ class MarketDataManager {
     }
     
     func onTrendResponse(json: JSON) {
+        // TODO: Apply diff algorithm.
         trends = []
         print(json)
         for subJson in json.arrayValue {

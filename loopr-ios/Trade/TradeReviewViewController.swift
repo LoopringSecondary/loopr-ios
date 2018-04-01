@@ -80,7 +80,7 @@ class TradeReviewViewController: UIViewController {
         view.addSubview(LRCFeeValueLabel)
         
         LRCFeeUnderLine.frame = CGRect(x: paddingLeft, y: LRCFeeLabel.frame.maxY - 5, width: screenWidth - paddingLeft * 2, height: 1)
-        LRCFeeUnderLine.backgroundColor = UIColor.black
+        LRCFeeUnderLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
         view.addSubview(LRCFeeUnderLine)
         
         priceLabel.text = "Price"
@@ -96,7 +96,7 @@ class TradeReviewViewController: UIViewController {
         view.addSubview(priceValueLabel)
 
         priceUnderLine.frame = CGRect(x: paddingLeft, y: priceLabel.frame.maxY - 5, width: screenWidth - paddingLeft * 2, height: 1)
-        priceUnderLine.backgroundColor = UIColor.black
+        priceUnderLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
         view.addSubview(priceUnderLine)
 
         tokenSView = TradeTokenView(frame: CGRect(x: 10, y: screenHeight/9, width: (screenWidth-30)/2, height: 200))

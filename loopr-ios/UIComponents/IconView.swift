@@ -15,27 +15,33 @@ class IconView: UIView {
     
     var width: CGFloat = 5
     
-    var backgroundView: UIView = UIView()
-    var backgroundViewColor: UIColor = UIColor.black
+    var circleView: UIView = UIView()
+    var circleViewColor: UIColor = UIColor.black
     
     var textColor: UIColor = UIColor.white
 
     override func draw(_ rect: CGRect) {
-        // Drawing code
-        backgroundView.frame = rect
-        backgroundView.backgroundColor = backgroundViewColor
-        backgroundView.cornerRadius = rect.width * 0.5
-        addSubview(backgroundView)
+        let circleRadius = min(rect.width, rect.height) * 0.5
 
-        showTextInsdieView()
+        // Drawing code
+        circleView.frame = CGRect(center: CGPoint(x: rect.midX, y: rect.midY), size: CGSize(width: circleRadius * 2, height: circleRadius * 2))
+        circleView.backgroundColor = circleViewColor
+        circleView.cornerRadius = circleRadius
+        circleView.clipsToBounds = true
+        addSubview(circleView)
+
+        showTextInsdieView(circleRadius: circleRadius)
     }
     
-    func showTextInsdieView() {
+    private func showTextInsdieView(circleRadius: CGFloat) {
         symbolLabel = UILabel(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height))
         symbolLabel.textAlignment = .center
         symbolLabel.textColor = textColor
-        symbolLabel.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: 10)
+
+        let fontSize = (circleRadius*0.625).rounded()
+        symbolLabel.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: fontSize)
         symbolLabel.text = symbol
+
         addSubview(symbolLabel)
     }
 

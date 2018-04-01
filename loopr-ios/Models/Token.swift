@@ -17,6 +17,9 @@ class Token {
     let decimals: Int
     let protocol_value: String
     let deny: Bool
+    
+    // TODO: not sure about whether we need icon in Token
+    var icon: UIImage?
 
     init(json: JSON) {
         self.symbol = json["symbol"].stringValue

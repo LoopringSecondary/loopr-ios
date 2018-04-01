@@ -23,6 +23,7 @@ class DataUtil: NSObject, IAxisValueFormatter {
         dateFormatter.dateFormat = format
     }
     
+    // TODO: What is axis for?
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         return dateFormatter.string(from: Date(timeIntervalSince1970: value))
     }

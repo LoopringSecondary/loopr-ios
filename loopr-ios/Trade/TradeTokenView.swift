@@ -12,6 +12,7 @@ class TradeTokenView: UIView {
     
     var titleLabel: UILabel
     var iconImageView: UIImageView
+    var iconView: IconView
     var amountLabel: UILabel
     
     override init(frame: CGRect) {
@@ -25,29 +26,54 @@ class TradeTokenView: UIView {
         iconImageView = UIImageView(frame: CGRect(x: 0, y: titleLabel.frame.maxY + padding, width: frame.width, height: 60))
         iconImageView.contentMode = .scaleAspectFit
 
+        iconView = IconView(frame: CGRect(x: 0, y: titleLabel.frame.maxY + padding, width: frame.width, height: 60))
+        iconView.isHidden = true
+        iconView.backgroundColor = UIColor.clear
+
         amountLabel = UILabel(frame: CGRect(x: 0, y: iconImageView.frame.maxY + padding, width: frame.width, height: 40))
         amountLabel.textAlignment = .center
         amountLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)
 
         super.init(frame: frame)
-        
+
         addSubview(titleLabel)
         addSubview(iconImageView)
+        addSubview(iconView)
         addSubview(amountLabel)
     }
 
     // Used in ConvertETHViewController
     func update(symbol: String) {
         amountLabel.text = symbol
-        iconImageView.image = UIImage(named: symbol) ?? nil
+        let icon = UIImage(named: symbol)
+        if icon != nil {
+            iconImageView.image = icon
+            iconImageView.isHidden = false
+            iconView.isHidden = true
+        } else {
+            iconView.isHidden = false
+            iconView.symbol = symbol
+            iconView.symbolLabel.text = symbol
+            iconImageView.isHidden = true
+        }
     }
-    
+
+    // Used in Trade
     func update(title: String, symbol: String, amount: Double) {
         titleLabel.text = title
         amountLabel.text = "\(amount) \(symbol)"
 
-        // TODO: use symbol icon
-        iconImageView.image = UIImage(named: symbol) ?? nil
+        let icon = UIImage(named: symbol)
+        if icon != nil {
+            iconImageView.image = icon
+            iconImageView.isHidden = false
+            iconView.isHidden = true
+        } else {
+            iconView.isHidden = false
+            iconView.symbol = symbol
+            iconView.symbolLabel.text = symbol
+            iconImageView.isHidden = true
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -415,6 +415,8 @@
 		ACB911992027F65800F14644 /* LoopringAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911982027F65800F14644 /* LoopringAPIRequest.swift */; };
 		ACB9119F202967A500F14644 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9119E202967A500F14644 /* OrderStatus.swift */; };
 		ACB911A320296B9900F14644 /* OriginalOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911A220296B9900F14644 /* OriginalOrder.swift */; };
+		ACB97C6D20707B6F00775D4C /* AddTokenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB97C6B20707B6F00775D4C /* AddTokenTableViewCell.swift */; };
+		ACB97C6E20707B6F00775D4C /* AddTokenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB97C6C20707B6F00775D4C /* AddTokenTableViewCell.xib */; };
 		ACBDB1C52032D050003463A4 /* OpenOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBDB1C32032D050003463A4 /* OpenOrderTableViewCell.swift */; };
 		ACBDB1C62032D050003463A4 /* OpenOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBDB1C42032D050003463A4 /* OpenOrderTableViewCell.xib */; };
 		ACCCFDCE203BEF2200B98F99 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */; };
@@ -774,6 +776,8 @@
 		ACB911982027F65800F14644 /* LoopringAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopringAPIRequest.swift; sourceTree = "<group>"; };
 		ACB9119E202967A500F14644 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
 		ACB911A220296B9900F14644 /* OriginalOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginalOrder.swift; sourceTree = "<group>"; };
+		ACB97C6B20707B6F00775D4C /* AddTokenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTokenTableViewCell.swift; sourceTree = "<group>"; };
+		ACB97C6C20707B6F00775D4C /* AddTokenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTokenTableViewCell.xib; sourceTree = "<group>"; };
 		ACBDB1C32032D050003463A4 /* OpenOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOrderTableViewCell.swift; sourceTree = "<group>"; };
 		ACBDB1C42032D050003463A4 /* OpenOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenOrderTableViewCell.xib; sourceTree = "<group>"; };
 		ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
@@ -1148,15 +1152,17 @@
 			path = AssetDetail;
 			sourceTree = "<group>";
 		};
-		AC5E0DE0203B44EA00AF03C7 /* AddAsset */ = {
+		AC5E0DE0203B44EA00AF03C7 /* AddToken */ = {
 			isa = PBXGroup;
 			children = (
 				ACB9118E20266EC200F14644 /* AddCustomizedTokenViewController.swift */,
 				ACB9118F20266EC200F14644 /* AddCustomizedTokenViewController.xib */,
 				AC5E098F205F256500801738 /* AddTokenViewController.swift */,
 				AC5E0990205F256500801738 /* AddTokenViewController.xib */,
+				ACB97C6B20707B6F00775D4C /* AddTokenTableViewCell.swift */,
+				ACB97C6C20707B6F00775D4C /* AddTokenTableViewCell.xib */,
 			);
-			path = AddAsset;
+			path = AddToken;
 			sourceTree = "<group>";
 		};
 		AC5E3E6D205DFABD0051ACFC /* SendAsset */ = {
@@ -1471,7 +1477,7 @@
 				ACB9115820242B9D00F14644 /* AssetTableViewCell.swift */,
 				ACB9115920242B9D00F14644 /* AssetTableViewCell.xib */,
 				AC9ADF8E205EE2E800CBE368 /* ConvertETH */,
-				AC5E0DE0203B44EA00AF03C7 /* AddAsset */,
+				AC5E0DE0203B44EA00AF03C7 /* AddToken */,
 				AC5E3E6D205DFABD0051ACFC /* SendAsset */,
 				AC5E0DD3203A9D7D00AF03C7 /* AssetDetail */,
 				AC375686203A7B0A00AADC60 /* SelectWallet */,
@@ -1484,9 +1490,9 @@
 			children = (
 				AC4142052038B66F0089861D /* AppWallet.swift */,
 				ACB9115F20242E3F00F14644 /* Asset.swift */,
+				940B452C2061206800ADE2B9 /* Token.swift */,
 				ACB911632024504E00F14644 /* Order.swift */,
 				ACB911A220296B9900F14644 /* OriginalOrder.swift */,
-				940B452C2061206800ADE2B9 /* Token.swift */,
 				ACB9119E202967A500F14644 /* OrderStatus.swift */,
 				ACB911652024505D00F14644 /* Trade.swift */,
 				AC72AEE7204F020B00E9D3B0 /* OrderTradeState.swift */,
@@ -1799,6 +1805,7 @@
 				AC31CEB7205B9C3300A30335 /* Montserrat-Regular.ttf in Resources */,
 				AC31CEBA205B9C3600A30335 /* Montserrat-SemiBold.ttf in Resources */,
 				AC3756742038D64B00AADC60 /* MnemonicViewController.xib in Resources */,
+				ACB97C6E20707B6F00775D4C /* AddTokenTableViewCell.xib in Resources */,
 				AC31CE1D205A2F0100A30335 /* SwitchTradeTokenViewController.xib in Resources */,
 				AC31CE68205B994E00A30335 /* Roboto-Light.ttf in Resources */,
 				AC5E3E71205DFB700051ACFC /* SendAssetViewController.xib in Resources */,
@@ -2270,6 +2277,7 @@
 				AC4142062038B66F0089861D /* AppWallet.swift in Sources */,
 				940B45202060F67E00ADE2B9 /* OrderDataManager.swift in Sources */,
 				AC3756702038D3ED00AADC60 /* UnlockWalletType.swift in Sources */,
+				ACB97C6D20707B6F00775D4C /* AddTokenTableViewCell.swift in Sources */,
 				AC5E0DDA203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift in Sources */,
 				ACB911842026388700F14644 /* SettingViewController.swift in Sources */,
 				AC46F7762069FB4400CFDC40 /* UIButton+RoundButton.swift in Sources */,
