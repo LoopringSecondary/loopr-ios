@@ -35,7 +35,6 @@ extension UIView {
         return safeAreaInsets != .zero
     }
     
-    @IBInspectable
     var borderWidth: CGFloat {
         get {
             return self.layer.borderWidth
@@ -45,7 +44,6 @@ extension UIView {
         }
     }
     
-    @IBInspectable
     var borderColor: UIColor {
         get {
             return UIColor(cgColor: self.layer.borderColor!)
@@ -55,7 +53,6 @@ extension UIView {
         }
     }
     
-    @IBInspectable
     var cornerRadius: CGFloat {
         get {
             return self.layer.cornerRadius
@@ -66,7 +63,6 @@ extension UIView {
         }
     }
     
-    @IBInspectable
     var shadowRadius: CGFloat {
         get {
             return self.layer.shadowRadius
@@ -76,7 +72,6 @@ extension UIView {
         }
     }
     
-    @IBInspectable
     var shadowOpacity: Float {
         get {
             return self.layer.shadowOpacity
