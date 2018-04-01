@@ -12,6 +12,7 @@ extension UIButton {
     
     func setupRoundBlack(height: CGFloat = 47) {
         backgroundColor = UIColor.black
+        setBackgroundColor(UIColor.black, for: .normal)
         // TODO: update the color in the highlighted state.
         setBackgroundColor(UIColor.init(white: 0.15, alpha: 1), for: .highlighted)
         clipsToBounds = true

@@ -400,6 +400,8 @@
 		ACB911A320296B9900F14644 /* OriginalOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911A220296B9900F14644 /* OriginalOrder.swift */; };
 		ACB97C6D20707B6F00775D4C /* AddTokenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB97C6B20707B6F00775D4C /* AddTokenTableViewCell.swift */; };
 		ACB97C6E20707B6F00775D4C /* AddTokenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB97C6C20707B6F00775D4C /* AddTokenTableViewCell.xib */; };
+		ACB97C7020715BC100775D4C /* MnemonicQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB97C6F20715BC100775D4C /* MnemonicQuestion.swift */; };
+		ACB97C73207160E100775D4C /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB97C72207160E100775D4C /* Int+Extension.swift */; };
 		ACBDB1C52032D050003463A4 /* OpenOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBDB1C32032D050003463A4 /* OpenOrderTableViewCell.swift */; };
 		ACBDB1C62032D050003463A4 /* OpenOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBDB1C42032D050003463A4 /* OpenOrderTableViewCell.xib */; };
 		ACCCFDCE203BEF2200B98F99 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */; };
@@ -740,6 +742,8 @@
 		ACB911A220296B9900F14644 /* OriginalOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginalOrder.swift; sourceTree = "<group>"; };
 		ACB97C6B20707B6F00775D4C /* AddTokenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTokenTableViewCell.swift; sourceTree = "<group>"; };
 		ACB97C6C20707B6F00775D4C /* AddTokenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTokenTableViewCell.xib; sourceTree = "<group>"; };
+		ACB97C6F20715BC100775D4C /* MnemonicQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicQuestion.swift; sourceTree = "<group>"; };
+		ACB97C72207160E100775D4C /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		ACBDB1C32032D050003463A4 /* OpenOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOrderTableViewCell.swift; sourceTree = "<group>"; };
 		ACBDB1C42032D050003463A4 /* OpenOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenOrderTableViewCell.xib; sourceTree = "<group>"; };
 		ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
@@ -1220,6 +1224,7 @@
 				AC31B93B204A8D1F00B16155 /* Keystone@8fea1ff */,
 				ACB746E22043C5CC006C2BF5 /* QRCode */,
 				AC6E95F62032CBE900C6EB7C /* Archive */,
+				ACB97C71207160B300775D4C /* FoundationExtensions */,
 				ACDBF10F203FEC96000F0DEC /* UIConfig */,
 				ACB5DD85202AD74D00140A09 /* UIComponents */,
 				AC5E3E72205E21E00051ACFC /* NotificationCenter */,
@@ -1431,6 +1436,7 @@
 				948952D2205A74BE009B03FE /* Transaction.swift */,
 				94DCE54E205F9E71005618E4 /* Ticker.swift */,
 				94DCE550205FAC07005618E4 /* Trend.swift */,
+				ACB97C6F20715BC100775D4C /* MnemonicQuestion.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1496,6 +1502,14 @@
 				940076B120554A4100DDA37D /* LoopringSocketIORequest.swift */,
 			);
 			path = RelayAPI;
+			sourceTree = "<group>";
+		};
+		ACB97C71207160B300775D4C /* FoundationExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				ACB97C72207160E100775D4C /* Int+Extension.swift */,
+			);
+			path = FoundationExtensions;
 			sourceTree = "<group>";
 		};
 		ACDBF0FD203D3FEF000F0DEC /* FloatLabel */ = {
@@ -2180,6 +2194,7 @@
 				AC4141FB20352DE50089861D /* SwipeTabItemView.swift in Sources */,
 				ACB9116E2025575A00F14644 /* MarketNavigationViewController.swift in Sources */,
 				AC4142062038B66F0089861D /* AppWallet.swift in Sources */,
+				ACB97C7020715BC100775D4C /* MnemonicQuestion.swift in Sources */,
 				940B45202060F67E00ADE2B9 /* OrderDataManager.swift in Sources */,
 				AC3756702038D3ED00AADC60 /* UnlockWalletType.swift in Sources */,
 				ACB97C6D20707B6F00775D4C /* AddTokenTableViewCell.swift in Sources */,
@@ -2206,6 +2221,7 @@
 				AC31CE4B205B83B600A30335 /* TradeTokenView.swift in Sources */,
 				AC387521205F12F100A76637 /* ContextMenu.swift in Sources */,
 				94DCE551205FAC07005618E4 /* Trend.swift in Sources */,
+				ACB97C73207160E100775D4C /* Int+Extension.swift in Sources */,
 				940B45242060F67E00ADE2B9 /* TradeDataManager.swift in Sources */,
 				ACB729D4205DE21B00DD4DF3 /* TradeConfirmationViewController.swift in Sources */,
 				AC387523205F141000A76637 /* AddMenuViewController.swift in Sources */,

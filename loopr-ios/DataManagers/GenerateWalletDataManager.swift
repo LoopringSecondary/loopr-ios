@@ -15,41 +15,57 @@ class GenerateWalletDataManager {
     var walletName: String = ""
     var password: String = ""
 
-    private var mnemonic: [String] = []
+    private var mnemonics: [String] = []
 
     // Used in the verification.
-    private var userInputMnemonic: [String] = []
+    private var userInputMnemonics: [String] = []
+
+    var mnemonicQuestions: [MnemonicQuestion] = []
 
     private init() {
         
     }
 
+    // Generate a new wallet and store mnemonic in the memory.
     func new() -> [String] {
         let mnemonicString = Mnemonic.generate(strength: 256)
-        let mnemonic = mnemonicString.components(separatedBy: " ")
-        self.mnemonic = mnemonic
-        return mnemonic
+        let mnemonics = mnemonicString.components(separatedBy: " ")
+        self.mnemonics = mnemonics
+        
+        // Generate 24 questions
+        mnemonicQuestions = []
+        for (index, value) in mnemonics.enumerated() {
+            let mnemonicQuestion = MnemonicQuestion(index: index, mnemonic: value)
+            mnemonicQuestions.append(mnemonicQuestion)
+        }
+
+        return mnemonics
     }
 
     func setWalletName(_ walletName: String) {
         self.walletName = walletName
     }
     
-    func getMnemonic() -> [String] {
-        return mnemonic
+    func getMnemonics() -> [String] {
+        return mnemonics
+    }
+
+    // TODO: In the design, users can only move to the next question?
+    func getQuestion(index: Int) -> MnemonicQuestion {
+        return mnemonicQuestions[index]
     }
 
     func verify() -> Bool {
-        guard mnemonic.count == 24 else {
+        guard mnemonics.count == 24 else {
             return false
         }
         
-        guard userInputMnemonic.count == 24 else {
+        guard userInputMnemonics.count == 24 else {
             return false
         }
 
         for i in 0..<24 {
-            guard mnemonic[i] == userInputMnemonic[i] else {
+            guard mnemonics[i] == userInputMnemonics[i] else {
                 return false
             }
         }
@@ -59,11 +75,11 @@ class GenerateWalletDataManager {
 
     // TODO: use error handling
     func complete() -> AppWallet {
-        let appWallet = AppWalletDataManager.shared.addWallet(walletName: walletName, mnemonic: mnemonic)
+        let appWallet = AppWalletDataManager.shared.addWallet(walletName: walletName, mnemonics: mnemonics)
         
         walletName = ""
-        mnemonic = []
-        userInputMnemonic = []
+        mnemonics = []
+        userInputMnemonics = []
     
         // TODO: remove the force wrap
         return appWallet!

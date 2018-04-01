@@ -112,12 +112,12 @@ class AppWalletDataManager {
     }
 
     // TODO: Use error handling instead of returning a Bool value
-    func addWallet(walletName: String, mnemonic: [String]) -> AppWallet? {
-        guard mnemonic.count == 24 else {
+    func addWallet(walletName: String, mnemonics: [String]) -> AppWallet? {
+        guard mnemonics.count == 24 else {
             return nil
         }
         
-        let mnemonicString = mnemonic.joined(separator: " ")
+        let mnemonicString = mnemonics.joined(separator: " ")
         let wallet = Wallet(mnemonic: mnemonicString, password: "")
 
         // Public address

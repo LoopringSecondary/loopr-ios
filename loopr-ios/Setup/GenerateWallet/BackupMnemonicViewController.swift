@@ -59,8 +59,8 @@ class BackupMnemonicViewController: UIViewController {
         tagListView.marginX = 10
         tagListView.marginY = 10
 
-        let mnemoic: [String] = GenerateWalletDataManager.shared.getMnemonic()
-        for value in mnemoic {
+        let mnemoics: [String] = GenerateWalletDataManager.shared.getMnemonics()
+        for value in mnemoics {
             tagListView.addTag(value)
         }
 
