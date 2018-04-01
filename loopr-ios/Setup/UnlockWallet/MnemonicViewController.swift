@@ -29,6 +29,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate {
 
         // TODO: This setting doesn't work.
         mnemonicWordTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
+        mnemonicWordTextView.contentOffset = CGPoint(x: 0, y: -10)
 
         mnemonicWordTextView.cornerRadius = 12
         mnemonicWordTextView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17.0)
@@ -36,6 +37,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate {
         mnemonicWordTextView.delegate = self
         mnemonicWordTextView.text = NSLocalizedString("Please use space to seperate the mnemonic words", comment: "")
         mnemonicWordTextView.textColor = .lightGray
+        mnemonicWordTextView.tintColor = UIColor.black
     }
     
     override func viewDidAppear(_ animated: Bool) {

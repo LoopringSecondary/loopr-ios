@@ -36,6 +36,7 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
         privateKeyTextView.delegate = self
         privateKeyTextView.text = NSLocalizedString("Please input your private key", comment: "")
         privateKeyTextView.textColor = .lightGray
+        privateKeyTextView.tintColor = UIColor.black
     }
 
     override func didReceiveMemoryWarning() {

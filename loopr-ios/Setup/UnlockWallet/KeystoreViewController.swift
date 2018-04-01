@@ -33,7 +33,8 @@ class KeystoreViewController: UIViewController, UITextViewDelegate {
         keystoreContentTextView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
         keystoreContentTextView.delegate = self
         keystoreContentTextView.text = NSLocalizedString("Please use space to seperate the mnemonic words", comment: "")
-        keystoreContentTextView.textColor = .lightGray        
+        keystoreContentTextView.textColor = .lightGray
+        keystoreContentTextView.tintColor = UIColor.black
     }
 
     override func didReceiveMemoryWarning() {

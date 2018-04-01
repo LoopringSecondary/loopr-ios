@@ -31,7 +31,7 @@ class UnlockWalletSwipeViewController: SwipeViewController {
 
         options.swipeTabView.style = .segmented
 
-        options.swipeTabView.itemView.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 21) ?? UIFont.systemFont(ofSize: 17)
+        options.swipeTabView.itemView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 21) ?? UIFont.systemFont(ofSize: 21)
 
         swipeView.reloadData(options: options)
         
