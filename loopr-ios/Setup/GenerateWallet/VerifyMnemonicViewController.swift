@@ -21,6 +21,8 @@ class VerifyMnemonicViewController: UIViewController {
     var currentIndex: Int = -1
     
     let progressView = UIProgressView(progressViewStyle: .bar)
+    
+    var enterWalletButton = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,21 +88,39 @@ class VerifyMnemonicViewController: UIViewController {
         } else {
             currentIndex += 1
         }
-        let mnemonicQuestion = GenerateWalletDataManager.shared.getQuestion(index: currentIndex)
-
-        progressView.setProgress(Float(currentIndex+1)/24.0, animated: true)
-
-        questionLabel.text = mnemonicQuestion.question
-
-        button1.setTitle(mnemonicQuestion.options[0], for: .normal)
-        button2.setTitle(mnemonicQuestion.options[1], for: .normal)
-        button3.setTitle(mnemonicQuestion.options[2], for: .normal)
-        button4.setTitle(mnemonicQuestion.options[3], for: .normal)
         
-        button1.setupRoundWhite()
-        button2.setupRoundWhite()
-        button3.setupRoundWhite()
-        button4.setupRoundWhite()
+        if currentIndex == 24 {
+            // TODO: verify the inputs
+            
+            // Store the new wallet to the local storage.
+            _ = GenerateWalletDataManager.shared.complete()
+            
+            // Show enter wallet button
+            let width = view.bounds.width
+            let height = view.bounds.height
+            
+            enterWalletButton.frame = CGRect(x: 15, y: height-47-15, width: width-2*15, height: 47)
+            enterWalletButton.setupRoundBlack()
+            enterWalletButton.setTitle(NSLocalizedString("Enter Wallet", comment: ""), for: .normal)
+            enterWalletButton.addTarget(self, action: #selector(dismissGenerateWallet), for: .touchUpInside)
+            view.addSubview(enterWalletButton)
+        } else {
+            let mnemonicQuestion = GenerateWalletDataManager.shared.getQuestion(index: currentIndex)
+            
+            progressView.setProgress(Float(currentIndex+1)/24.0, animated: true)
+            
+            questionLabel.text = mnemonicQuestion.question
+            
+            button1.setTitle(mnemonicQuestion.options[0], for: .normal)
+            button2.setTitle(mnemonicQuestion.options[1], for: .normal)
+            button3.setTitle(mnemonicQuestion.options[2], for: .normal)
+            button4.setTitle(mnemonicQuestion.options[3], for: .normal)
+            
+            button1.setupRoundWhite()
+            button2.setupRoundWhite()
+            button3.setupRoundWhite()
+            button4.setupRoundWhite()
+        }
     }
     
     @objc func pressedButton1(_ sender: Any) {
@@ -174,7 +194,7 @@ class VerifyMnemonicViewController: UIViewController {
         }
     }
 
-    func dismissGenerateWallet() {
+    @objc func dismissGenerateWallet() {
         if SetupDataManager.shared.hasPresented {
             self.dismiss(animated: true, completion: {
                 
