@@ -62,15 +62,16 @@ class Web3SwiftTests: XCTestCase {
         let gasPrice = GethNewBigInt(20000000000)!
         
         let signedTransaction = web3swift.sign(address: contractAddress, encodedFunctionData: encodedTransferFunction, nonce: nonce, gasLimit: gasLimit, gasPrice: gasPrice)
+        print(signedTransaction?.string())
         
         let expectation = XCTestExpectation()
         do {
             if let signedTransactionData = try signedTransaction?.encodeRLP() {
                 let encodedSignedTransaction = signedTransactionData.base64EncodedString()
                 print("Encoded transaction sent to server \(encodedSignedTransaction)")
-
+                
                 // Send Transaction
-                SendAssetDataManager.shared.sendTransactionToServer(encodedSignedTransaction) { (txHash, error) in
+                SendAssetDataManager.shared.sendTransactionToServer("0x"+encodedSignedTransaction) { (txHash, error) in
                     guard error == nil && txHash != nil else {
                         // TODO
                         print("Failed to get valid response from server: \(error!)")
