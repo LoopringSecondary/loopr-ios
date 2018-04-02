@@ -29,7 +29,6 @@ class OrderHistoryTableViewCell: UITableViewCell {
         guard let order = self.order else { return }
         tradingPairLabel.text = order.tradingPairDescription
         volumeLabel.text = order.dealtAmountS.description
-        AssetDataManager.shared.get
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
