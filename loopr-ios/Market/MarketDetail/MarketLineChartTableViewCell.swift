@@ -87,7 +87,7 @@ class MarketLineChartTableViewCell: UITableViewCell {
                 case "1H", "2H", "4H":
                     self.dateFormat = "HH:mm"
                 case "1D", "1W":
-                    self.dateFormat = "dd MMM HH:mm"
+                    self.dateFormat = "dd MMM"
                 default:
                     self.dateFormat = "HH:mm"
                 }
@@ -131,6 +131,16 @@ class MarketLineChartTableViewCell: UITableViewCell {
         lineChartView.rightAxis.enabled = false
         lineChartView.viewPortHandler.setMaximumScaleY(2)
         lineChartView.viewPortHandler.setMaximumScaleX(2)
+        
+        let marker = BalloonMarker(color: UIColor(white: 180/255, alpha: 1),
+                                   font: .systemFont(ofSize: 12),
+                                   textColor: .white,
+                                   insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
+        marker.chartView = lineChartView
+        marker.minimumSize = CGSize(width: 80, height: 40)
+        lineChartView.marker = marker
+        
+        
         lineChartView.legend.enabled = false
         lineChartView.animate(yAxisDuration: 2.5)
         
@@ -156,11 +166,11 @@ class MarketLineChartTableViewCell: UITableViewCell {
         set1.setColor(UIColor(red: 34/255, green: 53/255, blue: 89/255, alpha: 1))
         set1.lineWidth = 1
         //外圆
-        set1.setCircleColor(.gray)
+        set1.setCircleColor(.groupTableViewBackground)
         //画外圆
         set1.drawCirclesEnabled = true
         //内圆
-        set1.circleHoleColor = NSUIColor.black
+        set1.circleHoleColor = NSUIColor.gray
         //画内圆
         set1.drawCircleHoleEnabled = true
         
