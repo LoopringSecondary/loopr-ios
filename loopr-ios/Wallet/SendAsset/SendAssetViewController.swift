@@ -183,7 +183,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
         
         // TODO: Update the transaction fee is needed. in SendAssetDataManager
         addressTextField.text = "0x2ef680f87989bce2a9f458e450cffd6589b549fa"
-        amountTextField.text = "100"
+        amountTextField.text = "0.1"
         
         tokenSymbolLabel.text = asset?.symbol ?? ""
         

@@ -67,7 +67,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     @objc func tickerResponseReceivedNotification() {
-        print("tickerReceivedNotification")
+        // print("tickerReceivedNotification")
         // TODO: Perform a diff algorithm
         if self.markets.count == 0 {
             self.markets = MarketDataManager.shared.getMarkets()

@@ -46,10 +46,8 @@ class ETH_Transaction: Initable {
      "To" : "0xb7e0DAE0A3e4e146BCaf0Fe782bE5AFB14041A10"
      },
      */
-    
-    
-    required init(_ json: JSON) {
 
+    required init(_ json: JSON) {
         self.blockNumber = json["blockNumber"].stringValue
         self.value = json["value"].stringValue
         self.v = json["v"].stringValue

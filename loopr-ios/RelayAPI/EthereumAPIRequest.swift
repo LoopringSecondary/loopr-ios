@@ -87,7 +87,6 @@ class EthereumAPIRequest {
 
     // READY
     static func eth_sendRawTransaction(data: String, completionHandler: @escaping (_ response: SimpleRespond?, _ error: Error?) -> Void) {
-
         var body: JSON = JSON()
         body["params"] = [data]
         self.invoke(method: "eth_sendRawTransaction", withBody: &body, completionHandler)
@@ -95,7 +94,6 @@ class EthereumAPIRequest {
 
     // READY
     static func eth_getTransactionByHash(data: String, completionHandler: @escaping (_ response: ETH_Transaction?, _ error: Error?) -> Void) {
-
         var body: JSON = JSON()
         body["params"] = [data]
         self.invoke(method: "eth_getTransactionByHash", withBody: &body, completionHandler)

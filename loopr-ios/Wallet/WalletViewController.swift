@@ -145,8 +145,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func receivedBalanceResponseReceivedNotification() {
-        print("receivedBalanceResponseReceivedNotification")
-
+        // print("receivedBalanceResponseReceivedNotification")
         // TODO: Perform a diff algorithm
         if self.assets.count == 0 {
             self.assets = AssetDataManager.shared.getAssets()
