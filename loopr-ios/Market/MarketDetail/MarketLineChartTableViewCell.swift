@@ -105,7 +105,7 @@ class MarketLineChartTableViewCell: UITableViewCell {
         
         lineChartView.xAxis.gridLineDashLengths = [5, 5]
         lineChartView.xAxis.gridLineDashPhase = 0
-        lineChartView.xAxis.valueFormatter = DataUtil(format: self.dateFormat) // 这里
+        lineChartView.xAxis.valueFormatter = DateUtil(format: self.dateFormat) // 这里
         
         let ll1 = ChartLimitLine(limit: self.highLimit, label: "Upper Limit")   // 这里
         ll1.lineWidth = 2

@@ -202,7 +202,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
             print("Invalid amount")
             return
         }
-        if let token =  AssetDataManager.shared.getTokenBySymbol(asset!.symbol) {
+        if let token = AssetDataManager.shared.getTokenBySymbol(asset!.symbol) {
             if !token.protocol_value.isHexAddress() {
                 print("token protocol \(token.protocol_value) is invalid")
                 return

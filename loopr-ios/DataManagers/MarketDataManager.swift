@@ -140,11 +140,8 @@ class MarketDataManager {
     func onTrendResponse(json: JSON) {
         // TODO: Apply diff algorithm.
         trends = []
-        print(json)
         for subJson in json.arrayValue {
             let trend = Trend(json: subJson)
-            print(DataUtil.convertToDate(trend.start, format: "HH:mm"))
-            print(DataUtil.convertToDate(trend.end, format: "HH:mm"))
             trends.append(trend)
         }
         NotificationCenter.default.post(name: .trendResponseReceived, object: nil)

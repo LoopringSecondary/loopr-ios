@@ -17,7 +17,7 @@ enum OrderStatus: String, CustomStringConvertible {
     var description: String {
         switch self {
         case .opened: return "Opened"
-        case .cutoff: return "Cutoff"
+        case .cutoff: return "Cancel"
         case .finished: return "Finished"
         case .cancel: return "Cancel"
         }

@@ -27,6 +27,7 @@ class PriceQuoteDataManager {
         if let price = priceQuote {
             for case let token in price.tokens where token.symbol.lowercased() == symbol.lowercased() {
                 result = token.price
+                break
             }
         }
         return result

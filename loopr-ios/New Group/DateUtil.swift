@@ -9,7 +9,7 @@
 import Foundation
 import Charts
 
-class DataUtil: NSObject, IAxisValueFormatter {
+class DateUtil: NSObject, IAxisValueFormatter {
     
     private let dateFormatter = DateFormatter()
     

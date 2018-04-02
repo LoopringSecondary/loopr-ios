@@ -10,6 +10,7 @@ import UIKit
 
 class MarketSwipeViewController: SwipeViewController {
     
+    private var type: MarketSwipeViewType = .favorite
     private var types: [MarketSwipeViewType] = [.favorite, .ETH, .LRC, .all]
     private var viewControllers: [MarketViewController] = [MarketViewController(type: .favorite), MarketViewController(type: .ETH), MarketViewController(type: .LRC), MarketViewController(type: .all)]
     var options = SwipeViewOptions()
@@ -77,6 +78,7 @@ class MarketSwipeViewController: SwipeViewController {
     @objc func pressOrderHistoryButton(_ button: UIBarButtonItem) {
         print("pressOrderHistoryButton")
         let viewController = OrderHistoryViewController()
+        viewController.orders = OrderDataManager.shared.getDataOrders(token: type.description)
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -92,6 +94,7 @@ class MarketSwipeViewController: SwipeViewController {
 
     override func swipeView(_ swipeView: SwipeView, willChangeIndexFrom fromIndex: Int, to toIndex: Int) {
         // print("will change from item \(fromIndex) to item \(toIndex)")
+        type = types[toIndex]
         let viewController = viewControllers[toIndex]
         viewController.reload()
     }

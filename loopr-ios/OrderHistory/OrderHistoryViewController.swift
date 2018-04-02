@@ -10,29 +10,12 @@ import UIKit
 
 class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var orders: [String: [Order]] = [:]
     @IBOutlet weak var historyTableView: UITableView!
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = UITableViewCell()
-        
-        return cell
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         // Do any additional setup after loading the view.
-        
         historyTableView.dataSource = self
         historyTableView.delegate = self
         view.theme_backgroundColor = ["#fff", "#000"]
@@ -44,9 +27,22 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let index = orders.index(orders.startIndex, offsetBy: section)
+        return orders[index].value.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return orders.keys.count
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }

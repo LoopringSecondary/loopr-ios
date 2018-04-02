@@ -41,6 +41,9 @@
 		94DCE551205FAC07005618E4 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCE550205FAC07005618E4 /* Trend.swift */; };
 		94E185972051451C00D86FFA /* Initable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185962051451C00D86FFA /* Initable.swift */; };
 		94E185992051455C00D86FFA /* SimpleRespond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185982051455C00D86FFA /* SimpleRespond.swift */; };
+		94E665E620720B12001328BF /* TokenUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E665E520720B12001328BF /* TokenUtil.swift */; };
+		94E665E9207234C5001328BF /* OrderHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E665E7207234C5001328BF /* OrderHistoryTableViewCell.swift */; };
+		94E665EA207234C5001328BF /* OrderHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E665E8207234C5001328BF /* OrderHistoryTableViewCell.xib */; };
 		9AACD1A68297585D93FB6182 /* Pods_loopr_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFC6AA9DC8C999B66FFD8AA /* Pods_loopr_iosTests.framework */; };
 		AC0C5C82203D153F00C8618D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0C5C81203D153F00C8618D /* CoreGraphics.framework */; };
 		AC0C5C84203D154700C8618D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0C5C83203D154700C8618D /* QuartzCore.framework */; };
@@ -501,6 +504,9 @@
 		94DCE550205FAC07005618E4 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
 		94E185962051451C00D86FFA /* Initable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initable.swift; sourceTree = "<group>"; };
 		94E185982051455C00D86FFA /* SimpleRespond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRespond.swift; sourceTree = "<group>"; };
+		94E665E520720B12001328BF /* TokenUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenUtil.swift; sourceTree = "<group>"; };
+		94E665E7207234C5001328BF /* OrderHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		94E665E8207234C5001328BF /* OrderHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		AC0C5C7A203D131200C8618D /* loopr-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "loopr-ios-Bridging-Header.h"; sourceTree = "<group>"; };
 		AC0C5C81203D153F00C8618D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		AC0C5C83203D154700C8618D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -839,6 +845,7 @@
 			isa = PBXGroup;
 			children = (
 				94B828CE206A0736002AB470 /* DateUtil.swift */,
+				94E665E520720B12001328BF /* TokenUtil.swift */,
 			);
 			name = Utils;
 			path = "New Group";
@@ -1344,6 +1351,8 @@
 				94E665E32071DFD4001328BF /* SearchHistory */,
 				AC952A122053A84800C78562 /* OrderHistoryViewController.swift */,
 				AC952A132053A84800C78562 /* OrderHistoryViewController.xib */,
+				94E665E7207234C5001328BF /* OrderHistoryTableViewCell.swift */,
+				94E665E8207234C5001328BF /* OrderHistoryTableViewCell.xib */,
 			);
 			path = OrderHistory;
 			sourceTree = "<group>";
@@ -1763,6 +1772,7 @@
 				AC31CEA2205B9C1800A30335 /* Montserrat-ExtraLight.ttf in Resources */,
 				AC5E0DDF203B447700AF03C7 /* WalletBalanceTableViewCell.xib in Resources */,
 				AC31CE5C205B993E00A30335 /* Roboto-BlackItalic.ttf in Resources */,
+				94E665EA207234C5001328BF /* OrderHistoryTableViewCell.xib in Resources */,
 				AC54FD64204FC6CE007E1DEB /* Lato-HairlineItalic.ttf in Resources */,
 				AC4141F0203524280089861D /* MarketSwipeViewController.xib in Resources */,
 				C8BF95B12027AC9400343B9A /* SetupViewController.xib in Resources */,
@@ -2285,6 +2295,7 @@
 				940B45242060F67E00ADE2B9 /* TradeDataManager.swift in Sources */,
 				ACB729D4205DE21B00DD4DF3 /* TradeConfirmationViewController.swift in Sources */,
 				AC387523205F141000A76637 /* AddMenuViewController.swift in Sources */,
+				94E665E9207234C5001328BF /* OrderHistoryTableViewCell.swift in Sources */,
 				AC9280E1202EC53D0009B574 /* TradeNavigationViewController.swift in Sources */,
 				AC5E3E74205E22080051ACFC /* NotificationName.swift in Sources */,
 				AC31B95F204A8E4F00B16155 /* WalletDescriptor.swift in Sources */,
@@ -2299,6 +2310,7 @@
 				AC37567C2038D80300AADC60 /* PrivateKeyViewController.swift in Sources */,
 				AC9280E7202F5A010009B574 /* UIStyleConfig.swift in Sources */,
 				AC31CE17205A121000A30335 /* NumericKeyboardProtocol.swift in Sources */,
+				94E665E620720B12001328BF /* TokenUtil.swift in Sources */,
 				AC387511205F12F100A76637 /* ContextMenuDismissing.swift in Sources */,
 				AC31CE142057B5A400A30335 /* TradeReviewViewController.swift in Sources */,
 				AC387519205F12F100A76637 /* CGRect+Area.swift in Sources */,

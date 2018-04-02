@@ -49,6 +49,8 @@ class LoopringAPIRequest {
         body["params"] = [["owner": owner, "orderHash": orderHash, "contractVersion": contractVersion, "status": status, "market": market, "pageIndex": pageIndex, "pageSize": pageSize]]
         body["id"] = JSON(UUID().uuidString)
         
+        print(body)
+        
         Request.send(body: body, url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
@@ -58,7 +60,7 @@ class LoopringAPIRequest {
             var orders: [Order] = []
             let json = JSON(data)
             let offerData = json["result"]["data"]
-            
+            print(json)
             print(offerData)
             
             for subJson in offerData.arrayValue {

@@ -37,8 +37,9 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        setup()
+        
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         marketTableView.theme_backgroundColor = GlobalPicker.backgroundColor
         
@@ -65,9 +66,12 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Add observer.
         NotificationCenter.default.addObserver(self, selector: #selector(tickerResponseReceivedNotification), name: .tickerResponseReceived, object: nil)
     }
+    
+    func setup() {
+        OrderDataManager.shared.getOrdersFromServer()
+    }
 
     @objc func tickerResponseReceivedNotification() {
-        // print("tickerReceivedNotification")
         // TODO: Perform a diff algorithm
         if self.markets.count == 0 {
             self.markets = MarketDataManager.shared.getMarkets()

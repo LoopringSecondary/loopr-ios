@@ -19,7 +19,7 @@ enum MarketSwipeViewType: String, CustomStringConvertible {
         switch self {
         case .favorite: return "Favorite"
         case .LRC: return "LRC"
-        case .ETH: return "ETH"
+        case .ETH: return "WETH"
         case .all: return "All"
         }
     }
