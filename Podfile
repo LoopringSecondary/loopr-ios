@@ -13,7 +13,6 @@ target 'loopr-ios' do
   pod 'PopupDialog'
   pod 'SwiftLint'
   pod 'SwiftTheme'
-  pod 'TagListView'
   pod 'FontBlaster'
   pod 'Socket.IO-Client-Swift', '~> 13.1.0'
   pod 'NotificationBannerSwift'
