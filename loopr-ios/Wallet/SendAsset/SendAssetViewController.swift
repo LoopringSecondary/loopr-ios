@@ -324,7 +324,7 @@ extension SendAssetViewController {
     func _transfer(contractAddress: GethAddress, toAddress: GethAddress, amount: GethBigInt) {
         
         // _keystore = _createKeystore(configuration.namespace)
-        let configuration = EthAccountConfiguration(namespace: "", password: "")
+        let configuration = EthAccountConfiguration(namespace: "wallet", password: "password")
         let (_, _) = EthAccountCoordinator.default.launch(configuration)
         
         let transferFunction = EthFunction(name: function, inputParameters: [toAddress, amount])
