@@ -38,6 +38,7 @@ class AssetDataManager {
     
     func getTotalAssetCurrencyFormmat() -> String {
         let currentyFormatter = NumberFormatter()
+        currentyFormatter.locale = NSLocale.current
         currentyFormatter.usesGroupingSeparator = true
         currentyFormatter.numberStyle = .currency
         let formattedNumber = currentyFormatter.string(from: NSNumber(value: totalAsset)) ?? "\(totalAsset)"
@@ -176,10 +177,12 @@ class AssetDataManager {
                 asset.balance = balance.description
                 
                 let currentyFormatter = NumberFormatter()
+                currentyFormatter.locale = NSLocale.current
                 currentyFormatter.usesGroupingSeparator = true
                 currentyFormatter.numberStyle = .currency
                 let formattedNumber = currentyFormatter.string(from: NSNumber(value: balance * price)) ?? "\(balance * price)"
-                asset.display = "$ " + String(formattedNumber.dropFirst())
+                // asset.display = "$ " + String(formattedNumber.dropFirst())
+                asset.display = formattedNumber
                 
                 assets.append(asset)
                 totalAsset += balance * price
@@ -199,10 +202,12 @@ class AssetDataManager {
                     asset.balance = balance.description
 
                     let currentyFormatter = NumberFormatter()
+                    currentyFormatter.locale = NSLocale.current
                     currentyFormatter.usesGroupingSeparator = true
                     currentyFormatter.numberStyle = .currency
                     let formattedNumber = currentyFormatter.string(from: NSNumber(value: balance * price)) ?? "\(balance * price)"
-                    asset.display = "$ " + String(formattedNumber.dropFirst())
+                    // asset.display = "$ " + String(formattedNumber.dropFirst())
+                    asset.display = formattedNumber
 
                     assets.append(asset)
                     totalAsset += balance * price
