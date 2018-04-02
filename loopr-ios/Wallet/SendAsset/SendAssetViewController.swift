@@ -334,9 +334,11 @@ extension SendAssetViewController {
             let nonce: Int64 = getNonce()
             let signedTransaction = web3swift.sign(address: contractAddress, encodedFunctionData: encodedTransferFunction, nonce: nonce, gasLimit: GethNewBigInt(gasLimit), gasPrice: GethNewBigInt(gasPrice))
             if let signedTransactionData = try signedTransaction?.encodeRLP() { // also ok here
-                let encodedSignedTransaction = signedTransactionData.base64EncodedString()
-                print("Encoded transaction sent to server \(encodedSignedTransaction)")
-                executeContract(encodedSignedTransaction)
+                
+                let  a = "0x"+signedTransactionData.hexString
+                print(a)
+                
+                executeContract(a)
             } else {
                 print("Failed to sign/encode")
             }

@@ -59,6 +59,8 @@ class LoopringAPIRequest {
             let json = JSON(data)
             let offerData = json["result"]["data"]
             
+            print(offerData)
+            
             for subJson in offerData.arrayValue {
                 let originalOrderJson = subJson["originalOrder"]
                 let originalOrder = OriginalOrder(json: originalOrderJson)

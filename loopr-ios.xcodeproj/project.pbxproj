@@ -846,6 +846,20 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		94E665E32071DFD4001328BF /* SearchHistory */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SearchHistory;
+			sourceTree = "<group>";
+		};
+		94E665E42071DFE0001328BF /* HistoryDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HistoryDetail;
+			sourceTree = "<group>";
+		};
 		970E368BCD1AFC73151579EF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1314,6 +1328,8 @@
 		AC952A112053A7DB00C78562 /* OrderHistory */ = {
 			isa = PBXGroup;
 			children = (
+				94E665E42071DFE0001328BF /* HistoryDetail */,
+				94E665E32071DFD4001328BF /* SearchHistory */,
 				AC952A122053A84800C78562 /* OrderHistoryViewController.swift */,
 				AC952A132053A84800C78562 /* OrderHistoryViewController.xib */,
 			);
@@ -2555,11 +2571,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CC7BRASHV4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.dev.loopr-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = org.chenwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2575,11 +2591,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CC7BRASHV4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.dev.loopr-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = org.chenwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;

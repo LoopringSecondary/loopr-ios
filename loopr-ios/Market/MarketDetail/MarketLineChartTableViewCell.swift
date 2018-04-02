@@ -140,7 +140,6 @@ class MarketLineChartTableViewCell: UITableViewCell {
         marker.minimumSize = CGSize(width: 80, height: 40)
         lineChartView.marker = marker
         
-        
         lineChartView.legend.enabled = false
         lineChartView.animate(yAxisDuration: 2.5)
         
