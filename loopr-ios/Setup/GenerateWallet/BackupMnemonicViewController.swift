@@ -14,8 +14,9 @@ class BackupMnemonicViewController: UIViewController {
     var titleLabel: UILabel =  UILabel()
     var infoTextView: UITextView = UITextView()
 
-    @IBOutlet weak var tagListView: TagListView!
     @IBOutlet weak var verifyNowButton: UIButton!
+    
+    var mnemonicCollectionViewController: MnemonicCollectionViewController!
     
     var blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
     
@@ -49,20 +50,14 @@ class BackupMnemonicViewController: UIViewController {
         infoTextView.textColor = UIColor.black.withAlphaComponent(0.6)
         infoTextView.font = FontConfigManager.shared.getLabelFont(size: 17)
         view.addSubview(infoTextView)
-        
-        tagListView.textFont = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 14)!
-        tagListView.tagBackgroundColor = UIColor.white
-        tagListView.textColor = UIColor.black
-        tagListView.cornerRadius = 15
-        tagListView.paddingX = 15
-        tagListView.paddingY = 10
-        tagListView.marginX = 10
-        tagListView.marginY = 10
 
-        let mnemoics: [String] = GenerateWalletDataManager.shared.getMnemonics()
-        for value in mnemoics {
-            tagListView.addTag(value)
-        }
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: (screenWidth - padding * 2 - 30)/3, height: 30)
+        flowLayout.scrollDirection = .vertical
+        
+        mnemonicCollectionViewController = MnemonicCollectionViewController(collectionViewLayout: flowLayout)
+        mnemonicCollectionViewController.view.frame = CGRect(x: 15, y: infoTextView.frame.maxY + 15, width: screenWidth - padding * 2, height: 400)
+        view.addSubview(mnemonicCollectionViewController.view)
 
         verifyNowButton.title = NSLocalizedString("Verify Now", comment: "Go to VerifyMnemonicViewController")
         verifyNowButton.setupRoundBlack()

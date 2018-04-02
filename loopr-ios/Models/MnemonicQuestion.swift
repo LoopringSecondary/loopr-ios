@@ -30,7 +30,7 @@ struct MnemonicQuestion {
 
     // TODO: will be deprecated if we have a better method
     func getRandomMnemoic() -> String {
-        let randomIndex = Int(arc4random_uniform(UInt32(mnemonic.count)))
+        let randomIndex = Int(arc4random_uniform(UInt32(GenerateWalletDataManager.shared.getMnemonics().count)))
         let randomValue = GenerateWalletDataManager.shared.getMnemonics()[randomIndex]
 
         if options.contains(randomValue) {

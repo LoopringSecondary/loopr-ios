@@ -12,7 +12,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BackupMnemonicViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
-                <outlet property="tagListView" destination="ouC-8s-NhF" id="B8S-p2-S1M"/>
                 <outlet property="verifyNowButton" destination="Ad5-YF-xr2" id="MVo-Ho-6wg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,13 +21,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ouC-8s-NhF" customClass="TagListView" customModule="TagListView">
-                    <rect key="frame" x="16" y="210" width="343" height="350"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="350" id="szB-3A-uji"/>
-                    </constraints>
-                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ad5-YF-xr2">
                     <rect key="frame" x="15" y="605" width="345" height="47"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -45,10 +37,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="ouC-8s-NhF" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="190" id="dJE-fH-hnq"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ad5-YF-xr2" secondAttribute="trailing" constant="15" id="fSn-ax-LkO"/>
-                <constraint firstItem="ouC-8s-NhF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="qDe-ID-VAg"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ouC-8s-NhF" secondAttribute="trailing" constant="16" id="rRB-6Z-Wvl"/>
                 <constraint firstItem="Ad5-YF-xr2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="ssP-d2-ple"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ad5-YF-xr2" secondAttribute="bottom" constant="15" id="ui4-rF-OZY"/>
             </constraints>

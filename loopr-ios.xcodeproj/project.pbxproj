@@ -419,6 +419,10 @@
 		ACE5BF95204523F9005D75DD /* UIStyleKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5BF94204523F9005D75DD /* UIStyleKeyboard.swift */; };
 		ACE5BFA720466EFD005D75DD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ACE5BFA920466EFD005D75DD /* Localizable.strings */; };
 		ACE65E3E2071C6FA001EE499 /* Web3SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE65E3D2071C6FA001EE499 /* Web3SwiftTests.swift */; };
+		ACE65E412071F875001EE499 /* MnemonicCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE65E3F2071F875001EE499 /* MnemonicCollectionViewController.swift */; };
+		ACE65E422071F875001EE499 /* MnemonicCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE65E402071F875001EE499 /* MnemonicCollectionViewController.xib */; };
+		ACE65E4520720500001EE499 /* MnemonicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE65E4320720500001EE499 /* MnemonicCollectionViewCell.swift */; };
+		ACE65E4620720500001EE499 /* MnemonicCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE65E4420720500001EE499 /* MnemonicCollectionViewCell.xib */; };
 		ACE6F7182041FDAD0039273D /* AssetTransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F7162041FDAD0039273D /* AssetTransactionDetailViewController.swift */; };
 		ACE6F7192041FDAD0039273D /* AssetTransactionDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE6F7172041FDAD0039273D /* AssetTransactionDetailViewController.xib */; };
 		ACE6F71C204211470039273D /* DashedLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F71B204211470039273D /* DashedLineView.swift */; };
@@ -768,6 +772,10 @@
 		ACE5BFA820466EFD005D75DD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ACE5BFAA20466F05005D75DD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		ACE65E3D2071C6FA001EE499 /* Web3SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web3SwiftTests.swift; sourceTree = "<group>"; };
+		ACE65E3F2071F875001EE499 /* MnemonicCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicCollectionViewController.swift; sourceTree = "<group>"; };
+		ACE65E402071F875001EE499 /* MnemonicCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicCollectionViewController.xib; sourceTree = "<group>"; };
+		ACE65E4320720500001EE499 /* MnemonicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACE65E4420720500001EE499 /* MnemonicCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicCollectionViewCell.xib; sourceTree = "<group>"; };
 		ACE6F7162041FDAD0039273D /* AssetTransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTransactionDetailViewController.swift; sourceTree = "<group>"; };
 		ACE6F7172041FDAD0039273D /* AssetTransactionDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetTransactionDetailViewController.xib; sourceTree = "<group>"; };
 		ACE6F71B204211470039273D /* DashedLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedLineView.swift; sourceTree = "<group>"; };
@@ -1110,6 +1118,10 @@
 				AC37567F2039198300AADC60 /* GenerateMnemonicViewController.xib */,
 				AC72AED6204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift */,
 				AC72AED7204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib */,
+				ACE65E3F2071F875001EE499 /* MnemonicCollectionViewController.swift */,
+				ACE65E402071F875001EE499 /* MnemonicCollectionViewController.xib */,
+				ACE65E4320720500001EE499 /* MnemonicCollectionViewCell.swift */,
+				ACE65E4420720500001EE499 /* MnemonicCollectionViewCell.xib */,
 				AC72AEDA204C9F6300E9D3B0 /* VerifyMnemonicViewController.swift */,
 				AC72AEDB204C9F6300E9D3B0 /* VerifyMnemonicViewController.xib */,
 			);
@@ -1796,6 +1808,7 @@
 				AC31CE7A205B996700A30335 /* Roboto-ThinItalic.ttf in Resources */,
 				ACB746E62043C5F5006C2BF5 /* QRCodeViewController.xib in Resources */,
 				AC54FD73204FC6E1007E1DEB /* OpenSans-Bold.ttf in Resources */,
+				ACE65E422071F875001EE499 /* MnemonicCollectionViewController.xib in Resources */,
 				AC54FD6A204FC6D5007E1DEB /* Lato-Light.ttf in Resources */,
 				AC5E0DD1203A7C5800AF03C7 /* SelectWalletTableViewCell.xib in Resources */,
 				AC31CE46205B604800A30335 /* Linotype-DINNextW1G-Light.otf in Resources */,
@@ -1818,6 +1831,7 @@
 				AC54FD7C204FC6EB007E1DEB /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				AC31CE62205B994700A30335 /* Roboto-BoldItalic.ttf in Resources */,
 				AC54FD55204FC6BD007E1DEB /* Lato-Black.ttf in Resources */,
+				ACE65E4620720500001EE499 /* MnemonicCollectionViewCell.xib in Resources */,
 				AC31CE6E205B995500A30335 /* Roboto-Medium.ttf in Resources */,
 				AC5E3E6C205DEAC00051ACFC /* TradeCompleteViewController.xib in Resources */,
 				AC76E47420493CAE008BA229 /* SettingLanguageViewController.xib in Resources */,
@@ -2310,6 +2324,7 @@
 				C8BF95B02027AC9400343B9A /* SetupViewController.swift in Sources */,
 				940B45262060F67E00ADE2B9 /* ConvertDataManager.swift in Sources */,
 				ACB5DDA0202D5B9900140A09 /* CGSizeExtension.swift in Sources */,
+				ACE65E412071F875001EE499 /* MnemonicCollectionViewController.swift in Sources */,
 				AC387513205F12F100A76637 /* ContextMenu+Item.swift in Sources */,
 				AC31B93A204A4F9000B16155 /* Language.swift in Sources */,
 				ACB9115A20242B9D00F14644 /* AssetTableViewCell.swift in Sources */,
@@ -2336,6 +2351,7 @@
 				AC31B95C204A8E4F00B16155 /* HDKey.swift in Sources */,
 				AC31B94F204A8DF400B16155 /* ScryptParams.swift in Sources */,
 				ACF71CB42033E723000E7618 /* TradeTableViewCell.swift in Sources */,
+				ACE65E4520720500001EE499 /* MnemonicCollectionViewCell.swift in Sources */,
 				AC5E0DD0203A7C5800AF03C7 /* SelectWalletTableViewCell.swift in Sources */,
 				ACB9117820256B0300F14644 /* Market.swift in Sources */,
 				AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */,
