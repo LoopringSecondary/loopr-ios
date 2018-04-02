@@ -291,13 +291,13 @@ extension SendAssetViewController {
     }
     
     var gasLimit: Int64 {
-        var symbol = "token_transfer"
+        var type = "token_transfer"
         if let asset = self.asset {
             if asset.symbol.uppercased() == "ETH" {
-                symbol = "eth_transfer"
+                type = "eth_transfer"
             }
         }
-        return SendAssetDataManager.shared.getGasLimitByType(type: symbol)!
+        return SendAssetDataManager.shared.getGasLimitByType(type: type)!
     }
     
     var gasPrice: Int64 {
@@ -306,7 +306,8 @@ extension SendAssetViewController {
     }
 
     func getNonce() -> Int64 {
-        return SendAssetDataManager.shared.getNonce()
+        return 0
+        // return SendAssetDataManager.shared.getNonce()
     }
 
     func executeContract(_ signedTransaction: String) {
@@ -323,12 +324,12 @@ extension SendAssetViewController {
     func _transfer(contractAddress: GethAddress, toAddress: GethAddress, amount: GethBigInt) {
         
         // _keystore = _createKeystore(configuration.namespace)
-        let configuration = EthAccountConfiguration(namespace: "wallet", password: "password")
+        let configuration = EthAccountConfiguration(namespace: "", password: "")
         let (_, _) = EthAccountCoordinator.default.launch(configuration)
         
         let transferFunction = EthFunction(name: function, inputParameters: [toAddress, amount])
         let encodedTransferFunction = web3swift.encode(transferFunction) // ok here
-        
+
         do {
             let nonce: Int64 = getNonce()
             let signedTransaction = web3swift.sign(address: contractAddress, encodedFunctionData: encodedTransferFunction, nonce: nonce, gasLimit: GethNewBigInt(gasLimit), gasPrice: GethNewBigInt(gasPrice))

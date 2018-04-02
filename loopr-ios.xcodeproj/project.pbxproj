@@ -418,6 +418,7 @@
 		ACDBF10E203FEBAD000F0DEC /* TableViewReorderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF10D203FEBAD000F0DEC /* TableViewReorderDelegate.swift */; };
 		ACE5BF95204523F9005D75DD /* UIStyleKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5BF94204523F9005D75DD /* UIStyleKeyboard.swift */; };
 		ACE5BFA720466EFD005D75DD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ACE5BFA920466EFD005D75DD /* Localizable.strings */; };
+		ACE65E3E2071C6FA001EE499 /* Web3SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE65E3D2071C6FA001EE499 /* Web3SwiftTests.swift */; };
 		ACE6F7182041FDAD0039273D /* AssetTransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F7162041FDAD0039273D /* AssetTransactionDetailViewController.swift */; };
 		ACE6F7192041FDAD0039273D /* AssetTransactionDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE6F7172041FDAD0039273D /* AssetTransactionDetailViewController.xib */; };
 		ACE6F71C204211470039273D /* DashedLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F71B204211470039273D /* DashedLineView.swift */; };
@@ -766,6 +767,7 @@
 		ACE5BFA1204543CA005D75DD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		ACE5BFA820466EFD005D75DD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ACE5BFAA20466F05005D75DD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		ACE65E3D2071C6FA001EE499 /* Web3SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web3SwiftTests.swift; sourceTree = "<group>"; };
 		ACE6F7162041FDAD0039273D /* AssetTransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTransactionDetailViewController.swift; sourceTree = "<group>"; };
 		ACE6F7172041FDAD0039273D /* AssetTransactionDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetTransactionDetailViewController.xib; sourceTree = "<group>"; };
 		ACE6F71B204211470039273D /* DashedLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedLineView.swift; sourceTree = "<group>"; };
@@ -1268,6 +1270,7 @@
 		AC798E582022B93B0071D477 /* loopr-iosTests */ = {
 			isa = PBXGroup;
 			children = (
+				ACE65E3C2071C6BE001EE499 /* Web3Swift */,
 				AC72AEE0204D082800E9D3B0 /* DataManager */,
 				AC1E4BB9204B2AE200C6B1FA /* RelayAPI */,
 				AC1E4BBA204B2AF700C6B1FA /* Keystone */,
@@ -1578,6 +1581,14 @@
 				AC54FD91204FD291007E1DEB /* FontConfigManager.swift */,
 			);
 			path = UIConfig;
+			sourceTree = "<group>";
+		};
+		ACE65E3C2071C6BE001EE499 /* Web3Swift */ = {
+			isa = PBXGroup;
+			children = (
+				ACE65E3D2071C6FA001EE499 /* Web3SwiftTests.swift */,
+			);
+			path = Web3Swift;
 			sourceTree = "<group>";
 		};
 		ACE6F71A204210E80039273D /* DashedLineView */ = {
@@ -2359,6 +2370,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACE65E3E2071C6FA001EE499 /* Web3SwiftTests.swift in Sources */,
 				940B44D52060F45B00ADE2B9 /* SendAssetDataManagerTests.swift in Sources */,
 				AC72AEE2204D084500E9D3B0 /* AppWalletDataManagerTests.swift in Sources */,
 				ACF06A06204C736A00C3FF86 /* CreateMnemonicTests.swift in Sources */,

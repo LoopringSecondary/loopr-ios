@@ -57,12 +57,12 @@ class SendAssetDataManager {
     }
 
     func getGasLimitByType(type: String) -> Int64? {
-        var result: Int64? = nil
+        var gasLimit: Int64? = nil
         for case let gas in gasLimits where gas.type.lowercased() == type.lowercased() {
-            result = gas.gasLimit
+            gasLimit = gas.gasLimit
             break
         }
-        return result
+        return gasLimit
     }
     
     func getNonceFromServer() {
