@@ -83,13 +83,11 @@ class MarketDataManager {
             })
         case .ETH:
             return markets.filter({ (market) -> Bool in
-                // TODO: make sure
-                return market.tradingPair.tradingA == "WETH" || market.tradingPair.tradingB == "WETH"
+                return market.tradingPair.tradingB.uppercased() == "WETH"
             })
         case .LRC:
             return markets.filter({ (market) -> Bool in
-                // TODO: make sure
-                return market.tradingPair.tradingA == "LRC" || market.tradingPair.tradingB == "LRC"
+                return market.tradingPair.tradingB.uppercased() == "LRC"
             })
         }
     }

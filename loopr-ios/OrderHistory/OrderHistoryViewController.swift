@@ -25,6 +25,20 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         historyTableView.dataSource = self
         historyTableView.delegate = self
+        
+        let orderSearchButton = UIButton(type: UIButtonType.custom)
+        let image = UIImage(named: "Order-history-black")
+        orderSearchButton.setBackgroundImage(image, for: .normal)
+        orderSearchButton.setBackgroundImage(image?.alpha(0.3), for: .highlighted)
+        
+        orderSearchButton.addTarget(self, action: #selector(self.pressOrderSearchButton(_:)), for: UIControlEvents.touchUpInside)
+        orderSearchButton.frame = CGRect(x: 0, y: 0, width: 23, height: 23)
+        let orderSearchBarButton = UIBarButtonItem(customView: orderSearchButton)
+        self.navigationItem.rightBarButtonItem = orderSearchBarButton
+    }
+    
+    @objc func pressOrderSearchButton(_ button: UIBarButtonItem) {
+        print("pressOrderSearchButton")
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
