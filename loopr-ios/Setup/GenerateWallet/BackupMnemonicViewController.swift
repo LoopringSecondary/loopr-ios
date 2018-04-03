@@ -60,29 +60,39 @@ class BackupMnemonicViewController: UIViewController {
         flowLayout.scrollDirection = .vertical
         
         mnemonicCollectionViewController0 = MnemonicCollectionViewController(collectionViewLayout: flowLayout)
+        mnemonicCollectionViewController0.view.isHidden = false
         mnemonicCollectionViewController0.index = 0
-        mnemonicCollectionViewController0.view.frame = CGRect(x: 15, y: infoTextView.frame.maxY + 15, width: screenWidth - padding * 2, height: 220)
+        mnemonicCollectionViewController0.view.frame = CGRect(x: 15, y: infoTextView.frame.maxY + 35, width: screenWidth - padding * 2, height: 220)
         view.addSubview(mnemonicCollectionViewController0.view)
-        
+
         mnemonicCollectionViewController1 = MnemonicCollectionViewController(collectionViewLayout: flowLayout)
+        mnemonicCollectionViewController1.view.isHidden = true
         mnemonicCollectionViewController1.index = 1
-        mnemonicCollectionViewController1.view.frame = CGRect(x: 15 + screenWidth, y: infoTextView.frame.maxY + 15, width: screenWidth - padding * 2, height: 220)
+        mnemonicCollectionViewController1.view.frame = CGRect(x: 15 + screenWidth, y: infoTextView.frame.maxY + 35, width: screenWidth - padding * 2, height: 220)
         view.addSubview(mnemonicCollectionViewController1.view)
 
-        switchMnemonicCollectionViewButton0.frame = CGRect(x: 120, y: mnemonicCollectionViewController0.view.frame.maxY + 30, width: screenWidth - 2*120, height: 20)
-        switchMnemonicCollectionViewButton0.setTitle("Next 12 Words", for: .normal)
-        switchMnemonicCollectionViewButton0.setTitleColor(UIColor.black, for: .normal)
+        switchMnemonicCollectionViewButton0.isHidden = false
+        switchMnemonicCollectionViewButton0.frame = CGRect(x: 100, y: mnemonicCollectionViewController0.view.frame.maxY + 25, width: screenWidth - 2*100, height: 20)
+        switchMnemonicCollectionViewButton0.setTitle("Next 12 Words" + "  ", for: .normal)
+        switchMnemonicCollectionViewButton0.theme_setTitleColor(["#000", "#fff"], forState: .normal)
         switchMnemonicCollectionViewButton0.setTitleColor(UIColor.init(white: 0, alpha: 0.3), for: .highlighted)
         switchMnemonicCollectionViewButton0.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
         switchMnemonicCollectionViewButton0.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+        switchMnemonicCollectionViewButton0.setImage(UIImage.init(named: "Arrow-button-right"), for: .normal)
+        switchMnemonicCollectionViewButton0.setImage(UIImage.init(named: "Arrow-button-right")?.alpha(0.3), for: .highlighted)
+        switchMnemonicCollectionViewButton0.semanticContentAttribute = .forceRightToLeft
         view.addSubview(switchMnemonicCollectionViewButton0)
 
-        switchMnemonicCollectionViewButton1.frame = CGRect(x: 120 + screenWidth, y: mnemonicCollectionViewController0.view.frame.maxY + 30, width: screenWidth - 2*120, height: 20)
-        switchMnemonicCollectionViewButton1.setTitle("Previous 12 Words", for: .normal)
+        switchMnemonicCollectionViewButton1.isHidden = true
+        switchMnemonicCollectionViewButton1.frame = CGRect(x: 100 + screenWidth, y: mnemonicCollectionViewController0.view.frame.maxY + 25, width: screenWidth - 2*100, height: 20)
+        switchMnemonicCollectionViewButton1.setTitle("  " + "Previous 12 Words", for: .normal)
         switchMnemonicCollectionViewButton1.setTitleColor(UIColor.black, for: .normal)
         switchMnemonicCollectionViewButton1.setTitleColor(UIColor.init(white: 0, alpha: 0.3), for: .highlighted)
         switchMnemonicCollectionViewButton1.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
         switchMnemonicCollectionViewButton1.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+        switchMnemonicCollectionViewButton1.setImage(UIImage.init(named: "Arrow-button-left"), for: .normal)
+        switchMnemonicCollectionViewButton1.setImage(UIImage.init(named: "Arrow-button-left")?.alpha(0.3), for: .highlighted)
+        switchMnemonicCollectionViewButton1.semanticContentAttribute = .forceLeftToRight
         view.addSubview(switchMnemonicCollectionViewButton1)
         
         verifyNowButton.title = NSLocalizedString("Verify Now", comment: "Go to VerifyMnemonicViewController")
@@ -172,11 +182,17 @@ class BackupMnemonicViewController: UIViewController {
             currentMnemonicCollectionView = 1
             
             UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 30, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
+                self.mnemonicCollectionViewController0.view.isHidden = true
                 self.mnemonicCollectionViewController0.view.frame = CGRect(x: 15 - screenWidth, y: originY, width: screenWidth - padding * 2, height: 220)
+                
+                self.mnemonicCollectionViewController1.view.isHidden = false
                 self.mnemonicCollectionViewController1.view.frame = CGRect(x: 15, y: originY, width: screenWidth - padding * 2, height: 220)
                 
-                self.switchMnemonicCollectionViewButton0.frame = CGRect(x: 120 - screenWidth, y: self.mnemonicCollectionViewController0.view.frame.maxY + 30, width: screenWidth - 2*120, height: 20)
-                self.switchMnemonicCollectionViewButton1.frame = CGRect(x: 120, y: self.mnemonicCollectionViewController0.view.frame.maxY + 30, width: screenWidth - 2*120, height: 20)
+                self.switchMnemonicCollectionViewButton0.isHidden = true
+                self.switchMnemonicCollectionViewButton0.frame = CGRect(x: 100 - screenWidth, y: self.mnemonicCollectionViewController0.view.frame.maxY + 25, width: screenWidth - 2*100, height: 20)
+                
+                self.switchMnemonicCollectionViewButton1.isHidden = false
+                self.switchMnemonicCollectionViewButton1.frame = CGRect(x: 100, y: self.mnemonicCollectionViewController0.view.frame.maxY + 25, width: screenWidth - 2*100, height: 20)
             }, completion: { (_) in
                 
             })
@@ -184,11 +200,17 @@ class BackupMnemonicViewController: UIViewController {
             currentMnemonicCollectionView = 0
 
             UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 30, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
+                self.mnemonicCollectionViewController0.view.isHidden = false
                 self.mnemonicCollectionViewController0.view.frame = CGRect(x: 15, y: originY, width: screenWidth - padding * 2, height: 220)
+                
+                self.mnemonicCollectionViewController1.view.isHidden = true
                 self.mnemonicCollectionViewController1.view.frame = CGRect(x: 15 + screenWidth, y: originY, width: screenWidth - padding * 2, height: 220)
 
-                self.switchMnemonicCollectionViewButton0.frame = CGRect(x: 120, y: self.mnemonicCollectionViewController0.view.frame.maxY + 30, width: screenWidth - 2*120, height: 20)
-                self.switchMnemonicCollectionViewButton1.frame = CGRect(x: 120 + screenWidth, y: self.mnemonicCollectionViewController0.view.frame.maxY + 30, width: screenWidth - 2*120, height: 20)
+                self.switchMnemonicCollectionViewButton0.isHidden = false
+                self.switchMnemonicCollectionViewButton0.frame = CGRect(x: 100, y: self.mnemonicCollectionViewController0.view.frame.maxY + 25, width: screenWidth - 2*100, height: 20)
+                
+                self.switchMnemonicCollectionViewButton1.isHidden = true
+                self.switchMnemonicCollectionViewButton1.frame = CGRect(x: 100 + screenWidth, y: self.mnemonicCollectionViewController0.view.frame.maxY + 25, width: screenWidth - 2*100, height: 20)
             }, completion: { (_) in
                 
             })
