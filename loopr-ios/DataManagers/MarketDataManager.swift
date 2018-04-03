@@ -35,6 +35,17 @@ class MarketDataManager {
         }
     }
     
+    func getBalance(of pair: String) -> Double {
+        var result: Double = 0
+        for market in markets {
+            if market.tradingPair.description.lowercased() == pair.lowercased() {
+                result = market.balance
+                break
+            }
+        }
+        return result
+    }
+    
     func getTrends(market: String, interval: String = "1Hr") -> [Trend]? {
         var result: [Trend]? = nil
         result = self.trends.filter { (trend) -> Bool in

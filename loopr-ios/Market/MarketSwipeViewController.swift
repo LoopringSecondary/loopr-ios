@@ -78,7 +78,7 @@ class MarketSwipeViewController: SwipeViewController {
     @objc func pressOrderHistoryButton(_ button: UIBarButtonItem) {
         print("pressOrderHistoryButton")
         let viewController = OrderHistoryViewController()
-        viewController.orders = OrderDataManager.shared.getDataOrders(token: type.description)
+        viewController.orders = OrderDataManager.shared.getDataOrders(token: nil)
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }

@@ -24,6 +24,8 @@ class OriginalOrder {
     let lrcFee: Double
     let buyNoMoreThanAmountB: Bool
     let marginSplitPercentage: String
+    let side: String
+    let hash: String
     let v: String
     let r: String
     let s: String
@@ -36,6 +38,8 @@ class OriginalOrder {
         self.tokenS = json["tokenS"].stringValue
         self.tokenB = json["tokenB"].stringValue
         self.buyNoMoreThanAmountB = json["buyNoMoreThanAmountB"].boolValue
+        self.side = json["side"].stringValue
+        self.hash = json["hash"].stringValue
         self.v = json["v"].stringValue
         self.r = json["r"].stringValue
         self.s = json["s"].stringValue

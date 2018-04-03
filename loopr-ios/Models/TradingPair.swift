@@ -21,11 +21,10 @@ class TradingPair: Equatable, CustomStringConvertible {
     }
 
     static func == (lhs: TradingPair, rhs: TradingPair) -> Bool {
-        if (lhs.tradingA == rhs.tradingA && lhs.tradingB == rhs.tradingB) || (lhs.tradingA == rhs.tradingB && lhs.tradingB == rhs.tradingA) {
+        if lhs.tradingA == rhs.tradingA && lhs.tradingB == rhs.tradingB {
             return true
         } else {
             return false
         }
     }
-    
 }

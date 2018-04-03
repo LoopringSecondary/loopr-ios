@@ -24,9 +24,9 @@ class Order {
         self.dealtAmountS = manager.getAmount(of: originalOrder.tokenS, from: dealtAmountS)!
         
         if originalOrder.tokenB == "WETH" {
-            tradingPairDescription = "\(originalOrder.tokenS) / \(originalOrder.tokenB)"
+            tradingPairDescription = "\(originalOrder.tokenS)/\(originalOrder.tokenB)"
         } else {
-            tradingPairDescription = "\(originalOrder.tokenB) / \(originalOrder.tokenS)"
+            tradingPairDescription = "\(originalOrder.tokenB)/\(originalOrder.tokenS)"
         }
     }
 }

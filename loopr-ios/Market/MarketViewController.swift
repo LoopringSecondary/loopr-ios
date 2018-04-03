@@ -103,6 +103,8 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     func isFiltering() -> Bool {
+        
+        // TODO
 //        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
 //        return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
         return false
@@ -171,9 +173,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             })
             action.backgroundColor = UIStyleConfig.defaultTintColor
-            
             return UISwipeActionsConfiguration(actions: [action])
-            
         } else {
             let action = UIContextualAction(style: .normal, title: "Favorite", handler: { (_: UIContextualAction, _: UIView, success: (Bool) -> Void) in
                 print("OK, marked as Favorite")
@@ -181,11 +181,9 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 success(true)
             })
             action.backgroundColor = UIStyleConfig.defaultTintColor
-            
             return UISwipeActionsConfiguration(actions: [action])
         }
     }
-
 }
 
 extension MarketViewController: UISearchBarDelegate {
