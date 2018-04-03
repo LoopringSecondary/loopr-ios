@@ -18,13 +18,14 @@ class AddMenuViewController: UITableViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        // tableView.register(AddMenuTableViewCell.self, forCellReuseIdentifier: AddMenuTableViewCell.getCellIdentifier())
         tableView.reloadData()
         tableView.layoutIfNeeded()
-        preferredContentSize = CGSize(width: 200, height: tableView.contentSize.height)
+        preferredContentSize = CGSize(width: 141, height: tableView.contentSize.height)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
         tableView.backgroundColor = .clear
         tableView.isScrollEnabled = false
+        tableView.separatorStyle = .none
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,19 +42,22 @@ class AddMenuViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        if indexPath.row == 0 {
-            cell.textLabel?.text = "Scan QR Code"
-        } else if indexPath.row == 1 {
-            cell.textLabel?.text = "Add Token"
+        var cell = tableView.dequeueReusableCell(withIdentifier: AddMenuTableViewCell.getCellIdentifier()) as? AddMenuTableViewCell
+        if cell == nil {
+            let nib = Bundle.main.loadNibNamed("AddMenuTableViewCell", owner: self, options: nil)
+            cell = nib![0] as? AddMenuTableViewCell
         }
         
-        cell.textLabel?.font = FontConfigManager.shared.getLabelFont()
+        if indexPath.row == 0 {
+            cell?.iconImageView.image = UIImage(named: "Scan-white")
+            cell?.titleLabel.text = "Scan QR Code"
+        } else {
+            cell?.iconImageView.image = UIImage(named: "Add-token")
+            cell?.titleLabel.text = "Add Token"
+            cell?.seperateLabel.isHidden = true
+        }
 
-        cell.textLabel?.textColor = .white
-        cell.backgroundColor = UIColor.black
-
-        return cell
+        return cell!
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
