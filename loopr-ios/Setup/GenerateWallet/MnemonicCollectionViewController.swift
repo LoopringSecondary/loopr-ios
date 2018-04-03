@@ -10,6 +10,8 @@ import UIKit
 
 class MnemonicCollectionViewController: UICollectionViewController {
     
+    var index = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,15 +39,16 @@ class MnemonicCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return GenerateWalletDataManager.shared.getMnemonics().count
+        return Int(GenerateWalletDataManager.shared.getMnemonics().count / 2)
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MnemonicCollectionViewCell.getCellIdentifier(), for: indexPath) as! MnemonicCollectionViewCell
-        cell.mnemonicLabel.text = GenerateWalletDataManager.shared.getMnemonics()[indexPath.row]
-
-        cell.circleLabel.text = "\(indexPath.row+1)"
         
+        let mnemonicsIndex = indexPath.row%12 + 12*self.index
+        cell.mnemonicLabel.text = GenerateWalletDataManager.shared.getMnemonics()[mnemonicsIndex]
+        cell.circleLabel.text = "\(mnemonicsIndex+1)"
+
         return cell
     }
 
