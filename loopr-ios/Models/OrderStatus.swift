@@ -12,14 +12,16 @@ enum OrderStatus: String, CustomStringConvertible {
     case opened = "ORDER_OPENED"
     case finished = "ORDER_FINISHED"
     case cutoff = "ORDER_CUTOFF"
-    case cancel = "ORDER_CANCEL"
+    case cancelled = "ORDER_CANCELLED"
+    case unknown = "ORDER_UNKNOWN"
 
     var description: String {
         switch self {
         case .opened: return "Opened"
-        case .cutoff: return "Cancel"
+        case .cutoff: return "Cutoff"
         case .finished: return "Finished"
-        case .cancel: return "Cancel"
+        case .cancelled: return "Cancelled"
+        case .unknown: return "Unknown"
         }
     }
 }

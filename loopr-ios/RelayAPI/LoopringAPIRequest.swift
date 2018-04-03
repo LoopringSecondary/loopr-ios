@@ -66,7 +66,7 @@ class LoopringAPIRequest {
             for subJson in offerData.arrayValue {
                 let originalOrderJson = subJson["originalOrder"]
                 let originalOrder = OriginalOrder(json: originalOrderJson)
-                let orderStatus = OrderStatus(rawValue: subJson["status"].stringValue)!
+                let orderStatus = OrderStatus(rawValue: subJson["status"].stringValue) ?? OrderStatus.unknown
                 let dealtAmountB = subJson["dealtAmountB"].stringValue
                 let dealtAmountS = subJson["dealtAmountS"].stringValue
                 let order = Order(originalOrder: originalOrder, orderStatus: orderStatus, dealtAmountB: dealtAmountB, dealtAmountS: dealtAmountS)
