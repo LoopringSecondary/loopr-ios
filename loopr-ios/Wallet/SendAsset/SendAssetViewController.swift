@@ -11,7 +11,7 @@ import web3swift
 import Geth
 import SwiftyJSON
 
-class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
+class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
 
     var asset: Asset?
     
@@ -167,10 +167,15 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
         transactionSpeedSlider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
         scrollView.addSubview(transactionSpeedSlider)
         
+        scrollView.delegate = self
         scrollView.contentSize = CGSize(width: screenWidth, height: transactionSpeedSlider.frame.maxY + 30)
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
+
+        let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
+        scrollViewTap.numberOfTapsRequired = 1
+        scrollView.addGestureRecognizer(scrollViewTap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -189,6 +194,14 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
         
         // TODO: Use mock data
         tokenTotalAmountLabel.text = "123123.422 \(String(describing: asset!.symbol)) Available"
+    }
+    
+    @objc func scrollViewTapped() {
+        print("scrollViewTapped")
+        
+        addressTextField.resignFirstResponder()
+        
+        hideKeyboard()
     }
 
     @IBAction func pressedSendButton(_ sender: Any) {
@@ -281,6 +294,15 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, NumericKey
     
     func hideKeyboard() {
         
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("scrollViewDidScroll \(scrollView.contentOffset.y)")
+        if tokenTotalAmountLabel.frame.maxY < scrollView.contentOffset.y {
+            self.navigationItem.title = asset!.symbol
+        } else {
+            self.navigationItem.title = ""
+        }
     }
 }
 
