@@ -77,13 +77,12 @@ class OrderHistoryTableViewCell: UITableViewCell {
         } else if order.originalOrder.side.lowercased() == "buy" {
             percent = order.dealtAmountB / order.originalOrder.amountBuy
         }
+        filledPieChart.theme_backgroundColor = GlobalPicker.backgroundColor
         filledPieChart.strokeColor = Themes.isNight() ? UIColor.white.cgColor : UIColor.black.cgColor
         filledPieChart.textColor = Themes.isNight() ? UIColor.white : UIColor.black
         filledPieChart.textFont = UIFont(name: FontConfigManager.shared.getLight(), size: 10.0)!
         filledPieChart.desiredLineWidth = 1
         filledPieChart.percentage = CGFloat(percent)
-        filledPieChart.showText = true
-        filledPieChart.draw(CGRect())
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

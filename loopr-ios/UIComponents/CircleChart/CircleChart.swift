@@ -56,7 +56,8 @@ class CircleChart: UIView {
         label.textAlignment = .center
         label.textColor = textColor
         label.font = textFont
-        label.text = "\(percentage*100)%"
+        percentage = (percentage * 10000).rounded() / 100
+        label.text = "\(percentage)%"
         addSubview(label)
     }
 }
