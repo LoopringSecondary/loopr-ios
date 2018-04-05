@@ -17,6 +17,7 @@ extension UIButton {
         setBackgroundColor(UIColor.init(white: 0.15, alpha: 1), for: .highlighted)
         clipsToBounds = true
         setTitleColor(UIColor.white, for: .normal)
+        setTitleColor(UIColor.init(white: 0.5, alpha: 1), for: .highlighted)
         titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
         layer.cornerRadius = height * 0.5
     }

@@ -10,6 +10,7 @@ import UIKit
 import web3swift
 import Geth
 import SwiftyJSON
+import NotificationBannerSwift
 
 class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
 
@@ -58,9 +59,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
 
-        sendButton.backgroundColor = UIColor.black
-        sendButton.layer.cornerRadius = 23
-        sendButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+        sendButton.title = NSLocalizedString("Send", comment: "")
+        sendButton.setupRoundBlack()
         
         scrollViewButtonLayoutConstraint.constant = 77
         sendButtonLayoutContraint.constant = 15
@@ -68,7 +68,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
-        let screenHeight = screensize.height
+        // let screenHeight = screensize.height
         
         let originY: CGFloat = 50
         let padding: CGFloat = 15
@@ -337,6 +337,17 @@ extension SendAssetViewController {
             guard error == nil && txHash != nil else {
                 // TODO
                 print("Failed to get valid response from server: \(error!)")
+
+                // Show toast
+                DispatchQueue.main.async {
+                    let myString = NSLocalizedString("Insufficient funds for gas x price + value", comment: "")
+                    let myAttribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
+                    let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
+                    let banner = NotificationBanner(attributedTitle: myAttrString, style: .danger)
+                    banner.duration = 1.0
+                    banner.show()
+                }
+
                 return
             }
             print("Result of transfer is \(txHash!)")
