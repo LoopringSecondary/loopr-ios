@@ -44,6 +44,7 @@ class SendAssetDataManager {
         return gasLimits
     }
     
+    // TODO: Why we need to load gas_limit from a json file instead of writing as code.
     // load
     func loadGasLimitsFromJson() {
         if let path = Bundle.main.path(forResource: "gas_limit", ofType: "json") {
@@ -89,5 +90,5 @@ class SendAssetDataManager {
             completion(data!.respond, nil)
         }
     }
-    
+
 }

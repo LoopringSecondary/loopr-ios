@@ -307,11 +307,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
 }
 
 extension SendAssetViewController {
-    
-    var function: String {
-        return "transfer"
-    }
-    
+
     var gasLimit: Int64 {
         var type = "token_transfer"
         if let asset = self.asset {
@@ -328,8 +324,7 @@ extension SendAssetViewController {
     }
 
     func getNonce() -> Int64 {
-        return 0
-        // return SendAssetDataManager.shared.getNonce()
+        return SendAssetDataManager.shared.getNonce()
     }
 
     func executeContract(_ signedTransaction: String) {
@@ -356,11 +351,13 @@ extension SendAssetViewController {
 
     func _transfer(contractAddress: GethAddress, toAddress: GethAddress, amount: GethBigInt) {
         
-        // _keystore = _createKeystore(configuration.namespace)
+        // let _keystore = _createKeystore(configuration.namespace)
+
+        // TODO: Have to create a wallet using EthAccountCoordinator. It will be used in web3swift.sign()
         let configuration = EthAccountConfiguration(namespace: "wallet", password: "password")
         let (_, _) = EthAccountCoordinator.default.launch(configuration)
         
-        let transferFunction = EthFunction(name: function, inputParameters: [toAddress, amount])
+        let transferFunction = EthFunction(name: "transfer", inputParameters: [toAddress, amount])
         let encodedTransferFunction = web3swift.encode(transferFunction) // ok here
 
         do {
