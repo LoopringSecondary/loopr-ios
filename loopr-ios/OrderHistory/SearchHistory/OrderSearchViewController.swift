@@ -8,9 +8,10 @@
 
 import UIKit
 
-class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CustomSearchControllerDelegate {
+class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, CustomSearchControllerDelegate {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var resultTableView: UITableView!
+    
     var searchRecord: [String] = []
     var filteredRecord: [String] = []
     var shouldShowSearchResults = false
@@ -21,13 +22,31 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        configureCustomSearchController()
+        resultTableView.delegate = self
+        resultTableView.dataSource = self
+        
+        configureSearchController()
+//        configureCustomSearchController()
+    }
+    
+    func configureSearchController() {
+        // Initialize and perform a minimum configuration to the search controller.
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.tintColor = UIStyleConfig.defaultTintColor
+        searchController.searchBar.sizeToFit()
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
     }
     
     func configureCustomSearchController() {
-        customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRect(x: 0.0, y: 0.0, width: tableView.frame.size.width, height: 50.0), searchBarFont: UIFont(name: "Futura", size: 16.0)!, searchBarTextColor: UIColor.orange, searchBarTintColor: UIColor.black)
+        customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRect(x: 0.0, y: 0.0, width: resultTableView.frame.size.width, height: 50.0), searchBarFont: UIFont(name: FontConfigManager.shared.getLight(), size: 16.0)!, searchBarTextColor: UIColor.gray, searchBarTintColor: UIColor.white)
         customSearchController.customSearchBar.placeholder = "Search"
-        tableView.tableHeaderView = customSearchController.customSearchBar
+        resultTableView.tableHeaderView = customSearchController.customSearchBar
         customSearchController.customDelegate = self
     }
 
@@ -37,38 +56,62 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "idCell", for: indexPath)
+        if shouldShowSearchResults {
+            cell.textLabel?.text = filteredRecord[indexPath.row]
+        } else {
+            cell.textLabel?.text = searchRecord[indexPath.row]
+        }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if shouldShowSearchResults {
+            return filteredRecord.count
+        } else {
+            return searchRecord.count
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     func didStartSearching() {
         shouldShowSearchResults = true
-        tableView.reloadData()
+        resultTableView.reloadData()
     }
     
     func didTapOnSearchButton() {
         if !shouldShowSearchResults {
             shouldShowSearchResults = true
-            tableView.reloadData()
+            resultTableView.reloadData()
         }
     }
     
     func didTapOnCancelButton() {
         shouldShowSearchResults = false
-        tableView.reloadData()
+        resultTableView.reloadData()
     }
     
     func didChangeSearchText(searchText: String) {
         filteredRecord = searchRecord.filter({ (record) -> Bool in
             return record.lowercased().range(of: searchText.lowercased()) != nil
         })
-        tableView.reloadData()
+        resultTableView.reloadData()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else {
+            return
+        }
+        filteredRecord = searchRecord.filter({ (record) -> Bool in
+            return record.lowercased().range(of: searchText.lowercased()) != nil
+        })
+        resultTableView.reloadData()
     }
 }
