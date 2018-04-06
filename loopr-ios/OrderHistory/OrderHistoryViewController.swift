@@ -10,7 +10,9 @@ import UIKit
 
 class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var orderDates: [String] = []
     var orders: [String: [Order]] = [:]
+
     @IBOutlet weak var historyTableView: UITableView!
     
     override func viewDidLoad() {
@@ -26,22 +28,13 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         historyTableView.dataSource = self
         historyTableView.delegate = self
         
+        orderDates = orders.keys.sorted(by: >)
+        
         let orderSearchButton = UIButton(type: UIButtonType.custom)
         let image = UIImage(named: "Order-history-black")
         orderSearchButton.setBackgroundImage(image, for: .normal)
         orderSearchButton.setBackgroundImage(image?.alpha(0.3), for: .highlighted)
-        
-        
         let item = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.pressOrderSearchButton(_:)))
-        
-        
-        
-//        orderSearchButton.addTarget(self, action: #selector(self.pressOrderSearchButton(_:)), for: UIControlEvents.touchUpInside)
-//        orderSearchButton.frame = CGRect(x: 0, y: 0, width: 23, height: 23)
-//        let orderSearchBarButton = UIBarButtonItem(customView: orderSearchButton)
-//        self.navigationItem.rightBarButtonItem = orderSearchBarButton
-        
-        
         self.navigationItem.setRightBarButton(item, animated: true)
     }
     
@@ -49,12 +42,12 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         print("pressOrderSearchButton")
         let viewController = OrderSearchViewController()
         viewController.hidesBottomBarWhenPushed = true
+//        present(viewController, animated: true, completion: nil)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let index = orders.index(orders.startIndex, offsetBy: section)
-        return orders[index].value.count
+        return orders[orderDates[section]]!.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -67,8 +60,7 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
             let nib = Bundle.main.loadNibNamed("OrderHistoryTableViewCell", owner: self, options: nil)
             cell = nib![0] as? OrderHistoryTableViewCell
         }
-        let index = orders.index(orders.startIndex, offsetBy: indexPath.section)
-        cell?.order = orders[index].value[indexPath.row]
+        cell?.order = orders[orderDates[indexPath.section]]![indexPath.row]
         cell?.update()
         return cell!
     }
@@ -79,11 +71,10 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 25))
-        headerView.backgroundColor = UIColor.clear
+        headerView.backgroundColor = UIColor.white
         let headerLabel = UILabel(frame: CGRect(x: 10, y: 7, width: view.frame.size.width, height: 25))
         headerLabel.textColor = UIColor.gray
-        let index = orders.index(orders.startIndex, offsetBy: section)
-        headerLabel.text = orders.keys[index]
+        headerLabel.text = orderDates[section]
         headerView.addSubview(headerLabel)
         return headerView
     }

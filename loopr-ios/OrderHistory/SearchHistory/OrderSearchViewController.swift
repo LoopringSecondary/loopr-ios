@@ -8,13 +8,13 @@
 
 import UIKit
 
-class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, CustomSearchControllerDelegate {
-
+class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, CustomSearchControllerDelegate {
+    
     @IBOutlet weak var resultTableView: UITableView!
     
-    var searchRecord: [String] = []
-    var filteredRecord: [String] = []
-    var shouldShowSearchResults = false
+    static var historyRecord = Set<String>()
+    static var filteredRecord = Set<String>()
+    var shouldShowSearchResults = true
     var searchController: UISearchController!
     var customSearchController: CustomSearchController!
     
@@ -24,23 +24,42 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
         // Do any additional setup after loading the view.
         resultTableView.delegate = self
         resultTableView.dataSource = self
-        
         configureSearchController()
-//        configureCustomSearchController()
+//        configureCustomSearchController()   -- RobinHood design
     }
     
     func configureSearchController() {
         // Initialize and perform a minimum configuration to the search controller.
+        
         searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
         searchController.searchBar.tintColor = UIStyleConfig.defaultTintColor
+        searchController.searchBar.delegate = self
         searchController.searchBar.sizeToFit()
+        searchController.searchBar.autocapitalizationType = .allCharacters
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
+        navigationItem.searchController = searchController
+        shouldShowSearchResults  = false
+        
+//        resultTableView.tableHeaderView = searchController.searchBar
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 25))
+        headerView.backgroundColor = UIColor.white
+        let headerLabel = UILabel(frame: CGRect(x: 10, y: 7, width: view.frame.size.width, height: 25))
+        headerLabel.textColor = UIColor.gray
+        headerLabel.text = "Search History"
+        headerView.addSubview(headerLabel)
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
     }
     
     func configureCustomSearchController() {
@@ -55,21 +74,36 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "idCell", for: indexPath)
+    func getHistoryToken(at index: Int) -> Token? {
+        var result: Token?
         if shouldShowSearchResults {
-            cell.textLabel?.text = filteredRecord[indexPath.row]
+            let index = OrderSearchViewController.filteredRecord.index(OrderSearchViewController.filteredRecord.startIndex, offsetBy: index)
+            result = Token(symbol: OrderSearchViewController.filteredRecord[index])
         } else {
-            cell.textLabel?.text = searchRecord[indexPath.row]
+            let index = OrderSearchViewController.historyRecord.index(OrderSearchViewController.historyRecord.startIndex, offsetBy: index)
+            result = Token(symbol: OrderSearchViewController.historyRecord[index])
         }
-        return cell
+        return result
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: OrderHistorySearchResultCell.getCellIdentifier()) as? OrderHistorySearchResultCell
+        if cell == nil {
+            let nib = Bundle.main.loadNibNamed("OrderHistorySearchResultCell", owner: self, options: nil)
+            cell = nib![0] as? OrderHistorySearchResultCell
+        }
+        if let token = getHistoryToken(at: indexPath.row) {
+            cell?.token = token
+            cell?.update()
+        }
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if shouldShowSearchResults {
-            return filteredRecord.count
+            return OrderSearchViewController.filteredRecord.count
         } else {
-            return searchRecord.count
+            return OrderSearchViewController.historyRecord.count
         }
     }
     
@@ -78,38 +112,48 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 80
     }
     
-    func didStartSearching() {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        OrderSearchViewController.filteredRecord = OrderSearchViewController.historyRecord.filter({ (record) -> Bool in
+            return record.lowercased().hasPrefix(searchText.lowercased())
+        })
         shouldShowSearchResults = true
         resultTableView.reloadData()
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        if let searchText = searchBar.text {
+            if Token(symbol: searchText) != nil {
+                OrderSearchViewController.historyRecord.insert(searchText)
+            }
+        }
+        if !shouldShowSearchResults {
+            shouldShowSearchResults = true
+        }
+    }
+
+    func didStartSearching() {
+        shouldShowSearchResults = true
+        resultTableView.reloadData()
+    }
+
     func didTapOnSearchButton() {
         if !shouldShowSearchResults {
             shouldShowSearchResults = true
             resultTableView.reloadData()
         }
     }
-    
+
     func didTapOnCancelButton() {
         shouldShowSearchResults = false
         resultTableView.reloadData()
     }
-    
+
     func didChangeSearchText(searchText: String) {
-        filteredRecord = searchRecord.filter({ (record) -> Bool in
-            return record.lowercased().range(of: searchText.lowercased()) != nil
-        })
-        resultTableView.reloadData()
-    }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let searchText = searchController.searchBar.text else {
-            return
-        }
-        filteredRecord = searchRecord.filter({ (record) -> Bool in
+        OrderSearchViewController.filteredRecord = OrderSearchViewController.historyRecord.filter({ (record) -> Bool in
             return record.lowercased().range(of: searchText.lowercased()) != nil
         })
         resultTableView.reloadData()

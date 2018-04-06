@@ -28,7 +28,7 @@ class Token {
         self.decimals = json["decimals"].intValue
         self.protocol_value = json["protocol"].stringValue
         self.deny = json["deny"].boolValue
-        
+        self.icon = UIImage(named: self.symbol)
         // TODO: ETH doesn't have a protocol value in tokens.json
         if symbol == "ETH" {
             print(protocol_value)
@@ -47,5 +47,14 @@ class Token {
         self.decimals = token!.decimals
         self.protocol_value = token!.protocol_value
         self.deny = token!.deny
+        self.icon = UIImage(named: self.symbol)
+    }
+    
+    static func == (lhs: Token, rhs: Token) -> Bool {
+        if lhs.symbol.lowercased() == rhs.symbol.lowercased() {
+            return true
+        } else {
+            return false
+        }
     }
 }
