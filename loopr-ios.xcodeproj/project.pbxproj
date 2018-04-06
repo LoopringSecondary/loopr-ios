@@ -265,6 +265,7 @@
 		AC4F601520773E9D00F1D954 /* EthFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F600820773E9D00F1D954 /* EthFunction.swift */; };
 		AC4F601620773E9D00F1D954 /* EthTypeEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F600920773E9D00F1D954 /* EthTypeEncoder.swift */; };
 		AC4F601720773E9D00F1D954 /* web3swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F600B20773E9D00F1D954 /* web3swift.swift */; };
+		AC4F601A2077536400F1D954 /* testKeystore.json in Resources */ = {isa = PBXBuildFile; fileRef = AC4F60192077536400F1D954 /* testKeystore.json */; };
 		AC54FD55204FC6BD007E1DEB /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD37204FC686007E1DEB /* Lato-Black.ttf */; };
 		AC54FD56204FC6BE007E1DEB /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD37204FC686007E1DEB /* Lato-Black.ttf */; };
 		AC54FD57204FC6BF007E1DEB /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD37204FC686007E1DEB /* Lato-Black.ttf */; };
@@ -670,8 +671,8 @@
 		AC4F600720773E9D00F1D954 /* EthError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthError.swift; sourceTree = "<group>"; };
 		AC4F600820773E9D00F1D954 /* EthFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthFunction.swift; sourceTree = "<group>"; };
 		AC4F600920773E9D00F1D954 /* EthTypeEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthTypeEncoder.swift; sourceTree = "<group>"; };
-		AC4F600A20773E9D00F1D954 /* web3swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = web3swift.h; sourceTree = "<group>"; };
 		AC4F600B20773E9D00F1D954 /* web3swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = web3swift.swift; sourceTree = "<group>"; };
+		AC4F60192077536400F1D954 /* testKeystore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testKeystore.json; sourceTree = "<group>"; };
 		AC54FD1C204FC3F8007E1DEB /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		AC54FD1D204FC3F8007E1DEB /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		AC54FD1E204FC3F9007E1DEB /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
@@ -1125,7 +1126,6 @@
 				AC4F5FFE20773E9D00F1D954 /* Extension */,
 				AC4F600120773E9D00F1D954 /* Component */,
 				AC4F600320773E9D00F1D954 /* Abi */,
-				AC4F600A20773E9D00F1D954 /* web3swift.h */,
 				AC4F600B20773E9D00F1D954 /* web3swift.swift */,
 			);
 			path = "web3swift@fe0c304";
@@ -1739,6 +1739,7 @@
 			isa = PBXGroup;
 			children = (
 				ACE65E3D2071C6FA001EE499 /* Web3SwiftTests.swift */,
+				AC4F60192077536400F1D954 /* testKeystore.json */,
 			);
 			path = Web3Swift;
 			sourceTree = "<group>";
@@ -2027,6 +2028,7 @@
 				AC31CE5D205B993E00A30335 /* Roboto-BlackItalic.ttf in Resources */,
 				AC31CEBE205B9C3A00A30335 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				AC31CEB8205B9C3400A30335 /* Montserrat-Regular.ttf in Resources */,
+				AC4F601A2077536400F1D954 /* testKeystore.json in Resources */,
 				AC31CE32205B602E00A30335 /* DIN-Bold.otf in Resources */,
 				AC54FD65204FC6CE007E1DEB /* Lato-HairlineItalic.ttf in Resources */,
 				AC31CE3B205B603B00A30335 /* Linotype-DINNextLTPro-Light.otf in Resources */,

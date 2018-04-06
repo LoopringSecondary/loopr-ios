@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import web3swift
 import Geth
 @testable import loopr_ios
 
@@ -22,18 +21,56 @@ class Web3SwiftTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+    
+    func testGethKeyStoreInit() {
+        // Create Account
+        let configuration = EthAccountConfiguration(namespace: "wallet", password: "qwerty")
+        
+        let (keystore, gethAccount, keystoreFilePath) = EthAccountCoordinator.default.launch(configuration)
+        XCTAssertNotNil(keystore)
+        XCTAssertNotNil(gethAccount)
+        
+        print(keystoreFilePath)
+        print(gethAccount?.getAddress().getHex())
+        
+        do {
+            try keystore?.unlock(gethAccount!, passphrase: "qwerty")
+        } catch {
+            print("Failed to sign transaction")
+        }
+
+        let keystore2 = GethKeyStore.init(keystoreFilePath, scryptN: GethLightScryptN, scryptP: GethLightScryptP)
+        XCTAssertNotNil(keystore2)
+        do {
+            try keystore2?.unlock(gethAccount!, passphrase: "qwerty")
+            let accounts = keystore2?.getAccounts()!
+            print(accounts)
+            
+        } catch {
+            print("Failed to sign transaction")
+        }
+    }
+    
+    // testKeystore.json and password qwerty will unlock the address 0x7C0C5B3C78f04f4ca42EBFb3cb4EA57D5e549392
+    func testImportWalletUsingKeystore() {
+        let currentFile = #file
+        let keydir = currentFile.replacingOccurrences(of: "Web3SwiftTests.swift", with: "", options: .regularExpression)
+        let keystore = GethKeyStore.init(keydir, scryptN: GethLightScryptN, scryptP: GethLightScryptP)!
+        let gethAccount = EthAccountCoordinator.default.launch(keystore: keystore, password: "qwerty")
+        print(gethAccount!.getAddress().getHex())
+        XCTAssertEqual(gethAccount?.getAddress().getHex()!, "0x7C0C5B3C78f04f4ca42EBFb3cb4EA57D5e549392")
+    }
 
     func testCreateAccount() {
         // Create Account
         let configuration = EthAccountConfiguration(namespace: "wallet", password: "qwerty")
         let (keystore, gethAccount) = EthAccountCoordinator.default.launch(configuration)
         
-        
+        /*
         let url = Bundle(for: type(of: self)).url(forResource: "key", withExtension: "json")!
-        
-        // let key = try! KeystoreKey(contentsOf: url)
-        
-        // let data = try! Data(contentsOf: url, options: .mappedIfSafe)
+        print(url.absoluteString)
+        let keystore2 = GethKeyStore.init(url.absoluteString, scryptN: GethLightScryptN, scryptP: GethLightScryptP)
+        */
         // try! keystore?.importKey(data, passphrase: "123456", newPassphrase: "123456")
         
         guard keystore != nil, gethAccount != nil else {

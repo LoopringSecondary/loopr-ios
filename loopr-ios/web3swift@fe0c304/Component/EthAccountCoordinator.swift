@@ -68,6 +68,39 @@ open class EthAccountCoordinator {
         return (_keystore, nil)
     }
     
+    open func launch(keystore: GethKeyStore, password: String) -> GethAccount? {
+        _keystore = keystore
+        let tmp = getAccount(password)
+        if tmp == nil {
+            print("nil")
+        } else {
+            print(tmp?.getAddress().getHex())
+        }
+        print(password)
+        print("in launch")
+        _account = _createAccount(keystore, password: password)
+        return _account
+    }
+
+    // TODO: return a file path
+    open func launch(_ configuration: EthAccountConfiguration) -> (GethKeyStore?, GethAccount?, String) {
+        defaultConfiguration = configuration
+        var keystoreFilePath: String
+        (_keystore, keystoreFilePath) = _createKeystore(configuration.namespace)
+        
+        guard let keystore = _keystore else {
+            print("Failed to create keystore")
+            return (nil, nil, keystoreFilePath)
+        }
+        if let password = configuration.password {
+            _account = _createAccount(keystore, password: password)
+            return (_keystore, _account, keystoreFilePath)
+        } else {
+            print("Account not created as password is not set")
+        }
+        return (_keystore, nil, keystoreFilePath)
+    }
+    
     open func createAccount(_ password: String) -> GethAccount? {
         defaultConfiguration.password = password
         if _keystore == nil {
@@ -80,8 +113,7 @@ open class EthAccountCoordinator {
         _account = _createAccount(keystore, password: password)
         return _account
     }
-    
-    
+
     private func _createKeystore(_ atPath: String?) -> GethKeyStore? {
         let datadir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         var pathInfix = atPath ?? ""
@@ -92,6 +124,18 @@ open class EthAccountCoordinator {
         let keystore = GethNewKeyStore(finalPath, GethLightScryptN, GethLightScryptP)  // GethStandardScryptN, GethStandardScryptP, GethLightScryptN, GethLightScryptP or number
         _gethContext = GethNewContext()
         return keystore
+    }
+    
+    private func _createKeystore(_ atPath: String?) -> (GethKeyStore?, String) {
+        let datadir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        var pathInfix = atPath ?? ""
+        if !pathInfix.isEmpty {
+            pathInfix += "/"
+        }
+        let finalPath = datadir + "/" + "\(pathInfix)" + "keystore"
+        let keystore = GethNewKeyStore(finalPath, GethLightScryptN, GethLightScryptP)  // GethStandardScryptN, GethStandardScryptP, GethLightScryptN, GethLightScryptP or number
+        _gethContext = GethNewContext()
+        return (keystore, finalPath)
     }
     
     
