@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import web3swift
 import Geth
 import SwiftyJSON
 import NotificationBannerSwift
