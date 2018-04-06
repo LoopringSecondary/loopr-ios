@@ -1112,7 +1112,7 @@
 			path = SwipeViewController;
 			sourceTree = "<group>";
 		};
-		AC4F5FFA20773E9D00F1D954 /* web3swift */ = {
+		AC4F5FFA20773E9D00F1D954 /* web3swift@fe0c304 */ = {
 			isa = PBXGroup;
 			children = (
 				AC4F5FFB20773E9D00F1D954 /* Crypto */,
@@ -1122,7 +1122,7 @@
 				AC4F600A20773E9D00F1D954 /* web3swift.h */,
 				AC4F600B20773E9D00F1D954 /* web3swift.swift */,
 			);
-			path = web3swift;
+			path = "web3swift@fe0c304";
 			sourceTree = "<group>";
 		};
 		AC4F5FFB20773E9D00F1D954 /* Crypto */ = {
@@ -1377,10 +1377,10 @@
 			isa = PBXGroup;
 			children = (
 				94B828CD206A06A8002AB470 /* Utils */,
-				AC4F5FFA20773E9D00F1D954 /* web3swift */,
 				AC798E422022B93A0071D477 /* AppDelegate.swift */,
 				AC798E482022B93A0071D477 /* Main.storyboard */,
 				C8BF959C202696A900343B9A /* MainTabController.swift */,
+				AC4F5FFA20773E9D00F1D954 /* web3swift@fe0c304 */,
 				AC31B93B204A8D1F00B16155 /* Keystone@8fea1ff */,
 				ACB746E22043C5CC006C2BF5 /* QRCode */,
 				AC6E95F62032CBE900C6EB7C /* Archive */,
