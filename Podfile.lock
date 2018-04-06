@@ -7,7 +7,7 @@ PODS:
   - CryptoSwift (0.8.3)
   - DynamicBlurView (2.0.2)
   - FontBlaster (4.0.3)
-  - Geth (1.8.2)
+  - Geth (1.8.3)
   - lottie-ios (2.5.0)
   - MarqueeLabel/Swift (3.1.4)
   - NotificationBannerSwift (1.6.2):
@@ -35,6 +35,7 @@ DEPENDENCIES:
   - Charts
   - CryptoSwift
   - FontBlaster
+  - Geth
   - lottie-ios
   - NotificationBannerSwift
   - pop
@@ -68,7 +69,7 @@ SPEC CHECKSUMS:
   CryptoSwift: 033efc3523865d19cc6ab6612fa17a62613b5dfa
   DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
   FontBlaster: f18031f5dde2ce689f5330e7005edfe3c0815957
-  Geth: 683cf31f60d46479803484611505e2424230e0a0
+  Geth: e00dad6a7592facdf063214be13b28b7e73b0df2
   lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
   MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
   NotificationBannerSwift: 4eceb2add9d5eaa0596c63d49690b4d6476e74ec
@@ -85,6 +86,6 @@ SPEC CHECKSUMS:
   TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803
   web3swift: 9cf4ccef0c7f7e9f9abb3bc5867789b928800af6
 
-PODFILE CHECKSUM: ddc34829493445b2c0837fe89b66d53994aaba12
+PODFILE CHECKSUM: 97f130f53accb7d146c2debc59e4fa912f4ddd53
 
 COCOAPODS: 1.4.0

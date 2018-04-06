@@ -28,6 +28,14 @@ class Web3SwiftTests: XCTestCase {
         let configuration = EthAccountConfiguration(namespace: "wallet", password: "qwerty")
         let (keystore, gethAccount) = EthAccountCoordinator.default.launch(configuration)
         
+        
+        let url = Bundle(for: type(of: self)).url(forResource: "key", withExtension: "json")!
+        
+        // let key = try! KeystoreKey(contentsOf: url)
+        
+        // let data = try! Data(contentsOf: url, options: .mappedIfSafe)
+        // try! keystore?.importKey(data, passphrase: "123456", newPassphrase: "123456")
+        
         guard keystore != nil, gethAccount != nil else {
             XCTFail("Failed to create an account.")
             return
@@ -38,6 +46,7 @@ class Web3SwiftTests: XCTestCase {
 
         print("Keystore")
         print(keystore!.debugDescription)
+        
 
         let gethAddress = gethAccount!.getAddress()
         XCTAssertTrue(keystore!.hasAddress(gethAddress))
