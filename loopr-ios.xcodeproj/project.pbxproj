@@ -432,6 +432,8 @@
 		ACBA47E320788ECD0032C2B4 /* SettingManageWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBA47E120788ECD0032C2B4 /* SettingManageWalletViewController.xib */; };
 		ACBA47E6207890910032C2B4 /* SettingManageWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA47E4207890910032C2B4 /* SettingManageWalletTableViewCell.swift */; };
 		ACBA47E7207890910032C2B4 /* SettingManageWalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBA47E5207890910032C2B4 /* SettingManageWalletTableViewCell.xib */; };
+		ACBA47EA207897C60032C2B4 /* SettingWalletDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA47E8207897C60032C2B4 /* SettingWalletDetailViewController.swift */; };
+		ACBA47EB207897C60032C2B4 /* SettingWalletDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBA47E9207897C60032C2B4 /* SettingWalletDetailViewController.xib */; };
 		ACBDB1C52032D050003463A4 /* OpenOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBDB1C32032D050003463A4 /* OpenOrderTableViewCell.swift */; };
 		ACBDB1C62032D050003463A4 /* OpenOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBDB1C42032D050003463A4 /* OpenOrderTableViewCell.xib */; };
 		ACCCFDCE203BEF2200B98F99 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */; };
@@ -809,6 +811,8 @@
 		ACBA47E120788ECD0032C2B4 /* SettingManageWalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingManageWalletViewController.xib; sourceTree = "<group>"; };
 		ACBA47E4207890910032C2B4 /* SettingManageWalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingManageWalletTableViewCell.swift; sourceTree = "<group>"; };
 		ACBA47E5207890910032C2B4 /* SettingManageWalletTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingManageWalletTableViewCell.xib; sourceTree = "<group>"; };
+		ACBA47E8207897C60032C2B4 /* SettingWalletDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWalletDetailViewController.swift; sourceTree = "<group>"; };
+		ACBA47E9207897C60032C2B4 /* SettingWalletDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingWalletDetailViewController.xib; sourceTree = "<group>"; };
 		ACBDB1C32032D050003463A4 /* OpenOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOrderTableViewCell.swift; sourceTree = "<group>"; };
 		ACBDB1C42032D050003463A4 /* OpenOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenOrderTableViewCell.xib; sourceTree = "<group>"; };
 		ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
@@ -1700,6 +1704,8 @@
 				ACBA47E120788ECD0032C2B4 /* SettingManageWalletViewController.xib */,
 				ACBA47E4207890910032C2B4 /* SettingManageWalletTableViewCell.swift */,
 				ACBA47E5207890910032C2B4 /* SettingManageWalletTableViewCell.xib */,
+				ACBA47E8207897C60032C2B4 /* SettingWalletDetailViewController.swift */,
+				ACBA47E9207897C60032C2B4 /* SettingWalletDetailViewController.xib */,
 			);
 			path = SettingManageWallet;
 			sourceTree = "<group>";
@@ -2010,6 +2016,7 @@
 				AC31CE99205B9C0D00A30335 /* Montserrat-BoldItalic.ttf in Resources */,
 				AC54FD82204FC6F2007E1DEB /* OpenSans-Light.ttf in Resources */,
 				AC31CE3A205B603A00A30335 /* Linotype-DINNextLTPro-Light.otf in Resources */,
+				ACBA47EB207897C60032C2B4 /* SettingWalletDetailViewController.xib in Resources */,
 				AC31CE3D205B603E00A30335 /* Linotype-DINNextLTPro-LightCondensed.otf in Resources */,
 				945800212058FEB500E08DEF /* tokens.json in Resources */,
 				AC54FD5B204FC6C4007E1DEB /* Lato-Bold.ttf in Resources */,
@@ -2467,6 +2474,7 @@
 				AC387519205F12F100A76637 /* CGRect+Area.swift in Sources */,
 				94B828CF206A0736002AB470 /* DateUtil.swift in Sources */,
 				AC4F601620773E9D00F1D954 /* EthTypeEncoder.swift in Sources */,
+				ACBA47EA207897C60032C2B4 /* SettingWalletDetailViewController.swift in Sources */,
 				AC54FD92204FD291007E1DEB /* FontConfigManager.swift in Sources */,
 				AC4141FD203532ED0089861D /* SwipeViewOptions.swift in Sources */,
 				ACB9119F202967A500F14644 /* OrderStatus.swift in Sources */,
