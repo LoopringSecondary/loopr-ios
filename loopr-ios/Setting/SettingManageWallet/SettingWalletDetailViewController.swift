@@ -59,6 +59,10 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        if indexPath.row == 0 {
+            let viewController = ExportKeystoreEnterPasswordViewController()
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 
 }
