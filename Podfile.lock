@@ -1,7 +1,6 @@
 PODS:
   - BigInt (3.0.1):
     - SipHash (~> 1.2)
-  - BTNavigationDropdownMenu (0.4.1)
   - Charts (3.0.5):
     - Charts/Core (= 3.0.5)
   - Charts/Core (3.0.5)
@@ -30,7 +29,6 @@ PODS:
 
 DEPENDENCIES:
   - BigInt
-  - BTNavigationDropdownMenu
   - Charts
   - CryptoSwift
   - FontBlaster
@@ -57,7 +55,6 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   BigInt: 8e8a52161c745cd3ab78e3dc346a9fbee51e6cf6
-  BTNavigationDropdownMenu: 093f3cbfad1572f2c222bdf8d17584d1e13380d4
   Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
   CryptoSwift: 033efc3523865d19cc6ab6612fa17a62613b5dfa
   DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
@@ -78,6 +75,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803
 
-PODFILE CHECKSUM: 04a4dab662d62e19a2505aeb4ae697f69d0d3242
+PODFILE CHECKSUM: 703be5e74d797c3ff47b10c3526079fd0e3ab907
 
 COCOAPODS: 1.4.0

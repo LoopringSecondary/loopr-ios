@@ -16,7 +16,6 @@ target 'loopr-ios' do
   pod 'FontBlaster'
   pod 'Socket.IO-Client-Swift', '~> 13.1.0'
   pod 'NotificationBannerSwift'
-  pod 'BTNavigationDropdownMenu'
   
   # Pods for keystone
   pod 'Geth'
