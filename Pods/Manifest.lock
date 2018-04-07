@@ -1,6 +1,7 @@
 PODS:
   - BigInt (3.0.1):
     - SipHash (~> 1.2)
+  - BTNavigationDropdownMenu (0.4.1)
   - Charts (3.0.5):
     - Charts/Core (= 3.0.5)
   - Charts/Core (3.0.5)
@@ -26,12 +27,10 @@ PODS:
   - SwiftTheme (0.4.1)
   - SwiftyJSON (4.0.0)
   - TrezorCrypto (0.0.4)
-  - web3swift (0.0.9):
-    - CryptoSwift
-    - Geth
 
 DEPENDENCIES:
   - BigInt
+  - BTNavigationDropdownMenu
   - Charts
   - CryptoSwift
   - FontBlaster
@@ -46,25 +45,19 @@ DEPENDENCIES:
   - SwiftTheme
   - SwiftyJSON
   - TrezorCrypto
-  - web3swift (from `https://github.com/MercuryProtocol/web3.swift.git`, branch `master`)
 
 EXTERNAL SOURCES:
   secp256k1_ios:
     :git: https://github.com/shamatar/secp256k1_ios.git
-  web3swift:
-    :branch: master
-    :git: https://github.com/MercuryProtocol/web3.swift.git
 
 CHECKOUT OPTIONS:
   secp256k1_ios:
     :commit: 506e3ca08780e3757ff07c5dfa65ea3cc3faae4b
     :git: https://github.com/shamatar/secp256k1_ios.git
-  web3swift:
-    :commit: fe0c3047cc9f808774c6172afe3cb126715adf49
-    :git: https://github.com/MercuryProtocol/web3.swift.git
 
 SPEC CHECKSUMS:
   BigInt: 8e8a52161c745cd3ab78e3dc346a9fbee51e6cf6
+  BTNavigationDropdownMenu: 093f3cbfad1572f2c222bdf8d17584d1e13380d4
   Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
   CryptoSwift: 033efc3523865d19cc6ab6612fa17a62613b5dfa
   DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
@@ -84,8 +77,7 @@ SPEC CHECKSUMS:
   SwiftTheme: 36d71c4eed4b2c401c782cf036e4586c749a8173
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803
-  web3swift: 9cf4ccef0c7f7e9f9abb3bc5867789b928800af6
 
-PODFILE CHECKSUM: 97f130f53accb7d146c2debc59e4fa912f4ddd53
+PODFILE CHECKSUM: 04a4dab662d62e19a2505aeb4ae697f69d0d3242
 
 COCOAPODS: 1.4.0
