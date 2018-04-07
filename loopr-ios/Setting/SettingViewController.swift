@@ -19,7 +19,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationController?.navigationBar.topItem?.title = NSLocalizedString("Settings", comment: "")
+        self.navigationItem.title = NSLocalizedString("Settings", comment: "")
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
     }
@@ -63,7 +63,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             switch indexPath.row {
             case 0:
                 print("Setting wallet")
-                let viewController = SelectWalletViewController()
+                let viewController = SettingManageWalletViewController()
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
             case 2:

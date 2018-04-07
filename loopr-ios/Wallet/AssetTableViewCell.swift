@@ -43,8 +43,6 @@ class AssetTableViewCell: UITableViewCell {
         amountLabel.baselineAdjustment = .alignCenters
         
         seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
-
-        // TODO: Setup UI        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
