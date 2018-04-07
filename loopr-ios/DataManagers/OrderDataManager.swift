@@ -36,7 +36,8 @@ class OrderDataManager {
             return orders
         }
         return orders.filter { (order) -> Bool in
-            order.originalOrder.tokenB.lowercased() == token.lowercased()
+            let pair = order.originalOrder.market.components(separatedBy: "-")
+            return pair[0].lowercased() == token.lowercased()
         }
     }
     
@@ -44,22 +45,40 @@ class OrderDataManager {
         guard let orderStatuses = orderStatuses else {
             return dataOrders
         }
-        return dataOrders.filter { (_: String, orders: [Order]) -> Bool in
-            orders.contains(where: { (order) -> Bool in
-                orderStatuses.contains(order.orderStatus)
-            })
+        var result: [String: [Order]] = [:]
+        for (date, orders) in dataOrders {
+            var temp: [Order] = []
+            for order in orders {
+                if orderStatuses.contains(where: { (status) -> Bool in
+                    order.orderStatus == status
+                }) {
+                    temp.append(order)
+                }
+            }
+            if !temp.isEmpty {
+                result[date] = temp
+            }
         }
+        return result
     }
     
     func getDataOrders(token: String? = nil) -> [String: [Order]] {
         guard let token = token else {
             return dataOrders
         }
-        return dataOrders.filter { (_: String, orders: [Order]) -> Bool in
-            orders.contains(where: { (order) -> Bool in
-                order.originalOrder.tokenB.lowercased() == token.lowercased()
-            })
+        var result: [String: [Order]] = [:]
+        for (date, orders) in dataOrders {
+            for order in orders {
+                let pair = order.originalOrder.market.components(separatedBy: "-")
+                if pair[0].lowercased() == token.lowercased() {
+                    if result[date] == nil {
+                        result[date] = []
+                    }
+                    result[date]!.append(order)
+                }
+            }
         }
+        return result
     }
 
     func getOrdersFromServer() {

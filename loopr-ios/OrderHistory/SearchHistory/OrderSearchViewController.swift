@@ -59,7 +59,7 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 45
     }
     
     func configureCustomSearchController() {
@@ -99,6 +99,16 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
         return cell!
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let token = getHistoryToken(at: indexPath.row) {
+            let viewController = OrderSearchResultViewController()
+            viewController.token = token
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if shouldShowSearchResults {
             return OrderSearchViewController.filteredRecord.count
@@ -126,12 +136,13 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         if let searchText = searchBar.text {
-            if Token(symbol: searchText) != nil {
+            if let token = Token(symbol: searchText) {
                 OrderSearchViewController.historyRecord.insert(searchText)
+                let viewController = OrderSearchResultViewController()
+                viewController.token = token
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
             }
-        }
-        if !shouldShowSearchResults {
-            shouldShowSearchResults = true
         }
     }
 

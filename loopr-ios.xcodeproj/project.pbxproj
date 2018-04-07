@@ -24,6 +24,8 @@
 		940B452A2060F67E00ADE2B9 /* MarketDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B451C2060F67E00ADE2B9 /* MarketDataManager.swift */; };
 		940B452B2060F67E00ADE2B9 /* SettingDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B451D2060F67E00ADE2B9 /* SettingDataManager.swift */; };
 		940B452D2061206900ADE2B9 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B452C2061206800ADE2B9 /* Token.swift */; };
+		94189CC12078B88700AA2CF4 /* OrderSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94189CBF2078B88700AA2CF4 /* OrderSearchResultViewController.swift */; };
+		94189CC22078B88700AA2CF4 /* OrderSearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94189CC02078B88700AA2CF4 /* OrderSearchResultViewController.xib */; };
 		943BDED32056350000D5BF81 /* PriceQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943BDED22056350000D5BF81 /* PriceQuote.swift */; };
 		945800212058FEB500E08DEF /* tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = 945800202058FEB500E08DEF /* tokens.json */; };
 		945800232059006200E08DEF /* AssetDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945800222059006200E08DEF /* AssetDataManagerTests.swift */; };
@@ -513,6 +515,8 @@
 		940B451C2060F67E00ADE2B9 /* MarketDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDataManager.swift; sourceTree = "<group>"; };
 		940B451D2060F67E00ADE2B9 /* SettingDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDataManager.swift; sourceTree = "<group>"; };
 		940B452C2061206800ADE2B9 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		94189CBF2078B88700AA2CF4 /* OrderSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSearchResultViewController.swift; sourceTree = "<group>"; };
+		94189CC02078B88700AA2CF4 /* OrderSearchResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderSearchResultViewController.xib; sourceTree = "<group>"; };
 		943BDED22056350000D5BF81 /* PriceQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceQuote.swift; sourceTree = "<group>"; };
 		945800202058FEB500E08DEF /* tokens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tokens.json; sourceTree = "<group>"; };
 		945800222059006200E08DEF /* AssetDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDataManagerTests.swift; sourceTree = "<group>"; };
@@ -922,6 +926,8 @@
 				94C5E79320738ADE0074B939 /* OrderSearchViewController.xib */,
 				9498E3EA2075E27E00BC8B4F /* OrderHistorySearchResultCell.swift */,
 				9498E3EB2075E27E00BC8B4F /* OrderHistorySearchResultCell.xib */,
+				94189CBF2078B88700AA2CF4 /* OrderSearchResultViewController.swift */,
+				94189CC02078B88700AA2CF4 /* OrderSearchResultViewController.xib */,
 			);
 			path = SearchHistory;
 			sourceTree = "<group>";
@@ -1921,6 +1927,7 @@
 				C8BF95B12027AC9400343B9A /* SetupViewController.xib in Resources */,
 				AC31CEAE205B9C2700A30335 /* Montserrat-LightItalic.ttf in Resources */,
 				AC31CE5F205B994200A30335 /* Roboto-Bold.ttf in Resources */,
+				94189CC22078B88700AA2CF4 /* OrderSearchResultViewController.xib in Resources */,
 				ACE5BFA720466EFD005D75DD /* Localizable.strings in Resources */,
 				ACE6F72820426BAC0039273D /* SettingThemeModeTableViewCell.xib in Resources */,
 				AC31CEA8205B9C2000A30335 /* Montserrat-Italic.ttf in Resources */,
@@ -2452,6 +2459,7 @@
 				ACB97C73207160E100775D4C /* Int+Extension.swift in Sources */,
 				940B45242060F67E00ADE2B9 /* TradeDataManager.swift in Sources */,
 				ACB729D4205DE21B00DD4DF3 /* TradeConfirmationViewController.swift in Sources */,
+				94189CC12078B88700AA2CF4 /* OrderSearchResultViewController.swift in Sources */,
 				AC387523205F141000A76637 /* AddMenuViewController.swift in Sources */,
 				94E665E9207234C5001328BF /* OrderHistoryTableViewCell.swift in Sources */,
 				AC9280E1202EC53D0009B574 /* TradeNavigationViewController.swift in Sources */,

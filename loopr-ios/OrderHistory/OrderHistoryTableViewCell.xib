@@ -53,7 +53,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZb-S3-AaP">
-                        <rect key="frame" x="310" y="25" width="80" height="30"/>
+                        <rect key="frame" x="302" y="25" width="80" height="30"/>
                         <state key="normal" title="Cancel">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
@@ -85,7 +85,7 @@
                 <constraint firstItem="SZb-S3-AaP" firstAttribute="width" secondItem="KGk-i7-Jjw" secondAttribute="width" multiplier="0.2" id="8BA-ze-egQ"/>
                 <constraint firstItem="SZb-S3-AaP" firstAttribute="centerY" secondItem="njF-e1-oar" secondAttribute="centerY" id="IFH-gQ-TYi"/>
                 <constraint firstItem="NeZ-cg-97m" firstAttribute="centerY" secondItem="njF-e1-oar" secondAttribute="centerY" id="LRP-3q-Knn"/>
-                <constraint firstItem="H2p-sc-9uM" firstAttribute="trailingMargin" secondItem="SZb-S3-AaP" secondAttribute="trailingMargin" id="MgO-h5-xy7"/>
+                <constraint firstItem="H2p-sc-9uM" firstAttribute="trailingMargin" secondItem="SZb-S3-AaP" secondAttribute="trailingMargin" constant="8" id="MgO-h5-xy7"/>
                 <constraint firstItem="H2p-sc-9uM" firstAttribute="leftMargin" secondItem="NeZ-cg-97m" secondAttribute="leftMargin" id="P8I-O4-g8t"/>
                 <constraint firstItem="v7r-jB-3wD" firstAttribute="width" secondItem="njF-e1-oar" secondAttribute="width" multiplier="0.23" id="Y5T-OO-jOR"/>
                 <constraint firstItem="b3R-8C-EzM" firstAttribute="width" secondItem="njF-e1-oar" secondAttribute="width" multiplier="0.25" id="e4d-XL-A7p"/>
