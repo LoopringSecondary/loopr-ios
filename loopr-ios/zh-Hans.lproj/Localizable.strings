@@ -29,6 +29,7 @@
 "Verify Now" = "验证";
 "Verification" = "验证";
 "Copy Wallet Address" = "复制钱包地址";
+"Copy Private Key" = "复制私钥";
 "Save to Album" = "保持到相册";
 "Market" = "市场";
 "Order History" = "交易历史";
@@ -46,3 +47,5 @@
 "Yes, convert now!" = "现在转换!";
 "Convert Successfully." = "转换成功。";
 "QR Code" = "二维码";
+"Export Private Key" = "导出私钥";
+"Export Keystore" = "导出Keystore";

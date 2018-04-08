@@ -29,6 +29,7 @@
 "Verify Now" = "Verify Now";
 "Verification" = "Verification";
 "Copy Wallet Address" = "Copy Wallet Address";
+"Copy Private Key" = "Copy Private Key";
 "Save to Album" = "Save to Album";
 "Market" = "Market";
 "Order History" = "Order History";
@@ -46,3 +47,5 @@
 "Yes, convert now!" = "Yes, convert now!";
 "Convert Successfully." = "Convert Successfully.";
 "QR Code" = "QR Code";
+"Export Private Key" = "Export Private Key";
+"Export Keystore" = "Export Keystore";

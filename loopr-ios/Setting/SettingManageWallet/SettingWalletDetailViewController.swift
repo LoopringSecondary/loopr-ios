@@ -42,24 +42,37 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 3
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 52
+        return 45
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // TODO: Update the UITableViewCell.
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "title")
-        cell.textLabel?.text = "Export Keystore"
+        
+        if indexPath.row == 0 {
+            cell.textLabel?.text = NSLocalizedString("Backup Mnemonic", comment: "")
+        } else if indexPath.row == 1 {
+            cell.textLabel?.text = NSLocalizedString("Export Private Key", comment: "")
+        } else if indexPath.row == 2 {
+            cell.textLabel?.text = NSLocalizedString("Export Keystore", comment: "")
+        }
+        
         cell.textLabel?.font = FontConfigManager.shared.getLabelFont()
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
         if indexPath.row == 0 {
+            
+        } else if indexPath.row == 1 {
+            let viewController = DisplayPrivateKeyViewController()
+            self.navigationController?.pushViewController(viewController, animated: true)
+        } else if indexPath.row == 2 {
             let viewController = ExportKeystoreEnterPasswordViewController()
             self.navigationController?.pushViewController(viewController, animated: true)
         }

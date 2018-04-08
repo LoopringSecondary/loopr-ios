@@ -385,6 +385,8 @@
 		ACA677C1207997F400D34A2F /* DisplayKeystoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677BF207997F400D34A2F /* DisplayKeystoreViewController.xib */; };
 		ACA677C42079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677C22079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.swift */; };
 		ACA677C52079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677C32079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.xib */; };
+		ACA677C92079D5A000D34A2F /* DisplayPrivateKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677C72079D5A000D34A2F /* DisplayPrivateKeyViewController.swift */; };
+		ACA677CA2079D5A000D34A2F /* DisplayPrivateKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677C82079D5A000D34A2F /* DisplayPrivateKeyViewController.xib */; };
 		ACB5DD80202AC26000140A09 /* button1.json in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD7F202AC26000140A09 /* button1.json */; };
 		ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */; };
 		ACB5DD91202C06FF00140A09 /* DismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */; };
@@ -774,6 +776,8 @@
 		ACA677BF207997F400D34A2F /* DisplayKeystoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayKeystoreViewController.xib; sourceTree = "<group>"; };
 		ACA677C22079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayKeystoreInQRCodeViewController.swift; sourceTree = "<group>"; };
 		ACA677C32079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayKeystoreInQRCodeViewController.xib; sourceTree = "<group>"; };
+		ACA677C72079D5A000D34A2F /* DisplayPrivateKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayPrivateKeyViewController.swift; sourceTree = "<group>"; };
+		ACA677C82079D5A000D34A2F /* DisplayPrivateKeyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayPrivateKeyViewController.xib; sourceTree = "<group>"; };
 		ACB5DD7F202AC26000140A09 /* button1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = button1.json; sourceTree = "<group>"; };
 		ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIButtonForUIToolbar.swift; sourceTree = "<group>"; };
 		ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAnimator.swift; sourceTree = "<group>"; };
@@ -1530,6 +1534,15 @@
 			path = ExportKeystore;
 			sourceTree = "<group>";
 		};
+		ACA677C62079D56C00D34A2F /* ExportPrivateKey */ = {
+			isa = PBXGroup;
+			children = (
+				ACA677C72079D5A000D34A2F /* DisplayPrivateKeyViewController.swift */,
+				ACA677C82079D5A000D34A2F /* DisplayPrivateKeyViewController.xib */,
+			);
+			path = ExportPrivateKey;
+			sourceTree = "<group>";
+		};
 		ACB5DD79202A1F3000140A09 /* MarketDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -1743,6 +1756,7 @@
 				ACBA47E5207890910032C2B4 /* SettingManageWalletTableViewCell.xib */,
 				ACBA47E8207897C60032C2B4 /* SettingWalletDetailViewController.swift */,
 				ACBA47E9207897C60032C2B4 /* SettingWalletDetailViewController.xib */,
+				ACA677C62079D56C00D34A2F /* ExportPrivateKey */,
 				ACA677B52079928800D34A2F /* ExportKeystore */,
 			);
 			path = SettingManageWallet;
@@ -1968,6 +1982,7 @@
 				ACB911852026388700F14644 /* SettingViewController.xib in Resources */,
 				AC56625C20563C05003C925C /* TradeViewController.xib in Resources */,
 				AC31CE59205B993B00A30335 /* Roboto-Black.ttf in Resources */,
+				ACA677CA2079D5A000D34A2F /* DisplayPrivateKeyViewController.xib in Resources */,
 				ACA677C52079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.xib in Resources */,
 				ACE6F7192041FDAD0039273D /* AssetTransactionDetailViewController.xib in Resources */,
 				AC37566E2038D37400AADC60 /* UnlockWalletSwipeViewController.xib in Resources */,
@@ -2599,6 +2614,7 @@
 				AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */,
 				AC4F601120773E9D00F1D954 /* EthAccountCoordinator.swift in Sources */,
 				ACDBF103203FE790000F0DEC /* ReorderUITableView.swift in Sources */,
+				ACA677C92079D5A000D34A2F /* DisplayPrivateKeyViewController.swift in Sources */,
 				AC72AEEA204F038300E9D3B0 /* OrderTradeError.swift in Sources */,
 				AC0C5C86203D168C00C8618D /* TickerLabel.swift in Sources */,
 				AC13B30E2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift in Sources */,
