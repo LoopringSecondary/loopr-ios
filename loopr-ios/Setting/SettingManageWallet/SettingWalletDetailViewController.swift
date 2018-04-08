@@ -30,6 +30,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         switchWalletButton.title = NSLocalizedString("Switch to this Wallet", comment: "")
         switchWalletButton.setupRoundBlack()
         
+        print(appWallet.name)
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,6 +72,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
             
         } else if indexPath.row == 1 {
             let viewController = DisplayPrivateKeyViewController()
+            viewController.appWallet = appWallet
             self.navigationController?.pushViewController(viewController, animated: true)
         } else if indexPath.row == 2 {
             let viewController = ExportKeystoreEnterPasswordViewController()

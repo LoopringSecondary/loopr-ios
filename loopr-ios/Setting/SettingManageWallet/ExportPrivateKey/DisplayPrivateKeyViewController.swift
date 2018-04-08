@@ -10,6 +10,8 @@ import UIKit
 
 class DisplayPrivateKeyViewController: UIViewController {
 
+    var appWallet: AppWallet!
+
     @IBOutlet weak var privateKeyTextView: UITextView!
     @IBOutlet weak var copyButton: UIButton!
 
@@ -21,17 +23,18 @@ class DisplayPrivateKeyViewController: UIViewController {
         let backButton = UIBarButtonItem()
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
-        
+
+        privateKeyTextView.text = appWallet.privateKey
+
         privateKeyTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
-        privateKeyTextView.contentOffset = CGPoint(x: 0, y: -10)
+        // privateKeyTextView.contentOffset = CGPoint(x: 0, y: -10)
 
         privateKeyTextView.cornerRadius = 12
-        privateKeyTextView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17.0)
+        privateKeyTextView.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 18.0)
         privateKeyTextView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
-        privateKeyTextView.textColor = .lightGray
-        privateKeyTextView.tintColor = UIColor.black
+        privateKeyTextView.textColor = UIColor.black
         privateKeyTextView.isEditable = false
-        privateKeyTextView.isScrollEnabled = false
+        // privateKeyTextView.isScrollEnabled = false
         
         copyButton.title = "Copy Private Key"
         copyButton.setupRoundBlack()
