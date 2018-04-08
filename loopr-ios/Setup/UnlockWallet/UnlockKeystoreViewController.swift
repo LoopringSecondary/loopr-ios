@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KeystoreViewController: UIViewController, UITextViewDelegate {
+class UnlockKeystoreViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var keystoreContentTextView: UITextView!
     @IBOutlet weak var unlockButtonBottonLayoutConstraint: NSLayoutConstraint!

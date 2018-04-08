@@ -1,59 +1,43 @@
 //
-//  UnlockWalletSwipeViewController.swift
+//  ExportKeystoreSwipeViewController.swift
 //  loopr-ios
 //
-//  Created by xiaoruby on 2/17/18.
+//  Created by xiaoruby on 4/7/18.
 //  Copyright © 2018 Loopring. All rights reserved.
 //
 
 import UIKit
 
-class UnlockWalletSwipeViewController: SwipeViewController {
+class ExportKeystoreSwipeViewController: SwipeViewController {
 
-    private var types: [UnlockWalletType] = [.mnemonic, .keystore, .privateKey]
-    private var viewControllers: [UIViewController] = [MnemonicViewController(), UnlockKeystoreViewController(), PrivateKeyViewController()]
+    private var viewControllers: [UIViewController] = [DisplayKeystoreViewController(), DisplayKeystoreInQRCodeViewController()]
     var options = SwipeViewOptions()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Unlock Wallet", comment: "")
+        self.navigationItem.title = NSLocalizedString("Export Keystore", comment: "")
         let backButton = UIBarButtonItem()
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
-        
-        self.navigationController?.isNavigationBarHidden = false
-        
+
         options.swipeTabView.height = 44
         options.swipeTabView.underlineView.height = 1
-        options.swipeTabView.underlineView.margin = 30
-
-        options.swipeTabView.style = .segmented
-
-        options.swipeTabView.itemView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 21) ?? UIFont.systemFont(ofSize: 21)
-
-        swipeView.reloadData(options: options)
+        options.swipeTabView.underlineView.margin = 85
         
-        let button = UIBarButtonItem(image: UIImage.init(named: "Scan"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.pressScanButton(_:)))
-        self.navigationItem.rightBarButtonItem = button
+        options.swipeTabView.style = .segmented
+        
+        options.swipeTabView.itemView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 21) ?? UIFont.systemFont(ofSize: 21)
+        
+        swipeView.reloadData(options: options)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
-    }
-    
-    @objc func pressScanButton(_ button: UIBarButtonItem) {
-        print("pressScanButton")
-        
-    }
-    
+
     // MARK: - Delegate
     override func swipeView(_ swipeView: SwipeView, viewWillSetupAt currentIndex: Int) {
         // print("will setup SwipeView")
@@ -73,28 +57,27 @@ class UnlockWalletSwipeViewController: SwipeViewController {
     
     // MARK: DataSource
     override func numberOfPages(in swipeView: SwipeView) -> Int {
-        return types.count
+        return 2
     }
     
     override func swipeView(_ swipeView: SwipeView, titleForPageAt index: Int) -> String {
-        return types[index].description
+        if index == 0 {
+            return "Keystore"
+        } else {
+            return "QR Code"
+        }
     }
     
     override func swipeView(_ swipeView: SwipeView, viewControllerForPageAt index: Int) -> UIViewController {
         var viewController: UIViewController
-        let type = types[index]
-
-        switch type {
-        case .mnemonic:
+        
+        if index == 0 {
             viewController = viewControllers[0]
-        case .keystore:
+        } else {
             viewController = viewControllers[1]
-        case .privateKey:
-            viewController = viewControllers[2]
         }
-
+        
         self.addChildViewController(viewController)
         return viewController
     }
-
 }

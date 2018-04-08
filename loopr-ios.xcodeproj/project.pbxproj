@@ -218,8 +218,8 @@
 		AC3756702038D3ED00AADC60 /* UnlockWalletType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37566F2038D3ED00AADC60 /* UnlockWalletType.swift */; };
 		AC3756732038D64B00AADC60 /* MnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3756712038D64B00AADC60 /* MnemonicViewController.swift */; };
 		AC3756742038D64B00AADC60 /* MnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC3756722038D64B00AADC60 /* MnemonicViewController.xib */; };
-		AC3756782038D7E200AADC60 /* KeystoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3756762038D7E200AADC60 /* KeystoreViewController.swift */; };
-		AC3756792038D7E200AADC60 /* KeystoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC3756772038D7E200AADC60 /* KeystoreViewController.xib */; };
+		AC3756782038D7E200AADC60 /* UnlockKeystoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3756762038D7E200AADC60 /* UnlockKeystoreViewController.swift */; };
+		AC3756792038D7E200AADC60 /* UnlockKeystoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC3756772038D7E200AADC60 /* UnlockKeystoreViewController.xib */; };
 		AC37567C2038D80300AADC60 /* PrivateKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37567A2038D80300AADC60 /* PrivateKeyViewController.swift */; };
 		AC37567D2038D80300AADC60 /* PrivateKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC37567B2038D80300AADC60 /* PrivateKeyViewController.xib */; };
 		AC3756802039198300AADC60 /* GenerateMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37567E2039198300AADC60 /* GenerateMnemonicViewController.swift */; };
@@ -379,6 +379,12 @@
 		AC952A152053A84800C78562 /* OrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC952A132053A84800C78562 /* OrderHistoryViewController.xib */; };
 		AC9ADF91205EE3B900CBE368 /* ConvertETHViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9ADF8F205EE3B900CBE368 /* ConvertETHViewController.swift */; };
 		AC9ADF92205EE3B900CBE368 /* ConvertETHViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9ADF90205EE3B900CBE368 /* ConvertETHViewController.xib */; };
+		ACA677B82079970600D34A2F /* ExportKeystoreSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677B62079970600D34A2F /* ExportKeystoreSwipeViewController.swift */; };
+		ACA677B92079970600D34A2F /* ExportKeystoreSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677B72079970600D34A2F /* ExportKeystoreSwipeViewController.xib */; };
+		ACA677C0207997F400D34A2F /* DisplayKeystoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677BE207997F400D34A2F /* DisplayKeystoreViewController.swift */; };
+		ACA677C1207997F400D34A2F /* DisplayKeystoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677BF207997F400D34A2F /* DisplayKeystoreViewController.xib */; };
+		ACA677C42079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677C22079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.swift */; };
+		ACA677C52079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677C32079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.xib */; };
 		ACB5DD80202AC26000140A09 /* button1.json in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD7F202AC26000140A09 /* button1.json */; };
 		ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */; };
 		ACB5DD91202C06FF00140A09 /* DismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */; };
@@ -635,8 +641,8 @@
 		AC37566F2038D3ED00AADC60 /* UnlockWalletType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWalletType.swift; sourceTree = "<group>"; };
 		AC3756712038D64B00AADC60 /* MnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicViewController.swift; sourceTree = "<group>"; };
 		AC3756722038D64B00AADC60 /* MnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicViewController.xib; sourceTree = "<group>"; };
-		AC3756762038D7E200AADC60 /* KeystoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeystoreViewController.swift; sourceTree = "<group>"; };
-		AC3756772038D7E200AADC60 /* KeystoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeystoreViewController.xib; sourceTree = "<group>"; };
+		AC3756762038D7E200AADC60 /* UnlockKeystoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockKeystoreViewController.swift; sourceTree = "<group>"; };
+		AC3756772038D7E200AADC60 /* UnlockKeystoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnlockKeystoreViewController.xib; sourceTree = "<group>"; };
 		AC37567A2038D80300AADC60 /* PrivateKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeyViewController.swift; sourceTree = "<group>"; };
 		AC37567B2038D80300AADC60 /* PrivateKeyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivateKeyViewController.xib; sourceTree = "<group>"; };
 		AC37567E2039198300AADC60 /* GenerateMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMnemonicViewController.swift; sourceTree = "<group>"; };
@@ -762,6 +768,12 @@
 		AC952A132053A84800C78562 /* OrderHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistoryViewController.xib; sourceTree = "<group>"; };
 		AC9ADF8F205EE3B900CBE368 /* ConvertETHViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertETHViewController.swift; sourceTree = "<group>"; };
 		AC9ADF90205EE3B900CBE368 /* ConvertETHViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConvertETHViewController.xib; sourceTree = "<group>"; };
+		ACA677B62079970600D34A2F /* ExportKeystoreSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportKeystoreSwipeViewController.swift; sourceTree = "<group>"; };
+		ACA677B72079970600D34A2F /* ExportKeystoreSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportKeystoreSwipeViewController.xib; sourceTree = "<group>"; };
+		ACA677BE207997F400D34A2F /* DisplayKeystoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayKeystoreViewController.swift; sourceTree = "<group>"; };
+		ACA677BF207997F400D34A2F /* DisplayKeystoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayKeystoreViewController.xib; sourceTree = "<group>"; };
+		ACA677C22079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayKeystoreInQRCodeViewController.swift; sourceTree = "<group>"; };
+		ACA677C32079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayKeystoreInQRCodeViewController.xib; sourceTree = "<group>"; };
 		ACB5DD7F202AC26000140A09 /* button1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = button1.json; sourceTree = "<group>"; };
 		ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIButtonForUIToolbar.swift; sourceTree = "<group>"; };
 		ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAnimator.swift; sourceTree = "<group>"; };
@@ -1086,8 +1098,8 @@
 				AC37566F2038D3ED00AADC60 /* UnlockWalletType.swift */,
 				AC3756712038D64B00AADC60 /* MnemonicViewController.swift */,
 				AC3756722038D64B00AADC60 /* MnemonicViewController.xib */,
-				AC3756762038D7E200AADC60 /* KeystoreViewController.swift */,
-				AC3756772038D7E200AADC60 /* KeystoreViewController.xib */,
+				AC3756762038D7E200AADC60 /* UnlockKeystoreViewController.swift */,
+				AC3756772038D7E200AADC60 /* UnlockKeystoreViewController.xib */,
 				AC37567A2038D80300AADC60 /* PrivateKeyViewController.swift */,
 				AC37567B2038D80300AADC60 /* PrivateKeyViewController.xib */,
 			);
@@ -1503,6 +1515,21 @@
 			path = ConvertETH;
 			sourceTree = "<group>";
 		};
+		ACA677B52079928800D34A2F /* ExportKeystore */ = {
+			isa = PBXGroup;
+			children = (
+				ACBA47EC207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.swift */,
+				ACBA47ED207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.xib */,
+				ACA677B62079970600D34A2F /* ExportKeystoreSwipeViewController.swift */,
+				ACA677B72079970600D34A2F /* ExportKeystoreSwipeViewController.xib */,
+				ACA677BE207997F400D34A2F /* DisplayKeystoreViewController.swift */,
+				ACA677BF207997F400D34A2F /* DisplayKeystoreViewController.xib */,
+				ACA677C22079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.swift */,
+				ACA677C32079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.xib */,
+			);
+			path = ExportKeystore;
+			sourceTree = "<group>";
+		};
 		ACB5DD79202A1F3000140A09 /* MarketDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -1675,13 +1702,13 @@
 		ACB9117D2026381A00F14644 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				ACBA47DF20788E690032C2B4 /* SettingManageWallet */,
 				ACB9117E2026385100F14644 /* SettingNavigationViewController.swift */,
 				ACB911822026388700F14644 /* SettingViewController.swift */,
 				ACB911832026388700F14644 /* SettingViewController.xib */,
 				ACE6F72520426BAC0039273D /* SettingThemeModeTableViewCell.swift */,
 				ACE6F72620426BAC0039273D /* SettingThemeModeTableViewCell.xib */,
 				C87E226D2031708000323584 /* ToggleTableViewCell.swift */,
+				ACBA47DF20788E690032C2B4 /* SettingManageWallet */,
 				AC76E47520493CB7008BA229 /* SettingLanguage */,
 				AC54FD93204FD357007E1DEB /* SettingFont */,
 			);
@@ -1716,8 +1743,7 @@
 				ACBA47E5207890910032C2B4 /* SettingManageWalletTableViewCell.xib */,
 				ACBA47E8207897C60032C2B4 /* SettingWalletDetailViewController.swift */,
 				ACBA47E9207897C60032C2B4 /* SettingWalletDetailViewController.xib */,
-				ACBA47EC207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.swift */,
-				ACBA47ED207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.xib */,
+				ACA677B52079928800D34A2F /* ExportKeystore */,
 			);
 			path = SettingManageWallet;
 			sourceTree = "<group>";
@@ -1930,6 +1956,7 @@
 				AC54FD64204FC6CE007E1DEB /* Lato-HairlineItalic.ttf in Resources */,
 				94C5E79520738ADE0074B939 /* OrderSearchViewController.xib in Resources */,
 				AC4141F0203524280089861D /* MarketSwipeViewController.xib in Resources */,
+				ACA677B92079970600D34A2F /* ExportKeystoreSwipeViewController.xib in Resources */,
 				C8BF95B12027AC9400343B9A /* SetupViewController.xib in Resources */,
 				AC31CEAE205B9C2700A30335 /* Montserrat-LightItalic.ttf in Resources */,
 				AC31CE5F205B994200A30335 /* Roboto-Bold.ttf in Resources */,
@@ -1941,6 +1968,7 @@
 				ACB911852026388700F14644 /* SettingViewController.xib in Resources */,
 				AC56625C20563C05003C925C /* TradeViewController.xib in Resources */,
 				AC31CE59205B993B00A30335 /* Roboto-Black.ttf in Resources */,
+				ACA677C52079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.xib in Resources */,
 				ACE6F7192041FDAD0039273D /* AssetTransactionDetailViewController.xib in Resources */,
 				AC37566E2038D37400AADC60 /* UnlockWalletSwipeViewController.xib in Resources */,
 				AC31CEC3205B9C4000A30335 /* Montserrat-ThinItalic.ttf in Resources */,
@@ -2015,12 +2043,13 @@
 				AC31CE40205B604100A30335 /* Linotype-DINNextLTPro-Medium.otf in Resources */,
 				AC13B30420548767008A72C0 /* BuyAndSellSwipeViewController.xib in Resources */,
 				AC31CE152057B5A400A30335 /* TradeReviewViewController.xib in Resources */,
-				AC3756792038D7E200AADC60 /* KeystoreViewController.xib in Resources */,
+				AC3756792038D7E200AADC60 /* UnlockKeystoreViewController.xib in Resources */,
 				AC13B31320563889008A72C0 /* TradeSwipeViewController.xib in Resources */,
 				AC31CEBD205B9C3A00A30335 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				AC5E0DD7203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib in Resources */,
 				AC54FD67204FC6D1007E1DEB /* Lato-Italic.ttf in Resources */,
 				ACB91172202557B100F14644 /* MarketViewController.xib in Resources */,
+				ACA677C1207997F400D34A2F /* DisplayKeystoreViewController.xib in Resources */,
 				AC31CE43205B604500A30335 /* Linotype-DINNextLTPro-Regular.otf in Resources */,
 				ACB9117620255A6600F14644 /* MarketTableViewCell.xib in Resources */,
 				ACB729D5205DE21B00DD4DF3 /* TradeConfirmationViewController.xib in Resources */,
@@ -2405,7 +2434,7 @@
 				ACB9119520278A4000F14644 /* Request.swift in Sources */,
 				AC76E47320493CAE008BA229 /* SettingLanguageViewController.swift in Sources */,
 				AC387515205F12F100A76637 /* ContextMenu+Animations.swift in Sources */,
-				AC3756782038D7E200AADC60 /* KeystoreViewController.swift in Sources */,
+				AC3756782038D7E200AADC60 /* UnlockKeystoreViewController.swift in Sources */,
 				ACB5DD95202C434B00140A09 /* EthereumAPIRequest.swift in Sources */,
 				ACDBF10C203FEA3E000F0DEC /* ReorderGestureRecognizer.swift in Sources */,
 				94DCE54F205F9E71005618E4 /* Ticker.swift in Sources */,
@@ -2500,6 +2529,7 @@
 				AC31B94C204A8DF400B16155 /* KeyStore.Error.swift in Sources */,
 				AC31B94E204A8DF400B16155 /* KeystoreKey.swift in Sources */,
 				AC3756732038D64B00AADC60 /* MnemonicViewController.swift in Sources */,
+				ACA677C0207997F400D34A2F /* DisplayKeystoreViewController.swift in Sources */,
 				ACB5DD9E202D5B8D00140A09 /* NumericKeyboardItem.swift in Sources */,
 				949629DF204E9C9800858F03 /* MinedRing.swift in Sources */,
 				ACB9119020266EC200F14644 /* AddCustomizedTokenViewController.swift in Sources */,
@@ -2556,6 +2586,8 @@
 				940B452B2060F67E00ADE2B9 /* SettingDataManager.swift in Sources */,
 				AC952A142053A84800C78562 /* OrderHistoryViewController.swift in Sources */,
 				ACE6F72720426BAC0039273D /* SettingThemeModeTableViewCell.swift in Sources */,
+				ACA677B82079970600D34A2F /* ExportKeystoreSwipeViewController.swift in Sources */,
+				ACA677C42079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.swift in Sources */,
 				ACB911992027F65800F14644 /* LoopringAPIRequest.swift in Sources */,
 				ACB5DDA4202D6FC300140A09 /* UIImageExtension.swift in Sources */,
 				AC38751A205F12F100A76637 /* ContextMenu+ContextMenuPresentationControllerDelegate.swift in Sources */,
