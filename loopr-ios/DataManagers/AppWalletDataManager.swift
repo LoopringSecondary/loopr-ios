@@ -128,6 +128,8 @@ class AppWalletDataManager {
         let privateKey = wallet.getKey(at: 0).privateKey
         print(privateKey.hexString)
         
+        // TODO: Keystore
+
         var walletNameLocal: String
         if walletName.trimmingCharacters(in: NSCharacterSet.whitespaces).count == 0 {
             walletNameLocal = "Wallet \(appWallets.count+1)"

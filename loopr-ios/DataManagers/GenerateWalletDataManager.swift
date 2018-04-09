@@ -31,7 +31,7 @@ class GenerateWalletDataManager {
         let mnemonicString = Mnemonic.generate(strength: 256)
         let mnemonics = mnemonicString.components(separatedBy: " ")
         self.mnemonics = mnemonics
-        
+
         // Generate 24 questions
         mnemonicQuestions = []
         for (index, value) in mnemonics.enumerated() {

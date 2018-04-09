@@ -89,12 +89,13 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(continueButton)
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
-
-        _ = GenerateWalletDataManager.shared.new()
         
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         view.addGestureRecognizer(scrollViewTap)
+        
+        // Generate a new wallet
+        _ = GenerateWalletDataManager.shared.new()
     }
 
     override func didReceiveMemoryWarning() {
