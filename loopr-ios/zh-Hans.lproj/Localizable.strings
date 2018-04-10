@@ -49,3 +49,5 @@
 "QR Code" = "二维码";
 "Export Private Key" = "导出私钥";
 "Export Keystore" = "导出Keystore";
+"Wallet Name" = "钱包名字";
+"Change Wallet Name" = "更改钱包名字";

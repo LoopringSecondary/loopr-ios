@@ -388,6 +388,8 @@
 		ACA677C92079D5A000D34A2F /* DisplayPrivateKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677C72079D5A000D34A2F /* DisplayPrivateKeyViewController.swift */; };
 		ACA677CA2079D5A000D34A2F /* DisplayPrivateKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677C82079D5A000D34A2F /* DisplayPrivateKeyViewController.xib */; };
 		ACA677CC207C8A0500D34A2F /* KeystoreAndWeb3SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677CB207C8A0500D34A2F /* KeystoreAndWeb3SwiftTests.swift */; };
+		ACA677CF207D1BEC00D34A2F /* SettingChangeWalletNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677CD207D1BEB00D34A2F /* SettingChangeWalletNameViewController.swift */; };
+		ACA677D0207D1BEC00D34A2F /* SettingChangeWalletNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677CE207D1BEB00D34A2F /* SettingChangeWalletNameViewController.xib */; };
 		ACB5DD80202AC26000140A09 /* button1.json in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD7F202AC26000140A09 /* button1.json */; };
 		ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */; };
 		ACB5DD91202C06FF00140A09 /* DismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */; };
@@ -780,6 +782,8 @@
 		ACA677C72079D5A000D34A2F /* DisplayPrivateKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayPrivateKeyViewController.swift; sourceTree = "<group>"; };
 		ACA677C82079D5A000D34A2F /* DisplayPrivateKeyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayPrivateKeyViewController.xib; sourceTree = "<group>"; };
 		ACA677CB207C8A0500D34A2F /* KeystoreAndWeb3SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeystoreAndWeb3SwiftTests.swift; sourceTree = "<group>"; };
+		ACA677CD207D1BEB00D34A2F /* SettingChangeWalletNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingChangeWalletNameViewController.swift; sourceTree = "<group>"; };
+		ACA677CE207D1BEB00D34A2F /* SettingChangeWalletNameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingChangeWalletNameViewController.xib; sourceTree = "<group>"; };
 		ACB5DD7F202AC26000140A09 /* button1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = button1.json; sourceTree = "<group>"; };
 		ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIButtonForUIToolbar.swift; sourceTree = "<group>"; };
 		ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAnimator.swift; sourceTree = "<group>"; };
@@ -1545,6 +1549,15 @@
 			path = ExportPrivateKey;
 			sourceTree = "<group>";
 		};
+		ACA677D1207D1BF900D34A2F /* ChangeWalletName */ = {
+			isa = PBXGroup;
+			children = (
+				ACA677CD207D1BEB00D34A2F /* SettingChangeWalletNameViewController.swift */,
+				ACA677CE207D1BEB00D34A2F /* SettingChangeWalletNameViewController.xib */,
+			);
+			path = ChangeWalletName;
+			sourceTree = "<group>";
+		};
 		ACB5DD79202A1F3000140A09 /* MarketDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -1758,6 +1771,7 @@
 				ACBA47E5207890910032C2B4 /* SettingManageWalletTableViewCell.xib */,
 				ACBA47E8207897C60032C2B4 /* SettingWalletDetailViewController.swift */,
 				ACBA47E9207897C60032C2B4 /* SettingWalletDetailViewController.xib */,
+				ACA677D1207D1BF900D34A2F /* ChangeWalletName */,
 				ACA677C62079D56C00D34A2F /* ExportPrivateKey */,
 				ACA677B52079928800D34A2F /* ExportKeystore */,
 			);
@@ -2054,6 +2068,7 @@
 				940B45292060F67E00ADE2B9 /* gas_limit.json in Resources */,
 				AC54FD6D204FC6D9007E1DEB /* Lato-LightItalic.ttf in Resources */,
 				AC31CE65205B994A00A30335 /* Roboto-Italic.ttf in Resources */,
+				ACA677D0207D1BEC00D34A2F /* SettingChangeWalletNameViewController.xib in Resources */,
 				AC798E4C2022B93A0071D477 /* Assets.xcassets in Resources */,
 				AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */,
 				AC54FD5E204FC6C7007E1DEB /* Lato-BoldItalic.ttf in Resources */,
@@ -2604,6 +2619,7 @@
 				940B452B2060F67E00ADE2B9 /* SettingDataManager.swift in Sources */,
 				AC952A142053A84800C78562 /* OrderHistoryViewController.swift in Sources */,
 				ACE6F72720426BAC0039273D /* SettingThemeModeTableViewCell.swift in Sources */,
+				ACA677CF207D1BEC00D34A2F /* SettingChangeWalletNameViewController.swift in Sources */,
 				ACA677B82079970600D34A2F /* ExportKeystoreSwipeViewController.swift in Sources */,
 				ACA677C42079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.swift in Sources */,
 				ACB911992027F65800F14644 /* LoopringAPIRequest.swift in Sources */,
