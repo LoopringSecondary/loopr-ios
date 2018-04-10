@@ -10,6 +10,8 @@ import UIKit
 
 class DisplayKeystoreInQRCodeViewController: UIViewController {
 
+    var appWallet: AppWallet!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

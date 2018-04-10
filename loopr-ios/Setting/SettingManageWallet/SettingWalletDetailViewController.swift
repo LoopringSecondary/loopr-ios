@@ -76,6 +76,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
             self.navigationController?.pushViewController(viewController, animated: true)
         } else if indexPath.row == 2 {
             let viewController = ExportKeystoreEnterPasswordViewController()
+            viewController.appWallet = appWallet
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }

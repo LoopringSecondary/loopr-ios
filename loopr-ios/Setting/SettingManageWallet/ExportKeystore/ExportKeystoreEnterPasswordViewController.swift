@@ -10,6 +10,8 @@ import UIKit
 
 class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDelegate {
 
+    var appWallet: AppWallet!
+
     var titleLabel: UILabel =  UILabel()
 
     var passwordTextField: UITextField = UITextField()
@@ -73,7 +75,7 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
     @objc func nextButtonPressed(_ sender: Any) {
         print("nextButtonPressed")
         let viewController = ExportKeystoreSwipeViewController()
+        viewController.appWallet = appWallet
         self.navigationController?.pushViewController(viewController, animated: true)
-        
     }
 }

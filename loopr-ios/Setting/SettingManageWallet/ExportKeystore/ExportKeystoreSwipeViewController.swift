@@ -9,8 +9,10 @@
 import UIKit
 
 class ExportKeystoreSwipeViewController: SwipeViewController {
+    
+    var appWallet: AppWallet!
 
-    private var viewControllers: [UIViewController] = [DisplayKeystoreViewController(), DisplayKeystoreInQRCodeViewController()]
+    private var viewControllers: [UIViewController] = []
     var options = SwipeViewOptions()
 
     override func viewDidLoad() {
@@ -21,6 +23,14 @@ class ExportKeystoreSwipeViewController: SwipeViewController {
         let backButton = UIBarButtonItem()
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+
+        let displayKeystoreViewController = DisplayKeystoreViewController()
+        displayKeystoreViewController.appWallet = appWallet
+        
+        let displayKeystoreInQRCodeViewController = DisplayKeystoreInQRCodeViewController()
+        displayKeystoreInQRCodeViewController.appWallet = appWallet
+        
+        viewControllers = [displayKeystoreViewController, displayKeystoreInQRCodeViewController]
 
         options.swipeTabView.height = 44
         options.swipeTabView.underlineView.height = 1
@@ -57,7 +67,7 @@ class ExportKeystoreSwipeViewController: SwipeViewController {
     
     // MARK: DataSource
     override func numberOfPages(in swipeView: SwipeView) -> Int {
-        return 2
+        return viewControllers.count
     }
     
     override func swipeView(_ swipeView: SwipeView, titleForPageAt index: Int) -> String {
@@ -70,7 +80,7 @@ class ExportKeystoreSwipeViewController: SwipeViewController {
     
     override func swipeView(_ swipeView: SwipeView, viewControllerForPageAt index: Int) -> UIViewController {
         var viewController: UIViewController
-        
+
         if index == 0 {
             viewController = viewControllers[0]
         } else {
