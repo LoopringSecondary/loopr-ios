@@ -79,4 +79,9 @@ class ImportWalletTests: XCTestCase {
         XCTAssertEqual(newAccount2.address, key.address)
     }
 
+    func testMnemonicToKeystore() {
+        let keyStore = try! KeyStore(keyDirectory: keyDirectory, walletDirectory: walletDirectory)
+        let account = try! keyStore.import(mnemonic: "soda code cannon sketch boss fancy tail lesson forum figure gloom history dismiss sketch lady control wolf hello away pave priority story design trial", password: "")
+        XCTAssertEqual(account.address.eip55String, "0xD964210243c83e4eA59D357824356493c21F8842")
+    }
 }

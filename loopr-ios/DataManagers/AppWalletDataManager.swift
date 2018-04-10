@@ -129,6 +129,8 @@ class AppWalletDataManager {
         print(privateKey.hexString)
         
         // TODO: Keystore
+        
+        
 
         var walletNameLocal: String
         if walletName.trimmingCharacters(in: NSCharacterSet.whitespaces).count == 0 {
@@ -137,7 +139,7 @@ class AppWalletDataManager {
             walletNameLocal = walletName
         }
 
-        let newAppWallet = AppWallet(address: address.description, privateKey: privateKey.hexString, name: walletNameLocal, active: true)
+        let newAppWallet = AppWallet(address: address.description, privateKey: privateKey.hexString, name: walletNameLocal, active: true, mnemonics: mnemonics)
         
         AddAndUpdateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         setCurrentAppWallet(newAppWallet)
