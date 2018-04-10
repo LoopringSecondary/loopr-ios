@@ -54,7 +54,6 @@ class CreateMnemonicTests: XCTestCase {
         
         print(mnemonic)
         
-        // In our design, no password is needed.
         let wallet = Wallet(mnemonic: mnemonic, password: password)
 
         // Public address

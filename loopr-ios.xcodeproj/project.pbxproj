@@ -387,6 +387,7 @@
 		ACA677C52079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677C32079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.xib */; };
 		ACA677C92079D5A000D34A2F /* DisplayPrivateKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677C72079D5A000D34A2F /* DisplayPrivateKeyViewController.swift */; };
 		ACA677CA2079D5A000D34A2F /* DisplayPrivateKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677C82079D5A000D34A2F /* DisplayPrivateKeyViewController.xib */; };
+		ACA677CC207C8A0500D34A2F /* KeystoreAndWeb3SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677CB207C8A0500D34A2F /* KeystoreAndWeb3SwiftTests.swift */; };
 		ACB5DD80202AC26000140A09 /* button1.json in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD7F202AC26000140A09 /* button1.json */; };
 		ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */; };
 		ACB5DD91202C06FF00140A09 /* DismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */; };
@@ -778,6 +779,7 @@
 		ACA677C32079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayKeystoreInQRCodeViewController.xib; sourceTree = "<group>"; };
 		ACA677C72079D5A000D34A2F /* DisplayPrivateKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayPrivateKeyViewController.swift; sourceTree = "<group>"; };
 		ACA677C82079D5A000D34A2F /* DisplayPrivateKeyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayPrivateKeyViewController.xib; sourceTree = "<group>"; };
+		ACA677CB207C8A0500D34A2F /* KeystoreAndWeb3SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeystoreAndWeb3SwiftTests.swift; sourceTree = "<group>"; };
 		ACB5DD7F202AC26000140A09 /* button1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = button1.json; sourceTree = "<group>"; };
 		ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIButtonForUIToolbar.swift; sourceTree = "<group>"; };
 		ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAnimator.swift; sourceTree = "<group>"; };
@@ -1818,6 +1820,7 @@
 			children = (
 				ACE65E3D2071C6FA001EE499 /* Web3SwiftTests.swift */,
 				AC4F60192077536400F1D954 /* testKeystore.json */,
+				ACA677CB207C8A0500D34A2F /* KeystoreAndWeb3SwiftTests.swift */,
 			);
 			path = Web3Swift;
 			sourceTree = "<group>";
@@ -2651,6 +2654,7 @@
 				945800232059006200E08DEF /* AssetDataManagerTests.swift in Sources */,
 				AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */,
 				94580025205921D600E08DEF /* PriceQuoteDataManagerTests.swift in Sources */,
+				ACA677CC207C8A0500D34A2F /* KeystoreAndWeb3SwiftTests.swift in Sources */,
 				AC798E5A2022B93B0071D477 /* LoopringAPIRequestTests.swift in Sources */,
 				AC1E4BC0204B51AB00C6B1FA /* ImportWalletTests.swift in Sources */,
 				AC1E4BC6204B58D400C6B1FA /* CreatePrivateKeyTests.swift in Sources */,

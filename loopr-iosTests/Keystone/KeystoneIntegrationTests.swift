@@ -63,8 +63,6 @@ class KeystoneIntegrationTests: XCTestCase {
                 return
             }
         }
-        
-        // key.sign(hash: <#T##Data#>, password: <#T##String#>)
     }
     
     func _testDecrypt() {
