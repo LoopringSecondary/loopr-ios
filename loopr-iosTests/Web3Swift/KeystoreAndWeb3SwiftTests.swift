@@ -8,6 +8,7 @@
 
 import XCTest
 import Geth
+import SwiftyJSON
 @testable import loopr_ios
 
 class KeystoreAndWeb3SwiftTests: XCTestCase {
@@ -25,34 +26,8 @@ class KeystoreAndWeb3SwiftTests: XCTestCase {
     func testIntegration() {
         let mnemonic: String = "soda code cannon sketch boss fancy tail lesson forum figure gloom history dismiss sketch lady control wolf hello away pave priority story design trial"
         let password: String = "123456"
-        
-        let fileManager = FileManager.default
-        
-        let keyDirectory = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("KeyStoreTests")
-        try? fileManager.removeItem(at: keyDirectory)
-        try? fileManager.createDirectory(at: keyDirectory, withIntermediateDirectories: true, attributes: nil)
-        
-        let walletDirectory = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("WalletStoreTests")
-        try? fileManager.removeItem(at: walletDirectory)
-        try? fileManager.createDirectory(at: walletDirectory, withIntermediateDirectories: true, attributes: nil)
-        
-        let keyStore = try! KeyStore(keyDirectory: keyDirectory, walletDirectory: walletDirectory)
-        
-        let account = try! keyStore.import(mnemonic: mnemonic, password: password)
-        print(account.url.absoluteString)
-        do {
-            let keystoreFileValue = try String(contentsOf: account.url, encoding: .utf8)
-            print(keystoreFileValue)
-        } catch {
-            
-        }
-        
-        let data = try! keyStore.export(account: account, password: password, newPassword: password)
-        let json = try? JSONSerialization.jsonObject(with: data)
-        if let json = json {
-            print("Person JSON:\n" + String(describing: json) + "\n")
-            //Prints: Person JSON: { age = 20; name = Yuri; }
-        }
+        let correctPublicKey: String = "0x638DF04C98D44364B2192c27Cc0c7603aAAd8b6D"
+        let correctPrivateKey: String = "9f13480f56489f2601e890f40f357dd42603447192839f8c2288dcb872478967"
 
         let wallet = Wallet(mnemonic: mnemonic, password: password)
         
@@ -60,10 +35,28 @@ class KeystoreAndWeb3SwiftTests: XCTestCase {
         let address = wallet.getKey(at: 0).address
         
         print(address.description)
+        XCTAssertEqual(address.description, correctPublicKey)
         
         // Private key
         let privateKey = wallet.getKey(at: 0).privateKey
         print(privateKey.hexString)
+        XCTAssertEqual(privateKey.hexString, correctPrivateKey)
+        
+        guard let data = Data(hexString: privateKey.hexString) else {
+            return // .failure(KeystoreError.failedToImportPrivateKey)
+        }
+        do {
+            let key = try KeystoreKey(password: password, key: data)
+            let data = try JSONEncoder().encode(key)
+            print(data)
+            
+            let json = try! JSON(data: data)
+            print(json)
+
+            return // .success(dict)
+        } catch {
+            return // .failure(KeystoreError.failedToImportPrivateKey)
+        }
     }
 
     func testIntegration2() {
@@ -81,14 +74,32 @@ class KeystoreAndWeb3SwiftTests: XCTestCase {
         
         let keyStore = try! KeyStore(keyDirectory: keyDirectory, walletDirectory: walletDirectory)
         
-        try! keyStore.createAccount(password: password, type: .encryptedKey)
+        _ = try! keyStore.createAccount(password: password, type: .encryptedKey)
         let account = try! keyStore.createWallet(password: password)
 
-        let data = try! keyStore.export(account: account, password: password, newPassword: password)
+        _ = try! keyStore.export(account: account, password: password, newPassword: password)
     }
     
     func testIntegration3() {
+        let privateKey = "9f13480f56489f2601e890f40f357dd42603447192839f8c2288dcb872478967"
         let password: String = "123456"
-        try! KeystoreKey.init(password: password)
+        
+        guard let data = Data(hexString: privateKey) else {
+            return // .failure(KeystoreError.failedToImportPrivateKey)
+        }
+        do {
+            let key = try KeystoreKey(password: password, key: data)
+            let data = try JSONEncoder().encode(key)
+            print(data)
+            
+            let json = try! JSON(data: data)
+            print(json)
+            
+            let dict = try JSONSerialization.jsonObject(with: data, options: [])
+            print(dict)
+            return // .success(dict)
+        } catch {
+            return // .failure(KeystoreError.failedToImportPrivateKey)
+        }
     }
 }

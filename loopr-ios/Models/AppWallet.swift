@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class AppWallet: NSObject, NSCoding {
 
@@ -17,16 +18,32 @@ class AppWallet: NSObject, NSCoding {
     final let active: Bool
 
     var mnemonics: [String] = []
-    var keystoreValue: String = ""
+
+    var keystoreData: Data = Data()
     
-    init(address: String, privateKey: String, name: String, active: Bool, mnemonics: [String] = [], keystoreValue: String = "") {
+    init(address: String, privateKey: String, name: String, active: Bool, mnemonics: [String] = []) {
         self.address = address
         self.privateKey = privateKey
         self.name = name
         self.active = active
 
         self.mnemonics = mnemonics
-        self.keystoreValue = keystoreValue
+        
+        // Generate keystore data
+        guard let data = Data(hexString: privateKey) else {
+            return // .failure(KeystoreError.failedToImportPrivateKey)
+        }
+        do {
+            let key = try KeystoreKey(password: "password", key: data)
+            keystoreData = try JSONEncoder().encode(key)
+        } catch {
+            
+        }
+    }
+    
+    func getKeystore() -> JSON {
+        let json = try! JSON(data: keystoreData)
+        return json
     }
     
     static func == (lhs: AppWallet, rhs: AppWallet) -> Bool {
@@ -40,7 +57,6 @@ class AppWallet: NSObject, NSCoding {
         aCoder.encode(active, forKey: "active")
         
         aCoder.encode(mnemonics, forKey: "mnemonics")
-        aCoder.encode(keystoreValue, forKey: "keystore")
     }
 
     required convenience init?(coder aDecoder: NSCoder) {
@@ -53,10 +69,8 @@ class AppWallet: NSObject, NSCoding {
         // TODO: mnemonics vs. mnemonic
         let mnemonics = aDecoder.decodeObject(forKey: "mnemonics") as? [String]
         
-        let keystoreValue = aDecoder.decodeObject(forKey: "keystore") as? String
-
-        if let address = address, let privateKey = privateKey, let mnemonics = mnemonics, let keystoreValue = keystoreValue, let name = name {
-            self.init(address: address, privateKey: privateKey, name: name, active: active, mnemonics: mnemonics, keystoreValue: keystoreValue)
+        if let address = address, let privateKey = privateKey, let mnemonics = mnemonics, let name = name {
+            self.init(address: address, privateKey: privateKey, name: name, active: active, mnemonics: mnemonics)
         } else {
             return nil
         }
