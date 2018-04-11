@@ -12,11 +12,7 @@ import SwiftyJSON
 
 public class LoopringSocketIORequest {
     
-    static let url = "http://13.112.62.24"
-    static let contractVersion = "v1.2"
-//    static let url = "10.137.104.180:8087"
-    
-    static let manager = SocketManager(socketURL: URL(string: url)!, config: [.compress, .forceWebsockets(true)])
+    static let manager = SocketManager(socketURL: RelayAPIConfiguration.socketURL, config: [.compress, .forceWebsockets(true)])
     static let socket = manager.defaultSocket
     static var handlers: [String: [(JSON) -> Void]] = [:]
     
@@ -69,7 +65,7 @@ public class LoopringSocketIORequest {
     static func getBalance(owner: String) {
         var body: JSON = JSON()
         body["owner"] = JSON(owner)
-        body["contractVersion"] = JSON(contractVersion)
+        body["contractVersion"] = JSON(RelayAPIConfiguration.contractVersion)
         if socket.status != .connected {
             socket.on(clientEvent: .connect) {_, _ in
                 self.socket.emit("balance_req", body.rawString()!)
@@ -93,7 +89,7 @@ public class LoopringSocketIORequest {
     
     static func getTiker() {
         var body: JSON = JSON()
-        body["contractVersion"] = JSON(contractVersion)
+        body["contractVersion"] = JSON(RelayAPIConfiguration.contractVersion)
         if socket.status != .connected {
             socket.on(clientEvent: .connect) {_, _ in
                 self.socket.emit("loopringTickers_req", body.rawString()!)

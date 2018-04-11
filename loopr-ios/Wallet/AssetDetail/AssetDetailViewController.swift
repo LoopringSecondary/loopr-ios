@@ -60,7 +60,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         if let asset = asset {
             
             // TODO: pass the address
-            AssetDataManager.shared.getTransactionsFromServer(owner: "", asset: asset) { (transactions, error) in
+            AssetDataManager.shared.getTransactionsFromServer(owner: "0x267be1C1D684F78cb4F6a176C4911b741E4Ffdc0", asset: asset) { (transactions, error) in
                 guard error == nil else {
                     return
                 }

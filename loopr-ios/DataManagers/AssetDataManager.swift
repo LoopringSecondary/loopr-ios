@@ -125,8 +125,10 @@ class AssetDataManager {
         }
     }
     
+    // TODO: Why precision is 4?
     func getAmount(of symbol: String, from gweiAmount: String, to precision: Int = 4) -> Double? {
         var result: Double? = nil
+        // hex string
         if gweiAmount.lowercased().starts(with: "0x") {
             let hexString = gweiAmount.dropFirst(2)
             let decString = BigUInt(hexString, radix: 16)!.description
@@ -137,10 +139,12 @@ class AssetDataManager {
                 let prepend = String(repeating: "0", count: token.decimals - amount.count + 1)
                 amount = prepend + amount
             }
+            /*
             let offset = precision - token.decimals
             var index = amount.index(amount.endIndex, offsetBy: offset)
             amount.removeSubrange(index...)
-            index = amount.index(amount.endIndex, offsetBy: -precision)
+            */
+            let index = amount.index(amount.endIndex, offsetBy: -token.decimals)
             amount.insert(".", at: index)
             result = Double(amount)
         }
@@ -148,14 +152,11 @@ class AssetDataManager {
     }
     
     func getTransactionsFromServer(owner: String, asset: Asset, completionHandler: @escaping (_ transactions: [Transaction], _ error: Error?) -> Void) {
-        
-        transactions = []
-        let ownerx = "0x48ff2269e58a373120FFdBBdEE3FBceA854AC30A"
-        
-        LoopringAPIRequest.getTransactions(owner: ownerx, symbol: asset.symbol, thxHash: nil, completionHandler: { (transactions, error) in
+        LoopringAPIRequest.getTransactions(owner: owner, symbol: asset.symbol, thxHash: nil, completionHandler: { (transactions, error) in
             guard error == nil && transactions != nil else {
                 return
             }
+            self.transactions = []
             for transaction in transactions! {
                 if let value = self.getAmount(of: transaction.symbol, from: transaction.value) {
                     if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
@@ -195,6 +196,7 @@ class AssetDataManager {
         assets = []
         totalAsset = 0
         for subJson in json["tokens"].arrayValue {
+            print(subJson)
             let asset = Asset(json: subJson)
             if let balance = getAmount(of: asset.symbol, from: asset.balance) {
                 if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {

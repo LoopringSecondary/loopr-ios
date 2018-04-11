@@ -11,18 +11,15 @@ import SwiftyJSON
 
 // https://github.com/Loopring/relay/blob/wallet_v2/LOOPRING_RELAY_API_SPEC_V2.md#loopring_getorders
 class LoopringAPIRequest {
-    
-    static let contractVersion = "v1.2"
-    static let url = URL(string: "http://13.112.62.24/rpc/v2")!
-    
+
     // READY
     public static func getBalance(owner: String? = nil, completionHandler: @escaping (_ assets: [Asset]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getBalance"
-        body["params"] = [["contractVersion": contractVersion, "owner": owner]]
+        body["params"] = [["contractVersion": RelayAPIConfiguration.contractVersion, "owner": owner]]
         body["id"] = JSON(UUID().uuidString)
         
-        Request.send(body: body, url: url) { data, _, error in
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -46,12 +43,12 @@ class LoopringAPIRequest {
         var body: JSON = JSON()
         
         body["method"] = "loopring_getOrders"
-        body["params"] = [["owner": owner, "orderHash": orderHash, "contractVersion": contractVersion, "status": status, "market": market, "pageIndex": pageIndex, "pageSize": pageSize]]
+        body["params"] = [["owner": owner, "orderHash": orderHash, "contractVersion": RelayAPIConfiguration.contractVersion, "status": status, "market": market, "pageIndex": pageIndex, "pageSize": pageSize]]
         body["id"] = JSON(UUID().uuidString)
         
         print(body)
         
-        Request.send(body: body, url: url) { data, _, error in
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler([], error)
@@ -80,10 +77,10 @@ class LoopringAPIRequest {
     static func getDepth(market: String, length: UInt, completionHandler: @escaping (_ depth: Depth?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getDepth"
-        body["params"] = [["contractVersion": contractVersion, "market": market, "length": length]]
+        body["params"] = [["contractVersion": RelayAPIConfiguration.contractVersion, "market": market, "length": length]]
         body["id"] = JSON(UUID().uuidString)
         
-        Request.send(body: body, url: url) { data, _, error in
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -102,10 +99,10 @@ class LoopringAPIRequest {
     static func getTicker(completionHandler: @escaping (_ tikers: [Ticker]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getTicker"
-        body["params"] = [["contractVersion": contractVersion]]
+        body["params"] = [["contractVersion": RelayAPIConfiguration.contractVersion]]
         body["id"] = JSON(UUID().uuidString)
         
-        Request.send(body: body, url: url) { data, _, error in
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
@@ -125,9 +122,9 @@ class LoopringAPIRequest {
     static func getFills(market: String, owner: String?, orderHash: String?, ringHash: String?, pageIndex: UInt = 1, pageSize: UInt = 20, completionHandler: @escaping (_ trades: [Trade]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getFills"
-        body["params"] = [["market": market, "contractVersion": contractVersion, "owner": owner, "orderHash": orderHash, "ringHash": ringHash]]
+        body["params"] = [["market": market, "contractVersion": RelayAPIConfiguration.contractVersion, "owner": owner, "orderHash": orderHash, "ringHash": ringHash]]
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: url) { data, _, error in
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
@@ -148,9 +145,9 @@ class LoopringAPIRequest {
         var body: JSON = JSON()
         body["method"] = "loopring_getTrend"
         body["params"] = [["market": market, "interval": interval]]
-        body["params"]["contractVersion"] = JSON(contractVersion)
+        body["params"]["contractVersion"] = JSON(RelayAPIConfiguration.contractVersion)
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: url) { data, _, error in
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -171,10 +168,10 @@ class LoopringAPIRequest {
     static func getRingMined(ringHash: String? = nil, pageIndex: UInt = 1, pageSize: UInt = 20, completionHandler: @escaping (_ minedRings: [MinedRing]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getRingMined"
-        body["params"] = [["ringHash": ringHash, "contractVersion": contractVersion, "pageIndex": pageIndex, "pageSize": pageSize]]
+        body["params"] = [["ringHash": ringHash, "contractVersion": RelayAPIConfiguration.contractVersion, "pageIndex": pageIndex, "pageSize": pageSize]]
         body["id"] = JSON(UUID().uuidString)
         
-        Request.send(body: body, url: url) { data, _, error in
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -195,9 +192,9 @@ class LoopringAPIRequest {
     static func getCutoff(address: String, blockNumber: String = "latest", completionHandler: @escaping (_ date: String?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getCutoff"
-        body["params"] = [["contractVersion": contractVersion, "address": address, "blockNumber": blockNumber]]
+        body["params"] = [["contractVersion": RelayAPIConfiguration.contractVersion, "address": address, "blockNumber": blockNumber]]
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: url) { data, _, error in
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
@@ -214,9 +211,9 @@ class LoopringAPIRequest {
         var body: JSON = JSON()
         body["method"] = "loopring_getPriceQuote"
         body["params"] = [["currency": currency]]
-        body["params"]["contractVersion"] = JSON(contractVersion)
+        body["params"]["contractVersion"] = JSON(RelayAPIConfiguration.contractVersion)
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: url) { data, _, error in
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -234,10 +231,10 @@ class LoopringAPIRequest {
         var body: JSON = JSON()
         body["method"] = "loopring_getEstimatedAllocatedAllowance"
         body["params"] = [["owner": owner, "token": token]]
-        body["params"]["contractVersion"] = JSON(contractVersion)
+        body["params"]["contractVersion"] = JSON(RelayAPIConfiguration.contractVersion)
         body["id"] = JSON(UUID().uuidString)
 
-        Request.send(body: body, url: url) { data, _, error in
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
@@ -254,7 +251,7 @@ class LoopringAPIRequest {
         var body: JSON = JSON()
         body["method"] = "loopring_getSupportedTokens"
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: url) { data, _, error in
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -275,9 +272,9 @@ class LoopringAPIRequest {
     static func getSupportedMarket(completionHandler: @escaping (_ pairs: [TradingPair]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getSupportedMarket"
-        body["params"] = [["contractVersion": contractVersion]]
+        body["params"] = [["contractVersion": RelayAPIConfiguration.contractVersion]]
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: url) { data, _, error in
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -300,10 +297,10 @@ class LoopringAPIRequest {
         var body: JSON = JSON()
         body["method"] = "loopring_getTransactions"
         body["params"] = [["owner": owner, "symbol": symbol, "thxHash": thxHash, "pageIndex": pageIndex, "pageSize": pageSize]]
-        body["params"]["contractVersion"] = JSON(contractVersion)
+        body["params"]["contractVersion"] = JSON(RelayAPIConfiguration.contractVersion)
         body["id"] = JSON(UUID().uuidString)
         
-        Request.send(body: body, url: url) { data, _, error in
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -326,7 +323,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_unlockWallet"
         body["params"] = [["owner": owner]]
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: url) { data, _, error in
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)

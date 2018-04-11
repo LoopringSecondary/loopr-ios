@@ -25,13 +25,18 @@ class LoopringAPIRequestTests: XCTestCase {
     // its ok to pass nil or real value to method, e.g. owner, same as below
     func testGetBalance() {
         let expectation = XCTestExpectation()
-        LoopringAPIRequest.getBalance(owner: "0x750ad4351bb728cec7d639a9511f9d6488f1e259") { assets, error in
+        LoopringAPIRequest.getBalance(owner: "0x267be1C1D684F78cb4F6a176C4911b741E4Ffdc0") { assets, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 return
             }
             XCTAssertNotNil(assets)
             XCTAssertNotEqual(assets!.count, 0)
+            
+            for asset in assets! {
+                print("\(asset.symbol): \(asset.balance)")
+            }
+
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)

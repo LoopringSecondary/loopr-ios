@@ -390,6 +390,7 @@
 		ACA677CC207C8A0500D34A2F /* KeystoreAndWeb3SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677CB207C8A0500D34A2F /* KeystoreAndWeb3SwiftTests.swift */; };
 		ACA677CF207D1BEC00D34A2F /* SettingChangeWalletNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677CD207D1BEB00D34A2F /* SettingChangeWalletNameViewController.swift */; };
 		ACA677D0207D1BEC00D34A2F /* SettingChangeWalletNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677CE207D1BEB00D34A2F /* SettingChangeWalletNameViewController.xib */; };
+		ACA677D3207DCF1900D34A2F /* RelayAPIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677D2207DCF1900D34A2F /* RelayAPIConfiguration.swift */; };
 		ACB5DD80202AC26000140A09 /* button1.json in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD7F202AC26000140A09 /* button1.json */; };
 		ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */; };
 		ACB5DD91202C06FF00140A09 /* DismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */; };
@@ -784,6 +785,7 @@
 		ACA677CB207C8A0500D34A2F /* KeystoreAndWeb3SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeystoreAndWeb3SwiftTests.swift; sourceTree = "<group>"; };
 		ACA677CD207D1BEB00D34A2F /* SettingChangeWalletNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingChangeWalletNameViewController.swift; sourceTree = "<group>"; };
 		ACA677CE207D1BEB00D34A2F /* SettingChangeWalletNameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingChangeWalletNameViewController.xib; sourceTree = "<group>"; };
+		ACA677D2207DCF1900D34A2F /* RelayAPIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelayAPIConfiguration.swift; sourceTree = "<group>"; };
 		ACB5DD7F202AC26000140A09 /* button1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = button1.json; sourceTree = "<group>"; };
 		ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIButtonForUIToolbar.swift; sourceTree = "<group>"; };
 		ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAnimator.swift; sourceTree = "<group>"; };
@@ -1746,6 +1748,7 @@
 		ACB9119320278A0E00F14644 /* RelayAPI */ = {
 			isa = PBXGroup;
 			children = (
+				ACA677D2207DCF1900D34A2F /* RelayAPIConfiguration.swift */,
 				ACB9119420278A4000F14644 /* Request.swift */,
 				ACB911982027F65800F14644 /* LoopringAPIRequest.swift */,
 				ACB5DD94202C434B00140A09 /* EthereumAPIRequest.swift */,
@@ -2569,6 +2572,7 @@
 				94C5E79C207394F50074B939 /* CustomSearchBar.swift in Sources */,
 				940B45272060F67E00ADE2B9 /* SendAssetDataManager.swift in Sources */,
 				ACDBF10E203FEBAD000F0DEC /* TableViewReorderDelegate.swift in Sources */,
+				ACA677D3207DCF1900D34A2F /* RelayAPIConfiguration.swift in Sources */,
 				AC72AED8204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift in Sources */,
 				949629DB204E836400858F03 /* Depth.swift in Sources */,
 				940B45232060F67E00ADE2B9 /* AssetDataManager.swift in Sources */,

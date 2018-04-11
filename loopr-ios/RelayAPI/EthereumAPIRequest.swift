@@ -10,8 +10,6 @@ import Foundation
 import SwiftyJSON
 
 class EthereumAPIRequest {
-    
-    static let url = URL(string: "http://13.112.62.24/eth")!
 
     static func removeNilParams(json: inout JSON) {
         
@@ -30,7 +28,7 @@ class EthereumAPIRequest {
         body["method"] = JSON(method)
         body["id"] = JSON(UUID().uuidString)
         
-        Request.send(body: body, url: url) { data, _, error in
+        Request.send(body: body, url: RelayAPIConfiguration.ethURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
