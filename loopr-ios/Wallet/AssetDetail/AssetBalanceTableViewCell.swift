@@ -26,15 +26,14 @@ class AssetBalanceTableViewCell: UITableViewCell {
         balanceLabel.backgroundColor = UIColor.red
         
         balanceLabel.frame = CGRect(x: 0, y: originY, width: screenWidth, height: 40)
-        balanceLabel.setFont(UIFont.init(name: FontConfigManager.shared.getRegular(), size: 39)!)
+        balanceLabel.setFont(UIFont.init(name: FontConfigManager.shared.getRegular(), size: 27)!)
         balanceLabel.animationDuration = 0.25
         balanceLabel.textAlignment = NSTextAlignment.center
         balanceLabel.initializeLabel()
         balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
         
         addSubview(balanceLabel)
-        
-        
+
         self.theme_backgroundColor = ["#fff", "#000"]
     }
 
@@ -50,9 +49,7 @@ class AssetBalanceTableViewCell: UITableViewCell {
     
     func update(asset: Asset) {
         balanceLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
-
-        let balance = AssetDataManager.shared.getTotalAsset()
-        balanceLabel.setText("\(balance)", animated: false)
+        balanceLabel.setText(asset.display, animated: false)
     }
     
     class func getCellIdentifier() -> String {

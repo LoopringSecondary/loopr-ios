@@ -10,11 +10,12 @@ import Foundation
 import SwiftyJSON
 import BigInt
 
+// TODO: Need to be associated to the current wallet.
 class AssetDataManager {
 
     static let shared = AssetDataManager()
     
-    private var totalAsset: Double
+    private var totalCurrencyValue: Double
     private var assets: [Asset]
     private var tokens: [Token]
     private var transactions: [Transaction]
@@ -23,7 +24,7 @@ class AssetDataManager {
         self.assets = []
         self.tokens = []
         self.transactions = []
-        self.totalAsset = 0
+        self.totalCurrencyValue = 0
         self.loadTokens()
     }
     
@@ -33,15 +34,15 @@ class AssetDataManager {
     }
     
     func getTotalAsset() -> Double {
-        return totalAsset
+        return totalCurrencyValue
     }
     
     func getTotalAssetCurrencyFormmat() -> String {
-        let currentyFormatter = NumberFormatter()
-        currentyFormatter.locale = NSLocale.current
-        currentyFormatter.usesGroupingSeparator = true
-        currentyFormatter.numberStyle = .currency
-        let formattedNumber = currentyFormatter.string(from: NSNumber(value: totalAsset)) ?? "\(totalAsset)"
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.locale = NSLocale.current
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        let formattedNumber = currencyFormatter.string(from: NSNumber(value: totalCurrencyValue)) ?? "\(totalCurrencyValue)"
         return formattedNumber
     }
     
@@ -169,33 +170,13 @@ class AssetDataManager {
             completionHandler(self.transactions, nil)
         })
     }
-    
-    // TODO: No used?
-    func formatAsset(asset: inout Asset) {
-        if let balance = getAmount(of: asset.symbol, from: asset.balance) {
-            if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
-                asset.name = getTokenBySymbol(asset.symbol)?.source ?? "unknown token"
-                asset.balance = balance.description
-                
-                let currentyFormatter = NumberFormatter()
-                currentyFormatter.locale = NSLocale.current
-                currentyFormatter.usesGroupingSeparator = true
-                currentyFormatter.numberStyle = .currency
-                let formattedNumber = currentyFormatter.string(from: NSNumber(value: balance * price)) ?? "\(balance * price)"
-                // asset.display = "$ " + String(formattedNumber.dropFirst())
-                asset.display = formattedNumber
-                
-                assets.append(asset)
-                totalAsset += balance * price
-            }
-        }
-    }
-    
+
     // this func should be called every 10 secs when emitted
     func onBalanceResponse(json: JSON) {
         assets = []
-        totalAsset = 0
+        totalCurrencyValue = 0
         for subJson in json["tokens"].arrayValue {
+            print("onBalanceResponse")
             print(subJson)
             let asset = Asset(json: subJson)
             if let balance = getAmount(of: asset.symbol, from: asset.balance) {
@@ -203,16 +184,16 @@ class AssetDataManager {
                     asset.name = getTokenBySymbol(asset.symbol)?.source ?? "unknown token"
                     asset.balance = balance.description
 
-                    let currentyFormatter = NumberFormatter()
-                    currentyFormatter.locale = NSLocale.current
-                    currentyFormatter.usesGroupingSeparator = true
-                    currentyFormatter.numberStyle = .currency
-                    let formattedNumber = currentyFormatter.string(from: NSNumber(value: balance * price)) ?? "\(balance * price)"
+                    let currencyFormatter = NumberFormatter()
+                    currencyFormatter.locale = NSLocale.current
+                    currencyFormatter.usesGroupingSeparator = true
+                    currencyFormatter.numberStyle = .currency
+                    let formattedNumber = currencyFormatter.string(from: NSNumber(value: balance * price)) ?? "\(balance * price)"
                     // asset.display = "$ " + String(formattedNumber.dropFirst())
                     asset.display = formattedNumber
 
                     assets.append(asset)
-                    totalAsset += balance * price
+                    totalCurrencyValue += balance * price
                 }
             }
         }
