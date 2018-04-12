@@ -9,7 +9,7 @@
 import UIKit
 import Charts
 
-class MarketLineChartTableViewCell: UITableViewCell {
+class MarketLineChartTableViewCell: UITableViewCell, ChartViewDelegate {
 
     var market: Market?
     var trends: [Trend]?
@@ -17,6 +17,14 @@ class MarketLineChartTableViewCell: UITableViewCell {
     var dateFormat: String = "HH:mm"
     var lowLimit: Double = Double(Int.max)
     var highLimit: Double = Double(Int.min)
+    
+    var mockData: [ChartDataEntry] = []
+    let count: Int = 20
+    
+    @IBOutlet weak var tokenLabel: UILabel!
+    @IBOutlet weak var balanceLabel: TickerLabel!
+    @IBOutlet weak var displayLabel: UILabel!
+    @IBOutlet weak var trendLabel: UILabel!
     
     @IBOutlet weak var lineChartView: LineChartView!
     
@@ -35,9 +43,29 @@ class MarketLineChartTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        lineChartView.delegate = self
         theme_backgroundColor = GlobalPicker.backgroundColor
         
-        refreshTrend()
+        // Label config
+        tokenLabel.font = FontConfigManager.shared.getLabelFont()
+        tokenLabel.text = "WETH "
+        
+        balanceLabel.setFont(UIFont.init(name: FontConfigManager.shared.getRegular(), size: 27)!)
+        balanceLabel.animationDuration = 0.25
+        balanceLabel.textAlignment = NSTextAlignment.center
+        balanceLabel.initializeLabel()
+        balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
+        balanceLabel.setText("23.0", animated: true)
+        
+        displayLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 15)
+        displayLabel.text = "$53.53"
+        
+        trendLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 15)
+        trendLabel.textColor = UIColor.green
+        trendLabel.text = "+ 0.000041 (+ 0.37%)"
+        
+        // line chart config
+        refreshTrendMock()
         
         // interval buttons group
         oneHourButton.selected()
@@ -96,6 +124,64 @@ class MarketLineChartTableViewCell: UITableViewCell {
         }
     }
     
+    func refreshTrendMock() {
+        var inter: Int
+        switch self.interval {
+        case "1H":
+            inter = 1
+            self.dateFormat = "HH:mm"
+        case "2H":
+            inter = 2
+            self.dateFormat = "HH:mm"
+        case "4H":
+            inter = 4
+            self.dateFormat = "HH:mm"
+        case "1D":
+            inter = 24
+            self.dateFormat = "dd MMM"
+        case "1W":
+            inter = 7 * 24
+            self.dateFormat = "dd MMM"
+        default:
+            inter = 1
+            self.dateFormat = "HH:mm"
+        }
+        let now = Date().timeIntervalSince1970
+        let hourSeconds: TimeInterval = TimeInterval(3600 * inter)
+        let from = now - (Double(count) / 2) * hourSeconds
+        let to = now + (Double(count) / 2) * hourSeconds
+        
+        mockData = stride(from: from, to: to, by: hourSeconds).map { (x) -> ChartDataEntry in
+            let y = arc4random_uniform(10) + 20
+            return ChartDataEntry(x: x, y: Double(y))
+        }
+        self.drawLineChartView()
+    }
+    
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        
+        // below not working !!
+//        let point = chartView.getMarkerPosition(highlight: highlight)
+//        let circlePath = UIBezierPath(arcCenter: CGPoint(x: point.x, y: point.y), radius: CGFloat(2), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
+//
+//        let shapeLayer = CAShapeLayer()
+//        shapeLayer.path = circlePath.cgPath
+//
+//        //change the fill color
+//        shapeLayer.fillColor = UIColor.clear.cgColor
+//        //you can change the stroke color
+//        shapeLayer.strokeColor = UIColor.red.cgColor
+//        //you can change the line width
+//        shapeLayer.lineWidth = 3.0
+//
+//        lineChartView.layer.addSublayer(shapeLayer)
+        
+        balanceLabel.setText(entry.y.description, animated: true)
+        trendLabel.textColor = UIColor.black
+        trendLabel.text = DateUtil.convertToDate(UInt(entry.x), format: "dd/MM/yyyy HH:mm")
+        layoutIfNeeded()
+    }
+    
     func drawLineChartView() {
         lineChartView.chartDescription?.enabled = false
         lineChartView.dragEnabled = true
@@ -103,47 +189,25 @@ class MarketLineChartTableViewCell: UITableViewCell {
         lineChartView.pinchZoomEnabled = true
         lineChartView.drawGridBackgroundEnabled = false
         
-        lineChartView.xAxis.gridLineDashLengths = [5, 5]
-        lineChartView.xAxis.gridLineDashPhase = 0
-        lineChartView.xAxis.valueFormatter = DateUtil(format: self.dateFormat) // 这里
+//        lineChartView.xAxis.gridLineDashLengths = [5, 5]
+//        lineChartView.xAxis.gridLineDashPhase = 0
+        lineChartView.xAxis.enabled = false
+        lineChartView.leftAxis.enabled = false
         
-        let ll1 = ChartLimitLine(limit: self.highLimit, label: "Upper Limit")   // 这里
-        ll1.lineWidth = 2
-        ll1.lineDashLengths = [5, 5]
-        ll1.labelPosition = .rightTop
-        ll1.valueFont = .systemFont(ofSize: 10)
+//        lineChartView.xAxis.valueFormatter = DateUtil(format: self.dateFormat)
         
-        let ll2 = ChartLimitLine(limit: self.lowLimit, label: "Lower Limit")  // 这里
-        ll2.lineWidth = 2
-        ll2.lineDashLengths = [5, 5]
-        ll2.labelPosition = .rightBottom
-        ll2.valueFont = .systemFont(ofSize: 10)
-        
-        let leftAxis = lineChartView.leftAxis
-        leftAxis.removeAllLimitLines()
-        leftAxis.addLimitLine(ll1)
-        leftAxis.addLimitLine(ll2)
-        leftAxis.axisMaximum = self.highLimit * 1.2 // 这里
-        leftAxis.axisMinimum = -0.0002  // 这里
-        leftAxis.gridLineDashLengths = [5, 5]
-        leftAxis.drawLimitLinesBehindDataEnabled = true
+//        let leftAxis = lineChartView.leftAxis
+//        leftAxis.removeAllLimitLines()
+//        leftAxis.drawLimitLinesBehindDataEnabled = false //true
         
         lineChartView.rightAxis.enabled = false
         lineChartView.viewPortHandler.setMaximumScaleY(2)
         lineChartView.viewPortHandler.setMaximumScaleX(2)
-        
-        let marker = BalloonMarker(color: UIColor(white: 180/255, alpha: 1),
-                                   font: .systemFont(ofSize: 12),
-                                   textColor: .white,
-                                   insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
-        marker.chartView = lineChartView
-        marker.minimumSize = CGSize(width: 80, height: 40)
-        lineChartView.marker = marker
-        
+
         lineChartView.legend.enabled = false
         lineChartView.animate(yAxisDuration: 2.5)
         
-        setDataCount(trends?.count ?? 0)
+        setDataCount(trends?.count ?? 0) // mock
         
         for set in lineChartView.data!.dataSets as! [LineChartDataSet] {
             set.mode = .linear
@@ -152,32 +216,26 @@ class MarketLineChartTableViewCell: UITableViewCell {
     }
     
     func setDataCount(_ count: Int) {
-        let values = trends?.map({ (trend) -> ChartDataEntry in
-            let x = trend.start
-            let y = trend.close
-            return ChartDataEntry(x: Double(x), y: y)
-        })
-        let set1 = LineChartDataSet(values: values, label: "")
+//        let values = trends?.map({ (trend) -> ChartDataEntry in
+//            let x = trend.start
+//            let y = trend.close
+//            return ChartDataEntry(x: Double(x), y: y)
+//        })
+        let set1 = LineChartDataSet(values: mockData, label: "")
         set1.drawIconsEnabled = false
         
-        set1.lineDashLengths = [5, 2.5]
-        set1.highlightLineDashLengths = [5, 2.5]
-        set1.setColor(UIColor(red: 34/255, green: 53/255, blue: 89/255, alpha: 1))
-        set1.lineWidth = 1
-        //外圆
-        set1.setCircleColor(.groupTableViewBackground)
-        //画外圆
-        set1.drawCirclesEnabled = true
-        //内圆
-        set1.circleHoleColor = NSUIColor.gray
-        //画内圆
-        set1.drawCircleHoleEnabled = true
+        
+//        set1.lineDashLengths = [5, 2.5]
+//        set1.highlightLineDashLengths = [5, 2.5]
+//        set1.setColor(UIColor(red: 34/255, green: 53/255, blue: 89/255, alpha: 1))
+//        set1.lineWidth = 1
+      
         
         set1.valueFont = .systemFont(ofSize: 0)
-        set1.formLineDashLengths = [5, 2.5]
-        set1.formLineWidth = 1
-        set1.formSize = 15
-        set1.highlightColor = UIColor(red: 244/255, green: 117/255, blue: 117/255, alpha: 1)
+//        set1.formLineDashLengths = [5, 2.5]
+//        set1.formLineWidth = 1
+//        set1.formSize = 15
+//        set1.highlightColor = UIColor(red: 244/255, green: 117/255, blue: 117/255, alpha: 1)
         
         let gradientColors = [ChartColorTemplates.colorFromString("#00f0f0f0").cgColor,
                               ChartColorTemplates.colorFromString("#ff080d16").cgColor]
@@ -197,7 +255,7 @@ class MarketLineChartTableViewCell: UITableViewCell {
         }
         sender.selected()
         interval = sender.title!
-        refreshTrend()
+        refreshTrendMock()
     }
 
     @IBAction func pressedSellButton(_ sender: Any) {

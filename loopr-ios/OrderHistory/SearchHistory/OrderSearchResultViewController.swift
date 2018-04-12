@@ -68,4 +68,13 @@ class OrderSearchResultViewController: UIViewController, UITableViewDelegate, UI
         cell?.update()
         return cell!
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let order = orders[orderDates[indexPath.section]]![indexPath.row]
+        let viewController = OrderDetailViewController()
+        viewController.order = order
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }

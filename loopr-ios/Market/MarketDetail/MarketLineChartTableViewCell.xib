@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,8 +21,43 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="646.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xMc-tS-nmc">
+                        <rect key="frame" x="-54.5" y="32.5" width="484" height="129"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="9Xh-wX-kG7">
+                                <rect key="frame" x="0.0" y="0.0" width="484" height="87"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xtI-G5-p6V">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="87"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BK4-nn-QVD" customClass="TickerLabel" customModule="loopr_ios" customModuleProvider="target">
+                                        <rect key="frame" x="244" y="0.0" width="240" height="87"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="BK4-nn-QVD" firstAttribute="leading" secondItem="xtI-G5-p6V" secondAttribute="trailing" constant="4" id="io6-ed-nQ7"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEZ-wz-EwG">
+                                <rect key="frame" x="221" y="87" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykC-B7-6Sb">
+                                <rect key="frame" x="221" y="108" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="foM-Qt-wIu" customClass="LineChartView" customModule="Charts">
-                        <rect key="frame" x="8" y="0.0" width="359" height="514"/>
+                        <rect key="frame" x="8" y="201.5" width="359" height="312.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Vxf-s0-ykH">
@@ -106,7 +142,7 @@
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="6kI-DU-RWY" secondAttribute="trailing" constant="10" id="9ij-0Z-ZTk"/>
                     <constraint firstItem="Vxf-s0-ykH" firstAttribute="top" secondItem="6kI-DU-RWY" secondAttribute="bottom" constant="20" id="B0U-f2-zuY"/>
-                    <constraint firstItem="foM-Qt-wIu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="IvY-Pc-Xdj"/>
+                    <constraint firstItem="foM-Qt-wIu" firstAttribute="top" secondItem="xMc-tS-nmc" secondAttribute="bottom" multiplier="1.25" id="FtG-qW-igZ"/>
                     <constraint firstItem="6kI-DU-RWY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="QRM-mk-uc2"/>
                     <constraint firstItem="Vxf-s0-ykH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="UjY-dh-wdD"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Vxf-s0-ykH" secondAttribute="trailing" id="Xck-9d-rv9"/>
@@ -116,15 +152,24 @@
                     <constraint firstAttribute="trailingMargin" secondItem="foM-Qt-wIu" secondAttribute="trailingMargin" id="ydA-bB-mIV"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="xMc-tS-nmc" firstAttribute="centerY" secondItem="njF-e1-oar" secondAttribute="centerY" multiplier="0.3" id="Bcn-hd-9Qs"/>
+                <constraint firstItem="xMc-tS-nmc" firstAttribute="centerX" secondItem="njF-e1-oar" secondAttribute="centerX" id="c8Y-LK-mmU"/>
+                <constraint firstItem="xMc-tS-nmc" firstAttribute="height" secondItem="KGk-i7-Jjw" secondAttribute="height" multiplier="0.2" id="dTJ-gz-fPG"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="balanceLabel" destination="BK4-nn-QVD" id="TnL-B2-9U3"/>
                 <outlet property="buyButton" destination="7Xm-T7-7is" id="CVa-33-Hmn"/>
+                <outlet property="displayLabel" destination="HEZ-wz-EwG" id="d9E-AB-rWs"/>
                 <outlet property="fourHourButton" destination="Bfq-aW-lRl" id="a4D-53-7p3"/>
                 <outlet property="lineChartView" destination="foM-Qt-wIu" id="zY8-CF-4m9"/>
                 <outlet property="oneDayButton" destination="qlF-ym-Z3F" id="4uy-ld-r9z"/>
                 <outlet property="oneHourButton" destination="anW-Oa-CMA" id="vLx-Ke-JVM"/>
                 <outlet property="oneWeekButton" destination="8C9-of-h1R" id="kNP-ku-2Ip"/>
                 <outlet property="sellButton" destination="IUx-2B-hVz" id="jOc-44-VIH"/>
+                <outlet property="tokenLabel" destination="xtI-G5-p6V" id="wyf-xi-0Ix"/>
+                <outlet property="trendLabel" destination="ykC-B7-6Sb" id="xjt-KR-CQb"/>
                 <outlet property="twoHourButton" destination="dRM-h1-EcE" id="PYI-IK-sQU"/>
             </connections>
             <point key="canvasLocation" x="112.5" y="53.5"/>

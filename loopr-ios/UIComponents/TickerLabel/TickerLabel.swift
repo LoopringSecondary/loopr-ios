@@ -17,7 +17,7 @@ enum TickerLabelScrollDirection {
 
 class TickerCharacterLabel: UILabel {
     var animationDidCompleteBlock: ((_ label: TickerCharacterLabel) -> Void)?
-    
+
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if animationDidCompleteBlock != nil {
             animationDidCompleteBlock!(self)
