@@ -103,10 +103,10 @@ class Web3SwiftTests: XCTestCase {
         let encodedTransferFunction = web3swift.encode(transferFunction)
 
         // Signing Transaction
-        let token = AssetDataManager.shared.getTokenBySymbol("LRC")!
+        let token = CurrentAppWalletDataManager.shared.getTokenBySymbol("LRC")!
         let contractAddress = GethNewAddressFromHex(token.protocol_value, nil)!
         let nonce: Int64 = 0
-        let gasLimit = GethNewBigInt(SendAssetDataManager.shared.getGasLimitByType(type: "token_transfer")!)!
+        let gasLimit = GethNewBigInt(SendCurrentAppWalletDataManager.shared.getGasLimitByType(type: "token_transfer")!)!
         let gasPrice = GethNewBigInt(20000000000)!
         
         let signedTransaction = web3swift.sign(address: contractAddress, encodedFunctionData: encodedTransferFunction, nonce: nonce, gasLimit: gasLimit, gasPrice: gasPrice)
@@ -117,7 +117,7 @@ class Web3SwiftTests: XCTestCase {
                 let signedTransactionDataHexString = "0x"+signedTransactionData.hexString
                 
                 // Send Transaction
-                SendAssetDataManager.shared.sendTransactionToServer(signedTransactionDataHexString) { (txHash, error) in
+                SendCurrentAppWalletDataManager.shared.sendTransactionToServer(signedTransactionDataHexString) { (txHash, error) in
                     guard error == nil && txHash != nil else {
                         print("Failed to get valid response from server: \(error!)")
                         

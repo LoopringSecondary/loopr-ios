@@ -29,7 +29,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
         balanceLabel.textAlignment = NSTextAlignment.center
         balanceLabel.initializeLabel()
         balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
-        let balance = AssetDataManager.shared.getTotalAssetCurrencyFormmat()
+        let balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
         balanceLabel.setText("\(balance)", animated: true)
 
         hideAssetSwitch.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
@@ -61,7 +61,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
     }
     
     @objc func updateBalance() {
-        let balance = AssetDataManager.shared.getTotalAssetCurrencyFormmat()
+        let balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
         balanceLabel.setText("\(balance)", animated: true)
         layoutIfNeeded()
     }

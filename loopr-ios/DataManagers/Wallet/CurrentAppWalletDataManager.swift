@@ -1,5 +1,5 @@
 //
-//  AssetDataManager.swift
+//  CurrentAppWalletDataManager.swift
 //  loopr-ios
 //
 //  Created by Xiao Dou Dou on 2/2/18.
@@ -11,9 +11,9 @@ import SwiftyJSON
 import BigInt
 
 // TODO: Need to be associated to the current wallet.
-class AssetDataManager {
+class CurrentAppWalletDataManager {
 
-    static let shared = AssetDataManager()
+    static let shared = CurrentAppWalletDataManager()
     
     private var totalCurrencyValue: Double
     private var assets: [Asset]

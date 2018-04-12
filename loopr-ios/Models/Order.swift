@@ -15,7 +15,7 @@ class Order {
     let dealtAmountB: Double
     let dealtAmountS: Double
     let tradingPairDescription: String
-    let manager = AssetDataManager.shared
+    let manager = CurrentAppWalletDataManager.shared
     
     init(originalOrder: OriginalOrder, orderStatus: OrderStatus, dealtAmountB: String, dealtAmountS: String) {
         self.originalOrder = originalOrder

@@ -185,7 +185,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // TODO: Update the transaction fee is needed. in SendAssetDataManager
+        // TODO: Update the transaction fee is needed. in SendCurrentAppWalletDataManager
         addressTextField.text = "0x2ef680f87989bce2a9f458e450cffd6589b549fa"
         amountTextField.text = "0.1"
         
@@ -214,7 +214,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             print("Invalid amount")
             return
         }
-        if let token = AssetDataManager.shared.getTokenBySymbol(asset!.symbol) {
+        if let token = CurrentAppWalletDataManager.shared.getTokenBySymbol(asset!.symbol) {
             if !token.protocol_value.isHexAddress() {
                 print("token protocol \(token.protocol_value) is invalid")
                 return
@@ -314,7 +314,7 @@ extension SendAssetViewController {
                 type = "eth_transfer"
             }
         }
-        return SendAssetDataManager.shared.getGasLimitByType(type: type)!
+        return SendCurrentAppWalletDataManager.shared.getGasLimitByType(type: type)!
     }
     
     var gasPrice: Int64 {
@@ -323,11 +323,11 @@ extension SendAssetViewController {
     }
 
     func getNonce() -> Int64 {
-        return SendAssetDataManager.shared.getNonce()
+        return SendCurrentAppWalletDataManager.shared.getNonce()
     }
 
     func executeContract(_ signedTransaction: String) {
-        SendAssetDataManager.shared.sendTransactionToServer(signedTransaction) { (txHash, error) in
+        SendCurrentAppWalletDataManager.shared.sendTransactionToServer(signedTransaction) { (txHash, error) in
             guard error == nil && txHash != nil else {
                 // TODO
                 print("Failed to get valid response from server: \(error!)")

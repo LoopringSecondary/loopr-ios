@@ -1,5 +1,5 @@
 //
-//  AssetDataManagerTests.swift
+//  CurrentAppWalletDataManagerTests.swift
 //  loopr-iosTests
 //
 //  Created by kenshin on 2018/3/14.
@@ -10,7 +10,7 @@ import XCTest
 @testable import loopr_ios
 @testable import BigInt
 
-class AssetDataManagerTests: XCTestCase {
+class CurrentAppWalletDataManagerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -25,20 +25,20 @@ class AssetDataManagerTests: XCTestCase {
     }
     
     func testLoadTokens() {
-        AssetDataManager.shared.loadTokensFromJson()
-        XCTAssertFalse(AssetDataManager.shared.getTokens().isEmpty)
+        CurrentAppWalletDataManager.shared.loadTokensFromJson()
+        XCTAssertFalse(CurrentAppWalletDataManager.shared.getTokens().isEmpty)
     }
     
     func testStartGetBalance() {
         let expectation = XCTestExpectation()
         PriceQuoteDataManager.shared.startGetPriceQuote("USD")
-        AssetDataManager.shared.startGetBalance("0x750ad4351bb728cec7d639a9511f9d6488f1e259")
+        CurrentAppWalletDataManager.shared.startGetBalance("0x750ad4351bb728cec7d639a9511f9d6488f1e259")
         wait(for: [expectation], timeout: 100.0)
     }
     
     func testGetAmount() {
         let amount = "0x56bc75e2d63100000"
-        let num = AssetDataManager.shared.getAmount(of: "LRC", from: amount)
+        let num = CurrentAppWalletDataManager.shared.getAmount(of: "LRC", from: amount)
         XCTAssertNotNil(num)
         XCTAssertEqual(num, 100)
     }

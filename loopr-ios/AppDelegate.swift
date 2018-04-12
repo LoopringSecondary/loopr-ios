@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PriceQuoteDataManager.shared.startGetPriceQuote("USD")
         
         // TODO: mock data
-        AssetDataManager.shared.startGetBalance("0x267be1C1D684F78cb4F6a176C4911b741E4Ffdc0")
+        CurrentAppWalletDataManager.shared.startGetBalance("0x267be1C1D684F78cb4F6a176C4911b741E4Ffdc0")
         MarketDataManager.shared.startGetTicker()
         
         _ = SettingDataManager.shared.getCurrentLanguage()

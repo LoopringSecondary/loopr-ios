@@ -29,7 +29,7 @@ class OriginalOrder {
     let v: String
     let r: String
     let s: String
-    let manager = AssetDataManager.shared
+    let manager = CurrentAppWalletDataManager.shared
 
     init(json: JSON) {
         self.protocol_value = json["protocol"].stringValue

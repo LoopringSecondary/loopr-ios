@@ -51,7 +51,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // TODO: putting getMarketsFromServer() here may cause a race condition.
         // It's not perfect, but works. Need improvement in the future.
         DispatchQueue.main.async {
-            self.assets = AssetDataManager.shared.getAssets()
+            self.assets = CurrentAppWalletDataManager.shared.getAssets()
             self.assetTableView.reloadData()
         }
     }
@@ -148,7 +148,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // print("receivedBalanceResponseReceivedNotification")
         // TODO: Perform a diff algorithm
         if self.assets.count == 0 {
-            self.assets = AssetDataManager.shared.getAssets()
+            self.assets = CurrentAppWalletDataManager.shared.getAssets()
             assetTableView.reloadData()
         }
     }
@@ -220,7 +220,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 extension WalletViewController: TableViewReorderDelegate {
     // MARK: - Reorder Delegate
     func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        AssetDataManager.shared.exchange(at: sourceIndexPath.row-1, to: destinationIndexPath.row-1)
+        CurrentAppWalletDataManager.shared.exchange(at: sourceIndexPath.row-1, to: destinationIndexPath.row-1)
     }
 
     func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {

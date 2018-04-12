@@ -20,7 +20,7 @@ public class LoopringSocketIORequest {
         
         if handlers.isEmpty {
             // add more requests using socketio here
-            handlers["balance_res"] = [AssetDataManager.shared.onBalanceResponse]
+            handlers["balance_res"] = [CurrentAppWalletDataManager.shared.onBalanceResponse]
             handlers["marketcap_res"] = [PriceQuoteDataManager.shared.onPriceQuoteResponse]
             handlers["loopringTickers_res"] = [MarketDataManager.shared.onTickerResponse]
             handlers["trends_res"] = [MarketDataManager.shared.onTrendResponse]

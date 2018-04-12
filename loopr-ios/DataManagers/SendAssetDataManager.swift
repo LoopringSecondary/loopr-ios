@@ -1,5 +1,5 @@
 //
-//  SendAssetDataManager.swift
+//  SendCurrentAppWalletDataManager.swift
 //  loopr-ios
 //
 //  Created by xiaoruby on 3/18/18.
@@ -18,9 +18,9 @@ struct GasLimit {
     }
 }
 
-class SendAssetDataManager {
+class SendCurrentAppWalletDataManager {
     
-    static let shared = SendAssetDataManager()
+    static let shared = SendCurrentAppWalletDataManager()
     
     var amount: Double
     private var maxAmount: Double // ??

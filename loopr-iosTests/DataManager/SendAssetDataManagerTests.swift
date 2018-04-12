@@ -1,5 +1,5 @@
 //
-//  SendAssetDataManagerTests.swift
+//  SendCurrentAppWalletDataManagerTests.swift
 //  loopr-iosTests
 //
 //  Created by kenshin on 2018/3/20.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import loopr_ios
 
-class SendAssetDataManagerTests: XCTestCase {
+class SendCurrentAppWalletDataManagerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -22,7 +22,7 @@ class SendAssetDataManagerTests: XCTestCase {
     }
     
     func testLoadGasLimits() {
-        let mgr = SendAssetDataManager.shared
+        let mgr = SendCurrentAppWalletDataManager.shared
         mgr.loadGasLimitsFromJson()
         XCTAssertEqual(mgr.getGasLimits().count, 8)
     }

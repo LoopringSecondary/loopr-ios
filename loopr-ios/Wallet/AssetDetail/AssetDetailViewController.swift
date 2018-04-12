@@ -56,11 +56,11 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     func setup() {
         // TODO: putting getMarketsFromServer() here may cause a race condition.
         // It's not perfect, but works. Need improvement in the future.
-        self.transactions = AssetDataManager.shared.getTransactions()
+        self.transactions = CurrentAppWalletDataManager.shared.getTransactions()
         if let asset = asset {
             
             // TODO: pass the address
-            AssetDataManager.shared.getTransactionsFromServer(owner: "0x267be1C1D684F78cb4F6a176C4911b741E4Ffdc0", asset: asset) { (transactions, error) in
+            CurrentAppWalletDataManager.shared.getTransactionsFromServer(owner: "0x267be1C1D684F78cb4F6a176C4911b741E4Ffdc0", asset: asset) { (transactions, error) in
                 guard error == nil else {
                     return
                 }

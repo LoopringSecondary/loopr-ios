@@ -14,7 +14,7 @@
 		940B45202060F67E00ADE2B9 /* OrderDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45122060F67B00ADE2B9 /* OrderDataManager.swift */; };
 		940B45212060F67E00ADE2B9 /* PlaceOrderDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45132060F67B00ADE2B9 /* PlaceOrderDataManager.swift */; };
 		940B45222060F67E00ADE2B9 /* PriceQuoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45142060F67C00ADE2B9 /* PriceQuoteDataManager.swift */; };
-		940B45232060F67E00ADE2B9 /* AssetDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45152060F67C00ADE2B9 /* AssetDataManager.swift */; };
+		940B45232060F67E00ADE2B9 /* CurrentAppWalletDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45152060F67C00ADE2B9 /* CurrentAppWalletDataManager.swift */; };
 		940B45242060F67E00ADE2B9 /* TradeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45162060F67C00ADE2B9 /* TradeDataManager.swift */; };
 		940B45252060F67E00ADE2B9 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45172060F67C00ADE2B9 /* UserDefaultsKeys.swift */; };
 		940B45262060F67E00ADE2B9 /* ConvertDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45182060F67D00ADE2B9 /* ConvertDataManager.swift */; };
@@ -519,7 +519,7 @@
 		940B45122060F67B00ADE2B9 /* OrderDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDataManager.swift; sourceTree = "<group>"; };
 		940B45132060F67B00ADE2B9 /* PlaceOrderDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceOrderDataManager.swift; sourceTree = "<group>"; };
 		940B45142060F67C00ADE2B9 /* PriceQuoteDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceQuoteDataManager.swift; sourceTree = "<group>"; };
-		940B45152060F67C00ADE2B9 /* AssetDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetDataManager.swift; sourceTree = "<group>"; };
+		940B45152060F67C00ADE2B9 /* CurrentAppWalletDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentAppWalletDataManager.swift; sourceTree = "<group>"; };
 		940B45162060F67C00ADE2B9 /* TradeDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeDataManager.swift; sourceTree = "<group>"; };
 		940B45172060F67C00ADE2B9 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		940B45182060F67D00ADE2B9 /* ConvertDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertDataManager.swift; sourceTree = "<group>"; };
@@ -1267,13 +1267,6 @@
 			path = Lato;
 			sourceTree = "<group>";
 		};
-		AC54FD93204FD357007E1DEB /* SettingFont */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SettingFont;
-			sourceTree = "<group>";
-		};
 		AC5E0DD2203A848300AF03C7 /* GenerateWallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -1642,6 +1635,16 @@
 			path = QRCode;
 			sourceTree = "<group>";
 		};
+		ACB8AD84207EE29600B478D6 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				940B45112060F67B00ADE2B9 /* AppWalletDataManager.swift */,
+				940B45152060F67C00ADE2B9 /* CurrentAppWalletDataManager.swift */,
+				940B45102060F67B00ADE2B9 /* GenerateWalletDataManager.swift */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
 		ACB9115D20242D9900F14644 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -1695,10 +1698,8 @@
 		ACB911672025470B00F14644 /* DataManagers */ = {
 			isa = PBXGroup;
 			children = (
-				940B45112060F67B00ADE2B9 /* AppWalletDataManager.swift */,
-				940B45152060F67C00ADE2B9 /* AssetDataManager.swift */,
+				ACB8AD84207EE29600B478D6 /* Wallet */,
 				940B45182060F67D00ADE2B9 /* ConvertDataManager.swift */,
-				940B45102060F67B00ADE2B9 /* GenerateWalletDataManager.swift */,
 				940B451C2060F67E00ADE2B9 /* MarketDataManager.swift */,
 				940B45122060F67B00ADE2B9 /* OrderDataManager.swift */,
 				940B45132060F67B00ADE2B9 /* PlaceOrderDataManager.swift */,
@@ -1740,7 +1741,6 @@
 				C87E226D2031708000323584 /* ToggleTableViewCell.swift */,
 				ACBA47DF20788E690032C2B4 /* SettingManageWallet */,
 				AC76E47520493CB7008BA229 /* SettingLanguage */,
-				AC54FD93204FD357007E1DEB /* SettingFont */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -2575,7 +2575,7 @@
 				ACA677D3207DCF1900D34A2F /* RelayAPIConfiguration.swift in Sources */,
 				AC72AED8204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift in Sources */,
 				949629DB204E836400858F03 /* Depth.swift in Sources */,
-				940B45232060F67E00ADE2B9 /* AssetDataManager.swift in Sources */,
+				940B45232060F67E00ADE2B9 /* CurrentAppWalletDataManager.swift in Sources */,
 				ACB5DD9A202D5B7100140A09 /* DefaultNumericKeyboard.swift in Sources */,
 				C8BF95B02027AC9400343B9A /* SetupViewController.swift in Sources */,
 				940B45262060F67E00ADE2B9 /* ConvertDataManager.swift in Sources */,

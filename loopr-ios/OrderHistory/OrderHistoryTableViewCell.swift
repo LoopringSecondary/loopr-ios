@@ -11,7 +11,7 @@ import UIKit
 class OrderHistoryTableViewCell: UITableViewCell {
 
     var order: Order?
-    let asset = AssetDataManager.shared
+    let asset = CurrentAppWalletDataManager.shared
     let market = MarketDataManager.shared
     let price = PriceQuoteDataManager.shared
     
