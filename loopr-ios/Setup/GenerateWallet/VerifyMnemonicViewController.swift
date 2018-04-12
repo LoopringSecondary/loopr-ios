@@ -87,7 +87,7 @@ class VerifyMnemonicViewController: UIViewController {
             currentIndex += 1
         }
         
-        if currentIndex == 24 {
+        if currentIndex == 25 {
             // TODO: verify the inputs
             
             // Store the new wallet to the local storage.

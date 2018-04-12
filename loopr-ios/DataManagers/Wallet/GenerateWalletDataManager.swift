@@ -52,6 +52,9 @@ class GenerateWalletDataManager {
 
     // TODO: In the design, users can only move to the next question?
     func getQuestion(index: Int) -> MnemonicQuestion {
+        if index >= mnemonicQuestions.count {
+            return mnemonicQuestions[0]
+        }
         return mnemonicQuestions[index]
     }
 
