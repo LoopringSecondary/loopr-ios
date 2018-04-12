@@ -30,6 +30,7 @@ class AppWallet: NSObject, NSCoding {
         self.mnemonics = mnemonics
         
         // Generate keystore data
+        /*
         guard let data = Data(hexString: privateKey) else {
             return // .failure(KeystoreError.failedToImportPrivateKey)
         }
@@ -39,6 +40,7 @@ class AppWallet: NSObject, NSCoding {
         } catch {
             
         }
+        */
     }
     
     func getKeystore() -> JSON {
