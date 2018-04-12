@@ -29,9 +29,7 @@ class AddCustomizedTokenViewController: UIViewController, UITextFieldDelegate {
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         
         self.navigationItem.title = "Add Custom Token"
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        setBackButton()
 
         tokenNameTextField.becomeFirstResponder()
         tokenNameTitleLabel.textColor = UIStyleConfig.systemDefaultBlueTintColor

@@ -34,9 +34,7 @@ class TradeReviewViewController: UIViewController {
         // Do any additional setup after loading the view.
         // self.navigationController?.isNavigationBarHidden = false
         
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        setBackButton()
         
         // TODO: Review or Confirmation?
         self.navigationItem.title = NSLocalizedString("Review", comment: "")

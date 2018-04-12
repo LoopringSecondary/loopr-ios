@@ -26,9 +26,7 @@ class TradeConfirmationViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationItem.title = NSLocalizedString("Confirmation", comment: "")
         
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        setBackButton()
         
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width

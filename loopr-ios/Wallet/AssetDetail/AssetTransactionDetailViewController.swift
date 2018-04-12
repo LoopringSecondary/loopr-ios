@@ -42,9 +42,7 @@ class AssetTransactionDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationItem.title = NSLocalizedString("Details", comment: "")
         
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        setBackButton()
         
         view.theme_backgroundColor = ["#fff", "#000"]
         typeImageView.theme_image = ["Received", "Received-white"]

@@ -20,9 +20,7 @@ class ExportKeystoreSwipeViewController: SwipeViewController {
 
         // Do any additional setup after loading the view.
         self.navigationItem.title = NSLocalizedString("Export Keystore", comment: "")
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        setBackButton()
 
         let displayKeystoreViewController = DisplayKeystoreViewController()
         displayKeystoreViewController.appWallet = appWallet

@@ -32,9 +32,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
 
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        setBackButton()
         
         udpateStarButton()
         

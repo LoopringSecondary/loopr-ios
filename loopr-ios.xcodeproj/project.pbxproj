@@ -411,6 +411,7 @@
 		ACB746E52043C5F5006C2BF5 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB746E32043C5F5006C2BF5 /* QRCodeViewController.swift */; };
 		ACB746E62043C5F5006C2BF5 /* QRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB746E42043C5F5006C2BF5 /* QRCodeViewController.xib */; };
 		ACB8AD87207EE40300B478D6 /* TokenDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB8AD86207EE40300B478D6 /* TokenDataManager.swift */; };
+		ACB8AD89207F299700B478D6 /* UIViewController+BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB8AD88207F299700B478D6 /* UIViewController+BackButton.swift */; };
 		ACB911522024254F00F14644 /* WalletNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911512024254F00F14644 /* WalletNavigationViewController.swift */; };
 		ACB911552024260E00F14644 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911532024260E00F14644 /* WalletViewController.swift */; };
 		ACB911562024260E00F14644 /* WalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB911542024260E00F14644 /* WalletViewController.xib */; };
@@ -807,6 +808,7 @@
 		ACB746E32043C5F5006C2BF5 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		ACB746E42043C5F5006C2BF5 /* QRCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeViewController.xib; sourceTree = "<group>"; };
 		ACB8AD86207EE40300B478D6 /* TokenDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDataManager.swift; sourceTree = "<group>"; };
+		ACB8AD88207F299700B478D6 /* UIViewController+BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+BackButton.swift"; sourceTree = "<group>"; };
 		ACB911512024254F00F14644 /* WalletNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletNavigationViewController.swift; sourceTree = "<group>"; };
 		ACB911532024260E00F14644 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		ACB911542024260E00F14644 /* WalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletViewController.xib; sourceTree = "<group>"; };
@@ -1596,6 +1598,7 @@
 				ACB5DD92202C09DC00140A09 /* Interactor.swift */,
 				AC70E84D20683C7500451047 /* IconView.swift */,
 				AC46F7752069FB4400CFDC40 /* UIButton+RoundButton.swift */,
+				ACB8AD88207F299700B478D6 /* UIViewController+BackButton.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -2500,6 +2503,7 @@
 				940B45202060F67E00ADE2B9 /* OrderDataManager.swift in Sources */,
 				AC3756702038D3ED00AADC60 /* UnlockWalletType.swift in Sources */,
 				ACB97C6D20707B6F00775D4C /* AddTokenTableViewCell.swift in Sources */,
+				ACB8AD89207F299700B478D6 /* UIViewController+BackButton.swift in Sources */,
 				AC5E0DDA203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift in Sources */,
 				94C5E79D207394F50074B939 /* CustomSearchController.swift in Sources */,
 				ACB911842026388700F14644 /* SettingViewController.swift in Sources */,
@@ -2864,7 +2868,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.dev.loopr-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

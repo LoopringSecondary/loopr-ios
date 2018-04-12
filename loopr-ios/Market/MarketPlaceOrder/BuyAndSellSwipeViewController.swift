@@ -20,9 +20,7 @@ class BuyAndSellSwipeViewController: SwipeViewController {
 
         // Do any additional setup after loading the view.
 
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        setBackButton()
         
         self.navigationItem.title = PlaceOrderDataManager.shared.getPairDescription()
         

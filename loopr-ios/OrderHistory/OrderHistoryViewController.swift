@@ -22,9 +22,7 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         view.theme_backgroundColor = ["#fff", "#000"]
         historyTableView.theme_backgroundColor = ["#fff", "#000"]
         self.navigationItem.title = NSLocalizedString("Order History", comment: "")
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        setBackButton()
         historyTableView.dataSource = self
         historyTableView.delegate = self
         

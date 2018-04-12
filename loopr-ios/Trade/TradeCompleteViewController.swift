@@ -18,9 +18,7 @@ class TradeCompleteViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        setBackButton()
 
         checkDetailsButton.setTitle(NSLocalizedString("Check Details", comment: ""), for: .normal)
         

@@ -22,9 +22,7 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
 
         // Do any additional setup after loading the view.
         
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        setBackButton()
         
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds

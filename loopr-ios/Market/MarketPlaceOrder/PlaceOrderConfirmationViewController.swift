@@ -17,9 +17,7 @@ class PlaceOrderConfirmationViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        setBackButton()
         
         self.navigationItem.title = NSLocalizedString("Confirmation", comment: "")
         

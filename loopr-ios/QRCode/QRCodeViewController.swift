@@ -44,9 +44,7 @@ class QRCodeViewController: UIViewController {
         saveToAlbumButton.layer.cornerRadius = 23
         saveToAlbumButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
         
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        setBackButton()
 
         let address = AppWalletDataManager.shared.getCurrentAppWallet()?.address
         addressLabel.text = address

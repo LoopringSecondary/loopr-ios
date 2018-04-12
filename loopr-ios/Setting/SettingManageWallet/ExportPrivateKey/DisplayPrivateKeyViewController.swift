@@ -20,9 +20,7 @@ class DisplayPrivateKeyViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.navigationItem.title = NSLocalizedString("Export Private Key", comment: "")
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        setBackButton()
 
         privateKeyTextView.text = appWallet.privateKey
 

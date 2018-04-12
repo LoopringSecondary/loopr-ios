@@ -17,9 +17,7 @@ class SettingChangeWalletNameViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.navigationItem.title = NSLocalizedString("Change Wallet Name", comment: "")
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        setBackButton()
 
     }
 

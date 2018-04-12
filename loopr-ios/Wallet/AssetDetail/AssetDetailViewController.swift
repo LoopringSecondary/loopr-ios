@@ -89,9 +89,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         self.navigationItem.title = asset?.name.capitalized ?? ""
 
         // For back button in navigation bar
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        setBackButton()
         
         // TODO: Remove the button.
         /*

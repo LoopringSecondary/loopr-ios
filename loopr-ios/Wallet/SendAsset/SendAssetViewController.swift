@@ -54,9 +54,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        setBackButton()
 
         sendButton.title = NSLocalizedString("Send", comment: "")
         sendButton.setupRoundBlack()

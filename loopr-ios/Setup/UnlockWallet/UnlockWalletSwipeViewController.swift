@@ -19,9 +19,7 @@ class UnlockWalletSwipeViewController: SwipeViewController {
 
         // Do any additional setup after loading the view.
         self.navigationItem.title = NSLocalizedString("Unlock Wallet", comment: "")
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        setBackButton()
         
         self.navigationController?.isNavigationBarHidden = false
         

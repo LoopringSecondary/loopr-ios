@@ -23,9 +23,7 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
 
         // Do any additional setup after loading the view.
         self.navigationItem.title = NSLocalizedString("Verification", comment: "")
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        setBackButton()
 
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds

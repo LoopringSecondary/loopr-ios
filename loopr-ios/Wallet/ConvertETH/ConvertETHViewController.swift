@@ -40,9 +40,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         // Do any additional setup after loading the view.
         self.navigationItem.title = NSLocalizedString("Convert", comment: "")
 
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        setBackButton()
 
         scrollViewButtonLayoutConstraint.constant = 0
         
