@@ -37,7 +37,7 @@ class Token {
     
     // TODO: do we need this initialization?
     init?(symbol: String) {
-        let token = CurrentAppWalletDataManager.shared.getTokenBySymbol(symbol)
+        let token = TokenDataManager.shared.getTokenBySymbol(symbol)
         guard token != nil else {
             return nil
         }

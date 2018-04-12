@@ -31,7 +31,7 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CurrentAppWalletDataManager.shared.getTokens().count
+        return TokenDataManager.shared.getTokens().count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -45,7 +45,7 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
             cell = nib![0] as? AddTokenTableViewCell
         }
         
-        let token = CurrentAppWalletDataManager.shared.getTokens()[indexPath.row]
+        let token = TokenDataManager.shared.getTokens()[indexPath.row]
         cell?.token = token
         cell?.update()
         

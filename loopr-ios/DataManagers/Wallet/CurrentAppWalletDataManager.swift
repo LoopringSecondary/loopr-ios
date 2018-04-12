@@ -17,20 +17,13 @@ class CurrentAppWalletDataManager {
     
     private var totalCurrencyValue: Double
     private var assets: [Asset]
-    private var tokens: [Token]
+    
     private var transactions: [Transaction]
     
     private init() {
         self.assets = []
-        self.tokens = []
         self.transactions = []
         self.totalCurrencyValue = 0
-        self.loadTokens()
-    }
-    
-    // Get a list of tokens
-    func getTokens() -> [Token] {
-        return tokens
     }
     
     func getTotalAsset() -> Double {
@@ -64,16 +57,7 @@ class CurrentAppWalletDataManager {
             txStatuses.contains(transaction.status)
         }
     }
-    
-    func getTokenBySymbol(_ symbol: String) -> Token? {
-        var result: Token? = nil
-        for case let token in tokens where token.symbol.lowercased() == symbol.lowercased() {
-            result = token
-            break
-        }
-        return result
-    }
-    
+
     func exchange(at sourceIndex: Int, to destinationIndex: Int) {
         if destinationIndex < assets.count && sourceIndex < assets.count {
             assets.swapAt(sourceIndex, destinationIndex)
@@ -85,47 +69,6 @@ class CurrentAppWalletDataManager {
         LoopringSocketIORequest.getBalance(owner: owner)
     }
     
-    func loadTokens() {
-        loadTokensFromJson()
-        loadTokensFromServer()
-    }
-    
-    // load tokens from json file to avoid http request
-    func loadTokensFromJson() {
-        if let path = Bundle.main.path(forResource: "tokens", ofType: "json") {
-            let jsonString = try? String(contentsOfFile: path, encoding: String.Encoding.utf8)
-            let json = JSON(parseJSON: jsonString!)
-            for subJson in json.arrayValue {
-                let token = Token(json: subJson)
-                tokens.append(token)
-            }
-        }
-    }
-    
-    func loadTokensFromServer() {
-        LoopringAPIRequest.getSupportedTokens { (tokens, error) in
-            guard let tokens = tokens, error == nil else {
-                return
-            }
-            for token in tokens {
-                // Check if the token exists in self.tokens.
-                if !self.tokens.contains(where: { (element) -> Bool in
-                    return element.symbol.lowercased() == token.symbol.lowercased()
-                }) {
-                    self.tokens.append(token)
-                }
-            }
-        }
-    }
-    
-    func getContractAddressBySymbol(symbol: String) -> String? {
-        if let token = getTokenBySymbol(symbol) {
-            return token.protocol_value
-        } else {
-            return nil
-        }
-    }
-    
     // TODO: Why precision is 4?
     func getAmount(of symbol: String, from gweiAmount: String, to precision: Int = 4) -> Double? {
         var result: Double? = nil
@@ -134,7 +77,7 @@ class CurrentAppWalletDataManager {
             let hexString = gweiAmount.dropFirst(2)
             let decString = BigUInt(hexString, radix: 16)!.description
             return getAmount(of: symbol, from: decString, to: precision)
-        } else if let token = getTokenBySymbol(symbol) {
+        } else if let token = TokenDataManager.shared.getTokenBySymbol(symbol) {
             var amount = gweiAmount
             if token.decimals >= amount.count {
                 let prepend = String(repeating: "0", count: token.decimals - amount.count + 1)
@@ -181,7 +124,7 @@ class CurrentAppWalletDataManager {
             let asset = Asset(json: subJson)
             if let balance = getAmount(of: asset.symbol, from: asset.balance) {
                 if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
-                    asset.name = getTokenBySymbol(asset.symbol)?.source ?? "unknown token"
+                    asset.name = TokenDataManager.shared.getTokenBySymbol(asset.symbol)?.source ?? "unknown token"
                     asset.balance = balance.description
 
                     let currencyFormatter = NumberFormatter()

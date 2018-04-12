@@ -44,7 +44,7 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CurrentAppWalletDataManager.shared.getTokens().count
+        return TokenDataManager.shared.getTokens().count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -58,7 +58,7 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
             cell = nib![0] as? SwitchTradeTokenTableViewCell
         }
 
-        let token = CurrentAppWalletDataManager.shared.getTokens()[indexPath.row]
+        let token = TokenDataManager.shared.getTokens()[indexPath.row]
         cell?.token = token
         cell?.update()
 
@@ -73,7 +73,7 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let token = CurrentAppWalletDataManager.shared.getTokens()[indexPath.row]
+        let token = TokenDataManager.shared.getTokens()[indexPath.row]
         
         switch type {
         case .tokenS:

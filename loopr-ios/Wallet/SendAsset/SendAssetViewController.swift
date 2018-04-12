@@ -214,7 +214,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             print("Invalid amount")
             return
         }
-        if let token = CurrentAppWalletDataManager.shared.getTokenBySymbol(asset!.symbol) {
+        if let token = TokenDataManager.shared.getTokenBySymbol(asset!.symbol) {
             if !token.protocol_value.isHexAddress() {
                 print("token protocol \(token.protocol_value) is invalid")
                 return
