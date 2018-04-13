@@ -57,6 +57,20 @@ class TokenDataManager {
     func getTokens() -> [Token] {
         return tokens
     }
+    
+    func getUnlistedTokensInCurrentAppWallet() -> [Token] {
+        guard let appWallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet() else {
+            return tokens
+        }
+
+        var unlistedTokens: [Token] = []
+        for token in tokens {
+            if !appWallet.assetSequence.contains(token.symbol) {
+                unlistedTokens.append(token)
+            }
+        }
+        return unlistedTokens
+    }
 
     func getTokenBySymbol(_ symbol: String) -> Token? {
         var result: Token? = nil

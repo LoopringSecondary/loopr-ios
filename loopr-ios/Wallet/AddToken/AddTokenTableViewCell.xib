@@ -20,9 +20,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitcoin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjB-bF-EN7">
-                        <rect key="frame" x="62" y="13.5" width="150" height="44"/>
+                        <rect key="frame" x="62" y="13.5" width="174" height="44"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="150" id="csZ-Za-owQ"/>
+                            <constraint firstAttribute="width" constant="174" id="csZ-Za-owQ"/>
                             <constraint firstAttribute="height" constant="44" id="sUO-A3-vn8"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
