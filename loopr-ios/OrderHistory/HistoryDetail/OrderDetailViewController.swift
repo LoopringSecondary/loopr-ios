@@ -45,12 +45,9 @@ class OrderDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
-        
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        self.navigationItem.title = NSLocalizedString("Order Detail", comment: "")
+        setBackButton()
         setup()
     }
 
@@ -218,5 +215,4 @@ class OrderDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

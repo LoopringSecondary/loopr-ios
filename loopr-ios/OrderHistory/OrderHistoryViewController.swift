@@ -25,7 +25,6 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         setBackButton()
         historyTableView.dataSource = self
         historyTableView.delegate = self
-        
         orderDates = orders.keys.sorted(by: >)
         
         let orderSearchButton = UIButton(type: UIButtonType.custom)
@@ -61,6 +60,15 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         cell?.order = orders[orderDates[indexPath.section]]![indexPath.row]
         cell?.update()
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let order = orders[orderDates[indexPath.section]]![indexPath.row]
+        let viewController = OrderDetailViewController()
+        viewController.order = order
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
