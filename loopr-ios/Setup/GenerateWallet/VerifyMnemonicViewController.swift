@@ -23,6 +23,8 @@ class VerifyMnemonicViewController: UIViewController {
     let progressView = UIProgressView(progressViewStyle: .bar)
     
     var enterWalletButton = UIButton()
+    
+    var blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,13 +89,14 @@ class VerifyMnemonicViewController: UIViewController {
             currentIndex += 1
         }
         
-        if currentIndex == 25 {
+        if currentIndex == GenerateWalletDataManager.shared.getMnemonics().count {
             // TODO: verify the inputs
             
             // Store the new wallet to the local storage.
             _ = GenerateWalletDataManager.shared.complete()
             
             // Show enter wallet button
+            /*
             let width = view.bounds.width
             let height = view.bounds.height
             
@@ -102,6 +105,66 @@ class VerifyMnemonicViewController: UIViewController {
             enterWalletButton.setTitle(NSLocalizedString("Enter Wallet", comment: ""), for: .normal)
             enterWalletButton.addTarget(self, action: #selector(dismissGenerateWallet), for: .touchUpInside)
             view.addSubview(enterWalletButton)
+            
+            enterWalletButton.alpha = 0.0
+            UIView.animate(withDuration: 2, animations: {
+                self.enterWalletButton.alpha = 1.0
+            })
+            */
+
+            // TODO: need to improve the blur effect
+            let screenSize: CGRect = UIScreen.main.bounds
+            blurVisualEffectView.frame = screenSize
+            
+            self.blurVisualEffectView.alpha = 1.0
+            
+            let attributedString = NSAttributedString(string: "Are you going to exit the verification process?", attributes: [
+                NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getMedium(), size: 17) ?? UIFont.systemFont(ofSize: 17),
+                NSAttributedStringKey.foregroundColor: UIColor.init(rgba: "#030303")
+                ])
+            let alertController = UIAlertController(title: nil,
+                                                    message: nil,
+                                                    preferredStyle: .alert)
+            
+            alertController.setValue(attributedString, forKey: "attributedMessage")
+
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: { _ in
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.blurVisualEffectView.alpha = 0.0
+                }, completion: {(_) in
+                    self.blurVisualEffectView.removeFromSuperview()
+                })
+                
+            })
+            alertController.addAction(cancelAction)
+
+            let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: { _ in
+                // Avoid a delay in the animation
+                // let viewController = VerifyMnemonicViewController()
+                // self.navigationController?.pushViewController(viewController, animated: true)
+                
+                self.dismissGenerateWallet()
+                
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.blurVisualEffectView.alpha = 0.0
+                }, completion: {(_) in
+                    self.blurVisualEffectView.removeFromSuperview()
+                    
+                })
+                
+            })
+            alertController.addAction(confirmAction)
+            
+            let backView = alertController.view.subviews.last?.subviews.last
+            backView?.layer.cornerRadius = 10.0
+            backView?.backgroundColor = UIColor.white
+            
+            // Add a blur view to the whole screen
+            self.navigationController?.view.addSubview(blurVisualEffectView)
+            
+            // Show the UIAlertController
+            self.present(alertController, animated: true, completion: nil)
+
         } else {
             let mnemonicQuestion = GenerateWalletDataManager.shared.getQuestion(index: currentIndex)
             
@@ -128,7 +191,7 @@ class VerifyMnemonicViewController: UIViewController {
         button3.setupRoundWhite()
         button4.setupRoundWhite()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
             self.loadNextQuestion()
         })
     }
@@ -140,7 +203,7 @@ class VerifyMnemonicViewController: UIViewController {
         button3.setupRoundWhite()
         button4.setupRoundWhite()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
             self.loadNextQuestion()
         })
     }
@@ -152,7 +215,7 @@ class VerifyMnemonicViewController: UIViewController {
         button3.setupRoundBlack()
         button4.setupRoundWhite()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
             self.loadNextQuestion()
         })
     }
@@ -164,7 +227,7 @@ class VerifyMnemonicViewController: UIViewController {
         button3.setupRoundWhite()
         button4.setupRoundBlack()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
             self.loadNextQuestion()
         })
     }
