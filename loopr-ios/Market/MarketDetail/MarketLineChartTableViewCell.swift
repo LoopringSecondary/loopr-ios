@@ -178,7 +178,7 @@ class MarketLineChartTableViewCell: UITableViewCell, ChartViewDelegate {
 //        shapeLayer.lineWidth = 3.0
 //
 //        lineChartView.layer.addSublayer(shapeLayer)
-        lineChartView.highlightValue(highlight)
+//        lineChartView.highlightValue(highlight)
         balanceLabel.setText(entry.y.description, animated: true)
         displayLabel.text = "$ " + (entry.y * 490.46).description
         trendLabel.textColor = UIColor.black
@@ -200,7 +200,7 @@ class MarketLineChartTableViewCell: UITableViewCell, ChartViewDelegate {
         lineChartView.viewPortHandler.setMaximumScaleX(2)
 
         lineChartView.legend.enabled = false
-        lineChartView.animate(yAxisDuration: 2.5)
+        lineChartView.animate(yAxisDuration: 1.5)
         
         setDataCount(trends?.count ?? 0) // mock
         

@@ -137,7 +137,6 @@ class MarketDataManager {
     func onTickerResponse(json: JSON) {
         // TODO: Apply diff algorithm.
         markets = []
-        // print(json)
         for subJson in json.arrayValue {
             if let market = Market(json: subJson) {
                 markets.append(market)

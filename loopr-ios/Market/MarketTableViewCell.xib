@@ -46,7 +46,7 @@
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="4" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JRa-ye-axG">
-                        <rect key="frame" x="171.5" y="17" width="99" height="50"/>
+                        <rect key="frame" x="188" y="17" width="99" height="50"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0009532" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POG-5X-TsA">
                                 <rect key="frame" x="0.0" y="0.0" width="99" height="20.5"/>
@@ -85,7 +85,7 @@
                     <constraint firstItem="MI6-VZ-KdX" firstAttribute="leading" secondItem="KbS-9j-hkE" secondAttribute="trailing" multiplier="1.3" id="LK9-uI-ga4"/>
                     <constraint firstItem="KbS-9j-hkE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="NGt-Z3-RXd"/>
                     <constraint firstItem="MI6-VZ-KdX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Uyr-G4-BvK"/>
-                    <constraint firstItem="JRa-ye-axG" firstAttribute="leading" secondItem="MI6-VZ-KdX" secondAttribute="trailing" multiplier="1.1" id="qje-x4-v9F"/>
+                    <constraint firstItem="JRa-ye-axG" firstAttribute="leading" secondItem="MI6-VZ-KdX" secondAttribute="trailing" multiplier="1.2" id="qje-x4-v9F"/>
                     <constraint firstItem="KbS-9j-hkE" firstAttribute="leftMargin" secondItem="H2p-sc-9uM" secondAttribute="left" constant="20" id="u5m-2e-gwy"/>
                 </constraints>
             </tableViewCellContentView>

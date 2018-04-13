@@ -28,32 +28,31 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtS-7h-KVh" userLabel="Market">
-                    <rect key="frame" x="166.66666666666666" y="102.66666666666667" width="42" height="21"/>
+                    <rect key="frame" x="166.66666666666666" y="53.333333333333336" width="42" height="21.000000000000007"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YjK-d4-nlP" userLabel="Sell/Buy">
-                    <rect key="frame" x="208.66666666666666" y="102.66666666666667" width="42" height="21"/>
+                    <rect key="frame" x="210.66666666666666" y="53.333333333333336" width="42" height="21.000000000000007"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qXy-hK-gZM" customClass="CircleChart" customModule="loopr_ios" customModuleProvider="target">
-                    <rect key="frame" x="147" y="154.66666666666666" width="81" height="81.333333333333343"/>
-                    <color key="backgroundColor" red="1" green="0.01081191477" blue="0.01539696288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="126.66666666666666" y="89.333333333333314" width="121.66666666666666" height="121.66666666666669"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="qXy-hK-gZM" secondAttribute="height" id="tfQ-xp-eBZ"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNB-SU-Apn" userLabel="Amount">
-                    <rect key="frame" x="166.66666666666666" y="259.66666666666669" width="42" height="21"/>
+                    <rect key="frame" x="166.66666666666666" y="232.66666666666666" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mQ-Aq-Bby" userLabel="Display">
-                    <rect key="frame" x="166.66666666666666" y="309" width="42" height="21"/>
+                    <rect key="frame" x="166.66666666666666" y="279" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -61,11 +60,11 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="qXy-hK-gZM" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" id="5IX-eg-yyK"/>
-                <constraint firstItem="YjK-d4-nlP" firstAttribute="leading" secondItem="qtS-7h-KVh" secondAttribute="trailing" id="7Np-BM-xW3"/>
+                <constraint firstItem="qXy-hK-gZM" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.15" id="5IX-eg-yyK"/>
+                <constraint firstItem="YjK-d4-nlP" firstAttribute="leading" secondItem="qtS-7h-KVh" secondAttribute="trailing" constant="2" id="7Np-BM-xW3"/>
                 <constraint firstItem="qXy-hK-gZM" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="8nL-6Y-k9R"/>
-                <constraint firstItem="qXy-hK-gZM" firstAttribute="top" secondItem="qtS-7h-KVh" secondAttribute="bottom" multiplier="1.25" id="HmV-PH-4mM"/>
-                <constraint firstItem="qtS-7h-KVh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="centerY" multiplier="0.25" id="Kwl-q5-qKL"/>
+                <constraint firstItem="qXy-hK-gZM" firstAttribute="top" secondItem="qtS-7h-KVh" secondAttribute="bottom" multiplier="1.2" id="HmV-PH-4mM"/>
+                <constraint firstItem="qtS-7h-KVh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="centerY" multiplier="0.13" id="Kwl-q5-qKL"/>
                 <constraint firstItem="6mQ-Aq-Bby" firstAttribute="top" secondItem="sNB-SU-Apn" secondAttribute="bottom" multiplier="1.1" id="OOo-Al-8zf"/>
                 <constraint firstItem="sNB-SU-Apn" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="cEV-Dc-Fe7"/>
                 <constraint firstItem="YjK-d4-nlP" firstAttribute="centerY" secondItem="qtS-7h-KVh" secondAttribute="centerY" id="ci2-CI-jbn"/>
