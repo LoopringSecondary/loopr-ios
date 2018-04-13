@@ -15,6 +15,8 @@ class CurrentAppWalletDataManager {
 
     static let shared = CurrentAppWalletDataManager()
     
+    private var currentAppWallet: AppWallet?
+    
     private var totalCurrencyValue: Double
     private var assets: [Asset]
     
@@ -26,6 +28,29 @@ class CurrentAppWalletDataManager {
         self.totalCurrencyValue = 0
     }
     
+    func setup() {
+        getCurrentAppWalletFromLocalStorage()
+    }
+    
+    func getCurrentAppWalletFromLocalStorage() {
+        let defaults = UserDefaults.standard
+        if let privateKeyString = defaults.string(forKey: UserDefaultsKeys.currentAppWallet.rawValue) {
+            for appWallet in AppWalletDataManager.shared.getWallets() where appWallet.privateKey == privateKeyString {
+                setCurrentAppWallet(appWallet)
+            }
+        }
+    }
+    
+    func getCurrentAppWallet() -> AppWallet? {
+        return currentAppWallet
+    }
+
+    func setCurrentAppWallet(_ appWallet: AppWallet) {
+        let defaults = UserDefaults.standard
+        defaults.set(appWallet.privateKey, forKey: UserDefaultsKeys.currentAppWallet.rawValue)
+        currentAppWallet = appWallet
+    }
+
     func getTotalAsset() -> Double {
         return totalCurrencyValue
     }

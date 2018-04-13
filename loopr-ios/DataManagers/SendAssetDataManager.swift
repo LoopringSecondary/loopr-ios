@@ -67,7 +67,7 @@ class SendCurrentAppWalletDataManager {
     }
     
     func getNonceFromServer() {
-        if let address = AppWalletDataManager.shared.getCurrentAppWallet()?.address {
+        if let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
             EthereumAPIRequest.eth_getTransactionCount(data: address, block: BlockTag.pending, completionHandler: { (data, error) in
                 guard error == nil, let data = data else {
                     return

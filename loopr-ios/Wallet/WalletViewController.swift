@@ -62,7 +62,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let button =  UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 120, height: 40)
         
-        var buttonTitle = AppWalletDataManager.shared.getCurrentAppWallet()?.name
+        var buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name
         if buttonTitle == nil {
             buttonTitle = NSLocalizedString("Wallet", comment: "")
         }
@@ -99,7 +99,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @objc func pressQRCodeButton(_ button: UIBarButtonItem) {
         print("pressQRCodeButton")
-        if AppWalletDataManager.shared.getCurrentAppWallet() != nil {
+        if CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil {
             let viewController = QRCodeViewController()
             viewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(viewController, animated: true)

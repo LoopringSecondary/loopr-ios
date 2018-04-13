@@ -77,7 +77,7 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
             preferredStyle: .alert)
         
         let defaultAction = UIAlertAction(title: "Confirm", style: .default, handler: { _ in
-            AppWalletDataManager.shared.setCurrentAppWallet(appWallet)
+            CurrentAppWalletDataManager.shared.setCurrentAppWallet(appWallet)
         })
         alertController.addAction(defaultAction)
         

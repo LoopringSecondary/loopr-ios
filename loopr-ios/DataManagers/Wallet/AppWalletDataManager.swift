@@ -12,13 +12,16 @@ class AppWalletDataManager {
     
     static let shared = AppWalletDataManager()
     
-    private var currentAppWallet: AppWallet?
     private var appWallets: [AppWallet]
 
     private var confirmedToLogout: Bool = false
     
     private init() {
         appWallets = []
+    }
+    
+    func setup() {
+        getAppWalletsFromLocalStorage()
     }
 
     // MARK: Logout
@@ -38,30 +41,6 @@ class AppWalletDataManager {
         return false
     }
 
-    func setup() {
-        getAppWalletsFromLocalStorage()
-        getCurrentAppWalletFromLocalStorage()
-    }
-
-    func getCurrentAppWalletFromLocalStorage() {
-        let defaults = UserDefaults.standard
-        if let privateKeyString = defaults.string(forKey: UserDefaultsKeys.currentAppWallet.rawValue) {
-            for appWallet in appWallets where appWallet.privateKey == privateKeyString {
-                setCurrentAppWallet(appWallet)
-            }
-        }
-    }
-
-    func getCurrentAppWallet() -> AppWallet? {
-        return currentAppWallet
-    }
-    
-    func setCurrentAppWallet(_ appWallet: AppWallet) {
-        let defaults = UserDefaults.standard
-        defaults.set(appWallet.privateKey, forKey: UserDefaultsKeys.currentAppWallet.rawValue)
-        currentAppWallet = appWallet
-    }
-    
     func getWallets() -> [AppWallet] {
         return appWallets
     }
@@ -95,7 +74,7 @@ class AppWalletDataManager {
         
         AddAndUpdateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         
-        setCurrentAppWallet(newAppWallet)
+        CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
         print("Finished unlocking a new wallet")
     }
     
@@ -107,7 +86,7 @@ class AppWalletDataManager {
         
         AddAndUpdateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         
-        setCurrentAppWallet(newAppWallet)
+        CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
         print("Finished unlocking a new wallet")
     }
 
@@ -129,8 +108,6 @@ class AppWalletDataManager {
         print(privateKey.hexString)
         
         // TODO: Keystore
-        
-        
 
         var walletNameLocal: String
         if walletName.trimmingCharacters(in: NSCharacterSet.whitespaces).count == 0 {
@@ -142,7 +119,7 @@ class AppWalletDataManager {
         let newAppWallet = AppWallet(address: address.description, privateKey: privateKey.hexString, name: walletNameLocal, active: true, mnemonics: mnemonics)
         
         AddAndUpdateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
-        setCurrentAppWallet(newAppWallet)
+        CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
 
         return newAppWallet
     }

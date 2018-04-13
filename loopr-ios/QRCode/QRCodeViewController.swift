@@ -46,7 +46,7 @@ class QRCodeViewController: UIViewController {
         
         setBackButton()
 
-        let address = AppWalletDataManager.shared.getCurrentAppWallet()?.address
+        let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
         addressLabel.text = address
 
         let data = address?.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
@@ -73,13 +73,13 @@ class QRCodeViewController: UIViewController {
     }
 
     @IBAction func pressedCopyAddressButton(_ sender: Any) {
-        let address = AppWalletDataManager.shared.getCurrentAppWallet()!.address
+        let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         print("pressedCopyAddressButton address: \(address)")
         UIPasteboard.general.string = address
     }
 
     @IBAction func pressedSaveToAlbum(_ sender: Any) {
-        let address = AppWalletDataManager.shared.getCurrentAppWallet()!.address
+        let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         print("pressedSaveToAlbum address: \(address)")
     }
 

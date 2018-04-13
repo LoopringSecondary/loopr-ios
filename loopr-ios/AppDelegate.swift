@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FontConfigManager.shared.setup()
 
         AppWalletDataManager.shared.setup()
+        CurrentAppWalletDataManager.shared.setup()
 
         if AppWalletDataManager.shared.getWallets().isEmpty {
             self.window?.rootViewController = SetupNavigationController(nibName: nil, bundle: nil)

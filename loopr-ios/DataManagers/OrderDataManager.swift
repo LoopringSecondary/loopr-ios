@@ -19,7 +19,7 @@ class OrderDataManager {
     private init() {
         orders = []
         dataOrders = [:]
-        owner = AppWalletDataManager.shared.getCurrentAppWallet()?.address
+        owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
     }
     
     func getOrders(orderStatuses: [OrderStatus]? = nil) -> [Order] {

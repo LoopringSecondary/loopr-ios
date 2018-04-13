@@ -91,7 +91,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func section0Cell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
-            var currentWalletName = AppWalletDataManager.shared.getCurrentAppWallet()?.name
+            var currentWalletName = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name
             if currentWalletName == nil {
                 currentWalletName = ""
             }
