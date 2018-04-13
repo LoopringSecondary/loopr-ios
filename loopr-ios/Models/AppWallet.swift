@@ -21,7 +21,9 @@ class AppWallet: NSObject, NSCoding {
 
     var keystoreData: Data = Data()
     
-    init(address: String, privateKey: String, name: String, active: Bool, mnemonics: [String] = []) {
+    var assetSequence: [String] = []
+    
+    init(address: String, privateKey: String, name: String, active: Bool, mnemonics: [String] = [], assetSequence: [String] = []) {
         self.address = address
         self.privateKey = privateKey
         self.name = name
@@ -41,6 +43,8 @@ class AppWallet: NSObject, NSCoding {
             
         }
         */
+        
+        self.assetSequence = assetSequence
     }
     
     func getKeystore() -> JSON {
@@ -63,6 +67,8 @@ class AppWallet: NSObject, NSCoding {
         aCoder.encode(active, forKey: "active")
         
         aCoder.encode(mnemonics, forKey: "mnemonics")
+        
+        aCoder.encode(assetSequence, forKey: "assetSequence")
     }
 
     required convenience init?(coder aDecoder: NSCoder) {
@@ -75,8 +81,10 @@ class AppWallet: NSObject, NSCoding {
         // TODO: mnemonics vs. mnemonic
         let mnemonics = aDecoder.decodeObject(forKey: "mnemonics") as? [String]
         
+        let assetSequence = aDecoder.decodeObject(forKey: "assetSequence") as? [String] ?? []
+
         if let address = address, let privateKey = privateKey, let mnemonics = mnemonics, let name = name {
-            self.init(address: address, privateKey: privateKey, name: name, active: active, mnemonics: mnemonics)
+            self.init(address: address, privateKey: privateKey, name: name, active: active, mnemonics: mnemonics, assetSequence: assetSequence)
         } else {
             return nil
         }

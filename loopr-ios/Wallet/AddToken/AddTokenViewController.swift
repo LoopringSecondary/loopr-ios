@@ -44,10 +44,14 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         let token = TokenDataManager.shared.getTokens()[indexPath.row]
+
         cell?.token = token
         cell?.update()
         
         return cell!
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }

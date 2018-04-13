@@ -18,6 +18,7 @@ class CurrentAppWalletDataManager {
     private var currentAppWallet: AppWallet?
     
     private var totalCurrencyValue: Double
+
     private var assets: [Asset]
     
     private var transactions: [Transaction]
@@ -49,6 +50,12 @@ class CurrentAppWalletDataManager {
         let defaults = UserDefaults.standard
         defaults.set(appWallet.privateKey, forKey: UserDefaultsKeys.currentAppWallet.rawValue)
         currentAppWallet = appWallet
+        
+        // Init assets using assetSequence in AppWallet
+        for symbol in currentAppWallet!.assetSequence {
+            let asset = Asset(symbol: symbol)
+            assets.append(asset)
+        }
     }
 
     func getTotalAsset() -> Double {
@@ -63,7 +70,7 @@ class CurrentAppWalletDataManager {
         let formattedNumber = currencyFormatter.string(from: NSNumber(value: totalCurrencyValue)) ?? "\(totalCurrencyValue)"
         return formattedNumber
     }
-    
+
     func getAssets(enable: Bool? = nil) -> [Asset] {
         guard let enable = enable else {
             return self.assets
@@ -84,8 +91,16 @@ class CurrentAppWalletDataManager {
     }
 
     func exchange(at sourceIndex: Int, to destinationIndex: Int) {
+        guard let currentAppWallet = currentAppWallet else {
+            return
+        }
+
         if destinationIndex < assets.count && sourceIndex < assets.count {
             assets.swapAt(sourceIndex, destinationIndex)
+        }
+        
+        if destinationIndex < currentAppWallet.assetSequence.count && sourceIndex < currentAppWallet.assetSequence.count {
+            currentAppWallet.assetSequence.swapAt(sourceIndex, destinationIndex)
         }
     }
     
@@ -141,7 +156,7 @@ class CurrentAppWalletDataManager {
 
     // this func should be called every 10 secs when emitted
     func onBalanceResponse(json: JSON) {
-        assets = []
+        // assets = []
         totalCurrencyValue = 0
         for subJson in json["tokens"].arrayValue {
             print("onBalanceResponse")
@@ -160,7 +175,16 @@ class CurrentAppWalletDataManager {
                     // asset.display = "$ " + String(formattedNumber.dropFirst())
                     asset.display = formattedNumber
 
-                    assets.append(asset)
+                    // If the asset is in the array, then replace it.
+                    if let index = assets.index(of: asset) {
+                        assets[index] = asset
+                    } else {
+                        assets.append(asset)
+                        if currentAppWallet != nil {
+                            currentAppWallet!.assetSequence.append(asset.symbol)
+                        }
+                    }
+
                     totalCurrencyValue += balance * price
                 }
             }
