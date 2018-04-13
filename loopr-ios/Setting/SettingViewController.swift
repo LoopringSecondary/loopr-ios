@@ -12,8 +12,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var settingsTableView: UITableView!
     
-    let sectionTitles = ["User Preferences", "Tools", "Trading", "Relay", "About"]
-    let sectionRows = [5, 3, 3, 3, 6]
+    let sectionTitles = ["User Preferences", "Trading", "Relay", "About"]
+    let sectionRows = [5, 3, 3, 6]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,12 +44,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 0:
             return section0Cell(row: indexPath.row)
         case 1:
-            return section1Cell(row: indexPath.row)
-        case 2:
             return section2Cell(row: indexPath.row)
-        case 3:
+        case 2:
             return section3Cell(row: indexPath.row)
-        case 4:
+        case 3:
             return section4Cell(row: indexPath.row)
         default:
             return UITableViewCell()
@@ -109,21 +107,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
     }
-    
-    func section1Cell(row: Int) -> UITableViewCell {
-        switch row {
-        case 0:
-            return createDetailTableCell(title: "Backup Wallet")
-        case 1:
-            return createDetailTableCell(title: "Display Private Keys")
-        case 2:
-            return createDetailTableCell(title: "Pair Devices")
-        default:
-            return UITableViewCell()
-        }
-        
-    }
-    
+
     func section2Cell(row: Int) -> UITableViewCell {
         switch row {
         case 0:

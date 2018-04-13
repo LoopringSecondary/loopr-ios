@@ -44,6 +44,10 @@ class AppWallet: NSObject, NSCoding {
     }
     
     func getKeystore() -> JSON {
+        // TODO: catch error
+        let data = Data(hexString: privateKey)!
+        let key = try! KeystoreKey(password: "password", key: data)
+        keystoreData = try! JSONEncoder().encode(key)
         let json = try! JSON(data: keystoreData)
         return json
     }
