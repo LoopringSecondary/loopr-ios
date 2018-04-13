@@ -24,7 +24,6 @@ PODS:
   - Starscream (3.0.4)
   - SwiftLint (0.25.0)
   - SwiftTheme (0.4.1)
-  - SwiftyJSON (4.0.0)
   - TrezorCrypto (0.0.4)
 
 DEPENDENCIES:
@@ -41,7 +40,6 @@ DEPENDENCIES:
   - Socket.IO-Client-Swift (~> 13.1.0)
   - SwiftLint
   - SwiftTheme
-  - SwiftyJSON
   - TrezorCrypto
 
 EXTERNAL SOURCES:
@@ -72,9 +70,8 @@ SPEC CHECKSUMS:
   Starscream: f5da93fe6984c77b694366bf7299b7dc63a76f26
   SwiftLint: e14651157288e9e01d6e1a71db7014fb5744a8ea
   SwiftTheme: 36d71c4eed4b2c401c782cf036e4586c749a8173
-  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803
 
-PODFILE CHECKSUM: 703be5e74d797c3ff47b10c3526079fd0e3ab907
+PODFILE CHECKSUM: 0c38db8c107077edcde896ce5f4ef62dbefad9c0
 
 COCOAPODS: 1.4.0

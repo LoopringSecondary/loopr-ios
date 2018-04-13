@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SwiftyJSON
+import UIKit
 
 // TODO: What is difference between Asset and Token? Could we merge these two classes?
 class Asset: CustomStringConvertible, Equatable {

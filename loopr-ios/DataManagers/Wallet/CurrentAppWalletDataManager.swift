@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyJSON
 import BigInt
 
 // TODO: Need to be associated to the current wallet.

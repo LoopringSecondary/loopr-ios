@@ -8,7 +8,6 @@
 
 import Foundation
 import SocketIO
-import SwiftyJSON
 
 public class LoopringSocketIORequest {
     

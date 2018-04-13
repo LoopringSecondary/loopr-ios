@@ -270,6 +270,7 @@
 		AC4F601620773E9D00F1D954 /* EthTypeEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F600920773E9D00F1D954 /* EthTypeEncoder.swift */; };
 		AC4F601720773E9D00F1D954 /* web3swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F600B20773E9D00F1D954 /* web3swift.swift */; };
 		AC4F601A2077536400F1D954 /* testKeystore.json in Resources */ = {isa = PBXBuildFile; fileRef = AC4F60192077536400F1D954 /* testKeystore.json */; };
+		AC5442DC2081167E0036A2B4 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5442DB2081167E0036A2B4 /* SwiftyJSON.swift */; };
 		AC54FD55204FC6BD007E1DEB /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD37204FC686007E1DEB /* Lato-Black.ttf */; };
 		AC54FD56204FC6BE007E1DEB /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD37204FC686007E1DEB /* Lato-Black.ttf */; };
 		AC54FD57204FC6BF007E1DEB /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD37204FC686007E1DEB /* Lato-Black.ttf */; };
@@ -703,6 +704,7 @@
 		AC4F600920773E9D00F1D954 /* EthTypeEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthTypeEncoder.swift; sourceTree = "<group>"; };
 		AC4F600B20773E9D00F1D954 /* web3swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = web3swift.swift; sourceTree = "<group>"; };
 		AC4F60192077536400F1D954 /* testKeystore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testKeystore.json; sourceTree = "<group>"; };
+		AC5442DB2081167E0036A2B4 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		AC54FD1C204FC3F8007E1DEB /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		AC54FD1D204FC3F8007E1DEB /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		AC54FD1E204FC3F9007E1DEB /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
@@ -1233,6 +1235,14 @@
 			path = DataTypes;
 			sourceTree = "<group>";
 		};
+		AC5442DA2081163D0036A2B4 /* SwiftyJSON@a1700fb */ = {
+			isa = PBXGroup;
+			children = (
+				AC5442DB2081167E0036A2B4 /* SwiftyJSON.swift */,
+			);
+			path = "SwiftyJSON@a1700fb";
+			sourceTree = "<group>";
+		};
 		AC54FD26204FC61C007E1DEB /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1435,6 +1445,7 @@
 				AC798E422022B93A0071D477 /* AppDelegate.swift */,
 				AC798E482022B93A0071D477 /* Main.storyboard */,
 				C8BF959C202696A900343B9A /* MainTabController.swift */,
+				AC5442DA2081163D0036A2B4 /* SwiftyJSON@a1700fb */,
 				AC4F5FFA20773E9D00F1D954 /* web3swift@fe0c304 */,
 				AC31B93B204A8D1F00B16155 /* Keystone@8fea1ff */,
 				ACB746E22043C5CC006C2BF5 /* QRCode */,
@@ -2282,7 +2293,6 @@
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TrezorCrypto/TrezorCrypto.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
@@ -2303,7 +2313,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTheme.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrezorCrypto.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
@@ -2508,6 +2517,7 @@
 				AC4142062038B66F0089861D /* AppWallet.swift in Sources */,
 				ACB97C7020715BC100775D4C /* MnemonicQuestion.swift in Sources */,
 				940B45202060F67E00ADE2B9 /* OrderDataManager.swift in Sources */,
+				AC5442DC2081167E0036A2B4 /* SwiftyJSON.swift in Sources */,
 				AC3756702038D3ED00AADC60 /* UnlockWalletType.swift in Sources */,
 				ACB97C6D20707B6F00775D4C /* AddTokenTableViewCell.swift in Sources */,
 				ACB8AD89207F299700B478D6 /* UIViewController+BackButton.swift in Sources */,

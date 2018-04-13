@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyJSON
 
 enum TradeType: CustomStringConvertible {
     case buy

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyJSON
 
 // https://github.com/Loopring/relay/blob/wallet_v2/LOOPRING_RELAY_API_SPEC_V2.md#loopring_getorders
 class LoopringAPIRequest {

@@ -8,7 +8,6 @@
 
 import UIKit
 import Geth
-import SwiftyJSON
 import NotificationBannerSwift
 
 class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {

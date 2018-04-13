@@ -7,7 +7,6 @@ target 'loopr-ios' do
 
   # Pods for loopr-ios
   pod 'Charts'
-  pod 'SwiftyJSON'
   pod 'lottie-ios'
   pod 'pop'
   pod 'PopupDialog'

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyJSON
 
 class Trend {
     let amount: Double

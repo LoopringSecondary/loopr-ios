@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyJSON
 
 public typealias CompletionHandler = (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void
 

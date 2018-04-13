@@ -8,7 +8,6 @@
 
 import XCTest
 @testable import loopr_ios
-import SwiftyJSON
 
 class EthereumAPIRequestTests: XCTestCase {
     

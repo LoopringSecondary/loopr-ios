@@ -8,7 +8,6 @@
 
 import XCTest
 import Geth
-import SwiftyJSON
 @testable import loopr_ios
 
 class KeystoreAndWeb3SwiftTests: XCTestCase {
