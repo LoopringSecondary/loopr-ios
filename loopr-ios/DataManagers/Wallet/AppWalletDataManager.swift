@@ -54,12 +54,15 @@ class AppWalletDataManager {
             }
         }
     }
-    
-    func AddAndUpdateAppWalletsInLocalStorage(newAppWallet: AppWallet) {
-        for appWallet in appWallets where appWallet == newAppWallet {
-            return
+
+    func updateAppWalletsInLocalStorage(newAppWallet: AppWallet) {
+        if let index = appWallets.index(of: newAppWallet) {
+            appWallets[index] = newAppWallet
+        } else {
+            appWallets.insert(newAppWallet, at: 0)
         }
-        appWallets.append(newAppWallet)
+
+        // TODO: if the size of encodedData is large, the perfomance may drop.
         let defaults = UserDefaults.standard
         let encodedData = NSKeyedArchiver.archivedData(withRootObject: appWallets)
         defaults.set(encodedData, forKey: UserDefaultsKeys.appWallets.rawValue)
@@ -72,8 +75,8 @@ class AppWalletDataManager {
         let key = try! KeystoreKey(password: "password", key: privateKey)
         let newAppWallet = AppWallet(address: key.address.description, privateKey: privateKeyString, name: "Wallet private key", active: true)
         
-        AddAndUpdateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
-        
+        updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
+
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
         print("Finished unlocking a new wallet")
     }
@@ -84,8 +87,7 @@ class AppWalletDataManager {
         let address = wallet.getKey(at: 0).address
         let newAppWallet = AppWallet(address: address.description, privateKey: "", name: "Wallet mnemonic", active: true)
         
-        AddAndUpdateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
-        
+        updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
         print("Finished unlocking a new wallet")
     }
@@ -118,7 +120,8 @@ class AppWalletDataManager {
 
         let newAppWallet = AppWallet(address: address.description, privateKey: privateKey.hexString, name: walletNameLocal, active: true, mnemonics: mnemonics)
         
-        AddAndUpdateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
+        // Update the new app wallet in the local storage.
+        updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
 
         return newAppWallet

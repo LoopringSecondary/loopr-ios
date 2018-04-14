@@ -41,6 +41,9 @@
                             <constraint firstAttribute="width" constant="47" id="PZd-6t-qSv"/>
                         </constraints>
                         <color key="onTintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <connections>
+                            <action selector="toggleHideAssetSwitch:" destination="KGk-i7-Jjw" eventType="valueChanged" id="MwA-4x-p5T"/>
+                        </connections>
                     </switch>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hide Small Assets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tw-09-XWM">
                         <rect key="frame" x="14" y="127.5" width="200" height="21"/>

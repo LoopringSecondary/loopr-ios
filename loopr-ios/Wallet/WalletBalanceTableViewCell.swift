@@ -33,6 +33,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
         balanceLabel.setText("\(balance)", animated: true)
 
         hideAssetSwitch.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
+        hideAssetSwitch.setOn(SettingDataManager.shared.getHideSmallAssets(), animated: false)
 
         self.theme_backgroundColor = GlobalPicker.backgroundColor
         
@@ -78,8 +79,9 @@ class WalletBalanceTableViewCell: UITableViewCell {
         } else {
             print ("toggleHideAssetSwitch OFF")
         }
+        SettingDataManager.shared.setHideSmallAssets(hideAssetSwitch.isOn)
     }
-    
+
     class func getCellIdentifier() -> String {
         return "WalletBalanceTableViewCell"
     }

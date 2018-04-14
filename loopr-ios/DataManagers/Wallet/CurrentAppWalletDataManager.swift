@@ -100,6 +100,9 @@ class CurrentAppWalletDataManager {
         if destinationIndex < currentAppWallet.assetSequence.count && sourceIndex < currentAppWallet.assetSequence.count {
             currentAppWallet.assetSequence.swapAt(sourceIndex, destinationIndex)
         }
+        
+        // Update the asset sequence to the local storage
+        AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: currentAppWallet)
     }
     
     // TODO: whether stop method is useful?
@@ -159,14 +162,24 @@ class CurrentAppWalletDataManager {
     func onBalanceResponse(json: JSON) {
         // assets = []
         totalCurrencyValue = 0
-        for subJson in json["tokens"].arrayValue {
+        let tokensJsons = json["tokens"].arrayValue
+
+        let mappedAssets = tokensJsons.map { (subJson) -> Asset in
             print("CurrentAppWalletDataManager onBalanceResponse")
             print(subJson)
             let asset = Asset(json: subJson)
-            if asset.symbol == "" {
-                continue
-            }
-            
+            return asset
+        }
+        
+        let filteredAssets = mappedAssets.filter { (asset) -> Bool in
+            return asset.symbol != ""
+        }
+
+        let sortedAssets = filteredAssets.sorted { (a, b) -> Bool in
+            return a.balance > b.balance
+        }
+
+        for asset in sortedAssets {
             if let balance = getAmount(of: asset.symbol, from: asset.balance) {
                 if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
                     asset.name = TokenDataManager.shared.getTokenBySymbol(asset.symbol)?.source ?? "unknown token"
@@ -197,6 +210,10 @@ class CurrentAppWalletDataManager {
                     }
                 }
             }
+        }
+        
+        if currentAppWallet != nil {
+            AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: currentAppWallet!)
         }
         NotificationCenter.default.post(name: .balanceResponseReceived, object: nil)
     }

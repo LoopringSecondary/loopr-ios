@@ -13,6 +13,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     private var assets: [Asset] = []
     
     @IBOutlet weak var assetTableView: UITableView!
+    
+    var isReordering: Bool = false
 
     var contextMenuSourceView: UIView = UIView()
     
@@ -147,7 +149,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @objc func receivedBalanceResponseReceivedNotification() {
         // print("receivedBalanceResponseReceivedNotification")
         // TODO: Perform a diff algorithm
-        if self.assets.count == 0 {
+        
+        if !isReordering {
             self.assets = CurrentAppWalletDataManager.shared.getAssets()
             assetTableView.reloadData()
         }
@@ -185,7 +188,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let nib = Bundle.main.loadNibNamed("AssetTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? AssetTableViewCell
             }
-            cell?.asset = assets[indexPath.row - 1]
+            cell?.asset = CurrentAppWalletDataManager.shared.getAssets()[indexPath.row - 1]
             cell?.update()
             return cell!
         }
@@ -220,6 +223,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 extension WalletViewController: TableViewReorderDelegate {
     // MARK: - Reorder Delegate
     func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        print("tableView reorderRowAt")
         CurrentAppWalletDataManager.shared.exchange(at: sourceIndexPath.row-1, to: destinationIndexPath.row-1)
     }
 
@@ -230,4 +234,16 @@ extension WalletViewController: TableViewReorderDelegate {
             return false
         }
     }
+    
+    func tableViewDidBeginReordering(_ tableView: UITableView) {
+        print("tableViewDidBeginReordering")
+        isReordering = true
+    }
+    
+    func tableViewDidFinishReordering(_ tableView: UITableView, from initialSourceIndexPath: IndexPath, to finalDestinationIndexPath: IndexPath) {
+        print("tableViewDidFinishReordering")
+        isReordering = false
+        
+    }
+
 }
