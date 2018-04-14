@@ -13,7 +13,7 @@ import UIKit
 class Asset: CustomStringConvertible, Equatable {
 
     let symbol: String
-    var name: String
+    var name: String   // TODO: not used?
     var icon: UIImage?
     var enable: Bool
     var balance: String

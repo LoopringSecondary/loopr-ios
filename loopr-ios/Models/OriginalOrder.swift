@@ -49,10 +49,13 @@ class OriginalOrder {
         self.validUntil = DateUtil.convertToDate(until, format: "MM/dd/yyyy HH:mm")
         let percentage = UInt(json["marginSplitPercentage"].stringValue.dropFirst(2), radix: 16)!
         self.marginSplitPercentage = percentage.description + "%"
+
         let amountS = json["amountS"].stringValue
-        self.amountSell = manager.getAmount(of: self.tokenS, from: amountS)!
+        self.amountSell = manager.getAmount(of: self.tokenS, from: amountS) ?? 0.0
+
         let amountB = json["amountB"].stringValue
-        self.amountBuy = manager.getAmount(of: self.tokenB, from: amountB)!
+        self.amountBuy = manager.getAmount(of: self.tokenB, from: amountB) ?? 0.0
+
         let fee = json["lrcFee"].stringValue
         self.lrcFee = manager.getAmount(of: "LRC", from: fee)!
     }

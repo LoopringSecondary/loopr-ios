@@ -9,7 +9,6 @@
 import Foundation
 import BigInt
 
-// TODO: Need to be associated to the current wallet.
 class CurrentAppWalletDataManager {
 
     static let shared = CurrentAppWalletDataManager()
@@ -118,6 +117,9 @@ class CurrentAppWalletDataManager {
             return getAmount(of: symbol, from: decString, to: precision)
         } else if let token = TokenDataManager.shared.getTokenBySymbol(symbol) {
             var amount = gweiAmount
+            guard token.decimals < 100 else {
+                return result
+            }
             if token.decimals >= amount.count {
                 let prepend = String(repeating: "0", count: token.decimals - amount.count + 1)
                 amount = prepend + amount
@@ -158,9 +160,13 @@ class CurrentAppWalletDataManager {
         // assets = []
         totalCurrencyValue = 0
         for subJson in json["tokens"].arrayValue {
-            print("onBalanceResponse")
+            print("CurrentAppWalletDataManager onBalanceResponse")
             print(subJson)
             let asset = Asset(json: subJson)
+            if asset.symbol == "" {
+                continue
+            }
+            
             if let balance = getAmount(of: asset.symbol, from: asset.balance) {
                 if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
                     asset.name = TokenDataManager.shared.getTokenBySymbol(asset.symbol)?.source ?? "unknown token"
@@ -177,14 +183,18 @@ class CurrentAppWalletDataManager {
                     // If the asset is in the array, then replace it.
                     if let index = assets.index(of: asset) {
                         assets[index] = asset
+                        totalCurrencyValue += balance * price
+
                     } else {
-                        assets.append(asset)
-                        if currentAppWallet != nil {
-                            currentAppWallet!.assetSequence.append(asset.symbol)
+                        // If the asset is not in the array and the balance is 0, then skip it.
+                        if asset.balance != "0" {
+                            assets.append(asset)
+                            if currentAppWallet != nil {
+                                currentAppWallet!.assetSequence.append(asset.symbol)
+                            }
+                            totalCurrencyValue += balance * price
                         }
                     }
-
-                    totalCurrencyValue += balance * price
                 }
             }
         }
