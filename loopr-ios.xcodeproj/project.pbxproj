@@ -1038,7 +1038,7 @@
 			path = Keystone;
 			sourceTree = "<group>";
 		};
-		AC31B93B204A8D1F00B16155 /* Keystone@8fea1ff */ = {
+		AC31B93B204A8D1F00B16155 /* Keystore@8fea1ff */ = {
 			isa = PBXGroup;
 			children = (
 				AC31B954204A8E2700B16155 /* Wallet */,
@@ -1053,7 +1053,7 @@
 				AC31B944204A8DF400B16155 /* ScryptParams.swift */,
 				AC31B945204A8DF400B16155 /* Secp256k1.swift */,
 			);
-			path = "Keystone@8fea1ff";
+			path = "Keystore@8fea1ff";
 			sourceTree = "<group>";
 		};
 		AC31B954204A8E2700B16155 /* Wallet */ = {
@@ -1441,13 +1441,11 @@
 		AC798E412022B93A0071D477 /* loopr-ios */ = {
 			isa = PBXGroup;
 			children = (
+				ACCC7EA120828D2E008E58BA /* loopr-ios-sdk */,
 				94B828CD206A06A8002AB470 /* Utils */,
 				AC798E422022B93A0071D477 /* AppDelegate.swift */,
 				AC798E482022B93A0071D477 /* Main.storyboard */,
 				C8BF959C202696A900343B9A /* MainTabController.swift */,
-				AC5442DA2081163D0036A2B4 /* SwiftyJSON@a1700fb */,
-				AC4F5FFA20773E9D00F1D954 /* web3swift@fe0c304 */,
-				AC31B93B204A8D1F00B16155 /* Keystone@8fea1ff */,
 				ACB746E22043C5CC006C2BF5 /* QRCode */,
 				AC6E95F62032CBE900C6EB7C /* Archive */,
 				ACB97C71207160B300775D4C /* FoundationExtensions */,
@@ -1802,6 +1800,16 @@
 				ACA677B52079928800D34A2F /* ExportKeystore */,
 			);
 			path = SettingManageWallet;
+			sourceTree = "<group>";
+		};
+		ACCC7EA120828D2E008E58BA /* loopr-ios-sdk */ = {
+			isa = PBXGroup;
+			children = (
+				AC5442DA2081163D0036A2B4 /* SwiftyJSON@a1700fb */,
+				AC4F5FFA20773E9D00F1D954 /* web3swift@fe0c304 */,
+				AC31B93B204A8D1F00B16155 /* Keystore@8fea1ff */,
+			);
+			path = "loopr-ios-sdk";
 			sourceTree = "<group>";
 		};
 		ACDBF0FD203D3FEF000F0DEC /* FloatLabel */ = {
