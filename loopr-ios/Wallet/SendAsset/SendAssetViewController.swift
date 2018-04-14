@@ -216,12 +216,10 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                 print("token protocol \(token.protocol_value) is invalid")
                 return
             }
-            
             if !toAddress.isHexAddress() {
                 print("address \(toAddress) is invalide")
                 return
             }
-            
             var error: NSError? = nil
             let toAddress = GethNewAddressFromHex(toAddress, &error)!
             let contractAddress = GethNewAddressFromHex(token.protocol_value, &error)!

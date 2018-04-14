@@ -18,6 +18,7 @@
                 <outlet property="displayLabel" destination="6mQ-Aq-Bby" id="6NT-Mt-bzw"/>
                 <outlet property="filledPieChart" destination="qXy-hK-gZM" id="haw-4L-nyt"/>
                 <outlet property="marketLabel" destination="qtS-7h-KVh" id="1Zd-ju-gHG"/>
+                <outlet property="scrollView" destination="nbX-oE-pBB" id="opp-rO-WOQ"/>
                 <outlet property="typeLabel" destination="YjK-d4-nlP" id="8Wr-qy-9Jm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -40,37 +41,44 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qXy-hK-gZM" customClass="CircleChart" customModule="loopr_ios" customModuleProvider="target">
-                    <rect key="frame" x="126.66666666666666" y="89.333333333333314" width="121.66666666666666" height="121.66666666666669"/>
+                    <rect key="frame" x="126.66666666666666" y="81.666666666666657" width="121.66666666666666" height="121.66666666666666"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="qXy-hK-gZM" secondAttribute="height" id="tfQ-xp-eBZ"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNB-SU-Apn" userLabel="Amount">
-                    <rect key="frame" x="166.66666666666666" y="232.66666666666666" width="42" height="21"/>
+                    <rect key="frame" x="166.66666666666666" y="213.66666666666666" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mQ-Aq-Bby" userLabel="Display">
-                    <rect key="frame" x="166.66666666666666" y="279" width="42" height="21"/>
+                    <rect key="frame" x="166.66666666666666" y="246.33333333333337" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbX-oE-pBB">
+                    <rect key="frame" x="0.0" y="294" width="375" height="484"/>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="qXy-hK-gZM" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.15" id="5IX-eg-yyK"/>
                 <constraint firstItem="YjK-d4-nlP" firstAttribute="leading" secondItem="qtS-7h-KVh" secondAttribute="trailing" constant="2" id="7Np-BM-xW3"/>
                 <constraint firstItem="qXy-hK-gZM" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="8nL-6Y-k9R"/>
-                <constraint firstItem="qXy-hK-gZM" firstAttribute="top" secondItem="qtS-7h-KVh" secondAttribute="bottom" multiplier="1.2" id="HmV-PH-4mM"/>
+                <constraint firstItem="qXy-hK-gZM" firstAttribute="top" secondItem="qtS-7h-KVh" secondAttribute="bottom" multiplier="1.1" id="HmV-PH-4mM"/>
                 <constraint firstItem="qtS-7h-KVh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="centerY" multiplier="0.13" id="Kwl-q5-qKL"/>
-                <constraint firstItem="6mQ-Aq-Bby" firstAttribute="top" secondItem="sNB-SU-Apn" secondAttribute="bottom" multiplier="1.1" id="OOo-Al-8zf"/>
+                <constraint firstItem="6mQ-Aq-Bby" firstAttribute="top" secondItem="sNB-SU-Apn" secondAttribute="bottom" multiplier="1.05" id="OOo-Al-8zf"/>
                 <constraint firstItem="sNB-SU-Apn" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="cEV-Dc-Fe7"/>
                 <constraint firstItem="YjK-d4-nlP" firstAttribute="centerY" secondItem="qtS-7h-KVh" secondAttribute="centerY" id="ci2-CI-jbn"/>
                 <constraint firstItem="6mQ-Aq-Bby" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="gd8-pi-Fae"/>
+                <constraint firstItem="nbX-oE-pBB" firstAttribute="top" secondItem="6mQ-Aq-Bby" secondAttribute="bottom" multiplier="1.1" id="kHb-D0-Dqe"/>
+                <constraint firstItem="nbX-oE-pBB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qjp-F4-uGb"/>
+                <constraint firstItem="nbX-oE-pBB" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="qsr-Uq-sVQ"/>
                 <constraint firstItem="qtS-7h-KVh" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="rhD-vC-VHH"/>
-                <constraint firstItem="sNB-SU-Apn" firstAttribute="top" secondItem="qXy-hK-gZM" secondAttribute="bottom" multiplier="1.1" id="vdy-us-lcX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="nbX-oE-pBB" secondAttribute="bottom" id="szG-1z-vfL"/>
+                <constraint firstItem="sNB-SU-Apn" firstAttribute="top" secondItem="qXy-hK-gZM" secondAttribute="bottom" multiplier="1.05" id="vdy-us-lcX"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
