@@ -219,6 +219,7 @@ class MarketLineChartTableViewCell: UITableViewCell, ChartViewDelegate {
         let set1 = LineChartDataSet(values: mockData, label: "")
         set1.drawIconsEnabled = false
         set1.lineWidth = 0.5
+        set1.drawHorizontalHighlightIndicatorEnabled = false
         set1.setColor(UIColor(red: 22/255, green: 22/255, blue: 22/255, alpha: 1))
         set1.highlightColor = UIColor(red: 117/255, green: 117/255, blue: 117/255, alpha: 1)
         set1.setCircleColor(UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1))

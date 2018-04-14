@@ -44,9 +44,9 @@ class OriginalOrder {
         self.s = json["s"].stringValue
         
         let since = UInt(json["validSince"].stringValue.dropFirst(2), radix: 16)!
-        self.validSince = DateUtil.convertToDate(since, format: "yyyy-MM-dd")
+        self.validSince = DateUtil.convertToDate(since, format: "MM/dd/yyyy HH:mm")
         let until = UInt(json["validUntil"].stringValue.dropFirst(2), radix: 16)!
-        self.validUntil = DateUtil.convertToDate(until, format: "yyyy-MM-dd")
+        self.validUntil = DateUtil.convertToDate(until, format: "MM/dd/yyyy HH:mm")
         let percentage = UInt(json["marginSplitPercentage"].stringValue.dropFirst(2), radix: 16)!
         self.marginSplitPercentage = percentage.description + "%"
         let amountS = json["amountS"].stringValue
