@@ -11,9 +11,10 @@ import UIKit
 class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate, ContextMenuDelegate {
 
     private var assets: [Asset] = []
-    
+
     @IBOutlet weak var assetTableView: UITableView!
     
+    var shouldRefresh: Bool = true
     var isReordering: Bool = false
 
     var contextMenuSourceView: UIView = UIView()
@@ -150,9 +151,11 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // print("receivedBalanceResponseReceivedNotification")
         // TODO: Perform a diff algorithm
         
-        if !isReordering {
+        if shouldRefresh && !isReordering {
+            print("reload table")
             self.assets = CurrentAppWalletDataManager.shared.getAssets()
             assetTableView.reloadData()
+            shouldRefresh = false
         }
     }
 
