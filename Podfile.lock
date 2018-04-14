@@ -42,6 +42,27 @@ DEPENDENCIES:
   - SwiftTheme
   - TrezorCrypto
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - BigInt
+    - Charts
+    - CryptoSwift
+    - DynamicBlurView
+    - FontBlaster
+    - Geth
+    - lottie-ios
+    - MarqueeLabel
+    - NotificationBannerSwift
+    - pop
+    - PopupDialog
+    - SipHash
+    - SnapKit
+    - Socket.IO-Client-Swift
+    - Starscream
+    - SwiftLint
+    - SwiftTheme
+    - TrezorCrypto
+
 EXTERNAL SOURCES:
   secp256k1_ios:
     :git: https://github.com/shamatar/secp256k1_ios.git
@@ -74,4 +95,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 0c38db8c107077edcde896ce5f4ef62dbefad9c0
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0
