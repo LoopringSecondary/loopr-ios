@@ -2,7 +2,7 @@
 
 ### Design
 Please refer
-[https://github.com/Loopring/loopr-ios/tree/master/docs/design](https://github.com/Loopring/loopr-ios/tree/master/docs/design)
+[https://www.dropbox.com/s/znhbbdszw63lq4c/loopring_ios_0317.zip?dl=0](https://www.dropbox.com/s/znhbbdszw63lq4c/loopring_ios_0317.zip?dl=0)
 
 ### Development 
 
