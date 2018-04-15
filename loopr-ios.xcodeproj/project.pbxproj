@@ -490,6 +490,7 @@
 		C8BF95B12027AC9400343B9A /* SetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8BF95AF2027AC9400343B9A /* SetupViewController.xib */; };
 		D9524CB21C9A148B2F4D503B /* Pods_loopr_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */; };
 		EE817669636361AFF682A8F5 /* Pods_loopr_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929BB32EF62C4BD6BC1DFC8F /* Pods_loopr_ios.framework */; };
+		FF411F8F2082CFEE00A7A682 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF411F8E2082CFEE00A7A682 /* NetworkingManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -893,6 +894,7 @@
 		C8BF95AE2027AC9400343B9A /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		C8BF95AF2027AC9400343B9A /* SetupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetupViewController.xib; sourceTree = "<group>"; };
 		CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF411F8E2082CFEE00A7A682 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -942,6 +944,7 @@
 			children = (
 				94B828CE206A0736002AB470 /* DateUtil.swift */,
 				94E665E520720B12001328BF /* TokenUtil.swift */,
+				FF411F8E2082CFEE00A7A682 /* NetworkingManager.swift */,
 			);
 			name = Utils;
 			path = "New Group";
@@ -2451,6 +2454,7 @@
 				AC5442DC2081167E0036A2B4 /* SwiftyJSON.swift in Sources */,
 				AC3756702038D3ED00AADC60 /* UnlockWalletType.swift in Sources */,
 				ACB97C6D20707B6F00775D4C /* AddTokenTableViewCell.swift in Sources */,
+				FF411F8F2082CFEE00A7A682 /* NetworkingManager.swift in Sources */,
 				ACB8AD89207F299700B478D6 /* UIViewController+BackButton.swift in Sources */,
 				AC5E0DDA203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift in Sources */,
 				94C5E79D207394F50074B939 /* CustomSearchController.swift in Sources */,
