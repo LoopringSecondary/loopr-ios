@@ -112,6 +112,7 @@ class CurrentAppWalletDataManager {
     
     // TODO: Why precision is 4?
     func getAmount(of symbol: String, from gweiAmount: String, to precision: Int = 4) -> Double? {
+        var index: String.Index
         var result: Double? = nil
         // hex string
         if gweiAmount.lowercased().starts(with: "0x") {
@@ -127,12 +128,13 @@ class CurrentAppWalletDataManager {
                 let prepend = String(repeating: "0", count: token.decimals - amount.count + 1)
                 amount = prepend + amount
             }
-            /*
-            let offset = precision - token.decimals
-            var index = amount.index(amount.endIndex, offsetBy: offset)
-            amount.removeSubrange(index...)
-            */
-            let index = amount.index(amount.endIndex, offsetBy: -token.decimals)
+            if precision >= token.decimals {
+                index = amount.index(amount.endIndex, offsetBy: -token.decimals)
+            } else {
+                let offset = precision - token.decimals
+                index = amount.index(amount.endIndex, offsetBy: offset)
+                amount.removeSubrange(index...)
+            }
             amount.insert(".", at: index)
             result = Double(amount)
         }

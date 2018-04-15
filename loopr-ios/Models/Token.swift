@@ -25,7 +25,7 @@ class Token {
         self.symbol = json["symbol"].stringValue
         self.source = json["source"].stringValue
         self.isMarket = json["isMarket"].boolValue
-        self.decimals = json["decimals"].intValue
+        self.decimals = json["decimals"].stringValue.count - 1
         self.protocol_value = json["protocol"].stringValue
         self.deny = json["deny"].boolValue
         self.icon = UIImage(named: self.symbol)
