@@ -1,5 +1,5 @@
 //
-//  NetworkingManager.swift
+//  NetworkingReachabilityManager.swift
 //  loopr-ios
 //
 //  Created by yimenglovesai on 4/14/18.
@@ -24,9 +24,9 @@ public enum ConnectionType {
     case wwan
 }
 
-class NetworkingManager {
+class NetworkingReachabilityManager {
     
-    static let shared = NetworkingManager(host: "www.apple.com")
+    static let shared = NetworkingReachabilityManager(host: "www.apple.com")
     
     /// A closure executed when the network reachability status changes. The closure takes a single argument: the
     /// network reachability status.
@@ -108,7 +108,7 @@ class NetworkingManager {
         
         let callbackEnabled = SCNetworkReachabilitySetCallback(
             reachability, { (_, flags, info) in
-                let reachability = Unmanaged<NetworkingManager>.fromOpaque(info!).takeUnretainedValue()
+                let reachability = Unmanaged<NetworkingReachabilityManager>.fromOpaque(info!).takeUnretainedValue()
                 reachability.notifyListener(flags)
         },
             &context
