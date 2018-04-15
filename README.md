@@ -17,12 +17,12 @@ Please refer
 - [SwiftLint](https://github.com/realm/SwiftLint): A tool to enforce Swift style and conventions.
 - [SwiftTheme](https://github.com/jiecao-fm/SwiftTheme): Powerful theme/skin manager
 
-#### start
-#### Tools
+##### Tools
 - Xcode Version 9.2 (9C40b)
 - Swift Apple Swift version 4.0.3 (swiftlang-900.0.74.1 clang-900.0.39.2)
 - CocoaPods 1.5.0
 
+##### Start
 1. Install cocoapods ```sudo gem install cocoapods```
 1. ```pod install```
 2. Open ```loopr-ios.xcworkspace```
