@@ -8,6 +8,6 @@
 #define __Geth_FRAMEWORK_H__
 
 #include "Geth.objc.h"
-#include "universe.objc.h"
+#include "Universe.objc.h"
 
 #endif
