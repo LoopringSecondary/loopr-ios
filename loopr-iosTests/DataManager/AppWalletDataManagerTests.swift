@@ -22,7 +22,7 @@ class AppWalletDataManagerTests: XCTestCase {
     }
     
     func testLogout1() {
-        AppWalletDataManager.shared.unlockWallet(privateKey: "3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe267")
+        ImportWalletUsingMnemonicDataManager.shared.unlockWallet(privateKey: "3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe267")
         let currentWallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet()
         XCTAssertEqual(currentWallet?.address, "0xE9717c7564d6ED2F764C3c5EB002225ab49e7baB")
         XCTAssertGreaterThan(AppWalletDataManager.shared.getWallets().count, 0)
@@ -38,7 +38,7 @@ class AppWalletDataManagerTests: XCTestCase {
     }
 
     func testLogout2() {
-        AppWalletDataManager.shared.unlockWallet(privateKey: "3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe267")
+        ImportWalletUsingMnemonicDataManager.shared.unlockWallet(privateKey: "3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe267")
         let currentWallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet()
         XCTAssertEqual(currentWallet?.address, "0xE9717c7564d6ED2F764C3c5EB002225ab49e7baB")
         XCTAssertGreaterThan(AppWalletDataManager.shared.getWallets().count, 0)
@@ -49,13 +49,13 @@ class AppWalletDataManagerTests: XCTestCase {
     }
     
     func testUnlockWalletUsingPrivateKey() {
-        AppWalletDataManager.shared.unlockWallet(privateKey: "3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe267")
+        ImportWalletUsingMnemonicDataManager.shared.unlockWallet(privateKey: "3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe267")
         let currentWallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet()
         XCTAssertEqual(currentWallet?.address, "0xE9717c7564d6ED2F764C3c5EB002225ab49e7baB")
     }
     
     func testUnlockWalletUsingMnemonic() {
-        AppWalletDataManager.shared.unlockWallet(mnemonic: "soda code cannon sketch boss fancy tail lesson forum figure gloom history dismiss sketch lady control wolf hello away pave priority story design trial")
+        ImportWalletUsingMnemonicDataManager.shared.unlockWallet(mnemonic: "soda code cannon sketch boss fancy tail lesson forum figure gloom history dismiss sketch lady control wolf hello away pave priority story design trial")
         let currentWallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet()
         XCTAssertEqual(currentWallet?.address, "0xD964210243c83e4eA59D357824356493c21F8842")
     }

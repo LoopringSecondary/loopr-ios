@@ -8,12 +8,17 @@
 
 import Foundation
 
-class ImportWalletDataManager {
+class ImportWalletUsingMnemonicDataManager {
     
-    static let shared = ImportWalletDataManager()
+    static let shared = ImportWalletUsingMnemonicDataManager()
 
+    var mnemonic: String = ""
+    var password: String = ""
     var derivationPathValue = "m/44'/60'/0'/0"
+    var selectedKey: Int = 0
 
+    var addresses: [Address] = []
+    
     private init() {
         
     }
@@ -44,5 +49,14 @@ class ImportWalletDataManager {
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
         print("Finished unlocking a new wallet")
+    }
+    
+    func generateAddresses() {
+        for i in 0..<10 {
+            let key = (addresses.count) + i
+            let wallet = Wallet(mnemonic: mnemonic, password: password)
+            let address = wallet.getKey(at: key).address
+            addresses.append(address)
+        }
     }
 }

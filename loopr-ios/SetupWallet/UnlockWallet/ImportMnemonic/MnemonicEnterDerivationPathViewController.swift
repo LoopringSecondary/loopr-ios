@@ -69,7 +69,7 @@ class MnemonicEnterDerivationPathViewController: UIViewController, UITableViewDe
             cell?.tintColor = UIColor.black
         }
         
-        if derivationPaths[indexPath.row] == ImportWalletDataManager.shared.derivationPathValue {
+        if derivationPaths[indexPath.row] == ImportWalletUsingMnemonicDataManager.shared.derivationPathValue {
             cell?.accessoryType = .checkmark
         } else {
             cell?.accessoryType = .none
@@ -83,11 +83,12 @@ class MnemonicEnterDerivationPathViewController: UIViewController, UITableViewDe
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        ImportWalletDataManager.shared.derivationPathValue = derivationPaths[indexPath.row]
+        ImportWalletUsingMnemonicDataManager.shared.derivationPathValue = derivationPaths[indexPath.row]
         tableView.reloadData()
     }
     
     @IBAction func pressedNextButton(_ sender: Any) {
+        ImportWalletUsingMnemonicDataManager.shared.generateAddresses()
         let viewController = MnemonicSelectAddressViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
     }

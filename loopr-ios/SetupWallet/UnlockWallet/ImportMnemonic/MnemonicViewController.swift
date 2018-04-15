@@ -148,6 +148,9 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
     @IBAction func pressUnlockButton(_ sender: Any) {
         print("pressUnlockButton")
         
+        ImportWalletUsingMnemonicDataManager.shared.mnemonic = mnemonicWordTextView.text.trim()
+        ImportWalletUsingMnemonicDataManager.shared.password = passwordTextField.text?.trim() ?? ""
+
         let viewController = MnemonicEnterDerivationPathViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
 
