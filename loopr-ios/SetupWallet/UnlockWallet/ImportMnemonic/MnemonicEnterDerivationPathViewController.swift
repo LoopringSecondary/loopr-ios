@@ -16,10 +16,10 @@ class MnemonicEnterDerivationPathViewController: UIViewController, UITableViewDe
                            "m/44'/60'/160720'/0'",
                            "m/0'/0'/0'",
                            "m/44'/1'/0'/0",
-                           "m/44'/1'/0'/0",
+                           "m/44'/40'/0'/0",
                            "m/44'/108'/0'/0",
-                           "m/44'/108'/0'/0"]
-    let derivationPathDescriptions = ["Loopring Wallet, Metamask, imToken, TREZOR (ETH)",
+                           "m/44'/163'/0'/0"]
+    let derivationPathDescriptions = ["Loopring Wallet, Metamask, imtoken, TREZOR (ETH)",
                                       "Ledger (ETH)",
                                       "TREZOR (ETC)",
                                       "Ledger (ETC)",
@@ -29,7 +29,6 @@ class MnemonicEnterDerivationPathViewController: UIViewController, UITableViewDe
                                       "Network: Ubiq",
                                       "Network: Ellaism"]
 
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nextButton: UIButton!
 
@@ -38,9 +37,7 @@ class MnemonicEnterDerivationPathViewController: UIViewController, UITableViewDe
 
         // Do any additional setup after loading the view.
         setBackButton()
-        
-        titleLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 27)
-        titleLabel.text = NSLocalizedString("Select HD derivation path", comment: "")
+        self.navigationItem.title = NSLocalizedString("Select HD derivation path", comment: "")
 
         nextButton.setupRoundBlack()
         nextButton.setTitle(NSLocalizedString("Next", comment: ""), for: .normal)
@@ -86,7 +83,8 @@ class MnemonicEnterDerivationPathViewController: UIViewController, UITableViewDe
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        ImportWalletDataManager.shared.derivationPathValue = derivationPaths[indexPath.row]
+        tableView.reloadData()
     }
     
     @IBAction func pressedNextButton(_ sender: Any) {

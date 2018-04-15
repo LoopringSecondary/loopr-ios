@@ -21,7 +21,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="pG3-f1-TeI">
-                        <rect key="frame" x="15" y="9" width="314" height="45"/>
+                        <rect key="frame" x="15" y="10.5" width="314" height="45"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="m/44'/60'/0'" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cew-hy-rLA">
                                 <rect key="frame" x="0.0" y="0.0" width="314" height="20.5"/>
@@ -48,7 +48,7 @@
                 <constraints>
                     <constraint firstItem="rnv-dR-eJX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="7P8-21-lut"/>
                     <constraint firstItem="pG3-f1-TeI" firstAttribute="leadingMargin" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="G7f-8d-fnb"/>
-                    <constraint firstItem="pG3-f1-TeI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="WST-Mc-Ttz"/>
+                    <constraint firstItem="pG3-f1-TeI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="2" id="WST-Mc-Ttz"/>
                     <constraint firstAttribute="trailing" secondItem="rnv-dR-eJX" secondAttribute="trailing" constant="-50" id="Z8M-BF-pPR"/>
                     <constraint firstAttribute="trailing" secondItem="pG3-f1-TeI" secondAttribute="trailing" constant="15" id="lcX-zL-OKK"/>
                     <constraint firstAttribute="bottom" secondItem="rnv-dR-eJX" secondAttribute="bottom" id="sS5-8f-WLS"/>

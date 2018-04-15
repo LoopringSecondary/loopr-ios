@@ -14,7 +14,6 @@
             <connections>
                 <outlet property="nextButton" destination="N3G-Sl-0GP" id="XJ3-fg-YVR"/>
                 <outlet property="tableView" destination="TuL-DD-wgX" id="jtI-JV-Svv"/>
-                <outlet property="titleLabel" destination="fa3-XN-JSz" id="sU8-Ee-RKv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -34,32 +33,20 @@
                         <action selector="pressedNextButton:" destination="-1" eventType="touchUpInside" id="wfu-6q-zNd"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fa3-XN-JSz">
-                    <rect key="frame" x="15" y="50" width="345" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="sc7-2h-46A"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TuL-DD-wgX">
-                    <rect key="frame" x="0.0" y="92" width="375" height="501"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="573"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="TuL-DD-wgX" firstAttribute="top" secondItem="fa3-XN-JSz" secondAttribute="bottom" constant="12" id="3Af-Bk-xQ5"/>
                 <constraint firstItem="TuL-DD-wgX" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="4s1-AH-Vel"/>
-                <constraint firstItem="fa3-XN-JSz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="69R-go-ZVl"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="N3G-Sl-0GP" secondAttribute="bottom" constant="15" id="Bbd-Gh-XGw"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fa3-XN-JSz" secondAttribute="trailing" constant="15" id="Xhb-ht-5pw"/>
                 <constraint firstItem="TuL-DD-wgX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ac0-rb-sOL"/>
-                <constraint firstItem="fa3-XN-JSz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="bbi-77-V6A"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="N3G-Sl-0GP" secondAttribute="trailing" constant="15" id="ctk-H7-dmO"/>
                 <constraint firstItem="N3G-Sl-0GP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="e20-y0-ZDp"/>
                 <constraint firstItem="N3G-Sl-0GP" firstAttribute="top" secondItem="TuL-DD-wgX" secondAttribute="bottom" constant="12" id="fvq-c1-SHA"/>
+                <constraint firstItem="TuL-DD-wgX" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jSw-K5-F5M"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="34.5" y="103.5"/>

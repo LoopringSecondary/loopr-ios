@@ -20,7 +20,7 @@ class MnemonicDerivationPathTableViewCell: UITableViewCell {
         // Initialization code
         
         pathValueLabel.font = FontConfigManager.shared.getLabelFont(size: 17)
-        pathDescriptionLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 17)
+        pathDescriptionLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)
         pathDescriptionLabel.textColor = UIColor.black.withAlphaComponent(0.6)
 
         seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
