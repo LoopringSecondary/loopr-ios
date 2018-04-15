@@ -147,6 +147,11 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
     
     @IBAction func pressUnlockButton(_ sender: Any) {
         print("pressUnlockButton")
+        
+        let viewController = MnemonicEnterDerivationPathViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
+
+        /*
         AppWalletDataManager.shared.unlockWallet(mnemonic: mnemonicWordTextView.text)
         
         if SetupDataManager.shared.hasPresented {
@@ -158,6 +163,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
             let appDelegate = UIApplication.shared.delegate as? AppDelegate
             appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
         }
+        */
     }
 
 }

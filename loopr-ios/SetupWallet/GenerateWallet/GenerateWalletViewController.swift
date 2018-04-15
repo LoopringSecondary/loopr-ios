@@ -10,6 +10,7 @@ import UIKit
 
 class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
 
+    var titleLabelText: String = NSLocalizedString("Create a new wallet", comment: "")
     var titleLabel: UILabel =  UILabel()
 
     // Scrollable UI components
@@ -48,7 +49,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
 
         titleLabel.frame = CGRect(x: padding, y: originY, width: screenWidth - padding * 2, height: 30)
         titleLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 27)
-        titleLabel.text = NSLocalizedString("Create a new wallet", comment: "")
+        titleLabel.text = titleLabelText
         view.addSubview(titleLabel)
 
         walletNameTextField.delegate = self

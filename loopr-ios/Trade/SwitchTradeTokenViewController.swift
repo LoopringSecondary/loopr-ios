@@ -61,7 +61,7 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         cell?.update()
 
         if (type == .tokenS && token.symbol == TradeDataManager.shared.tokenS.symbol) || (type == .tokenB && token.symbol == TradeDataManager.shared.tokenB.symbol) {
-            cell?.accessoryType = UITableViewCellAccessoryType.checkmark
+            cell?.accessoryType = .checkmark
         } else {
             cell?.accessoryType = .none
         }

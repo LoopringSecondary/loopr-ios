@@ -68,30 +68,6 @@ class AppWalletDataManager {
         defaults.set(encodedData, forKey: UserDefaultsKeys.appWallets.rawValue)
     }
 
-    // TODO: Use error handling
-    func unlockWallet(privateKey privateKeyString: String) {
-        print("Start to unlock a new wallet using the private key")
-        let privateKey = Data(hexString: privateKeyString)!
-        let key = try! KeystoreKey(password: "password", key: privateKey)
-        let newAppWallet = AppWallet(address: key.address.description, privateKey: privateKeyString, name: "Wallet private key", active: true)
-        
-        updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
-
-        CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
-        print("Finished unlocking a new wallet")
-    }
-    
-    // TODO: Use error handling
-    func unlockWallet(mnemonic: String) {
-        let wallet = Wallet(mnemonic: mnemonic, password: "")
-        let address = wallet.getKey(at: 0).address
-        let newAppWallet = AppWallet(address: address.description, privateKey: "", name: "Wallet mnemonic", active: true)
-        
-        updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
-        CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
-        print("Finished unlocking a new wallet")
-    }
-
     // TODO: Use error handling instead of returning a Bool value
     func addWallet(walletName: String, mnemonics: [String]) -> AppWallet? {
         guard mnemonics.count == 24 else {

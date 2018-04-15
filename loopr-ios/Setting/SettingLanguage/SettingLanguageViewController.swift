@@ -53,7 +53,9 @@ class SettingLanguageViewController: UIViewController, UITableViewDelegate, UITa
         cell?.textLabel?.text = languages[indexPath.row].displayName
         
         if SettingDataManager.shared.getCurrentLanguage() == languages[indexPath.row] {
-            cell?.accessoryType = UITableViewCellAccessoryType.checkmark
+            cell?.accessoryType = .checkmark
+        } else {
+            cell?.accessoryType = .none
         }
 
         return cell!

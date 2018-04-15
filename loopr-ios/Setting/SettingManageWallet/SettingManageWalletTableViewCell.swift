@@ -46,6 +46,6 @@ class SettingManageWalletTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 81
+        return 82
     }
 }
