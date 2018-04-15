@@ -32,6 +32,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         unlockButton.layer.cornerRadius = 23
         unlockButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)        
 
+        mnemonicWordTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
         mnemonicWordTextView.cornerRadius = 12
         mnemonicWordTextView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17.0)
         mnemonicWordTextView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
@@ -45,7 +46,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         passwordTextField.tag = 0
         passwordTextField.theme_tintColor = GlobalPicker.textColor
         passwordTextField.font = FontConfigManager.shared.getLabelFont(size: 17)
-        passwordTextField.placeholder = "Password (optional)"
+        passwordTextField.placeholder = "Mnemonic Password (optional)"
         passwordTextField.contentMode = UIViewContentMode.bottom
         
         passwordTextFieldUnderline.backgroundColor = UIColor.black.withAlphaComponent(0.1)
@@ -61,12 +62,6 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // TOOD: Improve the UI.
-        DispatchQueue.main.async {
-            self.mnemonicWordTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
-            self.mnemonicWordTextView.contentOffset = CGPoint(x: 0, y: -10)
-        }
     }
 
     override func didReceiveMemoryWarning() {
