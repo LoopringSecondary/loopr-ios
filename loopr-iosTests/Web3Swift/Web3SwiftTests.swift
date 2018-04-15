@@ -103,7 +103,7 @@ class Web3SwiftTests: XCTestCase {
         let encodedTransferFunction = web3swift.encode(transferFunction)
 
         // Signing Transaction
-        let token = CurrentAppWalletDataManager.shared.getTokenBySymbol("LRC")!
+        let token = TokenDataManager.shared.getTokenBySymbol("LRC")!
         let contractAddress = GethNewAddressFromHex(token.protocol_value, nil)!
         let nonce: Int64 = 0
         let gasLimit = GethNewBigInt(SendCurrentAppWalletDataManager.shared.getGasLimitByType(type: "token_transfer")!)!

@@ -25,8 +25,8 @@ class CurrentAppWalletDataManagerTests: XCTestCase {
     }
     
     func testLoadTokens() {
-        CurrentAppWalletDataManager.shared.loadTokensFromJson()
-        XCTAssertFalse(CurrentAppWalletDataManager.shared.getTokens().isEmpty)
+        TokenDataManager.shared.loadTokensFromJson()
+        XCTAssertFalse(TokenDataManager.shared.getTokens().isEmpty)
     }
     
     func testStartGetBalance() {

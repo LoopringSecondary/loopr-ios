@@ -66,16 +66,4 @@ class CreateMnemonicTests: XCTestCase {
         print(privateKey.hexString)
     }
 
-    func test2() {
-        for testDataset in testDatasets {
-            let wallet = Wallet(mnemonic: testDataset.mnemonic.joined(separator: " "), password: "")
-            let address = wallet.getKey(at: 0).address
-            XCTAssertEqual(address.description, testDataset.publicAddress)
-            XCTAssertEqual(address.eip55String, testDataset.publicAddress)
-            
-            let privateKey = wallet.getKey(at: 0).privateKey
-            XCTAssertEqual(privateKey.hexString, testDataset.privateKey)
-        }
-    }
-
 }
