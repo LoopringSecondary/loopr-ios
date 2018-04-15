@@ -39,7 +39,6 @@
 		9498E3ED2075E27E00BC8B4F /* OrderHistorySearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9498E3EB2075E27E00BC8B4F /* OrderHistorySearchResultCell.xib */; };
 		94B5CA8A204FB4E20081BA93 /* DefaultBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5CA89204FB4E20081BA93 /* DefaultBlock.swift */; };
 		94B5CA8C204FE8E40081BA93 /* ETH_Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5CA8B204FE8E40081BA93 /* ETH_Transaction.swift */; };
-		94B828CF206A0736002AB470 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B828CE206A0736002AB470 /* DateUtil.swift */; };
 		94C5E79420738ADE0074B939 /* OrderSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5E79220738ADE0074B939 /* OrderSearchViewController.swift */; };
 		94C5E79520738ADE0074B939 /* OrderSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C5E79320738ADE0074B939 /* OrderSearchViewController.xib */; };
 		94C5E79C207394F50074B939 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5E79A207394F40074B939 /* CustomSearchBar.swift */; };
@@ -51,7 +50,6 @@
 		94DCE551205FAC07005618E4 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCE550205FAC07005618E4 /* Trend.swift */; };
 		94E185972051451C00D86FFA /* Initable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185962051451C00D86FFA /* Initable.swift */; };
 		94E185992051455C00D86FFA /* SimpleRespond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185982051455C00D86FFA /* SimpleRespond.swift */; };
-		94E665E620720B12001328BF /* TokenUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E665E520720B12001328BF /* TokenUtil.swift */; };
 		94E665E9207234C5001328BF /* OrderHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E665E7207234C5001328BF /* OrderHistoryTableViewCell.swift */; };
 		94E665EA207234C5001328BF /* OrderHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E665E8207234C5001328BF /* OrderHistoryTableViewCell.xib */; };
 		9AACD1A68297585D93FB6182 /* Pods_loopr_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFC6AA9DC8C999B66FFD8AA /* Pods_loopr_iosTests.framework */; };
@@ -270,6 +268,9 @@
 		AC4F601620773E9D00F1D954 /* EthTypeEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F600920773E9D00F1D954 /* EthTypeEncoder.swift */; };
 		AC4F601720773E9D00F1D954 /* web3swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F600B20773E9D00F1D954 /* web3swift.swift */; };
 		AC4F601A2077536400F1D954 /* testKeystore.json in Resources */ = {isa = PBXBuildFile; fileRef = AC4F60192077536400F1D954 /* testKeystore.json */; };
+		AC5288B3208300580002AEAD /* TokenUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B0208300570002AEAD /* TokenUtil.swift */; };
+		AC5288B4208300580002AEAD /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B1208300570002AEAD /* DateUtil.swift */; };
+		AC5288B5208300580002AEAD /* NetworkingRechabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B2208300570002AEAD /* NetworkingRechabilityManager.swift */; };
 		AC5442DC2081167E0036A2B4 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5442DB2081167E0036A2B4 /* SwiftyJSON.swift */; };
 		AC54FD55204FC6BD007E1DEB /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD37204FC686007E1DEB /* Lato-Black.ttf */; };
 		AC54FD56204FC6BE007E1DEB /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD37204FC686007E1DEB /* Lato-Black.ttf */; };
@@ -490,7 +491,6 @@
 		C8BF95B12027AC9400343B9A /* SetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8BF95AF2027AC9400343B9A /* SetupViewController.xib */; };
 		D9524CB21C9A148B2F4D503B /* Pods_loopr_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */; };
 		EE817669636361AFF682A8F5 /* Pods_loopr_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929BB32EF62C4BD6BC1DFC8F /* Pods_loopr_ios.framework */; };
-		FF411F8F2082CFEE00A7A682 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF411F8E2082CFEE00A7A682 /* NetworkingManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -551,7 +551,6 @@
 		9498E3EB2075E27E00BC8B4F /* OrderHistorySearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistorySearchResultCell.xib; sourceTree = "<group>"; };
 		94B5CA89204FB4E20081BA93 /* DefaultBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBlock.swift; sourceTree = "<group>"; };
 		94B5CA8B204FE8E40081BA93 /* ETH_Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETH_Transaction.swift; sourceTree = "<group>"; };
-		94B828CE206A0736002AB470 /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		94C5E79220738ADE0074B939 /* OrderSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSearchViewController.swift; sourceTree = "<group>"; };
 		94C5E79320738ADE0074B939 /* OrderSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderSearchViewController.xib; sourceTree = "<group>"; };
 		94C5E79A207394F40074B939 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
@@ -563,7 +562,6 @@
 		94DCE550205FAC07005618E4 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
 		94E185962051451C00D86FFA /* Initable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initable.swift; sourceTree = "<group>"; };
 		94E185982051455C00D86FFA /* SimpleRespond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRespond.swift; sourceTree = "<group>"; };
-		94E665E520720B12001328BF /* TokenUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenUtil.swift; sourceTree = "<group>"; };
 		94E665E7207234C5001328BF /* OrderHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		94E665E8207234C5001328BF /* OrderHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		AC0C5C7A203D131200C8618D /* loopr-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "loopr-ios-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -706,6 +704,9 @@
 		AC4F600920773E9D00F1D954 /* EthTypeEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthTypeEncoder.swift; sourceTree = "<group>"; };
 		AC4F600B20773E9D00F1D954 /* web3swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = web3swift.swift; sourceTree = "<group>"; };
 		AC4F60192077536400F1D954 /* testKeystore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testKeystore.json; sourceTree = "<group>"; };
+		AC5288B0208300570002AEAD /* TokenUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenUtil.swift; sourceTree = "<group>"; };
+		AC5288B1208300570002AEAD /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
+		AC5288B2208300570002AEAD /* NetworkingRechabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingRechabilityManager.swift; sourceTree = "<group>"; };
 		AC5442DB2081167E0036A2B4 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		AC54FD1C204FC3F8007E1DEB /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		AC54FD1D204FC3F8007E1DEB /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -894,7 +895,6 @@
 		C8BF95AE2027AC9400343B9A /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		C8BF95AF2027AC9400343B9A /* SetupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetupViewController.xib; sourceTree = "<group>"; };
 		CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF411F8E2082CFEE00A7A682 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -937,17 +937,6 @@
 				CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		94B828CD206A06A8002AB470 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				94B828CE206A0736002AB470 /* DateUtil.swift */,
-				94E665E520720B12001328BF /* TokenUtil.swift */,
-				FF411F8E2082CFEE00A7A682 /* NetworkingManager.swift */,
-			);
-			name = Utils;
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		94CCE680206BE06C002FFC0D /* Components */ = {
@@ -1241,6 +1230,16 @@
 			path = DataTypes;
 			sourceTree = "<group>";
 		};
+		AC5288AF208300570002AEAD /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AC5288B0208300570002AEAD /* TokenUtil.swift */,
+				AC5288B1208300570002AEAD /* DateUtil.swift */,
+				AC5288B2208300570002AEAD /* NetworkingRechabilityManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		AC5442DA2081163D0036A2B4 /* SwiftyJSON@a1700fb */ = {
 			isa = PBXGroup;
 			children = (
@@ -1448,8 +1447,8 @@
 			isa = PBXGroup;
 			children = (
 				ACCC7EA120828D2E008E58BA /* loopr-ios-sdk */,
-				94B828CD206A06A8002AB470 /* Utils */,
 				AC798E422022B93A0071D477 /* AppDelegate.swift */,
+				AC5288AF208300570002AEAD /* Utils */,
 				AC798E482022B93A0071D477 /* Main.storyboard */,
 				C8BF959C202696A900343B9A /* MainTabController.swift */,
 				ACB746E22043C5CC006C2BF5 /* QRCode */,
@@ -2454,7 +2453,6 @@
 				AC5442DC2081167E0036A2B4 /* SwiftyJSON.swift in Sources */,
 				AC3756702038D3ED00AADC60 /* UnlockWalletType.swift in Sources */,
 				ACB97C6D20707B6F00775D4C /* AddTokenTableViewCell.swift in Sources */,
-				FF411F8F2082CFEE00A7A682 /* NetworkingManager.swift in Sources */,
 				ACB8AD89207F299700B478D6 /* UIViewController+BackButton.swift in Sources */,
 				AC5E0DDA203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift in Sources */,
 				94C5E79D207394F50074B939 /* CustomSearchController.swift in Sources */,
@@ -2468,6 +2466,7 @@
 				ACB911642024504E00F14644 /* Order.swift in Sources */,
 				AC9280E92030C7440009B574 /* UIColorExtensions.swift in Sources */,
 				AC4141F920352DA70089861D /* SwipeTabView.swift in Sources */,
+				AC5288B3208300580002AEAD /* TokenUtil.swift in Sources */,
 				AC4141F320352C460089861D /* SwipeViewController.swift in Sources */,
 				ACCCFDD0203BF1D100B98F99 /* FloatLabelTextView.swift in Sources */,
 				94CCE685206BE06C002FFC0D /* BalloonMarker.swift in Sources */,
@@ -2499,6 +2498,7 @@
 				AC37566D2038D37400AADC60 /* UnlockWalletSwipeViewController.swift in Sources */,
 				AC31B951204A8DF400B16155 /* DataHex.swift in Sources */,
 				AC4141F520352D300089861D /* SwipeContentScrollView.swift in Sources */,
+				AC5288B4208300580002AEAD /* DateUtil.swift in Sources */,
 				940B45222060F67E00ADE2B9 /* PriceQuoteDataManager.swift in Sources */,
 				AC38751F205F12F100A76637 /* ContextMenuDelegate.swift in Sources */,
 				AC13B30A2054A766008A72C0 /* BuyViewController.swift in Sources */,
@@ -2508,11 +2508,9 @@
 				9475A2EE207EF81300200155 /* OrderDetailViewController.swift in Sources */,
 				AC9280E7202F5A010009B574 /* UIStyleConfig.swift in Sources */,
 				AC31CE17205A121000A30335 /* NumericKeyboardProtocol.swift in Sources */,
-				94E665E620720B12001328BF /* TokenUtil.swift in Sources */,
 				AC387511205F12F100A76637 /* ContextMenuDismissing.swift in Sources */,
 				AC31CE142057B5A400A30335 /* TradeReviewViewController.swift in Sources */,
 				AC387519205F12F100A76637 /* CGRect+Area.swift in Sources */,
-				94B828CF206A0736002AB470 /* DateUtil.swift in Sources */,
 				AC4F601620773E9D00F1D954 /* EthTypeEncoder.swift in Sources */,
 				ACBA47EE207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.swift in Sources */,
 				ACBA47EA207897C60032C2B4 /* SettingWalletDetailViewController.swift in Sources */,
@@ -2558,6 +2556,7 @@
 				AC375684203A641200AADC60 /* SelectWalletViewController.swift in Sources */,
 				AC387512205F12F100A76637 /* ContextMenuPresenting.swift in Sources */,
 				ACB9118820265DEA00F14644 /* MarketDetailViewController.swift in Sources */,
+				AC5288B5208300580002AEAD /* NetworkingRechabilityManager.swift in Sources */,
 				ACB911662024505D00F14644 /* Trade.swift in Sources */,
 				AC72AEE8204F020B00E9D3B0 /* OrderTradeState.swift in Sources */,
 				AC56625B20563C05003C925C /* TradeViewController.swift in Sources */,
