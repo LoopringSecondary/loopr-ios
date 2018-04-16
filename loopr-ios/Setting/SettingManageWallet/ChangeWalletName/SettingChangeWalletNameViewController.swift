@@ -51,6 +51,8 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
         saveButton.frame = CGRect(x: screenWidth/2-40, y: nameFieldUnderLine.frame.maxY + padding*2, width: 80, height: 40)
         saveButton.addTarget(self, action: #selector(pressedSaveButton), for: .touchUpInside)
         self.view.addSubview(saveButton)
+        
+        nameTextField.text = appWallet.name
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +66,11 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
     }
 
     @objc func pressedSaveButton(_ sender: Any) {
-        print("pressedSwitchTokenBButton")
+        print("pressedSwitchTokenBButton: \(appWallet)")
+        print("wallet Name is: \(appWallet.name)")
+        appWallet.name = nameTextField.text!
+        let dataManager = AppWalletDataManager.shared
+        dataManager.updateAppWalletsInLocalStorage(newAppWallet: appWallet)
+        self.navigationController?.popViewController(animated: true)
     }
 }
