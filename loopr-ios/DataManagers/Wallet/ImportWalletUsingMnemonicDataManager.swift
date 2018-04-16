@@ -70,6 +70,7 @@ class ImportWalletUsingMnemonicDataManager {
     }
     
     func complete() {
-        let appWallet = AppWalletDataManager.shared.addWallet(walletName: walletName, mnemonics: mnemonic.components(separatedBy: " "))
+        let pathValue = derivationPathValue + "/x"
+        let appWallet = AppWalletDataManager.shared.addWallet(walletName: walletName, mnemonics: mnemonic.components(separatedBy: " "), password: password, derivationPath: pathValue, key: selectedKey)
     }
 }

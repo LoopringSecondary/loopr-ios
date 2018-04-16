@@ -12,7 +12,6 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
 
     var setupWalletMethod: SetupWalletMethod = .create
     
-    var titleLabelText: String = NSLocalizedString("Create a new wallet", comment: "")
     var titleLabel: UILabel =  UILabel()
 
     // Scrollable UI components
@@ -64,7 +63,6 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
 
         titleLabel.frame = CGRect(x: padding, y: originY, width: screenWidth - padding * 2, height: 30)
         titleLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 27)
-        titleLabel.text = titleLabelText
         view.addSubview(titleLabel)
 
         walletNameTextField.delegate = self
@@ -105,6 +103,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
 
         // UI will be different based on SetupWalletMethod
         if setupWalletMethod == .create {
+            titleLabel.text = NSLocalizedString("Create a new wallet", comment: "")
             continueButton.setTitle("Continue", for: .normal)
             
             // Generate a new wallet
@@ -113,7 +112,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         } else {
             walletPasswordTextField.isHidden = true
             walletPasswordUnderLine.isHidden = true
-            titleLabelText = NSLocalizedString("Setup the wallet name", comment: "")
+            titleLabel.text = NSLocalizedString("Setup the wallet name", comment: "")
             continueButton.setTitle("Enter Wallet", for: .normal)
         }
 
@@ -179,9 +178,10 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
             self.navigationController?.pushViewController(viewController, animated: true)
 
         } else {
+            walletNameTextField.resignFirstResponder()
             ImportWalletUsingMnemonicDataManager.shared.walletName = walletNameTextField.text!
             ImportWalletUsingMnemonicDataManager.shared.complete()
-            
+
             // Exit the whole importing process
             if SetupDataManager.shared.hasPresented {
                 self.dismiss(animated: true, completion: {

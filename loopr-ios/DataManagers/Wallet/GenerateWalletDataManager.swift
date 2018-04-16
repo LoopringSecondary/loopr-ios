@@ -78,9 +78,11 @@ class GenerateWalletDataManager {
 
     // TODO: use error handling
     func complete() -> AppWallet {
-        let appWallet = AppWalletDataManager.shared.addWallet(walletName: walletName, mnemonics: mnemonics)
-        
+        let appWallet = AppWalletDataManager.shared.addWallet(walletName: walletName, mnemonics: mnemonics, password: password, derivationPath: "m/44'/60'/0'/0/x", key: 0)
+
+        // Reset
         walletName = ""
+        password = ""
         mnemonics = []
         userInputMnemonics = []
     
