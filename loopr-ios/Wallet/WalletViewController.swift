@@ -7,10 +7,9 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate, ContextMenuDelegate {
-
-    private var assets: [Asset] = []
 
     @IBOutlet weak var assetTableView: UITableView!
     
@@ -28,6 +27,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.reorder.delegate = self
         assetTableView.tableFooterView = UIView()
         assetTableView.separatorStyle = .none
+        
+        getBalanceFromRelay()
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         assetTableView.theme_backgroundColor = GlobalPicker.backgroundColor
@@ -47,15 +48,28 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // Add observer.
         NotificationCenter.default.addObserver(self, selector: #selector(receivedBalanceResponseReceivedNotification), name: .balanceResponseReceived, object: nil)
-        setup()
     }
     
-    func setup() {
-        // TODO: putting getMarketsFromServer() here may cause a race condition.
-        // It's not perfect, but works. Need improvement in the future.
-        DispatchQueue.main.async {
-            self.assets = CurrentAppWalletDataManager.shared.getAssets()
-            self.assetTableView.reloadData()
+    func getBalanceFromRelay() {
+        LoopringAPIRequest.getBalance(owner: "0x267be1C1D684F78cb4F6a176C4911b741E4Ffdc0") { assets, error in
+            guard error == nil else {
+                print("error=\(String(describing: error))")
+                
+                let notificationTitle = NSLocalizedString("Sorry. Network error", comment: "")
+                let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
+                let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
+                let banner = NotificationBanner(attributedTitle: attributeString, style: .info, colors: NotificationBannerStyle())
+                banner.duration = 2.0
+                banner.show()
+                
+                return
+            }
+
+            CurrentAppWalletDataManager.shared.setAssets(newAssets: assets)
+
+            DispatchQueue.main.async {
+                self.assetTableView.reloadData()
+            }
         }
     }
 
@@ -153,14 +167,13 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if shouldRefresh && !isReordering {
             print("reload table")
-            self.assets = CurrentAppWalletDataManager.shared.getAssets()
             assetTableView.reloadData()
             shouldRefresh = false
         }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1 + (assets.count)
+        return 1 + (CurrentAppWalletDataManager.shared.getAssets().count)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -205,7 +218,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
-            let asset = assets[indexPath.row - 1]
+            let asset = CurrentAppWalletDataManager.shared.getAssets()[indexPath.row - 1]
             let assetDetailViewController = AssetDetailViewController()
             assetDetailViewController.asset = asset
             assetDetailViewController.hidesBottomBarWhenPushed = true

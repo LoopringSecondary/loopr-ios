@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let myAttribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
         let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
         let banner = NotificationBanner(attributedTitle: myAttrString, style: .warning)
-        banner.duration = 1.0
+        banner.duration = 2.0
         banner.show()
     }
     

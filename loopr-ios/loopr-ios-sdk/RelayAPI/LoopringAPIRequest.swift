@@ -12,7 +12,7 @@ import Foundation
 class LoopringAPIRequest {
 
     // READY
-    public static func getBalance(owner: String? = nil, completionHandler: @escaping (_ assets: [Asset]?, _ error: Error?) -> Void) {
+    public static func getBalance(owner: String? = nil, completionHandler: @escaping (_ assets: [Asset], _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getBalance"
         body["params"] = [["contractVersion": RelayAPIConfiguration.contractVersion, "owner": owner]]
@@ -21,7 +21,7 @@ class LoopringAPIRequest {
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
-                completionHandler(nil, error)
+                completionHandler([], error)
                 return
             }
             

@@ -77,6 +77,55 @@ class CurrentAppWalletDataManager {
             asset.enable == enable
         }
     }
+    
+    func setAssets(newAssets: [Asset]) {
+        totalCurrencyValue = 0
+
+        let filteredAssets = newAssets.filter { (asset) -> Bool in
+            return asset.symbol != ""
+        }
+
+        let sortedAssets = filteredAssets.sorted { (a, b) -> Bool in
+            return a.balance > b.balance
+        }
+
+        for asset in sortedAssets {
+            if let balance = getAmount(of: asset.symbol, from: asset.balance) {
+                if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
+                    asset.name = TokenDataManager.shared.getTokenBySymbol(asset.symbol)?.source ?? "unknown token"
+                    asset.balance = balance.description
+                    
+                    let currencyFormatter = NumberFormatter()
+                    currencyFormatter.locale = NSLocale.current
+                    currencyFormatter.usesGroupingSeparator = true
+                    currencyFormatter.numberStyle = .currency
+                    let formattedNumber = currencyFormatter.string(from: NSNumber(value: balance * price)) ?? "\(balance * price)"
+                    // asset.display = "$ " + String(formattedNumber.dropFirst())
+                    asset.display = formattedNumber
+                    
+                    // If the asset is in the array, then replace it.
+                    if let index = assets.index(of: asset) {
+                        assets[index] = asset
+                        totalCurrencyValue += balance * price
+                        
+                    } else {
+                        // If the asset is not in the array and the balance is 0, then skip it.
+                        if asset.balance != "0" {
+                            assets.append(asset)
+                            if currentAppWallet != nil {
+                                currentAppWallet!.assetSequence.append(asset.symbol)
+                            }
+                            totalCurrencyValue += balance * price
+                        }
+                    }
+                }
+            }
+        }
+
+        if currentAppWallet != nil {
+            AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: currentAppWallet!)
+        }
+    }
 
     // TODO: Add filter by token.
     func getTransactions(txStatuses: [Transaction.TxStatus]? = nil) -> [Transaction] {
@@ -105,7 +154,7 @@ class CurrentAppWalletDataManager {
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: currentAppWallet)
     }
     
-    // TODO: whether stop method is useful?
+    // TODO: whether stop method is useful? Yes.
     func startGetBalance(_ owner: String) {
         LoopringSocketIORequest.getBalance(owner: owner)
     }
@@ -162,61 +211,17 @@ class CurrentAppWalletDataManager {
 
     // this func should be called every 10 secs when emitted
     func onBalanceResponse(json: JSON) {
-        // assets = []
         totalCurrencyValue = 0
         let tokensJsons = json["tokens"].arrayValue
 
         let mappedAssets = tokensJsons.map { (subJson) -> Asset in
-            print("CurrentAppWalletDataManager onBalanceResponse")
-            print(subJson)
+            // print("CurrentAppWalletDataManager onBalanceResponse")
+            // print(subJson)
             let asset = Asset(json: subJson)
             return asset
         }
-        
-        let filteredAssets = mappedAssets.filter { (asset) -> Bool in
-            return asset.symbol != ""
-        }
 
-        let sortedAssets = filteredAssets.sorted { (a, b) -> Bool in
-            return a.balance > b.balance
-        }
-
-        for asset in sortedAssets {
-            if let balance = getAmount(of: asset.symbol, from: asset.balance) {
-                if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
-                    asset.name = TokenDataManager.shared.getTokenBySymbol(asset.symbol)?.source ?? "unknown token"
-                    asset.balance = balance.description
-
-                    let currencyFormatter = NumberFormatter()
-                    currencyFormatter.locale = NSLocale.current
-                    currencyFormatter.usesGroupingSeparator = true
-                    currencyFormatter.numberStyle = .currency
-                    let formattedNumber = currencyFormatter.string(from: NSNumber(value: balance * price)) ?? "\(balance * price)"
-                    // asset.display = "$ " + String(formattedNumber.dropFirst())
-                    asset.display = formattedNumber
-
-                    // If the asset is in the array, then replace it.
-                    if let index = assets.index(of: asset) {
-                        assets[index] = asset
-                        totalCurrencyValue += balance * price
-
-                    } else {
-                        // If the asset is not in the array and the balance is 0, then skip it.
-                        if asset.balance != "0" {
-                            assets.append(asset)
-                            if currentAppWallet != nil {
-                                currentAppWallet!.assetSequence.append(asset.symbol)
-                            }
-                            totalCurrencyValue += balance * price
-                        }
-                    }
-                }
-            }
-        }
-        
-        if currentAppWallet != nil {
-            AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: currentAppWallet!)
-        }
+        setAssets(newAssets: mappedAssets)
         NotificationCenter.default.post(name: .balanceResponseReceived, object: nil)
     }
 }
