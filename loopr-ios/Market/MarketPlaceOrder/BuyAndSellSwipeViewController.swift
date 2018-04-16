@@ -12,7 +12,7 @@ class BuyAndSellSwipeViewController: SwipeViewController {
 
     var initialType: TradeType = .buy
     private var types: [TradeType] = [.buy, .sell]
-    private var viewControllers: [UIViewController] = [BuyViewController(), BuyViewController()]
+    private var viewControllers: [UIViewController] = [BuyViewController(type: .buy), BuyViewController(type: .sell)]
     var options = SwipeViewOptions()
     
     override func viewDidLoad() {

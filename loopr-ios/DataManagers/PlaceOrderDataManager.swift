@@ -13,7 +13,7 @@ class PlaceOrderDataManager {
     static let shared = PlaceOrderDataManager()
     
     // Similar naming in Trade.swift
-    var tokenS: String = ""
+    var tokenA: String = ""
     var tokenB: String = ""
     
     private init() {
@@ -22,15 +22,15 @@ class PlaceOrderDataManager {
     
     // TOOD: not sure whether we need this function
     func getPairDescription() -> String {
-        return "\(tokenS)" + " / " + "\(tokenB)"
+        return "\(tokenA)" + " / " + "\(tokenB)"
     }
 
-    func new(tokenS: String, tokenB: String) {
-        self.tokenS = tokenS
+    func new(tokenA: String, tokenB: String) {
+        self.tokenA = tokenA
         self.tokenB = tokenB
     }
 
-    func verify() -> Bool {
+    func verify(order: OriginalOrder) -> Bool {
         return true
     }
 

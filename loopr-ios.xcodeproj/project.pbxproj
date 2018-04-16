@@ -46,6 +46,8 @@
 		94CCE684206BE06C002FFC0D /* XYMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CCE681206BE06C002FFC0D /* XYMarkerView.swift */; };
 		94CCE685206BE06C002FFC0D /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CCE682206BE06C002FFC0D /* BalloonMarker.swift */; };
 		94CCE686206BE06C002FFC0D /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CCE683206BE06C002FFC0D /* RadarMarkerView.swift */; };
+		94D94CE32084A9380000BBC8 /* ConfirmationResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D94CE12084A9380000BBC8 /* ConfirmationResultViewController.swift */; };
+		94D94CE42084A9380000BBC8 /* ConfirmationResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D94CE22084A9380000BBC8 /* ConfirmationResultViewController.xib */; };
 		94DCE54F205F9E71005618E4 /* Ticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCE54E205F9E71005618E4 /* Ticker.swift */; };
 		94DCE551205FAC07005618E4 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCE550205FAC07005618E4 /* Trend.swift */; };
 		94E185972051451C00D86FFA /* Initable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185962051451C00D86FFA /* Initable.swift */; };
@@ -570,6 +572,8 @@
 		94CCE681206BE06C002FFC0D /* XYMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYMarkerView.swift; sourceTree = "<group>"; };
 		94CCE682206BE06C002FFC0D /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		94CCE683206BE06C002FFC0D /* RadarMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarMarkerView.swift; sourceTree = "<group>"; };
+		94D94CE12084A9380000BBC8 /* ConfirmationResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationResultViewController.swift; sourceTree = "<group>"; };
+		94D94CE22084A9380000BBC8 /* ConfirmationResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmationResultViewController.xib; sourceTree = "<group>"; };
 		94DCE54E205F9E71005618E4 /* Ticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticker.swift; sourceTree = "<group>"; };
 		94DCE550205FAC07005618E4 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
 		94E185962051451C00D86FFA /* Initable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initable.swift; sourceTree = "<group>"; };
@@ -1029,6 +1033,8 @@
 				AC13B3092054A766008A72C0 /* BuyViewController.xib */,
 				AC13B30C2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift */,
 				AC13B30D2055A646008A72C0 /* PlaceOrderConfirmationViewController.xib */,
+				94D94CE12084A9380000BBC8 /* ConfirmationResultViewController.swift */,
+				94D94CE22084A9380000BBC8 /* ConfirmationResultViewController.xib */,
 			);
 			path = MarketPlaceOrder;
 			sourceTree = "<group>";
@@ -2209,6 +2215,7 @@
 				AC72AEDD204C9F6300E9D3B0 /* VerifyMnemonicViewController.xib in Resources */,
 				AC13B30B2054A766008A72C0 /* BuyViewController.xib in Resources */,
 				AC10609E2073475200677D63 /* AddMenuTableViewCell.xib in Resources */,
+				94D94CE42084A9380000BBC8 /* ConfirmationResultViewController.xib in Resources */,
 				AC5E0DDB203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib in Resources */,
 				AC31CE77205B996400A30335 /* Roboto-Thin.ttf in Resources */,
 				ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */,
@@ -2550,6 +2557,7 @@
 				AC4F601020773E9D00F1D954 /* String+Extension.swift in Sources */,
 				AC99CF462083DD6A000AE4BD /* MnemonicEnterDerivationPathViewController.swift in Sources */,
 				ACB9118C20266A9C00F14644 /* AssetDetailViewController.swift in Sources */,
+				94D94CE32084A9380000BBC8 /* ConfirmationResultViewController.swift in Sources */,
 				AC4141FF20356A4D0089861D /* MarketSwipeViewType.swift in Sources */,
 				ACB5DD91202C06FF00140A09 /* DismissAnimator.swift in Sources */,
 				940B45212060F67E00ADE2B9 /* PlaceOrderDataManager.swift in Sources */,

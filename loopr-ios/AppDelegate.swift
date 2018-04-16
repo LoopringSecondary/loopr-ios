@@ -34,8 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LoopringSocketIORequest.setup()
         PriceQuoteDataManager.shared.startGetPriceQuote("USD")
         
-        // TODO: mock data
-        CurrentAppWalletDataManager.shared.startGetBalance("0x267be1C1D684F78cb4F6a176C4911b741E4Ffdc0")
+        let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet()
+        CurrentAppWalletDataManager.shared.startGetBalance(wallet!.address)
+        
         MarketDataManager.shared.startGetTicker()
         
         _ = SettingDataManager.shared.getCurrentLanguage()
