@@ -329,11 +329,11 @@ extension SendAssetViewController {
 
                 // Show toast
                 DispatchQueue.main.async {
-                    let myString = NSLocalizedString("Insufficient funds for gas x price + value", comment: "")
-                    let myAttribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
-                    let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
-                    let banner = NotificationBanner(attributedTitle: myAttrString, style: .danger)
-                    banner.duration = 1.0
+                    let notificationTitle = NSLocalizedString("Insufficient funds for gas x price + value", comment: "")
+                    let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
+                    let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
+                    let banner = NotificationBanner(attributedTitle: attributeString, style: .danger)
+                    banner.duration = 1.5
                     banner.show()
                 }
 
