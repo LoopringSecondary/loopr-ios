@@ -12,7 +12,8 @@ import NotificationBannerSwift
 class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate, ContextMenuDelegate {
 
     @IBOutlet weak var assetTableView: UITableView!
-    
+    private let refreshControl = UIRefreshControl()
+
     var shouldRefresh: Bool = true
     var isReordering: Bool = false
 
@@ -46,12 +47,27 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let addBarButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
         self.navigationItem.rightBarButtonItem = addBarButton
         
+        // Add Refresh Control to Table View
+        if #available(iOS 10.0, *) {
+            assetTableView.refreshControl = refreshControl
+        } else {
+            assetTableView.addSubview(refreshControl)
+        }
+        refreshControl.theme_tintColor = GlobalPicker.textColor
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+
         // Add observer.
         NotificationCenter.default.addObserver(self, selector: #selector(receivedBalanceResponseReceivedNotification), name: .balanceResponseReceived, object: nil)
     }
     
+    @objc private func refreshData(_ sender: Any) {
+        // Fetch Data
+        getBalanceFromRelay()
+    }
+    
     func getBalanceFromRelay() {
         LoopringAPIRequest.getBalance(owner: "0x267be1C1D684F78cb4F6a176C4911b741E4Ffdc0") { assets, error in
+            print("receive LoopringAPIRequest.getBalance")
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 
@@ -69,6 +85,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
             DispatchQueue.main.async {
                 self.assetTableView.reloadData()
+                self.refreshControl.endRefreshing()
             }
         }
     }
