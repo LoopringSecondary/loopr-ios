@@ -48,13 +48,18 @@ extension DefaultNumericKeyboard: NumericKeyboardDataSource {
             case (3, 1):
                 return "0"
             case (3, 2):
-                return "x"
+                return ""
             default:
                 var index = (0..<position.row).map { self.numericKeyboard(self, numberOfColumnsInRow: $0) }.reduce(0, +)
                 index += position.column
                 return "\(index + 1)"
             }
         }()
+
+        if position == (3, 2) {
+            item.image = UIImage.init(named: "NumericKeyboardDelete")
+        }
+
         item.titleColor = {
             switch position {
             case (3, 0):
