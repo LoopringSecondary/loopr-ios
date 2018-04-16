@@ -30,9 +30,9 @@ class OrderHistoryTableViewCell: UITableViewCell {
     
     func update() {
         guard let order = self.order else { return }
-        initPriceLabel(order: order)
-        initOrderFilled(order: order)
-        initOrderTypeLabel(order: order)
+        setupPriceLabel(order: order)
+        setupOrderTypeLabel(order: order)
+        setupOrderFilled(order: order)
         tradingPairLabel.text = order.tradingPairDescription
         volumeLabel.text = "Vol " + order.dealtAmountS.description
         cancelButton.layer.cornerRadius = 15
@@ -40,7 +40,7 @@ class OrderHistoryTableViewCell: UITableViewCell {
         cancelButton.borderWidth = 0.5
     }
     
-    func initPriceLabel(order: Order) {
+    func setupPriceLabel(order: Order) {
         let trade = order.originalOrder.market
         let balance = market.getBalance(of: trade)
         amountLabel.text = balance.description
@@ -54,7 +54,7 @@ class OrderHistoryTableViewCell: UITableViewCell {
         displayLabel.textColor = .gray
     }
     
-    func initOrderTypeLabel(order: Order) {
+    func setupOrderTypeLabel(order: Order) {
         orderTypeLabel.text = order.originalOrder.side
         orderTypeLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 10)
         orderTypeLabel.borderWidth = 0.5
@@ -70,7 +70,7 @@ class OrderHistoryTableViewCell: UITableViewCell {
         orderTypeLabel.layer.masksToBounds = true
     }
     
-    func initOrderFilled(order: Order) {
+    func setupOrderFilled(order: Order) {
         var percent: Double = 0.0
         if order.originalOrder.side.lowercased() == "sell" {
             percent = order.dealtAmountS / order.originalOrder.amountSell
