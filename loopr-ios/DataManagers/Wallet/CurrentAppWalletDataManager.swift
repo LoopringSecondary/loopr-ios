@@ -155,8 +155,11 @@ class CurrentAppWalletDataManager {
     }
     
     // TODO: whether stop method is useful? Yes.
-    func startGetBalance(_ owner: String) {
-        LoopringSocketIORequest.getBalance(owner: owner)
+    func startGetBalance() {
+        guard let wallet = currentAppWallet else {
+            return
+        }
+        LoopringSocketIORequest.getBalance(owner: wallet.address)
     }
     
     // TODO: Why precision is 4?
@@ -190,8 +193,13 @@ class CurrentAppWalletDataManager {
         return result
     }
     
-    func getTransactionsFromServer(owner: String, asset: Asset, completionHandler: @escaping (_ transactions: [Transaction], _ error: Error?) -> Void) {
-        LoopringAPIRequest.getTransactions(owner: owner, symbol: asset.symbol, thxHash: nil, completionHandler: { (transactions, error) in
+    func getTransactionsFromServer(asset: Asset, completionHandler: @escaping (_ transactions: [Transaction], _ error: Error?) -> Void) {
+
+        guard let wallet = currentAppWallet else {
+            return
+        }
+
+        LoopringAPIRequest.getTransactions(owner: wallet.address, symbol: asset.symbol, thxHash: nil, completionHandler: { (transactions, error) in
             guard error == nil && transactions != nil else {
                 return
             }

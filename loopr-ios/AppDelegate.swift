@@ -33,10 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // TODO: check whether it is properly: socket.io must be established befor startxxx method
         LoopringSocketIORequest.setup()
         PriceQuoteDataManager.shared.startGetPriceQuote("USD")
-        
-        let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet()
-        CurrentAppWalletDataManager.shared.startGetBalance(wallet!.address)
-        
+
+        CurrentAppWalletDataManager.shared.startGetBalance()
+
         MarketDataManager.shared.startGetTicker()
         
         _ = SettingDataManager.shared.getCurrentLanguage()

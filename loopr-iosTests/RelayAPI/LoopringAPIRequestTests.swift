@@ -30,9 +30,9 @@ class LoopringAPIRequestTests: XCTestCase {
                 return
             }
             XCTAssertNotNil(assets)
-            XCTAssertNotEqual(assets!.count, 0)
+            XCTAssertNotEqual(assets.count, 0)
             
-            for asset in assets! {
+            for asset in assets {
                 print("\(asset.symbol): \(asset.balance)")
             }
 

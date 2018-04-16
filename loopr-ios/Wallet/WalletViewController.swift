@@ -66,7 +66,11 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func getBalanceFromRelay() {
-        LoopringAPIRequest.getBalance(owner: "0x267be1C1D684F78cb4F6a176C4911b741E4Ffdc0") { assets, error in
+        guard let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet() else {
+            return
+        }
+
+        LoopringAPIRequest.getBalance(owner: wallet.address) { assets, error in
             print("receive LoopringAPIRequest.getBalance")
             guard error == nil else {
                 print("error=\(String(describing: error))")
