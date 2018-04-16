@@ -10,6 +10,8 @@ import UIKit
 
 class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
 
+    var setupWalletMethod: SetupWalletMethod = .create
+    
     var titleLabelText: String = NSLocalizedString("Create a new wallet", comment: "")
     var titleLabel: UILabel =  UILabel()
 
@@ -25,6 +27,19 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
     // Keyboard
     var isKeyboardShown: Bool = false
     var keyboardOffsetY: CGFloat = 0
+    
+    convenience init(setupWalletMethod: SetupWalletMethod) {
+        self.init(nibName: "GenerateWalletViewController", bundle: nil)
+        self.setupWalletMethod = setupWalletMethod
+    }
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,19 +97,29 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(walletPasswordUnderLine)
         
         continueButton.setupRoundBlack()
-        continueButton.setTitle("Continue", for: .normal)
         continueButton.frame = CGRect(x: padding, y: walletPasswordUnderLine.frame.maxY + 50, width: screenWidth - padding * 2, height: 47)
         continueButton.addTarget(self, action: #selector(pressedContinueButton), for: .touchUpInside)
         view.addSubview(continueButton)
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
-        
+
+        // UI will be different based on SetupWalletMethod
+        if setupWalletMethod == .create {
+            continueButton.setTitle("Continue", for: .normal)
+            
+            // Generate a new wallet
+            _ = GenerateWalletDataManager.shared.new()
+
+        } else {
+            walletPasswordTextField.isHidden = true
+            walletPasswordUnderLine.isHidden = true
+            titleLabelText = NSLocalizedString("Setup the wallet name", comment: "")
+            continueButton.setTitle("Enter Wallet", for: .normal)
+        }
+
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         view.addGestureRecognizer(scrollViewTap)
-        
-        // Generate a new wallet
-        _ = GenerateWalletDataManager.shared.new()
     }
 
     override func didReceiveMemoryWarning() {
@@ -105,6 +130,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+
     }
     
     @objc func scrollViewTapped() {
@@ -145,13 +171,28 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
 
     @objc func pressedContinueButton(_ sender: Any) {
         print("pressedContinueButton")
-        
-        // TODO: Check if walletNameTextField and walletPasswordTextField have valid input.
-        
-        GenerateWalletDataManager.shared.setWalletName(walletNameTextField.text!)
-        
-        let viewController = GenerateWalletConfirmPasswordViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
+        if setupWalletMethod == .create {
+            // TODO: Check if walletNameTextField and walletPasswordTextField have valid input.
+            GenerateWalletDataManager.shared.setWalletName(walletNameTextField.text!)
+            
+            let viewController = GenerateWalletConfirmPasswordViewController()
+            self.navigationController?.pushViewController(viewController, animated: true)
+
+        } else {
+            ImportWalletUsingMnemonicDataManager.shared.walletName = walletNameTextField.text!
+            ImportWalletUsingMnemonicDataManager.shared.complete()
+            
+            // Exit the whole importing process
+            if SetupDataManager.shared.hasPresented {
+                self.dismiss(animated: true, completion: {
+                    
+                })
+            } else {
+                SetupDataManager.shared.hasPresented = true
+                let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+            }
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

@@ -16,8 +16,9 @@ class ImportWalletUsingMnemonicDataManager {
     var password: String = ""
     var derivationPathValue = "m/44'/60'/0'/0"
     var selectedKey: Int = 0
-
     var addresses: [Address] = []
+    
+    var walletName: String = ""
     
     private init() {
         
@@ -50,13 +51,25 @@ class ImportWalletUsingMnemonicDataManager {
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
         print("Finished unlocking a new wallet")
     }
-    
+
+    func clearAddresses() {
+        selectedKey = 0
+        addresses = []
+    }
+
     func generateAddresses() {
-        for i in 0..<10 {
+        // append "/x"
+        let pathValue = derivationPathValue + "/x"
+
+        for i in 0..<30 {
             let key = (addresses.count) + i
-            let wallet = Wallet(mnemonic: mnemonic, password: password)
+            let wallet = Wallet(mnemonic: mnemonic, password: password, path: pathValue)
             let address = wallet.getKey(at: key).address
             addresses.append(address)
         }
+    }
+    
+    func complete() {
+        let appWallet = AppWalletDataManager.shared.addWallet(walletName: walletName, mnemonics: mnemonic.components(separatedBy: " "))
     }
 }

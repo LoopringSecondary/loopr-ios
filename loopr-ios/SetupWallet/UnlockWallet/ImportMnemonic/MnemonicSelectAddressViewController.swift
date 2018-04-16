@@ -25,7 +25,7 @@ class MnemonicSelectAddressViewController: UIViewController, UITableViewDelegate
         tableView.tableFooterView = UIView()
 
         nextButton.setupRoundBlack()
-        nextButton.setTitle(NSLocalizedString("Enter Wallet", comment: ""), for: .normal)
+        nextButton.setTitle(NSLocalizedString("Next", comment: ""), for: .normal)
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
@@ -71,7 +71,9 @@ class MnemonicSelectAddressViewController: UIViewController, UITableViewDelegate
     }
     
     @IBAction func pressedNextButton(_ sender: Any) {
-        
+        print("Enter wallet")
+        let viewController = GenerateWalletViewController(setupWalletMethod: .unlock)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
-    
+
 }

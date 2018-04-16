@@ -66,6 +66,7 @@ class MnemonicEnterDerivationPathViewController: UIViewController, UITableViewDe
         if cell == nil {
             let nib = Bundle.main.loadNibNamed("MnemonicDerivationPathTableViewCell", owner: self, options: nil)
             cell = nib![0] as? MnemonicDerivationPathTableViewCell
+            cell?.selectionStyle = .none
             cell?.tintColor = UIColor.black
         }
         
@@ -88,7 +89,9 @@ class MnemonicEnterDerivationPathViewController: UIViewController, UITableViewDe
     }
     
     @IBAction func pressedNextButton(_ sender: Any) {
+        ImportWalletUsingMnemonicDataManager.shared.clearAddresses()
         ImportWalletUsingMnemonicDataManager.shared.generateAddresses()
+
         let viewController = MnemonicSelectAddressViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
     }

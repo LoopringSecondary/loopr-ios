@@ -10,6 +10,8 @@ import UIKit
 
 class GenerateWalletConfirmPasswordViewController: UIViewController, UITextFieldDelegate {
 
+    var setupWalletMethod: SetupWalletMethod = .create
+
     var titleLabel: UILabel =  UILabel()
     
     var walletPasswordTextField: UITextField = UITextField()
@@ -17,11 +19,23 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
     
     var continueButton: UIButton = UIButton()
 
+    convenience init(setupWalletMethod: SetupWalletMethod) {
+        self.init(nibName: "GenerateWalletConfirmPasswordViewController", bundle: nil)
+        self.setupWalletMethod = setupWalletMethod
+    }
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         setBackButton()
         
         // Setup UI in the scroll view

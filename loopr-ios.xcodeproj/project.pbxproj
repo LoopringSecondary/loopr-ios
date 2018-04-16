@@ -56,6 +56,7 @@
 		AC061939208401EB0060F416 /* MnemonicAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC061937208401EB0060F416 /* MnemonicAddressTableViewCell.swift */; };
 		AC06193A208401EB0060F416 /* MnemonicAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC061938208401EB0060F416 /* MnemonicAddressTableViewCell.xib */; };
 		AC06193C208404FA0060F416 /* FoundationString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC06193B208404FA0060F416 /* FoundationString+Extension.swift */; };
+		AC06193E208417AF0060F416 /* SetupWalletMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC06193D208417AF0060F416 /* SetupWalletMethod.swift */; };
 		AC0C5C82203D153F00C8618D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0C5C81203D153F00C8618D /* CoreGraphics.framework */; };
 		AC0C5C84203D154700C8618D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0C5C83203D154700C8618D /* QuartzCore.framework */; };
 		AC0C5C86203D168C00C8618D /* TickerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C5C85203D168C00C8618D /* TickerLabel.swift */; };
@@ -577,6 +578,7 @@
 		AC061937208401EB0060F416 /* MnemonicAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicAddressTableViewCell.swift; sourceTree = "<group>"; };
 		AC061938208401EB0060F416 /* MnemonicAddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicAddressTableViewCell.xib; sourceTree = "<group>"; };
 		AC06193B208404FA0060F416 /* FoundationString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoundationString+Extension.swift"; sourceTree = "<group>"; };
+		AC06193D208417AF0060F416 /* SetupWalletMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWalletMethod.swift; sourceTree = "<group>"; };
 		AC0C5C7A203D131200C8618D /* loopr-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "loopr-ios-Bridging-Header.h"; sourceTree = "<group>"; };
 		AC0C5C81203D153F00C8618D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		AC0C5C83203D154700C8618D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1953,6 +1955,7 @@
 				AC3756652038CD7E00AADC60 /* SetupNavigationController.swift */,
 				C8BF95AE2027AC9400343B9A /* SetupViewController.swift */,
 				C8BF95AF2027AC9400343B9A /* SetupViewController.xib */,
+				AC06193D208417AF0060F416 /* SetupWalletMethod.swift */,
 				AC99CF502083E708000AE4BD /* GenerateWallet */,
 				AC5E0DD2203A848300AF03C7 /* GenerateMnemonic */,
 				AC3756752038D70D00AADC60 /* UnlockWallet */,
@@ -2688,6 +2691,7 @@
 				ACB911A320296B9900F14644 /* OriginalOrder.swift in Sources */,
 				940B451E2060F67E00ADE2B9 /* GenerateWalletDataManager.swift in Sources */,
 				AC4141EF203524280089861D /* MarketSwipeViewController.swift in Sources */,
+				AC06193E208417AF0060F416 /* SetupWalletMethod.swift in Sources */,
 				ACE5BF95204523F9005D75DD /* UIStyleKeyboard.swift in Sources */,
 				94CCE684206BE06C002FFC0D /* XYMarkerView.swift in Sources */,
 				AC387520205F12F100A76637 /* ContextMenu+ContainerStyle.swift in Sources */,
@@ -2888,7 +2892,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K46AVDG9WW;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2912,7 +2916,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K46AVDG9WW;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
