@@ -16,6 +16,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     var options = SwipeViewOptions()
     
     let searchBar = UISearchBar()
+    let orderHistoryButton = UIButton(type: UIButtonType.custom)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +29,13 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         
         setupChildViewControllers()
 
-        let orderHistoryButton = UIButton(type: UIButtonType.custom)
         let image = UIImage(named: "Order-history-black")
         orderHistoryButton.setBackgroundImage(image, for: .normal)
         orderHistoryButton.setBackgroundImage(image?.alpha(0.3), for: .highlighted)
         
         orderHistoryButton.addTarget(self, action: #selector(self.pressOrderHistoryButton(_:)), for: UIControlEvents.touchUpInside)
         orderHistoryButton.frame = CGRect(x: 0, y: 0, width: 23, height: 23)
+
         let orderHistoryBarButton = UIBarButtonItem(customView: orderHistoryButton)
         self.navigationItem.rightBarButtonItem = orderHistoryBarButton
     }
@@ -168,6 +169,8 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         print("searchBarCancelButtonClicked")
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -176,6 +179,10 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         print("searchBarTextDidBeginEditing")
+        searchBar.showsCancelButton = true
     }
 
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print("searchBarTextDidEndEditing")
+    }
 }
