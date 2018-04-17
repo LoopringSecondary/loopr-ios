@@ -70,11 +70,7 @@ class AppWalletDataManager {
 
     // TODO: Use error handling instead of returning a Bool value
     func addWallet(walletName: String, mnemonics: [String], password: String, derivationPath: String, key: Int) -> AppWallet? {
-        guard mnemonics.count == 24 else {
-            return nil
-        }
-
-        guard key > 0 else {
+        guard key >= 0 else {
             return nil
         }
 
@@ -102,6 +98,8 @@ class AppWalletDataManager {
         
         // Update the new app wallet in the local storage.
         updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
+        
+        // Set the current AppWallet.
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
 
         return newAppWallet

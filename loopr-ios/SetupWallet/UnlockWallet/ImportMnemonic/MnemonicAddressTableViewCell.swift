@@ -10,11 +10,16 @@ import UIKit
 
 class MnemonicAddressTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var indexLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        textLabel?.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)
+        indexLabel.textAlignment = .right
+        indexLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 14)
+        addressLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -52,9 +52,10 @@ class MnemonicSelectAddressViewController: UIViewController, UITableViewDelegate
             cell?.selectionStyle = .none
             cell?.tintColor = UIColor.black
         }
-        
-        cell?.textLabel?.text = ImportWalletUsingMnemonicDataManager.shared.addresses[indexPath.row].eip55String
-        
+
+        cell?.indexLabel.text = "\(indexPath.row+1)."
+        cell?.addressLabel.text = ImportWalletUsingMnemonicDataManager.shared.addresses[indexPath.row].eip55String
+
         if ImportWalletUsingMnemonicDataManager.shared.selectedKey == indexPath.row {
             cell?.accessoryType = .checkmark
         } else {
