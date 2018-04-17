@@ -30,6 +30,11 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         
         print(appWallet.name)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print(appWallet.name)
+        self.tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

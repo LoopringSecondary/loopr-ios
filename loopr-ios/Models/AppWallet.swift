@@ -13,8 +13,8 @@ class AppWallet: NSObject, NSCoding {
     final let address: String
     final let privateKey: String
 
-    final let name: String
-    final let active: Bool
+    var name: String
+    var active: Bool
 
     var mnemonics: [String] = []
 

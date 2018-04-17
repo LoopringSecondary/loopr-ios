@@ -27,6 +27,10 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
