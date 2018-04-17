@@ -32,7 +32,7 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
         
         nameTextField.delegate = self
         nameTextField.tag = 0
-        nameTextField.inputView = UIView()
+//        nameTextField.inputView = UIView()
         nameTextField.font = FontConfigManager.shared.getLabelFont()
         nameTextField.theme_tintColor = GlobalPicker.textColor
         nameTextField.placeholder = "Enter your wallet name"
@@ -46,7 +46,7 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
         
         saveButton.setTitleColor(UIColor.white, for: .normal)
         saveButton.setTitleColor(UIColor.white.withAlphaComponent(0.3), for: .highlighted)
-        saveButton.setBackgroundColor(UIColor.black, for: .normal)
+        saveButton.setupRoundBlack()
         saveButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
         saveButton.frame = CGRect(x: screenWidth/2-40, y: nameFieldUnderLine.frame.maxY + padding*2, width: 80, height: 40)
         saveButton.addTarget(self, action: #selector(pressedSaveButton), for: .touchUpInside)
@@ -68,9 +68,22 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
     @objc func pressedSaveButton(_ sender: Any) {
         print("pressedSwitchTokenBButton: \(appWallet)")
         print("wallet Name is: \(appWallet.name)")
-        appWallet.name = nameTextField.text!
-        let dataManager = AppWalletDataManager.shared
-        dataManager.updateAppWalletsInLocalStorage(newAppWallet: appWallet)
-        self.navigationController?.popViewController(animated: true)
+        
+        if nameTextField.text?.count != 0 {
+            appWallet.name = nameTextField.text!
+            let dataManager = AppWalletDataManager.shared
+            dataManager.updateAppWalletsInLocalStorage(newAppWallet: appWallet)
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            
+            let alertController = UIAlertController(title: "New wallet name can't be empty", message: nil, preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
+                
+            })
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+
     }
 }
