@@ -207,10 +207,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return 45
     }
     
-    func getAppVersion() -> String{
+    func getAppVersion() -> String {
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
         let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
         
-        return version + "(" + build + ")"
+        return version + " (" + build + ")"
     }
 }
