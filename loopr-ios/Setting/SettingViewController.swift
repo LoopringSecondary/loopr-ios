@@ -139,7 +139,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func section4Cell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
-            return createBasicTableCell(title: "App Version", detailTitle: "1.0.1")
+            return createBasicTableCell(title: "App Version", detailTitle: getAppVersion())
         case 1:
             return createDetailTableCell(title: "Website", detailTitle: "loopring.org")
         case 2:
@@ -205,5 +205,12 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 45
+    }
+    
+    func getAppVersion() -> String{
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
+        
+        return version + "(" + build + ")"
     }
 }
