@@ -44,11 +44,8 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
         nameFieldUnderLine.backgroundColor = UIColor.black
         self.view.addSubview(nameFieldUnderLine)
         
-        saveButton.setTitleColor(UIColor.white, for: .normal)
-        saveButton.setTitleColor(UIColor.white.withAlphaComponent(0.3), for: .highlighted)
         saveButton.setupRoundBlack()
-        saveButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
-        saveButton.frame = CGRect(x: screenWidth/2-40, y: nameFieldUnderLine.frame.maxY + padding*2, width: 80, height: 40)
+        saveButton.frame = CGRect(x: 15, y: nameFieldUnderLine.frame.maxY + padding*2, width: screenWidth - 15*2, height: 47)
         saveButton.addTarget(self, action: #selector(pressedSaveButton), for: .touchUpInside)
         self.view.addSubview(saveButton)
         
