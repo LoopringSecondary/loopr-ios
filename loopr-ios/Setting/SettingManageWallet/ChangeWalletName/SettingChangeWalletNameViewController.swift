@@ -37,7 +37,7 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
         nameTextField.theme_tintColor = GlobalPicker.textColor
         nameTextField.placeholder = "Enter your wallet name"
         nameTextField.contentMode = UIViewContentMode.bottom
-        nameTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2-80, height: 40)
+        nameTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 40)
         self.view.addSubview(nameTextField)
         
         nameFieldUnderLine.frame = CGRect(x: padding, y: nameTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
@@ -45,7 +45,7 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
         self.view.addSubview(nameFieldUnderLine)
         
         saveButton.setupRoundBlack()
-        saveButton.frame = CGRect(x: 15, y: nameFieldUnderLine.frame.maxY + padding*2, width: screenWidth - 15*2, height: 47)
+        saveButton.frame = CGRect(x: padding, y: nameFieldUnderLine.frame.maxY + padding*2 + 10, width: screenWidth - padding*2, height: 47)
         saveButton.addTarget(self, action: #selector(pressedSaveButton), for: .touchUpInside)
         self.view.addSubview(saveButton)
         
