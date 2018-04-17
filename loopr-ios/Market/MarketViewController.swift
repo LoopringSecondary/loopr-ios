@@ -14,6 +14,8 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var type: MarketSwipeViewType
     
+    var selectedCellClosure: ((Market) -> Void)?
+
     // TODO: searchController conflicts to SwipeViewController.
     let searchController = UISearchController(searchResultsController: nil)
     var filteredMarkets = [Market]()
@@ -151,10 +153,13 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+
         let marketDetailViewController = MarketDetailViewController()
         let market = MarketDataManager.shared.getMarkets(type: type)[indexPath.row]
         marketDetailViewController.market = market
         marketDetailViewController.hidesBottomBarWhenPushed = true
+        
+        self.navigationController?.view.endEditing(true)
         self.navigationController?.pushViewController(marketDetailViewController, animated: true)
     }
     
