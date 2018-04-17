@@ -32,7 +32,7 @@ class CurrentAppWalletDataManagerTests: XCTestCase {
     func testStartGetBalance() {
         let expectation = XCTestExpectation()
         PriceQuoteDataManager.shared.startGetPriceQuote("USD")
-        CurrentAppWalletDataManager.shared.startGetBalance("0x750ad4351bb728cec7d639a9511f9d6488f1e259")
+        CurrentAppWalletDataManager.shared.startGetBalance()
         wait(for: [expectation], timeout: 100.0)
     }
     

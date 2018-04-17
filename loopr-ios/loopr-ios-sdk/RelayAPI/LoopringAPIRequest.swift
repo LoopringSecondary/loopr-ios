@@ -45,8 +45,6 @@ class LoopringAPIRequest {
         body["params"] = [["owner": owner, "orderHash": orderHash, "contractVersion": RelayAPIConfiguration.contractVersion, "status": status, "market": market, "pageIndex": pageIndex, "pageSize": pageSize]]
         body["id"] = JSON(UUID().uuidString)
         
-        print(body)
-        
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
@@ -56,8 +54,6 @@ class LoopringAPIRequest {
             var orders: [Order] = []
             let json = JSON(data)
             let offerData = json["result"]["data"]
-            print(json)
-            print(offerData)
             
             for subJson in offerData.arrayValue {
                 let originalOrderJson = subJson["originalOrder"]
@@ -95,7 +91,7 @@ class LoopringAPIRequest {
     }
 
     // READY
-    static func getTicker(completionHandler: @escaping (_ tikers: [Ticker]?, _ error: Error?) -> Void) {
+    static func getMarkets(completionHandler: @escaping (_ markets: [Market], _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getTicker"
         body["params"] = [["contractVersion": RelayAPIConfiguration.contractVersion]]
@@ -106,14 +102,17 @@ class LoopringAPIRequest {
                 print("error=\(String(describing: error))")
                 return
             }
-            var tickers: [Ticker] = []
+            var markets: [Market] = []
             let json = JSON(data)
             let offerData = json["result"]
+            print(offerData)
+            
             for subJson in offerData.arrayValue {
-                let ticker = Ticker(json: subJson)
-                tickers.append(ticker)
+                if let market = Market(json: subJson) {
+                    markets.append(market)
+                }
             }
-            completionHandler(tickers, nil)
+            completionHandler(markets, nil)
         }
     }
     

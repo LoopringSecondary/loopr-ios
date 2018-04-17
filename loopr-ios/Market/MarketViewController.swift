@@ -7,15 +7,17 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var marketTableView: UITableView!
     
     var type: MarketSwipeViewType
-    
+    let refreshControl = UIRefreshControl()
+    var shouldRefresh: Bool = true
+    var isReordering: Bool = false
     var selectedCellClosure: ((Market) -> Void)?
-
     // TODO: searchController conflicts to SwipeViewController.
     let searchController = UISearchController(searchResultsController: nil)
     var filteredMarkets = [Market]()
@@ -40,16 +42,18 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        setup()
-        
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
-        marketTableView.theme_backgroundColor = GlobalPicker.backgroundColor
-        
+
         marketTableView.dataSource = self
         marketTableView.delegate = self
         marketTableView.reorder.delegate = self
         marketTableView.tableFooterView = UIView()
         marketTableView.separatorStyle = .none
+        
+        getMarketsFromRelay()
+        OrderDataManager.shared.getOrdersFromServer()
+        
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        marketTableView.theme_backgroundColor = GlobalPicker.backgroundColor
         
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
@@ -63,30 +67,64 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // searchController.searchBar.scopeButtonTitles = ["All", "ETH", "LRC", "Other"]
         // searchController.searchBar.delegate = self
         
-        // Get a copy from get markets.
-        markets = MarketDataManager.shared.getMarkets(type: type)
+        // Add Refresh Control to Table View
+        if #available(iOS 10.0, *) {
+            marketTableView.refreshControl = refreshControl
+        } else {
+            marketTableView.addSubview(refreshControl)
+        }
+        refreshControl.theme_tintColor = GlobalPicker.textColor
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        
         // Add observer.
         NotificationCenter.default.addObserver(self, selector: #selector(tickerResponseReceivedNotification), name: .tickerResponseReceived, object: nil)
     }
     
-    func setup() {
-        OrderDataManager.shared.getOrdersFromServer()
+    @objc private func refreshData(_ sender: Any) {
+        getMarketsFromRelay()
     }
-
-    @objc func tickerResponseReceivedNotification() {
-        // TODO: Perform a diff algorithm
-        if self.markets.count == 0 {
-            self.markets = MarketDataManager.shared.getMarkets()
-            marketTableView.reloadData()
+    
+    func getMarketsFromRelay() {
+        LoopringAPIRequest.getMarkets { (markets, error) in
+            print("receive LoopringAPIRequest.getMarkets")
+            guard error == nil else {
+                print("error=\(String(describing: error))")
+                let notificationTitle = NSLocalizedString("Sorry. Network error", comment: "")
+                let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
+                let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
+                let banner = NotificationBanner(attributedTitle: attributeString, style: .info, colors: NotificationBannerStyle())
+                banner.duration = 2.0
+                banner.show()
+                return
+            }
+            MarketDataManager.shared.setMarkets(newMarkets: markets, type: self.type)
+            DispatchQueue.main.async {
+                self.marketTableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if type == .favorite {
-            reload()
+    @objc func tickerResponseReceivedNotification() {
+        // TODO: Perform a diff algorithm
+//        if self.markets.count == 0 {
+//            self.markets = MarketDataManager.shared.getMarkets(type: type)
+//            marketTableView.reloadData()
+//        }
+        
+        if shouldRefresh && !isReordering {
+            print("reload table")
+            marketTableView.reloadData()
+            shouldRefresh = false
         }
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        if type == .favorite {
+//            reload()
+//        }
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -144,7 +182,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if isFiltering() {
             market = filteredMarkets[indexPath.row]
         } else {
-            market = markets[indexPath.row]
+            market = MarketDataManager.shared.getMarkets(type: type)[indexPath.row]
         }
         cell?.market = market
         cell?.update()
@@ -164,7 +202,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let market = MarketDataManager.shared.getMarkets(type: self.type)[indexPath.row]
+        let market = MarketDataManager.shared.getMarkets(type: type)[indexPath.row]
         if market.isFavorite() {
             let action = UIContextualAction(style: .normal, title: "Unfavorite", handler: { (_: UIContextualAction, _:  UIView, success: (Bool) -> Void) in
                 print("OK, marked as Unfavorite")
@@ -210,9 +248,24 @@ extension MarketViewController: UISearchResultsUpdating {
 extension MarketViewController: TableViewReorderDelegate {
     // MARK: - Reorder Delegate
     func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let movedObject = markets[sourceIndexPath.row]
-        markets.remove(at: sourceIndexPath.row)
-        markets.insert(movedObject, at: destinationIndexPath.row)
-        MarketDataManager.shared.exchange(at: sourceIndexPath.row, to: destinationIndexPath.row)
+        MarketDataManager.shared.exchange(at: sourceIndexPath.row, to: destinationIndexPath.row, type: type)
+    }
+    
+    func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.row >= 0 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func tableViewDidBeginReordering(_ tableView: UITableView) {
+        print("tableViewDidBeginReordering")
+        isReordering = true
+    }
+    
+    func tableViewDidFinishReordering(_ tableView: UITableView, from initialSourceIndexPath: IndexPath, to finalDestinationIndexPath: IndexPath) {
+        print("tableViewDidFinishReordering")
+        isReordering = false
     }
 }

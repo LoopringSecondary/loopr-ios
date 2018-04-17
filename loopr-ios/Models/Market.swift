@@ -29,16 +29,23 @@ class Market: Equatable, CustomStringConvertible {
         guard tokens.count == 2 else {
             return nil
         }
-
         icon = UIImage(named: tokens[0]) ?? nil
         changeInPat24 = json["change"].stringValue
         tradingPair = TradingPair(tokens[0], tokens[1])
         description = "\(tokens[0])" + " / " + "\(tokens[1])"
         balance = json["last"].doubleValue
         volumeInPast24 = json["amount"].doubleValue
-
-        let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: tradingPair.tradingA) ?? 0
-        display = String(price)
+        
+        if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: tradingPair.tradingA) {
+            let currencyFormatter = NumberFormatter()
+            currencyFormatter.locale = NSLocale.current
+            currencyFormatter.usesGroupingSeparator = true
+            currencyFormatter.numberStyle = .currency
+            let formattedNumber = currencyFormatter.string(from: NSNumber(value: price)) ?? "\(price)"
+            display = formattedNumber
+        } else {
+            return nil
+        }
     }
     
     static func == (lhs: Market, rhs: Market) -> Bool {

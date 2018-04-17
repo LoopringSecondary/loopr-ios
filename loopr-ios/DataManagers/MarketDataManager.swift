@@ -12,25 +12,123 @@ class MarketDataManager {
     
     static let shared = MarketDataManager()
     
-    private var markets: [Market]
     private var trends: [Trend]
-    private lazy var favoriteMarketKeys: [String] = self.getFavoriteMarketKeysFromLocal()
+    private var markets: [Market]
+    private var currentAppWallet: AppWallet?
     
+    private var lrcSequence: [String]
+    private var wethSequence: [String]
+    private var favoriteSequence: [String]
+
     private init() {
         markets = []
         trends = []
+        lrcSequence = []
+        wethSequence = []
+        favoriteSequence = []
     }
     
-    // TODO:
-    func updateMarket() {
-        
+    func filterMarkets(newMarkets: [Market], type: MarketSwipeViewType) -> [Market] {
+        let filteredMarkets = newMarkets.filter { (market) -> Bool in
+            return market.description != ""
+        }
+        let markets = filteredMarkets.filter({ (market) -> Bool in
+            return market.tradingPair.tradingB.uppercased() == type.description
+        })
+        let sortedMarkets = markets.sorted { (a, b) -> Bool in
+            return a.description < b.description
+        }
+        return sortedMarkets
     }
 
-    func exchange(at sourceIndex: Int, to destinationIndex: Int) {
-        if destinationIndex < markets.count && sourceIndex < markets.count {
-            markets.swapAt(sourceIndex, destinationIndex)
-            // Update the array in the disk
-            updateFavoriteMarketKeysOnLocal()
+    func setMarkets(newMarkets: [Market], type: MarketSwipeViewType = .all) {
+        let filteredMarkets = newMarkets.filter { (market) -> Bool in
+            return market.description != ""
+        }
+        switch type {
+        case .all:
+            self.markets = filteredMarkets
+        case .favorite:
+            let sortedMarkets = filteredMarkets.filter({ (market) -> Bool in
+                return favoriteSequence.contains(market.description)
+            }).sorted { (a, b) -> Bool in
+                return a.description < b.description
+            }
+            for market in sortedMarkets {
+                if let index = favoriteSequence.index(of: market.description) {
+                    favoriteSequence[index] = market.description
+                } else {
+                    favoriteSequence.append(market.description)
+                }
+            }
+        case .LRC:
+            let sortedMarkets = filteredMarkets.filter({ (market) -> Bool in
+                return market.tradingPair.tradingB.uppercased() == "LRC"
+            }).sorted { (a, b) -> Bool in
+                return a.description < b.description
+            }
+            for market in sortedMarkets {
+                if let index = lrcSequence.index(of: market.description) {
+                    lrcSequence[index] = market.description
+                } else {
+                    lrcSequence.append(market.description)
+                }
+            }
+        case .ETH:
+            let sortedMarkets = filteredMarkets.filter({ (market) -> Bool in
+                return market.tradingPair.tradingB.uppercased() == "ETH" || market.tradingPair.tradingB.uppercased() == "WETH"
+            }).sorted { (a, b) -> Bool in
+                return a.description < b.description
+            }
+            for market in sortedMarkets {
+                if let index = wethSequence.index(of: market.description) {
+                    wethSequence[index] = market.description
+                } else {
+                    wethSequence.append(market.description)
+                }
+            }
+        }
+    }
+    
+    func updateMarketKeysOnLocal(type: MarketSwipeViewType) {
+        var key: String = ""
+        var value: [String] = []
+        let defaults = UserDefaults.standard
+        switch type {
+        case .LRC:
+            value = lrcSequence
+            key = UserDefaultsKeys.lrcSequence.rawValue
+        case .ETH:
+            value = wethSequence
+            key = UserDefaultsKeys.wethSequence.rawValue
+        case .favorite:
+            value = favoriteSequence
+            key = UserDefaultsKeys.favoriteSequence.rawValue
+        case .all:
+            break
+        }
+        defaults.set(value, forKey: key)
+    }
+
+    func exchange(at sourceIndex: Int, to destinationIndex: Int, type: MarketSwipeViewType) {
+        switch type {
+        case .favorite:
+            if destinationIndex < favoriteSequence.count && sourceIndex < favoriteSequence.count {
+                favoriteSequence.swapAt(sourceIndex, destinationIndex)
+                updateMarketKeysOnLocal(type: .favorite)
+            }
+        case .LRC:
+            if destinationIndex < lrcSequence.count && sourceIndex < lrcSequence.count {
+                lrcSequence.swapAt(sourceIndex, destinationIndex)
+                updateMarketKeysOnLocal(type: .LRC)
+            }
+        case .ETH:
+            if destinationIndex < wethSequence.count && sourceIndex < wethSequence.count {
+                wethSequence.swapAt(sourceIndex, destinationIndex)
+                updateMarketKeysOnLocal(type: .ETH)
+            }
+        default:
+            break
         }
     }
     
@@ -72,56 +170,67 @@ class MarketDataManager {
         })
     }
     
+    func setupSequences() {
+        lrcSequence = getMarketKeysFromLocal(type: .LRC)
+        wethSequence = getMarketKeysFromLocal(type: .ETH)
+        favoriteSequence = getMarketKeysFromLocal(type: .favorite)
+    }
+    
     func getMarkets(type: MarketSwipeViewType = .all) -> [Market] {
+        setupSequences()
         switch type {
         case .all:
             return markets
         case .favorite:
-            return markets.filter({ (market) -> Bool in
-                return favoriteMarketKeys.contains(market.description)
+            return markets.filter({ favoriteSequence.contains($0.description)
+            }).sorted(by: { favoriteSequence.index(of: $0.description)! < favoriteSequence.index(of: $1.description)!
             })
         case .ETH:
-            return markets.filter({ (market) -> Bool in
-                return market.tradingPair.tradingB.uppercased() == "WETH"
+            return markets.filter({ wethSequence.contains($0.description)
+            }).sorted(by: { wethSequence.index(of: $0.description)! < wethSequence.index(of: $1.description)!
             })
         case .LRC:
-            return markets.filter({ (market) -> Bool in
-                return market.tradingPair.tradingB.uppercased() == "LRC"
+            return markets.filter({ lrcSequence.contains($0.description)
+            }).sorted(by: { lrcSequence.index(of: $0.description)! < lrcSequence.index(of: $1.description)!
             })
         }
     }
 
     func getFavoriteMarketKeys() -> [String] {
-        return favoriteMarketKeys
+        return favoriteSequence
     }
     
-    func getFavoriteMarketKeysFromLocal() -> [String] {
+    func getMarketKeysFromLocal(type: MarketSwipeViewType) -> [String] {
+        var key: String
         let defaults = UserDefaults.standard
-        if let favoriteMarkets = defaults.stringArray(forKey: UserDefaultsKeys.favoriteMarkets.rawValue) {
-            return favoriteMarkets
+        switch type {
+        case .LRC:
+            key = UserDefaultsKeys.lrcSequence.rawValue
+        case .ETH:
+            key = UserDefaultsKeys.wethSequence.rawValue
+        case .favorite:
+            key = UserDefaultsKeys.favoriteSequence.rawValue
+        default:
+            key = UserDefaultsKeys.favoriteSequence.rawValue
+        }
+        if let markets = defaults.stringArray(forKey: key) {
+            return markets
         }
         return []
     }
     
-    func updateFavoriteMarketKeysOnLocal() {
-        let defaults = UserDefaults.standard
-        defaults.set(favoriteMarketKeys, forKey: UserDefaultsKeys.favoriteMarkets.rawValue)
-    }
-
     func setFavoriteMarket(market: Market) {
         // Update the array in the memory
-        favoriteMarketKeys.append(market.description)
-        
+        favoriteSequence.append(market.description)
         // Update the array in the disk
-        updateFavoriteMarketKeysOnLocal()
+        updateMarketKeysOnLocal(type: .favorite)
     }
     
     func removeFavoriteMarket(market: Market) {
         // Update the array in the memory
-        favoriteMarketKeys = favoriteMarketKeys.filter { $0 != market.description }
-
+        favoriteSequence = favoriteSequence.filter { $0 != market.description }
         // Update the array in the disk
-        updateFavoriteMarketKeysOnLocal()
+        updateMarketKeysOnLocal(type: .favorite)
     }
     
     // TODO: whether stop method is useful? Yes.
@@ -134,18 +243,17 @@ class MarketDataManager {
     }
     
     func onTickerResponse(json: JSON) {
-        // TODO: Apply diff algorithm.
-        markets = []
+        var newMarkets: [Market] = []
         for subJson in json.arrayValue {
             if let market = Market(json: subJson) {
-                markets.append(market)
+                newMarkets.append(market)
             }
         }
+        setMarkets(newMarkets: newMarkets)
         NotificationCenter.default.post(name: .tickerResponseReceived, object: nil)
     }
     
     func onTrendResponse(json: JSON) {
-        // TODO: Apply diff algorithm.
         trends = []
         for subJson in json.arrayValue {
             let trend = Trend(json: subJson)

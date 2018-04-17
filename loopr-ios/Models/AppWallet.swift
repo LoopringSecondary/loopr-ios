@@ -64,24 +64,19 @@ class AppWallet: NSObject, NSCoding {
         aCoder.encode(privateKey, forKey: "privateKey")
         aCoder.encode(name, forKey: "name")
         aCoder.encode(active, forKey: "active")
-        
         aCoder.encode(mnemonics, forKey: "mnemonics")
-        
         aCoder.encode(assetSequence, forKey: "assetSequence")
     }
 
     required convenience init?(coder aDecoder: NSCoder) {
         let address = aDecoder.decodeObject(forKey: "address") as? String
         let privateKey = aDecoder.decodeObject(forKey: "privateKey") as? String
-        
         let name = aDecoder.decodeObject(forKey: "name") as? String
         let active = aDecoder.decodeBool(forKey: "active")
 
         // TODO: mnemonics vs. mnemonic
         let mnemonics = aDecoder.decodeObject(forKey: "mnemonics") as? [String]
-        
         let assetSequence = aDecoder.decodeObject(forKey: "assetSequence") as? [String] ?? []
-
         if let address = address, let privateKey = privateKey, let mnemonics = mnemonics, let name = name {
             self.init(address: address, privateKey: privateKey, name: name, active: active, mnemonics: mnemonics, assetSequence: assetSequence)
         } else {

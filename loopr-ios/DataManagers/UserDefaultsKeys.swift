@@ -10,6 +10,9 @@ import Foundation
 
 enum UserDefaultsKeys: String {
     case hasBeenSetup = "UserDefaultsKeys.hasBeenSetup"
+    case lrcSequence = "UserDefaultsKeys.lrcSequence"
+    case wethSequence = "UserDefaultsKeys.wethSequence"
+    case favoriteSequence = "UserDefaultsKeys.favoriteSequence"
     case favoriteMarkets = "UserDefaultsKeys.favoriteMarkets"
     case lastedThemeIndex = "UserDefaultsKeys.lastedThemeIndex"
     case currentLanguage = "UserDefaultsKeys.currentLanguage"

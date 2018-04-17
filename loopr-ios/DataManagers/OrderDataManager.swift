@@ -14,11 +14,11 @@ class OrderDataManager {
 
     private var owner: String?
     private var orders: [Order]
-    private var dataOrders: [String: [Order]]
+    private var dateOrders: [String: [Order]]
     
     private init() {
         orders = []
-        dataOrders = [:]
+        dateOrders = [:]
         owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
     }
     
@@ -43,10 +43,10 @@ class OrderDataManager {
     
     func getDateOrders(orderStatuses: [OrderStatus]? = nil) -> [String: [Order]] {
         guard let orderStatuses = orderStatuses else {
-            return dataOrders
+            return dateOrders
         }
         var result: [String: [Order]] = [:]
-        for (date, orders) in dataOrders {
+        for (date, orders) in dateOrders {
             var temp: [Order] = []
             for order in orders {
                 if orderStatuses.contains(where: { (status) -> Bool in
@@ -64,10 +64,10 @@ class OrderDataManager {
     
     func getDataOrders(token: String? = nil) -> [String: [Order]] {
         guard let token = token else {
-            return dataOrders
+            return dateOrders
         }
         var result: [String: [Order]] = [:]
-        for (date, orders) in dataOrders {
+        for (date, orders) in dateOrders {
             for order in orders {
                 let pair = order.originalOrder.market.components(separatedBy: "-")
                 if pair[0].lowercased() == token.lowercased() {
@@ -82,20 +82,18 @@ class OrderDataManager {
     }
 
     func getOrdersFromServer() {
-        
-        // TODO: modify here
         if let owner = self.owner {
-            LoopringAPIRequest.getOrders(owner: nil) { orders, error in
+            LoopringAPIRequest.getOrders(owner: owner) { orders, error in
                 guard let orders = orders, error == nil else {
                     return
                 }
-                self.dataOrders = [:]
+                self.dateOrders = [:]
                 for order in orders {
                     let time = order.originalOrder.validSince
-                    if self.dataOrders[time] == nil {
-                        self.dataOrders[time] = []
+                    if self.dateOrders[time] == nil {
+                        self.dateOrders[time] = []
                     }
-                    self.dataOrders[time]!.append(order)
+                    self.dateOrders[time]!.append(order)
                 }
                 self.orders = orders
             }

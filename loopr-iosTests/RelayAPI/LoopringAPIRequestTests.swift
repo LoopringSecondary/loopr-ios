@@ -65,15 +65,14 @@ class LoopringAPIRequestTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
-    func testGetTicker() {
+    func testGetMarkets() {
         let expectation = XCTestExpectation()
-        LoopringAPIRequest.getTicker() { tickers, error in
+        LoopringAPIRequest.getMarkets() { markets, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 return
             }
-            XCTAssertNotNil(tickers)
-            XCTAssertNotEqual(tickers!.count, 0)
+            XCTAssertNotEqual(markets.count, 0)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)
