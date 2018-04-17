@@ -10,6 +10,9 @@ import UIKit
 
 class BackupMnemonicViewController: UIViewController {
 
+    var isExportMode: Bool = false
+    var mnemonics: [String] = []
+
     var titleLabel: UILabel =  UILabel()
     var infoTextView: UITextView = UITextView()
 
@@ -48,7 +51,6 @@ class BackupMnemonicViewController: UIViewController {
         
         infoTextView.frame = CGRect(x: padding-3, y: 72, width: screenWidth - (padding-3) * 2, height: 96)
         infoTextView.isEditable = false
-        infoTextView.text = "Please make sure you have recorded all the words safely. Otherwise, you will not be able to go through the verification process, and have to start over."
         infoTextView.textColor = UIColor.black.withAlphaComponent(0.6)
         infoTextView.font = FontConfigManager.shared.getLabelFont(size: 17)
         view.addSubview(infoTextView)
@@ -104,9 +106,21 @@ class BackupMnemonicViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let halfLength: Int = mnemonics.count / 2
+        mnemonicCollectionViewController0.mnemonics = Array(mnemonics[0..<halfLength])
+        mnemonicCollectionViewController1.mnemonics = Array(mnemonics[halfLength..<mnemonics.count])
+        if isExportMode {
+            verifyNowButton.isHidden = true
+            infoTextView.text = "Loopring wallet never keeps your mnemonic words, It is strongly recommended that you back up these information offline (with USB or physical paper)."
+        } else {
+            infoTextView.text = "Please make sure you have recorded all the words safely. Otherwise, you will not be able to go through the verification process, and have to start over."
+        }
+    }
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
     }
 
     @IBAction func pressedVerifyNowButton(_ sender: Any) {

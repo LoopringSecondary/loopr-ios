@@ -36,11 +36,17 @@ class Asset: CustomStringConvertible, Equatable {
         self.symbol = symbol
         self.name = ""
         self.enable = true
-        self.display = "0"
         self.description = self.name
-        self.balance = "0"
+        self.balance = "0.0"
         self.allowance = "0"
         self.icon = UIImage(named: self.symbol) ?? nil
+        
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.locale = NSLocale.current
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        let formattedNumber = currencyFormatter.string(from: NSNumber(value: 0)) ?? "\(0)"
+        self.display = formattedNumber
     }
 
     static func == (lhs: Asset, rhs: Asset) -> Bool {

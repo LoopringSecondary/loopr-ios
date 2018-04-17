@@ -111,7 +111,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func section2Cell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
-            return createBasicTableCell(title: "Contract Version", detailTitle: "1.0.1")
+            return createBasicTableCell(title: "Contract Version", detailTitle: RelayAPIConfiguration.contractVersion)
         case 1:
             return createDetailTableCell(title: "LRC Fee", detailTitle: "12.3020%")
         case 2:
@@ -125,7 +125,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func section3Cell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
-            return createBasicTableCell(title: "Default Loopring Relay", detailTitle: "27.0.0.01")
+            return createBasicTableCell(title: "Default Loopring Relay", detailTitle: RelayAPIConfiguration.baseURL)
         case 1:
             return createBasicTableCell(title: "Backup Loopring Relay", detailTitle: "27.0.0.01")
         case 2:

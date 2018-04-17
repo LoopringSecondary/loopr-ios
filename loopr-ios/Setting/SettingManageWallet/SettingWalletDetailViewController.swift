@@ -27,10 +27,8 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         
         switchWalletButton.title = NSLocalizedString("Switch to this Wallet", comment: "")
         switchWalletButton.setupRoundBlack()
-        
-        print(appWallet.name)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         print(appWallet.name)
         self.tableView.reloadData()
@@ -43,6 +41,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     
     @IBAction func pressedSwitchWalletButton(_ sender: Any) {
         print("pressedSwitchWalletButton")
+        CurrentAppWalletDataManager.shared.setCurrentAppWallet(appWallet)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,7 +80,10 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
             viewController.appWallet = appWallet
             self.navigationController?.pushViewController(viewController, animated: true)
         } else if indexPath.row == 1 {
-            
+            let viewController = BackupMnemonicViewController()
+            viewController.isExportMode = true
+            viewController.mnemonics = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.mnemonics ?? []
+            self.navigationController?.pushViewController(viewController, animated: true)
         } else if indexPath.row == 2 {
             let viewController = DisplayPrivateKeyViewController()
             viewController.appWallet = appWallet

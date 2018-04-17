@@ -58,6 +58,7 @@ class GenerateMnemonicViewController: UIViewController {
     @IBAction func pressedBackupNowButton(_ sender: Any) {
         print("pressedBackupNowButton")
         let viewController = BackupMnemonicViewController()
+        viewController.mnemonics = GenerateWalletDataManager.shared.getMnemonics()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
