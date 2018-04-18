@@ -9,6 +9,8 @@
 import UIKit
 
 class SetupNavigationController: UINavigationController {
+
+    var isCreatingFirstWallet: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +21,7 @@ class SetupNavigationController: UINavigationController {
         navigationBar.tintColor = UIStyleConfig.defaultTintColor
         
         let viewController = SetupViewController(nibName: nil, bundle: nil)
+        viewController.isCreatingFirstWallet = isCreatingFirstWallet
         self.setViewControllers([viewController], animated: false)
     }
 

@@ -42,6 +42,7 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
     
     @objc func pressAddButton(_ button: UIBarButtonItem) {
         let setupViewController: SetupNavigationController? = SetupNavigationController(nibName: nil, bundle: nil)
+        setupViewController?.isCreatingFirstWallet = false
         self.present(setupViewController!, animated: true) {
         }
     }

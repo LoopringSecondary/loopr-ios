@@ -15,6 +15,9 @@ class SetupViewController: UIViewController {
     var unlockWalletButton = UIButton()
     var generateWalletButton = UIButton()
     
+    var isCreatingFirstWallet: Bool = true
+    var button = UIButton()
+    
     var backgrondImageView = UIImageView()
     
     override func viewDidLoad() {
@@ -23,7 +26,12 @@ class SetupViewController: UIViewController {
         view.backgroundColor = UIColor.clear
 
         taglineLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 15)
-        
+
+        button.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.setTitleColor(UIColor.init(white: 0.5, alpha: 1), for: .highlighted)
+        button.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
+
         unlockWalletButton.title = NSLocalizedString("Import Wallet", comment: "")
         unlockWalletButton.setupRoundWhite()
         unlockWalletButton.addTarget(self, action: #selector(unlockWalletButtonPressed), for: .touchUpInside)
@@ -40,6 +48,7 @@ class SetupViewController: UIViewController {
         view.addSubview(backgrondImageView)
         backgrondImageView.addSubview(loopringLogoImageView)
         backgrondImageView.addSubview(taglineLabel)
+        backgrondImageView.addSubview(button)
         backgrondImageView.addSubview(unlockWalletButton)
         backgrondImageView.addSubview(generateWalletButton)
         
@@ -69,8 +78,28 @@ class SetupViewController: UIViewController {
         loopringLogoImageView.frame = CGRect(x: 24, y: 64, width: 136, height: 41)
         taglineLabel.frame = CGRect(x: 24, y: 119, width: screenWidth - 24 * 2, height: 20)
         
+        if isCreatingFirstWallet {
+            
+        } else {
+            button.title = "  Go Back  "
+            button.frame = CGRect(x: 80, y: screenHeight - 47 - 10, width: screenWidth - 80 * 2, height: 47)
+            button.theme_setImage(["Arrow-down-black-bold", "Arrow-down-black-bold"], forState: .normal)
+            button.setImage(UIImage.init(named: "Arrow-down-black-bold")?.alpha(0.3), for: .highlighted)
+            button.semanticContentAttribute = .forceRightToLeft
+        }
+        
         unlockWalletButton.frame = CGRect(x: 15, y: screenHeight - 47 - 63, width: screenWidth - 15 * 2, height: 47)
         generateWalletButton.frame = CGRect(x: 15, y: screenHeight - 47 - 125, width: screenWidth - 15 * 2, height: 47)
+    }
+    
+    @objc func pressedButton(_ sender: Any) {
+        if isCreatingFirstWallet {
+            
+        } else {
+            self.dismiss(animated: true, completion: {
+                
+            })
+        }
     }
     
     @objc func unlockWalletButtonPressed(_ sender: Any) {

@@ -29,7 +29,7 @@ extension UIButton {
         clipsToBounds = true
         titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
         layer.borderWidth = 1
-        layer.borderColor = UIColor.black.cgColor
+        layer.borderColor = UIColor.black.withAlphaComponent(0.5).cgColor
         layer.cornerRadius = height * 0.5
     }
 
