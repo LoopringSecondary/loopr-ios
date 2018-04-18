@@ -10,6 +10,7 @@ import UIKit
 
 protocol WalletBalanceTableViewCellDelegate: class {
     func navigatToAddAssetViewController()
+    func updateTableView()
 }
 
 class WalletBalanceTableViewCell: UITableViewCell {
@@ -83,6 +84,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
             print ("toggleHideAssetSwitch OFF")
         }
         SettingDataManager.shared.setHideSmallAssets(hideAssetSwitch.isOn)
+        delegate?.updateTableView()
     }
 
     class func getCellIdentifier() -> String {

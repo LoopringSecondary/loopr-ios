@@ -93,6 +93,8 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        searchBar.showsCancelButton = false
         
         // TODO: no reload data in the viewWIllAppear. Need to implement the night mode.
         if Themes.isNight() {
@@ -108,7 +110,6 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        searchBar.showsCancelButton = false
     }
     
     func setupSearchBar() {

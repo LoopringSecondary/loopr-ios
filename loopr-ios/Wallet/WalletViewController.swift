@@ -14,7 +14,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var assetTableView: UITableView!
     private let refreshControl = UIRefreshControl()
 
-    var shouldRefresh: Bool = true
     var isReordering: Bool = false
 
     var contextMenuSourceView: UIView = UIView()
@@ -28,6 +27,11 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.reorder.delegate = self
         assetTableView.tableFooterView = UIView()
         assetTableView.separatorStyle = .none
+        
+        // Avoid dragging a cell to the top makes the tableview shake
+        assetTableView.estimatedRowHeight = 0
+        assetTableView.estimatedSectionHeaderHeight = 0
+        assetTableView.estimatedSectionFooterHeight = 0
         
         getBalanceFromRelay()
 
@@ -186,19 +190,26 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // print("receivedBalanceResponseReceivedNotification")
         // TODO: Perform a diff algorithm
         
-        if shouldRefresh && !isReordering {
+        if !isReordering {
             print("reload table")
             assetTableView.reloadData()
-            shouldRefresh = false
         }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1 + (CurrentAppWalletDataManager.shared.getAssets().count)
+        if section == 0 {
+            return 1
+        } else {
+            return CurrentAppWalletDataManager.shared.getAssets().count
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
             return WalletBalanceTableViewCell.getHeight()
         } else {
             return AssetTableViewCell.getHeight()
@@ -206,7 +217,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
             var cell = tableView.dequeueReusableCell(withIdentifier: WalletBalanceTableViewCell.getCellIdentifier()) as? WalletBalanceTableViewCell
             if cell == nil {
                 let nib = Bundle.main.loadNibNamed("WalletBalanceTableViewCell", owner: self, options: nil)
@@ -225,7 +236,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let nib = Bundle.main.loadNibNamed("AssetTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? AssetTableViewCell
             }
-            cell?.asset = CurrentAppWalletDataManager.shared.getAssets()[indexPath.row - 1]
+            cell?.asset = CurrentAppWalletDataManager.shared.getAssets()[indexPath.row]
             cell?.update()
             return cell!
         }
@@ -235,7 +246,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
             
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
@@ -254,18 +265,23 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    func updateTableView() {
+        // assetTableView.reloadData()
+        self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .fade)
+    }
 
 }
 
 extension WalletViewController: TableViewReorderDelegate {
     // MARK: - Reorder Delegate
     func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        print("tableView reorderRowAt")
-        CurrentAppWalletDataManager.shared.exchange(at: sourceIndexPath.row-1, to: destinationIndexPath.row-1)
+        // print("tableView reorderRowAt")
+        CurrentAppWalletDataManager.shared.exchange(at: sourceIndexPath.row, to: destinationIndexPath.row)
     }
 
     func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.row >= 1 {
+        if indexPath.section >= 1 {
             return true
         } else {
             return false
@@ -280,7 +296,6 @@ extension WalletViewController: TableViewReorderDelegate {
     func tableViewDidFinishReordering(_ tableView: UITableView, from initialSourceIndexPath: IndexPath, to finalDestinationIndexPath: IndexPath) {
         print("tableViewDidFinishReordering")
         isReordering = false
-        
     }
 
 }

@@ -243,14 +243,18 @@ class MarketDataManager {
     }
     
     func onTickerResponse(json: JSON) {
+        /*
         var newMarkets: [Market] = []
         for subJson in json.arrayValue {
+            
+            // TODO: This is a very expensive calls.
             if let market = Market(json: subJson) {
                 newMarkets.append(market)
             }
         }
         setMarkets(newMarkets: newMarkets)
         NotificationCenter.default.post(name: .tickerResponseReceived, object: nil)
+        */
     }
     
     func onTrendResponse(json: JSON) {

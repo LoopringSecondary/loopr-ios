@@ -17,11 +17,13 @@ class CurrentAppWalletDataManager {
     
     private var totalCurrencyValue: Double
 
+    private var assetsInHideSmallMode: [Asset]
     private var assets: [Asset]
     
     private var transactions: [Transaction]
     
     private init() {
+        self.assetsInHideSmallMode = []
         self.assets = []
         self.transactions = []
         self.totalCurrencyValue = 0
@@ -69,19 +71,18 @@ class CurrentAppWalletDataManager {
         return formattedNumber
     }
 
-    func getAssets(hideSmallAssets: Bool = false, enable: Bool? = nil) -> [Asset] {
-        let filtedAssets = assets.filter { (asset) -> Bool in
-            if hideSmallAssets {
-                return asset.balance > 0.01
-            } else {
-                return true
-            }
+    func getAssets(enable: Bool? = nil) -> [Asset] {
+        var assets: [Asset] = []
+        if SettingDataManager.shared.getHideSmallAssets() {
+            assets = assetsInHideSmallMode
+        } else {
+            assets = self.assets
         }
-
+        
         guard let enable = enable else {
-            return filtedAssets
+            return assets
         }
-        return filtedAssets.filter { (asset) -> Bool in
+        return assets.filter { (asset) -> Bool in
             asset.enable == enable
         }
     }
@@ -108,19 +109,26 @@ class CurrentAppWalletDataManager {
                 // asset.display = "$ " + String(formattedNumber.dropFirst())
                 asset.display = formattedNumber
                 
+                totalCurrencyValue += asset.balance * price
+                
                 // If the asset is in the array, then replace it.
                 if let index = assets.index(of: asset) {
                     assets[index] = asset
-                    totalCurrencyValue += asset.balance * price
-                    
                 } else {
-                    // If the asset is not in the array and the balance is 0, then skip it.
-                    if asset.balance != 0 {
+                    assets.append(asset)
+                    if currentAppWallet != nil {
+                        currentAppWallet!.assetSequence.append(asset.symbol)
+                    }
+                }
+
+                if let index = assetsInHideSmallMode.index(of: asset) {
+                    assetsInHideSmallMode[index] = asset
+                } else {
+                    if asset.balance > 0.01 {
                         assets.append(asset)
                         if currentAppWallet != nil {
-                            currentAppWallet!.assetSequence.append(asset.symbol)
+                            currentAppWallet!.assetSequenceInHideSmallAssets.append(asset.symbol)
                         }
-                        totalCurrencyValue += asset.balance * price
                     }
                 }
             }
@@ -145,17 +153,29 @@ class CurrentAppWalletDataManager {
         guard let currentAppWallet = currentAppWallet else {
             return
         }
+        
+        if SettingDataManager.shared.getHideSmallAssets() {
+            if destinationIndex < assetsInHideSmallMode.count && sourceIndex < assetsInHideSmallMode.count {
+                assetsInHideSmallMode.swapAt(sourceIndex, destinationIndex)
+            }
 
-        if destinationIndex < assets.count && sourceIndex < assets.count {
-            assets.swapAt(sourceIndex, destinationIndex)
+            if destinationIndex < currentAppWallet.assetSequenceInHideSmallAssets.count && sourceIndex < currentAppWallet.assetSequenceInHideSmallAssets.count {
+                currentAppWallet.assetSequenceInHideSmallAssets.swapAt(sourceIndex, destinationIndex)
+            }
+        } else {
+            if destinationIndex < assets.count && sourceIndex < assets.count {
+                assets.swapAt(sourceIndex, destinationIndex)
+            }
+
+            if destinationIndex < currentAppWallet.assetSequence.count && sourceIndex < currentAppWallet.assetSequence.count {
+                currentAppWallet.assetSequence.swapAt(sourceIndex, destinationIndex)
+            }
         }
-        
-        if destinationIndex < currentAppWallet.assetSequence.count && sourceIndex < currentAppWallet.assetSequence.count {
-            currentAppWallet.assetSequence.swapAt(sourceIndex, destinationIndex)
-        }
-        
+
         // Update the asset sequence to the local storage
-        AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: currentAppWallet)
+        DispatchQueue.global(qos: .userInitiated).async {
+            AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: currentAppWallet)
+        }
     }
     
     // TODO: whether stop method is useful? Yes.

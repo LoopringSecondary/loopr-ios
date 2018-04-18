@@ -72,13 +72,18 @@ class Asset: CustomStringConvertible, Equatable {
             return getAmount(of: symbol, from: decString, to: precision)
         } else if let token = TokenDataManager.shared.getTokenBySymbol(symbol) {
             var amount = gweiAmount
-            guard token.decimals < 100 else {
+            guard token.decimals < 100 || token.decimals >= 0 else {
                 return result
             }
             if token.decimals >= amount.count {
                 let prepend = String(repeating: "0", count: token.decimals - amount.count + 1)
                 amount = prepend + amount
             }
+
+            if amount == "0" {
+                return 0
+            }
+
             if precision >= token.decimals {
                 index = amount.index(amount.endIndex, offsetBy: -token.decimals)
             } else {
