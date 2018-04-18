@@ -188,11 +188,9 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
                 cell = nib![0] as? AssetBalanceTableViewCell
                 cell?.selectionStyle = .none
             }
-
-            if let asset = asset {
-                cell?.update(asset: asset)
-            }
-
+            cell?.asset = asset
+            cell?.update()
+            cell?.marketButton.addTarget(self, action: #selector(goToMarket), for: .touchUpInside)
             return cell!
         } else {
             var cell = tableView.dequeueReusableCell(withIdentifier: AssetTransactionTableViewCell.getCellIdentifier()) as? AssetTransactionTableViewCell
@@ -205,7 +203,16 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
             return cell!
         }
     }
-    
+
+    @objc func goToMarket(_ sender: AnyObject) {
+        if let asset = self.asset {
+            PlaceOrderDataManager.shared.new(tokenA: asset.symbol, tokenB: "WETH")
+            let viewController = BuyAndSellSwipeViewController()
+            viewController.initialType = .buy
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row >= 1 {
             tableView.deselectRow(at: indexPath, animated: true)

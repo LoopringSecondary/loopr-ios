@@ -32,7 +32,7 @@ class Market: Equatable, CustomStringConvertible {
         icon = UIImage(named: tokens[0]) ?? nil
         changeInPat24 = json["change"].stringValue
         tradingPair = TradingPair(tokens[0], tokens[1])
-        description = "\(tokens[0])" + " / " + "\(tokens[1])"
+        description = "\(tokens[0])" + "/" + "\(tokens[1])"
         balance = json["last"].doubleValue
         volumeInPast24 = json["amount"].doubleValue
         

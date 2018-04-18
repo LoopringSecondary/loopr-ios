@@ -16,7 +16,6 @@ class MarketTableViewCell: UITableViewCell {
     @IBOutlet weak var tokenImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
-    
     @IBOutlet weak var marketPriceInBitcoinLabel: UILabel!
     @IBOutlet weak var marketPriceInFiatCurrencyLabel: UILabel!
     @IBOutlet weak var percentageChangeLabel: UILabel!
@@ -60,7 +59,7 @@ class MarketTableViewCell: UITableViewCell {
                 iconView.symbolLabel.text = market.tradingPair.tradingA
                 tokenImage.isHidden = true
             }
-            nameLabel.text = "\(market.tradingPair.tradingA)" + " / " + "\(market.tradingPair.tradingB)"
+            nameLabel.text = market.description
             balanceLabel.text = "Vol \(market.volumeInPast24)"
             marketPriceInBitcoinLabel.text = market.balance.description
             marketPriceInFiatCurrencyLabel.text = market.display.description
