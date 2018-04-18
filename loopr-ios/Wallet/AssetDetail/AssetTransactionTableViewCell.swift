@@ -14,7 +14,10 @@ class AssetTransactionTableViewCell: UITableViewCell {
     var transaction: Transaction?
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var displayLabel: UILabel!
+    
     @IBOutlet weak var typeImageView: UIImageView!
     
     @IBOutlet weak var seperateLine: UIView!
@@ -25,9 +28,10 @@ class AssetTransactionTableViewCell: UITableViewCell {
         
         theme_backgroundColor = GlobalPicker.backgroundColor
         titleLabel.theme_textColor = GlobalPicker.textColor
-        descriptionLabel.theme_textColor = ["#a0a0a0", "#fff"]
+        amountLabel.theme_textColor = GlobalPicker.textColor
+        dateLabel.theme_textColor = ["#a0a0a0", "#fff"]
+        displayLabel.theme_textColor = ["#a0a0a0", "#fff"]
         typeImageView.theme_image = ["Received", "Received-white"]
-        
         seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
     }
 
@@ -41,14 +45,9 @@ class AssetTransactionTableViewCell: UITableViewCell {
         if let transaction = transaction {
             typeImageView.image = transaction.icon
             titleLabel.text = transaction.type.description + " " + transaction.symbol
-            switch transaction.type {
-            case .received:
-                descriptionLabel.text = "From " + transaction.from
-            case .sent:
-                descriptionLabel.text = "To " + transaction.to
-            default:
-                descriptionLabel.text = transaction.type.description
-            }
+            dateLabel.text = transaction.createTime
+            amountLabel.text = transaction.value
+            displayLabel.text = transaction.display
         }
     }
 

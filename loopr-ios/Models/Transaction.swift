@@ -20,12 +20,12 @@ class Transaction {
     var value: String
     var owner: String
     var txHash: String
-    var display: Double
+    var display: String
     var createTime: String
     var updateTime: String
     
-    init(json: JSON) {
-        self.display = 0
+    init?(json: JSON) {
+        self.display = "0.0"
         self.from = json["from"].stringValue
         self.to = json["to"].stringValue
         self.type = TxType(rawValue: json["type"].stringValue)!
@@ -35,8 +35,24 @@ class Transaction {
         self.value = json["value"].stringValue
         self.owner = json["owner"].stringValue
         self.txHash = json["txHash"].stringValue
-        self.createTime = Transaction.convertToDate(json["createTime"].uIntValue)
-        self.updateTime = Transaction.convertToDate(json["updateTime"].uIntValue)
+        let createTime = DateUtil.convertToDate(json["createTime"].uIntValue, format: "HH:mm EEE, MMM dd, yyyy")
+        self.createTime = createTime
+        let updateTime = DateUtil.convertToDate(json["updateTime"].uIntValue, format: "HH:mm EEE, MMM dd, yyyy")
+        self.updateTime = updateTime
+        
+        if let value = CurrentAppWalletDataManager.shared.getAmount(of: symbol, from: value) {
+            self.value = value.description
+            if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: symbol) {
+                let currencyFormatter = NumberFormatter()
+                currencyFormatter.locale = NSLocale.current
+                currencyFormatter.usesGroupingSeparator = true
+                currencyFormatter.numberStyle = .currency
+                let total = price * Double(value)
+                self.display = currencyFormatter.string(from: NSNumber(value: total)) ?? "\(total)"
+            }
+        } else {
+            return nil
+        }
     }
 
     enum TxType: String, CustomStringConvertible {
@@ -49,6 +65,7 @@ class Transaction {
         case convert_outcome = "convert_outcome"
         case canceledOrder = "cancel_order"
         case cutoff = "cutoff"
+        case unsupportedContract = "unsupported_contract"
         
         var description: String {
             switch self {
@@ -61,6 +78,7 @@ class Transaction {
             case .convert_outcome: return "Outcome" // eth <-> weth
             case .canceledOrder: return "Canceled Order"
             case .cutoff: return "Cutoff"
+            case .unsupportedContract: return "Other"
             }
         }
     }
@@ -77,14 +95,5 @@ class Transaction {
             case .failed: return "Failed"
             }
         }
-    }
-
-    class func convertToDate(_ timeStamp: UInt) -> String {
-        let timeInterval: TimeInterval = TimeInterval(timeStamp)
-        let date = Date(timeIntervalSince1970: timeInterval)
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "HH:mm - MMM dd, yyyy"
-        let time = dateformatter.string(from: date)
-        return time
     }
 }

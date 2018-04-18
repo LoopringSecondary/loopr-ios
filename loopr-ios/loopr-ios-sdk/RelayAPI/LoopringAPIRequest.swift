@@ -199,7 +199,7 @@ class LoopringAPIRequest {
             }
             let json = JSON(data)
             let offerData = json["result"]
-            let date = Transaction.convertToDate(offerData.uIntValue)
+            let date = DateUtil.convertToDate(offerData.uIntValue, format: "MM-dd YYYY")
             completionHandler(date, nil)
         }
     }
@@ -306,10 +306,14 @@ class LoopringAPIRequest {
             }
             let json = JSON(data)
             let offerData = json["result"]["data"]
+            
+            print(offerData)
+            
             var transactions: [Transaction] = []
             for subJson in offerData.arrayValue {
-                let transaction = Transaction(json: subJson)
-                transactions.append(transaction)
+                if let transaction = Transaction(json: subJson) {
+                    transactions.append(transaction)
+                }
             }
             completionHandler(transactions, nil)
         }

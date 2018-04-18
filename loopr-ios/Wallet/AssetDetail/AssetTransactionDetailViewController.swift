@@ -134,7 +134,7 @@ class AssetTransactionDetailViewController: UIViewController {
         if let transaction = transaction {
             typeImageView.image = transaction.icon
             amountLabel.text = transaction.value + " " + transaction.symbol
-            amountInCurrencyLabel.text = "≈ $\(transaction.display)"
+            amountInCurrencyLabel.text = "≈ \(transaction.display)"
             label2.text = transaction.status.description
             // TODO: cover all cases
             switch transaction.type {

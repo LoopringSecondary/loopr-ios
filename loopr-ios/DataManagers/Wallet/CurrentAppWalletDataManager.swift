@@ -194,24 +194,16 @@ class CurrentAppWalletDataManager {
     }
     
     func getTransactionsFromServer(asset: Asset, completionHandler: @escaping (_ transactions: [Transaction], _ error: Error?) -> Void) {
-
         guard let wallet = currentAppWallet else {
             return
         }
-
-        LoopringAPIRequest.getTransactions(owner: wallet.address, symbol: asset.symbol, thxHash: nil, completionHandler: { (transactions, error) in
+        LoopringAPIRequest.getTransactions(owner: "0x8311804426a24495bd4306daf5f595a443a52e32", symbol: asset.symbol, thxHash: nil, completionHandler: { (transactions, error) in
             guard error == nil && transactions != nil else {
                 return
             }
             self.transactions = []
             for transaction in transactions! {
-                if let value = self.getAmount(of: transaction.symbol, from: transaction.value) {
-                    if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
-                        transaction.value = value.description
-                        transaction.display = value * price
-                        self.transactions.append(transaction)
-                    }
-                }
+                self.transactions.append(transaction)
             }
             completionHandler(self.transactions, nil)
         })
