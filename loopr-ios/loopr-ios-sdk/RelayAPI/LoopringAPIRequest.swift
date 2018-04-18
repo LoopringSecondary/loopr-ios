@@ -239,7 +239,7 @@ class LoopringAPIRequest {
             }
             let json = JSON(data)
             let result = json["result"].stringValue
-            if let amount = CurrentAppWalletDataManager.shared.getAmount(of: token, from: result) {
+            if let amount = Asset.getAmount(of: token, from: result) {
                 completionHandler(amount, nil)
             }
         }

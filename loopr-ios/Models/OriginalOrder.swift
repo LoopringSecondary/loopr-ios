@@ -51,12 +51,12 @@ class OriginalOrder {
         self.marginSplitPercentage = percentage.description + "%"
 
         let amountS = json["amountS"].stringValue
-        self.amountSell = manager.getAmount(of: self.tokenS, from: amountS) ?? 0.0
+        self.amountSell = Asset.getAmount(of: self.tokenS, from: amountS) ?? 0.0
 
         let amountB = json["amountB"].stringValue
-        self.amountBuy = manager.getAmount(of: self.tokenB, from: amountB) ?? 0.0
+        self.amountBuy = Asset.getAmount(of: self.tokenB, from: amountB) ?? 0.0
 
         let fee = json["lrcFee"].stringValue
-        self.lrcFee = manager.getAmount(of: "LRC", from: fee)!
+        self.lrcFee = Asset.getAmount(of: "LRC", from: fee)!
     }
 }

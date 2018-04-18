@@ -15,13 +15,12 @@ class Order {
     let dealtAmountB: Double
     let dealtAmountS: Double
     let tradingPairDescription: String
-    let manager = CurrentAppWalletDataManager.shared
     
     init(originalOrder: OriginalOrder, orderStatus: OrderStatus, dealtAmountB: String, dealtAmountS: String) {
         self.originalOrder = originalOrder
         self.orderStatus = orderStatus
-        self.dealtAmountB = manager.getAmount(of: originalOrder.tokenB, from: dealtAmountB) ?? 0.0
-        self.dealtAmountS = manager.getAmount(of: originalOrder.tokenS, from: dealtAmountS) ?? 0.0
+        self.dealtAmountB = Asset.getAmount(of: originalOrder.tokenB, from: dealtAmountB) ?? 0.0
+        self.dealtAmountS = Asset.getAmount(of: originalOrder.tokenS, from: dealtAmountS) ?? 0.0
         
         if originalOrder.tokenB == "WETH" {
             tradingPairDescription = "\(originalOrder.tokenS)/\(originalOrder.tokenB)"

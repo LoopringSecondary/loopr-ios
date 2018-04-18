@@ -17,7 +17,7 @@ enum UserDefaultsKeys: String {
     case lastedThemeIndex = "UserDefaultsKeys.lastedThemeIndex"
     case currentLanguage = "UserDefaultsKeys.currentLanguage"
     case currentFont = "UserDefaultsKeys.currentcurrentFont"
-    case hideSmallAssets = "UserDefaultsKeys.hideSmallAssets"
+    case showSmallAssets = "UserDefaultsKeys.showSmallAssets"
     
     // Trade. Used in TradeDataManager
     case tradeTokenS = "UserDefaultsKeys.tradeTokenS"

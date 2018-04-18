@@ -106,6 +106,11 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        searchBar.showsCancelButton = false
+    }
+    
     func setupSearchBar() {
         let searchBar = UISearchBar()
         

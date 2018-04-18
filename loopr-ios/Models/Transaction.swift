@@ -40,7 +40,7 @@ class Transaction {
         let updateTime = DateUtil.convertToDate(json["updateTime"].uIntValue, format: "HH:mm EEE, MMM dd, yyyy")
         self.updateTime = updateTime
         
-        if let value = CurrentAppWalletDataManager.shared.getAmount(of: symbol, from: value) {
+        if let value = Asset.getAmount(of: symbol, from: value) {
             self.value = value.description
             if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: symbol) {
                 let currencyFormatter = NumberFormatter()

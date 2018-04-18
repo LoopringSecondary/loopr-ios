@@ -69,11 +69,19 @@ class CurrentAppWalletDataManager {
         return formattedNumber
     }
 
-    func getAssets(enable: Bool? = nil) -> [Asset] {
-        guard let enable = enable else {
-            return self.assets
+    func getAssets(hideSmallAssets: Bool = false, enable: Bool? = nil) -> [Asset] {
+        let filtedAssets = assets.filter { (asset) -> Bool in
+            if hideSmallAssets {
+                return asset.balance > 0.01
+            } else {
+                return true
+            }
         }
-        return assets.filter { (asset) -> Bool in
+
+        guard let enable = enable else {
+            return filtedAssets
+        }
+        return filtedAssets.filter { (asset) -> Bool in
             asset.enable == enable
         }
     }
@@ -90,33 +98,29 @@ class CurrentAppWalletDataManager {
         }
 
         for asset in sortedAssets {
-            if let balance = getAmount(of: asset.symbol, from: asset.balance) {
-                if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
-                    asset.name = TokenDataManager.shared.getTokenBySymbol(asset.symbol)?.source ?? "unknown token"
-                    asset.balance = balance.description
+            if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
+                
+                let currencyFormatter = NumberFormatter()
+                currencyFormatter.locale = NSLocale.current
+                currencyFormatter.usesGroupingSeparator = true
+                currencyFormatter.numberStyle = .currency
+                let formattedNumber = currencyFormatter.string(from: NSNumber(value: asset.balance * price)) ?? "\(asset.balance * price)"
+                // asset.display = "$ " + String(formattedNumber.dropFirst())
+                asset.display = formattedNumber
+                
+                // If the asset is in the array, then replace it.
+                if let index = assets.index(of: asset) {
+                    assets[index] = asset
+                    totalCurrencyValue += asset.balance * price
                     
-                    let currencyFormatter = NumberFormatter()
-                    currencyFormatter.locale = NSLocale.current
-                    currencyFormatter.usesGroupingSeparator = true
-                    currencyFormatter.numberStyle = .currency
-                    let formattedNumber = currencyFormatter.string(from: NSNumber(value: balance * price)) ?? "\(balance * price)"
-                    // asset.display = "$ " + String(formattedNumber.dropFirst())
-                    asset.display = formattedNumber
-                    
-                    // If the asset is in the array, then replace it.
-                    if let index = assets.index(of: asset) {
-                        assets[index] = asset
-                        totalCurrencyValue += balance * price
-                        
-                    } else {
-                        // If the asset is not in the array and the balance is 0, then skip it.
-                        if asset.balance != "0" {
-                            assets.append(asset)
-                            if currentAppWallet != nil {
-                                currentAppWallet!.assetSequence.append(asset.symbol)
-                            }
-                            totalCurrencyValue += balance * price
+                } else {
+                    // If the asset is not in the array and the balance is 0, then skip it.
+                    if asset.balance != 0 {
+                        assets.append(asset)
+                        if currentAppWallet != nil {
+                            currentAppWallet!.assetSequence.append(asset.symbol)
                         }
+                        totalCurrencyValue += asset.balance * price
                     }
                 }
             }
@@ -160,37 +164,6 @@ class CurrentAppWalletDataManager {
             return
         }
         LoopringSocketIORequest.getBalance(owner: wallet.address)
-    }
-    
-    // TODO: Why precision is 4?
-    func getAmount(of symbol: String, from gweiAmount: String, to precision: Int = 4) -> Double? {
-        var index: String.Index
-        var result: Double? = nil
-        // hex string
-        if gweiAmount.lowercased().starts(with: "0x") {
-            let hexString = gweiAmount.dropFirst(2)
-            let decString = BigUInt(hexString, radix: 16)!.description
-            return getAmount(of: symbol, from: decString, to: precision)
-        } else if let token = TokenDataManager.shared.getTokenBySymbol(symbol) {
-            var amount = gweiAmount
-            guard token.decimals < 100 else {
-                return result
-            }
-            if token.decimals >= amount.count {
-                let prepend = String(repeating: "0", count: token.decimals - amount.count + 1)
-                amount = prepend + amount
-            }
-            if precision >= token.decimals {
-                index = amount.index(amount.endIndex, offsetBy: -token.decimals)
-            } else {
-                let offset = precision - token.decimals
-                index = amount.index(amount.endIndex, offsetBy: offset)
-                amount.removeSubrange(index...)
-            }
-            amount.insert(".", at: index)
-            result = Double(amount)
-        }
-        return result
     }
     
     func getTransactionsFromServer(asset: Asset, completionHandler: @escaping (_ transactions: [Transaction], _ error: Error?) -> Void) {
