@@ -39,7 +39,8 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         print("pressOrderSearchButton")
         let viewController = OrderSearchViewController()
         // viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
+        
+        self.present(viewController, animated: true, completion: nil)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

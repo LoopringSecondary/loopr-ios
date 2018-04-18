@@ -24,8 +24,8 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
         // Do any additional setup after loading the view.
         resultTableView.delegate = self
         resultTableView.dataSource = self
-        configureSearchController()
-//        configureCustomSearchController()   -- RobinHood design
+//        configureSearchController()
+        configureCustomSearchController()
     }
     
     func configureSearchController() {
@@ -161,6 +161,7 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
     func didTapOnCancelButton() {
         shouldShowSearchResults = false
         resultTableView.reloadData()
+        self.dismiss(animated: true, completion: nil)
     }
 
     func didChangeSearchText(searchText: String) {
