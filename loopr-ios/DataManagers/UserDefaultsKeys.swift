@@ -13,7 +13,7 @@ enum UserDefaultsKeys: String {
     case lrcSequence = "UserDefaultsKeys.lrcSequence"
     case wethSequence = "UserDefaultsKeys.wethSequence"
     case favoriteSequence = "UserDefaultsKeys.favoriteSequence"
-    case favoriteMarkets = "UserDefaultsKeys.favoriteMarkets"
+    case allSequence = "UserDefaultsKeys.allSequence"
     case lastedThemeIndex = "UserDefaultsKeys.lastedThemeIndex"
     case currentLanguage = "UserDefaultsKeys.currentLanguage"
     case currentFont = "UserDefaultsKeys.currentcurrentFont"
