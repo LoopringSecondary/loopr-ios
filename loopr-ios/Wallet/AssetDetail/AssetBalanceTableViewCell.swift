@@ -42,7 +42,7 @@ class AssetBalanceTableViewCell: UITableViewCell {
 
     func update() {
         if let asset = self.asset {
-            balanceLabel.setText(asset.balance, animated: false)
+            balanceLabel.setText(asset.balance.description, animated: false)
             displayLabel.text = asset.display
             if asset.icon != nil {
                 iconImageView.image = asset.icon
