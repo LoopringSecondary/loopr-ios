@@ -67,6 +67,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         for viewController in viewControllers {
             self.addChildViewController(viewController)
         }
+        viewControllers[0].viewAppear = true
         
         options.swipeTabView.height = 44
         options.swipeTabView.underlineView.height = 1
@@ -153,6 +154,8 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
 
     override func swipeView(_ swipeView: SwipeView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
         // print("did change from item \(fromIndex) to section \(toIndex)")
+        viewControllers[fromIndex].viewAppear = false
+        viewControllers[toIndex].viewAppear = true
     }
 
     // MARK: - DataSource

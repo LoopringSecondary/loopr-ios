@@ -35,8 +35,17 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         setBackButton()
         
         udpateStarButton()
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // Add observer.
         NotificationCenter.default.addObserver(self, selector: #selector(trendResponseReceivedNotification), name: .trendResponseReceived, object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: .trendResponseReceived, object: nil)
     }
     
     func setup() {
@@ -58,7 +67,8 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     @objc func trendResponseReceivedNotification() {
-        print("trendReceivedNotification")
+        
+        print("MarketDetailViewController trendReceivedNotification")
         if self.trends == nil {
             self.trends = MarketDataManager.shared.getTrends(market: market!.tradingPair.description)
             self.tableView.reloadData()

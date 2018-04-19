@@ -59,9 +59,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
-
-        // Add observer.
-        NotificationCenter.default.addObserver(self, selector: #selector(receivedBalanceResponseReceivedNotification), name: .balanceResponseReceived, object: nil)
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -125,6 +122,17 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationItem.titleView = button
         
         // assetTableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // Add observer.
+        NotificationCenter.default.addObserver(self, selector: #selector(receivedBalanceResponseReceivedNotification), name: .balanceResponseReceived, object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: .balanceResponseReceived, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -191,7 +199,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // TODO: Perform a diff algorithm
         
         if !isReordering {
-            print("reload table")
+            print("WalletViewController reload table")
             assetTableView.reloadData()
         }
     }

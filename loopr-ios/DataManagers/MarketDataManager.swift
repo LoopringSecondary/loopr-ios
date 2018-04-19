@@ -114,22 +114,30 @@ class MarketDataManager {
         case .favorite:
             if destinationIndex < favoriteSequence.count && sourceIndex < favoriteSequence.count {
                 favoriteSequence.swapAt(sourceIndex, destinationIndex)
-                updateMarketKeysOnLocal(type: .favorite)
+                DispatchQueue.global(qos: .userInitiated).async {
+                    self.updateMarketKeysOnLocal(type: .favorite)
+                }
             }
         case .LRC:
             if destinationIndex < lrcSequence.count && sourceIndex < lrcSequence.count {
                 lrcSequence.swapAt(sourceIndex, destinationIndex)
-                updateMarketKeysOnLocal(type: .LRC)
+                DispatchQueue.global(qos: .userInitiated).async {
+                    self.updateMarketKeysOnLocal(type: .LRC)
+                }
             }
         case .ETH:
             if destinationIndex < wethSequence.count && sourceIndex < wethSequence.count {
                 wethSequence.swapAt(sourceIndex, destinationIndex)
-                updateMarketKeysOnLocal(type: .ETH)
+                DispatchQueue.global(qos: .userInitiated).async {
+                    self.updateMarketKeysOnLocal(type: .ETH)
+                }
             }
         case .all:
             if destinationIndex < allSequence.count && sourceIndex < allSequence.count {
                 allSequence.swapAt(sourceIndex, destinationIndex)
-                updateMarketKeysOnLocal(type: .all)
+                DispatchQueue.global(qos: .userInitiated).async {
+                    self.updateMarketKeysOnLocal(type: .all)
+                }
             }
         }
     }
@@ -250,7 +258,6 @@ class MarketDataManager {
     }
     
     func onTickerResponse(json: JSON) {
-        /*
         var newMarkets: [Market] = []
         for subJson in json.arrayValue {
             
@@ -261,7 +268,6 @@ class MarketDataManager {
         }
         setMarkets(newMarkets: newMarkets)
         NotificationCenter.default.post(name: .tickerResponseReceived, object: nil)
-        */
     }
     
     func onTrendResponse(json: JSON) {

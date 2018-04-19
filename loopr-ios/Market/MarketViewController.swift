@@ -15,8 +15,10 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var type: MarketSwipeViewType
     let refreshControl = UIRefreshControl()
-    var shouldRefresh: Bool = true
+    
+    var viewAppear: Bool = false
     var isReordering: Bool = false
+    
     var selectedCellClosure: ((Market) -> Void)?
     // TODO: searchController conflicts to SwipeViewController.
     let searchController = UISearchController(searchResultsController: nil)
@@ -75,9 +77,6 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
-        
-        // Add observer.
-        NotificationCenter.default.addObserver(self, selector: #selector(tickerResponseReceivedNotification), name: .tickerResponseReceived, object: nil)
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -112,20 +111,23 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //            marketTableView.reloadData()
 //        }
         
-        if shouldRefresh && !isReordering {
-            print("reload table")
+        if !isReordering && viewAppear {
+            print("MarketViewController reload table \(type.description)")
             marketTableView.reloadData()
-            shouldRefresh = false
         }
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        if type == .favorite {
-//            reload()
-//        }
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // Add observer.
+        NotificationCenter.default.addObserver(self, selector: #selector(tickerResponseReceivedNotification), name: .tickerResponseReceived, object: nil)
+    }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: .tickerResponseReceived, object: nil)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
