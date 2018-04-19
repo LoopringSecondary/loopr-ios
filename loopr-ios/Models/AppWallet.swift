@@ -23,7 +23,7 @@ class AppWallet: NSObject, NSCoding {
     var assetSequence: [String] = []
     var assetSequenceInHideSmallAssets: [String] = []
     
-    init(address: String, privateKey: String, name: String, active: Bool, mnemonics: [String] = [], assetSequence: [String] = ["ETH"], assetSequenceInHideSmallAssets: [String] = []) {
+    init(address: String, privateKey: String, name: String, active: Bool, mnemonics: [String] = [], assetSequence: [String] = ["ETH", "LRC"], assetSequenceInHideSmallAssets: [String] = ["ETH", "LRC"]) {
         self.address = address
         self.privateKey = privateKey
         self.name = name
@@ -83,7 +83,7 @@ class AppWallet: NSObject, NSCoding {
         let assetSequenceInHideSmallAssets = aDecoder.decodeObject(forKey: "assetSequenceInHideSmallAssets") as? [String] ?? []
         
         if let address = address, let privateKey = privateKey, let mnemonics = mnemonics, let name = name {
-            self.init(address: address, privateKey: privateKey, name: name, active: active, mnemonics: mnemonics, assetSequence: assetSequence, assetSequenceInHideSmallAssets: assetSequenceInHideSmallAssets)
+            self.init(address: address, privateKey: privateKey, name: name, active: active, mnemonics: mnemonics, assetSequence: unique(assetSequence), assetSequenceInHideSmallAssets: unique(assetSequenceInHideSmallAssets))
         } else {
             return nil
         }

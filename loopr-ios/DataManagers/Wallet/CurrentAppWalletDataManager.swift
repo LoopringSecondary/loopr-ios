@@ -116,7 +116,7 @@ class CurrentAppWalletDataManager {
                     assets[index] = asset
                 } else {
                     assets.append(asset)
-                    if currentAppWallet != nil {
+                    if currentAppWallet != nil && currentAppWallet!.assetSequence.index(of: asset.symbol) == nil {
                         currentAppWallet!.assetSequence.append(asset.symbol)
                     }
                 }
@@ -125,8 +125,8 @@ class CurrentAppWalletDataManager {
                     assetsInHideSmallMode[index] = asset
                 } else {
                     if asset.balance > 0.01 {
-                        assets.append(asset)
-                        if currentAppWallet != nil {
+                        assetsInHideSmallMode.append(asset)
+                        if currentAppWallet != nil && currentAppWallet!.assetSequenceInHideSmallAssets.index(of: asset.symbol) == nil {
                             currentAppWallet!.assetSequenceInHideSmallAssets.append(asset.symbol)
                         }
                     }

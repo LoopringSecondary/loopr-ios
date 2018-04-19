@@ -79,6 +79,7 @@
 		AC1E4BC2204B52FD00C6B1FA /* wallet.json in Resources */ = {isa = PBXBuildFile; fileRef = AC1E4BC1204B52FD00C6B1FA /* wallet.json */; };
 		AC1E4BC4204B533000C6B1FA /* key.json in Resources */ = {isa = PBXBuildFile; fileRef = AC1E4BC3204B533000C6B1FA /* key.json */; };
 		AC1E4BC6204B58D400C6B1FA /* CreatePrivateKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BC5204B58D400C6B1FA /* CreatePrivateKeyTests.swift */; };
+		AC2D2C05208882BD00D619AD /* FoundationArray+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C04208882BD00D619AD /* FoundationArray+Extension.swift */; };
 		AC31B93520493FB900B16155 /* SettingLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B93320493FB900B16155 /* SettingLanguageTableViewCell.swift */; };
 		AC31B93620493FB900B16155 /* SettingLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31B93420493FB900B16155 /* SettingLanguageTableViewCell.xib */; };
 		AC31B93A204A4F9000B16155 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B939204A4F9000B16155 /* Language.swift */; };
@@ -605,6 +606,7 @@
 		AC1E4BC1204B52FD00C6B1FA /* wallet.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = wallet.json; sourceTree = "<group>"; };
 		AC1E4BC3204B533000C6B1FA /* key.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = key.json; sourceTree = "<group>"; };
 		AC1E4BC5204B58D400C6B1FA /* CreatePrivateKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePrivateKeyTests.swift; sourceTree = "<group>"; };
+		AC2D2C04208882BD00D619AD /* FoundationArray+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoundationArray+Extension.swift"; sourceTree = "<group>"; };
 		AC31B93320493FB900B16155 /* SettingLanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageTableViewCell.swift; sourceTree = "<group>"; };
 		AC31B93420493FB900B16155 /* SettingLanguageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLanguageTableViewCell.xib; sourceTree = "<group>"; };
 		AC31B939204A4F9000B16155 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
@@ -1858,6 +1860,7 @@
 			children = (
 				ACB97C72207160E100775D4C /* Int+Extension.swift */,
 				AC06193B208404FA0060F416 /* FoundationString+Extension.swift */,
+				AC2D2C04208882BD00D619AD /* FoundationArray+Extension.swift */,
 			);
 			path = FoundationExtensions;
 			sourceTree = "<group>";
@@ -2606,6 +2609,7 @@
 				AC31B94E204A8DF400B16155 /* KeystoreKey.swift in Sources */,
 				AC3756732038D64B00AADC60 /* MnemonicViewController.swift in Sources */,
 				ACA677C0207997F400D34A2F /* DisplayKeystoreViewController.swift in Sources */,
+				AC2D2C05208882BD00D619AD /* FoundationArray+Extension.swift in Sources */,
 				ACB5DD9E202D5B8D00140A09 /* NumericKeyboardItem.swift in Sources */,
 				949629DF204E9C9800858F03 /* MinedRing.swift in Sources */,
 				ACB9119020266EC200F14644 /* AddCustomizedTokenViewController.swift in Sources */,
