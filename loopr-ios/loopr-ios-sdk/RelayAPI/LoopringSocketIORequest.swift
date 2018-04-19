@@ -16,7 +16,6 @@ public class LoopringSocketIORequest {
     static var handlers: [String: [(JSON) -> Void]] = [:]
     
     static func setup() {
-        
         if handlers.isEmpty {
             // add more requests using socketio here
             handlers["balance_res"] = [CurrentAppWalletDataManager.shared.onBalanceResponse]

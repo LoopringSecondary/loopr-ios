@@ -28,9 +28,8 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Received ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7V-32-L6z">
-                        <rect key="frame" x="66" y="19" width="150" height="21"/>
+                        <rect key="frame" x="66" y="19" width="314" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="150" id="nHc-1F-5ao"/>
                             <constraint firstAttribute="height" constant="21" id="qAx-Go-Skd"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -83,6 +82,7 @@
                 </constraints>
             </tableViewCellContentView>
             <constraints>
+                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="Q7V-32-L6z" secondAttribute="trailing" constant="15" id="IXv-iW-qIg"/>
                 <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="oNl-Vg-4Tf" secondAttribute="trailing" constant="15" id="wIW-H4-WgC"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -98,6 +98,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Received" width="33" height="33"/>
+        <image name="Received" width="32" height="32"/>
     </resources>
 </document>

@@ -69,14 +69,14 @@ class Transaction {
         
         var description: String {
             switch self {
-            case .approved: return "Approved"
+            case .approved: return "Enable"
             case .sent: return "Sent"
             case .received: return "Received"
-            case .sold: return "Sold"
-            case .bought: return "Bought"
-            case .convert_income: return "Income" // eth <-> weth
-            case .convert_outcome: return "Outcome" // eth <-> weth
-            case .canceledOrder: return "Canceled Order"
+            case .sold: return "Trading"
+            case .bought: return "Trading"
+            case .convert_income: return "Convert" // eth <-> weth
+            case .convert_outcome: return "Convert" // eth <-> weth
+            case .canceledOrder: return "Cancel"
             case .cutoff: return "Cutoff"
             case .unsupportedContract: return "Other"
             }

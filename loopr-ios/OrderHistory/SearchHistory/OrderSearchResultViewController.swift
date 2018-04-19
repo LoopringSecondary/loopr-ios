@@ -70,6 +70,7 @@ class OrderSearchResultViewController: UIViewController, UITableViewDelegate, UI
         customSearchController.customSearchBar.showsCancelButton = true
         customSearchController.customDelegate = self
         tableView.tableHeaderView = customSearchController.customSearchBar
+        definesPresentationContext = true
     }
     
     override func didReceiveMemoryWarning() {

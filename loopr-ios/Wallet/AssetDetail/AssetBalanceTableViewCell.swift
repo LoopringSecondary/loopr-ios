@@ -55,7 +55,17 @@ class AssetBalanceTableViewCell: UITableViewCell {
                 iconImageView.isHidden = true
             }
             if asset.symbol.lowercased() == "eth" || asset.symbol.lowercased() == "weth" {
-                marketView.isHidden = true
+                marketLabel.text = "Ethereum"
+                if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: "ETH") {
+                    let currencyFormatter = NumberFormatter()
+                    currencyFormatter.locale = NSLocale.current
+                    currencyFormatter.usesGroupingSeparator = true
+                    currencyFormatter.numberStyle = .currency
+                    let formattedNumber = currencyFormatter.string(from: NSNumber(value: price)) ?? "\(price)"
+                    marketDisplayLabel.text = formattedNumber
+                }
+                changeLabel.isHidden = true
+                marketBalanceLabel.isHidden = true
             } else {
                 let tradingPair = asset.symbol + "/WETH"
                 if let market = MarketDataManager.shared.getMarket(by: tradingPair) {

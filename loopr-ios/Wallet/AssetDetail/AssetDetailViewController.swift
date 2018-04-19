@@ -206,10 +206,15 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
 
     @objc func goToMarket(_ sender: AnyObject) {
         if let asset = self.asset {
-            PlaceOrderDataManager.shared.new(tokenA: asset.symbol, tokenB: "WETH")
-            let viewController = BuyAndSellSwipeViewController()
-            viewController.initialType = .buy
-            self.navigationController?.pushViewController(viewController, animated: true)
+            if asset.symbol.lowercased() == "eth" || asset.symbol.lowercased() == "weth" {
+                let viewController = ConvertETHViewController()
+                self.navigationController?.pushViewController(viewController, animated: true)
+            } else {
+                PlaceOrderDataManager.shared.new(tokenA: asset.symbol, tokenB: "WETH")
+                let viewController = BuyAndSellSwipeViewController()
+                viewController.initialType = .buy
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
         }
     }
 

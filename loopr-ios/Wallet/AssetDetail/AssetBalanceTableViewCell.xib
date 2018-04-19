@@ -81,7 +81,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfY-Lt-hPP">
-                                <rect key="frame" x="262.5" y="26" width="87.5" height="46"/>
+                                <rect key="frame" x="262.5" y="29.5" width="87.5" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <state key="normal" title="Go To Market">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -94,7 +94,7 @@
                             <constraint firstAttribute="trailing" secondItem="MfY-Lt-hPP" secondAttribute="trailing" constant="15" id="4pS-cY-ecr"/>
                             <constraint firstItem="1JS-CV-BDZ" firstAttribute="centerY" secondItem="ELs-Xf-iHd" secondAttribute="centerY" id="6uf-xC-vO6"/>
                             <constraint firstItem="TSo-Fg-r2v" firstAttribute="height" secondItem="1JS-CV-BDZ" secondAttribute="height" id="6xJ-q8-c7v"/>
-                            <constraint firstItem="MfY-Lt-hPP" firstAttribute="height" secondItem="Rvy-ld-tc2" secondAttribute="height" multiplier="0.8" id="Awm-ny-XQb"/>
+                            <constraint firstItem="MfY-Lt-hPP" firstAttribute="height" secondItem="TSo-Fg-r2v" secondAttribute="height" multiplier="0.8" id="Awm-ny-XQb"/>
                             <constraint firstItem="1JS-CV-BDZ" firstAttribute="leading" secondItem="ELs-Xf-iHd" secondAttribute="leading" constant="15" id="Itx-ZX-W48"/>
                             <constraint firstItem="MfY-Lt-hPP" firstAttribute="centerY" secondItem="ELs-Xf-iHd" secondAttribute="centerY" id="JvM-MO-6Nf"/>
                             <constraint firstItem="1JS-CV-BDZ" firstAttribute="height" secondItem="ELs-Xf-iHd" secondAttribute="height" multiplier="0.5" id="Tft-RV-YIC"/>

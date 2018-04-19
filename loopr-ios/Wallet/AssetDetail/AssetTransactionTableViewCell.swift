@@ -17,9 +17,7 @@ class AssetTransactionTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var displayLabel: UILabel!
-    
     @IBOutlet weak var typeImageView: UIImageView!
-    
     @IBOutlet weak var seperateLine: UIView!
     
     override func awakeFromNib() {
@@ -44,10 +42,33 @@ class AssetTransactionTableViewCell: UITableViewCell {
     func update() {
         if let transaction = transaction {
             typeImageView.image = transaction.icon
-            titleLabel.text = transaction.type.description + " " + transaction.symbol
             dateLabel.text = transaction.createTime
-            amountLabel.text = transaction.value
-            displayLabel.text = transaction.display
+            switch transaction.type {
+            case .convert_income:
+                if transaction.symbol.lowercased() == "weth" {
+                    titleLabel.text = NSLocalizedString("Convert ETH To WETH", comment: "")
+                } else if transaction.symbol.lowercased() == "eth" {
+                    titleLabel.text = NSLocalizedString("Convert WETH To ETH", comment: "")
+                }
+                amountLabel.text = transaction.value
+                displayLabel.text = transaction.display
+            case .convert_outcome:
+                if transaction.symbol.lowercased() == "weth" {
+                    titleLabel.text = NSLocalizedString("Convert ETH To WETH", comment: "")
+                } else if transaction.symbol.lowercased() == "eth" {
+                    titleLabel.text = NSLocalizedString("Convert ETH To WETH", comment: "")
+                }
+                amountLabel.text = transaction.value
+                displayLabel.text = transaction.display
+            case .approved:
+                titleLabel.text = NSLocalizedString("Enable \(transaction.symbol) To Trade", comment: "")
+                amountLabel.isHidden = true
+                displayLabel.isHidden = true
+            default:
+                titleLabel.text = transaction.type.description + " " + transaction.symbol
+                amountLabel.text = transaction.value
+                displayLabel.text = transaction.display
+            }
         }
     }
 

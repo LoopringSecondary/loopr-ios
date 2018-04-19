@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CustomSearchControllerDelegate {
+class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, CustomSearchControllerDelegate {
     
     @IBOutlet weak var resultTableView: UITableView!
     
@@ -40,21 +40,28 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
     func updateHistoryRecord() {
         let defaults = UserDefaults.standard
         let key = UserDefaultsKeys.orderHistory.rawValue
-        defaults.set(historyRecord.map{$0}, forKey: key)
+        defaults.set(historyRecord.map {$0}, forKey: key)
     }
     
     func configureSearchController() {
+
         searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
         searchController.searchBar.tintColor = UIStyleConfig.defaultTintColor
+        searchController.searchBar.delegate = self
         searchController.searchBar.sizeToFit()
         searchController.searchBar.autocapitalizationType = .allCharacters
-        navigationItem.searchController = searchController
+        searchController.searchBar.becomeFirstResponder()
+
+        navigationItem.hidesBackButton = true
+        navigationItem.titleView = searchController.searchBar
+        navigationItem.rightBarButtonItem = nil
+        //        navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.becomeFirstResponder()
         definesPresentationContext = true
-        navigationItem.searchController = searchController
         shouldShowSearchResults  = false
     }
     
@@ -136,26 +143,26 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
         return 80
     }
     
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        OrderSearchViewController.filteredRecord = OrderSearchViewController.historyRecord.filter({ (record) -> Bool in
-//            return record.lowercased().hasPrefix(searchText.lowercased())
-//        })
-//        shouldShowSearchResults = true
-//        resultTableView.reloadData()
-//    }
-//
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        searchBar.resignFirstResponder()
-//        if let searchText = searchBar.text {
-//            if let token = Token(symbol: searchText) {
-//                OrderSearchViewController.historyRecord.insert(searchText)
-//                let viewController = OrderSearchResultViewController()
-//                viewController.token = token
-//                viewController.hidesBottomBarWhenPushed = true
-//                self.navigationController?.pushViewController(viewController, animated: true)
-//            }
-//        }
-//    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredRecord = historyRecord.filter({ (record) -> Bool in
+            return record.lowercased().hasPrefix(searchText.lowercased())
+        })
+        shouldShowSearchResults = true
+        resultTableView.reloadData()
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        if let searchText = searchBar.text {
+            if let token = Token(symbol: searchText) {
+                historyRecord.insert(searchText)
+                let viewController = OrderSearchResultViewController()
+                viewController.token = token
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+        }
+    }
     
     func didStartSearching() {
         shouldShowSearchResults = true
