@@ -179,14 +179,12 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         availableLabel.text = "Available 96.3236 ETH"
         availableLabel.font = FontConfigManager.shared.getLabelFont()
         availableLabel.frame = CGRect(x: padding, y: totalUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
-        // estimateValueInCurrency.backgroundColor = UIColor.green
         scrollView.addSubview(availableLabel)
         
         // Fourth Row
         expireLabel.text = "Order Expires in"
         expireLabel.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: 14)
         expireLabel.textAlignment = .left
-        // expireLabel.backgroundColor = UIColor.green
         expireLabel.frame = CGRect(x: padding, y: availableLabel.frame.maxY + 30, width: 300, height: 40)
         scrollView.addSubview(expireLabel)
 

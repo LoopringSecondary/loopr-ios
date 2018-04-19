@@ -235,7 +235,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     @objc func pressedMaxButton(_ sender: Any) {
         print("pressedMaxButton")
         amountTextField.text = asset?.balance.description
-        amountInfoLabel.text = "$ \((asset?.display.description)!)"
+        amountInfoLabel.text = "\((asset?.display.description)!)"
     }
 
     @objc func sliderValueDidChange(_ sender: UISlider!) {
