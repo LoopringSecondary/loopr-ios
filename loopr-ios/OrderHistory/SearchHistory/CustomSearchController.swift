@@ -10,8 +10,8 @@ import UIKit
 
 protocol CustomSearchControllerDelegate: class {
     func didStartSearching()
-    func didTapOnSearchButton()
     func didTapOnCancelButton()
+    func didTapOnSearchButton(searchText: String?)
     func didChangeSearchText(searchText: String)
 }
 
@@ -63,7 +63,7 @@ class CustomSearchController: UISearchController, UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         customSearchBar.resignFirstResponder()
-        customDelegate.didTapOnSearchButton()
+        customDelegate.didTapOnSearchButton(searchText: searchBar.text)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

@@ -190,7 +190,7 @@ class CurrentAppWalletDataManager {
         guard let wallet = currentAppWallet else {
             return
         }
-        LoopringAPIRequest.getTransactions(owner: "0x8311804426a24495bd4306daf5f595a443a52e32", symbol: asset.symbol, thxHash: nil, completionHandler: { (transactions, error) in
+        LoopringAPIRequest.getTransactions(owner: wallet.address, symbol: asset.symbol, thxHash: nil, completionHandler: { (transactions, error) in
             guard error == nil && transactions != nil else {
                 return
             }
