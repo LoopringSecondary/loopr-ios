@@ -51,8 +51,11 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         marketTableView.tableFooterView = UIView()
         marketTableView.separatorStyle = .none
         
+        marketTableView.estimatedRowHeight = 0
+        marketTableView.estimatedSectionHeaderHeight = 0
+        marketTableView.estimatedSectionFooterHeight = 0
+        
         getMarketsFromRelay()
-        OrderDataManager.shared.getOrdersFromServer()
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         marketTableView.theme_backgroundColor = GlobalPicker.backgroundColor
@@ -137,7 +140,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         markets = MarketDataManager.shared.getMarkets(type: type)
         marketTableView.reloadData()
     }
-    
+
     // MARK: - Private instance methods
     func searchBarIsEmpty() -> Bool {
         // Returns true if the text is empty or nil

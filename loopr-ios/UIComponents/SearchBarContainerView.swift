@@ -15,8 +15,10 @@ class SearchBarContainerView: UIView {
     init(customSearchBar: UISearchBar) {
         searchBar = customSearchBar
         super.init(frame: CGRect.zero)
-        
         addSubview(searchBar)
+        
+        // https://stackoverflow.com/questions/44932084/ios-11-navigationitem-titleview-width-not-set/46073452
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
     override convenience init(frame: CGRect) {
@@ -30,7 +32,10 @@ class SearchBarContainerView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        searchBar.frame = bounds
+        self.searchBar.frame = self.bounds
     }
 
+    override var intrinsicContentSize: CGSize {
+        return UILayoutFittingExpandedSize
+    }
 }

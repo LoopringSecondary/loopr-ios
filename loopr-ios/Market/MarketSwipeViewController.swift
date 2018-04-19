@@ -38,6 +38,10 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
 
         let orderHistoryBarButton = UIBarButtonItem(customView: orderHistoryButton)
         self.navigationItem.rightBarButtonItem = orderHistoryBarButton
+        
+        // getOrdersFromServer should be here. MarketSwipeViewController has four MarketViewController.
+        // If it's in the MarketViewController, getOrdersFromServer will be called four times.
+        OrderDataManager.shared.getOrdersFromServer()
     }
     
     func setupChildViewControllers() {
@@ -119,6 +123,8 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         searchBar.showsCancelButton = false
         searchBar.placeholder = "Search"
         searchBar.delegate = self
+        
+        searchBar.searchBarStyle = .minimal
 
         let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
         searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
@@ -180,6 +186,8 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         print("searchBarCancelButtonClicked")
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
+        let orderHistoryBarButton = UIBarButtonItem(customView: orderHistoryButton)
+        self.navigationItem.rightBarButtonItem = orderHistoryBarButton
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -189,6 +197,8 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         print("searchBarTextDidBeginEditing")
         searchBar.showsCancelButton = true
+        self.navigationItem.rightBarButtonItem = nil
+        searchBar.becomeFirstResponder()
     }
 
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
