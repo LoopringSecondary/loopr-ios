@@ -85,7 +85,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         addressTextField.tag = 0
         addressTextField.font = FontConfigManager.shared.getLabelFont()
         addressInfoLabel.theme_tintColor = GlobalPicker.textColor
-        addressTextField.placeholder = "Enter the address"
+        addressTextField.placeholder = NSLocalizedString("Enter the address", comment: "")
         addressTextField.contentMode = UIViewContentMode.bottom
         addressTextField.frame = CGRect(x: padding, y: tokenTotalAmountLabel.frame.maxY + padding*3, width: screenWidth-padding*2, height: 40)
         scrollView.addSubview(addressTextField)
@@ -96,7 +96,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
 
         addressInfoLabel.frame = CGRect(x: padding, y: addressUnderLine.frame.maxY, width: screenWidth - padding * 2, height: 40)
         addressInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)
-        addressInfoLabel.text = "Please confirm the address before sending."
+        addressInfoLabel.text = NSLocalizedString("Please confirm the address before sending.", comment: "")
         scrollView.addSubview(addressInfoLabel)
         
         // Third row: Amount
@@ -106,7 +106,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         amountTextField.inputView = UIView()
         amountTextField.font = FontConfigManager.shared.getLabelFont()
         amountTextField.theme_tintColor = GlobalPicker.textColor
-        amountTextField.placeholder = "Enter the amount"
+        amountTextField.placeholder = NSLocalizedString("Enter the amount", comment: "")
         amountTextField.contentMode = UIViewContentMode.bottom
         amountTextField.frame = CGRect(x: padding, y: addressInfoLabel.frame.maxY + padding*1.5, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(amountTextField)
@@ -125,7 +125,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         amountInfoLabel.text = "$ 319,491.31"
         scrollView.addSubview(amountInfoLabel)
         
-        maxButton.title = "Max"
+        maxButton.title = NSLocalizedString("Max", comment: "")
         maxButton.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
         maxButton.setTitleColor(UIColor.init(rgba: "#cce9ff"), for: .highlighted)
         maxButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
@@ -136,7 +136,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         
         transactionFeeLabel.frame = CGRect(x: padding, y: maxButton.frame.maxY + padding*2, width: 120, height: 40)
         transactionFeeLabel.font = FontConfigManager.shared.getLabelFont()
-        transactionFeeLabel.text = "Transaction Fee"
+        transactionFeeLabel.text = NSLocalizedString("Transaction Fee", comment: "")
         scrollView.addSubview(transactionFeeLabel)
         
         transactionFeeAmountLabel.frame = CGRect(x: screenWidth-300-padding, y: maxButton.frame.maxY + padding*2, width: 300, height: 40)
@@ -149,7 +149,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         
         advancedLabel.frame = CGRect(x: padding, y: transactionFeeAmountLabel.frame.maxY + padding, width: 120, height: 40)
         advancedLabel.font = FontConfigManager.shared.getLabelFont()
-        advancedLabel.text = "Advanced"
+        advancedLabel.text = NSLocalizedString("Advanced", comment: "")
         scrollView.addSubview(advancedLabel)
         
         transactionSpeedSlider.frame = CGRect(x: padding, y: advancedLabel.frame.maxY + padding*0.5, width: screenWidth-2*padding, height: 20)
@@ -336,7 +336,6 @@ extension SendAssetViewController {
                     banner.duration = 1.5
                     banner.show()
                 }
-
                 return
             }
             print("Result of transfer is \(txHash!)")

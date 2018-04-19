@@ -57,7 +57,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func initOrderType(order: Order) {
+    func setupOrderType(order: Order) {
         typeLabel.text = order.originalOrder.side.capitalized
         typeLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 20)
         typeLabel.borderWidth = 0.5
@@ -73,7 +73,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         typeLabel.layer.masksToBounds = true
     }
     
-    func initOrderFilled(order: Order) {
+    func setupOrderFilled(order: Order) {
         var percent: Double = 0.0
         if order.originalOrder.side.lowercased() == "sell" {
             percent = order.dealtAmountS / order.originalOrder.amountSell
@@ -85,26 +85,36 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         filledPieChart.textColor = Themes.isNight() ? UIColor.white : UIColor.black
         filledPieChart.textFont = UIFont(name: FontConfigManager.shared.getLight(), size: 20.0)!
         filledPieChart.desiredLineWidth = 1.5
-//        filledPieChart.percentage = CGFloat(percent)
-        filledPieChart.percentage = 0.98
-
+        filledPieChart.percentage = CGFloat(percent)
         filledInfoLabel.text = (percent * 100).rounded().description + "%"
     }
     
-    func initOrderAmount(order: Order) {
+    func setupOrderAmount(order: Order) {
         if order.originalOrder.side.lowercased() == "sell" {
             amountLabel.text = order.dealtAmountS.description + " " + order.originalOrder.tokenS
             amountInfoLabel.text = order.dealtAmountS.description + " / " + order.originalOrder.amountSell.description + " " + order.originalOrder.tokenS
             totalInfoLabel.text = order.originalOrder.amountBuy.description + " " + order.originalOrder.tokenB
             if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: order.originalOrder.tokenS) {
-                displayLabel.text = "$ " + (price * order.originalOrder.amountSell).description // TODO: $
+                let currencyFormatter = NumberFormatter()
+                currencyFormatter.locale = NSLocale.current
+                currencyFormatter.usesGroupingSeparator = true
+                currencyFormatter.numberStyle = .currency
+                let total = price * order.originalOrder.amountSell
+                let formattedNumber = currencyFormatter.string(from: NSNumber(value: total)) ?? "\(total)"
+                displayLabel.text = formattedNumber
             }
         } else if order.originalOrder.side.lowercased() == "buy" {
             amountLabel.text = order.dealtAmountB.description + " " + order.originalOrder.tokenB
             amountInfoLabel.text = order.dealtAmountB.description + " / " + order.originalOrder.amountBuy.description + " " + order.originalOrder.tokenB
             totalInfoLabel.text = order.originalOrder.amountSell.description + " " + order.originalOrder.tokenS
             if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: order.originalOrder.tokenB) {
-                displayLabel.text = "$ " + (price * order.originalOrder.amountBuy).description // TODO: $
+                let currencyFormatter = NumberFormatter()
+                currencyFormatter.locale = NSLocale.current
+                currencyFormatter.usesGroupingSeparator = true
+                currencyFormatter.numberStyle = .currency
+                let total = price * order.originalOrder.amountBuy
+                let formattedNumber = currencyFormatter.string(from: NSNumber(value: total)) ?? "\(total)"
+                displayLabel.text = formattedNumber
             }
         }
         amountLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 40)
@@ -119,9 +129,9 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         marketLabel.text = order.tradingPairDescription
         marketLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 30)
         marketLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
-        initOrderType(order: order)
-        initOrderFilled(order: order)
-        initOrderAmount(order: order)
+        setupOrderType(order: order)
+        setupOrderFilled(order: order)
+        setupOrderAmount(order: order)
 
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
