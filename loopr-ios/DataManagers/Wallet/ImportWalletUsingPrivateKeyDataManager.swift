@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import secp256k1_ios
 
 class ImportWalletUsingPrivateKeyDataManager {
     
@@ -19,9 +20,13 @@ class ImportWalletUsingPrivateKeyDataManager {
     // TODO: Use error handling
     func unlockWallet(privateKey privateKeyString: String) {
         print("Start to unlock a new wallet using the private key")
-        let privateKey = Data(hexString: privateKeyString)!
-        let key = try! KeystoreKey(password: "password", key: privateKey)
-        let newAppWallet = AppWallet(address: key.address.description, privateKey: privateKeyString, password: "123456", name: "Wallet private key", active: true)
+        let privateKeyData = Data(hexString: privateKeyString)!
+        
+        // TODO: move this part to sdk?
+        let pubKey = Secp256k1.shared.pubicKey(from: privateKeyData)
+        let address = KeystoreKey.decodeAddress(from: pubKey)
+        
+        let newAppWallet = AppWallet(address: address.description, privateKey: privateKeyString, password: "123456", name: "Wallet private key", active: true)
         
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         
