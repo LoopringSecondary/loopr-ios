@@ -1050,7 +1050,7 @@
 			path = RelayAPI;
 			sourceTree = "<group>";
 		};
-		AC1E4BBA204B2AF700C6B1FA /* Keystone */ = {
+		AC1E4BBA204B2AF700C6B1FA /* Keystore */ = {
 			isa = PBXGroup;
 			children = (
 				AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */,
@@ -1062,7 +1062,7 @@
 				AC1E4BC1204B52FD00C6B1FA /* wallet.json */,
 				AC1E4BC3204B533000C6B1FA /* key.json */,
 			);
-			path = Keystone;
+			path = Keystore;
 			sourceTree = "<group>";
 		};
 		AC31B93B204A8D1F00B16155 /* Keystore@8fea1ff */ = {
@@ -1508,7 +1508,7 @@
 				ACE65E3C2071C6BE001EE499 /* Web3Swift */,
 				AC72AEE0204D082800E9D3B0 /* DataManager */,
 				AC1E4BB9204B2AE200C6B1FA /* RelayAPI */,
-				AC1E4BBA204B2AF700C6B1FA /* Keystone */,
+				AC1E4BBA204B2AF700C6B1FA /* Keystore */,
 				AC798E5B2022B93B0071D477 /* Info.plist */,
 			);
 			path = "loopr-iosTests";
