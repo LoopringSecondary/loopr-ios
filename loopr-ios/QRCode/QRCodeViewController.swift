@@ -12,9 +12,8 @@ class QRCodeViewController: UIViewController {
     
     @IBOutlet weak var qrcodeImageView: UIImageView!
     var qrcodeImage: CIImage!
-
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var addressLabel: UILabel!
-    
     @IBOutlet weak var copyAddressButton: UIButton!
     @IBOutlet weak var saveToAlbumButton: UIButton!
     
@@ -24,13 +23,10 @@ class QRCodeViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationItem.title = NSLocalizedString("QR Code", comment: "")
         
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = GlobalPicker.textColor
+        contentView.layer.cornerRadius = 16
         addressLabel.theme_textColor = GlobalPicker.textColor
-        addressLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 14)
-
-        // copyAddressButton.theme_backgroundColor = ["#000", "#fff"]
-        // copyAddressButton.theme_setTitleColor(["#fff", "#000"], forState: .normal)
-
+        addressLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 20)
         copyAddressButton.setTitle(NSLocalizedString("Copy Wallet Address", comment: ""), for: .normal)
         copyAddressButton.backgroundColor = UIColor.clear
         copyAddressButton.titleColor = UIColor.black
@@ -38,17 +34,14 @@ class QRCodeViewController: UIViewController {
         copyAddressButton.layer.borderWidth = 0.5
         copyAddressButton.layer.borderColor = UIColor.black.cgColor
         copyAddressButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
-
         saveToAlbumButton.setTitle(NSLocalizedString("Save to Album", comment: ""), for: .normal)
         saveToAlbumButton.backgroundColor = UIColor.black
         saveToAlbumButton.layer.cornerRadius = 23
         saveToAlbumButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
-        
-        setBackButton()
-
+        setupShareButton()
+        setBackButton(image: "Back-button-white")
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
         addressLabel.text = address
-
         let data = address?.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
         let filter = CIFilter(name: "CIQRCodeGenerator")
         filter?.setValue(data, forKey: "inputMessage")
@@ -61,6 +54,28 @@ class QRCodeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func setupShareButton() {
+        let shareButton = UIButton(type: UIButtonType.custom)
+        shareButton.setImage(UIImage(named: "ShareButtonImage"), for: .normal)
+        shareButton.setImage(UIImage(named: "ShareButtonImage")?.alpha(0.3), for: .highlighted)
+        // Default left padding is 20. It should be 12 in our design.
+        shareButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 8, bottom: 0, right: -8)
+        shareButton.addTarget(self, action: #selector(pressedShareButton(_:)), for: UIControlEvents.touchUpInside)
+        // The size of the image.
+        shareButton.frame = CGRect(x: 0, y: 0, width: 23, height: 23)
+        let shareBarButton = UIBarButtonItem(customView: shareButton)
+        
+        self.navigationItem.rightBarButtonItem = shareBarButton
+        // Add swipe to go-back feature back which is a system default gesture
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+    }
+    
+    func updateNavigationView(tintColor: UIColor, textColor: UIColor) {
+        self.navigationController?.navigationBar.barTintColor = tintColor
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: textColor]
+        self.navigationController?.navigationBar.tintColor = textColor
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -70,6 +85,16 @@ class QRCodeViewController: UIViewController {
         
         let transformedImage = qrcodeImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
         qrcodeImageView.image = UIImage.init(ciImage: transformedImage)
+        updateNavigationView(tintColor: UIColor.black, textColor: UIColor.white)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        updateNavigationView(tintColor: UIColor.white, textColor: UIColor.black)
+    }
+    
+    @IBAction func pressedShareButton(_ button: UIBarButtonItem) {
+        // TODO: check this button is for what
     }
 
     @IBAction func pressedCopyAddressButton(_ sender: Any) {

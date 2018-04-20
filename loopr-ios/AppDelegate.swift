@@ -34,8 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LoopringSocketIORequest.setup()
         PriceQuoteDataManager.shared.startGetPriceQuote("USD")
 
-        CurrentAppWalletDataManager.shared.startGetBalance()
-
         MarketDataManager.shared.startGetTicker()
         
         _ = SettingDataManager.shared.getCurrentLanguage()

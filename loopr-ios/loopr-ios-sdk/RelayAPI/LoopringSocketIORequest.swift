@@ -63,7 +63,7 @@ public class LoopringSocketIORequest {
     static func getBalance(owner: String) {
         var body: JSON = JSON()
         body["owner"] = JSON(owner)
-        body["contractVersion"] = JSON(RelayAPIConfiguration.contractVersion)
+        body["contractVersion"] = JSON(RelayAPIConfiguration.delegateAddress)
         if socket.status != .connected {
             socket.on(clientEvent: .connect) {_, _ in
                 self.socket.emit("balance_req", body.rawString()!)
@@ -87,7 +87,7 @@ public class LoopringSocketIORequest {
     
     static func getTiker() {
         var body: JSON = JSON()
-        body["contractVersion"] = JSON(RelayAPIConfiguration.contractVersion)
+        body["contractVersion"] = JSON(RelayAPIConfiguration.delegateAddress)
         if socket.status != .connected {
             socket.on(clientEvent: .connect) {_, _ in
                 self.socket.emit("loopringTickers_req", body.rawString()!)

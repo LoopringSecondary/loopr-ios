@@ -18,7 +18,5 @@ class RelayAPIConfiguration {
     static let ethURL = URL(string: baseURL + "/eth")!
     static let socketURL = URL(string: baseURL)!
 
-    static let contractVersion = "v1.4"
     static let delegateAddress = "0x5567ee920f7E62274284985D793344351A00142B"
-
 }

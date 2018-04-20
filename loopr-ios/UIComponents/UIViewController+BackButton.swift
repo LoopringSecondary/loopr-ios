@@ -10,10 +10,10 @@ import UIKit
 
 extension UIViewController: UIGestureRecognizerDelegate {
     
-    func setBackButton() {
+    func setBackButton(image name: String = "BackButtonImage") {
         let backButton = UIButton(type: UIButtonType.custom)
-        backButton.setImage(UIImage(named: "BackButtonImage"), for: .normal)
-        backButton.setImage(UIImage(named: "BackButtonImage")?.alpha(0.3), for: .highlighted)
+        backButton.setImage(UIImage(named: name), for: .normal)
+        backButton.setImage(UIImage(named: name)?.alpha(0.3), for: .highlighted)
         
         // Default left padding is 20. It should be 12 in our design.
         backButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -8, bottom: 0, right: 8)

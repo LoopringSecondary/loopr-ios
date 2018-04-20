@@ -111,7 +111,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func section2Cell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
-            return createBasicTableCell(title: "Contract Version", detailTitle: RelayAPIConfiguration.contractVersion)
+            return createBasicTableCell(title: "Contract Version", detailTitle: RelayAPIConfiguration.delegateAddress)
         case 1:
             return createDetailTableCell(title: "LRC Fee", detailTitle: "12.3020%")
         case 2:

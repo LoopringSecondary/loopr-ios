@@ -56,6 +56,7 @@ class CurrentAppWalletDataManager {
             let asset = Asset(symbol: symbol)
             assets.append(asset)
         }
+        startGetBalance()
     }
 
     func getTotalAsset() -> Double {
@@ -178,7 +179,6 @@ class CurrentAppWalletDataManager {
         }
     }
     
-    // TODO: whether stop method is useful? Yes.
     func startGetBalance() {
         guard let wallet = currentAppWallet else {
             return
