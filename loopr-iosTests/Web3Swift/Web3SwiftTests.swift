@@ -60,8 +60,6 @@ class Web3SwiftTests: XCTestCase {
         print(gethAccount!.getAddress().getHex())
         XCTAssertEqual(gethAccount?.getAddress().getHex()!, "0x7C0C5B3C78f04f4ca42EBFb3cb4EA57D5e549392")
     }
-    
-    
 
     func testCreateAccount() {
         // Create Account

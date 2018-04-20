@@ -75,7 +75,7 @@ class AppWalletDataManager {
         }
 
         let mnemonicString = mnemonics.joined(separator: " ")
-        let wallet = Wallet(mnemonic: mnemonicString, password: "")
+        let wallet = Wallet(mnemonic: mnemonicString, password: password)
 
         // Public address
         let address = wallet.getKey(at: 0).address
@@ -94,8 +94,8 @@ class AppWalletDataManager {
             walletNameLocal = walletName
         }
 
-        let newAppWallet = AppWallet(address: address.description, privateKey: privateKey.hexString, name: walletNameLocal, active: true, mnemonics: mnemonics)
-        
+        let newAppWallet = AppWallet(address: address.description, privateKey: privateKey.hexString, password: password, mnemonics: mnemonics, name: walletNameLocal, active: true, assetSequence: mnemonics)
+
         // Update the new app wallet in the local storage.
         updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         

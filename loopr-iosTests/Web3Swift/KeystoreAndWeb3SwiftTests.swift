@@ -75,17 +75,20 @@ class KeystoreAndWeb3SwiftTests: XCTestCase {
         
         _ = try! keyStore.createAccount(password: password, type: .encryptedKey)
         let account = try! keyStore.createWallet(password: password)
+        print(account.address)
 
         _ = try! keyStore.export(account: account, password: password, newPassword: password)
     }
     
     func testIntegration3() {
+        let address = "0x638DF04C98D44364B2192c27Cc0c7603aAAd8b6D"
         let privateKey = "9f13480f56489f2601e890f40f357dd42603447192839f8c2288dcb872478967"
         let password: String = "123456"
-        
+
         guard let data = Data(hexString: privateKey) else {
             return // .failure(KeystoreError.failedToImportPrivateKey)
         }
+
         do {
             let key = try KeystoreKey(password: password, key: data)
             let data = try JSONEncoder().encode(key)

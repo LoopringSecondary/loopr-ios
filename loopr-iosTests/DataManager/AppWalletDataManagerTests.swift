@@ -22,7 +22,7 @@ class AppWalletDataManagerTests: XCTestCase {
     }
     
     func testLogout1() {
-        ImportWalletUsingMnemonicDataManager.shared.unlockWallet(privateKey: "3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe267")
+        ImportWalletUsingPrivateKeyDataManager.shared.unlockWallet(privateKey: "3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe267")
         let currentWallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet()
         XCTAssertEqual(currentWallet?.address, "0xE9717c7564d6ED2F764C3c5EB002225ab49e7baB")
         XCTAssertGreaterThan(AppWalletDataManager.shared.getWallets().count, 0)
@@ -38,7 +38,7 @@ class AppWalletDataManagerTests: XCTestCase {
     }
 
     func testLogout2() {
-        ImportWalletUsingMnemonicDataManager.shared.unlockWallet(privateKey: "3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe267")
+        ImportWalletUsingPrivateKeyDataManager.shared.unlockWallet(privateKey: "3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe267")
         let currentWallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet()
         XCTAssertEqual(currentWallet?.address, "0xE9717c7564d6ED2F764C3c5EB002225ab49e7baB")
         XCTAssertGreaterThan(AppWalletDataManager.shared.getWallets().count, 0)
@@ -49,7 +49,7 @@ class AppWalletDataManagerTests: XCTestCase {
     }
     
     func testUnlockWalletUsingPrivateKey() {
-        ImportWalletUsingMnemonicDataManager.shared.unlockWallet(privateKey: "3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe267")
+        ImportWalletUsingPrivateKeyDataManager.shared.unlockWallet(privateKey: "3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe267")
         let currentWallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet()
         XCTAssertEqual(currentWallet?.address, "0xE9717c7564d6ED2F764C3c5EB002225ab49e7baB")
     }

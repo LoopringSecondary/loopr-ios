@@ -13,24 +13,30 @@ class AppWallet: NSObject, NSCoding {
     final let address: String
     final let privateKey: String
 
+    // The password used to get the address and the private key when users use mnemonics and keystore.
+    final let password: String
+    final var mnemonics: [String]
+    var keystoreData: Data = Data()
+
+    // The wallet name in the app. Users can update later.
     var name: String
+
+    // TODO: what is active for?
     var active: Bool
 
-    var mnemonics: [String] = []
-
-    var keystoreData: Data = Data()
-    
     var assetSequence: [String] = []
     var assetSequenceInHideSmallAssets: [String] = []
     
-    init(address: String, privateKey: String, name: String, active: Bool, mnemonics: [String] = [], assetSequence: [String] = ["ETH", "LRC"], assetSequenceInHideSmallAssets: [String] = ["ETH", "LRC"]) {
+    init(address: String, privateKey: String, password: String, mnemonics: [String] = [], name: String, active: Bool, assetSequence: [String] = ["ETH", "LRC"], assetSequenceInHideSmallAssets: [String] = ["ETH", "LRC"]) {
         self.address = address
         self.privateKey = privateKey
+
+        self.password = password
+        self.mnemonics = mnemonics
+
         self.name = name
         self.active = active
 
-        self.mnemonics = mnemonics
-        
         // Generate keystore data
         /*
         guard let data = Data(hexString: privateKey) else {
@@ -51,7 +57,7 @@ class AppWallet: NSObject, NSCoding {
     func getKeystore() -> JSON {
         // TODO: catch error
         let data = Data(hexString: privateKey)!
-        let key = try! KeystoreKey(password: "password", key: data)
+        let key = try! KeystoreKey(password: password, key: data)
         keystoreData = try! JSONEncoder().encode(key)
         let json = try! JSON(data: keystoreData)
         return json
@@ -62,6 +68,7 @@ class AppWallet: NSObject, NSCoding {
     }
 
     func encode(with aCoder: NSCoder) {
+        aCoder.encode(password, forKey: "password")
         aCoder.encode(address, forKey: "address")
         aCoder.encode(privateKey, forKey: "privateKey")
         aCoder.encode(name, forKey: "name")
@@ -72,6 +79,7 @@ class AppWallet: NSObject, NSCoding {
     }
 
     required convenience init?(coder aDecoder: NSCoder) {
+        let password = aDecoder.decodeObject(forKey: "password") as? String
         let address = aDecoder.decodeObject(forKey: "address") as? String
         let privateKey = aDecoder.decodeObject(forKey: "privateKey") as? String
         let name = aDecoder.decodeObject(forKey: "name") as? String
@@ -82,8 +90,8 @@ class AppWallet: NSObject, NSCoding {
         let assetSequence = aDecoder.decodeObject(forKey: "assetSequence") as? [String] ?? []
         let assetSequenceInHideSmallAssets = aDecoder.decodeObject(forKey: "assetSequenceInHideSmallAssets") as? [String] ?? []
         
-        if let address = address, let privateKey = privateKey, let mnemonics = mnemonics, let name = name {
-            self.init(address: address, privateKey: privateKey, name: name, active: active, mnemonics: mnemonics, assetSequence: unique(assetSequence), assetSequenceInHideSmallAssets: unique(assetSequenceInHideSmallAssets))
+        if let address = address, let privateKey = privateKey, let password = password, let mnemonics = mnemonics, let name = name {
+            self.init(address: address, privateKey: privateKey, password: password, mnemonics: mnemonics, name: name, active: active, assetSequence: unique(assetSequence), assetSequenceInHideSmallAssets: unique(assetSequenceInHideSmallAssets))
         } else {
             return nil
         }

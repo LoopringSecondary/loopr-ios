@@ -57,13 +57,36 @@ class CreatePrivateKeyTests: XCTestCase {
         // Private key
         print(decrypted1.hexString)
 
-        // If an invalid password is used, then it should return an invalid input error.
-        XCTAssertThrowsError(try KeystoreKey(password: "", key: decrypted1)) { error in
+        // If the password is different, then it should return an invalid input error.
+        XCTAssertThrowsError(try KeystoreKey(password: "password", key: decrypted1)) { error in
             guard case CryptoSwift.PKCS5.PBKDF2.Error.invalidInput = error else {
                 XCTFail("Expected invalid input error")
                 return
             }
         }
+    }
+    
+    func testPassword() {
+        let keystoreKey1 = try! KeystoreKey(password: "123456")
+        
+        // Get Private key
+        let decrypted1 = try! keystoreKey1.decrypt(password: "123456")
+        // XCTAssertEqual(decrypted1, keystoreKey1.crypto.cipherText)
+        
+        // Public key
+        print("Public key: \(keystoreKey1.address.eip55String)")
+        
+        // Private key
+        print("Private key: \(decrypted1.hexString)")
+
+        let privateKeyString = decrypted1.hexString
+
+        // TODO: seems create a KeystoreKey doesn't need any password.
+        // The password is used to generate a keystore immediately.
+        let privateKey = Data(hexString: privateKeyString)!
+        let key = try! KeystoreKey(password: "password", key: privateKey)
+        
+        XCTAssertEqual(keystoreKey1.address.description, key.address.description)
     }
     
     func testMeasure() {
