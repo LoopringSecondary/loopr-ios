@@ -82,6 +82,8 @@
 		AC2D2C05208882BD00D619AD /* FoundationArray+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C04208882BD00D619AD /* FoundationArray+Extension.swift */; };
 		AC2D2C072089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C062089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift */; };
 		AC2D2C092089CB6B00D619AD /* ImportPrivateKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C082089CB6B00D619AD /* ImportPrivateKeyTests.swift */; };
+		AC2D2C0B2089CE1F00D619AD /* ImportWalletUsingKeystoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C0A2089CE1F00D619AD /* ImportWalletUsingKeystoreDataManager.swift */; };
+		AC2D2C0D2089D23E00D619AD /* ImportKeystoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C0C2089D23E00D619AD /* ImportKeystoreTests.swift */; };
 		AC31B93520493FB900B16155 /* SettingLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B93320493FB900B16155 /* SettingLanguageTableViewCell.swift */; };
 		AC31B93620493FB900B16155 /* SettingLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31B93420493FB900B16155 /* SettingLanguageTableViewCell.xib */; };
 		AC31B93A204A4F9000B16155 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B939204A4F9000B16155 /* Language.swift */; };
@@ -611,6 +613,8 @@
 		AC2D2C04208882BD00D619AD /* FoundationArray+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoundationArray+Extension.swift"; sourceTree = "<group>"; };
 		AC2D2C062089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingPrivateKeyDataManager.swift; sourceTree = "<group>"; };
 		AC2D2C082089CB6B00D619AD /* ImportPrivateKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportPrivateKeyTests.swift; sourceTree = "<group>"; };
+		AC2D2C0A2089CE1F00D619AD /* ImportWalletUsingKeystoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingKeystoreDataManager.swift; sourceTree = "<group>"; };
+		AC2D2C0C2089D23E00D619AD /* ImportKeystoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportKeystoreTests.swift; sourceTree = "<group>"; };
 		AC31B93320493FB900B16155 /* SettingLanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageTableViewCell.swift; sourceTree = "<group>"; };
 		AC31B93420493FB900B16155 /* SettingLanguageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLanguageTableViewCell.xib; sourceTree = "<group>"; };
 		AC31B939204A4F9000B16155 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
@@ -1064,6 +1068,7 @@
 				ACF06A05204C736A00C3FF86 /* CreateMnemonicTests.swift */,
 				ACCC7EA22082BE0B008E58BA /* ImportMnemonicTests.swift */,
 				AC2D2C082089CB6B00D619AD /* ImportPrivateKeyTests.swift */,
+				AC2D2C0C2089D23E00D619AD /* ImportKeystoreTests.swift */,
 				AC1E4BC1204B52FD00C6B1FA /* wallet.json */,
 				AC1E4BC3204B533000C6B1FA /* key.json */,
 			);
@@ -1744,6 +1749,7 @@
 				940B45152060F67C00ADE2B9 /* CurrentAppWalletDataManager.swift */,
 				940B45102060F67B00ADE2B9 /* GenerateWalletDataManager.swift */,
 				AC99CF482083DF25000AE4BD /* ImportWalletUsingMnemonicDataManager.swift */,
+				AC2D2C0A2089CE1F00D619AD /* ImportWalletUsingKeystoreDataManager.swift */,
 				AC2D2C062089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift */,
 			);
 			path = Wallet;
@@ -2549,6 +2555,7 @@
 				AC10609D2073475200677D63 /* AddMenuTableViewCell.swift in Sources */,
 				C87E226E2031708000323584 /* ToggleTableViewCell.swift in Sources */,
 				ACCCFDCE203BEF2200B98F99 /* UITextFieldExtension.swift in Sources */,
+				AC2D2C0B2089CE1F00D619AD /* ImportWalletUsingKeystoreDataManager.swift in Sources */,
 				ACDBF101203FE73B000F0DEC /* ReorderController.swift in Sources */,
 				ACB911642024504E00F14644 /* Order.swift in Sources */,
 				AC9280E92030C7440009B574 /* UIColorExtensions.swift in Sources */,
@@ -2734,6 +2741,7 @@
 				AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */,
 				94580025205921D600E08DEF /* PriceQuoteDataManagerTests.swift in Sources */,
 				ACA677CC207C8A0500D34A2F /* KeystoreAndWeb3SwiftTests.swift in Sources */,
+				AC2D2C0D2089D23E00D619AD /* ImportKeystoreTests.swift in Sources */,
 				ACCC7EA32082BE0B008E58BA /* ImportMnemonicTests.swift in Sources */,
 				AC2D2C092089CB6B00D619AD /* ImportPrivateKeyTests.swift in Sources */,
 				AC798E5A2022B93B0071D477 /* LoopringAPIRequestTests.swift in Sources */,

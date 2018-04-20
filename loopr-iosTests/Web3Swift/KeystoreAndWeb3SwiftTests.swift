@@ -66,18 +66,27 @@ class KeystoreAndWeb3SwiftTests: XCTestCase {
         let keyDirectory = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("KeyStoreTests")
         try? fileManager.removeItem(at: keyDirectory)
         try? fileManager.createDirectory(at: keyDirectory, withIntermediateDirectories: true, attributes: nil)
+        print(keyDirectory.absoluteString)
         
         let walletDirectory = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("WalletStoreTests")
         try? fileManager.removeItem(at: walletDirectory)
         try? fileManager.createDirectory(at: walletDirectory, withIntermediateDirectories: true, attributes: nil)
+        print(walletDirectory.absoluteString)
         
         let keyStore = try! KeyStore(keyDirectory: keyDirectory, walletDirectory: walletDirectory)
+
+        print(keyStore.accounts.count)
+        XCTAssertEqual(keyStore.accounts.count, 0)
         
+        /*
         _ = try! keyStore.createAccount(password: password, type: .encryptedKey)
         let account = try! keyStore.createWallet(password: password)
         print(account.address)
+        
+        XCTAssertEqual(account.address.description, "0x9497633f13568C2C441b3901aC7f240F71692Dd7")
+        */
 
-        _ = try! keyStore.export(account: account, password: password, newPassword: password)
+        // _ = try! keyStore.export(account: account, password: password, newPassword: password)
     }
     
     func testIntegration3() {

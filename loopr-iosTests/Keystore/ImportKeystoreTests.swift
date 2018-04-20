@@ -1,5 +1,5 @@
 //
-//  ImportPrivateKeyTests.swift
+//  ImportKeystoreTests.swift
 //  loopr-iosTests
 //
 //  Created by xiaoruby on 4/20/18.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import loopr_ios
 
-class ImportPrivateKeyTests: XCTestCase {
+class ImportKeystoreTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -22,13 +22,7 @@ class ImportPrivateKeyTests: XCTestCase {
     }
     
     func test1() {
-        let address = "0x638DF04C98D44364B2192c27Cc0c7603aAAd8b6D"
-        let privateKey = "9f13480f56489f2601e890f40f357dd42603447192839f8c2288dcb872478967"
-        ImportWalletUsingPrivateKeyDataManager.shared.unlockWallet(privateKey: privateKey)
-        
-        if let currentAppWallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
-            XCTAssertEqual(currentAppWallet.address.description, address)
-        }
+
     }
 
 }

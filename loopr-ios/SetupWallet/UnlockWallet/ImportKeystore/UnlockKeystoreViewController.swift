@@ -84,4 +84,20 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate {
         }
         keystoreContentTextView.resignFirstResponder()
     }
+    
+    @IBAction func pressedUnlockButton(_ sender: Any) {
+        print("pressedUnlockButton")
+        ImportWalletUsingKeystoreDataManager.shared.unlockWallet(keystoreStringValue: keystoreContentTextView.text, password: "12345678")
+        
+        if SetupDataManager.shared.hasPresented {
+            self.dismiss(animated: true, completion: {
+                
+            })
+        } else {
+            SetupDataManager.shared.hasPresented = true
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+        }
+    }
+
 }
