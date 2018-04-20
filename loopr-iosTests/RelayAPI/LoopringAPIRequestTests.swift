@@ -11,6 +11,8 @@ import XCTest
 
 class LoopringAPIRequestTests: XCTestCase {
     
+    let testAddress = "0x8311804426a24495bd4306daf5f595a443a52e32"
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -24,7 +26,7 @@ class LoopringAPIRequestTests: XCTestCase {
     // its ok to pass nil or real value to method, e.g. owner, same as below
     func testGetBalance() {
         let expectation = XCTestExpectation()
-        LoopringAPIRequest.getBalance(owner: "0x267be1C1D684F78cb4F6a176C4911b741E4Ffdc0") { assets, error in
+        LoopringAPIRequest.getBalance(owner: testAddress) { assets, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 return
@@ -127,7 +129,7 @@ class LoopringAPIRequestTests: XCTestCase {
     
     func testGetCutoff() {
         let expectation = XCTestExpectation()
-        LoopringAPIRequest.getCutoff(address: "0x750ad4351bb728cec7d639a9511f9d6488f1e259") { date, error in
+        LoopringAPIRequest.getCutoff(address: testAddress) { date, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 XCTFail()
@@ -156,7 +158,7 @@ class LoopringAPIRequestTests: XCTestCase {
     
     func testGetEstimatedAllocatedAllowance() {
         let expectation = XCTestExpectation()
-        LoopringAPIRequest.getEstimatedAllocatedAllowance(owner: "0x750ad4351bb728cec7d639a9511f9d6488f1e259", token: "WETH") { amount, error in
+        LoopringAPIRequest.getEstimatedAllocatedAllowance(owner: testAddress, token: "WETH") { amount, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 XCTFail()
@@ -205,7 +207,7 @@ class LoopringAPIRequestTests: XCTestCase {
     func testGetTransactions() {
         let expectation = XCTestExpectation()
         
-        LoopringAPIRequest.getTransactions(owner: "0x8311804426a24495bd4306daf5f595a443a52e32", symbol: "LRC", thxHash: nil, pageIndex: 1, pageSize: 20) { transactions, error in
+        LoopringAPIRequest.getTransactions(owner: testAddress, symbol: "LRC", thxHash: nil, pageIndex: 1, pageSize: 20) { transactions, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 XCTFail()
@@ -213,6 +215,7 @@ class LoopringAPIRequestTests: XCTestCase {
             }
             XCTAssertNotNil(transactions)
             XCTAssertNotEqual(transactions!.count, 0)
+            print(transactions)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)

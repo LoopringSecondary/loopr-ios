@@ -12,12 +12,15 @@ import Foundation
 class LoopringAPIRequest {
 
     // READY
-    public static func getBalance(owner: String? = nil, completionHandler: @escaping (_ assets: [Asset], _ error: Error?) -> Void) {
+    public static func getBalance(owner: String, completionHandler: @escaping (_ assets: [Asset], _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getBalance"
-        body["params"] = [["contractVersion": RelayAPIConfiguration.contractVersion, "owner": owner]]
+        body["params"] = [[
+            "contractVersion": RelayAPIConfiguration.contractVersion,
+            "delegateAddress": RelayAPIConfiguration.delegateAddress,
+            "owner": owner]]
         body["id"] = JSON(UUID().uuidString)
-        
+
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
@@ -42,7 +45,8 @@ class LoopringAPIRequest {
         var body: JSON = JSON()
         
         body["method"] = "loopring_getOrders"
-        body["params"] = [["owner": owner, "orderHash": orderHash, "contractVersion": RelayAPIConfiguration.contractVersion, "status": status, "market": market, "pageIndex": pageIndex, "pageSize": pageSize]]
+        body["params"] = [[
+            "owner": owner, "orderHash": orderHash, "contractVersion": RelayAPIConfiguration.contractVersion, "status": status, "market": market, "pageIndex": pageIndex, "pageSize": pageSize]]
         body["id"] = JSON(UUID().uuidString)
         
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
@@ -296,6 +300,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_getTransactions"
         body["params"] = [["owner": owner, "symbol": symbol, "thxHash": thxHash, "pageIndex": pageIndex, "pageSize": pageSize]]
         body["params"]["contractVersion"] = JSON(RelayAPIConfiguration.contractVersion)
+        body["params"]["delegateAddress"] = JSON(RelayAPIConfiguration.delegateAddress)
         body["id"] = JSON(UUID().uuidString)
         
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in

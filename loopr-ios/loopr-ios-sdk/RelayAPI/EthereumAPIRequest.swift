@@ -58,6 +58,7 @@ class EthereumAPIRequest {
         self.invoke(method: "eth_call", withBody: &body, completionHandler)
     }
 
+    // TODO: is data the eth address?
     // READY
     static func eth_getTransactionCount(data: String, block: DefaultBlock, completionHandler: @escaping (_ response: SimpleRespond?, _ error: Error?) -> Void) {
 

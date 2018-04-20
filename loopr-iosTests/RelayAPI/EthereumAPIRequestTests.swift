@@ -11,6 +11,8 @@ import XCTest
 
 class EthereumAPIRequestTests: XCTestCase {
     
+    let testAddress = "0x8311804426a24495bd4306daf5f595a443a52e32"
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -38,7 +40,7 @@ class EthereumAPIRequestTests: XCTestCase {
     
     func testGetTransactionCount() {
         let expectation = XCTestExpectation()
-        EthereumAPIRequest.eth_getTransactionCount(data: "0x48ff2269e58a373120ffdbbdee3fbcea854ac30a", block: BlockTag.pending) { data, error in
+        EthereumAPIRequest.eth_getTransactionCount(data: testAddress, block: BlockTag.pending) { data, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 return
@@ -66,7 +68,7 @@ class EthereumAPIRequestTests: XCTestCase {
     
     func testEstimateGas() {
         let expectation = XCTestExpectation()
-        EthereumAPIRequest.eth_estimateGas(from: nil, to: "0x98C9D14a894d19a38744d41CD016D89Cf9699a51", gas: nil, gasPrice: nil, value: nil, data: "0x095ea7b30000000000000000000000004c44d51cf0d35172fce9d69e2beac728de980e9d0000000000000000000000000000000000000000000000000de0b6b3a7640000") { data, error in
+        EthereumAPIRequest.eth_estimateGas(from: nil, to: testAddress, gas: nil, gasPrice: nil, value: nil, data: "0x095ea7b30000000000000000000000004c44d51cf0d35172fce9d69e2beac728de980e9d0000000000000000000000000000000000000000000000000de0b6b3a7640000") { data, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 return
