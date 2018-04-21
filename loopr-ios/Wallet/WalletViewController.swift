@@ -63,20 +63,11 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         
         button.frame = CGRect(x: 0, y: 0, width: 400, height: 40)
-        
-        let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
-        button.title = buttonTitle
-
         button.titleLabel?.font = UIFont(name: FontConfigManager.shared.getLight(), size: 16.0)
         button.theme_setTitleColor(["#000", "#fff"], forState: .normal)
         button.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
-        
-        // button.theme_setImage(["Arrow-down-black", "Arrow-down-white"], forState: .normal)
-
         button.addTarget(self, action: #selector(self.clickNavigationTitleButton(_:)), for: .touchUpInside)
         self.navigationItem.titleView = button
-        
-        button.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingRight: -20, titlePaddingLeft: 0)
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -115,6 +106,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
+        button.title = buttonTitle
+        button.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingRight: -20, titlePaddingLeft: 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {
