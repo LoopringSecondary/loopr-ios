@@ -186,6 +186,13 @@ class CurrentAppWalletDataManager {
         LoopringSocketIORequest.getBalance(owner: wallet.address)
     }
     
+    func stopGetBalance() {
+        guard let wallet = currentAppWallet else {
+            return
+        }
+        LoopringSocketIORequest.stopBalance(owner: wallet.address)
+    }
+    
     func getTransactionsFromServer(asset: Asset, completionHandler: @escaping (_ transactions: [Transaction], _ error: Error?) -> Void) {
         guard let wallet = currentAppWallet else {
             return
@@ -204,6 +211,9 @@ class CurrentAppWalletDataManager {
 
     // this func should be called every 10 secs when emitted
     func onBalanceResponse(json: JSON) {
+        
+        print("received balance ...................................")
+        
         totalCurrencyValue = 0
         let tokensJsons = json["tokens"].arrayValue
 

@@ -132,6 +132,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        if let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
+            LoopringSocketIORequest.stopBalance(owner: address)
+        }
         NotificationCenter.default.removeObserver(self, name: .balanceResponseReceived, object: nil)
     }
 

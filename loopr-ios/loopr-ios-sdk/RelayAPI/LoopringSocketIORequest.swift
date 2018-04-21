@@ -60,6 +60,12 @@ public class LoopringSocketIORequest {
         }
     }
     
+    static func removeHandler(handler: String) {
+        if self.handlers.keys.contains(handler) {
+            socket.off(handler)
+        }
+    }
+    
     static func getBalance(owner: String) {
         var body: JSON = JSON()
         body["owner"] = JSON(owner)
@@ -71,6 +77,10 @@ public class LoopringSocketIORequest {
         } else {
             self.socket.emit("balance_req", body.rawString()!)
         }
+    }
+
+    static func stopBalance(owner: String) {
+        removeHandler(handler: "balance_req")
     }
     
     static func getPriceQuote(currency: String) {

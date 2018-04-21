@@ -12,6 +12,7 @@ class AssetTransactionDetailViewController: UIViewController {
 
     var transaction: Transaction?
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var typeImageView: UIImageView!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var amountInCurrencyLabel: UILabel!
@@ -46,8 +47,12 @@ class AssetTransactionDetailViewController: UIViewController {
         
         view.theme_backgroundColor = ["#fff", "#000"]
         typeImageView.theme_image = ["Received", "Received-white"]
+        
+        // setup label
+        if let transaction = self.transaction {
+            setupLabel(transaction: transaction)
+        }
         amountLabel.theme_textColor = ["#000", "#fff"]
-        amountInCurrencyLabel.theme_textColor = ["#000", "#fff"]
         
         // Setup UI
         let screensize: CGRect = UIScreen.main.bounds
@@ -126,6 +131,16 @@ class AssetTransactionDetailViewController: UIViewController {
         update()
     }
     
+    func setupLabel(transaction: Transaction) {
+        titleLabel.text = "You \(transaction.type.description)"
+        titleLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 30)
+        titleLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
+        amountLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 40)
+        amountLabel.textColor = Themes.isNight() ? UIColor.white : UIColor.black
+        amountInCurrencyLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 20)
+        amountInCurrencyLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -144,6 +159,11 @@ class AssetTransactionDetailViewController: UIViewController {
             case .sent:
                 label3.text = "To"
                 label4.text = transaction.to
+            case .approved:
+                amountLabel.isHidden = true
+                amountInCurrencyLabel.isHidden = true
+                label3.text = transaction.type.description
+                label4.text = transaction.status.description
             default:
                 label3.text = transaction.type.description
                 label4.text = transaction.status.description
