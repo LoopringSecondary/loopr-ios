@@ -8,9 +8,12 @@
 
 import UIKit
 
-class UnlockKeystoreViewController: UIViewController, UITextViewDelegate {
+class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var keystoreContentTextView: UITextView!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordTextFieldUnderline: UIView!
+
     @IBOutlet weak var unlockButtonBottonLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var unlockButton: UIButton!
 
@@ -35,11 +38,31 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate {
         keystoreContentTextView.text = NSLocalizedString("Please use space to seperate the mnemonic words", comment: "")
         keystoreContentTextView.textColor = .lightGray
         keystoreContentTextView.tintColor = UIColor.black
+        
+        passwordTextField.delegate = self
+        passwordTextField.tag = 0
+        passwordTextField.theme_tintColor = GlobalPicker.textColor
+        passwordTextField.font = FontConfigManager.shared.getLabelFont(size: 17)
+        passwordTextField.placeholder = "Keystore Password"
+        passwordTextField.contentMode = UIViewContentMode.bottom
+        
+        passwordTextFieldUnderline.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+
+        let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
+        scrollViewTap.numberOfTapsRequired = 1
+        view.addGestureRecognizer(scrollViewTap)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func scrollViewTapped() {
+        print("scrollViewTapped")
+        // Hide the keyboard and adjust the position
+        keystoreContentTextView.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -87,17 +110,11 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func pressedUnlockButton(_ sender: Any) {
         print("pressedUnlockButton")
-        ImportWalletUsingKeystoreDataManager.shared.unlockWallet(keystoreStringValue: keystoreContentTextView.text, password: "12345678")
+
+        ImportWalletUsingKeystoreDataManager.shared.unlockWallet(keystoreStringValue: keystoreContentTextView.text, password: passwordTextField.text ?? "")
         
-        if SetupDataManager.shared.hasPresented {
-            self.dismiss(animated: true, completion: {
-                
-            })
-        } else {
-            SetupDataManager.shared.hasPresented = true
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
-        }
+        let viewController = GenerateWalletViewController(setupWalletMethod: .unlock)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
 }

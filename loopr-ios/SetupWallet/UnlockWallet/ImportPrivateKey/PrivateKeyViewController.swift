@@ -95,15 +95,8 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
         print("pressedUnlockButton")
         ImportWalletUsingPrivateKeyDataManager.shared.unlockWallet(privateKey: privateKeyTextView.text)
 
-        if SetupDataManager.shared.hasPresented {
-            self.dismiss(animated: true, completion: {
-                
-            })
-        } else {
-            SetupDataManager.shared.hasPresented = true
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
-        }
+        let viewController = GenerateWalletViewController(setupWalletMethod: .unlock)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
-    
+
 }
