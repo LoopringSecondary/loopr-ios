@@ -70,10 +70,14 @@ class QRCodeViewController: UIViewController {
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
-    func updateNavigationView(tintColor: UIColor, textColor: UIColor) {
+    func updateNavigationView(tintColor: UIColor, textColor: UIColor, statusBarStyle: UIStatusBarStyle) {
         self.navigationController?.navigationBar.barTintColor = tintColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: textColor]
         self.navigationController?.navigationBar.tintColor = textColor
+        
+        // Update the statusBar
+        UIApplication.shared.statusBarStyle = statusBarStyle
+        self.setNeedsStatusBarAppearanceUpdate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,12 +89,12 @@ class QRCodeViewController: UIViewController {
         
         let transformedImage = qrcodeImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
         qrcodeImageView.image = UIImage.init(ciImage: transformedImage)
-        updateNavigationView(tintColor: UIColor.black, textColor: UIColor.white)
+        updateNavigationView(tintColor: UIColor.black, textColor: UIColor.white, statusBarStyle: .lightContent)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        updateNavigationView(tintColor: UIColor.white, textColor: UIColor.black)
+        updateNavigationView(tintColor: UIColor.white, textColor: UIColor.black, statusBarStyle: .default)
     }
     
     @IBAction func pressedShareButton(_ button: UIBarButtonItem) {
