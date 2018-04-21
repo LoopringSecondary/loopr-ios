@@ -81,13 +81,11 @@ class SetupViewController: UIViewController {
         if isCreatingFirstWallet {
             
         } else {
-            button.title = "  Go Back  "
+            button.title = "Go Back"
             button.frame = CGRect(x: 80, y: screenHeight - 47 - 10, width: screenWidth - 80 * 2, height: 47)
-            button.theme_setImage(["Arrow-down-black-bold", "Arrow-down-black-bold"], forState: .normal)
-            button.setImage(UIImage.init(named: "Arrow-down-black-bold")?.alpha(0.3), for: .highlighted)
-            button.semanticContentAttribute = .forceRightToLeft
+            button.setRightImage(imageName: "Arrow-down-black-bold", imagePaddingTop: 3, imagePaddingRight: 5, titlePaddingLeft: 25)
         }
-        
+
         unlockWalletButton.frame = CGRect(x: 15, y: screenHeight - 47 - 63, width: screenWidth - 15 * 2, height: 47)
         generateWalletButton.frame = CGRect(x: 15, y: screenHeight - 47 - 125, width: screenWidth - 15 * 2, height: 47)
     }

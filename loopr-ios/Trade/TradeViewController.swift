@@ -54,13 +54,14 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         
         let originY: CGFloat = 60
         let padding: CGFloat = 15
+        let tokenButtonWidth: CGFloat = 80
         
         // First row: TokenS
 
         tokenSButton.setTitleColor(UIColor.black, for: .normal)
         tokenSButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
         tokenSButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
-        tokenSButton.frame = CGRect(x: screenWidth-55-padding, y: originY, width: 80, height: 40)
+        tokenSButton.frame = CGRect(x: screenWidth-padding-tokenButtonWidth, y: originY, width: tokenButtonWidth, height: 40)
         tokenSButton.addTarget(self, action: #selector(pressedSwitchTokenSButton), for: .touchUpInside)
         scrollView.addSubview(tokenSButton)
         
@@ -86,7 +87,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         
         // Second row: exchange label
         
-        exchangeLabel.text = "Exchange"
+        exchangeLabel.text = NSLocalizedString("Exchange", comment: "")
         exchangeLabel.font = FontConfigManager.shared.getLabelFont()
         exchangeLabel.textAlignment = .center
         exchangeLabel.frame = CGRect(x: (screenWidth-120)*0.5, y: estimateValueInCurrency.frame.maxY + padding*2, width: 120, height: 40)
@@ -97,7 +98,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         tokenBButton.setTitleColor(UIColor.black, for: .normal)
         tokenBButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
         tokenBButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
-        tokenBButton.frame = CGRect(x: screenWidth-55-padding, y: exchangeLabel.frame.maxY + padding*2, width: 80, height: 40)
+        tokenBButton.frame = CGRect(x: screenWidth-padding-tokenButtonWidth, y: exchangeLabel.frame.maxY + padding*2, width: tokenButtonWidth, height: 40)
         tokenBButton.addTarget(self, action: #selector(pressedSwitchTokenBButton), for: .touchUpInside)
         scrollView.addSubview(tokenBButton)
         
@@ -137,7 +138,10 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tokenSButton.setTitle(TradeDataManager.shared.tokenS.symbol, for: .normal)
+        tokenSButton.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingRight: 0, titlePaddingLeft: 0)
+        
         tokenBButton.setTitle(TradeDataManager.shared.tokenB.symbol, for: .normal)
+        tokenBButton.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingRight: 0, titlePaddingLeft: 0)
     }
     
     @objc func scrollViewTapped() {

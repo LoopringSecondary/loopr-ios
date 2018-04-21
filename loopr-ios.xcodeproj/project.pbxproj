@@ -84,6 +84,7 @@
 		AC2D2C092089CB6B00D619AD /* ImportPrivateKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C082089CB6B00D619AD /* ImportPrivateKeyTests.swift */; };
 		AC2D2C0B2089CE1F00D619AD /* ImportWalletUsingKeystoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C0A2089CE1F00D619AD /* ImportWalletUsingKeystoreDataManager.swift */; };
 		AC2D2C0D2089D23E00D619AD /* ImportKeystoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C0C2089D23E00D619AD /* ImportKeystoreTests.swift */; };
+		AC2D2C11208BD1BF00D619AD /* UIButton+AlignedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C10208BD1BF00D619AD /* UIButton+AlignedIcon.swift */; };
 		AC31B93520493FB900B16155 /* SettingLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B93320493FB900B16155 /* SettingLanguageTableViewCell.swift */; };
 		AC31B93620493FB900B16155 /* SettingLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31B93420493FB900B16155 /* SettingLanguageTableViewCell.xib */; };
 		AC31B93A204A4F9000B16155 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B939204A4F9000B16155 /* Language.swift */; };
@@ -615,6 +616,7 @@
 		AC2D2C082089CB6B00D619AD /* ImportPrivateKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportPrivateKeyTests.swift; sourceTree = "<group>"; };
 		AC2D2C0A2089CE1F00D619AD /* ImportWalletUsingKeystoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingKeystoreDataManager.swift; sourceTree = "<group>"; };
 		AC2D2C0C2089D23E00D619AD /* ImportKeystoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportKeystoreTests.swift; sourceTree = "<group>"; };
+		AC2D2C10208BD1BF00D619AD /* UIButton+AlignedIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+AlignedIcon.swift"; sourceTree = "<group>"; };
 		AC31B93320493FB900B16155 /* SettingLanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageTableViewCell.swift; sourceTree = "<group>"; };
 		AC31B93420493FB900B16155 /* SettingLanguageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLanguageTableViewCell.xib; sourceTree = "<group>"; };
 		AC31B939204A4F9000B16155 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
@@ -1699,6 +1701,7 @@
 				ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */,
 				ACB5DD92202C09DC00140A09 /* Interactor.swift */,
 				AC70E84D20683C7500451047 /* IconView.swift */,
+				AC2D2C10208BD1BF00D619AD /* UIButton+AlignedIcon.swift */,
 				AC46F7752069FB4400CFDC40 /* UIButton+RoundButton.swift */,
 				ACB8AD88207F299700B478D6 /* UIViewController+BackButton.swift */,
 			);
@@ -2685,6 +2688,7 @@
 				948952D3205A74BE009B03FE /* Transaction.swift in Sources */,
 				AC38751D205F12F100A76637 /* UIViewController+Extensions.swift in Sources */,
 				940B452B2060F67E00ADE2B9 /* SettingDataManager.swift in Sources */,
+				AC2D2C11208BD1BF00D619AD /* UIButton+AlignedIcon.swift in Sources */,
 				AC952A142053A84800C78562 /* OrderHistoryViewController.swift in Sources */,
 				AC99CF4E2083E4AF000AE4BD /* MnemonicSelectAddressViewController.swift in Sources */,
 				ACE6F72720426BAC0039273D /* SettingThemeModeTableViewCell.swift in Sources */,
