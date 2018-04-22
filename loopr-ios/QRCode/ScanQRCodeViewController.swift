@@ -9,7 +9,21 @@
 import UIKit
 import AVFoundation
 
+protocol QRCodeScanProtocol {
+    func setResultOfScanningQRCode(valueSent: String, type: QRCodeType)
+}
+
+enum QRCodeType: String {
+    case address = "Address"
+    case mnemonic = "Mnemonic"
+    case keystore = "Keystore"
+    case privateKey = "Private Key"
+    case undefined
+}
+
 class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+    
+    var delegate: QRCodeScanProtocol?
     
     @IBOutlet weak var scanView: UIView!
     
@@ -75,16 +89,25 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         // Dispose of any resources that can be recreated.
     }
     
-    func launchApp(decodedURL: String) {
+    override func viewWillDisappear(_ animated: Bool) {
+        captureSession.stopRunning()
+    }
+    
+    func launchApp(decodedURL: String, code_type: QRCodeType) {
         
         if presentedViewController != nil {
             return
         }
         
-        let alertPrompt = UIAlertController(title: "Address detected", message: "\(decodedURL)", preferredStyle: .actionSheet)
+        let alertPrompt = UIAlertController(title: "\(code_type.rawValue) detected", message: "\(decodedURL)", preferredStyle: .actionSheet)
         
-        let cancelAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
         
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { _ in
+            self.delegate?.setResultOfScanningQRCode(valueSent: decodedURL, type: code_type)
+            _ = self.navigationController?.popViewController(animated: true)
+        }
+        alertPrompt.addAction(confirmAction)
         alertPrompt.addAction(cancelAction)
         
         present(alertPrompt, animated: true, completion: nil)
@@ -104,10 +127,64 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             // If the found metadata is equal to the QR code metadata (or barcode) then update the status label's text and set the bounds
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
-            print("got scanned result: \(String(describing: metadataObj.stringValue))")
-            if metadataObj.stringValue != nil && metadataObj.stringValue!.starts(with: "0x") {
-                launchApp(decodedURL: metadataObj.stringValue!)
+            print("detected: \(String(describing: metadataObj.stringValue))")
+        
+            if metadataObj.stringValue != nil {
+                let codeCategory = qrCodeContentDetector(qrContent: metadataObj.stringValue!)
+                launchApp(decodedURL: metadataObj.stringValue!, code_type: codeCategory)
             }
         }
+    }
+    
+    func qrCodeContentDetector (qrContent: String) -> QRCodeType {
+        if qrContent.starts (with: "0x") {
+            return QRCodeType.address
+        } else if isMnemonicValid(mnemonic: qrContent) {
+            return QRCodeType.mnemonic
+        } else if isPrivateKey(key: qrContent) {
+            return QRCodeType.privateKey
+        } else if isKeystore(content: qrContent) {
+            return QRCodeType.keystore
+        }
+        
+        return QRCodeType.undefined
+    }
+    
+    func isMnemonicValid(mnemonic: String) -> Bool {
+        return Mnemonic.isValid(mnemonic)
+    }
+    
+    func isPrivateKey(key: String) -> Bool {
+        
+        let keyContent = key.uppercased()
+        
+        if key_content.count != 64 {
+            return false
+        }
+        
+        for ch in key_content {
+            if (ch >= "0" && ch <= "9") || (ch >= "A" && ch <= "F") {
+                continue
+            }
+            return false
+        }
+        
+        return true
+    }
+    
+    func isKeystore(content: String) -> Bool {
+        
+        let jsonData = content.data(using: String.Encoding.utf8)
+        
+        if let jsonObject = try? JSONSerialization.jsonObject(with: jsonData!, options: []) {
+            if JSONSerialization.isValidJSONObject(jsonObject) {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+
     }
 }
