@@ -75,19 +75,22 @@ class SetupViewController: UIViewController {
         let screenSize: CGRect = UIScreen.main.bounds
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
+
         loopringLogoImageView.frame = CGRect(x: 24, y: 64, width: 136, height: 41)
         taglineLabel.frame = CGRect(x: 24, y: 119, width: screenWidth - 24 * 2, height: 20)
+
+        let bottomPadding: CGFloat = UIDevice.current.iPhoneX ? 30 : 0
         
         if isCreatingFirstWallet {
             
         } else {
             button.title = "Go Back"
-            button.frame = CGRect(x: 80, y: screenHeight - 47 - 10, width: screenWidth - 80 * 2, height: 47)
+            button.frame = CGRect(x: 80, y: screenHeight - bottomPadding - 47 - 10, width: screenWidth - 80 * 2, height: 47)
             button.setRightImage(imageName: "Arrow-down-black-bold", imagePaddingTop: 3, imagePaddingLeft: 5, titlePaddingRight: 10)
         }
 
-        unlockWalletButton.frame = CGRect(x: 15, y: screenHeight - 47 - 63, width: screenWidth - 15 * 2, height: 47)
-        generateWalletButton.frame = CGRect(x: 15, y: screenHeight - 47 - 125, width: screenWidth - 15 * 2, height: 47)
+        unlockWalletButton.frame = CGRect(x: 15, y: screenHeight - bottomPadding - 47 - 63, width: screenWidth - 15 * 2, height: 47)
+        generateWalletButton.frame = CGRect(x: 15, y: screenHeight - bottomPadding - 47 - 125, width: screenWidth - 15 * 2, height: 47)
     }
     
     @objc func pressedButton(_ sender: Any) {

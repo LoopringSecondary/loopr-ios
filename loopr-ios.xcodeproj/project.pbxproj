@@ -79,6 +79,7 @@
 		AC13B30F2055A646008A72C0 /* PlaceOrderConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC13B30D2055A646008A72C0 /* PlaceOrderConfirmationViewController.xib */; };
 		AC13B31220563889008A72C0 /* TradeSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13B31020563889008A72C0 /* TradeSwipeViewController.swift */; };
 		AC13B31320563889008A72C0 /* TradeSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC13B31120563889008A72C0 /* TradeSwipeViewController.xib */; };
+		AC147BEA208D0613008D5104 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC147BE9208D0613008D5104 /* UIDeviceExtension.swift */; };
 		AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */; };
 		AC1E4BBC204B420D00C6B1FA /* KeystoneIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBB204B420D00C6B1FA /* KeystoneIntegrationTests.swift */; };
 		AC1E4BC0204B51AB00C6B1FA /* ImportWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */; };
@@ -617,6 +618,7 @@
 		AC13B30D2055A646008A72C0 /* PlaceOrderConfirmationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceOrderConfirmationViewController.xib; sourceTree = "<group>"; };
 		AC13B31020563889008A72C0 /* TradeSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSwipeViewController.swift; sourceTree = "<group>"; };
 		AC13B31120563889008A72C0 /* TradeSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeSwipeViewController.xib; sourceTree = "<group>"; };
+		AC147BE9208D0613008D5104 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
 		AC1E4BBB204B420D00C6B1FA /* KeystoneIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeystoneIntegrationTests.swift; sourceTree = "<group>"; };
 		AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletTests.swift; sourceTree = "<group>"; };
@@ -1754,6 +1756,7 @@
 				AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */,
 				ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */,
 				94C11FDC208C81D60050E180 /* DoubleExtension.swift */,
+				AC147BE9208D0613008D5104 /* UIDeviceExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2746,6 +2749,7 @@
 				940076B220554A4100DDA37D /* LoopringSocketIORequest.swift in Sources */,
 				C8BF959D202696A900343B9A /* MainTabController.swift in Sources */,
 				ACB911522024254F00F14644 /* WalletNavigationViewController.swift in Sources */,
+				AC147BEA208D0613008D5104 /* UIDeviceExtension.swift in Sources */,
 				AC38751B205F12F100A76637 /* ContextMenu+UIViewControllerTransitioningDelegate.swift in Sources */,
 				940B45252060F67E00ADE2B9 /* UserDefaultsKeys.swift in Sources */,
 				ACB911552024260E00F14644 /* WalletViewController.swift in Sources */,
