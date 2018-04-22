@@ -8,11 +8,13 @@
 
 import UIKit
 
-class UnlockWalletSwipeViewController: SwipeViewController {
+class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
 
     private var types: [UnlockWalletType] = [.mnemonic, .keystore, .privateKey]
     private var viewControllers: [UIViewController] = [MnemonicViewController(), UnlockKeystoreViewController(), PrivateKeyViewController()]
     var options = SwipeViewOptions()
+    
+    var valueFromQRCodeScanning:String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,14 @@ class UnlockWalletSwipeViewController: SwipeViewController {
         let button = UIBarButtonItem(image: UIImage.init(named: "Scan"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.pressScanButton(_:)))
         self.navigationItem.rightBarButtonItem = button
     }
+    
+    func setResultOfScanningQRCode(valueSent: String) {
+//        print("value from QR Controller: \(valueSent)")
+//        let controller = self.viewControllers[2] as! PrivateKeyViewController
+//        controller.privateKeyTextView.text = valueSent
+        print("value from scanning: \(valueSent)")
+        self.valueFromQRCodeScanning = valueSent
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -47,9 +57,20 @@ class UnlockWalletSwipeViewController: SwipeViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if let valueToDisplay = valueFromQRCodeScanning {
+            print("value from QR Controller: \(valueToDisplay)")
+            let controller = self.viewControllers[2] as! PrivateKeyViewController
+            controller.privateKeyTextView.text = valueToDisplay
+            self.swipeView.jump(to: 2, animated: true)
+            self.view.setNeedsDisplay()
+        }
+    }
+    
     @objc func pressScanButton(_ button: UIBarButtonItem) {
         print("pressScanButton")
         let viewController = ScanQRCodeViewController()
+        viewController.delegate = self
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
         
@@ -61,7 +82,6 @@ class UnlockWalletSwipeViewController: SwipeViewController {
     }
     
     override func swipeView(_ swipeView: SwipeView, viewDidSetupAt currentIndex: Int) {
-        // print("did setup SwipeView")
     }
     
     override func swipeView(_ swipeView: SwipeView, willChangeIndexFrom fromIndex: Int, to toIndex: Int) {

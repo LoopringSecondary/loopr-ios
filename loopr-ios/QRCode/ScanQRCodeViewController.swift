@@ -9,7 +9,13 @@
 import UIKit
 import AVFoundation
 
+protocol QRCodeScanProtocol {
+    func setResultOfScanningQRCode(valueSent: String)
+}
+
 class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+    
+    var delegate: QRCodeScanProtocol?
     
     @IBOutlet weak var scanView: UIView!
     
@@ -75,6 +81,10 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        captureSession.stopRunning()
+    }
+    
     func launchApp(decodedURL: String) {
         
         if presentedViewController != nil {
@@ -83,8 +93,13 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         
         let alertPrompt = UIAlertController(title: "Address detected", message: "\(decodedURL)", preferredStyle: .actionSheet)
         
-        let cancelAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
         
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { _ in
+            self.delegate?.setResultOfScanningQRCode(valueSent: decodedURL)
+            _ = self.navigationController?.popViewController(animated: true)
+        }
+        alertPrompt.addAction(confirmAction)
         alertPrompt.addAction(cancelAction)
         
         present(alertPrompt, animated: true, completion: nil)
@@ -104,7 +119,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             // If the found metadata is equal to the QR code metadata (or barcode) then update the status label's text and set the bounds
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
-            print("got scanned result: \(String(describing: metadataObj.stringValue))")
+            print("detected: \(String(describing: metadataObj.stringValue))")
             if metadataObj.stringValue != nil && metadataObj.stringValue!.starts(with: "0x") {
                 launchApp(decodedURL: metadataObj.stringValue!)
             }
