@@ -17,7 +17,7 @@ enum QRCodeType: String {
     case address = "Address"
     case mnemonic = "Mnemonic"
     case keystore = "Keystore"
-    case private_key = "Private Key"
+    case privateKey = "Private Key"
     case undefined
 }
 
@@ -130,20 +130,20 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             print("detected: \(String(describing: metadataObj.stringValue))")
         
             if metadataObj.stringValue != nil {
-                let code_category = qrCodeContentDetector(qr_content: metadataObj.stringValue!)
-                launchApp(decodedURL: metadataObj.stringValue!, code_type: code_category)
+                let codeCategory = qrCodeContentDetector(qrContent: metadataObj.stringValue!)
+                launchApp(decodedURL: metadataObj.stringValue!, code_type: codeCategory)
             }
         }
     }
     
-    func qrCodeContentDetector (qr_content: String) -> QRCodeType {
-        if qr_content.starts (with: "0x") {
+    func qrCodeContentDetector (qrContent: String) -> QRCodeType {
+        if qrContent.starts (with: "0x") {
             return QRCodeType.address
-        } else if isMnemonicValid(mnemonic: qr_content) {
+        } else if isMnemonicValid(mnemonic: qrContent) {
             return QRCodeType.mnemonic
-        } else if isPrivateKey(key: qr_content) {
-            return QRCodeType.private_key
-        } else if isKeystore(content: qr_content) {
+        } else if isPrivateKey(key: qrContent) {
+            return QRCodeType.privateKey
+        } else if isKeystore(content: qrContent) {
             return QRCodeType.keystore
         }
         
@@ -156,7 +156,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     
     func isPrivateKey(key: String) -> Bool {
         
-        let key_content = key.uppercased()
+        let keyContent = key.uppercased()
         
         if key_content.count != 64 {
             return false
