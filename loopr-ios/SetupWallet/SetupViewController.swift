@@ -83,7 +83,7 @@ class SetupViewController: UIViewController {
         } else {
             button.title = "Go Back"
             button.frame = CGRect(x: 80, y: screenHeight - 47 - 10, width: screenWidth - 80 * 2, height: 47)
-            button.setRightImage(imageName: "Arrow-down-black-bold", imagePaddingTop: 3, imagePaddingRight: 5, titlePaddingLeft: 25)
+            button.setRightImage(imageName: "Arrow-down-black-bold", imagePaddingTop: 3, imagePaddingLeft: 5, titlePaddingRight: 10)
         }
 
         unlockWalletButton.frame = CGRect(x: 15, y: screenHeight - 47 - 63, width: screenWidth - 15 * 2, height: 47)

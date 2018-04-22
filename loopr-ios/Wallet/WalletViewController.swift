@@ -106,7 +106,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewWillAppear(animated)
         let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
         button.title = buttonTitle
-        button.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingRight: -20, titlePaddingLeft: 0)
+        button.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 20, titlePaddingRight: 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {

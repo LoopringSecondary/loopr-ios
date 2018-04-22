@@ -54,7 +54,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         
         let originY: CGFloat = 60
         let padding: CGFloat = 15
-        let tokenButtonWidth: CGFloat = 80
+        let tokenButtonWidth: CGFloat = 55
         
         // First row: TokenS
 
@@ -138,10 +138,10 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tokenSButton.setTitle(TradeDataManager.shared.tokenS.symbol, for: .normal)
-        tokenSButton.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingRight: 0, titlePaddingLeft: 0)
+        tokenSButton.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 0)
         
         tokenBButton.setTitle(TradeDataManager.shared.tokenB.symbol, for: .normal)
-        tokenBButton.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingRight: 0, titlePaddingLeft: 0)
+        tokenBButton.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 0)
     }
     
     @objc func scrollViewTapped() {
