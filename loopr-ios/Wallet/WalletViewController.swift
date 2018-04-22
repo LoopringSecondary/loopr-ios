@@ -269,8 +269,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func updateTableView() {
-        // assetTableView.reloadData()
-        self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .fade)
+        if !isLaunching {
+            self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .fade)
+        }
     }
 
 }
