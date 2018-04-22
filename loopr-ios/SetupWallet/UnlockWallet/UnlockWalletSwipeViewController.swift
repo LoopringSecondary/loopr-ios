@@ -49,6 +49,9 @@ class UnlockWalletSwipeViewController: SwipeViewController {
     
     @objc func pressScanButton(_ button: UIBarButtonItem) {
         print("pressScanButton")
+        let viewController = ScanQRCodeViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
         
     }
     
