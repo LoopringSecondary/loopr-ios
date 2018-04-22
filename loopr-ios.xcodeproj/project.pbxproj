@@ -80,6 +80,8 @@
 		AC13B31220563889008A72C0 /* TradeSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13B31020563889008A72C0 /* TradeSwipeViewController.swift */; };
 		AC13B31320563889008A72C0 /* TradeSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC13B31120563889008A72C0 /* TradeSwipeViewController.xib */; };
 		AC147BEA208D0613008D5104 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC147BE9208D0613008D5104 /* UIDeviceExtension.swift */; };
+		AC147BEC208D2E54008D5104 /* ImportWalletError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC147BEB208D2E54008D5104 /* ImportWalletError.swift */; };
+		AC147BEE208D2FD2008D5104 /* ImportWalletProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC147BED208D2FD2008D5104 /* ImportWalletProtocol.swift */; };
 		AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */; };
 		AC1E4BBC204B420D00C6B1FA /* KeystoneIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBB204B420D00C6B1FA /* KeystoneIntegrationTests.swift */; };
 		AC1E4BC0204B51AB00C6B1FA /* ImportWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */; };
@@ -619,6 +621,8 @@
 		AC13B31020563889008A72C0 /* TradeSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSwipeViewController.swift; sourceTree = "<group>"; };
 		AC13B31120563889008A72C0 /* TradeSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeSwipeViewController.xib; sourceTree = "<group>"; };
 		AC147BE9208D0613008D5104 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
+		AC147BEB208D2E54008D5104 /* ImportWalletError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletError.swift; sourceTree = "<group>"; };
+		AC147BED208D2FD2008D5104 /* ImportWalletProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletProtocol.swift; sourceTree = "<group>"; };
 		AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
 		AC1E4BBB204B420D00C6B1FA /* KeystoneIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeystoneIntegrationTests.swift; sourceTree = "<group>"; };
 		AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletTests.swift; sourceTree = "<group>"; };
@@ -1781,6 +1785,8 @@
 				AC99CF482083DF25000AE4BD /* ImportWalletUsingMnemonicDataManager.swift */,
 				AC2D2C0A2089CE1F00D619AD /* ImportWalletUsingKeystoreDataManager.swift */,
 				AC2D2C062089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift */,
+				AC147BED208D2FD2008D5104 /* ImportWalletProtocol.swift */,
+				AC147BEB208D2E54008D5104 /* ImportWalletError.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -2697,6 +2703,7 @@
 				AC5288B5208300580002AEAD /* NetworkingRechabilityManager.swift in Sources */,
 				ACB911662024505D00F14644 /* Trade.swift in Sources */,
 				AC72AEE8204F020B00E9D3B0 /* OrderTradeState.swift in Sources */,
+				AC147BEC208D2E54008D5104 /* ImportWalletError.swift in Sources */,
 				AC0619422085D01E0060F416 /* SearchBarContainerView.swift in Sources */,
 				AC56625B20563C05003C925C /* TradeViewController.swift in Sources */,
 				AC31B95E204A8E4F00B16155 /* Mnemonic.swift in Sources */,
@@ -2731,6 +2738,7 @@
 				ACA677B82079970600D34A2F /* ExportKeystoreSwipeViewController.swift in Sources */,
 				ACA677C42079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.swift in Sources */,
 				ACB911992027F65800F14644 /* LoopringAPIRequest.swift in Sources */,
+				AC147BEE208D2FD2008D5104 /* ImportWalletProtocol.swift in Sources */,
 				ACB5DDA4202D6FC300140A09 /* UIImageExtension.swift in Sources */,
 				AC38751A205F12F100A76637 /* ContextMenu+ContextMenuPresentationControllerDelegate.swift in Sources */,
 				AC31B952204A8DF400B16155 /* Account.swift in Sources */,

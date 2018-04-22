@@ -10,6 +10,7 @@ import Foundation
 
 extension Notification.Name {
     
+    // Socket IO response notifications
     static let balanceResponseReceived = Notification.Name("balanceResponseReceived")
     
     static let priceQuoteResponseReceived = Notification.Name("priceQuoteResponseReceived")
@@ -17,4 +18,7 @@ extension Notification.Name {
     static let tickerResponseReceived = Notification.Name("tickerResponseReceived")
     
     static let trendResponseReceived = Notification.Name("trendResponseReceived")
+    
+    // In-app notifications
+    static let appWalletDidUpdate = Notification.Name("appWalletDidUpdate")
 }

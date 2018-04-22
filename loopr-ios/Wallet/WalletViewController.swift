@@ -69,6 +69,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         button.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
         button.addTarget(self, action: #selector(self.clickNavigationTitleButton(_:)), for: .touchUpInside)
         self.navigationItem.titleView = button
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshData), name: .appWalletDidUpdate, object: nil)
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -77,7 +79,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func getBalanceFromRelay() {
-        CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote() { assets, error in
+        CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote(completionHandler: { _, error in
             print("receive CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote() in WalletViewController")
             guard error == nil else {
                 print("error=\(String(describing: error))")
@@ -99,7 +101,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.assetTableView.reloadData()
                 self.refreshControl.endRefreshing()
             }
-        }
+        })
     }
 
     override func viewWillAppear(_ animated: Bool) {

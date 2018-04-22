@@ -170,17 +170,41 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
 
     @objc func pressedContinueButton(_ sender: Any) {
         print("pressedContinueButton")
-        if setupWalletMethod == .create {
+
+        switch setupWalletMethod {
+        case .create:
             // TODO: Check if walletNameTextField and walletPasswordTextField have valid input.
             GenerateWalletDataManager.shared.setWalletName(walletNameTextField.text!)
             
             let viewController = GenerateWalletConfirmPasswordViewController()
             self.navigationController?.pushViewController(viewController, animated: true)
+            break
+
+        case .importUsingMnemonic:
+            walletNameTextField.resignFirstResponder()
+            ImportWalletUsingMnemonicDataManager.shared.walletName = walletNameTextField.text ?? ""
+            ImportWalletUsingMnemonicDataManager.shared.complete()
+            break
+
+        case .importUsingKeystore:
+            walletNameTextField.resignFirstResponder()
+            ImportWalletUsingKeystoreDataManager.shared.walletName = walletNameTextField.text ?? ""
+            ImportWalletUsingKeystoreDataManager.shared.complete()
+
+        case .importUsingPrivateKey:
+            walletNameTextField.resignFirstResponder()
+            ImportWalletUsingPrivateKeyDataManager.shared.walletName = walletNameTextField.text ?? ""
+            ImportWalletUsingPrivateKeyDataManager.shared.complete()
+            
+        default:
+            break
+        }
+        
+        if setupWalletMethod == .create {
+            
 
         } else {
-            walletNameTextField.resignFirstResponder()
-            ImportWalletUsingMnemonicDataManager.shared.walletName = walletNameTextField.text!
-            ImportWalletUsingMnemonicDataManager.shared.complete()
+            
 
             // Exit the whole importing process
             if SetupDataManager.shared.hasPresented {

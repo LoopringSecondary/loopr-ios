@@ -53,10 +53,14 @@ class CurrentAppWalletDataManager {
         currentAppWallet = appWallet
         
         // Init assets using assetSequence in AppWallet
-        for symbol in currentAppWallet!.assetSequence {
+        for symbol in currentAppWallet!.getAssetSequence() {
             let asset = Asset(symbol: symbol)
             assets.append(asset)
         }
+        
+        // Push a notification
+        NotificationCenter.default.post(name: .appWalletDidUpdate, object: nil)
+
         startGetBalance()
     }
 
@@ -123,8 +127,8 @@ class CurrentAppWalletDataManager {
                     assets[index] = asset
                 } else {
                     assets.append(asset)
-                    if currentAppWallet != nil && currentAppWallet!.assetSequence.index(of: asset.symbol) == nil {
-                        currentAppWallet!.assetSequence.append(asset.symbol)
+                    if currentAppWallet != nil && currentAppWallet!.getAssetSequence().index(of: asset.symbol) == nil {
+                        currentAppWallet!.addAssetSequence(symbol: asset.symbol)
                     }
                 }
 
@@ -133,8 +137,8 @@ class CurrentAppWalletDataManager {
                 } else {
                     if asset.balance > 0.01 {
                         assetsInHideSmallMode.append(asset)
-                        if currentAppWallet != nil && currentAppWallet!.assetSequenceInHideSmallAssets.index(of: asset.symbol) == nil {
-                            currentAppWallet!.assetSequenceInHideSmallAssets.append(asset.symbol)
+                        if currentAppWallet != nil && currentAppWallet!.getAssetSequenceInHideSmallAssets().index(of: asset.symbol) == nil {
+                            currentAppWallet!.addAssetSequenceInHideSmallAssets(symbol: asset.symbol)
                         }
                     }
                 }
@@ -237,6 +241,8 @@ class CurrentAppWalletDataManager {
         guard currentAppWallet != nil else {
             return
         }
+        
+        print("Current address: \(self.currentAppWallet!.address)")
         
         var localAssets: [Asset] = []
 

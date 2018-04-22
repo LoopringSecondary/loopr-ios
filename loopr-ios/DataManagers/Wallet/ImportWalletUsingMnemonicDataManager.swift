@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ImportWalletUsingMnemonicDataManager {
+class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
     
     static let shared = ImportWalletUsingMnemonicDataManager()
 
@@ -21,6 +21,10 @@ class ImportWalletUsingMnemonicDataManager {
     var walletName: String = ""
     
     private init() {
+        
+    }
+    
+    func reset() {
         
     }
 
@@ -58,6 +62,6 @@ class ImportWalletUsingMnemonicDataManager {
     
     func complete() {
         let pathValue = derivationPathValue + "/x"
-        let appWallet = AppWalletDataManager.shared.addWallet(walletName: walletName, mnemonics: mnemonic.components(separatedBy: " "), password: password, derivationPath: pathValue, key: selectedKey)
+        _ = AppWalletDataManager.shared.addWallet(walletName: walletName, mnemonics: mnemonic.components(separatedBy: " "), password: password, derivationPath: pathValue, key: selectedKey)
     }
 }

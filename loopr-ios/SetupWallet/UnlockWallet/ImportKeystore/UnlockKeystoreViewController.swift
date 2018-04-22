@@ -113,7 +113,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
 
         ImportWalletUsingKeystoreDataManager.shared.unlockWallet(keystoreStringValue: keystoreContentTextView.text, password: passwordTextField.text ?? "")
         
-        let viewController = GenerateWalletViewController(setupWalletMethod: .unlock)
+        let viewController = GenerateWalletViewController(setupWalletMethod: .importUsingKeystore)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 

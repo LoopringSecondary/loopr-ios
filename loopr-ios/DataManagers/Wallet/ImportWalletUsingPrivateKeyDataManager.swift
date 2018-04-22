@@ -9,28 +9,53 @@
 import Foundation
 import secp256k1_ios
 
-class ImportWalletUsingPrivateKeyDataManager {
+class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
     
     static let shared = ImportWalletUsingPrivateKeyDataManager()
     
+    var walletName: String
+    
+    // Password is no need
+    final let password: String = ""
+
+    var address: String
+    var privateKey: String
+
     private init() {
-        
+        walletName = ""
+        address = ""
+        privateKey = ""
     }
 
-    // TODO: Use error handling
-    func unlockWallet(privateKey privateKeyString: String) {
-        print("Start to unlock a new wallet using the private key")
-        let privateKeyData = Data(hexString: privateKeyString)!
-        
-        // TODO: move this part to sdk?
-        let pubKey = Secp256k1.shared.pubicKey(from: privateKeyData)
-        let address = KeystoreKey.decodeAddress(from: pubKey)
-        
-        let newAppWallet = AppWallet(address: address.description, privateKey: privateKeyString, password: "123456", name: "Wallet private key", active: true)
-        
-        AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
-        
-        CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
-        print("Finished unlocking a new wallet")
+    func reset() {
+        walletName = ""
+        address = ""
+        privateKey = ""
     }
+
+    func unlockWallet(privateKey privateKeyString: String) throws {
+        print("Start to unlock a new wallet using the private key")
+        let privateKeyData: Data? = Data(hexString: privateKeyString.trim())
+        guard privateKeyData != nil else {
+            throw ImportWalletError.invalidPrivateKey
+        }
+
+        // Store private key
+        privateKey = privateKeyString.trim()
+
+        // TODO: move this part to sdk?
+        let pubKey = Secp256k1.shared.pubicKey(from: privateKeyData!)
+        let keystoreAddress = KeystoreKey.decodeAddress(from: pubKey)
+
+        // Store public key
+        address = keystoreAddress.eip55String
+    }
+    
+    func complete() {
+        let newAppWallet = AppWallet(address: address, privateKey: privateKey, password: password, name: walletName, active: true)
+        AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
+        CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
+        print("Finished unlocking a new wallet in ImportWalletUsingPrivateKeyDataManager")
+    }
+
 }

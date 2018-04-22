@@ -11,6 +11,8 @@ import Foundation
 enum SetupWalletMethod {
 
     case create
-    case unlock
+    case importUsingMnemonic
+    case importUsingKeystore
+    case importUsingPrivateKey
 
 }

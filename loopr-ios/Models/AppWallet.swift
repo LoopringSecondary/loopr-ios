@@ -54,6 +54,27 @@ class AppWallet: NSObject, NSCoding {
         self.assetSequenceInHideSmallAssets = assetSequenceInHideSmallAssets
     }
     
+    // TODO: Not sure whether it's the best way to have getter and setter.
+    func getAssetSequence() -> [String] {
+        return assetSequence
+    }
+
+    func addAssetSequence(symbol: String) {
+        if symbol.trim() != "" {
+            assetSequence.append(symbol)
+        }
+    }
+
+    func getAssetSequenceInHideSmallAssets() -> [String] {
+        return assetSequenceInHideSmallAssets
+    }
+
+    func addAssetSequenceInHideSmallAssets(symbol: String) {
+        if symbol.trim() != "" {
+            assetSequenceInHideSmallAssets.append(symbol)
+        }
+    }
+    
     func getKeystore() -> JSON {
         // TODO: catch error
         let data = Data(hexString: privateKey)!
@@ -88,10 +109,17 @@ class AppWallet: NSObject, NSCoding {
         // TODO: mnemonics vs. mnemonic
         let mnemonics = aDecoder.decodeObject(forKey: "mnemonics") as? [String]
         let assetSequence = aDecoder.decodeObject(forKey: "assetSequence") as? [String] ?? []
+        let filteredAssetSequence = assetSequence.filter { (item) -> Bool in
+            return item.trim() != ""
+        }
+        
         let assetSequenceInHideSmallAssets = aDecoder.decodeObject(forKey: "assetSequenceInHideSmallAssets") as? [String] ?? []
+        let filteredAssetSequenceInHideSmallAssets = assetSequenceInHideSmallAssets.filter { (item) -> Bool in
+            return item.trim() != ""
+        }
         
         if let address = address, let privateKey = privateKey, let password = password, let mnemonics = mnemonics, let name = name {
-            self.init(address: address, privateKey: privateKey, password: password, mnemonics: mnemonics, name: name, active: active, assetSequence: unique(assetSequence), assetSequenceInHideSmallAssets: unique(assetSequenceInHideSmallAssets))
+            self.init(address: address, privateKey: privateKey, password: password, mnemonics: mnemonics, name: name, active: active, assetSequence: unique(filteredAssetSequence), assetSequenceInHideSmallAssets: unique(filteredAssetSequenceInHideSmallAssets))
         } else {
             return nil
         }

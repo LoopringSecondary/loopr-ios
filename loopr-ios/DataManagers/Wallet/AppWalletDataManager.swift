@@ -94,7 +94,7 @@ class AppWalletDataManager {
             walletNameLocal = walletName
         }
 
-        let newAppWallet = AppWallet(address: address.description, privateKey: privateKey.hexString, password: password, mnemonics: mnemonics, name: walletNameLocal, active: true, assetSequence: mnemonics)
+        let newAppWallet = AppWallet(address: address.description, privateKey: privateKey.hexString, password: password, mnemonics: mnemonics, name: walletNameLocal, active: true)
 
         // Update the new app wallet in the local storage.
         updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)

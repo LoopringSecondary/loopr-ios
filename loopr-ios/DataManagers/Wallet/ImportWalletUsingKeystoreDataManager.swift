@@ -9,12 +9,30 @@
 import Foundation
 import secp256k1_ios
 
-class ImportWalletUsingKeystoreDataManager {
-    
+class ImportWalletUsingKeystoreDataManager: ImportWalletProtocol {
+
     static let shared = ImportWalletUsingKeystoreDataManager()
+
+    // Required fields
+    var password: String
     
+    var address: String
+    var privateKey: String
+    
+    var walletName: String
+
     private init() {
-        
+        password = ""
+        address = ""
+        privateKey = ""
+        walletName = ""
+    }
+    
+    func reset() {
+        password = ""
+        address = ""
+        privateKey = ""
+        walletName = ""
     }
     
     // TODO: Use error handling
@@ -50,12 +68,19 @@ class ImportWalletUsingKeystoreDataManager {
         let privateKeyString = privateKeyData.toHexString()
         
         let pubKey = Secp256k1.shared.pubicKey(from: privateKeyData)
-        let address = KeystoreKey.decodeAddress(from: pubKey)
+        let keystoreAddress = KeystoreKey.decodeAddress(from: pubKey)
         
-        let newAppWallet = AppWallet(address: address.description, privateKey: privateKeyString, password: "12345678", name: "Wallet Keystore", active: true)
-        
-        AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
-        
-        CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
+        // Store values
+        self.address = keystoreAddress.eip55String
+        self.privateKey = privateKeyString
+        self.password = password
     }
+    
+    func complete() {
+        let newAppWallet = AppWallet(address: address, privateKey: privateKey, password: password, name: walletName, active: true)
+        AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
+        CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
+        print("Finished unlocking a new wallet in ImportWalletUsingKeystoreDataManager")
+    }
+
 }

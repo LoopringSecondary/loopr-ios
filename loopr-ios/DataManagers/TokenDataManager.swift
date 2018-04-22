@@ -64,7 +64,7 @@ class TokenDataManager {
 
         var unlistedTokens: [Token] = []
         for token in tokens {
-            if !appWallet.assetSequence.contains(token.symbol) {
+            if !appWallet.getAssetSequence().contains(token.symbol) {
                 unlistedTokens.append(token)
             }
         }

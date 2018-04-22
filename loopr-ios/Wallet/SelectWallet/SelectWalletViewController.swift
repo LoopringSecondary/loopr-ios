@@ -79,6 +79,7 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
         
         let defaultAction = UIAlertAction(title: "Confirm", style: .default, handler: { _ in
             CurrentAppWalletDataManager.shared.setCurrentAppWallet(appWallet)
+            self.navigationController?.popViewController(animated: true)
         })
         alertController.addAction(defaultAction)
         
