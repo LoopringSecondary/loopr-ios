@@ -14,6 +14,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var assetTableView: UITableView!
     private let refreshControl = UIRefreshControl()
 
+    var isLaunching: Bool = true
     var isReordering: Bool = false
 
     var contextMenuSourceView: UIView = UIView()
@@ -76,12 +77,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func getBalanceFromRelay() {
-        guard let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet() else {
-            return
-        }
-
-        LoopringAPIRequest.getBalance(owner: wallet.address) { assets, error in
-            print("receive LoopringAPIRequest.getBalance")
+        CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote() { assets, error in
+            print("receive CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote() in WalletViewController")
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 
@@ -94,10 +91,11 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 return
             }
-
-            CurrentAppWalletDataManager.shared.setAssets(newAssets: assets)
-
+            
             DispatchQueue.main.async {
+                if self.isLaunching {
+                    self.isLaunching = false
+                }
                 self.assetTableView.reloadData()
                 self.refreshControl.endRefreshing()
             }
@@ -188,13 +186,16 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // print("receivedBalanceResponseReceivedNotification")
         // TODO: Perform a diff algorithm
         
-        if !isReordering {
+        if !isReordering && !isLaunching {
             print("WalletViewController reload table")
             assetTableView.reloadData()
         }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        if isLaunching {
+            return 1
+        }
         return 2
     }
 
@@ -224,6 +225,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 cell?.delegate = self
             }
             cell?.setup()
+            if isLaunching {
+                cell?.balanceLabel.setText("", animated: false)
+            }
             return cell!
         } else {
             if let spacer = assetTableView.reorder.spacerCell(for: indexPath) {

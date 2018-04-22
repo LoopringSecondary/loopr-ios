@@ -47,6 +47,7 @@ class CurrentAppWalletDataManager {
     }
 
     func setCurrentAppWallet(_ appWallet: AppWallet) {
+        print("setCurrentAppWallet ...")
         let defaults = UserDefaults.standard
         defaults.set(appWallet.privateKey, forKey: UserDefaultsKeys.currentAppWallet.rawValue)
         currentAppWallet = appWallet
@@ -89,17 +90,22 @@ class CurrentAppWalletDataManager {
     }
     
     func setAssets(newAssets: [Asset]) {
-        totalCurrencyValue = 0
-
         let filteredAssets = newAssets.filter { (asset) -> Bool in
-            return asset.symbol != ""
+            return asset.symbol.trim() != ""
+        }
+        
+        // If not assets are in the API response, return early.
+        if filteredAssets.count == 0 {
+            return
         }
 
         let sortedAssets = filteredAssets.sorted { (a, b) -> Bool in
             return a.balance > b.balance
         }
 
+        totalCurrencyValue = 0
         for asset in sortedAssets {
+            // If the price quote is nil, asset won't be updated. Please use getBalanceAndPriceQuote()
             if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
                 
                 let currencyFormatter = NumberFormatter()
@@ -209,12 +215,8 @@ class CurrentAppWalletDataManager {
         })
     }
 
-    // this func should be called every 10 secs when emitted
+    // Socket IO: this func should be called every 10 secs when emitted
     func onBalanceResponse(json: JSON) {
-        
-        print("received balance ...................................")
-        
-        totalCurrencyValue = 0
         let tokensJsons = json["tokens"].arrayValue
 
         let mappedAssets = tokensJsons.map { (subJson) -> Asset in
@@ -223,8 +225,48 @@ class CurrentAppWalletDataManager {
             let asset = Asset(json: subJson)
             return asset
         }
-
+        
         setAssets(newAssets: mappedAssets)
+
+        print("received balance ................................... Assets count: \(mappedAssets.count)")
         NotificationCenter.default.post(name: .balanceResponseReceived, object: nil)
+    }
+    
+    // JSON RPC
+    func getBalanceAndPriceQuote(completionHandler: @escaping (_ assets: [Asset], _ error: Error?) -> Void) {
+        guard currentAppWallet != nil else {
+            return
+        }
+        
+        var localAssets: [Asset] = []
+
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        LoopringAPIRequest.getBalance(owner: self.currentAppWallet!.address) { assets, error in
+            print("receive LoopringAPIRequest.getBalance ...")
+            guard error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            localAssets = assets
+            dispatchGroup.leave()
+        }
+
+        dispatchGroup.enter()
+        LoopringAPIRequest.getPriceQuote(currency: "USD", completionHandler: { (priceQuote, error) in
+            print("receive LoopringAPIRequest.getPriceQuote ....")
+            guard error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            PriceQuoteDataManager.shared.setPriceQuote(newPriceQuote: priceQuote!)
+            dispatchGroup.leave()
+        })
+        
+        dispatchGroup.notify(queue: .main) {
+            print("Both functions complete 👍")
+            self.setAssets(newAssets: localAssets)
+            completionHandler(self.assets, nil)
+        }
     }
 }

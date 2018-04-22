@@ -17,6 +17,10 @@ class PriceQuoteDataManager {
         self.priceQuote = nil
     }
     
+    func setPriceQuote(newPriceQuote: PriceQuote) {
+        priceQuote = newPriceQuote
+    }
+    
     func getPriceQuote() -> PriceQuote? {
         return self.priceQuote ?? nil
     }
@@ -37,7 +41,7 @@ class PriceQuoteDataManager {
         LoopringSocketIORequest.getPriceQuote(currency: currency)
     }
     
-    // this func should be called every 10 secs when emitted
+    // Socket IO: this func should be called every 10 secs when emitted
     func onPriceQuoteResponse(json: JSON) {
         priceQuote = PriceQuote(json: json)
         NotificationCenter.default.post(name: .priceQuoteResponseReceived, object: nil)
