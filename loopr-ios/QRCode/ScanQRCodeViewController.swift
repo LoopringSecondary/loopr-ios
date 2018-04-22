@@ -10,7 +10,15 @@ import UIKit
 import AVFoundation
 
 protocol QRCodeScanProtocol {
-    func setResultOfScanningQRCode(valueSent: String)
+    func setResultOfScanningQRCode(valueSent: String, type: QRCodeType)
+}
+
+enum QRCodeType: String {
+    case address = "Address"
+    case mnemonic = "Mnemonic"
+    case keystore = "Keystore"
+    case private_key = "Private Key"
+    case undefined
 }
 
 class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
@@ -85,18 +93,18 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         captureSession.stopRunning()
     }
     
-    func launchApp(decodedURL: String) {
+    func launchApp(decodedURL: String, code_type: QRCodeType) {
         
         if presentedViewController != nil {
             return
         }
         
-        let alertPrompt = UIAlertController(title: "Address detected", message: "\(decodedURL)", preferredStyle: .actionSheet)
+        let alertPrompt = UIAlertController(title: "\(code_type.rawValue) detected", message: "\(decodedURL)", preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
         
         let confirmAction = UIAlertAction(title: "Confirm", style: .default) { _ in
-            self.delegate?.setResultOfScanningQRCode(valueSent: decodedURL)
+            self.delegate?.setResultOfScanningQRCode(valueSent: decodedURL, type: code_type)
             _ = self.navigationController?.popViewController(animated: true)
         }
         alertPrompt.addAction(confirmAction)
@@ -120,9 +128,63 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
             print("detected: \(String(describing: metadataObj.stringValue))")
-            if metadataObj.stringValue != nil && metadataObj.stringValue!.starts(with: "0x") {
-                launchApp(decodedURL: metadataObj.stringValue!)
+        
+            if metadataObj.stringValue != nil {
+                let code_category = qrCodeContentDetector(qr_content: metadataObj.stringValue!)
+                launchApp(decodedURL: metadataObj.stringValue!, code_type: code_category)
             }
         }
+    }
+    
+    func qrCodeContentDetector (qr_content: String) -> QRCodeType {
+        if qr_content.starts (with: "0x") {
+            return QRCodeType.address
+        } else if isMnemonicValid(mnemonic: qr_content) {
+            return QRCodeType.mnemonic
+        } else if isPrivateKey(key: qr_content) {
+            return QRCodeType.private_key
+        } else if isKeystore(content: qr_content) {
+            return QRCodeType.keystore
+        }
+        
+        return QRCodeType.undefined
+    }
+    
+    func isMnemonicValid(mnemonic: String) -> Bool {
+        return Mnemonic.isValid(mnemonic)
+    }
+    
+    func isPrivateKey(key: String) -> Bool {
+        
+        let key_content = key.uppercased()
+        
+        if key_content.count != 64 {
+            return false
+        }
+        
+        for ch in key_content {
+            if (ch >= "0" && ch <= "9") || (ch >= "A" && ch <= "F") {
+                continue
+            }
+            return false
+        }
+        
+        return true
+    }
+    
+    func isKeystore(content: String) -> Bool {
+        
+        let jsonData = content.data(using: String.Encoding.utf8)
+        
+        if let jsonObject = try? JSONSerialization.jsonObject(with: jsonData!, options: []) {
+            if JSONSerialization.isValidJSONObject(jsonObject) {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+
     }
 }

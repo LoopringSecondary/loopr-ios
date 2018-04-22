@@ -14,7 +14,8 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
     private var viewControllers: [UIViewController] = [MnemonicViewController(), UnlockKeystoreViewController(), PrivateKeyViewController()]
     var options = SwipeViewOptions()
     
-    var valueFromQRCodeScanning:String?
+    var valueFromQRCodeScanning: String?
+    var typeFromQRCodeScanning: QRCodeType?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +40,13 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
         self.navigationItem.rightBarButtonItem = button
     }
     
-    func setResultOfScanningQRCode(valueSent: String) {
+    func setResultOfScanningQRCode(valueSent: String, type: QRCodeType) {
 //        print("value from QR Controller: \(valueSent)")
 //        let controller = self.viewControllers[2] as! PrivateKeyViewController
 //        controller.privateKeyTextView.text = valueSent
         print("value from scanning: \(valueSent)")
         self.valueFromQRCodeScanning = valueSent
+        self.typeFromQRCodeScanning = type
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,10 +61,27 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
     
     override func viewDidAppear(_ animated: Bool) {
         if let valueToDisplay = valueFromQRCodeScanning {
-            print("value from QR Controller: \(valueToDisplay)")
-            let controller = self.viewControllers[2] as! PrivateKeyViewController
-            controller.privateKeyTextView.text = valueToDisplay
-            self.swipeView.jump(to: 2, animated: true)
+
+            if typeFromQRCodeScanning == QRCodeType.private_key {
+                let controller = self.viewControllers[2] as! PrivateKeyViewController
+                controller.privateKeyTextView.text = valueToDisplay
+                self.swipeView.jump(to: 2, animated: true)
+            }
+            else if typeFromQRCodeScanning == QRCodeType.keystore {
+                let controller = self.viewControllers[1] as! UnlockKeystoreViewController
+                controller.keystoreContentTextView.text = valueToDisplay
+                self.swipeView.jump(to: 1, animated: true)
+            }
+            else if typeFromQRCodeScanning == QRCodeType.mnemonic {
+                let controller = self.viewControllers[0] as! MnemonicViewController
+                controller.mnemonicWordTextView.text = valueToDisplay
+                self.swipeView.jump(to: 0, animated: true)
+            }
+            else {
+                showAlert(decodedURL: valueToDisplay)
+                
+            }
+            
             self.view.setNeedsDisplay()
         }
     }
@@ -116,6 +135,16 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
 
         self.addChildViewController(viewController)
         return viewController
+    }
+    
+    func showAlert(decodedURL: String) {
+        let alertPrompt = UIAlertController(title: "QR Code type doesn't fit here", message: "\(decodedURL)", preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+
+        alertPrompt.addAction(cancelAction)
+        
+        present(alertPrompt, animated: true, completion: nil)
     }
 
 }
