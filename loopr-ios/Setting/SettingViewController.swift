@@ -69,6 +69,11 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let viewController = SettingLanguageViewController()
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
+            case 3:
+                print("Setting currency")
+                let viewController = SettingCurrencyViewController()
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
             default:
                 break
             }

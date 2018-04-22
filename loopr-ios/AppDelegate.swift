@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // TODO: check whether it is properly: socket.io must be established befor startxxx method
         LoopringSocketIORequest.setup()
-        PriceQuoteDataManager.shared.startGetPriceQuote("USD")
+        PriceQuoteDataManager.shared.startGetPriceQuote()
         MarketDataManager.shared.startGetTicker()
         
         _ = SettingDataManager.shared.getCurrentLanguage()

@@ -36,9 +36,9 @@ class PriceQuoteDataManager {
         return result
     }
     
-    // MARK: whether stop method is useful?
-    func startGetPriceQuote(_ currency: String) {
-        LoopringSocketIORequest.getPriceQuote(currency: currency)
+    func startGetPriceQuote() {
+        let currency = SettingDataManager.shared.getCurrentCurrency()
+        LoopringSocketIORequest.getPriceQuote(currency: currency.name)
     }
     
     // Socket IO: this func should be called every 10 secs when emitted

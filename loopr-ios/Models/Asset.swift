@@ -54,7 +54,7 @@ class Asset: CustomStringConvertible, Equatable {
         self.balance = 0.0
         
         let currencyFormatter = NumberFormatter()
-        currencyFormatter.locale = NSLocale.current
+        currencyFormatter.locale = Locale.current
         currencyFormatter.usesGroupingSeparator = true
         currencyFormatter.numberStyle = .currency
         let formattedNumber = currencyFormatter.string(from: NSNumber(value: 0)) ?? "\(0)"

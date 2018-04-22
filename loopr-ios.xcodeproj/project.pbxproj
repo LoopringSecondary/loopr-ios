@@ -37,8 +37,14 @@
 		949629DF204E9C9800858F03 /* MinedRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DE204E9C9800858F03 /* MinedRing.swift */; };
 		9498E3EC2075E27E00BC8B4F /* OrderHistorySearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9498E3EA2075E27E00BC8B4F /* OrderHistorySearchResultCell.swift */; };
 		9498E3ED2075E27E00BC8B4F /* OrderHistorySearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9498E3EB2075E27E00BC8B4F /* OrderHistorySearchResultCell.xib */; };
+		94AD1FE5208B910D00C443E6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AD1FE4208B910D00C443E6 /* Currency.swift */; };
 		94B5CA8A204FB4E20081BA93 /* DefaultBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5CA89204FB4E20081BA93 /* DefaultBlock.swift */; };
 		94B5CA8C204FE8E40081BA93 /* ETH_Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5CA8B204FE8E40081BA93 /* ETH_Transaction.swift */; };
+		94C11FD6208C2DC60050E180 /* SettingCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C11FD4208C2DC60050E180 /* SettingCurrencyViewController.swift */; };
+		94C11FD7208C2DC60050E180 /* SettingCurrencyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C11FD5208C2DC60050E180 /* SettingCurrencyViewController.xib */; };
+		94C11FDA208C2DE40050E180 /* SettingCurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C11FD8208C2DE40050E180 /* SettingCurrencyTableViewCell.swift */; };
+		94C11FDB208C2DE40050E180 /* SettingCurrencyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C11FD9208C2DE40050E180 /* SettingCurrencyTableViewCell.xib */; };
+		94C11FDD208C81D60050E180 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C11FDC208C81D60050E180 /* DoubleExtension.swift */; };
 		94C5E79420738ADE0074B939 /* OrderSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5E79220738ADE0074B939 /* OrderSearchViewController.swift */; };
 		94C5E79520738ADE0074B939 /* OrderSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C5E79320738ADE0074B939 /* OrderSearchViewController.xib */; };
 		94C5E79C207394F50074B939 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5E79A207394F40074B939 /* CustomSearchBar.swift */; };
@@ -569,8 +575,14 @@
 		949629DE204E9C9800858F03 /* MinedRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinedRing.swift; sourceTree = "<group>"; };
 		9498E3EA2075E27E00BC8B4F /* OrderHistorySearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistorySearchResultCell.swift; sourceTree = "<group>"; };
 		9498E3EB2075E27E00BC8B4F /* OrderHistorySearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistorySearchResultCell.xib; sourceTree = "<group>"; };
+		94AD1FE4208B910D00C443E6 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		94B5CA89204FB4E20081BA93 /* DefaultBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBlock.swift; sourceTree = "<group>"; };
 		94B5CA8B204FE8E40081BA93 /* ETH_Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETH_Transaction.swift; sourceTree = "<group>"; };
+		94C11FD4208C2DC60050E180 /* SettingCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCurrencyViewController.swift; sourceTree = "<group>"; };
+		94C11FD5208C2DC60050E180 /* SettingCurrencyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCurrencyViewController.xib; sourceTree = "<group>"; };
+		94C11FD8208C2DE40050E180 /* SettingCurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCurrencyTableViewCell.swift; sourceTree = "<group>"; };
+		94C11FD9208C2DE40050E180 /* SettingCurrencyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCurrencyTableViewCell.xib; sourceTree = "<group>"; };
+		94C11FDC208C81D60050E180 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		94C5E79220738ADE0074B939 /* OrderSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSearchViewController.swift; sourceTree = "<group>"; };
 		94C5E79320738ADE0074B939 /* OrderSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderSearchViewController.xib; sourceTree = "<group>"; };
 		94C5E79A207394F40074B939 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
@@ -977,6 +989,17 @@
 				CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		94AD1FDF208B8F5600C443E6 /* SettingCurrency */ = {
+			isa = PBXGroup;
+			children = (
+				94C11FD4208C2DC60050E180 /* SettingCurrencyViewController.swift */,
+				94C11FD5208C2DC60050E180 /* SettingCurrencyViewController.xib */,
+				94C11FD8208C2DE40050E180 /* SettingCurrencyTableViewCell.swift */,
+				94C11FD9208C2DE40050E180 /* SettingCurrencyTableViewCell.xib */,
+			);
+			path = SettingCurrency;
 			sourceTree = "<group>";
 		};
 		94CCE680206BE06C002FFC0D /* Components */ = {
@@ -1730,6 +1753,7 @@
 				AC9280E82030C7440009B574 /* UIColorExtensions.swift */,
 				AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */,
 				ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */,
+				94C11FDC208C81D60050E180 /* DoubleExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1803,6 +1827,7 @@
 				948952D2205A74BE009B03FE /* Transaction.swift */,
 				94DCE550205FAC07005618E4 /* Trend.swift */,
 				ACB97C6F20715BC100775D4C /* MnemonicQuestion.swift */,
+				94AD1FE4208B910D00C443E6 /* Currency.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1846,6 +1871,7 @@
 		ACB9117D2026381A00F14644 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				94AD1FDF208B8F5600C443E6 /* SettingCurrency */,
 				ACB9117E2026385100F14644 /* SettingNavigationViewController.swift */,
 				ACB911822026388700F14644 /* SettingViewController.swift */,
 				ACB911832026388700F14644 /* SettingViewController.xib */,
@@ -2182,6 +2208,7 @@
 				AC54FD61204FC6CA007E1DEB /* Lato-Hairline.ttf in Resources */,
 				AC4C144C204C825900D6B1E2 /* GenerateWalletViewController.xib in Resources */,
 				AC31CEC0205B9C3D00A30335 /* Montserrat-Thin.ttf in Resources */,
+				94C11FD7208C2DC60050E180 /* SettingCurrencyViewController.xib in Resources */,
 				AC72AED9204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib in Resources */,
 				AC375685203A641200AADC60 /* SelectWalletViewController.xib in Resources */,
 				ACB729D1205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.xib in Resources */,
@@ -2224,6 +2251,7 @@
 				AC54FD82204FC6F2007E1DEB /* OpenSans-Light.ttf in Resources */,
 				AC31CE3A205B603A00A30335 /* Linotype-DINNextLTPro-Light.otf in Resources */,
 				ACBA47EB207897C60032C2B4 /* SettingWalletDetailViewController.xib in Resources */,
+				94C11FDB208C2DE40050E180 /* SettingCurrencyTableViewCell.xib in Resources */,
 				AC31CE3D205B603E00A30335 /* Linotype-DINNextLTPro-LightCondensed.otf in Resources */,
 				945800212058FEB500E08DEF /* tokens.json in Resources */,
 				AC54FD5B204FC6C4007E1DEB /* Lato-Bold.ttf in Resources */,
@@ -2550,6 +2578,7 @@
 				AC3756702038D3ED00AADC60 /* UnlockWalletType.swift in Sources */,
 				ACB97C6D20707B6F00775D4C /* AddTokenTableViewCell.swift in Sources */,
 				ACB8AD89207F299700B478D6 /* UIViewController+BackButton.swift in Sources */,
+				94AD1FE5208B910D00C443E6 /* Currency.swift in Sources */,
 				AC5E0DDA203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift in Sources */,
 				94C5E79D207394F50074B939 /* CustomSearchController.swift in Sources */,
 				ACB911842026388700F14644 /* SettingViewController.swift in Sources */,
@@ -2605,6 +2634,7 @@
 				AC13B30A2054A766008A72C0 /* BuyViewController.swift in Sources */,
 				ACB5DDA2202D6F9400140A09 /* UIViewExtension.swift in Sources */,
 				94B5CA8C204FE8E40081BA93 /* ETH_Transaction.swift in Sources */,
+				94C11FDD208C81D60050E180 /* DoubleExtension.swift in Sources */,
 				AC37567C2038D80300AADC60 /* PrivateKeyViewController.swift in Sources */,
 				9475A2EE207EF81300200155 /* OrderDetailViewController.swift in Sources */,
 				AC9280E7202F5A010009B574 /* UIStyleConfig.swift in Sources */,
@@ -2629,6 +2659,7 @@
 				AC2D2C05208882BD00D619AD /* FoundationArray+Extension.swift in Sources */,
 				ACB5DD9E202D5B8D00140A09 /* NumericKeyboardItem.swift in Sources */,
 				949629DF204E9C9800858F03 /* MinedRing.swift in Sources */,
+				94C11FDA208C2DE40050E180 /* SettingCurrencyTableViewCell.swift in Sources */,
 				ACB9119020266EC200F14644 /* AddCustomizedTokenViewController.swift in Sources */,
 				94C5E79C207394F50074B939 /* CustomSearchBar.swift in Sources */,
 				940B45272060F67E00ADE2B9 /* SendAssetDataManager.swift in Sources */,
@@ -2667,6 +2698,7 @@
 				AC56625B20563C05003C925C /* TradeViewController.swift in Sources */,
 				AC31B95E204A8E4F00B16155 /* Mnemonic.swift in Sources */,
 				94C5E79420738ADE0074B939 /* OrderSearchViewController.swift in Sources */,
+				94C11FD6208C2DC60050E180 /* SettingCurrencyViewController.swift in Sources */,
 				ACB8AD87207EE40300B478D6 /* TokenDataManager.swift in Sources */,
 				AC13B31220563889008A72C0 /* TradeSwipeViewController.swift in Sources */,
 				940B451F2060F67E00ADE2B9 /* AppWalletDataManager.swift in Sources */,

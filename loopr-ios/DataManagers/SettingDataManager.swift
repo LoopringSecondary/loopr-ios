@@ -37,12 +37,38 @@ class SettingDataManager {
         if let languageName = defaults.string(forKey: UserDefaultsKeys.currentLanguage.rawValue) {
             return Language(name: languageName)
         }
-
         if let languageName = Bundle.main.preferredLocalizations.first {
             return Language(name: languageName)
         }
-        
         return Language(name: "en")
+    }
+    
+    // MARK: Currency
+    func getSupportedCurrencies() -> [Currency] {
+        let currencyNames = ["CNY", "USD", "HKD"]
+        let currencies = currencyNames.filter ({ (currencyName) -> Bool in
+            return currencyName != "Base"
+        }).map { (name) -> Currency in
+            return Currency(name: name)
+        }
+        return currencies
+    }
+    
+    func setCurrentCurrency(_ currency: Currency) {
+        let defaults = UserDefaults.standard
+        defaults.set(currency.name, forKey: UserDefaultsKeys.currentCurrency.rawValue)
+        PriceQuoteDataManager.shared.startGetPriceQuote()
+    }
+    
+    func getCurrentCurrency() -> Currency {
+        let defaults = UserDefaults.standard
+        if let currencyName = defaults.string(forKey: UserDefaultsKeys.currentCurrency.rawValue) {
+            return Currency(name: currencyName)
+        }
+        if let currencyName = Bundle.main.preferredLocalizations.first {
+            return Currency(name: currencyName)
+        }
+        return Currency(name: "USD")
     }
 
     // MARK: Hide small assets
@@ -58,5 +84,4 @@ class SettingDataManager {
         let defaults = UserDefaults.standard
         defaults.set(showSmallAssets, forKey: UserDefaultsKeys.showSmallAssets.rawValue)
     }
-
 }

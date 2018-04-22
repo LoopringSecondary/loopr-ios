@@ -16,6 +16,7 @@ enum UserDefaultsKeys: String {
     case allSequence = "UserDefaultsKeys.allSequence"
     case lastedThemeIndex = "UserDefaultsKeys.lastedThemeIndex"
     case currentLanguage = "UserDefaultsKeys.currentLanguage"
+    case currentCurrency = "UserDefaultsKeys.currentCurrency"
     case currentFont = "UserDefaultsKeys.currentcurrentFont"
     case showSmallAssets = "UserDefaultsKeys.showSmallAssets"
     case orderHistory = "UserDefaultsKeys.orderHistory"
