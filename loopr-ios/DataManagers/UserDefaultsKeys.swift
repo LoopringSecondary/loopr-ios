@@ -27,6 +27,8 @@ enum UserDefaultsKeys: String {
     // Wallet
     case currentAppWallet = "UserDefaultsKeys.currentAppWallet"
     case appWallets = "UserDefaultsKeys.appWallets"
+    
+    //Settings Bundle
     case app_version = "UserDefaultsKeys.app_version"
     case app_build_number = "UserDefaultsKeys.app_build_number"
 }
