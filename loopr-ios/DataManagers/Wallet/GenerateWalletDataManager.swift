@@ -46,6 +46,10 @@ class GenerateWalletDataManager {
         self.walletName = walletName
     }
     
+    func setPassword(_ password: String) {
+        self.password = password
+    }
+    
     func getMnemonics() -> [String] {
         return mnemonics
     }

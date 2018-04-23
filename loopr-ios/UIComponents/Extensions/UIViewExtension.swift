@@ -80,4 +80,10 @@ extension UIView {
             self.layer.shadowOpacity = newValue
         }
     }
+    
+    // Move view
+    func moveOffset(y: CGFloat) {
+        self.frame = self.frame.offsetBy(dx: 0, dy: y)
+    }
+    
 }

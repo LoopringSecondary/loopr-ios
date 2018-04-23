@@ -17,10 +17,12 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
     // Scrollable UI components
     var walletNameTextField: UITextField = UITextField()
     var walletNameUnderLine: UIView = UIView()
+    var walletNameInfoLabel: UILabel = UILabel()
     
     var walletPasswordTextField: UITextField = UITextField()
     var walletPasswordUnderLine: UIView = UIView()
-    
+    var walletPasswordInfoLabel: UILabel = UILabel()
+
     var continueButton: UIButton = UIButton()
     
     // Keyboard
@@ -78,6 +80,13 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         walletNameUnderLine.frame = CGRect(x: padding, y: walletNameTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
         walletNameUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
         view.addSubview(walletNameUnderLine)
+        
+        walletNameInfoLabel.frame = CGRect(x: padding, y: walletNameUnderLine.frame.maxY + 9, width: screenWidth - padding * 2, height: 16)
+        walletNameInfoLabel.text = "Please enter a wallet name."
+        walletNameInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
+        walletNameInfoLabel.textColor = UIColor.init(rgba: "#F52929")
+        walletNameInfoLabel.alpha = 0.0
+        view.addSubview(walletNameInfoLabel)
 
         walletPasswordTextField.isSecureTextEntry = true
         walletPasswordTextField.delegate = self
@@ -93,6 +102,13 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         walletPasswordUnderLine.frame = CGRect(x: padding, y: walletPasswordTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
         walletPasswordUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
         view.addSubview(walletPasswordUnderLine)
+        
+        walletPasswordInfoLabel.frame = CGRect(x: padding, y: walletPasswordTextField.frame.maxY + 9, width: screenWidth - padding * 2, height: 16)
+        walletPasswordInfoLabel.text = "Please set a password."
+        walletPasswordInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
+        walletPasswordInfoLabel.textColor = UIColor.init(rgba: "#F52929")
+        walletPasswordInfoLabel.alpha = 0.0
+        view.addSubview(walletPasswordInfoLabel)
         
         continueButton.setupRoundBlack()
         continueButton.frame = CGRect(x: padding, y: walletPasswordUnderLine.frame.maxY + 50, width: screenWidth - padding * 2, height: 47)
@@ -132,59 +148,17 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
 
     }
     
-    @objc func scrollViewTapped() {
-        print("scrollViewTapped")
-        
-        // Hide the keyboard and adjust the position
-        walletNameTextField.resignFirstResponder()
-        walletPasswordTextField.resignFirstResponder()
-        
-        if isKeyboardShown {
-            UIView.animate(withDuration: 0.4, animations: {
-                // Wallet Name
-                var walletNameFrame = self.walletNameTextField.frame
-                walletNameFrame.origin.y += self.keyboardOffsetY
-                self.walletNameTextField.frame = walletNameFrame
-                
-                var walletNameUnderlineFrame = self.walletNameUnderLine.frame
-                walletNameUnderlineFrame.origin.y += self.keyboardOffsetY
-                self.walletNameUnderLine.frame = walletNameUnderlineFrame
-                
-                // Wallet Password
-                var walletPasswordFrame = self.walletPasswordTextField.frame
-                walletPasswordFrame.origin.y += self.keyboardOffsetY
-                self.walletPasswordTextField.frame = walletPasswordFrame
-                
-                var walletPasswordUnderLineFrame = self.walletPasswordUnderLine.frame
-                walletPasswordUnderLineFrame.origin.y += self.keyboardOffsetY
-                self.walletPasswordUnderLine.frame = walletPasswordUnderLineFrame
-                
-                // continueButton
-                var continueButtonFrame = self.continueButton.frame
-                continueButtonFrame.origin.y += self.keyboardOffsetY
-                self.continueButton.frame = continueButtonFrame
-            })
-            isKeyboardShown = false
-        }
-    }
-
     @objc func pressedContinueButton(_ sender: Any) {
         print("pressedContinueButton")
 
         switch setupWalletMethod {
         case .create:
-            // TODO: Check if walletNameTextField and walletPasswordTextField have valid input.
-            GenerateWalletDataManager.shared.setWalletName(walletNameTextField.text!)
-            
-            let viewController = GenerateWalletConfirmPasswordViewController()
-            self.navigationController?.pushViewController(viewController, animated: true)
-            break
+            pressedContinueButtonInCreate()
 
         case .importUsingMnemonic:
             walletNameTextField.resignFirstResponder()
             ImportWalletUsingMnemonicDataManager.shared.walletName = walletNameTextField.text ?? ""
             ImportWalletUsingMnemonicDataManager.shared.complete()
-            break
 
         case .importUsingKeystore:
             walletNameTextField.resignFirstResponder()
@@ -195,17 +169,11 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
             walletNameTextField.resignFirstResponder()
             ImportWalletUsingPrivateKeyDataManager.shared.walletName = walletNameTextField.text ?? ""
             ImportWalletUsingPrivateKeyDataManager.shared.complete()
-            
-        default:
-            break
         }
         
         if setupWalletMethod == .create {
             
-
         } else {
-            
-
             // Exit the whole importing process
             if SetupDataManager.shared.hasPresented {
                 self.dismiss(animated: true, completion: {
@@ -219,6 +187,38 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func pressedContinueButtonInCreate() {
+        var validWalletName = true
+        var validPassword = true
+        
+        let walletName = walletNameTextField.text ?? ""
+        if walletName.trim() == "" {
+            validWalletName = false
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveLinear, animations: {
+                self.walletNameInfoLabel.alpha = 1.0
+            }, completion: { (_) in
+                
+            })
+        }
+        
+        let password = walletPasswordTextField.text ?? ""
+        if password.trim() == "" {
+            validPassword = false
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveLinear, animations: {
+                self.walletPasswordInfoLabel.alpha = 1.0
+            }, completion: { (_) in
+                
+            })
+        }
+        
+        if validWalletName && validPassword {
+            GenerateWalletDataManager.shared.setWalletName(walletName)
+            GenerateWalletDataManager.shared.setPassword(password)
+            let viewController = GenerateWalletConfirmPasswordViewController()
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newLength = (textField.text?.utf16.count)! + (string.utf16.count) - range.length
         print("textField shouldChangeCharactersIn \(newLength)")
@@ -226,12 +226,14 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         switch textField.tag {
         case walletNameTextField.tag:
             if newLength > 0 {
+                walletNameInfoLabel.alpha = 0.0
                 walletNameUnderLine.backgroundColor = UIColor.black
             } else {
                 walletNameUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
             }
         case walletPasswordTextField.tag:
             if newLength > 0 {
+                walletPasswordInfoLabel.alpha = 0.0
                 walletPasswordUnderLine.backgroundColor = UIColor.black
             } else {
                 walletPasswordUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
@@ -239,6 +241,32 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         default: ()
         }
         return true
+    }
+
+    @objc func scrollViewTapped() {
+        print("scrollViewTapped")
+        
+        // Hide the keyboard and adjust the position
+        walletNameTextField.resignFirstResponder()
+        walletPasswordTextField.resignFirstResponder()
+        
+        if isKeyboardShown {
+            UIView.animate(withDuration: 0.4, animations: {
+                // Wallet Name
+                self.walletNameTextField.moveOffset(y: self.keyboardOffsetY)
+                self.walletNameUnderLine.moveOffset(y: self.keyboardOffsetY)
+                self.walletNameInfoLabel.moveOffset(y: self.keyboardOffsetY)
+
+                // Wallet Password
+                self.walletPasswordTextField.moveOffset(y: self.keyboardOffsetY)
+                self.walletPasswordUnderLine.moveOffset(y: self.keyboardOffsetY)
+                self.walletPasswordInfoLabel.moveOffset(y: self.keyboardOffsetY)
+
+                // continueButton
+                self.continueButton.moveOffset(y: self.keyboardOffsetY)
+            })
+            isKeyboardShown = false
+        }
     }
 
     @objc func systemKeyboardWillShow(_ notification: Notification) {
@@ -259,27 +287,17 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
                 if keyboardOffsetY > 0 {
                     UIView.animate(withDuration: 1.0, animations: {
                         // Wallet Name
-                        var walletNameFrame = self.walletNameTextField.frame
-                        walletNameFrame.origin.y -= self.keyboardOffsetY
-                        self.walletNameTextField.frame = walletNameFrame
-                        
-                        var walletNameUnderlineFrame = self.walletNameUnderLine.frame
-                        walletNameUnderlineFrame.origin.y -= self.keyboardOffsetY
-                        self.walletNameUnderLine.frame = walletNameUnderlineFrame
+                        self.walletNameTextField.moveOffset(y: -self.keyboardOffsetY)
+                        self.walletNameUnderLine.moveOffset(y: -self.keyboardOffsetY)
+                        self.walletNameInfoLabel.moveOffset(y: -self.keyboardOffsetY)
                         
                         // Wallet Password
-                        var walletPasswordFrame = self.walletPasswordTextField.frame
-                        walletPasswordFrame.origin.y -= self.keyboardOffsetY
-                        self.walletPasswordTextField.frame = walletPasswordFrame
-                        
-                        var walletPasswordUnderLineFrame = self.walletPasswordUnderLine.frame
-                        walletPasswordUnderLineFrame.origin.y -= self.keyboardOffsetY
-                        self.walletPasswordUnderLine.frame = walletPasswordUnderLineFrame
+                        self.walletPasswordTextField.moveOffset(y: -self.keyboardOffsetY)
+                        self.walletPasswordUnderLine.moveOffset(y: -self.keyboardOffsetY)
+                        self.walletPasswordInfoLabel.moveOffset(y: -self.keyboardOffsetY)
                         
                         // continueButton
-                        var continueButtonFrame = self.continueButton.frame
-                        continueButtonFrame.origin.y -= self.keyboardOffsetY
-                        self.continueButton.frame = continueButtonFrame
+                        self.continueButton.moveOffset(y: -self.keyboardOffsetY)
                     })
                     
                     isKeyboardShown = true

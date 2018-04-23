@@ -16,6 +16,7 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
     
     var walletPasswordTextField: UITextField = UITextField()
     var walletPasswordUnderLine: UIView = UIView()
+    var walletPasswordInfoLabel: UILabel = UILabel()
     
     var continueButton: UIButton = UIButton()
 
@@ -66,6 +67,13 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
         walletPasswordUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
         view.addSubview(walletPasswordUnderLine)
         
+        walletPasswordInfoLabel.frame = CGRect(x: padding, y: walletPasswordTextField.frame.maxY + 9, width: screenWidth - padding * 2, height: 16)
+        walletPasswordInfoLabel.text = "Please set a password."
+        walletPasswordInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
+        walletPasswordInfoLabel.textColor = UIColor.init(rgba: "#F52929")
+        walletPasswordInfoLabel.alpha = 0.0
+        view.addSubview(walletPasswordInfoLabel)
+        
         continueButton.setupRoundBlack()
         continueButton.setTitle("Enter Wallet", for: .normal)
         continueButton.frame = CGRect(x: padding, y: walletPasswordUnderLine.frame.maxY + 103, width: screenWidth - padding * 2, height: 47)
@@ -94,7 +102,35 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
 
     @IBAction func pressedContinueButton(_ sender: Any) {
         print("pressedContinueButton")
-        let viewController = GenerateMnemonicViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
+        
+        var validPassword = true
+        
+        let password = walletPasswordTextField.text ?? ""
+        if password.trim() == "" {
+            validPassword = false
+            self.walletPasswordInfoLabel.text = "Please set a password."
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveLinear, animations: {
+                self.walletPasswordInfoLabel.alpha = 1.0
+            }, completion: { (_) in
+                
+            })
+            return
+        }
+        
+        if password != GenerateWalletDataManager.shared.password {
+            validPassword = false
+            self.walletPasswordInfoLabel.text = "Password doesn't match."
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveLinear, animations: {
+                self.walletPasswordInfoLabel.alpha = 1.0
+            }, completion: { (_) in
+                
+            })
+            return
+        }
+
+        if validPassword {
+            let viewController = GenerateMnemonicViewController()
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }
