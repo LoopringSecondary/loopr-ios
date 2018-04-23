@@ -189,15 +189,17 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @objc func balanceResponseReceivedNotification() {
         if !isReordering && !isLaunching {
-            print("WalletViewController reload table")
-            assetTableView.reloadData()
+            print("balanceResponseReceivedNotification WalletViewController reload table")
+            // assetTableView.reloadData()
+            self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
         }
     }
     
     @objc func priceQuoteResponseReceivedNotification() {
         if !isReordering && !isLaunching {
-            print("WalletViewController reload table")
-            assetTableView.reloadData()
+            print("priceQuoteResponseReceivedNotification WalletViewController reload table")
+            // assetTableView.reloadData()
+            self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
         }
     }
     
