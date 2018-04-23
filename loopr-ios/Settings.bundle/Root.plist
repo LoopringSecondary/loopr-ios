@@ -28,7 +28,7 @@
 			<key>Title</key>
 			<string>Build</string>
 			<key>Key</key>
-			<string>build_version</string>
+			<string>app_build_number</string>
 			<key>DefaultValue</key>
 			<string>1</string>
 		</dict>
