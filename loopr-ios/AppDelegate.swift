@@ -30,10 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Themes.restoreLastTheme()
         ThemeManager.animationDuration = 1.0
         
-        // TODO: check whether it is properly: socket.io must be established befor startxxx method
         LoopringSocketIORequest.setup()
         PriceQuoteDataManager.shared.startGetPriceQuote()
-        MarketDataManager.shared.startGetTicker()
         
         _ = SettingDataManager.shared.getCurrentLanguage()
 

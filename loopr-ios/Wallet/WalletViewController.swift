@@ -115,6 +115,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        CurrentAppWalletDataManager.shared.startGetBalance()
         // Add observer.
         NotificationCenter.default.addObserver(self, selector: #selector(balanceResponseReceivedNotification), name: .balanceResponseReceived, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(priceQuoteResponseReceivedNotification), name: .priceQuoteResponseReceived, object: nil)
@@ -122,9 +123,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
-            LoopringSocketIORequest.stopBalance(owner: address)
-        }
+        CurrentAppWalletDataManager.shared.stopGetBalance()
         NotificationCenter.default.removeObserver(self, name: .balanceResponseReceived, object: nil)
         NotificationCenter.default.removeObserver(self, name: .priceQuoteResponseReceived, object: nil)
     }

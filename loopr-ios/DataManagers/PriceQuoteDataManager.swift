@@ -41,6 +41,10 @@ class PriceQuoteDataManager {
         LoopringSocketIORequest.getPriceQuote(currency: currency.name)
     }
     
+    func stopGetPriceQuote() {
+        LoopringSocketIORequest.endPriceQuote()
+    }
+    
     // Socket IO: this func should be called every 10 secs when emitted
     func onPriceQuoteResponse(json: JSON) {
         priceQuote = PriceQuote(json: json)

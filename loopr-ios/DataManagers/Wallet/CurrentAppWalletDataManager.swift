@@ -185,10 +185,7 @@ class CurrentAppWalletDataManager {
     }
     
     func stopGetBalance() {
-        guard let wallet = currentAppWallet else {
-            return
-        }
-        LoopringSocketIORequest.stopBalance(owner: wallet.address)
+        LoopringSocketIORequest.endBalance()
     }
     
     func getTransactionsFromServer(asset: Asset, completionHandler: @escaping (_ transactions: [Transaction], _ error: Error?) -> Void) {
@@ -210,17 +207,12 @@ class CurrentAppWalletDataManager {
     // Socket IO: this func should be called every 10 secs when emitted
     func onBalanceResponse(json: JSON) {
         let tokensJsons = json["tokens"].arrayValue
-
         let mappedAssets = tokensJsons.map { (subJson) -> Asset in
-            // print("CurrentAppWalletDataManager onBalanceResponse")
-            // print(subJson)
             let asset = Asset(json: subJson)
             return asset
         }
-        
         setAssets(newAssets: mappedAssets)
-
-        print("received balance ................................... Assets count: \(mappedAssets.count)")
+        print("received Assets count: \(mappedAssets.count)")
         NotificationCenter.default.post(name: .balanceResponseReceived, object: nil)
     }
     

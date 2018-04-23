@@ -248,13 +248,20 @@ class MarketDataManager {
         updateMarketKeysOnLocal(type: .favorite)
     }
     
-    // TODO: whether stop method is useful? Yes.
     func startGetTicker() {
         LoopringSocketIORequest.getTiker()
     }
     
+    func stopGetTicker() {
+        LoopringSocketIORequest.endTicker()
+    }
+    
     func startGetTrend(market: String, interval: String = "1Hr") {
         LoopringSocketIORequest.getTrend(market: market, interval: interval)
+    }
+    
+    func stopGetTrend() {
+        LoopringSocketIORequest.endTrend()
     }
     
     func onTickerResponse(json: JSON) {

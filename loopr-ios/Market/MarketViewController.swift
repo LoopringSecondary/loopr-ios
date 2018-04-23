@@ -122,12 +122,14 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        MarketDataManager.shared.startGetTicker()
         // Add observer.
         NotificationCenter.default.addObserver(self, selector: #selector(tickerResponseReceivedNotification), name: .tickerResponseReceived, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        MarketDataManager.shared.stopGetTicker()
         NotificationCenter.default.removeObserver(self, name: .tickerResponseReceived, object: nil)
     }
 

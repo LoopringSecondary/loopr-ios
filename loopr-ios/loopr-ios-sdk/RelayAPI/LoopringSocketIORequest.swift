@@ -36,7 +36,6 @@ public class LoopringSocketIORequest {
     static func connect() {
         if socket.status != .connected {
             socket.connect()
-
         }
     }
     
@@ -60,16 +59,10 @@ public class LoopringSocketIORequest {
         }
     }
     
-    static func removeHandler(handler: String) {
-        if self.handlers.keys.contains(handler) {
-            socket.off(handler)
-        }
-    }
-    
     static func getBalance(owner: String) {
         var body: JSON = JSON()
         body["owner"] = JSON(owner)
-        body["contractVersion"] = JSON(RelayAPIConfiguration.delegateAddress)
+        body["delegateAddress"] = JSON(RelayAPIConfiguration.delegateAddress)
         if socket.status != .connected {
             socket.on(clientEvent: .connect) {_, _ in
                 self.socket.emit("balance_req", body.rawString()!)
@@ -79,8 +72,14 @@ public class LoopringSocketIORequest {
         }
     }
 
-    static func stopBalance(owner: String) {
-        removeHandler(handler: "balance_req")
+    static func endBalance() {
+        if socket.status != .connected {
+            socket.on(clientEvent: .connect) {_, _ in
+                self.socket.emit("balance_end")
+            }
+        } else {
+            self.socket.emit("balance_end")
+        }
     }
     
     static func getPriceQuote(currency: String) {
@@ -95,9 +94,19 @@ public class LoopringSocketIORequest {
         }
     }
     
+    static func endPriceQuote() {
+        if socket.status != .connected {
+            socket.on(clientEvent: .connect) {_, _ in
+                self.socket.emit("marketcap_end")
+            }
+        } else {
+            self.socket.emit("marketcap_end")
+        }
+    }
+    
     static func getTiker() {
         var body: JSON = JSON()
-        body["contractVersion"] = JSON(RelayAPIConfiguration.delegateAddress)
+        body["delegateAddress"] = JSON(RelayAPIConfiguration.delegateAddress)
         if socket.status != .connected {
             socket.on(clientEvent: .connect) {_, _ in
                 self.socket.emit("loopringTickers_req", body.rawString()!)
@@ -107,17 +116,36 @@ public class LoopringSocketIORequest {
         }
     }
     
+    static func endTicker() {
+        if socket.status != .connected {
+            socket.on(clientEvent: .connect) {_, _ in
+                self.socket.emit("loopringTickers_end")
+            }
+        } else {
+            self.socket.emit("loopringTickers_end")
+        }
+    }
+    
     static func getTrend(market: String, interval: String) {
         var body: JSON = JSON()
         body["market"] = JSON(market)
         body["interval"] = JSON(interval)
-        self.socket.emit("trends_req", body.rawString()!)
         if socket.status != .connected {
             socket.on(clientEvent: .connect) {_, _ in
                 self.socket.emit("trends_req", body.rawString()!)
             }
         } else {
             self.socket.emit("trends_req", body.rawString()!)
+        }
+    }
+    
+    static func endTrend() {
+        if socket.status != .connected {
+            socket.on(clientEvent: .connect) {_, _ in
+                self.socket.emit("trends_end")
+            }
+        } else {
+            self.socket.emit("trends_end")
         }
     }
 }
