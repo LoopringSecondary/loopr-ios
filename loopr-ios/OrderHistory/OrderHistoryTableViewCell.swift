@@ -46,13 +46,7 @@ class OrderHistoryTableViewCell: UITableViewCell {
         amountLabel.text = balance.description
         let pair = trade.components(separatedBy: "-")
         if let price = price.getPriceBySymbol(of: pair[0]) {
-            // TODO: according to setting currency
-            let currencyFormatter = NumberFormatter()
-            currencyFormatter.locale = NSLocale.current
-            currencyFormatter.usesGroupingSeparator = true
-            currencyFormatter.numberStyle = .currency
-            let formattedNumber = currencyFormatter.string(from: NSNumber(value: price)) ?? "\(price)"
-            displayLabel.text = formattedNumber
+            displayLabel.text = price.currency
         } else {
             displayLabel.text = "--"
         }

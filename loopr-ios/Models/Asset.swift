@@ -53,12 +53,7 @@ class Asset: CustomStringConvertible, Equatable {
         self.rawBalance = "0"
         self.balance = 0.0
         
-        let currencyFormatter = NumberFormatter()
-        currencyFormatter.locale = Locale.current
-        currencyFormatter.usesGroupingSeparator = true
-        currencyFormatter.numberStyle = .currency
-        let formattedNumber = currencyFormatter.string(from: NSNumber(value: 0)) ?? "\(0)"
-        self.display = formattedNumber
+        self.display = Double(0).currency
     }
     
     // TODO: Why precision is 4?

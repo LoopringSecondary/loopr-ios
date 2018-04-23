@@ -43,12 +43,8 @@ class Transaction {
         if let value = Asset.getAmount(of: symbol, from: value) {
             self.value = value.description
             if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: symbol) {
-                let currencyFormatter = NumberFormatter()
-                currencyFormatter.locale = NSLocale.current
-                currencyFormatter.usesGroupingSeparator = true
-                currencyFormatter.numberStyle = .currency
                 let total = price * Double(value)
-                self.display = currencyFormatter.string(from: NSNumber(value: total)) ?? "\(total)"
+                self.display = total.currency
             }
         } else {
             return nil

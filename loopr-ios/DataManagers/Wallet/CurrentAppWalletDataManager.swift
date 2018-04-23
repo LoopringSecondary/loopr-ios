@@ -69,12 +69,7 @@ class CurrentAppWalletDataManager {
     }
     
     func getTotalAssetCurrencyFormmat() -> String {
-        let currencyFormatter = NumberFormatter()
-        currencyFormatter.locale = NSLocale.current
-        currencyFormatter.usesGroupingSeparator = true
-        currencyFormatter.numberStyle = .currency
-        let formattedNumber = currencyFormatter.string(from: NSNumber(value: totalCurrencyValue)) ?? "\(totalCurrencyValue)"
-        return formattedNumber
+        return totalCurrencyValue.currency
     }
 
     func getAssets(enable: Bool? = nil) -> [Asset] {
@@ -111,16 +106,9 @@ class CurrentAppWalletDataManager {
         for asset in sortedAssets {
             // If the price quote is nil, asset won't be updated. Please use getBalanceAndPriceQuote()
             if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
-                
-                let currencyFormatter = NumberFormatter()
-                currencyFormatter.locale = NSLocale.current
-                currencyFormatter.usesGroupingSeparator = true
-                currencyFormatter.numberStyle = .currency
-                let formattedNumber = currencyFormatter.string(from: NSNumber(value: asset.balance * price)) ?? "\(asset.balance * price)"
-                // asset.display = "$ " + String(formattedNumber.dropFirst())
-                asset.display = formattedNumber
-                
-                totalCurrencyValue += asset.balance * price
+                let total = asset.balance * price
+                asset.display = total.currency
+                totalCurrencyValue += total
                 
                 // If the asset is in the array, then replace it.
                 if let index = assets.index(of: asset) {
@@ -257,9 +245,10 @@ class CurrentAppWalletDataManager {
             localAssets = assets
             dispatchGroup.leave()
         }
-
         dispatchGroup.enter()
-        LoopringAPIRequest.getPriceQuote(currency: "USD", completionHandler: { (priceQuote, error) in
+        
+        let currency = SettingDataManager.shared.getCurrentCurrency().name
+        LoopringAPIRequest.getPriceQuote(currency: currency, completionHandler: { (priceQuote, error) in
             print("receive LoopringAPIRequest.getPriceQuote ....")
             guard error == nil else {
                 print("error=\(String(describing: error))")

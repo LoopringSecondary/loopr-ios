@@ -95,26 +95,16 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
             amountInfoLabel.text = order.dealtAmountS.description + " / " + order.originalOrder.amountSell.description + " " + order.originalOrder.tokenS
             totalInfoLabel.text = order.originalOrder.amountBuy.description + " " + order.originalOrder.tokenB
             if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: order.originalOrder.tokenS) {
-                let currencyFormatter = NumberFormatter()
-                currencyFormatter.locale = NSLocale.current
-                currencyFormatter.usesGroupingSeparator = true
-                currencyFormatter.numberStyle = .currency
                 let total = price * order.originalOrder.amountSell
-                let formattedNumber = currencyFormatter.string(from: NSNumber(value: total)) ?? "\(total)"
-                displayLabel.text = formattedNumber
+                displayLabel.text = total.currency
             }
         } else if order.originalOrder.side.lowercased() == "buy" {
             amountLabel.text = order.dealtAmountB.description + " " + order.originalOrder.tokenB
             amountInfoLabel.text = order.dealtAmountB.description + " / " + order.originalOrder.amountBuy.description + " " + order.originalOrder.tokenB
             totalInfoLabel.text = order.originalOrder.amountSell.description + " " + order.originalOrder.tokenS
             if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: order.originalOrder.tokenB) {
-                let currencyFormatter = NumberFormatter()
-                currencyFormatter.locale = NSLocale.current
-                currencyFormatter.usesGroupingSeparator = true
-                currencyFormatter.numberStyle = .currency
                 let total = price * order.originalOrder.amountBuy
-                let formattedNumber = currencyFormatter.string(from: NSNumber(value: total)) ?? "\(total)"
-                displayLabel.text = formattedNumber
+                displayLabel.text = total.currency
             }
         }
         amountLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 40)

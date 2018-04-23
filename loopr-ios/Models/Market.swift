@@ -37,12 +37,7 @@ class Market: Equatable, CustomStringConvertible {
         volumeInPast24 = json["amount"].doubleValue
         
         if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: tradingPair.tradingA) {
-            let currencyFormatter = NumberFormatter()
-            currencyFormatter.locale = NSLocale.current
-            currencyFormatter.usesGroupingSeparator = true
-            currencyFormatter.numberStyle = .currency
-            let formattedNumber = currencyFormatter.string(from: NSNumber(value: price)) ?? "\(price)"
-            display = formattedNumber
+            display = price.currency
         } else {
             return nil
         }

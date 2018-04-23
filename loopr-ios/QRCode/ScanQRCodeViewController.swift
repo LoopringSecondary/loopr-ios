@@ -185,6 +185,5 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         } else {
             return false
         }
-
     }
 }

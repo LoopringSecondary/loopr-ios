@@ -35,8 +35,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.estimatedRowHeight = 0
         assetTableView.estimatedSectionHeaderHeight = 0
         assetTableView.estimatedSectionFooterHeight = 0
-        
-        getBalanceFromRelay()
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         assetTableView.theme_backgroundColor = GlobalPicker.backgroundColor
@@ -71,6 +69,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationItem.titleView = button
         
         NotificationCenter.default.addObserver(self, selector: #selector(refreshData), name: .appWalletDidUpdate, object: nil)
+        
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -106,6 +105,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        getBalanceFromRelay()
+        
         let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
         button.title = buttonTitle
         button.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 20, titlePaddingRight: 0)
@@ -114,7 +116,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // Add observer.
-        NotificationCenter.default.addObserver(self, selector: #selector(receivedBalanceResponseReceivedNotification), name: .balanceResponseReceived, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(balanceResponseReceivedNotification), name: .balanceResponseReceived, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(priceQuoteResponseReceivedNotification), name: .priceQuoteResponseReceived, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -123,6 +126,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             LoopringSocketIORequest.stopBalance(owner: address)
         }
         NotificationCenter.default.removeObserver(self, name: .balanceResponseReceived, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .priceQuoteResponseReceived, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -184,10 +188,14 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         contextMenuSourceView.removeFromSuperview()
     }
     
-    @objc func receivedBalanceResponseReceivedNotification() {
-        // print("receivedBalanceResponseReceivedNotification")
-        // TODO: Perform a diff algorithm
-        
+    @objc func balanceResponseReceivedNotification() {
+        if !isReordering && !isLaunching {
+            print("WalletViewController reload table")
+            assetTableView.reloadData()
+        }
+    }
+    
+    @objc func priceQuoteResponseReceivedNotification() {
         if !isReordering && !isLaunching {
             print("WalletViewController reload table")
             assetTableView.reloadData()
@@ -302,5 +310,4 @@ extension WalletViewController: TableViewReorderDelegate {
         print("tableViewDidFinishReordering")
         isReordering = false
     }
-
 }

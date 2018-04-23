@@ -45,7 +45,7 @@ class SettingDataManager {
     
     // MARK: Currency
     func getSupportedCurrencies() -> [Currency] {
-        let currencyNames = ["CNY", "USD", "HKD"]
+        let currencyNames = ["CNY", "USD"]
         let currencies = currencyNames.filter ({ (currencyName) -> Bool in
             return currencyName != "Base"
         }).map { (name) -> Currency in

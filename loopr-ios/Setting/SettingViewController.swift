@@ -104,7 +104,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 2:
             return createDetailTableCell(title: NSLocalizedString("Language", comment: ""), detailTitle: SettingDataManager.shared.getCurrentLanguage().displayName)
         case 3:
-            return createDetailTableCell(title: "Currency", detailTitle: "USD")
+            return createDetailTableCell(title: NSLocalizedString("Currency", comment: ""), detailTitle: SettingDataManager.shared.getCurrentCurrency().name)
         case 4:
             return createDetailTableCell(title: "Timzone", detailTitle: TimeZone.current.identifier)
         default:
