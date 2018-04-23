@@ -62,7 +62,7 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
     override func viewDidAppear(_ animated: Bool) {
         if let valueToDisplay = valueFromQRCodeScanning {
 
-            if typeFromQRCodeScanning == QRCodeType.private_key {
+            if typeFromQRCodeScanning == QRCodeType.privateKey {
                 let controller = self.viewControllers[2] as! PrivateKeyViewController
                 controller.privateKeyTextView.text = valueToDisplay
                 self.swipeView.jump(to: 2, animated: true)

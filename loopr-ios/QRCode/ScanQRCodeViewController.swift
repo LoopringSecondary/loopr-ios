@@ -93,18 +93,18 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         captureSession.stopRunning()
     }
     
-    func launchApp(decodedURL: String, code_type: QRCodeType) {
+    func launchApp(decodedURL: String, codeType: QRCodeType) {
         
         if presentedViewController != nil {
             return
         }
         
-        let alertPrompt = UIAlertController(title: "\(code_type.rawValue) detected", message: "\(decodedURL)", preferredStyle: .actionSheet)
+        let alertPrompt = UIAlertController(title: "\(codeType.rawValue) detected", message: "\(decodedURL)", preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
         
         let confirmAction = UIAlertAction(title: "Confirm", style: .default) { _ in
-            self.delegate?.setResultOfScanningQRCode(valueSent: decodedURL, type: code_type)
+            self.delegate?.setResultOfScanningQRCode(valueSent: decodedURL, type: codeType)
             _ = self.navigationController?.popViewController(animated: true)
         }
         alertPrompt.addAction(confirmAction)
@@ -131,7 +131,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         
             if metadataObj.stringValue != nil {
                 let codeCategory = qrCodeContentDetector(qrContent: metadataObj.stringValue!)
-                launchApp(decodedURL: metadataObj.stringValue!, code_type: codeCategory)
+                launchApp(decodedURL: metadataObj.stringValue!, codeType: codeCategory)
             }
         }
     }
@@ -158,11 +158,11 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         
         let keyContent = key.uppercased()
         
-        if key_content.count != 64 {
+        if keyContent.count != 64 {
             return false
         }
         
-        for ch in key_content {
+        for ch in keyContent {
             if (ch >= "0" && ch <= "9") || (ch >= "A" && ch <= "F") {
                 continue
             }
