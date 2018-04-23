@@ -64,11 +64,9 @@ class SettingDataManager {
         let defaults = UserDefaults.standard
         if let currencyName = defaults.string(forKey: UserDefaultsKeys.currentCurrency.rawValue) {
             return Currency(name: currencyName)
+        } else {
+            return Currency(name: Locale.current.currencyCode!)
         }
-        if let currencyName = Bundle.main.preferredLocalizations.first {
-            return Currency(name: currencyName)
-        }
-        return Currency(name: "USD")
     }
 
     // MARK: Hide small assets

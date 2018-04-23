@@ -14,7 +14,6 @@ class Market: Equatable, CustomStringConvertible {
     var icon: UIImage?
     var description: String
     final let tradingPair: TradingPair
-    
     var balance: Double
     var display: String
     var volumeInPast24: Double
@@ -36,6 +35,14 @@ class Market: Equatable, CustomStringConvertible {
         balance = json["last"].doubleValue
         volumeInPast24 = json["amount"].doubleValue
         
+        let change = json["change"].stringValue
+        if change.isEmpty || change == "0.00%" {
+            changeInPat24 = "0.00%"
+        } else if change.first! == "+" {
+            changeInPat24 = "↑" + change.dropFirst()
+        } else if change.first! == "-" {
+            changeInPat24 = "↓" + change.dropFirst()
+        }
         if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: tradingPair.tradingA) {
             display = price.currency
         } else {

@@ -19,35 +19,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         FontConfigManager.shared.setup()
-
         AppWalletDataManager.shared.setup()
         CurrentAppWalletDataManager.shared.setup()
-
         if AppWalletDataManager.shared.getWallets().isEmpty {
             self.window?.rootViewController = SetupNavigationController(nibName: nil, bundle: nil)
         }
-        
         Themes.restoreLastTheme()
         ThemeManager.animationDuration = 1.0
         
         LoopringSocketIORequest.setup()
         PriceQuoteDataManager.shared.startGetPriceQuote()
+        MarketDataManager.shared.startGetTicker()
         
         _ = SettingDataManager.shared.getCurrentLanguage()
 
         updateTheme()
         
         let manager = NetworkingReachabilityManager.shared
-        
         manager?.listener = { status in
             print("Network Status Changed: \(status)")
             if status == NetworkReachabilityStatus.notReachable || status == NetworkReachabilityStatus.unknown {
                 self.showNetworkLossBanner()
             }
         }
-        
         // manager?.startListening()
-
         return true
     }
     
