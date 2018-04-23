@@ -19,9 +19,10 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var viewAppear: Bool = false
     var isReordering: Bool = false
     
-    var selectedCellClosure: ((Market) -> Void)?
-    // TODO: searchController conflicts to SwipeViewController.
-    let searchController = UISearchController(searchResultsController: nil)
+    var didSelectRowClosure: ((Market) -> Void)?
+
+    var searchText: String = ""
+    var isFiltering: Bool = false
     var filteredMarkets = [Market]()
     
     // TODO: copy data from MarketDataManager.shared.getMarkets()
@@ -59,15 +60,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         marketTableView.theme_backgroundColor = GlobalPicker.backgroundColor
-        
-        // Setup the Search Controller
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "LRC"
-        searchController.searchBar.tintColor = UIStyleConfig.defaultTintColor
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-        
+
         // Setup the Scope Bar
         // searchController.searchBar.scopeButtonTitles = ["All", "ETH", "LRC", "Other"]
         // searchController.searchBar.delegate = self
@@ -108,13 +101,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func tickerResponseReceivedNotification() {
-        // TODO: Perform a diff algorithm
-//        if self.markets.count == 0 {
-//            self.markets = MarketDataManager.shared.getMarkets(type: type)
-//            marketTableView.reloadData()
-//        }
-        
-        if !isReordering && viewAppear {
+        if !isReordering && viewAppear && !isFiltering {
             print("MarketViewController reload table \(type.description)")
             marketTableView.reloadData()
         }
@@ -138,30 +125,40 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-    func reload() {
+    func reload(isFiltering: Bool, searchText: String) {
         markets = MarketDataManager.shared.getMarkets(type: type)
-        marketTableView.reloadData()
+        
+        self.isFiltering = isFiltering
+        self.searchText = searchText.trim()
+
+        if isFiltering {
+            filterContentForSearchText(self.searchText)
+        } else {
+            marketTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
+        }
+        // marketTableView.reloadData()
+    }
+    
+    func searchTextDidUpdate(searchText: String) {
+        print("searchTextDidUpdate")
+        self.searchText = searchText.trim()
+        if self.searchText != "" {
+            isFiltering = true
+            filterContentForSearchText(self.searchText)
+        } else {
+            isFiltering = false
+            marketTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
+        }
     }
 
     // MARK: - Private instance methods
-    func searchBarIsEmpty() -> Bool {
-        // Returns true if the text is empty or nil
-        return searchController.searchBar.text?.isEmpty ?? true
-    }
-
-    func isFiltering() -> Bool {
-        
-        // TODO
-//        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
-//        return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
-        return false
-    }
     
-    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+    func filterContentForSearchText(_ searchText: String) {
         filteredMarkets = MarketDataManager.shared.getMarkets(type: type).filter({(market: Market) -> Bool in
             return market.tradingPair.tradingA.lowercased().contains(searchText.lowercased()) || market.tradingPair.tradingB.lowercased().contains(searchText.lowercased())
         })
-        marketTableView.reloadData()
+        // marketTableView.reloadData()
+        marketTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -169,7 +166,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltering() {
+        if isFiltering {
             return filteredMarkets.count
         } else {
             return MarketDataManager.shared.getMarkets(type: type).count
@@ -186,7 +183,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell = nib![0] as? MarketTableViewCell
         }
         let market: Market
-        if isFiltering() {
+        if isFiltering {
             market = filteredMarkets[indexPath.row]
         } else {
             market = MarketDataManager.shared.getMarkets(type: type)[indexPath.row]
@@ -198,12 +195,16 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let market = MarketDataManager.shared.getMarkets(type: type)[indexPath.row]
+        if let didSelectRowClosure = self.didSelectRowClosure {
+            didSelectRowClosure(market)
+        }
 
         let marketDetailViewController = MarketDetailViewController()
-        let market = MarketDataManager.shared.getMarkets(type: type)[indexPath.row]
         marketDetailViewController.market = market
         marketDetailViewController.hidesBottomBarWhenPushed = true
-        
+
         self.navigationController?.view.endEditing(true)
         self.navigationController?.pushViewController(marketDetailViewController, animated: true)
     }
@@ -236,22 +237,6 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 }
 
-extension MarketViewController: UISearchBarDelegate {
-    // MARK: - UISearchBar Delegate
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
-    }
-}
-
-extension MarketViewController: UISearchResultsUpdating {
-    // MARK: - UISearchResultsUpdating Delegate
-    func updateSearchResults(for searchController: UISearchController) {
-        // let searchBar = searchController.searchBar
-        // let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
-        filterContentForSearchText(searchController.searchBar.text!)
-    }
-}
-
 extension MarketViewController: TableViewReorderDelegate {
     // MARK: - Reorder Delegate
     func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -259,6 +244,10 @@ extension MarketViewController: TableViewReorderDelegate {
     }
     
     func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {
+        if isFiltering {
+            return false
+        }
+
         if indexPath.row >= 0 {
             return true
         } else {

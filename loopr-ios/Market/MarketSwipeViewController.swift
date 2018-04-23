@@ -13,6 +13,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     private var type: MarketSwipeViewType = .favorite
     private var types: [MarketSwipeViewType] = []
     private var viewControllers: [MarketViewController] = []
+    
     var options = SwipeViewOptions()
     
     let searchBar = UISearchBar()
@@ -48,22 +49,22 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         types = [.favorite, .ETH, .LRC, .all]
         
         let vc0 = MarketViewController(type: .favorite)
-        vc0.selectedCellClosure = { (market) -> Void in
+        vc0.didSelectRowClosure = { (market) -> Void in
             
         }
         
         let vc1 = MarketViewController(type: .ETH)
-        vc1.selectedCellClosure = { (market) -> Void in
+        vc1.didSelectRowClosure = { (market) -> Void in
             
         }
         
         let vc2 = MarketViewController(type: .LRC)
-        vc2.selectedCellClosure = { (market) -> Void in
+        vc2.didSelectRowClosure = { (market) -> Void in
             
         }
         
         let vc3 = MarketViewController(type: .all)
-        vc3.selectedCellClosure = { (market) -> Void in
+        vc3.didSelectRowClosure = { (market) -> Void in
             
         }
         
@@ -118,8 +119,6 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     }
     
     func setupSearchBar() {
-        let searchBar = UISearchBar()
-        
         searchBar.showsCancelButton = false
         searchBar.placeholder = "Search"
         searchBar.delegate = self
@@ -153,9 +152,15 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
 
     override func swipeView(_ swipeView: SwipeView, willChangeIndexFrom fromIndex: Int, to toIndex: Int) {
         // print("will change from item \(fromIndex) to item \(toIndex)")
+        var isFiltering: Bool = false
+        let searchText = searchBar.text ?? ""
+        if searchText.trim() != "" {
+            isFiltering = true
+        }
+
         type = types[toIndex]
         let viewController = viewControllers[toIndex]
-        viewController.reload()
+        viewController.reload(isFiltering: isFiltering, searchText: searchText)
     }
 
     override func swipeView(_ swipeView: SwipeView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
@@ -179,7 +184,9 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
 
     // MARK: - SearchBar Delegate
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("searchBar textDidChange \(searchText)")
+        print("searchBar textDidChange \(searchText) \(self.swipeView.currentIndex)")
+        
+        viewControllers[self.swipeView.currentIndex].searchTextDidUpdate(searchText: searchText)
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
