@@ -1,0 +1,6 @@
+framework module OpenShare {
+  umbrella header "OpenShare-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -19,7 +19,7 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         walletTableView.theme_backgroundColor = GlobalPicker.backgroundColor
         
-        self.navigationItem.title = "Switch Wallet"
+        self.navigationItem.title = NSLocalizedString("Select Wallet", comment: "")
         setBackButton()
         
         let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))

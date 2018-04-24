@@ -2038,6 +2038,7 @@
 				AC798E3D2022B93A0071D477 /* Resources */,
 				0E6AB3A8815786A8DF506C6B /* [CP] Embed Pods Frameworks */,
 				ACE6F714204148080039273D /* ShellScript */,
+				0F25BEF850D5DB909B4AD197 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2056,6 +2057,8 @@
 				AC798E512022B93B0071D477 /* Sources */,
 				AC798E522022B93B0071D477 /* Frameworks */,
 				AC798E532022B93B0071D477 /* Resources */,
+				0092D2FE0661F76CC42F8806 /* [CP] Embed Pods Frameworks */,
+				162EA7C2B5EE1598A0164D25 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2075,6 +2078,8 @@
 				AC798E5C2022B93B0071D477 /* Sources */,
 				AC798E5D2022B93B0071D477 /* Frameworks */,
 				AC798E5E2022B93B0071D477 /* Resources */,
+				78D8BC29D455021B0DA8AB2E /* [CP] Embed Pods Frameworks */,
+				943E080712589EEFDBCDCA47 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2415,6 +2420,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0092D2FE0661F76CC42F8806 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-loopr-iosTests/Pods-loopr-iosTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		0E6AB3A8815786A8DF506C6B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2429,6 +2449,7 @@
 				"${BUILT_PRODUCTS_DIR}/FontBlaster/FontBlaster.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/OpenShare/OpenShare.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -2449,6 +2470,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontBlaster.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -2463,6 +2485,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-loopr-ios/Pods-loopr-ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0F25BEF850D5DB909B4AD197 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-loopr-ios/Pods-loopr-ios-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		162EA7C2B5EE1598A0164D25 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-loopr-iosTests/Pods-loopr-iosTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		43C02025D6707115039922F1 /* [CP] Check Pods Manifest.lock */ = {
@@ -2481,6 +2533,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		78D8BC29D455021B0DA8AB2E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-loopr-iosUITests/Pods-loopr-iosUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		943E080712589EEFDBCDCA47 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-loopr-iosUITests/Pods-loopr-iosUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		ABB64C7113A48ECCBB8BDCE4 /* [CP] Check Pods Manifest.lock */ = {
@@ -2973,7 +3055,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CC7BRASHV4;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2997,7 +3079,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CC7BRASHV4;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
