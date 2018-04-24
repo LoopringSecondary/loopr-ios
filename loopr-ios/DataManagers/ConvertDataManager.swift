@@ -14,8 +14,7 @@ class ConvertDataManager {
     
     var amount: Double
     
-    // TODO: Use mock data
-    private var maxAmount: Double = 96.3236
+    private var maxAmount: Double = 0
     
     private init() {
         amount = 0.0
@@ -29,7 +28,14 @@ class ConvertDataManager {
         print("setup ConvertDataManager")
         
         // Get the available amount
-
+        // Find ETH asset
+        let assets = CurrentAppWalletDataManager.shared.getAssets()
+        let filteredAssets = assets.filter { (asset) -> Bool in
+            return asset.symbol == "ETH"
+        }
+        for ETHAsset in filteredAssets {
+            maxAmount = ETHAsset.balance
+        }
     }
     
     func convert() {
