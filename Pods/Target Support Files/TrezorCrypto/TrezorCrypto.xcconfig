@@ -1,7 +1,7 @@
 CONFIGURATION_BUILD_DIR = ${PODS_CONFIGURATION_BUILD_DIR}/TrezorCrypto
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Geth" "${PODS_ROOT}/Headers/Public/SwiftLint" "${PODS_ROOT}/trezor-crypto" "${PODS_ROOT}/trezor-crypto/aes" "${PODS_ROOT}/trezor-crypto/chacha20poly1305" "${PODS_ROOT}/trezor-crypto/ed25519-donna"
-OTHER_CFLAGS = -O3 -std=c99
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/trezor-crypto" "${PODS_ROOT}/trezor-crypto/aes" "${PODS_ROOT}/trezor-crypto/chacha20poly1305" "${PODS_ROOT}/trezor-crypto/ed25519-donna"
+OTHER_CFLAGS = $(inherited) -O3 -std=c99
 OTHER_LDFLAGS = -l"c"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
@@ -9,4 +9,4 @@ PODS_ROOT = ${SRCROOT}
 PODS_TARGET_SRCROOT = ${PODS_ROOT}/TrezorCrypto
 PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.${PRODUCT_NAME:rfc1034identifier}
 SKIP_INSTALL = YES
-SWIFT_INCLUDE_PATHS = ${PODS_ROOT}
+SWIFT_INCLUDE_PATHS = $(inherited) ${PODS_ROOT}
