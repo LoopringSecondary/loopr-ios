@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Geth
 
 struct GasLimit {
     let type: String
@@ -36,6 +37,7 @@ class SendCurrentAppWalletDataManager {
     }
     
     func getNonce() -> Int64 {
+        getNonceFromServer()
         return self.nonce
     }
     
@@ -71,10 +73,12 @@ class SendCurrentAppWalletDataManager {
                 guard error == nil, let data = data else {
                     return
                 }
-                if data.respond.isHex() {
-                    self.nonce = Int64(data.respond.dropFirst(2), radix: 16)!
-                } else {
-                    self.nonce = Int64(data.respond)!
+                DispatchQueue.main.async {
+                    if data.respond.isHex() {
+                        self.nonce = Int64(data.respond.dropFirst(2), radix: 16)!
+                    } else {
+                        self.nonce = Int64(data.respond)!
+                    }
                 }
             })
         }
@@ -89,5 +93,57 @@ class SendCurrentAppWalletDataManager {
             completion(data!.respond, nil)
         }
     }
-
+    
+    func _transfer(method: String, contractAddress: GethAddress, toAddress: GethAddress, amount: GethBigInt, gasType: String, gasPrice: Int64, completion: @escaping (String?, Error?) -> Void) {
+        // TODO: improve the following code.
+        let currentAppWallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet()
+        guard currentAppWallet != nil else {
+            return
+        }
+        
+        // Get Keystore string value
+        let keystoreStringValue: String = currentAppWallet!.getKeystore().description
+        print(keystoreStringValue)
+        
+        // Create key directory
+        let fileManager = FileManager.default
+        
+        let keyDirectory = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("KeyStoreSendAssetViewController")
+        try? fileManager.removeItem(at: keyDirectory)
+        try? fileManager.createDirectory(at: keyDirectory, withIntermediateDirectories: true, attributes: nil)
+        print(keyDirectory)
+        
+        let walletDirectory = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("WalletSendAssetViewController")
+        try? fileManager.removeItem(at: walletDirectory)
+        try? fileManager.createDirectory(at: walletDirectory, withIntermediateDirectories: true, attributes: nil)
+        print(walletDirectory)
+        
+        // Save the keystore string value to keyDirectory
+        let fileURL = keyDirectory.appendingPathComponent("key.json")
+        try! keystoreStringValue.write(to: fileURL, atomically: false, encoding: .utf8)
+        
+        // let keyStore = try! KeyStore(keyDirectory: keyDirectory, walletDirectory: walletDirectory)
+        print(keyDirectory.absoluteString)
+        let keydir = keyDirectory.absoluteString.replacingOccurrences(of: "file://", with: "", options: .regularExpression)
+        let gethKeystore = GethKeyStore.init(keydir, scryptN: GethLightScryptN, scryptP: GethLightScryptP)!
+        let gethAccount = EthAccountCoordinator.default.launch(keystore: gethKeystore, password: currentAppWallet!.password)
+        print(gethAccount!.getAddress().getHex())
+        
+        // Transfer function
+        let transferFunction = EthFunction(name: method, inputParameters: [toAddress, amount])
+        let encodedTransferFunction = web3swift.encode(transferFunction) // ok here
+        
+        do {
+            let nonce: Int64 = getNonce()
+            let gasLimit: Int64 = getGasLimitByType(type: gasType)!
+            let signedTransaction = web3swift.sign(address: contractAddress, encodedFunctionData: encodedTransferFunction, nonce: nonce, gasLimit: GethNewBigInt(gasLimit), gasPrice: GethNewBigInt(gasPrice), password: currentAppWallet!.password)
+            if let signedTransactionData = try signedTransaction?.encodeRLP() { // also ok here
+                sendTransactionToServer("0x" + signedTransactionData.hexString, completion: completion)
+            } else {
+                print("Failed to sign/encode")
+            }
+        } catch {
+            print("Failed in encoding transaction ")
+        }
+    }
 }

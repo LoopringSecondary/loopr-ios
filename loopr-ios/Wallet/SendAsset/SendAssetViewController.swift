@@ -225,8 +225,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             var error: NSError? = nil
             let toAddress = GethNewAddressFromHex(toAddress, &error)!
             let contractAddress = GethNewAddressFromHex(token.protocol_value, &error)!
-            _transfer(contractAddress: contractAddress, toAddress: toAddress, amount: gethAmount)
-
+            
+            SendCurrentAppWalletDataManager.shared._transfer(method: "transfer", contractAddress: contractAddress, toAddress: toAddress, amount: gethAmount, gasType: gasType, gasPrice: gasPrice, completion: completion)
         } else {
             // TODO: tip in ui
             print("Invalid asset or token")
@@ -304,14 +304,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
 
 extension SendAssetViewController {
 
-    var gasLimit: Int64 {
-        var type = "token_transfer"
-        if let asset = self.asset {
-            if asset.symbol.uppercased() == "ETH" {
-                type = "eth_transfer"
-            }
-        }
-        return SendCurrentAppWalletDataManager.shared.getGasLimitByType(type: type)!
+    var gasType: String {
+        return asset.symbol.uppercased() == "ETH" ? "eth_transfer" : "token_transfer"
     }
     
     var gasPrice: Int64 {
@@ -319,94 +313,28 @@ extension SendAssetViewController {
         return 20000000000
     }
 
-    func getNonce() -> Int64 {
-        return SendCurrentAppWalletDataManager.shared.getNonce()
-    }
-
-    func executeContract(_ signedTransaction: String) {
-        SendCurrentAppWalletDataManager.shared.sendTransactionToServer(signedTransaction) { (txHash, error) in
-            guard error == nil && txHash != nil else {
-                // TODO
-                print("Failed to get valid response from server: \(error!)")
-
-                // Show toast
-                DispatchQueue.main.async {
-                    let notificationTitle = NSLocalizedString("Insufficient funds for gas x price + value", comment: "")
-                    let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
-                    let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-                    let banner = NotificationBanner(attributedTitle: attributeString, style: .danger)
-                    banner.duration = 5
-                    banner.show()
-                }
-                return
-            }
-            print("Result of transfer is \(txHash!)")
-            
+    func completion(_ txHash: String?, _ error: Error?) {
+        guard error == nil && txHash != nil else {
             // Show toast
             DispatchQueue.main.async {
-                let notificationTitle = NSLocalizedString("Success. Result of transfer is \(txHash!)", comment: "")
+                let notificationTitle = NSLocalizedString("Insufficient funds for gas x price + value", comment: "")
                 let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
                 let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-                let banner = NotificationBanner(attributedTitle: attributeString, style: .success)
+                let banner = NotificationBanner(attributedTitle: attributeString, style: .danger)
                 banner.duration = 5
                 banner.show()
             }
-        }
-    }
-
-    func _transfer(contractAddress: GethAddress, toAddress: GethAddress, amount: GethBigInt) {
-        // TODO: improve the following code.
-        let currentAppWallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet()
-        guard currentAppWallet != nil else {
             return
         }
-        
-        // Get Keystore string value
-        let keystoreStringValue: String = currentAppWallet!.getKeystore().description
-        print(keystoreStringValue)
-        
-        // Create key directory
-        let fileManager = FileManager.default
-        
-        let keyDirectory = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("KeyStoreSendAssetViewController")
-        try? fileManager.removeItem(at: keyDirectory)
-        try? fileManager.createDirectory(at: keyDirectory, withIntermediateDirectories: true, attributes: nil)
-        print(keyDirectory)
-        
-        let walletDirectory = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("WalletSendAssetViewController")
-        try? fileManager.removeItem(at: walletDirectory)
-        try? fileManager.createDirectory(at: walletDirectory, withIntermediateDirectories: true, attributes: nil)
-        print(walletDirectory)
-        
-        // Save the keystore string value to keyDirectory
-        let fileURL = keyDirectory.appendingPathComponent("key.json")
-        try! keystoreStringValue.write(to: fileURL, atomically: false, encoding: .utf8)
-        
-        // let keyStore = try! KeyStore(keyDirectory: keyDirectory, walletDirectory: walletDirectory)
-        print(keyDirectory.absoluteString)
-        let keydir = keyDirectory.absoluteString.replacingOccurrences(of: "file://", with: "", options: .regularExpression)
-        let gethKeystore = GethKeyStore.init(keydir, scryptN: GethLightScryptN, scryptP: GethLightScryptP)!
-        let gethAccount = EthAccountCoordinator.default.launch(keystore: gethKeystore, password: currentAppWallet!.password)
-        print(gethAccount!.getAddress().getHex())
-
-        // Transfer function
-        let transferFunction = EthFunction(name: "transfer", inputParameters: [toAddress, amount])
-        let encodedTransferFunction = web3swift.encode(transferFunction) // ok here
-
-        do {
-            let nonce: Int64 = getNonce()
-            let signedTransaction = web3swift.sign(address: contractAddress, encodedFunctionData: encodedTransferFunction, nonce: nonce, gasLimit: GethNewBigInt(gasLimit), gasPrice: GethNewBigInt(gasPrice), password: currentAppWallet!.password)
-            if let signedTransactionData = try signedTransaction?.encodeRLP() { // also ok here
-                
-                let  a = "0x"+signedTransactionData.hexString
-                print(a)
-                
-                executeContract(a)
-            } else {
-                print("Failed to sign/encode")
-            }
-        } catch {
-            print("Failed in encoding transaction ")
+        print("Result of transfer is \(txHash!)")
+        // Show toast
+        DispatchQueue.main.async {
+            let notificationTitle = NSLocalizedString("Success. Result of transfer is \(txHash!)", comment: "")
+            let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
+            let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
+            let banner = NotificationBanner(attributedTitle: attributeString, style: .success)
+            banner.duration = 5
+            banner.show()
         }
     }
 }

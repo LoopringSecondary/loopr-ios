@@ -16,6 +16,8 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     
     @IBOutlet weak var convertButton: UIButton!
     @IBOutlet weak var convertBackgroundView: UIView!
+    
+    var asset: Asset? = nil
 
     var infoLabel: UILabel = UILabel()
 
@@ -180,23 +182,30 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         
     }
     
+    func completion(_ txHash: String?, _ error: Error?) {
+        //        // Show toast
+        //        let notificationTitle = NSLocalizedString("Convert Successfully.", comment: "")
+        //        let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
+        //        let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
+        //        let banner = NotificationBanner(attributedTitle: attributeString, style: .success, colors: NotificationBannerStyle())
+        //        banner.duration = 1.0
+        //        banner.show()
+        //
+        //        // Reset the text field
+        //        amountTextField.text = ""
+        //
+        //        availableLabel.text = "Available \(ConvertDataManager.shared.getMaxAmount()) ETH"
+    }
+    
     @IBAction func pressedConvertButton(_ sender: Any) {
-        print("pressedConvertButton")
-
-        ConvertDataManager.shared.convert()
-
-        // Show toast
-        let notificationTitle = NSLocalizedString("Convert Successfully.", comment: "")
-        let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
-        let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-        let banner = NotificationBanner(attributedTitle: attributeString, style: .success, colors: NotificationBannerStyle())
-        banner.duration = 1.0
-        banner.show()
-        
-        // Reset the text field
-        amountTextField.text = ""
-        
-        availableLabel.text = "Available \(ConvertDataManager.shared.getMaxAmount()) ETH"
+        let amount = Double(amountTextField.text!)
+        if let asset = self.asset {
+            if asset.symbol.uppercased() == "ETH" {
+//                SendCurrentAppWalletDataManager.shared._transfer(method: "withdraw", contractAddress: GethAddress, toAddress: GethAddress, amount: <#T##GethBigInt#>, gasType: "withdraw", gasPrice: <#T##Int64#>, completion: completion)
+            } else if asset.symbol.uppercased() == "WETH" {
+//                SendCurrentAppWalletDataManager.shared._transfer(method: "withdraw", contractAddress: GethAddress, toAddress: GethAddress, amount: <#T##GethBigInt#>, gasType: "withdraw", gasPrice: <#T##Int64#>, completion: completion)
+            }
+        }
     }
 
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemTapped item: NumericKeyboardItem, atPosition position: Position) {

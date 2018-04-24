@@ -114,6 +114,7 @@ class QRCodeViewController: UIViewController {
     @IBAction func pressedSaveToAlbum(_ sender: Any) {
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         print("pressedSaveToAlbum address: \(address)")
+        // TODO
     }
 
 }

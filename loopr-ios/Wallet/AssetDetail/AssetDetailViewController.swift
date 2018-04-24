@@ -112,7 +112,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         self.navigationItem.rightBarButtonItems = [sendBarButton, qrCodeBarButton]
          */
 
-        if let asset = asset, asset.symbol == "ETH" {
+        if let asset = asset, asset.symbol.uppercased() == "ETH" || asset.symbol.uppercased() == "WETH" {
             let convertButton = UIButton()
             convertButton.setTitle("   Convert   ", for: .normal)
             convertButton.setTitleColor(UIColor.black, for: .normal)
@@ -152,6 +152,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     @objc func pressedConvertButton(_ sender: Any) {
         print("pressedConvertButton")
         let viewController = ConvertETHViewController()
+        viewController.asset = asset
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
