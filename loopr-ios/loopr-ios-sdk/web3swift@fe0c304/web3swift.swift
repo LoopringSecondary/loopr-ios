@@ -17,8 +17,8 @@ class Web3swift {
         return EthFunctionEncoder.default.encode(function)
     }
     
-    public func sign(address: GethAddress, encodedFunctionData: Data, nonce: Int64, gasLimit: GethBigInt, gasPrice: GethBigInt) -> GethTransaction? {
-        return EthAccountCoordinator.default.sign(address: address, encodedFunctionData: encodedFunctionData, nonce: nonce, gasLimit: gasLimit, gasPrice: gasPrice)
+    public func sign(address: GethAddress, encodedFunctionData: Data, nonce: Int64, gasLimit: GethBigInt, gasPrice: GethBigInt, password: String? = nil) -> GethTransaction? {
+        return EthAccountCoordinator.default.sign(address: address, encodedFunctionData: encodedFunctionData, nonce: nonce, gasLimit: gasLimit, gasPrice: gasPrice, password: password)
     }
     
     public func sign(message: Data) -> SignatureData? {

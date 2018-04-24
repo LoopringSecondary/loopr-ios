@@ -51,12 +51,12 @@ class Web3SwiftTests: XCTestCase {
         }
     }
     
-    // testKeystore.json and password qwerty will unlock the address 0x7C0C5B3C78f04f4ca42EBFb3cb4EA57D5e549392
+    // testKeystore.json and password 123456 will unlock the address 0x7C0C5B3C78f04f4ca42EBFb3cb4EA57D5e549392
     func testImportWalletUsingKeystore() {
         let currentFile = #file
         let keydir = currentFile.replacingOccurrences(of: "Web3SwiftTests.swift", with: "", options: .regularExpression)
         let keystore = GethKeyStore.init(keydir, scryptN: GethLightScryptN, scryptP: GethLightScryptP)!
-        let gethAccount = EthAccountCoordinator.default.launch(keystore: keystore, password: "qwerty")
+        let gethAccount = EthAccountCoordinator.default.launch(keystore: keystore, password: "123456")
         print(gethAccount!.getAddress().getHex())
         XCTAssertEqual(gethAccount?.getAddress().getHex()!, "0x7C0C5B3C78f04f4ca42EBFb3cb4EA57D5e549392")
     }
@@ -91,7 +91,7 @@ class Web3SwiftTests: XCTestCase {
         // Encoding Transaction
         var addressError: NSError? = nil
         let amountToTransfer = "1"
-        let gethToAccountAddress: GethAddress! = GethNewAddressFromHex("0x39db95b4f60bd75846c46df165d9e854b3cf2b56", &addressError)
+        let gethToAccountAddress: GethAddress! = GethNewAddressFromHex("0x8311804426a24495bd4306daf5f595a443a52e32", &addressError)
         guard let amount = GethBigInt.bigInt(amountToTransfer) else {
             print("Invalid amount")
             return

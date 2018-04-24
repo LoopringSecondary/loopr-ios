@@ -69,6 +69,8 @@ open class EthAccountCoordinator {
     }
     
     open func launch(keystore: GethKeyStore, password: String) -> GethAccount? {
+        
+        
         _keystore = keystore
         let tmp = getAccount(password)
         if tmp == nil {
@@ -216,12 +218,20 @@ open class EthAccountCoordinator {
 
 public extension EthAccountCoordinator {
     
-    public func sign(address: GethAddress, encodedFunctionData: Data, nonce: Int64, gasLimit: GethBigInt, gasPrice: GethBigInt) -> GethTransaction? {
+    public func sign(address: GethAddress, encodedFunctionData: Data, nonce: Int64, gasLimit: GethBigInt, gasPrice: GethBigInt, password newPassword: String? = nil) -> GethTransaction? {
+        let tmpPassword = newPassword == nil ? defaultConfiguration.password : newPassword
+        guard let password = tmpPassword, let keystore = _keystore, let account = _account else {
+            // TODO:- We can return Error here/Throw one
+            print("Create keystore/account first")
+            return nil
+        }
+        /*
         guard let password = defaultConfiguration.password, let keystore = _keystore, let account = _account else {
             // TODO:- We can return Error here/Throw one
             print("Create keystore/account first")
             return nil
         }
+        */
         return Sign.sign(keystore: keystore, account: account, address: address, encodedFunctionData: encodedFunctionData, nonce: nonce, gasLimit: gasLimit, gasPrice: gasPrice, password: password)
     }
     

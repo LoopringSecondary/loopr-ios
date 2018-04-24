@@ -14,7 +14,7 @@ class AppWallet: NSObject, NSCoding {
     final let privateKey: String
 
     // The password used to get the address and the private key when users use mnemonics and keystore.
-    final let password: String
+    final var password: String
     final var mnemonics: [String]
     var keystoreData: Data = Data()
 
@@ -43,7 +43,7 @@ class AppWallet: NSObject, NSCoding {
             return // .failure(KeystoreError.failedToImportPrivateKey)
         }
         do {
-            let key = try KeystoreKey(password: "password", key: data)
+            let key = try KeystoreKey(password: self.password, key: data)
             keystoreData = try JSONEncoder().encode(key)
         } catch {
             
@@ -76,6 +76,10 @@ class AppWallet: NSObject, NSCoding {
     }
     
     func getKeystore() -> JSON {
+        if password == "" {
+            password = "123456"
+        }
+        
         // TODO: catch error
         let data = Data(hexString: privateKey)!
         let key = try! KeystoreKey(password: password, key: data)

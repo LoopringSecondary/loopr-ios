@@ -12,7 +12,7 @@ import NotificationBannerSwift
 
 class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
 
-    var asset: Asset?
+    var asset: Asset!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
@@ -103,7 +103,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         
         amountTextField.delegate = self
         amountTextField.tag = 1
-        amountTextField.inputView = UIView()
+        // amountTextField.inputView = UIView()
         amountTextField.font = FontConfigManager.shared.getLabelFont()
         amountTextField.theme_tintColor = GlobalPicker.textColor
         amountTextField.placeholder = NSLocalizedString("Enter the amount", comment: "")
@@ -122,7 +122,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         
         amountInfoLabel.frame = CGRect(x: padding, y: amountUnderline.frame.maxY, width: screenWidth - padding * 2, height: 40)
         amountInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)
-        amountInfoLabel.text = "$ 319,491.31"
+        amountInfoLabel.text = asset.display
         scrollView.addSubview(amountInfoLabel)
         
         maxButton.title = NSLocalizedString("Max", comment: "")
@@ -142,7 +142,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         transactionFeeAmountLabel.frame = CGRect(x: screenWidth-300-padding, y: maxButton.frame.maxY + padding*2, width: 300, height: 40)
         transactionFeeAmountLabel.font = FontConfigManager.shared.getLabelFont()
         transactionFeeAmountLabel.textAlignment = .right
-        transactionFeeAmountLabel.text = "1.232 LRC = $1.46"
+        transactionFeeAmountLabel.text = "1.232 LRC"
         scrollView.addSubview(transactionFeeAmountLabel)
 
         // Fouth row: Advanced
@@ -183,24 +183,26 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         super.viewWillAppear(animated)
         
         // TODO: Update the transaction fee is needed. in SendCurrentAppWalletDataManager
-        addressTextField.text = "0x2ef680f87989bce2a9f458e450cffd6589b549fa"
+        addressTextField.text = "0x8311804426a24495bd4306daf5f595a443a52e32"
         amountTextField.text = "0.1"
         
-        tokenSymbolLabel.text = asset?.symbol ?? ""
+        tokenSymbolLabel.text = asset.symbol
         
         // TODO: Use mock data
-        tokenTotalAmountLabel.text = "123123.422 \(String(describing: asset!.symbol)) Available"
+        tokenTotalAmountLabel.text = "\(asset.balance.description) \(String(describing: asset.symbol)) Available"
     }
     
     @objc func scrollViewTapped() {
         print("scrollViewTapped")
         
         addressTextField.resignFirstResponder()
-        
+        amountTextField.resignFirstResponder()
+
         hideKeyboard()
     }
 
     @IBAction func pressedSendButton(_ sender: Any) {
+        print("start sending")
         guard let toAddress = addressTextField.text, let amount = amountTextField.text else {
             // TODO: tip in ui
             print("Invalid Entry")
@@ -234,8 +236,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     
     @objc func pressedMaxButton(_ sender: Any) {
         print("pressedMaxButton")
-        amountTextField.text = asset?.balance.description
-        amountInfoLabel.text = "\((asset?.display.description)!)"
+        amountTextField.text = asset.balance.description
+        amountInfoLabel.text = "\((asset.display.description))"
     }
 
     @objc func sliderValueDidChange(_ sender: UISlider!) {
@@ -333,29 +335,67 @@ extension SendAssetViewController {
                     let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
                     let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
                     let banner = NotificationBanner(attributedTitle: attributeString, style: .danger)
-                    banner.duration = 1.5
+                    banner.duration = 5
                     banner.show()
                 }
                 return
             }
             print("Result of transfer is \(txHash!)")
+            
+            // Show toast
+            DispatchQueue.main.async {
+                let notificationTitle = NSLocalizedString("Success. Result of transfer is \(txHash!)", comment: "")
+                let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
+                let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
+                let banner = NotificationBanner(attributedTitle: attributeString, style: .success)
+                banner.duration = 5
+                banner.show()
+            }
         }
     }
 
     func _transfer(contractAddress: GethAddress, toAddress: GethAddress, amount: GethBigInt) {
+        // TODO: improve the following code.
+        let currentAppWallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet()
+        guard currentAppWallet != nil else {
+            return
+        }
         
-        // let _keystore = _createKeystore(configuration.namespace)
+        // Get Keystore string value
+        let keystoreStringValue: String = currentAppWallet!.getKeystore().description
+        print(keystoreStringValue)
+        
+        // Create key directory
+        let fileManager = FileManager.default
+        
+        let keyDirectory = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("KeyStoreSendAssetViewController")
+        try? fileManager.removeItem(at: keyDirectory)
+        try? fileManager.createDirectory(at: keyDirectory, withIntermediateDirectories: true, attributes: nil)
+        print(keyDirectory)
+        
+        let walletDirectory = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("WalletSendAssetViewController")
+        try? fileManager.removeItem(at: walletDirectory)
+        try? fileManager.createDirectory(at: walletDirectory, withIntermediateDirectories: true, attributes: nil)
+        print(walletDirectory)
+        
+        // Save the keystore string value to keyDirectory
+        let fileURL = keyDirectory.appendingPathComponent("key.json")
+        try! keystoreStringValue.write(to: fileURL, atomically: false, encoding: .utf8)
+        
+        // let keyStore = try! KeyStore(keyDirectory: keyDirectory, walletDirectory: walletDirectory)
+        print(keyDirectory.absoluteString)
+        let keydir = keyDirectory.absoluteString.replacingOccurrences(of: "file://", with: "", options: .regularExpression)
+        let gethKeystore = GethKeyStore.init(keydir, scryptN: GethLightScryptN, scryptP: GethLightScryptP)!
+        let gethAccount = EthAccountCoordinator.default.launch(keystore: gethKeystore, password: currentAppWallet!.password)
+        print(gethAccount!.getAddress().getHex())
 
-        // TODO: Have to create a wallet using EthAccountCoordinator. It will be used in web3swift.sign()
-        let configuration = EthAccountConfiguration(namespace: "wallet", password: "password")
-        let (_, _) = EthAccountCoordinator.default.launch(configuration)
-        
+        // Transfer function
         let transferFunction = EthFunction(name: "transfer", inputParameters: [toAddress, amount])
         let encodedTransferFunction = web3swift.encode(transferFunction) // ok here
 
         do {
             let nonce: Int64 = getNonce()
-            let signedTransaction = web3swift.sign(address: contractAddress, encodedFunctionData: encodedTransferFunction, nonce: nonce, gasLimit: GethNewBigInt(gasLimit), gasPrice: GethNewBigInt(gasPrice))
+            let signedTransaction = web3swift.sign(address: contractAddress, encodedFunctionData: encodedTransferFunction, nonce: nonce, gasLimit: GethNewBigInt(gasLimit), gasPrice: GethNewBigInt(gasPrice), password: currentAppWallet!.password)
             if let signedTransactionData = try signedTransaction?.encodeRLP() { // also ok here
                 
                 let  a = "0x"+signedTransactionData.hexString
