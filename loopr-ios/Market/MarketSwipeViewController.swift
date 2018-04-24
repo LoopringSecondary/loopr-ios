@@ -160,7 +160,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
 
         type = types[toIndex]
         let viewController = viewControllers[toIndex]
-        viewController.reload(isFiltering: isFiltering, searchText: searchText)
+        // viewController.reload(isFiltering: isFiltering, searchText: searchText)
     }
 
     override func swipeView(_ swipeView: SwipeView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
