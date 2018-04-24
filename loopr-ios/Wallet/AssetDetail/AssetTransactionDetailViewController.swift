@@ -25,12 +25,12 @@ class AssetTransactionDetailViewController: UIViewController {
     
     // Row 2
     var label3 = UILabel()
-    var label4 = UILabel()
+    var button1 = UIButton()
     var row2Underline = UIView()
     
     // Row 3
     var label5 = UILabel()
-    var label6 = UILabel()
+    var button2 = UIButton()
     var row3Underline = UIView()
     
     // Row 4
@@ -87,13 +87,14 @@ class AssetTransactionDetailViewController: UIViewController {
         label3.frame = CGRect(x: padding, y: row1Underline.frame.maxY + padding, width: 80, height: labelHeight)
         view.addSubview(label3)
         
-        label4.theme_textColor = GlobalPicker.textColor
-        label4.textAlignment = .right
-        label4.font = FontConfigManager.shared.getLabelFont(size: 14)
-        // label 4 may
-        label4.frame = CGRect(x: padding + 80, y: row1Underline.frame.maxY + padding, width: screenWidth-80-2*padding, height: labelHeight)
-        view.addSubview(label4)
-
+        button1.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
+        button1.setTitleColor(UIColor.init(rgba: "#cce9ff"), for: .highlighted)
+        button1.titleLabel?.font = FontConfigManager.shared.getLabelFont(size: 14)
+        button1.contentHorizontalAlignment = .right
+        button1.frame = CGRect(x: padding + 80, y: row1Underline.frame.maxY + padding, width: screenWidth - 80 - 2 * padding, height: labelHeight)
+        button1.addTarget(self, action: #selector(self.pressedButton1(_:)), for: UIControlEvents.touchUpInside)
+        view.addSubview(button1)
+        
         row2Underline.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         row2Underline.frame = CGRect(x: padding, y: label3.frame.maxY, width: screenWidth - 2*padding, height: 0.5)
         view.addSubview(row2Underline)
@@ -105,11 +106,13 @@ class AssetTransactionDetailViewController: UIViewController {
         label5.frame = CGRect(x: padding, y: row2Underline.frame.maxY + padding, width: 80, height: labelHeight)
         view.addSubview(label5)
         
-        label6.theme_textColor = GlobalPicker.textColor
-        label6.textAlignment = .right
-        label6.font = FontConfigManager.shared.getLabelFont(size: 14)
-        label6.frame = CGRect(x: padding + 80, y: row2Underline.frame.maxY + padding, width: screenWidth-80-2*padding, height: labelHeight)
-        view.addSubview(label6)
+        button2.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
+        button2.setTitleColor(UIColor.init(rgba: "#cce9ff"), for: .highlighted)
+        button2.titleLabel?.font = FontConfigManager.shared.getLabelFont(size: 14)
+        button2.contentHorizontalAlignment = .right
+        button2.frame = CGRect(x: padding + 80, y: row2Underline.frame.maxY + padding, width: screenWidth-80-2*padding, height: labelHeight)
+        button2.addTarget(self, action: #selector(self.pressedButton2(_:)), for: UIControlEvents.touchUpInside)
+        view.addSubview(button2)
 
         row3Underline.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         row3Underline.frame = CGRect(x: padding, y: label5.frame.maxY, width: screenWidth - 2*padding, height: 0.5)
@@ -141,6 +144,30 @@ class AssetTransactionDetailViewController: UIViewController {
         amountInCurrencyLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
     }
     
+    @objc func pressedButton1(_ sender: Any) {
+        var etherUrl = "https://etherscan.io/address/"
+        if let tx = self.transaction {
+            if tx.type == .sent {
+                etherUrl += tx.to
+            } else if tx.type == .received {
+                etherUrl += tx.from
+            }
+        }
+        if let url = URL(string: etherUrl) {
+            UIApplication.shared.open(url, options: [:])
+        }
+    }
+    
+    @objc func pressedButton2(_ sender: Any) {
+        var etherUrl = "https://etherscan.io/tx/"
+        if let tx = self.transaction {
+            etherUrl += tx.txHash
+        }
+        if let url = URL(string: etherUrl) {
+            UIApplication.shared.open(url, options: [:])
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -155,20 +182,22 @@ class AssetTransactionDetailViewController: UIViewController {
             switch transaction.type {
             case .received:
                 label3.text = "From"
-                label4.text = transaction.from
+                button1.title = transaction.from
             case .sent:
                 label3.text = "To"
-                label4.text = transaction.to
+                button1.title = transaction.to
             case .approved:
                 amountLabel.isHidden = true
                 amountInCurrencyLabel.isHidden = true
                 label3.text = transaction.type.description
-                label4.text = transaction.status.description
+                button1.title = transaction.status.description
+                button1.titleColor = UIColor.black
             default:
                 label3.text = transaction.type.description
-                label4.text = transaction.status.description
+                button1.title = transaction.status.description
+                button1.titleColor = UIColor.black
             }
-            label6.text = transaction.txHash
+            button2.title = transaction.txHash
             label8.text = transaction.updateTime
         }
     }
