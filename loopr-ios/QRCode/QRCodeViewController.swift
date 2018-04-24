@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Social
 
 class QRCodeViewController: UIViewController {
     
@@ -98,7 +99,10 @@ class QRCodeViewController: UIViewController {
     }
     
     @IBAction func pressedShareButton(_ button: UIBarButtonItem) {
-        // TODO: check this button is for what
+        let objectsToShare: [Any] = ["textToShare", UIImage(ciImage: qrcodeImage)]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        self.present(activityVC, animated: true, completion: nil)
     }
 
     @IBAction func pressedCopyAddressButton(_ sender: Any) {

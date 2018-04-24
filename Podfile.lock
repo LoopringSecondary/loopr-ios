@@ -13,7 +13,6 @@ PODS:
   - NotificationBannerSwift (1.6.2):
     - MarqueeLabel/Swift
     - SnapKit (~> 4.0)
-  - OpenShare (0.0.1)
   - pop (1.0.10)
   - PopupDialog (0.7.1):
     - DynamicBlurView (~> 2.0)
@@ -35,7 +34,6 @@ DEPENDENCIES:
   - Geth
   - lottie-ios
   - NotificationBannerSwift
-  - OpenShare (~> 0.0)
   - pop
   - PopupDialog
   - secp256k1_ios (from `https://github.com/shamatar/secp256k1_ios.git`)
@@ -63,7 +61,6 @@ SPEC CHECKSUMS:
   lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
   MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
   NotificationBannerSwift: 4eceb2add9d5eaa0596c63d49690b4d6476e74ec
-  OpenShare: a560580dbb729d5c0c3cc1ee84cd6aa4a07e94c6
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   PopupDialog: 39598b7d41719f5c025b4b70e62728bae7734fef
   secp256k1_ios: 168c6c49ed9771db51875f5255c8f9847e4cf554
@@ -75,6 +72,6 @@ SPEC CHECKSUMS:
   SwiftTheme: 36d71c4eed4b2c401c782cf036e4586c749a8173
   TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803
 
-PODFILE CHECKSUM: 3d00a8330769c4bc8273e01505929bff548b4fe1
+PODFILE CHECKSUM: 0c38db8c107077edcde896ce5f4ef62dbefad9c0
 
 COCOAPODS: 1.4.0
