@@ -16,6 +16,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     var isLaunching: Bool = true
     var isReordering: Bool = false
+    var isListeningSocketIO: Bool = false
 
     var contextMenuSourceView: UIView = UIView()
     
@@ -115,6 +116,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        isListeningSocketIO = true
         CurrentAppWalletDataManager.shared.startGetBalance()
         // Add observer.
         NotificationCenter.default.addObserver(self, selector: #selector(balanceResponseReceivedNotification), name: .balanceResponseReceived, object: nil)
@@ -123,7 +125,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        CurrentAppWalletDataManager.shared.stopGetBalance()
+        isListeningSocketIO = false
+        
         NotificationCenter.default.removeObserver(self, name: .balanceResponseReceived, object: nil)
         NotificationCenter.default.removeObserver(self, name: .priceQuoteResponseReceived, object: nil)
     }
@@ -203,6 +206,22 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print("scrollViewWillBeginDragging")
+        CurrentAppWalletDataManager.shared.stopGetBalance()
+        isListeningSocketIO = false
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("scrollViewDidScroll")
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        print("scrollViewDidEndDecelerating")
+        isListeningSocketIO = true
+        CurrentAppWalletDataManager.shared.startGetBalance()
+    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         if isLaunching {
             return 1

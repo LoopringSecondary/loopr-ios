@@ -63,9 +63,11 @@ class AppWalletDataManager {
         }
 
         // TODO: if the size of encodedData is large, the perfomance may drop.
-        let defaults = UserDefaults.standard
-        let encodedData = NSKeyedArchiver.archivedData(withRootObject: appWallets)
-        defaults.set(encodedData, forKey: UserDefaultsKeys.appWallets.rawValue)
+        DispatchQueue.global().async {
+            let defaults = UserDefaults.standard
+            let encodedData = NSKeyedArchiver.archivedData(withRootObject: self.appWallets)
+            defaults.set(encodedData, forKey: UserDefaultsKeys.appWallets.rawValue)
+        }
     }
 
     // TODO: Use error handling instead of returning a Bool value
