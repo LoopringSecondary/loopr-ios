@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Geth
 import NotificationBannerSwift
 
 class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
@@ -17,7 +18,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     @IBOutlet weak var convertButton: UIButton!
     @IBOutlet weak var convertBackgroundView: UIView!
     
-    var asset: Asset? = nil
+    var asset: Asset?
 
     var infoLabel: UILabel = UILabel()
 
@@ -183,28 +184,56 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     }
     
     func completion(_ txHash: String?, _ error: Error?) {
-        //        // Show toast
-        //        let notificationTitle = NSLocalizedString("Convert Successfully.", comment: "")
-        //        let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
-        //        let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-        //        let banner = NotificationBanner(attributedTitle: attributeString, style: .success, colors: NotificationBannerStyle())
-        //        banner.duration = 1.0
-        //        banner.show()
-        //
-        //        // Reset the text field
-        //        amountTextField.text = ""
-        //
-        //        availableLabel.text = "Available \(ConvertDataManager.shared.getMaxAmount()) ETH"
+        guard error == nil && txHash != nil else {
+            // Show toast
+            DispatchQueue.main.async {
+                let notificationTitle = NSLocalizedString("Insufficient funds for gas x price + value", comment: "")
+                let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
+                let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
+                let banner = NotificationBanner(attributedTitle: attributeString, style: .danger)
+                banner.duration = 5
+                banner.show()
+            }
+            return
+        }
+        print("Result of transfer is \(txHash!)")
+        // Show toast
+        DispatchQueue.main.async {
+            let notificationTitle = NSLocalizedString("Success. Result of transfer is \(txHash!)", comment: "")
+            let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
+            let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
+            let banner = NotificationBanner(attributedTitle: attributeString, style: .success)
+            banner.duration = 5
+            banner.show()
+        }
+    }
+    
+    func validation() -> GethBigInt? {
+        var result: GethBigInt? = nil
+        if let asset = self.asset {
+            if let amountString = amountTextField.text {
+                if let amount = Double(amountString) {
+                    if asset.balance >= amount {
+                        if let amount = GethBigInt.bigInt(amountString) {
+                            result = amount
+                        }
+                    }
+                }
+            }
+        }
+        return result
     }
     
     @IBAction func pressedConvertButton(_ sender: Any) {
-        let amount = Double(amountTextField.text!)
-        if let asset = self.asset {
-            if asset.symbol.uppercased() == "ETH" {
-//                SendCurrentAppWalletDataManager.shared._transfer(method: "withdraw", contractAddress: GethAddress, toAddress: GethAddress, amount: <#T##GethBigInt#>, gasType: "withdraw", gasPrice: <#T##Int64#>, completion: completion)
-            } else if asset.symbol.uppercased() == "WETH" {
-//                SendCurrentAppWalletDataManager.shared._transfer(method: "withdraw", contractAddress: GethAddress, toAddress: GethAddress, amount: <#T##GethBigInt#>, gasType: "withdraw", gasPrice: <#T##Int64#>, completion: completion)
-            }
+        guard let amount = validation() else {
+            // TODO: tip in ui
+            print("Invalid Amount")
+            return
+        }
+        if asset!.symbol.uppercased() == "ETH" {
+            SendCurrentAppWalletDataManager.shared._deposit(amount: amount, gasPrice: gasPrice, completion: completion)
+        } else if asset!.symbol.uppercased() == "WETH" {
+            SendCurrentAppWalletDataManager.shared._withDraw(amount: amount, gasPrice: gasPrice, completion: completion)
         }
     }
 
@@ -215,9 +244,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         guard activeTextField != nil else {
             return
         }
-        
         var currentText = activeTextField!.text ?? ""
-        
         switch (position.row, position.column) {
         case (3, 0):
             activeTextField!.text = currentText + "."
@@ -233,5 +260,11 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             activeTextField!.text = currentText + String(itemValue)
         }
     }
-    
+}
+
+extension ConvertETHViewController {
+    var gasPrice: GethBigInt {
+        // TODO: get value from transactionSpeedSlider in advanced setting
+        return GethBigInt(20000000000)
+    }
 }

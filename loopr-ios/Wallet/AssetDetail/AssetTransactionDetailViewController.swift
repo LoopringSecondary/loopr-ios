@@ -154,7 +154,10 @@ class AssetTransactionDetailViewController: UIViewController {
             }
         }
         if let url = URL(string: etherUrl) {
-            UIApplication.shared.open(url, options: [:])
+            let viewController = AssetTransactionWebViewController()
+            viewController.url = url
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
     
@@ -164,7 +167,10 @@ class AssetTransactionDetailViewController: UIViewController {
             etherUrl += tx.txHash
         }
         if let url = URL(string: etherUrl) {
-            UIApplication.shared.open(url, options: [:])
+            let viewController = AssetTransactionWebViewController()
+            viewController.url = url
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
     

@@ -180,16 +180,21 @@ class SendCurrentAppWalletDataManager {
     
     func _transfer(data: Data, address: GethAddress, amount: GethBigInt, gasPrice: GethBigInt, gasLimit: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
         _keystore()
+        var userInfo: [String: Any] = [:]
         do {
             let nonce: Int64 = getNonce()
             let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: wallet!.password)
             if let signedTransactionData = try signedTransaction?.encodeRLP() {
                 sendTransactionToServer("0x" + signedTransactionData.hexString, completion: completion)
             } else {
-                print("Failed to sign/encode")
+                userInfo["message"] = NSLocalizedString("Failed to sign/encode", comment: "")
+                let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
+                completion(nil, error)
             }
         } catch {
-            print("Failed in encoding transaction ")
+            userInfo["message"] = NSLocalizedString("Failed to encode transaction", comment: "")
+            let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
+            completion(nil, error)
         }
     }
 }

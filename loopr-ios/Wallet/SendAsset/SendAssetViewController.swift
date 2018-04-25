@@ -194,32 +194,38 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     
     @objc func scrollViewTapped() {
         print("scrollViewTapped")
-        
         addressTextField.resignFirstResponder()
         amountTextField.resignFirstResponder()
-
         hideKeyboard()
+    }
+    
+    func validation() -> Bool {
+        var result = false
+        if let toAddress = addressTextField.text, let amountString = amountTextField.text {
+            if !toAddress.isEmpty && toAddress.isHexAddress() {
+                if !amountString.isEmpty, let amount = Double(amountString) {
+                    if asset.balance >= amount {
+                        if GethBigInt.bigInt(amountString) != nil {
+                            result = true
+                        }
+                    }
+                }
+            }
+        }
+        return result
     }
 
     @IBAction func pressedSendButton(_ sender: Any) {
         print("start sending")
-        guard let toAddress = addressTextField.text, let amount = amountTextField.text else {
+        guard validation() else {
             // TODO: tip in ui
-            print("Invalid Entry")
             return
         }
-        guard let gethAmount = GethBigInt.bigInt(amount) else {
-            // TODO: tip in ui
-            print("Invalid amount")
-            return
-        }
+        let toAddress = addressTextField.text!
+        let gethAmount = GethBigInt.bigInt(amountTextField.text!)!
         if let token = TokenDataManager.shared.getTokenBySymbol(asset!.symbol) {
             if !token.protocol_value.isHexAddress() {
                 print("token protocol \(token.protocol_value) is invalid")
-                return
-            }
-            if !toAddress.isHexAddress() {
-                print("address \(toAddress) is invalide")
                 return
             }
             var error: NSError? = nil
@@ -230,10 +236,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             } else {
                 SendCurrentAppWalletDataManager.shared._transferToken(contractAddress: contractAddress, toAddress: toAddress, amount: gethAmount, gasPrice: gasPrice, completion: completion)
             }
-        } else {
-            // TODO: tip in ui
-            print("Invalid asset or token")
-            return
         }
     }
     
@@ -316,7 +318,7 @@ extension SendAssetViewController {
         guard error == nil && txHash != nil else {
             // Show toast
             DispatchQueue.main.async {
-                let notificationTitle = NSLocalizedString("Insufficient funds for gas x price + value", comment: "")
+                let notificationTitle = NSLocalizedString(String(describing: error), comment: "")
                 let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
                 let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
                 let banner = NotificationBanner(attributedTitle: attributeString, style: .danger)

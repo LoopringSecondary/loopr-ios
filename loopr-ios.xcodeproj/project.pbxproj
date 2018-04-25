@@ -26,6 +26,8 @@
 		940B452D2061206900ADE2B9 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B452C2061206800ADE2B9 /* Token.swift */; };
 		94189CC12078B88700AA2CF4 /* OrderSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94189CBF2078B88700AA2CF4 /* OrderSearchResultViewController.swift */; };
 		94189CC22078B88700AA2CF4 /* OrderSearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94189CC02078B88700AA2CF4 /* OrderSearchResultViewController.xib */; };
+		943A9A4120909597008BCBFD /* AssetTransactionWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943A9A3F20909597008BCBFD /* AssetTransactionWebViewController.swift */; };
+		943A9A4220909597008BCBFD /* AssetTransactionWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943A9A4020909597008BCBFD /* AssetTransactionWebViewController.xib */; };
 		943BDED32056350000D5BF81 /* PriceQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943BDED22056350000D5BF81 /* PriceQuote.swift */; };
 		945800212058FEB500E08DEF /* tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = 945800202058FEB500E08DEF /* tokens.json */; };
 		945800232059006200E08DEF /* AssetDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945800222059006200E08DEF /* AssetDataManagerTests.swift */; };
@@ -567,6 +569,8 @@
 		940B452C2061206800ADE2B9 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		94189CBF2078B88700AA2CF4 /* OrderSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSearchResultViewController.swift; sourceTree = "<group>"; };
 		94189CC02078B88700AA2CF4 /* OrderSearchResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderSearchResultViewController.xib; sourceTree = "<group>"; };
+		943A9A3F20909597008BCBFD /* AssetTransactionWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTransactionWebViewController.swift; sourceTree = "<group>"; };
+		943A9A4020909597008BCBFD /* AssetTransactionWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetTransactionWebViewController.xib; sourceTree = "<group>"; };
 		943BDED22056350000D5BF81 /* PriceQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceQuote.swift; sourceTree = "<group>"; };
 		945800202058FEB500E08DEF /* tokens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tokens.json; sourceTree = "<group>"; };
 		945800222059006200E08DEF /* AssetDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDataManagerTests.swift; sourceTree = "<group>"; };
@@ -1390,6 +1394,8 @@
 				AC5E0DD9203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib */,
 				ACE6F7162041FDAD0039273D /* AssetTransactionDetailViewController.swift */,
 				ACE6F7172041FDAD0039273D /* AssetTransactionDetailViewController.xib */,
+				943A9A3F20909597008BCBFD /* AssetTransactionWebViewController.swift */,
+				943A9A4020909597008BCBFD /* AssetTransactionWebViewController.xib */,
 			);
 			path = AssetDetail;
 			sourceTree = "<group>";
@@ -2190,6 +2196,7 @@
 				ACBA47EF207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.xib in Resources */,
 				ACBDB1C62032D050003463A4 /* OpenOrderTableViewCell.xib in Resources */,
 				ACB9118920265DEA00F14644 /* MarketDetailViewController.xib in Resources */,
+				943A9A4220909597008BCBFD /* AssetTransactionWebViewController.xib in Resources */,
 				AC31CE6B205B995100A30335 /* Roboto-LightItalic.ttf in Resources */,
 				AC31CE93205B9C0600A30335 /* Montserrat-BlackItalic.ttf in Resources */,
 				AC31CE34205B603200A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf in Resources */,
@@ -2544,6 +2551,7 @@
 				AC4F600E20773E9D00F1D954 /* Sign.swift in Sources */,
 				940B452A2060F67E00ADE2B9 /* MarketDataManager.swift in Sources */,
 				AC5E3E6B205DEAC00051ACFC /* TradeCompleteViewController.swift in Sources */,
+				943A9A4120909597008BCBFD /* AssetTransactionWebViewController.swift in Sources */,
 				AC387517205F12F100A76637 /* ClippedContainerViewController.swift in Sources */,
 				AC387516205F12F100A76637 /* ContextMenu+Options.swift in Sources */,
 				AC9ADF91205EE3B900CBE368 /* ConvertETHViewController.swift in Sources */,
