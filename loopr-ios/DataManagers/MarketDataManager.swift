@@ -34,6 +34,8 @@ class MarketDataManager {
         let filteredMarkets = newMarkets.filter { (market) -> Bool in
             return market.description != ""
         }
+        self.markets = filteredMarkets
+        
         switch type {
         case .favorite:
             let markets = filteredMarkets.filter({ (market) -> Bool in
@@ -46,7 +48,7 @@ class MarketDataManager {
             }
         case .LRC:
             let sortedMarkets = filteredMarkets.filter({ (market) -> Bool in
-                return market.tradingPair.tradingB.uppercased() == "LRC"
+                return market.tradingPair.tradingA.uppercased() == "LRC" || market.tradingPair.tradingB.uppercased() == "LRC"
             }).sorted { (a, b) -> Bool in
                 return a.description < b.description
             }
@@ -89,24 +91,26 @@ class MarketDataManager {
     }
     
     func updateMarketKeysOnLocal(type: MarketSwipeViewType) {
-        var key: String = ""
-        var value: [String] = []
-        let defaults = UserDefaults.standard
-        switch type {
-        case .LRC:
-            value = self.lrcSequence
-            key = UserDefaultsKeys.lrcSequence.rawValue
-        case .ETH:
-            value = self.wethSequence
-            key = UserDefaultsKeys.wethSequence.rawValue
-        case .favorite:
-            value = self.favoriteSequence
-            key = UserDefaultsKeys.favoriteSequence.rawValue
-        case .all:
-            value = self.allSequence
-            key = UserDefaultsKeys.allSequence.rawValue
+        DispatchQueue.global(qos: .userInitiated).async {
+            var key: String = ""
+            var value: [String] = []
+            let defaults = UserDefaults.standard
+            switch type {
+            case .LRC:
+                value = self.lrcSequence
+                key = UserDefaultsKeys.lrcSequence.rawValue
+            case .ETH:
+                value = self.wethSequence
+                key = UserDefaultsKeys.wethSequence.rawValue
+            case .favorite:
+                value = self.favoriteSequence
+                key = UserDefaultsKeys.favoriteSequence.rawValue
+            case .all:
+                value = self.allSequence
+                key = UserDefaultsKeys.allSequence.rawValue
+            }
+            defaults.set(value, forKey: key)
         }
-        defaults.set(value, forKey: key)
     }
 
     func exchange(at sourceIndex: Int, to destinationIndex: Int, type: MarketSwipeViewType) {
@@ -114,30 +118,22 @@ class MarketDataManager {
         case .favorite:
             if destinationIndex < favoriteSequence.count && sourceIndex < favoriteSequence.count {
                 favoriteSequence.swapAt(sourceIndex, destinationIndex)
-                DispatchQueue.global(qos: .userInitiated).async {
-                    self.updateMarketKeysOnLocal(type: .favorite)
-                }
+                self.updateMarketKeysOnLocal(type: .favorite)
             }
         case .LRC:
             if destinationIndex < lrcSequence.count && sourceIndex < lrcSequence.count {
                 lrcSequence.swapAt(sourceIndex, destinationIndex)
-                DispatchQueue.global(qos: .userInitiated).async {
-                    self.updateMarketKeysOnLocal(type: .LRC)
-                }
+                self.updateMarketKeysOnLocal(type: .LRC)
             }
         case .ETH:
             if destinationIndex < wethSequence.count && sourceIndex < wethSequence.count {
                 wethSequence.swapAt(sourceIndex, destinationIndex)
-                DispatchQueue.global(qos: .userInitiated).async {
-                    self.updateMarketKeysOnLocal(type: .ETH)
-                }
+                self.updateMarketKeysOnLocal(type: .ETH)
             }
         case .all:
             if destinationIndex < allSequence.count && sourceIndex < allSequence.count {
                 allSequence.swapAt(sourceIndex, destinationIndex)
-                DispatchQueue.global(qos: .userInitiated).async {
-                    self.updateMarketKeysOnLocal(type: .all)
-                }
+                self.updateMarketKeysOnLocal(type: .all)
             }
         }
     }
@@ -187,9 +183,35 @@ class MarketDataManager {
         return nil
     }
     
+    func getMarketsWithoutReordered(type: MarketSwipeViewType = .all) -> [Market] {
+        switch type {
+        case .favorite:
+            return markets.filter({ (market) -> Bool in
+                return favoriteSequence.contains(market.description)
+            })
+        case .LRC:
+            let sortedMarkets = markets.filter({ (market) -> Bool in
+                return market.tradingPair.tradingA.uppercased() == "LRC" || market.tradingPair.tradingB.uppercased() == "LRC"
+            }).sorted { (a, b) -> Bool in
+                return a.description < b.description
+            }
+            return sortedMarkets
+        case .ETH:
+            let sortedMarkets = markets.filter({ (market) -> Bool in
+                return market.tradingPair.tradingB.uppercased() == "ETH" || market.tradingPair.tradingB.uppercased() == "WETH"
+            }).sorted { (a, b) -> Bool in
+                return a.description < b.description
+            }
+            return sortedMarkets
+        case .all:
+            return markets
+        }
+    }
+    
     func getMarkets(type: MarketSwipeViewType = .all) -> [Market] {
         switch type {
         case .all:
+            // The compute of getMarketKeysFromLocal is expensive.
             allSequence = getMarketKeysFromLocal(type: .all)
             return markets.sorted(by: { allSequence.index(of: $0.description)! < allSequence.index(of: $1.description)!
             })

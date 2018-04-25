@@ -60,7 +60,7 @@ class AppWallet: NSObject, NSCoding {
     }
 
     func addAssetSequence(symbol: String) {
-        if symbol.trim() != "" {
+        if symbol.trim() != "" && !assetSequence.contains(symbol) {
             assetSequence.append(symbol)
         }
     }

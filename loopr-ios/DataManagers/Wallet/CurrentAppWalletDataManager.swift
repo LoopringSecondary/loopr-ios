@@ -42,10 +42,6 @@ class CurrentAppWalletDataManager {
         }
     }
     
-    func getCurrentAppWallet() -> AppWallet? {
-        return currentAppWallet
-    }
-
     func setCurrentAppWallet(_ appWallet: AppWallet) {
         print("setCurrentAppWallet ...")
         let defaults = UserDefaults.standard
@@ -55,13 +51,21 @@ class CurrentAppWalletDataManager {
         // Init assets using assetSequence in AppWallet
         for symbol in currentAppWallet!.getAssetSequence() {
             let asset = Asset(symbol: symbol)
-            assets.append(asset)
+            if let index = assets.index(of: asset) {
+                assets[index] = asset
+            } else {
+                assets.append(asset)
+            }
         }
         
         // Push a notification
         NotificationCenter.default.post(name: .appWalletDidUpdate, object: nil)
-
+        
         startGetBalance()
+    }
+    
+    func getCurrentAppWallet() -> AppWallet? {
+        return currentAppWallet
     }
 
     func getTotalAsset() -> Double {

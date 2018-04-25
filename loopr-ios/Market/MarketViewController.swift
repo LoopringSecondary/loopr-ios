@@ -18,6 +18,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var viewAppear: Bool = false
     var isReordering: Bool = false
+    var isListeningSocketIO: Bool = false
     
     var didSelectRowClosure: ((Market) -> Void)?
 
@@ -48,23 +49,23 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         marketTableView.dataSource = self
         marketTableView.delegate = self
-        marketTableView.reorder.delegate = self
+        // marketTableView.reorder.delegate = self
         marketTableView.tableFooterView = UIView()
         marketTableView.separatorStyle = .none
-        
+
+        /*
+        // one part of record
         marketTableView.estimatedRowHeight = 0
         marketTableView.estimatedSectionHeaderHeight = 0
         marketTableView.estimatedSectionFooterHeight = 0
-        
-        getMarketsFromRelay()
+        */
+
+        // No need to call here
+        // getMarketsFromRelay()
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         marketTableView.theme_backgroundColor = GlobalPicker.backgroundColor
 
-        // Setup the Scope Bar
-        // searchController.searchBar.scopeButtonTitles = ["All", "ETH", "LRC", "Other"]
-        // searchController.searchBar.delegate = self
-        
         // Add Refresh Control to Table View
         if #available(iOS 10.0, *) {
             marketTableView.refreshControl = refreshControl
@@ -92,7 +93,8 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 banner.show()
                 return
             }
-            MarketDataManager.shared.setMarkets(newMarkets: markets, type: self.type)
+            // We don't any filter in the API requests. So no need to filter the response.
+            MarketDataManager.shared.setMarkets(newMarkets: markets)
             DispatchQueue.main.async {
                 self.marketTableView.reloadData()
                 self.refreshControl.endRefreshing()
@@ -101,7 +103,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func tickerResponseReceivedNotification() {
-        if !isReordering && viewAppear && !isFiltering {
+        if !isReordering && viewAppear && !isFiltering && isListeningSocketIO {
             print("MarketViewController reload table \(type.description)")
             marketTableView.reloadData()
         }
@@ -109,15 +111,18 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        isListeningSocketIO = true
+        // We have started startGetTicker() in the AppDelegate. No need to start again
         // MarketDataManager.shared.startGetTicker()
         // Add observer.
-        // NotificationCenter.default.addObserver(self, selector: #selector(tickerResponseReceivedNotification), name: .tickerResponseReceived, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(tickerResponseReceivedNotification), name: .tickerResponseReceived, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        isListeningSocketIO = false
         // MarketDataManager.shared.stopGetTicker()
-        // NotificationCenter.default.removeObserver(self, name: .tickerResponseReceived, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .tickerResponseReceived, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -126,7 +131,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func reload(isFiltering: Bool, searchText: String) {
-        markets = MarketDataManager.shared.getMarkets(type: type)
+        markets = MarketDataManager.shared.getMarketsWithoutReordered(type: type)
         
         self.isFiltering = isFiltering
         self.searchText = searchText.trim()
@@ -134,7 +139,8 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if isFiltering {
             filterContentForSearchText(self.searchText)
         } else {
-            marketTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
+            // No need to reload the table view.
+            // marketTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
         }
         // marketTableView.reloadData()
     }
@@ -154,11 +160,22 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - Private instance methods
     
     func filterContentForSearchText(_ searchText: String) {
-        filteredMarkets = MarketDataManager.shared.getMarkets(type: type).filter({(market: Market) -> Bool in
+        filteredMarkets = MarketDataManager.shared.getMarketsWithoutReordered(type: type).filter({(market: Market) -> Bool in
             return market.tradingPair.tradingA.lowercased().contains(searchText.lowercased()) || market.tradingPair.tradingB.lowercased().contains(searchText.lowercased())
         })
         // marketTableView.reloadData()
         marketTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        isListeningSocketIO = false
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        isListeningSocketIO = true
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -169,7 +186,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if isFiltering {
             return filteredMarkets.count
         } else {
-            return MarketDataManager.shared.getMarkets(type: type).count
+            return MarketDataManager.shared.getMarketsWithoutReordered(type: type).count
         }
     }
     
@@ -186,7 +203,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if isFiltering {
             market = filteredMarkets[indexPath.row]
         } else {
-            market = MarketDataManager.shared.getMarkets(type: type)[indexPath.row]
+            market = MarketDataManager.shared.getMarketsWithoutReordered(type: type)[indexPath.row]
         }
         cell?.market = market
         cell?.update()
@@ -196,7 +213,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let market = MarketDataManager.shared.getMarkets(type: type)[indexPath.row]
+        let market = MarketDataManager.shared.getMarketsWithoutReordered(type: type)[indexPath.row]
         if let didSelectRowClosure = self.didSelectRowClosure {
             didSelectRowClosure(market)
         }
@@ -210,7 +227,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let market = MarketDataManager.shared.getMarkets(type: type)[indexPath.row]
+        let market = MarketDataManager.shared.getMarketsWithoutReordered(type: type)[indexPath.row]
         if market.isFavorite() {
             let action = UIContextualAction(style: .normal, title: "Unfavorite", handler: { (_: UIContextualAction, _:  UIView, success: (Bool) -> Void) in
                 print("OK, marked as Unfavorite")
@@ -244,6 +261,8 @@ extension MarketViewController: TableViewReorderDelegate {
     }
     
     func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {
+        return false
+        /*
         if isFiltering {
             return false
         }
@@ -253,6 +272,7 @@ extension MarketViewController: TableViewReorderDelegate {
         } else {
             return false
         }
+        */
     }
     
     func tableViewDidBeginReordering(_ tableView: UITableView) {

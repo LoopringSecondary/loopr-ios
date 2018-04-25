@@ -52,7 +52,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         vc0.didSelectRowClosure = { (market) -> Void in
             
         }
-        
+
         let vc1 = MarketViewController(type: .ETH)
         vc1.didSelectRowClosure = { (market) -> Void in
             
@@ -160,7 +160,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
 
         type = types[toIndex]
         let viewController = viewControllers[toIndex]
-        // viewController.reload(isFiltering: isFiltering, searchText: searchText)
+        viewController.reload(isFiltering: isFiltering, searchText: searchText)
     }
 
     override func swipeView(_ swipeView: SwipeView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
@@ -171,7 +171,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
 
     // MARK: - DataSource
     override func numberOfPages(in swipeView: SwipeView) -> Int {
-        return types.count
+        return viewControllers.count
     }
     
     override func swipeView(_ swipeView: SwipeView, titleForPageAt index: Int) -> String {
