@@ -51,7 +51,6 @@ class EthereumAPIRequest {
     
     // READY
     static func eth_call(from: String?, to: String, gas: UInt?, gasPrice: UInt?, value: UInt?, data: String?, block: DefaultBlock, completionHandler: @escaping (_ response: SimpleRespond?, _ error: Error?) -> Void) {
-        
         var body: JSON = JSON()
         body["params"] = [["from": from, "to": to, "gas": gas, "gasPrice": gasPrice, "value": value, "data": data], block.description()]
         removeNilParams(json: &body["params"][0])
@@ -61,7 +60,6 @@ class EthereumAPIRequest {
     // TODO: is data the eth address?
     // READY
     static func eth_getTransactionCount(data: String, block: DefaultBlock, completionHandler: @escaping (_ response: SimpleRespond?, _ error: Error?) -> Void) {
-
         var body: JSON = JSON()
         body["params"] = [data, block.description()]
         self.invoke(method: "eth_getTransactionCount", withBody: &body, completionHandler)
@@ -69,14 +67,12 @@ class EthereumAPIRequest {
 
     // READY
     static func eth_gasPrice(completionHandler: @escaping (_ response: SimpleRespond?, _ error: Error?) -> Void) {
-
         var body: JSON = JSON()
         self.invoke(method: "eth_gasPrice", withBody: &body, completionHandler)
     }
 
     // READY
     static func eth_estimateGas(from: String?, to: String, gas: UInt?, gasPrice: UInt?, value: UInt?, data: String?, completionHandler: @escaping (_ response: SimpleRespond?, _ error: Error?) -> Void) {
-
         var body: JSON = JSON()
         body["params"] = [["from": from, "to": to, "gas": gas, "gasPrice": gasPrice, "value": value, "data": data]]
         removeNilParams(json: &body["params"][0])

@@ -70,7 +70,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationItem.titleView = button
         
         NotificationCenter.default.addObserver(self, selector: #selector(refreshData), name: .appWalletDidUpdate, object: nil)
-        
     }
     
     @objc private func refreshData(_ sender: Any) {

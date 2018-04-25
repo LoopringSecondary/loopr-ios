@@ -225,8 +225,11 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             var error: NSError? = nil
             let toAddress = GethNewAddressFromHex(toAddress, &error)!
             let contractAddress = GethNewAddressFromHex(token.protocol_value, &error)!
-            
-            SendCurrentAppWalletDataManager.shared._transfer(method: "transfer", contractAddress: contractAddress, toAddress: toAddress, amount: gethAmount, gasType: gasType, gasPrice: gasPrice, completion: completion)
+            if token.symbol.uppercased() == "ETH" {
+                SendCurrentAppWalletDataManager.shared._transferETH(amount: gethAmount, gasPrice: gasPrice, toAddress: toAddress, completion: completion)
+            } else {
+                SendCurrentAppWalletDataManager.shared._transferToken(contractAddress: contractAddress, toAddress: toAddress, amount: gethAmount, gasPrice: gasPrice, completion: completion)
+            }
         } else {
             // TODO: tip in ui
             print("Invalid asset or token")
@@ -304,13 +307,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
 
 extension SendAssetViewController {
 
-    var gasType: String {
-        return asset.symbol.uppercased() == "ETH" ? "eth_transfer" : "token_transfer"
-    }
-    
-    var gasPrice: Int64 {
+    var gasPrice: GethBigInt {
         // TODO: get value from transactionSpeedSlider
-        return 20000000000
+        return GethBigInt(20000000000)
     }
 
     func completion(_ txHash: String?, _ error: Error?) {

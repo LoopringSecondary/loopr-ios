@@ -26,16 +26,15 @@ open class EthAccountConfiguration {
 
 open class EthAccountCoordinator {
     
-    fileprivate var _keystore: GethKeyStore? = nil
-    fileprivate var _account: GethAccount? = nil
-    fileprivate var _gethContext: GethContext? = nil
+    fileprivate var _keystore: GethKeyStore?
+    fileprivate var _account: GethAccount?
+    fileprivate var _gethContext: GethContext?
     
     open var defaultConfiguration: EthAccountConfiguration = EthAccountConfiguration.default
     
     open static let `default`: EthAccountCoordinator = {
         return EthAccountCoordinator()
     }()
-    
     
     open var keystore: GethKeyStore? {
         return _keystore
@@ -49,7 +48,6 @@ open class EthAccountCoordinator {
             _account = newValue
         }
     }
-    
     
     open func launch(_ configuration: EthAccountConfiguration) -> (GethKeyStore?, GethAccount?) {
         defaultConfiguration = configuration
@@ -69,7 +67,6 @@ open class EthAccountCoordinator {
     }
     
     open func launch(keystore: GethKeyStore, password: String) -> GethAccount? {
-        
         
         _keystore = keystore
         let tmp = getAccount(password)
@@ -140,7 +137,6 @@ open class EthAccountCoordinator {
         return (keystore, finalPath)
     }
     
-    
     fileprivate func _createAccount(_ keystore: GethKeyStore, password: String) -> GethAccount? {
         do {
             if let account = getAccount(password) {
@@ -171,7 +167,6 @@ open class EthAccountCoordinator {
         }
         return nil
     }
-    
     
     open func importPrivateKey(_ jsonKey: String, passphrase: String, newPassphrase: String) -> GethAccount? {
         guard let keystore = keystore else {
@@ -215,26 +210,16 @@ open class EthAccountCoordinator {
     
 }
 
-
 public extension EthAccountCoordinator {
     
-    public func sign(address: GethAddress, encodedFunctionData: Data, nonce: Int64, gasLimit: GethBigInt, gasPrice: GethBigInt, password newPassword: String? = nil) -> GethTransaction? {
+    public func sign(address: GethAddress, encodedFunctionData: Data, nonce: Int64, amount: GethBigInt, gasLimit: GethBigInt, gasPrice: GethBigInt, password newPassword: String? = nil) -> GethTransaction? {
         let tmpPassword = newPassword == nil ? defaultConfiguration.password : newPassword
         guard let password = tmpPassword, let keystore = _keystore, let account = _account else {
             // TODO:- We can return Error here/Throw one
             print("Create keystore/account first")
             return nil
         }
-        /*
-        guard let password = defaultConfiguration.password, let keystore = _keystore, let account = _account else {
-            // TODO:- We can return Error here/Throw one
-            print("Create keystore/account first")
-            return nil
-        }
-        */
-        return Sign.sign(keystore: keystore, account: account, address: address, encodedFunctionData: encodedFunctionData, nonce: nonce, gasLimit: gasLimit, gasPrice: gasPrice, password: password)
+        return Sign.sign(keystore: keystore, account: account, address: address, encodedFunctionData: encodedFunctionData, nonce: nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: password)
     }
     
 }
-
-
