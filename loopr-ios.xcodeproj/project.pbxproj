@@ -522,6 +522,8 @@
 		C8BF95B12027AC9400343B9A /* SetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8BF95AF2027AC9400343B9A /* SetupViewController.xib */; };
 		D9524CB21C9A148B2F4D503B /* Pods_loopr_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */; };
 		EE817669636361AFF682A8F5 /* Pods_loopr_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929BB32EF62C4BD6BC1DFC8F /* Pods_loopr_ios.framework */; };
+		FF9C7DDA208D55F8004687AD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FF9C7DD9208D55F8004687AD /* Settings.bundle */; };
+		FF9C7DDC208D59EA004687AD /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9C7DDB208D59EA004687AD /* SettingsBundleHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -957,6 +959,8 @@
 		C8BF95AE2027AC9400343B9A /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		C8BF95AF2027AC9400343B9A /* SetupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetupViewController.xib; sourceTree = "<group>"; };
 		CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF9C7DD9208D55F8004687AD /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		FF9C7DDB208D59EA004687AD /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1545,6 +1549,8 @@
 				AC798E502022B93A0071D477 /* Info.plist */,
 				ACE5BFA920466EFD005D75DD /* Localizable.strings */,
 				AC0C5C7A203D131200C8618D /* loopr-ios-Bridging-Header.h */,
+				FF9C7DD9208D55F8004687AD /* Settings.bundle */,
+				FF9C7DDB208D59EA004687AD /* SettingsBundleHelper.swift */,
 			);
 			path = "loopr-ios";
 			sourceTree = "<group>";
@@ -2145,6 +2151,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF9C7DDA208D55F8004687AD /* Settings.bundle in Resources */,
 				AC31CEAB205B9C2300A30335 /* Montserrat-Light.ttf in Resources */,
 				AC798E4F2022B93A0071D477 /* LaunchScreen.storyboard in Resources */,
 				AC31CEA2205B9C1800A30335 /* Montserrat-ExtraLight.ttf in Resources */,
@@ -2564,6 +2571,7 @@
 				AC5E0DE4203BC4B100AF03C7 /* FloatLabelTextField.swift in Sources */,
 				AC3756802039198300AADC60 /* GenerateMnemonicViewController.swift in Sources */,
 				94CCE686206BE06C002FFC0D /* RadarMarkerView.swift in Sources */,
+				FF9C7DDC208D59EA004687AD /* SettingsBundleHelper.swift in Sources */,
 				ACB9119520278A4000F14644 /* Request.swift in Sources */,
 				AC76E47320493CAE008BA229 /* SettingLanguageViewController.swift in Sources */,
 				AC387515205F12F100A76637 /* ContextMenu+Animations.swift in Sources */,

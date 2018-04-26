@@ -116,6 +116,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if manager?.isReachable == false {
             self.showNetworkLossBanner()
         }
+        
+        SettingsBundleHelper.setVersionAndBuildNumber()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
