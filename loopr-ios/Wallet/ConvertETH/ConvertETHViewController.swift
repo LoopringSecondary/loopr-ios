@@ -24,10 +24,10 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
 
     var tokenSView: TradeTokenView!
     var tokenBView: TradeTokenView!
-    var arrowRightImageView: UIImageView = UIImageView()
+    var arrowRightButton: UIButton = UIButton()
 
     // Amout
-    var tokenBLabel: UILabel = UILabel()
+    var tokenSLabel: UILabel = UILabel()
     var amountTextField: UITextField = UITextField()
     var amountUnderLine: UIView = UIView()
     var availableLabel: UILabel = UILabel()
@@ -64,24 +64,29 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         
         tokenBView = TradeTokenView(frame: CGRect(x: (screenWidth+10)/2, y: 0, width: (screenWidth-30)/2, height: 180))
         scrollView.addSubview(tokenBView)
+
+        arrowRightButton = UIButton(frame: CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY), size: CGSize(width: 32, height: 32)))
+        let image = UIImage.init(named: "Arrow-right-black")
+        let tintedImage = image?.withRenderingMode(.alwaysTemplate)
+        arrowRightButton.setImage(tintedImage, for: .normal)
+        arrowRightButton.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
+        arrowRightButton.setTitleColor(UIColor.init(rgba: "#cce9ff"), for: .highlighted)
+        arrowRightButton.addTarget(self, action: #selector(self.pressedArrowButton(_:)), for: UIControlEvents.touchUpInside)
+        scrollView.addSubview(arrowRightButton)
         
-        arrowRightImageView = UIImageView(frame: CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY), size: CGSize(width: 32, height: 32)))
-        arrowRightImageView.image = UIImage.init(named: "Arrow-right-black")
-        scrollView.addSubview(arrowRightImageView)
-        
-        infoLabel.frame = CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY - 45), size: CGSize(width: 200, height: 21))
-        infoLabel.text = "1 ETH = 1WETH"
+        infoLabel.frame = CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY - 60), size: CGSize(width: 200, height: 21))
+        infoLabel.text = asset!.symbol.uppercased() == "ETH" ? "1 ETH = 1 WETH" : "1 WETH = 1 ETH"
         infoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
         infoLabel.textAlignment = .center
         scrollView.addSubview(infoLabel)
 
         // Row 2: Amount
         
-        tokenBLabel.text = "ETH"
-        tokenBLabel.font = FontConfigManager.shared.getLabelFont()
-        tokenBLabel.textAlignment = .right
-        tokenBLabel.frame = CGRect(x: screenWidth-80-padding, y: tokenSView.frame.maxY + padding, width: 80, height: 40)
-        scrollView.addSubview(tokenBLabel)
+        tokenSLabel.text = asset!.symbol
+        tokenSLabel.font = FontConfigManager.shared.getLabelFont()
+        tokenSLabel.textAlignment = .right
+        tokenSLabel.frame = CGRect(x: screenWidth-80-padding, y: tokenSView.frame.maxY + padding, width: 80, height: 40)
+        scrollView.addSubview(tokenSLabel)
         
         amountTextField.delegate = self
         amountTextField.tag = 1
@@ -93,7 +98,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         amountTextField.frame = CGRect(x: padding, y: tokenSView.frame.maxY + padding, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(amountTextField)
 
-        amountUnderLine.frame = CGRect(x: padding, y: tokenBLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
+        amountUnderLine.frame = CGRect(x: padding, y: tokenSLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
         amountUnderLine.backgroundColor = UIColor.black
         scrollView.addSubview(amountUnderLine)
         
@@ -112,7 +117,6 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         maxButton.addTarget(self, action: #selector(self.pressedMaxButton(_:)), for: UIControlEvents.touchUpInside)
 
         scrollView.addSubview(maxButton)
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -122,28 +126,58 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        ConvertDataManager.shared.setup()
-        
         // TODO: Update availableLabel
-        availableLabel.text = "Available \(ConvertDataManager.shared.getMaxAmount()) ETH"
-        
-        tokenSView.update(symbol: "ETH")
-        tokenBView.update(symbol: "WETH")
+        if let asset = self.asset {
+            let symbol = asset.symbol
+            availableLabel.text = "Available \(ConvertDataManager.shared.getMaxAmount(symbol: symbol.uppercased())) \(symbol)"
+            tokenSView.update(symbol: symbol)
+            tokenBView.update(symbol: getAnotherToken())
+        }
+    }
+    
+    func getAnotherToken() -> String {
+        if let asset = self.asset {
+            if asset.symbol.uppercased() == "ETH" {
+                return "WETH"
+            } else if asset.symbol.uppercased() == "WETH" {
+                return "ETH"
+            }
+        }
+        return "WETH"
+    }
+    
+    func getAnotherAsset() -> Asset? {
+        let symbol = getAnotherToken()
+        return ConvertDataManager.shared.getAsset(by: symbol)
+    }
+    
+    func updateLabel() {
+        tokenSLabel.text = asset!.symbol
+        let symbol = asset!.symbol
+        infoLabel.text = symbol.uppercased() == "ETH" ? "1 ETH = 1 WETH" : "1 WETH = 1 ETH"
+        availableLabel.text = "Available \(ConvertDataManager.shared.getMaxAmount(symbol: symbol.uppercased())) \(symbol)"
+    }
+    
+    @objc func pressedArrowButton(_ sender: Any) {
+        print("pressedArrowButton")
+        if let asset = self.asset {
+            self.asset = getAnotherAsset()
+            UIView.transition(with: tokenSView, duration: 0.5, options: .transitionCrossDissolve, animations: { self.tokenSView.update(symbol: self.asset!.symbol) }, completion: nil)
+            UIView.transition(with: tokenBView, duration: 0.5, options: .transitionCrossDissolve, animations: { self.tokenBView.update(symbol: asset.symbol) }, completion: nil)
+            updateLabel()
+        }
     }
     
     @objc func pressedMaxButton(_ sender: Any) {
         print("pressedMaxButton")
-        
-        // Get the max value from ConvertDataManager
-        amountTextField.text = String(ConvertDataManager.shared.getMaxAmount())
+        if let asset = self.asset {
+            amountTextField.text = String(ConvertDataManager.shared.getMaxAmount(symbol: asset.symbol))
+        }
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         print("textFieldShouldBeginEditing")
-
         showKeyboard(textField: textField)
-
         return true
     }
     

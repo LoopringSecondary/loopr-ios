@@ -23,28 +23,29 @@ class ConvertDataManager {
     func clear() {
         amount = 0.0
     }
-
-    func setup() {
-        print("setup ConvertDataManager")
-        
-        // Get the available amount
-        // Find ETH asset
-        let assets = CurrentAppWalletDataManager.shared.getAssets()
-        let filteredAssets = assets.filter { (asset) -> Bool in
-            return asset.symbol == "ETH"
-        }
-        for ETHAsset in filteredAssets {
-            maxAmount = ETHAsset.balance
-        }
-    }
     
     func convert() {
         // TODO: Call Relay API
         maxAmount = 0.0
     }
     
-    func getMaxAmount() -> Double {
+    func getMaxAmount(symbol: String) -> Double {
+        let assets = CurrentAppWalletDataManager.shared.getAssets()
+        let filteredAssets = assets.filter { (asset) -> Bool in
+            return asset.symbol.uppercased() == symbol
+        }
+        for asset in filteredAssets {
+            maxAmount = asset.balance
+        }
         return maxAmount
+    }
+    
+    func getAsset(by symbol: String) -> Asset? {
+        let assets = CurrentAppWalletDataManager.shared.getAssets()
+        for case let asset in assets where asset.symbol.uppercased() == symbol {
+            return asset
+        }
+        return nil
     }
     
     func setMaxAmount(_ maxAmount: Double) {

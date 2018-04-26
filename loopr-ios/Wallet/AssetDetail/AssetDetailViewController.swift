@@ -191,6 +191,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         if let asset = self.asset {
             if asset.symbol.lowercased() == "eth" || asset.symbol.lowercased() == "weth" {
                 let viewController = ConvertETHViewController()
+                viewController.asset = asset
                 self.navigationController?.pushViewController(viewController, animated: true)
             } else {
                 PlaceOrderDataManager.shared.new(tokenA: asset.symbol, tokenB: "WETH")
