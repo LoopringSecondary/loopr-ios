@@ -181,7 +181,9 @@ class AssetTransactionDetailViewController: UIViewController {
     
     func update() {
         if let transaction = transaction {
-            typeImageView.image = transaction.icon
+            if let image = UIImage(named: transaction.type.description + "Detail") {
+                typeImageView.image = image
+            }
             amountLabel.text = transaction.value + " " + transaction.symbol
             amountInCurrencyLabel.text = "≈ \(transaction.display)"
             label2.text = transaction.status.description

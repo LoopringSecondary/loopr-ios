@@ -189,7 +189,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         tokenSymbolLabel.text = asset.symbol
         
         // TODO: Use mock data
-        tokenTotalAmountLabel.text = "\(asset.balance.description) \(String(describing: asset.symbol)) Available"
+        tokenTotalAmountLabel.text = "\(asset.balance) \(asset.symbol) Available"
     }
     
     @objc func scrollViewTapped() {

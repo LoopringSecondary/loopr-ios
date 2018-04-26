@@ -128,27 +128,8 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
             let convertBarButtton = UIBarButtonItem(customView: convertButton)
             self.navigationItem.rightBarButtonItem = convertBarButtton
         }
-
     }
 
-    // Not going to use a singleton pattern to store asset data.
-    func getDataFromServer() {
-        
-    }
-    
-    @objc func pressQRCodeButton(_ button: UIBarButtonItem) {
-        print("pressQRCodeButton")
-        let viewController = QRCodeViewController()
-        viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    /*
-    @objc func pressSendButton(_ button: UIBarButtonItem) {
-        print("pressSendButton")
-    }
-    */
-    
     @objc func pressedConvertButton(_ sender: Any) {
         print("pressedConvertButton")
         let viewController = ConvertETHViewController()
@@ -165,8 +146,9 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
 
     @IBAction func pressedReceiveButton(_ sender: Any) {
         print("pressedReceiveButton")
-        
-        // TODO: the design doesn't have the receive page.
+        let viewController = QRCodeViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

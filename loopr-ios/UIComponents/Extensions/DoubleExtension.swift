@@ -17,4 +17,8 @@ extension Double {
         currencyFormatter.numberStyle = .currency
         return currencyFormatter.string(from: NSNumber(value: self))!
     }
+    
+    func format(_ f: String = ".4") -> String {
+        return String(format: "%\(f)f", self)
+    }
 }

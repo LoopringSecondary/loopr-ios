@@ -51,9 +51,6 @@
 		94C5E79520738ADE0074B939 /* OrderSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C5E79320738ADE0074B939 /* OrderSearchViewController.xib */; };
 		94C5E79C207394F50074B939 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5E79A207394F40074B939 /* CustomSearchBar.swift */; };
 		94C5E79D207394F50074B939 /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5E79B207394F50074B939 /* CustomSearchController.swift */; };
-		94CCE684206BE06C002FFC0D /* XYMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CCE681206BE06C002FFC0D /* XYMarkerView.swift */; };
-		94CCE685206BE06C002FFC0D /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CCE682206BE06C002FFC0D /* BalloonMarker.swift */; };
-		94CCE686206BE06C002FFC0D /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CCE683206BE06C002FFC0D /* RadarMarkerView.swift */; };
 		94D94CE32084A9380000BBC8 /* ConfirmationResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D94CE12084A9380000BBC8 /* ConfirmationResultViewController.swift */; };
 		94D94CE42084A9380000BBC8 /* ConfirmationResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D94CE22084A9380000BBC8 /* ConfirmationResultViewController.xib */; };
 		94DCE551205FAC07005618E4 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCE550205FAC07005618E4 /* Trend.swift */; };
@@ -596,9 +593,6 @@
 		94C5E79320738ADE0074B939 /* OrderSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderSearchViewController.xib; sourceTree = "<group>"; };
 		94C5E79A207394F40074B939 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		94C5E79B207394F50074B939 /* CustomSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
-		94CCE681206BE06C002FFC0D /* XYMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYMarkerView.swift; sourceTree = "<group>"; };
-		94CCE682206BE06C002FFC0D /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
-		94CCE683206BE06C002FFC0D /* RadarMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarMarkerView.swift; sourceTree = "<group>"; };
 		94D94CE12084A9380000BBC8 /* ConfirmationResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationResultViewController.swift; sourceTree = "<group>"; };
 		94D94CE22084A9380000BBC8 /* ConfirmationResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmationResultViewController.xib; sourceTree = "<group>"; };
 		94DCE550205FAC07005618E4 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
@@ -1014,16 +1008,6 @@
 				94C11FD9208C2DE40050E180 /* SettingCurrencyTableViewCell.xib */,
 			);
 			path = SettingCurrency;
-			sourceTree = "<group>";
-		};
-		94CCE680206BE06C002FFC0D /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				94CCE681206BE06C002FFC0D /* XYMarkerView.swift */,
-				94CCE682206BE06C002FFC0D /* BalloonMarker.swift */,
-				94CCE683206BE06C002FFC0D /* RadarMarkerView.swift */,
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		94E665E32071DFD4001328BF /* SearchHistory */ = {
@@ -1703,7 +1687,6 @@
 		ACB5DD79202A1F3000140A09 /* MarketDetail */ = {
 			isa = PBXGroup;
 			children = (
-				94CCE680206BE06C002FFC0D /* Components */,
 				ACB9118620265DEA00F14644 /* MarketDetailViewController.swift */,
 				ACB9118720265DEA00F14644 /* MarketDetailViewController.xib */,
 				AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */,
@@ -2570,7 +2553,6 @@
 				AC387518205F12F100A76637 /* ContextMenu+MenuStyle.swift in Sources */,
 				AC5E0DE4203BC4B100AF03C7 /* FloatLabelTextField.swift in Sources */,
 				AC3756802039198300AADC60 /* GenerateMnemonicViewController.swift in Sources */,
-				94CCE686206BE06C002FFC0D /* RadarMarkerView.swift in Sources */,
 				FF9C7DDC208D59EA004687AD /* SettingsBundleHelper.swift in Sources */,
 				ACB9119520278A4000F14644 /* Request.swift in Sources */,
 				AC76E47320493CAE008BA229 /* SettingLanguageViewController.swift in Sources */,
@@ -2620,7 +2602,6 @@
 				AC5288B3208300580002AEAD /* TokenUtil.swift in Sources */,
 				AC4141F320352C460089861D /* SwipeViewController.swift in Sources */,
 				ACCCFDD0203BF1D100B98F99 /* FloatLabelTextView.swift in Sources */,
-				94CCE685206BE06C002FFC0D /* BalloonMarker.swift in Sources */,
 				AC2D2C072089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift in Sources */,
 				AC5E0DDE203B447700AF03C7 /* WalletBalanceTableViewCell.swift in Sources */,
 				AC31B962204A8E4F00B16155 /* DerivationPath.Index.swift in Sources */,
@@ -2787,7 +2768,6 @@
 				AC4141EF203524280089861D /* MarketSwipeViewController.swift in Sources */,
 				AC06193E208417AF0060F416 /* SetupWalletMethod.swift in Sources */,
 				ACE5BF95204523F9005D75DD /* UIStyleKeyboard.swift in Sources */,
-				94CCE684206BE06C002FFC0D /* XYMarkerView.swift in Sources */,
 				AC387520205F12F100A76637 /* ContextMenu+ContainerStyle.swift in Sources */,
 				ACB5DD98202D5A8400140A09 /* NumericKeyboard.swift in Sources */,
 			);

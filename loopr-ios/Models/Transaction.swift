@@ -41,7 +41,7 @@ class Transaction {
         self.updateTime = updateTime
         
         if let value = Asset.getAmount(of: symbol, from: value) {
-            self.value = value.description
+            self.value = value.format().description
             if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: symbol) {
                 let total = price * Double(value)
                 self.display = total.currency

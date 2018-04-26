@@ -26,12 +26,7 @@ class AssetBalanceTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        balanceLabel.setFont(UIFont.init(name: FontConfigManager.shared.getRegular(), size: 27)!)
-        balanceLabel.animationDuration = 0.25
-        balanceLabel.textAlignment = NSTextAlignment.center
-        balanceLabel.initializeLabel()
-        balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
-        balanceLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
+        setupLabel()
         
         marketView.layer.cornerRadius = 20
         marketButton.layer.borderColor = UIColor(red: 165/255, green: 165/255, blue: 165/255, alpha: 1).cgColor
@@ -40,6 +35,22 @@ class AssetBalanceTableViewCell: UITableViewCell {
         self.theme_backgroundColor = ["#fff", "#000"]
     }
 
+    func setupLabel() {
+        let font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 13)!
+        
+        balanceLabel.setFont(UIFont.init(name: FontConfigManager.shared.getRegular(), size: 27)!)
+        balanceLabel.animationDuration = 0.25
+        balanceLabel.textAlignment = NSTextAlignment.center
+        balanceLabel.initializeLabel()
+        balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
+        balanceLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
+        
+        marketLabel.font = font
+        marketDisplayLabel.font = font
+        marketBalanceLabel.font = font
+        changeLabel.font = font
+    }
+    
     func update() {
         if let asset = self.asset {
             balanceLabel.setText(asset.balance.description, animated: false)
