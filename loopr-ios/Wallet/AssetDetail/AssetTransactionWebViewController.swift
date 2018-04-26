@@ -18,7 +18,11 @@ class AssetTransactionWebViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
         setBackButton()
+        self.navigationItem.title = "Etherscan.io"
+        view.theme_backgroundColor = ["#fff", "#000"]
+        
         let request = URLRequest(url: url!)
         wkWebView.load(request)
     }

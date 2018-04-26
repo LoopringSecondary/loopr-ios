@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,20 +32,20 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Received" translatesAutoresizingMaskIntoConstraints="NO" id="38X-Nk-VNp">
-                    <rect key="frame" x="142" y="100" width="90" height="90"/>
+                    <rect key="frame" x="142.5" y="116.5" width="90" height="90"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="90" id="bfX-Kf-vW5"/>
                         <constraint firstAttribute="width" constant="90" id="djp-Up-PoI"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="49,459.304 LRC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6s8-27-c3t">
-                    <rect key="frame" x="76" y="239.5" width="223.5" height="36"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="49,459.304 LRC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6s8-27-c3t">
+                    <rect key="frame" x="16" y="274" width="343" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="≈ $4939.56" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iO9-rV-377">
-                    <rect key="frame" x="142" y="298.5" width="91.5" height="21"/>
+                    <rect key="frame" x="142.5" y="333" width="91.5" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -56,12 +56,13 @@
                 <constraint firstItem="38X-Nk-VNp" firstAttribute="centerX" secondItem="iO9-rV-377" secondAttribute="centerX" id="0KD-UR-1kC"/>
                 <constraint firstItem="Ew9-jM-zZY" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" multiplier="0.2" id="Arw-Fb-fNT"/>
                 <constraint firstItem="Ew9-jM-zZY" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Dwm-hZ-Ok8"/>
-                <constraint firstItem="6s8-27-c3t" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" multiplier="0.75" id="Lq2-fV-ls9"/>
-                <constraint firstItem="38X-Nk-VNp" firstAttribute="centerX" secondItem="6s8-27-c3t" secondAttribute="centerX" id="Qi3-pC-wFe"/>
-                <constraint firstItem="iO9-rV-377" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" multiplier="0.9" id="aeq-Rp-ETB"/>
+                <constraint firstItem="6s8-27-c3t" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" multiplier="0.85" id="Lq2-fV-ls9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6s8-27-c3t" secondAttribute="trailing" constant="16" id="OlF-Pe-ZZm"/>
+                <constraint firstItem="iO9-rV-377" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="aeq-Rp-ETB"/>
+                <constraint firstItem="6s8-27-c3t" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="erK-2J-uYa"/>
                 <constraint firstItem="Ew9-jM-zZY" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="fwD-EG-zh0"/>
                 <constraint firstItem="38X-Nk-VNp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="iUL-a8-0uI"/>
-                <constraint firstItem="38X-Nk-VNp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="0.3" id="jfv-y8-YID"/>
+                <constraint firstItem="38X-Nk-VNp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="0.35" id="jfv-y8-YID"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="34.5" y="124.5"/>

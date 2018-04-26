@@ -139,6 +139,7 @@ class AssetTransactionDetailViewController: UIViewController {
         titleLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 30)
         titleLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
         amountLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 40)
+        
         amountLabel.textColor = Themes.isNight() ? UIColor.white : UIColor.black
         amountInCurrencyLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 20)
         amountInCurrencyLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
@@ -152,12 +153,12 @@ class AssetTransactionDetailViewController: UIViewController {
             } else if tx.type == .received {
                 etherUrl += tx.from
             }
-        }
-        if let url = URL(string: etherUrl) {
-            let viewController = AssetTransactionWebViewController()
-            viewController.url = url
-            viewController.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(viewController, animated: true)
+            if let url = URL(string: etherUrl) {
+                let viewController = AssetTransactionWebViewController()
+                viewController.url = url
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
         }
     }
     
@@ -165,12 +166,12 @@ class AssetTransactionDetailViewController: UIViewController {
         var etherUrl = "https://etherscan.io/tx/"
         if let tx = self.transaction {
             etherUrl += tx.txHash
-        }
-        if let url = URL(string: etherUrl) {
-            let viewController = AssetTransactionWebViewController()
-            viewController.url = url
-            viewController.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(viewController, animated: true)
+            if let url = URL(string: etherUrl) {
+                let viewController = AssetTransactionWebViewController()
+                viewController.url = url
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
         }
     }
     
