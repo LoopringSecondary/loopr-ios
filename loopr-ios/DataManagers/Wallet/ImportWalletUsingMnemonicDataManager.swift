@@ -52,7 +52,8 @@ class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
         // append "/x"
         let pathValue = derivationPathValue + "/x"
 
-        for i in 0..<30 {
+        // TODO: in theory, it should generate many many addresses. However, we should only top 100 addresses. Improve in the future.
+        for i in 0..<100 {
             let key = (addresses.count) + i
             let wallet = Wallet(mnemonic: mnemonic, password: password, path: pathValue)
             let address = wallet.getKey(at: key).address

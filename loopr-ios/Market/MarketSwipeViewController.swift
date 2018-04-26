@@ -84,7 +84,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         // TODO: .segmented will disable the value of width
         options.swipeTabView.style = .segmented
         
-        options.swipeTabView.itemView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 21) ?? UIFont.systemFont(ofSize: 21)
+        options.swipeTabView.itemView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17) ?? UIFont.systemFont(ofSize: 17)
         
         // This conflicts to the swipe action in the table view cell.
         options.swipeContentScrollView.isScrollEnabled = false
@@ -133,7 +133,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     @objc func pressOrderHistoryButton(_ button: UIBarButtonItem) {
         print("pressOrderHistoryButton")
         let viewController = OrderHistoryViewController()
-        viewController.orders = OrderDataManager.shared.getDataOrders(token: nil)
+        viewController.orders = OrderDataManager.shared.getDataOrders(tokenSymbol: nil)
         viewController.hidesBottomBarWhenPushed = true
         
         // Set endEnditing to true, otherwise the keyboard will trigger a wired animation.

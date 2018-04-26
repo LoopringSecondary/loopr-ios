@@ -12,11 +12,17 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var resultTableView: UITableView!
     
+    let searchBar = UISearchBar()
+    
+    var enteredSearchText = false
+    var orders: [String: [Order]] = [:]
+    var orderDates: [String] = []
+    
     var historyRecord = Set<String>()
     var filteredRecord = Set<String>()
     var shouldShowSearchResults = false
     var searchController: UISearchController!
-    var customSearchController: CustomSearchController!
+    // var customSearchController: CustomSearchController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +31,17 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
         resultTableView.delegate = self
         resultTableView.dataSource = self
 //        configureSearchController()
-        configureCustomSearchController()
+        // configureCustomSearchController()
         setupHistoryRecord()
+        setupSearchBar()
+
+        let leftButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressedCancelButton))
+        self.navigationItem.rightBarButtonItem = leftButton
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchBar.becomeFirstResponder()
     }
     
     func setupHistoryRecord() {
@@ -41,6 +56,23 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
         let defaults = UserDefaults.standard
         let key = UserDefaultsKeys.orderHistory.rawValue
         defaults.set(historyRecord.map {$0}, forKey: key)
+    }
+    
+    func setupSearchBar() {
+        searchBar.showsCancelButton = false
+        searchBar.placeholder = "Search"
+        searchBar.delegate = self
+        
+        // searchBar.searchBarStyle = .minimal
+        
+        let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
+        searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
+        navigationItem.titleView = searchBarContainer
+    }
+    
+    @objc func pressedCancelButton() {
+        searchBar.resignFirstResponder()
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     func configureSearchController() {
@@ -65,6 +97,7 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
         shouldShowSearchResults  = false
     }
     
+    /*
     func configureCustomSearchController() {
         customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRect(x: 0.0, y: 0.0, width: resultTableView.frame.size.width, height: 50.0), searchBarFont: UIFont(name: FontConfigManager.shared.getLight(), size: 16.0)!, searchBarTextColor: UIColor.gray, searchBarTintColor: UIColor.white)
         customSearchController.customSearchBar.placeholder = "Search"
@@ -72,13 +105,20 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
         resultTableView.tableHeaderView = customSearchController.customSearchBar
         customSearchController.customDelegate = self
     }
+    */
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 25))
         headerView.backgroundColor = UIColor.white
         let headerLabel = UILabel(frame: CGRect(x: 10, y: 7, width: view.frame.size.width, height: 25))
         headerLabel.textColor = UIColor.gray
-        headerLabel.text = "Search History"
+        
+        if enteredSearchText {
+            headerLabel.text = orderDates[section]
+        } else {
+            headerLabel.text = NSLocalizedString("Search History", comment: "")
+        }
+
         headerView.addSubview(headerLabel)
         return headerView
     }
@@ -105,45 +145,96 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: OrderHistorySearchResultCell.getCellIdentifier()) as? OrderHistorySearchResultCell
-        if cell == nil {
-            let nib = Bundle.main.loadNibNamed("OrderHistorySearchResultCell", owner: self, options: nil)
-            cell = nib![0] as? OrderHistorySearchResultCell
-        }
-        if let token = getHistoryToken(at: indexPath.row) {
-            cell?.token = token
+        if enteredSearchText {
+            var cell = tableView.dequeueReusableCell(withIdentifier: OrderHistoryTableViewCell.getCellIdentifier()) as? OrderHistoryTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("OrderHistoryTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? OrderHistoryTableViewCell
+            }
+            cell?.order = orders[orderDates[indexPath.section]]![indexPath.row]
             cell?.update()
+            return cell!
+        } else {
+            var cell = tableView.dequeueReusableCell(withIdentifier: OrderHistorySearchResultCell.getCellIdentifier()) as? OrderHistorySearchResultCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("OrderHistorySearchResultCell", owner: self, options: nil)
+                cell = nib![0] as? OrderHistorySearchResultCell
+            }
+            if let token = getHistoryToken(at: indexPath.row) {
+                cell?.token = token
+                cell?.update()
+            }
+            return cell!
         }
-        return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let token = getHistoryToken(at: indexPath.row) {
-            let viewController = OrderSearchResultViewController()
-            viewController.token = token
+
+        if enteredSearchText {
+            let order = orders[orderDates[indexPath.section]]![indexPath.row]
+            let viewController = OrderDetailViewController()
+            viewController.order = order
             viewController.hidesBottomBarWhenPushed = true
-            present(viewController, animated: true, completion: nil)
+            self.navigationController?.view.endEditing(true)
+            self.navigationController?.pushViewController(viewController, animated: true)
+            
+        } else {
+            enteredSearchText = true
+
+            if let token = getHistoryToken(at: indexPath.row) {
+                searchBar.text = token.symbol
+                
+                orders = OrderDataManager.shared.getDataOrders(tokenSymbol: token.symbol)
+                orderDates = orders.keys.sorted(by: >)
+                
+                resultTableView.reloadData()
+                
+                /*
+                 let viewController = OrderSearchResultViewController()
+                 viewController.token = token
+                 viewController.hidesBottomBarWhenPushed = true
+                 // present(viewController, animated: true, completion: nil)
+                 */
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if shouldShowSearchResults {
-            return self.filteredRecord.count
+        if enteredSearchText {
+            return orders[orderDates[section]]!.count
         } else {
-            return self.historyRecord.count
+            if shouldShowSearchResults {
+                return self.filteredRecord.count
+            } else {
+                return self.historyRecord.count
+            }
         }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if enteredSearchText {
+            return orderDates.count
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        if enteredSearchText {
+            return OrderHistoryTableViewCell.getHeight()
+        } else {
+            return OrderHistorySearchResultCell.getHeight()
+        }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print("scrollViewWillBeginDragging")
+        searchBar.resignFirstResponder()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        enteredSearchText = false
         filteredRecord = historyRecord.filter({ (record) -> Bool in
             return record.lowercased().hasPrefix(searchText.lowercased())
         })
@@ -152,8 +243,10 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
+        // searchBar.resignFirstResponder()
+        enteredSearchText = true
         if let searchText = searchBar.text {
+            /*
             if let token = Token(symbol: searchText) {
                 historyRecord.insert(searchText)
                 let viewController = OrderSearchResultViewController()
@@ -161,6 +254,14 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
+            */
+            if let _ = Token(symbol: searchText) {
+                self.historyRecord.insert(searchText)
+                updateHistoryRecord()
+            }
+            orders = OrderDataManager.shared.getDataOrders(tokenSymbol: searchText)
+            orderDates = orders.keys.sorted(by: >)
+            resultTableView.reloadData()
         }
     }
     

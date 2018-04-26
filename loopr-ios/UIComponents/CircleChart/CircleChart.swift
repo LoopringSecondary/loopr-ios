@@ -23,7 +23,26 @@ class CircleChart: UIView {
     var textFont: UIFont = UIFont.systemFont(ofSize: 14)
     var strokeColor: CGColor = UIColor.black.cgColor
     var fillColor: CGColor = UIColor.clear.cgColor
-
+    
+    let shapeLayer = CAShapeLayer()
+    let label = UILabel()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        layer.addSublayer(shapeLayer)
+        addSubview(label)
+    }
+    
+    convenience init() {
+        self.init(frame: CGRect.zero)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        layer.addSublayer(shapeLayer)
+        addSubview(label)
+    }
+    
     override func draw(_ rect: CGRect) {
         drawCircleFittingInsideView()
         if showText {
@@ -41,23 +60,19 @@ class CircleChart: UIView {
             endAngle: endAngle * percentage - CGFloat.pi*0.5,
             clockwise: clockwise)
 
-        let shapeLayer = CAShapeLayer()
         shapeLayer.path = circlePath.cgPath
         
         shapeLayer.fillColor = fillColor
         shapeLayer.strokeColor = strokeColor
         shapeLayer.lineWidth = desiredLineWidth
-        
-        layer.addSublayer(shapeLayer)
     }
     
     internal func showTextInsdieView() {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height))
+        label.frame = CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height)
         label.textAlignment = .center
         label.textColor = textColor
         label.font = textFont
-        percentage = (percentage * 10000).rounded() / 100
+        let percentage = (self.percentage * 10000).rounded() / 100
         label.text = "\(percentage)%"
-        addSubview(label)
     }
 }

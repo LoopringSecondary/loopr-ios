@@ -36,7 +36,7 @@ class ExportKeystoreSwipeViewController: SwipeViewController {
         
         options.swipeTabView.style = .segmented
         
-        options.swipeTabView.itemView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 21) ?? UIFont.systemFont(ofSize: 21)
+        options.swipeTabView.itemView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17) ?? UIFont.systemFont(ofSize: 17)
         
         swipeView.reloadData(options: options)
     }

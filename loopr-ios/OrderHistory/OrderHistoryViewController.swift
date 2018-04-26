@@ -37,10 +37,14 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
     
     @objc func pressOrderSearchButton(_ button: UIBarButtonItem) {
         print("pressOrderSearchButton")
+
         let viewController = OrderSearchViewController()
         // viewController.hidesBottomBarWhenPushed = true
-        
-        self.present(viewController, animated: true, completion: nil)
+        let navigationController = UINavigationController.init(rootViewController: viewController)
+        navigationController.navigationBar.shadowImage = UIImage()
+        navigationController.navigationBar.isTranslucent = false
+        navigationController.navigationBar.tintColor = UIStyleConfig.defaultTintColor
+        self.present(navigationController, animated: true, completion: nil)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

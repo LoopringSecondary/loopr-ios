@@ -62,15 +62,15 @@ class OrderDataManager {
         return result
     }
     
-    func getDataOrders(token: String? = nil) -> [String: [Order]] {
-        guard let token = token else {
+    func getDataOrders(tokenSymbol: String? = nil) -> [String: [Order]] {
+        guard let tokenSymbol = tokenSymbol else {
             return dateOrders
         }
         var result: [String: [Order]] = [:]
         for (date, orders) in dateOrders {
             for order in orders {
                 let pair = order.originalOrder.market.components(separatedBy: "-")
-                if pair[0].lowercased() == token.lowercased() {
+                if pair[0].lowercased() == tokenSymbol.lowercased() {
                     if result[date] == nil {
                         result[date] = []
                     }
