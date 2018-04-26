@@ -12,7 +12,7 @@ import Social
 class QRCodeViewController: UIViewController {
     
     @IBOutlet weak var qrcodeImageView: UIImageView!
-    var qrcodeImage: CIImage!
+    var qrcodeImage: UIImage!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var copyAddressButton: UIButton!
@@ -44,10 +44,7 @@ class QRCodeViewController: UIViewController {
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
         addressLabel.text = address
         let data = address?.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
-        let filter = CIFilter(name: "CIQRCodeGenerator")
-        filter?.setValue(data, forKey: "inputMessage")
-        filter?.setValue("Q", forKey: "inputCorrectionLevel")
-        qrcodeImage = filter!.outputImage
+        generateQRCode(from: data!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,14 +80,20 @@ class QRCodeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // Remove the blur effect
-        let scaleX = qrcodeImageView.frame.size.width / qrcodeImage.extent.size.width
-        let scaleY = qrcodeImageView.frame.size.height / qrcodeImage.extent.size.height
-        
-        let transformedImage = qrcodeImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
-        qrcodeImageView.image = UIImage.init(ciImage: transformedImage)
+
+        qrcodeImageView.image = qrcodeImage
         updateNavigationView(tintColor: UIColor.black, textColor: UIColor.white, statusBarStyle: .lightContent)
+    }
+    
+    func generateQRCode(from data: Data) {
+        let ciContext = CIContext()
+        if let filter = CIFilter(name: "CIQRCodeGenerator") {
+            filter.setValue(data, forKey: "inputMessage")
+            let transform = CGAffineTransform(scaleX: 5, y: 5)
+            let upScaledImage = filter.outputImage?.transformed(by: transform)
+            let cgImage = ciContext.createCGImage(upScaledImage!, from: upScaledImage!.extent)
+            qrcodeImage = UIImage(cgImage: cgImage!)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -99,8 +102,12 @@ class QRCodeViewController: UIViewController {
     }
     
     @IBAction func pressedShareButton(_ button: UIBarButtonItem) {
-        let objectsToShare: [Any] = ["textToShare", UIImage(ciImage: qrcodeImage)]
-        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        let text = NSLocalizedString("My wallet address in Loopr-IOS", comment: "")
+        
+        let png = UIImagePNGRepresentation(qrcodeImage)
+        
+        let shareAll = [text, png!] as [Any]
+        let activityVC = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
         activityVC.popoverPresentationController?.sourceView = self.view
         self.present(activityVC, animated: true, completion: nil)
     }
