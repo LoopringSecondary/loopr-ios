@@ -85,7 +85,7 @@
 		AC147BEC208D2E54008D5104 /* ImportWalletError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC147BEB208D2E54008D5104 /* ImportWalletError.swift */; };
 		AC147BEE208D2FD2008D5104 /* ImportWalletProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC147BED208D2FD2008D5104 /* ImportWalletProtocol.swift */; };
 		AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */; };
-		AC1E4BBC204B420D00C6B1FA /* KeystoneIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBB204B420D00C6B1FA /* KeystoneIntegrationTests.swift */; };
+		AC1E4BBC204B420D00C6B1FA /* KeystoreIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBB204B420D00C6B1FA /* KeystoreIntegrationTests.swift */; };
 		AC1E4BC0204B51AB00C6B1FA /* ImportWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */; };
 		AC1E4BC2204B52FD00C6B1FA /* wallet.json in Resources */ = {isa = PBXBuildFile; fileRef = AC1E4BC1204B52FD00C6B1FA /* wallet.json */; };
 		AC1E4BC4204B533000C6B1FA /* key.json in Resources */ = {isa = PBXBuildFile; fileRef = AC1E4BC3204B533000C6B1FA /* key.json */; };
@@ -630,7 +630,7 @@
 		AC147BEB208D2E54008D5104 /* ImportWalletError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletError.swift; sourceTree = "<group>"; };
 		AC147BED208D2FD2008D5104 /* ImportWalletProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletProtocol.swift; sourceTree = "<group>"; };
 		AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
-		AC1E4BBB204B420D00C6B1FA /* KeystoneIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeystoneIntegrationTests.swift; sourceTree = "<group>"; };
+		AC1E4BBB204B420D00C6B1FA /* KeystoreIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeystoreIntegrationTests.swift; sourceTree = "<group>"; };
 		AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletTests.swift; sourceTree = "<group>"; };
 		AC1E4BC1204B52FD00C6B1FA /* wallet.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = wallet.json; sourceTree = "<group>"; };
 		AC1E4BC3204B533000C6B1FA /* key.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = key.json; sourceTree = "<group>"; };
@@ -1101,7 +1101,7 @@
 			isa = PBXGroup;
 			children = (
 				AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */,
-				AC1E4BBB204B420D00C6B1FA /* KeystoneIntegrationTests.swift */,
+				AC1E4BBB204B420D00C6B1FA /* KeystoreIntegrationTests.swift */,
 				AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */,
 				AC1E4BC5204B58D400C6B1FA /* CreatePrivateKeyTests.swift */,
 				ACF06A05204C736A00C3FF86 /* CreateMnemonicTests.swift */,
@@ -2811,7 +2811,7 @@
 				AC798E5A2022B93B0071D477 /* LoopringAPIRequestTests.swift in Sources */,
 				AC1E4BC0204B51AB00C6B1FA /* ImportWalletTests.swift in Sources */,
 				AC1E4BC6204B58D400C6B1FA /* CreatePrivateKeyTests.swift in Sources */,
-				AC1E4BBC204B420D00C6B1FA /* KeystoneIntegrationTests.swift in Sources */,
+				AC1E4BBC204B420D00C6B1FA /* KeystoreIntegrationTests.swift in Sources */,
 				AC9280DD202E0F9F0009B574 /* EthereumAPIRequestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

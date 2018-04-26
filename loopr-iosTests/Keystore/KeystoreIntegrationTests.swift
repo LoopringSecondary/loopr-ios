@@ -9,7 +9,7 @@
 import XCTest
 @testable import loopr_ios
 
-class KeystoneIntegrationTests: XCTestCase {
+class KeystoreIntegrationTests: XCTestCase {
     
     // Test dataset:
     // private key : public key
