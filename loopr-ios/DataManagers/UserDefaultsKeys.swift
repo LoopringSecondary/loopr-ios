@@ -30,6 +30,6 @@ enum UserDefaultsKeys: String {
     case appWallets = "UserDefaultsKeys.appWallets"
     
     //Settings Bundle
-    case app_version = "UserDefaultsKeys.app_version"
-    case app_build_number = "UserDefaultsKeys.app_build_number"
+    case appVersion = "UserDefaultsKeys.appVersion"
+    case appBuildNumber = "UserDefaultsKeys.appBuildNumber"
 }

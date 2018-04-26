@@ -63,7 +63,7 @@ class ImportWalletUsingKeystoreDataManager: ImportWalletProtocol {
         let account = keyStore.accounts[0]
         print(account.address.description)
         
-        let privateKeyData = try! keyStore.exportPrivateKey(account: account, password: "12345678")
+        let privateKeyData = try! keyStore.exportPrivateKey(account: account, password: password)
         
         let privateKeyString = privateKeyData.toHexString()
         
