@@ -63,7 +63,7 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
         searchBar.placeholder = "Search"
         searchBar.delegate = self
         
-        // searchBar.searchBarStyle = .minimal
+        searchBar.searchBarStyle = .minimal
         
         let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
         searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
