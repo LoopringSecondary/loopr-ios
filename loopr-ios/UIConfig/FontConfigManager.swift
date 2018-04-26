@@ -22,7 +22,8 @@ class FontConfigManager {
 
     static let shared = FontConfigManager()
     
-    var currentFont: SupportedFonts = .Lato
+    // To change the font in the app
+    var currentFont: SupportedFonts = .OpenSans
     
     private init() {
         // currentFont = getCurrentFontFromLocalStorage()
