@@ -26,6 +26,9 @@ struct MnemonicQuestion {
         options.append(getRandomMnemoic())
         options.append(getRandomMnemoic())
         options.append(getRandomMnemoic())
+        
+        // Shuffle
+        options = options.shuffled()
     }
 
     // TODO: will be deprecated if we have a better method
