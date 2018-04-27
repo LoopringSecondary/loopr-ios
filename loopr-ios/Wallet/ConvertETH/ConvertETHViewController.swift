@@ -96,6 +96,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         amountTextField.placeholder = "Amount"
         amountTextField.contentMode = UIViewContentMode.bottom
         amountTextField.frame = CGRect(x: padding, y: tokenSView.frame.maxY + padding, width: screenWidth-padding*2-80, height: 40)
+        amountTextField.placeholder = NSLocalizedString("Amount you want to Convert", comment: "")
         scrollView.addSubview(amountTextField)
 
         amountUnderLine.frame = CGRect(x: padding, y: tokenSLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
@@ -115,10 +116,9 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         maxButton.contentHorizontalAlignment = .right
         maxButton.frame = CGRect(x: screenWidth-80-padding, y: amountUnderLine.frame.maxY, width: 80, height: 40)
         maxButton.addTarget(self, action: #selector(self.pressedMaxButton(_:)), for: UIControlEvents.touchUpInside)
-
         scrollView.addSubview(maxButton)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -153,9 +153,16 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     
     func updateLabel() {
         tokenSLabel.text = asset!.symbol
-        let symbol = asset!.symbol
-        infoLabel.text = symbol.uppercased() == "ETH" ? "1 ETH = 1 WETH" : "1 WETH = 1 ETH"
-        availableLabel.text = "Available \(ConvertDataManager.shared.getMaxAmount(symbol: symbol.uppercased())) \(symbol)"
+        let symbol = asset!.symbol.uppercased()
+        infoLabel.text = symbol == "ETH" ? "1 ETH = 1 WETH" : "1 WETH = 1 ETH"
+        let maxAmount = ConvertDataManager.shared.getMaxAmount(symbol: symbol)
+        availableLabel.text = "Available \(maxAmount) \(symbol)"
+        availableLabel.textColor = .black
+        if let text = amountTextField.text, let inputAmount = Double(text) {
+            if inputAmount > maxAmount {
+                availableLabel.textColor = .red
+            }
+        }
     }
     
     @objc func pressedArrowButton(_ sender: Any) {
@@ -173,6 +180,11 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         if let asset = self.asset {
             amountTextField.text = String(ConvertDataManager.shared.getMaxAmount(symbol: asset.symbol))
         }
+    }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        amountTextField.becomeFirstResponder() //Optional
+
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -293,6 +305,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             let itemValue = position.row * 3 + position.column + 1
             activeTextField!.text = currentText + String(itemValue)
         }
+        updateLabel()
     }
 }
 

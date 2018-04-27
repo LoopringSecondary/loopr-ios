@@ -34,6 +34,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     var amountTextField: UITextField = UITextField()
     var tokenSymbolLabel: UILabel = UILabel()
     var amountUnderline: UIView = UIView()
+    var amountTradeImage: UIImageView = UIImageView()
     var amountInfoLabel: UILabel = UILabel()
     var maxButton: UIButton = UIButton()
     
@@ -48,6 +49,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     // Keyboard
     var isKeyboardShow: Bool = false
     var keyboardView: DefaultNumericKeyboard!
+    var activeTextFieldTag = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +57,10 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         // Do any additional setup after loading the view.
         setBackButton()
 
+        sendButton.setTitleColor(.gray, for: .disabled)
         sendButton.title = NSLocalizedString("Send", comment: "")
         sendButton.setupRoundBlack()
+        updateButton(isValid: false)
         
         scrollViewButtonLayoutConstraint.constant = 77
         sendButtonLayoutContraint.constant = 15
@@ -83,12 +87,18 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
 
         addressTextField.delegate = self
         addressTextField.tag = 0
+        addressTextField.keyboardType = .alphabet
         addressTextField.font = FontConfigManager.shared.getLabelFont()
         addressInfoLabel.theme_tintColor = GlobalPicker.textColor
         addressTextField.placeholder = NSLocalizedString("Enter the address", comment: "")
         addressTextField.contentMode = UIViewContentMode.bottom
-        addressTextField.frame = CGRect(x: padding, y: tokenTotalAmountLabel.frame.maxY + padding*3, width: screenWidth-padding*2, height: 40)
+        addressTextField.frame = CGRect(x: padding, y: tokenTotalAmountLabel.frame.maxY + padding*3, width: screenWidth-padding*2-40, height: 40)
         scrollView.addSubview(addressTextField)
+        
+        scanButton.image = UIImage(named: "Scan")
+        scanButton.frame = CGRect(x: screenWidth-padding-40, y: addressTextField.frame.origin.y, width: 40, height: 40)
+        scanButton.addTarget(self, action: #selector(pressedScanButton(_:)), for: .touchUpInside)
+        scrollView.addSubview(scanButton)
         
         addressUnderLine.frame = CGRect(x: padding, y: addressTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
         addressUnderLine.backgroundColor = UIColor.black
@@ -102,11 +112,11 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         // Third row: Amount
         
         amountTextField.delegate = self
-        amountTextField.tag = 1
         // amountTextField.inputView = UIView()
+        amountTextField.tag = 1
         amountTextField.font = FontConfigManager.shared.getLabelFont()
         amountTextField.theme_tintColor = GlobalPicker.textColor
-        amountTextField.placeholder = NSLocalizedString("Enter the amount", comment: "")
+        amountTextField.placeholder = NSLocalizedString("Enter the amount you want to trade", comment: "")
         amountTextField.contentMode = UIViewContentMode.bottom
         amountTextField.frame = CGRect(x: padding, y: addressInfoLabel.frame.maxY + padding*1.5, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(amountTextField)
@@ -120,9 +130,13 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         amountUnderline.backgroundColor = UIColor.black
         scrollView.addSubview(amountUnderline)
         
-        amountInfoLabel.frame = CGRect(x: padding, y: amountUnderline.frame.maxY, width: screenWidth - padding * 2, height: 40)
+        amountTradeImage.image = UIImage(named: "Convert")
+        amountTradeImage.frame = CGRect(x: padding, y: amountUnderline.frame.maxY + 13, width: 15, height: 15)
+        scrollView.addSubview(amountTradeImage)
+        
+        amountInfoLabel.frame = CGRect(x: padding*2 + 10, y: amountUnderline.frame.maxY, width: screenWidth - padding * 2, height: 40)
         amountInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)
-        amountInfoLabel.text = asset.display
+        amountInfoLabel.text = 0.0.currency
         scrollView.addSubview(amountInfoLabel)
         
         maxButton.title = NSLocalizedString("Max", comment: "")
@@ -134,7 +148,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         maxButton.addTarget(self, action: #selector(self.pressedMaxButton(_:)), for: UIControlEvents.touchUpInside)
         scrollView.addSubview(maxButton)
         
-        transactionFeeLabel.frame = CGRect(x: padding, y: maxButton.frame.maxY + padding*2, width: 120, height: 40)
+        transactionFeeLabel.frame = CGRect(x: padding, y: maxButton.frame.maxY + padding*2, width: 160, height: 40)
         transactionFeeLabel.font = FontConfigManager.shared.getLabelFont()
         transactionFeeLabel.text = NSLocalizedString("Transaction Fee", comment: "")
         scrollView.addSubview(transactionFeeLabel)
@@ -183,44 +197,78 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         super.viewWillAppear(animated)
         
         // TODO: Update the transaction fee is needed. in SendCurrentAppWalletDataManager
-        addressTextField.text = "0x8311804426a24495bd4306daf5f595a443a52e32"
-        amountTextField.text = "0.1"
-        
         tokenSymbolLabel.text = asset.symbol
-        
-        // TODO: Use mock data
         tokenTotalAmountLabel.text = "\(asset.balance) \(asset.symbol) Available"
     }
     
     @objc func scrollViewTapped() {
         print("scrollViewTapped")
-        addressTextField.resignFirstResponder()
         amountTextField.resignFirstResponder()
         hideKeyboard()
     }
     
-    func validation() -> Bool {
-        var result = false
-        if let toAddress = addressTextField.text, let amountString = amountTextField.text {
-            if !toAddress.isEmpty && toAddress.isHexAddress() {
-                if !amountString.isEmpty, let amount = Double(amountString) {
-                    if asset.balance >= amount {
-                        if GethBigInt.bigInt(amountString) != nil {
-                            result = true
-                        }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("sdfsdfsf")
+    }
+    
+    func updateLabel(label: UILabel, text: String, textColor: UIColor) {
+        label.textColor = textColor
+        label.text = text
+    }
+    
+    func updateButton(isValid: Bool) {
+        sendButton.isEnabled = isValid
+    }
+    
+    func validateAddress() -> Bool {
+        if let toAddress = addressTextField.text {
+            if !toAddress.isEmpty {
+                if toAddress.isHexAddress() {
+                    var error: NSError? = nil
+                    if GethNewAddressFromHex(toAddress, &error) != nil {
+                        updateLabel(label: addressInfoLabel, text: NSLocalizedString("Please confirm the address before sending.", comment: ""), textColor: .black)
+                        return true
                     }
                 }
+                updateLabel(label: addressInfoLabel, text: NSLocalizedString("Please input a correct address.", comment: ""), textColor: .red)
+            } else {
+                updateLabel(label: addressInfoLabel, text: NSLocalizedString("Please confirm the address before sending.", comment: ""), textColor: .black)
             }
         }
-        return result
+        return false
+    }
+    
+    func validateAmount() -> Bool {
+        if let amountString = amountTextField.text {
+            if !amountString.isEmpty, let amount = Double(amountString) {
+                if asset.balance >= amount {
+                    if GethBigInt.bigInt(amountString) != nil {
+                        if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
+                            let display = (amount * price).currency
+                            updateLabel(label: amountInfoLabel, text: display, textColor: .black)
+                            return true
+                        }
+                    }
+                } else {
+                    updateLabel(label: amountInfoLabel, text: asset.display, textColor: .red)
+                }
+            } else {
+                updateLabel(label: amountInfoLabel, text: 0.0.currency, textColor: .black)
+            }
+        }
+        return false
+    }
+
+    func validation() {
+        var isValid = false
+        if validateAddress() && validateAmount() {
+            isValid = true
+        }
+        updateButton(isValid: isValid)
     }
 
     @IBAction func pressedSendButton(_ sender: Any) {
         print("start sending")
-        guard validation() else {
-            // TODO: tip in ui
-            return
-        }
         let toAddress = addressTextField.text!
         let gethAmount = GethBigInt.bigInt(amountTextField.text!)!
         if let token = TokenDataManager.shared.getTokenBySymbol(asset!.symbol) {
@@ -239,6 +287,12 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         }
     }
     
+    @objc func pressedScanButton(_ sender: Any) {
+        let viewController = ScanQRCodeViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     @objc func pressedMaxButton(_ sender: Any) {
         print("pressedMaxButton")
         amountTextField.text = asset.balance.description
@@ -254,30 +308,31 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        print("textFieldShouldBeginEditing")
-        
-        return true
+        var result = false
+        if textField.tag == 0 {
+            hideKeyboard()
+            result = true
+        } else if textField.tag == 1 {
+            showKeyboard(textField: amountTextField)
+        }
+        return result
     }
     
     func getActiveTextField() -> UITextField? {
-        return nil
+        return amountTextField
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
         guard let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
             return
         }
-        
         let keyboardHeight = keyboardFrame.cgRectValue.height
-        
         if #available(iOS 11.0, *) {
             // Get the the distance from the bottom safe area edge to the bottom of the screen
             let window = UIApplication.shared.keyWindow
             let bottomPadding = window?.safeAreaInsets.bottom
-            
             scrollViewButtonLayoutConstraint.constant = keyboardHeight + 77
             sendButtonLayoutContraint.constant = keyboardHeight + 15 - bottomPadding!
-            
         } else {
             sendButtonLayoutContraint.constant = keyboardHeight
         }
@@ -287,14 +342,78 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         print("keyboardWillDisappear")
         scrollViewButtonLayoutConstraint.constant = 77
         sendButtonLayoutContraint.constant = 15
+        if validateAddress() {
+            validation()
+        }
     }
 
     func showKeyboard(textField: UITextField) {
-        
+        if !isKeyboardShow {
+            let width = self.view.frame.width
+            let height = self.sendButtonBackgroundView.frame.origin.y
+            let keyboardHeight: CGFloat = 220
+            scrollViewButtonLayoutConstraint.constant = keyboardHeight
+            keyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: keyboardHeight))
+            keyboardView.delegate = self
+            view.addSubview(keyboardView)
+            view.bringSubview(toFront: sendButtonBackgroundView)
+            view.bringSubview(toFront: sendButton)
+            let destinateY = height - keyboardHeight
+            
+            // TODO: improve the animation.
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+                self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
+            }, completion: { _ in
+                self.isKeyboardShow = true
+            })
+        }
     }
     
     func hideKeyboard() {
-        
+        if isKeyboardShow {
+            let width = self.view.frame.width
+            let height = self.sendButtonBackgroundView.frame.origin.y
+            let keyboardHeight: CGFloat = 220
+            let destinateY = height
+            self.scrollViewButtonLayoutConstraint.constant = 0
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                // animation for layout constraint change.
+                self.view.layoutIfNeeded()
+                self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
+            }, completion: { finished in
+                self.isKeyboardShow = false
+                if finished {
+                }
+            })
+            if validateAmount() {
+                validation()
+            }
+        } else {
+            self.scrollView.setContentOffset(CGPoint.zero, animated: true)
+        }
+    }
+    
+    func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemTapped item: NumericKeyboardItem, atPosition position: Position) {
+        print("pressed keyboard: (\(position.row), \(position.column))")
+        let activeTextField: UITextField? = getActiveTextField()
+        guard activeTextField != nil else {
+            return
+        }
+        var currentText = activeTextField!.text ?? ""
+        switch (position.row, position.column) {
+        case (3, 0):
+            activeTextField!.text = currentText + "."
+        case (3, 1):
+            activeTextField!.text = currentText + "0"
+        case (3, 2):
+            if currentText.count > 0 {
+                currentText = String(currentText.dropLast())
+            }
+            activeTextField!.text = currentText
+        default:
+            let itemValue = position.row * 3 + position.column + 1
+            activeTextField!.text = currentText + String(itemValue)
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
