@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 
@@ -27,12 +28,9 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
 
         unlockButton.setTitle(NSLocalizedString("Unlock", comment: ""), for: .normal)
-        
-        unlockButton.backgroundColor = UIColor.black
-        unlockButton.layer.cornerRadius = 23
-        unlockButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)        
+        unlockButton.setupRoundBlack()
 
-        mnemonicWordTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
+        mnemonicWordTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
         mnemonicWordTextView.cornerRadius = 12
         mnemonicWordTextView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17.0)
         mnemonicWordTextView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
@@ -46,7 +44,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         passwordTextField.tag = 0
         passwordTextField.theme_tintColor = GlobalPicker.textColor
         passwordTextField.font = FontConfigManager.shared.getLabelFont(size: 17)
-        passwordTextField.placeholder = "Mnemonic Password (optional)"
+        passwordTextField.placeholder = NSLocalizedString("Mnemonic Password (optional)", comment: "")
         passwordTextField.contentMode = UIViewContentMode.bottom
         
         passwordTextFieldUnderline.backgroundColor = UIColor.black.withAlphaComponent(0.1)
@@ -147,6 +145,17 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
     
     @IBAction func pressUnlockButton(_ sender: Any) {
         print("pressUnlockButton")
+        
+        let mnemonic = mnemonicWordTextView.text.trim()
+        guard Mnemonic.isValid(mnemonic) else {
+            let notificationTitle = NSLocalizedString("Invalid mnemonic. Please enter again.", comment: "")
+            let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
+            let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
+            let banner = NotificationBanner(attributedTitle: attributeString, style: .danger, colors: NotificationBannerStyle())
+            banner.duration = 1.5
+            banner.show()
+            return
+        }
         
         ImportWalletUsingMnemonicDataManager.shared.mnemonic = mnemonicWordTextView.text.trim()
         ImportWalletUsingMnemonicDataManager.shared.password = passwordTextField.text?.trim() ?? ""

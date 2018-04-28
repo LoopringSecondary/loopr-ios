@@ -53,4 +53,10 @@
 "Change Wallet Name" = "Change Wallet Name";
 "Exchange" = "Exchange";
 "Search History" = "Search History";
+"Invalid mnemonic. Please enter again." = "Invalid mnemonic. Please enter again.";
+"Invalid private key. Please enter again." = "Invalid private key. Please enter again.";
+"Invalid keystore. Please enter again." = "Invalid keystore. Please enter again.";
+"Mnemonic Password (optional)" = "Mnemonic Password (optional)";
+"Please set a password." = "Please set a password.";
+"Copy address to clipboard successfully!" = "Copy address to clipboard successfully!"
 

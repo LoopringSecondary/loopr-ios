@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 class PrivateKeyViewController: UIViewController, UITextViewDelegate {
 
@@ -24,12 +25,9 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
 
         unlockButton.setTitle(NSLocalizedString("Unlock", comment: ""), for: .normal)
-        
-        unlockButton.backgroundColor = UIColor.black
-        unlockButton.layer.cornerRadius = 23
-        unlockButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)
+        unlockButton.setupRoundBlack()
 
-        privateKeyTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
+        privateKeyTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
         privateKeyTextView.cornerRadius = 12
         privateKeyTextView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17.0)
         privateKeyTextView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
@@ -50,6 +48,10 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
     }
 
     // keyboardWillShow is called after viewDidAppear
@@ -81,6 +83,7 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
             privateKeyTextView.textColor = .black
         }
         privateKeyTextView.becomeFirstResponder() //Optional
+        // privateKeyTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -93,10 +96,18 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
 
     @IBAction func pressedUnlockButton(_ sender: Any) {
         print("pressedUnlockButton")
-        try! ImportWalletUsingPrivateKeyDataManager.shared.unlockWallet(privateKey: privateKeyTextView.text)
-
-        let viewController = GenerateWalletViewController(setupWalletMethod: .importUsingPrivateKey)
-        self.navigationController?.pushViewController(viewController, animated: true)
+        do {
+            try ImportWalletUsingPrivateKeyDataManager.shared.unlockWallet(privateKey: privateKeyTextView.text)
+            let viewController = GenerateWalletViewController(setupWalletMethod: .importUsingPrivateKey)
+            self.navigationController?.pushViewController(viewController, animated: true)
+        } catch {
+            let notificationTitle = NSLocalizedString("Invalid private key. Please enter again.", comment: "")
+            let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
+            let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
+            let banner = NotificationBanner(attributedTitle: attributeString, style: .danger, colors: NotificationBannerStyle())
+            banner.duration = 1.5
+            banner.show()
+        }
     }
 
 }

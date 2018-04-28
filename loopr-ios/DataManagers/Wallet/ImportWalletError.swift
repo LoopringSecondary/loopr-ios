@@ -9,5 +9,7 @@
 import Foundation
 
 enum ImportWalletError: Error {
+    case invalidKeystore
+    case failToGenerateKeystore
     case invalidPrivateKey
 }

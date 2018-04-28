@@ -37,6 +37,7 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
         print("Start to unlock a new wallet using the private key")
         let privateKeyData: Data? = Data(hexString: privateKeyString.trim())
         guard privateKeyData != nil else {
+            print("Invalid private key")
             throw ImportWalletError.invalidPrivateKey
         }
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 
@@ -25,10 +26,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
 
         unlockButton.setTitle(NSLocalizedString("Unlock", comment: ""), for: .normal)
-        
-        unlockButton.backgroundColor = UIColor.black
-        unlockButton.layer.cornerRadius = 23
-        unlockButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 17.0)
+        unlockButton.setupRoundBlack()
         
         keystoreContentTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
         keystoreContentTextView.cornerRadius = 12
@@ -110,11 +108,30 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
     
     @IBAction func pressedUnlockButton(_ sender: Any) {
         print("pressedUnlockButton")
-
-        ImportWalletUsingKeystoreDataManager.shared.unlockWallet(keystoreStringValue: keystoreContentTextView.text, password: passwordTextField.text ?? "")
+        // TODO: Use notificatino to require
+        let password = passwordTextField.text ?? ""
+        guard password.trim() != "" else {
+            let notificationTitle = NSLocalizedString("Please set a password.", comment: "")
+            let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
+            let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
+            let banner = NotificationBanner(attributedTitle: attributeString, style: .danger, colors: NotificationBannerStyle())
+            banner.duration = 1.5
+            banner.show()
+            return
+        }
         
-        let viewController = GenerateWalletViewController(setupWalletMethod: .importUsingKeystore)
-        self.navigationController?.pushViewController(viewController, animated: true)
+        do {
+            try ImportWalletUsingKeystoreDataManager.shared.unlockWallet(keystoreStringValue: keystoreContentTextView.text, password: password.trim())
+            let viewController = GenerateWalletViewController(setupWalletMethod: .importUsingKeystore)
+            self.navigationController?.pushViewController(viewController, animated: true)
+        } catch {
+            let notificationTitle = NSLocalizedString("Invalid keystore. Please enter again.", comment: "")
+            let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
+            let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
+            let banner = NotificationBanner(attributedTitle: attributeString, style: .danger, colors: NotificationBannerStyle())
+            banner.duration = 1.5
+            banner.show()
+        }
     }
 
 }
