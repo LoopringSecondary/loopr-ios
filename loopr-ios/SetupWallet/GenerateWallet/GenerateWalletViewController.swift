@@ -104,7 +104,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(walletPasswordUnderLine)
         
         walletPasswordInfoLabel.frame = CGRect(x: padding, y: walletPasswordTextField.frame.maxY + 9, width: screenWidth - padding * 2, height: 16)
-        walletPasswordInfoLabel.text = "Please set a password."
+        walletPasswordInfoLabel.text = NSLocalizedString("Please set a password.", comment: "")
         walletPasswordInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
         walletPasswordInfoLabel.textColor = UIColor.init(rgba: "#F52929")
         walletPasswordInfoLabel.alpha = 0.0
@@ -120,7 +120,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         // UI will be different based on SetupWalletMethod
         if setupWalletMethod == .create {
             titleLabel.text = NSLocalizedString("Create a new wallet", comment: "")
-            continueButton.setTitle("Continue", for: .normal)
+            continueButton.setTitle(NSLocalizedString("Continue", comment: ""), for: .normal)
             
             // Generate a new wallet
             _ = GenerateWalletDataManager.shared.new()
@@ -129,7 +129,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
             walletPasswordTextField.isHidden = true
             walletPasswordUnderLine.isHidden = true
             titleLabel.text = NSLocalizedString("Setup the wallet name", comment: "")
-            continueButton.setTitle("Enter Wallet", for: .normal)
+            continueButton.setTitle(NSLocalizedString("Enter Wallet", comment: ""), for: .normal)
         }
 
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))

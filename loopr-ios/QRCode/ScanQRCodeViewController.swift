@@ -182,9 +182,9 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         messageAttribute.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)], range: NSRange(location: 0, length: (alertPrompt.message?.count)!))
         alertPrompt.setValue(messageAttribute, forKey: "attributedMessage")
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.cancel, handler: nil)
         
-        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { _ in
+        let confirmAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default) { _ in
             self.delegate?.setResultOfScanningQRCode(valueSent: decodedURL, type: codeType)
             _ = self.navigationController?.popViewController(animated: true)
         }

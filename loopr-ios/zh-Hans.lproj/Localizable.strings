@@ -59,3 +59,12 @@
 "Mnemonic Password (optional)" = "助记词密码 (可选)";
 "Please set a password." = "请设置密码";
 "Copy address to clipboard successfully!" = "成功复制地址到剪切板!";
+"Congratulations!" = "创建成功!";
+"Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage." = "您的钱包已创建成功。为了备份钱包，请花一点时间写下助记词。助记词会用于恢复钱包。请不要分享助记词给任何人，不要存云端。";
+"Please write them down" = "请记下";
+"Please make sure you have recorded all words safely. Otherwise, you will not be able to go through the verification process, and have to start over." = "请确定您已经妥善保存所有的单词。否则，您将无法通过验证的流程，返回这一页。";
+"Continue" = "下一步";
+"Backup Now" = "开始备份";
+"Please make sure you have backed up mnemonic words." = "请确定您已经备份助记词。";
+"Cancel" = "取消";
+"Confirm" = "确定";

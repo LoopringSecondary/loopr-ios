@@ -21,6 +21,7 @@ class GenerateMnemonicViewController: UIViewController {
         // Do any additional setup after loading the view.
         setBackButton()
 
+        backupNowButton.setTitle(NSLocalizedString("Backup Now", comment: ""), for: .normal)
         backupNowButton.setupRoundBlack()
 
         // Setup UI in the scroll view
@@ -31,18 +32,18 @@ class GenerateMnemonicViewController: UIViewController {
         let originY: CGFloat = 30
         let padding: CGFloat = 15
         
-        congratulationIconView.frame = CGRect(x: 15, y: originY+1, width: 22, height: 22)
+        congratulationIconView.frame = CGRect(x: 15, y: originY+7, width: 22, height: 22)
         congratulationIconView.image = UIImage(named: "CongratulationIcon")
         view.addSubview(congratulationIconView)
 
-        congratulationsLabel.frame = CGRect(x: 45, y: originY, width: screenWidth - padding * 2, height: 30)
+        congratulationsLabel.frame = CGRect(x: 45, y: originY, width: screenWidth - padding * 2, height: 36)
         congratulationsLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 27)
-        congratulationsLabel.text = "Congratualations!"
+        congratulationsLabel.text = NSLocalizedString("Congratulations!", comment: "")
         view.addSubview(congratulationsLabel)
 
         infoTextView.frame = CGRect(x: padding-3, y: 72, width: screenWidth - (padding-3) * 2, height: 150)
         infoTextView.isEditable = false
-        infoTextView.text = "Your wallet has been generated. Please take a moment to backup your wallet by writing down the mnemonic words on paper. Mnemonic words are required to resotre your wallets. Please do not share your mnemonic words with anyone, nor save them on cloud storage."
+        infoTextView.text = NSLocalizedString("Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage.", comment: "")
         infoTextView.textColor = UIColor.black.withAlphaComponent(0.6)
         infoTextView.font = FontConfigManager.shared.getLabelFont()
         view.addSubview(infoTextView)

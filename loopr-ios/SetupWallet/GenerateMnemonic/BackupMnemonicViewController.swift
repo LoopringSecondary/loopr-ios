@@ -46,7 +46,7 @@ class BackupMnemonicViewController: UIViewController {
         
         titleLabel.frame = CGRect(x: padding, y: originY, width: screenWidth - padding * 2, height: 30)
         titleLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 27)
-        titleLabel.text = NSLocalizedString("Please Write Down", comment: "")
+        titleLabel.text = NSLocalizedString("Please write them down", comment: "")
         view.addSubview(titleLabel)
         
         infoTextView.frame = CGRect(x: padding-3, y: 72, width: screenWidth - (padding-3) * 2, height: 96)
@@ -115,7 +115,7 @@ class BackupMnemonicViewController: UIViewController {
             verifyNowButton.isHidden = true
             infoTextView.text = "Loopring wallet never keeps your mnemonic words, It is strongly recommended that you back up these information offline (with USB or physical paper)."
         } else {
-            infoTextView.text = "Please make sure you have recorded all the words safely. Otherwise, you will not be able to go through the verification process, and have to start over."
+            infoTextView.text = NSLocalizedString("Please make sure you have recorded all words safely. Otherwise, you will not be able to go through the verification process, and have to start over.", comment: "")
         }
     }
 
@@ -132,7 +132,7 @@ class BackupMnemonicViewController: UIViewController {
 
         self.blurVisualEffectView.alpha = 1.0
         
-        let attributedString = NSAttributedString(string: "Please make sure you have backed up mnemonic.", attributes: [
+        let attributedString = NSAttributedString(string: NSLocalizedString("Please make sure you have backed up mnemonic words.", comment: ""), attributes: [
             NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getMedium(), size: 17) ?? UIFont.systemFont(ofSize: 17),
             NSAttributedStringKey.foregroundColor: UIColor.init(rgba: "#030303")
         ])
@@ -143,7 +143,7 @@ class BackupMnemonicViewController: UIViewController {
 
         alertController.setValue(attributedString, forKey: "attributedMessage")
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: { _ in
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default, handler: { _ in
             UIView.animate(withDuration: 0.1, animations: {
                 self.blurVisualEffectView.alpha = 0.0
             }, completion: {(_) in
@@ -153,7 +153,7 @@ class BackupMnemonicViewController: UIViewController {
         })
         alertController.addAction(cancelAction)
         
-        let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: { _ in
+        let confirmAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
             // Avoid a delay in the animation
             let viewController = VerifyMnemonicViewController()
             self.navigationController?.pushViewController(viewController, animated: true)

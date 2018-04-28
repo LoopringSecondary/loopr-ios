@@ -77,13 +77,13 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
             message: nil,
             preferredStyle: .alert)
         
-        let defaultAction = UIAlertAction(title: "Confirm", style: .default, handler: { _ in
+        let defaultAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
             CurrentAppWalletDataManager.shared.setCurrentAppWallet(appWallet)
             self.navigationController?.popViewController(animated: true)
         })
         alertController.addAction(defaultAction)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
             
         })
         alertController.addAction(cancelAction)
