@@ -33,4 +33,8 @@ class MnemonicCollectionViewCell: UICollectionViewCell {
     class func getCellIdentifier() -> String {
         return "MnemonicCollectionViewCell"
     }
+    
+    class func getHeight() -> CGFloat {
+        return 30
+    }
 }

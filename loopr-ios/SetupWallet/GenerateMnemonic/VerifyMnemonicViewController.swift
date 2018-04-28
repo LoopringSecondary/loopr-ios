@@ -47,12 +47,12 @@ class VerifyMnemonicViewController: UIViewController {
         progressView.tintColor = UIColor.black
         view.addSubview(progressView)
         
-        questionLabel.frame = CGRect(x: padding, y: originY, width: screenWidth - padding * 2, height: 90)
+        questionLabel.frame = CGRect(x: padding, y: originY, width: screenWidth - padding * 2, height: 110)
         questionLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 24)
         questionLabel.numberOfLines = 0
         view.addSubview(questionLabel)
         
-        buttonStackView.frame = CGRect(center: CGPoint(x: screenWidth*0.5, y: screenHeight*0.45), size: CGSize(width: 165, height: 47*4+20*3))
+        buttonStackView.frame = CGRect(center: CGPoint(x: screenWidth*0.5, y: screenHeight*0.5), size: CGSize(width: 165, height: 47*4+20*3))
         buttonStackView.axis = UILayoutConstraintAxis.vertical
         buttonStackView.distribution = UIStackViewDistribution.fillEqually
         buttonStackView.spacing = 20

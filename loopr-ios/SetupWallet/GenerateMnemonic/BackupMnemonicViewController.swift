@@ -24,6 +24,15 @@ class BackupMnemonicViewController: UIViewController {
 
     var switchMnemonicCollectionViewButton0 = UIButton()
     var switchMnemonicCollectionViewButton1 = UIButton()
+    var collectionViewY: CGFloat = 200
+    var collectionViewWidth: CGFloat = 200
+    var collectionViewHeight: CGFloat = 220
+    
+    private let originY: CGFloat = 30
+    private let padding: CGFloat = 15
+    private let buttonPaddingY: CGFloat = 40
+    
+    private var firstAppear = true
 
     var blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
     
@@ -39,10 +48,6 @@ class BackupMnemonicViewController: UIViewController {
         // Setup UI
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
-        // let screenHeight = screensize.height
-        
-        let originY: CGFloat = 30
-        let padding: CGFloat = 15
         
         titleLabel.frame = CGRect(x: padding, y: originY, width: screenWidth - padding * 2, height: 30)
         titleLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 27)
@@ -55,25 +60,38 @@ class BackupMnemonicViewController: UIViewController {
         infoTextView.font = FontConfigManager.shared.getLabelFont(size: 17)
         view.addSubview(infoTextView)
 
+        let halfLength: Int = mnemonics.count / 2
+
+        collectionViewWidth = screenWidth - padding * 2
+        collectionViewHeight = 4*MnemonicCollectionViewCell.getHeight() + 2*padding
+        collectionViewY = infoTextView.frame.maxY + 40
+        
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: (screenWidth - padding * 2 - 30)/3, height: 30)
+        flowLayout.itemSize = CGSize(width: (collectionViewWidth - 30)/3, height: MnemonicCollectionViewCell.getHeight())
         flowLayout.scrollDirection = .vertical
         
         mnemonicCollectionViewController0 = MnemonicCollectionViewController(collectionViewLayout: flowLayout)
+        // assign first 12 words
+        mnemonicCollectionViewController0.mnemonics = Array(mnemonics[0..<halfLength])
         mnemonicCollectionViewController0.view.isHidden = false
         mnemonicCollectionViewController0.index = 0
-        mnemonicCollectionViewController0.view.frame = CGRect(x: 15, y: infoTextView.frame.maxY + 35, width: screenWidth - padding * 2, height: 220)
+        mnemonicCollectionViewController0.view.frame = CGRect(x: 15, y: collectionViewY, width: collectionViewWidth, height: collectionViewHeight)
         view.addSubview(mnemonicCollectionViewController0.view)
+        addChildViewController(mnemonicCollectionViewController0)
 
         mnemonicCollectionViewController1 = MnemonicCollectionViewController(collectionViewLayout: flowLayout)
+        // assign last 12 words
+        mnemonicCollectionViewController1.mnemonics = Array(mnemonics[halfLength..<mnemonics.count])
         mnemonicCollectionViewController1.view.isHidden = true
         mnemonicCollectionViewController1.index = 1
-        mnemonicCollectionViewController1.view.frame = CGRect(x: 15 + screenWidth, y: infoTextView.frame.maxY + 35, width: screenWidth - padding * 2, height: 220)
+        mnemonicCollectionViewController1.view.frame = CGRect(x: 15 + screenWidth, y: collectionViewY, width: collectionViewWidth, height: collectionViewHeight)
         view.addSubview(mnemonicCollectionViewController1.view)
+        addChildViewController(mnemonicCollectionViewController1)
 
+        // TODO: Use setRightImage() to set the aligned icon
         switchMnemonicCollectionViewButton0.isHidden = false
-        switchMnemonicCollectionViewButton0.frame = CGRect(x: 100, y: mnemonicCollectionViewController0.view.frame.maxY + 25, width: screenWidth - 2*100, height: 20)
-        switchMnemonicCollectionViewButton0.setTitle("Next 12 Words" + "  ", for: .normal)
+        switchMnemonicCollectionViewButton0.frame = CGRect(x: 100, y: mnemonicCollectionViewController0.view.frame.maxY + buttonPaddingY, width: screenWidth - 2*100, height: 20)
+        switchMnemonicCollectionViewButton0.setTitle(NSLocalizedString("Next 12 Words", comment: "") + "  ", for: .normal)
         switchMnemonicCollectionViewButton0.theme_setTitleColor(["#000", "#fff"], forState: .normal)
         switchMnemonicCollectionViewButton0.setTitleColor(UIColor.init(white: 0, alpha: 0.3), for: .highlighted)
         switchMnemonicCollectionViewButton0.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
@@ -83,9 +101,10 @@ class BackupMnemonicViewController: UIViewController {
         switchMnemonicCollectionViewButton0.semanticContentAttribute = .forceRightToLeft
         view.addSubview(switchMnemonicCollectionViewButton0)
 
+        // TODO: Use setRightImage() to set the aligned icon
         switchMnemonicCollectionViewButton1.isHidden = true
-        switchMnemonicCollectionViewButton1.frame = CGRect(x: 100 + screenWidth, y: mnemonicCollectionViewController0.view.frame.maxY + 25, width: screenWidth - 2*100, height: 20)
-        switchMnemonicCollectionViewButton1.setTitle("  " + "Previous 12 Words", for: .normal)
+        switchMnemonicCollectionViewButton1.frame = CGRect(x: 100 + screenWidth, y: mnemonicCollectionViewController0.view.frame.maxY + buttonPaddingY, width: screenWidth - 2*100, height: 20)
+        switchMnemonicCollectionViewButton1.setTitle("  " + NSLocalizedString("Previous 12 Words", comment: ""), for: .normal)
         switchMnemonicCollectionViewButton1.setTitleColor(UIColor.black, for: .normal)
         switchMnemonicCollectionViewButton1.setTitleColor(UIColor.init(white: 0, alpha: 0.3), for: .highlighted)
         switchMnemonicCollectionViewButton1.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
@@ -108,15 +127,32 @@ class BackupMnemonicViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let halfLength: Int = mnemonics.count / 2
-        mnemonicCollectionViewController0.mnemonics = Array(mnemonics[0..<halfLength])
-        mnemonicCollectionViewController1.mnemonics = Array(mnemonics[halfLength..<mnemonics.count])
         if isExportMode {
             verifyNowButton.isHidden = true
             infoTextView.text = "Loopring wallet never keeps your mnemonic words, It is strongly recommended that you back up these information offline (with USB or physical paper)."
         } else {
             infoTextView.text = NSLocalizedString("Please make sure you have recorded all words safely. Otherwise, you will not be able to go through the verification process, and have to start over.", comment: "")
         }
+        
+        // CollectionView won't be layout correctly in viewDidLoad()
+        // https://stackoverflow.com/questions/12927027/uicollectionview-flowlayout-not-wrapping-cells-correctly-ios
+        // If you want to improve this part, please submit a PR to review
+        if firstAppear {
+            let screensize: CGRect = UIScreen.main.bounds
+            let screenWidth = screensize.width
+            
+            self.mnemonicCollectionViewController0.view.frame = CGRect(x: 15, y: collectionViewY, width: self.collectionViewWidth, height: self.collectionViewHeight)
+            mnemonicCollectionViewController0.collectionView?.collectionViewLayout.invalidateLayout()
+            
+            mnemonicCollectionViewController1.view.frame = CGRect(x: 15 + screenWidth, y: collectionViewY, width: collectionViewWidth, height: collectionViewHeight)
+            mnemonicCollectionViewController1.collectionView?.collectionViewLayout.invalidateLayout()
+            
+            firstAppear = false
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -126,10 +162,8 @@ class BackupMnemonicViewController: UIViewController {
     @IBAction func pressedVerifyNowButton(_ sender: Any) {
         print("pressedVerifyNowButton")
         
-        // TODO: need to improve the blur effect
         let screenSize: CGRect = UIScreen.main.bounds
         blurVisualEffectView.frame = screenSize
-
         self.blurVisualEffectView.alpha = 1.0
         
         let attributedString = NSAttributedString(string: NSLocalizedString("Please make sure you have backed up mnemonic words.", comment: ""), attributes: [
@@ -149,7 +183,6 @@ class BackupMnemonicViewController: UIViewController {
             }, completion: {(_) in
                 self.blurVisualEffectView.removeFromSuperview()
             })
-            
         })
         alertController.addAction(cancelAction)
         
@@ -162,9 +195,7 @@ class BackupMnemonicViewController: UIViewController {
                 self.blurVisualEffectView.alpha = 0.0
             }, completion: {(_) in
                 self.blurVisualEffectView.removeFromSuperview()
-                
             })
-            
         })
         alertController.addAction(confirmAction)
         
@@ -188,23 +219,22 @@ class BackupMnemonicViewController: UIViewController {
         // let screenHeight = screensize.height
         
         let originY: CGFloat = mnemonicCollectionViewController0.view.frame.minY
-        let padding: CGFloat = 15
 
         if currentMnemonicCollectionView == 0 {
             currentMnemonicCollectionView = 1
             
             UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 30, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
                 self.mnemonicCollectionViewController0.view.isHidden = true
-                self.mnemonicCollectionViewController0.view.frame = CGRect(x: 15 - screenWidth, y: originY, width: screenWidth - padding * 2, height: 220)
+                self.mnemonicCollectionViewController0.view.frame = CGRect(x: 15 - screenWidth, y: originY, width: self.collectionViewWidth, height: self.collectionViewHeight)
                 
                 self.mnemonicCollectionViewController1.view.isHidden = false
-                self.mnemonicCollectionViewController1.view.frame = CGRect(x: 15, y: originY, width: screenWidth - padding * 2, height: 220)
+                self.mnemonicCollectionViewController1.view.frame = CGRect(x: 15, y: originY, width: self.collectionViewWidth, height: self.collectionViewHeight)
                 
                 self.switchMnemonicCollectionViewButton0.isHidden = true
-                self.switchMnemonicCollectionViewButton0.frame = CGRect(x: 100 - screenWidth, y: self.mnemonicCollectionViewController0.view.frame.maxY + 25, width: screenWidth - 2*100, height: 20)
+                self.switchMnemonicCollectionViewButton0.frame = CGRect(x: 100 - screenWidth, y: self.mnemonicCollectionViewController0.view.frame.maxY + self.buttonPaddingY, width: screenWidth - 2*100, height: 20)
                 
                 self.switchMnemonicCollectionViewButton1.isHidden = false
-                self.switchMnemonicCollectionViewButton1.frame = CGRect(x: 100, y: self.mnemonicCollectionViewController0.view.frame.maxY + 25, width: screenWidth - 2*100, height: 20)
+                self.switchMnemonicCollectionViewButton1.frame = CGRect(x: 100, y: self.mnemonicCollectionViewController0.view.frame.maxY + self.buttonPaddingY, width: screenWidth - 2*100, height: 20)
             }, completion: { (_) in
                 
             })
@@ -213,16 +243,16 @@ class BackupMnemonicViewController: UIViewController {
 
             UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 30, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
                 self.mnemonicCollectionViewController0.view.isHidden = false
-                self.mnemonicCollectionViewController0.view.frame = CGRect(x: 15, y: originY, width: screenWidth - padding * 2, height: 220)
+                self.mnemonicCollectionViewController0.view.frame = CGRect(x: 15, y: originY, width: self.collectionViewWidth, height: self.collectionViewHeight)
                 
                 self.mnemonicCollectionViewController1.view.isHidden = true
-                self.mnemonicCollectionViewController1.view.frame = CGRect(x: 15 + screenWidth, y: originY, width: screenWidth - padding * 2, height: 220)
+                self.mnemonicCollectionViewController1.view.frame = CGRect(x: 15 + screenWidth, y: originY, width: self.collectionViewWidth, height: self.collectionViewHeight)
 
                 self.switchMnemonicCollectionViewButton0.isHidden = false
-                self.switchMnemonicCollectionViewButton0.frame = CGRect(x: 100, y: self.mnemonicCollectionViewController0.view.frame.maxY + 25, width: screenWidth - 2*100, height: 20)
+                self.switchMnemonicCollectionViewButton0.frame = CGRect(x: 100, y: self.mnemonicCollectionViewController0.view.frame.maxY + self.buttonPaddingY, width: screenWidth - 2*100, height: 20)
                 
                 self.switchMnemonicCollectionViewButton1.isHidden = true
-                self.switchMnemonicCollectionViewButton1.frame = CGRect(x: 100 + screenWidth, y: self.mnemonicCollectionViewController0.view.frame.maxY + 25, width: screenWidth - 2*100, height: 20)
+                self.switchMnemonicCollectionViewButton1.frame = CGRect(x: 100 + screenWidth, y: self.mnemonicCollectionViewController0.view.frame.maxY + self.buttonPaddingY, width: screenWidth - 2*100, height: 20)
             }, completion: { (_) in
                 
             })
