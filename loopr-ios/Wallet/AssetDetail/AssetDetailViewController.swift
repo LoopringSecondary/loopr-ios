@@ -31,6 +31,10 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         
+        tableView.estimatedRowHeight = 0
+        tableView.estimatedSectionHeaderHeight = 0
+        tableView.estimatedSectionFooterHeight = 0
+        
         // Receive button
         receiveButton.setTitle(NSLocalizedString("Receive", comment: ""), for: .normal)
         receiveButton.theme_backgroundColor = ["#000", "#fff"]
@@ -151,12 +155,30 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1 + self.transactions.count
+        if section == 0 {
+            return 1
+        } else if section == 1 {
+            return self.transactions.count
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
+            return AssetBalanceTableViewCell.getHeight()
+        } else {
+            return AssetTransactionTableViewCell.getHeight()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
             return AssetBalanceTableViewCell.getHeight()
         } else {
             return AssetTransactionTableViewCell.getHeight()
@@ -164,7 +186,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
             var cell = tableView.dequeueReusableCell(withIdentifier: AssetBalanceTableViewCell.getCellIdentifier()) as? AssetBalanceTableViewCell
             if cell == nil {
                 let nib = Bundle.main.loadNibNamed("AssetBalanceTableViewCell", owner: self, options: nil)
@@ -181,7 +203,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
                 let nib = Bundle.main.loadNibNamed("AssetTransactionTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? AssetTransactionTableViewCell
             }
-            cell?.transaction = self.transactions[indexPath.row - 1]
+            cell?.transaction = self.transactions[indexPath.row]
             cell?.update()
             return cell!
         }
@@ -203,9 +225,9 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row >= 1 {
+        if indexPath.section >= 1 {
             tableView.deselectRow(at: indexPath, animated: true)
-            let transaction = self.transactions[indexPath.row - 1]
+            let transaction = self.transactions[indexPath.row]
             let vc = AssetTransactionDetailViewController()
             vc.transaction = transaction
             vc.hidesBottomBarWhenPushed = true
