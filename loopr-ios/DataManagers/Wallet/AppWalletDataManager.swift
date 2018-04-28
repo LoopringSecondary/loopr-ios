@@ -55,6 +55,7 @@ class AppWalletDataManager {
         }
     }
 
+    // TODO: this function has been called too many time. Optimize it in the future.
     func updateAppWalletsInLocalStorage(newAppWallet: AppWallet) {
         if let index = appWallets.index(of: newAppWallet) {
             appWallets[index] = newAppWallet
@@ -71,7 +72,7 @@ class AppWalletDataManager {
     }
 
     // TODO: Use error handling instead of returning a Bool value
-    func addWallet(walletName: String, mnemonics: [String], password: String, derivationPath: String, key: Int) -> AppWallet? {
+    func addWallet(setupWalletMethod: SetupWalletMethod, walletName: String, mnemonics: [String], password: String, derivationPath: String, key: Int) -> AppWallet? {
         guard key >= 0 else {
             return nil
         }
@@ -96,7 +97,7 @@ class AppWalletDataManager {
             walletNameLocal = walletName
         }
 
-        let newAppWallet = AppWallet(address: address.description, privateKey: privateKey.hexString, password: password, mnemonics: mnemonics, name: walletNameLocal, active: true)
+        let newAppWallet = AppWallet(setupWalletMethod: setupWalletMethod, address: address.description, privateKey: privateKey.hexString, password: password, mnemonics: mnemonics, name: walletNameLocal, active: true)
 
         // Update the new app wallet in the local storage.
         updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)

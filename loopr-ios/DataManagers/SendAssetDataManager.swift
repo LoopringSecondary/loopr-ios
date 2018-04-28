@@ -106,7 +106,7 @@ class SendCurrentAppWalletDataManager {
     func _keystore() {
         // TODO: improve the following code.
         // Get Keystore string value
-        let keystoreStringValue: String = wallet!.getKeystore().description
+        let keystoreStringValue: String = wallet!.getKeystore()
         print(keystoreStringValue)
         
         // Create key directory

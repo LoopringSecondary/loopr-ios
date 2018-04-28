@@ -9,6 +9,8 @@
 import Foundation
 
 class AppWallet: NSObject, NSCoding {
+    
+    final let setupWalletMethod: SetupWalletMethod
 
     final let address: String
     final let privateKey: String
@@ -16,7 +18,7 @@ class AppWallet: NSObject, NSCoding {
     // The password used to get the address and the private key when users use mnemonics and keystore.
     final var password: String
     final var mnemonics: [String]
-    var keystoreData: Data = Data()
+    var keystoreString: String?
 
     // The wallet name in the app. Users can update later.
     var name: String
@@ -27,31 +29,23 @@ class AppWallet: NSObject, NSCoding {
     var assetSequence: [String] = []
     var assetSequenceInHideSmallAssets: [String] = []
     
-    init(address: String, privateKey: String, password: String, mnemonics: [String] = [], name: String, active: Bool, assetSequence: [String] = ["ETH", "LRC"], assetSequenceInHideSmallAssets: [String] = ["ETH", "LRC"]) {
+    init(setupWalletMethod: SetupWalletMethod, address: String, privateKey: String, password: String, mnemonics: [String] = [], keystoreString: String? = nil, name: String, active: Bool, assetSequence: [String] = ["ETH", "LRC"], assetSequenceInHideSmallAssets: [String] = ["ETH", "LRC"]) {
+        self.setupWalletMethod = setupWalletMethod
         self.address = address
         self.privateKey = privateKey
-
         self.password = password
         self.mnemonics = mnemonics
-
+        self.keystoreString = keystoreString
         self.name = name
         self.active = active
-
-        // Generate keystore data
-        /*
-        guard let data = Data(hexString: privateKey) else {
-            return // .failure(KeystoreError.failedToImportPrivateKey)
-        }
-        do {
-            let key = try KeystoreKey(password: self.password, key: data)
-            keystoreData = try JSONEncoder().encode(key)
-        } catch {
-            
-        }
-        */
-
         self.assetSequence = assetSequence
         self.assetSequenceInHideSmallAssets = assetSequenceInHideSmallAssets
+        
+        super.init()
+        
+        if keystoreString == nil {
+            generateKeystoreInBackground()
+        }
     }
     
     // TODO: Not sure whether it's the best way to have getter and setter.
@@ -75,17 +69,34 @@ class AppWallet: NSObject, NSCoding {
         }
     }
     
-    func getKeystore() -> JSON {
-        if password == "" {
+    func generateKeystoreInBackground() {
+        var password = self.password
+        // Generating a keystore requires password.
+        // However, importing a wallet using private key doesn't require password. Use a default password
+        // Users won't export keystore
+        if setupWalletMethod == .importUsingPrivateKey && password.trim() == "" {
             password = "123456"
         }
         
-        // TODO: catch error
-        let data = Data(hexString: privateKey)!
-        let key = try! KeystoreKey(password: password, key: data)
-        keystoreData = try! JSONEncoder().encode(key)
-        let json = try! JSON(data: keystoreData)
-        return json
+        // Generate keystore data
+        DispatchQueue.global().async {
+            guard let data = Data(hexString: self.privateKey) else {
+                print("Invalid private key")
+                return // .failure(KeystoreError.failedToImportPrivateKey)
+            }
+            do {
+                let key = try KeystoreKey(password: password, key: data)
+                let keystoreData = try JSONEncoder().encode(key)
+                let json = try JSON(data: keystoreData)
+                self.keystoreString = json.description
+            } catch {
+                print("Failed to generate keystore")
+            }
+        }
+    }
+    
+    func getKeystore() -> String {
+        return keystoreString ?? "Generating ..."
     }
     
     static func == (lhs: AppWallet, rhs: AppWallet) -> Bool {
@@ -93,17 +104,24 @@ class AppWallet: NSObject, NSCoding {
     }
 
     func encode(with aCoder: NSCoder) {
+        aCoder.encode(setupWalletMethod.rawValue, forKey: "setupWalletMethod")
         aCoder.encode(password, forKey: "password")
         aCoder.encode(address, forKey: "address")
         aCoder.encode(privateKey, forKey: "privateKey")
         aCoder.encode(name, forKey: "name")
         aCoder.encode(active, forKey: "active")
         aCoder.encode(mnemonics, forKey: "mnemonics")
+        aCoder.encode(keystoreString ?? "", forKey: "keystore")
         aCoder.encode(assetSequence, forKey: "assetSequence")
         aCoder.encode(assetSequenceInHideSmallAssets, forKey: "assetSequenceInHideSmallAssets")
     }
 
     required convenience init?(coder aDecoder: NSCoder) {
+        let setupWalletMethodString = aDecoder.decodeObject(forKey: "setupWalletMethod") as? String ?? ""
+        
+        // If setupWalletMethod is null, the default value is importUsingPrivateKey
+        let setupWalletMethod = SetupWalletMethod(rawValue: setupWalletMethodString) ?? SetupWalletMethod.importUsingPrivateKey
+        
         let password = aDecoder.decodeObject(forKey: "password") as? String
         let address = aDecoder.decodeObject(forKey: "address") as? String
         let privateKey = aDecoder.decodeObject(forKey: "privateKey") as? String
@@ -117,13 +135,15 @@ class AppWallet: NSObject, NSCoding {
             return item.trim() != ""
         }
         
+        let keystoreString = aDecoder.decodeObject(forKey: "keystore") as? String
+        
         let assetSequenceInHideSmallAssets = aDecoder.decodeObject(forKey: "assetSequenceInHideSmallAssets") as? [String] ?? []
         let filteredAssetSequenceInHideSmallAssets = assetSequenceInHideSmallAssets.filter { (item) -> Bool in
             return item.trim() != ""
         }
         
         if let address = address, let privateKey = privateKey, let password = password, let mnemonics = mnemonics, let name = name {
-            self.init(address: address, privateKey: privateKey, password: password, mnemonics: mnemonics, name: name, active: active, assetSequence: unique(filteredAssetSequence), assetSequenceInHideSmallAssets: unique(filteredAssetSequenceInHideSmallAssets))
+            self.init(setupWalletMethod: setupWalletMethod, address: address, privateKey: privateKey, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: name, active: active, assetSequence: unique(filteredAssetSequence), assetSequenceInHideSmallAssets: unique(filteredAssetSequenceInHideSmallAssets))
         } else {
             return nil
         }

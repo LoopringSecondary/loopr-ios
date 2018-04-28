@@ -8,11 +8,19 @@
 
 import Foundation
 
-enum SetupWalletMethod {
+enum SetupWalletMethod: String, CustomStringConvertible {
 
-    case create
-    case importUsingMnemonic
-    case importUsingKeystore
-    case importUsingPrivateKey
+    case create = "SetupWalletMethod.create"
+    case importUsingMnemonic = "SetupWalletMethod.importUsingMnemonic"
+    case importUsingKeystore = "SetupWalletMethod.importUsingKeystore"
+    case importUsingPrivateKey = "SetupWalletMethod.importUsingPrivateKey"
 
+    var description: String {
+        switch self {
+        case .create: return "Create"
+        case .importUsingMnemonic: return "Mnemonics"
+        case .importUsingKeystore: return "Keystore"
+        case .importUsingPrivateKey: return "Private Key"
+        }
+    }
 }

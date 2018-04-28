@@ -32,16 +32,18 @@ class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
         return Mnemonic.isValid(mnemonic)
     }
 
+    /*
     // TODO: Use error handling
     func unlockWallet(mnemonic: String) {
         let wallet = Wallet(mnemonic: mnemonic, password: "")
         let address = wallet.getKey(at: 0).address
-        let newAppWallet = AppWallet(address: address.description, privateKey: "", password: password, mnemonics: mnemonic.components(separatedBy: " "), name: "Wallet mnemonic", active: true)
+        let newAppWallet = AppWallet(setupWalletMethod: .importUsingMnemonic, address: address.description, privateKey: "", password: password, mnemonics: mnemonic.components(separatedBy: " "), name: "Wallet mnemonic", active: true)
 
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
         print("Finished unlocking a new wallet")
     }
+    */
 
     func clearAddresses() {
         selectedKey = 0
@@ -63,6 +65,6 @@ class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
     
     func complete() {
         let pathValue = derivationPathValue + "/x"
-        _ = AppWalletDataManager.shared.addWallet(walletName: walletName, mnemonics: mnemonic.components(separatedBy: " "), password: password, derivationPath: pathValue, key: selectedKey)
+        _ = AppWalletDataManager.shared.addWallet(setupWalletMethod: .importUsingMnemonic, walletName: walletName, mnemonics: mnemonic.components(separatedBy: " "), password: password, derivationPath: pathValue, key: selectedKey)
     }
 }

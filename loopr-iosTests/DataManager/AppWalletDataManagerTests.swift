@@ -58,9 +58,11 @@ class AppWalletDataManagerTests: XCTestCase {
     }
     
     func testUnlockWalletUsingMnemonic() {
+        /*
         ImportWalletUsingMnemonicDataManager.shared.unlockWallet(mnemonic: "soda code cannon sketch boss fancy tail lesson forum figure gloom history dismiss sketch lady control wolf hello away pave priority story design trial")
         let currentWallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet()
         XCTAssertEqual(currentWallet?.address, "0xD964210243c83e4eA59D357824356493c21F8842")
+        */
     }
 
 }

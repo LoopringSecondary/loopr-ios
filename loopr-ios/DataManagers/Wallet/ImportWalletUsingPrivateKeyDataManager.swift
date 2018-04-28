@@ -52,7 +52,7 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
     }
     
     func complete() {
-        let newAppWallet = AppWallet(address: address, privateKey: privateKey, password: password, name: walletName, active: true)
+        let newAppWallet = AppWallet(setupWalletMethod: .importUsingPrivateKey, address: address, privateKey: privateKey, password: password, name: walletName, active: true)
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
         print("Finished unlocking a new wallet in ImportWalletUsingPrivateKeyDataManager")
