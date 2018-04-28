@@ -7,19 +7,13 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "enable@1x-1.png",
+      "filename" : "enable@1x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
       "filename" : "enable@1.5x.png",
       "scale" : "3x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "enable@1x.png",
-      "unassigned" : true,
-      "scale" : "1x"
     }
   ],
   "info" : {
