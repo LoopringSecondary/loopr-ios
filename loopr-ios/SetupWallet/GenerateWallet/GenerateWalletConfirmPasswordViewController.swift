@@ -68,14 +68,14 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
         view.addSubview(walletPasswordUnderLine)
         
         walletPasswordInfoLabel.frame = CGRect(x: padding, y: walletPasswordTextField.frame.maxY + 9, width: screenWidth - padding * 2, height: 16)
-        walletPasswordInfoLabel.text = "Please set a password."
+        walletPasswordInfoLabel.text = NSLocalizedString("Please set a password.", comment: "")
         walletPasswordInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
         walletPasswordInfoLabel.textColor = UIColor.init(rgba: "#F52929")
         walletPasswordInfoLabel.alpha = 0.0
         view.addSubview(walletPasswordInfoLabel)
         
         continueButton.setupRoundBlack()
-        continueButton.setTitle("Enter Wallet", for: .normal)
+        continueButton.setTitle(NSLocalizedString("Enter Wallet", comment: ""), for: .normal)
         continueButton.frame = CGRect(x: padding, y: walletPasswordUnderLine.frame.maxY + 103, width: screenWidth - padding * 2, height: 47)
         continueButton.addTarget(self, action: #selector(self.pressedContinueButton(_:)), for: .touchUpInside)
         view.addSubview(continueButton)
@@ -108,7 +108,7 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
         let password = walletPasswordTextField.text ?? ""
         if password.trim() == "" {
             validPassword = false
-            self.walletPasswordInfoLabel.text = "Please set a password."
+            self.walletPasswordInfoLabel.text = NSLocalizedString("Please set a password.", comment: "")
             UIView.animate(withDuration: 0.25, delay: 0, options: .curveLinear, animations: {
                 self.walletPasswordInfoLabel.alpha = 1.0
             }, completion: { (_) in
@@ -119,7 +119,7 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
         
         if password != GenerateWalletDataManager.shared.password {
             validPassword = false
-            self.walletPasswordInfoLabel.text = "Password doesn't match."
+            self.walletPasswordInfoLabel.text = NSLocalizedString("Please input the consistant password.", comment: "")
             UIView.animate(withDuration: 0.25, delay: 0, options: .curveLinear, animations: {
                 self.walletPasswordInfoLabel.alpha = 1.0
             }, completion: { (_) in
