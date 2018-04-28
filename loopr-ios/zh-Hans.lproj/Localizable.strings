@@ -58,4 +58,4 @@
 "Invalid keystore. Please enter again." = "Keystore无法导入。请重新输入。";
 "Mnemonic Password (optional)" = "助记词密码 (可选)";
 "Please set a password." = "请设置密码";
-"Copy address to clipboard successfully!" = "成功复制地址到剪切板！"
+"Copy address to clipboard successfully!" = "成功复制地址到剪切板!";
