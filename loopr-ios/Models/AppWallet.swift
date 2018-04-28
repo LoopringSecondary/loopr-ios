@@ -29,7 +29,7 @@ class AppWallet: NSObject, NSCoding {
     var assetSequence: [String] = []
     var assetSequenceInHideSmallAssets: [String] = []
     
-    init(setupWalletMethod: SetupWalletMethod, address: String, privateKey: String, password: String, mnemonics: [String] = [], keystoreString: String? = nil, name: String, active: Bool, assetSequence: [String] = ["ETH", "LRC"], assetSequenceInHideSmallAssets: [String] = ["ETH", "LRC"]) {
+    init(setupWalletMethod: SetupWalletMethod, address: String, privateKey: String, password: String, mnemonics: [String] = [], keystoreString: String? = nil, name: String, active: Bool, assetSequence: [String] = ["ETH", "LRC"], assetSequenceInHideSmallAssets: [String] = []) {
         self.setupWalletMethod = setupWalletMethod
         self.address = address
         self.privateKey = privateKey
@@ -64,7 +64,7 @@ class AppWallet: NSObject, NSCoding {
     }
 
     func addAssetSequenceInHideSmallAssets(symbol: String) {
-        if symbol.trim() != "" {
+        if symbol.trim() != "" && !assetSequenceInHideSmallAssets.contains(symbol) {
             assetSequenceInHideSmallAssets.append(symbol)
         }
     }
@@ -130,13 +130,14 @@ class AppWallet: NSObject, NSCoding {
 
         // TODO: mnemonics vs. mnemonic
         let mnemonics = aDecoder.decodeObject(forKey: "mnemonics") as? [String]
+        
+        let keystoreString = aDecoder.decodeObject(forKey: "keystore") as? String
+        
         let assetSequence = aDecoder.decodeObject(forKey: "assetSequence") as? [String] ?? []
         let filteredAssetSequence = assetSequence.filter { (item) -> Bool in
             return item.trim() != ""
         }
-        
-        let keystoreString = aDecoder.decodeObject(forKey: "keystore") as? String
-        
+
         let assetSequenceInHideSmallAssets = aDecoder.decodeObject(forKey: "assetSequenceInHideSmallAssets") as? [String] ?? []
         let filteredAssetSequenceInHideSmallAssets = assetSequenceInHideSmallAssets.filter { (item) -> Bool in
             return item.trim() != ""

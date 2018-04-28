@@ -40,6 +40,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
         self.theme_backgroundColor = GlobalPicker.backgroundColor
         
         hideAssetsLabel.theme_textColor = GlobalPicker.textColor
+        hideAssetsLabel.text = NSLocalizedString("Hide Small Assets", comment: "")
         hideAssetsLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)
 
         update()

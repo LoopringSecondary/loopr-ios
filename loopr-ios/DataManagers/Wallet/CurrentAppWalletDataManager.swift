@@ -16,10 +16,8 @@ class CurrentAppWalletDataManager {
     private var currentAppWallet: AppWallet?
     
     private var totalCurrencyValue: Double
-
     private var assetsInHideSmallMode: [Asset]
     private var assets: [Asset]
-    
     private var transactions: [Transaction]
     
     private init() {
@@ -48,6 +46,11 @@ class CurrentAppWalletDataManager {
         defaults.set(appWallet.privateKey, forKey: UserDefaultsKeys.currentAppWallet.rawValue)
         currentAppWallet = appWallet
         
+        self.assetsInHideSmallMode = []
+        self.assets = []
+        self.transactions = []
+        self.totalCurrencyValue = 0
+        
         // Init assets using assetSequence in AppWallet
         for symbol in currentAppWallet!.getAssetSequence() {
             let asset = Asset(symbol: symbol)
@@ -57,7 +60,16 @@ class CurrentAppWalletDataManager {
                 assets.append(asset)
             }
         }
-        
+
+        for symbol in currentAppWallet!.getAssetSequenceInHideSmallAssets() {
+            let asset = Asset(symbol: symbol)
+            if let index = assetsInHideSmallMode.index(of: asset) {
+                assetsInHideSmallMode[index] = asset
+            } else {
+                assetsInHideSmallMode.append(asset)
+            }
+        }
+
         // Push a notification
         NotificationCenter.default.post(name: .appWalletDidUpdate, object: nil)
         
@@ -79,7 +91,7 @@ class CurrentAppWalletDataManager {
     func getAssets(enable: Bool? = nil) -> [Asset] {
         var assets: [Asset] = []
         if SettingDataManager.shared.getHideSmallAssets() {
-            assets = assetsInHideSmallMode
+            assets = self.assetsInHideSmallMode
         } else {
             assets = self.assets
         }
@@ -124,20 +136,32 @@ class CurrentAppWalletDataManager {
                     }
                 }
 
-                if let index = assetsInHideSmallMode.index(of: asset) {
-                    assetsInHideSmallMode[index] = asset
-                } else {
-                    if asset.balance > 0.01 {
+                if asset.balance > 0.01 {
+                    if let index = assetsInHideSmallMode.index(of: asset) {
+                        assetsInHideSmallMode[index] = asset
+                    } else {
                         assetsInHideSmallMode.append(asset)
                         if currentAppWallet != nil && currentAppWallet!.getAssetSequenceInHideSmallAssets().index(of: asset.symbol) == nil {
                             currentAppWallet!.addAssetSequenceInHideSmallAssets(symbol: asset.symbol)
                         }
                     }
                 }
+
             }
+        }
+        
+        // Remove small assets
+        assetsInHideSmallMode = assetsInHideSmallMode.filter { (asset) -> Bool in
+            return asset.balance > 0.01
         }
 
         if currentAppWallet != nil {
+            currentAppWallet!.assetSequenceInHideSmallAssets = assetsInHideSmallMode.filter { (asset) -> Bool in
+                return asset.balance > 0.01
+            }.map({ (asset) -> String in
+                return asset.symbol
+            })
+            print(currentAppWallet!.assetSequenceInHideSmallAssets)
             AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: currentAppWallet!)
         }
     }
