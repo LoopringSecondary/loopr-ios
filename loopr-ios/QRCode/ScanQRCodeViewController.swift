@@ -26,18 +26,32 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     var delegate: QRCodeScanProtocol?
     
     @IBOutlet weak var scanView: UIView!
+    @IBOutlet weak var flashButton: UIButton!
+    @IBOutlet weak var scanTipLabel: UILabel!
     
     var captureSession = AVCaptureSession()
     
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var qrCodeFrameView: UIView?
     
+    var timer = Timer()
+    var scanning: String!
+    var scanLine = UIImageView()
+    var scanQRCodeView = UIView()
+    
+    var isTorchOn = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         setBackButton()
-        self.navigationItem.title = NSLocalizedString("QR Code", comment: "")
+        self.navigationItem.title = NSLocalizedString("QR Code Scan", comment: "")
+        
+        scanTipLabel.font = FontConfigManager.shared.getLabelFont()
+        scanTipLabel.textColor = Themes.isNight() ? .white : .black
+        scanTipLabel.text = NSLocalizedString("Align QR Code within Frame to Scan", comment: "")
+        self.flashButton.image = UIImage(named: "TorchOff")
         
         // Get the camera for capturing videos
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back)
@@ -82,6 +96,8 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             self.scanView.addSubview(qrCodeFrameView)
             self.scanView.bringSubview(toFront: qrCodeFrameView)
         }
+        self.setupScanLine()
+        self.setupBackGroundView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -93,13 +109,78 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         captureSession.stopRunning()
     }
     
-    func launchApp(decodedURL: String, codeType: QRCodeType) {
+    @IBAction func switchFlash(_ sender: UIButton) {
+        guard let device = AVCaptureDevice.default(for: .video) else { return }
+        if device.hasTorch && device.isTorchAvailable {
+            try? device.lockForConfiguration()
+            if device.torchMode == .off {
+                device.torchMode = .on
+            } else {
+                device.torchMode = .off
+            }
+            device.unlockForConfiguration()
+        }
+        isTorchOn = !isTorchOn
+        if isTorchOn {
+            sender.setImage(#imageLiteral(resourceName: "TorchOn"), for: .normal)
+        } else {
+            sender.setImage(#imageLiteral(resourceName: "TorchOff"), for: .normal)
+        }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if scanning == "start" {
+            timer.fire()
+        } else {
+            timer.invalidate()
+        }
+    }
+    
+    @objc func moveScannerLayer(_ timer: Timer) {
+        scanLine.frame = CGRect(x: 0, y: 0, width: self.scanQRCodeView.frame.size.width, height: 12)
+        UIView.animate(withDuration: 2) {
+            self.scanLine.frame = CGRect(x: self.scanLine.frame.origin.x, y: self.scanLine.frame.origin.y + self.scanQRCodeView.frame.size.height - 10, width: self.scanLine.frame.size.width, height: self.scanLine.frame.size.height)
+        }
+    }
+    
+    func setupScanLine() {
+        scanQRCodeView = UIView(frame: CGRect(x: scanView.frame.size.width * 0.2, y: scanView.frame.size.height * 0.2, width: scanView.frame.size.width * 0.6, height: scanView.frame.size.width * 0.6))
+
+        scanQRCodeView.layer.borderWidth = 1.0
+        scanQRCodeView.layer.borderColor = UIColor.white.cgColor
+        scanView.addSubview(scanQRCodeView)
+        scanLine.frame = CGRect(x: 0, y: 0, width: scanQRCodeView.frame.size.width, height: 5)
+        scanLine.image = UIImage(named: "QRCodeScanLine")
+        scanQRCodeView.addSubview(scanLine)
+        self.addObserver(self, forKeyPath: "scanning", options: .new, context: nil)
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(moveScannerLayer(_:)), userInfo: nil, repeats: true)
+    }
+    
+    func setupBackGroundView() {
+        let topView = UIView(frame: CGRect(x: 0, y: 0, width: scanView.frame.size.width, height: scanView.frame.size.height * 0.2))
+        let bottomView = UIView(frame: CGRect(x: 0, y: scanView.frame.size.height * 0.8, width: scanView.frame.size.width, height: scanView.frame.size.height * 0.2))
+        let leftView = UIView(frame: CGRect(x: 0, y: scanView.frame.size.height * 0.2, width: scanView.frame.size.width * 0.2, height: scanView.frame.size.width * 0.6))
+        let rightView = UIView(frame: CGRect(x: scanView.frame.size.width * 0.8, y: scanView.frame.size.height * 0.2, width: scanView.frame.size.width * 0.2, height: scanView.frame.size.width * 0.6))
         
+        topView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
+        bottomView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
+        leftView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
+        rightView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
+        
+        self.scanView.addSubview(topView)
+        self.scanView.addSubview(bottomView)
+        self.scanView.addSubview(leftView)
+        self.scanView.addSubview(rightView)
+    }
+    
+    func launchApp(decodedURL: String, codeType: QRCodeType) {
         if presentedViewController != nil {
             return
         }
-        
         let alertPrompt = UIAlertController(title: "\(codeType.rawValue) detected", message: "\(decodedURL)", preferredStyle: .actionSheet)
+        let messageAttribute = NSMutableAttributedString.init(string: alertPrompt.message!)
+        messageAttribute.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)], range: NSRange(location: 0, length: (alertPrompt.message?.count)!))
+        alertPrompt.setValue(messageAttribute, forKey: "attributedMessage")
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
         
