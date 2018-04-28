@@ -8,6 +8,7 @@
 
 import UIKit
 import Social
+import NotificationBannerSwift
 
 class QRCodeViewController: UIViewController {
     
@@ -116,6 +117,12 @@ class QRCodeViewController: UIViewController {
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         print("pressedCopyAddressButton address: \(address)")
         UIPasteboard.general.string = address
+        let notificationTitle = NSLocalizedString("copy address to clipboard successful!", comment: "")
+        let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
+        let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
+        let banner = NotificationBanner(attributedTitle: attributeString, style: .success)
+        banner.duration = 1
+        banner.show()
     }
 
     @IBAction func pressedSaveToAlbum(_ sender: Any) {
