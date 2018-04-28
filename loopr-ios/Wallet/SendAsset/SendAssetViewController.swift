@@ -10,7 +10,7 @@ import UIKit
 import Geth
 import NotificationBannerSwift
 
-class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
+class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol {
 
     var asset: Asset!
     
@@ -96,7 +96,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         scrollView.addSubview(addressTextField)
         
         scanButton.image = UIImage(named: "Scan")
-        scanButton.frame = CGRect(x: screenWidth-padding-40, y: addressTextField.frame.origin.y, width: 40, height: 40)
+        scanButton.frame = CGRect(x: screenWidth-padding-30, y: addressTextField.frame.origin.y, width: 40, height: 40)
         scanButton.addTarget(self, action: #selector(pressedScanButton(_:)), for: .touchUpInside)
         scrollView.addSubview(scanButton)
         
@@ -204,11 +204,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     @objc func scrollViewTapped() {
         print("scrollViewTapped")
         amountTextField.resignFirstResponder()
+        self.view.endEditing(true)
         hideKeyboard()
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        print("sdfsdfsf")
     }
     
     func updateLabel(label: UILabel, text: String, textColor: UIColor) {
@@ -250,7 +247,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                         }
                     }
                 } else {
-                    updateLabel(label: amountInfoLabel, text: asset.display, textColor: .red)
+                    updateLabel(label: amountInfoLabel, text: "Maximum: \(asset.balance) \(asset.symbol)", textColor: .red)
                 }
             } else {
                 updateLabel(label: amountInfoLabel, text: 0.0.currency, textColor: .black)
@@ -287,8 +284,14 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         }
     }
     
+    func setResultOfScanningQRCode(valueSent: String, type: QRCodeType) {
+        print("value from scanning: \(valueSent)")
+        addressTextField.text = valueSent
+    }
+    
     @objc func pressedScanButton(_ sender: Any) {
         let viewController = ScanQRCodeViewController()
+        viewController.delegate = self
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -296,7 +299,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     @objc func pressedMaxButton(_ sender: Any) {
         print("pressedMaxButton")
         amountTextField.text = asset.balance.description
-        amountInfoLabel.text = "\((asset.display.description))"
+        updateLabel(label: amountInfoLabel, text: asset.display, textColor: .black)
     }
 
     @objc func sliderValueDidChange(_ sender: UISlider!) {

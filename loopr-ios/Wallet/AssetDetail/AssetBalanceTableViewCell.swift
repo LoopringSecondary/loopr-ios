@@ -26,18 +26,31 @@ class AssetBalanceTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        balanceLabel.setFont(UIFont.init(name: FontConfigManager.shared.getRegular(), size: 27)!)
-        balanceLabel.animationDuration = 0.25
-        balanceLabel.textAlignment = NSTextAlignment.center
-        balanceLabel.initializeLabel()
-        balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
-        balanceLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
-        
+        setupLabel()
         marketView.layer.cornerRadius = 20
         marketButton.layer.borderColor = UIColor(red: 165/255, green: 165/255, blue: 165/255, alpha: 1).cgColor
         marketButton.layer.cornerRadius = 20
         marketButton.layer.borderWidth = 1
         self.theme_backgroundColor = ["#fff", "#000"]
+    }
+    
+    func setupLabel() {
+        
+        balanceLabel.animationDuration = 0.25
+        balanceLabel.textAlignment = NSTextAlignment.center
+        balanceLabel.initializeLabel()
+        balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
+        balanceLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
+        balanceLabel.setFont(UIFont.init(name: FontConfigManager.shared.getRegular(), size: 27)!)
+        
+        marketLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
+        marketLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 15)!
+        marketDisplayLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
+        marketDisplayLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 15)!
+        marketBalanceLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
+        marketBalanceLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 15)!
+        changeLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
+        changeLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 15)!
     }
 
     func update() {
