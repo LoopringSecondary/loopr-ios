@@ -146,7 +146,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func searchTextDidUpdate(searchText: String) {
-        print("searchTextDidUpdate")
+        print("MarketViewController searchTextDidUpdate")
         self.searchText = searchText.trim()
         if self.searchText != "" {
             isFiltering = true

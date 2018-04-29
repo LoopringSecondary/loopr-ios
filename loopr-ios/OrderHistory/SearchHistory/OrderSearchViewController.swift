@@ -60,7 +60,7 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
     
     func setupSearchBar() {
         searchBar.showsCancelButton = false
-        searchBar.placeholder = "Search"
+        searchBar.placeholder = NSLocalizedString("Search", comment: "")
         searchBar.delegate = self
         
         searchBar.searchBarStyle = .minimal
@@ -80,7 +80,7 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
         searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.placeholder = NSLocalizedString("Search", comment: "") 
         searchController.searchBar.tintColor = UIStyleConfig.defaultTintColor
         searchController.searchBar.delegate = self
         searchController.searchBar.sizeToFit()

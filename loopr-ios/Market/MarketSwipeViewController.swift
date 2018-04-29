@@ -16,6 +16,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     
     var options = SwipeViewOptions()
     
+    var isSearching = false
     let searchBar = UISearchBar()
     let orderHistoryButton = UIButton(type: UIButtonType.custom)
 
@@ -33,13 +34,9 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         let image = UIImage(named: "Order-history-black")
         orderHistoryButton.setBackgroundImage(image, for: .normal)
         orderHistoryButton.setBackgroundImage(image?.alpha(0.3), for: .highlighted)
-        
         orderHistoryButton.addTarget(self, action: #selector(self.pressOrderHistoryButton(_:)), for: UIControlEvents.touchUpInside)
         orderHistoryButton.frame = CGRect(x: 0, y: 0, width: 23, height: 23)
 
-        let orderHistoryBarButton = UIBarButtonItem(customView: orderHistoryButton)
-        self.navigationItem.rightBarButtonItem = orderHistoryBarButton
-        
         // getOrdersFromServer should be here. MarketSwipeViewController has four MarketViewController.
         // If it's in the MarketViewController, getOrdersFromServer will be called four times.
         OrderDataManager.shared.getOrdersFromServer()
@@ -99,8 +96,13 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        searchBar.showsCancelButton = false
+        
+        if isSearching {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressSearchCancel))
+        } else {
+            let orderHistoryBarButton = UIBarButtonItem(customView: orderHistoryButton)
+            self.navigationItem.rightBarButtonItem = orderHistoryBarButton
+        }
         
         // TODO: no reload data in the viewWIllAppear. Need to implement the night mode.
         if Themes.isNight() {
@@ -114,15 +116,21 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if isSearching {
+            searchBar.becomeFirstResponder()
+        }
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
     
     func setupSearchBar() {
         searchBar.showsCancelButton = false
-        searchBar.placeholder = "Search"
+        searchBar.placeholder = NSLocalizedString("Search", comment: "") 
         searchBar.delegate = self
-        
         searchBar.searchBarStyle = .minimal
 
         let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
@@ -139,6 +147,15 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         // Set endEnditing to true, otherwise the keyboard will trigger a wired animation.
         navigationController?.view.endEditing(true)
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc func pressSearchCancel(_ button: UIBarButtonItem) {
+        print("pressSearchCancel")
+        let orderHistoryBarButton = UIBarButtonItem(customView: orderHistoryButton)
+        self.navigationItem.rightBarButtonItem = orderHistoryBarButton
+        searchBar.resignFirstResponder()
+        searchBar.text = nil
+        viewControllers[self.swipeView.currentIndex].searchTextDidUpdate(searchText: "")
     }
 
     // MARK: - Delegate
@@ -185,16 +202,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     // MARK: - SearchBar Delegate
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("searchBar textDidChange \(searchText) \(self.swipeView.currentIndex)")
-        
         viewControllers[self.swipeView.currentIndex].searchTextDidUpdate(searchText: searchText)
-    }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print("searchBarCancelButtonClicked")
-        searchBar.showsCancelButton = false
-        searchBar.resignFirstResponder()
-        let orderHistoryBarButton = UIBarButtonItem(customView: orderHistoryButton)
-        self.navigationItem.rightBarButtonItem = orderHistoryBarButton
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -203,12 +211,13 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         print("searchBarTextDidBeginEditing")
-        searchBar.showsCancelButton = true
-        self.navigationItem.rightBarButtonItem = nil
+        isSearching = true
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressSearchCancel))
         searchBar.becomeFirstResponder()
     }
 
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         print("searchBarTextDidEndEditing")
     }
+
 }
