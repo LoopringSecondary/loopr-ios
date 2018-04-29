@@ -143,7 +143,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         amountUnderLine.backgroundColor = UIColor.black
         scrollView.addSubview(amountUnderLine)
 
-        maxButton.title = "Max"
+        maxButton.title = NSLocalizedString("Max", comment: "")
         maxButton.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
         maxButton.setTitleColor(UIColor.init(rgba: "#cce9ff"), for: .highlighted)
         maxButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()

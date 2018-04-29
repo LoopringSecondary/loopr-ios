@@ -112,7 +112,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         // Third row: Amount
         
         amountTextField.delegate = self
-        // amountTextField.inputView = UIView()
+        amountTextField.inputView = UIView()
         amountTextField.tag = 1
         amountTextField.font = FontConfigManager.shared.getLabelFont()
         amountTextField.theme_tintColor = GlobalPicker.textColor

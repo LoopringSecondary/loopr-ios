@@ -232,7 +232,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if section == 0 {
             return 1
         } else {
-            return CurrentAppWalletDataManager.shared.getAssets().count
+            return CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption().count
         }
     }
     
@@ -267,7 +267,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let nib = Bundle.main.loadNibNamed("AssetTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? AssetTableViewCell
             }
-            cell?.asset = CurrentAppWalletDataManager.shared.getAssets()[indexPath.row]
+            cell?.asset = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption()[indexPath.row]
             cell?.update()
             return cell!
         }
@@ -281,7 +281,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
-            let asset = CurrentAppWalletDataManager.shared.getAssets()[indexPath.row]
+            let asset = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption()[indexPath.row]
             let assetDetailViewController = AssetDetailViewController()
             assetDetailViewController.asset = asset
             assetDetailViewController.hidesBottomBarWhenPushed = true

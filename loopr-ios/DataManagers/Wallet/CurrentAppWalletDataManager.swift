@@ -89,21 +89,23 @@ class CurrentAppWalletDataManager {
     }
 
     func getAssets(enable: Bool? = nil) -> [Asset] {
-        var assets: [Asset] = []
-        if SettingDataManager.shared.getHideSmallAssets() {
-            assets = self.assetsInHideSmallMode
-        } else {
-            assets = self.assets
-        }
-        
         guard let enable = enable else {
-            return assets
+            return self.assets
         }
         return assets.filter { (asset) -> Bool in
             asset.enable == enable
         }
     }
     
+    // Used in WalletViewController with hide small assets option
+    func getAssetsWithHideSmallAssetsOption() -> [Asset] {
+        if SettingDataManager.shared.getHideSmallAssets() {
+            return self.assetsInHideSmallMode
+        } else {
+            return self.assets
+        }
+    }
+
     func setAssets(newAssets: [Asset]) {
         let filteredAssets = newAssets.filter { (asset) -> Bool in
             return asset.symbol.trim() != ""

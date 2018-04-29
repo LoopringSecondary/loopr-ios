@@ -27,6 +27,7 @@ class AssetTransactionWebViewController: UIViewController {
         view.theme_backgroundColor = ["#fff", "#000"]
         progressView.tintColor = UIColor.black
         progressView.setProgress(0, animated: false)
+        progressView.alpha = 0.0
         
         let request = URLRequest(url: url!)
         wkWebView.navigationDelegate = self

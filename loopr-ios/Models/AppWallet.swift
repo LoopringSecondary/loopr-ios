@@ -29,7 +29,7 @@ class AppWallet: NSObject, NSCoding {
     var assetSequence: [String] = []
     var assetSequenceInHideSmallAssets: [String] = []
     
-    init(setupWalletMethod: SetupWalletMethod, address: String, privateKey: String, password: String, mnemonics: [String] = [], keystoreString: String? = nil, name: String, active: Bool, assetSequence: [String] = ["ETH", "LRC"], assetSequenceInHideSmallAssets: [String] = []) {
+    init(setupWalletMethod: SetupWalletMethod, address: String, privateKey: String, password: String, mnemonics: [String] = [], keystoreString: String? = nil, name: String, active: Bool, assetSequence: [String] = ["ETH", "WETH", "LRC"], assetSequenceInHideSmallAssets: [String] = []) {
         self.setupWalletMethod = setupWalletMethod
         self.address = address
         self.privateKey = privateKey

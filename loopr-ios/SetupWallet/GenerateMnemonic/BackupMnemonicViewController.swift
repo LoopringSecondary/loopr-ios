@@ -129,7 +129,7 @@ class BackupMnemonicViewController: UIViewController {
         super.viewWillAppear(animated)
         if isExportMode {
             verifyNowButton.isHidden = true
-            infoTextView.text = "Loopring wallet never keeps your mnemonic words, It is strongly recommended that you back up these information offline (with USB or physical paper)."
+            infoTextView.text = "Loopring wallet never keeps your mnemonic words. It's strongly recommended that you backup these information offline (with USB or physical paper)."
         } else {
             infoTextView.text = NSLocalizedString("Please make sure you have recorded all words safely. Otherwise, you will not be able to go through the verification process, and have to start over.", comment: "")
         }

@@ -93,22 +93,21 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         amountTextField.inputView = UIView()
         amountTextField.font = FontConfigManager.shared.getLabelFont() // UIFont.init(name: FontConfigManager.shared.getLight(), size: 24)
         amountTextField.theme_tintColor = GlobalPicker.textColor
-        amountTextField.placeholder = "Amount"
         amountTextField.contentMode = UIViewContentMode.bottom
         amountTextField.frame = CGRect(x: padding, y: tokenSView.frame.maxY + padding, width: screenWidth-padding*2-80, height: 40)
-        amountTextField.placeholder = NSLocalizedString("Amount you want to Convert", comment: "")
+        amountTextField.placeholder = NSLocalizedString("Amount you want to convert", comment: "")
         scrollView.addSubview(amountTextField)
 
         amountUnderLine.frame = CGRect(x: padding, y: tokenSLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
         amountUnderLine.backgroundColor = UIColor.black
         scrollView.addSubview(amountUnderLine)
         
-        availableLabel.text = "Available 96.3236 ETH"
+        availableLabel.text = ""
         availableLabel.font = FontConfigManager.shared.getLabelFont()
         availableLabel.frame = CGRect(x: padding, y: amountUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(availableLabel)
         
-        maxButton.title = "Max"
+        maxButton.title = NSLocalizedString("Max", comment: "")
         maxButton.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
         maxButton.setTitleColor(UIColor.init(rgba: "#cce9ff"), for: .highlighted)
         maxButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
@@ -169,7 +168,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         print("pressedArrowButton")
         if let asset = self.asset {
             self.asset = getAnotherAsset()
-            UIView.transition(with: tokenSView, duration: 0.5, options: .transitionCrossDissolve, animations: { self.tokenSView.update(symbol: self.asset!.symbol) }, completion: nil)
+            UIView.transition(with: tokenSView, duration: 0.5, options: .transitionCrossDissolve, animations: { self.tokenSView.update(symbol: self.asset?.symbol ?? "") }, completion: nil)
             UIView.transition(with: tokenBView, duration: 0.5, options: .transitionCrossDissolve, animations: { self.tokenBView.update(symbol: asset.symbol) }, completion: nil)
             updateLabel()
         }
