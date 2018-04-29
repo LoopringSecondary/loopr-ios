@@ -47,6 +47,7 @@
 "Yes, convert now!" = "现在转换!";
 "Convert Successfully." = "转换成功。";
 "QR Code" = "二维码";
+"Scan QR Code" = "二维码扫描";
 "Export Private Key" = "导出私钥";
 "Export Keystore" = "导出Keystore";
 "Wallet Name" = "钱包名字";
@@ -74,4 +75,4 @@
 "Hide Small Assets" = "隐藏小额资产";
 "Max" = "最大值";
 "Amount you want to convert" = "输入您转换的额度";
-
+"Add Token" = "添加代币";

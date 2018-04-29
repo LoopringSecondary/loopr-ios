@@ -88,6 +88,7 @@ class SendCurrentAppWalletDataManager {
                     } else {
                         self.nonce = Int64(data.respond)!
                     }
+                    print("Current nounce: \(self.nonce)")
                 }
             })
         }
@@ -103,6 +104,7 @@ class SendCurrentAppWalletDataManager {
         }
     }
     
+    // TODO (ruby): this is a temperate solution. We will improve it in the near future.
     func _keystore() {
         // TODO: improve the following code.
         // Get Keystore string value
@@ -130,8 +132,9 @@ class SendCurrentAppWalletDataManager {
         print(keyDirectory.absoluteString)
         let keydir = keyDirectory.absoluteString.replacingOccurrences(of: "file://", with: "", options: .regularExpression)
         let gethKeystore = GethKeyStore.init(keydir, scryptN: GethLightScryptN, scryptP: GethLightScryptP)!
-        let gethAccount = EthAccountCoordinator.default.launch(keystore: gethKeystore, password: wallet!.password)
-        print(gethAccount!.getAddress().getHex())
+        let gethAccount = EthAccountCoordinator.default.launch(keystore: gethKeystore, password: wallet!.getPassword())
+
+        print("current address: \(gethAccount!.getAddress().getHex())")
     }
     
     // convert weth -> eth
@@ -174,7 +177,7 @@ class SendCurrentAppWalletDataManager {
         // Transfer function
         let transferFunction = EthFunction(name: "transfer", inputParameters: [toAddress, amount])
         let data = web3swift.encode(transferFunction)
-        let gasLimit: Int64 = getGasLimitByType(type: "transfer")!
+        let gasLimit: Int64 = getGasLimitByType(type: "token_transfer")!
         _transfer(data: data, address: contractAddress, amount: GethBigInt(0), gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
@@ -183,7 +186,7 @@ class SendCurrentAppWalletDataManager {
         var userInfo: [String: Any] = [:]
         do {
             let nonce: Int64 = getNonce()
-            let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: wallet!.password)
+            let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: wallet!.getPassword())
             if let signedTransactionData = try signedTransaction?.encodeRLP() {
                 sendTransactionToServer("0x" + signedTransactionData.hexString, completion: completion)
             } else {

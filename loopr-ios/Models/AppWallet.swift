@@ -16,9 +16,12 @@ class AppWallet: NSObject, NSCoding {
     final let privateKey: String
 
     // The password used to get the address and the private key when users use mnemonics and keystore.
-    final var password: String
+    private final var password: String
     final var mnemonics: [String]
     var keystoreString: String?
+    
+    // Only use when the wallet is imported using a private key
+    private final let keystorePassword: String = "123456"
 
     // The wallet name in the app. Users can update later.
     var name: String
@@ -75,7 +78,7 @@ class AppWallet: NSObject, NSCoding {
         // However, importing a wallet using private key doesn't require password. Use a default password
         // Users won't export keystore
         if setupWalletMethod == .importUsingPrivateKey && password.trim() == "" {
-            password = "123456"
+            password = keystorePassword
         }
         
         // Generate keystore data
@@ -97,6 +100,14 @@ class AppWallet: NSObject, NSCoding {
     
     func getKeystore() -> String {
         return keystoreString ?? "Generating ..."
+    }
+    
+    func getPassword() -> String {
+        if setupWalletMethod == .importUsingPrivateKey {
+            return keystorePassword
+        } else {
+            return password
+        }
     }
     
     static func == (lhs: AppWallet, rhs: AppWallet) -> Bool {

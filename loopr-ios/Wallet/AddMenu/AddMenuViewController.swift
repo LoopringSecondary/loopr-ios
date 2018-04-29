@@ -50,10 +50,10 @@ class AddMenuViewController: UITableViewController {
         
         if indexPath.row == 0 {
             cell?.iconImageView.image = UIImage(named: "Scan-white")
-            cell?.titleLabel.text = "Scan QR Code"
+            cell?.titleLabel.text = NSLocalizedString("Scan QR Code", comment: "")
         } else {
             cell?.iconImageView.image = UIImage(named: "Add-token")
-            cell?.titleLabel.text = "Add Token"
+            cell?.titleLabel.text = NSLocalizedString("Add Token", comment: "")
             cell?.seperateLabel.isHidden = true
         }
 

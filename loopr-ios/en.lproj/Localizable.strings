@@ -47,6 +47,7 @@
 "Yes, convert now!" = "Yes, convert now!";
 "Convert Successfully." = "Convert Successfully.";
 "QR Code" = "QR Code";
+"Scan QR Code" = "Scan QR Code";
 "Export Private Key" = "Export Private Key";
 "Export Keystore" = "Export Keystore";
 "Wallet Name" = "Wallet Name";
@@ -74,3 +75,4 @@
 "Hide Small Assets" = "Hide Small Assets";
 "Max" = "Max";
 "Amount you want to convert" = "Amount you want to convert";
+"Add Token" = "Add Token";

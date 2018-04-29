@@ -46,7 +46,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
 
         // Do any additional setup after loading the view.
         setBackButton()
-        self.navigationItem.title = NSLocalizedString("QR Code Scan", comment: "")
+        self.navigationItem.title = NSLocalizedString("QR Code", comment: "")
         
         scanTipLabel.font = FontConfigManager.shared.getLabelFont()
         scanTipLabel.textColor = Themes.isNight() ? .white : .black

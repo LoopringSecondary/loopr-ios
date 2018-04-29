@@ -200,6 +200,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         // TODO: Update the transaction fee is needed. in SendCurrentAppWalletDataManager
         tokenSymbolLabel.text = asset.symbol
         tokenTotalAmountLabel.text = "\(asset.balance) \(asset.symbol) Available"
+        
+        SendCurrentAppWalletDataManager.shared.getNonceFromServer()
     }
     
     @objc func scrollViewTapped() {
