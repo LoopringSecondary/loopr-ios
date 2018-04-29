@@ -438,6 +438,7 @@
 		ACB5DDA2202D6F9400140A09 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DDA1202D6F9400140A09 /* UIViewExtension.swift */; };
 		ACB5DDA4202D6FC300140A09 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DDA3202D6FC300140A09 /* UIImageExtension.swift */; };
 		ACB5DDA6202D704200140A09 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DDA5202D704200140A09 /* UIButtonExtension.swift */; };
+		ACB6A19F20965D94004C64BC /* QRCodeSaveToAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB6A19E20965D94004C64BC /* QRCodeSaveToAlbum.swift */; };
 		ACB729D0205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB729CE205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.swift */; };
 		ACB729D1205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB729CF205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.xib */; };
 		ACB729D4205DE21B00DD4DF3 /* TradeConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB729D2205DE21B00DD4DF3 /* TradeConfirmationViewController.swift */; };
@@ -872,6 +873,7 @@
 		ACB5DDA1202D6F9400140A09 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		ACB5DDA3202D6FC300140A09 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		ACB5DDA5202D704200140A09 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		ACB6A19E20965D94004C64BC /* QRCodeSaveToAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeSaveToAlbum.swift; sourceTree = "<group>"; };
 		ACB729CE205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTradeTokenTableViewCell.swift; sourceTree = "<group>"; };
 		ACB729CF205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchTradeTokenTableViewCell.xib; sourceTree = "<group>"; };
 		ACB729D2205DE21B00DD4DF3 /* TradeConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeConfirmationViewController.swift; sourceTree = "<group>"; };
@@ -1773,6 +1775,7 @@
 				ACB746E42043C5F5006C2BF5 /* QRCodeViewController.xib */,
 				AC5E0993205F270000801738 /* ScanQRCodeViewController.swift */,
 				AC5E0994205F270000801738 /* ScanQRCodeViewController.xib */,
+				ACB6A19E20965D94004C64BC /* QRCodeSaveToAlbum.swift */,
 			);
 			path = QRCode;
 			sourceTree = "<group>";
@@ -2740,6 +2743,7 @@
 				AC2D2C11208BD1BF00D619AD /* UIButton+AlignedIcon.swift in Sources */,
 				AC952A142053A84800C78562 /* OrderHistoryViewController.swift in Sources */,
 				AC99CF4E2083E4AF000AE4BD /* MnemonicSelectAddressViewController.swift in Sources */,
+				ACB6A19F20965D94004C64BC /* QRCodeSaveToAlbum.swift in Sources */,
 				ACE6F72720426BAC0039273D /* SettingThemeModeTableViewCell.swift in Sources */,
 				ACA677CF207D1BEC00D34A2F /* SettingChangeWalletNameViewController.swift in Sources */,
 				ACA677B82079970600D34A2F /* ExportKeystoreSwipeViewController.swift in Sources */,
