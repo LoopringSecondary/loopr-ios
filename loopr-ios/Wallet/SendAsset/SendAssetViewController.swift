@@ -64,7 +64,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         
         scrollViewButtonLayoutConstraint.constant = 77
         sendButtonLayoutContraint.constant = 15
-        
+
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
@@ -171,6 +171,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         // TODO: Set value
         transactionSpeedSlider.minimumValue = 0
         transactionSpeedSlider.maximumValue = 100
+        transactionSpeedSlider.value = 0
         
         transactionSpeedSlider.isContinuous = true
         transactionSpeedSlider.tintColor = UIColor.black
@@ -302,8 +303,15 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         updateLabel(label: amountInfoLabel, text: asset.display, textColor: .black)
     }
 
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view != nil && touch.view!.isKind(of: UISlider.self) {
+            return false
+        }
+        return true
+    }
+    
     @objc func sliderValueDidChange(_ sender: UISlider!) {
-        print("Slider value changed")
+        print("Slider value changed \(sender.value)")
         let step: Float = 10
         let roundedStepValue = round(sender.value / step) * step
         
