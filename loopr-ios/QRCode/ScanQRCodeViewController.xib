@@ -38,7 +38,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXk-ds-5sf">
-                    <rect key="frame" x="151.5" y="496" width="72" height="72"/>
+                    <rect key="frame" x="157.5" y="496" width="72" height="72"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="72" id="FP1-Sc-iiU"/>
                         <constraint firstAttribute="width" constant="72" id="adx-VP-RgP"/>
@@ -58,7 +58,7 @@
                 <constraint firstItem="8N8-Vh-ho4" firstAttribute="top" secondItem="03k-W9-LBM" secondAttribute="bottom" constant="40" id="gOq-sK-Ucn"/>
                 <constraint firstItem="03k-W9-LBM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="l8K-ll-mdr"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="03k-W9-LBM" secondAttribute="trailing" id="pWB-bb-SzC"/>
-                <constraint firstItem="qXk-ds-5sf" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="qPL-1m-pqx"/>
+                <constraint firstItem="qXk-ds-5sf" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" constant="6" id="qPL-1m-pqx"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="53.5"/>

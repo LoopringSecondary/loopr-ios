@@ -12,9 +12,7 @@ import BigInt
 class CurrentAppWalletDataManager {
 
     static let shared = CurrentAppWalletDataManager()
-    
     private var currentAppWallet: AppWallet?
-    
     private var totalCurrencyValue: Double
     private var assetsInHideSmallMode: [Asset]
     private var assets: [Asset]
@@ -164,6 +162,7 @@ class CurrentAppWalletDataManager {
                 return asset.symbol
             })
             print(currentAppWallet!.assetSequenceInHideSmallAssets)
+	    currentAppWallet!.totalCurrency = totalCurrencyValue
             AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: currentAppWallet!)
         }
     }

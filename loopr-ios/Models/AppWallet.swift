@@ -28,11 +28,11 @@ class AppWallet: NSObject, NSCoding {
 
     // TODO: what is active for?
     var active: Bool
-
+    var totalCurrency: Double = 0
     var assetSequence: [String] = []
     var assetSequenceInHideSmallAssets: [String] = []
     
-    init(setupWalletMethod: SetupWalletMethod, address: String, privateKey: String, password: String, mnemonics: [String] = [], keystoreString: String? = nil, name: String, active: Bool, assetSequence: [String] = ["ETH", "WETH", "LRC"], assetSequenceInHideSmallAssets: [String] = []) {
+    init(setupWalletMethod: SetupWalletMethod, address: String, privateKey: String, password: String, mnemonics: [String] = [], keystoreString: String? = nil, name: String, active: Bool, totalCurrency: Double = 0, assetSequence: [String] = [], assetSequenceInHideSmallAssets: [String] = []) {
         self.setupWalletMethod = setupWalletMethod
         self.address = address
         self.privateKey = privateKey

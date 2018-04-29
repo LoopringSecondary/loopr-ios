@@ -7,11 +7,20 @@
 //
 
 import UIKit
+import FoldingCell
+
+struct CellHeight {
+    static let close: CGFloat = 96
+    static let open: CGFloat = 192
+}
 
 class SelectWalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var walletTableView: UITableView!
     
+    var appWallet: AppWallet?
+    var cellHeights: [CGFloat] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,8 +34,14 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
         let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
         self.navigationItem.rightBarButtonItem = addButton
         
+        let cellCount = AppWalletDataManager.shared.getWallets().count
+        cellHeights = (0 ..< cellCount).map { _ in CellHeight.close }
+
         walletTableView.delegate = self
         walletTableView.dataSource = self
+        walletTableView.estimatedRowHeight = 2.0
+        walletTableView.separatorStyle = .none
+        walletTableView.rowHeight = UITableViewAutomaticDimension
         walletTableView.tableFooterView = UIView()
     }
     
@@ -52,7 +67,7 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return SelectWalletTableViewCell.getHeight()
+        return cellHeights[indexPath.row]
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,25 +84,39 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        let appWallet = AppWalletDataManager.shared.getWallets()[indexPath.row]
-
-        let alertController = UIAlertController(title: "Choose Wallet: \(appWallet.name)",
-            message: nil,
-            preferredStyle: .alert)
-        
+        guard let cell = tableView.cellForRow(at: indexPath) as? SelectWalletTableViewCell else { return }
+        self.appWallet = AppWalletDataManager.shared.getWallets()[indexPath.row]
+        cell.wallet = appWallet
+        let duration = 0.3
+        if cellHeights[indexPath.row] == CellHeight.close {
+            cellHeights[indexPath.row] = CellHeight.open
+            cell.openAnimation(nil)
+        } else {
+            cellHeights[indexPath.row] = CellHeight.close
+            cell.closeAnimation(nil)
+        }
+        cell.update()
+        cell.enterButton.addTarget(self, action: #selector(pressedEnterButton), for: .touchUpInside)
+        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { () -> Void in
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }, completion: nil)
+    }
+    
+    @objc func pressedEnterButton() {
+        if let appWallet = self.appWallet {
+            let alertController = UIAlertController(title: "Choose Wallet: \(appWallet.name)",
+                message: nil,
+                preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
-            CurrentAppWalletDataManager.shared.setCurrentAppWallet(appWallet)
-            self.navigationController?.popViewController(animated: true)
-        })
-        alertController.addAction(defaultAction)
-        
+                CurrentAppWalletDataManager.shared.setCurrentAppWallet(appWallet)
+                self.navigationController?.popViewController(animated: true)
+            })
+            alertController.addAction(defaultAction)
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
-            
-        })
-        alertController.addAction(cancelAction)
-        
-        self.present(alertController, animated: true, completion: nil)
+            })
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
 }

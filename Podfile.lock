@@ -6,6 +6,7 @@ PODS:
   - Charts/Core (3.0.5)
   - CryptoSwift (0.8.3)
   - DynamicBlurView (2.0.2)
+  - FoldingCell (3.0.6)
   - FontBlaster (4.0.3)
   - Geth (1.8.3)
   - lottie-ios (2.5.0)
@@ -30,6 +31,7 @@ DEPENDENCIES:
   - BigInt
   - Charts
   - CryptoSwift
+  - FoldingCell
   - FontBlaster
   - Geth
   - lottie-ios
@@ -41,27 +43,6 @@ DEPENDENCIES:
   - SwiftLint
   - SwiftTheme
   - TrezorCrypto
-
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - BigInt
-    - Charts
-    - CryptoSwift
-    - DynamicBlurView
-    - FontBlaster
-    - Geth
-    - lottie-ios
-    - MarqueeLabel
-    - NotificationBannerSwift
-    - pop
-    - PopupDialog
-    - SipHash
-    - SnapKit
-    - Socket.IO-Client-Swift
-    - Starscream
-    - SwiftLint
-    - SwiftTheme
-    - TrezorCrypto
 
 EXTERNAL SOURCES:
   secp256k1_ios:
@@ -77,6 +58,7 @@ SPEC CHECKSUMS:
   Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
   CryptoSwift: 033efc3523865d19cc6ab6612fa17a62613b5dfa
   DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
+  FoldingCell: 4848ec8a2056d5751bfb710df14521fc64d48ad7
   FontBlaster: f18031f5dde2ce689f5330e7005edfe3c0815957
   Geth: e00dad6a7592facdf063214be13b28b7e73b0df2
   lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
@@ -93,6 +75,6 @@ SPEC CHECKSUMS:
   SwiftTheme: 36d71c4eed4b2c401c782cf036e4586c749a8173
   TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803
 
-PODFILE CHECKSUM: 0c38db8c107077edcde896ce5f4ef62dbefad9c0
+PODFILE CHECKSUM: 209391260d28d64028818abda585779151346f44
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.4.0

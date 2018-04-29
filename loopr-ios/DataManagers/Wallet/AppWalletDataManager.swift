@@ -11,10 +11,9 @@ import Foundation
 class AppWalletDataManager {
     
     static let shared = AppWalletDataManager()
-    
     private var appWallets: [AppWallet]
-
     private var confirmedToLogout: Bool = false
+    private var accountTotalCurrency: Double = 0
     
     private init() {
         appWallets = []
@@ -39,6 +38,14 @@ class AppWalletDataManager {
             return true
         }
         return false
+    }
+    
+    func getAccountTotalCurrency() -> Double {
+        var result: Double = 0
+        for wallet in appWallets {
+            result += wallet.totalCurrency
+        }
+        return result
     }
 
     func getWallets() -> [AppWallet] {

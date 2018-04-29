@@ -15,7 +15,8 @@ target 'loopr-ios' do
   pod 'FontBlaster'
   pod 'Socket.IO-Client-Swift', '~> 13.1.0'
   pod 'NotificationBannerSwift'
-  
+  pod 'FoldingCell'
+
   # Pods for keystone
   pod 'Geth'
   pod 'BigInt'
