@@ -43,7 +43,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     var transactionFeeAmountLabel = UILabel()
     
     // Advanced
-    var advancedLabel = UILabel()
+    var advancedButton: UIButton = UIButton()
+    var showAdvanced: Bool = false
     var transactionSpeedSlider = UISlider()
     
     // Keyboard
@@ -160,13 +161,17 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         scrollView.addSubview(transactionFeeAmountLabel)
 
         // Fouth row: Advanced
+        advancedButton.frame = CGRect(x: padding, y: transactionFeeAmountLabel.frame.maxY + padding, width: 100, height: 40)
+        advancedButton.setTitleColor(UIColor.black, for: .normal)
+        advancedButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
+        advancedButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
+        advancedButton.title = NSLocalizedString("Advanced", comment: "")
+        advancedButton.setRightImage(imageName: "Arrow-button-right-light", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 11)
+        advancedButton.addTarget(self, action: #selector(pressedAdvancedButton(_:)), for: .touchUpInside)
+        scrollView.addSubview(advancedButton)
         
-        advancedLabel.frame = CGRect(x: padding, y: transactionFeeAmountLabel.frame.maxY + padding, width: 120, height: 40)
-        advancedLabel.font = FontConfigManager.shared.getLabelFont()
-        advancedLabel.text = NSLocalizedString("Advanced", comment: "")
-        scrollView.addSubview(advancedLabel)
-        
-        transactionSpeedSlider.frame = CGRect(x: padding, y: advancedLabel.frame.maxY + padding*0.5, width: screenWidth-2*padding, height: 20)
+        transactionSpeedSlider.alpha = 0
+        transactionSpeedSlider.frame = CGRect(x: padding, y: advancedButton.frame.maxY + padding*0.5, width: screenWidth-2*padding, height: 20)
         
         // TODO: Set value
         transactionSpeedSlider.minimumValue = 0
@@ -265,6 +270,23 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             isValid = true
         }
         updateButton(isValid: isValid)
+    }
+    
+    @objc func pressedAdvancedButton(_ sender: Any) {
+        print("pressedAdvancedButton")
+        showAdvanced = !showAdvanced
+        if showAdvanced {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.transactionSpeedSlider.alpha = 1
+            })
+            // TODO: The position of the align icon is related to the size. So we use several hardcoded value here.
+            self.advancedButton.setRightImage(imageName: "Arrow-button-down-light", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 2)
+        } else {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.transactionSpeedSlider.alpha = 0
+            })
+            self.advancedButton.setRightImage(imageName: "Arrow-button-right-light", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 11)
+        }
     }
 
     @IBAction func pressedSendButton(_ sender: Any) {
