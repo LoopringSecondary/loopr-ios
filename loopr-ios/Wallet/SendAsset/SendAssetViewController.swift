@@ -47,6 +47,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     var advancedButton: UIButton = UIButton()
     var showAdvanced: Bool = false
     var transactionSpeedSlider = UISlider()
+    var transactionAmountMinLabel = UILabel()
+    var transactionAmountMaxLabel = UILabel()
+    var transactionAmountCurrentLabel = UILabel()
     
     // Keyboard
     var isKeyboardShow: Bool = false
@@ -187,9 +190,29 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         transactionSpeedSlider.tintColor = UIColor.black
         transactionSpeedSlider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
         scrollView.addSubview(transactionSpeedSlider)
+
+        transactionAmountMinLabel.alpha = 0
+        transactionAmountMinLabel.frame = CGRect(x: padding, y: transactionSpeedSlider.frame.maxY + 10, width: (screenWidth-2*padding)/3, height: 20)
+        transactionAmountMinLabel.font = FontConfigManager.shared.getLabelFont()
+        transactionAmountMinLabel.text = "0"
+        scrollView.addSubview(transactionAmountMinLabel)
+        
+        transactionAmountCurrentLabel.alpha = 0
+        transactionAmountCurrentLabel.textAlignment = .center
+        transactionAmountCurrentLabel.frame = CGRect(x: transactionAmountMinLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/3, height: 20)
+        transactionAmountCurrentLabel.font = FontConfigManager.shared.getLabelFont()
+        transactionAmountCurrentLabel.text = "50"
+        scrollView.addSubview(transactionAmountCurrentLabel)
+        
+        transactionAmountMaxLabel.alpha = 0
+        transactionAmountMaxLabel.textAlignment = .right
+        transactionAmountMaxLabel.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/3, height: 20)
+        transactionAmountMaxLabel.font = FontConfigManager.shared.getLabelFont()
+        transactionAmountMaxLabel.text = "100"
+        scrollView.addSubview(transactionAmountMaxLabel)
         
         scrollView.delegate = self
-        scrollView.contentSize = CGSize(width: screenWidth, height: transactionSpeedSlider.frame.maxY + 30)
+        scrollView.contentSize = CGSize(width: screenWidth, height: transactionAmountMinLabel.frame.maxY + 30)
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
@@ -283,12 +306,18 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         if showAdvanced {
             UIView.animate(withDuration: 0.5, animations: {
                 self.transactionSpeedSlider.alpha = 1
+                self.transactionAmountMinLabel.alpha = 1
+                self.transactionAmountCurrentLabel.alpha = 1
+                self.transactionAmountMaxLabel.alpha = 1
             })
             // TODO: The position of the align icon is related to the size. So we use several hardcoded value here.
             self.advancedButton.setRightImage(imageName: "Arrow-button-down-light", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 2)
         } else {
             UIView.animate(withDuration: 0.5, animations: {
                 self.transactionSpeedSlider.alpha = 0
+                self.transactionAmountMinLabel.alpha = 0
+                self.transactionAmountCurrentLabel.alpha = 0
+                self.transactionAmountMaxLabel.alpha = 0
             })
             self.advancedButton.setRightImage(imageName: "Arrow-button-right-light", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 11)
         }
@@ -346,10 +375,12 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     
     @objc func sliderValueDidChange(_ sender: UISlider!) {
         print("Slider value changed \(sender.value)")
-        let step: Float = 10
+        let step: Float = 1
         let roundedStepValue = round(sender.value / step) * step
         
-        // Get value from Replay API.
+        transactionAmountCurrentLabel.text = "\(roundedStepValue)"
+        
+        // Update gas price.
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
