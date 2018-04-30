@@ -11,7 +11,7 @@ import FoldingCell
 
 struct CellHeight {
     static let close: CGFloat = 96
-    static let open: CGFloat = 192
+    static let open: CGFloat = 288
 }
 
 class SelectWalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {

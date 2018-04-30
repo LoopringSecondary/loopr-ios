@@ -43,6 +43,11 @@ class SelectWalletTableViewCell: FoldingCell, UICollectionViewDataSource, UIColl
         frontView.layer.cornerRadius = 20
         backView.layer.cornerRadius = 20
         
+        // folding cell
+        itemCount = 3
+        backViewColor = UIColor(white: 0.1, alpha: 0.1)
+        
+        // collection view
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.allowsSelection = false
@@ -59,7 +64,7 @@ class SelectWalletTableViewCell: FoldingCell, UICollectionViewDataSource, UIColl
         addressLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 11)
         notifyLabel.isHidden = true
         toatalBalanceLabel.theme_textColor = GlobalPicker.textColor
-        toatalBalanceLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 24)
+        toatalBalanceLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 40)
         
         enterButton.layer.borderWidth = 1
         enterButton.layer.cornerRadius = 18
@@ -88,7 +93,7 @@ class SelectWalletTableViewCell: FoldingCell, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let wallet = self.wallet {
-            return wallet.assetSequenceInHideSmallAssets.count
+            return wallet.assetSequence.count
         } else {
             return 0
         }
@@ -97,7 +102,7 @@ class SelectWalletTableViewCell: FoldingCell, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssetCollectionViewCell.getCellIdentifier(), for: indexPath) as? AssetCollectionViewCell
         if let wallet = self.wallet {
-            cell?.asset = wallet.getAssetSequenceInHideSmallAssets()[indexPath.row]
+            cell?.asset = wallet.assetSequence[indexPath.row]
         }
         cell?.update()
         return cell!
