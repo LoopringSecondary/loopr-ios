@@ -9,6 +9,7 @@
 import UIKit
 import Geth
 import NotificationBannerSwift
+import SVProgressHUD
 
 class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol {
 
@@ -291,6 +292,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
 
     @IBAction func pressedSendButton(_ sender: Any) {
         print("start sending")
+        // Show activity indicator
+        // SVProgressHUD.show(withStatus: "Processing the transaction ...")
+
         let toAddress = addressTextField.text!
         let gethAmount = GethBigInt.bigInt(amountTextField.text!)!
         if let token = TokenDataManager.shared.getTokenBySymbol(asset!.symbol) {
@@ -470,6 +474,9 @@ extension SendAssetViewController {
     }
 
     func completion(_ txHash: String?, _ error: Error?) {
+        // Close activity indicator
+        // SVProgressHUD.dismiss()
+        
         guard error == nil && txHash != nil else {
             // Show toast
             DispatchQueue.main.async {

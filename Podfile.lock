@@ -23,6 +23,7 @@ PODS:
   - Socket.IO-Client-Swift (13.1.2):
     - Starscream (~> 3.0.2)
   - Starscream (3.0.4)
+  - SVProgressHUD (2.2.5)
   - SwiftLint (0.25.0)
   - SwiftTheme (0.4.1)
   - TrezorCrypto (0.0.4)
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - PopupDialog
   - secp256k1_ios (from `https://github.com/shamatar/secp256k1_ios.git`)
   - Socket.IO-Client-Swift (~> 13.1.0)
+  - SVProgressHUD
   - SwiftLint
   - SwiftTheme
   - TrezorCrypto
@@ -62,6 +64,7 @@ SPEC REPOS:
     - SnapKit
     - Socket.IO-Client-Swift
     - Starscream
+    - SVProgressHUD
     - SwiftLint
     - SwiftTheme
     - TrezorCrypto
@@ -93,10 +96,11 @@ SPEC CHECKSUMS:
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   Socket.IO-Client-Swift: 010d2f464bdd1849b859c0cd0500d68194401ac8
   Starscream: f5da93fe6984c77b694366bf7299b7dc63a76f26
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: e14651157288e9e01d6e1a71db7014fb5744a8ea
   SwiftTheme: 36d71c4eed4b2c401c782cf036e4586c749a8173
   TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803
 
-PODFILE CHECKSUM: 209391260d28d64028818abda585779151346f44
+PODFILE CHECKSUM: c63ba22fe7cbeff60e1aa5800f162a0809bb2be3
 
 COCOAPODS: 1.5.0

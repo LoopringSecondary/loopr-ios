@@ -9,6 +9,7 @@
 import UIKit
 import SwiftTheme
 import NotificationBannerSwift
+import SVProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = SettingDataManager.shared.getCurrentLanguage()
 
         updateTheme()
+        SVProgressHUD.setDefaultStyle(.dark)
         
         let manager = NetworkingReachabilityManager.shared
         manager?.listener = { status in

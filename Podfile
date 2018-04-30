@@ -16,6 +16,7 @@ target 'loopr-ios' do
   pod 'Socket.IO-Client-Swift', '~> 13.1.0'
   pod 'NotificationBannerSwift'
   pod 'FoldingCell'
+  pod 'SVProgressHUD'
 
   # Pods for keystone
   pod 'Geth'
