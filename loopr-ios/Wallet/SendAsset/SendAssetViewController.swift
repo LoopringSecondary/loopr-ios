@@ -192,23 +192,23 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         scrollView.addSubview(transactionSpeedSlider)
 
         transactionAmountMinLabel.alpha = 0
-        transactionAmountMinLabel.frame = CGRect(x: padding, y: transactionSpeedSlider.frame.maxY + 10, width: (screenWidth-2*padding)/3, height: 20)
+        transactionAmountMinLabel.frame = CGRect(x: padding, y: transactionSpeedSlider.frame.maxY + 10, width: (screenWidth-2*padding)/4, height: 30)
         transactionAmountMinLabel.font = FontConfigManager.shared.getLabelFont()
-        transactionAmountMinLabel.text = "0"
+        transactionAmountMinLabel.text = "slow"
         scrollView.addSubview(transactionAmountMinLabel)
         
         transactionAmountCurrentLabel.alpha = 0
         transactionAmountCurrentLabel.textAlignment = .center
-        transactionAmountCurrentLabel.frame = CGRect(x: transactionAmountMinLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/3, height: 20)
+        transactionAmountCurrentLabel.frame = CGRect(x: transactionAmountMinLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/2, height: 30)
         transactionAmountCurrentLabel.font = FontConfigManager.shared.getLabelFont()
         transactionAmountCurrentLabel.text = "50"
         scrollView.addSubview(transactionAmountCurrentLabel)
         
         transactionAmountMaxLabel.alpha = 0
         transactionAmountMaxLabel.textAlignment = .right
-        transactionAmountMaxLabel.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/3, height: 20)
+        transactionAmountMaxLabel.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/4, height: 30)
         transactionAmountMaxLabel.font = FontConfigManager.shared.getLabelFont()
-        transactionAmountMaxLabel.text = "100"
+        transactionAmountMaxLabel.text = "fast"
         scrollView.addSubview(transactionAmountMaxLabel)
         
         scrollView.delegate = self
@@ -378,7 +378,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         let step: Float = 1
         let roundedStepValue = round(sender.value / step) * step
         
-        transactionAmountCurrentLabel.text = "\(roundedStepValue)"
+        transactionAmountCurrentLabel.text = "gas price: \(roundedStepValue)"
         
         // Update gas price.
     }
