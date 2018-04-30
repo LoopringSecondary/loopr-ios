@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func showNetworkLossBanner() {
-        let banner = NotificationBanner.generate("Sorry, network is lost. Please make sure the internet connection is stable": notificationTitle, style: .warning)
+        let banner = NotificationBanner.generate(title: "Sorry, network is lost. Please make sure the internet connection is stable", style: .warning)
         banner.duration = 2.0
         banner.show()
     }
