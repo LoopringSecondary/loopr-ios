@@ -53,6 +53,10 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     var keyboardView: DefaultNumericKeyboard!
     var activeTextFieldTag = -1
     
+    // To measure the performance. Will be removed in the future
+    var start = Date()
+    var end = Date()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -293,7 +297,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     @IBAction func pressedSendButton(_ sender: Any) {
         print("start sending")
         // Show activity indicator
-        // SVProgressHUD.show(withStatus: "Processing the transaction ...")
+        start = Date()
+        SVProgressHUD.show(withStatus: "Processing the transaction ...")
 
         let toAddress = addressTextField.text!
         let gethAmount = GethBigInt.bigInt(amountTextField.text!)!
@@ -464,6 +469,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             self.navigationItem.title = ""
         }
     }
+
 }
 
 extension SendAssetViewController {
@@ -475,7 +481,10 @@ extension SendAssetViewController {
 
     func completion(_ txHash: String?, _ error: Error?) {
         // Close activity indicator
-        // SVProgressHUD.dismiss()
+        SVProgressHUD.dismiss()
+        end = Date()
+        let timeInterval1: Double = end.timeIntervalSince(start)
+        print("Time to completion in _transfer: \(timeInterval1) seconds")
         
         guard error == nil && txHash != nil else {
             // Show toast
@@ -495,4 +504,5 @@ extension SendAssetViewController {
             banner.show()
         }
     }
+
 }

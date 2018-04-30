@@ -121,12 +121,16 @@ class SendCurrentAppWalletDataManager {
     }
     
     func sendTransactionToServer(_ signedTransaction: String, completion: @escaping (String?, Error?) -> Void) {
+        let start = Date()
         EthereumAPIRequest.eth_sendRawTransaction(data: signedTransaction) { (data, error) in
             guard error == nil && data != nil else {
                 completion(nil, error)
                 return
             }
             completion(data!.respond, nil)
+            let end1 = Date()
+            let timeInterval1: Double = end1.timeIntervalSince(start)
+            print("Time to sendTransactionToServer: \(timeInterval1) seconds")
         }
     }
     
@@ -218,6 +222,45 @@ class SendCurrentAppWalletDataManager {
         _keystore()
         var userInfo: [String: Any] = [:]
         do {
+            // Async call. Of course we need to clean the following code.
+            // Copy getNonceFromServer
+            let start = Date()
+            if let publicAddress = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
+                EthereumAPIRequest.eth_getTransactionCount(data: publicAddress, block: BlockTag.pending, completionHandler: { (getTransactionCountData, error) in
+                    guard error == nil, let getTransactionCountData = getTransactionCountData else {
+                        return
+                    }
+                    if getTransactionCountData.respond.isHex() {
+                        self.nonce = Int64(getTransactionCountData.respond.dropFirst(2), radix: 16)!
+                    } else {
+                        self.nonce = Int64(getTransactionCountData.respond)!
+                    }
+                    print("Current nounce: \(self.nonce)")
+                    let end1 = Date()
+                    let timeInterval1: Double = end1.timeIntervalSince(start)
+                    print("Time to getNonceFromServer in _transfer: \(timeInterval1) seconds")
+                    
+                    // Sign Transaction
+                    do {
+                        let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: self.nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getPassword())
+                        if let signedTransactionData = try signedTransaction?.encodeRLP() {
+                            self.sendTransactionToServer("0x" + signedTransactionData.hexString, completion: completion)
+                        } else {
+                            userInfo["message"] = NSLocalizedString("Failed to sign/encode", comment: "")
+                            let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
+                            completion(nil, error)
+                        }
+                        let end2 = Date()
+                        let timeInterval2: Double = end2.timeIntervalSince(end1)
+                        print("Time to sign transactinon in _transfer: \(timeInterval2) seconds")
+                    } catch {
+                        userInfo["message"] = NSLocalizedString("Failed to encode transaction", comment: "")
+                        let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
+                        completion(nil, error)
+                    }
+                })
+            }
+            /*
             let nonce: Int64 = getNonceFromServerSynchronous()
             let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getPassword())
             if let signedTransactionData = try signedTransaction?.encodeRLP() {
@@ -227,6 +270,7 @@ class SendCurrentAppWalletDataManager {
                 let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
                 completion(nil, error)
             }
+            */
         } catch {
             userInfo["message"] = NSLocalizedString("Failed to encode transaction", comment: "")
             let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
