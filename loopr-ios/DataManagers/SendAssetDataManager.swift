@@ -44,11 +44,6 @@ class SendCurrentAppWalletDataManager {
         self.wethAddress = GethNewAddressFromHex(address, &error)
     }
     
-    func getNonce() -> Int64 {
-        getNonceFromServer()
-        return self.nonce
-    }
-    
     func getGasLimits() -> [GasLimit] {
         return gasLimits
     }
@@ -75,20 +70,52 @@ class SendCurrentAppWalletDataManager {
         return gasLimit
     }
     
+    // The API request teth_getTransactionCount is slow. Please be patient. It takes 3-20 seconds.
+    // TODO: we can improve it.
+    func getNonceFromServerSynchronous() -> Int64 {
+        let start = Date()
+        print("Start getNonceFromServerSynchronous")
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        if let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
+            EthereumAPIRequest.eth_getTransactionCount(data: address, block: BlockTag.pending, completionHandler: { (data, error) in
+                print("Receive callback in getNonceFromServerSynchronous")
+                guard error == nil, let data = data else {
+                    return
+                }
+                if data.respond.isHex() {
+                    self.nonce = Int64(data.respond.dropFirst(2), radix: 16)!
+                } else {
+                    self.nonce = Int64(data.respond)!
+                }
+                print("Current nounce: \(self.nonce)")
+                semaphore.signal()
+                let end = Date()
+                let timeInterval: Double = end.timeIntervalSince(start)
+                print("Time to getNonceFromServerSynchronous: \(timeInterval) seconds")
+            })
+        }
+        
+        _ = semaphore.wait(timeout: .distantFuture)
+        return self.nonce
+    }
+    
     func getNonceFromServer() {
+        let start = Date()
         if let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
             EthereumAPIRequest.eth_getTransactionCount(data: address, block: BlockTag.pending, completionHandler: { (data, error) in
                 guard error == nil, let data = data else {
                     return
                 }
-                DispatchQueue.main.async {
-                    if data.respond.isHex() {
-                        self.nonce = Int64(data.respond.dropFirst(2), radix: 16)!
-                    } else {
-                        self.nonce = Int64(data.respond)!
-                    }
-                    print("Current nounce: \(self.nonce)")
+                if data.respond.isHex() {
+                    self.nonce = Int64(data.respond.dropFirst(2), radix: 16)!
+                } else {
+                    self.nonce = Int64(data.respond)!
                 }
+                print("Current nounce: \(self.nonce)")
+                let end = Date()
+                let timeInterval: Double = end.timeIntervalSince(start)
+                print("Time to getNonceFromServer: \(timeInterval) seconds")
             })
         }
     }
@@ -187,7 +214,7 @@ class SendCurrentAppWalletDataManager {
         _keystore()
         var userInfo: [String: Any] = [:]
         do {
-            let nonce: Int64 = getNonce()
+            let nonce: Int64 = getNonceFromServerSynchronous()
             let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getPassword())
             if let signedTransactionData = try signedTransaction?.encodeRLP() {
                 sendTransactionToServer("0x" + signedTransactionData.hexString, completion: completion)
