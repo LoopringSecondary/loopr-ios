@@ -15,7 +15,7 @@ extension NotificationBanner {
         let notificationTitle = NSLocalizedString(title, comment: "")
         let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
         let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-        let banner = NotificationBanner(attributedTitle: attributeString, style: .warning, colors: NotificationBannerStyle())
+        let banner = NotificationBanner(attributedTitle: attributeString, style: style, colors: NotificationBannerStyle())
         return banner
     }
     

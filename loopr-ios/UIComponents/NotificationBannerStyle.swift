@@ -20,7 +20,7 @@ class NotificationBannerStyle: BannerColorsProtocol {
         case .none:
             return UIColor.black
         case .success:
-            return UIColor.green
+            return UIColor.init(rgba: "#22BE75")
         case .warning:
             return UIColor.orange
         }

@@ -112,13 +112,13 @@ class QRCodeSaveToAlbum: NSObject {
         }) { (success, _) in
             if success {
                 DispatchQueue.main.async {
-                    let banner = NotificationBanner.generate(title: "Save QR code to photo successfully.", style: .success)
+                    let banner = NotificationBanner.generate(title: "Save QR code to Photo successfully.", style: .success)
                     banner.duration = 1
                     banner.show()
                 }
             } else {
                 DispatchQueue.main.async {
-                    let banner = NotificationBanner.generate(title: "Fail to save QR code to photo", style: .danger)
+                    let banner = NotificationBanner.generate(title: "Fail to save QR code to Photo", style: .danger)
                     banner.duration = 1
                     banner.show()
                 }
