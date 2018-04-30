@@ -149,9 +149,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         let mnemonic = mnemonicWordTextView.text.trim()
         guard Mnemonic.isValid(mnemonic) else {
             let notificationTitle = NSLocalizedString("Invalid mnemonic. Please enter again.", comment: "")
-            let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
-            let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-            let banner = NotificationBanner(attributedTitle: attributeString, style: .danger, colors: NotificationBannerStyle())
+            let banner = NotificationBanner.generate(title: notificationTitle, style: .danger)
             banner.duration = 1.5
             banner.show()
             return

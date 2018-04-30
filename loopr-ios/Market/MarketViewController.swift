@@ -86,9 +86,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 let notificationTitle = NSLocalizedString("Sorry. Network error", comment: "")
-                let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
-                let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-                let banner = NotificationBanner(attributedTitle: attributeString, style: .info, colors: NotificationBannerStyle())
+                let banner = NotificationBanner.generate(title: notificationTitle, style: .info)
                 banner.duration = 2.0
                 banner.show()
                 return

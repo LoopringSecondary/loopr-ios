@@ -59,9 +59,7 @@ class QRCodeSaveToAlbum: NSObject {
             print("should really prompt the user to let them know it's failed")
             DispatchQueue.main.async {
                 let notificationTitle = NSLocalizedString("No access to save QR code. Please go to setting to enable the access.", comment: "")
-                let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
-                let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-                let banner = NotificationBanner(attributedTitle: attributeString, style: .danger)
+                let banner = NotificationBanner.generate(title: notificationTitle, style: .danger)
                 banner.duration = 5
                 banner.show()
             }
@@ -114,19 +112,13 @@ class QRCodeSaveToAlbum: NSObject {
         }) { (success, _) in
             if success {
                 DispatchQueue.main.async {
-                    let notificationTitle = NSLocalizedString("Save QR code to photo successfully.", comment: "")
-                    let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
-                    let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-                    let banner = NotificationBanner(attributedTitle: attributeString, style: .success)
+                    let banner = NotificationBanner.generate(title: "Save QR code to photo successfully.", style: .success)
                     banner.duration = 1
                     banner.show()
                 }
             } else {
                 DispatchQueue.main.async {
-                    let notificationTitle = NSLocalizedString("Fail to save QR code to photo", comment: "")
-                    let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
-                    let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-                    let banner = NotificationBanner(attributedTitle: attributeString, style: .danger)
+                    let banner = NotificationBanner.generate(title: "Fail to save QR code to photo", style: .danger)
                     banner.duration = 1
                     banner.show()
                 }

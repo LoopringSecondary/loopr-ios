@@ -101,10 +101,7 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
             let viewController = GenerateWalletViewController(setupWalletMethod: .importUsingPrivateKey)
             self.navigationController?.pushViewController(viewController, animated: true)
         } catch {
-            let notificationTitle = NSLocalizedString("Invalid private key. Please enter again.", comment: "")
-            let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
-            let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-            let banner = NotificationBanner(attributedTitle: attributeString, style: .danger, colors: NotificationBannerStyle())
+            let banner = NotificationBanner.generate(title: "Invalid private key. Please enter again.", style: .danger)
             banner.duration = 1.5
             banner.show()
         }

@@ -439,6 +439,7 @@
 		ACB5DDA4202D6FC300140A09 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DDA3202D6FC300140A09 /* UIImageExtension.swift */; };
 		ACB5DDA6202D704200140A09 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DDA5202D704200140A09 /* UIButtonExtension.swift */; };
 		ACB6A19F20965D94004C64BC /* QRCodeSaveToAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB6A19E20965D94004C64BC /* QRCodeSaveToAlbum.swift */; };
+		ACB6A1A120966BC0004C64BC /* DefaultNotificationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB6A1A020966BC0004C64BC /* DefaultNotificationBanner.swift */; };
 		ACB729D0205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB729CE205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.swift */; };
 		ACB729D1205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB729CF205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.xib */; };
 		ACB729D4205DE21B00DD4DF3 /* TradeConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB729D2205DE21B00DD4DF3 /* TradeConfirmationViewController.swift */; };
@@ -874,6 +875,7 @@
 		ACB5DDA3202D6FC300140A09 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		ACB5DDA5202D704200140A09 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		ACB6A19E20965D94004C64BC /* QRCodeSaveToAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeSaveToAlbum.swift; sourceTree = "<group>"; };
+		ACB6A1A020966BC0004C64BC /* DefaultNotificationBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNotificationBanner.swift; sourceTree = "<group>"; };
 		ACB729CE205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTradeTokenTableViewCell.swift; sourceTree = "<group>"; };
 		ACB729CF205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchTradeTokenTableViewCell.xib; sourceTree = "<group>"; };
 		ACB729D2205DE21B00DD4DF3 /* TradeConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeConfirmationViewController.swift; sourceTree = "<group>"; };
@@ -1730,6 +1732,7 @@
 				AC0619412085D01E0060F416 /* SearchBarContainerView.swift */,
 				ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */,
 				AC06193F208469960060F416 /* NotificationBannerStyle.swift */,
+				ACB6A1A020966BC0004C64BC /* DefaultNotificationBanner.swift */,
 				ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */,
 				ACB5DD92202C09DC00140A09 /* Interactor.swift */,
 				AC70E84D20683C7500451047 /* IconView.swift */,
@@ -2691,6 +2694,7 @@
 				ACB5DD9A202D5B7100140A09 /* DefaultNumericKeyboard.swift in Sources */,
 				C8BF95B02027AC9400343B9A /* SetupViewController.swift in Sources */,
 				940B45262060F67E00ADE2B9 /* ConvertDataManager.swift in Sources */,
+				ACB6A1A120966BC0004C64BC /* DefaultNotificationBanner.swift in Sources */,
 				ACB5DDA0202D5B9900140A09 /* CGSizeExtension.swift in Sources */,
 				ACE65E412071F875001EE499 /* MnemonicCollectionViewController.swift in Sources */,
 				AC387513205F12F100A76637 /* ContextMenu+Item.swift in Sources */,

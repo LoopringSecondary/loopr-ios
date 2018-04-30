@@ -472,10 +472,8 @@ extension SendAssetViewController {
         guard error == nil && txHash != nil else {
             // Show toast
             DispatchQueue.main.async {
-                let notificationTitle = NSLocalizedString(String(describing: error), comment: "")
-                let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
-                let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-                let banner = NotificationBanner(attributedTitle: attributeString, style: .danger)
+                print("SendAssetViewController \(error.debugDescription)")
+                let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
                 banner.duration = 5
                 banner.show()
             }
@@ -484,10 +482,7 @@ extension SendAssetViewController {
         print("Result of transfer is \(txHash!)")
         // Show toast
         DispatchQueue.main.async {
-            let notificationTitle = NSLocalizedString("Success. Result of transfer is \(txHash!)", comment: "")
-            let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
-            let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-            let banner = NotificationBanner(attributedTitle: attributeString, style: .success)
+            let banner = NotificationBanner.generate(title: "Success. Result of transfer is \(txHash!)", style: .success)
             banner.duration = 5
             banner.show()
         }

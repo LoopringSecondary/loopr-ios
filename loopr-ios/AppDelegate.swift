@@ -47,10 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func showNetworkLossBanner() {
-        let notificationTitle = NSLocalizedString("Sorry, network is lost. Please make sure the internet connection is stable", comment: "")
-        let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
-        let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-        let banner = NotificationBanner(attributedTitle: attributeString, style: .warning, colors: NotificationBannerStyle())
+        let banner = NotificationBanner.generate("Sorry, network is lost. Please make sure the internet connection is stable": notificationTitle, style: .warning)
         banner.duration = 2.0
         banner.show()
     }

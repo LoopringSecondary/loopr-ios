@@ -232,10 +232,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         guard error == nil && txHash != nil else {
             // Show toast
             DispatchQueue.main.async {
-                let notificationTitle = NSLocalizedString("Insufficient funds for gas x price + value", comment: "")
-                let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
-                let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-                let banner = NotificationBanner(attributedTitle: attributeString, style: .danger)
+                let banner = NotificationBanner.generate(title: "Insufficient funds for gas x price + value", style: .danger)
                 banner.duration = 5
                 banner.show()
             }
@@ -244,10 +241,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         print("Result of transfer is \(txHash!)")
         // Show toast
         DispatchQueue.main.async {
-            let notificationTitle = NSLocalizedString("Success. Result of transfer is \(txHash!)", comment: "")
-            let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
-            let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-            let banner = NotificationBanner(attributedTitle: attributeString, style: .success)
+            let banner = NotificationBanner.generate(title: "Success. Result of transfer is \(txHash!)", style: .success)
             banner.duration = 5
             banner.show()
         }

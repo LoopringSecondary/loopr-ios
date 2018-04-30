@@ -112,9 +112,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         let password = passwordTextField.text ?? ""
         guard password.trim() != "" else {
             let notificationTitle = NSLocalizedString("Please set a password.", comment: "")
-            let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
-            let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-            let banner = NotificationBanner(attributedTitle: attributeString, style: .danger, colors: NotificationBannerStyle())
+            let banner = NotificationBanner.generate(title: notificationTitle, style: .danger)
             banner.duration = 1.5
             banner.show()
             return
@@ -125,10 +123,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
             let viewController = GenerateWalletViewController(setupWalletMethod: .importUsingKeystore)
             self.navigationController?.pushViewController(viewController, animated: true)
         } catch {
-            let notificationTitle = NSLocalizedString("Invalid keystore. Please enter again.", comment: "")
-            let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
-            let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-            let banner = NotificationBanner(attributedTitle: attributeString, style: .danger, colors: NotificationBannerStyle())
+            let banner = NotificationBanner.generate(title: "Invalid keystore. Please enter again.", style: .danger)
             banner.duration = 1.5
             banner.show()
         }

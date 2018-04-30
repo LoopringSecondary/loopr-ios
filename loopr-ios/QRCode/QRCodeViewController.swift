@@ -117,10 +117,7 @@ class QRCodeViewController: UIViewController {
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         print("pressedCopyAddressButton address: \(address)")
         UIPasteboard.general.string = address
-        let notificationTitle = NSLocalizedString("Copy address to clipboard successfully!", comment: "")
-        let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
-        let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-        let banner = NotificationBanner(attributedTitle: attributeString, style: .success)
+        let banner = NotificationBanner.generate(title: "Copy address to clipboard successfully!", style: .success)
         banner.duration = 1
         banner.show()
     }
