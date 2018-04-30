@@ -294,16 +294,17 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         let toAddress = addressTextField.text!
         let gethAmount = GethBigInt.bigInt(amountTextField.text!)!
         if let token = TokenDataManager.shared.getTokenBySymbol(asset!.symbol) {
-            if !token.protocol_value.isHexAddress() {
-                print("token protocol \(token.protocol_value) is invalid")
-                return
-            }
             var error: NSError? = nil
             let toAddress = GethNewAddressFromHex(toAddress, &error)!
-            let contractAddress = GethNewAddressFromHex(token.protocol_value, &error)!
             if token.symbol.uppercased() == "ETH" {
                 SendCurrentAppWalletDataManager.shared._transferETH(amount: gethAmount, gasPrice: gasPrice, toAddress: toAddress, completion: completion)
             } else {
+                // ETH doesn't have a protocol_value
+                if !token.protocol_value.isHexAddress() {
+                    print("token protocol \(token.protocol_value) is invalid")
+                    return
+                }
+                let contractAddress = GethNewAddressFromHex(token.protocol_value, &error)!
                 SendCurrentAppWalletDataManager.shared._transferToken(contractAddress: contractAddress, toAddress: toAddress, amount: gethAmount, gasPrice: gasPrice, completion: completion)
             }
         }

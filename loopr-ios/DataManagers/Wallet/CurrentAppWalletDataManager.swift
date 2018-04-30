@@ -251,7 +251,7 @@ class CurrentAppWalletDataManager {
             return
         }
         
-        print("Current address: \(self.currentAppWallet!.address)")
+        print("getBalanceAndPriceQuote Current address: \(self.currentAppWallet!.address)")
         
         var localAssets: [Asset] = []
 

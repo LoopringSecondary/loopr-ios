@@ -24,7 +24,6 @@ class SendCurrentAppWalletDataManager {
     
     private var gasLimits: [GasLimit]
     private var nonce: Int64
-    private var wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet()
     private var wethAddress: GethAddress?
     
     private init() {
@@ -106,7 +105,9 @@ class SendCurrentAppWalletDataManager {
     
     // TODO (ruby): this is a temperate solution. We will improve it in the near future.
     func _keystore() {
-        // TODO: improve the following code.
+        let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet()
+        var gethAccount: GethAccount?
+    
         // Get Keystore string value
         let keystoreStringValue: String = wallet!.getKeystore()
         print(keystoreStringValue)
@@ -128,18 +129,19 @@ class SendCurrentAppWalletDataManager {
         let fileURL = keyDirectory.appendingPathComponent("key.json")
         try! keystoreStringValue.write(to: fileURL, atomically: false, encoding: .utf8)
         
-        // let keyStore = try! KeyStore(keyDirectory: keyDirectory, walletDirectory: walletDirectory)
         print(keyDirectory.absoluteString)
         let keydir = keyDirectory.absoluteString.replacingOccurrences(of: "file://", with: "", options: .regularExpression)
+        
         let gethKeystore = GethKeyStore.init(keydir, scryptN: GethLightScryptN, scryptP: GethLightScryptP)!
-        let gethAccount = EthAccountCoordinator.default.launch(keystore: gethKeystore, password: wallet!.getPassword())
-
+        
+        gethAccount = EthAccountCoordinator.default.launch(keystore: gethKeystore, password: wallet!.getPassword())
+    
         print("current address: \(gethAccount!.getAddress().getHex())")
     }
     
     // convert weth -> eth
     func _withDraw(amount: GethBigInt, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
-        guard self.wallet != nil else {
+        guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
         }
         let transferFunction = EthFunction(name: "withdraw", inputParameters: [amount])
@@ -150,7 +152,7 @@ class SendCurrentAppWalletDataManager {
     
     // convert eth -> weth
     func _deposit(amount: GethBigInt, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
-        guard self.wallet != nil else {
+        guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
         }
         let transferFunction = EthFunction(name: "deposit", inputParameters: [])
@@ -161,17 +163,17 @@ class SendCurrentAppWalletDataManager {
     
     // transfer eth
     func _transferETH(amount: GethBigInt, gasPrice: GethBigInt, toAddress: GethAddress, completion: @escaping (String?, Error?) -> Void) {
-        guard self.wallet != nil else {
+        guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
         }
         let data = "0x".data(using: .utf8)!
-        let gasLimit: Int64 = getGasLimitByType(type: "transfer")!
+        let gasLimit: Int64 = getGasLimitByType(type: "eth_transfer")!
         _transfer(data: data, address: toAddress, amount: amount, gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
     // transfer tokens including weth
     func _transferToken(contractAddress: GethAddress, toAddress: GethAddress, amount: GethBigInt, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
-        guard self.wallet != nil else {
+        guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
         }
         // Transfer function
@@ -186,7 +188,7 @@ class SendCurrentAppWalletDataManager {
         var userInfo: [String: Any] = [:]
         do {
             let nonce: Int64 = getNonce()
-            let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: wallet!.getPassword())
+            let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getPassword())
             if let signedTransactionData = try signedTransaction?.encodeRLP() {
                 sendTransactionToServer("0x" + signedTransactionData.hexString, completion: completion)
             } else {

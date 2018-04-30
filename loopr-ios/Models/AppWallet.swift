@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Geth
 
 class AppWallet: NSObject, NSCoding {
     
@@ -15,12 +16,21 @@ class AppWallet: NSObject, NSCoding {
     final let address: String
     final let privateKey: String
 
-    // The password used to get the address and the private key when users use mnemonics and keystore.
+    // The password used to get the address and the private key
+    // when users use mnemonics and keystore.
+    // At the same time, generating a keystore requires password.
+    // However, importing a wallet using private key doesn't require password.
+    // Use a default password
+    // At this usecase, users won't export keystore
     private final var password: String
-    final var mnemonics: [String]
-    var keystoreString: String?
     
-    // Only use when the wallet is imported using a private key
+    final var mnemonics: [String]
+    private var keystoreString: String?
+    
+    // TODO: For some reaons, we couldn't reuse it. Improve in the future.
+    private var gethKeystoreObject: GethKeyStore?
+
+    // Only used when the wallet is imported using a private key
     private final let keystorePassword: String = "123456"
 
     // The wallet name in the app. Users can update later.
@@ -73,14 +83,6 @@ class AppWallet: NSObject, NSCoding {
     }
     
     func generateKeystoreInBackground() {
-        var password = self.password
-        // Generating a keystore requires password.
-        // However, importing a wallet using private key doesn't require password. Use a default password
-        // Users won't export keystore
-        if setupWalletMethod == .importUsingPrivateKey && password.trim() == "" {
-            password = keystorePassword
-        }
-        
         // Generate keystore data
         DispatchQueue.global().async {
             guard let data = Data(hexString: self.privateKey) else {
@@ -88,14 +90,46 @@ class AppWallet: NSObject, NSCoding {
                 return // .failure(KeystoreError.failedToImportPrivateKey)
             }
             do {
-                let key = try KeystoreKey(password: password, key: data)
+                let key = try KeystoreKey(password: self.getPassword(), key: data)
                 let keystoreData = try JSONEncoder().encode(key)
                 let json = try JSON(data: keystoreData)
                 self.keystoreString = json.description
+                
+                guard self.keystoreString != nil else {
+                    print("Failed to generate keystore")
+                    return
+                }
+                
+                // Create key directory
+                let fileManager = FileManager.default
+                
+                let keyDirectory = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("KeyStoreSendAssetViewController")
+                try? fileManager.removeItem(at: keyDirectory)
+                try? fileManager.createDirectory(at: keyDirectory, withIntermediateDirectories: true, attributes: nil)
+                print(keyDirectory)
+                
+                let walletDirectory = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("WalletSendAssetViewController")
+                try? fileManager.removeItem(at: walletDirectory)
+                try? fileManager.createDirectory(at: walletDirectory, withIntermediateDirectories: true, attributes: nil)
+                print(walletDirectory)
+                
+                // Save the keystore string value to keyDirectory
+                let fileURL = keyDirectory.appendingPathComponent("key.json")
+                try self.keystoreString!.write(to: fileURL, atomically: false, encoding: .utf8)
+                
+                print(keyDirectory.absoluteString)
+                let keydir = keyDirectory.absoluteString.replacingOccurrences(of: "file://", with: "", options: .regularExpression)
+                
+                self.gethKeystoreObject = GethKeyStore.init(keydir, scryptN: GethLightScryptN, scryptP: GethLightScryptP)!
+                
             } catch {
                 print("Failed to generate keystore")
             }
         }
+    }
+    
+    func getGethKeystoreObject() -> NSObject? {
+        return self.gethKeystoreObject
     }
     
     func getKeystore() -> String {
