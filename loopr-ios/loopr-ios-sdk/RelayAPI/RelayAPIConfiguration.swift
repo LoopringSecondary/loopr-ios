@@ -18,5 +18,6 @@ class RelayAPIConfiguration {
     static let ethURL = URL(string: baseURL + "/eth")!
     static let socketURL = URL(string: baseURL)!
 
-    static let delegateAddress = "0x5567ee920f7E62274284985D793344351A00142B"
+    // Deployment on Ethereum https://github.com/Loopring/token-listing/blob/master/ethereum/deployment.md#protocol
+    static let delegateAddress = "0x17233e07c67d086464fD408148c3ABB56245FA64"
 }
