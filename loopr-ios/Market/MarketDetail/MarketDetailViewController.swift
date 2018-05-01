@@ -16,6 +16,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
+    // Drag down to close a present view controller.
     let interactor = Interactor()
     
     override func viewDidLoad() {
@@ -28,12 +29,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         tableView.tableFooterView = UIView()
         
         self.navigationItem.title = market?.description
-
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
-
         setBackButton()
-        
         udpateStarButton()
     }
     

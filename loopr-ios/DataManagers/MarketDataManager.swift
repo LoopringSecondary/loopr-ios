@@ -26,8 +26,10 @@ class MarketDataManager {
         trends = []
         lrcSequence = []
         wethSequence = []
-        favoriteSequence = []
         allSequence = []
+
+        let defaults = UserDefaults.standard
+        favoriteSequence = defaults.array(forKey: UserDefaultsKeys.favoriteSequence.rawValue) as? [String] ?? []
     }
 
     func setMarkets(newMarkets: [Market], type: MarketSwipeViewType = .all) {

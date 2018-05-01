@@ -94,6 +94,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             // We don't any filter in the API requests. So no need to filter the response.
             MarketDataManager.shared.setMarkets(newMarkets: markets)
             DispatchQueue.main.async {
+                
                 self.marketTableView.reloadData()
                 self.refreshControl.endRefreshing()
             }
@@ -114,6 +115,10 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // MarketDataManager.shared.startGetTicker()
         // Add observer.
         NotificationCenter.default.addObserver(self, selector: #selector(tickerResponseReceivedNotification), name: .tickerResponseReceived, object: nil)
+        
+        if type == .favorite {
+            marketTableView.reloadData()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -137,10 +142,9 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if isFiltering {
             filterContentForSearchText(self.searchText)
         } else {
-            // No need to reload the table view.
+            marketTableView.reloadData()
             // marketTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
         }
-        // marketTableView.reloadData()
     }
     
     func searchTextDidUpdate(searchText: String) {
@@ -226,17 +230,15 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let market = MarketDataManager.shared.getMarketsWithoutReordered(type: type)[indexPath.row]
-        if market.isFavorite() {
+        if type == .favorite {
             let action = UIContextualAction(style: .normal, title: "Unfavorite", handler: { (_: UIContextualAction, _:  UIView, success: (Bool) -> Void) in
                 print("OK, marked as Unfavorite")
                 MarketDataManager.shared.removeFavoriteMarket(market: market)
                 success(true)
                 
                 // TODO: need to improve the animation
-                if self.type == .favorite {
-                    self.markets.remove(at: indexPath.row)
-                    self.marketTableView.deleteRows(at: [indexPath], with: .fade)
-                }
+                // self.markets.remove(at: indexPath.row)
+                self.marketTableView.deleteRows(at: [indexPath], with: .fade)
             })
             action.backgroundColor = UIStyleConfig.defaultTintColor
             return UISwipeActionsConfiguration(actions: [action])
