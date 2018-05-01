@@ -337,4 +337,71 @@ class LoopringAPIRequest {
             completionHandler(offerData.description, nil)
         }
     }
+
+    // Not used
+    // Not ready
+    // Error: "The method loopring_getGetFrozenLRCFee does not exist\/is not available"
+    static func getFrozenLRCFee(owner: String, completionHandler: @escaping (_ frozenLRCFee: String?, _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_getGetFrozenLRCFee"
+        body["params"] = [["owner": owner]]
+        body["id"] = JSON(UUID().uuidString)
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                completionHandler(nil, error)
+                return
+            }
+            let json = JSON(data)
+            print("getFrozenLRCFee")
+            print(json)
+            let result = json["result"].array
+            if let result = result {
+                if result.count > 0 {
+                    let frozenLRCFee = result[0].description
+                    completionHandler(frozenLRCFee, nil)
+                }
+            }
+            completionHandler(nil, ErrorType.InvalidValue)
+        }
+    }
+
+    static func getPortfolio(owner: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_getPortfolio"
+        body["params"] = [["owner": owner]]
+        body["id"] = JSON(UUID().uuidString)
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                completionHandler(nil, error)
+                return
+            }
+            let json = JSON(data)
+            let offerData = json["result"]
+            completionHandler(offerData.description, nil)
+        }
+    }
+
+    // Not used
+    // Not ready
+    // Error "message" : "raw tx can't be null string"
+    static func notifyTransactionSubmitted(txHash: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_notifyTransactionSubmitted"
+        body["params"] = [["txHash": txHash]]
+        body["id"] = JSON(UUID().uuidString)
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                completionHandler(nil, error)
+                return
+            }
+            let json = JSON(data)
+            print("notifyTransactionSubmitted")
+            print(json)
+            completionHandler("success", nil)
+        }
+    }
+    
 }

@@ -235,4 +235,46 @@ class LoopringAPIRequestTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
+    func testGetPortfolio() {
+        let expectation = XCTestExpectation()
+        LoopringAPIRequest.getPortfolio(owner: "0x329B97A3E8eC8a8c23D4bD54803e74A9eE66CbcB") { result, error in
+            guard error == nil && result != nil else {
+                print("error=\(String(describing: error))")
+                XCTFail()
+                return
+            }
+            print(result!)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testGetFrozenLRCFee() {
+        let expectation = XCTestExpectation()
+        LoopringAPIRequest.getFrozenLRCFee(owner: "0x329B97A3E8eC8a8c23D4bD54803e74A9eE66CbcB") { (frozenLRCFee, error) in
+            guard error == nil && frozenLRCFee != nil else {
+                print("error=\(String(describing: error))")
+                XCTFail()
+                return
+            }
+            print(frozenLRCFee!)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testNotifyTransactionSubmitted() {
+        let expectation = XCTestExpectation()
+        LoopringAPIRequest.notifyTransactionSubmitted(txHash: "0x890db35af7d66d117e4feba62a041fb5ec7d5e432b19c96a090e1ff482d1c5ef") { (result, error) in
+            guard error == nil && result != nil else {
+                print("error=\(String(describing: error))")
+                XCTFail()
+                return
+            }
+            print(result!)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
 }
