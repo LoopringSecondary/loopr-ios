@@ -492,6 +492,24 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         }
     }
     
+    func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemLongPressed item: NumericKeyboardItem, atPosition position: Position) {
+        print("Long pressed keyboard: (\(position.row), \(position.column))")
+        
+        let activeTextField = getActiveTextField()
+        guard activeTextField != nil else {
+            return
+        }
+        
+        var currentText = activeTextField!.text ?? ""
+        
+        if (position.row, position.column) == (3, 2) {
+            if currentText.count > 0 {
+                currentText = String(currentText.dropLast())
+            }
+            activeTextField!.text = currentText
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print("scrollViewDidScroll \(scrollView.contentOffset.y)")
         if tokenTotalAmountLabel.frame.maxY < scrollView.contentOffset.y {

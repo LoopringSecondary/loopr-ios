@@ -134,7 +134,6 @@ class SendCurrentAppWalletDataManager {
         }
     }
     
-    // TODO (ruby): this is a temperate solution. We will improve it in the near future.
     func _keystore() {
         let start = Date()
         let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet()

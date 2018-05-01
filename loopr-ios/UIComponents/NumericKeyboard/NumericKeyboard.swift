@@ -33,6 +33,9 @@ public protocol NumericKeyboardDelegate: class {
     /// The item was tapped handler.
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemTapped item: NumericKeyboardItem, atPosition position: Position)
     
+    /// The item was long pressed handler
+    func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemLongPressed item: NumericKeyboardItem, atPosition position: Position)
+    
     /// The size of an item at position.
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, sizeForItemAtPosition position: Position) -> CGSize
     
@@ -40,6 +43,7 @@ public protocol NumericKeyboardDelegate: class {
 
 public extension NumericKeyboardDelegate {
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemTapped item: NumericKeyboardItem, atPosition position: Position) {}
+    func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemLongPressed item: NumericKeyboardItem, atPosition position: Position) {}
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, sizeForItemAtPosition position: Position) -> CGSize { return CGSize() }
 }
 
@@ -98,6 +102,9 @@ extension NumericKeyboard: UICollectionViewDataSource {
         cell.item = item
         cell.buttonTapped = { [unowned self] _ in
             self.delegate?.numericKeyboard(self, itemTapped: item, atPosition: position)
+        }
+        cell.buttonLongPressed = { [unowned self] _ in
+            self.delegate?.numericKeyboard(self, itemLongPressed: item, atPosition: position)
         }
         return cell
     }
