@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,16 +28,16 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="1" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MI6-VZ-KdX">
-                        <rect key="frame" x="57.5" y="14.5" width="99" height="55"/>
+                        <rect key="frame" x="54" y="14.5" width="141.5" height="55"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REP/ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLy-7r-jbc">
-                                <rect key="frame" x="0.0" y="0.0" width="99" height="20.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="141.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="400 REP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQ9-wh-pvu">
-                                <rect key="frame" x="0.0" y="34.5" width="99" height="20.5"/>
+                                <rect key="frame" x="0.0" y="34.5" width="141.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -46,7 +45,7 @@
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="4" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JRa-ye-axG">
-                        <rect key="frame" x="188" y="14.5" width="99" height="55"/>
+                        <rect key="frame" x="195.5" y="14.5" width="99" height="55"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0009532" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POG-5X-TsA">
                                 <rect key="frame" x="0.0" y="0.0" width="99" height="20.5"/>
@@ -63,7 +62,7 @@
                         </subviews>
                     </stackView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ 8%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evx-bi-hhH">
-                        <rect key="frame" x="325.5" y="31.5" width="38.5" height="20.5"/>
+                        <rect key="frame" x="341.5" y="31.5" width="39.5" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -82,19 +81,19 @@
                     <constraint firstItem="evx-bi-hhH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="CBT-Q1-hdZ"/>
                     <constraint firstItem="JRa-ye-axG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ido-gA-eAg"/>
                     <constraint firstItem="hDa-sj-rCH" firstAttribute="top" secondItem="KbS-9j-hkE" secondAttribute="top" id="JD0-j2-a48"/>
-                    <constraint firstItem="MI6-VZ-KdX" firstAttribute="leading" secondItem="KbS-9j-hkE" secondAttribute="trailing" multiplier="1.3" id="LK9-uI-ga4"/>
+                    <constraint firstItem="MI6-VZ-KdX" firstAttribute="leading" secondItem="KbS-9j-hkE" secondAttribute="trailing" constant="10" id="LK9-uI-ga4"/>
                     <constraint firstItem="KbS-9j-hkE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="NGt-Z3-RXd"/>
                     <constraint firstItem="MI6-VZ-KdX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Uyr-G4-BvK"/>
-                    <constraint firstItem="JRa-ye-axG" firstAttribute="leading" secondItem="MI6-VZ-KdX" secondAttribute="trailing" multiplier="1.2" id="qje-x4-v9F"/>
-                    <constraint firstItem="KbS-9j-hkE" firstAttribute="leftMargin" secondItem="H2p-sc-9uM" secondAttribute="left" constant="20" id="u5m-2e-gwy"/>
+                    <constraint firstItem="JRa-ye-axG" firstAttribute="leading" secondItem="MI6-VZ-KdX" secondAttribute="trailing" id="qje-x4-v9F"/>
+                    <constraint firstItem="KbS-9j-hkE" firstAttribute="left" secondItem="H2p-sc-9uM" secondAttribute="left" constant="12" id="u5m-2e-gwy"/>
                 </constraints>
             </tableViewCellContentView>
             <constraints>
                 <constraint firstItem="MI6-VZ-KdX" firstAttribute="height" secondItem="KGk-i7-Jjw" secondAttribute="height" multiplier="0.65" id="AO5-FQ-cRJ"/>
                 <constraint firstItem="JRa-ye-axG" firstAttribute="width" secondItem="KGk-i7-Jjw" secondAttribute="width" multiplier="0.25" id="Lrz-cV-hvt"/>
-                <constraint firstItem="MI6-VZ-KdX" firstAttribute="width" secondItem="KGk-i7-Jjw" secondAttribute="width" multiplier="0.25" id="YCX-Jd-njX"/>
+                <constraint firstItem="MI6-VZ-KdX" firstAttribute="width" secondItem="KGk-i7-Jjw" secondAttribute="width" multiplier="0.36" id="YCX-Jd-njX"/>
                 <constraint firstItem="JRa-ye-axG" firstAttribute="height" secondItem="KGk-i7-Jjw" secondAttribute="height" multiplier="0.65" id="pKB-FU-sxE"/>
-                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="evx-bi-hhH" secondAttribute="trailing" multiplier="1.08" id="ucb-PG-Qxd"/>
+                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="evx-bi-hhH" secondAttribute="trailing" constant="12" id="ucb-PG-Qxd"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

@@ -50,6 +50,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     var transactionAmountMinLabel = UILabel()
     var transactionAmountMaxLabel = UILabel()
     var transactionAmountCurrentLabel = UILabel()
+    var transactionAmountHelpButton = UIButton()
     
     // Keyboard
     var isKeyboardShow: Bool = false
@@ -192,21 +193,30 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         scrollView.addSubview(transactionSpeedSlider)
 
         transactionAmountMinLabel.alpha = 0
-        transactionAmountMinLabel.frame = CGRect(x: padding, y: transactionSpeedSlider.frame.maxY + 10, width: (screenWidth-2*padding)/4, height: 30)
+        transactionAmountMinLabel.frame = CGRect(x: padding, y: transactionSpeedSlider.frame.maxY + 10, width: (screenWidth-2*padding)/8, height: 30)
         transactionAmountMinLabel.font = FontConfigManager.shared.getLabelFont()
         transactionAmountMinLabel.text = "slow"
         scrollView.addSubview(transactionAmountMinLabel)
         
         transactionAmountCurrentLabel.alpha = 0
         transactionAmountCurrentLabel.textAlignment = .center
-        transactionAmountCurrentLabel.frame = CGRect(x: transactionAmountMinLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/2, height: 30)
+        transactionAmountCurrentLabel.frame = CGRect(x: transactionAmountMinLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)*3/4, height: 30)
         transactionAmountCurrentLabel.font = FontConfigManager.shared.getLabelFont()
-        transactionAmountCurrentLabel.text = "50"
+        transactionAmountCurrentLabel.text = "gas price: 5000000 gwei"
+        
         scrollView.addSubview(transactionAmountCurrentLabel)
+        
+        transactionAmountHelpButton.alpha = 0
+        let pad = (transactionAmountCurrentLabel.frame.width - transactionAmountCurrentLabel.intrinsicContentSize.width) / 2
+        transactionAmountHelpButton.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX - pad, y: transactionAmountCurrentLabel.frame.minY, width: 30, height: 30)
+        transactionAmountHelpButton.image = UIImage(named: "HelpIcon")
+        transactionAmountHelpButton.addTarget(self, action: #selector(pressedHelpButton), for: .touchUpInside)
+        scrollView.addSubview(transactionAmountHelpButton)
+        
         
         transactionAmountMaxLabel.alpha = 0
         transactionAmountMaxLabel.textAlignment = .right
-        transactionAmountMaxLabel.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/4, height: 30)
+        transactionAmountMaxLabel.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/8, height: 30)
         transactionAmountMaxLabel.font = FontConfigManager.shared.getLabelFont()
         transactionAmountMaxLabel.text = "fast"
         scrollView.addSubview(transactionAmountMaxLabel)
@@ -235,6 +245,18 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         tokenTotalAmountLabel.text = "\(asset.balance) \(asset.symbol) Available"
         
         SendCurrentAppWalletDataManager.shared.getNonceFromServer()
+    }
+    
+    @objc func pressedHelpButton(_ sender: Any) {
+        let title = NSLocalizedString("What is gas?", comment: "")
+        let message = NSLocalizedString("Gas is...", comment: "") // TODO
+        let alertController = UIAlertController(title: title,
+            message: message,
+            preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .cancel, handler: { _ in
+        })
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     @objc func scrollViewTapped() {
@@ -309,6 +331,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                 self.transactionAmountMinLabel.alpha = 1
                 self.transactionAmountCurrentLabel.alpha = 1
                 self.transactionAmountMaxLabel.alpha = 1
+                self.transactionAmountHelpButton.alpha = 1
             })
             // TODO: The position of the align icon is related to the size. So we use several hardcoded value here.
             self.advancedButton.setRightImage(imageName: "Arrow-button-down-light", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 2)
@@ -318,6 +341,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                 self.transactionAmountMinLabel.alpha = 0
                 self.transactionAmountCurrentLabel.alpha = 0
                 self.transactionAmountMaxLabel.alpha = 0
+                self.transactionAmountHelpButton.alpha = 0
             })
             self.advancedButton.setRightImage(imageName: "Arrow-button-right-light", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 11)
         }
@@ -378,7 +402,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         let step: Float = 1
         let roundedStepValue = round(sender.value / step) * step
         
-        transactionAmountCurrentLabel.text = "gas price: \(roundedStepValue)"
+        transactionAmountCurrentLabel.text = "gas price: \(roundedStepValue) gwei"
         
         // Update gas price.
     }
