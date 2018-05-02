@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "USD.png",
+      "filename" : "united-states-2.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "USD@1x.png",
+      "filename" : "united-states-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "USD@1.5x.png",
+      "filename" : "united-states.png",
       "scale" : "3x"
     }
   ],
