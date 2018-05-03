@@ -11,10 +11,17 @@ import Geth
 
 public extension GethBigInt {
     
+    public static func generateBigInt(valueInEther: Double) -> GethBigInt? {
+        let valueInWei = valueInEther * 1000000000000000000
+        return GethNewBigInt(Int64(valueInWei))
+    }
+    
+    // Don't use
     public static func bigInt(valueInEther: Int64) -> GethBigInt? {
         return bigInt(String(valueInEther))
     }
     
+    // Don't use
     public static func bigInt(_ valueInEther: String) -> GethBigInt? {
         let amountInWei = "\(valueInEther)000000000000000000"
         
@@ -26,7 +33,5 @@ public extension GethBigInt {
     public var decimalString: String {
         return self.getString(10)
     }
-    
-    
-    
+
 }

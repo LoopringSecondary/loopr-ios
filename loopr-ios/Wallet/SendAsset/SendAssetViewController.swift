@@ -213,7 +213,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         transactionAmountHelpButton.addTarget(self, action: #selector(pressedHelpButton), for: .touchUpInside)
         scrollView.addSubview(transactionAmountHelpButton)
         
-        
         transactionAmountMaxLabel.alpha = 0
         transactionAmountMaxLabel.textAlignment = .right
         transactionAmountMaxLabel.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/8, height: 30)
@@ -354,7 +353,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         SVProgressHUD.show(withStatus: "Processing the transaction ...")
 
         let toAddress = addressTextField.text!
-        let gethAmount = GethBigInt.bigInt(amountTextField.text!)!
+        let gethAmount = GethBigInt.generateBigInt(valueInEther: Double(amountTextField.text!)!)!
+        // let gethAmount = GethBigInt.bigInt(amountTextField.text!)!
         if let token = TokenDataManager.shared.getTokenBySymbol(asset!.symbol) {
             var error: NSError? = nil
             let toAddress = GethNewAddressFromHex(toAddress, &error)!

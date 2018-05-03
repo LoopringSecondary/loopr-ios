@@ -200,7 +200,8 @@ class SendCurrentAppWalletDataManager {
         guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
         }
-        let data = "0x".data(using: .utf8)!
+        let transferFunction = EthFunction(name: "transfer", inputParameters: [toAddress, amount])
+        let data = web3swift.encode(transferFunction)
         let gasLimit: Int64 = getGasLimitByType(type: "eth_transfer")!
         _transfer(data: data, address: toAddress, amount: amount, gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
     }
@@ -214,7 +215,7 @@ class SendCurrentAppWalletDataManager {
         let transferFunction = EthFunction(name: "transfer", inputParameters: [toAddress, amount])
         let data = web3swift.encode(transferFunction)
         let gasLimit: Int64 = getGasLimitByType(type: "token_transfer")!
-        _transfer(data: data, address: contractAddress, amount: GethBigInt(0), gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
+        _transfer(data: data, address: contractAddress, amount: amount, gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
     func _transfer(data: Data, address: GethAddress, amount: GethBigInt, gasPrice: GethBigInt, gasLimit: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
