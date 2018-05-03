@@ -18,7 +18,9 @@ public extension GethBigInt {
         }
         
         let valueInWei = valueInEther * Double.init((pow(10, token!.decimals) as NSNumber))
-        let gethAmount = GethNewBigInt(Int64(valueInWei))
+        let str = String(format: "%.0f", valueInWei)
+        let gethAmount = GethBigInt.init(0)! // GethNewBigInt(int64_t(valueInWei))
+        gethAmount.setString(str, base: 10)
         return gethAmount
     }
     
