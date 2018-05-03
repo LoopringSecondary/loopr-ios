@@ -249,12 +249,13 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     
     func validation() -> GethBigInt? {
         var result: GethBigInt? = nil
+        // TODO: improve the following logic in the future.
         if let asset = self.asset {
             if let amountString = amountTextField.text {
                 if let amount = Double(amountString) {
                     if asset.balance >= amount {
-                        if let amount = GethBigInt.bigInt(amountString) {
-                            result = amount
+                        if let token = TokenDataManager.shared.getTokenBySymbol(asset.symbol) {
+                            result = GethBigInt.generateBigInt(valueInEther: amount, symbol: token.symbol)
                         }
                     }
                 }

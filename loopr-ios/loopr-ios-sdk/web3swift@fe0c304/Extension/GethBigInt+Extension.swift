@@ -11,25 +11,22 @@ import Geth
 
 public extension GethBigInt {
     
+    public static func generateBigInt(valueInEther: Double, symbol: String) -> GethBigInt? {
+        let token = TokenDataManager.shared.getTokenBySymbol(symbol)
+        guard token != nil else {
+            return nil
+        }
+        
+        let valueInWei = valueInEther * Double.init((pow(10, token!.decimals) as NSNumber))
+        let gethAmount = GethNewBigInt(Int64(valueInWei))
+        return gethAmount
+    }
+    
     public static func generateBigInt(valueInEther: Double) -> GethBigInt? {
         let valueInWei = valueInEther * 1000000000000000000
         return GethNewBigInt(Int64(valueInWei))
     }
-    
-    // Don't use
-    public static func bigInt(valueInEther: Int64) -> GethBigInt? {
-        return bigInt(String(valueInEther))
-    }
-    
-    // Don't use
-    public static func bigInt(_ valueInEther: String) -> GethBigInt? {
-        let amountInWei = "\(valueInEther)000000000000000000"
-        
-        let result = GethNewBigInt(0)
-        result?.setString(amountInWei, base: 10)
-        return result
-    }
-    
+
     public var decimalString: String {
         return self.getString(10)
     }

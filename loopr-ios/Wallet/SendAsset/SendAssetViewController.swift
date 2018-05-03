@@ -296,11 +296,13 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         if let amountString = amountTextField.text {
             if !amountString.isEmpty, let amount = Double(amountString) {
                 if asset.balance >= amount {
-                    if GethBigInt.bigInt(amountString) != nil {
-                        if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
-                            let display = (amount * price).currency
-                            updateLabel(label: amountInfoLabel, text: display, textColor: .black)
-                            return true
+                    if let token = TokenDataManager.shared.getTokenBySymbol(asset!.symbol) {
+                        if GethBigInt.generateBigInt(valueInEther: amount, symbol: token.symbol) != nil {
+                            if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
+                                let display = (amount * price).currency
+                                updateLabel(label: amountInfoLabel, text: display, textColor: .black)
+                                return true
+                            }
                         }
                     }
                 } else {
@@ -353,9 +355,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         SVProgressHUD.show(withStatus: "Processing the transaction ...")
 
         let toAddress = addressTextField.text!
-        let gethAmount = GethBigInt.generateBigInt(valueInEther: Double(amountTextField.text!)!)!
         // let gethAmount = GethBigInt.bigInt(amountTextField.text!)!
         if let token = TokenDataManager.shared.getTokenBySymbol(asset!.symbol) {
+            let gethAmount = GethBigInt.generateBigInt(valueInEther: Double(amountTextField.text!)!, symbol: token.symbol)!
             var error: NSError? = nil
             let toAddress = GethNewAddressFromHex(toAddress, &error)!
             if token.symbol.uppercased() == "ETH" {
