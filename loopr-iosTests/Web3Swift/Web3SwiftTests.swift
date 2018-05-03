@@ -90,9 +90,9 @@ class Web3SwiftTests: XCTestCase {
         
         // Encoding Transaction
         var addressError: NSError? = nil
-        let amountToTransfer = "1"
+        let amountToTransfer: Double = 1
         let gethToAccountAddress: GethAddress! = GethNewAddressFromHex("0x8311804426a24495bd4306daf5f595a443a52e32", &addressError)
-        guard let amount = GethBigInt.bigInt(amountToTransfer) else {
+        guard let amount = GethBigInt.generateBigInt(valueInEther: amountToTransfer)  else {
             print("Invalid amount")
             return
         }

@@ -54,4 +54,36 @@ public class Wallet {
         let node = getNode(for: getDerivationPath(for: index))
         return HDKey(node: node)
     }
+    
+    /// Used in Relay API
+    public static func generateRandomWallet() -> (privateKey: String, address: String) {
+        // takes 35 seconds
+        /*
+        // Password is used inside KeystoreKey to generate a private key.
+        let password = "12345678"
+        let keystoreKey = try! KeystoreKey(password: password)
+        
+        // Get Private key
+        let decrypted = try! keystoreKey.decrypt(password: password)
+        let privateKey = decrypted.hexString
+
+        // Public key
+        let publicKey = keystoreKey.address.eip55String
+        
+        return (privateKey, publicKey)
+        */
+        
+        // takes less than 0.5 seconds
+        let password = "12345678"
+        let mnemonic = Mnemonic.generate(strength: 256)
+        let wallet = Wallet(mnemonic: mnemonic, password: password)
+        
+        // Private key
+        let privateKey = wallet.getKey(at: 0).privateKey.hexString
+        
+        // Public address
+        let address = wallet.getKey(at: 0).address.eip55String
+        
+        return (privateKey, address)
+    }
 }
