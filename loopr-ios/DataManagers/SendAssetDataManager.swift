@@ -200,22 +200,24 @@ class SendCurrentAppWalletDataManager {
         guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
         }
-        let transferFunction = EthFunction(name: "transfer", inputParameters: [toAddress, amount])
+        let transferFunction = EthFunction(name: "payable", inputParameters: [toAddress, amount])
         let data = web3swift.encode(transferFunction)
         let gasLimit: Int64 = getGasLimitByType(type: "eth_transfer")!
         _transfer(data: data, address: toAddress, amount: amount, gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
     // transfer tokens including weth
-    func _transferToken(contractAddress: GethAddress, toAddress: GethAddress, amount: GethBigInt, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
+    func _transferToken(contractAddress: GethAddress, toAddress: GethAddress, tokenAmount: GethBigInt, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
         guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
         }
         // Transfer function
-        let transferFunction = EthFunction(name: "transfer", inputParameters: [toAddress, amount])
+        let transferFunction = EthFunction(name: "transfer", inputParameters: [toAddress, tokenAmount])
         let data = web3swift.encode(transferFunction)
         let gasLimit: Int64 = getGasLimitByType(type: "token_transfer")!
-        _transfer(data: data, address: contractAddress, amount: amount, gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
+        
+        // amount must be 0 for ERC20 tokens.
+        _transfer(data: data, address: contractAddress, amount: GethBigInt.init(0), gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
     func _transfer(data: Data, address: GethAddress, amount: GethBigInt, gasPrice: GethBigInt, gasLimit: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
@@ -277,4 +279,5 @@ class SendCurrentAppWalletDataManager {
             completion(nil, error)
         }
     }
+
 }

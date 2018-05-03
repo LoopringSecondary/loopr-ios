@@ -369,7 +369,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                     return
                 }
                 let contractAddress = GethNewAddressFromHex(token.protocol_value, &error)!
-                SendCurrentAppWalletDataManager.shared._transferToken(contractAddress: contractAddress, toAddress: toAddress, amount: gethAmount, gasPrice: gasPrice, completion: completion)
+                SendCurrentAppWalletDataManager.shared._transferToken(contractAddress: contractAddress, toAddress: toAddress, tokenAmount: gethAmount, gasPrice: gasPrice, completion: completion)
             }
         }
     }
