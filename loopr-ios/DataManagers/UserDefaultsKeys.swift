@@ -32,4 +32,12 @@ enum UserDefaultsKeys: String {
     //Settings Bundle
     case appVersion = "UserDefaultsKeys.appVersion"
     case appBuildNumber = "UserDefaultsKeys.appBuildNumber"
+    
+    // Setting
+    case useLrcFeeRatioUserDefineValue = "UserDefaultsKeys.useLrcFeeRatioUserDefineValue"
+    case lrcFeeRatio = "UserDefaultsKeys.lrcFeeRatio"
+    
+    case useMarginSplitUserDefineValue = "UserDefaultsKeys.useMarginSplitUserDefineValue"
+    case marginSplit = "UserDefaultsKeys.marginSplit"
+
 }

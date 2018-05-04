@@ -77,3 +77,6 @@
 "Amount you want to convert" = "输入您转换的额度";
 "Add Token" = "添加代币";
 "Search" = "搜索";
+"Contract Version" = "合约版本";
+"LRC Fee Ratio" = "LRC费用比例";
+"Margin Split" = "利润分成";

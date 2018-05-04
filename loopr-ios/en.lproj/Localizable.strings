@@ -77,4 +77,6 @@
 "Amount you want to convert" = "Amount you want to convert";
 "Add Token" = "Add Token";
 "Search" = "Search";
-
+"Contract Version" = "Contract Version";
+"LRC Fee Ratio" = "LRC Fee Ratio";
+"Margin Split" = "Margin Split";
