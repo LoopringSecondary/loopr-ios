@@ -110,10 +110,10 @@ class OrderDataManagerTests: XCTestCase {
         parameter2.append(UInt8(1))
         parameter2.append(UInt8(50))
         
-        let data = EthFunctionEncoder.default.encodeParameters(parameter2)
-        parameters.append(data.bytes)
+        // let data = EthFunctionEncoder.default.encodeParameters(parameter2)
+        // parameters.append(data.bytes)
         
-        print(parameters)
+        // print(parameters)
         
         var newData: Data = Data()
 //        parameters.forEach { (param) in
