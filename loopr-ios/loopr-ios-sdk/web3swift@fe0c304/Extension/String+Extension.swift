@@ -97,4 +97,13 @@ public extension String {
         let hex = Array(self)
         return stride(from: 0, to: count, by: 2).flatMap { UInt8(String(hex[$0..<$0.advanced(by: 2)]), radix: 16) }
     }
+    
+    var isDouble: Bool {
+        if Double(self) != nil {
+            return true
+        } else {
+            return false
+        }
+    }
+
 }
