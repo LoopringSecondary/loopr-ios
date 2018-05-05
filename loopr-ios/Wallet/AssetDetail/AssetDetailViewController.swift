@@ -37,24 +37,11 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         // Receive button
         receiveButton.setTitle(NSLocalizedString("Receive", comment: ""), for: .normal)
-        receiveButton.theme_backgroundColor = ["#000", "#fff"]
-        receiveButton.theme_setTitleColor(["#fff", "#000"], forState: .normal)
-        
-        receiveButton.backgroundColor = UIColor.clear
-        receiveButton.titleColor = UIColor.black
-        receiveButton.layer.cornerRadius = 23
-        receiveButton.layer.borderWidth = 0.5
-        receiveButton.layer.borderColor = UIColor.black.cgColor
-        receiveButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+        receiveButton.setupRoundBlack()
         
         // Send button
         sendButton.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
-        sendButton.theme_backgroundColor = ["#000", "#fff"]
-        sendButton.theme_setTitleColor(["#fff", "#000"], forState: .normal)
-        
-        sendButton.backgroundColor = UIColor.black
-        sendButton.layer.cornerRadius = 23
-        sendButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+        sendButton.setupRoundWhite()
     }
     
     func setup() {

@@ -38,10 +38,10 @@ class Market: Equatable, CustomStringConvertible {
         let change = json["change"].stringValue
         if change.isEmpty || change == "0.00%" {
             changeInPat24 = "0.00%"
-        } else if change.first! == "+" {
-            changeInPat24 = "↑" + change.dropFirst()
         } else if change.first! == "-" {
             changeInPat24 = "↓" + change.dropFirst()
+        } else {
+            changeInPat24 = "↑" + change
         }
         if let price = PriceDataManager.shared.getPriceBySymbol(of: tradingPair.tradingA) {
             display = price.currency

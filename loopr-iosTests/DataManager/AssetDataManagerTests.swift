@@ -38,7 +38,7 @@ class CurrentAppWalletDataManagerTests: XCTestCase {
     
     func testGetAmount() {
         let amount = "0x56bc75e2d63100000"
-        let num = Asset.getAmount(of: "LRC", from: amount)
+        let num = Asset.getAmount(of: "LRC", fromGweiAmount: amount)
         XCTAssertNotNil(num)
         XCTAssertEqual(num, 100)
     }

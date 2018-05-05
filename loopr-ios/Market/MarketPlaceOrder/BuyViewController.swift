@@ -82,9 +82,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         scrollViewButtonLayoutConstraint.constant = 0
 
         placeOrderButton.title = NSLocalizedString("Place Order", comment: "")
-        placeOrderButton.backgroundColor = UIColor.black
-        placeOrderButton.layer.cornerRadius = 23
-        placeOrderButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+        placeOrderButton.setupRoundBlack()
         
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds

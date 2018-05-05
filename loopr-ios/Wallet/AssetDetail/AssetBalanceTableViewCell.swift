@@ -80,7 +80,7 @@ class AssetBalanceTableViewCell: UITableViewCell {
                     marketLabel.text = market.description
                     marketBalanceLabel.text = market.balance.description
                     changeLabel.text = market.changeInPat24
-                    changeLabel.textColor = UIStyleConfig.getChangeColor(sign: market.changeInPat24.first?.description ?? "+")
+                    changeLabel.textColor = UIStyleConfig.getChangeColor(change: market.changeInPat24)
                     marketDisplayLabel.text = market.display
                 }
             }

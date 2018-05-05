@@ -64,7 +64,7 @@ class MarketTableViewCell: UITableViewCell {
             marketPriceInBitcoinLabel.text = market.balance.description
             marketPriceInFiatCurrencyLabel.text = market.display.description
             percentageChangeLabel.text = market.changeInPat24
-            percentageChangeLabel.textColor = UIStyleConfig.getChangeColor(sign: market.changeInPat24.first?.description ?? "+")
+            percentageChangeLabel.textColor = UIStyleConfig.getChangeColor(change: market.changeInPat24)
         }
     }
     

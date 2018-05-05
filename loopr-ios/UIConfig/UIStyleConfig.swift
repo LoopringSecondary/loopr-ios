@@ -21,19 +21,24 @@ enum UIStyleConfig {
     
     static let tableCellSelectedBackgroundColor = UIColor(white: 0.1, alpha: 0.3)
     
-    static func getChangeColor(sign: String) -> UIColor {
+    static func getChangeColor(change: String) -> UIColor {
+        let firstChar = change.first?.description ?? ""
+        if change == "0.00%" || firstChar == "" {
+            return UIColor.black
+        }
+
         let language = Bundle.main.preferredLocalizations.first
         if language == "zh-Hans" {
-            if sign == "+" {
-                return UIColor.red
-            } else {
+            if firstChar == "↓" {
                 return UIColor.init(rgba: "#24DF93")
+            } else {
+                return UIColor.red
             }
         } else {
-            if sign == "+" {
-                return UIColor.init(rgba: "#24DF93")
-            } else {
+            if firstChar == "↓" {
                 return UIColor.red
+            } else {
+                return UIColor.init(rgba: "#24DF93")
             }
         }
     }

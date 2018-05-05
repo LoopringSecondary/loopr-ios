@@ -72,24 +72,11 @@ class MarketLineChartTableViewCell: UITableViewCell, ChartViewDelegate {
         
         // Sell button
         sellButton.setTitle(NSLocalizedString("Sell", comment: ""), for: .normal)
-        sellButton.theme_backgroundColor = ["#000", "#fff"]
-        sellButton.theme_setTitleColor(["#fff", "#000"], forState: .normal)
-
-        sellButton.backgroundColor = UIColor.clear
-        sellButton.titleColor = UIColor.black
-        sellButton.layer.cornerRadius = 23
-        sellButton.layer.borderWidth = 0.5
-        sellButton.layer.borderColor = UIColor.black.cgColor
-        sellButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+        sellButton.setupRoundWhite()
         
         // Buy button
         buyButton.setTitle(NSLocalizedString("Buy", comment: ""), for: .normal)
-        buyButton.theme_backgroundColor = ["#000", "#fff"]
-        buyButton.theme_setTitleColor(["#fff", "#000"], forState: .normal)
-
-        buyButton.backgroundColor = UIColor.black
-        buyButton.layer.cornerRadius = 23
-        buyButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+        buyButton.setupRoundBlack()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
