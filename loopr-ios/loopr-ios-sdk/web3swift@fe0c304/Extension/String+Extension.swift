@@ -90,8 +90,11 @@ public extension String {
         }
     }
     
+    // Reference: https://stackoverflow.com/questions/43360747/how-to-convert-hexadecimal-string-to-an-array-of-uint8-bytes-in-swift
+    // compactMap and flatMap https://developer.apple.com/documentation/swift/sequence/2950916-compactmap
+    // If use compactMap, get an compiler error Value of type 'StrideTo<String.IndexDistance>' (aka 'StrideTo<Int>') has no member 'compactMap'
     var hexBytes: [UInt8] {
         let hex = Array(self)
-        return stride(from: 0, to: count, by: 2).compactMap { UInt8(String(hex[$0..<$0.advanced(by: 2)]), radix: 16) }
+        return stride(from: 0, to: count, by: 2).flatMap { UInt8(String(hex[$0..<$0.advanced(by: 2)]), radix: 16) }
     }
 }
