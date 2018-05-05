@@ -40,7 +40,7 @@ class Transaction {
         let updateTime = DateUtil.convertToDate(json["updateTime"].uIntValue, format: "HH:mm EEE, MMM dd, yyyy")
         self.updateTime = updateTime
         
-        if let value = Asset.getAmount(of: symbol, from: value) {
+        if let value = Asset.getAmount(of: symbol, fromGweiAmount: value) {
             self.value = value.format().description
             if let price = PriceDataManager.shared.getPriceBySymbol(of: symbol) {
                 let total = price * Double(value)

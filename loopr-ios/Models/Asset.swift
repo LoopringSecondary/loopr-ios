@@ -30,10 +30,10 @@ class Asset: CustomStringConvertible, Equatable {
         self.icon = UIImage(named: self.symbol) ?? nil
         self.name = TokenDataManager.shared.getTokenBySymbol(symbol)?.source ?? "unknown token"
         self.description = self.name
-        if let balance = Asset.getAmount(of: symbol, from: json["balance"].stringValue) {
+        if let balance = Asset.getAmount(of: symbol, fromGweiAmount: json["balance"].stringValue) {
             self.balance = balance
         }
-        if let allowance = Asset.getAmount(of: symbol, from: json["allowance"].stringValue) {
+        if let allowance = Asset.getAmount(of: symbol, fromGweiAmount: json["allowance"].stringValue) {
             self.allowance = allowance
         }
     }
@@ -49,14 +49,16 @@ class Asset: CustomStringConvertible, Equatable {
         self.display = Double(0).currency
     }
     
-    static func getAmount(of symbol: String, from gweiAmount: String) -> Double? {
+    // TODO: Is it only for gweiAmount unit?
+    // If yest, better to explicitly declare gwei unit in the function naming.
+    static func getAmount(of symbol: String, fromGweiAmount gweiAmount: String) -> Double? {
         var index: String.Index
         var result: Double? = nil
         // hex string
         if gweiAmount.lowercased().starts(with: "0x") {
             let hexString = gweiAmount.dropFirst(2)
             let decString = BigUInt(hexString, radix: 16)!.description
-            return getAmount(of: symbol, from: decString)
+            return getAmount(of: symbol, fromGweiAmount: decString)
         } else if let token = TokenDataManager.shared.getTokenBySymbol(symbol) {
             var amount = gweiAmount
             guard token.decimals < 100 || token.decimals >= 0 else {

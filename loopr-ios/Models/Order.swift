@@ -19,8 +19,8 @@ class Order {
     init(originalOrder: OriginalOrder, orderStatus: OrderStatus, dealtAmountB: String, dealtAmountS: String) {
         self.originalOrder = originalOrder
         self.orderStatus = orderStatus
-        self.dealtAmountB = Asset.getAmount(of: originalOrder.tokenBuy, from: dealtAmountB) ?? 0.0
-        self.dealtAmountS = Asset.getAmount(of: originalOrder.tokenSell, from: dealtAmountS) ?? 0.0
+        self.dealtAmountB = Asset.getAmount(of: originalOrder.tokenBuy, fromGweiAmount: dealtAmountB) ?? 0.0
+        self.dealtAmountS = Asset.getAmount(of: originalOrder.tokenSell, fromGweiAmount: dealtAmountS) ?? 0.0
         
         if originalOrder.tokenBuy == "WETH" {
             tradingPairDescription = "\(originalOrder.tokenSell)/\(originalOrder.tokenBuy)"

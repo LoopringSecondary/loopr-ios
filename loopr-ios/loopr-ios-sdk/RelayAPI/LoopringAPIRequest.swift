@@ -240,7 +240,7 @@ class LoopringAPIRequest {
             }
             let json = JSON(data)
             let result = json["result"].stringValue
-            if let amount = Asset.getAmount(of: token, from: result) {
+            if let amount = Asset.getAmount(of: token, fromGweiAmount: result) {
                 completionHandler(amount, nil)
             }
         }
@@ -349,8 +349,9 @@ class LoopringAPIRequest {
                 return
             }
             let json = JSON(data)
+            print(json)
             let result = json["result"].stringValue
-            if let amount = Asset.getAmount(of: "ETH", from: result) {
+            if let amount = Asset.getAmount(of: "ETH", fromGweiAmount: result) {
                 completionHandler(amount, nil)
             }
         }
@@ -371,7 +372,7 @@ class LoopringAPIRequest {
             }
             let json = JSON(data)
             let result = json["result"].stringValue
-            if let amount = Asset.getAmount(of: "LRC", from: result) {
+            if let amount = Asset.getAmount(of: "LRC", fromGweiAmount: result) {
                 completionHandler(amount, nil)
             }
         }
