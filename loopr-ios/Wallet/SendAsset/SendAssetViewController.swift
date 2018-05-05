@@ -392,6 +392,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         updateLabel(label: amountInfoLabel, text: asset.display, textColor: .black)
     }
 
+    // To avoid gesture conflicts in swiping to back and UISlider
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if touch.view != nil && touch.view!.isKind(of: UISlider.self) {
             return false
@@ -551,7 +552,7 @@ extension SendAssetViewController {
 
     var gasPrice: GethBigInt {
         // TODO: get value from transactionSpeedSlider
-        return GethBigInt(20000000000)
+        return GethBigInt(5000000000)
     }
 
     func completion(_ txHash: String?, _ error: Error?) {

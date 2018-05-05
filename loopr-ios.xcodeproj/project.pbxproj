@@ -291,6 +291,10 @@
 		AC4F601620773E9D00F1D954 /* EthTypeEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F600920773E9D00F1D954 /* EthTypeEncoder.swift */; };
 		AC4F601720773E9D00F1D954 /* web3swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F600B20773E9D00F1D954 /* web3swift.swift */; };
 		AC4F601A2077536400F1D954 /* testKeystore.json in Resources */ = {isa = PBXBuildFile; fileRef = AC4F60192077536400F1D954 /* testKeystore.json */; };
+		AC4F8638209D483B002E62AB /* SettingLRCFeeRatioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F8636209D483B002E62AB /* SettingLRCFeeRatioViewController.swift */; };
+		AC4F8639209D483B002E62AB /* SettingLRCFeeRatioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4F8637209D483B002E62AB /* SettingLRCFeeRatioViewController.xib */; };
+		AC4F8641209D4889002E62AB /* SettingMarginSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F863F209D4889002E62AB /* SettingMarginSplitViewController.swift */; };
+		AC4F8642209D4889002E62AB /* SettingMarginSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4F8640209D4889002E62AB /* SettingMarginSplitViewController.xib */; };
 		AC5288B3208300580002AEAD /* TokenUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B0208300570002AEAD /* TokenUtil.swift */; };
 		AC5288B4208300580002AEAD /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B1208300570002AEAD /* DateUtil.swift */; };
 		AC5288B5208300580002AEAD /* NetworkingRechabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B2208300570002AEAD /* NetworkingRechabilityManager.swift */; };
@@ -761,6 +765,10 @@
 		AC4F600920773E9D00F1D954 /* EthTypeEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthTypeEncoder.swift; sourceTree = "<group>"; };
 		AC4F600B20773E9D00F1D954 /* web3swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = web3swift.swift; sourceTree = "<group>"; };
 		AC4F60192077536400F1D954 /* testKeystore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testKeystore.json; sourceTree = "<group>"; };
+		AC4F8636209D483B002E62AB /* SettingLRCFeeRatioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLRCFeeRatioViewController.swift; sourceTree = "<group>"; };
+		AC4F8637209D483B002E62AB /* SettingLRCFeeRatioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLRCFeeRatioViewController.xib; sourceTree = "<group>"; };
+		AC4F863F209D4889002E62AB /* SettingMarginSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMarginSplitViewController.swift; sourceTree = "<group>"; };
+		AC4F8640209D4889002E62AB /* SettingMarginSplitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingMarginSplitViewController.xib; sourceTree = "<group>"; };
 		AC5288B0208300570002AEAD /* TokenUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenUtil.swift; sourceTree = "<group>"; };
 		AC5288B1208300570002AEAD /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		AC5288B2208300570002AEAD /* NetworkingRechabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingRechabilityManager.swift; sourceTree = "<group>"; };
@@ -1300,6 +1308,24 @@
 				AC4F600820773E9D00F1D954 /* EthFunction.swift */,
 			);
 			path = DataTypes;
+			sourceTree = "<group>";
+		};
+		AC4F863A209D4842002E62AB /* SettingLRCFeeRatio */ = {
+			isa = PBXGroup;
+			children = (
+				AC4F8636209D483B002E62AB /* SettingLRCFeeRatioViewController.swift */,
+				AC4F8637209D483B002E62AB /* SettingLRCFeeRatioViewController.xib */,
+			);
+			path = SettingLRCFeeRatio;
+			sourceTree = "<group>";
+		};
+		AC4F8643209D488F002E62AB /* SettingMarginSplit */ = {
+			isa = PBXGroup;
+			children = (
+				AC4F863F209D4889002E62AB /* SettingMarginSplitViewController.swift */,
+				AC4F8640209D4889002E62AB /* SettingMarginSplitViewController.xib */,
+			);
+			path = SettingMarginSplit;
 			sourceTree = "<group>";
 		};
 		AC5288AF208300570002AEAD /* Utils */ = {
@@ -1888,6 +1914,8 @@
 			isa = PBXGroup;
 			children = (
 				94AD1FDF208B8F5600C443E6 /* SettingCurrency */,
+				AC4F863A209D4842002E62AB /* SettingLRCFeeRatio */,
+				AC4F8643209D488F002E62AB /* SettingMarginSplit */,
 				ACB9117E2026385100F14644 /* SettingNavigationViewController.swift */,
 				ACB911822026388700F14644 /* SettingViewController.swift */,
 				ACB911832026388700F14644 /* SettingViewController.xib */,
@@ -2203,10 +2231,12 @@
 				AC31CE93205B9C0600A30335 /* Montserrat-BlackItalic.ttf in Resources */,
 				AC31CE34205B603200A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf in Resources */,
 				AC5E0996205F270000801738 /* ScanQRCodeViewController.xib in Resources */,
+				AC4F8639209D483B002E62AB /* SettingLRCFeeRatioViewController.xib in Resources */,
 				AC31CE7A205B996700A30335 /* Roboto-ThinItalic.ttf in Resources */,
 				AC06193A208401EB0060F416 /* MnemonicAddressTableViewCell.xib in Resources */,
 				ACB746E62043C5F5006C2BF5 /* QRCodeViewController.xib in Resources */,
 				AC54FD73204FC6E1007E1DEB /* OpenSans-Bold.ttf in Resources */,
+				AC4F8642209D4889002E62AB /* SettingMarginSplitViewController.xib in Resources */,
 				AC6466092083EE1E00EBEC97 /* MnemonicDerivationPathTableViewCell.xib in Resources */,
 				ACE65E422071F875001EE499 /* MnemonicCollectionViewController.xib in Resources */,
 				AC54FD6A204FC6D5007E1DEB /* Lato-Light.ttf in Resources */,
@@ -2766,11 +2796,13 @@
 				AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */,
 				AC4F601120773E9D00F1D954 /* EthAccountCoordinator.swift in Sources */,
 				ACDBF103203FE790000F0DEC /* ReorderUITableView.swift in Sources */,
+				AC4F8641209D4889002E62AB /* SettingMarginSplitViewController.swift in Sources */,
 				ACA677C92079D5A000D34A2F /* DisplayPrivateKeyViewController.swift in Sources */,
 				AC72AEEA204F038300E9D3B0 /* OrderTradeError.swift in Sources */,
 				AC0C5C86203D168C00C8618D /* TickerLabel.swift in Sources */,
 				AC13B30E2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift in Sources */,
 				AC4C144B204C825900D6B1E2 /* GenerateWalletViewController.swift in Sources */,
+				AC4F8638209D483B002E62AB /* SettingLRCFeeRatioViewController.swift in Sources */,
 				940076B220554A4100DDA37D /* LoopringSocketIORequest.swift in Sources */,
 				C8BF959D202696A900343B9A /* MainTabController.swift in Sources */,
 				ACB911522024254F00F14644 /* WalletNavigationViewController.swift in Sources */,

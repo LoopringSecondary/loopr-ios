@@ -32,7 +32,6 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
         
         nameTextField.delegate = self
         nameTextField.tag = 0
-//        nameTextField.inputView = UIView()
         nameTextField.font = FontConfigManager.shared.getLabelFont()
         nameTextField.theme_tintColor = GlobalPicker.textColor
         nameTextField.placeholder = "Enter your wallet name"
@@ -45,6 +44,7 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
         self.view.addSubview(nameFieldUnderLine)
         
         saveButton.setupRoundBlack()
+        saveButton.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
         saveButton.frame = CGRect(x: padding, y: nameFieldUnderLine.frame.maxY + padding*2 + 10, width: screenWidth - padding*2, height: 47)
         saveButton.addTarget(self, action: #selector(pressedSaveButton), for: .touchUpInside)
         self.view.addSubview(saveButton)
@@ -54,7 +54,6 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        saveButton.setTitle("Save", for: .normal)
     }
 
     override func didReceiveMemoryWarning() {

@@ -77,6 +77,23 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             default:
                 break
             }
+        case 1:
+            switch indexPath.row {
+            case 0:
+                print("contract version")
+            case 1:
+                print("LRC Fee ratio")
+                let viewController = SettingLRCFeeRatioViewController()
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            case 2:
+                print("Margin split")
+                let viewController = SettingMarginSplitViewController()
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            default:
+                break
+            }
         default:
             break
         }

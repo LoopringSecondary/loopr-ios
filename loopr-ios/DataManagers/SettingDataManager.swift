@@ -82,7 +82,13 @@ class SettingDataManager {
         let defaults = UserDefaults.standard
         defaults.set(showSmallAssets, forKey: UserDefaultsKeys.showSmallAssets.rawValue)
     }
-    
+
+    func setLrcFeeRatio(_ newValue: Double) {
+        let defaults = UserDefaults.standard
+        defaults.set(true, forKey: UserDefaultsKeys.useLrcFeeRatioUserDefineValue.rawValue)
+        defaults.set(newValue, forKey: UserDefaultsKeys.lrcFeeRatio.rawValue)
+    }
+
     func getLrcFeeRatio() -> Double {
         let defaults = UserDefaults.standard
         let useLrcFeeRatioUserDefineValue = defaults.bool(forKey: UserDefaultsKeys.useLrcFeeRatioUserDefineValue.rawValue)
@@ -97,6 +103,12 @@ class SettingDataManager {
     func getLrcFeeRatioDescription() -> String {
         let numberFormatter = NumberFormatter()
         return String(SettingDataManager.shared.getLrcFeeRatio()*1000) + numberFormatter.perMillSymbol
+    }
+    
+    func setMarginSplit(_ newValue: Double) {
+        let defaults = UserDefaults.standard
+        defaults.set(true, forKey: UserDefaultsKeys.useMarginSplitUserDefineValue.rawValue)
+        defaults.set(newValue, forKey: UserDefaultsKeys.marginSplit.rawValue)
     }
 
     func getMarginSplit() -> Double {
