@@ -37,6 +37,7 @@ class GethBigIntTests: XCTestCase {
     }
 
     func test3() {
+        // This is valid value in ether.
         let value: Double = 1.123456789123456789
         let amount = GethBigInt.generateBigInt(valueInEther: value, symbol: "ETH")
         XCTAssertNotNil(amount)
@@ -92,6 +93,22 @@ class GethBigIntTests: XCTestCase {
         XCTAssertNotNil(amount)
         print(amount!.getString(10))
         XCTAssertEqual(amount!.getString(10), "123456789000000")
+    }
+
+    func test11() {
+        let value: String = "00000.000123456789"
+        let amount = GethBigInt.generate(valueInEther: value, symbol: "LRC")
+        XCTAssertNotNil(amount)
+        print(amount!.getString(10))
+        XCTAssertEqual(amount!.getString(10), "123456789000000")
+    }
+    
+    func test12() {
+        let value: String = "00000.0001234567"
+        let amount = GethBigInt.generate(value, 10)
+        XCTAssertNotNil(amount)
+        print(amount!.getString(10))
+        XCTAssertEqual(amount!.getString(10), "1234567")
     }
 
 }

@@ -1282,7 +1282,6 @@
 		AC4F5FFE20773E9D00F1D954 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				AC4F5FFF20773E9D00F1D954 /* GethBigInt+Extension.swift */,
 				AC4F600020773E9D00F1D954 /* String+Extension.swift */,
 			);
 			path = Extension;
@@ -1969,6 +1968,7 @@
 		ACCC7EA120828D2E008E58BA /* loopr-ios-sdk */ = {
 			isa = PBXGroup;
 			children = (
+				AC4F5FFF20773E9D00F1D954 /* GethBigInt+Extension.swift */,
 				ACB9119320278A0E00F14644 /* RelayAPI */,
 				AC5442DA2081163D0036A2B4 /* SwiftyJSON@a1700fb */,
 				AC4F5FFA20773E9D00F1D954 /* web3swift@fe0c304 */,

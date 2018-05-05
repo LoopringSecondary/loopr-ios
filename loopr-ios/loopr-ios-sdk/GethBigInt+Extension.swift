@@ -1,9 +1,9 @@
 //
 //  GethBigInt+Extension.swift
-//  web3swift
+//  loopr-ios
 //
-//  Created by Sameer Khavanekar on 1/24/18.
-//  Copyright © 2018 Radical App LLC. All rights reserved.
+//  Created by xiaoruby on 5/5/18.
+//  Copyright © 2018 Loopring. All rights reserved.
 //
 
 import Foundation
@@ -22,7 +22,7 @@ public extension GethBigInt {
         }
         return generateBigInt(valueInEther, token!.decimals)
     }
-    
+
     public static func generateBigInt(_ valueInEther: Double, _ decimals: Int = 18) -> GethBigInt? {
         let valueInWei = valueInEther * Double.init(truncating: (pow(10, decimals) as NSNumber))
         let str = String(format: "%.0f", valueInWei)
@@ -36,10 +36,10 @@ public extension GethBigInt {
         guard token != nil else {
             return nil
         }
-        return generateBigInt(valueInEther, token!.decimals)
+        return generate(valueInEther, token!.decimals)
     }
     
-    public static func generateBigInt(_ valueInEther: String, _ decimals: Int = 18) -> GethBigInt? {
+    public static func generate(_ valueInEther: String, _ decimals: Int = 18) -> GethBigInt? {
         guard valueInEther.isDouble else {
             return nil
         }

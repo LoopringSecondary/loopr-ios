@@ -255,7 +255,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
                 if let amount = Double(amountString) {
                     if asset.balance >= amount {
                         if let token = TokenDataManager.shared.getTokenBySymbol(asset.symbol) {
-                            result = GethBigInt.generateBigInt(valueInEther: amount, symbol: token.symbol)
+                            result = GethBigInt.generate(valueInEther: amountString, symbol: token.symbol)
                         }
                     }
                 }
