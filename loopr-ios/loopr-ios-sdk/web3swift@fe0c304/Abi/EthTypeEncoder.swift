@@ -90,6 +90,4 @@ open class EthTypeEncoder {
             return data
         }
     }
-
-
 }

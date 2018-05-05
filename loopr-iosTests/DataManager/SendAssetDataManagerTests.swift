@@ -22,11 +22,19 @@ class SendCurrentAppWalletDataManagerTests: XCTestCase {
     }
     
     func testLoadGasLimits() {
-        let mgr = SendCurrentAppWalletDataManager.shared
+        let mgr = GasDataManager.shared
         mgr.loadGasLimitsFromJson()
         XCTAssertEqual(mgr.getGasLimits().count, 8)
     }
     
+    func testGetNonceFromServerSynchronous() {
+        let mgr = SendCurrentAppWalletDataManager.shared
+        let nonce = mgr.getNonceFromServerSynchronous()
+        print(nonce)
+    }
     
+    func test() {
+        
+    }
     
 }

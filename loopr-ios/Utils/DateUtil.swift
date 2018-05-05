@@ -9,7 +9,7 @@
 import Foundation
 import Charts
 
-class DateUtil: NSObject, IAxisValueFormatter {
+class DateUtil: NSObject {
     
     private let dateFormatter = DateFormatter()
     
@@ -21,11 +21,6 @@ class DateUtil: NSObject, IAxisValueFormatter {
     init(format: String) {
         super.init()
         dateFormatter.dateFormat = format
-    }
-    
-    // TODO: What is axis for?
-    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        return dateFormatter.string(from: Date(timeIntervalSince1970: value))
     }
     
     static func convertToDate(_ timeStamp: UInt, format: String) -> String {

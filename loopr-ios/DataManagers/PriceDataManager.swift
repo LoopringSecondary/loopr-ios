@@ -8,9 +8,9 @@
 
 import Foundation
 
-class PriceQuoteDataManager {
+class PriceDataManager {
     
-    static let shared = PriceQuoteDataManager()
+    static let shared = PriceDataManager()
     private var priceQuote: PriceQuote?
     
     private init() {

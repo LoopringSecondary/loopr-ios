@@ -9,30 +9,21 @@
 import Foundation
 import Geth
 
-struct GasLimit {
-    let type: String
-    let gasLimit: Int64
-    init(json: JSON) {
-        self.type = json["type"].stringValue
-        self.gasLimit = json["gasLimit"].int64Value
-    }
-}
-
 class SendCurrentAppWalletDataManager {
     
     static let shared = SendCurrentAppWalletDataManager()
     
-    private var gasLimits: [GasLimit]
     private var nonce: Int64
     private var wethAddress: GethAddress?
+    private var protocolAddress: GethAddress?
     
     private init() {
-        self.gasLimits = []
         self.nonce = 0
         self.wethAddress = nil
-        self.loadGasLimitsFromJson()
+        self.protocolAddress = nil
         self.getNonceFromServer()
         self.getWethAddress()
+        self.getProtocolAddress()
     }
     
     func getWethAddress() {
@@ -43,31 +34,10 @@ class SendCurrentAppWalletDataManager {
         var error: NSError? = nil
         self.wethAddress = GethNewAddressFromHex(address, &error)
     }
-    
-    func getGasLimits() -> [GasLimit] {
-        return gasLimits
-    }
-    
-    // TODO: Why we need to load gas_limit from a json file instead of writing as code.
-    // load
-    func loadGasLimitsFromJson() {
-        if let path = Bundle.main.path(forResource: "gas_limit", ofType: "json") {
-            let jsonString = try? String(contentsOfFile: path, encoding: String.Encoding.utf8)
-            let json = JSON(parseJSON: jsonString!)
-            for subJson in json.arrayValue {
-                let token = GasLimit(json: subJson)
-                gasLimits.append(token)
-            }
-        }
-    }
 
-    func getGasLimitByType(type: String) -> Int64? {
-        var gasLimit: Int64? = nil
-        for case let gas in gasLimits where gas.type.lowercased() == type.lowercased() {
-            gasLimit = gas.gasLimit
-            break
-        }
-        return gasLimit
+    func getProtocolAddress() {
+        var error: NSError? = nil
+        self.protocolAddress = GethNewAddressFromHex(RelayAPIConfiguration.protocolAddress, &error)
     }
     
     // The API request teth_getTransactionCount is slow. Please be patient. It takes 3-20 seconds.
@@ -180,7 +150,7 @@ class SendCurrentAppWalletDataManager {
         }
         let transferFunction = EthFunction(name: "withdraw", inputParameters: [amount])
         let data = web3swift.encode(transferFunction)
-        let gasLimit: Int64 = getGasLimitByType(type: "withdraw")!
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "withdraw")!
         _transfer(data: data, address: wethAddress!, amount: GethBigInt(0), gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
@@ -191,8 +161,40 @@ class SendCurrentAppWalletDataManager {
         }
         let transferFunction = EthFunction(name: "deposit", inputParameters: [])
         let data = web3swift.encode(transferFunction)
-        let gasLimit: Int64 = getGasLimitByType(type: "deposit")!
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "deposit")!
         _transfer(data: data, address: wethAddress!, amount: amount, gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
+    }
+    
+    // 目前传入delegate address
+    func _approve(contractAddress: GethAddress, toAddress: GethAddress, tokenAmount: GethBigInt, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
+        guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
+            return
+        }
+        let transferFunction = EthFunction(name: "approve", inputParameters: [toAddress, tokenAmount])
+        let data = web3swift.encode(transferFunction)
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "approve")!
+        // amount must be 0 for ERC20 tokens.
+        _transfer(data: data, address: contractAddress, amount: GethBigInt.init(0), gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
+    }
+    
+    func _cancelAllOrders(timestamp: GethBigInt/* TODO:check here*/, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
+        guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
+            return
+        }
+        let transferFunction = EthFunction(name: "cancelAllOrders", inputParameters: [timestamp])
+        let data = web3swift.encode(transferFunction)
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "cancelAllOrders")!
+        _transfer(data: data, address: protocolAddress!, amount: GethBigInt.init(0), gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
+    }
+    
+    func _cancelOrdersByTokenPair(timestamp: GethBigInt, tokenA: GethAddress, tokenB: GethAddress, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
+        guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
+            return
+        }
+        let transferFunction = EthFunction(name: "cancelAllOrdersByTradingPair", inputParameters: [tokenA, tokenB, timestamp])
+        let data = web3swift.encode(transferFunction)
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "cancelAllOrdersByTradingPair")!
+        _transfer(data: data, address: protocolAddress!, amount: GethBigInt.init(0), gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
     // transfer eth
@@ -201,7 +203,7 @@ class SendCurrentAppWalletDataManager {
             return
         }
         let data = "0x".data(using: .utf8)!
-        let gasLimit: Int64 = getGasLimitByType(type: "eth_transfer")!
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "eth_transfer")!
         _transfer(data: data, address: toAddress, amount: amount, gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
@@ -213,8 +215,7 @@ class SendCurrentAppWalletDataManager {
         // Transfer function
         let transferFunction = EthFunction(name: "transfer", inputParameters: [toAddress, tokenAmount])
         let data = web3swift.encode(transferFunction)
-        let gasLimit: Int64 = getGasLimitByType(type: "token_transfer")!
-        
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "token_transfer")!
         // amount must be 0 for ERC20 tokens.
         _transfer(data: data, address: contractAddress, amount: GethBigInt.init(0), gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
     }

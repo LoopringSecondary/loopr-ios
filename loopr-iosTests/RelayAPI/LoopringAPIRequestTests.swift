@@ -257,7 +257,22 @@ class LoopringAPIRequestTests: XCTestCase {
                 XCTFail()
                 return
             }
-            print(frozenLRCFee!)
+            XCTAssertNotNil(frozenLRCFee)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testGetEstimateGasPrice() {
+        let expectation = XCTestExpectation()
+        LoopringAPIRequest.getEstimateGasPrice { (gasPrice, error) in
+            guard error == nil && gasPrice != nil else {
+                print("error=\(String(describing: error))")
+                XCTFail()
+                return
+            }
+            XCTAssertNotNil(gasPrice)
+            print(gasPrice!)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)

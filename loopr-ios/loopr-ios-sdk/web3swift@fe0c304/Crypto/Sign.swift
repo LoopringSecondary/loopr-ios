@@ -11,15 +11,18 @@ import Geth
 import CryptoSwift
 
 open class Sign {
-    
+
     open class func sign(message: Data, keystore: GethKeyStore, account: GethAccount, passphrase: String) -> SignatureData? {
         let hashedMessage = message.sha3(SHA3.Variant.keccak256)
+        let header: Data = "\u{0019}Ethereum Signed Message:\n32".data(using: .utf8)!
+        let newData: Data = header + hashedMessage
+        let secret = newData.sha3(SHA3.Variant.keccak256)
         
         do {
             // TODO:- Add timed Unlock
             _ = try? keystore.unlock(account, passphrase: passphrase)
             let accountAddress = account.getAddress()
-            let hashedSignedMessage = try keystore.signHash(accountAddress, hash: hashedMessage)
+            let hashedSignedMessage = try keystore.signHash(accountAddress, hash: secret)
             let r = hashedSignedMessage.subdata(in: Range(0..<32))
             let s = hashedSignedMessage.subdata(in: Range(32..<64))
             let v = hashedSignedMessage.subdata(in: Range(64..<65)) // TODO:- Use length

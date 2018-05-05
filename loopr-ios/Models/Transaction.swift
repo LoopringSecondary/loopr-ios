@@ -42,7 +42,7 @@ class Transaction {
         
         if let value = Asset.getAmount(of: symbol, from: value) {
             self.value = value.format().description
-            if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: symbol) {
+            if let price = PriceDataManager.shared.getPriceBySymbol(of: symbol) {
                 let total = price * Double(value)
                 self.display = total.currency
             }

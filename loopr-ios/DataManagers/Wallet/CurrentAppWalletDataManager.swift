@@ -86,6 +86,23 @@ class CurrentAppWalletDataManager {
         return totalCurrencyValue
     }
     
+    func getAsset(symbol: String) -> Asset? {
+        let result: Asset? = nil
+        for asset in self.assets {
+            if asset.symbol.lowercased() == symbol.lowercased() {
+                return asset
+            }
+        }
+        return result
+    }
+    
+    func getBalance(of token: String) -> Double? {
+        if let asset = getAsset(symbol: token) {
+            return asset.balance
+        }
+        return nil
+    }
+    
     func getTotalAssetCurrencyFormmat() -> String {
         return totalCurrencyValue.currency
     }
@@ -125,7 +142,7 @@ class CurrentAppWalletDataManager {
         totalCurrencyValue = 0
         for asset in sortedAssets {
             // If the price quote is nil, asset won't be updated. Please use getBalanceAndPriceQuote()
-            if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
+            if let price = PriceDataManager.shared.getPriceBySymbol(of: asset.symbol) {
                 let total = asset.balance * price
                 asset.display = total.currency
                 totalCurrencyValue += total
@@ -279,7 +296,7 @@ class CurrentAppWalletDataManager {
                 print("error=\(String(describing: error))")
                 return
             }
-            PriceQuoteDataManager.shared.setPriceQuote(newPriceQuote: priceQuote!)
+            PriceDataManager.shared.setPriceQuote(newPriceQuote: priceQuote!)
             dispatchGroup.leave()
         })
         

@@ -141,7 +141,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     @objc func pressOrderHistoryButton(_ button: UIBarButtonItem) {
         print("pressOrderHistoryButton")
         let viewController = OrderHistoryViewController()
-        viewController.orders = OrderDataManager.shared.getDataOrders(tokenSymbol: nil)
+        viewController.orders = OrderDataManager.shared.getDateOrders(tokenSymbol: nil)
         viewController.hidesBottomBarWhenPushed = true
         
         // Set endEnditing to true, otherwise the keyboard will trigger a wired animation.

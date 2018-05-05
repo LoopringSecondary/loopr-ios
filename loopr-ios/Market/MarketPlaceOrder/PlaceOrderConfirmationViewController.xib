@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -31,7 +31,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySt-5k-fs4">
-                    <rect key="frame" x="146" y="100.66666666666667" width="83.333333333333314" height="20.333333333333329"/>
+                    <rect key="frame" x="146" y="92.666666666666671" width="83.333333333333314" height="20.333333333333329"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5K-w2-CDg">
                             <rect key="frame" x="0.0" y="0.0" width="41.666666666666664" height="20.333333333333332"/>
@@ -48,29 +48,29 @@
                     </subviews>
                 </stackView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e7g-fW-VLd">
-                    <rect key="frame" x="148" y="145.33333333333334" width="79" height="79"/>
+                    <rect key="frame" x="148" y="135.66666666666666" width="79" height="79"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="e7g-fW-VLd" secondAttribute="height" id="sbC-Mv-OBj"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkp-d7-VEd" customClass="IconView" customModule="loopr_ios" customModuleProvider="target">
-                    <rect key="frame" x="148" y="145.33333333333334" width="79" height="79"/>
+                    <rect key="frame" x="148" y="135.66666666666666" width="79" height="79"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmN-hK-gdf">
-                    <rect key="frame" x="0.0" y="246.66666666666666" width="375" height="20.333333333333343"/>
+                    <rect key="frame" x="0.0" y="236" width="375" height="20.333333333333314"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrs-Qm-krs">
-                    <rect key="frame" x="0.0" y="280.33333333333331" width="375" height="20.333333333333314"/>
+                    <rect key="frame" x="0.0" y="269" width="375" height="20.333333333333314"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iWa-gH-mx4">
-                    <rect key="frame" x="0.0" y="315.33333333333331" width="375" height="379.99999999999994"/>
+                    <rect key="frame" x="0.0" y="303.66666666666663" width="375" height="391.66666666666663"/>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="To1-6U-t72">
                     <rect key="frame" x="15" y="716" width="345" height="47"/>
@@ -108,7 +108,7 @@
                 <constraint firstItem="To1-6U-t72" firstAttribute="top" secondItem="iWa-gH-mx4" secondAttribute="bottom" multiplier="1.03" id="jvf-3X-lUD"/>
                 <constraint firstItem="jmN-hK-gdf" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="whR-dD-dQn"/>
                 <constraint firstItem="To1-6U-t72" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="xPa-Pb-fNY"/>
-                <constraint firstItem="ySt-5k-fs4" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" multiplier="0.27" id="z4G-0w-9N5"/>
+                <constraint firstItem="ySt-5k-fs4" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" multiplier="0.25" id="z4G-0w-9N5"/>
                 <constraint firstItem="jmN-hK-gdf" firstAttribute="top" secondItem="e7g-fW-VLd" secondAttribute="bottom" multiplier="1.1" id="zKR-07-AmU"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

@@ -43,7 +43,6 @@ class TradeDataManager {
 
     func clear() {
         state = .empty
-        
     }
 
     func changeTokenS(_ token: Token) {

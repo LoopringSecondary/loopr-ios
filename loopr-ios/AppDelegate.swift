@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ThemeManager.animationDuration = 1.0
         
         LoopringSocketIORequest.setup()
-        PriceQuoteDataManager.shared.startGetPriceQuote()
+        PriceDataManager.shared.startGetPriceQuote()
         MarketDataManager.shared.startGetTicker()
         
         _ = SettingDataManager.shared.getCurrentLanguage()

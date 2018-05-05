@@ -337,14 +337,10 @@ class LoopringAPIRequest {
             completionHandler(offerData.description, nil)
         }
     }
-
-    // Not used
-    // Not ready
-    // Error: "The method loopring_getGetFrozenLRCFee does not exist\/is not available"
-    static func getFrozenLRCFee(owner: String, completionHandler: @escaping (_ frozenLRCFee: String?, _ error: Error?) -> Void) {
+    
+    static func getEstimateGasPrice(completionHandler: @escaping (_ gasPrice: Double?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
-        body["method"] = "loopring_getGetFrozenLRCFee"
-        body["params"] = [["owner": owner]]
+        body["method"] = "loopring_getEstimateGasPrice"
         body["id"] = JSON(UUID().uuidString)
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
@@ -353,16 +349,31 @@ class LoopringAPIRequest {
                 return
             }
             let json = JSON(data)
-            print("getFrozenLRCFee")
-            print(json)
-            let result = json["result"].array
-            if let result = result {
-                if result.count > 0 {
-                    let frozenLRCFee = result[0].description
-                    completionHandler(frozenLRCFee, nil)
-                }
+            let result = json["result"].stringValue
+            if let amount = Asset.getAmount(of: "ETH", from: result) {
+                completionHandler(amount, nil)
             }
-            completionHandler(nil, ErrorType.InvalidValue)
+        }
+    }
+
+    // Ready
+    static func getFrozenLRCFee(owner: String, completionHandler: @escaping (_ frozenLRCFee: Double?, _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_getFrozenLRCFee"
+        body["params"] = [["owner": owner, "delegateAddress": RelayAPIConfiguration.delegateAddress]]
+        body["id"] = JSON(UUID().uuidString)
+        
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                completionHandler(nil, error)
+                return
+            }
+            let json = JSON(data)
+            let result = json["result"].stringValue
+            if let amount = Asset.getAmount(of: "LRC", from: result) {
+                completionHandler(amount, nil)
+            }
         }
     }
 
@@ -404,4 +415,23 @@ class LoopringAPIRequest {
         }
     }
     
+    static func submitOrder(owner: String, walletAddress: String, tokenS: String, tokenB: String, amountS: String, amountB: String, lrcFee: String, validSince: String, validUntil: String, marginSplitPercentage: UInt8, buyNoMoreThanAmountB: Bool, authAddr: String, authPrivateKey: String, v: UInt, r: String, s: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        let protocol_value = ""
+        body["method"] = "loopring_submitOrder"
+        body["params"] = [["protocol": protocol_value, "owner": owner, "walletAddress": walletAddress, "tokenS": tokenS, "tokenB": tokenB, "amountS": amountS, "amountB": amountB, "validSince": validSince, "validUntil": validUntil, "lrcFee": lrcFee, "buyNoMoreThanAmountB": buyNoMoreThanAmountB, "marginSplitPercentage": marginSplitPercentage, "v": v, "r": r, "s": s]]
+        body["params"]["delegateAddress"] = JSON(RelayAPIConfiguration.delegateAddress)
+        body["id"] = JSON(UUID().uuidString)
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                completionHandler(nil, error)
+                return
+            }
+            let json = JSON(data)
+            print("orderSubmitted")
+            print(json)
+            completionHandler("success", nil)
+        }
+    }
 }

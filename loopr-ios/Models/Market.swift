@@ -43,7 +43,7 @@ class Market: Equatable, CustomStringConvertible {
         } else if change.first! == "-" {
             changeInPat24 = "↓" + change.dropFirst()
         }
-        if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: tradingPair.tradingA) {
+        if let price = PriceDataManager.shared.getPriceBySymbol(of: tradingPair.tradingA) {
             display = price.currency
         } else {
             return nil

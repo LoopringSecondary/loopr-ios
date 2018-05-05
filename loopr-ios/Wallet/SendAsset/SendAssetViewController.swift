@@ -298,7 +298,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                 if asset.balance >= amount {
                     if let token = TokenDataManager.shared.getTokenBySymbol(asset!.symbol) {
                         if GethBigInt.generateBigInt(valueInEther: amount, symbol: token.symbol) != nil {
-                            if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: asset.symbol) {
+                            if let price = PriceDataManager.shared.getPriceBySymbol(of: asset.symbol) {
                                 let display = (amount * price).currency
                                 updateLabel(label: amountInfoLabel, text: display, textColor: .black)
                                 return true

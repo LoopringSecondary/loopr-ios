@@ -13,7 +13,7 @@ class OrderHistoryTableViewCell: UITableViewCell {
     var order: Order?
     let asset = CurrentAppWalletDataManager.shared
     let market = MarketDataManager.shared
-    let price = PriceQuoteDataManager.shared
+    let price = PriceDataManager.shared
     
     @IBOutlet weak var filledPieChart: CircleChart!
     @IBOutlet weak var tradingPairLabel: UILabel!

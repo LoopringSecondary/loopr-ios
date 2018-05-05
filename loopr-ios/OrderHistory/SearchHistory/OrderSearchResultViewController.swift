@@ -41,7 +41,7 @@ class OrderSearchResultViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func updateOrders() {
-        orders = OrderDataManager.shared.getDataOrders(tokenSymbol: token?.symbol)
+        orders = OrderDataManager.shared.getDateOrders(tokenSymbol: token?.symbol)
         orderDates = orders.keys.sorted(by: >)
     }
     

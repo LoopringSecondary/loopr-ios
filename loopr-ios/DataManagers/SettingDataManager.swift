@@ -57,7 +57,7 @@ class SettingDataManager {
     func setCurrentCurrency(_ currency: Currency) {
         let defaults = UserDefaults.standard
         defaults.set(currency.name, forKey: UserDefaultsKeys.currentCurrency.rawValue)
-        PriceQuoteDataManager.shared.startGetPriceQuote()
+        PriceDataManager.shared.startGetPriceQuote()
     }
     
     func getCurrentCurrency() -> Currency {

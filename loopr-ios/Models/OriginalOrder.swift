@@ -11,31 +11,48 @@ import Foundation
 class OriginalOrder {
 
     // protocol is a keyword in Swift
-    let protocol_value: String
+    let delegate: String
     let address: String
     let market: String
-    let tokenS: String
-    let tokenB: String
-    let validSince: String
-    let validUntil: String
+    let tokenBuy: String
+    let tokenSell: String
     let amountBuy: Double
     let amountSell: Double
+    let validSince: Int64
+    let validUntil: Int64
     let lrcFee: Double
     let buyNoMoreThanAmountB: Bool
-    let marginSplitPercentage: String
     let side: String
     let hash: String
     let v: String
     let r: String
     let s: String
-    let manager = CurrentAppWalletDataManager.shared
+    
+    init(delegate: String, address: String, side: String, tokenS: String, tokenB: String, validSince: Int64, validUntil: Int64, amountBuy: Double, amountSell: Double, lrcFee: Double, buyNoMoreThanAmountB: Bool, market: String = "", hash: String = "", v: String = "", r: String = "", s: String = "") {
+        self.delegate = delegate
+        self.address = address
+        self.market = market
+        self.tokenSell = tokenS
+        self.tokenBuy = tokenB
+        self.validSince = validSince
+        self.validUntil = validUntil
+        self.amountBuy = amountBuy
+        self.amountSell = amountSell
+        self.lrcFee = lrcFee
+        self.buyNoMoreThanAmountB = buyNoMoreThanAmountB
+        self.side = side
+        self.hash = hash
+        self.v = v
+        self.r = r
+        self.s = s
+    }
 
     init(json: JSON) {
-        self.protocol_value = json["protocol"].stringValue
+        self.delegate = json["protocol"].stringValue
         self.address = json["address"].stringValue
         self.market = json["market"].stringValue
-        self.tokenS = json["tokenS"].stringValue
-        self.tokenB = json["tokenB"].stringValue
+        self.tokenSell = json["tokenS"].stringValue
+        self.tokenBuy = json["tokenB"].stringValue
         self.buyNoMoreThanAmountB = json["buyNoMoreThanAmountB"].boolValue
         self.side = json["side"].stringValue
         self.hash = json["hash"].stringValue
@@ -43,19 +60,12 @@ class OriginalOrder {
         self.r = json["r"].stringValue
         self.s = json["s"].stringValue
         
-        let since = UInt(json["validSince"].stringValue.dropFirst(2), radix: 16)!
-        self.validSince = DateUtil.convertToDate(since, format: "MM/dd/yyyy HH:mm")
-        let until = UInt(json["validUntil"].stringValue.dropFirst(2), radix: 16)!
-        self.validUntil = DateUtil.convertToDate(until, format: "MM/dd/yyyy HH:mm")
-        let percentage = UInt(json["marginSplitPercentage"].stringValue.dropFirst(2), radix: 16)!
-        self.marginSplitPercentage = percentage.description + "%"
-
+        self.validSince = Int64(json["validSince"].stringValue.dropFirst(2), radix: 16)!
+        self.validUntil = Int64(json["validUntil"].stringValue.dropFirst(2), radix: 16)!
         let amountS = json["amountS"].stringValue
-        self.amountSell = Asset.getAmount(of: self.tokenS, from: amountS) ?? 0.0
-
+        self.amountSell = Asset.getAmount(of: self.tokenSell, from: amountS) ?? 0.0
         let amountB = json["amountB"].stringValue
-        self.amountBuy = Asset.getAmount(of: self.tokenB, from: amountB) ?? 0.0
-
+        self.amountBuy = Asset.getAmount(of: self.tokenBuy, from: amountB) ?? 0.0
         let fee = json["lrcFee"].stringValue
         self.lrcFee = Asset.getAmount(of: "LRC", from: fee)!
     }

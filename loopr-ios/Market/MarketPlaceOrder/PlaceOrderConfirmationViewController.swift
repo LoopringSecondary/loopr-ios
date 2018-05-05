@@ -74,25 +74,25 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     
     func initTokenView(order: OriginalOrder) {
         if order.side.lowercased() == "buy" {
-            if let icon = UIImage(named: order.tokenB) {
+            if let icon = UIImage(named: order.tokenBuy) {
                 tokenImage.image = icon
                 tokenImage.isHidden = false
                 iconView.isHidden = true
             } else {
                 iconView.isHidden = false
-                iconView.symbol = order.tokenB
-                iconView.symbolLabel.text = order.tokenB
+                iconView.symbol = order.tokenBuy
+                iconView.symbolLabel.text = order.tokenBuy
                 tokenImage.isHidden = true
             }
         } else if order.side.lowercased() == "sell" {
-            if let icon = UIImage(named: order.tokenS) {
+            if let icon = UIImage(named: order.tokenSell) {
                 tokenImage.image = icon
                 tokenImage.isHidden = false
                 iconView.isHidden = true
             } else {
                 iconView.isHidden = false
-                iconView.symbol = order.tokenS
-                iconView.symbolLabel.text = order.tokenS
+                iconView.symbol = order.tokenSell
+                iconView.symbolLabel.text = order.tokenSell
                 tokenImage.isHidden = true
             }
         }
@@ -100,13 +100,13 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     
     func initOrderAmount(order: OriginalOrder) {
         if order.side.lowercased() == "sell" {
-            amountLabel.text = order.amountSell.description + " " + order.tokenS
-            if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: order.tokenS) {
+            amountLabel.text = order.amountSell.description + " " + order.tokenSell
+            if let price = PriceDataManager.shared.getPriceBySymbol(of: order.tokenSell) {
                 displayLabel.text = "$ " + (price * order.amountSell).description // TODO: $
             }
         } else if order.side.lowercased() == "buy" {
-            amountLabel.text = order.amountBuy.description + " " + order.tokenB
-            if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: order.tokenB) {
+            amountLabel.text = order.amountBuy.description + " " + order.tokenBuy
+            if let price = PriceDataManager.shared.getPriceBySymbol(of: order.tokenBuy) {
                 displayLabel.text = "$ " + (price * order.amountBuy).description // TODO: $
             }
         }
@@ -154,7 +154,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         feeTipLabel.frame = CGRect(x: padding, y: expiresTipLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(feeTipLabel)
         feeInfoLabel.font = FontConfigManager.shared.getLabelFont()
-        if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: "LRC") {
+        if let price = PriceDataManager.shared.getPriceBySymbol(of: "LRC") {
             let display = order.lrcFee * price
             feeInfoLabel.text = order.lrcFee.description + "LRC (≈$\(display))"
         }
@@ -171,7 +171,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         marginTipLabel.frame = CGRect(x: padding, y: feeTipLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(marginTipLabel)
         marginInfoLabel.font = FontConfigManager.shared.getLabelFont()
-        marginInfoLabel.text = order.marginSplitPercentage
+        marginInfoLabel.text = SettingDataManager.shared.getMarginSplitDescription()
         marginInfoLabel.textAlignment = .right
         marginInfoLabel.frame = CGRect(x: padding + 150, y: marginTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
         scrollView.addSubview(marginInfoLabel)
@@ -185,7 +185,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         totalTipLabel.frame = CGRect(x: padding, y: marginTipLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(totalTipLabel)
         totalInfoLabel.font = FontConfigManager.shared.getLabelFont()
-        totalInfoLabel.text = (order.side.lowercased() == "buy" ? order.amountBuy.description + " " + order.tokenB : order.amountSell.description + " " + order.tokenS)
+        totalInfoLabel.text = (order.side.lowercased() == "buy" ? order.amountBuy.description + " " + order.tokenBuy : order.amountSell.description + " " + order.tokenSell)
         totalInfoLabel.textAlignment = .right
         totalInfoLabel.frame = CGRect(x: padding + 150, y: totalTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
         scrollView.addSubview(totalInfoLabel)

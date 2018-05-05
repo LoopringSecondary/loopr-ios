@@ -185,7 +185,7 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
             if let token = getHistoryToken(at: indexPath.row) {
                 searchBar.text = token.symbol
                 
-                orders = OrderDataManager.shared.getDataOrders(tokenSymbol: token.symbol)
+                orders = OrderDataManager.shared.getDateOrders(tokenSymbol: token.symbol)
                 orderDates = orders.keys.sorted(by: >)
                 
                 resultTableView.reloadData()
@@ -259,7 +259,7 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
                 self.historyRecord.insert(searchText)
                 updateHistoryRecord()
             }
-            orders = OrderDataManager.shared.getDataOrders(tokenSymbol: searchText)
+            orders = OrderDataManager.shared.getDateOrders(tokenSymbol: searchText)
             orderDates = orders.keys.sorted(by: >)
             resultTableView.reloadData()
         }

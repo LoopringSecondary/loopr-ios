@@ -92,7 +92,7 @@ class Web3SwiftTests: XCTestCase {
         var addressError: NSError? = nil
         let amountToTransfer: Double = 1
         let gethToAccountAddress: GethAddress! = GethNewAddressFromHex("0x8311804426a24495bd4306daf5f595a443a52e32", &addressError)
-        guard let amount = GethBigInt.generateBigInt(valueInEther: amountToTransfer)  else {
+        guard let amount = GethBigInt.generateBigInt(amountToTransfer)  else {
             print("Invalid amount")
             return
         }
@@ -104,7 +104,7 @@ class Web3SwiftTests: XCTestCase {
         let token = TokenDataManager.shared.getTokenBySymbol("LRC")!
         let contractAddress = GethNewAddressFromHex(token.protocol_value, nil)!
         let nonce: Int64 = 0
-        let gasLimit = GethNewBigInt(SendCurrentAppWalletDataManager.shared.getGasLimitByType(type: "token_transfer")!)!
+        let gasLimit = GethNewBigInt(GasDataManager.shared.getGasLimitByType(by: "token_transfer")!)!
         let gasPrice = GethNewBigInt(20000000000)!
         
         /*

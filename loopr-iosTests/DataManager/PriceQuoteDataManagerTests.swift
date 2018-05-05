@@ -25,7 +25,7 @@ class PriceQuoteDataManagerTests: XCTestCase {
     
     func testStartGetPriceQuote() {
         let expectation = XCTestExpectation()
-        PriceQuoteDataManager.shared.startGetPriceQuote()
+        PriceDataManager.shared.startGetPriceQuote()
         wait(for: [expectation], timeout: 100.0)
     }
     

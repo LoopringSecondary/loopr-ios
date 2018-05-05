@@ -90,4 +90,8 @@ public extension String {
         }
     }
     
+    var hexBytes: [UInt8] {
+        let hex = Array(self)
+        return stride(from: 0, to: count, by: 2).compactMap { UInt8(String(hex[$0..<$0.advanced(by: 2)]), radix: 16) }
+    }
 }

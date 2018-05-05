@@ -13,7 +13,7 @@
 		940B451F2060F67E00ADE2B9 /* AppWalletDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45112060F67B00ADE2B9 /* AppWalletDataManager.swift */; };
 		940B45202060F67E00ADE2B9 /* OrderDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45122060F67B00ADE2B9 /* OrderDataManager.swift */; };
 		940B45212060F67E00ADE2B9 /* PlaceOrderDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45132060F67B00ADE2B9 /* PlaceOrderDataManager.swift */; };
-		940B45222060F67E00ADE2B9 /* PriceQuoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45142060F67C00ADE2B9 /* PriceQuoteDataManager.swift */; };
+		940B45222060F67E00ADE2B9 /* PriceDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45142060F67C00ADE2B9 /* PriceDataManager.swift */; };
 		940B45232060F67E00ADE2B9 /* CurrentAppWalletDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45152060F67C00ADE2B9 /* CurrentAppWalletDataManager.swift */; };
 		940B45242060F67E00ADE2B9 /* TradeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45162060F67C00ADE2B9 /* TradeDataManager.swift */; };
 		940B45252060F67E00ADE2B9 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45172060F67C00ADE2B9 /* UserDefaultsKeys.swift */; };
@@ -26,6 +26,7 @@
 		940B452D2061206900ADE2B9 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B452C2061206800ADE2B9 /* Token.swift */; };
 		94189CC12078B88700AA2CF4 /* OrderSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94189CBF2078B88700AA2CF4 /* OrderSearchResultViewController.swift */; };
 		94189CC22078B88700AA2CF4 /* OrderSearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94189CC02078B88700AA2CF4 /* OrderSearchResultViewController.xib */; };
+		941B1EFC209C41BC00710DFF /* GasDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B1EFB209C41BB00710DFF /* GasDataManager.swift */; };
 		943A9A4120909597008BCBFD /* AssetTransactionWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943A9A3F20909597008BCBFD /* AssetTransactionWebViewController.swift */; };
 		943A9A4220909597008BCBFD /* AssetTransactionWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943A9A4020909597008BCBFD /* AssetTransactionWebViewController.xib */; };
 		943BDED32056350000D5BF81 /* PriceQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943BDED22056350000D5BF81 /* PriceQuote.swift */; };
@@ -56,6 +57,7 @@
 		94DCE551205FAC07005618E4 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCE550205FAC07005618E4 /* Trend.swift */; };
 		94E185972051451C00D86FFA /* Initable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185962051451C00D86FFA /* Initable.swift */; };
 		94E185992051455C00D86FFA /* SimpleRespond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185982051455C00D86FFA /* SimpleRespond.swift */; };
+		94E1976E2099A68200E70E42 /* OrderDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E1976D2099A68200E70E42 /* OrderDataManagerTests.swift */; };
 		94E665E9207234C5001328BF /* OrderHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E665E7207234C5001328BF /* OrderHistoryTableViewCell.swift */; };
 		94E665EA207234C5001328BF /* OrderHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E665E8207234C5001328BF /* OrderHistoryTableViewCell.xib */; };
 		94EB84DC2095E69600FFE40E /* AssetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB84DA2095E69600FFE40E /* AssetCollectionViewCell.swift */; };
@@ -563,7 +565,7 @@
 		940B45112060F67B00ADE2B9 /* AppWalletDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppWalletDataManager.swift; sourceTree = "<group>"; };
 		940B45122060F67B00ADE2B9 /* OrderDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDataManager.swift; sourceTree = "<group>"; };
 		940B45132060F67B00ADE2B9 /* PlaceOrderDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceOrderDataManager.swift; sourceTree = "<group>"; };
-		940B45142060F67C00ADE2B9 /* PriceQuoteDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceQuoteDataManager.swift; sourceTree = "<group>"; };
+		940B45142060F67C00ADE2B9 /* PriceDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceDataManager.swift; sourceTree = "<group>"; };
 		940B45152060F67C00ADE2B9 /* CurrentAppWalletDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentAppWalletDataManager.swift; sourceTree = "<group>"; };
 		940B45162060F67C00ADE2B9 /* TradeDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeDataManager.swift; sourceTree = "<group>"; };
 		940B45172060F67C00ADE2B9 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
@@ -576,6 +578,7 @@
 		940B452C2061206800ADE2B9 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		94189CBF2078B88700AA2CF4 /* OrderSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSearchResultViewController.swift; sourceTree = "<group>"; };
 		94189CC02078B88700AA2CF4 /* OrderSearchResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderSearchResultViewController.xib; sourceTree = "<group>"; };
+		941B1EFB209C41BB00710DFF /* GasDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasDataManager.swift; sourceTree = "<group>"; };
 		943A9A3F20909597008BCBFD /* AssetTransactionWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTransactionWebViewController.swift; sourceTree = "<group>"; };
 		943A9A4020909597008BCBFD /* AssetTransactionWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetTransactionWebViewController.xib; sourceTree = "<group>"; };
 		943BDED22056350000D5BF81 /* PriceQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceQuote.swift; sourceTree = "<group>"; };
@@ -606,6 +609,7 @@
 		94DCE550205FAC07005618E4 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
 		94E185962051451C00D86FFA /* Initable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initable.swift; sourceTree = "<group>"; };
 		94E185982051455C00D86FFA /* SimpleRespond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRespond.swift; sourceTree = "<group>"; };
+		94E1976D2099A68200E70E42 /* OrderDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDataManagerTests.swift; sourceTree = "<group>"; };
 		94E665E7207234C5001328BF /* OrderHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		94E665E8207234C5001328BF /* OrderHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		94EB84DA2095E69600FFE40E /* AssetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -1477,6 +1481,7 @@
 				945800222059006200E08DEF /* AssetDataManagerTests.swift */,
 				94580024205921D600E08DEF /* PriceQuoteDataManagerTests.swift */,
 				940B44D42060F45B00ADE2B9 /* SendAssetDataManagerTests.swift */,
+				94E1976D2099A68200E70E42 /* OrderDataManagerTests.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -1883,12 +1888,13 @@
 				940B451C2060F67E00ADE2B9 /* MarketDataManager.swift */,
 				940B45122060F67B00ADE2B9 /* OrderDataManager.swift */,
 				940B45132060F67B00ADE2B9 /* PlaceOrderDataManager.swift */,
-				940B45142060F67C00ADE2B9 /* PriceQuoteDataManager.swift */,
+				940B45142060F67C00ADE2B9 /* PriceDataManager.swift */,
 				940B45192060F67D00ADE2B9 /* SendAssetDataManager.swift */,
 				940B451D2060F67E00ADE2B9 /* SettingDataManager.swift */,
 				940B451A2060F67D00ADE2B9 /* SetupDataManager.swift */,
 				940B45162060F67C00ADE2B9 /* TradeDataManager.swift */,
 				940B45172060F67C00ADE2B9 /* UserDefaultsKeys.swift */,
+				941B1EFB209C41BB00710DFF /* GasDataManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -2683,7 +2689,7 @@
 				AC31B951204A8DF400B16155 /* DataHex.swift in Sources */,
 				AC4141F520352D300089861D /* SwipeContentScrollView.swift in Sources */,
 				AC5288B4208300580002AEAD /* DateUtil.swift in Sources */,
-				940B45222060F67E00ADE2B9 /* PriceQuoteDataManager.swift in Sources */,
+				940B45222060F67E00ADE2B9 /* PriceDataManager.swift in Sources */,
 				AC38751F205F12F100A76637 /* ContextMenuDelegate.swift in Sources */,
 				AC13B30A2054A766008A72C0 /* BuyViewController.swift in Sources */,
 				ACB5DDA2202D6F9400140A09 /* UIViewExtension.swift in Sources */,
@@ -2704,6 +2710,7 @@
 				AC4141FD203532ED0089861D /* SwipeViewOptions.swift in Sources */,
 				ACB9119F202967A500F14644 /* OrderStatus.swift in Sources */,
 				ACB9117520255A6600F14644 /* MarketTableViewCell.swift in Sources */,
+				941B1EFC209C41BC00710DFF /* GasDataManager.swift in Sources */,
 				ACBDB1C52032D050003463A4 /* OpenOrderTableViewCell.swift in Sources */,
 				AC70E84B20681A2900451047 /* GenerateWalletConfirmPasswordViewController.swift in Sources */,
 				AC31B94C204A8DF400B16155 /* KeyStore.Error.swift in Sources */,
@@ -2831,6 +2838,7 @@
 			files = (
 				ACE65E3E2071C6FA001EE499 /* Web3SwiftTests.swift in Sources */,
 				940B44D52060F45B00ADE2B9 /* SendAssetDataManagerTests.swift in Sources */,
+				94E1976E2099A68200E70E42 /* OrderDataManagerTests.swift in Sources */,
 				AC72AEE2204D084500E9D3B0 /* AppWalletDataManagerTests.swift in Sources */,
 				ACF06A06204C736A00C3FF86 /* CreateMnemonicTests.swift in Sources */,
 				945800232059006200E08DEF /* AssetDataManagerTests.swift in Sources */,
@@ -3068,7 +3076,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K46AVDG9WW;
 				INFOPLIST_FILE = "loopr-iosTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.loopr-iosTests";
@@ -3086,7 +3094,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K46AVDG9WW;
 				INFOPLIST_FILE = "loopr-iosTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.loopr-iosTests";

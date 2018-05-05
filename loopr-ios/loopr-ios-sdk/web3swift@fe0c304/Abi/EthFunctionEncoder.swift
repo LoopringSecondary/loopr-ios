@@ -26,7 +26,6 @@ open class EthFunctionEncoder {
         return encodeParameters(parameters, methodData: methodId)
     }
     
-    
     open func encodeToValueTxFee(recipient: GethAddress, amount: GethBigInt, txFee: GethBigInt) -> Data {
         let addressEncoded = try! EthTypeEncoder.default.encode(recipient)
         let amountEncoded = try! EthTypeEncoder.default.encode(amount)
@@ -98,6 +97,4 @@ open class EthFunctionEncoder {
         let range = Range(0..<4)
         return signedFunctionSignature.subdata(in: range) // format: - 0xa9059cbb
     }
-    
 }
-

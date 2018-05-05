@@ -91,18 +91,18 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     
     func setupOrderAmount(order: Order) {
         if order.originalOrder.side.lowercased() == "sell" {
-            amountLabel.text = order.dealtAmountS.description + " " + order.originalOrder.tokenS
-            amountInfoLabel.text = order.dealtAmountS.description + " / " + order.originalOrder.amountSell.description + " " + order.originalOrder.tokenS
-            totalInfoLabel.text = order.originalOrder.amountBuy.description + " " + order.originalOrder.tokenB
-            if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: order.originalOrder.tokenS) {
+            amountLabel.text = order.dealtAmountS.description + " " + order.originalOrder.tokenSell
+            amountInfoLabel.text = order.dealtAmountS.description + " / " + order.originalOrder.amountSell.description + " " + order.originalOrder.tokenSell
+            totalInfoLabel.text = order.originalOrder.amountBuy.description + " " + order.originalOrder.tokenBuy
+            if let price = PriceDataManager.shared.getPriceBySymbol(of: order.originalOrder.tokenSell) {
                 let total = price * order.originalOrder.amountSell
                 displayLabel.text = total.currency
             }
         } else if order.originalOrder.side.lowercased() == "buy" {
-            amountLabel.text = order.dealtAmountB.description + " " + order.originalOrder.tokenB
-            amountInfoLabel.text = order.dealtAmountB.description + " / " + order.originalOrder.amountBuy.description + " " + order.originalOrder.tokenB
-            totalInfoLabel.text = order.originalOrder.amountSell.description + " " + order.originalOrder.tokenS
-            if let price = PriceQuoteDataManager.shared.getPriceBySymbol(of: order.originalOrder.tokenB) {
+            amountLabel.text = order.dealtAmountB.description + " " + order.originalOrder.tokenBuy
+            amountInfoLabel.text = order.dealtAmountB.description + " / " + order.originalOrder.amountBuy.description + " " + order.originalOrder.tokenBuy
+            totalInfoLabel.text = order.originalOrder.amountSell.description + " " + order.originalOrder.tokenSell
+            if let price = PriceDataManager.shared.getPriceBySymbol(of: order.originalOrder.tokenBuy) {
                 let total = price * order.originalOrder.amountBuy
                 displayLabel.text = total.currency
             }
@@ -204,7 +204,9 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         dateTipLabel.frame = CGRect(x: padding, y: idTipLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(dateTipLabel)
         dateInfoLabel.font = FontConfigManager.shared.getLabelFont()
-        dateInfoLabel.text = order.originalOrder.validSince
+        
+        let time = UInt(order.originalOrder.validSince)
+        dateInfoLabel.text = DateUtil.convertToDate(time, format: "MM/dd/yyyy HH:mm")
         dateInfoLabel.textAlignment = .right
         dateInfoLabel.frame = CGRect(x: padding + 150, y: dateTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
         scrollView.addSubview(dateInfoLabel)

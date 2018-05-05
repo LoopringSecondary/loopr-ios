@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Geth
 
 class OrderDataManager {
 
@@ -15,13 +16,13 @@ class OrderDataManager {
     private var owner: String?
     private var orders: [Order]
     private var dateOrders: [String: [Order]]
-    
+
     private init() {
         orders = []
         dateOrders = [:]
         owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
     }
-    
+
     func getOrders(orderStatuses: [OrderStatus]? = nil) -> [Order] {
         guard let orderStatuses = orderStatuses else {
             return orders
@@ -62,7 +63,7 @@ class OrderDataManager {
         return result
     }
     
-    func getDataOrders(tokenSymbol: String? = nil) -> [String: [Order]] {
+    func getDateOrders(tokenSymbol: String? = nil) -> [String: [Order]] {
         guard let tokenSymbol = tokenSymbol else {
             return dateOrders
         }
@@ -89,11 +90,12 @@ class OrderDataManager {
                 }
                 self.dateOrders = [:]
                 for order in orders {
-                    let time = order.originalOrder.validSince
-                    if self.dateOrders[time] == nil {
-                        self.dateOrders[time] = []
+                    let time = UInt(order.originalOrder.validSince)
+                    let valid = DateUtil.convertToDate(time, format: "MM/dd/yyyy")
+                    if self.dateOrders[valid] == nil {
+                        self.dateOrders[valid] = []
                     }
-                    self.dateOrders[time]!.append(order)
+                    self.dateOrders[valid]!.append(order)
                 }
                 self.orders = orders
             }

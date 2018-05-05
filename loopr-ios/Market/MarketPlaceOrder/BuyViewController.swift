@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Geth
+import NotificationBannerSwift
+import SVProgressHUD
 
 class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
 
@@ -20,6 +23,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
     var expires: String = "1 Hour"
     var intervalUnit: Calendar.Component = .hour
     var intervalValue = 1
+    var lrcFee = SettingDataManager.shared.getLrcFeeRatio()
     
     let tokenA = PlaceOrderDataManager.shared.tokenA
     let tokenB = PlaceOrderDataManager.shared.tokenB
@@ -34,6 +38,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
     var tokenBLabel: UILabel = UILabel()
     var amountTextField: UITextField = UITextField()
     var amountUnderLine: UIView = UIView()
+    var tipLabel: UILabel = UILabel()
     var maxButton: UIButton = UIButton()
 
     // Total
@@ -90,7 +95,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         let padding: CGFloat = 15
         
         // First row: price
-        tokenALabel.text = self.tokenA
+        tokenALabel.text = self.tokenB
         tokenALabel.font = FontConfigManager.shared.getLabelFont()
         tokenALabel.textAlignment = .right
         // tokenSLabel.backgroundColor = UIColor.green
@@ -119,8 +124,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         scrollView.addSubview(estimateValueInCurrency)
         
         // Second row: amount
-        
-        tokenBLabel.text = self.tokenB
+        tokenBLabel.text = self.tokenA
         tokenBLabel.font = FontConfigManager.shared.getLabelFont()
         tokenBLabel.textAlignment = .right
         // tokenBLabel.backgroundColor = UIColor.green
@@ -142,6 +146,10 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         amountUnderLine.frame = CGRect(x: padding, y: tokenBLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
         amountUnderLine.backgroundColor = UIColor.black
         scrollView.addSubview(amountUnderLine)
+        
+        tipLabel.font = FontConfigManager.shared.getLabelFont()
+        tipLabel.frame = CGRect(x: padding, y: amountUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
+        scrollView.addSubview(tipLabel)
 
         maxButton.title = NSLocalizedString("Max", comment: "")
         maxButton.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
@@ -153,7 +161,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         scrollView.addSubview(maxButton)
         
         // Thrid row: total
-        
         tokenBTotalLabel.text = self.tokenB
         tokenBTotalLabel.font = FontConfigManager.shared.getLabelFont()
         tokenBTotalLabel.textAlignment = .right
@@ -236,11 +243,9 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
     
     @objc func scrollViewTapped() {
         print("scrollViewTapped")
-        
         tokenAPriceTextField.resignFirstResponder()
         amountTextField.resignFirstResponder()
         totalTextField.resignFirstResponder()
-
         hideKeyboard()
     }
     
@@ -284,59 +289,68 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         oneWeekButton.unselected()
         oneMonthButton.selected()
     }
+    
+    func checkEmpty() -> Bool {
+        guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
+            return false
+        }
+        guard !tokenAPriceTextField.text!.isEmpty else {
+            return false
+        }
+        guard !amountTextField.text!.isEmpty else {
+            return false
+        }
+        return true
+    }
+    
+    func constructOrder() -> OriginalOrder? {
+        var buyNoMoreThanAmountB: Bool
+        var side, tokenSell, tokenBuy: String
+        var amountBuy, amountSell, lrcFee: Double
+        if self.type == .buy {
+            side = "buy"
+            tokenBuy = tokenA
+            tokenSell = tokenB
+            buyNoMoreThanAmountB = true
+            amountBuy = Double(amountTextField.text!)!
+            amountSell = Double(totalTextField.text!)!
+            lrcFee = getLrcFee(amountSell, tokenSell)!
+        } else {
+            side = "sell"
+            tokenBuy = tokenB
+            tokenSell = tokenA
+            buyNoMoreThanAmountB = false
+            amountBuy = Double(totalTextField.text!)!
+            amountSell = Double(amountTextField.text!)!
+            lrcFee = getLrcFee(amountSell, tokenSell)!
+        }
+        let delegate = RelayAPIConfiguration.delegateAddress
+        let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
+        let since = Int64(Date().timeIntervalSince1970)
+        let until = Int64(Calendar.current.date(byAdding: intervalUnit, value: intervalValue, to: Date())!.timeIntervalSince1970)
+        return OriginalOrder(delegate: delegate, address: address, side: side, tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB)
+    }
 
     @IBAction func pressedPlaceOrderButton(_ sender: Any) {
         print("pressedPlaceOrderButton")
-        if let json = constructOrder() {
-            let order = OriginalOrder(json: json)
-            if PlaceOrderDataManager.shared.verify(order: order) {
-                let viewController = PlaceOrderConfirmationViewController()
-                viewController.order = order
-                viewController.type = self.type
-                viewController.expires = self.expires
-                viewController.price = tokenAPriceTextField.text!
-                self.navigationController?.pushViewController(viewController, animated: true)
+        if checkEmpty() {
+            if let order = constructOrder() {
+                if PlaceOrderDataManager.shared.verify(order: order, completion: completion) {
+                    let viewController = PlaceOrderConfirmationViewController()
+                    viewController.order = order
+                    viewController.type = self.type
+                    viewController.expires = self.expires
+                    viewController.price = tokenAPriceTextField.text!
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                }
             }
         }
-    }
-    
-    func constructOrder() -> JSON? {
-        let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!
-        var json = JSON()
-        if self.type == .buy {
-            json["side"] = JSON("buy")
-            json["tokenS"] = JSON(tokenB)
-            json["tokenB"] = JSON(tokenA)
-            json["amountS"] = JSON(totalTextField.text!)
-            json["amountB"] = JSON(amountTextField.text!)
-            json["buyNoMoreThanAmountB"] = true
-        } else {
-            json["side"] = JSON("sell")
-            json["tokenS"] = JSON(tokenA)
-            json["tokenB"] = JSON(tokenB)
-            json["amountS"] = JSON(amountTextField.text!)
-            json["amountB"] = JSON(totalTextField.text!)
-            json["buyNoMoreThanAmountB"] = false
-        }
-        let lrc = TokenDataManager.shared.getTokenBySymbol("LRC")
-        json["protocol"] = JSON(lrc!.protocol_value)
-        json["owner"] = JSON(wallet.address)
-        let now = Int(Date().timeIntervalSince1970)
-        json["validSince"] = JSON("0x" + String(format: "%2x", now))
-        let newDate = Int(Calendar.current.date(byAdding: intervalUnit, value: intervalValue, to: Date())!.timeIntervalSince1970)
-        json["validUntil"] = JSON("0x" + String(format: "%2x", newDate))
-        json["lrcFee"] = JSON("0x4fefa17b7240000") // TODO: fetch from setting
-        json["marginSplitPercentage"] = JSON("0x32") // TODO: fetch from setting
-        return json
     }
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         print("textFieldShouldBeginEditing")
-        
         activeTextFieldTag = textField.tag
-
         showKeyboard(textField: textField)
-
         return true
     }
     
@@ -394,24 +408,17 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         if isKeyboardShow {
             let width = self.view.frame.width
             let height = self.placeOrderBackgroundView.frame.origin.y
-            
             let keyboardHeight: CGFloat = 220
-            
             let destinateY = height
-            
             self.scrollViewButtonLayoutConstraint.constant = 0
-            
             // TODO: improve the animation.
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
                 // animation for layout constraint change.
                 self.view.layoutIfNeeded()
-                
                 self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
-                
             }, completion: { finished in
                 self.isKeyboardShow = false
                 if finished {
-                    
                 }
             })
         } else {
@@ -452,7 +459,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         guard activeTextField != nil else {
             return
         }
-        
         var currentText = activeTextField!.text ?? ""
         
         if (position.row, position.column) == (3, 2) {
@@ -460,6 +466,43 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
                 currentText = String(currentText.dropLast())
             }
             activeTextField!.text = currentText
+        }
+    }
+}
+
+extension BuyViewController {
+    
+    func getLrcFee(_ amountS: Double, _ tokenS: String) -> Double? {
+        let pair = tokenS + "/LRC"
+        let ratio = SettingDataManager.shared.getLrcFeeRatio()
+        if let market = MarketDataManager.shared.getMarket(by: pair) {
+            return market.balance * amountS * ratio
+        } else if let price = PriceDataManager.shared.getPriceBySymbol(of: tokenS),
+            let lrcPrice = PriceDataManager.shared.getPriceBySymbol(of: "LRC") {
+            return price * amountS * ratio / lrcPrice
+        }
+        return nil
+    }
+    
+    func completion(_ orderHash: String?, _ error: Error?) {
+        // Close activity indicator
+        SVProgressHUD.dismiss()
+        guard error == nil && orderHash != nil else {
+            // Show toast
+            DispatchQueue.main.async {
+                print("BuyViewController \(error.debugDescription)")
+                let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
+                banner.duration = 5
+                banner.show()
+            }
+            return
+        }
+        print("Result of order is \(orderHash!)")
+        // Show toast
+        DispatchQueue.main.async {
+            let banner = NotificationBanner.generate(title: "Success. Result of order is \(orderHash!)", style: .success)
+            banner.duration = 5
+            banner.show()
         }
     }
 }

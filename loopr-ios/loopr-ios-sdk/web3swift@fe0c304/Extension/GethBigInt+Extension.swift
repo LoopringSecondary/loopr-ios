@@ -16,21 +16,22 @@ public extension GethBigInt {
         guard token != nil else {
             return nil
         }
-        
-        let valueInWei = valueInEther * Double.init((pow(10, token!.decimals) as NSNumber))
+        return generateBigInt(valueInEther, token!.decimals)
+    }
+    
+    public static func generateBigInt(_ valueInEther: Double, _ decimals: Int = 18) -> GethBigInt? {
+        let valueInWei = valueInEther * Double.init(truncating: (pow(10, decimals) as NSNumber))
         let str = String(format: "%.0f", valueInWei)
         let gethAmount = GethBigInt.init(0)! // GethNewBigInt(int64_t(valueInWei))
         gethAmount.setString(str, base: 10)
         return gethAmount
     }
-    
-    public static func generateBigInt(valueInEther: Double) -> GethBigInt? {
-        let valueInWei = valueInEther * 1000000000000000000
-        return GethNewBigInt(Int64(valueInWei))
-    }
 
     public var decimalString: String {
         return self.getString(10)
     }
-
+    
+    public var hexString: String {
+        return "0x" + self.getString(16)
+    }
 }

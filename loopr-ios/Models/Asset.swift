@@ -16,24 +16,25 @@ class Asset: CustomStringConvertible, Equatable {
     var name: String   // TODO: not used?
     var icon: UIImage?
     var enable: Bool
-    var rawBalance: String
     var balance: Double
-    var allowance: String  // TODO: why allowance is String?
+    var allowance: Double
     var display: String
     var description: String
     
     init(json: JSON) {
         self.enable = true
-        self.display = "0"
+        self.balance = 0.0
+        self.allowance = 0.0
+        self.display = Double(0).currency
         self.symbol = json["symbol"].stringValue
-        self.allowance = json["allowance"].stringValue
         self.icon = UIImage(named: self.symbol) ?? nil
         self.name = TokenDataManager.shared.getTokenBySymbol(symbol)?.source ?? "unknown token"
         self.description = self.name
-        self.rawBalance = json["balance"].stringValue
-        self.balance = 0.0
-        if let balance = Asset.getAmount(of: symbol, from: rawBalance) {
+        if let balance = Asset.getAmount(of: symbol, from: json["balance"].stringValue) {
             self.balance = balance
+        }
+        if let allowance = Asset.getAmount(of: symbol, from: json["allowance"].stringValue) {
+            self.allowance = allowance
         }
     }
     
@@ -42,10 +43,9 @@ class Asset: CustomStringConvertible, Equatable {
         self.name = ""
         self.enable = true
         self.description = self.name
-        self.allowance = "0"
         self.icon = UIImage(named: self.symbol) ?? nil
-        self.rawBalance = "0"
         self.balance = 0.0
+        self.allowance = 0.0
         self.display = Double(0).currency
     }
     
