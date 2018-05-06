@@ -68,6 +68,12 @@ public extension GethBigInt {
             return nil
         }
     }
+    
+    public static func convertGweiToWei(from gweiAmount: Double) -> GethBigInt? {
+        let gweiAmountString = String(format: "%.9f", gweiAmount)
+        let amountInWei = generate(gweiAmountString, 9)
+        return amountInWei
+    }
 
     public var decimalString: String {
         return self.getString(10)

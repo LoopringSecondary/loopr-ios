@@ -21,6 +21,7 @@ class GasDataManager {
     
     static let shared = GasDataManager()
     
+    //TODO: Is gas price in gwei unit?
     private var gasPrice: Double
     private var gasLimits: [GasLimit]
     private var gasAmount: Double

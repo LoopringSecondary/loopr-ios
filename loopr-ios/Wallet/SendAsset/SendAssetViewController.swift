@@ -61,6 +61,10 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     var start = Date()
     var end = Date()
     
+    // TODO: should set the default value using the gwei value in GasDataManager
+    // Reference: https://ethgasstation.info
+    var gasPriceInGwei: Double = 3.0
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -166,8 +170,10 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         transactionFeeAmountLabel.frame = CGRect(x: screenWidth-300-padding, y: maxButton.frame.maxY + padding*2, width: 300, height: 40)
         transactionFeeAmountLabel.font = FontConfigManager.shared.getLabelFont()
         transactionFeeAmountLabel.textAlignment = .right
-        transactionFeeAmountLabel.text = "1.232 LRC"
+        transactionFeeAmountLabel.text = ""
         scrollView.addSubview(transactionFeeAmountLabel)
+
+        updateTransactionFeeAmountLabel()
 
         // Fouth row: Advanced
         advancedButton.frame = CGRect(x: padding, y: transactionFeeAmountLabel.frame.maxY + padding, width: 100, height: 40)
@@ -183,9 +189,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         transactionSpeedSlider.frame = CGRect(x: padding, y: advancedButton.frame.maxY + padding*0.5, width: screenWidth-2*padding, height: 20)
         
         // TODO: Set value
-        transactionSpeedSlider.minimumValue = 0
-        transactionSpeedSlider.maximumValue = 100
-        transactionSpeedSlider.value = 0
+        transactionSpeedSlider.minimumValue = 1
+        transactionSpeedSlider.maximumValue = 30  // How to define the max value? 100 is unnecessary.
+        transactionSpeedSlider.value = Float(gasPriceInGwei)
         
         transactionSpeedSlider.isContinuous = true
         transactionSpeedSlider.tintColor = UIColor.black
@@ -195,14 +201,14 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         transactionAmountMinLabel.alpha = 0
         transactionAmountMinLabel.frame = CGRect(x: padding, y: transactionSpeedSlider.frame.maxY + 10, width: (screenWidth-2*padding)/8, height: 30)
         transactionAmountMinLabel.font = FontConfigManager.shared.getLabelFont()
-        transactionAmountMinLabel.text = "slow"
+        transactionAmountMinLabel.text = NSLocalizedString("Slow", comment: "")
         scrollView.addSubview(transactionAmountMinLabel)
         
         transactionAmountCurrentLabel.alpha = 0
         transactionAmountCurrentLabel.textAlignment = .center
         transactionAmountCurrentLabel.frame = CGRect(x: transactionAmountMinLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)*3/4, height: 30)
         transactionAmountCurrentLabel.font = FontConfigManager.shared.getLabelFont()
-        transactionAmountCurrentLabel.text = "gas price: 5000000 gwei"
+        transactionAmountCurrentLabel.text = "gas price: \(gasPriceInGwei) gwei"
         
         scrollView.addSubview(transactionAmountCurrentLabel)
         
@@ -217,7 +223,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         transactionAmountMaxLabel.textAlignment = .right
         transactionAmountMaxLabel.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/8, height: 30)
         transactionAmountMaxLabel.font = FontConfigManager.shared.getLabelFont()
-        transactionAmountMaxLabel.text = "fast"
+        transactionAmountMaxLabel.text = NSLocalizedString("Fast", comment: "")
         scrollView.addSubview(transactionAmountMaxLabel)
         
         scrollView.delegate = self
@@ -404,10 +410,18 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         print("Slider value changed \(sender.value)")
         let step: Float = 1
         let roundedStepValue = round(sender.value / step) * step
-        
         transactionAmountCurrentLabel.text = "gas price: \(roundedStepValue) gwei"
-        
-        // Update gas price.
+
+        gasPriceInGwei = Double(roundedStepValue)
+        updateTransactionFeeAmountLabel()
+    }
+    
+    func updateTransactionFeeAmountLabel() {
+        let amountInEther = gasPriceInGwei / 1000000000
+        if let etherPrice = PriceDataManager.shared.getPriceBySymbol(of: asset.symbol) {
+            let transactionFeeInFiat = amountInEther * etherPrice * Double(GasDataManager.shared.getGasLimitByType(by: "eth_transfer")!)
+            transactionFeeAmountLabel.text = "\(transactionFeeInFiat.currency)"
+        }
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -550,9 +564,15 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
 
 extension SendAssetViewController {
 
+    // TODO: in wei
     var gasPrice: GethBigInt {
-        // TODO: get value from transactionSpeedSlider
-        return GethBigInt(5000000000)
+        let amountInWei = GethBigInt.convertGweiToWei(from: gasPriceInGwei)
+        if amountInWei != nil {
+            return amountInWei!
+        } else {
+            // 5 gwei
+            return GethBigInt(5000000000)
+        }
     }
 
     func completion(_ txHash: String?, _ error: Error?) {
