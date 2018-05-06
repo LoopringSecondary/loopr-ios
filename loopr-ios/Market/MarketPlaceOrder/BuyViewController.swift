@@ -105,7 +105,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         tokenAPriceTextField.inputView = UIView()
         tokenAPriceTextField.font = FontConfigManager.shared.getLabelFont() // UIFont.init(name: FontConfigManager.shared.getLight(), size: 24)
         tokenAPriceTextField.theme_tintColor = GlobalPicker.textColor
-        // tokenSPriceTextField.backgroundColor = UIColor.blue
         tokenAPriceTextField.placeholder = "Limited Price"
         tokenAPriceTextField.contentMode = UIViewContentMode.bottom
         tokenAPriceTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2-80, height: 40)
@@ -118,14 +117,12 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         estimateValueInCurrency.text = "≈ $ 0.00"
         estimateValueInCurrency.font = FontConfigManager.shared.getLabelFont()
         estimateValueInCurrency.frame = CGRect(x: padding, y: tokenAUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
-        // estimateValueInCurrency.backgroundColor = UIColor.green
         scrollView.addSubview(estimateValueInCurrency)
         
         // Second row: amount
         tokenBLabel.text = self.tokenA
         tokenBLabel.font = FontConfigManager.shared.getLabelFont()
         tokenBLabel.textAlignment = .right
-        // tokenBLabel.backgroundColor = UIColor.green
         tokenBLabel.frame = CGRect(x: screenWidth-80-padding, y: estimateValueInCurrency.frame.maxY + 30, width: 80, height: 40)
         scrollView.addSubview(tokenBLabel)
         
@@ -133,7 +130,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         amountTextField.tag = 1
         amountTextField.inputView = UIView()
         amountTextField.font = FontConfigManager.shared.getLabelFont() // UIFont.init(name: FontConfigManager.shared.getLight(), size: 24)
-        // amountTextField.backgroundColor = UIColor.blue
         amountTextField.theme_tintColor = GlobalPicker.textColor
         amountTextField.theme_tintColor = GlobalPicker.textColor
         amountTextField.placeholder = "Amount"
@@ -153,7 +149,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         maxButton.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
         maxButton.setTitleColor(UIColor.init(rgba: "#cce9ff"), for: .highlighted)
         maxButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
-        // maxButton.backgroundColor = UIColor.black
         maxButton.contentHorizontalAlignment = .right
         maxButton.frame = CGRect(x: screenWidth-80-padding, y: amountUnderLine.frame.maxY, width: 80, height: 40)
         scrollView.addSubview(maxButton)
@@ -162,7 +157,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         tokenBTotalLabel.text = self.tokenB
         tokenBTotalLabel.font = FontConfigManager.shared.getLabelFont()
         tokenBTotalLabel.textAlignment = .right
-        // tokenSTotalLabel.backgroundColor = UIColor.green
         tokenBTotalLabel.frame = CGRect(x: screenWidth-80-padding, y: maxButton.frame.maxY + 30, width: 80, height: 40)
         scrollView.addSubview(tokenBTotalLabel)
         
@@ -170,7 +164,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         totalTextField.tag = 2
         totalTextField.inputView = UIView()
         totalTextField.font = FontConfigManager.shared.getLabelFont() // UIFont.init(name: FontConfigManager.shared.getLight(), size: 24)
-        // amountTextField.backgroundColor = UIColor.blue
         totalTextField.theme_tintColor = GlobalPicker.textColor
         totalTextField.placeholder = "Total"
         totalTextField.contentMode = UIViewContentMode.bottom

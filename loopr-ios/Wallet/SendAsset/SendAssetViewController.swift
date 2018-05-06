@@ -103,7 +103,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         addressTextField.tag = 0
         addressTextField.keyboardType = .alphabet
         addressTextField.font = FontConfigManager.shared.getLabelFont()
-        addressInfoLabel.theme_tintColor = GlobalPicker.textColor
+        addressTextField.theme_tintColor = GlobalPicker.textColor
         addressTextField.placeholder = NSLocalizedString("Enter the address", comment: "")
         addressTextField.contentMode = UIViewContentMode.bottom
         addressTextField.frame = CGRect(x: padding, y: tokenTotalAmountLabel.frame.maxY + padding*3, width: screenWidth-padding*2-40, height: 40)
@@ -130,7 +130,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         amountTextField.tag = 1
         amountTextField.font = FontConfigManager.shared.getLabelFont()
         amountTextField.theme_tintColor = GlobalPicker.textColor
-        amountTextField.placeholder = NSLocalizedString("Enter the amount you want to trade", comment: "")
+        amountTextField.placeholder = NSLocalizedString("Enter the amount", comment: "")
         amountTextField.contentMode = UIViewContentMode.bottom
         amountTextField.frame = CGRect(x: padding, y: addressInfoLabel.frame.maxY + padding*1.5, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(amountTextField)
@@ -425,14 +425,12 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        var result = false
         if textField.tag == 0 {
             hideKeyboard()
-            result = true
         } else if textField.tag == 1 {
             showKeyboard(textField: amountTextField)
         }
-        return result
+        return true
     }
     
     func getActiveTextField() -> UITextField? {
