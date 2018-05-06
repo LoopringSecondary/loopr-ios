@@ -107,7 +107,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
                 displayLabel.text = "$ " + (price * order.amountSell).description // TODO: $
             }
         } else if order.side.lowercased() == "buy" {
-            amountLabel.text = order.amountBuy.description + " " + order.tokenBuy
+            amountLabel.text = order.amountSell.description + " " + order.tokenBuy
             if let price = PriceDataManager.shared.getPriceBySymbol(of: order.tokenBuy) {
                 displayLabel.text = "$ " + (price * order.amountBuy).description // TODO: $
             }
@@ -158,7 +158,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         feeInfoLabel.font = FontConfigManager.shared.getLabelFont()
         if let price = PriceDataManager.shared.getPriceBySymbol(of: "LRC") {
             let display = order.lrcFee * price
-            feeInfoLabel.text = order.lrcFee.description + "LRC (≈$\(display))"
+            feeInfoLabel.text = String(format: "%0.5f LRC (≈$ %.2f)", order.lrcFee, display)
         }
         feeInfoLabel.textAlignment = .right
         feeInfoLabel.frame = CGRect(x: padding + 150, y: feeTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)

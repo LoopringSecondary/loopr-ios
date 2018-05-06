@@ -214,8 +214,12 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        let market = MarketDataManager.shared.getMarketsWithoutReordered(type: type)[indexPath.row]
+        let market: Market
+        if isFiltering {
+            market = filteredMarkets[indexPath.row]
+        } else {
+            market = MarketDataManager.shared.getMarketsWithoutReordered(type: type)[indexPath.row]
+        }
         if let didSelectRowClosure = self.didSelectRowClosure {
             didSelectRowClosure(market)
         }

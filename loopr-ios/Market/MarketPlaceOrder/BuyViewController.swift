@@ -167,16 +167,22 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         totalTextField.contentMode = UIViewContentMode.bottom
         totalTextField.frame = CGRect(x: padding, y: maxButton.frame.maxY + 30, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(totalTextField)
-        
+
+        // Disable user input in totalTextField
+        totalTextField.isEnabled = false
+
         totalUnderLine.frame = CGRect(x: padding, y: tokenBTotalLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
         totalUnderLine.backgroundColor = UIColor.black
         scrollView.addSubview(totalUnderLine)
         
-        availableLabel.text = "Available 96.3236 ETH"
+        if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: PlaceOrderDataManager.shared.tokenB.symbol) {
+            availableLabel.text = "Available \(asset.balance) \(PlaceOrderDataManager.shared.tokenB.symbol)"
+        }
+
         availableLabel.font = FontConfigManager.shared.getLabelFont()
         availableLabel.frame = CGRect(x: padding, y: totalUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(availableLabel)
-        
+
         // Fourth Row
         expireLabel.text = NSLocalizedString("Order Expires in", comment: "")
         expireLabel.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: 14)
@@ -328,7 +334,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
                 viewController.order = order
                 viewController.type = self.type
                 viewController.expire = self.expire
-                viewController.price = amountTextField.text!
+                viewController.price = priceTextField.text!
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
         }
@@ -382,7 +388,12 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         var isValid = false
         if validateTokenPrice() && validateAmount() {
             isValid = true
+            let total = Double(priceTextField.text ?? "0")! * Double(amountTextField.text ?? "0")!
+            totalTextField.text = "\(total)"
+        } else {
+            totalTextField.text = ""
         }
+
         updateButton(isValid: isValid)
         return isValid
     }
