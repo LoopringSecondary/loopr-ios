@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SVProgressHUD
+import NotificationBannerSwift
 
 class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelegate {
 
@@ -201,10 +203,35 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
 
     @IBAction func pressedConfirmationButton(_ sender: Any) {
         print("pressedConfirmationButton")
-        
-        let viewController = ConfirmationResultViewController()
-        viewController.order = self.order
-        self.navigationController?.pushViewController(viewController, animated: true)
+        if PlaceOrderDataManager.shared.verify(order: order!, completion: completion) {
+            let viewController = ConfirmationResultViewController()
+            viewController.order = self.order
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
+}
 
+extension PlaceOrderConfirmationViewController {
+    
+    func completion(_ orderHash: String?, _ error: Error?) {
+        // Close activity indicator
+        SVProgressHUD.dismiss()
+        guard error == nil && orderHash != nil else {
+            // Show toast
+            DispatchQueue.main.async {
+                print("BuyViewController \(error.debugDescription)")
+                let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
+                banner.duration = 5
+                banner.show()
+            }
+            return
+        }
+        print("Result of order is \(orderHash!)")
+        // Show toast
+        DispatchQueue.main.async {
+            let banner = NotificationBanner.generate(title: "Success. Result of order is \(orderHash!)", style: .success)
+            banner.duration = 5
+            banner.show()
+        }
+    }
 }

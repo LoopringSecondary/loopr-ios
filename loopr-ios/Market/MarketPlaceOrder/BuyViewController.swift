@@ -324,14 +324,12 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         print("pressedPlaceOrderButton")
         if validate() {
             if let order = constructOrder() {
-                if PlaceOrderDataManager.shared.verify(order: order, completion: completion) {
-                    let viewController = PlaceOrderConfirmationViewController()
-                    viewController.order = order
-                    viewController.type = self.type
-                    viewController.expire = self.expire
-                    viewController.price = amountTextField.text!
-                    self.navigationController?.pushViewController(viewController, animated: true)
-                }
+                let viewController = PlaceOrderConfirmationViewController()
+                viewController.order = order
+                viewController.type = self.type
+                viewController.expire = self.expire
+                viewController.price = amountTextField.text!
+                self.navigationController?.pushViewController(viewController, animated: true)
             }
         }
     }
@@ -344,15 +342,16 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         guard !priceTextField.text!.isEmpty else {
             return false
         }
-
         if let value = Double(priceTextField.text ?? "0") {
             let validate = value > 0.0
             if validate {
                 let tokenBPrice = PriceDataManager.shared.getPriceBySymbol(of: PlaceOrderDataManager.shared.tokenB.symbol)!
                 let estimateValue: Double = value * tokenBPrice
+                estimateValueInCurrencyLabel.textColor = .black
                 estimateValueInCurrencyLabel.text = "≈ \(estimateValue.currency)"
             } else {
-                
+                estimateValueInCurrencyLabel.textColor = .red
+                estimateValueInCurrencyLabel.text = NSLocalizedString("please input a valid price", comment: "")
             }
             return validate
         } else {
@@ -364,13 +363,14 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         guard !amountTextField.text!.isEmpty else {
             return false
         }
-        
         if let value = Double(amountTextField.text ?? "0") {
             let validate = value > 0.0
             if validate {
-                
+                tipLabel.isHidden = true
             } else {
-                
+                tipLabel.isHidden = false
+                tipLabel.textColor = .red
+                tipLabel.text = NSLocalizedString("please input a valid amount", comment: "")
             }
             return validate
         } else {
@@ -514,7 +514,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
             activeTextField!.text = currentText
         }
     }
-
 }
 
 extension BuyViewController {
