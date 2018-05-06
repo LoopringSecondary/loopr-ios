@@ -17,6 +17,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     
     @IBOutlet weak var convertButton: UIButton!
     @IBOutlet weak var convertBackgroundView: UIView!
+    @IBOutlet weak var convertBackgroundViewHeightConstraint: NSLayoutConstraint!
     
     var asset: Asset?
 
@@ -33,9 +34,9 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     var availableLabel: UILabel = UILabel()
     var maxButton: UIButton = UIButton()
 
-    // Keyboard
-    var isKeyboardShow: Bool = false
-    var keyboardView: DefaultNumericKeyboard!
+    // Numeric Keyboard
+    var isNumericKeyboardShow: Bool = false
+    var numericKeyboardView: DefaultNumericKeyboard!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,26 +47,25 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         setBackButton()
 
         scrollViewButtonLayoutConstraint.constant = 0
-        
+        convertBackgroundViewHeightConstraint.constant = 47*UIStyleConfig.scale + 15*2
+
         convertButton.title = NSLocalizedString("Yes, convert now!", comment: "")
-        convertButton.backgroundColor = UIColor.black
-        convertButton.layer.cornerRadius = 23
-        convertButton.titleLabel?.font = FontConfigManager.shared.getButtonTitleLabelFont(size: 16)
+        convertButton.setupRoundBlack()
 
         // Setup UI
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         // let screenHeight = screensize.height
         
-        let padding: CGFloat = 15
+        let padding: CGFloat = 15*UIStyleConfig.scale
         
-        tokenSView = TradeTokenView(frame: CGRect(x: 10, y: 0, width: (screenWidth-30)/2, height: 180))
+        tokenSView = TradeTokenView(frame: CGRect(x: 10, y: 0, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
         scrollView.addSubview(tokenSView)
         
-        tokenBView = TradeTokenView(frame: CGRect(x: (screenWidth+10)/2, y: 0, width: (screenWidth-30)/2, height: 180))
+        tokenBView = TradeTokenView(frame: CGRect(x: (screenWidth+10)/2, y: 0, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
         scrollView.addSubview(tokenBView)
 
-        arrowRightButton = UIButton(frame: CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY), size: CGSize(width: 32, height: 32)))
+        arrowRightButton = UIButton(frame: CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY), size: CGSize(width: 32*UIStyleConfig.scale, height: 32*UIStyleConfig.scale)))
         let image = UIImage.init(named: "Arrow-right-black")
         let tintedImage = image?.withRenderingMode(.alwaysTemplate)
         arrowRightButton.setImage(tintedImage, for: .normal)
@@ -74,9 +74,9 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         arrowRightButton.addTarget(self, action: #selector(self.pressedArrowButton(_:)), for: UIControlEvents.touchUpInside)
         scrollView.addSubview(arrowRightButton)
         
-        infoLabel.frame = CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY - 60), size: CGSize(width: 200, height: 21))
+        infoLabel.frame = CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY - 60), size: CGSize(width: 200, height: 21*UIStyleConfig.scale))
         infoLabel.text = asset!.symbol.uppercased() == "ETH" ? "1 ETH = 1 WETH" : "1 WETH = 1 ETH"
-        infoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
+        infoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16*UIStyleConfig.scale)
         infoLabel.textAlignment = .center
         scrollView.addSubview(infoLabel)
 
@@ -116,6 +116,10 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         maxButton.frame = CGRect(x: screenWidth-80-padding, y: amountUnderLine.frame.maxY, width: 80, height: 40)
         maxButton.addTarget(self, action: #selector(self.pressedMaxButton(_:)), for: UIControlEvents.touchUpInside)
         scrollView.addSubview(maxButton)
+        
+        let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
+        scrollViewTap.numberOfTapsRequired = 1
+        scrollView.addGestureRecognizer(scrollViewTap)
     }
     
     override func didReceiveMemoryWarning() {
@@ -132,6 +136,13 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             tokenSView.update(symbol: symbol)
             tokenBView.update(symbol: getAnotherToken())
         }
+    }
+    
+    @objc func scrollViewTapped() {
+        print("scrollViewTapped")
+        amountTextField.resignFirstResponder()
+        self.view.endEditing(true)
+        hideNumericKeyboard()
     }
     
     func getAnotherToken() -> String {
@@ -188,46 +199,44 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         print("textFieldShouldBeginEditing")
-        showKeyboard(textField: textField)
+        showNumericKeyboard(textField: textField)
         return true
     }
-    
+
     func getActiveTextField() -> UITextField? {
         // Only one text field in the view controller.
         return amountTextField
     }
     
-    func showKeyboard(textField: UITextField) {
-        if !isKeyboardShow {
+    func showNumericKeyboard(textField: UITextField) {
+        if !isNumericKeyboardShow {
             let width = self.view.frame.width
             let height = self.convertBackgroundView.frame.origin.y
+                        
+            scrollViewButtonLayoutConstraint.constant = DefaultNumericKeyboard.height
             
-            let keyboardHeight: CGFloat = 220
-            
-            scrollViewButtonLayoutConstraint.constant = keyboardHeight
-            
-            keyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: keyboardHeight))
-            keyboardView.delegate = self
-            view.addSubview(keyboardView)
+            numericKeyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: DefaultNumericKeyboard.height))
+            numericKeyboardView.delegate = self
+            view.addSubview(numericKeyboardView)
             view.bringSubview(toFront: convertBackgroundView)
             view.bringSubview(toFront: convertButton)
             
-            let destinateY = height - keyboardHeight
+            let destinateY = height - DefaultNumericKeyboard.height
             
             // TODO: improve the animation.
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
-                self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
+                self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
                 
             }, completion: { _ in
-                self.isKeyboardShow = true
+                self.isNumericKeyboardShow = true
             })
         }
     }
 
-    func hideKeyboard() {
+    func hideNumericKeyboard() {
         
     }
-    
+
     func completion(_ txHash: String?, _ error: Error?) {
         guard error == nil && txHash != nil else {
             // Show toast

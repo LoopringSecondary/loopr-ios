@@ -12,7 +12,7 @@ import UIKit
 protocol NumericKeyboardProtocol: class {
     
     func getActiveTextField() -> UITextField?
-    func showKeyboard(textField: UITextField)
-    func hideKeyboard()
+    func showNumericKeyboard(textField: UITextField)
+    func hideNumericKeyboard()
     
 }

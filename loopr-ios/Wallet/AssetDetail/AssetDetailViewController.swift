@@ -17,7 +17,8 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var receiveButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
-    
+    @IBOutlet weak var buttonHeightLayoutConstraint: NSLayoutConstraint!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -42,6 +43,8 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         // Send button
         sendButton.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
         sendButton.setupRoundWhite()
+        
+        buttonHeightLayoutConstraint.constant = 47*UIStyleConfig.scale
     }
     
     func setup() {

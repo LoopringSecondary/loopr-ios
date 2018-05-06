@@ -52,9 +52,9 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
     var oneWeekButton: CustomUIButtonForUIToolbar = CustomUIButtonForUIToolbar()
     var oneMonthButton: CustomUIButtonForUIToolbar = CustomUIButtonForUIToolbar()
 
-    // Keyboard
-    var isKeyboardShow: Bool = false
-    var keyboardView: DefaultNumericKeyboard!
+    // Numeric keyboard
+    var isNumericKeyboardShow: Bool = false
+    var numericKeyboardView: DefaultNumericKeyboard!
     
     var activeTextFieldTag = -1
     
@@ -241,7 +241,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         priceTextField.resignFirstResponder()
         amountTextField.resignFirstResponder()
         totalTextField.resignFirstResponder()
-        hideKeyboard()
+        hideNumericKeyboard()
     }
     
     @objc func pressedOneHourButton(_ button: UIButton) {
@@ -401,7 +401,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         print("textFieldShouldBeginEditing")
         activeTextFieldTag = textField.tag
-        showKeyboard(textField: textField)
+        showNumericKeyboard(textField: textField)
         return true
     }
     
@@ -421,29 +421,27 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         print("priceTextFieldDidChange")
     }
     
-    func showKeyboard(textField: UITextField) {
-        if !isKeyboardShow {
+    func showNumericKeyboard(textField: UITextField) {
+        if !isNumericKeyboardShow {
             let width = self.view.frame.width
             let height = self.placeOrderBackgroundView.frame.origin.y
+
+            scrollViewButtonLayoutConstraint.constant = DefaultNumericKeyboard.height
             
-            let keyboardHeight: CGFloat = 220
-            
-            scrollViewButtonLayoutConstraint.constant = keyboardHeight
-            
-            keyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: keyboardHeight))
-            keyboardView.delegate = self
+            numericKeyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: DefaultNumericKeyboard.height))
+            numericKeyboardView.delegate = self
             // keyboardView.backgroundColor = UIColor.blue
-            view.addSubview(keyboardView)
+            view.addSubview(numericKeyboardView)
             view.bringSubview(toFront: placeOrderBackgroundView)
             view.bringSubview(toFront: placeOrderButton)
             
-            let destinateY = height - keyboardHeight
+            let destinateY = height - DefaultNumericKeyboard.height
             
             // TODO: improve the animation.
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
-                self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
+                self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
             }, completion: { finished in
-                self.isKeyboardShow = true
+                self.isNumericKeyboardShow = true
                 if finished {
                     if textField.tag == self.totalTextField.tag {
                         let bottomOffset = CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.size.height)
@@ -459,8 +457,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         }
     }
     
-    func hideKeyboard() {
-        if isKeyboardShow {
+    func hideNumericKeyboard() {
+        if isNumericKeyboardShow {
             let width = self.view.frame.width
             let height = self.placeOrderBackgroundView.frame.origin.y
             let keyboardHeight: CGFloat = 220
@@ -470,9 +468,9 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
                 // animation for layout constraint change.
                 self.view.layoutIfNeeded()
-                self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
+                self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
             }, completion: { finished in
-                self.isKeyboardShow = false
+                self.isNumericKeyboardShow = false
                 if finished {
                 }
             })

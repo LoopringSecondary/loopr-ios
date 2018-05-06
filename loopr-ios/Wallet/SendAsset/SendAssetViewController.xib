@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +16,8 @@
                 <outlet property="scrollViewButtonLayoutConstraint" destination="bay-N1-xQt" id="nQ7-I1-UWl"/>
                 <outlet property="sendButton" destination="JlJ-XA-Yl0" id="W3R-iM-8cG"/>
                 <outlet property="sendButtonBackgroundView" destination="tFK-Lz-tMt" id="GL6-Qi-QKx"/>
-                <outlet property="sendButtonLayoutContraint" destination="Agh-9O-oTv" id="yOM-0w-yvc"/>
+                <outlet property="sendButtonBackgroundViewBottomLayoutContraint" destination="p6Q-Zw-mpZ" id="PrT-d2-ho5"/>
+                <outlet property="sendButtonBackgroundViewHeightLayoutContraint" destination="B6h-Gt-mqx" id="Ntm-yp-5H7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,25 +27,28 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tFK-Lz-tMt">
-                    <rect key="frame" x="0.0" y="592" width="375" height="75"/>
+                    <rect key="frame" x="0.0" y="590" width="375" height="77"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JlJ-XA-Yl0">
+                            <rect key="frame" x="15" y="15" width="345" height="47"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Send">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="pressedSendButton:" destination="-1" eventType="touchUpInside" id="sZv-j6-GEK"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="75" id="B6h-Gt-mqx"/>
+                        <constraint firstAttribute="trailing" secondItem="JlJ-XA-Yl0" secondAttribute="trailing" constant="15" id="0rZ-c0-g4G"/>
+                        <constraint firstItem="JlJ-XA-Yl0" firstAttribute="top" secondItem="tFK-Lz-tMt" secondAttribute="top" constant="15" id="7Qj-5f-uoe"/>
+                        <constraint firstAttribute="bottom" secondItem="JlJ-XA-Yl0" secondAttribute="bottom" constant="15" id="Agm-xO-1O2"/>
+                        <constraint firstAttribute="height" constant="77" id="B6h-Gt-mqx"/>
+                        <constraint firstItem="JlJ-XA-Yl0" firstAttribute="leading" secondItem="tFK-Lz-tMt" secondAttribute="leading" constant="15" id="JM2-xC-YEd"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JlJ-XA-Yl0">
-                    <rect key="frame" x="15" y="607" width="345" height="45"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="45" id="ihK-F5-W9L"/>
-                    </constraints>
-                    <state key="normal" title="Send">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="pressedSendButton:" destination="-1" eventType="touchUpInside" id="sZv-j6-GEK"/>
-                    </connections>
-                </button>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Lg-WH-CTm">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="590"/>
                 </scrollView>
@@ -52,14 +56,11 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="6Lg-WH-CTm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4Bz-c7-hJ7"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="JlJ-XA-Yl0" secondAttribute="bottom" constant="15" id="Agh-9O-oTv"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JlJ-XA-Yl0" secondAttribute="trailing" constant="15" id="FTR-qv-IIb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="6Lg-WH-CTm" secondAttribute="bottom" constant="77" id="bay-N1-xQt"/>
                 <constraint firstItem="tFK-Lz-tMt" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="fbn-jj-LEc"/>
                 <constraint firstAttribute="bottom" secondItem="tFK-Lz-tMt" secondAttribute="bottom" id="p6Q-Zw-mpZ"/>
                 <constraint firstItem="6Lg-WH-CTm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="rGU-hw-e4k"/>
                 <constraint firstItem="6Lg-WH-CTm" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="rc0-AL-McT"/>
-                <constraint firstItem="JlJ-XA-Yl0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="vp9-We-71X"/>
                 <constraint firstItem="tFK-Lz-tMt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="yEL-j0-wuD"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

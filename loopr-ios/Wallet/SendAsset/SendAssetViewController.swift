@@ -19,8 +19,10 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var sendButtonBackgroundView: UIView!
     @IBOutlet weak var sendButton: UIButton!
-    @IBOutlet weak var sendButtonLayoutContraint: NSLayoutConstraint!
 
+    @IBOutlet weak var sendButtonBackgroundViewBottomLayoutContraint: NSLayoutConstraint!
+    @IBOutlet weak var sendButtonBackgroundViewHeightLayoutContraint: NSLayoutConstraint!
+    
     // Token
     var tokenIconImageView = UIImageView()
     var tokenTotalAmountLabel = UILabel()
@@ -52,9 +54,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     var transactionAmountCurrentLabel = UILabel()
     var transactionAmountHelpButton = UIButton()
     
-    // Keyboard
-    var isKeyboardShow: Bool = false
-    var keyboardView: DefaultNumericKeyboard!
+    // Numeric keyboard
+    var isNumericKeyboardShow: Bool = false
+    var numericKeyboardView: DefaultNumericKeyboard!
     var activeTextFieldTag = -1
     
     // To measure the performance. Will be removed in the future
@@ -76,8 +78,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         sendButton.setupRoundBlack()
         updateButton(isValid: false)
         
-        scrollViewButtonLayoutConstraint.constant = 77
-        sendButtonLayoutContraint.constant = 15
+        scrollViewButtonLayoutConstraint.constant = 47*UIStyleConfig.scale + 15*2
+        sendButtonBackgroundViewBottomLayoutContraint.constant = 0
+        sendButtonBackgroundViewHeightLayoutContraint.constant = 47*UIStyleConfig.scale + 15*2
 
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
@@ -268,7 +271,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         print("scrollViewTapped")
         amountTextField.resignFirstResponder()
         self.view.endEditing(true)
-        hideKeyboard()
+        hideNumericKeyboard()
     }
     
     func updateLabel(label: UILabel, text: String, textColor: UIColor) {
@@ -426,9 +429,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField.tag == 0 {
-            hideKeyboard()
+            hideNumericKeyboard()
         } else if textField.tag == 1 {
-            showKeyboard(textField: amountTextField)
+            showNumericKeyboard(textField: amountTextField)
         }
         return true
     }
@@ -441,62 +444,62 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         guard let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
             return
         }
-        let keyboardHeight = keyboardFrame.cgRectValue.height
+        let systemKeyboardHeight = keyboardFrame.cgRectValue.height
         if #available(iOS 11.0, *) {
             // Get the the distance from the bottom safe area edge to the bottom of the screen
             let window = UIApplication.shared.keyWindow
             let bottomPadding = window?.safeAreaInsets.bottom
-            scrollViewButtonLayoutConstraint.constant = keyboardHeight + 77
-            sendButtonLayoutContraint.constant = keyboardHeight + 15 - bottomPadding!
+            scrollViewButtonLayoutConstraint.constant = systemKeyboardHeight + 47*UIStyleConfig.scale + 15*2
+            sendButtonBackgroundViewBottomLayoutContraint.constant = systemKeyboardHeight - bottomPadding!
         } else {
-            sendButtonLayoutContraint.constant = keyboardHeight
+            sendButtonBackgroundViewBottomLayoutContraint.constant = systemKeyboardHeight
         }
     }
     
     @objc func keyboardWillDisappear(notification: NSNotification?) {
         print("keyboardWillDisappear")
-        scrollViewButtonLayoutConstraint.constant = 77
-        sendButtonLayoutContraint.constant = 15
+        scrollViewButtonLayoutConstraint.constant = 47*UIStyleConfig.scale + 15*2
+        sendButtonBackgroundViewBottomLayoutContraint.constant = 0
+
         if validateAddress() {
             validation()
         }
     }
 
-    func showKeyboard(textField: UITextField) {
-        if !isKeyboardShow {
+    func showNumericKeyboard(textField: UITextField) {
+        if !isNumericKeyboardShow {
             let width = self.view.frame.width
             let height = self.sendButtonBackgroundView.frame.origin.y
-            let keyboardHeight: CGFloat = 220
-            scrollViewButtonLayoutConstraint.constant = keyboardHeight
-            keyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: keyboardHeight))
-            keyboardView.delegate = self
-            view.addSubview(keyboardView)
+            scrollViewButtonLayoutConstraint.constant = DefaultNumericKeyboard.height
+            numericKeyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: DefaultNumericKeyboard.height))
+            numericKeyboardView.delegate = self
+            view.addSubview(numericKeyboardView)
             view.bringSubview(toFront: sendButtonBackgroundView)
             view.bringSubview(toFront: sendButton)
-            let destinateY = height - keyboardHeight
+            let destinateY = height - DefaultNumericKeyboard.height
             
             // TODO: improve the animation.
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
-                self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
+                self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
             }, completion: { _ in
-                self.isKeyboardShow = true
+                self.isNumericKeyboardShow = true
             })
         }
     }
     
-    func hideKeyboard() {
-        if isKeyboardShow {
+    func hideNumericKeyboard() {
+        if isNumericKeyboardShow {
             let width = self.view.frame.width
             let height = self.sendButtonBackgroundView.frame.origin.y
-            let keyboardHeight: CGFloat = 220
             let destinateY = height
             self.scrollViewButtonLayoutConstraint.constant = 0
+            self.scrollView.setContentOffset(CGPoint.zero, animated: true)
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
                 // animation for layout constraint change.
                 self.view.layoutIfNeeded()
-                self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
+                self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
             }, completion: { finished in
-                self.isKeyboardShow = false
+                self.isNumericKeyboardShow = false
                 if finished {
                 }
             })
@@ -504,7 +507,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                 validation()
             }
         } else {
-            self.scrollView.setContentOffset(CGPoint.zero, animated: true)
+            // self.scrollView.setContentOffset(CGPoint.zero, animated: true)
         }
     }
     
@@ -552,7 +555,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print("scrollViewDidScroll \(scrollView.contentOffset.y)")
         if tokenTotalAmountLabel.frame.maxY < scrollView.contentOffset.y {
-            self.navigationItem.title = asset!.symbol
+            self.navigationItem.title = "\(asset!.balance) \(asset!.symbol) Available"
         } else {
             self.navigationItem.title = ""
         }

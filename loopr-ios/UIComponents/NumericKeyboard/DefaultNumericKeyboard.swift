@@ -10,8 +10,10 @@ import UIKit
 
 open class DefaultNumericKeyboard: NumericKeyboard {
     
+    static let height: CGFloat = 220 * UIStyleConfig.scale
+    
     var textColor: UIColor! = UIColor.black
-    var font: UIFont! = UIFont.init(name: FontConfigManager.shared.getLight(), size: 34) ?? UIFont.systemFont(ofSize: 34)
+    var font: UIFont! = UIFont.init(name: FontConfigManager.shared.getLight(), size: 34*UIStyleConfig.scale) ?? UIFont.systemFont(ofSize: 34*UIStyleConfig.scale)
 
     override public init(frame: CGRect) {
         super.init(frame: frame)

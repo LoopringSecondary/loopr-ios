@@ -33,12 +33,12 @@ class AssetTableViewCell: UITableViewCell {
         symbolLabel.theme_textColor = GlobalPicker.textColor
         balanceLabel.theme_textColor = GlobalPicker.textColor
 
-        symbolLabel.font = UIFont(name: FontConfigManager.shared.getRegular(), size: 21)
+        symbolLabel.font = UIFont(name: FontConfigManager.shared.getRegular(), size: 21*UIStyleConfig.scale)
 
-        balanceLabel.font = UIFont(name: FontConfigManager.shared.getRegular(), size: 17)
+        balanceLabel.font = FontConfigManager.shared.getLabelFont()
         balanceLabel.baselineAdjustment = .alignCenters
         
-        amountLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 14)
+        amountLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 14*UIStyleConfig.scale)
         amountLabel.textColor = UIColor.init(white: 0, alpha: 0.6)
         amountLabel.baselineAdjustment = .alignCenters
         
@@ -78,6 +78,6 @@ class AssetTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 72
+        return 72*UIStyleConfig.scale
     }
 }

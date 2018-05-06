@@ -16,23 +16,23 @@ class TradeTokenView: UIView {
     var amountLabel: UILabel
     
     override init(frame: CGRect) {
-        let padding: CGFloat = 10
+        let padding: CGFloat = 10*UIStyleConfig.scale
 
-        titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: 40))
+        titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: 40*UIStyleConfig.scale))
         titleLabel.textAlignment = .center
         titleLabel.textColor = UIColor.black
         titleLabel.font = FontConfigManager.shared.getLabelFont()
 
-        iconImageView = UIImageView(frame: CGRect(x: 0, y: titleLabel.frame.maxY + padding, width: frame.width, height: 60))
+        iconImageView = UIImageView(frame: CGRect(x: 0, y: titleLabel.frame.maxY + padding, width: frame.width, height: 60*UIStyleConfig.scale))
         iconImageView.contentMode = .scaleAspectFit
 
-        iconView = IconView(frame: CGRect(x: 0, y: titleLabel.frame.maxY + padding, width: frame.width, height: 60))
+        iconView = IconView(frame: CGRect(x: 0, y: titleLabel.frame.maxY + padding, width: frame.width, height: 60*UIStyleConfig.scale))
         iconView.isHidden = true
         iconView.backgroundColor = UIColor.clear
 
-        amountLabel = UILabel(frame: CGRect(x: 0, y: iconImageView.frame.maxY + padding, width: frame.width, height: 40))
+        amountLabel = UILabel(frame: CGRect(x: 0, y: iconImageView.frame.maxY + padding, width: frame.width, height: 40*UIStyleConfig.scale))
         amountLabel.textAlignment = .center
-        amountLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)
+        amountLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17*UIStyleConfig.scale)
 
         super.init(frame: frame)
 

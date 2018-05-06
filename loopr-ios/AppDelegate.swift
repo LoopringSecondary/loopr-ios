@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
         FontConfigManager.shared.setup()
         AppWalletDataManager.shared.setup()
         CurrentAppWalletDataManager.shared.setup()
@@ -75,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let titleAttributes = GlobalPicker.barTextColors.map { hexString in
             return [
                 NSAttributedStringKey.foregroundColor: UIColor(rgba: hexString),
-                NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)!,
+                NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getLight(), size: 16*UIStyleConfig.scale)!,
                 NSAttributedStringKey.shadow: shadow
             ]
         }

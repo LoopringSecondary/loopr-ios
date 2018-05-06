@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AssetDetailViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="buttonHeightLayoutConstraint" destination="To1-dR-8PD" id="bpz-d1-rxT"/>
                 <outlet property="receiveButton" destination="oU0-Pm-y7X" id="k1W-vG-cy6"/>
                 <outlet property="sendButton" destination="IV9-Ck-OQ7" id="cY1-E0-ieZ"/>
                 <outlet property="tableView" destination="Ze1-7w-Ov8" id="2Ct-vg-4VP"/>

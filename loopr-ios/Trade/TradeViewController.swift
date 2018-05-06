@@ -30,9 +30,9 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     var totalUnderLine: UIView = UIView()
     var availableLabel: UILabel = UILabel()
 
-    // Keyboard
-    var isKeyboardShown: Bool = false
-    var keyboardView: DefaultNumericKeyboard!
+    // Numeric keyboard
+    var isNumericKeyboardShown: Bool = false
+    var numericKeyboardView: DefaultNumericKeyboard!
 
     var activeTextFieldTag = -1
     
@@ -150,7 +150,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         tokenSPriceTextField.resignFirstResponder()
         totalTextField.resignFirstResponder()
 
-        hideKeyboard()
+        hideNumericKeyboard()
     }
     
     @objc func pressedSwitchTokenSButton(_ sender: Any) {
@@ -186,7 +186,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
 
         activeTextFieldTag = textField.tag
         
-        showKeyboard(textField: textField)
+        showNumericKeyboard(textField: textField)
 
         return true
     }
@@ -205,29 +205,27 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         }
     }
     
-    func showKeyboard(textField: UITextField) {
-        if !isKeyboardShown {
+    func showNumericKeyboard(textField: UITextField) {
+        if !isNumericKeyboardShown {
             let width = self.view.frame.width
             let height = self.nextBackgroundView.frame.origin.y
+
+            scrollViewButtonLayoutConstraint.constant = DefaultNumericKeyboard.height
             
-            let keyboardHeight: CGFloat = 220
-            
-            scrollViewButtonLayoutConstraint.constant = keyboardHeight
-            
-            keyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: keyboardHeight))
-            keyboardView.delegate = self
-            view.addSubview(keyboardView)
+            numericKeyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: DefaultNumericKeyboard.height))
+            numericKeyboardView.delegate = self
+            view.addSubview(numericKeyboardView)
             view.bringSubview(toFront: nextBackgroundView)
             view.bringSubview(toFront: nextButton)
             
-            let destinateY = height - keyboardHeight
+            let destinateY = height - DefaultNumericKeyboard.height
             
             // TODO: improve the animation.
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
-                self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
+                self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
                 
             }, completion: { finished in
-                self.isKeyboardShown = true
+                self.isNumericKeyboardShown = true
                 if finished {
                     if textField.tag == self.totalTextField.tag {
                         let bottomOffset = CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.size.height)
@@ -243,13 +241,11 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         }
     }
     
-    func hideKeyboard() {
-        if isKeyboardShown {
+    func hideNumericKeyboard() {
+        if isNumericKeyboardShown {
             let width = self.view.frame.width
             let height = self.nextBackgroundView.frame.origin.y
             
-            let keyboardHeight: CGFloat = 220
-
             let destinateY = height
             
             self.scrollViewButtonLayoutConstraint.constant = 0
@@ -258,10 +254,10 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
                 // animation for layout constraint change.
                 self.view.layoutIfNeeded()
 
-                self.keyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
+                self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
                 
             }, completion: { finished in
-                self.isKeyboardShown = false
+                self.isNumericKeyboardShown = false
                 if finished {
                     
                 }

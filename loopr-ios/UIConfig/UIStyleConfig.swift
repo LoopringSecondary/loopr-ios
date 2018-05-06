@@ -20,6 +20,8 @@ enum UIStyleConfig {
     static let tabBarTintColor = UIColor(white: 0, alpha: 1)
     
     static let tableCellSelectedBackgroundColor = UIColor(white: 0.1, alpha: 0.3)
+
+    static let scale = UIScreen.main.scale / UIScreen.main.nativeScale
     
     static func getChangeColor(change: String) -> UIColor {
         let firstChar = change.first?.description ?? ""

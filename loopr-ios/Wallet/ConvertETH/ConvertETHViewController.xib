@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConvertETHViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="convertBackgroundView" destination="SPJ-Zq-umT" id="gP7-Cc-nGc"/>
+                <outlet property="convertBackgroundViewHeightConstraint" destination="fv3-H7-ZfU" id="MZK-6h-y1A"/>
                 <outlet property="convertButton" destination="s5v-5I-uis" id="dgh-9E-RWv"/>
                 <outlet property="scrollView" destination="jgg-vL-AdJ" id="CW8-bl-i7y"/>
                 <outlet property="scrollViewButtonLayoutConstraint" destination="CoX-Jy-JYR" id="5Md-oh-tED"/>
@@ -33,9 +34,6 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s5v-5I-uis">
                             <rect key="frame" x="15" y="15" width="345" height="47"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="47" id="4jL-S9-Mag"/>
-                            </constraints>
                             <state key="normal" title="Yes, Convert Now!">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -47,6 +45,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="s5v-5I-uis" secondAttribute="bottom" constant="15" id="CaA-PY-kx0"/>
+                        <constraint firstItem="s5v-5I-uis" firstAttribute="top" secondItem="SPJ-Zq-umT" secondAttribute="top" constant="15" id="Gs7-Uy-9v9"/>
                         <constraint firstAttribute="trailing" secondItem="s5v-5I-uis" secondAttribute="trailing" constant="15" id="T9h-If-9AY"/>
                         <constraint firstItem="s5v-5I-uis" firstAttribute="leading" secondItem="SPJ-Zq-umT" secondAttribute="leading" constant="15" id="ebU-YB-rVm"/>
                         <constraint firstAttribute="height" constant="77" id="fv3-H7-ZfU"/>

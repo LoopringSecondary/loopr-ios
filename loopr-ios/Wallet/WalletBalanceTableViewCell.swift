@@ -25,7 +25,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
 
-        balanceLabel.setFont(UIFont.init(name: FontConfigManager.shared.getRegular(), size: 27)!)
+        balanceLabel.setFont(UIFont.init(name: FontConfigManager.shared.getRegular(), size: 27*UIStyleConfig.scale)!)
         balanceLabel.animationDuration = 0.25
         balanceLabel.textAlignment = NSTextAlignment.center
         balanceLabel.initializeLabel()
@@ -41,7 +41,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
         
         hideAssetsLabel.theme_textColor = GlobalPicker.textColor
         hideAssetsLabel.text = NSLocalizedString("Hide Small Assets", comment: "")
-        hideAssetsLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)
+        hideAssetsLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14*UIStyleConfig.scale)
 
         update()
         _ = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
@@ -93,6 +93,8 @@ class WalletBalanceTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
+        // TODO: 
+        // return 150*UIStyleConfig.scale
         return 150
     }
 }
