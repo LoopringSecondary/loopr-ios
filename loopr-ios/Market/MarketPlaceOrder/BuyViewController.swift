@@ -20,19 +20,16 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
     
     // config
     var type: TradeType
-    var expires: String = "1 Hour"
+    var expire: OrderExpire = .oneHour
     var intervalUnit: Calendar.Component = .hour
     var intervalValue = 1
     var lrcFee = SettingDataManager.shared.getLrcFeeRatio()
-    
-    let tokenA = PlaceOrderDataManager.shared.tokenA
-    let tokenB = PlaceOrderDataManager.shared.tokenB
-    
+
     // Price
     var tokenALabel: UILabel = UILabel()
-    var tokenAPriceTextField: UITextField = UITextField()
+    var priceTextField: UITextField = UITextField()
     var tokenAUnderLine: UIView = UIView()
-    var estimateValueInCurrency: UILabel = UILabel()
+    var estimateValueInCurrencyLabel: UILabel = UILabel()
 
     // Amout
     var tokenBLabel: UILabel = UILabel()
@@ -83,6 +80,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
 
         placeOrderButton.title = NSLocalizedString("Place Order", comment: "")
         placeOrderButton.setupRoundBlack()
+        placeOrderButton.isEnabled = false
         
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
@@ -93,37 +91,37 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         let padding: CGFloat = 15
         
         // First row: price
-        tokenALabel.text = self.tokenB
+        tokenALabel.text = PlaceOrderDataManager.shared.tokenB.symbol
         tokenALabel.font = FontConfigManager.shared.getLabelFont()
         tokenALabel.textAlignment = .right
-        // tokenSLabel.backgroundColor = UIColor.green
         tokenALabel.frame = CGRect(x: screenWidth-80-padding, y: originY, width: 80, height: 40)
         scrollView.addSubview(tokenALabel)
         
-        tokenAPriceTextField.delegate = self
-        tokenAPriceTextField.tag = 0
-        tokenAPriceTextField.inputView = UIView()
-        tokenAPriceTextField.font = FontConfigManager.shared.getLabelFont() // UIFont.init(name: FontConfigManager.shared.getLight(), size: 24)
-        tokenAPriceTextField.theme_tintColor = GlobalPicker.textColor
-        tokenAPriceTextField.placeholder = "Limited Price"
-        tokenAPriceTextField.contentMode = UIViewContentMode.bottom
-        tokenAPriceTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2-80, height: 40)
-        scrollView.addSubview(tokenAPriceTextField)
-        
+        priceTextField.delegate = self
+        priceTextField.tag = 0
+        priceTextField.inputView = UIView()
+        priceTextField.font = FontConfigManager.shared.getLabelFont()
+        priceTextField.theme_tintColor = GlobalPicker.textColor
+        priceTextField.placeholder = "Price " + PlaceOrderDataManager.shared.market.balance.description
+        priceTextField.contentMode = UIViewContentMode.bottom
+        priceTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2-80, height: 40)
+        scrollView.addSubview(priceTextField)
+
         tokenAUnderLine.frame = CGRect(x: padding, y: tokenALabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
         tokenAUnderLine.backgroundColor = UIColor.black
         scrollView.addSubview(tokenAUnderLine)
 
-        estimateValueInCurrency.text = "≈ $ 0.00"
-        estimateValueInCurrency.font = FontConfigManager.shared.getLabelFont()
-        estimateValueInCurrency.frame = CGRect(x: padding, y: tokenAUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
-        scrollView.addSubview(estimateValueInCurrency)
+        let zeroValue: Double = 0.0
+        estimateValueInCurrencyLabel.text = "≈ \(zeroValue.currency)"
+        estimateValueInCurrencyLabel.font = FontConfigManager.shared.getLabelFont()
+        estimateValueInCurrencyLabel.frame = CGRect(x: padding, y: tokenAUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
+        scrollView.addSubview(estimateValueInCurrencyLabel)
         
         // Second row: amount
-        tokenBLabel.text = self.tokenA
+        tokenBLabel.text = PlaceOrderDataManager.shared.tokenA.symbol
         tokenBLabel.font = FontConfigManager.shared.getLabelFont()
         tokenBLabel.textAlignment = .right
-        tokenBLabel.frame = CGRect(x: screenWidth-80-padding, y: estimateValueInCurrency.frame.maxY + 30, width: 80, height: 40)
+        tokenBLabel.frame = CGRect(x: screenWidth-80-padding, y: estimateValueInCurrencyLabel.frame.maxY + 30, width: 80, height: 40)
         scrollView.addSubview(tokenBLabel)
         
         amountTextField.delegate = self
@@ -134,7 +132,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         amountTextField.theme_tintColor = GlobalPicker.textColor
         amountTextField.placeholder = "Amount"
         amountTextField.contentMode = UIViewContentMode.bottom
-        amountTextField.frame = CGRect(x: padding, y: estimateValueInCurrency.frame.maxY + 30, width: screenWidth-padding*2-80, height: 40)
+        amountTextField.frame = CGRect(x: padding, y: estimateValueInCurrencyLabel.frame.maxY + 30, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(amountTextField)
         
         amountUnderLine.frame = CGRect(x: padding, y: tokenBLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
@@ -154,7 +152,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         scrollView.addSubview(maxButton)
         
         // Thrid row: total
-        tokenBTotalLabel.text = self.tokenB
+        tokenBTotalLabel.text = PlaceOrderDataManager.shared.tokenB.symbol
         tokenBTotalLabel.font = FontConfigManager.shared.getLabelFont()
         tokenBTotalLabel.textAlignment = .right
         tokenBTotalLabel.frame = CGRect(x: screenWidth-80-padding, y: maxButton.frame.maxY + 30, width: 80, height: 40)
@@ -163,7 +161,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         totalTextField.delegate = self
         totalTextField.tag = 2
         totalTextField.inputView = UIView()
-        totalTextField.font = FontConfigManager.shared.getLabelFont() // UIFont.init(name: FontConfigManager.shared.getLight(), size: 24)
+        totalTextField.font = FontConfigManager.shared.getLabelFont()
         totalTextField.theme_tintColor = GlobalPicker.textColor
         totalTextField.placeholder = "Total"
         totalTextField.contentMode = UIViewContentMode.bottom
@@ -180,7 +178,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         scrollView.addSubview(availableLabel)
         
         // Fourth Row
-        expireLabel.text = "Order Expires in"
+        expireLabel.text = NSLocalizedString("Order Expires in", comment: "")
         expireLabel.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: 14)
         expireLabel.textAlignment = .left
         expireLabel.frame = CGRect(x: padding, y: availableLabel.frame.maxY + 30, width: 300, height: 40)
@@ -191,22 +189,22 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         stackView.alignment = UIStackViewAlignment.center
         stackView.spacing   = 20.0
         
-        oneHourButton.setTitle("1 Hour", for: .normal)
+        oneHourButton.setTitle(OrderExpire.oneHour.description, for: .normal)
         oneHourButton.titleLabel?.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: 14)
         oneHourButton.addTarget(self, action: #selector(self.pressedOneHourButton(_:)), for: .touchUpInside)
         stackView.addArrangedSubview(oneHourButton)
         
-        oneDayButton.setTitle("1 Day", for: .normal)
+        oneDayButton.setTitle(OrderExpire.oneDay.description, for: .normal)
         oneDayButton.titleLabel?.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: 14)
         oneDayButton.addTarget(self, action: #selector(self.pressedOneDayButton(_:)), for: .touchUpInside)
         stackView.addArrangedSubview(oneDayButton)
 
-        oneWeekButton.setTitle("1 Week", for: .normal)
+        oneWeekButton.setTitle(OrderExpire.oneWeek.description, for: .normal)
         oneWeekButton.titleLabel?.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: 14)
         oneWeekButton.addTarget(self, action: #selector(self.pressedOneWeekButton(_:)), for: .touchUpInside)
         stackView.addArrangedSubview(oneWeekButton)
 
-        oneMonthButton.setTitle("1 Month", for: .normal)
+        oneMonthButton.setTitle(OrderExpire.oneMonth.description, for: .normal)
         oneMonthButton.titleLabel?.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: 14)
         oneMonthButton.addTarget(self, action: #selector(self.pressedOneMonthButton(_:)), for: .touchUpInside)
         stackView.addArrangedSubview(oneMonthButton)
@@ -234,7 +232,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
     
     @objc func scrollViewTapped() {
         print("scrollViewTapped")
-        tokenAPriceTextField.resignFirstResponder()
+        priceTextField.resignFirstResponder()
         amountTextField.resignFirstResponder()
         totalTextField.resignFirstResponder()
         hideKeyboard()
@@ -242,7 +240,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
     
     @objc func pressedOneHourButton(_ button: UIButton) {
         print("pressOneHourButton")
-        self.expires = "1 Hour"
+        self.expire = .oneHour
         self.intervalUnit = .hour
         oneHourButton.selected()
         oneDayButton.unselected()
@@ -252,7 +250,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
     
     @objc func pressedOneDayButton(_ button: UIButton) {
         print("pressedOneDayButton")
-        self.expires = "1 Day"
+        self.expire = .oneDay
         self.intervalUnit = .day
         oneHourButton.unselected()
         oneDayButton.selected()
@@ -262,7 +260,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
     
     @objc func pressedOneWeekButton(_ button: UIButton) {
         print("pressedOneWeekButton")
-        self.expires = "1 Week"
+        self.expire = .oneWeek
         self.intervalUnit = .day
         self.intervalValue = 7
         oneHourButton.unselected()
@@ -273,7 +271,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
     
     @objc func pressedOneMonthButton(_ button: UIButton) {
         print("pressedOneMonthButton")
-        self.expires = "1 Month"
+        self.expire = .oneMonth
         self.intervalUnit = .month
         oneHourButton.unselected()
         oneDayButton.unselected()
@@ -285,7 +283,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return false
         }
-        guard !tokenAPriceTextField.text!.isEmpty else {
+        guard !priceTextField.text!.isEmpty else {
             return false
         }
         guard !amountTextField.text!.isEmpty else {
@@ -300,16 +298,16 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         var amountBuy, amountSell, lrcFee: Double
         if self.type == .buy {
             side = "buy"
-            tokenBuy = tokenA
-            tokenSell = tokenB
+            tokenBuy = PlaceOrderDataManager.shared.tokenA.symbol
+            tokenSell = PlaceOrderDataManager.shared.tokenB.symbol
             buyNoMoreThanAmountB = true
             amountBuy = Double(amountTextField.text!)!
             amountSell = Double(totalTextField.text!)!
             lrcFee = getLrcFee(amountSell, tokenSell)!
         } else {
             side = "sell"
-            tokenBuy = tokenB
-            tokenSell = tokenA
+            tokenBuy = PlaceOrderDataManager.shared.tokenB.symbol
+            tokenSell = PlaceOrderDataManager.shared.tokenA.symbol
             buyNoMoreThanAmountB = false
             amountBuy = Double(totalTextField.text!)!
             amountSell = Double(amountTextField.text!)!
@@ -324,18 +322,69 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
 
     @IBAction func pressedPlaceOrderButton(_ sender: Any) {
         print("pressedPlaceOrderButton")
-        if checkEmpty() {
+        if validate() {
             if let order = constructOrder() {
                 if PlaceOrderDataManager.shared.verify(order: order, completion: completion) {
                     let viewController = PlaceOrderConfirmationViewController()
                     viewController.order = order
                     viewController.type = self.type
-                    viewController.expires = self.expires
-                    viewController.price = tokenAPriceTextField.text!
+                    viewController.expire = self.expire
+                    viewController.price = amountTextField.text!
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
             }
         }
+    }
+
+    func updateButton(isValid: Bool) {
+        placeOrderButton.isEnabled = isValid
+    }
+
+    func validateTokenPrice() -> Bool {
+        guard !priceTextField.text!.isEmpty else {
+            return false
+        }
+
+        if let value = Double(priceTextField.text ?? "0") {
+            let validate = value > 0.0
+            if validate {
+                let tokenBPrice = PriceDataManager.shared.getPriceBySymbol(of: PlaceOrderDataManager.shared.tokenB.symbol)!
+                let estimateValue: Double = value * tokenBPrice
+                estimateValueInCurrencyLabel.text = "≈ \(estimateValue.currency)"
+            } else {
+                
+            }
+            return validate
+        } else {
+            return false
+        }
+    }
+    
+    func validateAmount() -> Bool {
+        guard !amountTextField.text!.isEmpty else {
+            return false
+        }
+        
+        if let value = Double(amountTextField.text ?? "0") {
+            let validate = value > 0.0
+            if validate {
+                
+            } else {
+                
+            }
+            return validate
+        } else {
+            return false
+        }
+    }
+
+    func validate() -> Bool {
+        var isValid = false
+        if validateTokenPrice() && validateAmount() {
+            isValid = true
+        }
+        updateButton(isValid: isValid)
+        return isValid
     }
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -346,8 +395,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
     }
     
     func getActiveTextField() -> UITextField? {
-        if activeTextFieldTag == tokenAPriceTextField.tag {
-            return tokenAPriceTextField
+        if activeTextFieldTag == priceTextField.tag {
+            return priceTextField
         } else if activeTextFieldTag == amountTextField.tag {
             return amountTextField
         } else if activeTextFieldTag == totalTextField.tag {
@@ -357,6 +406,10 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         }
     }
 
+    @objc func priceTextFieldDidChange(_ textField: UITextField) {
+        print("priceTextFieldDidChange")
+    }
+    
     func showKeyboard(textField: UITextField) {
         if !isKeyboardShow {
             let width = self.view.frame.width
@@ -441,6 +494,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
             let itemValue = position.row * 3 + position.column + 1
             activeTextField!.text = currentText + String(itemValue)
         }
+        
+        _ = validate()
     }
 
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemLongPressed item: NumericKeyboardItem, atPosition position: Position) {
@@ -459,6 +514,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
             activeTextField!.text = currentText
         }
     }
+
 }
 
 extension BuyViewController {
@@ -466,7 +522,7 @@ extension BuyViewController {
     func getLrcFee(_ amountS: Double, _ tokenS: String) -> Double? {
         let pair = tokenS + "/LRC"
         let ratio = SettingDataManager.shared.getLrcFeeRatio()
-        if let market = MarketDataManager.shared.getMarket(by: pair) {
+        if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
             return market.balance * amountS * ratio
         } else if let price = PriceDataManager.shared.getPriceBySymbol(of: tokenS),
             let lrcPrice = PriceDataManager.shared.getPriceBySymbol(of: "LRC") {

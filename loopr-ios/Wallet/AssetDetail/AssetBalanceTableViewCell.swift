@@ -75,8 +75,8 @@ class AssetBalanceTableViewCell: UITableViewCell {
                 changeLabel.isHidden = true
                 marketBalanceLabel.isHidden = true
             } else {
-                let tradingPair = asset.symbol + "/WETH"
-                if let market = MarketDataManager.shared.getMarket(by: tradingPair) {
+                let tradingPair = "\(asset.symbol)/WETH"
+                if let market = MarketDataManager.shared.getMarket(byTradingPair: tradingPair) {
                     marketLabel.text = market.description
                     marketBalanceLabel.text = market.balance.description
                     changeLabel.text = market.changeInPat24

@@ -84,4 +84,9 @@
 "Slow" = "Slow";
 "Fast" = "Fast";
 "Enter the amount" = "Enter the amount";
+"Order Expires in" = "Order Expires in";
+"1 Hour" = "1 Hour";
+"1 Day" = "1 Day";
+"1 Week" = "1 Week";
+"1 Month" = "1 Month";
 

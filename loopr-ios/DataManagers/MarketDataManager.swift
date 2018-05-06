@@ -178,7 +178,7 @@ class MarketDataManager {
         })
     }
     
-    func getMarket(by tradingPair: String) -> Market? {
+    func getMarket(byTradingPair tradingPair: String) -> Market? {
         for case let market in self.markets where market.description.lowercased() == tradingPair.lowercased() {
             return market
         }

@@ -22,7 +22,7 @@ class BuyAndSellSwipeViewController: SwipeViewController {
 
         setBackButton()
         
-        self.navigationItem.title = PlaceOrderDataManager.shared.getPairDescription()
+        self.navigationItem.title = PlaceOrderDataManager.shared.market.description
         
         options.swipeTabView.height = 44
         options.swipeTabView.underlineView.height = 1

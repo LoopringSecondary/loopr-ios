@@ -16,6 +16,7 @@ extension UIButton {
         // TODO: update the color in the highlighted state.
         setBackgroundColor(UIColor.init(white: 0.15, alpha: 1), for: .highlighted)
         clipsToBounds = true
+        setTitleColor(.gray, for: .disabled)
         setTitleColor(UIColor.white, for: .normal)
         setTitleColor(UIColor.init(white: 0.5, alpha: 1), for: .highlighted)
         titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
@@ -23,7 +24,8 @@ extension UIButton {
     }
     
     func setupRoundWhite(height: CGFloat = 47) {
-        titleColor = UIColor.black
+        setTitleColor(.gray, for: .disabled)
+        setTitleColor(.black, for: .normal)
         setBackgroundColor(UIColor.white, for: .normal)
         setBackgroundColor(UIColor.init(white: 0.85, alpha: 1), for: .highlighted)
         clipsToBounds = true

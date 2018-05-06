@@ -23,24 +23,21 @@ class PlaceOrderDataManager {
     private let sendManager = SendCurrentAppWalletDataManager.shared
     
     // Similar naming in Trade.swift
-    var tokenA: String = ""
-    var tokenB: String = ""
-    
+    var tokenA: Token!
+    var tokenB: Token!
+    var market: Market!
+
     private init() {
         self.marginSplit = SettingDataManager.shared.getMarginSplit()
         self.lrcFeeInSetting = SettingDataManager.shared.getLrcFeeRatio()
     }
-    
-    // TOOD: not sure whether we need this function
-    func getPairDescription() -> String {
-        return "\(tokenA)" + " / " + "\(tokenB)"
+
+    func new(tokenA: String, tokenB: String, market: Market) {
+        self.tokenA = TokenDataManager.shared.getTokenBySymbol(tokenA)!
+        self.tokenB = TokenDataManager.shared.getTokenBySymbol(tokenB)!
+        self.market = market
     }
-    
-    func new(tokenA: String, tokenB: String) {
-        self.tokenA = tokenA
-        self.tokenB = tokenB
-    }
-    
+
     func complete() -> Bool {
         return true
     }

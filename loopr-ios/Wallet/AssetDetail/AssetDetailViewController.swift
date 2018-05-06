@@ -203,7 +203,12 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
                 viewController.asset = asset
                 self.navigationController?.pushViewController(viewController, animated: true)
             } else {
-                PlaceOrderDataManager.shared.new(tokenA: asset.symbol, tokenB: "WETH")
+                let tradingPair = "\(asset.symbol)/WETH"
+                let market = MarketDataManager.shared.getMarket(byTradingPair: tradingPair)
+                guard market != nil else {
+                    return
+                }
+                PlaceOrderDataManager.shared.new(tokenA: asset.symbol, tokenB: "WETH", market: market!)
                 let viewController = BuyAndSellSwipeViewController()
                 viewController.initialType = .buy
                 self.navigationController?.pushViewController(viewController, animated: true)

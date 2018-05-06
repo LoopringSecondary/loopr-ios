@@ -84,3 +84,8 @@
 "Slow" = "慢";
 "Fast" = "快";
 "Enter the amount" = "输入额度";
+"Order Expires in" = "订单有效时间";
+"1 Hour" = "1小时";
+"1 Day" = "1天";
+"1 Week" = "1周";
+"1 Month" = "1月";

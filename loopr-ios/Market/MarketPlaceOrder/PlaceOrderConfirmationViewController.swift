@@ -22,7 +22,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     var order: OriginalOrder?
     var type: TradeType = .buy
     var price: String = "0.0"
-    var expires: String = "1 Hour"
+    var expire: OrderExpire = .oneHour
     
     // Price
     var priceTipLabel: UILabel = UILabel()
@@ -126,7 +126,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         priceTipLabel.frame = CGRect(x: padding, y: padding, width: 150, height: 40)
         scrollView.addSubview(priceTipLabel)
         priceInfoLabel.font = FontConfigManager.shared.getLabelFont()
-        priceInfoLabel.text = self.price + " " + PlaceOrderDataManager.shared.getPairDescription()
+        priceInfoLabel.text = self.price + " " + PlaceOrderDataManager.shared.market.description
         priceInfoLabel.textAlignment = .right
         priceInfoLabel.frame = CGRect(x: padding + 150, y: priceTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
         scrollView.addSubview(priceInfoLabel)
@@ -140,7 +140,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         expiresTipLabel.frame = CGRect(x: padding, y: priceTipLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(expiresTipLabel)
         expiresInfoLabel.font = FontConfigManager.shared.getLabelFont()
-        expiresInfoLabel.text = self.expires
+        expiresInfoLabel.text = self.expire.description
         expiresInfoLabel.textAlignment = .right
         expiresInfoLabel.frame = CGRect(x: padding + 150, y: expiresTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
         scrollView.addSubview(expiresInfoLabel)

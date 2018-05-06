@@ -190,7 +190,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 cell?.trends = trends
             }
             cell!.pressedBuyButtonClosure = {
-                PlaceOrderDataManager.shared.new(tokenA: self.market!.tradingPair.tradingA, tokenB: self.market!.tradingPair.tradingB)
+                PlaceOrderDataManager.shared.new(tokenA: self.market!.tradingPair.tradingA, tokenB: self.market!.tradingPair.tradingB, market: self.market!)
                 let viewController = BuyAndSellSwipeViewController()
                 viewController.initialType = .buy
                 self.navigationController?.pushViewController(viewController, animated: true)
@@ -207,7 +207,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             }
             
             cell!.pressedSellButtonClosure = {
-                PlaceOrderDataManager.shared.new(tokenA: self.market!.tradingPair.tradingA, tokenB: self.market!.tradingPair.tradingB)
+                PlaceOrderDataManager.shared.new(tokenA: self.market!.tradingPair.tradingA, tokenB: self.market!.tradingPair.tradingB, market: self.market!)
                 let viewController = BuyAndSellSwipeViewController()
                 viewController.initialType = .sell
                 self.navigationController?.pushViewController(viewController, animated: true)
