@@ -14,6 +14,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     var transactions: [Transaction] = []
 
     @IBOutlet weak var tableView: UITableView!
+    private let refreshControl = UIRefreshControl()
     
     @IBOutlet weak var receiveButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
@@ -45,15 +46,31 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         sendButton.setupRoundWhite()
         
         buttonHeightLayoutConstraint.constant = 47*UIStyleConfig.scale
+        
+        // Add Refresh Control to Table View
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        refreshControl.theme_tintColor = GlobalPicker.textColor
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
     }
     
     func setup() {
         // TODO: putting getMarketsFromServer() here may cause a race condition.
         // It's not perfect, but works. Need improvement in the future.
         self.transactions = CurrentAppWalletDataManager.shared.getTransactions()
+        getTransactionsFromRelay()
+    }
+    
+    @objc private func refreshData(_ sender: Any) {
+        // Fetch Data
+        getTransactionsFromRelay()
+    }
+    
+    func getTransactionsFromRelay() {
         if let asset = asset {
-            
-            // TODO: pass the address
             CurrentAppWalletDataManager.shared.getTransactionsFromServer(asset: asset) { (transactions, error) in
                 guard error == nil else {
                     return
@@ -61,11 +78,12 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
                 DispatchQueue.main.async {
                     self.transactions = transactions
                     self.tableView.reloadData()
+                    self.refreshControl.endRefreshing()
                 }
             }
         }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

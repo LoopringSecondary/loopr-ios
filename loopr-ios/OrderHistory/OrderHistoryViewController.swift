@@ -14,6 +14,7 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
     var orders: [String: [Order]] = [:]
 
     @IBOutlet weak var historyTableView: UITableView!
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         setBackButton()
         historyTableView.dataSource = self
         historyTableView.delegate = self
+        historyTableView.tableFooterView = UIView()
         orderDates = orders.keys.sorted(by: >)
         
         let orderSearchButton = UIButton(type: UIButtonType.custom)
@@ -33,6 +35,15 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         orderSearchButton.setBackgroundImage(image?.alpha(0.3), for: .highlighted)
         let item = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.pressOrderSearchButton(_:)))
         self.navigationItem.setRightBarButton(item, animated: true)
+        
+        // Add Refresh Control to Table View
+        if #available(iOS 10.0, *) {
+            historyTableView.refreshControl = refreshControl
+        } else {
+            historyTableView.addSubview(refreshControl)
+        }
+        refreshControl.theme_tintColor = GlobalPicker.textColor
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
     }
     
     @objc func pressOrderSearchButton(_ button: UIBarButtonItem) {
@@ -47,6 +58,20 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         self.present(navigationController, animated: true, completion: nil)
     }
 
+    @objc private func refreshData(_ sender: Any) {
+        // Fetch Data
+        getOrderHistoryFromRelay()
+    }
+    
+    func getOrderHistoryFromRelay() {
+        OrderDataManager.shared.getOrdersFromServer(completionHandler: { orders, error in
+            DispatchQueue.main.async {
+                self.historyTableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+        })
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return orders[orderDates[section]]!.count
     }
