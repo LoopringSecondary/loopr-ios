@@ -13,7 +13,6 @@ class PlaceOrderDataManager {
     
     static let shared = PlaceOrderDataManager()
     
-    private var marginSplit: Double
     private var lrcFeeInSetting: Double
     private var userInfo: [String: Any] = [:]
     
@@ -28,7 +27,6 @@ class PlaceOrderDataManager {
     var market: Market!
 
     private init() {
-        self.marginSplit = SettingDataManager.shared.getMarginSplit()
         self.lrcFeeInSetting = SettingDataManager.shared.getLrcFeeRatio()
     }
 
@@ -75,13 +73,13 @@ class PlaceOrderDataManager {
     }
     
     func approve(token: String, amount: Int64, completion: @escaping (String?, Error?) -> Void) {
-        if let to = TokenDataManager.shared.getContractAddressBySymbol(symbol: token) {
+        if let to = TokenDataManager.shared.getAddress(by: token) {
             var error: NSError? = nil
             let approve = GethNewBigInt(amount)!
             let gas = GethBigInt.generateBigInt(gasManager.getGasPrice())!
-            let contractAddress = GethNewAddressFromHex(RelayAPIConfiguration.delegateAddress, &error)!
-            let toaddress = GethNewAddressFromHex(to, &error)!
-            sendManager._approve(contractAddress: contractAddress, toAddress: toaddress, tokenAmount: approve, gasPrice: gas, completion: completion)
+            let delegateAddress = GethNewAddressFromHex(RelayAPIConfiguration.delegateAddress, &error)!
+            let tokenAddress = GethNewAddressFromHex(to, &error)!
+            sendManager._approve(tokenAddress: tokenAddress, delegateAddress: delegateAddress, tokenAmount: approve, gasPrice: gas, completion: completion)
         } else {
             userInfo["message"] = NSLocalizedString("approving token contract address not found", comment: "")
             let error = NSError(domain: "approve", code: 0, userInfo: userInfo)
@@ -188,7 +186,7 @@ class PlaceOrderDataManager {
      2. 如果够了，看lrc授权够不够，够则成功，如果不够需要授权是否等于=0，如果不是，先授权lrc = 0， 再授权lrc = max，是则直接授权lrc = max。看两笔授权支付的eth gas够不够，如果eth够则两次授权，不够失败
      3. 比较当前订单amounts + loopring_getEstimatedAllocatedAllowance() >< 账户授权tokens，够则成功，不够则看两笔授权支付的eth gas够不够，如果eth够则两次授权，不够失败
      如果是sell lrc，需要lrc fee + getFrozenLrcfee() + amounts(lrc) + loopring_getEstimatedAllocatedAllowance() >< 账户授权lrc
-     // 4. buy lrc不看前两点，只要3满足即可 */
+     4. buy lrc不看前两点，只要3满足即可 */
     func verify(order: OriginalOrder, completion: @escaping (String?, Error?) -> Void) -> Bool {
         if order.side == "buy" {
             if order.tokenBuy.uppercased() == "LRC" {
@@ -209,11 +207,12 @@ class PlaceOrderDataManager {
         var result: Data = Data()
         result.append(contentsOf: order.delegate.hexBytes)
         result.append(contentsOf: order.address.hexBytes)
-        result.append(contentsOf: tokenManager.getContractAddressBySymbol(symbol: order.tokenBuy)!.hexBytes)
-        result.append(contentsOf: tokenManager.getContractAddressBySymbol(symbol: order.tokenSell)!.hexBytes)
-        let (randomPrivateKey, randomWalletAddress) = Wallet.generateRandomWallet()
-        result.append(contentsOf: randomWalletAddress.hexBytes)
-        result.append(contentsOf: randomPrivateKey.hexBytes)
+        let tokens = TokenDataManager.shared.getAddress(by: order.tokenSell)!
+        result.append(contentsOf: tokens.hexBytes)
+        let tokenb = TokenDataManager.shared.getAddress(by: order.tokenBuy)!
+        result.append(contentsOf: tokenb.hexBytes)
+        result.append(contentsOf: order.walletAddress.hexBytes)
+        result.append(contentsOf: order.authAddr.hexBytes)
         result.append(contentsOf: _encode(order.amountSell, order.tokenSell))
         result.append(contentsOf: _encode(order.amountBuy, order.tokenBuy))
         result.append(contentsOf: _encode(order.validSince))
@@ -221,7 +220,7 @@ class PlaceOrderDataManager {
         result.append(contentsOf: _encode(order.lrcFee, "LRC"))
         let flag: [UInt8] = order.buyNoMoreThanAmountB ? [1] : [0]
         result.append(contentsOf: flag)
-        result.append(contentsOf: [UInt8(self.marginSplit * 100)])
+        result.append(contentsOf: [order.marginSplitPercentage])
         return result
     }
     
@@ -244,15 +243,12 @@ class PlaceOrderDataManager {
         let orderData = getOrderHash(order: order)
         SendCurrentAppWalletDataManager.shared._keystore()
         let signature = web3swift.sign(message: orderData)!
-        let (authPK, authAddr) = Wallet.generateRandomWallet()
-        let walletAddress = RelayAPIConfiguration.orderWalletAddress
         let amountB = _encodeString(order.amountBuy, order.tokenBuy)
         let amountS = _encodeString(order.amountSell, order.tokenSell)
         let lrcFee = _encodeString(order.lrcFee, "LRC")
-        let margin = UInt8(marginSplit * 100)
         let validSince = "0x" + String(format: "%2x", order.validSince)
         let validUntil = "0x" + String(format: "%2x", order.validUntil)
   
-        LoopringAPIRequest.submitOrder(owner: order.address, walletAddress: walletAddress, tokenS: order.tokenSell, tokenB: order.tokenBuy, amountS: amountS, amountB: amountB, lrcFee: lrcFee, validSince: validSince, validUntil: validUntil, marginSplitPercentage: margin, buyNoMoreThanAmountB: order.buyNoMoreThanAmountB, authAddr: authAddr, authPrivateKey: authPK, v: UInt(signature.v)!, r: signature.r, s: signature.s, completionHandler: completion)
+        LoopringAPIRequest.submitOrder(owner: order.address, walletAddress: order.walletAddress, tokenS: order.tokenSell, tokenB: order.tokenBuy, amountS: amountS, amountB: amountB, lrcFee: lrcFee, validSince: validSince, validUntil: validUntil, marginSplitPercentage: order.marginSplitPercentage, buyNoMoreThanAmountB: order.buyNoMoreThanAmountB, authAddr: order.authAddr, authPrivateKey: order.authPrivateKey, v: UInt(signature.v)!, r: signature.r, s: signature.s, completionHandler: completion)
     }
 }

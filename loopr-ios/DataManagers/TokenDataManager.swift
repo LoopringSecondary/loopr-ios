@@ -80,7 +80,7 @@ class TokenDataManager {
         return result
     }
     
-    func getContractAddressBySymbol(symbol: String) -> String? {
+    func getAddress(by symbol: String) -> String? {
         if let token = getTokenBySymbol(symbol) {
             return token.protocol_value
         } else {

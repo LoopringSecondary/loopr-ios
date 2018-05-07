@@ -84,9 +84,9 @@ class PlaceOrderDataManagerTests: XCTestCase {
         datass.append(contentsOf: [192, 42, 170, 57, 178, 35, 254, 141, 10, 14, 92, 79, 39, 234, 217, 8, 60, 117, 108, 194])
         // "0xEF68e7C694F40c8202821eDF525dE3782458639f" toknb addr
         datass.append(contentsOf: [239, 104, 231, 198, 148, 244, 12, 130, 2, 130, 30, 223, 82, 93, 227, 120, 36, 88, 99, 159])
-        // "0xb94065482ad64d4c2b9252358d746b39e820a582" auth wallet addr
+        // "0xb94065482ad64d4c2b9252358d746b39e820a582" exchanger wallet addr
         datass.append(contentsOf: [185, 64, 101, 72, 42, 214, 77, 76, 43, 146, 82, 53, 141, 116, 107, 57, 232, 32, 165, 130])
-        // "0x38c2657f780e4b286dbb8275e00b508c7afa3900" auth private key
+        // "0x38c2657f780e4b286dbb8275e00b508c7afa3900" auth wallet addr
         datass.append(contentsOf: [56, 194, 101, 127, 120, 14, 75, 40, 109, 187, 130, 117, 224, 11, 80, 140, 122, 250, 57, 0])
         // "0x12cde439d834e000" 1354990000000000000 amounts
         datass.append(contentsOf: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 205, 228, 57, 216, 52, 224, 0])
@@ -117,5 +117,11 @@ class PlaceOrderDataManagerTests: XCTestCase {
         let now = Int64(Date().timeIntervalSince1970)
         a = PlaceOrderDataManager.shared._encode(now)
         print(a)
+    }
+    
+    func testCancelOrder() {
+        let order = OriginalOrder(delegate: "0x17233e07c67d086464fD408148c3ABB56245FA64", address: "0xb94065482Ad64d4c2b9252358D746B39e820A582", side: "sell", tokenS: "LRC", tokenB: "WETH", validSince: Int64("0x5aeff2b5".dropFirst(2), radix: 16)!, validUntil: Int64("0x5af14435".dropFirst(2), radix: 16)!, amountBuy: 3, amountSell: 2000, lrcFee: 5.53, buyNoMoreThanAmountB: false, market: "LRC-WETH", hash: "0xefe541de23ef69eac1e2db0800eaf3c5f4180183fe0ebcf82ef2b2594a2cb054", v: 27, r: "0xb994a2816b643fa2b4e97add1d3c9651fd2a1e29ea6ad8d92b89eadabf411e32", s: "0x19342c8b83f314812af9ff18c196368b34549151d3e30026223f91ca01bc0894")
+        let data = SendCurrentAppWalletDataManager.shared._encodeOrder(order: order)
+        print(data.hexString)
     }
 }

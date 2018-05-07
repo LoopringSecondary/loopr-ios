@@ -165,16 +165,73 @@ class SendCurrentAppWalletDataManager {
         _transfer(data: data, address: wethAddress!, amount: amount, gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
-    // 目前传入delegate address
-    func _approve(contractAddress: GethAddress, toAddress: GethAddress, tokenAmount: GethBigInt, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
+    // contractAddress: token address, delegateAddress: loorping delegate address
+    func _approve(tokenAddress: GethAddress, delegateAddress: GethAddress, tokenAmount: GethBigInt, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
         guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
         }
-        let transferFunction = EthFunction(name: "approve", inputParameters: [toAddress, tokenAmount])
+        let transferFunction = EthFunction(name: "approve", inputParameters: [delegateAddress, tokenAmount])
         let data = web3swift.encode(transferFunction)
         let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "approve")!
         // amount must be 0 for ERC20 tokens.
-        _transfer(data: data, address: contractAddress, amount: GethBigInt.init(0), gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
+        _transfer(data: data, address: tokenAddress, amount: GethBigInt.init(0), gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
+    }
+    
+    func _encodeOrder(order: OriginalOrder) -> Data {
+        var data: Data = Data()
+        var error: NSError? = nil
+        var address: GethAddress
+        address = GethNewAddressFromHex(order.address, &error)!
+        data.append(contentsOf: try! EthTypeEncoder.default.encode(address).bytes)
+        let tokens = TokenDataManager.shared.getAddress(by: order.tokenSell)
+        address = GethNewAddressFromHex(tokens, &error)!
+        data.append(contentsOf: try! EthTypeEncoder.default.encode(address).bytes)
+        let tokenb = TokenDataManager.shared.getAddress(by: order.tokenBuy)
+        address = GethNewAddressFromHex(tokenb, &error)!
+        data.append(contentsOf: try! EthTypeEncoder.default.encode(address).bytes)
+        address = GethNewAddressFromHex(order.walletAddress, &error)!
+        data.append(contentsOf: try! EthTypeEncoder.default.encode(address).bytes)
+        address = GethNewAddressFromHex(order.authAddr, &error)!
+        data.append(contentsOf: try! EthTypeEncoder.default.encode(address).bytes)
+        
+        var value = GethBigInt.generateBigInt(valueInEther: order.amountSell, symbol: order.tokenSell)!
+        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
+        value = GethBigInt.generateBigInt(valueInEther: order.amountBuy, symbol: order.tokenBuy)!
+        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
+        value = GethBigInt.init(order.validSince)
+        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
+        value = GethBigInt.init(order.validUntil)
+        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
+        value = GethBigInt.generateBigInt(valueInEther: order.lrcFee, symbol: "LRC")!
+        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
+        
+        if order.buyNoMoreThanAmountB {
+            value = GethBigInt.generateBigInt(valueInEther: order.amountBuy, symbol: order.tokenBuy)!
+        } else {
+            value = GethBigInt.generateBigInt(valueInEther: order.amountSell, symbol: order.tokenSell)!
+        }
+        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
+        value = GethBigInt.init(order.buyNoMoreThanAmountB ? 1 : 0)
+        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
+        value = GethBigInt.init(Int64(order.marginSplitPercentage))
+        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
+        value = GethBigInt.init(Int64(order.v))
+        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
+        data.append(contentsOf: order.r.hexBytes)
+        data.append(contentsOf: order.s.hexBytes)
+        
+        data = Data("0x8c59f7ca".hexBytes) + data
+        return data
+    }
+    
+    func _cancelOrder(order: OriginalOrder, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
+        guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
+            return
+        }
+        let data = _encodeOrder(order: order)
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "cancelOrder")!
+
+        _transfer(data: data, address: protocolAddress!, amount: GethBigInt.init(0), gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
     func _cancelAllOrders(timestamp: GethBigInt/* TODO:check here*/, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
@@ -262,22 +319,6 @@ class SendCurrentAppWalletDataManager {
                     }
                 })
             }
-            /*
-            let nonce: Int64 = getNonceFromServerSynchronous()
-            let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getPassword())
-            if let signedTransactionData = try signedTransaction?.encodeRLP() {
-                sendTransactionToServer("0x" + signedTransactionData.hexString, completion: completion)
-            } else {
-                userInfo["message"] = NSLocalizedString("Failed to sign/encode", comment: "")
-                let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
-                completion(nil, error)
-            }
-            */
-        } catch {
-            userInfo["message"] = NSLocalizedString("Failed to encode transaction", comment: "")
-            let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
-            completion(nil, error)
         }
     }
-
 }
