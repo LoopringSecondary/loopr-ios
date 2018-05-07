@@ -36,12 +36,8 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         orderHistoryButton.setBackgroundImage(image?.alpha(0.3), for: .highlighted)
         orderHistoryButton.addTarget(self, action: #selector(self.pressOrderHistoryButton(_:)), for: UIControlEvents.touchUpInside)
         orderHistoryButton.frame = CGRect(x: 0, y: 0, width: 23, height: 23)
-
-        // getOrdersFromServer should be here. MarketSwipeViewController has four MarketViewController.
-        // If it's in the MarketViewController, getOrdersFromServer will be called four times.
-        OrderDataManager.shared.getOrdersFromServer()
     }
-    
+
     func setupChildViewControllers() {
         types = [.favorite, .ETH, .LRC, .all]
         

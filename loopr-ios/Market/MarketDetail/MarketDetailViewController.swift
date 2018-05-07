@@ -33,6 +33,12 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
         setBackButton()
         udpateStarButton()
+        
+        OrderDataManager.shared.getOrdersFromServer(completionHandler: { orders, error in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -83,9 +89,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     func udpateStarButton() {
         var icon: UIImage?
         if market!.isFavorite() {
-            icon = UIImage (named: "Star")?.withRenderingMode(.alwaysOriginal)
+            icon = UIImage(named: "Star")?.withRenderingMode(.alwaysOriginal)
         } else {
-            icon = UIImage (named: "StarOutline")?.withRenderingMode(.alwaysOriginal)
+            icon = UIImage(named: "StarOutline")?.withRenderingMode(.alwaysOriginal)
         }
         let starButton = UIBarButtonItem(image: icon, style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.pressStarButton(_:)))
         self.navigationItem.rightBarButtonItem = starButton
@@ -114,7 +120,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         case 0:
             return 1
         case 1:
-            return OrderDataManager.shared.getOrders(orderStatuses: [.opened]).count
+            return OrderDataManager.shared.getOrders(orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown]).count + 1
         default:
             return OrderDataManager.shared.getOrders(orderStatuses: [.finished]).count
         }
@@ -125,9 +131,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         case 0:
             return nil
         case 1:
-            return "Open Orders"
+            return NSLocalizedString("Orders", comment: "")
         case 2:
-            return "Recent Trade"
+            return NSLocalizedString("Trades", comment: "")
         default:
             return nil
         }
@@ -215,17 +221,38 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             return cell!
 
         } else if indexPath.section == 1 {
-            var cell = tableView.dequeueReusableCell(withIdentifier: OpenOrderTableViewCell.getCellIdentifier()) as? OpenOrderTableViewCell
-            if cell == nil {
-                let nib = Bundle.main.loadNibNamed("OpenOrderTableViewCell", owner: self, options: nil)
-                cell = nib![0] as? OpenOrderTableViewCell
-                cell?.selectionStyle = .none
+            if indexPath.row == 0 {
+                var cell = tableView.dequeueReusableCell(withIdentifier: CancelAllOpenOrdersTableViewCell.getCellIdentifier()) as? CancelAllOpenOrdersTableViewCell
+                if cell == nil {
+                    let nib = Bundle.main.loadNibNamed("CancelAllOpenOrdersTableViewCell", owner: self, options: nil)
+                    cell = nib![0] as? CancelAllOpenOrdersTableViewCell
+                    cell?.selectionStyle = .none
+                }
+                
+                cell?.pressedCancelAllButtonClosure = {
+                    let alert = UIAlertController(title: "You are going to cancel all open orders.", message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+                        print("Confirm to cancel all orders")
+                    }))
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+                        
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+                return cell!
+            } else {
+                var cell = tableView.dequeueReusableCell(withIdentifier: OpenOrderTableViewCell.getCellIdentifier()) as? OpenOrderTableViewCell
+                if cell == nil {
+                    let nib = Bundle.main.loadNibNamed("OpenOrderTableViewCell", owner: self, options: nil)
+                    cell = nib![0] as? OpenOrderTableViewCell
+                    cell?.selectionStyle = .none
+                }
+                
+                cell?.order = OrderDataManager.shared.getOrders(orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown])[indexPath.row-1]
+                cell?.update()
+                return cell!
             }
-            
-            cell?.order = OrderDataManager.shared.getOrders(orderStatuses: [.opened])[indexPath.row]
-            cell?.update()
-            return cell!
-
         } else {            
             var cell = tableView.dequeueReusableCell(withIdentifier: TradeTableViewCell.getCellIdentifier()) as? TradeTableViewCell
             if cell == nil {
@@ -243,6 +270,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        /*
         // TODO: Use UIAlertController or PopupDialog
         if indexPath.section == 1 {
             // TODO: Pass a view controller to PopupDialog https://github.com/Orderella/PopupDialog#custom-view-controller
@@ -272,6 +300,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             }))
             self.present(alert, animated: true, completion: nil)
         }
+        */
     }
 
 }

@@ -82,7 +82,7 @@ class OrderDataManager {
         return result
     }
 
-    func getOrdersFromServer() {
+    func getOrdersFromServer(completionHandler: @escaping (_ orders: [Order]?, _ error: Error?) -> Void) {
         if let owner = self.owner {
             LoopringAPIRequest.getOrders(owner: owner) { orders, error in
                 guard let orders = orders, error == nil else {
@@ -98,6 +98,8 @@ class OrderDataManager {
                     self.dateOrders[valid]!.append(order)
                 }
                 self.orders = orders
+                
+                completionHandler(orders, error)
             }
         }
     }

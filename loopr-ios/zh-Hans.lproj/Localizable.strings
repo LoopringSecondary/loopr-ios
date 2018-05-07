@@ -89,3 +89,7 @@
 "1 Day" = "1天";
 "1 Week" = "1周";
 "1 Month" = "1月";
+"Orders" = "订单";
+"Trades" = "历史订单";
+"Cancel All" = "取消全部";
+

@@ -402,6 +402,8 @@
 		AC76E4702047F1D3008BA229 /* CircleChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76E46F2047F1D3008BA229 /* CircleChart.swift */; };
 		AC76E47320493CAE008BA229 /* SettingLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76E47120493CAE008BA229 /* SettingLanguageViewController.swift */; };
 		AC76E47420493CAE008BA229 /* SettingLanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */; };
+		AC78FC35209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78FC33209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift */; };
+		AC78FC36209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC78FC34209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib */; };
 		AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E422022B93A0071D477 /* AppDelegate.swift */; };
 		AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC798E482022B93A0071D477 /* Main.storyboard */; };
 		AC798E4C2022B93A0071D477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC798E4B2022B93A0071D477 /* Assets.xcassets */; };
@@ -841,6 +843,8 @@
 		AC76E46F2047F1D3008BA229 /* CircleChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleChart.swift; sourceTree = "<group>"; };
 		AC76E47120493CAE008BA229 /* SettingLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageViewController.swift; sourceTree = "<group>"; };
 		AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLanguageViewController.xib; sourceTree = "<group>"; };
+		AC78FC33209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelAllOpenOrdersTableViewCell.swift; sourceTree = "<group>"; };
+		AC78FC34209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CancelAllOpenOrdersTableViewCell.xib; sourceTree = "<group>"; };
 		AC798E3F2022B93A0071D477 /* loopr-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "loopr-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC798E422022B93A0071D477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC798E492022B93A0071D477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1730,6 +1734,8 @@
 				ACB9118720265DEA00F14644 /* MarketDetailViewController.xib */,
 				AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */,
 				AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */,
+				AC78FC33209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift */,
+				AC78FC34209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib */,
 				ACBDB1C32032D050003463A4 /* OpenOrderTableViewCell.swift */,
 				ACBDB1C42032D050003463A4 /* OpenOrderTableViewCell.xib */,
 				ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */,
@@ -2285,6 +2291,7 @@
 				ACA677D0207D1BEC00D34A2F /* SettingChangeWalletNameViewController.xib in Resources */,
 				AC798E4C2022B93A0071D477 /* Assets.xcassets in Resources */,
 				AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */,
+				AC78FC36209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib in Resources */,
 				AC54FD5E204FC6C7007E1DEB /* Lato-BoldItalic.ttf in Resources */,
 				AC31B93620493FB900B16155 /* SettingLanguageTableViewCell.xib in Resources */,
 				AC31CE40205B604100A30335 /* Linotype-DINNextLTPro-Medium.otf in Resources */,
@@ -2632,6 +2639,7 @@
 				AC4141FB20352DE50089861D /* SwipeTabItemView.swift in Sources */,
 				AC4F601320773E9D00F1D954 /* EthType.swift in Sources */,
 				ACB9116E2025575A00F14644 /* MarketNavigationViewController.swift in Sources */,
+				AC78FC35209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift in Sources */,
 				AC4F601420773E9D00F1D954 /* EthError.swift in Sources */,
 				AC4142062038B66F0089861D /* AppWallet.swift in Sources */,
 				ACB97C7020715BC100775D4C /* MnemonicQuestion.swift in Sources */,

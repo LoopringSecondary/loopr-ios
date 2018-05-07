@@ -7,6 +7,8 @@
 //
 
 import XCTest
+import Geth
+@testable import loopr_ios
 
 class PlaceOrderDataManagerTests: XCTestCase {
     

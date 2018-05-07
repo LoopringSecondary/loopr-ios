@@ -13,6 +13,7 @@ enum OrderStatus: String, CustomStringConvertible {
     case finished = "ORDER_FINISHED"
     case cutoff = "ORDER_CUTOFF"
     case cancelled = "ORDER_CANCELLED"
+    case expire = "ORDER_EXPIRE"
     case unknown = "ORDER_UNKNOWN"
 
     var description: String {
@@ -21,6 +22,7 @@ enum OrderStatus: String, CustomStringConvertible {
         case .cutoff: return "Cancelled"
         case .finished: return "Finished"
         case .cancelled: return "Cancelled"
+        case .expire: return "Expire"
         case .unknown: return "Unknown"
         }
     }
