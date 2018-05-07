@@ -52,6 +52,6 @@ class CancelAllOpenOrdersTableViewCell: UITableViewCell {
     }
 
     class func getHeight() -> CGFloat {
-        return 90
+        return 80
     }
 }

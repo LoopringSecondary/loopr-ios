@@ -59,8 +59,8 @@
 		94E185972051451C00D86FFA /* Initable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185962051451C00D86FFA /* Initable.swift */; };
 		94E185992051455C00D86FFA /* SimpleRespond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185982051455C00D86FFA /* SimpleRespond.swift */; };
 		94E1976E2099A68200E70E42 /* OrderDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E1976D2099A68200E70E42 /* OrderDataManagerTests.swift */; };
-		94E665E9207234C5001328BF /* OrderHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E665E7207234C5001328BF /* OrderHistoryTableViewCell.swift */; };
-		94E665EA207234C5001328BF /* OrderHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E665E8207234C5001328BF /* OrderHistoryTableViewCell.xib */; };
+		94E665E9207234C5001328BF /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E665E7207234C5001328BF /* OrderTableViewCell.swift */; };
+		94E665EA207234C5001328BF /* OrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E665E8207234C5001328BF /* OrderTableViewCell.xib */; };
 		94EB84DC2095E69600FFE40E /* AssetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB84DA2095E69600FFE40E /* AssetCollectionViewCell.swift */; };
 		94EB84DD2095E69600FFE40E /* AssetCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94EB84DB2095E69600FFE40E /* AssetCollectionViewCell.xib */; };
 		9AACD1A68297585D93FB6182 /* Pods_loopr_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFC6AA9DC8C999B66FFD8AA /* Pods_loopr_iosTests.framework */; };
@@ -498,8 +498,6 @@
 		ACBA47EB207897C60032C2B4 /* SettingWalletDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBA47E9207897C60032C2B4 /* SettingWalletDetailViewController.xib */; };
 		ACBA47EE207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA47EC207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.swift */; };
 		ACBA47EF207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBA47ED207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.xib */; };
-		ACBDB1C52032D050003463A4 /* OpenOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBDB1C32032D050003463A4 /* OpenOrderTableViewCell.swift */; };
-		ACBDB1C62032D050003463A4 /* OpenOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBDB1C42032D050003463A4 /* OpenOrderTableViewCell.xib */; };
 		ACC2A2CF209EC39E00F2B7A1 /* OrderExpire.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC2A2CE209EC39E00F2B7A1 /* OrderExpire.swift */; };
 		ACCC7EA32082BE0B008E58BA /* ImportMnemonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCC7EA22082BE0B008E58BA /* ImportMnemonicTests.swift */; };
 		ACCCFDCE203BEF2200B98F99 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */; };
@@ -616,8 +614,8 @@
 		94E185962051451C00D86FFA /* Initable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initable.swift; sourceTree = "<group>"; };
 		94E185982051455C00D86FFA /* SimpleRespond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRespond.swift; sourceTree = "<group>"; };
 		94E1976D2099A68200E70E42 /* OrderDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDataManagerTests.swift; sourceTree = "<group>"; };
-		94E665E7207234C5001328BF /* OrderHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewCell.swift; sourceTree = "<group>"; };
-		94E665E8207234C5001328BF /* OrderHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistoryTableViewCell.xib; sourceTree = "<group>"; };
+		94E665E7207234C5001328BF /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
+		94E665E8207234C5001328BF /* OrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderTableViewCell.xib; sourceTree = "<group>"; };
 		94EB84DA2095E69600FFE40E /* AssetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCollectionViewCell.swift; sourceTree = "<group>"; };
 		94EB84DB2095E69600FFE40E /* AssetCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC061937208401EB0060F416 /* MnemonicAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicAddressTableViewCell.swift; sourceTree = "<group>"; };
@@ -945,8 +943,6 @@
 		ACBA47E9207897C60032C2B4 /* SettingWalletDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingWalletDetailViewController.xib; sourceTree = "<group>"; };
 		ACBA47EC207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportKeystoreEnterPasswordViewController.swift; sourceTree = "<group>"; };
 		ACBA47ED207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportKeystoreEnterPasswordViewController.xib; sourceTree = "<group>"; };
-		ACBDB1C32032D050003463A4 /* OpenOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOrderTableViewCell.swift; sourceTree = "<group>"; };
-		ACBDB1C42032D050003463A4 /* OpenOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenOrderTableViewCell.xib; sourceTree = "<group>"; };
 		ACC2A2CE209EC39E00F2B7A1 /* OrderExpire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderExpire.swift; sourceTree = "<group>"; };
 		ACCC7EA22082BE0B008E58BA /* ImportMnemonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportMnemonicTests.swift; sourceTree = "<group>"; };
 		ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
@@ -1633,8 +1629,8 @@
 				94E665E32071DFD4001328BF /* SearchHistory */,
 				AC952A122053A84800C78562 /* OrderHistoryViewController.swift */,
 				AC952A132053A84800C78562 /* OrderHistoryViewController.xib */,
-				94E665E7207234C5001328BF /* OrderHistoryTableViewCell.swift */,
-				94E665E8207234C5001328BF /* OrderHistoryTableViewCell.xib */,
+				94E665E7207234C5001328BF /* OrderTableViewCell.swift */,
+				94E665E8207234C5001328BF /* OrderTableViewCell.xib */,
 			);
 			path = OrderHistory;
 			sourceTree = "<group>";
@@ -1736,8 +1732,6 @@
 				AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */,
 				AC78FC33209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift */,
 				AC78FC34209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib */,
-				ACBDB1C32032D050003463A4 /* OpenOrderTableViewCell.swift */,
-				ACBDB1C42032D050003463A4 /* OpenOrderTableViewCell.xib */,
 				ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */,
 				ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */,
 			);
@@ -2193,7 +2187,7 @@
 				AC31CEA2205B9C1800A30335 /* Montserrat-ExtraLight.ttf in Resources */,
 				AC5E0DDF203B447700AF03C7 /* WalletBalanceTableViewCell.xib in Resources */,
 				AC31CE5C205B993E00A30335 /* Roboto-BlackItalic.ttf in Resources */,
-				94E665EA207234C5001328BF /* OrderHistoryTableViewCell.xib in Resources */,
+				94E665EA207234C5001328BF /* OrderTableViewCell.xib in Resources */,
 				AC54FD64204FC6CE007E1DEB /* Lato-HairlineItalic.ttf in Resources */,
 				94C5E79520738ADE0074B939 /* OrderSearchViewController.xib in Resources */,
 				AC4141F0203524280089861D /* MarketSwipeViewController.xib in Resources */,
@@ -2237,7 +2231,6 @@
 				ACBA47E7207890910032C2B4 /* SettingManageWalletTableViewCell.xib in Resources */,
 				AC54FD8E204FC6FF007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				ACBA47EF207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.xib in Resources */,
-				ACBDB1C62032D050003463A4 /* OpenOrderTableViewCell.xib in Resources */,
 				ACB9118920265DEA00F14644 /* MarketDetailViewController.xib in Resources */,
 				943A9A4220909597008BCBFD /* AssetTransactionWebViewController.xib in Resources */,
 				AC31CE6B205B995100A30335 /* Roboto-LightItalic.ttf in Resources */,
@@ -2690,7 +2683,7 @@
 				ACB729D4205DE21B00DD4DF3 /* TradeConfirmationViewController.swift in Sources */,
 				94189CC12078B88700AA2CF4 /* OrderSearchResultViewController.swift in Sources */,
 				AC387523205F141000A76637 /* AddMenuViewController.swift in Sources */,
-				94E665E9207234C5001328BF /* OrderHistoryTableViewCell.swift in Sources */,
+				94E665E9207234C5001328BF /* OrderTableViewCell.swift in Sources */,
 				AC9280E1202EC53D0009B574 /* TradeNavigationViewController.swift in Sources */,
 				AC5E3E74205E22080051ACFC /* NotificationName.swift in Sources */,
 				AC31B95F204A8E4F00B16155 /* WalletDescriptor.swift in Sources */,
@@ -2721,7 +2714,6 @@
 				ACB9119F202967A500F14644 /* OrderStatus.swift in Sources */,
 				ACB9117520255A6600F14644 /* MarketTableViewCell.swift in Sources */,
 				941B1EFC209C41BC00710DFF /* GasDataManager.swift in Sources */,
-				ACBDB1C52032D050003463A4 /* OpenOrderTableViewCell.swift in Sources */,
 				AC70E84B20681A2900451047 /* GenerateWalletConfirmPasswordViewController.swift in Sources */,
 				AC31B94C204A8DF400B16155 /* KeyStore.Error.swift in Sources */,
 				AC31B94E204A8DF400B16155 /* KeystoreKey.swift in Sources */,

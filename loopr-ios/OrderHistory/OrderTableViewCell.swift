@@ -1,5 +1,5 @@
 //
-//  OrderHistoryTableViewCell.swift
+//  OrderTableViewCell.swift
 //  loopr-ios
 //
 //  Created by kenshin on 2018/4/2.
@@ -8,12 +8,11 @@
 
 import UIKit
 
-class OrderHistoryTableViewCell: UITableViewCell {
+class OrderTableViewCell: UITableViewCell {
 
     var order: Order?
     let asset = CurrentAppWalletDataManager.shared
     let market = MarketDataManager.shared
-    let price = PriceDataManager.shared
     
     @IBOutlet weak var filledPieChart: CircleChart!
     @IBOutlet weak var tradingPairLabel: UILabel!
@@ -23,6 +22,8 @@ class OrderHistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var displayLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
     
+    var pressedCancelButtonClosure: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,27 +31,53 @@ class OrderHistoryTableViewCell: UITableViewCell {
     
     func update() {
         guard let order = self.order else { return }
+        
+        setupTradingPairlabel(order: order)
+        setupVolumeLabel(order: order)
+        setupAmountLabel(order: order)
         setupPriceLabel(order: order)
         setupOrderTypeLabel(order: order)
         setupOrderFilled(order: order)
-        tradingPairLabel.text = order.tradingPairDescription
-        volumeLabel.text = "Vol " + order.dealtAmountS.description
+        
+        cancelButton.backgroundColor = UIColor.clear
+        cancelButton.titleColor = UIColor.black
+        cancelButton.layer.borderWidth = 0.5
+        cancelButton.layer.borderColor = UIColor.black.cgColor
         cancelButton.layer.cornerRadius = 15
-        cancelButton.layer.borderColor = UIColor.gray.cgColor
-        cancelButton.borderWidth = 0.5
+        cancelButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 12.0)
+    }
+    
+    func setupTradingPairlabel(order: Order) {
+        tradingPairLabel.theme_textColor = GlobalPicker.textColor
+        tradingPairLabel.text = order.tradingPairDescription
+        tradingPairLabel.font = FontConfigManager.shared.getLabelFont()
+    }
+    
+    func setupVolumeLabel(order: Order) {
+        volumeLabel.text = "Vol " + order.dealtAmountS.description
+        volumeLabel.theme_textColor = ["#a0a0a0", "#fff"]
+        volumeLabel.font = FontConfigManager.shared.getLabelFont()
+    }
+    
+    func setupAmountLabel(order: Order) {
+        if order.originalOrder.side.lowercased() == "sell" {
+            amountLabel.text = order.originalOrder.amountSell.description
+        } else if order.originalOrder.side.lowercased() == "buy" {
+            amountLabel.text = order.originalOrder.amountBuy.description
+        }
+        amountLabel.theme_textColor = GlobalPicker.textColor
+        amountLabel.font = FontConfigManager.shared.getLabelFont()
     }
     
     func setupPriceLabel(order: Order) {
-        let trade = order.originalOrder.market
-        let balance = market.getBalance(of: trade)
-        amountLabel.text = balance.description
-        let pair = trade.components(separatedBy: "-")
-        if let price = price.getPriceBySymbol(of: pair[0]) {
+        let pair = order.originalOrder.market.components(separatedBy: "-")
+        if let price = PriceDataManager.shared.getPriceBySymbol(of: pair[0]) {
             displayLabel.text = price.currency
         } else {
             displayLabel.text = "--"
         }
-        displayLabel.textColor = .gray
+        displayLabel.theme_textColor = ["#a0a0a0", "#fff"]
+        displayLabel.font = FontConfigManager.shared.getLabelFont()
     }
     
     func setupOrderTypeLabel(order: Order) {
@@ -90,8 +117,14 @@ class OrderHistoryTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func pressedCancelButton(_ sender: Any) {
+        if let btnAction = self.pressedCancelButtonClosure {
+            btnAction()
+        }
+    }
+    
     class func getCellIdentifier() -> String {
-        return "OrderHistoryTableViewCell"
+        return "OrderTableViewCell"
     }
     
     class func getHeight() -> CGFloat {

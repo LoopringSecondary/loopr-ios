@@ -8,7 +8,6 @@
 
 import UIKit
 
-//TODO: AssetTransactionTableViewCell is similar to OpenOrderTableViewCell and TradeTableViewCell. Keep AssetTransactionTableViewCell empty now.
 class AssetTransactionTableViewCell: UITableViewCell {
 
     var transaction: Transaction?

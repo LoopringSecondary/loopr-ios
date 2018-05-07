@@ -175,7 +175,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             }
 
         } else if indexPath.section == 1 {
-            return OpenOrderTableViewCell.getHeight()
+            return OrderTableViewCell.getHeight()
         } else {
             return TradeTableViewCell.getHeight()
         }
@@ -242,15 +242,24 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 
                 return cell!
             } else {
-                var cell = tableView.dequeueReusableCell(withIdentifier: OpenOrderTableViewCell.getCellIdentifier()) as? OpenOrderTableViewCell
+                var cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.getCellIdentifier()) as? OrderTableViewCell
                 if cell == nil {
-                    let nib = Bundle.main.loadNibNamed("OpenOrderTableViewCell", owner: self, options: nil)
-                    cell = nib![0] as? OpenOrderTableViewCell
-                    cell?.selectionStyle = .none
+                    let nib = Bundle.main.loadNibNamed("OrderTableViewCell", owner: self, options: nil)
+                    cell = nib![0] as? OrderTableViewCell
                 }
                 
                 cell?.order = OrderDataManager.shared.getOrders(orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown])[indexPath.row-1]
                 cell?.update()
+                cell?.pressedCancelButtonClosure = {
+                    let alert = UIAlertController(title: "You are going to cancel the order.", message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+                        print("Confirm to cancel the order")
+                    }))
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+                        
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
                 return cell!
             }
         } else {            
@@ -269,6 +278,14 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == 1 && indexPath.row > 0 {
+            let order = OrderDataManager.shared.getOrders(orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown])[indexPath.row-1]
+            let viewController = OrderDetailViewController()
+            viewController.order = order
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
         
         /*
         // TODO: Use UIAlertController or PopupDialog

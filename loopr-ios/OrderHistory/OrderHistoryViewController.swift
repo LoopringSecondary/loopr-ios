@@ -10,6 +10,7 @@ import UIKit
 
 class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    // These data need to be loaded when viewDidLoad() is called. Users can also pull to refresh the table view.
     var orderDates: [String] = []
     var orders: [String: [Order]] = [:]
 
@@ -27,7 +28,6 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         historyTableView.dataSource = self
         historyTableView.delegate = self
         historyTableView.tableFooterView = UIView()
-        orderDates = orders.keys.sorted(by: >)
         
         let orderSearchButton = UIButton(type: UIButtonType.custom)
         let image = UIImage(named: "Order-history-black")
@@ -44,6 +44,8 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         }
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        
+        getOrderHistoryFromRelay()
     }
     
     @objc func pressOrderSearchButton(_ button: UIBarButtonItem) {
@@ -66,6 +68,8 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
     func getOrderHistoryFromRelay() {
         OrderDataManager.shared.getOrdersFromServer(completionHandler: { orders, error in
             DispatchQueue.main.async {
+                self.orders = OrderDataManager.shared.getDateOrders(tokenSymbol: nil)
+                self.orderDates = self.orders.keys.sorted(by: >)
                 self.historyTableView.reloadData()
                 self.refreshControl.endRefreshing()
             }
@@ -77,14 +81,14 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return OrderHistoryTableViewCell.getHeight()
+        return OrderTableViewCell.getHeight()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: OrderHistoryTableViewCell.getCellIdentifier()) as? OrderHistoryTableViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.getCellIdentifier()) as? OrderTableViewCell
         if cell == nil {
-            let nib = Bundle.main.loadNibNamed("OrderHistoryTableViewCell", owner: self, options: nil)
-            cell = nib![0] as? OrderHistoryTableViewCell
+            let nib = Bundle.main.loadNibNamed("OrderTableViewCell", owner: self, options: nil)
+            cell = nib![0] as? OrderTableViewCell
         }
         cell?.order = orders[orderDates[indexPath.section]]![indexPath.row]
         cell?.update()
@@ -101,14 +105,15 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 45
+        return 30
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 25))
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
         headerView.backgroundColor = UIColor.white
-        let headerLabel = UILabel(frame: CGRect(x: 10, y: 7, width: view.frame.size.width, height: 25))
-        headerLabel.textColor = UIColor.gray
+        let headerLabel = UILabel(frame: CGRect(x: 10, y: 0, width: view.frame.size.width, height: 30))
+        headerLabel.textColor = UIColor.black.withAlphaComponent(0.3)
+        headerLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 17)
         headerLabel.text = orderDates[section]
         headerView.addSubview(headerLabel)
         return headerView

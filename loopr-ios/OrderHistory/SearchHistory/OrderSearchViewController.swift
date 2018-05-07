@@ -146,10 +146,10 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if enteredSearchText {
-            var cell = tableView.dequeueReusableCell(withIdentifier: OrderHistoryTableViewCell.getCellIdentifier()) as? OrderHistoryTableViewCell
+            var cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.getCellIdentifier()) as? OrderTableViewCell
             if cell == nil {
-                let nib = Bundle.main.loadNibNamed("OrderHistoryTableViewCell", owner: self, options: nil)
-                cell = nib![0] as? OrderHistoryTableViewCell
+                let nib = Bundle.main.loadNibNamed("OrderTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? OrderTableViewCell
             }
             cell?.order = orders[orderDates[indexPath.section]]![indexPath.row]
             cell?.update()
@@ -222,7 +222,7 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if enteredSearchText {
-            return OrderHistoryTableViewCell.getHeight()
+            return OrderTableViewCell.getHeight()
         } else {
             return OrderHistorySearchResultCell.getHeight()
         }
