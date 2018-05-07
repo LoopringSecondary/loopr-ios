@@ -28,12 +28,14 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     var tokenTotalAmountLabel = UILabel()
 
     // Address
+    var addressY: CGFloat = 0.0
     var addressTextField: UITextField = UITextField()
     var scanButton: UIButton = UIButton()
     var addressUnderLine: UIView = UIView()
     var addressInfoLabel: UILabel = UILabel()
 
     // Amount
+    var amountY: CGFloat = 0.0
     var amountTextField: UITextField = UITextField()
     var tokenSymbolLabel: UILabel = UILabel()
     var amountUnderline: UIView = UIView()
@@ -111,6 +113,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         addressTextField.contentMode = UIViewContentMode.bottom
         addressTextField.frame = CGRect(x: padding, y: tokenTotalAmountLabel.frame.maxY + padding*3, width: screenWidth-padding*2-40, height: 40)
         scrollView.addSubview(addressTextField)
+        addressY = addressTextField.frame.minY
         
         scanButton.image = UIImage(named: "Scan")
         scanButton.frame = CGRect(x: screenWidth-padding-30, y: addressTextField.frame.origin.y, width: 40, height: 40)
@@ -137,6 +140,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         amountTextField.contentMode = UIViewContentMode.bottom
         amountTextField.frame = CGRect(x: padding, y: addressInfoLabel.frame.maxY + padding*1.5, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(amountTextField)
+        amountY = amountTextField.frame.minY
 
         tokenSymbolLabel.font = FontConfigManager.shared.getLabelFont()
         tokenSymbolLabel.textAlignment = .right
@@ -449,11 +453,25 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             // Get the the distance from the bottom safe area edge to the bottom of the screen
             let window = UIApplication.shared.keyWindow
             let bottomPadding = window?.safeAreaInsets.bottom
-            scrollViewButtonLayoutConstraint.constant = systemKeyboardHeight + 47*UIStyleConfig.scale + 15*2
-            sendButtonBackgroundViewBottomLayoutContraint.constant = systemKeyboardHeight - bottomPadding!
+
+            self.scrollViewButtonLayoutConstraint.constant = systemKeyboardHeight + 47*UIStyleConfig.scale + 15*2
+            self.sendButtonBackgroundViewBottomLayoutContraint.constant = systemKeyboardHeight - bottomPadding!
+
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+                // animation for layout constraint change.
+                self.view.layoutIfNeeded()
+                if self.addressY - self.scrollView.contentOffset.y < 0 || self.addressY - self.scrollView.contentOffset.y > self.scrollViewButtonLayoutConstraint.constant {
+                    self.scrollView.setContentOffset(CGPoint.init(x: 0, y: self.addressY + 30), animated: true)
+                }
+                
+            }, completion: { _ in
+
+            })
+            
         } else {
             sendButtonBackgroundViewBottomLayoutContraint.constant = systemKeyboardHeight
         }
+        // self.scrollView.setContentOffset(CGPoint.zero, animated: true)
     }
     
     @objc func keyboardWillDisappear(notification: NSNotification?) {
@@ -469,20 +487,25 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     func showNumericKeyboard(textField: UITextField) {
         if !isNumericKeyboardShow {
             let width = self.view.frame.width
-            let height = self.sendButtonBackgroundView.frame.origin.y
+            let height = self.view.frame.height
             scrollViewButtonLayoutConstraint.constant = DefaultNumericKeyboard.height
             numericKeyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: DefaultNumericKeyboard.height))
             numericKeyboardView.delegate = self
             view.addSubview(numericKeyboardView)
             view.bringSubview(toFront: sendButtonBackgroundView)
             view.bringSubview(toFront: sendButton)
-            let destinateY = height - DefaultNumericKeyboard.height
+            let destinateY = height - DefaultNumericKeyboard.height - sendButtonBackgroundViewHeightLayoutContraint.constant
             
             // TODO: improve the animation.
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
                 self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
+                if self.amountY - self.scrollView.contentOffset.y < 0 || self.addressY - self.scrollView.contentOffset.y > self.scrollViewButtonLayoutConstraint.constant {
+                    self.scrollView.setContentOffset(CGPoint.init(x: 0, y: self.amountY - 120*UIStyleConfig.scale), animated: true)
+                }
+                
             }, completion: { _ in
                 self.isNumericKeyboardShow = true
+                self.scrollViewButtonLayoutConstraint.constant = DefaultNumericKeyboard.height + self.sendButtonBackgroundViewHeightLayoutContraint.constant
             })
         }
     }
@@ -493,21 +516,20 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             let height = self.sendButtonBackgroundView.frame.origin.y
             let destinateY = height
             self.scrollViewButtonLayoutConstraint.constant = 0
-            self.scrollView.setContentOffset(CGPoint.zero, animated: true)
+
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
                 // animation for layout constraint change.
                 self.view.layoutIfNeeded()
                 self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
-            }, completion: { finished in
+                // self.scrollView.setContentOffset(CGPoint.zero, animated: true)
+            }, completion: { _ in
                 self.isNumericKeyboardShow = false
-                if finished {
-                }
             })
             if validateAmount() {
                 validation()
             }
         } else {
-            // self.scrollView.setContentOffset(CGPoint.zero, animated: true)
+            
         }
     }
     
