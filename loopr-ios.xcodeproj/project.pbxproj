@@ -404,6 +404,7 @@
 		AC76E47420493CAE008BA229 /* SettingLanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */; };
 		AC78FC35209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78FC33209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift */; };
 		AC78FC36209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC78FC34209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib */; };
+		AC78FC3820A176CE00992AE8 /* OrderBookDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78FC3720A176CE00992AE8 /* OrderBookDataManager.swift */; };
 		AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E422022B93A0071D477 /* AppDelegate.swift */; };
 		AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC798E482022B93A0071D477 /* Main.storyboard */; };
 		AC798E4C2022B93A0071D477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC798E4B2022B93A0071D477 /* Assets.xcassets */; };
@@ -843,6 +844,7 @@
 		AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLanguageViewController.xib; sourceTree = "<group>"; };
 		AC78FC33209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelAllOpenOrdersTableViewCell.swift; sourceTree = "<group>"; };
 		AC78FC34209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CancelAllOpenOrdersTableViewCell.xib; sourceTree = "<group>"; };
+		AC78FC3720A176CE00992AE8 /* OrderBookDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBookDataManager.swift; sourceTree = "<group>"; };
 		AC798E3F2022B93A0071D477 /* loopr-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "loopr-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC798E422022B93A0071D477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC798E492022B93A0071D477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1886,6 +1888,7 @@
 				940B45182060F67D00ADE2B9 /* ConvertDataManager.swift */,
 				940B451C2060F67E00ADE2B9 /* MarketDataManager.swift */,
 				940B45122060F67B00ADE2B9 /* OrderDataManager.swift */,
+				AC78FC3720A176CE00992AE8 /* OrderBookDataManager.swift */,
 				940B45132060F67B00ADE2B9 /* PlaceOrderDataManager.swift */,
 				940B45142060F67C00ADE2B9 /* PriceDataManager.swift */,
 				940B45192060F67D00ADE2B9 /* SendAssetDataManager.swift */,
@@ -2605,6 +2608,7 @@
 				ACB5DDA6202D704200140A09 /* UIButtonExtension.swift in Sources */,
 				AC31B948204A8DF400B16155 /* Address.swift in Sources */,
 				AC387518205F12F100A76637 /* ContextMenu+MenuStyle.swift in Sources */,
+				AC78FC3820A176CE00992AE8 /* OrderBookDataManager.swift in Sources */,
 				AC5E0DE4203BC4B100AF03C7 /* FloatLabelTextField.swift in Sources */,
 				AC3756802039198300AADC60 /* GenerateMnemonicViewController.swift in Sources */,
 				FF9C7DDC208D59EA004687AD /* SettingsBundleHelper.swift in Sources */,

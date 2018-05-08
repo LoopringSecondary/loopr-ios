@@ -37,12 +37,12 @@ class LoopringAPIRequest {
     }
 
     // TODO: how to handle unknown status?
-    static func getOrders(owner: String? = nil, orderHash: String? = nil, status: String? = nil, market: String? = nil, pageIndex: UInt = 1, pageSize: UInt = 40, completionHandler: @escaping (_ orders: [Order]?, _ error: Error?) -> Void) {
+    static func getOrders(owner: String? = nil, orderHash: String? = nil, status: String? = nil, market: String? = nil, side: String? = nil, pageIndex: UInt = 1, pageSize: UInt = 40, completionHandler: @escaping (_ orders: [Order]?, _ error: Error?) -> Void) {
         
         var body: JSON = JSON()
         
         body["method"] = "loopring_getOrders"
-        body["params"] = [["owner": owner, "orderHash": orderHash, "delegateAddress": RelayAPIConfiguration.delegateAddress, "status": status, "market": market, "pageIndex": pageIndex, "pageSize": pageSize]]
+        body["params"] = [["owner": owner, "orderHash": orderHash, "delegateAddress": RelayAPIConfiguration.delegateAddress, "status": status, "market": market, "side": side, "pageIndex": pageIndex, "pageSize": pageSize]]
         body["id"] = JSON(UUID().uuidString)
         
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in

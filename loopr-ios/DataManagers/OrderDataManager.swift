@@ -9,18 +9,17 @@
 import Foundation
 import Geth
 
+// It's to all orders of an address.
 class OrderDataManager {
 
     static let shared = OrderDataManager()
 
-    private var owner: String?
     private var orders: [Order]
     private var dateOrders: [String: [Order]]
 
     private init() {
         orders = []
         dateOrders = [:]
-        owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
     }
 
     func getOrders(orderStatuses: [OrderStatus]? = nil) -> [Order] {
@@ -83,7 +82,7 @@ class OrderDataManager {
     }
 
     func getOrdersFromServer(completionHandler: @escaping (_ orders: [Order]?, _ error: Error?) -> Void) {
-        if let owner = self.owner {
+        if let owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
             LoopringAPIRequest.getOrders(owner: owner) { orders, error in
                 guard let orders = orders, error == nil else {
                     return
@@ -103,4 +102,5 @@ class OrderDataManager {
             }
         }
     }
+
 }

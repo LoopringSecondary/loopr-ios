@@ -39,6 +39,12 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 self.tableView.reloadData()
             }
         })
+        
+        if let market = market {
+            OrderBookDataManager.shared.getOrderBookFromServer(market: market.name, completionHandler: { orders, error in
+                
+            })
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

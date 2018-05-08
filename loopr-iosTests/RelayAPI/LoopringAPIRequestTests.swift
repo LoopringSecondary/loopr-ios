@@ -53,6 +53,16 @@ class LoopringAPIRequestTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
+    func testGetOrderBook() {
+        let expectation = XCTestExpectation()
+        OrderBookDataManager.shared.getOrderBookFromServer(market: "lrc-weth", completionHandler: { orders, error in
+            XCTAssertNotNil(orders)
+            XCTAssertNotEqual(orders!.count, 0)
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
     func testGetDepth() {
         let expectation = XCTestExpectation()
         LoopringAPIRequest.getDepth(market: "LRC-WETH", length: 10) { depth, error in

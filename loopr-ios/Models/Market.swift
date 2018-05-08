@@ -11,6 +11,7 @@ import UIKit
 
 class Market: Equatable, CustomStringConvertible {
     
+    var name: String
     var icon: UIImage?
     var description: String
     final let tradingPair: TradingPair
@@ -24,6 +25,7 @@ class Market: Equatable, CustomStringConvertible {
     }
 
     init?(json: JSON) {
+        name = json["market"].stringValue
         let tokens = json["market"].stringValue.components(separatedBy: "-")
         guard tokens.count == 2 else {
             return nil
