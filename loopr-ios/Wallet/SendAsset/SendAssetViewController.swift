@@ -58,7 +58,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     
     // Numeric keyboard
     var isNumericKeyboardShow: Bool = false
-    var numericKeyboardView: DefaultNumericKeyboard = DefaultNumericKeyboard(frame: CGRect.zero)
+    var numericKeyboardView: DefaultNumericKeyboard!
     var activeTextFieldTag = -1
     
     // To measure the performance. Will be removed in the future
@@ -468,7 +468,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             let window = UIApplication.shared.keyWindow
             let bottomPadding = window?.safeAreaInsets.bottom ?? 0
 
-            self.scrollViewButtonLayoutConstraint.constant = systemKeyboardHeight + 47*UIStyleConfig.scale + 15*2
+            self.scrollViewButtonLayoutConstraint.constant = systemKeyboardHeight + 47*UIStyleConfig.scale
             self.sendButtonBackgroundViewBottomLayoutContraint.constant = systemKeyboardHeight
 
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
@@ -510,7 +510,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             let width = self.view.frame.width
             let height = self.view.frame.height
             scrollViewButtonLayoutConstraint.constant = DefaultNumericKeyboard.height
-            numericKeyboardView.frame = CGRect(x: 0, y: height, width: width, height: DefaultNumericKeyboard.height)
+            numericKeyboardView = DefaultNumericKeyboard.init(frame: CGRect(x: 0, y: height, width: width, height: DefaultNumericKeyboard.height))
             numericKeyboardView.delegate = self
             view.addSubview(numericKeyboardView)
             view.bringSubview(toFront: sendButtonBackgroundView)
