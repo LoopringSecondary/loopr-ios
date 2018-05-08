@@ -244,6 +244,7 @@ class SendCurrentAppWalletDataManager {
         _transfer(data: data, address: protocolAddress!, amount: GethBigInt.init(0), gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
+    // tokena: contract addr
     func _cancelOrdersByTokenPair(timestamp: GethBigInt, tokenA: GethAddress, tokenB: GethAddress, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
         guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return

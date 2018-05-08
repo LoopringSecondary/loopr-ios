@@ -13,7 +13,6 @@ class PlaceOrderDataManager {
     
     static let shared = PlaceOrderDataManager()
     
-    private var lrcFeeInSetting: Double
     private var userInfo: [String: Any] = [:]
     
     private let gasManager = GasDataManager.shared
@@ -25,10 +24,6 @@ class PlaceOrderDataManager {
     var tokenA: Token!
     var tokenB: Token!
     var market: Market!
-
-    private init() {
-        self.lrcFeeInSetting = SettingDataManager.shared.getLrcFeeRatio()
-    }
 
     func new(tokenA: String, tokenB: String, market: Market) {
         self.tokenA = TokenDataManager.shared.getTokenBySymbol(tokenA)!
@@ -87,11 +82,11 @@ class PlaceOrderDataManager {
         }
     }
     
-    func isLRCEnough(to amounts: Double, completion: @escaping (String?, Error?) -> Void) -> Bool {
+    func isLRCEnough(of order: OriginalOrder, completion: @escaping (String?, Error?) -> Void) -> Bool {
         var result = false
         let lrcFrozen = getFrozenLRCFeeFromServer()
         let lrcBlance = walletManager.getBalance(of: "LRC")!
-        result = lrcBlance > self.lrcFeeInSetting * amounts + lrcFrozen
+        result = lrcBlance >= order.lrcFee + lrcFrozen
         if !result {
             userInfo["message"] = NSLocalizedString("LRC balance in current wallet not enough for paying LRC FEE", comment: "")
             let error = NSError(domain: "validate", code: 0, userInfo: userInfo)
@@ -100,12 +95,12 @@ class PlaceOrderDataManager {
         return result
     }
     
-    func isGasEnough(for token: String, to amountSell: Double, includingLRC: Bool = true, completion: @escaping (String?, Error?) -> Void) -> Bool {
+    func isGasEnough(of order: OriginalOrder, includingLRC: Bool = true, completion: @escaping (String?, Error?) -> Void) -> Bool {
         var result = false
         if let ethBalance = walletManager.getBalance(of: "ETH"),
-            let tokenGas = calculateGas(for: token, to: amountSell, completion: completion) {
+            let tokenGas = calculateGas(for: order.tokenSell, to: order.amountSell, lrcFee: order.lrcFee, completion: completion) {
             if includingLRC {
-                if let lrcGas = calculateGas(for: "LRC", to: amountSell, completion: completion) {
+                if let lrcGas = calculateGas(for: "LRC", to: order.amountSell, lrcFee: order.lrcFee, completion: completion) {
                     result = ethBalance >= lrcGas + tokenGas
                 }
             } else {
@@ -120,9 +115,10 @@ class PlaceOrderDataManager {
         return result
     }
     
-    func isLRCGasEnough(to amountSell: Double, completion: @escaping (String?, Error?) -> Void) -> Bool {
+    func isLRCGasEnough(of order: OriginalOrder, completion: @escaping (String?, Error?) -> Void) -> Bool {
         var result = false
-        if let ethBalance = walletManager.getBalance(of: "ETH"), let lrcGas = calculateGasForLRC(to: amountSell, completion: completion) {
+        if let ethBalance = walletManager.getBalance(of: "ETH"),
+            let lrcGas = calculateGasForLRC(of: order, completion: completion) {
             result = ethBalance >= lrcGas
         }
         if !result {
@@ -133,17 +129,18 @@ class PlaceOrderDataManager {
         return result
     }
     
-    func calculateGas(for token: String, to amountSell: Double, completion: @escaping (String?, Error?) -> Void) -> Double? {
+    func calculateGas(for token: String, to amount: Double, lrcFee: Double, completion: @escaping (String?, Error?) -> Void) -> Double? {
         var result: Double? = nil
         if let asset = walletManager.getAsset(symbol: token) {
             if token.uppercased() == "LRC" {
                 let lrcFrozen = getFrozenLRCFeeFromServer()
-                if asset.allowance >= amountSell * self.lrcFeeInSetting + lrcFrozen {
+                let sellingFrozen = getEstimatedAllocatedAllowanceFromServer(token: "LRC")
+                if asset.allowance >= lrcFee + lrcFrozen + sellingFrozen {
                     return 0
                 }
             } else {
                 let tokenFrozen = getEstimatedAllocatedAllowanceFromServer(token: token)
-                if asset.allowance >= amountSell + tokenFrozen {
+                if asset.allowance >= amount + tokenFrozen {
                     return 0
                 }
             }
@@ -159,14 +156,15 @@ class PlaceOrderDataManager {
         return result
     }
     
-    func calculateGasForLRC(to amountSell: Double, completion: @escaping (String?, Error?) -> Void) -> Double? {
+    func calculateGasForLRC(of order: OriginalOrder, completion: @escaping (String?, Error?) -> Void) -> Double? {
         var result: Double? = nil
         if let asset = walletManager.getAsset(symbol: "LRC") {
             let lrcAllowance = asset.allowance
-            let lrcFee = amountSell * self.lrcFeeInSetting
+            let lrcFee = order.lrcFee
+            let amountSell = order.amountSell
             let lrcFrozen = getFrozenLRCFeeFromServer()
-            let tokenFrozen = getEstimatedAllocatedAllowanceFromServer(token: "LRC")
-            if lrcFee + lrcFrozen + tokenFrozen + amountSell > lrcAllowance {
+            let sellingFrozen = getEstimatedAllocatedAllowanceFromServer(token: "LRC")
+            if lrcFee + lrcFrozen + sellingFrozen + amountSell > lrcAllowance {
                 let gasAmount = gasManager.getGasAmount(by: "approve")
                 if lrcAllowance == 0 {
                     result = gasAmount
@@ -182,23 +180,25 @@ class PlaceOrderDataManager {
         return result
     }
     
-    /* 1. LRC FEE 比较的是当前订单lrc fee + getFrozenLrcfee() >< 账户lrc 余额 不够失败
+    /*
+     1. LRC FEE 比较的是当前订单lrc fee + getFrozenLrcfee() >< 账户lrc 余额 不够失败
      2. 如果够了，看lrc授权够不够，够则成功，如果不够需要授权是否等于=0，如果不是，先授权lrc = 0， 再授权lrc = max，是则直接授权lrc = max。看两笔授权支付的eth gas够不够，如果eth够则两次授权，不够失败
      3. 比较当前订单amounts + loopring_getEstimatedAllocatedAllowance() >< 账户授权tokens，够则成功，不够则看两笔授权支付的eth gas够不够，如果eth够则两次授权，不够失败
      如果是sell lrc，需要lrc fee + getFrozenLrcfee() + amounts(lrc) + loopring_getEstimatedAllocatedAllowance() >< 账户授权lrc
-     4. buy lrc不看前两点，只要3满足即可 */
+     4. buy lrc不看前两点，只要3满足即可
+     */
     func verify(order: OriginalOrder, completion: @escaping (String?, Error?) -> Void) -> Bool {
         if order.side == "buy" {
             if order.tokenBuy.uppercased() == "LRC" {
-                return isGasEnough(for: order.tokenSell, to: order.amountSell, includingLRC: false, completion: completion)
+                return isGasEnough(of: order, completion: completion)
             } else {
-                return isLRCEnough(to: order.amountSell, completion: completion) && isGasEnough(for: order.tokenSell, to: order.amountSell, includingLRC: true, completion: completion)
+                return isLRCEnough(of: order, completion: completion) && isGasEnough(of: order, completion: completion)
             }
         } else {
             if order.tokenSell.uppercased() == "LRC" {
-                return isLRCEnough(to: order.amountSell, completion: completion) && isLRCGasEnough(to: order.amountSell, completion: completion)
+                return isLRCEnough(of: order, completion: completion) && isLRCGasEnough(of: order, completion: completion)
             } else {
-                return isLRCEnough(to: order.amountSell, completion: completion) && isGasEnough(for: order.tokenSell, to: order.amountSell, completion: completion)
+                return isLRCEnough(of: order, completion: completion) && isGasEnough(of: order, completion: completion)
             }
         }
     }
