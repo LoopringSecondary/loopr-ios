@@ -58,7 +58,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     
     // Numeric keyboard
     var isNumericKeyboardShow: Bool = false
-    var numericKeyboardView: DefaultNumericKeyboard!
+    var numericKeyboardView: DefaultNumericKeyboard = DefaultNumericKeyboard(frame: CGRect.zero)
     var activeTextFieldTag = -1
     
     // To measure the performance. Will be removed in the future
@@ -81,7 +81,15 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         updateButton(isValid: false)
         
         scrollViewButtonLayoutConstraint.constant = 47*UIStyleConfig.scale + 15*2
-        sendButtonBackgroundViewBottomLayoutContraint.constant = 0
+
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.keyWindow
+            let bottomPadding = window?.safeAreaInsets.bottom ?? 0
+            sendButtonBackgroundViewBottomLayoutContraint.constant = bottomPadding
+        } else {
+            sendButtonBackgroundViewBottomLayoutContraint.constant = 0
+        }
+
         sendButtonBackgroundViewHeightLayoutContraint.constant = 47*UIStyleConfig.scale + 15*2
 
         // Setup UI in the scroll view
@@ -330,6 +338,12 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
 
     func validation() {
         var isValid = false
+        if activeTextFieldTag == addressTextField.tag {
+            _ = validateAddress()
+        } else if activeTextFieldTag == amountTextField.tag {
+            _ = validateAmount()
+        }
+
         if validateAddress() && validateAmount() {
             isValid = true
         }
@@ -452,10 +466,10 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         if #available(iOS 11.0, *) {
             // Get the the distance from the bottom safe area edge to the bottom of the screen
             let window = UIApplication.shared.keyWindow
-            let bottomPadding = window?.safeAreaInsets.bottom
+            let bottomPadding = window?.safeAreaInsets.bottom ?? 0
 
             self.scrollViewButtonLayoutConstraint.constant = systemKeyboardHeight + 47*UIStyleConfig.scale + 15*2
-            self.sendButtonBackgroundViewBottomLayoutContraint.constant = systemKeyboardHeight - bottomPadding!
+            self.sendButtonBackgroundViewBottomLayoutContraint.constant = systemKeyboardHeight
 
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
                 // animation for layout constraint change.
@@ -477,7 +491,14 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     @objc func keyboardWillDisappear(notification: NSNotification?) {
         print("keyboardWillDisappear")
         scrollViewButtonLayoutConstraint.constant = 47*UIStyleConfig.scale + 15*2
-        sendButtonBackgroundViewBottomLayoutContraint.constant = 0
+
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.keyWindow
+            let bottomPadding = window?.safeAreaInsets.bottom ?? 0
+            sendButtonBackgroundViewBottomLayoutContraint.constant = bottomPadding
+        } else {
+            sendButtonBackgroundViewBottomLayoutContraint.constant = 0
+        }
 
         if validateAddress() {
             validation()
@@ -489,12 +510,16 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             let width = self.view.frame.width
             let height = self.view.frame.height
             scrollViewButtonLayoutConstraint.constant = DefaultNumericKeyboard.height
-            numericKeyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: DefaultNumericKeyboard.height))
+            numericKeyboardView.frame = CGRect(x: 0, y: height, width: width, height: DefaultNumericKeyboard.height)
             numericKeyboardView.delegate = self
             view.addSubview(numericKeyboardView)
             view.bringSubview(toFront: sendButtonBackgroundView)
             view.bringSubview(toFront: sendButton)
-            let destinateY = height - DefaultNumericKeyboard.height - sendButtonBackgroundViewHeightLayoutContraint.constant
+            
+            let window = UIApplication.shared.keyWindow
+            let bottomPadding = window?.safeAreaInsets.bottom ?? 0
+            
+            let destinateY = height - DefaultNumericKeyboard.height - sendButtonBackgroundViewHeightLayoutContraint.constant - bottomPadding
             
             // TODO: improve the animation.
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
@@ -513,7 +538,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     func hideNumericKeyboard() {
         if isNumericKeyboardShow {
             let width = self.view.frame.width
-            let height = self.sendButtonBackgroundView.frame.origin.y
+            let height = self.view.frame.height
             let destinateY = height
             self.scrollViewButtonLayoutConstraint.constant = 0
 

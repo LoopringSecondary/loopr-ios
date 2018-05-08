@@ -76,6 +76,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.backgroundColor = UIColor.white
         scrollViewButtonLayoutConstraint.constant = 0
 
         placeOrderButton.title = NSLocalizedString("Place Order", comment: "")
@@ -386,6 +387,12 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
 
     func validate() -> Bool {
         var isValid = false
+        if activeTextFieldTag == priceTextField.tag {
+            _ = validateTokenPrice()
+        } else if activeTextFieldTag == amountTextField.tag {
+            _ = validateAmount()
+        }
+
         if validateTokenPrice() && validateAmount() {
             isValid = true
             let total = Double(priceTextField.text ?? "0")! * Double(amountTextField.text ?? "0")!
@@ -430,7 +437,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
             
             numericKeyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: DefaultNumericKeyboard.height))
             numericKeyboardView.delegate = self
-            // keyboardView.backgroundColor = UIColor.blue
             view.addSubview(numericKeyboardView)
             view.bringSubview(toFront: placeOrderBackgroundView)
             view.bringSubview(toFront: placeOrderButton)
@@ -460,15 +466,14 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
     func hideNumericKeyboard() {
         if isNumericKeyboardShow {
             let width = self.view.frame.width
-            let height = self.placeOrderBackgroundView.frame.origin.y
-            let keyboardHeight: CGFloat = 220
+            let height = self.view.frame.height
             let destinateY = height
             self.scrollViewButtonLayoutConstraint.constant = 0
             // TODO: improve the animation.
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
                 // animation for layout constraint change.
                 self.view.layoutIfNeeded()
-                self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: keyboardHeight)
+                self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
             }, completion: { finished in
                 self.isNumericKeyboardShow = false
                 if finished {
@@ -503,7 +508,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
             let itemValue = position.row * 3 + position.column + 1
             activeTextField!.text = currentText + String(itemValue)
         }
-        
+
         _ = validate()
     }
 
