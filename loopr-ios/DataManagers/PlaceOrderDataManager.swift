@@ -13,7 +13,8 @@ class PlaceOrderDataManager {
     
     static let shared = PlaceOrderDataManager()
     
-    private var userInfo: [String: Any] = [:]
+    private var errorInfo: [String: Any] = [:]
+    private var balanceInfo: [String: Double] = [:]
     
     private let gasManager = GasDataManager.shared
     private let tokenManager = TokenDataManager.shared
@@ -66,70 +67,46 @@ class PlaceOrderDataManager {
         _ = semaphore.wait(timeout: .distantFuture)
         return result
     }
-    
-    func approve(token: String, amount: Int64, completion: @escaping (String?, Error?) -> Void) {
-        if let to = TokenDataManager.shared.getAddress(by: token) {
-            var error: NSError? = nil
-            let approve = GethNewBigInt(amount)!
-            let gas = GethBigInt.generateBigInt(gasManager.getGasPrice())!
-            let delegateAddress = GethNewAddressFromHex(RelayAPIConfiguration.delegateAddress, &error)!
-            let tokenAddress = GethNewAddressFromHex(to, &error)!
-            sendManager._approve(tokenAddress: tokenAddress, delegateAddress: delegateAddress, tokenAmount: approve, gasPrice: gas, completion: completion)
-        } else {
-            userInfo["message"] = NSLocalizedString("approving token contract address not found", comment: "")
-            let error = NSError(domain: "approve", code: 0, userInfo: userInfo)
-            completion(nil, error)
-        }
-    }
-    
-    func isLRCEnough(of order: OriginalOrder, completion: @escaping (String?, Error?) -> Void) -> Bool {
-        var result = false
+
+    func checkLRCEnough(of order: OriginalOrder) {
+        var result: Double = 0
         let lrcFrozen = getFrozenLRCFeeFromServer()
         let lrcBlance = walletManager.getBalance(of: "LRC")!
-        result = lrcBlance >= order.lrcFee + lrcFrozen
-        if !result {
-            userInfo["message"] = NSLocalizedString("LRC balance in current wallet not enough for paying LRC FEE", comment: "")
-            let error = NSError(domain: "validate", code: 0, userInfo: userInfo)
-            completion(nil, error)
+        result = lrcBlance - order.lrcFee - lrcFrozen
+        if result < 0 {
+            balanceInfo["MINUS_LRC"] = -result
         }
-        return result
     }
     
-    func isGasEnough(of order: OriginalOrder, includingLRC: Bool = true, completion: @escaping (String?, Error?) -> Void) -> Bool {
-        var result = false
+    func checkGasEnough(of order: OriginalOrder, includingLRC: Bool = true) {
+        var result: Double = 0
         if let ethBalance = walletManager.getBalance(of: "ETH"),
-            let tokenGas = calculateGas(for: order.tokenSell, to: order.amountSell, lrcFee: order.lrcFee, completion: completion) {
+            let tokenGas = calculateGas(for: order.tokenSell, to: order.amountSell, lrcFee: order.lrcFee) {
             if includingLRC {
-                if let lrcGas = calculateGas(for: "LRC", to: order.amountSell, lrcFee: order.lrcFee, completion: completion) {
-                    result = ethBalance >= lrcGas + tokenGas
+                if let lrcGas = calculateGas(for: "LRC", to: order.amountSell, lrcFee: order.lrcFee) {
+                    result = ethBalance - lrcGas - tokenGas
                 }
             } else {
-                result = ethBalance >= tokenGas
+                result = ethBalance - tokenGas
             }
         }
-        if !result {
-            userInfo["message"] = NSLocalizedString("ETH balance in current wallet not enough for paying gas for approving token", comment: "")
-            let error = NSError(domain: "validate", code: 0, userInfo: userInfo)
-            completion(nil, error)
+        if result < 0 {
+            balanceInfo["MINUS_ETH"] = -result
         }
-        return result
     }
     
-    func isLRCGasEnough(of order: OriginalOrder, completion: @escaping (String?, Error?) -> Void) -> Bool {
-        var result = false
+    func checkLRCGasEnough(of order: OriginalOrder) {
+        var result: Double = 0
         if let ethBalance = walletManager.getBalance(of: "ETH"),
-            let lrcGas = calculateGasForLRC(of: order, completion: completion) {
-            result = ethBalance >= lrcGas
+            let lrcGas = calculateGasForLRC(of: order) {
+            result = ethBalance - lrcGas
         }
-        if !result {
-            userInfo["message"] = NSLocalizedString("ETH balance in current wallet not enough for paying gas for approving LRC", comment: "")
-            let error = NSError(domain: "validate", code: 0, userInfo: userInfo)
-            completion(nil, error)
+        if result < 0 {
+            balanceInfo["MINUS_ETH"] = -result
         }
-        return result
     }
     
-    func calculateGas(for token: String, to amount: Double, lrcFee: Double, completion: @escaping (String?, Error?) -> Void) -> Double? {
+    func calculateGas(for token: String, to amount: Double, lrcFee: Double) -> Double? {
         var result: Double? = nil
         if let asset = walletManager.getAsset(symbol: token) {
             if token.uppercased() == "LRC" {
@@ -147,16 +124,18 @@ class PlaceOrderDataManager {
             let gasAmount = gasManager.getGasAmount(by: "approve")
             if asset.allowance == 0 {
                 result = gasAmount
+                balanceInfo["GAS_\(asset.symbol)"] = 1
             } else {
                 result = gasAmount * 2
-                approve(token: token, amount: 0, completion: completion)
+                balanceInfo["GAS_\(asset.symbol)"] = 2
+//                approve(token: token, amount: 0) sdf
             }
-            approve(token: token, amount: Int64.max, completion: completion)
+//            approve(token: token, amount: Int64.max) sdf
         }
         return result
     }
     
-    func calculateGasForLRC(of order: OriginalOrder, completion: @escaping (String?, Error?) -> Void) -> Double? {
+    func calculateGasForLRC(of order: OriginalOrder) -> Double? {
         var result: Double? = nil
         if let asset = walletManager.getAsset(symbol: "LRC") {
             let lrcAllowance = asset.allowance
@@ -168,11 +147,13 @@ class PlaceOrderDataManager {
                 let gasAmount = gasManager.getGasAmount(by: "approve")
                 if lrcAllowance == 0 {
                     result = gasAmount
+                    balanceInfo["GAS_LRC"] = 1
                 } else {
                     result = gasAmount * 2
-                    approve(token: "LRC", amount: 0, completion: completion)
+                    balanceInfo["GAS_LRC"] = 2
+//                    approve(token: "LRC", amount: 0, completion: completion)
                 }
-                approve(token: "LRC", amount: Int64.max, completion: completion)
+//                approve(token: "LRC", amount: Int64.max, completion: completion)
             } else {
                 return 0
             }
@@ -187,20 +168,24 @@ class PlaceOrderDataManager {
      如果是sell lrc，需要lrc fee + getFrozenLrcfee() + amounts(lrc) + loopring_getEstimatedAllocatedAllowance() >< 账户授权lrc
      4. buy lrc不看前两点，只要3满足即可
      */
-    func verify(order: OriginalOrder, completion: @escaping (String?, Error?) -> Void) -> Bool {
+    func verify(order: OriginalOrder) -> [String: Double] {
         if order.side == "buy" {
             if order.tokenBuy.uppercased() == "LRC" {
-                return isGasEnough(of: order, completion: completion)
+                checkGasEnough(of: order, includingLRC: false)
             } else {
-                return isLRCEnough(of: order, completion: completion) && isGasEnough(of: order, completion: completion)
+                checkLRCEnough(of: order)
+                checkGasEnough(of: order)
             }
         } else {
             if order.tokenSell.uppercased() == "LRC" {
-                return isLRCEnough(of: order, completion: completion) && isLRCGasEnough(of: order, completion: completion)
+                checkLRCEnough(of: order)
+                checkLRCGasEnough(of: order)
             } else {
-                return isLRCEnough(of: order, completion: completion) && isGasEnough(of: order, completion: completion)
+                checkLRCEnough(of: order)
+                checkGasEnough(of: order)
             }
         }
+        return balanceInfo
     }
     
     func getOrderHash(order: OriginalOrder) -> Data {
@@ -241,14 +226,19 @@ class PlaceOrderDataManager {
     
     func _submit(order: OriginalOrder, completion: @escaping (String?, Error?) -> Void) {
         let orderData = getOrderHash(order: order)
+        
+        print(orderData.hexString)
+        
         SendCurrentAppWalletDataManager.shared._keystore()
         let signature = web3swift.sign(message: orderData)!
+        let tokens = tokenManager.getAddress(by: order.tokenSell)!
+        let tokenb = tokenManager.getAddress(by: order.tokenBuy)!
         let amountB = _encodeString(order.amountBuy, order.tokenBuy)
         let amountS = _encodeString(order.amountSell, order.tokenSell)
         let lrcFee = _encodeString(order.lrcFee, "LRC")
         let validSince = "0x" + String(format: "%2x", order.validSince)
         let validUntil = "0x" + String(format: "%2x", order.validUntil)
   
-        LoopringAPIRequest.submitOrder(owner: order.address, walletAddress: order.walletAddress, tokenS: order.tokenSell, tokenB: order.tokenBuy, amountS: amountS, amountB: amountB, lrcFee: lrcFee, validSince: validSince, validUntil: validUntil, marginSplitPercentage: order.marginSplitPercentage, buyNoMoreThanAmountB: order.buyNoMoreThanAmountB, authAddr: order.authAddr, authPrivateKey: order.authPrivateKey, v: UInt(signature.v)!, r: signature.r, s: signature.s, completionHandler: completion)
+        LoopringAPIRequest.submitOrder(owner: order.address, walletAddress: order.walletAddress, tokenS: tokens, tokenB: tokenb, amountS: amountS, amountB: amountB, lrcFee: lrcFee, validSince: validSince, validUntil: validUntil, marginSplitPercentage: order.marginSplitPercentage, buyNoMoreThanAmountB: order.buyNoMoreThanAmountB, authAddr: order.authAddr, authPrivateKey: order.authPrivateKey, v: UInt(signature.v)!, r: signature.r, s: signature.s, completionHandler: completion)
     }
 }

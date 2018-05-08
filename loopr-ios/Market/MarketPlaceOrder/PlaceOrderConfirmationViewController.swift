@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Geth
 import SVProgressHUD
 import NotificationBannerSwift
 
@@ -25,6 +26,8 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     var type: TradeType = .buy
     var price: String = "0.0"
     var expire: OrderExpire = .oneHour
+    var verifyInfo: [String: Double]?
+    var needSubmitOrder: Bool = true
     
     // Price
     var priceTipLabel: UILabel = UILabel()
@@ -58,14 +61,14 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         confirmationButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
 
         if let order = self.order {
-            initLabels()
-            initTokenView(order: order)
-            initOrderAmount(order: order)
-            initRows(order: order)
+            setupLabels()
+            setupTokenView(order: order)
+            setupOrderAmount(order: order)
+            setupRows(order: order)
         }
     }
     
-    func initLabels() {
+    func setupLabels() {
         typeTipLabel.text = NSLocalizedString("You are ", comment: "")
         typeTipLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 30)
         typeTipLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
@@ -74,7 +77,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         typeInfoLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
     }
     
-    func initTokenView(order: OriginalOrder) {
+    func setupTokenView(order: OriginalOrder) {
         if order.side.lowercased() == "buy" {
             if let icon = UIImage(named: order.tokenBuy) {
                 tokenImage.image = icon
@@ -100,16 +103,16 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         }
     }
     
-    func initOrderAmount(order: OriginalOrder) {
+    func setupOrderAmount(order: OriginalOrder) {
         if order.side.lowercased() == "sell" {
             amountLabel.text = order.amountSell.description + " " + order.tokenSell
             if let price = PriceDataManager.shared.getPriceBySymbol(of: order.tokenSell) {
-                displayLabel.text = "$ " + (price * order.amountSell).description // TODO: $
+                displayLabel.text = (price * order.amountSell).currency
             }
         } else if order.side.lowercased() == "buy" {
             amountLabel.text = order.amountSell.description + " " + order.tokenBuy
             if let price = PriceDataManager.shared.getPriceBySymbol(of: order.tokenBuy) {
-                displayLabel.text = "$ " + (price * order.amountBuy).description // TODO: $
+                displayLabel.text = (price * order.amountBuy).currency
             }
         }
         amountLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 40)
@@ -118,7 +121,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         displayLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
     }
     
-    func initRows(order: OriginalOrder) {
+    func setupRows(order: OriginalOrder) {
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         let padding: CGFloat = 15
@@ -157,8 +160,8 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         scrollView.addSubview(feeTipLabel)
         feeInfoLabel.font = FontConfigManager.shared.getLabelFont()
         if let price = PriceDataManager.shared.getPriceBySymbol(of: "LRC") {
-            let display = order.lrcFee * price
-            feeInfoLabel.text = String(format: "%0.5f LRC (≈$ %.2f)", order.lrcFee, display)
+            let display = (order.lrcFee * price).currency
+            feeInfoLabel.text = String(format: "%0.5f LRC (≈ %.2f)", order.lrcFee, display)
         }
         feeInfoLabel.textAlignment = .right
         feeInfoLabel.frame = CGRect(x: padding + 150, y: feeTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
@@ -203,21 +206,85 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
 
     @IBAction func pressedConfirmationButton(_ sender: Any) {
         print("pressedConfirmationButton")
-        if PlaceOrderDataManager.shared.verify(order: order!, completion: completion) {
-            let viewController = ConfirmationResultViewController()
-            viewController.order = self.order
-            self.navigationController?.pushViewController(viewController, animated: true)
-        }
+        self.verifyInfo = PlaceOrderDataManager.shared.verify(order: order!)
+        self.handleVerifyInfo()
     }
 }
 
 extension PlaceOrderConfirmationViewController {
+
+    func isBalanceEnough() -> Bool {
+        var result: Bool = true
+        if let info = self.verifyInfo {
+            result = !info.keys.contains(where: { (key) -> Bool in
+                key.starts(with: "MINUS_")
+            })
+        }
+        return result
+    }
     
-    func completion(_ orderHash: String?, _ error: Error?) {
-        // Close activity indicator
+    func needApprove() -> Bool {
+        var result: Bool = false
+        if let info = self.verifyInfo {
+            result = info.keys.contains(where: { (key) -> Bool in
+                key.starts(with: "GAS_")
+            })
+        }
+        return result
+    }
+    
+    func handleVerifyInfo() {
+        if isBalanceEnough() {
+            if needApprove() {
+                approve()
+            } else {
+                submitOrder()
+            }
+        } else {
+            pushController()
+        }
+    }
+    
+    func pushController() {
+        let viewController = ConfirmationResultViewController()
+        viewController.order = self.order
+        viewController.verifyInfo = self.verifyInfo
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func approve() {
+        if let info = self.verifyInfo {
+            for item in info {
+                if item.key.starts(with: "GAS_") {
+                    guard item.value == 1 || item.value == 2 else { return }
+                    let token = item.key.components(separatedBy: "_")[1]
+                    if item.value == 2 {
+                        approve(token: token, amount: 0)
+                    }
+                    approve(token: token, amount: INT64_MAX)
+                }
+            }
+        }
+    }
+    
+    func approve(token: String, amount: Int64) {
+        if let to = TokenDataManager.shared.getAddress(by: token) {
+            var error: NSError? = nil
+            let approve = GethNewBigInt(amount)!
+            let gas = GethBigInt.generateBigInt(GasDataManager.shared.getGasPrice())!
+            let delegateAddress = GethNewAddressFromHex(RelayAPIConfiguration.delegateAddress, &error)!
+            let tokenAddress = GethNewAddressFromHex(to, &error)!
+            SendCurrentAppWalletDataManager.shared._approve(tokenAddress: tokenAddress, delegateAddress: delegateAddress, tokenAmount: approve, gasPrice: gas, completion: complete)
+        }
+    }
+    
+    func submitOrder() {
+        PlaceOrderDataManager.shared._submit(order: self.order!, completion: completion)
+    }
+    
+    func complete(_ txHash: String?, _ error: Error?) {
         SVProgressHUD.dismiss()
-        guard error == nil && orderHash != nil else {
-            // Show toast
+        guard error == nil && txHash != nil else {
             DispatchQueue.main.async {
                 print("BuyViewController \(error.debugDescription)")
                 let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
@@ -226,12 +293,20 @@ extension PlaceOrderConfirmationViewController {
             }
             return
         }
-        print("Result of order is \(orderHash!)")
-        // Show toast
-        DispatchQueue.main.async {
-            let banner = NotificationBanner.generate(title: "Success. Result of order is \(orderHash!)", style: .success)
-            banner.duration = 5
-            banner.show()
+        submitOrder()
+    }
+    
+    func completion(_ orderHash: String?, _ error: Error?) {
+        SVProgressHUD.dismiss()
+        guard error == nil && orderHash != nil else {
+            DispatchQueue.main.async {
+                print("BuyViewController \(error.debugDescription)")
+                let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
+                banner.duration = 5
+                banner.show()
+            }
+            return
         }
+        pushController()
     }
 }

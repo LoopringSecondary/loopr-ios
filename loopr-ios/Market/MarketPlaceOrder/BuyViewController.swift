@@ -175,15 +175,14 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         totalUnderLine.frame = CGRect(x: padding, y: tokenBTotalLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
         totalUnderLine.backgroundColor = UIColor.black
         scrollView.addSubview(totalUnderLine)
-        
-        if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: PlaceOrderDataManager.shared.tokenB.symbol) {
-            availableLabel.text = "Available \(asset.balance) \(PlaceOrderDataManager.shared.tokenB.symbol)"
-        }
 
+        if let balance = getSellingBalance() {
+            availableLabel.text = "Available \(balance) \(PlaceOrderDataManager.shared.tokenB.symbol)"
+        }
         availableLabel.font = FontConfigManager.shared.getLabelFont()
         availableLabel.frame = CGRect(x: padding, y: totalUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(availableLabel)
-
+        
         // Fourth Row
         expireLabel.text = NSLocalizedString("Order Expires in", comment: "")
         expireLabel.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: 14)
@@ -286,6 +285,15 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         oneMonthButton.selected()
     }
     
+    func getSellingBalance() -> Double? {
+        if type == .buy {
+            if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: PlaceOrderDataManager.shared.tokenB.symbol) {
+                return asset.balance
+            }
+        }
+        return nil
+    }
+    
     func checkEmpty() -> Bool {
         guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return false
@@ -310,7 +318,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
             buyNoMoreThanAmountB = true
             amountBuy = Double(amountTextField.text!)!
             amountSell = Double(totalTextField.text!)!
-            lrcFee = getLrcFee(amountSell, tokenSell)!
         } else {
             side = "sell"
             tokenBuy = PlaceOrderDataManager.shared.tokenB.symbol
@@ -318,8 +325,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
             buyNoMoreThanAmountB = false
             amountBuy = Double(totalTextField.text!)!
             amountSell = Double(amountTextField.text!)!
-            lrcFee = getLrcFee(amountSell, tokenSell)!
         }
+        lrcFee = getLrcFee(amountSell, tokenSell)!
         let delegate = RelayAPIConfiguration.delegateAddress
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         let since = Int64(Date().timeIntervalSince1970)
@@ -329,15 +336,13 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
 
     @IBAction func pressedPlaceOrderButton(_ sender: Any) {
         print("pressedPlaceOrderButton")
-        if validate() {
-            if let order = constructOrder() {
-                let viewController = PlaceOrderConfirmationViewController()
-                viewController.order = order
-                viewController.type = self.type
-                viewController.expire = self.expire
-                viewController.price = priceTextField.text!
-                self.navigationController?.pushViewController(viewController, animated: true)
-            }
+        if let order = constructOrder() {
+            let viewController = PlaceOrderConfirmationViewController()
+            viewController.order = order
+            viewController.type = self.type
+            viewController.expire = self.expire
+            viewController.price = priceTextField.text!
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
 
@@ -392,15 +397,20 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         } else if activeTextFieldTag == amountTextField.tag {
             _ = validateAmount()
         }
-
         if validateTokenPrice() && validateAmount() {
             isValid = true
             let total = Double(priceTextField.text ?? "0")! * Double(amountTextField.text ?? "0")!
             totalTextField.text = "\(total)"
+            if let balance = getSellingBalance() {
+                if balance < total {
+                    availableLabel.textColor = .red
+                } else {
+                    availableLabel.textColor = .black
+                }
+            }
         } else {
             totalTextField.text = ""
         }
-
         updateButton(isValid: isValid)
         return isValid
     }
@@ -542,27 +552,5 @@ extension BuyViewController {
             return price * amountS * ratio / lrcPrice
         }
         return nil
-    }
-    
-    func completion(_ orderHash: String?, _ error: Error?) {
-        // Close activity indicator
-        SVProgressHUD.dismiss()
-        guard error == nil && orderHash != nil else {
-            // Show toast
-            DispatchQueue.main.async {
-                print("BuyViewController \(error.debugDescription)")
-                let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
-                banner.duration = 5
-                banner.show()
-            }
-            return
-        }
-        print("Result of order is \(orderHash!)")
-        // Show toast
-        DispatchQueue.main.async {
-            let banner = NotificationBanner.generate(title: "Success. Result of order is \(orderHash!)", style: .success)
-            banner.duration = 5
-            banner.show()
-        }
     }
 }

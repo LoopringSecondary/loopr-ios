@@ -25,19 +25,23 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
     var needBInfoLabel: UILabel = UILabel()
     
     var order: OriginalOrder?
+    var errorTipInfo: [String] = []
+    var verifyInfo: [String: Double]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        setBackButton()
         self.navigationItem.title = NSLocalizedString("Confirmation", comment: "")
-        configLabels()
-        configRows()
-        configButtons()
+        // Do any additional setup after loading the view.
+        setupErrorInfo()
+        setBackButton()
+        setupLabels()
+        setupRows()
+        setupButtons()
+    
     }
     
-    func configLabels() {
+    func setupLabels() {
         placedLabel.font = UIFont(name: FontConfigManager.shared.getBold(), size: 40.0)
         placedLabel.text = NSLocalizedString("Placed!", comment: "")
         placeInfoLabel.font = UIFont(name: FontConfigManager.shared.getRegular(), size: 20.0)
@@ -49,9 +53,8 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    func configRows() {
-        
-        guard !isBalanceEnough() else {return}
+    func setupRows() {
+        guard !isBalanceEnough() else { return }
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         let padding: CGFloat = 15
@@ -62,6 +65,8 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
         needATipLabel.frame = CGRect(x: padding, y: padding, width: 150, height: 40)
         scrollView.addSubview(needATipLabel)
         needAInfoLabel.font = FontConfigManager.shared.getLabelFont()
+        needAInfoLabel.textColor = .red
+        needAInfoLabel.text = errorTipInfo[0]
         needAInfoLabel.textAlignment = .right
         needAInfoLabel.frame = CGRect(x: padding + 150, y: needATipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
         scrollView.addSubview(needAInfoLabel)
@@ -69,18 +74,21 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
         needAUnderline.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         scrollView.addSubview(needAUnderline)
         
+        guard errorTipInfo.count == 2 else { return }
+        
         // 2nd row: need B token
         needBTipLabel.font = FontConfigManager.shared.getLabelFont()
         needBTipLabel.text = NSLocalizedString("You Need More", comment: "")
         needBTipLabel.frame = CGRect(x: padding, y: needATipLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(needBTipLabel)
         needBInfoLabel.font = FontConfigManager.shared.getLabelFont()
+        needBInfoLabel.textColor = .red
         needBInfoLabel.textAlignment = .right
         needBInfoLabel.frame = CGRect(x: padding + 150, y: needBTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
         scrollView.addSubview(needBInfoLabel)
     }
     
-    func configButtons() {
+    func setupButtons() {
         detailsButton.title = NSLocalizedString("Check Details", comment: "")
         detailsButton.layer.borderColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1).cgColor
         detailsButton.layer.borderWidth = 1
@@ -94,11 +102,21 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
             detailsButton.isEnabled = false
             detailsButton.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
         }
-        
         doneButton.title = NSLocalizedString("Done", comment: "")
         doneButton.backgroundColor = UIColor.black
         doneButton.layer.cornerRadius = 23
         doneButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+    }
+    
+    func setupErrorInfo() {
+        if let info = self.verifyInfo {
+            for item in info {
+                if item.key.starts(with: "MINUS_") {
+                    let key = item.key.components(separatedBy: "_")[1]
+                    self.errorTipInfo.append(item.value.description + " " + key)
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -107,7 +125,7 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func isBalanceEnough() -> Bool {
-        return false
+        return errorTipInfo.count == 0
     }
     
     /*

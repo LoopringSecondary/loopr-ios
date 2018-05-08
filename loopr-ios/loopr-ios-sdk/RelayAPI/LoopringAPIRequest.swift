@@ -419,11 +419,13 @@ class LoopringAPIRequest {
     
     static func submitOrder(owner: String, walletAddress: String, tokenS: String, tokenB: String, amountS: String, amountB: String, lrcFee: String, validSince: String, validUntil: String, marginSplitPercentage: UInt8, buyNoMoreThanAmountB: Bool, authAddr: String, authPrivateKey: String, v: UInt, r: String, s: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
-        let protocol_value = ""
+        let protocol_value = RelayAPIConfiguration.protocolAddress
         body["method"] = "loopring_submitOrder"
-        body["params"] = [["protocol": protocol_value, "owner": owner, "walletAddress": walletAddress, "tokenS": tokenS, "tokenB": tokenB, "amountS": amountS, "amountB": amountB, "validSince": validSince, "validUntil": validUntil, "lrcFee": lrcFee, "buyNoMoreThanAmountB": buyNoMoreThanAmountB, "marginSplitPercentage": marginSplitPercentage, "v": v, "r": r, "s": s]]
-        body["params"]["delegateAddress"] = JSON(RelayAPIConfiguration.delegateAddress)
+        body["params"] = [["delegateAddress": RelayAPIConfiguration.delegateAddress, "protocol": protocol_value, "owner": owner, "walletAddress": walletAddress, "tokenS": tokenS, "tokenB": tokenB, "amountS": amountS, "amountB": amountB, "authPrivateKey": authPrivateKey, "authAddr": authAddr, "validSince": validSince, "validUntil": validUntil, "lrcFee": lrcFee, "buyNoMoreThanAmountB": buyNoMoreThanAmountB, "marginSplitPercentage": marginSplitPercentage, "powNonce": 1, "v": v, "r": r, "s": s]]
         body["id"] = JSON(UUID().uuidString)
+        
+        print(body)
+        
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
