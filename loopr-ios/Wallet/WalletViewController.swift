@@ -119,6 +119,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        CurrentAppWalletDataManager.shared.stopGetBalance()
         isListeningSocketIO = false
         
         NotificationCenter.default.removeObserver(self, name: .balanceResponseReceived, object: nil)
