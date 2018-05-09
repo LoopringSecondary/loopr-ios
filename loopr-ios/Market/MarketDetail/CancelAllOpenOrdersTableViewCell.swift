@@ -27,7 +27,7 @@ class CancelAllOpenOrdersTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
         hideOtherPairsSwitch.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
-        
+        hideOtherPairsSwitch.setOn(SettingDataManager.shared.getHideOtherPairs(), animated: false)
         hideOtherPairsLabel.textColor = UIColor.black
         hideOtherPairsLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17.0)
 
@@ -38,6 +38,10 @@ class CancelAllOpenOrdersTableViewCell: UITableViewCell {
         cancelAllButton.layer.borderColor = UIColor.black.cgColor
         cancelAllButton.layer.cornerRadius = 15
         cancelAllButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 12.0)
+    }
+    
+    @IBAction func toggleHidePairSwitch(_ sender: UISwitch) {
+        SettingDataManager.shared.setHideOtherPair(hideOtherPairsSwitch.isOn)
     }
     
     @IBAction func pressedCancelAllOpenOrdersButton(_ sender: Any) {

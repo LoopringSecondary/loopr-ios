@@ -82,6 +82,20 @@ class SettingDataManager {
         let defaults = UserDefaults.standard
         defaults.set(showSmallAssets, forKey: UserDefaultsKeys.showSmallAssets.rawValue)
     }
+    
+    // MARK: Hide other pairs
+    func getHideOtherPairs() -> Bool {
+        let defaults = UserDefaults.standard
+        // If the value is absent or can't be converted to a BOOL, NO will be returned.
+        let showOtherPairs = defaults.bool(forKey: UserDefaultsKeys.showOtherPairs.rawValue)
+        return !showOtherPairs
+    }
+    
+    func setHideOtherPair(_ hide: Bool) {
+        let showOtherPairs = !hide
+        let defaults = UserDefaults.standard
+        defaults.set(showOtherPairs, forKey: UserDefaultsKeys.showOtherPairs.rawValue)
+    }
 
     func setLrcFeeRatio(_ newValue: Double) {
         let defaults = UserDefaults.standard
