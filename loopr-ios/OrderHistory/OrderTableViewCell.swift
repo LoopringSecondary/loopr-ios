@@ -18,7 +18,7 @@ class OrderTableViewCell: UITableViewCell {
     @IBOutlet weak var tradingPairLabel: UILabel!
     @IBOutlet weak var orderTypeLabel: UILabel!
     @IBOutlet weak var volumeLabel: UILabel!
-    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var displayLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
     
@@ -34,7 +34,6 @@ class OrderTableViewCell: UITableViewCell {
         
         setupTradingPairlabel(order: order)
         setupVolumeLabel(order: order)
-        setupAmountLabel(order: order)
         setupPriceLabel(order: order)
         setupOrderTypeLabel(order: order)
         setupOrderFilled(order: order)
@@ -54,28 +53,31 @@ class OrderTableViewCell: UITableViewCell {
     }
     
     func setupVolumeLabel(order: Order) {
-        volumeLabel.text = "Vol " + order.dealtAmountS.description
+        if order.originalOrder.side.lowercased() == "sell" {
+            volumeLabel.text = "Vol " + order.dealtAmountS.description
+        } else if order.originalOrder.side.lowercased() == "buy" {
+            volumeLabel.text = "Vol " + order.dealtAmountB.description
+        }
         volumeLabel.theme_textColor = ["#a0a0a0", "#fff"]
         volumeLabel.font = FontConfigManager.shared.getLabelFont()
     }
     
-    func setupAmountLabel(order: Order) {
-        if order.originalOrder.side.lowercased() == "sell" {
-            amountLabel.text = order.originalOrder.amountSell.description
-        } else if order.originalOrder.side.lowercased() == "buy" {
-            amountLabel.text = order.originalOrder.amountBuy.description
-        }
-        amountLabel.theme_textColor = GlobalPicker.textColor
-        amountLabel.font = FontConfigManager.shared.getLabelFont()
-    }
-    
     func setupPriceLabel(order: Order) {
+        var limit: Double = 0
         let pair = order.originalOrder.market.components(separatedBy: "-")
-        if let price = PriceDataManager.shared.getPriceBySymbol(of: pair[0]) {
-            displayLabel.text = price.currency
+        if let price = PriceDataManager.shared.getPriceBySymbol(of: pair[1]) {
+            if order.originalOrder.side.lowercased() == "sell" {
+                limit = order.originalOrder.amountBuy / order.originalOrder.amountSell
+            } else if order.originalOrder.side.lowercased() == "buy" {
+                limit = order.originalOrder.amountSell / order.originalOrder.amountBuy
+            }
+            priceLabel.text = limit.description
+            displayLabel.text = (limit * price).currency
         } else {
             displayLabel.text = "--"
         }
+        priceLabel.theme_textColor = GlobalPicker.textColor
+        priceLabel.font = FontConfigManager.shared.getLabelFont()
         displayLabel.theme_textColor = ["#a0a0a0", "#fff"]
         displayLabel.font = FontConfigManager.shared.getLabelFont()
     }

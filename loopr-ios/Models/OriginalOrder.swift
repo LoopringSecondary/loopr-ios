@@ -43,14 +43,14 @@ class OriginalOrder {
         self.amountSell = amountSell
         self.amountBuy = amountBuy
         self.lrcFee = lrcFee
+        self.side = side
+        self.hash = hash
         self.buyNoMoreThanAmountB = buyNoMoreThanAmountB
         let (privateKey, walletAddress) = Wallet.generateRandomWallet()
         self.authAddr = walletAddress
         self.authPrivateKey = privateKey
         self.walletAddress = RelayAPIConfiguration.orderWalletAddress
         self.marginSplitPercentage = UInt8(SettingDataManager.shared.getMarginSplit() * 100)
-        self.side = side
-        self.hash = hash
         self.v = v
         self.r = r
         self.s = s

@@ -128,9 +128,7 @@ class PlaceOrderDataManager {
             } else {
                 result = gasAmount * 2
                 balanceInfo["GAS_\(asset.symbol)"] = 2
-//                approve(token: token, amount: 0) sdf
             }
-//            approve(token: token, amount: Int64.max) sdf
         }
         return result
     }
@@ -151,9 +149,7 @@ class PlaceOrderDataManager {
                 } else {
                     result = gasAmount * 2
                     balanceInfo["GAS_LRC"] = 2
-//                    approve(token: "LRC", amount: 0, completion: completion)
                 }
-//                approve(token: "LRC", amount: Int64.max, completion: completion)
             } else {
                 return 0
             }
@@ -169,6 +165,7 @@ class PlaceOrderDataManager {
      4. buy lrc不看前两点，只要3满足即可
      */
     func verify(order: OriginalOrder) -> [String: Double] {
+        balanceInfo = [:]
         if order.side == "buy" {
             if order.tokenBuy.uppercased() == "LRC" {
                 checkGasEnough(of: order, includingLRC: false)

@@ -66,7 +66,7 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func getOrderHistoryFromRelay() {
-        OrderDataManager.shared.getOrdersFromServer(completionHandler: { orders, error in
+        OrderDataManager.shared.getOrdersFromServer(completionHandler: { orders, _ in
             DispatchQueue.main.async {
                 self.orders = OrderDataManager.shared.getDateOrders(tokenSymbol: nil)
                 self.orderDates = self.orders.keys.sorted(by: >)

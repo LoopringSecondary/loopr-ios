@@ -80,8 +80,7 @@ class SettingMarginSplitViewController: UIViewController {
     @objc func sliderValueDidChange(_ sender: UISlider!) {
         let step: Float = 1
         let roundedStepValue = Int(round(sender.value / step))
-        let perMillSymbol = NumberFormatter().perMillSymbol!
-        currentValueLabel.text = NSLocalizedString("Margin Split", comment: "") + ": \(roundedStepValue)\(perMillSymbol)"
+        currentValueLabel.text = NSLocalizedString("Margin Split", comment: "") + ": \(roundedStepValue)" + NumberFormatter().percentSymbol
     }
     
     @objc func pressedSaveButton(_ sender: Any) {
