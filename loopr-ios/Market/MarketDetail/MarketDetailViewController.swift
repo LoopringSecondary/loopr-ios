@@ -183,7 +183,8 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         } else if indexPath.section == 1 {
             return OrderTableViewCell.getHeight()
         } else {
-            return TradeTableViewCell.getHeight()
+            // return TradeTableViewCell.getHeight()
+            return OrderTableViewCell.getHeight()
         }
     }
     
@@ -256,6 +257,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 
                 cell?.order = OrderDataManager.shared.getOrders(orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown])[indexPath.row-1]
                 cell?.update()
+                cell?.cancelButton.isHidden = false
                 cell?.pressedCancelButtonClosure = {
                     let alert = UIAlertController(title: "You are going to cancel the order.", message: nil, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
@@ -269,15 +271,16 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 return cell!
             }
         } else {            
-            var cell = tableView.dequeueReusableCell(withIdentifier: TradeTableViewCell.getCellIdentifier()) as? TradeTableViewCell
+            var cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.getCellIdentifier()) as? OrderTableViewCell
             if cell == nil {
-                let nib = Bundle.main.loadNibNamed("TradeTableViewCell", owner: self, options: nil)
-                cell = nib![0] as? TradeTableViewCell
-                cell?.selectionStyle = .none
+                let nib = Bundle.main.loadNibNamed("OrderTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? OrderTableViewCell
+                // cell?.selectionStyle = .none
             }
             
             cell?.order = OrderDataManager.shared.getOrders(orderStatuses: [.finished])[indexPath.row]
             cell?.update()
+            cell?.cancelButton.isHidden = true
             return cell!
         }
     }
@@ -287,6 +290,12 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         
         if indexPath.section == 1 && indexPath.row > 0 {
             let order = OrderDataManager.shared.getOrders(orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown])[indexPath.row-1]
+            let viewController = OrderDetailViewController()
+            viewController.order = order
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        } else if indexPath.section == 2 {
+            let order = OrderDataManager.shared.getOrders(orderStatuses: [.finished])[indexPath.row]
             let viewController = OrderDetailViewController()
             viewController.order = order
             viewController.hidesBottomBarWhenPushed = true

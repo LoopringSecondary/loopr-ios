@@ -92,6 +92,16 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         }
         cell?.order = orders[orderDates[indexPath.section]]![indexPath.row]
         cell?.update()
+        cell?.pressedCancelButtonClosure = {
+            let alert = UIAlertController(title: "You are going to cancel the order.", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+                print("Confirm to cancel the order")
+            }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
         return cell!
     }
     
