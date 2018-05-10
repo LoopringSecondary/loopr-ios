@@ -13,12 +13,6 @@ import NotificationBannerSwift
 
 class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelegate {
 
-    @IBOutlet weak var typeTipLabel: UILabel!
-    @IBOutlet weak var typeInfoLabel: UILabel!
-    @IBOutlet weak var iconView: IconView!
-    @IBOutlet weak var tokenImage: UIImageView!
-    @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var displayLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var confirmationButton: UIButton!
     
@@ -27,8 +21,13 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     var price: String = "0.0"
     var expire: OrderExpire = .oneHour
     var verifyInfo: [String: Double]?
-    var needSubmitOrder: Bool = true
     
+    // Labels
+    var typeTipLabel: UILabel = UILabel()
+    var iconView: IconView = IconView()
+    var tokenImage: UIImageView = UIImageView()
+    var amountLabel: UILabel = UILabel()
+    var displayLabel: UILabel = UILabel()
     // Price
     var priceTipLabel: UILabel = UILabel()
     var priceInfoLabel: UILabel = UILabel()
@@ -57,7 +56,6 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         self.navigationItem.title = NSLocalizedString("Confirmation", comment: "")
         confirmationButton.title = NSLocalizedString("Confirmation", comment: "")
         confirmationButton.setupRoundBlack()
-
         if let order = self.order {
             setupLabels()
             setupTokenView(order: order)
@@ -67,12 +65,10 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     }
     
     func setupLabels() {
-        typeTipLabel.text = NSLocalizedString("You are ", comment: "")
+        typeTipLabel.textAlignment = .center
+        typeTipLabel.text = (type == .buy ? NSLocalizedString("You are buying", comment: "") : NSLocalizedString("You are selling", comment: ""))
         typeTipLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 30)
         typeTipLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
-        typeInfoLabel.text = (type == .buy ? NSLocalizedString("buying", comment: "") : NSLocalizedString("selling", comment: ""))
-        typeInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 30)
-        typeInfoLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
     }
     
     func setupTokenView(order: OriginalOrder) {
@@ -113,8 +109,10 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
                 displayLabel.text = (price * order.amountBuy).currency
             }
         }
+        amountLabel.textAlignment = .center
         amountLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 40)
         amountLabel.textColor = Themes.isNight() ? UIColor.white : UIColor.black
+        displayLabel.textAlignment = .center
         displayLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 20)
         displayLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
     }
@@ -123,10 +121,28 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         let padding: CGFloat = 15
+        
+        typeTipLabel.frame = CGRect(x: 0, y: 50, width: screenWidth, height: 40)
+        scrollView.addSubview(typeTipLabel)
+
+        let width = screenWidth * 0.2
+        let rect = CGRect(x: screenWidth * 0.4, y: typeTipLabel.frame.maxY + 2*padding, width: width, height: width)
+        iconView.frame = rect
+        tokenImage.frame = rect
+        iconView.layer.cornerRadius = width/2
+        iconView.clipsToBounds = true
+        scrollView.addSubview(iconView)
+        scrollView.addSubview(tokenImage)
+        
+        amountLabel.frame = CGRect(x: 0, y: tokenImage.frame.maxY + 2*padding, width: screenWidth, height: 40)
+        scrollView.addSubview(amountLabel)
+        displayLabel.frame = CGRect(x: 0, y: amountLabel.frame.maxY + padding, width: screenWidth, height: 40)
+        scrollView.addSubview(displayLabel)
+        
         // 1st row: price
         priceTipLabel.font = FontConfigManager.shared.getLabelFont()
         priceTipLabel.text = NSLocalizedString("Price", comment: "")
-        priceTipLabel.frame = CGRect(x: padding, y: padding, width: 150, height: 40)
+        priceTipLabel.frame = CGRect(x: padding, y: displayLabel.frame.maxY + padding*3, width: 150, height: 40)
         scrollView.addSubview(priceTipLabel)
         priceInfoLabel.font = FontConfigManager.shared.getLabelFont()
         priceInfoLabel.text = self.price + " " + PlaceOrderDataManager.shared.market.description
@@ -266,13 +282,12 @@ extension PlaceOrderConfirmationViewController {
     }
     
     func approve(token: String, amount: Int64) {
-        if let to = TokenDataManager.shared.getAddress(by: token) {
+        if let toAddress = TokenDataManager.shared.getAddress(by: token) {
             var error: NSError? = nil
             let approve = GethNewBigInt(amount)!
-            let gas = GethBigInt.generateBigInt(GasDataManager.shared.getGasPrice())!
             let delegateAddress = GethNewAddressFromHex(RelayAPIConfiguration.delegateAddress, &error)!
-            let tokenAddress = GethNewAddressFromHex(to, &error)!
-            SendCurrentAppWalletDataManager.shared._approve(tokenAddress: tokenAddress, delegateAddress: delegateAddress, tokenAmount: approve, gasPrice: gas, completion: complete)
+            let tokenAddress = GethNewAddressFromHex(toAddress, &error)!
+            SendCurrentAppWalletDataManager.shared._approve(tokenAddress: tokenAddress, delegateAddress: delegateAddress, tokenAmount: approve, completion: complete)
         }
     }
     
@@ -305,6 +320,8 @@ extension PlaceOrderConfirmationViewController {
             }
             return
         }
-        pushController()
+        DispatchQueue.main.async {
+            self.pushController()
+        }
     }
 }

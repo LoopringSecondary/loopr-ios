@@ -56,7 +56,9 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
         let newAppWallet = AppWallet(setupWalletMethod: .importUsingPrivateKey, address: address, privateKey: privateKey, password: password, name: walletName, active: true)
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
+        
+        // Inform relay
+        LoopringAPIRequest.unlockWallet(owner: address) { (_, _) in }
         print("Finished unlocking a new wallet in ImportWalletUsingPrivateKeyDataManager")
     }
-
 }

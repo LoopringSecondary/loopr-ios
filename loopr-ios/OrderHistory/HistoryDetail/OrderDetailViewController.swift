@@ -10,14 +10,15 @@ import UIKit
 
 class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     
-    @IBOutlet weak var marketLabel: UILabel!
-    @IBOutlet weak var typeLabel: UILabel!
-    @IBOutlet weak var filledPieChart: CircleChart!
-    @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var displayLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     
     var order: Order?
+    
+    var marketLabel: UILabel = UILabel()
+    var typeLabel: UILabel = UILabel()
+    var filledPieChart: CircleChart = CircleChart()
+    var amountLabel: UILabel = UILabel()
+    var displayLabel: UILabel = UILabel()
     
     // Amount
     var amountTipLabel: UILabel = UILabel()
@@ -58,9 +59,6 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupOrderType(order: Order) {
-        typeLabel.text = order.originalOrder.side.capitalized
-        typeLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 20)
-        typeLabel.borderWidth = 0.5
         if order.originalOrder.side == "buy" {
             typeLabel.backgroundColor = UIColor.black
             typeLabel.textColor = UIColor.white
@@ -69,7 +67,10 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
             typeLabel.textColor = UIColor.black
             typeLabel.borderColor = UIColor.gray
         }
-        typeLabel.layer.cornerRadius = 2.0
+        typeLabel.text = order.originalOrder.side.capitalized
+        typeLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 20)
+        typeLabel.borderWidth = 0.5
+        typeLabel.layer.cornerRadius = 6.0
         typeLabel.layer.masksToBounds = true
     }
     
@@ -115,22 +116,44 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     
     func setup() {
         guard let order = self.order else { return }
-        // config label
-        marketLabel.text = order.tradingPairDescription
-        marketLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 30)
-        marketLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
-        setupOrderType(order: order)
-        setupOrderFilled(order: order)
-        setupOrderAmount(order: order)
 
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         let padding: CGFloat = 15
+        
+        marketLabel.text = order.tradingPairDescription
+        marketLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 30)
+        marketLabel.textAlignment = .center
+        marketLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
+        marketLabel.frame = CGRect(x: 0, y: 50, width: screenWidth, height: 40)
+        scrollView.addSubview(marketLabel)
+        
+        setupOrderType(order: order)
+        let contendWidth = marketLabel.intrinsicContentSize.width
+        typeLabel.textAlignment = .center
+        typeLabel.frame = CGRect(x: (screenWidth + contendWidth) / 2 + 5, y: marketLabel.frame.origin.y + 5, width: 40, height: 30)
+        scrollView.addSubview(typeLabel)
+        
+        let rect = CGRect(x: screenWidth*0.35, y: marketLabel.frame.maxY + padding, width: screenWidth*0.3, height: screenWidth*0.3)
+        filledPieChart = CircleChart(frame: rect)
+        setupOrderFilled(order: order)
+        scrollView.addSubview(filledPieChart)
+        
+        setupOrderAmount(order: order)
+        amountLabel.textAlignment = .center
+        amountLabel.frame = CGRect(x: 0, y: filledPieChart.frame.maxY + padding, width: screenWidth, height: 40)
+        scrollView.addSubview(amountLabel)
+        
+        displayLabel.textAlignment = .center
+        displayLabel.frame = CGRect(x: 0, y: amountLabel.frame.maxY + padding, width: screenWidth, height: 40)
+        scrollView.addSubview(displayLabel)
+
+        // setup rows
         // 1st row: amount
         amountTipLabel.font = FontConfigManager.shared.getLabelFont()
         amountTipLabel.text = NSLocalizedString("Filled/Amount", comment: "")
-        amountTipLabel.frame = CGRect(x: padding, y: 50, width: 150, height: 40)
+        amountTipLabel.frame = CGRect(x: padding, y: displayLabel.frame.maxY + padding*3, width: 150, height: 40)
         scrollView.addSubview(amountTipLabel)
         amountInfoLabel.font = FontConfigManager.shared.getLabelFont()
         amountInfoLabel.textAlignment = .right

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Geth
 
 struct GasLimit {
     let type: String
@@ -21,8 +22,7 @@ class GasDataManager {
     
     static let shared = GasDataManager()
     
-    //TODO: Is gas price in gwei unit?
-    private var gasPrice: Double
+    private var gasPrice: Double // gwei
     private var gasLimits: [GasLimit]
     private var gasAmount: Double
     
@@ -30,8 +30,8 @@ class GasDataManager {
         self.gasPrice = 0
         self.gasAmount = 0
         self.gasLimits = []
-        self.loadGasLimitsFromJson()
         self.getEstimateGasPrice()
+        self.loadGasLimitsFromJson()
     }
 
     func getGasLimits() -> [GasLimit] {
@@ -60,21 +60,26 @@ class GasDataManager {
         return gasLimit
     }
     
-    func getGasAmount(by type: String) -> Double {
+    func getGasAmountInETH(by type: String) -> Double {
+        var result: Double = 0
         if let limit = getGasLimitByType(by: type) {
-            return self.gasPrice * Double(limit)
+            result = self.gasPrice * Double(limit)
         } else {
-            return self.gasPrice * 20000
+            result = self.gasPrice * 20000
         }
+        return result / 1000000000
     }
     
     func getEstimateGasPrice() {
+        let semaphore = DispatchSemaphore(value: 0)
         LoopringAPIRequest.getEstimateGasPrice { (gasPrice, error) in
             guard error == nil && gasPrice != nil else {
                 return
             }
-            self.gasPrice = gasPrice!
+            self.gasPrice = gasPrice! * 1000000000
+            semaphore.signal()
         }
+        _ = semaphore.wait(timeout: .distantFuture)
     }
     
     func setGasPrice(to gasPrice: Double) {
@@ -82,6 +87,17 @@ class GasDataManager {
     }
     
     func getGasPrice() -> Double {
-        return self.gasPrice
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: UserDefaultsKeys.gasPrice.rawValue) {
+            return defaults.double(forKey: UserDefaultsKeys.gasPrice.rawValue)
+        } else {
+            return self.gasPrice
+        }
+    }
+    
+    func getGasPriceInWei() -> GethBigInt {
+        let price = getGasPrice()
+        let amountInWei = GethBigInt.convertGweiToWei(from: price)!
+        return amountInWei
     }
 }

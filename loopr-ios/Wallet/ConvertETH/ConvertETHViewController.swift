@@ -280,9 +280,9 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             return
         }
         if asset!.symbol.uppercased() == "ETH" {
-            SendCurrentAppWalletDataManager.shared._deposit(amount: amount, gasPrice: gasPrice, completion: completion)
+            SendCurrentAppWalletDataManager.shared._deposit(amount: amount, completion: completion)
         } else if asset!.symbol.uppercased() == "WETH" {
-            SendCurrentAppWalletDataManager.shared._withDraw(amount: amount, gasPrice: gasPrice, completion: completion)
+            SendCurrentAppWalletDataManager.shared._withDraw(amount: amount, completion: completion)
         }
     }
 
@@ -327,13 +327,5 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             }
             activeTextField!.text = currentText
         }
-    }
-
-}
-
-extension ConvertETHViewController {
-    var gasPrice: GethBigInt {
-        // TODO: get value from transactionSpeedSlider in advanced setting
-        return GethBigInt(20000000000)
     }
 }

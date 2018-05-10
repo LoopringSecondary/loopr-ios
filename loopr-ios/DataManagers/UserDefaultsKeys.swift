@@ -21,6 +21,7 @@ enum UserDefaultsKeys: String {
     case showSmallAssets = "UserDefaultsKeys.showSmallAssets"
     case showOtherPairs = "UserDefaultsKeys.showOtherPairs"
     case orderHistory = "UserDefaultsKeys.orderHistory"
+    case gasPrice = "UserDefaultsKeys.gasPrice"
     
     // Trade. Used in TradeDataManager
     case tradeTokenS = "UserDefaultsKeys.tradeTokenS"

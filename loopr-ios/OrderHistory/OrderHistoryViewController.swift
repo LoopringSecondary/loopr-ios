@@ -28,6 +28,7 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         historyTableView.dataSource = self
         historyTableView.delegate = self
         historyTableView.tableFooterView = UIView()
+        historyTableView.separatorStyle = .none
         
         let orderSearchButton = UIButton(type: UIButtonType.custom)
         let image = UIImage(named: "Order-history-black")

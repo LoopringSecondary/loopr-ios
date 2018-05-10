@@ -67,7 +67,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     
     // TODO: should set the default value using the gwei value in GasDataManager
     // Reference: https://ethgasstation.info
-    var gasPriceInGwei: Double = 3.0
+    var gasPriceInGwei: Double = GasDataManager.shared.getGasPrice()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -388,7 +388,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             var error: NSError? = nil
             let toAddress = GethNewAddressFromHex(toAddress, &error)!
             if token.symbol.uppercased() == "ETH" {
-                SendCurrentAppWalletDataManager.shared._transferETH(amount: gethAmount, gasPrice: gasPrice, toAddress: toAddress, completion: completion)
+                SendCurrentAppWalletDataManager.shared._transferETH(amount: gethAmount, toAddress: toAddress, completion: completion)
             } else {
                 // ETH doesn't have a protocol_value
                 if !token.protocol_value.isHexAddress() {
@@ -396,7 +396,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                     return
                 }
                 let contractAddress = GethNewAddressFromHex(token.protocol_value, &error)!
-                SendCurrentAppWalletDataManager.shared._transferToken(contractAddress: contractAddress, toAddress: toAddress, tokenAmount: gethAmount, gasPrice: gasPrice, completion: completion)
+                SendCurrentAppWalletDataManager.shared._transferToken(contractAddress: contractAddress, toAddress: toAddress, tokenAmount: gethAmount, completion: completion)
             }
         }
     }
@@ -438,8 +438,10 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     }
     
     func updateTransactionFeeAmountLabel() {
+        let defaults = UserDefaults.standard
+        defaults.set(gasPriceInGwei, forKey: UserDefaultsKeys.gasPrice.rawValue)
         let amountInEther = gasPriceInGwei / 1000000000
-        if let etherPrice = PriceDataManager.shared.getPriceBySymbol(of: asset.symbol) {
+        if let etherPrice = PriceDataManager.shared.getPriceBySymbol(of: "ETH") {
             let transactionFeeInFiat = amountInEther * etherPrice * Double(GasDataManager.shared.getGasLimitByType(by: "eth_transfer")!)
             transactionFeeAmountLabel.text = "\(transactionFeeInFiat.currency)"
         }
@@ -588,9 +590,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         guard activeTextField != nil else {
             return
         }
-        
         var currentText = activeTextField!.text ?? ""
-        
         if (position.row, position.column) == (3, 2) {
             if currentText.count > 0 {
                 currentText = String(currentText.dropLast())
@@ -607,21 +607,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             self.navigationItem.title = ""
         }
     }
-
 }
 
 extension SendAssetViewController {
-
-    // TODO: in wei
-    var gasPrice: GethBigInt {
-        let amountInWei = GethBigInt.convertGweiToWei(from: gasPriceInGwei)
-        if amountInWei != nil {
-            return amountInWei!
-        } else {
-            // 5 gwei
-            return GethBigInt(5000000000)
-        }
-    }
 
     func completion(_ txHash: String?, _ error: Error?) {
         // Close activity indicator
@@ -648,5 +636,4 @@ extension SendAssetViewController {
             banner.show()
         }
     }
-
 }

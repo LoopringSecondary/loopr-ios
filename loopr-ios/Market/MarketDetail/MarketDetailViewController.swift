@@ -8,6 +8,7 @@
 
 import UIKit
 import PopupDialog
+import NotificationBannerSwift
 
 class MarketDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -23,6 +24,8 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     // Drag down to close a present view controller.
     let interactor = Interactor()
     
+    var blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,7 +40,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
         setBackButton()
         udpateStarButton()
-        
+        blurVisualEffectView.alpha = 1
         // Sell button
         sellButton.setTitle(NSLocalizedString("Sell", comment: ""), for: .normal)
         sellButton.setupRoundWhite()
@@ -254,6 +257,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             return cell!
 
         } else if indexPath.section == 1 {
+            let screenSize: CGRect = UIScreen.main.bounds
+            self.blurVisualEffectView.frame = screenSize
+
             if indexPath.row == 0 {
                 var cell = tableView.dequeueReusableCell(withIdentifier: CancelAllOpenOrdersTableViewCell.getCellIdentifier()) as? CancelAllOpenOrdersTableViewCell
                 if cell == nil {
@@ -261,18 +267,27 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                     cell = nib![0] as? CancelAllOpenOrdersTableViewCell
                     cell?.selectionStyle = .none
                 }
-                
                 cell?.pressedCancelAllButtonClosure = {
-                    let alert = UIAlertController(title: "You are going to cancel all open orders.", message: nil, preferredStyle: .alert)
+                    self.blurVisualEffectView.alpha = 1.0
+                    let title = NSLocalizedString("You are going to cancel all open orders.", comment: "")
+                    let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
-                        print("Confirm to cancel all orders")
+                        UIView.animate(withDuration: 0.1, animations: {
+                            self.blurVisualEffectView.alpha = 0.0
+                        }, completion: {(_) in
+                            self.blurVisualEffectView.removeFromSuperview()
+                        })
                     }))
                     alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
-                        
+                        UIView.animate(withDuration: 0.1, animations: {
+                            self.blurVisualEffectView.alpha = 0.0
+                        }, completion: {(_) in
+                            self.blurVisualEffectView.removeFromSuperview()
+                        })
                     }))
+                    self.navigationController?.view.addSubview(self.blurVisualEffectView)
                     self.present(alert, animated: true, completion: nil)
                 }
-                
                 return cell!
             } else {
                 var cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.getCellIdentifier()) as? OrderTableViewCell
@@ -280,18 +295,31 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                     let nib = Bundle.main.loadNibNamed("OrderTableViewCell", owner: self, options: nil)
                     cell = nib![0] as? OrderTableViewCell
                 }
-                
-                cell?.order = OrderDataManager.shared.getOrders(orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown])[indexPath.row-1]
+                let order = OrderDataManager.shared.getOrders(orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown])[indexPath.row-1]
+                cell?.order = order
                 cell?.update()
                 cell?.cancelButton.isHidden = false
                 cell?.pressedCancelButtonClosure = {
-                    let alert = UIAlertController(title: "You are going to cancel the order.", message: nil, preferredStyle: .alert)
+                    self.blurVisualEffectView.alpha = 1.0
+                    let title = NSLocalizedString("You are going to cancel the order.", comment: "")
+                    let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
                         print("Confirm to cancel the order")
+                        UIView.animate(withDuration: 0.1, animations: {
+                            self.blurVisualEffectView.alpha = 0.0
+                        }, completion: {(_) in
+                            self.blurVisualEffectView.removeFromSuperview()
+                        })
+                        self.cancelOrder(order: order.originalOrder)
                     }))
                     alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
-                        
+                        UIView.animate(withDuration: 0.1, animations: {
+                            self.blurVisualEffectView.alpha = 0.0
+                        }, completion: {(_) in
+                            self.blurVisualEffectView.removeFromSuperview()
+                        })
                     }))
+                    self.navigationController?.view.addSubview(self.blurVisualEffectView)
                     self.present(alert, animated: true, completion: nil)
                 }
                 return cell!
@@ -303,7 +331,6 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 cell = nib![0] as? OrderTableViewCell
                 // cell?.selectionStyle = .none
             }
-            
             cell?.order = OrderDataManager.shared.getOrders(orderStatuses: [.finished])[indexPath.row]
             cell?.update()
             cell?.cancelButton.isHidden = true
@@ -360,15 +387,39 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         }
         */
     }
-
 }
 
 extension MarketDetailViewController: UIViewControllerTransitioningDelegate {
+    
+    func cancelOrder(order: OriginalOrder) {
+        SendCurrentAppWalletDataManager.shared._cancelOrder(order: order, completion: completion)
+    }
+
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return DismissAnimator()
     }
     
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return interactor.hasStarted ? interactor : nil
+    }
+    
+    func completion(_ txHash: String?, _ error: Error?) {
+        var title: String = ""
+        guard error == nil && txHash != nil else {
+            DispatchQueue.main.async {
+                title = NSLocalizedString("Failed, Please try again.", comment: "")
+                let banner = NotificationBanner.generate(title: title, style: .danger)
+                banner.duration = 5
+                banner.show()
+            }
+            return
+        }
+        DispatchQueue.main.async {
+            print(txHash!)
+            title = NSLocalizedString("Order(s) Cancelled Successful.", comment: "")
+            let banner = NotificationBanner.generate(title: title, style: .success)
+            banner.duration = 5
+            banner.show()
+        }
     }
 }

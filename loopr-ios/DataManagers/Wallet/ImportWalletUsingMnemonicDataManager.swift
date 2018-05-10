@@ -65,6 +65,8 @@ class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
     
     func complete() {
         let pathValue = derivationPathValue + "/x"
-        _ = AppWalletDataManager.shared.addWallet(setupWalletMethod: .importUsingMnemonic, walletName: walletName, mnemonics: mnemonic.components(separatedBy: " "), password: password, derivationPath: pathValue, key: selectedKey)
+        let wallet = AppWalletDataManager.shared.addWallet(setupWalletMethod: .importUsingMnemonic, walletName: walletName, mnemonics: mnemonic.components(separatedBy: " "), password: password, derivationPath: pathValue, key: selectedKey)
+        // Inform relay
+        LoopringAPIRequest.unlockWallet(owner: wallet!.address) { (_, _) in }
     }
 }

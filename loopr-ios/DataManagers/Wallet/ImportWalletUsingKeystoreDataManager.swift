@@ -15,10 +15,8 @@ class ImportWalletUsingKeystoreDataManager: ImportWalletProtocol {
 
     // Required fields
     var password: String
-    
     var address: String
     var privateKey: String
-    
     var walletName: String
 
     private init() {
@@ -55,7 +53,6 @@ class ImportWalletUsingKeystoreDataManager: ImportWalletProtocol {
             // Save the keystore string value to keyDirectory
             let fileURL = keyDirectory.appendingPathComponent("key.json")
             try keystoreStringValue.write(to: fileURL, atomically: false, encoding: .utf8)
-            
             let keyStore = try KeyStore(keyDirectory: keyDirectory, walletDirectory: walletDirectory)
             
             print(keyStore.accounts.count)
@@ -66,9 +63,7 @@ class ImportWalletUsingKeystoreDataManager: ImportWalletProtocol {
             print(account.address.description)
             
             let privateKeyData = try keyStore.exportPrivateKey(account: account, password: password)
-            
             let privateKeyString = privateKeyData.toHexString()
-            
             let pubKey = Secp256k1.shared.pubicKey(from: privateKeyData)
             let keystoreAddress = KeystoreKey.decodeAddress(from: pubKey)
             
@@ -86,6 +81,8 @@ class ImportWalletUsingKeystoreDataManager: ImportWalletProtocol {
         let newAppWallet = AppWallet(setupWalletMethod: .importUsingKeystore, address: address, privateKey: privateKey, password: password, name: walletName, active: true)
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
+        // Inform relay
+        LoopringAPIRequest.unlockWallet(owner: address) { (_, _) in }
         print("Finished unlocking a new wallet in ImportWalletUsingKeystoreDataManager")
     }
 

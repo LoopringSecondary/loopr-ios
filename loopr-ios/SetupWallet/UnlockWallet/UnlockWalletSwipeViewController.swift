@@ -61,27 +61,21 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
     
     override func viewDidAppear(_ animated: Bool) {
         if let valueToDisplay = valueFromQRCodeScanning {
-
             if typeFromQRCodeScanning == QRCodeType.privateKey {
                 let controller = self.viewControllers[2] as! PrivateKeyViewController
                 controller.privateKeyTextView.text = valueToDisplay
                 self.swipeView.jump(to: 2, animated: true)
-            }
-            else if typeFromQRCodeScanning == QRCodeType.keystore {
+            } else if typeFromQRCodeScanning == QRCodeType.keystore {
                 let controller = self.viewControllers[1] as! UnlockKeystoreViewController
                 controller.keystoreContentTextView.text = valueToDisplay
                 self.swipeView.jump(to: 1, animated: true)
-            }
-            else if typeFromQRCodeScanning == QRCodeType.mnemonic {
+            } else if typeFromQRCodeScanning == QRCodeType.mnemonic {
                 let controller = self.viewControllers[0] as! MnemonicViewController
                 controller.mnemonicWordTextView.text = valueToDisplay
                 self.swipeView.jump(to: 0, animated: true)
-            }
-            else {
+            } else {
                 showAlert(decodedURL: valueToDisplay)
-                
             }
-            
             self.view.setNeedsDisplay()
         }
     }
@@ -138,12 +132,11 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
     }
     
     func showAlert(decodedURL: String) {
-        let alertPrompt = UIAlertController(title: "QR Code type doesn't fit here", message: "\(decodedURL)", preferredStyle: .actionSheet)
+        let title = NSLocalizedString("QR Code type doesn't fit here", comment: "")
+        let alertPrompt = UIAlertController(title: title, message: "\(decodedURL)", preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
-
         alertPrompt.addAction(cancelAction)
-        
         present(alertPrompt, animated: true, completion: nil)
     }
 

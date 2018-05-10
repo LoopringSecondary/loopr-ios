@@ -97,7 +97,10 @@ class GenerateWalletDataManager {
         password = ""
         mnemonics = []
         userInputMnemonics = []
-    
+        
+        // Inform relay
+        LoopringAPIRequest.unlockWallet(owner: appWallet!.address) { (_, _) in }
+        
         // TODO: remove the force wrap
         return appWallet!
     }

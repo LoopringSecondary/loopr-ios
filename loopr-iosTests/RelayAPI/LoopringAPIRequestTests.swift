@@ -11,7 +11,7 @@ import XCTest
 
 class LoopringAPIRequestTests: XCTestCase {
     
-    let testAddress = "0x8311804426a24495bd4306daf5f595a443a52e32"
+    let testAddress = "0x87c6117ef0935b1Df3f9D93D9b39516eB8141870"
     
     override func setUp() {
         super.setUp()
@@ -225,7 +225,6 @@ class LoopringAPIRequestTests: XCTestCase {
             }
             XCTAssertNotNil(transactions)
             XCTAssertNotEqual(transactions!.count, 0)
-            print(transactions)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)
@@ -233,7 +232,7 @@ class LoopringAPIRequestTests: XCTestCase {
     
     func testUnlockWallet() {
         let expectation = XCTestExpectation()
-        LoopringAPIRequest.unlockWallet(owner: "0x48ff2269e58a373120FFdBBdEE3FBceA854AC30A") { result, error in
+        LoopringAPIRequest.unlockWallet(owner: testAddress) { result, error in
             guard error == nil && result != nil else {
                 print("error=\(String(describing: error))")
                 XCTFail()

@@ -137,7 +137,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     }
     
     @objc func moveScannerLayer(_ timer: Timer) {
-        scanLine.frame = CGRect(x: 0, y: 0, width: self.scanQRCodeView.frame.size.width, height: 12)
+        scanLine.frame = CGRect(x: 0, y: 0, width: self.scanQRCodeView.frame.size.width, height: 1)
         UIView.animate(withDuration: 2) {
             self.scanLine.frame = CGRect(x: self.scanLine.frame.origin.x, y: self.scanLine.frame.origin.y + self.scanQRCodeView.frame.size.height - 10, width: self.scanLine.frame.size.width, height: self.scanLine.frame.size.height)
         }
@@ -149,7 +149,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         scanQRCodeView.layer.borderWidth = 1.0
         scanQRCodeView.layer.borderColor = UIColor.white.cgColor
         scanView.addSubview(scanQRCodeView)
-        scanLine.frame = CGRect(x: 0, y: 0, width: scanQRCodeView.frame.size.width, height: 5)
+        scanLine.frame = CGRect(x: 0, y: 0, width: scanQRCodeView.frame.size.width, height: 2)
         scanLine.image = UIImage(named: "QRCodeScanLine")
         scanQRCodeView.addSubview(scanLine)
         self.addObserver(self, forKeyPath: "scanning", options: .new, context: nil)

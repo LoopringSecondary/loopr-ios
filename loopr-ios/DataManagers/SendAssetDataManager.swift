@@ -21,7 +21,7 @@ class SendCurrentAppWalletDataManager {
         self.nonce = 0
         self.wethAddress = nil
         self.protocolAddress = nil
-        self.getNonceFromServer()
+        self.getNonceFromServerSynchronous()
         self.getWethAddress()
         self.getProtocolAddress()
     }
@@ -42,7 +42,7 @@ class SendCurrentAppWalletDataManager {
     
     // The API request teth_getTransactionCount is slow. Please be patient. It takes 3-20 seconds.
     // TODO: we can improve it.
-    func getNonceFromServerSynchronous() -> Int64 {
+    func getNonceFromServerSynchronous() {
         let start = Date()
         print("Start getNonceFromServerSynchronous")
         let semaphore = DispatchSemaphore(value: 0)
@@ -65,9 +65,7 @@ class SendCurrentAppWalletDataManager {
                 print("Time to getNonceFromServerSynchronous: \(timeInterval) seconds")
             })
         }
-        
         _ = semaphore.wait(timeout: .distantFuture)
-        return self.nonce
     }
     
     func getNonceFromServer() {
@@ -94,6 +92,7 @@ class SendCurrentAppWalletDataManager {
         let start = Date()
         EthereumAPIRequest.eth_sendRawTransaction(data: signedTransaction) { (data, error) in
             guard error == nil && data != nil else {
+                print(error!.localizedDescription)
                 completion(nil, error)
                 return
             }
@@ -143,40 +142,6 @@ class SendCurrentAppWalletDataManager {
         print("Time to _keystore: \(timeInterval) seconds")
     }
     
-    // convert weth -> eth
-    func _withDraw(amount: GethBigInt, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
-        guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
-            return
-        }
-        let transferFunction = EthFunction(name: "withdraw", inputParameters: [amount])
-        let data = web3swift.encode(transferFunction)
-        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "withdraw")!
-        _transfer(data: data, address: wethAddress!, amount: GethBigInt(0), gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
-    }
-    
-    // convert eth -> weth
-    func _deposit(amount: GethBigInt, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
-        guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
-            return
-        }
-        let transferFunction = EthFunction(name: "deposit", inputParameters: [])
-        let data = web3swift.encode(transferFunction)
-        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "deposit")!
-        _transfer(data: data, address: wethAddress!, amount: amount, gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
-    }
-    
-    // contractAddress: token address, delegateAddress: loorping delegate address
-    func _approve(tokenAddress: GethAddress, delegateAddress: GethAddress, tokenAmount: GethBigInt, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
-        guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
-            return
-        }
-        let transferFunction = EthFunction(name: "approve", inputParameters: [delegateAddress, tokenAmount])
-        let data = web3swift.encode(transferFunction)
-        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "approve")!
-        // amount must be 0 for ERC20 tokens.
-        _transfer(data: data, address: tokenAddress, amount: GethBigInt.init(0), gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
-    }
-    
     func _encodeOrder(order: OriginalOrder) -> Data {
         var data: Data = Data()
         var error: NSError? = nil
@@ -224,102 +189,121 @@ class SendCurrentAppWalletDataManager {
         return data
     }
     
-    func _cancelOrder(order: OriginalOrder, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
+    // convert weth -> eth
+    func _withDraw(amount: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
+        guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
+            return
+        }
+        let transferFunction = EthFunction(name: "withdraw", inputParameters: [amount])
+        let data = web3swift.encode(transferFunction)
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "withdraw")!
+        _transfer(data: data, address: wethAddress!, amount: GethBigInt(0), gasLimit: GethBigInt(gasLimit), completion: completion)
+    }
+    
+    // convert eth -> weth
+    func _deposit(amount: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
+        guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
+            return
+        }
+        let transferFunction = EthFunction(name: "deposit", inputParameters: [])
+        let data = web3swift.encode(transferFunction)
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "deposit")!
+        _transfer(data: data, address: wethAddress!, amount: amount, gasLimit: GethBigInt(gasLimit), completion: completion)
+    }
+    
+    // contractAddress: token address, delegateAddress: loorping delegate address
+    func _approve(tokenAddress: GethAddress, delegateAddress: GethAddress, tokenAmount: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
+        guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
+            return
+        }
+        let transferFunction = EthFunction(name: "approve", inputParameters: [delegateAddress, tokenAmount])
+        let data = web3swift.encode(transferFunction)
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "approve")!
+        // amount must be 0 for ERC20 tokens.
+        _transfer(data: data, address: tokenAddress, amount: GethBigInt.init(0), gasLimit: GethBigInt(gasLimit), completion: completion)
+    }
+    
+    func _cancelOrder(order: OriginalOrder, completion: @escaping (String?, Error?) -> Void) {
         guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
         }
         let data = _encodeOrder(order: order)
+        
+        print(data.hexString)
+        
         let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "cancelOrder")!
 
-        _transfer(data: data, address: protocolAddress!, amount: GethBigInt.init(0), gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
+        _transfer(data: data, address: protocolAddress!, amount: GethBigInt.init(0), gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
-    func _cancelAllOrders(timestamp: GethBigInt/* TODO:check here*/, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
+    func _cancelAllOrders(timestamp: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
         guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
         }
         let transferFunction = EthFunction(name: "cancelAllOrders", inputParameters: [timestamp])
         let data = web3swift.encode(transferFunction)
         let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "cancelAllOrders")!
-        _transfer(data: data, address: protocolAddress!, amount: GethBigInt.init(0), gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
+        _transfer(data: data, address: protocolAddress!, amount: GethBigInt.init(0), gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
     // tokena: contract addr
-    func _cancelOrdersByTokenPair(timestamp: GethBigInt, tokenA: GethAddress, tokenB: GethAddress, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
+    func _cancelOrdersByTokenPair(timestamp: GethBigInt, tokenA: GethAddress, tokenB: GethAddress, completion: @escaping (String?, Error?) -> Void) {
         guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
         }
         let transferFunction = EthFunction(name: "cancelAllOrdersByTradingPair", inputParameters: [tokenA, tokenB, timestamp])
         let data = web3swift.encode(transferFunction)
         let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "cancelAllOrdersByTradingPair")!
-        _transfer(data: data, address: protocolAddress!, amount: GethBigInt.init(0), gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
+        _transfer(data: data, address: protocolAddress!, amount: GethBigInt.init(0), gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
     // transfer eth
-    func _transferETH(amount: GethBigInt, gasPrice: GethBigInt, toAddress: GethAddress, completion: @escaping (String?, Error?) -> Void) {
+    func _transferETH(amount: GethBigInt, toAddress: GethAddress, completion: @escaping (String?, Error?) -> Void) {
         guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
         }
         let data = "0x".data(using: .utf8)!
         let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "eth_transfer")!
-        _transfer(data: data, address: toAddress, amount: amount, gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
+        _transfer(data: data, address: toAddress, amount: amount, gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
     // transfer tokens including weth
-    func _transferToken(contractAddress: GethAddress, toAddress: GethAddress, tokenAmount: GethBigInt, gasPrice: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
+    func _transferToken(contractAddress: GethAddress, toAddress: GethAddress, tokenAmount: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
         guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
         }
-        // Transfer function
         let transferFunction = EthFunction(name: "transfer", inputParameters: [toAddress, tokenAmount])
         let data = web3swift.encode(transferFunction)
         let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "token_transfer")!
         // amount must be 0 for ERC20 tokens.
-        _transfer(data: data, address: contractAddress, amount: GethBigInt.init(0), gasPrice: gasPrice, gasLimit: GethBigInt(gasLimit), completion: completion)
+        _transfer(data: data, address: contractAddress, amount: GethBigInt.init(0), gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
-    func _transfer(data: Data, address: GethAddress, amount: GethBigInt, gasPrice: GethBigInt, gasLimit: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
+    func _transfer(data: Data, address: GethAddress, amount: GethBigInt, gasLimit: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
         _keystore()
         var userInfo: [String: Any] = [:]
         do {
-            // Async call. Of course we need to clean the following code.
-            // Copy getNonceFromServer
-            let start = Date()
-            if let publicAddress = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
-                EthereumAPIRequest.eth_getTransactionCount(data: publicAddress, block: BlockTag.pending, completionHandler: { (getTransactionCountData, error) in
-                    guard error == nil, let getTransactionCountData = getTransactionCountData else {
-                        return
-                    }
-                    if getTransactionCountData.respond.isHex() {
-                        self.nonce = Int64(getTransactionCountData.respond.dropFirst(2), radix: 16)!
+            let gasPrice = GasDataManager.shared.getGasPriceInWei()
+            
+            let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: self.nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getPassword())
+            if let signedTransactionData = try signedTransaction?.encodeRLP() {
+                self.sendTransactionToServer("0x" + signedTransactionData.hexString, completion: { (result, error) in
+                    if result != nil && error == nil {
+                        self.nonce += 1
+                        LoopringAPIRequest.notifyTransactionSubmitted(txHash: result!, completionHandler: completion)
                     } else {
-                        self.nonce = Int64(getTransactionCountData.respond)!
-                    }
-                    print("Current nounce: \(self.nonce)")
-                    let end1 = Date()
-                    let timeInterval1: Double = end1.timeIntervalSince(start)
-                    print("Time to getNonceFromServer in _transfer: \(timeInterval1) seconds")
-                    
-                    // Sign Transaction
-                    do {
-                        let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: self.nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getPassword())
-                        if let signedTransactionData = try signedTransaction?.encodeRLP() {
-                            self.sendTransactionToServer("0x" + signedTransactionData.hexString, completion: completion)
-                        } else {
-                            userInfo["message"] = NSLocalizedString("Failed to sign/encode", comment: "")
-                            let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
-                            completion(nil, error)
-                        }
-                        let end2 = Date()
-                        let timeInterval2: Double = end2.timeIntervalSince(end1)
-                        print("Time to sign transactinon in _transfer: \(timeInterval2) seconds")
-                    } catch {
-                        userInfo["message"] = NSLocalizedString("Failed to encode transaction", comment: "")
-                        let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
                         completion(nil, error)
                     }
                 })
+            } else {
+                userInfo["message"] = NSLocalizedString("Failed to sign/encode", comment: "")
+                let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
+                completion(nil, error)
             }
+        } catch {
+            userInfo["message"] = NSLocalizedString("Failed to encode transaction", comment: "")
+            let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
+            completion(nil, error)
         }
     }
 }

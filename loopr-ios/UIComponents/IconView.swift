@@ -29,7 +29,6 @@ class IconView: UIView {
         circleView.cornerRadius = circleRadius
         circleView.clipsToBounds = true
         addSubview(circleView)
-
         showTextInsdieView(circleRadius: circleRadius)
     }
     
@@ -37,12 +36,9 @@ class IconView: UIView {
         symbolLabel = UILabel(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height))
         symbolLabel.textAlignment = .center
         symbolLabel.textColor = textColor
-
         let fontSize = (circleRadius*0.625).rounded()
         symbolLabel.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: fontSize)
         symbolLabel.text = symbol
-
         addSubview(symbolLabel)
     }
-
 }

@@ -30,7 +30,6 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.navigationItem.title = NSLocalizedString("Confirmation", comment: "")
         // Do any additional setup after loading the view.
         setupErrorInfo()
@@ -38,7 +37,6 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
         setupLabels()
         setupRows()
         setupButtons()
-    
     }
     
     func setupLabels() {
@@ -128,14 +126,20 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
         return errorTipInfo.count == 0
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func constructOrder(order: OriginalOrder) -> Order? {
+        let result = Order(originalOrder: order, orderStatus: .opened, dealtAmountB: "", dealtAmountS: "")
+        return result
     }
-    */
-
+    
+    @IBAction func pressedDetailsButton(_ sender: UIButton) {
+        if let order = self.order {
+            let vc = OrderDetailViewController()
+            vc.order = constructOrder(order: order)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    @IBAction func pressedDoneButton(_ sender: UIButton) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
 }

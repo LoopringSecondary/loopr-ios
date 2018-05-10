@@ -18,11 +18,11 @@ enum OrderStatus: String, CustomStringConvertible {
 
     var description: String {
         switch self {
-        case .opened: return "Opened"
+        case .opened: return "Submitted"
         case .cutoff: return "Cancelled"
-        case .finished: return "Finished"
+        case .finished: return "Completed"
         case .cancelled: return "Cancelled"
-        case .expire: return "Expire"
+        case .expire: return "Expired"
         case .unknown: return "Unknown"
         }
     }

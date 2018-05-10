@@ -31,19 +31,37 @@ class OrderTableViewCell: UITableViewCell {
     
     func update() {
         guard let order = self.order else { return }
-        
         setupTradingPairlabel(order: order)
         setupVolumeLabel(order: order)
         setupPriceLabel(order: order)
         setupOrderTypeLabel(order: order)
         setupOrderFilled(order: order)
-        
-        cancelButton.backgroundColor = UIColor.clear
+        setupCancelButton(order: order)
+    }
+    
+    func setupCancelButton(order: Order) {
+        let (flag, text) = getOrderStatus(order: order)
+        if flag {
+            cancelButton.isEnabled = true
+            cancelButton.layer.borderColor = UIColor.black.cgColor
+        } else {
+            cancelButton.isEnabled = false
+            cancelButton.backgroundColor = UIColor(rgba: "#e0e0e0")
+            cancelButton.layer.borderColor = UIColor.clear.cgColor
+        }
+        cancelButton.title = text
         cancelButton.titleColor = UIColor.black
         cancelButton.layer.borderWidth = 0.5
-        cancelButton.layer.borderColor = UIColor.black.cgColor
         cancelButton.layer.cornerRadius = 15
         cancelButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 12.0)
+    }
+    
+    func getOrderStatus(order: Order) -> (Bool, String) {
+        if order.orderStatus == .opened {
+            return (true, NSLocalizedString("cancel", comment: ""))
+        } else {
+            return (false, NSLocalizedString(order.orderStatus.description, comment: ""))
+        }
     }
     
     func setupTradingPairlabel(order: Order) {

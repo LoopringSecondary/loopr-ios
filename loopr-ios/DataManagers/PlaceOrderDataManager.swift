@@ -110,6 +110,7 @@ class PlaceOrderDataManager {
         var result: Double? = nil
         if let asset = walletManager.getAsset(symbol: token) {
             if token.uppercased() == "LRC" {
+                // 这里很慢！！！！！！！！！！！
                 let lrcFrozen = getFrozenLRCFeeFromServer()
                 let sellingFrozen = getEstimatedAllocatedAllowanceFromServer(token: "LRC")
                 if asset.allowance >= lrcFee + lrcFrozen + sellingFrozen {
@@ -121,7 +122,7 @@ class PlaceOrderDataManager {
                     return 0
                 }
             }
-            let gasAmount = gasManager.getGasAmount(by: "approve")
+            let gasAmount = gasManager.getGasAmountInETH(by: "approve")
             if asset.allowance == 0 {
                 result = gasAmount
                 balanceInfo["GAS_\(asset.symbol)"] = 1
@@ -142,7 +143,7 @@ class PlaceOrderDataManager {
             let lrcFrozen = getFrozenLRCFeeFromServer()
             let sellingFrozen = getEstimatedAllocatedAllowanceFromServer(token: "LRC")
             if lrcFee + lrcFrozen + sellingFrozen + amountSell > lrcAllowance {
-                let gasAmount = gasManager.getGasAmount(by: "approve")
+                let gasAmount = gasManager.getGasAmountInETH(by: "approve")
                 if lrcAllowance == 0 {
                     result = gasAmount
                     balanceInfo["GAS_LRC"] = 1
@@ -223,9 +224,7 @@ class PlaceOrderDataManager {
     
     func _submit(order: OriginalOrder, completion: @escaping (String?, Error?) -> Void) {
         let orderData = getOrderHash(order: order)
-        
-        print(orderData.hexString)
-        
+
         SendCurrentAppWalletDataManager.shared._keystore()
         let signature = web3swift.sign(message: orderData)!
         let tokens = tokenManager.getAddress(by: order.tokenSell)!
