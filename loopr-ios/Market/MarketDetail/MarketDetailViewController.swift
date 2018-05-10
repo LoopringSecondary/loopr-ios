@@ -49,6 +49,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         buyButton.setTitle(NSLocalizedString("Buy", comment: ""), for: .normal)
         buyButton.setupRoundBlack()
 
+        // TODO: improve these two async API calls
         OrderDataManager.shared.getOrdersFromServer(completionHandler: { orders, error in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -56,7 +57,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         })
         
         OrderBookDataManager.shared.getOrderBookFromServer(market: market.name, completionHandler: { sells, buys, error in
-            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         })
     }
     
@@ -90,7 +93,6 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     @objc func trendResponseReceivedNotification() {
-        
         print("MarketDetailViewController trendReceivedNotification")
         if self.trends == nil {
             self.trends = MarketDataManager.shared.getTrends(market: market!.tradingPair.description)
@@ -147,7 +149,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 6
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -155,10 +157,55 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         case 0:
             return 0
         case 1:
+            return 0
+        case 2:
+            return OrderBookDataManager.shared.getSells().count
+        case 3:
+            return OrderBookDataManager.shared.getBuys().count
+        case 4:
             return OrderDataManager.shared.getOrders(orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown]).count + 1
-        default:
+        case 5:
             return OrderDataManager.shared.getOrders(orderStatuses: [.finished]).count
+        default:
+            return 0
         }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard section == 2 || section == 3 else {
+            return nil
+        }
+
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 45))
+        headerView.backgroundColor = UIColor(white: 0.97, alpha: 1)
+
+        let label1 = UILabel(frame: CGRect(x: 20, y: 0, width: (view.frame.size.width-20*2)/3, height: 45))
+        label1.textColor = UIColor.black
+        label1.font = UIFont.boldSystemFont(ofSize: 17) // UIFont.init(name: FontConfigManager.shared.getBold(), size: 17)
+        headerView.addSubview(label1)
+        
+        let label2 = UILabel(frame: CGRect(x: label1.frame.maxX, y: 0, width: (view.frame.size.width-20*2)/3, height: 45))
+        label2.textAlignment = .center
+        label2.textColor = UIColor.black
+        label2.font = UIFont.boldSystemFont(ofSize: 17) // UIFont.init(name: FontConfigManager.shared.getBold(), size: 17)
+        headerView.addSubview(label2)
+        
+        let label3 = UILabel(frame: CGRect(x: label2.frame.maxX, y: 0, width: (view.frame.size.width-20*2)/3, height: 45))
+        label3.textAlignment = .right
+        label3.textColor = UIColor.black
+        label3.font = UIFont.boldSystemFont(ofSize: 17) // UIFont.init(name: FontConfigManager.shared.getBold(), size: 17)
+        headerView.addSubview(label3)
+        
+        if section == 2 {
+            label1.text = "Sell"
+        } else if section == 3 {
+            label1.text = "Buy"
+        }
+        
+        label2.text = "  Amount (\(market.tradingPair.tradingA))"
+        label3.text = "Total (\(market.tradingPair.tradingB))"
+        
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -166,8 +213,14 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         case 0:
             return nil
         case 1:
-            return NSLocalizedString("Orders", comment: "")
+            return NSLocalizedString("Order Book", comment: "")
         case 2:
+            return nil
+        case 3:
+            return nil
+        case 4:
+            return NSLocalizedString("Orders", comment: "")
+        case 5:
             return NSLocalizedString("Trades", comment: "")
         default:
             return nil
@@ -181,6 +234,12 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         case 1:
             return 45
         case 2:
+            return 45
+        case 3:
+            return 45
+        case 4:
+            return 45
+        case 5:
             return 45
         default:
             return 0
@@ -209,11 +268,17 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 return MarketLineChartTableViewCell.getHeight(navigationBarHeight: navBarHeight)
             }
 
-        } else if indexPath.section == 1 {
+        } else if indexPath.section == 2 {
+            return OrderBookTableViewCell.getHeight()
+        } else if indexPath.section == 3 {
+            return OrderBookTableViewCell.getHeight()
+        } else if indexPath.section == 4 {
             return OrderTableViewCell.getHeight()
-        } else {
+        } else if indexPath.section == 5 {
             // return TradeTableViewCell.getHeight()
             return OrderTableViewCell.getHeight()
+        } else {
+            return 44
         }
     }
     
@@ -255,8 +320,31 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
             return cell!
+        } else if indexPath.section == 2 {
+            var cell = tableView.dequeueReusableCell(withIdentifier: OrderBookTableViewCell.getCellIdentifier()) as? OrderBookTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("OrderBookTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? OrderBookTableViewCell
+            }
+            cell?.selectionStyle = .none
+            let order = OrderBookDataManager.shared.getSells()[indexPath.row]
+            cell?.order = order
+            cell?.update()
+            return cell!
 
-        } else if indexPath.section == 1 {
+        } else if indexPath.section == 3 {
+            var cell = tableView.dequeueReusableCell(withIdentifier: OrderBookTableViewCell.getCellIdentifier()) as? OrderBookTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("OrderBookTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? OrderBookTableViewCell
+            }
+            cell?.selectionStyle = .none
+            let order = OrderBookDataManager.shared.getBuys()[indexPath.row]
+            cell?.order = order
+            cell?.update()
+            return cell!
+            
+        } else if indexPath.section == 4 {
             let screenSize: CGRect = UIScreen.main.bounds
             self.blurVisualEffectView.frame = screenSize
 
@@ -341,13 +429,13 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath.section == 1 && indexPath.row > 0 {
+        if indexPath.section == 4 && indexPath.row > 0 {
             let order = OrderDataManager.shared.getOrders(orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown])[indexPath.row-1]
             let viewController = OrderDetailViewController()
             viewController.order = order
             viewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(viewController, animated: true)
-        } else if indexPath.section == 2 {
+        } else if indexPath.section == 5 {
             let order = OrderDataManager.shared.getOrders(orderStatuses: [.finished])[indexPath.row]
             let viewController = OrderDetailViewController()
             viewController.order = order

@@ -405,6 +405,8 @@
 		AC78FC35209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78FC33209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift */; };
 		AC78FC36209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC78FC34209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib */; };
 		AC78FC3820A176CE00992AE8 /* OrderBookDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78FC3720A176CE00992AE8 /* OrderBookDataManager.swift */; };
+		AC78FC3B20A4B0C300992AE8 /* OrderBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78FC3920A4B0C200992AE8 /* OrderBookTableViewCell.swift */; };
+		AC78FC3C20A4B0C300992AE8 /* OrderBookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC78FC3A20A4B0C200992AE8 /* OrderBookTableViewCell.xib */; };
 		AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E422022B93A0071D477 /* AppDelegate.swift */; };
 		AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC798E482022B93A0071D477 /* Main.storyboard */; };
 		AC798E4C2022B93A0071D477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC798E4B2022B93A0071D477 /* Assets.xcassets */; };
@@ -845,6 +847,8 @@
 		AC78FC33209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelAllOpenOrdersTableViewCell.swift; sourceTree = "<group>"; };
 		AC78FC34209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CancelAllOpenOrdersTableViewCell.xib; sourceTree = "<group>"; };
 		AC78FC3720A176CE00992AE8 /* OrderBookDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBookDataManager.swift; sourceTree = "<group>"; };
+		AC78FC3920A4B0C200992AE8 /* OrderBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBookTableViewCell.swift; sourceTree = "<group>"; };
+		AC78FC3A20A4B0C200992AE8 /* OrderBookTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderBookTableViewCell.xib; sourceTree = "<group>"; };
 		AC798E3F2022B93A0071D477 /* loopr-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "loopr-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC798E422022B93A0071D477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC798E492022B93A0071D477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1736,6 +1740,8 @@
 				AC78FC34209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib */,
 				ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */,
 				ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */,
+				AC78FC3920A4B0C200992AE8 /* OrderBookTableViewCell.swift */,
+				AC78FC3A20A4B0C200992AE8 /* OrderBookTableViewCell.xib */,
 			);
 			path = MarketDetail;
 			sourceTree = "<group>";
@@ -2202,6 +2208,7 @@
 				ACE5BFA720466EFD005D75DD /* Localizable.strings in Resources */,
 				ACE6F72820426BAC0039273D /* SettingThemeModeTableViewCell.xib in Resources */,
 				AC31CEA8205B9C2000A30335 /* Montserrat-Italic.ttf in Resources */,
+				AC78FC3C20A4B0C300992AE8 /* OrderBookTableViewCell.xib in Resources */,
 				AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */,
 				ACB911852026388700F14644 /* SettingViewController.xib in Resources */,
 				AC56625C20563C05003C925C /* TradeViewController.xib in Resources */,
@@ -2746,6 +2753,7 @@
 				AC31B93A204A4F9000B16155 /* Language.swift in Sources */,
 				ACB9115A20242B9D00F14644 /* AssetTableViewCell.swift in Sources */,
 				94E185992051455C00D86FFA /* SimpleRespond.swift in Sources */,
+				AC78FC3B20A4B0C300992AE8 /* OrderBookTableViewCell.swift in Sources */,
 				AC31B961204A8E4F00B16155 /* MnemonicWords.swift in Sources */,
 				AC3756662038CD7E00AADC60 /* SetupNavigationController.swift in Sources */,
 				ACE6F71C204211470039273D /* DashedLineView.swift in Sources */,

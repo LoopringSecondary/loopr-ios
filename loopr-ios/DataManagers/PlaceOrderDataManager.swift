@@ -78,6 +78,8 @@ class PlaceOrderDataManager {
         }
     }
     
+    // TODO: what usecase needs to include LRC?
+    // TODO: it's better to explicitly define some values.
     func checkGasEnough(of order: OriginalOrder, includingLRC: Bool = true) {
         var result: Double = 0
         if let ethBalance = walletManager.getBalance(of: "ETH"),
