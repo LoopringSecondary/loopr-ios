@@ -208,7 +208,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("scrollViewDidScroll")
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

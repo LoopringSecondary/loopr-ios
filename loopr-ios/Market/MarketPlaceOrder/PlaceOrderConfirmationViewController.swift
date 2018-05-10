@@ -255,13 +255,14 @@ extension PlaceOrderConfirmationViewController {
                 submitOrder()
             }
         } else {
-            pushController()
+            pushController(orderHash: nil)
         }
     }
     
-    func pushController() {
+    func pushController(orderHash: String?) {
         let viewController = ConfirmationResultViewController()
         viewController.order = self.order
+        viewController.orderHash = orderHash
         viewController.verifyInfo = self.verifyInfo
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -321,7 +322,7 @@ extension PlaceOrderConfirmationViewController {
             return
         }
         DispatchQueue.main.async {
-            self.pushController()
+            self.pushController(orderHash: orderHash!)
         }
     }
 }

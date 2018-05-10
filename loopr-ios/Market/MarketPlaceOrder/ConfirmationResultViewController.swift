@@ -25,6 +25,7 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
     var needBInfoLabel: UILabel = UILabel()
     
     var order: OriginalOrder?
+    var orderHash: String?
     var errorTipInfo: [String] = []
     var verifyInfo: [String: Double]?
     
@@ -127,8 +128,12 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func constructOrder(order: OriginalOrder) -> Order? {
-        let result = Order(originalOrder: order, orderStatus: .opened, dealtAmountB: "", dealtAmountS: "")
-        return result
+        if let orderHash = self.orderHash {
+            order.hash = orderHash
+            let result = Order(originalOrder: order, orderStatus: .opened, dealtAmountB: "", dealtAmountS: "")
+            return result
+        }
+        return nil
     }
     
     @IBAction func pressedDetailsButton(_ sender: UIButton) {
@@ -140,6 +145,11 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func pressedDoneButton(_ sender: UIButton) {
-        self.navigationController?.popToRootViewController(animated: true)
+        for controller in self.navigationController!.viewControllers as Array {
+            if controller.isKind(of: MarketDetailViewController.self) {
+                self.navigationController!.popToViewController(controller, animated: true)
+                break
+            }
+        }
     }
 }

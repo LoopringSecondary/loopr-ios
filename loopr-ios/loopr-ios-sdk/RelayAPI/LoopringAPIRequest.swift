@@ -143,8 +143,7 @@ class LoopringAPIRequest {
     static func getTrend(market: String, interval: String, completionHandler: @escaping (_ trends: [Trend]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getTrend"
-        body["params"] = [["market": market, "interval": interval]]
-        body["params"]["delegateAddress"] = JSON(RelayAPIConfiguration.delegateAddress)
+        body["params"] = [["market": market, "interval": interval, "delegateAddress": RelayAPIConfiguration.delegateAddress]]
         body["id"] = JSON(UUID().uuidString)
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
@@ -210,8 +209,7 @@ class LoopringAPIRequest {
     static func getPriceQuote(currency: String, completionHandler: @escaping (_ price: PriceQuote?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getPriceQuote"
-        body["params"] = [["currency": currency]]
-        body["params"]["delegateAddress"] = JSON(RelayAPIConfiguration.delegateAddress)
+        body["params"] = [["currency": currency, "delegateAddress": RelayAPIConfiguration.delegateAddress]]
         body["id"] = JSON(UUID().uuidString)
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
@@ -230,8 +228,7 @@ class LoopringAPIRequest {
     static func getEstimatedAllocatedAllowance(owner: String, token: String, completionHandler: @escaping (_ result: Double?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getEstimatedAllocatedAllowance"
-        body["params"] = [["owner": owner, "token": token]]
-        body["params"]["delegateAddress"] = JSON(RelayAPIConfiguration.delegateAddress)
+        body["params"] = [["owner": owner, "token": token, "delegateAddress": RelayAPIConfiguration.delegateAddress]]
         body["id"] = JSON(UUID().uuidString)
 
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
@@ -296,8 +293,7 @@ class LoopringAPIRequest {
     static func getTransactions(owner: String, symbol: String, thxHash: String?, pageIndex: UInt = 1, pageSize: UInt = 10, completionHandler: @escaping (_ transactions: [Transaction]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getTransactions"
-        body["params"] = [["owner": owner, "symbol": symbol, "thxHash": thxHash, "pageIndex": pageIndex, "pageSize": pageSize]]
-        body["params"]["delegateAddress"] = JSON(RelayAPIConfiguration.delegateAddress)
+        body["params"] = [["owner": owner, "symbol": symbol, "thxHash": thxHash, "pageIndex": pageIndex, "pageSize": pageSize, "delegateAddress": RelayAPIConfiguration.delegateAddress]]
         body["id"] = JSON(UUID().uuidString)
         
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
@@ -423,9 +419,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_submitOrder"
         body["params"] = [["delegateAddress": RelayAPIConfiguration.delegateAddress, "protocol": protocol_value, "owner": owner, "walletAddress": walletAddress, "tokenS": tokenS, "tokenB": tokenB, "amountS": amountS, "amountB": amountB, "authPrivateKey": authPrivateKey, "authAddr": authAddr, "validSince": validSince, "validUntil": validUntil, "lrcFee": lrcFee, "buyNoMoreThanAmountB": buyNoMoreThanAmountB, "marginSplitPercentage": marginSplitPercentage, "powNonce": 1, "v": v, "r": r, "s": s]]
         body["id"] = JSON(UUID().uuidString)
-        
-        print(body)
-        
+
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
@@ -433,9 +427,8 @@ class LoopringAPIRequest {
                 return
             }
             let json = JSON(data)
-            print("orderSubmitted")
-            print(json)
-            completionHandler("success", nil)
+            let orderHash = json["result"].stringValue
+            completionHandler(orderHash, nil)
         }
     }
 }

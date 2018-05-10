@@ -600,7 +600,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("scrollViewDidScroll \(scrollView.contentOffset.y)")
         if tokenTotalAmountLabel.frame.maxY < scrollView.contentOffset.y {
             self.navigationItem.title = "\(asset!.balance) \(asset!.symbol) Available"
         } else {

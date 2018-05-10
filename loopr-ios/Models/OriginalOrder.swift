@@ -23,7 +23,7 @@ class OriginalOrder {
     let lrcFee: Double
     let buyNoMoreThanAmountB: Bool
     let side: String
-    let hash: String
+    var hash: String
     let walletAddress: String
     let authPrivateKey: String
     let authAddr: String
