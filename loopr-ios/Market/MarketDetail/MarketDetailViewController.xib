@@ -12,6 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MarketDetailViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="buttonHeightLayoutConstraint" destination="zTm-kf-uLh" id="A3G-Q7-bTq"/>
+                <outlet property="buyButton" destination="WcJ-Kd-3ow" id="BLF-Ee-ZLW"/>
+                <outlet property="sellButton" destination="rVS-yB-hFr" id="6Aw-zW-aL9"/>
                 <outlet property="tableView" destination="K8I-ZQ-Hen" id="o8Y-Es-6vI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,15 +25,44 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K8I-ZQ-Hen">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="570"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="nM0-gJ-dej">
+                    <rect key="frame" x="15" y="605" width="345" height="47"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVS-yB-hFr">
+                            <rect key="frame" x="0.0" y="0.0" width="165" height="47"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Sell"/>
+                            <connections>
+                                <action selector="pressedSellButton:" destination="-1" eventType="touchUpInside" id="Mvq-iW-a5B"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcJ-Kd-3ow">
+                            <rect key="frame" x="180" y="0.0" width="165" height="47"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Buy"/>
+                            <connections>
+                                <action selector="pressedBuyButton:" destination="-1" eventType="touchUpInside" id="aJG-oH-R7q"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="47" id="zTm-kf-uLh"/>
+                    </constraints>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="K8I-ZQ-Hen" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="GW3-8g-Vrt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="nM0-gJ-dej" secondAttribute="bottom" constant="15" id="K5a-K4-1kV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nM0-gJ-dej" secondAttribute="trailing" constant="15" id="Pty-OQ-fbC"/>
+                <constraint firstItem="nM0-gJ-dej" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="VUp-Pn-kZh"/>
+                <constraint firstItem="nM0-gJ-dej" firstAttribute="top" secondItem="K8I-ZQ-Hen" secondAttribute="bottom" constant="15" id="dPx-kG-dzw"/>
                 <constraint firstItem="K8I-ZQ-Hen" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="oOj-ed-GYJ"/>
-                <constraint firstItem="K8I-ZQ-Hen" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="tW4-wG-hJg"/>
                 <constraint firstItem="K8I-ZQ-Hen" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="w8R-wG-Xuf"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

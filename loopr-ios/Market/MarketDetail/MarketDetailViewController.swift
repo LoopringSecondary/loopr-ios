@@ -11,10 +11,14 @@ import PopupDialog
 
 class MarketDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var market: Market?
+    var market: Market!
     var trends: [Trend]?
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var sellButton: UIButton!
+    @IBOutlet weak var buyButton: UIButton!
+    @IBOutlet weak var buttonHeightLayoutConstraint: NSLayoutConstraint!
     
     // Drag down to close a present view controller.
     let interactor = Interactor()
@@ -34,17 +38,23 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         setBackButton()
         udpateStarButton()
         
+        // Sell button
+        sellButton.setTitle(NSLocalizedString("Sell", comment: ""), for: .normal)
+        sellButton.setupRoundWhite()
+        
+        // Buy button
+        buyButton.setTitle(NSLocalizedString("Buy", comment: ""), for: .normal)
+        buyButton.setupRoundBlack()
+
         OrderDataManager.shared.getOrdersFromServer(completionHandler: { orders, error in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         })
         
-        if let market = market {
-            OrderBookDataManager.shared.getOrderBookFromServer(market: market.name, completionHandler: { orders, error in
-                
-            })
-        }
+        OrderBookDataManager.shared.getOrderBookFromServer(market: market.name, completionHandler: { sells, buys, error in
+            
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -117,6 +127,22 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         udpateStarButton()
     }
     
+    @IBAction func pressedSellButton(_ sender: Any) {
+        print("pressedSellButton")
+        PlaceOrderDataManager.shared.new(tokenA: self.market!.tradingPair.tradingA, tokenB: self.market!.tradingPair.tradingB, market: self.market!)
+        let viewController = BuyAndSellSwipeViewController()
+        viewController.initialType = .sell
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @IBAction func pressedBuyButton(_ sender: Any) {
+        print("pressedBuyButton")
+        PlaceOrderDataManager.shared.new(tokenA: self.market!.tradingPair.tradingA, tokenB: self.market!.tradingPair.tradingB, market: self.market!)
+        let viewController = BuyAndSellSwipeViewController()
+        viewController.initialType = .buy
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
@@ -124,7 +150,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 1
+            return 0
         case 1:
             return OrderDataManager.shared.getOrders(orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown]).count + 1
         default:

@@ -56,9 +56,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         setBackButton()
         self.navigationItem.title = NSLocalizedString("Confirmation", comment: "")
         confirmationButton.title = NSLocalizedString("Confirmation", comment: "")
-        confirmationButton.backgroundColor = UIColor.black
-        confirmationButton.layer.cornerRadius = 23
-        confirmationButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+        confirmationButton.setupRoundBlack()
 
         if let order = self.order {
             setupLabels()

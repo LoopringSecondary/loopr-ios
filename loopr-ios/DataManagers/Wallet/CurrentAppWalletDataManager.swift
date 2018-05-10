@@ -287,8 +287,8 @@ class CurrentAppWalletDataManager {
             localAssets = assets
             dispatchGroup.leave()
         }
+
         dispatchGroup.enter()
-        
         let currency = SettingDataManager.shared.getCurrentCurrency().name
         LoopringAPIRequest.getPriceQuote(currency: currency, completionHandler: { (priceQuote, error) in
             print("receive LoopringAPIRequest.getPriceQuote ....")
