@@ -15,8 +15,13 @@ extension NotificationBanner {
         let notificationTitle = NSLocalizedString(title, comment: "")
         let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
         let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
-        let banner = NotificationBanner(attributedTitle: attributeString, style: style, colors: NotificationBannerStyle())
+        let leftView = UIImageView(frame: CGRect(x: 5, y: 5, width: 10, height: 10))
+        if style == .success {
+            leftView.image = UIImage(named: "Successed")
+        } else if style == .danger {
+            leftView.image = UIImage(named: "Failed")
+        }
+        let banner = NotificationBanner(attributedTitle: attributeString, leftView: leftView, style: style, colors: NotificationBannerStyle())
         return banner
     }
-    
 }

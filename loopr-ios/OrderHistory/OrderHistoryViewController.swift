@@ -45,7 +45,6 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         }
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
-        
         getOrderHistoryFromRelay()
     }
     

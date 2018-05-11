@@ -622,7 +622,7 @@ extension SendAssetViewController {
             DispatchQueue.main.async {
                 print("SendAssetViewController \(error.debugDescription)")
                 let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
-                banner.duration = 5
+                banner.duration = 10
                 banner.show()
             }
             return
@@ -631,7 +631,7 @@ extension SendAssetViewController {
         // Show toast
         DispatchQueue.main.async {
             let banner = NotificationBanner.generate(title: "Success. Result of transfer is \(txHash!)", style: .success)
-            banner.duration = 5
+            banner.duration = 10
             banner.show()
         }
     }
