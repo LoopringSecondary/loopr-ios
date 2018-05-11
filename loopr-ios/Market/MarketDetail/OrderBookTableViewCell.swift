@@ -46,15 +46,15 @@ class OrderBookTableViewCell: UITableViewCell {
 
         if order.originalOrder.side.lowercased() == "sell" {
             let price = order.originalOrder.amountBuy / order.originalOrder.amountSell
-            priceLabel.text = String(format: "%.8f", price)
-            amountLabel.text = String(format: "%.4f", order.originalOrder.amountSell)
-            totalLabel.text = String(format: "%.4f", order.originalOrder.amountBuy)
+            priceLabel.text = price.withCommas(minimumFractionDigits: 8)
+            amountLabel.text = order.originalOrder.amountSell.withCommas()
+            totalLabel.text = order.originalOrder.amountBuy.withCommas()
             priceLabel.textColor = UIColor.init(rgba: "#F52929")
         } else if order.originalOrder.side.lowercased() == "buy" {
             let price = order.originalOrder.amountSell / order.originalOrder.amountBuy
-            priceLabel.text = String(format: "%.8f", price)
-            amountLabel.text = String(format: "%.4f", order.originalOrder.amountBuy)
-            totalLabel.text = String(format: "%.4f", order.originalOrder.amountSell)
+            priceLabel.text = price.withCommas(minimumFractionDigits: 8)
+            amountLabel.text = order.originalOrder.amountBuy.withCommas()
+            totalLabel.text = order.originalOrder.amountSell.withCommas()
             priceLabel.textColor = UIColor.init(rgba: "#24DF93")
         }
     }

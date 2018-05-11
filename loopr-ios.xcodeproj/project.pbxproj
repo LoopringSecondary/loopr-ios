@@ -424,6 +424,7 @@
 		AC99CF492083DF25000AE4BD /* ImportWalletUsingMnemonicDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC99CF482083DF25000AE4BD /* ImportWalletUsingMnemonicDataManager.swift */; };
 		AC99CF4E2083E4AF000AE4BD /* MnemonicSelectAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC99CF4C2083E4AF000AE4BD /* MnemonicSelectAddressViewController.swift */; };
 		AC99CF4F2083E4AF000AE4BD /* MnemonicSelectAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC99CF4D2083E4AF000AE4BD /* MnemonicSelectAddressViewController.xib */; };
+		AC9A273D20A577E900DB04AC /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9A273C20A577E900DB04AC /* Double+Extension.swift */; };
 		AC9ADF91205EE3B900CBE368 /* ConvertETHViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9ADF8F205EE3B900CBE368 /* ConvertETHViewController.swift */; };
 		AC9ADF92205EE3B900CBE368 /* ConvertETHViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9ADF90205EE3B900CBE368 /* ConvertETHViewController.xib */; };
 		ACA677B82079970600D34A2F /* ExportKeystoreSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677B62079970600D34A2F /* ExportKeystoreSwipeViewController.swift */; };
@@ -872,6 +873,7 @@
 		AC99CF482083DF25000AE4BD /* ImportWalletUsingMnemonicDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingMnemonicDataManager.swift; sourceTree = "<group>"; };
 		AC99CF4C2083E4AF000AE4BD /* MnemonicSelectAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicSelectAddressViewController.swift; sourceTree = "<group>"; };
 		AC99CF4D2083E4AF000AE4BD /* MnemonicSelectAddressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicSelectAddressViewController.xib; sourceTree = "<group>"; };
+		AC9A273C20A577E900DB04AC /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		AC9ADF8F205EE3B900CBE368 /* ConvertETHViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertETHViewController.swift; sourceTree = "<group>"; };
 		AC9ADF90205EE3B900CBE368 /* ConvertETHViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConvertETHViewController.xib; sourceTree = "<group>"; };
 		ACA677B62079970600D34A2F /* ExportKeystoreSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportKeystoreSwipeViewController.swift; sourceTree = "<group>"; };
@@ -1958,6 +1960,7 @@
 			isa = PBXGroup;
 			children = (
 				ACB97C72207160E100775D4C /* Int+Extension.swift */,
+				AC9A273C20A577E900DB04AC /* Double+Extension.swift */,
 				AC06193B208404FA0060F416 /* FoundationString+Extension.swift */,
 				AC2D2C04208882BD00D619AD /* FoundationArray+Extension.swift */,
 			);
@@ -2704,6 +2707,7 @@
 				AC5288B4208300580002AEAD /* DateUtil.swift in Sources */,
 				940B45222060F67E00ADE2B9 /* PriceDataManager.swift in Sources */,
 				AC38751F205F12F100A76637 /* ContextMenuDelegate.swift in Sources */,
+				AC9A273D20A577E900DB04AC /* Double+Extension.swift in Sources */,
 				AC13B30A2054A766008A72C0 /* BuyViewController.swift in Sources */,
 				ACB5DDA2202D6F9400140A09 /* UIViewExtension.swift in Sources */,
 				94B5CA8C204FE8E40081BA93 /* ETH_Transaction.swift in Sources */,

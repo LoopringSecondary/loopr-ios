@@ -233,7 +233,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             headerView.addSubview(label1)
             
             let label2 = UILabel(frame: CGRect(x: label1.frame.maxX, y: 0, width: (view.frame.size.width-padding*2)/3, height: 45))
-            label2.textAlignment = .center
+            label2.textAlignment = .right
             label2.theme_textColor = GlobalPicker.textColor
             label2.font = FontConfigManager.shared.getLabelFont()
             headerView.addSubview(label2)
