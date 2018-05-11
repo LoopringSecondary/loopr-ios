@@ -22,12 +22,20 @@ class OrderDataManager {
         dateOrders = [:]
     }
 
-    func getOrders(orderStatuses: [OrderStatus]? = nil) -> [Order] {
+    func getOrders(hideOtherPairs: Bool, currentMarket: Market, orderStatuses: [OrderStatus]? = nil) -> [Order] {
         guard let orderStatuses = orderStatuses else {
             return orders
         }
-        return orders.filter { (order) -> Bool in
+        let filteredOrder = orders.filter { (order) -> Bool in
             orderStatuses.contains(order.orderStatus)
+        }
+        
+        if hideOtherPairs {
+            return filteredOrder.filter({ ( order ) -> Bool in
+                order.tradingPairDescription == currentMarket.description
+            })
+        } else {
+            return filteredOrder
         }
     }
     

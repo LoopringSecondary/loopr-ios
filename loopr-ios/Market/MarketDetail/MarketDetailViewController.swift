@@ -187,9 +187,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         case 3:
             return buys.count
         case 4:
-            return OrderDataManager.shared.getOrders(orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown]).count + 1
+            return OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown]).count + 1
         case 5:
-            return OrderDataManager.shared.getOrders(orderStatuses: [.finished]).count
+            return OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.finished]).count
         default:
             return 0
         }
@@ -409,6 +409,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                     self.navigationController?.view.addSubview(self.blurVisualEffectView)
                     self.present(alert, animated: true, completion: nil)
                 }
+                cell?.toggleHidePairSwitchClosure = {
+                    self.tableView.reloadData()
+                }
                 return cell!
             } else {
                 var cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.getCellIdentifier()) as? OrderTableViewCell
@@ -416,7 +419,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                     let nib = Bundle.main.loadNibNamed("OrderTableViewCell", owner: self, options: nil)
                     cell = nib![0] as? OrderTableViewCell
                 }
-                let order = OrderDataManager.shared.getOrders(orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown])[indexPath.row-1]
+                let order = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown])[indexPath.row-1]
                 cell?.order = order
                 cell?.update()
                 cell?.cancelButton.isHidden = false
@@ -452,7 +455,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 cell = nib![0] as? OrderTableViewCell
                 // cell?.selectionStyle = .none
             }
-            cell?.order = OrderDataManager.shared.getOrders(orderStatuses: [.finished])[indexPath.row]
+            cell?.order = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.finished])[indexPath.row]
             cell?.update()
             return cell!
         }
@@ -461,13 +464,13 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 4 && indexPath.row > 0 {
-            let order = OrderDataManager.shared.getOrders(orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown])[indexPath.row-1]
+            let order = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown])[indexPath.row-1]
             let viewController = OrderDetailViewController()
             viewController.order = order
             viewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(viewController, animated: true)
         } else if indexPath.section == 5 {
-            let order = OrderDataManager.shared.getOrders(orderStatuses: [.finished])[indexPath.row]
+            let order = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.finished])[indexPath.row]
             let viewController = OrderDetailViewController()
             viewController.order = order
             viewController.hidesBottomBarWhenPushed = true

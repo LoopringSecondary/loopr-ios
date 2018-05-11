@@ -16,21 +16,16 @@ class CancelAllOpenOrdersTableViewCell: UITableViewCell {
     @IBOutlet weak var seperateLine: UIView!
 
     var pressedCancelAllButtonClosure: (() -> Void)?
+    var toggleHidePairSwitchClosure: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
         hideOtherPairsSwitch.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
         hideOtherPairsSwitch.setOn(SettingDataManager.shared.getHideOtherPairs(), animated: false)
         hideOtherPairsLabel.textColor = UIColor.black
         hideOtherPairsLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17.0)
-
+        
         cancelAllButton.title = NSLocalizedString("Cancel All", comment: "")
         cancelAllButton.backgroundColor = UIColor.clear
         cancelAllButton.titleColor = UIColor.black
@@ -38,12 +33,21 @@ class CancelAllOpenOrdersTableViewCell: UITableViewCell {
         cancelAllButton.layer.borderColor = UIColor.black.cgColor
         cancelAllButton.layer.cornerRadius = 15
         cancelAllButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 12.0)
-
+        
         seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
     
     @IBAction func toggleHidePairSwitch(_ sender: UISwitch) {
         SettingDataManager.shared.setHideOtherPair(hideOtherPairsSwitch.isOn)
+        if let action = self.toggleHidePairSwitchClosure {
+            action()
+        }
     }
     
     @IBAction func pressedCancelAllOpenOrdersButton(_ sender: Any) {
