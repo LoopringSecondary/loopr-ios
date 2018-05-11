@@ -21,7 +21,6 @@ class SendCurrentAppWalletDataManager {
         self.nonce = 0
         self.wethAddress = nil
         self.protocolAddress = nil
-        self.getNonceFromServerSynchronous()
         self.getWethAddress()
         self.getProtocolAddress()
     }
@@ -41,7 +40,8 @@ class SendCurrentAppWalletDataManager {
     }
     
     // The API request teth_getTransactionCount is slow. Please be patient. It takes 3-20 seconds.
-    // TODO: we can improve it.
+    // Deprecate the method
+    /*
     func getNonceFromServerSynchronous() {
         let start = Date()
         print("Start getNonceFromServerSynchronous")
@@ -67,6 +67,7 @@ class SendCurrentAppWalletDataManager {
         }
         _ = semaphore.wait(timeout: .distantFuture)
     }
+    */
     
     func getNonceFromServer() {
         let start = Date()
