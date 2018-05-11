@@ -24,7 +24,7 @@ class CancelAllOpenOrdersTableViewCell: UITableViewCell {
         hideOtherPairsSwitch.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
         hideOtherPairsSwitch.setOn(SettingDataManager.shared.getHideOtherPairs(), animated: false)
         hideOtherPairsLabel.textColor = UIColor.black
-        hideOtherPairsLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17.0)
+        hideOtherPairsLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17.0*UIStyleConfig.scale)
         
         cancelAllButton.title = NSLocalizedString("Cancel All", comment: "")
         cancelAllButton.backgroundColor = UIColor.clear

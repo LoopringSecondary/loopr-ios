@@ -187,9 +187,19 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         case 3:
             return buys.count
         case 4:
-            return OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown]).count + 1
+            let count = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown]).count
+            if count == 0 {
+                return 2
+            } else {
+                return count + 1
+            }
         case 5:
-            return OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.finished]).count
+            let count = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.finished]).count
+            if count == 0 {
+                return 1
+            } else {
+                return count
+            }
         default:
             return 0
         }
@@ -414,50 +424,70 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 }
                 return cell!
             } else {
+                let count = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown]).count
+                if count == 0 {
+                    var cell = tableView.dequeueReusableCell(withIdentifier: OrderNoDataTableViewCell.getCellIdentifier()) as? OrderNoDataTableViewCell
+                    if cell == nil {
+                        let nib = Bundle.main.loadNibNamed("OrderNoDataTableViewCell", owner: self, options: nil)
+                        cell = nib![0] as? OrderNoDataTableViewCell
+                    }
+                    return cell!
+                } else {
+                    var cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.getCellIdentifier()) as? OrderTableViewCell
+                    if cell == nil {
+                        let nib = Bundle.main.loadNibNamed("OrderTableViewCell", owner: self, options: nil)
+                        cell = nib![0] as? OrderTableViewCell
+                    }
+                    let order = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown])[indexPath.row-1]
+                    cell?.order = order
+                    cell?.update()
+                    cell?.cancelButton.isHidden = false
+                    cell?.pressedCancelButtonClosure = {
+                        self.blurVisualEffectView.alpha = 1.0
+                        let title = NSLocalizedString("You are going to cancel the order.", comment: "")
+                        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+                            print("Confirm to cancel the order")
+                            UIView.animate(withDuration: 0.1, animations: {
+                                self.blurVisualEffectView.alpha = 0.0
+                            }, completion: {(_) in
+                                self.blurVisualEffectView.removeFromSuperview()
+                            })
+                            self.cancelOrder(order: order.originalOrder)
+                        }))
+                        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+                            UIView.animate(withDuration: 0.1, animations: {
+                                self.blurVisualEffectView.alpha = 0.0
+                            }, completion: {(_) in
+                                self.blurVisualEffectView.removeFromSuperview()
+                            })
+                        }))
+                        self.navigationController?.view.addSubview(self.blurVisualEffectView)
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    return cell!
+                }
+            }
+        } else {
+            let count = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.finished]).count
+            if count == 0 {
+                var cell = tableView.dequeueReusableCell(withIdentifier: OrderNoDataTableViewCell.getCellIdentifier()) as? OrderNoDataTableViewCell
+                if cell == nil {
+                    let nib = Bundle.main.loadNibNamed("OrderNoDataTableViewCell", owner: self, options: nil)
+                    cell = nib![0] as? OrderNoDataTableViewCell
+                }
+                return cell!
+            } else {
                 var cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.getCellIdentifier()) as? OrderTableViewCell
                 if cell == nil {
                     let nib = Bundle.main.loadNibNamed("OrderTableViewCell", owner: self, options: nil)
                     cell = nib![0] as? OrderTableViewCell
+                    // cell?.selectionStyle = .none
                 }
-                let order = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown])[indexPath.row-1]
-                cell?.order = order
+                cell?.order = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.finished])[indexPath.row]
                 cell?.update()
-                cell?.cancelButton.isHidden = false
-                cell?.pressedCancelButtonClosure = {
-                    self.blurVisualEffectView.alpha = 1.0
-                    let title = NSLocalizedString("You are going to cancel the order.", comment: "")
-                    let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
-                        print("Confirm to cancel the order")
-                        UIView.animate(withDuration: 0.1, animations: {
-                            self.blurVisualEffectView.alpha = 0.0
-                        }, completion: {(_) in
-                            self.blurVisualEffectView.removeFromSuperview()
-                        })
-                        self.cancelOrder(order: order.originalOrder)
-                    }))
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
-                        UIView.animate(withDuration: 0.1, animations: {
-                            self.blurVisualEffectView.alpha = 0.0
-                        }, completion: {(_) in
-                            self.blurVisualEffectView.removeFromSuperview()
-                        })
-                    }))
-                    self.navigationController?.view.addSubview(self.blurVisualEffectView)
-                    self.present(alert, animated: true, completion: nil)
-                }
                 return cell!
             }
-        } else {            
-            var cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.getCellIdentifier()) as? OrderTableViewCell
-            if cell == nil {
-                let nib = Bundle.main.loadNibNamed("OrderTableViewCell", owner: self, options: nil)
-                cell = nib![0] as? OrderTableViewCell
-                // cell?.selectionStyle = .none
-            }
-            cell?.order = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.finished])[indexPath.row]
-            cell?.update()
-            return cell!
         }
     }
     
