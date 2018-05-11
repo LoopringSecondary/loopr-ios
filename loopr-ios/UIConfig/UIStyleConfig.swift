@@ -34,11 +34,11 @@ enum UIStyleConfig {
             if firstChar == "↓" {
                 return UIColor.init(rgba: "#24DF93")
             } else {
-                return UIColor.red
+                return UIColor.init(rgba: "#F52929")
             }
         } else {
             if firstChar == "↓" {
-                return UIColor.red
+                return UIColor.init(rgba: "#F52929")
             } else {
                 return UIColor.init(rgba: "#24DF93")
             }

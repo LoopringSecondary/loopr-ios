@@ -10,11 +10,11 @@ import UIKit
 
 class CancelAllOpenOrdersTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var hideOtherPairsSwitch: UISwitch!
-    
+    @IBOutlet weak var hideOtherPairsSwitch: UISwitch!    
     @IBOutlet weak var hideOtherPairsLabel: UILabel!
     @IBOutlet weak var cancelAllButton: UIButton!
-    
+    @IBOutlet weak var seperateLine: UIView!
+
     var pressedCancelAllButtonClosure: (() -> Void)?
     
     override func awakeFromNib() {
@@ -38,6 +38,8 @@ class CancelAllOpenOrdersTableViewCell: UITableViewCell {
         cancelAllButton.layer.borderColor = UIColor.black.cgColor
         cancelAllButton.layer.cornerRadius = 15
         cancelAllButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 12.0)
+
+        seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
     }
     
     @IBAction func toggleHidePairSwitch(_ sender: UISwitch) {
@@ -56,6 +58,6 @@ class CancelAllOpenOrdersTableViewCell: UITableViewCell {
     }
 
     class func getHeight() -> CGFloat {
-        return 80
+        return 55
     }
 }

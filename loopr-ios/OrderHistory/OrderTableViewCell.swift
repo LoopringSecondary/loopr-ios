@@ -21,6 +21,7 @@ class OrderTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var displayLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var seperateLine: UIView!
     
     var pressedCancelButtonClosure: (() -> Void)?
     
@@ -37,6 +38,7 @@ class OrderTableViewCell: UITableViewCell {
         setupOrderTypeLabel(order: order)
         setupOrderFilled(order: order)
         setupCancelButton(order: order)
+        seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
     }
     
     func setupCancelButton(order: Order) {
@@ -58,7 +60,7 @@ class OrderTableViewCell: UITableViewCell {
     
     func getOrderStatus(order: Order) -> (Bool, String) {
         if order.orderStatus == .opened {
-            return (true, NSLocalizedString("cancel", comment: ""))
+            return (true, NSLocalizedString("Cancel", comment: ""))
         } else {
             return (false, NSLocalizedString(order.orderStatus.description, comment: ""))
         }

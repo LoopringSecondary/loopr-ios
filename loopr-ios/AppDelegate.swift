@@ -32,6 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PriceDataManager.shared.startGetPriceQuote()
         MarketDataManager.shared.startGetTicker()
         
+        OrderDataManager.shared.getOrdersFromServer { (_, _) in
+            
+        }
+        
         _ = SettingDataManager.shared.getCurrentLanguage()
 
         updateTheme()

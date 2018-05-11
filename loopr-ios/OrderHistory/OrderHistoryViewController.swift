@@ -116,13 +116,13 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        return 45
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 45))
         headerView.backgroundColor = UIColor.white
-        let headerLabel = UILabel(frame: CGRect(x: 10, y: 0, width: view.frame.size.width, height: 30))
+        let headerLabel = UILabel(frame: CGRect(x: 15, y: 0, width: view.frame.size.width, height: 45))
         headerLabel.textColor = UIColor.black.withAlphaComponent(0.3)
         headerLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 17)
         headerLabel.text = orderDates[section]

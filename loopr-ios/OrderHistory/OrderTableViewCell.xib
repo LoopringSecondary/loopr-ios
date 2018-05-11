@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -53,7 +53,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZb-S3-AaP">
-                        <rect key="frame" x="302" y="25" width="80" height="30"/>
+                        <rect key="frame" x="301.5" y="25" width="80.5" height="30"/>
                         <state key="normal" title="Cancel">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
@@ -67,17 +67,27 @@
                             <constraint firstAttribute="width" secondItem="NeZ-cg-97m" secondAttribute="height" id="FAe-cm-gf5"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P6F-AG-uui">
+                        <rect key="frame" x="72" y="79" width="330" height="0.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="tfh-Jb-lhz"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="PeE-oF-uld" firstAttribute="leading" secondItem="b3R-8C-EzM" secondAttribute="trailing" constant="-10" id="0O2-PX-xnh"/>
+                    <constraint firstAttribute="bottom" secondItem="P6F-AG-uui" secondAttribute="bottom" id="0jr-HY-h7J"/>
                     <constraint firstItem="kdp-5j-eCj" firstAttribute="width" secondItem="b3R-8C-EzM" secondAttribute="width" id="29l-cb-04c"/>
                     <constraint firstItem="kdp-5j-eCj" firstAttribute="height" secondItem="b3R-8C-EzM" secondAttribute="height" id="3D9-oY-Hrc"/>
+                    <constraint firstItem="P6F-AG-uui" firstAttribute="leading" secondItem="b3R-8C-EzM" secondAttribute="leading" id="5aj-hn-Gic"/>
                     <constraint firstItem="b3R-8C-EzM" firstAttribute="leading" secondItem="NeZ-cg-97m" secondAttribute="trailing" id="765-Vs-Hj2"/>
                     <constraint firstItem="GHq-wT-pP6" firstAttribute="leading" secondItem="v7r-jB-3wD" secondAttribute="leading" id="8Yo-kb-n4l"/>
                     <constraint firstItem="v7r-jB-3wD" firstAttribute="leading" secondItem="PeE-oF-uld" secondAttribute="trailing" multiplier="1.1" id="AAq-TB-seZ"/>
                     <constraint firstItem="kdp-5j-eCj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="centerY" multiplier="1.1" id="AyO-av-i2a"/>
                     <constraint firstItem="kdp-5j-eCj" firstAttribute="top" secondItem="GHq-wT-pP6" secondAttribute="top" id="B4B-cy-pUB"/>
                     <constraint firstItem="kdp-5j-eCj" firstAttribute="leading" secondItem="b3R-8C-EzM" secondAttribute="leading" id="Jdz-3d-uno"/>
+                    <constraint firstAttribute="trailing" secondItem="P6F-AG-uui" secondAttribute="trailing" id="P46-UA-lCw"/>
                     <constraint firstItem="PeE-oF-uld" firstAttribute="centerY" secondItem="b3R-8C-EzM" secondAttribute="centerY" id="Vlk-gi-EVd"/>
                     <constraint firstItem="GHq-wT-pP6" firstAttribute="width" secondItem="v7r-jB-3wD" secondAttribute="width" id="WnD-dm-otM"/>
                     <constraint firstItem="v7r-jB-3wD" firstAttribute="top" secondItem="b3R-8C-EzM" secondAttribute="top" id="swg-tb-env"/>
@@ -102,6 +112,7 @@
                 <outlet property="filledPieChart" destination="NeZ-cg-97m" id="k1q-PR-4Yk"/>
                 <outlet property="orderTypeLabel" destination="PeE-oF-uld" id="uCP-qX-TFn"/>
                 <outlet property="priceLabel" destination="v7r-jB-3wD" id="jfl-9m-Zmu"/>
+                <outlet property="seperateLine" destination="P6F-AG-uui" id="PUG-Km-NNc"/>
                 <outlet property="tradingPairLabel" destination="b3R-8C-EzM" id="pAz-T9-tz1"/>
                 <outlet property="volumeLabel" destination="kdp-5j-eCj" id="quw-bK-faA"/>
             </connections>

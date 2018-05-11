@@ -43,10 +43,20 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmn-LF-kf2">
+                        <rect key="frame" x="15" y="43" width="380" height="0.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="gN2-wb-euz"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="qmn-LF-kf2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="4XJ-Sg-WHG"/>
                     <constraint firstItem="dn5-Ji-MGH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Fbv-RC-eF9"/>
                     <constraint firstAttribute="trailingMargin" secondItem="dn5-Ji-MGH" secondAttribute="trailing" id="MSU-50-LG5"/>
+                    <constraint firstAttribute="bottom" secondItem="qmn-LF-kf2" secondAttribute="bottom" id="a2m-Ri-oWh"/>
+                    <constraint firstAttribute="trailing" secondItem="qmn-LF-kf2" secondAttribute="trailing" id="hVZ-WZ-kBq"/>
                     <constraint firstItem="dn5-Ji-MGH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="smp-zg-32w"/>
                 </constraints>
             </tableViewCellContentView>
@@ -54,6 +64,7 @@
             <connections>
                 <outlet property="amountLabel" destination="o35-ee-lGx" id="ce1-Cc-dUl"/>
                 <outlet property="priceLabel" destination="sSz-PL-0HK" id="TXw-hP-TaQ"/>
+                <outlet property="seperateLine" destination="qmn-LF-kf2" id="1dL-KG-Zy7"/>
                 <outlet property="totalLabel" destination="iYw-QL-k4y" id="YNY-rI-uhD"/>
             </connections>
         </tableViewCell>

@@ -70,7 +70,6 @@ class CurrentAppWalletDataManager {
         
         // Get nonce. It's a slow API request.
         SendCurrentAppWalletDataManager.shared.getNonceFromServer()
-        // SendCurrentAppWalletDataManager.shared.getNonceFromServerSynchronous()
 
         // Push a notification
         NotificationCenter.default.post(name: .appWalletDidUpdate, object: nil)

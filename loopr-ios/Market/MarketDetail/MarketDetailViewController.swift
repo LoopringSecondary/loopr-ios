@@ -14,8 +14,11 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
 
     var market: Market!
     var trends: [Trend]?
+    var sells: [Order] = []
+    var buys: [Order] = []
     
     @IBOutlet weak var tableView: UITableView!
+    private let refreshControl = UIRefreshControl()
     
     @IBOutlet weak var sellButton: UIButton!
     @IBOutlet weak var buyButton: UIButton!
@@ -34,6 +37,16 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
+        
+        // Add Refresh Control to Table View
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        refreshControl.theme_tintColor = GlobalPicker.textColor
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         
         self.navigationItem.title = market?.description
         view.theme_backgroundColor = GlobalPicker.backgroundColor
@@ -49,18 +62,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         buyButton.setTitle(NSLocalizedString("Buy", comment: ""), for: .normal)
         buyButton.setupRoundBlack()
 
-        // TODO: improve these two async API calls
-        OrderDataManager.shared.getOrdersFromServer(completionHandler: { orders, error in
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
-        
-        OrderBookDataManager.shared.getOrderBookFromServer(market: market.name, completionHandler: { sells, buys, error in
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
+        getDataFromRelay()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -90,6 +92,28 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 }
             })
         }
+    }
+    
+    @objc private func refreshData(_ sender: Any) {
+        // Fetch Data
+        getDataFromRelay()
+    }
+    
+    func getDataFromRelay() {
+        OrderDataManager.shared.getOrdersFromServer(completionHandler: { _, _ in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+
+        OrderBookDataManager.shared.getOrderBookFromServer(market: market.name, completionHandler: { sells, buys, _ in
+            self.sells = Array(sells.prefix(4))
+            self.buys = Array(buys.prefix(4))
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+        })
     }
 
     @objc func trendResponseReceivedNotification() {
@@ -159,9 +183,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         case 1:
             return 0
         case 2:
-            return OrderBookDataManager.shared.getSells().count
+            return sells.count
         case 3:
-            return OrderBookDataManager.shared.getBuys().count
+            return buys.count
         case 4:
             return OrderDataManager.shared.getOrders(orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown]).count + 1
         case 5:
@@ -172,57 +196,65 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard section == 2 || section == 3 else {
-            return nil
-        }
+        let padding: CGFloat = 15
 
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 45))
-        headerView.backgroundColor = UIColor(white: 0.97, alpha: 1)
+        if section == 1 || section == 4 || section == 5 {
+            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 45))
+            // headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+            headerView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
 
-        let label1 = UILabel(frame: CGRect(x: 20, y: 0, width: (view.frame.size.width-20*2)/3, height: 45))
-        label1.textColor = UIColor.black
-        label1.font = UIFont.boldSystemFont(ofSize: 17) // UIFont.init(name: FontConfigManager.shared.getBold(), size: 17)
-        headerView.addSubview(label1)
-        
-        let label2 = UILabel(frame: CGRect(x: label1.frame.maxX, y: 0, width: (view.frame.size.width-20*2)/3, height: 45))
-        label2.textAlignment = .center
-        label2.textColor = UIColor.black
-        label2.font = UIFont.boldSystemFont(ofSize: 17) // UIFont.init(name: FontConfigManager.shared.getBold(), size: 17)
-        headerView.addSubview(label2)
-        
-        let label3 = UILabel(frame: CGRect(x: label2.frame.maxX, y: 0, width: (view.frame.size.width-20*2)/3, height: 45))
-        label3.textAlignment = .right
-        label3.textColor = UIColor.black
-        label3.font = UIFont.boldSystemFont(ofSize: 17) // UIFont.init(name: FontConfigManager.shared.getBold(), size: 17)
-        headerView.addSubview(label3)
-        
-        if section == 2 {
-            label1.text = "Sell"
-        } else if section == 3 {
-            label1.text = "Buy"
-        }
-        
-        label2.text = "  Amount (\(market.tradingPair.tradingA))"
-        label3.text = "Total (\(market.tradingPair.tradingB))"
-        
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return nil
-        case 1:
-            return NSLocalizedString("Order Book", comment: "")
-        case 2:
-            return nil
-        case 3:
-            return nil
-        case 4:
-            return NSLocalizedString("Orders", comment: "")
-        case 5:
-            return NSLocalizedString("Trades", comment: "")
-        default:
+            let label = UILabel(frame: CGRect(x: padding, y: 0, width: view.frame.size.width, height: 45))
+            label.theme_textColor = GlobalPicker.textColor
+            label.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 17)
+            headerView.addSubview(label)
+            
+            if section == 1 {
+                label.text = NSLocalizedString("Order Book", comment: "")
+            } else if section == 4 {
+                label.text = NSLocalizedString("My Orders", comment: "")
+            } else if section == 5 {
+                label.text = NSLocalizedString("My Trades", comment: "")
+            }
+            return headerView
+
+        } else if section == 2 || section == 3 {
+            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 45))
+            // Default background color in section is UIColor(white: 0.97, alpha: 1)
+            // headerView.backgroundColor = UIColor(white: 0.97, alpha: 1)
+            headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+            
+            let seperateLine = UIView(frame: CGRect(x: padding, y: 44.5, width: view.frame.size.width, height: 0.5))
+            seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
+            headerView.addSubview(seperateLine)
+            
+            let label1 = UILabel(frame: CGRect(x: padding, y: 0, width: (view.frame.size.width-padding*2)/3, height: 45))
+            label1.theme_textColor = GlobalPicker.textColor
+            label1.font = FontConfigManager.shared.getLabelFont()
+            headerView.addSubview(label1)
+            
+            let label2 = UILabel(frame: CGRect(x: label1.frame.maxX, y: 0, width: (view.frame.size.width-padding*2)/3, height: 45))
+            label2.textAlignment = .center
+            label2.theme_textColor = GlobalPicker.textColor
+            label2.font = FontConfigManager.shared.getLabelFont()
+            headerView.addSubview(label2)
+            
+            let label3 = UILabel(frame: CGRect(x: label2.frame.maxX, y: 0, width: (view.frame.size.width-padding*2)/3, height: 45))
+            label3.textAlignment = .right
+            label3.theme_textColor = GlobalPicker.textColor
+            label3.font = FontConfigManager.shared.getLabelFont()
+            headerView.addSubview(label3)
+            
+            if section == 2 {
+                label1.text = "Sell"
+            } else if section == 3 {
+                label1.text = "Buy"
+            }
+            
+            label2.text = "Amount (\(market.tradingPair.tradingA))"
+            label3.text = "Total (\(market.tradingPair.tradingB))"
+            
+            return headerView
+        } else {
             return nil
         }
     }
@@ -327,7 +359,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 cell = nib![0] as? OrderBookTableViewCell
             }
             cell?.selectionStyle = .none
-            let order = OrderBookDataManager.shared.getSells()[indexPath.row]
+            let order = sells[indexPath.row]
             cell?.order = order
             cell?.update()
             return cell!
@@ -339,7 +371,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 cell = nib![0] as? OrderBookTableViewCell
             }
             cell?.selectionStyle = .none
-            let order = OrderBookDataManager.shared.getBuys()[indexPath.row]
+            let order = buys[indexPath.row]
             cell?.order = order
             cell?.update()
             return cell!
@@ -421,7 +453,6 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             }
             cell?.order = OrderDataManager.shared.getOrders(orderStatuses: [.finished])[indexPath.row]
             cell?.update()
-            cell?.cancelButton.isHidden = true
             return cell!
         }
     }
