@@ -146,7 +146,7 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func pressedDoneButton(_ sender: UIButton) {
         for controller in self.navigationController!.viewControllers as Array {
-            if controller.isKind(of: MarketDetailViewController.self) {
+            if controller.isKind(of: MarketDetailViewController.self) || controller.isKind(of: AssetDetailViewController.self) {
                 self.navigationController!.popToViewController(controller, animated: true)
                 break
             }

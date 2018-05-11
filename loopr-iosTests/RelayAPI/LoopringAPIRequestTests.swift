@@ -45,9 +45,8 @@ class LoopringAPIRequestTests: XCTestCase {
     
     func testGetOrders() {
         let expectation = XCTestExpectation()
-        LoopringAPIRequest.getOrders(owner: nil, orderHash: nil, status: nil, market: "lrc-weth") { orders, error in
+        LoopringAPIRequest.getOrders(owner: testAddress, orderHash: nil, status: nil, market: "lrc-weth") { orders, error in
             XCTAssertNotNil(orders)
-            XCTAssertNotEqual(orders!.count, 0)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)
@@ -122,7 +121,6 @@ class LoopringAPIRequestTests: XCTestCase {
     }
 
     func testGetRingMined() {
-        
         let expectation = XCTestExpectation()
         LoopringAPIRequest.getRingMined(ringHash: nil, pageIndex: 1, pageSize: 20) { minedRings, error in
             guard error == nil else {

@@ -229,18 +229,15 @@ class SendCurrentAppWalletDataManager {
             return
         }
         let data = _encodeOrder(order: order)
-        
-        print(data.hexString)
-        
         let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "cancelOrder")!
-
         _transfer(data: data, address: protocolAddress!, amount: GethBigInt.init(0), gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
-    func _cancelAllOrders(timestamp: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
+    func _cancelAllOrders(completion: @escaping (String?, Error?) -> Void) {
         guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
         }
+        let timestamp = GethBigInt.init(Int64(Date().timeIntervalSince1970))!
         let transferFunction = EthFunction(name: "cancelAllOrders", inputParameters: [timestamp])
         let data = web3swift.encode(transferFunction)
         let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "cancelAllOrders")!
@@ -285,12 +282,14 @@ class SendCurrentAppWalletDataManager {
         var userInfo: [String: Any] = [:]
         do {
             let gasPrice = GasDataManager.shared.getGasPriceInWei()
-            
             let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: self.nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getPassword())
             if let signedTransactionData = try signedTransaction?.encodeRLP() {
                 self.sendTransactionToServer("0x" + signedTransactionData.hexString, completion: { (result, error) in
                     if result != nil && error == nil {
                         self.nonce += 1
+                        
+                        print(result!)
+                        
                         LoopringAPIRequest.notifyTransactionSubmitted(txHash: result!, completionHandler: completion)
                     } else {
                         completion(nil, error)

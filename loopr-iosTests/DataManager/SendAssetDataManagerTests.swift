@@ -27,11 +27,6 @@ class SendCurrentAppWalletDataManagerTests: XCTestCase {
         XCTAssertEqual(mgr.getGasLimits().count, 8)
     }
     
-    func testGetNonceFromServerSynchronous() {
-        let mgr = SendCurrentAppWalletDataManager.shared
-        mgr.getNonceFromServerSynchronous()
-    }
-    
     func test() {
         
     }

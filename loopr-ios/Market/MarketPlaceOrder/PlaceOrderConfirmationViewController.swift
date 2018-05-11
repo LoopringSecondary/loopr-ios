@@ -273,22 +273,40 @@ extension PlaceOrderConfirmationViewController {
                 if item.key.starts(with: "GAS_") {
                     guard item.value == 1 || item.value == 2 else { return }
                     let token = item.key.components(separatedBy: "_")[1]
-                    if item.value == 2 {
-                        approve(token: token, amount: 0)
+                    if item.value == 1 {
+                        approveOnce(token: token)
+                    } else {
+                        approveTwice(token: token)
                     }
-                    approve(token: token, amount: INT64_MAX)
                 }
             }
         }
     }
     
-    func approve(token: String, amount: Int64) {
+    func approveOnce(token: String) {
         if let toAddress = TokenDataManager.shared.getAddress(by: token) {
             var error: NSError? = nil
-            let approve = GethNewBigInt(amount)!
+            let approve = GethBigInt.generateBigInt(valueInEther: Double(INT64_MAX), symbol: token)!
             let delegateAddress = GethNewAddressFromHex(RelayAPIConfiguration.delegateAddress, &error)!
             let tokenAddress = GethNewAddressFromHex(toAddress, &error)!
             SendCurrentAppWalletDataManager.shared._approve(tokenAddress: tokenAddress, delegateAddress: delegateAddress, tokenAmount: approve, completion: complete)
+        }
+    }
+    
+    func approveTwice(token: String) {
+        if let toAddress = TokenDataManager.shared.getAddress(by: token) {
+            var error: NSError? = nil
+            var approve = GethBigInt.generateBigInt(valueInEther: 0, symbol: token)!
+            let delegateAddress = GethNewAddressFromHex(RelayAPIConfiguration.delegateAddress, &error)!
+            let tokenAddress = GethNewAddressFromHex(toAddress, &error)!
+            SendCurrentAppWalletDataManager.shared._approve(tokenAddress: tokenAddress, delegateAddress: delegateAddress, tokenAmount: approve) { (txHash, error) in
+                guard error == nil && txHash != nil else {
+                    self.complete(nil, error!)
+                    return
+                }
+                approve = GethBigInt.generateBigInt(valueInEther: Double(INT64_MAX), symbol: token)!
+                SendCurrentAppWalletDataManager.shared._approve(tokenAddress: tokenAddress, delegateAddress: delegateAddress, tokenAmount: approve, completion: self.complete)
+            }
         }
     }
     
@@ -302,7 +320,7 @@ extension PlaceOrderConfirmationViewController {
             DispatchQueue.main.async {
                 print("BuyViewController \(error.debugDescription)")
                 let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
-                banner.duration = 5
+                banner.duration = 10
                 banner.show()
             }
             return
@@ -316,7 +334,7 @@ extension PlaceOrderConfirmationViewController {
             DispatchQueue.main.async {
                 print("BuyViewController \(error.debugDescription)")
                 let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
-                banner.duration = 5
+                banner.duration = 10
                 banner.show()
             }
             return

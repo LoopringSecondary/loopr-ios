@@ -99,7 +99,6 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
                 print("Confirm to cancel the order")
             }))
             alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
-                
             }))
             self.present(alert, animated: true, completion: nil)
         }

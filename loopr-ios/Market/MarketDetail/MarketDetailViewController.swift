@@ -397,6 +397,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                         }, completion: {(_) in
                             self.blurVisualEffectView.removeFromSuperview()
                         })
+                        self.cancelAllOrders()
                     }))
                     alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
                         UIView.animate(withDuration: 0.1, animations: {
@@ -459,7 +460,6 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
         if indexPath.section == 4 && indexPath.row > 0 {
             let order = OrderDataManager.shared.getOrders(orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown])[indexPath.row-1]
             let viewController = OrderDetailViewController()
@@ -512,6 +512,10 @@ extension MarketDetailViewController: UIViewControllerTransitioningDelegate {
     
     func cancelOrder(order: OriginalOrder) {
         SendCurrentAppWalletDataManager.shared._cancelOrder(order: order, completion: completion)
+    }
+    
+    func cancelAllOrders() {
+        SendCurrentAppWalletDataManager.shared._cancelAllOrders(completion: completion)
     }
 
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
