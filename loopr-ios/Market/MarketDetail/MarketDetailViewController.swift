@@ -12,6 +12,8 @@ import NotificationBannerSwift
 
 class MarketDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    var isLaunching: Bool = true
+
     var market: Market!
     var trends: [Trend]?
     var sells: [OrderBook] = []
@@ -110,6 +112,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             self.sells = sells
             self.buys = buys
             DispatchQueue.main.async {
+                if self.isLaunching {
+                    self.isLaunching = false
+                }
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
             }
@@ -173,6 +178,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
+        if isLaunching {
+            return 2
+        }
         return 6
     }
     
