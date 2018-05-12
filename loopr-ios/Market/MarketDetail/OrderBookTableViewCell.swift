@@ -10,7 +10,7 @@ import UIKit
 
 class OrderBookTableViewCell: UITableViewCell {
 
-    var order: Order?
+    var orderBook: OrderBook?
 
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
@@ -40,21 +40,19 @@ class OrderBookTableViewCell: UITableViewCell {
     }
 
     func update() {
-        guard let order = order else {
+        guard let orderBook = orderBook else {
             return
         }
 
-        if order.originalOrder.side.lowercased() == "sell" {
-            let price = order.originalOrder.amountBuy / order.originalOrder.amountSell
-            priceLabel.text = price.withCommas(minimumFractionDigits: 8)
-            amountLabel.text = order.originalOrder.amountSell.withCommas()
-            totalLabel.text = order.originalOrder.amountBuy.withCommas()
+        if orderBook.side.lowercased() == "sell" {
+            priceLabel.text = orderBook.price.withCommas(minimumFractionDigits: 8)
+            amountLabel.text = orderBook.amountSell.withCommas()
+            totalLabel.text = orderBook.amountBuy.withCommas()
             priceLabel.textColor = UIColor.init(rgba: "#F52929")
-        } else if order.originalOrder.side.lowercased() == "buy" {
-            let price = order.originalOrder.amountSell / order.originalOrder.amountBuy
-            priceLabel.text = price.withCommas(minimumFractionDigits: 8)
-            amountLabel.text = order.originalOrder.amountBuy.withCommas()
-            totalLabel.text = order.originalOrder.amountSell.withCommas()
+        } else if orderBook.side.lowercased() == "buy" {
+            priceLabel.text = orderBook.price.withCommas(minimumFractionDigits: 8)
+            amountLabel.text = orderBook.amountBuy.withCommas()
+            totalLabel.text = orderBook.amountSell.withCommas()
             priceLabel.textColor = UIColor.init(rgba: "#24DF93")
         }
     }

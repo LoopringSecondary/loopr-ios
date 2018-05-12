@@ -14,8 +14,8 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
 
     var market: Market!
     var trends: [Trend]?
-    var sells: [Order] = []
-    var buys: [Order] = []
+    var sells: [OrderBook] = []
+    var buys: [OrderBook] = []
     
     @IBOutlet weak var tableView: UITableView!
     private let refreshControl = UIRefreshControl()
@@ -370,7 +370,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             }
             cell?.selectionStyle = .none
             let order = sells[indexPath.row]
-            cell?.order = order
+            cell?.orderBook = order
             cell?.update()
             return cell!
 
@@ -382,7 +382,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             }
             cell?.selectionStyle = .none
             let order = buys[indexPath.row]
-            cell?.order = order
+            cell?.orderBook = order
             cell?.update()
             return cell!
             

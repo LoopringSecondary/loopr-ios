@@ -14,13 +14,22 @@ class Order {
     let orderStatus: OrderStatus
     let dealtAmountB: Double
     let dealtAmountS: Double
+    let price: Double
     let tradingPairDescription: String
-    
+
     init(originalOrder: OriginalOrder, orderStatus: OrderStatus, dealtAmountB: String, dealtAmountS: String) {
         self.originalOrder = originalOrder
         self.orderStatus = orderStatus
         self.dealtAmountB = Asset.getAmount(of: originalOrder.tokenBuy, fromGweiAmount: dealtAmountB) ?? 0.0
         self.dealtAmountS = Asset.getAmount(of: originalOrder.tokenSell, fromGweiAmount: dealtAmountS) ?? 0.0
+
+        if originalOrder.side == "sell" {
+            price = originalOrder.amountBuy / originalOrder.amountSell
+        } else if originalOrder.side == "buy" {
+            price = originalOrder.amountSell / originalOrder.amountBuy
+        } else {
+            price = 0.0
+        }
         
         if originalOrder.tokenBuy == "WETH" {
             tradingPairDescription = "\(originalOrder.tokenSell)/\(originalOrder.tokenBuy)"

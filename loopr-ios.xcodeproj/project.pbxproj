@@ -364,6 +364,7 @@
 		AC54FD8F204FC700007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD25204FC3FA007E1DEB /* OpenSans-SemiBoldItalic.ttf */; };
 		AC54FD90204FC701007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD25204FC3FA007E1DEB /* OpenSans-SemiBoldItalic.ttf */; };
 		AC54FD92204FD291007E1DEB /* FontConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54FD91204FD291007E1DEB /* FontConfigManager.swift */; };
+		AC5572FF20A6914300ACDEC9 /* OrderBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5572FE20A6914300ACDEC9 /* OrderBook.swift */; };
 		AC56625B20563C05003C925C /* TradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56625920563C05003C925C /* TradeViewController.swift */; };
 		AC56625C20563C05003C925C /* TradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC56625A20563C05003C925C /* TradeViewController.xib */; };
 		AC5E0991205F256500801738 /* AddTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E098F205F256500801738 /* AddTokenViewController.swift */; };
@@ -809,6 +810,7 @@
 		AC54FD3B204FC687007E1DEB /* Lato-HairlineItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HairlineItalic.ttf"; sourceTree = "<group>"; };
 		AC54FD3C204FC688007E1DEB /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		AC54FD91204FD291007E1DEB /* FontConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontConfigManager.swift; sourceTree = "<group>"; };
+		AC5572FE20A6914300ACDEC9 /* OrderBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBook.swift; sourceTree = "<group>"; };
 		AC56625920563C05003C925C /* TradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewController.swift; sourceTree = "<group>"; };
 		AC56625A20563C05003C925C /* TradeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeViewController.xib; sourceTree = "<group>"; };
 		AC5E098F205F256500801738 /* AddTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTokenViewController.swift; sourceTree = "<group>"; };
@@ -1873,6 +1875,7 @@
 				ACB911A220296B9900F14644 /* OriginalOrder.swift */,
 				ACB9119E202967A500F14644 /* OrderStatus.swift */,
 				ACC2A2CE209EC39E00F2B7A1 /* OrderExpire.swift */,
+				AC5572FE20A6914300ACDEC9 /* OrderBook.swift */,
 				ACB911652024505D00F14644 /* Trade.swift */,
 				AC72AEE7204F020B00E9D3B0 /* OrderTradeState.swift */,
 				AC72AEE9204F038300E9D3B0 /* OrderTradeError.swift */,
@@ -2689,6 +2692,7 @@
 				AC4F601020773E9D00F1D954 /* String+Extension.swift in Sources */,
 				AC99CF462083DD6A000AE4BD /* MnemonicEnterDerivationPathViewController.swift in Sources */,
 				ACB9118C20266A9C00F14644 /* AssetDetailViewController.swift in Sources */,
+				AC5572FF20A6914300ACDEC9 /* OrderBook.swift in Sources */,
 				94D94CE32084A9380000BBC8 /* ConfirmationResultViewController.swift in Sources */,
 				AC4141FF20356A4D0089861D /* MarketSwipeViewType.swift in Sources */,
 				ACB5DD91202C06FF00140A09 /* DismissAnimator.swift in Sources */,
