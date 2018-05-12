@@ -60,10 +60,20 @@ class OrderTableViewCell: UITableViewCell {
     
     func getOrderStatus(order: Order) -> (Bool, String) {
         if order.orderStatus == .opened {
-            return (true, NSLocalizedString("Cancel", comment: ""))
+            let cancelledAll = UserDefaults.standard.bool(forKey: UserDefaultsKeys.cancelledAll.rawValue)
+            if cancelledAll || isOrderCancelling(order: order) {
+                return (false, NSLocalizedString("Cancelling", comment: ""))
+            } else {
+                return (true, NSLocalizedString("Cancel", comment: ""))
+            }
         } else {
             return (false, NSLocalizedString(order.orderStatus.description, comment: ""))
         }
+    }
+    
+    func isOrderCancelling(order: Order) -> Bool {
+        let cancellingOrders = UserDefaults.standard.stringArray(forKey: UserDefaultsKeys.cancellingOrders.rawValue)!
+        return cancellingOrders.contains(String(order.originalOrder.hash.prefix(8)))
     }
     
     func setupTradingPairlabel(order: Order) {

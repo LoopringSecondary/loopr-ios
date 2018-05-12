@@ -48,9 +48,7 @@ class Asset: CustomStringConvertible, Equatable {
         self.allowance = 0.0
         self.display = Double(0).currency
     }
-    
-    // TODO: Is it only for gweiAmount unit?
-    // If yest, better to explicitly declare gwei unit in the function naming.
+
     static func getAmount(of symbol: String, fromWeiAmount weiAmount: String) -> Double? {
         var index: String.Index
         var result: Double? = nil
@@ -81,5 +79,4 @@ class Asset: CustomStringConvertible, Equatable {
     static func == (lhs: Asset, rhs: Asset) -> Bool {
         return lhs.symbol == rhs.symbol
     }
-
 }

@@ -311,7 +311,12 @@ extension PlaceOrderConfirmationViewController {
     }
     
     func submitOrder() {
-        PlaceOrderDataManager.shared._submit(order: self.order!, completion: completion)
+        PlaceOrderDataManager.shared._submit(order: self.order!) { (orderHash, error) in
+            if orderHash != nil && error == nil {
+                UserDefaults.standard.set(false, forKey: UserDefaultsKeys.cancelledAll.rawValue)
+            }
+            self.completion(orderHash, error)
+        }
     }
     
     func complete(_ txHash: String?, _ error: Error?) {

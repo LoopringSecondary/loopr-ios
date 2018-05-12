@@ -543,12 +543,28 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
 
 extension MarketDetailViewController: UIViewControllerTransitioningDelegate {
     
+    var defaults: UserDefaults {
+        return UserDefaults.standard
+    }
+    
     func cancelOrder(order: OriginalOrder) {
-        SendCurrentAppWalletDataManager.shared._cancelOrder(order: order, completion: completion)
+        SendCurrentAppWalletDataManager.shared._cancelOrder(order: order) { (txHash, error) in
+            if txHash != nil && error == nil {
+                var cancellingOrders = self.defaults.stringArray(forKey: UserDefaultsKeys.cancellingOrders.rawValue)!
+                cancellingOrders.append(String(order.hash.prefix(8)))
+                self.defaults.set(cancellingOrders, forKey: UserDefaultsKeys.cancellingOrders.rawValue)
+            }
+            self.completion(txHash, error)
+        }
     }
     
     func cancelAllOrders() {
-        SendCurrentAppWalletDataManager.shared._cancelAllOrders(completion: completion)
+        SendCurrentAppWalletDataManager.shared._cancelAllOrders { (txHash, error) in
+            if txHash != nil && error == nil {
+                self.defaults.set(true, forKey: UserDefaultsKeys.cancelledAll.rawValue)
+            }
+            self.completion(txHash, error)
+        }
     }
 
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
