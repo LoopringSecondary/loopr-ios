@@ -107,8 +107,8 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         })
 
         OrderBookDataManager.shared.getOrderBookFromServer(market: market.name, completionHandler: { sells, buys, _ in
-            self.sells = Array(sells.prefix(4))
-            self.buys = Array(buys.prefix(4))
+            self.sells = sells
+            self.buys = buys
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()

@@ -37,7 +37,7 @@ class LoopringAPIRequest {
     }
 
     // TODO: how to handle unknown status?
-    static func getOrders(owner: String? = nil, orderHash: String? = nil, status: String? = nil, market: String? = nil, side: String? = nil, pageIndex: UInt = 1, pageSize: UInt = 40, completionHandler: @escaping (_ orders: [Order]?, _ error: Error?) -> Void) {
+    static func getOrders(owner: String? = nil, orderHash: String? = nil, status: String? = nil, market: String? = nil, side: String? = nil, pageIndex: UInt = 1, pageSize: UInt = 50, completionHandler: @escaping (_ orders: [Order]?, _ error: Error?) -> Void) {
         
         var body: JSON = JSON()
         
