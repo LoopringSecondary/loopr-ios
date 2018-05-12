@@ -1,7 +1,7 @@
 [
     {
         "type":"eth_transfer",
-        "gasLimit":21000
+        "gasLimit":24000
     },
     {
         "type":"token_transfer",

@@ -103,7 +103,7 @@ class OrderTableViewCell: UITableViewCell {
     }
     
     func setupOrderTypeLabel(order: Order) {
-        orderTypeLabel.text = order.originalOrder.side
+        orderTypeLabel.text = order.originalOrder.side.capitalized
         orderTypeLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 10)
         orderTypeLabel.borderWidth = 0.5
         if order.originalOrder.side == "buy" {

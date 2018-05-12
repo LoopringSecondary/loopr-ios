@@ -105,10 +105,8 @@ class OrderDataManager {
                     self.dateOrders[valid]!.append(order)
                 }
                 self.orders = orders
-                
                 completionHandler(orders, error)
             }
         }
     }
-
 }

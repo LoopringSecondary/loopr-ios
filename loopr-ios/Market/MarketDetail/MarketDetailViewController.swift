@@ -187,7 +187,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         case 3:
             return buys.count
         case 4:
-            let count = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown]).count
+            let count = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened]).count
             if count == 0 {
                 return 2
             } else {
@@ -255,9 +255,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             headerView.addSubview(label3)
             
             if section == 2 {
-                label1.text = "Sell"
+                label1.text = NSLocalizedString("Sell", comment: "")
             } else if section == 3 {
-                label1.text = "Buy"
+                label1.text = NSLocalizedString("Buy", comment: "")
             }
             
             label2.text = "Amount (\(market.tradingPair.tradingA))"
@@ -424,7 +424,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 }
                 return cell!
             } else {
-                let count = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown]).count
+                let count = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened]).count
                 if count == 0 {
                     var cell = tableView.dequeueReusableCell(withIdentifier: OrderNoDataTableViewCell.getCellIdentifier()) as? OrderNoDataTableViewCell
                     if cell == nil {
@@ -438,7 +438,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                         let nib = Bundle.main.loadNibNamed("OrderTableViewCell", owner: self, options: nil)
                         cell = nib![0] as? OrderTableViewCell
                     }
-                    let order = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown])[indexPath.row-1]
+                    let order = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened])[indexPath.row-1]
                     cell?.order = order
                     cell?.update()
                     cell?.cancelButton.isHidden = false
@@ -494,7 +494,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 4 && indexPath.row > 0 {
-            let order = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened, .cutoff, .cancelled, .expire, .unknown])[indexPath.row-1]
+            let order = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened])[indexPath.row-1]
             let viewController = OrderDetailViewController()
             viewController.order = order
             viewController.hidesBottomBarWhenPushed = true

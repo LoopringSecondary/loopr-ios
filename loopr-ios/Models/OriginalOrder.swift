@@ -75,10 +75,10 @@ class OriginalOrder {
         self.validSince = Int64(json["validSince"].stringValue.dropFirst(2), radix: 16)!
         self.validUntil = Int64(json["validUntil"].stringValue.dropFirst(2), radix: 16)!
         let amountS = json["amountS"].stringValue
-        self.amountSell = Asset.getAmount(of: self.tokenSell, fromGweiAmount: amountS) ?? 0.0
+        self.amountSell = Asset.getAmount(of: self.tokenSell, fromWeiAmount: amountS) ?? 0.0
         let amountB = json["amountB"].stringValue
-        self.amountBuy = Asset.getAmount(of: self.tokenBuy, fromGweiAmount: amountB) ?? 0.0
+        self.amountBuy = Asset.getAmount(of: self.tokenBuy, fromWeiAmount: amountB) ?? 0.0
         let fee = json["lrcFee"].stringValue
-        self.lrcFee = Asset.getAmount(of: "LRC", fromGweiAmount: fee)!
+        self.lrcFee = Asset.getAmount(of: "LRC", fromWeiAmount: fee)!
     }
 }

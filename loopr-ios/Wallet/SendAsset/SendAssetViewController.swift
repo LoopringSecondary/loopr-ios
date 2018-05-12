@@ -479,11 +479,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                 if self.addressY - self.scrollView.contentOffset.y < 0 || self.addressY - self.scrollView.contentOffset.y > self.scrollViewButtonLayoutConstraint.constant {
                     self.scrollView.setContentOffset(CGPoint.init(x: 0, y: self.addressY + 30), animated: true)
                 }
-                
             }, completion: { _ in
 
             })
-            
         } else {
             sendButtonBackgroundViewBottomLayoutContraint.constant = systemKeyboardHeight
         }
