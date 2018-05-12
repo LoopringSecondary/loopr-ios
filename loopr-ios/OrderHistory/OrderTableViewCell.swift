@@ -72,7 +72,7 @@ class OrderTableViewCell: UITableViewCell {
     }
     
     func isOrderCancelling(order: Order) -> Bool {
-        let cancellingOrders = UserDefaults.standard.stringArray(forKey: UserDefaultsKeys.cancellingOrders.rawValue)!
+        let cancellingOrders = UserDefaults.standard.stringArray(forKey: UserDefaultsKeys.cancellingOrders.rawValue) ?? []
         return cancellingOrders.contains(String(order.originalOrder.hash.prefix(8)))
     }
     

@@ -558,7 +558,7 @@ extension MarketDetailViewController: UIViewControllerTransitioningDelegate {
     func cancelOrder(order: OriginalOrder) {
         SendCurrentAppWalletDataManager.shared._cancelOrder(order: order) { (txHash, error) in
             if txHash != nil && error == nil {
-                var cancellingOrders = self.defaults.stringArray(forKey: UserDefaultsKeys.cancellingOrders.rawValue)!
+                var cancellingOrders = self.defaults.stringArray(forKey: UserDefaultsKeys.cancellingOrders.rawValue) ?? []
                 cancellingOrders.append(String(order.hash.prefix(8)))
                 self.defaults.set(cancellingOrders, forKey: UserDefaultsKeys.cancellingOrders.rawValue)
             }
