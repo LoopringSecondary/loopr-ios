@@ -8,12 +8,17 @@
 
 import UIKit
 
+// This is a demo to use 
+import Greeter
+
 class MainTabController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        let greeterPrinter = GreeterPrinter()
+        greeterPrinter.printSomething("Hello world.")
     }
     
     override func viewWillLayoutSubviews() {

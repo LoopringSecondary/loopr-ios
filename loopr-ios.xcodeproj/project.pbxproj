@@ -366,6 +366,7 @@
 		AC54FD92204FD291007E1DEB /* FontConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54FD91204FD291007E1DEB /* FontConfigManager.swift */; };
 		AC5572FF20A6914300ACDEC9 /* OrderBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5572FE20A6914300ACDEC9 /* OrderBook.swift */; };
 		AC55735220A7E77700ACDEC9 /* Geth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC55735120A7E77600ACDEC9 /* Geth.framework */; };
+		AC55735620A7EBC900ACDEC9 /* Greeter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC55735520A7EBC900ACDEC9 /* Greeter.framework */; };
 		AC56625B20563C05003C925C /* TradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56625920563C05003C925C /* TradeViewController.swift */; };
 		AC56625C20563C05003C925C /* TradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC56625A20563C05003C925C /* TradeViewController.xib */; };
 		AC5E0991205F256500801738 /* AddTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E098F205F256500801738 /* AddTokenViewController.swift */; };
@@ -813,6 +814,7 @@
 		AC54FD91204FD291007E1DEB /* FontConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontConfigManager.swift; sourceTree = "<group>"; };
 		AC5572FE20A6914300ACDEC9 /* OrderBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBook.swift; sourceTree = "<group>"; };
 		AC55735120A7E77600ACDEC9 /* Geth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Geth.framework; sourceTree = "<group>"; };
+		AC55735520A7EBC900ACDEC9 /* Greeter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Greeter.framework; sourceTree = "<group>"; };
 		AC56625920563C05003C925C /* TradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewController.swift; sourceTree = "<group>"; };
 		AC56625A20563C05003C925C /* TradeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeViewController.xib; sourceTree = "<group>"; };
 		AC5E098F205F256500801738 /* AddTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTokenViewController.swift; sourceTree = "<group>"; };
@@ -1006,6 +1008,7 @@
 			files = (
 				AC0C5C84203D154700C8618D /* QuartzCore.framework in Frameworks */,
 				AC0C5C82203D153F00C8618D /* CoreGraphics.framework in Frameworks */,
+				AC55735620A7EBC900ACDEC9 /* Greeter.framework in Frameworks */,
 				AC55735220A7E77700ACDEC9 /* Geth.framework in Frameworks */,
 				EE817669636361AFF682A8F5 /* Pods_loopr_ios.framework in Frameworks */,
 			);
@@ -1420,6 +1423,7 @@
 			isa = PBXGroup;
 			children = (
 				AC55735120A7E77600ACDEC9 /* Geth.framework */,
+				AC55735520A7EBC900ACDEC9 /* Greeter.framework */,
 			);
 			path = "go-frameworks";
 			sourceTree = "<group>";

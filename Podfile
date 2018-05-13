@@ -6,7 +6,7 @@ target 'loopr-ios' do
   use_frameworks!
 
   # Pods for loopr-ios
-  pod 'Charts'
+  pod 'Charts', '3.0.5'
   pod 'lottie-ios'
   pod 'pop'
   pod 'PopupDialog'
@@ -15,7 +15,7 @@ target 'loopr-ios' do
   pod 'FontBlaster'
   pod 'Socket.IO-Client-Swift', '~> 13.1.0'
   pod 'NotificationBannerSwift'
-  pod 'FoldingCell'
+  pod 'FoldingCell', '3.0.6'
   pod 'SVProgressHUD'
 
   # Pods for keystone
