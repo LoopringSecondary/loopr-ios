@@ -365,6 +365,7 @@
 		AC54FD90204FC701007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD25204FC3FA007E1DEB /* OpenSans-SemiBoldItalic.ttf */; };
 		AC54FD92204FD291007E1DEB /* FontConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54FD91204FD291007E1DEB /* FontConfigManager.swift */; };
 		AC5572FF20A6914300ACDEC9 /* OrderBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5572FE20A6914300ACDEC9 /* OrderBook.swift */; };
+		AC55735220A7E77700ACDEC9 /* Geth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC55735120A7E77600ACDEC9 /* Geth.framework */; };
 		AC56625B20563C05003C925C /* TradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56625920563C05003C925C /* TradeViewController.swift */; };
 		AC56625C20563C05003C925C /* TradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC56625A20563C05003C925C /* TradeViewController.xib */; };
 		AC5E0991205F256500801738 /* AddTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E098F205F256500801738 /* AddTokenViewController.swift */; };
@@ -811,6 +812,7 @@
 		AC54FD3C204FC688007E1DEB /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		AC54FD91204FD291007E1DEB /* FontConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontConfigManager.swift; sourceTree = "<group>"; };
 		AC5572FE20A6914300ACDEC9 /* OrderBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBook.swift; sourceTree = "<group>"; };
+		AC55735120A7E77600ACDEC9 /* Geth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Geth.framework; sourceTree = "<group>"; };
 		AC56625920563C05003C925C /* TradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewController.swift; sourceTree = "<group>"; };
 		AC56625A20563C05003C925C /* TradeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeViewController.xib; sourceTree = "<group>"; };
 		AC5E098F205F256500801738 /* AddTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTokenViewController.swift; sourceTree = "<group>"; };
@@ -1004,6 +1006,7 @@
 			files = (
 				AC0C5C84203D154700C8618D /* QuartzCore.framework in Frameworks */,
 				AC0C5C82203D153F00C8618D /* CoreGraphics.framework in Frameworks */,
+				AC55735220A7E77700ACDEC9 /* Geth.framework in Frameworks */,
 				EE817669636361AFF682A8F5 /* Pods_loopr_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1413,6 +1416,14 @@
 			path = Lato;
 			sourceTree = "<group>";
 		};
+		AC55735020A7E77600ACDEC9 /* go-frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AC55735120A7E77600ACDEC9 /* Geth.framework */,
+			);
+			path = "go-frameworks";
+			sourceTree = "<group>";
+		};
 		AC5E0DD2203A848300AF03C7 /* GenerateMnemonic */ = {
 			isa = PBXGroup;
 			children = (
@@ -1560,6 +1571,7 @@
 		AC798E412022B93A0071D477 /* loopr-ios */ = {
 			isa = PBXGroup;
 			children = (
+				AC55735020A7E77600ACDEC9 /* go-frameworks */,
 				ACCC7EA120828D2E008E58BA /* loopr-ios-sdk */,
 				AC798E422022B93A0071D477 /* AppDelegate.swift */,
 				AC5288AF208300570002AEAD /* Utils */,
@@ -3063,6 +3075,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K46AVDG9WW;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/loopr-ios/go-frameworks",
+				);
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.alpha.loopr-ios";
@@ -3087,6 +3104,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K46AVDG9WW;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/loopr-ios/go-frameworks",
+				);
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

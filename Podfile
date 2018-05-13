@@ -19,11 +19,11 @@ target 'loopr-ios' do
   pod 'SVProgressHUD'
 
   # Pods for keystone
-  pod 'Geth'
-  pod 'BigInt'
-  pod 'CryptoSwift'
+  # pod 'Geth'
+  pod 'BigInt', '3.0.1'
+  pod 'CryptoSwift', '0.8.3'
   pod 'secp256k1_ios', git: 'https://github.com/shamatar/secp256k1_ios.git', inhibit_warnings: true
-  pod 'TrezorCrypto', inhibit_warnings: true
+  pod 'TrezorCrypto', '0.0.4', inhibit_warnings: true
 
   target 'loopr-iosTests' do
     inherit! :search_paths
