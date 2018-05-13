@@ -55,6 +55,11 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         // Configure the cell...
         cell?.wallet = AppWalletDataManager.shared.getWallets()[indexPath.row]
         cell?.update()
+        if cell?.wallet == CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
+            cell?.accessoryType = .checkmark
+        } else {
+            cell?.accessoryType = .none
+        }
         return cell!
     }
     

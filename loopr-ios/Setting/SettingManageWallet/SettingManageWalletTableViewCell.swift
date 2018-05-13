@@ -26,6 +26,8 @@ class SettingManageWalletTableViewCell: UITableViewCell {
         addressLabel.textColor = UIColor.black.withAlphaComponent(0.6)
         
         seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
+        
+        tintColor = UIColor.black
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

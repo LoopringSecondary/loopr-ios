@@ -19,6 +19,7 @@ class SettingCurrencyTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         theme_backgroundColor = GlobalPicker.backgroundColor
+        tintColor = UIColor.black
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

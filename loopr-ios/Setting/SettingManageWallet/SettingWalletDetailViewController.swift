@@ -42,10 +42,11 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     @IBAction func pressedSwitchWalletButton(_ sender: Any) {
         print("pressedSwitchWalletButton")
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(appWallet)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -65,6 +66,9 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
             cell.textLabel?.text = NSLocalizedString("Export Private Key", comment: "")
         } else if indexPath.row == 3 {
             cell.textLabel?.text = NSLocalizedString("Export Keystore", comment: "")
+        } else if indexPath.row == 4 {
+            cell.textLabel?.text = NSLocalizedString("Clear Records of this Wallet", comment: "")
+            cell.textLabel?.textColor = UIColor.init(rgba: "#F52929")
         }
         
         cell.accessoryType = .disclosureIndicator
@@ -92,7 +96,36 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
             let viewController = ExportKeystoreEnterPasswordViewController()
             viewController.appWallet = appWallet
             self.navigationController?.pushViewController(viewController, animated: true)
+        } else if indexPath.row == 4 {
+            let alertController = UIAlertController(title: "You are going to clear records of \(appWallet.name) on this device.",
+                message: nil,
+                preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+                AppWalletDataManager.shared.logout(appWallet: self.appWallet)
+                if AppWalletDataManager.shared.getWallets().isEmpty {
+                    self.navigationToSetupNavigationController()
+                } else {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            })
+            alertController.addAction(defaultAction)
+            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+            })
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
         }
+    }
+    
+    func navigationToSetupNavigationController() {
+        let alertController = UIAlertController(title: "No wallet is found in the device. Navigate to the wallet creation view.",
+            message: nil,
+            preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+            SetupDataManager.shared.hasPresented = false
+            UIApplication.shared.keyWindow?.rootViewController = SetupNavigationController(nibName: nil, bundle: nil)
+        })
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 
 }

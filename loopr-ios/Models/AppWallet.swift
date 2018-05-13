@@ -194,4 +194,5 @@ class AppWallet: NSObject, NSCoding {
             return nil
         }
     }
+
 }

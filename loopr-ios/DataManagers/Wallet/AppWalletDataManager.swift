@@ -40,6 +40,30 @@ class AppWalletDataManager {
         return false
     }
     
+    func logout(appWallet: AppWallet) {
+        if let index = appWallets.index(of: appWallet) {
+            appWallets.remove(at: index)
+            // TODO: if the size of encodedData is large, the perfomance may drop.
+            DispatchQueue.global().async {
+                let defaults = UserDefaults.standard
+                let encodedData = NSKeyedArchiver.archivedData(withRootObject: AppWalletDataManager.shared.appWallets)
+                defaults.set(encodedData, forKey: UserDefaultsKeys.appWallets.rawValue)
+            }
+            
+            // Set the current wallet
+            if appWallet == CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
+                if  appWallets.count > 0 {
+                    let appWallet = AppWalletDataManager.shared.appWallets[0]
+                    CurrentAppWalletDataManager.shared.setCurrentAppWallet(appWallet)
+                } else {
+                    return
+                }
+            }
+        } else {
+            return
+        }
+    }
+    
     func getAccountTotalCurrency() -> Double {
         var result: Double = 0
         for wallet in appWallets {
