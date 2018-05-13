@@ -54,9 +54,9 @@ class LoopringAPIRequestTests: XCTestCase {
     
     func testGetOrderBook() {
         let expectation = XCTestExpectation()
-        OrderBookDataManager.shared.getOrderBookFromServer(market: "lrc-weth", completionHandler: { orders, error in
-            XCTAssertNotNil(orders)
-            XCTAssertNotEqual(orders!.count, 0)
+        OrderBookDataManager.shared.getOrderBookFromServer(market: "lrc-weth", completionHandler: { (buys, sells, error)  in
+            XCTAssertNotNil(buys)
+            XCTAssertNotEqual(buys.count, 0)
             expectation.fulfill()
         })
         wait(for: [expectation], timeout: 10.0)
@@ -215,7 +215,7 @@ class LoopringAPIRequestTests: XCTestCase {
     func testGetTransactions() {
         let expectation = XCTestExpectation()
         
-        LoopringAPIRequest.getTransactions(owner: testAddress, symbol: "LRC", thxHash: nil, pageIndex: 1, pageSize: 20) { transactions, error in
+        LoopringAPIRequest.getTransactions(owner: testAddress, symbol: "ETH", thxHash: nil, pageIndex: 1, pageSize: 20) { transactions, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 XCTFail()

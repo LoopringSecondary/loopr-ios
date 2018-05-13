@@ -7,8 +7,8 @@
 //
 
 import XCTest
-import Geth
 @testable import loopr_ios
+@testable import Geth
 
 class Web3SwiftTests: XCTestCase {
 

@@ -73,7 +73,7 @@ class Transaction {
             case .convert_income: return "Convert" // eth <-> weth
             case .convert_outcome: return "Convert" // eth <-> weth
             case .canceledOrder: return "Cancel"
-            case .cutoff: return "Cutoff"
+            case .cutoff: return "Cancel"
             case .unsupportedContract: return "Other"
             }
         }

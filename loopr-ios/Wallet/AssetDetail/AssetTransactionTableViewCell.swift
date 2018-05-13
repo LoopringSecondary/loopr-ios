@@ -63,6 +63,10 @@ class AssetTransactionTableViewCell: UITableViewCell {
                 titleLabel.text = NSLocalizedString("Enable \(transaction.symbol) To Trade", comment: "")
                 amountLabel.isHidden = true
                 displayLabel.isHidden = true
+            case .cutoff, .canceledOrder:
+                titleLabel.text = NSLocalizedString("Cancel Order(s)", comment: "")
+                amountLabel.isHidden = true
+                displayLabel.isHidden = true
             default:
                 titleLabel.text = transaction.type.description + " " + transaction.symbol
                 amountLabel.text = transaction.value

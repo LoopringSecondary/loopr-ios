@@ -98,6 +98,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         }
         self.setupScanLine()
         self.setupBackGroundView()
+        self.setupFrameLine()
     }
 
     override func didReceiveMemoryWarning() {
@@ -171,6 +172,38 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         self.scanView.addSubview(bottomView)
         self.scanView.addSubview(leftView)
         self.scanView.addSubview(rightView)
+    }
+    
+    func setupFrameLine() {
+        let line = CAShapeLayer()
+        let path = UIBezierPath()
+        let lineLength = scanQRCodeView.frame.width * 0.1
+        path.move(to: CGPoint(x: scanQRCodeView.frame.minX, y: scanQRCodeView.frame.minY + 2))
+        path.addLine(to: CGPoint(x: scanQRCodeView.frame.minX + lineLength, y: scanQRCodeView.frame.minY + 2))
+        path.move(to: CGPoint(x: scanQRCodeView.frame.minX + 2, y: scanQRCodeView.frame.minY))
+        path.addLine(to: CGPoint(x: scanQRCodeView.frame.minX + 2, y: scanQRCodeView.frame.minY + lineLength))
+        
+        path.move(to: CGPoint(x: scanQRCodeView.frame.minX, y: scanQRCodeView.frame.maxY - 2))
+        path.addLine(to: CGPoint(x: scanQRCodeView.frame.minX + lineLength, y: scanQRCodeView.frame.maxY - 2))
+        path.move(to: CGPoint(x: scanQRCodeView.frame.minX + 2, y: scanQRCodeView.frame.maxY))
+        path.addLine(to: CGPoint(x: scanQRCodeView.frame.minX + 2, y: scanQRCodeView.frame.maxY - lineLength))
+        
+        path.move(to: CGPoint(x: scanQRCodeView.frame.maxX, y: scanQRCodeView.frame.minY + 2))
+        path.addLine(to: CGPoint(x: scanQRCodeView.frame.maxX - lineLength, y: scanQRCodeView.frame.minY + 2))
+        path.move(to: CGPoint(x: scanQRCodeView.frame.maxX - 2, y: scanQRCodeView.frame.minY))
+        path.addLine(to: CGPoint(x: scanQRCodeView.frame.maxX - 2, y: scanQRCodeView.frame.minY + lineLength))
+        
+        path.move(to: CGPoint(x: scanQRCodeView.frame.maxX, y: scanQRCodeView.frame.maxY - 2))
+        path.addLine(to: CGPoint(x: scanQRCodeView.frame.maxX - lineLength, y: scanQRCodeView.frame.maxY - 2))
+        path.move(to: CGPoint(x: scanQRCodeView.frame.maxX - 2, y: scanQRCodeView.frame.maxY))
+        path.addLine(to: CGPoint(x: scanQRCodeView.frame.maxX - 2, y: scanQRCodeView.frame.maxY - lineLength))
+        
+        line.path = path.cgPath
+        line.strokeColor = UIColor.white.cgColor
+        line.lineWidth = 4
+        
+        line.lineJoin = kCALineJoinRound
+        self.view.layer.addSublayer(line)
     }
     
     func launchApp(decodedURL: String, codeType: QRCodeType) {
