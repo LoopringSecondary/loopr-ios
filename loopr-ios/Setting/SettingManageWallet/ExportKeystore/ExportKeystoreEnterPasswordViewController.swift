@@ -57,7 +57,6 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
         nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
         nextButton.frame = CGRect(x: padding, y: passwordUnderLine.frame.maxY + 40, width: screenWidth - padding * 2, height: 47)
         view.addSubview(nextButton)
-
     }
 
     override func didReceiveMemoryWarning() {

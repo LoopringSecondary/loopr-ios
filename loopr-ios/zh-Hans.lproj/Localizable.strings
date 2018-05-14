@@ -94,3 +94,5 @@
 "Cancel All" = "取消全部";
 "Order Book" = "最新挂单";
 "No Data" = "暂时没有数据";
+"Copy Private Key" = "复制私钥";
+"Copy Keystore" = "复制Keystore";

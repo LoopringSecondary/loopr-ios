@@ -103,7 +103,7 @@ class QRCodeViewController: UIViewController {
     }
     
     @IBAction func pressedShareButton(_ button: UIBarButtonItem) {
-        let text = NSLocalizedString("My wallet address in Loopr-IOS", comment: "")
+        let text = NSLocalizedString("My wallet address in Loopr-iOS", comment: "")
         
         let png = UIImagePNGRepresentation(qrcodeImage)
         

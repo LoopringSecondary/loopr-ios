@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 class DisplayKeystoreViewController: UIViewController {
     
@@ -31,7 +32,7 @@ class DisplayKeystoreViewController: UIViewController {
         keystoreTextView.textColor = UIColor.black
         keystoreTextView.isEditable = false
         
-        copyButton.title = "Copy Keystore"
+        copyButton.title = NSLocalizedString("Copy Keystore", comment: "")
         copyButton.setupRoundBlack()
     }
 
@@ -42,6 +43,10 @@ class DisplayKeystoreViewController: UIViewController {
 
     @IBAction func pressedCopyButton(_ sender: Any) {
         print("pressedCopyButton")
+        UIPasteboard.general.string = appWallet.getKeystore().description
+        let banner = NotificationBanner.generate(title: "Copy keystore to clipboard successfully!", style: .success)
+        banner.duration = 1
+        banner.show()
     }
     
 }

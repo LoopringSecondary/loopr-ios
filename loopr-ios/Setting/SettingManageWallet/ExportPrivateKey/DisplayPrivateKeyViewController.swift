@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 class DisplayPrivateKeyViewController: UIViewController {
 
@@ -34,7 +35,7 @@ class DisplayPrivateKeyViewController: UIViewController {
         privateKeyTextView.isEditable = false
         // privateKeyTextView.isScrollEnabled = false
         
-        copyButton.title = "Copy Private Key"
+        copyButton.title = NSLocalizedString("Copy Private Key", comment: "")
         copyButton.setupRoundBlack()
     }
 
@@ -45,7 +46,10 @@ class DisplayPrivateKeyViewController: UIViewController {
 
     @IBAction func pressedCopyButton(_ sender: Any) {
         print("pressedCopyButton")
-
+        UIPasteboard.general.string = appWallet.privateKey
+        let banner = NotificationBanner.generate(title: "Copy private key to clipboard successfully!", style: .success)
+        banner.duration = 1
+        banner.show()
     }
     
 }
