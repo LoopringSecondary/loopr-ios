@@ -415,7 +415,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                         }, completion: {(_) in
                             self.blurVisualEffectView.removeFromSuperview()
                         })
-                        self.cancelAllOrders()
+                        self.cancelAllOrders(section: indexPath.section)
                     }))
                     alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
                         UIView.animate(withDuration: 0.1, animations: {
@@ -461,7 +461,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                             }, completion: {(_) in
                                 self.blurVisualEffectView.removeFromSuperview()
                             })
-                            self.cancelOrder(order: order.originalOrder)
+                            self.cancelOrder(order: order.originalOrder, indexPath: indexPath)
                         }))
                         alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
                             UIView.animate(withDuration: 0.1, animations: {
@@ -555,21 +555,23 @@ extension MarketDetailViewController: UIViewControllerTransitioningDelegate {
         return UserDefaults.standard
     }
     
-    func cancelOrder(order: OriginalOrder) {
+    func cancelOrder(order: OriginalOrder, indexPath: IndexPath) {
         SendCurrentAppWalletDataManager.shared._cancelOrder(order: order) { (txHash, error) in
-            if txHash != nil && error == nil {
-                var cancellingOrders = self.defaults.stringArray(forKey: UserDefaultsKeys.cancellingOrders.rawValue) ?? []
-                cancellingOrders.append(String(order.hash.prefix(8)))
-                self.defaults.set(cancellingOrders, forKey: UserDefaultsKeys.cancellingOrders.rawValue)
+            var cancellingOrders = self.defaults.stringArray(forKey: UserDefaultsKeys.cancellingOrders.rawValue) ?? []
+            cancellingOrders.append(String(order.hash.prefix(8)))
+            self.defaults.set(cancellingOrders, forKey: UserDefaultsKeys.cancellingOrders.rawValue)
+            DispatchQueue.main.sync {
+                self.tableView.reloadRows(at: [indexPath], with: .fade)
             }
             self.completion(txHash, error)
         }
     }
     
-    func cancelAllOrders() {
+    func cancelAllOrders(section: Int) {
         SendCurrentAppWalletDataManager.shared._cancelAllOrders { (txHash, error) in
-            if txHash != nil && error == nil {
-                self.defaults.set(true, forKey: UserDefaultsKeys.cancelledAll.rawValue)
+            self.defaults.set(true, forKey: UserDefaultsKeys.cancelledAll.rawValue)
+            DispatchQueue.main.sync {
+                self.tableView.reloadSections([section], with: .fade)
             }
             self.completion(txHash, error)
         }

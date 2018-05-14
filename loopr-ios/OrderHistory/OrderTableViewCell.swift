@@ -45,6 +45,7 @@ class OrderTableViewCell: UITableViewCell {
         let (flag, text) = getOrderStatus(order: order)
         if flag {
             cancelButton.isEnabled = true
+            cancelButton.backgroundColor = UIColor.clear
             cancelButton.layer.borderColor = UIColor.black.cgColor
         } else {
             cancelButton.isEnabled = false
