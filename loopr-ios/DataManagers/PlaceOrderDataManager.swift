@@ -224,7 +224,7 @@ class PlaceOrderDataManager {
         return bigInt.hexString
     }
     
-    func _submit(order: OriginalOrder, completion: @escaping (String?, Error?) -> Void) {
+    func _submitOrder(_ order: OriginalOrder, completion: @escaping (String?, Error?) -> Void) {
         let orderData = getOrderHash(order: order)
 
         SendCurrentAppWalletDataManager.shared._keystore()

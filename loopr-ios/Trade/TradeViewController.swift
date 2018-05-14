@@ -146,10 +146,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     @objc func scrollViewTapped() {
         print("scrollViewTapped")
-
         tokenSPriceTextField.resignFirstResponder()
         totalTextField.resignFirstResponder()
-
         hideNumericKeyboard()
     }
     
@@ -183,11 +181,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         print("textFieldShouldBeginEditing")
-
         activeTextFieldTag = textField.tag
-        
         showNumericKeyboard(textField: textField)
-
         return true
     }
     
@@ -223,7 +218,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             // TODO: improve the animation.
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
                 self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
-                
             }, completion: { finished in
                 self.isNumericKeyboardShown = true
                 if finished {

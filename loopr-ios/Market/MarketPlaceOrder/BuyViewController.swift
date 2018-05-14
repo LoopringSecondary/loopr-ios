@@ -543,14 +543,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
 extension BuyViewController {
     
     func getLrcFee(_ amountS: Double, _ tokenS: String) -> Double? {
-        let pair = tokenS + "/LRC"
-        let ratio = SettingDataManager.shared.getLrcFeeRatio()
-        if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
-            return market.balance * amountS * ratio
-        } else if let price = PriceDataManager.shared.getPriceBySymbol(of: tokenS),
-            let lrcPrice = PriceDataManager.shared.getPriceBySymbol(of: "LRC") {
-            return price * amountS * ratio / lrcPrice
-        }
-        return nil
+        return TradeDataManager.shared.getLrcFee(amountS, tokenS)
     }
 }
