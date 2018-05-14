@@ -9,11 +9,11 @@
 import UIKit
 
 class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
-
+    
     var setupWalletMethod: SetupWalletMethod = .create
     
     var titleLabel: UILabel =  UILabel()
-
+    
     // Scrollable UI components
     var walletNameTextField: UITextField = UITextField()
     var walletNameUnderLine: UIView = UIView()
@@ -22,7 +22,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
     var walletPasswordTextField: UITextField = UITextField()
     var walletPasswordUnderLine: UIView = UIView()
     var walletPasswordInfoLabel: UILabel = UILabel()
-
+    
     var continueButton: UIButton = UIButton()
     
     // Keyboard
@@ -33,21 +33,21 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         self.init(nibName: "GenerateWalletViewController", bundle: nil)
         self.setupWalletMethod = setupWalletMethod
     }
-
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         // self.navigationItem.title = NSLocalizedString("Generate Wallet", comment: "")
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
         
@@ -62,11 +62,11 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         
         let originY: CGFloat = 30
         let padding: CGFloat = 15
-
+        
         titleLabel.frame = CGRect(x: padding, y: originY, width: screenWidth - padding * 2, height: 30)
         titleLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 27)
         view.addSubview(titleLabel)
-
+        
         walletNameTextField.delegate = self
         walletNameTextField.tag = 0
         // walletNameTextField.inputView = UIView()
@@ -76,7 +76,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         walletNameTextField.contentMode = UIViewContentMode.bottom
         walletNameTextField.frame = CGRect(x: padding, y: titleLabel.frame.maxY + 80, width: screenWidth-padding*2, height: 40)
         view.addSubview(walletNameTextField)
-
+        
         walletNameUnderLine.frame = CGRect(x: padding, y: walletNameTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
         walletNameUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
         view.addSubview(walletNameUnderLine)
@@ -87,7 +87,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         walletNameInfoLabel.textColor = UIColor.init(rgba: "#F52929")
         walletNameInfoLabel.alpha = 0.0
         view.addSubview(walletNameInfoLabel)
-
+        
         walletPasswordTextField.isSecureTextEntry = true
         walletPasswordTextField.delegate = self
         walletPasswordTextField.tag = 1
@@ -110,13 +110,14 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         walletPasswordInfoLabel.alpha = 0.0
         view.addSubview(walletPasswordInfoLabel)
         
+        continueButton.isEnabled = false
         continueButton.setupRoundBlack()
         continueButton.frame = CGRect(x: padding, y: walletPasswordUnderLine.frame.maxY + 50, width: screenWidth - padding * 2, height: 47)
         continueButton.addTarget(self, action: #selector(pressedContinueButton), for: .touchUpInside)
         view.addSubview(continueButton)
-
+        
         view.theme_backgroundColor = GlobalPicker.backgroundColor
-
+        
         // UI will be different based on SetupWalletMethod
         if setupWalletMethod == .create {
             titleLabel.text = NSLocalizedString("Create a new wallet", comment: "")
@@ -124,19 +125,19 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
             
             // Generate a new wallet
             _ = GenerateWalletDataManager.shared.new()
-
+            
         } else {
             walletPasswordTextField.isHidden = true
             walletPasswordUnderLine.isHidden = true
             titleLabel.text = NSLocalizedString("Setup the wallet name", comment: "")
             continueButton.setTitle(NSLocalizedString("Enter Wallet", comment: ""), for: .normal)
         }
-
+        
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         view.addGestureRecognizer(scrollViewTap)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -145,27 +146,36 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
-
+        
     }
     
     @objc func pressedContinueButton(_ sender: Any) {
         print("pressedContinueButton")
-
+        
         switch setupWalletMethod {
         case .create:
             pressedContinueButtonInCreate()
-
+            
         case .importUsingMnemonic:
+            if !pressedContinueButtonInImport() {
+                return
+            }
             walletNameTextField.resignFirstResponder()
             ImportWalletUsingMnemonicDataManager.shared.walletName = walletNameTextField.text ?? ""
             ImportWalletUsingMnemonicDataManager.shared.complete()
-
+            
         case .importUsingKeystore:
+            if !pressedContinueButtonInImport() {
+                return
+            }
             walletNameTextField.resignFirstResponder()
             ImportWalletUsingKeystoreDataManager.shared.walletName = walletNameTextField.text ?? ""
             ImportWalletUsingKeystoreDataManager.shared.complete()
-
+            
         case .importUsingPrivateKey:
+            if !pressedContinueButtonInImport() {
+                return
+            }
             walletNameTextField.resignFirstResponder()
             ImportWalletUsingPrivateKeyDataManager.shared.walletName = walletNameTextField.text ?? ""
             ImportWalletUsingPrivateKeyDataManager.shared.complete()
@@ -219,6 +229,22 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func pressedContinueButtonInImport() -> Bool {
+        var validWalletName = true
+        
+        let walletName = walletNameTextField.text ?? ""
+        if walletName.trim() == "" {
+            validWalletName = false
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveLinear, animations: {
+                self.walletNameInfoLabel.alpha = 1.0
+            }, completion: { (_) in
+                
+            })
+        }
+        
+        return validWalletName
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newLength = (textField.text?.utf16.count)! + (string.utf16.count) - range.length
         print("textField shouldChangeCharactersIn \(newLength)")
@@ -228,8 +254,10 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
             if newLength > 0 {
                 walletNameInfoLabel.alpha = 0.0
                 walletNameUnderLine.backgroundColor = UIColor.black
+                continueButton.isEnabled = true
             } else {
                 walletNameUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+                continueButton.isEnabled = false
             }
         case walletPasswordTextField.tag:
             if newLength > 0 {
@@ -242,7 +270,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
-
+    
     @objc func scrollViewTapped() {
         print("scrollViewTapped")
         
@@ -256,19 +284,19 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
                 self.walletNameTextField.moveOffset(y: self.keyboardOffsetY)
                 self.walletNameUnderLine.moveOffset(y: self.keyboardOffsetY)
                 self.walletNameInfoLabel.moveOffset(y: self.keyboardOffsetY)
-
+                
                 // Wallet Password
                 self.walletPasswordTextField.moveOffset(y: self.keyboardOffsetY)
                 self.walletPasswordUnderLine.moveOffset(y: self.keyboardOffsetY)
                 self.walletPasswordInfoLabel.moveOffset(y: self.keyboardOffsetY)
-
+                
                 // continueButton
                 self.continueButton.moveOffset(y: self.keyboardOffsetY)
             })
             isKeyboardShown = false
         }
     }
-
+    
     @objc func systemKeyboardWillShow(_ notification: Notification) {
         if !isKeyboardShown {
             guard let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
@@ -306,11 +334,9 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
                 
             }
         }
-
     }
     
     @objc func systemKeyboardWillDisappear(notification: NSNotification?) {
         print("keyboardWillDisappear")
     }
-
 }
