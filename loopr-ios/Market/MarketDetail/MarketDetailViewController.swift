@@ -502,50 +502,28 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 4 && indexPath.row > 0 {
-            let order = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened])[indexPath.row-1]
-            let viewController = OrderDetailViewController()
-            viewController.order = order
-            viewController.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(viewController, animated: true)
+            let count = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened]).count
+            if count == 0 {
+                return
+            } else {
+                let order = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened])[indexPath.row-1]
+                let viewController = OrderDetailViewController()
+                viewController.order = order
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
         } else if indexPath.section == 5 {
-            let order = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.finished])[indexPath.row]
-            let viewController = OrderDetailViewController()
-            viewController.order = order
-            viewController.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(viewController, animated: true)
+            let count = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.finished]).count
+            if count == 0 {
+                return
+            } else {
+                let order = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.finished])[indexPath.row]
+                let viewController = OrderDetailViewController()
+                viewController.order = order
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
         }
-        
-        /*
-        // TODO: Use UIAlertController or PopupDialog
-        if indexPath.section == 1 {
-            // TODO: Pass a view controller to PopupDialog https://github.com/Orderella/PopupDialog#custom-view-controller
-            
-            let dialogAppearance = PopupDialogDefaultView.appearance()
-            dialogAppearance.titleFont = .boldSystemFont(ofSize: 17)
-            dialogAppearance.titleColor = UIColor(white: 0, alpha: 1)
-            dialogAppearance.titleTextAlignment = .center
-            dialogAppearance.messageFont = .systemFont(ofSize: 17)
-            dialogAppearance.messageTextAlignment = .left
-            dialogAppearance.messageColor = UIColor(white: 0.2, alpha: 1)
-            
-            // Prepare the popup assets
-            let title = "Order"
-            let message = "This is the message section of the popup dialog default view"
-            let image = UIImage(named: "Logo")
-            
-            // Create the dialog
-            let popup = PopupDialog(title: title, message: message, image: image, transitionStyle: PopupDialogTransitionStyle.zoomIn)
-
-            // Present dialog
-            self.present(popup, animated: true, completion: nil)
-        } else if indexPath.section == 2 {
-            let alert = UIAlertController(title: "My Alert", message: "This is an alert.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { _ in
-                NSLog("The \"OK\" alert occured.")
-            }))
-            self.present(alert, animated: true, completion: nil)
-        }
-        */
     }
 }
 

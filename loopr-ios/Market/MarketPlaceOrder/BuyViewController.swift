@@ -180,7 +180,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
             availableLabel.text = "Available \(balance) \(PlaceOrderDataManager.shared.tokenB.symbol)"
         }
         availableLabel.font = FontConfigManager.shared.getLabelFont()
-        availableLabel.frame = CGRect(x: padding, y: totalUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
+        availableLabel.frame = CGRect(x: padding, y: totalUnderLine.frame.maxY, width: screenWidth-padding*2, height: 40)
         scrollView.addSubview(availableLabel)
         
         // Fourth Row

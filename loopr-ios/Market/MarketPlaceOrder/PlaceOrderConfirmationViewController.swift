@@ -104,7 +104,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
                 displayLabel.text = (price * order.amountSell).currency
             }
         } else if order.side.lowercased() == "buy" {
-            amountLabel.text = order.amountSell.description + " " + order.tokenBuy
+            amountLabel.text = order.amountBuy.description + " " + order.tokenBuy
             if let price = PriceDataManager.shared.getPriceBySymbol(of: order.tokenBuy) {
                 displayLabel.text = (price * order.amountBuy).currency
             }

@@ -16,6 +16,8 @@ class OrderNoDataTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        selectionStyle = .none
+        
         noDataLabel.text = NSLocalizedString("No Data", comment: "")
         noDataLabel.textColor = UIColor.black
         noDataLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17.0*UIStyleConfig.scale)        

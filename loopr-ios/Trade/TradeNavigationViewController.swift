@@ -16,7 +16,7 @@ class TradeNavigationViewController: UINavigationController {
         // Do any additional setup after loading the view.
         navigationBar.shadowImage = UIImage()
 
-        let viewController = TradeSwipeViewController()
+        let viewController = TradeViewController()
         self.setViewControllers([viewController], animated: false)
     }
 
