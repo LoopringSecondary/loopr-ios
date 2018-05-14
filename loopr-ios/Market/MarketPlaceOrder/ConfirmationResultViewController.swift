@@ -102,9 +102,7 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
             detailsButton.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
         }
         doneButton.title = NSLocalizedString("Done", comment: "")
-        doneButton.backgroundColor = UIColor.black
-        doneButton.layer.cornerRadius = 23
-        doneButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+        doneButton.setupRoundBlack()
     }
     
     func setupErrorInfo() {
