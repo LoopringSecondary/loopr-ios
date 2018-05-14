@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PopupDialog
 import NotificationBannerSwift
 
 class MarketDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {

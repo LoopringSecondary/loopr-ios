@@ -5,7 +5,6 @@ PODS:
     - Charts/Core (= 3.0.5)
   - Charts/Core (3.0.5)
   - CryptoSwift (0.8.3)
-  - DynamicBlurView (2.0.2)
   - FoldingCell (3.0.6)
   - FontBlaster (4.0.3)
   - lottie-ios (2.5.0)
@@ -13,9 +12,6 @@ PODS:
   - NotificationBannerSwift (1.6.2):
     - MarqueeLabel/Swift
     - SnapKit (~> 4.0)
-  - pop (1.0.10)
-  - PopupDialog (0.7.1):
-    - DynamicBlurView (~> 2.0)
   - secp256k1_ios (0.1.3)
   - SipHash (1.2.0)
   - SnapKit (4.0.0)
@@ -35,14 +31,31 @@ DEPENDENCIES:
   - FontBlaster
   - lottie-ios
   - NotificationBannerSwift
-  - pop
-  - PopupDialog
   - secp256k1_ios (from `https://github.com/shamatar/secp256k1_ios.git`)
   - Socket.IO-Client-Swift (~> 13.1.0)
   - SVProgressHUD
   - SwiftLint
   - SwiftTheme
   - TrezorCrypto (= 0.0.4)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - BigInt
+    - Charts
+    - CryptoSwift
+    - FoldingCell
+    - FontBlaster
+    - lottie-ios
+    - MarqueeLabel
+    - NotificationBannerSwift
+    - SipHash
+    - SnapKit
+    - Socket.IO-Client-Swift
+    - Starscream
+    - SVProgressHUD
+    - SwiftLint
+    - SwiftTheme
+    - TrezorCrypto
 
 EXTERNAL SOURCES:
   secp256k1_ios:
@@ -57,14 +70,11 @@ SPEC CHECKSUMS:
   BigInt: 8e8a52161c745cd3ab78e3dc346a9fbee51e6cf6
   Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
   CryptoSwift: 033efc3523865d19cc6ab6612fa17a62613b5dfa
-  DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
   FoldingCell: 4848ec8a2056d5751bfb710df14521fc64d48ad7
   FontBlaster: f18031f5dde2ce689f5330e7005edfe3c0815957
   lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
   MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
   NotificationBannerSwift: 4eceb2add9d5eaa0596c63d49690b4d6476e74ec
-  pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
-  PopupDialog: 39598b7d41719f5c025b4b70e62728bae7734fef
   secp256k1_ios: ac9ef04e761f43c58012b28548afa91493761f17
   SipHash: c6e9e43e9c531b5bc6602545130c26194a6d31ce
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
@@ -75,6 +85,6 @@ SPEC CHECKSUMS:
   SwiftTheme: 36d71c4eed4b2c401c782cf036e4586c749a8173
   TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803
 
-PODFILE CHECKSUM: 5c29315cd5cd165b3132c363c3c7a2064ac5845c
+PODFILE CHECKSUM: 4f5c57125f360e886bd0db01e73396daeab0f21b
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

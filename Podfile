@@ -8,8 +8,6 @@ target 'loopr-ios' do
   # Pods for loopr-ios
   pod 'Charts', '3.0.5'
   pod 'lottie-ios'
-  pod 'pop'
-  pod 'PopupDialog'
   pod 'SwiftLint'
   pod 'SwiftTheme'
   pod 'FontBlaster'
