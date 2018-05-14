@@ -13,7 +13,6 @@ import UIKit
 enum SupportedFonts: String {
     case DIN
     case Lato
-    case Montserrat
     case OpenSans
     case Roboto
 }
@@ -87,8 +86,6 @@ class FontConfigManager {
             return "DINNextLTPro-Medium"
         case .Lato:
             return "Lato-Bold"
-        case .Montserrat:
-            return "Montserrat-Medium"
         case .OpenSans:
             return "OpenSans-SemiBold"
         case .Roboto:
