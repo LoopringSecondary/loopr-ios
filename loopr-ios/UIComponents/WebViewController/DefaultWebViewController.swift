@@ -9,13 +9,15 @@
 import UIKit
 import WebKit
 
-class AssetTransactionWebViewController: UIViewController {
+class DefaultWebViewController: UIViewController {
 
     @IBOutlet weak var wkWebView: WKWebView!
     var url: URL?
+    var navigationTitle: String = ""
     
     private var progressKVOhandle: NSKeyValueObservation?
     @IBOutlet weak var progressView: UIProgressView!
+    var showProgressView: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,7 @@ class AssetTransactionWebViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         setBackButton()
-        self.navigationItem.title = "Etherscan.io"
+        self.navigationItem.title = navigationTitle
         view.theme_backgroundColor = ["#fff", "#000"]
         progressView.tintColor = UIColor.black
         progressView.setProgress(0, animated: false)
@@ -47,16 +49,21 @@ class AssetTransactionWebViewController: UIViewController {
 
 }
 
-extension AssetTransactionWebViewController: WKNavigationDelegate {
+extension DefaultWebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        progressView.alpha = 0.0
-        UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveEaseInOut, animations: {
-            self.progressView.alpha = 1.0
-        })
+        if showProgressView {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            
+            progressView.alpha = 0.0
+            UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveEaseInOut, animations: {
+                self.progressView.alpha = 1.0
+            })
+        }
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        showProgressView = false
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         progressView.alpha = 1.0
         UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveEaseInOut, animations: {
             self.progressView.alpha = 0.0

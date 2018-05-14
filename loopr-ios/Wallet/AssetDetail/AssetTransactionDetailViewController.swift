@@ -154,7 +154,7 @@ class AssetTransactionDetailViewController: UIViewController {
                 etherUrl += tx.from
             }
             if let url = URL(string: etherUrl) {
-                let viewController = AssetTransactionWebViewController()
+                let viewController = DefaultWebViewController()
                 viewController.url = url
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
@@ -167,7 +167,8 @@ class AssetTransactionDetailViewController: UIViewController {
         if let tx = self.transaction {
             etherUrl += tx.txHash
             if let url = URL(string: etherUrl) {
-                let viewController = AssetTransactionWebViewController()
+                let viewController = DefaultWebViewController()
+                viewController.navigationTitle = "Etherscan.io"
                 viewController.url = url
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)

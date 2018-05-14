@@ -96,3 +96,12 @@
 "No Data" = "暂时没有数据";
 "Copy Private Key" = "复制私钥";
 "Copy Keystore" = "复制Keystore";
+"User Preferences" = "用户设置";
+"Trading" = "交易";
+"Relay" = "中继";
+"About" = "关于";
+"Default Relay" = "默认中继";
+"App Version" = "应用版本";
+"Support" = "帮助";
+"Copyright" = "版权";
+

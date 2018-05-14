@@ -12,8 +12,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var settingsTableView: UITableView!
     
-    let sectionTitles = ["User Preferences", "Trading", "Relay", "About"]
-    let sectionRows = [5, 3, 3, 6]
+    let sectionTitles = [NSLocalizedString("User Preferences", comment: ""), NSLocalizedString("Trading", comment: ""), NSLocalizedString("Relay", comment: ""), NSLocalizedString("About", comment: "")]
+    let sectionRows = [2, 3, 1, 4]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,12 +64,14 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let viewController = SettingManageWalletViewController()
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
+            /*
             case 2:
                 print("Setting language")
                 let viewController = SettingLanguageViewController()
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
-            case 3:
+            */
+            case 1:
                 print("Setting currency")
                 let viewController = SettingCurrencyViewController()
                 viewController.hidesBottomBarWhenPushed = true
@@ -94,6 +96,17 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             default:
                 break
             }
+        case 3:
+            switch indexPath.row {
+            case 1:
+                let viewController = DefaultWebViewController()
+                viewController.navigationTitle = "loopring.org"
+                viewController.url = URL(string: "https://loopring.org")
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            default:
+                break
+            }
         default:
             break
         }
@@ -107,6 +120,20 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return sectionTitles[section]
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let padding: CGFloat = 15
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 45))
+        headerView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
+        
+        let label = UILabel(frame: CGRect(x: padding, y: 0, width: view.frame.size.width, height: 45))
+        label.theme_textColor = GlobalPicker.textColor
+        label.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)
+        headerView.addSubview(label)
+        
+        label.text = sectionTitles[section]
+        return headerView
+    }
+    
     // Sections
     func section0Cell(row: Int) -> UITableViewCell {
         switch row {
@@ -117,13 +144,17 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             return createDetailTableCell(title: NSLocalizedString("Manage Wallet", comment: ""), detailTitle: currentWalletName!)
         case 1:
+            return createDetailTableCell(title: NSLocalizedString("Currency", comment: ""), detailTitle: SettingDataManager.shared.getCurrentCurrency().name)
+        /*
+        case 1:
             return createThemeMode()
         case 2:
             return createDetailTableCell(title: NSLocalizedString("Language", comment: ""), detailTitle: SettingDataManager.shared.getCurrentLanguage().displayName)
         case 3:
-            return createDetailTableCell(title: NSLocalizedString("Currency", comment: ""), detailTitle: SettingDataManager.shared.getCurrentCurrency().name)
+            
         case 4:
             return createDetailTableCell(title: "Timzone", detailTitle: TimeZone.current.identifier)
+        */
         default:
             return UITableViewCell()
         }
@@ -147,11 +178,13 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func section3Cell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
-            return createBasicTableCell(title: "Default Loopring Relay", detailTitle: RelayAPIConfiguration.baseURL)
+            return createBasicTableCell(title: "Default Relay", detailTitle: RelayAPIConfiguration.baseURL)
+        /*
         case 1:
             return createBasicTableCell(title: "Backup Loopring Relay", detailTitle: "27.0.0.01")
         case 2:
             return createBasicTableCell(title: "Test Loopring Relay", detailTitle: "27.0.0.01")
+        */
         default:
             return UITableViewCell()
         }
@@ -161,16 +194,18 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func section4Cell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
-            return createBasicTableCell(title: "App Version", detailTitle: getAppVersion())
+            return createBasicTableCell(title: NSLocalizedString("App Version", comment: ""), detailTitle: getAppVersion())
         case 1:
             return createDetailTableCell(title: "Website", detailTitle: "loopring.org")
+        /*
         case 2:
             return createDetailTableCell(title: "Privacy Policy")
         case 3:
             return createDetailTableCell(title: "Terms Of Service")
-        case 4:
-            return createBasicTableCell(title: "Support", detailTitle: "help@loopring.org")
-        case 5:
+        */
+        case 2:
+            return createBasicTableCell(title: NSLocalizedString("Support", comment: ""), detailTitle: "help@loopring.org")
+        case 3:
             return createBasicTableCell(title: "Copyright", detailTitle: "Loopring 2018")
         default:
             return UITableViewCell()
@@ -213,7 +248,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = UITableViewCell(style: .value1, reuseIdentifier: title)
         cell.accessoryType = .none
         cell.selectionStyle = .none
-        cell.selectionStyle = .blue
         cell.textLabel?.text = title
         cell.textLabel?.font = FontConfigManager.shared.getLabelFont()
         cell.detailTextLabel?.text = detailTitle
@@ -232,7 +266,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func getAppVersion() -> String {
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
         let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
-        
         return version + " (" + build + ")"
     }
 }
