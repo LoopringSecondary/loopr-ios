@@ -32,7 +32,7 @@ class ConvertDataManager {
     func getMaxAmount(symbol: String) -> Double {
         let assets = CurrentAppWalletDataManager.shared.getAssets()
         let filteredAssets = assets.filter { (asset) -> Bool in
-            return asset.symbol.uppercased() == symbol
+            return asset.symbol.uppercased() == symbol.uppercased()
         }
         for asset in filteredAssets {
             maxAmount = asset.balance

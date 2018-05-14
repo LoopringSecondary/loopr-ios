@@ -51,6 +51,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
 
         convertButton.title = NSLocalizedString("Yes, convert now!", comment: "")
         convertButton.setupRoundBlack()
+        convertButton.isEnabled = false
 
         // Setup UI
         let screensize: CGRect = UIScreen.main.bounds
@@ -129,10 +130,10 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // TODO: Update availableLabel
         if let asset = self.asset {
             let symbol = asset.symbol
-            availableLabel.text = "Available \(ConvertDataManager.shared.getMaxAmount(symbol: symbol.uppercased())) \(symbol)"
+            let available = ConvertDataManager.shared.getMaxAmount(symbol: symbol)
+            availableLabel.text = "Available \(available.format()) \(symbol)"
             tokenSView.update(symbol: symbol)
             tokenBView.update(symbol: getAnotherToken())
         }
@@ -161,17 +162,32 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         return ConvertDataManager.shared.getAsset(by: symbol)
     }
     
+    func updateButton(isValid: Bool) {
+        convertButton.isEnabled = isValid
+    }
+    
     func updateLabel() {
         tokenSLabel.text = asset!.symbol
         let symbol = asset!.symbol.uppercased()
         infoLabel.text = symbol == "ETH" ? "1 ETH = 1 WETH" : "1 WETH = 1 ETH"
         let maxAmount = ConvertDataManager.shared.getMaxAmount(symbol: symbol)
-        availableLabel.text = "Available \(maxAmount) \(symbol)"
+        availableLabel.text = "Available \(maxAmount.format()) \(symbol)"
         availableLabel.textColor = .black
         if let text = amountTextField.text, let inputAmount = Double(text) {
-            if inputAmount > maxAmount {
+            if inputAmount > 0 {
+                if inputAmount > maxAmount {
+                    updateButton(isValid: false)
+                    availableLabel.textColor = .red
+                } else {
+                    updateButton(isValid: true)
+                }
+            } else {
+                updateButton(isValid: false)
                 availableLabel.textColor = .red
+                availableLabel.text = "Amount must greater than 0"
             }
+        } else {
+            updateButton(isValid: false)
         }
     }
     
@@ -189,12 +205,12 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         print("pressedMaxButton")
         if let asset = self.asset {
             amountTextField.text = String(ConvertDataManager.shared.getMaxAmount(symbol: asset.symbol))
+            updateLabel()
         }
     }
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         amountTextField.becomeFirstResponder() //Optional
-
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

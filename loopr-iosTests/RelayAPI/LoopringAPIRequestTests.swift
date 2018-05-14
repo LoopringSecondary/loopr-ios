@@ -215,7 +215,7 @@ class LoopringAPIRequestTests: XCTestCase {
     func testGetTransactions() {
         let expectation = XCTestExpectation()
         
-        LoopringAPIRequest.getTransactions(owner: testAddress, symbol: "ETH", thxHash: nil, pageIndex: 1, pageSize: 20) { transactions, error in
+        LoopringAPIRequest.getTransactions(owner: testAddress, symbol: "WETH", thxHash: nil, pageIndex: 1, pageSize: 20) { transactions, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 XCTFail()
