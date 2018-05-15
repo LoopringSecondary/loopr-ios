@@ -54,10 +54,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         
         let originY: CGFloat = 60
         let padding: CGFloat = 15
-        let tokenButtonWidth: CGFloat = 55
-        
-        
-        
+        let tokenButtonWidth: CGFloat = 60
+
         // First row: TokenS
 
         tokenSButton.setTitleColor(UIColor.black, for: .normal)

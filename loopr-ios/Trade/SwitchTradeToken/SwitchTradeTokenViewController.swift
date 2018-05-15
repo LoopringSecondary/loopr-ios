@@ -13,10 +13,16 @@ enum SwitchTradeTokenType {
     case tokenB
 }
 
-class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     var type: SwitchTradeTokenType = .tokenS
     @IBOutlet weak var tableView: UITableView!
+
+    var searchText: String = ""
+    var isFiltering = false
+    var filteredTokens = [Token]()
+
+    let searchBar = UISearchBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +31,7 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         // self.navigationController?.isNavigationBarHidden = false
 
         setBackButton()
+        setupSearchBar()
 
         tableView.dataSource = self
         tableView.delegate = self
@@ -40,9 +47,24 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         super.viewWillAppear(animated)
         // self.navigationController?.isNavigationBarHidden = false
     }
+    
+    func setupSearchBar() {
+        searchBar.showsCancelButton = false
+        searchBar.placeholder = NSLocalizedString("Search", comment: "")
+        searchBar.delegate = self
+        searchBar.searchBarStyle = .minimal
+        
+        let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
+        searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
+        navigationItem.titleView = searchBarContainer
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TokenDataManager.shared.getTokens().count
+        if isFiltering {
+            return filteredTokens.count
+        } else {
+            return TokenDataManager.shared.getTokens().count
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -56,7 +78,12 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
             cell = nib![0] as? SwitchTradeTokenTableViewCell
         }
 
-        let token = TokenDataManager.shared.getTokens()[indexPath.row]
+        let token: Token
+        if isFiltering {
+            token = filteredTokens[indexPath.row]
+        } else {
+            token = TokenDataManager.shared.getTokens()[indexPath.row]
+        }
         cell?.token = token
         cell?.update()
 
@@ -71,8 +98,13 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let token = TokenDataManager.shared.getTokens()[indexPath.row]
-        
+        let token: Token
+        if isFiltering {
+            token = filteredTokens[indexPath.row]
+        } else {
+            token = TokenDataManager.shared.getTokens()[indexPath.row]
+        }
+
         switch type {
         case .tokenS:
             TradeDataManager.shared.changeTokenS(token)
@@ -82,4 +114,53 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
 
         self.navigationController?.popViewController(animated: true)
     }
+
+    // MARK: - SearchBar Delegate
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("searchBar textDidChange \(searchText)")
+        self.searchText = searchText.trim()
+        if self.searchText != "" {
+            isFiltering = true
+            filterContentForSearchText(self.searchText)
+        } else {
+            isFiltering = false
+            tableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("searchBarSearchButtonClicked")
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        print("searchBarTextDidBeginEditing")
+        isFiltering = true
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressSearchCancel))
+        searchBar.becomeFirstResponder()
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print("searchBarTextDidEndEditing")
+    }
+    
+    @objc func pressSearchCancel(_ button: UIBarButtonItem) {
+        print("pressSearchCancel")
+        self.navigationItem.rightBarButtonItem = nil
+        searchBar.resignFirstResponder()
+        searchBar.text = nil
+        isFiltering = false
+        tableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
+    }
+
+    func filterContentForSearchText(_ searchText: String) {
+        filteredTokens = TokenDataManager.shared.getTokens().filter({(token: Token) -> Bool in
+            if token.symbol.range(of: searchText, options: .caseInsensitive) != nil {
+                return true
+            } else {
+                return false
+            }
+        })
+        tableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
+    }
+
 }
