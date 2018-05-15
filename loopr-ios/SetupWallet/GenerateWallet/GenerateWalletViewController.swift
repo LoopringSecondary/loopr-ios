@@ -84,7 +84,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         walletNameInfoLabel.frame = CGRect(x: padding, y: walletNameUnderLine.frame.maxY + 9, width: screenWidth - padding * 2, height: 16)
         walletNameInfoLabel.text = "Please enter a wallet name."
         walletNameInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
-        walletNameInfoLabel.textColor = UIColor.init(rgba: "#F52929")
+        walletNameInfoLabel.textColor = UIStyleConfig.red
         walletNameInfoLabel.alpha = 0.0
         view.addSubview(walletNameInfoLabel)
         
@@ -106,7 +106,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         walletPasswordInfoLabel.frame = CGRect(x: padding, y: walletPasswordTextField.frame.maxY + 9, width: screenWidth - padding * 2, height: 16)
         walletPasswordInfoLabel.text = NSLocalizedString("Please set a password.", comment: "")
         walletPasswordInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
-        walletPasswordInfoLabel.textColor = UIColor.init(rgba: "#F52929")
+        walletPasswordInfoLabel.textColor = UIStyleConfig.red
         walletPasswordInfoLabel.alpha = 0.0
         view.addSubview(walletPasswordInfoLabel)
         

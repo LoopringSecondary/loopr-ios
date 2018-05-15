@@ -23,12 +23,11 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-
+        
+        tintColor = UIColor.black
         theme_backgroundColor = GlobalPicker.backgroundColor
         symbolLabel.theme_textColor = GlobalPicker.textColor
-
         symbolLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17)
-
         seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
     }
 

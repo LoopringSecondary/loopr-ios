@@ -70,7 +70,7 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
         walletPasswordInfoLabel.frame = CGRect(x: padding, y: walletPasswordTextField.frame.maxY + 9, width: screenWidth - padding * 2, height: 16)
         walletPasswordInfoLabel.text = NSLocalizedString("Please set a password.", comment: "")
         walletPasswordInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
-        walletPasswordInfoLabel.textColor = UIColor.init(rgba: "#F52929")
+        walletPasswordInfoLabel.textColor = UIStyleConfig.red
         walletPasswordInfoLabel.alpha = 0.0
         view.addSubview(walletPasswordInfoLabel)
         

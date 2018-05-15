@@ -56,6 +56,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         let padding: CGFloat = 15
         let tokenButtonWidth: CGFloat = 55
         
+        
+        
         // First row: TokenS
 
         tokenSButton.setTitleColor(UIColor.black, for: .normal)
@@ -117,7 +119,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         totalUnderLine.backgroundColor = UIColor.black
         scrollView.addSubview(totalUnderLine)
         
-        availableLabel.text = "Available 96.3236 ETH"
+        availableLabel.text = ""
         availableLabel.font = FontConfigManager.shared.getLabelFont()
         availableLabel.frame = CGRect(x: padding, y: totalUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
         // estimateValueInCurrency.backgroundColor = UIColor.green

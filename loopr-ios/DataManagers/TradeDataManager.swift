@@ -31,12 +31,12 @@ class TradeDataManager {
         if let symbol = defaults.string(forKey: UserDefaultsKeys.tradeTokenS.rawValue) {
             tokenS = Token(symbol: symbol)
         }
-        self.tokenS = tokenS ?? Token(symbol: "ETH")!
+        self.tokenS = tokenS ?? Token(symbol: "LRC")!
         var tokenB: Token? = nil
         if let symbol = defaults.string(forKey: UserDefaultsKeys.tradeTokenB.rawValue) {
             tokenB = Token(symbol: symbol)
         }
-        self.tokenB = tokenB ?? Token(symbol: "LRC")!
+        self.tokenB = tokenB ?? Token(symbol: "WETH")!
     }
 
     func clear() {

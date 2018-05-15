@@ -48,12 +48,12 @@ class OrderBookTableViewCell: UITableViewCell {
             priceLabel.text = orderBook.price.withCommas(minimumFractionDigits: 8)
             amountLabel.text = orderBook.amountSell.withCommas()
             totalLabel.text = orderBook.amountBuy.withCommas()
-            priceLabel.textColor = UIColor.init(rgba: "#F52929")
+            priceLabel.textColor = UIStyleConfig.red
         } else if orderBook.side.lowercased() == "buy" {
             priceLabel.text = orderBook.price.withCommas(minimumFractionDigits: 8)
             amountLabel.text = orderBook.amountBuy.withCommas()
             totalLabel.text = orderBook.amountSell.withCommas()
-            priceLabel.textColor = UIColor.init(rgba: "#24DF93")
+            priceLabel.textColor = UIStyleConfig.green
         }
     }
     
