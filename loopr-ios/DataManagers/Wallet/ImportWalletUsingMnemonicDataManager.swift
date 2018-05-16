@@ -32,19 +32,6 @@ class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
         return Mnemonic.isValid(mnemonic)
     }
 
-    /*
-    // TODO: Use error handling
-    func unlockWallet(mnemonic: String) {
-        let wallet = Wallet(mnemonic: mnemonic, password: "")
-        let address = wallet.getKey(at: 0).address
-        let newAppWallet = AppWallet(setupWalletMethod: .importUsingMnemonic, address: address.description, privateKey: "", password: password, mnemonics: mnemonic.components(separatedBy: " "), name: "Wallet mnemonic", active: true)
-
-        AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
-        CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
-        print("Finished unlocking a new wallet")
-    }
-    */
-
     func clearAddresses() {
         selectedKey = 0
         addresses = []

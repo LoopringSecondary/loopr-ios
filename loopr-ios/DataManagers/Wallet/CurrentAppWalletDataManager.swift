@@ -156,6 +156,7 @@ class CurrentAppWalletDataManager {
                     }
                 }
 
+                // Small assets
                 if asset.balance > 0.01 {
                     if let index = assetsInHideSmallMode.index(of: asset) {
                         assetsInHideSmallMode[index] = asset
@@ -165,8 +166,12 @@ class CurrentAppWalletDataManager {
                             currentAppWallet!.addAssetSequenceInHideSmallAssets(symbol: asset.symbol)
                         }
                     }
+                } else {
+                    // If it's a small asset and also in assetsInHideSmallMode, remove it from assetsInHideSmallMode
+                    if let index = assetsInHideSmallMode.index(of: asset) {
+                        assetsInHideSmallMode.remove(at: index)
+                    }
                 }
-
             }
         }
         
