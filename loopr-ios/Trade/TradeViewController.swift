@@ -8,15 +8,13 @@
 
 import UIKit
 
-class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, ContextMenuDelegate {
+class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var nextBackgroundView: UIView!
     @IBOutlet weak var nextButton: UIButton!
 
-    var contextMenuSourceView: UIView = UIView()
-    
     // TokenS
     var tokenSButton: UIButton = UIButton()
     var tokenSPriceTextField: UITextField = UITextField()
@@ -44,16 +42,25 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         // Do any additional setup after loading the view.
         scrollViewButtonLayoutConstraint.constant = 0
         self.navigationItem.title = NSLocalizedString("Trade", comment: "")
-        let qrCodebutton = UIButton(type: UIButtonType.custom)
+        
+        
+        let qrScanButton = UIButton(type: UIButtonType.custom)
         // TODO: smaller images.
-        qrCodebutton.theme_setImage(["QRCode-black", "QRCode-white"], forState: UIControlState.normal)
-        qrCodebutton.setImage(UIImage(named: "QRCode-black")?.alpha(0.3), for: .highlighted)
-        qrCodebutton.addTarget(self, action: #selector(self.pressQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
-        qrCodebutton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        let qrCodeBarButton = UIBarButtonItem(customView: qrCodebutton)
+        qrScanButton.theme_setImage(["Scan", "Scan-white"], forState: UIControlState.normal)
+        qrScanButton.setImage(UIImage(named: "Scan")?.alpha(0.3), for: .highlighted)
+        qrScanButton.addTarget(self, action: #selector(self.pressQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
+        qrScanButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let qrCodeBarButton = UIBarButtonItem(customView: qrScanButton)
         self.navigationItem.leftBarButtonItem = qrCodeBarButton
-        let addBarButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
-        self.navigationItem.rightBarButtonItem = addBarButton
+        
+        let historyButton = UIButton(type: UIButtonType.custom)
+        // TODO: smaller images.
+        historyButton.theme_setImage(["Order-history-black", "Order-history-white"], forState: UIControlState.normal)
+        historyButton.setImage(UIImage(named: "Order-history-black")?.alpha(0.3), for: .highlighted)
+        historyButton.addTarget(self, action: #selector(self.pressQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
+        historyButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let historyBarButton = UIBarButtonItem(customView: historyButton)
+        self.navigationItem.rightBarButtonItem = historyBarButton
         
         nextButton.title = NSLocalizedString("Next", comment: "")
         nextButton.backgroundColor = UIColor.black
@@ -162,42 +169,11 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         hideNumericKeyboard()
     }
     
-    @objc func pressAddButton(_ sender: Any) {
-        contextMenuSourceView.frame = CGRect(x: self.view.frame.width-10, y: -5, width: 1, height: 1)
-        view.addSubview(contextMenuSourceView)
-        
-        let icons = [UIImage(named: "Scan-white")!, UIImage(named: "Order-history-white")!]
-        let titles = [NSLocalizedString("Scan QR Code", comment: ""), NSLocalizedString("History Trades", comment: "")]
-        let menuViewController = AddMenuViewController(rows: 2, titles: titles, icons: icons)
-        menuViewController.didSelectRowClosure = { (index) -> Void in
-            if index == 0 {
-                print("Selected Scan QR code")
-                let viewController = ScanQRCodeViewController()
-                viewController.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(viewController, animated: true)
-            } else if index == 1 {
-                print("Selected Add Token")
-                let viewController = AddTokenViewController()
-                viewController.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(viewController, animated: true)
-            }
-        }
-        ContextMenu.shared.show(
-            sourceViewController: self,
-            viewController: menuViewController,
-            options: ContextMenu.Options(containerStyle: ContextMenu.ContainerStyle(backgroundColor: UIColor.black), menuStyle: .minimal),
-            sourceView: contextMenuSourceView,
-            delegate: self
-        )
-    }
-    
     @objc func pressQRCodeButton(_ sender: Any) {
-        // 这里改
-        if CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil {
-            let viewController = QRCodeViewController()
-            viewController.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(viewController, animated: true)
-        }
+        print("Selected Scan QR code")
+        let viewController = ScanQRCodeViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc func pressedSwitchTokenSButton(_ sender: Any) {
@@ -352,12 +328,5 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             }
             activeTextField!.text = currentText
         }
-    }
-    
-    func contextMenuWillDismiss(viewController: UIViewController, animated: Bool) {
-    }
-    
-    func contextMenuDidDismiss(viewController: UIViewController, animated: Bool) {
-        contextMenuSourceView.removeFromSuperview()
     }
 }
