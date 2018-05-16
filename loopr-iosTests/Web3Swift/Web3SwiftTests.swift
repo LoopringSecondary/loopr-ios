@@ -92,7 +92,7 @@ class Web3SwiftTests: XCTestCase {
         var addressError: NSError? = nil
         let amountToTransfer: Double = 1
         let gethToAccountAddress: GethAddress! = GethNewAddressFromHex("0x8311804426a24495bd4306daf5f595a443a52e32", &addressError)
-        guard let amount = GethBigInt.generateBigInt(amountToTransfer)  else {
+        guard let amount = GethBigInt.generate(amountToTransfer)  else {
             print("Invalid amount")
             return
         }

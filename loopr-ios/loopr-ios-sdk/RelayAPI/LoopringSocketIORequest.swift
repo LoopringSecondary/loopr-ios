@@ -22,6 +22,7 @@ public class LoopringSocketIORequest {
             handlers["marketcap_res"] = [PriceDataManager.shared.onPriceQuoteResponse]
             handlers["loopringTickers_res"] = [MarketDataManager.shared.onTickerResponse]
             handlers["trends_res"] = [MarketDataManager.shared.onTrendResponse]
+            handlers["p2pOrders_res"] = [TradeDataManager.shared.onOrderResponse]
             addHandlers(handlers)
         }
         connect()
@@ -146,6 +147,28 @@ public class LoopringSocketIORequest {
             }
         } else {
             self.socket.emit("trends_end")
+        }
+    }
+    
+    static func getOrderStatus(owner: String) {
+        var body: JSON = JSON()
+        body["owner"] = JSON(owner)
+        if socket.status != .connected {
+            socket.on(clientEvent: .connect) {_, _ in
+                self.socket.emit("p2pOrders_req", body.rawString()!)
+            }
+        } else {
+            self.socket.emit("p2pOrders_req", body.rawString()!)
+        }
+    }
+    
+    static func endOrderStatus() {
+        if socket.status != .connected {
+            socket.on(clientEvent: .connect) {_, _ in
+                self.socket.emit("p2pOrders_end")
+            }
+        } else {
+            self.socket.emit("p2pOrders_end")
         }
     }
 }

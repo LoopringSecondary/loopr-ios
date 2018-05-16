@@ -286,7 +286,7 @@ extension PlaceOrderConfirmationViewController {
     func approveOnce(token: String) {
         if let toAddress = TokenDataManager.shared.getAddress(by: token) {
             var error: NSError? = nil
-            let approve = GethBigInt.generateBigInt(valueInEther: Double(INT64_MAX), symbol: token)!
+            let approve = GethBigInt.generate(valueInEther: Double(INT64_MAX), symbol: token)!
             let delegateAddress = GethNewAddressFromHex(RelayAPIConfiguration.delegateAddress, &error)!
             let tokenAddress = GethNewAddressFromHex(toAddress, &error)!
             SendCurrentAppWalletDataManager.shared._approve(tokenAddress: tokenAddress, delegateAddress: delegateAddress, tokenAmount: approve, completion: complete)
@@ -296,7 +296,7 @@ extension PlaceOrderConfirmationViewController {
     func approveTwice(token: String) {
         if let toAddress = TokenDataManager.shared.getAddress(by: token) {
             var error: NSError? = nil
-            var approve = GethBigInt.generateBigInt(valueInEther: 0, symbol: token)!
+            var approve = GethBigInt.generate(valueInEther: 0, symbol: token)!
             let delegateAddress = GethNewAddressFromHex(RelayAPIConfiguration.delegateAddress, &error)!
             let tokenAddress = GethNewAddressFromHex(toAddress, &error)!
             SendCurrentAppWalletDataManager.shared._approve(tokenAddress: tokenAddress, delegateAddress: delegateAddress, tokenAmount: approve) { (txHash, error) in
@@ -304,7 +304,7 @@ extension PlaceOrderConfirmationViewController {
                     self.complete(nil, error!)
                     return
                 }
-                approve = GethBigInt.generateBigInt(valueInEther: Double(INT64_MAX), symbol: token)!
+                approve = GethBigInt.generate(valueInEther: Double(INT64_MAX), symbol: token)!
                 SendCurrentAppWalletDataManager.shared._approve(tokenAddress: tokenAddress, delegateAddress: delegateAddress, tokenAmount: approve, completion: self.complete)
             }
         }

@@ -150,8 +150,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @objc func pressAddButton(_ button: UIBarButtonItem) {
         contextMenuSourceView.frame = CGRect(x: self.view.frame.width-10, y: -5, width: 1, height: 1)
         view.addSubview(contextMenuSourceView)
-
-        let menuViewController = AddMenuViewController()
+        
+        let icons = [UIImage(named: "Scan-white")!, UIImage(named: "Add-token")!]
+        let titles = [NSLocalizedString("Scan QR Code", comment: ""), NSLocalizedString("Add Token", comment: "")]
+        let menuViewController = AddMenuViewController(rows: 2, titles: titles, icons: icons)
         menuViewController.didSelectRowClosure = { (index) -> Void in
             if index == 0 {
                 print("Selected Scan QR code")
@@ -165,7 +167,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
         }
-
         ContextMenu.shared.show(
             sourceViewController: self,
             viewController: menuViewController,

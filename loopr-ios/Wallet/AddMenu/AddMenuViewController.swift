@@ -10,10 +10,30 @@ import UIKit
 
 class AddMenuViewController: UITableViewController {
     
-    let rows = 2
+    var rows: UInt8
+    var titles: [String]
+    var icons: [UIImage]
     
     var didSelectRowClosure: ((_ index: Int) -> Void)?
 
+    convenience init(rows: UInt8, titles: [String], icons: [UIImage]) {
+        self.init(nibName: nil, bundle: nil)
+        self.rows = rows
+        self.titles = titles
+        self.icons = icons
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        self.rows = 2
+        self.titles = []
+        self.icons = []
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,16 +67,11 @@ class AddMenuViewController: UITableViewController {
             let nib = Bundle.main.loadNibNamed("AddMenuTableViewCell", owner: self, options: nil)
             cell = nib![0] as? AddMenuTableViewCell
         }
-        
-        if indexPath.row == 0 {
-            cell?.iconImageView.image = UIImage(named: "Scan-white")
-            cell?.titleLabel.text = NSLocalizedString("Scan QR Code", comment: "")
-        } else {
-            cell?.iconImageView.image = UIImage(named: "Add-token")
-            cell?.titleLabel.text = NSLocalizedString("Add Token", comment: "")
+        cell?.iconImageView.image = icons[indexPath.row]
+        cell?.titleLabel.text = titles[indexPath.row]
+        if indexPath.row == rows - 1 {
             cell?.seperateLabel.isHidden = true
         }
-
         return cell!
     }
 

@@ -440,7 +440,7 @@ class LoopringAPIRequest {
         let protocolValue = RelayAPIConfiguration.protocolAddress
         let delegateAddress = RelayAPIConfiguration.delegateAddress
         body["method"] = "loopring_submitRingForP2P"
-        body["params"] = [["taker": ["protocol": protocolValue, "delegateAddress": delegateAddress, "owner": owner, "walletAddress": walletAddress, "tokenS": tokenS, "tokenB": tokenB, "amountS": amountS, "amountB": amountB, "authAddr": authAddr, "validSince": validSince, "validUntil": validUntil, "lrcFee": lrcFee, "buyNoMoreThanAmountB": buyNoMoreThanAmountB, "marginSplitPercentage": marginSplitPercentage, "powNonce": 1, "orderType" : "p2p_order", "v": v, "r": r, "s": s], "makerOrderHash": makerOrderHash, "rawTx": rawTx]]
+        body["params"] = [["taker": ["protocol": protocolValue, "delegateAddress": delegateAddress, "owner": owner, "walletAddress": walletAddress, "tokenS": tokenS, "tokenB": tokenB, "amountS": amountS, "amountB": amountB, "authAddr": authAddr, "validSince": validSince, "validUntil": validUntil, "lrcFee": lrcFee, "buyNoMoreThanAmountB": buyNoMoreThanAmountB, "marginSplitPercentage": marginSplitPercentage, "powNonce": 1, "orderType": "p2p_order", "v": v, "r": r, "s": s], "makerOrderHash": makerOrderHash, "rawTx": rawTx]]
         body["id"] = JSON(UUID().uuidString)
         
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in

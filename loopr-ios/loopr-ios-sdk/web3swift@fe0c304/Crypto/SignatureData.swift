@@ -29,8 +29,4 @@ open class SignatureData {
         _r = r
         _s = s
     }
-    
-    
-    
-    
 }

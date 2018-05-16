@@ -15,15 +15,15 @@ public extension GethBigInt {
     // whereas the precision of Float can be as little as 6 decimal digits.
     // For Double type, 1.123456789123456789 will be 1.1234567891234568
     // It's not correct to assume that valueInEther as a Double type won't be overflow.
-    public static func generateBigInt(valueInEther: Double, symbol: String) -> GethBigInt? {
+    public static func generate(valueInEther: Double, symbol: String) -> GethBigInt? {
         let token = TokenDataManager.shared.getTokenBySymbol(symbol)
         guard token != nil else {
             return nil
         }
-        return generateBigInt(valueInEther, token!.decimals)
+        return generate(valueInEther, token!.decimals)
     }
 
-    public static func generateBigInt(_ valueInEther: Double, _ decimals: Int = 18) -> GethBigInt? {
+    public static func generate(_ valueInEther: Double, _ decimals: Int = 18) -> GethBigInt? {
         let valueInWei = valueInEther * Double.init(truncating: (pow(10, decimals) as NSNumber))
         let str = String(format: "%.0f", valueInWei)
         let gethAmount = GethBigInt.init(0)!

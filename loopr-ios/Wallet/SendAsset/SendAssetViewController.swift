@@ -318,7 +318,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             if !amountString.isEmpty, let amount = Double(amountString) {
                 if asset.balance >= amount {
                     if let token = TokenDataManager.shared.getTokenBySymbol(asset!.symbol) {
-                        if GethBigInt.generateBigInt(valueInEther: amount, symbol: token.symbol) != nil {
+                        if GethBigInt.generate(valueInEther: amount, symbol: token.symbol) != nil {
                             if let price = PriceDataManager.shared.getPriceBySymbol(of: asset.symbol) {
                                 let display = (amount * price).currency
                                 updateLabel(label: amountInfoLabel, text: display, textColor: .black)
@@ -384,7 +384,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         let toAddress = addressTextField.text!
         // let gethAmount = GethBigInt.bigInt(amountTextField.text!)!
         if let token = TokenDataManager.shared.getTokenBySymbol(asset!.symbol) {
-            let gethAmount = GethBigInt.generateBigInt(valueInEther: Double(amountTextField.text!)!, symbol: token.symbol)!
+            let gethAmount = GethBigInt.generate(valueInEther: Double(amountTextField.text!)!, symbol: token.symbol)!
             var error: NSError? = nil
             let toAddress = GethNewAddressFromHex(toAddress, &error)!
             if token.symbol.uppercased() == "ETH" {

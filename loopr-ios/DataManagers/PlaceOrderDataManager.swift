@@ -210,7 +210,7 @@ class PlaceOrderDataManager {
     }
     
     func _encode(_ amount: Double, _ token: String) -> [UInt8] {
-        let bigInt = GethBigInt.generateBigInt(valueInEther: amount, symbol: token)!
+        let bigInt = GethBigInt.generate(valueInEther: amount, symbol: token)!
         return try! EthTypeEncoder.default.encode(bigInt).bytes
     }
     
@@ -220,7 +220,7 @@ class PlaceOrderDataManager {
     }
     
     func _encodeString(_ amount: Double, _ token: String) -> String {
-        let bigInt = GethBigInt.generateBigInt(valueInEther: amount, symbol: token)!
+        let bigInt = GethBigInt.generate(valueInEther: amount, symbol: token)!
         return bigInt.hexString
     }
     

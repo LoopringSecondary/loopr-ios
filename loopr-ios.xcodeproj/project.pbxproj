@@ -34,6 +34,7 @@
 		945800212058FEB500E08DEF /* tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = 945800202058FEB500E08DEF /* tokens.json */; };
 		945800232059006200E08DEF /* AssetDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945800222059006200E08DEF /* AssetDataManagerTests.swift */; };
 		94580025205921D600E08DEF /* PriceQuoteDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94580024205921D600E08DEF /* PriceQuoteDataManagerTests.swift */; };
+		9464595E20AA9A4C00574485 /* TradeDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464595D20AA9A4C00574485 /* TradeDataManagerTests.swift */; };
 		9475A2EE207EF81300200155 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475A2EC207EF81300200155 /* OrderDetailViewController.swift */; };
 		9475A2EF207EF81300200155 /* OrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9475A2ED207EF81300200155 /* OrderDetailViewController.xib */; };
 		948952D3205A74BE009B03FE /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948952D2205A74BE009B03FE /* Transaction.swift */; };
@@ -550,6 +551,7 @@
 		945800202058FEB500E08DEF /* tokens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tokens.json; sourceTree = "<group>"; };
 		945800222059006200E08DEF /* AssetDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDataManagerTests.swift; sourceTree = "<group>"; };
 		94580024205921D600E08DEF /* PriceQuoteDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceQuoteDataManagerTests.swift; sourceTree = "<group>"; };
+		9464595D20AA9A4C00574485 /* TradeDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeDataManagerTests.swift; sourceTree = "<group>"; };
 		9475A2EC207EF81300200155 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
 		9475A2ED207EF81300200155 /* OrderDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailViewController.xib; sourceTree = "<group>"; };
 		948952D2205A74BE009B03FE /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
@@ -1487,6 +1489,7 @@
 				940B44D42060F45B00ADE2B9 /* SendAssetDataManagerTests.swift */,
 				94E1976D2099A68200E70E42 /* OrderDataManagerTests.swift */,
 				943C6579209EEAB6005D6948 /* PlaceOrderDataManagerTests.swift */,
+				9464595D20AA9A4C00574485 /* TradeDataManagerTests.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -2824,6 +2827,7 @@
 				AC72AEE2204D084500E9D3B0 /* AppWalletDataManagerTests.swift in Sources */,
 				ACF06A06204C736A00C3FF86 /* CreateMnemonicTests.swift in Sources */,
 				945800232059006200E08DEF /* AssetDataManagerTests.swift in Sources */,
+				9464595E20AA9A4C00574485 /* TradeDataManagerTests.swift in Sources */,
 				AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */,
 				94580025205921D600E08DEF /* PriceQuoteDataManagerTests.swift in Sources */,
 				AC0CE96D209E4BB60072A6EC /* GethBigIntTests.swift in Sources */,

@@ -160,21 +160,21 @@ class SendCurrentAppWalletDataManager {
         address = GethNewAddressFromHex(order.authAddr, &error)!
         data.append(contentsOf: try! EthTypeEncoder.default.encode(address).bytes)
         
-        var value = GethBigInt.generateBigInt(valueInEther: order.amountSell, symbol: order.tokenSell)!
+        var value = GethBigInt.generate(valueInEther: order.amountSell, symbol: order.tokenSell)!
         data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
-        value = GethBigInt.generateBigInt(valueInEther: order.amountBuy, symbol: order.tokenBuy)!
+        value = GethBigInt.generate(valueInEther: order.amountBuy, symbol: order.tokenBuy)!
         data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
         value = GethBigInt.init(order.validSince)
         data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
         value = GethBigInt.init(order.validUntil)
         data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
-        value = GethBigInt.generateBigInt(valueInEther: order.lrcFee, symbol: "LRC")!
+        value = GethBigInt.generate(valueInEther: order.lrcFee, symbol: "LRC")!
         data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
         
         if order.buyNoMoreThanAmountB {
-            value = GethBigInt.generateBigInt(valueInEther: order.amountBuy, symbol: order.tokenBuy)!
+            value = GethBigInt.generate(valueInEther: order.amountBuy, symbol: order.tokenBuy)!
         } else {
-            value = GethBigInt.generateBigInt(valueInEther: order.amountSell, symbol: order.tokenSell)!
+            value = GethBigInt.generate(valueInEther: order.amountSell, symbol: order.tokenSell)!
         }
         data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
         value = GethBigInt.init(order.buyNoMoreThanAmountB ? 1 : 0)

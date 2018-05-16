@@ -13,15 +13,19 @@ class TradeDataManager {
     
     static let shared = TradeDataManager()
     
-    var state: OrderTradeState
-    
-    var type: TradeType = .buy
-
     var tokenS: Token
     var tokenB: Token
+    var state: OrderTradeState
+    var orders: [OriginalOrder] = []
+    var makerSignature: SignatureData?
+    var takerSignature: SignatureData?
     
+    var type: TradeType = .buy
     var amountTokenS: Double = 0.0
     var amountTokenB: Double = 0.0
+    
+    let orderCount: Int = 2
+    let byteLength: Int = EthType.MAX_BYTE_LENGTH
 
     private init() {
         state = .empty
@@ -55,7 +59,7 @@ class TradeDataManager {
         defaults.set(token.symbol, forKey: UserDefaultsKeys.tradeTokenB.rawValue)
     }
 
-    func constructTaker(from maker: OriginalOrder) -> OriginalOrder? {
+    func constructTaker(from maker: OriginalOrder) -> OriginalOrder {
         var buyNoMoreThanAmountB: Bool
         var side, tokenSell, tokenBuy: String
         var amountBuy, amountSell, lrcFee: Double
@@ -82,18 +86,178 @@ class TradeDataManager {
     }
     
     func _submitRing(order: OriginalOrder, makerOrderHash: String, rawTx: String, completion: @escaping (String?, Error?) -> Void) {
-        if let order = constructTaker(from: order) {
-            SendCurrentAppWalletDataManager.shared._keystore()
-            let signature = web3swift.sign(message: Data())! // TODO: get from go framework
+        
+        let data = _generate(from: order)
+        let taker = self.orders[1]
+        SendCurrentAppWalletDataManager.shared._keystore()
+        let signature = web3swift.sign(message: data)!
+        let tokenS = TokenDataManager.shared.getAddress(by: taker.tokenSell)!
+        let tokenB = TokenDataManager.shared.getAddress(by: taker.tokenBuy)!
+        let amountS = GethBigInt.generate(valueInEther: taker.amountSell, symbol: taker.tokenSell)!.hexString
+        let amountB = GethBigInt.generate(valueInEther: taker.amountBuy, symbol: taker.tokenBuy)!.hexString
+        let lrcFee = GethBigInt.generate(valueInEther: taker.lrcFee, symbol: "LRC")!.hexString
+        let validSince = "0x" + String(format: "%2x", taker.validSince)
+        let validUntil = "0x" + String(format: "%2x", taker.validUntil)
+        LoopringAPIRequest.submitRing(owner: taker.address, walletAddress: taker.walletAddress, tokenS: tokenS, tokenB: tokenB, amountS: amountS, amountB: amountB, lrcFee: lrcFee, validSince: validSince, validUntil: validUntil, marginSplitPercentage: taker.marginSplitPercentage, buyNoMoreThanAmountB: taker.buyNoMoreThanAmountB, authAddr: taker.authAddr, v: UInt(signature.v)!, r: signature.r, s: signature.s, makerOrderHash: makerOrderHash, rawTx: rawTx, completionHandler: completion)
+    }
+    
+    func generateOffset() -> [Any] {
+        var result: [Any] = []
+        result.append(GethBigInt.init(Int64(byteLength * 9)))
+        result.append(GethBigInt.init(Int64(byteLength * 18)))
+        result.append(GethBigInt.init(Int64(byteLength * 31)))
+        result.append(GethBigInt.init(Int64(byteLength * 34)))
+        result.append(GethBigInt.init(Int64(byteLength * 37)))
+        result.append(GethBigInt.init(Int64(byteLength * 42)))
+        result.append(GethBigInt.init(Int64(byteLength * 45)))
+        return result
+    }
+    
+    func generateFee() -> [Any] {
+        var result: [Any] = []
+        result.append(GethAddress.init(fromHex: orders[0].walletAddress)) // feeReceipt
+        result.append(GethBigInt.init(0)) // feeSelection
+        return result
+    }
+    
+    func insertOrderCounts() -> [Any] {
+        var result: [Any] = []
+        result.append(GethBigInt.init(Int64(orderCount)))
+        return result
+    }
+    
+    func insertListCounts() -> [Any] {
+        var result: [Any] = []
+        result.append(GethBigInt.init(Int64(orderCount * 2)))
+        return result
+    }
+    
+    func generateAddresses() -> [Any] {
+        var result: [Any] = []
+        for order in orders {
             let tokenS = TokenDataManager.shared.getAddress(by: order.tokenSell)!
-            let tokenB = TokenDataManager.shared.getAddress(by: order.tokenBuy)!
-            let amountS = GethBigInt.generateBigInt(valueInEther: order.amountSell, symbol: order.tokenSell)!.hexString
-            let amountB = GethBigInt.generateBigInt(valueInEther: order.amountBuy, symbol: order.tokenBuy)!.hexString
-            let lrcFee = GethBigInt.generateBigInt(valueInEther: order.lrcFee, symbol: "LRC")!.hexString
-            let validSince = "0x" + String(format: "%2x", order.validSince)
-            let validUntil = "0x" + String(format: "%2x", order.validUntil)
-            LoopringAPIRequest.submitRing(owner: order.address, walletAddress: order.walletAddress, tokenS: tokenS, tokenB: tokenB, amountS: amountS, amountB: amountB, lrcFee: lrcFee, validSince: validSince, validUntil: validUntil, marginSplitPercentage: order.marginSplitPercentage, buyNoMoreThanAmountB: order.buyNoMoreThanAmountB, authAddr: order.authAddr, v: UInt(signature.v)!, r: signature.r, s: signature.s, makerOrderHash: makerOrderHash, rawTx: rawTx, completionHandler: completion)
+            result.append(GethAddress.init(fromHex: order.address))
+            result.append(GethAddress.init(fromHex: tokenS))
+            result.append(GethAddress.init(fromHex: order.walletAddress))
+            result.append(GethAddress.init(fromHex: order.authAddr))
         }
+        return result
+    }
+    
+    func generateValues() -> [Any] {
+        var result: [Any] = []
+        for order in orders {
+            let amountSell = GethBigInt.generate(valueInEther: order.amountSell, symbol: order.tokenSell)!
+            result.append(amountSell)
+            result.append(GethBigInt.generate(valueInEther: order.amountBuy, symbol: order.tokenBuy)!)
+            result.append(GethBigInt.init(order.validSince))
+            result.append(GethBigInt.init(order.validUntil))
+            result.append(GethBigInt.init(0)) // 对手单, 不需要lrcfee
+            result.append(amountSell)
+        }
+        return result
+    }
+    
+    func generateMargin() -> [Any] {
+        var result: [Any] = []
+        for _ in orders {
+            result.append(GethBigInt.init(0)) // 对手单, 不需要margin split
+        }
+        return result
+    }
+    
+    func generateFlag() -> [Any] {
+        var result: [Any] = []
+        for order in orders {
+            let flag = order.buyNoMoreThanAmountB ? 1 : 0
+            result.append(GethBigInt.init(Int64(flag)))
+        }
+        return result
+    }
+    
+    func generateVList() -> [Any] {
+        var result: [Any] = []
+        for order in orders {
+            result.append(GethBigInt.init(Int64(order.v)))
+        }
+        if let maker = makerSignature, let taker = takerSignature {
+            result.append(GethBigInt.init(Int64(maker.v)!))
+            result.append(GethBigInt.init(Int64(taker.v)!))
+        }
+        return result
+    }
+    
+    func generateRList() -> [Any] {
+        var result: [Any] = []
+        for order in orders {
+            result.append(order.r.hexBytes)
+        }
+        if let maker = makerSignature, let taker = takerSignature {
+            result.append(maker.r.hexBytes) // TODO: check here
+            result.append(taker.r.hexBytes)
+        }
+        return result
+    }
+    
+    func generateSList() -> [Any] {
+        var result: [Any] = []
+        for order in orders {
+            result.append(order.r.hexBytes)
+        }
+        if let maker = makerSignature, let taker = takerSignature {
+            result.append(maker.s.hexBytes) // TODO: check here
+            result.append(taker.s.hexBytes)
+        }
+        return result
+    }
+    
+    func encode() -> Data {
+        var array: [Any] = generateOffset()
+        array += generateFee()
+        array += insertOrderCounts()
+        array += generateAddresses()
+        array += insertOrderCounts()
+        array += generateValues()
+        array += insertOrderCounts()
+        array += generateMargin()
+        array += insertOrderCounts()
+        array += generateFlag()
+        array += insertListCounts()
+        array += generateVList()
+        array += insertListCounts()
+        array += generateRList()
+        array += insertListCounts()
+        array += generateSList()
+        return EthFunctionEncoder.default.encodeParameters(array, methodData: Data())
+    }
+    
+    func generateHash() -> Data {
+        var result: Data = Data()
+        let orderAHash = orders[0].hash.hexBytes
+        let orderBHash = orders[1].hash.hexBytes
+        for t in orderAHash.enumerated() {
+            result.append(t.element ^ orderBHash[t.offset])
+        }
+        result.append(contentsOf: orders[0].walletAddress.hexBytes)
+        result.append(contentsOf: [0, 0]) // feeSelection = 0 UInt16
+        return result
+    }
+    
+    func _generate(from maker: OriginalOrder) -> Data {
+        let taker = constructTaker(from: maker)
+        self.orders = [maker, taker]
+        self.signRinghash()
+        return encode()
+    }
+    
+    func signHash(authPrivateKey: String, hash: Data) -> SignatureData? {
+        return nil
+    }
+    
+    func signRinghash() {
+        let hash = generateHash()
+        makerSignature = signHash(authPrivateKey: orders[0].authPrivateKey, hash: hash)
+        takerSignature = signHash(authPrivateKey: orders[1].authPrivateKey, hash: hash)
     }
     
     func getLrcFee(_ amountS: Double, _ tokenS: String) -> Double? {
@@ -106,5 +270,28 @@ class TradeDataManager {
             return price * amountS * ratio / lrcPrice
         }
         return nil
+    }
+    
+    func startGetOrderStatus() {
+        guard let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet() else {
+            return
+        }
+        LoopringSocketIORequest.getOrderStatus(owner: wallet.address)
+    }
+    
+    func stopGetOrderStatus() {
+        LoopringSocketIORequest.endOrderStatus()
+    }
+    
+    /*
+     1. 需要备份maker订单，response中加以判断
+     2. 若json中含有maker，需要在接收orderResponseReceived地方判断
+     3. 若还在展示二维码，跳转至订单详情；若已经离开，显示banner
+     4. 停止接收sockeio的推送
+     */
+    
+    func onOrderResponse(json: JSON) {
+        let orders = json["orders"].arrayValue
+        NotificationCenter.default.post(name: .orderResponseReceived, object: nil)
     }
 }
