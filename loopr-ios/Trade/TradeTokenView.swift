@@ -74,7 +74,7 @@ class TradeTokenView: UIView {
         amountLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 17*UIStyleConfig.scale)
         
         totalPriceInFiatCurrency.isHidden = false
-        if let price = PriceDataManager.shared.getPriceBySymbol(of: symbol) {
+        if let price = PriceDataManager.shared.getPrice(of: symbol) {
             let value: Double = price * amount
             totalPriceInFiatCurrency.text = value.currency
         } else {
