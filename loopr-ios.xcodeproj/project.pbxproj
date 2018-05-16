@@ -83,8 +83,6 @@
 		AC13B30B2054A766008A72C0 /* BuyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC13B3092054A766008A72C0 /* BuyViewController.xib */; };
 		AC13B30E2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13B30C2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift */; };
 		AC13B30F2055A646008A72C0 /* PlaceOrderConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC13B30D2055A646008A72C0 /* PlaceOrderConfirmationViewController.xib */; };
-		AC13B31220563889008A72C0 /* TradeSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13B31020563889008A72C0 /* TradeSwipeViewController.swift */; };
-		AC13B31320563889008A72C0 /* TradeSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC13B31120563889008A72C0 /* TradeSwipeViewController.xib */; };
 		AC147BEA208D0613008D5104 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC147BE9208D0613008D5104 /* UIDeviceExtension.swift */; };
 		AC147BEC208D2E54008D5104 /* ImportWalletError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC147BEB208D2E54008D5104 /* ImportWalletError.swift */; };
 		AC147BEE208D2FD2008D5104 /* ImportWalletProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC147BED208D2FD2008D5104 /* ImportWalletProtocol.swift */; };
@@ -600,8 +598,6 @@
 		AC13B3092054A766008A72C0 /* BuyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyViewController.xib; sourceTree = "<group>"; };
 		AC13B30C2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrderConfirmationViewController.swift; sourceTree = "<group>"; };
 		AC13B30D2055A646008A72C0 /* PlaceOrderConfirmationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceOrderConfirmationViewController.xib; sourceTree = "<group>"; };
-		AC13B31020563889008A72C0 /* TradeSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSwipeViewController.swift; sourceTree = "<group>"; };
-		AC13B31120563889008A72C0 /* TradeSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeSwipeViewController.xib; sourceTree = "<group>"; };
 		AC147BE9208D0613008D5104 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		AC147BEB208D2E54008D5104 /* ImportWalletError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletError.swift; sourceTree = "<group>"; };
 		AC147BED208D2FD2008D5104 /* ImportWalletProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletProtocol.swift; sourceTree = "<group>"; };
@@ -1613,8 +1609,6 @@
 			isa = PBXGroup;
 			children = (
 				AC9280E0202EC53D0009B574 /* TradeNavigationViewController.swift */,
-				AC13B31020563889008A72C0 /* TradeSwipeViewController.swift */,
-				AC13B31120563889008A72C0 /* TradeSwipeViewController.xib */,
 				AC56625920563C05003C925C /* TradeViewController.swift */,
 				AC56625A20563C05003C925C /* TradeViewController.xib */,
 				AC69913920AA6000003593AE /* SwitchTradeToken */,
@@ -2309,7 +2303,6 @@
 				AC13B30420548767008A72C0 /* BuyAndSellSwipeViewController.xib in Resources */,
 				AC31CE152057B5A400A30335 /* TradeReviewViewController.xib in Resources */,
 				AC3756792038D7E200AADC60 /* UnlockKeystoreViewController.xib in Resources */,
-				AC13B31320563889008A72C0 /* TradeSwipeViewController.xib in Resources */,
 				AC5E0DD7203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib in Resources */,
 				AC54FD67204FC6D1007E1DEB /* Lato-Italic.ttf in Resources */,
 				ACB91172202557B100F14644 /* MarketViewController.xib in Resources */,
@@ -2748,7 +2741,6 @@
 				94C5E79420738ADE0074B939 /* OrderSearchViewController.swift in Sources */,
 				94C11FD6208C2DC60050E180 /* SettingCurrencyViewController.swift in Sources */,
 				ACB8AD87207EE40300B478D6 /* TokenDataManager.swift in Sources */,
-				AC13B31220563889008A72C0 /* TradeSwipeViewController.swift in Sources */,
 				940B451F2060F67E00ADE2B9 /* AppWalletDataManager.swift in Sources */,
 				AC31B95C204A8E4F00B16155 /* HDKey.swift in Sources */,
 				AC061940208469970060F416 /* NotificationBannerStyle.swift in Sources */,
