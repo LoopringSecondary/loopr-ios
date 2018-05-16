@@ -1467,6 +1467,17 @@
 			path = SettingWalletDetail;
 			sourceTree = "<group>";
 		};
+		AC69914520AC0F95003593AE /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				ACB729D2205DE21B00DD4DF3 /* TradeConfirmationViewController.swift */,
+				ACB729D3205DE21B00DD4DF3 /* TradeConfirmationViewController.xib */,
+				AC5E3E69205DEAC00051ACFC /* TradeCompleteViewController.swift */,
+				AC5E3E6A205DEAC00051ACFC /* TradeCompleteViewController.xib */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
 		AC70E848206604F000451047 /* Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1615,10 +1626,7 @@
 				AC31CE4A205B83B600A30335 /* TradeTokenView.swift */,
 				AC31CE122057B5A400A30335 /* TradeReviewViewController.swift */,
 				AC31CE132057B5A400A30335 /* TradeReviewViewController.xib */,
-				ACB729D2205DE21B00DD4DF3 /* TradeConfirmationViewController.swift */,
-				ACB729D3205DE21B00DD4DF3 /* TradeConfirmationViewController.xib */,
-				AC5E3E69205DEAC00051ACFC /* TradeCompleteViewController.swift */,
-				AC5E3E6A205DEAC00051ACFC /* TradeCompleteViewController.xib */,
+				AC69914520AC0F95003593AE /* Archive */,
 			);
 			path = Trade;
 			sourceTree = "<group>";

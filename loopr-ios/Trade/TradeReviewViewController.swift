@@ -10,11 +10,15 @@ import UIKit
 
 class TradeReviewViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var placeOrderButton: UIButton!
     
     var tokenSView: TradeTokenView!
     var tokenBView: TradeTokenView!
     var arrowRightImageView: UIImageView = UIImageView()
+
+    var qrcodeImageView: UIImageView!
+    var qrcodeImage: CIImage!
 
     // TODO: put the following UILabel and UIView to a UIView?
     var marginSplitLabel: UILabel = UILabel()
@@ -32,87 +36,100 @@ class TradeReviewViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        // self.navigationController?.isNavigationBarHidden = false
-        
         setBackButton()
         
         // TODO: Review or Confirmation?
-        self.navigationItem.title = NSLocalizedString("Review", comment: "")
+        self.navigationItem.title = NSLocalizedString("Order Details", comment: "")
         
-        placeOrderButton.title = NSLocalizedString("Place Order", comment: "")
-        placeOrderButton.backgroundColor = UIColor.black
-        placeOrderButton.layer.cornerRadius = 23
-        placeOrderButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
-        
+        placeOrderButton.title = NSLocalizedString("Share Order", comment: "")
+        placeOrderButton.setupRoundBlack()
+
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
-        let screenHeight = screensize.height
+        // let screenHeight = screensize.height
         
-        let originY: CGFloat = 60
+        let paddingY: CGFloat = 20
         let paddingLeft: CGFloat = 15
-        let paddingTop: CGFloat = 50
+        let paddingTop: CGFloat = 30
+        let padding: CGFloat = 15
+        let rowHeight: CGFloat = 40
+        let rowPadding: CGFloat = 10
 
-        marginSplitLabel.text = "Margin Split"
-        marginSplitLabel.textColor = UIColor.black
-        marginSplitLabel.font = FontConfigManager.shared.getLabelFont()
-        marginSplitLabel.frame = CGRect(x: paddingLeft, y: placeOrderButton.frame.minY - paddingTop - originY - 10, width: 160, height: 40)
-        view.addSubview(marginSplitLabel)
+        // QR code
+        let qrCodeWidth: CGFloat = screenWidth*0.53*UIStyleConfig.scale
+        qrcodeImageView = UIImageView(frame: CGRect(center: CGPoint(x: screenWidth/2, y: paddingTop + qrCodeWidth*0.5), size: CGSize(width: qrCodeWidth, height: qrCodeWidth)))
+        scrollView.addSubview(qrcodeImageView)
+        
+        let data = "hello world".data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
+        let filter = CIFilter(name: "CIQRCodeGenerator")
+        filter?.setValue(data, forKey: "inputMessage")
+        filter?.setValue("Q", forKey: "inputCorrectionLevel")
+        qrcodeImage = filter!.outputImage
 
-        marginSplitValueLabel.textColor = UIColor.black
-        marginSplitValueLabel.textAlignment = .right
-        marginSplitValueLabel.font = FontConfigManager.shared.getLabelFont()
-        marginSplitValueLabel.frame = CGRect(x: screenWidth - paddingLeft - 160, y: placeOrderButton.frame.minY - paddingTop - originY - 10, width: 160, height: 40)
-        view.addSubview(marginSplitValueLabel)
+        let tokenViewMinY: CGFloat = qrcodeImageView.frame.maxY + paddingY
+        tokenSView = TradeTokenView(frame: CGRect(x: 10, y: tokenViewMinY, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
+        scrollView.addSubview(tokenSView)
         
-        LRCFeeLabel.text = "LRC Fee"
-        LRCFeeLabel.textColor = UIColor.black
-        LRCFeeLabel.font = FontConfigManager.shared.getLabelFont()
-        LRCFeeLabel.frame = CGRect(x: paddingLeft, y: marginSplitLabel.frame.minY - paddingTop, width: 160, height: 40)
-        view.addSubview(LRCFeeLabel)
-
-        LRCFeeValueLabel.textColor = UIColor.black
-        LRCFeeValueLabel.textAlignment = .right
-        LRCFeeValueLabel.font = FontConfigManager.shared.getLabelFont()
-        LRCFeeValueLabel.frame = CGRect(x: screenWidth - paddingLeft - 160, y: marginSplitLabel.frame.minY - paddingTop, width: 160, height: 40)
-        view.addSubview(LRCFeeValueLabel)
+        tokenBView = TradeTokenView(frame: CGRect(x: (screenWidth+10)/2, y: tokenViewMinY, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
+        scrollView.addSubview(tokenBView)
         
-        LRCFeeUnderLine.frame = CGRect(x: paddingLeft, y: LRCFeeLabel.frame.maxY - 5, width: screenWidth - paddingLeft * 2, height: 1)
-        LRCFeeUnderLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
-        view.addSubview(LRCFeeUnderLine)
+        arrowRightImageView = UIImageView(frame: CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY), size: CGSize(width: 32*UIStyleConfig.scale, height: 32*UIStyleConfig.scale)))
+        arrowRightImageView.image = UIImage.init(named: "Arrow-right-black")
+        scrollView.addSubview(arrowRightImageView)
         
-        priceLabel.text = "Price"
+        // Price label
+        priceLabel.text = NSLocalizedString("Price", comment: "")
         priceLabel.textColor = UIColor.black
         priceLabel.font = FontConfigManager.shared.getLabelFont()
-        priceLabel.frame = CGRect(x: paddingLeft, y: LRCFeeLabel.frame.minY - paddingTop, width: 160, height: 40)
-        view.addSubview(priceLabel)
-
+        priceLabel.frame = CGRect(x: paddingLeft, y: tokenSView.frame.maxY + paddingY, width: 160, height: rowHeight)
+        scrollView.addSubview(priceLabel)
+        
         priceValueLabel.textColor = UIColor.black
         priceValueLabel.textAlignment = .right
         priceValueLabel.font = FontConfigManager.shared.getLabelFont()
-        priceValueLabel.frame = CGRect(x: screenWidth - paddingLeft - 200, y: LRCFeeLabel.frame.minY - paddingTop, width: 200, height: 40)
-        view.addSubview(priceValueLabel)
-
+        priceValueLabel.frame = CGRect(x: screenWidth - paddingLeft - 200, y: priceLabel.frame.minY, width: 200, height: rowHeight)
+        scrollView.addSubview(priceValueLabel)
+        
         priceUnderLine.frame = CGRect(x: paddingLeft, y: priceLabel.frame.maxY - 5, width: screenWidth - paddingLeft * 2, height: 1)
         priceUnderLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
-        view.addSubview(priceUnderLine)
-
-        tokenSView = TradeTokenView(frame: CGRect(x: 10, y: screenHeight/9, width: (screenWidth-30)/2, height: 200))
-        view.addSubview(tokenSView)
-
-        tokenBView = TradeTokenView(frame: CGRect(x: (screenWidth+10)/2, y: screenHeight/9, width: (screenWidth-30)/2, height: 200))
-        view.addSubview(tokenBView)
+        scrollView.addSubview(priceUnderLine)
         
-        arrowRightImageView = UIImageView(frame: CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY), size: CGSize(width: 32, height: 32)))
-        arrowRightImageView.image = UIImage.init(named: "Arrow-right-black")
-        view.addSubview(arrowRightImageView)
+        // Trading Fee
+        LRCFeeLabel.text = NSLocalizedString("Trading Fee", comment: "")
+        LRCFeeLabel.textColor = UIColor.black
+        LRCFeeLabel.font = FontConfigManager.shared.getLabelFont()
+        LRCFeeLabel.frame = CGRect(x: paddingLeft, y: priceValueLabel.frame.maxY + rowPadding, width: 160, height: rowHeight)
+        scrollView.addSubview(LRCFeeLabel)
+        
+        LRCFeeValueLabel.textColor = UIColor.black
+        LRCFeeValueLabel.textAlignment = .right
+        LRCFeeValueLabel.font = FontConfigManager.shared.getLabelFont()
+        LRCFeeValueLabel.frame = CGRect(x: screenWidth - paddingLeft - 160, y: LRCFeeLabel.frame.minY, width: 160, height: rowHeight)
+        scrollView.addSubview(LRCFeeValueLabel)
+        
+        LRCFeeUnderLine.frame = CGRect(x: paddingLeft, y: LRCFeeLabel.frame.maxY - 5, width: screenWidth - paddingLeft * 2, height: 1)
+        LRCFeeUnderLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
+        scrollView.addSubview(LRCFeeUnderLine)
+        
+        // Margin Split
+        marginSplitLabel.text = NSLocalizedString("Margin Split", comment: "")
+        marginSplitLabel.textColor = UIColor.black
+        marginSplitLabel.font = FontConfigManager.shared.getLabelFont()
+        marginSplitLabel.frame = CGRect(x: paddingLeft, y: LRCFeeLabel.frame.maxY + rowPadding, width: 160, height: rowHeight)
+        scrollView.addSubview(marginSplitLabel)
+
+        marginSplitValueLabel.text = SettingDataManager.shared.getMarginSplitDescription()
+        marginSplitValueLabel.textColor = UIColor.black
+        marginSplitValueLabel.textAlignment = .right
+        marginSplitValueLabel.font = FontConfigManager.shared.getLabelFont()
+        marginSplitValueLabel.frame = CGRect(x: screenWidth - paddingLeft - 160, y: marginSplitLabel.frame.minY, width: 160, height: rowHeight)
+        scrollView.addSubview(marginSplitValueLabel)
+
+        scrollView.contentSize = CGSize(width: screenWidth, height: marginSplitLabel.frame.maxY + padding)
         
         // TODO: Use mock data for now.
-        marginSplitValueLabel.text = "3.4%"
         LRCFeeValueLabel.text = "2 LRC"
-        // priceValueLabel.text = "0.0047142 LRC/BNB"
-        // tokenSView.update(title: "You send", symbol: "LRC", amount: 10.232591)
-        // tokenBView.update(title: "You get", symbol: "ETH", amount: 3010.33111)
     }
 
     override func didReceiveMemoryWarning() {
@@ -130,13 +147,16 @@ class TradeReviewViewController: UIViewController {
         // TODO: the precision should be dynamic
         let price: String = String(format: "%.6f", TradeDataManager.shared.amountTokenS / TradeDataManager.shared.amountTokenB)
         priceValueLabel.text = "\(price) \(TradeDataManager.shared.tokenS.symbol)/\(TradeDataManager.shared.tokenB.symbol)"
+        
+        // Remove the blur effect
+        let scaleX = qrcodeImageView.frame.size.width / qrcodeImage.extent.size.width
+        let scaleY = qrcodeImageView.frame.size.height / qrcodeImage.extent.size.height
+        let transformedImage = qrcodeImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
+        qrcodeImageView.image = UIImage.init(ciImage: transformedImage)
     }
 
     @IBAction func pressedPlaceOrderButton(_ sender: Any) {
         print("pressedPlaceOrderButton")
-        
-        let viewController = TradeConfirmationViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
 }

@@ -169,7 +169,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         
         // 3rd row: lrc fee
         feeTipLabel.font = FontConfigManager.shared.getLabelFont()
-        feeTipLabel.text = NSLocalizedString("LRC Fee", comment: "")
+        feeTipLabel.text = NSLocalizedString("Trading Fee", comment: "")
         feeTipLabel.frame = CGRect(x: padding, y: expiresTipLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(feeTipLabel)
         feeInfoLabel.font = FontConfigManager.shared.getLabelFont()

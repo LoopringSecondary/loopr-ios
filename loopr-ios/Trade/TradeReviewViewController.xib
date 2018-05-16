@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TradeReviewViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="placeOrderButton" destination="Iz8-9F-L3X" id="SV2-AT-p83"/>
+                <outlet property="scrollView" destination="Xcd-bp-fcH" id="DUv-Nr-Asg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,23 +22,30 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iz8-9F-L3X">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iz8-9F-L3X">
                     <rect key="frame" x="15" y="605" width="345" height="47"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="47" id="YJP-TK-DRX"/>
                     </constraints>
-                    <state key="normal" title="Place Order">
+                    <state key="normal" title="Share Order">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
                         <action selector="pressedPlaceOrderButton:" destination="-1" eventType="touchUpInside" id="lQK-kU-tzW"/>
                     </connections>
                 </button>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xcd-bp-fcH">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="590"/>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Xcd-bp-fcH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7Ps-yR-hr6"/>
+                <constraint firstItem="Xcd-bp-fcH" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="N7r-O6-ypk"/>
+                <constraint firstItem="Xcd-bp-fcH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hmn-K1-wbN"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Iz8-9F-L3X" secondAttribute="bottom" constant="15" id="hzu-Ig-LDi"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Xcd-bp-fcH" secondAttribute="bottom" constant="77" id="kw5-Xt-ag0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Iz8-9F-L3X" secondAttribute="trailing" constant="15" id="qXy-RL-cD6"/>
                 <constraint firstItem="Iz8-9F-L3X" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="tR7-Df-2fT"/>
             </constraints>
