@@ -22,7 +22,7 @@ class SignHashTests: XCTestCase {
         super.tearDown()
     }
     
-    func signHash(privateKey: String, hash: String) -> SignatureData? {
+    func signHash(privateKey: String, hash: Data) -> SignatureData? {
         let password = "123456"
         
         // Generate keystore data. Note that: this is slow in the debug mode, however it's fast in the release mode.
@@ -62,17 +62,17 @@ class SignHashTests: XCTestCase {
         }
         print("current address: \(gethAccount.getAddress().getHex())")
         
-        // TODO: not sure whether it's the correct method to convert String to Data
-        let messageData = hash.data(using: .utf8)!
-        
-        let signature = web3swift.sign(message: messageData)!
+
+        let signature = web3swift.sign(message: hash)!
         return signature
     }
     
     func testSignHashFunction() {
         let address = "0x8cA5fD265499F430a86B34dF241476638C6e08a6"
         let privateKey = "78ba6d34d50fe01acabd5f1480d4c0b5613da044a9f53a027f67f780756c74d5"
-        let signatureData = signHash(privateKey: privateKey, hash: "hello world")
+        let hashData = "hello world".data(using: .utf8)!
+
+        let signatureData = signHash(privateKey: privateKey, hash: hashData)
         XCTAssertNotNil(signatureData)
         print("signature v: \(signatureData!.v), r: \(signatureData!.r), s: \(signatureData!.s)")
     }
