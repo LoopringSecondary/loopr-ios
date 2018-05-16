@@ -100,14 +100,14 @@ class FontConfigManager {
         return "\(currentFont.rawValue)-Bold"
     }
 
-    func getLabelFont(size: CGFloat = 17.0*UIStyleConfig.scale) -> UIFont {
+    func getLabelFont(size: CGFloat = 17.0 * UIStyleConfig.scale) -> UIFont {
         if currentFont == .DIN {
             return UIFont(name: "DINNextLTPro-Regular", size: size) ?? UIFont.systemFont(ofSize: size)
         }
         return UIFont(name: "\(currentFont.rawValue)-Regular", size: size) ?? UIFont.systemFont(ofSize: size)
     }
 
-    func getButtonTitleLabelFont(size: CGFloat = 17.0*UIStyleConfig.scale) -> UIFont {
+    func getButtonTitleLabelFont(size: CGFloat = 17.0 * UIStyleConfig.scale) -> UIFont {
         if currentFont == .DIN {
             return UIFont(name: "DIN-Bold", size: size) ?? UIFont.boldSystemFont(ofSize: size)
         }

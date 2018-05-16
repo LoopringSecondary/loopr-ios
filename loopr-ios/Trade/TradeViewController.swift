@@ -17,16 +17,18 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
 
     // TokenS
     var tokenSButton: UIButton = UIButton()
-    var tokenSPriceTextField: UITextField = UITextField()
+    var amountSellTextField: UITextField = UITextField()
     var tokenSUnderLine: UIView = UIView()
     var estimateValueInCurrency: UILabel = UILabel()
+    var maxButton: UIButton = UIButton()
     
     // Exchange label
+    var exchangeImage: UIImageView = UIImageView()
     var exchangeLabel: UILabel = UILabel()
     
     // TokenB
     var tokenBButton: UIButton = UIButton()
-    var totalTextField: UITextField = UITextField()
+    var amountBuyTextField: UITextField = UITextField()
     var totalUnderLine: UIView = UIView()
     var availableLabel: UILabel = UILabel()
 
@@ -42,7 +44,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         // Do any additional setup after loading the view.
         scrollViewButtonLayoutConstraint.constant = 0
         self.navigationItem.title = NSLocalizedString("Trade", comment: "")
-        
         
         let qrScanButton = UIButton(type: UIButtonType.custom)
         // TODO: smaller images.
@@ -64,7 +65,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         
         nextButton.title = NSLocalizedString("Next", comment: "")
         nextButton.setupRoundBlack()
-
+        nextButton.isEnabled = false
+        
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
@@ -74,6 +76,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         let tokenButtonWidth: CGFloat = 60
 
         // First row: TokenS
+        
         tokenSButton.setTitleColor(UIColor.black, for: .normal)
         tokenSButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
         tokenSButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
@@ -81,32 +84,38 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         tokenSButton.addTarget(self, action: #selector(pressedSwitchTokenSButton), for: .touchUpInside)
         scrollView.addSubview(tokenSButton)
         
-        tokenSPriceTextField.delegate = self
-        tokenSPriceTextField.tag = 0
-        tokenSPriceTextField.inputView = UIView()
-        tokenSPriceTextField.font = FontConfigManager.shared.getLabelFont()
-        tokenSPriceTextField.theme_tintColor = GlobalPicker.textColor
-        tokenSPriceTextField.placeholder = "Enter the amount you have"
-        tokenSPriceTextField.contentMode = UIViewContentMode.bottom
-        tokenSPriceTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2-80, height: 40)
-        scrollView.addSubview(tokenSPriceTextField)
+        amountSellTextField.delegate = self
+        amountSellTextField.tag = 0
+        amountSellTextField.inputView = UIView()
+        amountSellTextField.font = FontConfigManager.shared.getLabelFont()
+        amountSellTextField.theme_tintColor = GlobalPicker.textColor
+        amountSellTextField.placeholder = NSLocalizedString("Enter the amount you have", comment: "")
+        amountSellTextField.contentMode = UIViewContentMode.bottom
+        amountSellTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2-80, height: 40)
+        scrollView.addSubview(amountSellTextField)
         
         tokenSUnderLine.frame = CGRect(x: padding, y: tokenSButton.frame.maxY, width: screenWidth - padding * 2, height: 1)
         tokenSUnderLine.backgroundColor = UIColor.black
         scrollView.addSubview(tokenSUnderLine)
         
-        estimateValueInCurrency.text = "≈ $ 0.00"
         estimateValueInCurrency.font = FontConfigManager.shared.getLabelFont()
         estimateValueInCurrency.frame = CGRect(x: padding, y: tokenSUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
-        // estimateValueInCurrency.backgroundColor = UIColor.green
         scrollView.addSubview(estimateValueInCurrency)
+        
+        maxButton.title = NSLocalizedString("Max", comment: "")
+        maxButton.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
+        maxButton.setTitleColor(UIColor.init(rgba: "#cce9ff"), for: .highlighted)
+        maxButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
+        maxButton.contentHorizontalAlignment = .right
+        maxButton.frame = CGRect(x: screenWidth-80-padding, y: tokenSUnderLine.frame.maxY, width: 80, height: 40)
+        scrollView.addSubview(maxButton)
         
         // Second row: exchange label
         
-        exchangeLabel.text = NSLocalizedString("Exchange", comment: "")
+        exchangeImage.image = UIImage(named: "Trading")
         exchangeLabel.font = FontConfigManager.shared.getLabelFont()
         exchangeLabel.textAlignment = .center
-        exchangeLabel.frame = CGRect(x: (screenWidth-120)*0.5, y: estimateValueInCurrency.frame.maxY + padding*2, width: 120, height: 40)
+        exchangeLabel.frame = CGRect(x: 0, y: estimateValueInCurrency.frame.maxY + padding*2, width: screenWidth, height: 40)
         scrollView.addSubview(exchangeLabel)
         
         // Thrid row: TokenB
@@ -118,16 +127,16 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         tokenBButton.addTarget(self, action: #selector(pressedSwitchTokenBButton), for: .touchUpInside)
         scrollView.addSubview(tokenBButton)
         
-        totalTextField.delegate = self
-        totalTextField.tag = 2
-        totalTextField.inputView = UIView()
-        totalTextField.font = FontConfigManager.shared.getLabelFont() // UIFont.init(name: FontConfigManager.shared.getLight(), size: 24)
-        // amountTextField.backgroundColor = UIColor.blue
-        totalTextField.theme_tintColor = GlobalPicker.textColor
-        totalTextField.placeholder = "Enter the amount you get"
-        totalTextField.contentMode = UIViewContentMode.bottom
-        totalTextField.frame = CGRect(x: padding, y: exchangeLabel.frame.maxY + padding*2, width: screenWidth-padding*2-80, height: 40)
-        scrollView.addSubview(totalTextField)
+        amountBuyTextField.delegate = self
+        amountBuyTextField.tag = 2
+        amountBuyTextField.inputView = UIView()
+        amountBuyTextField.font = FontConfigManager.shared.getLabelFont()
+        
+        amountBuyTextField.theme_tintColor = GlobalPicker.textColor
+        amountBuyTextField.placeholder = NSLocalizedString("Enter the amount you get", comment: "")
+        amountBuyTextField.contentMode = UIViewContentMode.bottom
+        amountBuyTextField.frame = CGRect(x: padding, y: exchangeLabel.frame.maxY + padding*2, width: screenWidth-padding*2-80, height: 40)
+        scrollView.addSubview(amountBuyTextField)
         
         totalUnderLine.frame = CGRect(x: padding, y: tokenBButton.frame.maxY, width: screenWidth - padding * 2, height: 1)
         totalUnderLine.backgroundColor = UIColor.black
@@ -136,7 +145,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         availableLabel.text = ""
         availableLabel.font = FontConfigManager.shared.getLabelFont()
         availableLabel.frame = CGRect(x: padding, y: totalUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
-        // estimateValueInCurrency.backgroundColor = UIColor.green
         scrollView.addSubview(availableLabel)
 
         scrollView.contentSize = CGSize(width: screenWidth, height: availableLabel.frame.maxY + 30)
@@ -155,15 +163,46 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         super.viewWillAppear(animated)
         tokenSButton.setTitle(TradeDataManager.shared.tokenS.symbol, for: .normal)
         tokenSButton.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 0)
-        
         tokenBButton.setTitle(TradeDataManager.shared.tokenB.symbol, for: .normal)
         tokenBButton.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 0)
+        updateTipLabel()
+        updateInfoLabel()
+    }
+    
+    func updateInfoLabel() {
+        let tokens = TradeDataManager.shared.tokenS.symbol
+        let tokenb = TradeDataManager.shared.tokenB.symbol
+        let pair = TradeDataManager.shared.tradePair
+        if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
+            exchangeLabel.isHidden = false
+            exchangeLabel.text = "Exchange (1 \(tokens) ≈ \(market.balance) \(tokenb))"
+            let width = (UIScreen.main.bounds.width - exchangeLabel.intrinsicContentSize.width) / 2
+            exchangeImage.frame = CGRect(x: width - 25, y: 10, width: 20, height: 20)
+            exchangeLabel.addSubview(exchangeImage)
+        } else {
+            exchangeLabel.isHidden = true
+        }
+    }
+    
+    func updateTipLabel(text: String? = nil, color: UIColor? = nil) {
+        if let text = text, let color = color {
+            estimateValueInCurrency.text = text
+            estimateValueInCurrency.textColor = color
+        } else {
+            let tokens = TradeDataManager.shared.tokenS.symbol
+            if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
+                estimateValueInCurrency.text = NSLocalizedString("Available \(balance) \(tokens)", comment: "")
+            } else {
+                estimateValueInCurrency.text = NSLocalizedString("Available 0.0 \(tokens)", comment: "")
+            }
+            estimateValueInCurrency.textColor = .black
+        }
     }
     
     @objc func scrollViewTapped() {
         print("scrollViewTapped")
-        tokenSPriceTextField.resignFirstResponder()
-        totalTextField.resignFirstResponder()
+        amountSellTextField.resignFirstResponder()
+        amountBuyTextField.resignFirstResponder()
         hideNumericKeyboard()
     }
     
@@ -192,11 +231,10 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     @IBAction func pressedNextButton(_ sender: Any) {
         print("pressedNextButton")
-        
-        // Get the latest value from TextFields
-        TradeDataManager.shared.amountTokenS = Double(tokenSPriceTextField.text ?? "") ?? 0
-        TradeDataManager.shared.amountTokenB = Double(totalTextField.text ?? "") ?? 0
-        
+        self.validateRational()
+    }
+    
+    func pushController() {
         let viewController = TradeReviewViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
@@ -214,13 +252,100 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     }
     
     func getActiveTextField() -> UITextField? {
-        if activeTextFieldTag == tokenSPriceTextField.tag {
-            return tokenSPriceTextField
-        } else if activeTextFieldTag == totalTextField.tag {
-            return totalTextField
+        if activeTextFieldTag == amountSellTextField.tag {
+            return amountSellTextField
+        } else if activeTextFieldTag == amountBuyTextField.tag {
+            return amountBuyTextField
         } else {
             return nil
         }
+    }
+    
+    func updateButton(isValid: Bool) {
+        nextButton.isEnabled = isValid
+    }
+    
+    func validateRational() {
+        let pair = TradeDataManager.shared.tradePair
+        if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
+            let value = Double(amountBuyTextField.text!)! / Double(amountSellTextField.text!)!
+            // TODO: get from setting maybe
+            if value < 0.8 * market.balance || value > 1.2 * market.balance {
+                let title = NSLocalizedString("Your price is irrational. Do you want to continue trading with the price?", comment: "")
+                let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+                    DispatchQueue.main.async {
+                        self.pushController()
+                    }
+                }))
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+                }))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                self.pushController()
+            }
+        } else {
+            self.pushController()
+        }
+    }
+    
+    func validateAmountSell() -> Bool {
+        var text: String
+        let tokens = TradeDataManager.shared.tokenS.symbol
+        if let amounts = amountSellTextField.text, let amountSell = Double(amounts) {
+            if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
+                text = NSLocalizedString("Available \(balance) \(tokens)", comment: "")
+                if amountSell > balance {
+                    updateTipLabel(text: text, color: .red)
+                    return false
+                } else {
+                    if let price = PriceDataManager.shared.getPrice(of: tokens) {
+                        let estimateValue: Double = amountSell * price
+                        text = estimateValue.currency + "\t" + text
+                    }
+                    updateTipLabel(text: text, color: .black)
+                    return true
+                }
+            } else {
+                text = NSLocalizedString("Available 0.0 \(tokens)", comment: "")
+                if amountSell == 0 {
+                    text = 0.0.currency + text
+                    updateTipLabel(text: text, color: .black)
+                    return true
+                } else {
+                    updateTipLabel(text: text, color: .red)
+                    return false
+                }
+            }
+        } else {
+            if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
+                text = NSLocalizedString("Available \(balance) \(tokens)", comment: "")
+            } else {
+                text = NSLocalizedString("Available 0.0 \(tokens)", comment: "")
+            }
+            updateTipLabel(text: text, color: .black)
+            return false
+        }
+    }
+    
+    func validateAmountBuy() -> Bool {
+        if let amountb = amountBuyTextField.text, Double(amountb) != nil {
+            availableLabel.isHidden = true
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func validate() {
+        var isValid = false
+        if activeTextFieldTag == amountSellTextField.tag {
+            _ = validateAmountSell()
+        } else if activeTextFieldTag == amountBuyTextField.tag {
+            _ = validateAmountBuy()
+        }
+        isValid = validateAmountSell() && validateAmountBuy()
+        updateButton(isValid: isValid)
     }
     
     func showNumericKeyboard(textField: UITextField) {
@@ -244,14 +369,14 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             }, completion: { finished in
                 self.isNumericKeyboardShown = true
                 if finished {
-                    if textField.tag == self.totalTextField.tag {
+                    if textField.tag == self.amountBuyTextField.tag {
                         let bottomOffset = CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.size.height)
                         self.scrollView.setContentOffset(bottomOffset, animated: true)
                     }
                 }
             })
         } else {
-            if textField.tag == totalTextField.tag {
+            if textField.tag == amountBuyTextField.tag {
                 let bottomOffset = CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.size.height)
                 self.scrollView.setContentOffset(bottomOffset, animated: true)
             }
@@ -262,17 +387,12 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         if isNumericKeyboardShown {
             let width = self.view.frame.width
             let height = self.nextBackgroundView.frame.origin.y
-            
             let destinateY = height
-            
             self.scrollViewButtonLayoutConstraint.constant = 0
-            
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
                 // animation for layout constraint change.
                 self.view.layoutIfNeeded()
-
                 self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
-                
             }, completion: { finished in
                 self.isNumericKeyboardShown = false
                 if finished {
@@ -308,18 +428,16 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             let itemValue = position.row * 3 + position.column + 1
             activeTextField!.text = currentText + String(itemValue)
         }
+        validate()
     }
 
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemLongPressed item: NumericKeyboardItem, atPosition position: Position) {
         print("Long pressed keyboard: (\(position.row), \(position.column))")
-        
         let activeTextField = getActiveTextField()
         guard activeTextField != nil else {
             return
         }
-        
         var currentText = activeTextField!.text ?? ""
-        
         if (position.row, position.column) == (3, 2) {
             if currentText.count > 0 {
                 currentText = String(currentText.dropLast())

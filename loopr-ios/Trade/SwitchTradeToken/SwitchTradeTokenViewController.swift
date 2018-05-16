@@ -92,7 +92,6 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         } else {
             cell?.accessoryType = .none
         }
-
         return cell!
     }
 
@@ -104,14 +103,12 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         } else {
             token = TokenDataManager.shared.getTokens()[indexPath.row]
         }
-
         switch type {
         case .tokenS:
             TradeDataManager.shared.changeTokenS(token)
         case .tokenB:
             TradeDataManager.shared.changeTokenB(token)
         }
-
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -134,7 +131,12 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         print("searchBarTextDidBeginEditing")
-        isFiltering = true
+        self.searchText = searchText.trim()
+        if self.searchText != "" {
+            isFiltering = true
+        } else {
+            isFiltering = false
+        }
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressSearchCancel))
         searchBar.becomeFirstResponder()
     }

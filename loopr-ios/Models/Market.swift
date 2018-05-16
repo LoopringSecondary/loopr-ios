@@ -45,7 +45,7 @@ class Market: Equatable, CustomStringConvertible {
         } else {
             changeInPat24 = "↑" + change
         }
-        if let price = PriceDataManager.shared.getPriceBySymbol(of: tradingPair.tradingA) {
+        if let price = PriceDataManager.shared.getPrice(of: tradingPair.tradingA) {
             display = price.currency
         } else {
             return nil

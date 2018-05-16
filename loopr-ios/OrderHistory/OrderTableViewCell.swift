@@ -96,7 +96,7 @@ class OrderTableViewCell: UITableViewCell {
     func setupPriceLabel(order: Order) {
         var limit: Double = 0
         let pair = order.originalOrder.market.components(separatedBy: "-")
-        if let price = PriceDataManager.shared.getPriceBySymbol(of: pair[1]) {
+        if let price = PriceDataManager.shared.getPrice(of: pair[1]) {
             if order.originalOrder.side.lowercased() == "sell" {
                 limit = order.originalOrder.amountBuy / order.originalOrder.amountSell
             } else if order.originalOrder.side.lowercased() == "buy" {

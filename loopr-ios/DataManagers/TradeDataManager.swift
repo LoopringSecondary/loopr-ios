@@ -13,8 +13,6 @@ class TradeDataManager {
     
     static let shared = TradeDataManager()
     
-    var tokenS: Token
-    var tokenB: Token
     var state: OrderTradeState
     var orders: [OriginalOrder] = []
     var makerSignature: SignatureData?
@@ -26,6 +24,18 @@ class TradeDataManager {
     
     let orderCount: Int = 2
     let byteLength: Int = EthType.MAX_BYTE_LENGTH
+    
+    var tokenS: Token {
+        didSet {
+            updatePair()
+        }
+    }
+    var tokenB: Token {
+        didSet {
+            updatePair()
+        }
+    }
+    var tradePair: String = ""
 
     private init() {
         state = .empty
@@ -41,6 +51,11 @@ class TradeDataManager {
             tokenB = Token(symbol: symbol)
         }
         self.tokenB = tokenB ?? Token(symbol: "WETH")!
+        self.updatePair()
+    }
+    
+    func updatePair() {
+        self.tradePair = "\(self.tokenS.symbol)/\(self.tokenB.symbol)"
     }
 
     func clear() {
@@ -265,8 +280,8 @@ class TradeDataManager {
         let ratio = SettingDataManager.shared.getLrcFeeRatio()
         if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
             return market.balance * amountS * ratio
-        } else if let price = PriceDataManager.shared.getPriceBySymbol(of: tokenS),
-            let lrcPrice = PriceDataManager.shared.getPriceBySymbol(of: "LRC") {
+        } else if let price = PriceDataManager.shared.getPrice(of: tokenS),
+            let lrcPrice = PriceDataManager.shared.getPrice(of: "LRC") {
             return price * amountS * ratio / lrcPrice
         }
         return nil

@@ -382,7 +382,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         if let value = Double(priceTextField.text ?? "0") {
             let validate = value > 0.0
             if validate {
-                let tokenBPrice = PriceDataManager.shared.getPriceBySymbol(of: PlaceOrderDataManager.shared.tokenB.symbol)!
+                let tokenBPrice = PriceDataManager.shared.getPrice(of: PlaceOrderDataManager.shared.tokenB.symbol)!
                 let estimateValue: Double = value * tokenBPrice
                 estimateValueInCurrencyLabel.textColor = .black
                 estimateValueInCurrencyLabel.text = "≈ \(estimateValue.currency)"

@@ -319,7 +319,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                 if asset.balance >= amount {
                     if let token = TokenDataManager.shared.getTokenBySymbol(asset!.symbol) {
                         if GethBigInt.generate(valueInEther: amount, symbol: token.symbol) != nil {
-                            if let price = PriceDataManager.shared.getPriceBySymbol(of: asset.symbol) {
+                            if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
                                 let display = (amount * price).currency
                                 updateLabel(label: amountInfoLabel, text: display, textColor: .black)
                                 return true
@@ -441,7 +441,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         let defaults = UserDefaults.standard
         defaults.set(gasPriceInGwei, forKey: UserDefaultsKeys.gasPrice.rawValue)
         let amountInEther = gasPriceInGwei / 1000000000
-        if let etherPrice = PriceDataManager.shared.getPriceBySymbol(of: "ETH") {
+        if let etherPrice = PriceDataManager.shared.getPrice(of: "ETH") {
             let transactionFeeInFiat = amountInEther * etherPrice * Double(GasDataManager.shared.getGasLimitByType(by: "eth_transfer")!)
             transactionFeeAmountLabel.text = "\(transactionFeeInFiat.currency)"
         }

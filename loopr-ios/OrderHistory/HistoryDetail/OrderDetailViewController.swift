@@ -95,7 +95,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
             amountLabel.text = order.dealtAmountS.description + " " + order.originalOrder.tokenSell
             amountInfoLabel.text = order.dealtAmountS.description + " / " + order.originalOrder.amountSell.description + " " + order.originalOrder.tokenSell
             totalInfoLabel.text = order.originalOrder.amountBuy.description + " " + order.originalOrder.tokenBuy
-            if let price = PriceDataManager.shared.getPriceBySymbol(of: order.originalOrder.tokenSell) {
+            if let price = PriceDataManager.shared.getPrice(of: order.originalOrder.tokenSell) {
                 let total = price * order.originalOrder.amountSell
                 displayLabel.text = total.currency
             }
@@ -103,7 +103,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
             amountLabel.text = order.dealtAmountB.description + " " + order.originalOrder.tokenBuy
             amountInfoLabel.text = order.dealtAmountB.description + " / " + order.originalOrder.amountBuy.description + " " + order.originalOrder.tokenBuy
             totalInfoLabel.text = order.originalOrder.amountSell.description + " " + order.originalOrder.tokenSell
-            if let price = PriceDataManager.shared.getPriceBySymbol(of: order.originalOrder.tokenBuy) {
+            if let price = PriceDataManager.shared.getPrice(of: order.originalOrder.tokenBuy) {
                 let total = price * order.originalOrder.amountBuy
                 displayLabel.text = total.currency
             }

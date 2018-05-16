@@ -69,7 +69,7 @@ class AssetBalanceTableViewCell: UITableViewCell {
             }
             if asset.symbol.lowercased() == "eth" || asset.symbol.lowercased() == "weth" {
                 marketLabel.text = "Ethereum"
-                if let price = PriceDataManager.shared.getPriceBySymbol(of: "ETH") {
+                if let price = PriceDataManager.shared.getPrice(of: "ETH") {
                     marketDisplayLabel.text = price.currency
                 }
                 changeLabel.isHidden = true

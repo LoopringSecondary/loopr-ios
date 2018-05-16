@@ -100,12 +100,12 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     func setupOrderAmount(order: OriginalOrder) {
         if order.side.lowercased() == "sell" {
             amountLabel.text = order.amountSell.description + " " + order.tokenSell
-            if let price = PriceDataManager.shared.getPriceBySymbol(of: order.tokenSell) {
+            if let price = PriceDataManager.shared.getPrice(of: order.tokenSell) {
                 displayLabel.text = (price * order.amountSell).currency
             }
         } else if order.side.lowercased() == "buy" {
             amountLabel.text = order.amountBuy.description + " " + order.tokenBuy
-            if let price = PriceDataManager.shared.getPriceBySymbol(of: order.tokenBuy) {
+            if let price = PriceDataManager.shared.getPrice(of: order.tokenBuy) {
                 displayLabel.text = (price * order.amountBuy).currency
             }
         }
@@ -173,7 +173,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         feeTipLabel.frame = CGRect(x: padding, y: expiresTipLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(feeTipLabel)
         feeInfoLabel.font = FontConfigManager.shared.getLabelFont()
-        if let price = PriceDataManager.shared.getPriceBySymbol(of: "LRC") {
+        if let price = PriceDataManager.shared.getPrice(of: "LRC") {
             let display = (order.lrcFee * price).currency
             feeInfoLabel.text = String(format: "%0.5f LRC (≈ %.2f)", order.lrcFee, display)
         }

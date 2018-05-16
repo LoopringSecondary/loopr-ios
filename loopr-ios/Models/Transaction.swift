@@ -31,7 +31,7 @@ class Transaction {
             self.value = value
             if let value = Asset.getAmount(of: symbol, fromWeiAmount: value) {
                 self.value = value.format().description
-                if let price = PriceDataManager.shared.getPriceBySymbol(of: symbol) {
+                if let price = PriceDataManager.shared.getPrice(of: symbol) {
                     let total = price * Double(value)
                     self.display = total.currency
                 }

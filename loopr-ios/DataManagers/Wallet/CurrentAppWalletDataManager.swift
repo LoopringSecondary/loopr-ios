@@ -141,7 +141,7 @@ class CurrentAppWalletDataManager {
         totalCurrencyValue = 0
         for asset in sortedAssets {
             // If the price quote is nil, asset won't be updated. Please use getBalanceAndPriceQuote()
-            if let price = PriceDataManager.shared.getPriceBySymbol(of: asset.symbol) {
+            if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
                 let total = asset.balance * price
                 asset.display = total.currency
                 totalCurrencyValue += total
