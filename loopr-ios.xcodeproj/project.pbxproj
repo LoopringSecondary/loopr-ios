@@ -337,6 +337,8 @@
 		AC69913B20AA6254003593AE /* SettingWalletDetailViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69913A20AA6254003593AE /* SettingWalletDetailViewControllerDataSource.swift */; };
 		AC69913E20AA68F7003593AE /* SettingWalletDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69913C20AA68F7003593AE /* SettingWalletDetailTableViewCell.swift */; };
 		AC69913F20AA68F7003593AE /* SettingWalletDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC69913D20AA68F7003593AE /* SettingWalletDetailTableViewCell.xib */; };
+		AC69914220ABC3B7003593AE /* RandomAuthAddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69914120ABC3B7003593AE /* RandomAuthAddressTests.swift */; };
+		AC69914420ABCBB3003593AE /* SignHashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69914320ABCBB3003593AE /* SignHashTests.swift */; };
 		AC6E95E520313D8A00C6EB7C /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */; };
 		AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */; };
 		AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */; };
@@ -789,6 +791,8 @@
 		AC69913A20AA6254003593AE /* SettingWalletDetailViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWalletDetailViewControllerDataSource.swift; sourceTree = "<group>"; };
 		AC69913C20AA68F7003593AE /* SettingWalletDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWalletDetailTableViewCell.swift; sourceTree = "<group>"; };
 		AC69913D20AA68F7003593AE /* SettingWalletDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingWalletDetailTableViewCell.xib; sourceTree = "<group>"; };
+		AC69914120ABC3B7003593AE /* RandomAuthAddressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAuthAddressTests.swift; sourceTree = "<group>"; };
+		AC69914320ABCBB3003593AE /* SignHashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignHashTests.swift; sourceTree = "<group>"; };
 		AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketLineChartTableViewCell.swift; sourceTree = "<group>"; };
 		AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketLineChartTableViewCell.xib; sourceTree = "<group>"; };
@@ -2047,6 +2051,8 @@
 				AC4F60192077536400F1D954 /* testKeystore.json */,
 				ACA677CB207C8A0500D34A2F /* KeystoreAndWeb3SwiftTests.swift */,
 				AC0CE96C209E4BB60072A6EC /* GethBigIntTests.swift */,
+				AC69914120ABC3B7003593AE /* RandomAuthAddressTests.swift */,
+				AC69914320ABCBB3003593AE /* SignHashTests.swift */,
 			);
 			path = Web3Swift;
 			sourceTree = "<group>";
@@ -2824,7 +2830,9 @@
 				ACA677CC207C8A0500D34A2F /* KeystoreAndWeb3SwiftTests.swift in Sources */,
 				AC2D2C0D2089D23E00D619AD /* ImportKeystoreTests.swift in Sources */,
 				ACCC7EA32082BE0B008E58BA /* ImportMnemonicTests.swift in Sources */,
+				AC69914220ABC3B7003593AE /* RandomAuthAddressTests.swift in Sources */,
 				AC2D2C092089CB6B00D619AD /* ImportPrivateKeyTests.swift in Sources */,
+				AC69914420ABCBB3003593AE /* SignHashTests.swift in Sources */,
 				AC798E5A2022B93B0071D477 /* LoopringAPIRequestTests.swift in Sources */,
 				AC1E4BC0204B51AB00C6B1FA /* ImportWalletTests.swift in Sources */,
 				943C657A209EEAB6005D6948 /* PlaceOrderDataManagerTests.swift in Sources */,
