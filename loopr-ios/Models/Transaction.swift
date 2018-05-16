@@ -26,29 +26,34 @@ class Transaction {
     
     init?(json: JSON) {
         self.display = "0.0"
-        self.from = json["from"].stringValue
-        self.to = json["to"].stringValue
-        self.type = TxType(rawValue: json["type"].stringValue)!
-        self.status = TxStatus(rawValue: json["status"].stringValue)!
+        if let symbol = json["symbol"].string, let value = json["value"].string, let from = json["from"].string, let to = json["to"].string, let owner = json["owner"].string, let txHash = json["txHash"].string {
+            self.symbol = symbol
+            self.value = value
+            if let value = Asset.getAmount(of: symbol, fromWeiAmount: value) {
+                self.value = value.format().description
+                if let price = PriceDataManager.shared.getPriceBySymbol(of: symbol) {
+                    let total = price * Double(value)
+                    self.display = total.currency
+                }
+            } else {
+                return nil
+            }
+            
+            self.to = to
+            self.from = from
+            self.owner = owner
+            self.txHash = txHash
+        } else {
+            return nil
+        }
+
+        self.type = TxType(rawValue: json["type"].string ?? "unsupported_contract") ?? .unsupportedContract
+        self.status = TxStatus(rawValue: json["status"].string ?? "other") ?? .other
         self.icon = UIImage(named: self.type.description) ?? nil
-        self.symbol = json["symbol"].stringValue
-        self.value = json["value"].stringValue
-        self.owner = json["owner"].stringValue
-        self.txHash = json["txHash"].stringValue
         let createTime = DateUtil.convertToDate(json["createTime"].uIntValue, format: "HH:mm EEE, MMM dd, yyyy")
         self.createTime = createTime
         let updateTime = DateUtil.convertToDate(json["updateTime"].uIntValue, format: "HH:mm EEE, MMM dd, yyyy")
         self.updateTime = updateTime
-        
-        if let value = Asset.getAmount(of: symbol, fromWeiAmount: value) {
-            self.value = value.format().description
-            if let price = PriceDataManager.shared.getPriceBySymbol(of: symbol) {
-                let total = price * Double(value)
-                self.display = total.currency
-            }
-        } else {
-            return nil
-        }
     }
 
     enum TxType: String, CustomStringConvertible {
@@ -83,12 +88,14 @@ class Transaction {
         case pending
         case success
         case failed
+        case other
         
         var description: String {
             switch self {
             case .pending: return "Pending"
             case .success: return "Complete"
             case .failed: return "Failed"
+            case .other: return "Other"
             }
         }
     }
