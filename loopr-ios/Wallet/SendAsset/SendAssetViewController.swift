@@ -67,7 +67,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     
     // TODO: should set the default value using the gwei value in GasDataManager
     // Reference: https://ethgasstation.info
-    var gasPriceInGwei: Double = GasDataManager.shared.getGasPrice()
+    var gasPriceInGwei: Double = GasDataManager.shared.getGasPriceInGwei()
 
     override func viewDidLoad() {
         super.viewDidLoad()

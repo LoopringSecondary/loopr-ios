@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Geth
+import SVProgressHUD
+import NotificationBannerSwift
 
 class TradeReviewViewController: UIViewController {
 
@@ -31,6 +34,8 @@ class TradeReviewViewController: UIViewController {
     var priceLabel: UILabel = UILabel()
     var priceValueLabel: UILabel = UILabel()
     var priceUnderLine: UIView = UIView()
+    
+    var verifyInfo: [String: Double]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -157,6 +162,127 @@ class TradeReviewViewController: UIViewController {
 
     @IBAction func pressedPlaceOrderButton(_ sender: Any) {
         print("pressedPlaceOrderButton")
+//        self.verifyInfo = TradeDataManager.shared.verify(order: <#T##OriginalOrder#>, isTaker: true) TODO
+        self.handleVerifyInfo()
     }
 
+}
+
+extension TradeReviewViewController {
+    func isBalanceEnough() -> Bool {
+        var result: Bool = true
+        if let info = self.verifyInfo {
+            result = !info.keys.contains(where: { (key) -> Bool in
+                key.starts(with: "MINUS_")
+            })
+        }
+        return result
+    }
+    
+    func needApprove() -> Bool {
+        var result: Bool = false
+        if let info = self.verifyInfo {
+            result = info.keys.contains(where: { (key) -> Bool in
+                key.starts(with: "GAS_")
+            })
+        }
+        return result
+    }
+    
+    func handleVerifyInfo() {
+        if isBalanceEnough() {
+            if needApprove() {
+                approve()
+            } else {
+                submitRing()
+            }
+        } else {
+            pushController(orderHash: nil)
+        }
+    }
+    
+    func pushController(orderHash: String?) {
+        let viewController = ConfirmationResultViewController()
+//        viewController.order = self.order   TODO
+        viewController.orderHash = orderHash
+        viewController.verifyInfo = self.verifyInfo
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func approve() {
+        if let info = self.verifyInfo {
+            for item in info {
+                if item.key.starts(with: "GAS_") {
+                    guard item.value == 1 || item.value == 2 else { return }
+                    let token = item.key.components(separatedBy: "_")[1]
+                    if item.value == 1 {
+                        approveOnce(token: token)
+                    } else {
+                        approveTwice(token: token)
+                    }
+                }
+            }
+        }
+    }
+    
+    func approveOnce(token: String) {
+        if let toAddress = TokenDataManager.shared.getAddress(by: token) {
+            var error: NSError? = nil
+            let approve = GethBigInt.generate(valueInEther: Double(INT64_MAX), symbol: token)!
+            let delegateAddress = GethNewAddressFromHex(RelayAPIConfiguration.delegateAddress, &error)!
+            let tokenAddress = GethNewAddressFromHex(toAddress, &error)!
+            SendCurrentAppWalletDataManager.shared._approve(tokenAddress: tokenAddress, delegateAddress: delegateAddress, tokenAmount: approve, completion: complete)
+        }
+    }
+    
+    func approveTwice(token: String) {
+        if let toAddress = TokenDataManager.shared.getAddress(by: token) {
+            var error: NSError? = nil
+            var approve = GethBigInt.generate(valueInEther: 0, symbol: token)!
+            let delegateAddress = GethNewAddressFromHex(RelayAPIConfiguration.delegateAddress, &error)!
+            let tokenAddress = GethNewAddressFromHex(toAddress, &error)!
+            SendCurrentAppWalletDataManager.shared._approve(tokenAddress: tokenAddress, delegateAddress: delegateAddress, tokenAmount: approve) { (txHash, error) in
+                guard error == nil && txHash != nil else {
+                    self.complete(nil, error!)
+                    return
+                }
+                approve = GethBigInt.generate(valueInEther: Double(INT64_MAX), symbol: token)!
+                SendCurrentAppWalletDataManager.shared._approve(tokenAddress: tokenAddress, delegateAddress: delegateAddress, tokenAmount: approve, completion: self.complete)
+            }
+        }
+    }
+    
+    func submitRing() {
+        // TODO: call _submitRing
+    }
+    
+    func complete(_ txHash: String?, _ error: Error?) {
+        SVProgressHUD.dismiss()
+        guard error == nil && txHash != nil else {
+            DispatchQueue.main.async {
+                print("BuyViewController \(error.debugDescription)")
+                let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
+                banner.duration = 10
+                banner.show()
+            }
+            return
+        }
+        submitRing()
+    }
+    
+    func completion(_ orderHash: String?, _ error: Error?) {
+        SVProgressHUD.dismiss()
+        guard error == nil && orderHash != nil else {
+            DispatchQueue.main.async {
+                print("BuyViewController \(error.debugDescription)")
+                let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
+                banner.duration = 10
+                banner.show()
+            }
+            return
+        }
+        DispatchQueue.main.async {
+            self.pushController(orderHash: orderHash!)
+        }
+    }
 }

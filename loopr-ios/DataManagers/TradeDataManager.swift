@@ -15,6 +15,7 @@ class TradeDataManager {
     
     var state: OrderTradeState
     var orders: [OriginalOrder] = []
+    var balanceInfo: [String: Double] = [:]
     var makerSignature: SignatureData?
     var takerSignature: SignatureData?
     
@@ -265,14 +266,94 @@ class TradeDataManager {
         return encode()
     }
     
-    func signHash(authPrivateKey: String, hash: Data) -> SignatureData? {
-        return nil
+    func signHash(privateKey: String, hash: Data) -> SignatureData? {
+        let password = "123456"
+        
+        // Generate keystore data. Note that: this is slow in the debug mode, however it's fast in the release mode.
+        let data = Data(hexString: privateKey)!
+        let key = try! KeystoreKey(password: password, key: data)
+        let keystoreData = try! JSONEncoder().encode(key)
+        let json = try! JSON(data: keystoreData)
+        let keystoreStringValue = json.description
+        print(keystoreStringValue)
+        
+        // Create key directory
+        let fileManager = FileManager.default
+        
+        let keyDirectory = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("signHash")
+        try? fileManager.removeItem(at: keyDirectory)
+        try? fileManager.createDirectory(at: keyDirectory, withIntermediateDirectories: true, attributes: nil)
+        print(keyDirectory)
+        
+        let walletDirectory = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("signHash")
+        try? fileManager.removeItem(at: walletDirectory)
+        try? fileManager.createDirectory(at: walletDirectory, withIntermediateDirectories: true, attributes: nil)
+        print(walletDirectory)
+        
+        // Save the keystore string value to keyDirectory
+        let fileURL = keyDirectory.appendingPathComponent("key.json")
+        try! keystoreStringValue.write(to: fileURL, atomically: false, encoding: .utf8)
+        
+        print(keyDirectory.absoluteString)
+        let keydir = keyDirectory.absoluteString.replacingOccurrences(of: "file://", with: "", options: .regularExpression)
+        
+        let gethKeystore = GethKeyStore.init(keydir, scryptN: GethLightScryptN, scryptP: GethLightScryptP)!
+        
+        // Need to call this one just before sign
+        guard let gethAccount: GethAccount = EthAccountCoordinator.default.launch(keystore: gethKeystore, password: password) else {
+            print("Failed to init EthAccountCoordinator")
+            return nil
+        }
+        let signature = web3swift.sign(message: hash)!
+        return signature
     }
     
     func signRinghash() {
         let hash = generateHash()
-        makerSignature = signHash(authPrivateKey: orders[0].authPrivateKey, hash: hash)
-        takerSignature = signHash(authPrivateKey: orders[1].authPrivateKey, hash: hash)
+        makerSignature = signHash(privateKey: orders[0].authPrivateKey, hash: hash)
+        takerSignature = signHash(privateKey: orders[1].authPrivateKey, hash: hash)
+    }
+    
+    // 1. 估计一个gas，从taker中扣款，检查对应eth balance，够则下单，不够失败
+    // 2. 查看sell token getEstimatedAllocatedAllowanceFromServer + amountsell >< 当前allownce => 两次授权 eth
+    func verify(order: OriginalOrder, isTaker: Bool) -> [String: Double] {
+        balanceInfo = [:]
+        checkGasEnough(of: order, isTaker: isTaker)
+        return balanceInfo
+    }
+    
+    func checkGasEnough(of order: OriginalOrder, isTaker: Bool) {
+        var result: Double = 0
+        if let ethBalance = CurrentAppWalletDataManager.shared.getBalance(of: "ETH"), let tokenGas = calculateGas(for: order.tokenSell, to: order.amountSell) {
+            if isTaker {
+                let gasAmount = GasDataManager.shared.getGasAmountInETH(by: "submitRing")
+                result = ethBalance - tokenGas - gasAmount
+            } else {
+                result = ethBalance - tokenGas
+            }
+        }
+        if result < 0 {
+            balanceInfo["MINUS_ETH"] = -result
+        }
+    }
+    
+    func calculateGas(for token: String, to amount: Double) -> Double? {
+        var result: Double? = nil
+        if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: token) {
+            let tokenFrozen = PlaceOrderDataManager.shared.getAllowance(of: token)
+            if asset.allowance >= amount + tokenFrozen {
+                return 0
+            }
+            let gasAmount = GasDataManager.shared.getGasAmountInETH(by: "approve")
+            if asset.allowance == 0 {
+                result = gasAmount
+                balanceInfo["GAS_\(asset.symbol)"] = 1
+            } else {
+                result = gasAmount * 2
+                balanceInfo["GAS_\(asset.symbol)"] = 2
+            }
+        }
+        return result
     }
     
     func getLrcFee(_ amountS: Double, _ tokenS: String) -> Double? {

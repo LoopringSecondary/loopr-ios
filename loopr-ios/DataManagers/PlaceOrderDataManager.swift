@@ -52,7 +52,7 @@ class PlaceOrderDataManager {
         return result
     }
     
-    func getEstimatedAllocatedAllowanceFromServer(token: String) -> Double {
+    func getAllowance(of token: String) -> Double {
         var result: Double = 0
         let semaphore = DispatchSemaphore(value: 0)
         if let address = walletManager.getCurrentAppWallet()?.address {
@@ -112,14 +112,13 @@ class PlaceOrderDataManager {
         var result: Double? = nil
         if let asset = walletManager.getAsset(symbol: token) {
             if token.uppercased() == "LRC" {
-                // 这里很慢！！！！！！！！！！！
                 let lrcFrozen = getFrozenLRCFeeFromServer()
-                let sellingFrozen = getEstimatedAllocatedAllowanceFromServer(token: "LRC")
+                let sellingFrozen = getAllowance(of: "LRC")
                 if asset.allowance >= lrcFee + lrcFrozen + sellingFrozen {
                     return 0
                 }
             } else {
-                let tokenFrozen = getEstimatedAllocatedAllowanceFromServer(token: token)
+                let tokenFrozen = getAllowance(of: token)
                 if asset.allowance >= amount + tokenFrozen {
                     return 0
                 }
@@ -143,7 +142,7 @@ class PlaceOrderDataManager {
             let lrcFee = order.lrcFee
             let amountSell = order.amountSell
             let lrcFrozen = getFrozenLRCFeeFromServer()
-            let sellingFrozen = getEstimatedAllocatedAllowanceFromServer(token: "LRC")
+            let sellingFrozen = getAllowance(of: "LRC")
             if lrcFee + lrcFrozen + sellingFrozen + amountSell > lrcAllowance {
                 let gasAmount = gasManager.getGasAmountInETH(by: "approve")
                 if lrcAllowance == 0 {

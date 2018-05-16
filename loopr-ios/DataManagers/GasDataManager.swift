@@ -86,7 +86,7 @@ class GasDataManager {
         self.gasPrice = gasPrice
     }
     
-    func getGasPrice() -> Double {
+    func getGasPriceInGwei() -> Double {
         let defaults = UserDefaults.standard
         if defaults.bool(forKey: UserDefaultsKeys.gasPrice.rawValue) {
             return defaults.double(forKey: UserDefaultsKeys.gasPrice.rawValue)
@@ -96,7 +96,7 @@ class GasDataManager {
     }
     
     func getGasPriceInWei() -> GethBigInt {
-        let price = getGasPrice()
+        let price = getGasPriceInGwei()
         let amountInWei = GethBigInt.convertGweiToWei(from: price)!
         return amountInWei
     }
