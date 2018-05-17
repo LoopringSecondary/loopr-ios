@@ -33,7 +33,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         keystoreContentTextView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17.0)
         keystoreContentTextView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
         keystoreContentTextView.delegate = self
-        keystoreContentTextView.text = NSLocalizedString("Please use space to seperate the mnemonic words", comment: "")
+        keystoreContentTextView.text = NSLocalizedString("Please enter the keystore", comment: "")
         keystoreContentTextView.textColor = .lightGray
         keystoreContentTextView.tintColor = UIColor.black
         
@@ -91,7 +91,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if keystoreContentTextView.text == NSLocalizedString("Please use space to seperate the mnemonic words", comment: "") {
+        if keystoreContentTextView.text == NSLocalizedString("Please enter the keystore", comment: "") {
             keystoreContentTextView.text = ""
             keystoreContentTextView.textColor = .black
         }
@@ -100,7 +100,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if keystoreContentTextView.text == "" {
-            keystoreContentTextView.text = NSLocalizedString("Please use space to seperate the mnemonic words", comment: "")
+            keystoreContentTextView.text = NSLocalizedString("Please enter the keystore", comment: "")
             keystoreContentTextView.textColor = .lightGray
         }
         keystoreContentTextView.resignFirstResponder()

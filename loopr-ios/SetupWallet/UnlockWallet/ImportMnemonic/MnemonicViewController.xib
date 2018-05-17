@@ -26,14 +26,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please use space to seperate the mnemonic words" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wnQ-al-rIC">
-                    <rect key="frame" x="15" y="35" width="345" height="225"/>
+                    <rect key="frame" x="15" y="35" width="345" height="245"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <color key="tintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits"/>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0O-fl-KJI">
-                    <rect key="frame" x="15" y="320" width="345" height="47"/>
+                    <rect key="frame" x="15" y="340" width="345" height="47"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="47" id="MpU-ba-qC9"/>
@@ -46,7 +46,7 @@
                     </connections>
                 </button>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4pM-2Z-5Ap">
-                    <rect key="frame" x="15" y="268" width="345" height="40"/>
+                    <rect key="frame" x="15" y="288" width="345" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="5mw-NE-BEY"/>
                     </constraints>
@@ -55,7 +55,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oQ7-Q2-fN9">
-                    <rect key="frame" x="15" y="308" width="345" height="1"/>
+                    <rect key="frame" x="15" y="328" width="345" height="1"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="A8j-QP-lbU"/>
@@ -64,7 +64,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="T0O-fl-KJI" secondAttribute="bottom" constant="300" id="80I-li-298"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="T0O-fl-KJI" secondAttribute="bottom" constant="280" id="80I-li-298"/>
                 <constraint firstItem="oQ7-Q2-fN9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="9QT-Ba-2HW"/>
                 <constraint firstItem="4pM-2Z-5Ap" firstAttribute="top" secondItem="wnQ-al-rIC" secondAttribute="bottom" constant="8" id="MUF-Q6-RFl"/>
                 <constraint firstItem="4pM-2Z-5Ap" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="RUH-Br-Vxj"/>

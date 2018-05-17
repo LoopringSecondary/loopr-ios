@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVD-JS-FJ5">
-                    <rect key="frame" x="16" y="320" width="343" height="47"/>
+                    <rect key="frame" x="16" y="340" width="343" height="47"/>
                     <color key="backgroundColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="47" id="Vx5-tC-yFI"/>
@@ -37,7 +37,7 @@
                     </connections>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please input your private key" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ujb-qZ-KOa">
-                    <rect key="frame" x="16" y="36" width="343" height="268"/>
+                    <rect key="frame" x="16" y="36" width="343" height="288"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <color key="tintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -48,7 +48,7 @@
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ujb-qZ-KOa" secondAttribute="trailing" constant="16" id="4eM-fK-dZy"/>
                 <constraint firstItem="EVD-JS-FJ5" firstAttribute="top" secondItem="Ujb-qZ-KOa" secondAttribute="bottom" constant="16" id="Cdv-kr-gFY"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="EVD-JS-FJ5" secondAttribute="bottom" constant="300" id="MzE-V2-Nxk"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="EVD-JS-FJ5" secondAttribute="bottom" constant="280" id="MzE-V2-Nxk"/>
                 <constraint firstItem="EVD-JS-FJ5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Tjg-hX-pnJ"/>
                 <constraint firstItem="Ujb-qZ-KOa" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="Zkb-zr-tkT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="EVD-JS-FJ5" secondAttribute="trailing" constant="16" id="iWO-0v-TOz"/>
