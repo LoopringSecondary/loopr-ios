@@ -78,10 +78,16 @@ class AppWalletDataManager {
 
     func getAppWalletsFromLocalStorage() {
         let defaults = UserDefaults.standard
-        if let decoded = defaults.data(forKey: UserDefaultsKeys.appWallets.rawValue) {
-            let appWallets = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? [AppWallet]
-            if let appWallets = appWallets {
-                self.appWallets = appWallets
+        if let decodedData = defaults.data(forKey: UserDefaultsKeys.appWallets.rawValue) {
+            let unarchiver = NSKeyedUnarchiver(forReadingWith: decodedData)
+            do {
+                let decodedDataObject = try unarchiver.decodeTopLevelObject()
+                let appWallets = decodedDataObject as? [AppWallet]
+                if let appWallets = appWallets {
+                    self.appWallets = appWallets
+                }
+            } catch {
+                self.appWallets = []
             }
         }
     }
