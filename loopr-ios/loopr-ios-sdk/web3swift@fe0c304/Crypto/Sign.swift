@@ -13,7 +13,7 @@ import CryptoSwift
 open class Sign {
 
     open class func sign(message: Data, keystore: GethKeyStore, account: GethAccount, passphrase: String) -> SignatureData? {
-        let hashedMessage = message.sha3(SHA3.Variant.keccak256)
+        let hashedMessage = message.sha3(SHA3.Variant.keccak256) // 这里和接口返回值一致 getorder()
         let header: Data = "\u{0019}Ethereum Signed Message:\n32".data(using: .utf8)!
         let newData: Data = header + hashedMessage
         let secret = newData.sha3(SHA3.Variant.keccak256)
