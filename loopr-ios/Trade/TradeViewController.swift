@@ -58,7 +58,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         // TODO: smaller images.
         historyButton.theme_setImage(["Order-history-black", "Order-history-white"], forState: UIControlState.normal)
         historyButton.setImage(UIImage(named: "Order-history-black")?.alpha(0.3), for: .highlighted)
-        historyButton.addTarget(self, action: #selector(self.pressQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
+        historyButton.addTarget(self, action: #selector(self.pressedOrderHistoryButton(_:)), for: UIControlEvents.touchUpInside)
         historyButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let historyBarButton = UIBarButtonItem(customView: historyButton)
         self.navigationItem.rightBarButtonItem = historyBarButton
@@ -209,6 +209,13 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     @objc func pressQRCodeButton(_ sender: Any) {
         print("Selected Scan QR code")
         let viewController = ScanQRCodeViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc func pressedOrderHistoryButton(_ sender: Any) {
+        print("pressedOrderHistoryButton")
+        let viewController = P2POrderHistoryViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
