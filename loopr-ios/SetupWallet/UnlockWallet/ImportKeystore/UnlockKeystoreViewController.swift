@@ -111,7 +111,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         // TODO: Use notificatino to require
         let password = passwordTextField.text ?? ""
         guard password.trim() != "" else {
-            let notificationTitle = NSLocalizedString("Please set a password.", comment: "")
+            let notificationTitle = NSLocalizedString("Please set a password", comment: "")
             let banner = NotificationBanner.generate(title: notificationTitle, style: .danger)
             banner.duration = 1.5
             banner.show()

@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6N-iT-Fll">
-                    <rect key="frame" x="15" y="360" width="345" height="47"/>
+                    <rect key="frame" x="15" y="605" width="345" height="47"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="47" id="b7p-17-Paf"/>
@@ -38,7 +38,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="V6N-iT-Fll" secondAttribute="trailing" constant="15" id="D5F-19-lSL"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="V6N-iT-Fll" secondAttribute="bottom" constant="260" id="Sue-S6-vGo"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="V6N-iT-Fll" secondAttribute="bottom" constant="15" id="Sue-S6-vGo"/>
                 <constraint firstItem="V6N-iT-Fll" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="arm-aK-kHv"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

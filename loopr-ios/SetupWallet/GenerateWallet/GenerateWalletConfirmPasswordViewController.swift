@@ -20,6 +20,10 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
     
     var continueButton: UIButton = UIButton()
 
+    // Keyboard
+    var isKeyboardShown: Bool = false
+    var keyboardOffsetY: CGFloat = 0
+
     convenience init(setupWalletMethod: SetupWalletMethod) {
         self.init(nibName: "GenerateWalletConfirmPasswordViewController", bundle: nil)
         self.setupWalletMethod = setupWalletMethod
@@ -37,6 +41,9 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
+
         setBackButton()
         
         // Setup UI in the scroll view
@@ -68,7 +75,7 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
         view.addSubview(walletPasswordUnderLine)
         
         walletPasswordInfoLabel.frame = CGRect(x: padding, y: walletPasswordTextField.frame.maxY + 9, width: screenWidth - padding * 2, height: 16)
-        walletPasswordInfoLabel.text = NSLocalizedString("Please set a password.", comment: "")
+        walletPasswordInfoLabel.text = NSLocalizedString("Please set a password", comment: "")
         walletPasswordInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
         walletPasswordInfoLabel.textColor = UIStyleConfig.red
         walletPasswordInfoLabel.alpha = 0.0
@@ -76,9 +83,13 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
         
         continueButton.setupRoundBlack()
         continueButton.setTitle(NSLocalizedString("Enter Wallet", comment: ""), for: .normal)
-        continueButton.frame = CGRect(x: padding, y: walletPasswordUnderLine.frame.maxY + 103, width: screenWidth - padding * 2, height: 47)
+        continueButton.frame = CGRect(x: padding, y: walletPasswordUnderLine.frame.maxY + 50, width: screenWidth - padding * 2, height: 47)
         continueButton.addTarget(self, action: #selector(self.pressedContinueButton(_:)), for: .touchUpInside)
         view.addSubview(continueButton)
+
+        let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
+        scrollViewTap.numberOfTapsRequired = 1
+        view.addGestureRecognizer(scrollViewTap)
     }
     
     override func didReceiveMemoryWarning() {
@@ -108,7 +119,7 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
         let password = walletPasswordTextField.text ?? ""
         if password.trim() == "" {
             validPassword = false
-            self.walletPasswordInfoLabel.text = NSLocalizedString("Please set a password.", comment: "")
+            self.walletPasswordInfoLabel.text = NSLocalizedString("Please set a password", comment: "")
             UIView.animate(withDuration: 0.25, delay: 0, options: .curveLinear, animations: {
                 self.walletPasswordInfoLabel.alpha = 1.0
             }, completion: { (_) in
@@ -132,5 +143,69 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
             let viewController = GenerateMnemonicViewController()
             self.navigationController?.pushViewController(viewController, animated: true)
         }
+    }
+
+    @objc func scrollViewTapped() {
+        print("scrollViewTapped")
+        
+        // Hide the keyboard and adjust the position
+        walletPasswordTextField.resignFirstResponder()
+        
+        self.titleLabel.isHidden = false
+        
+        if isKeyboardShown {
+            UIView.animate(withDuration: 0.4, animations: {
+                // Wallet Password
+                self.walletPasswordTextField.moveOffset(y: self.keyboardOffsetY)
+                self.walletPasswordUnderLine.moveOffset(y: self.keyboardOffsetY)
+                self.walletPasswordInfoLabel.moveOffset(y: self.keyboardOffsetY)
+                
+                // continueButton
+                self.continueButton.moveOffset(y: self.keyboardOffsetY)
+            })
+            isKeyboardShown = false
+        }
+    }
+    
+    @objc func systemKeyboardWillShow(_ notification: Notification) {
+        if !isKeyboardShown {
+            guard let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
+                return
+            }
+            
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            
+            if #available(iOS 11.0, *) {
+                let window = UIApplication.shared.keyWindow
+                let bottomPadding = window?.safeAreaInsets.bottom ?? 0
+                let keyboardMinY = self.view.frame.height - keyboardHeight - bottomPadding
+                
+                keyboardOffsetY = (continueButton.frame.maxY + 20.0) - keyboardMinY
+                
+                if self.walletPasswordTextField.frame.minY - self.keyboardOffsetY < self.titleLabel.frame.minY {
+                    self.titleLabel.isHidden = true
+                }
+                
+                if keyboardOffsetY > 0 {
+                    UIView.animate(withDuration: 1.0, animations: {
+                        // Wallet Password
+                        self.walletPasswordTextField.moveOffset(y: -self.keyboardOffsetY)
+                        self.walletPasswordUnderLine.moveOffset(y: -self.keyboardOffsetY)
+                        self.walletPasswordInfoLabel.moveOffset(y: -self.keyboardOffsetY)
+                        
+                        // continueButton
+                        self.continueButton.moveOffset(y: -self.keyboardOffsetY)
+                    })
+                    
+                    isKeyboardShown = true
+                }
+            } else {
+                
+            }
+        }
+    }
+    
+    @objc func systemKeyboardWillDisappear(notification: NSNotification?) {
+        print("keyboardWillDisappear")
     }
 }
