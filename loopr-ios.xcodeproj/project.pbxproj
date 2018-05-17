@@ -812,7 +812,7 @@
 		AC78FC3720A176CE00992AE8 /* OrderBookDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBookDataManager.swift; sourceTree = "<group>"; };
 		AC78FC3920A4B0C200992AE8 /* OrderBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBookTableViewCell.swift; sourceTree = "<group>"; };
 		AC78FC3A20A4B0C200992AE8 /* OrderBookTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderBookTableViewCell.xib; sourceTree = "<group>"; };
-		AC798E3F2022B93A0071D477 /* Loopr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loopr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC798E3F2022B93A0071D477 /* loopr-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "loopr-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC798E422022B93A0071D477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC798E492022B93A0071D477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC798E4B2022B93A0071D477 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1552,7 +1552,7 @@
 		AC798E402022B93A0071D477 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AC798E3F2022B93A0071D477 /* Loopr.app */,
+				AC798E3F2022B93A0071D477 /* loopr-ios.app */,
 				AC798E552022B93B0071D477 /* loopr-iosTests.xctest */,
 				AC798E602022B93B0071D477 /* loopr-iosUITests.xctest */,
 			);
@@ -2122,7 +2122,7 @@
 			);
 			name = "loopr-ios";
 			productName = "loopr-ios";
-			productReference = AC798E3F2022B93A0071D477 /* Loopr.app */;
+			productReference = AC798E3F2022B93A0071D477 /* loopr-ios.app */;
 			productType = "com.apple.product-type.application";
 		};
 		AC798E542022B93B0071D477 /* loopr-iosTests */ = {
@@ -3029,7 +3029,7 @@
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.alpha.loopr-ios";
-				PRODUCT_NAME = Loopr;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
@@ -3059,7 +3059,7 @@
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.loopring.alpha.loopr-ios";
-				PRODUCT_NAME = Loopr;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
