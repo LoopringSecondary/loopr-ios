@@ -3087,7 +3087,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Loopr.app/Loopr";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/loopr-ios.app/loopr-ios";
 			};
 			name = Debug;
 		};
@@ -3109,7 +3109,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Loopr.app/Loopr";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/loopr-ios.app/loopr-ios";
 			};
 			name = Release;
 		};
