@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import MessageUI
 
-class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MFMessageComposeViewControllerDelegate {
     
     var appWallet: AppWallet!
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var switchWalletButton: UIButton!
+
+    @IBOutlet weak var shareAddressThroughSMSButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +30,9 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         
         switchWalletButton.title = NSLocalizedString("Switch to this Wallet", comment: "")
         switchWalletButton.setupRoundBlack()
+        
+        shareAddressThroughSMSButton.title = NSLocalizedString("Share Address through SMS", comment: "")
+        shareAddressThroughSMSButton.setupRoundWhite()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -116,4 +122,18 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         self.present(alertController, animated: true, completion: nil)
     }
 
+    @IBAction func pressedShareAddressThroughSMS(_ sender: Any) {
+        if MFMessageComposeViewController.canSendText() {
+            let controller = MFMessageComposeViewController()
+            controller.body = appWallet.address
+            controller.recipients = []
+            controller.messageComposeDelegate = self
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController!, didFinishWith result: MessageComposeResult) {
+        //... handle sms screen actions
+        self.dismiss(animated: true, completion: nil)
+    }
 }
