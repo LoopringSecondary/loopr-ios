@@ -30,6 +30,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     @IBOutlet weak var scanTipLabel: UILabel!
     
     var captureSession = AVCaptureSession()
+    var destinationController: UIViewController?
     
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var qrCodeFrameView: UIView?
@@ -55,21 +56,16 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         
         // Get the camera for capturing videos
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back)
-        
         print("devices: \(deviceDiscoverySession.devices)")
         guard let captureDevice = deviceDiscoverySession.devices.first else {
             print("Failed to get the camera device")
             return
         }
-        
         do {
             let input = try AVCaptureDeviceInput(device: captureDevice)
-            
             captureSession.addInput(input)
-
             let captureMetadataOutput = AVCaptureMetadataOutput()
             captureSession.addOutput(captureMetadataOutput)
-            
             // Set delegate and use the default dispatch queue to execute the call back
             captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
@@ -146,7 +142,6 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     
     func setupScanLine() {
         scanQRCodeView = UIView(frame: CGRect(x: scanView.frame.size.width * 0.2, y: scanView.frame.size.height * 0.2, width: scanView.frame.size.width * 0.6, height: scanView.frame.size.width * 0.6))
-
         scanQRCodeView.layer.borderWidth = 1.0
         scanQRCodeView.layer.borderColor = UIColor.white.cgColor
         scanView.addSubview(scanQRCodeView)
@@ -214,16 +209,17 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         let messageAttribute = NSMutableAttributedString.init(string: alertPrompt.message!)
         messageAttribute.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)], range: NSRange(location: 0, length: (alertPrompt.message?.count)!))
         alertPrompt.setValue(messageAttribute, forKey: "attributedMessage")
-        
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.cancel, handler: nil)
-        
         let confirmAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default) { _ in
             self.delegate?.setResultOfScanningQRCode(valueSent: decodedURL, type: codeType)
-            _ = self.navigationController?.popViewController(animated: true)
+            if let controller = self.destinationController {
+                self.navigationController?.pushViewController(controller, animated: true)
+            } else {
+                self.navigationController?.popViewController(animated: true)
+            }
         }
         alertPrompt.addAction(confirmAction)
         alertPrompt.addAction(cancelAction)
-        
         present(alertPrompt, animated: true, completion: nil)
     }
 
@@ -233,12 +229,8 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             qrCodeFrameView?.frame = CGRect.zero
             return
         }
-        
-        // Get the metadata object.
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
-        
         if [AVMetadataObject.ObjectType.qr].contains(metadataObj.type) {
-            // If the found metadata is equal to the QR code metadata (or barcode) then update the status label's text and set the bounds
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
             print("detected: \(String(describing: metadataObj.stringValue))")

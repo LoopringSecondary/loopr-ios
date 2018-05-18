@@ -16,6 +16,7 @@ class SendCurrentAppWalletDataManager {
     private var nonce: Int64
     private var wethAddress: GethAddress?
     private var protocolAddress: GethAddress?
+    private var userInfo: [String: Any] = [:]
     
     private init() {
         self.nonce = 0
@@ -89,7 +90,7 @@ class SendCurrentAppWalletDataManager {
         }
     }
     
-    func sendTransactionToServer(_ signedTransaction: String, completion: @escaping (String?, Error?) -> Void) {
+    func sendTransactionToServer(signedTransaction: String, completion: @escaping (String?, Error?) -> Void) {
         let start = Date()
         EthereumAPIRequest.eth_sendRawTransaction(data: signedTransaction) { (data, error) in
             guard error == nil && data != nil else {
@@ -277,33 +278,34 @@ class SendCurrentAppWalletDataManager {
         _transfer(data: data, address: contractAddress, amount: GethBigInt.init(0), gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
-    func _transfer(data: Data, address: GethAddress, amount: GethBigInt, gasLimit: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
+    func _sign(data: Data, address: GethAddress, amount: GethBigInt, gasLimit: GethBigInt, completion: @escaping (String?, Error?) -> Void) -> String? {
         _keystore()
-        var userInfo: [String: Any] = [:]
+        let gasPrice = GasDataManager.shared.getGasPriceInWei()
+        let password = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getPassword()
+        let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: self.nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: password)
         do {
-            let gasPrice = GasDataManager.shared.getGasPriceInWei()
-            let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: self.nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getPassword())
             if let signedTransactionData = try signedTransaction?.encodeRLP() {
-                self.sendTransactionToServer("0x" + signedTransactionData.hexString, completion: { (result, error) in
-                    if result != nil && error == nil {
-                        self.nonce += 1
-                        
-                        print(result!)
-                        
-                        LoopringAPIRequest.notifyTransactionSubmitted(txHash: result!, completionHandler: completion)
-                    } else {
-                        completion(nil, error)
-                    }
-                })
-            } else {
-                userInfo["message"] = NSLocalizedString("Failed to sign/encode", comment: "")
-                let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
-                completion(nil, error)
+                return "0x" + signedTransactionData.hexString
             }
         } catch {
-            userInfo["message"] = NSLocalizedString("Failed to encode transaction", comment: "")
+            userInfo["message"] = NSLocalizedString("Failed to sign/encode transaction", comment: "")
             let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
             completion(nil, error)
+        }
+        return nil
+    }
+    
+    func _transfer(data: Data, address: GethAddress, amount: GethBigInt, gasLimit: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
+        if let signedTransaction = _sign(data: data, address: address, amount: amount, gasLimit: gasLimit, completion: completion) {
+            self.sendTransactionToServer(signedTransaction: signedTransaction, completion: { (result, error) in
+                if result != nil && error == nil {
+                    self.nonce += 1
+                    print(result!)
+                    LoopringAPIRequest.notifyTransactionSubmitted(txHash: result!, completionHandler: completion)
+                } else {
+                    completion(nil, error)
+                }
+            })
         }
     }
 }

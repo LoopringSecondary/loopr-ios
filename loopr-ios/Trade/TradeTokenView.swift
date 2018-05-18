@@ -78,7 +78,7 @@ class TradeTokenView: UIView {
             let value: Double = price * amount
             totalPriceInFiatCurrency.text = value.currency
         } else {
-            totalPriceInFiatCurrency.text = ""
+            totalPriceInFiatCurrency.text = 0.0.currency
         }
 
         let icon = UIImage(named: symbol)

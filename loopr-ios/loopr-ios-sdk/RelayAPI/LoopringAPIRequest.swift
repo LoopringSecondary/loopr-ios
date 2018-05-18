@@ -11,6 +11,28 @@ import Foundation
 // https://github.com/Loopring/relay/blob/wallet_v2/LOOPRING_RELAY_API_SPEC_V2.md#loopring_getorders
 class LoopringAPIRequest {
 
+    static func invoke<T: Initable>(method: String, withBody body: inout JSON, _ completionHandler: @escaping (_ response: T?, _ error: Error?) -> Void) {
+        body["method"] = JSON(method)
+        body["id"] = JSON(UUID().uuidString)
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                completionHandler(nil, error)
+                return
+            }
+            var json = JSON(data)
+            if json["result"] != JSON.null {
+                completionHandler(T.init(json["result"]), nil)
+            } else if json["error"] != JSON.null {
+                var userInfo: [String: Any] = [:]
+                let code = json["error"]["code"].intValue
+                userInfo["message"] = json["error"]["message"]
+                let error = NSError(domain: method, code: code, userInfo: userInfo)
+                completionHandler(nil, error)
+            }
+        }
+    }
+    
     // READY
     public static func getBalance(owner: String, completionHandler: @escaping (_ assets: [Asset], _ error: Error?) -> Void) {
         var body: JSON = JSON()
@@ -65,6 +87,29 @@ class LoopringAPIRequest {
                 orders.append(order)
             }
             completionHandler(orders, nil)
+        }
+    }
+    
+    static func getOrderByHash(orderHash: String, completionHandler: @escaping (_ orders: Order?, _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_getOrderByHash"
+        body["params"] = [["orderHash": orderHash]]
+        body["id"] = JSON(UUID().uuidString)
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                completionHandler(nil, error)
+                return
+            }
+            let json = JSON(data)
+            let offerData = json["result"]
+            let originalOrderJson = offerData["originalOrder"]
+            let originalOrder = OriginalOrder(json: originalOrderJson)
+            let orderStatus = OrderStatus(rawValue: offerData["status"].stringValue) ?? OrderStatus.unknown
+            let dealtAmountB = offerData["dealtAmountB"].stringValue
+            let dealtAmountS = offerData["dealtAmountS"].stringValue
+            let order = Order(originalOrder: originalOrder, orderStatus: orderStatus, dealtAmountB: dealtAmountB, dealtAmountS: dealtAmountS)
+            completionHandler(order, nil)
         }
     }
 
@@ -409,45 +454,32 @@ class LoopringAPIRequest {
         }
     }
     
-    static func submitOrder(owner: String, walletAddress: String, tokenS: String, tokenB: String, amountS: String, amountB: String, lrcFee: String, validSince: String, validUntil: String, marginSplitPercentage: UInt8, buyNoMoreThanAmountB: Bool, authAddr: String, authPrivateKey: String? = nil, powNonce: Int, orderType: String = "market_order", v: UInt, r: String, s: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
+    static func submitOrder(owner: String, walletAddress: String, tokenS: String, tokenB: String, amountS: String, amountB: String, lrcFee: String, validSince: String, validUntil: String, marginSplitPercentage: UInt8, buyNoMoreThanAmountB: Bool, authAddr: String, authPrivateKey: String?, powNonce: Int, orderType: String, v: UInt, r: String, s: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
         
         var body: JSON = JSON()
         let protocolValue = RelayAPIConfiguration.protocolAddress
         let delegateAddress = RelayAPIConfiguration.delegateAddress
-        body["method"] = "loopring_submitOrder"
         body["params"] = [["delegateAddress": delegateAddress, "protocol": protocolValue, "owner": owner, "walletAddress": walletAddress, "tokenS": tokenS, "tokenB": tokenB, "amountS": amountS, "amountB": amountB, "authPrivateKey": authPrivateKey, "authAddr": authAddr, "validSince": validSince, "validUntil": validUntil, "lrcFee": lrcFee, "buyNoMoreThanAmountB": buyNoMoreThanAmountB, "marginSplitPercentage": marginSplitPercentage, "powNonce": powNonce, "orderType": orderType, "v": v, "r": r, "s": s]]
-        body["id"] = JSON(UUID().uuidString)
-
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
-            guard let data = data, error == nil else {
-                print("error=\(String(describing: error))")
+        self.invoke(method: "loopring_submitOrder", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
+            guard error == nil && data != nil else {
                 completionHandler(nil, error)
                 return
             }
-            let json = JSON(data)
-            let orderHash = json["result"].stringValue
-            completionHandler(orderHash, nil)
+            completionHandler(data!.respond, nil)
         }
     }
     
-    static func submitRing(owner: String, walletAddress: String, tokenS: String, tokenB: String, amountS: String, amountB: String, lrcFee: String, validSince: String, validUntil: String, marginSplitPercentage: UInt8, buyNoMoreThanAmountB: Bool, authAddr: String, v: UInt, r: String, s: String, makerOrderHash: String, rawTx: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
-        
+    static func submitRing(makerOrderHash: String, takerOrderHash: String, rawTx: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         let protocolValue = RelayAPIConfiguration.protocolAddress
         let delegateAddress = RelayAPIConfiguration.delegateAddress
-        body["method"] = "loopring_submitRingForP2P"
-        body["params"] = [["taker": ["protocol": protocolValue, "delegateAddress": delegateAddress, "owner": owner, "walletAddress": walletAddress, "tokenS": tokenS, "tokenB": tokenB, "amountS": amountS, "amountB": amountB, "authAddr": authAddr, "validSince": validSince, "validUntil": validUntil, "lrcFee": lrcFee, "buyNoMoreThanAmountB": buyNoMoreThanAmountB, "marginSplitPercentage": marginSplitPercentage, "powNonce": 1, "orderType": "p2p_order", "v": v, "r": r, "s": s], "makerOrderHash": makerOrderHash, "rawTx": rawTx]]
-        body["id"] = JSON(UUID().uuidString)
-        
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
-            guard let data = data, error == nil else {
-                print("error=\(String(describing: error))")
+        body["params"] = [["delegateAddress": delegateAddress, "protocol": protocolValue, "takerOrderHash": takerOrderHash, "makerOrderHash": makerOrderHash, "rawTx": rawTx]]
+        self.invoke(method: "loopring_submitRingForP2P", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
+            guard error == nil && data != nil else {
                 completionHandler(nil, error)
                 return
             }
-            let json = JSON(data)
-            let orderHash = json["result"].stringValue
-            completionHandler(orderHash, nil)
+            completionHandler(data!.respond, nil)
         }
     }
 }

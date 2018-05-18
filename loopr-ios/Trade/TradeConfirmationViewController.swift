@@ -2,7 +2,7 @@
 //  TradeConfirmationViewController.swift
 //  loopr-ios
 //
-//  Created by xiaoruby on 3/13/18.
+//  Created by xiaoruby on 3/17/18.
 //  Copyright © 2018 Loopring. All rights reserved.
 //
 
@@ -11,72 +11,50 @@ import Geth
 import SVProgressHUD
 import NotificationBannerSwift
 
-class TradeReviewViewController: UIViewController {
-
+class TradeConfirmationViewController: UIViewController {
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var placeOrderButton: UIButton!
     
-    var tokenSView: TradeTokenView!
-    var tokenBView: TradeTokenView!
-    var arrowRightImageView: UIImageView = UIImageView()
-
-    var qrcodeImageView: UIImageView!
-    var qrcodeImage: CIImage!
-
     // TODO: put the following UILabel and UIView to a UIView?
     var marginSplitLabel: UILabel = UILabel()
     var marginSplitValueLabel: UILabel = UILabel()
-
+    
     var LRCFeeLabel: UILabel = UILabel()
     var LRCFeeValueLabel: UILabel = UILabel()
     var LRCFeeUnderLine: UIView = UIView()
-
+    
     var priceLabel: UILabel = UILabel()
     var priceValueLabel: UILabel = UILabel()
     var priceUnderLine: UIView = UIView()
+    var tokenSView: TradeTokenView!
+    var tokenBView: TradeTokenView!
+    var arrowRightImageView: UIImageView = UIImageView()
     
+    var order: OriginalOrder?
     var verifyInfo: [String: Double]?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationItem.title = NSLocalizedString("Confirmation", comment: "")
         setBackButton()
         
-        // TODO: Review or Confirmation?
-        self.navigationItem.title = NSLocalizedString("Order Details", comment: "")
-        
-        placeOrderButton.title = NSLocalizedString("Share Order", comment: "")
-        placeOrderButton.setupRoundBlack()
-
-        // Setup UI in the scroll view
-        let screensize: CGRect = UIScreen.main.bounds
-        let screenWidth = screensize.width
-        // let screenHeight = screensize.height
-        
+        // Token View
         let paddingY: CGFloat = 20
         let paddingLeft: CGFloat = 15
-        let paddingTop: CGFloat = 30
+        let paddingTop: CGFloat = 100
         let padding: CGFloat = 15
         let rowHeight: CGFloat = 40
         let rowPadding: CGFloat = 10
-
-        // QR code
-        let qrCodeWidth: CGFloat = screenWidth*0.53*UIStyleConfig.scale
-        qrcodeImageView = UIImageView(frame: CGRect(center: CGPoint(x: screenWidth/2, y: paddingTop + qrCodeWidth*0.5), size: CGSize(width: qrCodeWidth, height: qrCodeWidth)))
-        scrollView.addSubview(qrcodeImageView)
+        let screensize: CGRect = UIScreen.main.bounds
+        let screenWidth = screensize.width
         
-        let data = "hello world".data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
-        let filter = CIFilter(name: "CIQRCodeGenerator")
-        filter?.setValue(data, forKey: "inputMessage")
-        filter?.setValue("Q", forKey: "inputCorrectionLevel")
-        qrcodeImage = filter!.outputImage
-
-        let tokenViewMinY: CGFloat = qrcodeImageView.frame.maxY + paddingY
-        tokenSView = TradeTokenView(frame: CGRect(x: 10, y: tokenViewMinY, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
+        tokenSView = TradeTokenView(frame: CGRect(x: 10, y: paddingTop, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
         scrollView.addSubview(tokenSView)
         
-        tokenBView = TradeTokenView(frame: CGRect(x: (screenWidth+10)/2, y: tokenViewMinY, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
+        tokenBView = TradeTokenView(frame: CGRect(x: (screenWidth+10)/2, y: paddingTop, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
         scrollView.addSubview(tokenBView)
         
         arrowRightImageView = UIImageView(frame: CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY), size: CGSize(width: 32*UIStyleConfig.scale, height: 32*UIStyleConfig.scale)))
@@ -87,7 +65,7 @@ class TradeReviewViewController: UIViewController {
         priceLabel.text = NSLocalizedString("Price", comment: "")
         priceLabel.textColor = UIColor.black
         priceLabel.font = FontConfigManager.shared.getLabelFont()
-        priceLabel.frame = CGRect(x: paddingLeft, y: tokenSView.frame.maxY + paddingY, width: 160, height: rowHeight)
+        priceLabel.frame = CGRect(x: paddingLeft, y: tokenSView.frame.maxY + paddingY*5, width: 160, height: rowHeight)
         scrollView.addSubview(priceLabel)
         
         priceValueLabel.textColor = UIColor.black
@@ -123,18 +101,19 @@ class TradeReviewViewController: UIViewController {
         marginSplitLabel.font = FontConfigManager.shared.getLabelFont()
         marginSplitLabel.frame = CGRect(x: paddingLeft, y: LRCFeeLabel.frame.maxY + rowPadding, width: 160, height: rowHeight)
         scrollView.addSubview(marginSplitLabel)
-
+        
         marginSplitValueLabel.text = SettingDataManager.shared.getMarginSplitDescription()
         marginSplitValueLabel.textColor = UIColor.black
         marginSplitValueLabel.textAlignment = .right
         marginSplitValueLabel.font = FontConfigManager.shared.getLabelFont()
         marginSplitValueLabel.frame = CGRect(x: screenWidth - paddingLeft - 160, y: marginSplitLabel.frame.minY, width: 160, height: rowHeight)
         scrollView.addSubview(marginSplitValueLabel)
-
+        
         scrollView.contentSize = CGSize(width: screenWidth, height: marginSplitLabel.frame.maxY + padding)
         
-        // TODO: Use mock data for now.
-        LRCFeeValueLabel.text = "2 LRC"
+        // Button
+        placeOrderButton.setTitle(NSLocalizedString("Place Order", comment: ""), for: .normal)
+        placeOrderButton.setupRoundBlack()
     }
 
     override func didReceiveMemoryWarning() {
@@ -144,31 +123,35 @@ class TradeReviewViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // self.navigationController?.isNavigationBarHidden = false
-
-        tokenSView.update(title: "You send", symbol: TradeDataManager.shared.tokenS.symbol, amount: TradeDataManager.shared.amountTokenS)
-        tokenBView.update(title: "You get", symbol: TradeDataManager.shared.tokenB.symbol, amount: TradeDataManager.shared.amountTokenB)
-        
-        // TODO: the precision should be dynamic
-        let price: String = String(format: "%.6f", TradeDataManager.shared.amountTokenS / TradeDataManager.shared.amountTokenB)
-        priceValueLabel.text = "\(price) \(TradeDataManager.shared.tokenS.symbol)/\(TradeDataManager.shared.tokenB.symbol)"
-        
-        // Remove the blur effect
-        let scaleX = qrcodeImageView.frame.size.width / qrcodeImage.extent.size.width
-        let scaleY = qrcodeImageView.frame.size.height / qrcodeImage.extent.size.height
-        let transformedImage = qrcodeImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
-        qrcodeImageView.image = UIImage.init(ciImage: transformedImage)
+        if let order = self.order {
+            updateLabels(order: order)
+        }
+    }
+    
+    func updateLabels(order: OriginalOrder) {
+        tokenSView.update(title: NSLocalizedString("You will send", comment: ""), symbol: order.tokenSell, amount: order.amountSell)
+        tokenBView.update(title: NSLocalizedString("You will get", comment: ""), symbol: order.tokenBuy, amount: order.amountBuy)
+        let value = order.amountBuy / order.amountSell
+        priceValueLabel.text = "\(value) \(TradeDataManager.shared.tradePair)"
+        if let price = PriceDataManager.shared.getPrice(of: "LRC") {
+            let total = (price * order.lrcFee).currency
+            LRCFeeValueLabel.text = "\(order.lrcFee)LRC ≈ \(total)"
+        }
+        marginSplitValueLabel.text = SettingDataManager.shared.getMarginSplitDescription()
     }
 
-    @IBAction func pressedPlaceOrderButton(_ sender: Any) {
-        print("pressedPlaceOrderButton")
-//        self.verifyInfo = TradeDataManager.shared.verify(order: <#T##OriginalOrder#>, isTaker: true) TODO
+    @IBAction func pressedPlaceOrderButton(_ sender: UIButton) {
+        self.verifyInfo = TradeDataManager.shared.verify(order: order!)
         self.handleVerifyInfo()
     }
-
 }
 
-extension TradeReviewViewController {
+extension TradeConfirmationViewController {
+    
+    func isTaker() -> Bool {
+        return TradeDataManager.shared.isTaker
+    }
+    
     func isBalanceEnough() -> Bool {
         var result: Bool = true
         if let info = self.verifyInfo {
@@ -194,17 +177,16 @@ extension TradeReviewViewController {
             if needApprove() {
                 approve()
             } else {
-                submitRing()
+                submit()
             }
         } else {
-            pushController(orderHash: nil)
+            pushController()
         }
     }
     
-    func pushController(orderHash: String?) {
-        let viewController = ConfirmationResultViewController()
-//        viewController.order = self.order   TODO
-        viewController.orderHash = orderHash
+    func pushController() {
+        let viewController = TradeCompleteViewController()
+        viewController.order = self.order
         viewController.verifyInfo = self.verifyInfo
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -252,37 +234,52 @@ extension TradeReviewViewController {
         }
     }
     
-    func submitRing() {
-        // TODO: call _submitRing
+    func submit() {
+        if !isTaker() {
+            PlaceOrderDataManager.shared._submitOrder(self.order!, completion: completion)
+        } else {
+            PlaceOrderDataManager.shared._submitOrder(self.order!) { (orderHash, error) in
+                guard error == nil && orderHash != nil else {
+                    self.completion(nil, error!)
+                    return
+                }
+                self.order!.hash = orderHash!
+                TradeDataManager.shared.orders[1] = self.order!
+                TradeDataManager.shared._submitRing(completion: self.completion)
+            }
+        }
     }
-    
+
     func complete(_ txHash: String?, _ error: Error?) {
         SVProgressHUD.dismiss()
         guard error == nil && txHash != nil else {
             DispatchQueue.main.async {
-                print("BuyViewController \(error.debugDescription)")
+                print("TradeViewController \(error.debugDescription)")
                 let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
                 banner.duration = 10
                 banner.show()
             }
             return
         }
-        submitRing()
+        submit()
     }
     
     func completion(_ orderHash: String?, _ error: Error?) {
         SVProgressHUD.dismiss()
         guard error == nil && orderHash != nil else {
             DispatchQueue.main.async {
-                print("BuyViewController \(error.debugDescription)")
+                print("TradeViewController \(error.debugDescription)")
                 let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
                 banner.duration = 10
                 banner.show()
             }
             return
         }
-        DispatchQueue.main.async {
-            self.pushController(orderHash: orderHash!)
+        if !isTaker() {
+            DispatchQueue.main.async {
+                self.order?.hash = orderHash!
+                self.pushController()
+            }
         }
     }
 }

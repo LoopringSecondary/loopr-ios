@@ -1476,8 +1476,8 @@
 		AC69914520AC0F95003593AE /* Archive */ = {
 			isa = PBXGroup;
 			children = (
-				ACB729D2205DE21B00DD4DF3 /* TradeConfirmationViewController.swift */,
-				ACB729D3205DE21B00DD4DF3 /* TradeConfirmationViewController.xib */,
+				AC31CE122057B5A400A30335 /* TradeReviewViewController.swift */,
+				AC31CE132057B5A400A30335 /* TradeReviewViewController.xib */,
 				AC5E3E69205DEAC00051ACFC /* TradeCompleteViewController.swift */,
 				AC5E3E6A205DEAC00051ACFC /* TradeCompleteViewController.xib */,
 			);
@@ -1630,8 +1630,8 @@
 				AC56625A20563C05003C925C /* TradeViewController.xib */,
 				AC69913920AA6000003593AE /* SwitchTradeToken */,
 				AC31CE4A205B83B600A30335 /* TradeTokenView.swift */,
-				AC31CE122057B5A400A30335 /* TradeReviewViewController.swift */,
-				AC31CE132057B5A400A30335 /* TradeReviewViewController.xib */,
+				ACB729D2205DE21B00DD4DF3 /* TradeConfirmationViewController.swift */,
+				ACB729D3205DE21B00DD4DF3 /* TradeConfirmationViewController.xib */,
 				AC69914520AC0F95003593AE /* Archive */,
 				ACEC977D20AD57F3003F9DEB /* P2POrderHistoryViewController.swift */,
 				ACEC977E20AD57F3003F9DEB /* P2POrderHistoryViewController.xib */,

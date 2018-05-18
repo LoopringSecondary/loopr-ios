@@ -12,6 +12,7 @@ import Geth
 class TradeDataManager {
     
     static let shared = TradeDataManager()
+    static let seperator: String = "-"
     
     var state: OrderTradeState
     var orders: [OriginalOrder] = []
@@ -19,7 +20,9 @@ class TradeDataManager {
     var makerSignature: SignatureData?
     var takerSignature: SignatureData?
     
+    var isTaker: Bool = false
     var type: TradeType = .buy
+    var makerPrivateKey: String?
     var amountTokenS: Double = 0.0
     var amountTokenB: Double = 0.0
     
@@ -74,6 +77,20 @@ class TradeDataManager {
         let defaults = UserDefaults.standard
         defaults.set(token.symbol, forKey: UserDefaultsKeys.tradeTokenB.rawValue)
     }
+    
+    func getOrder(by hash: String) -> OriginalOrder? {
+        var result: OriginalOrder? = nil
+        let semaphore = DispatchSemaphore(value: 0)        
+        LoopringAPIRequest.getOrderByHash(orderHash: hash) { order, error in
+            guard error == nil && order != nil else {
+                return
+            }
+            result = order!.originalOrder
+            semaphore.signal()
+        }
+        _ = semaphore.wait(timeout: .distantFuture)
+        return result
+    }
 
     func constructTaker(from maker: OriginalOrder) -> OriginalOrder {
         var buyNoMoreThanAmountB: Bool
@@ -98,23 +115,33 @@ class TradeDataManager {
         // P2P 订单 默认 1hour 过期，或增加ui调整
         let until = Int64(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!.timeIntervalSince1970)
         
-        return OriginalOrder(delegate: delegate, address: address, side: side, tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB)
+        return OriginalOrder(delegate: delegate, address: address, side: side, tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: "p2p_order")
     }
     
-    func _submitRing(order: OriginalOrder, makerOrderHash: String, rawTx: String, completion: @escaping (String?, Error?) -> Void) {
-        
-        let data = _generate(from: order)
-        let taker = self.orders[1]
-        SendCurrentAppWalletDataManager.shared._keystore()
-        let signature = web3swift.sign(message: data)!
-        let tokenS = TokenDataManager.shared.getAddress(by: taker.tokenSell)!
-        let tokenB = TokenDataManager.shared.getAddress(by: taker.tokenBuy)!
-        let amountS = GethBigInt.generate(valueInEther: taker.amountSell, symbol: taker.tokenSell)!.hexString
-        let amountB = GethBigInt.generate(valueInEther: taker.amountBuy, symbol: taker.tokenBuy)!.hexString
-        let lrcFee = GethBigInt.generate(valueInEther: taker.lrcFee, symbol: "LRC")!.hexString
-        let validSince = "0x" + String(format: "%2x", taker.validSince)
-        let validUntil = "0x" + String(format: "%2x", taker.validUntil)
-        LoopringAPIRequest.submitRing(owner: taker.address, walletAddress: taker.walletAddress, tokenS: tokenS, tokenB: tokenB, amountS: amountS, amountB: amountB, lrcFee: lrcFee, validSince: validSince, validUntil: validUntil, marginSplitPercentage: taker.marginSplitPercentage, buyNoMoreThanAmountB: taker.buyNoMoreThanAmountB, authAddr: taker.authAddr, v: UInt(signature.v)!, r: signature.r, s: signature.s, makerOrderHash: makerOrderHash, rawTx: rawTx, completionHandler: completion)
+    func validate(completion: @escaping (String?, Error?) -> Void) -> Bool {
+        var result = false
+        if self.orders.count == 2 {
+            let maker = orders[0]
+            let taker = orders[1]
+            if self.makerPrivateKey != nil && maker.hash != ""
+                && taker.hash != "" && taker.authPrivateKey != "" {
+                result = true
+            }
+        } else {
+            var userInfo: [String: Any] = [:]
+            userInfo["message"] = NSLocalizedString("Information of two orders not complete!", comment: "")
+            let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
+            completion(nil, error)
+        }
+        return result
+    }
+    
+    func _submitRing(completion: @escaping (String?, Error?) -> Void) {
+        guard validate(completion: completion) else { return }
+        guard let rawTx = _generate(completion: completion) else { return }
+        let makerOrderHash = orders[0].hash
+        let takerOrderHash = orders[1].hash
+        LoopringAPIRequest.submitRing(makerOrderHash: makerOrderHash, takerOrderHash: takerOrderHash, rawTx: rawTx, completionHandler: completion)
     }
     
     func generateOffset() -> [Any] {
@@ -244,7 +271,8 @@ class TradeDataManager {
         array += generateRList()
         array += insertListCounts()
         array += generateSList()
-        return EthFunctionEncoder.default.encodeParameters(array, methodData: Data())
+        let function = Data("0xe78aadb2".hexBytes)
+        return function + EthFunctionEncoder.default.encodeParameters(array, methodData: Data())
     }
     
     func generateHash() -> Data {
@@ -259,11 +287,13 @@ class TradeDataManager {
         return result
     }
     
-    func _generate(from maker: OriginalOrder) -> Data {
-        let taker = constructTaker(from: maker)
-        self.orders = [maker, taker]
+    func _generate(completion: @escaping (String?, Error?) -> Void) -> String? {
         self.signRinghash()
-        return encode()
+        let data = encode()
+        var error: NSError? = nil
+        let protocolAddress = GethNewAddressFromHex(RelayAPIConfiguration.protocolAddress, &error)!
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "submitRing")!
+        return SendCurrentAppWalletDataManager.shared._sign(data: data, address: protocolAddress, amount: GethBigInt.init(0), gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
     func signHash(privateKey: String, hash: Data) -> SignatureData? {
@@ -279,7 +309,6 @@ class TradeDataManager {
         
         // Create key directory
         let fileManager = FileManager.default
-        
         let keyDirectory = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("signHash")
         try? fileManager.removeItem(at: keyDirectory)
         try? fileManager.createDirectory(at: keyDirectory, withIntermediateDirectories: true, attributes: nil)
@@ -293,14 +322,12 @@ class TradeDataManager {
         // Save the keystore string value to keyDirectory
         let fileURL = keyDirectory.appendingPathComponent("key.json")
         try! keystoreStringValue.write(to: fileURL, atomically: false, encoding: .utf8)
-        
         print(keyDirectory.absoluteString)
         let keydir = keyDirectory.absoluteString.replacingOccurrences(of: "file://", with: "", options: .regularExpression)
-        
         let gethKeystore = GethKeyStore.init(keydir, scryptN: GethLightScryptN, scryptP: GethLightScryptP)!
-        
+
         // Need to call this one just before sign
-        guard let gethAccount: GethAccount = EthAccountCoordinator.default.launch(keystore: gethKeystore, password: password) else {
+        guard let _: GethAccount = EthAccountCoordinator.default.launch(keystore: gethKeystore, password: password) else {
             print("Failed to init EthAccountCoordinator")
             return nil
         }
@@ -310,19 +337,17 @@ class TradeDataManager {
     
     func signRinghash() {
         let hash = generateHash()
-        makerSignature = signHash(privateKey: orders[0].authPrivateKey, hash: hash)
+        makerSignature = signHash(privateKey: self.makerPrivateKey!, hash: hash)
         takerSignature = signHash(privateKey: orders[1].authPrivateKey, hash: hash)
     }
-    
-    // 1. 估计一个gas，从taker中扣款，检查对应eth balance，够则下单，不够失败
-    // 2. 查看sell token getEstimatedAllocatedAllowanceFromServer + amountsell >< 当前allownce => 两次授权 eth
-    func verify(order: OriginalOrder, isTaker: Bool) -> [String: Double] {
+
+    func verify(order: OriginalOrder) -> [String: Double] {
         balanceInfo = [:]
-        checkGasEnough(of: order, isTaker: isTaker)
+        checkGasEnough(of: order)
         return balanceInfo
     }
     
-    func checkGasEnough(of order: OriginalOrder, isTaker: Bool) {
+    func checkGasEnough(of order: OriginalOrder) {
         var result: Double = 0
         if let ethBalance = CurrentAppWalletDataManager.shared.getBalance(of: "ETH"), let tokenGas = calculateGas(for: order.tokenSell, to: order.amountSell) {
             if isTaker {
@@ -365,7 +390,7 @@ class TradeDataManager {
             let lrcPrice = PriceDataManager.shared.getPrice(of: "LRC") {
             return price * amountS * ratio / lrcPrice
         }
-        return nil
+        return 0.0
     }
     
     func startGetOrderStatus() {

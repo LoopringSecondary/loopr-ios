@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
+class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
@@ -37,6 +37,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     var numericKeyboardView: DefaultNumericKeyboard!
 
     var activeTextFieldTag = -1
+    var destinationController = TradeConfirmationViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -209,7 +210,9 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     @objc func pressQRCodeButton(_ sender: Any) {
         print("Selected Scan QR code")
         let viewController = ScanQRCodeViewController()
+        viewController.delegate = self
         viewController.hidesBottomBarWhenPushed = true
+        viewController.destinationController = self.destinationController
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
@@ -241,33 +244,33 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         self.validateRational()
     }
     
+    func constructMaker() -> OriginalOrder? {
+        var buyNoMoreThanAmountB: Bool
+        var tokenSell, tokenBuy: String
+        var amountBuy, amountSell, lrcFee: Double
+        tokenBuy = TradeDataManager.shared.tokenB.symbol
+        tokenSell = TradeDataManager.shared.tokenS.symbol
+        amountBuy = Double(amountBuyTextField.text!)!
+        amountSell = Double(amountSellTextField.text!)!
+        buyNoMoreThanAmountB = false
+        lrcFee = TradeDataManager.shared.getLrcFee(amountSell, tokenSell)!
+        let delegate = RelayAPIConfiguration.delegateAddress
+        let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
+        let since = Int64(Date().timeIntervalSince1970)
+        let until = Int64(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!.timeIntervalSince1970)
+        return OriginalOrder(delegate: delegate, address: address, side: "sell", tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: "p2p_order")
+    }
+    
     func pushController() {
-        let viewController = TradeReviewViewController()
-        viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        print("textFieldShouldBeginEditing")
-        activeTextFieldTag = textField.tag
-        showNumericKeyboard(textField: textField)
-        return true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        print("textFieldDidEndEditing")
-    }
-    
-    func getActiveTextField() -> UITextField? {
-        if activeTextFieldTag == amountSellTextField.tag {
-            return amountSellTextField
-        } else if activeTextFieldTag == amountBuyTextField.tag {
-            return amountBuyTextField
-        } else {
-            return nil
+        if let order = constructMaker() {
+            TradeDataManager.shared.isTaker = false
+            let viewController = TradeConfirmationViewController()
+            viewController.order = order
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
-    
+   
     func updateButton(isValid: Bool) {
         nextButton.isEnabled = isValid
     }
@@ -353,6 +356,27 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         }
         isValid = validateAmountSell() && validateAmountBuy()
         updateButton(isValid: isValid)
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        print("textFieldShouldBeginEditing")
+        activeTextFieldTag = textField.tag
+        showNumericKeyboard(textField: textField)
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("textFieldDidEndEditing")
+    }
+    
+    func getActiveTextField() -> UITextField? {
+        if activeTextFieldTag == amountSellTextField.tag {
+            return amountSellTextField
+        } else if activeTextFieldTag == amountBuyTextField.tag {
+            return amountBuyTextField
+        } else {
+            return nil
+        }
     }
     
     func showNumericKeyboard(textField: UITextField) {
@@ -450,6 +474,21 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
                 currentText = String(currentText.dropLast())
             }
             activeTextField!.text = currentText
+        }
+    }
+    
+    func setResultOfScanningQRCode(valueSent: String, type: QRCodeType) {
+        let values = valueSent.components(separatedBy: TradeDataManager.seperator)
+        guard values.count == 2 else { return }
+        let makerHash = values[0]
+        let makerPrivateKey = values[1]
+        if let maker = TradeDataManager.shared.getOrder(by: makerHash) {
+            let taker = TradeDataManager.shared.constructTaker(from: maker)
+            maker.hash = makerHash
+            TradeDataManager.shared.isTaker = true
+            TradeDataManager.shared.makerPrivateKey = makerPrivateKey
+            TradeDataManager.shared.orders[0] = maker
+            self.destinationController.order = taker
         }
     }
 }

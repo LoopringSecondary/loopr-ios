@@ -235,8 +235,9 @@ class PlaceOrderDataManager {
         let lrcFee = _encodeString(order.lrcFee, "LRC")
         let validSince = "0x" + String(format: "%2x", order.validSince)
         let validUntil = "0x" + String(format: "%2x", order.validUntil)
+        let authPrivateKey = order.orderType == "market_order" ? order.authPrivateKey : nil
         let powNonce = 1
   
-        LoopringAPIRequest.submitOrder(owner: order.address, walletAddress: order.walletAddress, tokenS: tokens, tokenB: tokenb, amountS: amountS, amountB: amountB, lrcFee: lrcFee, validSince: validSince, validUntil: validUntil, marginSplitPercentage: order.marginSplitPercentage, buyNoMoreThanAmountB: order.buyNoMoreThanAmountB, authAddr: order.authAddr, authPrivateKey: order.authPrivateKey, powNonce: powNonce, v: UInt(signature.v)!, r: signature.r, s: signature.s, completionHandler: completion)
+        LoopringAPIRequest.submitOrder(owner: order.address, walletAddress: order.walletAddress, tokenS: tokens, tokenB: tokenb, amountS: amountS, amountB: amountB, lrcFee: lrcFee, validSince: validSince, validUntil: validUntil, marginSplitPercentage: order.marginSplitPercentage, buyNoMoreThanAmountB: order.buyNoMoreThanAmountB, authAddr: order.authAddr, authPrivateKey: authPrivateKey, powNonce: powNonce, orderType: order.orderType, v: UInt(signature.v)!, r: signature.r, s: signature.s, completionHandler: completion)
     }
 }
