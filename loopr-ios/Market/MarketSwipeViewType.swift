@@ -20,7 +20,7 @@ enum MarketSwipeViewType: String, CustomStringConvertible {
         case .favorite: return "Favorite"
         case .LRC: return "LRC"
         case .ETH: return "WETH"
-        case .all: return "All"
+        case .all: return NSLocalizedString("ALL", comment: "")
         }
     }
 

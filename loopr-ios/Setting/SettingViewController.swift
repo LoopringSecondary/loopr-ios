@@ -13,7 +13,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var settingsTableView: UITableView!
     
     let sectionTitles = [NSLocalizedString("User Preferences", comment: ""), NSLocalizedString("Trading", comment: ""), NSLocalizedString("Relay", comment: ""), NSLocalizedString("About", comment: "")]
-    let sectionRows = [2, 3, 1, 4]
+    let sectionRows = [2, 3, 1, 1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +22,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationItem.title = NSLocalizedString("Settings", comment: "")
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
+        settingsTableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -178,7 +179,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func section3Cell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
-            return createBasicTableCell(title: "Default Relay", detailTitle: RelayAPIConfiguration.baseURL)
+            return createBasicTableCell(title: NSLocalizedString("Default Relay", comment: ""), detailTitle: RelayAPIConfiguration.baseURL)
         /*
         case 1:
             return createBasicTableCell(title: "Backup Loopring Relay", detailTitle: "27.0.0.01")
@@ -195,6 +196,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         switch row {
         case 0:
             return createBasicTableCell(title: NSLocalizedString("App Version", comment: ""), detailTitle: getAppVersion())
+        /*
         case 1:
             return createDetailTableCell(title: "Website", detailTitle: "loopring.org")
         /*
@@ -207,6 +209,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             return createBasicTableCell(title: NSLocalizedString("Support", comment: ""), detailTitle: "help@loopring.org")
         case 3:
             return createBasicTableCell(title: "Copyright", detailTitle: "Loopring 2018")
+        */
         default:
             return UITableViewCell()
         }
