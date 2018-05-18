@@ -65,7 +65,7 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
         // walletPasswordTextField.inputView = UIView()
         walletPasswordTextField.theme_tintColor = GlobalPicker.textColor
         walletPasswordTextField.font = FontConfigManager.shared.getLabelFont(size: 19)
-        walletPasswordTextField.placeholder = "Set a password"
+        walletPasswordTextField.placeholder = ""
         walletPasswordTextField.contentMode = UIViewContentMode.bottom
         walletPasswordTextField.frame = CGRect(x: padding, y: titleLabel.frame.maxY + 90, width: screenWidth-padding*2, height: 40)
         view.addSubview(walletPasswordTextField)
@@ -75,7 +75,7 @@ class GenerateWalletConfirmPasswordViewController: UIViewController, UITextField
         view.addSubview(walletPasswordUnderLine)
         
         walletPasswordInfoLabel.frame = CGRect(x: padding, y: walletPasswordTextField.frame.maxY + 9, width: screenWidth - padding * 2, height: 16)
-        walletPasswordInfoLabel.text = NSLocalizedString("Please set a password", comment: "")
+        walletPasswordInfoLabel.text = NSLocalizedString("Please enter a password", comment: "")
         walletPasswordInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
         walletPasswordInfoLabel.textColor = UIStyleConfig.red
         walletPasswordInfoLabel.alpha = 0.0

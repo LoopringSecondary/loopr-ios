@@ -59,6 +59,7 @@
 "Invalid keystore. Please enter again." = "Keystore无法导入。请重新输入。";
 "Mnemonic Password (optional)" = "助记词密码 (可选)";
 "Please set a password" = "请设置密码";
+"Please enter a password" = "请输入密码";
 "Copy address to clipboard successfully!" = "成功复制地址到剪切板!";
 "Congratulations!" = "创建成功!";
 "Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage." = "您的钱包已创建成功。为了备份钱包，请花一点时间写下助记词。助记词会用于恢复钱包。请不要分享助记词给任何人，不要存云端。";
@@ -111,3 +112,7 @@
 "Please enter a wallet name" = "请输入钱包名字";
 "Invalid wallet name" = "钱包名字无效";
 "Invalid password" = "密码无效";
+"Go Back" = "返回";
+"Select Wallet" = "选择钱包";
+"Choose Wallet" = "选择钱包";
+"Enter" = "进入";

@@ -105,7 +105,7 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
     
     @objc func pressedEnterButton() {
         if let appWallet = self.appWallet {
-            let alertController = UIAlertController(title: "Choose Wallet: \(appWallet.name)",
+            let alertController = UIAlertController(title: NSLocalizedString("Choose Wallet", comment: "") + ": \(appWallet.name)",
                 message: nil,
                 preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in

@@ -85,7 +85,7 @@ class SetupViewController: UIViewController {
         if isCreatingFirstWallet {
             
         } else {
-            button.title = "Go Back"
+            button.title = NSLocalizedString("Go Back", comment: "")
             button.frame = CGRect(x: 80, y: screenHeight - bottomPadding - 47 - 10, width: screenWidth - 80 * 2, height: 47)
             button.setRightImage(imageName: "Arrow-down-black-bold", imagePaddingTop: 3, imagePaddingLeft: 5, titlePaddingRight: 10)
         }

@@ -59,6 +59,7 @@
 "Invalid keystore. Please enter again." = "Invalid keystore. Please enter again.";
 "Mnemonic Password (optional)" = "Mnemonic Password (optional)";
 "Please set a password" = "Please set a password";
+"Please enter a password" = "Please enter a password";
 "Copy address to clipboard successfully!" = "Copy address to clipboard successfully!";
 "Congratulations!" = "Congratulations!";
 "Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage." = "Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage.";
@@ -111,3 +112,7 @@
 "Please enter a wallet name" = "Please enter a wallet name";
 "Invalid wallet name" = "Invalid wallet name";
 "Invalid password" = "Invalid password";
+"Go Back" = "Go Back";
+"Select Wallet" = "Select Wallet";
+"Choose Wallet" = "Choose Wallet";
+"Enter" = "Enter";
