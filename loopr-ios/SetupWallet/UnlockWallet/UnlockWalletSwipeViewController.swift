@@ -21,7 +21,7 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Unlock Wallet", comment: "")
+        self.navigationItem.title = NSLocalizedString("Import Wallet", comment: "")
         setBackButton()
         
         self.navigationController?.isNavigationBarHidden = false

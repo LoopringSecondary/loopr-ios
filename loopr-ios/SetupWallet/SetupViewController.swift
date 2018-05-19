@@ -77,6 +77,7 @@ class SetupViewController: UIViewController {
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
 
+        loopringLogoImageView.isHidden = true
         loopringLogoImageView.frame = CGRect(x: 24, y: 64, width: 136, height: 41)
         taglineLabel.frame = CGRect(x: 24, y: 119, width: screenWidth - 24 * 2, height: 20)
 
