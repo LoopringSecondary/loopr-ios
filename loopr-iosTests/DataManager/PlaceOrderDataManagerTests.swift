@@ -103,10 +103,10 @@ class PlaceOrderDataManagerTests: XCTestCase {
         // marginSplit 50%
         datass.append(contentsOf: [50])
         
-        let SignatureData = web3swift.sign(message: datass)!
-        print(SignatureData.r)
-        print(SignatureData.s)
-        print(SignatureData.v)
+        let (signatureData, _) = web3swift.sign(message: datass)
+        print(signatureData!.r)
+        print(signatureData!.s)
+        print(signatureData!.v)
     }
     
     func testBigValue() {
@@ -117,11 +117,5 @@ class PlaceOrderDataManagerTests: XCTestCase {
         let now = Int64(Date().timeIntervalSince1970)
         a = PlaceOrderDataManager.shared._encode(now)
         print(a)
-    }
-    
-    func testCancelOrder() {
-        let order = OriginalOrder(delegate: "0x17233e07c67d086464fD408148c3ABB56245FA64", address: "0xb94065482Ad64d4c2b9252358D746B39e820A582", side: "sell", tokenS: "LRC", tokenB: "WETH", validSince: Int64("0x5aeff2b5".dropFirst(2), radix: 16)!, validUntil: Int64("0x5af14435".dropFirst(2), radix: 16)!, amountBuy: 3, amountSell: 2000, lrcFee: 5.53, buyNoMoreThanAmountB: false, market: "LRC-WETH", hash: "0xefe541de23ef69eac1e2db0800eaf3c5f4180183fe0ebcf82ef2b2594a2cb054", v: 27, r: "0xb994a2816b643fa2b4e97add1d3c9651fd2a1e29ea6ad8d92b89eadabf411e32", s: "0x19342c8b83f314812af9ff18c196368b34549151d3e30026223f91ca01bc0894")
-        let data = SendCurrentAppWalletDataManager.shared._encodeOrder(order: order)
-        print(data.hexString)
     }
 }

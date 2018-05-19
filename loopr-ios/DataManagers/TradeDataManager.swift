@@ -17,6 +17,7 @@ class TradeDataManager {
     var state: OrderTradeState
     var orders: [OriginalOrder] = []
     var balanceInfo: [String: Double] = [:]
+    var errorMessage: [String: String] = [:]
     var makerSignature: SignatureData?
     var takerSignature: SignatureData?
     
@@ -56,6 +57,19 @@ class TradeDataManager {
         }
         self.tokenB = tokenB ?? Token(symbol: "WETH")!
         self.updatePair()
+        self.setupErrorMessage()
+    }
+    
+    func setupErrorMessage() {
+        self.errorMessage =
+            ["10001": NSLocalizedString("Sorry, system error, please try again later", comment: ""),
+             "50001": NSLocalizedString("Sorry, selling order does not exist, could not complete this order", comment: ""),
+             "50002": NSLocalizedString("Sorry, only p2p order could be submitted, could not complete this order", comment: ""),
+             "50003": NSLocalizedString("Sorry, selling order already dealt with another buying order, please try with other orders", comment: ""),
+             "50004": NSLocalizedString("Sorry, selling and buying price did not match between two orders, could not complete this order", comment: ""),
+             "50005": NSLocalizedString("Sorry, owner of buying order is the same as selling's, could not complete this order", comment: ""),
+             "50006": NSLocalizedString("Sorry, buying order has been expired, please try with other orders", comment: ""),
+             "50008": NSLocalizedString("Sorry, buying order does not exist, could not complete this order", comment: "")]
     }
     
     func updatePair() {
@@ -111,11 +125,12 @@ class TradeDataManager {
         lrcFee = getLrcFee(amountSell, tokenSell)!
         let delegate = RelayAPIConfiguration.delegateAddress
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
-        let since = Int64(Date().timeIntervalSince1970)
         // P2P 订单 默认 1hour 过期，或增加ui调整
+        let since = Int64(Date().timeIntervalSince1970)
         let until = Int64(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!.timeIntervalSince1970)
-        
-        return OriginalOrder(delegate: delegate, address: address, side: side, tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: "p2p_order")
+        var order = OriginalOrder(delegate: delegate, address: address, side: side, tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: "p2p_order")
+        PlaceOrderDataManager.shared.completeOrder(&order)
+        return order
     }
     
     func validate(completion: @escaping (String?, Error?) -> Void) -> Bool {
@@ -141,7 +156,17 @@ class TradeDataManager {
         guard let rawTx = _generate(completion: completion) else { return }
         let makerOrderHash = orders[0].hash
         let takerOrderHash = orders[1].hash
-        LoopringAPIRequest.submitRing(makerOrderHash: makerOrderHash, takerOrderHash: takerOrderHash, rawTx: rawTx, completionHandler: completion)
+        LoopringAPIRequest.submitRing(makerOrderHash: makerOrderHash, takerOrderHash: takerOrderHash, rawTx: rawTx, completionHandler: { (txHash, error) in
+            guard txHash != nil && error == nil else {
+                completion(nil, error!)
+                return
+            }
+            if let error = self.generateErrorMessage(errorCode: txHash!) {
+                completion(nil, error)
+                return
+            }
+            completion(txHash, nil)
+        })
     }
     
     func generateOffset() -> [Any] {
@@ -152,7 +177,7 @@ class TradeDataManager {
         result.append(GethBigInt.init(Int64(byteLength * 34)))
         result.append(GethBigInt.init(Int64(byteLength * 37)))
         result.append(GethBigInt.init(Int64(byteLength * 42)))
-        result.append(GethBigInt.init(Int64(byteLength * 45)))
+        result.append(GethBigInt.init(Int64(byteLength * 47)))
         return result
     }
     
@@ -192,10 +217,12 @@ class TradeDataManager {
         for order in orders {
             let amountSell = GethBigInt.generate(valueInEther: order.amountSell, symbol: order.tokenSell)!
             result.append(amountSell)
-            result.append(GethBigInt.generate(valueInEther: order.amountBuy, symbol: order.tokenBuy)!)
+            let amountBuy = GethBigInt.generate(valueInEther: order.amountBuy, symbol: order.tokenBuy)!
+            result.append(amountBuy)
             result.append(GethBigInt.init(order.validSince))
             result.append(GethBigInt.init(order.validUntil))
-            result.append(GethBigInt.init(0)) // 对手单, 不需要lrcfee
+            let lrcFee = GethBigInt.generate(valueInEther: order.lrcFee, symbol: "LRC")!
+            result.append(lrcFee)
             result.append(amountSell)
         }
         return result
@@ -230,28 +257,37 @@ class TradeDataManager {
         return result
     }
     
-    func generateRList() -> [Any] {
-        var result: [Any] = []
+    func generateRList() -> Data {
+        var data: Data = Data()
+        let value = GethBigInt.init(Int64(self.orderCount * 2))!
+        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
         for order in orders {
-            result.append(order.r.hexBytes)
+            data.append(contentsOf: order.r.hexBytes)
         }
         if let maker = makerSignature, let taker = takerSignature {
-            result.append(maker.r.hexBytes) // TODO: check here
-            result.append(taker.r.hexBytes)
+            data.append(contentsOf: maker.r.hexBytes)
+            data.append(contentsOf: taker.r.hexBytes)
         }
-        return result
+        return data
     }
     
-    func generateSList() -> [Any] {
-        var result: [Any] = []
+    func generateSList() -> Data {
+        var data: Data = Data()
+        let value = GethBigInt.init(Int64(self.orderCount * 2))!
+        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
         for order in orders {
-            result.append(order.r.hexBytes)
+            data.append(contentsOf: order.s.hexBytes)
         }
         if let maker = makerSignature, let taker = takerSignature {
-            result.append(maker.s.hexBytes) // TODO: check here
-            result.append(taker.s.hexBytes)
+            data.append(contentsOf: maker.s.hexBytes)
+            data.append(contentsOf: taker.s.hexBytes)
         }
-        return result
+        return data
+    }
+    
+    func encode(array: [Any]) -> Data {
+        let method = Data()
+        return EthFunctionEncoder.default.encodeParameters(array, method)
     }
     
     func encode() -> Data {
@@ -267,12 +303,11 @@ class TradeDataManager {
         array += generateFlag()
         array += insertListCounts()
         array += generateVList()
-        array += insertListCounts()
-        array += generateRList()
-        array += insertListCounts()
-        array += generateSList()
-        let function = Data("0xe78aadb2".hexBytes)
-        return function + EthFunctionEncoder.default.encodeParameters(array, methodData: Data())
+        var data = encode(array: array)
+        data = Data("0xe78aadb2".hexBytes) + data
+        data += generateRList()
+        data += generateSList()
+        return data
     }
     
     func generateHash() -> Data {
@@ -286,9 +321,23 @@ class TradeDataManager {
         result.append(contentsOf: [0, 0]) // feeSelection = 0 UInt16
         return result
     }
+
+    func generateErrorMessage(errorCode: String) -> Error? {
+        var result: NSError? = nil
+        let code = Int(errorCode) ?? 0
+        var userInfo: [String: String] = [:]
+        if self.errorMessage.keys.contains(errorCode) {
+            userInfo["message"] = errorMessage[errorCode]
+            result = NSError(domain: "submitRing", code: code, userInfo: userInfo)
+        } else if !errorCode.starts(with: "0x") {
+            userInfo["message"] = errorCode
+            result = NSError(domain: "submitRing", code: code, userInfo: userInfo)
+        }
+        return result
+    }
     
     func _generate(completion: @escaping (String?, Error?) -> Void) -> String? {
-        self.signRinghash()
+        self.signRinghash() // cost time in debug
         let data = encode()
         var error: NSError? = nil
         let protocolAddress = GethNewAddressFromHex(RelayAPIConfiguration.protocolAddress, &error)!
@@ -331,8 +380,8 @@ class TradeDataManager {
             print("Failed to init EthAccountCoordinator")
             return nil
         }
-        let signature = web3swift.sign(message: hash)!
-        return signature
+        let (signature, _) = web3swift.sign(message: hash)
+        return signature!
     }
     
     func signRinghash() {
@@ -344,7 +393,20 @@ class TradeDataManager {
     func verify(order: OriginalOrder) -> [String: Double] {
         balanceInfo = [:]
         checkGasEnough(of: order)
+        checkBalanceEnough(of: order)
         return balanceInfo
+    }
+    
+    func checkBalanceEnough(of order: OriginalOrder) {
+        guard isTaker else { return }
+        var result: Double = 0
+        let tokens = order.tokenSell
+        if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
+            result = balance - order.amountSell
+        }
+        if result < 0 {
+            balanceInfo["MINUS_\(tokens)"] = -result
+        }
     }
     
     func checkGasEnough(of order: OriginalOrder) {

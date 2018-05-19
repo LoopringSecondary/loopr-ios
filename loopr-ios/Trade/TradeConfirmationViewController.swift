@@ -243,8 +243,6 @@ extension TradeConfirmationViewController {
                     self.completion(nil, error!)
                     return
                 }
-                self.order!.hash = orderHash!
-                TradeDataManager.shared.orders[1] = self.order!
                 TradeDataManager.shared._submitRing(completion: self.completion)
             }
         }

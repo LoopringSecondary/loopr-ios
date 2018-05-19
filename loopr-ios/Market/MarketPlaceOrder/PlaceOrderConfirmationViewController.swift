@@ -252,7 +252,7 @@ extension PlaceOrderConfirmationViewController {
             if needApprove() {
                 approve()
             } else {
-                submitOrder()
+                submit()
             }
         } else {
             pushController(orderHash: nil)
@@ -310,7 +310,7 @@ extension PlaceOrderConfirmationViewController {
         }
     }
     
-    func submitOrder() {
+    func submit() {
         PlaceOrderDataManager.shared._submitOrder(self.order!) { (orderHash, error) in
             if orderHash != nil && error == nil {
                 UserDefaults.standard.set(false, forKey: UserDefaultsKeys.cancelledAll.rawValue)
@@ -330,7 +330,7 @@ extension PlaceOrderConfirmationViewController {
             }
             return
         }
-        submitOrder()
+        submit()
     }
     
     func completion(_ orderHash: String?, _ error: Error?) {

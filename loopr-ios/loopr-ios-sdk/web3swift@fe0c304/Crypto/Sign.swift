@@ -12,8 +12,8 @@ import CryptoSwift
 
 open class Sign {
 
-    open class func sign(message: Data, keystore: GethKeyStore, account: GethAccount, passphrase: String) -> SignatureData? {
-        let hashedMessage = message.sha3(SHA3.Variant.keccak256) // 这里和接口返回值一致 getorder()
+    open class func sign(message: Data, keystore: GethKeyStore, account: GethAccount, passphrase: String) -> (SignatureData?, String?) {
+        let hashedMessage = message.sha3(SHA3.Variant.keccak256)
         let header: Data = "\u{0019}Ethereum Signed Message:\n32".data(using: .utf8)!
         let newData: Data = header + hashedMessage
         let secret = newData.sha3(SHA3.Variant.keccak256)
@@ -29,13 +29,15 @@ open class Sign {
         
             if let recId = Int(v.toHexString()) {
                 let headerByte = recId + 27
-                return SignatureData(v: headerByte, r: r, s: s)
+                let hash = "0x" + hashedMessage.hexString
+                let signature = (SignatureData(v: headerByte, r: r, s: s))
+                return (signature, hash)
             } else {
-                return nil
+                return (nil, nil)
             }
         } catch {
             print("Failed to signhash \(error)")
-            return nil
+            return (nil, nil)
         }
     }
     

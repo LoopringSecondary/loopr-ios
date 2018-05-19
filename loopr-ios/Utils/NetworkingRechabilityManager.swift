@@ -162,17 +162,17 @@ class NetworkingReachabilityManager {
 }
 
 extension NetworkReachabilityStatus: Equatable {
+    
     public static func == (lhs: NetworkReachabilityStatus, rhs: NetworkReachabilityStatus) -> Bool {
-            switch (lhs, rhs) {
-            case (.unknown, .unknown):
-                return true
-            case (.notReachable, .notReachable):
-                return true
-            case let (.reachable(lhsConnectionType), .reachable(rhsConnectionType)):
-                return lhsConnectionType == rhsConnectionType
-            default:
-                return false
-            }
+        switch (lhs, rhs) {
+        case (.unknown, .unknown):
+            return true
+        case (.notReachable, .notReachable):
+            return true
+        case let (.reachable(lhsConnectionType), .reachable(rhsConnectionType)):
+            return lhsConnectionType == rhsConnectionType
+        default:
+            return false
         }
-
+    }
 }

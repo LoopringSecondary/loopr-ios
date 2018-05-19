@@ -11,7 +11,7 @@ import XCTest
 
 class LoopringAPIRequestTests: XCTestCase {
     
-    let testAddress = "0x87c6117ef0935b1Df3f9D93D9b39516eB8141870"
+    let testAddress = "0x8C82798e7E491e9Bf6E6e28e2Bc31F781D1175A2"
     
     override func setUp() {
         super.setUp()
@@ -45,7 +45,7 @@ class LoopringAPIRequestTests: XCTestCase {
     
     func testGetOrders() {
         let expectation = XCTestExpectation()
-        LoopringAPIRequest.getOrders(owner: testAddress, orderType: "p2p_order") { orders, error in
+        LoopringAPIRequest.getOrders(owner: testAddress, orderType: "market_order") { orders, error in
             XCTAssertNotNil(orders)
             expectation.fulfill()
         }

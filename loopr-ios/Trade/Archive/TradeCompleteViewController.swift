@@ -101,6 +101,7 @@ class TradeCompleteViewController: UIViewController {
             detailsButton.backgroundColor = UIColor.white
         } else {
             detailsButton.isEnabled = false
+            detailsButton.layer.borderColor = UIColor.clear.cgColor
             detailsButton.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
         }
         doneButton.title = NSLocalizedString("Done", comment: "")

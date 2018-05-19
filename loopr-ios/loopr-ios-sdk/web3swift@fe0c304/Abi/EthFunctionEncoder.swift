@@ -18,12 +18,10 @@ open class EthFunctionEncoder {
     
     open func encode(_ function: EthFunction) -> Data {
         let parameters = function.getInputParameters()
-
         let methodSignature = buildMethodSignature(function.getName(), parameters: parameters)
         let methodId = buildMethodId(methodSignature)
-        
         print("EthFunctionEncoder : \(methodId.toHexString())")
-        return encodeParameters(parameters, methodData: methodId)
+        return encodeParameters(parameters, methodId)
     }
     
     open func encodeToValueTxFee(recipient: GethAddress, amount: GethBigInt, txFee: GethBigInt) -> Data {
@@ -47,7 +45,7 @@ open class EthFunctionEncoder {
         return combinedData
     }
     
-    open func encodeParameters(_ parameters: Array<Any>, methodData: Data) -> Data {
+    open func encodeParameters(_ parameters: Array<Any>, _ methodData: Data) -> Data {
         var result = methodData
         let dynamicDataOffset: Int = _getLength(parameters) * EthType.MAX_BYTE_LENGTH
         

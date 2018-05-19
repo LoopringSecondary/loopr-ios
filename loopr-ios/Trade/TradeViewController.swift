@@ -258,7 +258,9 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         let since = Int64(Date().timeIntervalSince1970)
         let until = Int64(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!.timeIntervalSince1970)
-        return OriginalOrder(delegate: delegate, address: address, side: "sell", tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: "p2p_order")
+        var order = OriginalOrder(delegate: delegate, address: address, side: "sell", tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: "p2p_order")
+        PlaceOrderDataManager.shared.completeOrder(&order)
+        return order
     }
     
     func pushController() {
@@ -486,8 +488,9 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             let taker = TradeDataManager.shared.constructTaker(from: maker)
             maker.hash = makerHash
             TradeDataManager.shared.isTaker = true
+            TradeDataManager.shared.orders.insert(maker, at: 0)
+            TradeDataManager.shared.orders.insert(taker, at: 1)
             TradeDataManager.shared.makerPrivateKey = makerPrivateKey
-            TradeDataManager.shared.orders[0] = maker
             self.destinationController.order = taker
         }
     }

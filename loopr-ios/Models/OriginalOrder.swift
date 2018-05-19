@@ -29,11 +29,11 @@ class OriginalOrder {
     let authAddr: String
     let marginSplitPercentage: UInt8
     let orderType: String
-    let v: UInt8
-    let r: String
-    let s: String
+    var v: UInt
+    var r: String
+    var s: String
     
-    init(delegate: String, address: String, side: String, tokenS: String, tokenB: String, validSince: Int64, validUntil: Int64, amountBuy: Double, amountSell: Double, lrcFee: Double, buyNoMoreThanAmountB: Bool, orderType: String = "market_order", market: String = "", hash: String = "", v: UInt8 = 0, r: String = "", s: String = "") {
+    init(delegate: String, address: String, side: String, tokenS: String, tokenB: String, validSince: Int64, validUntil: Int64, amountBuy: Double, amountSell: Double, lrcFee: Double, buyNoMoreThanAmountB: Bool, orderType: String = "market_order", market: String = "") {
         self.delegate = delegate
         self.address = address
         self.market = market
@@ -45,7 +45,6 @@ class OriginalOrder {
         self.amountBuy = amountBuy
         self.lrcFee = lrcFee
         self.side = side
-        self.hash = hash
         self.orderType = orderType
         self.buyNoMoreThanAmountB = buyNoMoreThanAmountB
         let (privateKey, walletAddress) = Wallet.generateRandomWallet()
@@ -53,9 +52,10 @@ class OriginalOrder {
         self.authPrivateKey = privateKey
         self.walletAddress = RelayAPIConfiguration.orderWalletAddress
         self.marginSplitPercentage = UInt8(SettingDataManager.shared.getMarginSplit() * 100)
-        self.v = v
-        self.r = r
-        self.s = s
+        self.hash = ""
+        self.v = 0
+        self.r = ""
+        self.s = ""
     }
 
     init(json: JSON) {
@@ -67,7 +67,7 @@ class OriginalOrder {
         self.buyNoMoreThanAmountB = json["buyNoMoreThanAmountB"].boolValue
         self.side = json["side"].stringValue
         self.hash = json["hash"].stringValue
-        self.v = UInt8(json["v"].stringValue.dropFirst(2), radix: 16)!
+        self.v = UInt(json["v"].stringValue.dropFirst(2), radix: 16)!
         self.r = json["r"].stringValue
         self.s = json["s"].stringValue
         self.orderType = json["orderType"].stringValue

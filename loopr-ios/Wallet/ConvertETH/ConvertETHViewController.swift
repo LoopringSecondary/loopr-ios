@@ -255,7 +255,6 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
 
     func completion(_ txHash: String?, _ error: Error?) {
         guard error == nil && txHash != nil else {
-            // Show toast
             DispatchQueue.main.async {
                 let banner = NotificationBanner.generate(title: "Insufficient funds for gas x price + value", style: .danger)
                 banner.duration = 5
@@ -264,7 +263,6 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             return
         }
         print("Result of transfer is \(txHash!)")
-        // Show toast
         DispatchQueue.main.async {
             let banner = NotificationBanner.generate(title: "Success. Result of transfer is \(txHash!)", style: .success)
             banner.duration = 5
@@ -329,14 +327,11 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemLongPressed item: NumericKeyboardItem, atPosition position: Position) {
         print("Long pressed keyboard: (\(position.row), \(position.column))")
-        
         let activeTextField = getActiveTextField()
         guard activeTextField != nil else {
             return
         }
-        
         var currentText = activeTextField!.text ?? ""
-        
         if (position.row, position.column) == (3, 2) {
             if currentText.count > 0 {
                 currentText = String(currentText.dropLast())

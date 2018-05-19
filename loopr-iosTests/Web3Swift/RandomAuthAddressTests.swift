@@ -122,13 +122,9 @@ class SignRandomAuthAddressTests: XCTestCase {
             XCTFail()
             return
         }
-        
         print("current address: \(gethAccount.getAddress().getHex())")
         XCTAssertEqual(address, gethAccount.getAddress().getHex()!)
-        
-        let signature = web3swift.sign(message: Data())!
-        print("signature v: \(signature.v), r: \(signature.r), s: \(signature.s)")
+        let (signature, _) = web3swift.sign(message: Data())
+        print("signature v: \(signature!.v), r: \(signature!.r), s: \(signature!.s)")
     }
-
-    
 }

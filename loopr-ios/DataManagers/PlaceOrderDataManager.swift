@@ -223,11 +223,18 @@ class PlaceOrderDataManager {
         return bigInt.hexString
     }
     
-    func _submitOrder(_ order: OriginalOrder, completion: @escaping (String?, Error?) -> Void) {
+    func completeOrder(_ order: inout OriginalOrder) {
         let orderData = getOrderHash(order: order)
-
         SendCurrentAppWalletDataManager.shared._keystore()
-        let signature = web3swift.sign(message: orderData)!
+        if case (let signature?, let hash?) = web3swift.sign(message: orderData) {
+            order.hash = hash
+            order.r = signature.r
+            order.s = signature.s
+            order.v = UInt(signature.v)!
+        }
+    }
+    
+    func _submitOrder(_ order: OriginalOrder, completion: @escaping (String?, Error?) -> Void) {
         let tokens = tokenManager.getAddress(by: order.tokenSell)!
         let tokenb = tokenManager.getAddress(by: order.tokenBuy)!
         let amountB = _encodeString(order.amountBuy, order.tokenBuy)
@@ -238,6 +245,6 @@ class PlaceOrderDataManager {
         let authPrivateKey = order.orderType == "market_order" ? order.authPrivateKey : nil
         let powNonce = 1
   
-        LoopringAPIRequest.submitOrder(owner: order.address, walletAddress: order.walletAddress, tokenS: tokens, tokenB: tokenb, amountS: amountS, amountB: amountB, lrcFee: lrcFee, validSince: validSince, validUntil: validUntil, marginSplitPercentage: order.marginSplitPercentage, buyNoMoreThanAmountB: order.buyNoMoreThanAmountB, authAddr: order.authAddr, authPrivateKey: authPrivateKey, powNonce: powNonce, orderType: order.orderType, v: UInt(signature.v)!, r: signature.r, s: signature.s, completionHandler: completion)
+        LoopringAPIRequest.submitOrder(owner: order.address, walletAddress: order.walletAddress, tokenS: tokens, tokenB: tokenb, amountS: amountS, amountB: amountB, lrcFee: lrcFee, validSince: validSince, validUntil: validUntil, marginSplitPercentage: order.marginSplitPercentage, buyNoMoreThanAmountB: order.buyNoMoreThanAmountB, authAddr: order.authAddr, authPrivateKey: authPrivateKey, powNonce: powNonce, orderType: order.orderType, v: order.v, r: order.r, s: order.s, completionHandler: completion)
     }
 }

@@ -21,10 +21,10 @@ class Web3swift {
         return EthAccountCoordinator.default.sign(address: address, encodedFunctionData: encodedFunctionData, nonce: nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: password)
     }
     
-    public func sign(message: Data) -> SignatureData? {
+    public func sign(message: Data) -> (SignatureData?, String?) {
         guard let defaultKeystore = EthAccountCoordinator.default.keystore, let defaultAccount = EthAccountCoordinator.default.account, let password = EthAccountCoordinator.default.defaultConfiguration.password else {
             print("Default Account not set, Please use Sign.sign instead")
-            return nil
+            return (nil, nil)
         }
         return Sign.sign(message: message, keystore: defaultKeystore, account: defaultAccount, passphrase: password)
     }
