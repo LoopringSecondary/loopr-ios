@@ -26,7 +26,7 @@ class LoopringAPIRequest {
             } else if json["error"] != JSON.null {
                 var userInfo: [String: Any] = [:]
                 let code = json["error"]["code"].intValue
-                userInfo["message"] = json["error"]["message"]
+                userInfo["message"] = json["error"]["message"].stringValue
                 let error = NSError(domain: method, code: code, userInfo: userInfo)
                 completionHandler(nil, error)
             }
@@ -462,7 +462,7 @@ class LoopringAPIRequest {
         body["params"] = [["delegateAddress": delegateAddress, "protocol": protocolValue, "owner": owner, "walletAddress": walletAddress, "tokenS": tokenS, "tokenB": tokenB, "amountS": amountS, "amountB": amountB, "authPrivateKey": authPrivateKey, "authAddr": authAddr, "validSince": validSince, "validUntil": validUntil, "lrcFee": lrcFee, "buyNoMoreThanAmountB": buyNoMoreThanAmountB, "marginSplitPercentage": marginSplitPercentage, "powNonce": powNonce, "orderType": orderType, "v": v, "r": r, "s": s]]
         self.invoke(method: "loopring_submitOrder", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
             guard error == nil && data != nil else {
-                completionHandler(nil, error)
+                completionHandler(nil, error!)
                 return
             }
             completionHandler(data!.respond, nil)
@@ -476,7 +476,7 @@ class LoopringAPIRequest {
         body["params"] = [["delegateAddress": delegateAddress, "protocol": protocolValue, "takerOrderHash": takerOrderHash, "makerOrderHash": makerOrderHash, "rawTx": rawTx]]
         self.invoke(method: "loopring_submitRingForP2P", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
             guard error == nil && data != nil else {
-                completionHandler(nil, error)
+                completionHandler(nil, error!)
                 return
             }
             completionHandler(data!.respond, nil)

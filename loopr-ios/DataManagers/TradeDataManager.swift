@@ -158,11 +158,10 @@ class TradeDataManager {
         let takerOrderHash = orders[1].hash
         LoopringAPIRequest.submitRing(makerOrderHash: makerOrderHash, takerOrderHash: takerOrderHash, rawTx: rawTx, completionHandler: { (txHash, error) in
             guard txHash != nil && error == nil else {
-                completion(nil, error!)
-                return
-            }
-            if let error = self.generateErrorMessage(errorCode: txHash!) {
-                completion(nil, error)
+                let errorCode = (error! as NSError).userInfo["message"] as! String
+                if let error = self.generateErrorMessage(errorCode: errorCode) {
+                    completion(nil, error)
+                }
                 return
             }
             completion(txHash, nil)
@@ -221,8 +220,8 @@ class TradeDataManager {
             result.append(amountBuy)
             result.append(GethBigInt.init(order.validSince))
             result.append(GethBigInt.init(order.validUntil))
-            let lrcFee = GethBigInt.generate(valueInEther: order.lrcFee, symbol: "LRC")!
-            result.append(lrcFee)
+//            let lrcFee = GethBigInt.generate(valueInEther: order.lrcFee, symbol: "LRC")!
+            result.append(GethBigInt.init(0))
             result.append(amountSell)
         }
         return result

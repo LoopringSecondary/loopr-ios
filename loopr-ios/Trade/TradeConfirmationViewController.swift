@@ -253,7 +253,8 @@ extension TradeConfirmationViewController {
         guard error == nil && txHash != nil else {
             DispatchQueue.main.async {
                 print("TradeViewController \(error.debugDescription)")
-                let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
+                let message = (error! as NSError).userInfo["message"] as! String
+                let banner = NotificationBanner.generate(title: message, style: .danger)
                 banner.duration = 10
                 banner.show()
             }
@@ -267,7 +268,8 @@ extension TradeConfirmationViewController {
         guard error == nil && orderHash != nil else {
             DispatchQueue.main.async {
                 print("TradeViewController \(error.debugDescription)")
-                let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
+                let message = (error! as NSError).userInfo["message"] as! String
+                let banner = NotificationBanner.generate(title: message, style: .danger)
                 banner.duration = 10
                 banner.show()
             }
