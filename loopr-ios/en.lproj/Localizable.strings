@@ -86,7 +86,6 @@
 "Slow" = "Slow";
 "Fast" = "Fast";
 "Enter the amount" = "Enter the amount";
-"Order Expires in" = "Order Expires in";
 "1 Hour" = "1 Hour";
 "1 Day" = "1 Day";
 "1 Week" = "1 Week";
@@ -187,3 +186,4 @@
 "P2P Order History" = "P2P Order History";
 "Share Address through SMS" = "Share Address through SMS";
 "Clear Records of this Wallet" = "Clear Records of this Wallet";
+"Amount" = "Amount";

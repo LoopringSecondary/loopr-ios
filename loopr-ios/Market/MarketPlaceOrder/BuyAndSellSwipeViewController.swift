@@ -37,8 +37,7 @@ class BuyAndSellSwipeViewController: SwipeViewController {
         
         options.swipeTabView.itemView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 21) ?? UIFont.systemFont(ofSize: 21)
         
-        // TODO: The design doesn't require scrolling. It's to test the swipe view controller.
-        options.swipeContentScrollView.isScrollEnabled = true
+        options.swipeContentScrollView.isScrollEnabled = false
         
         // swipeView.reloadData(options: options)
         

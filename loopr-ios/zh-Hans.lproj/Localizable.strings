@@ -86,7 +86,6 @@
 "Slow" = "慢";
 "Fast" = "快";
 "Enter the amount" = "输入额度";
-"Order Expires in" = "订单有效时间";
 "1 Hour" = "1小时";
 "1 Day" = "1天";
 "1 Week" = "1周";
@@ -135,7 +134,7 @@
 "Sorry, buying order does not exist, could not complete this order" = "Sorry, buying order does not exist, could not complete this order";
 "Information of two orders not complete" = "Information of two orders not complete";
 "Sorry. Network error, please try again later" = "Sorry. Network error, please try again later";
-"Order Expires in" = "Order Expires in";
+"Order Expires in" = "订单有效时间";
 "Your price is irrational. Do you want to continue trading with the price?" = "Your price is irrational. Do you want to continue trading with the price?";
 "Please input a valid price" = "Please input a valid price";
 "Please input a valid amount" = "Please input a valid amount";
@@ -187,4 +186,4 @@
 "P2P Order History" = "P2P Order History";
 "Share Address through SMS" = "Share Address through SMS";
 "Clear Records of this Wallet" = "Clear Records of this Wallet";
-
+"Amount" = "数量";

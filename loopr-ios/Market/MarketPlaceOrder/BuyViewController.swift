@@ -11,7 +11,7 @@ import Geth
 import NotificationBannerSwift
 import SVProgressHUD
 
-class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
+class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var placeOrderButton: UIButton!
@@ -38,6 +38,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
     
     // TODO: Hide maxButton. Replace with a slider view
     var maxButton: UIButton = UIButton()
+    var amountSlider: DefaultSlider = DefaultSlider()
 
     // Total
     var tokenBTotalLabel: UILabel = UILabel()
@@ -144,6 +145,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         tipLabel.font = FontConfigManager.shared.getLabelFont()
         tipLabel.frame = CGRect(x: padding, y: amountUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(tipLabel)
+        // tipLabel.isHidden = true
 
         maxButton.title = NSLocalizedString("Max", comment: "")
         maxButton.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
@@ -152,7 +154,22 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         maxButton.contentHorizontalAlignment = .right
         maxButton.frame = CGRect(x: screenWidth-80-padding, y: amountUnderLine.frame.maxY, width: 80, height: 40)
         scrollView.addSubview(maxButton)
-
+        // maxButton.isHidden = true
+        
+        /*
+        amountSlider = DefaultSlider(frame: CGRect(x: padding, y: amountUnderLine.frame.maxY + 10, width: screenWidth-padding*2, height: 60))
+        amountSlider.lineHeight = 2.0
+        amountSlider.tintColor = UIColor.black
+        amountSlider.handleColor = UIColor.black
+        amountSlider.minLabelColor = UIColor.black
+        amountSlider.maxLabelColor = UIColor.black
+        amountSlider.colorBetweenHandles = UIColor.init(white: 0.7, alpha: 1)
+        amountSlider.tintColor = UIColor.black
+        amountSlider.initialColor = UIColor.black
+        amountSlider.delegate = self
+        scrollView.addSubview(amountSlider)
+        */
+        
         // Thrid row: total
         tokenBTotalLabel.text = PlaceOrderDataManager.shared.tokenB.symbol
         tokenBTotalLabel.font = FontConfigManager.shared.getLabelFont()
@@ -165,7 +182,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         totalTextField.inputView = UIView()
         totalTextField.font = FontConfigManager.shared.getLabelFont()
         totalTextField.theme_tintColor = GlobalPicker.textColor
-        totalTextField.placeholder = "Total"
+        totalTextField.placeholder = NSLocalizedString("Total", comment: "")
         totalTextField.contentMode = UIViewContentMode.bottom
         totalTextField.frame = CGRect(x: padding, y: maxButton.frame.maxY + 30, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(totalTextField)
@@ -230,6 +247,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(scrollViewTap)
+        
+        scrollView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -239,7 +258,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
 
     // To avoid gesture conflicts in swiping to back and UISlider
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if touch.view != nil && touch.view!.isKind(of: UISlider.self) {
+        if touch.view != nil && abs((touch.view?.frame.midY)! - amountSlider.frame.midY) < 30 {
             return false
         }
         return true
@@ -581,5 +600,24 @@ extension BuyViewController {
     
     func getLrcFee(_ amountS: Double, _ tokenS: String) -> Double? {
         return TradeDataManager.shared.getLrcFee(amountS, tokenS)
+    }
+}
+
+// MARK: - DefaultSliderDelegate
+
+extension BuyViewController: DefaultSliderDelegate {
+    
+    func defaultSlider(_ slider: DefaultSlider, didChange minValue: CGFloat, maxValue: CGFloat) {
+        if slider === amountSlider {
+            print("Standard slider updated. Min Value: \(minValue) Max Value: \(maxValue)")
+        }
+    }
+    
+    func didStartTouches(in slider: DefaultSlider) {
+        print("did start touches")
+    }
+    
+    func didEndTouches(in slider: DefaultSlider) {
+        print("did end touches")
     }
 }
