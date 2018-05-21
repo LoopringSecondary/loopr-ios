@@ -184,7 +184,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             } else {
                 updateButton(isValid: false)
                 availableLabel.textColor = .red
-                availableLabel.text = "Amount must greater than 0"
+                availableLabel.text = "Please input a valid amount"
             }
         } else {
             updateButton(isValid: false)

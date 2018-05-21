@@ -390,7 +390,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
                 estimateValueInCurrencyLabel.text = "≈ \(estimateValue.currency)"
             } else {
                 estimateValueInCurrencyLabel.textColor = .red
-                estimateValueInCurrencyLabel.text = NSLocalizedString("please input a valid price", comment: "")
+                estimateValueInCurrencyLabel.text = NSLocalizedString("Please input a valid price", comment: "")
             }
             return validate
         } else {
@@ -409,7 +409,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
             } else {
                 tipLabel.isHidden = false
                 tipLabel.textColor = .red
-                tipLabel.text = NSLocalizedString("please input a valid amount", comment: "")
+                tipLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
             }
             return validate
         } else {
