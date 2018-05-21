@@ -68,6 +68,14 @@ class BuyAndSellSwipeViewController: SwipeViewController {
             // swipeView.reloadData(options: options, default: initIndex)
         }
     }
+    
+    // To avoid gesture conflicts in swiping to back and UISlider
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view != nil && touch.view!.isKind(of: UIControl.self) {
+            return false
+        }
+        return true
+    }
 
     // MARK: - Delegate
     override func swipeView(_ swipeView: SwipeView, viewWillSetupAt currentIndex: Int) {

@@ -232,7 +232,7 @@ import UIKit
     private let rightHandle: CALayer = CALayer()
     
     fileprivate let minLabel: CATextLayer = CATextLayer()
-    fileprivate let maxLabel: CATextLayer = CATextLayer()
+    public let maxLabel: CATextLayer = CATextLayer()
     
     private var minLabelTextSize: CGSize = .zero
     private var maxLabelTextSize: CGSize = .zero
@@ -494,7 +494,7 @@ import UIKit
         let isInitial: Bool = selectedMinValue == minValue && selectedMaxValue == maxValue
         if let initialColor = initialColor?.cgColor, isInitial {
             minLabel.foregroundColor = initialColor
-            maxLabel.foregroundColor = initialColor
+            maxLabel.foregroundColor = UIColor.white.cgColor // initialColor
             sliderLineBetweenHandles.backgroundColor = initialColor
             sliderLine.backgroundColor = initialColor
             
@@ -506,7 +506,7 @@ import UIKit
         } else {
             let tintCGColor: CGColor = tintColor.cgColor
             minLabel.foregroundColor = minLabelColor?.cgColor ?? tintCGColor
-            maxLabel.foregroundColor = maxLabelColor?.cgColor ?? tintCGColor
+            maxLabel.foregroundColor = UIColor.white.cgColor // maxLabelColor?.cgColor ?? tintCGColor
             sliderLineBetweenHandles.backgroundColor = colorBetweenHandles?.cgColor ?? tintCGColor
             sliderLine.backgroundColor = tintCGColor
             
