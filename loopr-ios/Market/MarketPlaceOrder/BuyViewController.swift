@@ -35,6 +35,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
     var amountTextField: UITextField = UITextField()
     var amountUnderLine: UIView = UIView()
     var tipLabel: UILabel = UILabel()
+    
+    // TODO: Hide maxButton. Replace with a slider view
     var maxButton: UIButton = UIButton()
 
     // Total
@@ -102,7 +104,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         priceTextField.inputView = UIView()
         priceTextField.font = FontConfigManager.shared.getLabelFont()
         priceTextField.theme_tintColor = GlobalPicker.textColor
-        priceTextField.placeholder = "Price " + PlaceOrderDataManager.shared.market.balance.description
+        priceTextField.placeholder = NSLocalizedString("Price", comment: "") + " " + PlaceOrderDataManager.shared.market.balance.description
         priceTextField.contentMode = UIViewContentMode.bottom
         priceTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(priceTextField)
@@ -130,7 +132,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         amountTextField.font = FontConfigManager.shared.getLabelFont() // UIFont.init(name: FontConfigManager.shared.getLight(), size: 24)
         amountTextField.theme_tintColor = GlobalPicker.textColor
         amountTextField.theme_tintColor = GlobalPicker.textColor
-        amountTextField.placeholder = "Amount"
+        amountTextField.placeholder = NSLocalizedString("Amount", comment: "")
         amountTextField.contentMode = UIViewContentMode.bottom
         amountTextField.frame = CGRect(x: padding, y: estimateValueInCurrencyLabel.frame.maxY + 30, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(amountTextField)
@@ -150,7 +152,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         maxButton.contentHorizontalAlignment = .right
         maxButton.frame = CGRect(x: screenWidth-80-padding, y: amountUnderLine.frame.maxY, width: 80, height: 40)
         scrollView.addSubview(maxButton)
-        
+
         // Thrid row: total
         tokenBTotalLabel.text = PlaceOrderDataManager.shared.tokenB.symbol
         tokenBTotalLabel.font = FontConfigManager.shared.getLabelFont()
@@ -234,7 +236,15 @@ class BuyViewController: UIViewController, UITextFieldDelegate, NumericKeyboardD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    // To avoid gesture conflicts in swiping to back and UISlider
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view != nil && touch.view!.isKind(of: UISlider.self) {
+            return false
+        }
+        return true
+    }
+
     @objc func scrollViewTapped() {
         print("scrollViewTapped")
         priceTextField.resignFirstResponder()
