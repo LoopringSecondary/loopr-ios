@@ -84,7 +84,7 @@ class TradeReviewViewController: UIViewController {
         let ciContext = CIContext()
         if let filter = CIFilter(name: "CIQRCodeGenerator") {
             filter.setValue(data, forKey: "inputMessage")
-            let transform = CGAffineTransform(scaleX: 5, y: 5)
+            let transform = CGAffineTransform(scaleX: 2, y: 2)
             let upScaledImage = filter.outputImage?.transformed(by: transform)
             let cgImage = ciContext.createCGImage(upScaledImage!, from: upScaledImage!.extent)
             qrcodeImage = UIImage(cgImage: cgImage!)

@@ -615,7 +615,15 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
 extension BuyViewController {
     
     func getLrcFee(_ amountS: Double, _ tokenS: String) -> Double? {
-        return TradeDataManager.shared.getLrcFee(amountS, tokenS)
+        let pair = tokenS + "/LRC"
+        let ratio = SettingDataManager.shared.getLrcFeeRatio()
+        if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
+            return market.balance * amountS * ratio
+        } else if let price = PriceDataManager.shared.getPrice(of: tokenS),
+            let lrcPrice = PriceDataManager.shared.getPrice(of: "LRC") {
+            return price * amountS * ratio / lrcPrice
+        }
+        return 0.0
     }
 }
 

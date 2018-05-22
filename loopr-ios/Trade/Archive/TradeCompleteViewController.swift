@@ -56,11 +56,12 @@ class TradeCompleteViewController: UIViewController {
         needAInfoLabel.textAlignment = .right
         needAInfoLabel.frame = CGRect(x: padding + 150, y: needATipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
         scrollView.addSubview(needAInfoLabel)
+        
+        guard errorTipInfo.count == 2 else { return }
+        
         needAUnderline.frame = CGRect(x: padding, y: needATipLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
         needAUnderline.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         scrollView.addSubview(needAUnderline)
-        
-        guard errorTipInfo.count == 2 else { return }
         
         // 2nd row: need B token
         needBTipLabel.font = FontConfigManager.shared.getLabelFont()
@@ -125,10 +126,12 @@ class TradeCompleteViewController: UIViewController {
     }
     
     @IBAction func pressedDetailsButton(_ sender: UIButton) {
-        if let order = self.order {
-            let vc = TradeReviewViewController()
-            vc.order = order
-            self.navigationController?.pushViewController(vc, animated: true)
+        if let original = self.order {
+            let order = Order(originalOrder: original, orderStatus: .finished)
+            let viewController = OrderDetailViewController()
+            viewController.order = order
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
     

@@ -180,15 +180,21 @@ extension TradeConfirmationViewController {
                 submit()
             }
         } else {
-            pushController()
+            pushCompleteController()
         }
     }
     
-    func pushController() {
-        let viewController = TradeCompleteViewController()
-        viewController.order = self.order
-        viewController.verifyInfo = self.verifyInfo
-        self.navigationController?.pushViewController(viewController, animated: true)
+    func pushCompleteController() {
+        let controller = TradeCompleteViewController()
+        controller.order = self.order
+        controller.verifyInfo = self.verifyInfo
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func pushReviewController() {
+        let controller = TradeReviewViewController()
+        controller.order = self.order
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func approve() {
@@ -277,8 +283,11 @@ extension TradeConfirmationViewController {
         }
         if !isTaker() {
             DispatchQueue.main.async {
-                self.order?.hash = orderHash!
-                self.pushController()
+                self.pushReviewController()
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.pushCompleteController()
             }
         }
     }
