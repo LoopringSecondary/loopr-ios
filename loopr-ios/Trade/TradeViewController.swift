@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Geth
 
 class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol {
 
@@ -253,7 +254,9 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         amountBuy = Double(amountBuyTextField.text!)!
         amountSell = Double(amountSellTextField.text!)!
         buyNoMoreThanAmountB = false
-        lrcFee = TradeDataManager.shared.getLrcFee(amountSell, tokenSell)!
+        
+        lrcFee = 0
+        
         let delegate = RelayAPIConfiguration.delegateAddress
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         let since = Int64(Date().timeIntervalSince1970)

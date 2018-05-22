@@ -40,6 +40,10 @@ class SendCurrentAppWalletDataManager {
         self.protocolAddress = GethNewAddressFromHex(RelayAPIConfiguration.protocolAddress, &error)
     }
     
+    func incrementNonce() {
+        self.nonce += 1
+    }
+    
     // The API request teth_getTransactionCount is slow. Please be patient. It takes 3-20 seconds.
     // Deprecate the method
     /*

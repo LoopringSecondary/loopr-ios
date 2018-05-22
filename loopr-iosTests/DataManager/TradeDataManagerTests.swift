@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import CryptoSwift
 @testable import loopr_ios
 
 class TradeDataManagerTests: XCTestCase {
@@ -39,8 +40,8 @@ class TradeDataManagerTests: XCTestCase {
     }
     
     func test2() {
-        let a = "0x87c6117ef0935b1Df3f9D93D9b39516eB8141870"
-        let b = "0x77c6117ef0935b1Df3f9D93D9b39516eB8141870"
+        let a = "0x03a1295401d7588e4f81609c10865217ec7ac88e210f78de29bbd0eea9d6b8a6"
+        let b = "0xdf1beb271ae416a489a5df9e909e9a5eab385637e277d781947965d38d437d96"
         
         let text = a.hexBytes
         let cipher = b.hexBytes
@@ -54,4 +55,10 @@ class TradeDataManagerTests: XCTestCase {
         print(encrypted)
     }
     
+    func test3() {
+        let data = "dcbac2731b334e2ac624bf028018c84947429eb9c378af5fbdc2b53d2495c530b94065482ad64d4c2b9252358d746b39e820a5820000"
+        let data1 = Data(bytes: data.hexBytes)
+        let hash = data1.sha3(SHA3.Variant.keccak256)
+        print(hash.hexString)
+    }
 }

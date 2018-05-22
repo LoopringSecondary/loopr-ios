@@ -122,7 +122,8 @@ class TradeDataManager {
         amountBuy = maker.amountSell
         amountSell = maker.amountBuy
         
-        lrcFee = getLrcFee(amountSell, tokenSell)!
+        lrcFee = 0
+        
         let delegate = RelayAPIConfiguration.delegateAddress
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         // P2P 订单 默认 1hour 过期，或增加ui调整
@@ -164,6 +165,7 @@ class TradeDataManager {
                 }
                 return
             }
+            SendCurrentAppWalletDataManager.shared.incrementNonce()
             completion(txHash, nil)
         })
     }
@@ -220,9 +222,8 @@ class TradeDataManager {
             result.append(amountBuy)
             result.append(GethBigInt.init(order.validSince))
             result.append(GethBigInt.init(order.validUntil))
-//            let lrcFee = GethBigInt.generate(valueInEther: order.lrcFee, symbol: "LRC")!
             result.append(GethBigInt.init(0))
-            result.append(amountSell)
+            result.append(amountSell) // rateAmountSell = amountSell
         }
         return result
     }
@@ -230,7 +231,8 @@ class TradeDataManager {
     func generateMargin() -> [Any] {
         var result: [Any] = []
         for _ in orders {
-            result.append(GethBigInt.init(0)) // 对手单, 不需要margin split
+            let margin = Int64(SettingDataManager.shared.getMarginSplit() * 100)
+            result.append(GethBigInt.init(margin))
         }
         return result
     }
@@ -384,7 +386,8 @@ class TradeDataManager {
     }
     
     func signRinghash() {
-        let hash = generateHash()
+        let hex = generateHash().hexString
+        let hash = Data(bytes: hex.hexBytes)
         makerSignature = signHash(privateKey: self.makerPrivateKey!, hash: hash)
         takerSignature = signHash(privateKey: orders[1].authPrivateKey, hash: hash)
     }
