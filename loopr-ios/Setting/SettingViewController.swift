@@ -12,8 +12,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var settingsTableView: UITableView!
     
-    let sectionTitles = [NSLocalizedString("User Preferences", comment: ""), NSLocalizedString("Trading", comment: ""), NSLocalizedString("Relay", comment: ""), NSLocalizedString("About", comment: "")]
-    let sectionRows = [2, 3, 1, 1]
+    let sectionTitles = [NSLocalizedString("User Preferences", comment: ""), NSLocalizedString("Trading", comment: ""), NSLocalizedString("About", comment: "")]
+    let sectionRows = [2, 3, 1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +47,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 1:
             return section2Cell(row: indexPath.row)
         case 2:
-            return section3Cell(row: indexPath.row)
-        case 3:
             return section4Cell(row: indexPath.row)
         default:
             return UITableViewCell()

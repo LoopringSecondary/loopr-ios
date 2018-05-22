@@ -38,7 +38,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     
     // TODO: Hide maxButton. Replace with a slider view
     var maxButton: UIButton = UIButton()
-    var amountSlider: DefaultSlider = DefaultSlider()
+    // var amountSlider: DefaultSlider = DefaultSlider()
 
     // Total
     var tokenBTotalLabel: UILabel = UILabel()
@@ -148,7 +148,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         tipLabel.font = FontConfigManager.shared.getLabelFont()
         tipLabel.frame = CGRect(x: padding, y: amountUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(tipLabel)
-        tipLabel.isHidden = true
+        // tipLabel.isHidden = true
 
         maxButton.title = NSLocalizedString("Max", comment: "")
         maxButton.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
@@ -156,9 +156,11 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         maxButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
         maxButton.contentHorizontalAlignment = .right
         maxButton.frame = CGRect(x: screenWidth-80-padding, y: amountUnderLine.frame.maxY, width: 80, height: 40)
+        maxButton.addTarget(self, action: #selector(self.pressedMaxButton(_:)), for: UIControlEvents.touchUpInside)
         scrollView.addSubview(maxButton)
-        maxButton.isHidden = true
+        // maxButton.isHidden = true
         
+        /*
         amountSlider = DefaultSlider(frame: CGRect(x: 5, y: amountUnderLine.frame.maxY + 15, width: screenWidth-5*2, height: 60))
         amountSlider.lineHeight = 1.0
         amountSlider.handleColor = UIColor.black
@@ -174,12 +176,13 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         amountSlider.selectedHandleDiameterMultiplier = 1.4
         amountSlider.numberFormatter.positiveSuffix = "%"
         scrollView.addSubview(amountSlider)
-        
+        */
+
         // Thrid row: total
         tokenBTotalLabel.text = PlaceOrderDataManager.shared.tokenB.symbol
         tokenBTotalLabel.font = FontConfigManager.shared.getLabelFont()
         tokenBTotalLabel.textAlignment = .right
-        tokenBTotalLabel.frame = CGRect(x: screenWidth-80-padding, y: amountSlider.frame.maxY + 30, width: 80, height: 40)
+        tokenBTotalLabel.frame = CGRect(x: screenWidth-80-padding, y: maxButton.frame.maxY + 30, width: 80, height: 40)
         scrollView.addSubview(tokenBTotalLabel)
         
         totalTextField.delegate = self
@@ -189,7 +192,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         totalTextField.theme_tintColor = GlobalPicker.textColor
         totalTextField.placeholder = NSLocalizedString("Total", comment: "")
         totalTextField.contentMode = UIViewContentMode.bottom
-        totalTextField.frame = CGRect(x: padding, y: amountSlider.frame.maxY + 30, width: screenWidth-padding*2-80, height: 40)
+        totalTextField.frame = CGRect(x: padding, y: maxButton.frame.maxY + 30, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(totalTextField)
 
         // Disable user input in totalTextField
@@ -278,6 +281,11 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         amountTextField.resignFirstResponder()
         totalTextField.resignFirstResponder()
         hideNumericKeyboard()
+    }
+    
+    @objc func pressedMaxButton(_ button: UIButton) {
+        print("pressedMaxButton")
+        // TODO: get the max value.
     }
     
     @objc func pressedOneHourButton(_ button: UIButton) {
@@ -616,6 +624,7 @@ extension BuyViewController {
 extension BuyViewController: DefaultSliderDelegate {
     
     func defaultSlider(_ slider: DefaultSlider, didChange minValue: CGFloat, maxValue: CGFloat) {
+        /*
         if slider === amountSlider {
              print("Standard slider updated. Min Value: \(minValue) Max Value: \(maxValue)")
             if minValue > 0 {
@@ -624,6 +633,7 @@ extension BuyViewController: DefaultSliderDelegate {
                 amountSlider.tintColor = UIColor.init(white: 0.7, alpha: 1)
             }
         }
+        */
     }
     
     func didStartTouches(in slider: DefaultSlider) {
