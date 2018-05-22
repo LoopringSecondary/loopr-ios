@@ -142,6 +142,7 @@ class OrderTableViewCell: UITableViewCell {
         filledPieChart.textFont = UIFont(name: FontConfigManager.shared.getLight(), size: 10.0)!
         filledPieChart.desiredLineWidth = 1
         filledPieChart.percentage = CGFloat(percent)
+        filledPieChart.update()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -46,6 +46,10 @@ class CircleChart: UIView {
     }
     
     override func draw(_ rect: CGRect) {
+        update()
+    }
+    
+    func update() {
         drawCircleFittingInsideView()
         if showText {
             showTextInsdieView()
