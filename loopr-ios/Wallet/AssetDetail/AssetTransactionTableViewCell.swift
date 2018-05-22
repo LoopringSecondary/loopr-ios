@@ -44,35 +44,71 @@ class AssetTransactionTableViewCell: UITableViewCell {
             dateLabel.text = transaction.createTime
             switch transaction.type {
             case .convert_income:
-                if transaction.symbol.lowercased() == "weth" {
-                    titleLabel.text = NSLocalizedString("Convert ETH To WETH", comment: "")
-                } else if transaction.symbol.lowercased() == "eth" {
-                    titleLabel.text = NSLocalizedString("Convert WETH To ETH", comment: "")
-                }
-                amountLabel.text = transaction.value
-                displayLabel.text = transaction.display
+                updateConvertIncome()
             case .convert_outcome:
-                if transaction.symbol.lowercased() == "weth" {
-                    titleLabel.text = NSLocalizedString("Convert ETH To WETH", comment: "")
-                } else if transaction.symbol.lowercased() == "eth" {
-                    titleLabel.text = NSLocalizedString("Convert ETH To WETH", comment: "")
-                }
-                amountLabel.text = transaction.value
-                displayLabel.text = transaction.display
+                updateConvertOutcome()
             case .approved:
-                titleLabel.text = NSLocalizedString("Enable \(transaction.symbol) To Trade", comment: "")
-                amountLabel.isHidden = true
-                displayLabel.isHidden = true
+                updateApprove()
             case .cutoff, .canceledOrder:
-                titleLabel.text = NSLocalizedString("Cancel Order(s)", comment: "")
-                amountLabel.isHidden = true
-                displayLabel.isHidden = true
+                udpateCutoffAndCanceledOrder()
             default:
-                titleLabel.text = transaction.type.description + " " + transaction.symbol
-                amountLabel.text = transaction.value
-                displayLabel.text = transaction.display
+                updateDefault()
             }
         }
+    }
+    
+    private func updateConvertIncome() {
+        titleLabel.isHidden = false
+        amountLabel.isHidden = false
+        displayLabel.isHidden = false
+        
+        if transaction!.symbol.lowercased() == "weth" {
+            titleLabel.text = NSLocalizedString("Convert ETH To WETH", comment: "")
+        } else if transaction!.symbol.lowercased() == "eth" {
+            titleLabel.text = NSLocalizedString("Convert WETH To ETH", comment: "")
+        }
+        amountLabel.text = transaction!.value
+        displayLabel.text = transaction!.display
+    }
+    
+    private func updateConvertOutcome() {
+        titleLabel.isHidden = false
+        amountLabel.isHidden = false
+        displayLabel.isHidden = false
+
+        if transaction!.symbol.lowercased() == "weth" {
+            titleLabel!.text = NSLocalizedString("Convert ETH To WETH", comment: "")
+        } else if transaction!.symbol.lowercased() == "eth" {
+            titleLabel!.text = NSLocalizedString("Convert ETH To WETH", comment: "")
+        }
+        amountLabel.text = transaction!.value
+        displayLabel.text = transaction!.display
+    }
+    
+    private func updateApprove() {
+        titleLabel.isHidden = false
+        amountLabel.isHidden = true
+        displayLabel.isHidden = true
+
+        titleLabel.text = NSLocalizedString("Enable \(transaction!.symbol) To Trade", comment: "")
+    }
+    
+    private func udpateCutoffAndCanceledOrder() {
+        titleLabel.isHidden = false
+        amountLabel.isHidden = true
+        displayLabel.isHidden = true
+
+        titleLabel.text = NSLocalizedString("Cancel Order(s)", comment: "")
+    }
+    
+    private func updateDefault() {
+        titleLabel.isHidden = false
+        amountLabel.isHidden = false
+        displayLabel.isHidden = false
+
+        titleLabel.text = transaction!.type.description + " " + transaction!.symbol
+        amountLabel.text = transaction!.value
+        displayLabel.text = transaction!.display
     }
 
     class func getCellIdentifier() -> String {
