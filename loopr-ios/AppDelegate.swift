@@ -115,12 +115,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        print("applicationDidBecomeActive")
+
         let manager = NetworkingReachabilityManager.shared
         if manager?.isReachable == false {
             self.showNetworkLossBanner()
         }
         
         SettingsBundleHelper.setVersionAndBuildNumber()
+        
+        // Touch ID and Face ID
+        let authenticationViewController: AuthenticationViewController? = AuthenticationViewController(nibName: nil, bundle: nil)
+        if let rootViewController = self.window?.rootViewController {
+            rootViewController.present(authenticationViewController!, animated: true) {
+            }
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

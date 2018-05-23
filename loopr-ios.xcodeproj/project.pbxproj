@@ -393,6 +393,9 @@
 		ACA677CF207D1BEC00D34A2F /* SettingChangeWalletNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677CD207D1BEB00D34A2F /* SettingChangeWalletNameViewController.swift */; };
 		ACA677D0207D1BEC00D34A2F /* SettingChangeWalletNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677CE207D1BEB00D34A2F /* SettingChangeWalletNameViewController.xib */; };
 		ACA677D3207DCF1900D34A2F /* RelayAPIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677D2207DCF1900D34A2F /* RelayAPIConfiguration.swift */; };
+		ACB41A6C20B54A2D00A92C9D /* AuthenticationNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB41A6B20B54A2C00A92C9D /* AuthenticationNavigationViewController.swift */; };
+		ACB41A6F20B54BB300A92C9D /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB41A6D20B54BB200A92C9D /* AuthenticationViewController.swift */; };
+		ACB41A7020B54BB300A92C9D /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB41A6E20B54BB200A92C9D /* AuthenticationViewController.xib */; };
 		ACB5DD80202AC26000140A09 /* button1.json in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD7F202AC26000140A09 /* button1.json */; };
 		ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */; };
 		ACB5DD91202C06FF00140A09 /* DismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */; };
@@ -858,6 +861,9 @@
 		ACA677CD207D1BEB00D34A2F /* SettingChangeWalletNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingChangeWalletNameViewController.swift; sourceTree = "<group>"; };
 		ACA677CE207D1BEB00D34A2F /* SettingChangeWalletNameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingChangeWalletNameViewController.xib; sourceTree = "<group>"; };
 		ACA677D2207DCF1900D34A2F /* RelayAPIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelayAPIConfiguration.swift; sourceTree = "<group>"; };
+		ACB41A6B20B54A2C00A92C9D /* AuthenticationNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationNavigationViewController.swift; sourceTree = "<group>"; };
+		ACB41A6D20B54BB200A92C9D /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		ACB41A6E20B54BB200A92C9D /* AuthenticationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationViewController.xib; sourceTree = "<group>"; };
 		ACB5DD7F202AC26000140A09 /* button1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = button1.json; sourceTree = "<group>"; };
 		ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIButtonForUIToolbar.swift; sourceTree = "<group>"; };
 		ACB5DD90202C06FF00140A09 /* DismissAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAnimator.swift; sourceTree = "<group>"; };
@@ -1589,6 +1595,7 @@
 				ACB9115E20242E2400F14644 /* Models */,
 				ACB9116C2025572700F14644 /* Market */,
 				AC952A112053A7DB00C78562 /* OrderHistory */,
+				ACB41A6A20B549E400A92C9D /* TouchIDAndFaceIDAuthentication */,
 				C8BF959B20267FB600343B9A /* SetupWallet */,
 				ACB9115D20242D9900F14644 /* Wallet */,
 				AC9280DF202EC5130009B574 /* Trade */,
@@ -1744,6 +1751,16 @@
 				ACA677CE207D1BEB00D34A2F /* SettingChangeWalletNameViewController.xib */,
 			);
 			path = ChangeWalletName;
+			sourceTree = "<group>";
+		};
+		ACB41A6A20B549E400A92C9D /* TouchIDAndFaceIDAuthentication */ = {
+			isa = PBXGroup;
+			children = (
+				ACB41A6B20B54A2C00A92C9D /* AuthenticationNavigationViewController.swift */,
+				ACB41A6D20B54BB200A92C9D /* AuthenticationViewController.swift */,
+				ACB41A6E20B54BB200A92C9D /* AuthenticationViewController.xib */,
+			);
+			path = TouchIDAndFaceIDAuthentication;
 			sourceTree = "<group>";
 		};
 		ACB5DD79202A1F3000140A09 /* MarketDetail */ = {
@@ -2274,6 +2291,7 @@
 				AC952A152053A84800C78562 /* OrderHistoryViewController.xib in Resources */,
 				AC70E84C20681A2900451047 /* GenerateWalletConfirmPasswordViewController.xib in Resources */,
 				AC31CE71205B995900A30335 /* Roboto-MediumItalic.ttf in Resources */,
+				ACB41A7020B54BB300A92C9D /* AuthenticationViewController.xib in Resources */,
 				AC54FD8B204FC6FC007E1DEB /* OpenSans-SemiBold.ttf in Resources */,
 				AC3756742038D64B00AADC60 /* MnemonicViewController.xib in Resources */,
 				ACB97C6E20707B6F00775D4C /* AddTokenTableViewCell.xib in Resources */,
@@ -2710,6 +2728,7 @@
 				94C11FDD208C81D60050E180 /* DoubleExtension.swift in Sources */,
 				AC37567C2038D80300AADC60 /* PrivateKeyViewController.swift in Sources */,
 				9475A2EE207EF81300200155 /* OrderDetailViewController.swift in Sources */,
+				ACB41A6C20B54A2D00A92C9D /* AuthenticationNavigationViewController.swift in Sources */,
 				AC9280E7202F5A010009B574 /* UIStyleConfig.swift in Sources */,
 				AC31CE17205A121000A30335 /* NumericKeyboardProtocol.swift in Sources */,
 				AC387511205F12F100A76637 /* ContextMenuDismissing.swift in Sources */,
@@ -2799,6 +2818,7 @@
 				AC38751D205F12F100A76637 /* UIViewController+Extensions.swift in Sources */,
 				940B452B2060F67E00ADE2B9 /* SettingDataManager.swift in Sources */,
 				AC2D2C11208BD1BF00D619AD /* UIButton+AlignedIcon.swift in Sources */,
+				ACB41A6F20B54BB300A92C9D /* AuthenticationViewController.swift in Sources */,
 				ACEC978220AD6165003F9DEB /* P2POrderHistoryDataManager.swift in Sources */,
 				AC952A142053A84800C78562 /* OrderHistoryViewController.swift in Sources */,
 				AC99CF4E2083E4AF000AE4BD /* MnemonicSelectAddressViewController.swift in Sources */,
