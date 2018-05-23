@@ -19,8 +19,8 @@ struct MnemonicQuestion {
         self.index = index
         self.mnemonic = mnemonic
 
-        question = "\(index+1)/24. Which of the following is the \((index+1).ordinal) word of your mnemonic?"
-        
+        question = "\(index+1)/24. " + NSLocalizedString("Which of the following is the", comment: "") + NSLocalizedString("\((index+1).ordinal)", comment: "") + NSLocalizedString("word of your mnemonic?", comment: "")
+
         // TODO: generate options
         options = [mnemonic]
         options.append(getRandomMnemoic())

@@ -64,14 +64,17 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
             if typeFromQRCodeScanning == QRCodeType.privateKey {
                 let controller = self.viewControllers[2] as! PrivateKeyViewController
                 controller.privateKeyTextView.text = valueToDisplay
+                controller.privateKeyTextView.textColor = UIColor.black
                 self.swipeView.jump(to: 2, animated: true)
             } else if typeFromQRCodeScanning == QRCodeType.keystore {
                 let controller = self.viewControllers[1] as! UnlockKeystoreViewController
                 controller.keystoreContentTextView.text = valueToDisplay
+                controller.keystoreContentTextView.textColor = UIColor.black
                 self.swipeView.jump(to: 1, animated: true)
             } else if typeFromQRCodeScanning == QRCodeType.mnemonic {
                 let controller = self.viewControllers[0] as! MnemonicViewController
                 controller.mnemonicWordTextView.text = valueToDisplay
+                controller.mnemonicWordTextView.textColor = UIColor.black
                 self.swipeView.jump(to: 0, animated: true)
             } else {
                 showAlert(decodedURL: valueToDisplay)
