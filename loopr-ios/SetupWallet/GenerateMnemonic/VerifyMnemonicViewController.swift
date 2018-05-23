@@ -82,6 +82,13 @@ class VerifyMnemonicViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func loadNextQuestionWithDelay() {
+        let delay = 0.4
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
+            self.loadNextQuestion()
+        })
+    }
+    
     func loadNextQuestion() {
         if currentIndex < 0 {
             currentIndex = 0
@@ -213,12 +220,8 @@ class VerifyMnemonicViewController: UIViewController {
         button2.setupRoundWhite()
         button3.setupRoundWhite()
         button4.setupRoundWhite()
-        
         GenerateWalletDataManager.shared.addUserInputMnemonic(mnemonic: button1.title!)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
-            self.loadNextQuestion()
-        })
+        loadNextQuestionWithDelay()
     }
 
     @objc func pressedButton2(_ sender: Any) {
@@ -227,12 +230,8 @@ class VerifyMnemonicViewController: UIViewController {
         button2.setupRoundBlack()
         button3.setupRoundWhite()
         button4.setupRoundWhite()
-        
         GenerateWalletDataManager.shared.addUserInputMnemonic(mnemonic: button2.title!)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
-            self.loadNextQuestion()
-        })
+        loadNextQuestionWithDelay()
     }
     
     @objc func pressedButton3(_ sender: Any) {
@@ -241,12 +240,8 @@ class VerifyMnemonicViewController: UIViewController {
         button2.setupRoundWhite()
         button3.setupRoundBlack()
         button4.setupRoundWhite()
-        
         GenerateWalletDataManager.shared.addUserInputMnemonic(mnemonic: button3.title!)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
-            self.loadNextQuestion()
-        })
+        loadNextQuestionWithDelay()
     }
     
     @objc func pressedButton4(_ sender: Any) {
@@ -255,17 +250,12 @@ class VerifyMnemonicViewController: UIViewController {
         button2.setupRoundWhite()
         button3.setupRoundWhite()
         button4.setupRoundBlack()
-
         GenerateWalletDataManager.shared.addUserInputMnemonic(mnemonic: button4.title!)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
-            self.loadNextQuestion()
-        })
+        loadNextQuestionWithDelay()
     }
 
     @IBAction func pressedCompleteButton(_ sender: Any) {
         print("pressedCompleteButton")
-        
     }
 
     @objc func dismissGenerateWallet() {
