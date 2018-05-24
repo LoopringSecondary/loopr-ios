@@ -33,10 +33,6 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         
-        tableView.estimatedRowHeight = 0
-        tableView.estimatedSectionHeaderHeight = 0
-        tableView.estimatedSectionFooterHeight = 0
-        
         // Receive button
         receiveButton.setTitle(NSLocalizedString("Receive", comment: ""), for: .normal)
         receiveButton.setupRoundBlack()
