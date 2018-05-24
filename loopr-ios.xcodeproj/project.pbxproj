@@ -246,6 +246,7 @@
 		AC4F8642209D4889002E62AB /* SettingMarginSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4F8640209D4889002E62AB /* SettingMarginSplitViewController.xib */; };
 		AC500BC620B651440073E590 /* SettingSecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC500BC420B651440073E590 /* SettingSecurityViewController.swift */; };
 		AC500BC720B651440073E590 /* SettingSecurityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC500BC520B651440073E590 /* SettingSecurityViewController.xib */; };
+		AC500BC920B6770E0073E590 /* AuthenticationTimingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC500BC820B6770E0073E590 /* AuthenticationTimingType.swift */; };
 		AC5288B3208300580002AEAD /* TokenUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B0208300570002AEAD /* TokenUtil.swift */; };
 		AC5288B4208300580002AEAD /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B1208300570002AEAD /* DateUtil.swift */; };
 		AC5288B5208300580002AEAD /* NetworkingRechabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B2208300570002AEAD /* NetworkingRechabilityManager.swift */; };
@@ -750,6 +751,7 @@
 		AC4F8640209D4889002E62AB /* SettingMarginSplitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingMarginSplitViewController.xib; sourceTree = "<group>"; };
 		AC500BC420B651440073E590 /* SettingSecurityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSecurityViewController.swift; sourceTree = "<group>"; };
 		AC500BC520B651440073E590 /* SettingSecurityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingSecurityViewController.xib; sourceTree = "<group>"; };
+		AC500BC820B6770E0073E590 /* AuthenticationTimingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTimingType.swift; sourceTree = "<group>"; };
 		AC5288B0208300570002AEAD /* TokenUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenUtil.swift; sourceTree = "<group>"; };
 		AC5288B1208300570002AEAD /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		AC5288B2208300570002AEAD /* NetworkingRechabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingRechabilityManager.swift; sourceTree = "<group>"; };
@@ -1339,6 +1341,7 @@
 			children = (
 				AC500BC420B651440073E590 /* SettingSecurityViewController.swift */,
 				AC500BC520B651440073E590 /* SettingSecurityViewController.xib */,
+				AC500BC820B6770E0073E590 /* AuthenticationTimingType.swift */,
 			);
 			path = SettingSecurity;
 			sourceTree = "<group>";
@@ -2694,6 +2697,7 @@
 				AC2D2C0B2089CE1F00D619AD /* ImportWalletUsingKeystoreDataManager.swift in Sources */,
 				ACDBF101203FE73B000F0DEC /* ReorderController.swift in Sources */,
 				ACB911642024504E00F14644 /* Order.swift in Sources */,
+				AC500BC920B6770E0073E590 /* AuthenticationTimingType.swift in Sources */,
 				AC9280E92030C7440009B574 /* UIColorExtensions.swift in Sources */,
 				AC4141F920352DA70089861D /* SwipeTabView.swift in Sources */,
 				AC5288B3208300580002AEAD /* TokenUtil.swift in Sources */,
