@@ -18,7 +18,12 @@ extension Double {
         return currencyFormatter.string(from: NSNumber(value: self))!
     }
     
-    func format(_ f: String = ".4") -> String {
-        return String(format: "%\(f)f", self)
+    func format(_ digits: Int = 4) -> String {
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = digits
+        formatter.roundingMode = .floor
+        formatter.numberStyle = .decimal
+        let myNumber = NSNumber(value: self)
+        return formatter.string(from: myNumber)!
     }
 }
