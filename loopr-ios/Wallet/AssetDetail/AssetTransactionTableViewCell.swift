@@ -75,7 +75,7 @@ class AssetTransactionTableViewCell: UITableViewCell {
         displayLabel.isHidden = false
 
         if transaction!.symbol.lowercased() == "weth" {
-            titleLabel!.text = NSLocalizedString("Convert ETH To WETH", comment: "")
+            titleLabel!.text = NSLocalizedString("Convert WETH To ETH", comment: "")
         } else if transaction!.symbol.lowercased() == "eth" {
             titleLabel!.text = NSLocalizedString("Convert ETH To WETH", comment: "")
         }

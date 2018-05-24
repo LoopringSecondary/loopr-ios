@@ -242,7 +242,14 @@ extension TradeConfirmationViewController {
     
     func submit() {
         if !isTaker() {
-            PlaceOrderDataManager.shared._submitOrder(self.order!, completion: completion)
+            PlaceOrderDataManager.shared._submitOrder(self.order!) { (orderHash, error) in
+                guard error == nil && orderHash != nil else {
+                    self.completion(nil, error!)
+                    return
+                }
+                TradeDataManager.shared.startGetOrderStatus()
+                self.completion(orderHash!, nil)
+            }
         } else {
             PlaceOrderDataManager.shared._submitOrder(self.order!) { (orderHash, error) in
                 guard error == nil && orderHash != nil else {

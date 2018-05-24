@@ -11,7 +11,7 @@ import SocketIO
 
 public class LoopringSocketIORequest {
     
-    static let manager = SocketManager(socketURL: RelayAPIConfiguration.socketURL, config: [.compress, .forceWebsockets(true)])
+    static let manager = SocketManager(socketURL: RelayAPIConfiguration.socketURL, config: [.compress, .forceWebsockets(true), .reconnects(true)])
     static let socket = manager.defaultSocket
     static var handlers: [String: [(JSON) -> Void]] = [:]
     

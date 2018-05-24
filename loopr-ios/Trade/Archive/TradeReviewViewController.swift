@@ -59,8 +59,16 @@ class TradeReviewViewController: UIViewController {
         scrollView.addSubview(arrowRightImageView)
 
         scrollView.contentSize = CGSize(width: screenWidth, height: tokenBView.frame.maxY + padding)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(orderResponseReceivedNotification), name: .orderResponseReceived, object: nil)
     }
 
+    @objc func orderResponseReceivedNotification() {
+        TradeDataManager.shared.stopGetOrderStatus()
+        let vc = TradeCompleteViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
