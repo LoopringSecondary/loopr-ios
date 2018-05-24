@@ -58,7 +58,6 @@ class AssetTransactionTableViewCell: UITableViewCell {
     }
     
     private func updateConvertIncome() {
-        titleLabel.isHidden = false
         amountLabel.isHidden = false
         displayLabel.isHidden = false
         
@@ -72,7 +71,6 @@ class AssetTransactionTableViewCell: UITableViewCell {
     }
     
     private func updateConvertOutcome() {
-        titleLabel.isHidden = false
         amountLabel.isHidden = false
         displayLabel.isHidden = false
 
@@ -86,7 +84,6 @@ class AssetTransactionTableViewCell: UITableViewCell {
     }
     
     private func updateApprove() {
-        titleLabel.isHidden = false
         amountLabel.isHidden = true
         displayLabel.isHidden = true
 
@@ -94,7 +91,6 @@ class AssetTransactionTableViewCell: UITableViewCell {
     }
     
     private func udpateCutoffAndCanceledOrder() {
-        titleLabel.isHidden = false
         amountLabel.isHidden = true
         displayLabel.isHidden = true
 
@@ -102,7 +98,6 @@ class AssetTransactionTableViewCell: UITableViewCell {
     }
     
     private func updateDefault() {
-        titleLabel.isHidden = false
         amountLabel.isHidden = false
         displayLabel.isHidden = false
 

@@ -13,7 +13,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var settingsTableView: UITableView!
     
     let sectionTitles = [NSLocalizedString("User Preferences", comment: ""), NSLocalizedString("Trading", comment: ""), NSLocalizedString("About", comment: "")]
-    let sectionRows = [2, 3, 1]
+    let sectionRows = [3, 3, 1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +73,11 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             case 1:
                 print("Setting currency")
                 let viewController = SettingCurrencyViewController()
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            case 2:
+                print("Setting security")
+                let viewController = SettingSecurityViewController()
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
             default:
@@ -144,6 +149,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             return createDetailTableCell(title: NSLocalizedString("Manage Wallet", comment: ""), detailTitle: currentWalletName!)
         case 1:
             return createDetailTableCell(title: NSLocalizedString("Currency", comment: ""), detailTitle: SettingDataManager.shared.getCurrentCurrency().name)
+        case 2:
+            return createDetailTableCell(title: NSLocalizedString("Security", comment: ""), detailTitle: "")
         /*
         case 1:
             return createThemeMode()

@@ -244,6 +244,8 @@
 		AC4F8639209D483B002E62AB /* SettingLRCFeeRatioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4F8637209D483B002E62AB /* SettingLRCFeeRatioViewController.xib */; };
 		AC4F8641209D4889002E62AB /* SettingMarginSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F863F209D4889002E62AB /* SettingMarginSplitViewController.swift */; };
 		AC4F8642209D4889002E62AB /* SettingMarginSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4F8640209D4889002E62AB /* SettingMarginSplitViewController.xib */; };
+		AC500BC620B651440073E590 /* SettingSecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC500BC420B651440073E590 /* SettingSecurityViewController.swift */; };
+		AC500BC720B651440073E590 /* SettingSecurityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC500BC520B651440073E590 /* SettingSecurityViewController.xib */; };
 		AC5288B3208300580002AEAD /* TokenUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B0208300570002AEAD /* TokenUtil.swift */; };
 		AC5288B4208300580002AEAD /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B1208300570002AEAD /* DateUtil.swift */; };
 		AC5288B5208300580002AEAD /* NetworkingRechabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B2208300570002AEAD /* NetworkingRechabilityManager.swift */; };
@@ -746,6 +748,8 @@
 		AC4F8637209D483B002E62AB /* SettingLRCFeeRatioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLRCFeeRatioViewController.xib; sourceTree = "<group>"; };
 		AC4F863F209D4889002E62AB /* SettingMarginSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMarginSplitViewController.swift; sourceTree = "<group>"; };
 		AC4F8640209D4889002E62AB /* SettingMarginSplitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingMarginSplitViewController.xib; sourceTree = "<group>"; };
+		AC500BC420B651440073E590 /* SettingSecurityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSecurityViewController.swift; sourceTree = "<group>"; };
+		AC500BC520B651440073E590 /* SettingSecurityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingSecurityViewController.xib; sourceTree = "<group>"; };
 		AC5288B0208300570002AEAD /* TokenUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenUtil.swift; sourceTree = "<group>"; };
 		AC5288B1208300570002AEAD /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		AC5288B2208300570002AEAD /* NetworkingRechabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingRechabilityManager.swift; sourceTree = "<group>"; };
@@ -1328,6 +1332,15 @@
 				AC4F8640209D4889002E62AB /* SettingMarginSplitViewController.xib */,
 			);
 			path = SettingMarginSplit;
+			sourceTree = "<group>";
+		};
+		AC500BC320B6511C0073E590 /* SettingSecurity */ = {
+			isa = PBXGroup;
+			children = (
+				AC500BC420B651440073E590 /* SettingSecurityViewController.swift */,
+				AC500BC520B651440073E590 /* SettingSecurityViewController.xib */,
+			);
+			path = SettingSecurity;
 			sourceTree = "<group>";
 		};
 		AC5288AF208300570002AEAD /* Utils */ = {
@@ -1969,6 +1982,7 @@
 				94AD1FDF208B8F5600C443E6 /* SettingCurrency */,
 				AC4F863A209D4842002E62AB /* SettingLRCFeeRatio */,
 				AC4F8643209D488F002E62AB /* SettingMarginSplit */,
+				AC500BC320B6511C0073E590 /* SettingSecurity */,
 				ACB9117E2026385100F14644 /* SettingNavigationViewController.swift */,
 				ACB911822026388700F14644 /* SettingViewController.swift */,
 				ACB911832026388700F14644 /* SettingViewController.xib */,
@@ -2382,6 +2396,7 @@
 				AC13B30B2054A766008A72C0 /* BuyViewController.xib in Resources */,
 				AC10609E2073475200677D63 /* AddMenuTableViewCell.xib in Resources */,
 				94D94CE42084A9380000BBC8 /* ConfirmationResultViewController.xib in Resources */,
+				AC500BC720B651440073E590 /* SettingSecurityViewController.xib in Resources */,
 				AC5E0DDB203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib in Resources */,
 				AC31CE77205B996400A30335 /* Roboto-Thin.ttf in Resources */,
 				ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */,
@@ -2770,6 +2785,7 @@
 				ACE65E412071F875001EE499 /* MnemonicCollectionViewController.swift in Sources */,
 				AC387513205F12F100A76637 /* ContextMenu+Item.swift in Sources */,
 				AC31B93A204A4F9000B16155 /* Language.swift in Sources */,
+				AC500BC620B651440073E590 /* SettingSecurityViewController.swift in Sources */,
 				ACB9115A20242B9D00F14644 /* AssetTableViewCell.swift in Sources */,
 				94E185992051455C00D86FFA /* SimpleRespond.swift in Sources */,
 				AC78FC3B20A4B0C300992AE8 /* OrderBookTableViewCell.swift in Sources */,
