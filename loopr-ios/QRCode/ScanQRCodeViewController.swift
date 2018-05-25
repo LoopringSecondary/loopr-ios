@@ -245,46 +245,15 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     func qrCodeContentDetector (qrContent: String) -> QRCodeType {
         if qrContent.starts (with: "0x") {
             return QRCodeType.address
-        } else if isMnemonicValid(mnemonic: qrContent) {
+        } else if SetupWalletMethod.isMnemonicValid(mnemonic: qrContent) {
             return QRCodeType.mnemonic
-        } else if isPrivateKey(key: qrContent) {
+        } else if SetupWalletMethod.isPrivateKey(key: qrContent) {
             return QRCodeType.privateKey
-        } else if isKeystore(content: qrContent) {
+        } else if SetupWalletMethod.isKeystore(content: qrContent) {
             return QRCodeType.keystore
         }
         
         return QRCodeType.undefined
     }
-    
-    // The following methods are to choose the type quickly. No computation should be added.
-    func isMnemonicValid(mnemonic: String) -> Bool {
-        return Mnemonic.isValid(mnemonic)
-    }
-    
-    func isPrivateKey(key: String) -> Bool {
-        let keyContent = key.uppercased()
-        if keyContent.count != 64 {
-            return false
-        }
-        for ch in keyContent {
-            if (ch >= "0" && ch <= "9") || (ch >= "A" && ch <= "F") {
-                continue
-            }
-            return false
-        }
-        return true
-    }
-    
-    func isKeystore(content: String) -> Bool {
-        let jsonData = content.data(using: String.Encoding.utf8)
-        if let jsonObject = try? JSONSerialization.jsonObject(with: jsonData!, options: []) {
-            if JSONSerialization.isValidJSONObject(jsonObject) {
-                return true
-            } else {
-                return false
-            }
-        } else {
-            return false
-        }
-    }
+
 }
