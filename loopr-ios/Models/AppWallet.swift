@@ -56,7 +56,7 @@ class AppWallet: NSObject, NSCoding {
         
         super.init()
         
-        if keystoreString == nil {
+        if keystoreString == nil || keystoreString == "" || SetupWalletMethod.isKeystore(content: keystoreString ?? "") {
             generateKeystoreInBackground()
         }
     }
