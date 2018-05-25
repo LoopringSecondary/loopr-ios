@@ -143,6 +143,11 @@ class SendCurrentAppWalletDataManager {
         gethAccount = EthAccountCoordinator.default.launch(keystore: gethKeystore, password: wallet!.getPassword())
     
         print("current address: \(gethAccount!.getAddress().getHex())")
+        
+        guard gethAccount!.getAddress().getHex() == wallet?.address else {
+            preconditionFailure("Fail to use keystore to get the current wallet address.")
+        }
+
         let end = Date()
         let timeInterval: Double = end.timeIntervalSince(start)
         print("Time to _keystore: \(timeInterval) seconds")
