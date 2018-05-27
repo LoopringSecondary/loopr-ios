@@ -17,6 +17,8 @@ class WalletBalanceTableViewCell: UITableViewCell {
 
     weak var delegate: WalletBalanceTableViewCellDelegate?
 
+    var updateBalanceLabelTimer: Timer?
+
     @IBOutlet weak var balanceLabel: TickerLabel!
     @IBOutlet weak var hideAssetSwitch: UISwitch!
     @IBOutlet weak var hideAssetsLabel: UILabel!
@@ -44,7 +46,10 @@ class WalletBalanceTableViewCell: UITableViewCell {
         hideAssetsLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14*UIStyleConfig.scale)
 
         update()
-        _ = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
+        if updateBalanceLabelTimer == nil {
+            updateBalanceLabelTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
+        }
+
     }
     
     override func layoutSubviews() {
@@ -62,10 +67,25 @@ class WalletBalanceTableViewCell: UITableViewCell {
     }
     
     func setup() {
+        updateBalance()
     }
     
+    func startUpdateBalanceLabelTimer() {
+        if updateBalanceLabelTimer == nil {
+            updateBalanceLabelTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
+        }
+    }
+
+    func stopUpdateBalanceLabelTimer() {
+        if updateBalanceLabelTimer != nil {
+            updateBalanceLabelTimer?.invalidate()
+            updateBalanceLabelTimer = nil
+        }
+    }
+
     @objc func updateBalance() {
         let balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
+        print(balance)
         if balance != balanceLabel.text {
             balanceLabel.setText(balance, animated: true)
             layoutIfNeeded()

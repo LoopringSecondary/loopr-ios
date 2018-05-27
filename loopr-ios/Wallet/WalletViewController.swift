@@ -106,6 +106,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
         button.title = buttonTitle
         button.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 20, titlePaddingRight: 0)
+        
+        if let cell = assetTableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? WalletBalanceTableViewCell {
+            cell.startUpdateBalanceLabelTimer()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -124,6 +128,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         NotificationCenter.default.removeObserver(self, name: .balanceResponseReceived, object: nil)
         NotificationCenter.default.removeObserver(self, name: .priceQuoteResponseReceived, object: nil)
+        
+        if let cell = assetTableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? WalletBalanceTableViewCell {
+            cell.stopUpdateBalanceLabelTimer()
+        }
     }
 
     override func didReceiveMemoryWarning() {
