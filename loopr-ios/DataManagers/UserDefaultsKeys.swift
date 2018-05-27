@@ -46,4 +46,5 @@ enum UserDefaultsKeys: String {
     case useMarginSplitUserDefineValue = "UserDefaultsKeys.useMarginSplitUserDefineValue"
     case marginSplit = "UserDefaultsKeys.marginSplit"
 
+    case passcodeOn = "UserDefaultsKeys.passcodeOn"
 }

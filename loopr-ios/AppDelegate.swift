@@ -125,13 +125,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SettingsBundleHelper.setVersionAndBuildNumber()
         
         // Touch ID and Face ID
-        /*
-        let authenticationViewController: AuthenticationViewController? = AuthenticationViewController(nibName: nil, bundle: nil)
-        if let rootViewController = self.window?.rootViewController {
-            rootViewController.present(authenticationViewController!, animated: true) {
+        if SettingDataManager.shared.getPasscodeSetting() {
+            let authenticationViewController: AuthenticationViewController? = AuthenticationViewController(nibName: nil, bundle: nil)
+            if let rootViewController = self.window?.rootViewController {
+                rootViewController.present(authenticationViewController!, animated: true) {
+                }
             }
         }
-        */
+
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

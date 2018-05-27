@@ -68,6 +68,15 @@ class SettingDataManager {
             return Currency(name: Locale.current.currencyCode!)
         }
     }
+    
+    func getPasscodeSetting() -> Bool {
+        let passcodeOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.passcodeOn.rawValue)
+        return passcodeOn
+    }
+
+    func setPasscodeSetting(_ newValue: Bool) {
+        UserDefaults.standard.set(newValue, forKey: UserDefaultsKeys.passcodeOn.rawValue)
+    }
 
     // MARK: Hide small assets
     func getHideSmallAssets() -> Bool {

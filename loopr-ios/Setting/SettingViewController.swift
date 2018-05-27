@@ -12,8 +12,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var settingsTableView: UITableView!
     
-    let sectionTitles = [NSLocalizedString("User Preferences", comment: ""), NSLocalizedString("Trading", comment: ""), NSLocalizedString("About", comment: "")]
-    let sectionRows = [3, 3, 1]
+    let sectionTitles = [NSLocalizedString("User Preferences", comment: ""), NSLocalizedString("Trading", comment: ""), NSLocalizedString("Security", comment: ""), NSLocalizedString("About", comment: "")]
+    let sectionRows = [2, 3, 1, 1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +43,13 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            return section0Cell(row: indexPath.row)
+            return userPreferencesSectionForCell(row: indexPath.row)
         case 1:
-            return section2Cell(row: indexPath.row)
+            return tradingSectionForCell(row: indexPath.row)
         case 2:
-            return section4Cell(row: indexPath.row)
+            return securitySectionForCell(row: indexPath.row)
+        case 3:
+            return aboutSectionForCell(row: indexPath.row)
         default:
             return UITableViewCell()
         }
@@ -100,6 +102,13 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             default:
                 break
             }
+        case 2:
+            // Security
+            switch indexPath.row {
+            default:
+                break
+            }
+        /*
         case 3:
             switch indexPath.row {
             case 1:
@@ -111,6 +120,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             default:
                 break
             }
+        */
         default:
             break
         }
@@ -139,7 +149,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     // Sections
-    func section0Cell(row: Int) -> UITableViewCell {
+    func userPreferencesSectionForCell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
             var currentWalletName = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name
@@ -167,7 +177,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
 
-    func section2Cell(row: Int) -> UITableViewCell {
+    func tradingSectionForCell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
             return createBasicTableCell(title: NSLocalizedString("Contract Version", comment: ""), detailTitle: RelayAPIConfiguration.delegateAddress)
@@ -178,7 +188,15 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         default:
             return UITableViewCell()
         }
-        
+    }
+    
+    func securitySectionForCell(row: Int) -> UITableViewCell {
+        switch row {
+        case 0:
+            return createSettingPasscodeTableView()
+        default:
+            return UITableViewCell()
+        }
     }
     
     func section3Cell(row: Int) -> UITableViewCell {
@@ -197,7 +215,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
-    func section4Cell(row: Int) -> UITableViewCell {
+    func aboutSectionForCell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
             return createBasicTableCell(title: NSLocalizedString("App Version", comment: ""), detailTitle: getAppVersion())
@@ -221,6 +239,16 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     // Cell Types
+    func createSettingPasscodeTableView() -> UITableViewCell {
+        var cell = settingsTableView.dequeueReusableCell(withIdentifier: SettingPasscodeTableViewCell.getCellIdentifier()) as? SettingPasscodeTableViewCell
+        if cell == nil {
+            let nib = Bundle.main.loadNibNamed("SettingPasscodeTableViewCell", owner: self, options: nil)
+            cell = nib![0] as? SettingPasscodeTableViewCell
+            cell?.selectionStyle = .none
+        }
+        return cell!
+    }
+    
     func createThemeMode() -> UITableViewCell {
         var cell = settingsTableView.dequeueReusableCell(withIdentifier: SettingThemeModeTableViewCell.getCellIdentifier()) as? SettingThemeModeTableViewCell
         if cell == nil {
@@ -228,7 +256,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell = nib![0] as? SettingThemeModeTableViewCell
             cell?.selectionStyle = .none
         }
-        
         return cell!
     }
     
