@@ -56,7 +56,8 @@ class AppWallet: NSObject, NSCoding {
         
         super.init()
         
-        if keystoreString == nil || keystoreString == "" || SetupWalletMethod.isKeystore(content: keystoreString ?? "") {
+        if keystoreString == nil || keystoreString == "" || !SetupWalletMethod.isKeystore(content: keystoreString ?? "") {
+            print("Need to generate keystore")
             generateKeystoreInBackground()
         }
     }
@@ -90,7 +91,9 @@ class AppWallet: NSObject, NSCoding {
                 return // .failure(KeystoreError.failedToImportPrivateKey)
             }
             do {
+                print("Generating keystore")
                 let key = try KeystoreKey(password: self.getPassword(), key: data)
+                print("Finished generating keystore")
                 let keystoreData = try JSONEncoder().encode(key)
                 let json = try JSON(data: keystoreData)
                 self.keystoreString = json.description
