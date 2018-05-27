@@ -92,6 +92,7 @@
 		AC1E4BC2204B52FD00C6B1FA /* wallet.json in Resources */ = {isa = PBXBuildFile; fileRef = AC1E4BC1204B52FD00C6B1FA /* wallet.json */; };
 		AC1E4BC4204B533000C6B1FA /* key.json in Resources */ = {isa = PBXBuildFile; fileRef = AC1E4BC3204B533000C6B1FA /* key.json */; };
 		AC1E4BC6204B58D400C6B1FA /* CreatePrivateKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BC5204B58D400C6B1FA /* CreatePrivateKeyTests.swift */; };
+		AC2CFAA120BB3BEE00387DB1 /* BiometricType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2CFAA020BB3BEE00387DB1 /* BiometricType.swift */; };
 		AC2D2C05208882BD00D619AD /* FoundationArray+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C04208882BD00D619AD /* FoundationArray+Extension.swift */; };
 		AC2D2C072089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C062089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift */; };
 		AC2D2C092089CB6B00D619AD /* ImportPrivateKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C082089CB6B00D619AD /* ImportPrivateKeyTests.swift */; };
@@ -374,6 +375,7 @@
 		AC9280E92030C7440009B574 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280E82030C7440009B574 /* UIColorExtensions.swift */; };
 		AC952A142053A84800C78562 /* OrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC952A122053A84800C78562 /* OrderHistoryViewController.swift */; };
 		AC952A152053A84800C78562 /* OrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC952A132053A84800C78562 /* OrderHistoryViewController.xib */; };
+		AC971EC820BB412300EDEDD0 /* AuthenticationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC971EC720BB412200EDEDD0 /* AuthenticationDataManager.swift */; };
 		AC99CF462083DD6A000AE4BD /* MnemonicEnterDerivationPathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC99CF442083DD6A000AE4BD /* MnemonicEnterDerivationPathViewController.swift */; };
 		AC99CF472083DD6A000AE4BD /* MnemonicEnterDerivationPathViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC99CF452083DD6A000AE4BD /* MnemonicEnterDerivationPathViewController.xib */; };
 		AC99CF492083DF25000AE4BD /* ImportWalletUsingMnemonicDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC99CF482083DF25000AE4BD /* ImportWalletUsingMnemonicDataManager.swift */; };
@@ -621,6 +623,7 @@
 		AC1E4BC1204B52FD00C6B1FA /* wallet.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = wallet.json; sourceTree = "<group>"; };
 		AC1E4BC3204B533000C6B1FA /* key.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = key.json; sourceTree = "<group>"; };
 		AC1E4BC5204B58D400C6B1FA /* CreatePrivateKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePrivateKeyTests.swift; sourceTree = "<group>"; };
+		AC2CFAA020BB3BEE00387DB1 /* BiometricType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricType.swift; sourceTree = "<group>"; };
 		AC2D2C04208882BD00D619AD /* FoundationArray+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoundationArray+Extension.swift"; sourceTree = "<group>"; };
 		AC2D2C062089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingPrivateKeyDataManager.swift; sourceTree = "<group>"; };
 		AC2D2C082089CB6B00D619AD /* ImportPrivateKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportPrivateKeyTests.swift; sourceTree = "<group>"; };
@@ -847,6 +850,7 @@
 		AC9280E82030C7440009B574 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		AC952A122053A84800C78562 /* OrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryViewController.swift; sourceTree = "<group>"; };
 		AC952A132053A84800C78562 /* OrderHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistoryViewController.xib; sourceTree = "<group>"; };
+		AC971EC720BB412200EDEDD0 /* AuthenticationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDataManager.swift; sourceTree = "<group>"; };
 		AC99CF442083DD6A000AE4BD /* MnemonicEnterDerivationPathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicEnterDerivationPathViewController.swift; sourceTree = "<group>"; };
 		AC99CF452083DD6A000AE4BD /* MnemonicEnterDerivationPathViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicEnterDerivationPathViewController.xib; sourceTree = "<group>"; };
 		AC99CF482083DF25000AE4BD /* ImportWalletUsingMnemonicDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingMnemonicDataManager.swift; sourceTree = "<group>"; };
@@ -1940,6 +1944,7 @@
 				94DCE550205FAC07005618E4 /* Trend.swift */,
 				ACB97C6F20715BC100775D4C /* MnemonicQuestion.swift */,
 				94AD1FE4208B910D00C443E6 /* Currency.swift */,
+				AC2CFAA020BB3BEE00387DB1 /* BiometricType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1962,6 +1967,7 @@
 				ACEC978120AD6165003F9DEB /* P2POrderHistoryDataManager.swift */,
 				940B45172060F67C00ADE2B9 /* UserDefaultsKeys.swift */,
 				941B1EFB209C41BB00710DFF /* GasDataManager.swift */,
+				AC971EC720BB412200EDEDD0 /* AuthenticationDataManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -2753,6 +2759,7 @@
 				ACB5DDA2202D6F9400140A09 /* UIViewExtension.swift in Sources */,
 				94B5CA8C204FE8E40081BA93 /* ETH_Transaction.swift in Sources */,
 				94C11FDD208C81D60050E180 /* DoubleExtension.swift in Sources */,
+				AC971EC820BB412300EDEDD0 /* AuthenticationDataManager.swift in Sources */,
 				AC37567C2038D80300AADC60 /* PrivateKeyViewController.swift in Sources */,
 				9475A2EE207EF81300200155 /* OrderDetailViewController.swift in Sources */,
 				ACB41A6C20B54A2D00A92C9D /* AuthenticationNavigationViewController.swift in Sources */,
@@ -2843,6 +2850,7 @@
 				ACE6F7182041FDAD0039273D /* AssetTransactionDetailViewController.swift in Sources */,
 				AC31B95D204A8E4F00B16155 /* DerivationPath.swift in Sources */,
 				948952D3205A74BE009B03FE /* Transaction.swift in Sources */,
+				AC2CFAA120BB3BEE00387DB1 /* BiometricType.swift in Sources */,
 				AC38751D205F12F100A76637 /* UIViewController+Extensions.swift in Sources */,
 				940B452B2060F67E00ADE2B9 /* SettingDataManager.swift in Sources */,
 				AC2D2C11208BD1BF00D619AD /* UIButton+AlignedIcon.swift in Sources */,

@@ -17,11 +17,11 @@ class SettingPasscodeTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        passcodeLabel.text = NSLocalizedString("Night Mode", comment: "")
+        passcodeLabel.text = BiometricType.get().description
         passcodeLabel.font = FontConfigManager.shared.getLabelFont()
         
         passcodeSwitch.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
-        passcodeSwitch.setOn(SettingDataManager.shared.getPasscodeSetting(), animated: false)
+        passcodeSwitch.setOn(AuthenticationDataManager.shared.getPasscodeSetting(), animated: false)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -38,7 +38,7 @@ class SettingPasscodeTableViewCell: UITableViewCell {
             print ("togglePasscodeSwitch OFF")
         }
         
-        SettingDataManager.shared.setPasscodeSetting(passcodeSwitch.isOn)
+        AuthenticationDataManager.shared.setPasscodeSetting(passcodeSwitch.isOn)
     }
 
     class func getCellIdentifier() -> String {

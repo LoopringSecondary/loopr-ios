@@ -7,21 +7,31 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class AuthenticationViewController: UIViewController {
 
     var unlockAppButton = UIButton()
+    var backgrondImageView = UIImageView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         print("Show AuthenticationViewController")
-        
-        unlockAppButton.title = NSLocalizedString("Unlock App", comment: "")
+
+        let screenSize: CGRect = UIScreen.main.bounds
+        backgrondImageView.frame = screenSize
+        backgrondImageView.image = UIImage(named: "Background")
+        backgrondImageView.isUserInteractionEnabled = true
+        view.addSubview(backgrondImageView)
+
+        unlockAppButton.title = NSLocalizedString("Unlock", comment: "")
         unlockAppButton.setupRoundBlack()
         unlockAppButton.addTarget(self, action: #selector(pressedUnlockAppButton), for: .touchUpInside)
-        view.addSubview(unlockAppButton)
+        backgrondImageView.addSubview(unlockAppButton)
+
+        self.navigationController?.isNavigationBarHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,13 +48,36 @@ class AuthenticationViewController: UIViewController {
         let screenHeight = screenSize.height
         let bottomPadding: CGFloat = UIDevice.current.iPhoneX ? 30 : 0
         unlockAppButton.frame = CGRect(x: 15, y: screenHeight - bottomPadding - 47 - 63, width: screenWidth - 15 * 2, height: 47)
+        
+        authenticate()
+    }
+    
+    func authenticate() {
+        let context = LAContext()
+        let reason = NSLocalizedString("Authenticate to access your wallet", comment: "")
+
+        var authError: NSError?
+        if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, _ in
+                if success {
+                    // User authenticated successfully
+                    AuthenticationDataManager.shared.hasLogin = true
+                    self.dismiss(animated: true, completion: {
+                        
+                    })
+                    
+                } else {
+                    // User did not authenticate successfully
+                }
+            }
+        } else {
+            // Handle Error
+        }
     }
 
     @objc func pressedUnlockAppButton(_ sender: Any) {
         print("pressedUnlockAppButton")
-        self.dismiss(animated: true, completion: {
-            
-        })
+        authenticate()
     }
 
 }
