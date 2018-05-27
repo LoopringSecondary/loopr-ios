@@ -37,7 +37,11 @@ class ConvertDataManager {
         for asset in filteredAssets {
             maxAmount = asset.balance
         }
-        return maxAmount
+        if symbol.uppercased() == "ETH" {
+            let gas = GasDataManager.shared.getGasAmountInETH(by: "deposit")
+            maxAmount -= gas
+        }
+        return maxAmount > 0 ? maxAmount : 0
     }
     
     func getAsset(by symbol: String) -> Asset? {

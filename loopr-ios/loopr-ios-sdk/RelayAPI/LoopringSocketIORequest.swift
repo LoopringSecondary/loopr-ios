@@ -22,7 +22,7 @@ public class LoopringSocketIORequest {
             handlers["marketcap_res"] = [PriceDataManager.shared.onPriceQuoteResponse]
             handlers["loopringTickers_res"] = [MarketDataManager.shared.onTickerResponse]
             handlers["trends_res"] = [MarketDataManager.shared.onTrendResponse]
-            handlers["p2pOrders_res"] = [TradeDataManager.shared.onOrderResponse]
+            handlers["orderTracing_res"] = [TradeDataManager.shared.onOrderResponse]
             addHandlers(handlers)
         }
         connect()
@@ -104,7 +104,7 @@ public class LoopringSocketIORequest {
             self.socket.emit("marketcap_end")
         }
     }
-    
+
     static func getTiker() {
         var body: JSON = JSON()
         body["delegateAddress"] = JSON(RelayAPIConfiguration.delegateAddress)
@@ -150,25 +150,25 @@ public class LoopringSocketIORequest {
         }
     }
     
-    static func getOrderStatus(owner: String) {
+    static func getOrderStatus(orderHash: String) {
         var body: JSON = JSON()
-        body["owner"] = JSON(owner)
+        body["orderHash"] = JSON(orderHash)
         if socket.status != .connected {
             socket.on(clientEvent: .connect) {_, _ in
-                self.socket.emit("p2pOrders_req", body.rawString()!)
+                self.socket.emit("orderTracing_req", body.rawString()!)
             }
         } else {
-            self.socket.emit("p2pOrders_req", body.rawString()!)
+            self.socket.emit("orderTracing_req", body.rawString()!)
         }
     }
     
     static func endOrderStatus() {
         if socket.status != .connected {
             socket.on(clientEvent: .connect) {_, _ in
-                self.socket.emit("p2pOrders_end")
+                self.socket.emit("orderTracing_end")
             }
         } else {
-            self.socket.emit("p2pOrders_end")
+            self.socket.emit("orderTracing_end")
         }
     }
 }

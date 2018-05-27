@@ -445,11 +445,8 @@ class TradeDataManager {
         return result
     }
     
-    func startGetOrderStatus() {
-        guard let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet() else {
-            return
-        }
-        LoopringSocketIORequest.getOrderStatus(owner: wallet.address)
+    func startGetOrderStatus(of maker: String) {
+        LoopringSocketIORequest.getOrderStatus(orderHash: maker)
     }
     
     func stopGetOrderStatus() {
@@ -462,9 +459,10 @@ class TradeDataManager {
      3. 若还在展示二维码，跳转至订单详情；若已经离开，显示banner
      4. 停止接收sockeio的推送
      */
-    
     func onOrderResponse(json: JSON) {
-        let orders = json["orders"].arrayValue
-        NotificationCenter.default.post(name: .orderResponseReceived, object: nil)
+        if json["status"].stringValue == OrderStatus.finished.rawValue {
+            stopGetOrderStatus()
+            NotificationCenter.default.post(name: .orderResponseReceived, object: nil)
+        }
     }
 }

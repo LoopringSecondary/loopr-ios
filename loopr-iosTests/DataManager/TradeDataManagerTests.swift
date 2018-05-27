@@ -61,4 +61,8 @@ class TradeDataManagerTests: XCTestCase {
         let hash = data1.sha3(SHA3.Variant.keccak256)
         print(hash.hexString)
     }
+    
+    func test4() {
+        TradeDataManager.shared.startGetOrderStatus(of: "")
+    }
 }

@@ -33,11 +33,9 @@ class LoopringAPIRequestTests: XCTestCase {
             }
             XCTAssertNotNil(assets)
             XCTAssertNotEqual(assets.count, 0)
-            
             for asset in assets {
                 print("\(asset.symbol): \(asset.balance)")
             }
-
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)

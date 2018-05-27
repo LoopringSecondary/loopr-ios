@@ -204,7 +204,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     @objc func pressedMaxButton(_ sender: Any) {
         print("pressedMaxButton")
         if let asset = self.asset {
-            amountTextField.text = String(ConvertDataManager.shared.getMaxAmount(symbol: asset.symbol))
+            amountTextField.text = ConvertDataManager.shared.getMaxAmount(symbol: asset.symbol).format()
             updateLabel()
         }
     }
@@ -257,7 +257,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         guard error == nil && txHash != nil else {
             DispatchQueue.main.async {
                 let banner = NotificationBanner.generate(title: "Insufficient funds for gas x price + value", style: .danger)
-                banner.duration = 5
+                banner.duration = 3
                 banner.show()
             }
             return
@@ -265,7 +265,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         print("Result of transfer is \(txHash!)")
         DispatchQueue.main.async {
             let banner = NotificationBanner.generate(title: "Success. Result of transfer is \(txHash!)", style: .success)
-            banner.duration = 5
+            banner.duration = 3
             banner.show()
         }
     }

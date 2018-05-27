@@ -11,7 +11,7 @@ import Geth
 import NotificationBannerSwift
 import SVProgressHUD
 
-class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
+class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, PriceStackViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var placeOrderButton: UIButton!
@@ -29,6 +29,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     var priceTextField: UITextField = UITextField()
     var tokenAUnderLine: UIView = UIView()
     var estimateValueInCurrencyLabel: UILabel = UILabel()
+    var priceStackView: PriceStackView!
 
     // Amout
     var tokenBLabel: UILabel = UILabel()
@@ -57,7 +58,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     // Numeric keyboard
     var isNumericKeyboardShow: Bool = false
     var numericKeyboardView: DefaultNumericKeyboard!
-    
+    var customerValue: String = ""
     var activeTextFieldTag = -1
     
     convenience init(type: TradeType) {
@@ -122,6 +123,10 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         estimateValueInCurrencyLabel.font = FontConfigManager.shared.getLabelFont()
         estimateValueInCurrencyLabel.frame = CGRect(x: padding, y: tokenAUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(estimateValueInCurrencyLabel)
+        
+        priceStackView = PriceStackView(frame: CGRect(x: screenWidth-195-padding, y: tokenAUnderLine.frame.maxY, width: 195, height: 40))
+        priceStackView.delegate = self
+        scrollView.addSubview(priceStackView)
         
         // Second row: amount
         tokenBLabel.text = PlaceOrderDataManager.shared.tokenA.symbol
@@ -283,6 +288,39 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         hideNumericKeyboard()
     }
     
+    func setResultOfPrice(with tag: Int) {
+        var value: Double = 0.0
+        let market = PlaceOrderDataManager.shared.market.tradingPair.description
+        LoopringAPIRequest.getDepth(market: market, length: 1) { (depth, error) in
+            guard depth != nil && error == nil else { return }
+            switch tag {
+            case 0: // sell
+                if depth!.sell.count > 0 {
+                    value = Double(depth!.sell[0].unit)!
+                }
+            case 1: // buy
+                if depth!.buy.count > 0 {
+                    value = Double(depth!.buy[0].unit)!
+                }
+            case 2: // market
+                let pair = PlaceOrderDataManager.shared.market.description
+                if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
+                    value = market.balance
+                }
+            case 3: // custom
+                if let price = Double(self.customerValue) {
+                    value = price
+                }
+            default:
+                break
+            }
+            DispatchQueue.main.async {
+                self.priceTextField.text = value.description
+                self.updatePrice()
+            }
+        }
+    }
+    
     @objc func pressedMaxButton(_ button: UIButton) {
         print("pressedMaxButton")
         // TODO: get the max value.
@@ -400,6 +438,25 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         }
     }
     
+    func updatePrice() -> Bool {
+        if let value = Double(priceTextField.text ?? "0") {
+            let validate = value > 0.0
+            if validate {
+                let tokenBPrice = PriceDataManager.shared.getPrice(of: PlaceOrderDataManager.shared.tokenB.symbol)!
+                let estimateValue: Double = value * tokenBPrice
+                estimateValueInCurrencyLabel.textColor = .black
+                estimateValueInCurrencyLabel.text = "≈ \(estimateValue.currency)"
+            } else {
+                estimateValueInCurrencyLabel.textColor = .red
+                estimateValueInCurrencyLabel.text = NSLocalizedString("Please input a valid price", comment: "")
+                estimateValueInCurrencyLabel.shake()
+            }
+            return validate
+        } else {
+            return false
+        }
+    }
+    
     func validatePriceRational() {
         let pair = PlaceOrderDataManager.shared.market.description
         if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
@@ -423,24 +480,9 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     }
 
     func validateTokenPrice() -> Bool {
-        guard !priceTextField.text!.isEmpty else {
-            return false
-        }
-        if let value = Double(priceTextField.text ?? "0") {
-            let validate = value > 0.0
-            if validate {
-                let tokenBPrice = PriceDataManager.shared.getPrice(of: PlaceOrderDataManager.shared.tokenB.symbol)!
-                let estimateValue: Double = value * tokenBPrice
-                estimateValueInCurrencyLabel.textColor = .black
-                estimateValueInCurrencyLabel.text = "≈ \(estimateValue.currency)"
-            } else {
-                estimateValueInCurrencyLabel.textColor = .red
-                estimateValueInCurrencyLabel.text = NSLocalizedString("Please input a valid price", comment: "")
-            }
-            return validate
-        } else {
-            return false
-        }
+        customerValue = priceTextField.text!
+        guard !customerValue.isEmpty else { return false }
+        return updatePrice()
     }
     
     func validateAmount() -> Bool {

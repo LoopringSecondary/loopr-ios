@@ -64,8 +64,8 @@ class TradeReviewViewController: UIViewController {
     }
 
     @objc func orderResponseReceivedNotification() {
-        TradeDataManager.shared.stopGetOrderStatus()
         let vc = TradeCompleteViewController()
+        vc.order = self.order
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

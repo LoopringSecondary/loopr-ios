@@ -42,7 +42,6 @@ class TradeConfirmationViewController: UIViewController {
         setBackButton()
         
         // Token View
-        let paddingY: CGFloat = 20
         let paddingLeft: CGFloat = 15
         let paddingTop: CGFloat = 100
         let padding: CGFloat = 15
@@ -50,6 +49,7 @@ class TradeConfirmationViewController: UIViewController {
         let rowPadding: CGFloat = 10
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
+        let screenHeight = screensize.height
         
         tokenSView = TradeTokenView(frame: CGRect(x: 10, y: paddingTop, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
         scrollView.addSubview(tokenSView)
@@ -65,7 +65,7 @@ class TradeConfirmationViewController: UIViewController {
         priceLabel.text = NSLocalizedString("Price", comment: "")
         priceLabel.textColor = UIColor.black
         priceLabel.font = FontConfigManager.shared.getLabelFont()
-        priceLabel.frame = CGRect(x: paddingLeft, y: tokenSView.frame.maxY + paddingY*5, width: 160, height: rowHeight)
+        priceLabel.frame = CGRect(x: paddingLeft, y: screenHeight * 0.57, width: 160, height: rowHeight)
         scrollView.addSubview(priceLabel)
         
         priceValueLabel.textColor = UIColor.black
@@ -247,7 +247,7 @@ extension TradeConfirmationViewController {
                     self.completion(nil, error!)
                     return
                 }
-                TradeDataManager.shared.startGetOrderStatus()
+                TradeDataManager.shared.startGetOrderStatus(of: self.order!.hash)
                 self.completion(orderHash!, nil)
             }
         } else {
