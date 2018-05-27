@@ -11,7 +11,7 @@ import Geth
 import NotificationBannerSwift
 import SVProgressHUD
 
-class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol {
+class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, AmountStackViewDelegate {
 
     var asset: Asset!
     
@@ -41,7 +41,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     var amountUnderline: UIView = UIView()
     var amountTradeImage: UIImageView = UIImageView()
     var amountInfoLabel: UILabel = UILabel()
-    var maxButton: UIButton = UIButton()
+    var amountStackView: AmountStackView!
     
     // Transaction Fee
     var transactionFeeLabel = UILabel()
@@ -168,21 +168,16 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         amountInfoLabel.text = 0.0.currency
         scrollView.addSubview(amountInfoLabel)
         
-        maxButton.title = NSLocalizedString("Max", comment: "")
-        maxButton.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
-        maxButton.setTitleColor(UIColor.init(rgba: "#cce9ff"), for: .highlighted)
-        maxButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
-        maxButton.contentHorizontalAlignment = .right
-        maxButton.frame = CGRect(x: screenWidth-80-padding, y: amountUnderline.frame.maxY, width: 80, height: 40)
-        maxButton.addTarget(self, action: #selector(self.pressedMaxButton(_:)), for: UIControlEvents.touchUpInside)
-        scrollView.addSubview(maxButton)
+        amountStackView = AmountStackView(frame: CGRect(x: screenWidth-100-padding, y: amountUnderline.frame.maxY, width: 100, height: 40))
+        amountStackView.delegate = self
+        scrollView.addSubview(amountStackView)
         
-        transactionFeeLabel.frame = CGRect(x: padding, y: maxButton.frame.maxY + padding*2, width: 160, height: 40)
+        transactionFeeLabel.frame = CGRect(x: padding, y: amountInfoLabel.frame.maxY + padding*2, width: 160, height: 40)
         transactionFeeLabel.font = FontConfigManager.shared.getLabelFont()
         transactionFeeLabel.text = NSLocalizedString("Transaction Fee", comment: "")
         scrollView.addSubview(transactionFeeLabel)
         
-        transactionFeeAmountLabel.frame = CGRect(x: screenWidth-300-padding, y: maxButton.frame.maxY + padding*2, width: 300, height: 40)
+        transactionFeeAmountLabel.frame = CGRect(x: screenWidth-300-padding, y: amountInfoLabel.frame.maxY + padding*2, width: 300, height: 40)
         transactionFeeAmountLabel.font = FontConfigManager.shared.getLabelFont()
         transactionFeeAmountLabel.textAlignment = .right
         transactionFeeAmountLabel.text = ""
@@ -265,6 +260,15 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         tokenTotalAmountLabel.text = "\(asset.balance) \(asset.symbol) Available"
         
         SendCurrentAppWalletDataManager.shared.getNonceFromServer()
+    }
+    
+    func setResultOfAmount(with percentage: CGFloat) {
+        let value = asset.balance * Double(percentage)
+        amountTextField.text = value.format()
+        if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
+            let total = value * price
+            updateLabel(label: amountInfoLabel, text: total.currency, textColor: .black)
+        }
     }
     
     @objc func pressedHelpButton(_ sender: Any) {
@@ -382,7 +386,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         SVProgressHUD.show(withStatus: "Processing the transaction ...")
 
         let toAddress = addressTextField.text!
-        // let gethAmount = GethBigInt.bigInt(amountTextField.text!)!
         if let token = TokenDataManager.shared.getTokenBySymbol(asset!.symbol) {
             let gethAmount = GethBigInt.generate(valueInEther: Double(amountTextField.text!)!, symbol: token.symbol)!
             var error: NSError? = nil
@@ -411,12 +414,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         viewController.delegate = self
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    @objc func pressedMaxButton(_ sender: Any) {
-        print("pressedMaxButton")
-        amountTextField.text = asset.balance.description
-        updateLabel(label: amountInfoLabel, text: asset.display, textColor: .black)
     }
 
     // To avoid gesture conflicts in swiping to back and UISlider
