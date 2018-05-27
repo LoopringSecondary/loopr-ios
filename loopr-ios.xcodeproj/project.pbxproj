@@ -317,7 +317,6 @@
 		AC54FD90204FC701007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD25204FC3FA007E1DEB /* OpenSans-SemiBoldItalic.ttf */; };
 		AC54FD92204FD291007E1DEB /* FontConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54FD91204FD291007E1DEB /* FontConfigManager.swift */; };
 		AC5572FF20A6914300ACDEC9 /* OrderBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5572FE20A6914300ACDEC9 /* OrderBook.swift */; };
-		AC55735220A7E77700ACDEC9 /* Geth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC55735120A7E77600ACDEC9 /* Geth.framework */; };
 		AC56625B20563C05003C925C /* TradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56625920563C05003C925C /* TradeViewController.swift */; };
 		AC56625C20563C05003C925C /* TradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC56625A20563C05003C925C /* TradeViewController.xib */; };
 		AC5E0991205F256500801738 /* AddTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E098F205F256500801738 /* AddTokenViewController.swift */; };
@@ -500,8 +499,6 @@
 		ACEC978620B247F0003F9DEB /* DefaultSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEC978520B247F0003F9DEB /* DefaultSlider.swift */; };
 		ACEC978820B24808003F9DEB /* DefaultSliderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEC978720B24808003F9DEB /* DefaultSliderDelegate.swift */; };
 		ACEC978A20B24818003F9DEB /* TapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEC978920B24818003F9DEB /* TapticEngine.swift */; };
-		ACEF19D820A96E9B009467C5 /* Geth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC55735120A7E77600ACDEC9 /* Geth.framework */; };
-		ACEF19D920A96E9C009467C5 /* Geth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC55735120A7E77600ACDEC9 /* Geth.framework */; };
 		ACF06A06204C736A00C3FF86 /* CreateMnemonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF06A05204C736A00C3FF86 /* CreateMnemonicTests.swift */; };
 		ACF71CB42033E723000E7618 /* TradeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */; };
 		ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */; };
@@ -789,7 +786,6 @@
 		AC54FD3C204FC688007E1DEB /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		AC54FD91204FD291007E1DEB /* FontConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontConfigManager.swift; sourceTree = "<group>"; };
 		AC5572FE20A6914300ACDEC9 /* OrderBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBook.swift; sourceTree = "<group>"; };
-		AC55735120A7E77600ACDEC9 /* Geth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Geth.framework; sourceTree = "<group>"; };
 		AC56625920563C05003C925C /* TradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewController.swift; sourceTree = "<group>"; };
 		AC56625A20563C05003C925C /* TradeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeViewController.xib; sourceTree = "<group>"; };
 		AC5E098F205F256500801738 /* AddTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTokenViewController.swift; sourceTree = "<group>"; };
@@ -1000,7 +996,6 @@
 			files = (
 				AC0C5C84203D154700C8618D /* QuartzCore.framework in Frameworks */,
 				AC0C5C82203D153F00C8618D /* CoreGraphics.framework in Frameworks */,
-				AC55735220A7E77700ACDEC9 /* Geth.framework in Frameworks */,
 				EE817669636361AFF682A8F5 /* Pods_loopr_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1009,7 +1004,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACEF19D820A96E9B009467C5 /* Geth.framework in Frameworks */,
 				9AACD1A68297585D93FB6182 /* Pods_loopr_iosTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1018,7 +1012,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACEF19D920A96E9C009467C5 /* Geth.framework in Frameworks */,
 				D9524CB21C9A148B2F4D503B /* Pods_loopr_iosUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1440,14 +1433,6 @@
 			path = Lato;
 			sourceTree = "<group>";
 		};
-		AC55735020A7E77600ACDEC9 /* go-frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				AC55735120A7E77600ACDEC9 /* Geth.framework */,
-			);
-			path = "go-frameworks";
-			sourceTree = "<group>";
-		};
 		AC5E0DD2203A848300AF03C7 /* GenerateMnemonic */ = {
 			isa = PBXGroup;
 			children = (
@@ -1628,7 +1613,6 @@
 		AC798E412022B93A0071D477 /* loopr-ios */ = {
 			isa = PBXGroup;
 			children = (
-				AC55735020A7E77600ACDEC9 /* go-frameworks */,
 				ACCC7EA120828D2E008E58BA /* loopr-ios-sdk */,
 				AC798E422022B93A0071D477 /* AppDelegate.swift */,
 				AC5288AF208300570002AEAD /* Utils */,
@@ -2784,7 +2768,6 @@
 				AC13B30A2054A766008A72C0 /* BuyViewController.swift in Sources */,
 				ACB5DDA2202D6F9400140A09 /* UIViewExtension.swift in Sources */,
 				94B5CA8C204FE8E40081BA93 /* ETH_Transaction.swift in Sources */,
-				94C11FDD208C81D60050E180 /* DoubleExtension.swift in Sources */,
 				AC971EC820BB412300EDEDD0 /* AuthenticationDataManager.swift in Sources */,
 				AC37567C2038D80300AADC60 /* PrivateKeyViewController.swift in Sources */,
 				9475A2EE207EF81300200155 /* OrderDetailViewController.swift in Sources */,

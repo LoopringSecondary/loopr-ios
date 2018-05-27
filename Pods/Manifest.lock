@@ -7,6 +7,7 @@ PODS:
   - CryptoSwift (0.8.3)
   - FoldingCell (3.0.6)
   - FontBlaster (4.0.3)
+  - Geth (1.8.8)
   - lottie-ios (2.5.0)
   - MarqueeLabel/Swift (3.1.4)
   - NotificationBannerSwift (1.6.2):
@@ -29,6 +30,7 @@ DEPENDENCIES:
   - CryptoSwift (= 0.8.3)
   - FoldingCell (= 3.0.6)
   - FontBlaster
+  - Geth
   - lottie-ios
   - NotificationBannerSwift
   - secp256k1_ios (from `https://github.com/shamatar/secp256k1_ios.git`)
@@ -45,6 +47,7 @@ SPEC REPOS:
     - CryptoSwift
     - FoldingCell
     - FontBlaster
+    - Geth
     - lottie-ios
     - MarqueeLabel
     - NotificationBannerSwift
@@ -72,6 +75,7 @@ SPEC CHECKSUMS:
   CryptoSwift: 033efc3523865d19cc6ab6612fa17a62613b5dfa
   FoldingCell: 4848ec8a2056d5751bfb710df14521fc64d48ad7
   FontBlaster: f18031f5dde2ce689f5330e7005edfe3c0815957
+  Geth: 483ea44b5f930b72320218290b939ba8e2389aaf
   lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
   MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
   NotificationBannerSwift: 4eceb2add9d5eaa0596c63d49690b4d6476e74ec
@@ -85,6 +89,6 @@ SPEC CHECKSUMS:
   SwiftTheme: 36d71c4eed4b2c401c782cf036e4586c749a8173
   TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803
 
-PODFILE CHECKSUM: 4f5c57125f360e886bd0db01e73396daeab0f21b
+PODFILE CHECKSUM: 24b658b71fae18e2589c8cb2dd601a37ff70ee0b
 
 COCOAPODS: 1.5.0

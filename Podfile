@@ -17,7 +17,7 @@ target 'loopr-ios' do
   pod 'SVProgressHUD'
 
   # Pods for keystone
-  # pod 'Geth'
+  pod 'Geth'
   pod 'BigInt', '3.0.1'
   pod 'CryptoSwift', '0.8.3'
   pod 'secp256k1_ios', git: 'https://github.com/shamatar/secp256k1_ios.git', inhibit_warnings: true
