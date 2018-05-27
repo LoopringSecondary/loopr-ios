@@ -74,7 +74,6 @@ class LoopringAPIRequest {
             }
             var orders: [Order] = []
             let json = JSON(data)
-            print(json)
             let offerData = json["result"]["data"]
             
             for subJson in offerData.arrayValue {
@@ -347,9 +346,12 @@ class LoopringAPIRequest {
                 return
             }
             let json = JSON(data)
-            let offerData = json["result"]["data"]
             
-            print(offerData)
+            let errorMessage = json["error"]
+            print("errorMessage: \(errorMessage)")
+
+            let offerData = json["result"]["data"]
+            print("loopring_getTransactions: \(offerData)")
             
             var transactions: [Transaction] = []
             for subJson in offerData.arrayValue {
