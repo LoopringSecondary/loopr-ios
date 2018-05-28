@@ -129,7 +129,7 @@ class TradeDataManager {
         // P2P 订单 默认 1hour 过期，或增加ui调整
         let since = Int64(Date().timeIntervalSince1970)
         let until = Int64(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!.timeIntervalSince1970)
-        var order = OriginalOrder(delegate: delegate, address: address, side: side, tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: "p2p_order")
+        var order = OriginalOrder(delegate: delegate, address: address, side: side, tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: .p2pOrder)
         PlaceOrderDataManager.shared.completeOrder(&order)
         return order
     }
@@ -460,7 +460,7 @@ class TradeDataManager {
      4. 停止接收sockeio的推送
      */
     func onOrderResponse(json: JSON) {
-        if json["status"].stringValue == OrderStatus.finished.rawValue {
+        if json["status"].stringValue == OrderStatus.locked.rawValue {
             stopGetOrderStatus()
             NotificationCenter.default.post(name: .orderResponseReceived, object: nil)
         }

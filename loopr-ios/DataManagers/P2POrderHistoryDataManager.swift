@@ -84,7 +84,7 @@ class P2POrderHistoryDataManager {
     
     func getOrdersFromServer(completionHandler: @escaping (_ orders: [Order]?, _ error: Error?) -> Void) {
         if let owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
-            LoopringAPIRequest.getOrders(owner: owner, orderType: "p2p_order") { orders, error in
+            LoopringAPIRequest.getOrders(owner: owner, orderType: OrderType.p2pOrder.rawValue) { orders, error in
                 guard let orders = orders, error == nil else {
                     return
                 }

@@ -28,12 +28,12 @@ class OriginalOrder {
     let authPrivateKey: String
     let authAddr: String
     let marginSplitPercentage: UInt8
-    let orderType: String
+    let orderType: OrderType
     var v: UInt
     var r: String
     var s: String
     
-    init(delegate: String, address: String, side: String, tokenS: String, tokenB: String, validSince: Int64, validUntil: Int64, amountBuy: Double, amountSell: Double, lrcFee: Double, buyNoMoreThanAmountB: Bool, orderType: String = "market_order", market: String = "") {
+    init(delegate: String, address: String, side: String, tokenS: String, tokenB: String, validSince: Int64, validUntil: Int64, amountBuy: Double, amountSell: Double, lrcFee: Double, buyNoMoreThanAmountB: Bool, orderType: OrderType = .marketOrder, market: String = "") {
         self.delegate = delegate
         self.address = address
         self.market = market
@@ -70,7 +70,7 @@ class OriginalOrder {
         self.v = UInt(json["v"].stringValue.dropFirst(2), radix: 16)!
         self.r = json["r"].stringValue
         self.s = json["s"].stringValue
-        self.orderType = json["orderType"].stringValue
+        self.orderType = OrderType(rawValue: json["orderType"].stringValue) ?? OrderType.unknown
         self.walletAddress = json["walletAddress"].stringValue
         self.authAddr = json["authAddr"].stringValue
         self.authPrivateKey = json["authPrivateKey"].stringValue

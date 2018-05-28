@@ -57,6 +57,7 @@
 		94C5E79520738ADE0074B939 /* OrderSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C5E79320738ADE0074B939 /* OrderSearchViewController.xib */; };
 		94C5E79C207394F50074B939 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5E79A207394F40074B939 /* CustomSearchBar.swift */; };
 		94C5E79D207394F50074B939 /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5E79B207394F50074B939 /* CustomSearchController.swift */; };
+		94CA6B5920BC037F000E4E8E /* OrderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CA6B5820BC037F000E4E8E /* OrderType.swift */; };
 		94D94CE32084A9380000BBC8 /* ConfirmationResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D94CE12084A9380000BBC8 /* ConfirmationResultViewController.swift */; };
 		94D94CE42084A9380000BBC8 /* ConfirmationResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D94CE22084A9380000BBC8 /* ConfirmationResultViewController.xib */; };
 		94DAACB220BBF24B0097707E /* OrderQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DAACB020BBF24B0097707E /* OrderQRCodeViewController.xib */; };
@@ -588,6 +589,7 @@
 		94C5E79320738ADE0074B939 /* OrderSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderSearchViewController.xib; sourceTree = "<group>"; };
 		94C5E79A207394F40074B939 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		94C5E79B207394F50074B939 /* CustomSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
+		94CA6B5820BC037F000E4E8E /* OrderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderType.swift; sourceTree = "<group>"; };
 		94D94CE12084A9380000BBC8 /* ConfirmationResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationResultViewController.swift; sourceTree = "<group>"; };
 		94D94CE22084A9380000BBC8 /* ConfirmationResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmationResultViewController.xib; sourceTree = "<group>"; };
 		94DAACB020BBF24B0097707E /* OrderQRCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderQRCodeViewController.xib; sourceTree = "<group>"; };
@@ -1948,6 +1950,7 @@
 				AC2CFAA020BB3BEE00387DB1 /* BiometricType.swift */,
 				AC06193D208417AF0060F416 /* SetupWalletMethod.swift */,
 				AC4141FE20356A4D0089861D /* MarketSwipeViewType.swift */,
+				94CA6B5820BC037F000E4E8E /* OrderType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2647,6 +2650,7 @@
 			files = (
 				AC31B960204A8E4F00B16155 /* Wallet.swift in Sources */,
 				AC76E4702047F1D3008BA229 /* CircleChart.swift in Sources */,
+				94CA6B5920BC037F000E4E8E /* OrderType.swift in Sources */,
 				AC4F600E20773E9D00F1D954 /* Sign.swift in Sources */,
 				940B452A2060F67E00ADE2B9 /* MarketDataManager.swift in Sources */,
 				AC69913B20AA6254003593AE /* SettingWalletDetailViewControllerDataSource.swift in Sources */,
