@@ -235,7 +235,6 @@
 		AC4F600D20773E9D00F1D954 /* SignatureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F5FFC20773E9D00F1D954 /* SignatureData.swift */; };
 		AC4F600E20773E9D00F1D954 /* Sign.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F5FFD20773E9D00F1D954 /* Sign.swift */; };
 		AC4F600F20773E9D00F1D954 /* GethBigInt+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F5FFF20773E9D00F1D954 /* GethBigInt+Extension.swift */; };
-		AC4F601020773E9D00F1D954 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F600020773E9D00F1D954 /* String+Extension.swift */; };
 		AC4F601120773E9D00F1D954 /* EthAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F600220773E9D00F1D954 /* EthAccountCoordinator.swift */; };
 		AC4F601220773E9D00F1D954 /* EthFunctionEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F600420773E9D00F1D954 /* EthFunctionEncoder.swift */; };
 		AC4F601320773E9D00F1D954 /* EthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F600620773E9D00F1D954 /* EthType.swift */; };
@@ -743,7 +742,6 @@
 		AC4F5FFC20773E9D00F1D954 /* SignatureData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureData.swift; sourceTree = "<group>"; };
 		AC4F5FFD20773E9D00F1D954 /* Sign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sign.swift; sourceTree = "<group>"; };
 		AC4F5FFF20773E9D00F1D954 /* GethBigInt+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GethBigInt+Extension.swift"; sourceTree = "<group>"; };
-		AC4F600020773E9D00F1D954 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		AC4F600220773E9D00F1D954 /* EthAccountCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthAccountCoordinator.swift; sourceTree = "<group>"; };
 		AC4F600420773E9D00F1D954 /* EthFunctionEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthFunctionEncoder.swift; sourceTree = "<group>"; };
 		AC4F600620773E9D00F1D954 /* EthType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthType.swift; sourceTree = "<group>"; };
@@ -1288,7 +1286,6 @@
 			isa = PBXGroup;
 			children = (
 				AC4F5FFB20773E9D00F1D954 /* Crypto */,
-				AC4F5FFE20773E9D00F1D954 /* Extension */,
 				AC4F600120773E9D00F1D954 /* Component */,
 				AC4F600320773E9D00F1D954 /* Abi */,
 				AC4F600B20773E9D00F1D954 /* web3swift.swift */,
@@ -1303,14 +1300,6 @@
 				AC4F5FFD20773E9D00F1D954 /* Sign.swift */,
 			);
 			path = Crypto;
-			sourceTree = "<group>";
-		};
-		AC4F5FFE20773E9D00F1D954 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				AC4F600020773E9D00F1D954 /* String+Extension.swift */,
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		AC4F600120773E9D00F1D954 /* Component */ = {
@@ -1952,6 +1941,7 @@
 				94AD1FE4208B910D00C443E6 /* Currency.swift */,
 				AC2CFAA020BB3BEE00387DB1 /* BiometricType.swift */,
 				AC06193D208417AF0060F416 /* SetupWalletMethod.swift */,
+				AC4141FE20356A4D0089861D /* MarketSwipeViewType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1985,7 +1975,6 @@
 				ACB9116D2025575A00F14644 /* MarketNavigationViewController.swift */,
 				AC4141ED203524280089861D /* MarketSwipeViewController.swift */,
 				AC4141EE203524280089861D /* MarketSwipeViewController.xib */,
-				AC4141FE20356A4D0089861D /* MarketSwipeViewType.swift */,
 				ACB9116F202557B100F14644 /* MarketViewController.swift */,
 				ACB91170202557B100F14644 /* MarketViewController.xib */,
 				ACB9117320255A6600F14644 /* MarketTableViewCell.swift */,
@@ -2728,7 +2717,6 @@
 				ACB91171202557B100F14644 /* MarketViewController.swift in Sources */,
 				AC4F601220773E9D00F1D954 /* EthFunctionEncoder.swift in Sources */,
 				ACB5DD93202C09DC00140A09 /* Interactor.swift in Sources */,
-				AC4F601020773E9D00F1D954 /* String+Extension.swift in Sources */,
 				AC99CF462083DD6A000AE4BD /* MnemonicEnterDerivationPathViewController.swift in Sources */,
 				ACB9118C20266A9C00F14644 /* AssetDetailViewController.swift in Sources */,
 				AC5572FF20A6914300ACDEC9 /* OrderBook.swift in Sources */,
