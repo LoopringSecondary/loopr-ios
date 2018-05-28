@@ -267,8 +267,8 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 label1.text = NSLocalizedString("Buy", comment: "")
             }
             
-            label2.text = "Amount (\(market.tradingPair.tradingA))"
-            label3.text = "Total (\(market.tradingPair.tradingB))"
+            label2.text = NSLocalizedString("Amount", comment: "") + " (\(market.tradingPair.tradingA))"
+            label3.text = NSLocalizedString("Total", comment: "") + " (\(market.tradingPair.tradingB))"
             
             return headerView
         } else {

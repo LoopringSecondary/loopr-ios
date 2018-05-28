@@ -120,7 +120,7 @@
 "Default Relay" = "Default Relay";
 "Settings" = "Settings";
 "Currency" = "Currency";
-"ALL" = "ALL";
+"All" = "All";
 "Favorite" = "Favorite";
 "Align QR Code within Frame to Scan" = "Align QR Code within Frame to Scan";
 "No access to save QR code. Please go to setting to enable the access" = "No access to save QR code. Please go to setting to enable the access";
@@ -225,3 +225,6 @@
 "From" = "From";
 "To" = "To";
 "My wallet address in Loopr" = "My wallet address in Loopr";
+"Hide Other Pairs" = "Hide Other Pairs";
+"WETH" = "WETH";
+"LRC" = "LRC";

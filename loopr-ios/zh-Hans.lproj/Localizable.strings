@@ -120,7 +120,7 @@
 "Default Relay" = "默认中继";
 "Settings" = "设置";
 "Currency" = "货币";
-"ALL" = "全部";
+"All" = "全部";
 "Favorite" = "收藏";
 "Align QR Code within Frame to Scan" = "Align QR Code within Frame to Scan";
 "No access to save QR code. Please go to setting to enable the access" = "No access to save QR code. Please go to setting to enable the access";
@@ -174,8 +174,8 @@
 "Convert WETH To ETH" = "将WETH转换为ETH";
 "Enable \(transaction.symbol) To Trade" = "Enable \(transaction.symbol) To Trade";
 "Cancel Order(s)" = "取消订单";
-"Enter the amount you have" = "如果您想卖出的数量";
-"Enter the amount you get" = "如果您想买出的数量";
+"Enter the amount you have" = "输入卖出的数量";
+"Enter the amount you get" = "输入买出的数量";
 "Available \(balance) \(tokens)" = "Available \(balance) \(tokens)";
 "Available 0.0 \(tokens)" = "Available 0.0 \(tokens)";
 "Your price is irrational. Do you want to continue trading with the price?" = "Your price is irrational. Do you want to continue trading with the price?";
@@ -224,3 +224,6 @@
 "From" = "发送地址";
 "To" = "接收地址";
 "My wallet address in Loopr" = "我在Loopr里的钱包地址";
+"Hide Other Pairs" = "隐藏其他交易对";
+"WETH" = "以太坊";
+"LRC" = "路印";
