@@ -30,16 +30,9 @@ class QRCodeViewController: UIViewController {
         addressLabel.theme_textColor = GlobalPicker.textColor
         addressLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 15)
         copyAddressButton.setTitle(NSLocalizedString("Copy Wallet Address", comment: ""), for: .normal)
-        copyAddressButton.backgroundColor = UIColor.clear
-        copyAddressButton.titleColor = UIColor.black
-        copyAddressButton.layer.cornerRadius = 23
-        copyAddressButton.layer.borderWidth = 0.5
-        copyAddressButton.layer.borderColor = UIColor.black.cgColor
-        copyAddressButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+        copyAddressButton.setupRoundWhite()
         saveToAlbumButton.setTitle(NSLocalizedString("Save to Album", comment: ""), for: .normal)
-        saveToAlbumButton.backgroundColor = UIColor.black
-        saveToAlbumButton.layer.cornerRadius = 23
-        saveToAlbumButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+        saveToAlbumButton.setupRoundBlack()
         setupShareButton()
         setBackButton(image: "Back-button-white")
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
@@ -103,7 +96,7 @@ class QRCodeViewController: UIViewController {
     }
     
     @IBAction func pressedShareButton(_ button: UIBarButtonItem) {
-        let text = NSLocalizedString("My wallet address in Loopr-iOS", comment: "")
+        let text = NSLocalizedString("My wallet address in Loopr", comment: "")
         
         let png = UIImagePNGRepresentation(qrcodeImage)
         

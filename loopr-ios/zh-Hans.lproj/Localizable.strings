@@ -76,7 +76,7 @@
 "Please input the consistant password." = "请输入一致的密码。";
 "Hide Small Assets" = "隐藏小额资产";
 "Max" = "最大值";
-"Amount you want to convert" = "输入您转换的额度";
+"Amount you want to convert" = "输入转换的额度";
 "Add Token" = "添加代币";
 "Search" = "搜索";
 "Contract Version" = "合约版本";
@@ -223,3 +223,4 @@
 "Face ID" = "Face ID";
 "From" = "发送地址";
 "To" = "接收地址";
+"My wallet address in Loopr" = "我在Loopr里的钱包地址";
