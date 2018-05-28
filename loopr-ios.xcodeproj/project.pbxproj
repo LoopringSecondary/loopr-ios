@@ -251,7 +251,6 @@
 		AC500BC620B651440073E590 /* SettingSecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC500BC420B651440073E590 /* SettingSecurityViewController.swift */; };
 		AC500BC720B651440073E590 /* SettingSecurityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC500BC520B651440073E590 /* SettingSecurityViewController.xib */; };
 		AC500BC920B6770E0073E590 /* AuthenticationTimingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC500BC820B6770E0073E590 /* AuthenticationTimingType.swift */; };
-		AC5288B3208300580002AEAD /* TokenUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B0208300570002AEAD /* TokenUtil.swift */; };
 		AC5288B4208300580002AEAD /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B1208300570002AEAD /* DateUtil.swift */; };
 		AC5288B5208300580002AEAD /* NetworkingRechabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B2208300570002AEAD /* NetworkingRechabilityManager.swift */; };
 		AC5442DC2081167E0036A2B4 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5442DB2081167E0036A2B4 /* SwiftyJSON.swift */; };
@@ -760,7 +759,6 @@
 		AC500BC420B651440073E590 /* SettingSecurityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSecurityViewController.swift; sourceTree = "<group>"; };
 		AC500BC520B651440073E590 /* SettingSecurityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingSecurityViewController.xib; sourceTree = "<group>"; };
 		AC500BC820B6770E0073E590 /* AuthenticationTimingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTimingType.swift; sourceTree = "<group>"; };
-		AC5288B0208300570002AEAD /* TokenUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenUtil.swift; sourceTree = "<group>"; };
 		AC5288B1208300570002AEAD /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		AC5288B2208300570002AEAD /* NetworkingRechabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingRechabilityManager.swift; sourceTree = "<group>"; };
 		AC5442DB2081167E0036A2B4 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
@@ -1374,7 +1372,6 @@
 		AC5288AF208300570002AEAD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				AC5288B0208300570002AEAD /* TokenUtil.swift */,
 				AC5288B1208300570002AEAD /* DateUtil.swift */,
 				AC5288B2208300570002AEAD /* NetworkingRechabilityManager.swift */,
 			);
@@ -1954,6 +1951,7 @@
 				ACB97C6F20715BC100775D4C /* MnemonicQuestion.swift */,
 				94AD1FE4208B910D00C443E6 /* Currency.swift */,
 				AC2CFAA020BB3BEE00387DB1 /* BiometricType.swift */,
+				AC06193D208417AF0060F416 /* SetupWalletMethod.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2175,7 +2173,6 @@
 				AC3756652038CD7E00AADC60 /* SetupNavigationController.swift */,
 				C8BF95AE2027AC9400343B9A /* SetupViewController.swift */,
 				C8BF95AF2027AC9400343B9A /* SetupViewController.xib */,
-				AC06193D208417AF0060F416 /* SetupWalletMethod.swift */,
 				AC99CF502083E708000AE4BD /* GenerateWallet */,
 				AC5E0DD2203A848300AF03C7 /* GenerateMnemonic */,
 				AC3756752038D70D00AADC60 /* UnlockWallet */,
@@ -2723,7 +2720,6 @@
 				AC500BC920B6770E0073E590 /* AuthenticationTimingType.swift in Sources */,
 				AC9280E92030C7440009B574 /* UIColorExtensions.swift in Sources */,
 				AC4141F920352DA70089861D /* SwipeTabView.swift in Sources */,
-				AC5288B3208300580002AEAD /* TokenUtil.swift in Sources */,
 				AC4141F320352C460089861D /* SwipeViewController.swift in Sources */,
 				ACCCFDD0203BF1D100B98F99 /* FloatLabelTextView.swift in Sources */,
 				AC2D2C072089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift in Sources */,

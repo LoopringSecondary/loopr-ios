@@ -238,7 +238,7 @@ class LoopringAPIRequestTests: XCTestCase {
     
     func testUnlockWallet() {
         let expectation = XCTestExpectation()
-        LoopringAPIRequest.unlockWallet(owner: testAddress) { result, error in
+        LoopringAPIRequest.unlockWallet(owner: "0xeE8b2b3aFDE5Fd69E7E0581EE702c202693e7B03") { result, error in
             guard error == nil && result != nil else {
                 print("error=\(String(describing: error))")
                 XCTFail()
