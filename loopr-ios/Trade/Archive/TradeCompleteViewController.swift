@@ -60,7 +60,7 @@ class TradeCompleteViewController: UIViewController {
         guard errorTipInfo.count == 2 else { return }
         
         needAUnderline.frame = CGRect(x: padding, y: needATipLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        needAUnderline.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        needAUnderline.backgroundColor = UIStyleConfig.underlineColor
         scrollView.addSubview(needAUnderline)
         
         // 2nd row: need B token

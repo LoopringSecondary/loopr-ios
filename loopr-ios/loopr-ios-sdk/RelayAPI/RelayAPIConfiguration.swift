@@ -13,7 +13,7 @@ class RelayAPIConfiguration {
     // Test environment
     // static let baseUrl = "http://13.112.62.24"
 
-    static let baseURL = "https://pre-relay1.loopring.io"
+    static let baseURL = "https://relay1.loopring.io"
     static let rpcURL = URL(string: baseURL + "/rpc/v2")!
     static let ethURL = URL(string: baseURL + "/eth")!
     static let socketURL = URL(string: baseURL)!

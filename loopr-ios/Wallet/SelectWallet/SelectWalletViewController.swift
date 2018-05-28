@@ -67,7 +67,11 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cellHeights[indexPath.row]
+        if indexPath.row < cellHeights.count {
+            return cellHeights[indexPath.row]
+        } else {
+            return CellHeight.close
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

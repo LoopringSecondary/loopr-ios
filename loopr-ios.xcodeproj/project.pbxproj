@@ -480,7 +480,6 @@
 		ACDBF10A203FEA07000F0DEC /* ReorderAutoScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF109203FEA07000F0DEC /* ReorderAutoScroll.swift */; };
 		ACDBF10C203FEA3E000F0DEC /* ReorderGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF10B203FEA3E000F0DEC /* ReorderGestureRecognizer.swift */; };
 		ACDBF10E203FEBAD000F0DEC /* TableViewReorderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF10D203FEBAD000F0DEC /* TableViewReorderDelegate.swift */; };
-		ACE5BF95204523F9005D75DD /* UIStyleKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5BF94204523F9005D75DD /* UIStyleKeyboard.swift */; };
 		ACE5BFA720466EFD005D75DD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ACE5BFA920466EFD005D75DD /* Localizable.strings */; };
 		ACE65E3E2071C6FA001EE499 /* Web3SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE65E3D2071C6FA001EE499 /* Web3SwiftTests.swift */; };
 		ACE65E412071F875001EE499 /* MnemonicCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE65E3F2071F875001EE499 /* MnemonicCollectionViewController.swift */; };
@@ -956,7 +955,6 @@
 		ACDBF109203FEA07000F0DEC /* ReorderAutoScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderAutoScroll.swift; sourceTree = "<group>"; };
 		ACDBF10B203FEA3E000F0DEC /* ReorderGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderGestureRecognizer.swift; sourceTree = "<group>"; };
 		ACDBF10D203FEBAD000F0DEC /* TableViewReorderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewReorderDelegate.swift; sourceTree = "<group>"; };
-		ACE5BF94204523F9005D75DD /* UIStyleKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStyleKeyboard.swift; sourceTree = "<group>"; };
 		ACE5BFA0204543CA005D75DD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		ACE5BFA1204543CA005D75DD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		ACE5BFA820466EFD005D75DD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -2110,7 +2108,6 @@
 				AC9280E6202F5A010009B574 /* UIStyleConfig.swift */,
 				ACE6F721204221260039273D /* Themes.swift */,
 				ACE6F7232042228A0039273D /* GlobalPicker.swift */,
-				ACE5BF94204523F9005D75DD /* UIStyleKeyboard.swift */,
 				AC54FD91204FD291007E1DEB /* FontConfigManager.swift */,
 			);
 			path = UIConfig;
@@ -2906,7 +2903,6 @@
 				940B451E2060F67E00ADE2B9 /* GenerateWalletDataManager.swift in Sources */,
 				AC4141EF203524280089861D /* MarketSwipeViewController.swift in Sources */,
 				AC06193E208417AF0060F416 /* SetupWalletMethod.swift in Sources */,
-				ACE5BF95204523F9005D75DD /* UIStyleKeyboard.swift in Sources */,
 				9445D54420BA4F63006045F6 /* PriceButton.swift in Sources */,
 				AC387520205F12F100A76637 /* ContextMenu+ContainerStyle.swift in Sources */,
 				ACB5DD98202D5A8400140A09 /* NumericKeyboard.swift in Sources */,

@@ -46,6 +46,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     // Date
     var dateTipLabel: UILabel = UILabel()
     var dateInfoLabel: UILabel = UILabel()
+    var dateUnderline: UIView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +108,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         } else if order.originalOrder.side.lowercased() == "buy" {
             percent = order.dealtAmountB / order.originalOrder.amountBuy
         }
-        filledPieChart.theme_backgroundColor = GlobalPicker.backgroundColor
+        filledPieChart.backgroundColor = UIColor.white
         filledPieChart.strokeColor = Themes.isNight() ? UIColor.white.cgColor : UIColor.black.cgColor
         filledPieChart.textColor = Themes.isNight() ? UIColor.white : UIColor.black
         filledPieChart.textFont = UIFont(name: FontConfigManager.shared.getLight(), size: 20.0)!
@@ -137,7 +138,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         amountLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 40)
         amountLabel.textColor = Themes.isNight() ? UIColor.white : UIColor.black
         displayLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 20)
-        displayLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
+        displayLabel.textColor = UIColor.init(white: 0, alpha: 0.6)
     }
     
     func setup() {
@@ -147,11 +148,12 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         let padding: CGFloat = 15
+        let labelHeight: CGFloat = 40
         
         marketLabel.text = order.tradingPairDescription
         marketLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 30)
         marketLabel.textAlignment = .center
-        marketLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
+        marketLabel.textColor = UIColor.init(white: 0, alpha: 0.6)
         marketLabel.frame = CGRect(x: 0, y: 50, width: screenWidth, height: 40)
         scrollView.addSubview(marketLabel)
         
@@ -161,7 +163,8 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         typeLabel.frame = CGRect(x: (screenWidth + contendWidth) / 2 + 5, y: marketLabel.frame.origin.y + 5, width: 40, height: 30)
         scrollView.addSubview(typeLabel)
         
-        let rect = CGRect(x: screenWidth*0.35, y: marketLabel.frame.maxY + padding, width: screenWidth*0.3, height: screenWidth*0.3)
+        let circleChartWidth: CGFloat = round(screenWidth*0.3)
+        let rect = CGRect(x: (screenWidth - circleChartWidth) / 2, y: marketLabel.frame.maxY + padding, width: circleChartWidth, height: circleChartWidth)
         filledPieChart = CircleChart(frame: rect)
         scrollView.addSubview(filledPieChart)
         setupOrderFilled(order: order)
@@ -179,98 +182,93 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         // 1st row: amount
         amountTipLabel.font = FontConfigManager.shared.getLabelFont()
         amountTipLabel.text = NSLocalizedString("Filled/Amount", comment: "")
-        amountTipLabel.frame = CGRect(x: padding, y: displayLabel.frame.maxY + padding*3, width: 150, height: 40)
+        amountTipLabel.frame = CGRect(x: padding, y: displayLabel.frame.maxY + padding*3, width: 150, height: labelHeight)
         scrollView.addSubview(amountTipLabel)
         amountInfoLabel.font = FontConfigManager.shared.getLabelFont()
         amountInfoLabel.textAlignment = .right
-        amountInfoLabel.frame = CGRect(x: padding + 150, y: amountTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
+        amountInfoLabel.frame = CGRect(x: padding + 150, y: amountTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: labelHeight)
         scrollView.addSubview(amountInfoLabel)
         amountUnderline.frame = CGRect(x: padding, y: amountTipLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        amountUnderline.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        amountUnderline.backgroundColor = UIStyleConfig.underlineColor
         scrollView.addSubview(amountUnderline)
         
         // 2nd row: status
         statusTipLabel.font = FontConfigManager.shared.getLabelFont()
         statusTipLabel.text = NSLocalizedString("Status", comment: "")
-        statusTipLabel.frame = CGRect(x: padding, y: amountTipLabel.frame.maxY + padding, width: 150, height: 40)
+        statusTipLabel.frame = CGRect(x: padding, y: amountTipLabel.frame.maxY + padding, width: 150, height: labelHeight)
         scrollView.addSubview(statusTipLabel)
         statusInfoLabel.font = FontConfigManager.shared.getLabelFont()
         statusInfoLabel.text = order.orderStatus.description
         statusInfoLabel.textAlignment = .right
-        statusInfoLabel.frame = CGRect(x: padding + 150, y: statusTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
+        statusInfoLabel.frame = CGRect(x: padding + 150, y: statusTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: labelHeight)
         scrollView.addSubview(statusInfoLabel)
         statusUnderline.frame = CGRect(x: padding, y: statusTipLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        statusUnderline.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        statusUnderline.backgroundColor = UIStyleConfig.underlineColor
         scrollView.addSubview(statusUnderline)
         
         // 3rd row: total
         totalTipLabel.font = FontConfigManager.shared.getLabelFont()
         totalTipLabel.text = NSLocalizedString("Total", comment: "")
-        totalTipLabel.frame = CGRect(x: padding, y: statusTipLabel.frame.maxY + padding, width: 150, height: 40)
+        totalTipLabel.frame = CGRect(x: padding, y: statusTipLabel.frame.maxY + padding, width: 150, height: labelHeight)
         scrollView.addSubview(totalTipLabel)
         totalInfoLabel.font = FontConfigManager.shared.getLabelFont()
         totalInfoLabel.textAlignment = .right
-        totalInfoLabel.frame = CGRect(x: padding + 150, y: totalTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
+        totalInfoLabel.frame = CGRect(x: padding + 150, y: totalTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: labelHeight)
         scrollView.addSubview(totalInfoLabel)
         
         // 4th row: trade
         tradeTipLabel.font = FontConfigManager.shared.getLabelFont()
-        tradeTipLabel.text = NSLocalizedString("    Trade", comment: "")
-        tradeTipLabel.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
-        tradeTipLabel.frame = CGRect(x: 0, y: totalTipLabel.frame.maxY + padding, width: screenWidth, height: 40)
+        tradeTipLabel.text = NSLocalizedString("Trade", comment: "")
+        tradeTipLabel.backgroundColor = UIStyleConfig.underlineColor
+        tradeTipLabel.frame = CGRect(x: padding, y: totalTipLabel.frame.maxY + padding, width: screenWidth, height: labelHeight)
         scrollView.addSubview(tradeTipLabel)
         
         // 5th row: filled
         filledTipLabel.font = FontConfigManager.shared.getLabelFont()
         filledTipLabel.text = NSLocalizedString("Filled", comment: "")
-        filledTipLabel.frame = CGRect(x: padding, y: tradeTipLabel.frame.maxY + padding, width: 150, height: 40)
+        filledTipLabel.frame = CGRect(x: padding, y: tradeTipLabel.frame.maxY + padding, width: 150, height: labelHeight)
         scrollView.addSubview(filledTipLabel)
         filledInfoLabel.font = FontConfigManager.shared.getLabelFont()
         filledInfoLabel.textAlignment = .right
-        filledInfoLabel.frame = CGRect(x: padding + 150, y: filledTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
+        filledInfoLabel.frame = CGRect(x: padding + 150, y: filledTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: labelHeight)
         scrollView.addSubview(filledInfoLabel)
         filledUnderline.frame = CGRect(x: padding, y: filledTipLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        filledUnderline.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        filledUnderline.backgroundColor = UIStyleConfig.underlineColor
         scrollView.addSubview(filledUnderline)
         
         // 6th row: ID
         idTipLabel.font = FontConfigManager.shared.getLabelFont()
         idTipLabel.text = NSLocalizedString("ID", comment: "")
-        idTipLabel.frame = CGRect(x: padding, y: filledTipLabel.frame.maxY + padding, width: 50, height: 40)
+        idTipLabel.frame = CGRect(x: padding, y: filledTipLabel.frame.maxY + padding, width: 50, height: labelHeight)
         scrollView.addSubview(idTipLabel)
         idInfoLabel.font = FontConfigManager.shared.getLabelFont()
         idInfoLabel.text = order.originalOrder.hash
         idInfoLabel.textAlignment = .right
-        idInfoLabel.frame = CGRect(x: padding + 50, y: idTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 50, height: 40)
+        idInfoLabel.frame = CGRect(x: padding + 50, y: idTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 50, height: labelHeight)
         scrollView.addSubview(idInfoLabel)
         idUnderline.frame = CGRect(x: padding, y: idTipLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        idUnderline.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        idUnderline.backgroundColor = UIStyleConfig.underlineColor
         scrollView.addSubview(idUnderline)
         
         // 7th row: date
         dateTipLabel.font = FontConfigManager.shared.getLabelFont()
         dateTipLabel.text = NSLocalizedString("Date", comment: "")
-        dateTipLabel.frame = CGRect(x: padding, y: idTipLabel.frame.maxY + padding, width: 150, height: 40)
+        dateTipLabel.frame = CGRect(x: padding, y: idTipLabel.frame.maxY + padding, width: 150, height: labelHeight)
         scrollView.addSubview(dateTipLabel)
         dateInfoLabel.font = FontConfigManager.shared.getLabelFont()
         
         let time = UInt(order.originalOrder.validSince)
         dateInfoLabel.text = DateUtil.convertToDate(time, format: "MM/dd/yyyy HH:mm")
         dateInfoLabel.textAlignment = .right
-        dateInfoLabel.frame = CGRect(x: padding + 150, y: dateTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
+        dateInfoLabel.frame = CGRect(x: padding + 150, y: dateTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: labelHeight)
         scrollView.addSubview(dateInfoLabel)
+        
+        dateUnderline.frame = CGRect(x: padding, y: dateTipLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
+        dateUnderline.backgroundColor = UIStyleConfig.underlineColor
+        scrollView.addSubview(dateUnderline)
         
         scrollView.delegate = self
         scrollView.contentSize = CGSize(width: screenWidth, height: dateTipLabel.frame.maxY + 30)
     }
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }

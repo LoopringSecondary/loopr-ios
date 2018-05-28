@@ -93,7 +93,7 @@ class Transaction {
         var description: String {
             switch self {
             case .pending: return "Pending"
-            case .success: return "Complete"
+            case .success: return "Completed"
             case .failed: return "Failed"
             case .other: return "Other"
             }

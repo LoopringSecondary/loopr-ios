@@ -70,7 +70,7 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
         needAInfoLabel.frame = CGRect(x: padding + 150, y: needATipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
         scrollView.addSubview(needAInfoLabel)
         needAUnderline.frame = CGRect(x: padding, y: needATipLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        needAUnderline.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        needAUnderline.backgroundColor = UIStyleConfig.underlineColor
         scrollView.addSubview(needAUnderline)
         
         guard errorTipInfo.count == 2 else { return }

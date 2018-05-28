@@ -36,6 +36,7 @@ class AssetTransactionDetailViewController: UIViewController {
     // Row 4
     var label7 = UILabel()
     var label8 = UILabel()
+    var row4Underline = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,72 +65,76 @@ class AssetTransactionDetailViewController: UIViewController {
         let labelHeight: CGFloat = 40
         
         // Row 1
-        label1.text = "Status"
+        label1.text = NSLocalizedString("Status", comment: "")
         label1.theme_textColor = GlobalPicker.textColor
-        label1.font = FontConfigManager.shared.getLabelFont(size: 14)
+        label1.font = FontConfigManager.shared.getLabelFont()
         label1.frame = CGRect(x: padding, y: originY, width: 80, height: labelHeight)
         view.addSubview(label1)
         
         label2.theme_textColor = GlobalPicker.textColor
         label2.textAlignment = .right
-        label2.font = FontConfigManager.shared.getLabelFont(size: 14)
+        label2.font = FontConfigManager.shared.getLabelFont()
         label2.frame = CGRect(x: padding + 80 - 40, y: originY, width: screenWidth-80-2*padding + 40, height: labelHeight)
         view.addSubview(label2)
         
-        row1Underline.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-        row1Underline.frame = CGRect(x: padding, y: label1.frame.maxY, width: screenWidth - 2*padding, height: 0.5)
+        row1Underline.backgroundColor = UIStyleConfig.underlineColor
+        row1Underline.frame = CGRect(x: padding, y: label1.frame.maxY, width: screenWidth - 2*padding, height: 1)
         view.addSubview(row1Underline)
 
         // Row 2
-        label3.text = "From"
+        label3.text = NSLocalizedString("From", comment: "")
         label3.theme_textColor = GlobalPicker.textColor
-        label3.font = FontConfigManager.shared.getLabelFont(size: 14)
+        label3.font = FontConfigManager.shared.getLabelFont()
         label3.frame = CGRect(x: padding, y: row1Underline.frame.maxY + padding, width: 80, height: labelHeight)
         view.addSubview(label3)
         
         button1.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
         button1.setTitleColor(UIColor.init(rgba: "#cce9ff"), for: .highlighted)
-        button1.titleLabel?.font = FontConfigManager.shared.getLabelFont(size: 14)
+        button1.titleLabel?.font = FontConfigManager.shared.getLabelFont()
         button1.contentHorizontalAlignment = .right
         button1.frame = CGRect(x: padding + 80, y: row1Underline.frame.maxY + padding, width: screenWidth - 80 - 2 * padding, height: labelHeight)
         button1.addTarget(self, action: #selector(self.pressedButton1(_:)), for: UIControlEvents.touchUpInside)
         view.addSubview(button1)
         
-        row2Underline.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-        row2Underline.frame = CGRect(x: padding, y: label3.frame.maxY, width: screenWidth - 2*padding, height: 0.5)
+        row2Underline.backgroundColor = UIStyleConfig.underlineColor
+        row2Underline.frame = CGRect(x: padding, y: label3.frame.maxY, width: screenWidth - 2*padding, height: 1)
         view.addSubview(row2Underline)
         
         // Row 3
         label5.text = "ID"
         label5.theme_textColor = GlobalPicker.textColor
-        label5.font = FontConfigManager.shared.getLabelFont(size: 14)
+        label5.font = FontConfigManager.shared.getLabelFont()
         label5.frame = CGRect(x: padding, y: row2Underline.frame.maxY + padding, width: 80, height: labelHeight)
         view.addSubview(label5)
         
         button2.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
         button2.setTitleColor(UIColor.init(rgba: "#cce9ff"), for: .highlighted)
-        button2.titleLabel?.font = FontConfigManager.shared.getLabelFont(size: 14)
+        button2.titleLabel?.font = FontConfigManager.shared.getLabelFont()
         button2.contentHorizontalAlignment = .right
         button2.frame = CGRect(x: padding + 80, y: row2Underline.frame.maxY + padding, width: screenWidth-80-2*padding, height: labelHeight)
         button2.addTarget(self, action: #selector(self.pressedButton2(_:)), for: UIControlEvents.touchUpInside)
         view.addSubview(button2)
 
-        row3Underline.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-        row3Underline.frame = CGRect(x: padding, y: label5.frame.maxY, width: screenWidth - 2*padding, height: 0.5)
+        row3Underline.backgroundColor = UIStyleConfig.underlineColor
+        row3Underline.frame = CGRect(x: padding, y: label5.frame.maxY, width: screenWidth - 2*padding, height: 1)
         view.addSubview(row3Underline)
 
         // Row 4
-        label7.text = "Date"
+        label7.text = NSLocalizedString("Date", comment: "")
         label7.theme_textColor = GlobalPicker.textColor
-        label7.font = FontConfigManager.shared.getLabelFont(size: 14)
+        label7.font = FontConfigManager.shared.getLabelFont()
         label7.frame = CGRect(x: padding, y: row3Underline.frame.maxY + padding, width: 80, height: labelHeight)
         view.addSubview(label7)
         
         label8.theme_textColor = GlobalPicker.textColor
         label8.textAlignment = .right
-        label8.font = FontConfigManager.shared.getLabelFont(size: 14)
+        label8.font = FontConfigManager.shared.getLabelFont()
         label8.frame = CGRect(x: padding + 80, y: row3Underline.frame.maxY + padding, width: screenWidth-80-2*padding, height: labelHeight)
         view.addSubview(label8)
+        
+        row4Underline.backgroundColor = UIStyleConfig.underlineColor
+        row4Underline.frame = CGRect(x: padding, y: label7.frame.maxY, width: screenWidth - 2*padding, height: 1)
+        view.addSubview(row4Underline)
 
         update()
     }
@@ -191,7 +196,7 @@ class AssetTransactionDetailViewController: UIViewController {
             // TODO: cover all cases
             switch transaction.type {
             case .received:
-                label3.text = "From"
+                label3.text = NSLocalizedString("From", comment: "")
                 button1.title = transaction.from
             case .sent:
                 label3.text = "To"

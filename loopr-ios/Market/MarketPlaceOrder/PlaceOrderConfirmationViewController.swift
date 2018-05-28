@@ -150,7 +150,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         priceInfoLabel.frame = CGRect(x: padding + 150, y: priceTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
         scrollView.addSubview(priceInfoLabel)
         priceUnderline.frame = CGRect(x: padding, y: priceTipLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        priceUnderline.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        priceUnderline.backgroundColor = UIStyleConfig.underlineColor
         scrollView.addSubview(priceUnderline)
         
         // 2nd row: expires
@@ -164,7 +164,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         expiresInfoLabel.frame = CGRect(x: padding + 150, y: expiresTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
         scrollView.addSubview(expiresInfoLabel)
         expiresUnderline.frame = CGRect(x: padding, y: expiresTipLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        expiresUnderline.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        expiresUnderline.backgroundColor = UIStyleConfig.underlineColor
         scrollView.addSubview(expiresUnderline)
         
         // 3rd row: lrc fee
@@ -181,7 +181,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         feeInfoLabel.frame = CGRect(x: padding + 150, y: feeTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
         scrollView.addSubview(feeInfoLabel)
         feeUnderline.frame = CGRect(x: padding, y: feeTipLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        feeUnderline.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        feeUnderline.backgroundColor = UIStyleConfig.underlineColor
         scrollView.addSubview(feeUnderline)
         
         // 4th row: margin split
@@ -195,7 +195,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         marginInfoLabel.frame = CGRect(x: padding + 150, y: marginTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
         scrollView.addSubview(marginInfoLabel)
         marginUnderline.frame = CGRect(x: padding, y: marginTipLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        marginUnderline.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        marginUnderline.backgroundColor = UIStyleConfig.underlineColor
         scrollView.addSubview(marginUnderline)
         
         // 5th row: total

@@ -222,3 +222,5 @@
 "Authenticate to access your wallet" = "Authenticate to access your wallet";
 "Touch ID" = "Touch ID";
 "Face ID" = "Face ID";
+"From" = "From";
+"To" = "To";
