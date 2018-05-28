@@ -122,7 +122,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
 
         if let asset = asset, asset.symbol.uppercased() == "ETH" || asset.symbol.uppercased() == "WETH" {
             let convertButton = UIButton()
-            convertButton.setTitle("   Convert   ", for: .normal)
+            convertButton.setTitle("   " + NSLocalizedString("Convert", comment: "") + "   ", for: .normal)
             convertButton.setTitleColor(UIColor.black, for: .normal)
             convertButton.setTitleColor(UIColor.init(white: 0, alpha: 0.3), for: .highlighted)
             convertButton.titleLabel?.font = FontConfigManager.shared.getButtonTitleLabelFont(size: 13)

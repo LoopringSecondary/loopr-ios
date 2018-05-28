@@ -187,7 +187,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     }
     
     override func swipeView(_ swipeView: SwipeView, titleForPageAt index: Int) -> String {
-        return types[index].rawValue
+        return types[index].description
     }
 
     override func swipeView(_ swipeView: SwipeView, viewControllerForPageAt index: Int) -> UIViewController {

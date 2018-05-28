@@ -7,10 +7,10 @@
 */
 
 "Night Mode" = "夜间";
-"Buy" = "买";
-"Sell" = "卖";
-"Receive" = "收";
-"Send" = "发";
+"Buy" = "买入";
+"Sell" = "卖出";
+"Receive" = "收款";
+"Send" = "转账";
 "Language" = "语言";
 "Create a new wallet" = "生成新钱包";
 "Manage Wallet" = "管理钱包";
@@ -119,8 +119,8 @@
 "Default Relay" = "默认中继";
 "Settings" = "设置";
 "Currency" = "货币";
-"All" = "全部";
-"Favorite" = "Favorite";
+"ALL" = "全部";
+"Favorite" = "收藏";
 "Align QR Code within Frame to Scan" = "Align QR Code within Frame to Scan";
 "No access to save QR code. Please go to setting to enable the access" = "No access to save QR code. Please go to setting to enable the access";
 "Failed to sign/encode transaction" = "Failed to sign/encode transaction";
@@ -153,7 +153,7 @@
 "Order Detail" = "Order Detail";
 "Filled/Amount" = "Filled/Amount";
 "Status" = "Status";
-"Trade" = "Trade";
+"Trade" = "交易";
 "Filled" = "Filled";
 "Date" = "Date";
 "Cancelling" = "Cancelling";
@@ -164,8 +164,8 @@
 "Please input your private key" = "Please input your private key";
 "Enter the address" = "Enter the address";
 "Please confirm the address before sending." = "Please confirm the address before sending.";
-"Transaction Fee" = "Transaction Fee";
-"Advanced" = "Advanced";
+"Transaction Fee" = "交易费";
+"Advanced" = "高级设置";
 "What is gas?" = "What is gas?";
 "Gas is..." = "Gas is...";
 "Please input a correct address." = "Please input a correct address.";
@@ -173,8 +173,8 @@
 "Convert WETH To ETH" = "Convert WETH To ETH";
 "Enable \(transaction.symbol) To Trade" = "Enable \(transaction.symbol) To Trade";
 "Cancel Order(s)" = "Cancel Order(s)";
-"Enter the amount you have" = "Enter the amount you have";
-"Enter the amount you get" = "Enter the amount you get";
+"Enter the amount you have" = "如果您想卖出的数量";
+"Enter the amount you get" = "如果您想买出的数量";
 "Available \(balance) \(tokens)" = "Available \(balance) \(tokens)";
 "Available 0.0 \(tokens)" = "Available 0.0 \(tokens)";
 "Your price is irrational. Do you want to continue trading with the price?" = "Your price is irrational. Do you want to continue trading with the price?";
@@ -183,7 +183,7 @@
 "My Trade from Loopr-iOS" = "My Trade from Loopr-iOS";
 "Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!" = "Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!";
 "However, please make sure you have enough balance to complete the trade." = "However, please make sure you have enough balance to complete the trade.";
-"P2P Order History" = "P2P Order History";
+"P2P Order History" = "P2P订单记录";
 "Share Address through SMS" = "Share Address through SMS";
 "Clear Records of this Wallet" = "Clear Records of this Wallet";
 "Amount" = "数量";
@@ -218,3 +218,5 @@
 "Security" = "安全性";
 "Security Settings" = "安全性设置";
 "Authenticate to access your wallet" = "验证访问您的钱包";
+"Touch ID" = "触控 ID";
+"Face ID" = "Face ID";

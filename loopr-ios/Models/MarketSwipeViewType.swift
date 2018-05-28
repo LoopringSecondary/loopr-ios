@@ -13,11 +13,11 @@ enum MarketSwipeViewType: String, CustomStringConvertible {
     case favorite = "Favorite"
     case LRC = "LRC"
     case ETH = "WETH"
-    case all = "All"
+    case all = "ALL"
     
     var description: String {
         switch self {
-        case .favorite: return "Favorite"
+        case .favorite: return NSLocalizedString("Favorite", comment: "")
         case .LRC: return "LRC"
         case .ETH: return "WETH"
         case .all: return NSLocalizedString("ALL", comment: "")

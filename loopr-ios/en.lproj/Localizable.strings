@@ -119,7 +119,7 @@
 "Default Relay" = "Default Relay";
 "Settings" = "Settings";
 "Currency" = "Currency";
-"All" = "All";
+"ALL" = "ALL";
 "Favorite" = "Favorite";
 "Align QR Code within Frame to Scan" = "Align QR Code within Frame to Scan";
 "No access to save QR code. Please go to setting to enable the access" = "No access to save QR code. Please go to setting to enable the access";
@@ -219,3 +219,5 @@
 "Security Settings" = "Security Settings";
 "Never" = "Never";
 "Authenticate to access your wallet" = "Authenticate to access your wallet";
+"Touch ID" = "Touch ID";
+"Face ID" = "Face ID";
