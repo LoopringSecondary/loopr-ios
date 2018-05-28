@@ -22,6 +22,7 @@ enum UserDefaultsKeys: String {
     case showOtherPairs = "UserDefaultsKeys.showOtherPairs"
     case orderHistory = "UserDefaultsKeys.orderHistory"
     case gasPrice = "UserDefaultsKeys.gasPrice"
+    case p2pOrder = "UserDefaultsKeys.p2pOrder"
     
     // Trade. Used in TradeDataManager
     case tradeTokenS = "UserDefaultsKeys.tradeTokenS"

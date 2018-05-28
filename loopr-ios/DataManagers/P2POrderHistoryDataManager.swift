@@ -102,5 +102,4 @@ class P2POrderHistoryDataManager {
             }
         }
     }
-
 }

@@ -12,13 +12,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QRCodeViewController" customModule="loopr_ios" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderQRCodeViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
-                <outlet property="addressLabel" destination="edC-Mr-nnR" id="9VU-1h-Pcf"/>
                 <outlet property="contentView" destination="3K2-up-9JE" id="cKL-fm-Vfe"/>
-                <outlet property="copyAddressButton" destination="mEl-zM-Ijk" id="sQc-8d-41u"/>
                 <outlet property="qrcodeImageView" destination="Jxo-fS-cjo" id="Z5I-ZU-tdP"/>
                 <outlet property="saveToAlbumButton" destination="7NU-nI-gps" id="6Sj-tN-4FF"/>
+                <outlet property="shareOrderButton" destination="Y3x-Na-mqm" id="ojt-P7-poC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -36,24 +35,17 @@
                                 <constraint firstAttribute="width" secondItem="Jxo-fS-cjo" secondAttribute="height" id="yLV-La-av1"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234567890" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edC-Mr-nnR">
-                            <rect key="frame" x="33.5" y="259.5" width="268" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEl-zM-Ijk">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3x-Na-mqm">
                             <rect key="frame" x="17.5" y="317" width="301.5" height="47"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="47" id="rgq-2e-4Je"/>
+                                <constraint firstAttribute="height" constant="47" id="9je-5T-M2g"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="Copy Wallet Address">
+                            <state key="normal" title="Share the Order">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
-                                <action selector="pressedCopyAddressButton:" destination="-1" eventType="touchUpInside" id="vmH-OD-1qQ"/>
+                                <action selector="pressedShareButton:" destination="-1" eventType="touchUpInside" id="eJ8-l3-F2u"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NU-nI-gps">
@@ -73,17 +65,14 @@
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="7NU-nI-gps" firstAttribute="centerY" secondItem="3K2-up-9JE" secondAttribute="centerY" multiplier="1.78" id="4Gh-Fd-u8s"/>
-                        <constraint firstItem="mEl-zM-Ijk" firstAttribute="centerX" secondItem="3K2-up-9JE" secondAttribute="centerX" id="5mI-Bp-JNZ"/>
                         <constraint firstItem="Jxo-fS-cjo" firstAttribute="top" secondItem="3K2-up-9JE" secondAttribute="centerY" multiplier="0.3" id="7Hf-8L-DqP"/>
                         <constraint firstItem="Jxo-fS-cjo" firstAttribute="width" secondItem="3K2-up-9JE" secondAttribute="width" multiplier="0.5" id="Cnc-UH-8wg"/>
                         <constraint firstItem="Jxo-fS-cjo" firstAttribute="centerX" secondItem="3K2-up-9JE" secondAttribute="centerX" id="Kb1-N8-wUp"/>
-                        <constraint firstItem="edC-Mr-nnR" firstAttribute="width" secondItem="3K2-up-9JE" secondAttribute="width" multiplier="0.8" id="Mhl-DU-Mjy"/>
-                        <constraint firstItem="edC-Mr-nnR" firstAttribute="centerY" secondItem="3K2-up-9JE" secondAttribute="centerY" multiplier="1.15" id="Qpb-MN-WYN"/>
+                        <constraint firstItem="Y3x-Na-mqm" firstAttribute="width" secondItem="3K2-up-9JE" secondAttribute="width" multiplier="0.9" id="bKo-4L-XEQ"/>
+                        <constraint firstItem="Y3x-Na-mqm" firstAttribute="centerY" secondItem="3K2-up-9JE" secondAttribute="centerY" multiplier="1.45" id="d2C-3p-JTF"/>
                         <constraint firstItem="7NU-nI-gps" firstAttribute="width" secondItem="3K2-up-9JE" secondAttribute="width" multiplier="0.9" id="jRm-yK-NDN"/>
                         <constraint firstItem="7NU-nI-gps" firstAttribute="centerX" secondItem="3K2-up-9JE" secondAttribute="centerX" id="keE-A3-5n0"/>
-                        <constraint firstItem="mEl-zM-Ijk" firstAttribute="width" secondItem="3K2-up-9JE" secondAttribute="width" multiplier="0.9" id="lw6-XJ-ZVR"/>
-                        <constraint firstItem="edC-Mr-nnR" firstAttribute="centerX" secondItem="3K2-up-9JE" secondAttribute="centerX" id="oPL-Ud-krd"/>
-                        <constraint firstItem="mEl-zM-Ijk" firstAttribute="centerY" secondItem="3K2-up-9JE" secondAttribute="centerY" multiplier="1.45" id="xqe-wQ-qgA"/>
+                        <constraint firstItem="Y3x-Na-mqm" firstAttribute="centerX" secondItem="3K2-up-9JE" secondAttribute="centerX" id="nVL-qG-I8h"/>
                     </constraints>
                 </view>
             </subviews>

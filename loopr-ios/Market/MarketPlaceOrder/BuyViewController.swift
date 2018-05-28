@@ -316,7 +316,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             }
             DispatchQueue.main.async {
                 self.priceTextField.text = value.description
-                self.updatePrice()
+                _ = self.updatePrice()
             }
         }
     }

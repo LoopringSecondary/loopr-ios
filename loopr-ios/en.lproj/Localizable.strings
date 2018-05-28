@@ -46,7 +46,8 @@
 "Convert" = "Convert";
 "Yes, convert now!" = "Yes, convert now!";
 "Convert Successfully." = "Convert Successfully.";
-"QR Code" = "QR Code";
+"Wallet QR Code" = "Wallet QR Code";
+"Order QR Code" = "Order QR Code";
 "Scan QR Code" = "Scan QR Code";
 "Export Private Key" = "Export Private Key";
 "Export Keystore" = "Export Keystore";

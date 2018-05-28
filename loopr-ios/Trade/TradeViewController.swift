@@ -266,8 +266,15 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         return order
     }
     
+    func preserveMaker(order: OriginalOrder) {
+        let defaults = UserDefaults.standard
+        let orderData = [order.hash.prefix(8).description: order.authPrivateKey]
+        defaults.set(orderData, forKey: UserDefaultsKeys.p2pOrder.rawValue)
+    }
+    
     func pushController() {
         if let order = constructMaker() {
+            preserveMaker(order: order)
             TradeDataManager.shared.isTaker = false
             let viewController = TradeConfirmationViewController()
             viewController.order = order
@@ -275,7 +282,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
-   
+
     func updateButton(isValid: Bool) {
         nextButton.isEnabled = isValid
     }

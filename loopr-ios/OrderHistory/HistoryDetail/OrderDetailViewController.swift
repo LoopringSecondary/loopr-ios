@@ -17,6 +17,8 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     var marketLabel: UILabel = UILabel()
     var typeLabel: UILabel = UILabel()
     var filledPieChart: CircleChart = CircleChart()
+    var qrcodeImageView: UIImageView!
+    var qrcodeImage: UIImage!
     var amountLabel: UILabel = UILabel()
     var displayLabel: UILabel = UILabel()
     
@@ -50,12 +52,36 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         // Do any additional setup after loading the view.
         self.navigationItem.title = NSLocalizedString("Order Detail", comment: "")
         setBackButton()
+        setupQRCodeButton()
         setup()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setupQRCodeButton() {
+        guard order?.originalOrder.orderType == "p2p_order" && order?.orderStatus == .opened else {
+            return
+        }
+        let qrCodebutton = UIButton(type: UIButtonType.custom)
+        // TODO: smaller images.
+        qrCodebutton.theme_setImage(["QRCode-black", "QRCode-white"], forState: UIControlState.normal)
+        qrCodebutton.setImage(UIImage(named: "QRCode-black")?.alpha(0.3), for: .highlighted)
+        qrCodebutton.addTarget(self, action: #selector(self.pressQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
+        qrCodebutton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let qrCodeBarButton = UIBarButtonItem(customView: qrCodebutton)
+        self.navigationItem.rightBarButtonItem = qrCodeBarButton
+    }
+    
+    @objc func pressQRCodeButton(_ sender: UIButton) {
+        if let order = self.order {
+            let viewController = OrderQRCodeViewController()
+            viewController.order = order.originalOrder
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
     
     func setupOrderType(order: Order) {
@@ -137,8 +163,8 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         
         let rect = CGRect(x: screenWidth*0.35, y: marketLabel.frame.maxY + padding, width: screenWidth*0.3, height: screenWidth*0.3)
         filledPieChart = CircleChart(frame: rect)
-        setupOrderFilled(order: order)
         scrollView.addSubview(filledPieChart)
+        setupOrderFilled(order: order)
         
         setupOrderAmount(order: order)
         amountLabel.textAlignment = .center

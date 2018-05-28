@@ -46,7 +46,8 @@
 "Convert" = "转换";
 "Yes, convert now!" = "现在转换!";
 "Convert Successfully." = "转换成功。";
-"QR Code" = "二维码";
+"Wallet QR Code" = "钱包二维码";
+"Order QR Code" = "订单二维码";
 "Scan QR Code" = "二维码扫描";
 "Export Private Key" = "导出私钥";
 "Export Keystore" = "导出Keystore";

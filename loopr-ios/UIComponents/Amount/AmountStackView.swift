@@ -30,30 +30,30 @@ protocol AmountStackViewDelegate: class {
         let height: Int = Int(frame.height * 0.6)
         let originY: Int = Int(frame.height * 0.2)
         
-        plusButton = AmountButton(frame: CGRect(x: 0, y: originY, width: height, height: height))
-        plusButton.closeWhenFinished = false
-        plusButton.addTarget(self, action: #selector(start(_:)), for: .touchDown)
-        plusButton.addTarget(self, action: #selector(stop(_:)), for: .touchUpInside)
-        plusButton.addTarget(self, action: #selector(stop(_:)), for: .touchUpOutside)
-        plusButton.buttonColor = UIColor.init(rgba: "#0094FF")
-        plusButton.progressColor = UIColor.init(rgba: "#0094FF")
-        plusButton.title = "+"
-        plusButton.tag = 0
-        plusButton.titleColor = UIColor.white
-        plusButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 2, right: 0)
-        
-        minusButton = AmountButton(frame: CGRect(x: width-height, y: originY, width: height, height: height))
+        minusButton = AmountButton(frame: CGRect(x: 0, y: originY, width: height, height: height))
         minusButton.closeWhenFinished = false
         minusButton.addTarget(self, action: #selector(start(_:)), for: .touchDown)
         minusButton.addTarget(self, action: #selector(stop(_:)), for: .touchUpInside)
         minusButton.addTarget(self, action: #selector(stop(_:)), for: .touchUpOutside)
-        minusButton.buttonColor = UIColor.init(rgba: "#0094FF")
-        minusButton.progressColor = UIColor.init(rgba: "#0094FF")
+        minusButton.buttonColor = UIColor.init(rgba: "#000000")
+        minusButton.progressColor = UIColor.init(rgba: "#000000")
         minusButton.title = "-"
         minusButton.tag = 1
         minusButton.titleColor = UIColor.white
         minusButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 2, right: 0)
 
+        plusButton = AmountButton(frame: CGRect(x: width-height, y: originY, width: height, height: height))
+        plusButton.closeWhenFinished = false
+        plusButton.addTarget(self, action: #selector(start(_:)), for: .touchDown)
+        plusButton.addTarget(self, action: #selector(stop(_:)), for: .touchUpInside)
+        plusButton.addTarget(self, action: #selector(stop(_:)), for: .touchUpOutside)
+        plusButton.buttonColor = UIColor.init(rgba: "#000000")
+        plusButton.progressColor = UIColor.init(rgba: "#000000")
+        plusButton.title = "+"
+        plusButton.tag = 0
+        plusButton.titleColor = UIColor.white
+        plusButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 2, right: 0)
+        
         infoLabel = UILabel(frame: CGRect(x: height, y: 0, width: width-height*2, height: Int(frame.height)))
         infoLabel.textAlignment = .center
         infoLabel.text = "0%"

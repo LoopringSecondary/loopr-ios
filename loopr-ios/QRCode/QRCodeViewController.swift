@@ -23,7 +23,7 @@ class QRCodeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("QR Code", comment: "")
+        self.navigationItem.title = NSLocalizedString("Wallet QR Code", comment: "")
         
         view.theme_backgroundColor = GlobalPicker.textColor
         contentView.layer.cornerRadius = 16
