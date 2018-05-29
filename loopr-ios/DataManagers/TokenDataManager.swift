@@ -33,6 +33,9 @@ class TokenDataManager {
                 let token = Token(json: subJson)
                 tokens.append(token)
             }
+            tokens.sort(by: { (a, b) -> Bool in
+                return a.symbol < b.symbol
+            })
         }
     }
     
