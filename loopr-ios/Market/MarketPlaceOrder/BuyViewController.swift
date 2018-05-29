@@ -294,22 +294,22 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         LoopringAPIRequest.getDepth(market: market, length: 1) { (depth, error) in
             guard depth != nil && error == nil else { return }
             switch tag {
-            case 0: // sell
+            case 0: // custom
+                if let price = Double(self.customerValue) {
+                    value = price
+                }
+            case 1: // sell
                 if depth!.sell.count > 0 {
                     value = Double(depth!.sell[0].unit)!
                 }
-            case 1: // buy
+            case 2: // buy
                 if depth!.buy.count > 0 {
                     value = Double(depth!.buy[0].unit)!
                 }
-            case 2: // market
+            case 3: // market
                 let pair = PlaceOrderDataManager.shared.market.description
                 if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
                     value = market.balance
-                }
-            case 3: // custom
-                if let price = Double(self.customerValue) {
-                    value = price
                 }
             default:
                 break

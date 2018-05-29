@@ -29,7 +29,7 @@ open class PriceStackView: UIStackView {
         let custom = NSLocalizedString("Customer Price", comment: "")
         priceButton = PriceButton(
             images: [ nil, nil, nil, nil],
-            states: [sell, buy, market, custom],
+            states: [custom, sell, buy, market],
             colors: [color, color, color, color],
             backgroundColors: [nil, nil, nil, nil]
         ) { button in

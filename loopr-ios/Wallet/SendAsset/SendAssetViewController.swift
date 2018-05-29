@@ -133,7 +133,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         scrollView.addSubview(addressUnderLine)
 
         addressInfoLabel.frame = CGRect(x: padding, y: addressUnderLine.frame.maxY, width: screenWidth - padding * 2, height: 40)
-        addressInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)
+        addressInfoLabel.font = FontConfigManager.shared.getLabelFont()
         addressInfoLabel.text = NSLocalizedString("Please confirm the address before sending.", comment: "")
         scrollView.addSubview(addressInfoLabel)
         
@@ -164,7 +164,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         scrollView.addSubview(amountTradeImage)
         
         amountInfoLabel.frame = CGRect(x: padding*2 + 10, y: amountUnderline.frame.maxY, width: screenWidth - padding * 2, height: 40)
-        amountInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)
+        amountInfoLabel.font = FontConfigManager.shared.getLabelFont()
         amountInfoLabel.text = 0.0.currency
         scrollView.addSubview(amountInfoLabel)
         
@@ -241,7 +241,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
-
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidChange), name: .UITextFieldTextDidChange, object: nil)
+        
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(scrollViewTap)
@@ -258,7 +259,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         // TODO: Update the transaction fee is needed. in SendCurrentAppWalletDataManager
         tokenSymbolLabel.text = asset.symbol
         tokenTotalAmountLabel.text = "\(asset.balance) \(asset.symbol) Available"
-        
         SendCurrentAppWalletDataManager.shared.getNonceFromServer()
     }
     
@@ -293,6 +293,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     func updateLabel(label: UILabel, text: String, textColor: UIColor) {
         label.textColor = textColor
         label.text = text
+        if textColor == .red {
+            label.shake()
+        }
     }
     
     func updateButton(isValid: Bool) {
@@ -318,8 +321,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     }
     
     func validateAmount() -> Bool {
-        if let amountString = amountTextField.text {
-            if !amountString.isEmpty, let amount = Double(amountString) {
+        if let amount = Double(amountTextField.text ?? "0") {
+            if amount > 0.0 {
                 if asset.balance >= amount {
                     if let token = TokenDataManager.shared.getTokenBySymbol(asset!.symbol) {
                         if GethBigInt.generate(valueInEther: amount, symbol: token.symbol) != nil {
@@ -331,26 +334,27 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                         }
                     }
                 } else {
-                    updateLabel(label: amountInfoLabel, text: "Maximum: \(asset.balance) \(asset.symbol)", textColor: .red)
+                    updateLabel(label: amountInfoLabel, text: "Maximum: \(asset.balance.format()) \(asset.symbol)", textColor: .red)
                 }
             } else {
-                updateLabel(label: amountInfoLabel, text: 0.0.currency, textColor: .black)
+                let text = NSLocalizedString("Please input a valid amount", comment: "")
+                updateLabel(label: amountInfoLabel, text: text, textColor: .red)
             }
+        } else {
+            updateLabel(label: amountInfoLabel, text: 0.0.currency, textColor: .black)
         }
         return false
     }
 
-    func validation() {
+    func validate() {
         var isValid = false
         if activeTextFieldTag == addressTextField.tag {
-            _ = validateAddress()
+            isValid = validateAddress()
         } else if activeTextFieldTag == amountTextField.tag {
-            _ = validateAmount()
+            isValid = validateAmount()
         }
-
-        if validateAddress() && validateAmount() {
-            isValid = true
-        }
+        guard isValid else { return }
+        isValid = validateAddress() && validateAmount()
         updateButton(isValid: isValid)
     }
     
@@ -429,7 +433,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         let step: Float = 1
         let roundedStepValue = round(sender.value / step) * step
         transactionAmountCurrentLabel.text = "gas price: \(roundedStepValue) gwei"
-
         gasPriceInGwei = Double(roundedStepValue)
         updateTransactionFeeAmountLabel()
     }
@@ -450,6 +453,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         } else if textField.tag == 1 {
             showNumericKeyboard(textField: amountTextField)
         }
+        activeTextFieldTag = amountTextField.tag
         return true
     }
     
@@ -496,10 +500,11 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         } else {
             sendButtonBackgroundViewBottomLayoutContraint.constant = 0
         }
-
-        if validateAddress() {
-            validation()
-        }
+    }
+    
+    @objc func keyboardDidChange(notification: NSNotification?) {
+        activeTextFieldTag = addressTextField.tag
+        _ = validate()
     }
 
     func showNumericKeyboard(textField: UITextField) {
@@ -547,9 +552,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             }, completion: { _ in
                 self.isNumericKeyboardShow = false
             })
-            if validateAmount() {
-                validation()
-            }
         } else {
             
         }
@@ -576,6 +578,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             let itemValue = position.row * 3 + position.column + 1
             activeTextField!.text = currentText + String(itemValue)
         }
+        _ = validate()
     }
     
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemLongPressed item: NumericKeyboardItem, atPosition position: Position) {
@@ -617,7 +620,7 @@ extension SendAssetViewController {
             DispatchQueue.main.async {
                 print("SendAssetViewController \(error.debugDescription)")
                 let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
-                banner.duration = 10
+                banner.duration = 5
                 banner.show()
             }
             return
@@ -626,7 +629,7 @@ extension SendAssetViewController {
         // Show toast
         DispatchQueue.main.async {
             let banner = NotificationBanner.generate(title: "Success. Result of transfer is \(txHash!)", style: .success)
-            banner.duration = 10
+            banner.duration = 5
             banner.show()
         }
     }
