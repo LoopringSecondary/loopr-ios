@@ -218,9 +218,9 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         
         // 4th row: trade
         tradeTipLabel.font = FontConfigManager.shared.getLabelFont()
-        tradeTipLabel.text = NSLocalizedString("Trade", comment: "")
+        tradeTipLabel.text = "   " + NSLocalizedString("Trade", comment: "")
         tradeTipLabel.backgroundColor = UIStyleConfig.underlineColor
-        tradeTipLabel.frame = CGRect(x: padding, y: totalTipLabel.frame.maxY + padding, width: screenWidth, height: labelHeight)
+        tradeTipLabel.frame = CGRect(x: 0, y: totalTipLabel.frame.maxY + padding, width: screenWidth, height: labelHeight)
         scrollView.addSubview(tradeTipLabel)
         
         // 5th row: filled
