@@ -137,7 +137,7 @@
 "Sorry. Network error, please try again later" = "Sorry. Network error, please try again later";
 "Order Expires in" = "订单有效时间";
 "Your price is irrational. Do you want to continue trading with the price?" = "Your price is irrational. Do you want to continue trading with the price?";
-"Please input a valid price" = "请输入有效的价钱";
+"Please input a valid price" = "请输入有效的价格";
 "Please input a valid amount" = "请输入有效的数量";
 "You are buying" = "You are buying";
 "You are selling" = "You are selling";
@@ -227,3 +227,8 @@
 "Hide Other Pairs" = "隐藏其他交易对";
 "WETH" = "以太坊";
 "LRC" = "路印";
+"ETH (Excluding for gas)" = "ETH (不含转换油费)";
+"Customer Price" = "用户自定价格";
+"Selling Price" = "最新卖单价格";
+"Buying Price" = "最新买单价格";
+"Market Price" = "最新市场价格";

@@ -10,7 +10,7 @@ import UIKit
 import Geth
 import NotificationBannerSwift
 
-class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
+class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, AmountStackViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
@@ -32,7 +32,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     var amountTextField: UITextField = UITextField()
     var amountUnderLine: UIView = UIView()
     var availableLabel: UILabel = UILabel()
-    var maxButton: UIButton = UIButton()
+    var amountStackView: AmountStackView!
 
     // Numeric Keyboard
     var isNumericKeyboardShow: Bool = false
@@ -76,17 +76,15 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         scrollView.addSubview(arrowRightButton)
         
         infoLabel.frame = CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY - 60), size: CGSize(width: 200, height: 21*UIStyleConfig.scale))
-        infoLabel.text = asset!.symbol.uppercased() == "ETH" ? "1 ETH = 1 WETH" : "1 WETH = 1 ETH"
         infoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16*UIStyleConfig.scale)
         infoLabel.textAlignment = .center
         scrollView.addSubview(infoLabel)
 
         // Row 2: Amount
-        
-        tokenSLabel.text = asset!.symbol
+
         tokenSLabel.font = FontConfigManager.shared.getLabelFont()
         tokenSLabel.textAlignment = .right
-        tokenSLabel.frame = CGRect(x: screenWidth-80-padding, y: tokenSView.frame.maxY + padding, width: 80, height: 40)
+        tokenSLabel.frame = CGRect(x: screenWidth-200-padding, y: tokenSView.frame.maxY + padding, width: 200, height: 40)
         scrollView.addSubview(tokenSLabel)
         
         amountTextField.delegate = self
@@ -103,24 +101,19 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         amountUnderLine.backgroundColor = UIColor.black
         scrollView.addSubview(amountUnderLine)
         
-        availableLabel.text = ""
         availableLabel.font = FontConfigManager.shared.getLabelFont()
         availableLabel.frame = CGRect(x: padding, y: amountUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(availableLabel)
         
-        maxButton.title = NSLocalizedString("Max", comment: "")
-        maxButton.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
-        maxButton.setTitleColor(UIColor.init(rgba: "#cce9ff"), for: .highlighted)
-        maxButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
-        // maxButton.backgroundColor = UIColor.black
-        maxButton.contentHorizontalAlignment = .right
-        maxButton.frame = CGRect(x: screenWidth-80-padding, y: amountUnderLine.frame.maxY, width: 80, height: 40)
-        maxButton.addTarget(self, action: #selector(self.pressedMaxButton(_:)), for: UIControlEvents.touchUpInside)
-        scrollView.addSubview(maxButton)
+        amountStackView = AmountStackView(frame: CGRect(x: screenWidth-100-padding, y: amountUnderLine.frame.maxY, width: 100, height: 40))
+        amountStackView.delegate = self
+        scrollView.addSubview(amountStackView)
         
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(scrollViewTap)
+        
+        updateLabel()
     }
     
     override func didReceiveMemoryWarning() {
@@ -167,9 +160,15 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     }
     
     func updateLabel() {
-        tokenSLabel.text = asset!.symbol
         let symbol = asset!.symbol.uppercased()
         infoLabel.text = symbol == "ETH" ? "1 ETH = 1 WETH" : "1 WETH = 1 ETH"
+        if symbol == "ETH" {
+            tokenSLabel.text = NSLocalizedString("ETH (Excluding for gas)", comment: "")
+            infoLabel.text = "1 ETH = 1 WETH"
+        } else if symbol == "WETH" {
+            tokenSLabel.text = "WETH"
+            infoLabel.text = "1 WETH = 1 ETH"
+        }
         let maxAmount = ConvertDataManager.shared.getMaxAmount(symbol: symbol)
         availableLabel.text = "Available \(maxAmount.format()) \(symbol)"
         availableLabel.textColor = .black
@@ -178,13 +177,15 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
                 if inputAmount > maxAmount {
                     updateButton(isValid: false)
                     availableLabel.textColor = .red
+                    availableLabel.shake()
                 } else {
                     updateButton(isValid: true)
                 }
             } else {
                 updateButton(isValid: false)
                 availableLabel.textColor = .red
-                availableLabel.text = "Please input a valid amount"
+                availableLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+                availableLabel.shake()
             }
         } else {
             updateButton(isValid: false)
@@ -251,6 +252,16 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
 
     func hideNumericKeyboard() {
         
+    }
+    
+    func setResultOfAmount(with percentage: CGFloat) {
+        if let asset = self.asset {
+            let symbol = asset.symbol
+            let available = ConvertDataManager.shared.getMaxAmount(symbol: symbol)
+            let value = available * Double(percentage)
+            amountTextField.text = value.format()
+            updateLabel()
+        }
     }
 
     func completion(_ txHash: String?, _ error: Error?) {
