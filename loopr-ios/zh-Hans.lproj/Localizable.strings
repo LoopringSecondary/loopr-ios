@@ -225,8 +225,6 @@
 "To" = "接收地址";
 "My wallet address in Loopr" = "我在Loopr里的钱包地址";
 "Hide Other Pairs" = "隐藏其他交易对";
-"WETH" = "以太坊";
-"LRC" = "路印";
 "ETH (Excluding for gas)" = "ETH (不含转换油费)";
 "Customer Price" = "用户自定价格";
 "Selling Price" = "最新卖单价格";
