@@ -51,7 +51,7 @@ class GasDataManager {
         }
     }
     
-    func getGasLimitByType(by type: String) -> Int64? {
+    func getGasLimit(by type: String) -> Int64? {
         var gasLimit: Int64? = nil
         for case let gas in gasLimits where gas.type.lowercased() == type.lowercased() {
             gasLimit = gas.gasLimit
@@ -62,12 +62,19 @@ class GasDataManager {
     
     func getGasAmountInETH(by type: String) -> Double {
         var result: Double = 0
-        if let limit = getGasLimitByType(by: type) {
+        if let limit = getGasLimit(by: type) {
             result = self.gasPrice * Double(limit)
         } else {
             result = self.gasPrice * 20000
         }
         return result / 1000000000
+    }
+    
+    func getGasAmount(by type: String, in token: String) -> Double {
+        let gasInETH = getGasAmountInETH(by: type)
+        let tradingPair = "\(token)-WETH"
+        let price = MarketDataManager.shared.getBalance(of: tradingPair)
+        return gasInETH / price
     }
     
     func getEstimateGasPrice() {
@@ -77,6 +84,7 @@ class GasDataManager {
                 return
             }
             self.gasPrice = gasPrice! * 1000000000
+            self.gasPrice.round()
             semaphore.signal()
         }
         _ = semaphore.wait(timeout: .distantFuture)

@@ -207,7 +207,7 @@ class SendCurrentAppWalletDataManager {
         }
         let transferFunction = EthFunction(name: "withdraw", inputParameters: [amount])
         let data = web3swift.encode(transferFunction)
-        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "withdraw")!
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimit(by: "withdraw")!
         _transfer(data: data, address: wethAddress!, amount: GethBigInt(0), gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
@@ -218,7 +218,7 @@ class SendCurrentAppWalletDataManager {
         }
         let transferFunction = EthFunction(name: "deposit", inputParameters: [])
         let data = web3swift.encode(transferFunction)
-        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "deposit")!
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimit(by: "deposit")!
         _transfer(data: data, address: wethAddress!, amount: amount, gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
@@ -229,7 +229,7 @@ class SendCurrentAppWalletDataManager {
         }
         let transferFunction = EthFunction(name: "approve", inputParameters: [delegateAddress, tokenAmount])
         let data = web3swift.encode(transferFunction)
-        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "approve")!
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimit(by: "approve")!
         // amount must be 0 for ERC20 tokens.
         _transfer(data: data, address: tokenAddress, amount: GethBigInt.init(0), gasLimit: GethBigInt(gasLimit), completion: completion)
     }
@@ -239,7 +239,7 @@ class SendCurrentAppWalletDataManager {
             return
         }
         let data = _encodeOrder(order: order)
-        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "cancelOrder")!
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimit(by: "cancelOrder")!
         _transfer(data: data, address: protocolAddress!, amount: GethBigInt.init(0), gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
@@ -250,7 +250,7 @@ class SendCurrentAppWalletDataManager {
         let timestamp = GethBigInt.init(Int64(Date().timeIntervalSince1970))!
         let transferFunction = EthFunction(name: "cancelAllOrders", inputParameters: [timestamp])
         let data = web3swift.encode(transferFunction)
-        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "cancelAllOrders")!
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimit(by: "cancelAllOrders")!
         _transfer(data: data, address: protocolAddress!, amount: GethBigInt.init(0), gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
@@ -261,7 +261,7 @@ class SendCurrentAppWalletDataManager {
         }
         let transferFunction = EthFunction(name: "cancelAllOrdersByTradingPair", inputParameters: [tokenA, tokenB, timestamp])
         let data = web3swift.encode(transferFunction)
-        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "cancelAllOrdersByTradingPair")!
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimit(by: "cancelAllOrdersByTradingPair")!
         _transfer(data: data, address: protocolAddress!, amount: GethBigInt.init(0), gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
@@ -271,7 +271,7 @@ class SendCurrentAppWalletDataManager {
             return
         }
         let data = "0x".data(using: .utf8)!
-        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "eth_transfer")!
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimit(by: "eth_transfer")!
         _transfer(data: data, address: toAddress, amount: amount, gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
@@ -282,7 +282,7 @@ class SendCurrentAppWalletDataManager {
         }
         let transferFunction = EthFunction(name: "transfer", inputParameters: [toAddress, tokenAmount])
         let data = web3swift.encode(transferFunction)
-        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "token_transfer")!
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimit(by: "token_transfer")!
         // amount must be 0 for ERC20 tokens.
         _transfer(data: data, address: contractAddress, amount: GethBigInt.init(0), gasLimit: GethBigInt(gasLimit), completion: completion)
     }

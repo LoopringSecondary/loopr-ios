@@ -18,7 +18,7 @@ import UIKit
     fileprivate var circleBorder: CALayer!
     fileprivate var progressLayer: CAShapeLayer!
     fileprivate var gradientMaskLayer: CAGradientLayer!
-    fileprivate var currentProgress: CGFloat! = 0
+    fileprivate var currentProgress: Float! = 0
 
     /// Closes the circle and hides when the AmountButton is finished
     open var closeWhenFinished: Bool = false
@@ -202,7 +202,7 @@ import UIKit
      Set the relative length of the circle border to the specified progress
      - parameter newProgress: the relative lenght, a percentage as float.
      */
-    open func setProgress(_ newProgress: CGFloat) {
-        progressLayer.strokeEnd = newProgress
+    open func setProgress(_ newProgress: Double) {
+        progressLayer.strokeEnd = CGFloat(newProgress)
     }
 }

@@ -31,6 +31,7 @@ class AssetBalanceTableViewCell: UITableViewCell {
         marketButton.layer.borderColor = UIColor(red: 165/255, green: 165/255, blue: 165/255, alpha: 1).cgColor
         marketButton.layer.cornerRadius = 20
         marketButton.layer.borderWidth = 1
+        marketButton.title = NSLocalizedString("Trade", comment: "")
         self.theme_backgroundColor = ["#fff", "#000"]
     }
     

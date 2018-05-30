@@ -63,6 +63,7 @@ class TradeDataManagerTests: XCTestCase {
     }
     
     func test4() {
-        TradeDataManager.shared.startGetOrderStatus(of: "")
+        let result = GasDataManager.shared.getGasAmount(by: "lrcFee", in: "LRC")
+        print(result)
     }
 }

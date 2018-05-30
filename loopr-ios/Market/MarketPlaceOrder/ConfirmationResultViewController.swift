@@ -48,7 +48,7 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
         if isBalanceEnough() {
             placeInfoLabel.text = NSLocalizedString("Congradualations! Your order has been submited!", comment: "")
         } else {
-            placeInfoLabel.text = NSLocalizedString("Your order has been submited!However, please make sure you have enough balance to complete the trade.", comment: "")
+            placeInfoLabel.text = NSLocalizedString("Your order has not been submited! Please make sure you have enough balance to complete the trade.", comment: "")
         }
     }
     

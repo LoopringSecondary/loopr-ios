@@ -258,11 +258,12 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         
         // TODO: Update the transaction fee is needed. in SendCurrentAppWalletDataManager
         tokenSymbolLabel.text = asset.symbol
-        tokenTotalAmountLabel.text = "\(asset.balance) \(asset.symbol) Available"
+        let title = NSLocalizedString("Available Balance", comment: "")
+        tokenTotalAmountLabel.text = "\(title) \(asset.balance) \(asset.symbol)"
         SendCurrentAppWalletDataManager.shared.getNonceFromServer()
     }
     
-    func setResultOfAmount(with percentage: CGFloat) {
+    func setResultOfAmount(with percentage: Double) {
         let value = asset.balance * Double(percentage)
         amountTextField.text = value.format()
         if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
@@ -442,7 +443,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         defaults.set(gasPriceInGwei, forKey: UserDefaultsKeys.gasPrice.rawValue)
         let amountInEther = gasPriceInGwei / 1000000000
         if let etherPrice = PriceDataManager.shared.getPrice(of: "ETH") {
-            let transactionFeeInFiat = amountInEther * etherPrice * Double(GasDataManager.shared.getGasLimitByType(by: "eth_transfer")!)
+            let transactionFeeInFiat = amountInEther * etherPrice * Double(GasDataManager.shared.getGasLimit(by: "eth_transfer")!)
             transactionFeeAmountLabel.text = "\(transactionFeeInFiat.currency)"
         }
     }

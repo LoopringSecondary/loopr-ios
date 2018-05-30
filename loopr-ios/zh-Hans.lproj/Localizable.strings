@@ -122,7 +122,7 @@
 "Currency" = "货币";
 "All" = "全部";
 "Favorite" = "收藏";
-"Align QR Code within Frame to Scan" = "Align QR Code within Frame to Scan";
+"Align QR Code within Frame to Scan" = "请将二维码置于扫描框内";
 "No access to save QR code. Please go to setting to enable the access" = "No access to save QR code. Please go to setting to enable the access";
 "Failed to sign/encode transaction" = "Failed to sign/encode transaction";
 "Sorry, system error, please try again later" = "Sorry, system error, please try again later";
@@ -136,21 +136,21 @@
 "Information of two orders not complete" = "Information of two orders not complete";
 "Sorry. Network error, please try again later" = "Sorry. Network error, please try again later";
 "Order Expires in" = "订单有效时间";
-"Your price is irrational. Do you want to continue trading with the price?" = "Your price is irrational. Do you want to continue trading with the price?";
+"Your price is irrational. Do you want to continue trading with the price?" = "您所设置的价格并不合理，是否仍要以该价格下单或交易？";
 "Please input a valid price" = "请输入有效的价格";
 "Please input a valid amount" = "请输入有效的数量";
 "You are buying" = "You are buying";
 "You are selling" = "You are selling";
-"Placed" = "Placed";
-"Congradualations! Your order has been submited!" = "Congradualations! Your order has been submited!";
-"Your order has been submited!However, please make sure you have enough balance to complete the trade." = "Your order has been submited!However, please make sure you have enough balance to complete the trade.";
-"You Need More" = "You Need More";
+"Placed" = "提交成功";
+"Congradualations! Your order has been submited!" = "恭喜！您的订单已被提交！";
+"Your order has not been submited! Please make sure you have enough balance to complete the trade." = "您的订单未被提交！请确认您的账户中有足够余额以完成该笔订单。";
+"You Need More" = "您尚需";
 "My Orders" = "我的订单";
 "My Trades" = "我的历史成交";
-"You are going to cancel all open orders." = "You are going to cancel all open orders.";
-"You are going to cancel the order." = "You are going to cancel the order.";
-"Order(s) cancel Failed, Please try again." =  "Order(s) cancel Failed, Please try again.";
-"Order(s) Cancelled Successful." = "Order(s) Cancelled Successful.";
+"You are going to cancel all open orders." = "您将取消所有待成交订单。";
+"You are going to cancel the order." = "您将取消该笔订单";
+"Order(s) cancel Failed, Please try again." =  "订单取消失败，请稍后重试";
+"Order(s) Cancelled Successful." = "订单取消成功";
 "Order Detail" = "订单详情";
 "Filled/Amount" = "Filled/Amount";
 "Status" = "状态";
@@ -164,7 +164,7 @@
 "Please enter the keystore" = "请输入keystore";
 "Please input your private key" = "请输入您的私钥";
 "Enter the address" = "请输入地址";
-"Please confirm the address before sending." = "在发送前，请确认地址。";
+"Please confirm the address before sending." = "在发送前，请确认地址无误。";
 "Transaction Fee" = "交易费";
 "Advanced" = "高级设置";
 "What is gas?" = "What is gas?";
@@ -176,8 +176,6 @@
 "Cancel Order(s)" = "取消订单";
 "Enter the amount you have" = "输入卖出的数量";
 "Enter the amount you get" = "输入买出的数量";
-"Available \(balance) \(tokens)" = "Available \(balance) \(tokens)";
-"Available 0.0 \(tokens)" = "Available 0.0 \(tokens)";
 "Your price is irrational. Do you want to continue trading with the price?" = "Your price is irrational. Do you want to continue trading with the price?";
 "You will send" = "You will send";
 "You will get" = "You will get";
@@ -233,4 +231,6 @@
 "Confirm" = "确认";
 "Please Verify Your Mnemonic" = "确认您的钱包助记词";
 "Please click words in order." = "请按顺序点击助记词。";
+"Market Price" = "最新成交价格";
+"Available Balance" = "可用余额";
 

@@ -11,7 +11,7 @@ import Geth
 import NotificationBannerSwift
 import SVProgressHUD
 
-class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, PriceStackViewDelegate {
+class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, PriceStackViewDelegate, AmountStackViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var placeOrderButton: UIButton!
@@ -36,10 +36,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     var amountTextField: UITextField = UITextField()
     var amountUnderLine: UIView = UIView()
     var tipLabel: UILabel = UILabel()
-    
-    // TODO: Hide maxButton. Replace with a slider view
-    var maxButton: UIButton = UIButton()
-    // var amountSlider: DefaultSlider = DefaultSlider()
+    var amountStackView: AmountStackView!
 
     // Total
     var tokenBTotalLabel: UILabel = UILabel()
@@ -59,6 +56,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     var isNumericKeyboardShow: Bool = false
     var numericKeyboardView: DefaultNumericKeyboard!
     var customerValue: String = ""
+    var percentage: Double?
     var activeTextFieldTag = -1
     
     convenience init(type: TradeType) {
@@ -154,40 +152,18 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         tipLabel.frame = CGRect(x: padding, y: amountUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(tipLabel)
         // tipLabel.isHidden = true
-
-        maxButton.title = NSLocalizedString("Max", comment: "")
-        maxButton.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
-        maxButton.setTitleColor(UIColor.init(rgba: "#cce9ff"), for: .highlighted)
-        maxButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
-        maxButton.contentHorizontalAlignment = .right
-        maxButton.frame = CGRect(x: screenWidth-80-padding, y: amountUnderLine.frame.maxY, width: 80, height: 40)
-        maxButton.addTarget(self, action: #selector(self.pressedMaxButton(_:)), for: UIControlEvents.touchUpInside)
-        scrollView.addSubview(maxButton)
-        // maxButton.isHidden = true
         
-        /*
-        amountSlider = DefaultSlider(frame: CGRect(x: 5, y: amountUnderLine.frame.maxY + 15, width: screenWidth-5*2, height: 60))
-        amountSlider.lineHeight = 1.0
-        amountSlider.handleColor = UIColor.black
-        amountSlider.minLabelColor = UIColor.black
-        amountSlider.maxLabelColor = UIColor.white
-        amountSlider.colorBetweenHandles = UIColor.init(white: 0.7, alpha: 1)
-        amountSlider.tintColor = UIColor.init(white: 0.7, alpha: 1)
-        amountSlider.initialColor = UIColor.init(white: 0.7, alpha: 1)
-        amountSlider.delegate = self
-        amountSlider.maxLabel.isHidden = true
-        amountSlider.minLabelFont = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)! //  FontConfigManager.shared.getLabelFont()
-        amountSlider.handleDiameter = 16
-        amountSlider.selectedHandleDiameterMultiplier = 1.4
-        amountSlider.numberFormatter.positiveSuffix = "%"
-        scrollView.addSubview(amountSlider)
-        */
+        if self.type == .sell {
+            amountStackView = AmountStackView(frame: CGRect(x: screenWidth-100-padding, y: amountUnderLine.frame.maxY, width: 100, height: 40))
+            amountStackView.delegate = self
+            scrollView.addSubview(amountStackView)
+        }
 
         // Thrid row: total
         tokenBTotalLabel.text = PlaceOrderDataManager.shared.tokenB.symbol
         tokenBTotalLabel.font = FontConfigManager.shared.getLabelFont()
         tokenBTotalLabel.textAlignment = .right
-        tokenBTotalLabel.frame = CGRect(x: screenWidth-80-padding, y: maxButton.frame.maxY + 30, width: 80, height: 40)
+        tokenBTotalLabel.frame = CGRect(x: screenWidth-80-padding, y: tipLabel.frame.maxY + 30, width: 80, height: 40)
         scrollView.addSubview(tokenBTotalLabel)
         
         totalTextField.delegate = self
@@ -197,7 +173,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         totalTextField.theme_tintColor = GlobalPicker.textColor
         totalTextField.placeholder = NSLocalizedString("Total", comment: "")
         totalTextField.contentMode = UIViewContentMode.bottom
-        totalTextField.frame = CGRect(x: padding, y: maxButton.frame.maxY + 30, width: screenWidth-padding*2-80, height: 40)
+        totalTextField.frame = CGRect(x: padding, y: tipLabel.frame.maxY + 30, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(totalTextField)
 
         // Disable user input in totalTextField
@@ -208,7 +184,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         scrollView.addSubview(totalUnderLine)
 
         if let balance = getSellingBalance() {
-            availableLabel.text = "Available \(balance) \(PlaceOrderDataManager.shared.tokenB.symbol)"
+            let title = NSLocalizedString("Available Balance", comment: "")
+            availableLabel.text = "\(title) \(balance.format()) \(PlaceOrderDataManager.shared.tokenB.symbol)"
         }
         availableLabel.font = FontConfigManager.shared.getLabelFont()
         availableLabel.frame = CGRect(x: padding, y: totalUnderLine.frame.maxY, width: screenWidth-padding*2, height: 40)
@@ -287,45 +264,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         totalTextField.resignFirstResponder()
         hideNumericKeyboard()
     }
-    
-    func setResultOfPrice(with tag: Int) {
-        var value: Double = 0.0
-        let market = PlaceOrderDataManager.shared.market.tradingPair.description
-        LoopringAPIRequest.getDepth(market: market, length: 1) { (depth, error) in
-            guard depth != nil && error == nil else { return }
-            switch tag {
-            case 0: // custom
-                if let price = Double(self.customerValue) {
-                    value = price
-                }
-            case 1: // sell
-                if depth!.sell.count > 0 {
-                    value = Double(depth!.sell[0].unit)!
-                }
-            case 2: // buy
-                if depth!.buy.count > 0 {
-                    value = Double(depth!.buy[0].unit)!
-                }
-            case 3: // market
-                let pair = PlaceOrderDataManager.shared.market.description
-                if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
-                    value = market.balance
-                }
-            default:
-                break
-            }
-            DispatchQueue.main.async {
-                self.priceTextField.text = value.description
-                _ = self.updatePrice()
-            }
-        }
-    }
-    
-    @objc func pressedMaxButton(_ button: UIButton) {
-        print("pressedMaxButton")
-        // TODO: get the max value.
-    }
-    
+
     @objc func pressedOneHourButton(_ button: UIButton) {
         print("pressOneHourButton")
         self.expire = .oneHour
@@ -408,7 +347,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             amountBuy = Double(totalTextField.text!)!
             amountSell = Double(amountTextField.text!)!
         }
-        lrcFee = getLrcFee(amountSell, tokenSell)!
+        lrcFee = getLrcFee(amountSell, tokenSell)
         let delegate = RelayAPIConfiguration.delegateAddress
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         let since = Int64(Date().timeIntervalSince1970)
@@ -438,25 +377,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         }
     }
     
-    func updatePrice() -> Bool {
-        if let value = Double(priceTextField.text ?? "0") {
-            let validate = value > 0.0
-            if validate {
-                let tokenBPrice = PriceDataManager.shared.getPrice(of: PlaceOrderDataManager.shared.tokenB.symbol)!
-                let estimateValue: Double = value * tokenBPrice
-                estimateValueInCurrencyLabel.textColor = .black
-                estimateValueInCurrencyLabel.text = "≈ \(estimateValue.currency)"
-            } else {
-                estimateValueInCurrencyLabel.textColor = .red
-                estimateValueInCurrencyLabel.text = NSLocalizedString("Please input a valid price", comment: "")
-                estimateValueInCurrencyLabel.shake()
-            }
-            return validate
-        } else {
-            return false
-        }
-    }
-    
     func validatePriceRational() {
         let pair = PlaceOrderDataManager.shared.market.description
         if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
@@ -480,15 +400,32 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     }
 
     func validateTokenPrice() -> Bool {
-        customerValue = priceTextField.text!
-        guard !customerValue.isEmpty else { return false }
-        return updatePrice()
+        if let value = Double(priceTextField.text ?? "0") {
+            let validate = value > 0.0
+            if validate {
+                let tokenBPrice = PriceDataManager.shared.getPrice(of: PlaceOrderDataManager.shared.tokenB.symbol)!
+                let estimateValue: Double = value * tokenBPrice
+                estimateValueInCurrencyLabel.textColor = .black
+                estimateValueInCurrencyLabel.text = "≈ \(estimateValue.currency)"
+            } else {
+                estimateValueInCurrencyLabel.textColor = .red
+                estimateValueInCurrencyLabel.text = NSLocalizedString("Please input a valid price", comment: "")
+                estimateValueInCurrencyLabel.shake()
+            }
+            return validate
+        } else {
+            return false
+        }
+    }
+    
+    func updateLabel() {
+        tipLabel.isHidden = false
+        tipLabel.textColor = .red
+        tipLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+        tipLabel.shake()
     }
     
     func validateAmount() -> Bool {
-        guard !amountTextField.text!.isEmpty else {
-            return false
-        }
         if let value = Double(amountTextField.text ?? "0") {
             let validate = value > 0.0
             if validate {
@@ -497,6 +434,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
                 tipLabel.isHidden = false
                 tipLabel.textColor = .red
                 tipLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+                tipLabel.shake()
             }
             return validate
         } else {
@@ -504,12 +442,16 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         }
     }
 
-    func validate() -> Bool {
+    func validate() {
         var isValid = false
         if activeTextFieldTag == priceTextField.tag {
-            _ = validateTokenPrice()
+            isValid = validateTokenPrice()
         } else if activeTextFieldTag == amountTextField.tag {
-            _ = validateAmount()
+            isValid = validateAmount()
+        }
+        guard isValid else {
+            totalTextField.text = ""
+            return
         }
         if validateTokenPrice() && validateAmount() {
             isValid = true
@@ -518,6 +460,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             if let balance = getSellingBalance() {
                 if balance < total {
                     availableLabel.textColor = .red
+                    availableLabel.shake()
                 } else {
                     availableLabel.textColor = .black
                 }
@@ -526,7 +469,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             totalTextField.text = ""
         }
         updateButton(isValid: isValid)
-        return isValid
     }
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -546,10 +488,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         } else {
             return nil
         }
-    }
-
-    @objc func priceTextFieldDidChange(_ textField: UITextField) {
-        print("priceTextFieldDidChange")
     }
     
     func showNumericKeyboard(textField: UITextField) {
@@ -610,14 +548,11 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemTapped item: NumericKeyboardItem, atPosition position: Position) {
         print("pressed keyboard: (\(position.row), \(position.column))")
-        
         let activeTextField = getActiveTextField()
         guard activeTextField != nil else {
             return
         }
-
         var currentText = activeTextField!.text ?? ""
-
         switch (position.row, position.column) {
         case (3, 0):
             activeTextField!.text = currentText + "."
@@ -632,8 +567,10 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             let itemValue = position.row * 3 + position.column + 1
             activeTextField!.text = currentText + String(itemValue)
         }
-
-        _ = validate()
+        if activeTextFieldTag == priceTextField.tag {
+            customerValue = priceTextField.text!
+        }
+        validate()
     }
 
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemLongPressed item: NumericKeyboardItem, atPosition position: Position) {
@@ -652,20 +589,66 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             activeTextField!.text = currentText
         }
     }
+    
+    func setResultOfPrice(with tag: Int) {
+        var text: String = ""
+        let market = PlaceOrderDataManager.shared.market.tradingPair.description
+        LoopringAPIRequest.getDepth(market: market, length: 1) { (depth, error) in
+            guard depth != nil && error == nil else { return }
+            switch tag {
+            case 0: // custom
+                text = self.customerValue
+            case 1: // sell
+                if depth!.sell.count > 0 {
+                    text = depth!.sell[0].unit
+                }
+            case 2: // buy
+                if depth!.buy.count > 0 {
+                    text = depth!.buy[0].unit
+                }
+            case 3: // market
+                let pair = PlaceOrderDataManager.shared.market.description
+                if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
+                    text = market.balance.description
+                }
+            default:
+                break
+            }
+            DispatchQueue.main.async {
+                self.priceTextField.text = text
+                self.activeTextFieldTag = self.priceTextField.tag
+                self.validate()
+            }
+        }
+    }
+    
+    func setResultOfAmount(with percentage: Double) {
+        if type == .sell {
+            self.percentage = percentage
+            if let balance = CurrentAppWalletDataManager.shared.getBalance(of: PlaceOrderDataManager.shared.tokenA.symbol) {
+                let value = balance * percentage
+                amountTextField.text = value.format()
+            }
+        }
+        self.activeTextFieldTag = amountTextField.tag
+        self.validate()
+    }
 }
 
 extension BuyViewController {
     
-    func getLrcFee(_ amountS: Double, _ tokenS: String) -> Double? {
+    func getLrcFee(_ amountS: Double, _ tokenS: String) -> Double {
+        var result: Double = 0
         let pair = tokenS + "/LRC"
         let ratio = SettingDataManager.shared.getLrcFeeRatio()
         if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
-            return market.balance * amountS * ratio
+            result = market.balance * amountS * ratio
         } else if let price = PriceDataManager.shared.getPrice(of: tokenS),
             let lrcPrice = PriceDataManager.shared.getPrice(of: "LRC") {
-            return price * amountS * ratio / lrcPrice
+            result = price * amountS * ratio / lrcPrice
         }
-        return 0.0
+        let minLrc = GasDataManager.shared.getGasAmount(by: "lrcFee", in: "LRC")
+        return max(result, minLrc)
     }
 }
 

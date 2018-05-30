@@ -342,7 +342,7 @@ class TradeDataManager {
         let data = encode()
         var error: NSError? = nil
         let protocolAddress = GethNewAddressFromHex(RelayAPIConfiguration.protocolAddress, &error)!
-        let gasLimit: Int64 = GasDataManager.shared.getGasLimitByType(by: "submitRing")!
+        let gasLimit: Int64 = GasDataManager.shared.getGasLimit(by: "submitRing")!
         return SendCurrentAppWalletDataManager.shared._sign(data: data, address: protocolAddress, amount: GethBigInt.init(0), gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     

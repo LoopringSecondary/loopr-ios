@@ -126,7 +126,8 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         if let asset = self.asset {
             let symbol = asset.symbol
             let available = ConvertDataManager.shared.getMaxAmount(symbol: symbol)
-            availableLabel.text = "Available \(available.format()) \(symbol)"
+            let title = NSLocalizedString("Available Balance", comment: "")
+            availableLabel.text = "\(title) \(available.format()) \(symbol)"
             tokenSView.update(symbol: symbol)
             tokenBView.update(symbol: getAnotherToken())
         }
@@ -254,7 +255,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         
     }
     
-    func setResultOfAmount(with percentage: CGFloat) {
+    func setResultOfAmount(with percentage: Double) {
         if let asset = self.asset {
             let symbol = asset.symbol
             let available = ConvertDataManager.shared.getMaxAmount(symbol: symbol)

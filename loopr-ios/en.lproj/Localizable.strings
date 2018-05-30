@@ -143,7 +143,7 @@
 "You are selling" = "You are selling";
 "Placed" = "Placed";
 "Congradualations! Your order has been submited!" = "Congradualations! Your order has been submited!";
-"Your order has been submited!However, please make sure you have enough balance to complete the trade." = "Your order has been submited!However, please make sure you have enough balance to complete the trade.";
+"Your order has not been submited! Please make sure you have enough balance to complete the trade." = "Your order has not been submited! Please make sure you have enough balance to complete the trade.";
 "You Need More" = "You Need More";
 "My Orders" = "My Orders";
 "My Trades" = "My Trades";
@@ -234,3 +234,5 @@
 "Confirm" = "Confirm";
 "Please Verify Your Mnemonic" = "Please Verify Your Mnemonic";
 "Please click words in order." = "Please click words in order.";
+"Available Balance" = "Available Balance";
+

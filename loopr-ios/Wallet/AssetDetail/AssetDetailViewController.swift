@@ -123,15 +123,11 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         if let asset = asset, asset.symbol.uppercased() == "ETH" || asset.symbol.uppercased() == "WETH" {
             let convertButton = UIButton(frame: CGRect(x: 0, y: 0, width: 45.3, height: 28))
             convertButton.setupRoundWhite(height: 28)
-            convertButton.setTitle("   " + NSLocalizedString("Convert", comment: "") + "   ", for: .normal)
-            convertButton.titleLabel?.font = FontConfigManager.shared.getButtonTitleLabelFont(size: 13)
+            convertButton.setTitle(NSLocalizedString("Convert", comment: ""), for: .normal)
+            convertButton.contentHorizontalAlignment = .center
+            convertButton.titleColor = UIColor.darkGray
+            convertButton.titleLabel?.font = FontConfigManager.shared.getLabelFont(size: 11)
             convertButton.addTarget(self, action: #selector(self.pressedConvertButton(_:)), for: UIControlEvents.touchUpInside)
-            
-//            convertButton.backgroundColor = UIColor.clear
-//            convertButton.layer.cornerRadius = 14
-//            convertButton.layer.borderWidth = 0.5
-//            convertButton.layer.borderColor = UIColor.black.cgColor
-            
             let convertBarButtton = UIBarButtonItem(customView: convertButton)
             self.navigationItem.rightBarButtonItem = convertBarButtton
         }
