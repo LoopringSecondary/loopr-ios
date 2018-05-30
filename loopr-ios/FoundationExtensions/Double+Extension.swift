@@ -27,7 +27,7 @@ extension Double {
         currencyFormatter.locale = Locale(identifier: locale)
         currencyFormatter.usesGroupingSeparator = true
         currencyFormatter.numberStyle = .currency
-        return currencyFormatter.string(from: NSNumber(value: self))!
+        return currencyFormatter.string(from: NSNumber(value: self)) ?? "$0.00"
     }
     
     func format(_ digits: Int = 4) -> String {

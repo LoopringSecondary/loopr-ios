@@ -28,7 +28,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
         // Initialization code
 
         balanceLabel.setFont(UIFont.init(name: FontConfigManager.shared.getRegular(), size: 27*UIStyleConfig.scale)!)
-        balanceLabel.animationDuration = 0.25
+        balanceLabel.animationDuration = 0.3
         balanceLabel.textAlignment = NSTextAlignment.center
         balanceLabel.initializeLabel()
         balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
@@ -67,7 +67,16 @@ class WalletBalanceTableViewCell: UITableViewCell {
     }
     
     func setup() {
-        updateBalance()
+        let balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
+        balanceLabel.setText(balance, animated: true)
+        balanceLabel.layoutCharacterLabels()
+    }
+    
+    @objc func updateBalance() {
+        let balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
+        print(balance)
+        balanceLabel.setText(balance, animated: true)
+        layoutIfNeeded()
     }
     
     func startUpdateBalanceLabelTimer() {
@@ -80,15 +89,6 @@ class WalletBalanceTableViewCell: UITableViewCell {
         if updateBalanceLabelTimer != nil {
             updateBalanceLabelTimer?.invalidate()
             updateBalanceLabelTimer = nil
-        }
-    }
-
-    @objc func updateBalance() {
-        let balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
-        print(balance)
-        if balance != balanceLabel.text {
-            balanceLabel.setText(balance, animated: true)
-            layoutIfNeeded()
         }
     }
 

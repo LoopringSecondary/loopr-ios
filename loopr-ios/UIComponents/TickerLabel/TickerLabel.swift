@@ -97,6 +97,7 @@ class TickerLabel: UIView {
         }
         let oldTextLength: Int = self.text.count
         let newTextLength: Int = text.count
+        
         if newTextLength > oldTextLength {
             let textLengthDelta: Int = newTextLength - oldTextLength
             for _ in 0..<textLengthDelta {
@@ -110,12 +111,19 @@ class TickerLabel: UIView {
             for _ in 0..<textLengthDelta {
                 removeLastCharacterLabel(animated)
             }
+            // TODO: We may have the wired animation here. labelDidCompleteRemovealAnimation(aLabel) should fix it.
             if !animated {
                 invalidateIntrinsicContentSize()
                 setNeedsLayout()
                 layoutCharacterLabels()
             }
+            
         }
+        /*
+        invalidateIntrinsicContentSize()
+        setNeedsLayout()
+        layoutCharacterLabels()
+        */
         
         var oldValue = Double(self.text)
         if oldValue == nil {
@@ -220,6 +228,7 @@ class TickerLabel: UIView {
             label?.text = nil
             if let aLabel = label {
                 labelViewsToRemove.insert(aLabel)
+                labelDidCompleteRemovealAnimation(aLabel)
             }
             weak var weakSelf = self
             label?.animationDidCompleteBlock = {(_ label: TickerCharacterLabel) -> Void in
