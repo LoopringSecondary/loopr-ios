@@ -26,6 +26,7 @@ class TradeConfirmationViewController: UIViewController {
     
     var priceLabel: UILabel = UILabel()
     var priceValueLabel: UILabel = UILabel()
+    var priceTipLabel: UILabel = UILabel()
     var priceUnderLine: UIView = UIView()
     var tokenSView: TradeTokenView!
     var tokenBView: TradeTokenView!
@@ -42,7 +43,6 @@ class TradeConfirmationViewController: UIViewController {
         setBackButton()
         
         // Token View
-        let paddingLeft: CGFloat = 15
         let paddingTop: CGFloat = 100
         let padding: CGFloat = 15
         let rowHeight: CGFloat = 40
@@ -65,16 +65,24 @@ class TradeConfirmationViewController: UIViewController {
         priceLabel.text = NSLocalizedString("Price", comment: "")
         priceLabel.textColor = UIColor.black
         priceLabel.font = FontConfigManager.shared.getLabelFont()
-        priceLabel.frame = CGRect(x: paddingLeft, y: screenHeight * 0.57, width: 160, height: rowHeight)
+        priceLabel.frame = CGRect(x: padding, y: screenHeight * 0.57, width: 160, height: rowHeight)
         scrollView.addSubview(priceLabel)
+        
+        priceTipLabel.text = "(" + NSLocalizedString("Irrational", comment: "") + ")"
+        priceTipLabel.textColor = .red
+        priceTipLabel.textAlignment = .right
+        priceTipLabel.font = FontConfigManager.shared.getLabelFont()
+        priceTipLabel.frame = CGRect(x: screenWidth - padding - 100, y: priceLabel.frame.minY, width: 100, height: rowHeight)
+        priceTipLabel.isHidden = true
+        scrollView.addSubview(priceTipLabel)
         
         priceValueLabel.textColor = UIColor.black
         priceValueLabel.textAlignment = .right
         priceValueLabel.font = FontConfigManager.shared.getLabelFont()
-        priceValueLabel.frame = CGRect(x: screenWidth - paddingLeft - 200, y: priceLabel.frame.minY, width: 200, height: rowHeight)
+        priceValueLabel.frame = CGRect(x: priceTipLabel.frame.minX - padding - 200, y: priceLabel.frame.minY, width: 200, height: rowHeight)
         scrollView.addSubview(priceValueLabel)
         
-        priceUnderLine.frame = CGRect(x: paddingLeft, y: priceLabel.frame.maxY - 5, width: screenWidth - paddingLeft * 2, height: 1)
+        priceUnderLine.frame = CGRect(x: padding, y: priceLabel.frame.maxY - 5, width: screenWidth - padding * 2, height: 1)
         priceUnderLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
         scrollView.addSubview(priceUnderLine)
         
@@ -82,16 +90,16 @@ class TradeConfirmationViewController: UIViewController {
         LRCFeeLabel.text = NSLocalizedString("Trading Fee", comment: "")
         LRCFeeLabel.textColor = UIColor.black
         LRCFeeLabel.font = FontConfigManager.shared.getLabelFont()
-        LRCFeeLabel.frame = CGRect(x: paddingLeft, y: priceValueLabel.frame.maxY + rowPadding, width: 160, height: rowHeight)
+        LRCFeeLabel.frame = CGRect(x: padding, y: priceValueLabel.frame.maxY + rowPadding, width: 160, height: rowHeight)
         scrollView.addSubview(LRCFeeLabel)
         
         LRCFeeValueLabel.textColor = UIColor.black
         LRCFeeValueLabel.textAlignment = .right
         LRCFeeValueLabel.font = FontConfigManager.shared.getLabelFont()
-        LRCFeeValueLabel.frame = CGRect(x: screenWidth - paddingLeft - 160, y: LRCFeeLabel.frame.minY, width: 160, height: rowHeight)
+        LRCFeeValueLabel.frame = CGRect(x: screenWidth - padding - 160, y: LRCFeeLabel.frame.minY, width: 160, height: rowHeight)
         scrollView.addSubview(LRCFeeValueLabel)
         
-        LRCFeeUnderLine.frame = CGRect(x: paddingLeft, y: LRCFeeLabel.frame.maxY - 5, width: screenWidth - paddingLeft * 2, height: 1)
+        LRCFeeUnderLine.frame = CGRect(x: padding, y: LRCFeeLabel.frame.maxY - 5, width: screenWidth - padding * 2, height: 1)
         LRCFeeUnderLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
         scrollView.addSubview(LRCFeeUnderLine)
         
@@ -99,14 +107,14 @@ class TradeConfirmationViewController: UIViewController {
         marginSplitLabel.text = NSLocalizedString("Margin Split", comment: "")
         marginSplitLabel.textColor = UIColor.black
         marginSplitLabel.font = FontConfigManager.shared.getLabelFont()
-        marginSplitLabel.frame = CGRect(x: paddingLeft, y: LRCFeeLabel.frame.maxY + rowPadding, width: 160, height: rowHeight)
+        marginSplitLabel.frame = CGRect(x: padding, y: LRCFeeLabel.frame.maxY + rowPadding, width: 160, height: rowHeight)
         scrollView.addSubview(marginSplitLabel)
         
         marginSplitValueLabel.text = SettingDataManager.shared.getMarginSplitDescription()
         marginSplitValueLabel.textColor = UIColor.black
         marginSplitValueLabel.textAlignment = .right
         marginSplitValueLabel.font = FontConfigManager.shared.getLabelFont()
-        marginSplitValueLabel.frame = CGRect(x: screenWidth - paddingLeft - 160, y: marginSplitLabel.frame.minY, width: 160, height: rowHeight)
+        marginSplitValueLabel.frame = CGRect(x: screenWidth - padding - 160, y: marginSplitLabel.frame.minY, width: 160, height: rowHeight)
         scrollView.addSubview(marginSplitValueLabel)
         
         scrollView.contentSize = CGSize(width: screenWidth, height: marginSplitLabel.frame.maxY + padding)
@@ -132,17 +140,48 @@ class TradeConfirmationViewController: UIViewController {
         tokenSView.update(title: NSLocalizedString("You will send", comment: ""), symbol: order.tokenSell, amount: order.amountSell)
         tokenBView.update(title: NSLocalizedString("You will get", comment: ""), symbol: order.tokenBuy, amount: order.amountBuy)
         let value = order.amountBuy / order.amountSell
-        priceValueLabel.text = "\(value) \(TradeDataManager.shared.tradePair)"
+        priceValueLabel.text = "\(value.format()) \(TradeDataManager.shared.tradePair)"
+        if !validateRational(price: value) {
+            priceTipLabel.isHidden = false
+            priceValueLabel.frame = CGRect(x: priceTipLabel.frame.minX - 200, y: priceLabel.frame.minY, width: 200, height: 40)
+        } else {
+            priceValueLabel.frame = CGRect(x: UIScreen.main.bounds.width - 15 - 200, y: priceLabel.frame.minY, width: 200, height: 40)
+        }
         if let price = PriceDataManager.shared.getPrice(of: "LRC") {
             let total = (price * order.lrcFee).currency
             LRCFeeValueLabel.text = "\(order.lrcFee)LRC ≈ \(total)"
         }
         marginSplitValueLabel.text = SettingDataManager.shared.getMarginSplitDescription()
     }
+    
+    func validateRational(price: Double) -> Bool {
+        let pair = TradeDataManager.shared.tradePair
+        if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
+            if price < 0.8 * market.balance || price > 1.2 * market.balance {
+                return false
+            }
+            return true
+        }
+        return true
+    }
 
     @IBAction func pressedPlaceOrderButton(_ sender: UIButton) {
-        self.verifyInfo = TradeDataManager.shared.verify(order: order!)
-        self.handleVerifyInfo()
+        if !priceTipLabel.isHidden {
+            let message = NSLocalizedString("Your price is irrational. Do you wish to continue trading with the price?", comment: "")
+            let alert = UIAlertController(title: NSLocalizedString("Please Pay Attention", comment: ""), message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+                DispatchQueue.main.async {
+                    self.verifyInfo = TradeDataManager.shared.verify(order: self.order!)
+                    self.handleVerifyInfo()
+                }
+            }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.verifyInfo = TradeDataManager.shared.verify(order: order!)
+            self.handleVerifyInfo()
+        }
     }
 }
 

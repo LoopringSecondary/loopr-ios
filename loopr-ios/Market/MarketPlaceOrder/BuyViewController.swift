@@ -383,7 +383,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             let value = Double(priceTextField.text!)!
             // TODO: get from setting maybe
             if value < 0.8 * market.balance || value > 1.2 * market.balance {
-                let title = NSLocalizedString("Your price is irrational. Do you want to continue trading with the price?", comment: "")
+                let title = NSLocalizedString("Your price is irrational. Do you wish to continue trading with the price?", comment: "")
                 let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
                     DispatchQueue.main.async {

@@ -67,7 +67,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         
         nextButton.title = NSLocalizedString("Next", comment: "")
         nextButton.setupRoundBlack()
-        nextButton.isEnabled = false
         
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
@@ -186,12 +185,16 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         if let text = text, let color = color {
             estimateValueInCurrency.text = text
             estimateValueInCurrency.textColor = color
+            if color == .red {
+                estimateValueInCurrency.shake()
+            }
         } else {
             let tokens = TradeDataManager.shared.tokenS.symbol
+            let title = NSLocalizedString("Available Balance", comment: "")
             if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
-                estimateValueInCurrency.text = NSLocalizedString("Available \(balance) \(tokens)", comment: "")
+                estimateValueInCurrency.text = "\(title) \(balance) \(tokens)"
             } else {
-                estimateValueInCurrency.text = NSLocalizedString("Available 0.0 \(tokens)", comment: "")
+                estimateValueInCurrency.text = "\(title) 0.0 \(tokens)"
             }
             estimateValueInCurrency.textColor = .black
         }
@@ -238,7 +241,22 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     @IBAction func pressedNextButton(_ sender: Any) {
         print("pressedNextButton")
-        self.validateRational()
+        let isBuyValid = validateAmountBuy()
+        let isSellValid = validateAmountSell()
+        if isSellValid && isBuyValid {
+            self.pushController()
+        }
+        if !isSellValid && estimateValueInCurrency.textColor != .red {
+            estimateValueInCurrency.text = NSLocalizedString("Please input a valid amount", comment: "")
+            estimateValueInCurrency.textColor = .red
+            estimateValueInCurrency.shake()
+        }
+        if !isBuyValid {
+            availableLabel.isHidden = false
+            availableLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+            availableLabel.textColor = .red
+            availableLabel.shake()
+        }
     }
     
     func constructMaker() -> OriginalOrder? {
@@ -278,68 +296,41 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
-
-    func updateButton(isValid: Bool) {
-        nextButton.isEnabled = isValid
-    }
-    
-    func validateRational() {
-        let pair = TradeDataManager.shared.tradePair
-        if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
-            let value = Double(amountBuyTextField.text!)! / Double(amountSellTextField.text!)!
-            // TODO: get from setting maybe
-            if value < 0.8 * market.balance || value > 1.2 * market.balance {
-                let title = NSLocalizedString("Your price is irrational. Do you want to continue trading with the price?", comment: "")
-                let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
-                    DispatchQueue.main.async {
-                        self.pushController()
-                    }
-                }))
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
-                }))
-                self.present(alert, animated: true, completion: nil)
-            } else {
-                self.pushController()
-            }
-        } else {
-            self.pushController()
-        }
-    }
     
     func validateAmountSell() -> Bool {
         var text: String
         let tokens = TradeDataManager.shared.tokenS.symbol
+        let title = NSLocalizedString("Available Balance", comment: "")
         if let amounts = amountSellTextField.text, let amountSell = Double(amounts) {
             if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
-                text = NSLocalizedString("Available \(balance) \(tokens)", comment: "")
                 if amountSell > balance {
+                    text = "\(title) \(balance) \(tokens)"
                     updateTipLabel(text: text, color: .red)
                     return false
                 } else {
                     if let price = PriceDataManager.shared.getPrice(of: tokens) {
                         let estimateValue: Double = amountSell * price
-                        text = estimateValue.currency + "\t" + text
+                        text = estimateValue.currency
+                        updateTipLabel(text: text, color: .black)
                     }
-                    updateTipLabel(text: text, color: .black)
                     return true
                 }
             } else {
-                text = NSLocalizedString("Available 0.0 \(tokens)", comment: "")
                 if amountSell == 0 {
-                    text = 0.0.currency + text
+                    text = 0.0.currency
                     updateTipLabel(text: text, color: .black)
                     return true
                 } else {
+                    text = "\(title) 0.0 \(tokens)"
                     updateTipLabel(text: text, color: .red)
                     return false
                 }
             }
         } else {
             if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
-                text = NSLocalizedString("Available \(balance) \(tokens)", comment: "")
+                text = "\(title) \(balance) \(tokens)"
             } else {
-                text = NSLocalizedString("Available 0.0 \(tokens)", comment: "")
+                text = "\(title) 0.0 \(tokens)"
             }
             updateTipLabel(text: text, color: .black)
             return false
@@ -347,28 +338,28 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     }
     
     func validateAmountBuy() -> Bool {
+        availableLabel.isHidden = true
         if let amountb = amountBuyTextField.text, Double(amountb) != nil {
-            availableLabel.isHidden = true
             return true
         } else {
             return false
         }
     }
     
-    func validate() {
+    func validate() -> Bool {
         var isValid = false
         if activeTextFieldTag == amountSellTextField.tag {
-            _ = validateAmountSell()
+            isValid = validateAmountSell()
         } else if activeTextFieldTag == amountBuyTextField.tag {
-            _ = validateAmountBuy()
+            isValid = validateAmountBuy()
         }
-        isValid = validateAmountSell() && validateAmountBuy()
-        updateButton(isValid: isValid)
+        return isValid
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         print("textFieldShouldBeginEditing")
         activeTextFieldTag = textField.tag
+        _ = validate()
         showNumericKeyboard(textField: textField)
         return true
     }
@@ -450,9 +441,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         guard activeTextField != nil else {
             return
         }
-        
         var currentText = activeTextField!.text ?? ""
-        
         switch (position.row, position.column) {
         case (3, 0):
             activeTextField!.text = currentText + "."
@@ -467,7 +456,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             let itemValue = position.row * 3 + position.column + 1
             activeTextField!.text = currentText + String(itemValue)
         }
-        validate()
+        _ = validate()
     }
 
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemLongPressed item: NumericKeyboardItem, atPosition position: Position) {
@@ -504,9 +493,11 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     func setResultOfAmount(with percentage: Double) {
         let tokens = TradeDataManager.shared.tokenS.symbol
         if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
-            estimateValueInCurrency.text = NSLocalizedString("Available \(balance) \(tokens)", comment: "")
+            amountSellTextField.text = (balance * percentage).format()
         } else {
-            estimateValueInCurrency.text = NSLocalizedString("Available 0.0 \(tokens)", comment: "")
+            amountSellTextField.text = "0.0"
         }
+        activeTextFieldTag = amountSellTextField.tag
+        _ = validate()
     }
 }

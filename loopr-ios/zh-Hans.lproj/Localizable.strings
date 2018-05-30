@@ -136,9 +136,9 @@
 "Information of two orders not complete" = "Information of two orders not complete";
 "Sorry. Network error, please try again later" = "Sorry. Network error, please try again later";
 "Order Expires in" = "订单有效时间";
-"Your price is irrational. Do you want to continue trading with the price?" = "您所设置的价格并不合理，是否仍要以该价格下单或交易？";
+"Your price is irrational. Do you wish to continue trading with the price?" = "您所设定的价格并不合理，是否仍要以该价格下单或交易？";
 "Please input a valid price" = "请输入有效的价格";
-"Please input a valid amount" = "请输入有效的数量";
+"Please input a valid amount" = "请输入有效的数额";
 "You are buying" = "You are buying";
 "You are selling" = "You are selling";
 "Placed" = "提交成功";
@@ -176,7 +176,6 @@
 "Cancel Order(s)" = "取消订单";
 "Enter the amount you have" = "输入卖出的数量";
 "Enter the amount you get" = "输入买出的数量";
-"Your price is irrational. Do you want to continue trading with the price?" = "Your price is irrational. Do you want to continue trading with the price?";
 "You will send" = "You will send";
 "You will get" = "You will get";
 "My Trade from Loopr-iOS" = "My Trade from Loopr-iOS";
@@ -233,4 +232,5 @@
 "Please click words in order." = "请按顺序点击助记词。";
 "Market Price" = "最新成交价格";
 "Available Balance" = "可用余额";
-
+"Please Pay Attention" = "请注意";
+"Irrational" = "设价不合理";

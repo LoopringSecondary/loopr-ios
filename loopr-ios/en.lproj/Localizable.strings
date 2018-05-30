@@ -136,7 +136,7 @@
 "Information of two orders not complete" = "Information of two orders not complete";
 "Sorry. Network error, please try again later" = "Sorry. Network error, please try again later";
 "Order Expires in" = "Order Expires in";
-"Your price is irrational. Do you want to continue trading with the price?" = "Your price is irrational. Do you want to continue trading with the price?";
+"Your price is irrational. Do you wish to continue trading with the price?" = "Your price is irrational. Do you wish to continue trading with the price?";
 "Please input a valid price" = "Please input a valid price";
 "Please input a valid amount" = "Please input a valid amount";
 "You are buying" = "You are buying";
@@ -178,7 +178,6 @@
 "Enter the amount you get" = "Enter the amount you get";
 "Available \(balance) \(tokens)" = "Available \(balance) \(tokens)";
 "Available 0.0 \(tokens)" = "Available 0.0 \(tokens)";
-"Your price is irrational. Do you want to continue trading with the price?" = "Your price is irrational. Do you want to continue trading with the price?";
 "You will send" = "You will send";
 "You will get" = "You will get";
 "My Trade from Loopr-iOS" = "My Trade from Loopr-iOS";
@@ -235,4 +234,6 @@
 "Please Verify Your Mnemonic" = "Please Verify Your Mnemonic";
 "Please click words in order." = "Please click words in order.";
 "Available Balance" = "Available Balance";
+"Please Pay Attention" = "Please Pay Attention";
+"Irrational" = "Irrational";
 
