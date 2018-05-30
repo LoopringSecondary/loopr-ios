@@ -501,7 +501,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         }
     }
     
-    func setResultOfAmount(with percentage: CGFloat) {
+    func setResultOfAmount(with percentage: Double) {
         let tokens = TradeDataManager.shared.tokenS.symbol
         if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
             estimateValueInCurrency.text = NSLocalizedString("Available \(balance) \(tokens)", comment: "")

@@ -164,7 +164,7 @@
 "Please enter the keystore" = "请输入keystore";
 "Please input your private key" = "请输入您的私钥";
 "Enter the address" = "请输入地址";
-"Please confirm the address before sending." = "在发送前，请确认地址。";
+"Please confirm the address before sending." = "在发送前，请确认地址无误。";
 "Transaction Fee" = "交易费";
 "Advanced" = "高级设置";
 "What is gas?" = "What is gas?";
@@ -230,3 +230,4 @@
 "Selling Price" = "最新卖单价格";
 "Buying Price" = "最新买单价格";
 "Market Price" = "最新市场价格";
+"Available Balance" = "可用余额";

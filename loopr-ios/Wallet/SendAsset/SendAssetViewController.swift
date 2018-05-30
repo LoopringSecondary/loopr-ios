@@ -262,7 +262,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         SendCurrentAppWalletDataManager.shared.getNonceFromServer()
     }
     
-    func setResultOfAmount(with percentage: CGFloat) {
+    func setResultOfAmount(with percentage: Double) {
         let value = asset.balance * Double(percentage)
         amountTextField.text = value.format()
         if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
