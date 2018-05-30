@@ -68,8 +68,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         button.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
         button.addTarget(self, action: #selector(self.clickNavigationTitleButton(_:)), for: .touchUpInside)
         self.navigationItem.titleView = button
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshData), name: .appWalletDidUpdate, object: nil)
     }
     
     @objc private func refreshData(_ sender: Any) {
