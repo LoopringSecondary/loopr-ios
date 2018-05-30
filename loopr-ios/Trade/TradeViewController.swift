@@ -9,7 +9,7 @@
 import UIKit
 import Geth
 
-class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol {
+class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, AmountStackViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
@@ -21,7 +21,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     var amountSellTextField: UITextField = UITextField()
     var tokenSUnderLine: UIView = UIView()
     var estimateValueInCurrency: UILabel = UILabel()
-    var maxButton: UIButton = UIButton()
+    var amountStackView: AmountStackView!
     
     // Exchange label
     var exchangeImage: UIImageView = UIImageView()
@@ -104,18 +104,14 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         estimateValueInCurrency.frame = CGRect(x: padding, y: tokenSUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(estimateValueInCurrency)
         
-        maxButton.title = NSLocalizedString("Max", comment: "")
-        maxButton.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
-        maxButton.setTitleColor(UIColor.init(rgba: "#cce9ff"), for: .highlighted)
-        maxButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
-        maxButton.contentHorizontalAlignment = .right
-        maxButton.frame = CGRect(x: screenWidth-80-padding, y: tokenSUnderLine.frame.maxY, width: 80, height: 40)
-        scrollView.addSubview(maxButton)
+        amountStackView = AmountStackView(frame: CGRect(x: screenWidth-100-padding, y: tokenSUnderLine.frame.maxY, width: 100, height: 40))
+        amountStackView.delegate = self
+        scrollView.addSubview(amountStackView)
         
         // Second row: exchange label
         
         exchangeImage.image = UIImage(named: "Trading")
-        exchangeLabel.font = FontConfigManager.shared.getLabelFont()
+        exchangeLabel.font = FontConfigManager.shared.getLabelFont(size: 15)
         exchangeLabel.textAlignment = .center
         exchangeLabel.frame = CGRect(x: 0, y: estimateValueInCurrency.frame.maxY + padding*2, width: screenWidth, height: 40)
         scrollView.addSubview(exchangeLabel)
@@ -502,6 +498,15 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             TradeDataManager.shared.orders.insert(taker, at: 1)
             TradeDataManager.shared.makerPrivateKey = makerPrivateKey
             self.destinationController.order = taker
+        }
+    }
+    
+    func setResultOfAmount(with percentage: CGFloat) {
+        let tokens = TradeDataManager.shared.tokenS.symbol
+        if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
+            estimateValueInCurrency.text = NSLocalizedString("Available \(balance) \(tokens)", comment: "")
+        } else {
+            estimateValueInCurrency.text = NSLocalizedString("Available 0.0 \(tokens)", comment: "")
         }
     }
 }

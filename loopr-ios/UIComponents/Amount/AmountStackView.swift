@@ -77,16 +77,15 @@ protocol AmountStackViewDelegate: class {
     }
     
     @objc func update() {
-        let maxDuration = CGFloat(5)
         if self.tag == 0 {
-            progress += (CGFloat(0.05) / maxDuration)
+            progress += 0.01
             plusButton.setProgress(progress)
             if progress >= 1 {
                 progress = 1
                 timer.invalidate()
             }
         } else if self.tag == 1 {
-            progress -= (CGFloat(0.05) / maxDuration)
+            progress -= 0.01
             minusButton.setProgress(progress)
             if progress <= 0 {
                 progress = 0
@@ -99,6 +98,7 @@ protocol AmountStackViewDelegate: class {
     
     @objc func stop(_ button: AmountButton) {
         self.timer.invalidate()
+        self.update()
         self.delegate?.setResultOfAmount(with: self.progress)
     }
 }

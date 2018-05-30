@@ -29,6 +29,7 @@
 		94189CC12078B88700AA2CF4 /* OrderSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94189CBF2078B88700AA2CF4 /* OrderSearchResultViewController.swift */; };
 		94189CC22078B88700AA2CF4 /* OrderSearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94189CC02078B88700AA2CF4 /* OrderSearchResultViewController.xib */; };
 		941B1EFC209C41BC00710DFF /* GasDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B1EFB209C41BB00710DFF /* GasDataManager.swift */; };
+		94231DEB20BD671700A4FDC3 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94231DEA20BD671700A4FDC3 /* PaddingLabel.swift */; };
 		943A9A4120909597008BCBFD /* DefaultWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943A9A3F20909597008BCBFD /* DefaultWebViewController.swift */; };
 		943A9A4220909597008BCBFD /* DefaultWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943A9A4020909597008BCBFD /* DefaultWebViewController.xib */; };
 		943BDED32056350000D5BF81 /* PriceQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943BDED22056350000D5BF81 /* PriceQuote.swift */; };
@@ -560,6 +561,7 @@
 		94189CBF2078B88700AA2CF4 /* OrderSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSearchResultViewController.swift; sourceTree = "<group>"; };
 		94189CC02078B88700AA2CF4 /* OrderSearchResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderSearchResultViewController.xib; sourceTree = "<group>"; };
 		941B1EFB209C41BB00710DFF /* GasDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasDataManager.swift; sourceTree = "<group>"; };
+		94231DEA20BD671700A4FDC3 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		943A9A3F20909597008BCBFD /* DefaultWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultWebViewController.swift; sourceTree = "<group>"; };
 		943A9A4020909597008BCBFD /* DefaultWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultWebViewController.xib; sourceTree = "<group>"; };
 		943BDED22056350000D5BF81 /* PriceQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceQuote.swift; sourceTree = "<group>"; };
@@ -1038,6 +1040,14 @@
 				9413F69420B80E2600524D2D /* AmountStackView.swift */,
 			);
 			path = Amount;
+			sourceTree = "<group>";
+		};
+		94231DE920BD66F900A4FDC3 /* PaddingLabel */ = {
+			isa = PBXGroup;
+			children = (
+				94231DEA20BD671700A4FDC3 /* PaddingLabel.swift */,
+			);
+			path = PaddingLabel;
 			sourceTree = "<group>";
 		};
 		9445D54220BA4F3F006045F6 /* Price */ = {
@@ -1817,6 +1827,7 @@
 		ACB5DD85202AD74D00140A09 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				94231DE920BD66F900A4FDC3 /* PaddingLabel */,
 				9445D54220BA4F3F006045F6 /* Price */,
 				9413F68F20B8028B00524D2D /* Amount */,
 				ACEC978420B247CA003F9DEB /* Slider */,
@@ -2855,6 +2866,7 @@
 				948952D3205A74BE009B03FE /* Transaction.swift in Sources */,
 				AC2CFAA120BB3BEE00387DB1 /* BiometricType.swift in Sources */,
 				AC38751D205F12F100A76637 /* UIViewController+Extensions.swift in Sources */,
+				94231DEB20BD671700A4FDC3 /* PaddingLabel.swift in Sources */,
 				940B452B2060F67E00ADE2B9 /* SettingDataManager.swift in Sources */,
 				AC2D2C11208BD1BF00D619AD /* UIButton+AlignedIcon.swift in Sources */,
 				ACB41A6F20B54BB300A92C9D /* AuthenticationViewController.swift in Sources */,
