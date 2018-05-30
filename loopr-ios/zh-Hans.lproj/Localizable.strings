@@ -225,10 +225,12 @@
 "To" = "接收地址";
 "My wallet address in Loopr" = "我在Loopr里的钱包地址";
 "Hide Other Pairs" = "隐藏其他交易对";
-"WETH" = "以太坊";
-"LRC" = "路印";
 "ETH (Excluding for gas)" = "ETH (不含转换油费)";
 "Customer Price" = "用户自定价格";
 "Selling Price" = "最新卖单价格";
 "Buying Price" = "最新买单价格";
 "Market Price" = "最新市场价格";
+"Confirm" = "确认";
+"Please Verify Your Mnemonic" = "确认您的钱包助记词";
+"Please click words in order." = "请按顺序点击助记词。";
+

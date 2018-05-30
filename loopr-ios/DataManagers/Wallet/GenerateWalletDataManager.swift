@@ -53,6 +53,10 @@ class GenerateWalletDataManager {
     func getMnemonics() -> [String] {
         return mnemonics
     }
+    
+    func getUserInputMnemonics() -> [String] {
+        return userInputMnemonics
+    }
 
     // TODO: In the design, users can only move to the next question?
     func getQuestion(index: Int) -> MnemonicQuestion {

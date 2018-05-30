@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BackupMnemonicViewController: UIViewController {
+class BackupMnemonicViewController_Archive: UIViewController {
 
     var isExportMode: Bool = false
     var mnemonics: [String] = []
@@ -74,6 +74,7 @@ class BackupMnemonicViewController: UIViewController {
         // assign first 12 words
         mnemonicCollectionViewController0.mnemonics = Array(mnemonics[0..<halfLength])
         mnemonicCollectionViewController0.view.isHidden = false
+        mnemonicCollectionViewController0.count = 12
         mnemonicCollectionViewController0.index = 0
         mnemonicCollectionViewController0.view.frame = CGRect(x: 15, y: collectionViewY, width: collectionViewWidth, height: collectionViewHeight)
         view.addSubview(mnemonicCollectionViewController0.view)
@@ -83,6 +84,7 @@ class BackupMnemonicViewController: UIViewController {
         // assign last 12 words
         mnemonicCollectionViewController1.mnemonics = Array(mnemonics[halfLength..<mnemonics.count])
         mnemonicCollectionViewController1.view.isHidden = true
+        mnemonicCollectionViewController1.count = 12
         mnemonicCollectionViewController1.index = 1
         mnemonicCollectionViewController1.view.frame = CGRect(x: 15 + screenWidth, y: collectionViewY, width: collectionViewWidth, height: collectionViewHeight)
         view.addSubview(mnemonicCollectionViewController1.view)
@@ -189,6 +191,7 @@ class BackupMnemonicViewController: UIViewController {
         let confirmAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
             // Avoid a delay in the animation
             let viewController = VerifyMnemonicViewController()
+            viewController.mnemonics = GenerateWalletDataManager.shared.getMnemonics()
             self.navigationController?.pushViewController(viewController, animated: true)
             
             UIView.animate(withDuration: 0.1, animations: {

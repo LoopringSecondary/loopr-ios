@@ -226,10 +226,11 @@
 "To" = "To";
 "My wallet address in Loopr" = "My wallet address in Loopr";
 "Hide Other Pairs" = "Hide Other Pairs";
-"WETH" = "WETH";
-"LRC" = "LRC";
 "ETH (Excluding for gas)" = "ETH (Excluding for gas)";
 "Customer Price" = "Customer Price";
 "Selling Price" = "Selling Price";
 "Buying Price" = "Buying Price";
 "Market Price" = "Market Price";
+"Confirm" = "Confirm";
+"Please Verify Your Mnemonic" = "Please Verify Your Mnemonic";
+"Please click words in order." = "Please click words in order.";

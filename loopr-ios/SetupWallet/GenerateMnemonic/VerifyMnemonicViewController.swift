@@ -2,27 +2,31 @@
 //  VerifyMnemonicViewController.swift
 //  loopr-ios
 //
-//  Created by xiaoruby on 3/4/18.
+//  Created by xiaoruby on 5/29/18.
 //  Copyright © 2018 Loopring. All rights reserved.
 //
 
 import UIKit
 
-class VerifyMnemonicViewController: UIViewController {
+class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollectionViewControllerDelegate {
 
-    var questionLabel = UILabel()
+    var mnemonics: [String] = []
     
-    var button1 = UIButton()
-    var button2 = UIButton()
-    var button3 = UIButton()
-    var button4 = UIButton()
-    var buttonStackView = UIStackView()
+    var infoLabel: UILabel = UILabel()
+    var mnemonicsTextView: UITextView = UITextView()
 
-    var currentIndex: Int = -1
+    @IBOutlet weak var confirmButton: UIButton!
+    var mnemonicCollectionViewController: MnemonicBackupModeCollectionViewController!
     
-    let progressView = UIProgressView(progressViewStyle: .bar)
+    var collectionViewY: CGFloat = 200
+    var collectionViewWidth: CGFloat = 200
+    var collectionViewHeight: CGFloat = 220
     
-    var enterWalletButton = UIButton()
+    private let originY: CGFloat = 30
+    private var padding: CGFloat = 15
+    private let buttonPaddingY: CGFloat = 40
+    
+    private var firstAppear = true
     
     var blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
 
@@ -30,146 +34,121 @@ class VerifyMnemonicViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Verification", comment: "")
+        mnemonics.shuffle()
+        
+        self.navigationItem.title = NSLocalizedString("Please Verify Your Mnemonic", comment: "")
         setBackButton()
-
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        
+        confirmButton.title = NSLocalizedString("Confirm", comment: "Go to VerifyMnemonicViewController")
+        confirmButton.setupRoundBlack()
 
         // Setup UI
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         let screenHeight = screensize.height
-
-        let originY: CGFloat = 30
-        let padding: CGFloat = 15
         
-        progressView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 1)
-        progressView.tintColor = UIColor.black
-        view.addSubview(progressView)
+        collectionViewWidth = screenWidth - padding * 2
+        collectionViewHeight = 10*MnemonicCollectionViewCell.getHeight() + 2*padding
         
-        questionLabel.frame = CGRect(x: padding, y: originY, width: screenWidth - padding * 2, height: 110)
-        questionLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 24)
-        questionLabel.numberOfLines = 0
-        view.addSubview(questionLabel)
+        padding = (screenHeight - 120 - collectionViewHeight - 140 - 40) / 3
         
-        buttonStackView.frame = CGRect(center: CGPoint(x: screenWidth*0.5, y: screenHeight*0.5), size: CGSize(width: 165, height: 47*4+20*3))
-        buttonStackView.axis = UILayoutConstraintAxis.vertical
-        buttonStackView.distribution = UIStackViewDistribution.fillEqually
-        buttonStackView.spacing = 20
-
-        buttonStackView.alignment = UIStackViewAlignment.fill
-        buttonStackView.backgroundColor = UIColor.red
+        infoLabel.frame = CGRect(x: 15, y: 5, width: screenWidth - 2*15, height: 40)
         
-        view.addSubview(buttonStackView)
-
-        button1.addTarget(self, action: #selector(pressedButton1), for: .touchUpInside)
-        buttonStackView.addArrangedSubview(button1)
-
-        button2.addTarget(self, action: #selector(pressedButton2), for: .touchUpInside)
-        buttonStackView.addArrangedSubview(button2)
-
-        button3.addTarget(self, action: #selector(pressedButton3), for: .touchUpInside)
-        buttonStackView.addArrangedSubview(button3)
-
-        button4.addTarget(self, action: #selector(pressedButton4), for: .touchUpInside)
-        buttonStackView.addArrangedSubview(button4)
+        infoLabel.textColor = UIColor.black.withAlphaComponent(0.6)
+        infoLabel.font = FontConfigManager.shared.getLabelFont(size: 17)
+        infoLabel.text = NSLocalizedString("Please click words in order.", comment: "")
+        view.addSubview(infoLabel)
         
-        loadNextQuestion()
+        mnemonicsTextView.frame = CGRect(x: 15, y: infoLabel.frame.maxY + 15, width: screenWidth - 2*15, height: 140)
+        mnemonicsTextView.font = FontConfigManager.shared.getLabelFont()
+        mnemonicsTextView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
+        mnemonicsTextView.textColor = .black
+        mnemonicsTextView.tintColor = UIColor.black
+        mnemonicsTextView.textContainerInset = UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10)
+        mnemonicsTextView.cornerRadius = 10
+        mnemonicsTextView.isEditable = false
+        view.addSubview(mnemonicsTextView)
+
+        collectionViewY = mnemonicsTextView.frame.maxY + padding
+        
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: (collectionViewWidth - 30)/3, height: MnemonicBackupModeCollectionViewCell.getHeight())
+        flowLayout.scrollDirection = .vertical
+
+        mnemonicCollectionViewController = MnemonicBackupModeCollectionViewController(collectionViewLayout: flowLayout)
+        mnemonicCollectionViewController.delegate = self
+        mnemonicCollectionViewController.mnemonics = mnemonics
+        mnemonicCollectionViewController.view.isHidden = false
+        mnemonicCollectionViewController.isBackupMode = true
+        mnemonicCollectionViewController.count = 24
+        mnemonicCollectionViewController.index = 0
+        mnemonicCollectionViewController.view.frame = CGRect(x: 15, y: collectionViewY, width: collectionViewWidth, height: collectionViewHeight)
+        view.addSubview(mnemonicCollectionViewController.view)
+        addChildViewController(mnemonicCollectionViewController)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    func loadNextQuestionWithDelay() {
-        let delay = 0.4
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
-            self.loadNextQuestion()
-        })
-    }
     
-    func loadNextQuestion() {
-        if currentIndex < 0 {
-            currentIndex = 0
-        } else {
-            currentIndex += 1
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        if currentIndex == GenerateWalletDataManager.shared.getMnemonics().count {
-            // TODO: verify the inputs
-            if GenerateWalletDataManager.shared.verify() {
-                // Store the new wallet to the local storage and exit the view controller.
-                exit()
-            } else {
-                print("User input Mnemonic doesn't match")
-                
-                // Reset
-                currentIndex = -1
-                GenerateWalletDataManager.shared.clearUserInputMnemonic()
-                
-                let screenSize: CGRect = UIScreen.main.bounds
-                blurVisualEffectView.frame = screenSize
-                
-                self.blurVisualEffectView.alpha = 1.0
-                
-                let alertController = UIAlertController(title: "Mnemonics don't match. Please verify again.",
-                    message: nil,
-                    preferredStyle: .alert)
-                
-                let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
-                    _ = self.navigationController?.popViewController(animated: true)
-                    
-                    UIView.animate(withDuration: 0.1, animations: {
-                        self.blurVisualEffectView.alpha = 0.0
-                    }, completion: {(_) in
-                        self.blurVisualEffectView.removeFromSuperview()
-                    })
-                })
-                alertController.addAction(defaultAction)
-
-                // Add a blur view to the whole screen
-                self.navigationController?.view.addSubview(blurVisualEffectView)
-                
-                self.present(alertController, animated: true, completion: nil)
-            }
-
-            // Show enter wallet button
-            /*
-            let width = view.bounds.width
-            let height = view.bounds.height
+        // CollectionView won't be layout correctly in viewDidLoad()
+        // https://stackoverflow.com/questions/12927027/uicollectionview-flowlayout-not-wrapping-cells-correctly-ios
+        // If you want to improve this part, please submit a PR to review
+        if firstAppear {
+            self.mnemonicCollectionViewController.view.frame = CGRect(x: 15, y: collectionViewY, width: self.collectionViewWidth, height: self.collectionViewHeight)
+            mnemonicCollectionViewController.collectionView?.collectionViewLayout.invalidateLayout()
             
-            enterWalletButton.frame = CGRect(x: 15, y: height-47-15, width: width-2*15, height: 47)
-            enterWalletButton.setupRoundBlack()
-            enterWalletButton.setTitle(NSLocalizedString("Enter Wallet", comment: ""), for: .normal)
-            enterWalletButton.addTarget(self, action: #selector(dismissGenerateWallet), for: .touchUpInside)
-            view.addSubview(enterWalletButton)
-            
-            enterWalletButton.alpha = 0.0
-            UIView.animate(withDuration: 2, animations: {
-                self.enterWalletButton.alpha = 1.0
-            })
-            */
-
-        } else {
-            let mnemonicQuestion = GenerateWalletDataManager.shared.getQuestion(index: currentIndex)
-            
-            progressView.setProgress(Float(currentIndex+1)/24.0, animated: true)
-            
-            questionLabel.text = mnemonicQuestion.question
-            
-            button1.setTitle(mnemonicQuestion.options[0], for: .normal)
-            button2.setTitle(mnemonicQuestion.options[1], for: .normal)
-            button3.setTitle(mnemonicQuestion.options[2], for: .normal)
-            button4.setTitle(mnemonicQuestion.options[3], for: .normal)
-            
-            button1.setupRoundWhite()
-            button2.setupRoundWhite()
-            button3.setupRoundWhite()
-            button4.setupRoundWhite()
+            firstAppear = false
         }
     }
     
+    func collectionViewDidSelectItemAt(indexPath: IndexPath) {
+        let copy = mnemonicsTextView.text ?? ""
+        mnemonicsTextView.text = copy + mnemonics[indexPath.row] + " "
+        GenerateWalletDataManager.shared.addUserInputMnemonic(mnemonic: mnemonics[indexPath.row])
+    }
+
+    @IBAction func pressedConfrimButton(_ sender: Any) {
+        print("pressedConfrimButton")
+        
+        if GenerateWalletDataManager.shared.verify() {
+            // Store the new wallet to the local storage and exit the view controller.
+            exit()
+        } else {
+            print("User input Mnemonic doesn't match")
+            
+            // Reset
+            GenerateWalletDataManager.shared.clearUserInputMnemonic()
+            
+            let screenSize: CGRect = UIScreen.main.bounds
+            blurVisualEffectView.frame = screenSize
+            self.blurVisualEffectView.alpha = 1.0
+            
+            let alertController = UIAlertController(title: "Mnemonics don't match. Please verify again.",
+                                                    message: nil,
+                                                    preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
+                _ = self.navigationController?.popViewController(animated: true)
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.blurVisualEffectView.alpha = 0.0
+                }, completion: {(_) in
+                    self.blurVisualEffectView.removeFromSuperview()
+                })
+            })
+            alertController.addAction(defaultAction)
+            
+            // Add a blur view to the whole screen
+            self.navigationController?.view.addSubview(blurVisualEffectView)
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+
     func exit() {
         let appWallet = GenerateWalletDataManager.shared.complete()
         
@@ -187,7 +166,7 @@ class VerifyMnemonicViewController: UIViewController {
                                                 preferredStyle: .alert)
         
         alertController.setValue(attributedString, forKey: "attributedMessage")
-
+        
         let confirmAction = UIAlertAction(title: "Enter Wallet", style: .default, handler: { _ in
             // Avoid a delay in the animation
             // let viewController = VerifyMnemonicViewController()
@@ -214,51 +193,7 @@ class VerifyMnemonicViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    @objc func pressedButton1(_ sender: Any) {
-        print("pressedButton1")
-        button1.setupRoundBlack()
-        button2.setupRoundWhite()
-        button3.setupRoundWhite()
-        button4.setupRoundWhite()
-        GenerateWalletDataManager.shared.addUserInputMnemonic(mnemonic: button1.title!)
-        loadNextQuestionWithDelay()
-    }
-
-    @objc func pressedButton2(_ sender: Any) {
-        print("pressedButton2")
-        button1.setupRoundWhite()
-        button2.setupRoundBlack()
-        button3.setupRoundWhite()
-        button4.setupRoundWhite()
-        GenerateWalletDataManager.shared.addUserInputMnemonic(mnemonic: button2.title!)
-        loadNextQuestionWithDelay()
-    }
-    
-    @objc func pressedButton3(_ sender: Any) {
-        print("pressedButton3")
-        button1.setupRoundWhite()
-        button2.setupRoundWhite()
-        button3.setupRoundBlack()
-        button4.setupRoundWhite()
-        GenerateWalletDataManager.shared.addUserInputMnemonic(mnemonic: button3.title!)
-        loadNextQuestionWithDelay()
-    }
-    
-    @objc func pressedButton4(_ sender: Any) {
-        print("pressedButton4")
-        button1.setupRoundWhite()
-        button2.setupRoundWhite()
-        button3.setupRoundWhite()
-        button4.setupRoundBlack()
-        GenerateWalletDataManager.shared.addUserInputMnemonic(mnemonic: button4.title!)
-        loadNextQuestionWithDelay()
-    }
-
-    @IBAction func pressedCompleteButton(_ sender: Any) {
-        print("pressedCompleteButton")
-    }
-
-    @objc func dismissGenerateWallet() {
+    func dismissGenerateWallet() {
         if SetupDataManager.shared.hasPresented {
             self.dismiss(animated: true, completion: {
                 
@@ -269,5 +204,4 @@ class VerifyMnemonicViewController: UIViewController {
             appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
         }
     }
-
 }
