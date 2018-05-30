@@ -347,7 +347,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             amountBuy = Double(totalTextField.text!)!
             amountSell = Double(amountTextField.text!)!
         }
-        lrcFee = getLrcFee(amountSell, tokenSell)!
+        lrcFee = getLrcFee(amountSell, tokenSell)
         let delegate = RelayAPIConfiguration.delegateAddress
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         let since = Int64(Date().timeIntervalSince1970)
@@ -637,16 +637,18 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
 
 extension BuyViewController {
     
-    func getLrcFee(_ amountS: Double, _ tokenS: String) -> Double? {
+    func getLrcFee(_ amountS: Double, _ tokenS: String) -> Double {
+        var result: Double = 0
         let pair = tokenS + "/LRC"
         let ratio = SettingDataManager.shared.getLrcFeeRatio()
         if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
-            return market.balance * amountS * ratio
+            result = market.balance * amountS * ratio
         } else if let price = PriceDataManager.shared.getPrice(of: tokenS),
             let lrcPrice = PriceDataManager.shared.getPrice(of: "LRC") {
-            return price * amountS * ratio / lrcPrice
+            result = price * amountS * ratio / lrcPrice
         }
-        return 0.0
+        let minLrc = GasDataManager.shared.getGasAmount(by: "lrcFee", in: "LRC")
+        return max(result, minLrc)
     }
 }
 

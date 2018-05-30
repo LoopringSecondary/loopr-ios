@@ -104,7 +104,7 @@ class Web3SwiftTests: XCTestCase {
         let token = TokenDataManager.shared.getTokenBySymbol("LRC")!
         let contractAddress = GethNewAddressFromHex(token.protocol_value, nil)!
         let nonce: Int64 = 0
-        let gasLimit = GethNewBigInt(GasDataManager.shared.getGasLimitByType(by: "token_transfer")!)!
+        let gasLimit = GethNewBigInt(GasDataManager.shared.getGasLimit(by: "token_transfer")!)!
         let gasPrice = GethNewBigInt(20000000000)!
         
         /*
