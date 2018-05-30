@@ -19,6 +19,7 @@
 "Enter Wallet" = "Enter Wallet";
 "Generate Wallet" = "Generate Wallet";
 "Confirm password" = "Confirm password";
+"Password" = "Password";
 "Mnemonic" = "Mnemonic";
 "Keystore" = "Keystore";
 "Private Key" = "Private Key";
@@ -59,6 +60,7 @@
 "Invalid private key. Please enter again." = "Invalid private key. Please enter again.";
 "Invalid keystore. Please enter again." = "Invalid keystore. Please enter again.";
 "Mnemonic Password (optional)" = "Mnemonic Password (optional)";
+"Please enter a wallet name" = "Please set a wallet name";
 "Please set a password" = "Please set a password";
 "Please enter a password" = "Please enter a password";
 "Copy address to clipboard successfully!" = "Copy address to clipboard successfully!";
@@ -236,4 +238,4 @@
 "Available Balance" = "Available Balance";
 "Please Pay Attention" = "Please Pay Attention";
 "Irrational" = "Irrational";
-
+"The name is token, please try another one" = "The name is token, please try another one";

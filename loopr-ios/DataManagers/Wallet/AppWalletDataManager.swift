@@ -71,6 +71,11 @@ class AppWalletDataManager {
         }
         return result
     }
+    
+    func isNewWalletNameToken(newWalletname: String) -> Bool {
+        let results = appWallets.filter { $0.name == newWalletname }
+        return results.isEmpty
+    }
 
     func getWallets() -> [AppWallet] {
         return appWallets

@@ -19,6 +19,7 @@
 "Enter Wallet" = "进入钱包";
 "Generate Wallet" = "生成钱包";
 "Confirm password" = "确认密码";
+"Password" = "密码";
 "Mnemonic" = "助记词";
 "Keystore" = "密钥库";
 "Private Key" = "私钥";
@@ -59,6 +60,7 @@
 "Invalid private key. Please enter again." = "无法导入私钥。请重新输入。";
 "Invalid keystore. Please enter again." = "Keystore无法导入。请重新输入。";
 "Mnemonic Password (optional)" = "助记词密码 (可选)";
+"Please enter a wallet name" = "请输入钱包名字";
 "Please set a password" = "请设置密码";
 "Please enter a password" = "请输入密码";
 "Copy address to clipboard successfully!" = "成功复制地址到剪切板!";
@@ -234,3 +236,4 @@
 "Available Balance" = "可用余额";
 "Please Pay Attention" = "请注意";
 "Irrational" = "设价不合理";
+"The name is token, please try another one" = "钱包名称重复";
