@@ -48,7 +48,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         let screenHeight = screensize.height
         
         collectionViewWidth = screenWidth - padding * 2
-        collectionViewHeight = 10*MnemonicCollectionViewCell.getHeight() + 2*padding
+        collectionViewHeight = 10*MnemonicBackupModeCollectionViewCell.getHeight() + 2*padding
         
         padding = (screenHeight - 120 - collectionViewHeight - 140 - 40) / 3
         
