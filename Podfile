@@ -16,6 +16,9 @@ target 'loopr-ios' do
   pod 'FoldingCell', '3.0.6'
   pod 'SVProgressHUD'
 
+  pod 'Fabric'
+  pod 'Crashlytics'
+
   # Pods for keystone
   pod 'Geth'
   pod 'BigInt', '3.0.1'

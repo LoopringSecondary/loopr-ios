@@ -4,7 +4,10 @@ PODS:
   - Charts (3.0.5):
     - Charts/Core (= 3.0.5)
   - Charts/Core (3.0.5)
+  - Crashlytics (3.10.2):
+    - Fabric (~> 1.7.7)
   - CryptoSwift (0.8.3)
+  - Fabric (1.7.7)
   - FoldingCell (3.0.6)
   - FontBlaster (4.0.3)
   - Geth (1.8.8)
@@ -27,7 +30,9 @@ PODS:
 DEPENDENCIES:
   - BigInt (= 3.0.1)
   - Charts (= 3.0.5)
+  - Crashlytics
   - CryptoSwift (= 0.8.3)
+  - Fabric
   - FoldingCell (= 3.0.6)
   - FontBlaster
   - Geth
@@ -44,7 +49,9 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - BigInt
     - Charts
+    - Crashlytics
     - CryptoSwift
+    - Fabric
     - FoldingCell
     - FontBlaster
     - Geth
@@ -72,7 +79,9 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   BigInt: 8e8a52161c745cd3ab78e3dc346a9fbee51e6cf6
   Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
+  Crashlytics: 0360624eea1c978a743feddb2fb1ef8b37fb7a0d
   CryptoSwift: 033efc3523865d19cc6ab6612fa17a62613b5dfa
+  Fabric: bda89e242bce1b7b8ab264248cf3407774ce0095
   FoldingCell: 4848ec8a2056d5751bfb710df14521fc64d48ad7
   FontBlaster: f18031f5dde2ce689f5330e7005edfe3c0815957
   Geth: 483ea44b5f930b72320218290b939ba8e2389aaf
@@ -89,6 +98,6 @@ SPEC CHECKSUMS:
   SwiftTheme: 36d71c4eed4b2c401c782cf036e4586c749a8173
   TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803
 
-PODFILE CHECKSUM: 24b658b71fae18e2589c8cb2dd601a37ff70ee0b
+PODFILE CHECKSUM: 2045de06bf29285b363135801e80b5510467f95f
 
 COCOAPODS: 1.5.0
