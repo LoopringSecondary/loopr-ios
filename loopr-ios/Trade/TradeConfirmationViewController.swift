@@ -34,6 +34,7 @@ class TradeConfirmationViewController: UIViewController {
     
     var order: OriginalOrder?
     var verifyInfo: [String: Double]?
+    var message: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -157,7 +158,13 @@ class TradeConfirmationViewController: UIViewController {
     func validateRational(price: Double) -> Bool {
         let pair = TradeDataManager.shared.tradePair
         if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
-            if price < 0.8 * market.balance || price > 1.2 * market.balance {
+            let header = NSLocalizedString("Your price is irrational, ", comment: "")
+            let footer = NSLocalizedString("Do you wish to continue trading with the price?", comment: "")
+            if price < 0.8 * market.balance {
+                self.message = header + NSLocalizedString("which may cause your asset wastage! ", comment: "") + footer
+                return false
+            } else if price > 1.2 * market.balance {
+                self.message = header + NSLocalizedString("which may cause your order abolished! ", comment: "") + footer
                 return false
             }
             return true
@@ -167,8 +174,7 @@ class TradeConfirmationViewController: UIViewController {
 
     @IBAction func pressedPlaceOrderButton(_ sender: UIButton) {
         if !priceTipLabel.isHidden {
-            let message = NSLocalizedString("Your price is irrational. Do you wish to continue trading with the price?", comment: "")
-            let alert = UIAlertController(title: NSLocalizedString("Please Pay Attention", comment: ""), message: message, preferredStyle: .alert)
+            let alert = UIAlertController(title: NSLocalizedString("Please Pay Attention", comment: ""), message: self.message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
                 DispatchQueue.main.async {
                     self.verifyInfo = TradeDataManager.shared.verify(order: self.order!)

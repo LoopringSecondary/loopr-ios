@@ -95,12 +95,10 @@ class FloatLabelTextField: UITextField {
             title.textColor = titleTextColour
         }
         // Should we show or hide the title label?
-        if let txt = text, txt.isEmpty {
-            // Hide
-            hideTitle(isResp)
-        } else {
-            // Show
+        if isResp {
             showTitle(isResp)
+        } else {
+            hideTitle(isResp)
         }
     }
     
@@ -109,7 +107,7 @@ class FloatLabelTextField: UITextField {
         if let txt = text, !txt.isEmpty {
             var top = ceil(title.font.lineHeight + hintYPadding)
             top = min(top, maxTopInset())
-            r = UIEdgeInsetsInsetRect(r, UIEdgeInsetsMake(top, 0.0, 0.0, 0.0))
+            r = UIEdgeInsetsInsetRect(r, UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0))
         }
         return r.integral
     }
@@ -119,7 +117,7 @@ class FloatLabelTextField: UITextField {
         if let txt = text, !txt.isEmpty {
             var top = ceil(title.font.lineHeight + hintYPadding)
             top = min(top, maxTopInset())
-            r = UIEdgeInsetsInsetRect(r, UIEdgeInsetsMake(top, 0.0, 0.0, 0.0))
+            r = UIEdgeInsetsInsetRect(r, UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0))
         }
         return r.integral
     }

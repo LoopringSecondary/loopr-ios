@@ -138,7 +138,10 @@
 "Information of two orders not complete" = "Information of two orders not complete";
 "Sorry. Network error, please try again later" = "Sorry. Network error, please try again later";
 "Order Expires in" = "Order Expires in";
-"Your price is irrational. Do you wish to continue trading with the price?" = "Your price is irrational. Do you wish to continue trading with the price?";
+"Your price is irrational, " = "Your price is irrational, ";
+"which may cause your asset wastage! " = "which may cause your asset wastage! ";
+"which may cause your order abolished! " = "which may cause your order abolished! ";
+"Do you wish to continue trading with the price?" = "Do you wish to continue trading with the price?";
 "Please input a valid price" = "Please input a valid price";
 "Please input a valid amount" = "Please input a valid amount";
 "You are buying" = "You are buying";
