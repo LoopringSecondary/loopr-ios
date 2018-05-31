@@ -18,7 +18,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
 
     // TokenS
     var tokenSButton: UIButton = UIButton()
-    var amountSellTextField: UITextField = UITextField()
+    var amountSellTextField: FloatLabelTextField!
     var tokenSUnderLine: UIView = UIView()
     var estimateValueInCurrency: UILabel = UILabel()
     var amountStackView: AmountStackView!
@@ -29,7 +29,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     // TokenB
     var tokenBButton: UIButton = UIButton()
-    var amountBuyTextField: UITextField = UITextField()
+    var amountBuyTextField: FloatLabelTextField!
     var totalUnderLine: UIView = UIView()
     var availableLabel: UILabel = UILabel()
 
@@ -85,6 +85,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         tokenSButton.addTarget(self, action: #selector(pressedSwitchTokenSButton), for: .touchUpInside)
         scrollView.addSubview(tokenSButton)
         
+        amountSellTextField = FloatLabelTextField(frame: CGRect(x: padding, y: originY, width: screenWidth-padding*2-80, height: 40))
         amountSellTextField.delegate = self
         amountSellTextField.tag = 0
         amountSellTextField.inputView = UIView()
@@ -92,7 +93,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         amountSellTextField.theme_tintColor = GlobalPicker.textColor
         amountSellTextField.placeholder = NSLocalizedString("Enter the amount you have", comment: "")
         amountSellTextField.contentMode = UIViewContentMode.bottom
-        amountSellTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(amountSellTextField)
         
         tokenSUnderLine.frame = CGRect(x: padding, y: tokenSButton.frame.maxY, width: screenWidth - padding * 2, height: 1)
@@ -124,15 +124,14 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         tokenBButton.addTarget(self, action: #selector(pressedSwitchTokenBButton), for: .touchUpInside)
         scrollView.addSubview(tokenBButton)
         
+        amountBuyTextField = FloatLabelTextField(frame: CGRect(x: padding, y: exchangeLabel.frame.maxY + padding*2, width: screenWidth-padding*2-80, height: 40))
         amountBuyTextField.delegate = self
         amountBuyTextField.tag = 2
         amountBuyTextField.inputView = UIView()
         amountBuyTextField.font = FontConfigManager.shared.getLabelFont()
-        
         amountBuyTextField.theme_tintColor = GlobalPicker.textColor
         amountBuyTextField.placeholder = NSLocalizedString("Enter the amount you get", comment: "")
         amountBuyTextField.contentMode = UIViewContentMode.bottom
-        amountBuyTextField.frame = CGRect(x: padding, y: exchangeLabel.frame.maxY + padding*2, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(amountBuyTextField)
         
         totalUnderLine.frame = CGRect(x: padding, y: tokenBButton.frame.maxY, width: screenWidth - padding * 2, height: 1)
@@ -241,6 +240,10 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     @IBAction func pressedNextButton(_ sender: Any) {
         print("pressedNextButton")
+        hideNumericKeyboard()
+        amountSellTextField.resignFirstResponder()
+        amountBuyTextField.resignFirstResponder()
+        
         let isBuyValid = validateAmountBuy()
         let isSellValid = validateAmountSell()
         if isSellValid && isBuyValid {

@@ -141,8 +141,8 @@
 "Your price is irrational. Do you wish to continue trading with the price?" = "您所设定的价格并不合理，是否仍要以该价格下单或交易？";
 "Please input a valid price" = "请输入有效的价格";
 "Please input a valid amount" = "请输入有效的数额";
-"You are buying" = "You are buying";
-"You are selling" = "You are selling";
+"You are buying" = "您将买入";
+"You are selling" = "您将卖出";
 "Placed" = "提交成功";
 "Congradualations! Your order has been submited!" = "恭喜！您的订单已被提交！";
 "Your order has not been submited! Please make sure you have enough balance to complete the trade." = "您的订单未被提交！请确认您的账户中有足够余额以完成该笔订单。";
@@ -176,10 +176,8 @@
 "Convert WETH To ETH" = "将WETH转换为ETH";
 "Enable \(transaction.symbol) To Trade" = "Enable \(transaction.symbol) To Trade";
 "Cancel Order(s)" = "取消订单";
-"Enter the amount you have" = "输入卖出的数量";
-"Enter the amount you get" = "输入买出的数量";
-"You will send" = "You will send";
-"You will get" = "You will get";
+"Enter the amount you have" = "请输入卖出数额";
+"Enter the amount you get" = "请输入买入数额";
 "My Trade from Loopr-iOS" = "My Trade from Loopr-iOS";
 "Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!" = "Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!";
 "However, please make sure you have enough balance to complete the trade." = "However, please make sure you have enough balance to complete the trade.";

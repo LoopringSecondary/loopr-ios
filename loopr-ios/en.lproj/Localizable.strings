@@ -176,12 +176,10 @@
 "Convert WETH To ETH" = "Convert WETH To ETH";
 "Enable \(transaction.symbol) To Trade" = "Enable \(transaction.symbol) To Trade";
 "Cancel Order(s)" = "Cancel Order(s)";
-"Enter the amount you have" = "Enter the amount you have";
-"Enter the amount you get" = "Enter the amount you get";
+"Enter the amount you have" = "Please input the amount you wish to sell";
+"Enter the amount you get" = "Please input the amount you wish to get";
 "Available \(balance) \(tokens)" = "Available \(balance) \(tokens)";
 "Available 0.0 \(tokens)" = "Available 0.0 \(tokens)";
-"You will send" = "You will send";
-"You will get" = "You will get";
 "My Trade from Loopr-iOS" = "My Trade from Loopr-iOS";
 "Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!" = "Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!";
 "However, please make sure you have enough balance to complete the trade." = "However, please make sure you have enough balance to complete the trade.";

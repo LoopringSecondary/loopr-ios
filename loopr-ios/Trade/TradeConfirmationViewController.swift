@@ -137,8 +137,8 @@ class TradeConfirmationViewController: UIViewController {
     }
     
     func updateLabels(order: OriginalOrder) {
-        tokenSView.update(title: NSLocalizedString("You will send", comment: ""), symbol: order.tokenSell, amount: order.amountSell)
-        tokenBView.update(title: NSLocalizedString("You will get", comment: ""), symbol: order.tokenBuy, amount: order.amountBuy)
+        tokenSView.update(title: NSLocalizedString("You are selling", comment: ""), symbol: order.tokenSell, amount: order.amountSell)
+        tokenBView.update(title: NSLocalizedString("You are buying", comment: ""), symbol: order.tokenBuy, amount: order.amountBuy)
         let value = order.amountBuy / order.amountSell
         priceValueLabel.text = "\(value.format()) \(TradeDataManager.shared.tradePair)"
         if !validateRational(price: value) {
