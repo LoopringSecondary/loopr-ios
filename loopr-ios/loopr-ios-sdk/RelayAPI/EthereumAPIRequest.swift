@@ -25,6 +25,7 @@ class EthereumAPIRequest {
     static func invoke<T: Initable>(method: String, withBody body: inout JSON, _ completionHandler: @escaping (_ response: T?, _ error: Error?) -> Void) {
         
         body["method"] = JSON(method)
+        body["jsonrpc"] = JSON("2.0")
         body["id"] = JSON(UUID().uuidString)
         
         Request.send(body: body, url: RelayAPIConfiguration.ethURL) { data, _, error in
@@ -35,7 +36,6 @@ class EthereumAPIRequest {
             }
             
             // TODO: need to check the status code.
-            
             var json = JSON(data)
             if json["result"] != JSON.null {
                 completionHandler(T.init(json["result"]), nil)

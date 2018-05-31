@@ -112,7 +112,6 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(scrollViewTap)
-        
         updateLabel()
     }
     
@@ -131,6 +130,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             tokenSView.update(symbol: symbol)
             tokenBView.update(symbol: getAnotherToken())
         }
+        SendCurrentAppWalletDataManager.shared.getNonceFromServer()
     }
     
     @objc func scrollViewTapped() {

@@ -308,12 +308,11 @@ class SendCurrentAppWalletDataManager {
         if let signedTransaction = _sign(data: data, address: address, amount: amount, gasLimit: gasLimit, completion: completion) {
             self.sendTransactionToServer(signedTransaction: signedTransaction, completion: { (result, error) in
                 if result != nil && error == nil {
-                    self.nonce += 1
-                    print(result!)
                     LoopringAPIRequest.notifyTransactionSubmitted(txHash: result!, completionHandler: completion)
                 } else {
                     completion(nil, error)
                 }
+                self.nonce += 1
             })
         }
     }

@@ -78,8 +78,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         sendButton.setTitleColor(.gray, for: .disabled)
         sendButton.title = NSLocalizedString("Send", comment: "")
         sendButton.setupRoundBlack()
-        updateButton(isValid: false)
-        
         scrollViewButtonLayoutConstraint.constant = 47*UIStyleConfig.scale + 15*2
 
         if #available(iOS 11.0, *) {
@@ -134,7 +132,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
 
         addressInfoLabel.frame = CGRect(x: padding, y: addressUnderLine.frame.maxY, width: screenWidth - padding * 2, height: 40)
         addressInfoLabel.font = FontConfigManager.shared.getLabelFont()
-        addressInfoLabel.text = NSLocalizedString("Please confirm the address before sending.", comment: "")
+        addressInfoLabel.text = NSLocalizedString("Please confirm the address before sending", comment: "")
         scrollView.addSubview(addressInfoLabel)
         
         // Third row: Amount
@@ -182,7 +180,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         transactionFeeAmountLabel.textAlignment = .right
         transactionFeeAmountLabel.text = ""
         scrollView.addSubview(transactionFeeAmountLabel)
-
         updateTransactionFeeAmountLabel()
 
         // Fouth row: Advanced
@@ -270,6 +267,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             let total = value * price
             updateLabel(label: amountInfoLabel, text: total.currency, textColor: .black)
         }
+        _ = validate()
     }
     
     @objc func pressedHelpButton(_ sender: Any) {
@@ -299,23 +297,19 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         }
     }
     
-    func updateButton(isValid: Bool) {
-        sendButton.isEnabled = isValid
-    }
-    
     func validateAddress() -> Bool {
         if let toAddress = addressTextField.text {
             if !toAddress.isEmpty {
                 if toAddress.isHexAddress() {
                     var error: NSError? = nil
                     if GethNewAddressFromHex(toAddress, &error) != nil {
-                        updateLabel(label: addressInfoLabel, text: NSLocalizedString("Please confirm the address before sending.", comment: ""), textColor: .black)
+                        updateLabel(label: addressInfoLabel, text: NSLocalizedString("Please confirm the address before sending", comment: ""), textColor: .black)
                         return true
                     }
                 }
-                updateLabel(label: addressInfoLabel, text: NSLocalizedString("Please input a correct address.", comment: ""), textColor: .red)
+                updateLabel(label: addressInfoLabel, text: NSLocalizedString("Please input a correct address", comment: ""), textColor: .red)
             } else {
-                updateLabel(label: addressInfoLabel, text: NSLocalizedString("Please confirm the address before sending.", comment: ""), textColor: .black)
+                updateLabel(label: addressInfoLabel, text: NSLocalizedString("Please confirm the address before sending", comment: ""), textColor: .black)
             }
         }
         return false
@@ -335,7 +329,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                         }
                     }
                 } else {
-                    updateLabel(label: amountInfoLabel, text: "Maximum: \(asset.balance.format()) \(asset.symbol)", textColor: .red)
+                    let title = NSLocalizedString("Available Balance", comment: "")
+                    updateLabel(label: amountInfoLabel, text: "\(title) \(asset.balance.format()) \(asset.symbol)", textColor: .red)
                 }
             } else {
                 let text = NSLocalizedString("Please input a valid amount", comment: "")
@@ -347,16 +342,14 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         return false
     }
 
-    func validate() {
+    func validate() -> Bool {
         var isValid = false
         if activeTextFieldTag == addressTextField.tag {
             isValid = validateAddress()
         } else if activeTextFieldTag == amountTextField.tag {
             isValid = validateAmount()
         }
-        guard isValid else { return }
-        isValid = validateAddress() && validateAmount()
-        updateButton(isValid: isValid)
+        return isValid
     }
     
     @objc func pressedAdvancedButton(_ sender: Any) {
@@ -383,13 +376,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             self.advancedButton.setRightImage(imageName: "Arrow-button-right-light", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 11)
         }
     }
-
-    @IBAction func pressedSendButton(_ sender: Any) {
-        print("start sending")
-        // Show activity indicator
-        start = Date()
-        SVProgressHUD.show(withStatus: "Processing the transaction ...")
-
+    
+    func pushController() {
         let toAddress = addressTextField.text!
         if let token = TokenDataManager.shared.getTokenBySymbol(asset!.symbol) {
             let gethAmount = GethBigInt.generate(valueInEther: Double(amountTextField.text!)!, symbol: token.symbol)!
@@ -406,6 +394,31 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                 let contractAddress = GethNewAddressFromHex(token.protocol_value, &error)!
                 SendCurrentAppWalletDataManager.shared._transferToken(contractAddress: contractAddress, toAddress: toAddress, tokenAmount: gethAmount, completion: completion)
             }
+        }
+    }
+
+    @IBAction func pressedSendButton(_ sender: Any) {
+        print("start sending")
+        // Show activity indicator
+        start = Date()
+        hideNumericKeyboard()
+        addressTextField.resignFirstResponder()
+        amountTextField.resignFirstResponder()
+        let isAmountValid = validateAmount()
+        let isAddressValid = validateAddress()
+        if isAmountValid && isAddressValid {
+            SVProgressHUD.show(withStatus: "Processing the transaction ...")
+            self.pushController()
+        }
+        if !isAmountValid && amountInfoLabel.textColor != .red {
+            amountInfoLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+            amountInfoLabel.textColor = .red
+            amountInfoLabel.shake()
+        }
+        if !isAddressValid && addressInfoLabel.textColor != .red {
+            addressInfoLabel.text = NSLocalizedString("Please input a correct address", comment: "")
+            addressInfoLabel.textColor = .red
+            addressInfoLabel.shake()
         }
     }
     
@@ -455,6 +468,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             showNumericKeyboard(textField: amountTextField)
         }
         activeTextFieldTag = amountTextField.tag
+        _ = validate()
         return true
     }
     

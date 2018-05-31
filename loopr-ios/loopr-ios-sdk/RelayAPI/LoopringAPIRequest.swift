@@ -333,10 +333,10 @@ class LoopringAPIRequest {
     }
     
     // READY
-    static func getTransactions(owner: String, symbol: String, thxHash: String?, pageIndex: UInt = 1, pageSize: UInt = 10, completionHandler: @escaping (_ transactions: [Transaction]?, _ error: Error?) -> Void) {
+    static func getTransactions(owner: String, symbol: String, txHash: String? = nil, pageIndex: UInt = 1, pageSize: UInt = 10, completionHandler: @escaping (_ transactions: [Transaction]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getTransactions"
-        body["params"] = [["owner": owner, "symbol": symbol, "thxHash": thxHash, "pageIndex": pageIndex, "pageSize": pageSize, "delegateAddress": RelayAPIConfiguration.delegateAddress]]
+        body["params"] = [["owner": owner, "symbol": symbol, "txHash": txHash, "pageIndex": pageIndex, "pageSize": pageSize, "delegateAddress": RelayAPIConfiguration.delegateAddress]]
         body["id"] = JSON(UUID().uuidString)
         
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in

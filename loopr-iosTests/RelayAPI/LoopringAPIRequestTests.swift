@@ -11,7 +11,7 @@ import XCTest
 
 class LoopringAPIRequestTests: XCTestCase {
     
-    let testAddress = "0x8C82798e7E491e9Bf6E6e28e2Bc31F781D1175A2"
+    let testAddress = "0x87c6117ef0935b1Df3f9D93D9b39516eB8141870"
     
     override func setUp() {
         super.setUp()
@@ -222,8 +222,7 @@ class LoopringAPIRequestTests: XCTestCase {
     
     func testGetTransactions() {
         let expectation = XCTestExpectation()
-        
-        LoopringAPIRequest.getTransactions(owner: testAddress, symbol: "WETH", thxHash: nil, pageIndex: 1, pageSize: 20) { transactions, error in
+        LoopringAPIRequest.getTransactions(owner: testAddress, symbol: "WETH", txHash: nil, pageIndex: 1, pageSize: 20) { transactions, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 XCTFail()

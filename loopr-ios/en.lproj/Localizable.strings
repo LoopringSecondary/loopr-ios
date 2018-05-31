@@ -171,12 +171,12 @@
 "Please enter the keystore" = "Please enter the keystore";
 "Please input your private key" = "Please input your private key";
 "Enter the address" = "Enter the address";
-"Please confirm the address before sending." = "Please confirm the address before sending.";
+"Please confirm the address before sending" = "Please confirm the address before sending";
 "Transaction Fee" = "Transaction Fee";
 "Advanced" = "Advanced";
 "What is gas?" = "What is gas?";
 "Gas is..." = "Gas is...";
-"Please input a correct address." = "Please input a correct address.";
+"Please input a correct address" = "Please input a correct address";
 "Convert ETH To WETH" = "Convert ETH To WETH";
 "Convert WETH To ETH" = "Convert WETH To ETH";
 "Enable \(transaction.symbol) To Trade" = "Enable \(transaction.symbol) To Trade";

@@ -146,8 +146,8 @@
 "Do you wish to continue trading with the price?" = "是否仍要以该价格下单或交易？";
 "Please input a valid price" = "请输入有效的价格";
 "Please input a valid amount" = "请输入有效的数额";
-"You are buying" = "您将买入";
-"You are selling" = "您将卖出";
+"You are buying" = "预期买入";
+"You are selling" = "预期卖出";
 "Placed" = "提交成功";
 "Congradualations! Your order has been submited!" = "恭喜！您的订单已被提交！";
 "Your order has not been submited! Please make sure you have enough balance to complete the trade." = "您的订单未被提交！请确认您的账户中有足够余额以完成该笔订单。";
@@ -171,12 +171,12 @@
 "Please enter the keystore" = "请输入keystore";
 "Please input your private key" = "请输入您的私钥";
 "Enter the address" = "请输入地址";
-"Please confirm the address before sending." = "在发送前，请确认地址无误。";
+"Please confirm the address before sending" = "在发送前，请确认地址无误。";
 "Transaction Fee" = "交易费";
 "Advanced" = "高级设置";
 "What is gas?" = "What is gas?";
 "Gas is..." = "Gas is...";
-"Please input a correct address." = "请输入正确的地址";
+"Please input a correct address" = "请输入正确的地址";
 "Convert ETH To WETH" = "将ETH转换为WETH";
 "Convert WETH To ETH" = "将WETH转换为ETH";
 "Enable \(transaction.symbol) To Trade" = "Enable \(transaction.symbol) To Trade";
