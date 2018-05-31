@@ -49,13 +49,32 @@ class CreateMnemonicTests: XCTestCase {
         super.tearDown()
     }
 
-    func test1() {
-        let mnemonic = Mnemonic.generate(strength: 256)
+    func testMnemonic12() {
+        let mnemonic = Mnemonic.generate(strength: 128)
         
         print(mnemonic)
+        XCTAssertEqual(mnemonic.split(separator: " ").count, 12)
         
         let wallet = Wallet(mnemonic: mnemonic, password: password)
 
+        // Public address
+        let address = wallet.getKey(at: 0).address
+        
+        print(address.description)
+        
+        // Private key
+        let privateKey = wallet.getKey(at: 0).privateKey
+        print(privateKey.hexString)
+    }
+    
+    func testMnemonic24() {
+        let mnemonic = Mnemonic.generate(strength: 256)
+        
+        print(mnemonic)
+        XCTAssertEqual(mnemonic.split(separator: " ").count, 24)
+        
+        let wallet = Wallet(mnemonic: mnemonic, password: password)
+        
         // Public address
         let address = wallet.getKey(at: 0).address
         
