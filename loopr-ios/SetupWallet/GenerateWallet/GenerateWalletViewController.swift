@@ -11,9 +11,7 @@ import UIKit
 class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
     
     var setupWalletMethod: SetupWalletMethod = .create
-    
-    var titleLabel: UILabel =  UILabel()
-    
+
     // Scrollable UI components
     var walletNameTextField: UITextField = UITextField()
     var walletNameUnderLine: UIView = UIView()
@@ -22,6 +20,10 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
     var walletPasswordTextField: UITextField = UITextField()
     var walletPasswordUnderLine: UIView = UIView()
     var walletPasswordInfoLabel: UILabel = UILabel()
+    
+    var walletRepeatPasswordTextField: UITextField = UITextField()
+    var walletRepeatPasswordUnderLine: UIView = UIView()
+    var walletRepeatPasswordInfoLabel: UILabel = UILabel()
     
     var continueButton: UIButton = UIButton()
     
@@ -62,11 +64,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         
         let originY: CGFloat = 30
         let padding: CGFloat = 15
-        
-        titleLabel.frame = CGRect(x: padding, y: originY, width: screenWidth - padding * 2, height: 30)
-        titleLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 27)
-        view.addSubview(titleLabel)
-        
+
         walletNameTextField.delegate = self
         walletNameTextField.tag = 0
         // walletNameTextField.inputView = UIView()
@@ -74,7 +72,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         walletNameTextField.font = FontConfigManager.shared.getLabelFont(size: 19)
         walletNameTextField.placeholder = NSLocalizedString("Give your wallet an awesome name", comment: "")
         walletNameTextField.contentMode = UIViewContentMode.bottom
-        walletNameTextField.frame = CGRect(x: padding, y: titleLabel.frame.maxY + 80, width: screenWidth-padding*2, height: 40)
+        walletNameTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 40)
         view.addSubview(walletNameTextField)
         
         walletNameUnderLine.frame = CGRect(x: padding, y: walletNameTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
@@ -110,8 +108,31 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         walletPasswordInfoLabel.alpha = 0.0
         view.addSubview(walletPasswordInfoLabel)
         
+        // Repeat password
+        walletRepeatPasswordTextField.isSecureTextEntry = true
+        walletRepeatPasswordTextField.delegate = self
+        walletRepeatPasswordTextField.tag = 2
+        // walletPasswordTextField.inputView = UIView()
+        walletRepeatPasswordTextField.theme_tintColor = GlobalPicker.textColor
+        walletRepeatPasswordTextField.font = FontConfigManager.shared.getLabelFont(size: 19)
+        walletRepeatPasswordTextField.placeholder = NSLocalizedString("Confirm password", comment: "")
+        walletRepeatPasswordTextField.contentMode = UIViewContentMode.bottom
+        walletRepeatPasswordTextField.frame = CGRect(x: padding, y: walletPasswordUnderLine.frame.maxY + 45, width: screenWidth-padding*2, height: 40)
+        view.addSubview(walletRepeatPasswordTextField)
+        
+        walletRepeatPasswordUnderLine.frame = CGRect(x: padding, y: walletRepeatPasswordTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
+        walletRepeatPasswordUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        view.addSubview(walletRepeatPasswordUnderLine)
+        
+        walletRepeatPasswordInfoLabel.frame = CGRect(x: padding, y: walletRepeatPasswordTextField.frame.maxY + 9, width: screenWidth - padding * 2, height: 16)
+        walletRepeatPasswordInfoLabel.text = NSLocalizedString("Confirm your password", comment: "")
+        walletRepeatPasswordInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
+        walletRepeatPasswordInfoLabel.textColor = UIStyleConfig.red
+        walletRepeatPasswordInfoLabel.alpha = 0.0
+        view.addSubview(walletRepeatPasswordInfoLabel)
+        
         continueButton.setupRoundBlack()
-        continueButton.frame = CGRect(x: padding, y: walletPasswordUnderLine.frame.maxY + 50, width: screenWidth - padding * 2, height: 47)
+        continueButton.frame = CGRect(x: padding, y: walletRepeatPasswordUnderLine.frame.maxY + 50, width: screenWidth - padding * 2, height: 47)
         continueButton.addTarget(self, action: #selector(pressedContinueButton), for: .touchUpInside)
         view.addSubview(continueButton)
         
@@ -119,7 +140,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         
         // UI will be different based on SetupWalletMethod
         if setupWalletMethod == .create {
-            titleLabel.text = NSLocalizedString("Create a new wallet", comment: "")
+            self.navigationItem.title = NSLocalizedString("Create a new wallet", comment: "")
             continueButton.setTitle(NSLocalizedString("Continue", comment: ""), for: .normal)
             
             // Generate a new wallet
@@ -128,7 +149,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         } else {
             walletPasswordTextField.isHidden = true
             walletPasswordUnderLine.isHidden = true
-            titleLabel.text = NSLocalizedString("Setup the wallet name", comment: "")
+            self.navigationItem.title = NSLocalizedString("Setup the wallet name", comment: "")
             continueButton.setTitle(NSLocalizedString("Enter Wallet", comment: ""), for: .normal)
         }
         
@@ -209,31 +230,39 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
     func pressedContinueButtonInCreate() {
         var validWalletName = true
         var validPassword = true
+        var validRepeatPassword = true
         
         let walletName = walletNameTextField.text ?? ""
         if walletName.trim() == "" {
             validWalletName = false
-            UIView.animate(withDuration: 0.25, delay: 0, options: .curveLinear, animations: {
-                self.walletNameInfoLabel.alpha = 1.0
-            }, completion: { (_) in
-                
-            })
+            self.walletNameInfoLabel.shake()
+            self.walletNameInfoLabel.alpha = 1.0
         }
         
         let password = walletPasswordTextField.text ?? ""
         if password.trim() == "" {
             validPassword = false
-            UIView.animate(withDuration: 0.25, delay: 0, options: .curveLinear, animations: {
-                self.walletPasswordInfoLabel.alpha = 1.0
-            }, completion: { (_) in
-                
-            })
+            self.walletPasswordInfoLabel.shake()
+            self.walletPasswordInfoLabel.alpha = 1.0
         }
         
-        if validWalletName && validPassword {
+        let repeatPassword = walletRepeatPasswordTextField.text ?? ""
+        if repeatPassword.trim() == "" {
+            validRepeatPassword = false
+        }
+        if password != repeatPassword {
+            validRepeatPassword = false
+            self.walletRepeatPasswordInfoLabel.text = NSLocalizedString("Please input the consistant password.", comment: "")
+        }
+        if !validRepeatPassword {
+            self.walletRepeatPasswordInfoLabel.shake()
+            self.walletRepeatPasswordInfoLabel.alpha = 1.0
+        }
+        
+        if validWalletName && validPassword && validRepeatPassword {
             GenerateWalletDataManager.shared.setWalletName(walletName)
             GenerateWalletDataManager.shared.setPassword(password)
-            let viewController = GenerateWalletConfirmPasswordViewController()
+            let viewController = GenerateMnemonicViewController()
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
@@ -273,6 +302,13 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
             } else {
                 walletPasswordUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
             }
+        case walletRepeatPasswordTextField.tag:
+            if newLength > 0 {
+                walletRepeatPasswordInfoLabel.alpha = 0.0
+                walletRepeatPasswordUnderLine.backgroundColor = UIColor.black
+            } else {
+                walletRepeatPasswordUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+            }
         default: ()
         }
         return true
@@ -284,8 +320,6 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         // Hide the keyboard and adjust the position
         walletNameTextField.resignFirstResponder()
         walletPasswordTextField.resignFirstResponder()
-        
-        self.titleLabel.isHidden = false
         
         if isKeyboardShown {
             UIView.animate(withDuration: 0.4, animations: {
@@ -320,11 +354,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
                 let keyboardMinY = self.view.frame.height - keyboardHeight - bottomPadding
                 
                 keyboardOffsetY = (continueButton.frame.maxY + 20.0) - keyboardMinY
-                
-                if self.walletNameTextField.frame.minY - self.keyboardOffsetY < self.titleLabel.frame.minY {
-                    self.titleLabel.isHidden = true
-                }
-                
+
                 if keyboardOffsetY > 0 {
                     UIView.animate(withDuration: 1.0, animations: {
                         // Wallet Name

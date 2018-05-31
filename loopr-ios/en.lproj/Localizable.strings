@@ -19,7 +19,9 @@
 "Enter Wallet" = "Enter Wallet";
 "Generate Wallet" = "Generate Wallet";
 "Confirm password" = "Confirm password";
+"Confirm your password" = "Confirm your password";
 "Password" = "Password";
+"Repeat password" = "Repeat password";
 "Mnemonic" = "Mnemonic";
 "Keystore" = "Keystore";
 "Private Key" = "Private Key";

@@ -187,7 +187,7 @@ class CurrentAppWalletDataManager {
                 return asset.symbol
             })
             print(currentAppWallet!.assetSequenceInHideSmallAssets)
-	    currentAppWallet!.totalCurrency = totalCurrencyValue
+            currentAppWallet!.totalCurrency = totalCurrencyValue
             AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: currentAppWallet!)
         }
     }
