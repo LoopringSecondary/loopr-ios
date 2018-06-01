@@ -32,7 +32,7 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = NSLocalizedString("Confirmation", comment: "")
-        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.hidesBackButton = true
         // Do any additional setup after loading the view.
         setupErrorInfo()
         setupLabels()
