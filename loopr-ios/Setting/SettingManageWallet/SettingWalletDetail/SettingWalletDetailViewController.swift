@@ -76,7 +76,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
             viewController.appWallet = appWallet
             self.navigationController?.pushViewController(viewController, animated: true)
         case .backupMnemonic:
-            let viewController = BackupMnemonicViewController_Archive()
+            let viewController = BackupMnemonicViewController()
             viewController.isExportMode = true
             viewController.mnemonics = appWallet.mnemonics
             self.navigationController?.pushViewController(viewController, animated: true)

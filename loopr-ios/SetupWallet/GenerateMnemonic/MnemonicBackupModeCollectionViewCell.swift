@@ -27,9 +27,9 @@ class MnemonicBackupModeCollectionViewCell: UICollectionViewCell {
     
     class func getHeight() -> CGFloat {
         if UIDevice.current.iPhoneX {
-            return 40
+            return 47
         } else {
-            return 30
+            return 47
         }
     }
 }

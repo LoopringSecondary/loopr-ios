@@ -30,6 +30,7 @@
 "Please use space to seperate the mnemonic words" = "Please use space to seperate the mnemonic words";
 "Backup Mnemonic" = "Backup Mnemonic";
 "Verify Now" = "Verify Now";
+"Skip Verification" = "Skip Verification";
 "Verification" = "Verification";
 "Copy Wallet Address" = "Copy Wallet Address";
 "Copy Private Key" = "Copy Private Key";
@@ -242,3 +243,4 @@
 "Please Pay Attention" = "Please Pay Attention";
 "Irrational" = "Irrational";
 "The name is token, please try another one" = "The name is token, please try another one";
+"Back" = "Back";

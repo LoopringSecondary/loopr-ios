@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BackupMnemonicViewController_Archive: UIViewController {
+class BackupMnemonicViewController: UIViewController {
 
     var isExportMode: Bool = false
     var mnemonics: [String] = []
@@ -16,6 +16,8 @@ class BackupMnemonicViewController_Archive: UIViewController {
     var titleLabel: UILabel =  UILabel()
     var infoTextView: UITextView = UITextView()
 
+    
+    @IBOutlet weak var skipVerifyNowButton: UIButton!
     @IBOutlet weak var verifyNowButton: UIButton!
     
     var mnemonicCollectionViewController0: MnemonicCollectionViewController!
@@ -70,6 +72,9 @@ class BackupMnemonicViewController_Archive: UIViewController {
         view.addSubview(mnemonicCollectionViewController0.view)
         addChildViewController(mnemonicCollectionViewController0)
 
+        skipVerifyNowButton.title = NSLocalizedString("Skip Verification", comment: "Go to VerifyMnemonicViewController")
+        skipVerifyNowButton.setupRoundWhite()
+        
         verifyNowButton.title = NSLocalizedString("Verify Now", comment: "Go to VerifyMnemonicViewController")
         verifyNowButton.setupRoundBlack()
     }
@@ -108,9 +113,50 @@ class BackupMnemonicViewController_Archive: UIViewController {
     }
 
     @IBAction func pressedVerifyNowButton(_ sender: Any) {
-        print("pressedVerifyNowButton")
         let viewController = VerifyMnemonicViewController()
         viewController.mnemonics = GenerateWalletDataManager.shared.getMnemonics()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+
+    @IBAction func pressedSkipVerifyNowButton(_ sender: Any) {
+        exit()
+    }
+
+    func exit() {
+        let header = NSLocalizedString("Create", comment: "")
+        let footer = NSLocalizedString("successfully", comment: "")
+        let attributedString = NSAttributedString(string: header + " " + "\(GenerateWalletDataManager.shared.walletName)" + " " + footer, attributes: [
+            NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getMedium(), size: 17) ?? UIFont.systemFont(ofSize: 17),
+            NSAttributedStringKey.foregroundColor: UIColor.init(rgba: "#030303")
+            ])
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        alertController.setValue(attributedString, forKey: "attributedMessage")
+
+        let backAction = UIAlertAction(title: NSLocalizedString("Back", comment: ""), style: .default, handler: { _ in
+            alertController.dismiss(animated: true, completion: nil)
+        })
+        alertController.addAction(backAction)
+
+        let confirmAction = UIAlertAction(title: NSLocalizedString("Enter Wallet", comment: ""), style: .default, handler: { _ in
+            _ = GenerateWalletDataManager.shared.complete()
+            self.dismissGenerateWallet()
+        })
+        alertController.addAction(confirmAction)
+        
+        // Show the UIAlertController
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+    func dismissGenerateWallet() {
+        if SetupDataManager.shared.hasPresented {
+            self.dismiss(animated: true, completion: {
+                
+            })
+        } else {
+            SetupDataManager.shared.hasPresented = true
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+        }
+    }
+    
 }

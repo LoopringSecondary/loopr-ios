@@ -351,8 +351,8 @@
 		AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */; };
 		AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */; };
 		AC70E84E20683C7500451047 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC70E84D20683C7500451047 /* IconView.swift */; };
-		AC72AED8204C8AAD00E9D3B0 /* BackupMnemonicViewController_Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AED6204C8AAD00E9D3B0 /* BackupMnemonicViewController_Archive.swift */; };
-		AC72AED9204C8AAD00E9D3B0 /* BackupMnemonicViewController_Archive.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC72AED7204C8AAD00E9D3B0 /* BackupMnemonicViewController_Archive.xib */; };
+		AC72AED8204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AED6204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift */; };
+		AC72AED9204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC72AED7204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib */; };
 		AC72AEDC204C9F6300E9D3B0 /* VerifyMnemonicViewController_Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEDA204C9F6300E9D3B0 /* VerifyMnemonicViewController_Archive.swift */; };
 		AC72AEDD204C9F6300E9D3B0 /* VerifyMnemonicViewController_Archive.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEDB204C9F6300E9D3B0 /* VerifyMnemonicViewController_Archive.xib */; };
 		AC72AEE2204D084500E9D3B0 /* AppWalletDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEE1204D084500E9D3B0 /* AppWalletDataManagerTests.swift */; };
@@ -826,8 +826,8 @@
 		AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketLineChartTableViewCell.swift; sourceTree = "<group>"; };
 		AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketLineChartTableViewCell.xib; sourceTree = "<group>"; };
 		AC70E84D20683C7500451047 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
-		AC72AED6204C8AAD00E9D3B0 /* BackupMnemonicViewController_Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupMnemonicViewController_Archive.swift; sourceTree = "<group>"; };
-		AC72AED7204C8AAD00E9D3B0 /* BackupMnemonicViewController_Archive.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackupMnemonicViewController_Archive.xib; sourceTree = "<group>"; };
+		AC72AED6204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupMnemonicViewController.swift; sourceTree = "<group>"; };
+		AC72AED7204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackupMnemonicViewController.xib; sourceTree = "<group>"; };
 		AC72AEDA204C9F6300E9D3B0 /* VerifyMnemonicViewController_Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyMnemonicViewController_Archive.swift; sourceTree = "<group>"; };
 		AC72AEDB204C9F6300E9D3B0 /* VerifyMnemonicViewController_Archive.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerifyMnemonicViewController_Archive.xib; sourceTree = "<group>"; };
 		AC72AEE1204D084500E9D3B0 /* AppWalletDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWalletDataManagerTests.swift; sourceTree = "<group>"; };
@@ -1450,8 +1450,8 @@
 			children = (
 				AC37567E2039198300AADC60 /* GenerateMnemonicViewController.swift */,
 				AC37567F2039198300AADC60 /* GenerateMnemonicViewController.xib */,
-				AC72AED6204C8AAD00E9D3B0 /* BackupMnemonicViewController_Archive.swift */,
-				AC72AED7204C8AAD00E9D3B0 /* BackupMnemonicViewController_Archive.xib */,
+				AC72AED6204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift */,
+				AC72AED7204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib */,
 				ACE65E3F2071F875001EE499 /* MnemonicCollectionViewController.swift */,
 				ACE65E402071F875001EE499 /* MnemonicCollectionViewController.xib */,
 				ACE65E4320720500001EE499 /* MnemonicCollectionViewCell.swift */,
@@ -2390,7 +2390,7 @@
 				AC54FD61204FC6CA007E1DEB /* Lato-Hairline.ttf in Resources */,
 				AC4C144C204C825900D6B1E2 /* GenerateWalletViewController.xib in Resources */,
 				94C11FD7208C2DC60050E180 /* SettingCurrencyViewController.xib in Resources */,
-				AC72AED9204C8AAD00E9D3B0 /* BackupMnemonicViewController_Archive.xib in Resources */,
+				AC72AED9204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib in Resources */,
 				AC375685203A641200AADC60 /* SelectWalletViewController.xib in Resources */,
 				ACB729D1205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.xib in Resources */,
 				AC54FD7C204FC6EB007E1DEB /* OpenSans-ExtraBoldItalic.ttf in Resources */,
@@ -2839,7 +2839,7 @@
 				940B45272060F67E00ADE2B9 /* SendAssetDataManager.swift in Sources */,
 				ACDBF10E203FEBAD000F0DEC /* TableViewReorderDelegate.swift in Sources */,
 				ACA677D3207DCF1900D34A2F /* RelayAPIConfiguration.swift in Sources */,
-				AC72AED8204C8AAD00E9D3B0 /* BackupMnemonicViewController_Archive.swift in Sources */,
+				AC72AED8204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift in Sources */,
 				AC6466082083EE1E00EBEC97 /* MnemonicDerivationPathTableViewCell.swift in Sources */,
 				949629DB204E836400858F03 /* Depth.swift in Sources */,
 				940B45232060F67E00ADE2B9 /* CurrentAppWalletDataManager.swift in Sources */,

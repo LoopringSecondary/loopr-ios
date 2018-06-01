@@ -73,17 +73,17 @@ class GenerateWalletDataManager {
     func addUserInputMnemonic(mnemonic: String) {
         userInputMnemonics.append(mnemonic)
     }
+    
+    func undoLastUserInputMnemonic() {
+        _ = userInputMnemonics.popLast()
+    }
 
     func verify() -> Bool {
-        guard mnemonics.count == 24 else {
-            return false
-        }
-        
-        guard userInputMnemonics.count == 24 else {
+        guard mnemonics.count == userInputMnemonics.count else {
             return false
         }
 
-        for i in 0..<24 {
+        for i in 0..<mnemonics.count {
             guard mnemonics[i] == userInputMnemonics[i] else {
                 return false
             }

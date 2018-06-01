@@ -10,8 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BackupMnemonicViewController_Archive" customModule="loopr_ios" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BackupMnemonicViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="skipVerifyNowButton" destination="zSo-ff-ZRC" id="n5q-TI-X5y"/>
                 <outlet property="verifyNowButton" destination="Ad5-YF-xr2" id="MVo-Ho-6wg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -34,12 +35,28 @@
                         <action selector="pressedVerifyNowButton:" destination="-1" eventType="touchUpInside" id="03w-1q-Veo"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zSo-ff-ZRC">
+                    <rect key="frame" x="15" y="543" width="345" height="47"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="47" id="0ed-ZT-u8T"/>
+                    </constraints>
+                    <state key="normal" title="Skip Verify Now">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="pressedSkipVerifyNowButton:" destination="-1" eventType="touchUpInside" id="PMW-Ce-ehe"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="zSo-ff-ZRC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="TMO-az-C3U"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ad5-YF-xr2" secondAttribute="trailing" constant="15" id="fSn-ax-LkO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zSo-ff-ZRC" secondAttribute="trailing" constant="15" id="ibz-UN-hux"/>
                 <constraint firstItem="Ad5-YF-xr2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="ssP-d2-ple"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ad5-YF-xr2" secondAttribute="bottom" constant="15" id="ui4-rF-OZY"/>
+                <constraint firstItem="Ad5-YF-xr2" firstAttribute="top" secondItem="zSo-ff-ZRC" secondAttribute="bottom" constant="15" id="xUO-kn-TsZ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="103.5"/>

@@ -60,20 +60,23 @@ class MnemonicBackupModeCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MnemonicBackupModeCollectionViewCell.getCellIdentifier(), for: indexPath) as! MnemonicBackupModeCollectionViewCell
         
+        let mnemonic = mnemonics[indexPath.row]
         cell.mnemonicLabel.text = mnemonics[indexPath.row]
+        if GenerateWalletDataManager.shared.getUserInputMnemonics().contains(mnemonic) {
+            cell.mnemonicLabel.textColor = UIColor.white
+            cell.mnemonicLabel.layer.backgroundColor  = UIColor.black.cgColor
+            cell.mnemonicLabel.layer.cornerRadius = cell.mnemonicLabel.frame.height*0.5
+        } else {
+            cell.mnemonicLabel.textColor = UIColor.black
+            cell.mnemonicLabel.layer.backgroundColor  = UIColor.white.cgColor
+            cell.mnemonicLabel.layer.cornerRadius = 0
+        }
 
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if !GenerateWalletDataManager.shared.getUserInputMnemonics().contains(mnemonics[indexPath.row]) {
-            if let cell = collectionView.cellForItem(at: indexPath) as? MnemonicBackupModeCollectionViewCell {
-                cell.mnemonicLabel.textColor = UIColor.white
-                cell.mnemonicLabel.layer.backgroundColor  = UIColor.black.cgColor
-                cell.mnemonicLabel.layer.cornerRadius = cell.mnemonicLabel.frame.height*0.5
-            }
-            delegate?.collectionViewDidSelectItemAt(indexPath: indexPath)
-        }
+        delegate?.collectionViewDidSelectItemAt(indexPath: indexPath)
     }
 
 }
