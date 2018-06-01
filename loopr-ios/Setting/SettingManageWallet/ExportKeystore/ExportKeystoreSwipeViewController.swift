@@ -35,8 +35,7 @@ class ExportKeystoreSwipeViewController: SwipeViewController {
         options.swipeTabView.underlineView.margin = 85
         
         options.swipeTabView.style = .segmented
-        
-        options.swipeTabView.itemView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17) ?? UIFont.systemFont(ofSize: 17)
+        options.swipeTabView.itemView.font = FontConfigManager.shared.getRegularFont()
         
         swipeView.reloadData(options: options)
     }

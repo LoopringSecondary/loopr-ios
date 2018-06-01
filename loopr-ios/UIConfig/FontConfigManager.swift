@@ -80,6 +80,26 @@ class FontConfigManager {
         return "\(currentFont.rawValue)-Regular"
     }
     
+    func getRegularFont(size: CGFloat = 17.0) -> UIFont {
+        let fontSize = size * UIStyleConfig.scale
+        if currentFont == .DIN {
+            return UIFont(name: "DINNextLTPro-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
+        }
+        return UIFont(name: "\(currentFont.rawValue)-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
+    }
+    
+    func getHeaderFont() -> UIFont {
+        return getRegularFont(size: 21)
+    }
+    
+    func getTitleFont() -> UIFont {
+        return getRegularFont()
+    }
+    
+    func getSubtitleFont() -> UIFont {
+        return getRegularFont(size: 14)
+    }
+    
     func getMedium() -> String {
         switch currentFont {
         case .DIN:
@@ -100,18 +120,20 @@ class FontConfigManager {
         return "\(currentFont.rawValue)-Bold"
     }
 
-    func getLabelFont(size: CGFloat = 17.0 * UIStyleConfig.scale) -> UIFont {
+    func getLabelFont(size: CGFloat = 17.0) -> UIFont {
+        let fontSize = size * UIStyleConfig.scale
         if currentFont == .DIN {
-            return UIFont(name: "DINNextLTPro-Regular", size: size) ?? UIFont.systemFont(ofSize: size)
+            return UIFont(name: "DINNextLTPro-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
         }
-        return UIFont(name: "\(currentFont.rawValue)-Regular", size: size) ?? UIFont.systemFont(ofSize: size)
+        return UIFont(name: "\(currentFont.rawValue)-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
     }
 
-    func getButtonTitleLabelFont(size: CGFloat = 17.0 * UIStyleConfig.scale) -> UIFont {
+    func getButtonTitleLabelFont(size: CGFloat = 17.0) -> UIFont {
+        let fontSize = size * UIStyleConfig.scale
         if currentFont == .DIN {
-            return UIFont(name: "DIN-Bold", size: size) ?? UIFont.boldSystemFont(ofSize: size)
+            return UIFont(name: "DIN-Bold", size: fontSize) ?? UIFont.boldSystemFont(ofSize: fontSize)
         }
-        return UIFont(name: "\(currentFont.rawValue)-Bold", size: size) ?? UIFont.boldSystemFont(ofSize: size)
+        return UIFont(name: "\(currentFont.rawValue)-Bold", size: fontSize) ?? UIFont.boldSystemFont(ofSize: fontSize)
     }
 
 }

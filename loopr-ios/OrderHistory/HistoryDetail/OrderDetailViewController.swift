@@ -135,7 +135,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
                 displayLabel.text = total.currency
             }
         }
-        amountLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 40)
+        amountLabel.font = FontConfigManager.shared.getRegularFont(size: 40)
         amountLabel.textColor = Themes.isNight() ? UIColor.white : UIColor.black
         displayLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 20)
         displayLabel.textColor = UIColor.init(white: 0, alpha: 0.6)

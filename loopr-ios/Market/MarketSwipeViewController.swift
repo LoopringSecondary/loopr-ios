@@ -77,7 +77,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         // TODO: .segmented will disable the value of width
         options.swipeTabView.style = .segmented
         
-        options.swipeTabView.itemView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17) ?? UIFont.systemFont(ofSize: 17)
+        options.swipeTabView.itemView.font = FontConfigManager.shared.getRegularFont()
         
         // This conflicts to the swipe action in the table view cell.
         options.swipeContentScrollView.isScrollEnabled = false

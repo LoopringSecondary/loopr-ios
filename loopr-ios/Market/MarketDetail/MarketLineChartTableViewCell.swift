@@ -50,7 +50,7 @@ class MarketLineChartTableViewCell: UITableViewCell, ChartViewDelegate {
         tokenLabel.font = FontConfigManager.shared.getLabelFont()
         tokenLabel.text = "WETH "
         
-        balanceLabel.setFont(UIFont.init(name: FontConfigManager.shared.getRegular(), size: 27)!)
+        balanceLabel.setFont(FontConfigManager.shared.getRegularFont(size: (27)))
         balanceLabel.animationDuration = 0.25
         balanceLabel.textAlignment = NSTextAlignment.center
         balanceLabel.initializeLabel()
@@ -60,7 +60,7 @@ class MarketLineChartTableViewCell: UITableViewCell, ChartViewDelegate {
         displayLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 15)
         displayLabel.text = "$11280.58"
         
-        trendLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 15)
+        trendLabel.font = FontConfigManager.shared.getRegularFont(size: 15)
         trendLabel.textColor = UIColor.green
         trendLabel.text = "+ 0.000041 (+ 0.37%)"
         

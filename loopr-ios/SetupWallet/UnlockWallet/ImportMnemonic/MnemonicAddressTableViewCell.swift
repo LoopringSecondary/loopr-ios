@@ -18,7 +18,7 @@ class MnemonicAddressTableViewCell: UITableViewCell {
         // Initialization code
         
         indexLabel.textAlignment = .right
-        indexLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 14)
+        indexLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         addressLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)
     }
 

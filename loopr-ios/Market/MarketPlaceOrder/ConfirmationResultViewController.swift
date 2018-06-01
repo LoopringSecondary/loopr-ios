@@ -43,7 +43,7 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
     func setupLabels() {
         placedLabel.font = UIFont(name: FontConfigManager.shared.getBold(), size: 40.0)
         placedLabel.text = NSLocalizedString("Placed!", comment: "")
-        placeInfoLabel.font = UIFont(name: FontConfigManager.shared.getRegular(), size: 20.0)
+        placeInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 20)
         placeInfoLabel.textColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1)
         if isBalanceEnough() {
             placeInfoLabel.text = NSLocalizedString("Congradualations! Your order has been submited!", comment: "")

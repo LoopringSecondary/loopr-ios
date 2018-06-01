@@ -30,7 +30,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         
         keystoreContentTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
         keystoreContentTextView.cornerRadius = 12
-        keystoreContentTextView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17.0)
+        keystoreContentTextView.font = FontConfigManager.shared.getRegularFont()
         keystoreContentTextView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
         keystoreContentTextView.delegate = self
         keystoreContentTextView.text = NSLocalizedString("Please enter the keystore", comment: "")

@@ -79,7 +79,7 @@ class TradeCompleteViewController: UIViewController {
         guard let order = self.order else { return }
         exchangedLabel.font = UIFont(name: FontConfigManager.shared.getBold(), size: 40.0)
         exchangedLabel.text = NSLocalizedString("Completed!", comment: "")
-        exchangedLabel.font = UIFont(name: FontConfigManager.shared.getRegular(), size: 20.0)
+        exchangedLabel.font = FontConfigManager.shared.getRegularFont(size: 20.0)
         exchangedInfoLabel.textColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1)
         let text = NSLocalizedString("Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!", comment: "")
         if isBalanceEnough() {

@@ -25,7 +25,7 @@ class SetupViewController: UIViewController {
 
         view.backgroundColor = UIColor.clear
 
-        taglineLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 15)
+        taglineLabel.font = FontConfigManager.shared.getRegularFont(size: 15)
         taglineLabel.isHidden = true
 
         button.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)

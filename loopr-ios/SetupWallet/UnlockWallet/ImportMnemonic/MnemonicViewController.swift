@@ -32,7 +32,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
 
         mnemonicWordTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
         mnemonicWordTextView.cornerRadius = 12
-        mnemonicWordTextView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17.0)
+        mnemonicWordTextView.font = FontConfigManager.shared.getRegularFont()
         mnemonicWordTextView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
         mnemonicWordTextView.delegate = self
         mnemonicWordTextView.text = NSLocalizedString("Please use space to seperate the mnemonic words", comment: "")

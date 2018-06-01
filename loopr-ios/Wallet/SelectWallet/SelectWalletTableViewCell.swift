@@ -61,15 +61,15 @@ class SelectWalletTableViewCell: FoldingCell, UICollectionViewDataSource, UIColl
         nameLabel.theme_textColor = GlobalPicker.textColor
         nameLabel.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: 17)
         addressLabel.theme_textColor = GlobalPicker.textColor
-        addressLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 11)
+        addressLabel.font = FontConfigManager.shared.getRegularFont(size: 11)
         notifyLabel.isHidden = true
         toatalBalanceLabel.theme_textColor = GlobalPicker.textColor
-        toatalBalanceLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 40)
+        toatalBalanceLabel.font = FontConfigManager.shared.getRegularFont(size: 40)
         
         enterButton.title = NSLocalizedString("Enter", comment: "")
         enterButton.layer.borderWidth = 1
         enterButton.layer.cornerRadius = 18
-        enterButton.titleLabel?.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)
+        enterButton.titleLabel?.font = FontConfigManager.shared.getRegularFont()
         enterButton.titleColor = Themes.isNight() ? .white : .black
         enterButton.layer.borderColor = UIColor.init(rgba: "#A5A5A5").cgColor
     }

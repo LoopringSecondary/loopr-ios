@@ -141,7 +141,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let label = UILabel(frame: CGRect(x: padding, y: 0, width: view.frame.size.width, height: 45))
         label.theme_textColor = GlobalPicker.textColor
-        label.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)
+        label.font = FontConfigManager.shared.getRegularFont()
         headerView.addSubview(label)
         
         label.text = sectionTitles[section]

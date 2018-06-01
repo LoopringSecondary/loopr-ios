@@ -143,7 +143,7 @@ class AssetTransactionDetailViewController: UIViewController {
         titleLabel.text = "You \(transaction.type.description)"
         titleLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 30)
         titleLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
-        amountLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 40)
+        amountLabel.font = FontConfigManager.shared.getRegularFont(size: 40)
         
         amountLabel.textColor = Themes.isNight() ? UIColor.white : UIColor.black
         amountInCurrencyLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 20)

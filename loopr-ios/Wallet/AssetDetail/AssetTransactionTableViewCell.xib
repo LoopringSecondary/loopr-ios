@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,26 +36,26 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="16:30 Tue, Feb 20, 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vq6-Vt-8yE">
-                        <rect key="frame" x="62" y="42" width="197.5" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="62" y="46" width="197.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" name="Subtitle"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMq-qI-TAG">
-                        <rect key="frame" x="59" y="83" width="336" height="0.5"/>
+                        <rect key="frame" x="59" y="83" width="395" height="0.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="0kM-uR-3je"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gMq-2b-bMp">
-                        <rect key="frame" x="274.5" y="19" width="105.5" height="21"/>
+                        <rect key="frame" x="274.5" y="19" width="116.5" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oNl-Vg-4Tf">
-                        <rect key="frame" x="274.5" y="42" width="105.5" height="21"/>
+                        <rect key="frame" x="274.5" y="44.5" width="116.5" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -69,17 +70,17 @@
                     <constraint firstItem="Q7V-32-L6z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="T33-9D-BD3"/>
                     <constraint firstAttribute="bottom" secondItem="fMq-qI-TAG" secondAttribute="bottom" id="Vf0-Ji-nnJ"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Vq6-Vt-8yE" secondAttribute="bottom" constant="10" id="gs7-Td-oFJ"/>
+                    <constraint firstAttribute="trailing" secondItem="oNl-Vg-4Tf" secondAttribute="trailing" constant="4" id="k9N-6d-Uii"/>
+                    <constraint firstAttribute="trailing" secondItem="gMq-2b-bMp" secondAttribute="trailing" constant="4" id="kct-fy-2vW"/>
                     <constraint firstItem="SeF-AR-g4w" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="oAU-g7-8f6"/>
                     <constraint firstItem="oNl-Vg-4Tf" firstAttribute="centerY" secondItem="Vq6-Vt-8yE" secondAttribute="centerY" id="sgz-yK-tJx"/>
-                    <constraint firstAttribute="trailing" secondItem="gMq-2b-bMp" secondAttribute="trailing" constant="15" id="vb3-S1-IzC"/>
-                    <constraint firstAttribute="trailing" secondItem="fMq-qI-TAG" secondAttribute="trailing" id="wI1-av-qJJ"/>
+                    <constraint firstAttribute="trailing" secondItem="fMq-qI-TAG" secondAttribute="trailing" constant="-59" id="wI1-av-qJJ"/>
                     <constraint firstItem="SeF-AR-g4w" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="yGz-Eq-dSY"/>
                 </constraints>
             </tableViewCellContentView>
             <constraints>
                 <constraint firstItem="gMq-2b-bMp" firstAttribute="leading" secondItem="Q7V-32-L6z" secondAttribute="trailing" constant="15" id="IXv-iW-qIg"/>
                 <constraint firstItem="Q7V-32-L6z" firstAttribute="width" secondItem="njF-e1-oar" secondAttribute="width" multiplier="0.5" id="SMM-Q8-bsR"/>
-                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="oNl-Vg-4Tf" secondAttribute="trailing" constant="15" id="wIW-H4-WgC"/>
                 <constraint firstItem="Vq6-Vt-8yE" firstAttribute="width" secondItem="njF-e1-oar" secondAttribute="width" multiplier="0.5" id="wsd-sr-G2q"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -96,5 +97,8 @@
     </objects>
     <resources>
         <image name="Received" width="32" height="32"/>
+        <namedColor name="Subtitle">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
     </resources>
 </document>

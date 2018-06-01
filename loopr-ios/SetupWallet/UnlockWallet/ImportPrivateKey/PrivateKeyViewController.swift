@@ -29,7 +29,7 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
 
         privateKeyTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
         privateKeyTextView.cornerRadius = 12
-        privateKeyTextView.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17.0)
+        privateKeyTextView.font = FontConfigManager.shared.getRegularFont()
         privateKeyTextView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
         privateKeyTextView.delegate = self
         privateKeyTextView.text = NSLocalizedString("Please input your private key", comment: "")

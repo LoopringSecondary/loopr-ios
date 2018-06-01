@@ -15,12 +15,9 @@ class AssetTableViewCell: UITableViewCell {
     // TODO: We may deprecate IBOutlet
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var iconView: IconView!
-    
     @IBOutlet weak var symbolLabel: UILabel!
-    
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
-
     @IBOutlet weak var seperateLine: UIView!
     
     // @IBOutlet weak var forwardImageView: UIImageView!
@@ -30,20 +27,13 @@ class AssetTableViewCell: UITableViewCell {
         // Initialization code
         
         theme_backgroundColor = GlobalPicker.backgroundColor
-        symbolLabel.theme_textColor = GlobalPicker.textColor
-        balanceLabel.theme_textColor = GlobalPicker.textColor
-
-        symbolLabel.font = UIFont(name: FontConfigManager.shared.getRegular(), size: 21*UIStyleConfig.scale)
-
-        balanceLabel.font = FontConfigManager.shared.getLabelFont()
+        symbolLabel.setHeaderFont()
+        balanceLabel.setTitleFont()
         balanceLabel.baselineAdjustment = .alignCenters
         
-        amountLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 14*UIStyleConfig.scale)
-        amountLabel.textColor = UIColor.init(white: 0, alpha: 0.6)
+        amountLabel.setSubTitleFont()
         amountLabel.baselineAdjustment = .alignCenters
-        
         seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
-        
         accessoryType = .disclosureIndicator
     }
 

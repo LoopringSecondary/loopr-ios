@@ -26,6 +26,7 @@
 		940B452D2061206900ADE2B9 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B452C2061206800ADE2B9 /* Token.swift */; };
 		9413F69120B802CB00524D2D /* AmountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9413F69020B802CB00524D2D /* AmountButton.swift */; };
 		9413F69520B80E2600524D2D /* AmountStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9413F69420B80E2600524D2D /* AmountStackView.swift */; };
+		9415543920C0F1BF007AAB87 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9415543820C0F1BF007AAB87 /* UILabelExtension.swift */; };
 		94189CC12078B88700AA2CF4 /* OrderSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94189CBF2078B88700AA2CF4 /* OrderSearchResultViewController.swift */; };
 		94189CC22078B88700AA2CF4 /* OrderSearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94189CC02078B88700AA2CF4 /* OrderSearchResultViewController.xib */; };
 		941B1EFC209C41BC00710DFF /* GasDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B1EFB209C41BB00710DFF /* GasDataManager.swift */; };
@@ -562,6 +563,7 @@
 		940B452C2061206800ADE2B9 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		9413F69020B802CB00524D2D /* AmountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountButton.swift; sourceTree = "<group>"; };
 		9413F69420B80E2600524D2D /* AmountStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountStackView.swift; sourceTree = "<group>"; };
+		9415543820C0F1BF007AAB87 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		94189CBF2078B88700AA2CF4 /* OrderSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSearchResultViewController.swift; sourceTree = "<group>"; };
 		94189CC02078B88700AA2CF4 /* OrderSearchResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderSearchResultViewController.xib; sourceTree = "<group>"; };
 		941B1EFB209C41BB00710DFF /* GasDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasDataManager.swift; sourceTree = "<group>"; };
@@ -1889,6 +1891,7 @@
 				AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */,
 				ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */,
 				AC147BE9208D0613008D5104 /* UIDeviceExtension.swift */,
+				9415543820C0F1BF007AAB87 /* UILabelExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2781,6 +2784,7 @@
 				9413F69120B802CB00524D2D /* AmountButton.swift in Sources */,
 				ACE58B8520BE796A005BC1C8 /* VerifyMnemonicViewController.swift in Sources */,
 				94DCE551205FAC07005618E4 /* Trend.swift in Sources */,
+				9415543920C0F1BF007AAB87 /* UILabelExtension.swift in Sources */,
 				ACB97C73207160E100775D4C /* Int+Extension.swift in Sources */,
 				940B45242060F67E00ADE2B9 /* TradeDataManager.swift in Sources */,
 				ACB729D4205DE21B00DD4DF3 /* TradeConfirmationViewController.swift in Sources */,

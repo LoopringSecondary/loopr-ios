@@ -28,7 +28,7 @@ class QRCodeViewController: UIViewController {
         view.theme_backgroundColor = GlobalPicker.textColor
         contentView.layer.cornerRadius = 16
         addressLabel.theme_textColor = GlobalPicker.textColor
-        addressLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 15)
+        addressLabel.font = FontConfigManager.shared.getRegularFont(size: 15)
         copyAddressButton.setTitle(NSLocalizedString("Copy Wallet Address", comment: ""), for: .normal)
         copyAddressButton.setupRoundWhite()
         saveToAlbumButton.setTitle(NSLocalizedString("Save to Album", comment: ""), for: .normal)

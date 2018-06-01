@@ -13,7 +13,7 @@ extension NotificationBanner {
 
     class func generate(title: String, style: BannerStyle) -> NotificationBanner {
         let notificationTitle = NSLocalizedString(title, comment: "")
-        let attribute = [NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17)!]
+        let attribute = [NSAttributedStringKey.font: FontConfigManager.shared.getRegularFont()]
         let attributeString = NSAttributedString(string: notificationTitle, attributes: attribute)
         let leftView = UIImageView(frame: CGRect(x: 5, y: 5, width: 10, height: 10))
         if style == .success {

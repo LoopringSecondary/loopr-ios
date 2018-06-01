@@ -35,7 +35,7 @@ class TradeTokenView: UIView {
 
         amountLabel = UILabel(frame: CGRect(x: 0, y: iconImageView.frame.maxY + padding, width: frame.width, height: 40*UIStyleConfig.scale))
         amountLabel.textAlignment = .center
-        amountLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 17*UIStyleConfig.scale)
+        amountLabel.font = FontConfigManager.shared.getRegularFont()
         
         totalPriceInFiatCurrency = UILabel(frame: CGRect(x: 0, y: amountLabel.frame.maxY - 15*UIStyleConfig.scale, width: frame.width, height: 40*UIStyleConfig.scale))
         totalPriceInFiatCurrency.textAlignment = .center

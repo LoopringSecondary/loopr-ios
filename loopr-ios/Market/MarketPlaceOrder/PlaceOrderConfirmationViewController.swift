@@ -110,7 +110,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
             }
         }
         amountLabel.textAlignment = .center
-        amountLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 40)
+        amountLabel.font = FontConfigManager.shared.getRegularFont(size: 40)
         amountLabel.textColor = Themes.isNight() ? UIColor.white : UIColor.black
         displayLabel.textAlignment = .center
         displayLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 20)

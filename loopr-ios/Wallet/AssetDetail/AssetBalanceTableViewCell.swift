@@ -32,6 +32,8 @@ class AssetBalanceTableViewCell: UITableViewCell {
         marketButton.layer.cornerRadius = 20
         marketButton.layer.borderWidth = 1
         marketButton.title = NSLocalizedString("Trade", comment: "")
+        marketButton.titleLabel!.font = FontConfigManager.shared.getRegularFont(size: 12)
+        marketButton.setTitleColor(UIColor(named: "Subtitle"), for: .normal)
         self.theme_backgroundColor = ["#fff", "#000"]
     }
     
@@ -42,16 +44,12 @@ class AssetBalanceTableViewCell: UITableViewCell {
         balanceLabel.initializeLabel()
         balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
         balanceLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
-        balanceLabel.setFont(UIFont.init(name: FontConfigManager.shared.getRegular(), size: 27)!)
+        balanceLabel.setFont(FontConfigManager.shared.getRegularFont(size: 27))
         
-        marketLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
-        marketLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 15)!
-        marketDisplayLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
-        marketDisplayLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 15)!
-        marketBalanceLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
-        marketBalanceLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 15)!
-        changeLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
-        changeLabel.font = UIFont.init(name: FontConfigManager.shared.getRegular(), size: 15)!
+        marketLabel.setTitleFont()
+        marketDisplayLabel.setTitleFont()
+        marketBalanceLabel.setTitleFont()
+        changeLabel.setTitleFont()
     }
 
     func update() {

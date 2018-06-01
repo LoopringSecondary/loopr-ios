@@ -22,14 +22,15 @@ class AssetTransactionTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        theme_backgroundColor = GlobalPicker.backgroundColor
-        titleLabel.theme_textColor = GlobalPicker.textColor
-        amountLabel.theme_textColor = GlobalPicker.textColor
-        dateLabel.theme_textColor = ["#a0a0a0", "#fff"]
-        displayLabel.theme_textColor = ["#a0a0a0", "#fff"]
+        titleLabel.setTitleFont()
+        amountLabel.setTitleFont()
+        amountLabel.baselineAdjustment = .alignCenters
+        dateLabel.setSubTitleFont()
+        displayLabel.setSubTitleFont()
+        displayLabel.baselineAdjustment = .alignCenters
         typeImageView.theme_image = ["Received", "Received-white"]
         seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
+        accessoryType = .disclosureIndicator
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -112,5 +113,4 @@ class AssetTransactionTableViewCell: UITableViewCell {
     class func getHeight() -> CGFloat {
         return 84
     }
-
 }
