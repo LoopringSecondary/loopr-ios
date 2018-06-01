@@ -38,7 +38,7 @@ class SettingLRCFeeRatioViewController: UIViewController {
         view.addSubview(currentValueLabel)
 
         slider.frame = CGRect(x: padding, y: currentValueLabel.frame.maxY + padding + 10, width: screenWidth-padding*2, height: 20)
-        slider.minimumValue = 0
+        slider.minimumValue = 1
         slider.maximumValue = 50
         slider.value = Float(SettingDataManager.shared.getLrcFeeRatio() * 1000.0)
         

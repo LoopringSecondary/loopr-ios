@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GenerateMnemonicViewController: UIViewController {
+class GenerateMnemonicViewController_Archive: UIViewController {
 
     var congratulationIconView = UIImageView()
     var congratulationsLabel: UILabel = UILabel()
@@ -59,7 +59,6 @@ class GenerateMnemonicViewController: UIViewController {
     @IBAction func pressedBackupNowButton(_ sender: Any) {
         print("pressedBackupNowButton")
         let viewController = BackupMnemonicViewController()
-        viewController.mnemonics = GenerateWalletDataManager.shared.getMnemonics()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 

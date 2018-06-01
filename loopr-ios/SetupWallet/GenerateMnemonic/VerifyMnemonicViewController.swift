@@ -37,6 +37,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
 
         // Do any additional setup after loading the view.
         // mnemonics.shuffle()
+        mnemonics = GenerateWalletDataManager.shared.getMnemonics()
         mnemonics.sort { (a, b) -> Bool in
             return a < b
         }

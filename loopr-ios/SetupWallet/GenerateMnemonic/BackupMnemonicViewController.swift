@@ -15,7 +15,6 @@ class BackupMnemonicViewController: UIViewController {
 
     var titleLabel: UILabel =  UILabel()
     var infoTextView: UITextView = UITextView()
-
     
     @IBOutlet weak var skipVerifyNowButton: UIButton!
     @IBOutlet weak var verifyNowButton: UIButton!
@@ -37,8 +36,9 @@ class BackupMnemonicViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         // self.navigationItem.title = NSLocalizedString("Backup Mnemonic", comment: "")
+
+        mnemonics = GenerateWalletDataManager.shared.getMnemonics()
         setBackButton()
-        
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         
         // Setup UI
@@ -114,7 +114,6 @@ class BackupMnemonicViewController: UIViewController {
 
     @IBAction func pressedVerifyNowButton(_ sender: Any) {
         let viewController = VerifyMnemonicViewController()
-        viewController.mnemonics = GenerateWalletDataManager.shared.getMnemonics()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 

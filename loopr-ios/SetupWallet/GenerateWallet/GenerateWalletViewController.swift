@@ -262,7 +262,8 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
         if validWalletName && validPassword && validRepeatPassword {
             GenerateWalletDataManager.shared.setWalletName(walletName)
             GenerateWalletDataManager.shared.setPassword(password)
-            let viewController = GenerateMnemonicViewController()
+            // let viewController = GenerateMnemonicViewController()
+            let viewController = BackupMnemonicViewController()
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }

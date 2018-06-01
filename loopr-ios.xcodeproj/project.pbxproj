@@ -203,8 +203,8 @@
 		AC3756792038D7E200AADC60 /* UnlockKeystoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC3756772038D7E200AADC60 /* UnlockKeystoreViewController.xib */; };
 		AC37567C2038D80300AADC60 /* PrivateKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37567A2038D80300AADC60 /* PrivateKeyViewController.swift */; };
 		AC37567D2038D80300AADC60 /* PrivateKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC37567B2038D80300AADC60 /* PrivateKeyViewController.xib */; };
-		AC3756802039198300AADC60 /* GenerateMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37567E2039198300AADC60 /* GenerateMnemonicViewController.swift */; };
-		AC3756812039198300AADC60 /* GenerateMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC37567F2039198300AADC60 /* GenerateMnemonicViewController.xib */; };
+		AC3756802039198300AADC60 /* GenerateMnemonicViewController_Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37567E2039198300AADC60 /* GenerateMnemonicViewController_Archive.swift */; };
+		AC3756812039198300AADC60 /* GenerateMnemonicViewController_Archive.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC37567F2039198300AADC60 /* GenerateMnemonicViewController_Archive.xib */; };
 		AC375684203A641200AADC60 /* SelectWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC375682203A641200AADC60 /* SelectWalletViewController.swift */; };
 		AC375685203A641200AADC60 /* SelectWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC375683203A641200AADC60 /* SelectWalletViewController.xib */; };
 		AC387511205F12F100A76637 /* ContextMenuDismissing.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3874FF205F12E900A76637 /* ContextMenuDismissing.swift */; };
@@ -718,8 +718,8 @@
 		AC3756772038D7E200AADC60 /* UnlockKeystoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnlockKeystoreViewController.xib; sourceTree = "<group>"; };
 		AC37567A2038D80300AADC60 /* PrivateKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeyViewController.swift; sourceTree = "<group>"; };
 		AC37567B2038D80300AADC60 /* PrivateKeyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivateKeyViewController.xib; sourceTree = "<group>"; };
-		AC37567E2039198300AADC60 /* GenerateMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMnemonicViewController.swift; sourceTree = "<group>"; };
-		AC37567F2039198300AADC60 /* GenerateMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenerateMnemonicViewController.xib; sourceTree = "<group>"; };
+		AC37567E2039198300AADC60 /* GenerateMnemonicViewController_Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMnemonicViewController_Archive.swift; sourceTree = "<group>"; };
+		AC37567F2039198300AADC60 /* GenerateMnemonicViewController_Archive.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenerateMnemonicViewController_Archive.xib; sourceTree = "<group>"; };
 		AC375682203A641200AADC60 /* SelectWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletViewController.swift; sourceTree = "<group>"; };
 		AC375683203A641200AADC60 /* SelectWalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWalletViewController.xib; sourceTree = "<group>"; };
 		AC3874FF205F12E900A76637 /* ContextMenuDismissing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenuDismissing.swift; sourceTree = "<group>"; };
@@ -1448,8 +1448,8 @@
 		AC5E0DD2203A848300AF03C7 /* GenerateMnemonic */ = {
 			isa = PBXGroup;
 			children = (
-				AC37567E2039198300AADC60 /* GenerateMnemonicViewController.swift */,
-				AC37567F2039198300AADC60 /* GenerateMnemonicViewController.xib */,
+				AC37567E2039198300AADC60 /* GenerateMnemonicViewController_Archive.swift */,
+				AC37567F2039198300AADC60 /* GenerateMnemonicViewController_Archive.xib */,
 				AC72AED6204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift */,
 				AC72AED7204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib */,
 				ACE65E3F2071F875001EE499 /* MnemonicCollectionViewController.swift */,
@@ -2447,7 +2447,7 @@
 				AC5E0DDB203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib in Resources */,
 				AC31CE77205B996400A30335 /* Roboto-Thin.ttf in Resources */,
 				ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */,
-				AC3756812039198300AADC60 /* GenerateMnemonicViewController.xib in Resources */,
+				AC3756812039198300AADC60 /* GenerateMnemonicViewController_Archive.xib in Resources */,
 				AC54FD88204FC6F8007E1DEB /* OpenSans-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2707,7 +2707,7 @@
 				AC387518205F12F100A76637 /* ContextMenu+MenuStyle.swift in Sources */,
 				AC78FC3820A176CE00992AE8 /* OrderBookDataManager.swift in Sources */,
 				AC5E0DE4203BC4B100AF03C7 /* FloatLabelTextField.swift in Sources */,
-				AC3756802039198300AADC60 /* GenerateMnemonicViewController.swift in Sources */,
+				AC3756802039198300AADC60 /* GenerateMnemonicViewController_Archive.swift in Sources */,
 				FF9C7DDC208D59EA004687AD /* SettingsBundleHelper.swift in Sources */,
 				ACB9119520278A4000F14644 /* Request.swift in Sources */,
 				AC76E47320493CAE008BA229 /* SettingLanguageViewController.swift in Sources */,
