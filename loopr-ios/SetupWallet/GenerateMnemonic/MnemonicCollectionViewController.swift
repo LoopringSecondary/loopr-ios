@@ -11,8 +11,7 @@ import UIKit
 class MnemonicCollectionViewController: UICollectionViewController {
     
     var isBackupMode: Bool = false
-    var count: Int = 12
-    var index = 0
+    let count: Int = 12
     var mnemonics: [String] = []
 
     override func viewDidLoad() {
@@ -54,8 +53,7 @@ class MnemonicCollectionViewController: UICollectionViewController {
 
         cell.mnemonicLabel.text = mnemonics[indexPath.row]
 
-        let mnemonicsIndex = indexPath.row%count + count*self.index
-        cell.circleLabel.text = "\(mnemonicsIndex+1)"
+        cell.circleLabel.text = "\(indexPath.row+1)"
         if isBackupMode {
             cell.circleLabel.isHidden = true
             if GenerateWalletDataManager.shared.getUserInputMnemonics().contains(mnemonics[indexPath.row]) {

@@ -80,7 +80,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         mnemonicCollectionViewController.mnemonics = mnemonics
         mnemonicCollectionViewController.view.isHidden = false
         mnemonicCollectionViewController.isBackupMode = true
-        mnemonicCollectionViewController.count = 24
+        // mnemonicCollectionViewController.count = 24
         mnemonicCollectionViewController.index = 0
         mnemonicCollectionViewController.view.frame = CGRect(x: 15, y: collectionViewY, width: collectionViewWidth, height: collectionViewHeight)
         view.addSubview(mnemonicCollectionViewController.view)

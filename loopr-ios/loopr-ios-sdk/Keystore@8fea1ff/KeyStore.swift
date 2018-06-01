@@ -102,7 +102,7 @@ public final class KeyStore {
     }
 
     func createWallet(password: String) throws -> Account {
-        let mnemonic = Mnemonic.generate(strength: 256)
+        let mnemonic = Mnemonic.generate(strength: 128)
         let wallet = Wallet(mnemonic: mnemonic, password: password)
         let address = wallet.getKey(at: 0).address
         let url = makeAccountURL(for: address, type: .hierarchicalDeterministicWallet)

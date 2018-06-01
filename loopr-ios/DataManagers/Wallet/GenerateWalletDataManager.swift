@@ -28,7 +28,7 @@ class GenerateWalletDataManager {
 
     // Generate a new wallet and store mnemonic in the memory.
     func new() -> [String] {
-        let mnemonicString = Mnemonic.generate(strength: 256)
+        let mnemonicString = Mnemonic.generate(strength: 128)
         let mnemonics = mnemonicString.components(separatedBy: " ")
         self.mnemonics = mnemonics
 

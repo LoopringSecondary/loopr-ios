@@ -17,7 +17,7 @@ class MnemonicBackupModeCollectionViewController: UICollectionViewController {
     weak var delegate: MnemonicBackupModeCollectionViewControllerDelegate?
     
     var isBackupMode: Bool = false
-    var count: Int = 12
+    let count: Int = 12
     var index = 0
     var mnemonics: [String] = []
     
