@@ -28,11 +28,10 @@ class AssetTableViewCell: UITableViewCell {
         
         theme_backgroundColor = GlobalPicker.backgroundColor
         symbolLabel.setHeaderFont()
-        balanceLabel.setTitleFont()
-        balanceLabel.baselineAdjustment = .alignCenters
-        
-        amountLabel.setSubTitleFont()
+        amountLabel.setTitleFont()
         amountLabel.baselineAdjustment = .alignCenters
+        balanceLabel.setSubTitleFont()
+        balanceLabel.baselineAdjustment = .alignCenters
         seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
         accessoryType = .disclosureIndicator
     }

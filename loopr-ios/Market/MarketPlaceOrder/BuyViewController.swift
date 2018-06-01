@@ -647,7 +647,7 @@ extension BuyViewController {
             let lrcPrice = PriceDataManager.shared.getPrice(of: "LRC") {
             result = price * amountS * ratio / lrcPrice
         }
-        let minLrc = GasDataManager.shared.getGasAmount(by: "lrcFee", in: "LRC")
+        let minLrc = GasDataManager.shared.getGasAmount(by: "lrcFee", in: "LRC") / 2
         return max(result, minLrc)
     }
 }

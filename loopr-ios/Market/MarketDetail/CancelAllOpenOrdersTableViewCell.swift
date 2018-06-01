@@ -26,20 +26,24 @@ class CancelAllOpenOrdersTableViewCell: UITableViewCell {
         hideOtherPairsLabel.textColor = UIColor.black
         hideOtherPairsLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17.0*UIStyleConfig.scale)
         hideOtherPairsLabel.text = NSLocalizedString("Hide Other Pairs", comment: "")
-        setupCancelAllButton()
         seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
+        update()
+    }
+    
+    func update() {
+        setupCancelAllButton()
     }
     
     func setupCancelAllButton() {
-        if OrderDataManager.shared.getDateOrders(orderStatuses: [.opened]).count == 0 || UserDefaults.standard.bool(forKey: UserDefaultsKeys.cancelledAll.rawValue) {
-            cancelAllButton.isEnabled = false
-            cancelAllButton.backgroundColor = UIColor(rgba: "#e0e0e0")
-            cancelAllButton.layer.borderColor = UIColor.clear.cgColor
-        } else {
+        if OrderDataManager.shared.shouldCancelAll() {
             cancelAllButton.isEnabled = true
             cancelAllButton.backgroundColor = UIColor.clear
             cancelAllButton.layer.borderWidth = 0.5
             cancelAllButton.layer.borderColor = UIColor.black.cgColor
+        } else {
+            cancelAllButton.isEnabled = false
+            cancelAllButton.backgroundColor = UIColor(rgba: "#e0e0e0")
+            cancelAllButton.layer.borderColor = UIColor.clear.cgColor
         }
         cancelAllButton.title = NSLocalizedString("Cancel All", comment: "")
         cancelAllButton.titleColor = UIColor.black

@@ -29,9 +29,8 @@ class OrderDataManager {
         let filteredOrder = orders.filter { (order) -> Bool in
             orderStatuses.contains(order.orderStatus)
         }
-        
         if hideOtherPairs {
-            return filteredOrder.filter({ ( order ) -> Bool in
+            return filteredOrder.filter({ (order) -> Bool in
                 order.tradingPairDescription == currentMarket.description
             })
         } else {
@@ -83,6 +82,23 @@ class OrderDataManager {
                         result[date] = []
                     }
                     result[date]!.append(order)
+                }
+            }
+        }
+        return result
+    }
+    
+    func shouldCancelAll() -> Bool {
+        let defaults = UserDefaults.standard
+        var result = defaults.bool(forKey: UserDefaultsKeys.cancelledAll.rawValue)
+        guard !result else {
+            return false
+        }
+        let hide = SettingDataManager.shared.getHideOtherPairs()
+        if let market = PlaceOrderDataManager.shared.market, let cancellingOrders = defaults.stringArray(forKey: UserDefaultsKeys.cancellingOrders.rawValue) {
+            self.getOrders(hideOtherPairs: hide, currentMarket: market, orderStatuses: [.opened]).forEach { (order) in
+                if !cancellingOrders.contains(order.originalOrder.hash) {
+                    result = true
                 }
             }
         }

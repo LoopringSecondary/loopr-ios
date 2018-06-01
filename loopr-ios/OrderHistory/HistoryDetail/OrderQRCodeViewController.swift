@@ -55,8 +55,7 @@ class OrderQRCodeViewController: UIViewController {
     func getOrderDataFromLocal(order: OriginalOrder) -> String? {
         let defaults = UserDefaults.standard
         if let orderData = defaults.dictionary(forKey: UserDefaultsKeys.p2pOrder.rawValue) {
-            let hashPrefix = order.hash.prefix(8).description
-            if let authPrivateKey = orderData[hashPrefix] as? String {
+            if let authPrivateKey = orderData[order.hash] as? String {
                 return authPrivateKey
             }
         }

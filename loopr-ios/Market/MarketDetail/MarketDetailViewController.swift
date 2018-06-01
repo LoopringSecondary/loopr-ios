@@ -81,6 +81,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         // TODO: putting getMarketsFromServer() here may cause a race condition.
         // It's not perfect, but works. Need improvement in the future.
         if let market = market {
+            PlaceOrderDataManager.shared.new(tokenA: market.tradingPair.tradingA, tokenB: market.tradingPair.tradingB, market: market)
             let tokenPair = market.tradingPair.description
             MarketDataManager.shared.startGetTrend(market: tokenPair)
             MarketDataManager.shared.getTrendsFromServer(market: tokenPair, completionHandler: { (trends, error) in
@@ -162,7 +163,6 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBAction func pressedSellButton(_ sender: Any) {
         print("pressedSellButton")
-        PlaceOrderDataManager.shared.new(tokenA: self.market!.tradingPair.tradingA, tokenB: self.market!.tradingPair.tradingB, market: self.market!)
         let viewController = BuyAndSellSwipeViewController()
         viewController.initialType = .sell
         self.navigationController?.pushViewController(viewController, animated: true)
@@ -170,7 +170,6 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBAction func pressedBuyButton(_ sender: Any) {
         print("pressedBuyButton")
-        PlaceOrderDataManager.shared.new(tokenA: self.market!.tradingPair.tradingA, tokenB: self.market!.tradingPair.tradingB, market: self.market!)
         let viewController = BuyAndSellSwipeViewController()
         viewController.initialType = .buy
         self.navigationController?.pushViewController(viewController, animated: true)
@@ -346,7 +345,6 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 cell?.trends = trends
             }
             cell!.pressedBuyButtonClosure = {
-                PlaceOrderDataManager.shared.new(tokenA: self.market!.tradingPair.tradingA, tokenB: self.market!.tradingPair.tradingB, market: self.market!)
                 let viewController = BuyAndSellSwipeViewController()
                 viewController.initialType = .buy
                 self.navigationController?.pushViewController(viewController, animated: true)
@@ -361,9 +359,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 }
                 */
             }
-            
             cell!.pressedSellButtonClosure = {
-                PlaceOrderDataManager.shared.new(tokenA: self.market!.tradingPair.tradingA, tokenB: self.market!.tradingPair.tradingB, market: self.market!)
                 let viewController = BuyAndSellSwipeViewController()
                 viewController.initialType = .sell
                 self.navigationController?.pushViewController(viewController, animated: true)
@@ -429,6 +425,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 cell?.toggleHidePairSwitchClosure = {
                     self.tableView.reloadData()
                 }
+                cell?.update()
                 return cell!
             } else {
                 let count = OrderDataManager.shared.getOrders(hideOtherPairs: SettingDataManager.shared.getHideOtherPairs(), currentMarket: market, orderStatuses: [.opened]).count
@@ -535,10 +532,11 @@ extension MarketDetailViewController: UIViewControllerTransitioningDelegate {
     func cancelOrder(order: OriginalOrder, indexPath: IndexPath) {
         SendCurrentAppWalletDataManager.shared._cancelOrder(order: order) { (txHash, error) in
             var cancellingOrders = self.defaults.stringArray(forKey: UserDefaultsKeys.cancellingOrders.rawValue) ?? []
-            cancellingOrders.append(String(order.hash.prefix(8)))
+            cancellingOrders.append(order.hash)
             self.defaults.set(cancellingOrders, forKey: UserDefaultsKeys.cancellingOrders.rawValue)
             DispatchQueue.main.sync {
                 self.tableView.reloadRows(at: [indexPath], with: .fade)
+                self.tableView.reloadSections([indexPath.section], with: .fade)
             }
             self.completion(txHash, error)
         }

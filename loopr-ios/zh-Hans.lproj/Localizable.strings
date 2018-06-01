@@ -149,7 +149,8 @@
 "Please input a valid amount" = "请输入有效的数额";
 "You are buying" = "预期买入";
 "You are selling" = "预期卖出";
-"Placed" = "提交成功";
+"Placed!" = "提交成功";
+"Attention!" = "请注意";
 "Congradualations! Your order has been submited!" = "恭喜！您的订单已被提交！";
 "Your order has not been submited! Please make sure you have enough balance to complete the trade." = "您的订单未被提交！请确认您的账户中有足够余额以完成该笔订单。";
 "You Need More" = "您尚需";
@@ -162,7 +163,8 @@
 "Order Detail" = "订单详情";
 "Filled/Amount" = "Filled/Amount";
 "Status" = "状态";
-"Trade" = "去交易";
+"Trade" = "交易";
+"Go To Trade" = "去交易";
 "Filled" = "Filled";
 "Date" = "日期";
 "Cancelling" = "取消中";

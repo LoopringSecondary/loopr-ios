@@ -19,7 +19,7 @@ extension UILabel {
     
     func setSubTitleFont() {
         let font = FontConfigManager.shared.getSubtitleFont()
-        self.textColor = UIColor(named: "Subtitle")
+        self.textColor = UIColor.subtitle
         self.font = font
     }
     
@@ -31,11 +31,9 @@ extension UILabel {
     
     func setMarket() {
         if let text = self.text {
-            var range = (text as NSString).range(of: "\\w*\\d*", options: .regularExpression)
+            let range = (text as NSString).range(of: "/\\w*\\d*", options: .regularExpression)
             let attribute = NSMutableAttributedString.init(string: text)
-            attribute.addAttributes([NSAttributedStringKey.font: FontConfigManager.shared.getHeaderFont()], range: range)
-            range = (text as NSString).range(of: "/\\w*\\d*", options: .regularExpression)
-            attribute.addAttributes([NSAttributedStringKey.font: FontConfigManager.shared.getSubtitleFont()], range: range)
+            attribute.addAttributes([NSAttributedStringKey.foregroundColor: UIColor.subtitle], range: range)
             self.attributedText = attribute
         }
     }

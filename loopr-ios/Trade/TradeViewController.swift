@@ -287,7 +287,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     func preserveMaker(order: OriginalOrder) {
         let defaults = UserDefaults.standard
-        let orderData = [order.hash.prefix(8).description: order.authPrivateKey]
+        let orderData = [order.hash: order.authPrivateKey]
         defaults.set(orderData, forKey: UserDefaultsKeys.p2pOrder.rawValue)
     }
     

@@ -32,9 +32,9 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = NSLocalizedString("Confirmation", comment: "")
+        self.navigationItem.leftBarButtonItem = nil
         // Do any additional setup after loading the view.
         setupErrorInfo()
-        setBackButton()
         setupLabels()
         setupRows()
         setupButtons()
@@ -42,12 +42,13 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
     
     func setupLabels() {
         placedLabel.font = UIFont(name: FontConfigManager.shared.getBold(), size: 40.0)
-        placedLabel.text = NSLocalizedString("Placed!", comment: "")
         placeInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 20)
         placeInfoLabel.textColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1)
         if isBalanceEnough() {
+            placedLabel.text = NSLocalizedString("Placed!", comment: "")
             placeInfoLabel.text = NSLocalizedString("Congradualations! Your order has been submited!", comment: "")
         } else {
+            placedLabel.text = NSLocalizedString("Attention!", comment: "")
             placeInfoLabel.text = NSLocalizedString("Your order has not been submited! Please make sure you have enough balance to complete the trade.", comment: "")
         }
     }
