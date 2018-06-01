@@ -71,10 +71,11 @@ class SettingDataManager {
 
     // MARK: Hide small assets
     func getHideSmallAssets() -> Bool {
+        var result = false
         let defaults = UserDefaults.standard
         // If the value is absent or can't be converted to a BOOL, NO will be returned.
-        let showSmallAssets = defaults.bool(forKey: UserDefaultsKeys.showSmallAssets.rawValue)
-        return !showSmallAssets
+        result = defaults.bool(forKey: UserDefaultsKeys.showSmallAssets.rawValue)
+        return !result
     }
     
     func setHideSmallAssets(_ hide: Bool) {

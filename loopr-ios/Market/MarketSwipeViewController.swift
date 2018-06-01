@@ -92,14 +92,12 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         if isSearching {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressSearchCancel))
         } else {
             let orderHistoryBarButton = UIBarButtonItem(customView: orderHistoryButton)
             self.navigationItem.rightBarButtonItem = orderHistoryBarButton
         }
-        
         // TODO: no reload data in the viewWIllAppear. Need to implement the night mode.
         if Themes.isNight() {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
@@ -131,9 +129,10 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
 
         let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
         searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
+
         navigationItem.titleView = searchBarContainer
     }
-
+    
     @objc func pressOrderHistoryButton(_ button: UIBarButtonItem) {
         print("pressOrderHistoryButton")
         let viewController = OrderHistoryViewController()

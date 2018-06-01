@@ -50,7 +50,7 @@ class MarketDataManager {
             }
         case .LRC:
             let sortedMarkets = filteredMarkets.filter({ (market) -> Bool in
-                return market.tradingPair.tradingA.uppercased() == "LRC" || market.tradingPair.tradingB.uppercased() == "LRC"
+                return market.tradingPair.tradingB.uppercased() == "LRC"
             }).sorted { (a, b) -> Bool in
                 return a.description < b.description
             }
@@ -193,7 +193,7 @@ class MarketDataManager {
             })
         case .LRC:
             let sortedMarkets = markets.filter({ (market) -> Bool in
-                return market.tradingPair.tradingA.uppercased() == "LRC" || market.tradingPair.tradingB.uppercased() == "LRC"
+                return market.tradingPair.tradingB.uppercased() == "LRC"
             }).sorted { (a, b) -> Bool in
                 return a.description < b.description
             }

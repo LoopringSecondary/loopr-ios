@@ -94,7 +94,6 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             // We don't any filter in the API requests. So no need to filter the response.
             MarketDataManager.shared.setMarkets(newMarkets: markets)
             DispatchQueue.main.async {
-                
                 self.marketTableView.reloadData()
                 self.refreshControl.endRefreshing()
             }
@@ -171,6 +170,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         isListeningSocketIO = false
+        print("scrollViewWillBeginDragging")
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

@@ -28,4 +28,15 @@ extension UILabel {
         self.theme_textColor = GlobalPicker.textColor
         self.font = font
     }
+    
+    func setMarket() {
+        if let text = self.text {
+            var range = (text as NSString).range(of: "\\w*\\d*", options: .regularExpression)
+            let attribute = NSMutableAttributedString.init(string: text)
+            attribute.addAttributes([NSAttributedStringKey.font: FontConfigManager.shared.getHeaderFont()], range: range)
+            range = (text as NSString).range(of: "/\\w*\\d*", options: .regularExpression)
+            attribute.addAttributes([NSAttributedStringKey.font: FontConfigManager.shared.getSubtitleFont()], range: range)
+            self.attributedText = attribute
+        }
+    }
 }

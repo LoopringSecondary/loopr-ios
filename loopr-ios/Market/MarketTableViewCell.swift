@@ -26,19 +26,13 @@ class MarketTableViewCell: UITableViewCell {
 
         theme_backgroundColor = GlobalPicker.backgroundColor
 
-        nameLabel.theme_textColor = GlobalPicker.textColor
-        nameLabel.font = FontConfigManager.shared.getLabelFont()
-
-        balanceLabel.textColor = UIColor.init(white: 0, alpha: 0.3)
-        balanceLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 14)
-
-        marketPriceInBitcoinLabel.theme_textColor = GlobalPicker.textColor
-        marketPriceInBitcoinLabel.font = FontConfigManager.shared.getLabelFont()
-
-        marketPriceInFiatCurrencyLabel.textColor = UIColor.init(white: 0, alpha: 0.3)
-        marketPriceInFiatCurrencyLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 14)
-
-        percentageChangeLabel.font = FontConfigManager.shared.getLabelFont()
+        nameLabel.setTitleFont()
+        balanceLabel.setSubTitleFont()
+        balanceLabel.isHidden = true
+        marketPriceInBitcoinLabel.setTitleFont()
+        marketPriceInFiatCurrencyLabel.setSubTitleFont()
+        percentageChangeLabel.setTitleFont()
+        accessoryType = .disclosureIndicator
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -60,6 +54,7 @@ class MarketTableViewCell: UITableViewCell {
                 tokenImage.isHidden = true
             }
             nameLabel.text = market.description
+            nameLabel.setMarket()
             balanceLabel.text = "Vol \(market.volumeInPast24)"
             marketPriceInBitcoinLabel.text = market.balance.description
             marketPriceInFiatCurrencyLabel.text = market.display.description
@@ -74,6 +69,6 @@ class MarketTableViewCell: UITableViewCell {
     
     //TODO: The height of MarketTableViewCell is different from the height of AssetTableViewCell.
     class func getHeight() -> CGFloat {
-        return 64
+        return 72*UIStyleConfig.scale
     }
 }
