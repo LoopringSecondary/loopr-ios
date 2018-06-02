@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-protocol QRCodeScanProtocol {
+protocol QRCodeScanProtocol: class {
     func setResultOfScanningQRCode(valueSent: String, type: QRCodeType)
 }
 
@@ -18,12 +18,22 @@ enum QRCodeType: String {
     case mnemonic = "Mnemonic"
     case keystore = "Keystore"
     case privateKey = "Private Key"
-    case undefined
+    case undefined = "Undefined"
+    
+    var detectedDescription: String {
+        switch self {
+        case .address: return "Address detected"
+        case .mnemonic: return "Mnemonic detected"
+        case .keystore: return "Keystore detected"
+        case .privateKey: return "Private key detected"
+        case .undefined: return "Undefined"
+        }
+    }
 }
 
 class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
-    var delegate: QRCodeScanProtocol?
+    weak var delegate: QRCodeScanProtocol?
     
     @IBOutlet weak var scanView: UIView!
     @IBOutlet weak var flashButton: UIButton!
@@ -47,7 +57,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
 
         // Do any additional setup after loading the view.
         setBackButton()
-        self.navigationItem.title = NSLocalizedString("QR Code", comment: "")
+        self.navigationItem.title = NSLocalizedString("Scan QR Code", comment: "")
         
         scanTipLabel.font = FontConfigManager.shared.getLabelFont()
         scanTipLabel.textColor = Themes.isNight() ? .white : .black

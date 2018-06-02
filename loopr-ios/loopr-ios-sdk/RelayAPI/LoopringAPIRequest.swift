@@ -439,10 +439,10 @@ class LoopringAPIRequest {
     // TODO: This has been updated.
     // https://github.com/Loopring/relay/blob/master/LOOPRING_RELAY_API_SPEC_V2.md#loopring_notifytransactionsubmitted
     // It's difficult to update our code to send the API.
-    static func notifyTransactionSubmitted(txHash: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
+    static func notifyTransactionSubmitted(txHash: String, nonce: String, to: String, value: String, gasPrice: String, gas: String, input: String, from: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_notifyTransactionSubmitted"
-        body["params"] = [["txHash": txHash]]
+        body["params"] = [["hash": txHash, "nonce": nonce, "to": to, "value": value, "gasPrice": gasPrice, "gas": gas, input: "input", "from": from]]
         body["id"] = JSON(UUID().uuidString)
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {

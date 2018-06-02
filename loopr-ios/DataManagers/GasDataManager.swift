@@ -77,6 +77,7 @@ class GasDataManager {
         return gasInETH / price
     }
     
+    // TODO: This part should be an async API call.
     func getEstimateGasPrice() {
         let semaphore = DispatchSemaphore(value: 0)
         LoopringAPIRequest.getEstimateGasPrice { (gasPrice, error) in

@@ -18,7 +18,7 @@ enum BiometricType: CustomStringConvertible {
         switch self {
         case .none: return "None"
         case .touchID: return NSLocalizedString("Touch ID", comment: "")
-        case .faceID: return "Face ID"
+        case .faceID: return NSLocalizedString("Face ID", comment: "")
         }
     }
 

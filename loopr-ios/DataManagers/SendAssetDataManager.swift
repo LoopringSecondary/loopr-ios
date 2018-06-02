@@ -309,7 +309,8 @@ class SendCurrentAppWalletDataManager {
             self.sendTransactionToServer(signedTransaction: signedTransaction, completion: { (txHash, error) in
                 if txHash != nil && error == nil {
                     completion(txHash!, nil)
-                    LoopringAPIRequest.notifyTransactionSubmitted(txHash: txHash!, completionHandler: {_, _ in })
+                    // TODO: This API doesn't work, so comment out now.
+                    // LoopringAPIRequest.notifyTransactionSubmitted(txHash: txHash!, completionHandler: {_, _ in })
                     
                     // TODO: txHash need to be stored in the local storage.
                 } else {

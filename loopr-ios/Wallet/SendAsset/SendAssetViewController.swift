@@ -387,7 +387,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             if token.symbol.uppercased() == "ETH" {
                 SendCurrentAppWalletDataManager.shared._transferETH(amount: gethAmount, toAddress: toAddress, completion: completion)
             } else {
-                // ETH doesn't have a protocol_value
+                // TODO: Error handling for invalid protocol value
                 if !token.protocol_value.isHexAddress() {
                     print("token protocol \(token.protocol_value) is invalid")
                     return

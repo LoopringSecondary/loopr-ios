@@ -36,6 +36,9 @@ enum UserDefaultsKeys: String {
     case cancelledAll = "UserDefaultsKeys.cancelledAll"
     case cancellingOrders = "UserDefaultsKeys.cancellingOrders"
     
+    // Transaction
+    case pendingTransactions = "UserDefaultsKeys.pendingTransactions"
+    
     //Settings Bundle
     case appVersion = "UserDefaultsKeys.appVersion"
     case appBuildNumber = "UserDefaultsKeys.appBuildNumber"

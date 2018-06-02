@@ -246,3 +246,8 @@
 "Irrational" = "Irrational";
 "The name is token, please try another one" = "The name is token, please try another one";
 "Back" = "Back";
+"Undefined" = "Undefined";
+"Pending" = "Pending";
+"Completed" = "Completed";
+"Failed" = "Failed";
+"Other" = "Other";

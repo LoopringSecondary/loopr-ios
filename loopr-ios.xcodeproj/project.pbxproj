@@ -509,6 +509,9 @@
 		ACF06A06204C736A00C3FF86 /* CreateMnemonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF06A05204C736A00C3FF86 /* CreateMnemonicTests.swift */; };
 		ACF71CB42033E723000E7618 /* TradeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */; };
 		ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */; };
+		ACFEFE9520C337BE00013921 /* PendingTransactionsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEFE9420C337BD00013921 /* PendingTransactionsDataManager.swift */; };
+		ACFEFE9820C338BC00013921 /* TxType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEFE9720C338BC00013921 /* TxType.swift */; };
+		ACFEFE9A20C338DA00013921 /* TxStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEFE9920C338DA00013921 /* TxStatus.swift */; };
 		C87E226E2031708000323584 /* ToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E226D2031708000323584 /* ToggleTableViewCell.swift */; };
 		C8BF959D202696A900343B9A /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BF959C202696A900343B9A /* MainTabController.swift */; };
 		C8BF95B02027AC9400343B9A /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BF95AE2027AC9400343B9A /* SetupViewController.swift */; };
@@ -994,6 +997,9 @@
 		ACF06A05204C736A00C3FF86 /* CreateMnemonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMnemonicTests.swift; sourceTree = "<group>"; };
 		ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeTableViewCell.swift; sourceTree = "<group>"; };
 		ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeTableViewCell.xib; sourceTree = "<group>"; };
+		ACFEFE9420C337BD00013921 /* PendingTransactionsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingTransactionsDataManager.swift; sourceTree = "<group>"; };
+		ACFEFE9720C338BC00013921 /* TxType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxType.swift; sourceTree = "<group>"; };
+		ACFEFE9920C338DA00013921 /* TxStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxStatus.swift; sourceTree = "<group>"; };
 		C87E226D2031708000323584 /* ToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleTableViewCell.swift; sourceTree = "<group>"; };
 		C8BF959C202696A900343B9A /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		C8BF95AE2027AC9400343B9A /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
@@ -1949,6 +1955,7 @@
 		ACB9115E20242E2400F14644 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ACFEFE9620C3389400013921 /* Transaction */,
 				AC4142052038B66F0089861D /* AppWallet.swift */,
 				ACB9115F20242E3F00F14644 /* Asset.swift */,
 				940B452C2061206800ADE2B9 /* Token.swift */,
@@ -1966,11 +1973,9 @@
 				949629DA204E836400858F03 /* Depth.swift */,
 				949629DE204E9C9800858F03 /* MinedRing.swift */,
 				94B5CA89204FB4E20081BA93 /* DefaultBlock.swift */,
-				94B5CA8B204FE8E40081BA93 /* ETH_Transaction.swift */,
 				94E185962051451C00D86FFA /* Initable.swift */,
 				94E185982051455C00D86FFA /* SimpleRespond.swift */,
 				943BDED22056350000D5BF81 /* PriceQuote.swift */,
-				948952D2205A74BE009B03FE /* Transaction.swift */,
 				94DCE550205FAC07005618E4 /* Trend.swift */,
 				ACB97C6F20715BC100775D4C /* MnemonicQuestion.swift */,
 				94AD1FE4208B910D00C443E6 /* Currency.swift */,
@@ -1999,6 +2004,7 @@
 				940B45162060F67C00ADE2B9 /* TradeDataManager.swift */,
 				ACEC978120AD6165003F9DEB /* P2POrderHistoryDataManager.swift */,
 				940B45172060F67C00ADE2B9 /* UserDefaultsKeys.swift */,
+				ACFEFE9420C337BD00013921 /* PendingTransactionsDataManager.swift */,
 				941B1EFB209C41BB00710DFF /* GasDataManager.swift */,
 				AC971EC720BB412200EDEDD0 /* AuthenticationDataManager.swift */,
 			);
@@ -2189,6 +2195,17 @@
 				ACEC978920B24818003F9DEB /* TapticEngine.swift */,
 			);
 			path = Slider;
+			sourceTree = "<group>";
+		};
+		ACFEFE9620C3389400013921 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				94B5CA8B204FE8E40081BA93 /* ETH_Transaction.swift */,
+				948952D2205A74BE009B03FE /* Transaction.swift */,
+				ACFEFE9720C338BC00013921 /* TxType.swift */,
+				ACFEFE9920C338DA00013921 /* TxStatus.swift */,
+			);
+			path = Transaction;
 			sourceTree = "<group>";
 		};
 		C8BF959B20267FB600343B9A /* SetupWallet */ = {
@@ -2785,6 +2802,7 @@
 				AC31CE4B205B83B600A30335 /* TradeTokenView.swift in Sources */,
 				AC387521205F12F100A76637 /* ContextMenu.swift in Sources */,
 				AC061939208401EB0060F416 /* MnemonicAddressTableViewCell.swift in Sources */,
+				ACFEFE9A20C338DA00013921 /* TxStatus.swift in Sources */,
 				AC4F600F20773E9D00F1D954 /* GethBigInt+Extension.swift in Sources */,
 				9413F69120B802CB00524D2D /* AmountButton.swift in Sources */,
 				ACE58B8520BE796A005BC1C8 /* VerifyMnemonicViewController.swift in Sources */,
@@ -2835,6 +2853,7 @@
 				AC31B94E204A8DF400B16155 /* KeystoreKey.swift in Sources */,
 				AC3756732038D64B00AADC60 /* MnemonicViewController.swift in Sources */,
 				ACA677C0207997F400D34A2F /* DisplayKeystoreViewController.swift in Sources */,
+				ACFEFE9820C338BC00013921 /* TxType.swift in Sources */,
 				AC2D2C05208882BD00D619AD /* FoundationArray+Extension.swift in Sources */,
 				ACB5DD9E202D5B8D00140A09 /* NumericKeyboardItem.swift in Sources */,
 				949629DF204E9C9800858F03 /* MinedRing.swift in Sources */,
@@ -2867,6 +2886,7 @@
 				943BDED32056350000D5BF81 /* PriceQuote.swift in Sources */,
 				ACDBF10A203FEA07000F0DEC /* ReorderAutoScroll.swift in Sources */,
 				ACDBF108203FE9D2000F0DEC /* ReorderDestinationRow.swift in Sources */,
+				ACFEFE9520C337BE00013921 /* PendingTransactionsDataManager.swift in Sources */,
 				AC4141F720352D6B0089861D /* SwipeView.swift in Sources */,
 				94B5CA8A204FB4E20081BA93 /* DefaultBlock.swift in Sources */,
 				ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */,

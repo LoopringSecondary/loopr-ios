@@ -199,7 +199,7 @@ class AssetTransactionDetailViewController: UIViewController {
                 label3.text = NSLocalizedString("From", comment: "")
                 button1.title = transaction.from
             case .sent:
-                label3.text = "To"
+                label3.text = NSLocalizedString("To", comment: "")
                 button1.title = transaction.to
             case .approved:
                 amountLabel.isHidden = true

@@ -225,7 +225,7 @@
 "Security Settings" = "安全性设置";
 "Authenticate to access your wallet" = "验证访问您的钱包";
 "Touch ID" = "触控 ID";
-"Face ID" = "Face ID";
+"Face ID" = "面容 ID";
 "From" = "发送地址";
 "To" = "接收地址";
 "My wallet address in Loopr" = "我在Loopr里的钱包地址";
@@ -244,3 +244,9 @@
 "Irrational" = "设价不合理";
 "The name is token, please try another one" = "钱包名称重复";
 "Back" = "返回";
+"Undefined" = "未定义";
+"Pending" = "待处理";
+"Completed" = "完成";
+"Failed" = "失败";
+"Other" = "其他";
+
