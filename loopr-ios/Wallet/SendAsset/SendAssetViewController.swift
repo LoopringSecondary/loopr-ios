@@ -256,13 +256,14 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         // TODO: Update the transaction fee is needed. in SendCurrentAppWalletDataManager
         tokenSymbolLabel.text = asset.symbol
         let title = NSLocalizedString("Available Balance", comment: "")
-        tokenTotalAmountLabel.text = "\(title) \(asset.balance) \(asset.symbol)"
+        tokenTotalAmountLabel.text = "\(title) \(asset.display) \(asset.symbol)"
         SendCurrentAppWalletDataManager.shared.getNonceFromServer()
     }
     
     func setResultOfAmount(with percentage: Double) {
+        let length = Asset.getLength(of: asset.symbol) ?? 4
         let value = asset.balance * Double(percentage)
-        amountTextField.text = value.format()
+        amountTextField.text = value.withCommas(length)
         if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
             let total = value * price
             updateLabel(label: amountInfoLabel, text: total.currency, textColor: .black)
@@ -330,7 +331,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                     }
                 } else {
                     let title = NSLocalizedString("Available Balance", comment: "")
-                    updateLabel(label: amountInfoLabel, text: "\(title) \(asset.balance.format()) \(asset.symbol)", textColor: .red)
+                    updateLabel(label: amountInfoLabel, text: "\(title) \(asset.display) \(asset.symbol)", textColor: .red)
                 }
             } else {
                 let text = NSLocalizedString("Please input a valid amount", comment: "")
@@ -614,7 +615,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if tokenTotalAmountLabel.frame.maxY < scrollView.contentOffset.y {
-            self.navigationItem.title = "\(asset!.balance) \(asset!.symbol) Available"
+            self.navigationItem.title = "\(asset!.display) \(asset!.symbol) Available"
         } else {
             self.navigationItem.title = ""
         }

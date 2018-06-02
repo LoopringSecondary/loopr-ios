@@ -37,8 +37,8 @@ class AssetBalanceTableViewCell: UITableViewCell {
 
     func update() {
         if let asset = self.asset {
-            balanceLabel.setText(asset.balance.description, animated: false)
-            displayLabel.text = asset.display
+            balanceLabel.setText(asset.display, animated: false)
+            displayLabel.text = asset.currency
         }
     }
     

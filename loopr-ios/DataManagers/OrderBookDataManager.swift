@@ -72,7 +72,7 @@ class OrderBookDataManager {
                 orderBooks.append(orderBook)
             } else {
                 let lastItem = orderBooks.last!
-                if lastItem.price.withCommas(minimumFractionDigits: 8) == orderBook.price.withCommas(minimumFractionDigits: 8) && lastItem.orderStatus == order.orderStatus && lastItem.side == orderBook.side {
+                if lastItem.price.withCommas(8) == orderBook.price.withCommas(8) && lastItem.orderStatus == order.orderStatus && lastItem.side == orderBook.side {
                     lastItem.aggregateSamePriceOrder(newOrder: order)
                     orderBooks[orderBooks.count-1] = lastItem
                 } else {

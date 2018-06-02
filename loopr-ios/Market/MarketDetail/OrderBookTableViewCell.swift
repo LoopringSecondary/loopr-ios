@@ -43,14 +43,13 @@ class OrderBookTableViewCell: UITableViewCell {
         guard let orderBook = orderBook else {
             return
         }
-
         if orderBook.side.lowercased() == "sell" {
-            priceLabel.text = orderBook.price.withCommas(minimumFractionDigits: 8)
+            priceLabel.text = orderBook.price.withCommas(8)
             amountLabel.text = orderBook.amountSell.withCommas()
             totalLabel.text = orderBook.amountBuy.withCommas()
             priceLabel.textColor = UIStyleConfig.red
         } else if orderBook.side.lowercased() == "buy" {
-            priceLabel.text = orderBook.price.withCommas(minimumFractionDigits: 8)
+            priceLabel.text = orderBook.price.withCommas(8)
             amountLabel.text = orderBook.amountBuy.withCommas()
             totalLabel.text = orderBook.amountSell.withCommas()
             priceLabel.textColor = UIStyleConfig.green

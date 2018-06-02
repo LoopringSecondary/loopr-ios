@@ -141,7 +141,7 @@ class TradeConfirmationViewController: UIViewController {
         tokenSView.update(title: NSLocalizedString("You are selling", comment: ""), symbol: order.tokenSell, amount: order.amountSell)
         tokenBView.update(title: NSLocalizedString("You are buying", comment: ""), symbol: order.tokenBuy, amount: order.amountBuy)
         let value = order.amountBuy / order.amountSell
-        priceValueLabel.text = "\(value.format()) \(TradeDataManager.shared.tradePair)"
+        priceValueLabel.text = "\(value.withCommas()) \(TradeDataManager.shared.tradePair)"
         if !validateRational(price: value) {
             priceTipLabel.isHidden = false
             priceValueLabel.frame = CGRect(x: priceTipLabel.frame.minX - 200, y: priceLabel.frame.minY, width: 200, height: 40)

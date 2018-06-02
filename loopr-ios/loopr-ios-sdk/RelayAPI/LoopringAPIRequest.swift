@@ -46,7 +46,6 @@ class LoopringAPIRequest {
                 completionHandler([], error)
                 return
             }
-            
             let json = JSON(data)
             var assets: [Asset] = []
             let offerData = json["result"]["tokens"]

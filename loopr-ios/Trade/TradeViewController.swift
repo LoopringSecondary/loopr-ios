@@ -498,7 +498,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     func setResultOfAmount(with percentage: Double) {
         let tokens = TradeDataManager.shared.tokenS.symbol
         if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
-            amountSellTextField.text = (balance * percentage).format()
+            amountSellTextField.text = (balance * percentage).withCommas()
         } else {
             amountSellTextField.text = "0.0"
         }

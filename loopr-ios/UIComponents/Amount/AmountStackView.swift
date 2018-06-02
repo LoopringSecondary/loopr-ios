@@ -95,7 +95,7 @@ protocol AmountStackViewDelegate: class {
             }
         }
         let symbol: String = NumberFormatter().percentSymbol
-        infoLabel.text = Double(progress * 100).format(0) + symbol
+        infoLabel.text = Double(progress * 100).withCommas(0) + symbol
     }
     
     @objc func stop(_ button: AmountButton) {

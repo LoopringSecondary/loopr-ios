@@ -166,6 +166,9 @@ class LoopringAPIRequestTests: XCTestCase {
                 return
             }
             XCTAssertNotNil(price)
+            price?.tokens.forEach({ (token) in
+                print(token.symbol + " " + token.price.description)
+            })
             print("\nprice.currency:\(price!.currency)\n")
             expectation.fulfill()
         }

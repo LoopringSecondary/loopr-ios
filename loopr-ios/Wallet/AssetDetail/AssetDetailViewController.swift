@@ -129,7 +129,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
          */
 
         if let asset = asset, asset.symbol.uppercased() == "ETH" || asset.symbol.uppercased() == "WETH" {
-            let convertButton = UIButton(frame: CGRect(x: 0, y: 0, width: 45.3, height: 28))
+            let convertButton = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 28))
             convertButton.setupRoundWhite(height: 28)
             convertButton.setTitle(NSLocalizedString("Convert", comment: ""), for: .normal)
             convertButton.contentHorizontalAlignment = .center

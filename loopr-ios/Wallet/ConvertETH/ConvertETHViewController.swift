@@ -126,7 +126,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             let symbol = asset.symbol
             let available = ConvertDataManager.shared.getMaxAmount(symbol: symbol)
             let title = NSLocalizedString("Available Balance", comment: "")
-            availableLabel.text = "\(title) \(available.format()) \(symbol)"
+            availableLabel.text = "\(title) \(available.withCommas()) \(symbol)"
             tokenSView.update(symbol: symbol)
             tokenBView.update(symbol: getAnotherToken())
         }
@@ -171,7 +171,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             infoLabel.text = "1 WETH = 1 ETH"
         }
         let maxAmount = ConvertDataManager.shared.getMaxAmount(symbol: symbol)
-        availableLabel.text = "Available \(maxAmount.format()) \(symbol)"
+        availableLabel.text = "Available \(maxAmount.withCommas()) \(symbol)"
         availableLabel.textColor = .black
         if let text = amountTextField.text, let inputAmount = Double(text) {
             if inputAmount > 0 {
@@ -206,7 +206,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     @objc func pressedMaxButton(_ sender: Any) {
         print("pressedMaxButton")
         if let asset = self.asset {
-            amountTextField.text = ConvertDataManager.shared.getMaxAmount(symbol: asset.symbol).format()
+            amountTextField.text = ConvertDataManager.shared.getMaxAmount(symbol: asset.symbol).withCommas()
             updateLabel()
         }
     }
@@ -260,7 +260,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             let symbol = asset.symbol
             let available = ConvertDataManager.shared.getMaxAmount(symbol: symbol)
             let value = available * Double(percentage)
-            amountTextField.text = value.format()
+            amountTextField.text = value.withCommas()
             updateLabel()
         }
     }

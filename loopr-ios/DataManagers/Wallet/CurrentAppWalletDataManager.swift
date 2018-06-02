@@ -143,7 +143,7 @@ class CurrentAppWalletDataManager {
             // If the price quote is nil, asset won't be updated. Please use getBalanceAndPriceQuote()
             if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
                 let total = asset.balance * price
-                asset.display = total.currency
+                asset.currency = total.currency
                 totalCurrencyValue += total
                 
                 // If the asset is in the array, then replace it.
@@ -275,23 +275,11 @@ class CurrentAppWalletDataManager {
         guard currentAppWallet != nil else {
             return
         }
-        
         print("getBalanceAndPriceQuote Current address: \(self.currentAppWallet!.address)")
         
         var localAssets: [Asset] = []
-
         let dispatchGroup = DispatchGroup()
-        dispatchGroup.enter()
-        LoopringAPIRequest.getBalance(owner: self.currentAppWallet!.address) { assets, error in
-            print("receive LoopringAPIRequest.getBalance ...")
-            guard error == nil else {
-                print("error=\(String(describing: error))")
-                return
-            }
-            localAssets = assets
-            dispatchGroup.leave()
-        }
-
+        
         dispatchGroup.enter()
         let currency = SettingDataManager.shared.getCurrentCurrency().name
         LoopringAPIRequest.getPriceQuote(currency: currency, completionHandler: { (priceQuote, error) in
@@ -303,6 +291,17 @@ class CurrentAppWalletDataManager {
             PriceDataManager.shared.setPriceQuote(newPriceQuote: priceQuote!)
             dispatchGroup.leave()
         })
+        
+        dispatchGroup.enter()
+        LoopringAPIRequest.getBalance(owner: self.currentAppWallet!.address) { assets, error in
+            print("receive LoopringAPIRequest.getBalance ...")
+            guard error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            localAssets = assets
+            dispatchGroup.leave()
+        }
         
         dispatchGroup.notify(queue: .main) {
             print("Both functions complete 👍")

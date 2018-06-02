@@ -62,30 +62,30 @@ class AssetTransactionTableViewCell: UITableViewCell {
         amountLabel.isHidden = false
         displayLabel.isHidden = false
         if transaction!.symbol.lowercased() == "weth" {
-            titleLabel.text = NSLocalizedString("Convert ETH To WETH", comment: "")
+            titleLabel.text = NSLocalizedString("Convert ETH", comment: "")
         } else if transaction!.symbol.lowercased() == "eth" {
-            titleLabel.text = NSLocalizedString("Convert WETH To ETH", comment: "")
+            titleLabel.text = NSLocalizedString("Convert WETH", comment: "")
         }
         amountLabel.text = "\(transaction!.value) \(transaction?.symbol ?? " ")"
-        displayLabel.text = transaction!.display
+        displayLabel.text = transaction!.currency
     }
     
     private func updateConvertOutcome() {
         amountLabel.isHidden = false
         displayLabel.isHidden = false
         if transaction!.symbol.lowercased() == "weth" {
-            titleLabel!.text = NSLocalizedString("Convert WETH To ETH", comment: "")
+            titleLabel!.text = NSLocalizedString("Convert WETH", comment: "")
         } else if transaction!.symbol.lowercased() == "eth" {
-            titleLabel!.text = NSLocalizedString("Convert ETH To WETH", comment: "")
+            titleLabel!.text = NSLocalizedString("Convert ETH", comment: "")
         }
         amountLabel.text = "\(transaction!.value) \(transaction?.symbol ?? " ")"
-        displayLabel.text = transaction!.display
+        displayLabel.text = transaction!.currency
     }
     
     private func updateApprove() {
         amountLabel.isHidden = true
         displayLabel.isHidden = true
-        titleLabel.text = NSLocalizedString("Enable \(transaction!.symbol) To Trade", comment: "")
+        titleLabel.text = NSLocalizedString("Enable \(transaction!.symbol)", comment: "")
     }
     
     private func udpateCutoffAndCanceledOrder() {
@@ -99,7 +99,7 @@ class AssetTransactionTableViewCell: UITableViewCell {
         displayLabel.isHidden = false
         titleLabel.text = transaction!.type.description + " " + transaction!.symbol
         amountLabel.text = "\(transaction!.value) \(transaction?.symbol ?? " ")"
-        displayLabel.text = transaction!.display
+        displayLabel.text = transaction!.currency
     }
 
     class func getCellIdentifier() -> String {

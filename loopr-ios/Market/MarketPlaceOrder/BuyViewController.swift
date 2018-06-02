@@ -185,7 +185,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
 
         if let balance = getSellingBalance() {
             let title = NSLocalizedString("Available Balance", comment: "")
-            availableLabel.text = "\(title) \(balance.format()) \(PlaceOrderDataManager.shared.tokenB.symbol)"
+            availableLabel.text = "\(title) \(balance.withCommas()) \(PlaceOrderDataManager.shared.tokenB.symbol)"
         }
         availableLabel.font = FontConfigManager.shared.getLabelFont()
         availableLabel.frame = CGRect(x: padding, y: totalUnderLine.frame.maxY, width: screenWidth-padding*2, height: 40)
@@ -627,7 +627,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             self.percentage = percentage
             if let balance = CurrentAppWalletDataManager.shared.getBalance(of: PlaceOrderDataManager.shared.tokenA.symbol) {
                 let value = balance * percentage
-                amountTextField.text = value.format()
+                amountTextField.text = value.withCommas()
             }
         }
         self.activeTextFieldTag = amountTextField.tag

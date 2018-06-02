@@ -114,7 +114,7 @@ class TradeCompleteViewController: UIViewController {
             for item in info {
                 if item.key.starts(with: "MINUS_") {
                     let key = item.key.components(separatedBy: "_")[1]
-                    self.errorTipInfo.append("\(item.value.format()) \(key)")
+                    self.errorTipInfo.append("\(item.value.withCommas()) \(key)")
                 }
             }
         }
