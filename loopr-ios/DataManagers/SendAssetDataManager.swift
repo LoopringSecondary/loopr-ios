@@ -306,9 +306,12 @@ class SendCurrentAppWalletDataManager {
     
     func _transfer(data: Data, address: GethAddress, amount: GethBigInt, gasLimit: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
         if let signedTransaction = _sign(data: data, address: address, amount: amount, gasLimit: gasLimit, completion: completion) {
-            self.sendTransactionToServer(signedTransaction: signedTransaction, completion: { (result, error) in
-                if result != nil && error == nil {
-                    LoopringAPIRequest.notifyTransactionSubmitted(txHash: result!, completionHandler: completion)
+            self.sendTransactionToServer(signedTransaction: signedTransaction, completion: { (txHash, error) in
+                if txHash != nil && error == nil {
+                    completion(txHash!, nil)
+                    LoopringAPIRequest.notifyTransactionSubmitted(txHash: txHash!, completionHandler: {_, _ in })
+                    
+                    // TODO: txHash need to be stored in the local storage.
                 } else {
                     completion(nil, error)
                 }
