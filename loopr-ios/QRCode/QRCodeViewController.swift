@@ -64,9 +64,17 @@ class QRCodeViewController: UIViewController {
     
     func updateNavigationView(tintColor: UIColor, textColor: UIColor, statusBarStyle: UIStatusBarStyle) {
         self.navigationController?.navigationBar.barTintColor = tintColor
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: textColor]
         self.navigationController?.navigationBar.tintColor = textColor
-        
+
+        let shadow = NSShadow()
+        shadow.shadowOffset = CGSize(width: 0, height: 0)
+
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedStringKey.foregroundColor: textColor,
+            NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getLight(), size: 16*UIStyleConfig.scale)!,
+            NSAttributedStringKey.shadow: shadow
+        ]
+
         // Update the statusBar
         UIApplication.shared.statusBarStyle = statusBarStyle
         self.setNeedsStatusBarAppearanceUpdate()
