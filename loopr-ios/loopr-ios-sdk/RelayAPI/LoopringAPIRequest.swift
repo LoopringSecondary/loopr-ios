@@ -437,7 +437,9 @@ class LoopringAPIRequest {
         }
     }
 
-    // Ready
+    // TODO: This has been updated.
+    // https://github.com/Loopring/relay/blob/master/LOOPRING_RELAY_API_SPEC_V2.md#loopring_notifytransactionsubmitted
+    // It's difficult to update our code to send the API.
     static func notifyTransactionSubmitted(txHash: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_notifyTransactionSubmitted"

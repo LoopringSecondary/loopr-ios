@@ -632,20 +632,26 @@ extension SendAssetViewController {
         
         guard error == nil && txHash != nil else {
             // Show toast
-            DispatchQueue.main.async {
-                print("SendAssetViewController \(error.debugDescription)")
-                let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
-                banner.duration = 5
-                banner.show()
+            DispatchQueue.main.async {                
+                let title = NSLocalizedString("Failed to send the transaction", comment: "")
+                let message = String(describing: error)
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Back", comment: ""), style: .default, handler: { _ in
+                }))
+                self.present(alert, animated: true, completion: nil)
             }
             return
         }
         print("Result of transfer is \(txHash!)")
         // Show toast
         DispatchQueue.main.async {
-            let banner = NotificationBanner.generate(title: "Success. Result of transfer is \(txHash!)", style: .success)
-            banner.duration = 5
-            banner.show()
+            let title = NSLocalizedString("Sent the transaction successfully", comment: "")
+            let message = "Result of transfer is \(txHash!)"
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
