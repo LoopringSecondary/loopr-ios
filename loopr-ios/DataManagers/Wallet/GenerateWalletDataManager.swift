@@ -21,7 +21,6 @@ class GenerateWalletDataManager {
     private var userInputMnemonics: [String] = []
 
     var isVerified: Bool = false
-    var mnemonicQuestions: [MnemonicQuestion] = []
 
     private init() {
         
@@ -32,14 +31,6 @@ class GenerateWalletDataManager {
         let mnemonicString = Mnemonic.generate(strength: 128)
         let mnemonics = mnemonicString.components(separatedBy: " ")
         self.mnemonics = mnemonics
-
-        // Generate 24 questions
-        mnemonicQuestions = []
-        for (index, value) in mnemonics.enumerated() {
-            let mnemonicQuestion = MnemonicQuestion(index: index, mnemonic: value)
-            mnemonicQuestions.append(mnemonicQuestion)
-        }
-
         return mnemonics
     }
 
@@ -57,15 +48,6 @@ class GenerateWalletDataManager {
     
     func getUserInputMnemonics() -> [String] {
         return userInputMnemonics
-    }
-
-    // Deprecated. Will be removed soon.
-    // TODO: In the design, users can only move to the next question?
-    func getQuestion(index: Int) -> MnemonicQuestion {
-        if index >= mnemonicQuestions.count {
-            return mnemonicQuestions[0]
-        }
-        return mnemonicQuestions[index]
     }
 
     func clearUserInputMnemonic() {

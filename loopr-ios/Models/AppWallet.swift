@@ -182,7 +182,6 @@ class AppWallet: NSObject, NSCoding {
         let isVerified = aDecoder.containsValue(forKey: "isVerified") ? aDecoder.decodeBool(forKey: "isVerified") : false
         let active = aDecoder.decodeBool(forKey: "active")
         
-
         // TODO: mnemonics vs. mnemonic
         let mnemonics = aDecoder.decodeObject(forKey: "mnemonics") as? [String]
         

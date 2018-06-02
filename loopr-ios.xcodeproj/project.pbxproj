@@ -354,8 +354,6 @@
 		AC70E84E20683C7500451047 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC70E84D20683C7500451047 /* IconView.swift */; };
 		AC72AED8204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AED6204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift */; };
 		AC72AED9204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC72AED7204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib */; };
-		AC72AEDC204C9F6300E9D3B0 /* VerifyMnemonicViewController_Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEDA204C9F6300E9D3B0 /* VerifyMnemonicViewController_Archive.swift */; };
-		AC72AEDD204C9F6300E9D3B0 /* VerifyMnemonicViewController_Archive.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC72AEDB204C9F6300E9D3B0 /* VerifyMnemonicViewController_Archive.xib */; };
 		AC72AEE2204D084500E9D3B0 /* AppWalletDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEE1204D084500E9D3B0 /* AppWalletDataManagerTests.swift */; };
 		AC72AEE8204F020B00E9D3B0 /* OrderTradeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEE7204F020B00E9D3B0 /* OrderTradeState.swift */; };
 		AC72AEEA204F038300E9D3B0 /* OrderTradeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AEE9204F038300E9D3B0 /* OrderTradeError.swift */; };
@@ -830,8 +828,6 @@
 		AC70E84D20683C7500451047 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		AC72AED6204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupMnemonicViewController.swift; sourceTree = "<group>"; };
 		AC72AED7204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackupMnemonicViewController.xib; sourceTree = "<group>"; };
-		AC72AEDA204C9F6300E9D3B0 /* VerifyMnemonicViewController_Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyMnemonicViewController_Archive.swift; sourceTree = "<group>"; };
-		AC72AEDB204C9F6300E9D3B0 /* VerifyMnemonicViewController_Archive.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerifyMnemonicViewController_Archive.xib; sourceTree = "<group>"; };
 		AC72AEE1204D084500E9D3B0 /* AppWalletDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWalletDataManagerTests.swift; sourceTree = "<group>"; };
 		AC72AEE7204F020B00E9D3B0 /* OrderTradeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTradeState.swift; sourceTree = "<group>"; };
 		AC72AEE9204F038300E9D3B0 /* OrderTradeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTradeError.swift; sourceTree = "<group>"; };
@@ -1462,8 +1458,6 @@
 				AC8DBC7620BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.xib */,
 				AC8DBC6B20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift */,
 				AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */,
-				AC72AEDA204C9F6300E9D3B0 /* VerifyMnemonicViewController_Archive.swift */,
-				AC72AEDB204C9F6300E9D3B0 /* VerifyMnemonicViewController_Archive.xib */,
 				ACE58B8320BE796A005BC1C8 /* VerifyMnemonicViewController.swift */,
 				ACE58B8420BE796A005BC1C8 /* VerifyMnemonicViewController.xib */,
 			);
@@ -2442,7 +2436,6 @@
 				ACBA47E320788ECD0032C2B4 /* SettingManageWalletViewController.xib in Resources */,
 				9498E3ED2075E27E00BC8B4F /* OrderHistorySearchResultCell.xib in Resources */,
 				AC31CE37205B603600A30335 /* Linotype-DINNextCYR-UltraLight.otf in Resources */,
-				AC72AEDD204C9F6300E9D3B0 /* VerifyMnemonicViewController_Archive.xib in Resources */,
 				AC13B30B2054A766008A72C0 /* BuyViewController.xib in Resources */,
 				AC10609E2073475200677D63 /* AddMenuTableViewCell.xib in Resources */,
 				94D94CE42084A9380000BBC8 /* ConfirmationResultViewController.xib in Resources */,
@@ -2924,7 +2917,6 @@
 				9498E3EC2075E27E00BC8B4F /* OrderHistorySearchResultCell.swift in Sources */,
 				940B45282060F67E00ADE2B9 /* SetupDataManager.swift in Sources */,
 				AC5E0DD6203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift in Sources */,
-				AC72AEDC204C9F6300E9D3B0 /* VerifyMnemonicViewController_Archive.swift in Sources */,
 				AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */,
 				AC4F601120773E9D00F1D954 /* EthAccountCoordinator.swift in Sources */,
 				ACDBF103203FE790000F0DEC /* ReorderUITableView.swift in Sources */,
