@@ -41,16 +41,6 @@ class AssetBalanceTableViewCell: UITableViewCell {
             displayLabel.text = asset.currency
         }
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
 
     class func getCellIdentifier() -> String {
         return "AssetBalanceTableViewCell"

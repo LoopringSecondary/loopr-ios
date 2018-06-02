@@ -34,13 +34,7 @@ class OrderHistorySearchResultCell: UITableViewCell {
         }
         tokenLabel.text = token!.symbol + " (" + token!.source + ")"
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
-    }
-    
     class func getCellIdentifier() -> String {
         return "OrderHistorySearchResultCell"
     }

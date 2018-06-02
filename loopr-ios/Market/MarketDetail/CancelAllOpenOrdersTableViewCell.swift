@@ -51,12 +51,6 @@ class CancelAllOpenOrdersTableViewCell: UITableViewCell {
         cancelAllButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 12.0)
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     @IBAction func toggleHidePairSwitch(_ sender: UISwitch) {
         SettingDataManager.shared.setHideOtherPair(hideOtherPairsSwitch.isOn)
         if let action = self.toggleHidePairSwitchClosure {

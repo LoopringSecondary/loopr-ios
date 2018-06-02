@@ -78,12 +78,6 @@ class MarketLineChartTableViewCell: UITableViewCell, ChartViewDelegate {
         buyButton.setTitle(NSLocalizedString("Buy", comment: ""), for: .normal)
         buyButton.setupRoundBlack()
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
     func refreshTrend() {
         if let trends = self.trends {

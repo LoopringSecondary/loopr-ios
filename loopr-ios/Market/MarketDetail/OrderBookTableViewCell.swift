@@ -33,12 +33,6 @@ class OrderBookTableViewCell: UITableViewCell {
         seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
     func update() {
         guard let orderBook = orderBook else {
             return

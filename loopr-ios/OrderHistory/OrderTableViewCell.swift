@@ -145,12 +145,6 @@ class OrderTableViewCell: UITableViewCell {
         filledPieChart.update()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     @IBAction func pressedCancelButton(_ sender: Any) {
         if let btnAction = self.pressedCancelButtonClosure {
             btnAction()

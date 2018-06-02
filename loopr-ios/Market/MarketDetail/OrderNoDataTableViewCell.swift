@@ -22,12 +22,6 @@ class OrderNoDataTableViewCell: UITableViewCell {
         noDataLabel.textColor = UIColor.black
         noDataLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17.0*UIStyleConfig.scale)        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     class func getCellIdentifier() -> String {
         return "OrderNoDataTableViewCell"

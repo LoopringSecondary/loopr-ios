@@ -26,7 +26,6 @@ class SelectWalletTableViewCell: FoldingCell, UICollectionViewDataSource, UIColl
     var wallet: AppWallet?
     
     override func animationDuration(_ itemIndex: NSInteger, type: FoldingCell.AnimationType) -> TimeInterval {
-
         // durations count equal it itemCount
         let durations = [0.33, 0.26, 0.26] // timing animation for each view
         return durations[itemIndex]
@@ -74,12 +73,6 @@ class SelectWalletTableViewCell: FoldingCell, UICollectionViewDataSource, UIColl
         enterButton.layer.borderColor = UIColor.init(rgba: "#A5A5A5").cgColor
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     func update() {
         if let wallet = wallet {
             nameLabel.text = wallet.name

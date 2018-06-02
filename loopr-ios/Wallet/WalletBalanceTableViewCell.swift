@@ -51,19 +51,9 @@ class WalletBalanceTableViewCell: UITableViewCell {
         }
 
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-    
+
     func update() {
         balanceLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func setup() {

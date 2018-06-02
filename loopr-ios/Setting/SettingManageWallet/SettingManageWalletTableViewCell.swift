@@ -30,12 +30,6 @@ class SettingManageWalletTableViewCell: UITableViewCell {
         tintColor = UIColor.black
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     func update() {
         if let wallet = wallet {
             nameLabel.text = wallet.name
