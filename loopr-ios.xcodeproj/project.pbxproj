@@ -512,6 +512,7 @@
 		ACFEFE9520C337BE00013921 /* PendingTransactionsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEFE9420C337BD00013921 /* PendingTransactionsDataManager.swift */; };
 		ACFEFE9820C338BC00013921 /* TxType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEFE9720C338BC00013921 /* TxType.swift */; };
 		ACFEFE9A20C338DA00013921 /* TxStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEFE9920C338DA00013921 /* TxStatus.swift */; };
+		ACFEFE9F20C3436000013921 /* loopr_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACFEFE9D20C3436000013921 /* loopr_ios.xcdatamodeld */; };
 		C87E226E2031708000323584 /* ToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E226D2031708000323584 /* ToggleTableViewCell.swift */; };
 		C8BF959D202696A900343B9A /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BF959C202696A900343B9A /* MainTabController.swift */; };
 		C8BF95B02027AC9400343B9A /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BF95AE2027AC9400343B9A /* SetupViewController.swift */; };
@@ -1000,6 +1001,8 @@
 		ACFEFE9420C337BD00013921 /* PendingTransactionsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingTransactionsDataManager.swift; sourceTree = "<group>"; };
 		ACFEFE9720C338BC00013921 /* TxType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxType.swift; sourceTree = "<group>"; };
 		ACFEFE9920C338DA00013921 /* TxStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxStatus.swift; sourceTree = "<group>"; };
+		ACFEFE9B20C3423300013921 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		ACFEFE9E20C3436000013921 /* loopr_ios.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = loopr_ios.xcdatamodel; sourceTree = "<group>"; };
 		C87E226D2031708000323584 /* ToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleTableViewCell.swift; sourceTree = "<group>"; };
 		C8BF959C202696A900343B9A /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		C8BF95AE2027AC9400343B9A /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
@@ -1042,6 +1045,7 @@
 		573126224A6973A7617FB170 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ACFEFE9B20C3423300013921 /* CoreData.framework */,
 				AC0C5C83203D154700C8618D /* QuartzCore.framework */,
 				AC0C5C81203D153F00C8618D /* CoreGraphics.framework */,
 				929BB32EF62C4BD6BC1DFC8F /* Pods_loopr_ios.framework */,
@@ -1641,6 +1645,7 @@
 			children = (
 				ACCC7EA120828D2E008E58BA /* loopr-ios-sdk */,
 				AC798E422022B93A0071D477 /* AppDelegate.swift */,
+				ACFEFE9D20C3436000013921 /* loopr_ios.xcdatamodeld */,
 				AC5288AF208300570002AEAD /* Utils */,
 				AC798E482022B93A0071D477 /* Main.storyboard */,
 				C8BF959C202696A900343B9A /* MainTabController.swift */,
@@ -2771,6 +2776,7 @@
 				94C5E79D207394F50074B939 /* CustomSearchController.swift in Sources */,
 				ACB911842026388700F14644 /* SettingViewController.swift in Sources */,
 				AC46F7762069FB4400CFDC40 /* UIButton+RoundButton.swift in Sources */,
+				ACFEFE9F20C3436000013921 /* loopr_ios.xcdatamodeld in Sources */,
 				AC4F601520773E9D00F1D954 /* EthFunction.swift in Sources */,
 				AC10609D2073475200677D63 /* AddMenuTableViewCell.swift in Sources */,
 				C87E226E2031708000323584 /* ToggleTableViewCell.swift in Sources */,
@@ -3359,6 +3365,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		ACFEFE9D20C3436000013921 /* loopr_ios.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				ACFEFE9E20C3436000013921 /* loopr_ios.xcdatamodel */,
+			);
+			currentVersion = ACFEFE9E20C3436000013921 /* loopr_ios.xcdatamodel */;
+			path = loopr_ios.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AC798E372022B93A0071D477 /* Project object */;
 }
