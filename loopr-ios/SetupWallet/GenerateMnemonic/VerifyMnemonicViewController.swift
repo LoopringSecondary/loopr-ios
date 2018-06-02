@@ -170,7 +170,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
     }
 
     func exit() {
-        let appWallet = GenerateWalletDataManager.shared.complete()
+        let appWallet = try! GenerateWalletDataManager.shared.complete()
 
         let header = NSLocalizedString("Create", comment: "")
         let footer = NSLocalizedString("successfully", comment: "")

@@ -53,7 +53,7 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
     }
     
     func complete() {
-        let newAppWallet = AppWallet(setupWalletMethod: .importUsingPrivateKey, address: address, privateKey: privateKey, password: password, name: walletName, active: true)
+        let newAppWallet = AppWallet(setupWalletMethod: .importUsingPrivateKey, address: address, privateKey: privateKey, password: password, name: walletName, isVerified: true, active: true)
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
         

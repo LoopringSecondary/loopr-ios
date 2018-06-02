@@ -342,6 +342,7 @@
 		AC5E3E74205E22080051ACFC /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E3E73205E22080051ACFC /* NotificationName.swift */; };
 		AC6466082083EE1E00EBEC97 /* MnemonicDerivationPathTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6466062083EE1E00EBEC97 /* MnemonicDerivationPathTableViewCell.swift */; };
 		AC6466092083EE1E00EBEC97 /* MnemonicDerivationPathTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC6466072083EE1E00EBEC97 /* MnemonicDerivationPathTableViewCell.xib */; };
+		AC68E0FF20C22E8A00BFA837 /* AddWalletError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68E0FE20C22E8A00BFA837 /* AddWalletError.swift */; };
 		AC69913B20AA6254003593AE /* SettingWalletDetailViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69913A20AA6254003593AE /* SettingWalletDetailViewControllerDataSource.swift */; };
 		AC69913E20AA68F7003593AE /* SettingWalletDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69913C20AA68F7003593AE /* SettingWalletDetailTableViewCell.swift */; };
 		AC69913F20AA68F7003593AE /* SettingWalletDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC69913D20AA68F7003593AE /* SettingWalletDetailTableViewCell.xib */; };
@@ -817,6 +818,7 @@
 		AC5E3E73205E22080051ACFC /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		AC6466062083EE1E00EBEC97 /* MnemonicDerivationPathTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicDerivationPathTableViewCell.swift; sourceTree = "<group>"; };
 		AC6466072083EE1E00EBEC97 /* MnemonicDerivationPathTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicDerivationPathTableViewCell.xib; sourceTree = "<group>"; };
+		AC68E0FE20C22E8A00BFA837 /* AddWalletError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWalletError.swift; sourceTree = "<group>"; };
 		AC69913A20AA6254003593AE /* SettingWalletDetailViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWalletDetailViewControllerDataSource.swift; sourceTree = "<group>"; };
 		AC69913C20AA68F7003593AE /* SettingWalletDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWalletDetailTableViewCell.swift; sourceTree = "<group>"; };
 		AC69913D20AA68F7003593AE /* SettingWalletDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingWalletDetailTableViewCell.xib; sourceTree = "<group>"; };
@@ -1912,6 +1914,7 @@
 			isa = PBXGroup;
 			children = (
 				940B45112060F67B00ADE2B9 /* AppWalletDataManager.swift */,
+				AC68E0FE20C22E8A00BFA837 /* AddWalletError.swift */,
 				940B45152060F67C00ADE2B9 /* CurrentAppWalletDataManager.swift */,
 				940B45102060F67B00ADE2B9 /* GenerateWalletDataManager.swift */,
 				AC99CF482083DF25000AE4BD /* ImportWalletUsingMnemonicDataManager.swift */,
@@ -2706,6 +2709,7 @@
 				AC31B948204A8DF400B16155 /* Address.swift in Sources */,
 				AC387518205F12F100A76637 /* ContextMenu+MenuStyle.swift in Sources */,
 				AC78FC3820A176CE00992AE8 /* OrderBookDataManager.swift in Sources */,
+				AC68E0FF20C22E8A00BFA837 /* AddWalletError.swift in Sources */,
 				AC5E0DE4203BC4B100AF03C7 /* FloatLabelTextField.swift in Sources */,
 				AC3756802039198300AADC60 /* GenerateMnemonicViewController_Archive.swift in Sources */,
 				FF9C7DDC208D59EA004687AD /* SettingsBundleHelper.swift in Sources */,

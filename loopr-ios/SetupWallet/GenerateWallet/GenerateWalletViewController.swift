@@ -192,7 +192,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
             }
             walletNameTextField.resignFirstResponder()
             ImportWalletUsingMnemonicDataManager.shared.walletName = walletNameTextField.text ?? ""
-            ImportWalletUsingMnemonicDataManager.shared.complete()
+            try! ImportWalletUsingMnemonicDataManager.shared.complete()
             
         case .importUsingKeystore:
             if !pressedContinueButtonInImport() {
@@ -200,7 +200,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
             }
             walletNameTextField.resignFirstResponder()
             ImportWalletUsingKeystoreDataManager.shared.walletName = walletNameTextField.text ?? ""
-            ImportWalletUsingKeystoreDataManager.shared.complete()
+            try! ImportWalletUsingKeystoreDataManager.shared.complete()
             
         case .importUsingPrivateKey:
             if !pressedContinueButtonInImport() {
@@ -208,7 +208,7 @@ class GenerateWalletViewController: UIViewController, UITextFieldDelegate {
             }
             walletNameTextField.resignFirstResponder()
             ImportWalletUsingPrivateKeyDataManager.shared.walletName = walletNameTextField.text ?? ""
-            ImportWalletUsingPrivateKeyDataManager.shared.complete()
+            try! ImportWalletUsingPrivateKeyDataManager.shared.complete()
         }
         
         if setupWalletMethod == .create {

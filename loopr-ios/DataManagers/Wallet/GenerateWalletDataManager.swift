@@ -20,6 +20,7 @@ class GenerateWalletDataManager {
     // Used in the verification.
     private var userInputMnemonics: [String] = []
 
+    var isVerified: Bool = false
     var mnemonicQuestions: [MnemonicQuestion] = []
 
     private init() {
@@ -58,6 +59,7 @@ class GenerateWalletDataManager {
         return userInputMnemonics
     }
 
+    // Deprecated. Will be removed soon.
     // TODO: In the design, users can only move to the next question?
     func getQuestion(index: Int) -> MnemonicQuestion {
         if index >= mnemonicQuestions.count {
@@ -80,21 +82,24 @@ class GenerateWalletDataManager {
 
     func verify() -> Bool {
         guard mnemonics.count == userInputMnemonics.count else {
+            isVerified = false
             return false
         }
 
         for i in 0..<mnemonics.count {
             guard mnemonics[i] == userInputMnemonics[i] else {
+                isVerified = false
                 return false
             }
         }
         
+        isVerified = true
         return true
     }
 
     // TODO: use error handling
-    func complete() -> AppWallet {
-        let appWallet = AppWalletDataManager.shared.addWallet(setupWalletMethod: .create, walletName: walletName, mnemonics: mnemonics, password: password, derivationPath: "m/44'/60'/0'/0/x", key: 0)
+    func complete() throws -> AppWallet {
+        let appWallet = try AppWalletDataManager.shared.addWallet(setupWalletMethod: .create, walletName: walletName, mnemonics: mnemonics, password: password, derivationPath: "m/44'/60'/0'/0/x", key: 0, isVerified: isVerified)
 
         // Reset
         walletName = ""
@@ -103,9 +108,8 @@ class GenerateWalletDataManager {
         userInputMnemonics = []
         
         // Inform relay
-        LoopringAPIRequest.unlockWallet(owner: appWallet!.address) { (_, _) in }
+        LoopringAPIRequest.unlockWallet(owner: appWallet.address) { (_, _) in }
         
-        // TODO: remove the force wrap
-        return appWallet!
+        return appWallet
     }
 }

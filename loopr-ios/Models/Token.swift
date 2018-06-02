@@ -51,7 +51,7 @@ class Token {
     }
     
     static func == (lhs: Token, rhs: Token) -> Bool {
-        if lhs.symbol.lowercased() == rhs.symbol.lowercased() {
+        if lhs.symbol.lowercased() == rhs.symbol.lowercased() && lhs.protocol_value.lowercased() == rhs.protocol_value.lowercased() {
             return true
         } else {
             return false

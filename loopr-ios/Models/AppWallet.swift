@@ -35,6 +35,10 @@ class AppWallet: NSObject, NSCoding {
 
     // The wallet name in the app. Users can update later.
     var name: String
+    
+    // If a wallet is created in the app and the user skip the verification,
+    // isVerified is false
+    var isVerified: Bool
 
     // TODO: what is active for?
     var active: Bool
@@ -42,7 +46,7 @@ class AppWallet: NSObject, NSCoding {
     var assetSequence: [String] = []
     var assetSequenceInHideSmallAssets: [String] = []
     
-    init(setupWalletMethod: SetupWalletMethod, address: String, privateKey: String, password: String, mnemonics: [String] = [], keystoreString: String? = nil, name: String, active: Bool, totalCurrency: Double = 0, assetSequence: [String] = [], assetSequenceInHideSmallAssets: [String] = []) {
+    init(setupWalletMethod: SetupWalletMethod, address: String, privateKey: String, password: String, mnemonics: [String] = [], keystoreString: String? = nil, name: String, isVerified: Bool, active: Bool, totalCurrency: Double = 0, assetSequence: [String] = [], assetSequenceInHideSmallAssets: [String] = []) {
         self.setupWalletMethod = setupWalletMethod
         self.address = address
         self.privateKey = privateKey
@@ -50,6 +54,7 @@ class AppWallet: NSObject, NSCoding {
         self.mnemonics = mnemonics
         self.keystoreString = keystoreString
         self.name = name
+        self.isVerified = isVerified
         self.active = active
         self.assetSequence = assetSequence
         self.assetSequenceInHideSmallAssets = assetSequenceInHideSmallAssets
@@ -174,7 +179,9 @@ class AppWallet: NSObject, NSCoding {
         let address = aDecoder.decodeObject(forKey: "address") as? String
         let privateKey = aDecoder.decodeObject(forKey: "privateKey") as? String
         let name = aDecoder.decodeObject(forKey: "name") as? String
+        let isVerified = aDecoder.containsValue(forKey: "isVerified") ? aDecoder.decodeBool(forKey: "isVerified") : false
         let active = aDecoder.decodeBool(forKey: "active")
+        
 
         // TODO: mnemonics vs. mnemonic
         let mnemonics = aDecoder.decodeObject(forKey: "mnemonics") as? [String]
@@ -192,7 +199,7 @@ class AppWallet: NSObject, NSCoding {
         }
         
         if let address = address, let privateKey = privateKey, let password = password, let mnemonics = mnemonics, let name = name {
-            self.init(setupWalletMethod: setupWalletMethod, address: address, privateKey: privateKey, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: name, active: active, assetSequence: unique(filteredAssetSequence), assetSequenceInHideSmallAssets: unique(filteredAssetSequenceInHideSmallAssets))
+            self.init(setupWalletMethod: setupWalletMethod, address: address, privateKey: privateKey, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: name, isVerified: isVerified, active: active, assetSequence: unique(filteredAssetSequence), assetSequenceInHideSmallAssets: unique(filteredAssetSequenceInHideSmallAssets))
         } else {
             return nil
         }

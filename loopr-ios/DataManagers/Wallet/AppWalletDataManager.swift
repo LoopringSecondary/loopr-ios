@@ -23,23 +23,6 @@ class AppWalletDataManager {
         getAppWalletsFromLocalStorage()
     }
 
-    // MARK: Logout
-    func setConfirmedToLogout() {
-        confirmedToLogout = true
-    }
-    
-    func logout() -> Bool {
-        if confirmedToLogout {
-            appWallets = []
-            let defaults = UserDefaults.standard
-            let encodedData = NSKeyedArchiver.archivedData(withRootObject: appWallets)
-            defaults.set(encodedData, forKey: UserDefaultsKeys.appWallets.rawValue)
-            confirmedToLogout = false
-            return true
-        }
-        return false
-    }
-    
     func logout(appWallet: AppWallet) {
         if let index = appWallets.index(of: appWallet) {
             appWallets.remove(at: index)
@@ -114,15 +97,18 @@ class AppWalletDataManager {
         }
     }
 
-    // TODO: Use error handling instead of returning a Bool value
-    func addWallet(setupWalletMethod: SetupWalletMethod, walletName: String, mnemonics: [String], password: String, derivationPath: String, key: Int) -> AppWallet? {
+    func addWallet(setupWalletMethod: SetupWalletMethod, walletName: String, mnemonics: [String], password: String, derivationPath: String, key: Int, isVerified: Bool) throws -> AppWallet {
         guard key >= 0 else {
-            return nil
+            throw AddWalletError.invalidInput
         }
-
+        
+        guard walletName.trim().count > 0 else {
+            throw AddWalletError.invalidWalletName
+        }
+        
         let mnemonicString = mnemonics.joined(separator: " ")
         let wallet = Wallet(mnemonic: mnemonicString, password: password)
-
+        
         // Public address
         let address = wallet.getKey(at: 0).address
         print(address.description)
@@ -132,22 +118,15 @@ class AppWalletDataManager {
         print(privateKey.hexString)
         
         // TODO: Keystore
-
-        var walletNameLocal: String
-        if walletName.trimmingCharacters(in: NSCharacterSet.whitespaces).count == 0 {
-            walletNameLocal = "Wallet \(appWallets.count+1)"
-        } else {
-            walletNameLocal = walletName
-        }
-
-        let newAppWallet = AppWallet(setupWalletMethod: setupWalletMethod, address: address.description, privateKey: privateKey.hexString, password: password, mnemonics: mnemonics, name: walletNameLocal, active: true)
-
+        
+        let newAppWallet = AppWallet(setupWalletMethod: setupWalletMethod, address: address.description, privateKey: privateKey.hexString, password: password, mnemonics: mnemonics, name: walletName.trim(), isVerified: isVerified, active: true)
+        
         // Update the new app wallet in the local storage.
-        updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
+        AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         
         // Set the current AppWallet.
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
-
+        
         return newAppWallet
     }
 

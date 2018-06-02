@@ -171,7 +171,7 @@ class VerifyMnemonicViewController_Archive: UIViewController {
     }
     
     func exit() {
-        let appWallet = GenerateWalletDataManager.shared.complete()
+        let appWallet = try! GenerateWalletDataManager.shared.complete()
         
         let screenSize: CGRect = UIScreen.main.bounds
         blurVisualEffectView.frame = screenSize
