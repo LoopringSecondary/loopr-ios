@@ -51,7 +51,6 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
 
         convertButton.title = NSLocalizedString("Yes, convert now!", comment: "")
         convertButton.setupRoundBlack()
-        convertButton.isEnabled = false
 
         // Setup UI
         let screensize: CGRect = UIScreen.main.bounds
@@ -156,10 +155,6 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         return ConvertDataManager.shared.getAsset(by: symbol)
     }
     
-    func updateButton(isValid: Bool) {
-        convertButton.isEnabled = isValid
-    }
-    
     func updateLabel() {
         let symbol = asset!.symbol.uppercased()
         infoLabel.text = symbol == "ETH" ? "1 ETH = 1 WETH" : "1 WETH = 1 ETH"
@@ -170,27 +165,6 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             tokenSLabel.text = "WETH"
             infoLabel.text = "1 WETH = 1 ETH"
         }
-        let maxAmount = ConvertDataManager.shared.getMaxAmount(symbol: symbol)
-        availableLabel.text = "Available \(maxAmount.withCommas()) \(symbol)"
-        availableLabel.textColor = .black
-        if let text = amountTextField.text, let inputAmount = Double(text) {
-            if inputAmount > 0 {
-                if inputAmount > maxAmount {
-                    updateButton(isValid: false)
-                    availableLabel.textColor = .red
-                    availableLabel.shake()
-                } else {
-                    updateButton(isValid: true)
-                }
-            } else {
-                updateButton(isValid: false)
-                availableLabel.textColor = .red
-                availableLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
-                availableLabel.shake()
-            }
-        } else {
-            updateButton(isValid: false)
-        }
     }
     
     @objc func pressedArrowButton(_ sender: Any) {
@@ -200,14 +174,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             UIView.transition(with: tokenSView, duration: 0.5, options: .transitionCrossDissolve, animations: { self.tokenSView.update(symbol: self.asset?.symbol ?? "") }, completion: nil)
             UIView.transition(with: tokenBView, duration: 0.5, options: .transitionCrossDissolve, animations: { self.tokenBView.update(symbol: asset.symbol) }, completion: nil)
             updateLabel()
-        }
-    }
-    
-    @objc func pressedMaxButton(_ sender: Any) {
-        print("pressedMaxButton")
-        if let asset = self.asset {
-            amountTextField.text = ConvertDataManager.shared.getMaxAmount(symbol: asset.symbol).withCommas()
-            updateLabel()
+            _ = validateTextField()
         }
     }
 
@@ -262,6 +229,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             let value = available * Double(percentage)
             amountTextField.text = value.withCommas()
             updateLabel()
+            _ = validateTextField()
         }
     }
 
@@ -298,11 +266,45 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         }
         return result
     }
+
+    func validateTextField() -> Bool {
+        let symbol = asset!.symbol.uppercased()
+        let maxAmount = ConvertDataManager.shared.getMaxAmount(symbol: symbol)
+        let title = NSLocalizedString("Available Balance", comment: "")
+        availableLabel.text = "\(title) \(maxAmount.withCommas()) \(symbol)"
+        availableLabel.textColor = .black
+        if let text = amountTextField.text, let inputAmount = Double(text) {
+            if inputAmount > 0 {
+                if inputAmount > maxAmount {
+                    availableLabel.textColor = .red
+                    availableLabel.shake()
+                } else {
+                    // Valid
+                    availableLabel.textColor = .black
+                    return true
+                }
+            } else {
+                
+            }
+        } else {
+            if amountTextField.text == "" {
+                return true
+            } else {
+                availableLabel.textColor = .red
+                availableLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+                availableLabel.shake()
+            }
+        }
+        
+        return false
+    }
     
     @IBAction func pressedConvertButton(_ sender: Any) {
-        guard let amount = validation() else {
-            // TODO: tip in ui
+        guard validateTextField() == true, let amount = validation() else {
             print("Invalid Amount")
+            availableLabel.textColor = .red
+            availableLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+            availableLabel.shake()
             return
         }
         if asset!.symbol.uppercased() == "ETH" {
@@ -335,6 +337,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             activeTextField!.text = currentText + String(itemValue)
         }
         updateLabel()
+        _ = validateTextField()
     }
     
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemLongPressed item: NumericKeyboardItem, atPosition position: Position) {
