@@ -12,14 +12,8 @@ class AssetBalanceTableViewCell: UITableViewCell {
 
     @IBOutlet weak var balanceLabel: TickerLabel!
     @IBOutlet weak var displayLabel: UILabel!
-    @IBOutlet weak var marketView: UIView!
-    @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var iconView: IconView!
-    @IBOutlet weak var marketLabel: UILabel!
-    @IBOutlet weak var marketDisplayLabel: UILabel!
-    @IBOutlet weak var marketBalanceLabel: UILabel!
-    @IBOutlet weak var changeLabel: UILabel!
-    @IBOutlet weak var marketButton: UIButton!
+    
+    @IBOutlet weak var seperateLine: UIView!
     
     var asset: Asset?
     
@@ -27,62 +21,24 @@ class AssetBalanceTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         setupLabel()
-        marketView.layer.cornerRadius = 20
-        marketButton.layer.borderColor = UIColor(red: 165/255, green: 165/255, blue: 165/255, alpha: 1).cgColor
-        marketButton.layer.cornerRadius = 20
-        marketButton.layer.borderWidth = 1
-        marketButton.title = NSLocalizedString("Go To Trade", comment: "")
-        marketButton.titleLabel!.font = FontConfigManager.shared.getRegularFont(size: 12)
-        marketButton.setTitleColor(UIColor.subtitle, for: .normal)
+        seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
+        seperateLine.isHidden = true
         self.theme_backgroundColor = ["#fff", "#000"]
     }
     
     func setupLabel() {
-        
         balanceLabel.animationDuration = 0.25
         balanceLabel.textAlignment = NSTextAlignment.center
         balanceLabel.initializeLabel()
         balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
         balanceLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
         balanceLabel.setFont(FontConfigManager.shared.getRegularFont(size: 27))
-        
-        marketLabel.setTitleFont()
-        marketDisplayLabel.setTitleFont()
-        marketBalanceLabel.setTitleFont()
-        changeLabel.setTitleFont()
     }
 
     func update() {
         if let asset = self.asset {
             balanceLabel.setText(asset.balance.description, animated: false)
             displayLabel.text = asset.display
-            if asset.icon != nil {
-                iconImageView.image = asset.icon
-                iconImageView.isHidden = false
-                iconView.isHidden = true
-            } else {
-                iconView.isHidden = false
-                iconView.symbol = asset.symbol
-                iconView.symbolLabel.text = asset.symbol
-                iconImageView.isHidden = true
-            }
-            if asset.symbol.lowercased() == "eth" || asset.symbol.lowercased() == "weth" {
-                marketLabel.text = "Ethereum"
-                if let price = PriceDataManager.shared.getPrice(of: "ETH") {
-                    marketDisplayLabel.text = price.currency
-                }
-                changeLabel.isHidden = true
-                marketBalanceLabel.isHidden = true
-            } else {
-                let tradingPair = "\(asset.symbol)/WETH"
-                if let market = MarketDataManager.shared.getMarket(byTradingPair: tradingPair) {
-                    marketLabel.text = market.description
-                    marketBalanceLabel.text = market.balance.description
-                    changeLabel.text = market.changeInPat24
-                    changeLabel.textColor = UIStyleConfig.getChangeColor(change: market.changeInPat24)
-                    marketDisplayLabel.text = market.display
-                }
-            }
         }
     }
     
@@ -101,6 +57,6 @@ class AssetBalanceTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 244
+        return 150
     }
 }

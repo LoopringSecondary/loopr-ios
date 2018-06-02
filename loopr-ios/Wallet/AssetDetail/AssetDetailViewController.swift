@@ -13,6 +13,8 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     var asset: Asset?
     var transactions: [Transaction] = []
 
+    var isLaunching: Bool = true
+    
     @IBOutlet weak var tableView: UITableView!
     private let refreshControl = UIRefreshControl()
     
@@ -72,6 +74,9 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
                     return
                 }
                 DispatchQueue.main.async {
+                    if self.isLaunching {
+                        self.isLaunching = false
+                    }
                     self.transactions = transactions
                     self.tableView.reloadData()
                     self.refreshControl.endRefreshing()
@@ -87,6 +92,9 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if !isLaunching {
+            getTransactionsFromRelay()
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -194,7 +202,6 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
             }
             cell?.asset = asset
             cell?.update()
-            cell?.marketButton.addTarget(self, action: #selector(goToMarket), for: .touchUpInside)
             return cell!
         } else {
             var cell = tableView.dequeueReusableCell(withIdentifier: AssetTransactionTableViewCell.getCellIdentifier()) as? AssetTransactionTableViewCell
