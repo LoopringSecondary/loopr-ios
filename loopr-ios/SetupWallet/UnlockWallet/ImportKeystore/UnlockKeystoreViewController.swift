@@ -122,7 +122,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         
         do {
             try ImportWalletUsingKeystoreDataManager.shared.unlockWallet(keystoreStringValue: keystoreContentTextView.text, password: password.trim())
-            let viewController = GenerateWalletViewController(setupWalletMethod: .importUsingKeystore)
+            let viewController = GenerateWalletEnterNameAndPasswordViewController.init(nibName: nil, bundle: nil)
             self.navigationController?.pushViewController(viewController, animated: true)
         } catch {
             let banner = NotificationBanner.generate(title: "Invalid keystore. Please enter again.", style: .danger)

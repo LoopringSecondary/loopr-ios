@@ -73,7 +73,7 @@ class MnemonicSelectAddressViewController: UIViewController, UITableViewDelegate
     
     @IBAction func pressedNextButton(_ sender: Any) {
         print("Enter wallet")
-        let viewController = GenerateWalletViewController(setupWalletMethod: .importUsingMnemonic)
+        let viewController = ImportWalletEnterWalletNameViewController(setupWalletMethod: .importUsingMnemonic)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
