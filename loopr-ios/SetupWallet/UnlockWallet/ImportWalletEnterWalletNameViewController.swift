@@ -91,32 +91,38 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
             return
         }
         
-        switch setupWalletMethod {
-        case .importUsingMnemonic:
-            if !validation() {
+        do {
+            switch setupWalletMethod {
+            case .importUsingMnemonic:
+                if !validation() {
+                    return
+                }
+                walletNameTextField.resignFirstResponder()
+                ImportWalletUsingMnemonicDataManager.shared.walletName = walletNameTextField.text ?? ""
+                try ImportWalletUsingMnemonicDataManager.shared.complete()
+                
+            case .importUsingKeystore:
+                if !validation() {
+                    return
+                }
+                walletNameTextField.resignFirstResponder()
+                ImportWalletUsingKeystoreDataManager.shared.walletName = walletNameTextField.text ?? ""
+                try ImportWalletUsingKeystoreDataManager.shared.complete()
+                
+            case .importUsingPrivateKey:
+                if !validation() {
+                    return
+                }
+                walletNameTextField.resignFirstResponder()
+                ImportWalletUsingPrivateKeyDataManager.shared.walletName = walletNameTextField.text ?? ""
+                try ImportWalletUsingPrivateKeyDataManager.shared.complete()
+            default:
                 return
             }
-            walletNameTextField.resignFirstResponder()
-            ImportWalletUsingMnemonicDataManager.shared.walletName = walletNameTextField.text ?? ""
-            try! ImportWalletUsingMnemonicDataManager.shared.complete()
+        } catch AddWalletError.duplicatedAddress {
             
-        case .importUsingKeystore:
-            if !validation() {
-                return
-            }
-            walletNameTextField.resignFirstResponder()
-            ImportWalletUsingKeystoreDataManager.shared.walletName = walletNameTextField.text ?? ""
-            try! ImportWalletUsingKeystoreDataManager.shared.complete()
+        } catch {
             
-        case .importUsingPrivateKey:
-            if !validation() {
-                return
-            }
-            walletNameTextField.resignFirstResponder()
-            ImportWalletUsingPrivateKeyDataManager.shared.walletName = walletNameTextField.text ?? ""
-            try! ImportWalletUsingPrivateKeyDataManager.shared.complete()
-        default:
-            return
         }
 
         // Exit the whole importing process

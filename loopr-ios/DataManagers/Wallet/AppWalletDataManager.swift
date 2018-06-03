@@ -12,7 +12,6 @@ class AppWalletDataManager {
     
     static let shared = AppWalletDataManager()
     private var appWallets: [AppWallet]
-    private var confirmedToLogout: Bool = false
     private var accountTotalCurrency: Double = 0
     
     private init() {
@@ -58,6 +57,11 @@ class AppWalletDataManager {
     func isNewWalletNameToken(newWalletname: String) -> Bool {
         let results = appWallets.filter { $0.name == newWalletname }
         return results.isEmpty
+    }
+    
+    func isDuplicatedAddress(address: String) -> Bool {
+        let results = appWallets.filter { $0.address == address }
+        return !results.isEmpty
     }
 
     func getWallets() -> [AppWallet] {
@@ -112,6 +116,11 @@ class AppWalletDataManager {
         // Public address
         let address = wallet.getKey(at: 0).address
         print(address.description)
+        
+        // Check if the address has been imported.
+        if isDuplicatedAddress(address: address.description) {
+            throw AddWalletError.duplicatedAddress
+        }
         
         // Private key
         let privateKey = wallet.getKey(at: 0).privateKey

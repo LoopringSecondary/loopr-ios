@@ -20,7 +20,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     var contextMenuSourceView: UIView = UIView()
     
-    let button =  UIButton()
+    let buttonInNavigationBar =  UIButton()
+    var numberOfRowsInSection1: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,12 +63,12 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         
-        button.frame = CGRect(x: 0, y: 0, width: 400, height: 40)
-        button.titleLabel?.font = UIFont(name: FontConfigManager.shared.getLight(), size: 16.0)
-        button.theme_setTitleColor(["#000", "#fff"], forState: .normal)
-        button.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
-        button.addTarget(self, action: #selector(self.clickNavigationTitleButton(_:)), for: .touchUpInside)
-        self.navigationItem.titleView = button
+        buttonInNavigationBar.frame = CGRect(x: 0, y: 0, width: 400, height: 40)
+        buttonInNavigationBar.titleLabel?.font = UIFont(name: FontConfigManager.shared.getLight(), size: 16.0)
+        buttonInNavigationBar.theme_setTitleColor(["#000", "#fff"], forState: .normal)
+        buttonInNavigationBar.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
+        buttonInNavigationBar.addTarget(self, action: #selector(self.clickNavigationTitleButton(_:)), for: .touchUpInside)
+        self.navigationItem.titleView = buttonInNavigationBar
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -76,7 +77,11 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func getBalanceFromRelay() {
-        CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote(completionHandler: { _, error in
+        guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
+            return
+        }
+
+        CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote(address: CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address, completionHandler: { _, error in
             print("receive CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote() in WalletViewController")
             guard error == nil else {
                 print("error=\(String(describing: error))")
@@ -105,8 +110,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
-        button.title = buttonTitle
-        button.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 20, titlePaddingRight: 0)
+        buttonInNavigationBar.title = buttonTitle
+        buttonInNavigationBar.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 20, titlePaddingRight: 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -187,7 +192,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func contextMenuDidDismiss(viewController: UIViewController, animated: Bool) {
         print("did dismiss")
-        
         contextMenuSourceView.removeFromSuperview()
     }
     
@@ -233,7 +237,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if section == 0 {
             return 1
         } else {
-            return CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption().count
+            numberOfRowsInSection1 = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption().count
+            return numberOfRowsInSection1
         }
     }
     
@@ -290,17 +295,23 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
-    // TODO: no used
-    func navigatToAddAssetViewController() {
-        print("navigatToAddAssetViewController")
-        let viewController = AddCustomizedTokenViewController()
-        viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    func updateTableView() {
+    func updateTableView(isHideSmallAsset: Bool) {
         if !isLaunching {
-            self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .fade)
+            if isHideSmallAsset {
+                var rows: [IndexPath] = []
+                let lastRow = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption().count
+                for i in lastRow..<numberOfRowsInSection1 {
+                    rows.append(IndexPath.init(row: i, section: 1))
+                }
+                self.assetTableView.deleteRows(at: rows, with: .top)
+            } else {
+                var rows: [IndexPath] = []
+                let lastRow = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption().count
+                for i in numberOfRowsInSection1..<lastRow {
+                    rows.append(IndexPath.init(row: i, section: 1))
+                }
+                self.assetTableView.insertRows(at: rows, with: .top)
+            }
         }
     }
 
@@ -315,7 +326,8 @@ extension WalletViewController: TableViewReorderDelegate {
 
     func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {
         if indexPath.section >= 1 {
-            return true
+            // TODO: disable reordering. We will revisit this feature in the future.
+            return false
         } else {
             return false
         }

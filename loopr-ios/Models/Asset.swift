@@ -13,7 +13,7 @@ import BigInt
 class Asset: CustomStringConvertible, Equatable {
 
     let symbol: String
-    var name: String   // TODO: not used?
+    var name: String
     var icon: UIImage?
     var enable: Bool
     var balance: Double
@@ -28,9 +28,9 @@ class Asset: CustomStringConvertible, Equatable {
         self.allowance = 0.0
         self.display = "0.0"
         self.currency = Double(0).currency
-        self.symbol = json["symbol"].stringValue
+        self.symbol = json["symbol"].string ?? ""
         self.icon = UIImage(named: self.symbol) ?? nil
-        self.name = TokenDataManager.shared.getTokenBySymbol(symbol)?.source ?? "unknown token"
+        self.name = TokenDataManager.shared.getTokenBySymbol(symbol)?.source ?? ""
         self.description = self.name
         if let balance = Asset.getAmount(of: symbol, fromWeiAmount: json["balance"].stringValue) {
             self.balance = balance

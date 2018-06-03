@@ -44,6 +44,7 @@ class CurrentAppWalletDataManager {
         defaults.set(appWallet.privateKey, forKey: UserDefaultsKeys.currentAppWallet.rawValue)
         currentAppWallet = appWallet
         
+        // TODO: This needs to join TokenLists
         self.assetsInHideSmallMode = []
         self.assets = []
         self.transactions = []
@@ -118,12 +119,21 @@ class CurrentAppWalletDataManager {
     // Used in WalletViewController with hide small assets option
     func getAssetsWithHideSmallAssetsOption() -> [Asset] {
         if SettingDataManager.shared.getHideSmallAssets() {
-            return self.assetsInHideSmallMode
+            return self.assets.filter({ (asset) -> Bool in
+                return TokenDataManager.shared.getTokenList().contains(asset.symbol) && asset.balance > 0.01
+            }).sorted(by: { (a, b) -> Bool in
+                a.currency > b.currency
+            })
         } else {
-            return self.assets
+            return self.assets.filter({ (asset) -> Bool in
+                return TokenDataManager.shared.getTokenList().contains(asset.symbol) || asset.balance > 0
+            }).sorted(by: { (a, b) -> Bool in
+                a.currency > b.currency
+            })
         }
     }
 
+    // TODO: we should simplify this function.
     func setAssets(newAssets: [Asset]) {
         let filteredAssets = newAssets.filter { (asset) -> Bool in
             return asset.symbol.trim() != ""
@@ -171,6 +181,12 @@ class CurrentAppWalletDataManager {
                     if let index = assetsInHideSmallMode.index(of: asset) {
                         assetsInHideSmallMode.remove(at: index)
                     }
+                }
+                
+                // non-zero assets
+                if asset.balance > 0 {
+                    print(asset.symbol)
+                    TokenDataManager.shared.updateTokenList(tokenSymbol: asset.symbol, add: true)
                 }
             }
         }
@@ -258,11 +274,13 @@ class CurrentAppWalletDataManager {
         })
     }
 
+    // TODO: only 19 tokens are returned.
     // Socket IO: this func should be called every 10 secs when emitted
     func onBalanceResponse(json: JSON) {
         let tokensJsons = json["tokens"].arrayValue
         let mappedAssets = tokensJsons.map { (subJson) -> Asset in
             let asset = Asset(json: subJson)
+            print(asset.symbol)
             return asset
         }
         setAssets(newAssets: mappedAssets)
@@ -271,11 +289,8 @@ class CurrentAppWalletDataManager {
     }
     
     // JSON RPC
-    func getBalanceAndPriceQuote(completionHandler: @escaping (_ assets: [Asset], _ error: Error?) -> Void) {
-        guard currentAppWallet != nil else {
-            return
-        }
-        print("getBalanceAndPriceQuote Current address: \(self.currentAppWallet!.address)")
+    func getBalanceAndPriceQuote(address: String, completionHandler: @escaping (_ assets: [Asset], _ error: Error?) -> Void) {
+        print("getBalanceAndPriceQuote Current address: \(address)")
         
         var localAssets: [Asset] = []
         let dispatchGroup = DispatchGroup()
@@ -293,7 +308,7 @@ class CurrentAppWalletDataManager {
         })
         
         dispatchGroup.enter()
-        LoopringAPIRequest.getBalance(owner: self.currentAppWallet!.address) { assets, error in
+        LoopringAPIRequest.getBalance(owner: address) { assets, error in
             print("receive LoopringAPIRequest.getBalance ...")
             guard error == nil else {
                 print("error=\(String(describing: error))")

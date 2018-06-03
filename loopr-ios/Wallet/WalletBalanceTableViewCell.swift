@@ -9,8 +9,7 @@
 import UIKit
 
 protocol WalletBalanceTableViewCellDelegate: class {
-    func navigatToAddAssetViewController()
-    func updateTableView()
+    func updateTableView(isHideSmallAsset: Bool)
 }
 
 class WalletBalanceTableViewCell: UITableViewCell {
@@ -82,12 +81,6 @@ class WalletBalanceTableViewCell: UITableViewCell {
         }
     }
 
-    // The add button has been removed. However, we may still put it back in the future. Keep the code.
-    @IBAction func pressAddButton(_ sender: Any) {
-        print("pressAddButton")
-        delegate?.navigatToAddAssetViewController()
-    }
-
     @IBAction func toggleHideAssetSwitch(_ sender: Any) {
         if hideAssetSwitch.isOn {
             print("toggleHideAssetSwitch ON")
@@ -95,7 +88,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
             print ("toggleHideAssetSwitch OFF")
         }
         SettingDataManager.shared.setHideSmallAssets(hideAssetSwitch.isOn)
-        delegate?.updateTableView()
+        delegate?.updateTableView(isHideSmallAsset: hideAssetSwitch.isOn)
     }
 
     class func getCellIdentifier() -> String {

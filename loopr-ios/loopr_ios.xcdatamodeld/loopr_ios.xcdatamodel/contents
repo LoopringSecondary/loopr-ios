@@ -7,7 +7,14 @@
         <attribute name="txHash" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="txType" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="TokenObjects" representedClassName="TokenObjects" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="enable" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="protocol_value" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="symbol" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="PendingTransactions" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="TokenObjects" positionX="-54" positionY="27" width="128" height="105"/>
     </elements>
 </model>

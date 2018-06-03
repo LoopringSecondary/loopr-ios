@@ -51,4 +51,7 @@ enum UserDefaultsKeys: String {
     case marginSplit = "UserDefaultsKeys.marginSplit"
 
     case passcodeOn = "UserDefaultsKeys.passcodeOn"
+    
+    // Tokens
+    case tokenList = "UserDefaultsKeys.tokenList"
 }

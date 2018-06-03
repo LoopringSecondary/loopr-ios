@@ -33,7 +33,7 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
         privateKey = ""
     }
 
-    func unlockWallet(privateKey privateKeyString: String) throws {
+    func importWallet(privateKey privateKeyString: String) throws {
         print("Start to unlock a new wallet using the private key")
         let privateKeyData: Data? = Data(hexString: privateKeyString.trim())
         guard privateKeyData != nil else {
@@ -52,7 +52,11 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
         address = keystoreAddress.eip55String
     }
     
-    func complete() {
+    func complete() throws {
+        if AppWalletDataManager.shared.isDuplicatedAddress(address: address) {
+            throw AddWalletError.duplicatedAddress
+        }
+
         let newAppWallet = AppWallet(setupWalletMethod: .importUsingPrivateKey, address: address, privateKey: privateKey, password: password, name: walletName, isVerified: true, active: true)
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)

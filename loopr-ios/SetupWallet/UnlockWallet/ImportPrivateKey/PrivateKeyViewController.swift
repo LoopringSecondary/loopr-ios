@@ -97,11 +97,11 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
     @IBAction func pressedUnlockButton(_ sender: Any) {
         print("pressedUnlockButton")
         do {
-            try ImportWalletUsingPrivateKeyDataManager.shared.unlockWallet(privateKey: privateKeyTextView.text)
+            try ImportWalletUsingPrivateKeyDataManager.shared.importWallet(privateKey: privateKeyTextView.text)
             let viewController = ImportWalletEnterWalletNameViewController(setupWalletMethod: .importUsingPrivateKey)
             self.navigationController?.pushViewController(viewController, animated: true)
         } catch {
-            let banner = NotificationBanner.generate(title: "Invalid private key. Please enter again.", style: .danger)
+            let banner = NotificationBanner.generate(title: NSLocalizedString("Invalid private key. Please enter again.", comment: ""), style: .danger)
             banner.duration = 1.5
             banner.show()
         }

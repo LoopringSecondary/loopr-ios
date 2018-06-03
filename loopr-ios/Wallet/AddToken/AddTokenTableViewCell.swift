@@ -43,14 +43,22 @@ class AddTokenTableViewCell: UITableViewCell {
                 iconImageView.isHidden = true
             }
             symbolLabel.text = "\(token.symbol) (\(token.source.capitalized))"
+
+            if TokenDataManager.shared.getTokenList().contains(token.symbol) {
+                addSwitch.setOn(true, animated: false)
+            } else {
+                addSwitch.setOn(false, animated: false)
+            }
         }
     }
     
     @IBAction func toggledAddSwitch(_ sender: Any) {
         if addSwitch.isOn {
             print("toggledAddSwitch ON")
+            TokenDataManager.shared.updateTokenList(tokenSymbol: token!.symbol, add: true)
         } else {
             print ("toggledAddSwitch OFF")
+            TokenDataManager.shared.updateTokenList(tokenSymbol: token!.symbol, add: false)
         }
     }
 

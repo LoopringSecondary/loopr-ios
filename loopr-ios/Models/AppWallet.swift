@@ -40,8 +40,9 @@ class AppWallet: NSObject, NSCoding {
     // isVerified is false
     var isVerified: Bool
 
-    // TODO: what is active for?
+    // TODO: what is active for? Deprecated.
     var active: Bool
+    
     var totalCurrency: Double = 0
     var assetSequence: [String] = []
     var assetSequenceInHideSmallAssets: [String] = []
@@ -67,7 +68,6 @@ class AppWallet: NSObject, NSCoding {
         }
     }
     
-    // TODO: Not sure whether it's the best way to have getter and setter.
     func getAssetSequence() -> [String] {
         return assetSequence
     }

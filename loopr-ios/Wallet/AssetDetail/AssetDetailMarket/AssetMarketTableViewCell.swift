@@ -33,7 +33,7 @@ class AssetMarketTableViewCell: UITableViewCell {
         }
         exchangeLabel.text = market.getExchangeDescription()
         if market.last != nil {
-            priceLabel.text = market.last!.description
+            priceLabel.text = market.last!.withCommas(6)
         } else {
             priceLabel.text = ""
         }

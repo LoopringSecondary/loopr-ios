@@ -65,7 +65,6 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         for viewController in viewControllers {
             self.addChildViewController(viewController)
         }
-        viewControllers[0].viewAppear = true
         
         options.swipeTabView.height = 44
         options.swipeTabView.underlineView.height = 1
@@ -80,6 +79,13 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         options.swipeTabView.style = .segmented
 
         swipeView.reloadData(options: options)
+        
+        if MarketDataManager.shared.getMarketsWithoutReordered(type: .favorite).count == 0 {
+            swipeView.jump(to: 1, animated: false)
+            viewControllers[1].viewAppear = true
+        } else {
+            viewControllers[0].viewAppear = true
+        }
     }
 
     override func didReceiveMemoryWarning() {

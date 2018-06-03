@@ -9,7 +9,7 @@
 import Foundation
 
 enum AddWalletError: Error {
-    case duplicated
+    case duplicatedAddress
     case invalidInput
     case invalidWalletName
 }
