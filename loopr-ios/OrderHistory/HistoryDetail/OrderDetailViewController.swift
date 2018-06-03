@@ -253,13 +253,13 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         
         // 7th row: date
         dateTipLabel.font = FontConfigManager.shared.getLabelFont()
-        dateTipLabel.text = NSLocalizedString("Date", comment: "")
+        dateTipLabel.text = NSLocalizedString("Time", comment: "")
         dateTipLabel.frame = CGRect(x: padding, y: idTipLabel.frame.maxY + padding, width: 150, height: labelHeight)
         scrollView.addSubview(dateTipLabel)
         dateInfoLabel.font = FontConfigManager.shared.getLabelFont()
         
         let time = UInt(order.originalOrder.validSince)
-        dateInfoLabel.text = DateUtil.convertToDate(time, format: "MM/dd/yyyy HH:mm")
+        dateInfoLabel.text = DateUtil.convertToDate(time, format: "yyyy-MM-dd HH:mm")
         dateInfoLabel.textAlignment = .right
         dateInfoLabel.frame = CGRect(x: padding + 150, y: dateTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: labelHeight)
         scrollView.addSubview(dateInfoLabel)

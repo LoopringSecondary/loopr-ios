@@ -197,4 +197,5 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+
 }

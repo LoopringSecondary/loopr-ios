@@ -25,13 +25,6 @@ class SettingPasscodeTableViewCell: UITableViewCell {
     }
     
     @IBAction func togglePasscodeSwitch(_ sender: Any) {
-        if passcodeSwitch.isOn {
-            print("togglePasscodeSwitch ON")
-            
-        } else {
-            print ("togglePasscodeSwitch OFF")
-        }
-        
         AuthenticationDataManager.shared.setPasscodeSetting(passcodeSwitch.isOn)
     }
 

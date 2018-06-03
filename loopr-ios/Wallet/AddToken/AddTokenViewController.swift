@@ -15,6 +15,7 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
     var isSearching = false
     let searchBar = UISearchBar()
     var searchButton = UIBarButtonItem()
+    var addCustomizedTokenButton = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,8 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.separatorStyle = .none
 
         searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.pressOrderSearchButton(_:)))
-        self.navigationItem.setRightBarButton(searchButton, animated: true)
+        addCustomizedTokenButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
+        self.navigationItem.rightBarButtonItems = [addCustomizedTokenButton, searchButton]
         
         searchBar.showsCancelButton = false
         searchBar.placeholder = NSLocalizedString("Search", comment: "")
@@ -42,6 +44,11 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    @objc func pressAddButton(_ button: UIBarButtonItem) {
+        let viewController = AddCustomizedTokenViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     @objc func pressOrderSearchButton(_ button: UIBarButtonItem) {
         let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
         searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
@@ -50,18 +57,23 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         // self.navigationItem.leftBarButtonItem = nil
         // self.navigationItem.hidesBackButton = true
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressSearchCancel))
+        let cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressSearchCancel))
+        self.navigationItem.rightBarButtonItems = [cancelBarButton]
         
         searchBar.becomeFirstResponder()
     }
     
     @objc func pressSearchCancel(_ button: UIBarButtonItem) {
         print("pressSearchCancel")
-        self.navigationItem.setRightBarButton(searchButton, animated: true)
+        self.navigationItem.rightBarButtonItems = [addCustomizedTokenButton, searchButton]
         searchBar.resignFirstResponder()
         searchBar.text = nil
         navigationItem.titleView = nil
         self.navigationItem.title = NSLocalizedString("Tokens", comment: "")
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,10 +92,8 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         let token = TokenDataManager.shared.getUnlistedTokensInCurrentAppWallet()[indexPath.row]
-
         cell?.token = token
         cell?.update()
-        
         return cell!
     }
 

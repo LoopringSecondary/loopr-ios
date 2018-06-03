@@ -171,7 +171,7 @@
 "Status" = "状态";
 "Trade" = "交易";
 "Go To Trade" = "去交易";
-"Filled" = "Filled";
+"Filled" = "成交率";
 "Date" = "日期";
 "Cancelling" = "取消中";
 "QR Code type doesn't fit here" = "QR Code type doesn't fit here";
@@ -252,7 +252,7 @@
 "Back" = "返回";
 "Undefined" = "未定义";
 "Pending" = "待处理";
-"Completed" = "完成";
+"Completed" = "成功";
 "Failed" = "失败";
 "Other" = "其他";
 "Tokens" = "代币";
@@ -262,4 +262,4 @@
 "Transactions" = "交易";
 "Enabled" = "授权";
 "to Trade" = "进行撮合交易";
-
+"Time" = "时间";
