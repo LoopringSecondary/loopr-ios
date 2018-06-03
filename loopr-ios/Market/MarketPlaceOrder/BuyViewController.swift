@@ -95,6 +95,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         let padding: CGFloat = 15
         
         // First row: price
+        setupLabels()
         tokenALabel.text = PlaceOrderDataManager.shared.tokenB.symbol
         tokenALabel.font = FontConfigManager.shared.getLabelFont()
         tokenALabel.textAlignment = .right
@@ -139,7 +140,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         amountTextField.font = FontConfigManager.shared.getLabelFont()
         amountTextField.theme_tintColor = GlobalPicker.textColor
         amountTextField.theme_tintColor = GlobalPicker.textColor
-        amountTextField.placeholder = NSLocalizedString("Amount", comment: "")
+        amountTextField.placeholder = NSLocalizedString("Please input a valid amount", comment: "")
         amountTextField.contentMode = UIViewContentMode.bottom
         scrollView.addSubview(amountTextField)
         
@@ -182,10 +183,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         totalUnderLine.backgroundColor = UIColor.black
         scrollView.addSubview(totalUnderLine)
 
-        if let balance = getSellingBalance() {
-            let title = NSLocalizedString("Available Balance", comment: "")
-            availableLabel.text = "\(title) \(balance.withCommas()) \(PlaceOrderDataManager.shared.tokenB.symbol)"
-        }
         availableLabel.font = FontConfigManager.shared.getLabelFont()
         availableLabel.frame = CGRect(x: padding, y: totalUnderLine.frame.maxY, width: screenWidth-padding*2, height: 40)
         scrollView.addSubview(availableLabel)
@@ -242,6 +239,21 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setupLabels() {
+        if let balance = getBalance() {
+            let title = NSLocalizedString("Available Balance", comment: "")
+            if type == .buy {
+                availableLabel.isHidden = false
+                availableLabel.textColor = .black
+                availableLabel.text = "\(title) \(balance.withCommas()) \(PlaceOrderDataManager.shared.tokenB.symbol)"
+            } else {
+                tipLabel.isHidden = false
+                tipLabel.textColor = .black
+                tipLabel.text = "\(title) \(balance.withCommas()) \(PlaceOrderDataManager.shared.tokenA.symbol)"
+            }
+        }
     }
     
     @objc func sliderValueDidChange(_ sender: UISlider!) {
@@ -305,9 +317,13 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         oneMonthButton.selected()
     }
     
-    func getSellingBalance() -> Double? {
+    func getBalance() -> Double? {
         if type == .buy {
             if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: PlaceOrderDataManager.shared.tokenB.symbol) {
+                return asset.balance
+            }
+        } else if type == .sell {
+            if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: PlaceOrderDataManager.shared.tokenA.symbol) {
                 return asset.balance
             }
         }
@@ -352,7 +368,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         let isPriceValid = validateTokenPrice()
         let isAmountValid = validateAmount()
         if isPriceValid && isAmountValid {
-            self.pushController()
+            self.validateAmountRational()
         }
         if !isPriceValid {
             updateLabel(label: estimateValueInCurrencyLabel, enable: true, color: .red, text: NSLocalizedString("Please input a valid price", comment: ""))
@@ -373,25 +389,40 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         }
     }
     
-    func validatePriceRational() {
-        let pair = PlaceOrderDataManager.shared.market.description
-        if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
-            let value = Double(priceTextField.text!)!
-            // TODO: get from setting maybe
-            if value < 0.8 * market.balance || value > 1.2 * market.balance {
-                let title = NSLocalizedString("Your price is irrational. Do you wish to continue trading with the price?", comment: "")
-                let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
-                    DispatchQueue.main.async {
-                        self.pushController()
-                    }
-                }))
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
-                }))
-                self.present(alert, animated: true, completion: nil)
-            } else {
-                self.pushController()
-            }
+    func validateAmountRational() {
+//        let pair = PlaceOrderDataManager.shared.market.description
+//        if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
+//            let value = Double(priceTextField.text!)!
+//            // TODO: get from setting maybe
+//            if value < 0.8 * market.balance || value > 1.2 * market.balance {
+//                let title = NSLocalizedString("Your price is irrational. Do you wish to continue trading with the price?", comment: "")
+//                let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+//                    DispatchQueue.main.async {
+//                        self.pushController()
+//                    }
+//                }))
+//                alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+//                }))
+//                self.present(alert, animated: true, completion: nil)
+//            } else {
+//                self.pushController()
+//            }
+//        }
+        if !isAmountValid() {
+            let title = NSLocalizedString("Please Pay Attention", comment: "")
+            let message = NSLocalizedString("Your order amount exceeded your asset balance, which cause your order could not be dealt completely. Do you wish to continue trading with the amount?", comment: "")
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+                DispatchQueue.main.async {
+                    self.pushController()
+                }
+            }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.pushController()
         }
     }
 
@@ -406,6 +437,19 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             label.shake()
         }
         label.text = text
+    }
+    
+    func isAmountValid() -> Bool {
+        var total: Double = 0
+        if let balance = getBalance() {
+            if type == .buy {
+                total = Double(priceTextField.text!)! * Double(amountTextField.text!)!
+            } else if type == .sell {
+                total = Double(amountTextField.text!)!
+            }
+            return balance > total
+        }
+        return true
     }
     
     func validateTokenPrice() -> Bool {
@@ -424,7 +468,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
                 updateLabel(label: estimateValueInCurrencyLabel, enable: false)
             }
             totalTextField.text = ""
-            availableLabel.isHidden = true
+            availableLabel.textColor = .black
             return false
         }
     }
@@ -433,17 +477,25 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         if let value = Double(amountTextField.text ?? "0") {
             let validate = value > 0.0
             if validate {
-                updateLabel(label: tipLabel, enable: false)
+                if type == .buy {
+                    updateLabel(label: tipLabel, enable: false)
+                } else {
+                    setupLabels()
+                }
             } else {
                 updateLabel(label: tipLabel, enable: true, color: .red, text: NSLocalizedString("Please input a valid amount", comment: ""))
             }
             return validate
         } else {
             if activeTextFieldTag == amountTextField.tag {
-                updateLabel(label: tipLabel, enable: false)
+                if type == .buy {
+                    updateLabel(label: tipLabel, enable: false)
+                } else {
+                    setupLabels()
+                }
             }
             totalTextField.text = ""
-            availableLabel.isHidden = true
+            availableLabel.textColor = .black
             return false
         }
     }
@@ -463,14 +515,17 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             isValid = true
             let total = Double(priceTextField.text!)! * Double(amountTextField.text!)!
             totalTextField.text = "\(total)"
-            if let balance = getSellingBalance() {
-                availableLabel.isHidden = false
-                if balance < total {
-                    availableLabel.textColor = .red
-                    availableLabel.shake()
-                } else {
-                    availableLabel.textColor = .black
+            if !isAmountValid() {
+                if let balance = getBalance() {
+                    let title = NSLocalizedString("Available Balance", comment: "")
+                    if type == .buy {
+                        updateLabel(label: availableLabel, enable: true, color: .red, text: "\(title) \(balance.withCommas()) \(PlaceOrderDataManager.shared.tokenB.symbol)")
+                    } else if activeTextFieldTag == amountTextField.tag {
+                        updateLabel(label: tipLabel, enable: true, color: .red, text: "\(title) \(balance.withCommas()) \(PlaceOrderDataManager.shared.tokenA.symbol)")
+                    }
                 }
+            } else {
+                setupLabels()
             }
         } else {
             totalTextField.text = ""
@@ -623,9 +678,11 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
                 break
             }
             DispatchQueue.main.async {
-                self.priceTextField.text = text
-                self.activeTextFieldTag = self.priceTextField.tag
-                _ = self.validate()
+                if let value = Double(text) {
+                    self.priceTextField.text = value.withCommas(6)
+                    self.activeTextFieldTag = self.priceTextField.tag
+                    _ = self.validate()
+                }
             }
         }
     }

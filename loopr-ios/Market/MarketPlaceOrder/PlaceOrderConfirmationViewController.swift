@@ -19,6 +19,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     var order: OriginalOrder?
     var type: TradeType = .buy
     var price: String = "0.0"
+    var message: String = ""
     var expire: OrderExpire = .oneHour
     var verifyInfo: [String: Double]?
     
@@ -29,8 +30,9 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     var amountLabel: UILabel = UILabel()
     var displayLabel: UILabel = UILabel()
     // Price
+    var priceLabel: UILabel = UILabel()
+    var priceValueLabel: UILabel = UILabel()
     var priceTipLabel: UILabel = UILabel()
-    var priceInfoLabel: UILabel = UILabel()
     var priceUnderline: UIView = UIView()
     // Expires
     var expiresTipLabel: UILabel = UILabel()
@@ -62,6 +64,36 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
             setupOrderAmount(order: order)
             setupRows(order: order)
         }
+    }
+    
+    func validateRational() -> Bool {
+        let pair = TradeDataManager.shared.tradePair
+        if let price = Double(self.price),
+            let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
+            let header = NSLocalizedString("Your price is irrational, ", comment: "")
+            let footer = NSLocalizedString("Do you wish to continue trading with the price?", comment: "")
+            let messageA = NSLocalizedString("which may cause your asset wastage! ", comment: "")
+            let messageB = NSLocalizedString("which may cause your order abolished! ", comment: "")
+            if type == .buy {
+                if price < 0.8 * market.balance {
+                    self.message = header + messageB + footer
+                    return false
+                } else if price > 1.2 * market.balance {
+                    self.message = header + messageA + footer
+                    return false
+                }
+            } else {
+                if price < 0.8 * market.balance {
+                    self.message = header + messageA + footer
+                    return false
+                } else if price > 1.2 * market.balance {
+                    self.message = header + messageB + footer
+                    return false
+                }
+            }
+            return true
+        }
+        return true
     }
     
     func setupLabels() {
@@ -140,23 +172,38 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         scrollView.addSubview(displayLabel)
         
         // 1st row: price
+        priceLabel.font = FontConfigManager.shared.getLabelFont()
+        priceLabel.text = NSLocalizedString("Price", comment: "")
+        priceLabel.frame = CGRect(x: padding, y: displayLabel.frame.maxY + padding*3, width: 150, height: 40)
+        scrollView.addSubview(priceLabel)
+        
+        priceTipLabel.text = "(" + NSLocalizedString("Irrational", comment: "") + ")"
+        priceTipLabel.textColor = .red
+        priceTipLabel.textAlignment = .right
         priceTipLabel.font = FontConfigManager.shared.getLabelFont()
-        priceTipLabel.text = NSLocalizedString("Price", comment: "")
-        priceTipLabel.frame = CGRect(x: padding, y: displayLabel.frame.maxY + padding*3, width: 150, height: 40)
+        priceTipLabel.frame = CGRect(x: screenWidth - padding - 100, y: priceLabel.frame.minY, width: 100, height: 40)
+        priceTipLabel.isHidden = true
         scrollView.addSubview(priceTipLabel)
-        priceInfoLabel.font = FontConfigManager.shared.getLabelFont()
-        priceInfoLabel.text = self.price + " " + PlaceOrderDataManager.shared.market.description
-        priceInfoLabel.textAlignment = .right
-        priceInfoLabel.frame = CGRect(x: padding + 150, y: priceTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
-        scrollView.addSubview(priceInfoLabel)
-        priceUnderline.frame = CGRect(x: padding, y: priceTipLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
+
+        priceValueLabel.font = FontConfigManager.shared.getLabelFont()
+        priceValueLabel.text = "\(price) \(PlaceOrderDataManager.shared.market.description)"
+        priceValueLabel.textAlignment = .right
+        if !validateRational() {
+            priceTipLabel.isHidden = false
+            priceValueLabel.frame = CGRect(x: priceTipLabel.frame.minX - 200, y: priceLabel.frame.minY, width: 200, height: 40)
+        } else {
+            priceValueLabel.frame = CGRect(x: UIScreen.main.bounds.width - 15 - 200, y: priceLabel.frame.minY, width: 200, height: 40)
+        }
+        scrollView.addSubview(priceValueLabel)
+        
+        priceUnderline.frame = CGRect(x: padding, y: priceLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
         priceUnderline.backgroundColor = UIStyleConfig.underlineColor
         scrollView.addSubview(priceUnderline)
         
         // 2nd row: expires
         expiresTipLabel.font = FontConfigManager.shared.getLabelFont()
         expiresTipLabel.text = NSLocalizedString("Order Expires in", comment: "")
-        expiresTipLabel.frame = CGRect(x: padding, y: priceTipLabel.frame.maxY + padding, width: 150, height: 40)
+        expiresTipLabel.frame = CGRect(x: padding, y: priceLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(expiresTipLabel)
         expiresInfoLabel.font = FontConfigManager.shared.getLabelFont()
         expiresInfoLabel.text = self.expire.description
@@ -220,8 +267,21 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
 
     @IBAction func pressedConfirmationButton(_ sender: Any) {
         print("pressedConfirmationButton")
-        self.verifyInfo = PlaceOrderDataManager.shared.verify(order: order!)
-        self.handleVerifyInfo()
+        if !priceTipLabel.isHidden {
+            let alert = UIAlertController(title: NSLocalizedString("Please Pay Attention", comment: ""), message: self.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+                DispatchQueue.main.async {
+                    self.verifyInfo = PlaceOrderDataManager.shared.verify(order: self.order!)
+                    self.handleVerifyInfo()
+                }
+            }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.verifyInfo = PlaceOrderDataManager.shared.verify(order: order!)
+            self.handleVerifyInfo()
+        }
     }
 }
 

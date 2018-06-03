@@ -150,6 +150,7 @@
 "which may cause your asset wastage! " = "which may cause your asset wastage! ";
 "which may cause your order abolished! " = "which may cause your order abolished! ";
 "Do you wish to continue trading with the price?" = "Do you wish to continue trading with the price?";
+"Your order amount exceeded your asset balance, which cause your order could not be dealt completely. Do you wish to continue trading with the amount?" = "Your order amount exceeded your asset amount, which cause your order could not be dealt completely. Do you wish to continue trading with the amount?";
 "Please input a valid price" = "Please input a valid price";
 "Please input a valid amount" = "Please input a valid amount";
 "You are buying" = "You are buying";
