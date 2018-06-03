@@ -11,6 +11,7 @@ import UIKit
 
 class Market: Equatable, CustomStringConvertible {
     
+    var exchange: String
     var name: String
     var icon: UIImage?
     var description: String
@@ -19,12 +20,18 @@ class Market: Equatable, CustomStringConvertible {
     var display: String
     var volumeInPast24: Double
     var changeInPat24: String
+
+    // loopring_getTickers
+    var open: Double?
+    var close: Double?
+    var last: Double?
     
     func isFavorite() -> Bool {
         return MarketDataManager.shared.getFavoriteMarketKeys().contains(description)
     }
 
     init?(json: JSON) {
+        exchange = json["exchange"].string ?? ""
         name = json["market"].stringValue
         let tokens = json["market"].stringValue.components(separatedBy: "-")
         guard tokens.count == 2 else {
@@ -49,6 +56,21 @@ class Market: Equatable, CustomStringConvertible {
             display = price.currency
         } else {
             return nil
+        }
+        
+        open = json["open"].double
+        close = json["close"].double
+        last = json["last"].double
+    }
+    
+    func getExchangeDescription() -> String {
+        switch exchange {
+        case "binance":
+            return "Binance"
+        case "okex":
+            return "OKEx"
+        default:
+            return exchange.capitalized
         }
     }
     

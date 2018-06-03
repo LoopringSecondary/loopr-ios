@@ -134,7 +134,7 @@ class LoopringAPIRequest {
     }
 
     // READY
-    static func getMarkets(completionHandler: @escaping (_ markets: [Market], _ error: Error?) -> Void) {
+    static func getTicker(completionHandler: @escaping (_ markets: [Market], _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getTicker"
         body["params"] = [["delegateAddress": RelayAPIConfiguration.delegateAddress]]
@@ -148,13 +148,42 @@ class LoopringAPIRequest {
             var markets: [Market] = []
             let json = JSON(data)
             let offerData = json["result"]
-            print(offerData)
             
             for subJson in offerData.arrayValue {
                 if let market = Market(json: subJson) {
                     markets.append(market)
                 }
             }
+            completionHandler(markets, nil)
+        }
+    }
+    
+    static func getTickers(market: String, completionHandler: @escaping (_ markets: [Market], _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_getTickers"
+        body["params"] = [["delegateAddress": RelayAPIConfiguration.delegateAddress, "market": market]]
+        body["id"] = JSON(UUID().uuidString)
+        
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            var markets: [Market] = []
+            let json = JSON(data)
+            let offerData = json["result"]
+            print(offerData)
+
+            for (key, value) in json["result"] {
+                print("key \(key) value2 \(value)")
+                if let market = Market(json: value) {
+                    market.exchange = key
+                    markets.append(market)
+                }
+            }
+            markets.sort(by: { (a, b) -> Bool in
+                return a.volumeInPast24 > b.volumeInPast24
+            })
             completionHandler(markets, nil)
         }
     }
@@ -350,7 +379,7 @@ class LoopringAPIRequest {
             print("errorMessage: \(errorMessage)")
 
             let offerData = json["result"]["data"]
-            print("loopring_getTransactions: \(offerData)")
+            // print("loopring_getTransactions: \(offerData)")
             
             var transactions: [Transaction] = []
             for subJson in offerData.arrayValue {

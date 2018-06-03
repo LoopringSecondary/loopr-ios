@@ -28,7 +28,6 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
-        setupNavigationBar()
 
         tableView.dataSource = self
         tableView.delegate = self
@@ -99,53 +98,6 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-    }
-
-    func setupNavigationBar() {
-        self.navigationItem.title = asset?.name.capitalized ?? ""
-
-        // For back button in navigation bar
-        setBackButton()
-        
-        // TODO: Remove the button.
-        /*
-        // We need to reduce the spacing between two UIBarButtonItems
-        let sendButton = UIButton(type: UIButtonType.custom)
-        sendButton.setImage(UIImage.init(named: "Send"), for: UIControlState.normal)
-        sendButton.setImage(UIImage.init(named: "Send-highlight"), for: UIControlState.highlighted)
-        // sendButton.addTarget(self, action: #selector(self.pressSendButton(_:)), for: UIControlEvents.touchUpInside)
-        sendButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        let sendBarButton = UIBarButtonItem(customView: sendButton)
-        
-        let qrCodebutton = UIButton(type: UIButtonType.custom)
-        qrCodebutton.theme_setImage(["QRCode-black", "QRCode-white"], forState: UIControlState.normal)
-        qrCodebutton.setImage(UIImage(named: "QRCode-black")?.alpha(0.3), for: .highlighted)
-
-        qrCodebutton.addTarget(self, action: #selector(self.pressQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
-        qrCodebutton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        let qrCodeBarButton = UIBarButtonItem(customView: qrCodebutton)
-        
-        self.navigationItem.rightBarButtonItems = [sendBarButton, qrCodeBarButton]
-         */
-
-        if let asset = asset, asset.symbol.uppercased() == "ETH" || asset.symbol.uppercased() == "WETH" {
-            let convertButton = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 28))
-            convertButton.setupRoundWhite(height: 28)
-            convertButton.setTitle(NSLocalizedString("Convert", comment: ""), for: .normal)
-            convertButton.contentHorizontalAlignment = .center
-            convertButton.titleColor = UIColor.darkGray
-            convertButton.titleLabel?.font = FontConfigManager.shared.getLabelFont(size: 11)
-            convertButton.addTarget(self, action: #selector(self.pressedConvertButton(_:)), for: UIControlEvents.touchUpInside)
-            let convertBarButtton = UIBarButtonItem(customView: convertButton)
-            self.navigationItem.rightBarButtonItem = convertBarButtton
-        }
-    }
-
-    @objc func pressedConvertButton(_ sender: Any) {
-        print("pressedConvertButton")
-        let viewController = ConvertETHViewController()
-        viewController.asset = asset
-        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction func pressedSendButton(_ sender: Any) {

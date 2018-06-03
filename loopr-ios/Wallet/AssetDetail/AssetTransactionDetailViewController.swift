@@ -120,7 +120,7 @@ class AssetTransactionDetailViewController: UIViewController {
         view.addSubview(row3Underline)
 
         // Row 4
-        label7.text = NSLocalizedString("Date", comment: "")
+        label7.text = NSLocalizedString("Confirm Time", comment: "")
         label7.theme_textColor = GlobalPicker.textColor
         label7.font = FontConfigManager.shared.getLabelFont()
         label7.frame = CGRect(x: padding, y: row3Underline.frame.maxY + padding, width: 80, height: labelHeight)
@@ -140,10 +140,10 @@ class AssetTransactionDetailViewController: UIViewController {
     }
     
     func setupLabel(transaction: Transaction) {
-        titleLabel.text = "You \(transaction.type.description)"
-        titleLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 30)
+        titleLabel.text = "\(transaction.type.description)"
+        titleLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 27)
         titleLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
-        amountLabel.font = FontConfigManager.shared.getRegularFont(size: 40)
+        amountLabel.font = FontConfigManager.shared.getRegularFont(size: 27)
         
         amountLabel.textColor = Themes.isNight() ? UIColor.white : UIColor.black
         amountInCurrencyLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 20)
@@ -187,7 +187,7 @@ class AssetTransactionDetailViewController: UIViewController {
     
     func update() {
         if let transaction = transaction {
-            if let image = UIImage(named: transaction.type.description + "Detail") {
+            if let image = UIImage(named: "Transaction_\(transaction.type.rawValue)_detail") {
                 typeImageView.image = image
             }
             amountLabel.text = transaction.value + " " + transaction.symbol

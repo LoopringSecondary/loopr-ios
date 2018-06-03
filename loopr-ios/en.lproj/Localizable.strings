@@ -8,9 +8,13 @@
 
 "Night Mode" = "Night Mode";
 "Buy" = "Buy";
+"Bought" = "Bought";
 "Sell" = "Sell";
+"Sold" = "Sold";
 "Receive" = "Receive";
+"Received" = "Received";
 "Send" = "Send";
+"Sent" = "Sent";
 "Language" = "Language";
 "Create a new wallet" = "Create a new wallet";
 "Manage Wallet" = "Manage Wallet";
@@ -36,6 +40,7 @@
 "Copy Private Key" = "Copy Private Key";
 "Save to Album" = "Save to Album";
 "Market" = "Market";
+"Markets" = "Markets";
 "Order History" = "Order History";
 "Wallet" = "Wallet";
 "Place Order" = "Place Order";
@@ -251,3 +256,10 @@
 "Completed" = "Completed";
 "Failed" = "Failed";
 "Other" = "Other";
+"Tokens" = "Tokens";
+"Convert to WETH" = "Convert to WETH";
+"Convert to ETH" = "Convert to ETH";
+"Confirm Time" = "Confirm Time";
+"Transactions" = "Transactions";
+"Enabled" = "Enabled";
+"to Trade" = "to Trade";

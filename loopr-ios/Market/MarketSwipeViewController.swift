@@ -70,18 +70,15 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         options.swipeTabView.height = 44
         options.swipeTabView.underlineView.height = 1
         options.swipeTabView.underlineView.margin = 20
+        options.swipeTabView.itemView.font = FontConfigManager.shared.getRegularFont()
+        options.swipeContentScrollView.isScrollEnabled = false
         
         // TODO: needsAdjustItemViewWidth will trigger expensive computation.
         // options.swipeTabView.needsAdjustItemViewWidth = false
         
         // TODO: .segmented will disable the value of width
         options.swipeTabView.style = .segmented
-        
-        options.swipeTabView.itemView.font = FontConfigManager.shared.getRegularFont()
-        
-        // This conflicts to the swipe action in the table view cell.
-        options.swipeContentScrollView.isScrollEnabled = false
-        
+
         swipeView.reloadData(options: options)
     }
 
@@ -98,7 +95,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
             let orderHistoryBarButton = UIBarButtonItem(customView: orderHistoryButton)
             self.navigationItem.rightBarButtonItem = orderHistoryBarButton
         }
-        // TODO: no reload data in the viewWIllAppear. Need to implement the night mode.
+        // TODO: no reload data in the viewWillAppear. Need to implement the night mode.
         if Themes.isNight() {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.white

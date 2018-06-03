@@ -49,20 +49,11 @@ class Transaction {
 
         self.type = TxType(rawValue: json["type"].string ?? "unsupported_contract") ?? .unsupportedContract
         self.status = TxStatus(rawValue: json["status"].string ?? "other") ?? .other
-        self.icon = UIImage(named: self.type.description) ?? nil
+        self.icon = UIImage(named: "Transaction_\(self.type.rawValue)") ?? nil
         let createTime = DateUtil.convertToDate(json["createTime"].uIntValue, format: "yyyy-MM-dd HH:mm")
         self.createTime = createTime
         let updateTime = DateUtil.convertToDate(json["updateTime"].uIntValue, format: "yyyy-MM-dd HH:mm")
         self.updateTime = updateTime
     }
 
-    /*
-    func encode(with aCoder: NSCoder) {
-        <#code#>
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        <#code#>
-    }
-    */
 }

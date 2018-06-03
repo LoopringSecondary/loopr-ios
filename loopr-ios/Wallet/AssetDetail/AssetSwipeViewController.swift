@@ -1,26 +1,25 @@
 //
-//  BuyViewController.swift
+//  AssetSwipeViewController.swift
 //  loopr-ios
 //
-//  Created by xiaoruby on 3/10/18.
+//  Created by xiaoruby on 6/2/18.
 //  Copyright © 2018 Loopring. All rights reserved.
 //
 
 import UIKit
 
-class BuyAndSellSwipeViewController: SwipeViewController {
-
-    var initialType: TradeType = .buy
-    private var types: [TradeType] = [.buy, .sell]
-    private var viewControllers: [UIViewController] = [BuyViewController(type: .buy), BuyViewController(type: .sell)]
-    var options = SwipeViewOptions()
+class AssetSwipeViewController: SwipeViewController {
     
+    var asset: Asset?
+
+    private var viewControllers: [UIViewController] = []
+    var options = SwipeViewOptions()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setBackButton()
-        self.navigationItem.title = PlaceOrderDataManager.shared.market.description
+        setupNavigationBar()
         
         options.swipeTabView.height = 44
         options.swipeTabView.underlineView.height = 1
@@ -35,40 +34,50 @@ class BuyAndSellSwipeViewController: SwipeViewController {
         // TODO: .segmented will disable the value of width
         options.swipeTabView.style = .segmented
 
-        // swipeView.reloadData(options: options)
-        
-        let initIndex = initialType == .buy ? 0 : 1
-        
-        swipeView.reloadData(options: options, default: initIndex)
+        let vc0 = AssetDetailViewController()
+        vc0.asset = asset
+        viewControllers.append(vc0)
+
+        let vc1 = AssetMarketViewController()
+        vc1.asset = asset
+        viewControllers.append(vc1)
+
         for viewController in viewControllers {
             self.addChildViewController(viewController)
         }
+        
+        swipeView.reloadData(options: options)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func setupNavigationBar() {
+        self.navigationItem.title = asset?.name.capitalized ?? ""
+        
+        // For back button in navigation bar
+        setBackButton()
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if Themes.isNight() {
-            options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
-            options.swipeTabView.itemView.selectedTextColor = UIColor.white
-            // swipeView.reloadData(options: options, default: initIndex)
-        } else {
-            options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
-            options.swipeTabView.itemView.selectedTextColor = UIColor.black
-            // swipeView.reloadData(options: options, default: initIndex)
+        if let asset = asset, asset.symbol.uppercased() == "ETH" || asset.symbol.uppercased() == "WETH" {
+            let convertButton = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 28))
+            convertButton.setupRoundWhite(height: 28)
+            convertButton.setTitle(NSLocalizedString("Convert", comment: ""), for: .normal)
+            convertButton.contentHorizontalAlignment = .center
+            convertButton.titleColor = UIColor.darkGray
+            convertButton.titleLabel?.font = FontConfigManager.shared.getLabelFont(size: 11)
+            convertButton.addTarget(self, action: #selector(self.pressedConvertButton(_:)), for: UIControlEvents.touchUpInside)
+            let convertBarButtton = UIBarButtonItem(customView: convertButton)
+            self.navigationItem.rightBarButtonItem = convertBarButtton
         }
     }
     
-    // To avoid gesture conflicts in swiping to back and UISlider
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if touch.view != nil && touch.view!.isKind(of: UIControl.self) {
-            return false
-        }
-        return true
+    @objc func pressedConvertButton(_ sender: Any) {
+        print("pressedConvertButton")
+        let viewController = ConvertETHViewController()
+        viewController.asset = asset
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
     // MARK: - Delegate
@@ -90,11 +99,11 @@ class BuyAndSellSwipeViewController: SwipeViewController {
     
     // MARK: - DataSource
     override func numberOfPages(in swipeView: SwipeView) -> Int {
-        return types.count
+        return viewControllers.count
     }
     
     override func swipeView(_ swipeView: SwipeView, titleForPageAt index: Int) -> String {
-        return types[index].description
+        return index == 0 ? NSLocalizedString("Transactions", comment: "") : NSLocalizedString("Markets", comment: "")
     }
     
     override func swipeView(_ swipeView: SwipeView, viewControllerForPageAt index: Int) -> UIViewController {

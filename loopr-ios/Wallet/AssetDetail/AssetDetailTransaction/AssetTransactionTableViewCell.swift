@@ -56,9 +56,9 @@ class AssetTransactionTableViewCell: UITableViewCell {
         amountLabel.isHidden = false
         displayLabel.isHidden = false
         if transaction!.symbol.lowercased() == "weth" {
-            titleLabel.text = NSLocalizedString("Convert ETH", comment: "")
+            titleLabel.text = NSLocalizedString("Convert to WETH", comment: "")
         } else if transaction!.symbol.lowercased() == "eth" {
-            titleLabel.text = NSLocalizedString("Convert WETH", comment: "")
+            titleLabel.text = NSLocalizedString("Convert to ETH", comment: "")
         }
         amountLabel.text = "\(transaction!.value) \(transaction?.symbol ?? " ")"
         displayLabel.text = transaction!.currency
@@ -68,9 +68,9 @@ class AssetTransactionTableViewCell: UITableViewCell {
         amountLabel.isHidden = false
         displayLabel.isHidden = false
         if transaction!.symbol.lowercased() == "weth" {
-            titleLabel!.text = NSLocalizedString("Convert WETH", comment: "")
+            titleLabel!.text = NSLocalizedString("Convert to WETH", comment: "")
         } else if transaction!.symbol.lowercased() == "eth" {
-            titleLabel!.text = NSLocalizedString("Convert ETH", comment: "")
+            titleLabel!.text = NSLocalizedString("Convert to ETH", comment: "")
         }
         amountLabel.text = "\(transaction!.value) \(transaction?.symbol ?? " ")"
         displayLabel.text = transaction!.currency
@@ -79,7 +79,9 @@ class AssetTransactionTableViewCell: UITableViewCell {
     private func updateApprove() {
         amountLabel.isHidden = true
         displayLabel.isHidden = true
-        titleLabel.text = NSLocalizedString("Enable \(transaction!.symbol)", comment: "")
+        let header = NSLocalizedString("Enabled", comment: "")
+        let footer = NSLocalizedString("to Trade", comment: "")
+        titleLabel.text = NSLocalizedString("\(header) \(transaction!.symbol) \(footer)", comment: "")
     }
     
     private func udpateCutoffAndCanceledOrder() {

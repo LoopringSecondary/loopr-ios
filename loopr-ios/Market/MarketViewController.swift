@@ -77,11 +77,11 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc private func refreshData(_ sender: Any) {
-        getMarketsFromRelay()
+        getTickersFromRelay()
     }
     
-    func getMarketsFromRelay() {
-        LoopringAPIRequest.getMarkets { (markets, error) in
+    func getTickersFromRelay() {
+        LoopringAPIRequest.getTicker { (markets, error) in
             print("receive LoopringAPIRequest.getMarkets")
             guard error == nil else {
                 print("error=\(String(describing: error))")
