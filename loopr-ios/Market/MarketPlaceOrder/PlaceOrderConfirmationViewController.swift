@@ -24,11 +24,9 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     var verifyInfo: [String: Double]?
     
     // Labels
-    var typeTipLabel: UILabel = UILabel()
-    var iconView: IconView = IconView()
-    var tokenImage: UIImageView = UIImageView()
-    var amountLabel: UILabel = UILabel()
-    var displayLabel: UILabel = UILabel()
+    var tokenSView: TradeTokenView!
+    var tokenBView: TradeTokenView!
+    var arrowRightImageView: UIImageView = UIImageView()
     // Price
     var priceLabel: UILabel = UILabel()
     var priceValueLabel: UILabel = UILabel()
@@ -59,122 +57,31 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         confirmationButton.title = NSLocalizedString("Confirmation", comment: "")
         confirmationButton.setupRoundBlack()
         if let order = self.order {
-            setupLabels()
-            setupTokenView(order: order)
-            setupOrderAmount(order: order)
             setupRows(order: order)
         }
     }
-    
-    func validateRational() -> Bool {
-        let pair = TradeDataManager.shared.tradePair
-        if let price = Double(self.price),
-            let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
-            let header = NSLocalizedString("Your price is irrational, ", comment: "")
-            let footer = NSLocalizedString("Do you wish to continue trading with the price?", comment: "")
-            let messageA = NSLocalizedString("which may cause your asset wastage! ", comment: "")
-            let messageB = NSLocalizedString("which may cause your order abolished! ", comment: "")
-            if type == .buy {
-                if price < 0.8 * market.balance {
-                    self.message = header + messageB + footer
-                    return false
-                } else if price > 1.2 * market.balance {
-                    self.message = header + messageA + footer
-                    return false
-                }
-            } else {
-                if price < 0.8 * market.balance {
-                    self.message = header + messageA + footer
-                    return false
-                } else if price > 1.2 * market.balance {
-                    self.message = header + messageB + footer
-                    return false
-                }
-            }
-            return true
-        }
-        return true
-    }
-    
-    func setupLabels() {
-        typeTipLabel.textAlignment = .center
-        typeTipLabel.text = (type == .buy ? NSLocalizedString("You are buying", comment: "") : NSLocalizedString("You are selling", comment: ""))
-        typeTipLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 30)
-        typeTipLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
-    }
-    
-    func setupTokenView(order: OriginalOrder) {
-        if order.side.lowercased() == "buy" {
-            if let icon = UIImage(named: order.tokenBuy) {
-                tokenImage.image = icon
-                tokenImage.isHidden = false
-                iconView.isHidden = true
-            } else {
-                iconView.isHidden = false
-                iconView.symbol = order.tokenBuy
-                iconView.symbolLabel.text = order.tokenBuy
-                tokenImage.isHidden = true
-            }
-        } else if order.side.lowercased() == "sell" {
-            if let icon = UIImage(named: order.tokenSell) {
-                tokenImage.image = icon
-                tokenImage.isHidden = false
-                iconView.isHidden = true
-            } else {
-                iconView.isHidden = false
-                iconView.symbol = order.tokenSell
-                iconView.symbolLabel.text = order.tokenSell
-                tokenImage.isHidden = true
-            }
-        }
-    }
-    
-    func setupOrderAmount(order: OriginalOrder) {
-        if order.side.lowercased() == "sell" {
-            amountLabel.text = order.amountSell.description + " " + order.tokenSell
-            if let price = PriceDataManager.shared.getPrice(of: order.tokenSell) {
-                displayLabel.text = (price * order.amountSell).currency
-            }
-        } else if order.side.lowercased() == "buy" {
-            amountLabel.text = order.amountBuy.description + " " + order.tokenBuy
-            if let price = PriceDataManager.shared.getPrice(of: order.tokenBuy) {
-                displayLabel.text = (price * order.amountBuy).currency
-            }
-        }
-        amountLabel.textAlignment = .center
-        amountLabel.font = FontConfigManager.shared.getRegularFont(size: 40)
-        amountLabel.textColor = Themes.isNight() ? UIColor.white : UIColor.black
-        displayLabel.textAlignment = .center
-        displayLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 20)
-        displayLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
-    }
-    
+  
     func setupRows(order: OriginalOrder) {
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         let padding: CGFloat = 15
+        let paddingTop: CGFloat = 50
         
-        typeTipLabel.frame = CGRect(x: 0, y: 50, width: screenWidth, height: 40)
-        scrollView.addSubview(typeTipLabel)
-
-        let width = screenWidth * 0.2
-        let rect = CGRect(x: screenWidth * 0.4, y: typeTipLabel.frame.maxY + 2*padding, width: width, height: width)
-        iconView.frame = rect
-        tokenImage.frame = rect
-        iconView.layer.cornerRadius = width/2
-        iconView.clipsToBounds = true
-        scrollView.addSubview(iconView)
-        scrollView.addSubview(tokenImage)
-        
-        amountLabel.frame = CGRect(x: 0, y: tokenImage.frame.maxY + 2*padding, width: screenWidth, height: 40)
-        scrollView.addSubview(amountLabel)
-        displayLabel.frame = CGRect(x: 0, y: amountLabel.frame.maxY + padding, width: screenWidth, height: 40)
-        scrollView.addSubview(displayLabel)
+        // labels
+        tokenSView = TradeTokenView(frame: CGRect(x: 10, y: paddingTop, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
+        scrollView.addSubview(tokenSView)
+        tokenBView = TradeTokenView(frame: CGRect(x: (screenWidth+10)/2, y: paddingTop, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
+        scrollView.addSubview(tokenBView)
+        tokenSView.update(title: NSLocalizedString("You are selling", comment: ""), symbol: order.tokenSell, amount: order.amountSell)
+        tokenBView.update(title: NSLocalizedString("You are buying", comment: ""), symbol: order.tokenBuy, amount: order.amountBuy)
+        arrowRightImageView = UIImageView(frame: CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY), size: CGSize(width: 32*UIStyleConfig.scale, height: 32*UIStyleConfig.scale)))
+        arrowRightImageView.image = UIImage.init(named: "Arrow-right-black")
+        scrollView.addSubview(arrowRightImageView)
         
         // 1st row: price
         priceLabel.font = FontConfigManager.shared.getLabelFont()
         priceLabel.text = NSLocalizedString("Price", comment: "")
-        priceLabel.frame = CGRect(x: padding, y: displayLabel.frame.maxY + padding*3, width: 150, height: 40)
+        priceLabel.frame = CGRect(x: padding, y: tokenSView.frame.maxY + padding*3, width: 150, height: 40)
         scrollView.addSubview(priceLabel)
         
         priceTipLabel.text = "(" + NSLocalizedString("Irrational", comment: "") + ")"
@@ -184,7 +91,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         priceTipLabel.frame = CGRect(x: screenWidth - padding - 100, y: priceLabel.frame.minY, width: 100, height: 40)
         priceTipLabel.isHidden = true
         scrollView.addSubview(priceTipLabel)
-
+        
         priceValueLabel.font = FontConfigManager.shared.getLabelFont()
         priceValueLabel.text = "\(price) \(PlaceOrderDataManager.shared.market.description)"
         priceValueLabel.textAlignment = .right
@@ -222,7 +129,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         feeInfoLabel.font = FontConfigManager.shared.getLabelFont()
         if let price = PriceDataManager.shared.getPrice(of: "LRC") {
             let display = (order.lrcFee * price).currency
-            feeInfoLabel.text = String(format: "%0.5f LRC (≈ %.2f)", order.lrcFee, display)
+            feeInfoLabel.text = String(format: "%0.3f LRC(≈ \(display))", order.lrcFee)
         }
         feeInfoLabel.textAlignment = .right
         feeInfoLabel.frame = CGRect(x: padding + 150, y: feeTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
@@ -260,6 +167,36 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         scrollView.contentSize = CGSize(width: screenWidth, height: totalTipLabel.frame.maxY + padding)
     }
 
+    func validateRational() -> Bool {
+        let pair = TradeDataManager.shared.tradePair
+        if let price = Double(self.price),
+            let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
+            let header = NSLocalizedString("Your price is irrational, ", comment: "")
+            let footer = NSLocalizedString("Do you wish to continue trading with the price?", comment: "")
+            let messageA = NSLocalizedString("which may cause your asset wastage! ", comment: "")
+            let messageB = NSLocalizedString("which may cause your order abolished! ", comment: "")
+            if type == .buy {
+                if price < 0.8 * market.balance {
+                    self.message = header + messageB + footer
+                    return false
+                } else if price > 1.2 * market.balance {
+                    self.message = header + messageA + footer
+                    return false
+                }
+            } else {
+                if price < 0.8 * market.balance {
+                    self.message = header + messageA + footer
+                    return false
+                } else if price > 1.2 * market.balance {
+                    self.message = header + messageB + footer
+                    return false
+                }
+            }
+            return true
+        }
+        return true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -49,7 +49,7 @@ class OrderTableViewCell: UITableViewCell {
             cancelButton.layer.borderColor = UIColor.black.cgColor
         } else {
             cancelButton.isEnabled = false
-            cancelButton.backgroundColor = UIColor(rgba: "#e0e0e0")
+            cancelButton.backgroundColor = UIColor.buttonBackground
             cancelButton.layer.borderColor = UIColor.clear.cgColor
         }
         cancelButton.title = text

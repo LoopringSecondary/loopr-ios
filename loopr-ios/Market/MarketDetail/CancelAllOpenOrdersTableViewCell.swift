@@ -42,7 +42,7 @@ class CancelAllOpenOrdersTableViewCell: UITableViewCell {
             cancelAllButton.layer.borderColor = UIColor.black.cgColor
         } else {
             cancelAllButton.isEnabled = false
-            cancelAllButton.backgroundColor = UIColor(rgba: "#e0e0e0")
+            cancelAllButton.backgroundColor = UIColor.buttonBackground
             cancelAllButton.layer.borderColor = UIColor.clear.cgColor
         }
         cancelAllButton.title = NSLocalizedString("Cancel All", comment: "")

@@ -42,4 +42,8 @@ extension UIColor {
     class var seperator: UIColor {
         return UIColor(named: "Seperator")!
     }
+    
+    class var buttonBackground: UIColor {
+        return UIColor(named: "ButtonBackground")!
+    }
 }
