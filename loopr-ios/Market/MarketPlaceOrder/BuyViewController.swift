@@ -26,14 +26,14 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
 
     // Price
     var tokenALabel: UILabel = UILabel()
-    var priceTextField: UITextField = UITextField()
+    var priceTextField: FloatLabelTextField!
     var tokenAUnderLine: UIView = UIView()
     var estimateValueInCurrencyLabel: UILabel = UILabel()
     var priceStackView: PriceStackView!
 
     // Amout
     var tokenBLabel: UILabel = UILabel()
-    var amountTextField: UITextField = UITextField()
+    var amountTextField: FloatLabelTextField!
     var amountUnderLine: UIView = UIView()
     var tipLabel: UILabel = UILabel()
     var amountStackView: AmountStackView!
@@ -85,7 +85,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
 
         placeOrderButton.title = NSLocalizedString("Place Order", comment: "")
         placeOrderButton.setupRoundBlack()
-        placeOrderButton.isEnabled = false
         
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
@@ -102,14 +101,14 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         tokenALabel.frame = CGRect(x: screenWidth-80-padding, y: originY, width: 80, height: 40)
         scrollView.addSubview(tokenALabel)
         
+        priceTextField = FloatLabelTextField(frame: CGRect(x: padding, y: tokenALabel.frame.minY, width: screenWidth-padding*2-80, height: 40))
         priceTextField.delegate = self
         priceTextField.tag = 0
         priceTextField.inputView = UIView()
         priceTextField.font = FontConfigManager.shared.getLabelFont()
         priceTextField.theme_tintColor = GlobalPicker.textColor
-        priceTextField.placeholder = NSLocalizedString("Price", comment: "") + " " + PlaceOrderDataManager.shared.market.balance.description
+        priceTextField.placeholder = NSLocalizedString("Market Price", comment: "") + " " + PlaceOrderDataManager.shared.market.balance.description
         priceTextField.contentMode = UIViewContentMode.bottom
-        priceTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(priceTextField)
 
         tokenAUnderLine.frame = CGRect(x: padding, y: tokenALabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
@@ -133,15 +132,15 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         tokenBLabel.frame = CGRect(x: screenWidth-80-padding, y: estimateValueInCurrencyLabel.frame.maxY + 30, width: 80, height: 40)
         scrollView.addSubview(tokenBLabel)
         
+        amountTextField = FloatLabelTextField(frame: CGRect(x: padding, y: estimateValueInCurrencyLabel.frame.maxY + 30, width: screenWidth-padding*2-80, height: 40))
         amountTextField.delegate = self
         amountTextField.tag = 1
         amountTextField.inputView = UIView()
-        amountTextField.font = FontConfigManager.shared.getLabelFont() // UIFont.init(name: FontConfigManager.shared.getLight(), size: 24)
+        amountTextField.font = FontConfigManager.shared.getLabelFont()
         amountTextField.theme_tintColor = GlobalPicker.textColor
         amountTextField.theme_tintColor = GlobalPicker.textColor
         amountTextField.placeholder = NSLocalizedString("Amount", comment: "")
         amountTextField.contentMode = UIViewContentMode.bottom
-        amountTextField.frame = CGRect(x: padding, y: estimateValueInCurrencyLabel.frame.maxY + 30, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(amountTextField)
         
         amountUnderLine.frame = CGRect(x: padding, y: tokenBLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
@@ -315,19 +314,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         return nil
     }
     
-    func checkEmpty() -> Bool {
-        guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
-            return false
-        }
-        guard !priceTextField.text!.isEmpty else {
-            return false
-        }
-        guard !amountTextField.text!.isEmpty else {
-            return false
-        }
-        return true
-    }
-    
     func constructOrder() -> OriginalOrder? {
         var buyNoMoreThanAmountB: Bool
         var side, tokenSell, tokenBuy: String
@@ -359,13 +345,23 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
 
     @IBAction func pressedPlaceOrderButton(_ sender: Any) {
         print("pressedPlaceOrderButton")
-        self.validatePriceRational()
+        hideNumericKeyboard()
+        priceTextField.resignFirstResponder()
+        amountTextField.resignFirstResponder()
+        
+        let isPriceValid = validateTokenPrice()
+        let isAmountValid = validateAmount()
+        if isPriceValid && isAmountValid {
+            self.pushController()
+        }
+        if !isPriceValid {
+            updateLabel(label: estimateValueInCurrencyLabel, enable: true, color: .red, text: NSLocalizedString("Please input a valid price", comment: ""))
+        }
+        if !isAmountValid {
+            updateLabel(label: tipLabel, enable: true, color: .red, text: NSLocalizedString("Please input a valid amount", comment: ""))
+        }
     }
 
-    func updateButton(isValid: Bool) {
-        placeOrderButton.isEnabled = isValid
-    }
-    
     func pushController() {
         if let order = constructOrder() {
             let viewController = PlaceOrderConfirmationViewController()
@@ -399,50 +395,60 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         }
     }
 
+    func updateLabel(label: UILabel, enable: Bool, color: UIColor? = nil, text: String? = nil) {
+        guard enable else {
+            label.isHidden = true
+            return
+        }
+        label.isHidden = false
+        label.textColor = color
+        if color == .red {
+            label.shake()
+        }
+        label.text = text
+    }
+    
     func validateTokenPrice() -> Bool {
         if let value = Double(priceTextField.text ?? "0") {
             let validate = value > 0.0
             if validate {
                 let tokenBPrice = PriceDataManager.shared.getPrice(of: PlaceOrderDataManager.shared.tokenB.symbol)!
                 let estimateValue: Double = value * tokenBPrice
-                estimateValueInCurrencyLabel.textColor = .black
-                estimateValueInCurrencyLabel.text = "≈ \(estimateValue.currency)"
+                updateLabel(label: estimateValueInCurrencyLabel, enable: true, color: .black, text: "≈ \(estimateValue.currency)")
             } else {
-                estimateValueInCurrencyLabel.textColor = .red
-                estimateValueInCurrencyLabel.text = NSLocalizedString("Please input a valid price", comment: "")
-                estimateValueInCurrencyLabel.shake()
+                updateLabel(label: estimateValueInCurrencyLabel, enable: true, color: .red, text: NSLocalizedString("Please input a valid price", comment: ""))
             }
             return validate
         } else {
+            if activeTextFieldTag == priceTextField.tag {
+                updateLabel(label: estimateValueInCurrencyLabel, enable: false)
+            }
+            totalTextField.text = ""
+            availableLabel.isHidden = true
             return false
         }
     }
-    
-    func updateLabel() {
-        tipLabel.isHidden = false
-        tipLabel.textColor = .red
-        tipLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
-        tipLabel.shake()
-    }
-    
+   
     func validateAmount() -> Bool {
         if let value = Double(amountTextField.text ?? "0") {
             let validate = value > 0.0
             if validate {
-                tipLabel.isHidden = true
+                updateLabel(label: tipLabel, enable: false)
             } else {
-                tipLabel.isHidden = false
-                tipLabel.textColor = .red
-                tipLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
-                tipLabel.shake()
+                updateLabel(label: tipLabel, enable: true, color: .red, text: NSLocalizedString("Please input a valid amount", comment: ""))
             }
             return validate
         } else {
+            if activeTextFieldTag == amountTextField.tag {
+                updateLabel(label: tipLabel, enable: false)
+            }
+            totalTextField.text = ""
+            availableLabel.isHidden = true
             return false
         }
     }
 
-    func validate() {
+    func validate() -> Bool {
         var isValid = false
         if activeTextFieldTag == priceTextField.tag {
             isValid = validateTokenPrice()
@@ -451,13 +457,14 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         }
         guard isValid else {
             totalTextField.text = ""
-            return
+            return false
         }
         if validateTokenPrice() && validateAmount() {
             isValid = true
-            let total = Double(priceTextField.text ?? "0")! * Double(amountTextField.text ?? "0")!
+            let total = Double(priceTextField.text!)! * Double(amountTextField.text!)!
             totalTextField.text = "\(total)"
             if let balance = getSellingBalance() {
+                availableLabel.isHidden = false
                 if balance < total {
                     availableLabel.textColor = .red
                     availableLabel.shake()
@@ -468,13 +475,14 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         } else {
             totalTextField.text = ""
         }
-        updateButton(isValid: isValid)
+        return isValid
     }
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         print("textFieldShouldBeginEditing")
         activeTextFieldTag = textField.tag
         showNumericKeyboard(textField: textField)
+        _ = validate()
         return true
     }
     
@@ -570,7 +578,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         if activeTextFieldTag == priceTextField.tag {
             customerValue = priceTextField.text!
         }
-        validate()
+        _ = validate()
     }
 
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemLongPressed item: NumericKeyboardItem, atPosition position: Position) {
@@ -617,7 +625,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             DispatchQueue.main.async {
                 self.priceTextField.text = text
                 self.activeTextFieldTag = self.priceTextField.tag
-                self.validate()
+                _ = self.validate()
             }
         }
     }
@@ -631,7 +639,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             }
         }
         self.activeTextFieldTag = amountTextField.tag
-        self.validate()
+        _ = self.validate()
     }
 }
 

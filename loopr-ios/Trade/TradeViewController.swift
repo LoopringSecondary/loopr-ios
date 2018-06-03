@@ -89,7 +89,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         amountSellTextField.delegate = self
         amountSellTextField.tag = 0
         amountSellTextField.inputView = UIView()
-        amountSellTextField.titleYPadding = -15
         amountSellTextField.font = FontConfigManager.shared.getLabelFont()
         amountSellTextField.theme_tintColor = GlobalPicker.textColor
         amountSellTextField.placeholder = NSLocalizedString("Enter the amount you have", comment: "")
@@ -129,7 +128,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         amountBuyTextField.delegate = self
         amountBuyTextField.tag = 2
         amountBuyTextField.inputView = UIView()
-        amountBuyTextField.titleYPadding = -15
         amountBuyTextField.font = FontConfigManager.shared.getLabelFont()
         amountBuyTextField.theme_tintColor = GlobalPicker.textColor
         amountBuyTextField.placeholder = NSLocalizedString("Enter the amount you get", comment: "")
@@ -364,8 +362,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         print("textFieldShouldBeginEditing")
         activeTextFieldTag = textField.tag
-        _ = validate()
         showNumericKeyboard(textField: textField)
+        _ = validate()
         return true
     }
     

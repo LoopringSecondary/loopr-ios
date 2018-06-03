@@ -49,7 +49,7 @@ class FloatLabelTextField: UITextField {
     
     var hintYPadding: CGFloat = 0.0
     
-    var titleYPadding: CGFloat = 0.0 {
+    var titleYPadding: CGFloat = -15.0 {
         didSet {
             var r = title.frame
             r.origin.y = titleYPadding
@@ -65,7 +65,7 @@ class FloatLabelTextField: UITextField {
         }
     }
     
-    var titleActiveTextColour: UIColor! {
+    var titleActiveTextColour: UIColor = UIColor.gray {
         didSet {
             if isFirstResponder {
                 title.textColor = titleActiveTextColour
@@ -137,7 +137,7 @@ class FloatLabelTextField: UITextField {
     // MARK: - Private Methods
     fileprivate func setup() {
         borderStyle = UITextBorderStyle.none
-        titleActiveTextColour = tintColor
+//        titleActiveTextColour = tintColor
         // Set up title label
         title.alpha = 0.0
         title.font = titleFont

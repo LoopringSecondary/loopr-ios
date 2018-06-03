@@ -69,7 +69,7 @@ class FloatLabelTextView: UITextView {
         }
     }
     
-    var titleActiveTextColour: UIColor = UIColor.cyan {
+    var titleActiveTextColour: UIColor = UIColor.gray {
         didSet {
             if isFirstResponder {
                 title.textColor = titleActiveTextColour
@@ -111,11 +111,11 @@ class FloatLabelTextView: UITextView {
         hintLabel.frame = CGRect(x: r.origin.x, y: r.origin.y, width: hintLabel.frame.size.width, height: hintLabel.frame.size.height)
         setTitlePositionForTextAlignment()
         let isResp = isFirstResponder
-        if isResp && !text.isEmpty {
-            title.textColor = titleActiveTextColour
-        } else {
+//        if isResp && !text.isEmpty {
+//            title.textColor = titleActiveTextColour
+//        } else {
             title.textColor = titleTextColour
-        }
+//        }
         // Should we show or hide the title label?
         if text.isEmpty {
             // Hide
@@ -130,7 +130,7 @@ class FloatLabelTextView: UITextView {
     fileprivate func setup() {
         initialTopInset = textContainerInset.top
         textContainer.lineFragmentPadding = 0.0
-        titleActiveTextColour = tintColor
+//        titleActiveTextColour = tintColor
         // Placeholder label
         hintLabel.font = font
         hintLabel.text = hint
