@@ -20,6 +20,8 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
     
     var filtedTokens: [Token] = []
     
+    var canHideKeyboard = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -78,7 +80,10 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print("scrollViewDidScroll")
-        // UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        // isSearching = false
+        if canHideKeyboard {
+            searchBar.resignFirstResponder()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -150,9 +155,19 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         filtedTokens = TokenDataManager.shared.getTokens().filter({(token: Token) -> Bool in
             return token.symbol.lowercased().contains(searchText.lowercased())
         })
-        // tableView.reloadData()
-        // tableView.setContentOffset(.zero, animated: true)
-        tableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
+        if tableView.contentOffset.y == 0 {
+            tableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
+        } else {
+            canHideKeyboard = false
+            _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
+                self.canHideKeyboard = true
+            }
+
+            tableView.reloadData()
+            // tableView.setContentOffset(.zero, animated: false)
+            let topIndex = IndexPath(row: 0, section: 0)
+            tableView.scrollToRow(at: topIndex, at: .top, animated: true)
+        }
     }
 
 }
