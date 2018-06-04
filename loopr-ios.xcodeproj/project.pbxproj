@@ -44,6 +44,7 @@
 		9475A2EE207EF81300200155 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475A2EC207EF81300200155 /* OrderDetailViewController.swift */; };
 		9475A2EF207EF81300200155 /* OrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9475A2ED207EF81300200155 /* OrderDetailViewController.xib */; };
 		948952D3205A74BE009B03FE /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948952D2205A74BE009B03FE /* Transaction.swift */; };
+		948BAD8420C4EBFA001F279F /* RawTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948BAD8320C4EBFA001F279F /* RawTransaction.swift */; };
 		949629DB204E836400858F03 /* Depth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DA204E836400858F03 /* Depth.swift */; };
 		949629DF204E9C9800858F03 /* MinedRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DE204E9C9800858F03 /* MinedRing.swift */; };
 		9498E3EC2075E27E00BC8B4F /* OrderHistorySearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9498E3EA2075E27E00BC8B4F /* OrderHistorySearchResultCell.swift */; };
@@ -593,6 +594,7 @@
 		9475A2EC207EF81300200155 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
 		9475A2ED207EF81300200155 /* OrderDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailViewController.xib; sourceTree = "<group>"; };
 		948952D2205A74BE009B03FE /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		948BAD8320C4EBFA001F279F /* RawTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawTransaction.swift; sourceTree = "<group>"; };
 		949629DA204E836400858F03 /* Depth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Depth.swift; sourceTree = "<group>"; };
 		949629DE204E9C9800858F03 /* MinedRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinedRing.swift; sourceTree = "<group>"; };
 		9498E3EA2075E27E00BC8B4F /* OrderHistorySearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistorySearchResultCell.swift; sourceTree = "<group>"; };
@@ -2221,6 +2223,7 @@
 				948952D2205A74BE009B03FE /* Transaction.swift */,
 				ACFEFE9720C338BC00013921 /* TxType.swift */,
 				ACFEFE9920C338DA00013921 /* TxStatus.swift */,
+				948BAD8320C4EBFA001F279F /* RawTransaction.swift */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -2828,6 +2831,7 @@
 				AC46F7762069FB4400CFDC40 /* UIButton+RoundButton.swift in Sources */,
 				ACFEFE9F20C3436000013921 /* loopr_ios.xcdatamodeld in Sources */,
 				AC4F601520773E9D00F1D954 /* EthFunction.swift in Sources */,
+				948BAD8420C4EBFA001F279F /* RawTransaction.swift in Sources */,
 				AC10609D2073475200677D63 /* AddMenuTableViewCell.swift in Sources */,
 				C87E226E2031708000323584 /* ToggleTableViewCell.swift in Sources */,
 				ACCCFDCE203BEF2200B98F99 /* UITextFieldExtension.swift in Sources */,

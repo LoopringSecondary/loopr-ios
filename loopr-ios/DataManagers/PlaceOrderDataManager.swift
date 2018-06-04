@@ -240,8 +240,8 @@ class PlaceOrderDataManager {
         let amountB = _encodeString(order.amountBuy, order.tokenBuy)
         let amountS = _encodeString(order.amountSell, order.tokenSell)
         let lrcFee = _encodeString(order.lrcFee, "LRC")
-        let validSince = "0x" + String(format: "%2x", order.validSince)
-        let validUntil = "0x" + String(format: "%2x", order.validUntil)
+        let validSince = order.validSince.hex
+        let validUntil = order.validUntil.hex
         let authPrivateKey = order.orderType == .marketOrder ? order.authPrivateKey : nil
         let powNonce = 1
   

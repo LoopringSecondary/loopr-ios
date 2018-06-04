@@ -304,15 +304,17 @@ class SendCurrentAppWalletDataManager {
         return nil
     }
     
+    func _sign(for tx: RawTransaction, completion: @escaping (String?, Error?) -> Void) -> String? {
+        return self._sign(data: tx.data, address: tx.to, amount: tx.value, gasLimit: tx.gasLimit, completion: completion)
+    }
+    
     func _transfer(data: Data, address: GethAddress, amount: GethBigInt, gasLimit: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
-        if let signedTransaction = _sign(data: data, address: address, amount: amount, gasLimit: gasLimit, completion: completion) {
+        let tx = RawTransaction(data: data, to: address, value: amount, gasLimit: gasLimit, gasPrice: GasDataManager.shared.getGasPriceInWei(), nonce: self.nonce)
+        let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
+        if let signedTransaction = _sign(for: tx, completion: completion) {
             self.sendTransactionToServer(signedTransaction: signedTransaction, completion: { (txHash, error) in
                 if txHash != nil && error == nil {
-                    completion(txHash!, nil)
-                    // TODO: This API doesn't work, so comment out now.
-                    // LoopringAPIRequest.notifyTransactionSubmitted(txHash: txHash!, completionHandler: {_, _ in })
-                    
-                    // TODO: txHash need to be stored in the local storage.
+                    LoopringAPIRequest.notifyTransactionSubmitted(txHash: txHash!, rawTx: tx, from: address, completionHandler: completion)
                 } else {
                     completion(nil, error)
                 }

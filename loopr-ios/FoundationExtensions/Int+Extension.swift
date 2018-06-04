@@ -27,5 +27,10 @@ extension Int {
         }
         return "\(self)\(suffix)"
     }
-    
+}
+
+extension Int64 {
+    var hex: String {
+        return "0x" + String(format: "%2x", self)
+    }
 }
