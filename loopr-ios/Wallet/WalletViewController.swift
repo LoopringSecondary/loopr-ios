@@ -62,7 +62,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
-        
         buttonInNavigationBar.frame = CGRect(x: 0, y: 0, width: 400, height: 40)
         buttonInNavigationBar.titleLabel?.font = UIFont(name: FontConfigManager.shared.getLight(), size: 16.0)
         buttonInNavigationBar.theme_setTitleColor(["#000", "#fff"], forState: .normal)

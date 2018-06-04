@@ -56,10 +56,8 @@ class AssetSwipeViewController: SwipeViewController {
     
     func setupNavigationBar() {
         self.navigationItem.title = asset?.name.capitalized ?? ""
-        
         // For back button in navigation bar
         setBackButton()
-
         if let asset = asset, asset.symbol.uppercased() == "ETH" || asset.symbol.uppercased() == "WETH" {
             let convertButton = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 28))
             convertButton.setupRoundWhite(height: 28)

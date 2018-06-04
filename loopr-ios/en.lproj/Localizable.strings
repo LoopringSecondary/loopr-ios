@@ -267,4 +267,9 @@
 "Time" = "Time";
 "Loopring DEX Markets" = "Loopring DEX Markets";
 "Reference Markets" = "Reference Markets";
-
+"Order Submitted" = "Submitted";
+"Order Cancelled" = "Cancelled";
+"Order Completed" = "Completed";
+"Order Expired" = "Expired";
+"Order Locked" = "Locked";
+"Order Unknown" = "Unknown";

@@ -5,6 +5,7 @@
 //  Created by xiaoruby on 2/5/18.
 //  Copyright © 2018 Loopring. All rights reserved.
 //
+import UIKit
 
 enum OrderStatus: String, CustomStringConvertible {
 
@@ -19,13 +20,13 @@ enum OrderStatus: String, CustomStringConvertible {
 
     var description: String {
         switch self {
-        case .opened: return "Submitted"
-        case .cutoff: return "Cancelled"
-        case .finished: return "Completed"
-        case .cancelled: return "Cancelled"
-        case .expire: return "Expired"
-        case .locked: return "Locked"
-        case .unknown: return "Unknown"
+        case .opened: return NSLocalizedString("Order Submitted", comment: "")
+        case .cutoff: return NSLocalizedString("Order Cancelled", comment: "")
+        case .finished: return NSLocalizedString("Order Completed", comment: "")
+        case .cancelled: return NSLocalizedString("Order Cancelled", comment: "")
+        case .expire: return NSLocalizedString("Order Expired", comment: "")
+        case .locked: return NSLocalizedString("Order Locked", comment: "")
+        case .unknown: return NSLocalizedString("Order Unknown", comment: "")
         }
     }
 }

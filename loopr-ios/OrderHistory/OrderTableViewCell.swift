@@ -68,7 +68,7 @@ class OrderTableViewCell: UITableViewCell {
                 return (true, NSLocalizedString("Cancel", comment: ""))
             }
         } else {
-            return (false, NSLocalizedString(order.orderStatus.description, comment: ""))
+            return (false, order.orderStatus.description)
         }
     }
     
@@ -78,9 +78,9 @@ class OrderTableViewCell: UITableViewCell {
     }
     
     func setupTradingPairlabel(order: Order) {
-        tradingPairLabel.theme_textColor = GlobalPicker.textColor
         tradingPairLabel.text = order.tradingPairDescription
-        tradingPairLabel.font = FontConfigManager.shared.getLabelFont()
+        tradingPairLabel.font = FontConfigManager.shared.getTitleFont()
+        tradingPairLabel.setMarket()
     }
     
     func setupVolumeLabel(order: Order) {
@@ -89,8 +89,7 @@ class OrderTableViewCell: UITableViewCell {
         } else if order.originalOrder.side.lowercased() == "buy" {
             volumeLabel.text = "Vol " + order.dealtAmountB.description
         }
-        volumeLabel.theme_textColor = ["#a0a0a0", "#fff"]
-        volumeLabel.font = FontConfigManager.shared.getLabelFont()
+        volumeLabel.setSubTitleFont()
     }
     
     func setupPriceLabel(order: Order) {
@@ -107,10 +106,8 @@ class OrderTableViewCell: UITableViewCell {
         } else {
             displayLabel.text = "--"
         }
-        priceLabel.theme_textColor = GlobalPicker.textColor
-        priceLabel.font = FontConfigManager.shared.getLabelFont()
-        displayLabel.theme_textColor = ["#a0a0a0", "#fff"]
-        displayLabel.font = FontConfigManager.shared.getLabelFont()
+        priceLabel.setTitleFont()
+        displayLabel.setSubTitleFont()
     }
     
     func setupOrderTypeLabel(order: Order) {

@@ -265,3 +265,9 @@
 "Time" = "时间";
 "Loopring DEX Markets" = "Loopring去中心化市场";
 "Reference Markets" = "参考市场";
+"Order Submitted" = "已提交";
+"Order Cancelled" = "已取消";
+"Order Completed" = "完全成交";
+"Order Expired" = "已过期";
+"Order Locked" = "已锁定";
+"Order Unknown" = "未知状态";
