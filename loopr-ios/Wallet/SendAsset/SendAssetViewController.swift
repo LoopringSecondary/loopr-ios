@@ -11,7 +11,7 @@ import Geth
 import NotificationBannerSwift
 import SVProgressHUD
 
-class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, AmountStackViewDelegate {
+class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, DefaultNumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, AmountStackViewDelegate {
 
     var asset: Asset!
     
@@ -529,7 +529,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             let height = self.view.frame.height
             scrollViewButtonLayoutConstraint.constant = DefaultNumericKeyboard.height
             numericKeyboardView = DefaultNumericKeyboard.init(frame: CGRect(x: 0, y: height, width: width, height: DefaultNumericKeyboard.height))
-            numericKeyboardView.delegate = self
+            numericKeyboardView.delegate2 = self
             view.addSubview(numericKeyboardView)
             view.bringSubview(toFront: sendButtonBackgroundView)
             view.bringSubview(toFront: sendButton)
@@ -551,6 +551,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                 self.scrollViewButtonLayoutConstraint.constant = DefaultNumericKeyboard.height + self.sendButtonBackgroundViewHeightLayoutContraint.constant
             })
         }
+        numericKeyboardView.currentText = textField.text ?? ""
     }
     
     func hideNumericKeyboard() {
@@ -573,44 +574,13 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         }
     }
     
-    func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemTapped item: NumericKeyboardItem, atPosition position: Position) {
-        print("pressed keyboard: (\(position.row), \(position.column))")
+    func numericKeyboard(_ numericKeyboard: NumericKeyboard, currentTextDidUpdate currentText: String) {
         let activeTextField: UITextField? = getActiveTextField()
         guard activeTextField != nil else {
             return
         }
-        var currentText = activeTextField!.text ?? ""
-        switch (position.row, position.column) {
-        case (3, 0):
-            activeTextField!.text = currentText + "."
-        case (3, 1):
-            activeTextField!.text = currentText + "0"
-        case (3, 2):
-            if currentText.count > 0 {
-                currentText = String(currentText.dropLast())
-            }
-            activeTextField!.text = currentText
-        default:
-            let itemValue = position.row * 3 + position.column + 1
-            activeTextField!.text = currentText + String(itemValue)
-        }
+        activeTextField!.text = currentText
         _ = validate()
-    }
-    
-    func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemLongPressed item: NumericKeyboardItem, atPosition position: Position) {
-        print("Long pressed keyboard: (\(position.row), \(position.column))")
-        
-        let activeTextField = getActiveTextField()
-        guard activeTextField != nil else {
-            return
-        }
-        var currentText = activeTextField!.text ?? ""
-        if (position.row, position.column) == (3, 2) {
-            if currentText.count > 0 {
-                currentText = String(currentText.dropLast())
-            }
-            activeTextField!.text = currentText
-        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
