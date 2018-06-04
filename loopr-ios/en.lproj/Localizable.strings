@@ -26,6 +26,8 @@
 "Confirm your password" = "Confirm your password";
 "Password" = "Password";
 "Repeat password" = "Repeat password";
+"Enter password" = "Enter password";
+"Wrong password" = "Wrong password";
 "Mnemonic" = "Mnemonic";
 "Keystore" = "Keystore";
 "Private Key" = "Private Key";

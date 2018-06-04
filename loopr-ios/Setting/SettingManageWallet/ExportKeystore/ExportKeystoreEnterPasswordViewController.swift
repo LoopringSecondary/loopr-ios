@@ -16,13 +16,13 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
 
     var passwordTextField: UITextField = UITextField()
     var passwordUnderLine: UIView = UIView()
+    var passwordInfoLabel: UILabel = UILabel()
     var nextButton = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Verification", comment: "")
         setBackButton()
 
         // Setup UI in the scroll view
@@ -52,10 +52,17 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
         passwordUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
         view.addSubview(passwordUnderLine)
         
+        passwordInfoLabel.frame = CGRect(x: padding, y: passwordTextField.frame.maxY + 9, width: screenWidth - padding * 2, height: 16)
+        passwordInfoLabel.text = NSLocalizedString("Wrong password", comment: "")
+        passwordInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
+        passwordInfoLabel.textColor = UIStyleConfig.red
+        passwordInfoLabel.alpha = 0.0
+        view.addSubview(passwordInfoLabel)
+
         nextButton.title = NSLocalizedString("Next", comment: "")
         nextButton.setupRoundBlack()
         nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
-        nextButton.frame = CGRect(x: padding, y: passwordUnderLine.frame.maxY + 40, width: screenWidth - padding * 2, height: 47)
+        nextButton.frame = CGRect(x: padding, y: passwordInfoLabel.frame.maxY + 40, width: screenWidth - padding * 2, height: 47)
         view.addSubview(nextButton)
     }
 
@@ -71,8 +78,44 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
 
     @objc func nextButtonPressed(_ sender: Any) {
         print("nextButtonPressed")
-        let viewController = ExportKeystoreSwipeViewController()
-        viewController.appWallet = appWallet
-        self.navigationController?.pushViewController(viewController, animated: true)
+        
+        var validPassword = true
+        let password = passwordTextField.text ?? ""
+        if password.trim() == "" {
+            validPassword = false
+            self.passwordInfoLabel.text = NSLocalizedString("Empty password", comment: "")
+        }
+        
+        if appWallet.setupWalletMethod != .importUsingPrivateKey && password.trim() != appWallet.getPassword() {
+            validPassword = false
+            self.passwordInfoLabel.text = NSLocalizedString("Wrong password", comment: "")
+        }
+
+        if validPassword {
+            let viewController = ExportKeystoreSwipeViewController()
+            viewController.appWallet = appWallet
+            self.navigationController?.pushViewController(viewController, animated: true)
+        } else {
+            self.passwordInfoLabel.alpha = 1.0
+            self.passwordInfoLabel.shake()
+        }
     }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newLength = (textField.text?.utf16.count)! + (string.utf16.count) - range.length
+        print("textField shouldChangeCharactersIn \(newLength)")
+        
+        switch textField.tag {
+        case passwordTextField.tag:
+            if newLength > 0 {
+                passwordInfoLabel.alpha = 0.0
+                passwordUnderLine.backgroundColor = UIColor.black
+            } else {
+                passwordUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+            }
+        default: ()
+        }
+        return true
+    }
+
 }

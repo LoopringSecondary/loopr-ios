@@ -8,6 +8,7 @@
 
 import UIKit
 import NotificationBannerSwift
+import SVProgressHUD
 
 class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 
@@ -120,14 +121,31 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
             return
         }
         
-        do {
-            try ImportWalletUsingKeystoreDataManager.shared.unlockWallet(keystoreStringValue: keystoreContentTextView.text, password: password.trim())
-            let viewController = GenerateWalletEnterNameAndPasswordViewController.init(nibName: nil, bundle: nil)
-            self.navigationController?.pushViewController(viewController, animated: true)
-        } catch {
-            let banner = NotificationBanner.generate(title: "Invalid keystore. Please enter again.", style: .danger)
-            banner.duration = 1.5
-            banner.show()
+        var isSucceeded: Bool = false
+        SVProgressHUD.show(withStatus: "Importing ...")
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        DispatchQueue.global().async {
+            do {
+                try ImportWalletUsingKeystoreDataManager.shared.unlockWallet(keystoreStringValue: self.keystoreContentTextView.text, password: password.trim())
+                isSucceeded = true
+                dispatchGroup.leave()
+            } catch {
+                isSucceeded = false
+                dispatchGroup.leave()
+            }
+        }
+
+        dispatchGroup.notify(queue: .main) {
+            SVProgressHUD.dismiss()
+            if isSucceeded {
+                let viewController = GenerateWalletEnterNameAndPasswordViewController.init(nibName: nil, bundle: nil)
+                self.navigationController?.pushViewController(viewController, animated: true)
+            } else {
+                let banner = NotificationBanner.generate(title: "Wrong password", style: .danger)
+                banner.duration = 1.5
+                banner.show()
+            }
         }
     }
 
