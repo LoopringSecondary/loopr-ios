@@ -63,28 +63,73 @@ class AssetMarketViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let padding: CGFloat = 15
+        
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 45))
+        // headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        headerView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
+        
+        let label = UILabel(frame: CGRect(x: padding, y: 0, width: view.frame.size.width, height: 45))
+        label.theme_textColor = GlobalPicker.textColor
+        label.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 17)
+        headerView.addSubview(label)
+        
+        if section == 0 {
+            label.text = NSLocalizedString("Loopring DEX Markets", comment: "")
+        } else if section == 1 {
+            label.text = NSLocalizedString("Reference Markets", comment: "")
+        }
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 45
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return markets.count
+        switch section {
+        case 0:
+            return 0
+        case 1:
+            return markets.count
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return AssetMarketTableViewCell.getHeight()
+        switch indexPath.section {
+        case 0:
+            return 0
+        case 1:
+            return AssetMarketTableViewCell.getHeight()
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: AssetMarketTableViewCell.getCellIdentifier()) as? AssetMarketTableViewCell
-        if cell == nil {
-            let nib = Bundle.main.loadNibNamed("AssetMarketTableViewCell", owner: self, options: nil)
-            cell = nib![0] as? AssetMarketTableViewCell
-            cell?.selectionStyle = .none
+        switch indexPath.section {
+        case 0:
+            return UITableViewCell()
+        case 1:
+            var cell = tableView.dequeueReusableCell(withIdentifier: AssetMarketTableViewCell.getCellIdentifier()) as? AssetMarketTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("AssetMarketTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? AssetMarketTableViewCell
+                cell?.selectionStyle = .none
+            }
+            cell?.market = markets[indexPath.row]
+            cell?.update()
+            return cell!
+        default:
+            return UITableViewCell()
         }
-        cell?.market = markets[indexPath.row]
-        cell?.update()
-        return cell!
     }
 
 }
