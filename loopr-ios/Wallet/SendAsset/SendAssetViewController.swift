@@ -157,7 +157,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         amountUnderline.backgroundColor = UIColor.black
         scrollView.addSubview(amountUnderline)
         
-        amountTradeImage.image = UIImage(named: "Convert")
+        amountTradeImage.image = UIImage(named: "Transaction_convert_income")
         amountTradeImage.frame = CGRect(x: padding, y: amountUnderline.frame.maxY + 13, width: 15, height: 15)
         scrollView.addSubview(amountTradeImage)
         
