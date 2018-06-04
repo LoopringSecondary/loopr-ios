@@ -50,7 +50,6 @@ class QRCodeViewController: UIViewController {
         let shareButton = UIButton(type: UIButtonType.custom)
         shareButton.setImage(UIImage(named: "ShareButtonImage"), for: .normal)
         shareButton.setImage(UIImage(named: "ShareButtonImage")?.alpha(0.3), for: .highlighted)
-        // Default left padding is 20. It should be 12 in our design.
         shareButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 8, bottom: 0, right: -8)
         shareButton.addTarget(self, action: #selector(pressedShareButton(_:)), for: UIControlEvents.touchUpInside)
         // The size of the image.
@@ -74,7 +73,6 @@ class QRCodeViewController: UIViewController {
             NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getLight(), size: 16*UIStyleConfig.scale)!,
             NSAttributedStringKey.shadow: shadow
         ]
-
         // Update the statusBar
         UIApplication.shared.statusBarStyle = statusBarStyle
         self.setNeedsStatusBarAppearanceUpdate()
@@ -82,7 +80,6 @@ class QRCodeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         qrcodeImageView.image = qrcodeImage
         updateNavigationView(tintColor: UIColor.black, textColor: UIColor.white, statusBarStyle: .lightContent)
     }
@@ -105,11 +102,10 @@ class QRCodeViewController: UIViewController {
     
     @IBAction func pressedShareButton(_ button: UIBarButtonItem) {
         let text = NSLocalizedString("My wallet address in Loopr", comment: "")
-        
         let png = UIImagePNGRepresentation(qrcodeImage)
-        
         let shareAll = [text, png!] as [Any]
         let activityVC = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
+        activityVC.excludedActivityTypes = [.message, .mail]
         activityVC.popoverPresentationController?.sourceView = self.view
         self.present(activityVC, animated: true, completion: nil)
     }

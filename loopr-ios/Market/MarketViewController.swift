@@ -178,10 +178,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let newFilteredMarkets = MarketDataManager.shared.getMarketsWithoutReordered(type: type).filter({(market: Market) -> Bool in
             return market.tradingPair.tradingA.lowercased().contains(searchText.lowercased()) || market.tradingPair.tradingB.lowercased().contains(searchText.lowercased())
         })
-        // If filteredMarkets is the same for different searchText, no update tableView.
-        if filteredMarkets == newFilteredMarkets && filteredMarkets.count > 0 {
-            return
-        }
+
         filteredMarkets = newFilteredMarkets
 
         if marketTableView.contentOffset.y == 0 {

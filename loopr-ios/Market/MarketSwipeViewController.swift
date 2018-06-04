@@ -108,6 +108,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         } else {
             let orderHistoryBarButton = UIBarButtonItem(customView: orderHistoryButton)
             self.navigationItem.rightBarButtonItem = orderHistoryBarButton
+            self.searchBar.text = ""
         }
         // TODO: no reload data in the viewWillAppear. Need to implement the night mode.
         if Themes.isNight() {

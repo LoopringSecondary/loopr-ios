@@ -16,11 +16,11 @@ extension UIViewController: UIGestureRecognizerDelegate {
         backButton.setImage(UIImage(named: name)?.alpha(0.3), for: .highlighted)
         
         // Default left padding is 20. It should be 12 in our design.
-        backButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -8, bottom: 0, right: 8)
+        backButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -16, bottom: 0, right: 8)
         
         backButton.addTarget(self, action: #selector(pressedBackButton(_:)), for: UIControlEvents.touchUpInside)
         // The size of the image.
-        backButton.frame = CGRect(x: 0, y: 0, width: 23, height: 23)
+        backButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         let backBarButton = UIBarButtonItem(customView: backButton)
 
         self.navigationItem.leftBarButtonItem = backBarButton
