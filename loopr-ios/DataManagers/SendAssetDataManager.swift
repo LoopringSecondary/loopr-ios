@@ -308,7 +308,7 @@ class SendCurrentAppWalletDataManager {
         return self._sign(data: tx.data, address: tx.to, amount: tx.value, gasLimit: tx.gasLimit, completion: completion)
     }
     
-    func _transfer(data: Data, address: GethAddress, amount: GethBigInt, gasLimit: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
+    func _transfer(data: Data, address: GethAddress, amount: GethBigInt, gasLimit: GethBigInt, completion: @escaping (_ txHash: String?, _ error: Error?) -> Void) {
         let tx = RawTransaction(data: data, to: address, value: amount, gasLimit: gasLimit, gasPrice: GasDataManager.shared.getGasPriceInWei(), nonce: self.nonce)
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         if let signedTransaction = _sign(for: tx, completion: completion) {

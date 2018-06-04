@@ -472,17 +472,12 @@ class LoopringAPIRequest {
         body["params"] = [["hash": txHash, "nonce": rawTx.nonce.hex, "to": rawTx.to.getHex(), "value": rawTx.value.hexString, "gasPrice": rawTx.gasPrice.hexString, "gas": rawTx.gasLimit.hexString, "input": rawTx.data.hexString, "from": from]]
         body["id"] = JSON(UUID().uuidString)
         
-        print(body["params"].stringValue)
-        
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
                 return
             }
-            let json = JSON(data)
-            print("notifyTransactionSubmitted")
-            print(json)
             completionHandler("success", nil)
         }
     }

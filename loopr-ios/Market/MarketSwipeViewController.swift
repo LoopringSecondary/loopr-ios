@@ -43,24 +43,32 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         
         let vc0 = MarketViewController(type: .favorite)
         vc0.didSelectRowClosure = { (market) -> Void in
-            
-        }
 
+        }
+        vc0.didSelectBlankClosure = {
+            self.searchBar.resignFirstResponder()
+        }
         let vc1 = MarketViewController(type: .ETH)
         vc1.didSelectRowClosure = { (market) -> Void in
             
         }
-        
+        vc1.didSelectBlankClosure = {
+            self.searchBar.resignFirstResponder()
+        }
         let vc2 = MarketViewController(type: .LRC)
         vc2.didSelectRowClosure = { (market) -> Void in
             
         }
-        
+        vc2.didSelectBlankClosure = {
+            self.searchBar.resignFirstResponder()
+        }
         let vc3 = MarketViewController(type: .all)
         vc3.didSelectRowClosure = { (market) -> Void in
             
         }
-        
+        vc3.didSelectBlankClosure = {
+            self.searchBar.resignFirstResponder()
+        }
         viewControllers = [vc0, vc1, vc2, vc3]
         for viewController in viewControllers {
             self.addChildViewController(viewController)
@@ -119,6 +127,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        self.isSearching = false
     }
     
     func setupSearchBar() {
@@ -126,10 +135,11 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         searchBar.placeholder = NSLocalizedString("Search", comment: "") 
         searchBar.delegate = self
         searchBar.searchBarStyle = .minimal
+        searchBar.keyboardType = .alphabet
+        searchBar.autocapitalizationType = .allCharacters
 
         let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
         searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
-
         navigationItem.titleView = searchBarContainer
     }
     
@@ -168,7 +178,6 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         if searchText.trim() != "" {
             isFiltering = true
         }
-
         type = types[toIndex]
         let viewController = viewControllers[toIndex]
         viewController.reloadAfterSwipeViewUpdated(isSearching: isFiltering, searchText: searchText)

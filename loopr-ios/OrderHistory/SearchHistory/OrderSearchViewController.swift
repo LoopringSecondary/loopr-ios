@@ -30,8 +30,9 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
         // Do any additional setup after loading the view.
         resultTableView.delegate = self
         resultTableView.dataSource = self
-//        configureSearchController()
-        // configureCustomSearchController()
+        resultTableView.separatorStyle = .none
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tableTapped))
+        resultTableView.addGestureRecognizer(tap)
         setupHistoryRecord()
         setupSearchBar()
 
@@ -42,6 +43,16 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         searchBar.becomeFirstResponder()
+    }
+    
+    @objc func tableTapped(tap: UITapGestureRecognizer) {
+        let location = tap.location(in: resultTableView)
+        let path = resultTableView.indexPathForRow(at: location)
+        if let indexPathForRow = path {
+            self.tableView(resultTableView, didSelectRowAt: indexPathForRow)
+        } else {
+            self.searchBar.resignFirstResponder()
+        }
     }
     
     func setupHistoryRecord() {
@@ -62,8 +73,9 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
         searchBar.showsCancelButton = false
         searchBar.placeholder = NSLocalizedString("Search", comment: "")
         searchBar.delegate = self
-        
         searchBar.searchBarStyle = .minimal
+        searchBar.keyboardType = .alphabet
+        searchBar.autocapitalizationType  = .allCharacters
         
         let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
         searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)

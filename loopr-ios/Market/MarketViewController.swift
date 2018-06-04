@@ -21,6 +21,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var isListeningSocketIO: Bool = false
     
     var didSelectRowClosure: ((Market) -> Void)?
+    var didSelectBlankClosure: (() -> Void)?
 
     var searchText: String = ""
     var isSearching: Bool = false
@@ -54,7 +55,8 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // marketTableView.reorder.delegate = self
         marketTableView.tableFooterView = UIView()
         marketTableView.separatorStyle = .none
-
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tableTapped))
+        marketTableView.addGestureRecognizer(tap)
         /*
         // one part of record
         marketTableView.estimatedRowHeight = 0
@@ -76,6 +78,18 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+    }
+    
+    @objc func tableTapped(tap: UITapGestureRecognizer) {
+        let location = tap.location(in: marketTableView)
+        let path = marketTableView.indexPathForRow(at: location)
+        if let indexPathForRow = path {
+            self.tableView(marketTableView, didSelectRowAt: indexPathForRow)
+        } else {
+            if let didSelectBlankClosure = self.didSelectBlankClosure {
+                didSelectBlankClosure()
+            }
+        }
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -136,10 +150,8 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func reloadAfterSwipeViewUpdated(isSearching: Bool, searchText: String) {
         markets = MarketDataManager.shared.getMarketsWithoutReordered(type: type)
-        
         self.isSearching = isSearching
         self.searchText = searchText.trim()
-
         if isSearching {
             filterContentForSearchText(self.searchText)
         } else {

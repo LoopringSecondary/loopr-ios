@@ -24,9 +24,9 @@ class OrderSearchResultViewController: UIViewController, UITableViewDelegate, UI
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.separatorStyle = .none
         configureCustomSearchController()
         updateOrders()
         setupHistoryRecord()

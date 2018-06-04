@@ -40,6 +40,8 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         searchBar.placeholder = NSLocalizedString("Search", comment: "")
         searchBar.delegate = self
         searchBar.searchBarStyle = .minimal
+        searchBar.keyboardType = .alphabet
+        searchBar.autocapitalizationType = .allCharacters
         
         self.navigationItem.title = NSLocalizedString("Tokens", comment: "")
     }
