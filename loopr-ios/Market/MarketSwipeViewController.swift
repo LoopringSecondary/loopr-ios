@@ -115,9 +115,6 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if isSearching {
-            searchBar.becomeFirstResponder()
-        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -174,7 +171,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
 
         type = types[toIndex]
         let viewController = viewControllers[toIndex]
-        viewController.reload(isFiltering: isFiltering, searchText: searchText)
+        viewController.reloadAfterSwipeViewUpdated(isSearching: isFiltering, searchText: searchText)
     }
 
     override func swipeView(_ swipeView: SwipeView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
@@ -211,6 +208,9 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         isSearching = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressSearchCancel))
         searchBar.becomeFirstResponder()
+        
+        // No need to reload nor call searchTextDidUpdate
+        viewControllers[self.swipeView.currentIndex].isSearching = true
     }
 
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {

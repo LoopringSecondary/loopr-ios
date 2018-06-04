@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Token {
+class Token: Equatable {
 
     let symbol: String
     let source: String

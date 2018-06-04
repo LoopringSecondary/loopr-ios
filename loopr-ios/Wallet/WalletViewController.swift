@@ -196,7 +196,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func balanceResponseReceivedNotification() {
-        if !isReordering && !isLaunching {
+        if !isReordering && !isLaunching && isListeningSocketIO {
             print("balanceResponseReceivedNotification WalletViewController reload table")
             // assetTableView.reloadData()
             self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)

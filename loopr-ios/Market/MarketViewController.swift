@@ -23,8 +23,10 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var didSelectRowClosure: ((Market) -> Void)?
 
     var searchText: String = ""
-    var isFiltering: Bool = false
+    var isSearching: Bool = false
     var filteredMarkets = [Market]()
+    
+    var canHideKeyboard = true
     
     // TODO: copy data from MarketDataManager.shared.getMarkets()
     var markets = [Market]()
@@ -101,7 +103,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func tickerResponseReceivedNotification() {
-        if !isReordering && viewAppear && !isFiltering && isListeningSocketIO {
+        if !isReordering && viewAppear && !isSearching && isListeningSocketIO {
             print("MarketViewController reload table \(type.description)")
             marketTableView.reloadData()
         }
@@ -132,13 +134,13 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-    func reload(isFiltering: Bool, searchText: String) {
+    func reloadAfterSwipeViewUpdated(isSearching: Bool, searchText: String) {
         markets = MarketDataManager.shared.getMarketsWithoutReordered(type: type)
         
-        self.isFiltering = isFiltering
+        self.isSearching = isSearching
         self.searchText = searchText.trim()
 
-        if isFiltering {
+        if isSearching {
             filterContentForSearchText(self.searchText)
         } else {
             marketTableView.reloadData()
@@ -150,10 +152,10 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("MarketViewController searchTextDidUpdate")
         self.searchText = searchText.trim()
         if self.searchText != "" {
-            isFiltering = true
+            isSearching = true
             filterContentForSearchText(self.searchText)
         } else {
-            isFiltering = false
+            isSearching = false
             marketTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
         }
     }
@@ -161,11 +163,28 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - Private instance methods
     
     func filterContentForSearchText(_ searchText: String) {
-        filteredMarkets = MarketDataManager.shared.getMarketsWithoutReordered(type: type).filter({(market: Market) -> Bool in
+        let newFilteredMarkets = MarketDataManager.shared.getMarketsWithoutReordered(type: type).filter({(market: Market) -> Bool in
             return market.tradingPair.tradingA.lowercased().contains(searchText.lowercased()) || market.tradingPair.tradingB.lowercased().contains(searchText.lowercased())
         })
-        // marketTableView.reloadData()
-        marketTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
+        // If filteredMarkets is the same for different searchText, no update tableView.
+        if filteredMarkets == newFilteredMarkets && filteredMarkets.count > 0 {
+            return
+        }
+        filteredMarkets = newFilteredMarkets
+
+        if marketTableView.contentOffset.y == 0 {
+            marketTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
+        } else {
+            canHideKeyboard = false
+            _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
+                self.canHideKeyboard = true
+            }
+            
+            marketTableView.reloadData()
+            // tableView.setContentOffset(.zero, animated: false)
+            let topIndex = IndexPath(row: 0, section: 0)
+            marketTableView.scrollToRow(at: topIndex, at: .top, animated: true)
+        }
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -174,6 +193,9 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if canHideKeyboard {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -185,7 +207,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltering {
+        if isSearching {
             return filteredMarkets.count
         } else {
             return MarketDataManager.shared.getMarketsWithoutReordered(type: type).count
@@ -202,7 +224,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell = nib![0] as? MarketTableViewCell
         }
         let market: Market
-        if isFiltering {
+        if isSearching {
             market = filteredMarkets[indexPath.row]
         } else {
             market = MarketDataManager.shared.getMarketsWithoutReordered(type: type)[indexPath.row]
@@ -215,7 +237,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let market: Market
-        if isFiltering {
+        if isSearching {
             market = filteredMarkets[indexPath.row]
         } else {
             market = MarketDataManager.shared.getMarketsWithoutReordered(type: type)[indexPath.row]

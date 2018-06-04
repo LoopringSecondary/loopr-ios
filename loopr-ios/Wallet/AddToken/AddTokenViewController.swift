@@ -152,9 +152,15 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func filterContentForSearchText(_ searchText: String) {
-        filtedTokens = TokenDataManager.shared.getTokens().filter({(token: Token) -> Bool in
+        let newFiltedTokens = TokenDataManager.shared.getTokens().filter({(token: Token) -> Bool in
             return token.symbol.lowercased().contains(searchText.lowercased())
         })
+        // If filteredMarkets is the same for different searchText, no update tableView.
+        if filtedTokens == newFiltedTokens && filtedTokens.count > 0 {
+            return
+        }
+        filtedTokens = newFiltedTokens
+        
         if tableView.contentOffset.y == 0 {
             tableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
         } else {
