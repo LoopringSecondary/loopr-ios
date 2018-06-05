@@ -67,7 +67,6 @@ class TickerLabel: UIView {
         // animationDuration = 1.0
         
         // setFont(UIFont.systemFont(ofSize: 36.0))
-        // characterWidth = "8".size(withAttributes: [NSAttributedStringKey.font: font]).width
         characterWidth = "8".size(withAttributes: [NSAttributedStringKey.font: font]).width
         for characterView in characterViews {
             characterView.font = font
@@ -277,8 +276,18 @@ class TickerLabel: UIView {
     
     func layoutCharacterLabels() {
         var characterFrame: CGRect = CGRect.zero
+        
+        // Center charactersView
+        var actualWidth: CGFloat = 0
+        for letter in text {
+            actualWidth += String(letter).size(withAttributes: [NSAttributedStringKey.font: font]).width
+        }
+        characterFrame.origin.x = (CGFloat(characterViews.count) * characterWidth - actualWidth)*0.5
+
         for label: UILabel in characterViews {
             characterFrame.size.height = charactersView.bounds.height
+            let text = label.text ?? "8"
+            var characterWidth = text.size(withAttributes: [NSAttributedStringKey.font: font]).width
             characterFrame.size.width = characterWidth
             label.frame = characterFrame
             characterFrame.origin.x += characterWidth
@@ -286,7 +295,13 @@ class TickerLabel: UIView {
     }
     
     func intrinsicContentSize() -> CGSize {
-        return CGSize(width: characterWidth * CGFloat(text.count), height: UIViewNoIntrinsicMetric)
+        var width: CGFloat = 0
+        for label: UILabel in characterViews {
+            let text = label.text ?? "8"
+            var characterWidth = text.size(withAttributes: [NSAttributedStringKey.font: font]).width
+            width += characterWidth
+        }
+        return CGSize(width: width, height: UIViewNoIntrinsicMetric)
     }
     
     // MARK: - Text Appearance
