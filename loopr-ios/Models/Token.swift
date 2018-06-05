@@ -27,7 +27,7 @@ class Token: Equatable {
         self.isMarket = json["isMarket"].boolValue
         self.decimals = json["decimals"].stringValue.count - 1
         self.protocol_value = json["protocol"].stringValue
-        self.deny = json["deny"].boolValue
+        self.deny = json["deny"].bool ?? false
         self.icon = UIImage(named: self.symbol)
         // TODO: ETH doesn't have a protocol value in tokens.json
         if symbol == "ETH" {

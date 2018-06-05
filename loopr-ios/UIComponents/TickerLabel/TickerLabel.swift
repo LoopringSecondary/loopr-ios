@@ -287,7 +287,7 @@ class TickerLabel: UIView {
         for label: UILabel in characterViews {
             characterFrame.size.height = charactersView.bounds.height
             let text = label.text ?? "8"
-            var characterWidth = text.size(withAttributes: [NSAttributedStringKey.font: font]).width
+            let characterWidth = text.size(withAttributes: [NSAttributedStringKey.font: font]).width
             characterFrame.size.width = characterWidth
             label.frame = characterFrame
             characterFrame.origin.x += characterWidth

@@ -42,7 +42,7 @@ class AddTokenTableViewCell: UITableViewCell {
                 iconView.symbolLabel.text = token.symbol
                 iconImageView.isHidden = true
             }
-            symbolLabel.text = "\(token.symbol) (\(token.source.capitalized))"
+            symbolLabel.text = "\(token.symbol)"
 
             if TokenDataManager.shared.getTokenList().contains(token.symbol) {
                 addSwitch.setOn(true, animated: false)

@@ -8,6 +8,9 @@
 
 import Foundation
 
+private let whiteList = ["BAT", "RDN", "VITE", "WETH", "RHOC", "BNT", "ZRX", "DAI", "REQ", "ARP", "OMG", "IOST", "SNT", "ETH", "EOS", "LRC", "KNC"]
+private let blackList = ["BAR", "FOO"]
+
 class TokenDataManager {
     
     static let shared = TokenDataManager()
@@ -62,7 +65,9 @@ class TokenDataManager {
             let json = JSON(parseJSON: jsonString!)
             for subJson in json.arrayValue {
                 let token = Token(json: subJson)
-                tokens.append(token)
+                if whiteList.contains(token.symbol.uppercased()) {
+                    tokens.append(token)
+                }
             }
             tokens.sort(by: { (a, b) -> Bool in
                 return a.symbol < b.symbol
@@ -80,7 +85,9 @@ class TokenDataManager {
                 if !self.tokens.contains(where: { (element) -> Bool in
                     return element.symbol.lowercased() == token.symbol.lowercased()
                 }) {
-                    self.tokens.append(token)
+                    if !blackList.contains(token.symbol.uppercased()) {
+                        self.tokens.append(token)
+                    }
                 }
             }
         }
