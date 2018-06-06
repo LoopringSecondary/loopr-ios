@@ -47,7 +47,6 @@ class AssetTransactionDetailViewController: UIViewController {
         setBackButton()
         
         view.theme_backgroundColor = ["#fff", "#000"]
-        typeImageView.theme_image = ["Received", "Received-white"]
         
         // setup label
         if let transaction = self.transaction {

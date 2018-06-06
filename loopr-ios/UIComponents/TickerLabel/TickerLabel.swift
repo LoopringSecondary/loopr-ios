@@ -104,7 +104,7 @@ class TickerLabel: UIView {
             }
             invalidateIntrinsicContentSize()
             setNeedsLayout()
-            layoutCharacterLabels()
+            layoutCharacterLabels(text: text)
         } else if newTextLength < oldTextLength {
             let textLengthDelta: Int = oldTextLength - newTextLength
             for _ in 0..<textLengthDelta {
@@ -114,7 +114,7 @@ class TickerLabel: UIView {
             if !animated {
                 invalidateIntrinsicContentSize()
                 setNeedsLayout()
-                layoutCharacterLabels()
+                layoutCharacterLabels(text: text)
             }
             
         }
@@ -274,20 +274,37 @@ class TickerLabel: UIView {
         return frame
     }
     
-    func layoutCharacterLabels() {
+    func layoutCharacterLabels(text newText: String? = nil) {
+        let text: String
+        if newText == nil {
+            text = self.text
+        } else {
+            text = newText!
+        }
+
         var characterFrame: CGRect = CGRect.zero
         
         // Center charactersView
         var actualWidth: CGFloat = 0
+        var charWidths: [CGFloat] = []
         for letter in text {
-            actualWidth += String(letter).size(withAttributes: [NSAttributedStringKey.font: font]).width
+            let charWidth = String(letter).size(withAttributes: [NSAttributedStringKey.font: font]).width
+            charWidths.append(charWidth)
+            actualWidth += charWidth
         }
         characterFrame.origin.x = (CGFloat(characterViews.count) * characterWidth - actualWidth)*0.5
-
-        for label: UILabel in characterViews {
+        
+        for (index, label) in characterViews.enumerated() {
             characterFrame.size.height = charactersView.bounds.height
-            let text = label.text ?? "8"
-            let characterWidth = text.size(withAttributes: [NSAttributedStringKey.font: font]).width
+            
+            let characterWidth: CGFloat
+            if index >= charWidths.count {
+                let text = label.text ?? "8"
+                characterWidth = text.size(withAttributes: [NSAttributedStringKey.font: font]).width
+            } else {
+                characterWidth = charWidths[index]
+            }
+
             characterFrame.size.width = characterWidth
             label.frame = characterFrame
             characterFrame.origin.x += characterWidth
@@ -298,7 +315,7 @@ class TickerLabel: UIView {
         var width: CGFloat = 0
         for label: UILabel in characterViews {
             let text = label.text ?? "8"
-            var characterWidth = text.size(withAttributes: [NSAttributedStringKey.font: font]).width
+            let characterWidth = text.size(withAttributes: [NSAttributedStringKey.font: font]).width
             width += characterWidth
         }
         return CGSize(width: width, height: UIViewNoIntrinsicMetric)

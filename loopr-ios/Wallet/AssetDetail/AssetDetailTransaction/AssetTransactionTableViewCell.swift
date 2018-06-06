@@ -28,7 +28,6 @@ class AssetTransactionTableViewCell: UITableViewCell {
         dateLabel.setSubTitleFont()
         displayLabel.setSubTitleFont()
         displayLabel.baselineAdjustment = .alignCenters
-        typeImageView.theme_image = ["Received", "Received-white"]
         seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
         accessoryType = .disclosureIndicator
     }
