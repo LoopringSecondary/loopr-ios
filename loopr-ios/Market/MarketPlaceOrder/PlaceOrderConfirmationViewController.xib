@@ -13,7 +13,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlaceOrderConfirmationViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="confirmWidth" destination="ddp-9P-YcA" id="4xT-E4-4Iu"/>
                 <outlet property="confirmationButton" destination="To1-6U-t72" id="BSR-XC-1dY"/>
+                <outlet property="declineButton" destination="OOP-tm-r0O" id="OUP-0P-qGe"/>
+                <outlet property="declineWidth" destination="gHg-OS-kRP" id="EAx-01-p34"/>
                 <outlet property="scrollView" destination="iWa-gH-mx4" id="Nvs-cc-wzq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -31,6 +34,7 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="47" id="b1F-MS-lL1"/>
+                        <constraint firstAttribute="width" constant="345" id="ddp-9P-YcA"/>
                     </constraints>
                     <state key="normal" title="Button">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -39,13 +43,29 @@
                         <action selector="pressedConfirmationButton:" destination="-1" eventType="touchUpInside" id="9c9-e9-5b6"/>
                     </connections>
                 </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OOP-tm-r0O">
+                    <rect key="frame" x="15.333333333333343" y="716" width="345" height="47"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="345" id="gHg-OS-kRP"/>
+                        <constraint firstAttribute="height" constant="47" id="myi-yK-h1u"/>
+                    </constraints>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="pressedConfirmationButton:" destination="-1" eventType="touchUpInside" id="QuR-sL-OD3"/>
+                        <action selector="pressedDeclineButton:" destination="-1" eventType="touchUpInside" id="itH-oe-n8T"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="To1-6U-t72" secondAttribute="trailing" constant="15" id="1tq-k5-9xU"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="OOP-tm-r0O" secondAttribute="bottom" constant="15" id="8N2-DL-2iO"/>
                 <constraint firstItem="iWa-gH-mx4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="J8N-Pw-Ka9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="To1-6U-t72" secondAttribute="bottom" constant="15" id="OK5-mT-ZqA"/>
                 <constraint firstItem="iWa-gH-mx4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="RrP-Xo-Ls4"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="To1-6U-t72" secondAttribute="bottom" constant="15" id="Y8P-AW-pn8"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="OOP-tm-r0O" secondAttribute="trailing" constant="15" id="eMC-0c-Guh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iWa-gH-mx4" secondAttribute="trailing" id="gEG-jL-Ri8"/>
                 <constraint firstItem="To1-6U-t72" firstAttribute="top" secondItem="iWa-gH-mx4" secondAttribute="bottom" multiplier="1.03" id="jvf-3X-lUD"/>
                 <constraint firstItem="To1-6U-t72" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="xPa-Pb-fNY"/>

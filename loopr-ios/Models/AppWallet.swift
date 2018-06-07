@@ -11,7 +11,7 @@ import Geth
 
 class AppWallet: NSObject, NSCoding {
     
-    final let setupWalletMethod: SetupWalletMethod
+    final let setupWalletMethod: QRCodeMethod
 
     final let address: String
     final let privateKey: String
@@ -47,7 +47,7 @@ class AppWallet: NSObject, NSCoding {
     var assetSequence: [String] = []
     var assetSequenceInHideSmallAssets: [String] = []
     
-    init(setupWalletMethod: SetupWalletMethod, address: String, privateKey: String, password: String, mnemonics: [String] = [], keystoreString: String? = nil, name: String, isVerified: Bool, active: Bool, totalCurrency: Double = 0, assetSequence: [String] = [], assetSequenceInHideSmallAssets: [String] = []) {
+    init(setupWalletMethod: QRCodeMethod, address: String, privateKey: String, password: String, mnemonics: [String] = [], keystoreString: String? = nil, name: String, isVerified: Bool, active: Bool, totalCurrency: Double = 0, assetSequence: [String] = [], assetSequenceInHideSmallAssets: [String] = []) {
         self.setupWalletMethod = setupWalletMethod
         self.address = address
         self.privateKey = privateKey
@@ -62,7 +62,7 @@ class AppWallet: NSObject, NSCoding {
         
         super.init()
         
-        if keystoreString == nil || keystoreString == "" || !SetupWalletMethod.isKeystore(content: keystoreString ?? "") {
+        if keystoreString == nil || keystoreString == "" || !QRCodeMethod.isKeystore(content: keystoreString ?? "") {
             print("Need to generate keystore")
             generateKeystoreInBackground()
         }
@@ -173,7 +173,7 @@ class AppWallet: NSObject, NSCoding {
         let setupWalletMethodString = aDecoder.decodeObject(forKey: "setupWalletMethod") as? String ?? ""
         
         // If setupWalletMethod is null, the default value is importUsingPrivateKey
-        let setupWalletMethod = SetupWalletMethod(rawValue: setupWalletMethodString) ?? SetupWalletMethod.importUsingPrivateKey
+        let setupWalletMethod = QRCodeMethod(rawValue: setupWalletMethodString) ?? QRCodeMethod.importUsingPrivateKey
         
         let password = aDecoder.decodeObject(forKey: "password") as? String
         let address = aDecoder.decodeObject(forKey: "address") as? String

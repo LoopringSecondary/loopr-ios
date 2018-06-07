@@ -152,7 +152,7 @@ class SendCurrentAppWalletDataManager {
         let timeInterval: Double = end.timeIntervalSince(start)
         print("Time to _keystore: \(timeInterval) seconds")
     }
-    
+
     func _encodeOrder(order: OriginalOrder) -> Data {
         var data: Data = Data()
         var error: NSError? = nil
@@ -304,22 +304,65 @@ class SendCurrentAppWalletDataManager {
         return nil
     }
     
-    func _sign(for tx: RawTransaction, completion: @escaping (String?, Error?) -> Void) -> String? {
-        return self._sign(data: tx.data, address: tx.to, amount: tx.value, gasLimit: tx.gasLimit, completion: completion)
-    }
-    
     func _transfer(data: Data, address: GethAddress, amount: GethBigInt, gasLimit: GethBigInt, completion: @escaping (_ txHash: String?, _ error: Error?) -> Void) {
         let tx = RawTransaction(data: data, to: address, value: amount, gasLimit: gasLimit, gasPrice: GasDataManager.shared.getGasPriceInWei(), nonce: self.nonce)
-        let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
-        if let signedTransaction = _sign(for: tx, completion: completion) {
+        let from = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
+        if let signedTransaction = _sign(data: data, address: address, amount: amount, gasLimit: gasLimit, completion: completion) {
             self.sendTransactionToServer(signedTransaction: signedTransaction, completion: { (txHash, error) in
                 if txHash != nil && error == nil {
-                    LoopringAPIRequest.notifyTransactionSubmitted(txHash: txHash!, rawTx: tx, from: address, completionHandler: completion)
+                    LoopringAPIRequest.notifyTransactionSubmitted(txHash: txHash!, rawTx: tx, from: from, completionHandler: completion)
                 } else {
                     completion(nil, error)
                 }
                 self.nonce += 1
             })
+        }
+    }
+    
+    func _sign(rawTx: RawTransaction, completion: @escaping (_ txHash: String?, _ error: Error?) -> Void) -> String? {
+        _keystore()
+        let password = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getPassword()
+        if let data = rawTx.data.data(using: .utf8),
+            let amount = GethBigInt.generate(rawTx.value),
+            let address = GethAddress.init(fromHex: rawTx.to),
+            let gasPrice = GethBigInt.generate(rawTx.gasPrice),
+            let gasLimit = GethBigInt.generate(rawTx.gasLimit),
+            let nonce = Int64(rawTx.nonce) {
+            let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: password)
+            do {
+                if let signedTransactionData = try signedTransaction?.encodeRLP() {
+                    return "0x" + signedTransactionData.hexString
+                }
+            } catch {
+                userInfo["message"] = NSLocalizedString("Failed to sign/encode transaction", comment: "")
+                let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
+                completion(nil, error)
+            }
+        }
+        return nil
+    }
+    
+    func _transfer(rawTx: RawTransaction, completion: @escaping (_ txHash: String?, _ error: Error?) -> Void) {
+        let from = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
+        if let signedTransaction = _sign(rawTx: rawTx, completion: completion) {
+            self.sendTransactionToServer(signedTransaction: signedTransaction, completion: { (txHash, error) in
+                if txHash != nil && error == nil {
+                    LoopringAPIRequest.notifyTransactionSubmitted(txHash: txHash!, rawTx: rawTx, from: from, completionHandler: completion)
+                } else {
+                    completion(nil, error)
+                }
+            })
+        }
+    }
+    
+    func transferOnce(rawTx: RawTransaction, completion: @escaping (_ txHash: String?, _ error: Error?) -> Void) {
+        _transfer(rawTx: rawTx, completion: completion)
+    }
+    
+    func transferTwice(rawTxs: [RawTransaction], completion: @escaping (_ txHash: String?, _ error: Error?) -> Void) {
+        _transfer(rawTx: rawTxs[0]) { (_, error) in
+            guard error != nil else { return }
+            self._transfer(rawTx: rawTxs[1], completion: completion)
         }
     }
 }

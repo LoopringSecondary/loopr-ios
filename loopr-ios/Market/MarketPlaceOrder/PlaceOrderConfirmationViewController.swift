@@ -15,6 +15,9 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var confirmationButton: UIButton!
+    @IBOutlet weak var declineButton: UIButton!
+    @IBOutlet weak var confirmWidth: NSLayoutConstraint!
+    @IBOutlet weak var declineWidth: NSLayoutConstraint!
     
     var order: OriginalOrder?
     var type: TradeType = .buy
@@ -22,6 +25,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     var message: String = ""
     var expire: OrderExpire = .oneHour
     var verifyInfo: [String: Double]?
+    var isSigning: Bool = false
     
     // Labels
     var tokenSView: TradeTokenView!
@@ -50,15 +54,28 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         setBackButton()
         self.navigationItem.title = NSLocalizedString("Confirmation", comment: "")
-        confirmationButton.title = NSLocalizedString("Confirmation", comment: "")
-        confirmationButton.setupRoundBlack()
         if let order = self.order {
             setupRows(order: order)
         }
+        setupButtons()
+    }
+    
+    func setupButtons() {
+        if isSigning {
+            let width = (UIScreen.main.bounds.width - 45) / 2
+            confirmWidth.constant = width
+            declineWidth.constant = width
+            confirmationButton.title = NSLocalizedString("Accept", comment: "")
+            declineButton.isHidden = false
+            declineButton.title = NSLocalizedString("Decline", comment: "")
+            declineButton.setupRoundWhite()
+        } else {
+            confirmationButton.title = NSLocalizedString("Confirmation", comment: "")
+        }
+        confirmationButton.setupRoundBlack()
     }
   
     func setupRows(order: OriginalOrder) {
@@ -162,7 +179,6 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         totalInfoLabel.textAlignment = .right
         totalInfoLabel.frame = CGRect(x: padding + 150, y: totalTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
         scrollView.addSubview(totalInfoLabel)
-        
         scrollView.delegate = self
         scrollView.contentSize = CGSize(width: screenWidth, height: totalTipLabel.frame.maxY + padding)
     }
@@ -201,9 +217,8 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func pressedConfirmationButton(_ sender: Any) {
-        print("pressedConfirmationButton")
+    
+    func handleOrder() {
         if !priceTipLabel.isHidden {
             let alert = UIAlertController(title: NSLocalizedString("Please Pay Attention", comment: ""), message: self.message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
@@ -220,6 +235,34 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
             self.handleVerifyInfo()
         }
     }
+    
+    func handleSigning() {
+        let manager = PlaceOrderDataManager.shared
+        guard let hash = manager.signHash, let order = manager.signOrder else { return }
+        manager._authorize { (_, error) in
+            guard error == nil else { return }
+            manager._submitOrder(order, completion: { (_, error) in
+                guard error == nil else { return }
+                LoopringAPIRequest.updateSignMessage(hash: hash, status: .accept, completionHandler: self.completion)
+            })
+        }
+    }
+
+    @IBAction func pressedConfirmationButton(_ sender: Any) {
+        if self.isSigning {
+            handleSigning()
+        } else if self.order != nil {
+            handleOrder()
+        }
+    }
+    
+    @IBAction func pressedDeclineButton(_ sender: UIButton) {
+        guard isSigning, let hash = PlaceOrderDataManager.shared.signHash else { return }
+        LoopringAPIRequest.updateSignMessage(hash: hash, status: .reject) { (_, _) in
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
 }
 
 extension PlaceOrderConfirmationViewController {
@@ -258,9 +301,9 @@ extension PlaceOrderConfirmationViewController {
     
     func pushController(orderHash: String?) {
         let viewController = ConfirmationResultViewController()
-        viewController.order = self.order
         viewController.orderHash = orderHash
         viewController.verifyInfo = self.verifyInfo
+        viewController.order = isSigning ? PlaceOrderDataManager.shared.signOrder : order
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     

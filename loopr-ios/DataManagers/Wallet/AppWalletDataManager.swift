@@ -101,7 +101,7 @@ class AppWalletDataManager {
         }
     }
 
-    func addWallet(setupWalletMethod: SetupWalletMethod, walletName: String, mnemonics: [String], password: String, derivationPath: String, key: Int, isVerified: Bool) throws -> AppWallet {
+    func addWallet(setupWalletMethod: QRCodeMethod, walletName: String, mnemonics: [String], password: String, derivationPath: String, key: Int, isVerified: Bool) throws -> AppWallet {
         guard key >= 0 else {
             throw AddWalletError.invalidInput
         }

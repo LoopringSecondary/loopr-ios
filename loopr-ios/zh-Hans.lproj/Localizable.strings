@@ -273,3 +273,11 @@
 "Order Expired" = "已过期";
 "Order Locked" = "已锁定";
 "Order Unknown" = "未知状态";
+"Accept" = "允许授权";
+"Decline" = "拒绝授权";
+"Address detected" = "扫描到钱包地址二维码";
+"Mnemonic detected" = "扫描到钱包助记词二维码";
+"Keystore detected" = "扫描到钱包密文二维码";
+"Private key detected" = "扫描到钱包私钥的二维码";
+"Authorization message detected" = "扫描到授权信息二维码";
+"Undefined" = "扫描到未知类型的二维码";

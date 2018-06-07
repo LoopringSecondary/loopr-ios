@@ -10,7 +10,7 @@ import UIKit
 
 class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDelegate {
 
-    var setupWalletMethod: SetupWalletMethod = .create
+    var setupWalletMethod: QRCodeMethod = .create
 
     var walletNameTextField: UITextField = UITextField()
     var walletNameUnderLine: UIView = UIView()
@@ -18,7 +18,7 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
 
     var continueButton: UIButton = UIButton()
 
-    convenience init(setupWalletMethod: SetupWalletMethod) {
+    convenience init(setupWalletMethod: QRCodeMethod) {
         self.init(nibName: "ImportWalletEnterWalletNameViewController", bundle: nil)
         self.setupWalletMethod = setupWalletMethod
     }

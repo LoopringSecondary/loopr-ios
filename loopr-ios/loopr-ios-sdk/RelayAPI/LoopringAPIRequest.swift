@@ -469,11 +469,10 @@ class LoopringAPIRequest {
     static func notifyTransactionSubmitted(txHash: String, rawTx: RawTransaction, from: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_notifyTransactionSubmitted"
-        body["params"] = [["hash": txHash, "nonce": rawTx.nonce.hex, "to": rawTx.to.getHex(), "value": rawTx.value.hexString, "gasPrice": rawTx.gasPrice.hexString, "gas": rawTx.gasLimit.hexString, "input": rawTx.data.hexString, "from": from]]
+        body["params"] = [["hash": txHash, "nonce": rawTx.nonce, "to": rawTx.to, "value": rawTx.value, "gasPrice": rawTx.gasPrice, "gas": rawTx.gasLimit, "input": rawTx.data, "from": from]]
         body["id"] = JSON(UUID().uuidString)
-        
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
-            guard let data = data, error == nil else {
+            guard error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
                 return
@@ -503,6 +502,30 @@ class LoopringAPIRequest {
         let delegateAddress = RelayAPIConfiguration.delegateAddress
         body["params"] = [["delegateAddress": delegateAddress, "protocol": protocolValue, "takerOrderHash": takerOrderHash, "makerOrderHash": makerOrderHash, "rawTx": rawTx]]
         self.invoke(method: "loopring_submitRingForP2P", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
+            guard error == nil && data != nil else {
+                completionHandler(nil, error!)
+                return
+            }
+            completionHandler(data!.respond, nil)
+        }
+    }
+    
+    static func getSignMessage(message hash: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        body["params"] = [["hash": hash]]
+        self.invoke(method: "loopring_getOrderTransfer", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
+            guard error == nil && data != nil else {
+                completionHandler(nil, error!)
+                return
+            }
+            completionHandler(data!.respond, nil)
+        }
+    }
+    
+    static func updateSignMessage(hash: String, status: SignStatus, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        body["params"] = [["hash": hash, "status": status.description]]
+        self.invoke(method: "loopring_updateOrderTransfer", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
             guard error == nil && data != nil else {
                 completionHandler(nil, error!)
                 return

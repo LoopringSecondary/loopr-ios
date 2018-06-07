@@ -8,12 +8,13 @@
 
 import Foundation
 
-enum SetupWalletMethod: String, CustomStringConvertible {
+enum QRCodeMethod: String, CustomStringConvertible {
 
     case create = "SetupWalletMethod.create"
     case importUsingMnemonic = "SetupWalletMethod.importUsingMnemonic"
     case importUsingKeystore = "SetupWalletMethod.importUsingKeystore"
     case importUsingPrivateKey = "SetupWalletMethod.importUsingPrivateKey"
+    case authorization = "Authorization"
 
     var description: String {
         switch self {
@@ -21,6 +22,7 @@ enum SetupWalletMethod: String, CustomStringConvertible {
         case .importUsingMnemonic: return "Mnemonics"
         case .importUsingKeystore: return "Keystore"
         case .importUsingPrivateKey: return "Private Key"
+        case .authorization: return "Authorization"
         }
     }
     
@@ -54,5 +56,16 @@ enum SetupWalletMethod: String, CustomStringConvertible {
         } else {
             return false
         }
+    }
+    
+    static func isAuthorization(content: String) -> Bool {
+        if let data = content.data(using: .utf8) {
+            let json = JSON(data)
+            if json["type"] == "sign" {
+                PlaceOrderDataManager.shared.signHash = json["id"].stringValue
+                return true
+            }
+        }
+        return false
     }
 }

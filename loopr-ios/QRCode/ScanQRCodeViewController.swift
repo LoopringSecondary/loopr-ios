@@ -18,15 +18,17 @@ enum QRCodeType: String {
     case mnemonic = "Mnemonic"
     case keystore = "Keystore"
     case privateKey = "Private Key"
+    case authorization = "Authorization"
     case undefined = "Undefined"
     
     var detectedDescription: String {
         switch self {
-        case .address: return "Address detected"
-        case .mnemonic: return "Mnemonic detected"
-        case .keystore: return "Keystore detected"
-        case .privateKey: return "Private key detected"
-        case .undefined: return "Undefined"
+        case .address: return NSLocalizedString("Address detected", comment: "")
+        case .mnemonic: return NSLocalizedString("Mnemonic detected", comment: "")
+        case .keystore: return NSLocalizedString("Keystore detected", comment: "")
+        case .privateKey: return NSLocalizedString("Private key detected", comment: "")
+        case .authorization: return NSLocalizedString("Authorization message detected", comment: "")
+        case .undefined: return NSLocalizedString("Undefined", comment: "")
         }
     }
 }
@@ -215,7 +217,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         if presentedViewController != nil {
             return
         }
-        let alertPrompt = UIAlertController(title: "\(codeType.rawValue) detected", message: "\(decodedURL)", preferredStyle: .actionSheet)
+        let alertPrompt = UIAlertController(title: "\(codeType.detectedDescription)", message: "\(decodedURL)", preferredStyle: .actionSheet)
         let messageAttribute = NSMutableAttributedString.init(string: alertPrompt.message!)
         messageAttribute.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)], range: NSRange(location: 0, length: (alertPrompt.message?.count)!))
         alertPrompt.setValue(messageAttribute, forKey: "attributedMessage")
@@ -255,14 +257,15 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     func qrCodeContentDetector (qrContent: String) -> QRCodeType {
         if qrContent.starts (with: "0x") {
             return QRCodeType.address
-        } else if SetupWalletMethod.isMnemonicValid(mnemonic: qrContent) {
+        } else if QRCodeMethod.isAuthorization(content: qrContent) {
+            return QRCodeType.authorization
+        } else if QRCodeMethod.isMnemonicValid(mnemonic: qrContent) {
             return QRCodeType.mnemonic
-        } else if SetupWalletMethod.isPrivateKey(key: qrContent) {
+        } else if QRCodeMethod.isPrivateKey(key: qrContent) {
             return QRCodeType.privateKey
-        } else if SetupWalletMethod.isKeystore(content: qrContent) {
+        } else if QRCodeMethod.isKeystore(content: qrContent) {
             return QRCodeType.keystore
         }
-        
         return QRCodeType.undefined
     }
 

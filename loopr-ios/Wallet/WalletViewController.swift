@@ -9,7 +9,7 @@
 import UIKit
 import NotificationBannerSwift
 
-class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate, ContextMenuDelegate {
+class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate, ContextMenuDelegate, QRCodeScanProtocol {
 
     @IBOutlet weak var assetTableView: UITableView!
     private let refreshControl = UIRefreshControl()
@@ -19,7 +19,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var isListeningSocketIO: Bool = false
 
     var contextMenuSourceView: UIView = UIView()
-    
+    var destinationController = PlaceOrderConfirmationViewController()
+
     let buttonInNavigationBar =  UIButton()
     var numberOfRowsInSection1: Int = 0
     
@@ -89,7 +90,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 banner.show()
                 return
             }
-
             DispatchQueue.main.async {
                 if self.isLaunching {
                     self.isLaunching = false
@@ -140,6 +140,16 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
+    func setResultOfScanningQRCode(valueSent: String, type: QRCodeType) {
+        if type == .authorization {
+            PlaceOrderDataManager.shared.getOrder { (_, error) in
+                guard error != nil, let order = PlaceOrderDataManager.shared.signOrder else { return }
+                self.destinationController.order = order
+                self.destinationController.isSigning = true
+            }
+        }
+    }
+    
     @objc func clickNavigationTitleButton(_ button: UIButton) {
         print("select another wallet.")
         let viewController = SelectWalletViewController()
@@ -167,7 +177,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if index == 0 {
                 print("Selected Scan QR code")
                 let viewController = ScanQRCodeViewController()
+                viewController.delegate = self
                 viewController.hidesBottomBarWhenPushed = true
+                viewController.destinationController = self.destinationController
                 self.navigationController?.pushViewController(viewController, animated: true)
             } else if index == 1 {
                 print("Selected Add Token")

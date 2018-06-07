@@ -25,17 +25,18 @@ class PlaceOrderDataManager {
     var tokenA: Token!
     var tokenB: Token!
     var market: Market!
-
+    
+    // iOS authorization
+    var signHash: String!
+    var signOrder: OriginalOrder!
+    var signTransactions: [String: [RawTransaction]]!
+    
     func new(tokenA: String, tokenB: String, market: Market) {
         self.tokenA = TokenDataManager.shared.getTokenBySymbol(tokenA)!
         self.tokenB = TokenDataManager.shared.getTokenBySymbol(tokenB)!
         self.market = market
     }
 
-    func complete() -> Bool {
-        return true
-    }
-    
     func getFrozenLRCFeeFromServer() -> Double {
         var result: Double = 0
         let semaphore = DispatchSemaphore(value: 0)
@@ -66,6 +67,33 @@ class PlaceOrderDataManager {
         }
         _ = semaphore.wait(timeout: .distantFuture)
         return result
+    }
+    
+    func getOrder(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        guard let hash = self.signHash else { return }
+        LoopringAPIRequest.getSignMessage(message: hash) { (data, error) in
+            guard let data = data, error == nil else { return }
+            self.parse(from: data)
+            completion(data, nil)
+        }
+    }
+    
+    func parse(from data: String) {
+        self.signTransactions = [:]
+        if let data = data.data(using: .utf8) {
+            for subJson in JSON(data).arrayValue {
+                if subJson["type"] == "order" {
+                    let order = OriginalOrder(json: subJson["data"])
+                    self.signOrder = order
+                } else if subJson["type"] == "tx" {
+                    let tx = SignRawTransaction(json: subJson)
+                    if self.signTransactions[tx.token] == nil {
+                        self.signTransactions[tx.token] = []
+                    }
+                    self.signTransactions[tx.token]!.insert(tx.rawTx, at: tx.index)
+                }
+            }
+        }
     }
 
     func checkLRCEnough(of order: OriginalOrder) {
@@ -221,6 +249,16 @@ class PlaceOrderDataManager {
     func _encodeString(_ amount: Double, _ token: String) -> String {
         let bigInt = GethBigInt.generate(valueInEther: amount, symbol: token)!
         return bigInt.hexString
+    }
+    
+    func _authorize(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        for (_, rawTxs) in self.signTransactions {
+            if rawTxs.count == 1 {
+                SendCurrentAppWalletDataManager.shared.transferOnce(rawTx: rawTxs[0], completion: completion)
+            } else if rawTxs.count == 2 {
+                SendCurrentAppWalletDataManager.shared.transferTwice(rawTxs: rawTxs, completion: completion)
+            }
+        }
     }
     
     func completeOrder(_ order: inout OriginalOrder) {
