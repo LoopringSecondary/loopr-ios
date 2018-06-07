@@ -71,7 +71,7 @@ class ExportKeystoreSwipeViewController: SwipeViewController {
         if index == 0 {
             return "Keystore"
         } else {
-            return "QR Code"
+            return NSLocalizedString("QR Code", comment: "")
         }
     }
     

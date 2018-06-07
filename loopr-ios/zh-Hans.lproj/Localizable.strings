@@ -60,6 +60,7 @@
 "Wallet QR Code" = "钱包二维码";
 "Order QR Code" = "订单二维码";
 "Scan QR Code" = "二维码扫描";
+"QR Code" = "二维码";
 "Export Private Key" = "导出私钥";
 "Export Keystore" = "导出Keystore";
 "Wallet Name" = "钱包名字";
@@ -283,3 +284,5 @@
 "Undefined" = "扫描到未知类型的二维码";
 "Importing keystore" = "正在导入keystore";
 "Failed to import address. The device has imported the address already." = "导入失败，地址之前已经被导入。";
+"You are going to clear records of" = "您将要清除该手机上";
+"on this device." = "的数据。";

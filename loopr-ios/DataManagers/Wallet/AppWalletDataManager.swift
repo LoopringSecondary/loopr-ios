@@ -60,6 +60,9 @@ class AppWalletDataManager {
     }
     
     func isDuplicatedAddress(address: String) -> Bool {
+        if address.trim() == "" {
+            return true
+        }
         let results = appWallets.filter { $0.address == address }
         return !results.isEmpty
     }

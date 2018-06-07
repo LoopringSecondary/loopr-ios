@@ -26,6 +26,9 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
+        
+        let addBarButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
+        self.navigationItem.rightBarButtonItem = addBarButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +38,13 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func pressAddButton(_ button: UIBarButtonItem) {
+        let setupViewController: SetupNavigationController? = SetupNavigationController(nibName: nil, bundle: nil)
+        setupViewController?.isCreatingFirstWallet = false
+        self.present(setupViewController!, animated: true) {
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

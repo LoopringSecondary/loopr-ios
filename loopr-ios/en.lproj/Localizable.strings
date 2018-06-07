@@ -60,6 +60,7 @@
 "Wallet QR Code" = "Wallet QR Code";
 "Order QR Code" = "Order QR Code";
 "Scan QR Code" = "Scan QR Code";
+"QR Code" = "QR Code";
 "Export Private Key" = "Export Private Key";
 "Export Keystore" = "Export Keystore";
 "Wallet Name" = "Wallet Name";
@@ -285,3 +286,5 @@
 "Undefined" = "Undefined type of QRCode";
 "Importing keystore" = "Importing keystore";
 "Failed to import address. The device has imported the address already." = "Failed to import address. The device has imported the address already.";
+"You are going to clear records of" = "You are going to clear records of";
+"on this device." = "on this device.";

@@ -96,7 +96,9 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     }
 
     func presentAlertControllerToConfirmClearRecords() {
-        let alertController = UIAlertController(title: "You are going to clear records of \(appWallet.name) on this device.", message: nil, preferredStyle: .alert)
+        let header = NSLocalizedString("You are going to clear records of", comment: "")
+        let footer = NSLocalizedString("on this device.", comment: "")
+        let alertController = UIAlertController(title: "\(header) \(appWallet.name) \(footer)", message: nil, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
             AppWalletDataManager.shared.logout(appWallet: self.appWallet)
             if AppWalletDataManager.shared.getWallets().isEmpty {
@@ -114,7 +116,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     
     func navigationToSetupNavigationController() {
         let alertController = UIAlertController(title: "No wallet is found in the device. Navigate to the wallet creation view.", message: nil, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
             SetupDataManager.shared.hasPresented = false
             UIApplication.shared.keyWindow?.rootViewController = SetupNavigationController(nibName: nil, bundle: nil)
         })

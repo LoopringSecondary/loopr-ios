@@ -98,6 +98,17 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
         print("pressedUnlockButton")
         do {
             try ImportWalletUsingPrivateKeyDataManager.shared.importWallet(privateKey: privateKeyTextView.text)
+            
+            // Check if it's duplicated.
+            if AppWalletDataManager.shared.isDuplicatedAddress(address: ImportWalletUsingPrivateKeyDataManager.shared.address) {
+                let alert = UIAlertController(title: NSLocalizedString("Failed to import address. The device has imported the address already.", comment: ""), message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+                    
+                }))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+
             let viewController = ImportWalletEnterWalletNameViewController(setupWalletMethod: .importUsingPrivateKey)
             self.navigationController?.pushViewController(viewController, animated: true)
         } catch {

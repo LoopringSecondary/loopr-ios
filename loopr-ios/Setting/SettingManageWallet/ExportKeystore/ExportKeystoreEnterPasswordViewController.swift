@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import NotificationBannerSwift
+import SVProgressHUD
 
 class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDelegate {
 
@@ -90,14 +92,56 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
             validPassword = false
             self.passwordInfoLabel.text = NSLocalizedString("Wrong password", comment: "")
         }
+        
+        guard validPassword else {
+            self.passwordInfoLabel.alpha = 1.0
+            self.passwordInfoLabel.shake()
+            return
+        }
 
-        if validPassword {
+        if appWallet.setupWalletMethod == .importUsingPrivateKey {
+            var isSucceeded: Bool = false
+            SVProgressHUD.show(withStatus: NSLocalizedString("Exporting keystore", comment: "") + "...")
+            let dispatchGroup = DispatchGroup()
+            dispatchGroup.enter()
+            DispatchQueue.global().async {
+                do {
+                    guard let data = Data(hexString: self.appWallet.privateKey) else {
+                        print("Invalid private key")
+                        return // .failure(KeystoreError.failedToImportPrivateKey)
+                    }
+
+                    print("Generating keystore")
+                    let key = try KeystoreKey(password: password.trim(), key: data)
+                    print("Finished generating keystore")
+                    let keystoreData = try JSONEncoder().encode(key)
+                    let json = try JSON(data: keystoreData)
+                    self.appWallet.setKeystore(keystoreString: json.description)
+
+                    isSucceeded = true
+                    dispatchGroup.leave()
+                } catch {
+                    isSucceeded = false
+                    dispatchGroup.leave()
+                }
+            }
+            
+            dispatchGroup.notify(queue: .main) {
+                SVProgressHUD.dismiss()
+                if isSucceeded {
+                    let viewController = ExportKeystoreSwipeViewController()
+                    viewController.appWallet = self.appWallet
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                } else {
+                    let banner = NotificationBanner.generate(title: "Wrong password", style: .danger)
+                    banner.duration = 1.5
+                    banner.show()
+                }
+            }
+        } else {
             let viewController = ExportKeystoreSwipeViewController()
             viewController.appWallet = appWallet
             self.navigationController?.pushViewController(viewController, animated: true)
-        } else {
-            self.passwordInfoLabel.alpha = 1.0
-            self.passwordInfoLabel.shake()
         }
     }
 
