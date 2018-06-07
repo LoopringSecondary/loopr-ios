@@ -125,10 +125,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidDisappear(animated)
         CurrentAppWalletDataManager.shared.stopGetBalance()
         isListeningSocketIO = false
-        
         NotificationCenter.default.removeObserver(self, name: .balanceResponseReceived, object: nil)
         NotificationCenter.default.removeObserver(self, name: .priceQuoteResponseReceived, object: nil)
-        
         if let cell = assetTableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? WalletBalanceTableViewCell {
             cell.stopUpdateBalanceLabelTimer()
         }
