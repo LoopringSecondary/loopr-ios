@@ -120,9 +120,19 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
                 return
             }
         } catch AddWalletError.duplicatedAddress {
-            
+            let alert = UIAlertController(title: NSLocalizedString("Failed to import address. The device has imported the address already.", comment: ""), message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            return
         } catch {
-            
+            let alert = UIAlertController(title: NSLocalizedString("Failed to import address.", comment: ""), message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            return
         }
 
         // Exit the whole importing process

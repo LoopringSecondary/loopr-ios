@@ -283,3 +283,5 @@
 "Private key detected" = "Private key detected";
 "Authorization message detected" = "Authorization message detected";
 "Undefined" = "Undefined type of QRCode";
+"Importing keystore" = "Importing keystore";
+"Failed to import address. The device has imported the address already." = "Failed to import address. The device has imported the address already.";

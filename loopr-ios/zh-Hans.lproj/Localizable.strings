@@ -281,3 +281,5 @@
 "Private key detected" = "扫描到钱包私钥的二维码";
 "Authorization message detected" = "扫描到授权信息二维码";
 "Undefined" = "扫描到未知类型的二维码";
+"Importing keystore" = "正在导入keystore";
+"Failed to import address. The device has imported the address already." = "导入失败，地址之前已经被导入。";

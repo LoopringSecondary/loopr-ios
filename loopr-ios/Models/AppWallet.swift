@@ -140,6 +140,10 @@ class AppWallet: NSObject, NSCoding {
         return self.gethKeystoreObject
     }
     
+    func setKeystore(keystoreString: String) {
+        self.keystoreString = keystoreString
+    }
+
     func getKeystore() -> String {
         return keystoreString ?? "Generating ..."
     }

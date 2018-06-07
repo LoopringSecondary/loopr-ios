@@ -17,12 +17,14 @@ class ImportWalletUsingKeystoreDataManager: ImportWalletProtocol {
     var password: String
     var address: String
     var privateKey: String
+    var keystore: String
     var walletName: String
 
     private init() {
         password = ""
         address = ""
         privateKey = ""
+        keystore = ""
         walletName = ""
     }
     
@@ -30,9 +32,10 @@ class ImportWalletUsingKeystoreDataManager: ImportWalletProtocol {
         password = ""
         address = ""
         privateKey = ""
+        keystore = ""
         walletName = ""
     }
-    
+
     func unlockWallet(keystoreStringValue: String, password: String) throws {
         print("Start to unlock a new wallet using the keystore")
         print(keystoreStringValue)
@@ -70,6 +73,7 @@ class ImportWalletUsingKeystoreDataManager: ImportWalletProtocol {
             // Store values
             self.address = keystoreAddress.eip55String
             self.privateKey = privateKeyString
+            self.keystore = keystoreStringValue
             self.password = password
 
         } catch {
@@ -82,7 +86,7 @@ class ImportWalletUsingKeystoreDataManager: ImportWalletProtocol {
             throw AddWalletError.duplicatedAddress
         }
 
-        let newAppWallet = AppWallet(setupWalletMethod: .importUsingKeystore, address: address, privateKey: privateKey, password: password, name: walletName, isVerified: true, active: true)
+        let newAppWallet = AppWallet(setupWalletMethod: .importUsingKeystore, address: address, privateKey: privateKey, password: password, keystoreString: keystore, name: walletName, isVerified: true, active: true)
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
         // Inform relay
