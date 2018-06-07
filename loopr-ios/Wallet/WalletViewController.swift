@@ -19,7 +19,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var isListeningSocketIO: Bool = false
 
     var contextMenuSourceView: UIView = UIView()
-    var destinationController = PlaceOrderConfirmationViewController()
 
     let buttonInNavigationBar =  UIButton()
     var numberOfRowsInSection1: Int = 0
@@ -143,9 +142,13 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func setResultOfScanningQRCode(valueSent: String, type: QRCodeType) {
         if type == .authorization {
             PlaceOrderDataManager.shared.getOrder { (_, error) in
-                guard error != nil, let order = PlaceOrderDataManager.shared.signOrder else { return }
-                self.destinationController.order = order
-                self.destinationController.isSigning = true
+                guard error == nil, let order = PlaceOrderDataManager.shared.signOrder else { return }
+                DispatchQueue.main.async {
+                    let vc = PlaceOrderConfirmationViewController()
+                    vc.order = order
+                    vc.isSigning = true
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             }
         }
     }
@@ -178,8 +181,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 print("Selected Scan QR code")
                 let viewController = ScanQRCodeViewController()
                 viewController.delegate = self
+                viewController.shouldPop = false
                 viewController.hidesBottomBarWhenPushed = true
-                viewController.destinationController = self.destinationController
                 self.navigationController?.pushViewController(viewController, animated: true)
             } else if index == 1 {
                 print("Selected Add Token")

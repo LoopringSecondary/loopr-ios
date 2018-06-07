@@ -322,13 +322,14 @@ class SendCurrentAppWalletDataManager {
     func _sign(rawTx: RawTransaction, completion: @escaping (_ txHash: String?, _ error: Error?) -> Void) -> String? {
         _keystore()
         let password = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getPassword()
-        if let data = rawTx.data.data(using: .utf8),
+        
+        if let data = Data(hexString: rawTx.data),
             let amount = GethBigInt.generate(rawTx.value),
             let address = GethAddress.init(fromHex: rawTx.to),
-            let gasPrice = GethBigInt.generate(rawTx.gasPrice),
-            let gasLimit = GethBigInt.generate(rawTx.gasLimit),
-            let nonce = Int64(rawTx.nonce) {
-            let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: password)
+            let gasPrice = rawTx.gasPrice.integer,
+            let gasLimit = rawTx.gasLimit.integer,
+            let nonce = rawTx.nonce.integer {
+            let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: Int64(nonce+10), amount: amount, gasLimit: GethBigInt(Int64(gasLimit)), gasPrice: GethBigInt(Int64(gasPrice)), password: password)
             do {
                 if let signedTransactionData = try signedTransaction?.encodeRLP() {
                     return "0x" + signedTransactionData.hexString
@@ -361,7 +362,7 @@ class SendCurrentAppWalletDataManager {
     
     func transferTwice(rawTxs: [RawTransaction], completion: @escaping (_ txHash: String?, _ error: Error?) -> Void) {
         _transfer(rawTx: rawTxs[0]) { (_, error) in
-            guard error != nil else { return }
+            guard error == nil else { return }
             self._transfer(rawTx: rawTxs[1], completion: completion)
         }
     }

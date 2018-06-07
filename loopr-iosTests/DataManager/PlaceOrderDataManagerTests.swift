@@ -110,12 +110,8 @@ class PlaceOrderDataManagerTests: XCTestCase {
     }
     
     func testBigValue() {
-        var a = PlaceOrderDataManager.shared._encode(1, "LRC")
-        print(a)
-        a = RelayAPIConfiguration.delegateAddress.hexBytes
-        print(a)
-        let now = Int64(Date().timeIntervalSince1970)
-        a = PlaceOrderDataManager.shared._encode(now)
-        print(a)
+        if let a = GethBigInt.generate(valueInEther: "0x306dc4200", symbol: "ETH") {
+            print(a.decimalString)
+        }
     }
 }

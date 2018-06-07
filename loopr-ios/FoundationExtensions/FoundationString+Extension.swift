@@ -32,7 +32,6 @@ extension String {
         return self.size(withAttributes: fontAttributes)
     }
 
-    
     //Checks if the given string is an address in hexidecimal encoded form.
     public func isHexAddress() -> Bool {
         if !Set([40, 42]).contains(self.count) {
@@ -128,4 +127,14 @@ extension String {
         }
     }
 
+    var integer: Int? {
+        if self.isHex() {
+            if self.lowercased().starts(with: "0x") {
+                return Int(self.dropFirst(2), radix: 16)
+            } else {
+                return Int(self, radix: 16)
+            }
+        }
+        return nil
+    }
 }

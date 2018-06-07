@@ -11,25 +11,25 @@ import Foundation
 class OriginalOrder {
 
     // protocol is a keyword in Swift
-    let delegate: String
-    let address: String
-    let market: String
-    let tokenBuy: String
-    let tokenSell: String
-    let amountBuy: Double
-    let amountSell: Double
-    let validSince: Int64
-    let validUntil: Int64
-    let lrcFee: Double
-    let buyNoMoreThanAmountB: Bool
-    let side: String
+    var delegate: String
+    var address: String
+    var market: String
+    var tokenBuy: String
+    var tokenSell: String
+    var amountBuy: Double
+    var amountSell: Double
+    var validSince: Int64
+    var validUntil: Int64
+    var lrcFee: Double
+    var buyNoMoreThanAmountB: Bool
+    var side: String
     var hash: String
-    let walletAddress: String
-    let authPrivateKey: String
-    let authAddr: String
-    let marginSplitPercentage: UInt8
-    let orderType: OrderType
-    var v: UInt
+    var walletAddress: String
+    var authPrivateKey: String
+    var authAddr: String
+    var marginSplitPercentage: UInt8
+    var orderType: OrderType
+    var v: UInt = 0
     var r: String
     var s: String
     
@@ -60,28 +60,68 @@ class OriginalOrder {
 
     init(json: JSON) {
         self.delegate = json["protocol"].stringValue
-        self.address = json["address"].stringValue
         self.market = json["market"].stringValue
-        self.tokenSell = json["tokenS"].stringValue
-        self.tokenBuy = json["tokenB"].stringValue
+        self.address = ""
+        self.tokenBuy = ""
+        self.tokenSell = ""
         self.buyNoMoreThanAmountB = json["buyNoMoreThanAmountB"].boolValue
         self.side = json["side"].stringValue
         self.hash = json["hash"].stringValue
-        self.v = UInt(json["v"].stringValue.dropFirst(2), radix: 16)!
-        self.r = json["r"].stringValue
-        self.s = json["s"].stringValue
         self.orderType = OrderType(rawValue: json["orderType"].stringValue) ?? OrderType.unknown
         self.walletAddress = json["walletAddress"].stringValue
         self.authAddr = json["authAddr"].stringValue
         self.authPrivateKey = json["authPrivateKey"].stringValue
-        self.marginSplitPercentage = UInt8(json["marginSplitPercentage"].stringValue.dropFirst(2), radix: 16)!
-        self.validSince = Int64(json["validSince"].stringValue.dropFirst(2), radix: 16)!
-        self.validUntil = Int64(json["validUntil"].stringValue.dropFirst(2), radix: 16)!
+        self.validSince = 0
+        self.validUntil = 0
+        self.marginSplitPercentage = 0
+        self.amountBuy = 0.0
+        self.amountSell = 0.0
+        let fee = json["lrcFee"].stringValue
+        self.lrcFee = Asset.getAmount(of: "LRC", fromWeiAmount: fee)!
+        self.r = json["r"].stringValue
+        self.s = json["s"].stringValue
+        self.v = 0
+        
+        self.address = getAddress(json: json)
+        self.tokenBuy = getToken(json["tokenB"].stringValue)
+        self.tokenSell = getToken(json["tokenS"].stringValue)
+        self.validSince = Int64(getInt(json["validSince"].string))
+        self.validUntil = Int64(getInt(json["validUntil"].string))
+        self.marginSplitPercentage = UInt8(getInt(json["marginSplitPercentage"].string))
         let amountS = json["amountS"].stringValue
         self.amountSell = Asset.getAmount(of: self.tokenSell, fromWeiAmount: amountS) ?? 0.0
         let amountB = json["amountB"].stringValue
         self.amountBuy = Asset.getAmount(of: self.tokenBuy, fromWeiAmount: amountB) ?? 0.0
-        let fee = json["lrcFee"].stringValue
-        self.lrcFee = Asset.getAmount(of: "LRC", fromWeiAmount: fee)!
+        self.v = UInt(getInt(json["v"].string))
+    }
+    
+    func getAddress(json: JSON) -> String {
+        var result: String = ""
+        if let address = json["address"].string {
+            result = address
+        } else if let owner = json["owner"].string {
+            result = owner
+        }
+        return result
+    }
+    
+    func getInt(_ value: String?) -> Int {
+        var result: Int = 0
+        if let value = value {
+            if let integer = Int(value.dropFirst(2), radix: 16) {
+                result = integer
+            }
+        }
+        return result
+    }
+    
+    func getToken(_ address: String) -> String {
+        var result: String = address
+        if address.isHex() {
+            if let token = TokenDataManager.shared.getTokenByAddress(address) {
+                result = token.symbol
+            }
+        }
+        return result
     }
 }

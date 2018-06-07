@@ -38,7 +38,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     var numericKeyboardView: DefaultNumericKeyboard!
 
     var activeTextFieldTag = -1
-    var destinationController = TradeConfirmationViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -210,8 +209,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         print("Selected Scan QR code")
         let viewController = ScanQRCodeViewController()
         viewController.delegate = self
+        viewController.shouldPop = false
         viewController.hidesBottomBarWhenPushed = true
-        viewController.destinationController = self.destinationController
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
@@ -489,7 +488,9 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             TradeDataManager.shared.orders.insert(maker, at: 0)
             TradeDataManager.shared.orders.insert(taker, at: 1)
             TradeDataManager.shared.makerPrivateKey = makerPrivateKey
-            self.destinationController.order = taker
+            let vc = TradeConfirmationViewController()
+            vc.order = taker
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

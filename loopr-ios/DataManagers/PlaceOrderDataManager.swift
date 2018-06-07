@@ -83,7 +83,12 @@ class PlaceOrderDataManager {
         if let data = data.data(using: .utf8) {
             for subJson in JSON(data).arrayValue {
                 if subJson["type"] == "order" {
-                    let order = OriginalOrder(json: subJson["data"])
+                    var order = OriginalOrder(json: subJson["data"])
+                    let side = subJson["side"].stringValue
+                    let market = subJson["market"].stringValue
+                    order.side = side
+                    order.market = market
+                    completeOrder(&order)
                     self.signOrder = order
                 } else if subJson["type"] == "tx" {
                     let tx = SignRawTransaction(json: subJson)

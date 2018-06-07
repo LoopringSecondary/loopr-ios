@@ -512,25 +512,35 @@ class LoopringAPIRequest {
     
     static func getSignMessage(message hash: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
+        body["method"] = "loopring_getOrderTransfer"
         body["params"] = [["hash": hash]]
-        self.invoke(method: "loopring_getOrderTransfer", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
-            guard error == nil && data != nil else {
-                completionHandler(nil, error!)
+        body["id"] = JSON(UUID().uuidString)
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                completionHandler(nil, error)
                 return
             }
-            completionHandler(data!.respond, nil)
+            let json = JSON(data)
+            let result = json["result"]["origin"].stringValue
+            completionHandler(result, nil)
         }
     }
     
     static func updateSignMessage(hash: String, status: SignStatus, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
+        body["method"] = "loopring_updateOrderTransfer"
         body["params"] = [["hash": hash, "status": status.description]]
-        self.invoke(method: "loopring_updateOrderTransfer", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
-            guard error == nil && data != nil else {
-                completionHandler(nil, error!)
+        body["id"] = JSON(UUID().uuidString)
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                completionHandler(nil, error)
                 return
             }
-            completionHandler(data!.respond, nil)
+            let json = JSON(data)
+            let result = json["result"].stringValue
+            completionHandler(result, nil)
         }
     }
 }

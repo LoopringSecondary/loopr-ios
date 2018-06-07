@@ -107,6 +107,15 @@ class TokenDataManager {
         return result
     }
     
+    func getTokenByAddress(_ address: String) -> Token? {
+        var result: Token? = nil
+        for case let token in tokens where token.protocol_value.lowercased() == address.lowercased() {
+            result = token
+            break
+        }
+        return result
+    }
+    
     func getAddress(by symbol: String) -> String? {
         if let token = getTokenBySymbol(symbol) {
             return token.protocol_value
@@ -114,5 +123,6 @@ class TokenDataManager {
             return nil
         }
     }
+    
     
 }

@@ -11,7 +11,7 @@ import Foundation
 class RelayAPIConfiguration {
 
     // Test environment
-    // static let baseUrl = "http://13.112.62.24"
+//    static let baseURL = "http://13.112.62.24"
 
     static let baseURL = "https://relay1.loopring.io"
     static let rpcURL = URL(string: baseURL + "/rpc/v2")!

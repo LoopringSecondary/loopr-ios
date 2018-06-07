@@ -50,13 +50,6 @@ class AppWalletDataManagerTests: XCTestCase {
 //        XCTAssertGreaterThan(AppWalletDataManager.shared.getWallets().count, 0)
     }
     
-    func testUnlockWalletUsingPrivateKey() {
-        try! ImportWalletUsingPrivateKeyDataManager.shared.unlockWallet(privateKey: "3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe267")
-        ImportWalletUsingPrivateKeyDataManager.shared.complete()
-        let currentWallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet()
-        XCTAssertEqual(currentWallet?.address, "0xE9717c7564d6ED2F764C3c5EB002225ab49e7baB")
-    }
-    
     func testUnlockWalletUsingMnemonic() {
         /*
         ImportWalletUsingMnemonicDataManager.shared.unlockWallet(mnemonic: "soda code cannon sketch boss fancy tail lesson forum figure gloom history dismiss sketch lady control wolf hello away pave priority story design trial")

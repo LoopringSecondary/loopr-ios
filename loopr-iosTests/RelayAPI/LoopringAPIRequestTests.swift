@@ -43,7 +43,7 @@ class LoopringAPIRequestTests: XCTestCase {
     
     func testGetOrders() {
         let expectation = XCTestExpectation()
-        LoopringAPIRequest.getOrders(owner: testAddress, orderType: "p2p_order") { orders, error in
+        LoopringAPIRequest.getOrders(owner: testAddress, orderType: "market_order") { orders, error in
             XCTAssertNotNil(orders)
             expectation.fulfill()
         }

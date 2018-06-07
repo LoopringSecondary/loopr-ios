@@ -43,22 +43,18 @@ public extension GethBigInt {
         guard valueInEther.isDouble else {
             return nil
         }
-        
         let items = valueInEther.components(separatedBy: ".")
-
         if items.count == 1 {
             let append = String(repeating: "0", count: decimals)
             let valueInWei = items[0] + append
             let gethAmount = GethBigInt.init(0)!
             gethAmount.setString(valueInWei, base: 10)
             return gethAmount
-            
         } else if items.count == 2 {
             let fractionalPart = items[1]
             guard fractionalPart.count <= decimals else {
                 return nil
             }
-
             let append = fractionalPart + String(repeating: "0", count: decimals-fractionalPart.count)
             let valueInWei = items[0] + append
             let gethAmount = GethBigInt.init(0)!

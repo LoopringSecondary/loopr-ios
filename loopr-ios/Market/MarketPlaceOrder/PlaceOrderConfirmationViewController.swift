@@ -58,9 +58,19 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         setBackButton()
         self.navigationItem.title = NSLocalizedString("Confirmation", comment: "")
         if let order = self.order {
+            setupPrice(order: order)
             setupRows(order: order)
         }
         setupButtons()
+    }
+    
+    func setupPrice(order: OriginalOrder) {
+        guard isSigning else { return }
+        if order.side == "buy" {
+            self.price = (order.amountBuy / order.amountSell).withCommas()
+        } else if order.side == "sell" {
+            self.price = (order.amountSell / order.amountBuy).withCommas()
+        }
     }
     
     func setupButtons() {
@@ -110,7 +120,8 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         scrollView.addSubview(priceTipLabel)
         
         priceValueLabel.font = FontConfigManager.shared.getLabelFont()
-        priceValueLabel.text = "\(price) \(PlaceOrderDataManager.shared.market.description)"
+        let tradingPair = self.type == .buy ? "\(order.tokenBuy)/\(order.tokenSell)" : "\(order.tokenSell)/\(order.tokenBuy)"
+        priceValueLabel.text = "\(price) \(tradingPair)"
         priceValueLabel.textAlignment = .right
         if !validateRational() {
             priceTipLabel.isHidden = false

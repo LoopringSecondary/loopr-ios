@@ -113,4 +113,12 @@ class KeystoreAndWeb3SwiftTests: XCTestCase {
             return // .failure(KeystoreError.failedToImportPrivateKey)
         }
     }
+    
+    func test11() {
+        let a: String! = "0x095ea7b300000000000000000000000017233e07c67d086464fd408148c3abb56245fa640000000000000000000000000000000000000000000000000000000000000000"
+        
+        let data = Data(hexString: a)!
+        
+        print(data.hexString)
+    }
 }

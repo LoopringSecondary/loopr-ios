@@ -15,7 +15,7 @@ class Market: Equatable, CustomStringConvertible {
     var name: String
     var icon: UIImage?
     var description: String
-    final let tradingPair: TradingPair
+    let tradingPair: TradingPair
     var balance: Double
     var display: String
     var volumeInPast24: Double

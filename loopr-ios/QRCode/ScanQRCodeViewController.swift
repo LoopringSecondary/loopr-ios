@@ -42,7 +42,6 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     @IBOutlet weak var scanTipLabel: UILabel!
     
     var captureSession = AVCaptureSession()
-    var destinationController: UIViewController?
     
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var qrCodeFrameView: UIView?
@@ -53,6 +52,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     var scanQRCodeView = UIView()
     
     var isTorchOn = false
+    var shouldPop = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -224,9 +224,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.cancel, handler: nil)
         let confirmAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default) { _ in
             self.delegate?.setResultOfScanningQRCode(valueSent: decodedURL, type: codeType)
-            if let controller = self.destinationController {
-                self.navigationController?.pushViewController(controller, animated: true)
-            } else {
+            if self.shouldPop {
                 self.navigationController?.popViewController(animated: true)
             }
         }
