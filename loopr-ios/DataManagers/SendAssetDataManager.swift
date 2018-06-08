@@ -41,7 +41,7 @@ class SendCurrentAppWalletDataManager {
     }
     
     func incrementNonce() {
-        self.nonce += 1
+        self.nonce += 2
     }
     
     // The API request teth_getTransactionCount is slow. Please be patient. It takes 3-20 seconds.
@@ -89,7 +89,7 @@ class SendCurrentAppWalletDataManager {
                 print("Current nounce: \(self.nonce)")
                 let end = Date()
                 let timeInterval: Double = end.timeIntervalSince(start)
-                print("Time to getNonceFromServer: \(timeInterval) seconds")
+                print("Time to getNonceFromServer: \(timeInterval) seconds. Current nonce is: \(self.nonce)")
             })
         }
     }
@@ -98,7 +98,7 @@ class SendCurrentAppWalletDataManager {
         let start = Date()
         EthereumAPIRequest.eth_sendRawTransaction(data: signedTransaction) { (data, error) in
             guard error == nil && data != nil else {
-                print(error!.localizedDescription)
+                print(error!)
                 completion(nil, error)
                 return
             }
@@ -322,7 +322,7 @@ class SendCurrentAppWalletDataManager {
                 } else {
                     completion(nil, error)
                 }
-                self.nonce += 1
+                self.nonce += 2
             })
         }
     }
