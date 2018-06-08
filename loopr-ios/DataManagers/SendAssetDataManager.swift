@@ -41,12 +41,9 @@ class SendCurrentAppWalletDataManager {
     }
     
     func incrementNonce() {
-        self.nonce += 2
+        self.nonce += 1
     }
-    
-    // The API request teth_getTransactionCount is slow. Please be patient. It takes 3-20 seconds.
-    // Deprecate the method
-    /*
+
     func getNonceFromServerSynchronous() {
         let start = Date()
         print("Start getNonceFromServerSynchronous")
@@ -72,8 +69,7 @@ class SendCurrentAppWalletDataManager {
         }
         _ = semaphore.wait(timeout: .distantFuture)
     }
-    */
-    
+
     func getNonceFromServer() {
         let start = Date()
         if let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
@@ -313,6 +309,7 @@ class SendCurrentAppWalletDataManager {
     }
     
     func _transfer(data: Data, address: GethAddress, amount: GethBigInt, gasLimit: GethBigInt, completion: @escaping (_ txHash: String?, _ error: Error?) -> Void) {
+        self.getNonceFromServerSynchronous()
         let tx = RawTransaction(data: data, to: address, value: amount, gasLimit: gasLimit, gasPrice: GasDataManager.shared.getGasPriceInWei(), nonce: self.nonce)
         let from = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         if let signedTransaction = _sign(data: data, address: address, amount: amount, gasLimit: gasLimit, completion: completion) {
@@ -322,7 +319,7 @@ class SendCurrentAppWalletDataManager {
                 } else {
                     completion(nil, error)
                 }
-                self.nonce += 2
+                self.nonce += 1
             })
         }
     }
@@ -330,14 +327,12 @@ class SendCurrentAppWalletDataManager {
     func _sign(rawTx: RawTransaction, completion: @escaping (_ txHash: String?, _ error: Error?) -> Void) -> String? {
         _keystore()
         let password = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getPassword()
-        
         if let data = Data(hexString: rawTx.data),
             let amount = GethBigInt.generate(rawTx.value),
             let address = GethAddress.init(fromHex: rawTx.to),
             let gasPrice = rawTx.gasPrice.integer,
-            let gasLimit = rawTx.gasLimit.integer,
-            let nonce = rawTx.nonce.integer {
-            let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: Int64(nonce+10), amount: amount, gasLimit: GethBigInt(Int64(gasLimit)), gasPrice: GethBigInt(Int64(gasPrice)), password: password)
+            let gasLimit = rawTx.gasLimit.integer {
+            let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: Int64(self.nonce), amount: amount, gasLimit: GethBigInt(Int64(gasLimit)), gasPrice: GethBigInt(Int64(gasPrice)), password: password)
             do {
                 if let signedTransactionData = try signedTransaction?.encodeRLP() {
                     return "0x" + signedTransactionData.hexString
@@ -352,6 +347,7 @@ class SendCurrentAppWalletDataManager {
     }
     
     func _transfer(rawTx: RawTransaction, completion: @escaping (_ txHash: String?, _ error: Error?) -> Void) {
+        self.getNonceFromServerSynchronous()
         let from = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         if let signedTransaction = _sign(rawTx: rawTx, completion: completion) {
             self.sendTransactionToServer(signedTransaction: signedTransaction, completion: { (txHash, error) in
@@ -360,6 +356,7 @@ class SendCurrentAppWalletDataManager {
                 } else {
                     completion(nil, error)
                 }
+                self.nonce += 1
             })
         }
     }

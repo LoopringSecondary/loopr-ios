@@ -28,7 +28,7 @@ class SendCurrentAppWalletDataManagerTests: XCTestCase {
     }
     
     func test() {
-        
+        SendCurrentAppWalletDataManager.shared.getNonceFromServerSynchronous()
     }
     
 }
