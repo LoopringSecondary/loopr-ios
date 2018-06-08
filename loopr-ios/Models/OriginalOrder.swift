@@ -11,27 +11,27 @@ import Foundation
 class OriginalOrder {
 
     // protocol is a keyword in Swift
-    var delegate: String
-    var address: String
-    var market: String
-    var tokenBuy: String
-    var tokenSell: String
-    var amountBuy: Double
-    var amountSell: Double
-    var validSince: Int64
-    var validUntil: Int64
-    var lrcFee: Double
-    var buyNoMoreThanAmountB: Bool
-    var side: String
-    var hash: String
-    var walletAddress: String
-    var authPrivateKey: String
-    var authAddr: String
-    var marginSplitPercentage: UInt8
-    var orderType: OrderType
+    var delegate: String = ""
+    var address: String = ""
+    var market: String = ""
+    var tokenBuy: String = ""
+    var tokenSell: String = ""
+    var amountBuy: Double = 0.0
+    var amountSell: Double = 0.0
+    var validSince: Int64 = 0
+    var validUntil: Int64 = 0
+    var lrcFee: Double = 0.0
+    var buyNoMoreThanAmountB: Bool = false
+    var side: String = ""
+    var hash: String = ""
+    var walletAddress: String = ""
+    var authPrivateKey: String = ""
+    var authAddr: String = ""
+    var marginSplitPercentage: UInt8 = 0
+    var orderType: OrderType = .marketOrder
     var v: UInt = 0
-    var r: String
-    var s: String
+    var r: String = ""
+    var s: String = ""
     
     init(delegate: String, address: String, side: String, tokenS: String, tokenB: String, validSince: Int64, validUntil: Int64, amountBuy: Double, amountSell: Double, lrcFee: Double, buyNoMoreThanAmountB: Bool, orderType: OrderType = .marketOrder, market: String = "") {
         self.delegate = delegate
@@ -52,18 +52,18 @@ class OriginalOrder {
         self.authPrivateKey = privateKey
         self.walletAddress = RelayAPIConfiguration.orderWalletAddress
         self.marginSplitPercentage = UInt8(SettingDataManager.shared.getMarginSplit() * 100)
-        self.hash = ""
-        self.v = 0
-        self.r = ""
-        self.s = ""
     }
 
     init(json: JSON) {
         self.delegate = json["protocol"].stringValue
         self.market = json["market"].stringValue
-        self.address = ""
-        self.tokenBuy = ""
-        self.tokenSell = ""
+        self.address = getAddress(json: json)
+        self.tokenBuy = getToken(json["tokenB"].stringValue)
+        self.tokenSell = getToken(json["tokenS"].stringValue)
+        let amountS = json["amountS"].stringValue
+        self.amountSell = Asset.getAmount(of: self.tokenSell, fromWeiAmount: amountS) ?? 0.0
+        let amountB = json["amountB"].stringValue
+        self.amountBuy = Asset.getAmount(of: self.tokenBuy, fromWeiAmount: amountB) ?? 0.0
         self.buyNoMoreThanAmountB = json["buyNoMoreThanAmountB"].boolValue
         self.side = json["side"].stringValue
         self.hash = json["hash"].stringValue
@@ -71,28 +71,24 @@ class OriginalOrder {
         self.walletAddress = json["walletAddress"].stringValue
         self.authAddr = json["authAddr"].stringValue
         self.authPrivateKey = json["authPrivateKey"].stringValue
-        self.validSince = 0
-        self.validUntil = 0
-        self.marginSplitPercentage = 0
-        self.amountBuy = 0.0
-        self.amountSell = 0.0
+        self.validSince = Int64(getInt(json["validSince"].string))
+        self.validUntil = Int64(getInt(json["validUntil"].string))
+        self.marginSplitPercentage = getMargin(json: json)
         let fee = json["lrcFee"].stringValue
         self.lrcFee = Asset.getAmount(of: "LRC", fromWeiAmount: fee)!
         self.r = json["r"].stringValue
         self.s = json["s"].stringValue
-        self.v = 0
-        
-        self.address = getAddress(json: json)
-        self.tokenBuy = getToken(json["tokenB"].stringValue)
-        self.tokenSell = getToken(json["tokenS"].stringValue)
-        self.validSince = Int64(getInt(json["validSince"].string))
-        self.validUntil = Int64(getInt(json["validUntil"].string))
-        self.marginSplitPercentage = UInt8(getInt(json["marginSplitPercentage"].string))
-        let amountS = json["amountS"].stringValue
-        self.amountSell = Asset.getAmount(of: self.tokenSell, fromWeiAmount: amountS) ?? 0.0
-        let amountB = json["amountB"].stringValue
-        self.amountBuy = Asset.getAmount(of: self.tokenBuy, fromWeiAmount: amountB) ?? 0.0
         self.v = UInt(getInt(json["v"].string))
+    }
+    
+    func getMargin(json: JSON) -> UInt8 {
+        var result: UInt8 = 0
+        if let string = json["marginSplitPercentage"].string {
+            result = UInt8(getInt(string))
+        } else if let integer = json["marginSplitPercentage"].uInt8 {
+            result = integer
+        }
+        return result
     }
     
     func getAddress(json: JSON) -> String {
@@ -108,7 +104,7 @@ class OriginalOrder {
     func getInt(_ value: String?) -> Int {
         var result: Int = 0
         if let value = value {
-            if let integer = Int(value.dropFirst(2), radix: 16) {
+            if value.isHex(), let integer = Int(value.dropFirst(2), radix: 16) {
                 result = integer
             }
         }

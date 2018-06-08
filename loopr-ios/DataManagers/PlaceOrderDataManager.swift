@@ -71,7 +71,7 @@ class PlaceOrderDataManager {
     
     func getOrder(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
         guard let hash = self.signHash else { return }
-        LoopringAPIRequest.updateSignMessage(hash: hash, status: .received) { _,_ in }
+        LoopringAPIRequest.updateSignMessage(hash: hash, status: .received) { _, _ in }
         LoopringAPIRequest.getSignMessage(message: hash) { (data, error) in
             guard let data = data, error == nil else { return }
             self.parse(from: data)

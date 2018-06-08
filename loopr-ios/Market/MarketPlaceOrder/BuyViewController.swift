@@ -390,25 +390,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     }
     
     func validateAmountRational() {
-//        let pair = PlaceOrderDataManager.shared.market.description
-//        if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
-//            let value = Double(priceTextField.text!)!
-//            // TODO: get from setting maybe
-//            if value < 0.8 * market.balance || value > 1.2 * market.balance {
-//                let title = NSLocalizedString("Your price is irrational. Do you wish to continue trading with the price?", comment: "")
-//                let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
-//                    DispatchQueue.main.async {
-//                        self.pushController()
-//                    }
-//                }))
-//                alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
-//                }))
-//                self.present(alert, animated: true, completion: nil)
-//            } else {
-//                self.pushController()
-//            }
-//        }
         if !isAmountValid() {
             let title = NSLocalizedString("Please Pay Attention", comment: "")
             let message = NSLocalizedString("Your order amount exceeded your asset balance, which cause your order could not be dealt completely. Do you wish to continue trading with the amount?", comment: "")
