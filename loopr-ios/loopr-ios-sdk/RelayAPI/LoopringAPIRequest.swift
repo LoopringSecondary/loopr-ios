@@ -477,6 +477,8 @@ class LoopringAPIRequest {
                 completionHandler(nil, error)
                 return
             }
+            print("notifyTransactionSubmitted")
+            print(body)
             completionHandler("success", nil)
         }
     }
