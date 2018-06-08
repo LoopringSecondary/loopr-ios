@@ -471,7 +471,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_notifyTransactionSubmitted"
         body["params"] = [["hash": txHash, "nonce": rawTx.nonce, "to": rawTx.to, "value": rawTx.value, "gasPrice": rawTx.gasPrice, "gas": rawTx.gasLimit, "input": rawTx.data, "from": from]]
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { _, _, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -489,9 +489,7 @@ class LoopringAPIRequest {
         let protocolValue = RelayAPIConfiguration.protocolAddress
         let delegateAddress = RelayAPIConfiguration.delegateAddress
         body["params"] = [["delegateAddress": delegateAddress, "protocol": protocolValue, "owner": owner, "walletAddress": walletAddress, "tokenS": tokenS, "tokenB": tokenB, "amountS": amountS, "amountB": amountB, "authPrivateKey": authPrivateKey, "authAddr": authAddr, "validSince": validSince, "validUntil": validUntil, "lrcFee": lrcFee, "buyNoMoreThanAmountB": buyNoMoreThanAmountB, "marginSplitPercentage": marginSplitPercentage, "powNonce": powNonce, "orderType": orderType, "v": v, "r": r, "s": s]]
-        
-        print(body)
-        
+
         self.invoke(method: "loopring_submitOrder", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
             guard error == nil && data != nil else {
                 completionHandler(nil, error!)

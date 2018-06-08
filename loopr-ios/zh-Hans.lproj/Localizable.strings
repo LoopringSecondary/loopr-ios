@@ -152,7 +152,7 @@
 "Your price is irrational, " = "您所设定的价格并不合理，";
 "which may cause your asset wastage! " = "这意味着您的资产或将亏损！";
 "which may cause your order abolished! " = "这意味着您的订单或将无法成交！";
-"Do you wish to continue trading with the price?" = "是否仍要以该价格下单或交易？";
+"Do you wish to continue trading or signing with the price?" = "是否仍要以该价格下单或授权？";
 "Your order amount exceeded your asset balance, which cause your order could not be dealt completely. Do you wish to continue trading with the amount?" = "您的下单金额超过您该资产的全部预算，这将导致您的订单无法完全成交。是否仍要以该数额下单或交易？";
 "Please input a valid price" = "请输入有效的价格";
 "Please input a valid amount" = "请输入有效的数额";

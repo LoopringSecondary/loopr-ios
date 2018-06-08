@@ -55,7 +55,7 @@ class OriginalOrder {
     }
 
     init(json: JSON) {
-        self.delegate = json["protocol"].stringValue
+        self.delegate = json["delegateAddress"].stringValue
         self.market = json["market"].stringValue
         self.address = getAddress(json: json)
         self.tokenBuy = getToken(json["tokenB"].stringValue)

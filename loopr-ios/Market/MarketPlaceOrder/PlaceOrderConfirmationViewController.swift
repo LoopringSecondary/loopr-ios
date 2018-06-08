@@ -120,7 +120,8 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         scrollView.addSubview(priceTipLabel)
         
         priceValueLabel.font = FontConfigManager.shared.getLabelFont()
-        let tradingPair = self.type == .buy ? "\(order.tokenBuy)/\(order.tokenSell)" : "\(order.tokenSell)/\(order.tokenBuy)"
+        let tradingPair = order.market.replacingOccurrences(of: "-", with: "/")
+        
         priceValueLabel.text = "\(price) \(tradingPair)"
         priceValueLabel.textAlignment = .right
         if !validateRational() {
@@ -193,16 +194,26 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         scrollView.delegate = self
         scrollView.contentSize = CGSize(width: screenWidth, height: totalTipLabel.frame.maxY + padding)
     }
+    
+    func isBuyingOrder() -> Bool {
+        var result: Bool = false
+        if self.order?.side == "buy" {
+            result = true
+        } else if self.order?.side == "" {
+            result = self.type == .buy
+        }
+        return result
+    }
 
     func validateRational() -> Bool {
         let pair = TradeDataManager.shared.tradePair
         if let price = Double(self.price),
             let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
             let header = NSLocalizedString("Your price is irrational, ", comment: "")
-            let footer = NSLocalizedString("Do you wish to continue trading with the price?", comment: "")
+            let footer = NSLocalizedString("Do you wish to continue trading or signing with the price?", comment: "")
             let messageA = NSLocalizedString("which may cause your asset wastage! ", comment: "")
             let messageB = NSLocalizedString("which may cause your order abolished! ", comment: "")
-            if type == .buy {
+            if isBuyingOrder() {
                 if price < 0.8 * market.balance {
                     self.message = header + messageB + footer
                     return false
@@ -247,15 +258,33 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         }
     }
     
-    func handleSigning() {
+    func doSigning() {
         let manager = PlaceOrderDataManager.shared
         guard let hash = manager.signHash, let order = manager.signOrder else { return }
         manager._authorize { (_, error) in
             guard error == nil else { return }
-            manager._submitOrder(order, completion: { (_, error) in
-                guard error == nil else { return }
-                LoopringAPIRequest.updateSignMessage(hash: hash, status: .accept, completionHandler: self.completion)
+            manager._submitOrder(order, completion: { (orderHash, error) in
+                guard let orderHash = orderHash, error == nil else { return }
+                LoopringAPIRequest.updateSignMessage(hash: hash, status: .accept, completionHandler: { (_, error) in
+                    self.completion(orderHash, error)
+                })
             })
+        }
+    }
+    
+    func handleSigning() {
+        if !priceTipLabel.isHidden {
+            let alert = UIAlertController(title: NSLocalizedString("Please Pay Attention", comment: ""), message: self.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+                DispatchQueue.main.async {
+                    self.doSigning()
+                }
+            }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.doSigning()
         }
     }
 
@@ -270,10 +299,9 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     @IBAction func pressedDeclineButton(_ sender: UIButton) {
         guard isSigning, let hash = PlaceOrderDataManager.shared.signHash else { return }
         LoopringAPIRequest.updateSignMessage(hash: hash, status: .reject) { (_, _) in
-            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popToRootViewController(animated: true)
         }
     }
-    
 }
 
 extension PlaceOrderConfirmationViewController {

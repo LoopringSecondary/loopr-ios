@@ -159,7 +159,7 @@ class TradeConfirmationViewController: UIViewController {
         let pair = TradeDataManager.shared.tradePair
         if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
             let header = NSLocalizedString("Your price is irrational, ", comment: "")
-            let footer = NSLocalizedString("Do you wish to continue trading with the price?", comment: "")
+            let footer = NSLocalizedString("Do you wish to continue trading or signing with the price?", comment: "")
             if price < 0.8 * market.balance {
                 self.message = header + NSLocalizedString("which may cause your asset wastage! ", comment: "") + footer
                 return false

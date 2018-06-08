@@ -258,6 +258,10 @@ class PlaceOrderDataManager {
     }
     
     func _authorize(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        if self.signTransactions.count == 0 {
+            completion(nil, nil)
+            return
+        }
         for (_, rawTxs) in self.signTransactions {
             if rawTxs.count == 1 {
                 SendCurrentAppWalletDataManager.shared.transferOnce(rawTx: rawTxs[0], completion: completion)
