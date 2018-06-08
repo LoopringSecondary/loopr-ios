@@ -8,6 +8,7 @@
 
 import UIKit
 import NotificationBannerSwift
+import SVProgressHUD
 
 class PrivateKeyViewController: UIViewController, UITextViewDelegate {
 
@@ -108,13 +109,54 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
                 self.present(alert, animated: true, completion: nil)
                 return
             }
+            
+            // Generate a keystore
+            generateTempKeystore()
 
-            let viewController = ImportWalletEnterWalletNameViewController(setupWalletMethod: .importUsingPrivateKey)
-            self.navigationController?.pushViewController(viewController, animated: true)
         } catch {
             let banner = NotificationBanner.generate(title: NSLocalizedString("Invalid private key. Please enter again.", comment: ""), style: .danger)
             banner.duration = 1.5
             banner.show()
+        }
+    }
+    
+    func generateTempKeystore() {
+        var isSucceeded: Bool = false
+        SVProgressHUD.show(withStatus: NSLocalizedString("Exporting keystore", comment: "") + "...")
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        DispatchQueue.global().async {
+            do {
+                guard let data = Data(hexString: ImportWalletUsingPrivateKeyDataManager.shared.privateKey) else {
+                    print("Invalid private key")
+                    return // .failure(KeystoreError.failedToImportPrivateKey)
+                }
+                
+                print("Generating keystore")
+                let key = try KeystoreKey(password: "123456", key: data)
+                print("Finished generating keystore")
+                let keystoreData = try JSONEncoder().encode(key)
+                let json = try JSON(data: keystoreData)
+                ImportWalletUsingPrivateKeyDataManager.shared.keystore = json.description
+                
+                isSucceeded = true
+                dispatchGroup.leave()
+            } catch {
+                isSucceeded = false
+                dispatchGroup.leave()
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            SVProgressHUD.dismiss()
+            if isSucceeded {
+                let viewController = ImportWalletEnterWalletNameViewController(setupWalletMethod: .importUsingPrivateKey)
+                self.navigationController?.pushViewController(viewController, animated: true)
+            } else {
+                let banner = NotificationBanner.generate(title: "Wrong password", style: .danger)
+                banner.duration = 1.5
+                banner.show()
+            }
         }
     }
 

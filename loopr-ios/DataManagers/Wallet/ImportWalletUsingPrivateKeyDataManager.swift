@@ -20,17 +20,20 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
 
     var address: String
     var privateKey: String
-
+    var keystore: String
+    
     private init() {
         walletName = ""
         address = ""
         privateKey = ""
+        keystore = ""
     }
 
     func reset() {
         walletName = ""
         address = ""
         privateKey = ""
+        keystore = ""
     }
 
     func importWallet(privateKey privateKeyString: String) throws {
@@ -58,6 +61,7 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
         }
 
         let newAppWallet = AppWallet(setupWalletMethod: .importUsingPrivateKey, address: address, privateKey: privateKey, password: password, name: walletName, isVerified: true, active: true)
+        newAppWallet.setKeystore(keystoreString: keystore)
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
         
