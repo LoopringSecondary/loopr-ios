@@ -51,16 +51,30 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         self.navigationController?.popViewController(animated: true)
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return getNumberOfRowsInSection()
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return getNumberOfRowsInWalletSection()
+        case 1:
+            return 1
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return SettingWalletDetailTableViewCell.getHeight()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // TODO: Update the UITableViewCell.
         return getTableViewCell(cellForRowAt: indexPath)
     }
     
@@ -76,9 +90,8 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
             viewController.appWallet = appWallet
             self.navigationController?.pushViewController(viewController, animated: true)
         case .backupMnemonic:
-            let viewController = BackupMnemonicViewController()
-            viewController.isExportMode = true
-            viewController.mnemonics = appWallet.mnemonics
+            let viewController = ExportMnemonicViewController()
+            viewController.appWallet = appWallet
             self.navigationController?.pushViewController(viewController, animated: true)
         case .exportPrivateKey:
             let viewController = DisplayPrivateKeyViewController()
@@ -134,7 +147,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         }
     }
     
-    func messageComposeViewController(_ controller: MFMessageComposeViewController!, didFinishWith result: MessageComposeResult) {
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         //... handle sms screen actions
         self.dismiss(animated: true, completion: nil)
     }

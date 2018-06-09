@@ -81,6 +81,7 @@ class GenerateWalletDataManager {
 
     // TODO: use error handling
     func complete() throws -> AppWallet {
+        print("Verify mnemonics: \(isVerified)")
         let appWallet = try AppWalletDataManager.shared.addWallet(setupWalletMethod: .create, walletName: walletName, mnemonics: mnemonics, password: password, derivationPath: "m/44'/60'/0'/0/x", key: 0, isVerified: isVerified)
 
         // Reset
@@ -88,7 +89,8 @@ class GenerateWalletDataManager {
         password = ""
         mnemonics = []
         userInputMnemonics = []
-        
+        isVerified = false
+
         // Inform relay
         LoopringAPIRequest.unlockWallet(owner: appWallet.address) { (_, _) in }
         

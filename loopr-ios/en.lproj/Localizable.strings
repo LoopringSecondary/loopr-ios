@@ -290,3 +290,7 @@
 "on this device." = "on this device.";
 "Approving authorization" = "Approving authorization";
 "Signer address do NOT match the order's, please transfer and try agign later" = "Signer address do NOT match the order's, please transfer and try agign later";
+"Create_used_in_creating_wallet" = "Create";
+"successfully_used_in_creating_wallet" = "successfully";
+"Loopr doesn't keep a copy of your mnemonic words. Make sure you back up these information immediately." = "Loopr doesn't keep a copy of your mnemonic words. Make sure you back up these information immediately.";
+

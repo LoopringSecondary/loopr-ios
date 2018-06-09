@@ -172,8 +172,8 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
     func exit() {
         let appWallet = try! GenerateWalletDataManager.shared.complete()
 
-        let header = NSLocalizedString("Create", comment: "")
-        let footer = NSLocalizedString("successfully", comment: "")
+        let header = NSLocalizedString("Create_used_in_creating_wallet", comment: "used in creating wallet")
+        let footer = NSLocalizedString("successfully_used_in_creating_wallet", comment: "used in creating wallet")
         let attributedString = NSAttributedString(string: header + " " + "\(appWallet.name)" + " " + footer, attributes: [
             NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getMedium(), size: 17) ?? UIFont.systemFont(ofSize: 17),
             NSAttributedStringKey.foregroundColor: UIColor.init(rgba: "#030303")

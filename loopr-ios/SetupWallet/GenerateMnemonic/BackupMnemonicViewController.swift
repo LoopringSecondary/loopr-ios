@@ -10,7 +10,6 @@ import UIKit
 
 class BackupMnemonicViewController: UIViewController {
 
-    var isExportMode: Bool = false
     var mnemonics: [String] = []
 
     var titleLabel: UILabel =  UILabel()
@@ -86,13 +85,8 @@ class BackupMnemonicViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if isExportMode {
-            verifyNowButton.isHidden = true
-            infoTextView.text = "Loopring wallet never keeps your mnemonic words. It's strongly recommended that you backup these information offline (with USB or physical paper)."
-        } else {
-            infoTextView.text = NSLocalizedString("Please make sure you have recorded all words safely. Otherwise, you will not be able to go through the verification process, and have to start over.", comment: "")
-        }
-        
+        infoTextView.text = NSLocalizedString("Please make sure you have recorded all words safely. Otherwise, you will not be able to go through the verification process, and have to start over.", comment: "")
+
         // CollectionView won't be layout correctly in viewDidLoad()
         // https://stackoverflow.com/questions/12927027/uicollectionview-flowlayout-not-wrapping-cells-correctly-ios
         // If you want to improve this part, please submit a PR to review
@@ -122,8 +116,8 @@ class BackupMnemonicViewController: UIViewController {
     }
 
     func exit() {
-        let header = NSLocalizedString("Create", comment: "")
-        let footer = NSLocalizedString("successfully", comment: "")
+        let header = NSLocalizedString("Create_used_in_creating_wallet", comment: "used in creating wallet")
+        let footer = NSLocalizedString("successfully_used_in_creating_wallet", comment: "used in creating wallet")
         let attributedString = NSAttributedString(string: header + " " + "\(GenerateWalletDataManager.shared.walletName)" + " " + footer, attributes: [
             NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getMedium(), size: 17) ?? UIFont.systemFont(ofSize: 17),
             NSAttributedStringKey.foregroundColor: UIColor.init(rgba: "#030303")
