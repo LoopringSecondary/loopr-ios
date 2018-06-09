@@ -258,7 +258,7 @@ class PlaceOrderDataManager {
     }
     
     func _authorize(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
-        if self.signTransactions.count == 0 {
+        guard self.signTransactions.count > 0 else {
             completion(nil, nil)
             return
         }

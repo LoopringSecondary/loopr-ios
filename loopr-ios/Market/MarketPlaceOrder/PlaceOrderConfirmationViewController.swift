@@ -92,7 +92,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         let padding: CGFloat = 15
-        let paddingTop: CGFloat = 50
+        let paddingTop: CGFloat = 100
         
         // labels
         tokenSView = TradeTokenView(frame: CGRect(x: 10, y: paddingTop, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
@@ -108,7 +108,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         // 1st row: price
         priceLabel.font = FontConfigManager.shared.getLabelFont()
         priceLabel.text = NSLocalizedString("Price", comment: "")
-        priceLabel.frame = CGRect(x: padding, y: tokenSView.frame.maxY + padding*3, width: 150, height: 40)
+        priceLabel.frame = CGRect(x: padding, y: tokenSView.frame.maxY + padding*4, width: 150, height: 40)
         scrollView.addSubview(priceLabel)
         
         priceTipLabel.text = "(" + NSLocalizedString("Irrational", comment: "") + ")"
@@ -262,9 +262,13 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         let manager = PlaceOrderDataManager.shared
         guard let hash = manager.signHash, let order = manager.signOrder else { return }
         manager._authorize { (_, error) in
-            guard error == nil else { return }
+            guard error == nil else { self.complete(nil, error!); return }
             manager._submitOrder(order, completion: { (orderHash, error) in
-                guard let orderHash = orderHash, error == nil else { return }
+                guard let orderHash = orderHash, error == nil else {
+                    self.complete(nil, error!)
+                    return
+                }
+                UserDefaults.standard.set(false, forKey: UserDefaultsKeys.cancelledAll.rawValue)
                 LoopringAPIRequest.updateSignMessage(hash: hash, status: .accept, completionHandler: { (_, error) in
                     self.completion(orderHash, error)
                 })
@@ -299,7 +303,9 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     @IBAction func pressedDeclineButton(_ sender: UIButton) {
         guard isSigning, let hash = PlaceOrderDataManager.shared.signHash else { return }
         LoopringAPIRequest.updateSignMessage(hash: hash, status: .reject) { (_, _) in
-            self.navigationController?.popToRootViewController(animated: true)
+            DispatchQueue.main.async {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
         }
     }
 }

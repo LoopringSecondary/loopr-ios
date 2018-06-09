@@ -54,7 +54,6 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
-                        <action selector="pressedConfirmationButton:" destination="-1" eventType="touchUpInside" id="QuR-sL-OD3"/>
                         <action selector="pressedDeclineButton:" destination="-1" eventType="touchUpInside" id="itH-oe-n8T"/>
                     </connections>
                 </button>
