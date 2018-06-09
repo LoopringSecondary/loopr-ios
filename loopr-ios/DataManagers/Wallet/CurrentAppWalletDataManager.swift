@@ -120,15 +120,15 @@ class CurrentAppWalletDataManager {
     func getAssetsWithHideSmallAssetsOption() -> [Asset] {
         if SettingDataManager.shared.getHideSmallAssets() {
             return self.assets.filter({ (asset) -> Bool in
-                return TokenDataManager.shared.getTokenList().contains(asset.symbol) && asset.balance > 0.01
+                return TokenDataManager.shared.getTokenList().contains(asset.symbol) && asset.total > 0.01
             }).sorted(by: { (a, b) -> Bool in
-                a.currency > b.currency
+                a.total > b.total
             })
         } else {
             return self.assets.filter({ (asset) -> Bool in
                 return TokenDataManager.shared.getTokenList().contains(asset.symbol) || asset.balance > 0
             }).sorted(by: { (a, b) -> Bool in
-                a.currency > b.currency
+                a.total > b.total
             })
         }
     }
@@ -153,6 +153,7 @@ class CurrentAppWalletDataManager {
             // If the price quote is nil, asset won't be updated. Please use getBalanceAndPriceQuote()
             if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
                 let total = asset.balance * price
+                asset.total = total
                 asset.currency = total.currency
                 totalCurrencyValue += total
                 
@@ -167,7 +168,8 @@ class CurrentAppWalletDataManager {
                 }
 
                 // Small assets
-                if asset.balance > 0.01 {
+                print(total)
+                if asset.total > 0.01 {
                     if let index = assetsInHideSmallMode.index(of: asset) {
                         assetsInHideSmallMode[index] = asset
                     } else {
@@ -193,12 +195,12 @@ class CurrentAppWalletDataManager {
         
         // Remove small assets
         assetsInHideSmallMode = assetsInHideSmallMode.filter { (asset) -> Bool in
-            return asset.balance > 0.01
+            return asset.total > 0.01
         }
 
         if currentAppWallet != nil {
             currentAppWallet!.assetSequenceInHideSmallAssets = assetsInHideSmallMode.filter { (asset) -> Bool in
-                return asset.balance > 0.01
+                return asset.total > 0.01
             }.map({ (asset) -> String in
                 return asset.symbol
             })

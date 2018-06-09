@@ -19,6 +19,7 @@ class Asset: CustomStringConvertible, Equatable {
     var balance: Double
     var display: String
     var allowance: Double
+    var total: Double  // total and currency are for the same value.
     var currency: String
     var description: String
     
@@ -27,6 +28,7 @@ class Asset: CustomStringConvertible, Equatable {
         self.balance = 0.0
         self.allowance = 0.0
         self.display = "0.0"
+        self.total = 0.0
         self.currency = Double(0).currency
         self.symbol = json["symbol"].string ?? ""
         self.icon = UIImage(named: self.symbol) ?? nil
@@ -51,6 +53,7 @@ class Asset: CustomStringConvertible, Equatable {
         self.balance = 0.0
         self.allowance = 0.0
         self.display = "0.0"
+        self.total = 0.0
         self.currency = Double(0).currency
     }
     
