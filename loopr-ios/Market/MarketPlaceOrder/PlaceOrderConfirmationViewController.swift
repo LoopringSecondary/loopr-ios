@@ -260,10 +260,20 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     
     func doSigning() {
         let manager = PlaceOrderDataManager.shared
-        guard let hash = manager.signHash, let order = manager.signOrder else { return }
+        guard let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address, let hash = manager.signHash, let order = manager.signOrder else { return }
+        guard address.lowercased() == order.address.lowercased() else {
+            let errorMessage = NSLocalizedString("Signer address do NOT match the order's, please transfer and try agign later", comment: "")
+            let error = NSError(domain: "approving", code: 0, userInfo: ["message": errorMessage])
+            self.completion(nil, error)
+            return
+        }
         SVProgressHUD.show(withStatus: NSLocalizedString("Approving authorization", comment: "") + "...")
         manager._authorize { (_, error) in
-            guard error == nil else { self.complete(nil, error!); return }
+            guard error == nil else {
+                LoopringAPIRequest.updateSignMessage(hash: hash, status: .txFalied, completionHandler: { (_, _) in })
+                self.complete(nil, error!)
+                return
+            }
             manager._submitOrder(order, completion: { (orderHash, error) in
                 guard let orderHash = orderHash, error == nil else {
                     self.complete(nil, error!)
@@ -423,7 +433,7 @@ extension PlaceOrderConfirmationViewController {
         SVProgressHUD.dismiss()
         guard error == nil && orderHash != nil else {
             DispatchQueue.main.async {
-                print("BuyViewController \(error.debugDescription)")
+                print("PlaceOrderConfirmationViewController \(error.debugDescription)")
                 let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
                 banner.duration = 10
                 banner.show()

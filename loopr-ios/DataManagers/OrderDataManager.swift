@@ -91,15 +91,18 @@ class OrderDataManager {
     func shouldCancelAll() -> Bool {
         let defaults = UserDefaults.standard
         var result = defaults.bool(forKey: UserDefaultsKeys.cancelledAll.rawValue)
-        guard !result else {
-            return false
-        }
+        guard !result else { return false }
         let hide = SettingDataManager.shared.getHideOtherPairs()
-        if let market = PlaceOrderDataManager.shared.market, let cancellingOrders = defaults.stringArray(forKey: UserDefaultsKeys.cancellingOrders.rawValue) {
-            self.getOrders(hideOtherPairs: hide, currentMarket: market, orderStatuses: [.opened]).forEach { (order) in
-                if !cancellingOrders.contains(order.originalOrder.hash) {
-                    result = true
+        if let market = PlaceOrderDataManager.shared.market {
+            let openOrders = self.getOrders(hideOtherPairs: hide, currentMarket: market, orderStatuses: [.opened])
+            if let cancellingOrders = defaults.stringArray(forKey: UserDefaultsKeys.cancellingOrders.rawValue) {
+                openOrders.forEach { (order) in
+                    if !cancellingOrders.contains(order.originalOrder.hash) {
+                        result = true
+                    }
                 }
+            } else {
+                result = openOrders.count > 0
             }
         }
         return result

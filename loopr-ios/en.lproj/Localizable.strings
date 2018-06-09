@@ -289,3 +289,4 @@
 "You are going to clear records of" = "You are going to clear records of";
 "on this device." = "on this device.";
 "Approving authorization" = "Approving authorization";
+"Signer address do NOT match the order's, please transfer and try agign later" = "Signer address do NOT match the order's, please transfer and try agign later";

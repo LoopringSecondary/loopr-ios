@@ -13,6 +13,7 @@ enum SignStatus: CustomStringConvertible {
     case accept
     case reject
     case received
+    case txFalied
     
     var description: String {
         switch self {
@@ -22,6 +23,8 @@ enum SignStatus: CustomStringConvertible {
             return "reject"
         case .received:
             return "received"
+        case .txFalied:
+            return "txFalied"
         }
     }
 }
