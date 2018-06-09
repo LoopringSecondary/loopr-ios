@@ -18,6 +18,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
 
     var updateBalanceLabelTimer: Timer?
 
+    @IBOutlet weak var hideAssetsView: UIView!
     @IBOutlet weak var balanceLabel: TickerLabel!
     @IBOutlet weak var hideAssetSwitch: UISwitch!
     @IBOutlet weak var hideAssetsLabel: UILabel!
@@ -25,6 +26,9 @@ class WalletBalanceTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        // Hide the hideAssetsView
+        hideAssetsView.isHidden = true
 
         balanceLabel.setFont(FontConfigManager.shared.getRegularFont(size: 27))
         balanceLabel.animationDuration = 0.3
@@ -98,6 +102,6 @@ class WalletBalanceTableViewCell: UITableViewCell {
     class func getHeight() -> CGFloat {
         // TODO: 
         // return 150*UIStyleConfig.scale
-        return 150
+        return 150 - 42
     }
 }
