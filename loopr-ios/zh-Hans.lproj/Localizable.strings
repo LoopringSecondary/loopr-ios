@@ -277,6 +277,7 @@
 "Accept" = "允许授权";
 "Decline" = "拒绝授权";
 "Address detected" = "扫描到钱包地址二维码";
+
 "Mnemonic detected" = "扫描到钱包助记词二维码";
 "Keystore detected" = "扫描到钱包密文二维码";
 "Private key detected" = "扫描到钱包私钥的二维码";
@@ -286,3 +287,4 @@
 "Failed to import address. The device has imported the address already." = "导入失败，地址之前已经被导入。";
 "You are going to clear records of" = "您将要清除该手机上";
 "on this device." = "的数据。";
+"Approving authorization" = "正在申请授权";

@@ -261,6 +261,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     func doSigning() {
         let manager = PlaceOrderDataManager.shared
         guard let hash = manager.signHash, let order = manager.signOrder else { return }
+        SVProgressHUD.show(withStatus: NSLocalizedString("Approving authorization", comment: "") + "...")
         manager._authorize { (_, error) in
             guard error == nil else { self.complete(nil, error!); return }
             manager._submitOrder(order, completion: { (orderHash, error) in
