@@ -23,7 +23,8 @@ open class Sign {
             _ = try? keystore.unlock(account, passphrase: passphrase)
             let accountAddress = account.getAddress()
             print("############### use address \(accountAddress?.getHex()) to sign")
-            let hashedSignedMessage = try keystore.signHash(accountAddress, hash: hashedMessage)
+            let hashedSignedMessage = try keystore.signHash(accountAddress, hash: secret)
+            // let hashedSignedMessage = try keystore.signHash(accountAddress, hash: hashedMessage)
             let r = hashedSignedMessage.subdata(in: Range(0..<32))
             let s = hashedSignedMessage.subdata(in: Range(32..<64))
             let v = hashedSignedMessage.subdata(in: Range(64..<65)) // TODO:- Use length
