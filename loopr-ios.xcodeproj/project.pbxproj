@@ -480,6 +480,8 @@
 		ACC2A2CF209EC39E00F2B7A1 /* OrderExpire.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC2A2CE209EC39E00F2B7A1 /* OrderExpire.swift */; };
 		ACC8D0A220CC6F080049A741 /* ExportMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8D0A020CC6F080049A741 /* ExportMnemonicViewController.swift */; };
 		ACC8D0A320CC6F080049A741 /* ExportMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC8D0A120CC6F080049A741 /* ExportMnemonicViewController.xib */; };
+		ACC8D0A620CC95A00049A741 /* UpdatedAssetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8D0A420CC95A00049A741 /* UpdatedAssetTableViewCell.swift */; };
+		ACC8D0A720CC95A00049A741 /* UpdatedAssetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC8D0A520CC95A00049A741 /* UpdatedAssetTableViewCell.xib */; };
 		ACCC7EA32082BE0B008E58BA /* ImportMnemonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCC7EA22082BE0B008E58BA /* ImportMnemonicTests.swift */; };
 		ACCCFDCE203BEF2200B98F99 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */; };
 		ACCCFDD0203BF1D100B98F99 /* FloatLabelTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCFDCF203BF1D100B98F99 /* FloatLabelTextView.swift */; };
@@ -978,6 +980,8 @@
 		ACC2A2CE209EC39E00F2B7A1 /* OrderExpire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderExpire.swift; sourceTree = "<group>"; };
 		ACC8D0A020CC6F080049A741 /* ExportMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportMnemonicViewController.swift; sourceTree = "<group>"; };
 		ACC8D0A120CC6F080049A741 /* ExportMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportMnemonicViewController.xib; sourceTree = "<group>"; };
+		ACC8D0A420CC95A00049A741 /* UpdatedAssetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedAssetTableViewCell.swift; sourceTree = "<group>"; };
+		ACC8D0A520CC95A00049A741 /* UpdatedAssetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedAssetTableViewCell.xib; sourceTree = "<group>"; };
 		ACCC7EA22082BE0B008E58BA /* ImportMnemonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportMnemonicTests.swift; sourceTree = "<group>"; };
 		ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		ACCCFDCF203BF1D100B98F99 /* FloatLabelTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatLabelTextView.swift; sourceTree = "<group>"; };
@@ -1973,6 +1977,8 @@
 				AC5E0DDD203B447700AF03C7 /* WalletBalanceTableViewCell.xib */,
 				ACB9115820242B9D00F14644 /* AssetTableViewCell.swift */,
 				ACB9115920242B9D00F14644 /* AssetTableViewCell.xib */,
+				ACC8D0A420CC95A00049A741 /* UpdatedAssetTableViewCell.swift */,
+				ACC8D0A520CC95A00049A741 /* UpdatedAssetTableViewCell.xib */,
 				AC10609F20734E0600677D63 /* AddMenu */,
 				AC9ADF8E205EE2E800CBE368 /* ConvertETH */,
 				AC5E0DE0203B44EA00AF03C7 /* AddToken */,
@@ -2443,6 +2449,7 @@
 				ACB5DD80202AC26000140A09 /* button1.json in Resources */,
 				AC54FD58204FC6C1007E1DEB /* Lato-BlackItalic.ttf in Resources */,
 				AC952A152053A84800C78562 /* OrderHistoryViewController.xib in Resources */,
+				ACC8D0A720CC95A00049A741 /* UpdatedAssetTableViewCell.xib in Resources */,
 				AC31CE71205B995900A30335 /* Roboto-MediumItalic.ttf in Resources */,
 				ACB41A7020B54BB300A92C9D /* AuthenticationViewController.xib in Resources */,
 				AC54FD8B204FC6FC007E1DEB /* OpenSans-SemiBold.ttf in Resources */,
@@ -2970,6 +2977,7 @@
 				943BDED32056350000D5BF81 /* PriceQuote.swift in Sources */,
 				ACDBF10A203FEA07000F0DEC /* ReorderAutoScroll.swift in Sources */,
 				ACDBF108203FE9D2000F0DEC /* ReorderDestinationRow.swift in Sources */,
+				ACC8D0A620CC95A00049A741 /* UpdatedAssetTableViewCell.swift in Sources */,
 				ACFEFE9520C337BE00013921 /* PendingTransactionsDataManager.swift in Sources */,
 				AC4141F720352D6B0089861D /* SwipeView.swift in Sources */,
 				94B5CA8A204FB4E20081BA93 /* DefaultBlock.swift in Sources */,

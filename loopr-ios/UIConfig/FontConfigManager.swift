@@ -97,7 +97,7 @@ class FontConfigManager {
     }
     
     func getSubtitleFont() -> UIFont {
-        return getRegularFont(size: 14)
+        return getRegularFont(size: 13)
     }
     
     func getMedium() -> String {

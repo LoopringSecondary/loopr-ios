@@ -18,6 +18,7 @@ enum UIStyleConfig {
     static let tabBarTintColor = UIColor(white: 0, alpha: 1)
     static let tableCellSelectedBackgroundColor = UIColor(white: 0.1, alpha: 0.3)
     static let underlineColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+    static let tableViewBackgroundColor = UIColor.init(red: 250.0/255.0, green: 250.0/255.0, blue: 250.0/255.0, alpha: 1.0)
 
     static let scale = UIScreen.main.scale / UIScreen.main.nativeScale
     

@@ -19,8 +19,9 @@ class IconView: UIView {
     var circleViewColor: UIColor = UIColor.black
     
     var textColor: UIColor = UIColor.white
-
+    
     override func draw(_ rect: CGRect) {
+        backgroundColor = UIColor.white
         let circleRadius = min(rect.width, rect.height) * 0.5
 
         // Drawing code
@@ -38,6 +39,12 @@ class IconView: UIView {
         symbolLabel.textColor = textColor
         let fontSize = (circleRadius*0.625).rounded()
         symbolLabel.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: fontSize)
+        symbolLabel.text = symbol
+        addSubview(symbolLabel)
+    }
+    
+    public func setSymbol(_ symbol: String) {
+        print(symbol)
         symbolLabel.text = symbol
         addSubview(symbolLabel)
     }

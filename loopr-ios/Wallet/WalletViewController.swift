@@ -30,7 +30,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.dataSource = self
         assetTableView.delegate = self
         assetTableView.reorder.delegate = self
-        assetTableView.tableFooterView = UIView()
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
+        footerView.backgroundColor = UIStyleConfig.tableViewBackgroundColor
+        assetTableView.tableFooterView = footerView
         assetTableView.separatorStyle = .none
         
         // Avoid dragging a cell to the top makes the tableview shake
@@ -39,7 +41,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.estimatedSectionFooterHeight = 0
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
-        assetTableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        assetTableView.backgroundColor = UIStyleConfig.tableViewBackgroundColor
 
         let qrCodebutton = UIButton(type: UIButtonType.custom)
         
@@ -62,6 +64,17 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        
+        // Creating view for extending background color
+        var frame = assetTableView.bounds
+        frame.origin.y = -frame.size.height
+        let backgroundView = UIView(frame: frame)
+        backgroundView.autoresizingMask = .flexibleWidth
+        backgroundView.backgroundColor = UIColor.white
+        
+        // Adding the view below the refresh control
+        assetTableView.insertSubview(backgroundView, at: 0)
+        
         buttonInNavigationBar.frame = CGRect(x: 0, y: 0, width: 400, height: 40)
         buttonInNavigationBar.titleLabel?.font = FontConfigManager.shared.getLabelFont()  // UIFont(name: FontConfigManager.shared.getLight(), size: 16.0)
         buttonInNavigationBar.theme_setTitleColor(["#000", "#fff"], forState: .normal)
@@ -258,7 +271,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if indexPath.section == 0 {
             return WalletBalanceTableViewCell.getHeight()
         } else {
-            return AssetTableViewCell.getHeight()
+            return UpdatedAssetTableViewCell.getHeight()
         }
     }
     
@@ -280,10 +293,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if let spacer = assetTableView.reorder.spacerCell(for: indexPath) {
                 return spacer
             }
-            var cell = tableView.dequeueReusableCell(withIdentifier: AssetTableViewCell.getCellIdentifier()) as? AssetTableViewCell
+            var cell = tableView.dequeueReusableCell(withIdentifier: UpdatedAssetTableViewCell.getCellIdentifier()) as? UpdatedAssetTableViewCell
             if cell == nil {
-                let nib = Bundle.main.loadNibNamed("AssetTableViewCell", owner: self, options: nil)
-                cell = nib![0] as? AssetTableViewCell
+                let nib = Bundle.main.loadNibNamed("UpdatedAssetTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? UpdatedAssetTableViewCell
             }
             cell?.asset = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption()[indexPath.row]
             cell?.update()
@@ -298,6 +311,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if indexPath.section == 0 {
             
         } else {
+            
             tableView.deselectRow(at: indexPath, animated: true)
             let asset = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption()[indexPath.row]
             let viewController = AssetSwipeViewController()
