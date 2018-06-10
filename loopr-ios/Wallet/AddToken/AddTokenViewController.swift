@@ -92,7 +92,7 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         if isSearching {
             return filtedTokens.count
         } else {
-            return TokenDataManager.shared.getTokens().count
+            return TokenDataManager.shared.getTokensToAdd().count
         }
     }
 
@@ -112,7 +112,7 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         if isSearching {
             token = filtedTokens[indexPath.row]
         } else {
-            token = TokenDataManager.shared.getTokens()[indexPath.row]
+            token = TokenDataManager.shared.getTokensToAdd()[indexPath.row]
         }
         cell?.token = token
         cell?.update()
@@ -154,7 +154,7 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func filterContentForSearchText(_ searchText: String) {
-        let newFiltedTokens = TokenDataManager.shared.getTokens().filter({(token: Token) -> Bool in
+        let newFiltedTokens = TokenDataManager.shared.getTokensToAdd().filter({(token: Token) -> Bool in
             return token.symbol.lowercased().contains(searchText.lowercased())
         })
         // If filteredMarkets is the same for different searchText, no update tableView.

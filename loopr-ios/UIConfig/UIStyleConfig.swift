@@ -22,10 +22,10 @@ enum UIStyleConfig {
 
     static let scale = UIScreen.main.scale / UIScreen.main.nativeScale
     
-    static let green = UIColor.init(rgba: "#24DF93")
-    static let red = UIColor.init(rgba: "#F52929")
-    
-    static func getChangeColor(change: String) -> UIColor {
+    static let green = UIColor.init(rgba: "#65C87A")
+    static let red = UIColor.init(rgba: "#FE4F57")
+        
+    static func getChangeColor(change: String, down: Bool? = nil) -> UIColor {
         let firstChar = change.first?.description ?? ""
         if change == "0.00%" || firstChar == "" {
             return UIColor.black
@@ -33,13 +33,13 @@ enum UIStyleConfig {
 
         let language = Bundle.main.preferredLocalizations.first
         if language == "zh-Hans" {
-            if firstChar == "↓" {
+            if firstChar == "↓" || firstChar == "+" || down == true {
                 return UIStyleConfig.green
             } else {
                 return UIStyleConfig.red
             }
         } else {
-            if firstChar == "↓" {
+            if firstChar == "↓" || firstChar == "-" || down == false {
                 return UIStyleConfig.red
             } else {
                 return UIStyleConfig.green

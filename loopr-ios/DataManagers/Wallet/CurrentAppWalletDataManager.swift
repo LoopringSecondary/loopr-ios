@@ -116,6 +116,12 @@ class CurrentAppWalletDataManager {
         }
     }
     
+    func getAssets(isNotZero: Bool) -> [Asset] {
+        return assets.filter({ (asset) -> Bool in
+            asset.total > 0.001
+        })
+    }
+    
     // Used in WalletViewController with hide small assets option
     func getAssetsWithHideSmallAssetsOption() -> [Asset] {
         if SettingDataManager.shared.getHideSmallAssets() {

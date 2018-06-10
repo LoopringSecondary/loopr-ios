@@ -88,6 +88,10 @@ class FontConfigManager {
         return UIFont(name: "\(currentFont.rawValue)-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
     }
     
+    func getNavigationTitleFont() -> UIFont {
+        return getRegularFont(size: 17)
+    }
+    
     func getHeaderFont() -> UIFont {
         return getRegularFont(size: 21)
     }

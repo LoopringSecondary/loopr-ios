@@ -82,6 +82,10 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
                 updateApprove()
             case .cutoff, .canceledOrder:
                 udpateCutoffAndCanceledOrder()
+            case .received:
+                updateReceived()
+            case .sent:
+                updateSent()
             default:
                 updateDefault()
             }
@@ -97,6 +101,7 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
             titleLabel.text = NSLocalizedString("Convert to ETH", comment: "")
         }
         amountLabel.text = "\(transaction!.value) \(transaction?.symbol ?? " ")"
+        amountLabel.textColor = UIColor.black
         displayLabel.text = transaction!.currency
     }
     
@@ -109,6 +114,7 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
             titleLabel.text = NSLocalizedString("Convert to ETH", comment: "")
         }
         amountLabel.text = "\(transaction!.value) \(transaction?.symbol ?? " ")"
+        amountLabel.textColor = UIColor.black
         displayLabel.text = transaction!.currency
     }
     
@@ -126,11 +132,30 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
         titleLabel.text = NSLocalizedString("Cancel Order(s)", comment: "")
     }
     
+    private func updateReceived() {
+        amountLabel.isHidden = false
+        displayLabel.isHidden = false
+        titleLabel.text = transaction!.type.description + " " + transaction!.symbol
+        amountLabel.text = "+\(transaction!.value) \(transaction?.symbol ?? " ")"
+        amountLabel.textColor = UIStyleConfig.getChangeColor(change: amountLabel.text!)
+        displayLabel.text = transaction!.currency
+    }
+    
+    private func updateSent() {
+        amountLabel.isHidden = false
+        displayLabel.isHidden = false
+        titleLabel.text = transaction!.type.description + " " + transaction!.symbol
+        amountLabel.text = "-\(transaction!.value) \(transaction?.symbol ?? " ")"
+        amountLabel.textColor = UIStyleConfig.getChangeColor(change: amountLabel.text!)
+        displayLabel.text = transaction!.currency
+    }
+    
     private func updateDefault() {
         amountLabel.isHidden = false
         displayLabel.isHidden = false
         titleLabel.text = transaction!.type.description + " " + transaction!.symbol
         amountLabel.text = "\(transaction!.value) \(transaction?.symbol ?? " ")"
+        amountLabel.textColor = UIColor.black
         displayLabel.text = transaction!.currency
     }
 

@@ -45,7 +45,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         // Send button
         sendButton.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
-        sendButton.setupRoundWhite()
+        sendButton.setupRoundBlack()
         
         buttonHeightLayoutConstraint.constant = 47*UIStyleConfig.scale
         
@@ -72,7 +72,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     func setup() {
         // TODO: putting getMarketsFromServer() here may cause a race condition.
         // It's not perfect, but works. Need improvement in the future.
-        self.transactions = CurrentAppWalletDataManager.shared.getTransactions()
+        // self.transactions = CurrentAppWalletDataManager.shared.getTransactions()
         getTransactionsFromRelay()
     }
     
@@ -93,6 +93,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
                     }
                     self.transactions = transactions
                     self.tableView.reloadData()
+                    // self.tableView.reloadSections(IndexSet(integersIn: 1...1), with: .fade)
                     self.refreshControl.endRefreshing()
                 }
             }
