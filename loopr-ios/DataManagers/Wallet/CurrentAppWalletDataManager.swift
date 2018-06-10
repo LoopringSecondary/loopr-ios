@@ -168,7 +168,6 @@ class CurrentAppWalletDataManager {
                 }
 
                 // Small assets
-                print(total)
                 if asset.total > 0.01 {
                     if let index = assetsInHideSmallMode.index(of: asset) {
                         assetsInHideSmallMode[index] = asset

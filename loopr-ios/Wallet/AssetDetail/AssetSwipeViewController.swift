@@ -21,9 +21,9 @@ class AssetSwipeViewController: SwipeViewController {
         // Do any additional setup after loading the view.
         setupNavigationBar()
         
-        options.swipeTabView.height = 44
+        options.swipeTabView.height = 50
         options.swipeTabView.underlineView.height = 1
-        options.swipeTabView.underlineView.margin = 85
+        options.swipeTabView.underlineView.margin = 0  // 85  // This value is to have a wide underline.
         options.swipeTabView.underlineView.animationDuration = 0.2
         options.swipeTabView.itemView.font = FontConfigManager.shared.getRegularFont()
         options.swipeContentScrollView.isScrollEnabled = false
@@ -55,7 +55,7 @@ class AssetSwipeViewController: SwipeViewController {
     }
     
     func setupNavigationBar() {
-        self.navigationItem.title = asset?.name.capitalized ?? ""
+        self.navigationItem.title = asset?.symbol
         // For back button in navigation bar
         setBackButton()
         if let asset = asset, asset.symbol.uppercased() == "ETH" || asset.symbol.uppercased() == "WETH" {

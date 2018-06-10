@@ -31,8 +31,13 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
 
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.tableFooterView = UIView()
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
+        footerView.backgroundColor = UIStyleConfig.tableViewBackgroundColor
+        tableView.tableFooterView = footerView
         tableView.separatorStyle = .none
+        
+        view.backgroundColor = UIStyleConfig.tableViewBackgroundColor
+        tableView.backgroundColor = UIStyleConfig.tableViewBackgroundColor
         
         // Receive button
         receiveButton.setTitle(NSLocalizedString("Receive", comment: ""), for: .normal)
@@ -52,6 +57,16 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         }
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        
+        // Creating view for extending background color
+        var frame = tableView.bounds
+        frame.origin.y = -frame.size.height
+        let backgroundView = UIView(frame: frame)
+        backgroundView.autoresizingMask = .flexibleWidth
+        backgroundView.backgroundColor = UIColor.white
+        
+        // Adding the view below the refresh control
+        tableView.insertSubview(backgroundView, at: 0)
     }
     
     func setup() {
@@ -132,7 +147,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         if indexPath.section == 0 {
             return AssetBalanceTableViewCell.getHeight()
         } else {
-            return AssetTransactionTableViewCell.getHeight()
+            return UpdatedAssetTransactionTableViewCell.getHeight()
         }
     }
     
@@ -156,10 +171,10 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
             cell?.update()
             return cell!
         } else {
-            var cell = tableView.dequeueReusableCell(withIdentifier: AssetTransactionTableViewCell.getCellIdentifier()) as? AssetTransactionTableViewCell
+            var cell = tableView.dequeueReusableCell(withIdentifier: UpdatedAssetTransactionTableViewCell.getCellIdentifier()) as? UpdatedAssetTransactionTableViewCell
             if cell == nil {
-                let nib = Bundle.main.loadNibNamed("AssetTransactionTableViewCell", owner: self, options: nil)
-                cell = nib![0] as? AssetTransactionTableViewCell
+                let nib = Bundle.main.loadNibNamed("UpdatedAssetTransactionTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? UpdatedAssetTransactionTableViewCell
             }
             cell?.transaction = self.transactions[indexPath.row]
             cell?.update()

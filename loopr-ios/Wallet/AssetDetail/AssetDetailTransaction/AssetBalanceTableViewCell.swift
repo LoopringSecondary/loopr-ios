@@ -10,29 +10,38 @@ import UIKit
 
 class AssetBalanceTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var balanceLabel: TickerLabel!
-    @IBOutlet weak var displayLabel: UILabel!
-    
-    @IBOutlet weak var seperateLine: UIView!
+    var balanceLabel: TickerLabel = TickerLabel()
+    var displayLabel: UILabel = UILabel()
     
     var asset: Asset?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        setupLabel()
-        seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
-        seperateLine.isHidden = true
+        selectionStyle = .none
+        setupLabels()
         self.theme_backgroundColor = ["#fff", "#000"]
     }
     
-    func setupLabel() {
+    func setupLabels() {
+        let padding: CGFloat = 10
+        let screensize: CGRect = UIScreen.main.bounds
+        let screenWidth = screensize.width
+        
+        balanceLabel = TickerLabel(frame: CGRect.init(x: padding, y: 26, width: screenWidth - padding*2, height: 23))
         balanceLabel.animationDuration = 0.25
         balanceLabel.textAlignment = NSTextAlignment.center
         balanceLabel.initializeLabel()
         balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
         balanceLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
-        balanceLabel.setFont(FontConfigManager.shared.getRegularFont(size: 27))
+        balanceLabel.setFont(FontConfigManager.shared.getRegularFont(size: 23))
+        addSubview(balanceLabel)
+        
+        displayLabel = UILabel(frame: CGRect.init(x: padding, y: 58, width: screenWidth - padding*2, height: 16))
+        displayLabel.textAlignment = .center
+        displayLabel.font = FontConfigManager.shared.getRegularFont(size: 16)
+        displayLabel.textColor = UIColor.init(white: 0, alpha: 0.6)
+        addSubview(displayLabel)
     }
 
     func update() {
@@ -47,6 +56,6 @@ class AssetBalanceTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 150
+        return 93
     }
 }

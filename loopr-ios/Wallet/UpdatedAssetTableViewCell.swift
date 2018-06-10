@@ -93,8 +93,6 @@ class UpdatedAssetTableViewCell: UITableViewCell {
                 iconView.isHidden = false
                 iconView.symbol = asset.symbol
                 iconView.symbolLabel.text = asset.symbol
-                // iconView.draw(CGRect.init(x: 15, y: 22, width: 36, height: 36))
-                iconView.setSymbol(asset.symbol)
                 iconImageView.isHidden = true
             }
             

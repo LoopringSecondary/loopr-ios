@@ -76,7 +76,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.insertSubview(backgroundView, at: 0)
         
         buttonInNavigationBar.frame = CGRect(x: 0, y: 0, width: 400, height: 40)
-        buttonInNavigationBar.titleLabel?.font = FontConfigManager.shared.getLabelFont()  // UIFont(name: FontConfigManager.shared.getLight(), size: 16.0)
+        buttonInNavigationBar.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 19)  // UIFont(name: FontConfigManager.shared.getLight(), size: 16.0)
         buttonInNavigationBar.theme_setTitleColor(["#000", "#fff"], forState: .normal)
         buttonInNavigationBar.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
         buttonInNavigationBar.addTarget(self, action: #selector(self.clickNavigationTitleButton(_:)), for: .touchUpInside)

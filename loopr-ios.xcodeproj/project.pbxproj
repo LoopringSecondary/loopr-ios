@@ -482,6 +482,8 @@
 		ACC8D0A320CC6F080049A741 /* ExportMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC8D0A120CC6F080049A741 /* ExportMnemonicViewController.xib */; };
 		ACC8D0A620CC95A00049A741 /* UpdatedAssetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8D0A420CC95A00049A741 /* UpdatedAssetTableViewCell.swift */; };
 		ACC8D0A720CC95A00049A741 /* UpdatedAssetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC8D0A520CC95A00049A741 /* UpdatedAssetTableViewCell.xib */; };
+		ACC8D0AA20CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8D0A820CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.swift */; };
+		ACC8D0AB20CCF6C30049A741 /* UpdatedAssetTransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC8D0A920CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.xib */; };
 		ACCC7EA32082BE0B008E58BA /* ImportMnemonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCC7EA22082BE0B008E58BA /* ImportMnemonicTests.swift */; };
 		ACCCFDCE203BEF2200B98F99 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */; };
 		ACCCFDD0203BF1D100B98F99 /* FloatLabelTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCFDCF203BF1D100B98F99 /* FloatLabelTextView.swift */; };
@@ -982,6 +984,8 @@
 		ACC8D0A120CC6F080049A741 /* ExportMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportMnemonicViewController.xib; sourceTree = "<group>"; };
 		ACC8D0A420CC95A00049A741 /* UpdatedAssetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedAssetTableViewCell.swift; sourceTree = "<group>"; };
 		ACC8D0A520CC95A00049A741 /* UpdatedAssetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedAssetTableViewCell.xib; sourceTree = "<group>"; };
+		ACC8D0A820CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedAssetTransactionTableViewCell.swift; sourceTree = "<group>"; };
+		ACC8D0A920CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedAssetTransactionTableViewCell.xib; sourceTree = "<group>"; };
 		ACCC7EA22082BE0B008E58BA /* ImportMnemonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportMnemonicTests.swift; sourceTree = "<group>"; };
 		ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		ACCCFDCF203BF1D100B98F99 /* FloatLabelTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatLabelTextView.swift; sourceTree = "<group>"; };
@@ -2283,6 +2287,8 @@
 				AC5E0DD5203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib */,
 				AC5E0DD8203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift */,
 				AC5E0DD9203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib */,
+				ACC8D0A820CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.swift */,
+				ACC8D0A920CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.xib */,
 			);
 			path = AssetDetailTransaction;
 			sourceTree = "<group>";
@@ -2457,6 +2463,7 @@
 				ACB97C6E20707B6F00775D4C /* AddTokenTableViewCell.xib in Resources */,
 				AC31CE1D205A2F0100A30335 /* SwitchTradeTokenViewController.xib in Resources */,
 				AC31CE68205B994E00A30335 /* Roboto-Light.ttf in Resources */,
+				ACC8D0AB20CCF6C30049A741 /* UpdatedAssetTransactionTableViewCell.xib in Resources */,
 				AC5E3E71205DFB700051ACFC /* SendAssetViewController.xib in Resources */,
 				ACBA47E7207890910032C2B4 /* SettingManageWalletTableViewCell.xib in Resources */,
 				AC54FD8E204FC6FF007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */,
@@ -2892,6 +2899,7 @@
 				AC31B94D204A8DF400B16155 /* KeyStore.swift in Sources */,
 				AC31CE4B205B83B600A30335 /* TradeTokenView.swift in Sources */,
 				AC387521205F12F100A76637 /* ContextMenu.swift in Sources */,
+				ACC8D0AA20CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.swift in Sources */,
 				AC061939208401EB0060F416 /* MnemonicAddressTableViewCell.swift in Sources */,
 				ACFEFE9A20C338DA00013921 /* TxStatus.swift in Sources */,
 				AC4F600F20773E9D00F1D954 /* GethBigInt+Extension.swift in Sources */,
