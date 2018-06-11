@@ -245,7 +245,7 @@
 "Buying Price" = "最新买单价格";
 "Market Price" = "最新市场价格";
 "Confirm" = "确认";
-"Please Verify Your Mnemonic" = "确认您的钱包助记词";
+"Please Verify Your Mnemonic" = "验证您的钱包助记词";
 "Please click words in order." = "请按顺序点击助记词。";
 "Market Price" = "最新成交价格";
 "Available Balance" = "可用余额";
@@ -294,3 +294,5 @@
 "Undo Last Click" = "撤销上一个选择";
 "Select Your Wallet Type" = "选择您的钱包类型";
 "Mnemonic doesn't match. Please verify again." = "输入的助记词不正确，请重新验证。";
+"Please click words in order to verify your mnemonic." = "请按顺序点击助记词来确认您的助记词。";
+"Your mnemonic has been verified successfully." = "您的助记词已验证成功。";

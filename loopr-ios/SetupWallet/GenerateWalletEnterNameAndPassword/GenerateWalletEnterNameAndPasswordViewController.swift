@@ -235,6 +235,7 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
         // Hide the keyboard and adjust the position
         walletNameTextField.resignFirstResponder()
         walletPasswordTextField.resignFirstResponder()
+        walletRepeatPasswordTextField.resignFirstResponder()
         
         if isKeyboardShown {
             UIView.animate(withDuration: 0.4, animations: {
@@ -247,6 +248,10 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
                 self.walletPasswordTextField.moveOffset(y: self.keyboardOffsetY)
                 self.walletPasswordUnderLine.moveOffset(y: self.keyboardOffsetY)
                 self.walletPasswordInfoLabel.moveOffset(y: self.keyboardOffsetY)
+                
+                self.walletRepeatPasswordTextField.moveOffset(y: self.keyboardOffsetY)
+                self.walletRepeatPasswordUnderLine.moveOffset(y: self.keyboardOffsetY)
+                self.walletRepeatPasswordInfoLabel.moveOffset(y: self.keyboardOffsetY)
                 
                 // continueButton
                 self.continueButton.moveOffset(y: self.keyboardOffsetY)
@@ -282,6 +287,10 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
                         self.walletPasswordUnderLine.moveOffset(y: -self.keyboardOffsetY)
                         self.walletPasswordInfoLabel.moveOffset(y: -self.keyboardOffsetY)
                         
+                        self.walletRepeatPasswordTextField.moveOffset(y: -self.keyboardOffsetY)
+                        self.walletRepeatPasswordUnderLine.moveOffset(y: -self.keyboardOffsetY)
+                        self.walletRepeatPasswordInfoLabel.moveOffset(y: -self.keyboardOffsetY)
+
                         // continueButton
                         self.continueButton.moveOffset(y: -self.keyboardOffsetY)
                     })

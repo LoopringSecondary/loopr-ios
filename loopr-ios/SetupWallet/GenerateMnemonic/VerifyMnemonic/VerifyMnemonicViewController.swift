@@ -15,8 +15,8 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
     var infoLabel: UILabel = UILabel()
     var mnemonicsTextView: UITextView = UITextView()
 
-    @IBOutlet weak var undoLastClickButton: UIButton!
-    @IBOutlet weak var confirmButton: UIButton!
+    var undoLastClickButton: UIButton = UIButton()
+    var confirmButton: UIButton = UIButton()
 
     var mnemonicCollectionViewController: MnemonicBackupModeCollectionViewController!
     
@@ -45,16 +45,8 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         
         self.navigationItem.title = NSLocalizedString("Please Verify Your Mnemonic", comment: "")
         setBackButton()
+        updateButtons()
         
-        undoLastClickButton.title = NSLocalizedString("Undo Last Click", comment: "")
-        undoLastClickButton.setupRoundWhite()
-        undoLastClickButton.alpha = 0.0
-        undoLastClickButton.addTarget(self, action: #selector(pressedUndoLastClickButton(_:)), for: UIControlEvents.touchUpInside)
-
-        confirmButton.title = NSLocalizedString("Confirm", comment: "Go to VerifyMnemonicViewController")
-        confirmButton.setupRoundBlack()
-        confirmButton.addTarget(self, action: #selector(pressedConfrimButton(_:)), for: UIControlEvents.touchUpInside)
-
         // Setup UI
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
@@ -62,7 +54,6 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         
         collectionViewWidth = screenWidth - padding * 2
         collectionViewHeight = CGFloat(sortedMnemonics.count/3) * MnemonicBackupModeCollectionViewCell.getHeight() + 2*padding
-        
         padding = (screenHeight - 120 - collectionViewHeight - 140 - 40) / 3
         
         infoLabel.frame = CGRect(x: 15, y: 5, width: screenWidth - 2*15, height: 40)
@@ -118,6 +109,31 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         GenerateWalletDataManager.shared.clearUserInputMnemonic()
     }
     
+    func updateButtons() {
+        confirmButton.title = NSLocalizedString("Confirm", comment: "Go to VerifyMnemonicViewController")
+        confirmButton.setupRoundBlack()
+        confirmButton.addTarget(self, action: #selector(pressedConfrimButton(_:)), for: UIControlEvents.touchUpInside)
+        view.addSubview(confirmButton)
+
+        confirmButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addConstraint(NSLayoutConstraint(item: confirmButton, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 15))
+        view.addConstraint(NSLayoutConstraint(item: confirmButton, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -15))
+        view.addConstraint(NSLayoutConstraint(item: confirmButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 47))
+        view.addConstraint(NSLayoutConstraint(item: confirmButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -15))
+
+        undoLastClickButton.title = NSLocalizedString("Undo Last Click", comment: "")
+        undoLastClickButton.setupRoundWhite()
+        undoLastClickButton.alpha = 0.0
+        undoLastClickButton.addTarget(self, action: #selector(pressedUndoLastClickButton(_:)), for: UIControlEvents.touchUpInside)
+        view.addSubview(undoLastClickButton)
+        
+        undoLastClickButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addConstraint(NSLayoutConstraint(item: undoLastClickButton, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 15))
+        view.addConstraint(NSLayoutConstraint(item: undoLastClickButton, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -15))
+        view.addConstraint(NSLayoutConstraint(item: undoLastClickButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 47))
+        view.addConstraint(NSLayoutConstraint(item: undoLastClickButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -77))
+    }
+    
     func collectionViewDidSelectItemAt(indexPath: IndexPath) {
         let mnemonic = sortedMnemonics[indexPath.row]
         if !GenerateWalletDataManager.shared.getUserInputMnemonics().contains(mnemonic) {
@@ -154,11 +170,17 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
             exit()
         } else {
             print("User input Mnemonic doesn't match")
-            
+            var title = ""
+            if GenerateWalletDataManager.shared.getUserInputMnemonics().count == 0 {
+                title = NSLocalizedString("Please click words in order to verify your mnemonic.", comment: "")
+            } else {
+                title = NSLocalizedString("Mnemonic doesn't match. Please verify again.", comment: "")
+            }
+
             // Reset
             GenerateWalletDataManager.shared.clearUserInputMnemonic()
 
-            let alertController = UIAlertController(title: NSLocalizedString("Mnemonic doesn't match. Please verify again.", comment: ""), message: nil, preferredStyle: .alert)
+            let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
                 if GenerateWalletDataManager.shared.getUserInputMnemonics().count == 0 {
                     UIView.animate(withDuration: 0.3, animations: {

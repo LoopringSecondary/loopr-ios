@@ -54,6 +54,15 @@ class AppWalletDataManager {
         return result
     }
     
+    func isWalletVerified(address: String) -> Bool {
+        getAppWalletsFromLocalStorage()
+        let appWallets = self.appWallets.filter { $0.address == address }
+        if appWallets.count != 1 {
+            return false
+        }
+        return appWallets[0].isVerified
+    }
+
     func isNewWalletNameToken(newWalletname: String) -> Bool {
         let results = appWallets.filter { $0.name == newWalletname }
         return results.isEmpty

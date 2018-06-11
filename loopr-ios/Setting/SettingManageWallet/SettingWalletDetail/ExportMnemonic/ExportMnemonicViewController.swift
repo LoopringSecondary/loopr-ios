@@ -61,13 +61,14 @@ class ExportMnemonicViewController: UIViewController {
         view.addSubview(mnemonicCollectionViewController0.view)
         addChildViewController(mnemonicCollectionViewController0)
         
+        // TODO: Need to consider 24 mnemonic words.
         if !appWallet.isVerified {
             verifyNowButton.title = NSLocalizedString("Verify Now", comment: "Go to VerifyMnemonicViewController")
             verifyNowButton.setupRoundBlack()
             view.addSubview(verifyNowButton)
-            verifyNowButton.translatesAutoresizingMaskIntoConstraints = false
             verifyNowButton.addTarget(self, action: #selector(pressedVerifyNowButton), for: .touchUpInside)
 
+            verifyNowButton.translatesAutoresizingMaskIntoConstraints = false
             view.addConstraint(NSLayoutConstraint(item: verifyNowButton, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 15))
             view.addConstraint(NSLayoutConstraint(item: verifyNowButton, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -15))
             view.addConstraint(NSLayoutConstraint(item: verifyNowButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 47))
@@ -88,10 +89,17 @@ class ExportMnemonicViewController: UIViewController {
             mnemonicCollectionViewController0.collectionView?.collectionViewLayout.invalidateLayout()
             firstAppear = false
         }
+        
+        if AppWalletDataManager.shared.isWalletVerified(address: appWallet.address) {
+            verifyNowButton.isHidden = true
+        } else {
+            verifyNowButton.isHidden = false
+        }
     }
     
     @objc func pressedVerifyNowButton(_ sender: Any) {
         let viewController = SettingWalletVerifyMnemonicViewController()
+        viewController.appWallet = appWallet
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 

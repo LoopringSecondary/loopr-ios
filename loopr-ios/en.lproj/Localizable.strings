@@ -296,3 +296,5 @@
 "Undo Last Click" = "Undo Last Click";
 "Select Your Wallet Type" = "Select Your Wallet Type";
 "Mnemonic doesn't match. Please verify again." = "Mnemonic doesn't match. Please verify again.";
+"Please click words in order to verify your mnemonic." = "Please click words in order to verify your mnemonic.";
+"Your mnemonic has been verified successfully." = "Your mnemonic has been verified successfully.";
