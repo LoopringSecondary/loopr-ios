@@ -259,22 +259,22 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     }
     
     func doSigning() {
-        let manager = PlaceOrderDataManager.shared
+        let manager = AuthorizeDataManager.shared
         guard let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address, let hash = manager.signHash, let order = manager.signOrder else { return }
         guard address.lowercased() == order.address.lowercased() else {
-            let errorMessage = NSLocalizedString("Signer address do NOT match the order's, please transfer and try agign later", comment: "")
+            let errorMessage = NSLocalizedString("Signer address do NOT match the order's, please transfer and try again later", comment: "")
             let error = NSError(domain: "approving", code: 0, userInfo: ["message": errorMessage])
             self.completion(nil, error)
             return
         }
         SVProgressHUD.show(withStatus: NSLocalizedString("Approving authorization", comment: "") + "...")
-        manager._authorize { (_, error) in
+        manager._authorizeOrder { (_, error) in
             guard error == nil else {
-                LoopringAPIRequest.updateSignMessage(hash: hash, status: .txFalied, completionHandler: { (_, _) in })
+                LoopringAPIRequest.updateSignMessage(hash: hash, status: .txFailed, completionHandler: { (_, _) in })
                 self.complete(nil, error!)
                 return
             }
-            manager._submitOrder(order, completion: { (orderHash, error) in
+            PlaceOrderDataManager.shared._submitOrder(order, completion: { (orderHash, error) in
                 guard let orderHash = orderHash, error == nil else {
                     self.complete(nil, error!)
                     return
@@ -312,7 +312,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     }
     
     @IBAction func pressedDeclineButton(_ sender: UIButton) {
-        guard isSigning, let hash = PlaceOrderDataManager.shared.signHash else { return }
+        guard isSigning, let hash = AuthorizeDataManager.shared.signHash else { return }
         LoopringAPIRequest.updateSignMessage(hash: hash, status: .reject) { (_, _) in
             DispatchQueue.main.async {
                 self.navigationController?.popToRootViewController(animated: true)
@@ -359,7 +359,7 @@ extension PlaceOrderConfirmationViewController {
         let viewController = ConfirmationResultViewController()
         viewController.orderHash = orderHash
         viewController.verifyInfo = self.verifyInfo
-        viewController.order = isSigning ? PlaceOrderDataManager.shared.signOrder : order
+        viewController.order = isSigning ? AuthorizeDataManager.shared.signOrder : order
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     

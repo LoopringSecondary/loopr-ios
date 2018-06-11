@@ -62,7 +62,18 @@ enum QRCodeMethod: String, CustomStringConvertible {
         if let data = content.data(using: .utf8) {
             let json = JSON(data)
             if json["type"] == "sign" {
-                PlaceOrderDataManager.shared.signHash = json["id"].stringValue
+                AuthorizeDataManager.shared.signHash = json["id"].stringValue
+                return true
+            }
+        }
+        return false
+    }
+    
+    static func isLoginUUID(content: String) -> Bool {
+        if let data = content.data(using: .utf8) {
+            let json = JSON(data)
+            if json["type"] == "UUID" {
+                AuthorizeDataManager.shared.loginUUID = json["value"].stringValue
                 return true
             }
         }

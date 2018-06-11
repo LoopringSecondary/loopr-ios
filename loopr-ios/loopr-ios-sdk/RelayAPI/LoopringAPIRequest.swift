@@ -546,4 +546,16 @@ class LoopringAPIRequest {
             completionHandler(result, nil)
         }
     }
+    
+    static func updateScanLogin(owner: String, uuid: String, signature: SignatureData, timestamp: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        body["params"] = [["owner": owner, "uuid": uuid, "sign": ["timestamp": timestamp, "v": Int(signature.v)!, "r": signature.r, "s": signature.s, "owner": owner]]]
+        self.invoke(method: "loopring_notifyScanLogin", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
+            guard error == nil && data != nil else {
+                completionHandler(nil, error!)
+                return
+            }
+            completionHandler(data!.respond, nil)
+        }
+    }
 }

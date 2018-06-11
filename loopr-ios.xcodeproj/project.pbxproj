@@ -35,6 +35,9 @@
 		943A9A4120909597008BCBFD /* DefaultWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943A9A3F20909597008BCBFD /* DefaultWebViewController.swift */; };
 		943A9A4220909597008BCBFD /* DefaultWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943A9A4020909597008BCBFD /* DefaultWebViewController.xib */; };
 		943BDED32056350000D5BF81 /* PriceQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943BDED22056350000D5BF81 /* PriceQuote.swift */; };
+		943C1CAE20CE1E0B008A8CED /* AuthorizeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943C1CAD20CE1E0B008A8CED /* AuthorizeDataManager.swift */; };
+		943C1CB220CE26CE008A8CED /* LoginResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943C1CB020CE26CE008A8CED /* LoginResultViewController.swift */; };
+		943C1CB320CE26CE008A8CED /* LoginResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943C1CB120CE26CE008A8CED /* LoginResultViewController.xib */; };
 		943C657A209EEAB6005D6948 /* PlaceOrderDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943C6579209EEAB6005D6948 /* PlaceOrderDataManagerTests.swift */; };
 		9445D54420BA4F63006045F6 /* PriceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9445D54320BA4F63006045F6 /* PriceButton.swift */; };
 		9445D54620BA4FB3006045F6 /* PriceStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9445D54520BA4FB3006045F6 /* PriceStackView.swift */; };
@@ -595,6 +598,9 @@
 		943A9A3F20909597008BCBFD /* DefaultWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultWebViewController.swift; sourceTree = "<group>"; };
 		943A9A4020909597008BCBFD /* DefaultWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultWebViewController.xib; sourceTree = "<group>"; };
 		943BDED22056350000D5BF81 /* PriceQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceQuote.swift; sourceTree = "<group>"; };
+		943C1CAD20CE1E0B008A8CED /* AuthorizeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizeDataManager.swift; sourceTree = "<group>"; };
+		943C1CB020CE26CE008A8CED /* LoginResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResultViewController.swift; sourceTree = "<group>"; };
+		943C1CB120CE26CE008A8CED /* LoginResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginResultViewController.xib; sourceTree = "<group>"; };
 		943C6579209EEAB6005D6948 /* PlaceOrderDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrderDataManagerTests.swift; sourceTree = "<group>"; };
 		9445D54320BA4F63006045F6 /* PriceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceButton.swift; sourceTree = "<group>"; };
 		9445D54520BA4FB3006045F6 /* PriceStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceStackView.swift; sourceTree = "<group>"; };
@@ -1106,6 +1112,15 @@
 				94231DEA20BD671700A4FDC3 /* PaddingLabel.swift */,
 			);
 			path = PaddingLabel;
+			sourceTree = "<group>";
+		};
+		943C1CAF20CE269B008A8CED /* AuthorizeLogin */ = {
+			isa = PBXGroup;
+			children = (
+				943C1CB020CE26CE008A8CED /* LoginResultViewController.swift */,
+				943C1CB120CE26CE008A8CED /* LoginResultViewController.xib */,
+			);
+			path = AuthorizeLogin;
 			sourceTree = "<group>";
 		};
 		9445D54220BA4F3F006045F6 /* Price */ = {
@@ -1970,6 +1985,7 @@
 		ACB9115D20242D9900F14644 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				943C1CAF20CE269B008A8CED /* AuthorizeLogin */,
 				ACB911512024254F00F14644 /* WalletNavigationViewController.swift */,
 				ACB911532024260E00F14644 /* WalletViewController.swift */,
 				ACB911542024260E00F14644 /* WalletViewController.xib */,
@@ -2045,6 +2061,7 @@
 				940B45172060F67C00ADE2B9 /* UserDefaultsKeys.swift */,
 				941B1EFB209C41BB00710DFF /* GasDataManager.swift */,
 				AC971EC720BB412200EDEDD0 /* AuthenticationDataManager.swift */,
+				943C1CAD20CE1E0B008A8CED /* AuthorizeDataManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -2496,6 +2513,7 @@
 				AC31CE34205B603200A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf in Resources */,
 				AC5E0996205F270000801738 /* ScanQRCodeViewController.xib in Resources */,
 				AC4F8639209D483B002E62AB /* SettingLRCFeeRatioViewController.xib in Resources */,
+				943C1CB320CE26CE008A8CED /* LoginResultViewController.xib in Resources */,
 				AC31CE7A205B996700A30335 /* Roboto-ThinItalic.ttf in Resources */,
 				AC06193A208401EB0060F416 /* MnemonicAddressTableViewCell.xib in Resources */,
 				ACB746E62043C5F5006C2BF5 /* QRCodeViewController.xib in Resources */,
@@ -2858,6 +2876,7 @@
 				ACB9117C20256BBA00F14644 /* TradingPair.swift in Sources */,
 				AC70E84E20683C7500451047 /* IconView.swift in Sources */,
 				ACFEFEAF20C3CA4800013921 /* AssetMarketTableViewCell.swift in Sources */,
+				943C1CB220CE26CE008A8CED /* LoginResultViewController.swift in Sources */,
 				ACB5DD9C202D5B8000140A09 /* NumericKeyboardCell.swift in Sources */,
 				AC5E0991205F256500801738 /* AddTokenViewController.swift in Sources */,
 				AC31B949204A8DF400B16155 /* Scrypt.swift in Sources */,
@@ -2950,6 +2969,7 @@
 				ACEC978820B24808003F9DEB /* DefaultSliderDelegate.swift in Sources */,
 				AC13B30A2054A766008A72C0 /* BuyViewController.swift in Sources */,
 				ACB5DDA2202D6F9400140A09 /* UIViewExtension.swift in Sources */,
+				943C1CAE20CE1E0B008A8CED /* AuthorizeDataManager.swift in Sources */,
 				94B5CA8C204FE8E40081BA93 /* ETH_Transaction.swift in Sources */,
 				AC971EC820BB412300EDEDD0 /* AuthenticationDataManager.swift in Sources */,
 				AC37567C2038D80300AADC60 /* PrivateKeyViewController.swift in Sources */,
