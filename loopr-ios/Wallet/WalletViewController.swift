@@ -152,12 +152,21 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func setResultOfScanningQRCode(valueSent: String, type: QRCodeType) {
         if type == .authorization {
-            PlaceOrderDataManager.shared.getOrder { (_, error) in
-                guard error == nil, let order = PlaceOrderDataManager.shared.signOrder else { return }
+            AuthorizeDataManager.shared.getOrder { (_, error) in
+                guard error == nil, let order = AuthorizeDataManager.shared.signOrder else { return }
                 DispatchQueue.main.async {
                     let vc = PlaceOrderConfirmationViewController()
                     vc.order = order
                     vc.isSigning = true
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+        } else if type == .uuid {
+            AuthorizeDataManager.shared._authorizeLogin { (_, error) in
+                let result = error == nil ? true : false
+                DispatchQueue.main.async {
+                    let vc = LoginResultViewController()
+                    vc.result = result
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             }

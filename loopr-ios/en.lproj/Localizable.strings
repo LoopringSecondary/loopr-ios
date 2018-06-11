@@ -283,13 +283,14 @@
 "Keystore detected" = "Keystore detected";
 "Private key detected" = "Private key detected";
 "Authorization message detected" = "Authorization message detected";
+"Login message detected" = "Login message detected";
 "Undefined" = "Undefined type of QRCode";
 "Importing keystore" = "Importing keystore";
 "Failed to import address. The device has imported the address already." = "Failed to import address. The device has imported the address already.";
 "You are going to clear records of" = "You are going to clear records of";
 "on this device." = "on this device.";
 "Approving authorization" = "Approving authorization";
-"Signer address do NOT match the order's, please transfer and try agign later" = "Signer address do NOT match the order's, please transfer and try agign later";
+"Signer address do NOT match the order's, please transfer and try again later" = "Signer address do NOT match the order's, please transfer and try again later";
 "Create_used_in_creating_wallet" = "Create";
 "successfully_used_in_creating_wallet" = "successfully";
 "Loopr doesn't keep a copy of your mnemonic words. Make sure you back up these information immediately." = "Loopr doesn't keep a copy of your mnemonic words. Make sure you back up these information immediately.";
@@ -298,3 +299,7 @@
 "Mnemonic doesn't match. Please verify again." = "Mnemonic doesn't match. Please verify again.";
 "Please click words in order to verify your mnemonic." = "Please click words in order to verify your mnemonic.";
 "Your mnemonic has been verified successfully." = "Your mnemonic has been verified successfully.";
+"Authorze Successfully" = "Authorze Successfully";
+"Authorze Failed" = "Authorze Failed";
+"Login Authorzation Successful! Please transfer to our website to continue." = "Login Authorzation Successful! Please transfer to our website to continue.";
+"Login Authorzation failed! Please review your signing address and try again later." = "Login Authorzation failed! Please review your signing address and try again later.";

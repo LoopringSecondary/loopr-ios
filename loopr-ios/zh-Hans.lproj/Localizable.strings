@@ -281,13 +281,14 @@
 "Keystore detected" = "扫描到钱包密文二维码";
 "Private key detected" = "扫描到钱包私钥的二维码";
 "Authorization message detected" = "扫描到授权信息二维码";
+"Login message detected" = "扫描到登录信息二维码";
 "Undefined" = "扫描到未知类型的二维码";
 "Importing keystore" = "正在导入keystore";
 "Failed to import address. The device has imported the address already." = "导入失败，地址之前已经被导入。";
 "You are going to clear records of" = "您将要清除该手机上";
 "on this device." = "的数据。";
 "Approving authorization" = "正在申请授权";
-"Signer address do NOT match the order's, please transfer and try agign later" = "授权方的钱包地址和下单方地址并不匹配，请在更换授权方的地址，确认匹配后再进行授权";
+"Signer address do NOT match the order's, please transfer and try again later" = "授权方的钱包地址和下单方地址并不匹配，请在更换授权方的地址，确认匹配后再进行授权";
 "Create_used_in_creating_wallet" = "成功创建";
 "successfully_used_in_creating_wallet" = "";
 "Loopr doesn't keep a copy of your mnemonic words. Make sure you back up these information immediately." = "路印钱包不会保存用户的助记词，强烈建议您在线下备份这些信息（不联网的USB硬盘或纸质存储）。";
@@ -296,3 +297,7 @@
 "Mnemonic doesn't match. Please verify again." = "输入的助记词不正确，请重新验证。";
 "Please click words in order to verify your mnemonic." = "请按顺序点击助记词来确认您的助记词。";
 "Your mnemonic has been verified successfully." = "您的助记词已验证成功。";
+"Authorze Successfully" = "授权成功";
+"Authorze Failed" = "授权失败";
+"Login Authorzation Successful! Please transfer to our website to continue." = "登录授权成功，请转至我们的网站服务，进行您的后续操作。";
+"Login Authorzation failed! Please review your signing address and try again later." = "登录授权失败，请核对您的授权地址，确认正确后请重新尝试。";

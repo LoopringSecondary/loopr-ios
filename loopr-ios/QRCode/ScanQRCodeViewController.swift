@@ -19,6 +19,7 @@ enum QRCodeType: String {
     case keystore = "Keystore"
     case privateKey = "Private Key"
     case authorization = "Authorization"
+    case uuid = "UUID"
     case undefined = "Undefined"
     
     var detectedDescription: String {
@@ -28,6 +29,7 @@ enum QRCodeType: String {
         case .keystore: return NSLocalizedString("Keystore detected", comment: "")
         case .privateKey: return NSLocalizedString("Private key detected", comment: "")
         case .authorization: return NSLocalizedString("Authorization message detected", comment: "")
+        case .uuid: return NSLocalizedString("Login message detected", comment: "")
         case .undefined: return NSLocalizedString("Undefined", comment: "")
         }
     }
@@ -257,6 +259,8 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             return QRCodeType.address
         } else if QRCodeMethod.isAuthorization(content: qrContent) {
             return QRCodeType.authorization
+        } else if QRCodeMethod.isLoginUUID(content: qrContent) {
+            return QRCodeType.uuid
         } else if QRCodeMethod.isMnemonicValid(mnemonic: qrContent) {
             return QRCodeType.mnemonic
         } else if QRCodeMethod.isPrivateKey(key: qrContent) {
