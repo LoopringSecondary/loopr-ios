@@ -79,16 +79,13 @@ class GasDataManager {
     
     // TODO: This part should be an async API call.
     func getEstimateGasPrice() {
-        let semaphore = DispatchSemaphore(value: 0)
         LoopringAPIRequest.getEstimateGasPrice { (gasPrice, error) in
             guard error == nil && gasPrice != nil else {
                 return
             }
             self.gasPrice = gasPrice! * 1000000000
             self.gasPrice.round()
-            semaphore.signal()
         }
-        _ = semaphore.wait(timeout: .distantFuture)
     }
     
     func setGasPrice(to gasPrice: Double) {

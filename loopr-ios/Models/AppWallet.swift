@@ -130,8 +130,8 @@ class AppWallet: NSObject, NSCoding {
                 
                 self.gethKeystoreObject = GethKeyStore.init(keydir, scryptN: GethLightScryptN, scryptP: GethLightScryptP)!
                 
-            } catch {
-                print("Failed to generate keystore")
+            } catch let error {
+                print("Failed to generate keystore. error: \(error)")
             }
         }
     }

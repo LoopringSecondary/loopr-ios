@@ -73,7 +73,7 @@ class AuthorizeDataManager {
         var data = Data()
         SendCurrentAppWalletDataManager.shared._keystore()
         let timestamp = Int(Date().timeIntervalSince1970).description
-        data.append(contentsOf: timestamp.hexBytes)
+        data.append(contentsOf: Array(timestamp.utf8))
         if case (let signature?, _) = web3swift.sign(message: data) {
             LoopringAPIRequest.updateScanLogin(owner: owner, uuid: uuid, signature: signature, timestamp: timestamp, completionHandler: completion)
         }
