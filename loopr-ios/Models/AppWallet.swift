@@ -64,7 +64,10 @@ class AppWallet: NSObject, NSCoding {
         
         if keystoreString == nil || keystoreString == "" || !QRCodeMethod.isKeystore(content: keystoreString ?? "") {
             print("Need to generate keystore")
-            generateKeystoreInBackground()
+            
+            // This method takes times to proccess. Deprecate this method
+            // generateKeystoreInBackground()
+            preconditionFailure("No keystore")
         }
     }
     
