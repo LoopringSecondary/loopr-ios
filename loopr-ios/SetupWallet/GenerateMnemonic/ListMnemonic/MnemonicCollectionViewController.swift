@@ -10,7 +10,6 @@ import UIKit
 
 class MnemonicCollectionViewController: UICollectionViewController {
     
-    var isBackupMode: Bool = false
     let count: Int = 12
     var mnemonics: [String] = []
 
@@ -50,18 +49,8 @@ class MnemonicCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MnemonicCollectionViewCell.getCellIdentifier(), for: indexPath) as! MnemonicCollectionViewCell
-
         cell.mnemonicLabel.text = mnemonics[indexPath.row]
-
         cell.circleLabel.text = "\(indexPath.row+1)"
-        if isBackupMode {
-            cell.circleLabel.isHidden = true
-            if GenerateWalletDataManager.shared.getUserInputMnemonics().contains(mnemonics[indexPath.row]) {
-                cell.backgroundColor = UIColor.black
-            }
-            cell.mnemonicLabel.textAlignment = .center
-        }
-
         return cell
     }
     

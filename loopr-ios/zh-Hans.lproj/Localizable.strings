@@ -277,7 +277,6 @@
 "Accept" = "允许授权";
 "Decline" = "拒绝授权";
 "Address detected" = "扫描到钱包地址二维码";
-
 "Mnemonic detected" = "扫描到钱包助记词二维码";
 "Keystore detected" = "扫描到钱包密文二维码";
 "Private key detected" = "扫描到钱包私钥的二维码";
@@ -292,4 +291,5 @@
 "Create_used_in_creating_wallet" = "成功创建";
 "successfully_used_in_creating_wallet" = "";
 "Loopr doesn't keep a copy of your mnemonic words. Make sure you back up these information immediately." = "路印钱包不会保存用户的助记词，强烈建议您在线下备份这些信息（不联网的USB硬盘或纸质存储）。";
-
+"Undo Last Click" = "撤销上一个选择";
+"Select Your Wallet Type" = "选择您的钱包类型";

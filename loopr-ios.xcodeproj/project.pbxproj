@@ -1498,16 +1498,8 @@
 				AC37567F2039198300AADC60 /* GenerateMnemonicViewController_Archive.xib */,
 				AC72AED6204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift */,
 				AC72AED7204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib */,
-				ACE65E3F2071F875001EE499 /* MnemonicCollectionViewController.swift */,
-				ACE65E402071F875001EE499 /* MnemonicCollectionViewController.xib */,
-				ACE65E4320720500001EE499 /* MnemonicCollectionViewCell.swift */,
-				ACE65E4420720500001EE499 /* MnemonicCollectionViewCell.xib */,
-				AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */,
-				AC8DBC7620BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.xib */,
-				AC8DBC6B20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift */,
-				AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */,
-				ACE58B8320BE796A005BC1C8 /* VerifyMnemonicViewController.swift */,
-				ACE58B8420BE796A005BC1C8 /* VerifyMnemonicViewController.xib */,
+				ACC8D0AC20CE0E380049A741 /* VerifyMnemonic */,
+				ACC8D0AD20CE0FB10049A741 /* ListMnemonic */,
 			);
 			path = GenerateMnemonic;
 			sourceTree = "<group>";
@@ -2132,6 +2124,30 @@
 				ACC8D0A120CC6F080049A741 /* ExportMnemonicViewController.xib */,
 			);
 			path = ExportMnemonic;
+			sourceTree = "<group>";
+		};
+		ACC8D0AC20CE0E380049A741 /* VerifyMnemonic */ = {
+			isa = PBXGroup;
+			children = (
+				ACE58B8320BE796A005BC1C8 /* VerifyMnemonicViewController.swift */,
+				ACE58B8420BE796A005BC1C8 /* VerifyMnemonicViewController.xib */,
+				AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */,
+				AC8DBC7620BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.xib */,
+				AC8DBC6B20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift */,
+				AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */,
+			);
+			path = VerifyMnemonic;
+			sourceTree = "<group>";
+		};
+		ACC8D0AD20CE0FB10049A741 /* ListMnemonic */ = {
+			isa = PBXGroup;
+			children = (
+				ACE65E3F2071F875001EE499 /* MnemonicCollectionViewController.swift */,
+				ACE65E402071F875001EE499 /* MnemonicCollectionViewController.xib */,
+				ACE65E4320720500001EE499 /* MnemonicCollectionViewCell.swift */,
+				ACE65E4420720500001EE499 /* MnemonicCollectionViewCell.xib */,
+			);
+			path = ListMnemonic;
 			sourceTree = "<group>";
 		};
 		ACCC7EA120828D2E008E58BA /* loopr-ios-sdk */ = {

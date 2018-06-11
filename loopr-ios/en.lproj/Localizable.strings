@@ -293,4 +293,5 @@
 "Create_used_in_creating_wallet" = "Create";
 "successfully_used_in_creating_wallet" = "successfully";
 "Loopr doesn't keep a copy of your mnemonic words. Make sure you back up these information immediately." = "Loopr doesn't keep a copy of your mnemonic words. Make sure you back up these information immediately.";
-
+"Undo Last Click" = "Undo Last Click";
+"Select Your Wallet Type" = "Select Your Wallet Type";

@@ -12,6 +12,10 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
 
     var mnemonics: [String] = []
     
+    // TODO: User input mnemonics
+    var userInputMnemonics: [String] = []
+    var userSelections: [Int] = []
+    
     var infoLabel: UILabel = UILabel()
     var mnemonicsTextView: UITextView = UITextView()
 

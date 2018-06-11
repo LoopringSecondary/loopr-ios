@@ -166,6 +166,7 @@ class AppWallet: NSObject, NSCoding {
         aCoder.encode(address, forKey: "address")
         aCoder.encode(privateKey, forKey: "privateKey")
         aCoder.encode(name, forKey: "name")
+        aCoder.encode(isVerified, forKey: "isVerified")
         aCoder.encode(active, forKey: "active")
         aCoder.encode(mnemonics, forKey: "mnemonics")
         aCoder.encode(keystoreString ?? "", forKey: "keystore")

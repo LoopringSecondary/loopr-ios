@@ -57,7 +57,7 @@ class BackupMnemonicViewController: UIViewController {
 
         collectionViewWidth = screenWidth - padding * 2
         collectionViewHeight = 4*MnemonicCollectionViewCell.getHeight() + 2*padding
-        collectionViewY = infoTextView.frame.maxY + 40
+        collectionViewY = infoTextView.frame.maxY + 10
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: (collectionViewWidth - 30)/3, height: MnemonicCollectionViewCell.getHeight())
