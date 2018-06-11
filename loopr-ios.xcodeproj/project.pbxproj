@@ -484,6 +484,8 @@
 		ACC8D0A720CC95A00049A741 /* UpdatedAssetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC8D0A520CC95A00049A741 /* UpdatedAssetTableViewCell.xib */; };
 		ACC8D0AA20CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8D0A820CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.swift */; };
 		ACC8D0AB20CCF6C30049A741 /* UpdatedAssetTransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC8D0A920CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.xib */; };
+		ACC8D0B020CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8D0AE20CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.swift */; };
+		ACC8D0B120CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC8D0AF20CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.xib */; };
 		ACCC7EA32082BE0B008E58BA /* ImportMnemonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCC7EA22082BE0B008E58BA /* ImportMnemonicTests.swift */; };
 		ACCCFDCE203BEF2200B98F99 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */; };
 		ACCCFDD0203BF1D100B98F99 /* FloatLabelTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCFDCF203BF1D100B98F99 /* FloatLabelTextView.swift */; };
@@ -986,6 +988,8 @@
 		ACC8D0A520CC95A00049A741 /* UpdatedAssetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedAssetTableViewCell.xib; sourceTree = "<group>"; };
 		ACC8D0A820CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedAssetTransactionTableViewCell.swift; sourceTree = "<group>"; };
 		ACC8D0A920CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedAssetTransactionTableViewCell.xib; sourceTree = "<group>"; };
+		ACC8D0AE20CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWalletVerifyMnemonicViewController.swift; sourceTree = "<group>"; };
+		ACC8D0AF20CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingWalletVerifyMnemonicViewController.xib; sourceTree = "<group>"; };
 		ACCC7EA22082BE0B008E58BA /* ImportMnemonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportMnemonicTests.swift; sourceTree = "<group>"; };
 		ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		ACCCFDCF203BF1D100B98F99 /* FloatLabelTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatLabelTextView.swift; sourceTree = "<group>"; };
@@ -2122,6 +2126,8 @@
 			children = (
 				ACC8D0A020CC6F080049A741 /* ExportMnemonicViewController.swift */,
 				ACC8D0A120CC6F080049A741 /* ExportMnemonicViewController.xib */,
+				ACC8D0AE20CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.swift */,
+				ACC8D0AF20CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.xib */,
 			);
 			path = ExportMnemonic;
 			sourceTree = "<group>";
@@ -2496,6 +2502,7 @@
 				AC54FD73204FC6E1007E1DEB /* OpenSans-Bold.ttf in Resources */,
 				AC4F8642209D4889002E62AB /* SettingMarginSplitViewController.xib in Resources */,
 				AC6466092083EE1E00EBEC97 /* MnemonicDerivationPathTableViewCell.xib in Resources */,
+				ACC8D0B120CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.xib in Resources */,
 				ACE65E422071F875001EE499 /* MnemonicCollectionViewController.xib in Resources */,
 				AC54FD6A204FC6D5007E1DEB /* Lato-Light.ttf in Resources */,
 				ACB8485A20BA75E7006B83AD /* SettingPasscodeTableViewCell.xib in Resources */,
@@ -2859,6 +2866,7 @@
 				ACE6F7242042228A0039273D /* GlobalPicker.swift in Sources */,
 				ACB9117F2026385100F14644 /* SettingNavigationViewController.swift in Sources */,
 				9423F77920C7D688000B6983 /* SignRawTransaction.swift in Sources */,
+				ACC8D0B020CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.swift in Sources */,
 				AC6E95E520313D8A00C6EB7C /* UIApplicationExtension.swift in Sources */,
 				AC4F600D20773E9D00F1D954 /* SignatureData.swift in Sources */,
 				AC31CE1C205A2F0100A30335 /* SwitchTradeTokenViewController.swift in Sources */,

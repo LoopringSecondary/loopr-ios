@@ -293,3 +293,4 @@
 "Loopr doesn't keep a copy of your mnemonic words. Make sure you back up these information immediately." = "路印钱包不会保存用户的助记词，强烈建议您在线下备份这些信息（不联网的USB硬盘或纸质存储）。";
 "Undo Last Click" = "撤销上一个选择";
 "Select Your Wallet Type" = "选择您的钱包类型";
+"Mnemonic doesn't match. Please verify again." = "输入的助记词不正确，请重新验证。";

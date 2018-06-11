@@ -91,7 +91,7 @@ class ExportMnemonicViewController: UIViewController {
     }
     
     @objc func pressedVerifyNowButton(_ sender: Any) {
-        let viewController = VerifyMnemonicViewController()
+        let viewController = SettingWalletVerifyMnemonicViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 

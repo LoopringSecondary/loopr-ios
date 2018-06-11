@@ -295,3 +295,4 @@
 "Loopr doesn't keep a copy of your mnemonic words. Make sure you back up these information immediately." = "Loopr doesn't keep a copy of your mnemonic words. Make sure you back up these information immediately.";
 "Undo Last Click" = "Undo Last Click";
 "Select Your Wallet Type" = "Select Your Wallet Type";
+"Mnemonic doesn't match. Please verify again." = "Mnemonic doesn't match. Please verify again.";

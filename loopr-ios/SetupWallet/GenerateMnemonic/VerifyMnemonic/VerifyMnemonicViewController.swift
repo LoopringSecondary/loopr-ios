@@ -10,12 +10,8 @@ import UIKit
 
 class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollectionViewControllerDelegate {
 
-    var mnemonics: [String] = []
-    
-    // TODO: User input mnemonics
-    var userInputMnemonics: [String] = []
-    var userSelections: [Int] = []
-    
+    var sortedMnemonics: [String] = []
+
     var infoLabel: UILabel = UILabel()
     var mnemonicsTextView: UITextView = UITextView()
 
@@ -42,8 +38,8 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
 
         // Do any additional setup after loading the view.
         // mnemonics.shuffle()
-        mnemonics = GenerateWalletDataManager.shared.getMnemonics()
-        mnemonics.sort { (a, b) -> Bool in
+        sortedMnemonics = GenerateWalletDataManager.shared.getMnemonics()
+        sortedMnemonics.sort { (a, b) -> Bool in
             return a < b
         }
         
@@ -53,9 +49,11 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         undoLastClickButton.title = NSLocalizedString("Undo Last Click", comment: "")
         undoLastClickButton.setupRoundWhite()
         undoLastClickButton.alpha = 0.0
+        undoLastClickButton.addTarget(self, action: #selector(pressedUndoLastClickButton(_:)), for: UIControlEvents.touchUpInside)
 
         confirmButton.title = NSLocalizedString("Confirm", comment: "Go to VerifyMnemonicViewController")
         confirmButton.setupRoundBlack()
+        confirmButton.addTarget(self, action: #selector(pressedConfrimButton(_:)), for: UIControlEvents.touchUpInside)
 
         // Setup UI
         let screensize: CGRect = UIScreen.main.bounds
@@ -63,7 +61,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         let screenHeight = screensize.height
         
         collectionViewWidth = screenWidth - padding * 2
-        collectionViewHeight = CGFloat(mnemonics.count/3) * MnemonicBackupModeCollectionViewCell.getHeight() + 2*padding
+        collectionViewHeight = CGFloat(sortedMnemonics.count/3) * MnemonicBackupModeCollectionViewCell.getHeight() + 2*padding
         
         padding = (screenHeight - 120 - collectionViewHeight - 140 - 40) / 3
         
@@ -92,9 +90,8 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
 
         mnemonicCollectionViewController = MnemonicBackupModeCollectionViewController(collectionViewLayout: flowLayout)
         mnemonicCollectionViewController.delegate = self
-        mnemonicCollectionViewController.mnemonics = mnemonics
+        mnemonicCollectionViewController.mnemonics = sortedMnemonics
         mnemonicCollectionViewController.view.isHidden = false
-        mnemonicCollectionViewController.isBackupMode = true
         mnemonicCollectionViewController.index = 0
         mnemonicCollectionViewController.view.frame = CGRect(x: 15, y: collectionViewY, width: collectionViewWidth, height: collectionViewHeight)
         view.addSubview(mnemonicCollectionViewController.view)
@@ -118,12 +115,14 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
             
             firstAppear = false
         }
+        GenerateWalletDataManager.shared.clearUserInputMnemonic()
     }
     
     func collectionViewDidSelectItemAt(indexPath: IndexPath) {
-        let mnemonic = mnemonics[indexPath.row]
+        let mnemonic = sortedMnemonics[indexPath.row]
         if !GenerateWalletDataManager.shared.getUserInputMnemonics().contains(mnemonic) {
-            GenerateWalletDataManager.shared.addUserInputMnemonic(mnemonic: mnemonics[indexPath.row])
+            GenerateWalletDataManager.shared.addUserInputMnemonic(mnemonic: sortedMnemonics[indexPath.row])
+            mnemonicCollectionViewController.userSelections.append(indexPath.row)
         }
 
         if GenerateWalletDataManager.shared.getUserInputMnemonics().count == 1 {
@@ -135,9 +134,10 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         mnemonicsTextView.text = GenerateWalletDataManager.shared.getUserInputMnemonics().joined(separator: "  ")
     }
     
-    @IBAction func pressedUndoLastClickButton(_ sender: Any) {
+    @objc func pressedUndoLastClickButton(_ sender: Any) {
         print("pressedUndoLastClickButton")
         GenerateWalletDataManager.shared.undoLastUserInputMnemonic()
+        _ = mnemonicCollectionViewController.userSelections.popLast()
         if GenerateWalletDataManager.shared.getUserInputMnemonics().count == 0 {
             UIView.animate(withDuration: 0.3, animations: {
                 self.undoLastClickButton.alpha = 0.0
@@ -147,7 +147,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         mnemonicCollectionViewController.collectionView?.reloadData()
     }
     
-    @IBAction func pressedConfrimButton(_ sender: Any) {
+    @objc func pressedConfrimButton(_ sender: Any) {
         print("pressedConfrimButton")
         if GenerateWalletDataManager.shared.verify() {
             // Store the new wallet to the local storage and exit the view controller.
@@ -158,13 +158,15 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
             // Reset
             GenerateWalletDataManager.shared.clearUserInputMnemonic()
 
-            let alertController = UIAlertController(title: NSLocalizedString("Mnemonics don't match. Please verify again.", comment: ""), message: nil, preferredStyle: .alert)
+            let alertController = UIAlertController(title: NSLocalizedString("Mnemonic doesn't match. Please verify again.", comment: ""), message: nil, preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
                 if GenerateWalletDataManager.shared.getUserInputMnemonics().count == 0 {
                     UIView.animate(withDuration: 0.3, animations: {
                         self.undoLastClickButton.alpha = 0.0
                     })
                 }
+                // Reset data
+                self.mnemonicCollectionViewController.userSelections = []
                 self.mnemonicCollectionViewController.collectionView?.reloadData()
                 self.mnemonicsTextView.text = GenerateWalletDataManager.shared.getUserInputMnemonics().joined(separator: "  ")
             })

@@ -16,10 +16,10 @@ class MnemonicBackupModeCollectionViewController: UICollectionViewController {
     
     weak var delegate: MnemonicBackupModeCollectionViewControllerDelegate?
     
-    var isBackupMode: Bool = false
-    let count: Int = 12
+    let count: Int = 12  // 12 mnemonic words
     var index = 0
     var mnemonics: [String] = []
+    var userSelections: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class MnemonicBackupModeCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        GenerateWalletDataManager.shared.clearUserInputMnemonic()
+        userSelections = []
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,10 +59,10 @@ class MnemonicBackupModeCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MnemonicBackupModeCollectionViewCell.getCellIdentifier(), for: indexPath) as! MnemonicBackupModeCollectionViewCell
-        
-        let mnemonic = mnemonics[indexPath.row]
         cell.mnemonicLabel.text = mnemonics[indexPath.row]
-        if GenerateWalletDataManager.shared.getUserInputMnemonics().contains(mnemonic) {
+        
+        // To avoid duplicated words in mnemonic
+        if userSelections.contains(indexPath.row) {
             cell.mnemonicLabel.textColor = UIColor.white
             cell.mnemonicLabel.layer.backgroundColor  = UIColor.black.cgColor
             cell.mnemonicLabel.layer.cornerRadius = cell.mnemonicLabel.frame.height*0.5
