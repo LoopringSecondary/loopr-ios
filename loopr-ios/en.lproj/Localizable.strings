@@ -282,8 +282,8 @@
 "Mnemonic detected" = "Mnemonic detected";
 "Keystore detected" = "Keystore detected";
 "Private key detected" = "Private key detected";
-"Authorization message detected" = "Authorization message detected";
-"Login message detected" = "Login message detected";
+"Authorization message detected" = "Order Authorization message detected";
+"Login message detected" = "Login Authorization message detected";
 "Undefined" = "Undefined type of QRCode";
 "Importing keystore" = "Importing keystore";
 "Failed to import address. The device has imported the address already." = "Failed to import address. The device has imported the address already.";
@@ -304,3 +304,4 @@
 "Login Authorzation Successful! Please transfer to our website to continue." = "Login Authorzation Successful! Please transfer to our website to continue.";
 "Login Authorzation failed! Please review your signing address and try again later." = "Login Authorzation failed! Please review your signing address and try again later.";
 "Initializing the wallet" = "Initializing the wallet";
+"Do you wish to handle the qrcode?" = "Do you wish to handle the qrcode?";

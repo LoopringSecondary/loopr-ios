@@ -46,7 +46,6 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     var captureSession = AVCaptureSession()
     
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
-    var qrCodeFrameView: UIView?
     
     var timer = Timer()
     var scanning: String!
@@ -97,15 +96,6 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         // Start video capture.
         captureSession.startRunning()
         
-        // Initialize QR Code Frame
-        qrCodeFrameView = UIView()
-        
-        if let qrCodeFrameView = qrCodeFrameView {
-            qrCodeFrameView.layer.borderColor = UIColor.black.cgColor
-            qrCodeFrameView.layer.borderWidth = 6
-            self.scanView.addSubview(qrCodeFrameView)
-            self.scanView.bringSubview(toFront: qrCodeFrameView)
-        }
         self.setupScanLine()
         self.setupBackGroundView()
         self.setupFrameLine()
@@ -116,8 +106,18 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if captureSession.isRunning == false {
+            captureSession.startRunning()
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
-        captureSession.stopRunning()
+        super.viewWillDisappear(animated)
+        if captureSession.isRunning == true {
+            captureSession.stopRunning()
+        }
     }
     
     @IBAction func switchFlash(_ sender: UIButton) {
@@ -148,6 +148,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     }
     
     @objc func moveScannerLayer(_ timer: Timer) {
+        guard captureSession.isRunning else { return }
         scanLine.frame = CGRect(x: 0, y: 0, width: self.scanQRCodeView.frame.size.width, height: 1)
         UIView.animate(withDuration: 2) {
             self.scanLine.frame = CGRect(x: self.scanLine.frame.origin.x, y: self.scanLine.frame.origin.y + self.scanQRCodeView.frame.size.height - 10, width: self.scanLine.frame.size.width, height: self.scanLine.frame.size.height)
@@ -219,11 +220,14 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         if presentedViewController != nil {
             return
         }
-        let alertPrompt = UIAlertController(title: "\(codeType.detectedDescription)", message: "\(decodedURL)", preferredStyle: .actionSheet)
+        let message = NSLocalizedString("Do you wish to handle the qrcode?", comment: "")
+        let alertPrompt = UIAlertController(title: "\(codeType.detectedDescription)", message: "\(message)", preferredStyle: .actionSheet)
         let messageAttribute = NSMutableAttributedString.init(string: alertPrompt.message!)
         messageAttribute.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)], range: NSRange(location: 0, length: (alertPrompt.message?.count)!))
         alertPrompt.setValue(messageAttribute, forKey: "attributedMessage")
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.cancel, handler: { _ in
+            self.captureSession.startRunning()
+        })
         let confirmAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default) { _ in
             self.delegate?.setResultOfScanningQRCode(valueSent: decodedURL, type: codeType)
             if self.shouldPop {
@@ -236,22 +240,22 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     }
 
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        // Check if the metadataObjects array is not nil and it contains at least one object.
-        if metadataObjects.count == 0 {
-            qrCodeFrameView?.frame = CGRect.zero
-            return
+        captureSession.stopRunning()
+        if let metadataObject = metadataObjects.first {
+            guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
+            guard let stringValue = readableObject.stringValue else { return }
+            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+            let codeCategory = qrCodeContentDetector(qrContent: stringValue)
+            launchApp(decodedURL: stringValue, codeType: codeCategory)
         }
-        let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
-        if [AVMetadataObject.ObjectType.qr].contains(metadataObj.type) {
-            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
-            qrCodeFrameView?.frame = barCodeObject!.bounds
-            print("detected: \(String(describing: metadataObj.stringValue))")
-        
-            if metadataObj.stringValue != nil {
-                let codeCategory = qrCodeContentDetector(qrContent: metadataObj.stringValue!)
-                launchApp(decodedURL: metadataObj.stringValue!, codeType: codeCategory)
-            }
-        }
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
     }
     
     func qrCodeContentDetector (qrContent: String) -> QRCodeType {
