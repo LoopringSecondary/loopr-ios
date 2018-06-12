@@ -62,9 +62,13 @@ class AppWallet: NSObject, NSCoding {
         
         super.init()
         
+        print("########################## keystoreString ##########################")
+        print(keystoreString)
+        print("########################## end ##########################")
         if keystoreString == nil || keystoreString == "" || !QRCodeMethod.isKeystore(content: keystoreString ?? "") {
             print("Need to generate keystore")
-            generateKeystoreInBackground()
+            preconditionFailure("No keystore")
+            // generateKeystoreInBackground()
         }
     }
     
@@ -88,6 +92,7 @@ class AppWallet: NSObject, NSCoding {
         }
     }
     
+    /*
     func generateKeystoreInBackground() {
         // Generate keystore data
         DispatchQueue.global().async {
@@ -135,6 +140,7 @@ class AppWallet: NSObject, NSCoding {
             }
         }
     }
+    */
     
     func getGethKeystoreObject() -> NSObject? {
         return self.gethKeystoreObject
@@ -145,7 +151,7 @@ class AppWallet: NSObject, NSCoding {
     }
 
     func getKeystore() -> String {
-        return keystoreString ?? "Generating ..."
+        return keystoreString!
     }
     
     func getPassword() -> String {
