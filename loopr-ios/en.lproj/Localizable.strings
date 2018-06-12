@@ -303,3 +303,4 @@
 "Authorze Failed" = "Authorze Failed";
 "Login Authorzation Successful! Please transfer to our website to continue." = "Login Authorzation Successful! Please transfer to our website to continue.";
 "Login Authorzation failed! Please review your signing address and try again later." = "Login Authorzation failed! Please review your signing address and try again later.";
+"Initializing the wallet" = "Initializing the wallet";

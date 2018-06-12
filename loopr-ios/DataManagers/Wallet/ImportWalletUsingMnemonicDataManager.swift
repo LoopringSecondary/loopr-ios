@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SVProgressHUD
 
 class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
     
@@ -50,10 +51,22 @@ class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
         }
     }
     
-    func complete() throws {
+    func complete(completion: @escaping (_ appWallet: AppWallet?, _ error: AddWalletError?) -> Void) {
+        // Append /x to the derivation path
         let pathValue = derivationPathValue + "/x"
-        let wallet = try AppWalletDataManager.shared.addWallet(setupWalletMethod: .importUsingMnemonic, walletName: walletName, mnemonics: mnemonic.components(separatedBy: " "), password: password, derivationPath: pathValue, key: selectedKey, isVerified: true)
-        // Inform relay
-        LoopringAPIRequest.unlockWallet(owner: wallet.address) { (_, _) in }
+        
+        SVProgressHUD.show(withStatus: NSLocalizedString("Initializing the wallet", comment: "") + "...")
+        DispatchQueue.global().async {
+            AppWalletDataManager.shared.addWallet(setupWalletMethod: .importUsingMnemonic, walletName: self.walletName, mnemonics: self.mnemonic.components(separatedBy: " "), password: self.password, derivationPath: pathValue, key: self.selectedKey, isVerified: true, completionHandler: {(appWallet, error) in
+
+                // Inform relay
+                LoopringAPIRequest.unlockWallet(owner: appWallet!.address) { (_, _) in }
+                
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    completion(appWallet, error)
+                }
+            })
+        }
     }
 }

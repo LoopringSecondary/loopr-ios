@@ -9,6 +9,6 @@
 import Foundation
 
 protocol ImportWalletProtocol {
-    func complete() throws
+    // func complete() throws
     func reset()
 }

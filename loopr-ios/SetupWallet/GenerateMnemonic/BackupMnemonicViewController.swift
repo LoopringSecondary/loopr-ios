@@ -131,8 +131,9 @@ class BackupMnemonicViewController: UIViewController {
         alertController.addAction(backAction)
 
         let confirmAction = UIAlertAction(title: NSLocalizedString("Enter Wallet", comment: ""), style: .default, handler: { _ in
-            _ = try! GenerateWalletDataManager.shared.complete()
-            self.dismissGenerateWallet()
+            GenerateWalletDataManager.shared.complete(completion: {(appWallet, error) in
+                self.dismissGenerateWallet()
+            })
         })
         alertController.addAction(confirmAction)
         

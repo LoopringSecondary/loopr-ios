@@ -179,7 +179,7 @@
 "Cancelling" = "取消中";
 "QR Code type doesn't fit here" = "QR Code type doesn't fit here";
 "Select HD derivation path" = "Select HD derivation path";
-"Select your address" = "Select your address";
+"Select your address" = "请选择您的地址";
 "Please enter the keystore" = "请输入keystore";
 "Please input your private key" = "请输入您的私钥";
 "Enter the address" = "请输入地址";
@@ -293,7 +293,7 @@
 "successfully_used_in_creating_wallet" = "";
 "Loopr doesn't keep a copy of your mnemonic words. Make sure you back up these information immediately." = "路印钱包不会保存用户的助记词，强烈建议您在线下备份这些信息（不联网的USB硬盘或纸质存储）。";
 "Undo Last Click" = "撤销上一个选择";
-"Select Your Wallet Type" = "选择您的钱包类型";
+"Select Your Wallet Type" = "请选择您的钱包类型";
 "Mnemonic doesn't match. Please verify again." = "输入的助记词不正确，请重新验证。";
 "Please click words in order to verify your mnemonic." = "请按顺序点击助记词来确认您的助记词。";
 "Your mnemonic has been verified successfully." = "您的助记词已验证成功。";
@@ -301,3 +301,4 @@
 "Authorze Failed" = "授权失败";
 "Login Authorzation Successful! Please transfer to our website to continue." = "登录授权成功，请转至我们的网站服务，进行您的后续操作。";
 "Login Authorzation failed! Please review your signing address and try again later." = "登录授权失败，请核对您的授权地址，确认正确后请重新尝试。";
+"Initializing the wallet" = "钱包正在初始化";

@@ -98,15 +98,16 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
                     return
                 }
                 walletNameTextField.resignFirstResponder()
-                ImportWalletUsingMnemonicDataManager.shared.walletName = walletNameTextField.text ?? ""
-                try ImportWalletUsingMnemonicDataManager.shared.complete()
+                ImportWalletUsingMnemonicDataManager.shared.walletName = walletNameTextField.text!
+                importUsingMnemonic()
+                return
                 
             case .importUsingKeystore:
                 if !validation() {
                     return
                 }
                 walletNameTextField.resignFirstResponder()
-                ImportWalletUsingKeystoreDataManager.shared.walletName = walletNameTextField.text ?? ""
+                ImportWalletUsingKeystoreDataManager.shared.walletName = walletNameTextField.text!
                 try ImportWalletUsingKeystoreDataManager.shared.complete()
                 
             case .importUsingPrivateKey:
@@ -114,37 +115,38 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
                     return
                 }
                 walletNameTextField.resignFirstResponder()
-                ImportWalletUsingPrivateKeyDataManager.shared.walletName = walletNameTextField.text ?? ""
+                ImportWalletUsingPrivateKeyDataManager.shared.walletName = walletNameTextField.text!
                 try ImportWalletUsingPrivateKeyDataManager.shared.complete()
             default:
                 return
             }
         } catch AddWalletError.duplicatedAddress {
-            let alert = UIAlertController(title: NSLocalizedString("Failed to import address. The device has imported the address already.", comment: ""), message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
-                self.navigationController?.popViewController(animated: true)
-            }))
-            self.present(alert, animated: true, completion: nil)
+            alertForDuplicatedAddress()
             return
         } catch {
-            let alert = UIAlertController(title: NSLocalizedString("Failed to import address.", comment: ""), message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
-                self.navigationController?.popViewController(animated: true)
-            }))
-            self.present(alert, animated: true, completion: nil)
+            alertForError()
             return
         }
 
         // Exit the whole importing process
-        if SetupDataManager.shared.hasPresented {
-            self.dismiss(animated: true, completion: {
-                
-            })
-        } else {
-            SetupDataManager.shared.hasPresented = true
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
-        }
+        succeedAndExit()
+    }
+    
+    func importUsingMnemonic() {
+        ImportWalletUsingMnemonicDataManager.shared.complete(completion: {(appWallet, error) in
+            guard let error = error else {
+                self.succeedAndExit()
+                return
+            }
+            
+            if error == .duplicatedAddress {
+                self.alertForDuplicatedAddress()
+                return
+            } else {
+                self.alertForError()
+                return
+            }
+        })
     }
 
     func validation() -> Bool {
@@ -155,7 +157,6 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
             self.walletNameInfoLabel.shake()
             self.walletNameInfoLabel.alpha = 1.0
         }
-        
         return validWalletName
     }
     
@@ -174,6 +175,36 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
         default: ()
         }
         return true
+    }
+
+    func succeedAndExit() {
+        if SetupDataManager.shared.hasPresented {
+            self.dismiss(animated: true, completion: {
+                
+            })
+        } else {
+            SetupDataManager.shared.hasPresented = true
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+        }
+    }
+    
+    func alertForDuplicatedAddress() {
+        let alert = UIAlertController(title: NSLocalizedString("Failed to import address. The device has imported the address already.", comment: ""), message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alert, animated: true, completion: nil)
+        return
+    }
+    
+    func alertForError() {
+        let alert = UIAlertController(title: NSLocalizedString("Failed to import address.", comment: ""), message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alert, animated: true, completion: nil)
+        return
     }
 
 }

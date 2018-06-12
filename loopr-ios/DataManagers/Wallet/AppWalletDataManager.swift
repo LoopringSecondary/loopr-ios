@@ -114,13 +114,15 @@ class AppWalletDataManager {
         }
     }
 
-    func addWallet(setupWalletMethod: QRCodeMethod, walletName: String, mnemonics: [String], password: String, derivationPath: String, key: Int, isVerified: Bool) throws -> AppWallet {
+    func addWallet(setupWalletMethod: QRCodeMethod, walletName: String, mnemonics: [String], password: String, derivationPath: String, key: Int, isVerified: Bool, completionHandler: @escaping (_ appWallet: AppWallet?, _ error: AddWalletError?) -> Void) {
         guard key >= 0 else {
-            throw AddWalletError.invalidInput
+            completionHandler(nil, AddWalletError.invalidInput)
+            return
         }
         
         guard walletName.trim().count > 0 else {
-            throw AddWalletError.invalidWalletName
+            completionHandler(nil, AddWalletError.invalidInput)
+            return
         }
         
         let mnemonicString = mnemonics.joined(separator: " ")
@@ -132,7 +134,8 @@ class AppWalletDataManager {
         
         // Check if the address has been imported.
         if isDuplicatedAddress(address: address.description) {
-            throw AddWalletError.duplicatedAddress
+            completionHandler(nil, AddWalletError.duplicatedAddress)
+            return
         }
         
         // Private key
@@ -143,21 +146,27 @@ class AppWalletDataManager {
         var keystoreString: String?
         guard let data = Data(hexString: privateKey.hexString) else {
             print("Invalid private key")
-            throw AddWalletError.invalidInput
+            completionHandler(nil, AddWalletError.invalidInput)
+            return
         }
-        
-        print("Generating keystore")
-        let key = try KeystoreKey(password: password, key: data)
-        print("Finished generating keystore")
-        let keystoreData = try JSONEncoder().encode(key)
-        let json = try JSON(data: keystoreData)
-        
-        keystoreString = json.description
-        guard keystoreString != nil else {
-            print("Failed to generate keystore")
-            throw AddWalletError.invalidKeystore
+        do {
+            print("Generating keystore")
+            let key = try KeystoreKey(password: password, key: data)
+            print("Finished generating keystore")
+            let keystoreData = try JSONEncoder().encode(key)
+            let json = try JSON(data: keystoreData)
+            
+            keystoreString = json.description
+            guard keystoreString != nil else {
+                print("Failed to generate keystore")
+                completionHandler(nil, AddWalletError.invalidKeystore)
+                return
+            }
+        } catch {
+            completionHandler(nil, AddWalletError.invalidKeystore)
+            return
         }
-        
+
         let newAppWallet = AppWallet(setupWalletMethod: setupWalletMethod, address: address.description, privateKey: privateKey.hexString, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: walletName.trim(), isVerified: isVerified, active: true)
         
         // Update the new app wallet in the local storage.
@@ -166,7 +175,7 @@ class AppWalletDataManager {
         // Set the current AppWallet.
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
         
-        return newAppWallet
+        completionHandler(newAppWallet, nil)
     }
 
 }

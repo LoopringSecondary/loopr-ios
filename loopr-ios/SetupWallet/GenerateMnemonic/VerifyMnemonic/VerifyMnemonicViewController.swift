@@ -29,9 +29,6 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
     private let buttonPaddingY: CGFloat = 40
     
     private var firstAppear = true
-    
-    // TODO: deprecated
-    var blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -199,24 +196,17 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
     }
 
     func exit() {
-        let appWallet = try! GenerateWalletDataManager.shared.complete()
-
         let header = NSLocalizedString("Create_used_in_creating_wallet", comment: "used in creating wallet")
         let footer = NSLocalizedString("successfully_used_in_creating_wallet", comment: "used in creating wallet")
-        let attributedString = NSAttributedString(string: header + " " + "\(appWallet.name)" + " " + footer, attributes: [
+        let attributedString = NSAttributedString(string: header + " " + "\(GenerateWalletDataManager.shared.walletName)" + " " + footer, attributes: [
             NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getMedium(), size: 17) ?? UIFont.systemFont(ofSize: 17),
             NSAttributedStringKey.foregroundColor: UIColor.init(rgba: "#030303")
             ])
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         alertController.setValue(attributedString, forKey: "attributedMessage")
         let confirmAction = UIAlertAction(title: NSLocalizedString("Enter Wallet", comment: ""), style: .default, handler: { _ in
-            
-            self.dismissGenerateWallet()
-            
-            UIView.animate(withDuration: 0.1, animations: {
-                self.blurVisualEffectView.alpha = 0.0
-            }, completion: {(_) in
-                self.blurVisualEffectView.removeFromSuperview()
+            GenerateWalletDataManager.shared.complete(completion: {(appWallet, error) in
+                self.dismissGenerateWallet()
             })
         })
         alertController.addAction(confirmAction)

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SVProgressHUD
 
 class GenerateWalletDataManager {
     
@@ -80,20 +81,27 @@ class GenerateWalletDataManager {
     }
 
     // TODO: use error handling
-    func complete() throws -> AppWallet {
+    func complete(completion: @escaping (_ appWallet: AppWallet?, _ error: AddWalletError?) -> Void) {
         print("Verify mnemonics: \(isVerified)")
-        let appWallet = try AppWalletDataManager.shared.addWallet(setupWalletMethod: .create, walletName: walletName, mnemonics: mnemonics, password: password, derivationPath: "m/44'/60'/0'/0/x", key: 0, isVerified: isVerified)
-
-        // Reset
-        walletName = ""
-        password = ""
-        mnemonics = []
-        userInputMnemonics = []
-        isVerified = false
-
-        // Inform relay
-        LoopringAPIRequest.unlockWallet(owner: appWallet.address) { (_, _) in }
-        
-        return appWallet
+        SVProgressHUD.show(withStatus: NSLocalizedString("Initializing the wallet", comment: "") + "...")
+        DispatchQueue.global().async {
+            AppWalletDataManager.shared.addWallet(setupWalletMethod: .create, walletName: self.walletName, mnemonics: self.mnemonics, password: self.password, derivationPath: "m/44'/60'/0'/0/x", key: 0, isVerified: self.isVerified, completionHandler: {(appWallet, error) in
+                
+                // Reset
+                self.walletName = ""
+                self.password = ""
+                self.mnemonics = []
+                self.userInputMnemonics = []
+                self.isVerified = false
+                
+                // Inform relay
+                LoopringAPIRequest.unlockWallet(owner: appWallet!.address) { (_, _) in }
+                
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    completion(appWallet, error)
+                }
+            })
+        }
     }
 }
