@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SVProgressHUD
 
 class AppWalletDataManager {
     
@@ -138,9 +139,26 @@ class AppWalletDataManager {
         let privateKey = wallet.getKey(at: 0).privateKey
         print(privateKey.hexString)
         
-        // TODO: Keystore
+        // Generate keystore
+        var keystoreString: String?
+        guard let data = Data(hexString: privateKey.hexString) else {
+            print("Invalid private key")
+            throw AddWalletError.invalidInput
+        }
         
-        let newAppWallet = AppWallet(setupWalletMethod: setupWalletMethod, address: address.description, privateKey: privateKey.hexString, password: password, mnemonics: mnemonics, name: walletName.trim(), isVerified: isVerified, active: true)
+        print("Generating keystore")
+        let key = try KeystoreKey(password: password, key: data)
+        print("Finished generating keystore")
+        let keystoreData = try JSONEncoder().encode(key)
+        let json = try JSON(data: keystoreData)
+        
+        keystoreString = json.description
+        guard keystoreString != nil else {
+            print("Failed to generate keystore")
+            throw AddWalletError.invalidKeystore
+        }
+        
+        let newAppWallet = AppWallet(setupWalletMethod: setupWalletMethod, address: address.description, privateKey: privateKey.hexString, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: walletName.trim(), isVerified: isVerified, active: true)
         
         // Update the new app wallet in the local storage.
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)

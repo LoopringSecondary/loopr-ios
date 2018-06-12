@@ -12,4 +12,5 @@ enum AddWalletError: Error {
     case duplicatedAddress
     case invalidInput
     case invalidWalletName
+    case invalidKeystore
 }
