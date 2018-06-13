@@ -119,7 +119,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let cell = assetTableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? WalletBalanceTableViewCell {
             cell.startUpdateBalanceLabelTimer()
         }
-        
         let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
         buttonInNavigationBar.title = buttonTitle
         buttonInNavigationBar.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 20, titlePaddingRight: 0)
@@ -171,13 +170,23 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             }
         } else if type == .cancelOrder {
-            AuthorizeDataManager.shared._authorizeCancel { (_, error) in
-                
+            AuthorizeDataManager.shared.getCancelOrder { (_, error) in
+                let result = error == nil ? true : false
+                DispatchQueue.main.async {
+                    let vc = LoginResultViewController()
+                    vc.result = result
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             }
         } else if type == .convert {
-            AuthorizeDataManager.shared._authorizeConvert(completion: { (_, error) in
-                
-            })
+            AuthorizeDataManager.shared.getConvertTx { (_, error) in
+                let result = error == nil ? true : false
+                DispatchQueue.main.async {
+                    let vc = LoginResultViewController()
+                    vc.result = result
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
         }
     }
     

@@ -270,7 +270,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         SVProgressHUD.show(withStatus: NSLocalizedString("Approving authorization", comment: "") + "...")
         manager._authorizeOrder { (_, error) in
             guard error == nil else {
-                LoopringAPIRequest.updateSignMessage(hash: hash, status: .txFailed, completionHandler: { (_, _) in })
+                LoopringAPIRequest.notifyStatus(hash: hash, status: .txFailed, completionHandler: { (_, _) in })
                 self.complete(nil, error!)
                 return
             }
@@ -280,7 +280,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
                     return
                 }
                 UserDefaults.standard.set(false, forKey: UserDefaultsKeys.cancelledAll.rawValue)
-                LoopringAPIRequest.updateSignMessage(hash: hash, status: .accept, completionHandler: { (_, error) in
+                LoopringAPIRequest.notifyStatus(hash: hash, status: .accept, completionHandler: { (_, error) in
                     self.completion(orderHash, error)
                 })
             })
@@ -313,7 +313,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     
     @IBAction func pressedDeclineButton(_ sender: UIButton) {
         guard isSigning, let hash = AuthorizeDataManager.shared.submitHash else { return }
-        LoopringAPIRequest.updateSignMessage(hash: hash, status: .reject) { (_, _) in
+        LoopringAPIRequest.notifyStatus(hash: hash, status: .reject) { (_, _) in
             DispatchQueue.main.async {
                 self.navigationController?.popToRootViewController(animated: true)
             }

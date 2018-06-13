@@ -30,7 +30,7 @@ class AuthorizeDataManager {
     
     func getSubmitOrder(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
         guard let hash = self.submitHash else { return }
-        LoopringAPIRequest.updateSignMessage(hash: hash, status: .received) { _, _ in }
+        LoopringAPIRequest.notifyStatus(hash: hash, status: .received) { _, _ in }
         LoopringAPIRequest.getSignMessage(message: hash) { (data, error) in
             guard let data = data, error == nil else { return }
             self.parseSubmitOrder(from: data)
@@ -40,6 +40,7 @@ class AuthorizeDataManager {
     
     func getCancelOrder(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
         guard let hash = self.cancelHash else { return }
+        LoopringAPIRequest.notifyStatus(hash: hash, status: .received) { _, _ in }
         LoopringAPIRequest.getSignMessage(message: hash) { (data, error) in
             guard let data = data, error == nil else { return }
             self.parseCancelOrder(from: data, completion: completion)
@@ -48,6 +49,7 @@ class AuthorizeDataManager {
     
     func getConvertTx(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
         guard let hash = self.convertHash else { return }
+        LoopringAPIRequest.notifyStatus(hash: hash, status: .received) { _, _ in }
         LoopringAPIRequest.getSignMessage(message: hash) { (data, error) in
             guard let data = data, error == nil else { return }
             self.parseConvertTx(from: data, completion: completion)
@@ -120,26 +122,28 @@ class AuthorizeDataManager {
     }
 
     func _authorizeLogin(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
-        guard let owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address,
-            let uuid = self.loginUUID else { return }
-        let timestamp = Int(Date().timeIntervalSince1970).description
-        if let signature = _signTimestamp(timestamp: timestamp) {
-            LoopringAPIRequest.updateScanLogin(owner: owner, uuid: uuid, signature: signature, timestamp: timestamp, completionHandler: completion)
-        }
+        guard let uuid = self.loginUUID else { return }
+        LoopringAPIRequest.notifyLogin(uuid: uuid, completionHandler: completion)
     }
     
     func _authorizeCancel(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
         guard let owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address,
-            let cancelOrder = self.cancelOrder else { return }
+            let hash = self.cancelHash, let cancelOrder = self.cancelOrder else { return }
         guard owner.lowercased() == cancelOrder.owner.lowercased() else { return }
         let timestamp = cancelOrder.timestamp.description
         if let signature = _signTimestamp(timestamp: timestamp) {
-            LoopringAPIRequest.cancelOrder(orderHash: cancelOrder.orderHash, owner: cancelOrder.owner, type: cancelOrder.type, cutoff: cancelOrder.cutoff, tokenS: cancelOrder.tokenS, tokenB: cancelOrder.tokenB, signature: signature, timestamp: timestamp, completionHandler: completion)
+            LoopringAPIRequest.cancelOrder(orderHash: cancelOrder.orderHash, owner: cancelOrder.owner, type: cancelOrder.type, cutoff: cancelOrder.cutoff, tokenS: cancelOrder.tokenS, tokenB: cancelOrder.tokenB, signature: signature, timestamp: timestamp) { (_, error) in
+                guard error == nil else { completion(nil, error); return }
+                LoopringAPIRequest.notifyStatus(hash: hash, status: .accept, completionHandler: completion)
+            }
         }
     }
     
     func _authorizeConvert(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
-        guard let rawTx = self.convertTx else { return }
-        SendCurrentAppWalletDataManager.shared._transfer(rawTx: rawTx, completion: completion)
+        guard let hash = self.convertHash, let rawTx = self.convertTx else { return }
+        SendCurrentAppWalletDataManager.shared._transfer(rawTx: rawTx) { (_, error) in
+            guard error == nil else { completion(nil, error); return }
+            LoopringAPIRequest.notifyStatus(hash: hash, status: .accept, completionHandler: completion)
+        }
     }
 }

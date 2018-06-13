@@ -527,25 +527,8 @@ class LoopringAPIRequest {
     
     static func getSignMessage(message hash: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
-        body["method"] = "loopring_getOrderTransfer"
-        body["params"] = [["hash": hash]]
-        body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
-            guard let data = data, error == nil else {
-                print("error=\(String(describing: error))")
-                completionHandler(nil, error)
-                return
-            }
-            let json = JSON(data)
-            let result = json["result"]["origin"].stringValue
-            completionHandler(result, nil)
-        }
-    }
-    
-    static func updateSignMessage(hash: String, status: SignStatus, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
-        var body: JSON = JSON()
-        body["method"] = "loopring_updateOrderTransfer"
-        body["params"] = [["hash": hash, "status": status.description]]
+        body["method"] = "loopring_getTempStore"
+        body["params"] = [["key": hash]]
         body["id"] = JSON(UUID().uuidString)
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
@@ -559,10 +542,33 @@ class LoopringAPIRequest {
         }
     }
     
-    static func updateScanLogin(owner: String, uuid: String, signature: SignatureData, timestamp: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
+    static func notifyLogin(uuid: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        guard let owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address else {
+            return
+        }
         var body: JSON = JSON()
-        body["params"] = [["uuid": uuid, "sign": ["timestamp": timestamp, "v": Int(signature.v)!, "r": signature.r, "s": signature.s, "owner": owner]]]
-        self.invoke(method: "loopring_notifyScanLogin", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
+        var data: JSON = JSON()
+        data["uuid"] = JSON(uuid)
+        body["params"] = [["owner": owner, "body": data.description]]
+        self.invoke(method: "loopring_notifyCirculr", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
+            guard error == nil && data != nil else {
+                completionHandler(nil, error!)
+                return
+            }
+            completionHandler(data!.respond, nil)
+        }
+    }
+    
+    static func notifyStatus(hash: String, status: SignStatus, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        guard let owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address else {
+            return
+        }
+        var body: JSON = JSON()
+        var data: JSON = JSON()
+        data["hash"] = JSON(hash)
+        data["status"] = JSON(status.description)
+        body["params"] = [["owner": owner, "body": data.description]]
+        self.invoke(method: "loopring_notifyCirculr", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
             guard error == nil && data != nil else {
                 completionHandler(nil, error!)
                 return

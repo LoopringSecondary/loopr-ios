@@ -83,8 +83,8 @@ enum QRCodeMethod: String, CustomStringConvertible {
     static func isCancelOrder(content: String) -> Bool {
         if let data = content.data(using: .utf8) {
             let json = JSON(data)
-            if json["type"] == "cancel" {
-                AuthorizeDataManager.shared.loginUUID = json["value"].stringValue
+            if json["type"] == "cancelOrder" {
+                AuthorizeDataManager.shared.cancelHash = json["value"].stringValue
                 return true
             }
         }
@@ -95,7 +95,7 @@ enum QRCodeMethod: String, CustomStringConvertible {
         if let data = content.data(using: .utf8) {
             let json = JSON(data)
             if json["type"] == "convert" {
-                AuthorizeDataManager.shared.loginUUID = json["value"].stringValue
+                AuthorizeDataManager.shared.convertHash = json["value"].stringValue
                 return true
             }
         }
