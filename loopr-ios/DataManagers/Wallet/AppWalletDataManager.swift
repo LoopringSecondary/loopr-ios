@@ -126,10 +126,10 @@ class AppWalletDataManager {
         }
         
         let mnemonicString = mnemonics.joined(separator: " ")
-        let wallet = Wallet(mnemonic: mnemonicString, password: password)
+        let wallet = Wallet(mnemonic: mnemonicString, password: password, path: derivationPath)
         
         // Public address
-        let address = wallet.getKey(at: 0).address
+        let address = wallet.getKey(at: key).address
         print(address.description)
         
         // Check if the address has been imported.

@@ -132,7 +132,13 @@ class BackupMnemonicViewController: UIViewController {
 
         let confirmAction = UIAlertAction(title: NSLocalizedString("Enter Wallet", comment: ""), style: .default, handler: { _ in
             GenerateWalletDataManager.shared.complete(completion: {(appWallet, error) in
-                self.dismissGenerateWallet()
+                if error == nil {
+                    self.dismissGenerateWallet()
+                } else if error == .duplicatedAddress {
+                    self.alertForDuplicatedAddress()
+                } else {
+                    self.alertForError()
+                }
             })
         })
         alertController.addAction(confirmAction)

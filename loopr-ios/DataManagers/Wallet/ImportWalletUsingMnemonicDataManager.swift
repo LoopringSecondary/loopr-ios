@@ -58,10 +58,10 @@ class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
         SVProgressHUD.show(withStatus: NSLocalizedString("Initializing the wallet", comment: "") + "...")
         DispatchQueue.global().async {
             AppWalletDataManager.shared.addWallet(setupWalletMethod: .importUsingMnemonic, walletName: self.walletName, mnemonics: self.mnemonic.components(separatedBy: " "), password: self.password, derivationPath: pathValue, key: self.selectedKey, isVerified: true, completionHandler: {(appWallet, error) in
-
-                // Inform relay
-                LoopringAPIRequest.unlockWallet(owner: appWallet!.address) { (_, _) in }
-                
+                if error == nil {
+                    // Inform relay
+                    LoopringAPIRequest.unlockWallet(owner: appWallet!.address) { (_, _) in }
+                }
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
                     completion(appWallet, error)
