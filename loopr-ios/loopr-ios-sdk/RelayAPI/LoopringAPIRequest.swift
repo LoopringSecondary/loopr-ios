@@ -500,6 +500,15 @@ class LoopringAPIRequest {
     }
     
     static func cancelOrder(orderHash: String, owner: String, type: CancelType, cutoff: Int64!, tokenS: String!, tokenB: String!, signature: SignatureData, timestamp: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        body["params"] = [["orderHash": orderHash, "type": type.rawValue, "cutoff": cutoff, "tokenS": tokenS, "tokenB": tokenB, "sign": ["timestamp": timestamp, "v": Int(signature.v)!, "r": signature.r, "s": signature.s, "owner": owner]]]
+        self.invoke(method: "loopring_flexCancelOrder", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
+            guard error == nil && data != nil else {
+                completionHandler(nil, error!)
+                return
+            }
+            completionHandler(data!.respond, nil)
+        }
     }
     
     static func submitRing(makerOrderHash: String, takerOrderHash: String, rawTx: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {

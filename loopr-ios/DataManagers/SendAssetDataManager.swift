@@ -45,48 +45,28 @@ class SendCurrentAppWalletDataManager {
     }
 
     func getNonceFromServerSynchronous() {
-        let start = Date()
         print("Start getNonceFromServerSynchronous")
         let semaphore = DispatchSemaphore(value: 0)
-        
         if let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
-            EthereumAPIRequest.eth_getTransactionCount(data: address, block: BlockTag.pending, completionHandler: { (data, error) in
-                print("Receive callback in getNonceFromServerSynchronous")
-                guard error == nil, let data = data else {
+            LoopringAPIRequest.getNonce(owner: address) { (result, error) in
+                guard error == nil, let data = result else {
                     return
                 }
-                if data.respond.isHex() {
-                    self.nonce = Int64(data.respond.dropFirst(2), radix: 16)!
-                } else {
-                    self.nonce = Int64(data.respond)!
-                }
-                print("Current nounce: \(self.nonce)")
-                semaphore.signal()
-                let end = Date()
-                let timeInterval: Double = end.timeIntervalSince(start)
-                print("Time to getNonceFromServerSynchronous: \(timeInterval) seconds")
-            })
+                self.nonce = Int64(data)!
+            }
+            semaphore.signal()
         }
         _ = semaphore.wait(timeout: .distantFuture)
     }
 
     func getNonceFromServer() {
-        let start = Date()
         if let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
-            EthereumAPIRequest.eth_getTransactionCount(data: address, block: BlockTag.pending, completionHandler: { (data, error) in
-                guard error == nil, let data = data else {
+            LoopringAPIRequest.getNonce(owner: address) { (result, error) in
+                guard error == nil, let data = result else {
                     return
                 }
-                if data.respond.isHex() {
-                    self.nonce = Int64(data.respond.dropFirst(2), radix: 16)!
-                } else {
-                    self.nonce = Int64(data.respond)!
-                }
-                print("Current nounce: \(self.nonce)")
-                let end = Date()
-                let timeInterval: Double = end.timeIntervalSince(start)
-                print("Time to getNonceFromServer: \(timeInterval) seconds. Current nonce is: \(self.nonce)")
-            })
+                self.nonce = Int64(data)!
+            }
         }
     }
     

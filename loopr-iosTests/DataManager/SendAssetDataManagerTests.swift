@@ -28,7 +28,11 @@ class SendCurrentAppWalletDataManagerTests: XCTestCase {
     }
     
     func test() {
+        let start = Date()
         SendCurrentAppWalletDataManager.shared.getNonceFromServerSynchronous()
+        let end = Date()
+        let timeInterval: Double = end.timeIntervalSince(start)
+        print("##########Time to getNonceFromServerSynchronous: \(timeInterval) seconds############")
     }
     
 }

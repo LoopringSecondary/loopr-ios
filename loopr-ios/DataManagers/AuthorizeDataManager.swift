@@ -131,9 +131,7 @@ class AuthorizeDataManager {
     func _authorizeCancel(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
         guard let owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address,
             let cancelOrder = self.cancelOrder else { return }
-        guard owner.lowercased() == cancelOrder.owner.lowercased() else {
-            return
-        }
+        guard owner.lowercased() == cancelOrder.owner.lowercased() else { return }
         let timestamp = cancelOrder.timestamp.description
         if let signature = _signTimestamp(timestamp: timestamp) {
             LoopringAPIRequest.cancelOrder(orderHash: cancelOrder.orderHash, owner: cancelOrder.owner, type: cancelOrder.type, cutoff: cancelOrder.cutoff, tokenS: cancelOrder.tokenS, tokenB: cancelOrder.tokenB, signature: signature, timestamp: timestamp, completionHandler: completion)
