@@ -15,22 +15,46 @@ class AuthorizeDataManager {
     // login authorization
     var loginUUID: String!
     
-    // order authorization
-    var signHash: String!
-    var signOrder: OriginalOrder!
+    // submit order authorization
+    var submitHash: String!
+    var submitOrder: OriginalOrder!
     var signTransactions: [String: [RawTransaction]]!
     
-    func getOrder(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
-        guard let hash = self.signHash else { return }
+    // cancel order authorization
+    var cancelHash: String!
+    var cancelOrder: CancelOrder!
+    
+    // convert authorization
+    var convertHash: String!
+    var convertTx: RawTransaction!
+    
+    func getSubmitOrder(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        guard let hash = self.submitHash else { return }
         LoopringAPIRequest.updateSignMessage(hash: hash, status: .received) { _, _ in }
         LoopringAPIRequest.getSignMessage(message: hash) { (data, error) in
             guard let data = data, error == nil else { return }
-            self.parse(from: data)
+            self.parseSubmitOrder(from: data)
             completion(data, nil)
         }
     }
     
-    func parse(from data: String) {
+    func getCancelOrder(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        guard let hash = self.cancelHash else { return }
+        LoopringAPIRequest.getSignMessage(message: hash) { (data, error) in
+            guard let data = data, error == nil else { return }
+            self.parseCancelOrder(from: data, completion: completion)
+        }
+    }
+    
+    func getConvertTx(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        guard let hash = self.convertHash else { return }
+        LoopringAPIRequest.getSignMessage(message: hash) { (data, error) in
+            guard let data = data, error == nil else { return }
+            self.parseConvertTx(from: data, completion: completion)
+        }
+    }
+    
+    func parseSubmitOrder(from data: String) {
         self.signTransactions = [:]
         if let data = data.data(using: .utf8) {
             for subJson in JSON(data).arrayValue {
@@ -41,7 +65,7 @@ class AuthorizeDataManager {
                     order.side = side
                     order.market = market
                     PlaceOrderDataManager.shared.completeOrder(&order)
-                    self.signOrder = order
+                    self.submitOrder = order
                 } else if subJson["type"] == "tx" {
                     let tx = SignRawTransaction(json: subJson)
                     if self.signTransactions[tx.token] == nil {
@@ -51,6 +75,34 @@ class AuthorizeDataManager {
                 }
             }
         }
+    }
+    
+    func parseCancelOrder(from data: String, completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        self.cancelOrder = nil
+        if let data = data.data(using: .utf8) {
+            let json = JSON(data)
+            self.cancelOrder = CancelOrder(json: json)
+            if self.cancelOrder.isValid() {
+                self._authorizeCancel(completion: completion)
+            }
+        }
+    }
+    
+    func parseConvertTx(from data: String, completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        if let data = data.data(using: .utf8) {
+            let json = JSON(data)
+            self.convertTx = RawTransaction(json: json)
+            self._authorizeConvert(completion: completion)
+        }
+    }
+    
+    func _signTimestamp(timestamp: String) -> SignatureData? {
+        var data = Data()
+        SendCurrentAppWalletDataManager.shared._keystore()
+        let timestamp = timestamp.utf8
+        data.append(contentsOf: Array(timestamp))
+        let (signature, _) = web3swift.sign(message: data)
+        return signature
     }
     
     func _authorizeOrder(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
@@ -66,16 +118,30 @@ class AuthorizeDataManager {
             }
         }
     }
-    
+
     func _authorizeLogin(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
         guard let owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address,
             let uuid = self.loginUUID else { return }
-        var data = Data()
-        SendCurrentAppWalletDataManager.shared._keystore()
         let timestamp = Int(Date().timeIntervalSince1970).description
-        data.append(contentsOf: Array(timestamp.utf8))
-        if case (let signature?, _) = web3swift.sign(message: data) {
+        if let signature = _signTimestamp(timestamp: timestamp) {
             LoopringAPIRequest.updateScanLogin(owner: owner, uuid: uuid, signature: signature, timestamp: timestamp, completionHandler: completion)
         }
+    }
+    
+    func _authorizeCancel(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        guard let owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address,
+            let cancelOrder = self.cancelOrder else { return }
+        guard owner.lowercased() == cancelOrder.owner.lowercased() else {
+            return
+        }
+        let timestamp = cancelOrder.timestamp.description
+        if let signature = _signTimestamp(timestamp: timestamp) {
+            LoopringAPIRequest.cancelOrder(orderHash: cancelOrder.orderHash, owner: cancelOrder.owner, type: cancelOrder.type, cutoff: cancelOrder.cutoff, tokenS: cancelOrder.tokenS, tokenB: cancelOrder.tokenB, signature: signature, timestamp: timestamp, completionHandler: completion)
+        }
+    }
+    
+    func _authorizeConvert(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        guard let rawTx = self.convertTx else { return }
+        SendCurrentAppWalletDataManager.shared._transfer(rawTx: rawTx, completion: completion)
     }
 }

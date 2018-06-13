@@ -58,21 +58,43 @@ enum QRCodeMethod: String, CustomStringConvertible {
         }
     }
     
-    static func isAuthorization(content: String) -> Bool {
+    static func isSubmitOrder(content: String) -> Bool {
         if let data = content.data(using: .utf8) {
             let json = JSON(data)
             if json["type"] == "sign" {
-                AuthorizeDataManager.shared.signHash = json["id"].stringValue
+                AuthorizeDataManager.shared.submitHash = json["id"].stringValue
                 return true
             }
         }
         return false
     }
     
-    static func isLoginUUID(content: String) -> Bool {
+    static func isLogin(content: String) -> Bool {
         if let data = content.data(using: .utf8) {
             let json = JSON(data)
             if json["type"] == "UUID" {
+                AuthorizeDataManager.shared.loginUUID = json["value"].stringValue
+                return true
+            }
+        }
+        return false
+    }
+    
+    static func isCancelOrder(content: String) -> Bool {
+        if let data = content.data(using: .utf8) {
+            let json = JSON(data)
+            if json["type"] == "cancel" {
+                AuthorizeDataManager.shared.loginUUID = json["value"].stringValue
+                return true
+            }
+        }
+        return false
+    }
+    
+    static func isConvert(content: String) -> Bool {
+        if let data = content.data(using: .utf8) {
+            let json = JSON(data)
+            if json["type"] == "convert" {
                 AuthorizeDataManager.shared.loginUUID = json["value"].stringValue
                 return true
             }

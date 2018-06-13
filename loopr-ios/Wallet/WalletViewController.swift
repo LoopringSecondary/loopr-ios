@@ -151,9 +151,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func setResultOfScanningQRCode(valueSent: String, type: QRCodeType) {
-        if type == .authorization {
-            AuthorizeDataManager.shared.getOrder { (_, error) in
-                guard error == nil, let order = AuthorizeDataManager.shared.signOrder else { return }
+        if type == .submitOrder {
+            AuthorizeDataManager.shared.getSubmitOrder { (_, error) in
+                guard error == nil, let order = AuthorizeDataManager.shared.submitOrder else { return }
                 DispatchQueue.main.async {
                     let vc = PlaceOrderConfirmationViewController()
                     vc.order = order
@@ -161,7 +161,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
-        } else if type == .uuid {
+        } else if type == .login {
             AuthorizeDataManager.shared._authorizeLogin { (_, error) in
                 let result = error == nil ? true : false
                 DispatchQueue.main.async {
@@ -170,6 +170,14 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
+        } else if type == .cancelOrder {
+            AuthorizeDataManager.shared._authorizeCancel { (_, error) in
+                
+            }
+        } else if type == .convert {
+            AuthorizeDataManager.shared._authorizeConvert(completion: { (_, error) in
+                
+            })
         }
     }
     
@@ -349,7 +357,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
-
 }
 
 extension WalletViewController: TableViewReorderDelegate {

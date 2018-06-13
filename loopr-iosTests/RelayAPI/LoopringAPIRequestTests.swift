@@ -308,4 +308,18 @@ class LoopringAPIRequestTests: XCTestCase {
 //        }
 //        wait(for: [expectation], timeout: 10.0)
     }
+    
+    func testGetNonce() {
+        let expectation = XCTestExpectation()
+        LoopringAPIRequest.getNonce(owner: testAddress) { (result, error) in
+            guard error == nil && result != nil else {
+                print("error=\(String(describing: error))")
+                XCTFail()
+                return
+            }
+            print(result!)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
 }

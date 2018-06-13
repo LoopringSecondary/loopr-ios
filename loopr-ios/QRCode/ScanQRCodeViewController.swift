@@ -18,8 +18,10 @@ enum QRCodeType: String {
     case mnemonic = "Mnemonic"
     case keystore = "Keystore"
     case privateKey = "Private Key"
-    case authorization = "Authorization"
-    case uuid = "UUID"
+    case login = "UUID"
+    case convert = "Convert"
+    case submitOrder = "Submit Order"
+    case cancelOrder = "Cancel Order"
     case undefined = "Undefined"
     
     var detectedDescription: String {
@@ -28,8 +30,10 @@ enum QRCodeType: String {
         case .mnemonic: return NSLocalizedString("Mnemonic detected", comment: "")
         case .keystore: return NSLocalizedString("Keystore detected", comment: "")
         case .privateKey: return NSLocalizedString("Private key detected", comment: "")
-        case .authorization: return NSLocalizedString("Authorization message detected", comment: "")
-        case .uuid: return NSLocalizedString("Login message detected", comment: "")
+        case .submitOrder: return NSLocalizedString("Authorization message detected", comment: "")
+        case .login: return NSLocalizedString("Login message detected", comment: "")
+        case .cancelOrder: return ""
+        case .convert: return ""
         case .undefined: return NSLocalizedString("Undefined", comment: "")
         }
     }
@@ -261,10 +265,14 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     func qrCodeContentDetector (qrContent: String) -> QRCodeType {
         if qrContent.starts (with: "0x") {
             return QRCodeType.address
-        } else if QRCodeMethod.isAuthorization(content: qrContent) {
-            return QRCodeType.authorization
-        } else if QRCodeMethod.isLoginUUID(content: qrContent) {
-            return QRCodeType.uuid
+        } else if QRCodeMethod.isSubmitOrder(content: qrContent) {
+            return QRCodeType.submitOrder
+        } else if QRCodeMethod.isLogin(content: qrContent) {
+            return QRCodeType.login
+        } else if QRCodeMethod.isCancelOrder(content: qrContent) {
+            return QRCodeType.cancelOrder
+        } else if QRCodeMethod.isConvert(content: qrContent) {
+            return QRCodeType.convert
         } else if QRCodeMethod.isMnemonicValid(mnemonic: qrContent) {
             return QRCodeType.mnemonic
         } else if QRCodeMethod.isPrivateKey(key: qrContent) {
@@ -274,5 +282,4 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         }
         return QRCodeType.undefined
     }
-
 }
