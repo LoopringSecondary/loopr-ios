@@ -136,11 +136,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if AuthenticationDataManager.shared.getPasscodeSetting() && !AuthenticationDataManager.shared.hasLogin {
             let authenticationViewController: AuthenticationViewController? = AuthenticationViewController(nibName: nil, bundle: nil)
             if let rootViewController = self.window?.rootViewController {
-                rootViewController.present(authenticationViewController!, animated: true) {
-                }
+                rootViewController.present(authenticationViewController!, animated: true) {}
             }
         }
-
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
