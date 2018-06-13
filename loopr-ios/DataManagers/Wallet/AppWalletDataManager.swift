@@ -114,6 +114,7 @@ class AppWalletDataManager {
         }
     }
 
+    // Used in GenerateWallet and ImportMnemonic
     func addWallet(setupWalletMethod: QRCodeMethod, walletName: String, mnemonics: [String], password: String, derivationPath: String, key: Int, isVerified: Bool, completionHandler: @escaping (_ appWallet: AppWallet?, _ error: AddWalletError?) -> Void) {
         guard key >= 0 else {
             completionHandler(nil, AddWalletError.invalidInput)
@@ -143,7 +144,7 @@ class AppWalletDataManager {
         print(privateKey.hexString)
         
         // Generate keystore
-        var keystoreString: String?
+        var keystoreString: String
         guard let data = Data(hexString: privateKey.hexString) else {
             print("Invalid private key")
             completionHandler(nil, AddWalletError.invalidInput)
@@ -151,13 +152,19 @@ class AppWalletDataManager {
         }
         do {
             print("Generating keystore")
-            let key = try KeystoreKey(password: password, key: data)
+            
+            var localPassword = password
+            if password == "" {
+                localPassword = "123456"
+            }
+            
+            let key = try KeystoreKey(password: localPassword, key: data)
             print("Finished generating keystore")
             let keystoreData = try JSONEncoder().encode(key)
             let json = try JSON(data: keystoreData)
             
             keystoreString = json.description
-            guard keystoreString != nil else {
+            guard keystoreString != "" else {
                 print("Failed to generate keystore")
                 completionHandler(nil, AddWalletError.invalidKeystore)
                 return

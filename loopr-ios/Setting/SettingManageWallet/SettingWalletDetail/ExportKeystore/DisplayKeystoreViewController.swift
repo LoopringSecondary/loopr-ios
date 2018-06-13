@@ -11,7 +11,7 @@ import NotificationBannerSwift
 
 class DisplayKeystoreViewController: UIViewController {
     
-    var appWallet: AppWallet!
+    var keystore: String = ""
     
     @IBOutlet weak var keystoreTextView: UITextView!
     @IBOutlet weak var copyButton: UIButton!
@@ -21,7 +21,7 @@ class DisplayKeystoreViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        keystoreTextView.text = appWallet.getKeystore().description
+        keystoreTextView.text = keystore
         
         keystoreTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
         // privateKeyTextView.contentOffset = CGPoint(x: 0, y: -10)
@@ -43,7 +43,7 @@ class DisplayKeystoreViewController: UIViewController {
 
     @IBAction func pressedCopyButton(_ sender: Any) {
         print("pressedCopyButton")
-        UIPasteboard.general.string = appWallet.getKeystore().description
+        UIPasteboard.general.string = keystore
         let banner = NotificationBanner.generate(title: "Copy keystore to clipboard successfully!", style: .success)
         banner.duration = 1
         banner.show()

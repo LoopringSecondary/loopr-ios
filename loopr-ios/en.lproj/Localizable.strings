@@ -305,3 +305,5 @@
 "Login Authorzation failed! Please review your signing address and try again later." = "Login Authorzation failed! Please review your signing address and try again later.";
 "Initializing the wallet" = "Initializing the wallet";
 "Do you wish to handle the qrcode?" = "Do you wish to handle the qrcode?";
+"Failed to import address." = "Failed to import address.";
+"Exporting keystore" = "Exporting keystore";

@@ -303,3 +303,5 @@
 "Login Authorzation failed! Please review your signing address and try again later." = "登录授权失败，请核对您的授权地址，确认正确后请重新尝试。";
 "Initializing the wallet" = "钱包正在初始化";
 "Do you wish to handle the qrcode?" = "您是否希望要解析该并处理二维码？";
+"Failed to import address." = "导入钱包失败";
+"Exporting keystore" = "正在导出keystore";

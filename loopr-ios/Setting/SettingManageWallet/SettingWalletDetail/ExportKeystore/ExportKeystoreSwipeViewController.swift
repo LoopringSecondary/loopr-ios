@@ -10,7 +10,7 @@ import UIKit
 
 class ExportKeystoreSwipeViewController: SwipeViewController {
     
-    var appWallet: AppWallet!
+    var keystore: String = ""
 
     private var viewControllers: [UIViewController] = []
     var options = SwipeViewOptions()
@@ -23,10 +23,10 @@ class ExportKeystoreSwipeViewController: SwipeViewController {
         setBackButton()
 
         let displayKeystoreViewController = DisplayKeystoreViewController()
-        displayKeystoreViewController.appWallet = appWallet
+        displayKeystoreViewController.keystore = keystore
         
         let displayKeystoreInQRCodeViewController = DisplayKeystoreInQRCodeViewController()
-        displayKeystoreInQRCodeViewController.appWallet = appWallet
+        displayKeystoreInQRCodeViewController.keystore = keystore
         
         viewControllers = [displayKeystoreViewController, displayKeystoreInQRCodeViewController]
 

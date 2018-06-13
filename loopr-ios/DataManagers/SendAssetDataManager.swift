@@ -116,7 +116,7 @@ class SendCurrentAppWalletDataManager {
         
         let gethKeystore = GethKeyStore.init(keydir, scryptN: GethLightScryptN, scryptP: GethLightScryptP)!
         
-        gethAccount = EthAccountCoordinator.default.launch(keystore: gethKeystore, password: wallet!.getPassword())
+        gethAccount = EthAccountCoordinator.default.launch(keystore: gethKeystore, password: wallet!.getKeystorePassword())
     
         print("current address: \(gethAccount!.getAddress().getHex())")
         
@@ -130,7 +130,7 @@ class SendCurrentAppWalletDataManager {
         print("################### end ###################")
         
         print("################### keystore password ###################")
-        print(wallet!.getPassword())
+        print(wallet!.getKeystorePassword())
         print("################### end ###################")
 
         let end = Date()
@@ -275,7 +275,7 @@ class SendCurrentAppWalletDataManager {
     func _sign(data: Data, address: GethAddress, amount: GethBigInt, gasLimit: GethBigInt, completion: @escaping (String?, Error?) -> Void) -> String? {
         _keystore()
         let gasPrice = GasDataManager.shared.getGasPriceInWei()
-        let password = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getPassword()
+        let password = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getKeystorePassword()
         let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: self.nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: password)
         do {
             if let signedTransactionData = try signedTransaction?.encodeRLP() {
@@ -307,7 +307,7 @@ class SendCurrentAppWalletDataManager {
     
     func _sign(rawTx: RawTransaction, completion: @escaping (_ txHash: String?, _ error: Error?) -> Void) -> String? {
         _keystore()
-        let password = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getPassword()
+        let password = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getKeystorePassword()
         if let data = Data(hexString: rawTx.data),
             let amount = GethBigInt.generate(rawTx.value),
             let address = GethAddress.init(fromHex: rawTx.to),

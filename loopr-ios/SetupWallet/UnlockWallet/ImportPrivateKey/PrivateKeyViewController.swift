@@ -122,7 +122,7 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
     
     func generateTempKeystore() {
         var isSucceeded: Bool = false
-        SVProgressHUD.show(withStatus: NSLocalizedString("Exporting keystore", comment: "") + "...")
+        SVProgressHUD.show(withStatus: NSLocalizedString("Initializing the wallet", comment: "") + "...")
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
         DispatchQueue.global().async {

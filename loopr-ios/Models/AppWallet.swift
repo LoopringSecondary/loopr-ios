@@ -25,10 +25,10 @@ class AppWallet: NSObject, NSCoding {
     private final var password: String
     
     final var mnemonics: [String]
-    private var keystoreString: String?
+    private final let keystoreString: String
     
     // TODO: For some reaons, we couldn't reuse it. Improve in the future.
-    private var gethKeystoreObject: GethKeyStore?
+    // private var gethKeystoreObject: GethKeyStore?
 
     // Only used when the wallet is imported using a private key
     private final let keystorePassword: String = "123456"
@@ -47,7 +47,7 @@ class AppWallet: NSObject, NSCoding {
     var assetSequence: [String] = []
     var assetSequenceInHideSmallAssets: [String] = []
     
-    init(setupWalletMethod: QRCodeMethod, address: String, privateKey: String, password: String, mnemonics: [String] = [], keystoreString: String? = nil, name: String, isVerified: Bool, active: Bool, totalCurrency: Double = 0, assetSequence: [String] = [], assetSequenceInHideSmallAssets: [String] = []) {
+    init(setupWalletMethod: QRCodeMethod, address: String, privateKey: String, password: String, mnemonics: [String] = [], keystoreString: String, name: String, isVerified: Bool, active: Bool, totalCurrency: Double = 0, assetSequence: [String] = [], assetSequenceInHideSmallAssets: [String] = []) {
         self.setupWalletMethod = setupWalletMethod
         self.address = address
         self.privateKey = privateKey
@@ -142,26 +142,34 @@ class AppWallet: NSObject, NSCoding {
     }
     */
     
+    /*
     func getGethKeystoreObject() -> NSObject? {
         return self.gethKeystoreObject
     }
+    */
     
+    /*
     func setKeystore(keystoreString: String) {
         self.keystoreString = keystoreString
     }
+    */
 
     func getKeystore() -> String {
-        return keystoreString!
+        return keystoreString
     }
     
-    func getPassword() -> String {
-        if setupWalletMethod == .importUsingPrivateKey {
+    func getKeystorePassword() -> String {
+        if setupWalletMethod == .importUsingPrivateKey || (setupWalletMethod == .importUsingMnemonic && password == "") {
             return keystorePassword
         } else {
             return password
         }
     }
-    
+
+    func getPassword() -> String {
+        return password
+    }
+
     static func == (lhs: AppWallet, rhs: AppWallet) -> Bool {
         return lhs.address == rhs.address && lhs.privateKey == rhs.privateKey
     }
@@ -208,7 +216,11 @@ class AppWallet: NSObject, NSCoding {
             return item.trim() != ""
         }
         
-        if let address = address, let privateKey = privateKey, let password = password, let mnemonics = mnemonics, let name = name {
+        if let address = address, let privateKey = privateKey, let password = password, let mnemonics = mnemonics, let keystoreString = keystoreString, let name = name {
+            // Verify keystore
+            if keystoreString == "" || !QRCodeMethod.isKeystore(content: keystoreString ?? "") {
+                return nil
+            }
             self.init(setupWalletMethod: setupWalletMethod, address: address, privateKey: privateKey, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: name, isVerified: isVerified, active: active, assetSequence: unique(filteredAssetSequence), assetSequenceInHideSmallAssets: unique(filteredAssetSequenceInHideSmallAssets))
         } else {
             return nil

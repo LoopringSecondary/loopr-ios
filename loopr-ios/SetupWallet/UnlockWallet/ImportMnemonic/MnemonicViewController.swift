@@ -147,8 +147,9 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
     
     @IBAction func pressUnlockButton(_ sender: Any) {
         print("pressUnlockButton")
-        
+        let password = passwordTextField.text ?? ""
         let mnemonic = mnemonicWordTextView.text.trim()
+
         guard Mnemonic.isValid(mnemonic) else {
             let notificationTitle = NSLocalizedString("Invalid mnemonic. Please enter again.", comment: "")
             let banner = NotificationBanner.generate(title: notificationTitle, style: .danger)
@@ -158,24 +159,10 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         }
         
         ImportWalletUsingMnemonicDataManager.shared.mnemonic = mnemonicWordTextView.text.trim()
-        ImportWalletUsingMnemonicDataManager.shared.password = passwordTextField.text?.trim() ?? ""
+        ImportWalletUsingMnemonicDataManager.shared.password = password
 
         let viewController = MnemonicEnterDerivationPathViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
-
-        /*
-        AppWalletDataManager.shared.unlockWallet(mnemonic: mnemonicWordTextView.text)
-        
-        if SetupDataManager.shared.hasPresented {
-            self.dismiss(animated: true, completion: {
-                
-            })
-        } else {
-            SetupDataManager.shared.hasPresented = true
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
-        }
-        */
     }
 
 }

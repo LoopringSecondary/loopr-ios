@@ -13,6 +13,7 @@ import SVProgressHUD
 class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDelegate {
 
     var appWallet: AppWallet!
+    var keystore: String = ""
 
     var titleLabel: UILabel =  UILabel()
 
@@ -80,26 +81,16 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
 
     @objc func nextButtonPressed(_ sender: Any) {
         print("nextButtonPressed")
-        
-        var validPassword = true
         let password = passwordTextField.text ?? ""
-        if password.trim() == "" {
-            validPassword = false
-            self.passwordInfoLabel.text = NSLocalizedString("Empty password", comment: "")
-        }
-        
-        if appWallet.setupWalletMethod != .importUsingPrivateKey && password.trim() != appWallet.getPassword() {
-            validPassword = false
-            self.passwordInfoLabel.text = NSLocalizedString("Wrong password", comment: "")
-        }
-        
-        guard validPassword else {
+
+        guard password != "" else {
+            self.passwordInfoLabel.text = NSLocalizedString("Please enter a password", comment: "")
             self.passwordInfoLabel.alpha = 1.0
             self.passwordInfoLabel.shake()
             return
         }
-
-        if appWallet.setupWalletMethod == .importUsingPrivateKey {
+        
+        if appWallet.setupWalletMethod == .importUsingPrivateKey || (appWallet.setupWalletMethod == .importUsingMnemonic && appWallet.getPassword() == "") {
             var isSucceeded: Bool = false
             SVProgressHUD.show(withStatus: NSLocalizedString("Exporting keystore", comment: "") + "...")
             let dispatchGroup = DispatchGroup()
@@ -112,11 +103,11 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
                     }
 
                     print("Generating keystore")
-                    let key = try KeystoreKey(password: password.trim(), key: data)
+                    let key = try KeystoreKey(password: password, key: data)
                     print("Finished generating keystore")
                     let keystoreData = try JSONEncoder().encode(key)
                     let json = try JSON(data: keystoreData)
-                    self.appWallet.setKeystore(keystoreString: json.description)
+                    self.keystore = json.description
 
                     isSucceeded = true
                     dispatchGroup.leave()
@@ -130,7 +121,7 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
                 SVProgressHUD.dismiss()
                 if isSucceeded {
                     let viewController = ExportKeystoreSwipeViewController()
-                    viewController.appWallet = self.appWallet
+                    viewController.keystore = self.keystore
                     self.navigationController?.pushViewController(viewController, animated: true)
                 } else {
                     let banner = NotificationBanner.generate(title: "Wrong password", style: .danger)
@@ -139,8 +130,21 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
                 }
             }
         } else {
+            // Validate the password
+            var validPassword = true
+            if password != appWallet.getPassword() {
+                validPassword = false
+                self.passwordInfoLabel.text = NSLocalizedString("Wrong password", comment: "")
+            }
+            
+            guard validPassword else {
+                self.passwordInfoLabel.alpha = 1.0
+                self.passwordInfoLabel.shake()
+                return
+            }
+
             let viewController = ExportKeystoreSwipeViewController()
-            viewController.appWallet = appWallet
+            viewController.keystore = appWallet.getKeystore()
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }

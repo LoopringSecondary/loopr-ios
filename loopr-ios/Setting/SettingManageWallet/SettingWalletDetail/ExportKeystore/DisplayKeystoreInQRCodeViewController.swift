@@ -10,17 +10,17 @@ import UIKit
 
 class DisplayKeystoreInQRCodeViewController: UIViewController {
 
+    var keystore: String = ""
+    
     @IBOutlet weak var qrcodeImageView: UIImageView!
     var qrcodeImage: CIImage!
-    
-    var appWallet: AppWallet!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        let data = appWallet.getKeystore().description.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
+        let data = keystore.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
         let filter = CIFilter(name: "CIQRCodeGenerator")
         filter?.setValue(data, forKey: "inputMessage")
         filter?.setValue("Q", forKey: "inputCorrectionLevel")

@@ -44,7 +44,7 @@ class SignRandomAuthAddressTests: XCTestCase {
         let gethKeystore = GethKeyStore.init(keydir, scryptN: GethLightScryptN, scryptP: GethLightScryptP)!
         
         // Need to call this one just before sign
-        gethAccount = EthAccountCoordinator.default.launch(keystore: gethKeystore, password: wallet!.getPassword())
+        gethAccount = EthAccountCoordinator.default.launch(keystore: gethKeystore, password: wallet!.getKeystorePassword())
         
         print("current address: \(gethAccount!.getAddress().getHex())")
         let end = Date()

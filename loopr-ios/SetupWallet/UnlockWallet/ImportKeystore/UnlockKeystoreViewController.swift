@@ -113,7 +113,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         print("pressedUnlockButton")
         // TODO: Use notificatino to require
         let password = passwordTextField.text ?? ""
-        guard password.trim() != "" else {
+        guard password != "" else {
             let notificationTitle = NSLocalizedString("Please enter a password", comment: "")
             let banner = NotificationBanner.generate(title: notificationTitle, style: .danger)
             banner.duration = 1.5
@@ -129,7 +129,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         dispatchGroup.enter()
         DispatchQueue.global().async {
             do {
-                try ImportWalletUsingKeystoreDataManager.shared.unlockWallet(keystoreStringValue: keystoreString, password: password.trim())
+                try ImportWalletUsingKeystoreDataManager.shared.unlockWallet(keystoreStringValue: keystoreString, password: password)
                 isSucceeded = true
                 dispatchGroup.leave()
             } catch {
