@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+                <meta name="viewport" content="width=device-width; initial-scale=1.0; user-scalable=0">
+                <title>This is a test page</title>
+                <script type="text/javascript">
+                    var i = 0
+                    function updateData(data) {
+                        var ele = document.getElementById('demo');
+                        ele.innerHTML = 'Demo: ' + data['data1'] + ' ' + data['data2'] + ' ' + i;
+                    }
+                    function myFunction() {
+                        i++;
+                        var ele = document.getElementById('demo');
+                        ele.innerHTML = 'Demo - current i: ' +  i;
+                        window.webkit.messageHandlers.nativeCallbackHandler.postMessage(JSON.stringify({"token": "hello", "user_id": "world"}));
+                    }
+                </script>
+    </head>
+    <body>
+        <p id="demo">Demo</p>
+        <button style="width:60px;height:100px;" id="myBtn" onclick="myFunction()">Try it</button>
+    </body>
+</html>
