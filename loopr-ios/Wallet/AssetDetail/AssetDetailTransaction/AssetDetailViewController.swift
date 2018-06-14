@@ -47,7 +47,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         sendButton.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
         sendButton.setupRoundBlack()
         
-        buttonHeightLayoutConstraint.constant = 47*UIStyleConfig.scale
+        buttonHeightLayoutConstraint.constant = 40
         
         // Add Refresh Control to Table View
         if #available(iOS 10.0, *) {

@@ -23,6 +23,10 @@ class AddMenuTableViewCell: UITableViewCell {
         titleLabel.textColor = UIColor.white
         titleLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)
         seperateLabel.backgroundColor = UIColor.init(white: 1, alpha: 0.3)
+        
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor(red: 46/255, green: 46/255, blue: 46/255, alpha: 1)
+        selectedBackgroundView = bgColorView
     }
 
     class func getCellIdentifier() -> String {

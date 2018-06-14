@@ -70,7 +70,7 @@ class UpdatedAssetTableViewCell: UITableViewCell {
         baseView.addSubview(amountLabel)
         
         disclosureIndicator.frame = CGRect.init(x: baseView.frame.width - 36/2 - 16/2, y: (baseView.frame.height-16)/2, width: 16, height: 16)
-        disclosureIndicator.image = UIImage.init(named: "Default_disclosureIndicator")?.alpha(0)
+        disclosureIndicator.image = UIImage.init(named: "Default_disclosureIndicator")
         disclosureIndicator.contentMode = .center
         baseView.addSubview(disclosureIndicator)
     }
