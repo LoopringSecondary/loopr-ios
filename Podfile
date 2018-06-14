@@ -15,6 +15,7 @@ target 'loopr-ios' do
   pod 'NotificationBannerSwift'
   pod 'FoldingCell', '3.0.6'
   pod 'SVProgressHUD'
+  pod 'ESTabBarController-swift'
 
   pod 'Fabric'
   pod 'Crashlytics'

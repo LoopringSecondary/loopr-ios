@@ -90,6 +90,11 @@
 		AC0C5C82203D153F00C8618D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0C5C81203D153F00C8618D /* CoreGraphics.framework */; };
 		AC0C5C84203D154700C8618D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0C5C83203D154700C8618D /* QuartzCore.framework */; };
 		AC0C5C86203D168C00C8618D /* TickerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C5C85203D168C00C8618D /* TickerLabel.swift */; };
+		AC0CD57920D21BF100ABB7BA /* TabBarItemBasicContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD57820D21BF100ABB7BA /* TabBarItemBasicContentView.swift */; };
+		AC0CD57B20D21C1100ABB7BA /* TabBarItemBouncesContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD57A20D21C1100ABB7BA /* TabBarItemBouncesContentView.swift */; };
+		AC0CD57D20D21F3C00ABB7BA /* TabBarItemBackgroundContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD57C20D21F3C00ABB7BA /* TabBarItemBackgroundContentView.swift */; };
+		AC0CD57F20D21F8400ABB7BA /* TabBarItemHighlightableContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD57E20D21F8400ABB7BA /* TabBarItemHighlightableContentView.swift */; };
+		AC0CD58120D226C500ABB7BA /* TabBarItemAnimateTipsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58020D226C500ABB7BA /* TabBarItemAnimateTipsContentView.swift */; };
 		AC0CE96D209E4BB60072A6EC /* GethBigIntTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CE96C209E4BB60072A6EC /* GethBigIntTests.swift */; };
 		AC10609D2073475200677D63 /* AddMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10609B2073475200677D63 /* AddMenuTableViewCell.swift */; };
 		AC10609E2073475200677D63 /* AddMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC10609C2073475200677D63 /* AddMenuTableViewCell.xib */; };
@@ -660,6 +665,11 @@
 		AC0C5C81203D153F00C8618D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		AC0C5C83203D154700C8618D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AC0C5C85203D168C00C8618D /* TickerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerLabel.swift; sourceTree = "<group>"; };
+		AC0CD57820D21BF100ABB7BA /* TabBarItemBasicContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemBasicContentView.swift; sourceTree = "<group>"; };
+		AC0CD57A20D21C1100ABB7BA /* TabBarItemBouncesContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemBouncesContentView.swift; sourceTree = "<group>"; };
+		AC0CD57C20D21F3C00ABB7BA /* TabBarItemBackgroundContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemBackgroundContentView.swift; sourceTree = "<group>"; };
+		AC0CD57E20D21F8400ABB7BA /* TabBarItemHighlightableContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemHighlightableContentView.swift; sourceTree = "<group>"; };
+		AC0CD58020D226C500ABB7BA /* TabBarItemAnimateTipsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemAnimateTipsContentView.swift; sourceTree = "<group>"; };
 		AC0CE96C209E4BB60072A6EC /* GethBigIntTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GethBigIntTests.swift; sourceTree = "<group>"; };
 		AC10609B2073475200677D63 /* AddMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMenuTableViewCell.swift; sourceTree = "<group>"; };
 		AC10609C2073475200677D63 /* AddMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMenuTableViewCell.xib; sourceTree = "<group>"; };
@@ -794,8 +804,6 @@
 		AC45EFED20D0D474004F6EC0 /* H5DexNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5DexNavigationController.swift; sourceTree = "<group>"; };
 		AC45EFEF20D0D56F004F6EC0 /* H5DexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5DexViewController.swift; sourceTree = "<group>"; };
 		AC45EFF020D0D56F004F6EC0 /* H5DexViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = H5DexViewController.xib; sourceTree = "<group>"; };
-		AC45EFF420D0D7D3004F6EC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		AC45EFF620D0D7EB004F6EC0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		AC45EFF720D0D9B4004F6EC0 /* my_page.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = my_page.html; sourceTree = "<group>"; };
 		AC46F7752069FB4400CFDC40 /* UIButton+RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+RoundButton.swift"; sourceTree = "<group>"; };
 		AC4C1449204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateWalletEnterNameAndPasswordViewController.swift; sourceTree = "<group>"; };
@@ -1195,6 +1203,18 @@
 				313AB53F5B8B485D1FE9A61C /* Pods-loopr-iosUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		AC0CD58220D2294D00ABB7BA /* TabBarItem */ = {
+			isa = PBXGroup;
+			children = (
+				AC0CD58020D226C500ABB7BA /* TabBarItemAnimateTipsContentView.swift */,
+				AC0CD57820D21BF100ABB7BA /* TabBarItemBasicContentView.swift */,
+				AC0CD57A20D21C1100ABB7BA /* TabBarItemBouncesContentView.swift */,
+				AC0CD57C20D21F3C00ABB7BA /* TabBarItemBackgroundContentView.swift */,
+				AC0CD57E20D21F8400ABB7BA /* TabBarItemHighlightableContentView.swift */,
+			);
+			path = TabBarItem;
 			sourceTree = "<group>";
 		};
 		AC10609F20734E0600677D63 /* AddMenu */ = {
@@ -1927,6 +1947,7 @@
 		ACB5DD85202AD74D00140A09 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				AC0CD58220D2294D00ABB7BA /* TabBarItem */,
 				94231DE920BD66F900A4FDC3 /* PaddingLabel */,
 				9445D54220BA4F3F006045F6 /* Price */,
 				9413F68F20B8028B00524D2D /* Amount */,
@@ -2746,6 +2767,7 @@
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/FoldingCell/FoldingCell.framework",
 				"${BUILT_PRODUCTS_DIR}/FontBlaster/FontBlaster.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
@@ -2765,6 +2787,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FoldingCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontBlaster.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
@@ -2879,6 +2902,7 @@
 				AC69913B20AA6254003593AE /* SettingWalletDetailViewControllerDataSource.swift in Sources */,
 				AC5E3E6B205DEAC00051ACFC /* TradeCompleteViewController.swift in Sources */,
 				943A9A4120909597008BCBFD /* DefaultWebViewController.swift in Sources */,
+				AC0CD58120D226C500ABB7BA /* TabBarItemAnimateTipsContentView.swift in Sources */,
 				AC387517205F12F100A76637 /* ClippedContainerViewController.swift in Sources */,
 				AC387516205F12F100A76637 /* ContextMenu+Options.swift in Sources */,
 				AC9ADF91205EE3B900CBE368 /* ConvertETHViewController.swift in Sources */,
@@ -2940,6 +2964,7 @@
 				AC5E0DDA203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift in Sources */,
 				94C5E79D207394F50074B939 /* CustomSearchController.swift in Sources */,
 				ACB911842026388700F14644 /* SettingViewController.swift in Sources */,
+				AC0CD57B20D21C1100ABB7BA /* TabBarItemBouncesContentView.swift in Sources */,
 				AC46F7762069FB4400CFDC40 /* UIButton+RoundButton.swift in Sources */,
 				ACFEFE9F20C3436000013921 /* loopr_ios.xcdatamodeld in Sources */,
 				AC4F601520773E9D00F1D954 /* EthFunction.swift in Sources */,
@@ -3025,6 +3050,7 @@
 				AC8DBC7720BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift in Sources */,
 				AC4141FD203532ED0089861D /* SwipeViewOptions.swift in Sources */,
 				ACB9119F202967A500F14644 /* OrderStatus.swift in Sources */,
+				AC0CD57D20D21F3C00ABB7BA /* TabBarItemBackgroundContentView.swift in Sources */,
 				ACB9117520255A6600F14644 /* MarketTableViewCell.swift in Sources */,
 				941B1EFC209C41BC00710DFF /* GasDataManager.swift in Sources */,
 				AC31B94C204A8DF400B16155 /* KeyStore.Error.swift in Sources */,
@@ -3103,6 +3129,7 @@
 				ACE6F7182041FDAD0039273D /* AssetTransactionDetailViewController.swift in Sources */,
 				AC31B95D204A8E4F00B16155 /* DerivationPath.swift in Sources */,
 				948952D3205A74BE009B03FE /* Transaction.swift in Sources */,
+				AC0CD57F20D21F8400ABB7BA /* TabBarItemHighlightableContentView.swift in Sources */,
 				AC2CFAA120BB3BEE00387DB1 /* BiometricType.swift in Sources */,
 				AC38751D205F12F100A76637 /* UIViewController+Extensions.swift in Sources */,
 				94231DEB20BD671700A4FDC3 /* PaddingLabel.swift in Sources */,
@@ -3139,6 +3166,7 @@
 				AC4C144B204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.swift in Sources */,
 				AC4F8638209D483B002E62AB /* SettingLRCFeeRatioViewController.swift in Sources */,
 				940076B220554A4100DDA37D /* LoopringSocketIORequest.swift in Sources */,
+				AC0CD57920D21BF100ABB7BA /* TabBarItemBasicContentView.swift in Sources */,
 				C8BF959D202696A900343B9A /* MainTabController.swift in Sources */,
 				ACB911522024254F00F14644 /* WalletNavigationViewController.swift in Sources */,
 				AC147BEA208D0613008D5104 /* UIDeviceExtension.swift in Sources */,
@@ -3219,8 +3247,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				AC798E492022B93A0071D477 /* Base */,
-				AC45EFF420D0D7D3004F6EC0 /* en */,
-				AC45EFF620D0D7EB004F6EC0 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

@@ -7,6 +7,7 @@ PODS:
   - Crashlytics (3.10.2):
     - Fabric (~> 1.7.7)
   - CryptoSwift (0.8.3)
+  - ESTabBarController-swift (2.6.2)
   - Fabric (1.7.7)
   - FoldingCell (3.0.6)
   - FontBlaster (4.0.3)
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - Charts (= 3.0.5)
   - Crashlytics
   - CryptoSwift (= 0.8.3)
+  - ESTabBarController-swift
   - Fabric
   - FoldingCell (= 3.0.6)
   - FontBlaster
@@ -51,6 +53,7 @@ SPEC REPOS:
     - Charts
     - Crashlytics
     - CryptoSwift
+    - ESTabBarController-swift
     - Fabric
     - FoldingCell
     - FontBlaster
@@ -81,6 +84,7 @@ SPEC CHECKSUMS:
   Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
   Crashlytics: 0360624eea1c978a743feddb2fb1ef8b37fb7a0d
   CryptoSwift: 033efc3523865d19cc6ab6612fa17a62613b5dfa
+  ESTabBarController-swift: f0a8679e43df1e60b7b36bbcaf1dc98ba6273c7d
   Fabric: bda89e242bce1b7b8ab264248cf3407774ce0095
   FoldingCell: 4848ec8a2056d5751bfb710df14521fc64d48ad7
   FontBlaster: f18031f5dde2ce689f5330e7005edfe3c0815957
@@ -98,6 +102,6 @@ SPEC CHECKSUMS:
   SwiftTheme: 36d71c4eed4b2c401c782cf036e4586c749a8173
   TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803
 
-PODFILE CHECKSUM: 2045de06bf29285b363135801e80b5510467f95f
+PODFILE CHECKSUM: c000a225f17652eb6b23f2fde46ca6e9694d4ecb
 
 COCOAPODS: 1.5.0
