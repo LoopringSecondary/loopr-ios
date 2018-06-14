@@ -122,8 +122,12 @@ class AuthorizeDataManager {
     }
 
     func _authorizeLogin(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
-        guard let uuid = self.loginUUID else { return }
-        LoopringAPIRequest.notifyLogin(uuid: uuid, completionHandler: completion)
+        guard let owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address,
+            let uuid = self.loginUUID else { return }
+        let timestamp = Int(Date().timeIntervalSince1970).description
+        if let signature = _signTimestamp(timestamp: timestamp) {
+            LoopringAPIRequest.updateScanLogin(owner: owner, uuid: uuid, signature: signature, timestamp: timestamp, completionHandler: completion)
+        }
     }
     
     func _authorizeCancel(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {

@@ -121,4 +121,12 @@ class KeystoreAndWeb3SwiftTests: XCTestCase {
         
         print(data.hexString)
     }
+    
+    func test12() {
+        var data: JSON = JSON()
+        data["hash"] = JSON("hash")
+        data["status"] = JSON("status")
+        print(data.rawValue)
+        print("hello")
+    }
 }

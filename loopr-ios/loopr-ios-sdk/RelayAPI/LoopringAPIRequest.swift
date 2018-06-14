@@ -542,15 +542,10 @@ class LoopringAPIRequest {
         }
     }
     
-    static func notifyLogin(uuid: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
-        guard let owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address else {
-            return
-        }
+    static func updateScanLogin(owner: String, uuid: String, signature: SignatureData, timestamp: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
-        var data: JSON = JSON()
-        data["uuid"] = JSON(uuid)
-        body["params"] = [["owner": owner, "body": data.description]]
-        self.invoke(method: "loopring_notifyCirculr", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
+        body["params"] = [["owner": owner, "uuid": uuid, "sign": ["timestamp": timestamp, "v": Int(signature.v)!, "r": signature.r, "s": signature.s, "owner": owner]]]
+        self.invoke(method: "loopring_notifyScanLogin", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
             guard error == nil && data != nil else {
                 completionHandler(nil, error!)
                 return
@@ -564,10 +559,7 @@ class LoopringAPIRequest {
             return
         }
         var body: JSON = JSON()
-        var data: JSON = JSON()
-        data["hash"] = JSON(hash)
-        data["status"] = JSON(status.description)
-        body["params"] = [["owner": owner, "body": data.description]]
+        body["params"] = [["owner": owner, "body": ["hash": hash, "status": status.description]]]
         self.invoke(method: "loopring_notifyCirculr", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
             guard error == nil && data != nil else {
                 completionHandler(nil, error!)
