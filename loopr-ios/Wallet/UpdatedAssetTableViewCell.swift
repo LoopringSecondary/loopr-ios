@@ -32,8 +32,8 @@ class UpdatedAssetTableViewCell: UITableViewCell {
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
 
-        backgroundColor = UIStyleConfig.tableViewBackgroundColor
-        baseView.backgroundColor = UIColor.white
+        theme_backgroundColor = GlobalPicker.tableViewBackgroundColor // UIStyleConfig.tableViewBackgroundColor
+        baseView.theme_backgroundColor = GlobalPicker.backgroundColor
         baseView.frame = CGRect.init(x: 10, y: 10, width: screenWidth - 10*2, height: UpdatedAssetTableViewCell.getHeight() - 10)
         addSubview(baseView)
         
@@ -70,7 +70,7 @@ class UpdatedAssetTableViewCell: UITableViewCell {
         baseView.addSubview(amountLabel)
         
         disclosureIndicator.frame = CGRect.init(x: baseView.frame.width - 36/2 - 16/2, y: (baseView.frame.height-16)/2, width: 16, height: 16)
-        disclosureIndicator.image = UIImage.init(named: "Default_disclosureIndicator")
+        disclosureIndicator.image = UIImage.init(named: "Default_disclosureIndicator")?.alpha(0)
         disclosureIndicator.contentMode = .center
         baseView.addSubview(disclosureIndicator)
     }
@@ -79,7 +79,7 @@ class UpdatedAssetTableViewCell: UITableViewCell {
         if highlighted {
             baseView.backgroundColor = UIStyleConfig.tableCellSelectedBackgroundColor
         } else {
-            baseView.backgroundColor = UIColor.white
+            baseView.theme_backgroundColor = GlobalPicker.backgroundColor
         }
     }
     

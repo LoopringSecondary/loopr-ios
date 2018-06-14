@@ -52,11 +52,10 @@ class WalletBalanceTableViewCell: UITableViewCell {
         if updateBalanceLabelTimer == nil {
             updateBalanceLabelTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
         }
-
     }
 
     func update() {
-        balanceLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
+        balanceLabel.textColor = Themes.isNight() ? UIColor.white : UIColor.black
     }
     
     func setup() {

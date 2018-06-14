@@ -19,7 +19,7 @@ extension UILabel {
     
     func setSubTitleFont() {
         let font = FontConfigManager.shared.getSubtitleFont()
-        self.textColor = UIColor.subtitle
+        self.theme_textColor = ["#00000099", "#fff"]
         self.font = font
     }
     

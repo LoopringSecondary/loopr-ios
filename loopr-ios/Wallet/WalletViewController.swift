@@ -31,7 +31,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.delegate = self
         assetTableView.reorder.delegate = self
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
-        footerView.backgroundColor = UIStyleConfig.tableViewBackgroundColor
+        footerView.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor
         assetTableView.tableFooterView = footerView
         assetTableView.separatorStyle = .none
         
@@ -41,7 +41,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.estimatedSectionFooterHeight = 0
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
-        assetTableView.backgroundColor = UIStyleConfig.tableViewBackgroundColor
+        assetTableView.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor // UIStyleConfig.tableViewBackgroundColor
 
         let qrCodebutton = UIButton(type: UIButtonType.custom)
         
@@ -70,7 +70,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         frame.origin.y = -frame.size.height
         let backgroundView = UIView(frame: frame)
         backgroundView.autoresizingMask = .flexibleWidth
-        backgroundView.backgroundColor = UIColor.white
+        backgroundView.theme_backgroundColor = GlobalPicker.backgroundColor
         
         // Adding the view below the refresh control
         assetTableView.insertSubview(backgroundView, at: 0)

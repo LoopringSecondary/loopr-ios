@@ -13,7 +13,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var settingsTableView: UITableView!
     
     let sectionTitles = [NSLocalizedString("User Preferences", comment: ""), NSLocalizedString("Trading", comment: ""), NSLocalizedString("Security", comment: ""), NSLocalizedString("About", comment: "")]
-    let sectionRows = [2, 3, 1, 1]
+    let sectionRows = [3, 3, 1, 1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -160,8 +160,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 1:
             return createDetailTableCell(title: NSLocalizedString("Currency", comment: ""), detailTitle: SettingDataManager.shared.getCurrentCurrency().name)
         case 2:
-            return createDetailTableCell(title: NSLocalizedString("Security", comment: ""), detailTitle: "")
+            return createThemeMode()
         /*
+        case 2:
+             return createDetailTableCell(title: NSLocalizedString("Security", comment: ""), detailTitle: "")
         case 1:
             return createThemeMode()
         case 2:

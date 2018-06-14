@@ -23,20 +23,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         Fabric.with([Crashlytics.self])
         
+        Themes.restoreLastTheme()
+        ThemeManager.animationDuration = 1.0
+        FontConfigManager.shared.setup()
+        
         let initialViewController = MainTabController(nibName: nil, bundle: nil)
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
 
-        FontConfigManager.shared.setup()
         AppWalletDataManager.shared.setup()
         CurrentAppWalletDataManager.shared.setup()
         if AppWalletDataManager.shared.getWallets().isEmpty {
             self.window?.rootViewController = SetupNavigationController(nibName: nil, bundle: nil)
         }
-        Themes.restoreLastTheme()
-        ThemeManager.animationDuration = 1.0
-        
+
         LoopringSocketIORequest.setup()
         PriceDataManager.shared.startGetPriceQuote()
         MarketDataManager.shared.startGetTicker()
@@ -96,6 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ]
         }
         
+        navigationBar.isTranslucent = false
         navigationBar.theme_tintColor = GlobalPicker.barTextColor
         navigationBar.theme_barTintColor = GlobalPicker.barTintColor
         navigationBar.theme_titleTextAttributes = ThemeDictionaryPicker.pickerWithAttributes(titleAttributes)

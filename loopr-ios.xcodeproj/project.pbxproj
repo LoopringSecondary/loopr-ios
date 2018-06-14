@@ -95,6 +95,8 @@
 		AC0CD57D20D21F3C00ABB7BA /* TabBarItemBackgroundContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD57C20D21F3C00ABB7BA /* TabBarItemBackgroundContentView.swift */; };
 		AC0CD57F20D21F8400ABB7BA /* TabBarItemHighlightableContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD57E20D21F8400ABB7BA /* TabBarItemHighlightableContentView.swift */; };
 		AC0CD58120D226C500ABB7BA /* TabBarItemAnimateTipsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58020D226C500ABB7BA /* TabBarItemAnimateTipsContentView.swift */; };
+		AC0CD58520D2330300ABB7BA /* H5DexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58320D2330300ABB7BA /* H5DexViewController.swift */; };
+		AC0CD58620D2330300ABB7BA /* H5DexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0CD58420D2330300ABB7BA /* H5DexViewController.xib */; };
 		AC0CE96D209E4BB60072A6EC /* GethBigIntTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CE96C209E4BB60072A6EC /* GethBigIntTests.swift */; };
 		AC10609D2073475200677D63 /* AddMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10609B2073475200677D63 /* AddMenuTableViewCell.swift */; };
 		AC10609E2073475200677D63 /* AddMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC10609C2073475200677D63 /* AddMenuTableViewCell.xib */; };
@@ -249,8 +251,6 @@
 		AC4142062038B66F0089861D /* AppWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4142052038B66F0089861D /* AppWallet.swift */; };
 		AC45EFEB20D0CCF5004F6EC0 /* AlertForErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC45EFEA20D0CCF5004F6EC0 /* AlertForErrorExtension.swift */; };
 		AC45EFEE20D0D474004F6EC0 /* H5DexNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC45EFED20D0D474004F6EC0 /* H5DexNavigationController.swift */; };
-		AC45EFF120D0D56F004F6EC0 /* H5DexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC45EFEF20D0D56F004F6EC0 /* H5DexViewController.swift */; };
-		AC45EFF220D0D56F004F6EC0 /* H5DexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC45EFF020D0D56F004F6EC0 /* H5DexViewController.xib */; };
 		AC45EFF820D0D9B4004F6EC0 /* my_page.html in Resources */ = {isa = PBXBuildFile; fileRef = AC45EFF720D0D9B4004F6EC0 /* my_page.html */; };
 		AC46F7762069FB4400CFDC40 /* UIButton+RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC46F7752069FB4400CFDC40 /* UIButton+RoundButton.swift */; };
 		AC4C144B204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4C1449204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.swift */; };
@@ -670,6 +670,8 @@
 		AC0CD57C20D21F3C00ABB7BA /* TabBarItemBackgroundContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemBackgroundContentView.swift; sourceTree = "<group>"; };
 		AC0CD57E20D21F8400ABB7BA /* TabBarItemHighlightableContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemHighlightableContentView.swift; sourceTree = "<group>"; };
 		AC0CD58020D226C500ABB7BA /* TabBarItemAnimateTipsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemAnimateTipsContentView.swift; sourceTree = "<group>"; };
+		AC0CD58320D2330300ABB7BA /* H5DexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5DexViewController.swift; sourceTree = "<group>"; };
+		AC0CD58420D2330300ABB7BA /* H5DexViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = H5DexViewController.xib; sourceTree = "<group>"; };
 		AC0CE96C209E4BB60072A6EC /* GethBigIntTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GethBigIntTests.swift; sourceTree = "<group>"; };
 		AC10609B2073475200677D63 /* AddMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMenuTableViewCell.swift; sourceTree = "<group>"; };
 		AC10609C2073475200677D63 /* AddMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMenuTableViewCell.xib; sourceTree = "<group>"; };
@@ -802,8 +804,6 @@
 		AC4142052038B66F0089861D /* AppWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWallet.swift; sourceTree = "<group>"; };
 		AC45EFEA20D0CCF5004F6EC0 /* AlertForErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertForErrorExtension.swift; sourceTree = "<group>"; };
 		AC45EFED20D0D474004F6EC0 /* H5DexNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5DexNavigationController.swift; sourceTree = "<group>"; };
-		AC45EFEF20D0D56F004F6EC0 /* H5DexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5DexViewController.swift; sourceTree = "<group>"; };
-		AC45EFF020D0D56F004F6EC0 /* H5DexViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = H5DexViewController.xib; sourceTree = "<group>"; };
 		AC45EFF720D0D9B4004F6EC0 /* my_page.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = my_page.html; sourceTree = "<group>"; };
 		AC46F7752069FB4400CFDC40 /* UIButton+RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+RoundButton.swift"; sourceTree = "<group>"; };
 		AC4C1449204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateWalletEnterNameAndPasswordViewController.swift; sourceTree = "<group>"; };
@@ -1413,8 +1413,8 @@
 			isa = PBXGroup;
 			children = (
 				AC45EFED20D0D474004F6EC0 /* H5DexNavigationController.swift */,
-				AC45EFEF20D0D56F004F6EC0 /* H5DexViewController.swift */,
-				AC45EFF020D0D56F004F6EC0 /* H5DexViewController.xib */,
+				AC0CD58320D2330300ABB7BA /* H5DexViewController.swift */,
+				AC0CD58420D2330300ABB7BA /* H5DexViewController.xib */,
 				AC45EFF720D0D9B4004F6EC0 /* my_page.html */,
 			);
 			path = H5Dex;
@@ -2548,6 +2548,7 @@
 				ACC8D0A720CC95A00049A741 /* UpdatedAssetTableViewCell.xib in Resources */,
 				AC31CE71205B995900A30335 /* Roboto-MediumItalic.ttf in Resources */,
 				ACB41A7020B54BB300A92C9D /* AuthenticationViewController.xib in Resources */,
+				AC0CD58620D2330300ABB7BA /* H5DexViewController.xib in Resources */,
 				AC54FD8B204FC6FC007E1DEB /* OpenSans-SemiBold.ttf in Resources */,
 				AC3756742038D64B00AADC60 /* MnemonicViewController.xib in Resources */,
 				ACB97C6E20707B6F00775D4C /* AddTokenTableViewCell.xib in Resources */,
@@ -2574,7 +2575,6 @@
 				ACC8D0B120CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.xib in Resources */,
 				ACE65E422071F875001EE499 /* MnemonicCollectionViewController.xib in Resources */,
 				AC54FD6A204FC6D5007E1DEB /* Lato-Light.ttf in Resources */,
-				AC45EFF220D0D56F004F6EC0 /* H5DexViewController.xib in Resources */,
 				ACB8485A20BA75E7006B83AD /* SettingPasscodeTableViewCell.xib in Resources */,
 				AC5E0DD1203A7C5800AF03C7 /* SelectWalletTableViewCell.xib in Resources */,
 				AC31CE46205B604800A30335 /* Linotype-DINNextW1G-Light.otf in Resources */,
@@ -3095,6 +3095,7 @@
 				ACFEFE9520C337BE00013921 /* PendingTransactionsDataManager.swift in Sources */,
 				AC4141F720352D6B0089861D /* SwipeView.swift in Sources */,
 				94B5CA8A204FB4E20081BA93 /* DefaultBlock.swift in Sources */,
+				AC0CD58520D2330300ABB7BA /* H5DexViewController.swift in Sources */,
 				ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */,
 				AC375684203A641200AADC60 /* SelectWalletViewController.swift in Sources */,
 				AC387512205F12F100A76637 /* ContextMenuPresenting.swift in Sources */,
@@ -3155,7 +3156,6 @@
 				AC5E0DD6203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift in Sources */,
 				AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */,
 				AC4F601120773E9D00F1D954 /* EthAccountCoordinator.swift in Sources */,
-				AC45EFF120D0D56F004F6EC0 /* H5DexViewController.swift in Sources */,
 				ACDBF103203FE790000F0DEC /* ReorderUITableView.swift in Sources */,
 				AC4F8641209D4889002E62AB /* SettingMarginSplitViewController.swift in Sources */,
 				9413F69520B80E2600524D2D /* AmountStackView.swift in Sources */,

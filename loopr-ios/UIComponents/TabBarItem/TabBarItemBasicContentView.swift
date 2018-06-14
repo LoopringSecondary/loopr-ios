@@ -14,9 +14,9 @@ class TabBarItemBasicContentView: ESTabBarItemContentView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         // textColor = UIColor.black
-        highlightTextColor = UIColor.black
+        highlightTextColor = Themes.isNight() ? UIColor.white : UIColor.black
         // iconColor = UIColor.black
-        highlightIconColor = UIColor.black
+        highlightIconColor = Themes.isNight() ? UIColor.white : UIColor.black
     }
     
     public required init?(coder aDecoder: NSCoder) {
