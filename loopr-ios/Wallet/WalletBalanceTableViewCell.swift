@@ -101,6 +101,6 @@ class WalletBalanceTableViewCell: UITableViewCell {
     class func getHeight() -> CGFloat {
         // TODO: 
         // return 150*UIStyleConfig.scale
-        return 150 - 42
+        return 150 - 42 + 20
     }
 }

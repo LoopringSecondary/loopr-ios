@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -55,7 +54,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1FF-gI-ta8" customClass="TickerLabel" customModule="loopr_ios" customModuleProvider="target">
-                        <rect key="frame" x="20" y="31" width="355" height="36"/>
+                        <rect key="frame" x="20" y="41" width="355" height="36"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="36" id="mCn-zs-TbZ"/>
@@ -67,7 +66,7 @@
                     <constraint firstAttribute="trailing" secondItem="bom-wH-aAn" secondAttribute="trailing" id="DQo-N9-7Oa"/>
                     <constraint firstItem="1FF-gI-ta8" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Jla-Wc-dit"/>
                     <constraint firstItem="bom-wH-aAn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="LZM-Zi-4p0"/>
-                    <constraint firstItem="1FF-gI-ta8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="20" id="ThD-iX-ro7"/>
+                    <constraint firstItem="1FF-gI-ta8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="30" id="ThD-iX-ro7"/>
                     <constraint firstAttribute="bottom" secondItem="bom-wH-aAn" secondAttribute="bottom" id="VQ8-ip-dtE"/>
                     <constraint firstItem="1FF-gI-ta8" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="pIg-Gd-Bxq"/>
                 </constraints>
