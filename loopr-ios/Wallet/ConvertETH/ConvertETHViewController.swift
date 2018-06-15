@@ -129,7 +129,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             tokenSView.update(symbol: symbol)
             tokenBView.update(symbol: getAnotherToken())
         }
-        SendCurrentAppWalletDataManager.shared.getNonceFromServer()
+        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
     }
     
     @objc func scrollViewTapped() {

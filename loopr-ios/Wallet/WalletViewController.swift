@@ -116,6 +116,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewWillAppear(animated)
         
         getBalanceFromRelay()
+        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
         if let cell = assetTableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? WalletBalanceTableViewCell {
             cell.startUpdateBalanceLabelTimer()
         }

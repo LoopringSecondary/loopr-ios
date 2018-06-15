@@ -257,7 +257,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         tokenSymbolLabel.text = asset.symbol
         let title = NSLocalizedString("Available Balance", comment: "")
         tokenTotalAmountLabel.text = "\(title) \(asset.display) \(asset.symbol)"
-        SendCurrentAppWalletDataManager.shared.getNonceFromServer()
+        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
     }
     
     func setResultOfAmount(with percentage: Double) {

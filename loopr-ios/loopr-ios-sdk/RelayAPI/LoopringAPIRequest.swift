@@ -469,7 +469,7 @@ class LoopringAPIRequest {
     static func notifyTransactionSubmitted(txHash: String, rawTx: RawTransaction, from: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_notifyTransactionSubmitted"
-        body["params"] = [["hash": txHash, "nonce": rawTx.nonce, "to": rawTx.to, "value": rawTx.value, "gasPrice": rawTx.gasPrice, "gas": rawTx.gasLimit, "input": rawTx.data, "from": from]]
+        body["params"] = [["hash": txHash, "nonce": rawTx.nonce.hex, "to": rawTx.to, "value": rawTx.value, "gasPrice": rawTx.gasPrice, "gas": rawTx.gasLimit, "input": rawTx.data, "from": from]]
         body["id"] = JSON(UUID().uuidString)
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { _, _, error in
             guard error == nil else {
@@ -477,8 +477,6 @@ class LoopringAPIRequest {
                 completionHandler(nil, error)
                 return
             }
-            print("notifyTransactionSubmitted")
-            print(body)
             completionHandler("success", nil)
         }
     }

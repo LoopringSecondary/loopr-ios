@@ -20,12 +20,12 @@ class TabBarItemBouncesContentView: TabBarItemBasicContentView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func selectAnimation(animated: Bool, completion: (() -> ())?) {
+    override func selectAnimation(animated: Bool, completion: (() -> Void)?) {
         self.bounceAnimation()
         completion?()
     }
     
-    override func reselectAnimation(animated: Bool, completion: (() -> ())?) {
+    override func reselectAnimation(animated: Bool, completion: (() -> Void)?) {
         self.bounceAnimation()
         completion?()
     }
@@ -36,6 +36,9 @@ class TabBarItemBouncesContentView: TabBarItemBasicContentView {
         impliesAnimation.duration = duration * 2
         impliesAnimation.calculationMode = kCAAnimationCubic
         imageView.layer.add(impliesAnimation, forKey: nil)
+//        let impliesAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.y")
+//        impliesAnimation.values = [CGFloat(Double.pi / 2), CGFloat(Double.pi), CGFloat(Double.pi * 3 / 2), CGFloat(Double.pi * 2)]
+//        impliesAnimation.duration = duration * 2
+//        imageView.layer.add(impliesAnimation, forKey: nil)
     }
-
 }

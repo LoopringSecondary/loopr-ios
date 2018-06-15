@@ -44,30 +44,44 @@ class SendCurrentAppWalletDataManager {
         self.nonce += 1
     }
 
-    func getNonceFromServerSynchronous() {
-        print("Start getNonceFromServerSynchronous")
+    func getNonceFromRelay() {
+        print("Start getNonceFromRelay")
         let semaphore = DispatchSemaphore(value: 0)
         if let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
             LoopringAPIRequest.getNonce(owner: address) { (result, error) in
                 guard error == nil, let data = result else {
                     return
                 }
-                self.nonce = Int64(data)!
+                if let value = Int64(data), self.nonce > value {
+                    self.nonce = value
+                }
             }
             semaphore.signal()
         }
         _ = semaphore.wait(timeout: .distantFuture)
     }
 
-    func getNonceFromServer() {
+    func getNonceFromEthereum() {
         if let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
-            LoopringAPIRequest.getNonce(owner: address) { (result, error) in
-                guard error == nil, let data = result else {
+            EthereumAPIRequest.eth_getTransactionCount(data: address, block: BlockTag.pending, completionHandler: { (data, error) in
+                guard error == nil, let data = data else {
                     return
                 }
-                self.nonce = Int64(data)!
-            }
+                if data.respond.isHex() {
+                    self.nonce = Int64(data.respond.dropFirst(2), radix: 16)!
+                } else {
+                    self.nonce = Int64(data.respond)!
+                }
+            })
         }
+    }
+    
+    func completeRawTx(_ rawTx: inout RawTransaction) {
+        getNonceFromRelay()
+        if self.nonce < rawTx.nonce {
+            self.nonce = rawTx.nonce
+        }
+        rawTx.nonce = self.nonce
     }
     
     func sendTransactionToServer(signedTransaction: String, completion: @escaping (String?, Error?) -> Void) {
@@ -290,7 +304,7 @@ class SendCurrentAppWalletDataManager {
     }
     
     func _transfer(data: Data, address: GethAddress, amount: GethBigInt, gasLimit: GethBigInt, completion: @escaping (_ txHash: String?, _ error: Error?) -> Void) {
-        self.getNonceFromServerSynchronous()
+        self.getNonceFromRelay()
         let tx = RawTransaction(data: data, to: address, value: amount, gasLimit: gasLimit, gasPrice: GasDataManager.shared.getGasPriceInWei(), nonce: self.nonce)
         let from = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         if let signedTransaction = _sign(data: data, address: address, amount: amount, gasLimit: gasLimit, completion: completion) {
@@ -313,7 +327,7 @@ class SendCurrentAppWalletDataManager {
             let address = GethAddress.init(fromHex: rawTx.to),
             let gasPrice = rawTx.gasPrice.integer,
             let gasLimit = rawTx.gasLimit.integer {
-            let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: Int64(self.nonce), amount: amount, gasLimit: GethBigInt(Int64(gasLimit)), gasPrice: GethBigInt(Int64(gasPrice)), password: password)
+            let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: rawTx.nonce, amount: amount, gasLimit: GethBigInt(Int64(gasLimit)), gasPrice: GethBigInt(Int64(gasPrice)), password: password)
             do {
                 if let signedTransactionData = try signedTransaction?.encodeRLP() {
                     return "0x" + signedTransactionData.hexString
@@ -328,12 +342,13 @@ class SendCurrentAppWalletDataManager {
     }
     
     func _transfer(rawTx: RawTransaction, completion: @escaping (_ txHash: String?, _ error: Error?) -> Void) {
-        self.getNonceFromServerSynchronous()
+        var rawTransaction = rawTx
+        completeRawTx(&rawTransaction)
         let from = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
-        if let signedTransaction = _sign(rawTx: rawTx, completion: completion) {
+        if let signedTransaction = _sign(rawTx: rawTransaction, completion: completion) {
             self.sendTransactionToServer(signedTransaction: signedTransaction, completion: { (txHash, error) in
                 if txHash != nil && error == nil {
-                    LoopringAPIRequest.notifyTransactionSubmitted(txHash: txHash!, rawTx: rawTx, from: from, completionHandler: completion)
+                    LoopringAPIRequest.notifyTransactionSubmitted(txHash: txHash!, rawTx: rawTransaction, from: from, completionHandler: completion)
                 } else {
                     completion(nil, error)
                 }
@@ -348,7 +363,7 @@ class SendCurrentAppWalletDataManager {
     
     func transferTwice(rawTxs: [RawTransaction], completion: @escaping (_ txHash: String?, _ error: Error?) -> Void) {
         _transfer(rawTx: rawTxs[0]) { (_, error) in
-            guard error == nil else { return }
+            guard error == nil else { completion(nil, error!); return }
             self._transfer(rawTx: rawTxs[1], completion: completion)
         }
     }

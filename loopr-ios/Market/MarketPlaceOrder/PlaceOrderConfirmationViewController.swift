@@ -304,18 +304,40 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     }
 
     @IBAction func pressedConfirmationButton(_ sender: Any) {
-        if self.isSigning {
-            handleSigning()
-        } else if self.order != nil {
-            handleOrder()
+        if AuthenticationDataManager.shared.getPasscodeSetting() {
+            AuthenticationDataManager.shared.authenticate { (error) in
+                guard error == nil else { self.completion(nil, error!); return }
+                if self.isSigning {
+                    self.handleSigning()
+                } else if self.order != nil {
+                    self.handleOrder()
+                }
+            }
+        } else {
+            if self.isSigning {
+                self.handleSigning()
+            } else if self.order != nil {
+                self.handleOrder()
+            }
         }
     }
     
     @IBAction func pressedDeclineButton(_ sender: UIButton) {
         guard isSigning, let hash = AuthorizeDataManager.shared.submitHash else { return }
-        LoopringAPIRequest.notifyStatus(hash: hash, status: .reject) { (_, _) in
-            DispatchQueue.main.async {
-                self.navigationController?.popToRootViewController(animated: true)
+        if AuthenticationDataManager.shared.getPasscodeSetting() {
+            AuthenticationDataManager.shared.authenticate { (error) in
+                guard error == nil else { self.completion(nil, error!); return }
+                LoopringAPIRequest.notifyStatus(hash: hash, status: .reject) { (_, _) in
+                    DispatchQueue.main.async {
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }
+                }
+            }
+        } else {
+            LoopringAPIRequest.notifyStatus(hash: hash, status: .reject) { (_, _) in
+                DispatchQueue.main.async {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
             }
         }
     }

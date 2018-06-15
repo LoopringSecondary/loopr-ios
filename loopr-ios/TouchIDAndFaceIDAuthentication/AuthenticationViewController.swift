@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import LocalAuthentication
 
 class AuthenticationViewController: UIViewController {
 
@@ -48,36 +47,17 @@ class AuthenticationViewController: UIViewController {
         let screenHeight = screenSize.height
         let bottomPadding: CGFloat = UIDevice.current.iPhoneX ? 30 : 0
         unlockAppButton.frame = CGRect(x: 15, y: screenHeight - bottomPadding - 47 - 63, width: screenWidth - 15 * 2, height: 47)
-        
-        authenticate()
-    }
-    
-    func authenticate() {
-        let context = LAContext()
-        let reason = NSLocalizedString("Authenticate to access your wallet", comment: "")
-
-        var authError: NSError?
-        if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
-            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, _ in
-                if success {
-                    // User authenticated successfully
-                    AuthenticationDataManager.shared.hasLogin = true
-                    self.dismiss(animated: true, completion: {
-                        
-                    })
-                    
-                } else {
-                    // User did not authenticate successfully
-                }
-            }
-        } else {
-            // Handle Error
+        AuthenticationDataManager.shared.authenticate { (error) in
+            guard error == nil else { return }
+            self.dismiss(animated: true, completion: nil)
         }
     }
 
     @objc func pressedUnlockAppButton(_ sender: Any) {
         print("pressedUnlockAppButton")
-        authenticate()
+        AuthenticationDataManager.shared.authenticate { (error) in
+            guard error == nil else { return }
+            self.dismiss(animated: true, completion: nil)
+        }
     }
-
 }

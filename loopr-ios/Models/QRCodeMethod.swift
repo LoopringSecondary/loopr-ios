@@ -62,7 +62,7 @@ enum QRCodeMethod: String, CustomStringConvertible {
         if let data = content.data(using: .utf8) {
             let json = JSON(data)
             if json["type"] == "sign" {
-                AuthorizeDataManager.shared.submitHash = json["id"].stringValue
+                AuthorizeDataManager.shared.submitHash = json["value"].stringValue
                 return true
             }
         }
