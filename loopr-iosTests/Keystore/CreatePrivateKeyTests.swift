@@ -45,10 +45,10 @@ class CreatePrivateKeyTests: XCTestCase {
 
     func testCreateKey_2() {
         // Generate a key
-        let keystoreKey1 = try! KeystoreKey(password: password)
+        let keystoreKey1 = try! KeystoreKey(password: "123456")
         
         // Get Private key
-        let decrypted1 = try! keystoreKey1.decrypt(password: password)
+        let decrypted1 = try! keystoreKey1.decrypt(password: "123456")
         // XCTAssertEqual(decrypted1, keystoreKey1.crypto.cipherText)
         
         // Public key

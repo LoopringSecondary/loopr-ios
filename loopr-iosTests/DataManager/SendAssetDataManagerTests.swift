@@ -24,7 +24,7 @@ class SendCurrentAppWalletDataManagerTests: XCTestCase {
     func testLoadGasLimits() {
         let mgr = GasDataManager.shared
         mgr.loadGasLimitsFromJson()
-        XCTAssertEqual(mgr.getGasLimits().count, 8)
+        XCTAssertEqual(mgr.getGasLimits().count, 10)
     }
     
     func test() {

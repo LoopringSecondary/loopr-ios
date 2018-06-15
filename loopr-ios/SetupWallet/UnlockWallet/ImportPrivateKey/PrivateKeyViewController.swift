@@ -127,7 +127,7 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
         dispatchGroup.enter()
         DispatchQueue.global().async {
             do {
-                guard let data = Data(hexString: ImportWalletUsingPrivateKeyDataManager.shared.privateKey) else {
+                guard let data = Data(hexString: ImportWalletUsingPrivateKeyDataManager.shared.getPrivateKey()) else {
                     print("Invalid private key")
                     return // .failure(KeystoreError.failedToImportPrivateKey)
                 }
@@ -137,7 +137,8 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
                 print("Finished generating keystore")
                 let keystoreData = try JSONEncoder().encode(key)
                 let json = try JSON(data: keystoreData)
-                ImportWalletUsingPrivateKeyDataManager.shared.keystore = json.description
+
+                ImportWalletUsingPrivateKeyDataManager.shared.setKeystore(keystore: json.description)
                 
                 isSucceeded = true
                 dispatchGroup.leave()

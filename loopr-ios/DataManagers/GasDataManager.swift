@@ -41,6 +41,7 @@ class GasDataManager {
     // TODO: Why we need to load gas_limit from a json file instead of writing as code.
     // load
     func loadGasLimitsFromJson() {
+        gasLimits = []
         if let path = Bundle.main.path(forResource: "gas_limit", ofType: "json") {
             let jsonString = try? String(contentsOfFile: path, encoding: String.Encoding.utf8)
             let json = JSON(parseJSON: jsonString!)

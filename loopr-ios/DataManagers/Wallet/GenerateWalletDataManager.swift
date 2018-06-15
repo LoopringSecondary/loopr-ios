@@ -28,11 +28,10 @@ class GenerateWalletDataManager {
     }
 
     // Generate a new wallet and store mnemonic in the memory.
-    func new() -> [String] {
+    func new() {
         let mnemonicString = Mnemonic.generate(strength: 128)
         let mnemonics = mnemonicString.components(separatedBy: " ")
         self.mnemonics = mnemonics
-        return mnemonics
     }
 
     func setWalletName(_ walletName: String) {
@@ -80,7 +79,6 @@ class GenerateWalletDataManager {
         return true
     }
 
-    // TODO: use error handling
     func complete(completion: @escaping (_ appWallet: AppWallet?, _ error: AddWalletError?) -> Void) {
         print("Verify mnemonics: \(isVerified)")
         SVProgressHUD.show(withStatus: NSLocalizedString("Initializing the wallet", comment: "") + "...")

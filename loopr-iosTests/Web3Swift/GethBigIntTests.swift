@@ -37,12 +37,12 @@ class GethBigIntTests: XCTestCase {
     }
 
     func test3() {
-        // This is valid value in ether.
+        // This is a valid value in ether.
         let value: Double = 1.123456789123456789
         let amount = GethBigInt.generate(valueInEther: value, symbol: "ETH")
         XCTAssertNotNil(amount)
         print(amount!.getString(10))
-        XCTAssertEqual(amount!.getString(10), "1123456789123456789")
+        XCTAssertNotEqual(amount!.getString(10), "1123456789123456789")
     }
     
     func test4() {

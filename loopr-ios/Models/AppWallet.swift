@@ -91,68 +91,6 @@ class AppWallet: NSObject, NSCoding {
             assetSequenceInHideSmallAssets.append(symbol)
         }
     }
-    
-    /*
-    func generateKeystoreInBackground() {
-        // Generate keystore data
-        DispatchQueue.global().async {
-            guard let data = Data(hexString: self.privateKey) else {
-                print("Invalid private key")
-                return // .failure(KeystoreError.failedToImportPrivateKey)
-            }
-            do {
-                print("Generating keystore")
-                let key = try KeystoreKey(password: self.getPassword(), key: data)
-                print("Finished generating keystore")
-                let keystoreData = try JSONEncoder().encode(key)
-                let json = try JSON(data: keystoreData)
-                self.keystoreString = json.description
-                
-                guard self.keystoreString != nil else {
-                    print("Failed to generate keystore")
-                    return
-                }
-                
-                // Create key directory
-                let fileManager = FileManager.default
-                
-                let keyDirectory = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("KeyStoreSendAssetViewController")
-                try? fileManager.removeItem(at: keyDirectory)
-                try? fileManager.createDirectory(at: keyDirectory, withIntermediateDirectories: true, attributes: nil)
-                print(keyDirectory)
-                
-                let walletDirectory = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("WalletSendAssetViewController")
-                try? fileManager.removeItem(at: walletDirectory)
-                try? fileManager.createDirectory(at: walletDirectory, withIntermediateDirectories: true, attributes: nil)
-                print(walletDirectory)
-                
-                // Save the keystore string value to keyDirectory
-                let fileURL = keyDirectory.appendingPathComponent("key.json")
-                try self.keystoreString!.write(to: fileURL, atomically: false, encoding: .utf8)
-                
-                print(keyDirectory.absoluteString)
-                let keydir = keyDirectory.absoluteString.replacingOccurrences(of: "file://", with: "", options: .regularExpression)
-                
-                self.gethKeystoreObject = GethKeyStore.init(keydir, scryptN: GethLightScryptN, scryptP: GethLightScryptP)!
-                
-            } catch let error {
-                print("Failed to generate keystore. error: \(error)")
-            }
-        }
-    }
-    */
-    
-    /*
-    func getGethKeystoreObject() -> NSObject? {
-        return self.gethKeystoreObject
-    }
-    */
-    
-    /*
-    func setKeystore(keystoreString: String) {
-        self.keystoreString = keystoreString
-    }
-    */
 
     func getKeystore() -> String {
         return keystoreString
@@ -218,7 +156,7 @@ class AppWallet: NSObject, NSCoding {
         
         if let address = address, let privateKey = privateKey, let password = password, let mnemonics = mnemonics, let keystoreString = keystoreString, let name = name {
             // Verify keystore
-            if keystoreString == "" || !QRCodeMethod.isKeystore(content: keystoreString ?? "") {
+            if keystoreString == "" || !QRCodeMethod.isKeystore(content: keystoreString) {
                 return nil
             }
             self.init(setupWalletMethod: setupWalletMethod, address: address, privateKey: privateKey, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: name, isVerified: isVerified, active: active, assetSequence: unique(filteredAssetSequence), assetSequenceInHideSmallAssets: unique(filteredAssetSequenceInHideSmallAssets))

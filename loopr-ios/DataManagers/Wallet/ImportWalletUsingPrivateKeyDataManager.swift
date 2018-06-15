@@ -19,8 +19,8 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
     final let password: String = ""
 
     var address: String
-    var privateKey: String
-    var keystore: String
+    private var privateKey: String
+    private var keystore: String
     
     private init() {
         walletName = ""
@@ -34,6 +34,14 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
         address = ""
         privateKey = ""
         keystore = ""
+    }
+    
+    func setKeystore(keystore: String) {
+        self.keystore = keystore
+    }
+    
+    func getPrivateKey() -> String {
+        return privateKey
     }
 
     func importWallet(privateKey privateKeyString: String) throws {
