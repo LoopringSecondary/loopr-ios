@@ -18,55 +18,60 @@ class WalletBalanceTableViewCell: UITableViewCell {
 
     var updateBalanceLabelTimer: Timer?
 
-    @IBOutlet weak var hideAssetsView: UIView!
-    @IBOutlet weak var balanceLabel: TickerLabel!
-    @IBOutlet weak var hideAssetSwitch: UISwitch!
-    @IBOutlet weak var hideAssetsLabel: UILabel!
+    let balanceLabel: TickerLabel = TickerLabel()
+    let addressLabel: UILabel = UILabel()
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        // Hide the hideAssetsView
-        hideAssetsView.isHidden = true
-
-        balanceLabel.setFont(FontConfigManager.shared.getRegularFont(size: 27))
+        selectionStyle = .none
+        self.theme_backgroundColor = GlobalPicker.backgroundColor
+        let screensize: CGRect = UIScreen.main.bounds
+        let screenWidth = screensize.width
+        
+        balanceLabel.frame = CGRect.init(x: 10, y: 42, width: screenWidth - 10*2, height: 36)
+        balanceLabel.setFont(FontConfigManager.shared.getRegularFont(size: 32))
         balanceLabel.animationDuration = 0.3
         balanceLabel.textAlignment = NSTextAlignment.center
         balanceLabel.initializeLabel()
         balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
 
-        let balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
+        var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
+        balance.insert(" ", at: balance.index(after: balance.startIndex))
         balanceLabel.setText("\(balance)", animated: false)
+        addSubview(balanceLabel)
 
-        hideAssetSwitch.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
-        hideAssetSwitch.setOn(SettingDataManager.shared.getHideSmallAssets(), animated: false)
-
-        self.theme_backgroundColor = GlobalPicker.backgroundColor
+        addressLabel.frame = CGRect.init(x: screenWidth*0.25, y: balanceLabel.frame.maxY, width: screenWidth*0.5, height: 30)
+        addressLabel.font = FontConfigManager.shared.getLabelFont(size: 14)
+        addressLabel.textAlignment = .center
+        addressLabel.numberOfLines = 1
+        addressLabel.lineBreakMode = .byTruncatingMiddle
+        addressLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address ?? ""
+        addSubview(addressLabel)
         
-        hideAssetsLabel.theme_textColor = GlobalPicker.textColor
-        hideAssetsLabel.text = NSLocalizedString("Hide Small Assets", comment: "")
-        hideAssetsLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14*UIStyleConfig.scale)
-
-        update()
         if updateBalanceLabelTimer == nil {
             updateBalanceLabelTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
         }
+        
+        update()
     }
 
-    func update() {
+    private func update() {
         balanceLabel.textColor = Themes.isNight() ? UIColor.white : UIColor.black
+        addressLabel.theme_textColor = GlobalPicker.textLightGreyColor
     }
     
     func setup() {
-        let balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
+        var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
+        balance.insert(" ", at: balance.index(after: balance.startIndex))
         balanceLabel.setText(balance, animated: true)
         balanceLabel.layoutCharacterLabels()
     }
     
     @objc func updateBalance() {
-        let balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
-        print(balance)
+        var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
+        balance.insert(" ", at: balance.index(after: balance.startIndex))
         balanceLabel.setText(balance, animated: true)
         layoutIfNeeded()
     }
@@ -84,23 +89,11 @@ class WalletBalanceTableViewCell: UITableViewCell {
         }
     }
 
-    @IBAction func toggleHideAssetSwitch(_ sender: Any) {
-        if hideAssetSwitch.isOn {
-            print("toggleHideAssetSwitch ON")
-        } else {
-            print ("toggleHideAssetSwitch OFF")
-        }
-        SettingDataManager.shared.setHideSmallAssets(hideAssetSwitch.isOn)
-        delegate?.updateTableView(isHideSmallAsset: hideAssetSwitch.isOn)
-    }
-
     class func getCellIdentifier() -> String {
         return "WalletBalanceTableViewCell"
     }
     
     class func getHeight() -> CGFloat {
-        // TODO: 
-        // return 150*UIStyleConfig.scale
-        return 150 - 42 + 20
+        return 150
     }
 }

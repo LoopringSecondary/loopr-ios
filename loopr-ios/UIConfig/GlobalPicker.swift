@@ -12,6 +12,7 @@ enum GlobalPicker {
     // Default values
     static let backgroundColor: ThemeColorPicker = ["#fff", "#000"]
     static let textColor: ThemeColorPicker = ["#000", "#fff"]
+    static let textLightGreyColor: ThemeColorPicker = ["#00000099", "#fff"]
 
     static let barTextColors = ["#000", "#fff"]
     static let barTextColor = ThemeColorPicker.pickerWithColors(barTextColors)

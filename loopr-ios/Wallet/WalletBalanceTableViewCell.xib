@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,66 +17,8 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="395" height="149.5"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bom-wH-aAn">
-                        <rect key="frame" x="0.0" y="107.5" width="395" height="42"/>
-                        <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RBU-Bt-tYb">
-                                <rect key="frame" x="333" y="5.5" width="49" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="31" id="3h4-pl-fLX"/>
-                                    <constraint firstAttribute="width" constant="47" id="PZd-6t-qSv"/>
-                                </constraints>
-                                <color key="onTintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="toggleHideAssetSwitch:" destination="KGk-i7-Jjw" eventType="valueChanged" id="MwA-4x-p5T"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hide Small Assets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tw-09-XWM">
-                                <rect key="frame" x="14" y="10.5" width="200" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="URs-Cc-MHc"/>
-                                    <constraint firstAttribute="height" constant="21" id="X6Y-D1-y5l"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="4tw-09-XWM" firstAttribute="leading" secondItem="bom-wH-aAn" secondAttribute="leading" constant="14" id="77s-lY-1fa"/>
-                            <constraint firstItem="4tw-09-XWM" firstAttribute="centerY" secondItem="bom-wH-aAn" secondAttribute="centerY" id="NRP-UK-Crm"/>
-                            <constraint firstAttribute="height" constant="42" id="RmP-SP-Suu"/>
-                            <constraint firstItem="RBU-Bt-tYb" firstAttribute="centerY" secondItem="bom-wH-aAn" secondAttribute="centerY" id="e5N-ZR-XEo"/>
-                            <constraint firstAttribute="trailing" secondItem="RBU-Bt-tYb" secondAttribute="trailing" constant="15" id="xZ5-ed-43x"/>
-                        </constraints>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1FF-gI-ta8" customClass="TickerLabel" customModule="loopr_ios" customModuleProvider="target">
-                        <rect key="frame" x="20" y="41" width="355" height="36"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="36" id="mCn-zs-TbZ"/>
-                        </constraints>
-                    </view>
-                </subviews>
-                <constraints>
-                    <constraint firstItem="1FF-gI-ta8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="7js-j9-vGL"/>
-                    <constraint firstAttribute="trailing" secondItem="bom-wH-aAn" secondAttribute="trailing" id="DQo-N9-7Oa"/>
-                    <constraint firstItem="1FF-gI-ta8" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Jla-Wc-dit"/>
-                    <constraint firstItem="bom-wH-aAn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="LZM-Zi-4p0"/>
-                    <constraint firstItem="1FF-gI-ta8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="30" id="ThD-iX-ro7"/>
-                    <constraint firstAttribute="bottom" secondItem="bom-wH-aAn" secondAttribute="bottom" id="VQ8-ip-dtE"/>
-                    <constraint firstItem="1FF-gI-ta8" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="pIg-Gd-Bxq"/>
-                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <connections>
-                <outlet property="balanceLabel" destination="1FF-gI-ta8" id="8V6-xP-grM"/>
-                <outlet property="hideAssetSwitch" destination="RBU-Bt-tYb" id="0Wc-hO-Stp"/>
-                <outlet property="hideAssetsLabel" destination="4tw-09-XWM" id="Pi7-9c-jpa"/>
-                <outlet property="hideAssetsView" destination="bom-wH-aAn" id="LJ5-AP-ezn"/>
-            </connections>
             <point key="canvasLocation" x="81.5" y="125"/>
         </tableViewCell>
     </objects>
