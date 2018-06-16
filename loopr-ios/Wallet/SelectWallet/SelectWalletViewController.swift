@@ -18,6 +18,9 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet weak var walletTableView: UITableView!
     
+    @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var importButton: UIButton!
+    
     var appWallet: AppWallet?
     var cellHeights: [CGFloat] = []
 
@@ -28,11 +31,11 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         walletTableView.theme_backgroundColor = GlobalPicker.backgroundColor
         
-        self.navigationItem.title = NSLocalizedString("Select Wallet", comment: "")
+        self.navigationItem.title = NSLocalizedString("Wallet", comment: "")
         setBackButton()
         
-        let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
-        self.navigationItem.rightBarButtonItem = addButton
+        // let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
+        // self.navigationItem.rightBarButtonItem = addButton
         
         let cellCount = AppWalletDataManager.shared.getWallets().count
         cellHeights = (0 ..< cellCount).map { _ in CellHeight.close }
@@ -43,6 +46,14 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
         walletTableView.separatorStyle = .none
         walletTableView.rowHeight = UITableViewAutomaticDimension
         walletTableView.tableFooterView = UIView()
+        
+        createButton.setupRoundBlack(height: 40)
+        createButton.setTitle(NSLocalizedString("Create", comment: ""), for: .normal)
+        createButton.addTarget(self, action: #selector(pressedCreateButton(_:)), for: UIControlEvents.touchUpInside)
+        
+        importButton.setupRoundBlack(height: 40)
+        importButton.setTitle(NSLocalizedString("Import", comment: ""), for: .normal)
+        importButton.addTarget(self, action: #selector(pressedImportButton(_:)), for: UIControlEvents.touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +71,16 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
         setupViewController?.isCreatingFirstWallet = false
         self.present(setupViewController!, animated: true) {
         }
+    }
+    
+    @objc func pressedCreateButton(_ sender: UIButton) {
+        let viewController = GenerateWalletEnterNameAndPasswordViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc func pressedImportButton(_ sender: UIButton) {
+        let viewController = UnlockWalletSwipeViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

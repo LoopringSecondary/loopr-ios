@@ -305,3 +305,5 @@
 "Do you wish to handle the qrcode?" = "您是否希望要解析该并处理二维码？";
 "Failed to import address." = "导入钱包失败";
 "Exporting keystore" = "正在导出keystore";
+"Create" = "创建";
+"Import" = "导入";
