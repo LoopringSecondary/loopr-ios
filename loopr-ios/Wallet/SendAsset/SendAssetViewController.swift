@@ -48,8 +48,10 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     var transactionFeeAmountLabel = UILabel()
     
     // Advanced
+    /*
     var advancedButton: UIButton = UIButton()
     var showAdvanced: Bool = false
+    */
     var transactionSpeedSlider = UISlider()
     var transactionAmountMinLabel = UILabel()
     var transactionAmountMaxLabel = UILabel()
@@ -183,6 +185,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         updateTransactionFeeAmountLabel()
 
         // Fouth row: Advanced
+        /*
         advancedButton.frame = CGRect(x: padding, y: transactionFeeAmountLabel.frame.maxY + padding, width: 100, height: 40)
         advancedButton.setTitleColor(UIColor.black, for: .normal)
         advancedButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
@@ -191,27 +194,33 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         advancedButton.setRightImage(imageName: "Arrow-button-right-light", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 11)
         advancedButton.addTarget(self, action: #selector(pressedAdvancedButton(_:)), for: .touchUpInside)
         scrollView.addSubview(advancedButton)
-        
-        transactionSpeedSlider.alpha = 0
-        transactionSpeedSlider.frame = CGRect(x: padding, y: advancedButton.frame.maxY + padding*0.5, width: screenWidth-2*padding, height: 20)
+        */
+
+        transactionSpeedSlider.frame = CGRect(x: padding, y: transactionFeeAmountLabel.frame.maxY + padding, width: screenWidth-2*padding, height: 20)
         
         // TODO: Set value
+        /*
+         // DefaultSlider setting
+        transactionSpeedSlider.minValue = 1
+        transactionSpeedSlider.maxValue = CGFloat(Float(gasPriceInGwei * 2))
+        transactionSpeedSlider.colorBetweenHandles = UIColor.red
+        transactionSpeedSlider.lineHeight = 2
+        */
+        
         transactionSpeedSlider.minimumValue = 1
-        transactionSpeedSlider.maximumValue = Float(gasPriceInGwei * 2)
+        transactionSpeedSlider.maximumValue = Float(gasPriceInGwei * 2) <= 20 ? 20 : Float(gasPriceInGwei * 2)
         transactionSpeedSlider.value = Float(gasPriceInGwei)
         
-        transactionSpeedSlider.isContinuous = true
+        //transactionSpeedSlider.isContinuous = true
         transactionSpeedSlider.tintColor = UIColor.black
         transactionSpeedSlider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
         scrollView.addSubview(transactionSpeedSlider)
 
-        transactionAmountMinLabel.alpha = 0
         transactionAmountMinLabel.frame = CGRect(x: padding, y: transactionSpeedSlider.frame.maxY + 10, width: (screenWidth-2*padding)/8, height: 30)
         transactionAmountMinLabel.font = FontConfigManager.shared.getLabelFont()
         transactionAmountMinLabel.text = NSLocalizedString("Slow", comment: "")
         scrollView.addSubview(transactionAmountMinLabel)
         
-        transactionAmountCurrentLabel.alpha = 0
         transactionAmountCurrentLabel.textAlignment = .center
         transactionAmountCurrentLabel.frame = CGRect(x: transactionAmountMinLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)*3/4, height: 30)
         transactionAmountCurrentLabel.font = FontConfigManager.shared.getLabelFont()
@@ -219,14 +228,12 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         
         scrollView.addSubview(transactionAmountCurrentLabel)
         
-        transactionAmountHelpButton.alpha = 0
         let pad = (transactionAmountCurrentLabel.frame.width - transactionAmountCurrentLabel.intrinsicContentSize.width) / 2
         transactionAmountHelpButton.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX - pad, y: transactionAmountCurrentLabel.frame.minY, width: 30, height: 30)
         transactionAmountHelpButton.image = UIImage(named: "HelpIcon")
         transactionAmountHelpButton.addTarget(self, action: #selector(pressedHelpButton), for: .touchUpInside)
         scrollView.addSubview(transactionAmountHelpButton)
         
-        transactionAmountMaxLabel.alpha = 0
         transactionAmountMaxLabel.textAlignment = .right
         transactionAmountMaxLabel.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/8, height: 30)
         transactionAmountMaxLabel.font = FontConfigManager.shared.getLabelFont()
@@ -363,7 +370,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         }
         return isValid
     }
-    
+
+    /*
     @objc func pressedAdvancedButton(_ sender: Any) {
         print("pressedAdvancedButton")
         showAdvanced = !showAdvanced
@@ -388,6 +396,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             self.advancedButton.setRightImage(imageName: "Arrow-button-right-light", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 11)
         }
     }
+    */
     
     func pushController() {
         let toAddress = addressTextField.text!

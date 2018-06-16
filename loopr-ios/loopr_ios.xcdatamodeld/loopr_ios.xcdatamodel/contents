@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D102" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="PendingTransactions" representedClassName="PendingTransactions" syncable="YES" codeGenerationType="class">
+    <entity name="Transactions" representedClassName="Transactions" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="from" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="to" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="txHash" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="txType" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="TokenObjects" representedClassName="TokenObjects" syncable="YES" codeGenerationType="class">
-        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="enable" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="protocol_value" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="symbol" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
     <elements>
-        <element name="PendingTransactions" positionX="-63" positionY="-18" width="128" height="120"/>
-        <element name="TokenObjects" positionX="-54" positionY="27" width="128" height="105"/>
+        <element name="Transactions" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>
