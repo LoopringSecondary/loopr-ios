@@ -1,4 +1,4 @@
-# loopr-ios 1
+# loopr-ios
 
 ### Design
 Please refer
