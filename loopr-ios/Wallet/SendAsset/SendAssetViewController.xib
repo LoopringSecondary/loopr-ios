@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,7 +29,7 @@
                     <rect key="frame" x="0.0" y="590" width="375" height="77"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JlJ-XA-Yl0">
-                            <rect key="frame" x="15" y="15" width="345" height="47"/>
+                            <rect key="frame" x="42" y="15" width="291" height="47"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Send">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -42,11 +41,11 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="JlJ-XA-Yl0" secondAttribute="trailing" constant="15" id="0rZ-c0-g4G"/>
+                        <constraint firstAttribute="trailing" secondItem="JlJ-XA-Yl0" secondAttribute="trailing" constant="42" id="0rZ-c0-g4G"/>
                         <constraint firstItem="JlJ-XA-Yl0" firstAttribute="top" secondItem="tFK-Lz-tMt" secondAttribute="top" constant="15" id="7Qj-5f-uoe"/>
                         <constraint firstAttribute="bottom" secondItem="JlJ-XA-Yl0" secondAttribute="bottom" constant="15" id="Agm-xO-1O2"/>
                         <constraint firstAttribute="height" constant="77" id="B6h-Gt-mqx"/>
-                        <constraint firstItem="JlJ-XA-Yl0" firstAttribute="leading" secondItem="tFK-Lz-tMt" secondAttribute="leading" constant="15" id="JM2-xC-YEd"/>
+                        <constraint firstItem="JlJ-XA-Yl0" firstAttribute="leading" secondItem="tFK-Lz-tMt" secondAttribute="leading" constant="42" id="JM2-xC-YEd"/>
                     </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Lg-WH-CTm">

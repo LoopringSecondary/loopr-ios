@@ -27,10 +27,9 @@ class GasDataManager {
     private var gasAmount: Double
     
     private init() {
-        self.gasPrice = 0
+        self.gasPrice = 10  // Set the default value to 10
         self.gasAmount = 0
         self.gasLimits = []
-        self.getEstimateGasPrice()
         self.loadGasLimitsFromJson()
     }
 
@@ -79,13 +78,17 @@ class GasDataManager {
     }
     
     // TODO: This part should be an async API call.
-    func getEstimateGasPrice() {
+    func getEstimateGasPrice(completionHandler: @escaping (_ gasPrice: Double, _ error: Error?) -> Void) {
         LoopringAPIRequest.getEstimateGasPrice { (gasPrice, error) in
             guard error == nil && gasPrice != nil else {
+                completionHandler(self.gasPrice, nil)
                 return
             }
             self.gasPrice = gasPrice! * 1000000000
             self.gasPrice.round()
+            print("Estimate gas price: \(self.gasPrice)")
+            let copyGasPrice = self.gasPrice
+            completionHandler(copyGasPrice, nil)
         }
     }
     
@@ -94,14 +97,9 @@ class GasDataManager {
     }
     
     func getGasPriceInGwei() -> Double {
-        let defaults = UserDefaults.standard
-        if defaults.bool(forKey: UserDefaultsKeys.gasPrice.rawValue) {
-            return defaults.double(forKey: UserDefaultsKeys.gasPrice.rawValue)
-        } else {
-            return self.gasPrice
-        }
+        return self.gasPrice
     }
-    
+
     func getGasPriceInWei() -> GethBigInt {
         let price = getGasPriceInGwei()
         let amountInWei = GethBigInt.convertGweiToWei(from: price)!

@@ -38,13 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = SetupNavigationController(nibName: nil, bundle: nil)
         }
 
+        // Get the estimate gas price when launching the app.
+        GasDataManager.shared.getEstimateGasPrice { (_, _) in }
+        
         LoopringSocketIORequest.setup()
         PriceDataManager.shared.startGetPriceQuote()
         MarketDataManager.shared.startGetTicker()
         
-        OrderDataManager.shared.getOrdersFromServer { (_, _) in
-            
-        }
+        OrderDataManager.shared.getOrdersFromServer { (_, _) in }
         
         _ = SettingDataManager.shared.getCurrentLanguage()
 

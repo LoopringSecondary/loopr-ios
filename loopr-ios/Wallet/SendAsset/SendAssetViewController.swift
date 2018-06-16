@@ -71,7 +71,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setBackButton()
 
@@ -197,7 +197,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         
         // TODO: Set value
         transactionSpeedSlider.minimumValue = 1
-        transactionSpeedSlider.maximumValue = 30  // How to define the max value? 100 is unnecessary.
+        transactionSpeedSlider.maximumValue = Float(gasPriceInGwei * 2)
         transactionSpeedSlider.value = Float(gasPriceInGwei)
         
         transactionSpeedSlider.isContinuous = true
@@ -215,7 +215,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         transactionAmountCurrentLabel.textAlignment = .center
         transactionAmountCurrentLabel.frame = CGRect(x: transactionAmountMinLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)*3/4, height: 30)
         transactionAmountCurrentLabel.font = FontConfigManager.shared.getLabelFont()
-        transactionAmountCurrentLabel.text = "gas price: \(gasPriceInGwei) gwei"
+        transactionAmountCurrentLabel.text = NSLocalizedString("gas price", comment: "") + ": \(gasPriceInGwei) gwei"
         
         scrollView.addSubview(transactionAmountCurrentLabel)
         
@@ -243,6 +243,17 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(scrollViewTap)
+        
+        // Get the latest estimate gas price from Relay.
+        // It's an async call.
+        // If the api fails, gas price 10 will be returned.
+        GasDataManager.shared.getEstimateGasPrice { (gasPrice, _) in
+            self.gasPriceInGwei = Double(gasPrice)
+            DispatchQueue.main.async {
+                self.transactionAmountCurrentLabel.text = NSLocalizedString("gas price", comment: "") + ": \(self.gasPriceInGwei) gwei"
+                self.updateTransactionFeeAmountLabel()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -447,14 +458,14 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         print("Slider value changed \(sender.value)")
         let step: Float = 1
         let roundedStepValue = round(sender.value / step) * step
-        transactionAmountCurrentLabel.text = "gas price: \(roundedStepValue) gwei"
         gasPriceInGwei = Double(roundedStepValue)
+        
+        // Update info
+        transactionAmountCurrentLabel.text = NSLocalizedString("gas price", comment: "") + ": \(roundedStepValue) gwei"
         updateTransactionFeeAmountLabel()
     }
     
     func updateTransactionFeeAmountLabel() {
-        let defaults = UserDefaults.standard
-        defaults.set(gasPriceInGwei, forKey: UserDefaultsKeys.gasPrice.rawValue)
         let amountInEther = gasPriceInGwei / 1000000000
         if let etherPrice = PriceDataManager.shared.getPrice(of: "ETH") {
             let transactionFeeInFiat = amountInEther * etherPrice * Double(GasDataManager.shared.getGasLimit(by: "eth_transfer")!)
