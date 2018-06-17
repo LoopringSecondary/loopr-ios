@@ -39,9 +39,6 @@ class AppWallet: NSObject, NSCoding {
     // If a wallet is created in the app and the user skip the verification,
     // isVerified is false
     var isVerified: Bool
-
-    // TODO: what is active for? Deprecated.
-    var active: Bool
     
     var totalCurrency: Double = 0
     var assetSequence: [String] = []
@@ -56,7 +53,6 @@ class AppWallet: NSObject, NSCoding {
         self.keystoreString = keystoreString
         self.name = name
         self.isVerified = isVerified
-        self.active = active
         self.assetSequence = assetSequence
         self.assetSequenceInHideSmallAssets = assetSequenceInHideSmallAssets
         
@@ -65,7 +61,7 @@ class AppWallet: NSObject, NSCoding {
         print("########################## keystoreString ##########################")
         print(keystoreString)
         print("########################## end ##########################")
-        if keystoreString == nil || keystoreString == "" || !QRCodeMethod.isKeystore(content: keystoreString ?? "") {
+        if keystoreString == "" || !QRCodeMethod.isKeystore(content: keystoreString) {
             print("Need to generate keystore")
             preconditionFailure("No keystore")
             // generateKeystoreInBackground()
@@ -119,9 +115,8 @@ class AppWallet: NSObject, NSCoding {
         aCoder.encode(privateKey, forKey: "privateKey")
         aCoder.encode(name, forKey: "name")
         aCoder.encode(isVerified, forKey: "isVerified")
-        aCoder.encode(active, forKey: "active")
         aCoder.encode(mnemonics, forKey: "mnemonics")
-        aCoder.encode(keystoreString ?? "", forKey: "keystore")
+        aCoder.encode(keystoreString, forKey: "keystore")
         aCoder.encode(assetSequence, forKey: "assetSequence")
         aCoder.encode(assetSequenceInHideSmallAssets, forKey: "assetSequenceInHideSmallAssets")
     }

@@ -507,7 +507,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             let window = UIApplication.shared.keyWindow
             let bottomPadding = window?.safeAreaInsets.bottom ?? 0
 
-            self.scrollViewButtonLayoutConstraint.constant = systemKeyboardHeight + 47*UIStyleConfig.scale
+            self.scrollViewButtonLayoutConstraint.constant = systemKeyboardHeight + 47 + 15*2 + bottomPadding
             self.sendButtonBackgroundViewBottomLayoutContraint.constant = systemKeyboardHeight
 
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {

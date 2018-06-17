@@ -99,6 +99,7 @@ class SendCurrentAppWalletDataManager {
         }
     }
     
+    // TODO: Move this function to 
     func _keystore() {
         let start = Date()
         let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet()

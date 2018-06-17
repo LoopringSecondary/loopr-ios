@@ -99,6 +99,8 @@
 		AC0CD58920D38E2900ABB7BA /* GenerateWalletDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58820D38E2900ABB7BA /* GenerateWalletDataManagerTests.swift */; };
 		AC0CD58B20D393F300ABB7BA /* SendAssetDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58A20D393F200ABB7BA /* SendAssetDataManager.swift */; };
 		AC0CD58E20D3967700ABB7BA /* ImportWalletUsingPrivateKeyDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58D20D3967700ABB7BA /* ImportWalletUsingPrivateKeyDataManagerTests.swift */; };
+		AC0CD59020D5D6E400ABB7BA /* ImportWalletUsingKeystoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58F20D5D6E400ABB7BA /* ImportWalletUsingKeystoreDataManagerTests.swift */; };
+		AC0CD59220D5E28B00ABB7BA /* ImportWalletUsingMnemonicDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD59120D5E28B00ABB7BA /* ImportWalletUsingMnemonicDataManagerTests.swift */; };
 		AC0CE96D209E4BB60072A6EC /* GethBigIntTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CE96C209E4BB60072A6EC /* GethBigIntTests.swift */; };
 		AC10609D2073475200677D63 /* AddMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10609B2073475200677D63 /* AddMenuTableViewCell.swift */; };
 		AC10609E2073475200677D63 /* AddMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC10609C2073475200677D63 /* AddMenuTableViewCell.xib */; };
@@ -676,6 +678,8 @@
 		AC0CD58820D38E2900ABB7BA /* GenerateWalletDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateWalletDataManagerTests.swift; sourceTree = "<group>"; };
 		AC0CD58A20D393F200ABB7BA /* SendAssetDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendAssetDataManager.swift; sourceTree = "<group>"; };
 		AC0CD58D20D3967700ABB7BA /* ImportWalletUsingPrivateKeyDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingPrivateKeyDataManagerTests.swift; sourceTree = "<group>"; };
+		AC0CD58F20D5D6E400ABB7BA /* ImportWalletUsingKeystoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingKeystoreDataManagerTests.swift; sourceTree = "<group>"; };
+		AC0CD59120D5E28B00ABB7BA /* ImportWalletUsingMnemonicDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingMnemonicDataManagerTests.swift; sourceTree = "<group>"; };
 		AC0CE96C209E4BB60072A6EC /* GethBigIntTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GethBigIntTests.swift; sourceTree = "<group>"; };
 		AC10609B2073475200677D63 /* AddMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMenuTableViewCell.swift; sourceTree = "<group>"; };
 		AC10609C2073475200677D63 /* AddMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMenuTableViewCell.xib; sourceTree = "<group>"; };
@@ -1233,6 +1237,8 @@
 			isa = PBXGroup;
 			children = (
 				AC0CD58D20D3967700ABB7BA /* ImportWalletUsingPrivateKeyDataManagerTests.swift */,
+				AC0CD58F20D5D6E400ABB7BA /* ImportWalletUsingKeystoreDataManagerTests.swift */,
+				AC0CD59120D5E28B00ABB7BA /* ImportWalletUsingMnemonicDataManagerTests.swift */,
 			);
 			path = ImportWallet;
 			sourceTree = "<group>";
@@ -3222,6 +3228,8 @@
 				AC72AEE2204D084500E9D3B0 /* AppWalletDataManagerTests.swift in Sources */,
 				ACF06A06204C736A00C3FF86 /* CreateMnemonicTests.swift in Sources */,
 				945800232059006200E08DEF /* AssetDataManagerTests.swift in Sources */,
+				AC0CD59220D5E28B00ABB7BA /* ImportWalletUsingMnemonicDataManagerTests.swift in Sources */,
+				AC0CD59020D5D6E400ABB7BA /* ImportWalletUsingKeystoreDataManagerTests.swift in Sources */,
 				9464595E20AA9A4C00574485 /* TradeDataManagerTests.swift in Sources */,
 				AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */,
 				94580025205921D600E08DEF /* PriceQuoteDataManagerTests.swift in Sources */,
