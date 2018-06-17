@@ -97,7 +97,7 @@
 		AC0CD58520D2330300ABB7BA /* H5DexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58320D2330300ABB7BA /* H5DexViewController.swift */; };
 		AC0CD58620D2330300ABB7BA /* H5DexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0CD58420D2330300ABB7BA /* H5DexViewController.xib */; };
 		AC0CD58920D38E2900ABB7BA /* GenerateWalletDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58820D38E2900ABB7BA /* GenerateWalletDataManagerTests.swift */; };
-		AC0CD58B20D393F300ABB7BA /* SendAssetDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58A20D393F200ABB7BA /* SendAssetDataManager.swift */; };
+		AC0CD58B20D393F300ABB7BA /* SendCurrentAppWalletDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58A20D393F200ABB7BA /* SendCurrentAppWalletDataManager.swift */; };
 		AC0CD58E20D3967700ABB7BA /* ImportWalletUsingPrivateKeyDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58D20D3967700ABB7BA /* ImportWalletUsingPrivateKeyDataManagerTests.swift */; };
 		AC0CD59020D5D6E400ABB7BA /* ImportWalletUsingKeystoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58F20D5D6E400ABB7BA /* ImportWalletUsingKeystoreDataManagerTests.swift */; };
 		AC0CD59220D5E28B00ABB7BA /* ImportWalletUsingMnemonicDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD59120D5E28B00ABB7BA /* ImportWalletUsingMnemonicDataManagerTests.swift */; };
@@ -676,7 +676,7 @@
 		AC0CD58320D2330300ABB7BA /* H5DexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5DexViewController.swift; sourceTree = "<group>"; };
 		AC0CD58420D2330300ABB7BA /* H5DexViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = H5DexViewController.xib; sourceTree = "<group>"; };
 		AC0CD58820D38E2900ABB7BA /* GenerateWalletDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateWalletDataManagerTests.swift; sourceTree = "<group>"; };
-		AC0CD58A20D393F200ABB7BA /* SendAssetDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendAssetDataManager.swift; sourceTree = "<group>"; };
+		AC0CD58A20D393F200ABB7BA /* SendCurrentAppWalletDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendCurrentAppWalletDataManager.swift; sourceTree = "<group>"; };
 		AC0CD58D20D3967700ABB7BA /* ImportWalletUsingPrivateKeyDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingPrivateKeyDataManagerTests.swift; sourceTree = "<group>"; };
 		AC0CD58F20D5D6E400ABB7BA /* ImportWalletUsingKeystoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingKeystoreDataManagerTests.swift; sourceTree = "<group>"; };
 		AC0CD59120D5E28B00ABB7BA /* ImportWalletUsingMnemonicDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingMnemonicDataManagerTests.swift; sourceTree = "<group>"; };
@@ -2132,7 +2132,7 @@
 				AC78FC3720A176CE00992AE8 /* OrderBookDataManager.swift */,
 				940B45132060F67B00ADE2B9 /* PlaceOrderDataManager.swift */,
 				940B45142060F67C00ADE2B9 /* PriceDataManager.swift */,
-				AC0CD58A20D393F200ABB7BA /* SendAssetDataManager.swift */,
+				AC0CD58A20D393F200ABB7BA /* SendCurrentAppWalletDataManager.swift */,
 				940B451D2060F67E00ADE2B9 /* SettingDataManager.swift */,
 				940B451A2060F67D00ADE2B9 /* SetupDataManager.swift */,
 				940B45162060F67C00ADE2B9 /* TradeDataManager.swift */,
@@ -3024,7 +3024,7 @@
 				AC5572FF20A6914300ACDEC9 /* OrderBook.swift in Sources */,
 				94D94CE32084A9380000BBC8 /* ConfirmationResultViewController.swift in Sources */,
 				AC4141FF20356A4D0089861D /* MarketSwipeViewType.swift in Sources */,
-				AC0CD58B20D393F300ABB7BA /* SendAssetDataManager.swift in Sources */,
+				AC0CD58B20D393F300ABB7BA /* SendCurrentAppWalletDataManager.swift in Sources */,
 				ACB5DD91202C06FF00140A09 /* DismissAnimator.swift in Sources */,
 				940B45212060F67E00ADE2B9 /* PlaceOrderDataManager.swift in Sources */,
 				ACBA47E6207890910032C2B4 /* SettingManageWalletTableViewCell.swift in Sources */,
