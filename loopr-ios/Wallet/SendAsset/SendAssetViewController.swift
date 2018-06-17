@@ -428,7 +428,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         let isAmountValid = validateAmount()
         let isAddressValid = validateAddress()
         if isAmountValid && isAddressValid {
-            SVProgressHUD.show(withStatus: "Processing the transaction ...")
+            SVProgressHUD.show(withStatus: NSLocalizedString("Processing the transaction", comment: "") + "...")
             self.pushController()
         }
         if !isAmountValid && amountInfoLabel.textColor != .red {

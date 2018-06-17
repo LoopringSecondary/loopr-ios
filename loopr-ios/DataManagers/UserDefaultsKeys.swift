@@ -39,11 +39,7 @@ enum UserDefaultsKeys: String {
     
     // Transaction
     case pendingTransactions = "UserDefaultsKeys.pendingTransactions"
-    
-    //Settings Bundle
-    case appVersion = "UserDefaultsKeys.appVersion"
-    case appBuildNumber = "UserDefaultsKeys.appBuildNumber"
-    
+
     // Setting
     case useLrcFeeRatioUserDefineValue = "UserDefaultsKeys.useLrcFeeRatioUserDefineValue"
     case lrcFeeRatio = "UserDefaultsKeys.lrcFeeRatio"
