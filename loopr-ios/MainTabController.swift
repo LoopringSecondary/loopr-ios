@@ -19,7 +19,7 @@ class MainTabController: ESTabBarController {
         let v2 = MarketNavigationViewController()
         let v3 = TradeNavigationViewController()
         let v4 = SettingNavigationViewController()
-        let v5 = H5DexNavigationController()
+        // let v5 = H5DexNavigationController()
         
         v1.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: NSLocalizedString("Wallet", comment: ""), image: UIImage(named: "Assets"))
         v2.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: NSLocalizedString("Market", comment: ""), image: UIImage(named: "Market"))
@@ -27,9 +27,9 @@ class MainTabController: ESTabBarController {
         let settingTabItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: NSLocalizedString("Settings", comment: ""), image: UIImage(named: "Settings"))
         settingTabItem.contentView?.imageView.contentMode = .center
         v4.tabBarItem = settingTabItem
-        v5.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: NSLocalizedString("Market", comment: ""), image: UIImage(named: "Market"))
+        // v5.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: NSLocalizedString("Market", comment: ""), image: UIImage(named: "Market"))
 
-        viewControllers = [v1, v2, v3, v4, v5]
+        viewControllers = [v1, v2, v3, v4]
     }
     
     override func viewWillLayoutSubviews() {
