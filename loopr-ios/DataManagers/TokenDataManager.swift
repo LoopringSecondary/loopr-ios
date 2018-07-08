@@ -9,7 +9,7 @@
 import Foundation
 
 private let whiteList: [String] = ["BAT", "RDN", "VITE", "WETH", "RHOC", "BNT", "ZRX", "DAI", "REQ", "ARP", "OMG", "IOST", "SNT", "ETH", "EOS", "LRC", "KNC"]
-private let blackList: [String] = [] // ["BAR", "FOO"]
+public let blackList: [String] = ["BAR", "FOO", "EOS"]
 
 class TokenDataManager {
     
