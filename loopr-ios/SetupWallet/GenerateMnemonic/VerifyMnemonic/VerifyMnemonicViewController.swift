@@ -118,6 +118,8 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         view.addConstraint(NSLayoutConstraint(item: confirmButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 47))
         view.addConstraint(NSLayoutConstraint(item: confirmButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -15))
 
+        // TODO: the button is not in the correct layout in iPhone 5s
+        undoLastClickButton.isHidden = true
         undoLastClickButton.title = NSLocalizedString("Undo Last Click", comment: "")
         undoLastClickButton.setupRoundWhite()
         undoLastClickButton.alpha = 0.0

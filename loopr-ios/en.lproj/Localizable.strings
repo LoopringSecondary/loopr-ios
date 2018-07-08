@@ -77,7 +77,7 @@
 "Copy address to clipboard successfully!" = "Copy address to clipboard successfully!";
 "Congratulations!" = "Congratulations!";
 "Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage." = "Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage.";
-"Please write them down" = "Please write them down";
+"Please write them down" = "Write them down";
 "Please make sure you have recorded all words safely. Otherwise, you will not be able to go through the verification process, and have to start over." = "Please make sure you have recorded all words safely. Otherwise, you will not be able to go through the verification process, and have to start over.";
 "Continue" = "Continue";
 "Backup Now" = "Backup Now";

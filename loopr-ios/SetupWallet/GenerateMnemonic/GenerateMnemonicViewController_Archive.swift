@@ -41,7 +41,7 @@ class GenerateMnemonicViewController_Archive: UIViewController {
         congratulationsLabel.text = NSLocalizedString("Congratulations!", comment: "")
         view.addSubview(congratulationsLabel)
 
-        infoTextView.frame = CGRect(x: padding-3, y: 72, width: screenWidth - (padding-3) * 2, height: 150)
+        infoTextView.frame = CGRect(x: padding-3, y: 72, width: screenWidth - (padding-3) * 2, height: 155)
         infoTextView.isEditable = false
         infoTextView.text = NSLocalizedString("Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage.", comment: "")
         infoTextView.textColor = UIColor.black.withAlphaComponent(0.6)
