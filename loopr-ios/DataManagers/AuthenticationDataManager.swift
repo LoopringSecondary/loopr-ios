@@ -10,16 +10,23 @@ import Foundation
 import LocalAuthentication
 
 class AuthenticationDataManager {
-
+    
     static let shared = AuthenticationDataManager()
-
+    
     var hasLogin: Bool = false
     
     private init() {
         
     }
     
+    public func devicePasscodeEnabled() -> Bool {
+        return LAContext().canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
+    }
+    
     func getPasscodeSetting() -> Bool {
+        guard BiometricType.get() != .none else {
+            return false
+        }
         let passcodeOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.passcodeOn.rawValue)
         return passcodeOn
     }
@@ -30,7 +37,7 @@ class AuthenticationDataManager {
     
     func authenticate(completion: @escaping (_ error: Error?) -> Void) {
         let context = LAContext()
-        let reason = NSLocalizedString("Authenticate to access your wallet", comment: "")
+        let reason = LocalizedString("Authenticate to access your wallet", comment: "")
         var authError: NSError?
         if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
             context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, error in
@@ -42,7 +49,12 @@ class AuthenticationDataManager {
                 }
             }
         } else {
-            completion(authError)
+            print(authError.debugDescription)
+            // Could not start authentication. So disable touch id or face id.
+            setPasscodeSetting(false)
+            AuthenticationDataManager.shared.hasLogin = true
+            completion(nil)
         }
     }
 }
+

@@ -28,9 +28,9 @@ class TradeReviewViewController: UIViewController {
         setBackButton()
         
         // TODO: Review or Confirmation?
-        self.navigationItem.title = NSLocalizedString("Order Detail", comment: "")
+        self.navigationItem.title = LocalizedString("Order Detail", comment: "")
         
-        shareOrderButton.title = NSLocalizedString("Share Order", comment: "")
+        shareOrderButton.title = LocalizedString("Share Order", comment: "")
         shareOrderButton.setupRoundBlack()
 
         // Setup UI in the scroll view
@@ -100,7 +100,7 @@ class TradeReviewViewController: UIViewController {
     }
 
     @IBAction func pressedShareButton(_ sender: UIButton) {
-        let text = NSLocalizedString("My Trade from Loopr-iOS", comment: "")
+        let text = LocalizedString("My Trade from Loopr-iOS", comment: "")
         let png = UIImagePNGRepresentation(qrcodeImage)
         let shareAll = [text, png!] as [Any]
         let activityVC = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)

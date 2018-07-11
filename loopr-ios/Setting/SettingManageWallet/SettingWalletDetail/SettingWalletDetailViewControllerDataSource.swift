@@ -29,35 +29,35 @@ extension SettingWalletDetailViewController {
             if appWallet.setupWalletMethod == .create || appWallet.setupWalletMethod == .importUsingMnemonic {
                 if indexPath.row == 0 {
                     cell.contentType = .walletName
-                    cell.textLabel?.text = NSLocalizedString("Wallet Name", comment: "")
+                    cell.textLabel?.text = LocalizedString("Wallet Name", comment: "")
                     cell.detailTextLabel?.text = appWallet.name
                 } else if indexPath.row == 1 {
                     cell.contentType = .backupMnemonic
-                    cell.textLabel?.text = NSLocalizedString("Backup Mnemonic", comment: "")
+                    cell.textLabel?.text = LocalizedString("Backup Mnemonic", comment: "")
                 } else if indexPath.row == 2 {
                     cell.contentType = .exportPrivateKey
-                    cell.textLabel?.text = NSLocalizedString("Export Private Key", comment: "")
+                    cell.textLabel?.text = LocalizedString("Export Private Key", comment: "")
                 } else if indexPath.row == 3 {
                     cell.contentType = .exportKeystore
-                    cell.textLabel?.text = NSLocalizedString("Export Keystore", comment: "")
+                    cell.textLabel?.text = LocalizedString("Export Keystore", comment: "")
                 }
             } else {
                 if indexPath.row == 0 {
                     cell.contentType = .walletName
-                    cell.textLabel?.text = NSLocalizedString("Wallet Name", comment: "")
+                    cell.textLabel?.text = LocalizedString("Wallet Name", comment: "")
                     cell.detailTextLabel?.text = appWallet.name
                 } else if indexPath.row == 1 {
                     cell.contentType = .exportPrivateKey
-                    cell.textLabel?.text = NSLocalizedString("Export Private Key", comment: "")
+                    cell.textLabel?.text = LocalizedString("Export Private Key", comment: "")
                 } else if indexPath.row == 2 {
                     cell.contentType = .exportKeystore
-                    cell.textLabel?.text = NSLocalizedString("Export Keystore", comment: "")
+                    cell.textLabel?.text = LocalizedString("Export Keystore", comment: "")
                 }
             }
         } else if indexPath.section == 1 {
             if indexPath.row == 0 {
                 cell.contentType = .clearRecords
-                cell.textLabel?.text = NSLocalizedString("Clear Records of this Wallet", comment: "")
+                cell.textLabel?.text = LocalizedString("Clear Records of this Wallet", comment: "")
                 cell.textLabel?.textColor = UIStyleConfig.red
             }
         }

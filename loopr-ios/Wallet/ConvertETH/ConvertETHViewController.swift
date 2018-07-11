@@ -42,14 +42,14 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Convert", comment: "")
+        self.navigationItem.title = LocalizedString("Convert", comment: "")
 
         setBackButton()
 
         scrollViewButtonLayoutConstraint.constant = 0
         convertBackgroundViewHeightConstraint.constant = 47*UIStyleConfig.scale + 15*2
 
-        convertButton.title = NSLocalizedString("Yes, convert now!", comment: "")
+        convertButton.title = LocalizedString("Yes, convert now!", comment: "")
         convertButton.setupRoundBlack()
 
         // Setup UI
@@ -93,7 +93,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         amountTextField.theme_tintColor = GlobalPicker.textColor
         amountTextField.contentMode = UIViewContentMode.bottom
         amountTextField.frame = CGRect(x: padding, y: tokenSView.frame.maxY + padding, width: screenWidth-padding*2-80, height: 40)
-        amountTextField.placeholder = NSLocalizedString("Amount you want to convert", comment: "")
+        amountTextField.placeholder = LocalizedString("Amount you want to convert", comment: "")
         scrollView.addSubview(amountTextField)
 
         amountUnderLine.frame = CGRect(x: padding, y: tokenSLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
@@ -124,7 +124,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         if let asset = self.asset {
             let symbol = asset.symbol
             let available = ConvertDataManager.shared.getMaxAmount(symbol: symbol)
-            let title = NSLocalizedString("Available Balance", comment: "")
+            let title = LocalizedString("Available Balance", comment: "")
             availableLabel.text = "\(title) \(available.withCommas()) \(symbol)"
             tokenSView.update(symbol: symbol)
             tokenBView.update(symbol: getAnotherToken())
@@ -159,7 +159,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         let symbol = asset!.symbol.uppercased()
         infoLabel.text = symbol == "ETH" ? "1 ETH = 1 WETH" : "1 WETH = 1 ETH"
         if symbol == "ETH" {
-            tokenSLabel.text = NSLocalizedString("ETH (Excluding for gas)", comment: "")
+            tokenSLabel.text = LocalizedString("ETH (Excluding for gas)", comment: "")
             infoLabel.text = "1 ETH = 1 WETH"
         } else if symbol == "WETH" {
             tokenSLabel.text = "WETH"
@@ -270,7 +270,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     func validateTextField() -> Bool {
         let symbol = asset!.symbol.uppercased()
         let maxAmount = ConvertDataManager.shared.getMaxAmount(symbol: symbol)
-        let title = NSLocalizedString("Available Balance", comment: "")
+        let title = LocalizedString("Available Balance", comment: "")
         availableLabel.text = "\(title) \(maxAmount.withCommas()) \(symbol)"
         availableLabel.textColor = .black
         if let text = amountTextField.text, let inputAmount = Double(text) {
@@ -291,7 +291,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
                 return true
             } else {
                 availableLabel.textColor = .red
-                availableLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+                availableLabel.text = LocalizedString("Please input a valid amount", comment: "")
                 availableLabel.shake()
             }
         }
@@ -303,7 +303,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         guard validateTextField() == true, let amount = validation() else {
             print("Invalid Amount")
             availableLabel.textColor = .red
-            availableLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+            availableLabel.text = LocalizedString("Please input a valid amount", comment: "")
             availableLabel.shake()
             return
         }

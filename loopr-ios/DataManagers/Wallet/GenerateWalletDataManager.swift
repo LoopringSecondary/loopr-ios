@@ -81,7 +81,7 @@ class GenerateWalletDataManager {
 
     func complete(completion: @escaping (_ appWallet: AppWallet?, _ error: AddWalletError?) -> Void) {
         print("Verify mnemonics: \(isVerified)")
-        SVProgressHUD.show(withStatus: NSLocalizedString("Initializing the wallet", comment: "") + "...")
+        SVProgressHUD.show(withStatus: LocalizedString("Initializing the wallet", comment: "") + "...")
         DispatchQueue.global().async {
             AppWalletDataManager.shared.addWallet(setupWalletMethod: .create, walletName: self.walletName, mnemonics: self.mnemonics, password: self.password, derivationPath: "m/44'/60'/0'/0/x", key: 0, isVerified: self.isVerified, completionHandler: {(appWallet, error) in
                 

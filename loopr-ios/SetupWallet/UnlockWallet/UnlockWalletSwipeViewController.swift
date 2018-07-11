@@ -21,7 +21,7 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Import Wallet", comment: "")
+        self.navigationItem.title = LocalizedString("Import Wallet", comment: "")
         setBackButton()
         
         self.navigationController?.isNavigationBarHidden = false
@@ -135,7 +135,7 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
     }
     
     func showAlert(decodedURL: String) {
-        let title = NSLocalizedString("QR Code type doesn't fit here", comment: "")
+        let title = LocalizedString("QR Code type doesn't fit here", comment: "")
         let alertPrompt = UIAlertController(title: title, message: "\(decodedURL)", preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)

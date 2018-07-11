@@ -27,7 +27,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
 
-        unlockButton.setTitle(NSLocalizedString("Unlock", comment: ""), for: .normal)
+        unlockButton.setTitle(LocalizedString("Unlock", comment: ""), for: .normal)
         unlockButton.setupRoundBlack()
 
         mnemonicWordTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
@@ -35,7 +35,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         mnemonicWordTextView.font = FontConfigManager.shared.getRegularFont()
         mnemonicWordTextView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
         mnemonicWordTextView.delegate = self
-        mnemonicWordTextView.text = NSLocalizedString("Please use space to seperate the mnemonic words", comment: "")
+        mnemonicWordTextView.text = LocalizedString("Please use space to seperate the mnemonic words", comment: "")
         mnemonicWordTextView.textColor = .lightGray
         mnemonicWordTextView.tintColor = UIColor.black
         
@@ -44,7 +44,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         passwordTextField.tag = 0
         passwordTextField.theme_tintColor = GlobalPicker.textColor
         passwordTextField.font = FontConfigManager.shared.getLabelFont(size: 17)
-        passwordTextField.placeholder = NSLocalizedString("Mnemonic Password (optional)", comment: "")
+        passwordTextField.placeholder = LocalizedString("Mnemonic Password (optional)", comment: "")
         passwordTextField.contentMode = UIViewContentMode.bottom
         passwordTextField.textContentType = .password
         passwordTextField.isSecureTextEntry = true
@@ -114,7 +114,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
     }
 
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if mnemonicWordTextView.text == NSLocalizedString("Please use space to seperate the mnemonic words", comment: "") {
+        if mnemonicWordTextView.text == LocalizedString("Please use space to seperate the mnemonic words", comment: "") {
             mnemonicWordTextView.text = ""
             mnemonicWordTextView.textColor = .black
         }
@@ -123,7 +123,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if mnemonicWordTextView.text == "" {
-            mnemonicWordTextView.text = NSLocalizedString("Please use space to seperate the mnemonic words", comment: "")
+            mnemonicWordTextView.text = LocalizedString("Please use space to seperate the mnemonic words", comment: "")
             mnemonicWordTextView.textColor = .lightGray
         }
         mnemonicWordTextView.resignFirstResponder()
@@ -151,7 +151,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         let mnemonic = mnemonicWordTextView.text.trim()
 
         guard Mnemonic.isValid(mnemonic) else {
-            let notificationTitle = NSLocalizedString("Invalid mnemonic. Please enter again.", comment: "")
+            let notificationTitle = LocalizedString("Invalid mnemonic. Please enter again.", comment: "")
             let banner = NotificationBanner.generate(title: notificationTitle, style: .danger)
             banner.duration = 1.5
             banner.show()

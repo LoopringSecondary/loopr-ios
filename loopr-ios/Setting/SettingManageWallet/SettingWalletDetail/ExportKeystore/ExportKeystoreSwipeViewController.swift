@@ -19,7 +19,7 @@ class ExportKeystoreSwipeViewController: SwipeViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Export Keystore", comment: "")
+        self.navigationItem.title = LocalizedString("Export Keystore", comment: "")
         setBackButton()
 
         let displayKeystoreViewController = DisplayKeystoreViewController()
@@ -71,7 +71,7 @@ class ExportKeystoreSwipeViewController: SwipeViewController {
         if index == 0 {
             return "Keystore"
         } else {
-            return NSLocalizedString("QR Code", comment: "")
+            return LocalizedString("QR Code", comment: "")
         }
     }
     

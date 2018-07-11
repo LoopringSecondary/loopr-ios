@@ -42,7 +42,7 @@ class AssetTransactionDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Details", comment: "")
+        self.navigationItem.title = LocalizedString("Details", comment: "")
         
         setBackButton()
         
@@ -64,7 +64,7 @@ class AssetTransactionDetailViewController: UIViewController {
         let labelHeight: CGFloat = 40
         
         // Row 1
-        label1.text = NSLocalizedString("Status", comment: "")
+        label1.text = LocalizedString("Status", comment: "")
         label1.theme_textColor = GlobalPicker.textColor
         label1.font = FontConfigManager.shared.getLabelFont()
         label1.frame = CGRect(x: padding, y: originY, width: 80, height: labelHeight)
@@ -81,7 +81,7 @@ class AssetTransactionDetailViewController: UIViewController {
         view.addSubview(row1Underline)
 
         // Row 2
-        label3.text = NSLocalizedString("From", comment: "")
+        label3.text = LocalizedString("From", comment: "")
         label3.theme_textColor = GlobalPicker.textColor
         label3.font = FontConfigManager.shared.getLabelFont()
         label3.frame = CGRect(x: padding, y: row1Underline.frame.maxY + padding, width: 80, height: labelHeight)
@@ -119,7 +119,7 @@ class AssetTransactionDetailViewController: UIViewController {
         view.addSubview(row3Underline)
 
         // Row 4
-        label7.text = NSLocalizedString("Confirm Time", comment: "")
+        label7.text = LocalizedString("Confirm Time", comment: "")
         label7.theme_textColor = GlobalPicker.textColor
         label7.font = FontConfigManager.shared.getLabelFont()
         label7.frame = CGRect(x: padding, y: row3Underline.frame.maxY + padding, width: 80, height: labelHeight)
@@ -195,10 +195,10 @@ class AssetTransactionDetailViewController: UIViewController {
             // TODO: cover all cases
             switch transaction.type {
             case .received:
-                label3.text = NSLocalizedString("From", comment: "")
+                label3.text = LocalizedString("From", comment: "")
                 button1.title = transaction.from
             case .sent:
-                label3.text = NSLocalizedString("To", comment: "")
+                label3.text = LocalizedString("To", comment: "")
                 button1.title = transaction.to
             case .approved:
                 amountLabel.isHidden = true

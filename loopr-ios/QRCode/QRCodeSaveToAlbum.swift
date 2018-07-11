@@ -58,7 +58,7 @@ class QRCodeSaveToAlbum: NSObject {
         } else {
             print("should really prompt the user to let them know it's failed")
             DispatchQueue.main.async {
-                let notificationTitle = NSLocalizedString("No access to save QR code. Please go to setting to enable the access.", comment: "")
+                let notificationTitle = LocalizedString("No access to save QR code. Please go to setting to enable the access.", comment: "")
                 let banner = NotificationBanner.generate(title: notificationTitle, style: .danger)
                 banner.duration = 5
                 banner.show()

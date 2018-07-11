@@ -10,18 +10,16 @@ import Foundation
 import BigInt
 
 class CurrentAppWalletDataManager {
-
+    
     static let shared = CurrentAppWalletDataManager()
     private var currentAppWallet: AppWallet?
     private var totalCurrencyValue: Double
     private var assetsInHideSmallMode: [Asset]
     private var assets: [Asset]
-    private var transactions: [Transaction]
     
     private init() {
-        self.assetsInHideSmallMode = []
         self.assets = []
-        self.transactions = []
+        self.assetsInHideSmallMode = []
         self.totalCurrencyValue = 0
     }
     
@@ -44,10 +42,12 @@ class CurrentAppWalletDataManager {
         defaults.set(appWallet.privateKey, forKey: UserDefaultsKeys.currentAppWallet.rawValue)
         currentAppWallet = appWallet
         
+        // Update websocket
+        startGetBalance()
+        
         // TODO: This needs to join TokenLists
         self.assetsInHideSmallMode = []
         self.assets = []
-        self.transactions = []
         self.totalCurrencyValue = 0
         
         // Init assets using assetSequence in AppWallet
@@ -59,7 +59,7 @@ class CurrentAppWalletDataManager {
                 assets.append(asset)
             }
         }
-
+        
         for symbol in currentAppWallet!.getAssetSequenceInHideSmallAssets() {
             let asset = Asset(symbol: symbol)
             if let index = assetsInHideSmallMode.index(of: asset) {
@@ -71,17 +71,17 @@ class CurrentAppWalletDataManager {
         
         // Get nonce. It's a slow API request.
         SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
-
-        // Push a notification
-        NotificationCenter.default.post(name: .appWalletDidUpdate, object: nil)
         
-        startGetBalance()
+        // Publish a notification to update UI
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .currentAppWalletSwitched, object: nil)
+        }
     }
     
     func getCurrentAppWallet() -> AppWallet? {
         return currentAppWallet
     }
-
+    
     func getTotalAsset() -> Double {
         return totalCurrencyValue
     }
@@ -106,7 +106,7 @@ class CurrentAppWalletDataManager {
     func getTotalAssetCurrencyFormmat() -> String {
         return totalCurrencyValue.currency
     }
-
+    
     func getAssets(enable: Bool? = nil) -> [Asset] {
         guard let enable = enable else {
             return self.assets
@@ -138,7 +138,7 @@ class CurrentAppWalletDataManager {
             })
         }
     }
-
+    
     // TODO: we should simplify this function.
     func setAssets(newAssets: [Asset]) {
         let filteredAssets = newAssets.filter { (asset) -> Bool in
@@ -149,11 +149,11 @@ class CurrentAppWalletDataManager {
         if filteredAssets.count == 0 {
             return
         }
-
+        
         let sortedAssets = filteredAssets.sorted { (a, b) -> Bool in
             return a.balance > b.balance
         }
-
+        
         totalCurrencyValue = 0
         for asset in sortedAssets {
             // If the price quote is nil, asset won't be updated. Please use getBalanceAndPriceQuote()
@@ -172,7 +172,7 @@ class CurrentAppWalletDataManager {
                         currentAppWallet!.addAssetSequence(symbol: asset.symbol)
                     }
                 }
-
+                
                 // Small assets
                 if asset.total > 0.01 {
                     if let index = assetsInHideSmallMode.index(of: asset) {
@@ -202,55 +202,16 @@ class CurrentAppWalletDataManager {
         assetsInHideSmallMode = assetsInHideSmallMode.filter { (asset) -> Bool in
             return asset.total > 0.01
         }
-
+        
         if currentAppWallet != nil {
             currentAppWallet!.assetSequenceInHideSmallAssets = assetsInHideSmallMode.filter { (asset) -> Bool in
                 return asset.total > 0.01
-            }.map({ (asset) -> String in
-                return asset.symbol
-            })
+                }.map({ (asset) -> String in
+                    return asset.symbol
+                })
             print(currentAppWallet!.assetSequenceInHideSmallAssets)
             currentAppWallet!.totalCurrency = totalCurrencyValue
             AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: currentAppWallet!)
-        }
-    }
-
-    // TODO: Add filter by token.
-    func getTransactions(txStatuses: [Transaction.TxStatus]? = nil) -> [Transaction] {
-        guard let txStatuses = txStatuses else {
-            return self.transactions
-        }
-        return transactions.filter { (transaction) -> Bool in
-            txStatuses.contains(transaction.status)
-        }
-    }
-
-    func exchange(at sourceIndex: Int, to destinationIndex: Int) {
-        guard let currentAppWallet = currentAppWallet else {
-            return
-        }
-        
-        if SettingDataManager.shared.getHideSmallAssets() {
-            if destinationIndex < assetsInHideSmallMode.count && sourceIndex < assetsInHideSmallMode.count {
-                assetsInHideSmallMode.swapAt(sourceIndex, destinationIndex)
-            }
-
-            if destinationIndex < currentAppWallet.assetSequenceInHideSmallAssets.count && sourceIndex < currentAppWallet.assetSequenceInHideSmallAssets.count {
-                currentAppWallet.assetSequenceInHideSmallAssets.swapAt(sourceIndex, destinationIndex)
-            }
-        } else {
-            if destinationIndex < assets.count && sourceIndex < assets.count {
-                assets.swapAt(sourceIndex, destinationIndex)
-            }
-
-            if destinationIndex < currentAppWallet.assetSequence.count && sourceIndex < currentAppWallet.assetSequence.count {
-                currentAppWallet.assetSequence.swapAt(sourceIndex, destinationIndex)
-            }
-        }
-
-        // Update the asset sequence to the local storage
-        DispatchQueue.global(qos: .userInitiated).async {
-            AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: currentAppWallet)
         }
     }
     
@@ -265,22 +226,26 @@ class CurrentAppWalletDataManager {
         LoopringSocketIORequest.endBalance()
     }
     
-    func getTransactionsFromServer(asset: Asset, completionHandler: @escaping (_ transactions: [Transaction], _ error: Error?) -> Void) {
+    func getTransactionsFromServer(asset: Asset, completionHandler: @escaping (_ transactions: [String: [Transaction]], _ error: Error?) -> Void) {
         guard let wallet = currentAppWallet else {
             return
         }
         LoopringAPIRequest.getTransactions(owner: wallet.address, symbol: asset.symbol, txHash: nil, pageSize: 50, completionHandler: { (transactions, error) in
-            guard error == nil && transactions != nil else {
+            guard error == nil, let transactions = transactions else {
                 return
             }
-            self.transactions = []
-            for transaction in transactions! {
-                self.transactions.append(transaction)
+            var dateTransactions: [String: [Transaction]] = [:]
+            for transaction in transactions {
+                let date = transaction.createTime.components(separatedBy: " ")[0]
+                if dateTransactions[date] == nil {
+                    dateTransactions[date] = []
+                }
+                dateTransactions[date]!.append(transaction)
             }
-            completionHandler(self.transactions, nil)
+            completionHandler(dateTransactions, nil)
         })
     }
-
+    
     // TODO: only 19 tokens are returned.
     // Socket IO: this func should be called every 10 secs when emitted
     func onBalanceResponse(json: JSON) {
@@ -332,3 +297,4 @@ class CurrentAppWalletDataManager {
         }
     }
 }
+

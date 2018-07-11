@@ -78,7 +78,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         setBackButton()
 
         sendButton.setTitleColor(.gray, for: .disabled)
-        sendButton.title = NSLocalizedString("Send", comment: "")
+        sendButton.title = LocalizedString("Send", comment: "")
         sendButton.setupRoundBlack()
         scrollViewButtonLayoutConstraint.constant = 47*UIStyleConfig.scale + 15*2
 
@@ -117,7 +117,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         addressTextField.keyboardType = .alphabet
         addressTextField.font = FontConfigManager.shared.getLabelFont()
         addressTextField.theme_tintColor = GlobalPicker.textColor
-        addressTextField.placeholder = NSLocalizedString("Enter the address", comment: "")
+        addressTextField.placeholder = LocalizedString("Enter the address", comment: "")
         addressTextField.contentMode = UIViewContentMode.bottom
         addressTextField.frame = CGRect(x: padding, y: tokenTotalAmountLabel.frame.maxY + padding*3, width: screenWidth-padding*2-40, height: 40)
         scrollView.addSubview(addressTextField)
@@ -134,7 +134,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
 
         addressInfoLabel.frame = CGRect(x: padding, y: addressUnderLine.frame.maxY, width: screenWidth - padding * 2, height: 40)
         addressInfoLabel.font = FontConfigManager.shared.getLabelFont()
-        addressInfoLabel.text = NSLocalizedString("Please confirm the address before sending", comment: "")
+        addressInfoLabel.text = LocalizedString("Please confirm the address before sending", comment: "")
         scrollView.addSubview(addressInfoLabel)
         
         // Third row: Amount
@@ -144,7 +144,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         amountTextField.tag = 1
         amountTextField.font = FontConfigManager.shared.getLabelFont()
         amountTextField.theme_tintColor = GlobalPicker.textColor
-        amountTextField.placeholder = NSLocalizedString("Enter the amount", comment: "")
+        amountTextField.placeholder = LocalizedString("Enter the amount", comment: "")
         amountTextField.contentMode = UIViewContentMode.bottom
         amountTextField.frame = CGRect(x: padding, y: addressInfoLabel.frame.maxY + padding*1.5, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(amountTextField)
@@ -174,7 +174,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         
         transactionFeeLabel.frame = CGRect(x: padding, y: amountInfoLabel.frame.maxY + padding*2, width: 160, height: 40)
         transactionFeeLabel.font = FontConfigManager.shared.getLabelFont()
-        transactionFeeLabel.text = NSLocalizedString("Transaction Fee", comment: "")
+        transactionFeeLabel.text = LocalizedString("Transaction Fee", comment: "")
         scrollView.addSubview(transactionFeeLabel)
         
         transactionFeeAmountLabel.frame = CGRect(x: screenWidth-300-padding, y: amountInfoLabel.frame.maxY + padding*2, width: 300, height: 40)
@@ -190,7 +190,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         advancedButton.setTitleColor(UIColor.black, for: .normal)
         advancedButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
         advancedButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
-        advancedButton.title = NSLocalizedString("Advanced", comment: "")
+        advancedButton.title = LocalizedString("Advanced", comment: "")
         advancedButton.setRightImage(imageName: "Arrow-button-right-light", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 11)
         advancedButton.addTarget(self, action: #selector(pressedAdvancedButton(_:)), for: .touchUpInside)
         scrollView.addSubview(advancedButton)
@@ -218,13 +218,13 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
 
         transactionAmountMinLabel.frame = CGRect(x: padding, y: transactionSpeedSlider.frame.maxY + 10, width: (screenWidth-2*padding)/8, height: 30)
         transactionAmountMinLabel.font = FontConfigManager.shared.getLabelFont()
-        transactionAmountMinLabel.text = NSLocalizedString("Slow", comment: "")
+        transactionAmountMinLabel.text = LocalizedString("Slow", comment: "")
         scrollView.addSubview(transactionAmountMinLabel)
         
         transactionAmountCurrentLabel.textAlignment = .center
         transactionAmountCurrentLabel.frame = CGRect(x: transactionAmountMinLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)*3/4, height: 30)
         transactionAmountCurrentLabel.font = FontConfigManager.shared.getLabelFont()
-        transactionAmountCurrentLabel.text = NSLocalizedString("gas price", comment: "") + ": \(gasPriceInGwei) gwei"
+        transactionAmountCurrentLabel.text = LocalizedString("gas price", comment: "") + ": \(gasPriceInGwei) gwei"
         
         scrollView.addSubview(transactionAmountCurrentLabel)
         
@@ -237,7 +237,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         transactionAmountMaxLabel.textAlignment = .right
         transactionAmountMaxLabel.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/8, height: 30)
         transactionAmountMaxLabel.font = FontConfigManager.shared.getLabelFont()
-        transactionAmountMaxLabel.text = NSLocalizedString("Fast", comment: "")
+        transactionAmountMaxLabel.text = LocalizedString("Fast", comment: "")
         scrollView.addSubview(transactionAmountMaxLabel)
         
         scrollView.delegate = self
@@ -257,7 +257,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         GasDataManager.shared.getEstimateGasPrice { (gasPrice, _) in
             self.gasPriceInGwei = Double(gasPrice)
             DispatchQueue.main.async {
-                self.transactionAmountCurrentLabel.text = NSLocalizedString("gas price", comment: "") + ": \(self.gasPriceInGwei) gwei"
+                self.transactionAmountCurrentLabel.text = LocalizedString("gas price", comment: "") + ": \(self.gasPriceInGwei) gwei"
                 self.updateTransactionFeeAmountLabel()
             }
         }
@@ -273,7 +273,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         
         // TODO: Update the transaction fee is needed. in SendCurrentAppWalletDataManager
         tokenSymbolLabel.text = asset.symbol
-        let title = NSLocalizedString("Available Balance", comment: "")
+        let title = LocalizedString("Available Balance", comment: "")
         tokenTotalAmountLabel.text = "\(title) \(asset.display) \(asset.symbol)"
         SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
     }
@@ -290,12 +290,12 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     }
     
     @objc func pressedHelpButton(_ sender: Any) {
-        let title = NSLocalizedString("What is gas?", comment: "")
-        let message = NSLocalizedString("Gas is...", comment: "") // TODO
+        let title = LocalizedString("What is gas?", comment: "")
+        let message = LocalizedString("Gas is...", comment: "") // TODO
         let alertController = UIAlertController(title: title,
             message: message,
             preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .cancel, handler: { _ in
+        let cancelAction = UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .cancel, handler: { _ in
         })
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
@@ -322,13 +322,13 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                 if toAddress.isHexAddress() {
                     var error: NSError? = nil
                     if GethNewAddressFromHex(toAddress, &error) != nil {
-                        updateLabel(label: addressInfoLabel, text: NSLocalizedString("Please confirm the address before sending", comment: ""), textColor: .black)
+                        updateLabel(label: addressInfoLabel, text: LocalizedString("Please confirm the address before sending", comment: ""), textColor: .black)
                         return true
                     }
                 }
-                updateLabel(label: addressInfoLabel, text: NSLocalizedString("Please input a correct address", comment: ""), textColor: .red)
+                updateLabel(label: addressInfoLabel, text: LocalizedString("Please input a correct address", comment: ""), textColor: .red)
             } else {
-                updateLabel(label: addressInfoLabel, text: NSLocalizedString("Please confirm the address before sending", comment: ""), textColor: .black)
+                updateLabel(label: addressInfoLabel, text: LocalizedString("Please confirm the address before sending", comment: ""), textColor: .black)
             }
         }
         return false
@@ -348,11 +348,11 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                         }
                     }
                 } else {
-                    let title = NSLocalizedString("Available Balance", comment: "")
+                    let title = LocalizedString("Available Balance", comment: "")
                     updateLabel(label: amountInfoLabel, text: "\(title) \(asset.display) \(asset.symbol)", textColor: .red)
                 }
             } else {
-                let text = NSLocalizedString("Please input a valid amount", comment: "")
+                let text = LocalizedString("Please input a valid amount", comment: "")
                 updateLabel(label: amountInfoLabel, text: text, textColor: .red)
             }
         } else {
@@ -428,16 +428,16 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         let isAmountValid = validateAmount()
         let isAddressValid = validateAddress()
         if isAmountValid && isAddressValid {
-            SVProgressHUD.show(withStatus: NSLocalizedString("Processing the transaction", comment: "") + "...")
+            SVProgressHUD.show(withStatus: LocalizedString("Processing the transaction", comment: "") + "...")
             self.pushController()
         }
         if !isAmountValid && amountInfoLabel.textColor != .red {
-            amountInfoLabel.text = NSLocalizedString("Please input a valid amount", comment: "")
+            amountInfoLabel.text = LocalizedString("Please input a valid amount", comment: "")
             amountInfoLabel.textColor = .red
             amountInfoLabel.shake()
         }
         if !isAddressValid && addressInfoLabel.textColor != .red {
-            addressInfoLabel.text = NSLocalizedString("Please input a correct address", comment: "")
+            addressInfoLabel.text = LocalizedString("Please input a correct address", comment: "")
             addressInfoLabel.textColor = .red
             addressInfoLabel.shake()
         }
@@ -470,7 +470,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         gasPriceInGwei = Double(roundedStepValue)
         
         // Update info
-        transactionAmountCurrentLabel.text = NSLocalizedString("gas price", comment: "") + ": \(roundedStepValue) gwei"
+        transactionAmountCurrentLabel.text = LocalizedString("gas price", comment: "") + ": \(roundedStepValue) gwei"
         updateTransactionFeeAmountLabel()
     }
     
@@ -624,10 +624,10 @@ extension SendAssetViewController {
         guard error == nil && txHash != nil else {
             // Show toast
             DispatchQueue.main.async {                
-                let title = NSLocalizedString("Failed to send the transaction", comment: "")
+                let title = LocalizedString("Failed to send the transaction", comment: "")
                 let message = String(describing: error)
                 let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Back", comment: ""), style: .default, handler: { _ in
+                alert.addAction(UIAlertAction(title: LocalizedString("Back", comment: ""), style: .default, handler: { _ in
                 }))
                 self.present(alert, animated: true, completion: nil)
             }
@@ -636,10 +636,10 @@ extension SendAssetViewController {
         print("Result of transfer is \(txHash!)")
         // Show toast
         DispatchQueue.main.async {
-            let title = NSLocalizedString("Sent the transaction successfully", comment: "")
+            let title = LocalizedString("Sent the transaction successfully", comment: "")
             let message = "Result of transfer is \(txHash!)"
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+            alert.addAction(UIAlertAction(title: LocalizedString("OK", comment: ""), style: .default, handler: { _ in
                 self.navigationController?.popViewController(animated: true)
             }))
             self.present(alert, animated: true, completion: nil)

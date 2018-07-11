@@ -38,7 +38,7 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
         
         titleLabel.frame = CGRect(x: padding, y: originY, width: screenWidth - padding * 2, height: 30)
         titleLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 27)
-        titleLabel.text = NSLocalizedString("Enter password", comment: "")
+        titleLabel.text = LocalizedString("Enter password", comment: "")
         view.addSubview(titleLabel)
         
         passwordTextField.isSecureTextEntry = true
@@ -56,13 +56,13 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
         view.addSubview(passwordUnderLine)
         
         passwordInfoLabel.frame = CGRect(x: padding, y: passwordTextField.frame.maxY + 9, width: screenWidth - padding * 2, height: 16)
-        passwordInfoLabel.text = NSLocalizedString("Wrong password", comment: "")
+        passwordInfoLabel.text = LocalizedString("Wrong password", comment: "")
         passwordInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
         passwordInfoLabel.textColor = UIStyleConfig.red
         passwordInfoLabel.alpha = 0.0
         view.addSubview(passwordInfoLabel)
 
-        nextButton.title = NSLocalizedString("Next", comment: "")
+        nextButton.title = LocalizedString("Next", comment: "")
         nextButton.setupRoundBlack()
         nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
         nextButton.frame = CGRect(x: padding, y: passwordInfoLabel.frame.maxY + 40, width: screenWidth - padding * 2, height: 47)
@@ -84,7 +84,7 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
         let password = passwordTextField.text ?? ""
 
         guard password != "" else {
-            self.passwordInfoLabel.text = NSLocalizedString("Please enter a password", comment: "")
+            self.passwordInfoLabel.text = LocalizedString("Please enter a password", comment: "")
             self.passwordInfoLabel.alpha = 1.0
             self.passwordInfoLabel.shake()
             return
@@ -92,7 +92,7 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
         
         if appWallet.setupWalletMethod == .importUsingPrivateKey || (appWallet.setupWalletMethod == .importUsingMnemonic && appWallet.getPassword() == "") {
             var isSucceeded: Bool = false
-            SVProgressHUD.show(withStatus: NSLocalizedString("Exporting keystore", comment: "") + "...")
+            SVProgressHUD.show(withStatus: LocalizedString("Exporting keystore", comment: "") + "...")
             let dispatchGroup = DispatchGroup()
             dispatchGroup.enter()
             DispatchQueue.global().async {
@@ -134,7 +134,7 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
             var validPassword = true
             if password != appWallet.getPassword() {
                 validPassword = false
-                self.passwordInfoLabel.text = NSLocalizedString("Wrong password", comment: "")
+                self.passwordInfoLabel.text = LocalizedString("Wrong password", comment: "")
             }
             
             guard validPassword else {

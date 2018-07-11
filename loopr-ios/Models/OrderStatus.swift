@@ -20,13 +20,13 @@ enum OrderStatus: String, CustomStringConvertible {
 
     var description: String {
         switch self {
-        case .opened: return NSLocalizedString("Order Submitted", comment: "")
-        case .cutoff: return NSLocalizedString("Order Cancelled", comment: "")
-        case .finished: return NSLocalizedString("Order Completed", comment: "")
-        case .cancelled: return NSLocalizedString("Order Cancelled", comment: "")
-        case .expire: return NSLocalizedString("Order Expired", comment: "")
-        case .locked: return NSLocalizedString("Order Locked", comment: "")
-        case .unknown: return NSLocalizedString("Order Unknown", comment: "")
+        case .opened: return LocalizedString("Order Submitted", comment: "")
+        case .cutoff: return LocalizedString("Order Cancelled", comment: "")
+        case .finished: return LocalizedString("Order Completed", comment: "")
+        case .cancelled: return LocalizedString("Order Cancelled", comment: "")
+        case .expire: return LocalizedString("Order Expired", comment: "")
+        case .locked: return LocalizedString("Order Locked", comment: "")
+        case .unknown: return LocalizedString("Order Unknown", comment: "")
         }
     }
 }

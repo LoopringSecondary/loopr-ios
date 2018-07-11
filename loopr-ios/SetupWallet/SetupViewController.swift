@@ -33,11 +33,11 @@ class SetupViewController: UIViewController {
         button.setTitleColor(UIColor.init(white: 0.5, alpha: 1), for: .highlighted)
         button.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
 
-        unlockWalletButton.title = NSLocalizedString("Import Wallet", comment: "")
+        unlockWalletButton.title = LocalizedString("Import Wallet", comment: "")
         unlockWalletButton.setupRoundWhite()
         unlockWalletButton.addTarget(self, action: #selector(unlockWalletButtonPressed), for: .touchUpInside)
 
-        generateWalletButton.title = NSLocalizedString("Generate Wallet", comment: "")
+        generateWalletButton.title = LocalizedString("Generate Wallet", comment: "")
         generateWalletButton.setupRoundBlack()
         generateWalletButton.addTarget(self, action: #selector(generateWalletButtonPressed), for: .touchUpInside)
         
@@ -86,7 +86,7 @@ class SetupViewController: UIViewController {
         if isCreatingFirstWallet {
             
         } else {
-            button.title = NSLocalizedString("Go Back", comment: "")
+            button.title = LocalizedString("Go Back", comment: "")
             button.frame = CGRect(x: 80, y: screenHeight - bottomPadding - 47 - 10, width: screenWidth - 80 * 2, height: 47)
             button.setRightImage(imageName: "Arrow-down-black-bold", imagePaddingTop: 3, imagePaddingLeft: 5, titlePaddingRight: 10)
         }

@@ -12,14 +12,14 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var settingsTableView: UITableView!
     
-    let sectionTitles = [NSLocalizedString("User Preferences", comment: ""), NSLocalizedString("Trading", comment: ""), NSLocalizedString("Security", comment: ""), NSLocalizedString("About", comment: "")]
+    let sectionTitles = [LocalizedString("User Preferences", comment: ""), LocalizedString("Trading", comment: ""), LocalizedString("Security", comment: ""), LocalizedString("About", comment: "")]
     let sectionRows = [3, 3, 1, 1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Settings", comment: "")
+        self.navigationItem.title = LocalizedString("Settings", comment: "")
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         settingsTableView.tableFooterView = UIView()
@@ -156,18 +156,18 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             if currentWalletName == nil {
                 currentWalletName = ""
             }
-            return createDetailTableCell(title: NSLocalizedString("Manage Wallet", comment: ""), detailTitle: currentWalletName!)
+            return createDetailTableCell(title: LocalizedString("Manage Wallet", comment: ""), detailTitle: currentWalletName!)
         case 1:
-            return createDetailTableCell(title: NSLocalizedString("Currency", comment: ""), detailTitle: SettingDataManager.shared.getCurrentCurrency().name)
+            return createDetailTableCell(title: LocalizedString("Currency", comment: ""), detailTitle: SettingDataManager.shared.getCurrentCurrency().name)
         case 2:
             return createThemeMode()
         /*
         case 2:
-             return createDetailTableCell(title: NSLocalizedString("Security", comment: ""), detailTitle: "")
+             return createDetailTableCell(title: LocalizedString("Security", comment: ""), detailTitle: "")
         case 1:
             return createThemeMode()
         case 2:
-            return createDetailTableCell(title: NSLocalizedString("Language", comment: ""), detailTitle: SettingDataManager.shared.getCurrentLanguage().displayName)
+            return createDetailTableCell(title: LocalizedString("Language", comment: ""), detailTitle: SettingDataManager.shared.getCurrentLanguage().displayName)
         case 3:
             
         case 4:
@@ -182,11 +182,11 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tradingSectionForCell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
-            return createBasicTableCell(title: NSLocalizedString("Contract Version", comment: ""), detailTitle: RelayAPIConfiguration.delegateAddress)
+            return createBasicTableCell(title: LocalizedString("Contract Version", comment: ""), detailTitle: RelayAPIConfiguration.delegateAddress)
         case 1:
-            return createDetailTableCell(title: NSLocalizedString("LRC Fee Ratio", comment: ""), detailTitle: SettingDataManager.shared.getLrcFeeRatioDescription())
+            return createDetailTableCell(title: LocalizedString("LRC Fee Ratio", comment: ""), detailTitle: SettingDataManager.shared.getLrcFeeRatioDescription())
         case 2:
-            return createDetailTableCell(title: NSLocalizedString("Margin Split", comment: ""), detailTitle: SettingDataManager.shared.getMarginSplitDescription())
+            return createDetailTableCell(title: LocalizedString("Margin Split", comment: ""), detailTitle: SettingDataManager.shared.getMarginSplitDescription())
         default:
             return UITableViewCell()
         }
@@ -204,7 +204,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func section3Cell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
-            return createBasicTableCell(title: NSLocalizedString("Default Relay", comment: ""), detailTitle: RelayAPIConfiguration.baseURL)
+            return createBasicTableCell(title: LocalizedString("Default Relay", comment: ""), detailTitle: RelayAPIConfiguration.baseURL)
         /*
         case 1:
             return createBasicTableCell(title: "Backup Loopring Relay", detailTitle: "27.0.0.01")
@@ -220,7 +220,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func aboutSectionForCell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
-            return createBasicTableCell(title: NSLocalizedString("App Version", comment: ""), detailTitle: getAppVersion())
+            return createBasicTableCell(title: LocalizedString("App Version", comment: ""), detailTitle: getAppVersion())
         /*
         case 1:
             return createDetailTableCell(title: "Website", detailTitle: "loopring.org")
@@ -231,7 +231,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             return createDetailTableCell(title: "Terms Of Service")
         */
         case 2:
-            return createBasicTableCell(title: NSLocalizedString("Support", comment: ""), detailTitle: "help@loopring.org")
+            return createBasicTableCell(title: LocalizedString("Support", comment: ""), detailTitle: "help@loopring.org")
         case 3:
             return createBasicTableCell(title: "Copyright", detailTitle: "Loopring 2018")
         */

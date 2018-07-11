@@ -61,7 +61,7 @@ class AssetSwipeViewController: SwipeViewController {
         if let asset = asset, asset.symbol.uppercased() == "ETH" || asset.symbol.uppercased() == "WETH" {
             let convertButton = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 28))
             convertButton.setupRoundWhite(height: 28)
-            convertButton.setTitle(NSLocalizedString("Convert", comment: ""), for: .normal)
+            convertButton.setTitle(LocalizedString("Convert", comment: ""), for: .normal)
             convertButton.contentHorizontalAlignment = .center
             convertButton.titleColor = UIColor.darkGray
             convertButton.titleLabel?.font = FontConfigManager.shared.getLabelFont(size: 11)
@@ -101,7 +101,7 @@ class AssetSwipeViewController: SwipeViewController {
     }
     
     override func swipeView(_ swipeView: SwipeView, titleForPageAt index: Int) -> String {
-        return index == 0 ? NSLocalizedString("Transactions", comment: "") : NSLocalizedString("Markets", comment: "")
+        return index == 0 ? LocalizedString("Transactions", comment: "") : LocalizedString("Markets", comment: "")
     }
     
     override func swipeView(_ swipeView: SwipeView, viewControllerForPageAt index: Int) -> UIViewController {

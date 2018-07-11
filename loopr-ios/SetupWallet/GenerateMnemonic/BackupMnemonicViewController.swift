@@ -34,7 +34,7 @@ class BackupMnemonicViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        // self.navigationItem.title = NSLocalizedString("Backup Mnemonic", comment: "")
+        // self.navigationItem.title = LocalizedString("Backup Mnemonic", comment: "")
 
         mnemonics = GenerateWalletDataManager.shared.getMnemonics()
         setBackButton()
@@ -46,7 +46,7 @@ class BackupMnemonicViewController: UIViewController {
         
         titleLabel.frame = CGRect(x: padding, y: originY, width: screenWidth - padding * 2, height: 30)
         titleLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 27)
-        titleLabel.text = NSLocalizedString("Please write them down", comment: "")
+        titleLabel.text = LocalizedString("Please write them down", comment: "")
         view.addSubview(titleLabel)
         
         infoTextView.frame = CGRect(x: padding-3, y: 72, width: screenWidth - (padding-3) * 2, height: 100)
@@ -71,10 +71,10 @@ class BackupMnemonicViewController: UIViewController {
         view.addSubview(mnemonicCollectionViewController0.view)
         addChildViewController(mnemonicCollectionViewController0)
 
-        skipVerifyNowButton.title = NSLocalizedString("Skip Verification", comment: "Go to VerifyMnemonicViewController")
+        skipVerifyNowButton.title = LocalizedString("Skip Verification", comment: "Go to VerifyMnemonicViewController")
         skipVerifyNowButton.setupRoundWhite()
         
-        verifyNowButton.title = NSLocalizedString("Verify Now", comment: "Go to VerifyMnemonicViewController")
+        verifyNowButton.title = LocalizedString("Verify Now", comment: "Go to VerifyMnemonicViewController")
         verifyNowButton.setupRoundBlack()
     }
 
@@ -85,7 +85,7 @@ class BackupMnemonicViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        infoTextView.text = NSLocalizedString("Please make sure you have recorded all words safely. Otherwise, you will not be able to go through the verification process, and have to start over.", comment: "")
+        infoTextView.text = LocalizedString("Please make sure you have recorded all words safely. Otherwise, you will not be able to go through the verification process, and have to start over.", comment: "")
 
         // CollectionView won't be layout correctly in viewDidLoad()
         // https://stackoverflow.com/questions/12927027/uicollectionview-flowlayout-not-wrapping-cells-correctly-ios
@@ -116,8 +116,8 @@ class BackupMnemonicViewController: UIViewController {
     }
 
     func exit() {
-        let header = NSLocalizedString("Create_used_in_creating_wallet", comment: "used in creating wallet")
-        let footer = NSLocalizedString("successfully_used_in_creating_wallet", comment: "used in creating wallet")
+        let header = LocalizedString("Create_used_in_creating_wallet", comment: "used in creating wallet")
+        let footer = LocalizedString("successfully_used_in_creating_wallet", comment: "used in creating wallet")
         let attributedString = NSAttributedString(string: header + " " + "\(GenerateWalletDataManager.shared.walletName)" + " " + footer, attributes: [
             NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getMedium(), size: 17) ?? UIFont.systemFont(ofSize: 17),
             NSAttributedStringKey.foregroundColor: UIColor.init(rgba: "#030303")
@@ -125,12 +125,12 @@ class BackupMnemonicViewController: UIViewController {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         alertController.setValue(attributedString, forKey: "attributedMessage")
 
-        let backAction = UIAlertAction(title: NSLocalizedString("Back", comment: ""), style: .default, handler: { _ in
+        let backAction = UIAlertAction(title: LocalizedString("Back", comment: ""), style: .default, handler: { _ in
             alertController.dismiss(animated: true, completion: nil)
         })
         alertController.addAction(backAction)
 
-        let confirmAction = UIAlertAction(title: NSLocalizedString("Enter Wallet", comment: ""), style: .default, handler: { _ in
+        let confirmAction = UIAlertAction(title: LocalizedString("Enter Wallet", comment: ""), style: .default, handler: { _ in
             GenerateWalletDataManager.shared.complete(completion: {(appWallet, error) in
                 if error == nil {
                     self.dismissGenerateWallet()

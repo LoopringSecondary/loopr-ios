@@ -29,7 +29,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
         assetTableView.dataSource = self
         assetTableView.delegate = self
-        assetTableView.reorder.delegate = self
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
         footerView.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor
         assetTableView.tableFooterView = footerView
@@ -120,7 +119,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let cell = assetTableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? WalletBalanceTableViewCell {
             cell.startUpdateBalanceLabelTimer()
         }
-        let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? NSLocalizedString("Wallet", comment: "")
+        let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? LocalizedString("Wallet", comment: "")
         buttonInNavigationBar.title = buttonTitle
         buttonInNavigationBar.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 20, titlePaddingRight: 0)
     }
@@ -217,7 +216,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         view.addSubview(contextMenuSourceView)
         
         let icons = [UIImage(named: "Scan-white")!, UIImage(named: "Add-token")!]
-        let titles = [NSLocalizedString("Scan QR Code", comment: ""), NSLocalizedString("Add Token", comment: "")]
+        let titles = [LocalizedString("Scan QR Code", comment: ""), LocalizedString("Add Token", comment: "")]
         let menuViewController = AddMenuViewController(rows: 2, titles: titles, icons: icons)
         menuViewController.didSelectRowClosure = { (index) -> Void in
             if index == 0 {
@@ -374,29 +373,3 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 }
 
-extension WalletViewController: TableViewReorderDelegate {
-    // MARK: - Reorder Delegate
-    func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        // print("tableView reorderRowAt")
-        CurrentAppWalletDataManager.shared.exchange(at: sourceIndexPath.row, to: destinationIndexPath.row)
-    }
-
-    func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.section >= 1 {
-            // TODO: disable reordering. We will revisit this feature in the future.
-            return false
-        } else {
-            return false
-        }
-    }
-    
-    func tableViewDidBeginReordering(_ tableView: UITableView) {
-        print("tableViewDidBeginReordering")
-        isReordering = true
-    }
-    
-    func tableViewDidFinishReordering(_ tableView: UITableView, from initialSourceIndexPath: IndexPath, to finalDestinationIndexPath: IndexPath) {
-        print("tableViewDidFinishReordering")
-        isReordering = false
-    }
-}

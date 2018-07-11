@@ -23,10 +23,10 @@ open class PriceStackView: UIStackView {
         super.init(frame: frame)
         
         let color = UIColor.init(rgba: "#0094FF")
-        let sell = NSLocalizedString("Selling Price", comment: "")
-        let buy = NSLocalizedString("Buying Price", comment: "")
-        let market = NSLocalizedString("Market Price", comment: "")
-        let custom = NSLocalizedString("Customer Price", comment: "")
+        let sell = LocalizedString("Selling Price", comment: "")
+        let buy = LocalizedString("Buying Price", comment: "")
+        let market = LocalizedString("Market Price", comment: "")
+        let custom = LocalizedString("Customer Price", comment: "")
         priceButton = PriceButton(
             images: [ nil, nil, nil, nil],
             states: [custom, sell, buy, market],

@@ -55,7 +55,7 @@ class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
         // Append /x to the derivation path
         let pathValue = derivationPathValue + "/x"
         
-        SVProgressHUD.show(withStatus: NSLocalizedString("Initializing the wallet", comment: "") + "...")
+        SVProgressHUD.show(withStatus: LocalizedString("Initializing the wallet", comment: "") + "...")
         DispatchQueue.global().async {
             AppWalletDataManager.shared.addWallet(setupWalletMethod: .importUsingMnemonic, walletName: self.walletName, mnemonics: self.mnemonic.components(separatedBy: " "), password: self.password, derivationPath: pathValue, key: self.selectedKey, isVerified: true, completionHandler: {(appWallet, error) in
                 if error == nil {

@@ -96,9 +96,9 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
         amountLabel.isHidden = false
         displayLabel.isHidden = false
         if transaction!.symbol.lowercased() == "weth" {
-            titleLabel.text = NSLocalizedString("Convert to WETH", comment: "")
+            titleLabel.text = LocalizedString("Convert to WETH", comment: "")
         } else if transaction!.symbol.lowercased() == "eth" {
-            titleLabel.text = NSLocalizedString("Convert to ETH", comment: "")
+            titleLabel.text = LocalizedString("Convert to ETH", comment: "")
         }
         amountLabel.text = "\(transaction!.value) \(transaction?.symbol ?? " ")"
         amountLabel.textColor = UIColor.black
@@ -109,9 +109,9 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
         amountLabel.isHidden = false
         displayLabel.isHidden = false
         if transaction!.symbol.lowercased() == "weth" {
-            titleLabel.text = NSLocalizedString("Convert to WETH", comment: "")
+            titleLabel.text = LocalizedString("Convert to WETH", comment: "")
         } else if transaction!.symbol.lowercased() == "eth" {
-            titleLabel.text = NSLocalizedString("Convert to ETH", comment: "")
+            titleLabel.text = LocalizedString("Convert to ETH", comment: "")
         }
         amountLabel.text = "\(transaction!.value) \(transaction?.symbol ?? " ")"
         amountLabel.textColor = UIColor.black
@@ -121,15 +121,15 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
     private func updateApprove() {
         amountLabel.isHidden = true
         displayLabel.isHidden = true
-        let header = NSLocalizedString("Enabled", comment: "")
-        let footer = NSLocalizedString("to Trade", comment: "")
-        titleLabel.text = NSLocalizedString("\(header) \(transaction!.symbol) \(footer)", comment: "")
+        let header = LocalizedString("Enabled", comment: "")
+        let footer = LocalizedString("to Trade", comment: "")
+        titleLabel.text = LocalizedString("\(header) \(transaction!.symbol) \(footer)", comment: "")
     }
     
     private func udpateCutoffAndCanceledOrder() {
         amountLabel.isHidden = true
         displayLabel.isHidden = true
-        titleLabel.text = NSLocalizedString("Cancel Order(s)", comment: "")
+        titleLabel.text = LocalizedString("Cancel Order(s)", comment: "")
     }
     
     private func updateReceived() {

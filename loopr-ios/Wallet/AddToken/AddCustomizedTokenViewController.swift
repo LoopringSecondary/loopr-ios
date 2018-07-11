@@ -28,7 +28,7 @@ class AddCustomizedTokenViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         
-        self.navigationItem.title = NSLocalizedString("Add Token", comment: "")
+        self.navigationItem.title = LocalizedString("Add Token", comment: "")
         setBackButton()
 
         tokenNameTextField.becomeFirstResponder()

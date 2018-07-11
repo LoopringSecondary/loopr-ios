@@ -31,7 +31,7 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         walletTableView.theme_backgroundColor = GlobalPicker.backgroundColor
         
-        self.navigationItem.title = NSLocalizedString("Wallet", comment: "")
+        self.navigationItem.title = LocalizedString("Wallet", comment: "")
         setBackButton()
         
         // let addButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
@@ -48,11 +48,11 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
         walletTableView.tableFooterView = UIView()
         
         createButton.setupRoundBlack(height: 40)
-        createButton.setTitle(NSLocalizedString("Create", comment: ""), for: .normal)
+        createButton.setTitle(LocalizedString("Create", comment: ""), for: .normal)
         createButton.addTarget(self, action: #selector(pressedCreateButton(_:)), for: UIControlEvents.touchUpInside)
         
         importButton.setupRoundBlack(height: 40)
-        importButton.setTitle(NSLocalizedString("Import", comment: ""), for: .normal)
+        importButton.setTitle(LocalizedString("Import", comment: ""), for: .normal)
         importButton.addTarget(self, action: #selector(pressedImportButton(_:)), for: UIControlEvents.touchUpInside)
     }
     
@@ -130,15 +130,15 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
     
     @objc func pressedEnterButton() {
         if let appWallet = self.appWallet {
-            let alertController = UIAlertController(title: NSLocalizedString("Choose Wallet", comment: "") + ": \(appWallet.name)",
+            let alertController = UIAlertController(title: LocalizedString("Choose Wallet", comment: "") + ": \(appWallet.name)",
                 message: nil,
                 preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+            let defaultAction = UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
                 CurrentAppWalletDataManager.shared.setCurrentAppWallet(appWallet)
                 self.navigationController?.popViewController(animated: true)
             })
             alertController.addAction(defaultAction)
-            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+            let cancelAction = UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
             })
             alertController.addAction(cancelAction)
             self.present(alertController, animated: true, completion: nil)

@@ -297,7 +297,7 @@ class SendCurrentAppWalletDataManager {
                 return "0x" + signedTransactionData.hexString
             }
         } catch {
-            userInfo["message"] = NSLocalizedString("Failed to sign/encode transaction", comment: "")
+            userInfo["message"] = LocalizedString("Failed to sign/encode transaction", comment: "")
             let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
             completion(nil, error)
         }
@@ -334,7 +334,7 @@ class SendCurrentAppWalletDataManager {
                     return "0x" + signedTransactionData.hexString
                 }
             } catch {
-                userInfo["message"] = NSLocalizedString("Failed to sign/encode transaction", comment: "")
+                userInfo["message"] = LocalizedString("Failed to sign/encode transaction", comment: "")
                 let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
                 completion(nil, error)
             }

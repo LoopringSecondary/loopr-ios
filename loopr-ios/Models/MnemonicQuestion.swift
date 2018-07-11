@@ -19,7 +19,7 @@ struct MnemonicQuestion {
         self.index = index
         self.mnemonic = mnemonic
 
-        question = "\(index+1)/24. " + NSLocalizedString("Which of the following is the", comment: "") + NSLocalizedString("\((index+1).ordinal)", comment: "") + NSLocalizedString("word of your mnemonic?", comment: "")
+        question = "\(index+1)/24. " + LocalizedString("Which of the following is the", comment: "") + LocalizedString("\((index+1).ordinal)", comment: "") + LocalizedString("word of your mnemonic?", comment: "")
 
         // TODO: generate options
         options = [mnemonic]

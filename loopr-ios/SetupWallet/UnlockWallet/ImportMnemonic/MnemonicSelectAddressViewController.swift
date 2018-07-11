@@ -18,14 +18,14 @@ class MnemonicSelectAddressViewController: UIViewController, UITableViewDelegate
 
         // Do any additional setup after loading the view.
         setBackButton()
-        self.navigationItem.title = NSLocalizedString("Select your address", comment: "")
+        self.navigationItem.title = LocalizedString("Select your address", comment: "")
         
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
 
         nextButton.setupRoundBlack()
-        nextButton.setTitle(NSLocalizedString("Next", comment: ""), for: .normal)
+        nextButton.setTitle(LocalizedString("Next", comment: ""), for: .normal)
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor

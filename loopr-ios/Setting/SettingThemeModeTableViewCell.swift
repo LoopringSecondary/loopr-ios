@@ -23,7 +23,7 @@ class SettingThemeModeTableViewCell: UITableViewCell {
             nightModeSwitch.setOn(false, animated: false)
         }
         
-        nightModeLabel.text = NSLocalizedString("Night Mode", comment: "")
+        nightModeLabel.text = LocalizedString("Night Mode", comment: "")
     }
 
     @IBAction func toggleNightModeSwitch(_ sender: Any) {

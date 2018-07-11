@@ -17,7 +17,7 @@ class SettingSecurityViewController: UIViewController, UITableViewDelegate, UITa
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Security Settings", comment: "")
+        self.navigationItem.title = LocalizedString("Security Settings", comment: "")
         setBackButton()
         tableView.delegate = self
         tableView.dataSource = self

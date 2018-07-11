@@ -22,7 +22,7 @@ class SettingLRCFeeRatioViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        // self.navigationItem.title = NSLocalizedString("LRC Fee Ratio", comment: "")
+        // self.navigationItem.title = LocalizedString("LRC Fee Ratio", comment: "")
         setBackButton()
         
         // Setup UI in the scroll view
@@ -34,7 +34,7 @@ class SettingLRCFeeRatioViewController: UIViewController {
         
         currentValueLabel.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 30)
         currentValueLabel.font = FontConfigManager.shared.getLabelFont()
-        currentValueLabel.text = NSLocalizedString("LRC Fee Ratio", comment: "") + ": \(SettingDataManager.shared.getLrcFeeRatioDescription())"
+        currentValueLabel.text = LocalizedString("LRC Fee Ratio", comment: "") + ": \(SettingDataManager.shared.getLrcFeeRatioDescription())"
         view.addSubview(currentValueLabel)
 
         slider.frame = CGRect(x: padding, y: currentValueLabel.frame.maxY + padding + 10, width: screenWidth-padding*2, height: 20)
@@ -59,7 +59,7 @@ class SettingLRCFeeRatioViewController: UIViewController {
         view.addSubview(maxLabel)
         
         saveButton.setupRoundBlack()
-        saveButton.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
+        saveButton.setTitle(LocalizedString("Save", comment: ""), for: .normal)
         saveButton.frame = CGRect(x: padding, y: minLabel.frame.maxY + padding*2 + 10, width: screenWidth - padding*2, height: 47)
         saveButton.addTarget(self, action: #selector(pressedSaveButton), for: .touchUpInside)
         view.addSubview(saveButton)
@@ -82,7 +82,7 @@ class SettingLRCFeeRatioViewController: UIViewController {
         let step: Float = 1
         let roundedStepValue = Int(round(sender.value / step))
         let perMillSymbol = NumberFormatter().perMillSymbol!
-        currentValueLabel.text = NSLocalizedString("LRC Fee Ratio", comment: "") + ": \(roundedStepValue)\(perMillSymbol)"
+        currentValueLabel.text = LocalizedString("LRC Fee Ratio", comment: "") + ": \(roundedStepValue)\(perMillSymbol)"
     }
 
     @objc func pressedSaveButton(_ sender: Any) {

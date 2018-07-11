@@ -40,7 +40,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
             return a < b
         }
         
-        self.navigationItem.title = NSLocalizedString("Please Verify Your Mnemonic", comment: "")
+        self.navigationItem.title = LocalizedString("Please Verify Your Mnemonic", comment: "")
         setBackButton()
         updateButtons()
         
@@ -57,7 +57,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         
         infoLabel.textColor = UIColor.black.withAlphaComponent(0.6)
         infoLabel.font = FontConfigManager.shared.getLabelFont(size: 17)
-        infoLabel.text = NSLocalizedString("Please click words in order.", comment: "")
+        infoLabel.text = LocalizedString("Please click words in order.", comment: "")
         view.addSubview(infoLabel)
         
         mnemonicsTextView.frame = CGRect(x: 15, y: infoLabel.frame.maxY + 15, width: screenWidth - 2*15, height: 120)
@@ -107,7 +107,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
     }
     
     func updateButtons() {
-        confirmButton.title = NSLocalizedString("Confirm", comment: "Go to VerifyMnemonicViewController")
+        confirmButton.title = LocalizedString("Confirm", comment: "Go to VerifyMnemonicViewController")
         confirmButton.setupRoundBlack()
         confirmButton.addTarget(self, action: #selector(pressedConfrimButton(_:)), for: UIControlEvents.touchUpInside)
         view.addSubview(confirmButton)
@@ -120,7 +120,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
 
         // TODO: the button is not in the correct layout in iPhone 5s
         undoLastClickButton.isHidden = true
-        undoLastClickButton.title = NSLocalizedString("Undo Last Click", comment: "")
+        undoLastClickButton.title = LocalizedString("Undo Last Click", comment: "")
         undoLastClickButton.setupRoundWhite()
         undoLastClickButton.alpha = 0.0
         undoLastClickButton.addTarget(self, action: #selector(pressedUndoLastClickButton(_:)), for: UIControlEvents.touchUpInside)
@@ -171,9 +171,9 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
             print("User input Mnemonic doesn't match")
             var title = ""
             if GenerateWalletDataManager.shared.getUserInputMnemonics().count == 0 {
-                title = NSLocalizedString("Please click words in order to verify your mnemonic.", comment: "")
+                title = LocalizedString("Please click words in order to verify your mnemonic.", comment: "")
             } else {
-                title = NSLocalizedString("Mnemonic doesn't match. Please verify again.", comment: "")
+                title = LocalizedString("Mnemonic doesn't match. Please verify again.", comment: "")
             }
 
             // Reset
@@ -198,15 +198,15 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
     }
 
     func exit() {
-        let header = NSLocalizedString("Create_used_in_creating_wallet", comment: "used in creating wallet")
-        let footer = NSLocalizedString("successfully_used_in_creating_wallet", comment: "used in creating wallet")
+        let header = LocalizedString("Create_used_in_creating_wallet", comment: "used in creating wallet")
+        let footer = LocalizedString("successfully_used_in_creating_wallet", comment: "used in creating wallet")
         let attributedString = NSAttributedString(string: header + " " + "\(GenerateWalletDataManager.shared.walletName)" + " " + footer, attributes: [
             NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getMedium(), size: 17) ?? UIFont.systemFont(ofSize: 17),
             NSAttributedStringKey.foregroundColor: UIColor.init(rgba: "#030303")
             ])
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         alertController.setValue(attributedString, forKey: "attributedMessage")
-        let confirmAction = UIAlertAction(title: NSLocalizedString("Enter Wallet", comment: ""), style: .default, handler: { _ in
+        let confirmAction = UIAlertAction(title: LocalizedString("Enter Wallet", comment: ""), style: .default, handler: { _ in
             GenerateWalletDataManager.shared.complete(completion: {(appWallet, error) in
                 if error == nil {
                     self.dismissGenerateWallet()

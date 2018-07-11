@@ -21,7 +21,7 @@ class SettingMarginSplitViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        // self.navigationItem.title = NSLocalizedString("LRC Fee Ratio", comment: "")
+        // self.navigationItem.title = LocalizedString("LRC Fee Ratio", comment: "")
         setBackButton()
         
         // Setup UI in the scroll view
@@ -33,7 +33,7 @@ class SettingMarginSplitViewController: UIViewController {
         
         currentValueLabel.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 30)
         currentValueLabel.font = FontConfigManager.shared.getLabelFont()
-        currentValueLabel.text = NSLocalizedString("Margin Split", comment: "") + ": \(SettingDataManager.shared.getMarginSplitDescription())"
+        currentValueLabel.text = LocalizedString("Margin Split", comment: "") + ": \(SettingDataManager.shared.getMarginSplitDescription())"
         view.addSubview(currentValueLabel)
         
         slider.frame = CGRect(x: padding, y: currentValueLabel.frame.maxY + padding + 10, width: screenWidth-padding*2, height: 20)
@@ -58,7 +58,7 @@ class SettingMarginSplitViewController: UIViewController {
         view.addSubview(maxLabel)
         
         saveButton.setupRoundBlack()
-        saveButton.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
+        saveButton.setTitle(LocalizedString("Save", comment: ""), for: .normal)
         saveButton.frame = CGRect(x: padding, y: minLabel.frame.maxY + padding*2 + 10, width: screenWidth - padding*2, height: 47)
         saveButton.addTarget(self, action: #selector(pressedSaveButton), for: .touchUpInside)
         view.addSubview(saveButton)
@@ -80,7 +80,7 @@ class SettingMarginSplitViewController: UIViewController {
     @objc func sliderValueDidChange(_ sender: UISlider!) {
         let step: Float = 1
         let roundedStepValue = Int(round(sender.value / step))
-        currentValueLabel.text = NSLocalizedString("Margin Split", comment: "") + ": \(roundedStepValue)" + NumberFormatter().percentSymbol
+        currentValueLabel.text = LocalizedString("Margin Split", comment: "") + ": \(roundedStepValue)" + NumberFormatter().percentSymbol
     }
     
     @objc func pressedSaveButton(_ sender: Any) {

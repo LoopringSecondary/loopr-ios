@@ -17,10 +17,10 @@ enum OrderExpire: CustomStringConvertible {
     
     var description: String {
         switch self {
-        case .oneHour: return NSLocalizedString("1 Hour", comment: "")
-        case .oneDay: return NSLocalizedString("1 Day", comment: "")
-        case .oneWeek: return NSLocalizedString("1 Week", comment: "")
-        case .oneMonth: return NSLocalizedString("1 Month", comment: "")
+        case .oneHour: return LocalizedString("1 Hour", comment: "")
+        case .oneDay: return LocalizedString("1 Day", comment: "")
+        case .oneWeek: return LocalizedString("1 Week", comment: "")
+        case .oneMonth: return LocalizedString("1 Month", comment: "")
         }
     }
 }

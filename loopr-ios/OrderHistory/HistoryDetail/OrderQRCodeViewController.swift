@@ -24,13 +24,13 @@ class OrderQRCodeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Order QR Code", comment: "")
+        self.navigationItem.title = LocalizedString("Order QR Code", comment: "")
         view.theme_backgroundColor = GlobalPicker.textColor
         contentView.layer.cornerRadius = 16
         setBackButton(image: "Back-button-white")
-        saveToAlbumButton.setTitle(NSLocalizedString("Save to Album", comment: ""), for: .normal)
+        saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
         saveToAlbumButton.setupRoundBlack()
-        shareOrderButton.setTitle(NSLocalizedString("Share the Order", comment: ""), for: .normal)
+        shareOrderButton.setTitle(LocalizedString("Share the Order", comment: ""), for: .normal)
         shareOrderButton.setupRoundBlack()
         generateQRCode(order: self.order!)
     }
@@ -89,7 +89,7 @@ class OrderQRCodeViewController: UIViewController {
     }
     
     @IBAction func pressedShareButton(_ sender: UIButton) {
-        let text = NSLocalizedString("My Order QR code in Loopr-iOS", comment: "")
+        let text = LocalizedString("My Order QR code in Loopr-iOS", comment: "")
         let png = UIImagePNGRepresentation(qrcodeImage)
         let shareAll = [text, png!] as [Any]
         let activityVC = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)

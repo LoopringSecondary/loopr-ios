@@ -24,14 +24,14 @@ extension Transaction {
         var description: String {
             switch self {
             case .approved: return "Enable"
-            case .sent: return NSLocalizedString("Sent", comment: "")
-            case .received: return NSLocalizedString("Received", comment: "")
-            case .sold: return NSLocalizedString("Sold", comment: "")
-            case .bought: return NSLocalizedString("Bought", comment: "")
-            case .convert_income: return NSLocalizedString("Convert", comment: "") // eth <-> weth
-            case .convert_outcome: return NSLocalizedString("Convert", comment: "") // eth <-> weth
-            case .canceledOrder: return NSLocalizedString("Cancel", comment: "")
-            case .cutoff: return NSLocalizedString("Cancel", comment: "")
+            case .sent: return LocalizedString("Sent", comment: "")
+            case .received: return LocalizedString("Received", comment: "")
+            case .sold: return LocalizedString("Sold", comment: "")
+            case .bought: return LocalizedString("Bought", comment: "")
+            case .convert_income: return LocalizedString("Convert", comment: "") // eth <-> weth
+            case .convert_outcome: return LocalizedString("Convert", comment: "") // eth <-> weth
+            case .canceledOrder: return LocalizedString("Cancel", comment: "")
+            case .cutoff: return LocalizedString("Cancel", comment: "")
             case .unsupportedContract: return "Unknown"
             }
         }

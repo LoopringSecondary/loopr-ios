@@ -22,18 +22,18 @@ class LoginResultViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
         resultLabel.font = UIFont(name: FontConfigManager.shared.getBold(), size: 40.0)
         detailLabel.setHeaderFont()
-        doneButton.title = NSLocalizedString("Done", comment: "")
+        doneButton.title = LocalizedString("Done", comment: "")
         doneButton.setupRoundBlack()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if result {
-            resultLabel.text = NSLocalizedString("Authorze Successfully", comment: "")
-            detailLabel.text = NSLocalizedString("Login Authorzation Successful! Please transfer to our website to continue.", comment: "")
+            resultLabel.text = LocalizedString("Authorze Successfully", comment: "")
+            detailLabel.text = LocalizedString("Login Authorzation Successful! Please transfer to our website to continue.", comment: "")
         } else {
-            resultLabel.text = NSLocalizedString("Authorze Failed", comment: "")
-            detailLabel.text = NSLocalizedString("Login Authorzation failed! Please review your signing address and try again later.", comment: "")
+            resultLabel.text = LocalizedString("Authorze Failed", comment: "")
+            detailLabel.text = LocalizedString("Login Authorzation failed! Please review your signing address and try again later.", comment: "")
         }
     }
 

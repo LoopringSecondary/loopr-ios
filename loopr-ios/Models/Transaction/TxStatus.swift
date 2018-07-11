@@ -17,10 +17,10 @@ extension Transaction {
         
         var description: String {
             switch self {
-            case .pending: return NSLocalizedString("Pending", comment: "")
-            case .success: return NSLocalizedString("Completed", comment: "")
-            case .failed: return NSLocalizedString("Failed", comment: "")
-            case .other: return NSLocalizedString("Other", comment: "")
+            case .pending: return LocalizedString("Pending", comment: "")
+            case .success: return LocalizedString("Completed", comment: "")
+            case .failed: return LocalizedString("Failed", comment: "")
+            case .other: return LocalizedString("Other", comment: "")
             }
         }
     }

@@ -51,7 +51,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Order Detail", comment: "")
+        self.navigationItem.title = LocalizedString("Order Detail", comment: "")
         setBackButton()
         setupQRCodeButton()
         setup()
@@ -181,7 +181,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         // setup rows
         // 1st row: amount
         amountTipLabel.font = FontConfigManager.shared.getLabelFont()
-        amountTipLabel.text = NSLocalizedString("Filled/Amount", comment: "")
+        amountTipLabel.text = LocalizedString("Filled/Amount", comment: "")
         amountTipLabel.frame = CGRect(x: padding, y: displayLabel.frame.maxY + padding*3, width: 150, height: labelHeight)
         scrollView.addSubview(amountTipLabel)
         amountInfoLabel.font = FontConfigManager.shared.getLabelFont()
@@ -194,7 +194,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         
         // 2nd row: status
         statusTipLabel.font = FontConfigManager.shared.getLabelFont()
-        statusTipLabel.text = NSLocalizedString("Status", comment: "")
+        statusTipLabel.text = LocalizedString("Status", comment: "")
         statusTipLabel.frame = CGRect(x: padding, y: amountTipLabel.frame.maxY + padding, width: 150, height: labelHeight)
         scrollView.addSubview(statusTipLabel)
         statusInfoLabel.font = FontConfigManager.shared.getLabelFont()
@@ -208,7 +208,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         
         // 3rd row: total
         totalTipLabel.font = FontConfigManager.shared.getLabelFont()
-        totalTipLabel.text = NSLocalizedString("Total", comment: "")
+        totalTipLabel.text = LocalizedString("Total", comment: "")
         totalTipLabel.frame = CGRect(x: padding, y: statusTipLabel.frame.maxY + padding, width: 150, height: labelHeight)
         scrollView.addSubview(totalTipLabel)
         totalInfoLabel.font = FontConfigManager.shared.getLabelFont()
@@ -218,7 +218,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         
         // 4th row: trade
         tradeTipLabel.font = FontConfigManager.shared.getLabelFont()
-        tradeTipLabel.text = NSLocalizedString("Trade", comment: "")
+        tradeTipLabel.text = LocalizedString("Trade", comment: "")
         tradeTipLabel.backgroundColor = UIStyleConfig.underlineColor
         tradeTipLabel.frame = CGRect(x: 0, y: totalTipLabel.frame.maxY + padding, width: screenWidth, height: labelHeight)
         tradeTipLabel.leftInset = padding
@@ -226,7 +226,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         
         // 5th row: filled
         filledTipLabel.font = FontConfigManager.shared.getLabelFont()
-        filledTipLabel.text = NSLocalizedString("Filled", comment: "")
+        filledTipLabel.text = LocalizedString("Filled", comment: "")
         filledTipLabel.frame = CGRect(x: padding, y: tradeTipLabel.frame.maxY + padding, width: 150, height: labelHeight)
         scrollView.addSubview(filledTipLabel)
         filledInfoLabel.font = FontConfigManager.shared.getLabelFont()
@@ -239,7 +239,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         
         // 6th row: ID
         idTipLabel.font = FontConfigManager.shared.getLabelFont()
-        idTipLabel.text = NSLocalizedString("ID", comment: "")
+        idTipLabel.text = LocalizedString("ID", comment: "")
         idTipLabel.frame = CGRect(x: padding, y: filledTipLabel.frame.maxY + padding, width: 50, height: labelHeight)
         scrollView.addSubview(idTipLabel)
         idInfoLabel.font = FontConfigManager.shared.getLabelFont()
@@ -253,7 +253,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         
         // 7th row: date
         dateTipLabel.font = FontConfigManager.shared.getLabelFont()
-        dateTipLabel.text = NSLocalizedString("Time", comment: "")
+        dateTipLabel.text = LocalizedString("Time", comment: "")
         dateTipLabel.frame = CGRect(x: padding, y: idTipLabel.frame.maxY + padding, width: 150, height: labelHeight)
         scrollView.addSubview(dateTipLabel)
         dateInfoLabel.font = FontConfigManager.shared.getLabelFont()

@@ -101,7 +101,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print("receive LoopringAPIRequest.getMarkets")
             guard error == nil else {
                 print("error=\(String(describing: error))")
-                let notificationTitle = NSLocalizedString("Sorry. Network error, please try again later", comment: "")
+                let notificationTitle = LocalizedString("Sorry. Network error, please try again later", comment: "")
                 let banner = NotificationBanner.generate(title: notificationTitle, style: .info)
                 banner.duration = 2.0
                 banner.show()

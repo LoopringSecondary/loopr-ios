@@ -63,9 +63,9 @@ class OrderTableViewCell: UITableViewCell {
         if order.orderStatus == .opened {
             let cancelledAll = UserDefaults.standard.bool(forKey: UserDefaultsKeys.cancelledAll.rawValue)
             if cancelledAll || isOrderCancelling(order: order) {
-                return (false, NSLocalizedString("Cancelling", comment: ""))
+                return (false, LocalizedString("Cancelling", comment: ""))
             } else {
-                return (true, NSLocalizedString("Cancel", comment: ""))
+                return (true, LocalizedString("Cancel", comment: ""))
             }
         } else {
             return (false, order.orderStatus.description)

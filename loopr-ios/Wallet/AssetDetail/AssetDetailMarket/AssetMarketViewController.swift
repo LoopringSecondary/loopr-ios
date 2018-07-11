@@ -76,9 +76,9 @@ class AssetMarketViewController: UIViewController, UITableViewDelegate, UITableV
         headerView.addSubview(label)
         
         if section == 0 {
-            label.text = NSLocalizedString("Loopring DEX Markets", comment: "")
+            label.text = LocalizedString("Loopring DEX Markets", comment: "")
         } else if section == 1 {
-            label.text = NSLocalizedString("Reference Markets", comment: "")
+            label.text = LocalizedString("Reference Markets", comment: "")
         }
         return headerView
     }

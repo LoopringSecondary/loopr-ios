@@ -23,7 +23,7 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         historyTableView.theme_backgroundColor = GlobalPicker.backgroundColor
-        self.navigationItem.title = NSLocalizedString("Order History", comment: "")
+        self.navigationItem.title = LocalizedString("Order History", comment: "")
         setBackButton()
         historyTableView.dataSource = self
         historyTableView.delegate = self

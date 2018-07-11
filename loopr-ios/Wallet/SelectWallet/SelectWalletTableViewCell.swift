@@ -65,7 +65,7 @@ class SelectWalletTableViewCell: FoldingCell, UICollectionViewDataSource, UIColl
         toatalBalanceLabel.theme_textColor = GlobalPicker.textColor
         toatalBalanceLabel.font = FontConfigManager.shared.getRegularFont(size: 40)
         
-        enterButton.title = NSLocalizedString("Enter", comment: "")
+        enterButton.title = LocalizedString("Enter", comment: "")
         enterButton.layer.borderWidth = 1
         enterButton.layer.cornerRadius = 18
         enterButton.titleLabel?.font = FontConfigManager.shared.getRegularFont()

@@ -56,11 +56,11 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         udpateStarButton()
         blurVisualEffectView.alpha = 1
         // Sell button
-        sellButton.setTitle(NSLocalizedString("Sell", comment: ""), for: .normal)
+        sellButton.setTitle(LocalizedString("Sell", comment: ""), for: .normal)
         sellButton.setupRoundWhite()
         
         // Buy button
-        buyButton.setTitle(NSLocalizedString("Buy", comment: ""), for: .normal)
+        buyButton.setTitle(LocalizedString("Buy", comment: ""), for: .normal)
         buyButton.setupRoundBlack()
 
         getDataFromRelay()
@@ -225,11 +225,11 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             headerView.addSubview(label)
             
             if section == 1 {
-                label.text = NSLocalizedString("Order Book", comment: "")
+                label.text = LocalizedString("Order Book", comment: "")
             } else if section == 4 {
-                label.text = NSLocalizedString("My Orders", comment: "")
+                label.text = LocalizedString("My Orders", comment: "")
             } else if section == 5 {
-                label.text = NSLocalizedString("My Trades", comment: "")
+                label.text = LocalizedString("My Trades", comment: "")
             }
             return headerView
 
@@ -261,13 +261,13 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             headerView.addSubview(label3)
             
             if section == 2 {
-                label1.text = NSLocalizedString("Sell", comment: "")
+                label1.text = LocalizedString("Sell", comment: "")
             } else if section == 3 {
-                label1.text = NSLocalizedString("Buy", comment: "")
+                label1.text = LocalizedString("Buy", comment: "")
             }
             
-            label2.text = NSLocalizedString("Amount", comment: "") + " (\(market.tradingPair.tradingA))"
-            label3.text = NSLocalizedString("Total", comment: "") + " (\(market.tradingPair.tradingB))"
+            label2.text = LocalizedString("Amount", comment: "") + " (\(market.tradingPair.tradingA))"
+            label3.text = LocalizedString("Total", comment: "") + " (\(market.tradingPair.tradingB))"
             
             return headerView
         } else {
@@ -402,9 +402,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                 }
                 cell?.pressedCancelAllButtonClosure = {
                     self.blurVisualEffectView.alpha = 1.0
-                    let title = NSLocalizedString("You are going to cancel all open orders.", comment: "")
+                    let title = LocalizedString("You are going to cancel all open orders.", comment: "")
                     let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+                    alert.addAction(UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
                         UIView.animate(withDuration: 0.1, animations: {
                             self.blurVisualEffectView.alpha = 0.0
                         }, completion: {(_) in
@@ -412,7 +412,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                         })
                         self.cancelAllOrders(section: indexPath.section)
                     }))
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+                    alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
                         UIView.animate(withDuration: 0.1, animations: {
                             self.blurVisualEffectView.alpha = 0.0
                         }, completion: {(_) in
@@ -448,9 +448,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                     cell?.cancelButton.isHidden = false
                     cell?.pressedCancelButtonClosure = {
                         self.blurVisualEffectView.alpha = 1.0
-                        let title = NSLocalizedString("You are going to cancel the order.", comment: "")
+                        let title = LocalizedString("You are going to cancel the order.", comment: "")
                         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+                        alert.addAction(UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
                             print("Confirm to cancel the order")
                             UIView.animate(withDuration: 0.1, animations: {
                                 self.blurVisualEffectView.alpha = 0.0
@@ -459,7 +459,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
                             })
                             self.cancelOrder(order: order.originalOrder, indexPath: indexPath)
                         }))
-                        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+                        alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
                             UIView.animate(withDuration: 0.1, animations: {
                                 self.blurVisualEffectView.alpha = 0.0
                             }, completion: {(_) in
@@ -564,7 +564,7 @@ extension MarketDetailViewController: UIViewControllerTransitioningDelegate {
         var title: String = ""
         guard error == nil && txHash != nil else {
             DispatchQueue.main.async {
-                title = NSLocalizedString("Order(s) cancel Failed, Please try again.", comment: "")
+                title = LocalizedString("Order(s) cancel Failed, Please try again.", comment: "")
                 let banner = NotificationBanner.generate(title: title, style: .danger)
                 banner.duration = 5
                 banner.show()
@@ -573,7 +573,7 @@ extension MarketDetailViewController: UIViewControllerTransitioningDelegate {
         }
         DispatchQueue.main.async {
             print(txHash!)
-            title = NSLocalizedString("Order(s) Cancelled Successful.", comment: "")
+            title = LocalizedString("Order(s) Cancelled Successful.", comment: "")
             let banner = NotificationBanner.generate(title: title, style: .success)
             banner.duration = 5
             banner.show()

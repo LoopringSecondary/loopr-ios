@@ -21,7 +21,7 @@ class GenerateMnemonicViewController_Archive: UIViewController {
         // Do any additional setup after loading the view.
         setBackButton()
 
-        backupNowButton.setTitle(NSLocalizedString("Backup Now", comment: ""), for: .normal)
+        backupNowButton.setTitle(LocalizedString("Backup Now", comment: ""), for: .normal)
         backupNowButton.setupRoundBlack()
 
         // Setup UI in the scroll view
@@ -38,12 +38,12 @@ class GenerateMnemonicViewController_Archive: UIViewController {
 
         congratulationsLabel.frame = CGRect(x: 45, y: originY, width: screenWidth - padding * 2, height: 36)
         congratulationsLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 27)
-        congratulationsLabel.text = NSLocalizedString("Congratulations!", comment: "")
+        congratulationsLabel.text = LocalizedString("Congratulations!", comment: "")
         view.addSubview(congratulationsLabel)
 
         infoTextView.frame = CGRect(x: padding-3, y: 72, width: screenWidth - (padding-3) * 2, height: 155)
         infoTextView.isEditable = false
-        infoTextView.text = NSLocalizedString("Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage.", comment: "")
+        infoTextView.text = LocalizedString("Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage.", comment: "")
         infoTextView.textColor = UIColor.black.withAlphaComponent(0.6)
         infoTextView.font = FontConfigManager.shared.getLabelFont()
         view.addSubview(infoTextView)

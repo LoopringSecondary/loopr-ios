@@ -1,46 +1,47 @@
-/* 
-  File.strings
-  loopr-ios
-
-  Created by xiaoruby on 2/27/18.
-  Copyright © 2018 Loopring. All rights reserved.
-*/
+/*
+ File.strings
+ loopr-ios
+ 
+ Created by xiaoruby on 2/27/18.
+ Copyright © 2018 Loopring. All rights reserved.
+ */
 
 "Night Mode" = "夜间";
 "Buy" = "买入";
 "Bought" = "买入";
 "Sell" = "卖出";
 "Sold" = "卖出";
-"Receive" = "收款";
-"Received" = "收到";
-"Send" = "转账";
+"Receive" = "转入";
+"Received" = "转入";
+"Send" = "转出";
 "Sent" = "转出";
 "Language" = "语言";
 "Create a new wallet" = "创建钱包";
 "Manage Wallet" = "管理钱包";
 "Switch to this Wallet" = "使用这个钱包";
-"Import Wallet" = "解锁钱包";
+"Import Wallet" = "导入钱包";
 "Enter Wallet" = "进入钱包";
-"Generate Wallet" = "生成钱包";
+"Generate Wallet" = "创建钱包";
 "Confirm password" = "重复密码";
 "Confirm your password" = "请输入重复密码";
 "Password" = "密码";
-"Repeat password" = "重复密码";
+"Repeat Password" = "确认密码";
 "Enter password" = "请输入密码";
 "Wrong password" = "密码错误";
 "Mnemonic" = "助记词";
-"Keystore" = "密钥库";
+"Keystore" = "Keystore";
 "Private Key" = "私钥";
 "Unlock" = "解锁";
 "Please input your private key" = "请输入您的私钥";
 "Please use space to seperate the mnemonic words" = "请用空格隔开助记词";
 "Backup Mnemonic" = "备份助记词";
+"Verify Mnemonic" = "验证助记词";
 "Verify Now" = "马上验证";
 "Skip Verification" = "跳过验证";
 "Verification" = "验证";
 "Copy Wallet Address" = "复制钱包地址";
 "Copy Private Key" = "复制私钥";
-"Save to Album" = "保持到相册";
+"Save to Album" = "保存到相册";
 "Market" = "市场";
 "Markets" = "市场";
 "Order History" = "历史订单";
@@ -61,8 +62,9 @@
 "Order QR Code" = "订单二维码";
 "Scan QR Code" = "二维码扫描";
 "QR Code" = "二维码";
+"Export" = "导出";
 "Export Private Key" = "导出私钥";
-"Export Keystore" = "导出Keystore";
+"Export Keystore" = "导出Keystore文件";
 "Wallet Name" = "钱包名字";
 "Change Wallet Name" = "更改钱包名字";
 "Exchange" = "交易";
@@ -70,11 +72,15 @@
 "Invalid mnemonic. Please enter again." = "无法导入助记词。请重新输入。";
 "Invalid private key. Please enter again." = "无法导入私钥。请重新输入。";
 "Invalid keystore. Please enter again." = "Keystore无法导入。请重新输入。";
+"Please enter mnemonic" = "请输入助记词";
+"Please enter private key" = "请输入私钥";
+"Please enter keystore" = "请输入Keystore";
 "Mnemonic Password (optional)" = "助记词密码 (可选)";
 "Please enter a wallet name" = "请输入钱包名字";
 "Please set a password" = "请设置密码";
 "Please enter a password" = "请输入密码";
 "Copy address to clipboard successfully!" = "成功复制地址到剪切板!";
+"Copy keystore to clipboard successfully!" = "成功复制keystore到剪切板!";
 "Congratulations!" = "创建成功!";
 "Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage." = "您的钱包已创建成功。为了备份钱包，请花一点时间写下助记词。助记词会用于恢复钱包。请不要分享助记词给任何人，不要存云端。";
 "Please write them down" = "请记下";
@@ -86,7 +92,7 @@
 "Confirm" = "确定";
 "Next 12 Words" = "下一组12个单词";
 "Previous 12 Words" = "上一组12个单词";
-"Please input the consistant password." = "请输入一致的密码。";
+"Please input the consistant password" = "请输入一致的密码";
 "Hide Small Assets" = "隐藏小额资产";
 "Max" = "最大值";
 "Amount you want to convert" = "输入转换的额度";
@@ -99,7 +105,7 @@
 "Save" = "保存";
 "Slow" = "慢";
 "Fast" = "快";
-"Enter the amount" = "输入额度";
+"Enter the amount" = "请输入额度";
 "1 Hour" = "1小时";
 "1 Day" = "1天";
 "1 Week" = "1周";
@@ -122,7 +128,7 @@
 "Price" = "单价";
 "Trading Fee" = "撮合费";
 "Share Order" = "分享订单";
-"Give your wallet an awesome name" = "给钱包起个名字";
+"Give your wallet an awesome name" = "给钱包起个名字吧";
 "Please enter a wallet name" = "请输入钱包名字";
 "Invalid wallet name" = "钱包名字无效";
 "Invalid password" = "密码无效";
@@ -136,16 +142,16 @@
 "All" = "全部";
 "Favorite" = "收藏";
 "Align QR Code within Frame to Scan" = "请将二维码置于扫描框内";
-"No access to save QR code. Please go to setting to enable the access" = "No access to save QR code. Please go to setting to enable the access";
-"Failed to sign/encode transaction" = "Failed to sign/encode transaction";
-"Sorry, system error, please try again later" = "Sorry, system error, please try again later";
-"Sorry, selling order does not exist, could not complete this order" = "Sorry, selling order does not exist, could not complete this order";
-"Sorry, only p2p order could be submitted, could not complete this order" = "Sorry, only p2p order could be submitted, could not complete this order";
-"Sorry, selling order already dealt with another buying order, please try with other orders"= "Sorry, selling order already dealt with another buying order, please try with other orders";
-"Sorry, selling and buying price did not match between two orders, could not complete this order" = "Sorry, selling and buying price did not match between two orders, could not complete this order";
-"Sorry, owner of buying order is the same as selling's, could not complete this order" = "Sorry, owner of buying order is the same as selling's, could not complete this order";
-"Sorry, buying order has been expired, please try with other orders" = "Sorry, buying order has been expired, please try with other orders";
-"Sorry, buying order does not exist, could not complete this order" = "Sorry, buying order does not exist, could not complete this order";
+"No access to save QR code. Please go to setting to enable the access." = "没有权限保存二维码，请到设置修改权限。";
+"Failed to sign/encode transaction" = "编码/签名交易失败";
+"10001" = "抱歉，系统错误，请稍后重试";
+"50001" = "抱歉，无法获取到扫描订单信息";
+"50002" = "抱歉，扫描二维码订单必须是P2P订单";
+"50003" = "抱歉，扫描到的订单，目前无法成交，请稍后重试";
+"50004" = "抱歉，双方订单数额不匹配，请核对后重新下单";
+"50005" = "抱歉，订单信息重复，请核对后重新下单";
+"50006" = "抱歉，订单已过期，请扫描其他二维码后重新下单";
+"50008" = "抱歉，无法获取当前下单信息，，请稍后重试";
 "Information of two orders not complete" = "Information of two orders not complete";
 "Sorry. Network error, please try again later" = "Sorry. Network error, please try again later";
 "Order Expires in" = "订单有效时间";
@@ -167,10 +173,10 @@
 "My Trades" = "我的历史成交";
 "You are going to cancel all open orders." = "您将取消所有待成交订单。";
 "You are going to cancel the order." = "您将取消该笔订单";
-"Order(s) cancel Failed, Please try again." =  "订单取消失败，请稍后重试";
-"Order(s) Cancelled Successful." = "订单取消成功";
+"Order(s) cancelled Failed, Please try again." =  "订单取消失败，请稍后重试";
+"Order(s) cancelled Successful." = "订单取消成功";
 "Order Detail" = "订单详情";
-"Filled/Amount" = "Filled/Amount";
+"Filled/Amount" = "完成/总额";
 "Status" = "状态";
 "Trade" = "交易";
 "Go To Trade" = "去交易";
@@ -189,16 +195,14 @@
 "What is gas?" = "What is gas?";
 "Gas is..." = "Gas is...";
 "Please input a correct address" = "请输入正确的地址";
-"Convert ETH To WETH" = "将ETH转换为WETH";
-"Convert WETH To ETH" = "将WETH转换为ETH";
 "Enable \(transaction.symbol) To Trade" = "Enable \(transaction.symbol) To Trade";
-"Cancel Order(s)" = "取消订单";
+"Cancel Order(s)" = "取消";
 "Enter the amount you have" = "请输入卖出数额";
 "Enter the amount you get" = "请输入买入数额";
 "My Trade from Loopr-iOS" = "My Trade from Loopr-iOS";
 "Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!" = "Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!";
 "However, please make sure you have enough balance to complete the trade." = "However, please make sure you have enough balance to complete the trade.";
-"P2P Order History" = "P2P订单记录";
+"P2P Order History" = "场外交易记录";
 "Share Address through SMS" = "通过短信分享地址";
 "Clear Records of this Wallet" = "清除该钱包数据";
 "Amount" = "数量";
@@ -274,6 +278,7 @@
 "Order Expired" = "已过期";
 "Order Locked" = "已锁定";
 "Order Unknown" = "未知状态";
+"Unknown" = "未知";
 "Accept" = "允许授权";
 "Decline" = "拒绝授权";
 "Address detected" = "扫描到钱包地址二维码";
@@ -299,13 +304,52 @@
 "Your mnemonic has been verified successfully." = "您的助记词已验证成功。";
 "Authorze Successfully" = "授权成功";
 "Authorze Failed" = "授权失败";
-"Login Authorzation Successful! Please transfer to our website to continue." = "登录授权成功，请转至我们的网站服务，进行您的后续操作。";
-"Login Authorzation failed! Please review your signing address and try again later." = "登录授权失败，请核对您的授权地址，确认正确后请重新尝试。";
+"Authorze_Successfully" = "授权成功，请转至我们的网站服务，进行您的后续操作。";
+"Authorze_Failed" = "授权失败，请核对您的授权数据，确认正确后请重新尝试。";
 "Initializing the wallet" = "钱包正在初始化";
 "Do you wish to handle the qrcode?" = "您是否希望要解析该并处理二维码？";
 "Failed to import address." = "导入钱包失败";
 "Exporting keystore" = "正在导出keystore";
 "Create" = "创建";
 "Import" = "导入";
-"gas price" = "油费";
+"gas price" = "油价";
 "Processing the transaction" = "正在处理交易";
+"Airdrop" = "空投";
+"Trade FAQ" = "交易FAQ";
+"Feedback" = "问题反馈";
+"Settings_in_grid" = "偏好设置";
+"Trading_settings_in_grid" = "交易管理";
+"Quit" = "退出";
+"My Wallet Address" = "我的钱包地址";
+"Copy" = "复制";
+"Complete" = "完成";
+"Recommended Gas" = "推荐油费";
+"Save QR code to Photo successfully." = "成功保存二维码到照片应用";
+"Convert_TipInfo" = "我们为您保留0.01 ETH作为油费以保证后续可以发送交易";
+"Add Token" = "添加代币";
+"Tx_Failed_Result" = "交易失败";
+"Tx_Success_Result" = "交易成功";
+"Authorization" = "授权";
+"Clear" = "清空";
+"No network" = "无网络";
+"Wallet Management" = "钱包管理";
+"Backup_Mnemonic_in_SettingManageWallet" = "未备份助记词";
+"File" = "文件";
+"Delete Wallet" = "删除钱包";
+"Total Balance" = "总资产";
+"Update Wallet Name" = "修改钱包名";
+"Backup" = "备份";
+"New Wallet Name" = "新钱包名称";
+"New wallet name can't be empty" = "新钱包名称不能为空";
+"Please Enter Password" = "请输入密码";
+"Please enter password" = "请输入密码";
+"P2P Trade" = "场外交易";
+"Convert_to_ETH_in_TradeViewController" = "转换为ETH";
+"Export_Keystore_in_ExportKeystoreSwipeViewController" = "导出Keystore";
+"Total (yuan)" = "总资产 (元)";
+"Total (USD)" = "总资产 (美元)";
+"No wallet is found in the device. Navigate to the wallet creation view." = "该手机已清空所有钱包，跳转到钱包创建页面。";
+"Default" = "默认";
+"Please turn on Touch ID in settings" = "请先前往通用设置中开启指纹功能";
+"Please turn on Face ID in settings" = "请先前往通用设置中开启面容识别功能";
+

@@ -56,7 +56,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setBackButton()
-        self.navigationItem.title = NSLocalizedString("Confirmation", comment: "")
+        self.navigationItem.title = LocalizedString("Confirmation", comment: "")
         if let order = self.order {
             setupPrice(order: order)
             setupRows(order: order)
@@ -78,12 +78,12 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
             let width = (UIScreen.main.bounds.width - 45) / 2
             confirmWidth.constant = width
             declineWidth.constant = width
-            confirmationButton.title = NSLocalizedString("Accept", comment: "")
+            confirmationButton.title = LocalizedString("Accept", comment: "")
             declineButton.isHidden = false
-            declineButton.title = NSLocalizedString("Decline", comment: "")
+            declineButton.title = LocalizedString("Decline", comment: "")
             declineButton.setupRoundWhite()
         } else {
-            confirmationButton.title = NSLocalizedString("Confirmation", comment: "")
+            confirmationButton.title = LocalizedString("Confirmation", comment: "")
         }
         confirmationButton.setupRoundBlack()
     }
@@ -99,19 +99,19 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         scrollView.addSubview(tokenSView)
         tokenBView = TradeTokenView(frame: CGRect(x: (screenWidth+10)/2, y: paddingTop, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
         scrollView.addSubview(tokenBView)
-        tokenSView.update(title: NSLocalizedString("You are selling", comment: ""), symbol: order.tokenSell, amount: order.amountSell)
-        tokenBView.update(title: NSLocalizedString("You are buying", comment: ""), symbol: order.tokenBuy, amount: order.amountBuy)
+        tokenSView.update(title: LocalizedString("You are selling", comment: ""), symbol: order.tokenSell, amount: order.amountSell)
+        tokenBView.update(title: LocalizedString("You are buying", comment: ""), symbol: order.tokenBuy, amount: order.amountBuy)
         arrowRightImageView = UIImageView(frame: CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY), size: CGSize(width: 32*UIStyleConfig.scale, height: 32*UIStyleConfig.scale)))
         arrowRightImageView.image = UIImage.init(named: "Arrow-right-black")
         scrollView.addSubview(arrowRightImageView)
         
         // 1st row: price
         priceLabel.font = FontConfigManager.shared.getLabelFont()
-        priceLabel.text = NSLocalizedString("Price", comment: "")
+        priceLabel.text = LocalizedString("Price", comment: "")
         priceLabel.frame = CGRect(x: padding, y: tokenSView.frame.maxY + padding*4, width: 150, height: 40)
         scrollView.addSubview(priceLabel)
         
-        priceTipLabel.text = "(" + NSLocalizedString("Irrational", comment: "") + ")"
+        priceTipLabel.text = "(" + LocalizedString("Irrational", comment: "") + ")"
         priceTipLabel.textColor = .red
         priceTipLabel.textAlignment = .right
         priceTipLabel.font = FontConfigManager.shared.getLabelFont()
@@ -138,7 +138,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         
         // 2nd row: expires
         expiresTipLabel.font = FontConfigManager.shared.getLabelFont()
-        expiresTipLabel.text = NSLocalizedString("Order Expires in", comment: "")
+        expiresTipLabel.text = LocalizedString("Order Expires in", comment: "")
         expiresTipLabel.frame = CGRect(x: padding, y: priceLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(expiresTipLabel)
         expiresInfoLabel.font = FontConfigManager.shared.getLabelFont()
@@ -152,7 +152,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         
         // 3rd row: lrc fee
         feeTipLabel.font = FontConfigManager.shared.getLabelFont()
-        feeTipLabel.text = NSLocalizedString("Trading Fee", comment: "")
+        feeTipLabel.text = LocalizedString("Trading Fee", comment: "")
         feeTipLabel.frame = CGRect(x: padding, y: expiresTipLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(feeTipLabel)
         feeInfoLabel.font = FontConfigManager.shared.getLabelFont()
@@ -169,7 +169,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         
         // 4th row: margin split
         marginTipLabel.font = FontConfigManager.shared.getLabelFont()
-        marginTipLabel.text = NSLocalizedString("Margin Split", comment: "")
+        marginTipLabel.text = LocalizedString("Margin Split", comment: "")
         marginTipLabel.frame = CGRect(x: padding, y: feeTipLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(marginTipLabel)
         marginInfoLabel.font = FontConfigManager.shared.getLabelFont()
@@ -183,7 +183,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         
         // 5th row: total
         totalTipLabel.font = FontConfigManager.shared.getLabelFont()
-        totalTipLabel.text = NSLocalizedString("Total", comment: "")
+        totalTipLabel.text = LocalizedString("Total", comment: "")
         totalTipLabel.frame = CGRect(x: padding, y: marginTipLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(totalTipLabel)
         totalInfoLabel.font = FontConfigManager.shared.getLabelFont()
@@ -209,10 +209,10 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         let pair = TradeDataManager.shared.tradePair
         if let price = Double(self.price),
             let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
-            let header = NSLocalizedString("Your price is irrational, ", comment: "")
-            let footer = NSLocalizedString("Do you wish to continue trading or signing with the price?", comment: "")
-            let messageA = NSLocalizedString("which may cause your asset wastage! ", comment: "")
-            let messageB = NSLocalizedString("which may cause your order abolished! ", comment: "")
+            let header = LocalizedString("Your price is irrational, ", comment: "")
+            let footer = LocalizedString("Do you wish to continue trading or signing with the price?", comment: "")
+            let messageA = LocalizedString("which may cause your asset wastage! ", comment: "")
+            let messageB = LocalizedString("which may cause your order abolished! ", comment: "")
             if isBuyingOrder() {
                 if price < 0.8 * market.balance {
                     self.message = header + messageB + footer
@@ -242,14 +242,14 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     
     func handleOrder() {
         if !priceTipLabel.isHidden {
-            let alert = UIAlertController(title: NSLocalizedString("Please Pay Attention", comment: ""), message: self.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+            let alert = UIAlertController(title: LocalizedString("Please Pay Attention", comment: ""), message: self.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
                 DispatchQueue.main.async {
                     self.verifyInfo = PlaceOrderDataManager.shared.verify(order: self.order!)
                     self.handleVerifyInfo()
                 }
             }))
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+            alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
             }))
             self.present(alert, animated: true, completion: nil)
         } else {
@@ -262,12 +262,12 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         let manager = AuthorizeDataManager.shared
         guard let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address, let hash = manager.submitHash, let order = manager.submitOrder else { return }
         guard address.lowercased() == order.address.lowercased() else {
-            let errorMessage = NSLocalizedString("Signer address do NOT match the order's, please transfer and try again later", comment: "")
+            let errorMessage = LocalizedString("Signer address do NOT match the order's, please transfer and try again later", comment: "")
             let error = NSError(domain: "approving", code: 0, userInfo: ["message": errorMessage])
             self.completion(nil, error)
             return
         }
-        SVProgressHUD.show(withStatus: NSLocalizedString("Approving authorization", comment: "") + "...")
+        SVProgressHUD.show(withStatus: LocalizedString("Approving authorization", comment: "") + "...")
         manager._authorizeOrder { (_, error) in
             guard error == nil else {
                 LoopringAPIRequest.notifyStatus(hash: hash, status: .txFailed, completionHandler: { (_, _) in })
@@ -289,13 +289,13 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     
     func handleSigning() {
         if !priceTipLabel.isHidden {
-            let alert = UIAlertController(title: NSLocalizedString("Please Pay Attention", comment: ""), message: self.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+            let alert = UIAlertController(title: LocalizedString("Please Pay Attention", comment: ""), message: self.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
                 DispatchQueue.main.async {
                     self.doSigning()
                 }
             }))
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+            alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
             }))
             self.present(alert, animated: true, completion: nil)
         } else {

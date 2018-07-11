@@ -14,8 +14,8 @@ enum TradeType: CustomStringConvertible {
     
     var description: String {
         switch self {
-        case .buy: return NSLocalizedString("Buy", comment: "")
-        case .sell: return NSLocalizedString("Sell", comment: "")
+        case .buy: return LocalizedString("Buy", comment: "")
+        case .sell: return LocalizedString("Sell", comment: "")
         }
     }
 }

@@ -20,7 +20,7 @@ class DisplayPrivateKeyViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Export Private Key", comment: "")
+        self.navigationItem.title = LocalizedString("Export Private Key", comment: "")
         setBackButton()
 
         privateKeyTextView.text = appWallet.privateKey
@@ -35,7 +35,7 @@ class DisplayPrivateKeyViewController: UIViewController {
         privateKeyTextView.isEditable = false
         // privateKeyTextView.isScrollEnabled = false
         
-        copyButton.title = NSLocalizedString("Copy Private Key", comment: "")
+        copyButton.title = LocalizedString("Copy Private Key", comment: "")
         copyButton.setupRoundBlack()
     }
 

@@ -26,15 +26,15 @@ enum QRCodeType: String {
     
     var detectedDescription: String {
         switch self {
-        case .address: return NSLocalizedString("Address detected", comment: "")
-        case .mnemonic: return NSLocalizedString("Mnemonic detected", comment: "")
-        case .keystore: return NSLocalizedString("Keystore detected", comment: "")
-        case .privateKey: return NSLocalizedString("Private key detected", comment: "")
-        case .submitOrder: return NSLocalizedString("Authorization message detected", comment: "")
-        case .login: return NSLocalizedString("Login message detected", comment: "")
+        case .address: return LocalizedString("Address detected", comment: "")
+        case .mnemonic: return LocalizedString("Mnemonic detected", comment: "")
+        case .keystore: return LocalizedString("Keystore detected", comment: "")
+        case .privateKey: return LocalizedString("Private key detected", comment: "")
+        case .submitOrder: return LocalizedString("Authorization message detected", comment: "")
+        case .login: return LocalizedString("Login message detected", comment: "")
         case .cancelOrder: return ""
         case .convert: return ""
-        case .undefined: return NSLocalizedString("Undefined", comment: "")
+        case .undefined: return LocalizedString("Undefined", comment: "")
         }
     }
 }
@@ -64,11 +64,11 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
 
         // Do any additional setup after loading the view.
         setBackButton()
-        self.navigationItem.title = NSLocalizedString("Scan QR Code", comment: "")
+        self.navigationItem.title = LocalizedString("Scan QR Code", comment: "")
         
         scanTipLabel.font = FontConfigManager.shared.getLabelFont()
         scanTipLabel.textColor = Themes.isNight() ? .white : .black
-        scanTipLabel.text = NSLocalizedString("Align QR Code within Frame to Scan", comment: "")
+        scanTipLabel.text = LocalizedString("Align QR Code within Frame to Scan", comment: "")
         self.flashButton.image = UIImage(named: "TorchOff")
         
         // Get the camera for capturing videos
@@ -224,15 +224,15 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         if presentedViewController != nil {
             return
         }
-        let message = NSLocalizedString("Do you wish to handle the qrcode?", comment: "")
+        let message = LocalizedString("Do you wish to handle the qrcode?", comment: "")
         let alertPrompt = UIAlertController(title: "\(codeType.detectedDescription)", message: "\(message)", preferredStyle: .actionSheet)
         let messageAttribute = NSMutableAttributedString.init(string: alertPrompt.message!)
         messageAttribute.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)], range: NSRange(location: 0, length: (alertPrompt.message?.count)!))
         alertPrompt.setValue(messageAttribute, forKey: "attributedMessage")
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.cancel, handler: { _ in
+        let cancelAction = UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.cancel, handler: { _ in
             self.captureSession.startRunning()
         })
-        let confirmAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default) { _ in
+        let confirmAction = UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default) { _ in
             self.delegate?.setResultOfScanningQRCode(valueSent: decodedURL, type: codeType)
             if self.shouldPop {
                 self.navigationController?.popViewController(animated: true)

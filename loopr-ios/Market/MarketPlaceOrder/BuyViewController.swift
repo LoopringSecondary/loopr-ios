@@ -83,7 +83,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         view.backgroundColor = UIColor.white
         scrollViewButtonLayoutConstraint.constant = 0
 
-        placeOrderButton.title = NSLocalizedString("Place Order", comment: "")
+        placeOrderButton.title = LocalizedString("Place Order", comment: "")
         placeOrderButton.setupRoundBlack()
         
         // Setup UI in the scroll view
@@ -108,7 +108,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         priceTextField.inputView = UIView()
         priceTextField.font = FontConfigManager.shared.getLabelFont()
         priceTextField.theme_tintColor = GlobalPicker.textColor
-        priceTextField.placeholder = NSLocalizedString("Market Price", comment: "") + " " + PlaceOrderDataManager.shared.market.balance.description
+        priceTextField.placeholder = LocalizedString("Market Price", comment: "") + " " + PlaceOrderDataManager.shared.market.balance.description
         priceTextField.contentMode = UIViewContentMode.bottom
         scrollView.addSubview(priceTextField)
 
@@ -140,7 +140,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         amountTextField.font = FontConfigManager.shared.getLabelFont()
         amountTextField.theme_tintColor = GlobalPicker.textColor
         amountTextField.theme_tintColor = GlobalPicker.textColor
-        amountTextField.placeholder = NSLocalizedString("Please input a valid amount", comment: "")
+        amountTextField.placeholder = LocalizedString("Please input a valid amount", comment: "")
         amountTextField.contentMode = UIViewContentMode.bottom
         scrollView.addSubview(amountTextField)
         
@@ -171,7 +171,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         totalTextField.inputView = UIView()
         totalTextField.font = FontConfigManager.shared.getLabelFont()
         totalTextField.theme_tintColor = GlobalPicker.textColor
-        totalTextField.placeholder = NSLocalizedString("Total", comment: "")
+        totalTextField.placeholder = LocalizedString("Total", comment: "")
         totalTextField.contentMode = UIViewContentMode.bottom
         totalTextField.frame = CGRect(x: padding, y: tipLabel.frame.maxY + 30, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(totalTextField)
@@ -188,7 +188,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         scrollView.addSubview(availableLabel)
         
         // Fourth Row
-        expireLabel.text = NSLocalizedString("Order Expires in", comment: "")
+        expireLabel.text = LocalizedString("Order Expires in", comment: "")
         expireLabel.font = UIFont.init(name: FontConfigManager.shared.getBold(), size: 14)
         expireLabel.textAlignment = .left
         expireLabel.frame = CGRect(x: padding, y: availableLabel.frame.maxY + 30, width: 300, height: 40)
@@ -243,7 +243,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     
     func setupLabels() {
         if let balance = getBalance() {
-            let title = NSLocalizedString("Available Balance", comment: "")
+            let title = LocalizedString("Available Balance", comment: "")
             if type == .buy {
                 availableLabel.isHidden = false
                 availableLabel.textColor = .black
@@ -371,10 +371,10 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             self.validateAmountRational()
         }
         if !isPriceValid {
-            updateLabel(label: estimateValueInCurrencyLabel, enable: true, color: .red, text: NSLocalizedString("Please input a valid price", comment: ""))
+            updateLabel(label: estimateValueInCurrencyLabel, enable: true, color: .red, text: LocalizedString("Please input a valid price", comment: ""))
         }
         if !isAmountValid {
-            updateLabel(label: tipLabel, enable: true, color: .red, text: NSLocalizedString("Please input a valid amount", comment: ""))
+            updateLabel(label: tipLabel, enable: true, color: .red, text: LocalizedString("Please input a valid amount", comment: ""))
         }
     }
 
@@ -391,15 +391,15 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     
     func validateAmountRational() {
         if !isAmountValid() {
-            let title = NSLocalizedString("Please Pay Attention", comment: "")
-            let message = NSLocalizedString("Your order amount exceeded your asset balance, which cause your order could not be dealt completely. Do you wish to continue trading with the amount?", comment: "")
+            let title = LocalizedString("Please Pay Attention", comment: "")
+            let message = LocalizedString("Your order amount exceeded your asset balance, which cause your order could not be dealt completely. Do you wish to continue trading with the amount?", comment: "")
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+            alert.addAction(UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
                 DispatchQueue.main.async {
                     self.pushController()
                 }
             }))
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+            alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
             }))
             self.present(alert, animated: true, completion: nil)
         } else {
@@ -441,7 +441,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
                 let estimateValue: Double = value * tokenBPrice
                 updateLabel(label: estimateValueInCurrencyLabel, enable: true, color: .black, text: "≈ \(estimateValue.currency)")
             } else {
-                updateLabel(label: estimateValueInCurrencyLabel, enable: true, color: .red, text: NSLocalizedString("Please input a valid price", comment: ""))
+                updateLabel(label: estimateValueInCurrencyLabel, enable: true, color: .red, text: LocalizedString("Please input a valid price", comment: ""))
             }
             return validate
         } else {
@@ -464,7 +464,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
                     setupLabels()
                 }
             } else {
-                updateLabel(label: tipLabel, enable: true, color: .red, text: NSLocalizedString("Please input a valid amount", comment: ""))
+                updateLabel(label: tipLabel, enable: true, color: .red, text: LocalizedString("Please input a valid amount", comment: ""))
             }
             return validate
         } else {
@@ -498,7 +498,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             totalTextField.text = "\(total)"
             if !isAmountValid() {
                 if let balance = getBalance() {
-                    let title = NSLocalizedString("Available Balance", comment: "")
+                    let title = LocalizedString("Available Balance", comment: "")
                     if type == .buy {
                         updateLabel(label: availableLabel, enable: true, color: .red, text: "\(title) \(balance.withCommas()) \(PlaceOrderDataManager.shared.tokenB.symbol)")
                     } else if activeTextFieldTag == amountTextField.tag {

@@ -25,7 +25,7 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         historyTableView.theme_backgroundColor = GlobalPicker.backgroundColor
-        self.navigationItem.title = NSLocalizedString("P2P Order History", comment: "")
+        self.navigationItem.title = LocalizedString("P2P Order History", comment: "")
         setBackButton()
         historyTableView.dataSource = self
         historyTableView.delegate = self

@@ -26,7 +26,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
 
-        unlockButton.setTitle(NSLocalizedString("Unlock", comment: ""), for: .normal)
+        unlockButton.setTitle(LocalizedString("Unlock", comment: ""), for: .normal)
         unlockButton.setupRoundBlack()
         
         keystoreContentTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
@@ -34,7 +34,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         keystoreContentTextView.font = FontConfigManager.shared.getRegularFont()
         keystoreContentTextView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
         keystoreContentTextView.delegate = self
-        keystoreContentTextView.text = NSLocalizedString("Please enter the keystore", comment: "")
+        keystoreContentTextView.text = LocalizedString("Please enter the keystore", comment: "")
         keystoreContentTextView.textColor = .lightGray
         keystoreContentTextView.tintColor = UIColor.black
         
@@ -42,7 +42,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         passwordTextField.tag = 0
         passwordTextField.theme_tintColor = GlobalPicker.textColor
         passwordTextField.font = FontConfigManager.shared.getLabelFont(size: 17)
-        passwordTextField.placeholder = NSLocalizedString("Keystore Password", comment: "")
+        passwordTextField.placeholder = LocalizedString("Keystore Password", comment: "")
         passwordTextField.contentMode = UIViewContentMode.bottom
         passwordTextField.textContentType = .password
         passwordTextField.isSecureTextEntry = true
@@ -94,7 +94,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if keystoreContentTextView.text == NSLocalizedString("Please enter the keystore", comment: "") {
+        if keystoreContentTextView.text == LocalizedString("Please enter the keystore", comment: "") {
             keystoreContentTextView.text = ""
             keystoreContentTextView.textColor = .black
         }
@@ -103,7 +103,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if keystoreContentTextView.text == "" {
-            keystoreContentTextView.text = NSLocalizedString("Please enter the keystore", comment: "")
+            keystoreContentTextView.text = LocalizedString("Please enter the keystore", comment: "")
             keystoreContentTextView.textColor = .lightGray
         }
         keystoreContentTextView.resignFirstResponder()
@@ -114,7 +114,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         // TODO: Use notificatino to require
         let password = passwordTextField.text ?? ""
         guard password != "" else {
-            let notificationTitle = NSLocalizedString("Please enter a password", comment: "")
+            let notificationTitle = LocalizedString("Please enter a password", comment: "")
             let banner = NotificationBanner.generate(title: notificationTitle, style: .danger)
             banner.duration = 1.5
             banner.show()
@@ -124,7 +124,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         let keystoreString = self.keystoreContentTextView.text ?? ""
         
         var isSucceeded: Bool = false
-        SVProgressHUD.show(withStatus: NSLocalizedString("Importing keystore", comment: "") + "...")
+        SVProgressHUD.show(withStatus: LocalizedString("Importing keystore", comment: "") + "...")
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
         DispatchQueue.global().async {
@@ -142,8 +142,8 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
             SVProgressHUD.dismiss()
             if isSucceeded {
                 if AppWalletDataManager.shared.isDuplicatedAddress(address: ImportWalletUsingKeystoreDataManager.shared.address) {
-                    let alert = UIAlertController(title: NSLocalizedString("Failed to import address. The device has imported the address already.", comment: ""), message: nil, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+                    let alert = UIAlertController(title: LocalizedString("Failed to import address. The device has imported the address already.", comment: ""), message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: LocalizedString("OK", comment: ""), style: .default, handler: { _ in
                         
                     }))
                     self.present(alert, animated: true, completion: nil)

@@ -32,7 +32,7 @@ class DisplayKeystoreViewController: UIViewController {
         keystoreTextView.textColor = UIColor.black
         keystoreTextView.isEditable = false
         
-        copyButton.title = NSLocalizedString("Copy Keystore", comment: "")
+        copyButton.title = LocalizedString("Copy Keystore", comment: "")
         copyButton.setupRoundBlack()
     }
 

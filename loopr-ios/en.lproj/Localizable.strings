@@ -1,10 +1,10 @@
-/* 
-  File.strings
-  loopr-ios
-
-  Created by xiaoruby on 2/27/18.
-  Copyright © 2018 Loopring. All rights reserved.
-*/
+/*
+ File.strings
+ loopr-ios
+ 
+ Created by xiaoruby on 2/27/18.
+ Copyright © 2018 Loopring. All rights reserved.
+ */
 
 "Night Mode" = "Night Mode";
 "Buy" = "Buy";
@@ -25,7 +25,7 @@
 "Confirm password" = "Confirm password";
 "Confirm your password" = "Confirm your password";
 "Password" = "Password";
-"Repeat password" = "Repeat password";
+"Repeat Password" = "Repeat Password";
 "Enter password" = "Enter password";
 "Wrong password" = "Wrong password";
 "Mnemonic" = "Mnemonic";
@@ -35,6 +35,7 @@
 "Please input your private key" = "Please input your private key";
 "Please use space to seperate the mnemonic words" = "Please use space to seperate the mnemonic words";
 "Backup Mnemonic" = "Backup Mnemonic";
+"Verify Mnemonic" = "Verify Mnemonic";
 "Verify Now" = "Verify Now";
 "Skip Verification" = "Skip Verification";
 "Verification" = "Verification";
@@ -61,6 +62,7 @@
 "Order QR Code" = "Order QR Code";
 "Scan QR Code" = "Scan QR Code";
 "QR Code" = "QR Code";
+"Export" = "Export";
 "Export Private Key" = "Export Private Key";
 "Export Keystore" = "Export Keystore";
 "Wallet Name" = "Wallet Name";
@@ -70,14 +72,18 @@
 "Invalid mnemonic. Please enter again." = "Invalid mnemonic. Please enter again.";
 "Invalid private key. Please enter again." = "Invalid private key. Please enter again.";
 "Invalid keystore. Please enter again." = "Invalid keystore. Please enter again.";
+"Please enter mnemonic" = "Please enter mnemonic";
+"Please enter private key" = "Please enter private key";
+"Please enter keystore" = "Please enter keystore";
 "Mnemonic Password (optional)" = "Mnemonic Password (optional)";
 "Please enter a wallet name" = "Please set a wallet name";
 "Please set a password" = "Please set a password";
 "Please enter a password" = "Please enter a password";
 "Copy address to clipboard successfully!" = "Copy address to clipboard successfully!";
+"Copy keystore to clipboard successfully!" = "Copy keystore to clipboard successfully!";
 "Congratulations!" = "Congratulations!";
 "Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage." = "Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage.";
-"Please write them down" = "Write them down";
+"Please write them down" = "Please write them down";
 "Please make sure you have recorded all words safely. Otherwise, you will not be able to go through the verification process, and have to start over." = "Please make sure you have recorded all words safely. Otherwise, you will not be able to go through the verification process, and have to start over.";
 "Continue" = "Continue";
 "Backup Now" = "Backup Now";
@@ -86,7 +92,7 @@
 "Confirm" = "Confirm";
 "Next 12 Words" = "Next 12 Words";
 "Previous 12 Words" = "Previous 12 Words";
-"Please input the consistant password." = "Please input the consistant password.";
+"Please input the consistant password" = "Please input the consistant password";
 "Hide Small Assets" = "Hide Small Assets";
 "Max" = "Max";
 "Amount you want to convert" = "Amount you want to convert";
@@ -136,16 +142,16 @@
 "All" = "All";
 "Favorite" = "Favorite";
 "Align QR Code within Frame to Scan" = "Align QR Code within Frame to Scan";
-"No access to save QR code. Please go to setting to enable the access" = "No access to save QR code. Please go to setting to enable the access";
+"No access to save QR code. Please go to setting to enable the access." = "No access to save QR code. Please go to setting to enable the access.";
 "Failed to sign/encode transaction" = "Failed to sign/encode transaction";
-"Sorry, system error, please try again later" = "Sorry, system error, please try again later";
-"Sorry, selling order does not exist, could not complete this order" = "Sorry, selling order does not exist, could not complete this order";
-"Sorry, only p2p order could be submitted, could not complete this order" = "Sorry, only p2p order could be submitted, could not complete this order";
-"Sorry, selling order already dealt with another buying order, please try with other orders"= "Sorry, selling order already dealt with another buying order, please try with other orders";
-"Sorry, selling and buying price did not match between two orders, could not complete this order" = "Sorry, selling and buying price did not match between two orders, could not complete this order";
-"Sorry, owner of buying order is the same as selling's, could not complete this order" = "Sorry, owner of buying order is the same as selling's, could not complete this order";
-"Sorry, buying order has been expired, please try with other orders" = "Sorry, buying order has been expired, please try with other orders";
-"Sorry, buying order does not exist, could not complete this order" = "Sorry, buying order does not exist, could not complete this order";
+"10001" = "Sorry, system error, please try again later";
+"50001" = "Sorry, selling order does not exist, could not complete this order";
+"50002" = "Sorry, only p2p order could be submitted, could not complete this order";
+"50003"= "Sorry, selling order already dealt with another buying order, please try with other orders";
+"50004" = "Sorry, selling and buying price did not match between two orders, could not complete this order";
+"50005" = "Sorry, owner of buying order is the same as selling's, could not complete this order";
+"50006" = "Sorry, buying order has been expired, please try with other orders";
+"50008" = "Sorry, buying order does not exist, could not complete this order";
 "Information of two orders not complete" = "Information of two orders not complete";
 "Sorry. Network error, please try again later" = "Sorry. Network error, please try again later";
 "Order Expires in" = "Order Expires in";
@@ -167,8 +173,8 @@
 "My Trades" = "My Trades";
 "You are going to cancel all open orders." = "You are going to cancel all open orders.";
 "You are going to cancel the order." = "You are going to cancel the order.";
-"Order(s) cancel Failed, Please try again." =  "Order(s) cancel Failed, Please try again.";
-"Order(s) Cancelled Successful." = "Order(s) Cancelled Successful.";
+"Order(s) cancelled Failed, Please try again." =  "Order(s) cancelled Failed, Please try again.";
+"Order(s) cancelled Successful." = "Order(s) cancelled Successful.";
 "Order Detail" = "Order Detail";
 "Filled/Amount" = "Filled/Amount";
 "Status" = "Status";
@@ -189,14 +195,10 @@
 "What is gas?" = "What is gas?";
 "Gas is..." = "Gas is...";
 "Please input a correct address" = "Please input a correct address";
-"Convert ETH To WETH" = "Convert ETH To WETH";
-"Convert WETH To ETH" = "Convert WETH To ETH";
 "Enable \(transaction.symbol) To Trade" = "Enable \(transaction.symbol) To Trade";
 "Cancel Order(s)" = "Cancel Order(s)";
 "Enter the amount you have" = "Please input the amount you wish to sell";
 "Enter the amount you get" = "Please input the amount you wish to get";
-"Available \(balance) \(tokens)" = "Available \(balance) \(tokens)";
-"Available 0.0 \(tokens)" = "Available 0.0 \(tokens)";
 "My Trade from Loopr-iOS" = "My Trade from Loopr-iOS";
 "Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!" = "Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!";
 "However, please make sure you have enough balance to complete the trade." = "However, please make sure you have enough balance to complete the trade.";
@@ -276,6 +278,7 @@
 "Order Expired" = "Expired";
 "Order Locked" = "Locked";
 "Order Unknown" = "Unknown";
+"Unknown" = "Unknown";
 "Accept" = "Accept";
 "Decline" = "Decline";
 "Address detected" = "Address detected";
@@ -301,8 +304,8 @@
 "Your mnemonic has been verified successfully." = "Your mnemonic has been verified successfully.";
 "Authorze Successfully" = "Authorze Successfully";
 "Authorze Failed" = "Authorze Failed";
-"Login Authorzation Successful! Please transfer to our website to continue." = "Login Authorzation Successful! Please transfer to our website to continue.";
-"Login Authorzation failed! Please review your signing address and try again later." = "Login Authorzation failed! Please review your signing address and try again later.";
+"Authorze_Successfully" = "Authorzation Successful! Please transfer to our website to continue.";
+"Authorze_Failed" = "Authorzation failed! Please review your signing data and try again later.";
 "Initializing the wallet" = "Initializing the wallet";
 "Do you wish to handle the qrcode?" = "Do you wish to handle the qrcode?";
 "Failed to import address." = "Failed to import address.";
@@ -311,3 +314,42 @@
 "Import" = "Import";
 "gas price" = "gas price";
 "Processing the transaction" = "Processing the transaction";
+"Airdrop" = "Airdrop";
+"Trade FAQ" = "Trade FAQ";
+"Feedback" = "Feedback";
+"Settings_in_grid" = "App Settings";
+"Trading_settings_in_grid" = "Trading Settings";
+"Quit" = "Quit";
+"My Wallet Address" = "My Wallet Address";
+"Copy" = "Copy";
+"Complete" = "Complete";
+"Recommended Gas" = "Recommended Gas Amount";
+"Save QR code to Photo successfully." = "Save QR code to Photo successfully.";
+"Convert_TipInfo" = "我们为您保留0.01 ETH作为油费以保证后续可以发送交易";
+"Add Token" = "Add Token";
+"Tx_Failed_Result" = "Transaction Failed";
+"Tx_Success_Result" = "Transaction Success";
+"Authorization" = "Authorization";
+"Clear" = "Clear";
+"No network" = "No network";
+"Wallet Management" = "Wallet Management";
+"Backup_Mnemonic_in_SettingManageWallet" = "Backup Mnemonic";
+"File" = "File";
+"Delete Wallet" = "Delete Wallet";
+"Total Balance" = "Total Balance";
+"Update Wallet Name" = "Update Wallet Name";
+"Backup" = "Backup";
+"New Wallet Name" = "New Wallet Name";
+"New wallet name can't be empty" = "New wallet name can't be empty";
+"Please Enter Password" = "Please Enter Password";
+"Please enter password" = "Please enter password";
+"P2P Trade" = "P2P Trade";
+"Convert_to_ETH_in_TradeViewController" = "Convert to ETH";
+"Export_Keystore_in_ExportKeystoreSwipeViewController" = "Export Keystore";
+"Total (yuan)" = "Total (yuan)";
+"Total (USD)" = "Total (USD)";
+"No wallet is found in the device. Navigate to the wallet creation view." = "No wallet is found in the device. Navigate to the wallet creation view.";
+"Default" = "Default";
+"Please turn on Touch ID in settings" = "Please turn on Touch ID in settings";
+"Please turn on Face ID in settings" = "Please turn on Face ID in settings";
+

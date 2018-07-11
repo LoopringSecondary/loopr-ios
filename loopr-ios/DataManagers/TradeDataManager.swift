@@ -61,15 +61,16 @@ class TradeDataManager {
     }
     
     func setupErrorMessage() {
-        self.errorMessage =
-            ["10001": NSLocalizedString("Sorry, system error, please try again later", comment: ""),
-             "50001": NSLocalizedString("Sorry, selling order does not exist, could not complete this order", comment: ""),
-             "50002": NSLocalizedString("Sorry, only p2p order could be submitted, could not complete this order", comment: ""),
-             "50003": NSLocalizedString("Sorry, selling order already dealt with another buying order, please try with other orders", comment: ""),
-             "50004": NSLocalizedString("Sorry, selling and buying price did not match between two orders, could not complete this order", comment: ""),
-             "50005": NSLocalizedString("Sorry, owner of buying order is the same as selling's, could not complete this order", comment: ""),
-             "50006": NSLocalizedString("Sorry, buying order has been expired, please try with other orders", comment: ""),
-             "50008": NSLocalizedString("Sorry, buying order does not exist, could not complete this order", comment: "")]
+        self.errorMessage = [
+            "10001": LocalizedString("10001", comment: ""),
+            "50001": LocalizedString("50001", comment: ""),
+            "50002": LocalizedString("50002", comment: ""),
+            "50003": LocalizedString("50003", comment: ""),
+            "50004": LocalizedString("50004", comment: ""),
+            "50005": LocalizedString("50005", comment: ""),
+            "50006": LocalizedString("50006", comment: ""),
+            "50008": LocalizedString("50008", comment: "")
+        ]
     }
     
     func updatePair() {
@@ -145,7 +146,7 @@ class TradeDataManager {
             }
         } else {
             var userInfo: [String: Any] = [:]
-            userInfo["message"] = NSLocalizedString("Information of two orders not complete!", comment: "")
+            userInfo["message"] = LocalizedString("Information of two orders not complete!", comment: "")
             let error = NSError(domain: "TRANSFER", code: 0, userInfo: userInfo)
             completion(nil, error)
         }

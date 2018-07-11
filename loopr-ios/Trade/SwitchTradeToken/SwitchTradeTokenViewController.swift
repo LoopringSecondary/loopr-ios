@@ -50,7 +50,7 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
     
     func setupSearchBar() {
         searchBar.showsCancelButton = false
-        searchBar.placeholder = NSLocalizedString("Search", comment: "")
+        searchBar.placeholder = LocalizedString("Search", comment: "")
         searchBar.delegate = self
         searchBar.searchBarStyle = .minimal
         

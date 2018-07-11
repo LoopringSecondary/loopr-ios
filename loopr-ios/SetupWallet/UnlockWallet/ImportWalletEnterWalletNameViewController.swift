@@ -50,7 +50,7 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
         // walletNameTextField.inputView = UIView()
         walletNameTextField.theme_tintColor = GlobalPicker.textColor
         walletNameTextField.font = FontConfigManager.shared.getLabelFont(size: 19)
-        walletNameTextField.placeholder = NSLocalizedString("Give your wallet an awesome name", comment: "")
+        walletNameTextField.placeholder = LocalizedString("Give your wallet an awesome name", comment: "")
         walletNameTextField.contentMode = UIViewContentMode.bottom
         walletNameTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 40)
         view.addSubview(walletNameTextField)
@@ -60,13 +60,13 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
         view.addSubview(walletNameUnderLine)
         
         walletNameInfoLabel.frame = CGRect(x: padding, y: walletNameUnderLine.frame.maxY + 9, width: screenWidth - padding * 2, height: 16)
-        walletNameInfoLabel.text = NSLocalizedString("Please enter a wallet name", comment: "")
+        walletNameInfoLabel.text = LocalizedString("Please enter a wallet name", comment: "")
         walletNameInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
         walletNameInfoLabel.textColor = UIStyleConfig.red
         walletNameInfoLabel.alpha = 0.0
         view.addSubview(walletNameInfoLabel)
 
-        continueButton.setTitle(NSLocalizedString("Enter Wallet", comment: ""), for: .normal)
+        continueButton.setTitle(LocalizedString("Enter Wallet", comment: ""), for: .normal)
         continueButton.setupRoundBlack()
         continueButton.frame = CGRect(x: padding, y: walletNameInfoLabel.frame.maxY + 50, width: screenWidth - padding * 2, height: 47)
         continueButton.addTarget(self, action: #selector(pressedContinueButton), for: .touchUpInside)
@@ -82,9 +82,9 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
 
     @objc func pressedContinueButton(_ sender: Any) {
         guard AppWalletDataManager.shared.isNewWalletNameToken(newWalletname: walletNameTextField.text ?? "") else {
-            let title = NSLocalizedString("The name is token, please try another one", comment: "")
+            let title = LocalizedString("The name is token, please try another one", comment: "")
             let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+            alert.addAction(UIAlertAction(title: LocalizedString("OK", comment: ""), style: .default, handler: { _ in
                 
             }))
             self.present(alert, animated: true, completion: nil)

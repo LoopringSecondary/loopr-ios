@@ -25,7 +25,7 @@ class AuthenticationViewController: UIViewController {
         backgrondImageView.isUserInteractionEnabled = true
         view.addSubview(backgrondImageView)
 
-        unlockAppButton.title = NSLocalizedString("Unlock", comment: "")
+        unlockAppButton.title = LocalizedString("Unlock", comment: "")
         unlockAppButton.setupRoundBlack()
         unlockAppButton.addTarget(self, action: #selector(pressedUnlockAppButton), for: .touchUpInside)
         backgrondImageView.addSubview(unlockAppButton)

@@ -23,15 +23,15 @@ class QRCodeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Wallet QR Code", comment: "")
+        self.navigationItem.title = LocalizedString("Wallet QR Code", comment: "")
         
         view.theme_backgroundColor = GlobalPicker.textColor
         contentView.layer.cornerRadius = 16
         addressLabel.theme_textColor = GlobalPicker.textColor
         addressLabel.font = FontConfigManager.shared.getRegularFont(size: 15)
-        copyAddressButton.setTitle(NSLocalizedString("Copy Wallet Address", comment: ""), for: .normal)
+        copyAddressButton.setTitle(LocalizedString("Copy Wallet Address", comment: ""), for: .normal)
         copyAddressButton.setupRoundWhite()
-        saveToAlbumButton.setTitle(NSLocalizedString("Save to Album", comment: ""), for: .normal)
+        saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
         saveToAlbumButton.setupRoundBlack()
         setupShareButton()
         setBackButton(image: "Back-button-white")
@@ -101,7 +101,7 @@ class QRCodeViewController: UIViewController {
     }
     
     @IBAction func pressedShareButton(_ button: UIBarButtonItem) {
-        let text = NSLocalizedString("My wallet address in Loopr", comment: "")
+        let text = LocalizedString("My wallet address in Loopr", comment: "")
         let png = UIImagePNGRepresentation(qrcodeImage)
         let shareAll = [text, png!] as [Any]
         let activityVC = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)

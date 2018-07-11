@@ -25,7 +25,7 @@ class CancelAllOpenOrdersTableViewCell: UITableViewCell {
         hideOtherPairsSwitch.setOn(SettingDataManager.shared.getHideOtherPairs(), animated: false)
         hideOtherPairsLabel.textColor = UIColor.black
         hideOtherPairsLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17.0*UIStyleConfig.scale)
-        hideOtherPairsLabel.text = NSLocalizedString("Hide Other Pairs", comment: "")
+        hideOtherPairsLabel.text = LocalizedString("Hide Other Pairs", comment: "")
         seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
         update()
     }
@@ -45,7 +45,7 @@ class CancelAllOpenOrdersTableViewCell: UITableViewCell {
             cancelAllButton.backgroundColor = UIColor.buttonBackground
             cancelAllButton.layer.borderColor = UIColor.clear.cgColor
         }
-        cancelAllButton.title = NSLocalizedString("Cancel All", comment: "")
+        cancelAllButton.title = LocalizedString("Cancel All", comment: "")
         cancelAllButton.titleColor = UIColor.black
         cancelAllButton.layer.cornerRadius = 15
         cancelAllButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 12.0)

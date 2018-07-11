@@ -71,11 +71,11 @@ class MarketLineChartTableViewCell: UITableViewCell, ChartViewDelegate {
         oneHourButton.selected()
         
         // Sell button
-        sellButton.setTitle(NSLocalizedString("Sell", comment: ""), for: .normal)
+        sellButton.setTitle(LocalizedString("Sell", comment: ""), for: .normal)
         sellButton.setupRoundWhite()
         
         // Buy button
-        buyButton.setTitle(NSLocalizedString("Buy", comment: ""), for: .normal)
+        buyButton.setTitle(LocalizedString("Buy", comment: ""), for: .normal)
         buyButton.setupRoundBlack()
     }
 

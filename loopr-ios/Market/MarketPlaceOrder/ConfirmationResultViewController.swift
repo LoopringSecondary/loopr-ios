@@ -31,7 +31,7 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = NSLocalizedString("Confirmation", comment: "")
+        self.navigationItem.title = LocalizedString("Confirmation", comment: "")
         self.navigationItem.hidesBackButton = true
         // Do any additional setup after loading the view.
         setupErrorInfo()
@@ -45,11 +45,11 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
         placeInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 20)
         placeInfoLabel.textColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1)
         if isBalanceEnough() {
-            placedLabel.text = NSLocalizedString("Placed!", comment: "")
-            placeInfoLabel.text = NSLocalizedString("Congradualations! Your order has been submited!", comment: "")
+            placedLabel.text = LocalizedString("Placed!", comment: "")
+            placeInfoLabel.text = LocalizedString("Congradualations! Your order has been submited!", comment: "")
         } else {
-            placedLabel.text = NSLocalizedString("Attention!", comment: "")
-            placeInfoLabel.text = NSLocalizedString("Your order has not been submited! Please make sure you have enough balance to complete the trade.", comment: "")
+            placedLabel.text = LocalizedString("Attention!", comment: "")
+            placeInfoLabel.text = LocalizedString("Your order has not been submited! Please make sure you have enough balance to complete the trade.", comment: "")
         }
     }
     
@@ -61,7 +61,7 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
         
         // 1st row: need A token
         needATipLabel.font = FontConfigManager.shared.getLabelFont()
-        needATipLabel.text = NSLocalizedString("You Need More", comment: "")
+        needATipLabel.text = LocalizedString("You Need More", comment: "")
         needATipLabel.frame = CGRect(x: padding, y: padding, width: 150, height: 40)
         scrollView.addSubview(needATipLabel)
         needAInfoLabel.font = FontConfigManager.shared.getLabelFont()
@@ -78,7 +78,7 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
         
         // 2nd row: need B token
         needBTipLabel.font = FontConfigManager.shared.getLabelFont()
-        needBTipLabel.text = NSLocalizedString("You Need More", comment: "")
+        needBTipLabel.text = LocalizedString("You Need More", comment: "")
         needBTipLabel.frame = CGRect(x: padding, y: needATipLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(needBTipLabel)
         needBInfoLabel.font = FontConfigManager.shared.getLabelFont()
@@ -89,7 +89,7 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupButtons() {
-        detailsButton.title = NSLocalizedString("Check Details", comment: "")
+        detailsButton.title = LocalizedString("Check Details", comment: "")
         detailsButton.layer.borderColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1).cgColor
         detailsButton.layer.borderWidth = 1
         detailsButton.layer.cornerRadius = 23
@@ -102,7 +102,7 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
             detailsButton.isEnabled = false
             detailsButton.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
         }
-        doneButton.title = NSLocalizedString("Done", comment: "")
+        doneButton.title = LocalizedString("Done", comment: "")
         doneButton.setupRoundBlack()
     }
     

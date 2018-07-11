@@ -40,7 +40,7 @@ class TradeConfirmationViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Confirmation", comment: "")
+        self.navigationItem.title = LocalizedString("Confirmation", comment: "")
         setBackButton()
         
         // Token View
@@ -63,13 +63,13 @@ class TradeConfirmationViewController: UIViewController {
         scrollView.addSubview(arrowRightImageView)
         
         // Price label
-        priceLabel.text = NSLocalizedString("Price", comment: "")
+        priceLabel.text = LocalizedString("Price", comment: "")
         priceLabel.textColor = UIColor.black
         priceLabel.font = FontConfigManager.shared.getLabelFont()
         priceLabel.frame = CGRect(x: padding, y: screenHeight * 0.57, width: 160, height: rowHeight)
         scrollView.addSubview(priceLabel)
         
-        priceTipLabel.text = "(" + NSLocalizedString("Irrational", comment: "") + ")"
+        priceTipLabel.text = "(" + LocalizedString("Irrational", comment: "") + ")"
         priceTipLabel.textColor = .red
         priceTipLabel.textAlignment = .right
         priceTipLabel.font = FontConfigManager.shared.getLabelFont()
@@ -88,7 +88,7 @@ class TradeConfirmationViewController: UIViewController {
         scrollView.addSubview(priceUnderLine)
         
         // Trading Fee
-        LRCFeeLabel.text = NSLocalizedString("Trading Fee", comment: "")
+        LRCFeeLabel.text = LocalizedString("Trading Fee", comment: "")
         LRCFeeLabel.textColor = UIColor.black
         LRCFeeLabel.font = FontConfigManager.shared.getLabelFont()
         LRCFeeLabel.frame = CGRect(x: padding, y: priceValueLabel.frame.maxY + rowPadding, width: 160, height: rowHeight)
@@ -105,7 +105,7 @@ class TradeConfirmationViewController: UIViewController {
         scrollView.addSubview(LRCFeeUnderLine)
         
         // Margin Split
-        marginSplitLabel.text = NSLocalizedString("Margin Split", comment: "")
+        marginSplitLabel.text = LocalizedString("Margin Split", comment: "")
         marginSplitLabel.textColor = UIColor.black
         marginSplitLabel.font = FontConfigManager.shared.getLabelFont()
         marginSplitLabel.frame = CGRect(x: padding, y: LRCFeeLabel.frame.maxY + rowPadding, width: 160, height: rowHeight)
@@ -121,7 +121,7 @@ class TradeConfirmationViewController: UIViewController {
         scrollView.contentSize = CGSize(width: screenWidth, height: marginSplitLabel.frame.maxY + padding)
         
         // Button
-        placeOrderButton.setTitle(NSLocalizedString("Place Order", comment: ""), for: .normal)
+        placeOrderButton.setTitle(LocalizedString("Place Order", comment: ""), for: .normal)
         placeOrderButton.setupRoundBlack()
     }
 
@@ -138,8 +138,8 @@ class TradeConfirmationViewController: UIViewController {
     }
     
     func updateLabels(order: OriginalOrder) {
-        tokenSView.update(title: NSLocalizedString("You are selling", comment: ""), symbol: order.tokenSell, amount: order.amountSell)
-        tokenBView.update(title: NSLocalizedString("You are buying", comment: ""), symbol: order.tokenBuy, amount: order.amountBuy)
+        tokenSView.update(title: LocalizedString("You are selling", comment: ""), symbol: order.tokenSell, amount: order.amountSell)
+        tokenBView.update(title: LocalizedString("You are buying", comment: ""), symbol: order.tokenBuy, amount: order.amountBuy)
         let value = order.amountBuy / order.amountSell
         priceValueLabel.text = "\(value.withCommas()) \(TradeDataManager.shared.tradePair)"
         if !validateRational(price: value) {
@@ -158,13 +158,13 @@ class TradeConfirmationViewController: UIViewController {
     func validateRational(price: Double) -> Bool {
         let pair = TradeDataManager.shared.tradePair
         if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
-            let header = NSLocalizedString("Your price is irrational, ", comment: "")
-            let footer = NSLocalizedString("Do you wish to continue trading or signing with the price?", comment: "")
+            let header = LocalizedString("Your price is irrational, ", comment: "")
+            let footer = LocalizedString("Do you wish to continue trading or signing with the price?", comment: "")
             if price < 0.8 * market.balance {
-                self.message = header + NSLocalizedString("which may cause your asset wastage! ", comment: "") + footer
+                self.message = header + LocalizedString("which may cause your asset wastage! ", comment: "") + footer
                 return false
             } else if price > 1.2 * market.balance {
-                self.message = header + NSLocalizedString("which may cause your order abolished! ", comment: "") + footer
+                self.message = header + LocalizedString("which may cause your order abolished! ", comment: "") + footer
                 return false
             }
             return true
@@ -174,14 +174,14 @@ class TradeConfirmationViewController: UIViewController {
 
     @IBAction func pressedPlaceOrderButton(_ sender: UIButton) {
         if !priceTipLabel.isHidden {
-            let alert = UIAlertController(title: NSLocalizedString("Please Pay Attention", comment: ""), message: self.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+            let alert = UIAlertController(title: LocalizedString("Please Pay Attention", comment: ""), message: self.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
                 DispatchQueue.main.async {
                     self.verifyInfo = TradeDataManager.shared.verify(order: self.order!)
                     self.handleVerifyInfo()
                 }
             }))
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+            alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
             }))
             self.present(alert, animated: true, completion: nil)
         } else {

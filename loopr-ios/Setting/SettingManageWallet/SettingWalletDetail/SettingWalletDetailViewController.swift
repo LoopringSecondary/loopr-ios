@@ -28,10 +28,10 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         
-        switchWalletButton.title = NSLocalizedString("Switch to this Wallet", comment: "")
+        switchWalletButton.title = LocalizedString("Switch to this Wallet", comment: "")
         switchWalletButton.setupRoundBlack()
         
-        shareAddressThroughSMSButton.title = NSLocalizedString("Share Address through SMS", comment: "")
+        shareAddressThroughSMSButton.title = LocalizedString("Share Address through SMS", comment: "")
         shareAddressThroughSMSButton.setupRoundWhite()
     }
 
@@ -109,10 +109,10 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     }
 
     func presentAlertControllerToConfirmClearRecords() {
-        let header = NSLocalizedString("You are going to clear records of", comment: "")
-        let footer = NSLocalizedString("on this device.", comment: "")
+        let header = LocalizedString("You are going to clear records of", comment: "")
+        let footer = LocalizedString("on this device.", comment: "")
         let alertController = UIAlertController(title: "\(header) \(appWallet.name) \(footer)", message: nil, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+        let defaultAction = UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
             AppWalletDataManager.shared.logout(appWallet: self.appWallet)
             if AppWalletDataManager.shared.getWallets().isEmpty {
                 self.navigationToSetupNavigationController()
@@ -121,7 +121,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
             }
         })
         alertController.addAction(defaultAction)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+        let cancelAction = UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
         })
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)

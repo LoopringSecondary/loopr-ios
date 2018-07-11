@@ -27,7 +27,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         view.theme_backgroundColor = GlobalPicker.backgroundColor
 
         setupSearchBar()
-        // self.navigationItem.title = NSLocalizedString("Market", comment: "")
+        // self.navigationItem.title = LocalizedString("Market", comment: "")
         
         setupChildViewControllers()
 
@@ -133,7 +133,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     
     func setupSearchBar() {
         searchBar.showsCancelButton = false
-        searchBar.placeholder = NSLocalizedString("Search", comment: "") 
+        searchBar.placeholder = LocalizedString("Search", comment: "") 
         searchBar.delegate = self
         searchBar.searchBarStyle = .minimal
         searchBar.keyboardType = .alphabet

@@ -23,7 +23,7 @@ class SettingCurrencyViewController: UIViewController, UITableViewDelegate, UITa
         tableView.delegate = self
         tableView.tableFooterView = UIView()
         
-        self.navigationItem.title = NSLocalizedString("Currency", comment: "")
+        self.navigationItem.title = LocalizedString("Currency", comment: "")
         setBackButton()
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor

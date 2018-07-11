@@ -40,11 +40,11 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.backgroundColor = UIStyleConfig.tableViewBackgroundColor
         
         // Receive button
-        receiveButton.setTitle(NSLocalizedString("Receive", comment: ""), for: .normal)
+        receiveButton.setTitle(LocalizedString("Receive", comment: ""), for: .normal)
         receiveButton.setupRoundBlack(height: 40)
         
         // Send button
-        sendButton.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
+        sendButton.setTitle(LocalizedString("Send", comment: ""), for: .normal)
         sendButton.setupRoundBlack(height: 40)
         
         buttonHeightLayoutConstraint.constant = 40
@@ -91,7 +91,8 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
                     if self.isLaunching {
                         self.isLaunching = false
                     }
-                    self.transactions = transactions
+                    // TODO: versions are unmatched.
+                    // self.transactions = transactions
                     self.tableView.reloadData()
                     // self.tableView.reloadSections(IndexSet(integersIn: 1...1), with: .fade)
                     self.refreshControl.endRefreshing()

@@ -27,7 +27,7 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
         let padding: CGFloat = 15
         
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Change Wallet Name", comment: "")
+        self.navigationItem.title = LocalizedString("Change Wallet Name", comment: "")
         setBackButton()
         
         nameTextField.delegate = self
@@ -44,7 +44,7 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
         self.view.addSubview(nameFieldUnderLine)
         
         saveButton.setupRoundBlack()
-        saveButton.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
+        saveButton.setTitle(LocalizedString("Save", comment: ""), for: .normal)
         saveButton.frame = CGRect(x: padding, y: nameFieldUnderLine.frame.maxY + padding*2 + 10, width: screenWidth - padding*2, height: 47)
         saveButton.addTarget(self, action: #selector(pressedSaveButton), for: .touchUpInside)
         self.view.addSubview(saveButton)

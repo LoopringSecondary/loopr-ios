@@ -71,7 +71,7 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
     
     func setupSearchBar() {
         searchBar.showsCancelButton = false
-        searchBar.placeholder = NSLocalizedString("Search", comment: "")
+        searchBar.placeholder = LocalizedString("Search", comment: "")
         searchBar.delegate = self
         searchBar.searchBarStyle = .minimal
         searchBar.keyboardType = .alphabet
@@ -92,7 +92,7 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
         searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.placeholder = NSLocalizedString("Search", comment: "") 
+        searchController.searchBar.placeholder = LocalizedString("Search", comment: "") 
         searchController.searchBar.tintColor = UIStyleConfig.defaultTintColor
         searchController.searchBar.delegate = self
         searchController.searchBar.sizeToFit()
@@ -128,7 +128,7 @@ class OrderSearchViewController: UIViewController, UITableViewDelegate, UITableV
         if enteredSearchText {
             headerLabel.text = orderDates[section]
         } else {
-            headerLabel.text = NSLocalizedString("Search History", comment: "")
+            headerLabel.text = LocalizedString("Search History", comment: "")
         }
 
         headerView.addSubview(headerLabel)

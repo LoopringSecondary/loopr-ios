@@ -17,10 +17,10 @@ enum MarketSwipeViewType: String, CustomStringConvertible {
     
     var description: String {
         switch self {
-        case .favorite: return NSLocalizedString("Favorite", comment: "")
+        case .favorite: return LocalizedString("Favorite", comment: "")
         case .LRC: return "LRC"
         case .ETH: return "WETH"
-        case .all: return NSLocalizedString("All", comment: "")
+        case .all: return LocalizedString("All", comment: "")
         }
     }
 

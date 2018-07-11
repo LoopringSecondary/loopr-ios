@@ -37,13 +37,13 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationItem.rightBarButtonItems = [searchButton]
         
         searchBar.showsCancelButton = false
-        searchBar.placeholder = NSLocalizedString("Search", comment: "")
+        searchBar.placeholder = LocalizedString("Search", comment: "")
         searchBar.delegate = self
         searchBar.searchBarStyle = .minimal
         searchBar.keyboardType = .alphabet
         searchBar.autocapitalizationType = .allCharacters
         
-        self.navigationItem.title = NSLocalizedString("Tokens", comment: "")
+        self.navigationItem.title = LocalizedString("Tokens", comment: "")
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,7 +76,7 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         searchBar.resignFirstResponder()
         searchBar.text = nil
         navigationItem.titleView = nil
-        self.navigationItem.title = NSLocalizedString("Tokens", comment: "")
+        self.navigationItem.title = LocalizedString("Tokens", comment: "")
         searchTextDidUpdate(searchText: "")
     }
     

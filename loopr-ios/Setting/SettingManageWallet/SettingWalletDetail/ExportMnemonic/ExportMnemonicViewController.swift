@@ -31,14 +31,14 @@ class ExportMnemonicViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = NSLocalizedString("Backup Mnemonic", comment: "")
+        self.navigationItem.title = LocalizedString("Backup Mnemonic", comment: "")
         setBackButton()
         
         // Setup UI
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         
-        infoTextView.text = NSLocalizedString("Loopr doesn't keep a copy of your mnemonic words. Make sure you back up these information immediately.", comment: "")
+        infoTextView.text = LocalizedString("Loopr doesn't keep a copy of your mnemonic words. Make sure you back up these information immediately.", comment: "")
         infoTextView.frame = CGRect(x: padding-3, y: 15, width: screenWidth - (padding-3) * 2, height: 110)
         infoTextView.isEditable = false
         infoTextView.textColor = UIColor.black  // UIColor.black.withAlphaComponent(0.6)
@@ -63,7 +63,7 @@ class ExportMnemonicViewController: UIViewController {
         
         // TODO: Need to consider 24 mnemonic words.
         if !appWallet.isVerified {
-            verifyNowButton.title = NSLocalizedString("Verify Now", comment: "Go to VerifyMnemonicViewController")
+            verifyNowButton.title = LocalizedString("Verify Now", comment: "Go to VerifyMnemonicViewController")
             verifyNowButton.setupRoundBlack()
             view.addSubview(verifyNowButton)
             verifyNowButton.addTarget(self, action: #selector(pressedVerifyNowButton), for: .touchUpInside)
