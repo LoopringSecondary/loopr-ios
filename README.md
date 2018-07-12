@@ -4,8 +4,10 @@
 You can download the app on
 [https://loopring.io/mobile](https://loopring.io/mobile)
 
-![](docs/screenshots/Market.png)
-![](docs/screenshots/Trade.png)
+<p align="left">
+  <img src="docs/screenshots/Market.png" width="300">
+  <img src="docs/screenshots/Trade.png" width="300">
+</p>
 
 ### Design
 Please refer
