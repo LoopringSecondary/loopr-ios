@@ -287,6 +287,9 @@
 "Private key detected" = "Private key detected";
 "Authorization message detected" = "Order Authorization message detected";
 "Login message detected" = "Login Authorization message detected";
+"Cancel message detected" = "Cancel message detected";
+"Convert message detected" = "Convert message detected";
+"P2P message detected" = "P2P message detected";
 "Undefined" = "Undefined type of QRCode";
 "Importing keystore" = "Importing keystore";
 "Failed to import address. The device has imported the address already." = "Failed to import address. The device has imported the address already.";

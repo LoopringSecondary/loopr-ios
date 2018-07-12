@@ -531,9 +531,6 @@ extension MarketDetailViewController: UIViewControllerTransitioningDelegate {
     
     func cancelOrder(order: OriginalOrder, indexPath: IndexPath) {
         SendCurrentAppWalletDataManager.shared._cancelOrder(order: order) { (txHash, error) in
-            var cancellingOrders = self.defaults.stringArray(forKey: UserDefaultsKeys.cancellingOrders.rawValue) ?? []
-            cancellingOrders.append(order.hash)
-            self.defaults.set(cancellingOrders, forKey: UserDefaultsKeys.cancellingOrders.rawValue)
             DispatchQueue.main.sync {
                 self.tableView.reloadRows(at: [indexPath], with: .fade)
                 self.tableView.reloadSections([indexPath.section], with: .fade)

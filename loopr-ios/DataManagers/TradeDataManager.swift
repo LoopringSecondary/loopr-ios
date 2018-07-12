@@ -12,7 +12,9 @@ import Geth
 class TradeDataManager {
     
     static let shared = TradeDataManager()
-    static let seperator: String = "-"
+    static let qrcodeType: String = "P2P"
+    static let qrcodeHash: String = "Hash"
+    static let qrcodeAuth: String = "Auth"
     
     var state: OrderTradeState
     var orders: [OriginalOrder] = []
@@ -93,6 +95,20 @@ class TradeDataManager {
         defaults.set(token.symbol, forKey: UserDefaultsKeys.tradeTokenB.rawValue)
     }
     
+    func handleResult(of scanning: JSON) {
+        let makerHash = scanning[TradeDataManager.qrcodeHash].stringValue
+        let makerPrivateKey = scanning[TradeDataManager.qrcodeAuth].stringValue
+        if let maker = getOrder(by: makerHash) {
+            let taker = constructTaker(from: maker)
+            maker.hash = makerHash
+            self.isTaker = true
+            self.orders = []
+            self.orders.insert(maker, at: 0)
+            self.orders.insert(taker, at: 1)
+            self.makerPrivateKey = makerPrivateKey
+        }
+    }
+    
     func getOrder(by hash: String) -> OriginalOrder? {
         var result: OriginalOrder? = nil
         let semaphore = DispatchSemaphore(value: 0)        
@@ -109,35 +125,29 @@ class TradeDataManager {
 
     func constructTaker(from maker: OriginalOrder) -> OriginalOrder {
         var buyNoMoreThanAmountB: Bool
-        var side, tokenSell, tokenBuy: String
-        var amountBuy, amountSell, lrcFee: Double
-        if maker.side == "buy" {
-            side = "sell"
-            buyNoMoreThanAmountB = false
-        } else {
-            side = "buy"
-            buyNoMoreThanAmountB = true
-        }
+        var amountBuy, amountSell: Double
+        var tokenSell, tokenBuy, market: String
+        
+        buyNoMoreThanAmountB = true
         tokenBuy = maker.tokenSell
         tokenSell = maker.tokenBuy
+        market = "\(tokenSell)/\(tokenBuy)"
         amountBuy = maker.amountSell
         amountSell = maker.amountBuy
-        
-        lrcFee = 0
         
         let delegate = RelayAPIConfiguration.delegateAddress
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         // P2P 订单 默认 1hour 过期，或增加ui调整
         let since = Int64(Date().timeIntervalSince1970)
         let until = Int64(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!.timeIntervalSince1970)
-        var order = OriginalOrder(delegate: delegate, address: address, side: side, tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: .p2pOrder)
+        var order = OriginalOrder(delegate: delegate, address: address, side: "buy", tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: 0, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: .p2pOrder, market: market)
         PlaceOrderDataManager.shared.completeOrder(&order)
         return order
     }
     
     func validate(completion: @escaping (String?, Error?) -> Void) -> Bool {
         var result = false
-        if self.orders.count == 2 {
+        if self.orders.count >= 2 {
             let maker = orders[0]
             let taker = orders[1]
             if self.makerPrivateKey != nil && maker.hash != ""

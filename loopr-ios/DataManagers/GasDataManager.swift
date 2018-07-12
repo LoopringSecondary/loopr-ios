@@ -92,17 +92,16 @@ class GasDataManager {
         }
     }
     
-    func setGasPrice(to gasPrice: Double) {
-        self.gasPrice = gasPrice
-    }
-    
     func getGasPriceInGwei() -> Double {
         return self.gasPrice
     }
+    
+    func setGasPrice(in gwei: Double) {
+        self.gasPrice = gwei
+    }
 
     func getGasPriceInWei() -> GethBigInt {
-        let price = getGasPriceInGwei()
-        let amountInWei = GethBigInt.convertGweiToWei(from: price)!
+        let amountInWei = GethBigInt.convertGweiToWei(from: self.gasPrice)!
         return amountInWei
     }
 }

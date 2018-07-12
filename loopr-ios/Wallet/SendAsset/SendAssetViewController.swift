@@ -13,7 +13,7 @@ import SVProgressHUD
 
 class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, DefaultNumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, AmountStackViewDelegate {
 
-    var asset: Asset!
+    
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
@@ -63,12 +63,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     var numericKeyboardView: DefaultNumericKeyboard!
     var activeTextFieldTag = -1
     
-    // To measure the performance. Will be removed in the future
-    var start = Date()
-    var end = Date()
+    var asset: Asset!
+    var address: String!
     
-    // TODO: should set the default value using the gwei value in GasDataManager
-    // Reference: https://ethgasstation.info
     var gasPriceInGwei: Double = GasDataManager.shared.getGasPriceInGwei()
 
     override func viewDidLoad() {
@@ -118,6 +115,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         addressTextField.font = FontConfigManager.shared.getLabelFont()
         addressTextField.theme_tintColor = GlobalPicker.textColor
         addressTextField.placeholder = LocalizedString("Enter the address", comment: "")
+        addressTextField.placeholder = self.address ?? ""
         addressTextField.contentMode = UIViewContentMode.bottom
         addressTextField.frame = CGRect(x: padding, y: tokenTotalAmountLabel.frame.maxY + padding*3, width: screenWidth-padding*2-40, height: 40)
         scrollView.addSubview(addressTextField)
@@ -421,7 +419,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     @IBAction func pressedSendButton(_ sender: Any) {
         print("start sending")
         // Show activity indicator
-        start = Date()
         hideNumericKeyboard()
         addressTextField.resignFirstResponder()
         amountTextField.resignFirstResponder()
@@ -617,10 +614,6 @@ extension SendAssetViewController {
     func completion(_ txHash: String?, _ error: Error?) {
         // Close activity indicator
         SVProgressHUD.dismiss()
-        end = Date()
-        let timeInterval1: Double = end.timeIntervalSince(start)
-        print("Time to completion in _transfer: \(timeInterval1) seconds")
-        
         guard error == nil && txHash != nil else {
             // Show toast
             DispatchQueue.main.async {                
@@ -633,8 +626,6 @@ extension SendAssetViewController {
             }
             return
         }
-        print("Result of transfer is \(txHash!)")
-        // Show toast
         DispatchQueue.main.async {
             let title = LocalizedString("Sent the transaction successfully", comment: "")
             let message = "Result of transfer is \(txHash!)"

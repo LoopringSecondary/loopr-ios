@@ -70,23 +70,23 @@ class TradeCompleteViewController: UIViewController {
         scrollView.addSubview(needBTipLabel)
         needBInfoLabel.font = FontConfigManager.shared.getLabelFont()
         needBInfoLabel.textColor = .red
+        needBInfoLabel.text = errorTipInfo[1]
         needBInfoLabel.textAlignment = .right
         needBInfoLabel.frame = CGRect(x: padding + 150, y: needBTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
         scrollView.addSubview(needBInfoLabel)
     }
     
     func setupLabels() {
-        guard let order = self.order else { return }
         exchangedLabel.font = UIFont(name: FontConfigManager.shared.getBold(), size: 40.0)
         exchangedLabel.text = LocalizedString("Completed!", comment: "")
         exchangedLabel.font = FontConfigManager.shared.getRegularFont(size: 20.0)
         exchangedInfoLabel.textColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1)
-        let text = LocalizedString("Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!", comment: "")
         if isBalanceEnough() {
-            exchangedInfoLabel.text = text
+            exchangedLabel.text = LocalizedString("Placed!", comment: "")
+            exchangedInfoLabel.text = LocalizedString("Congradualations! Your order has been submited!", comment: "")
         } else {
-            let errorInfo = LocalizedString("However, please make sure you have enough balance to complete the trade.", comment: "")
-            exchangedInfoLabel.text = text + errorInfo
+            exchangedLabel.text = LocalizedString("Attention!", comment: "")
+            exchangedInfoLabel.text = LocalizedString("Your order has not been submited! Please make sure you have enough balance to complete the trade.", comment: "")
         }
     }
     
@@ -136,11 +136,6 @@ class TradeCompleteViewController: UIViewController {
     }
     
     @IBAction func pressedDoneButton(_ sender: Any) {
-        for controller in self.navigationController!.viewControllers as Array {
-            if controller.isKind(of: TradeViewController.self) {
-                self.navigationController!.popToViewController(controller, animated: true)
-                break
-            }
-        }
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }

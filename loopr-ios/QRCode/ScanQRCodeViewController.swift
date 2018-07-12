@@ -22,6 +22,7 @@ enum QRCodeType: String {
     case convert = "Convert"
     case submitOrder = "Submit Order"
     case cancelOrder = "Cancel Order"
+    case p2pOrder = "P2P Order"
     case undefined = "Undefined"
     
     var detectedDescription: String {
@@ -32,8 +33,9 @@ enum QRCodeType: String {
         case .privateKey: return LocalizedString("Private key detected", comment: "")
         case .submitOrder: return LocalizedString("Authorization message detected", comment: "")
         case .login: return LocalizedString("Login message detected", comment: "")
-        case .cancelOrder: return ""
-        case .convert: return ""
+        case .cancelOrder: return LocalizedString("Cancel message detected", comment: "")
+        case .convert: return LocalizedString("Convert message detected", comment: "")
+        case .p2pOrder: return LocalizedString("P2P message detected", comment: "")
         case .undefined: return LocalizedString("Undefined", comment: "")
         }
     }
@@ -41,16 +43,13 @@ enum QRCodeType: String {
 
 class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
-    weak var delegate: QRCodeScanProtocol?
-    
     @IBOutlet weak var scanView: UIView!
     @IBOutlet weak var flashButton: UIButton!
     @IBOutlet weak var scanTipLabel: UILabel!
     
+    weak var delegate: QRCodeScanProtocol?
     var captureSession = AVCaptureSession()
-    
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
-    
     var timer = Timer()
     var scanning: String!
     var scanLine = UIImageView()
@@ -58,6 +57,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     
     var isTorchOn = false
     var shouldPop = true
+    var scanViewWidth: CGFloat = UIScreen.main.bounds.width
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +67,6 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         self.navigationItem.title = LocalizedString("Scan QR Code", comment: "")
         
         scanTipLabel.font = FontConfigManager.shared.getLabelFont()
-        scanTipLabel.textColor = Themes.isNight() ? .white : .black
         scanTipLabel.text = LocalizedString("Align QR Code within Frame to Scan", comment: "")
         self.flashButton.image = UIImage(named: "TorchOff")
         
@@ -160,7 +159,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     }
     
     func setupScanLine() {
-        scanQRCodeView = UIView(frame: CGRect(x: scanView.frame.size.width * 0.2, y: scanView.frame.size.height * 0.2, width: scanView.frame.size.width * 0.6, height: scanView.frame.size.width * 0.6))
+        scanQRCodeView = UIView(frame: CGRect(x: scanViewWidth * 0.2, y: scanViewWidth * 0.2, width: scanViewWidth * 0.6, height: scanViewWidth * 0.6))
         scanQRCodeView.layer.borderWidth = 1.0
         scanQRCodeView.layer.borderColor = UIColor.white.cgColor
         scanView.addSubview(scanQRCodeView)
@@ -172,10 +171,10 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     }
     
     func setupBackGroundView() {
-        let topView = UIView(frame: CGRect(x: 0, y: 0, width: scanView.frame.size.width, height: scanView.frame.size.height * 0.2))
-        let bottomView = UIView(frame: CGRect(x: 0, y: scanView.frame.size.height * 0.8, width: scanView.frame.size.width, height: scanView.frame.size.height * 0.2))
-        let leftView = UIView(frame: CGRect(x: 0, y: scanView.frame.size.height * 0.2, width: scanView.frame.size.width * 0.2, height: scanView.frame.size.width * 0.6))
-        let rightView = UIView(frame: CGRect(x: scanView.frame.size.width * 0.8, y: scanView.frame.size.height * 0.2, width: scanView.frame.size.width * 0.2, height: scanView.frame.size.width * 0.6))
+        let topView = UIView(frame: CGRect(x: 0, y: 0, width: scanViewWidth, height: scanViewWidth * 0.2))
+        let leftView = UIView(frame: CGRect(x: 0, y: topView.bottomY, width: scanViewWidth * 0.2, height: scanViewWidth * 0.6))
+        let bottomView = UIView(frame: CGRect(x: 0, y: leftView.bottomY, width: scanViewWidth, height: UIScreen.main.bounds.height))
+        let rightView = UIView(frame: CGRect(x: scanViewWidth * 0.8, y: leftView.y, width: scanViewWidth * 0.2, height: scanViewWidth * 0.6))
         
         topView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
         bottomView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
@@ -263,7 +262,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     }
     
     func qrCodeContentDetector (qrContent: String) -> QRCodeType {
-        if qrContent.starts (with: "0x") {
+        if QRCodeMethod.isAddress(content: qrContent) {
             return QRCodeType.address
         } else if QRCodeMethod.isSubmitOrder(content: qrContent) {
             return QRCodeType.submitOrder
@@ -273,13 +272,14 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             return QRCodeType.cancelOrder
         } else if QRCodeMethod.isConvert(content: qrContent) {
             return QRCodeType.convert
-        } else if QRCodeMethod.isMnemonicValid(mnemonic: qrContent) {
+        } else if QRCodeMethod.isMnemonicValid(content: qrContent) {
             return QRCodeType.mnemonic
-        } else if QRCodeMethod.isPrivateKey(key: qrContent) {
+        } else if QRCodeMethod.isPrivateKey(content: qrContent) {
             return QRCodeType.privateKey
-        } else if QRCodeMethod.isKeystore(content: qrContent) {
-            return QRCodeType.keystore
+        } else if QRCodeMethod.isP2POrder(content: qrContent) {
+            return QRCodeType.p2pOrder
+        } else {
+            return QRCodeType.undefined
         }
-        return QRCodeType.undefined
     }
 }

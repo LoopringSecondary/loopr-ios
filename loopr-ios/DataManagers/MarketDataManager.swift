@@ -34,7 +34,7 @@ class MarketDataManager {
 
     func setMarkets(newMarkets: [Market], type: MarketSwipeViewType = .all) {
         let filteredMarkets = newMarkets.filter { (market) -> Bool in
-            return market.description != "" && !blackList.contains(market.tradingPair.tradingA) && !blackList.contains(market.tradingPair.tradingB)
+            return market.description != ""
         }
         self.markets = filteredMarkets
         

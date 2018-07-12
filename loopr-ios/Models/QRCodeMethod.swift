@@ -8,31 +8,35 @@
 
 import Foundation
 
-enum QRCodeMethod: String, CustomStringConvertible {
-
+enum QRCodeMethod: String {
+    
     case create = "SetupWalletMethod.create"
     case importUsingMnemonic = "SetupWalletMethod.importUsingMnemonic"
     case importUsingKeystore = "SetupWalletMethod.importUsingKeystore"
     case importUsingPrivateKey = "SetupWalletMethod.importUsingPrivateKey"
     case authorization = "Authorization"
-
+    
     var description: String {
         switch self {
-        case .create: return "Create"
-        case .importUsingMnemonic: return "Mnemonics"
-        case .importUsingKeystore: return "Keystore"
-        case .importUsingPrivateKey: return "Private Key"
-        case .authorization: return "Authorization"
+        case .create: return LocalizedString("Create", comment: "")
+        case .importUsingMnemonic: return LocalizedString("Mnemonic", comment: "")
+        case .importUsingKeystore: return LocalizedString("Keystore", comment: "")
+        case .importUsingPrivateKey: return LocalizedString("Private Key", comment: "")
+        case .authorization: return LocalizedString("Authorization", comment: "")
         }
     }
     
     // The following methods are to choose the type quickly. No computation should be added.
-    static func isMnemonicValid(mnemonic: String) -> Bool {
-        return Mnemonic.isValid(mnemonic)
+    static func isAddress(content: String) -> Bool {
+        return content.isHexAddress()
     }
     
-    static func isPrivateKey(key: String) -> Bool {
-        let keyContent = key.uppercased()
+    static func isMnemonicValid(content: String) -> Bool {
+        return Mnemonic.isValid(content)
+    }
+    
+    static func isPrivateKey(content: String) -> Bool {
+        let keyContent = content.uppercased()
         if keyContent.count != 64 {
             return false
         }
@@ -43,6 +47,17 @@ enum QRCodeMethod: String, CustomStringConvertible {
             return false
         }
         return true
+    }
+    
+    static func isP2POrder(content: String) -> Bool {
+        if let data = content.data(using: .utf8) {
+            let json = JSON(data)
+            if json["type"] == "P2P" {
+                TradeDataManager.shared.handleResult(of: json["value"])
+                return true
+            }
+        }
+        return false
     }
     
     static func isKeystore(content: String) -> Bool {

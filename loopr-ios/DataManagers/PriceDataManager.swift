@@ -36,6 +36,14 @@ class PriceDataManager {
         return result
     }
     
+    func getPrice(of symbol: String, by amount: Double) -> String? {
+        var result: String? = nil
+        if let price = getPrice(of: symbol) {
+            result = (price * amount).currency
+        }
+        return result
+    }
+    
     func startGetPriceQuote() {
         let currency = SettingDataManager.shared.getCurrentCurrency()
         LoopringSocketIORequest.getPriceQuote(currency: currency.name)

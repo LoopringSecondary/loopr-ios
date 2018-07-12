@@ -10,18 +10,19 @@ import UIKit
 
 class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var asset: Asset?
-    var transactions: [Transaction] = []
-
-    var isLaunching: Bool = true
     
     @IBOutlet weak var tableView: UITableView!
-    private let refreshControl = UIRefreshControl()
-    
     @IBOutlet weak var receiveButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var buttonHeightLayoutConstraint: NSLayoutConstraint!
 
+    var asset: Asset?
+    var isLaunching: Bool = true
+    var transactions: [String: [Transaction]] = [:]
+    var transactionDates: [String] = []
+    let refreshControl = UIRefreshControl()
+    var contextMenuSourceView: UIView = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -91,8 +92,8 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
                     if self.isLaunching {
                         self.isLaunching = false
                     }
-                    // TODO: versions are unmatched.
-                    // self.transactions = transactions
+                    self.transactions = transactions
+                    self.transactionDates = transactions.keys.sorted(by: >)
                     self.tableView.reloadData()
                     // self.tableView.reloadSections(IndexSet(integersIn: 1...1), with: .fade)
                     self.refreshControl.endRefreshing()
@@ -132,14 +133,27 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return transactionDates.count + 1
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    	if section == 1 {
+            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 25))
+            headerView.backgroundColor = UIColor.white
+            let headerLabel = UILabel(frame: CGRect(x: 16, y: 7, width: view.frame.size.width, height: 25))
+            headerLabel.text = transactionDates[section - 1]
+            headerLabel.setSubTitleFont()
+            headerView.addSubview(headerLabel)
+            return headerView
+        }
+        return nil
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         } else if section == 1 {
-            return self.transactions.count
+            return transactions[transactionDates[section]]!.count
         } else {
             return 0
         }
@@ -178,7 +192,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
                 let nib = Bundle.main.loadNibNamed("UpdatedAssetTransactionTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? UpdatedAssetTransactionTableViewCell
             }
-            cell?.transaction = self.transactions[indexPath.row]
+            cell?.transaction = self.transactions[transactionDates[indexPath.section]]![indexPath.row]
             cell?.update()
             return cell!
         }
@@ -207,7 +221,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section >= 1 {
             tableView.deselectRow(at: indexPath, animated: true)
-            let transaction = self.transactions[indexPath.row]
+            let transaction = self.transactions[transactionDates[indexPath.section]]![indexPath.row]
             let vc = AssetTransactionDetailViewController()
             vc.transaction = transaction
             vc.hidesBottomBarWhenPushed = true

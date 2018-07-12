@@ -8,8 +8,8 @@
 
 import Foundation
 
-private let whiteList: [String] = ["BAT", "RDN", "VITE", "WETH", "RHOC", "BNT", "ZRX", "DAI", "REQ", "ARP", "OMG", "IOST", "SNT", "ETH", "LRC", "KNC"]
-public let blackList: [String] = ["BAR", "FOO", "EOS"]
+private let whiteList: [String] = ["BAT", "RDN", "VITE", "WETH", "RHOC", "BNT", "ZRX", "DAI", "REQ", "ARP", "OMG", "IOST", "SNT", "ETH", "EOS", "LRC", "KNC"]
+private let blackList: [String] = [] // ["BAR", "FOO"]
 
 class TokenDataManager {
     
@@ -40,7 +40,7 @@ class TokenDataManager {
 
     func getTokenListFromLocalStorage() {
         let defaults = UserDefaults.standard
-        tokenList = defaults.array(forKey: UserDefaultsKeys.tokenList.rawValue) as? [String] ?? ["ETH"]
+        tokenList = defaults.array(forKey: UserDefaultsKeys.tokenList.rawValue) as? [String] ?? ["ETH", "LRC"]
         tokenList = Array(NSOrderedSet(array: tokenList)) as! [String]
     }
     
@@ -98,6 +98,21 @@ class TokenDataManager {
         return tokens
     }
     
+    func getTokensExcept(for symbol: String) -> [Token] {
+        return tokens.filter({ (token) -> Bool in
+            return token.symbol.uppercased() != symbol
+        })
+    }
+    
+    func getErcTokens() -> [Token] {
+        return getTokensExcept(for: "ETH")
+    }
+    
+    func getErcTokensExcept(for symbol: String) -> [Token] {
+        return getErcTokens().filter({ (token) -> Bool in
+            return token.symbol.uppercased() != symbol
+        })
+    }
     func getTokensToAdd() -> [Token] {
         let notZeroAssets = CurrentAppWalletDataManager.shared.getAssets(isNotZero: true)
         let symbols = notZeroAssets.map { $0.symbol }

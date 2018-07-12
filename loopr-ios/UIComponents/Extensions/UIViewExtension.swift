@@ -35,6 +35,7 @@ extension UIView {
         return safeAreaInsets != .zero
     }
     
+    @IBInspectable
     var borderWidth: CGFloat {
         get {
             return self.layer.borderWidth
@@ -44,6 +45,7 @@ extension UIView {
         }
     }
     
+    @IBInspectable
     var borderColor: UIColor {
         get {
             return UIColor(cgColor: self.layer.borderColor!)
@@ -53,6 +55,7 @@ extension UIView {
         }
     }
     
+    @IBInspectable
     var cornerRadius: CGFloat {
         get {
             return self.layer.cornerRadius
@@ -63,6 +66,7 @@ extension UIView {
         }
     }
     
+    @IBInspectable
     var shadowRadius: CGFloat {
         get {
             return self.layer.shadowRadius
@@ -72,6 +76,7 @@ extension UIView {
         }
     }
     
+    @IBInspectable
     var shadowOpacity: Float {
         get {
             return self.layer.shadowOpacity
@@ -80,6 +85,27 @@ extension UIView {
             self.layer.shadowOpacity = newValue
         }
     }
+    
+    //    @IBInspectable
+    //    var shadowColor: UIColor? {
+    //        get {
+    //            return layer.shadowColor != nil ? UIColor(cgColor: layer.shadowColor!) : nil
+    //        }
+    //        set {
+    //            layer.shadowColor = newValue?.cgColor
+    //        }
+    //    }
+    //
+    //    @IBInspectable
+    //    var shadowOffset: CGSize {
+    //        get {
+    //            return layer.shadowOffset
+    //        }
+    //
+    //        set {
+    //            layer.shadowOffset = newValue
+    //        }
+    //    }
     
     // Move view
     func moveOffset(y: CGFloat) {
@@ -96,4 +122,28 @@ extension UIView {
         propertyAnimator.startAnimation()
     }
     
+    var x: CGFloat {
+        get { return self.frame.origin.x }
+        set { self.frame.origin.x = newValue }
+    }
+    
+    var y: CGFloat {
+        get { return self.frame.origin.y }
+        set { self.frame.origin.y = newValue }
+    }
+    
+    var bottomY: CGFloat {
+        get { return self.frame.origin.y + self.frame.size.height }
+        set { self.frame.origin.y = newValue - self.frame.size.height }
+    }
+    
+    var width: CGFloat {
+        get { return self.frame.size.width }
+        set { self.frame.size.width = newValue }
+    }
+    
+    var height: CGFloat {
+        get { return self.frame.size.height }
+        set { self.frame.size.height = newValue }
+    }
 }

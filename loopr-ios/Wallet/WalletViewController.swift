@@ -99,6 +99,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let banner = NotificationBanner.generate(title: "Sorry. Network error", style: .info)
                 banner.duration = 2.0
                 banner.show()
+                self.refreshControl.endRefreshing()
                 return
             }
             DispatchQueue.main.async {
@@ -192,6 +193,15 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
+        } else if type == .p2pOrder {
+            let vc = TradeConfirmationViewController()
+            vc.order = TradeDataManager.shared.orders[1]
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if type == .address {
+            let vc = SendAssetViewController()
+            vc.address = valueSent
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

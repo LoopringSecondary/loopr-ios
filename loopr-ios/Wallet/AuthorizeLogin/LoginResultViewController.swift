@@ -30,10 +30,10 @@ class LoginResultViewController: UIViewController {
         super.viewWillAppear(animated)
         if result {
             resultLabel.text = LocalizedString("Authorze Successfully", comment: "")
-            detailLabel.text = LocalizedString("Login Authorzation Successful! Please transfer to our website to continue.", comment: "")
+            detailLabel.text = LocalizedString("Authorze_Successfully", comment: "")
         } else {
             resultLabel.text = LocalizedString("Authorze Failed", comment: "")
-            detailLabel.text = LocalizedString("Login Authorzation failed! Please review your signing address and try again later.", comment: "")
+            detailLabel.text = LocalizedString("Authorze_Failed", comment: "")
         }
     }
 

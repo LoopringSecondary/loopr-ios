@@ -287,6 +287,9 @@
 "Private key detected" = "扫描到钱包私钥的二维码";
 "Authorization message detected" = "扫描到订单授权信息二维码";
 "Login message detected" = "扫描到登录授权信息二维码";
+"Cancel message detected" = "扫描到取消订单信息二维码";
+"Convert message detected" = "扫描到转换信息二维码";
+"P2P message detected" = "扫描到P2P订单信息二维码";
 "Undefined" = "扫描到未知类型的二维码";
 "Importing keystore" = "正在导入keystore";
 "Failed to import address. The device has imported the address already." = "导入失败，地址之前已经被导入。";
@@ -307,7 +310,7 @@
 "Authorze_Successfully" = "授权成功，请转至我们的网站服务，进行您的后续操作。";
 "Authorze_Failed" = "授权失败，请核对您的授权数据，确认正确后请重新尝试。";
 "Initializing the wallet" = "钱包正在初始化";
-"Do you wish to handle the qrcode?" = "您是否希望要解析该并处理二维码？";
+"Do you wish to handle the qrcode?" = "您是否希望解析该并处理二维码？";
 "Failed to import address." = "导入钱包失败";
 "Exporting keystore" = "正在导出keystore";
 "Create" = "创建";

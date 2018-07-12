@@ -235,23 +235,22 @@ class SendCurrentAppWalletDataManager {
     }
     
     func _cancelOrder(order: OriginalOrder, completion: @escaping (String?, Error?) -> Void) {
-        guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
-            return
+        if let owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
+            let timestamp = Int(Date().timeIntervalSince1970).description
+            if let signature = AuthorizeDataManager.shared._signTimestamp(timestamp: timestamp) {
+                LoopringAPIRequest.cancelOrder(owner: owner, type: .hash, orderHash: order.hash, cutoff: nil, tokenS: nil, tokenB: nil, signature: signature, timestamp: timestamp, completionHandler: completion)
+            }
         }
-        let data = _encodeOrder(order: order)
-        let gasLimit: Int64 = GasDataManager.shared.getGasLimit(by: "cancelOrder")!
-        _transfer(data: data, address: protocolAddress!, amount: GethBigInt.init(0), gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
     func _cancelAllOrders(completion: @escaping (String?, Error?) -> Void) {
-        guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
-            return
+        if let owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
+            let cutoff = Int64(Date().timeIntervalSince1970)
+            let timestamp = cutoff.description
+            if let signature = AuthorizeDataManager.shared._signTimestamp(timestamp: timestamp) {
+                LoopringAPIRequest.cancelOrder(owner: owner, type: .time, orderHash: nil, cutoff: cutoff, tokenS: nil, tokenB: nil, signature: signature, timestamp: timestamp, completionHandler: completion)
+            }
         }
-        let timestamp = GethBigInt.init(Int64(Date().timeIntervalSince1970))!
-        let transferFunction = EthFunction(name: "cancelAllOrders", inputParameters: [timestamp])
-        let data = web3swift.encode(transferFunction)
-        let gasLimit: Int64 = GasDataManager.shared.getGasLimit(by: "cancelAllOrders")!
-        _transfer(data: data, address: protocolAddress!, amount: GethBigInt.init(0), gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
     // tokena: contract addr

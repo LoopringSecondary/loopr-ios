@@ -175,7 +175,7 @@ class AuthorizeDataManager {
         guard owner.lowercased() == cancelOrder.owner.lowercased() else { completion(nil, error); return }
         let timestamp = cancelOrder.timestamp.description
         if let signature = _signTimestamp(timestamp: timestamp) {
-            LoopringAPIRequest.cancelOrder(orderHash: cancelOrder.orderHash, owner: cancelOrder.owner, type: cancelOrder.type, cutoff: cancelOrder.cutoff, tokenS: cancelOrder.tokenS, tokenB: cancelOrder.tokenB, signature: signature, timestamp: timestamp) { (_, error) in
+            LoopringAPIRequest.cancelOrder(owner: cancelOrder.owner, type: cancelOrder.type, orderHash: cancelOrder.orderHash, cutoff: cancelOrder.cutoff, tokenS: cancelOrder.tokenS, tokenB: cancelOrder.tokenB, signature: signature, timestamp: timestamp) { (_, error) in
                 guard error == nil else { completion(nil, error); return }
                 LoopringAPIRequest.notifyStatus(hash: hash, status: .accept, completionHandler: completion)
             }

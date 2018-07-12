@@ -17,8 +17,9 @@ class OrderQRCodeViewController: UIViewController {
     @IBOutlet weak var shareOrderButton: UIButton!
     @IBOutlet weak var saveToAlbumButton: UIButton!
     
-    var qrcodeImage: UIImage!
     var order: OriginalOrder?
+    var qrcodeImage: UIImage!
+    var qrcodeImageCIImage: CIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,19 +37,18 @@ class OrderQRCodeViewController: UIViewController {
     }
     
     func generateQRCode(order: OriginalOrder) {
-        if let privateKey = getOrderDataFromLocal(order: order) {
-            let hash = order.hash + TradeDataManager.seperator
-            var data = hash.data(using: .isoLatin1, allowLossyConversion: false)!
-            let authPrivateKey = privateKey.data(using: .isoLatin1, allowLossyConversion: false)!
-            data.append(authPrivateKey)
-            let ciContext = CIContext()
-            if let filter = CIFilter(name: "CIQRCodeGenerator") {
-                filter.setValue(data, forKey: "inputMessage")
-                let transform = CGAffineTransform(scaleX: 2, y: 2)
-                let upScaledImage = filter.outputImage?.transformed(by: transform)
-                let cgImage = ciContext.createCGImage(upScaledImage!, from: upScaledImage!.extent)
-                qrcodeImage = UIImage(cgImage: cgImage!)
-            }
+        var body = JSON()
+        body["type"] = JSON(TradeDataManager.qrcodeType)
+        body["value"] = [TradeDataManager.qrcodeHash: order.hash, TradeDataManager.qrcodeAuth: order.authPrivateKey]
+        let data = body.stringValue.data(using: .isoLatin1, allowLossyConversion: false)!
+        let ciContext = CIContext()
+        if let filter = CIFilter(name: "CIQRCodeGenerator") {
+            filter.setValue(data, forKey: "inputMessage")
+            let transform = CGAffineTransform(scaleX: 10, y: 10)
+            let upScaledImage = filter.outputImage?.transformed(by: transform)
+            qrcodeImageCIImage = upScaledImage!
+            let cgImage = ciContext.createCGImage(upScaledImage!, from: upScaledImage!.extent)
+            qrcodeImage = UIImage(cgImage: cgImage!)
         }
     }
     
@@ -79,8 +79,15 @@ class OrderQRCodeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        qrcodeImageView.image = qrcodeImage
         updateNavigationView(tintColor: UIColor.black, textColor: UIColor.white, statusBarStyle: .lightContent)
+        guard let order = self.order else { return }
+        generateQRCode(order: order)
+        qrcodeImageView.image = qrcodeImage
+        // Remove the blur effect
+        let scaleX = qrcodeImageView.frame.size.width / qrcodeImageCIImage.extent.size.width
+        let scaleY = qrcodeImageView.frame.size.height / qrcodeImageCIImage.extent.size.height
+        let transformedImage = qrcodeImageCIImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
+        qrcodeImageView.image = UIImage.init(ciImage: transformedImage)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

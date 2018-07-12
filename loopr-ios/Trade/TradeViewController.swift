@@ -9,7 +9,7 @@
 import UIKit
 import Geth
 
-class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, AmountStackViewDelegate {
+class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, AmountStackViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
@@ -45,15 +45,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         // Do any additional setup after loading the view.
         scrollViewButtonLayoutConstraint.constant = 0
         self.navigationItem.title = LocalizedString("Trade", comment: "")
-        
-        let qrScanButton = UIButton(type: UIButtonType.custom)
-        // TODO: smaller images.
-        qrScanButton.theme_setImage(["Scan", "Scan-white"], forState: UIControlState.normal)
-        qrScanButton.setImage(UIImage(named: "Scan")?.alpha(0.3), for: .highlighted)
-        qrScanButton.addTarget(self, action: #selector(self.pressQRCodeButton(_:)), for: UIControlEvents.touchUpInside)
-        qrScanButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        let qrCodeBarButton = UIBarButtonItem(customView: qrScanButton)
-        self.navigationItem.leftBarButtonItem = qrCodeBarButton
         
         let historyButton = UIButton(type: UIButtonType.custom)
         // TODO: smaller images.
@@ -180,21 +171,18 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     }
     
     func updateTipLabel(text: String? = nil, color: UIColor? = nil) {
-        if let text = text, let color = color {
-            estimateValueInCurrency.text = text
-            estimateValueInCurrency.textColor = color
-            if color == .red {
-                estimateValueInCurrency.shake()
-            }
+        var message: String = ""
+        let tokens = TradeDataManager.shared.tokenS.symbol
+        let title = LocalizedString("Available Balance", comment: "")
+        if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: tokens) {
+            message = "\(title) \(asset.display) \(tokens)"
         } else {
-            let tokens = TradeDataManager.shared.tokenS.symbol
-            let title = LocalizedString("Available Balance", comment: "")
-            if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
-                estimateValueInCurrency.text = "\(title) \(balance) \(tokens)"
-            } else {
-                estimateValueInCurrency.text = "\(title) 0.0 \(tokens)"
-            }
-            estimateValueInCurrency.textColor = .black
+            message = "\(title) 0.0 \(tokens)"
+        }
+        estimateValueInCurrency.text = text ?? message
+        estimateValueInCurrency.textColor = color ?? .black
+        if color == .red {
+            estimateValueInCurrency.shake()
         }
     }
     
@@ -205,11 +193,10 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         hideNumericKeyboard()
     }
     
-    @objc func pressQRCodeButton(_ sender: Any) {
-        print("Selected Scan QR code")
-        let viewController = ScanQRCodeViewController()
-        viewController.delegate = self
-        viewController.shouldPop = false
+    @objc func pressedSwitchTokenSButton(_ sender: Any) {
+        print("pressedSwitchTokenSButton")
+        let viewController = SwitchTradeTokenViewController()
+        viewController.type = .tokenS
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -221,18 +208,16 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    @objc func pressedSwitchTokenSButton(_ sender: Any) {
-        print("pressedSwitchTokenSButton")
-        let viewController = SwitchTradeTokenViewController()
-        viewController.type = .tokenS
-        viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
     @objc func pressedSwitchTokenBButton(_ sender: Any) {
         print("pressedSwitchTokenBButton")
         let viewController = SwitchTradeTokenViewController()
         viewController.type = .tokenB
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc func pressedHistoryButton(_ sender: UIButton) {
+        let viewController = P2POrderHistoryViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -249,9 +234,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             self.pushController()
         }
         if !isSellValid && estimateValueInCurrency.textColor != .red {
-            estimateValueInCurrency.text = LocalizedString("Please input a valid amount", comment: "")
-            estimateValueInCurrency.textColor = .red
-            estimateValueInCurrency.shake()
+            updateTipLabel(text: LocalizedString("Please input a valid amount", comment: ""), color: .red)
         }
         if !isBuyValid {
             availableLabel.isHidden = false
@@ -263,21 +246,24 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     func constructMaker() -> OriginalOrder? {
         var buyNoMoreThanAmountB: Bool
-        var tokenSell, tokenBuy: String
-        var amountBuy, amountSell, lrcFee: Double
+        var amountBuy, amountSell: Double
+        var tokenSell, tokenBuy, market: String
+        
         tokenBuy = TradeDataManager.shared.tokenB.symbol
         tokenSell = TradeDataManager.shared.tokenS.symbol
+        market = "\(tokenSell)/\(tokenBuy)"
         amountBuy = Double(amountBuyTextField.text!)!
         amountSell = Double(amountSellTextField.text!)!
+        
         buyNoMoreThanAmountB = false
-        
-        lrcFee = 0
-        
         let delegate = RelayAPIConfiguration.delegateAddress
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
+        
+        // P2P 订单 默认 1hour 过期，或增加ui调整
         let since = Int64(Date().timeIntervalSince1970)
         let until = Int64(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!.timeIntervalSince1970)
-        var order = OriginalOrder(delegate: delegate, address: address, side: "sell", tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: .p2pOrder)
+        
+        var order = OriginalOrder(delegate: delegate, address: address, side: "sell", tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: 0, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: .p2pOrder, market: market)
         PlaceOrderDataManager.shared.completeOrder(&order)
         return order
     }
@@ -306,21 +292,20 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         if let amounts = amountSellTextField.text, let amountSell = Double(amounts) {
             if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
                 if amountSell > balance {
-                    text = "\(title) \(balance) \(tokens)"
-                    updateTipLabel(text: text, color: .red)
+                    updateTipLabel(text: nil, color: .red)
                     return false
                 } else {
                     if let price = PriceDataManager.shared.getPrice(of: tokens) {
                         let estimateValue: Double = amountSell * price
-                        text = estimateValue.currency
-                        updateTipLabel(text: text, color: .black)
+                        text = "≈\(estimateValue.currency)"
+                        updateTipLabel(text: text)
                     }
                     return true
                 }
             } else {
                 if amountSell == 0 {
                     text = 0.0.currency
-                    updateTipLabel(text: text, color: .black)
+                    updateTipLabel(text: text)
                     return true
                 } else {
                     text = "\(title) 0.0 \(tokens)"
@@ -329,19 +314,21 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
                 }
             }
         } else {
-            if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
-                text = "\(title) \(balance) \(tokens)"
-            } else {
-                text = "\(title) 0.0 \(tokens)"
-            }
-            updateTipLabel(text: text, color: .black)
+            updateTipLabel()
             return false
         }
     }
     
     func validateAmountBuy() -> Bool {
         availableLabel.isHidden = true
-        if let amountb = amountBuyTextField.text, Double(amountb) != nil {
+        if let amountb = amountBuyTextField.text, let amountBuy = Double(amountb) {
+            let tokenb = TradeDataManager.shared.tokenB.symbol
+            if let price = PriceDataManager.shared.getPrice(of: tokenb) {
+                let estimateValue: Double = amountBuy * price
+                availableLabel.isHidden = false
+                availableLabel.textColor = .black
+                availableLabel.text = "≈\(estimateValue.currency)"
+            }
             return true
         } else {
             return false
@@ -473,24 +460,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
                 currentText = String(currentText.dropLast())
             }
             activeTextField!.text = currentText
-        }
-    }
-    
-    func setResultOfScanningQRCode(valueSent: String, type: QRCodeType) {
-        let values = valueSent.components(separatedBy: TradeDataManager.seperator)
-        guard values.count == 2 else { return }
-        let makerHash = values[0]
-        let makerPrivateKey = values[1]
-        if let maker = TradeDataManager.shared.getOrder(by: makerHash) {
-            let taker = TradeDataManager.shared.constructTaker(from: maker)
-            maker.hash = makerHash
-            TradeDataManager.shared.isTaker = true
-            TradeDataManager.shared.orders.insert(maker, at: 0)
-            TradeDataManager.shared.orders.insert(taker, at: 1)
-            TradeDataManager.shared.makerPrivateKey = makerPrivateKey
-            let vc = TradeConfirmationViewController()
-            vc.order = taker
-            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

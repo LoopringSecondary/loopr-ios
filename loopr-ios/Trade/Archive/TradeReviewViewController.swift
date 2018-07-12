@@ -17,6 +17,10 @@ class TradeReviewViewController: UIViewController {
     var tokenBView: TradeTokenView!
     var arrowRightImageView: UIImageView = UIImageView()
     var qrcodeImageView: UIImageView!
+    // To display QR code
+    var qrcodeImageCIImage: CIImage!
+    
+    // To share QR code
     var qrcodeImage: UIImage!
 
     var order: OriginalOrder?
@@ -82,20 +86,31 @@ class TradeReviewViewController: UIViewController {
         tokenBView.update(title: "You get", symbol: order.tokenBuy, amount: order.amountBuy)
         generateQRCode(order: order)
         qrcodeImageView.image = qrcodeImage
+        // Remove the blur effect
+        let scaleX = qrcodeImageView.frame.size.width / qrcodeImageCIImage.extent.size.width
+        let scaleY = qrcodeImageView.frame.size.height / qrcodeImageCIImage.extent.size.height
+        let transformedImage = qrcodeImageCIImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
+        qrcodeImageView.image = UIImage.init(ciImage: transformedImage)
     }
     
     func generateQRCode(order: OriginalOrder) {
-        let hash = order.hash + TradeDataManager.seperator
-        var data = hash.data(using: .isoLatin1, allowLossyConversion: false)!
-        let authPrivateKey = order.authPrivateKey.data(using: .isoLatin1, allowLossyConversion: false)!
-        data.append(authPrivateKey)
-        let ciContext = CIContext()
-        if let filter = CIFilter(name: "CIQRCodeGenerator") {
-            filter.setValue(data, forKey: "inputMessage")
-            let transform = CGAffineTransform(scaleX: 2, y: 2)
-            let upScaledImage = filter.outputImage?.transformed(by: transform)
-            let cgImage = ciContext.createCGImage(upScaledImage!, from: upScaledImage!.extent)
-            qrcodeImage = UIImage(cgImage: cgImage!)
+        var body = JSON()
+        body["type"] = JSON(TradeDataManager.qrcodeType)
+        body["value"] = [TradeDataManager.qrcodeHash: order.hash, TradeDataManager.qrcodeAuth: order.authPrivateKey]
+        
+        do {
+            let data = try body.rawData(options: .prettyPrinted)
+            let ciContext = CIContext()
+            if let filter = CIFilter(name: "CIQRCodeGenerator") {
+                filter.setValue(data, forKey: "inputMessage")
+                let transform = CGAffineTransform(scaleX: 10, y: 10)
+                let upScaledImage = filter.outputImage?.transformed(by: transform)
+                qrcodeImageCIImage = upScaledImage!
+                let cgImage = ciContext.createCGImage(upScaledImage!, from: upScaledImage!.extent)
+                qrcodeImage = UIImage(cgImage: cgImage!)
+            }
+        } catch let error as NSError {
+            print ("Error: \(error.domain)")
         }
     }
 

@@ -58,12 +58,22 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
         navigationItem.titleView = searchBarContainer
     }
+    
+    func getTokens() -> [Token] {
+        let tokens = TradeDataManager.shared.tokenS
+        let tokenb = TradeDataManager.shared.tokenB
+        if self.type == .tokenB {
+            return TokenDataManager.shared.getErcTokensExcept(for: tokens.symbol)
+        } else {
+            return TokenDataManager.shared.getErcTokensExcept(for: tokenb.symbol)
+        }
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
             return filteredTokens.count
         } else {
-            return TokenDataManager.shared.getTokens().count
+            return getTokens().count
         }
     }
     
@@ -82,7 +92,7 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         if isFiltering {
             token = filteredTokens[indexPath.row]
         } else {
-            token = TokenDataManager.shared.getTokens()[indexPath.row]
+            token = getTokens()[indexPath.row]
         }
         cell?.token = token
         cell?.update()
@@ -101,7 +111,7 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         if isFiltering {
             token = filteredTokens[indexPath.row]
         } else {
-            token = TokenDataManager.shared.getTokens()[indexPath.row]
+            token = getTokens()[indexPath.row]
         }
         switch type {
         case .tokenS:
