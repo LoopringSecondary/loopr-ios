@@ -509,6 +509,7 @@
 		ACCCFDCE203BEF2200B98F99 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */; };
 		ACCCFDD0203BF1D100B98F99 /* FloatLabelTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCFDCF203BF1D100B98F99 /* FloatLabelTextView.swift */; };
 		ACDA889920F5D899004FA10B /* Localizator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDA889820F5D899004FA10B /* Localizator.swift */; };
+		ACDA889C20F85F9C004FA10B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ACDA889E20F85F9C004FA10B /* InfoPlist.strings */; };
 		ACDBF101203FE73B000F0DEC /* ReorderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF100203FE73B000F0DEC /* ReorderController.swift */; };
 		ACDBF103203FE790000F0DEC /* ReorderUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF102203FE790000F0DEC /* ReorderUITableView.swift */; };
 		ACDBF105203FE7D5000F0DEC /* ReorderSnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF104203FE7D5000F0DEC /* ReorderSnapshotView.swift */; };
@@ -1033,6 +1034,8 @@
 		ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		ACCCFDCF203BF1D100B98F99 /* FloatLabelTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatLabelTextView.swift; sourceTree = "<group>"; };
 		ACDA889820F5D899004FA10B /* Localizator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizator.swift; sourceTree = "<group>"; };
+		ACDA889D20F85F9C004FA10B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		ACDA889F20F85F9E004FA10B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		ACDBF100203FE73B000F0DEC /* ReorderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderController.swift; sourceTree = "<group>"; };
 		ACDBF102203FE790000F0DEC /* ReorderUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderUITableView.swift; sourceTree = "<group>"; };
 		ACDBF104203FE7D5000F0DEC /* ReorderSnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderSnapshotView.swift; sourceTree = "<group>"; };
@@ -1793,6 +1796,7 @@
 				ACDA889720F5D86E004FA10B /* Localizable */,
 				ACE5BFA920466EFD005D75DD /* Localizable.strings */,
 				AC0C5C7A203D131200C8618D /* loopr-ios-Bridging-Header.h */,
+				ACDA889E20F85F9C004FA10B /* InfoPlist.strings */,
 				FF9C7DD9208D55F8004687AD /* Settings.bundle */,
 				FF9C7DDB208D59EA004687AD /* SettingsBundleHelper.swift */,
 			);
@@ -2647,6 +2651,7 @@
 				AC54FD6D204FC6D9007E1DEB /* Lato-LightItalic.ttf in Resources */,
 				AC31CE65205B994A00A30335 /* Roboto-Italic.ttf in Resources */,
 				9475A2EF207EF81300200155 /* OrderDetailViewController.xib in Resources */,
+				ACDA889C20F85F9C004FA10B /* InfoPlist.strings in Resources */,
 				AC68E10320C24BD900BFA837 /* ImportWalletEnterWalletNameViewController.xib in Resources */,
 				ACA677D0207D1BEC00D34A2F /* SettingChangeWalletNameViewController.xib in Resources */,
 				AC798E4C2022B93A0071D477 /* Assets.xcassets in Resources */,
@@ -3302,6 +3307,15 @@
 				ACE5BFA1204543CA005D75DD /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		ACDA889E20F85F9C004FA10B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ACDA889D20F85F9C004FA10B /* en */,
+				ACDA889F20F85F9E004FA10B /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		ACE5BFA920466EFD005D75DD /* Localizable.strings */ = {

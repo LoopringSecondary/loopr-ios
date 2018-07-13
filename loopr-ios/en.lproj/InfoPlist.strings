@@ -1,0 +1,11 @@
+/*
+ InfoPlist.strings
+ loopr-ios
+ 
+ Created by xiaoruby on 7/2/18.
+ Copyright © 2018 Loopring. All rights reserved.
+ */
+
+NSPhotoLibraryUsageDescription = "Save QR code to the photo library";
+NSCameraUsageDescription = "Use camera to scan QR Code";
+FaceIDUsageDescription = "Use face id to unlock the wallet";
