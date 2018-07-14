@@ -12,9 +12,9 @@ import UIKit
 
 enum SupportedFonts: String {
     case DIN
-    case Lato
     case OpenSans
     case Roboto
+    case Rubik
 }
 
 class FontConfigManager {
@@ -108,12 +108,12 @@ class FontConfigManager {
         switch currentFont {
         case .DIN:
             return "DINNextLTPro-Medium"
-        case .Lato:
-            return "Lato-Bold"
         case .OpenSans:
             return "OpenSans-SemiBold"
         case .Roboto:
             return "Roboto-Medium"
+        case .Rubik:
+            return "Rubik-Medium"
         }
     }
     
