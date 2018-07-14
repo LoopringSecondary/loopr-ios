@@ -16,7 +16,7 @@ enum GlobalPicker {
 
     static let barTextColors = ["#000", "#fff"]
     static let barTextColor = ThemeColorPicker.pickerWithColors(barTextColors)
-    static let barTintColor: ThemeColorPicker = ["#fff", "#000"]
+    static let barTintColor: ThemeColorPicker = ["#f5f5f5", "#000"]
     
     static let tableViewBackgroundColor: ThemeColorPicker = ["#f5f5f5", "#121212"]
 }

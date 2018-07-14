@@ -10,7 +10,6 @@ import UIKit
 
 class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var receiveButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
@@ -27,6 +26,8 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         setup()
         // Do any additional setup after loading the view.
+        setBackButton()
+
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AssetSwipeViewController: SwipeViewController {
+class AssetSwipeViewController_Archive: SwipeViewController {
     
     var asset: Asset?
 

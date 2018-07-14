@@ -18,6 +18,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
 
     var updateBalanceLabelTimer: Timer?
 
+    var baseView: UIView = UIView()
     let balanceLabel: TickerLabel = TickerLabel()
     let addressLabel: UILabel = UILabel()
 
@@ -26,11 +27,15 @@ class WalletBalanceTableViewCell: UITableViewCell {
         // Initialization code
         
         selectionStyle = .none
-        self.theme_backgroundColor = GlobalPicker.backgroundColor
+        self.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         
-        balanceLabel.frame = CGRect.init(x: 10, y: 42, width: screenWidth - 10*2, height: 36)
+        baseView.frame = CGRect(x: 10, y: 10, width: screenWidth - 10*2, height: 150 - 10*2)
+        baseView.theme_backgroundColor = GlobalPicker.backgroundColor
+        addSubview(baseView)
+        
+        balanceLabel.frame = CGRect(x: 10, y: 42, width: screenWidth - 10*2, height: 36)
         balanceLabel.setFont(FontConfigManager.shared.getRegularFont(size: 32))
         balanceLabel.animationDuration = 0.3
         balanceLabel.textAlignment = NSTextAlignment.center
@@ -42,7 +47,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
         balanceLabel.setText("\(balance)", animated: false)
         addSubview(balanceLabel)
 
-        addressLabel.frame = CGRect.init(x: screenWidth*0.25, y: balanceLabel.frame.maxY, width: screenWidth*0.5, height: 30)
+        addressLabel.frame = CGRect(x: screenWidth*0.25, y: balanceLabel.frame.maxY, width: screenWidth*0.5, height: 30)
         addressLabel.font = FontConfigManager.shared.getLabelFont(size: 14)
         addressLabel.textAlignment = .center
         addressLabel.numberOfLines = 1

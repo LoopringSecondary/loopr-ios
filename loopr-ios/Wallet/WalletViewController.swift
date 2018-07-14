@@ -20,15 +20,19 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     var contextMenuSourceView: UIView = UIView()
 
-    let buttonInNavigationBar =  UIButton()
     var numberOfRowsInSection1: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        view.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor
+        
         assetTableView.dataSource = self
         assetTableView.delegate = self
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
+        headerView.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor
+        assetTableView.tableHeaderView = headerView
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
         footerView.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor
         assetTableView.tableFooterView = footerView
@@ -42,8 +46,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         assetTableView.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor // UIStyleConfig.tableViewBackgroundColor
 
+        /*
         let qrCodebutton = UIButton(type: UIButtonType.custom)
-        
+
         // TODO: smaller images.
         qrCodebutton.theme_setImage(["QRCode-black", "QRCode-white"], forState: UIControlState.normal)
         qrCodebutton.setImage(UIImage(named: "QRCode-black")?.alpha(0.3), for: .highlighted)
@@ -51,6 +56,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         qrCodebutton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let qrCodeBarButton = UIBarButtonItem(customView: qrCodebutton)
         self.navigationItem.leftBarButtonItem = qrCodeBarButton
+        */
 
         let addBarButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
         self.navigationItem.rightBarButtonItem = addBarButton
@@ -69,17 +75,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         frame.origin.y = -frame.size.height
         let backgroundView = UIView(frame: frame)
         backgroundView.autoresizingMask = .flexibleWidth
-        backgroundView.theme_backgroundColor = GlobalPicker.backgroundColor
+        backgroundView.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor
         
         // Adding the view below the refresh control
         assetTableView.insertSubview(backgroundView, at: 0)
-        
-        buttonInNavigationBar.frame = CGRect(x: 0, y: 0, width: 400, height: 40)
-        buttonInNavigationBar.titleLabel?.font = FontConfigManager.shared.getNavigationTitleFont()
-        buttonInNavigationBar.theme_setTitleColor(["#000", "#fff"], forState: .normal)
-        buttonInNavigationBar.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
-        buttonInNavigationBar.addTarget(self, action: #selector(self.clickNavigationTitleButton(_:)), for: .touchUpInside)
-        self.navigationItem.titleView = buttonInNavigationBar
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -120,9 +119,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let cell = assetTableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? WalletBalanceTableViewCell {
             cell.startUpdateBalanceLabelTimer()
         }
-        let buttonTitle = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? LocalizedString("Wallet", comment: "")
-        buttonInNavigationBar.title = buttonTitle
-        buttonInNavigationBar.setRightImage(imageName: "Arrow-down-black", imagePaddingTop: 0, imagePaddingLeft: 20, titlePaddingRight: 0)
+        self.navigationItem.title = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? LocalizedString("Wallet", comment: "")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -294,25 +291,32 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     func numberOfSections(in tableView: UITableView) -> Int {
         if isLaunching {
-            return 1
+            return 2
         }
-        return 2
+        return 3
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        switch section {
+        case 0:
             return 1
-        } else {
+        case 1:
+            return 1
+        case 2:
             numberOfRowsInSection1 = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption().count
             return numberOfRowsInSection1
+        default:
+            return  0
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return WalletBalanceTableViewCell.getHeight()
+        } else if indexPath.section == 1 {
+            return WalletButtonTableViewCell.getHeight()
         } else {
-            return UpdatedAssetTableViewCell.getHeight()
+            return AssetTableViewCell.getHeight()
         }
     }
     
@@ -322,7 +326,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if cell == nil {
                 let nib = Bundle.main.loadNibNamed("WalletBalanceTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? WalletBalanceTableViewCell
-                cell?.selectionStyle = .none
                 cell?.delegate = self
             }
             cell?.setup()
@@ -330,14 +333,19 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 cell?.balanceLabel.setText("", animated: false)
             }
             return cell!
-        } else {
-            if let spacer = assetTableView.reorder.spacerCell(for: indexPath) {
-                return spacer
-            }
-            var cell = tableView.dequeueReusableCell(withIdentifier: UpdatedAssetTableViewCell.getCellIdentifier()) as? UpdatedAssetTableViewCell
+        } else if indexPath.section == 1 {
+            var cell = tableView.dequeueReusableCell(withIdentifier: WalletButtonTableViewCell.getCellIdentifier()) as? WalletButtonTableViewCell
             if cell == nil {
-                let nib = Bundle.main.loadNibNamed("UpdatedAssetTableViewCell", owner: self, options: nil)
-                cell = nib![0] as? UpdatedAssetTableViewCell
+                let nib = Bundle.main.loadNibNamed("WalletButtonTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? WalletButtonTableViewCell
+                // cell?.delegate = self
+            }
+            return cell!
+        } else {
+            var cell = tableView.dequeueReusableCell(withIdentifier: AssetTableViewCell.getCellIdentifier()) as? AssetTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("AssetTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? AssetTableViewCell
             }
             cell?.asset = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption()[indexPath.row]
             cell?.update()
@@ -350,12 +358,13 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            
+        
+        } else if indexPath.section == 1 {
+        
         } else {
-            
             tableView.deselectRow(at: indexPath, animated: true)
             let asset = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption()[indexPath.row]
-            let viewController = AssetSwipeViewController()
+            let viewController = AssetDetailViewController()
             viewController.asset = asset
             viewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(viewController, animated: true)
@@ -381,5 +390,5 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
-}
 
+}
