@@ -58,7 +58,7 @@ class SettingLRCFeeRatioViewController: UIViewController {
         maxLabel.text = "fast"
         view.addSubview(maxLabel)
         
-        saveButton.setupRoundBlack()
+        saveButton.setupSecondary()
         saveButton.setTitle(LocalizedString("Save", comment: ""), for: .normal)
         saveButton.frame = CGRect(x: padding, y: minLabel.frame.maxY + padding*2 + 10, width: screenWidth - padding*2, height: 47)
         saveButton.addTarget(self, action: #selector(pressedSaveButton), for: .touchUpInside)

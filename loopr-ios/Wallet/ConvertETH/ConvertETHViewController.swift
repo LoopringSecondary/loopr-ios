@@ -50,7 +50,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         convertBackgroundViewHeightConstraint.constant = 47*UIStyleConfig.scale + 15*2
 
         convertButton.title = LocalizedString("Yes, convert now!", comment: "")
-        convertButton.setupRoundBlack()
+        convertButton.setupSecondary()
 
         // Setup UI
         let screensize: CGRect = UIScreen.main.bounds

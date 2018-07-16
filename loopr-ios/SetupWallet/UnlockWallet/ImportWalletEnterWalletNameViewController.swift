@@ -67,7 +67,7 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
         view.addSubview(walletNameInfoLabel)
 
         continueButton.setTitle(LocalizedString("Enter Wallet", comment: ""), for: .normal)
-        continueButton.setupRoundBlack()
+        continueButton.setupSecondary()
         continueButton.frame = CGRect(x: padding, y: walletNameInfoLabel.frame.maxY + 50, width: screenWidth - padding * 2, height: 47)
         continueButton.addTarget(self, action: #selector(pressedContinueButton), for: .touchUpInside)
         view.addSubview(continueButton)

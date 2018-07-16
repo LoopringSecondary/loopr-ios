@@ -47,11 +47,11 @@ class SelectWalletViewController: UIViewController, UITableViewDelegate, UITable
         walletTableView.rowHeight = UITableViewAutomaticDimension
         walletTableView.tableFooterView = UIView()
         
-        createButton.setupRoundBlack(height: 40)
+        createButton.setupSecondary(height: 40)
         createButton.setTitle(LocalizedString("Create", comment: ""), for: .normal)
         createButton.addTarget(self, action: #selector(pressedCreateButton(_:)), for: UIControlEvents.touchUpInside)
         
-        importButton.setupRoundBlack(height: 40)
+        importButton.setupSecondary(height: 40)
         importButton.setTitle(LocalizedString("Import", comment: ""), for: .normal)
         importButton.addTarget(self, action: #selector(pressedImportButton(_:)), for: UIControlEvents.touchUpInside)
     }

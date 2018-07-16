@@ -29,10 +29,10 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         tableView.tableFooterView = UIView()
         
         switchWalletButton.title = LocalizedString("Switch to this Wallet", comment: "")
-        switchWalletButton.setupRoundBlack()
+        switchWalletButton.setupSecondary()
         
         shareAddressThroughSMSButton.title = LocalizedString("Share Address through SMS", comment: "")
-        shareAddressThroughSMSButton.setupRoundWhite()
+        shareAddressThroughSMSButton.setupPrimary()
     }
 
     override func viewWillAppear(_ animated: Bool) {

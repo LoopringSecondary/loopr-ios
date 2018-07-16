@@ -84,7 +84,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         scrollViewButtonLayoutConstraint.constant = 0
 
         placeOrderButton.title = LocalizedString("Place Order", comment: "")
-        placeOrderButton.setupRoundBlack()
+        placeOrderButton.setupSecondary()
         
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds

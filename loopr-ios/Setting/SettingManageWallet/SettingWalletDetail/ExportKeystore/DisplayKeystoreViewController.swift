@@ -33,7 +33,7 @@ class DisplayKeystoreViewController: UIViewController {
         keystoreTextView.isEditable = false
         
         copyButton.title = LocalizedString("Copy Keystore", comment: "")
-        copyButton.setupRoundBlack()
+        copyButton.setupSecondary()
     }
 
     override func didReceiveMemoryWarning() {

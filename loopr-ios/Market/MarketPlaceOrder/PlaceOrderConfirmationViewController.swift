@@ -81,11 +81,11 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
             confirmationButton.title = LocalizedString("Accept", comment: "")
             declineButton.isHidden = false
             declineButton.title = LocalizedString("Decline", comment: "")
-            declineButton.setupRoundWhite()
+            declineButton.setupPrimary()
         } else {
             confirmationButton.title = LocalizedString("Confirmation", comment: "")
         }
-        confirmationButton.setupRoundBlack()
+        confirmationButton.setupSecondary()
     }
   
     func setupRows(order: OriginalOrder) {

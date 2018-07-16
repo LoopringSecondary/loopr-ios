@@ -23,7 +23,7 @@ class LoginResultViewController: UIViewController {
         resultLabel.font = UIFont(name: FontConfigManager.shared.getBold(), size: 40.0)
         detailLabel.setHeaderFont()
         doneButton.title = LocalizedString("Done", comment: "")
-        doneButton.setupRoundBlack()
+        doneButton.setupSecondary()
     }
     
     override func viewWillAppear(_ animated: Bool) {

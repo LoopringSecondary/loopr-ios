@@ -75,7 +75,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         }
         sendButton.setTitleColor(.gray, for: .disabled)
         sendButton.title = LocalizedString("Send", comment: "")
-        sendButton.setupRoundBlack()
+        sendButton.setupSecondary()
         scrollViewButtonLayoutConstraint.constant = 47*UIStyleConfig.scale + 15*2
 
         if #available(iOS 11.0, *) {

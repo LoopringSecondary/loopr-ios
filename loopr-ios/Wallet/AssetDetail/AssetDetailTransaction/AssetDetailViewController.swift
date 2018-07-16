@@ -43,11 +43,11 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         // Receive button
         receiveButton.setTitle(LocalizedString("Receive", comment: ""), for: .normal)
-        receiveButton.setupRoundBlack(height: 40)
+        receiveButton.setupSecondary(height: 40)
         
         // Send button
         sendButton.setTitle(LocalizedString("Send", comment: ""), for: .normal)
-        sendButton.setupRoundBlack(height: 40)
+        sendButton.setupSecondary(height: 40)
         
         buttonHeightLayoutConstraint.constant = 40
         

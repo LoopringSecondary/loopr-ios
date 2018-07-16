@@ -22,7 +22,7 @@ class GenerateMnemonicViewController_Archive: UIViewController {
         setBackButton()
 
         backupNowButton.setTitle(LocalizedString("Backup Now", comment: ""), for: .normal)
-        backupNowButton.setupRoundBlack()
+        backupNowButton.setupSecondary()
 
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds

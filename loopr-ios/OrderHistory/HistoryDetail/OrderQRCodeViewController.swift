@@ -30,9 +30,9 @@ class OrderQRCodeViewController: UIViewController {
         contentView.layer.cornerRadius = 16
         setBackButton(image: "Back-button-white")
         saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
-        saveToAlbumButton.setupRoundBlack()
+        saveToAlbumButton.setupSecondary()
         shareOrderButton.setTitle(LocalizedString("Share the Order", comment: ""), for: .normal)
-        shareOrderButton.setupRoundBlack()
+        shareOrderButton.setupSecondary()
         generateQRCode(order: self.order!)
     }
     

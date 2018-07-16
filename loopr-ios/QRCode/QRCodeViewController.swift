@@ -30,9 +30,9 @@ class QRCodeViewController: UIViewController {
         addressLabel.theme_textColor = GlobalPicker.textColor
         addressLabel.font = FontConfigManager.shared.getRegularFont(size: 15)
         copyAddressButton.setTitle(LocalizedString("Copy Wallet Address", comment: ""), for: .normal)
-        copyAddressButton.setupRoundWhite()
+        copyAddressButton.setupPrimary()
         saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
-        saveToAlbumButton.setupRoundBlack()
+        saveToAlbumButton.setupSecondary()
         setupShareButton()
         setBackButton(image: "Back-button-white")
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address

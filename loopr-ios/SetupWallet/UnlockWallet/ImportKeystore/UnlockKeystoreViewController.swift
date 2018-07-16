@@ -27,7 +27,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
 
         unlockButton.setTitle(LocalizedString("Unlock", comment: ""), for: .normal)
-        unlockButton.setupRoundBlack()
+        unlockButton.setupSecondary()
         
         keystoreContentTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
         keystoreContentTextView.cornerRadius = 12

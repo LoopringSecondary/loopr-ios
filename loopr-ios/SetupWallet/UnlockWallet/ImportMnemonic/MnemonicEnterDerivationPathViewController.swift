@@ -39,7 +39,7 @@ class MnemonicEnterDerivationPathViewController: UIViewController, UITableViewDe
         setBackButton()
         self.navigationItem.title = LocalizedString("Select Your Wallet Type", comment: "")
 
-        nextButton.setupRoundBlack()
+        nextButton.setupSecondary()
         nextButton.setTitle(LocalizedString("Next", comment: ""), for: .normal)
         
         tableView.delegate = self

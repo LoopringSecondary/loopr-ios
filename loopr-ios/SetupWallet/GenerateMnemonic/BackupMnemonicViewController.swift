@@ -72,10 +72,10 @@ class BackupMnemonicViewController: UIViewController {
         addChildViewController(mnemonicCollectionViewController0)
 
         skipVerifyNowButton.title = LocalizedString("Skip Verification", comment: "Go to VerifyMnemonicViewController")
-        skipVerifyNowButton.setupRoundWhite()
+        skipVerifyNowButton.setupPrimary()
         
         verifyNowButton.title = LocalizedString("Verify Now", comment: "Go to VerifyMnemonicViewController")
-        verifyNowButton.setupRoundBlack()
+        verifyNowButton.setupSecondary()
     }
 
     override func didReceiveMemoryWarning() {

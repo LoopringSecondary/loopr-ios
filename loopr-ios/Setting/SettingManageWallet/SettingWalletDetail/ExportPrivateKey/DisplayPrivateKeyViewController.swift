@@ -36,7 +36,7 @@ class DisplayPrivateKeyViewController: UIViewController {
         // privateKeyTextView.isScrollEnabled = false
         
         copyButton.title = LocalizedString("Copy Private Key", comment: "")
-        copyButton.setupRoundBlack()
+        copyButton.setupSecondary()
     }
 
     override func didReceiveMemoryWarning() {

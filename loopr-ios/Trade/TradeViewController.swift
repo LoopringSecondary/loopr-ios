@@ -56,7 +56,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         self.navigationItem.rightBarButtonItem = historyBarButton
         
         nextButton.title = LocalizedString("Next", comment: "")
-        nextButton.setupRoundBlack()
+        nextButton.setupSecondary()
         
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds

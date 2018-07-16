@@ -34,11 +34,11 @@ class SetupViewController: UIViewController {
         button.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
 
         unlockWalletButton.title = LocalizedString("Import Wallet", comment: "")
-        unlockWalletButton.setupRoundWhite()
+        unlockWalletButton.setupPrimary()
         unlockWalletButton.addTarget(self, action: #selector(unlockWalletButtonPressed), for: .touchUpInside)
 
         generateWalletButton.title = LocalizedString("Generate Wallet", comment: "")
-        generateWalletButton.setupRoundBlack()
+        generateWalletButton.setupSecondary()
         generateWalletButton.addTarget(self, action: #selector(generateWalletButtonPressed), for: .touchUpInside)
         
         let screenSize: CGRect = UIScreen.main.bounds

@@ -122,7 +122,7 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
         scrollView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: walletRepeatPasswordUnderLine.frame.maxY + 50)
         view.addSubview(scrollView)
         
-        continueButton.setupRoundBlack()
+        continueButton.setupSecondary()
         continueButton.frame = CGRect(x: padding, y: scrollView.frame.maxY + 50, width: screenWidth - padding * 2, height: 47)
         continueButton.addTarget(self, action: #selector(pressedContinueButton), for: .touchUpInside)
         view.addSubview(continueButton)

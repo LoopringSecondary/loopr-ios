@@ -96,7 +96,7 @@ class TradeCompleteViewController: UIViewController {
     
     func setupButtons() {
         detailsButton.title = LocalizedString("Check Details", comment: "")
-        detailsButton.setupRoundWhite()
+        detailsButton.setupPrimary()
         if isBalanceEnough() {
             detailsButton.isEnabled = true
             detailsButton.backgroundColor = UIColor.white
@@ -106,7 +106,7 @@ class TradeCompleteViewController: UIViewController {
             detailsButton.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
         }
         doneButton.title = LocalizedString("Done", comment: "")
-        doneButton.setupRoundBlack()
+        doneButton.setupSecondary()
     }
     
     func setupErrorInfo() {

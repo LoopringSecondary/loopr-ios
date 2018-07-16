@@ -35,7 +35,7 @@ class TradeReviewViewController: UIViewController {
         self.navigationItem.title = LocalizedString("Order Detail", comment: "")
         
         shareOrderButton.title = LocalizedString("Share Order", comment: "")
-        shareOrderButton.setupRoundBlack()
+        shareOrderButton.setupSecondary()
 
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds

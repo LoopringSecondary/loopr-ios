@@ -64,7 +64,7 @@ class ExportMnemonicViewController: UIViewController {
         // TODO: Need to consider 24 mnemonic words.
         if !appWallet.isVerified {
             verifyNowButton.title = LocalizedString("Verify Now", comment: "Go to VerifyMnemonicViewController")
-            verifyNowButton.setupRoundBlack()
+            verifyNowButton.setupSecondary()
             view.addSubview(verifyNowButton)
             verifyNowButton.addTarget(self, action: #selector(pressedVerifyNowButton), for: .touchUpInside)
 

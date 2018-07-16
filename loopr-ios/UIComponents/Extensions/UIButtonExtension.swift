@@ -126,6 +126,4 @@ extension UIButton {
             contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: spacing / 2)
         }
     }
-    
 }
-

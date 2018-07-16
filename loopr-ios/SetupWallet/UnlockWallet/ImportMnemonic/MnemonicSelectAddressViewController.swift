@@ -24,7 +24,7 @@ class MnemonicSelectAddressViewController: UIViewController, UITableViewDelegate
         tableView.delegate = self
         tableView.tableFooterView = UIView()
 
-        nextButton.setupRoundBlack()
+        nextButton.setupSecondary()
         nextButton.setTitle(LocalizedString("Next", comment: ""), for: .normal)
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor

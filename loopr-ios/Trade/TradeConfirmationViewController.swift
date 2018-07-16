@@ -122,7 +122,7 @@ class TradeConfirmationViewController: UIViewController {
         
         // Button
         placeOrderButton.setTitle(LocalizedString("Place Order", comment: ""), for: .normal)
-        placeOrderButton.setupRoundBlack()
+        placeOrderButton.setupSecondary()
     }
 
     override func didReceiveMemoryWarning() {

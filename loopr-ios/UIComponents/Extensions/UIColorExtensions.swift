@@ -46,4 +46,20 @@ extension UIColor {
     class var buttonBackground: UIColor {
         return UIColor(named: "ButtonBackground")!
     }
+    
+    class var primary: [UIColor] {
+        return [.white, .black]
+    }
+    
+    class var primaryHighlight: [UIColor] {
+        return [.white, .black]
+    }
+    
+    class var secondary: [UIColor] {
+        return [UIColor.init(rgba: "FA4A6F"), UIColor.init(rgba: "CE4CE6")]
+    }
+    
+    class var secondaryHighlight: [UIColor] {
+        return [UIColor.init(rgba: "CF2549"), UIColor.init(rgba: "8C1CA0")]
+    }
 }

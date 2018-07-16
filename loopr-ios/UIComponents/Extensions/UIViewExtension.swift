@@ -8,6 +8,36 @@
 
 import UIKit
 
+typealias GradientPoints = (startPoint: CGPoint, endPoint: CGPoint)
+
+enum GradientOrientation {
+    case topRightBottomLeft
+    case topLeftBottomRight
+    case horizontal
+    case vertical
+    
+    var startPoint: CGPoint {
+        return points.startPoint
+    }
+    
+    var endPoint: CGPoint {
+        return points.endPoint
+    }
+    
+    var points: GradientPoints {
+        switch self {
+        case .topRightBottomLeft:
+            return (CGPoint(x: 0.0, y: 1.0), CGPoint(x: 1.0, y: 0.0))
+        case .topLeftBottomRight:
+            return (CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1, y: 1))
+        case .horizontal:
+            return (CGPoint(x: 0.0, y: 0.5), CGPoint(x: 1.0, y: 0.5))
+        case .vertical:
+            return (CGPoint(x: 0.0, y: 0.0), CGPoint(x: 0.0, y: 1.0))
+        }
+    }
+}
+
 extension UIView {
     
     @discardableResult
@@ -17,7 +47,7 @@ extension UIView {
             $0.leftAnchor.constraint(equalTo: $0.superview!.leftAnchor, constant: inset.left),
             $0.bottomAnchor.constraint(equalTo: $0.superview!.bottomAnchor, constant: inset.bottom),
             $0.rightAnchor.constraint(equalTo: $0.superview!.rightAnchor, constant: inset.right)
-            ]}
+        ]}
     }
     
     @discardableResult
@@ -66,47 +96,6 @@ extension UIView {
         }
     }
     
-    @IBInspectable
-    var shadowRadius: CGFloat {
-        get {
-            return self.layer.shadowRadius
-        }
-        set {
-            self.layer.shadowRadius = newValue
-        }
-    }
-    
-    @IBInspectable
-    var shadowOpacity: Float {
-        get {
-            return self.layer.shadowOpacity
-        }
-        set {
-            self.layer.shadowOpacity = newValue
-        }
-    }
-    
-    //    @IBInspectable
-    //    var shadowColor: UIColor? {
-    //        get {
-    //            return layer.shadowColor != nil ? UIColor(cgColor: layer.shadowColor!) : nil
-    //        }
-    //        set {
-    //            layer.shadowColor = newValue?.cgColor
-    //        }
-    //    }
-    //
-    //    @IBInspectable
-    //    var shadowOffset: CGSize {
-    //        get {
-    //            return layer.shadowOffset
-    //        }
-    //
-    //        set {
-    //            layer.shadowOffset = newValue
-    //        }
-    //    }
-    
     // Move view
     func moveOffset(y: CGFloat) {
         self.frame = self.frame.offsetBy(dx: 0, dy: y)
@@ -145,5 +134,14 @@ extension UIView {
     var height: CGFloat {
         get { return self.frame.size.height }
         set { self.frame.size.height = newValue }
+    }
+    
+    func applyGradient(withColors colors: [UIColor], gradientOrientation orientation: GradientOrientation = .topRightBottomLeft) {
+        let gradient = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = colors.map { $0.cgColor }
+        gradient.startPoint = orientation.startPoint
+        gradient.endPoint = orientation.endPoint
+        self.layer.insertSublayer(gradient, at: 0)
     }
 }

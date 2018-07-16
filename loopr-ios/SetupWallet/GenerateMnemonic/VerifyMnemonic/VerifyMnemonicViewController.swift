@@ -108,7 +108,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
     
     func updateButtons() {
         confirmButton.title = LocalizedString("Confirm", comment: "Go to VerifyMnemonicViewController")
-        confirmButton.setupRoundBlack()
+        confirmButton.setupSecondary()
         confirmButton.addTarget(self, action: #selector(pressedConfrimButton(_:)), for: UIControlEvents.touchUpInside)
         view.addSubview(confirmButton)
 
@@ -121,7 +121,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         // TODO: the button is not in the correct layout in iPhone 5s
         undoLastClickButton.isHidden = true
         undoLastClickButton.title = LocalizedString("Undo Last Click", comment: "")
-        undoLastClickButton.setupRoundWhite()
+        undoLastClickButton.setupPrimary()
         undoLastClickButton.alpha = 0.0
         undoLastClickButton.addTarget(self, action: #selector(pressedUndoLastClickButton(_:)), for: UIControlEvents.touchUpInside)
         view.addSubview(undoLastClickButton)
