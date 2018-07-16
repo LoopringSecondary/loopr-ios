@@ -48,18 +48,10 @@ extension UIColor {
     }
     
     class var primary: [UIColor] {
-        return [.white, .black]
-    }
-    
-    class var primaryHighlight: [UIColor] {
-        return [.white, .black]
+        return [UIColor.init(rgba: "#02DDB6"), UIColor.init(rgba: "#01B97F")]
     }
     
     class var secondary: [UIColor] {
-        return [UIColor.init(rgba: "FA4A6F"), UIColor.init(rgba: "CE4CE6")]
-    }
-    
-    class var secondaryHighlight: [UIColor] {
-        return [UIColor.init(rgba: "CF2549"), UIColor.init(rgba: "8C1CA0")]
+        return [UIColor.init(rgba: "#CE4CE6"), UIColor.init(rgba: "#FA4A6F")]
     }
 }
