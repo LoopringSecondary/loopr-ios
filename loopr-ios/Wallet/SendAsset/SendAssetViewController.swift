@@ -13,8 +13,6 @@ import SVProgressHUD
 
 class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, DefaultNumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, AmountStackViewDelegate {
 
-    
-    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var sendButtonBackgroundView: UIView!
@@ -70,10 +68,11 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
         setBackButton()
-
+        // Do any additional setup after loading the view.
+        if asset == nil {
+            asset = CurrentAppWalletDataManager.shared.getAsset(symbol: "ETH")
+        }
         sendButton.setTitleColor(.gray, for: .disabled)
         sendButton.title = LocalizedString("Send", comment: "")
         sendButton.setupRoundBlack()
@@ -108,14 +107,13 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         scrollView.addSubview(tokenTotalAmountLabel)
         
         // Second row: address
-
         addressTextField.delegate = self
         addressTextField.tag = 0
         addressTextField.keyboardType = .alphabet
         addressTextField.font = FontConfigManager.shared.getLabelFont()
         addressTextField.theme_tintColor = GlobalPicker.textColor
         addressTextField.placeholder = LocalizedString("Enter the address", comment: "")
-        addressTextField.placeholder = self.address ?? ""
+        addressTextField.text = self.address ?? ""
         addressTextField.contentMode = UIViewContentMode.bottom
         addressTextField.frame = CGRect(x: padding, y: tokenTotalAmountLabel.frame.maxY + padding*3, width: screenWidth-padding*2-40, height: 40)
         scrollView.addSubview(addressTextField)
@@ -136,7 +134,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         scrollView.addSubview(addressInfoLabel)
         
         // Third row: Amount
-        
         amountTextField.delegate = self
         amountTextField.inputView = UIView()
         amountTextField.tag = 1
