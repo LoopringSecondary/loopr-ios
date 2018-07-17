@@ -277,7 +277,6 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
                     }, completion: { (_) in
                         self.scrollView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.continueButton.frame.minY)
                     })
-                    
                     isKeyboardShown = true
                 }
             } else {

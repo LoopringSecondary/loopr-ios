@@ -16,20 +16,13 @@ class MainTabController: ESTabBarController {
         
         // Do any additional setup after loading the view.
         let v1 = WalletNavigationViewController()
-        let v2 = MarketNavigationViewController()
-        let v3 = TradeNavigationViewController()
-        let v4 = SettingNavigationViewController()
-        // let v5 = H5DexNavigationController()
+        let v2 = TradeNavigationViewController()
+        let v3 = SettingNavigationViewController()
         
-        v1.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Assets"))
-        v2.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Market"))
-        v3.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Trade"))
-        let settingTabItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Settings"))
-        settingTabItem.contentView?.imageView.contentMode = .center
-        v4.tabBarItem = settingTabItem
-        // v5.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: LocalizedString("Market", comment: ""), image: UIImage(named: "Market"))
-
-        viewControllers = [v1, v2, v3, v4]
+        v1.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Assets"), selectedImage: UIImage(named: "Assets-selected"))
+        v2.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Trade"), selectedImage: UIImage(named: "Trade-selected"))
+        v3.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Settings"), selectedImage: UIImage(named: "Settings-selected"))
+        viewControllers = [v1, v2, v3]
     }
     
     override func viewWillLayoutSubviews() {

@@ -15,8 +15,8 @@ extension UIButton {
         setTitleColor(UIColor.white, for: .normal)
         setTitleColor(UIColor.init(white: 0.5, alpha: 1), for: .highlighted)
         titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
-        applyGradient(withColors: UIColor.primary)
         layer.cornerRadius = height * 0.5
+        applyGradientWithShadow(withColors: UIColor.primary)
     }
     
     func setupSecondary(height: CGFloat = 48) {
@@ -24,7 +24,7 @@ extension UIButton {
         setTitleColor(UIColor.white, for: .normal)
         setTitleColor(UIColor.init(white: 0.5, alpha: 1), for: .highlighted)
         titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
-        applyGradient(withColors: UIColor.secondary)
         layer.cornerRadius = height * 0.5
+        applyGradientWithShadow(withColors: UIColor.secondary)
     }
 }
