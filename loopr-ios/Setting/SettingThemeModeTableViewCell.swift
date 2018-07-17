@@ -17,7 +17,7 @@ class SettingThemeModeTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        if Themes.isNight() {
+        if Themes.isDark() {
             nightModeSwitch.setOn(true, animated: false)
         } else {
             nightModeSwitch.setOn(false, animated: false)
@@ -29,10 +29,10 @@ class SettingThemeModeTableViewCell: UITableViewCell {
     @IBAction func toggleNightModeSwitch(_ sender: Any) {
         if nightModeSwitch.isOn {
             print("toggleNightModeSwitch ON")
-            Themes.switchTo(theme: .night)
+            Themes.switchTo(theme: .dark)
         } else {
             print ("toggleNightModeSwitch OFF")
-            Themes.switchTo(theme: .day)
+            Themes.switchTo(theme: .light)
         }
     }
     

@@ -63,7 +63,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
     }
 
     private func update() {
-        balanceLabel.textColor = Themes.isNight() ? UIColor.white : UIColor.black
+        balanceLabel.textColor = Themes.isDark() ? UIColor.white : UIColor.black
         addressLabel.theme_textColor = GlobalPicker.textLightGreyColor
     }
     

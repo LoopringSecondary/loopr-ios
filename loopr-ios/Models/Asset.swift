@@ -31,8 +31,8 @@ class Asset: CustomStringConvertible, Equatable {
         self.total = 0.0
         self.currency = Double(0).currency
         self.symbol = json["symbol"].string ?? ""
-        self.icon = UIImage(named: self.symbol) ?? nil
         self.name = TokenDataManager.shared.getTokenBySymbol(symbol)?.source ?? ""
+        self.icon = UIImage(named: "Token-\(self.symbol)-\(Themes.getTheme())") ?? nil
         self.description = self.name
         if let balance = Asset.getAmount(of: symbol, fromWeiAmount: json["balance"].stringValue) {
             self.balance = balance
@@ -49,12 +49,12 @@ class Asset: CustomStringConvertible, Equatable {
         self.name = ""
         self.enable = true
         self.description = self.name
-        self.icon = UIImage(named: self.symbol) ?? nil
         self.balance = 0.0
         self.allowance = 0.0
         self.display = "0.0"
         self.total = 0.0
         self.currency = Double(0).currency
+        self.icon = UIImage(named: "Token-\(self.symbol)-\(Themes.getTheme())") ?? nil
     }
     
     static func getLength(of symbol: String) -> Int? {

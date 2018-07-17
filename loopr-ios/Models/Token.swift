@@ -17,8 +17,7 @@ class Token: Equatable {
     let decimals: Int
     let protocol_value: String
     let deny: Bool
-    
-    // TODO: not sure about whether we need icon in Token
+
     var icon: UIImage?
 
     init(json: JSON) {
@@ -28,7 +27,7 @@ class Token: Equatable {
         self.decimals = json["decimals"].stringValue.count - 1
         self.protocol_value = json["protocol"].stringValue
         self.deny = json["deny"].bool ?? false
-        self.icon = UIImage(named: self.symbol)
+        self.icon = UIImage(named: "Token-\(self.symbol)-\(Themes.getTheme())")
         // TODO: ETH doesn't have a protocol value in tokens.json
         if symbol == "ETH" {
             print(protocol_value)

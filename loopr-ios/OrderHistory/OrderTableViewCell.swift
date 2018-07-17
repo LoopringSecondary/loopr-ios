@@ -134,8 +134,8 @@ class OrderTableViewCell: UITableViewCell {
             percent = order.dealtAmountB / order.originalOrder.amountBuy
         }
         filledPieChart.theme_backgroundColor = GlobalPicker.backgroundColor
-        filledPieChart.strokeColor = Themes.isNight() ? UIColor.white.cgColor : UIColor.black.cgColor
-        filledPieChart.textColor = Themes.isNight() ? UIColor.white : UIColor.black
+        filledPieChart.strokeColor = Themes.isDark() ? UIColor.white.cgColor : UIColor.black.cgColor
+        filledPieChart.textColor = Themes.isDark() ? UIColor.white : UIColor.black
         filledPieChart.textFont = UIFont(name: FontConfigManager.shared.getLight(), size: 10.0)!
         filledPieChart.desiredLineWidth = 1
         filledPieChart.percentage = CGFloat(percent)

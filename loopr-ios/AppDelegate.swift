@@ -102,12 +102,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBar.theme_tintColor = GlobalPicker.barTextColor
         navigationBar.theme_barTintColor = GlobalPicker.barTintColor
         navigationBar.theme_titleTextAttributes = ThemeDictionaryPicker.pickerWithAttributes(titleAttributes)
-        
-        // tab bar
-        let tabBar = UITabBar.appearance()
-        
-        tabBar.theme_tintColor = GlobalPicker.barTextColor
-        tabBar.theme_barTintColor = GlobalPicker.barTintColor
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

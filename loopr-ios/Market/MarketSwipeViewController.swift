@@ -111,7 +111,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
             self.searchBar.text = ""
         }
         // TODO: no reload data in the viewWillAppear. Need to implement the night mode.
-        if Themes.isNight() {
+        if Themes.isDark() {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.white
             // swipeView.reloadData(options: options, default: swipeView.currentIndex)

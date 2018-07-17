@@ -33,7 +33,7 @@ class AssetBalanceTableViewCell: UITableViewCell {
         balanceLabel.textAlignment = NSTextAlignment.center
         balanceLabel.initializeLabel()
         balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
-        balanceLabel.textColor = Themes.isNight() ? UIColor.white : UIStyleConfig.defaultTintColor
+        balanceLabel.textColor = Themes.isDark() ? UIColor.white : UIStyleConfig.defaultTintColor
         balanceLabel.setFont(FontConfigManager.shared.getRegularFont(size: 23))
         addSubview(balanceLabel)
         

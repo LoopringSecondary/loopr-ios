@@ -109,8 +109,8 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
             percent = order.dealtAmountB / order.originalOrder.amountBuy
         }
         filledPieChart.backgroundColor = UIColor.white
-        filledPieChart.strokeColor = Themes.isNight() ? UIColor.white.cgColor : UIColor.black.cgColor
-        filledPieChart.textColor = Themes.isNight() ? UIColor.white : UIColor.black
+        filledPieChart.strokeColor = Themes.isDark() ? UIColor.white.cgColor : UIColor.black.cgColor
+        filledPieChart.textColor = Themes.isDark() ? UIColor.white : UIColor.black
         filledPieChart.textFont = UIFont(name: FontConfigManager.shared.getLight(), size: 20.0)!
         filledPieChart.desiredLineWidth = 1.5
         filledPieChart.percentage = CGFloat(percent)
@@ -136,7 +136,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
             }
         }
         amountLabel.font = FontConfigManager.shared.getRegularFont(size: 40)
-        amountLabel.textColor = Themes.isNight() ? UIColor.white : UIColor.black
+        amountLabel.textColor = Themes.isDark() ? UIColor.white : UIColor.black
         displayLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 20)
         displayLabel.textColor = UIColor.init(white: 0, alpha: 0.6)
     }

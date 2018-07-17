@@ -144,7 +144,7 @@ class AssetTransactionDetailViewController: UIViewController {
         titleLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
         amountLabel.font = FontConfigManager.shared.getRegularFont(size: 27)
         
-        amountLabel.textColor = Themes.isNight() ? UIColor.white : UIColor.black
+        amountLabel.textColor = Themes.isDark() ? UIColor.white : UIColor.black
         amountInCurrencyLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 20)
         amountInCurrencyLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
     }
@@ -186,7 +186,7 @@ class AssetTransactionDetailViewController: UIViewController {
     
     func update() {
         if let transaction = transaction {
-            if let image = UIImage(named: "Transaction_\(transaction.type.rawValue)_detail") {
+            if let image = UIImage(named: "Transaction-\(transaction.type.rawValue)") {
                 typeImageView.image = image
             }
             amountLabel.text = transaction.value + " " + transaction.symbol

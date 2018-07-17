@@ -17,7 +17,6 @@ class WalletNavigationViewController: UINavigationController {
         navigationBar.shadowImage = UIImage()
         let viewController = WalletViewController(nibName: nil, bundle: nil)
         self.setViewControllers([viewController], animated: false)
-        
         view.theme_backgroundColor = ["#fff", "#000"]
     }
     

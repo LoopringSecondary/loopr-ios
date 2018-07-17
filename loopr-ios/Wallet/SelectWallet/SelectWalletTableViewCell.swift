@@ -69,7 +69,7 @@ class SelectWalletTableViewCell: FoldingCell, UICollectionViewDataSource, UIColl
         enterButton.layer.borderWidth = 1
         enterButton.layer.cornerRadius = 18
         enterButton.titleLabel?.font = FontConfigManager.shared.getRegularFont()
-        enterButton.titleColor = Themes.isNight() ? .white : .black
+        enterButton.titleColor = Themes.isDark() ? .white : .black
         enterButton.layer.borderColor = UIColor.init(rgba: "#A5A5A5").cgColor
     }
 

@@ -13,10 +13,13 @@ class TabBarItemBasicContentView: ESTabBarItemContentView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        renderingMode = .alwaysOriginal
+        imageView.contentMode = .center
+        
         // textColor = UIColor.black
-        highlightTextColor = Themes.isNight() ? UIColor.white : UIColor.black
+        highlightTextColor = Themes.isDark() ? UIColor.white : UIColor.black
         // iconColor = UIColor.black
-        highlightIconColor = Themes.isNight() ? UIColor.white : UIColor.black
+        highlightIconColor = Themes.isDark() ? UIColor.white : UIColor.black
     }
     
     public required init?(coder aDecoder: NSCoder) {

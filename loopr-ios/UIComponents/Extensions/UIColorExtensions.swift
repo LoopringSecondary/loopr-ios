@@ -54,4 +54,36 @@ extension UIColor {
     class var secondary: [UIColor] {
         return [UIColor.init(rgba: "#CE4CE6"), UIColor.init(rgba: "#FA4A6F")]
     }
+    
+    class var mute: UIColor {
+        return UIColor(named: "Color-mute")!
+    }
+    
+    class var dark1: UIColor {
+        return UIColor(named: "Color-dark1")!
+    }
+    
+    class var dark2: UIColor {
+        return UIColor(named: "Color-dark2")!
+    }
+    
+    class var dark3: UIColor {
+        return UIColor(named: "Color-dark3")!
+    }
+    
+    class var dark4: UIColor {
+        return UIColor(named: "Color-dark4")!
+    }
+    
+    class var dark5: UIColor {
+        return UIColor(named: "Color-dark5")!
+    }
+    
+    class var up: UIColor {
+        return UIColor(named: "Color-up")!
+    }
+    
+    class var down: UIColor {
+        return UIColor(named: "Color-down")!
+    }
 }

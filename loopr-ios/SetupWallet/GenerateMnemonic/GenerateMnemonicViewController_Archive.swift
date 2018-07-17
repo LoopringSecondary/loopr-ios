@@ -33,7 +33,7 @@ class GenerateMnemonicViewController_Archive: UIViewController {
         let padding: CGFloat = 15
         
         congratulationIconView.frame = CGRect(x: 15, y: originY+7, width: 22, height: 22)
-        congratulationIconView.image = UIImage(named: "CongratulationIcon")
+        congratulationIconView.image = UIImage(named: "Checked")
         view.addSubview(congratulationIconView)
 
         congratulationsLabel.frame = CGRect(x: 45, y: originY, width: screenWidth - padding * 2, height: 36)

@@ -14,15 +14,19 @@ class MainTabController: ESTabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tabBar.barTintColor = Themes.isDark() ? .dark3 : .white
+        
         // Do any additional setup after loading the view.
         let v1 = WalletNavigationViewController()
-        let v2 = TradeNavigationViewController()
-        let v3 = SettingNavigationViewController()
+        let v2 = MarketNavigationViewController()
+        let v3 = TradeNavigationViewController()
+        let v4 = SettingNavigationViewController()
         
         v1.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Assets"), selectedImage: UIImage(named: "Assets-selected"))
         v2.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Trade"), selectedImage: UIImage(named: "Trade-selected"))
-        v3.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Settings"), selectedImage: UIImage(named: "Settings-selected"))
-        viewControllers = [v1, v2, v3]
+        v3.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Trade"), selectedImage: UIImage(named: "Trade-selected"))
+        v4.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Settings"), selectedImage: UIImage(named: "Settings-selected"))
+        viewControllers = [v1, v2, v3, v4]
     }
     
     override func viewWillLayoutSubviews() {

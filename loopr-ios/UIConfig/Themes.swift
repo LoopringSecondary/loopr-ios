@@ -13,8 +13,8 @@ private let defaults = UserDefaults.standard
 
 enum Themes: Int {
     
-    case day = 0
-    case night = 1
+    case light = 0
+    case dark = 1
     
     // MARK: -
     
@@ -22,11 +22,11 @@ enum Themes: Int {
         // TODO: Remove the force wrap
         let theme = Themes(rawValue: ThemeManager.currentThemeIndex)
         guard theme != nil else {
-            return Themes.day
+            return Themes.light
         }
         return theme!
     }
-    static var before = Themes.day
+    static var before = Themes.light
     
     // MARK: - Switch Theme
     
@@ -35,7 +35,6 @@ enum Themes: Int {
         guard theme != nil else {
             return
         }
-        
         switchTo(theme: theme!)
     }
     
@@ -53,12 +52,16 @@ enum Themes: Int {
     
     // MARK: - Switch Night
     
-    static func switchNight(isToNight: Bool) {
-        switchTo(theme: isToNight ? .night : before)
+    static func switchDark(isToDark: Bool) {
+        switchTo(theme: isToDark ? .dark : before)
     }
     
-    static func isNight() -> Bool {
-        return current == .night
+    static func isDark() -> Bool {
+        return current == .dark
+    }
+    
+    static func getTheme() -> String {
+        return isDark() ? "dark" : "light"
     }
     
     // MARK: - Save & Restore
