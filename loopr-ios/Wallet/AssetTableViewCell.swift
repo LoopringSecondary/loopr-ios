@@ -32,7 +32,7 @@ class AssetTableViewCell: UITableViewCell {
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
 
-        theme_backgroundColor = GlobalPicker.tableViewBackgroundColor // UIStyleConfig.tableViewBackgroundColor
+        theme_backgroundColor = GlobalPicker.tableViewBackgroundColor
         
         baseView.theme_backgroundColor = GlobalPicker.backgroundColor
         baseView.frame = CGRect.init(x: 10, y: 10, width: screenWidth - 10*2, height: AssetTableViewCell.getHeight() - 10)
@@ -79,7 +79,7 @@ class AssetTableViewCell: UITableViewCell {
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         if highlighted {
-            baseView.backgroundColor = UIStyleConfig.tableCellSelectedBackgroundColor
+            baseView.theme_backgroundColor = GlobalPicker.textHighLightColor
         } else {
             baseView.theme_backgroundColor = GlobalPicker.backgroundColor
         }
@@ -97,7 +97,6 @@ class AssetTableViewCell: UITableViewCell {
                 iconView.symbolLabel.text = asset.symbol
                 iconImageView.isHidden = true
             }
-            
             symbolLabel.text = asset.symbol
             nameLabel.text = asset.name
             balanceLabel.text = asset.display

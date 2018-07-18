@@ -337,7 +337,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if cell == nil {
                 let nib = Bundle.main.loadNibNamed("WalletButtonTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? WalletButtonTableViewCell
-                // cell?.delegate = self
             }
             return cell!
         } else {
