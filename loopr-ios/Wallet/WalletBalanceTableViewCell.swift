@@ -17,8 +17,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
     weak var delegate: WalletBalanceTableViewCellDelegate?
 
     var updateBalanceLabelTimer: Timer?
-
-    var baseView: UIView = UIView()
+    var baseView: UIImageView = UIImageView()
     let balanceLabel: TickerLabel = TickerLabel()
     let addressLabel: UILabel = UILabel()
 
@@ -31,16 +30,16 @@ class WalletBalanceTableViewCell: UITableViewCell {
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         
-        baseView.frame = CGRect(x: 10, y: 10, width: screenWidth - 10*2, height: 150 - 10*2)
-        baseView.theme_backgroundColor = GlobalPicker.backgroundColor
+        baseView.frame = CGRect(x: 10, y: 10, width: screenWidth - 20, height: 160 - 20)
+        baseView.image = UIImage(named: "Header-background")
+        baseView.contentMode = .scaleToFill
         addSubview(baseView)
         
-        balanceLabel.frame = CGRect(x: 10, y: 42, width: screenWidth - 10*2, height: 36)
+        balanceLabel.frame = CGRect(x: 10, y: 40, width: screenWidth - 20, height: 36)
         balanceLabel.setFont(FontConfigManager.shared.getRegularFont(size: 32))
         balanceLabel.animationDuration = 0.3
         balanceLabel.textAlignment = NSTextAlignment.center
         balanceLabel.initializeLabel()
-        balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
 
         var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
         balance.insert(" ", at: balance.index(after: balance.startIndex))
@@ -58,7 +57,6 @@ class WalletBalanceTableViewCell: UITableViewCell {
         if updateBalanceLabelTimer == nil {
             updateBalanceLabelTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
         }
-        
         update()
     }
 

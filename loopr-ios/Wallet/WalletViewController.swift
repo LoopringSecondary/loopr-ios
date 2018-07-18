@@ -17,9 +17,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var isLaunching: Bool = true
     var isReordering: Bool = false
     var isListeningSocketIO: Bool = false
-
     var contextMenuSourceView: UIView = UIView()
-
     var numberOfRowsInSection1: Int = 0
     
     override func viewDidLoad() {
@@ -32,6 +30,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.delegate = self
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
         headerView.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor
+        
         assetTableView.tableHeaderView = headerView
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
         footerView.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor

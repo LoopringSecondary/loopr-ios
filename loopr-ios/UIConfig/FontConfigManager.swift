@@ -22,7 +22,7 @@ class FontConfigManager {
     static let shared = FontConfigManager()
     
     // To change the font in the app
-    var currentFont: SupportedFonts = .OpenSans
+    var currentFont: SupportedFonts = .Rubik
     
     private init() {
         // currentFont = getCurrentFontFromLocalStorage()

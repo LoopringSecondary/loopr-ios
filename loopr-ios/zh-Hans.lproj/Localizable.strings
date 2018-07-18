@@ -15,6 +15,7 @@
 "Received" = "转入";
 "Send" = "转出";
 "Sent" = "转出";
+"Scan" = "扫描";
 "Language" = "语言";
 "Create a new wallet" = "创建钱包";
 "Manage Wallet" = "管理钱包";
