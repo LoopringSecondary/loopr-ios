@@ -13,19 +13,19 @@ extension UILabel {
     
     func setTitleFont() {
         let font = FontConfigManager.shared.getTitleFont()
-        self.theme_textColor = GlobalPicker.textColor
+        self.theme_textColor = ["#000000cc", "#ffffffcc"]
         self.font = font
     }
     
     func setSubTitleFont() {
         let font = FontConfigManager.shared.getSubtitleFont()
-        self.theme_textColor = ["#00000099", "#fff"]
+        self.theme_textColor = ["#00000099", "#ffffff66"]
         self.font = font
     }
     
     func setHeaderFont() {
         let font = FontConfigManager.shared.getHeaderFont()
-        self.theme_textColor = GlobalPicker.textColor
+        self.theme_textColor = ["#000000cc", "#ffffffcc"]
         self.font = font
     }
     
@@ -33,7 +33,7 @@ extension UILabel {
         if let text = self.text {
             let range = (text as NSString).range(of: "/\\w*\\d*", options: .regularExpression)
             let attribute = NSMutableAttributedString.init(string: text)
-            attribute.addAttributes([NSAttributedStringKey.foregroundColor: UIColor.subtitle], range: range)
+            attribute.addAttributes([NSAttributedStringKey.foregroundColor: UIColor.dark3], range: range)
             self.attributedText = attribute
         }
     }

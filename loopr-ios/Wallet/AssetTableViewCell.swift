@@ -33,11 +33,13 @@ class AssetTableViewCell: UITableViewCell {
         let screenWidth = screensize.width
 
         theme_backgroundColor = GlobalPicker.tableViewBackgroundColor // UIStyleConfig.tableViewBackgroundColor
+        
         baseView.theme_backgroundColor = GlobalPicker.backgroundColor
         baseView.frame = CGRect.init(x: 10, y: 10, width: screenWidth - 10*2, height: AssetTableViewCell.getHeight() - 10)
+        baseView.cornerRadius = 8
         addSubview(baseView)
         
-        iconImageView.frame = CGRect.init(x: 15, y: 22, width: 36, height: 36)
+        iconImageView.frame = CGRect.init(x: 16, y: 22, width: 36, height: 36)
         iconImageView.contentMode = .scaleAspectFit
         baseView.addSubview(iconImageView)
         
@@ -45,14 +47,14 @@ class AssetTableViewCell: UITableViewCell {
         iconView.backgroundColor = UIColor.clear
         baseView.addSubview(iconView)
         
-        symbolLabel.frame = CGRect.init(x: 60, y: 22-3, width: 200, height: 35)
+        symbolLabel.frame = CGRect.init(x: 64, y: 22-3, width: 200, height: 35)
         symbolLabel.setTitleFont()
         symbolLabel.text = "ETHETHETHETHETHETHETH"  // Prototype the label size. Will be updated very soon.
         symbolLabel.sizeToFit()
         symbolLabel.text = ""
         baseView.addSubview(symbolLabel)
         
-        nameLabel.frame = CGRect.init(x: symbolLabel.frame.minX, y: 44-3, width: 200, height: 27)
+        nameLabel.frame = CGRect.init(x: symbolLabel.frame.minX, y: 44, width: 200, height: 27)
         nameLabel.setSubTitleFont()
         nameLabel.text = "ETHETHETHETHETHETHETH"
         nameLabel.sizeToFit()
@@ -70,7 +72,7 @@ class AssetTableViewCell: UITableViewCell {
         baseView.addSubview(amountLabel)
         
         disclosureIndicator.frame = CGRect.init(x: baseView.frame.width - 36/2 - 16/2, y: (baseView.frame.height-16)/2, width: 16, height: 16)
-        disclosureIndicator.image = UIImage.init(named: "Default_disclosureIndicator")
+        disclosureIndicator.theme_image = GlobalPicker.indicator
         disclosureIndicator.contentMode = .center
         baseView.addSubview(disclosureIndicator)
     }

@@ -34,7 +34,7 @@ class QRCodeViewController: UIViewController {
         saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
         saveToAlbumButton.setupSecondary()
         setupShareButton()
-        setBackButton(image: "Back-button-white")
+        setBackButton()
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
         addressLabel.text = address
         let data = address?.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)

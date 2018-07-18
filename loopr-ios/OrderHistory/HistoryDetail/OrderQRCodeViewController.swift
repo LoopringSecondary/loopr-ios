@@ -28,7 +28,7 @@ class OrderQRCodeViewController: UIViewController {
         self.navigationItem.title = LocalizedString("Order QR Code", comment: "")
         view.theme_backgroundColor = GlobalPicker.textColor
         contentView.layer.cornerRadius = 16
-        setBackButton(image: "Back-button-white")
+        setBackButton()
         saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
         saveToAlbumButton.setupSecondary()
         shareOrderButton.setTitle(LocalizedString("Share the Order", comment: ""), for: .normal)

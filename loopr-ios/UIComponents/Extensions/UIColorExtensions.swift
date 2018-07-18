@@ -35,14 +35,6 @@ extension UIColor {
         return UIColor(red: results[0], green: results[1], blue: results[2], alpha: results[3])
     }
     
-    class var subtitle: UIColor {
-        return UIColor(named: "Subtitle")!
-    }
-    
-    class var seperator: UIColor {
-        return UIColor(named: "Seperator")!
-    }
-    
     class var buttonBackground: UIColor {
         return UIColor(named: "ButtonBackground")!
     }

@@ -66,44 +66,6 @@ class FontConfigManager {
         return "\(currentFont.rawValue)-Regular"
     }
     
-    func getLight() -> String {
-        if currentFont == .DIN {
-            return "DINNextLTPro-Light"
-        }
-        return "\(currentFont.rawValue)-Light"
-    }
-
-    func getRegular() -> String {
-        if currentFont == .DIN {
-            return "DINNextLTPro-Regular"
-        }
-        return "\(currentFont.rawValue)-Regular"
-    }
-    
-    func getRegularFont(size: CGFloat = 17.0) -> UIFont {
-        let fontSize = size * UIStyleConfig.scale
-        if currentFont == .DIN {
-            return UIFont(name: "DINNextLTPro-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
-        }
-        return UIFont(name: "\(currentFont.rawValue)-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
-    }
-    
-    func getNavigationTitleFont() -> UIFont {
-        return UIFont(name: getMedium(), size: 17)!
-    }
-    
-    func getHeaderFont() -> UIFont {
-        return getRegularFont(size: 21)
-    }
-    
-    func getTitleFont() -> UIFont {
-        return getRegularFont()
-    }
-    
-    func getSubtitleFont() -> UIFont {
-        return getRegularFont(size: 13)
-    }
-    
     func getMedium() -> String {
         switch currentFont {
         case .DIN:
@@ -117,27 +79,73 @@ class FontConfigManager {
         }
     }
     
+    func getMediumFont(size: CGFloat = 16.0) -> UIFont {
+        let fontName = getMedium()
+        let fontSize = size * UIStyleConfig.scale
+        return UIFont(name: fontName, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
+    }
+    
+    func getLight() -> String {
+        if currentFont == .DIN {
+            return "DINNextLTPro-Light"
+        }
+        return "\(currentFont.rawValue)-Light"
+    }
+    
+    func getLightFont(size: CGFloat = 16.0) -> UIFont {
+        let fontName = getLight()
+        let fontSize = size * UIStyleConfig.scale
+        return UIFont(name: fontName, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
+    }
+
+    func getRegular() -> String {
+        if currentFont == .DIN {
+            return "DINNextLTPro-Regular"
+        }
+        return "\(currentFont.rawValue)-Regular"
+    }
+    
+    func getRegularFont(size: CGFloat = 16.0) -> UIFont {
+        let fontName = getRegular()
+        let fontSize = size * UIStyleConfig.scale
+        return UIFont(name: fontName, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
+    }
+    
     func getBold() -> String {
         if currentFont == .DIN {
             return "DIN-Bold"
         }
         return "\(currentFont.rawValue)-Bold"
     }
-
-    func getLabelFont(size: CGFloat = 17.0) -> UIFont {
+    
+    func getBoldFont(size: CGFloat = 16.0) -> UIFont {
+        let fontName = getBold()
         let fontSize = size * UIStyleConfig.scale
-        if currentFont == .DIN {
-            return UIFont(name: "DINNextLTPro-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
-        }
-        return UIFont(name: "\(currentFont.rawValue)-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
+        return UIFont(name: fontName, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
+    }
+    
+    func getNavigationTitleFont() -> UIFont {
+        return UIFont(name: getMedium(), size: 16)!
+    }
+    
+    func getHeaderFont() -> UIFont {
+        return getMediumFont(size: 32)
+    }
+    
+    func getTitleFont() -> UIFont {
+        return getMediumFont()
+    }
+    
+    func getSubtitleFont() -> UIFont {
+        return getMediumFont(size: 12)
     }
 
-    func getButtonTitleLabelFont(size: CGFloat = 17.0) -> UIFont {
-        let fontSize = size * UIStyleConfig.scale
-        if currentFont == .DIN {
-            return UIFont(name: "DIN-Bold", size: fontSize) ?? UIFont.boldSystemFont(ofSize: fontSize)
-        }
-        return UIFont(name: "\(currentFont.rawValue)-Bold", size: fontSize) ?? UIFont.boldSystemFont(ofSize: fontSize)
+    func getLabelFont(size: CGFloat = 16.0) -> UIFont {
+        return getMediumFont(size: size)
+    }
+
+    func getButtonTitleFont(size: CGFloat = 16.0) -> UIFont {
+        return getMediumFont(size: size)
     }
 
 }
