@@ -25,8 +25,8 @@ class SetupViewController: UIViewController {
 
         view.backgroundColor = UIColor.clear
 
-        taglineLabel.font = FontConfigManager.shared.getRegularFont(size: 15)
-        taglineLabel.isHidden = true
+        taglineLabel.font = FontConfigManager.shared.getRegularFont(size: 16)
+        taglineLabel.textColor = UIColor.white
 
         button.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
         button.setTitleColor(UIColor.black, for: .normal)
@@ -54,12 +54,6 @@ class SetupViewController: UIViewController {
         backgrondImageView.addSubview(generateWalletButton)
         
         self.navigationController?.isNavigationBarHidden = true
-
-        // TODO: skip button is not in the design. Add "Go to Market" button.
-        /*
-        let skipButton = UIBarButtonItem(title: "Skip", style: .plain, target: self, action: #selector(self.skipButtonPressed(_:)))
-        self.navigationItem.rightBarButtonItem = skipButton
-        */
     }
     
     override func didReceiveMemoryWarning() {
@@ -76,10 +70,6 @@ class SetupViewController: UIViewController {
         let screenSize: CGRect = UIScreen.main.bounds
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
-
-        loopringLogoImageView.isHidden = true
-        loopringLogoImageView.frame = CGRect(x: 24, y: 64, width: 136, height: 41)
-        taglineLabel.frame = CGRect(x: 24, y: 119, width: screenWidth - 24 * 2, height: 20)
 
         let bottomPadding: CGFloat = UIDevice.current.iPhoneX ? 30 : 0
         
