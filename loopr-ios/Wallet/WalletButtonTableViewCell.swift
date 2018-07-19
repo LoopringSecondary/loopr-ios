@@ -19,7 +19,7 @@ class WalletButtonTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         selectionStyle = .none
-        self.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor
+        self.theme_backgroundColor = GlobalPicker.backgroundColor
         let iconTitlePadding: CGFloat = 14
         
         button1.titleLabel?.setTitleFont()

@@ -11,6 +11,7 @@ import UIKit
 open class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSource {
     
     open var swipeView: SwipeView!
+    open var topConstraint: CGFloat?
         
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,6 @@ open class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDa
     
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        
         swipeView.willChangeOrientation()
     }
     
@@ -36,18 +36,18 @@ open class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDa
         swipeView.translatesAutoresizingMaskIntoConstraints = false
         if #available(iOS 11.0, *), view.hasSafeAreaInsets, swipeView.options.swipeTabView.isSafeAreaEnabled {
             NSLayoutConstraint.activate([
-                swipeView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+                swipeView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: self.topConstraint ?? 0),
                 swipeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                 swipeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                 swipeView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
                 ])
         } else {
             NSLayoutConstraint.activate([
-                swipeView.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor),
+                swipeView.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor, constant: self.topConstraint ?? 0),
                 swipeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                 swipeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                 swipeView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-                ])
+            ])
         }
     }
     

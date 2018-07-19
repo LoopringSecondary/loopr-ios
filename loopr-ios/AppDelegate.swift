@@ -78,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // table cell background color.
         let colorView = UIView()
-        colorView.theme_backgroundColor = GlobalPicker.textHighLightColor
+        colorView.theme_backgroundColor = GlobalPicker.cardHighLightColor
         UITableViewCell.appearance().selectedBackgroundView = colorView
         
         // status bar

@@ -17,10 +17,10 @@ enum TxSwipeViewType: String, CustomStringConvertible {
     
     var description: String {
         switch self {
-        case .all: return LocalizedString("all", comment: "")
-        case .time: return LocalizedString("time", comment: "")
-        case .type: return LocalizedString("type", comment: "")
-        case .status: return LocalizedString("status", comment: "")
+            case .all: return LocalizedString("All", comment: "")
+            case .time: return LocalizedString("Time", comment: "")
+            case .type: return LocalizedString("Type", comment: "")
+            case .status: return LocalizedString("Status", comment: "")
         }
     }
 }

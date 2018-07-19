@@ -24,16 +24,16 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        view.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
         
         assetTableView.dataSource = self
         assetTableView.delegate = self
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
-        headerView.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor
+        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
         
         assetTableView.tableHeaderView = headerView
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
-        footerView.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor
+        footerView.theme_backgroundColor = GlobalPicker.backgroundColor
         assetTableView.tableFooterView = footerView
         assetTableView.separatorStyle = .none
         
@@ -43,7 +43,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.estimatedSectionFooterHeight = 0
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
-        assetTableView.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor // UIStyleConfig.tableViewBackgroundColor
+        assetTableView.theme_backgroundColor = GlobalPicker.backgroundColor // UIStyleConfig.tableViewBackgroundColor
 
         /*
         let qrCodebutton = UIButton(type: UIButtonType.custom)
@@ -74,7 +74,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         frame.origin.y = -frame.size.height
         let backgroundView = UIView(frame: frame)
         backgroundView.autoresizingMask = .flexibleWidth
-        backgroundView.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor
+        backgroundView.theme_backgroundColor = GlobalPicker.backgroundColor
         
         // Adding the view below the refresh control
         assetTableView.insertSubview(backgroundView, at: 0)
@@ -362,7 +362,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
             let asset = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption()[indexPath.row]
-            let viewController = AssetDetailViewController()
+            let viewController = AssetSwipeViewController()
             viewController.asset = asset
             viewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(viewController, animated: true)

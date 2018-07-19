@@ -16,11 +16,27 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var buttonHeightLayoutConstraint: NSLayoutConstraint!
 
     var asset: Asset?
+    var type: TxSwipeViewType
+    var viewAppear: Bool = false
     var isLaunching: Bool = true
     var transactions: [String: [Transaction]] = [:]
     var transactionDates: [String] = []
     let refreshControl = UIRefreshControl()
     var contextMenuSourceView: UIView = UIView()
+    
+    convenience init(type: TxSwipeViewType) {
+        self.init(nibName: nil, bundle: nil)
+        self.type = type
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        type = .all
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -199,26 +215,10 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
 
-    @objc func goToMarket(_ sender: AnyObject) {
-        if let asset = self.asset {
-            if asset.symbol.lowercased() == "eth" || asset.symbol.lowercased() == "weth" {
-                let viewController = ConvertETHViewController()
-                viewController.asset = asset
-                self.navigationController?.pushViewController(viewController, animated: true)
-            } else {
-                let tradingPair = "\(asset.symbol)/WETH"
-                let market = MarketDataManager.shared.getMarket(byTradingPair: tradingPair)
-                guard market != nil else {
-                    return
-                }
-                PlaceOrderDataManager.shared.new(tokenA: asset.symbol, tokenB: "WETH", market: market!)
-                let viewController = BuyAndSellSwipeViewController()
-                viewController.initialType = .buy
-                self.navigationController?.pushViewController(viewController, animated: true)
-            }
-        }
+    func reloadAfterSwipeViewUpdated() {
+        
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section >= 1 {
             tableView.deselectRow(at: indexPath, animated: true)

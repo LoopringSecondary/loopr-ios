@@ -11,21 +11,17 @@ import SwiftTheme
 enum GlobalPicker {
     
     // Default values
-    static let backgroundColor: ThemeColorPicker = ["#f5f5f5", "#292929"]
-    static let textColor: ThemeColorPicker = ["#000000cc", "#ffffffcc"]
-    static let textLightColor: ThemeColorPicker = ["#00000099", "#ffffff66"]
-    static let textHighLightColor: ThemeColorPicker = ["#00000099", "#383838"]
+    static let backgroundColor: ThemeColorPicker = ["#f5f5f5", "#222222"]
+    static let cardBackgroundColor: ThemeColorPicker = ["#f5f5f5", "#292929"]
+    static let cardHighLightColor: ThemeColorPicker = ["#00000099", "#383838"]
     
     // text colors
+    static let textColor: ThemeColorPicker = ["#000000cc", "#ffffffcc"]
+    static let textLightColor: ThemeColorPicker = ["#00000099", "#ffffff66"]
+  
     static let barTextColors = ["#00000099", "#ffffff66"]
     static let barTextColor = ThemeColorPicker.pickerWithColors(barTextColors)
     static let barTintColor: ThemeColorPicker = ["#f5f5f5", "#222222"]
-    static let tableViewBackgroundColor: ThemeColorPicker = ["#fff", "#222222"]
-
-    // Navigation bar
-    static let navigationBarTextColors = ["#fff", "#fff"]  // used in navigation map
-    static let navigationBarTextColor = ThemeColorPicker.pickerWithColors(navigationBarTextColors)
-    static let navigationBarTintColor: ThemeColorPicker = ["#2E2BA4", "#2E2BA4"]
     
     // button images
     static let button: ThemeImagePicker = ThemeImagePicker(images: getImage(from: UIColor.init(rgba: "#f5f5f5")), getImage(from: UIColor.init(rgba: "#292929")))

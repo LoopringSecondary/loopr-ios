@@ -32,9 +32,9 @@ class AssetTableViewCell: UITableViewCell {
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
 
-        theme_backgroundColor = GlobalPicker.tableViewBackgroundColor
+        theme_backgroundColor = GlobalPicker.backgroundColor
         
-        baseView.theme_backgroundColor = GlobalPicker.backgroundColor
+        baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         baseView.frame = CGRect.init(x: 10, y: 10, width: screenWidth - 10*2, height: AssetTableViewCell.getHeight() - 10)
         baseView.cornerRadius = 8
         addSubview(baseView)
@@ -79,9 +79,9 @@ class AssetTableViewCell: UITableViewCell {
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         if highlighted {
-            baseView.theme_backgroundColor = GlobalPicker.textHighLightColor
+            baseView.theme_backgroundColor = GlobalPicker.cardHighLightColor
         } else {
-            baseView.theme_backgroundColor = GlobalPicker.backgroundColor
+            baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         }
     }
     

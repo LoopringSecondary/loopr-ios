@@ -47,34 +47,42 @@ extension UIColor {
         return [UIColor.init(rgba: "#CE4CE6"), UIColor.init(rgba: "#FA4A6F")]
     }
     
+    // #F5F5F5
     class var mute: UIColor {
         return UIColor(named: "Color-mute")!
     }
     
+    // #222222
     class var dark1: UIColor {
         return UIColor(named: "Color-dark1")!
     }
     
+    // #292929
     class var dark2: UIColor {
         return UIColor(named: "Color-dark2")!
     }
     
+    // #383838
     class var dark3: UIColor {
         return UIColor(named: "Color-dark3")!
     }
     
+    // #666666
     class var dark4: UIColor {
         return UIColor(named: "Color-dark4")!
     }
     
+    // #888888
     class var dark5: UIColor {
         return UIColor(named: "Color-dark5")!
     }
     
+    // #01B97F
     class var up: UIColor {
         return UIColor(named: "Color-up")!
     }
     
+    // #FA4A6F
     class var down: UIColor {
         return UIColor(named: "Color-down")!
     }

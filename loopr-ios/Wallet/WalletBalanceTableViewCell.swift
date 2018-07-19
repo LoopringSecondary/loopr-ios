@@ -26,11 +26,11 @@ class WalletBalanceTableViewCell: UITableViewCell {
         // Initialization code
         
         selectionStyle = .none
-        self.theme_backgroundColor = GlobalPicker.tableViewBackgroundColor
+        self.theme_backgroundColor = GlobalPicker.backgroundColor
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         
-        baseView.frame = CGRect(x: 10, y: 10, width: screenWidth - 20, height: 160 - 20)
+        baseView.frame = CGRect(x: 10, y: 10, width: screenWidth - 20, height: 120)
         baseView.image = UIImage(named: "Header-background")
         baseView.contentMode = .scaleToFill
         addSubview(baseView)
