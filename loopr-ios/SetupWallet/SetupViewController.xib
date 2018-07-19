@@ -11,8 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetupViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="backgroundImageView" destination="XgW-Xq-pDw" id="T97-Ea-shC"/>
+                <outlet property="generateWalletButton" destination="SWo-my-VCK" id="Kdt-Cm-XGo"/>
                 <outlet property="loopringLogoImageView" destination="ndb-6h-SZu" id="a8P-xw-Gbm"/>
                 <outlet property="taglineLabel" destination="Vwj-yH-xwd" id="lnE-Sj-DcW"/>
+                <outlet property="unlockWalletButton" destination="O2E-xb-AW6" id="aEX-GD-UMq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,15 +24,18 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XgW-Xq-pDw">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loopring_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ndb-6h-SZu">
-                    <rect key="frame" x="157.5" y="163.5" width="60" height="60"/>
+                    <rect key="frame" x="157.5" y="143.5" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="IKt-Nj-CaB"/>
                         <constraint firstAttribute="height" constant="60" id="XQu-9o-cs0"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loopr Wallet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwj-yH-xwd">
-                    <rect key="frame" x="23" y="242.5" width="329" height="18"/>
+                    <rect key="frame" x="23" y="222.5" width="329" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="Bcg-3S-zuc"/>
                     </constraints>
@@ -37,13 +43,37 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O2E-xb-AW6">
+                    <rect key="frame" x="48" y="337" width="279" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="kV6-T3-HOY"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWo-my-VCK">
+                    <rect key="frame" x="48" y="427" width="279" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="nRW-oe-ixu"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="XgW-Xq-pDw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6kB-al-YQw"/>
                 <constraint firstItem="Vwj-yH-xwd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="23" id="AIw-YR-AcI"/>
-                <constraint firstItem="ndb-6h-SZu" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-140" id="I3E-4n-TmB"/>
+                <constraint firstItem="ndb-6h-SZu" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-160" id="I3E-4n-TmB"/>
+                <constraint firstAttribute="trailing" secondItem="XgW-Xq-pDw" secondAttribute="trailing" id="Ie6-Y9-lTp"/>
+                <constraint firstAttribute="bottom" secondItem="XgW-Xq-pDw" secondAttribute="bottom" id="QDb-SN-J8R"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vwj-yH-xwd" secondAttribute="trailing" constant="23" id="Sf7-CI-gDf"/>
+                <constraint firstItem="SWo-my-VCK" firstAttribute="top" secondItem="O2E-xb-AW6" secondAttribute="bottom" constant="30" id="V6i-eE-h7u"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="O2E-xb-AW6" secondAttribute="trailing" constant="48" id="ViW-w6-vo3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SWo-my-VCK" secondAttribute="trailing" constant="48" id="Xhl-bZ-2RJ"/>
                 <constraint firstItem="ndb-6h-SZu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ZpB-oO-AFx"/>
+                <constraint firstItem="XgW-Xq-pDw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="iWh-dU-3Bj"/>
+                <constraint firstItem="O2E-xb-AW6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="ljm-Nh-wm1"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="SWo-my-VCK" secondAttribute="bottom" constant="180" id="mxk-6R-Xl0"/>
+                <constraint firstItem="SWo-my-VCK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="qiP-Oc-J5Z"/>
                 <constraint firstItem="Vwj-yH-xwd" firstAttribute="top" secondItem="ndb-6h-SZu" secondAttribute="bottom" constant="19" id="rzF-Yk-yf9"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

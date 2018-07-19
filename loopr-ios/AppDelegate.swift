@@ -23,9 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         Fabric.with([Crashlytics.self])
         
-        Themes.restoreLastTheme()
-        ThemeManager.animationDuration = 1.0
         FontConfigManager.shared.setup()
+        
+        Themes.restoreLastTheme()
+        updateTheme()
+        ThemeManager.animationDuration = 1.0
+        SVProgressHUD.setDefaultStyle(.dark)
         
         let initialViewController = MainTabController(nibName: nil, bundle: nil)
         self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -49,9 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         _ = SettingDataManager.shared.getCurrentLanguage()
 
-        updateTheme()
-        SVProgressHUD.setDefaultStyle(.dark)
-        
         let manager = NetworkingReachabilityManager.shared
         manager?.listener = { status in
             print("Network Status Changed: \(status)")
@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITableViewCell.appearance().selectedBackgroundView = colorView
         
         // status bar
-        UIApplication.shared.theme_setStatusBarStyle([.default, .lightContent, .lightContent, .lightContent], animated: true)
+        UIApplication.shared.theme_setStatusBarStyle([.lightContent, .lightContent], animated: true)
         
         // navigation bar
         let navigationBar = UINavigationBar.appearance()
