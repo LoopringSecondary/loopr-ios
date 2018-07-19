@@ -134,6 +134,7 @@
 		AC2ACA5920FA1A5F009C77E7 /* WalletButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2ACA5720FA1A5F009C77E7 /* WalletButtonTableViewCell.swift */; };
 		AC2ACA5A20FA1A5F009C77E7 /* WalletButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA5820FA1A5F009C77E7 /* WalletButtonTableViewCell.xib */; };
 		AC2ACA5C21005C18009C77E7 /* UIButton+AlignedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2ACA5B21005C17009C77E7 /* UIButton+AlignedIcon.swift */; };
+		AC2ACA5E21006DB8009C77E7 /* UIViewController+NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2ACA5D21006DB8009C77E7 /* UIViewController+NavigationBar.swift */; };
 		AC2CFAA120BB3BEE00387DB1 /* BiometricType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2CFAA020BB3BEE00387DB1 /* BiometricType.swift */; };
 		AC2D2C05208882BD00D619AD /* FoundationArray+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C04208882BD00D619AD /* FoundationArray+Extension.swift */; };
 		AC2D2C072089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C062089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift */; };
@@ -697,6 +698,7 @@
 		AC2ACA5720FA1A5F009C77E7 /* WalletButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletButtonTableViewCell.swift; sourceTree = "<group>"; };
 		AC2ACA5820FA1A5F009C77E7 /* WalletButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletButtonTableViewCell.xib; sourceTree = "<group>"; };
 		AC2ACA5B21005C17009C77E7 /* UIButton+AlignedIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+AlignedIcon.swift"; sourceTree = "<group>"; };
+		AC2ACA5D21006DB8009C77E7 /* UIViewController+NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationBar.swift"; sourceTree = "<group>"; };
 		AC2CFAA020BB3BEE00387DB1 /* BiometricType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricType.swift; sourceTree = "<group>"; };
 		AC2D2C04208882BD00D619AD /* FoundationArray+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoundationArray+Extension.swift"; sourceTree = "<group>"; };
 		AC2D2C062089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingPrivateKeyDataManager.swift; sourceTree = "<group>"; };
@@ -1947,6 +1949,7 @@
 				AC2ACA5B21005C17009C77E7 /* UIButton+AlignedIcon.swift */,
 				AC46F7752069FB4400CFDC40 /* UIButton+RoundButton.swift */,
 				ACB8AD88207F299700B478D6 /* UIViewController+BackButton.swift */,
+				AC2ACA5D21006DB8009C77E7 /* UIViewController+NavigationBar.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -3153,6 +3156,7 @@
 				940B451E2060F67E00ADE2B9 /* GenerateWalletDataManager.swift in Sources */,
 				AC4141EF203524280089861D /* MarketSwipeViewController.swift in Sources */,
 				AC06193E208417AF0060F416 /* QRCodeMethod.swift in Sources */,
+				AC2ACA5E21006DB8009C77E7 /* UIViewController+NavigationBar.swift in Sources */,
 				9445D54420BA4F63006045F6 /* PriceButton.swift in Sources */,
 				AC387520205F12F100A76637 /* ContextMenu+ContainerStyle.swift in Sources */,
 				ACB5DD98202D5A8400140A09 /* NumericKeyboard.swift in Sources */,

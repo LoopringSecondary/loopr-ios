@@ -72,7 +72,7 @@ class SetupViewController: UIViewController {
     @objc func generateWalletButtonPressed(_ sender: Any) {
         print("generateWalletButtonPressed")
         // backgrondImageView.removeFromSuperview()
-        let viewController = GenerateWalletEnterNameAndPasswordViewController(nibName: nil, bundle: nil)
+        let viewController = GenerateWalletEnterNameAndPasswordViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 

@@ -9,7 +9,10 @@
 import UIKit
 
 class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UITextFieldDelegate {
-
+    
+    @IBOutlet weak var statusBarBackgroundView: UIView!
+    @IBOutlet weak var customizedNavigationBar: UINavigationBar!
+    
     var scrollView: UIScrollView = UIScrollView()
     
     // Scrollable UI components
@@ -35,21 +38,18 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        // self.navigationItem.title = LocalizedString("Generate Wallet", comment: "")
         
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
         
-        setBackButton()
-        
-        self.navigationController?.isNavigationBarHidden = false
+        statusBarBackgroundView.backgroundColor = UIColor.black
         
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         // let screenHeight = screensize.height
         
-        let originY: CGFloat = 30
+        let originY: CGFloat = 80
         let padding: CGFloat = 15
 
         walletNameTextField.delegate = self
@@ -119,7 +119,7 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
         scrollView.addSubview(walletRepeatPasswordInfoLabel)
         
         scrollView.contentSize = CGSize(width: screenWidth, height: walletRepeatPasswordUnderLine.frame.maxY + 50)
-        scrollView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: walletRepeatPasswordUnderLine.frame.maxY + 50)
+        scrollView.frame = CGRect(x: 0, y: 80, width: screenWidth, height: walletRepeatPasswordUnderLine.frame.maxY + 50)
         view.addSubview(scrollView)
         
         continueButton.setupSecondary()
@@ -148,7 +148,8 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        setBackButtonAndUpdateTitle(customizedNavigationBar: customizedNavigationBar, title: LocalizedString("Generate Wallet", comment: ""))
     }
 
     @objc func pressedContinueButton(_ sender: Any) {
@@ -249,7 +250,7 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
             UIView.animate(withDuration: 0.4, animations: {
                 self.continueButton.moveOffset(y: self.keyboardOffsetY)
             }, completion: { (_) in
-                self.scrollView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.continueButton.frame.minY)
+                self.scrollView.frame = CGRect(x: 0, y: 80, width: UIScreen.main.bounds.width, height: self.continueButton.frame.minY)
             })
             
             isKeyboardShown = false
@@ -275,7 +276,7 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
                     UIView.animate(withDuration: 1.0, animations: {
                         self.continueButton.moveOffset(y: -self.keyboardOffsetY)
                     }, completion: { (_) in
-                        self.scrollView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.continueButton.frame.minY)
+                        self.scrollView.frame = CGRect(x: 0, y: 80, width: UIScreen.main.bounds.width, height: self.continueButton.frame.minY)
                     })
                     isKeyboardShown = true
                 }
