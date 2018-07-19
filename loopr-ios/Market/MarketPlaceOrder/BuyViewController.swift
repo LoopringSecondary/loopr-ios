@@ -97,7 +97,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         // First row: price
         setupLabels()
         tokenALabel.text = PlaceOrderDataManager.shared.tokenB.symbol
-        tokenALabel.font = FontConfigManager.shared.getLabelFont()
+        tokenALabel.font = FontConfigManager.shared.getDigitalFont()
         tokenALabel.textAlignment = .right
         tokenALabel.frame = CGRect(x: screenWidth-80-padding, y: originY, width: 80, height: 40)
         scrollView.addSubview(tokenALabel)
@@ -106,7 +106,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         priceTextField.delegate = self
         priceTextField.tag = 0
         priceTextField.inputView = UIView()
-        priceTextField.font = FontConfigManager.shared.getLabelFont()
+        priceTextField.font = FontConfigManager.shared.getDigitalFont()
         priceTextField.theme_tintColor = GlobalPicker.textColor
         priceTextField.placeholder = LocalizedString("Market Price", comment: "") + " " + PlaceOrderDataManager.shared.market.balance.description
         priceTextField.contentMode = UIViewContentMode.bottom
@@ -118,7 +118,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
 
         let zeroValue: Double = 0.0
         estimateValueInCurrencyLabel.text = "≈ \(zeroValue.currency)"
-        estimateValueInCurrencyLabel.font = FontConfigManager.shared.getLabelFont()
+        estimateValueInCurrencyLabel.font = FontConfigManager.shared.getDigitalFont()
         estimateValueInCurrencyLabel.frame = CGRect(x: padding, y: tokenAUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(estimateValueInCurrencyLabel)
         
@@ -128,7 +128,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         
         // Second row: amount
         tokenBLabel.text = PlaceOrderDataManager.shared.tokenA.symbol
-        tokenBLabel.font = FontConfigManager.shared.getLabelFont()
+        tokenBLabel.font = FontConfigManager.shared.getDigitalFont()
         tokenBLabel.textAlignment = .right
         tokenBLabel.frame = CGRect(x: screenWidth-80-padding, y: estimateValueInCurrencyLabel.frame.maxY + 30, width: 80, height: 40)
         scrollView.addSubview(tokenBLabel)
@@ -137,7 +137,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         amountTextField.delegate = self
         amountTextField.tag = 1
         amountTextField.inputView = UIView()
-        amountTextField.font = FontConfigManager.shared.getLabelFont()
+        amountTextField.font = FontConfigManager.shared.getDigitalFont()
         amountTextField.theme_tintColor = GlobalPicker.textColor
         amountTextField.theme_tintColor = GlobalPicker.textColor
         amountTextField.placeholder = LocalizedString("Please input a valid amount", comment: "")
@@ -148,7 +148,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         amountUnderLine.backgroundColor = UIColor.black
         scrollView.addSubview(amountUnderLine)
         
-        tipLabel.font = FontConfigManager.shared.getLabelFont()
+        tipLabel.font = FontConfigManager.shared.getDigitalFont()
         tipLabel.frame = CGRect(x: padding, y: amountUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(tipLabel)
         // tipLabel.isHidden = true
@@ -161,7 +161,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
 
         // Thrid row: total
         tokenBTotalLabel.text = PlaceOrderDataManager.shared.tokenB.symbol
-        tokenBTotalLabel.font = FontConfigManager.shared.getLabelFont()
+        tokenBTotalLabel.font = FontConfigManager.shared.getDigitalFont()
         tokenBTotalLabel.textAlignment = .right
         tokenBTotalLabel.frame = CGRect(x: screenWidth-80-padding, y: tipLabel.frame.maxY + 30, width: 80, height: 40)
         scrollView.addSubview(tokenBTotalLabel)
@@ -169,7 +169,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         totalTextField.delegate = self
         totalTextField.tag = 2
         totalTextField.inputView = UIView()
-        totalTextField.font = FontConfigManager.shared.getLabelFont()
+        totalTextField.font = FontConfigManager.shared.getDigitalFont()
         totalTextField.theme_tintColor = GlobalPicker.textColor
         totalTextField.placeholder = LocalizedString("Total", comment: "")
         totalTextField.contentMode = UIViewContentMode.bottom
@@ -183,7 +183,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         totalUnderLine.backgroundColor = UIColor.black
         scrollView.addSubview(totalUnderLine)
 
-        availableLabel.font = FontConfigManager.shared.getLabelFont()
+        availableLabel.font = FontConfigManager.shared.getDigitalFont()
         availableLabel.frame = CGRect(x: padding, y: totalUnderLine.frame.maxY, width: screenWidth-padding*2, height: 40)
         scrollView.addSubview(availableLabel)
         

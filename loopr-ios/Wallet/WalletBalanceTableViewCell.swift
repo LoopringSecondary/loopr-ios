@@ -47,7 +47,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
         addSubview(balanceLabel)
 
         addressLabel.frame = CGRect(x: screenWidth*0.25, y: balanceLabel.frame.maxY, width: screenWidth*0.5, height: 30)
-        addressLabel.setSubTitleFont()
+        addressLabel.setSubTitleDigitFont()
         addressLabel.textAlignment = .center
         addressLabel.numberOfLines = 1
         addressLabel.lineBreakMode = .byTruncatingMiddle

@@ -52,7 +52,7 @@ class BackupMnemonicViewController: UIViewController {
         infoTextView.frame = CGRect(x: padding-3, y: 72, width: screenWidth - (padding-3) * 2, height: 100)
         infoTextView.isEditable = false
         infoTextView.textColor = UIColor.black.withAlphaComponent(0.6)
-        infoTextView.font = FontConfigManager.shared.getLabelFont(size: 17)
+        infoTextView.font = FontConfigManager.shared.getDigitalFont(size: 17)
         view.addSubview(infoTextView)
 
         collectionViewWidth = screenWidth - padding * 2

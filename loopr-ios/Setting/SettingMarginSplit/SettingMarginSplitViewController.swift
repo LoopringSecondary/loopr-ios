@@ -32,7 +32,7 @@ class SettingMarginSplitViewController: UIViewController {
         let padding: CGFloat = 15
         
         currentValueLabel.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 30)
-        currentValueLabel.font = FontConfigManager.shared.getLabelFont()
+        currentValueLabel.setTitleDigitFont()
         currentValueLabel.text = LocalizedString("Margin Split", comment: "") + ": \(SettingDataManager.shared.getMarginSplitDescription())"
         view.addSubview(currentValueLabel)
         
@@ -47,13 +47,13 @@ class SettingMarginSplitViewController: UIViewController {
         view.addSubview(slider)
         
         minLabel.frame = CGRect(x: padding, y: slider.frame.maxY + 10, width: 100, height: 30)
-        minLabel.font = FontConfigManager.shared.getLabelFont()
+        minLabel.setTitleDigitFont()
         minLabel.text = "0%"
         view.addSubview(minLabel)
         
         maxLabel.textAlignment = .right
         maxLabel.frame = CGRect(x: screenWidth-padding-100, y: minLabel.frame.minY, width: 100, height: 30)
-        maxLabel.font = FontConfigManager.shared.getLabelFont()
+        maxLabel.setTitleDigitFont()
         maxLabel.text = "100%"
         view.addSubview(maxLabel)
         

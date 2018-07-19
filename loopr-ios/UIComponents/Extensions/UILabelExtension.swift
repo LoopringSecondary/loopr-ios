@@ -11,21 +11,39 @@ import UIKit
 
 extension UILabel {
     
-    func setTitleFont() {
-        let font = FontConfigManager.shared.getTitleFont()
+    func setHeaderDigitFont() {
+        let font = FontConfigManager.shared.getDigitalFont(size: 32)
         self.theme_textColor = ["#000000cc", "#ffffffcc"]
         self.font = font
     }
     
-    func setSubTitleFont() {
-        let font = FontConfigManager.shared.getSubtitleFont()
+    func setTitleDigitFont() {
+        let font = FontConfigManager.shared.getDigitalFont()
+        self.theme_textColor = ["#000000cc", "#ffffffcc"]
+        self.font = font
+    }
+    
+    func setSubTitleDigitFont() {
+        let font = FontConfigManager.shared.getDigitalFont(size: 12)
         self.theme_textColor = ["#00000099", "#ffffff66"]
         self.font = font
     }
     
-    func setHeaderFont() {
-        let font = FontConfigManager.shared.getHeaderFont()
+    func setHeaderCharFont() {
+        let font = FontConfigManager.shared.getCharactorFont(size: 30)
         self.theme_textColor = ["#000000cc", "#ffffffcc"]
+        self.font = font
+    }
+    
+    func setTitleCharFont() {
+        let font = FontConfigManager.shared.getCharactorFont(size: 15)
+        self.theme_textColor = ["#000000cc", "#ffffffcc"]
+        self.font = font
+    }
+    
+    func setSubTitleCharFont() {
+        let font = FontConfigManager.shared.getCharactorFont(size: 11)
+        self.theme_textColor = ["#00000099", "#ffffff66"]
         self.font = font
     }
     

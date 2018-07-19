@@ -66,7 +66,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         setBackButton()
         self.navigationItem.title = LocalizedString("Scan QR Code", comment: "")
         
-        scanTipLabel.font = FontConfigManager.shared.getLabelFont()
+        scanTipLabel.setTitleDigitFont()
         scanTipLabel.text = LocalizedString("Align QR Code within Frame to Scan", comment: "")
         self.flashButton.image = UIImage(named: "TorchOff")
         

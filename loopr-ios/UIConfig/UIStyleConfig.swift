@@ -19,19 +19,16 @@ enum UIStyleConfig {
     static let tabBarTintColor = UIColor(white: 0, alpha: 1)
     static let tableCellSelectedBackgroundColor = UIColor.init(red: 220/255.0, green: 220/255.0, blue: 220/255.0, alpha: 1.0)
     static let underlineColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
-    static let tableViewBackgroundColor = UIColor.init(rgba: "#f5f5f5")
-
     static let scale = UIScreen.main.scale / UIScreen.main.nativeScale
     
-    static let green = UIColor.init(rgba: "#65C87A")
-    static let red = UIColor.init(rgba: "#FE4F57")
+    static let green = UIColor.up
+    static let red = UIColor.down
         
     static func getChangeColor(change: String, down: Bool? = nil) -> UIColor {
         let firstChar = change.first?.description ?? ""
         if change == "0.00%" || firstChar == "" {
             return UIColor.black
         }
-
         let language = Bundle.main.preferredLocalizations.first
         if language == "zh-Hans" {
             if firstChar == "↓" || firstChar == "+" || down == true {

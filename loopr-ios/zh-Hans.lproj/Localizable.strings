@@ -279,7 +279,7 @@
 "Order Expired" = "已过期";
 "Order Locked" = "已锁定";
 "Order Unknown" = "未知状态";
-"Unknown" = "未知";
+"Unknown" = "其他";
 "Accept" = "允许授权";
 "Decline" = "拒绝授权";
 "Address detected" = "扫描到钱包地址二维码";

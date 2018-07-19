@@ -23,7 +23,7 @@ class AddTokenTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        symbolLabel.setTitleFont()
+        symbolLabel.setTitleDigitFont()
         seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
         addSwitch.transform = CGAffineTransform(scaleX: 0.81, y: 0.81)
         addSwitch.setOn(AuthenticationDataManager.shared.getPasscodeSetting(), animated: false)

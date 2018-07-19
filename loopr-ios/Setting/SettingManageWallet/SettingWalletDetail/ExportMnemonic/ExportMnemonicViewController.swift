@@ -42,7 +42,7 @@ class ExportMnemonicViewController: UIViewController {
         infoTextView.frame = CGRect(x: padding-3, y: 15, width: screenWidth - (padding-3) * 2, height: 110)
         infoTextView.isEditable = false
         infoTextView.textColor = UIColor.black  // UIColor.black.withAlphaComponent(0.6)
-        infoTextView.font = FontConfigManager.shared.getLabelFont()
+        infoTextView.font = FontConfigManager.shared.getDigitalFont()
         view.addSubview(infoTextView)
         
         collectionViewWidth = screenWidth - padding * 2

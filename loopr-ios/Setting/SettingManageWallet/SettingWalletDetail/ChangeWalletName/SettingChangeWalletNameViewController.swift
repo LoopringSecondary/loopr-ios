@@ -32,7 +32,7 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
         
         nameTextField.delegate = self
         nameTextField.tag = 0
-        nameTextField.font = FontConfigManager.shared.getLabelFont()
+        nameTextField.font = FontConfigManager.shared.getDigitalFont()
         nameTextField.theme_tintColor = GlobalPicker.textColor
         nameTextField.placeholder = "Enter your wallet name"
         nameTextField.contentMode = UIViewContentMode.bottom

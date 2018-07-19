@@ -60,11 +60,11 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
         let padding: CGFloat = 15
         
         // 1st row: need A token
-        needATipLabel.font = FontConfigManager.shared.getLabelFont()
+        needATipLabel.setTitleDigitFont()
         needATipLabel.text = LocalizedString("You Need More", comment: "")
         needATipLabel.frame = CGRect(x: padding, y: padding, width: 150, height: 40)
         scrollView.addSubview(needATipLabel)
-        needAInfoLabel.font = FontConfigManager.shared.getLabelFont()
+        needAInfoLabel.setTitleDigitFont()
         needAInfoLabel.textColor = .red
         needAInfoLabel.text = errorTipInfo[0]
         needAInfoLabel.textAlignment = .right
@@ -77,11 +77,11 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
         guard errorTipInfo.count == 2 else { return }
         
         // 2nd row: need B token
-        needBTipLabel.font = FontConfigManager.shared.getLabelFont()
+        needBTipLabel.setTitleDigitFont()
         needBTipLabel.text = LocalizedString("You Need More", comment: "")
         needBTipLabel.frame = CGRect(x: padding, y: needATipLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(needBTipLabel)
-        needBInfoLabel.font = FontConfigManager.shared.getLabelFont()
+        needBInfoLabel.setTitleDigitFont()
         needBInfoLabel.textColor = .red
         needBInfoLabel.textAlignment = .right
         needBInfoLabel.frame = CGRect(x: padding + 150, y: needBTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)

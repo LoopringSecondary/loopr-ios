@@ -245,19 +245,19 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             
             let label1 = UILabel(frame: CGRect(x: padding, y: 0, width: (view.frame.size.width-padding*2)/3, height: 45))
             label1.theme_textColor = GlobalPicker.textColor
-            label1.font = FontConfigManager.shared.getLabelFont()
+            label1.setTitleDigitFont()
             headerView.addSubview(label1)
             
             let label2 = UILabel(frame: CGRect(x: label1.frame.maxX, y: 0, width: (view.frame.size.width-padding*2)/3, height: 45))
             label2.textAlignment = .right
             label2.theme_textColor = GlobalPicker.textColor
-            label2.font = FontConfigManager.shared.getLabelFont()
+            label2.setTitleDigitFont()
             headerView.addSubview(label2)
             
             let label3 = UILabel(frame: CGRect(x: label2.frame.maxX, y: 0, width: (view.frame.size.width-padding*2)/3, height: 45))
             label3.textAlignment = .right
             label3.theme_textColor = GlobalPicker.textColor
-            label3.font = FontConfigManager.shared.getLabelFont()
+            label3.setTitleDigitFont()
             headerView.addSubview(label3)
             
             if section == 2 {

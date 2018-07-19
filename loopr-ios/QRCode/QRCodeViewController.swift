@@ -70,7 +70,7 @@ class QRCodeViewController: UIViewController {
 
         self.navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedStringKey.foregroundColor: textColor,
-            NSAttributedStringKey.font: FontConfigManager.shared.getNavigationTitleFont(),
+            NSAttributedStringKey.font: FontConfigManager.shared.getDigitalFont(),
             NSAttributedStringKey.shadow: shadow
         ]
         // Update the statusBar

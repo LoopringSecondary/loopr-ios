@@ -9,6 +9,7 @@
 import Foundation
 
 extension Transaction {
+
     enum TxType: String, CustomStringConvertible {
         case approved = "approve"
         case sent = "send"
@@ -20,6 +21,7 @@ extension Transaction {
         case canceledOrder = "cancel_order"
         case cutoff = "cutoff"
         case unsupportedContract = "unsupported_contract"
+        case other = "other"
         
         var description: String {
             switch self {
@@ -28,11 +30,12 @@ extension Transaction {
             case .received: return LocalizedString("Received", comment: "")
             case .sold: return LocalizedString("Sold", comment: "")
             case .bought: return LocalizedString("Bought", comment: "")
-            case .convert_income: return LocalizedString("Convert", comment: "") // eth <-> weth
-            case .convert_outcome: return LocalizedString("Convert", comment: "") // eth <-> weth
+            case .convert_income: return LocalizedString("Convert", comment: "")
+            case .convert_outcome: return LocalizedString("Convert", comment: "")
             case .canceledOrder: return LocalizedString("Cancel", comment: "")
             case .cutoff: return LocalizedString("Cancel", comment: "")
-            case .unsupportedContract: return "Unknown"
+            case .unsupportedContract: return LocalizedString("Unsupported", comment: "")
+            case .other: return LocalizedString("Unknown", comment: "")
             }
         }
     }

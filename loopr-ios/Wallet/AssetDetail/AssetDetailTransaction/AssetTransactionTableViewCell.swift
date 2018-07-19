@@ -22,11 +22,11 @@ class AssetTransactionTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        titleLabel.setTitleFont()
-        amountLabel.setTitleFont()
+        titleLabel.setTitleDigitFont()
+        amountLabel.setTitleDigitFont()
         amountLabel.baselineAdjustment = .alignCenters
-        dateLabel.setSubTitleFont()
-        displayLabel.setSubTitleFont()
+        dateLabel.setSubTitleDigitFont()
+        displayLabel.setSubTitleDigitFont()
         displayLabel.baselineAdjustment = .alignCenters
         seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
         accessoryType = .disclosureIndicator

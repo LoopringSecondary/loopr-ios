@@ -56,7 +56,7 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
         walletNameTextField.tag = 0
         // walletNameTextField.inputView = UIView()
         walletNameTextField.theme_tintColor = GlobalPicker.textColor
-        walletNameTextField.font = FontConfigManager.shared.getLabelFont(size: 19)
+        walletNameTextField.font = FontConfigManager.shared.getDigitalFont(size: 19)
         walletNameTextField.placeholder = LocalizedString("Wallet name", comment: "")
         walletNameTextField.contentMode = UIViewContentMode.bottom
         walletNameTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 40)
@@ -78,7 +78,7 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
         walletPasswordTextField.tag = 1
         // walletPasswordTextField.inputView = UIView()
         walletPasswordTextField.theme_tintColor = GlobalPicker.textColor
-        walletPasswordTextField.font = FontConfigManager.shared.getLabelFont(size: 19)
+        walletPasswordTextField.font = FontConfigManager.shared.getDigitalFont(size: 19)
         walletPasswordTextField.placeholder = LocalizedString("Password", comment: "")
         walletPasswordTextField.contentMode = UIViewContentMode.bottom
         walletPasswordTextField.frame = CGRect(x: padding, y: walletNameUnderLine.frame.maxY + 45, width: screenWidth-padding*2, height: 40)
@@ -101,7 +101,7 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
         walletRepeatPasswordTextField.tag = 2
         // walletPasswordTextField.inputView = UIView()
         walletRepeatPasswordTextField.theme_tintColor = GlobalPicker.textColor
-        walletRepeatPasswordTextField.font = FontConfigManager.shared.getLabelFont(size: 19)
+        walletRepeatPasswordTextField.font = FontConfigManager.shared.getDigitalFont(size: 19)
         walletRepeatPasswordTextField.placeholder = LocalizedString("Confirm password", comment: "")
         walletRepeatPasswordTextField.contentMode = UIViewContentMode.bottom
         walletRepeatPasswordTextField.frame = CGRect(x: padding, y: walletPasswordUnderLine.frame.maxY + 45, width: screenWidth-padding*2, height: 40)

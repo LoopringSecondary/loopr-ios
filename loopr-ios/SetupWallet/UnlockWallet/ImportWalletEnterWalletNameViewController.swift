@@ -49,7 +49,7 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
         walletNameTextField.tag = 0
         // walletNameTextField.inputView = UIView()
         walletNameTextField.theme_tintColor = GlobalPicker.textColor
-        walletNameTextField.font = FontConfigManager.shared.getLabelFont(size: 19)
+        walletNameTextField.font = FontConfigManager.shared.getDigitalFont(size: 19)
         walletNameTextField.placeholder = LocalizedString("Give your wallet an awesome name", comment: "")
         walletNameTextField.contentMode = UIViewContentMode.bottom
         walletNameTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 40)

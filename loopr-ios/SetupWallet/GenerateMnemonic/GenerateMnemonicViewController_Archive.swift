@@ -45,7 +45,7 @@ class GenerateMnemonicViewController_Archive: UIViewController {
         infoTextView.isEditable = false
         infoTextView.text = LocalizedString("Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage.", comment: "")
         infoTextView.textColor = UIColor.black.withAlphaComponent(0.6)
-        infoTextView.font = FontConfigManager.shared.getLabelFont()
+        infoTextView.font = FontConfigManager.shared.getDigitalFont()
         view.addSubview(infoTextView)
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor

@@ -21,7 +21,7 @@ class SettingManageWalletTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        nameLabel.font = FontConfigManager.shared.getLabelFont(size: 21)
+        nameLabel.font = FontConfigManager.shared.getDigitalFont(size: 21)
         addressLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)
         addressLabel.textColor = UIColor.black.withAlphaComponent(0.6)
         

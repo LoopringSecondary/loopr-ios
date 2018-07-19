@@ -34,9 +34,9 @@ class FontConfigManager {
             print("Loaded Fonts", fonts)
         }
 
-        UILabel.appearance().font = FontConfigManager.shared.getLabelFont()
-        UIButton.appearance().titleLabel?.font = FontConfigManager.shared.getLabelFont()
-        UITextField.appearance().font = FontConfigManager.shared.getLabelFont()
+        UILabel.appearance().font = FontConfigManager.shared.getDigitalFont()
+        UIButton.appearance().titleLabel?.font = FontConfigManager.shared.getDigitalFont()
+        UITextField.appearance().font = FontConfigManager.shared.getDigitalFont()
         
         // Font in the tab bar is 10.
         let tabBarItemAttributes = [NSAttributedStringKey.font: UIFont(name: FontConfigManager.shared.getCurrentFontName(), size: 10) ?? UIFont.systemFont(ofSize: 10)]
@@ -123,29 +123,21 @@ class FontConfigManager {
         let fontSize = size * UIStyleConfig.scale
         return UIFont(name: fontName, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
     }
-    
-    func getNavigationTitleFont() -> UIFont {
-        return UIFont(name: getMedium(), size: 16)!
-    }
-    
-    func getHeaderFont() -> UIFont {
-        return getMediumFont(size: 32)
-    }
-    
-    func getTitleFont() -> UIFont {
-        return getMediumFont()
-    }
-    
-    func getSubtitleFont() -> UIFont {
-        return getMediumFont(size: 12)
-    }
 
-    func getLabelFont(size: CGFloat = 16.0) -> UIFont {
+    func getDigitalFont(size: CGFloat = 16.0) -> UIFont {
         return getMediumFont(size: size)
     }
-
-    func getButtonTitleFont(size: CGFloat = 16.0) -> UIFont {
-        return getMediumFont(size: size)
+    
+    func getCharactorFont(size: CGFloat = 16.0) -> UIFont {
+        var font: UIFont
+        let fontSize = size * UIStyleConfig.scale
+        if SettingDataManager.shared.getCurrentLanguage().name == "en" {
+            font = getMediumFont(size: size)
+        } else if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
+            font = UIFont(name: "PingfangSC-Regular", size: fontSize)!
+        } else {
+            font = UIFont.systemFont(ofSize: fontSize)
+        }
+        return font
     }
-
 }

@@ -45,7 +45,7 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
         passwordTextField.delegate = self
         passwordTextField.tag = 1
         passwordTextField.theme_tintColor = GlobalPicker.textColor
-        passwordTextField.font = FontConfigManager.shared.getLabelFont(size: 19)
+        passwordTextField.font = FontConfigManager.shared.getDigitalFont(size: 19)
         passwordTextField.placeholder = ""
         passwordTextField.contentMode = UIViewContentMode.bottom
         passwordTextField.frame = CGRect(x: padding, y: titleLabel.frame.maxY + 30, width: screenWidth-padding*2, height: 40)

@@ -43,7 +43,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         passwordTextField.delegate = self
         passwordTextField.tag = 0
         passwordTextField.theme_tintColor = GlobalPicker.textColor
-        passwordTextField.font = FontConfigManager.shared.getLabelFont(size: 17)
+        passwordTextField.font = FontConfigManager.shared.getDigitalFont(size: 17)
         passwordTextField.placeholder = LocalizedString("Mnemonic Password (optional)", comment: "")
         passwordTextField.contentMode = UIViewContentMode.bottom
         passwordTextField.textContentType = .password

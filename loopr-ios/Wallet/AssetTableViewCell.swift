@@ -47,27 +47,27 @@ class AssetTableViewCell: UITableViewCell {
         iconView.backgroundColor = UIColor.clear
         baseView.addSubview(iconView)
         
-        symbolLabel.frame = CGRect.init(x: 64, y: 22-3, width: 200, height: 35)
-        symbolLabel.setTitleFont()
+        symbolLabel.frame = CGRect.init(x: 64, y: 22-3, width: 200, height: 36)
+        symbolLabel.setTitleDigitFont()
         symbolLabel.text = "ETHETHETHETHETHETHETH"  // Prototype the label size. Will be updated very soon.
         symbolLabel.sizeToFit()
         symbolLabel.text = ""
         baseView.addSubview(symbolLabel)
         
         nameLabel.frame = CGRect.init(x: symbolLabel.frame.minX, y: 44, width: 200, height: 27)
-        nameLabel.setSubTitleFont()
+        nameLabel.setSubTitleDigitFont()
         nameLabel.text = "ETHETHETHETHETHETHETH"
         nameLabel.sizeToFit()
         nameLabel.text = ""
         baseView.addSubview(nameLabel)
         
         balanceLabel.frame = CGRect.init(x: baseView.frame.width - 36 - 200, y: symbolLabel.frame.minY, width: 200, height: symbolLabel.frame.size.height)
-        balanceLabel.setTitleFont()
+        balanceLabel.setTitleDigitFont()
         balanceLabel.textAlignment = .right
         baseView.addSubview(balanceLabel)
         
         amountLabel.frame = CGRect.init(x: balanceLabel.frame.minX, y: nameLabel.frame.minY, width: 200, height: nameLabel.frame.size.height)
-        amountLabel.setSubTitleFont()
+        amountLabel.setSubTitleDigitFont()
         amountLabel.textAlignment = .right
         baseView.addSubview(amountLabel)
         

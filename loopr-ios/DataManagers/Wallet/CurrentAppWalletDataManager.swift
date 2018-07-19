@@ -226,7 +226,7 @@ class CurrentAppWalletDataManager {
         LoopringSocketIORequest.endBalance()
     }
     
-    func getTransactionsFromServer(asset: Asset, completionHandler: @escaping (_ transactions: [String: [Transaction]], _ error: Error?) -> Void) {
+    func getTransactionsFromServer(asset: Asset, completionHandler: @escaping (_ transactions: [Transaction], _ error: Error?) -> Void) {
         guard let wallet = currentAppWallet else {
             return
         }
@@ -234,15 +234,7 @@ class CurrentAppWalletDataManager {
             guard error == nil, let transactions = transactions else {
                 return
             }
-            var dateTransactions: [String: [Transaction]] = [:]
-            for transaction in transactions {
-                let date = transaction.createTime.components(separatedBy: " ")[0]
-                if dateTransactions[date] == nil {
-                    dateTransactions[date] = []
-                }
-                dateTransactions[date]!.append(transaction)
-            }
-            completionHandler(dateTransactions, nil)
+            completionHandler(transactions, nil)
         })
     }
     
@@ -297,4 +289,3 @@ class CurrentAppWalletDataManager {
         }
     }
 }
-

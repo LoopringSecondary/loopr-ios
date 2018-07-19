@@ -66,13 +66,13 @@ class AssetTransactionDetailViewController: UIViewController {
         // Row 1
         label1.text = LocalizedString("Status", comment: "")
         label1.theme_textColor = GlobalPicker.textColor
-        label1.font = FontConfigManager.shared.getLabelFont()
+        label1.setTitleDigitFont()
         label1.frame = CGRect(x: padding, y: originY, width: 80, height: labelHeight)
         view.addSubview(label1)
         
         label2.theme_textColor = GlobalPicker.textColor
         label2.textAlignment = .right
-        label2.font = FontConfigManager.shared.getLabelFont()
+        label2.setTitleDigitFont()
         label2.frame = CGRect(x: padding + 80 - 40, y: originY, width: screenWidth-80-2*padding + 40, height: labelHeight)
         view.addSubview(label2)
         
@@ -83,13 +83,13 @@ class AssetTransactionDetailViewController: UIViewController {
         // Row 2
         label3.text = LocalizedString("From", comment: "")
         label3.theme_textColor = GlobalPicker.textColor
-        label3.font = FontConfigManager.shared.getLabelFont()
+        label3.setTitleDigitFont()
         label3.frame = CGRect(x: padding, y: row1Underline.frame.maxY + padding, width: 80, height: labelHeight)
         view.addSubview(label3)
         
         button1.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
         button1.setTitleColor(UIColor.init(rgba: "#cce9ff"), for: .highlighted)
-        button1.titleLabel?.font = FontConfigManager.shared.getLabelFont()
+        button1.titleLabel?.setTitleDigitFont()
         button1.contentHorizontalAlignment = .right
         button1.frame = CGRect(x: padding + 80, y: row1Underline.frame.maxY + padding, width: screenWidth - 80 - 2 * padding, height: labelHeight)
         button1.addTarget(self, action: #selector(self.pressedButton1(_:)), for: UIControlEvents.touchUpInside)
@@ -102,13 +102,13 @@ class AssetTransactionDetailViewController: UIViewController {
         // Row 3
         label5.text = "ID"
         label5.theme_textColor = GlobalPicker.textColor
-        label5.font = FontConfigManager.shared.getLabelFont()
+        label5.setTitleDigitFont()
         label5.frame = CGRect(x: padding, y: row2Underline.frame.maxY + padding, width: 80, height: labelHeight)
         view.addSubview(label5)
         
         button2.theme_setTitleColor(["#0094FF", "#000"], forState: .normal)
         button2.setTitleColor(UIColor.init(rgba: "#cce9ff"), for: .highlighted)
-        button2.titleLabel?.font = FontConfigManager.shared.getLabelFont()
+        button2.titleLabel?.setTitleDigitFont()
         button2.contentHorizontalAlignment = .right
         button2.frame = CGRect(x: padding + 80, y: row2Underline.frame.maxY + padding, width: screenWidth-80-2*padding, height: labelHeight)
         button2.addTarget(self, action: #selector(self.pressedButton2(_:)), for: UIControlEvents.touchUpInside)
@@ -121,13 +121,13 @@ class AssetTransactionDetailViewController: UIViewController {
         // Row 4
         label7.text = LocalizedString("Confirm Time", comment: "")
         label7.theme_textColor = GlobalPicker.textColor
-        label7.font = FontConfigManager.shared.getLabelFont()
+        label7.setTitleDigitFont()
         label7.frame = CGRect(x: padding, y: row3Underline.frame.maxY + padding, width: 80, height: labelHeight)
         view.addSubview(label7)
         
         label8.theme_textColor = GlobalPicker.textColor
         label8.textAlignment = .right
-        label8.font = FontConfigManager.shared.getLabelFont()
+        label8.setTitleDigitFont()
         label8.frame = CGRect(x: padding + 80, y: row3Underline.frame.maxY + padding, width: screenWidth-80-2*padding, height: labelHeight)
         view.addSubview(label8)
         

@@ -79,7 +79,7 @@ class OrderTableViewCell: UITableViewCell {
     
     func setupTradingPairlabel(order: Order) {
         tradingPairLabel.text = order.tradingPairDescription
-        tradingPairLabel.font = FontConfigManager.shared.getTitleFont()
+        tradingPairLabel.setTitleDigitFont()
         tradingPairLabel.setMarket()
     }
     
@@ -89,7 +89,7 @@ class OrderTableViewCell: UITableViewCell {
         } else if order.originalOrder.side.lowercased() == "buy" {
             volumeLabel.text = "Vol " + order.dealtAmountB.description
         }
-        volumeLabel.setSubTitleFont()
+        volumeLabel.setSubTitleDigitFont()
     }
     
     func setupPriceLabel(order: Order) {
@@ -106,8 +106,8 @@ class OrderTableViewCell: UITableViewCell {
         } else {
             displayLabel.text = "--"
         }
-        priceLabel.setTitleFont()
-        displayLabel.setSubTitleFont()
+        priceLabel.setTitleDigitFont()
+        displayLabel.setSubTitleDigitFont()
     }
     
     func setupOrderTypeLabel(order: Order) {

@@ -41,7 +41,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         passwordTextField.delegate = self
         passwordTextField.tag = 0
         passwordTextField.theme_tintColor = GlobalPicker.textColor
-        passwordTextField.font = FontConfigManager.shared.getLabelFont(size: 17)
+        passwordTextField.font = FontConfigManager.shared.getDigitalFont(size: 17)
         passwordTextField.placeholder = LocalizedString("Keystore Password", comment: "")
         passwordTextField.contentMode = UIViewContentMode.bottom
         passwordTextField.textContentType = .password

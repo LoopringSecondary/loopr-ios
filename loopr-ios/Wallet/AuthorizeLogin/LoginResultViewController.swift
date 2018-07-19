@@ -21,7 +21,7 @@ class LoginResultViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
         resultLabel.font = UIFont(name: FontConfigManager.shared.getBold(), size: 40.0)
-        detailLabel.setHeaderFont()
+        detailLabel.setHeaderDigitFont()
         doneButton.title = LocalizedString("Done", comment: "")
         doneButton.setupSecondary()
     }

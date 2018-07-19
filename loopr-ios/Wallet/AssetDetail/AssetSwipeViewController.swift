@@ -16,6 +16,9 @@ class AssetSwipeViewController: SwipeViewController {
     
     var asset: Asset?
     var options = SwipeViewOptions()
+    var baseView: UIImageView = UIImageView()
+    let balanceLabel: UILabel = UILabel()
+    let currencyLabel: UILabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,26 @@ class AssetSwipeViewController: SwipeViewController {
         self.topConstraint = 140
         setBackButton()
         setupChildViewControllers()
+        
+        let screensize: CGRect = UIScreen.main.bounds
+        let screenWidth = screensize.width
+        
+        baseView.frame = CGRect(x: 10, y: 10, width: screenWidth - 20, height: 120)
+        baseView.image = UIImage(named: "Header-plain")
+        baseView.contentMode = .scaleToFill
+        view.addSubview(baseView)
+        
+        balanceLabel.frame = CGRect(x: 10, y: 40, width: screenWidth - 20, height: 36)
+        balanceLabel.setHeaderDigitFont()
+        balanceLabel.textAlignment = .center
+        balanceLabel.text = asset?.display
+        view.addSubview(balanceLabel)
+        
+        currencyLabel.frame = CGRect(x: 10, y: balanceLabel.frame.maxY, width: screenWidth - 20, height: 30)
+        currencyLabel.setTitleDigitFont()
+        currencyLabel.textAlignment = .center
+        currencyLabel.text = asset?.currency
+        view.addSubview(currencyLabel)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +79,7 @@ class AssetSwipeViewController: SwipeViewController {
         options.swipeTabView.height = 44
         options.swipeTabView.underlineView.height = 1
         options.swipeTabView.underlineView.margin = 20
-        options.swipeTabView.itemView.font = FontConfigManager.shared.getRegularFont()
+        options.swipeTabView.itemView.font = FontConfigManager.shared.getCharactorFont()
         options.swipeContentScrollView.isScrollEnabled = false
         options.swipeTabView.style = .segmented
         swipeView.reloadData(options: options)
@@ -64,22 +87,18 @@ class AssetSwipeViewController: SwipeViewController {
     
     // MARK: - Delegate
     override func swipeView(_ swipeView: SwipeView, viewWillSetupAt currentIndex: Int) {
-        // print("will setup SwipeView")
     }
     
     override func swipeView(_ swipeView: SwipeView, viewDidSetupAt currentIndex: Int) {
-        // print("did setup SwipeView")
     }
     
     override func swipeView(_ swipeView: SwipeView, willChangeIndexFrom fromIndex: Int, to toIndex: Int) {
-        // print("will change from item \(fromIndex) to item \(toIndex)")
         type = types[toIndex]
         let viewController = viewControllers[toIndex]
         viewController.reloadAfterSwipeViewUpdated()
     }
     
     override func swipeView(_ swipeView: SwipeView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
-        // print("did change from item \(fromIndex) to section \(toIndex)")
         viewControllers[fromIndex].viewAppear = false
         viewControllers[toIndex].viewAppear = true
     }

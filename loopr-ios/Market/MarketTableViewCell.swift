@@ -26,12 +26,12 @@ class MarketTableViewCell: UITableViewCell {
 
         theme_backgroundColor = GlobalPicker.backgroundColor
 
-        nameLabel.setTitleFont()
-        balanceLabel.setSubTitleFont()
+        nameLabel.setTitleDigitFont()
+        balanceLabel.setSubTitleDigitFont()
         balanceLabel.isHidden = true
-        marketPriceInBitcoinLabel.setTitleFont()
-        marketPriceInFiatCurrencyLabel.setSubTitleFont()
-        percentageChangeLabel.setTitleFont()
+        marketPriceInBitcoinLabel.setTitleDigitFont()
+        marketPriceInFiatCurrencyLabel.setSubTitleDigitFont()
+        percentageChangeLabel.setTitleDigitFont()
         accessoryType = .disclosureIndicator
     }
 

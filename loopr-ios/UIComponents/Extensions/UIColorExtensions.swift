@@ -77,13 +77,19 @@ extension UIColor {
         return UIColor(named: "Color-dark5")!
     }
     
-    // #01B97F
     class var up: UIColor {
-        return UIColor(named: "Color-up")!
+        if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
+            return UIColor(named: "Color-green")! // #01B97F
+        } else {
+            return UIColor(named: "Color-red")!   // #FA4A6F
+        }
     }
     
-    // #FA4A6F
     class var down: UIColor {
-        return UIColor(named: "Color-down")!
+        if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
+            return UIColor(named: "Color-red")!   // #FA4A6F
+        } else {
+            return UIColor(named: "Color-green")! // #01B97F
+        }
     }
 }

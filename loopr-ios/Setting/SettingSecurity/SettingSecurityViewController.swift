@@ -42,7 +42,7 @@ class SettingSecurityViewController: UIViewController, UITableViewDelegate, UITa
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "SettingSecurityTableViewCell")
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .blue
-        cell.textLabel?.font = FontConfigManager.shared.getLabelFont()
+        cell.textLabel?.setTitleDigitFont()
         let option = options[indexPath.row]
         if option == .disable {
             cell.textLabel?.text = "Eable Touch ID"

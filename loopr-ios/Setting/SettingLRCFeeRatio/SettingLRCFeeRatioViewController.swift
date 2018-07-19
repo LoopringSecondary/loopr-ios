@@ -33,7 +33,7 @@ class SettingLRCFeeRatioViewController: UIViewController {
         let padding: CGFloat = 15
         
         currentValueLabel.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 30)
-        currentValueLabel.font = FontConfigManager.shared.getLabelFont()
+        currentValueLabel.setTitleDigitFont()
         currentValueLabel.text = LocalizedString("LRC Fee Ratio", comment: "") + ": \(SettingDataManager.shared.getLrcFeeRatioDescription())"
         view.addSubview(currentValueLabel)
 
@@ -48,13 +48,13 @@ class SettingLRCFeeRatioViewController: UIViewController {
         view.addSubview(slider)
 
         minLabel.frame = CGRect(x: padding, y: slider.frame.maxY + 10, width: 100, height: 30)
-        minLabel.font = FontConfigManager.shared.getLabelFont()
+        minLabel.setTitleDigitFont()
         minLabel.text = "slow"
         view.addSubview(minLabel)
         
         maxLabel.textAlignment = .right
         maxLabel.frame = CGRect(x: screenWidth-padding-100, y: minLabel.frame.minY, width: 100, height: 30)
-        maxLabel.font = FontConfigManager.shared.getLabelFont()
+        maxLabel.setTitleDigitFont()
         maxLabel.text = "fast"
         view.addSubview(maxLabel)
         

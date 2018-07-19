@@ -19,7 +19,7 @@ class OrderHistorySearchResultCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        tokenLabel.setHeaderFont()
+        tokenLabel.setHeaderDigitFont()
     }
 
     func update() {

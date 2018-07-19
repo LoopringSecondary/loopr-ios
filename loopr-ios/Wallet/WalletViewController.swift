@@ -28,13 +28,13 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         assetTableView.dataSource = self
         assetTableView.delegate = self
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
-        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
-        
-        assetTableView.tableHeaderView = headerView
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
-        footerView.theme_backgroundColor = GlobalPicker.backgroundColor
-        assetTableView.tableFooterView = footerView
+//        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
+//        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+//
+//        assetTableView.tableHeaderView = headerView
+//        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
+//        footerView.theme_backgroundColor = GlobalPicker.backgroundColor
+//        assetTableView.tableFooterView = footerView
         assetTableView.separatorStyle = .none
         
         // Avoid dragging a cell to the top makes the tableview shake
@@ -43,7 +43,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.estimatedSectionFooterHeight = 0
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
-        assetTableView.theme_backgroundColor = GlobalPicker.backgroundColor // UIStyleConfig.tableViewBackgroundColor
+        assetTableView.theme_backgroundColor = GlobalPicker.backgroundColor
 
         /*
         let qrCodebutton = UIButton(type: UIButtonType.custom)

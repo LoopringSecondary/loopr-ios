@@ -180,11 +180,11 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
 
         // setup rows
         // 1st row: amount
-        amountTipLabel.font = FontConfigManager.shared.getLabelFont()
+        amountTipLabel.setTitleDigitFont()
         amountTipLabel.text = LocalizedString("Filled/Amount", comment: "")
         amountTipLabel.frame = CGRect(x: padding, y: displayLabel.frame.maxY + padding*3, width: 150, height: labelHeight)
         scrollView.addSubview(amountTipLabel)
-        amountInfoLabel.font = FontConfigManager.shared.getLabelFont()
+        amountInfoLabel.setTitleDigitFont()
         amountInfoLabel.textAlignment = .right
         amountInfoLabel.frame = CGRect(x: padding + 150, y: amountTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: labelHeight)
         scrollView.addSubview(amountInfoLabel)
@@ -193,11 +193,11 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(amountUnderline)
         
         // 2nd row: status
-        statusTipLabel.font = FontConfigManager.shared.getLabelFont()
+        statusTipLabel.setTitleDigitFont()
         statusTipLabel.text = LocalizedString("Status", comment: "")
         statusTipLabel.frame = CGRect(x: padding, y: amountTipLabel.frame.maxY + padding, width: 150, height: labelHeight)
         scrollView.addSubview(statusTipLabel)
-        statusInfoLabel.font = FontConfigManager.shared.getLabelFont()
+        statusInfoLabel.setTitleDigitFont()
         statusInfoLabel.text = order.orderStatus.description
         statusInfoLabel.textAlignment = .right
         statusInfoLabel.frame = CGRect(x: padding + 150, y: statusTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: labelHeight)
@@ -207,17 +207,17 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(statusUnderline)
         
         // 3rd row: total
-        totalTipLabel.font = FontConfigManager.shared.getLabelFont()
+        totalTipLabel.setTitleDigitFont()
         totalTipLabel.text = LocalizedString("Total", comment: "")
         totalTipLabel.frame = CGRect(x: padding, y: statusTipLabel.frame.maxY + padding, width: 150, height: labelHeight)
         scrollView.addSubview(totalTipLabel)
-        totalInfoLabel.font = FontConfigManager.shared.getLabelFont()
+        totalInfoLabel.setTitleDigitFont()
         totalInfoLabel.textAlignment = .right
         totalInfoLabel.frame = CGRect(x: padding + 150, y: totalTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: labelHeight)
         scrollView.addSubview(totalInfoLabel)
         
         // 4th row: trade
-        tradeTipLabel.font = FontConfigManager.shared.getLabelFont()
+        tradeTipLabel.setTitleDigitFont()
         tradeTipLabel.text = LocalizedString("Trade", comment: "")
         tradeTipLabel.backgroundColor = UIStyleConfig.underlineColor
         tradeTipLabel.frame = CGRect(x: 0, y: totalTipLabel.frame.maxY + padding, width: screenWidth, height: labelHeight)
@@ -225,11 +225,11 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(tradeTipLabel)
         
         // 5th row: filled
-        filledTipLabel.font = FontConfigManager.shared.getLabelFont()
+        filledTipLabel.setTitleDigitFont()
         filledTipLabel.text = LocalizedString("Filled", comment: "")
         filledTipLabel.frame = CGRect(x: padding, y: tradeTipLabel.frame.maxY + padding, width: 150, height: labelHeight)
         scrollView.addSubview(filledTipLabel)
-        filledInfoLabel.font = FontConfigManager.shared.getLabelFont()
+        filledInfoLabel.setTitleDigitFont()
         filledInfoLabel.textAlignment = .right
         filledInfoLabel.frame = CGRect(x: padding + 150, y: filledTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: labelHeight)
         scrollView.addSubview(filledInfoLabel)
@@ -238,11 +238,11 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(filledUnderline)
         
         // 6th row: ID
-        idTipLabel.font = FontConfigManager.shared.getLabelFont()
+        idTipLabel.setTitleDigitFont()
         idTipLabel.text = LocalizedString("ID", comment: "")
         idTipLabel.frame = CGRect(x: padding, y: filledTipLabel.frame.maxY + padding, width: 50, height: labelHeight)
         scrollView.addSubview(idTipLabel)
-        idInfoLabel.font = FontConfigManager.shared.getLabelFont()
+        idInfoLabel.setTitleDigitFont()
         idInfoLabel.text = order.originalOrder.hash
         idInfoLabel.textAlignment = .right
         idInfoLabel.frame = CGRect(x: padding + 50, y: idTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 50, height: labelHeight)
@@ -252,11 +252,11 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(idUnderline)
         
         // 7th row: date
-        dateTipLabel.font = FontConfigManager.shared.getLabelFont()
+        dateTipLabel.setTitleDigitFont()
         dateTipLabel.text = LocalizedString("Time", comment: "")
         dateTipLabel.frame = CGRect(x: padding, y: idTipLabel.frame.maxY + padding, width: 150, height: labelHeight)
         scrollView.addSubview(dateTipLabel)
-        dateInfoLabel.font = FontConfigManager.shared.getLabelFont()
+        dateInfoLabel.setTitleDigitFont()
         
         let time = UInt(order.originalOrder.validSince)
         dateInfoLabel.text = DateUtil.convertToDate(time, format: "yyyy-MM-dd HH:mm")

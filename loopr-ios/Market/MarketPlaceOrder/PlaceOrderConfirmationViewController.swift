@@ -106,7 +106,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         scrollView.addSubview(arrowRightImageView)
         
         // 1st row: price
-        priceLabel.font = FontConfigManager.shared.getLabelFont()
+        priceLabel.setTitleDigitFont()
         priceLabel.text = LocalizedString("Price", comment: "")
         priceLabel.frame = CGRect(x: padding, y: tokenSView.frame.maxY + padding*4, width: 150, height: 40)
         scrollView.addSubview(priceLabel)
@@ -114,12 +114,12 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         priceTipLabel.text = "(" + LocalizedString("Irrational", comment: "") + ")"
         priceTipLabel.textColor = .red
         priceTipLabel.textAlignment = .right
-        priceTipLabel.font = FontConfigManager.shared.getLabelFont()
+        priceTipLabel.setTitleDigitFont()
         priceTipLabel.frame = CGRect(x: screenWidth - padding - 100, y: priceLabel.frame.minY, width: 100, height: 40)
         priceTipLabel.isHidden = true
         scrollView.addSubview(priceTipLabel)
         
-        priceValueLabel.font = FontConfigManager.shared.getLabelFont()
+        priceValueLabel.setTitleDigitFont()
         let tradingPair = order.market.replacingOccurrences(of: "-", with: "/")
         
         priceValueLabel.text = "\(price) \(tradingPair)"
@@ -137,11 +137,11 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         scrollView.addSubview(priceUnderline)
         
         // 2nd row: expires
-        expiresTipLabel.font = FontConfigManager.shared.getLabelFont()
+        expiresTipLabel.setTitleDigitFont()
         expiresTipLabel.text = LocalizedString("Order Expires in", comment: "")
         expiresTipLabel.frame = CGRect(x: padding, y: priceLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(expiresTipLabel)
-        expiresInfoLabel.font = FontConfigManager.shared.getLabelFont()
+        expiresInfoLabel.setTitleDigitFont()
         expiresInfoLabel.text = self.expire.description
         expiresInfoLabel.textAlignment = .right
         expiresInfoLabel.frame = CGRect(x: padding + 150, y: expiresTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
@@ -151,11 +151,11 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         scrollView.addSubview(expiresUnderline)
         
         // 3rd row: lrc fee
-        feeTipLabel.font = FontConfigManager.shared.getLabelFont()
+        feeTipLabel.setTitleDigitFont()
         feeTipLabel.text = LocalizedString("Trading Fee", comment: "")
         feeTipLabel.frame = CGRect(x: padding, y: expiresTipLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(feeTipLabel)
-        feeInfoLabel.font = FontConfigManager.shared.getLabelFont()
+        feeInfoLabel.setTitleDigitFont()
         if let price = PriceDataManager.shared.getPrice(of: "LRC") {
             let display = (order.lrcFee * price).currency
             feeInfoLabel.text = String(format: "%0.3f LRC(≈ \(display))", order.lrcFee)
@@ -168,11 +168,11 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         scrollView.addSubview(feeUnderline)
         
         // 4th row: margin split
-        marginTipLabel.font = FontConfigManager.shared.getLabelFont()
+        marginTipLabel.setTitleDigitFont()
         marginTipLabel.text = LocalizedString("Margin Split", comment: "")
         marginTipLabel.frame = CGRect(x: padding, y: feeTipLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(marginTipLabel)
-        marginInfoLabel.font = FontConfigManager.shared.getLabelFont()
+        marginInfoLabel.setTitleDigitFont()
         marginInfoLabel.text = SettingDataManager.shared.getMarginSplitDescription()
         marginInfoLabel.textAlignment = .right
         marginInfoLabel.frame = CGRect(x: padding + 150, y: marginTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
@@ -182,11 +182,11 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         scrollView.addSubview(marginUnderline)
         
         // 5th row: total
-        totalTipLabel.font = FontConfigManager.shared.getLabelFont()
+        totalTipLabel.setTitleDigitFont()
         totalTipLabel.text = LocalizedString("Total", comment: "")
         totalTipLabel.frame = CGRect(x: padding, y: marginTipLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(totalTipLabel)
-        totalInfoLabel.font = FontConfigManager.shared.getLabelFont()
+        totalInfoLabel.setTitleDigitFont()
         totalInfoLabel.text = (order.side.lowercased() == "buy" ? order.amountBuy.description + " " + order.tokenBuy : order.amountSell.description + " " + order.tokenSell)
         totalInfoLabel.textAlignment = .right
         totalInfoLabel.frame = CGRect(x: padding + 150, y: totalTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)

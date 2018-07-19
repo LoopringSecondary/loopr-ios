@@ -22,7 +22,7 @@ class WalletButtonTableViewCell: UITableViewCell {
         self.theme_backgroundColor = GlobalPicker.backgroundColor
         let iconTitlePadding: CGFloat = 14
         
-        button1.titleLabel?.setTitleFont()
+        button1.titleLabel?.setTitleCharFont()
         button1.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
         button1.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
         button1.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
@@ -30,7 +30,7 @@ class WalletButtonTableViewCell: UITableViewCell {
         button1.set(image: UIImage.init(named: "Scan-dark"), title: LocalizedString("Scan", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         button1.set(image: UIImage.init(named: "Scan-dark")?.alpha(0.6), title: LocalizedString("Scan", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         
-        button2.titleLabel?.setTitleFont()
+        button2.titleLabel?.setTitleCharFont()
         button2.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
         button2.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
         button2.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
@@ -38,7 +38,7 @@ class WalletButtonTableViewCell: UITableViewCell {
         button2.set(image: UIImage.init(named: "Transaction-receive-dark"), title: LocalizedString("Receive", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         button2.set(image: UIImage.init(named: "Transaction-receive-dark")?.alpha(0.6), title: LocalizedString("Receive", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         
-        button3.titleLabel?.setTitleFont()
+        button3.titleLabel?.setTitleCharFont()
         button3.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
         button3.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
         button3.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
@@ -46,7 +46,7 @@ class WalletButtonTableViewCell: UITableViewCell {
         button3.set(image: UIImage.init(named: "Transaction-send-dark"), title: LocalizedString("Send", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         button3.set(image: UIImage.init(named: "Transaction-send-dark")?.alpha(0.6), title: LocalizedString("Send", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         
-        button4.titleLabel?.setTitleFont()
+        button4.titleLabel?.setTitleCharFont()
         button4.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
         button4.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
         button4.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)

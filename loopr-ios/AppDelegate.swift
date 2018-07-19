@@ -93,7 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let titleAttributes = GlobalPicker.barTextColors.map { hexString in
             return [
                 NSAttributedStringKey.foregroundColor: UIColor(rgba: hexString),
-                NSAttributedStringKey.font: FontConfigManager.shared.getNavigationTitleFont(),
+                NSAttributedStringKey.font: FontConfigManager.shared.getDigitalFont(),
                 NSAttributedStringKey.shadow: shadow
             ]
         }

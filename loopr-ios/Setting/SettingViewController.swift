@@ -266,9 +266,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .blue
         cell.textLabel?.text = title
-        cell.textLabel?.font = FontConfigManager.shared.getLabelFont()
+        cell.textLabel?.setTitleDigitFont()
         cell.detailTextLabel?.text = detailTitle
-        cell.detailTextLabel?.font = FontConfigManager.shared.getLabelFont()
+        cell.detailTextLabel?.setTitleDigitFont()
         return cell
     }
     
@@ -277,7 +277,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.accessoryType = .detailButton
         cell.selectionStyle = .blue
         cell.textLabel?.text = title
-        cell.textLabel?.font = FontConfigManager.shared.getLabelFont()
+        cell.textLabel?.setTitleDigitFont()
         return cell
     }
     
@@ -286,9 +286,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.accessoryType = .none
         cell.selectionStyle = .none
         cell.textLabel?.text = title
-        cell.textLabel?.font = FontConfigManager.shared.getLabelFont()
+        cell.textLabel?.setTitleDigitFont()
         cell.detailTextLabel?.text = detailTitle
-        cell.detailTextLabel?.font = FontConfigManager.shared.getLabelFont()
+        cell.detailTextLabel?.setTitleDigitFont()
         return cell
     }
     

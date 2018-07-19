@@ -337,8 +337,6 @@
 		AC5E0996205F270000801738 /* ScanQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E0994205F270000801738 /* ScanQRCodeViewController.xib */; };
 		AC5E0DD0203A7C5800AF03C7 /* SelectWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0DCE203A7C5800AF03C7 /* SelectWalletTableViewCell.swift */; };
 		AC5E0DD1203A7C5800AF03C7 /* SelectWalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E0DCF203A7C5800AF03C7 /* SelectWalletTableViewCell.xib */; };
-		AC5E0DD6203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0DD4203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift */; };
-		AC5E0DD7203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E0DD5203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib */; };
 		AC5E0DDA203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0DD8203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift */; };
 		AC5E0DDB203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E0DD9203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib */; };
 		AC5E0DDE203B447700AF03C7 /* WalletBalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0DDC203B447700AF03C7 /* WalletBalanceTableViewCell.swift */; };
@@ -837,8 +835,6 @@
 		AC5E0994205F270000801738 /* ScanQRCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanQRCodeViewController.xib; sourceTree = "<group>"; };
 		AC5E0DCE203A7C5800AF03C7 /* SelectWalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletTableViewCell.swift; sourceTree = "<group>"; };
 		AC5E0DCF203A7C5800AF03C7 /* SelectWalletTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWalletTableViewCell.xib; sourceTree = "<group>"; };
-		AC5E0DD4203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetBalanceTableViewCell.swift; sourceTree = "<group>"; };
-		AC5E0DD5203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetBalanceTableViewCell.xib; sourceTree = "<group>"; };
 		AC5E0DD8203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTransactionTableViewCell.swift; sourceTree = "<group>"; };
 		AC5E0DD9203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetTransactionTableViewCell.xib; sourceTree = "<group>"; };
 		AC5E0DDC203B447700AF03C7 /* WalletBalanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalanceTableViewCell.swift; sourceTree = "<group>"; };
@@ -2341,8 +2337,6 @@
 			children = (
 				ACB9118A20266A9C00F14644 /* AssetDetailViewController.swift */,
 				ACB9118B20266A9C00F14644 /* AssetDetailViewController.xib */,
-				AC5E0DD4203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift */,
-				AC5E0DD5203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib */,
 				AC5E0DD8203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift */,
 				AC5E0DD9203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib */,
 				ACC8D0A820CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.swift */,
@@ -2584,7 +2578,6 @@
 				AC13B30420548767008A72C0 /* BuyAndSellSwipeViewController.xib in Resources */,
 				AC31CE152057B5A400A30335 /* TradeReviewViewController.xib in Resources */,
 				AC3756792038D7E200AADC60 /* UnlockKeystoreViewController.xib in Resources */,
-				AC5E0DD7203A9F7A00AF03C7 /* AssetBalanceTableViewCell.xib in Resources */,
 				ACB91172202557B100F14644 /* MarketViewController.xib in Resources */,
 				ACA677C1207997F400D34A2F /* DisplayKeystoreViewController.xib in Resources */,
 				AC31CE43205B604500A30335 /* Linotype-DINNextLTPro-Regular.otf in Resources */,
@@ -3101,7 +3094,6 @@
 				AC31B952204A8DF400B16155 /* Account.swift in Sources */,
 				9498E3EC2075E27E00BC8B4F /* OrderHistorySearchResultCell.swift in Sources */,
 				940B45282060F67E00ADE2B9 /* SetupDataManager.swift in Sources */,
-				AC5E0DD6203A9F7A00AF03C7 /* AssetBalanceTableViewCell.swift in Sources */,
 				AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */,
 				AC4F601120773E9D00F1D954 /* EthAccountCoordinator.swift in Sources */,
 				ACDBF103203FE790000F0DEC /* ReorderUITableView.swift in Sources */,

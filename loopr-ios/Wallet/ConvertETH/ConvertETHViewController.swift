@@ -81,7 +81,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
 
         // Row 2: Amount
 
-        tokenSLabel.font = FontConfigManager.shared.getLabelFont()
+        tokenSLabel.font = FontConfigManager.shared.getDigitalFont()
         tokenSLabel.textAlignment = .right
         tokenSLabel.frame = CGRect(x: screenWidth-200-padding, y: tokenSView.frame.maxY + padding, width: 200, height: 40)
         scrollView.addSubview(tokenSLabel)
@@ -89,7 +89,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         amountTextField.delegate = self
         amountTextField.tag = 1
         amountTextField.inputView = UIView()
-        amountTextField.font = FontConfigManager.shared.getLabelFont()
+        amountTextField.font = FontConfigManager.shared.getDigitalFont()
         amountTextField.theme_tintColor = GlobalPicker.textColor
         amountTextField.contentMode = UIViewContentMode.bottom
         amountTextField.frame = CGRect(x: padding, y: tokenSView.frame.maxY + padding, width: screenWidth-padding*2-80, height: 40)
@@ -100,7 +100,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         amountUnderLine.backgroundColor = UIColor.black
         scrollView.addSubview(amountUnderLine)
         
-        availableLabel.font = FontConfigManager.shared.getLabelFont()
+        availableLabel.font = FontConfigManager.shared.getDigitalFont()
         availableLabel.frame = CGRect(x: padding, y: amountUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(availableLabel)
         

@@ -70,7 +70,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         
         tokenSButton.setTitleColor(UIColor.black, for: .normal)
         tokenSButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
-        tokenSButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
+        tokenSButton.titleLabel?.font = FontConfigManager.shared.getDigitalFont()
         tokenSButton.frame = CGRect(x: screenWidth-padding-tokenButtonWidth, y: originY, width: tokenButtonWidth, height: 40)
         tokenSButton.addTarget(self, action: #selector(pressedSwitchTokenSButton), for: .touchUpInside)
         scrollView.addSubview(tokenSButton)
@@ -79,7 +79,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         amountSellTextField.delegate = self
         amountSellTextField.tag = 0
         amountSellTextField.inputView = UIView()
-        amountSellTextField.font = FontConfigManager.shared.getLabelFont()
+        amountSellTextField.font = FontConfigManager.shared.getDigitalFont()
         amountSellTextField.theme_tintColor = GlobalPicker.textColor
         amountSellTextField.placeholder = LocalizedString("Enter the amount you have", comment: "")
         amountSellTextField.contentMode = UIViewContentMode.bottom
@@ -89,7 +89,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         tokenSUnderLine.backgroundColor = UIColor.black
         scrollView.addSubview(tokenSUnderLine)
         
-        estimateValueInCurrency.font = FontConfigManager.shared.getLabelFont()
+        estimateValueInCurrency.font = FontConfigManager.shared.getDigitalFont()
         estimateValueInCurrency.frame = CGRect(x: padding, y: tokenSUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(estimateValueInCurrency)
         
@@ -100,7 +100,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         // Second row: exchange label
         
         exchangeImage.image = UIImage(named: "Trading")
-        exchangeLabel.font = FontConfigManager.shared.getLabelFont(size: 15)
+        exchangeLabel.font = FontConfigManager.shared.getDigitalFont(size: 15)
         exchangeLabel.textAlignment = .center
         exchangeLabel.frame = CGRect(x: 0, y: estimateValueInCurrency.frame.maxY + padding*2, width: screenWidth, height: 40)
         scrollView.addSubview(exchangeLabel)
@@ -109,7 +109,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
 
         tokenBButton.setTitleColor(UIColor.black, for: .normal)
         tokenBButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
-        tokenBButton.titleLabel?.font = FontConfigManager.shared.getLabelFont()
+        tokenBButton.titleLabel?.font = FontConfigManager.shared.getDigitalFont()
         tokenBButton.frame = CGRect(x: screenWidth-padding-tokenButtonWidth, y: exchangeLabel.frame.maxY + padding*2, width: tokenButtonWidth, height: 40)
         tokenBButton.addTarget(self, action: #selector(pressedSwitchTokenBButton), for: .touchUpInside)
         scrollView.addSubview(tokenBButton)
@@ -118,7 +118,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         amountBuyTextField.delegate = self
         amountBuyTextField.tag = 2
         amountBuyTextField.inputView = UIView()
-        amountBuyTextField.font = FontConfigManager.shared.getLabelFont()
+        amountBuyTextField.font = FontConfigManager.shared.getDigitalFont()
         amountBuyTextField.theme_tintColor = GlobalPicker.textColor
         amountBuyTextField.placeholder = LocalizedString("Enter the amount you get", comment: "")
         amountBuyTextField.contentMode = UIViewContentMode.bottom
@@ -129,7 +129,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         scrollView.addSubview(totalUnderLine)
         
         availableLabel.text = ""
-        availableLabel.font = FontConfigManager.shared.getLabelFont()
+        availableLabel.font = FontConfigManager.shared.getDigitalFont()
         availableLabel.frame = CGRect(x: padding, y: totalUnderLine.frame.maxY, width: screenWidth-padding*2-80, height: 40)
         scrollView.addSubview(availableLabel)
 

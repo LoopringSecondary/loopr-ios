@@ -11,9 +11,7 @@ import UIKit
 class UpdatedAssetTransactionTableViewCell: UITableViewCell {
 
     var transaction: Transaction?
-
     var baseView: UIView = UIView()
-
     var typeImageView: UIImageView = UIImageView()
     var titleLabel: UILabel = UILabel()
     var dateLabel: UILabel = UILabel()
@@ -27,45 +25,47 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         
-        backgroundColor = UIStyleConfig.tableViewBackgroundColor
-        baseView.backgroundColor = UIColor.white
+        theme_backgroundColor = GlobalPicker.backgroundColor
+        
+        baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         baseView.frame = CGRect.init(x: 10, y: 10, width: screenWidth - 10*2, height: UpdatedAssetTransactionTableViewCell.getHeight() - 10)
+        baseView.cornerRadius = 8
         addSubview(baseView)
         
-        typeImageView.frame = CGRect.init(x: 15, y: 15, width: 30, height: 30)
+        typeImageView.frame = CGRect.init(x: 16, y: 26, width: 28, height: 28)
         typeImageView.contentMode = .scaleAspectFit
         baseView.addSubview(typeImageView)
         
-        titleLabel.frame = CGRect.init(x: 60, y: 13-3, width: 200, height: 31/2)
-        titleLabel.font = FontConfigManager.shared.getRegularFont(size: 15)
+        titleLabel.frame = CGRect.init(x: 64, y: 22-3, width: 200, height: 36)
+        titleLabel.setTitleCharFont()
         titleLabel.text = "ETHETHETHETHETHETHETH"  // Prototype the label size. Will be updated very soon.
         titleLabel.sizeToFit()
         titleLabel.text = ""
         baseView.addSubview(titleLabel)
         
-        dateLabel.frame = CGRect.init(x: titleLabel.frame.minX, y: 35-3, width: 200, height: 27)
-        dateLabel.setSubTitleFont()
+        dateLabel.frame = CGRect.init(x: titleLabel.frame.minX, y: 44, width: 200, height: 27)
+        dateLabel.setSubTitleDigitFont()
         dateLabel.text = "ETHETHETHETHETHETHETH"
         dateLabel.sizeToFit()
         dateLabel.text = ""
         baseView.addSubview(dateLabel)
         
-        amountLabel.frame = CGRect.init(x: baseView.frame.width - 15 - 200, y: titleLabel.frame.minY, width: 200, height: titleLabel.frame.size.height)
-        amountLabel.font = FontConfigManager.shared.getRegularFont(size: 15)
+        amountLabel.frame = CGRect.init(x: baseView.frame.width - 16 - 200, y: titleLabel.frame.minY, width: 200, height: titleLabel.frame.size.height)
+        amountLabel.setTitleDigitFont()
         amountLabel.textAlignment = .right
         baseView.addSubview(amountLabel)
         
         displayLabel.frame = CGRect.init(x: amountLabel.frame.minX, y: dateLabel.frame.minY, width: 200, height: dateLabel.frame.size.height)
-        displayLabel.setSubTitleFont()
+        displayLabel.setSubTitleDigitFont()
         displayLabel.textAlignment = .right
         baseView.addSubview(displayLabel)
     }
 
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         if highlighted {
-            baseView.backgroundColor = UIStyleConfig.tableCellSelectedBackgroundColor
+            baseView.theme_backgroundColor = GlobalPicker.cardHighLightColor
         } else {
-            baseView.backgroundColor = UIColor.white
+            baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         }
     }
     
@@ -82,10 +82,6 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
                 updateApprove()
             case .cutoff, .canceledOrder:
                 udpateCutoffAndCanceledOrder()
-            case .received:
-                updateReceived()
-            case .sent:
-                updateSent()
             default:
                 updateDefault()
             }
@@ -100,8 +96,8 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
         } else if transaction!.symbol.lowercased() == "eth" {
             titleLabel.text = LocalizedString("Convert to ETH", comment: "")
         }
-        amountLabel.text = "\(transaction!.value) \(transaction?.symbol ?? " ")"
-        amountLabel.textColor = UIColor.black
+        amountLabel.text = "+\(transaction!.value) \(transaction?.symbol ?? " ")"
+        amountLabel.textColor = UIColor.up
         displayLabel.text = transaction!.currency
     }
     
@@ -113,8 +109,8 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
         } else if transaction!.symbol.lowercased() == "eth" {
             titleLabel.text = LocalizedString("Convert to ETH", comment: "")
         }
-        amountLabel.text = "\(transaction!.value) \(transaction?.symbol ?? " ")"
-        amountLabel.textColor = UIColor.black
+        amountLabel.text = "-\(transaction!.value) \(transaction?.symbol ?? " ")"
+        amountLabel.textColor = UIColor.down
         displayLabel.text = transaction!.currency
     }
     
@@ -137,7 +133,7 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
         displayLabel.isHidden = false
         titleLabel.text = transaction!.type.description + " " + transaction!.symbol
         amountLabel.text = "+\(transaction!.value) \(transaction?.symbol ?? " ")"
-        amountLabel.textColor = UIStyleConfig.getChangeColor(change: amountLabel.text!)
+        amountLabel.textColor = UIColor.up
         displayLabel.text = transaction!.currency
     }
     
@@ -146,17 +142,24 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
         displayLabel.isHidden = false
         titleLabel.text = transaction!.type.description + " " + transaction!.symbol
         amountLabel.text = "-\(transaction!.value) \(transaction?.symbol ?? " ")"
-        amountLabel.textColor = UIStyleConfig.getChangeColor(change: amountLabel.text!)
+        amountLabel.textColor = UIColor.down
         displayLabel.text = transaction!.currency
     }
     
     private func updateDefault() {
         amountLabel.isHidden = false
         displayLabel.isHidden = false
-        titleLabel.text = transaction!.type.description + " " + transaction!.symbol
-        amountLabel.text = "\(transaction!.value) \(transaction?.symbol ?? " ")"
-        amountLabel.textColor = UIColor.black
-        displayLabel.text = transaction!.currency
+        if let tx = self.transaction {
+            if tx.type == .bought || tx.type == .received {
+                amountLabel.textColor = UIColor.up
+                amountLabel.text = "+\(tx.value) \(tx.symbol)"
+            } else if tx.type == .sold || tx.type == .sent {
+                amountLabel.textColor = UIColor.down
+                amountLabel.text = "-\(tx.value) \(tx.symbol)"
+            }
+            displayLabel.text = tx.currency
+            titleLabel.text = tx.type.description + " " + tx.symbol
+        }
     }
 
     class func getCellIdentifier() -> String {
@@ -164,7 +167,6 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 70
+        return 90
     }
-    
 }

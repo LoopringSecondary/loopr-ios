@@ -56,12 +56,12 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         infoLabel.frame = CGRect(x: 15, y: 5, width: screenWidth - 2*15, height: 40)
         
         infoLabel.textColor = UIColor.black.withAlphaComponent(0.6)
-        infoLabel.font = FontConfigManager.shared.getLabelFont(size: 17)
+        infoLabel.font = FontConfigManager.shared.getDigitalFont(size: 17)
         infoLabel.text = LocalizedString("Please click words in order.", comment: "")
         view.addSubview(infoLabel)
         
         mnemonicsTextView.frame = CGRect(x: 15, y: infoLabel.frame.maxY + 15, width: screenWidth - 2*15, height: 120)
-        mnemonicsTextView.font = FontConfigManager.shared.getLabelFont()
+        mnemonicsTextView.font = FontConfigManager.shared.getDigitalFont()
         mnemonicsTextView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
         mnemonicsTextView.textColor = .black
         mnemonicsTextView.tintColor = UIColor.black
