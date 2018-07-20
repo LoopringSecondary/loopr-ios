@@ -22,7 +22,13 @@ class SettingThemeModeTableViewCell: UITableViewCell {
         } else {
             nightModeSwitch.setOn(false, animated: false)
         }
+        nightModeSwitch.tintColor = UIColor(named: "Color-green")!
+        nightModeSwitch.transform = CGAffineTransform(scaleX: 0.77, y: 0.77)
         
+        nightModeLabel.textColor = Themes.isDark() ? UIColor.white : UIColor.dark2
+        backgroundColor = Themes.isDark() ? UIColor.dark2 : UIColor.white
+
+        nightModeLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
         nightModeLabel.text = LocalizedString("Night Mode", comment: "")
     }
 
@@ -41,6 +47,6 @@ class SettingThemeModeTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 45
+        return 51
     }
 }

@@ -17,10 +17,13 @@ class SettingPasscodeTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        passcodeLabel.text = BiometricType.get().description
-        passcodeLabel.setTitleDigitFont()
+        passcodeLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
+        passcodeLabel.textColor = Themes.isDark() ? UIColor.white : UIColor.dark2
+        backgroundColor = Themes.isDark() ? UIColor.dark2 : UIColor.white
         
-        passcodeSwitch.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
+        passcodeLabel.text = BiometricType.get().description
+        
+        passcodeSwitch.transform = CGAffineTransform(scaleX: 0.77, y: 0.77)
         passcodeSwitch.setOn(AuthenticationDataManager.shared.getPasscodeSetting(), animated: false)
     }
     

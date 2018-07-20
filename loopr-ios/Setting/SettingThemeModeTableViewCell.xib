@@ -4,9 +4,9 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,7 +36,7 @@
                             <constraint firstAttribute="width" constant="47" id="fm1-IS-gqJ"/>
                             <constraint firstAttribute="height" constant="31" id="nYu-ee-gHo"/>
                         </constraints>
-                        <color key="onTintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="onTintColor" name="Color-green"/>
                         <connections>
                             <action selector="toggleNightModeSwitch:" destination="KGk-i7-Jjw" eventType="valueChanged" id="EAb-If-Si2"/>
                         </connections>
@@ -57,4 +57,9 @@
             <point key="canvasLocation" x="91" y="123.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="Color-green">
+            <color red="0.0039215686274509803" green="0.72549019607843135" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
 </document>
