@@ -314,7 +314,7 @@ extension SwipeTabView {
         case .underline:
             let itemView = itemViews[currentIndex]
             underlineView = UIView(frame: CGRect(x: itemView.frame.origin.x + options.underlineView.margin, y: itemView.frame.height, width: itemView.frame.width - options.underlineView.margin * 2, height: options.underlineView.height))
-            underlineView.backgroundColor = options.underlineView.backgroundColor
+            underlineView.applyGradient(withColors: UIColor.secondary)
             containerView.addSubview(underlineView)
         case .none:
             underlineView.backgroundColor = .clear

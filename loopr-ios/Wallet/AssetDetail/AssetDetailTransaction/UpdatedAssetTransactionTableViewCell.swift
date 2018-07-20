@@ -14,6 +14,7 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
     var baseView: UIView = UIView()
     var typeImageView: UIImageView = UIImageView()
     var titleLabel: UILabel = UILabel()
+    var statusImage: UIImageView = UIImageView()
     var dateLabel: UILabel = UILabel()
     var amountLabel: UILabel = UILabel()
     var displayLabel: UILabel = UILabel()
@@ -36,7 +37,7 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
         typeImageView.contentMode = .scaleAspectFit
         baseView.addSubview(typeImageView)
         
-        titleLabel.frame = CGRect.init(x: 64, y: 22-3, width: 200, height: 36)
+        titleLabel.frame = CGRect.init(x: 52, y: 22-3, width: 200, height: 36)
         titleLabel.setTitleCharFont()
         titleLabel.text = "ETHETHETHETHETHETHETH"  // Prototype the label size. Will be updated very soon.
         titleLabel.sizeToFit()
@@ -70,10 +71,8 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
     }
     
     func update() {
-        if let transaction = transaction {
-            typeImageView.image = transaction.icon
-            dateLabel.text = transaction.createTime
-            switch transaction.type {
+        if let tx = transaction {
+            switch tx.type {
             case .convert_income:
                 updateConvertIncome()
             case .convert_outcome:
@@ -85,6 +84,9 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
             default:
                 updateDefault()
             }
+            typeImageView.image = tx.icon
+            dateLabel.text = tx.createTime
+            updateStatusImage(transaction: tx)
         }
     }
     
@@ -160,6 +162,25 @@ class UpdatedAssetTransactionTableViewCell: UITableViewCell {
             displayLabel.text = tx.currency
             titleLabel.text = tx.type.description + " " + tx.symbol
         }
+    }
+    
+    func updateStatusImage(transaction: Transaction) {
+        let x = 62 + titleLabel.intrinsicContentSize.width
+        statusImage.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 15, height: 15))
+        
+        statusImage.center = CGPoint(x: x, y: titleLabel.frame.midY)
+        
+        switch transaction.status {
+        case .success:
+            self.statusImage.image = UIImage(named: "Checked")
+        case .pending:
+            self.statusImage.image = UIImage(named: "Clock")
+        case .failed:
+            self.statusImage.image = UIImage(named: "Warn")
+        default:
+            self.statusImage.image = UIImage(named: "Checked")
+        }
+        baseView.addSubview(statusImage)
     }
 
     class func getCellIdentifier() -> String {

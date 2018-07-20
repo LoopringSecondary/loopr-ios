@@ -59,6 +59,8 @@ class AssetSwipeViewController: SwipeViewController {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.black
         }
+        options.swipeTabView.underlineView.height = 2
+        swipeView.reloadData(options: options, default: swipeView.currentIndex)
     }
 
     override func didReceiveMemoryWarning() {

@@ -9,20 +9,20 @@
 import UIKit
 
 public struct SwipeViewOptions {
-    
+
     public struct SwipeTabView {
-        
+
         public enum Style {
             case flexible
             case segmented
             // TODO: case infinity
         }
-        
+
         public enum Addition {
             case underline
             case none
         }
-        
+
         public struct ItemView {
             /// ItemView width. Defaults to `100.0`.
             public var width: CGFloat = 100.0
