@@ -23,18 +23,9 @@ extension UIViewController {
     
     // Used in viewDidDisappear()
     func showNavigationBar() {
-        let shadow = NSShadow()
-        shadow.shadowOffset = CGSize(width: 0, height: 0)
-        let titleAttributes = GlobalPicker.textColors.map { hexString in
-            return [
-                NSAttributedStringKey.foregroundColor: UIColor(rgba: hexString),
-                NSAttributedStringKey.font: FontConfigManager.shared.getDigitalFont(),
-                NSAttributedStringKey.shadow: shadow
-            ]
-        }
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.theme_tintColor = GlobalPicker.textColor
         self.navigationController?.navigationBar.theme_barTintColor = GlobalPicker.backgroundColor
-        self.navigationController?.navigationBar.theme_titleTextAttributes = ThemeDictionaryPicker.pickerWithAttributes(titleAttributes)
+        self.navigationController?.navigationBar.theme_titleTextAttributes = ThemeDictionaryPicker.pickerWithAttributes(GlobalPicker.titleAttributes)
     }
 }

@@ -141,6 +141,16 @@
 		AC2ACA622102E7B2009C77E7 /* SettingStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA602102E7B1009C77E7 /* SettingStyleTableViewCell.xib */; };
 		AC2ACA652102EBBE009C77E7 /* SettingLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2ACA632102EBBC009C77E7 /* SettingLanguageTableViewCell.swift */; };
 		AC2ACA662102EBBE009C77E7 /* SettingLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA642102EBBD009C77E7 /* SettingLanguageTableViewCell.xib */; };
+		AC2ACA83210305F8009C77E7 /* TradeFAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2ACA68210305F7009C77E7 /* TradeFAQViewController.swift */; };
+		AC2ACA84210305F8009C77E7 /* TradeFAQTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA69210305F7009C77E7 /* TradeFAQTableViewCell.xib */; };
+		AC2ACA85210305F8009C77E7 /* TradeFAQDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2ACA6A210305F8009C77E7 /* TradeFAQDetailViewController.swift */; };
+		AC2ACA86210305F8009C77E7 /* TradeFAQViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA6B210305F8009C77E7 /* TradeFAQViewController.xib */; };
+		AC2ACA87210305F8009C77E7 /* TradeFAQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2ACA6C210305F8009C77E7 /* TradeFAQTableViewCell.swift */; };
+		AC2ACA88210305F8009C77E7 /* TradeFAQDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA6D210305F8009C77E7 /* TradeFAQDetailViewController.xib */; };
+		AC2ACA9C2103075C009C77E7 /* WalletType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2ACA9B2103075C009C77E7 /* WalletType.swift */; };
+		AC2ACA9E21030775009C77E7 /* TradeFAQPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2ACA9D21030775009C77E7 /* TradeFAQPage.swift */; };
+		AC2ACAA221031AC2009C77E7 /* fee_0_zh-Hans.md in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACAA121031AC2009C77E7 /* fee_0_zh-Hans.md */; };
+		AC2ACAA621031F66009C77E7 /* fee_1_zh-Hans.md in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACAA521031F27009C77E7 /* fee_1_zh-Hans.md */; };
 		AC2CFAA120BB3BEE00387DB1 /* BiometricType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2CFAA020BB3BEE00387DB1 /* BiometricType.swift */; };
 		AC2D2C05208882BD00D619AD /* FoundationArray+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C04208882BD00D619AD /* FoundationArray+Extension.swift */; };
 		AC2D2C072089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C062089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift */; };
@@ -700,6 +710,16 @@
 		AC2ACA602102E7B1009C77E7 /* SettingStyleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingStyleTableViewCell.xib; sourceTree = "<group>"; };
 		AC2ACA632102EBBC009C77E7 /* SettingLanguageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingLanguageTableViewCell.swift; sourceTree = "<group>"; };
 		AC2ACA642102EBBD009C77E7 /* SettingLanguageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingLanguageTableViewCell.xib; sourceTree = "<group>"; };
+		AC2ACA68210305F7009C77E7 /* TradeFAQViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeFAQViewController.swift; sourceTree = "<group>"; };
+		AC2ACA69210305F7009C77E7 /* TradeFAQTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TradeFAQTableViewCell.xib; sourceTree = "<group>"; };
+		AC2ACA6A210305F8009C77E7 /* TradeFAQDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeFAQDetailViewController.swift; sourceTree = "<group>"; };
+		AC2ACA6B210305F8009C77E7 /* TradeFAQViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TradeFAQViewController.xib; sourceTree = "<group>"; };
+		AC2ACA6C210305F8009C77E7 /* TradeFAQTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeFAQTableViewCell.swift; sourceTree = "<group>"; };
+		AC2ACA6D210305F8009C77E7 /* TradeFAQDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TradeFAQDetailViewController.xib; sourceTree = "<group>"; };
+		AC2ACA9B2103075C009C77E7 /* WalletType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletType.swift; sourceTree = "<group>"; };
+		AC2ACA9D21030775009C77E7 /* TradeFAQPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeFAQPage.swift; sourceTree = "<group>"; };
+		AC2ACAA121031AC2009C77E7 /* fee_0_zh-Hans.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "fee_0_zh-Hans.md"; sourceTree = "<group>"; };
+		AC2ACAA521031F27009C77E7 /* fee_1_zh-Hans.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "fee_1_zh-Hans.md"; sourceTree = "<group>"; };
 		AC2CFAA020BB3BEE00387DB1 /* BiometricType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricType.swift; sourceTree = "<group>"; };
 		AC2D2C04208882BD00D619AD /* FoundationArray+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoundationArray+Extension.swift"; sourceTree = "<group>"; };
 		AC2D2C062089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingPrivateKeyDataManager.swift; sourceTree = "<group>"; };
@@ -1273,6 +1293,21 @@
 				AC2ACA4B20FA0EC3009C77E7 /* Rubik-BoldItalic.ttf */,
 			);
 			path = Rubik;
+			sourceTree = "<group>";
+		};
+		AC2ACA67210305F7009C77E7 /* TradeFAQ */ = {
+			isa = PBXGroup;
+			children = (
+				AC2ACA68210305F7009C77E7 /* TradeFAQViewController.swift */,
+				AC2ACA6B210305F8009C77E7 /* TradeFAQViewController.xib */,
+				AC2ACA6C210305F8009C77E7 /* TradeFAQTableViewCell.swift */,
+				AC2ACA69210305F7009C77E7 /* TradeFAQTableViewCell.xib */,
+				AC2ACA6A210305F8009C77E7 /* TradeFAQDetailViewController.swift */,
+				AC2ACA6D210305F8009C77E7 /* TradeFAQDetailViewController.xib */,
+				AC2ACAA121031AC2009C77E7 /* fee_0_zh-Hans.md */,
+				AC2ACAA521031F27009C77E7 /* fee_1_zh-Hans.md */,
+			);
+			path = TradeFAQ;
 			sourceTree = "<group>";
 		};
 		AC31B93B204A8D1F00B16155 /* Keystore@8fea1ff */ = {
@@ -2056,6 +2091,8 @@
 				94A39E1220C8E4FE00BC1B72 /* SignStatus.swift */,
 				9457416D20D0D23400110CFD /* CancelType.swift */,
 				9457416F20D0E9CD00110CFD /* CancelOrder.swift */,
+				AC2ACA9B2103075C009C77E7 /* WalletType.swift */,
+				AC2ACA9D21030775009C77E7 /* TradeFAQPage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2116,6 +2153,7 @@
 				ACB8485820BA75E7006B83AD /* SettingPasscodeTableViewCell.xib */,
 				AC2ACA5F2102E7B1009C77E7 /* SettingStyleTableViewCell.swift */,
 				AC2ACA602102E7B1009C77E7 /* SettingStyleTableViewCell.xib */,
+				AC2ACA67210305F7009C77E7 /* TradeFAQ */,
 				ACBA47DF20788E690032C2B4 /* SettingManageWallet */,
 				94AD1FDF208B8F5600C443E6 /* SettingCurrency */,
 				AC76E47520493CB7008BA229 /* SettingLanguage */,
@@ -2507,6 +2545,7 @@
 				AC54FD79204FC6E8007E1DEB /* OpenSans-ExtraBold.ttf in Resources */,
 				ACB911562024260E00F14644 /* WalletViewController.xib in Resources */,
 				AC54FD85204FC6F5007E1DEB /* OpenSans-LightItalic.ttf in Resources */,
+				AC2ACAA621031F66009C77E7 /* fee_1_zh-Hans.md in Resources */,
 				ACB5DD80202AC26000140A09 /* button1.json in Resources */,
 				AC952A152053A84800C78562 /* OrderHistoryViewController.xib in Resources */,
 				ACC8D0A720CC95A00049A741 /* AssetTableViewCell.xib in Resources */,
@@ -2527,8 +2566,10 @@
 				ACBA47EF207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.xib in Resources */,
 				ACB9118920265DEA00F14644 /* MarketDetailViewController.xib in Resources */,
 				943A9A4220909597008BCBFD /* DefaultWebViewController.xib in Resources */,
+				AC2ACA86210305F8009C77E7 /* TradeFAQViewController.xib in Resources */,
 				AC31CE6B205B995100A30335 /* Roboto-LightItalic.ttf in Resources */,
 				AC31CE34205B603200A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf in Resources */,
+				AC2ACA84210305F8009C77E7 /* TradeFAQTableViewCell.xib in Resources */,
 				AC5E0996205F270000801738 /* ScanQRCodeViewController.xib in Resources */,
 				AC4F8639209D483B002E62AB /* SettingLRCFeeRatioViewController.xib in Resources */,
 				943C1CB320CE26CE008A8CED /* LoginResultViewController.xib in Resources */,
@@ -2555,11 +2596,13 @@
 				AC4C144C204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.xib in Resources */,
 				94C11FD7208C2DC60050E180 /* SettingCurrencyViewController.xib in Resources */,
 				AC72AED9204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib in Resources */,
+				AC2ACAA221031AC2009C77E7 /* fee_0_zh-Hans.md in Resources */,
 				AC375685203A641200AADC60 /* SelectWalletViewController.xib in Resources */,
 				ACB729D1205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.xib in Resources */,
 				AC54FD7C204FC6EB007E1DEB /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				AC2ACA662102EBBE009C77E7 /* SettingLanguageTableViewCell.xib in Resources */,
 				AC31CE62205B994700A30335 /* Roboto-BoldItalic.ttf in Resources */,
+				AC2ACA88210305F8009C77E7 /* TradeFAQDetailViewController.xib in Resources */,
 				ACE65E4620720500001EE499 /* MnemonicCollectionViewCell.xib in Resources */,
 				AC31CE6E205B995500A30335 /* Roboto-Medium.ttf in Resources */,
 				AC5E3E6C205DEAC00051ACFC /* TradeCompleteViewController.xib in Resources */,
@@ -2723,6 +2766,7 @@
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyMarkdown/SwiftyMarkdown.framework",
 				"${BUILT_PRODUCTS_DIR}/TrezorCrypto/TrezorCrypto.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/secp256k1_ios/secp256k1_ios.framework",
@@ -2743,6 +2787,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTheme.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyMarkdown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrezorCrypto.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/secp256k1_ios.framework",
@@ -2895,6 +2940,7 @@
 				AC4F601320773E9D00F1D954 /* EthType.swift in Sources */,
 				ACB9116E2025575A00F14644 /* MarketNavigationViewController.swift in Sources */,
 				AC78FC35209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift in Sources */,
+				AC2ACA9E21030775009C77E7 /* TradeFAQPage.swift in Sources */,
 				AC4F601420773E9D00F1D954 /* EthError.swift in Sources */,
 				AC4142062038B66F0089861D /* AppWallet.swift in Sources */,
 				ACB97C7020715BC100775D4C /* MnemonicQuestion.swift in Sources */,
@@ -2982,6 +3028,7 @@
 				AC37567C2038D80300AADC60 /* PrivateKeyViewController.swift in Sources */,
 				9475A2EE207EF81300200155 /* OrderDetailViewController.swift in Sources */,
 				ACB41A6C20B54A2D00A92C9D /* AuthenticationNavigationViewController.swift in Sources */,
+				AC2ACA85210305F8009C77E7 /* TradeFAQDetailViewController.swift in Sources */,
 				AC9280E7202F5A010009B574 /* UIStyleConfig.swift in Sources */,
 				AC31CE17205A121000A30335 /* NumericKeyboardProtocol.swift in Sources */,
 				AC387511205F12F100A76637 /* ContextMenuDismissing.swift in Sources */,
@@ -3051,6 +3098,7 @@
 				AC72AEE8204F020B00E9D3B0 /* OrderTradeState.swift in Sources */,
 				AC69913E20AA68F7003593AE /* SettingWalletDetailTableViewCell.swift in Sources */,
 				AC147BEC208D2E54008D5104 /* ImportWalletError.swift in Sources */,
+				AC2ACA9C2103075C009C77E7 /* WalletType.swift in Sources */,
 				AC0619422085D01E0060F416 /* SearchBarContainerView.swift in Sources */,
 				AC56625B20563C05003C925C /* TradeViewController.swift in Sources */,
 				AC31B95E204A8E4F00B16155 /* Mnemonic.swift in Sources */,
@@ -3069,6 +3117,7 @@
 				ACB9117820256B0300F14644 /* Market.swift in Sources */,
 				AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */,
 				94DAACB320BBF24B0097707E /* OrderQRCodeViewController.swift in Sources */,
+				AC2ACA83210305F8009C77E7 /* TradeFAQViewController.swift in Sources */,
 				AC5E3E70205DFB700051ACFC /* SendAssetViewController.swift in Sources */,
 				AC99CF492083DF25000AE4BD /* ImportWalletUsingMnemonicDataManager.swift in Sources */,
 				94E185972051451C00D86FFA /* Initable.swift in Sources */,
@@ -3086,6 +3135,7 @@
 				ACFEFEA220C3792200013921 /* CoreDataManager.swift in Sources */,
 				AC99CF4E2083E4AF000AE4BD /* MnemonicSelectAddressViewController.swift in Sources */,
 				ACB6A19F20965D94004C64BC /* QRCodeSaveToAlbum.swift in Sources */,
+				AC2ACA87210305F8009C77E7 /* TradeFAQTableViewCell.swift in Sources */,
 				ACE6F72720426BAC0039273D /* SettingThemeModeTableViewCell.swift in Sources */,
 				ACA677CF207D1BEC00D34A2F /* SettingChangeWalletNameViewController.swift in Sources */,
 				ACA677B82079970600D34A2F /* ExportKeystoreSwipeViewController.swift in Sources */,

@@ -16,13 +16,24 @@ enum GlobalPicker {
     static let cardHighLightColor: ThemeColorPicker = ["#00000099", "#383838"]
     
     // text colors
-    static let textColors = ["#000000cc", "#ffffffcc"]
+    private static let textColors = ["#000000cc", "#ffffffcc"]
     static let textColor = ThemeColorPicker.pickerWithColors(textColors)
     static let textLightColor: ThemeColorPicker = ["#00000099", "#ffffff66"]
   
-    static let barTextColors = ["#00000099", "#ffffffcc"]
+    private static let barTextColors = ["#00000099", "#ffffffcc"]
     static let barTextColor = ThemeColorPicker.pickerWithColors(barTextColors)
     static let barTintColor: ThemeColorPicker = ["#f5f5f5", "#222222"]
+    
+    // navigation title attributes
+    static let titleAttributes = GlobalPicker.textColors.map { hexString -> [NSAttributedStringKey : NSObject] in
+        let shadow = NSShadow()
+        shadow.shadowOffset = CGSize(width: 0, height: 0)
+        return [
+            NSAttributedStringKey.foregroundColor: UIColor(rgba: hexString),
+            NSAttributedStringKey.font: FontConfigManager.shared.getDigitalFont(),
+            NSAttributedStringKey.shadow: shadow
+        ]
+    }
     
     // button images
     static let button: ThemeImagePicker = ThemeImagePicker(images: getImage(from: UIColor.init(rgba: "#f5f5f5")), getImage(from: UIColor.init(rgba: "#292929")))

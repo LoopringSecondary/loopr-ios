@@ -13,7 +13,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var settingsTableView: UITableView!
     
     let sectionTitles = [LocalizedString("User Preferences", comment: ""), LocalizedString("Trading", comment: ""), LocalizedString("Security", comment: ""), LocalizedString("About", comment: "")]
-    let sectionRows = [5, 3, 1]
+    let sectionRows = [5, 4, 1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,6 +96,11 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let viewController = SettingMarginSplitViewController()
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
+            case 3:
+                print("Trade FAQ")
+                let viewController = TradeFAQViewController()
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
             default:
                 break
             }
@@ -151,6 +156,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             return createDetailTableCell(title: LocalizedString("LRC Fee Ratio", comment: ""))
         case 2:
             return createDetailTableCell(title: LocalizedString("Margin Split", comment: ""))
+        case 3:
+            return createDetailTableCell(title: LocalizedString("Trade FAQ", comment: ""))
         default:
             return UITableViewCell()
         }

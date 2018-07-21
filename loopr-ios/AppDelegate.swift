@@ -86,22 +86,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // navigation bar
         let navigationBar = UINavigationBar.appearance()
-        
-        let shadow = NSShadow()
-        shadow.shadowOffset = CGSize(width: 0, height: 0)
-        
-        let titleAttributes = GlobalPicker.barTextColors.map { hexString in
-            return [
-                NSAttributedStringKey.foregroundColor: UIColor(rgba: hexString),
-                NSAttributedStringKey.font: FontConfigManager.shared.getDigitalFont(),
-                NSAttributedStringKey.shadow: shadow
-            ]
-        }
-        
+
         navigationBar.isTranslucent = false
         navigationBar.theme_tintColor = GlobalPicker.barTextColor
         navigationBar.theme_barTintColor = GlobalPicker.barTintColor
-        navigationBar.theme_titleTextAttributes = ThemeDictionaryPicker.pickerWithAttributes(titleAttributes)
+        navigationBar.theme_titleTextAttributes = ThemeDictionaryPicker.pickerWithAttributes(GlobalPicker.titleAttributes)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

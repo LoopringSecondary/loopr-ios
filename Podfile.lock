@@ -26,6 +26,7 @@ PODS:
   - SVProgressHUD (2.2.5)
   - SwiftLint (0.25.1)
   - SwiftTheme (0.4.1)
+  - SwiftyMarkdown (0.5.1)
   - TrezorCrypto (0.0.4)
 
 DEPENDENCIES:
@@ -45,6 +46,7 @@ DEPENDENCIES:
   - SVProgressHUD
   - SwiftLint
   - SwiftTheme
+  - SwiftyMarkdown
   - TrezorCrypto (= 0.0.4)
 
 SPEC REPOS:
@@ -68,6 +70,7 @@ SPEC REPOS:
     - SVProgressHUD
     - SwiftLint
     - SwiftTheme
+    - SwiftyMarkdown
     - TrezorCrypto
 
 EXTERNAL SOURCES:
@@ -100,8 +103,9 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
   SwiftTheme: 36d71c4eed4b2c401c782cf036e4586c749a8173
+  SwiftyMarkdown: 743af3e87931391bc4836b825fec3d98785b2e3a
   TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803
 
-PODFILE CHECKSUM: c000a225f17652eb6b23f2fde46ca6e9694d4ecb
+PODFILE CHECKSUM: a23299dbaa9f790f79919ad50b5d1afbb3d5ceed
 
 COCOAPODS: 1.5.0
