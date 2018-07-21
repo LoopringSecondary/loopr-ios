@@ -34,8 +34,8 @@ class TradeFAQDetailViewController: UIViewController {
         
         if let url = Bundle.main.url(forResource: fileName, withExtension: "md"), let md = SwiftyMarkdown(url: url ) {
             if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
-                //md.h1.fontName = "Rubik-Medium"
-                //md.body.fontName = "Rubik-Regular"
+                md.h1.fontName = "Rubik-Medium"
+                md.body.fontName = "Rubik-Regular"
             } else {
                 md.h1.fontName = "Rubik-Medium"
                 md.body.fontName = "Rubik-Regular"
