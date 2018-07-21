@@ -42,7 +42,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.estimatedSectionHeaderHeight = 0
         assetTableView.estimatedSectionFooterHeight = 0
 
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
         assetTableView.theme_backgroundColor = GlobalPicker.backgroundColor
 
         /*
@@ -61,11 +60,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationItem.rightBarButtonItem = addBarButton
         
         // Add Refresh Control to Table View
-        if #available(iOS 10.0, *) {
-            assetTableView.refreshControl = refreshControl
-        } else {
-            assetTableView.addSubview(refreshControl)
-        }
+        assetTableView.refreshControl = refreshControl
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         
