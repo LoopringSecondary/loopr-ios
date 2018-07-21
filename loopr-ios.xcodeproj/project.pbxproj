@@ -349,8 +349,6 @@
 		AC5E0996205F270000801738 /* ScanQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E0994205F270000801738 /* ScanQRCodeViewController.xib */; };
 		AC5E0DD0203A7C5800AF03C7 /* SelectWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0DCE203A7C5800AF03C7 /* SelectWalletTableViewCell.swift */; };
 		AC5E0DD1203A7C5800AF03C7 /* SelectWalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E0DCF203A7C5800AF03C7 /* SelectWalletTableViewCell.xib */; };
-		AC5E0DDA203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0DD8203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift */; };
-		AC5E0DDB203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E0DD9203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib */; };
 		AC5E0DDE203B447700AF03C7 /* WalletBalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0DDC203B447700AF03C7 /* WalletBalanceTableViewCell.swift */; };
 		AC5E0DDF203B447700AF03C7 /* WalletBalanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5E0DDD203B447700AF03C7 /* WalletBalanceTableViewCell.xib */; };
 		AC5E0DE4203BC4B100AF03C7 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0DE3203BC4B100AF03C7 /* FloatLabelTextField.swift */; };
@@ -496,8 +494,8 @@
 		ACC8D0A320CC6F080049A741 /* ExportMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC8D0A120CC6F080049A741 /* ExportMnemonicViewController.xib */; };
 		ACC8D0A620CC95A00049A741 /* AssetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8D0A420CC95A00049A741 /* AssetTableViewCell.swift */; };
 		ACC8D0A720CC95A00049A741 /* AssetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC8D0A520CC95A00049A741 /* AssetTableViewCell.xib */; };
-		ACC8D0AA20CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8D0A820CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.swift */; };
-		ACC8D0AB20CCF6C30049A741 /* UpdatedAssetTransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC8D0A920CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.xib */; };
+		ACC8D0AA20CCF6C20049A741 /* AssetTransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8D0A820CCF6C20049A741 /* AssetTransactionTableViewCell.swift */; };
+		ACC8D0AB20CCF6C30049A741 /* AssetTransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC8D0A920CCF6C20049A741 /* AssetTransactionTableViewCell.xib */; };
 		ACC8D0B020CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8D0AE20CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.swift */; };
 		ACC8D0B120CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC8D0AF20CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.xib */; };
 		ACCC7EA32082BE0B008E58BA /* ImportMnemonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCC7EA22082BE0B008E58BA /* ImportMnemonicTests.swift */; };
@@ -858,8 +856,6 @@
 		AC5E0994205F270000801738 /* ScanQRCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanQRCodeViewController.xib; sourceTree = "<group>"; };
 		AC5E0DCE203A7C5800AF03C7 /* SelectWalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletTableViewCell.swift; sourceTree = "<group>"; };
 		AC5E0DCF203A7C5800AF03C7 /* SelectWalletTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWalletTableViewCell.xib; sourceTree = "<group>"; };
-		AC5E0DD8203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTransactionTableViewCell.swift; sourceTree = "<group>"; };
-		AC5E0DD9203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetTransactionTableViewCell.xib; sourceTree = "<group>"; };
 		AC5E0DDC203B447700AF03C7 /* WalletBalanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalanceTableViewCell.swift; sourceTree = "<group>"; };
 		AC5E0DDD203B447700AF03C7 /* WalletBalanceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletBalanceTableViewCell.xib; sourceTree = "<group>"; };
 		AC5E0DE3203BC4B100AF03C7 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
@@ -1011,8 +1007,8 @@
 		ACC8D0A120CC6F080049A741 /* ExportMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportMnemonicViewController.xib; sourceTree = "<group>"; };
 		ACC8D0A420CC95A00049A741 /* AssetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTableViewCell.swift; sourceTree = "<group>"; };
 		ACC8D0A520CC95A00049A741 /* AssetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetTableViewCell.xib; sourceTree = "<group>"; };
-		ACC8D0A820CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedAssetTransactionTableViewCell.swift; sourceTree = "<group>"; };
-		ACC8D0A920CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedAssetTransactionTableViewCell.xib; sourceTree = "<group>"; };
+		ACC8D0A820CCF6C20049A741 /* AssetTransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTransactionTableViewCell.swift; sourceTree = "<group>"; };
+		ACC8D0A920CCF6C20049A741 /* AssetTransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetTransactionTableViewCell.xib; sourceTree = "<group>"; };
 		ACC8D0AE20CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWalletVerifyMnemonicViewController.swift; sourceTree = "<group>"; };
 		ACC8D0AF20CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingWalletVerifyMnemonicViewController.xib; sourceTree = "<group>"; };
 		ACCC7EA22082BE0B008E58BA /* ImportMnemonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportMnemonicTests.swift; sourceTree = "<group>"; };
@@ -2378,10 +2374,8 @@
 			children = (
 				ACB9118A20266A9C00F14644 /* AssetDetailViewController.swift */,
 				ACB9118B20266A9C00F14644 /* AssetDetailViewController.xib */,
-				AC5E0DD8203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift */,
-				AC5E0DD9203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib */,
-				ACC8D0A820CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.swift */,
-				ACC8D0A920CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.xib */,
+				ACC8D0A820CCF6C20049A741 /* AssetTransactionTableViewCell.swift */,
+				ACC8D0A920CCF6C20049A741 /* AssetTransactionTableViewCell.xib */,
 			);
 			path = AssetDetailTransaction;
 			sourceTree = "<group>";
@@ -2558,7 +2552,7 @@
 				AC2ACA4D20FA0EC3009C77E7 /* Rubik-Bold.ttf in Resources */,
 				AC31CE1D205A2F0100A30335 /* SwitchTradeTokenViewController.xib in Resources */,
 				AC31CE68205B994E00A30335 /* Roboto-Light.ttf in Resources */,
-				ACC8D0AB20CCF6C30049A741 /* UpdatedAssetTransactionTableViewCell.xib in Resources */,
+				ACC8D0AB20CCF6C30049A741 /* AssetTransactionTableViewCell.xib in Resources */,
 				AC5E3E71205DFB700051ACFC /* SendAssetViewController.xib in Resources */,
 				ACBA47E7207890910032C2B4 /* SettingManageWalletTableViewCell.xib in Resources */,
 				AC2ACA5120FA0EC3009C77E7 /* Rubik-Black.ttf in Resources */,
@@ -2657,7 +2651,6 @@
 				AC10609E2073475200677D63 /* AddMenuTableViewCell.xib in Resources */,
 				94D94CE42084A9380000BBC8 /* ConfirmationResultViewController.xib in Resources */,
 				AC500BC720B651440073E590 /* SettingSecurityViewController.xib in Resources */,
-				AC5E0DDB203AA01F00AF03C7 /* AssetTransactionTableViewCell.xib in Resources */,
 				AC31CE77205B996400A30335 /* Roboto-Thin.ttf in Resources */,
 				ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */,
 				AC3756812039198300AADC60 /* GenerateMnemonicViewController_Archive.xib in Resources */,
@@ -2951,7 +2944,6 @@
 				ACB97C6D20707B6F00775D4C /* AddTokenTableViewCell.swift in Sources */,
 				ACB8AD89207F299700B478D6 /* UIViewController+BackButton.swift in Sources */,
 				94AD1FE5208B910D00C443E6 /* Currency.swift in Sources */,
-				AC5E0DDA203AA01F00AF03C7 /* AssetTransactionTableViewCell.swift in Sources */,
 				94C5E79D207394F50074B939 /* CustomSearchController.swift in Sources */,
 				ACB911842026388700F14644 /* SettingViewController.swift in Sources */,
 				AC0CD57B20D21C1100ABB7BA /* TabBarItemBouncesContentView.swift in Sources */,
@@ -2992,7 +2984,7 @@
 				AC31B94D204A8DF400B16155 /* KeyStore.swift in Sources */,
 				AC31CE4B205B83B600A30335 /* TradeTokenView.swift in Sources */,
 				AC387521205F12F100A76637 /* ContextMenu.swift in Sources */,
-				ACC8D0AA20CCF6C20049A741 /* UpdatedAssetTransactionTableViewCell.swift in Sources */,
+				ACC8D0AA20CCF6C20049A741 /* AssetTransactionTableViewCell.swift in Sources */,
 				ACDA889920F5D899004FA10B /* Localizator.swift in Sources */,
 				AC061939208401EB0060F416 /* MnemonicAddressTableViewCell.swift in Sources */,
 				ACFEFE9A20C338DA00013921 /* TxStatus.swift in Sources */,

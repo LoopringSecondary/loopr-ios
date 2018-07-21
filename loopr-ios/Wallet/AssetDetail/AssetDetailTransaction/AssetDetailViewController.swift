@@ -155,14 +155,14 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UpdatedAssetTransactionTableViewCell.getHeight()
+        return AssetTransactionTableViewCell.getHeight()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: UpdatedAssetTransactionTableViewCell.getCellIdentifier()) as? UpdatedAssetTransactionTableViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: AssetTransactionTableViewCell.getCellIdentifier()) as? AssetTransactionTableViewCell
         if cell == nil {
-            let nib = Bundle.main.loadNibNamed("UpdatedAssetTransactionTableViewCell", owner: self, options: nil)
-            cell = nib![0] as? UpdatedAssetTransactionTableViewCell
+            let nib = Bundle.main.loadNibNamed("AssetTransactionTableViewCell", owner: self, options: nil)
+            cell = nib![0] as? AssetTransactionTableViewCell
         }
         cell?.transaction = self.transactions[indexPath.row]
         cell?.update()
@@ -174,13 +174,11 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section >= 1 {
-            tableView.deselectRow(at: indexPath, animated: true)
-            let transaction = self.transactions[indexPath.row]
-            let vc = AssetTransactionDetailViewController()
-            vc.transaction = transaction
-            vc.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        tableView.deselectRow(at: indexPath, animated: true)
+        let transaction = self.transactions[indexPath.row]
+        let vc = AssetTransactionDetailViewController()
+        vc.transaction = transaction
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -238,7 +238,6 @@ class CurrentAppWalletDataManager {
         })
     }
     
-    // TODO: only 19 tokens are returned.
     // Socket IO: this func should be called every 10 secs when emitted
     func onBalanceResponse(json: JSON) {
         let tokensJsons = json["tokens"].arrayValue

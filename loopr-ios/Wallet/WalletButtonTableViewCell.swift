@@ -8,8 +8,17 @@
 
 import UIKit
 
+protocol WalletButtonTableViewCellDelegate: class {
+    func navigationToScanViewController()
+    func navigationToReceiveViewController()
+    func navigationToSendViewController()
+    func navigationToTradeViewController()
+}
+
 class WalletButtonTableViewCell: UITableViewCell {
 
+    weak var delegate: WalletButtonTableViewCellDelegate?
+    
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
@@ -57,18 +66,22 @@ class WalletButtonTableViewCell: UITableViewCell {
     
     @objc func pressedButton1(_ button: UIButton) {
         print("pressedItem1Button")
+        delegate?.navigationToScanViewController()
     }
     
     @objc func pressedButton2(_ button: UIButton) {
         print("pressedItem2Button")
+        delegate?.navigationToReceiveViewController()
     }
     
     @objc func pressedButton3(_ button: UIButton) {
         print("pressedItem3Button")
+        delegate?.navigationToSendViewController()
     }
     
     @objc func pressedButton4(_ button: UIButton) {
         print("pressedItem4Button")
+        delegate?.navigationToTradeViewController()
     }
 
     class func getCellIdentifier() -> String {

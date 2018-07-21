@@ -147,5 +147,5 @@ class TokenDataManager {
         }
     }
     
-    
+
 }

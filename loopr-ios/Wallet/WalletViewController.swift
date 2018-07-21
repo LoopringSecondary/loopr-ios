@@ -337,6 +337,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if cell == nil {
                 let nib = Bundle.main.loadNibNamed("WalletButtonTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? WalletButtonTableViewCell
+                cell?.delegate = self
             }
             return cell!
         } else {
@@ -387,6 +388,30 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.assetTableView.insertRows(at: rows, with: .top)
             }
         }
+    }
+    
+}
+
+extension WalletViewController: WalletButtonTableViewCellDelegate {
+
+    func navigationToScanViewController() {
+        let viewController = ScanQRCodeViewController()
+        viewController.delegate = self
+        viewController.shouldPop = false
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func navigationToReceiveViewController() {
+        
+    }
+    
+    func navigationToSendViewController() {
+        
+    }
+    
+    func navigationToTradeViewController() {
+        
     }
 
 }
