@@ -403,7 +403,11 @@ extension WalletViewController: WalletButtonTableViewCellDelegate {
     }
     
     func navigationToReceiveViewController() {
-        
+        if CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil {
+            let viewController = QRCodeViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
     
     func navigationToSendViewController() {

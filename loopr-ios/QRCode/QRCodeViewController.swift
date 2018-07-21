@@ -25,12 +25,13 @@ class QRCodeViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationItem.title = LocalizedString("Wallet QR Code", comment: "")
         
-        view.theme_backgroundColor = GlobalPicker.textColor
-        contentView.layer.cornerRadius = 16
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        contentView.layer.cornerRadius = 6
+        contentView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         addressLabel.theme_textColor = GlobalPicker.textColor
         addressLabel.font = FontConfigManager.shared.getRegularFont(size: 15)
         copyAddressButton.setTitle(LocalizedString("Copy Wallet Address", comment: ""), for: .normal)
-        copyAddressButton.setupPrimary()
+        
         saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
         saveToAlbumButton.setupSecondary()
         setupShareButton()
@@ -60,28 +61,16 @@ class QRCodeViewController: UIViewController {
         // Add swipe to go-back feature back which is a system default gesture
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
-    
-    func updateNavigationView(tintColor: UIColor, textColor: UIColor, statusBarStyle: UIStatusBarStyle) {
-        self.navigationController?.navigationBar.barTintColor = tintColor
-        self.navigationController?.navigationBar.tintColor = textColor
 
-        let shadow = NSShadow()
-        shadow.shadowOffset = CGSize(width: 0, height: 0)
-
-        self.navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedStringKey.foregroundColor: textColor,
-            NSAttributedStringKey.font: FontConfigManager.shared.getDigitalFont(),
-            NSAttributedStringKey.shadow: shadow
-        ]
-        // Update the statusBar
-        UIApplication.shared.statusBarStyle = statusBarStyle
-        self.setNeedsStatusBarAppearanceUpdate()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         qrcodeImageView.image = qrcodeImage
-        updateNavigationView(tintColor: UIColor.black, textColor: UIColor.white, statusBarStyle: .lightContent)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        copyAddressButton.setupPrimary()
+        saveToAlbumButton.setupSecondary()
     }
     
     func generateQRCode(from data: Data) {
@@ -97,7 +86,6 @@ class QRCodeViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        updateNavigationView(tintColor: UIColor.white, textColor: UIColor.black, statusBarStyle: .default)
     }
     
     @IBAction func pressedShareButton(_ button: UIBarButtonItem) {
