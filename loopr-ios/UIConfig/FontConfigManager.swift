@@ -124,6 +124,7 @@ class FontConfigManager {
         return UIFont(name: fontName, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
     }
 
+    // TODO: Why to use getMediumFont directly?
     func getDigitalFont(size: CGFloat = 16.0) -> UIFont {
         return getMediumFont(size: size)
     }

@@ -137,14 +137,16 @@
 		AC2ACA5A20FA1A5F009C77E7 /* WalletButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA5820FA1A5F009C77E7 /* WalletButtonTableViewCell.xib */; };
 		AC2ACA5C21005C18009C77E7 /* UIButton+AlignedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2ACA5B21005C17009C77E7 /* UIButton+AlignedIcon.swift */; };
 		AC2ACA5E21006DB8009C77E7 /* UIViewController+NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2ACA5D21006DB8009C77E7 /* UIViewController+NavigationBar.swift */; };
+		AC2ACA612102E7B2009C77E7 /* SettingStyleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2ACA5F2102E7B1009C77E7 /* SettingStyleTableViewCell.swift */; };
+		AC2ACA622102E7B2009C77E7 /* SettingStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA602102E7B1009C77E7 /* SettingStyleTableViewCell.xib */; };
+		AC2ACA652102EBBE009C77E7 /* SettingLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2ACA632102EBBC009C77E7 /* SettingLanguageTableViewCell.swift */; };
+		AC2ACA662102EBBE009C77E7 /* SettingLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA642102EBBD009C77E7 /* SettingLanguageTableViewCell.xib */; };
 		AC2CFAA120BB3BEE00387DB1 /* BiometricType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2CFAA020BB3BEE00387DB1 /* BiometricType.swift */; };
 		AC2D2C05208882BD00D619AD /* FoundationArray+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C04208882BD00D619AD /* FoundationArray+Extension.swift */; };
 		AC2D2C072089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C062089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift */; };
 		AC2D2C092089CB6B00D619AD /* ImportPrivateKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C082089CB6B00D619AD /* ImportPrivateKeyTests.swift */; };
 		AC2D2C0B2089CE1F00D619AD /* ImportWalletUsingKeystoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C0A2089CE1F00D619AD /* ImportWalletUsingKeystoreDataManager.swift */; };
 		AC2D2C0D2089D23E00D619AD /* ImportKeystoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2D2C0C2089D23E00D619AD /* ImportKeystoreTests.swift */; };
-		AC31B93520493FB900B16155 /* SettingLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B93320493FB900B16155 /* SettingLanguageTableViewCell.swift */; };
-		AC31B93620493FB900B16155 /* SettingLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31B93420493FB900B16155 /* SettingLanguageTableViewCell.xib */; };
 		AC31B93A204A4F9000B16155 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B939204A4F9000B16155 /* Language.swift */; };
 		AC31B948204A8DF400B16155 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B93C204A8DF300B16155 /* Address.swift */; };
 		AC31B949204A8DF400B16155 /* Scrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31B93D204A8DF300B16155 /* Scrypt.swift */; };
@@ -529,7 +531,6 @@
 		ACFEFE9A20C338DA00013921 /* TxStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEFE9920C338DA00013921 /* TxStatus.swift */; };
 		ACFEFE9F20C3436000013921 /* loopr_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACFEFE9D20C3436000013921 /* loopr_ios.xcdatamodeld */; };
 		ACFEFEA220C3792200013921 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEFEA120C3792200013921 /* CoreDataManager.swift */; };
-		C87E226E2031708000323584 /* ToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E226D2031708000323584 /* ToggleTableViewCell.swift */; };
 		C8BF959D202696A900343B9A /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BF959C202696A900343B9A /* MainTabController.swift */; };
 		C8BF95B02027AC9400343B9A /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BF95AE2027AC9400343B9A /* SetupViewController.swift */; };
 		C8BF95B12027AC9400343B9A /* SetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8BF95AF2027AC9400343B9A /* SetupViewController.xib */; };
@@ -695,14 +696,16 @@
 		AC2ACA5820FA1A5F009C77E7 /* WalletButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletButtonTableViewCell.xib; sourceTree = "<group>"; };
 		AC2ACA5B21005C17009C77E7 /* UIButton+AlignedIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+AlignedIcon.swift"; sourceTree = "<group>"; };
 		AC2ACA5D21006DB8009C77E7 /* UIViewController+NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationBar.swift"; sourceTree = "<group>"; };
+		AC2ACA5F2102E7B1009C77E7 /* SettingStyleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingStyleTableViewCell.swift; sourceTree = "<group>"; };
+		AC2ACA602102E7B1009C77E7 /* SettingStyleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingStyleTableViewCell.xib; sourceTree = "<group>"; };
+		AC2ACA632102EBBC009C77E7 /* SettingLanguageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingLanguageTableViewCell.swift; sourceTree = "<group>"; };
+		AC2ACA642102EBBD009C77E7 /* SettingLanguageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingLanguageTableViewCell.xib; sourceTree = "<group>"; };
 		AC2CFAA020BB3BEE00387DB1 /* BiometricType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricType.swift; sourceTree = "<group>"; };
 		AC2D2C04208882BD00D619AD /* FoundationArray+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoundationArray+Extension.swift"; sourceTree = "<group>"; };
 		AC2D2C062089C08E00D619AD /* ImportWalletUsingPrivateKeyDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingPrivateKeyDataManager.swift; sourceTree = "<group>"; };
 		AC2D2C082089CB6B00D619AD /* ImportPrivateKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportPrivateKeyTests.swift; sourceTree = "<group>"; };
 		AC2D2C0A2089CE1F00D619AD /* ImportWalletUsingKeystoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingKeystoreDataManager.swift; sourceTree = "<group>"; };
 		AC2D2C0C2089D23E00D619AD /* ImportKeystoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportKeystoreTests.swift; sourceTree = "<group>"; };
-		AC31B93320493FB900B16155 /* SettingLanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageTableViewCell.swift; sourceTree = "<group>"; };
-		AC31B93420493FB900B16155 /* SettingLanguageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLanguageTableViewCell.xib; sourceTree = "<group>"; };
 		AC31B939204A4F9000B16155 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		AC31B93C204A8DF300B16155 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		AC31B93D204A8DF300B16155 /* Scrypt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrypt.swift; sourceTree = "<group>"; };
@@ -1037,7 +1040,6 @@
 		ACFEFE9B20C3423300013921 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		ACFEFE9E20C3436000013921 /* loopr_ios.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = loopr_ios.xcdatamodel; sourceTree = "<group>"; };
 		ACFEFEA120C3792200013921 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		C87E226D2031708000323584 /* ToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleTableViewCell.swift; sourceTree = "<group>"; };
 		C8BF959C202696A900343B9A /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		C8BF95AE2027AC9400343B9A /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		C8BF95AF2027AC9400343B9A /* SetupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetupViewController.xib; sourceTree = "<group>"; };
@@ -1466,14 +1468,14 @@
 			path = SettingMarginSplit;
 			sourceTree = "<group>";
 		};
-		AC500BC320B6511C0073E590 /* SettingSecurity */ = {
+		AC500BC320B6511C0073E590 /* SettingSecurity_Achive */ = {
 			isa = PBXGroup;
 			children = (
 				AC500BC420B651440073E590 /* SettingSecurityViewController.swift */,
 				AC500BC520B651440073E590 /* SettingSecurityViewController.xib */,
 				AC500BC820B6770E0073E590 /* AuthenticationTimingType.swift */,
 			);
-			path = SettingSecurity;
+			path = SettingSecurity_Achive;
 			sourceTree = "<group>";
 		};
 		AC5288AF208300570002AEAD /* Utils */ = {
@@ -1665,8 +1667,8 @@
 			children = (
 				AC76E47120493CAE008BA229 /* SettingLanguageViewController.swift */,
 				AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */,
-				AC31B93320493FB900B16155 /* SettingLanguageTableViewCell.swift */,
-				AC31B93420493FB900B16155 /* SettingLanguageTableViewCell.xib */,
+				AC2ACA632102EBBC009C77E7 /* SettingLanguageTableViewCell.swift */,
+				AC2ACA642102EBBD009C77E7 /* SettingLanguageTableViewCell.xib */,
 			);
 			path = SettingLanguage;
 			sourceTree = "<group>";
@@ -2102,10 +2104,9 @@
 		ACB9117D2026381A00F14644 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				94AD1FDF208B8F5600C443E6 /* SettingCurrency */,
 				AC4F863A209D4842002E62AB /* SettingLRCFeeRatio */,
 				AC4F8643209D488F002E62AB /* SettingMarginSplit */,
-				AC500BC320B6511C0073E590 /* SettingSecurity */,
+				AC500BC320B6511C0073E590 /* SettingSecurity_Achive */,
 				ACB9117E2026385100F14644 /* SettingNavigationViewController.swift */,
 				ACB911822026388700F14644 /* SettingViewController.swift */,
 				ACB911832026388700F14644 /* SettingViewController.xib */,
@@ -2113,8 +2114,10 @@
 				ACE6F72620426BAC0039273D /* SettingThemeModeTableViewCell.xib */,
 				ACB8485720BA75E7006B83AD /* SettingPasscodeTableViewCell.swift */,
 				ACB8485820BA75E7006B83AD /* SettingPasscodeTableViewCell.xib */,
-				C87E226D2031708000323584 /* ToggleTableViewCell.swift */,
+				AC2ACA5F2102E7B1009C77E7 /* SettingStyleTableViewCell.swift */,
+				AC2ACA602102E7B1009C77E7 /* SettingStyleTableViewCell.xib */,
 				ACBA47DF20788E690032C2B4 /* SettingManageWallet */,
+				94AD1FDF208B8F5600C443E6 /* SettingCurrency */,
 				AC76E47520493CB7008BA229 /* SettingLanguage */,
 			);
 			path = Setting;
@@ -2487,6 +2490,7 @@
 				AC8DBC7820BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.xib in Resources */,
 				AC31CE5F205B994200A30335 /* Roboto-Bold.ttf in Resources */,
 				94189CC22078B88700AA2CF4 /* OrderSearchResultViewController.xib in Resources */,
+				AC2ACA622102E7B2009C77E7 /* SettingStyleTableViewCell.xib in Resources */,
 				ACE5BFA720466EFD005D75DD /* Localizable.strings in Resources */,
 				ACE6F72820426BAC0039273D /* SettingThemeModeTableViewCell.xib in Resources */,
 				AC78FC3C20A4B0C300992AE8 /* OrderBookTableViewCell.xib in Resources */,
@@ -2554,6 +2558,7 @@
 				AC375685203A641200AADC60 /* SelectWalletViewController.xib in Resources */,
 				ACB729D1205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.xib in Resources */,
 				AC54FD7C204FC6EB007E1DEB /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				AC2ACA662102EBBE009C77E7 /* SettingLanguageTableViewCell.xib in Resources */,
 				AC31CE62205B994700A30335 /* Roboto-BoldItalic.ttf in Resources */,
 				ACE65E4620720500001EE499 /* MnemonicCollectionViewCell.xib in Resources */,
 				AC31CE6E205B995500A30335 /* Roboto-Medium.ttf in Resources */,
@@ -2572,7 +2577,6 @@
 				AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */,
 				AC2ACA4C20FA0EC3009C77E7 /* Rubik-MediumItalic.ttf in Resources */,
 				AC78FC36209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib in Resources */,
-				AC31B93620493FB900B16155 /* SettingLanguageTableViewCell.xib in Resources */,
 				AC31CE40205B604100A30335 /* Linotype-DINNextLTPro-Medium.otf in Resources */,
 				AC2ACA4F20FA0EC3009C77E7 /* Rubik-Light.ttf in Resources */,
 				AC13B30420548767008A72C0 /* BuyAndSellSwipeViewController.xib in Resources */,
@@ -2837,6 +2841,7 @@
 			files = (
 				AC31B960204A8E4F00B16155 /* Wallet.swift in Sources */,
 				AC76E4702047F1D3008BA229 /* CircleChart.swift in Sources */,
+				AC2ACA612102E7B2009C77E7 /* SettingStyleTableViewCell.swift in Sources */,
 				94CA6B5920BC037F000E4E8E /* OrderType.swift in Sources */,
 				AC4F600E20773E9D00F1D954 /* Sign.swift in Sources */,
 				940B452A2060F67E00ADE2B9 /* MarketDataManager.swift in Sources */,
@@ -2848,7 +2853,6 @@
 				AC387516205F12F100A76637 /* ContextMenu+Options.swift in Sources */,
 				AC9ADF91205EE3B900CBE368 /* ConvertETHViewController.swift in Sources */,
 				ACB729D0205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.swift in Sources */,
-				AC31B93520493FB900B16155 /* SettingLanguageTableViewCell.swift in Sources */,
 				AC13B30320548767008A72C0 /* BuyAndSellSwipeViewController.swift in Sources */,
 				ACB5DDA6202D704200140A09 /* UIButtonExtension.swift in Sources */,
 				AC9A274020A6144700DB04AC /* OrderNoDataTableViewCell.swift in Sources */,
@@ -2865,6 +2869,7 @@
 				AC3756782038D7E200AADC60 /* UnlockKeystoreViewController.swift in Sources */,
 				ACB5DD95202C434B00140A09 /* EthereumAPIRequest.swift in Sources */,
 				ACDBF10C203FEA3E000F0DEC /* ReorderGestureRecognizer.swift in Sources */,
+				AC2ACA652102EBBE009C77E7 /* SettingLanguageTableViewCell.swift in Sources */,
 				ACDBF105203FE7D5000F0DEC /* ReorderSnapshotView.swift in Sources */,
 				ACEC978A20B24818003F9DEB /* TapticEngine.swift in Sources */,
 				94EB84DC2095E69600FFE40E /* AssetCollectionViewCell.swift in Sources */,
@@ -2910,7 +2915,6 @@
 				948BAD8420C4EBFA001F279F /* RawTransaction.swift in Sources */,
 				AC10609D2073475200677D63 /* AddMenuTableViewCell.swift in Sources */,
 				94A39E1320C8E4FE00BC1B72 /* SignStatus.swift in Sources */,
-				C87E226E2031708000323584 /* ToggleTableViewCell.swift in Sources */,
 				ACCCFDCE203BEF2200B98F99 /* UITextFieldExtension.swift in Sources */,
 				AC2D2C0B2089CE1F00D619AD /* ImportWalletUsingKeystoreDataManager.swift in Sources */,
 				AC45EFEE20D0D474004F6EC0 /* H5DexNavigationController.swift in Sources */,

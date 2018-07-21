@@ -13,7 +13,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var settingsTableView: UITableView!
     
     let sectionTitles = [LocalizedString("User Preferences", comment: ""), LocalizedString("Trading", comment: ""), LocalizedString("Security", comment: ""), LocalizedString("About", comment: "")]
-    let sectionRows = [3, 3, 1, 1]
+    let sectionRows = [5, 3, 1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         settingsTableView.tableFooterView = UIView()
+        
+        settingsTableView.theme_backgroundColor = GlobalPicker.backgroundColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,7 +39,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     //Table view configuration
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionTitles.count
+        return sectionRows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -47,8 +49,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 1:
             return tradingSectionForCell(row: indexPath.row)
         case 2:
-            return securitySectionForCell(row: indexPath.row)
-        case 3:
             return aboutSectionForCell(row: indexPath.row)
         default:
             return UITableViewCell()
@@ -65,23 +65,20 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let viewController = SettingManageWalletViewController()
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
-            /*
-            case 2:
-                print("Setting language")
-                let viewController = SettingLanguageViewController()
-                viewController.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(viewController, animated: true)
-            */
             case 1:
                 print("Setting currency")
                 let viewController = SettingCurrencyViewController()
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
             case 2:
-                print("Setting security")
-                let viewController = SettingSecurityViewController()
+                print("Setting language")
+                let viewController = SettingLanguageViewController()
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
+            case 3:
+                print("No action for theme mode")
+            case 4:
+                print("No action for touch id")
             default:
                 break
             }
@@ -103,24 +100,11 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 break
             }
         case 2:
-            // Security
+            // About
             switch indexPath.row {
             default:
                 break
             }
-        /*
-        case 3:
-            switch indexPath.row {
-            case 1:
-                let viewController = DefaultWebViewController()
-                viewController.navigationTitle = "loopring.org"
-                viewController.url = URL(string: "https://loopring.org")
-                viewController.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(viewController, animated: true)
-            default:
-                break
-            }
-        */
         default:
             break
         }
@@ -129,22 +113,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sectionRows[section]
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionTitles[section]
-    }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let padding: CGFloat = 15
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 45))
-        headerView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
-        
-        let label = UILabel(frame: CGRect(x: padding, y: 0, width: view.frame.size.width, height: 45))
-        label.theme_textColor = GlobalPicker.textColor
-        label.font = FontConfigManager.shared.getRegularFont()
-        headerView.addSubview(label)
-        
-        label.text = sectionTitles[section]
+        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
         return headerView
     }
     
@@ -156,23 +128,15 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             if currentWalletName == nil {
                 currentWalletName = ""
             }
-            return createDetailTableCell(title: LocalizedString("Manage Wallet", comment: ""), detailTitle: currentWalletName!)
+            return createDetailTableCell(title: LocalizedString("Manage Wallet", comment: ""))
         case 1:
-            return createDetailTableCell(title: LocalizedString("Currency", comment: ""), detailTitle: SettingDataManager.shared.getCurrentCurrency().name)
+            return createDetailTableCell(title: LocalizedString("Currency", comment: ""))
         case 2:
-            return createThemeMode()
-        /*
-        case 2:
-             return createDetailTableCell(title: LocalizedString("Security", comment: ""), detailTitle: "")
-        case 1:
-            return createThemeMode()
-        case 2:
-            return createDetailTableCell(title: LocalizedString("Language", comment: ""), detailTitle: SettingDataManager.shared.getCurrentLanguage().displayName)
+            return createDetailTableCell(title: LocalizedString("Language", comment: ""))
         case 3:
-            
+            return createThemeMode()
         case 4:
-            return createDetailTableCell(title: "Timzone", detailTitle: TimeZone.current.identifier)
-        */
+            return createSettingPasscodeTableView()
         default:
             return UITableViewCell()
         }
@@ -182,59 +146,20 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tradingSectionForCell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
-            return createBasicTableCell(title: LocalizedString("Contract Version", comment: ""), detailTitle: RelayAPIConfiguration.delegateAddress)
+            return createDetailTableCell(title: LocalizedString("Contract Version", comment: ""))
         case 1:
-            return createDetailTableCell(title: LocalizedString("LRC Fee Ratio", comment: ""), detailTitle: SettingDataManager.shared.getLrcFeeRatioDescription())
+            return createDetailTableCell(title: LocalizedString("LRC Fee Ratio", comment: ""))
         case 2:
-            return createDetailTableCell(title: LocalizedString("Margin Split", comment: ""), detailTitle: SettingDataManager.shared.getMarginSplitDescription())
+            return createDetailTableCell(title: LocalizedString("Margin Split", comment: ""))
         default:
             return UITableViewCell()
         }
     }
-    
-    func securitySectionForCell(row: Int) -> UITableViewCell {
-        switch row {
-        case 0:
-            return createSettingPasscodeTableView()
-        default:
-            return UITableViewCell()
-        }
-    }
-    
-    func section3Cell(row: Int) -> UITableViewCell {
-        switch row {
-        case 0:
-            return createBasicTableCell(title: LocalizedString("Default Relay", comment: ""), detailTitle: RelayAPIConfiguration.baseURL)
-        /*
-        case 1:
-            return createBasicTableCell(title: "Backup Loopring Relay", detailTitle: "27.0.0.01")
-        case 2:
-            return createBasicTableCell(title: "Test Loopring Relay", detailTitle: "27.0.0.01")
-        */
-        default:
-            return UITableViewCell()
-        }
-        
-    }
-    
+
     func aboutSectionForCell(row: Int) -> UITableViewCell {
         switch row {
         case 0:
             return createBasicTableCell(title: LocalizedString("App Version", comment: ""), detailTitle: getAppVersion())
-        /*
-        case 1:
-            return createDetailTableCell(title: "Website", detailTitle: "loopring.org")
-        /*
-        case 2:
-            return createDetailTableCell(title: "Privacy Policy")
-        case 3:
-            return createDetailTableCell(title: "Terms Of Service")
-        */
-        case 2:
-            return createBasicTableCell(title: LocalizedString("Support", comment: ""), detailTitle: "help@loopring.org")
-        case 3:
-            return createBasicTableCell(title: "Copyright", detailTitle: "Loopring 2018")
-        */
         default:
             return UITableViewCell()
         }
@@ -261,23 +186,14 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell!
     }
     
-    func createDetailTableCell(title: String, detailTitle: String) -> UITableViewCell {
+    func createDetailTableCell(title: String) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: title)
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .blue
         cell.textLabel?.text = title
-        cell.textLabel?.setTitleDigitFont()
-        cell.detailTextLabel?.text = detailTitle
-        cell.detailTextLabel?.setTitleDigitFont()
-        return cell
-    }
-    
-    func createDetailTableCell(title: String) -> UITableViewCell {
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: title)
-        cell.accessoryType = .detailButton
-        cell.selectionStyle = .blue
-        cell.textLabel?.text = title
-        cell.textLabel?.setTitleDigitFont()
+        cell.textLabel?.font = FontConfigManager.shared.getMediumFont(size: 14)
+        cell.textLabel?.textColor = Themes.isDark() ? UIColor.white : UIColor.dark2
+        cell.backgroundColor = Themes.isDark() ? UIColor.dark2 : UIColor.white
         return cell
     }
     
@@ -286,18 +202,25 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.accessoryType = .none
         cell.selectionStyle = .none
         cell.textLabel?.text = title
-        cell.textLabel?.setTitleDigitFont()
+        cell.textLabel?.font = FontConfigManager.shared.getMediumFont(size: 14)
+        cell.textLabel?.textColor = Themes.isDark() ? UIColor.white : UIColor.dark2
         cell.detailTextLabel?.text = detailTitle
-        cell.detailTextLabel?.setTitleDigitFont()
+        cell.detailTextLabel?.font = FontConfigManager.shared.getRegularFont(size: 14)
+        cell.textLabel?.textColor = Themes.isDark() ? UIColor.white : UIColor.dark2
+        cell.backgroundColor = Themes.isDark() ? UIColor.dark2 : UIColor.white
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 45
+        if section == 0 {
+            return 0
+        } else {
+            return 20
+        }
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 45
+        return 51
     }
     
     func getAppVersion() -> String {

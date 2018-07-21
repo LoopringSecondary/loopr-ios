@@ -10,12 +10,17 @@ import UIKit
 
 class SettingLanguageTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var leftLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        theme_backgroundColor = GlobalPicker.backgroundColor
-        textLabel?.theme_textColor = GlobalPicker.textColor
+        leftLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
+        leftLabel.theme_textColor = GlobalPicker.textColor
+        
+        theme_tintColor = GlobalPicker.textColor
+        theme_backgroundColor = GlobalPicker.cardBackgroundColor
     }
 
     class func getCellIdentifier() -> String {
@@ -23,6 +28,6 @@ class SettingLanguageTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 44
+        return 51
     }
 }

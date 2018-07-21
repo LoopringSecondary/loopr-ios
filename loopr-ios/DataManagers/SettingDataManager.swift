@@ -26,17 +26,12 @@ class SettingDataManager {
         }
         return languages
     }
-
-    func setCurrentLanguage(_ language: Language) {
-        let defaults = UserDefaults.standard
-        defaults.set(language.name, forKey: UserDefaultsKeys.currentLanguage.rawValue)
-    }
     
     func getCurrentLanguage() -> Language {
-        let defaults = UserDefaults.standard
-        if let languageName = defaults.string(forKey: UserDefaultsKeys.currentLanguage.rawValue) {
-            return Language(name: languageName)
+        if Localizator.sharedInstance.updatedLanguage != nil {
+            return Language(name: Localizator.sharedInstance.updatedLanguage!)
         }
+        
         if let languageName = Bundle.main.preferredLocalizations.first {
             return Language(name: languageName)
         }

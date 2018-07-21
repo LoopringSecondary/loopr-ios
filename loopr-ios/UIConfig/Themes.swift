@@ -15,14 +15,11 @@ enum Themes: Int {
     
     case light = 0
     case dark = 1
-    
-    // MARK: -
-    
+
     static var current: Themes {
-        // TODO: Remove the force wrap
         let theme = Themes(rawValue: ThemeManager.currentThemeIndex)
         guard theme != nil else {
-            return Themes.light
+            return Themes.dark
         }
         return theme!
     }

@@ -18,8 +18,12 @@ class SettingCurrencyTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        theme_backgroundColor = GlobalPicker.backgroundColor
-        tintColor = UIColor.black
+
+        currencyDisplayLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
+        currencyDisplayLabel.theme_textColor = GlobalPicker.textColor
+
+        theme_tintColor = GlobalPicker.textColor
+        theme_backgroundColor = GlobalPicker.cardBackgroundColor
     }
 
     class func getCellIdentifier() -> String {
