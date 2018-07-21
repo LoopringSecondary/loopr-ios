@@ -145,7 +145,12 @@ extension UIView {
         self.layer.insertSublayer(gradient, at: 0)
     }
     
+    
+    
+    // TODO: sometimes UI layouts are not correct
+    // https://stackoverflow.com/questions/24644802/swift-problems-with-corner-radius-and-drop-shadow/25475536#25475536
     func applyShadow(withColor color: UIColor) {
+        // TODO: The auto layout of a UIView won't be applied to the shadowLayer.
         let shadowLayer = UIView(frame: self.frame)
         shadowLayer.backgroundColor = UIColor.clear
         shadowLayer.layer.shadowColor = color.cgColor
