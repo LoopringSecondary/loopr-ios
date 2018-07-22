@@ -28,6 +28,7 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         // Do any additional setup after loading the view.
         setBackButton()
         
+        tableView.theme_backgroundColor = GlobalPicker.backgroundColor
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none

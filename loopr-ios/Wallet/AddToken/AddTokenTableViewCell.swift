@@ -12,36 +12,40 @@ class AddTokenTableViewCell: UITableViewCell {
     
     var token: Token?
 
-    // TODO: We may deprecate IBOutlet
+    @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var iconView: IconView!
     @IBOutlet weak var symbolLabel: UILabel!
     @IBOutlet weak var addSwitch: UISwitch!
-    @IBOutlet weak var seperateLine: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
+        baseView.cornerRadius = 6
+        baseView.clipsToBounds = true
+        baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        
+        theme_backgroundColor = GlobalPicker.backgroundColor
+        
+        iconView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         symbolLabel.setTitleDigitFont()
-        seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
-        addSwitch.transform = CGAffineTransform(scaleX: 0.81, y: 0.81)
-        addSwitch.setOn(AuthenticationDataManager.shared.getPasscodeSetting(), animated: false)
+        
+        addSwitch.transform = CGAffineTransform(scaleX: 0.77, y: 0.77)
     }
 
     func update() {
         if let token = token {
-            let icon = UIImage(named: token.symbol) ?? nil
-            if icon != nil {
-                iconImageView.image = icon
+            if token.icon != nil {
+                iconImageView.image = token.icon!
                 iconImageView.isHidden = false
                 iconView.isHidden = true
             } else {
                 iconView.isHidden = false
-                iconView.symbol = token.symbol
-                iconView.symbolLabel.text = token.symbol
                 iconImageView.isHidden = true
             }
+            iconView.symbol = token.symbol
+            iconView.symbolLabel.text = token.symbol
             symbolLabel.text = "\(token.symbol)"
 
             if TokenDataManager.shared.getTokenList().contains(token.symbol) {
@@ -67,6 +71,6 @@ class AddTokenTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 72*UIStyleConfig.scale
+        return 68+8
     }
 }
