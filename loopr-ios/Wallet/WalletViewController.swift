@@ -16,7 +16,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     private let refreshControl = UIRefreshControl()
 
     var isLaunching: Bool = true
-    var isReordering: Bool = false
     var isListeningSocketIO: Bool = false
     var contextMenuSourceView: UIView = UIView()
     var numberOfRowsInSection1: Int = 0
@@ -71,9 +70,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         dropdownMenu.dropdownBouncesScroll = false
         dropdownMenu.backgroundDimmingOpacity = 0
         dropdownMenu.dropdownCornerRadius = 6
-        dropdownMenu.dropdownBackgroundColor = UIColor(red: 41.0/255.0, green: 41.0/255.0, blue: 41.0/255.0, alpha: 1)
-        dropdownMenu.rowSeparatorColor = UIColor(red: 41.0/255.0, green: 41.0/255.0, blue: 41.0/255.0, alpha: 1)
-        dropdownMenu.componentSeparatorColor = UIColor(red: 41.0/255.0, green: 41.0/255.0, blue: 41.0/255.0, alpha: 1)
+        dropdownMenu.dropdownRoundedCorners = UIRectCorner.allCorners
+        dropdownMenu.dropdownBackgroundColor = UIColor.dark3
+        dropdownMenu.rowSeparatorColor = UIColor.dark3
+        dropdownMenu.componentSeparatorColor = UIColor.dark3
         dropdownMenu.dropdownShowsTopRowSeparator = false
         dropdownMenu.dropdownShowsBottomRowSeparator = false
         dropdownMenu.dropdownShowsBorder = false
@@ -259,7 +259,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func balanceResponseReceivedNotification() {
-        if !isReordering && !isLaunching && isListeningSocketIO {
+        if !isLaunching && isListeningSocketIO {
             print("balanceResponseReceivedNotification WalletViewController reload table")
             // assetTableView.reloadData()
             self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
@@ -267,7 +267,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func priceQuoteResponseReceivedNotification() {
-        if !isReordering && !isLaunching {
+        if !isLaunching {
             print("priceQuoteResponseReceivedNotification WalletViewController reload table")
             // assetTableView.reloadData()
             self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
@@ -441,9 +441,10 @@ extension WalletViewController: MKDropdownMenuDelegate {
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         print(row)
         let baseView = UIView(frame: CGRect(x: 0, y: 0, width: 160, height: 50))
-        baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        baseView.backgroundColor = UIColor.dark3
         
         let iconImageView = UIImageView(frame: CGRect(x: 21, y: 12, width: 24, height: 24))
+        iconImageView.contentMode = .scaleAspectFit
         baseView.addSubview(iconImageView)
         
         let titleLabel = UILabel(frame: CGRect(x: 55, y: 0, width: 610-55, height: 50))
@@ -451,18 +452,25 @@ extension WalletViewController: MKDropdownMenuDelegate {
         titleLabel.theme_textColor = GlobalPicker.textColor
         baseView.addSubview(titleLabel)
         
+        var icon: UIImage?
         switch row {
         case 0:
             titleLabel.text = LocalizedString("Scan", comment: "")
+            icon = UIImage.init(named: "dropdown-scan")
         case 1:
             titleLabel.text = LocalizedString("Add Token", comment: "")
+            icon = UIImage.init(named: "dropdown-add-token")
         case 2:
             titleLabel.text = LocalizedString("Wallet", comment: "")
+            icon = UIImage.init(named: "dropdown-wallet")
         case 3:
             titleLabel.text = LocalizedString("Transaction", comment: "")
+            icon = UIImage.init(named: "dropdown-transaction")
         default:
             break
         }
+
+        iconImageView.image = icon
 
         return baseView
     }
@@ -495,7 +503,7 @@ extension WalletViewController: MKDropdownMenuDelegate {
     }
         
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, backgroundColorForHighlightedRowsInComponent component: Int) -> UIColor? {
-        return UIColor(red: 56.0/255.0, green: 56.0/255.0, blue: 56.0/255.0, alpha: 1)
+        return UIColor.dark4
     }
     
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, didCloseComponent component: Int) {
