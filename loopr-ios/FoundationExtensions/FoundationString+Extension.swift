@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension String {
-
+    
     func trim() -> String {
         return self.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
     }
@@ -31,7 +31,7 @@ extension String {
         let fontAttributes = [NSAttributedStringKey.font: font]
         return self.size(withAttributes: fontAttributes)
     }
-
+    
     //Checks if the given string is an address in hexidecimal encoded form.
     public func isHexAddress() -> Bool {
         if !Set([40, 42]).contains(self.count) {
@@ -126,7 +126,7 @@ extension String {
             return false
         }
     }
-
+    
     var integer: Int? {
         if self.isHex() {
             if self.lowercased().starts(with: "0x") {
@@ -137,4 +137,44 @@ extension String {
         }
         return nil
     }
+    
+    func higlighted(words: [String], attributes: [NSAttributedStringKey: Any]) -> NSMutableAttributedString {
+        
+        let allAttributedText = NSMutableAttributedString.init(string: self)
+        var ranges = [NSRange]()
+        
+        for word in words {
+            var string = allAttributedText.string as NSString
+            var i = 0
+            while true {
+                var range = string.range(of: word)
+                if range.location == NSNotFound {
+                    break
+                }
+                i += range.location + word.count
+                string = string.substring(from: range.location + range.length) as NSString
+                range.location = i - word.count
+                print("\(range)  XX \(word)" )
+                
+                ranges.append(range)
+            }
+        }
+        for range in ranges {
+            allAttributedText.addAttributes(attributes, range: range)
+        }
+        return allAttributedText
+    }
+    
+    func getAddressFormat(length: Int = 6) -> String {
+        let header = String(self.prefix(length))
+        let footer = String(self.suffix(length))
+        return "\(header)...\(footer)"
+    }
+    
+    func textWidth(font: UIFont) -> CGFloat {
+        let attributes = [NSAttributedStringKey.font: font]
+        return self.size(withAttributes: attributes).width
+    }
+    
 }
+

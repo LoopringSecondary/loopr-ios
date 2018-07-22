@@ -259,6 +259,10 @@
 		AC3B48832103EA6B008A6771 /* TradeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B48812103EA6B008A6771 /* TradeSelectionViewController.swift */; };
 		AC3B48842103EA6B008A6771 /* TradeSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC3B48822103EA6B008A6771 /* TradeSelectionViewController.xib */; };
 		AC3B48862104383E008A6771 /* UISearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B48852104383E008A6771 /* UISearchBarExtension.swift */; };
+		AC3B488C210525BE008A6771 /* UpdatedSelectWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC3B4888210525BB008A6771 /* UpdatedSelectWalletViewController.xib */; };
+		AC3B488D210525BE008A6771 /* UpdatedSelectWalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC3B4889210525BB008A6771 /* UpdatedSelectWalletTableViewCell.xib */; };
+		AC3B488E210525BE008A6771 /* UpdatedSelectWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B488A210525BD008A6771 /* UpdatedSelectWalletTableViewCell.swift */; };
+		AC3B488F210525BE008A6771 /* UpdatedSelectWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B488B210525BD008A6771 /* UpdatedSelectWalletViewController.swift */; };
 		AC4141EF203524280089861D /* MarketSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141ED203524280089861D /* MarketSwipeViewController.swift */; };
 		AC4141F0203524280089861D /* MarketSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4141EE203524280089861D /* MarketSwipeViewController.xib */; };
 		AC4141F320352C460089861D /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141F220352C460089861D /* SwipeViewController.swift */; };
@@ -773,6 +777,10 @@
 		AC3B48812103EA6B008A6771 /* TradeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSelectionViewController.swift; sourceTree = "<group>"; };
 		AC3B48822103EA6B008A6771 /* TradeSelectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeSelectionViewController.xib; sourceTree = "<group>"; };
 		AC3B48852104383E008A6771 /* UISearchBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarExtension.swift; sourceTree = "<group>"; };
+		AC3B4888210525BB008A6771 /* UpdatedSelectWalletViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdatedSelectWalletViewController.xib; sourceTree = "<group>"; };
+		AC3B4889210525BB008A6771 /* UpdatedSelectWalletTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdatedSelectWalletTableViewCell.xib; sourceTree = "<group>"; };
+		AC3B488A210525BD008A6771 /* UpdatedSelectWalletTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatedSelectWalletTableViewCell.swift; sourceTree = "<group>"; };
+		AC3B488B210525BD008A6771 /* UpdatedSelectWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatedSelectWalletViewController.swift; sourceTree = "<group>"; };
 		AC4141ED203524280089861D /* MarketSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketSwipeViewController.swift; sourceTree = "<group>"; };
 		AC4141EE203524280089861D /* MarketSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketSwipeViewController.xib; sourceTree = "<group>"; };
 		AC4141F220352C460089861D /* SwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
@@ -1350,14 +1358,26 @@
 		AC375686203A7B0A00AADC60 /* SelectWallet */ = {
 			isa = PBXGroup;
 			children = (
+				AC3B488721052573008A6771 /* Archive */,
+				94EB84DA2095E69600FFE40E /* AssetCollectionViewCell.swift */,
+				94EB84DB2095E69600FFE40E /* AssetCollectionViewCell.xib */,
+				AC3B488B210525BD008A6771 /* UpdatedSelectWalletViewController.swift */,
+				AC3B4888210525BB008A6771 /* UpdatedSelectWalletViewController.xib */,
+				AC3B488A210525BD008A6771 /* UpdatedSelectWalletTableViewCell.swift */,
+				AC3B4889210525BB008A6771 /* UpdatedSelectWalletTableViewCell.xib */,
+			);
+			path = SelectWallet;
+			sourceTree = "<group>";
+		};
+		AC3B488721052573008A6771 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
 				AC375682203A641200AADC60 /* SelectWalletViewController.swift */,
 				AC375683203A641200AADC60 /* SelectWalletViewController.xib */,
 				AC5E0DCE203A7C5800AF03C7 /* SelectWalletTableViewCell.swift */,
 				AC5E0DCF203A7C5800AF03C7 /* SelectWalletTableViewCell.xib */,
-				94EB84DA2095E69600FFE40E /* AssetCollectionViewCell.swift */,
-				94EB84DB2095E69600FFE40E /* AssetCollectionViewCell.xib */,
 			);
-			path = SelectWallet;
+			path = Archive;
 			sourceTree = "<group>";
 		};
 		AC4141F120352C130089861D /* SwipeViewController */ = {
@@ -2499,6 +2519,7 @@
 				AC31CE71205B995900A30335 /* Roboto-MediumItalic.ttf in Resources */,
 				AC3B48842103EA6B008A6771 /* TradeSelectionViewController.xib in Resources */,
 				ACB41A7020B54BB300A92C9D /* AuthenticationViewController.xib in Resources */,
+				AC3B488D210525BE008A6771 /* UpdatedSelectWalletTableViewCell.xib in Resources */,
 				AC0CD58620D2330300ABB7BA /* H5DexViewController.xib in Resources */,
 				AC54FD8B204FC6FC007E1DEB /* OpenSans-SemiBold.ttf in Resources */,
 				AC3756742038D64B00AADC60 /* MnemonicViewController.xib in Resources */,
@@ -2516,6 +2537,7 @@
 				943A9A4220909597008BCBFD /* DefaultWebViewController.xib in Resources */,
 				AC2ACA86210305F8009C77E7 /* TradeFAQViewController.xib in Resources */,
 				AC31CE6B205B995100A30335 /* Roboto-LightItalic.ttf in Resources */,
+				AC3B488C210525BE008A6771 /* UpdatedSelectWalletViewController.xib in Resources */,
 				AC31CE34205B603200A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf in Resources */,
 				AC2ACA84210305F8009C77E7 /* TradeFAQTableViewCell.xib in Resources */,
 				AC5E0996205F270000801738 /* ScanQRCodeViewController.xib in Resources */,
@@ -2993,6 +3015,7 @@
 				AC31B94E204A8DF400B16155 /* KeystoreKey.swift in Sources */,
 				AC3756732038D64B00AADC60 /* MnemonicViewController.swift in Sources */,
 				ACA677C0207997F400D34A2F /* DisplayKeystoreViewController.swift in Sources */,
+				AC3B488E210525BE008A6771 /* UpdatedSelectWalletTableViewCell.swift in Sources */,
 				ACFEFE9820C338BC00013921 /* TxType.swift in Sources */,
 				AC2D2C05208882BD00D619AD /* FoundationArray+Extension.swift in Sources */,
 				ACB5DD9E202D5B8D00140A09 /* NumericKeyboardItem.swift in Sources */,
@@ -3086,6 +3109,7 @@
 				AC31B952204A8DF400B16155 /* Account.swift in Sources */,
 				9498E3EC2075E27E00BC8B4F /* OrderHistorySearchResultCell.swift in Sources */,
 				940B45282060F67E00ADE2B9 /* SetupDataManager.swift in Sources */,
+				AC3B488F210525BE008A6771 /* UpdatedSelectWalletViewController.swift in Sources */,
 				AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */,
 				AC4F601120773E9D00F1D954 /* EthAccountCoordinator.swift in Sources */,
 				ACDBF103203FE790000F0DEC /* ReorderUITableView.swift in Sources */,

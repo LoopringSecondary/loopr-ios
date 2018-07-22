@@ -58,13 +58,13 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         // Receive button
         receiveButton.setTitle(LocalizedString("Receive", comment: ""), for: .normal)
-        receiveButton.setupPrimary(height: 40)
+        receiveButton.setupPrimary(height: 44)
         
         // Send button
         sendButton.setTitle(LocalizedString("Send", comment: ""), for: .normal)
-        sendButton.setupSecondary(height: 40)
+        sendButton.setupSecondary(height: 44)
         
-        buttonHeightLayoutConstraint.constant = 40
+        buttonHeightLayoutConstraint.constant = 44
         
         // Add Refresh Control to Table View
         if #available(iOS 10.0, *) {

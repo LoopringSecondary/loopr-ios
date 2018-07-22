@@ -228,7 +228,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @objc func clickNavigationTitleButton(_ button: UIButton) {
         print("select another wallet.")
-        let viewController = SelectWalletViewController()
+        let viewController = UpdatedSelectWalletViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -490,7 +490,7 @@ extension WalletViewController: MKDropdownMenuDelegate {
             viewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(viewController, animated: true)
         case 2:
-            let viewController = SelectWalletViewController()
+            let viewController = UpdatedSelectWalletViewController()
             viewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(viewController, animated: true)
         case 3:

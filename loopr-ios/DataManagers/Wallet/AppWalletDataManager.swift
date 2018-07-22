@@ -21,8 +21,9 @@ class AppWalletDataManager {
     
     func setup() {
         getAppWalletsFromLocalStorage()
+        getAllBalanceFromRelay()
     }
-
+    
     func logout(appWallet: AppWallet) {
         if let index = appWallets.index(of: appWallet) {
             appWallets.remove(at: index)
@@ -63,7 +64,7 @@ class AppWalletDataManager {
         }
         return appWallets[0].isVerified
     }
-
+    
     func isNewWalletNameToken(newWalletname: String) -> Bool {
         let results = appWallets.filter { $0.name == newWalletname }
         return results.isEmpty
@@ -76,11 +77,11 @@ class AppWalletDataManager {
         let results = appWallets.filter { $0.address == address }
         return !results.isEmpty
     }
-
+    
     func getWallets() -> [AppWallet] {
         return appWallets
     }
-
+    
     func getAppWalletsFromLocalStorage() {
         let defaults = UserDefaults.standard
         if let decodedData = defaults.data(forKey: UserDefaultsKeys.appWallets.rawValue) {
@@ -97,7 +98,7 @@ class AppWalletDataManager {
             }
         }
     }
-
+    
     // TODO: this function has been called too many time. Optimize it in the future.
     func updateAppWalletsInLocalStorage(newAppWallet: AppWallet) {
         if let index = appWallets.index(of: newAppWallet) {
@@ -105,15 +106,12 @@ class AppWalletDataManager {
         } else {
             appWallets.insert(newAppWallet, at: 0)
         }
-
-        // TODO: if the size of encodedData is large, the perfomance may drop.
-        DispatchQueue.global().async {
-            let defaults = UserDefaults.standard
-            let encodedData = NSKeyedArchiver.archivedData(withRootObject: self.appWallets)
-            defaults.set(encodedData, forKey: UserDefaultsKeys.appWallets.rawValue)
-        }
+        
+        let defaults = UserDefaults.standard
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: self.appWallets)
+        defaults.set(encodedData, forKey: UserDefaultsKeys.appWallets.rawValue)
     }
-
+    
     // Used in GenerateWallet and ImportMnemonic
     func addWallet(setupWalletMethod: QRCodeMethod, walletName: String, mnemonics: [String], password: String, derivationPath: String, key: Int, isVerified: Bool, completionHandler: @escaping (_ appWallet: AppWallet?, _ error: AddWalletError?) -> Void) {
         guard key >= 0 else {
@@ -140,7 +138,7 @@ class AppWalletDataManager {
         }
         
         // Private key
-        let privateKey = wallet.getKey(at: 0).privateKey
+        let privateKey = wallet.getKey(at: key).privateKey
         print(privateKey.hexString)
         
         // Generate keystore
@@ -152,6 +150,7 @@ class AppWalletDataManager {
         }
         do {
             print("Generating keystore")
+            let start = Date()
             
             var localPassword = password
             if password == "" {
@@ -159,7 +158,12 @@ class AppWalletDataManager {
             }
             
             let key = try KeystoreKey(password: localPassword, key: data)
+            
+            let end = Date()
+            let timeInterval: Double = end.timeIntervalSince(start)
+            print("##########Time to generate keystore: \(timeInterval) seconds############")
             print("Finished generating keystore")
+            
             let keystoreData = try JSONEncoder().encode(key)
             let json = try JSON(data: keystoreData)
             
@@ -173,7 +177,7 @@ class AppWalletDataManager {
             completionHandler(nil, AddWalletError.invalidKeystore)
             return
         }
-
+        
         let newAppWallet = AppWallet(setupWalletMethod: setupWalletMethod, address: address.description, privateKey: privateKey.hexString, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: walletName.trim(), isVerified: isVerified, active: true)
         
         // Update the new app wallet in the local storage.
@@ -184,5 +188,62 @@ class AppWalletDataManager {
         
         completionHandler(newAppWallet, nil)
     }
-
+    
+    func getTotalCurrencyValue(address: String, completionHandler: @escaping (_ totalCurrencyValue: Double, _ error: Error?) -> Void) {
+        print("getBalanceAndPriceQuote Current address: \(address)")
+        
+        var localAssets: [Asset] = []
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        let currency = SettingDataManager.shared.getCurrentCurrency().name
+        LoopringAPIRequest.getPriceQuote(currency: currency, completionHandler: { (priceQuote, error) in
+            print("receive LoopringAPIRequest.getPriceQuote ....")
+            guard error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            PriceDataManager.shared.setPriceQuote(newPriceQuote: priceQuote!)
+            dispatchGroup.leave()
+        })
+        
+        dispatchGroup.enter()
+        LoopringAPIRequest.getBalance(owner: address) { assets, error in
+            print("receive LoopringAPIRequest.getBalance ...")
+            guard error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            localAssets = assets
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            print("Both functions complete 👍")
+            
+            var totalCurrencyValue: Double = 0
+            for asset in localAssets {
+                // If the price quote is nil, asset won't be updated. Please use getBalanceAndPriceQuote()
+                if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
+                    let total = asset.balance * price
+                    asset.total = total
+                    asset.currency = total.currency
+                    totalCurrencyValue += total
+                }
+            }
+            
+            completionHandler(totalCurrencyValue, nil)
+        }
+    }
+    
+    func getAllBalanceFromRelay() {
+        for wallet in AppWalletDataManager.shared.getWallets() {
+            AppWalletDataManager.shared.getTotalCurrencyValue(address: wallet.address, completionHandler: { (totalCurrencyValue, error) in
+                print("getAllBalanceFromRelay \(totalCurrencyValue)")
+                wallet.totalCurrency = totalCurrencyValue
+                AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: wallet)
+            })
+        }
+    }
 }
+

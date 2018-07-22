@@ -12,10 +12,10 @@ import Geth
 class AppWallet: NSObject, NSCoding {
     
     final let setupWalletMethod: QRCodeMethod
-
+    
     final let address: String
     final let privateKey: String
-
+    
     // The password used to get the address and the private key
     // when users use mnemonics and keystore.
     // At the same time, generating a keystore requires password.
@@ -29,10 +29,10 @@ class AppWallet: NSObject, NSCoding {
     
     // TODO: For some reaons, we couldn't reuse it. Improve in the future.
     // private var gethKeystoreObject: GethKeyStore?
-
+    
     // Only used when the wallet is imported using a private key
     private final let keystorePassword: String = "123456"
-
+    
     // The wallet name in the app. Users can update later.
     var name: String
     
@@ -61,7 +61,7 @@ class AppWallet: NSObject, NSCoding {
         print("########################## keystoreString ##########################")
         print(keystoreString)
         print("########################## end ##########################")
-        if keystoreString == "" || !QRCodeMethod.isKeystore(content: keystoreString) {
+        if keystoreString == "" || !AppWallet.isKeystore(content: keystoreString) {
             print("Need to generate keystore")
             preconditionFailure("No keystore")
             // generateKeystoreInBackground()
@@ -71,23 +71,36 @@ class AppWallet: NSObject, NSCoding {
     func getAssetSequence() -> [String] {
         return assetSequence
     }
-
+    
     func addAssetSequence(symbol: String) {
         if symbol.trim() != "" && !assetSequence.contains(symbol) {
             assetSequence.append(symbol)
         }
     }
-
+    
     func getAssetSequenceInHideSmallAssets() -> [String] {
         return assetSequenceInHideSmallAssets
     }
-
+    
     func addAssetSequenceInHideSmallAssets(symbol: String) {
         if symbol.trim() != "" && !assetSequenceInHideSmallAssets.contains(symbol) {
             assetSequenceInHideSmallAssets.append(symbol)
         }
     }
-
+    
+    static func isKeystore(content: String) -> Bool {
+        let jsonData = content.data(using: String.Encoding.utf8)
+        if let jsonObject = try? JSONSerialization.jsonObject(with: jsonData!, options: []) {
+            if JSONSerialization.isValidJSONObject(jsonObject) {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+    
     func getKeystore() -> String {
         return keystoreString
     }
@@ -99,15 +112,15 @@ class AppWallet: NSObject, NSCoding {
             return password
         }
     }
-
+    
     func getPassword() -> String {
         return password
     }
-
+    
     static func == (lhs: AppWallet, rhs: AppWallet) -> Bool {
         return lhs.address == rhs.address && lhs.privateKey == rhs.privateKey
     }
-
+    
     func encode(with aCoder: NSCoder) {
         aCoder.encode(setupWalletMethod.rawValue, forKey: "setupWalletMethod")
         aCoder.encode(password, forKey: "password")
@@ -120,7 +133,7 @@ class AppWallet: NSObject, NSCoding {
         aCoder.encode(assetSequence, forKey: "assetSequence")
         aCoder.encode(assetSequenceInHideSmallAssets, forKey: "assetSequenceInHideSmallAssets")
     }
-
+    
     required convenience init?(coder aDecoder: NSCoder) {
         let setupWalletMethodString = aDecoder.decodeObject(forKey: "setupWalletMethod") as? String ?? ""
         
@@ -143,7 +156,7 @@ class AppWallet: NSObject, NSCoding {
         let filteredAssetSequence = assetSequence.filter { (item) -> Bool in
             return item.trim() != ""
         }
-
+        
         let assetSequenceInHideSmallAssets = aDecoder.decodeObject(forKey: "assetSequenceInHideSmallAssets") as? [String] ?? []
         let filteredAssetSequenceInHideSmallAssets = assetSequenceInHideSmallAssets.filter { (item) -> Bool in
             return item.trim() != ""
@@ -151,7 +164,7 @@ class AppWallet: NSObject, NSCoding {
         
         if let address = address, let privateKey = privateKey, let password = password, let mnemonics = mnemonics, let keystoreString = keystoreString, let name = name {
             // Verify keystore
-            if keystoreString == "" || !QRCodeMethod.isKeystore(content: keystoreString) {
+            if keystoreString == "" || !AppWallet.isKeystore(content: keystoreString) {
                 return nil
             }
             self.init(setupWalletMethod: setupWalletMethod, address: address, privateKey: privateKey, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: name, isVerified: isVerified, active: active, assetSequence: unique(filteredAssetSequence), assetSequenceInHideSmallAssets: unique(filteredAssetSequenceInHideSmallAssets))
@@ -159,5 +172,5 @@ class AppWallet: NSObject, NSCoding {
             return nil
         }
     }
-
+    
 }
