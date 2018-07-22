@@ -12,6 +12,9 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
 
     @IBOutlet weak var tableView: UITableView!
 
+    @IBOutlet weak var importButton: UIButton!
+    @IBOutlet weak var createButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,25 +29,40 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
+        tableView.theme_backgroundColor = GlobalPicker.backgroundColor
         
-        let addBarButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
-        self.navigationItem.rightBarButtonItem = addBarButton
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 5))
+        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        tableView.tableHeaderView = headerView
+        
+        importButton.setTitle(LocalizedString("Import Wallet", comment: ""), for: .normal)
+        importButton.setupSecondary(height: 44)
+        importButton.addTarget(self, action: #selector(self.pressedImportButton(_:)), for: .touchUpInside)
+
+        createButton.setTitle(LocalizedString("Generate Wallet", comment: ""), for: .normal)
+        createButton.setupSecondary(height: 44)
+        createButton.addTarget(self, action: #selector(self.pressedCreateButton(_:)), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tableView.reloadData()
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @objc func pressAddButton(_ button: UIBarButtonItem) {
-        let setupViewController: SetupNavigationController? = SetupNavigationController(nibName: nil, bundle: nil)
-        setupViewController?.isCreatingFirstWallet = false
-        self.present(setupViewController!, animated: true) {
-        }
+    @objc func pressedImportButton(_ button: UIButton) {
+        let viewController = UnlockWalletSwipeViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+
+    @objc func pressedCreateButton(_ button: UIButton) {
+        let viewController = GenerateWalletEnterNameAndPasswordViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,14 +80,8 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
             cell = nib![0] as? SettingManageWalletTableViewCell
         }
         
-        // Configure the cell...
         cell?.wallet = AppWalletDataManager.shared.getWallets()[indexPath.row]
         cell?.update()
-        if cell?.wallet == CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
-            cell?.accessoryType = .checkmark
-        } else {
-            cell?.accessoryType = .none
-        }
         return cell!
     }
     

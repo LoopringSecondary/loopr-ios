@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingManageWalletViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="createButton" destination="ZbO-2P-5HU" id="Hx9-fP-Nep"/>
+                <outlet property="importButton" destination="jZl-je-sVf" id="kFj-lW-ySb"/>
                 <outlet property="tableView" destination="4ax-Wx-3Mw" id="kwb-QV-N2k"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,16 +23,36 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4ax-Wx-3Mw">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0gk-JY-xnT">
+                    <rect key="frame" x="20" y="591" width="335" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZl-je-sVf">
+                            <rect key="frame" x="0.0" y="0.0" width="160" height="44"/>
+                            <state key="normal" title="Button"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZbO-2P-5HU">
+                            <rect key="frame" x="175" y="0.0" width="160" height="44"/>
+                            <state key="normal" title="Button"/>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="TA9-oI-QGh"/>
+                        <constraint firstItem="ZbO-2P-5HU" firstAttribute="width" secondItem="jZl-je-sVf" secondAttribute="width" id="zhb-vy-1lR"/>
+                    </constraints>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0gk-JY-xnT" secondAttribute="trailing" constant="20" id="HWP-jM-9al"/>
                 <constraint firstItem="4ax-Wx-3Mw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HbJ-aq-Mvu"/>
+                <constraint firstItem="0gk-JY-xnT" firstAttribute="top" secondItem="4ax-Wx-3Mw" secondAttribute="bottom" constant="8" id="UlW-di-61q"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="0gk-JY-xnT" secondAttribute="bottom" constant="32" id="cCx-Zf-bAS"/>
                 <constraint firstItem="4ax-Wx-3Mw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="eeJ-J0-jcy"/>
+                <constraint firstItem="0gk-JY-xnT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="jmQ-qa-o5e"/>
                 <constraint firstItem="4ax-Wx-3Mw" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="p4J-Px-JUS"/>
-                <constraint firstItem="4ax-Wx-3Mw" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="sg0-Hx-OUY"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="67.5"/>

@@ -42,7 +42,7 @@ class GenerateWalletEnterNameAndPasswordViewController: UIViewController, UIText
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
         
-        statusBarBackgroundView.backgroundColor = UIColor.black
+        statusBarBackgroundView.theme_backgroundColor = GlobalPicker.backgroundColor
         
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds

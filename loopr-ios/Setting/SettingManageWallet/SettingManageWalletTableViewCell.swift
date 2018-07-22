@@ -12,36 +12,48 @@ class SettingManageWalletTableViewCell: UITableViewCell {
 
     var wallet: AppWallet?
     
+    @IBOutlet weak var baseView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var toatalBalanceLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-
-    @IBOutlet weak var seperateLine: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        nameLabel.font = FontConfigManager.shared.getDigitalFont(size: 21)
-        addressLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)
-        addressLabel.textColor = UIColor.black.withAlphaComponent(0.6)
+        accessoryType = .none
+        selectionStyle = .none
         
-        seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
+        theme_backgroundColor = GlobalPicker.backgroundColor
         
-        tintColor = UIColor.black
+        baseView.image = UIImage(named: "Header-background")
+        baseView.contentMode = .scaleToFill
+        
+        nameLabel.font = FontConfigManager.shared.getRegularFont(size: 16)
+        nameLabel.textColor = UIColor.init(white: 1, alpha: 1)
+        
+        toatalBalanceLabel.font = FontConfigManager.shared.getMediumFont(size: 24)
+        toatalBalanceLabel.textColor = UIColor.init(white: 1, alpha: 0.9)
+        
+        addressLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
+        addressLabel.textColor = UIColor.init(white: 1, alpha: 0.6)
     }
 
     func update() {
         if let wallet = wallet {
             nameLabel.text = wallet.name
-            addressLabel.text = wallet.address
+            var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
+            balance.insert(" ", at: balance.index(after: balance.startIndex))
+            toatalBalanceLabel.text = balance
+            addressLabel.text = wallet.address.getAddressFormat(length: 11)
         }
     }
     
     class func getCellIdentifier() -> String {
-        return "SelectWalletTableViewCell"
+        return "SettingManageWalletTableViewCell"
     }
     
     class func getHeight() -> CGFloat {
-        return 82
+        return 120+10
     }
 }
