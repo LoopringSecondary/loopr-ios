@@ -21,6 +21,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var contextMenuSourceView: UIView = UIView()
     var numberOfRowsInSection1: Int = 0
     
+    var isDropdownMenuExpanded: Bool = false
     let dropdownMenu = MKDropdownMenu()
     
     override func viewDidLoad() {
@@ -242,7 +243,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func pressAddButton(_ button: UIBarButtonItem) {
-        dropdownMenu.openComponent(0, animated: true)
+        if !isDropdownMenuExpanded {
+            dropdownMenu.openComponent(0, animated: true)
+            isDropdownMenuExpanded = true
+        }
     }
     
     func contextMenuWillDismiss(viewController: UIViewController, animated: Bool) {
@@ -493,4 +497,9 @@ extension WalletViewController: MKDropdownMenuDelegate {
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, backgroundColorForHighlightedRowsInComponent component: Int) -> UIColor? {
         return UIColor(red: 56.0/255.0, green: 56.0/255.0, blue: 56.0/255.0, alpha: 1)
     }
+    
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, didCloseComponent component: Int) {
+        isDropdownMenuExpanded = false
+    }
+
 }
