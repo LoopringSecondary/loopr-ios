@@ -255,22 +255,6 @@
 		AC3756812039198300AADC60 /* GenerateMnemonicViewController_Archive.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC37567F2039198300AADC60 /* GenerateMnemonicViewController_Archive.xib */; };
 		AC375684203A641200AADC60 /* SelectWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC375682203A641200AADC60 /* SelectWalletViewController.swift */; };
 		AC375685203A641200AADC60 /* SelectWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC375683203A641200AADC60 /* SelectWalletViewController.xib */; };
-		AC387511205F12F100A76637 /* ContextMenuDismissing.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3874FF205F12E900A76637 /* ContextMenuDismissing.swift */; };
-		AC387512205F12F100A76637 /* ContextMenuPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC387500205F12EA00A76637 /* ContextMenuPresenting.swift */; };
-		AC387513205F12F100A76637 /* ContextMenu+Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC387501205F12EA00A76637 /* ContextMenu+Item.swift */; };
-		AC387514205F12F100A76637 /* SourceViewCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC387503205F12EB00A76637 /* SourceViewCorner.swift */; };
-		AC387515205F12F100A76637 /* ContextMenu+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC387504205F12EC00A76637 /* ContextMenu+Animations.swift */; };
-		AC387516205F12F100A76637 /* ContextMenu+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC387505205F12EC00A76637 /* ContextMenu+Options.swift */; };
-		AC387517205F12F100A76637 /* ClippedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC387506205F12EC00A76637 /* ClippedContainerViewController.swift */; };
-		AC387518205F12F100A76637 /* ContextMenu+MenuStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC387507205F12ED00A76637 /* ContextMenu+MenuStyle.swift */; };
-		AC387519205F12F100A76637 /* CGRect+Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC387508205F12ED00A76637 /* CGRect+Area.swift */; };
-		AC38751A205F12F100A76637 /* ContextMenu+ContextMenuPresentationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC387509205F12EE00A76637 /* ContextMenu+ContextMenuPresentationControllerDelegate.swift */; };
-		AC38751B205F12F100A76637 /* ContextMenu+UIViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38750A205F12EE00A76637 /* ContextMenu+UIViewControllerTransitioningDelegate.swift */; };
-		AC38751C205F12F100A76637 /* ContextMenuPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38750B205F12EF00A76637 /* ContextMenuPresentationController.swift */; };
-		AC38751D205F12F100A76637 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38750C205F12EF00A76637 /* UIViewController+Extensions.swift */; };
-		AC38751F205F12F100A76637 /* ContextMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38750E205F12F000A76637 /* ContextMenuDelegate.swift */; };
-		AC387520205F12F100A76637 /* ContextMenu+ContainerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38750F205F12F000A76637 /* ContextMenu+ContainerStyle.swift */; };
-		AC387521205F12F100A76637 /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC387510205F12F100A76637 /* ContextMenu.swift */; };
 		AC387523205F141000A76637 /* AddMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC387522205F141000A76637 /* AddMenuViewController.swift */; };
 		AC3B48832103EA6B008A6771 /* TradeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B48812103EA6B008A6771 /* TradeSelectionViewController.swift */; };
 		AC3B48842103EA6B008A6771 /* TradeSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC3B48822103EA6B008A6771 /* TradeSelectionViewController.xib */; };
@@ -785,22 +769,6 @@
 		AC37567F2039198300AADC60 /* GenerateMnemonicViewController_Archive.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenerateMnemonicViewController_Archive.xib; sourceTree = "<group>"; };
 		AC375682203A641200AADC60 /* SelectWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletViewController.swift; sourceTree = "<group>"; };
 		AC375683203A641200AADC60 /* SelectWalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWalletViewController.xib; sourceTree = "<group>"; };
-		AC3874FF205F12E900A76637 /* ContextMenuDismissing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenuDismissing.swift; sourceTree = "<group>"; };
-		AC387500205F12EA00A76637 /* ContextMenuPresenting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenuPresenting.swift; sourceTree = "<group>"; };
-		AC387501205F12EA00A76637 /* ContextMenu+Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextMenu+Item.swift"; sourceTree = "<group>"; };
-		AC387503205F12EB00A76637 /* SourceViewCorner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceViewCorner.swift; sourceTree = "<group>"; };
-		AC387504205F12EC00A76637 /* ContextMenu+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextMenu+Animations.swift"; sourceTree = "<group>"; };
-		AC387505205F12EC00A76637 /* ContextMenu+Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextMenu+Options.swift"; sourceTree = "<group>"; };
-		AC387506205F12EC00A76637 /* ClippedContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClippedContainerViewController.swift; sourceTree = "<group>"; };
-		AC387507205F12ED00A76637 /* ContextMenu+MenuStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextMenu+MenuStyle.swift"; sourceTree = "<group>"; };
-		AC387508205F12ED00A76637 /* CGRect+Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Area.swift"; sourceTree = "<group>"; };
-		AC387509205F12EE00A76637 /* ContextMenu+ContextMenuPresentationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextMenu+ContextMenuPresentationControllerDelegate.swift"; sourceTree = "<group>"; };
-		AC38750A205F12EE00A76637 /* ContextMenu+UIViewControllerTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextMenu+UIViewControllerTransitioningDelegate.swift"; sourceTree = "<group>"; };
-		AC38750B205F12EF00A76637 /* ContextMenuPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenuPresentationController.swift; sourceTree = "<group>"; };
-		AC38750C205F12EF00A76637 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
-		AC38750E205F12F000A76637 /* ContextMenuDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenuDelegate.swift; sourceTree = "<group>"; };
-		AC38750F205F12F000A76637 /* ContextMenu+ContainerStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextMenu+ContainerStyle.swift"; sourceTree = "<group>"; };
-		AC387510205F12F100A76637 /* ContextMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
 		AC387522205F141000A76637 /* AddMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMenuViewController.swift; sourceTree = "<group>"; };
 		AC3B48812103EA6B008A6771 /* TradeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSelectionViewController.swift; sourceTree = "<group>"; };
 		AC3B48822103EA6B008A6771 /* TradeSelectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeSelectionViewController.xib; sourceTree = "<group>"; };
@@ -1392,29 +1360,6 @@
 			path = SelectWallet;
 			sourceTree = "<group>";
 		};
-		AC3874FE205F126D00A76637 /* ContextMenu */ = {
-			isa = PBXGroup;
-			children = (
-				AC387508205F12ED00A76637 /* CGRect+Area.swift */,
-				AC387506205F12EC00A76637 /* ClippedContainerViewController.swift */,
-				AC387510205F12F100A76637 /* ContextMenu.swift */,
-				AC387504205F12EC00A76637 /* ContextMenu+Animations.swift */,
-				AC38750F205F12F000A76637 /* ContextMenu+ContainerStyle.swift */,
-				AC387509205F12EE00A76637 /* ContextMenu+ContextMenuPresentationControllerDelegate.swift */,
-				AC387501205F12EA00A76637 /* ContextMenu+Item.swift */,
-				AC387507205F12ED00A76637 /* ContextMenu+MenuStyle.swift */,
-				AC387505205F12EC00A76637 /* ContextMenu+Options.swift */,
-				AC38750A205F12EE00A76637 /* ContextMenu+UIViewControllerTransitioningDelegate.swift */,
-				AC38750E205F12F000A76637 /* ContextMenuDelegate.swift */,
-				AC3874FF205F12E900A76637 /* ContextMenuDismissing.swift */,
-				AC38750B205F12EF00A76637 /* ContextMenuPresentationController.swift */,
-				AC387500205F12EA00A76637 /* ContextMenuPresenting.swift */,
-				AC387503205F12EB00A76637 /* SourceViewCorner.swift */,
-				AC38750C205F12EF00A76637 /* UIViewController+Extensions.swift */,
-			);
-			path = ContextMenu;
-			sourceTree = "<group>";
-		};
 		AC4141F120352C130089861D /* SwipeViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1958,7 +1903,6 @@
 				9445D54220BA4F3F006045F6 /* Price */,
 				9413F68F20B8028B00524D2D /* Amount */,
 				ACEC978420B247CA003F9DEB /* Slider */,
-				AC3874FE205F126D00A76637 /* ContextMenu */,
 				AC76E46E2047F1AE008BA229 /* CircleChart */,
 				ACE6F71A204210E80039273D /* DashedLineView */,
 				ACDBF0FF203FE6F3000F0DEC /* TableViewReorder */,
@@ -2899,15 +2843,12 @@
 				AC5E3E6B205DEAC00051ACFC /* TradeCompleteViewController.swift in Sources */,
 				943A9A4120909597008BCBFD /* DefaultWebViewController.swift in Sources */,
 				AC0CD58120D226C500ABB7BA /* TabBarItemAnimateTipsContentView.swift in Sources */,
-				AC387517205F12F100A76637 /* ClippedContainerViewController.swift in Sources */,
-				AC387516205F12F100A76637 /* ContextMenu+Options.swift in Sources */,
 				AC9ADF91205EE3B900CBE368 /* ConvertETHViewController.swift in Sources */,
 				ACB729D0205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.swift in Sources */,
 				AC13B30320548767008A72C0 /* BuyAndSellSwipeViewController.swift in Sources */,
 				ACB5DDA6202D704200140A09 /* UIButtonExtension.swift in Sources */,
 				AC9A274020A6144700DB04AC /* OrderNoDataTableViewCell.swift in Sources */,
 				AC31B948204A8DF400B16155 /* Address.swift in Sources */,
-				AC387518205F12F100A76637 /* ContextMenu+MenuStyle.swift in Sources */,
 				AC78FC3820A176CE00992AE8 /* OrderBookDataManager.swift in Sources */,
 				AC68E0FF20C22E8A00BFA837 /* AddWalletError.swift in Sources */,
 				AC5E0DE4203BC4B100AF03C7 /* FloatLabelTextField.swift in Sources */,
@@ -2915,7 +2856,6 @@
 				FF9C7DDC208D59EA004687AD /* SettingsBundleHelper.swift in Sources */,
 				ACB9119520278A4000F14644 /* Request.swift in Sources */,
 				AC76E47320493CAE008BA229 /* SettingLanguageViewController.swift in Sources */,
-				AC387515205F12F100A76637 /* ContextMenu+Animations.swift in Sources */,
 				AC3756782038D7E200AADC60 /* UnlockKeystoreViewController.swift in Sources */,
 				ACB5DD95202C434B00140A09 /* EthereumAPIRequest.swift in Sources */,
 				ACDBF10C203FEA3E000F0DEC /* ReorderGestureRecognizer.swift in Sources */,
@@ -2997,7 +2937,6 @@
 				ACBA47E6207890910032C2B4 /* SettingManageWalletTableViewCell.swift in Sources */,
 				AC31B94D204A8DF400B16155 /* KeyStore.swift in Sources */,
 				AC31CE4B205B83B600A30335 /* TradeTokenView.swift in Sources */,
-				AC387521205F12F100A76637 /* ContextMenu.swift in Sources */,
 				ACC8D0AA20CCF6C20049A741 /* AssetTransactionTableViewCell.swift in Sources */,
 				ACDA889920F5D899004FA10B /* Localizator.swift in Sources */,
 				AC061939208401EB0060F416 /* MnemonicAddressTableViewCell.swift in Sources */,
@@ -3022,7 +2961,6 @@
 				AC4141F520352D300089861D /* SwipeContentScrollView.swift in Sources */,
 				AC5288B4208300580002AEAD /* DateUtil.swift in Sources */,
 				940B45222060F67E00ADE2B9 /* PriceDataManager.swift in Sources */,
-				AC38751F205F12F100A76637 /* ContextMenuDelegate.swift in Sources */,
 				AC9A273D20A577E900DB04AC /* Double+Extension.swift in Sources */,
 				ACEC978820B24808003F9DEB /* DefaultSliderDelegate.swift in Sources */,
 				AC13B30A2054A766008A72C0 /* BuyViewController.swift in Sources */,
@@ -3037,9 +2975,7 @@
 				AC2ACA85210305F8009C77E7 /* TradeFAQDetailViewController.swift in Sources */,
 				AC9280E7202F5A010009B574 /* UIStyleConfig.swift in Sources */,
 				AC31CE17205A121000A30335 /* NumericKeyboardProtocol.swift in Sources */,
-				AC387511205F12F100A76637 /* ContextMenuDismissing.swift in Sources */,
 				AC31CE142057B5A400A30335 /* TradeReviewViewController.swift in Sources */,
-				AC387519205F12F100A76637 /* CGRect+Area.swift in Sources */,
 				9445D54620BA4FB3006045F6 /* PriceStackView.swift in Sources */,
 				AC4F601620773E9D00F1D954 /* EthTypeEncoder.swift in Sources */,
 				ACBA47EE207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.swift in Sources */,
@@ -3076,7 +3012,6 @@
 				ACB6A1A120966BC0004C64BC /* DefaultNotificationBanner.swift in Sources */,
 				ACB5DDA0202D5B9900140A09 /* CGSizeExtension.swift in Sources */,
 				ACE65E412071F875001EE499 /* MnemonicCollectionViewController.swift in Sources */,
-				AC387513205F12F100A76637 /* ContextMenu+Item.swift in Sources */,
 				AC31B93A204A4F9000B16155 /* Language.swift in Sources */,
 				AC500BC620B651440073E590 /* SettingSecurityViewController.swift in Sources */,
 				94E185992051455C00D86FFA /* SimpleRespond.swift in Sources */,
@@ -3096,7 +3031,6 @@
 				AC0CD58520D2330300ABB7BA /* H5DexViewController.swift in Sources */,
 				ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */,
 				AC375684203A641200AADC60 /* SelectWalletViewController.swift in Sources */,
-				AC387512205F12F100A76637 /* ContextMenuPresenting.swift in Sources */,
 				ACB9118820265DEA00F14644 /* MarketDetailViewController.swift in Sources */,
 				AC5288B5208300580002AEAD /* NetworkingRechabilityManager.swift in Sources */,
 				ACB911662024505D00F14644 /* Trade.swift in Sources */,
@@ -3132,7 +3066,6 @@
 				948952D3205A74BE009B03FE /* Transaction.swift in Sources */,
 				AC0CD57F20D21F8400ABB7BA /* TabBarItemHighlightableContentView.swift in Sources */,
 				AC2CFAA120BB3BEE00387DB1 /* BiometricType.swift in Sources */,
-				AC38751D205F12F100A76637 /* UIViewController+Extensions.swift in Sources */,
 				94231DEB20BD671700A4FDC3 /* PaddingLabel.swift in Sources */,
 				940B452B2060F67E00ADE2B9 /* SettingDataManager.swift in Sources */,
 				ACB41A6F20B54BB300A92C9D /* AuthenticationViewController.swift in Sources */,
@@ -3150,7 +3083,6 @@
 				ACB911992027F65800F14644 /* LoopringAPIRequest.swift in Sources */,
 				AC147BEE208D2FD2008D5104 /* ImportWalletProtocol.swift in Sources */,
 				ACB5DDA4202D6FC300140A09 /* UIImageExtension.swift in Sources */,
-				AC38751A205F12F100A76637 /* ContextMenu+ContextMenuPresentationControllerDelegate.swift in Sources */,
 				AC31B952204A8DF400B16155 /* Account.swift in Sources */,
 				9498E3EC2075E27E00BC8B4F /* OrderHistorySearchResultCell.swift in Sources */,
 				940B45282060F67E00ADE2B9 /* SetupDataManager.swift in Sources */,
@@ -3171,22 +3103,18 @@
 				ACB911522024254F00F14644 /* WalletNavigationViewController.swift in Sources */,
 				AC2ACA5C21005C18009C77E7 /* UIButton+AlignedIcon.swift in Sources */,
 				AC147BEA208D0613008D5104 /* UIDeviceExtension.swift in Sources */,
-				AC38751B205F12F100A76637 /* ContextMenu+UIViewControllerTransitioningDelegate.swift in Sources */,
 				940B45252060F67E00ADE2B9 /* UserDefaultsKeys.swift in Sources */,
 				ACB911552024260E00F14644 /* WalletViewController.swift in Sources */,
 				AC5E0995205F270000801738 /* ScanQRCodeViewController.swift in Sources */,
 				AC31B950204A8DF400B16155 /* Secp256k1.swift in Sources */,
-				AC387514205F12F100A76637 /* SourceViewCorner.swift in Sources */,
 				ACEC978620B247F0003F9DEB /* DefaultSlider.swift in Sources */,
 				940B452D2061206900ADE2B9 /* Token.swift in Sources */,
-				AC38751C205F12F100A76637 /* ContextMenuPresentationController.swift in Sources */,
 				ACB911A320296B9900F14644 /* OriginalOrder.swift in Sources */,
 				940B451E2060F67E00ADE2B9 /* GenerateWalletDataManager.swift in Sources */,
 				AC4141EF203524280089861D /* MarketSwipeViewController.swift in Sources */,
 				AC06193E208417AF0060F416 /* QRCodeMethod.swift in Sources */,
 				AC2ACA5E21006DB8009C77E7 /* UIViewController+NavigationBar.swift in Sources */,
 				9445D54420BA4F63006045F6 /* PriceButton.swift in Sources */,
-				AC387520205F12F100A76637 /* ContextMenu+ContainerStyle.swift in Sources */,
 				ACB5DD98202D5A8400140A09 /* NumericKeyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

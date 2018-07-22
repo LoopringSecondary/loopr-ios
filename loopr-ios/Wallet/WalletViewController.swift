@@ -10,7 +10,7 @@ import UIKit
 import NotificationBannerSwift
 import MKDropdownMenu
 
-class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate, ContextMenuDelegate, QRCodeScanProtocol {
+class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate, QRCodeScanProtocol {
 
     @IBOutlet weak var assetTableView: UITableView!
     private let refreshControl = UIRefreshControl()
