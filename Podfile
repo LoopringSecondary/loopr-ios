@@ -17,6 +17,7 @@ target 'loopr-ios' do
   pod 'SVProgressHUD'
   pod 'ESTabBarController-swift'
   pod 'SwiftyMarkdown'
+  pod 'MKDropdownMenu'
 
   pod 'Fabric'
   pod 'Crashlytics'

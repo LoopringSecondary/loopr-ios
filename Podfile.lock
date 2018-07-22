@@ -14,6 +14,7 @@ PODS:
   - Geth (1.8.8)
   - lottie-ios (2.5.0)
   - MarqueeLabel/Swift (3.1.4)
+  - MKDropdownMenu (1.4)
   - NotificationBannerSwift (1.6.2):
     - MarqueeLabel/Swift
     - SnapKit (~> 4.0)
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - FontBlaster
   - Geth
   - lottie-ios
+  - MKDropdownMenu
   - NotificationBannerSwift
   - secp256k1_ios (from `https://github.com/shamatar/secp256k1_ios.git`)
   - Socket.IO-Client-Swift (~> 13.1.0)
@@ -62,6 +64,7 @@ SPEC REPOS:
     - Geth
     - lottie-ios
     - MarqueeLabel
+    - MKDropdownMenu
     - NotificationBannerSwift
     - SipHash
     - SnapKit
@@ -94,6 +97,7 @@ SPEC CHECKSUMS:
   Geth: 483ea44b5f930b72320218290b939ba8e2389aaf
   lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
   MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
+  MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
   NotificationBannerSwift: 4eceb2add9d5eaa0596c63d49690b4d6476e74ec
   secp256k1_ios: ac9ef04e761f43c58012b28548afa91493761f17
   SipHash: c6e9e43e9c531b5bc6602545130c26194a6d31ce
@@ -106,6 +110,6 @@ SPEC CHECKSUMS:
   SwiftyMarkdown: 743af3e87931391bc4836b825fec3d98785b2e3a
   TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803
 
-PODFILE CHECKSUM: a23299dbaa9f790f79919ad50b5d1afbb3d5ceed
+PODFILE CHECKSUM: 182e5e928dccc0ab5d1e37b37f8a6cb214f7fb89
 
 COCOAPODS: 1.5.0

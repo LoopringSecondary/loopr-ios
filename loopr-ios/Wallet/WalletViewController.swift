@@ -8,6 +8,7 @@
 
 import UIKit
 import NotificationBannerSwift
+import MKDropdownMenu
 
 class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate, ContextMenuDelegate, QRCodeScanProtocol {
 
@@ -19,6 +20,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var isListeningSocketIO: Bool = false
     var contextMenuSourceView: UIView = UIView()
     var numberOfRowsInSection1: Int = 0
+    
+    let dropdownMenu = MKDropdownMenu()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +61,23 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         let addBarButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
         self.navigationItem.rightBarButtonItem = addBarButton
+        
+        dropdownMenu.dataSource = self
+        dropdownMenu.delegate = self
+        dropdownMenu.disclosureIndicatorImage = nil
+        
+        dropdownMenu.dropdownShowsTopRowSeparator = false
+        dropdownMenu.dropdownBouncesScroll = false
+        dropdownMenu.backgroundDimmingOpacity = 0
+        dropdownMenu.dropdownCornerRadius = 6
+        dropdownMenu.dropdownBackgroundColor = UIColor(red: 41.0/255.0, green: 41.0/255.0, blue: 41.0/255.0, alpha: 1)
+        dropdownMenu.rowSeparatorColor = UIColor(red: 41.0/255.0, green: 41.0/255.0, blue: 41.0/255.0, alpha: 1)
+        dropdownMenu.componentSeparatorColor = UIColor(red: 41.0/255.0, green: 41.0/255.0, blue: 41.0/255.0, alpha: 1)
+        dropdownMenu.dropdownShowsTopRowSeparator = false
+        dropdownMenu.dropdownShowsBottomRowSeparator = false
+        dropdownMenu.dropdownShowsBorder = false
+        
+        self.view.addSubview(dropdownMenu)
         
         // Add Refresh Control to Table View
         assetTableView.refreshControl = refreshControl
@@ -114,6 +134,15 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.startUpdateBalanceLabelTimer()
         }
         self.navigationItem.title = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? LocalizedString("Wallet", comment: "")
+        
+        let screensize: CGRect = UIScreen.main.bounds
+        let screenWidth = screensize.width
+        dropdownMenu.frame = CGRect(x: screenWidth-160-9, y: 0, width: 160, height: 0)
+        
+        let spaceView = UIImageView.init(image: UIImage.init(named: "dropdown-triangle"))
+        spaceView.contentMode = .center
+        dropdownMenu.spacerView = spaceView
+        dropdownMenu.spacerViewOffset = UIOffsetMake(self.dropdownMenu.bounds.size.width - 95, 1)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -213,34 +242,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func pressAddButton(_ button: UIBarButtonItem) {
-        contextMenuSourceView.frame = CGRect(x: self.view.frame.width, y: -5, width: 1, height: 1)
-        view.addSubview(contextMenuSourceView)
-        
-        let icons = [UIImage(named: "Scan-white")!, UIImage(named: "Add-token")!]
-        let titles = [LocalizedString("Scan QR Code", comment: ""), LocalizedString("Add Token", comment: "")]
-        let menuViewController = AddMenuViewController(rows: 2, titles: titles, icons: icons)
-        menuViewController.didSelectRowClosure = { (index) -> Void in
-            if index == 0 {
-                print("Selected Scan QR code")
-                let viewController = ScanQRCodeViewController()
-                viewController.delegate = self
-                viewController.shouldPop = false
-                viewController.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(viewController, animated: true)
-            } else if index == 1 {
-                print("Selected Add Token")
-                let viewController = AddTokenViewController()
-                viewController.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(viewController, animated: true)
-            }
-        }
-        ContextMenu.shared.show(
-            sourceViewController: self,
-            viewController: menuViewController,
-            options: ContextMenu.Options(containerStyle: ContextMenu.ContainerStyle(backgroundColor: UIColor.black), menuStyle: .minimal),
-            sourceView: contextMenuSourceView,
-            delegate: self
-        )
+        dropdownMenu.openComponent(0, animated: true)
     }
     
     func contextMenuWillDismiss(viewController: UIViewController, animated: Bool) {
@@ -413,4 +415,82 @@ extension WalletViewController: WalletButtonTableViewCellDelegate {
         
     }
 
+}
+
+extension WalletViewController: MKDropdownMenuDataSource {
+    func numberOfComponents(in dropdownMenu: MKDropdownMenu) -> Int {
+        return 1
+    }
+    
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, numberOfRowsInComponent component: Int) -> Int {
+        return 4
+    }
+
+}
+
+extension WalletViewController: MKDropdownMenuDelegate {
+    
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, rowHeightForComponent component: Int) -> CGFloat {
+        return 50
+    }
+    
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        print(row)
+        let baseView = UIView(frame: CGRect(x: 0, y: 0, width: 160, height: 50))
+        baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        
+        let iconImageView = UIImageView(frame: CGRect(x: 21, y: 12, width: 24, height: 24))
+        baseView.addSubview(iconImageView)
+        
+        let titleLabel = UILabel(frame: CGRect(x: 55, y: 0, width: 610-55, height: 50))
+        titleLabel.font = FontConfigManager.shared.getRegularFont(size: 16)
+        titleLabel.theme_textColor = GlobalPicker.textColor
+        baseView.addSubview(titleLabel)
+        
+        switch row {
+        case 0:
+            titleLabel.text = LocalizedString("Scan", comment: "")
+        case 1:
+            titleLabel.text = LocalizedString("Add Token", comment: "")
+        case 2:
+            titleLabel.text = LocalizedString("Wallet", comment: "")
+        case 3:
+            titleLabel.text = LocalizedString("Transaction", comment: "")
+        default:
+            break
+        }
+
+        return baseView
+    }
+    
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, didSelectRow row: Int, inComponent component: Int) {
+        print(row)
+        dropdownMenu.closeAllComponents(animated: false)
+        switch row {
+        case 0:
+            let viewController = ScanQRCodeViewController()
+            viewController.delegate = self
+            viewController.shouldPop = false
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        case 1:
+            let viewController = AddTokenViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        case 2:
+            let viewController = SelectWalletViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        case 3:
+            let viewController = OrderHistoryViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        default:
+            break
+        }
+    }
+        
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, backgroundColorForHighlightedRowsInComponent component: Int) -> UIColor? {
+        return UIColor(red: 56.0/255.0, green: 56.0/255.0, blue: 56.0/255.0, alpha: 1)
+    }
 }
