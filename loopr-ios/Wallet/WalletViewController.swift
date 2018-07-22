@@ -213,7 +213,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func pressAddButton(_ button: UIBarButtonItem) {
-        contextMenuSourceView.frame = CGRect(x: self.view.frame.width-10, y: -5, width: 1, height: 1)
+        contextMenuSourceView.frame = CGRect(x: self.view.frame.width, y: -5, width: 1, height: 1)
         view.addSubview(contextMenuSourceView)
         
         let icons = [UIImage(named: "Scan-white")!, UIImage(named: "Add-token")!]

@@ -16,6 +16,7 @@ class AddTokenTableViewCell: UITableViewCell {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var iconView: IconView!
     @IBOutlet weak var symbolLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addSwitch: UISwitch!
     
     override func awakeFromNib() {
@@ -30,7 +31,8 @@ class AddTokenTableViewCell: UITableViewCell {
         
         iconView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         symbolLabel.setTitleDigitFont()
-        
+        nameLabel.setSubTitleDigitFont()
+
         addSwitch.transform = CGAffineTransform(scaleX: 0.77, y: 0.77)
     }
 
@@ -47,6 +49,7 @@ class AddTokenTableViewCell: UITableViewCell {
             iconView.symbol = token.symbol
             iconView.symbolLabel.text = token.symbol
             symbolLabel.text = "\(token.symbol)"
+            nameLabel.text = token.source
 
             if TokenDataManager.shared.getTokenList().contains(token.symbol) {
                 addSwitch.setOn(true, animated: false)

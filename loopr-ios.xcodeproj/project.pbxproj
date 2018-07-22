@@ -274,6 +274,7 @@
 		AC387523205F141000A76637 /* AddMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC387522205F141000A76637 /* AddMenuViewController.swift */; };
 		AC3B48832103EA6B008A6771 /* TradeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B48812103EA6B008A6771 /* TradeSelectionViewController.swift */; };
 		AC3B48842103EA6B008A6771 /* TradeSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC3B48822103EA6B008A6771 /* TradeSelectionViewController.xib */; };
+		AC3B48862104383E008A6771 /* UISearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B48852104383E008A6771 /* UISearchBarExtension.swift */; };
 		AC4141EF203524280089861D /* MarketSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141ED203524280089861D /* MarketSwipeViewController.swift */; };
 		AC4141F0203524280089861D /* MarketSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4141EE203524280089861D /* MarketSwipeViewController.xib */; };
 		AC4141F320352C460089861D /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141F220352C460089861D /* SwipeViewController.swift */; };
@@ -803,6 +804,7 @@
 		AC387522205F141000A76637 /* AddMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMenuViewController.swift; sourceTree = "<group>"; };
 		AC3B48812103EA6B008A6771 /* TradeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSelectionViewController.swift; sourceTree = "<group>"; };
 		AC3B48822103EA6B008A6771 /* TradeSelectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeSelectionViewController.xib; sourceTree = "<group>"; };
+		AC3B48852104383E008A6771 /* UISearchBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarExtension.swift; sourceTree = "<group>"; };
 		AC4141ED203524280089861D /* MarketSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketSwipeViewController.swift; sourceTree = "<group>"; };
 		AC4141EE203524280089861D /* MarketSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketSwipeViewController.xib; sourceTree = "<group>"; };
 		AC4141F220352C460089861D /* SwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
@@ -2004,6 +2006,7 @@
 				ACCCFDCD203BEF2200B98F99 /* UITextFieldExtension.swift */,
 				AC147BE9208D0613008D5104 /* UIDeviceExtension.swift */,
 				9415543820C0F1BF007AAB87 /* UILabelExtension.swift */,
+				AC3B48852104383E008A6771 /* UISearchBarExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2936,6 +2939,7 @@
 				AC31CE1C205A2F0100A30335 /* SwitchTradeTokenViewController.swift in Sources */,
 				ACB9116020242E3F00F14644 /* Asset.swift in Sources */,
 				AC4141FB20352DE50089861D /* SwipeTabItemView.swift in Sources */,
+				AC3B48862104383E008A6771 /* UISearchBarExtension.swift in Sources */,
 				AC68E10220C24BD900BFA837 /* ImportWalletEnterWalletNameViewController.swift in Sources */,
 				AC4F601320773E9D00F1D954 /* EthType.swift in Sources */,
 				AC3B48832103EA6B008A6771 /* TradeSelectionViewController.swift in Sources */,

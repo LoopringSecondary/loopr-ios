@@ -41,7 +41,7 @@ class AddMenuViewController: UITableViewController {
         // tableView.register(AddMenuTableViewCell.self, forCellReuseIdentifier: AddMenuTableViewCell.getCellIdentifier())
         tableView.reloadData()
         tableView.layoutIfNeeded()
-        preferredContentSize = CGSize(width: 141, height: tableView.contentSize.height)
+        preferredContentSize = CGSize(width: 160, height: tableView.contentSize.height)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
         tableView.backgroundColor = .clear
         tableView.isScrollEnabled = false
@@ -58,7 +58,7 @@ class AddMenuViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 45
+        return 50
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
