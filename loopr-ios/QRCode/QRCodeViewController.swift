@@ -12,6 +12,7 @@ import NotificationBannerSwift
 
 class QRCodeViewController: UIViewController {
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var qrcodeImageView: UIImageView!
     var qrcodeImage: UIImage!
     @IBOutlet weak var contentView: UIView!
@@ -28,12 +29,16 @@ class QRCodeViewController: UIViewController {
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         contentView.layer.cornerRadius = 6
         contentView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
-        addressLabel.theme_textColor = GlobalPicker.textColor
-        addressLabel.font = FontConfigManager.shared.getRegularFont(size: 15)
+        
+        titleLabel.setTitleCharFont()
+        addressLabel.setSubTitleDigitFont()
+        
         copyAddressButton.setTitle(LocalizedString("Copy Wallet Address", comment: ""), for: .normal)
+        copyAddressButton.setupPrimary()
         
         saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
         saveToAlbumButton.setupSecondary()
+        
         setupShareButton()
         setBackButton()
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address

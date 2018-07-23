@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -18,6 +18,7 @@
                 <outlet property="copyAddressButton" destination="mEl-zM-Ijk" id="sQc-8d-41u"/>
                 <outlet property="qrcodeImageView" destination="Jxo-fS-cjo" id="Z5I-ZU-tdP"/>
                 <outlet property="saveToAlbumButton" destination="7NU-nI-gps" id="6Sj-tN-4FF"/>
+                <outlet property="titleLabel" destination="YBn-Jl-kW1" id="kD3-ht-pcu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -27,82 +28,90 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3K2-up-9JE">
-                    <rect key="frame" x="20" y="180" width="374" height="450"/>
+                    <rect key="frame" x="20" y="114" width="374" height="400"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jxo-fS-cjo">
-                            <rect key="frame" x="94.333333333333314" y="55" width="187" height="187"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="Jxo-fS-cjo" secondAttribute="height" id="yLV-La-av1"/>
-                            </constraints>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234567890" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edC-Mr-nnR">
-                            <rect key="frame" x="38" y="267" width="298.66666666666669" height="20.333333333333314"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loopr Wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBn-Jl-kW1">
+                            <rect key="frame" x="139" y="54" width="96" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEl-zM-Ijk">
-                            <rect key="frame" x="19.666666666666657" y="324" width="336.33333333333337" height="47"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jxo-fS-cjo">
+                            <rect key="frame" x="67.666666666666686" y="99" width="240" height="240"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="47" id="rgq-2e-4Je"/>
+                                <constraint firstAttribute="height" constant="240" id="H8s-EU-i3X"/>
+                                <constraint firstAttribute="width" secondItem="Jxo-fS-cjo" secondAttribute="height" id="yLV-La-av1"/>
                             </constraints>
-                            <state key="normal" title="Copy Wallet Address">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="pressedCopyAddressButton:" destination="-1" eventType="touchUpInside" id="vmH-OD-1qQ"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NU-nI-gps">
-                            <rect key="frame" x="19.666666666666657" y="387" width="336.33333333333337" height="47"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="47" id="zuf-3t-ySU"/>
-                            </constraints>
-                            <state key="normal" title="Save to Album">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="pressedSaveToAlbum:" destination="-1" eventType="touchUpInside" id="1pc-cw-vDr"/>
-                            </connections>
-                        </button>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234567890" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edC-Mr-nnR">
+                            <rect key="frame" x="37.666666666666657" y="355" width="298.66666666666674" height="20.333333333333314"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="450" id="4FY-XA-jFJ"/>
-                        <constraint firstItem="mEl-zM-Ijk" firstAttribute="centerX" secondItem="3K2-up-9JE" secondAttribute="centerX" id="5mI-Bp-JNZ"/>
-                        <constraint firstItem="Jxo-fS-cjo" firstAttribute="top" secondItem="3K2-up-9JE" secondAttribute="centerY" multiplier="0.2" constant="10" id="7Hf-8L-DqP"/>
-                        <constraint firstItem="edC-Mr-nnR" firstAttribute="top" secondItem="Jxo-fS-cjo" secondAttribute="bottom" constant="25" id="9sX-9L-JAa"/>
-                        <constraint firstItem="Jxo-fS-cjo" firstAttribute="width" secondItem="3K2-up-9JE" secondAttribute="width" multiplier="0.5" id="Cnc-UH-8wg"/>
-                        <constraint firstAttribute="bottom" secondItem="7NU-nI-gps" secondAttribute="bottom" constant="16" id="G4c-Yb-Ovn"/>
-                        <constraint firstItem="Jxo-fS-cjo" firstAttribute="centerX" secondItem="3K2-up-9JE" secondAttribute="centerX" id="Kb1-N8-wUp"/>
+                        <constraint firstAttribute="height" constant="400" id="4FY-XA-jFJ"/>
                         <constraint firstItem="edC-Mr-nnR" firstAttribute="width" secondItem="3K2-up-9JE" secondAttribute="width" multiplier="0.8" id="Mhl-DU-Mjy"/>
-                        <constraint firstItem="7NU-nI-gps" firstAttribute="width" secondItem="3K2-up-9JE" secondAttribute="width" multiplier="0.9" id="jRm-yK-NDN"/>
-                        <constraint firstItem="7NU-nI-gps" firstAttribute="centerX" secondItem="3K2-up-9JE" secondAttribute="centerX" id="keE-A3-5n0"/>
-                        <constraint firstItem="7NU-nI-gps" firstAttribute="top" secondItem="mEl-zM-Ijk" secondAttribute="bottom" constant="16" id="kqD-0Y-I4Z"/>
-                        <constraint firstItem="mEl-zM-Ijk" firstAttribute="width" secondItem="3K2-up-9JE" secondAttribute="width" multiplier="0.9" id="lw6-XJ-ZVR"/>
+                        <constraint firstItem="Jxo-fS-cjo" firstAttribute="top" secondItem="YBn-Jl-kW1" secondAttribute="bottom" constant="24" id="oDB-uk-Wd0"/>
                         <constraint firstItem="edC-Mr-nnR" firstAttribute="centerX" secondItem="3K2-up-9JE" secondAttribute="centerX" id="oPL-Ud-krd"/>
+                        <constraint firstItem="edC-Mr-nnR" firstAttribute="top" secondItem="Jxo-fS-cjo" secondAttribute="bottom" constant="16" id="qwV-jp-Q2n"/>
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Receive-qa-code-icon" translatesAutoresizingMaskIntoConstraints="NO" id="D16-yf-Yzm">
-                    <rect key="frame" x="177" y="150" width="60" height="60"/>
+                    <rect key="frame" x="177" y="84" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="Iaq-os-mtI"/>
                         <constraint firstAttribute="height" constant="60" id="Mux-Ce-3We"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEl-zM-Ijk">
+                    <rect key="frame" x="20" y="656" width="179" height="48"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="rgq-2e-4Je"/>
+                    </constraints>
+                    <state key="normal" title="Copy Wallet Address">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="pressedCopyAddressButton:" destination="-1" eventType="touchUpInside" id="vmH-OD-1qQ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NU-nI-gps">
+                    <rect key="frame" x="215" y="656" width="179" height="48"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="zuf-3t-ySU"/>
+                    </constraints>
+                    <state key="normal" title="Save to Album">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="pressedSaveToAlbum:" destination="-1" eventType="touchUpInside" id="1pc-cw-vDr"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Jxo-fS-cjo" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="5IR-ZJ-9gC"/>
                 <constraint firstItem="3K2-up-9JE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="7Xa-AG-WJP"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="centerY" secondItem="3K2-up-9JE" secondAttribute="bottom" multiplier="0.6" id="W9R-a2-OCp"/>
+                <constraint firstItem="7NU-nI-gps" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" constant="-28" id="9Fb-Pu-0XD"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7NU-nI-gps" secondAttribute="trailing" constant="20" id="Ad2-8e-GAg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="mEl-zM-Ijk" secondAttribute="bottom" constant="32" id="GDg-70-UiV"/>
+                <constraint firstItem="mEl-zM-Ijk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="GTe-iC-MpT"/>
+                <constraint firstItem="YBn-Jl-kW1" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="OIM-eH-Qic"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="7NU-nI-gps" secondAttribute="bottom" constant="32" id="WwO-8E-SfP"/>
                 <constraint firstItem="D16-yf-Yzm" firstAttribute="top" secondItem="3K2-up-9JE" secondAttribute="top" constant="-30" id="bbz-0B-aN1"/>
+                <constraint firstItem="YBn-Jl-kW1" firstAttribute="top" secondItem="D16-yf-Yzm" secondAttribute="bottom" constant="24" id="lYN-Hk-3Lu"/>
+                <constraint firstItem="D16-yf-Yzm" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="64" id="oTZ-Bu-pxr"/>
                 <constraint firstItem="D16-yf-Yzm" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qRR-WH-vxf"/>
+                <constraint firstItem="mEl-zM-Ijk" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" constant="-28" id="qet-mQ-Wh0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3K2-up-9JE" secondAttribute="trailing" constant="20" id="toe-kG-wm3"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="33.5" y="124.5"/>
+            <point key="canvasLocation" x="33" y="124"/>
         </view>
     </objects>
     <resources>
