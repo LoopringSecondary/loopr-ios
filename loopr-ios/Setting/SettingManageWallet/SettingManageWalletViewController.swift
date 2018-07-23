@@ -61,7 +61,7 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
     }
 
     @objc func pressedCreateButton(_ button: UIButton) {
-        let viewController = GenerateWalletEnterNameAndPasswordViewController()
+        let viewController = GenerateWalletEnterNameViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
