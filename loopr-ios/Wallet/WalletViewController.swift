@@ -40,6 +40,12 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //        assetTableView.tableFooterView = footerView
         assetTableView.separatorStyle = .none
         
+        // iOS - Delayed “Touch Down” event for UIButton in UITableViewCell
+        // It's sufficient to just set that property to NO for the UITableView itself
+        // https://stackoverflow.com/questions/23620150/uibutton-wont-go-to-highlighted-state
+        // https://stackoverflow.com/questions/22924817/ios-delayed-touch-down-event-for-uibutton-in-uitableviewcell
+        assetTableView.delaysContentTouches = false
+        
         // Avoid dragging a cell to the top makes the tableview shake
         assetTableView.estimatedRowHeight = 0
         assetTableView.estimatedSectionHeaderHeight = 0
@@ -262,7 +268,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if !isLaunching && isListeningSocketIO {
             print("balanceResponseReceivedNotification WalletViewController reload table")
             // assetTableView.reloadData()
-            self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
+            self.assetTableView.reloadSections(IndexSet(integersIn: 2...2), with: .none)
         }
     }
     
@@ -270,7 +276,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if !isLaunching {
             print("priceQuoteResponseReceivedNotification WalletViewController reload table")
             // assetTableView.reloadData()
-            self.assetTableView.reloadSections(IndexSet(integersIn: 1...1), with: .none)
+            self.assetTableView.reloadSections(IndexSet(integersIn: 2...2), with: .none)
         }
     }
     
