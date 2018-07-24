@@ -39,11 +39,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //        footerView.theme_backgroundColor = GlobalPicker.backgroundColor
 //        assetTableView.tableFooterView = footerView
         assetTableView.separatorStyle = .none
-        
-        // iOS - Delayed “Touch Down” event for UIButton in UITableViewCell
-        // It's sufficient to just set that property to NO for the UITableView itself
-        // https://stackoverflow.com/questions/23620150/uibutton-wont-go-to-highlighted-state
-        // https://stackoverflow.com/questions/22924817/ios-delayed-touch-down-event-for-uibutton-in-uitableviewcell
         assetTableView.delaysContentTouches = false
         
         // Avoid dragging a cell to the top makes the tableview shake
@@ -145,7 +140,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         dropdownMenu.frame = CGRect(x: screenWidth-160-9, y: 0, width: 160, height: 0)
-        
+
         let spaceView = UIImageView.init(image: UIImage.init(named: "dropdown-triangle"))
         spaceView.contentMode = .center
         dropdownMenu.spacerView = spaceView
@@ -418,7 +413,9 @@ extension WalletViewController: WalletButtonTableViewCellDelegate {
     }
     
     func navigationToSendViewController() {
-        
+        let viewController = SendAssetViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func navigationToTradeViewController() {

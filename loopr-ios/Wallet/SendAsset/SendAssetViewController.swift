@@ -12,44 +12,40 @@ import NotificationBannerSwift
 import SVProgressHUD
 
 class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, DefaultNumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, AmountStackViewDelegate {
+    
+    // Header
+    @IBOutlet weak var headerButton: UIButton!
+    @IBOutlet weak var tokenIconImageView: UIImageView!
+    @IBOutlet weak var tokenHeaderLabel: UILabel!
+    @IBOutlet weak var tokenTotalAmountLabel: UILabel!
+    
+    // Content
+    @IBOutlet weak var contentView: UIView!
+    
+    // Address
+    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var scanButton: UIButton!
+    @IBOutlet weak var addressInfoLabel: UILabel!
+    
+    // Amount
+    @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var tokenSymbolLabel: UILabel!
+    @IBOutlet weak var amountInfoLabel: UILabel!
+    @IBOutlet weak var transactionFeeTipLabel: UILabel!
+    
+    // Transaction info
+    @IBOutlet weak var transactionFeeLabel: UILabel!
+    @IBOutlet weak var transactionFeeAmountLabel: UILabel!
+    @IBOutlet weak var advancedButton: UIButton!
 
+    // Send button
+    @IBOutlet weak var sendButton: UIButton!
+    
+    // Scroll view
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet weak var sendButtonBackgroundView: UIView!
-    @IBOutlet weak var sendButton: UIButton!
-
-    @IBOutlet weak var sendButtonBackgroundViewBottomLayoutContraint: NSLayoutConstraint!
-    @IBOutlet weak var sendButtonBackgroundViewHeightLayoutContraint: NSLayoutConstraint!
     
-    // Token
-    var tokenIconImageView = UIImageView()
-    var tokenTotalAmountLabel = UILabel()
-
-    // Address
-    var addressY: CGFloat = 0.0
-    var addressTextField: UITextField = UITextField()
-    var scanButton: UIButton = UIButton()
-    var addressUnderLine: UIView = UIView()
-    var addressInfoLabel: UILabel = UILabel()
-
-    // Amount
-    var amountY: CGFloat = 0.0
-    var amountTextField: UITextField = UITextField()
-    var tokenSymbolLabel: UILabel = UILabel()
-    var amountUnderline: UIView = UIView()
-    var amountTradeImage: UIImageView = UIImageView()
-    var amountInfoLabel: UILabel = UILabel()
-    var amountStackView: AmountStackView!
-    
-    // Transaction Fee
-    var transactionFeeLabel = UILabel()
-    var transactionFeeAmountLabel = UILabel()
-    
-    // Advanced
-    /*
-    var advancedButton: UIButton = UIButton()
-    var showAdvanced: Bool = false
-    */
+    // slider
     var transactionSpeedSlider = UISlider()
     var transactionAmountMinLabel = UILabel()
     var transactionAmountMaxLabel = UILabel()
@@ -68,45 +64,24 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBackButton()
-        // Do any additional setup after loading the view.
-        if asset == nil {
-            asset = CurrentAppWalletDataManager.shared.getAsset(symbol: "ETH")
-        }
-        sendButton.setTitleColor(.gray, for: .disabled)
-        sendButton.title = LocalizedString("Send", comment: "")
-        sendButton.setupSecondary()
-        scrollViewButtonLayoutConstraint.constant = 47*UIStyleConfig.scale + 15*2
-
-        if #available(iOS 11.0, *) {
-            let window = UIApplication.shared.keyWindow
-            let bottomPadding = window?.safeAreaInsets.bottom ?? 0
-            sendButtonBackgroundViewBottomLayoutContraint.constant = bottomPadding
-        } else {
-            sendButtonBackgroundViewBottomLayoutContraint.constant = 0
-        }
-
-        sendButtonBackgroundViewHeightLayoutContraint.constant = 47*UIStyleConfig.scale + 15*2
-
-        // Setup UI in the scroll view
-        let screensize: CGRect = UIScreen.main.bounds
-        let screenWidth = screensize.width
-        // let screenHeight = screensize.height
         
-        let originY: CGFloat = 50
-        let padding: CGFloat = 15
+        // Do any additional setup after loading the view.
+        
+        setBackButton()
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
         
         // First row: token
-        tokenIconImageView.frame = CGRect(center: CGPoint(x: screenWidth*0.5, y: originY), size: CGSize(width: 54, height: 54))
+        headerButton.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
+        headerButton.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
         tokenIconImageView.image = UIImage(named: "ETH")
-        scrollView.addSubview(tokenIconImageView)
-        
-        tokenTotalAmountLabel.frame = CGRect(center: CGPoint(x: screenWidth*0.5, y: tokenIconImageView.frame.maxY + 30), size: CGSize(width: screenWidth - 2*padding, height: 21))
-        tokenTotalAmountLabel.textAlignment = .center
-        tokenTotalAmountLabel.font = FontConfigManager.shared.getDigitalFont()
-        scrollView.addSubview(tokenTotalAmountLabel)
+        tokenHeaderLabel.setTitleDigitFont()
+        tokenTotalAmountLabel.textAlignment = .right
+        tokenTotalAmountLabel.setTitleDigitFont()
         
         // Second row: address
+        addressInfoLabel.setTitleCharFont()
+        addressInfoLabel.text = LocalizedString("Please confirm the address before sending", comment: "")
+        
         addressTextField.delegate = self
         addressTextField.tag = 0
         addressTextField.keyboardType = .alphabet
@@ -115,25 +90,13 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         addressTextField.placeholder = LocalizedString("Enter the address", comment: "")
         addressTextField.text = self.address ?? ""
         addressTextField.contentMode = UIViewContentMode.bottom
-        addressTextField.frame = CGRect(x: padding, y: tokenTotalAmountLabel.frame.maxY + padding*3, width: screenWidth-padding*2-40, height: 40)
-        scrollView.addSubview(addressTextField)
-        addressY = addressTextField.frame.minY
-        
-        scanButton.image = UIImage(named: "Scan")
-        scanButton.frame = CGRect(x: screenWidth-padding-30, y: addressTextField.frame.origin.y, width: 40, height: 40)
-        scanButton.addTarget(self, action: #selector(pressedScanButton(_:)), for: .touchUpInside)
-        scrollView.addSubview(scanButton)
-        
-        addressUnderLine.frame = CGRect(x: padding, y: addressTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        addressUnderLine.backgroundColor = UIColor.black
-        scrollView.addSubview(addressUnderLine)
-
-        addressInfoLabel.frame = CGRect(x: padding, y: addressUnderLine.frame.maxY, width: screenWidth - padding * 2, height: 40)
-        addressInfoLabel.font = FontConfigManager.shared.getDigitalFont()
-        addressInfoLabel.text = LocalizedString("Please confirm the address before sending", comment: "")
-        scrollView.addSubview(addressInfoLabel)
+        addressTextField.setLeftPaddingPoints(8)
+        addressTextField.setRightPaddingPoints(32)
         
         // Third row: Amount
+        amountInfoLabel.setTitleCharFont()
+        amountInfoLabel.text = 0.0.currency
+        
         amountTextField.delegate = self
         amountTextField.inputView = UIView()
         amountTextField.tag = 1
@@ -141,114 +104,87 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         amountTextField.theme_tintColor = GlobalPicker.textColor
         amountTextField.placeholder = LocalizedString("Enter the amount", comment: "")
         amountTextField.contentMode = UIViewContentMode.bottom
-        amountTextField.frame = CGRect(x: padding, y: addressInfoLabel.frame.maxY + padding*1.5, width: screenWidth-padding*2-80, height: 40)
-        scrollView.addSubview(amountTextField)
-        amountY = amountTextField.frame.minY
+        amountTextField.setLeftPaddingPoints(8)
+        amountTextField.setRightPaddingPoints(40)
 
-        tokenSymbolLabel.font = FontConfigManager.shared.getDigitalFont()
+        tokenSymbolLabel.font = FontConfigManager.shared.getLightFont()
+        tokenSymbolLabel.theme_textColor = GlobalPicker.contrastTextColor
         tokenSymbolLabel.textAlignment = .right
-        tokenSymbolLabel.frame = CGRect(x: screenWidth-padding-80, y: amountTextField.frame.origin.y, width: 80, height: 40)
-        scrollView.addSubview(tokenSymbolLabel)
         
-        amountUnderline.frame = CGRect(x: padding, y: amountTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        amountUnderline.backgroundColor = UIColor.black
-        scrollView.addSubview(amountUnderline)
-        
-        amountTradeImage.image = UIImage(named: "Transaction-convert-income")
-        amountTradeImage.frame = CGRect(x: padding, y: amountUnderline.frame.maxY + 13, width: 15, height: 15)
-        scrollView.addSubview(amountTradeImage)
-        
-        amountInfoLabel.frame = CGRect(x: padding*2 + 10, y: amountUnderline.frame.maxY, width: screenWidth - padding * 2, height: 40)
-        amountInfoLabel.font = FontConfigManager.shared.getDigitalFont()
-        amountInfoLabel.text = 0.0.currency
-        scrollView.addSubview(amountInfoLabel)
-        
-        amountStackView = AmountStackView(frame: CGRect(x: screenWidth-100-padding, y: amountUnderline.frame.maxY, width: 100, height: 40))
-        amountStackView.delegate = self
-        scrollView.addSubview(amountStackView)
-        
-        transactionFeeLabel.frame = CGRect(x: padding, y: amountInfoLabel.frame.maxY + padding*2, width: 160, height: 40)
-        transactionFeeLabel.font = FontConfigManager.shared.getDigitalFont()
+        transactionFeeTipLabel.setSubTitleCharFont()
+        transactionFeeTipLabel.text = LocalizedString("ETH_TIP", comment: "")
+
+        // Transaction
+        transactionFeeLabel.setTitleCharFont()
         transactionFeeLabel.text = LocalizedString("Transaction Fee", comment: "")
-        scrollView.addSubview(transactionFeeLabel)
         
-        transactionFeeAmountLabel.frame = CGRect(x: screenWidth-300-padding, y: amountInfoLabel.frame.maxY + padding*2, width: 300, height: 40)
-        transactionFeeAmountLabel.font = FontConfigManager.shared.getDigitalFont()
+        transactionFeeAmountLabel.setTitleDigitFont()
         transactionFeeAmountLabel.textAlignment = .right
         transactionFeeAmountLabel.text = ""
-        scrollView.addSubview(transactionFeeAmountLabel)
         updateTransactionFeeAmountLabel()
-
-        // Fouth row: Advanced
-        /*
-        advancedButton.frame = CGRect(x: padding, y: transactionFeeAmountLabel.frame.maxY + padding, width: 100, height: 40)
-        advancedButton.setTitleColor(UIColor.black, for: .normal)
-        advancedButton.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
-        advancedButton.titleLabel?.font = FontConfigManager.shared.getDigitalFont()
-        advancedButton.title = LocalizedString("Advanced", comment: "")
-        advancedButton.setRightImage(imageName: "Arrow-button-right-light", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 11)
-        advancedButton.addTarget(self, action: #selector(pressedAdvancedButton(_:)), for: .touchUpInside)
-        scrollView.addSubview(advancedButton)
-        */
-
-        transactionSpeedSlider.frame = CGRect(x: padding, y: transactionFeeAmountLabel.frame.maxY + padding, width: screenWidth-2*padding, height: 20)
         
-        // TODO: Set value
-        /*
-         // DefaultSlider setting
-        transactionSpeedSlider.minValue = 1
-        transactionSpeedSlider.maxValue = CGFloat(Float(gasPriceInGwei * 2))
-        transactionSpeedSlider.colorBetweenHandles = UIColor.red
-        transactionSpeedSlider.lineHeight = 2
-        */
-        
-        transactionSpeedSlider.minimumValue = 1
-        transactionSpeedSlider.maximumValue = Float(gasPriceInGwei * 2) <= 20 ? 20 : Float(gasPriceInGwei * 2)
-        transactionSpeedSlider.value = Float(gasPriceInGwei)
-        
-        //transactionSpeedSlider.isContinuous = true
-        transactionSpeedSlider.tintColor = UIColor.black
-        transactionSpeedSlider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
-        scrollView.addSubview(transactionSpeedSlider)
-
-        transactionAmountMinLabel.frame = CGRect(x: padding, y: transactionSpeedSlider.frame.maxY + 10, width: (screenWidth-2*padding)/8, height: 30)
-        transactionAmountMinLabel.font = FontConfigManager.shared.getDigitalFont()
-        transactionAmountMinLabel.text = LocalizedString("Slow", comment: "")
-        scrollView.addSubview(transactionAmountMinLabel)
-        
-        transactionAmountCurrentLabel.textAlignment = .center
-        transactionAmountCurrentLabel.frame = CGRect(x: transactionAmountMinLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)*3/4, height: 30)
-        transactionAmountCurrentLabel.font = FontConfigManager.shared.getDigitalFont()
-        transactionAmountCurrentLabel.text = LocalizedString("gas price", comment: "") + ": \(gasPriceInGwei) gwei"
-        
-        scrollView.addSubview(transactionAmountCurrentLabel)
-        
-        let pad = (transactionAmountCurrentLabel.frame.width - transactionAmountCurrentLabel.intrinsicContentSize.width) / 2
-        transactionAmountHelpButton.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX - pad, y: transactionAmountCurrentLabel.frame.minY, width: 30, height: 30)
-        transactionAmountHelpButton.image = UIImage(named: "HelpIcon")
-        transactionAmountHelpButton.addTarget(self, action: #selector(pressedHelpButton), for: .touchUpInside)
-        scrollView.addSubview(transactionAmountHelpButton)
-        
-        transactionAmountMaxLabel.textAlignment = .right
-        transactionAmountMaxLabel.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/8, height: 30)
-        transactionAmountMaxLabel.font = FontConfigManager.shared.getDigitalFont()
-        transactionAmountMaxLabel.text = LocalizedString("Fast", comment: "")
-        scrollView.addSubview(transactionAmountMaxLabel)
+//        transactionSpeedSlider.frame = CGRect(x: padding, y: transactionFeeAmountLabel.frame.maxY + padding, width: screenWidth-2*padding, height: 20)
+//
+//        // TODO: Set value
+//        /*
+//         // DefaultSlider setting
+//        transactionSpeedSlider.minValue = 1
+//        transactionSpeedSlider.maxValue = CGFloat(Float(gasPriceInGwei * 2))
+//        transactionSpeedSlider.colorBetweenHandles = UIColor.fail
+//        transactionSpeedSlider.lineHeight = 2
+//        */
+//
+//        transactionSpeedSlider.minimumValue = 1
+//        transactionSpeedSlider.maximumValue = Float(gasPriceInGwei * 2) <= 20 ? 20 : Float(gasPriceInGwei * 2)
+//        transactionSpeedSlider.value = Float(gasPriceInGwei)
+//
+//        //transactionSpeedSlider.isContinuous = true
+//        transactionSpeedSlider.tintColor = UIColor.text1
+//        transactionSpeedSlider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
+//        scrollView.addSubview(transactionSpeedSlider)
+//
+//        transactionAmountMinLabel.frame = CGRect(x: padding, y: transactionSpeedSlider.frame.maxY + 10, width: (screenWidth-2*padding)/8, height: 30)
+//        transactionAmountMinLabel.font = FontConfigManager.shared.getDigitalFont()
+//        transactionAmountMinLabel.text = LocalizedString("Slow", comment: "")
+//        scrollView.addSubview(transactionAmountMinLabel)
+//
+//        transactionAmountCurrentLabel.textAlignment = .center
+//        transactionAmountCurrentLabel.frame = CGRect(x: transactionAmountMinLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)*3/4, height: 30)
+//        transactionAmountCurrentLabel.font = FontConfigManager.shared.getDigitalFont()
+//        transactionAmountCurrentLabel.text = LocalizedString("gas price", comment: "") + ": \(gasPriceInGwei) gwei"
+//
+//        scrollView.addSubview(transactionAmountCurrentLabel)
+//
+//        let pad = (transactionAmountCurrentLabel.frame.width - transactionAmountCurrentLabel.intrinsicContentSize.width) / 2
+//        transactionAmountHelpButton.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX - pad, y: transactionAmountCurrentLabel.frame.minY, width: 30, height: 30)
+//        transactionAmountHelpButton.image = UIImage(named: "HelpIcon")
+//        transactionAmountHelpButton.addTarget(self, action: #selector(pressedHelpButton), for: .touchUpInside)
+//        scrollView.addSubview(transactionAmountHelpButton)
+//
+//        transactionAmountMaxLabel.textAlignment = .right
+//        transactionAmountMaxLabel.frame = CGRect(x: transactionAmountCurrentLabel.frame.maxX, y: transactionAmountMinLabel.frame.minY, width: (screenWidth-2*padding)/8, height: 30)
+//        transactionAmountMaxLabel.font = FontConfigManager.shared.getDigitalFont()
+//        transactionAmountMaxLabel.text = LocalizedString("Fast", comment: "")
+//        scrollView.addSubview(transactionAmountMaxLabel)
+//
+//        scrollView.delegate = self
+//        scrollView.contentSize = CGSize(width: screenWidth, height: transactionAmountMinLabel.frame.maxY + 30)
         
         scrollView.delegate = self
-        scrollView.contentSize = CGSize(width: screenWidth, height: transactionAmountMinLabel.frame.maxY + 30)
+//        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: sendButton.frame.maxY + 16)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidChange), name: .UITextFieldTextDidChange, object: nil)
-        
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(scrollViewTap)
         
-        // Get the latest estimate gas price from Relay.
-        // It's an async call.
-        // If the api fails, gas price 10 will be returned.
+        // Send button
+        sendButton.title = LocalizedString("Send", comment: "")
+        sendButton.setupSecondary()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidChange), name: .UITextFieldTextDidChange, object: nil)
+
         GasDataManager.shared.getEstimateGasPrice { (gasPrice, _) in
             self.gasPriceInGwei = Double(gasPrice)
             DispatchQueue.main.async {
@@ -265,12 +201,25 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         // TODO: Update the transaction fee is needed. in SendCurrentAppWalletDataManager
+        let symbol = SendCurrentAppWalletDataManager.shared.token?.symbol ?? "ETH"
+        asset = CurrentAppWalletDataManager.shared.getAsset(symbol: symbol)
+
+        tokenIconImageView.image = asset.icon
+        tokenHeaderLabel.text = asset.symbol
+        tokenTotalAmountLabel.text = "\(asset.display) \(asset.symbol)"
         tokenSymbolLabel.text = asset.symbol
-        let title = LocalizedString("Available Balance", comment: "")
-        tokenTotalAmountLabel.text = "\(title) \(asset.display) \(asset.symbol)"
         SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
+        if asset.symbol.uppercased() == "ETH" {
+            transactionFeeTipLabel.isHidden = false
+        } else {
+            transactionFeeTipLabel.isHidden = true
+        }
+    }
+    
+    @IBAction func pressedHeaderButton(_ sender: UIButton) {
+        let vc = TokenSelectTableViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func setResultOfAmount(with percentage: Double) {
@@ -279,7 +228,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         amountTextField.text = value.withCommas(length)
         if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
             let total = value * price
-            updateLabel(label: amountInfoLabel, text: total.currency, textColor: .black)
+            updateLabel(label: amountInfoLabel, text: total.currency, textColor: .text1)
         }
         _ = validate()
     }
@@ -306,7 +255,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     func updateLabel(label: UILabel, text: String, textColor: UIColor) {
         label.textColor = textColor
         label.text = text
-        if textColor == .red {
+        if textColor == .fail {
             label.shake()
         }
     }
@@ -317,13 +266,13 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                 if toAddress.isHexAddress() {
                     var error: NSError? = nil
                     if GethNewAddressFromHex(toAddress, &error) != nil {
-                        updateLabel(label: addressInfoLabel, text: LocalizedString("Please confirm the address before sending", comment: ""), textColor: .black)
+                        updateLabel(label: addressInfoLabel, text: LocalizedString("Please confirm the address before sending", comment: ""), textColor: .text1)
                         return true
                     }
                 }
-                updateLabel(label: addressInfoLabel, text: LocalizedString("Please input a correct address", comment: ""), textColor: .red)
+                updateLabel(label: addressInfoLabel, text: LocalizedString("Please input a correct address", comment: ""), textColor: .fail)
             } else {
-                updateLabel(label: addressInfoLabel, text: LocalizedString("Please confirm the address before sending", comment: ""), textColor: .black)
+                updateLabel(label: addressInfoLabel, text: LocalizedString("Please confirm the address before sending", comment: ""), textColor: .text1)
             }
         }
         return false
@@ -337,21 +286,21 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                         if GethBigInt.generate(valueInEther: amount, symbol: token.symbol) != nil {
                             if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
                                 let display = (amount * price).currency
-                                updateLabel(label: amountInfoLabel, text: display, textColor: .black)
+                                updateLabel(label: amountInfoLabel, text: display, textColor: .text1)
                                 return true
                             }
                         }
                     }
                 } else {
                     let title = LocalizedString("Available Balance", comment: "")
-                    updateLabel(label: amountInfoLabel, text: "\(title) \(asset.display) \(asset.symbol)", textColor: .red)
+                    updateLabel(label: amountInfoLabel, text: "\(title) \(asset.display) \(asset.symbol)", textColor: .fail)
                 }
             } else {
                 let text = LocalizedString("Please input a valid amount", comment: "")
-                updateLabel(label: amountInfoLabel, text: text, textColor: .red)
+                updateLabel(label: amountInfoLabel, text: text, textColor: .fail)
             }
         } else {
-            updateLabel(label: amountInfoLabel, text: 0.0.currency, textColor: .black)
+            updateLabel(label: amountInfoLabel, text: 0.0.currency, textColor: .text1)
         }
         return false
     }
@@ -365,33 +314,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         }
         return isValid
     }
-
-    /*
-    @objc func pressedAdvancedButton(_ sender: Any) {
-        print("pressedAdvancedButton")
-        showAdvanced = !showAdvanced
-        if showAdvanced {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.transactionSpeedSlider.alpha = 1
-                self.transactionAmountMinLabel.alpha = 1
-                self.transactionAmountCurrentLabel.alpha = 1
-                self.transactionAmountMaxLabel.alpha = 1
-                self.transactionAmountHelpButton.alpha = 1
-            })
-            // TODO: The position of the align icon is related to the size. So we use several hardcoded value here.
-            self.advancedButton.setRightImage(imageName: "Arrow-button-down-light", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 2)
-        } else {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.transactionSpeedSlider.alpha = 0
-                self.transactionAmountMinLabel.alpha = 0
-                self.transactionAmountCurrentLabel.alpha = 0
-                self.transactionAmountMaxLabel.alpha = 0
-                self.transactionAmountHelpButton.alpha = 0
-            })
-            self.advancedButton.setRightImage(imageName: "Arrow-button-right-light", imagePaddingTop: 0, imagePaddingLeft: 10, titlePaddingRight: 11)
-        }
+    
+    @IBAction func pressedAdvancedButton(_ sender: UIButton) {
     }
-    */
     
     func pushController() {
         let toAddress = addressTextField.text!
@@ -425,14 +350,14 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             SVProgressHUD.show(withStatus: LocalizedString("Processing the transaction", comment: "") + "...")
             self.pushController()
         }
-        if !isAmountValid && amountInfoLabel.textColor != .red {
+        if !isAmountValid && amountInfoLabel.textColor != .fail {
             amountInfoLabel.text = LocalizedString("Please input a valid amount", comment: "")
-            amountInfoLabel.textColor = .red
+            amountInfoLabel.textColor = .fail
             amountInfoLabel.shake()
         }
-        if !isAddressValid && addressInfoLabel.textColor != .red {
+        if !isAddressValid && addressInfoLabel.textColor != .fail {
             addressInfoLabel.text = LocalizedString("Please input a correct address", comment: "")
-            addressInfoLabel.textColor = .red
+            addressInfoLabel.textColor = .fail
             addressInfoLabel.shake()
         }
     }
@@ -442,7 +367,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         addressTextField.text = valueSent
     }
     
-    @objc func pressedScanButton(_ sender: Any) {
+    @IBAction func pressedScanButton(_ sender: UIButton) {
         let viewController = ScanQRCodeViewController()
         viewController.delegate = self
         viewController.hidesBottomBarWhenPushed = true
@@ -500,40 +425,37 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             // Get the the distance from the bottom safe area edge to the bottom of the screen
             let window = UIApplication.shared.keyWindow
             let bottomPadding = window?.safeAreaInsets.bottom ?? 0
-
-            self.scrollViewButtonLayoutConstraint.constant = systemKeyboardHeight + 47 + 15*2 + bottomPadding
-            self.sendButtonBackgroundViewBottomLayoutContraint.constant = systemKeyboardHeight
-
+            self.scrollViewButtonLayoutConstraint.constant = systemKeyboardHeight - bottomPadding
+            let addressY = addressTextField.frame.minY
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
                 // animation for layout constraint change.
                 self.view.layoutIfNeeded()
-                if self.addressY - self.scrollView.contentOffset.y < 0 || self.addressY - self.scrollView.contentOffset.y > self.scrollViewButtonLayoutConstraint.constant {
-                    self.scrollView.setContentOffset(CGPoint.init(x: 0, y: self.addressY + 30), animated: true)
+                if addressY - self.scrollView.contentOffset.y < 0 || addressY - self.scrollView.contentOffset.y > self.scrollViewButtonLayoutConstraint.constant {
+                    self.scrollView.setContentOffset(CGPoint.init(x: 0, y: addressY + 30), animated: true)
                 }
             }, completion: { _ in
-
+                self.activeTextFieldTag = self.addressTextField.tag
             })
-        } else {
-            sendButtonBackgroundViewBottomLayoutContraint.constant = systemKeyboardHeight
         }
-        // self.scrollView.setContentOffset(CGPoint.zero, animated: true)
     }
     
     @objc func keyboardWillDisappear(notification: NSNotification?) {
         print("keyboardWillDisappear")
-        scrollViewButtonLayoutConstraint.constant = 47*UIStyleConfig.scale + 15*2
 
-        if #available(iOS 11.0, *) {
-            let window = UIApplication.shared.keyWindow
-            let bottomPadding = window?.safeAreaInsets.bottom ?? 0
-            sendButtonBackgroundViewBottomLayoutContraint.constant = bottomPadding
-        } else {
-            sendButtonBackgroundViewBottomLayoutContraint.constant = 0
+        if self.activeTextFieldTag != 1 {
+            scrollViewButtonLayoutConstraint.constant = 0
         }
+//        if #available(iOS 11.0, *) {
+//            let window = UIApplication.shared.keyWindow
+//            let bottomPadding = window?.safeAreaInsets.bottom ?? 0
+//            sendButtonBackgroundViewBottomLayoutContraint.constant = bottomPadding
+//        } else {
+//            sendButtonBackgroundViewBottomLayoutContraint.constant = 0
+//        }
     }
     
     @objc func keyboardDidChange(notification: NSNotification?) {
-        activeTextFieldTag = addressTextField.tag
+//        activeTextFieldTag = addressTextField.tag
         _ = validate()
     }
 
@@ -541,28 +463,28 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         if !isNumericKeyboardShow {
             let width = self.view.frame.width
             let height = self.view.frame.height
-            scrollViewButtonLayoutConstraint.constant = DefaultNumericKeyboard.height
             numericKeyboardView = DefaultNumericKeyboard.init(frame: CGRect(x: 0, y: height, width: width, height: DefaultNumericKeyboard.height))
             numericKeyboardView.delegate2 = self
+            scrollViewButtonLayoutConstraint.constant = DefaultNumericKeyboard.height
             view.addSubview(numericKeyboardView)
-            view.bringSubview(toFront: sendButtonBackgroundView)
-            view.bringSubview(toFront: sendButton)
+//            view.bringSubview(toFront: sendButtonBackgroundView)
+//            view.bringSubview(toFront: sendButton)
             
             let window = UIApplication.shared.keyWindow
             let bottomPadding = window?.safeAreaInsets.bottom ?? 0
-            
-            let destinateY = height - DefaultNumericKeyboard.height - sendButtonBackgroundViewHeightLayoutContraint.constant - bottomPadding
+            let amountY = amountTextField.frame.minY
+            let addressY = addressTextField.frame.minY
+            let destinateY = height - DefaultNumericKeyboard.height - bottomPadding
             
             // TODO: improve the animation.
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
                 self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
-                if self.amountY - self.scrollView.contentOffset.y < 0 || self.addressY - self.scrollView.contentOffset.y > self.scrollViewButtonLayoutConstraint.constant {
-                    self.scrollView.setContentOffset(CGPoint.init(x: 0, y: self.amountY - 120*UIStyleConfig.scale), animated: true)
+                if amountY - self.scrollView.contentOffset.y < 0 || addressY - self.scrollView.contentOffset.y > self.scrollViewButtonLayoutConstraint.constant {
+                    self.scrollView.setContentOffset(CGPoint.init(x: 0, y: amountY - 120*UIStyleConfig.scale), animated: true)
                 }
-                
             }, completion: { _ in
                 self.isNumericKeyboardShow = true
-                self.scrollViewButtonLayoutConstraint.constant = DefaultNumericKeyboard.height + self.sendButtonBackgroundViewHeightLayoutContraint.constant
+//                self.scrollViewButtonLayoutConstraint.constant = DefaultNumericKeyboard.height + self.sendButtonBackgroundViewHeightLayoutContraint.constant
             })
         }
         numericKeyboardView.currentText = textField.text ?? ""
@@ -579,12 +501,10 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                 // animation for layout constraint change.
                 self.view.layoutIfNeeded()
                 self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
-                // self.scrollView.setContentOffset(CGPoint.zero, animated: true)
+                 self.scrollView.setContentOffset(CGPoint.zero, animated: true)
             }, completion: { _ in
                 self.isNumericKeyboardShow = false
             })
-        } else {
-            
         }
     }
     

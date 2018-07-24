@@ -93,6 +93,26 @@ extension UIColor {
         return UIColor(named: "Color-red")!
     }
     
+    // #ffffffcc
+    class var text1: UIColor {
+        return UIColor(named: "Color-text1")!
+    }
+    
+    // ffffff66
+    class var text2: UIColor {
+        return UIColor(named: "Color-text2")!
+    }
+    
+    // #FA4A6F
+    class var fail: UIColor {
+        return UIColor(named: "Color-red")!
+    }
+    
+    // #01B97F
+    class var success: UIColor {
+        return UIColor(named: "Color-green")!
+    }
+    
     class var up: UIColor {
         if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
             return UIColor(named: "Color-green")! // #01B97F

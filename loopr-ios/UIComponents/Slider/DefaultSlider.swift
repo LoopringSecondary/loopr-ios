@@ -155,6 +155,11 @@ import UIKit
     /// (note: this is ignored if <= 0.0)
     @IBInspectable open var step: CGFloat = 0.0
     
+    @IBInspectable open var enableMark: Bool = false
+    @IBInspectable open var markStep: CGFloat = 4.0
+    @IBInspectable open var markColor: UIColor = .white
+    @IBInspectable open var markDiameter: CGFloat = 16.0
+    
     /// Handle slider with custom image, you can set custom image for your handle
     @IBInspectable open var handleImage: UIImage? {
         didSet {
@@ -280,6 +285,7 @@ import UIKit
             updateColors()
             updateHandlePositions()
             updateLabelPositions()
+            updateMarks()
         }
     }
     
@@ -598,6 +604,24 @@ import UIKit
         }
     }
     
+    private func updateMarks() {
+        if enableMark && markStep > 0 {
+            for i in stride(from: 0, to: maxValue, by: maxValue / markStep) {
+                let point = CGPoint(x: xPositionAlongLine(for: i),
+                        y: sliderLine.frame.midY)
+                let renderer = UIGraphicsImageRenderer(size: CGSize(width: markDiameter, height: markDiameter))
+                let img = renderer.image { ctx in
+                    ctx.cgContext.setFillColor(markColor.cgColor)
+                    ctx.cgContext.setLineWidth(0)
+                    let rectangle = CGRect(x: point.x, y: point.y, width: markDiameter, height: markDiameter)
+                    ctx.cgContext.addEllipse(in: rectangle)
+                    ctx.cgContext.drawPath(using: .fillStroke)
+                }
+                sliderLine.contents = img
+            }
+        }
+    }
+    
     private func updateFixedLabelPositions() {
         minLabel.position = CGPoint(x: xPositionAlongLine(for: minValue),
                                     y: sliderLine.frame.minY - (minLabelTextSize.height / 2.0) - (handleDiameter / 2.0) - labelPadding)
@@ -667,6 +691,7 @@ import UIKit
         updateLabelValues()
         updateColors()
         updateAccessibilityElements()
+        updateMarks()
         
         // update the delegate
         if let delegate = delegate, handleTracking != .none {

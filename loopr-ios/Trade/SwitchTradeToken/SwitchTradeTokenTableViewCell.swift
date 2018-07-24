@@ -13,27 +13,24 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
     var token: Token?
 
     // TODO: We may deprecate IBOutlet
+    @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var iconView: IconView!
-
     @IBOutlet weak var symbolLabel: UILabel!
-
-    @IBOutlet weak var seperateLine: UIView!
-
+    @IBOutlet weak var nameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        tintColor = UIColor.black
         theme_backgroundColor = GlobalPicker.backgroundColor
-        symbolLabel.theme_textColor = GlobalPicker.textColor
-        symbolLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17)
-        seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
+        baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        symbolLabel.setTitleDigitFont()
+        nameLabel.setSubTitleDigitFont()
     }
 
     func update() {
         if let token = token {
-            let icon = UIImage(named: token.symbol) ?? nil
+            let icon = UIImage(named: "Token-\(token.symbol)-\(Themes.getTheme())")
             if icon != nil {
                 iconImageView.image = icon
                 iconImageView.isHidden = false
@@ -44,8 +41,8 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
                 iconView.symbolLabel.text = token.symbol
                 iconImageView.isHidden = true
             }
-            
-            symbolLabel.text = "\(token.symbol) (\(token.source.capitalized))"
+            symbolLabel.text = token.symbol
+            nameLabel.text = token.source.capitalized
         }
     }
 
@@ -54,7 +51,7 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
     }
 
     class func getHeight() -> CGFloat {
-        return 62
+        return 90
     }
 
 }

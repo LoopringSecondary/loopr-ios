@@ -1,50 +1,28 @@
 //
-//  SwitchTradeTokenViewController.swift
+//  TokenSelectTableViewController.swift
 //  loopr-ios
 //
-//  Created by xiaoruby on 3/14/18.
-//  Copyright © 2018 Loopring. All rights reserved.
+//  Created by kenshin on 2018/7/24.
+//  Copyright © 2018年 Loopring. All rights reserved.
 //
 
 import UIKit
 
-enum SwitchTradeTokenType {
-    case tokenS
-    case tokenB
-}
-
-class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
-
-    var type: SwitchTradeTokenType = .tokenS
-    @IBOutlet weak var tableView: UITableView!
-
+class TokenSelectTableViewController: UITableViewController, UISearchBarDelegate {
+    
     var searchText: String = ""
     var isFiltering = false
-    var filteredTokens = [Token]()
     let searchBar = UISearchBar()
+    var filteredTokens = [Token]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        tableView.theme_backgroundColor = GlobalPicker.backgroundColor
-
-        setBackButton()
-        setupSearchBar()
-
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.separatorStyle = .none
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // self.navigationController?.isNavigationBarHidden = false
+        
+        self.setBackButton()
+        self.setupSearchBar()
+        
+        self.tableView.separatorStyle = .none
+        self.tableView.theme_backgroundColor = GlobalPicker.backgroundColor
     }
     
     func setupSearchBar() {
@@ -56,70 +34,58 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         
         let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
         searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
-        
         navigationItem.titleView = searchBarContainer
     }
-    
-    func getTokens() -> [Token] {
-        let tokens = TradeDataManager.shared.tokenS
-        let tokenb = TradeDataManager.shared.tokenB
-        if self.type == .tokenB {
-            return TokenDataManager.shared.getErcTokensExcept(for: tokens.symbol)
-        } else {
-            return TokenDataManager.shared.getErcTokensExcept(for: tokenb.symbol)
-        }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    // MARK: - Table view data source
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
             return filteredTokens.count
         } else {
-            return getTokens().count
+            return TokenDataManager.shared.getTokens().count
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return SwitchTradeTokenTableViewCell.getHeight()
     }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: SwitchTradeTokenTableViewCell.getCellIdentifier()) as? SwitchTradeTokenTableViewCell
         if cell == nil {
             let nib = Bundle.main.loadNibNamed("SwitchTradeTokenTableViewCell", owner: self, options: nil)
             cell = nib![0] as? SwitchTradeTokenTableViewCell
         }
-
         let token: Token
         if isFiltering {
             token = filteredTokens[indexPath.row]
         } else {
-            token = getTokens()[indexPath.row]
+            token = TokenDataManager.shared.getTokens()[indexPath.row]
         }
         cell?.token = token
         cell?.update()
-
-        if (type == .tokenS && token.symbol == TradeDataManager.shared.tokenS.symbol) || (type == .tokenB && token.symbol == TradeDataManager.shared.tokenB.symbol) {
+        if token.symbol == SendCurrentAppWalletDataManager.shared.token?.symbol {
             cell?.accessoryType = .checkmark
         } else {
             cell?.accessoryType = .none
         }
         return cell!
     }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let token: Token
         if isFiltering {
             token = filteredTokens[indexPath.row]
         } else {
-            token = getTokens()[indexPath.row]
+            token = TokenDataManager.shared.getTokens()[indexPath.row]
         }
-        switch type {
-        case .tokenS:
-            TradeDataManager.shared.changeTokenS(token)
-        case .tokenB:
-            TradeDataManager.shared.changeTokenB(token)
-        }
+        SendCurrentAppWalletDataManager.shared.token = token
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -164,7 +130,7 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         isFiltering = false
         tableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
     }
-
+    
     func filterContentForSearchText(_ searchText: String) {
         filteredTokens = TokenDataManager.shared.getTokens().filter({(token: Token) -> Bool in
             if token.symbol.range(of: searchText, options: .caseInsensitive) != nil {
@@ -175,5 +141,4 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         })
         tableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
     }
-
 }

@@ -61,6 +61,10 @@
 		94AD1FE5208B910D00C443E6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AD1FE4208B910D00C443E6 /* Currency.swift */; };
 		94B5CA8A204FB4E20081BA93 /* DefaultBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5CA89204FB4E20081BA93 /* DefaultBlock.swift */; };
 		94B5CA8C204FE8E40081BA93 /* ETH_Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5CA8B204FE8E40081BA93 /* ETH_Transaction.swift */; };
+		94BFF9CE21072EA000A0BE8B /* TokenSelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFF9CC21072EA000A0BE8B /* TokenSelectTableViewController.swift */; };
+		94BFF9CF21072EA000A0BE8B /* TokenSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BFF9CD21072EA000A0BE8B /* TokenSelectTableViewController.xib */; };
+		94BFF9D221073EE300A0BE8B /* SetGasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFF9D021073EE300A0BE8B /* SetGasViewController.swift */; };
+		94BFF9D321073EE300A0BE8B /* SetGasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BFF9D121073EE300A0BE8B /* SetGasViewController.xib */; };
 		94C11FD6208C2DC60050E180 /* SettingCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C11FD4208C2DC60050E180 /* SettingCurrencyViewController.swift */; };
 		94C11FD7208C2DC60050E180 /* SettingCurrencyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C11FD5208C2DC60050E180 /* SettingCurrencyViewController.xib */; };
 		94C11FDA208C2DE40050E180 /* SettingCurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C11FD8208C2DE40050E180 /* SettingCurrencyTableViewCell.swift */; };
@@ -625,6 +629,10 @@
 		94AD1FE4208B910D00C443E6 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		94B5CA89204FB4E20081BA93 /* DefaultBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBlock.swift; sourceTree = "<group>"; };
 		94B5CA8B204FE8E40081BA93 /* ETH_Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETH_Transaction.swift; sourceTree = "<group>"; };
+		94BFF9CC21072EA000A0BE8B /* TokenSelectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSelectTableViewController.swift; sourceTree = "<group>"; };
+		94BFF9CD21072EA000A0BE8B /* TokenSelectTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TokenSelectTableViewController.xib; sourceTree = "<group>"; };
+		94BFF9D021073EE300A0BE8B /* SetGasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGasViewController.swift; sourceTree = "<group>"; };
+		94BFF9D121073EE300A0BE8B /* SetGasViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetGasViewController.xib; sourceTree = "<group>"; };
 		94C11FD4208C2DC60050E180 /* SettingCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCurrencyViewController.swift; sourceTree = "<group>"; };
 		94C11FD5208C2DC60050E180 /* SettingCurrencyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCurrencyViewController.xib; sourceTree = "<group>"; };
 		94C11FD8208C2DE40050E180 /* SettingCurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCurrencyTableViewCell.swift; sourceTree = "<group>"; };
@@ -1587,6 +1595,10 @@
 			children = (
 				AC5E3E6E205DFB700051ACFC /* SendAssetViewController.swift */,
 				AC5E3E6F205DFB700051ACFC /* SendAssetViewController.xib */,
+				94BFF9CC21072EA000A0BE8B /* TokenSelectTableViewController.swift */,
+				94BFF9CD21072EA000A0BE8B /* TokenSelectTableViewController.xib */,
+				94BFF9D021073EE300A0BE8B /* SetGasViewController.swift */,
+				94BFF9D121073EE300A0BE8B /* SetGasViewController.xib */,
 			);
 			path = SendAsset;
 			sourceTree = "<group>";
@@ -2562,6 +2574,7 @@
 				ACB9118920265DEA00F14644 /* MarketDetailViewController.xib in Resources */,
 				943A9A4220909597008BCBFD /* DefaultWebViewController.xib in Resources */,
 				AC2ACA86210305F8009C77E7 /* TradeFAQViewController.xib in Resources */,
+				94BFF9D321073EE300A0BE8B /* SetGasViewController.xib in Resources */,
 				AC31CE6B205B995100A30335 /* Roboto-LightItalic.ttf in Resources */,
 				AC3B488C210525BE008A6771 /* UpdatedSelectWalletViewController.xib in Resources */,
 				AC31CE34205B603200A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf in Resources */,
@@ -2649,6 +2662,7 @@
 				AC2ACA5220FA0EC3009C77E7 /* Rubik-Italic.ttf in Resources */,
 				AC9A274120A6144700DB04AC /* OrderNoDataTableViewCell.xib in Resources */,
 				ACBA47E320788ECD0032C2B4 /* SettingManageWalletViewController.xib in Resources */,
+				94BFF9CF21072EA000A0BE8B /* TokenSelectTableViewController.xib in Resources */,
 				9498E3ED2075E27E00BC8B4F /* OrderHistorySearchResultCell.xib in Resources */,
 				AC31CE37205B603600A30335 /* Linotype-DINNextCYR-UltraLight.otf in Resources */,
 				6630916921005B54006DA630 /* AssetSwipeViewController.xib in Resources */,
@@ -2941,6 +2955,7 @@
 				AC78FC35209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift in Sources */,
 				AC2ACA9E21030775009C77E7 /* TradeFAQPage.swift in Sources */,
 				AC4F601420773E9D00F1D954 /* EthError.swift in Sources */,
+				94BFF9D221073EE300A0BE8B /* SetGasViewController.swift in Sources */,
 				AC4142062038B66F0089861D /* AppWallet.swift in Sources */,
 				ACB97C7020715BC100775D4C /* MnemonicQuestion.swift in Sources */,
 				940B45202060F67E00ADE2B9 /* OrderDataManager.swift in Sources */,
@@ -3020,6 +3035,7 @@
 				943C1CAE20CE1E0B008A8CED /* AuthorizeDataManager.swift in Sources */,
 				94B5CA8C204FE8E40081BA93 /* ETH_Transaction.swift in Sources */,
 				6630916521002CD1006DA630 /* TxSwipeViewType.swift in Sources */,
+				94BFF9CE21072EA000A0BE8B /* TokenSelectTableViewController.swift in Sources */,
 				AC971EC820BB412300EDEDD0 /* AuthenticationDataManager.swift in Sources */,
 				AC37567C2038D80300AADC60 /* PrivateKeyViewController.swift in Sources */,
 				9475A2EE207EF81300200155 /* OrderDetailViewController.swift in Sources */,

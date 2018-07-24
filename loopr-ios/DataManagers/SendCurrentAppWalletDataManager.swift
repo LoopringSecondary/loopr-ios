@@ -13,6 +13,9 @@ class SendCurrentAppWalletDataManager {
     
     static let shared = SendCurrentAppWalletDataManager()
     
+    // sending token in send controller
+    open var token: Token?
+    
     private var nonce: Int64
     private var wethAddress: GethAddress?
     private var protocolAddress: GethAddress?
@@ -20,6 +23,7 @@ class SendCurrentAppWalletDataManager {
     
     private init() {
         self.nonce = 0
+        self.token = nil
         self.wethAddress = nil
         self.protocolAddress = nil
         self.getWethAddress()
