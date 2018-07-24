@@ -84,6 +84,14 @@ extension UIColor {
     class var dark5: UIColor {
         return UIColor(named: "Color-dark5")!
     }
+
+    class var themeGreen: UIColor {
+        return UIColor(named: "Color-green")!
+    }
+    
+    class var themeRed: UIColor {
+        return UIColor(named: "Color-red")!
+    }
     
     class var up: UIColor {
         if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {

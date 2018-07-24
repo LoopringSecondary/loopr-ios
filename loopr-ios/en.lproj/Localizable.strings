@@ -77,7 +77,7 @@
 "Please enter private key" = "Please enter private key";
 "Please enter keystore" = "Please enter keystore";
 "Mnemonic Password (optional)" = "Mnemonic Password (optional)";
-"Please enter a wallet name" = "Please set a wallet name";
+"Please enter a wallet name" = "Please enter a wallet name";
 "Please set a password" = "Please set a password";
 "Please enter a password" = "Please enter a password";
 "Copy address to clipboard successfully!" = "Copy address to clipboard successfully!";
@@ -256,7 +256,7 @@
 "Available Balance" = "Available Balance";
 "Please Pay Attention" = "Please Pay Attention";
 "Irrational" = "Irrational";
-"The name is token, please try another one" = "The name is token, please try another one";
+"The name is token, please try another one." = "The name is token, please try another one.";
 "Back" = "Back";
 "Undefined" = "Undefined";
 "Pending" = "Pending";
@@ -357,3 +357,6 @@
 "Please turn on Touch ID in settings" = "Please turn on Touch ID in settings";
 "Please turn on Face ID in settings" = "Please turn on Face ID in settings";
 "Transaction" = "Transaction";
+"Password can't be empty." = "Password can't be empty.";
+"The length of password needs to be larger than 6." = "The length of password needs to be larger than 6.";
+"Password doesn't match" = "Password doesn't match";

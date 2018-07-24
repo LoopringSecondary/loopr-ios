@@ -256,7 +256,7 @@
 "Available Balance" = "可用余额";
 "Please Pay Attention" = "请注意";
 "Irrational" = "设价不合理";
-"The name is token, please try another one" = "钱包名称重复";
+"The name is token, please try another one." = "钱包名称重复";
 "Back" = "返回";
 "Undefined" = "未定义";
 "Pending" = "待处理";
@@ -357,3 +357,6 @@
 "Please turn on Touch ID in settings" = "请先前往通用设置中开启指纹功能";
 "Please turn on Face ID in settings" = "请先前往通用设置中开启面容识别功能";
 "Transaction" = "交易";
+"Password can't be empty." = "密码不能为空";
+"The length of password needs to be larger than 6." = "密码长度必须大于6";
+"Password doesn't match" = "密码不一样";

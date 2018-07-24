@@ -67,7 +67,7 @@ class AppWalletDataManager {
     
     func isNewWalletNameToken(newWalletname: String) -> Bool {
         let results = appWallets.filter { $0.name == newWalletname }
-        return results.isEmpty
+        return !results.isEmpty
     }
     
     func isDuplicatedAddress(address: String) -> Bool {

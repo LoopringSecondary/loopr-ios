@@ -12,6 +12,7 @@ class GenerateWalletEnterPasswordViewController: UIViewController, UITextFieldDe
 
     var passwordTextField: UITextField = UITextField()
     var continueButton: UIButton = UIButton()
+    var errorInfoLabel: UILabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +31,12 @@ class GenerateWalletEnterPasswordViewController: UIViewController, UITextFieldDe
         
         passwordTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 40)
         
+        passwordTextField.isSecureTextEntry = true
         passwordTextField.delegate = self
         passwordTextField.tag = 0
         passwordTextField.theme_tintColor = GlobalPicker.textColor
         passwordTextField.theme_textColor = GlobalPicker.textColor
+        passwordTextField.keyboardAppearance = Themes.isDark() ? .dark : .default
         passwordTextField.textAlignment = .center
         passwordTextField.font = FontConfigManager.shared.getRegularFont(size: 18)
         passwordTextField.placeholder = LocalizedString("Password", comment: "")
@@ -46,6 +49,12 @@ class GenerateWalletEnterPasswordViewController: UIViewController, UITextFieldDe
         continueButton.setTitle(LocalizedString("Next", comment: ""), for: .normal)
         continueButton.addTarget(self, action: #selector(pressedContinueButton), for: .touchUpInside)
         view.addSubview(continueButton)
+
+        errorInfoLabel.frame = CGRect(x: padding, y: continueButton.bottomY + 40, width: screenWidth-padding*2, height: 40)
+        errorInfoLabel.textColor = UIColor.themeRed
+        errorInfoLabel.textAlignment = .center
+        errorInfoLabel.alpha = 0.0
+        view.addSubview(errorInfoLabel)
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,16 +62,43 @@ class GenerateWalletEnterPasswordViewController: UIViewController, UITextFieldDe
         // Dispose of any resources that can be recreated.
     }
 
-    
     @objc func pressedContinueButton(_ sender: Any) {
-        let viewController = GenerateWalletEnterRepeatPasswordViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
+        var validPassword = true
+        
+        let password = passwordTextField.text ?? ""
+        if password.trim().count == 0 {
+            validPassword = false
+            errorInfoLabel.shake()
+            errorInfoLabel.alpha = 1.0
+            errorInfoLabel.text = LocalizedString("Password can't be empty.", comment: "")
+        }
+
+        if password.count < 6 {
+            validPassword = false
+            errorInfoLabel.shake()
+            errorInfoLabel.alpha = 1.0
+            errorInfoLabel.text = LocalizedString("The length of password needs to be larger than 6.", comment: "")
+        }
+        
+        if validPassword {
+            GenerateWalletDataManager.shared.setPassword(passwordTextField.text!)
+            let viewController = GenerateWalletEnterRepeatPasswordViewController()
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if passwordTextField.isFirstResponder == true {
             passwordTextField.placeholder = ""
         }
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newLength = (textField.text?.utf16.count)! + (string.utf16.count) - range.length
+        print("textField shouldChangeCharactersIn \(newLength)")
+        errorInfoLabel.alpha = 0.0
+        errorInfoLabel.text = ""
+        return true
     }
 
 }
