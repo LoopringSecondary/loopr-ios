@@ -158,7 +158,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         CurrentAppWalletDataManager.shared.startGetBalance()
         // Add observer.
         NotificationCenter.default.addObserver(self, selector: #selector(balanceResponseReceivedNotification), name: .balanceResponseReceived, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(priceQuoteResponseReceivedNotification), name: .priceQuoteResponseReceived, object: nil)
+        // NotificationCenter.default.addObserver(self, selector: #selector(priceQuoteResponseReceivedNotification), name: .priceQuoteResponseReceived, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -273,7 +273,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func priceQuoteResponseReceivedNotification() {
-        if !isLaunching {
+        if !isLaunching && isListeningSocketIO {
             print("priceQuoteResponseReceivedNotification WalletViewController reload table")
             // assetTableView.reloadData()
             self.assetTableView.reloadSections(IndexSet(integersIn: 2...2), with: .none)

@@ -18,7 +18,7 @@ public class LoopringSocketIORequest {
     static func setup() {
         if handlers.isEmpty {
             // add more requests using socketio here
-            handlers["balance_res"] = [CurrentAppWalletDataManager.shared.onBalanceResponse]
+            // handlers["balance_res"] = [CurrentAppWalletDataManager.shared.onBalanceResponse]
             handlers["marketcap_res"] = [PriceDataManager.shared.onPriceQuoteResponse]
             handlers["loopringTickers_res"] = [MarketDataManager.shared.onTickerResponse]
             handlers["trends_res"] = [MarketDataManager.shared.onTrendResponse]
@@ -61,6 +61,7 @@ public class LoopringSocketIORequest {
     }
     
     static func getBalance(owner: String) {
+        /*
         var body: JSON = JSON()
         body["owner"] = JSON(owner)
         body["delegateAddress"] = JSON(RelayAPIConfiguration.delegateAddress)
@@ -71,6 +72,7 @@ public class LoopringSocketIORequest {
         } else {
             self.socket.emit("balance_req", body.rawString()!)
         }
+        */
     }
 
     static func endBalance() {
