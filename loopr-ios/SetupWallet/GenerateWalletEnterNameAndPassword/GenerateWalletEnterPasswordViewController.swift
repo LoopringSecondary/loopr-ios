@@ -77,7 +77,7 @@ class GenerateWalletEnterPasswordViewController: UIViewController, UITextFieldDe
             validPassword = false
             errorInfoLabel.shake()
             errorInfoLabel.alpha = 1.0
-            errorInfoLabel.text = LocalizedString("The length of password needs to be larger than 6.", comment: "")
+            errorInfoLabel.text = LocalizedString("The length of password needs to be larger than or equal to 6.", comment: "")
         }
         
         if validPassword {

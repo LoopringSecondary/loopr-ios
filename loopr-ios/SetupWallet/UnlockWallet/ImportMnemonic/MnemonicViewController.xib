@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,7 +13,6 @@
             <connections>
                 <outlet property="mnemonicWordTextView" destination="wnQ-al-rIC" id="8Ym-9j-LR3"/>
                 <outlet property="passwordTextField" destination="4pM-2Z-5Ap" id="YxA-yJ-ty3"/>
-                <outlet property="passwordTextFieldUnderline" destination="oQ7-Q2-fN9" id="7O9-Q6-3gf"/>
                 <outlet property="unlockButton" destination="T0O-fl-KJI" id="ZT5-Pd-eFc"/>
                 <outlet property="unlockButtonBottonLayoutConstraint" destination="80I-li-298" id="gLX-7P-wpU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -47,6 +45,7 @@
                 </button>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4pM-2Z-5Ap">
                     <rect key="frame" x="15" y="288" width="345" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="5mw-NE-BEY"/>
                     </constraints>
@@ -54,28 +53,18 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oQ7-Q2-fN9">
-                    <rect key="frame" x="15" y="328" width="345" height="1"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="A8j-QP-lbU"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="T0O-fl-KJI" secondAttribute="bottom" constant="280" id="80I-li-298"/>
-                <constraint firstItem="oQ7-Q2-fN9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="9QT-Ba-2HW"/>
                 <constraint firstItem="4pM-2Z-5Ap" firstAttribute="top" secondItem="wnQ-al-rIC" secondAttribute="bottom" constant="8" id="MUF-Q6-RFl"/>
                 <constraint firstItem="4pM-2Z-5Ap" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="RUH-Br-Vxj"/>
                 <constraint firstItem="wnQ-al-rIC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="UBY-om-phR"/>
-                <constraint firstItem="4pM-2Z-5Ap" firstAttribute="bottom" secondItem="oQ7-Q2-fN9" secondAttribute="top" id="arv-oH-jha"/>
                 <constraint firstItem="wnQ-al-rIC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="pjD-ZM-Uks"/>
                 <constraint firstItem="T0O-fl-KJI" firstAttribute="top" secondItem="4pM-2Z-5Ap" secondAttribute="bottom" constant="12" id="pxc-t6-ZDS"/>
                 <constraint firstItem="T0O-fl-KJI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="rlX-jG-n6I"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wnQ-al-rIC" secondAttribute="trailing" constant="15" id="wZj-UN-n3b"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4pM-2Z-5Ap" secondAttribute="trailing" constant="15" id="x2p-wE-o3L"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oQ7-Q2-fN9" secondAttribute="trailing" constant="15" id="yOR-s1-5Y2"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="T0O-fl-KJI" secondAttribute="trailing" constant="15" id="zcT-cY-DFZ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

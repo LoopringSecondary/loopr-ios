@@ -358,5 +358,5 @@
 "Please turn on Face ID in settings" = "请先前往通用设置中开启面容识别功能";
 "Transaction" = "交易";
 "Password can't be empty." = "密码不能为空";
-"The length of password needs to be larger than 6." = "密码长度必须大于6";
-"Password doesn't match" = "密码不一样";
+"The length of password needs to be larger than or equal to 6." = "密码长度必须大于或等于6位";
+"Password doesn't match" = "密码不一致";

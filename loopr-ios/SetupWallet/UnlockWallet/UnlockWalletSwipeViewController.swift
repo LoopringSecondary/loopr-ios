@@ -21,6 +21,7 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
         self.navigationItem.title = LocalizedString("Import Wallet", comment: "")
         setBackButton()
         
@@ -36,10 +37,10 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
 
         swipeView.reloadData(options: options)
         
-        let button = UIBarButtonItem(image: UIImage.init(named: "Scan"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.pressScanButton(_:)))
+        let button = UIBarButtonItem(image: Themes.isDark() ? UIImage.init(named: "Scan-white") : UIImage.init(named: "Scan-dark"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.pressScanButton(_:)))
         self.navigationItem.rightBarButtonItem = button
     }
-    
+
     func setResultOfScanningQRCode(valueSent: String, type: QRCodeType) {
 //        print("value from QR Controller: \(valueSent)")
 //        let controller = self.viewControllers[2] as! PrivateKeyViewController
@@ -57,6 +58,15 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+        if Themes.isDark() {
+            options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
+            options.swipeTabView.itemView.selectedTextColor = UIColor.white
+        } else {
+            options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
+            options.swipeTabView.itemView.selectedTextColor = UIColor.black
+        }
+        options.swipeTabView.underlineView.height = 2
+        swipeView.reloadData(options: options, default: swipeView.currentIndex)
     }
     
     override func viewDidAppear(_ animated: Bool) {

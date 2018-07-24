@@ -22,6 +22,8 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
+
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
 
@@ -36,6 +38,7 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
         privateKeyTextView.text = LocalizedString("Please input your private key", comment: "")
         privateKeyTextView.textColor = .lightGray
         privateKeyTextView.tintColor = UIColor.black
+        privateKeyTextView.keyboardAppearance = Themes.isDark() ? .dark : .default
     }
 
     override func didReceiveMemoryWarning() {

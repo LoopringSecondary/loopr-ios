@@ -14,7 +14,6 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
 
     @IBOutlet weak var keystoreContentTextView: UITextView!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var passwordTextFieldUnderline: UIView!
 
     @IBOutlet weak var unlockButtonBottonLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var unlockButton: UIButton!
@@ -23,6 +22,8 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
+
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
 
@@ -37,17 +38,20 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         keystoreContentTextView.text = LocalizedString("Please enter the keystore", comment: "")
         keystoreContentTextView.textColor = .lightGray
         keystoreContentTextView.tintColor = UIColor.black
+        keystoreContentTextView.keyboardAppearance = Themes.isDark() ? .dark : .default
         
         passwordTextField.delegate = self
         passwordTextField.tag = 0
         passwordTextField.theme_tintColor = GlobalPicker.textColor
-        passwordTextField.font = FontConfigManager.shared.getDigitalFont(size: 17)
+        passwordTextField.font = FontConfigManager.shared.getRegularFont()
         passwordTextField.placeholder = LocalizedString("Keystore Password", comment: "")
         passwordTextField.contentMode = UIViewContentMode.bottom
         passwordTextField.textContentType = .password
         passwordTextField.isSecureTextEntry = true
-        
-        passwordTextFieldUnderline.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        passwordTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: passwordTextField.frame.height))
+        passwordTextField.leftViewMode = .always
+        passwordTextField.cornerRadius = 12
+        passwordTextField.keyboardAppearance = Themes.isDark() ? .dark : .default
 
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1

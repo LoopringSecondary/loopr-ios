@@ -1300,6 +1300,15 @@
 			path = TradeFAQ;
 			sourceTree = "<group>";
 		};
+		AC2C93D921070868004B8456 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				AC4C1449204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.swift */,
+				AC4C144A204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.xib */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
 		AC31B93B204A8D1F00B16155 /* Keystore@8fea1ff */ = {
 			isa = PBXGroup;
 			children = (
@@ -1842,8 +1851,7 @@
 		AC99CF502083E708000AE4BD /* GenerateWalletEnterNameAndPassword */ = {
 			isa = PBXGroup;
 			children = (
-				AC4C1449204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.swift */,
-				AC4C144A204C825900D6B1E2 /* GenerateWalletEnterNameAndPasswordViewController.xib */,
+				AC2C93D921070868004B8456 /* Archive */,
 				ACB1482121057B9300AB2343 /* GenerateWalletEnterNameViewController.swift */,
 				ACB1482221057B9300AB2343 /* GenerateWalletEnterNameViewController.xib */,
 				AC2C93D12105AE7A004B8456 /* GenerateWalletEnterPasswordViewController.swift */,

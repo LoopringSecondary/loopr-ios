@@ -13,7 +13,6 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
 
     @IBOutlet weak var mnemonicWordTextView: UITextView!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var passwordTextFieldUnderline: UIView!
     
     @IBOutlet weak var unlockButtonBottonLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var unlockButton: UIButton!
@@ -24,6 +23,8 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
+
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
 
@@ -38,19 +39,21 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         mnemonicWordTextView.text = LocalizedString("Please use space to seperate the mnemonic words", comment: "")
         mnemonicWordTextView.textColor = .lightGray
         mnemonicWordTextView.tintColor = UIColor.black
+        mnemonicWordTextView.keyboardAppearance = Themes.isDark() ? .dark : .default
         
-        // passwordTextField.isSecureTextEntry = true
         passwordTextField.delegate = self
         passwordTextField.tag = 0
-        passwordTextField.theme_tintColor = GlobalPicker.textColor
-        passwordTextField.font = FontConfigManager.shared.getDigitalFont(size: 17)
+        passwordTextField.tintColor = UIColor.black
+        passwordTextField.font = FontConfigManager.shared.getRegularFont()
         passwordTextField.placeholder = LocalizedString("Mnemonic Password (optional)", comment: "")
         passwordTextField.contentMode = UIViewContentMode.bottom
         passwordTextField.textContentType = .password
         passwordTextField.isSecureTextEntry = true
-        
-        passwordTextFieldUnderline.backgroundColor = UIColor.black.withAlphaComponent(0.1)
-        
+        passwordTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: passwordTextField.frame.height))
+        passwordTextField.leftViewMode = .always
+        passwordTextField.cornerRadius = 12
+        passwordTextField.keyboardAppearance = Themes.isDark() ? .dark : .default
+
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         view.addGestureRecognizer(scrollViewTap)
@@ -133,16 +136,6 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newLength = (textField.text?.utf16.count)! + (string.utf16.count) - range.length
         print("textField shouldChangeCharactersIn \(newLength)")
-
-        switch textField.tag {
-        case passwordTextField.tag:
-            if newLength > 0 {
-                passwordTextFieldUnderline.backgroundColor = UIColor.black
-            } else {
-                passwordTextFieldUnderline.backgroundColor = UIColor.black.withAlphaComponent(0.1)
-            }
-        default: ()
-        }
         return true
     }
     
