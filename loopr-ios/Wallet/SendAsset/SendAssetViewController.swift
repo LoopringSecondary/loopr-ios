@@ -11,7 +11,7 @@ import Geth
 import NotificationBannerSwift
 import SVProgressHUD
 
-class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, DefaultNumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, AmountStackViewDelegate {
+class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, DefaultNumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol {
     
     // Header
     @IBOutlet weak var headerButton: UIButton!
@@ -44,6 +44,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     // Scroll view
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
+    
+    // Mask view
+    @IBOutlet weak var totalMaskView: UIView!
     
     // slider
     var transactionSpeedSlider = UISlider()
@@ -316,6 +319,15 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     }
     
     @IBAction func pressedAdvancedButton(_ sender: UIButton) {
+        self.totalMaskView.alpha = 0.75
+        let vc = SetGasViewController()
+        vc.recGasPriceInGwei = self.gasPriceInGwei
+        vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        vc.dismissClosure = {
+            self.totalMaskView.alpha = 0
+            self.gasPriceInGwei = vc.gasPriceInGwei
+        }
+        self.present(vc, animated: true, completion: nil)
     }
     
     func pushController() {
@@ -396,7 +408,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     func updateTransactionFeeAmountLabel() {
         let amountInEther = gasPriceInGwei / 1000000000
         if let etherPrice = PriceDataManager.shared.getPrice(of: "ETH") {
-            let transactionFeeInFiat = amountInEther * etherPrice * Double(GasDataManager.shared.getGasLimit(by: "eth_transfer")!)
+            let transactionFeeInFiat = amountInEther * etherPrice * Double(GasDataManager.shared.getGasLimit(by: "token_transfer")!)
             transactionFeeAmountLabel.text = "\(transactionFeeInFiat.currency)"
         }
     }
