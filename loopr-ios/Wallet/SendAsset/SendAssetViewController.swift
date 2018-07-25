@@ -10,6 +10,7 @@ import UIKit
 import Geth
 import NotificationBannerSwift
 import SVProgressHUD
+import StepSlider
 
 class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, DefaultNumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol {
     
@@ -49,6 +50,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     @IBOutlet weak var totalMaskView: UIView!
     
     // slider
+    var stepSlider: StepSlider = StepSlider()
+
     var transactionSpeedSlider = UISlider()
     var transactionAmountMinLabel = UILabel()
     var transactionAmountMaxLabel = UILabel()
@@ -195,6 +198,26 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                 self.updateTransactionFeeAmountLabel()
             }
         }
+        
+        // TODO: unable to add StepSlider in xib. Have to add it here.
+        // We also have made some modifications in our repo.
+        // https://github.com/xiaowheat/StepSlider
+        stepSlider = StepSlider.init(frame: CGRect(x: 10, y: amountTextField.bottomY + 16, width: contentView.width - 10 * 2, height: 44))
+        stepSlider.maxCount = 4
+        stepSlider.setIndex(2, animated: false)
+        stepSlider.labelFont = FontConfigManager.shared.getRegularFont(size: 12)
+        stepSlider.labelColor = UIColor.init(white: 0.6, alpha: 1)
+        stepSlider.labels = ["0%", "25%", "50%", "75%", "100%"]
+        stepSlider.trackHeight = 2
+        stepSlider.trackCircleRadius = 3
+        stepSlider.trackColor = UIColor.init(white: 0.6, alpha: 1)
+        stepSlider.tintColor = UIColor.themeGreen
+        stepSlider.sliderCircleRadius = 10
+        stepSlider.sliderCircleColor = UIColor.themeGreen
+        stepSlider.labelOffset = 10
+        stepSlider.isDotsInteractionEnabled = true
+        stepSlider.adjustLabel = true
+        contentView.addSubview(stepSlider)
     }
 
     override func didReceiveMemoryWarning() {

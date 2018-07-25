@@ -1,0 +1,6 @@
+framework module StepSlider {
+  umbrella header "StepSlider-umbrella.h"
+
+  export *
+  module * { export * }
+}

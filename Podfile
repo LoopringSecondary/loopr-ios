@@ -18,6 +18,7 @@ target 'loopr-ios' do
   pod 'ESTabBarController-swift'
   pod 'SwiftyMarkdown'
   pod 'MKDropdownMenu'
+  pod 'StepSlider', :git => 'git@github.com:xiaowheat/StepSlider.git'
 
   pod 'Fabric'
   pod 'Crashlytics'
