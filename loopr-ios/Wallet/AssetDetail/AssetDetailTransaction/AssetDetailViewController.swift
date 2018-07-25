@@ -14,7 +14,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var receiveButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var buttonHeightLayoutConstraint: NSLayoutConstraint!
-
+    
     var asset: Asset?
     var type: TxSwipeViewType
     var viewAppear: Bool = false
@@ -58,13 +58,11 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         // Receive button
         receiveButton.setTitle(LocalizedString("Receive", comment: ""), for: .normal)
-        receiveButton.setupPrimary(height: 44)
+        receiveButton.setupPrimary(height: 40)
         
         // Send button
         sendButton.setTitle(LocalizedString("Send", comment: ""), for: .normal)
-        sendButton.setupSecondary(height: 44)
-        
-        buttonHeightLayoutConstraint.constant = 44
+        sendButton.setupSecondary(height: 40)
         
         // Add Refresh Control to Table View
         if #available(iOS 10.0, *) {
@@ -76,14 +74,14 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         
         // Creating view for extending background color
-        var frame = tableView.bounds
-        frame.origin.y = -frame.size.height
-        let backgroundView = UIView(frame: frame)
-        backgroundView.autoresizingMask = .flexibleWidth
-        backgroundView.theme_backgroundColor = GlobalPicker.backgroundColor
-        
-        // Adding the view below the refresh control
-        tableView.insertSubview(backgroundView, at: 0)
+//        var frame = tableView.bounds
+//        frame.origin.y = -frame.size.height
+//        let backgroundView = UIView(frame: frame)
+//        backgroundView.autoresizingMask = .flexibleWidth
+//        backgroundView.theme_backgroundColor = GlobalPicker.backgroundColor
+//
+//        // Adding the view below the refresh control
+//        tableView.insertSubview(backgroundView, at: 0)
     }
     
     func setup() {
@@ -178,7 +176,9 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         let transaction = self.transactions[indexPath.row]
         let vc = AssetTransactionDetailViewController()
         vc.transaction = transaction
-        vc.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(vc, animated: true)
+        vc.dismissClosure = { }
+        vc.parentNavController = self.navigationController
+        vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        self.present(vc, animated: true, completion: nil)
     }
 }

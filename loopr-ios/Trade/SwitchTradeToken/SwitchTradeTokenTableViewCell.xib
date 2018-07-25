@@ -69,6 +69,7 @@
                     <constraint firstItem="aGn-uX-S7G" firstAttribute="top" secondItem="hsC-RJ-YaX" secondAttribute="top" constant="40" id="zmE-zX-INd"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="tintColor" name="Color-green"/>
             <constraints>
                 <constraint firstItem="hsC-RJ-YaX" firstAttribute="bottom" secondItem="njF-e1-oar" secondAttribute="bottom" id="3Fb-BU-yDy"/>
                 <constraint firstItem="njF-e1-oar" firstAttribute="top" secondItem="hsC-RJ-YaX" secondAttribute="top" constant="-10" id="TdC-wV-ARS"/>
@@ -77,10 +78,10 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="balanceLabel" destination="aGn-uX-S7G" id="oUl-Si-yAT"/>
                 <outlet property="baseView" destination="hsC-RJ-YaX" id="bOh-8Q-Ezc"/>
                 <outlet property="iconImageView" destination="I3A-ZH-o8o" id="Vq4-8n-wxd"/>
                 <outlet property="iconView" destination="oaP-al-gyb" id="rSu-oF-pYa"/>
-                <outlet property="nameLabel" destination="aGn-uX-S7G" id="l6m-5R-mER"/>
                 <outlet property="symbolLabel" destination="2Li-i8-lBX" id="ZNd-16-alI"/>
             </connections>
             <point key="canvasLocation" x="55.5" y="91"/>
@@ -89,6 +90,9 @@
     <resources>
         <namedColor name="Color-dark2">
             <color red="0.16078431372549021" green="0.16078431372549021" blue="0.16078431372549021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="Color-green">
+            <color red="0.0039215686274509803" green="0.72549019607843135" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Color-text1">
             <color red="1" green="1" blue="1" alpha="0.80000001192092896" colorSpace="custom" customColorSpace="displayP3"/>

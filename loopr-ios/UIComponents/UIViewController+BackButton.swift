@@ -13,8 +13,8 @@ extension UIViewController: UIGestureRecognizerDelegate {
     func setBackButtonAndUpdateTitle(customizedNavigationBar: UINavigationBar, title: String) {
         let backButton = UIButton(type: UIButtonType.custom)
 
-        backButton.theme_setImage(GlobalPicker.backButton, forState: .normal)
-        backButton.theme_setImage(GlobalPicker.backButtonHighlight, forState: .highlighted)
+        backButton.theme_setImage(GlobalPicker.back, forState: .normal)
+        backButton.theme_setImage(GlobalPicker.backHighlight, forState: .highlighted)
         
         // Default left padding is 20. It should be 12 in our design.
         backButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -16, bottom: 0, right: 8)
@@ -39,8 +39,8 @@ extension UIViewController: UIGestureRecognizerDelegate {
     func setBackButton() {
         let backButton = UIButton(type: UIButtonType.custom)
         
-        backButton.theme_setImage(GlobalPicker.backButton, forState: .normal)
-        backButton.theme_setImage(GlobalPicker.backButtonHighlight, forState: .highlighted)
+        backButton.theme_setImage(GlobalPicker.back, forState: .normal)
+        backButton.theme_setImage(GlobalPicker.backHighlight, forState: .highlighted)
         
         // Default left padding is 20. It should be 12 in our design.
         backButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -16, bottom: 0, right: 8)

@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetGasViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
-                <outlet property="arrowDownButton" destination="pvO-r7-bdU" id="2Tm-MA-LT9"/>
+                <outlet property="closeButton" destination="pvO-r7-bdU" id="CxV-S0-Hkc"/>
                 <outlet property="containerView" destination="P6r-gu-pz5" id="XdA-Ql-hdD"/>
                 <outlet property="gasTipLabel" destination="Kah-Qa-kkg" id="Fc1-He-ABx"/>
                 <outlet property="gasValueLabel" destination="8iv-d9-nYg" id="16h-zL-eL3"/>
@@ -38,9 +38,13 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvO-r7-bdU">
-                            <rect key="frame" x="326" y="19.5" width="25" height="25"/>
-                            <state key="normal" image="Arrow-down-grey"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvO-r7-bdU" userLabel="Close Button">
+                            <rect key="frame" x="325" y="15" width="34" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="34" id="L6D-t5-s5W"/>
+                                <constraint firstAttribute="height" constant="34" id="iEv-3w-WNU"/>
+                            </constraints>
+                            <state key="normal" image="Close-dark"/>
                             <connections>
                                 <action selector="pressedCloseButton:" destination="-1" eventType="touchUpInside" id="ozw-i0-VyB"/>
                             </connections>
@@ -100,7 +104,7 @@
                         <constraint firstItem="8iv-d9-nYg" firstAttribute="leading" secondItem="P6r-gu-pz5" secondAttribute="leading" constant="24" id="i5P-hF-1gm"/>
                         <constraint firstItem="6Cw-vD-9gm" firstAttribute="top" secondItem="P6r-gu-pz5" secondAttribute="top" constant="16" id="lka-qs-iBM"/>
                         <constraint firstItem="Kah-Qa-kkg" firstAttribute="top" secondItem="8iv-d9-nYg" secondAttribute="bottom" constant="16" id="s6f-VR-epn"/>
-                        <constraint firstAttribute="trailing" secondItem="pvO-r7-bdU" secondAttribute="trailing" constant="24" id="uPi-GD-Zna"/>
+                        <constraint firstAttribute="trailing" secondItem="pvO-r7-bdU" secondAttribute="trailing" constant="16" id="uPi-GD-Zna"/>
                         <constraint firstItem="6Cw-vD-9gm" firstAttribute="centerX" secondItem="P6r-gu-pz5" secondAttribute="centerX" id="wzW-Mq-NgI"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
@@ -121,7 +125,7 @@
         </view>
     </objects>
     <resources>
-        <image name="Arrow-down-grey" width="25" height="25"/>
+        <image name="Close-dark" width="14" height="14"/>
         <namedColor name="Color-dark2">
             <color red="0.16078431372549021" green="0.16078431372549021" blue="0.16078431372549021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

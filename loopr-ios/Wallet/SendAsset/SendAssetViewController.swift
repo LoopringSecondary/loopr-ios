@@ -92,7 +92,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         addressTextField.tag = 0
         addressTextField.keyboardType = .alphabet
         addressTextField.font = FontConfigManager.shared.getDigitalFont()
-        addressTextField.theme_tintColor = GlobalPicker.textColor
+        addressTextField.theme_tintColor = GlobalPicker.contrastTextColor
         addressTextField.placeholder = LocalizedString("Enter the address", comment: "")
         addressTextField.text = self.address ?? ""
         addressTextField.contentMode = UIViewContentMode.bottom
@@ -107,7 +107,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         amountTextField.inputView = UIView()
         amountTextField.tag = 1
         amountTextField.font = FontConfigManager.shared.getDigitalFont()
-        amountTextField.theme_tintColor = GlobalPicker.textColor
+        amountTextField.theme_tintColor = GlobalPicker.contrastTextColor
         amountTextField.placeholder = LocalizedString("Enter the amount", comment: "")
         amountTextField.contentMode = UIViewContentMode.bottom
         amountTextField.setLeftPaddingPoints(8)

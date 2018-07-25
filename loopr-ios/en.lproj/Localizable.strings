@@ -179,6 +179,7 @@
 "Order Detail" = "Order Detail";
 "Filled/Amount" = "Filled/Amount";
 "Status" = "Status";
+"Address" = "Address";
 "Trade" = "Trade";
 "Go To Trade" = "Go To Trade";
 "Filled" = "Filled";
@@ -356,7 +357,7 @@
 "Default" = "Default";
 "Please turn on Touch ID in settings" = "Please turn on Touch ID in settings";
 "Please turn on Face ID in settings" = "Please turn on Face ID in settings";
-"Transaction" = "Transaction";
+"Transaction Detail" = "Transaction Detail";
 "Password can't be empty." = "Password can't be empty.";
 "The length of password needs to be larger than or equal to 6." = "The length of password needs to be larger than or equal to 6.";
 "Password doesn't match" = "Password doesn't match";

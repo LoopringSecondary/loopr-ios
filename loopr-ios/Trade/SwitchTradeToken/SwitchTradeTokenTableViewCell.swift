@@ -17,7 +17,7 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var iconView: IconView!
     @IBOutlet weak var symbolLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var balanceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +25,7 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
         theme_backgroundColor = GlobalPicker.backgroundColor
         baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         symbolLabel.setTitleDigitFont()
-        nameLabel.setSubTitleDigitFont()
+        balanceLabel.setSubTitleDigitFont()
     }
 
     func update() {
@@ -41,8 +41,9 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
                 iconView.symbolLabel.text = token.symbol
                 iconImageView.isHidden = true
             }
-            symbolLabel.text = token.symbol
-            nameLabel.text = token.source.capitalized
+            let balance = CurrentAppWalletDataManager.shared.getBalance(of: token.symbol) ?? 0.0
+            symbolLabel.text = "\(token.symbol) (\(token.source.capitalized))"
+            balanceLabel.text = "\(balance) \(token.symbol)"
         }
     }
 

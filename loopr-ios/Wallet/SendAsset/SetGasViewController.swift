@@ -14,7 +14,7 @@ class SetGasViewController: UIViewController, DefaultSliderDelegate {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var gasValueLabel: UILabel!
     @IBOutlet weak var gasTipLabel: UILabel!
-    @IBOutlet weak var arrowDownButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var recommandButton: UIButton!
     
     var dismissClosure: (() -> Void)?
@@ -34,6 +34,10 @@ class SetGasViewController: UIViewController, DefaultSliderDelegate {
         recommandButton.titleLabel?.theme_textColor = ["#000000cc", "#ffffffcc"]
         recommandButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 12)
         recommandButton.title = LocalizedString("Recommand Price", comment: "")
+        
+        closeButton.theme_setImage(GlobalPicker.close, forState: .normal)
+        closeButton.theme_setImage(GlobalPicker.closeHighlight, forState: .highlighted)
+        closeButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
         updateLabels(self.recGasPriceInGwei)
     }

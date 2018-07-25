@@ -43,9 +43,11 @@ enum GlobalPicker {
     // button images
     static let button: ThemeImagePicker = ThemeImagePicker(images: getImage(from: UIColor.init(rgba: "#f5f5f5")), getImage(from: UIColor.init(rgba: "#292929")))
     static let buttonHighlight: ThemeImagePicker = ThemeImagePicker(images: #imageLiteral(resourceName: "Header-plain"), #imageLiteral(resourceName: "Header-plain"))
-    static let backButton: ThemeImagePicker = ThemeImagePicker(images: #imageLiteral(resourceName: "Back-button-light"), #imageLiteral(resourceName: "Back-button-dark"))
-    static let backButtonHighlight: ThemeImagePicker = ThemeImagePicker(images: #imageLiteral(resourceName: "Back-button-light").alpha(0.3), #imageLiteral(resourceName: "Back-button-dark").alpha(0.3))
+    static let back: ThemeImagePicker = ThemeImagePicker(images: #imageLiteral(resourceName: "Back-button-light"), #imageLiteral(resourceName: "Back-button-dark"))
+    static let backHighlight: ThemeImagePicker = ThemeImagePicker(images: #imageLiteral(resourceName: "Back-button-light").alpha(0.3), #imageLiteral(resourceName: "Back-button-dark").alpha(0.3))
     static let indicator: ThemeImagePicker = ThemeImagePicker(images: #imageLiteral(resourceName: "Indicator-light"), #imageLiteral(resourceName: "Indicator-dark"))
+    static let close: ThemeImagePicker = ThemeImagePicker(images: #imageLiteral(resourceName: "Close-light"), #imageLiteral(resourceName: "Close-dark"))
+    static let closeHighlight: ThemeImagePicker = ThemeImagePicker(images: #imageLiteral(resourceName: "Close-light").alpha(0.3), #imageLiteral(resourceName: "Close-dark").alpha(0.3))
     
     static func getImage(from color: UIColor) -> UIImage {
         UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))

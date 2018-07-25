@@ -108,6 +108,11 @@ extension UIColor {
         return UIColor(named: "Color-red")!
     }
     
+    // FFB832
+    class var warn: UIColor {
+        return UIColor(named: "Color-yellow")!
+    }
+
     // #01B97F
     class var success: UIColor {
         return UIColor(named: "Color-green")!
@@ -127,5 +132,10 @@ extension UIColor {
         } else {
             return UIColor(named: "Color-green")! // #01B97F
         }
+    }
+    
+    // FFB832
+    class var pending: UIColor {
+        return UIColor(named: "Color-yellow")!
     }
 }
