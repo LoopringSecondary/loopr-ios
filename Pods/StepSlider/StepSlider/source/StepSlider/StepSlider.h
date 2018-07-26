@@ -28,6 +28,11 @@ typedef NS_ENUM(NSUInteger, StepSliderTextOrientation) {
     StepSliderTextOrientationUp,
 };
 
+@protocol StepSliderDelegate <NSObject>
+@optional
+- (void)stepSliderValueChanged:(double)value;
+@end
+
 IB_DESIGNABLE
 
 @interface StepSlider : UIControl
@@ -136,5 +141,10 @@ IB_DESIGNABLE
  *  @param state The state that uses the specified image.
  */
 - (void)setTrackCircleImage:(UIImage *)image forState:(UIControlState)state;
+
+/**
+ *  StepSliderDelegate.
+ */
+@property (nonatomic, weak) id <StepSliderDelegate> delegate;
 
 @end

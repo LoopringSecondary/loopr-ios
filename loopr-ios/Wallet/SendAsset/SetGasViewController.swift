@@ -9,7 +9,7 @@
 import UIKit
 import StepSlider
 
-class SetGasViewController: UIViewController, DefaultSliderDelegate {
+class SetGasViewController: UIViewController, StepSliderDelegate {
 
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -42,6 +42,7 @@ class SetGasViewController: UIViewController, DefaultSliderDelegate {
         closeButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
         stepSlider = StepSlider.init(frame: CGRect(x: 16, y: gasTipLabel.bottomY + 24, width: containerView.width - 16 * 2, height: 44))
+        stepSlider.delegate = self
         stepSlider.maxCount = 2
         stepSlider.setIndex(0, animated: false)
         stepSlider.labelFont = FontConfigManager.shared.getRegularFont(size: 12)
@@ -109,4 +110,8 @@ class SetGasViewController: UIViewController, DefaultSliderDelegate {
         close()
     }
     
+    func stepSliderValueChanged(_ value: Double) {
+        // valud is from 0.0 - 1.0
+        print(value)
+    }
 }

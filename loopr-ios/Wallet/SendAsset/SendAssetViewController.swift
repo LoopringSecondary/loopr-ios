@@ -12,7 +12,7 @@ import NotificationBannerSwift
 import SVProgressHUD
 import StepSlider
 
-class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, DefaultNumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol {
+class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, DefaultNumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, StepSliderDelegate {
     
     // Header
     @IBOutlet weak var headerButton: UIButton!
@@ -200,6 +200,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         // We also have made some modifications in our repo.
         // https://github.com/xiaowheat/StepSlider
         stepSlider = StepSlider.init(frame: CGRect(x: 10, y: amountTextField.bottomY + 16, width: contentView.width - 10 * 2, height: 44))
+        stepSlider.delegate = self
         stepSlider.maxCount = 4
         stepSlider.setIndex(2, animated: false)
         stepSlider.labelFont = FontConfigManager.shared.getRegularFont(size: 12)
@@ -555,6 +556,11 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         } else {
             self.navigationItem.title = ""
         }
+    }
+    
+    func stepSliderValueChanged(_ value: Double) {
+        // valud is from 0.0 - 1.0
+        print(value)
     }
 }
 

@@ -289,6 +289,8 @@ void withoutCAAnimation(withoutAnimationBlock code)
                         basicTrackCircleAnimation.duration = [CATransaction animationDuration] * circleAnimation;
                         basicTrackCircleAnimation.fromValue = (__bridge id _Nullable)(oldColor);
                         [trackCircle addAnimation:basicTrackCircleAnimation forKey:kTrackAnimation];
+                        
+                        [self.delegate stepSliderValueChanged: (float)self.index/(self.maxCount-1)];
                     });
                     
                     animationTime += animationTimeDiff;
@@ -472,6 +474,9 @@ void withoutCAAnimation(withoutAnimationBlock code)
 {
     CGFloat position = startSliderPosition.x - (startTouchPosition.x - [touch locationInView:self].x);
     CGFloat limitedPosition = fminf(fmaxf(maxRadius, position), self.bounds.size.width - maxRadius);
+
+    float percentage = (limitedPosition - maxRadius) /  (self.bounds.size.width-maxRadius*2);
+    [self.delegate stepSliderValueChanged: percentage];
     
     withoutCAAnimation(^{
         self->_sliderCircleLayer.position = CGPointMake(limitedPosition, self->_sliderCircleLayer.position.y);

@@ -4,18 +4,18 @@ PODS:
   - Charts (3.0.5):
     - Charts/Core (= 3.0.5)
   - Charts/Core (3.0.5)
-  - Crashlytics (3.10.2):
-    - Fabric (~> 1.7.7)
+  - Crashlytics (3.10.5):
+    - Fabric (~> 1.7.9)
   - CryptoSwift (0.8.3)
   - ESTabBarController-swift (2.6.2)
-  - Fabric (1.7.7)
+  - Fabric (1.7.9)
   - FoldingCell (3.0.6)
   - FontBlaster (4.0.3)
   - Geth (1.8.8)
   - lottie-ios (2.5.0)
-  - MarqueeLabel/Swift (3.1.4)
+  - MarqueeLabel/Swift (3.1.6)
   - MKDropdownMenu (1.4)
-  - NotificationBannerSwift (1.6.2):
+  - NotificationBannerSwift (1.6.3):
     - MarqueeLabel/Swift
     - SnapKit (~> 4.0)
   - secp256k1_ios (0.1.3)
@@ -26,7 +26,7 @@ PODS:
   - Starscream (3.0.5)
   - StepSlider (1.2.1)
   - SVProgressHUD (2.2.5)
-  - SwiftLint (0.25.1)
+  - SwiftLint (0.26.0)
   - SwiftTheme (0.4.1)
   - SwiftyMarkdown (0.5.1)
   - TrezorCrypto (0.0.4)
@@ -40,11 +40,12 @@ DEPENDENCIES:
   - Fabric
   - FoldingCell (= 3.0.6)
   - FontBlaster
-  - Geth
+  - Geth (= 1.8.8)
   - lottie-ios
   - MKDropdownMenu
   - NotificationBannerSwift
   - secp256k1_ios (from `https://github.com/shamatar/secp256k1_ios.git`)
+  - SipHash (= 1.2.0)
   - Socket.IO-Client-Swift (~> 13.1.0)
   - "StepSlider (from `git@github.com:xiaowheat/StepSlider.git`)"
   - SVProgressHUD
@@ -89,23 +90,23 @@ CHECKOUT OPTIONS:
     :commit: e3ab3e26fafc3688436528f2ca24cc679c7d746e
     :git: https://github.com/shamatar/secp256k1_ios.git
   StepSlider:
-    :commit: 41b8f0d1e5a3578054df9d9395110736f0793b9f
+    :commit: 1ed416ed8909ccfe878cc75c331f5ec42080fe7a
     :git: "git@github.com:xiaowheat/StepSlider.git"
 
 SPEC CHECKSUMS:
   BigInt: 8e8a52161c745cd3ab78e3dc346a9fbee51e6cf6
   Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
-  Crashlytics: 0360624eea1c978a743feddb2fb1ef8b37fb7a0d
+  Crashlytics: 7f2e38d302d9da96475b3d64d86fb29e31a542b7
   CryptoSwift: 033efc3523865d19cc6ab6612fa17a62613b5dfa
   ESTabBarController-swift: f0a8679e43df1e60b7b36bbcaf1dc98ba6273c7d
-  Fabric: bda89e242bce1b7b8ab264248cf3407774ce0095
+  Fabric: a2917d3895e4c1569b9c3170de7320ea1b1e6661
   FoldingCell: 4848ec8a2056d5751bfb710df14521fc64d48ad7
   FontBlaster: f18031f5dde2ce689f5330e7005edfe3c0815957
   Geth: 483ea44b5f930b72320218290b939ba8e2389aaf
   lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
-  MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
+  MarqueeLabel: 0c41f08ef5773e29c0f71064a8fa788a2fd8b365
   MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
-  NotificationBannerSwift: 4eceb2add9d5eaa0596c63d49690b4d6476e74ec
+  NotificationBannerSwift: b231e4c3244848ef300e1c53ce027b9756b9b06f
   secp256k1_ios: ac9ef04e761f43c58012b28548afa91493761f17
   SipHash: c6e9e43e9c531b5bc6602545130c26194a6d31ce
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
@@ -113,11 +114,11 @@ SPEC CHECKSUMS:
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
   StepSlider: e1c9b8f3363cf87224e19c000abe9f5146f80dd1
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
+  SwiftLint: f6b83e8d95ee1e91e11932d843af4fdcbf3fc764
   SwiftTheme: 36d71c4eed4b2c401c782cf036e4586c749a8173
   SwiftyMarkdown: 743af3e87931391bc4836b825fec3d98785b2e3a
   TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803
 
-PODFILE CHECKSUM: 136f489c4043355f0e85df8767c31d4f027140c2
+PODFILE CHECKSUM: baa39adc7d8b897abb59235df25310210493e9ac
 
 COCOAPODS: 1.5.0
