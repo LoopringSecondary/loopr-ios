@@ -23,6 +23,10 @@ class SettingWalletDetailTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        textLabel?.font = FontConfigManager.shared.getMediumFont(size: 14)
+        textLabel?.textColor = Themes.isDark() ? UIColor.white : UIColor.dark2
+        backgroundColor = Themes.isDark() ? UIColor.dark2 : UIColor.white
     }
 
     class func getCellIdentifier() -> String {
@@ -30,6 +34,6 @@ class SettingWalletDetailTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 45
+        return 51
     }
 }

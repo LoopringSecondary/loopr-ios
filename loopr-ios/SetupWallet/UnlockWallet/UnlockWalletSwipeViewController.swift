@@ -37,7 +37,7 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
 
         swipeView.reloadData(options: options)
         
-        let button = UIBarButtonItem(image: Themes.isDark() ? UIImage.init(named: "Scan-white") : UIImage.init(named: "Scan-dark"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.pressScanButton(_:)))
+        let button = UIBarButtonItem(image: Themes.isDark() ? UIImage.init(named: "Scan-dark") : UIImage.init(named: "Scan-light"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.pressScanButton(_:)))
         self.navigationItem.rightBarButtonItem = button
     }
 

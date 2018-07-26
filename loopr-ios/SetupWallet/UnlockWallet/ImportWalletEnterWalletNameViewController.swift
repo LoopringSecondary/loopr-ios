@@ -13,10 +13,8 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
     var setupWalletMethod: QRCodeMethod = .create
 
     var walletNameTextField: UITextField = UITextField()
-    var walletNameUnderLine: UIView = UIView()
-    var walletNameInfoLabel: UILabel = UILabel()
-
     var continueButton: UIButton = UIButton()
+    var errorInfoLabel: UILabel = UILabel()
 
     convenience init(setupWalletMethod: QRCodeMethod) {
         self.init(nibName: "ImportWalletEnterWalletNameViewController", bundle: nil)
@@ -35,44 +33,42 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        self.navigationItem.title = LocalizedString("Wallet Name", comment: "")
         setBackButton()
 
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
-        // let screenHeight = screensize.height
         
-        let originY: CGFloat = 30
+        let originY: CGFloat = 80
         let padding: CGFloat = 15
+        
+        walletNameTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 40)
         
         walletNameTextField.delegate = self
         walletNameTextField.tag = 0
-        // walletNameTextField.inputView = UIView()
         walletNameTextField.theme_tintColor = GlobalPicker.textColor
-        walletNameTextField.font = FontConfigManager.shared.getDigitalFont(size: 19)
-        walletNameTextField.placeholder = LocalizedString("Give your wallet an awesome name", comment: "")
+        walletNameTextField.theme_textColor = GlobalPicker.textColor
+        walletNameTextField.keyboardAppearance = Themes.isDark() ? .dark : .default
+        walletNameTextField.textAlignment = .center
+        walletNameTextField.font = FontConfigManager.shared.getRegularFont(size: 18)
+        walletNameTextField.placeholder = LocalizedString("Wallet Name", comment: "")
+        walletNameTextField.setValue(UIColor.init(white: 1, alpha: 0.4), forKeyPath: "_placeholderLabel.textColor")
         walletNameTextField.contentMode = UIViewContentMode.bottom
-        walletNameTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 40)
         view.addSubview(walletNameTextField)
         
-        walletNameUnderLine.frame = CGRect(x: padding, y: walletNameTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        walletNameUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
-        view.addSubview(walletNameUnderLine)
-        
-        walletNameInfoLabel.frame = CGRect(x: padding, y: walletNameUnderLine.frame.maxY + 9, width: screenWidth - padding * 2, height: 16)
-        walletNameInfoLabel.text = LocalizedString("Please enter a wallet name", comment: "")
-        walletNameInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
-        walletNameInfoLabel.textColor = UIStyleConfig.red
-        walletNameInfoLabel.alpha = 0.0
-        view.addSubview(walletNameInfoLabel)
-
-        continueButton.setTitle(LocalizedString("Enter Wallet", comment: ""), for: .normal)
+        continueButton.frame = CGRect(x: 48, y: 200, width: screenWidth-48*2, height: 49)
         continueButton.setupSecondary()
-        continueButton.frame = CGRect(x: padding, y: walletNameInfoLabel.frame.maxY + 50, width: screenWidth - padding * 2, height: 47)
+        continueButton.setTitle(LocalizedString("Next", comment: ""), for: .normal)
         continueButton.addTarget(self, action: #selector(pressedContinueButton), for: .touchUpInside)
         view.addSubview(continueButton)
         
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        errorInfoLabel.frame = CGRect(x: padding, y: continueButton.bottomY + 40, width: screenWidth-padding*2, height: 40)
+        errorInfoLabel.textColor = UIColor.themeRed
+        errorInfoLabel.textAlignment = .center
+        errorInfoLabel.alpha = 0.0
+        view.addSubview(errorInfoLabel)
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,13 +77,10 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
     }
 
     @objc func pressedContinueButton(_ sender: Any) {
-        guard AppWalletDataManager.shared.isNewWalletNameToken(newWalletname: walletNameTextField.text ?? "") else {
-            let title = LocalizedString("The name is token, please try another one", comment: "")
-            let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: LocalizedString("OK", comment: ""), style: .default, handler: { _ in
-                
-            }))
-            self.present(alert, animated: true, completion: nil)
+        guard !AppWalletDataManager.shared.isNewWalletNameToken(newWalletname: walletNameTextField.text ?? "") else {
+            errorInfoLabel.shake()
+            errorInfoLabel.alpha = 1.0
+            errorInfoLabel.text = LocalizedString("The name is token, please try another one.", comment: "")
             return
         }
         
@@ -149,8 +142,9 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
         let walletName = walletNameTextField.text ?? ""
         if walletName.trim() == "" {
             validWalletName = false
-            self.walletNameInfoLabel.shake()
-            self.walletNameInfoLabel.alpha = 1.0
+            errorInfoLabel.shake()
+            errorInfoLabel.alpha = 1.0
+            errorInfoLabel.text = LocalizedString("New wallet name can't be empty", comment: "")
         }
         return validWalletName
     }
@@ -158,17 +152,8 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newLength = (textField.text?.utf16.count)! + (string.utf16.count) - range.length
         print("textField shouldChangeCharactersIn \(newLength)")
-        
-        switch textField.tag {
-        case walletNameTextField.tag:
-            if newLength > 0 {
-                walletNameInfoLabel.alpha = 0.0
-                walletNameUnderLine.backgroundColor = UIColor.black
-            } else {
-                walletNameUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
-            }
-        default: ()
-        }
+        errorInfoLabel.alpha = 0.0
+        errorInfoLabel.text = ""
         return true
     }
 

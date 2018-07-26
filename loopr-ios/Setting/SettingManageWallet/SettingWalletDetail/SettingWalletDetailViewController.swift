@@ -23,7 +23,10 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
 
         // Do any additional setup after loading the view.
         setBackButton()
-        
+
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        tableView.theme_backgroundColor = GlobalPicker.backgroundColor
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
