@@ -108,9 +108,9 @@ class AssetTransactionTableViewCell: UITableViewCell {
         amountLabel.isHidden = false
         displayLabel.isHidden = false
         if transaction!.symbol.lowercased() == "weth" {
-            titleLabel.text = LocalizedString("Convert to WETH", comment: "")
-        } else if transaction!.symbol.lowercased() == "eth" {
             titleLabel.text = LocalizedString("Convert to ETH", comment: "")
+        } else if transaction!.symbol.lowercased() == "eth" {
+            titleLabel.text = LocalizedString("Convert to WETH", comment: "")
         }
         amountLabel.text = "-\(transaction!.value) \(transaction?.symbol ?? " ")"
         amountLabel.textColor = UIColor.down
@@ -168,7 +168,6 @@ class AssetTransactionTableViewCell: UITableViewCell {
     func updateStatusImage(transaction: Transaction) {
         let x = 62 + titleLabel.intrinsicContentSize.width
         statusImage.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 15, height: 15))
-        
         statusImage.center = CGPoint(x: x, y: titleLabel.frame.midY)
         
         switch transaction.status {

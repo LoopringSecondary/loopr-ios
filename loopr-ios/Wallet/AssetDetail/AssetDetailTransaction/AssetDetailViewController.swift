@@ -48,9 +48,6 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
 
         tableView.dataSource = self
         tableView.delegate = self
-//        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
-//        footerView.backgroundColor = UIStyleConfig.tableViewBackgroundColor
-//        tableView.tableFooterView = footerView
         tableView.separatorStyle = .none
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
@@ -72,16 +69,6 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         }
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
-        
-        // Creating view for extending background color
-//        var frame = tableView.bounds
-//        frame.origin.y = -frame.size.height
-//        let backgroundView = UIView(frame: frame)
-//        backgroundView.autoresizingMask = .flexibleWidth
-//        backgroundView.theme_backgroundColor = GlobalPicker.backgroundColor
-//
-//        // Adding the view below the refresh control
-//        tableView.insertSubview(backgroundView, at: 0)
     }
     
     func setup() {
@@ -174,9 +161,12 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let transaction = self.transactions[indexPath.row]
+        let parentView = self.parent!.view!
+        parentView.alpha = 0.25
+        
         let vc = AssetTransactionDetailViewController()
         vc.transaction = transaction
-        vc.dismissClosure = { }
+        vc.dismissClosure = { parentView.alpha = 1 }
         vc.parentNavController = self.navigationController
         vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
         self.present(vc, animated: true, completion: nil)
