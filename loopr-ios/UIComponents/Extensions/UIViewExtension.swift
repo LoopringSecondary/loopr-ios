@@ -27,7 +27,7 @@ enum GradientOrientation {
     var points: GradientPoints {
         switch self {
         case .topRightBottomLeft:
-            return (CGPoint(x: 0.0, y: 1.0), CGPoint(x: 1.0, y: 0.0))
+            return (CGPoint(x: 0.0, y: 0.87), CGPoint(x: 0.87, y: 0.0))
         case .topLeftBottomRight:
             return (CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1, y: 1))
         case .horizontal:

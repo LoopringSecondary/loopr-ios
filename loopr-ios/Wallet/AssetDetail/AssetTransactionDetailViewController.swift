@@ -120,14 +120,14 @@ class AssetTransactionDetailViewController: UIViewController {
     }
     
     private func updateConvertOutcome(tx: Transaction) {
-        if transaction!.symbol.lowercased() == "weth" {
-            titleLabel.text = LocalizedString("Convert to ETH", comment: "")
+        if tx.symbol.lowercased() == "weth" {
+            typeTipLabel.text = LocalizedString("Convert to ETH", comment: "")
         } else if transaction!.symbol.lowercased() == "eth" {
-            titleLabel.text = LocalizedString("Convert to WETH", comment: "")
+            typeTipLabel.text = LocalizedString("Convert to WETH", comment: "")
         }
         typeInfoLabel.isHidden = false
         typeInfoLabel.textColor = UIColor.down
-        typeInfoLabel.text = "+\(tx.value) \(tx.symbol) ≈ \(tx.currency)"
+        typeInfoLabel.text = "-\(tx.value) \(tx.symbol) ≈ \(tx.currency)"
     }
     
     private func updateApprove(tx: Transaction) {

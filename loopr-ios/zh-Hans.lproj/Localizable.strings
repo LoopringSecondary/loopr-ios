@@ -198,7 +198,7 @@
 "Gas is..." = "Gas is...";
 "Please input a correct address" = "请输入正确的地址";
 "Enable \(transaction.symbol) To Trade" = "Enable \(transaction.symbol) To Trade";
-"Cancel Order(s)" = "取消";
+"Cancel Order(s)" = "取消订单";
 "Enter the amount you have" = "请输入卖出数额";
 "Enter the amount you get" = "请输入买入数额";
 "My Trade from Loopr-iOS" = "My Trade from Loopr-iOS";
@@ -265,8 +265,8 @@
 "Failed" = "失败";
 "Other" = "其他";
 "Tokens" = "代币";
-"Convert to WETH" = "ETH 转换为 WETH";
-"Convert to ETH" = "WETH 转换为 ETH";
+"Convert to WETH" = "转换为 WETH";
+"Convert to ETH" = "转换为 ETH";
 "Confirm Time" = "确认时间";
 "Transactions" = "交易";
 "Enabled" = "授权";
