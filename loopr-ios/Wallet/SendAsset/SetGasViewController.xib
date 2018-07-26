@@ -79,27 +79,17 @@
                                 <action selector="pressedRecommandButton:" destination="-1" eventType="touchUpInside" id="fAu-Rg-9WW"/>
                             </connections>
                         </button>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dR7-ie-E1A" customClass="DefaultSlider" customModule="loopr_ios" customModuleProvider="target">
-                            <rect key="frame" x="16" y="176" width="343" height="16"/>
-                            <color key="backgroundColor" name="Color-dark2"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="16" id="sOl-gV-o1D"/>
-                            </constraints>
-                        </view>
                     </subviews>
                     <color key="backgroundColor" name="Color-dark2"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="dR7-ie-E1A" secondAttribute="trailing" constant="16" id="82R-6t-5Xc"/>
                         <constraint firstItem="pfR-fi-BSr" firstAttribute="leading" secondItem="P6r-gu-pz5" secondAttribute="leading" id="9Wf-We-zrn"/>
                         <constraint firstItem="pvO-r7-bdU" firstAttribute="centerY" secondItem="6Cw-vD-9gm" secondAttribute="centerY" id="Aa8-XZ-ZCX"/>
                         <constraint firstAttribute="trailing" secondItem="igK-LD-NVw" secondAttribute="trailing" constant="24" id="Bj1-Y7-Z6M"/>
-                        <constraint firstItem="dR7-ie-E1A" firstAttribute="leading" secondItem="P6r-gu-pz5" secondAttribute="leading" constant="16" id="D06-ME-Xy8"/>
                         <constraint firstAttribute="height" constant="240" id="DQm-X4-do8"/>
                         <constraint firstItem="Kah-Qa-kkg" firstAttribute="leading" secondItem="8iv-d9-nYg" secondAttribute="leading" id="KAD-VL-BgW"/>
                         <constraint firstItem="igK-LD-NVw" firstAttribute="centerY" secondItem="8iv-d9-nYg" secondAttribute="centerY" id="LLo-vZ-rR9"/>
                         <constraint firstAttribute="trailing" secondItem="pfR-fi-BSr" secondAttribute="trailing" id="MAt-Sz-CUp"/>
                         <constraint firstItem="pfR-fi-BSr" firstAttribute="top" secondItem="P6r-gu-pz5" secondAttribute="top" constant="64" id="Ovw-0p-if9"/>
-                        <constraint firstAttribute="bottom" secondItem="dR7-ie-E1A" secondAttribute="bottom" constant="48" id="UCX-Gr-W3C"/>
                         <constraint firstItem="8iv-d9-nYg" firstAttribute="top" secondItem="pfR-fi-BSr" secondAttribute="bottom" constant="24" id="aU5-tI-bGA"/>
                         <constraint firstItem="8iv-d9-nYg" firstAttribute="leading" secondItem="P6r-gu-pz5" secondAttribute="leading" constant="24" id="i5P-hF-1gm"/>
                         <constraint firstItem="6Cw-vD-9gm" firstAttribute="top" secondItem="P6r-gu-pz5" secondAttribute="top" constant="16" id="lka-qs-iBM"/>

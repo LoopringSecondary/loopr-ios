@@ -52,6 +52,11 @@ class AssetTransactionDetailViewController: UIViewController {
         toContainerView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         idContainerView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         dateContainerView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        tap.delegate = self
+        view.addGestureRecognizer(tap)
+        
         // setup label
         setupLabels()
         if let transaction = self.transaction {
@@ -76,6 +81,15 @@ class AssetTransactionDetailViewController: UIViewController {
         dateTipLabel.setTitleCharFont()
         dateTipLabel.text = LocalizedString("Date", comment: "")
         dateInfoLabel.setTitleCharFont()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     func update(transaction: Transaction) {
@@ -204,13 +218,16 @@ class AssetTransactionDetailViewController: UIViewController {
     @IBAction func pressedCloseButton(_ sender: UIButton) {
         self.close()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        close()
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        let location = touch.location(in: nil)
+        if containerView.frame.contains(location) {
+            return false
+        }
+        return true
     }
 }

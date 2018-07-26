@@ -179,9 +179,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         scrollView.delegate = self
 //        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: sendButton.frame.maxY + 16)
 
-        let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
-        scrollViewTap.numberOfTapsRequired = 1
-        scrollView.addGestureRecognizer(scrollViewTap)
         
         // Send button
         sendButton.title = LocalizedString("Send", comment: "")

@@ -68,9 +68,9 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJu-KC-q44">
-                                    <rect key="frame" x="159" y="14" width="200" height="21"/>
+                                    <rect key="frame" x="119" y="14" width="240" height="21"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="200" id="SlT-1Y-KNu"/>
+                                        <constraint firstAttribute="width" constant="240" id="SlT-1Y-KNu"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
@@ -97,7 +97,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFF-Yv-Kgp">
-                                    <rect key="frame" x="159" y="14.5" width="200" height="21"/>
+                                    <rect key="frame" x="119" y="14.5" width="240" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -120,7 +120,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Wa-Ag-OZq">
-                                    <rect key="frame" x="159" y="9.5" width="200" height="30"/>
+                                    <rect key="frame" x="119" y="9.5" width="240" height="30"/>
                                     <state key="normal" title="Button"/>
                                     <connections>
                                         <action selector="pressedToButton:" destination="-1" eventType="touchUpInside" id="DmP-cA-lg2"/>
@@ -144,7 +144,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceR-kL-OiZ">
-                                    <rect key="frame" x="159" y="10" width="200" height="30"/>
+                                    <rect key="frame" x="119" y="10" width="240" height="30"/>
                                     <state key="normal" title="Button"/>
                                     <connections>
                                         <action selector="pressedIdButton:" destination="-1" eventType="touchUpInside" id="UVm-IR-dTN"/>
@@ -168,7 +168,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDr-6o-sZK">
-                                    <rect key="frame" x="159" y="14.5" width="200" height="21"/>
+                                    <rect key="frame" x="119" y="14.5" width="240" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>

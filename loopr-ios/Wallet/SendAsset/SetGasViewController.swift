@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StepSlider
 
 class SetGasViewController: UIViewController, DefaultSliderDelegate {
 
@@ -17,6 +18,7 @@ class SetGasViewController: UIViewController, DefaultSliderDelegate {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var recommandButton: UIButton!
     
+    var stepSlider: StepSlider = StepSlider()
     var dismissClosure: (() -> Void)?
     var recGasPriceInGwei: Double = 0
     var gasPriceInGwei: Double = GasDataManager.shared.getGasPriceInGwei()
@@ -39,6 +41,27 @@ class SetGasViewController: UIViewController, DefaultSliderDelegate {
         closeButton.theme_setImage(GlobalPicker.closeHighlight, forState: .highlighted)
         closeButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
+        stepSlider = StepSlider.init(frame: CGRect(x: 16, y: gasTipLabel.bottomY + 24, width: containerView.width - 16 * 2, height: 44))
+        stepSlider.maxCount = 2
+        stepSlider.setIndex(0, animated: false)
+        stepSlider.labelFont = FontConfigManager.shared.getRegularFont(size: 12)
+        stepSlider.labelColor = UIColor.init(white: 0.6, alpha: 1)
+        stepSlider.labels = ["Slow", "Fast"]
+        stepSlider.trackHeight = 2
+        stepSlider.trackCircleRadius = 3
+        stepSlider.trackColor = UIColor.init(white: 0.6, alpha: 1)
+        stepSlider.tintColor = UIColor.themeGreen
+        stepSlider.sliderCircleRadius = 10
+        stepSlider.sliderCircleColor = UIColor.themeGreen
+        stepSlider.labelOffset = 10
+        stepSlider.isDotsInteractionEnabled = true
+        stepSlider.adjustLabel = true
+        containerView.addSubview(stepSlider)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        tap.delegate = self
+        view.addGestureRecognizer(tap)
+        
         updateLabels(self.recGasPriceInGwei)
     }
 
@@ -58,16 +81,32 @@ class SetGasViewController: UIViewController, DefaultSliderDelegate {
         }
     }
     
-    @IBAction func pressedRecommandButton(_ sender: UIButton) {
-        self.updateLabels(self.recGasPriceInGwei)
-    }
-    
-    @IBAction func pressedCloseButton(_ sender: UIButton) {
+    func close() {
         if let closure = self.dismissClosure {
             closure()
         }
         self.dismiss(animated: true, completion: {
         })
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        close()
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        let location = touch.location(in: nil)
+        if containerView.frame.contains(location) {
+            return false
+        }
+        return true
+    }
+    
+    @IBAction func pressedRecommandButton(_ sender: UIButton) {
+        self.updateLabels(self.recGasPriceInGwei)
+    }
+    
+    @IBAction func pressedCloseButton(_ sender: UIButton) {
+        close()
     }
     
 }
