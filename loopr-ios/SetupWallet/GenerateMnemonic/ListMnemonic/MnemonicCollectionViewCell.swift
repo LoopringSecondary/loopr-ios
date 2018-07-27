@@ -12,22 +12,12 @@ class MnemonicCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var mnemonicLabel: UILabel!
     
-    // TODO: seperate the circle and the label
-    @IBOutlet weak var circleLabel: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        circleLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 12)
-        circleLabel.textAlignment = .center
-        circleLabel.layer.cornerRadius = 20.0 * 0.5
-        circleLabel.layer.borderWidth = 0.5
-        circleLabel.layer.backgroundColor = UIColor.clear.cgColor
-        circleLabel.layer.borderColor = UIColor.black.cgColor
-        circleLabel.baselineAdjustment = .alignCenters
-        
-        mnemonicLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 14)
+        mnemonicLabel.layer.cornerRadius = 2
+        mnemonicLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
+        mnemonicLabel.theme_textColor = GlobalPicker.textColor
     }
 
     class func getCellIdentifier() -> String {
@@ -35,6 +25,7 @@ class MnemonicCollectionViewCell: UICollectionViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 40
+        return 32
     }
+
 }

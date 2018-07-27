@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,17 +19,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyU-rN-D9u">
-                        <rect key="frame" x="28" y="0.0" width="221" height="60"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xW7-Bb-kd4">
-                        <rect key="frame" x="4" y="20" width="20" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="20" id="MIz-fk-BhQ"/>
-                            <constraint firstAttribute="height" constant="20" id="h0G-ev-cW1"/>
-                        </constraints>
+                        <rect key="frame" x="20" y="0.0" width="229" height="60"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -38,17 +27,14 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="xW7-Bb-kd4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="4zB-gV-3Ez"/>
+                <constraint firstItem="wyU-rN-D9u" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="1zm-gl-xaG"/>
                 <constraint firstAttribute="bottom" secondItem="wyU-rN-D9u" secondAttribute="bottom" id="NPy-PJ-Ekm"/>
-                <constraint firstItem="wyU-rN-D9u" firstAttribute="leading" secondItem="xW7-Bb-kd4" secondAttribute="trailing" constant="4" id="PdK-f9-UvR"/>
                 <constraint firstAttribute="trailing" secondItem="wyU-rN-D9u" secondAttribute="trailing" id="QjQ-Wg-BJ8"/>
                 <constraint firstItem="wyU-rN-D9u" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Qoa-ou-bem"/>
-                <constraint firstItem="xW7-Bb-kd4" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="VqQ-jb-TyX"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="249" height="73"/>
             <connections>
-                <outlet property="circleLabel" destination="xW7-Bb-kd4" id="Z9A-Fk-FBa"/>
                 <outlet property="mnemonicLabel" destination="wyU-rN-D9u" id="xQM-3E-G3u"/>
             </connections>
             <point key="canvasLocation" x="-166.5" y="153.5"/>

@@ -65,7 +65,6 @@ class MnemonicBackupModeCollectionViewController: UICollectionViewController {
         if userSelections.contains(indexPath.row) {
             cell.mnemonicLabel.textColor = UIColor.white
             cell.mnemonicLabel.layer.backgroundColor  = UIColor.black.cgColor
-            cell.mnemonicLabel.layer.cornerRadius = cell.mnemonicLabel.frame.height*0.5
         } else {
             cell.mnemonicLabel.textColor = UIColor.black
             cell.mnemonicLabel.layer.backgroundColor  = UIColor.white.cgColor

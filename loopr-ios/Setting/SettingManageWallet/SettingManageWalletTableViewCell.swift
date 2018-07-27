@@ -42,13 +42,26 @@ class SettingManageWalletTableViewCell: UITableViewCell {
     func update() {
         if let wallet = wallet {
             nameLabel.text = wallet.name
-            var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
-            balance.insert(" ", at: balance.index(after: balance.startIndex))
-            toatalBalanceLabel.text = balance
+            toatalBalanceLabel.text = wallet.totalCurrency.currency
             addressLabel.text = wallet.address.getAddressFormat(length: 11)
+            setNoCurrentWallet()
+            
+            if wallet.address == CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address {
+                setCurrentWallet()
+            } else {
+                setNoCurrentWallet()
+            }
         }
     }
-    
+
+    func setNoCurrentWallet() {
+        
+    }
+
+    func setCurrentWallet() {
+        
+    }
+
     class func getCellIdentifier() -> String {
         return "SettingManageWalletTableViewCell"
     }

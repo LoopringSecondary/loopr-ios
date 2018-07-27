@@ -39,9 +39,11 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         sortedMnemonics.sort { (a, b) -> Bool in
             return a < b
         }
-        
-        self.navigationItem.title = LocalizedString("Please Verify Your Mnemonic", comment: "")
+
         setBackButton()
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        self.navigationItem.title = LocalizedString("Generate Wallet", comment: "")
+        
         updateButtons()
         
         // Setup UI

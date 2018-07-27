@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,41 +21,41 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ad5-YF-xr2">
-                    <rect key="frame" x="15" y="605" width="345" height="47"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="pcl-Er-zIB">
+                    <rect key="frame" x="20" y="591" width="335" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ad5-YF-xr2">
+                            <rect key="frame" x="0.0" y="0.0" width="160" height="44"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Verify Now">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="pressedVerifyNowButton:" destination="-1" eventType="touchUpInside" id="03w-1q-Veo"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zSo-ff-ZRC">
+                            <rect key="frame" x="175" y="0.0" width="160" height="44"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Skip Verify Now">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="pressedSkipVerifyNowButton:" destination="-1" eventType="touchUpInside" id="PMW-Ce-ehe"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="47" id="dvf-8K-tYo"/>
+                        <constraint firstAttribute="height" constant="44" id="P0H-tx-Ztg"/>
+                        <constraint firstItem="Ad5-YF-xr2" firstAttribute="width" secondItem="zSo-ff-ZRC" secondAttribute="width" id="cgl-en-wNh"/>
                     </constraints>
-                    <state key="normal" title="Verify Now">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="pressedVerifyNowButton:" destination="-1" eventType="touchUpInside" id="03w-1q-Veo"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zSo-ff-ZRC">
-                    <rect key="frame" x="15" y="543" width="345" height="47"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="47" id="0ed-ZT-u8T"/>
-                    </constraints>
-                    <state key="normal" title="Skip Verify Now">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="pressedSkipVerifyNowButton:" destination="-1" eventType="touchUpInside" id="PMW-Ce-ehe"/>
-                    </connections>
-                </button>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="zSo-ff-ZRC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="TMO-az-C3U"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ad5-YF-xr2" secondAttribute="trailing" constant="15" id="fSn-ax-LkO"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zSo-ff-ZRC" secondAttribute="trailing" constant="15" id="ibz-UN-hux"/>
-                <constraint firstItem="Ad5-YF-xr2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="ssP-d2-ple"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ad5-YF-xr2" secondAttribute="bottom" constant="15" id="ui4-rF-OZY"/>
-                <constraint firstItem="Ad5-YF-xr2" firstAttribute="top" secondItem="zSo-ff-ZRC" secondAttribute="bottom" constant="15" id="xUO-kn-TsZ"/>
+                <constraint firstItem="pcl-Er-zIB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="2La-Wx-owv"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pcl-Er-zIB" secondAttribute="trailing" constant="20" id="A1S-FM-TQ1"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="pcl-Er-zIB" secondAttribute="bottom" constant="32" id="saK-50-bOB"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="103.5"/>

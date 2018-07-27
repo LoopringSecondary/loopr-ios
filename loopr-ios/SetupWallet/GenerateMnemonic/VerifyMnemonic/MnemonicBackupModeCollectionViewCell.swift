@@ -19,6 +19,7 @@ class MnemonicBackupModeCollectionViewCell: UICollectionViewCell {
         mnemonicLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 14)
         mnemonicLabel.textAlignment = .center
         mnemonicLabel.clipsToBounds = true
+        mnemonicLabel.backgroundColor = Themes.isDark() ? UIColor.dark3 : UIColor.white
     }
 
     class func getCellIdentifier() -> String {
@@ -26,10 +27,6 @@ class MnemonicBackupModeCollectionViewCell: UICollectionViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        if UIDevice.current.iPhoneX {
-            return 47
-        } else {
-            return 47
-        }
+        return 47
     }
 }

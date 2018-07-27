@@ -12,12 +12,14 @@ class BackupMnemonicViewController: UIViewController {
 
     var mnemonics: [String] = []
 
+    var backgroundImageView1 = UIImageView()
     var titleLabel: UILabel =  UILabel()
     var infoTextView: UITextView = UITextView()
     
     @IBOutlet weak var skipVerifyNowButton: UIButton!
     @IBOutlet weak var verifyNowButton: UIButton!
     
+    var backgroundImageView2 = UIImageView()
     var mnemonicCollectionViewController0: MnemonicCollectionViewController!
 
     var collectionViewY: CGFloat = 200
@@ -34,30 +36,43 @@ class BackupMnemonicViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        // self.navigationItem.title = LocalizedString("Backup Mnemonic", comment: "")
-
-        mnemonics = GenerateWalletDataManager.shared.getMnemonics()
         setBackButton()
         view.theme_backgroundColor = GlobalPicker.backgroundColor
-        
+        self.navigationItem.title = LocalizedString("Generate Wallet", comment: "")
+
+        mnemonics = GenerateWalletDataManager.shared.getMnemonics()
+
         // Setup UI
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         
-        titleLabel.frame = CGRect(x: padding, y: originY, width: screenWidth - padding * 2, height: 30)
-        titleLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 27)
-        titleLabel.text = LocalizedString("Please write them down", comment: "")
+        backgroundImageView1.frame = CGRect(x: 18, y: 10, width: screenWidth - 18 * 2, height: 200)
+        backgroundImageView1.backgroundColor = UIColor.clear
+        backgroundImageView1.image = UIImage.init(named: "MnemonicBackgroundImage1")
+        view.addSubview(backgroundImageView1)
+        
+        backgroundImageView2.frame = CGRect(x: 18, y: backgroundImageView1.bottomY, width: screenWidth - 18 * 2, height: 200)
+        backgroundImageView2.backgroundColor = UIColor.clear
+        backgroundImageView2.image = UIImage.init(named: "MnemonicBackgroundImage2")
+        view.addSubview(backgroundImageView2)
+        
+        titleLabel.frame = CGRect(x: padding, y: 30, width: screenWidth - padding * 2, height: 20)
+        titleLabel.textColor = UIColor.white
+        titleLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
+        titleLabel.text = LocalizedString("Backup Mnemonic", comment: "")
+        titleLabel.textAlignment = .center
         view.addSubview(titleLabel)
         
-        infoTextView.frame = CGRect(x: padding-3, y: 72, width: screenWidth - (padding-3) * 2, height: 100)
+        infoTextView.frame = CGRect(x: 20, y: 65, width: backgroundImageView1.width - 20*2, height: 120)
         infoTextView.isEditable = false
-        infoTextView.textColor = UIColor.black.withAlphaComponent(0.6)
-        infoTextView.font = FontConfigManager.shared.getDigitalFont(size: 17)
-        view.addSubview(infoTextView)
+        infoTextView.textColor = UIColor.white
+        infoTextView.backgroundColor = UIColor.clear
+        infoTextView.font = UIFont.init(name: "Rubik-Italic", size: 14)
+        backgroundImageView1.addSubview(infoTextView)
 
-        collectionViewWidth = screenWidth - padding * 2
+        collectionViewWidth = backgroundImageView1.width - padding * 2
         collectionViewHeight = 4*MnemonicCollectionViewCell.getHeight() + 2*padding
-        collectionViewY = infoTextView.frame.maxY + 10
+        collectionViewY = backgroundImageView1.frame.maxY + 30
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: (collectionViewWidth - 30)/3, height: MnemonicCollectionViewCell.getHeight())
@@ -72,10 +87,10 @@ class BackupMnemonicViewController: UIViewController {
         addChildViewController(mnemonicCollectionViewController0)
 
         skipVerifyNowButton.title = LocalizedString("Skip Verification", comment: "Go to VerifyMnemonicViewController")
-        skipVerifyNowButton.setupPrimary()
+        skipVerifyNowButton.setupPrimary(height: 44)
         
         verifyNowButton.title = LocalizedString("Verify Now", comment: "Go to VerifyMnemonicViewController")
-        verifyNowButton.setupSecondary()
+        verifyNowButton.setupSecondary(height: 44)
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,7 +100,7 @@ class BackupMnemonicViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        infoTextView.text = LocalizedString("Please make sure you have recorded all words safely. Otherwise, you will not be able to go through the verification process, and have to start over.", comment: "")
+        infoTextView.text = LocalizedString("Revealing your mnemonic phrases on web sites is highly dangerous. If the site is compromised or you accidentally visit a phishing website, your assets in all associated addresses can be stolen.", comment: "")
 
         // CollectionView won't be layout correctly in viewDidLoad()
         // https://stackoverflow.com/questions/12927027/uicollectionview-flowlayout-not-wrapping-cells-correctly-ios

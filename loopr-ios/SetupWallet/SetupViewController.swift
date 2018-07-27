@@ -33,7 +33,7 @@ class SetupViewController: UIViewController {
 
         unlockWalletButton.title = LocalizedString("Import Wallet", comment: "")
         // unlockWalletButton.setBackgroundImage(UIImage.init(named: "ImportWalletButtonImage"), for: .normal)
-        unlockWalletButton.setupSecondary(height: 60)
+        unlockWalletButton.setupSecondary(height: 50)
         unlockWalletButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getMedium(), size: 20.0)
         
         // This conflicts to UIImage.
@@ -43,7 +43,7 @@ class SetupViewController: UIViewController {
 
         generateWalletButton.title = LocalizedString("Generate Wallet", comment: "")
         // generateWalletButton.setImage(UIImage.init(named: "ImportWalletButtonImage"), for: .normal)
-        generateWalletButton.setupSecondary(height: 60)
+        generateWalletButton.setupSecondary(height: 50)
         generateWalletButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getMedium(), size: 20.0)
         generateWalletButton.addTarget(self, action: #selector(generateWalletButtonPressed), for: .touchUpInside)
 

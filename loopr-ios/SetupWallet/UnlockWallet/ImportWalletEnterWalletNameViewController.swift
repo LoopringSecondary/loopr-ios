@@ -149,6 +149,12 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
         return validWalletName
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if walletNameTextField.isFirstResponder == true {
+            walletNameTextField.placeholder = ""
+        }
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newLength = (textField.text?.utf16.count)! + (string.utf16.count) - range.length
         print("textField shouldChangeCharactersIn \(newLength)")

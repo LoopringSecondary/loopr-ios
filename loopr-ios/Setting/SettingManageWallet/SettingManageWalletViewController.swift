@@ -55,6 +55,21 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         // Dispose of any resources that can be recreated.
     }
     
+    func getAllBalanceFromRelay() {
+        for wallet in AppWalletDataManager.shared.getWallets() {
+            AppWalletDataManager.shared.getTotalCurrencyValue(address: wallet.address, completionHandler: { (totalCurrencyValue, error) in
+                print("getAllBalanceFromRelay \(totalCurrencyValue)")
+                wallet.totalCurrency = totalCurrencyValue
+                AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: wallet)
+                
+                // TODO: a hack to reload table view.
+                if totalCurrencyValue > 0 {
+                    self.tableView.reloadData()
+                }
+            })
+        }
+    }
+    
     @objc func pressedImportButton(_ button: UIButton) {
         let viewController = UnlockWalletSwipeViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
