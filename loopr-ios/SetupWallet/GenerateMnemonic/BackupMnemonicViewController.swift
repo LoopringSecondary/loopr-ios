@@ -70,9 +70,9 @@ class BackupMnemonicViewController: UIViewController {
         infoTextView.font = UIFont.init(name: "Rubik-Italic", size: 14)
         backgroundImageView1.addSubview(infoTextView)
 
-        collectionViewWidth = backgroundImageView1.width - padding * 2
+        collectionViewWidth = backgroundImageView1.width - 20 * 2
         collectionViewHeight = 4*MnemonicCollectionViewCell.getHeight() + 2*padding
-        collectionViewY = backgroundImageView1.frame.maxY + 30
+        collectionViewY = 30
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: (collectionViewWidth - 30)/3, height: MnemonicCollectionViewCell.getHeight())
@@ -82,8 +82,8 @@ class BackupMnemonicViewController: UIViewController {
         // assign first 12 words
         mnemonicCollectionViewController0.mnemonics = mnemonics
         mnemonicCollectionViewController0.view.isHidden = false
-        mnemonicCollectionViewController0.view.frame = CGRect(x: 15, y: collectionViewY, width: collectionViewWidth, height: collectionViewHeight)
-        view.addSubview(mnemonicCollectionViewController0.view)
+        mnemonicCollectionViewController0.view.frame = CGRect(x: 20, y: collectionViewY, width: collectionViewWidth, height: collectionViewHeight)
+        backgroundImageView2.addSubview(mnemonicCollectionViewController0.view)
         addChildViewController(mnemonicCollectionViewController0)
 
         skipVerifyNowButton.title = LocalizedString("Skip Verification", comment: "Go to VerifyMnemonicViewController")
@@ -106,7 +106,7 @@ class BackupMnemonicViewController: UIViewController {
         // https://stackoverflow.com/questions/12927027/uicollectionview-flowlayout-not-wrapping-cells-correctly-ios
         // If you want to improve this part, please submit a PR to review
         if firstAppear {
-            self.mnemonicCollectionViewController0.view.frame = CGRect(x: 15, y: collectionViewY, width: self.collectionViewWidth, height: self.collectionViewHeight)
+            self.mnemonicCollectionViewController0.view.frame = CGRect(x: 20, y: collectionViewY, width: self.collectionViewWidth, height: self.collectionViewHeight)
             mnemonicCollectionViewController0.collectionView?.collectionViewLayout.invalidateLayout()
             
             firstAppear = false
