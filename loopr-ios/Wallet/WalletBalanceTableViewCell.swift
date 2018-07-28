@@ -74,6 +74,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
     }
     
     @objc func updateBalance() {
+        balanceLabel.textColor = Themes.isDark() ? UIColor.white : UIColor.black
         var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
         balance.insert(" ", at: balance.index(after: balance.startIndex))
         balanceLabel.setText(balance, animated: true)

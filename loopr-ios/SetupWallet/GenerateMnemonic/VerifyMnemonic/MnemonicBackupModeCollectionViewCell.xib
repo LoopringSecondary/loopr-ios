@@ -4,9 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHM-n5-Bxw">
-                        <rect key="frame" x="13" y="3" width="106" height="24"/>
+                        <rect key="frame" x="0.0" y="0.0" width="132" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -29,10 +27,10 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="ZHM-n5-Bxw" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="5AA-iw-NsY"/>
-                <constraint firstItem="ZHM-n5-Bxw" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Mak-Dv-ghK"/>
-                <constraint firstItem="ZHM-n5-Bxw" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.8" id="xWW-rA-dpj"/>
-                <constraint firstItem="ZHM-n5-Bxw" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.8" id="zTw-aa-LoF"/>
+                <constraint firstAttribute="trailing" secondItem="ZHM-n5-Bxw" secondAttribute="trailing" id="G2M-cj-dvX"/>
+                <constraint firstItem="ZHM-n5-Bxw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WWw-ff-Pbt"/>
+                <constraint firstAttribute="bottom" secondItem="ZHM-n5-Bxw" secondAttribute="bottom" id="eL5-tm-LA1"/>
+                <constraint firstItem="ZHM-n5-Bxw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lVf-bK-Kec"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="132" height="73"/>

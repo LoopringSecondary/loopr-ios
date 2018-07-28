@@ -63,14 +63,13 @@ class MnemonicBackupModeCollectionViewController: UICollectionViewController {
         
         // To avoid duplicated words in mnemonic
         if userSelections.contains(indexPath.row) {
-            cell.mnemonicLabel.textColor = UIColor.white
-            cell.mnemonicLabel.layer.backgroundColor  = UIColor.black.cgColor
+            cell.applyGradient(withColors: UIColor.secondary, gradientOrientation: .horizontal)
         } else {
-            cell.mnemonicLabel.textColor = UIColor.black
-            cell.mnemonicLabel.layer.backgroundColor  = UIColor.white.cgColor
-            cell.mnemonicLabel.layer.cornerRadius = 0
+            for layer in cell.layer.sublayers ?? [] where layer.name == "gradientLayer" {
+                layer.removeFromSuperlayer()
+            }
+            cell.backgroundColor = Themes.isDark() ? UIColor.dark3 : UIColor.white
         }
-
         return cell
     }
     

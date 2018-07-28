@@ -58,6 +58,12 @@ class GenerateWalletDataManager {
         userInputMnemonics.append(mnemonic)
     }
     
+    func undoUserInputMnemonic(mnemonic: String) {
+        if let index = userInputMnemonics.index(of: mnemonic) {
+            userInputMnemonics.remove(at: index)
+        }
+    }
+    
     func undoLastUserInputMnemonic() {
         _ = userInputMnemonics.popLast()
     }

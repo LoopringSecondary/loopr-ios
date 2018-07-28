@@ -16,10 +16,13 @@ class MnemonicBackupModeCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        mnemonicLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 14)
+        mnemonicLabel.font = FontConfigManager.shared.getRegularFont(size: 16)
         mnemonicLabel.textAlignment = .center
-        mnemonicLabel.clipsToBounds = true
-        mnemonicLabel.backgroundColor = Themes.isDark() ? UIColor.dark3 : UIColor.white
+        mnemonicLabel.textColor = Themes.isDark() ? UIColor.white : UIColor.dark3
+
+        cornerRadius = 6
+        clipsToBounds = true
+        backgroundColor = Themes.isDark() ? UIColor.dark3 : UIColor.white
     }
 
     class func getCellIdentifier() -> String {
@@ -27,6 +30,6 @@ class MnemonicBackupModeCollectionViewCell: UICollectionViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 47
+        return 44
     }
 }

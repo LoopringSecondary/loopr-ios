@@ -138,6 +138,7 @@ extension UIView {
     
     func applyGradient(withColors colors: [UIColor], gradientOrientation orientation: GradientOrientation = .topRightBottomLeft) {
         let gradient = CAGradientLayer()
+        gradient.name = "gradientLayer"
         gradient.frame = self.bounds
         gradient.colors = colors.map { $0.cgColor }
         gradient.startPoint = orientation.startPoint
