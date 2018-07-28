@@ -51,10 +51,13 @@ class GenerateWalletEnterPasswordViewController: UIViewController, UITextFieldDe
         view.addSubview(continueButton)
 
         errorInfoLabel.frame = CGRect(x: padding, y: continueButton.bottomY + 40, width: screenWidth-padding*2, height: 40)
-        errorInfoLabel.textColor = UIColor.themeRed
         errorInfoLabel.textAlignment = .center
-        errorInfoLabel.alpha = 0.0
+        errorInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         view.addSubview(errorInfoLabel)
+
+        errorInfoLabel.theme_textColor = GlobalPicker.textColor
+        errorInfoLabel.alpha = 1.0
+        errorInfoLabel.text = LocalizedString("The length of password needs to be larger than or equal to 6.", comment: "")
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,6 +72,7 @@ class GenerateWalletEnterPasswordViewController: UIViewController, UITextFieldDe
         if password.trim().count == 0 {
             validPassword = false
             errorInfoLabel.shake()
+            errorInfoLabel.textColor = UIColor.themeRed
             errorInfoLabel.alpha = 1.0
             errorInfoLabel.text = LocalizedString("Password can't be empty.", comment: "")
         }
@@ -76,10 +80,11 @@ class GenerateWalletEnterPasswordViewController: UIViewController, UITextFieldDe
         if password.count < 6 {
             validPassword = false
             errorInfoLabel.shake()
+            errorInfoLabel.textColor = UIColor.themeRed
             errorInfoLabel.alpha = 1.0
             errorInfoLabel.text = LocalizedString("The length of password needs to be larger than or equal to 6.", comment: "")
         }
-        
+
         if validPassword {
             GenerateWalletDataManager.shared.setPassword(passwordTextField.text!)
             let viewController = GenerateWalletEnterRepeatPasswordViewController()
@@ -96,8 +101,9 @@ class GenerateWalletEnterPasswordViewController: UIViewController, UITextFieldDe
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newLength = (textField.text?.utf16.count)! + (string.utf16.count) - range.length
         print("textField shouldChangeCharactersIn \(newLength)")
-        errorInfoLabel.alpha = 0.0
-        errorInfoLabel.text = ""
+        errorInfoLabel.theme_textColor = GlobalPicker.textColor
+        errorInfoLabel.alpha = 1.0
+        errorInfoLabel.text = LocalizedString("The length of password needs to be larger than or equal to 6.", comment: "")
         return true
     }
 
