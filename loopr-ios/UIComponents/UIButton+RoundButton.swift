@@ -10,21 +10,21 @@ import UIKit
 
 extension UIButton {
     
-    func setupPrimary(height: CGFloat = 48) {
+    func setupPrimary(height: CGFloat = 48, gradientOrientation orientation: GradientOrientation = .topRightBottomLeft) {
         clipsToBounds = true
         setTitleColor(UIColor.white, for: .normal)
         setTitleColor(UIColor.init(white: 0.5, alpha: 1), for: .highlighted)
-        titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+        titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 16)
         layer.cornerRadius = height * 0.5
-        applyGradient(withColors: UIColor.primary)
+        applyGradient(withColors: UIColor.primary, gradientOrientation: orientation)
     }
     
-    func setupSecondary(height: CGFloat = 48) {
+    func setupSecondary(height: CGFloat = 48, gradientOrientation orientation: GradientOrientation = .topRightBottomLeft) {
         clipsToBounds = true
         setTitleColor(UIColor.white, for: .normal)
         setTitleColor(UIColor.init(white: 0.5, alpha: 1), for: .highlighted)
-        titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 16.0)
+        titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 16)
         layer.cornerRadius = height * 0.5
-        applyGradient(withColors: UIColor.secondary)
+        applyGradient(withColors: UIColor.secondary, gradientOrientation: orientation)
     }
 }

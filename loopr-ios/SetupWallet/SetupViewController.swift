@@ -33,8 +33,7 @@ class SetupViewController: UIViewController {
 
         unlockWalletButton.title = LocalizedString("Import Wallet", comment: "")
         // unlockWalletButton.setBackgroundImage(UIImage.init(named: "ImportWalletButtonImage"), for: .normal)
-        unlockWalletButton.setupSecondary(height: 50)
-        unlockWalletButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getMedium(), size: 20.0)
+        unlockWalletButton.setupSecondary(height: 50, gradientOrientation: .horizontal)
         
         // This conflicts to UIImage.
         // unlockWalletButton.set(image: UIImage.init(named: "ImportWalletButtonIcon"), title: LocalizedString("Import Wallet", comment: ""), titlePosition: .right, additionalSpacing: 10, state: .normal)
@@ -43,8 +42,7 @@ class SetupViewController: UIViewController {
 
         generateWalletButton.title = LocalizedString("Generate Wallet", comment: "")
         // generateWalletButton.setImage(UIImage.init(named: "ImportWalletButtonImage"), for: .normal)
-        generateWalletButton.setupSecondary(height: 50)
-        generateWalletButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getMedium(), size: 20.0)
+        generateWalletButton.setupSecondary(height: 50, gradientOrientation: .horizontal)
         generateWalletButton.addTarget(self, action: #selector(generateWalletButtonPressed), for: .touchUpInside)
 
         backgroundImageView.image = UIImage(named: "Background")
@@ -64,15 +62,13 @@ class SetupViewController: UIViewController {
 
     @objc func unlockWalletButtonPressed(_ sender: Any) {
         print("unlockWalletButtonPressed")
-        // backgrondImageView.removeFromSuperview()
         let viewController = UnlockWalletSwipeViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc func generateWalletButtonPressed(_ sender: Any) {
         print("generateWalletButtonPressed")
-        // backgrondImageView.removeFromSuperview()
-        let viewController = GenerateWalletEnterNameAndPasswordViewController()
+        let viewController = GenerateWalletEnterNameViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 

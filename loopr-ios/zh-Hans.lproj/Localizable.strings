@@ -57,6 +57,7 @@
 "Done" = "返回";
 "Details" = "交易详情";
 "Convert" = "转换";
+"WETH Convert" = "WETH转换";
 "Yes, convert now!" = "现在转换!";
 "Convert Successfully." = "转换成功。";
 "Wallet QR Code" = "钱包二维码";
@@ -364,3 +365,7 @@
 "ETH_TIP" = "我们为您保留 0.01 ETH 作为油费以保证后续可以发送交易";
 "Recommand Price" = "推荐油价";
 "Set Gas" = "设置油费";
+"Confirm Mnemonic Word" = "确认助记词";
+"Decentralized Exchange" = "去中心化交易所";
+"Peer to Peer" = "点对点";
+"Scan Code Receipt" = "扫描二维码";

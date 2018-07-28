@@ -85,7 +85,7 @@ class UpdatedSelectWalletViewController: UIViewController, UITableViewDelegate, 
     
     @objc func pressedCreateButton(_ sender: UIButton) {
         delegate?.pressedCreateButtonInUpdatedSelectWalletViewController()
-        let viewController = GenerateWalletEnterNameAndPasswordViewController()
+        let viewController = GenerateWalletEnterNameViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }

@@ -15,8 +15,6 @@
                 <outlet property="button2" destination="zcE-ph-lR4" id="PkG-9G-SsS"/>
                 <outlet property="button3" destination="Yi6-ae-Uow" id="VTH-pB-QNs"/>
                 <outlet property="button4" destination="dd8-U7-gr5" id="cOh-gx-7B6"/>
-                <outlet property="button5" destination="SWm-l9-FOy" id="4A7-SU-dBZ"/>
-                <outlet property="button6" destination="Okq-Oi-rce" id="i7W-oA-TKH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -55,37 +53,18 @@
                         </button>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="dd8-U7-gr5" firstAttribute="width" secondItem="Yi6-ae-Uow" secondAttribute="width" id="TX1-1k-5k5"/>
                         <constraint firstAttribute="height" constant="100" id="zgQ-37-3rS"/>
-                    </constraints>
-                </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vCH-j1-IgG">
-                    <rect key="frame" x="15" y="246" width="345" height="100"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWm-l9-FOy">
-                            <rect key="frame" x="0.0" y="0.0" width="168.5" height="100"/>
-                            <state key="normal" title="Button"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Okq-Oi-rce">
-                            <rect key="frame" x="176.5" y="0.0" width="168.5" height="100"/>
-                            <state key="normal" title="Button"/>
-                        </button>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="SWm-l9-FOy" firstAttribute="width" secondItem="Okq-Oi-rce" secondAttribute="width" id="Djo-rn-QUi"/>
-                        <constraint firstAttribute="height" constant="100" id="RBG-Yy-trd"/>
                     </constraints>
                 </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vCH-j1-IgG" firstAttribute="top" secondItem="zOh-qZ-IuK" secondAttribute="bottom" constant="8" id="2Xf-Y4-D2E"/>
                 <constraint firstItem="qpm-A5-5jq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="2kL-MJ-2ug"/>
                 <constraint firstItem="zOh-qZ-IuK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="5K1-NV-uyB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zOh-qZ-IuK" secondAttribute="trailing" constant="15" id="64K-pg-1kA"/>
-                <constraint firstItem="vCH-j1-IgG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="9EU-Dr-PLL"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qpm-A5-5jq" secondAttribute="trailing" constant="15" id="FPA-SW-TSS"/>
                 <constraint firstItem="qpm-A5-5jq" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="J5c-mH-QnC"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vCH-j1-IgG" secondAttribute="trailing" constant="15" id="cHD-YB-kIh"/>
                 <constraint firstItem="zOh-qZ-IuK" firstAttribute="top" secondItem="qpm-A5-5jq" secondAttribute="bottom" constant="8" id="dQr-XL-Ab2"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

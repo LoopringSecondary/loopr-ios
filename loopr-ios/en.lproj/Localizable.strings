@@ -57,6 +57,7 @@
 "Done" = "Done";
 "Details" = "Transaction Detail";
 "Convert" = "Convert";
+"WETH Convert" = "WETH Convert";
 "Yes, convert now!" = "Yes, convert now!";
 "Convert Successfully." = "Convert Successfully.";
 "Wallet QR Code" = "Wallet QR Code";
@@ -364,3 +365,7 @@
 "ETH_TIP" = "We will preserve 0.01 ETH for gas fee of your subsequent transaction";
 "Recommand Price" = "Recommand Price";
 "Set Gas" = "Set Gas";
+"Confirm Mnemonic Word" = "Confirm Mnemonic Word";
+"Decentralized Exchange" = "Decentralized Exchange";
+"Peer to Peer" = "Peer to Peer";
+"Scan Code Receipt" = "Scan Code Receipt";

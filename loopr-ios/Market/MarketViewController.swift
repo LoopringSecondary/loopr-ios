@@ -17,7 +17,6 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let refreshControl = UIRefreshControl()
     
     var viewAppear: Bool = false
-    var isReordering: Bool = false
     var isListeningSocketIO: Bool = false
     
     var didSelectRowClosure: ((Market) -> Void)?
@@ -52,11 +51,15 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         marketTableView.dataSource = self
         marketTableView.delegate = self
-        // marketTableView.reorder.delegate = self
+
         marketTableView.tableFooterView = UIView()
         marketTableView.separatorStyle = .none
         let tap = UITapGestureRecognizer(target: self, action: #selector(tableTapped))
         marketTableView.addGestureRecognizer(tap)
+
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 30))
+        marketTableView.tableHeaderView = headerView
+        
         /*
         // one part of record
         marketTableView.estimatedRowHeight = 0
@@ -70,14 +73,9 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         marketTableView.theme_backgroundColor = GlobalPicker.backgroundColor
 
-        // Add Refresh Control to Table View
-        if #available(iOS 10.0, *) {
-            marketTableView.refreshControl = refreshControl
-        } else {
-            marketTableView.addSubview(refreshControl)
-        }
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        marketTableView.refreshControl = refreshControl
     }
     
     @objc func tableTapped(tap: UITapGestureRecognizer) {
@@ -117,7 +115,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func tickerResponseReceivedNotification() {
-        if !isReordering && viewAppear && !isSearching && isListeningSocketIO {
+        if viewAppear && !isSearching && isListeningSocketIO {
             print("MarketViewController reload table \(type.description)")
             marketTableView.reloadData()
         }
@@ -289,37 +287,5 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             action.backgroundColor = UIStyleConfig.defaultTintColor
             return UISwipeActionsConfiguration(actions: [action])
         }
-    }
-}
-
-extension MarketViewController: TableViewReorderDelegate {
-    // MARK: - Reorder Delegate
-    func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        MarketDataManager.shared.exchange(at: sourceIndexPath.row, to: destinationIndexPath.row, type: type)
-    }
-    
-    func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {
-        return false
-        /*
-        if isFiltering {
-            return false
-        }
-
-        if indexPath.row >= 0 {
-            return true
-        } else {
-            return false
-        }
-        */
-    }
-    
-    func tableViewDidBeginReordering(_ tableView: UITableView) {
-        print("tableViewDidBeginReordering")
-        isReordering = true
-    }
-    
-    func tableViewDidFinishReordering(_ tableView: UITableView, from initialSourceIndexPath: IndexPath, to finalDestinationIndexPath: IndexPath) {
-        print("tableViewDidFinishReordering")
-        isReordering = false
     }
 }

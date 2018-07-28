@@ -25,15 +25,11 @@ class MainTabController: ESTabBarController {
         newTradeNavigationViewController.setViewControllers([tradeSelectionViewController], animated: false)
         newTradeNavigationViewController.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Trade"), selectedImage: UIImage(named: "Trade-selected"))
         
-        let v2 = MarketNavigationViewController()
-        let v3 = TradeNavigationViewController()
         let v4 = SettingNavigationViewController()
         
         v1.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Assets"), selectedImage: UIImage(named: "Assets-selected"))
-        v2.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Trade"), selectedImage: UIImage(named: "Trade-selected"))
-        v3.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Trade"), selectedImage: UIImage(named: "Trade-selected"))
         v4.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Settings"), selectedImage: UIImage(named: "Settings-selected"))
-        viewControllers = [v1, newTradeNavigationViewController, v2, v3, v4]
+        viewControllers = [v1, newTradeNavigationViewController, v4]
     }
     
     override func viewWillLayoutSubviews() {

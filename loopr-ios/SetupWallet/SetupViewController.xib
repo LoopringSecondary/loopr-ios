@@ -44,7 +44,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O2E-xb-AW6">
-                    <rect key="frame" x="48" y="377" width="279" height="50"/>
+                    <rect key="frame" x="65" y="377" width="245" height="50"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="kV6-T3-HOY"/>
@@ -52,7 +52,7 @@
                     <state key="normal" title="Button"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWo-my-VCK">
-                    <rect key="frame" x="48" y="457" width="279" height="50"/>
+                    <rect key="frame" x="65" y="457" width="245" height="50"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="nRW-oe-ixu"/>
@@ -69,13 +69,13 @@
                 <constraint firstAttribute="bottom" secondItem="XgW-Xq-pDw" secondAttribute="bottom" id="QDb-SN-J8R"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vwj-yH-xwd" secondAttribute="trailing" constant="23" id="Sf7-CI-gDf"/>
                 <constraint firstItem="SWo-my-VCK" firstAttribute="top" secondItem="O2E-xb-AW6" secondAttribute="bottom" constant="30" id="V6i-eE-h7u"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="O2E-xb-AW6" secondAttribute="trailing" constant="48" id="ViW-w6-vo3"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SWo-my-VCK" secondAttribute="trailing" constant="48" id="Xhl-bZ-2RJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="O2E-xb-AW6" secondAttribute="trailing" constant="65" id="ViW-w6-vo3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SWo-my-VCK" secondAttribute="trailing" constant="65" id="Xhl-bZ-2RJ"/>
                 <constraint firstItem="ndb-6h-SZu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ZpB-oO-AFx"/>
                 <constraint firstItem="XgW-Xq-pDw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="iWh-dU-3Bj"/>
-                <constraint firstItem="O2E-xb-AW6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="ljm-Nh-wm1"/>
+                <constraint firstItem="O2E-xb-AW6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="65" id="ljm-Nh-wm1"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="SWo-my-VCK" secondAttribute="bottom" constant="160" id="mxk-6R-Xl0"/>
-                <constraint firstItem="SWo-my-VCK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="qiP-Oc-J5Z"/>
+                <constraint firstItem="SWo-my-VCK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="65" id="qiP-Oc-J5Z"/>
                 <constraint firstItem="Vwj-yH-xwd" firstAttribute="top" secondItem="ndb-6h-SZu" secondAttribute="bottom" constant="19" id="rzF-Yk-yf9"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

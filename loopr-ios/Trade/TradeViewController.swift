@@ -46,6 +46,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         scrollViewButtonLayoutConstraint.constant = 0
         self.navigationItem.title = LocalizedString("Trade", comment: "")
         
+        setBackButton()
+        
         let historyButton = UIButton(type: UIButtonType.custom)
         // TODO: smaller images.
         historyButton.theme_setImage(["Order-history-black", "Order-history-white"], forState: UIControlState.normal)

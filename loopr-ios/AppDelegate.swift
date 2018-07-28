@@ -35,6 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
 
+        // Avoid dark shadow on navigation bar during segue transition
+        self.window?.theme_backgroundColor = GlobalPicker.backgroundColor
+        
         AppWalletDataManager.shared.setup()
         CurrentAppWalletDataManager.shared.setup()
         if AppWalletDataManager.shared.getWallets().isEmpty {

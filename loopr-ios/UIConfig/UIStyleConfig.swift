@@ -26,7 +26,8 @@ enum UIStyleConfig {
         
     static func getChangeColor(change: String, down: Bool? = nil) -> UIColor {
         let firstChar = change.first?.description ?? ""
-        if change == "0.00%" || firstChar == "" {
+        // if change == "0.00%", use update
+        if firstChar == "" {
             return UIColor.black
         }
         let language = Bundle.main.preferredLocalizations.first

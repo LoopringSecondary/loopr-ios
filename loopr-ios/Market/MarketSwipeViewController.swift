@@ -26,9 +26,10 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = GlobalPicker.backgroundColor
 
-        setupSearchBar()
-        // self.navigationItem.title = LocalizedString("Market", comment: "")
-        
+        // setupSearchBar()
+        setBackButton()
+        self.navigationItem.title = LocalizedString("Markets", comment: "")
+
         setupChildViewControllers()
 
         let image = UIImage(named: "Order-history-black")
@@ -74,10 +75,10 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
             self.addChildViewController(viewController)
         }
         
-        options.swipeTabView.height = 44
-        options.swipeTabView.underlineView.height = 1
-        options.swipeTabView.underlineView.margin = 20
-        options.swipeTabView.itemView.font = FontConfigManager.shared.getRegularFont()
+        options.swipeTabView.height = 50
+        options.swipeTabView.underlineView.height = 2
+        // options.swipeTabView.underlineView.margin = 20
+        options.swipeTabView.itemView.font = FontConfigManager.shared.getMediumFont(size: 16)
         options.swipeContentScrollView.isScrollEnabled = false
         
         // TODO: needsAdjustItemViewWidth will trigger expensive computation.
@@ -85,6 +86,14 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         
         // TODO: .segmented will disable the value of width
         options.swipeTabView.style = .segmented
+        
+        if Themes.isDark() {
+            options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
+            options.swipeTabView.itemView.selectedTextColor = UIColor.white
+        } else {
+            options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
+            options.swipeTabView.itemView.selectedTextColor = UIColor.black
+        }
 
         swipeView.reloadData(options: options)
         
@@ -109,16 +118,6 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
             let orderHistoryBarButton = UIBarButtonItem(customView: orderHistoryButton)
             self.navigationItem.rightBarButtonItem = orderHistoryBarButton
             self.searchBar.text = ""
-        }
-        // TODO: no reload data in the viewWillAppear. Need to implement the night mode.
-        if Themes.isDark() {
-            options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
-            options.swipeTabView.itemView.selectedTextColor = UIColor.white
-            // swipeView.reloadData(options: options, default: swipeView.currentIndex)
-        } else {
-            options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
-            options.swipeTabView.itemView.selectedTextColor = UIColor.black
-            // swipeView.reloadData(options: options, default: swipeView.currentIndex)
         }
     }
     

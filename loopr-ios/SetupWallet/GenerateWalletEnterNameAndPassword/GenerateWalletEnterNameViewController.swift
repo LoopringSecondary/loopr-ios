@@ -62,6 +62,11 @@ class GenerateWalletEnterNameViewController: UIViewController, UITextFieldDelega
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
 
     @objc func pressedContinueButton(_ sender: Any) {
         var validWalletName = true

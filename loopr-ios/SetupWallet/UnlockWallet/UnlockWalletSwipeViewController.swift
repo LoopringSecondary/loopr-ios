@@ -27,14 +27,20 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
         
         self.navigationController?.isNavigationBarHidden = false
         
-        options.swipeTabView.height = 44
-        options.swipeTabView.underlineView.height = 1
-        options.swipeTabView.underlineView.margin = 30
+        options.swipeTabView.height = 50
+        options.swipeTabView.underlineView.height = 2
+        // options.swipeTabView.underlineView.margin = 30
 
         options.swipeTabView.style = .segmented
-
-        options.swipeTabView.itemView.font = FontConfigManager.shared.getRegularFont()
-
+        options.swipeTabView.itemView.font = FontConfigManager.shared.getMediumFont(size: 16)
+        
+        if Themes.isDark() {
+            options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
+            options.swipeTabView.itemView.selectedTextColor = UIColor.white
+        } else {
+            options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
+            options.swipeTabView.itemView.selectedTextColor = UIColor.black
+        }
         swipeView.reloadData(options: options)
         
         let button = UIBarButtonItem(image: Themes.isDark() ? UIImage.init(named: "Scan-dark") : UIImage.init(named: "Scan-light"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.pressScanButton(_:)))
@@ -58,17 +64,8 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
-        if Themes.isDark() {
-            options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
-            options.swipeTabView.itemView.selectedTextColor = UIColor.white
-        } else {
-            options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
-            options.swipeTabView.itemView.selectedTextColor = UIColor.black
-        }
-        options.swipeTabView.underlineView.height = 2
-        swipeView.reloadData(options: options, default: swipeView.currentIndex)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         if let valueToDisplay = valueFromQRCodeScanning {
             if typeFromQRCodeScanning == QRCodeType.privateKey {
