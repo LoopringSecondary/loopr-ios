@@ -64,8 +64,11 @@ enum Themes: Int {
     // MARK: - Save & Restore
     
     static func restoreLastTheme() {
-        let lastedThemeIndex = defaults.integer(forKey: UserDefaultsKeys.lastedThemeIndex.rawValue)
-        switchTo(themeIndex: lastedThemeIndex)
+        // let lastedThemeIndex = defaults.integer(forKey: UserDefaultsKeys.lastedThemeIndex.rawValue)
+        // switchTo(themeIndex: lastedThemeIndex)
+        
+        // TODO: Only support the dark theme due to the time contraint.
+        switchTo(theme: Themes.dark)
     }
     
     static func saveLastTheme() {

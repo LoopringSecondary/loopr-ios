@@ -28,14 +28,14 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loopring_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ndb-6h-SZu">
-                    <rect key="frame" x="157.5" y="143.5" width="60" height="60"/>
+                    <rect key="frame" x="147.5" y="133.5" width="80" height="80"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="60" id="IKt-Nj-CaB"/>
-                        <constraint firstAttribute="height" constant="60" id="XQu-9o-cs0"/>
+                        <constraint firstAttribute="width" constant="80" id="IKt-Nj-CaB"/>
+                        <constraint firstAttribute="height" constant="80" id="XQu-9o-cs0"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loopr Wallet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwj-yH-xwd">
-                    <rect key="frame" x="23" y="222.5" width="329" height="18"/>
+                    <rect key="frame" x="23" y="232.5" width="329" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="Bcg-3S-zuc"/>
                     </constraints>
@@ -44,16 +44,18 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O2E-xb-AW6">
-                    <rect key="frame" x="48" y="337" width="279" height="60"/>
+                    <rect key="frame" x="48" y="377" width="279" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" id="kV6-T3-HOY"/>
+                        <constraint firstAttribute="height" constant="50" id="kV6-T3-HOY"/>
                     </constraints>
                     <state key="normal" title="Button"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWo-my-VCK">
-                    <rect key="frame" x="48" y="427" width="279" height="60"/>
+                    <rect key="frame" x="48" y="457" width="279" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" id="nRW-oe-ixu"/>
+                        <constraint firstAttribute="height" constant="50" id="nRW-oe-ixu"/>
                     </constraints>
                     <state key="normal" title="Button"/>
                 </button>
@@ -72,7 +74,7 @@
                 <constraint firstItem="ndb-6h-SZu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ZpB-oO-AFx"/>
                 <constraint firstItem="XgW-Xq-pDw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="iWh-dU-3Bj"/>
                 <constraint firstItem="O2E-xb-AW6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="ljm-Nh-wm1"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="SWo-my-VCK" secondAttribute="bottom" constant="180" id="mxk-6R-Xl0"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="SWo-my-VCK" secondAttribute="bottom" constant="160" id="mxk-6R-Xl0"/>
                 <constraint firstItem="SWo-my-VCK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="qiP-Oc-J5Z"/>
                 <constraint firstItem="Vwj-yH-xwd" firstAttribute="top" secondItem="ndb-6h-SZu" secondAttribute="bottom" constant="19" id="rzF-Yk-yf9"/>
             </constraints>
@@ -81,6 +83,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Loopring_logo" width="51" height="60"/>
+        <image name="Loopring_logo" width="68" height="80"/>
     </resources>
 </document>
