@@ -15,7 +15,7 @@ class MarketDetailSwipeViewController: SwipeViewController {
     private var types: [String] = []
     private var viewControllers: [UIViewController] = []
 
-    var options = SwipeViewOptions()
+    var options = SwipeViewOptions.getDefault()
 
     @IBOutlet weak var baseView: UIView!
 
@@ -99,19 +99,7 @@ class MarketDetailSwipeViewController: SwipeViewController {
         let vc1 = MarketDetailDepthViewController()
         let vc2 = MarketDetailTradeHistoryViewController()
         viewControllers = [vc1, vc2]
-        
-        options.swipeTabView.underlineView.height = 2
-        options.swipeTabView.underlineView.margin = 20
-        options.swipeContentScrollView.isScrollEnabled = false
-        options.swipeTabView.style = .segmented
-        
-        options.swipeTabView.height = 50
-        options.swipeTabView.underlineView.height = 2
-        // options.swipeTabView.underlineView.margin = 30
-        
-        options.swipeTabView.style = .segmented
-        options.swipeTabView.itemView.font = FontConfigManager.shared.getMediumFont(size: 16)
-        
+
         if Themes.isDark() {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.white

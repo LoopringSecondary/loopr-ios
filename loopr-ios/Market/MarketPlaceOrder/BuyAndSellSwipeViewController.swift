@@ -13,7 +13,7 @@ class BuyAndSellSwipeViewController: SwipeViewController {
     var initialType: TradeType = .buy
     private var types: [TradeType] = [.buy, .sell]
     private var viewControllers: [UIViewController] = [BuyViewController(type: .buy), BuyViewController(type: .sell)]
-    var options = SwipeViewOptions()
+    var options = SwipeViewOptions.getDefault()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,25 +21,11 @@ class BuyAndSellSwipeViewController: SwipeViewController {
         // Do any additional setup after loading the view.
         setBackButton()
         self.navigationItem.title = PlaceOrderDataManager.shared.market.description
-        
-        options.swipeTabView.height = 44
-        options.swipeTabView.underlineView.height = 1
-        options.swipeTabView.underlineView.margin = 85
-        options.swipeTabView.underlineView.animationDuration = 0.2
-        options.swipeTabView.itemView.font = FontConfigManager.shared.getRegularFont()
-        options.swipeContentScrollView.isScrollEnabled = false
-        
-        // TODO: needsAdjustItemViewWidth will trigger expensive computation.
-        // options.swipeTabView.needsAdjustItemViewWidth = false
-        
-        // TODO: .segmented will disable the value of width
-        options.swipeTabView.style = .segmented
 
-        // swipeView.reloadData(options: options)
-        
         let initIndex = initialType == .buy ? 0 : 1
         
         swipeView.reloadData(options: options, default: initIndex)
+        
         for viewController in viewControllers {
             self.addChildViewController(viewController)
         }

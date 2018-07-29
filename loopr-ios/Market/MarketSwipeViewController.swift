@@ -14,7 +14,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     private var types: [MarketSwipeViewType] = []
     private var viewControllers: [MarketViewController] = []
     
-    var options = SwipeViewOptions()
+    var options = SwipeViewOptions.getDefault()
     
     var isSearching = false
     let searchBar = UISearchBar()
@@ -74,19 +74,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         for viewController in viewControllers {
             self.addChildViewController(viewController)
         }
-        
-        options.swipeTabView.height = 50
-        options.swipeTabView.underlineView.height = 2
-        options.swipeTabView.underlineView.margin = 10
-        options.swipeTabView.itemView.font = FontConfigManager.shared.getMediumFont(size: 16)
-        options.swipeContentScrollView.isScrollEnabled = false
-        
-        // TODO: needsAdjustItemViewWidth will trigger expensive computation.
-        // options.swipeTabView.needsAdjustItemViewWidth = false
-        
-        // TODO: .segmented will disable the value of width
-        options.swipeTabView.style = .segmented
-        
+
         if Themes.isDark() {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.white
@@ -94,7 +82,6 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.black
         }
-
         swipeView.reloadData(options: options)
         
         if MarketDataManager.shared.getMarketsWithoutReordered(type: .favorite).count == 0 {

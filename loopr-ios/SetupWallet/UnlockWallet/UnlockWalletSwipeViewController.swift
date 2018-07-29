@@ -12,7 +12,7 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
 
     private var types: [UnlockWalletType] = [.mnemonic, .keystore, .privateKey]
     private var viewControllers: [UIViewController] = [MnemonicViewController(), UnlockKeystoreViewController(), PrivateKeyViewController()]
-    var options = SwipeViewOptions()
+    var options = SwipeViewOptions.getDefault()
     
     var valueFromQRCodeScanning: String?
     var typeFromQRCodeScanning: QRCodeType?
@@ -26,14 +26,7 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
         setBackButton()
         
         self.navigationController?.isNavigationBarHidden = false
-        
-        options.swipeTabView.height = 50
-        options.swipeTabView.underlineView.height = 2
-        // options.swipeTabView.underlineView.margin = 30
 
-        options.swipeTabView.style = .segmented
-        options.swipeTabView.itemView.font = FontConfigManager.shared.getMediumFont(size: 16)
-        
         if Themes.isDark() {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.white

@@ -22,6 +22,7 @@ open class SwipeTabView: UIScrollView {
     fileprivate let containerView: UIStackView = UIStackView()
     
     fileprivate var underlineView: UIView = .init()
+    fileprivate var underlineBackgroundLineView: UIView = .init()
     
     fileprivate var currentIndex: Int = 0
     
@@ -170,8 +171,16 @@ open class SwipeTabView: UIScrollView {
             }
         }
         
-        containerView.backgroundColor = .clear
         addSubview(containerView)
+        
+        switch options.addition {
+        case .underline:
+            underlineBackgroundLineView = UIView(frame: CGRect(x: 0, y: containerHeight, width: frame.width - options.margin * 2, height: options.underlineView.height))
+            underlineBackgroundLineView.backgroundColor = options.underlineView.backgroundLineColor
+            containerView.addSubview(underlineBackgroundLineView)
+        case .none:
+            break
+        }
     }
     
     fileprivate func setupTabItemViews() {

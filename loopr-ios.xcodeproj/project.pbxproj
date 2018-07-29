@@ -119,6 +119,7 @@
 		AC131A07210D7A1A001998A0 /* MarketDetailDepthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC131A05210D7A1A001998A0 /* MarketDetailDepthViewController.xib */; };
 		AC131A0A210D7A33001998A0 /* MarketDetailTradeHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC131A08210D7A33001998A0 /* MarketDetailTradeHistoryViewController.swift */; };
 		AC131A0B210D7A33001998A0 /* MarketDetailTradeHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC131A09210D7A33001998A0 /* MarketDetailTradeHistoryViewController.xib */; };
+		AC131A0D210E49FF001998A0 /* DefaultSwipeViewOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC131A0C210E49FF001998A0 /* DefaultSwipeViewOptions.swift */; };
 		AC13B30320548767008A72C0 /* BuyAndSellSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13B30120548767008A72C0 /* BuyAndSellSwipeViewController.swift */; };
 		AC13B30420548767008A72C0 /* BuyAndSellSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC13B30220548767008A72C0 /* BuyAndSellSwipeViewController.xib */; };
 		AC13B30A2054A766008A72C0 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13B3082054A766008A72C0 /* BuyViewController.swift */; };
@@ -697,6 +698,7 @@
 		AC131A05210D7A1A001998A0 /* MarketDetailDepthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketDetailDepthViewController.xib; sourceTree = "<group>"; };
 		AC131A08210D7A33001998A0 /* MarketDetailTradeHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailTradeHistoryViewController.swift; sourceTree = "<group>"; };
 		AC131A09210D7A33001998A0 /* MarketDetailTradeHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketDetailTradeHistoryViewController.xib; sourceTree = "<group>"; };
+		AC131A0C210E49FF001998A0 /* DefaultSwipeViewOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSwipeViewOptions.swift; sourceTree = "<group>"; };
 		AC13B30120548767008A72C0 /* BuyAndSellSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyAndSellSwipeViewController.swift; sourceTree = "<group>"; };
 		AC13B30220548767008A72C0 /* BuyAndSellSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyAndSellSwipeViewController.xib; sourceTree = "<group>"; };
 		AC13B3082054A766008A72C0 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
@@ -1438,6 +1440,7 @@
 				AC4141F820352DA70089861D /* SwipeTabView.swift */,
 				AC4141FA20352DE50089861D /* SwipeTabItemView.swift */,
 				AC4141FC203532ED0089861D /* SwipeViewOptions.swift */,
+				AC131A0C210E49FF001998A0 /* DefaultSwipeViewOptions.swift */,
 			);
 			path = SwipeViewController;
 			sourceTree = "<group>";
@@ -2987,6 +2990,7 @@
 				AC3B48862104383E008A6771 /* UISearchBarExtension.swift in Sources */,
 				AC68E10220C24BD900BFA837 /* ImportWalletEnterWalletNameViewController.swift in Sources */,
 				AC4F601320773E9D00F1D954 /* EthType.swift in Sources */,
+				AC131A0D210E49FF001998A0 /* DefaultSwipeViewOptions.swift in Sources */,
 				AC3B48832103EA6B008A6771 /* TradeSelectionViewController.swift in Sources */,
 				ACB9116E2025575A00F14644 /* MarketNavigationViewController.swift in Sources */,
 				AC78FC35209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift in Sources */,

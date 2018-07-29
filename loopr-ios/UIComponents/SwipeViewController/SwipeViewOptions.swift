@@ -55,6 +55,9 @@ public struct SwipeViewOptions {
             
             /// UnderlineView animating duration. Defaults to `0.3`.
             public var animationDuration: CGFloat = 0.3
+            
+            /// UnderlineView backgroundLineColor. Defaults to `.clear`.
+            public var backgroundLineColor: UIColor = .clear
         }
         
         /// SwipeTabView height. Defaults to `44.0`.

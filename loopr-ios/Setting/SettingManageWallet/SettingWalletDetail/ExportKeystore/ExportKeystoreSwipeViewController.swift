@@ -13,7 +13,7 @@ class ExportKeystoreSwipeViewController: SwipeViewController {
     var keystore: String = ""
 
     private var viewControllers: [UIViewController] = []
-    var options = SwipeViewOptions()
+    var options = SwipeViewOptions.getDefault()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,13 +30,6 @@ class ExportKeystoreSwipeViewController: SwipeViewController {
         
         viewControllers = [displayKeystoreViewController, displayKeystoreInQRCodeViewController]
 
-        options.swipeTabView.height = 44
-        options.swipeTabView.underlineView.height = 1
-        options.swipeTabView.underlineView.margin = 85
-        
-        options.swipeTabView.style = .segmented
-        options.swipeTabView.itemView.font = FontConfigManager.shared.getRegularFont()
-        
         swipeView.reloadData(options: options)
     }
 
