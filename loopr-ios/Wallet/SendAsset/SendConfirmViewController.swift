@@ -134,21 +134,22 @@ extension SendConfirmViewController {
     
     func completion(_ txHash: String?, _ error: Error?) {
         SVProgressHUD.dismiss()
-//        DispatchQueue.main.async {
-//            let vc = SendResultViewController()
-//            vc.type = "发送代币"
-//            vc.asset = self.sendAsset
-//            vc.navigationItem.title = "转账"
-//            if let error = error as NSError?,
-//                let json = error.userInfo["message"] as? JSON,
-//                let message = json.string {
-//                vc.errorMessage = message
-//            }
-//            if let closure = self.dismissClosure {
-//                closure()
-//            }
-//            self.dismiss(animated: true, completion: nil)
-//            self.parentNavController?.pushViewController(vc, animated: true)
-//        }
+        DispatchQueue.main.async {
+            let vc = SendResultViewController()
+            vc.asset = self.sendAsset
+            vc.sendAmount = self.sendAmount
+            vc.receiveAddress = self.receiveAddress
+            vc.navigationItem.title = "转账"
+            if let error = error as NSError?,
+                let json = error.userInfo["message"] as? JSON,
+                let message = json.string {
+                vc.errorMessage = message
+            }
+            if let closure = self.dismissClosure {
+                closure()
+            }
+            self.dismiss(animated: true, completion: nil)
+            self.parentNavController?.pushViewController(vc, animated: true)
+        }
     }
 }
