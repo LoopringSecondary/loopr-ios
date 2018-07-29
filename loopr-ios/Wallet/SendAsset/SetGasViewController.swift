@@ -18,10 +18,12 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var recommandButton: UIButton!
     
-    var stepSlider: StepSlider = StepSlider()
-    var dismissClosure: (() -> Void)?
+    var minGasValue: Double = 1
+    var maxGasValue: Double = 0
     var recGasPriceInGwei: Double = 0
     var gasPriceInGwei: Double = GasDataManager.shared.getGasPriceInGwei()
+    var stepSlider: StepSlider = StepSlider()
+    var dismissClosure: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,13 +59,15 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
         stepSlider.labelOffset = 10
         stepSlider.isDotsInteractionEnabled = true
         stepSlider.adjustLabel = true
+        
         containerView.addSubview(stepSlider)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         tap.delegate = self
         view.addGestureRecognizer(tap)
         
-        updateLabels(self.recGasPriceInGwei)
+        self.maxGasValue = Double(gasPriceInGwei * 2) <= 20 ? 20 : Double(gasPriceInGwei * 2)
+        update(self.recGasPriceInGwei)
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,13 +75,13 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func updateLabels(_ gasPriceInGwei: Double) {
+    func update(_ gasPriceInGwei: Double) {
         let amountInEther = gasPriceInGwei / 1000000000
         let gasLimit = Double(GasDataManager.shared.getGasLimit(by: "token_transfer")!)
         let totalGasInEther = amountInEther * gasLimit
         if let etherPrice = PriceDataManager.shared.getPrice(of: "ETH") {
             let transactionFeeInFiat = totalGasInEther * etherPrice
-            gasValueLabel.text = "\(totalGasInEther) ETH ≈ \(transactionFeeInFiat.currency)"
+            gasValueLabel.text = "\(totalGasInEther.withCommas(6)) ETH ≈ \(transactionFeeInFiat.currency)"
             gasTipLabel.text = "Gas Limit(\(gasLimit)) * Gas Price(\(gasPriceInGwei) Gwei)"
         }
     }
@@ -103,7 +107,7 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
     }
     
     @IBAction func pressedRecommandButton(_ sender: UIButton) {
-        self.updateLabels(self.recGasPriceInGwei)
+        self.update(self.recGasPriceInGwei)
     }
     
     @IBAction func pressedCloseButton(_ sender: UIButton) {
@@ -111,7 +115,10 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
     }
     
     func stepSliderValueChanged(_ value: Double) {
-        // valud is from 0.0 - 1.0
-        print(value)
+        let distance = self.maxGasValue - self.minGasValue
+        let roundedStepValue = round(distance * value + self.minGasValue)
+        self.gasPriceInGwei = roundedStepValue
+        GasDataManager.shared.setGasPrice(in: gasPriceInGwei)
+        update(self.gasPriceInGwei)
     }
 }

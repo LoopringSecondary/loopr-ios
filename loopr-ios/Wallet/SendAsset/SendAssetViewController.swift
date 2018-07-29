@@ -124,6 +124,10 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         updateTransactionFeeAmountLabel()
         
         scrollView.delegate = self
+        let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
+        scrollViewTap.numberOfTapsRequired = 1
+        scrollView.addGestureRecognizer(scrollViewTap)
+        scrollView.delaysContentTouches = false
 
         // Send button
         sendButton.title = LocalizedString("Send", comment: "")
@@ -146,9 +150,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         stepSlider = StepSlider.init(frame: CGRect(x: 10, y: amountTextField.bottomY + 16, width: contentView.width - 10 * 2, height: 44))
         stepSlider.delegate = self
         stepSlider.maxCount = 4
-        stepSlider.setIndex(2, animated: false)
         stepSlider.labelFont = FontConfigManager.shared.getRegularFont(size: 12)
         stepSlider.labelColor = UIColor.init(white: 0.6, alpha: 1)
+        stepSlider.setIndex(0, animated: false)
         stepSlider.labels = ["0%", "25%", "50%", "75%", "100%"]
         stepSlider.trackHeight = 2
         stepSlider.trackCircleRadius = 3
@@ -212,7 +216,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
+
     @objc func scrollViewTapped() {
         print("scrollViewTapped")
         amountTextField.resignFirstResponder()
@@ -244,6 +248,35 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             }
         }
         return false
+    }
+    
+    func getAvailableAmount() -> Double {
+        var result: Double = 0
+        if let asset = self.asset {
+            let balance = asset.balance
+            if asset.symbol.uppercased() == "ETH" {
+                result = balance - 0.01
+            } else {
+                result = balance
+            }
+        }
+        return result < 0 ? 0 : result
+    }
+    
+    func getAvailableString() -> String {
+        var result: String = ""
+        if let asset = self.asset {
+            if asset.symbol.uppercased() == "ETH" {
+                var balance = asset.balance - 0.01
+                if balance < 0 {
+                    balance = 0
+                }
+                result = balance.withCommas(6)
+            } else {
+                result = asset.display
+            }
+        }
+        return result
     }
     
     func validateAmount() -> Bool {
@@ -291,28 +324,22 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         vc.dismissClosure = {
             self.totalMaskView.alpha = 0
             self.gasPriceInGwei = vc.gasPriceInGwei
+            self.updateTransactionFeeAmountLabel()
         }
         self.present(vc, animated: true, completion: nil)
     }
     
     func pushController() {
-        let toAddress = addressTextField.text!
-        if let token = TokenDataManager.shared.getTokenBySymbol(asset!.symbol) {
-            let gethAmount = GethBigInt.generate(valueInEther: Double(amountTextField.text!)!, symbol: token.symbol)!
-            var error: NSError? = nil
-            let toAddress = GethNewAddressFromHex(toAddress, &error)!
-            if token.symbol.uppercased() == "ETH" {
-                SendCurrentAppWalletDataManager.shared._transferETH(amount: gethAmount, toAddress: toAddress, completion: completion)
-            } else {
-                // TODO: Error handling for invalid protocol value
-                if !token.protocol_value.isHexAddress() {
-                    print("token protocol \(token.protocol_value) is invalid")
-                    return
-                }
-                let contractAddress = GethNewAddressFromHex(token.protocol_value, &error)!
-                SendCurrentAppWalletDataManager.shared._transferToken(contractAddress: contractAddress, toAddress: toAddress, tokenAmount: gethAmount, completion: completion)
-            }
-        }
+        totalMaskView.alpha = 0.75
+        let vc = SendConfirmViewController()
+        vc.sendAsset = self.asset
+        vc.sendAmount = self.amountTextField.text
+        vc.receiveAddress = self.addressTextField.text
+        vc.gasAmountText = self.transactionFeeAmountLabel.text
+        vc.dismissClosure = { self.totalMaskView.alpha = 0 }
+        vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        vc.parentNavController = self.navigationController
+        self.present(vc, animated: true, completion: nil)
     }
 
     @IBAction func pressedSendButton(_ sender: Any) {
@@ -324,7 +351,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         let isAmountValid = validateAmount()
         let isAddressValid = validateAddress()
         if isAmountValid && isAddressValid {
-            SVProgressHUD.show(withStatus: LocalizedString("Processing the transaction", comment: "") + "...")
             self.pushController()
         }
         if !isAmountValid && amountInfoLabel.textColor != .fail {
@@ -422,17 +448,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         if self.activeTextFieldTag != 1 {
             scrollViewButtonLayoutConstraint.constant = 0
         }
-//        if #available(iOS 11.0, *) {
-//            let window = UIApplication.shared.keyWindow
-//            let bottomPadding = window?.safeAreaInsets.bottom ?? 0
-//            sendButtonBackgroundViewBottomLayoutContraint.constant = bottomPadding
-//        } else {
-//            sendButtonBackgroundViewBottomLayoutContraint.constant = 0
-//        }
     }
     
     @objc func keyboardDidChange(notification: NSNotification?) {
-//        activeTextFieldTag = addressTextField.tag
         _ = validate()
     }
 
@@ -444,8 +462,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             numericKeyboardView.delegate2 = self
             scrollViewButtonLayoutConstraint.constant = DefaultNumericKeyboard.height
             view.addSubview(numericKeyboardView)
-//            view.bringSubview(toFront: sendButtonBackgroundView)
-//            view.bringSubview(toFront: sendButton)
             
             let window = UIApplication.shared.keyWindow
             let bottomPadding = window?.safeAreaInsets.bottom ?? 0
@@ -461,7 +477,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                 }
             }, completion: { _ in
                 self.isNumericKeyboardShow = true
-//                self.scrollViewButtonLayoutConstraint.constant = DefaultNumericKeyboard.height + self.sendButtonBackgroundViewHeightLayoutContraint.constant
             })
         }
         numericKeyboardView.currentText = textField.text ?? ""
@@ -503,36 +518,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     }
     
     func stepSliderValueChanged(_ value: Double) {
-        // valud is from 0.0 - 1.0
-        print(value)
-    }
-}
-
-extension SendAssetViewController {
-
-    func completion(_ txHash: String?, _ error: Error?) {
-        // Close activity indicator
-        SVProgressHUD.dismiss()
-        guard error == nil && txHash != nil else {
-            // Show toast
-            DispatchQueue.main.async {                
-                let title = LocalizedString("Failed to send the transaction", comment: "")
-                let message = String(describing: error)
-                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: LocalizedString("Back", comment: ""), style: .default, handler: { _ in
-                }))
-                self.present(alert, animated: true, completion: nil)
-            }
-            return
-        }
-        DispatchQueue.main.async {
-            let title = LocalizedString("Sent the transaction successfully", comment: "")
-            let message = "Result of transfer is \(txHash!)"
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: LocalizedString("OK", comment: ""), style: .default, handler: { _ in
-                self.navigationController?.popViewController(animated: true)
-            }))
-            self.present(alert, animated: true, completion: nil)
-        }
+        let amount = (self.getAvailableAmount() * value)
+        amountTextField.text = "\(amount.withCommas(6))"
+        activeTextFieldTag = amountTextField.tag
+        _ = validate()
     }
 }

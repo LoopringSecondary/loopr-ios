@@ -281,12 +281,16 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         vc.dismissClosure = {
             self.totalMaskView.alpha = 0
             self.gasPriceInGwei = vc.gasPriceInGwei
+            self.updateTransactionFeeAmountLabel()
         }
         self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func pressedConvertButton(_ sender: Any) {
         guard let amount = validate() else {
+            availableLabel.textColor = .fail
+            availableLabel.text = LocalizedString("Please input a valid amount", comment: "")
+            availableLabel.shake()
             return
         }
         if asset!.symbol.uppercased() == "ETH" {
