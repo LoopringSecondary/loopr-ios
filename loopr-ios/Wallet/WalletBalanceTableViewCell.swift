@@ -31,7 +31,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         
-        baseView.frame = CGRect(x: 10, y: 10, width: screenWidth - 20, height: 120)
+        baseView.frame = CGRect(x: 15, y: 10, width: screenWidth - 15*2, height: 120)
         baseView.image = UIImage(named: "Header-background")
         baseView.contentMode = .scaleToFill
         addSubview(baseView)
@@ -99,6 +99,6 @@ class WalletBalanceTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 150
+        return 134
     }
 }

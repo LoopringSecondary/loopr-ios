@@ -35,43 +35,48 @@ class AssetTableViewCell: UITableViewCell {
         theme_backgroundColor = GlobalPicker.backgroundColor
         
         baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
-        baseView.frame = CGRect.init(x: 10, y: 10, width: screenWidth - 10*2, height: AssetTableViewCell.getHeight() - 10)
-        baseView.cornerRadius = 8
+        baseView.frame = CGRect.init(x: 15, y: 4, width: screenWidth - 15*2, height: 68)
+        baseView.cornerRadius = 6
         addSubview(baseView)
+        baseView.applyShadow(withColor: UIColor.black)
         
-        iconImageView.frame = CGRect.init(x: 16, y: 22, width: 36, height: 36)
+        iconImageView.frame = CGRect.init(x: 20, y: 16, width: 36, height: 36)
         iconImageView.contentMode = .scaleAspectFit
         baseView.addSubview(iconImageView)
         
-        iconView = IconView(frame: CGRect.init(x: 15, y: 22, width: 36, height: 36))
+        iconView = IconView(frame: CGRect.init(x: 20, y: 16, width: 36, height: 36))
         iconView.backgroundColor = UIColor.clear
         baseView.addSubview(iconView)
         
-        symbolLabel.frame = CGRect.init(x: 64, y: 22-3, width: 200, height: 36)
-        symbolLabel.setTitleDigitFont()
+        symbolLabel.frame = CGRect.init(x: 72, y: 16, width: 200, height: 17)
+        symbolLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
+        symbolLabel.theme_textColor = GlobalPicker.textColor
         symbolLabel.text = "ETHETHETHETHETHETHETH"  // Prototype the label size. Will be updated very soon.
         symbolLabel.sizeToFit()
         symbolLabel.text = ""
         baseView.addSubview(symbolLabel)
         
-        nameLabel.frame = CGRect.init(x: symbolLabel.frame.minX, y: 44, width: 200, height: 27)
-        nameLabel.setSubTitleDigitFont()
+        nameLabel.frame = CGRect.init(x: symbolLabel.frame.minX, y: 40, width: 200, height: 27)
+        nameLabel.font = FontConfigManager.shared.getRegularFont(size: 13)
+        nameLabel.theme_textColor = GlobalPicker.textLightColor
         nameLabel.text = "ETHETHETHETHETHETHETH"
         nameLabel.sizeToFit()
         nameLabel.text = ""
         baseView.addSubview(nameLabel)
         
-        balanceLabel.frame = CGRect.init(x: baseView.frame.width - 36 - 200, y: symbolLabel.frame.minY, width: 200, height: symbolLabel.frame.size.height)
-        balanceLabel.setTitleDigitFont()
+        balanceLabel.frame = CGRect.init(x: baseView.frame.width - 49 - 200, y: symbolLabel.frame.minY, width: 200, height: symbolLabel.frame.size.height)
+        balanceLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
+        balanceLabel.theme_textColor = GlobalPicker.textColor
         balanceLabel.textAlignment = .right
         baseView.addSubview(balanceLabel)
         
         amountLabel.frame = CGRect.init(x: balanceLabel.frame.minX, y: nameLabel.frame.minY, width: 200, height: nameLabel.frame.size.height)
-        amountLabel.setSubTitleDigitFont()
+        amountLabel.font = FontConfigManager.shared.getRegularFont(size: 13)
+        amountLabel.theme_textColor = GlobalPicker.textLightColor
         amountLabel.textAlignment = .right
         baseView.addSubview(amountLabel)
         
-        disclosureIndicator.frame = CGRect.init(x: baseView.frame.width - 36/2 - 16/2, y: (baseView.frame.height-16)/2, width: 16, height: 16)
+        disclosureIndicator.frame = CGRect.init(x: baseView.frame.width - 24 - 15, y: (baseView.frame.height-24)/2, width: 24, height: 24)
         disclosureIndicator.theme_image = GlobalPicker.indicator
         disclosureIndicator.contentMode = .center
         baseView.addSubview(disclosureIndicator)
@@ -109,6 +114,6 @@ class AssetTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 90
+        return 76
     }
 }

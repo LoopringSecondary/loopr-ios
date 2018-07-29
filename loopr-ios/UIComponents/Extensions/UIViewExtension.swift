@@ -146,12 +146,12 @@ extension UIView {
         self.layer.insertSublayer(gradient, at: 0)
     }
     
-    func applyShadow(withColor color: UIColor) {
+    func applyShadow(withColor color: UIColor, shadowOffset: CGSize = CGSize(width: 2, height: 2)) {
         let shadowLayer = UIView(frame: self.frame)
         shadowLayer.backgroundColor = UIColor.clear
         shadowLayer.layer.shadowColor = color.cgColor
         shadowLayer.layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: self.cornerRadius).cgPath
-        shadowLayer.layer.shadowOffset = CGSize(width: 2, height: 2)
+        shadowLayer.layer.shadowOffset = shadowOffset
         shadowLayer.layer.shadowOpacity = 0.3
         shadowLayer.layer.shadowRadius = 4
         shadowLayer.layer.masksToBounds = true
