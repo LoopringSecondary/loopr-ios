@@ -12,6 +12,7 @@ import NotificationBannerSwift
 
 class QRCodeViewController: UIViewController {
     
+    @IBOutlet weak var receiveQRCodeIconView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var qrcodeImageView: UIImageView!
     var qrcodeImage: UIImage!
@@ -24,20 +25,20 @@ class QRCodeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = LocalizedString("Wallet QR Code", comment: "")
+        self.navigationItem.title = LocalizedString("Receive Code", comment: "")
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         contentView.layer.cornerRadius = 6
         contentView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         
         titleLabel.setTitleCharFont()
-        addressLabel.setSubTitleDigitFont()
+        addressLabel.setTitleCharFont()
         
-        copyAddressButton.setTitle(LocalizedString("Copy Wallet Address", comment: ""), for: .normal)
-        copyAddressButton.setupPrimary()
+        copyAddressButton.setTitle(LocalizedString("Copy Address", comment: ""), for: .normal)
+        copyAddressButton.setupSecondary(height: 44)
         
         saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
-        saveToAlbumButton.setupSecondary()
+        saveToAlbumButton.setupSecondary(height: 44)
         
         setupShareButton()
         setBackButton()
@@ -70,12 +71,13 @@ class QRCodeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         qrcodeImageView.image = qrcodeImage
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        copyAddressButton.setupPrimary()
-        saveToAlbumButton.setupSecondary()
+        contentView.applyShadow(withColor: UIColor.black)
+        view.bringSubview(toFront: receiveQRCodeIconView)
     }
     
     func generateQRCode(from data: Data) {
@@ -115,7 +117,12 @@ class QRCodeViewController: UIViewController {
     @IBAction func pressedSaveToAlbum(_ sender: Any) {
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         print("pressedSaveToAlbum address: \(address)")
-        QRCodeSaveToAlbum.shared.save(image: qrcodeImage)
+        copyAddressButton.isHidden = true
+        saveToAlbumButton.isHidden = true
+        let image = UIImage.imageWithView(view)
+        copyAddressButton.isHidden = false
+        saveToAlbumButton.isHidden = false
+        QRCodeSaveToAlbum.shared.save(image: image)
     }
 
 }

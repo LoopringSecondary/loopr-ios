@@ -40,7 +40,7 @@
 "Verify Now" = "马上验证";
 "Skip Verification" = "跳过验证";
 "Verification" = "验证";
-"Copy Wallet Address" = "复制钱包地址";
+"Copy Address" = "复制地址";
 "Copy Private Key" = "复制私钥";
 "Save to Album" = "保存到相册";
 "Market" = "市场";
@@ -369,3 +369,4 @@
 "Decentralized Exchange" = "去中心化交易所";
 "Peer to Peer" = "点对点";
 "Scan Code Receipt" = "扫描二维码";
+"Receive Code" = "转入二维码";

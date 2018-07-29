@@ -40,7 +40,7 @@
 "Verify Now" = "Verify Now";
 "Skip Verification" = "Skip Verification";
 "Verification" = "Verification";
-"Copy Wallet Address" = "Copy Wallet Address";
+"Copy Address" = "Copy Address";
 "Copy Private Key" = "Copy Private Key";
 "Save to Album" = "Save to Album";
 "Market" = "Market";
@@ -369,3 +369,5 @@
 "Decentralized Exchange" = "Decentralized Exchange";
 "Peer to Peer" = "Peer to Peer";
 "Scan Code Receipt" = "Scan Code Receipt";
+"Receive Code" = "Receive Code";
+
