@@ -77,7 +77,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         
         options.swipeTabView.height = 50
         options.swipeTabView.underlineView.height = 2
-        // options.swipeTabView.underlineView.margin = 20
+        options.swipeTabView.underlineView.margin = 10
         options.swipeTabView.itemView.font = FontConfigManager.shared.getMediumFont(size: 16)
         options.swipeContentScrollView.isScrollEnabled = false
         

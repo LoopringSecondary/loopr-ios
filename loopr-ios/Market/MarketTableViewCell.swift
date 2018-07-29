@@ -33,16 +33,16 @@ class MarketTableViewCell: UITableViewCell {
         tokenImage.contentMode = .center
 
         nameLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
-        nameLabel.theme_textColor = ["#000000cc", "#ffffffcc"]
+        nameLabel.theme_textColor = GlobalPicker.textColor
         
         balanceLabel.setSubTitleDigitFont()
-        balanceLabel.isHidden = true
+        balanceLabel.theme_textColor = GlobalPicker.textColor
         
         marketPriceInBitcoinLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
-        marketPriceInBitcoinLabel.theme_textColor = ["#000000cc", "#ffffffcc"]
+        marketPriceInBitcoinLabel.theme_textColor = GlobalPicker.textColor
         
         marketPriceInFiatCurrencyLabel.font = FontConfigManager.shared.getRegularFont(size: 13)
-        marketPriceInFiatCurrencyLabel.theme_textColor = ["#000000cc", "#ffffffcc"]
+        marketPriceInFiatCurrencyLabel.theme_textColor = GlobalPicker.textLightColor
         
         percentageChangeLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         percentageChangeLabel.textColor = UIColor.white

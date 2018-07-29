@@ -89,7 +89,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
-        // let screenHeight = screensize.height
         
         let originY: CGFloat = 50
         let padding: CGFloat = 15

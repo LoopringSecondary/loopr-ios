@@ -45,11 +45,7 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
         */
 
         // Add Refresh Control to Table View
-        if #available(iOS 10.0, *) {
-            historyTableView.refreshControl = refreshControl
-        } else {
-            historyTableView.addSubview(refreshControl)
-        }
+        historyTableView.refreshControl = refreshControl
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         

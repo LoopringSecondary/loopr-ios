@@ -1562,11 +1562,11 @@
 		AC5E0DD3203A9D7D00AF03C7 /* AssetDetail */ = {
 			isa = PBXGroup;
 			children = (
+				6630916621005B54006DA630 /* AssetSwipeViewController.swift */,
+				6630916721005B54006DA630 /* AssetSwipeViewController.xib */,
 				ACFEFEAC20C3C93900013921 /* AssetDetailTransaction */,
 				ACE6F7162041FDAD0039273D /* AssetTransactionDetailViewController.swift */,
 				ACE6F7172041FDAD0039273D /* AssetTransactionDetailViewController.xib */,
-				6630916621005B54006DA630 /* AssetSwipeViewController.swift */,
-				6630916721005B54006DA630 /* AssetSwipeViewController.xib */,
 			);
 			path = AssetDetail;
 			sourceTree = "<group>";

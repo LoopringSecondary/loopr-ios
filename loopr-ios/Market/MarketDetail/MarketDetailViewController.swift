@@ -56,11 +56,11 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         udpateStarButton()
         blurVisualEffectView.alpha = 1
         // Sell button
-        sellButton.setTitle(LocalizedString("Sell", comment: ""), for: .normal)
+        sellButton.setTitle(LocalizedString("Sell", comment: "") + " " + market.tradingPair.tradingA, for: .normal)
         sellButton.setupPrimary()
         
         // Buy button
-        buyButton.setTitle(LocalizedString("Buy", comment: ""), for: .normal)
+        buyButton.setTitle(LocalizedString("Buy", comment: "") + " " + market.tradingPair.tradingA, for: .normal)
         buyButton.setupSecondary()
 
         getDataFromRelay()
