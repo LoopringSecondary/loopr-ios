@@ -30,30 +30,32 @@ class AssetTransactionTableViewCell: UITableViewCell {
         let screenWidth = screensize.width
         
         baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
-        baseView.frame = CGRect.init(x: 10, y: 10, width: screenWidth - 10*2, height: AssetTransactionTableViewCell.getHeight() - 10)
-        baseView.cornerRadius = 8
+        baseView.frame = CGRect.init(x: 15, y: 4, width: screenWidth - 15*2, height: AssetTransactionTableViewCell.getHeight() - 8)
+        baseView.cornerRadius = 6
         addSubview(baseView)
+        // applyShadow must be after addSubview
+        baseView.applyShadow(withColor: UIColor.black)
         
-        typeImageView.frame = CGRect.init(x: 16, y: 26, width: 28, height: 28)
+        typeImageView.frame = CGRect.init(x: 20, y: 20, width: 28, height: 28)
         typeImageView.contentMode = .scaleAspectFit
         baseView.addSubview(typeImageView)
         
-        titleLabel.frame = CGRect.init(x: 52, y: 22-3, width: 200, height: 36)
+        titleLabel.frame = CGRect.init(x: 64, y: 16, width: 200, height: 36)
         titleLabel.setTitleCharFont()
-        titleLabel.text = "ETHETHETHETHETHETHETH"  // Prototype the label size. Will be updated very soon.
+        titleLabel.text = "ETHETHETHETHETHETHETH"
         titleLabel.sizeToFit()
         titleLabel.text = ""
         baseView.addSubview(titleLabel)
         
-        dateLabel.frame = CGRect.init(x: titleLabel.frame.minX, y: 44, width: 200, height: 27)
+        dateLabel.frame = CGRect.init(x: titleLabel.frame.minX, y: 41, width: 200, height: 27)
         dateLabel.setSubTitleDigitFont()
         dateLabel.text = "ETHETHETHETHETHETHETH"
         dateLabel.sizeToFit()
         dateLabel.text = ""
         baseView.addSubview(dateLabel)
         
-        amountLabel.frame = CGRect.init(x: baseView.frame.width - 16 - 200, y: titleLabel.frame.minY, width: 200, height: titleLabel.frame.size.height)
-        amountLabel.setTitleDigitFont()
+        amountLabel.frame = CGRect.init(x: baseView.frame.width - 20 - 200, y: titleLabel.frame.minY, width: 200, height: titleLabel.frame.size.height)
+        amountLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
         amountLabel.textAlignment = .right
         baseView.addSubview(amountLabel)
         
@@ -61,6 +63,8 @@ class AssetTransactionTableViewCell: UITableViewCell {
         displayLabel.setSubTitleDigitFont()
         displayLabel.textAlignment = .right
         baseView.addSubview(displayLabel)
+        
+        baseView.addSubview(statusImage)
     }
 
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
@@ -166,7 +170,7 @@ class AssetTransactionTableViewCell: UITableViewCell {
     }
     
     func updateStatusImage(transaction: Transaction) {
-        let x = 62 + titleLabel.intrinsicContentSize.width
+        let x = titleLabel.intrinsicContentSize.width + titleLabel.frame.minX + 15
         statusImage.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 15, height: 15))
         statusImage.center = CGPoint(x: x, y: titleLabel.frame.midY)
         
@@ -180,7 +184,6 @@ class AssetTransactionTableViewCell: UITableViewCell {
         default:
             self.statusImage.image = UIImage(named: "Checked")
         }
-        baseView.addSubview(statusImage)
     }
 
     class func getCellIdentifier() -> String {
@@ -188,6 +191,6 @@ class AssetTransactionTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 90
+        return 76
     }
 }

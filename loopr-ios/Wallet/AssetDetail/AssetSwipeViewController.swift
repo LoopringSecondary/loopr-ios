@@ -20,12 +20,17 @@ class AssetSwipeViewController: SwipeViewController {
     let balanceLabel: UILabel = UILabel()
     let currencyLabel: UILabel = UILabel()
     
+    @IBOutlet weak var receiveButton: UIButton!
+    @IBOutlet weak var sendButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationItem.title = asset?.symbol
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         self.topConstraint = 140
+        self.bottomConstraint = -60
         setBackButton()
         setupChildViewControllers()
         
@@ -48,6 +53,14 @@ class AssetSwipeViewController: SwipeViewController {
         currencyLabel.textAlignment = .center
         currencyLabel.text = asset?.currency
         view.addSubview(currencyLabel)
+        
+        // Receive button
+        receiveButton.setTitle(LocalizedString("Receive", comment: "") + " " + (asset?.symbol ?? ""), for: .normal)
+        receiveButton.setupSecondary(height: 44, gradientOrientation: .horizontal)
+        
+        // Send button
+        sendButton.setTitle(LocalizedString("Send", comment: "") + " " + (asset?.symbol ?? ""), for: .normal)
+        sendButton.setupSecondary(height: 44, gradientOrientation: .horizontal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,6 +99,20 @@ class AssetSwipeViewController: SwipeViewController {
         options.swipeTabView.style = .segmented
         swipeView.reloadData(options: options)
     }
+
+    @IBAction func pressedReceiveButton(_ sender: Any) {
+        print("pressedReceiveButton")
+        let viewController = QRCodeViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+
+    @IBAction func pressedSendButton(_ sender: Any) {
+        print("pressedSendButton")
+        let viewController = SendAssetViewController()
+        viewController.asset = self.asset!
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
     
     // MARK: - Delegate
     override func swipeView(_ swipeView: SwipeView, viewWillSetupAt currentIndex: Int) {
@@ -117,4 +144,5 @@ class AssetSwipeViewController: SwipeViewController {
     override func swipeView(_ swipeView: SwipeView, viewControllerForPageAt index: Int) -> UIViewController {
         return viewControllers[index]
     }
+
 }

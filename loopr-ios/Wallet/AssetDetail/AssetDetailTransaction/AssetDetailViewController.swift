@@ -11,9 +11,6 @@ import UIKit
 class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var receiveButton: UIButton!
-    @IBOutlet weak var sendButton: UIButton!
-    @IBOutlet weak var buttonHeightLayoutConstraint: NSLayoutConstraint!
     
     var asset: Asset?
     var type: TxSwipeViewType
@@ -50,16 +47,11 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.separatorStyle = .none
         
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 8))
+        tableView.tableHeaderView = headerView
+        
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
-        
-        // Receive button
-        receiveButton.setTitle(LocalizedString("Receive", comment: ""), for: .normal)
-        receiveButton.setupPrimary(height: 44)
-        
-        // Send button
-        sendButton.setTitle(LocalizedString("Send", comment: ""), for: .normal)
-        sendButton.setupSecondary(height: 44)
         
         // Add Refresh Control to Table View
         if #available(iOS 10.0, *) {
@@ -115,20 +107,6 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-    }
-    
-    @IBAction func pressedSendButton(_ sender: Any) {
-        print("pressedSendButton")
-        let viewController = SendAssetViewController()
-        viewController.asset = self.asset!
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-
-    @IBAction func pressedReceiveButton(_ sender: Any) {
-        print("pressedReceiveButton")
-        let viewController = QRCodeViewController()
-        viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

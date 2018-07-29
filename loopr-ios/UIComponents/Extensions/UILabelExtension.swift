@@ -36,13 +36,13 @@ extension UILabel {
     }
     
     func setTitleCharFont() {
-        let font = FontConfigManager.shared.getCharactorFont(size: 15)
+        let font = FontConfigManager.shared.getCharactorFont(size: 14)
         self.theme_textColor = ["#000000cc", "#ffffffcc"]
         self.font = font
     }
     
     func setSubTitleCharFont() {
-        let font = FontConfigManager.shared.getCharactorFont(size: 11)
+        let font = FontConfigManager.shared.getCharactorFont(size: 13)
         self.theme_textColor = ["#00000099", "#ffffff66"]
         self.font = font
     }
