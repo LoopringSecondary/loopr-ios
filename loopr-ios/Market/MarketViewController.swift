@@ -277,6 +277,12 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         cell?.market = market
         cell?.update()
+        
+        if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
+            cell?.baseView.roundCorners([.bottomLeft, .bottomRight], radius: 6)
+        } else {
+            cell?.baseView.roundCorners([], radius: 0)
+        }
         return cell!
     }
     

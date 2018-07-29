@@ -15,6 +15,7 @@
                 <outlet property="button2" destination="zcE-ph-lR4" id="PkG-9G-SsS"/>
                 <outlet property="button3" destination="Yi6-ae-Uow" id="VTH-pB-QNs"/>
                 <outlet property="button4" destination="dd8-U7-gr5" id="cOh-gx-7B6"/>
+                <outlet property="button5" destination="1RB-m6-4Zg" id="gVI-aV-71t"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -57,6 +58,13 @@
                         <constraint firstAttribute="height" constant="100" id="zgQ-37-3rS"/>
                     </constraints>
                 </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1RB-m6-4Zg">
+                    <rect key="frame" x="15" y="246" width="168.5" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="EFv-pH-gcO"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -65,7 +73,11 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zOh-qZ-IuK" secondAttribute="trailing" constant="15" id="64K-pg-1kA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qpm-A5-5jq" secondAttribute="trailing" constant="15" id="FPA-SW-TSS"/>
                 <constraint firstItem="qpm-A5-5jq" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="J5c-mH-QnC"/>
+                <constraint firstItem="1RB-m6-4Zg" firstAttribute="top" secondItem="zOh-qZ-IuK" secondAttribute="bottom" constant="8" id="TpT-ut-zCL"/>
                 <constraint firstItem="zOh-qZ-IuK" firstAttribute="top" secondItem="qpm-A5-5jq" secondAttribute="bottom" constant="8" id="dQr-XL-Ab2"/>
+                <constraint firstItem="1RB-m6-4Zg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="iRd-eq-k3t"/>
+                <constraint firstItem="1RB-m6-4Zg" firstAttribute="width" secondItem="Yi6-ae-Uow" secondAttribute="width" id="m5r-LP-mKk"/>
+                <constraint firstItem="1RB-m6-4Zg" firstAttribute="height" secondItem="Yi6-ae-Uow" secondAttribute="height" id="yyX-ON-oD5"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

@@ -36,7 +36,7 @@ class MarketTableViewCell: UITableViewCell {
         nameLabel.theme_textColor = GlobalPicker.textColor
         
         balanceLabel.setSubTitleDigitFont()
-        balanceLabel.theme_textColor = GlobalPicker.textColor
+        balanceLabel.theme_textColor = GlobalPicker.textLightColor
         
         marketPriceInBitcoinLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
         marketPriceInBitcoinLabel.theme_textColor = GlobalPicker.textColor

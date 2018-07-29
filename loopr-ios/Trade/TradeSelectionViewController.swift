@@ -14,6 +14,7 @@ class TradeSelectionViewController: UIViewController {
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
+    @IBOutlet weak var button5: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,6 @@ class TradeSelectionViewController: UIViewController {
         
         button1.cornerRadius = 8
         button1.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 14)
-        button1.titleLabel?.theme_textColor = ["#000000cc", "#ffffffcc"]
         button1.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
         button1.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
         button1.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
@@ -37,7 +37,6 @@ class TradeSelectionViewController: UIViewController {
         
         button2.cornerRadius = 8
         button2.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 14)
-        button2.titleLabel?.theme_textColor = ["#000000cc", "#ffffffcc"]
         button2.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
         button2.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
         button2.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
@@ -47,7 +46,6 @@ class TradeSelectionViewController: UIViewController {
         
         button3.cornerRadius = 8
         button3.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 14)
-        button3.titleLabel?.theme_textColor = ["#000000cc", "#ffffffcc"]
         button3.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
         button3.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
         button3.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
@@ -57,13 +55,21 @@ class TradeSelectionViewController: UIViewController {
         
         button4.cornerRadius = 8
         button4.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 14)
-        button4.titleLabel?.theme_textColor = ["#000000cc", "#ffffffcc"]
         button4.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
         button4.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
         button4.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
         button4.addTarget(self, action: #selector(self.pressedButton4(_:)), for: .touchUpInside)
         button4.set(image: UIImage.init(named: "Trade-scan-code-receipt-dark"), title: LocalizedString("Scan Code Receipt", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         button4.set(image: UIImage.init(named: "Trade-scan-code-receipt-dark")?.alpha(0.6), title: LocalizedString("Scan Code Receipt", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
+        
+        button5.cornerRadius = 8
+        button5.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 14)
+        button5.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
+        button5.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
+        button5.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
+        button5.addTarget(self, action: #selector(self.pressedButton5(_:)), for: .touchUpInside)
+        button5.set(image: UIImage.init(named: "dropdown-transaction"), title: LocalizedString("Orders", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
+        button5.set(image: UIImage.init(named: "dropdown-transaction")?.alpha(0.6), title: LocalizedString("Orders", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
     }
 
     override func didReceiveMemoryWarning() {
@@ -101,4 +107,10 @@ class TradeSelectionViewController: UIViewController {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
+    @objc func pressedButton5(_ button: UIButton) {
+        print("pressedButton5")
+        let viewController = OrderHistoryViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
