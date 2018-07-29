@@ -41,14 +41,16 @@ class AssetTransactionTableViewCell: UITableViewCell {
         baseView.addSubview(typeImageView)
         
         titleLabel.frame = CGRect.init(x: 64, y: 16, width: 200, height: 36)
-        titleLabel.setTitleCharFont()
+        titleLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
+        titleLabel.theme_textColor = GlobalPicker.textColor
         titleLabel.text = "ETHETHETHETHETHETHETH"
         titleLabel.sizeToFit()
         titleLabel.text = ""
         baseView.addSubview(titleLabel)
         
         dateLabel.frame = CGRect.init(x: titleLabel.frame.minX, y: 41, width: 200, height: 27)
-        dateLabel.setSubTitleDigitFont()
+        dateLabel.font = FontConfigManager.shared.getRegularFont(size: 13)
+        dateLabel.theme_textColor = GlobalPicker.textLightColor
         dateLabel.text = "ETHETHETHETHETHETHETH"
         dateLabel.sizeToFit()
         dateLabel.text = ""
@@ -60,7 +62,8 @@ class AssetTransactionTableViewCell: UITableViewCell {
         baseView.addSubview(amountLabel)
         
         displayLabel.frame = CGRect.init(x: amountLabel.frame.minX, y: dateLabel.frame.minY, width: 200, height: dateLabel.frame.size.height)
-        displayLabel.setSubTitleDigitFont()
+        displayLabel.font = FontConfigManager.shared.getRegularFont(size: 13)
+        displayLabel.theme_textColor = GlobalPicker.textLightColor
         displayLabel.textAlignment = .right
         baseView.addSubview(displayLabel)
         
