@@ -11,15 +11,15 @@ import NotificationBannerSwift
 
 class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var isLaunching: Bool = true
+    @IBOutlet weak var historyTableView: UITableView!
 
+    var isLaunching: Bool = true
     // These data need to be loaded when viewDidLoad() is called. Users can also pull to refresh the table view.
     var orderDates: [String] = []
     var orders: [String: [Order]] = [:]
-    
-    @IBOutlet weak var historyTableView: UITableView!
     private let refreshControl = UIRefreshControl()
     var blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+    var viewAppear: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()

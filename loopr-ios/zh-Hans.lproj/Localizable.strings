@@ -372,3 +372,5 @@
 "Receive Code" = "转入二维码";
 "Depth_in_Market_Detail" = "挂单";
 "Trades_in_Market_Detail" = "成交";
+"Custom" = "自定义";
+"Can Buy" = "市值等额";

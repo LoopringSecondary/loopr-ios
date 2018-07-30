@@ -44,14 +44,14 @@ class SendResultViewController: UIViewController {
     
     func update(asset: Asset) {
         if let errorMessage = self.errorMessage {
-            statusIcon.image = #imageLiteral(resourceName: "Result-header-icon") // here for replace
+            statusIcon.image = #imageLiteral(resourceName: "Result-header-fail")
             balanceLabel.textColor = UIColor.fail
             statusInfoLabel.textColor = UIColor.fail
             statusInfoLabel.text = LocalizedString("Failed", comment: "")
             toTipLabel.text = LocalizedString("Reason", comment: "")
             toInfoLabel.text = errorMessage
         } else {
-            statusIcon.image = #imageLiteral(resourceName: "Result-header-icon")
+            statusIcon.image = #imageLiteral(resourceName: "Result-header-success")
             balanceLabel.textColor = UIColor.success
             statusInfoLabel.textColor = UIColor.pending
             statusInfoLabel.text = LocalizedString("Pending", comment: "")
@@ -62,7 +62,7 @@ class SendResultViewController: UIViewController {
         balanceLabel.text = "-\(sendAmount!) \(asset.symbol)"
         statusTipLabel.setTitleCharFont()
         statusTipLabel.text = LocalizedString("Status", comment: "")
-        statusInfoLabel.setTitleCharFont()
+        statusInfoLabel.font = FontConfigManager.shared.getCharactorFont(size: 15)
         toTipLabel.setTitleCharFont()
         toInfoLabel.setTitleCharFont()
         timeTipLabel.setTitleCharFont()

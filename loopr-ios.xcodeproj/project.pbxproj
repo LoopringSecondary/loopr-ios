@@ -26,6 +26,8 @@
 		940B452A2060F67E00ADE2B9 /* MarketDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B451C2060F67E00ADE2B9 /* MarketDataManager.swift */; };
 		940B452B2060F67E00ADE2B9 /* SettingDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B451D2060F67E00ADE2B9 /* SettingDataManager.swift */; };
 		940B452D2061206900ADE2B9 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B452C2061206800ADE2B9 /* Token.swift */; };
+		941138C7210F12AD007FDC82 /* TTLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941138C5210F12AD007FDC82 /* TTLViewController.swift */; };
+		941138C8210F12AD007FDC82 /* TTLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941138C6210F12AD007FDC82 /* TTLViewController.xib */; };
 		9413F69120B802CB00524D2D /* AmountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9413F69020B802CB00524D2D /* AmountButton.swift */; };
 		9413F69520B80E2600524D2D /* AmountStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9413F69420B80E2600524D2D /* AmountStackView.swift */; };
 		9415543920C0F1BF007AAB87 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9415543820C0F1BF007AAB87 /* UILabelExtension.swift */; };
@@ -55,6 +57,9 @@
 		94678B2B210D902E00F550D3 /* SendResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94678B29210D902E00F550D3 /* SendResultViewController.xib */; };
 		9475A2EE207EF81300200155 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475A2EC207EF81300200155 /* OrderDetailViewController.swift */; };
 		9475A2EF207EF81300200155 /* OrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9475A2ED207EF81300200155 /* OrderDetailViewController.xib */; };
+		94768CA1210DCABE00B5977B /* TradeSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94768C9F210DCABE00B5977B /* TradeSwipeViewController.swift */; };
+		94768CA2210DCABE00B5977B /* TradeSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94768CA0210DCABE00B5977B /* TradeSwipeViewController.xib */; };
+		94768CA4210DCB2300B5977B /* TradeSwipeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94768CA3210DCB2300B5977B /* TradeSwipeType.swift */; };
 		948952D3205A74BE009B03FE /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948952D2205A74BE009B03FE /* Transaction.swift */; };
 		948BAD8420C4EBFA001F279F /* RawTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948BAD8320C4EBFA001F279F /* RawTransaction.swift */; };
 		949629DB204E836400858F03 /* Depth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DA204E836400858F03 /* Depth.swift */; };
@@ -604,6 +609,8 @@
 		940B451C2060F67E00ADE2B9 /* MarketDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDataManager.swift; sourceTree = "<group>"; };
 		940B451D2060F67E00ADE2B9 /* SettingDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDataManager.swift; sourceTree = "<group>"; };
 		940B452C2061206800ADE2B9 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		941138C5210F12AD007FDC82 /* TTLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTLViewController.swift; sourceTree = "<group>"; };
+		941138C6210F12AD007FDC82 /* TTLViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TTLViewController.xib; sourceTree = "<group>"; };
 		9413F69020B802CB00524D2D /* AmountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountButton.swift; sourceTree = "<group>"; };
 		9413F69420B80E2600524D2D /* AmountStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountStackView.swift; sourceTree = "<group>"; };
 		9415543820C0F1BF007AAB87 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
@@ -633,6 +640,9 @@
 		94678B29210D902E00F550D3 /* SendResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendResultViewController.xib; sourceTree = "<group>"; };
 		9475A2EC207EF81300200155 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
 		9475A2ED207EF81300200155 /* OrderDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailViewController.xib; sourceTree = "<group>"; };
+		94768C9F210DCABE00B5977B /* TradeSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSwipeViewController.swift; sourceTree = "<group>"; };
+		94768CA0210DCABE00B5977B /* TradeSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeSwipeViewController.xib; sourceTree = "<group>"; };
+		94768CA3210DCB2300B5977B /* TradeSwipeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSwipeType.swift; sourceTree = "<group>"; };
 		948952D2205A74BE009B03FE /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		948BAD8320C4EBFA001F279F /* RawTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawTransaction.swift; sourceTree = "<group>"; };
 		949629DA204E836400858F03 /* Depth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Depth.swift; sourceTree = "<group>"; };
@@ -1831,6 +1841,10 @@
 				AC69914520AC0F95003593AE /* Archive */,
 				ACEC977D20AD57F3003F9DEB /* P2POrderHistoryViewController.swift */,
 				ACEC977E20AD57F3003F9DEB /* P2POrderHistoryViewController.xib */,
+				94768C9F210DCABE00B5977B /* TradeSwipeViewController.swift */,
+				94768CA0210DCABE00B5977B /* TradeSwipeViewController.xib */,
+				941138C5210F12AD007FDC82 /* TTLViewController.swift */,
+				941138C6210F12AD007FDC82 /* TTLViewController.xib */,
 			);
 			path = Trade;
 			sourceTree = "<group>";
@@ -2130,6 +2144,7 @@
 				9457416F20D0E9CD00110CFD /* CancelOrder.swift */,
 				AC2ACA9B2103075C009C77E7 /* WalletType.swift */,
 				AC2ACA9D21030775009C77E7 /* TradeFAQPage.swift */,
+				94768CA3210DCB2300B5977B /* TradeSwipeType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2559,6 +2574,7 @@
 				AC4141F0203524280089861D /* MarketSwipeViewController.xib in Resources */,
 				ACA677B92079970600D34A2F /* ExportKeystoreSwipeViewController.xib in Resources */,
 				AC2ACA5420FA0EC3009C77E7 /* Rubik-BlackItalic.ttf in Resources */,
+				94768CA2210DCABE00B5977B /* TradeSwipeViewController.xib in Resources */,
 				C8BF95B12027AC9400343B9A /* SetupViewController.xib in Resources */,
 				AC8DBC7820BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.xib in Resources */,
 				AC31CE5F205B994200A30335 /* Roboto-Bold.ttf in Resources */,
@@ -2666,6 +2682,7 @@
 				AC2ACA4C20FA0EC3009C77E7 /* Rubik-MediumItalic.ttf in Resources */,
 				AC78FC36209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib in Resources */,
 				AC31CE40205B604100A30335 /* Linotype-DINNextLTPro-Medium.otf in Resources */,
+				941138C8210F12AD007FDC82 /* TTLViewController.xib in Resources */,
 				AC2ACA4F20FA0EC3009C77E7 /* Rubik-Light.ttf in Resources */,
 				AC13B30420548767008A72C0 /* BuyAndSellSwipeViewController.xib in Resources */,
 				AC31CE152057B5A400A30335 /* TradeReviewViewController.xib in Resources */,
@@ -3120,6 +3137,7 @@
 				940B45262060F67E00ADE2B9 /* ConvertDataManager.swift in Sources */,
 				ACB6A1A120966BC0004C64BC /* DefaultNotificationBanner.swift in Sources */,
 				ACB5DDA0202D5B9900140A09 /* CGSizeExtension.swift in Sources */,
+				94768CA1210DCABE00B5977B /* TradeSwipeViewController.swift in Sources */,
 				AC2C93D72105AE97004B8456 /* GenerateWalletEnterRepeatPasswordViewController.swift in Sources */,
 				ACE65E412071F875001EE499 /* MnemonicCollectionViewController.swift in Sources */,
 				AC31B93A204A4F9000B16155 /* Language.swift in Sources */,
@@ -3143,6 +3161,7 @@
 				AC375684203A641200AADC60 /* SelectWalletViewController.swift in Sources */,
 				ACB9118820265DEA00F14644 /* MarketDetailViewController_Archive.swift in Sources */,
 				AC5288B5208300580002AEAD /* NetworkingRechabilityManager.swift in Sources */,
+				94768CA4210DCB2300B5977B /* TradeSwipeType.swift in Sources */,
 				ACB911662024505D00F14644 /* Trade.swift in Sources */,
 				ACEC977F20AD57F3003F9DEB /* P2POrderHistoryViewController.swift in Sources */,
 				AC72AEE8204F020B00E9D3B0 /* OrderTradeState.swift in Sources */,
@@ -3166,6 +3185,7 @@
 				AC5E0DD0203A7C5800AF03C7 /* SelectWalletTableViewCell.swift in Sources */,
 				ACB9117820256B0300F14644 /* Market.swift in Sources */,
 				AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */,
+				941138C7210F12AD007FDC82 /* TTLViewController.swift in Sources */,
 				94DAACB320BBF24B0097707E /* OrderQRCodeViewController.swift in Sources */,
 				AC2ACA83210305F8009C77E7 /* TradeFAQViewController.swift in Sources */,
 				AC5E3E70205DFB700051ACFC /* SendAssetViewController.swift in Sources */,

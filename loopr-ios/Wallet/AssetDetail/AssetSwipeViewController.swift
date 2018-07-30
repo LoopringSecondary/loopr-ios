@@ -117,13 +117,9 @@ class AssetSwipeViewController: SwipeViewController {
     
     override func swipeView(_ swipeView: SwipeView, willChangeIndexFrom fromIndex: Int, to toIndex: Int) {
         type = types[toIndex]
-        let viewController = viewControllers[toIndex]
-        viewController.reloadAfterSwipeViewUpdated()
     }
     
     override func swipeView(_ swipeView: SwipeView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
-        viewControllers[fromIndex].viewAppear = false
-        viewControllers[toIndex].viewAppear = true
     }
     
     // MARK: - DataSource
