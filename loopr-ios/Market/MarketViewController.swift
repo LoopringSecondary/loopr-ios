@@ -305,31 +305,5 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationController?.view.endEditing(true)
         self.navigationController?.pushViewController(marketDetailViewController, animated: true)
     }
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let market = MarketDataManager.shared.getMarketsWithoutReordered(type: type)[indexPath.row]
-        if type == .favorite {
-            let action = UIContextualAction(style: .normal, title: nil, handler: { (_: UIContextualAction, _:  UIView, success: (Bool) -> Void) in
-                print("OK, marked as Unfavorite")
-                MarketDataManager.shared.removeFavoriteMarket(market: market)
-                success(true)
-                
-                // TODO: need to improve the animation
-                // self.markets.remove(at: indexPath.row)
-                self.marketTableView.deleteRows(at: [indexPath], with: .fade)
-            })
-            action.image = UIImage(named: "Unfavorite")!
-            action.backgroundColor = UIStyleConfig.defaultTintColor
-            return UISwipeActionsConfiguration(actions: [action])
-        } else {
-            let action = UIContextualAction(style: .normal, title: nil, handler: { (_: UIContextualAction, _: UIView, success: (Bool) -> Void) in
-                print("OK, marked as Favorite")
-                MarketDataManager.shared.setFavoriteMarket(market: market)
-                success(true)
-            })
-            action.image = UIImage(named: "Favorite")!
-            action.backgroundColor = UIStyleConfig.defaultTintColor
-            return UISwipeActionsConfiguration(actions: [action])
-        }
-    }
+
 }

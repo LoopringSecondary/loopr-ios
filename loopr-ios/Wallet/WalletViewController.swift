@@ -17,7 +17,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     var isLaunching: Bool = true
     var isListeningSocketIO: Bool = false
-    var contextMenuSourceView: UIView = UIView()
     var numberOfRowsInSection1: Int = 0
     
     var isDropdownMenuExpanded: Bool = false
@@ -246,16 +245,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             isDropdownMenuExpanded = true
         }
     }
-    
-    func contextMenuWillDismiss(viewController: UIViewController, animated: Bool) {
-        print("will dismiss")
-    }
-    
-    func contextMenuDidDismiss(viewController: UIViewController, animated: Bool) {
-        print("did dismiss")
-        contextMenuSourceView.removeFromSuperview()
-    }
-    
+
     @objc func balanceResponseReceivedNotification() {
         if !isLaunching && isListeningSocketIO {
             print("balanceResponseReceivedNotification WalletViewController reload table")

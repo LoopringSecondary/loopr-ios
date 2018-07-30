@@ -76,6 +76,15 @@ class TradeSelectionViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        button1.applyShadow(withColor: UIColor.black)
+        button2.applyShadow(withColor: UIColor.black)
+        button3.applyShadow(withColor: UIColor.black)
+        button4.applyShadow(withColor: UIColor.black)
+        button5.applyShadow(withColor: UIColor.black)
+    }
 
     @objc func pressedButton1(_ button: UIButton) {
         print("pressedItem1Button")

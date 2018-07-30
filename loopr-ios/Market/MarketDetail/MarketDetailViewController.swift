@@ -23,6 +23,7 @@ class MarketDetailViewController: UIViewController {
         self.navigationItem.title = market?.description
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         setBackButton()
+        setup()
         udpateStarButton()
 
         // Sell button
@@ -46,6 +47,12 @@ class MarketDetailViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setup() {
+        if let market = market {
+            PlaceOrderDataManager.shared.new(tokenA: market.tradingPair.tradingA, tokenB: market.tradingPair.tradingB, market: market)
+        }
     }
 
     func udpateStarButton() {

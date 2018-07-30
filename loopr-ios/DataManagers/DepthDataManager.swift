@@ -34,34 +34,12 @@ class DepthDataManager {
     // TODO: Not sure how orders are sorted in JSON RPC API. So send two requests.
     func getDepthFromServer(market: String, completionHandler: @escaping (_ buyDepths: [Depth], _ sellDepths: [Depth], _ error: Error?) -> Void) {
 
-        LoopringAPIRequest.getDepths(market: market, length: 1) { (buyDepths, sellDepths, error) in
+        LoopringAPIRequest.getDepths(market: market, length: 20) { (buyDepths, sellDepths, error) in
             guard buyDepths != nil && sellDepths != nil && error == nil else { return }
-            
-            completionHandler(self.getSells(), self.getBuys(), nil)
+            self.buys = buyDepths!
+            self.sells = sellDepths!
+            completionHandler(self.buys, self.sells, nil)
         }
-        
-        /*
-        LoopringAPIRequest.getOrders(owner: nil, status: OrderStatus.opened.rawValue, market: market) { orders, error in
-            guard let orders = orders, error == nil else {
-                return
-            }
-            /*
-            let buyOrders = orders.filter({ (order) -> Bool in
-                // TODO: looks like website doesn't show the order that dealtAmountS and dealtAmountB are not zero.
-                order.originalOrder.side == "buy" && order.dealtAmountS == 0 && order.dealtAmountB == 0
-            })
-            self.buys = OrderBookDataManager.aggregateOrderToOrderBook(orders: buyOrders, side: "buy")
-
-            let sellOrders = orders.filter({ (order) -> Bool in
-                // TODO: looks like website doesn't show the order that dealtAmountS and dealtAmountB are not zero.
-                order.originalOrder.side == "sell" && order.dealtAmountS == 0 && order.dealtAmountB == 0
-            })
-            self.sells = OrderBookDataManager.aggregateOrderToOrderBook(orders: sellOrders, side: "sell")
-
-            completionHandler(self.getSells(), self.getBuys(), nil)
-            */
-        }
-        */
     }
 
 }
