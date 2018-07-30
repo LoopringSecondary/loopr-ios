@@ -78,7 +78,7 @@
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="dkX-dc-W4G">
-                    <rect key="frame" x="20" y="603" width="335" height="44"/>
+                    <rect key="frame" x="20" y="618" width="335" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEl-zM-Ijk">
                             <rect key="frame" x="0.0" y="0.0" width="160" height="44"/>
@@ -114,7 +114,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dkX-dc-W4G" secondAttribute="trailing" constant="20" id="G3r-c0-6k0"/>
                 <constraint firstItem="3K2-up-9JE" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-30" id="H2D-M5-1iy"/>
                 <constraint firstItem="YBn-Jl-kW1" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="OIM-eH-Qic"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="dkX-dc-W4G" secondAttribute="bottom" constant="20" id="VUa-Xh-dof"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="dkX-dc-W4G" secondAttribute="bottom" constant="5" id="VUa-Xh-dof"/>
                 <constraint firstItem="dkX-dc-W4G" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="dkm-vM-CoI"/>
                 <constraint firstItem="3K2-up-9JE" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.7" id="fik-eC-hy1"/>
                 <constraint firstItem="D16-yf-Yzm" firstAttribute="top" secondItem="3K2-up-9JE" secondAttribute="top" constant="-30" id="oTZ-Bu-pxr"/>

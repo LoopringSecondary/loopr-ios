@@ -94,7 +94,7 @@ class MarketDetailSwipeViewController: SwipeViewController {
     }
 
     func setupChildViewControllers() {
-        types = ["Depth", "Trade"]
+        types = [LocalizedString("Depth_in_Market_Detail", comment: ""), LocalizedString("Trades_in_Market_Detail", comment: "")]
         
         let vc1 = MarketDetailDepthViewController()
         vc1.market = market

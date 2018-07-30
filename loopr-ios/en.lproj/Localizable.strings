@@ -370,4 +370,5 @@
 "Peer to Peer" = "Peer to Peer";
 "Scan Code Receipt" = "Scan Code Receipt";
 "Receive Code" = "Receive Code";
-
+"Depth_in_Market_Detail" = "Depth";
+"Trades_in_Market_Detail" = "Trades";

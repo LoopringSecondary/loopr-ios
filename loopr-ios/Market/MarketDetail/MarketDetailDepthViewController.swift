@@ -102,7 +102,11 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return MarketDetailDepthTableViewCell.getHeight()
+        if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
+            return MarketDetailDepthTableViewCell.getHeight() + 10
+        } else {
+            return MarketDetailDepthTableViewCell.getHeight()
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,6 +115,22 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
             let nib = Bundle.main.loadNibNamed("MarketDetailDepthTableViewCell", owner: self, options: nil)
             cell = nib![0] as? MarketDetailDepthTableViewCell
         }
+        if indexPath.row < buys.count {
+            cell?.buyDepth = buys[indexPath.row]
+        }
+        if indexPath.row < sells.count {
+            cell?.sellDepth = sells[indexPath.row]
+        }
+        cell?.update()
+        
+        if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
+            cell?.baseViewBuy.roundCorners([.bottomLeft], radius: 6)
+            cell?.baseViewSell.roundCorners([.bottomRight], radius: 6)
+        } else {
+            cell?.baseViewBuy.roundCorners([], radius: 0)
+            cell?.baseViewSell.roundCorners([], radius: 0)
+        }
+
         return cell!
     }
 }

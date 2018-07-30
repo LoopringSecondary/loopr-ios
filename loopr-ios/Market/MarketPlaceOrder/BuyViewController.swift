@@ -643,11 +643,11 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
                 text = self.customerValue
             case 1: // sell
                 if sellDepths!.count > 0 {
-                    text = sellDepths![0].unit
+                    text = sellDepths![0].price
                 }
             case 2: // buy
                 if buyDepths!.count > 0 {
-                    text = buyDepths![0].unit
+                    text = buyDepths![0].price
                 }
             case 3: // market
                 let pair = PlaceOrderDataManager.shared.market.description

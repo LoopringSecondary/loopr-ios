@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Bnh-0u-dsk">
-                    <rect key="frame" x="20" y="603" width="335" height="44"/>
+                    <rect key="frame" x="20" y="618" width="335" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eD8-bj-tG7">
                             <rect key="frame" x="0.0" y="0.0" width="160" height="44"/>
@@ -48,7 +48,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Bnh-0u-dsk" secondAttribute="trailing" constant="20" id="0YD-4X-8ej"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Bnh-0u-dsk" secondAttribute="bottom" constant="20" id="EHq-nE-r28"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Bnh-0u-dsk" secondAttribute="bottom" constant="5" id="EHq-nE-r28"/>
                 <constraint firstItem="Bnh-0u-dsk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="uPi-8D-lOG"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

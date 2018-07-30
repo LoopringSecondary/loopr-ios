@@ -30,7 +30,7 @@ class AssetSwipeViewController: SwipeViewController {
         self.navigationItem.title = asset?.symbol
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         self.topConstraint = 140
-        self.bottomConstraint = -60
+        self.bottomConstraint = -54
         setBackButton()
         setupChildViewControllers()
         

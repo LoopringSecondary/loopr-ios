@@ -16,7 +16,7 @@ public extension SwipeViewOptions {
         options.swipeTabView.underlineView.height = 2
         options.swipeTabView.underlineView.margin = 0
         options.swipeTabView.underlineView.backgroundLineColor = UIColor.init(rgba: "#444444")
-        options.swipeTabView.itemView.font = FontConfigManager.shared.getCharactorFont()
+        options.swipeTabView.itemView.font = FontConfigManager.shared.getMediumFont(size: 16)
         options.swipeContentScrollView.isScrollEnabled = true
         options.swipeTabView.style = .segmented
         options.swipeTabView.margin = 15

@@ -370,3 +370,5 @@
 "Peer to Peer" = "点对点";
 "Scan Code Receipt" = "扫描二维码";
 "Receive Code" = "转入二维码";
+"Depth_in_Market_Detail" = "挂单";
+"Trades_in_Market_Detail" = "成交";
