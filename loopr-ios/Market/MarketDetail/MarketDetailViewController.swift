@@ -27,11 +27,11 @@ class MarketDetailViewController: UIViewController {
 
         // Sell button
         sellButton.setTitle(LocalizedString("Sell", comment: "") + " " + market.tradingPair.tradingA, for: .normal)
-        sellButton.setupPrimary()
+        sellButton.setupPrimary(height: 44)
 
         // Buy button
         buyButton.setTitle(LocalizedString("Buy", comment: "") + " " + market.tradingPair.tradingA, for: .normal)
-        buyButton.setupSecondary()
+        buyButton.setupSecondary(height: 44)
         
         marketDetailSwipeViewController.market = market
         addChildViewController(marketDetailSwipeViewController)

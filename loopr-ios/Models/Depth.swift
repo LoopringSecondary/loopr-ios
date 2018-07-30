@@ -15,41 +15,26 @@ enum ErrorType: Error {
 
 class Depth {
     
-    class Content {
-        let unit: String
-        let amount: String
-        let total: String
-        
-        init(unit: String, amount: String, total: String) {
-            self.unit = unit
-            self.amount = amount
-            self.total = total
-        }
-        
-        init(content: [String]) {
-            if content.count != 3 {
-                // TODO: kenshin
-            }
-            self.unit = content[0]
-            self.amount = content[1]
-            self.total = content[2]
-        }
+    let market: String
+
+    let unit: String
+    let amount: String
+    let total: String
+    
+    init(market: String, unit: String, amount: String, total: String) {
+        self.market = market
+        self.unit = unit
+        self.amount = amount
+        self.total = total
     }
     
-    var buy: [Content]
-    var sell: [Content]
-    
-    init(buyOrders: [[String]], sellOrders: [[String]]) {
-
-        self.buy = [Content]()
-        self.sell = [Content]()
-        for buyOrder in buyOrders {
-            let buy = Content(content: buyOrder)
-            self.buy.append(buy)
+    init?(market: String, content: [String]) {
+        if content.count != 3 {
+            return nil
         }
-        for sellOrder in sellOrders {
-            let sell = Content(content: sellOrder)
-            self.sell.append(sell)
-        }
+        self.market = market
+        self.unit = content[0]
+        self.amount = content[1]
+        self.total = content[2]
     }
 }

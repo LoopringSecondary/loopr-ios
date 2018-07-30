@@ -348,7 +348,6 @@
 		AC54FD8F204FC700007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD25204FC3FA007E1DEB /* OpenSans-SemiBoldItalic.ttf */; };
 		AC54FD90204FC701007E1DEB /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC54FD25204FC3FA007E1DEB /* OpenSans-SemiBoldItalic.ttf */; };
 		AC54FD92204FD291007E1DEB /* FontConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54FD91204FD291007E1DEB /* FontConfigManager.swift */; };
-		AC5572FF20A6914300ACDEC9 /* OrderBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5572FE20A6914300ACDEC9 /* OrderBook.swift */; };
 		AC56625B20563C05003C925C /* TradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56625920563C05003C925C /* TradeViewController.swift */; };
 		AC56625C20563C05003C925C /* TradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC56625A20563C05003C925C /* TradeViewController.xib */; };
 		AC5E0991205F256500801738 /* AddTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E098F205F256500801738 /* AddTokenViewController.swift */; };
@@ -391,9 +390,7 @@
 		AC76E47420493CAE008BA229 /* SettingLanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */; };
 		AC78FC35209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78FC33209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift */; };
 		AC78FC36209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC78FC34209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib */; };
-		AC78FC3820A176CE00992AE8 /* OrderBookDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78FC3720A176CE00992AE8 /* OrderBookDataManager.swift */; };
-		AC78FC3B20A4B0C300992AE8 /* OrderBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78FC3920A4B0C200992AE8 /* OrderBookTableViewCell.swift */; };
-		AC78FC3C20A4B0C300992AE8 /* OrderBookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC78FC3A20A4B0C200992AE8 /* OrderBookTableViewCell.xib */; };
+		AC78FC3820A176CE00992AE8 /* DepthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78FC3720A176CE00992AE8 /* DepthDataManager.swift */; };
 		AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E422022B93A0071D477 /* AppDelegate.swift */; };
 		AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC798E482022B93A0071D477 /* Main.storyboard */; };
 		AC798E4C2022B93A0071D477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC798E4B2022B93A0071D477 /* Assets.xcassets */; };
@@ -867,7 +864,6 @@
 		AC54FD24204FC3FA007E1DEB /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		AC54FD25204FC3FA007E1DEB /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		AC54FD91204FD291007E1DEB /* FontConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontConfigManager.swift; sourceTree = "<group>"; };
-		AC5572FE20A6914300ACDEC9 /* OrderBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBook.swift; sourceTree = "<group>"; };
 		AC56625920563C05003C925C /* TradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewController.swift; sourceTree = "<group>"; };
 		AC56625A20563C05003C925C /* TradeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeViewController.xib; sourceTree = "<group>"; };
 		AC5E098F205F256500801738 /* AddTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTokenViewController.swift; sourceTree = "<group>"; };
@@ -910,9 +906,7 @@
 		AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLanguageViewController.xib; sourceTree = "<group>"; };
 		AC78FC33209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelAllOpenOrdersTableViewCell.swift; sourceTree = "<group>"; };
 		AC78FC34209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CancelAllOpenOrdersTableViewCell.xib; sourceTree = "<group>"; };
-		AC78FC3720A176CE00992AE8 /* OrderBookDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBookDataManager.swift; sourceTree = "<group>"; };
-		AC78FC3920A4B0C200992AE8 /* OrderBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBookTableViewCell.swift; sourceTree = "<group>"; };
-		AC78FC3A20A4B0C200992AE8 /* OrderBookTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderBookTableViewCell.xib; sourceTree = "<group>"; };
+		AC78FC3720A176CE00992AE8 /* DepthDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthDataManager.swift; sourceTree = "<group>"; };
 		AC798E3F2022B93A0071D477 /* loopr-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "loopr-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC798E422022B93A0071D477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC798E492022B93A0071D477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1970,8 +1964,6 @@
 				AC78FC34209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib */,
 				ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */,
 				ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */,
-				AC78FC3920A4B0C200992AE8 /* OrderBookTableViewCell.swift */,
-				AC78FC3A20A4B0C200992AE8 /* OrderBookTableViewCell.xib */,
 				AC9A273E20A6144700DB04AC /* OrderNoDataTableViewCell.swift */,
 				AC9A273F20A6144700DB04AC /* OrderNoDataTableViewCell.xib */,
 			);
@@ -2108,7 +2100,6 @@
 				ACB911A220296B9900F14644 /* OriginalOrder.swift */,
 				ACB9119E202967A500F14644 /* OrderStatus.swift */,
 				ACC2A2CE209EC39E00F2B7A1 /* OrderExpire.swift */,
-				AC5572FE20A6914300ACDEC9 /* OrderBook.swift */,
 				ACB911652024505D00F14644 /* Trade.swift */,
 				AC72AEE7204F020B00E9D3B0 /* OrderTradeState.swift */,
 				AC72AEE9204F038300E9D3B0 /* OrderTradeError.swift */,
@@ -2146,7 +2137,7 @@
 				940B45182060F67D00ADE2B9 /* ConvertDataManager.swift */,
 				940B451C2060F67E00ADE2B9 /* MarketDataManager.swift */,
 				940B45122060F67B00ADE2B9 /* OrderDataManager.swift */,
-				AC78FC3720A176CE00992AE8 /* OrderBookDataManager.swift */,
+				AC78FC3720A176CE00992AE8 /* DepthDataManager.swift */,
 				940B45132060F67B00ADE2B9 /* PlaceOrderDataManager.swift */,
 				940B45142060F67C00ADE2B9 /* PriceDataManager.swift */,
 				AC0CD58A20D393F200ABB7BA /* SendCurrentAppWalletDataManager.swift */,
@@ -2569,7 +2560,6 @@
 				AC2ACA622102E7B2009C77E7 /* SettingStyleTableViewCell.xib in Resources */,
 				ACE5BFA720466EFD005D75DD /* Localizable.strings in Resources */,
 				ACE6F72820426BAC0039273D /* SettingThemeModeTableViewCell.xib in Resources */,
-				AC78FC3C20A4B0C300992AE8 /* OrderBookTableViewCell.xib in Resources */,
 				AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */,
 				ACB911852026388700F14644 /* SettingViewController.xib in Resources */,
 				AC56625C20563C05003C925C /* TradeViewController.xib in Resources */,
@@ -2956,7 +2946,7 @@
 				ACB5DDA6202D704200140A09 /* UIButtonExtension.swift in Sources */,
 				AC9A274020A6144700DB04AC /* OrderNoDataTableViewCell.swift in Sources */,
 				AC31B948204A8DF400B16155 /* Address.swift in Sources */,
-				AC78FC3820A176CE00992AE8 /* OrderBookDataManager.swift in Sources */,
+				AC78FC3820A176CE00992AE8 /* DepthDataManager.swift in Sources */,
 				AC68E0FF20C22E8A00BFA837 /* AddWalletError.swift in Sources */,
 				AC5E0DE4203BC4B100AF03C7 /* FloatLabelTextField.swift in Sources */,
 				FF9C7DDC208D59EA004687AD /* SettingsBundleHelper.swift in Sources */,
@@ -3037,7 +3027,6 @@
 				ACB5DD93202C09DC00140A09 /* Interactor.swift in Sources */,
 				AC99CF462083DD6A000AE4BD /* MnemonicEnterDerivationPathViewController.swift in Sources */,
 				ACB9118C20266A9C00F14644 /* AssetDetailViewController.swift in Sources */,
-				AC5572FF20A6914300ACDEC9 /* OrderBook.swift in Sources */,
 				94D94CE32084A9380000BBC8 /* ConfirmationResultViewController.swift in Sources */,
 				AC4141FF20356A4D0089861D /* MarketSwipeViewType.swift in Sources */,
 				AC0CD58B20D393F300ABB7BA /* SendCurrentAppWalletDataManager.swift in Sources */,
@@ -3128,7 +3117,6 @@
 				AC31B93A204A4F9000B16155 /* Language.swift in Sources */,
 				AC500BC620B651440073E590 /* SettingSecurityViewController.swift in Sources */,
 				94E185992051455C00D86FFA /* SimpleRespond.swift in Sources */,
-				AC78FC3B20A4B0C300992AE8 /* OrderBookTableViewCell.swift in Sources */,
 				9457416E20D0D23400110CFD /* CancelType.swift in Sources */,
 				AC31B961204A8E4F00B16155 /* MnemonicWords.swift in Sources */,
 				AC3756662038CD7E00AADC60 /* SetupNavigationController.swift in Sources */,

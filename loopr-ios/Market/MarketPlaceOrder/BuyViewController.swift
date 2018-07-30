@@ -636,18 +636,18 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     func setResultOfPrice(with tag: Int) {
         var text: String = ""
         let market = PlaceOrderDataManager.shared.market.tradingPair.description
-        LoopringAPIRequest.getDepth(market: market, length: 1) { (depth, error) in
-            guard depth != nil && error == nil else { return }
+        LoopringAPIRequest.getDepths(market: market, length: 1) { (buyDepths, sellDepths, error) in
+            guard buyDepths != nil && sellDepths != nil && error == nil else { return }
             switch tag {
             case 0: // custom
                 text = self.customerValue
             case 1: // sell
-                if depth!.sell.count > 0 {
-                    text = depth!.sell[0].unit
+                if sellDepths!.count > 0 {
+                    text = sellDepths![0].unit
                 }
             case 2: // buy
-                if depth!.buy.count > 0 {
-                    text = depth!.buy[0].unit
+                if buyDepths!.count > 0 {
+                    text = buyDepths![0].unit
                 }
             case 3: // market
                 let pair = PlaceOrderDataManager.shared.market.description

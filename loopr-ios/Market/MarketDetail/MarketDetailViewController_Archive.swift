@@ -15,8 +15,8 @@ class MarketDetailViewController_Archive: UIViewController, UITableViewDelegate,
 
     var market: Market!
     var trends: [Trend]?
-    var sells: [OrderBook] = []
-    var buys: [OrderBook] = []
+    var sells: [Depth] = []
+    var buys: [Depth] = []
     
     @IBOutlet weak var tableView: UITableView!
     private let refreshControl = UIRefreshControl()
@@ -102,18 +102,6 @@ class MarketDetailViewController_Archive: UIViewController, UITableViewDelegate,
         OrderDataManager.shared.getOrdersFromServer(completionHandler: { _, _ in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-            }
-        })
-
-        OrderBookDataManager.shared.getOrderBookFromServer(market: market.name, completionHandler: { sells, buys, _ in
-            self.sells = sells
-            self.buys = buys
-            DispatchQueue.main.async {
-                if self.isLaunching {
-                    self.isLaunching = false
-                }
-                self.tableView.reloadData()
-                self.refreshControl.endRefreshing()
             }
         })
     }
@@ -314,9 +302,9 @@ class MarketDetailViewController_Archive: UIViewController, UITableViewDelegate,
             }
 
         } else if indexPath.section == 2 {
-            return OrderBookTableViewCell.getHeight()
+            return 0 // OrderBookTableViewCell.getHeight()
         } else if indexPath.section == 3 {
-            return OrderBookTableViewCell.getHeight()
+            return 0 // OrderBookTableViewCell.getHeight()
         } else if indexPath.section == 4 {
             return OrderTableViewCell.getHeight()
         } else if indexPath.section == 5 {
@@ -362,30 +350,6 @@ class MarketDetailViewController_Archive: UIViewController, UITableViewDelegate,
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
             return cell!
-        } else if indexPath.section == 2 {
-            var cell = tableView.dequeueReusableCell(withIdentifier: OrderBookTableViewCell.getCellIdentifier()) as? OrderBookTableViewCell
-            if cell == nil {
-                let nib = Bundle.main.loadNibNamed("OrderBookTableViewCell", owner: self, options: nil)
-                cell = nib![0] as? OrderBookTableViewCell
-            }
-            cell?.selectionStyle = .none
-            let order = sells[indexPath.row]
-            cell?.orderBook = order
-            cell?.update()
-            return cell!
-
-        } else if indexPath.section == 3 {
-            var cell = tableView.dequeueReusableCell(withIdentifier: OrderBookTableViewCell.getCellIdentifier()) as? OrderBookTableViewCell
-            if cell == nil {
-                let nib = Bundle.main.loadNibNamed("OrderBookTableViewCell", owner: self, options: nil)
-                cell = nib![0] as? OrderBookTableViewCell
-            }
-            cell?.selectionStyle = .none
-            let order = buys[indexPath.row]
-            cell?.orderBook = order
-            cell?.update()
-            return cell!
-            
         } else if indexPath.section == 4 {
             let screenSize: CGRect = UIScreen.main.bounds
             self.blurVisualEffectView.frame = screenSize

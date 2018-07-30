@@ -10,6 +10,8 @@ import UIKit
 
 class MarketDetailTradeHistoryViewController: UIViewController {
 
+    var market: Market!
+
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {

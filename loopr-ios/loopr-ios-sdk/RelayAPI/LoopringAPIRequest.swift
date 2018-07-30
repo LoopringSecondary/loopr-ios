@@ -112,7 +112,7 @@ class LoopringAPIRequest {
     }
 
     // READY
-    static func getDepth(market: String, length: UInt, completionHandler: @escaping (_ depth: Depth?, _ error: Error?) -> Void) {
+    static func getDepths(market: String, length: UInt, completionHandler: @escaping (_ buyDepths: [Depth]?, _ sellDepths: [Depth]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getDepth"
         body["params"] = [["delegateAddress": RelayAPIConfiguration.delegateAddress, "market": market, "length": length]]
@@ -121,15 +121,30 @@ class LoopringAPIRequest {
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
-                completionHandler(nil, error)
+                completionHandler(nil, nil, error)
                 return
             }
+            
+            var buyDepths: [Depth] = []
+            var sellDepths: [Depth] = []
+            
             let json = JSON(data)
             let offerData = json["result"]["depth"]
-            let buyContent = offerData["buy"].arrayObject as! [[String]]
-            let sellContent = offerData["sell"].arrayObject as! [[String]]
-            let depth = Depth(buyOrders: buyContent, sellOrders: sellContent)
-            completionHandler(depth, nil)
+            let buyContents = offerData["buy"].arrayObject as! [[String]]
+            for buyContent in buyContents {
+                if let depth = Depth(market: market, content: buyContent) {
+                    buyDepths.append(depth)
+                }
+            }
+            
+            let sellContents = offerData["sell"].arrayObject as! [[String]]
+            for sellContent in sellContents {
+                if let depth = Depth(market: market, content: sellContent) {
+                    sellDepths.append(depth)
+                }
+            }
+            
+            completionHandler(buyDepths, sellDepths, nil)
         }
     }
 

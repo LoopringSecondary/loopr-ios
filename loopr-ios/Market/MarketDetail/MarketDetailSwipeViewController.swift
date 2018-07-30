@@ -97,7 +97,9 @@ class MarketDetailSwipeViewController: SwipeViewController {
         types = ["Depth", "Trade"]
         
         let vc1 = MarketDetailDepthViewController()
+        vc1.market = market
         let vc2 = MarketDetailTradeHistoryViewController()
+        vc2.market = market
         viewControllers = [vc1, vc2]
 
         if Themes.isDark() {

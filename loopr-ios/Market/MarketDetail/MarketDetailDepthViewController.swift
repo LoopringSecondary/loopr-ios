@@ -10,6 +10,8 @@ import UIKit
 
 class MarketDetailDepthViewController: UIViewController {
 
+    var market: Market!
+
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -20,11 +22,19 @@ class MarketDetailDepthViewController: UIViewController {
         
         tableView.separatorStyle = .none
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        
+        getDataFromRelay()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func getDataFromRelay() {
+        DepthDataManager.shared.getDepthFromServer(market: market.name, completionHandler: { sells, buys, _ in
+            
+        })
     }
 
 }
