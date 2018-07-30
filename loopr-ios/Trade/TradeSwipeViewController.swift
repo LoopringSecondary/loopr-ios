@@ -15,7 +15,7 @@ class TradeSwipeViewController: SwipeViewController {
     
     private var viewControllers: [UIViewController] = []
     
-    var options = SwipeViewOptions()
+    var options = SwipeViewOptions.getDefault()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,6 @@ class TradeSwipeViewController: SwipeViewController {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.black
         }
-        options.swipeTabView.underlineView.height = 2
         swipeView.reloadData(options: options, default: swipeView.currentIndex)
     }
     
@@ -51,13 +50,6 @@ class TradeSwipeViewController: SwipeViewController {
         for viewController in viewControllers {
             self.addChildViewController(viewController)
         }
-        
-        options.swipeTabView.height = 44
-        options.swipeTabView.underlineView.height = 1
-        options.swipeTabView.underlineView.margin = 20
-        options.swipeTabView.itemView.font = FontConfigManager.shared.getCharactorFont()
-        options.swipeContentScrollView.isScrollEnabled = false
-        options.swipeTabView.style = .segmented
         swipeView.reloadData(options: options)
     }
     

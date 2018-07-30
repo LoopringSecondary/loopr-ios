@@ -58,7 +58,7 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
         
         let baseViewBuy = UIView(frame: CGRect(x: 15, y: 10, width: (screenWidth - 15*2 - 5)*0.5, height: 30))
         baseViewBuy.theme_backgroundColor = GlobalPicker.cardBackgroundColor
-        baseViewBuy.roundCorners([.topLeft], radius: 6)
+        baseViewBuy.round(corners: [.topLeft], radius: 6)
         headerView.addSubview(baseViewBuy)
         
         let label1 = UILabel(frame: CGRect(x: 10, y: 0, width: labelWidth, height: 30))
@@ -77,7 +77,7 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
         
         let baseViewSell = UIView(frame: CGRect(x: baseViewBuy.frame.maxX+5, y: baseViewBuy.frame.minY, width: baseViewBuy.width, height: baseViewBuy.height))
         baseViewSell.theme_backgroundColor = GlobalPicker.cardBackgroundColor
-        baseViewSell.roundCorners([.topRight], radius: 6)
+        baseViewSell.round(corners: [.topRight], radius: 6)
         headerView.addSubview(baseViewSell)
         
         let label3 = UILabel(frame: CGRect(x: 10, y: 0, width: labelWidth, height: 30))
@@ -124,11 +124,11 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
         cell?.update()
         
         if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
-            cell?.baseViewBuy.roundCorners([.bottomLeft], radius: 6)
-            cell?.baseViewSell.roundCorners([.bottomRight], radius: 6)
+            cell?.baseViewBuy.round(corners: [.bottomLeft], radius: 6)
+            cell?.baseViewSell.round(corners: [.bottomRight], radius: 6)
         } else {
-            cell?.baseViewBuy.roundCorners([], radius: 0)
-            cell?.baseViewSell.roundCorners([], radius: 0)
+            cell?.baseViewBuy.round(corners: [], radius: 0)
+            cell?.baseViewSell.round(corners: [], radius: 0)
         }
 
         return cell!

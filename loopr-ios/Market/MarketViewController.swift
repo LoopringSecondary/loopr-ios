@@ -219,7 +219,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         let baseView = UIView(frame: CGRect(x: 15, y: 10, width: screenWidth - 15*2, height: 30))
         baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
-        baseView.roundCorners([.topLeft, .topRight], radius: 6)
+        baseView.round(corners: [.topLeft, .topRight], radius: 6)
         headerView.addSubview(baseView)
 
         let labelWidth = (view.frame.size.width-20*2)/3
@@ -279,9 +279,9 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell?.update()
         
         if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
-            cell?.baseView.roundCorners([.bottomLeft, .bottomRight], radius: 6)
+            cell?.baseView.round(corners: [.bottomLeft, .bottomRight], radius: 6)
         } else {
-            cell?.baseView.roundCorners([], radius: 0)
+            cell?.baseView.round(corners: [], radius: 0)
         }
         return cell!
     }
