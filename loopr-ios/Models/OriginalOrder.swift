@@ -58,8 +58,8 @@ class OriginalOrder {
         self.delegate = json["delegateAddress"].stringValue
         self.market = json["market"].stringValue
         self.address = getAddress(json: json)
-        self.tokenBuy = getToken(json["tokenB"].stringValue)
-        self.tokenSell = getToken(json["tokenS"].stringValue)
+        self.tokenBuy = OriginalOrder.getToken(json["tokenB"].stringValue)
+        self.tokenSell = OriginalOrder.getToken(json["tokenS"].stringValue)
         let amountS = json["amountS"].stringValue
         self.amountSell = Asset.getAmount(of: self.tokenSell, fromWeiAmount: amountS) ?? 0.0
         let amountB = json["amountB"].stringValue
@@ -111,7 +111,7 @@ class OriginalOrder {
         return result
     }
     
-    func getToken(_ address: String) -> String {
+    class func getToken(_ address: String) -> String {
         var result: String = address
         if address.isHex() {
             if let token = TokenDataManager.shared.getTokenByAddress(address) {

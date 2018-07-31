@@ -59,26 +59,16 @@ class LoopringAPIRequestTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 10.0)
     }
-    
-    func testGetOrderBook() {
-        let expectation = XCTestExpectation()
-        OrderBookDataManager.shared.getOrderBookFromServer(market: "lrc-weth", completionHandler: { (buys, sells, error)  in
-            XCTAssertNotNil(buys)
-            XCTAssertNotEqual(buys.count, 0)
-            expectation.fulfill()
-        })
-        wait(for: [expectation], timeout: 10.0)
-    }
-    
+
     func testGetDepth() {
         let expectation = XCTestExpectation()
-        LoopringAPIRequest.getDepth(market: "LRC-WETH", length: 10) { depth, error in
+        LoopringAPIRequest.getDepths(market: "LRC-WETH", length: 10) { buyDepths, sellDepths, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 return
             }
-            XCTAssertNotNil(depth)
-            XCTAssertNotEqual(depth!.sell.count, 0)
+            XCTAssertNotNil(buyDepths)
+            XCTAssertNotNil(sellDepths)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)
@@ -108,6 +98,22 @@ class LoopringAPIRequestTests: XCTestCase {
             }
             XCTAssertNotNil(trades)
             XCTAssertNotEqual(trades!.count, 0)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testGetLatestFills() {
+        let expectation = XCTestExpectation()
+        
+        LoopringAPIRequest.getLatestFills(market: "LRC-WETH") { orderFills, error in
+            guard error == nil else {
+                print("error=\(String(describing: error))")
+                XCTFail()
+                return
+            }
+            XCTAssertNotNil(orderFills)
+            XCTAssertNotEqual(orderFills!.count, 0)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)

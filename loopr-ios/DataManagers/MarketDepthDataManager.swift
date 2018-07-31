@@ -11,16 +11,15 @@ import UIKit
 
 // Get a list of orders for a market and group them by price.
 // It's not binding to an address.
-class DepthDataManager {
+class MarketDepthDataManager {
 
-    static let shared = DepthDataManager()
+    static let shared = MarketDepthDataManager()
 
-    let itemCount = UIDevice.current.iPhoneX ? 5 : 4
+    var market: String?
     private var sells: [Depth] = []
     private var buys: [Depth] = []
     
     private init() {
-        
     }
     
     func getSells() -> [Depth] {
@@ -31,11 +30,11 @@ class DepthDataManager {
         return buys
     }
 
-    // TODO: Not sure how orders are sorted in JSON RPC API. So send two requests.
     func getDepthFromServer(market: String, completionHandler: @escaping (_ buyDepths: [Depth], _ sellDepths: [Depth], _ error: Error?) -> Void) {
 
         LoopringAPIRequest.getDepths(market: market, length: 20) { (buyDepths, sellDepths, error) in
             guard buyDepths != nil && sellDepths != nil && error == nil else { return }
+            self.market = market
             self.buys = buyDepths!
             self.sells = sellDepths!
             completionHandler(self.buys, self.sells, nil)

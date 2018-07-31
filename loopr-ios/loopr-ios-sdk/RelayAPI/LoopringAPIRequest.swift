@@ -203,8 +203,8 @@ class LoopringAPIRequest {
         }
     }
     
-    // READY
-    static func getFills(market: String, owner: String?, orderHash: String?, ringHash: String?, pageIndex: UInt = 1, pageSize: UInt = 20, completionHandler: @escaping (_ trades: [Trade]?, _ error: Error?) -> Void) {
+    // Need update
+    static func getFills(market: String, owner: String?, orderHash: String?, ringHash: String?, pageIndex: UInt = 1, pageSize: UInt = 20, completionHandler: @escaping (_ trades: [Order]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getFills"
         body["params"] = [["market": market, "delegateAddress": RelayAPIConfiguration.delegateAddress, "owner": owner, "orderHash": orderHash, "ringHash": ringHash]]
@@ -214,14 +214,45 @@ class LoopringAPIRequest {
                 print("error=\(String(describing: error))")
                 return
             }
-            var trades: [Trade] = []
+            // var trades: [Trade] = []
+            var orders: [Order] = []
             let json = JSON(data)
             let offerData = json["result"]["data"]
             for subJson in offerData.arrayValue {
-                let trade = Trade(json: subJson)
-                trades.append(trade)
+                let originalOrderJson = subJson["originalOrder"]
+                let originalOrder = OriginalOrder(json: originalOrderJson)
+                let orderStatus = OrderStatus(rawValue: subJson["status"].stringValue) ?? OrderStatus.unknown
+                let dealtAmountB = subJson["dealtAmountB"].stringValue
+                let dealtAmountS = subJson["dealtAmountS"].stringValue
+                let order = Order(originalOrder: originalOrder, orderStatus: orderStatus, dealtAmountB: dealtAmountB, dealtAmountS: dealtAmountS)
+                orders.append(order)
             }
-            completionHandler(trades, nil)
+            print(orders.count)
+            
+            completionHandler(orders, nil)
+        }
+    }
+    
+    // READY
+    static func getLatestFills(market: String, side: String = "buy", completionHandler: @escaping (_ orderFills: [OrderFill]?, _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_getLatestFills"
+        body["params"] = [["market": market, "delegateAddress": RelayAPIConfiguration.delegateAddress, "side": side]]
+        body["id"] = JSON(UUID().uuidString)
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            var orderFills: [OrderFill] = []
+            let json = JSON(data)
+            let offerData = json["result"]
+            for subJson in offerData.arrayValue {
+                let orderFill = OrderFill(market: market, json: subJson)
+                orderFills.append(orderFill)
+            }
+            
+            completionHandler(orderFills, nil)
         }
     }
     
