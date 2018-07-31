@@ -248,16 +248,7 @@
     </objects>
     <resources>
         <image name="Info" width="16" height="16"/>
-        <image name="Trade-arrow-dark" width="23" height="11"/>
-        <namedColor name="Color-dark2">
-            <color red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="Color-dark2">
-            <color red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="Color-dark2">
-            <color red="0.16078431372549021" green="0.16078431372549021" blue="0.16078431372549021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
+        <image name="Trade-arrow-dark" width="24" height="24"/>
         <namedColor name="Color-dark2">
             <color red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TradeReviewViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
-                <outlet property="scrollView" destination="Xcd-bp-fcH" id="DUv-Nr-Asg"/>
                 <outlet property="shareOrderButton" destination="Iz8-9F-L3X" id="ndf-4D-o4l"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -35,17 +33,10 @@
                         <action selector="pressedShareButton:" destination="-1" eventType="touchUpInside" id="cL7-DE-sMh"/>
                     </connections>
                 </button>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xcd-bp-fcH">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="590"/>
-                </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Xcd-bp-fcH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7Ps-yR-hr6"/>
-                <constraint firstItem="Xcd-bp-fcH" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="N7r-O6-ypk"/>
-                <constraint firstItem="Xcd-bp-fcH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hmn-K1-wbN"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Iz8-9F-L3X" secondAttribute="bottom" constant="15" id="hzu-Ig-LDi"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Xcd-bp-fcH" secondAttribute="bottom" constant="77" id="kw5-Xt-ag0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Iz8-9F-L3X" secondAttribute="trailing" constant="15" id="qXy-RL-cD6"/>
                 <constraint firstItem="Iz8-9F-L3X" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="tR7-Df-2fT"/>
             </constraints>
