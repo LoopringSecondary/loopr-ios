@@ -296,16 +296,21 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     func pushController() {
         if let order = constructMaker() {
-            preserveMaker(order: order)
-            TradeDataManager.shared.isTaker = false
-            self.totalMaskView.alpha = 0.75
-            let vc = TradeConfirmationViewController()
+//            preserveMaker(order: order)
+//            TradeDataManager.shared.isTaker = false
+//            self.totalMaskView.alpha = 0.75
+//            let vc = TradeConfirmationViewController()
+//            vc.order = order
+//            vc.dismissClosure = {
+//                self.totalMaskView.alpha = 0
+//            }
+//            vc.parentNavController = self.navigationController
+//            self.present(vc, animated: true, completion: nil)
+            
+            let vc = TradeReviewViewController()
             vc.order = order
-            vc.dismissClosure = {
-                self.totalMaskView.alpha = 0
-            }
-            vc.parentNavController = self.navigationController
-            self.present(vc, animated: true, completion: nil)
+            self.navigationController?.pushViewController(vc, animated: true)
+            
         }
     }
     

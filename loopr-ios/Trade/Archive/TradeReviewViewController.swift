@@ -9,18 +9,22 @@
 import UIKit
 
 class TradeReviewViewController: UIViewController {
-
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var shareOrderButton: UIButton!
-
+    
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var tokenS: UIView!
+    @IBOutlet weak var tokenB: UIView!
+    @IBOutlet weak var arrowRightImageView: UIImageView!
+    @IBOutlet weak var qrcodeImageView: UIImageView!
+    @IBOutlet weak var statusTipLabel: UILabel!
+    @IBOutlet weak var statusInfoLabel: UILabel!
+    @IBOutlet weak var validTipLabel: UILabel!
+    @IBOutlet weak var validInfoLabel: UILabel!
+    
     var tokenSView: TradeTokenView!
     var tokenBView: TradeTokenView!
-    var arrowRightImageView: UIImageView = UIImageView()
-    var qrcodeImageView: UIImageView!
+    
     // To display QR code
     var qrcodeImageCIImage: CIImage!
-    
-    // To share QR code
     var qrcodeImage: UIImage!
 
     var order: OriginalOrder?
@@ -30,40 +34,26 @@ class TradeReviewViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         setBackButton()
-        
-        // TODO: Review or Confirmation?
+        setupShareButton()
+        self.view.theme_backgroundColor = GlobalPicker.backgroundColor
         self.navigationItem.title = LocalizedString("Order Detail", comment: "")
         
-        shareOrderButton.title = LocalizedString("Share Order", comment: "")
-        shareOrderButton.setupSecondary()
-
-        // Setup UI in the scroll view
-        let screensize: CGRect = UIScreen.main.bounds
-        let screenWidth = screensize.width
-        // let screenHeight = screensize.height
+        // Token views
+        tokenSView = TradeTokenView(frame: tokenS.frame)
+        view.addSubview(tokenSView)
+        tokenBView = TradeTokenView(frame: tokenB.frame)
+        view.addSubview(tokenBView)
         
-        let paddingY: CGFloat = 20
-        let paddingTop: CGFloat = 30
-        let padding: CGFloat = 15
-
-        // QR code
-        let qrCodeWidth: CGFloat = screenWidth*0.53*UIStyleConfig.scale
-        qrcodeImageView = UIImageView(frame: CGRect(center: CGPoint(x: screenWidth/2, y: paddingTop + qrCodeWidth*0.5), size: CGSize(width: qrCodeWidth, height: qrCodeWidth)))
-        scrollView.addSubview(qrcodeImageView)
+        // Labels
+        statusTipLabel.setTitleCharFont()
+        statusTipLabel.text = LocalizedString("Status", comment: "")
+        statusInfoLabel.setTitleDigitFont()
         
-        let tokenViewMinY: CGFloat = qrcodeImageView.frame.maxY + paddingY
-        tokenSView = TradeTokenView(frame: CGRect(x: 10, y: tokenViewMinY, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
-        scrollView.addSubview(tokenSView)
+        validTipLabel.setTitleCharFont()
+        validTipLabel.text = LocalizedString("Time to Live", comment: "")
+        validInfoLabel.setTitleDigitFont()
         
-        tokenBView = TradeTokenView(frame: CGRect(x: (screenWidth+10)/2, y: tokenViewMinY, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
-        scrollView.addSubview(tokenBView)
-        
-        arrowRightImageView = UIImageView(frame: CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY), size: CGSize(width: 32*UIStyleConfig.scale, height: 32*UIStyleConfig.scale)))
-        arrowRightImageView.image = UIImage.init(named: "Arrow-right-black")
-        scrollView.addSubview(arrowRightImageView)
-
-        scrollView.contentSize = CGSize(width: screenWidth, height: tokenBView.frame.maxY + padding)
-        
+        // Receive order response
         NotificationCenter.default.addObserver(self, selector: #selector(orderResponseReceivedNotification), name: .orderResponseReceived, object: nil)
     }
 
@@ -81,16 +71,35 @@ class TradeReviewViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let order = self.order else { return }
-        // self.navigationController?.isNavigationBarHidden = false
+        
         tokenSView.update(type: .sell, symbol: order.tokenSell, amount: order.amountSell)
         tokenBView.update(type: .buy, symbol: order.tokenBuy, amount: order.amountBuy)
+        
         generateQRCode(order: order)
         qrcodeImageView.image = qrcodeImage
-        // Remove the blur effect
         let scaleX = qrcodeImageView.frame.size.width / qrcodeImageCIImage.extent.size.width
         let scaleY = qrcodeImageView.frame.size.height / qrcodeImageCIImage.extent.size.height
         let transformedImage = qrcodeImageCIImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
         qrcodeImageView.image = UIImage.init(ciImage: transformedImage)
+        
+        statusInfoLabel.textColor = .success
+        statusInfoLabel.text = LocalizedString("Open", comment: "")
+        let since = DateUtil.convertToDate(UInt(order.validSince), format: "MM-dd HH:mm")
+        let until = DateUtil.convertToDate(UInt(order.validUntil), format: "MM-dd HH:mm")
+        validInfoLabel.text = "\(since) ~ \(until)"
+    }
+    
+    func setupShareButton() {
+        let shareButton = UIButton(type: UIButtonType.custom)
+        shareButton.setImage(UIImage(named: "ShareButtonImage"), for: .normal)
+        shareButton.setImage(UIImage(named: "ShareButtonImage")?.alpha(0.3), for: .highlighted)
+        shareButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 8, bottom: 0, right: -8)
+        shareButton.addTarget(self, action: #selector(pressedShareButton(_:)), for: UIControlEvents.touchUpInside)
+        shareButton.frame = CGRect(x: 0, y: 0, width: 23, height: 23)
+        let shareBarButton = UIBarButtonItem(customView: shareButton)
+        
+        self.navigationItem.rightBarButtonItem = shareBarButton
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     func generateQRCode(order: OriginalOrder) {
