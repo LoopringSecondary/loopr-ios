@@ -13,116 +13,80 @@ import NotificationBannerSwift
 
 class TradeConfirmationViewController: UIViewController {
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var tokenSell: UIView!
+    @IBOutlet weak var tokenBuy: UIView!
+    @IBOutlet weak var arrowRightImageView: UIImageView!
+    
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var priceValueLabel: UILabel!
+    @IBOutlet weak var LRCFeeLabel: UILabel!
+    @IBOutlet weak var LRCFeeValueLabel: UILabel!
+    @IBOutlet weak var marginSplitLabel: UILabel!
+    @IBOutlet weak var marginSplitValueLabel: UILabel!
+    @IBOutlet weak var validLabel: UILabel!
+    @IBOutlet weak var validValueLabel: UILabel!
+    @IBOutlet weak var gasInfoImage: UIImageView!
+    @IBOutlet weak var gasTipLabel: UILabel!
     @IBOutlet weak var placeOrderButton: UIButton!
     
-    // TODO: put the following UILabel and UIView to a UIView?
-    var marginSplitLabel: UILabel = UILabel()
-    var marginSplitValueLabel: UILabel = UILabel()
-    
-    var LRCFeeLabel: UILabel = UILabel()
-    var LRCFeeValueLabel: UILabel = UILabel()
-    var LRCFeeUnderLine: UIView = UIView()
-    
-    var priceLabel: UILabel = UILabel()
-    var priceValueLabel: UILabel = UILabel()
-    var priceTipLabel: UILabel = UILabel()
-    var priceUnderLine: UIView = UIView()
     var tokenSView: TradeTokenView!
     var tokenBView: TradeTokenView!
-    var arrowRightImageView: UIImageView = UIImageView()
     
+    var message: String?
     var order: OriginalOrder?
     var verifyInfo: [String: Double]?
-    var message: String?
+    var dismissClosure: (() -> Void)?
+    var parentNavController: UINavigationController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = LocalizedString("Confirmation", comment: "")
-        setBackButton()
+        self.modalPresentationStyle = .custom
+        self.view.theme_backgroundColor = GlobalPicker.backgroundColor
         
-        // Token View
-        let paddingTop: CGFloat = 100
-        let padding: CGFloat = 15
-        let rowHeight: CGFloat = 40
-        let rowPadding: CGFloat = 10
-        let screensize: CGRect = UIScreen.main.bounds
-        let screenWidth = screensize.width
-        let screenHeight = screensize.height
+        containerView.applyShadow(withColor: .black)
         
-        tokenSView = TradeTokenView(frame: CGRect(x: 10, y: paddingTop, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
-        scrollView.addSubview(tokenSView)
-        
-        tokenBView = TradeTokenView(frame: CGRect(x: (screenWidth+10)/2, y: paddingTop, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
-        scrollView.addSubview(tokenBView)
-        
-        arrowRightImageView = UIImageView(frame: CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY), size: CGSize(width: 32*UIStyleConfig.scale, height: 32*UIStyleConfig.scale)))
-        arrowRightImageView.image = UIImage.init(named: "Arrow-right-black")
-        scrollView.addSubview(arrowRightImageView)
+        // TokenView
+        tokenSView = TradeTokenView(frame: tokenSell.frame)
+        tokenBView = TradeTokenView(frame: tokenBuy.frame)
+        containerView.addSubview(tokenSView)
+        containerView.addSubview(tokenBView)
         
         // Price label
         priceLabel.text = LocalizedString("Price", comment: "")
-        priceLabel.textColor = UIColor.black
-        priceLabel.setTitleDigitFont()
-        priceLabel.frame = CGRect(x: padding, y: screenHeight * 0.57, width: 160, height: rowHeight)
-        scrollView.addSubview(priceLabel)
-        
-        priceTipLabel.text = "(" + LocalizedString("Irrational", comment: "") + ")"
-        priceTipLabel.textColor = .red
-        priceTipLabel.textAlignment = .right
-        priceTipLabel.setTitleDigitFont()
-        priceTipLabel.frame = CGRect(x: screenWidth - padding - 100, y: priceLabel.frame.minY, width: 100, height: rowHeight)
-        priceTipLabel.isHidden = true
-        scrollView.addSubview(priceTipLabel)
-        
-        priceValueLabel.textColor = UIColor.black
-        priceValueLabel.textAlignment = .right
+        priceLabel.setTitleCharFont()
         priceValueLabel.setTitleDigitFont()
-        priceValueLabel.frame = CGRect(x: priceTipLabel.frame.minX - padding - 200, y: priceLabel.frame.minY, width: 200, height: rowHeight)
-        scrollView.addSubview(priceValueLabel)
-        
-        priceUnderLine.frame = CGRect(x: padding, y: priceLabel.frame.maxY - 5, width: screenWidth - padding * 2, height: 1)
-        priceUnderLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
-        scrollView.addSubview(priceUnderLine)
         
         // Trading Fee
         LRCFeeLabel.text = LocalizedString("Trading Fee", comment: "")
-        LRCFeeLabel.textColor = UIColor.black
-        LRCFeeLabel.setTitleDigitFont()
-        LRCFeeLabel.frame = CGRect(x: padding, y: priceValueLabel.frame.maxY + rowPadding, width: 160, height: rowHeight)
-        scrollView.addSubview(LRCFeeLabel)
-        
-        LRCFeeValueLabel.textColor = UIColor.black
-        LRCFeeValueLabel.textAlignment = .right
+        LRCFeeLabel.setTitleCharFont()
         LRCFeeValueLabel.setTitleDigitFont()
-        LRCFeeValueLabel.frame = CGRect(x: screenWidth - padding - 160, y: LRCFeeLabel.frame.minY, width: 160, height: rowHeight)
-        scrollView.addSubview(LRCFeeValueLabel)
-        
-        LRCFeeUnderLine.frame = CGRect(x: padding, y: LRCFeeLabel.frame.maxY - 5, width: screenWidth - padding * 2, height: 1)
-        LRCFeeUnderLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
-        scrollView.addSubview(LRCFeeUnderLine)
         
         // Margin Split
         marginSplitLabel.text = LocalizedString("Margin Split", comment: "")
-        marginSplitLabel.textColor = UIColor.black
-        marginSplitLabel.setTitleDigitFont()
-        marginSplitLabel.frame = CGRect(x: padding, y: LRCFeeLabel.frame.maxY + rowPadding, width: 160, height: rowHeight)
-        scrollView.addSubview(marginSplitLabel)
-        
+        marginSplitLabel.setTitleCharFont()
         marginSplitValueLabel.text = SettingDataManager.shared.getMarginSplitDescription()
-        marginSplitValueLabel.textColor = UIColor.black
-        marginSplitValueLabel.textAlignment = .right
         marginSplitValueLabel.setTitleDigitFont()
-        marginSplitValueLabel.frame = CGRect(x: screenWidth - padding - 160, y: marginSplitLabel.frame.minY, width: 160, height: rowHeight)
-        scrollView.addSubview(marginSplitValueLabel)
         
-        scrollView.contentSize = CGSize(width: screenWidth, height: marginSplitLabel.frame.maxY + padding)
+        // TTL label
+        validLabel.setTitleCharFont()
+        validLabel.text = LocalizedString("Time to Live", comment: "")
+        validValueLabel.setTitleDigitFont()
+        
+        // Gas label
+        gasTipLabel.setSubTitleCharFont()
+        gasTipLabel.text = LocalizedString("GAS_TIP", comment: "")
         
         // Button
         placeOrderButton.setTitle(LocalizedString("Place Order", comment: ""), for: .normal)
-        placeOrderButton.setupSecondary()
+        placeOrderButton.setupPrimary(height: 44)
+        
+        // Tap gesture
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        tap.delegate = self
+        view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -137,9 +101,29 @@ class TradeConfirmationViewController: UIViewController {
         }
     }
     
+    func close() {
+        if let closure = self.dismissClosure {
+            closure()
+        }
+        self.dismiss(animated: true, completion: {
+        })
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        close()
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        let location = touch.location(in: nil)
+        if containerView.frame.contains(location) {
+            return false
+        }
+        return true
+    }
+    
     func updateLabels(order: OriginalOrder) {
-        tokenSView.update(title: LocalizedString("You are selling", comment: ""), symbol: order.tokenSell, amount: order.amountSell)
-        tokenBView.update(title: LocalizedString("You are buying", comment: ""), symbol: order.tokenBuy, amount: order.amountBuy)
+        tokenSView.update(type: .sell, symbol: order.tokenSell, amount: order.amountSell)
+        tokenBView.update(type: .buy, symbol: order.tokenBuy, amount: order.amountBuy)
         let value = order.amountSell / order.amountBuy
         priceValueLabel.text = "\(value.withCommas()) \(order.market)"
         priceValueLabel.frame = CGRect(x: UIScreen.main.bounds.width - 15 - 200, y: priceLabel.frame.minY, width: 200, height: 40)
@@ -148,6 +132,9 @@ class TradeConfirmationViewController: UIViewController {
             LRCFeeValueLabel.text = "\(order.lrcFee)LRC ≈ \(total)"
         }
         marginSplitValueLabel.text = SettingDataManager.shared.getMarginSplitDescription()
+        let since = DateUtil.convertToDate(UInt(order.validSince), format: "MM-dd HH:mm")
+        let until = DateUtil.convertToDate(UInt(order.validUntil), format: "MM-dd HH:mm")
+        validValueLabel.text = "\(since) ~ \(until)"
     }
     
     @IBAction func pressedPlaceOrderButton(_ sender: UIButton) {

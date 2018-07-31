@@ -375,4 +375,5 @@
 "Trades_in_Market_Detail" = "成交";
 "Custom" = "自定义";
 "Can Buy" = "市值等额";
-"Time to Live" = "订单有效期";
+"Time to Live" = "有效期";
+"GAS_TIP" = "下单时不会消耗油费";

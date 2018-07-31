@@ -14,6 +14,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     // container
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var totalMaskView: UIView!
     
     // TokenS
     @IBOutlet weak var tokenSButton: UIButton!
@@ -250,6 +251,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     }
     
     func present() {
+        self.hideNumericKeyboard()
         let parentView = self.parent!.view!
         parentView.alpha = 0.25
         let vc = TTLViewController()
@@ -296,10 +298,14 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         if let order = constructMaker() {
             preserveMaker(order: order)
             TradeDataManager.shared.isTaker = false
-            let viewController = TradeConfirmationViewController()
-            viewController.order = order
-            viewController.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(viewController, animated: true)
+            self.totalMaskView.alpha = 0.75
+            let vc = TradeConfirmationViewController()
+            vc.order = order
+            vc.dismissClosure = {
+                self.totalMaskView.alpha = 0
+            }
+            vc.parentNavController = self.navigationController
+            self.present(vc, animated: true, completion: nil)
         }
     }
     

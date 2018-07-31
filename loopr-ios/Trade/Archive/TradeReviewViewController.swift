@@ -82,8 +82,8 @@ class TradeReviewViewController: UIViewController {
         super.viewWillAppear(animated)
         guard let order = self.order else { return }
         // self.navigationController?.isNavigationBarHidden = false
-        tokenSView.update(title: "You send", symbol: order.tokenSell, amount: order.amountSell)
-        tokenBView.update(title: "You get", symbol: order.tokenBuy, amount: order.amountBuy)
+        tokenSView.update(type: .sell, symbol: order.tokenSell, amount: order.amountSell)
+        tokenBView.update(type: .buy, symbol: order.tokenBuy, amount: order.amountBuy)
         generateQRCode(order: order)
         qrcodeImageView.image = qrcodeImage
         // Remove the blur effect
