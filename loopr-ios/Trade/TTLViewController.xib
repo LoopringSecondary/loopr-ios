@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TTLViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="closeButton" destination="qwA-Sz-MgG" id="fG7-WD-8MK"/>
+                <outlet property="containerView" destination="DYD-YA-JAG" id="Vkf-nv-Jhf"/>
                 <outlet property="pickerView" destination="Yj8-Zi-UIX" id="Vcv-vz-clP"/>
                 <outlet property="titleLabel" destination="P9e-0x-DHE" id="BMd-cJ-Ak0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

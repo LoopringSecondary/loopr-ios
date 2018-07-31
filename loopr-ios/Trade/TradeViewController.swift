@@ -253,7 +253,11 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         let parentView = self.parent!.view!
         parentView.alpha = 0.25
         let vc = TTLViewController()
-        vc.dismissClosure = { parentView.alpha = 1 }
+        vc.dismissClosure = {
+            parentView.alpha = 1
+            self.intervalUnit = vc.intervalUnit
+            self.intervalValue = vc.intervalValue
+        }
         vc.parentNavController = self.navigationController
         vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
         self.present(vc, animated: true, completion: nil)
