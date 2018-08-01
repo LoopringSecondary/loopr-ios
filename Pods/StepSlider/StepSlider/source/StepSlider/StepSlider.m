@@ -625,6 +625,31 @@ void withoutCAAnimation(withoutAnimationBlock code)
         [self setNeedsLayout];
     }
 }
+    
+- (void)setPercentageValue: (float)percentage
+{
+    CGFloat limitedPosition = percentage * (self.bounds.size.width-maxRadius*2) + maxRadius;
+    
+    withoutCAAnimation(^{
+        self->_sliderCircleLayer.position = CGPointMake(limitedPosition, self->_sliderCircleLayer.position.y);
+        self->_trackLayer.path = [self fillingPath];
+        
+        NSUInteger index = (self.sliderPosition + self->diff) / (self->_trackLayer.bounds.size.width / (self.maxCount - 1));
+        if (self->_index != index) {
+            for (CAShapeLayer *trackCircle in self->_trackCirclesArray) {
+                CGImageRef trackCircleImage = [self trackCircleImage:trackCircle];
+                
+                if (trackCircleImage) {
+                    trackCircle.contents = (__bridge id _Nullable)(trackCircleImage);
+                } else {
+                    trackCircle.fillColor = [self trackCircleColor:trackCircle];
+                }
+            }
+            self->_index = index;
+            [self sendActionsForControlEvents:UIControlEventValueChanged];
+        }
+    });
+}
 
 GENERATE_SETTER(index, NSUInteger, setIndex, [self updateIndex]; [self sendActionsForControlEvents:UIControlEventValueChanged];);
 

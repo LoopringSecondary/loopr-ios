@@ -68,7 +68,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
 
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = GlobalPicker.backgroundColor
-        
+        setBackButton()
+
         // First row: TokenS
         amountSellTextField.delegate = self
         amountSellTextField.tag = 0
@@ -113,6 +114,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         stepSlider.isDotsInteractionEnabled = true
         stepSlider.adjustLabel = true
         containerView.addSubview(stepSlider)
+        // stepSlider.setIndex(3, animated: false)
+        
         
         // Buttons
         hourButton.round(corners: [.topLeft, .bottomLeft], radius: 8)
@@ -159,6 +162,12 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         update()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        // TODO: current solution is to set the initial value here.
+        stepSlider.setPercentageValue(0.1)
+    }
+
     func update(text: String? = nil, color: UIColor? = nil) {
         var message: String = ""
         let tokens = TradeDataManager.shared.tokenS.symbol

@@ -26,7 +26,7 @@ PODS:
   - Starscream (3.0.5)
   - StepSlider (1.2.1)
   - SVProgressHUD (2.2.5)
-  - SwiftLint (0.26.0)
+  - SwiftLint (0.27.0)
   - SwiftTheme (0.4.1)
   - SwiftyMarkdown (0.5.1)
   - TrezorCrypto (0.0.4)
@@ -90,7 +90,7 @@ CHECKOUT OPTIONS:
     :commit: e3ab3e26fafc3688436528f2ca24cc679c7d746e
     :git: https://github.com/shamatar/secp256k1_ios.git
   StepSlider:
-    :commit: 1ed416ed8909ccfe878cc75c331f5ec42080fe7a
+    :commit: 5f7cd11aa76e0575d9827e74c81c9286402df031
     :git: "git@github.com:xiaowheat/StepSlider.git"
 
 SPEC CHECKSUMS:
@@ -114,7 +114,7 @@ SPEC CHECKSUMS:
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
   StepSlider: e1c9b8f3363cf87224e19c000abe9f5146f80dd1
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftLint: f6b83e8d95ee1e91e11932d843af4fdcbf3fc764
+  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
   SwiftTheme: 36d71c4eed4b2c401c782cf036e4586c749a8173
   SwiftyMarkdown: 743af3e87931391bc4836b825fec3d98785b2e3a
   TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803

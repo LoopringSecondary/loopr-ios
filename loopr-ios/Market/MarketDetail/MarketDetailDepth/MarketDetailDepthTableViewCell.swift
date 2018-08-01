@@ -92,6 +92,6 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 33
+        return 32
     }
 }

@@ -83,7 +83,7 @@ class MarketDetailTradeHistoryTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 33
+        return 32
     }
 
 }

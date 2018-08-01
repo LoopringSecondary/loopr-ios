@@ -132,6 +132,13 @@ IB_DESIGNABLE
  */
 - (void)setIndex:(NSUInteger)index animated:(BOOL)animated;
 
+/**
+ *  Set the `percentage` value to the slider.
+ *
+ *  @param percentage    The percentage value, that you wanna to be selected.
+ */
+- (void)setPercentageValue: (float)percentage;
+
 
 /**
  *  Sets the image to use for track circle for the specified state.
