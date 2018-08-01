@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,43 +16,46 @@
             <connections>
                 <outlet property="contentView" destination="3K2-up-9JE" id="cKL-fm-Vfe"/>
                 <outlet property="qrcodeImageView" destination="Jxo-fS-cjo" id="Z5I-ZU-tdP"/>
-                <outlet property="saveToAlbumButton" destination="7NU-nI-gps" id="6Sj-tN-4FF"/>
-                <outlet property="shareOrderButton" destination="Y3x-Na-mqm" id="ojt-P7-poC"/>
+                <outlet property="saveToAlbumButton" destination="7NU-nI-gps" id="DGU-sp-hLV"/>
+                <outlet property="shareOrderButton" destination="mEl-zM-Ijk" id="gA0-za-0XE"/>
+                <outlet property="titleLabel" destination="YBn-Jl-kW1" id="HAR-yo-8YY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="OrderQ">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3K2-up-9JE">
-                    <rect key="frame" x="20" y="103" width="335" height="469.5"/>
+                    <rect key="frame" x="20" y="163.5" width="335" height="420"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jxo-fS-cjo">
-                            <rect key="frame" x="84.5" y="70.5" width="167.5" height="167.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loopr Wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBn-Jl-kW1">
+                            <rect key="frame" x="119.5" y="48" width="96" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qpx-g3-ULm">
+                            <rect key="frame" x="57" y="100" width="220" height="220"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstAttribute="height" constant="220" id="aDF-sn-Itg"/>
+                                <constraint firstAttribute="width" constant="220" id="i4w-bG-gt1"/>
+                            </constraints>
+                        </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jxo-fS-cjo">
+                            <rect key="frame" x="77.5" y="120" width="180" height="180"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="180" id="H8s-EU-i3X"/>
                                 <constraint firstAttribute="width" secondItem="Jxo-fS-cjo" secondAttribute="height" id="yLV-La-av1"/>
                             </constraints>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3x-Na-mqm">
-                            <rect key="frame" x="17.5" y="317" width="301.5" height="47"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NU-nI-gps">
+                            <rect key="frame" x="24" y="346" width="135.5" height="42"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="47" id="9je-5T-M2g"/>
-                            </constraints>
-                            <state key="normal" title="Share the Order">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="pressedShareButton:" destination="-1" eventType="touchUpInside" id="eJ8-l3-F2u"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NU-nI-gps">
-                            <rect key="frame" x="17" y="394.5" width="301.5" height="47"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="47" id="zuf-3t-ySU"/>
+                                <constraint firstAttribute="height" constant="42" id="92L-Mo-hdB"/>
                             </constraints>
                             <state key="normal" title="Save to Album">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,30 +64,66 @@
                                 <action selector="pressedSaveToAlbum:" destination="-1" eventType="touchUpInside" id="1pc-cw-vDr"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEl-zM-Ijk">
+                            <rect key="frame" x="179.5" y="345.5" width="131.5" height="42"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="42" id="Npa-bl-3bd"/>
+                            </constraints>
+                            <state key="normal" title="Copy Wallet Address">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="pressedShareButton:" destination="-1" eventType="touchUpInside" id="Ce1-6Z-D5A"/>
+                            </connections>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" name="Color-dark2"/>
                     <constraints>
-                        <constraint firstItem="7NU-nI-gps" firstAttribute="centerY" secondItem="3K2-up-9JE" secondAttribute="centerY" multiplier="1.78" id="4Gh-Fd-u8s"/>
-                        <constraint firstItem="Jxo-fS-cjo" firstAttribute="top" secondItem="3K2-up-9JE" secondAttribute="centerY" multiplier="0.3" id="7Hf-8L-DqP"/>
-                        <constraint firstItem="Jxo-fS-cjo" firstAttribute="width" secondItem="3K2-up-9JE" secondAttribute="width" multiplier="0.5" id="Cnc-UH-8wg"/>
-                        <constraint firstItem="Jxo-fS-cjo" firstAttribute="centerX" secondItem="3K2-up-9JE" secondAttribute="centerX" id="Kb1-N8-wUp"/>
-                        <constraint firstItem="Y3x-Na-mqm" firstAttribute="width" secondItem="3K2-up-9JE" secondAttribute="width" multiplier="0.9" id="bKo-4L-XEQ"/>
-                        <constraint firstItem="Y3x-Na-mqm" firstAttribute="centerY" secondItem="3K2-up-9JE" secondAttribute="centerY" multiplier="1.45" id="d2C-3p-JTF"/>
-                        <constraint firstItem="7NU-nI-gps" firstAttribute="width" secondItem="3K2-up-9JE" secondAttribute="width" multiplier="0.9" id="jRm-yK-NDN"/>
-                        <constraint firstItem="7NU-nI-gps" firstAttribute="centerX" secondItem="3K2-up-9JE" secondAttribute="centerX" id="keE-A3-5n0"/>
-                        <constraint firstItem="Y3x-Na-mqm" firstAttribute="centerX" secondItem="3K2-up-9JE" secondAttribute="centerX" id="nVL-qG-I8h"/>
+                        <constraint firstItem="7NU-nI-gps" firstAttribute="leading" secondItem="3K2-up-9JE" secondAttribute="leading" constant="24" id="5WT-42-Wsd"/>
+                        <constraint firstAttribute="bottom" secondItem="7NU-nI-gps" secondAttribute="bottom" constant="32" id="5of-9T-7IT"/>
+                        <constraint firstAttribute="height" constant="420" id="BMm-wP-MQi"/>
+                        <constraint firstItem="Jxo-fS-cjo" firstAttribute="centerY" secondItem="3K2-up-9JE" secondAttribute="centerY" id="Cfz-TQ-nlp"/>
+                        <constraint firstItem="qpx-g3-ULm" firstAttribute="centerX" secondItem="Jxo-fS-cjo" secondAttribute="centerX" id="Clf-wr-XNQ"/>
+                        <constraint firstAttribute="bottom" secondItem="mEl-zM-Ijk" secondAttribute="bottom" constant="32" id="JCB-oz-ldm"/>
+                        <constraint firstItem="YBn-Jl-kW1" firstAttribute="top" secondItem="3K2-up-9JE" secondAttribute="top" constant="48" id="Qhv-Z3-Xjo"/>
+                        <constraint firstItem="qpx-g3-ULm" firstAttribute="centerY" secondItem="Jxo-fS-cjo" secondAttribute="centerY" id="SbS-Ic-3Ha"/>
+                        <constraint firstItem="mEl-zM-Ijk" firstAttribute="width" secondItem="3K2-up-9JE" secondAttribute="width" multiplier="0.5" constant="-36" id="Z4N-s9-OhJ"/>
+                        <constraint firstItem="7NU-nI-gps" firstAttribute="width" secondItem="3K2-up-9JE" secondAttribute="width" multiplier="0.5" constant="-32" id="gUx-eW-Dem"/>
+                        <constraint firstAttribute="trailing" secondItem="mEl-zM-Ijk" secondAttribute="trailing" constant="24" id="onc-aw-IYj"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Order-qrcode-icon" translatesAutoresizingMaskIntoConstraints="NO" id="D16-yf-Yzm">
+                    <rect key="frame" x="157.5" y="133.5" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="Iaq-os-mtI"/>
+                        <constraint firstAttribute="height" constant="60" id="Mux-Ce-3We"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Jxo-fS-cjo" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="5IR-ZJ-9gC"/>
                 <constraint firstItem="3K2-up-9JE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="7Xa-AG-WJP"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="centerY" secondItem="3K2-up-9JE" secondAttribute="bottom" multiplier="0.6" id="W9R-a2-OCp"/>
-                <constraint firstItem="3K2-up-9JE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="centerY" multiplier="0.3" id="nHu-QU-OTd"/>
+                <constraint firstItem="3K2-up-9JE" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="40" id="H2D-M5-1iy"/>
+                <constraint firstItem="YBn-Jl-kW1" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="OIM-eH-Qic"/>
+                <constraint firstItem="D16-yf-Yzm" firstAttribute="top" secondItem="3K2-up-9JE" secondAttribute="top" constant="-30" id="oTZ-Bu-pxr"/>
+                <constraint firstItem="D16-yf-Yzm" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qRR-WH-vxf"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3K2-up-9JE" secondAttribute="trailing" constant="20" id="toe-kG-wm3"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="33.5" y="124.5"/>
+            <point key="canvasLocation" x="32.5" y="123.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="Order-qrcode-icon" width="60" height="60"/>
+        <namedColor name="Color-dark2">
+            <color red="0.16078431372549021" green="0.16078431372549021" blue="0.16078431372549021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
 </document>

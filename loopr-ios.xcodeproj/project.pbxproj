@@ -56,7 +56,6 @@
 		94678B2A210D902E00F550D3 /* SendResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94678B28210D902E00F550D3 /* SendResultViewController.swift */; };
 		94678B2B210D902E00F550D3 /* SendResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94678B29210D902E00F550D3 /* SendResultViewController.xib */; };
 		9475A2EE207EF81300200155 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475A2EC207EF81300200155 /* OrderDetailViewController.swift */; };
-		9475A2EF207EF81300200155 /* OrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9475A2ED207EF81300200155 /* OrderDetailViewController.xib */; };
 		94768CA1210DCABE00B5977B /* TradeSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94768C9F210DCABE00B5977B /* TradeSwipeViewController.swift */; };
 		94768CA2210DCABE00B5977B /* TradeSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94768CA0210DCABE00B5977B /* TradeSwipeViewController.xib */; };
 		94768CA4210DCB2300B5977B /* TradeSwipeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94768CA3210DCB2300B5977B /* TradeSwipeType.swift */; };
@@ -70,6 +69,7 @@
 		94AD1FE5208B910D00C443E6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AD1FE4208B910D00C443E6 /* Currency.swift */; };
 		94B5CA8A204FB4E20081BA93 /* DefaultBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5CA89204FB4E20081BA93 /* DefaultBlock.swift */; };
 		94B5CA8C204FE8E40081BA93 /* ETH_Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5CA8B204FE8E40081BA93 /* ETH_Transaction.swift */; };
+		94BB338421115FD6002D44DA /* OrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BB338321115FD6002D44DA /* OrderDetailViewController.xib */; };
 		94BFF9CE21072EA000A0BE8B /* TokenSelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFF9CC21072EA000A0BE8B /* TokenSelectTableViewController.swift */; };
 		94BFF9CF21072EA000A0BE8B /* TokenSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BFF9CD21072EA000A0BE8B /* TokenSelectTableViewController.xib */; };
 		94BFF9D221073EE300A0BE8B /* SetGasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFF9D021073EE300A0BE8B /* SetGasViewController.swift */; };
@@ -83,9 +83,9 @@
 		94C5E79C207394F50074B939 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5E79A207394F40074B939 /* CustomSearchBar.swift */; };
 		94C5E79D207394F50074B939 /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C5E79B207394F50074B939 /* CustomSearchController.swift */; };
 		94CA6B5920BC037F000E4E8E /* OrderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CA6B5820BC037F000E4E8E /* OrderType.swift */; };
+		94CC15AE2111A46E00B54D71 /* OrderQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94CC15AD2111A46E00B54D71 /* OrderQRCodeViewController.xib */; };
 		94D94CE32084A9380000BBC8 /* ConfirmationResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D94CE12084A9380000BBC8 /* ConfirmationResultViewController.swift */; };
 		94D94CE42084A9380000BBC8 /* ConfirmationResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D94CE22084A9380000BBC8 /* ConfirmationResultViewController.xib */; };
-		94DAACB220BBF24B0097707E /* OrderQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DAACB020BBF24B0097707E /* OrderQRCodeViewController.xib */; };
 		94DAACB320BBF24B0097707E /* OrderQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DAACB120BBF24B0097707E /* OrderQRCodeViewController.swift */; };
 		94DCE551205FAC07005618E4 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCE550205FAC07005618E4 /* Trend.swift */; };
 		94E185972051451C00D86FFA /* Initable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185962051451C00D86FFA /* Initable.swift */; };
@@ -643,7 +643,6 @@
 		94678B28210D902E00F550D3 /* SendResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendResultViewController.swift; sourceTree = "<group>"; };
 		94678B29210D902E00F550D3 /* SendResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendResultViewController.xib; sourceTree = "<group>"; };
 		9475A2EC207EF81300200155 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
-		9475A2ED207EF81300200155 /* OrderDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailViewController.xib; sourceTree = "<group>"; };
 		94768C9F210DCABE00B5977B /* TradeSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSwipeViewController.swift; sourceTree = "<group>"; };
 		94768CA0210DCABE00B5977B /* TradeSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeSwipeViewController.xib; sourceTree = "<group>"; };
 		94768CA3210DCB2300B5977B /* TradeSwipeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSwipeType.swift; sourceTree = "<group>"; };
@@ -657,6 +656,7 @@
 		94AD1FE4208B910D00C443E6 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		94B5CA89204FB4E20081BA93 /* DefaultBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBlock.swift; sourceTree = "<group>"; };
 		94B5CA8B204FE8E40081BA93 /* ETH_Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETH_Transaction.swift; sourceTree = "<group>"; };
+		94BB338321115FD6002D44DA /* OrderDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderDetailViewController.xib; path = "loopr-ios/OrderHistory/HistoryDetail/OrderDetailViewController.xib"; sourceTree = SOURCE_ROOT; };
 		94BFF9CC21072EA000A0BE8B /* TokenSelectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSelectTableViewController.swift; sourceTree = "<group>"; };
 		94BFF9CD21072EA000A0BE8B /* TokenSelectTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TokenSelectTableViewController.xib; sourceTree = "<group>"; };
 		94BFF9D021073EE300A0BE8B /* SetGasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGasViewController.swift; sourceTree = "<group>"; };
@@ -670,9 +670,9 @@
 		94C5E79A207394F40074B939 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		94C5E79B207394F50074B939 /* CustomSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
 		94CA6B5820BC037F000E4E8E /* OrderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderType.swift; sourceTree = "<group>"; };
+		94CC15AD2111A46E00B54D71 /* OrderQRCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderQRCodeViewController.xib; path = "loopr-ios/OrderHistory/HistoryDetail/OrderQRCodeViewController.xib"; sourceTree = SOURCE_ROOT; };
 		94D94CE12084A9380000BBC8 /* ConfirmationResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationResultViewController.swift; sourceTree = "<group>"; };
 		94D94CE22084A9380000BBC8 /* ConfirmationResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmationResultViewController.xib; sourceTree = "<group>"; };
-		94DAACB020BBF24B0097707E /* OrderQRCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderQRCodeViewController.xib; sourceTree = "<group>"; };
 		94DAACB120BBF24B0097707E /* OrderQRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderQRCodeViewController.swift; sourceTree = "<group>"; };
 		94DCE550205FAC07005618E4 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
 		94E185962051451C00D86FFA /* Initable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initable.swift; sourceTree = "<group>"; };
@@ -1212,9 +1212,9 @@
 			isa = PBXGroup;
 			children = (
 				94DAACB120BBF24B0097707E /* OrderQRCodeViewController.swift */,
-				94DAACB020BBF24B0097707E /* OrderQRCodeViewController.xib */,
+				94CC15AD2111A46E00B54D71 /* OrderQRCodeViewController.xib */,
 				9475A2EC207EF81300200155 /* OrderDetailViewController.swift */,
-				9475A2ED207EF81300200155 /* OrderDetailViewController.xib */,
+				94BB338321115FD6002D44DA /* OrderDetailViewController.xib */,
 			);
 			path = HistoryDetail;
 			sourceTree = "<group>";
@@ -2619,6 +2619,7 @@
 				ACA677C52079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.xib in Resources */,
 				ACE6F7192041FDAD0039273D /* AssetTransactionDetailViewController.xib in Resources */,
 				AC37566E2038D37400AADC60 /* UnlockWalletSwipeViewController.xib in Resources */,
+				94CC15AE2111A46E00B54D71 /* OrderQRCodeViewController.xib in Resources */,
 				AC37567D2038D80300AADC60 /* PrivateKeyViewController.xib in Resources */,
 				AC54FD79204FC6E8007E1DEB /* OpenSans-ExtraBold.ttf in Resources */,
 				ACB911562024260E00F14644 /* WalletViewController.xib in Resources */,
@@ -2701,7 +2702,6 @@
 				AC31CE65205B994A00A30335 /* Roboto-Italic.ttf in Resources */,
 				AC2ACA5620FA0EC3009C77E7 /* Rubik-BoldItalic.ttf in Resources */,
 				AC2ACA5A20FA1A5F009C77E7 /* WalletButtonTableViewCell.xib in Resources */,
-				9475A2EF207EF81300200155 /* OrderDetailViewController.xib in Resources */,
 				ACDA889C20F85F9C004FA10B /* InfoPlist.strings in Resources */,
 				AC68E10320C24BD900BFA837 /* ImportWalletEnterWalletNameViewController.xib in Resources */,
 				ACA677D0207D1BEC00D34A2F /* SettingChangeWalletNameViewController.xib in Resources */,
@@ -2723,6 +2723,7 @@
 				ACB9117620255A6600F14644 /* MarketTableViewCell.xib in Resources */,
 				ACB729D5205DE21B00DD4DF3 /* TradeConfirmationViewController.xib in Resources */,
 				ACC8D0A320CC6F080049A741 /* ExportMnemonicViewController.xib in Resources */,
+				94BB338421115FD6002D44DA /* OrderDetailViewController.xib in Resources */,
 				AC5E0992205F256500801738 /* AddTokenViewController.xib in Resources */,
 				AC2ACA5020FA0EC3009C77E7 /* Rubik-Medium.ttf in Resources */,
 				AC23B368210D6214004DC5A9 /* MarketDetailViewController.xib in Resources */,
@@ -2734,7 +2735,6 @@
 				ACE58B8620BE796A005BC1C8 /* VerifyMnemonicViewController.xib in Resources */,
 				AC2ACA5320FA0EC3009C77E7 /* Rubik-LightItalic.ttf in Resources */,
 				AC131A11210ED2BB001998A0 /* MarketDetailDepthTableViewCell.xib in Resources */,
-				94DAACB220BBF24B0097707E /* OrderQRCodeViewController.xib in Resources */,
 				AC31CE3A205B603A00A30335 /* Linotype-DINNextLTPro-Light.otf in Resources */,
 				ACBA47EB207897C60032C2B4 /* SettingWalletDetailViewController.xib in Resources */,
 				94C11FDB208C2DE40050E180 /* SettingCurrencyTableViewCell.xib in Resources */,

@@ -12,27 +12,35 @@ import NotificationBannerSwift
 
 class OrderQRCodeViewController: UIViewController {
     
-    @IBOutlet weak var qrcodeImageView: UIImageView!
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var shareOrderButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var qrcodeImageView: UIImageView!
     @IBOutlet weak var saveToAlbumButton: UIButton!
+    @IBOutlet weak var shareOrderButton: UIButton!
     
     var order: OriginalOrder?
     var qrcodeImage: UIImage!
     var qrcodeImageCIImage: CIImage!
+    var dismissClosure: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = LocalizedString("Order QR Code", comment: "")
-        view.theme_backgroundColor = GlobalPicker.textColor
-        contentView.layer.cornerRadius = 16
-        setBackButton()
+        self.modalPresentationStyle = .custom
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        
+        titleLabel.setTitleCharFont()
+        titleLabel.text = LocalizedString("Loopr P2P Order", comment: "")
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        tap.delegate = self
+        view.addGestureRecognizer(tap)
+        
         saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
-        saveToAlbumButton.setupSecondary()
+        saveToAlbumButton.setupPrimary(height: 42)
         shareOrderButton.setTitle(LocalizedString("Share the Order", comment: ""), for: .normal)
-        shareOrderButton.setupSecondary()
+        shareOrderButton.setupSecondary(height: 42)
         generateQRCode(order: self.order!)
     }
     
@@ -40,15 +48,19 @@ class OrderQRCodeViewController: UIViewController {
         var body = JSON()
         body["type"] = JSON(TradeDataManager.qrcodeType)
         body["value"] = [TradeDataManager.qrcodeHash: order.hash, TradeDataManager.qrcodeAuth: order.authPrivateKey]
-        let data = body.stringValue.data(using: .isoLatin1, allowLossyConversion: false)!
-        let ciContext = CIContext()
-        if let filter = CIFilter(name: "CIQRCodeGenerator") {
-            filter.setValue(data, forKey: "inputMessage")
-            let transform = CGAffineTransform(scaleX: 10, y: 10)
-            let upScaledImage = filter.outputImage?.transformed(by: transform)
-            qrcodeImageCIImage = upScaledImage!
-            let cgImage = ciContext.createCGImage(upScaledImage!, from: upScaledImage!.extent)
-            qrcodeImage = UIImage(cgImage: cgImage!)
+        do {
+            let data = try body.rawData(options: .prettyPrinted)
+            let ciContext = CIContext()
+            if let filter = CIFilter(name: "CIQRCodeGenerator") {
+                filter.setValue(data, forKey: "inputMessage")
+                let transform = CGAffineTransform(scaleX: 10, y: 10)
+                let upScaledImage = filter.outputImage?.transformed(by: transform)
+                qrcodeImageCIImage = upScaledImage!
+                let cgImage = ciContext.createCGImage(upScaledImage!, from: upScaledImage!.extent)
+                qrcodeImage = UIImage(cgImage: cgImage!)
+            }
+        } catch let error as NSError {
+            print ("Error: \(error.domain)")
         }
     }
     
@@ -67,23 +79,11 @@ class OrderQRCodeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func updateNavigationView(tintColor: UIColor, textColor: UIColor, statusBarStyle: UIStatusBarStyle) {
-        self.navigationController?.navigationBar.barTintColor = tintColor
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: textColor]
-        self.navigationController?.navigationBar.tintColor = textColor
-        
-        // Update the statusBar
-        UIApplication.shared.statusBarStyle = statusBarStyle
-        self.setNeedsStatusBarAppearanceUpdate()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateNavigationView(tintColor: UIColor.black, textColor: UIColor.white, statusBarStyle: .lightContent)
         guard let order = self.order else { return }
         generateQRCode(order: order)
         qrcodeImageView.image = qrcodeImage
-        // Remove the blur effect
         let scaleX = qrcodeImageView.frame.size.width / qrcodeImageCIImage.extent.size.width
         let scaleY = qrcodeImageView.frame.size.height / qrcodeImageCIImage.extent.size.height
         let transformedImage = qrcodeImageCIImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
@@ -92,7 +92,26 @@ class OrderQRCodeViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        updateNavigationView(tintColor: UIColor.white, textColor: UIColor.black, statusBarStyle: .default)
+    }
+    
+    func close() {
+        if let closure = self.dismissClosure {
+            closure()
+        }
+        self.dismiss(animated: true, completion: {
+        })
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        close()
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        let location = touch.location(in: nil)
+        if contentView.frame.contains(location) {
+            return false
+        }
+        return true
     }
     
     @IBAction func pressedShareButton(_ sender: UIButton) {

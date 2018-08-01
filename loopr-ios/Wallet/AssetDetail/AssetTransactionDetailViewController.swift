@@ -36,8 +36,8 @@ class AssetTransactionDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.modalPresentationStyle = .custom
         // Do any additional setup after loading the view.
+        self.modalPresentationStyle = .custom
         
         setBackButton()
         

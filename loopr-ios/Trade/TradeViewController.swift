@@ -324,10 +324,10 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
 //            vc.parentNavController = self.navigationController
 //            self.present(vc, animated: true, completion: nil)
             
-            let vc = TradeReviewViewController()
-            vc.order = order
+            let vc = OrderDetailViewController()
+            let or = Order(originalOrder: order, orderStatus: .opened)
+            vc.order = or
             self.navigationController?.pushViewController(vc, animated: true)
-            
         }
     }
     
