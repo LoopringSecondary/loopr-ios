@@ -635,7 +635,7 @@ void withoutCAAnimation(withoutAnimationBlock code)
         self->_trackLayer.path = [self fillingPath];
         
         NSUInteger index = (self.sliderPosition + self->diff) / (self->_trackLayer.bounds.size.width / (self.maxCount - 1));
-        if (self->_index != index) {
+        if (self->_index != index && index < 100) {
             for (CAShapeLayer *trackCircle in self->_trackCirclesArray) {
                 CGImageRef trackCircleImage = [self trackCircleImage:trackCircle];
                 

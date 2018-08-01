@@ -90,7 +90,7 @@ CHECKOUT OPTIONS:
     :commit: e3ab3e26fafc3688436528f2ca24cc679c7d746e
     :git: https://github.com/shamatar/secp256k1_ios.git
   StepSlider:
-    :commit: 5f7cd11aa76e0575d9827e74c81c9286402df031
+    :commit: 86ffd212f5822a4c844414052a61b7c0ca95de67
     :git: "git@github.com:xiaowheat/StepSlider.git"
 
 SPEC CHECKSUMS:

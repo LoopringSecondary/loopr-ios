@@ -114,9 +114,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         stepSlider.isDotsInteractionEnabled = true
         stepSlider.adjustLabel = true
         containerView.addSubview(stepSlider)
-        // stepSlider.setIndex(3, animated: false)
-        
-        
+
         // Buttons
         hourButton.round(corners: [.topLeft, .bottomLeft], radius: 8)
         customButton.round(corners: [.topRight, .bottomRight], radius: 8)
@@ -165,6 +163,11 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         // TODO: current solution is to set the initial value here.
+        stepSlider.setPercentageValue(0.1)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         stepSlider.setPercentageValue(0.1)
     }
 
