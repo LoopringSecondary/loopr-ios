@@ -57,6 +57,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     var activeTextFieldTag = -1
     var stepSlider: StepSlider = StepSlider()
     
+    var isViewDidAppear: Bool = false
+    
     // Expires
     var buttons: [UIButton] = []
     var intervalValue = 1
@@ -163,12 +165,15 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         // TODO: current solution is to set the initial value here.
-        stepSlider.setPercentageValue(0.1)
+        if !isViewDidAppear {
+            stepSlider.setPercentageValue(0.1)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        stepSlider.setPercentageValue(0.1)
+        // stepSlider.setPercentageValue(0.1)
+        isViewDidAppear = true
     }
 
     func update(text: String? = nil, color: UIColor? = nil) {

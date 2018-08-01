@@ -22,11 +22,13 @@ class GasDataManager {
     
     static let shared = GasDataManager()
     
+    private var gasRecommendedPrice: Double // gwei
     private var gasPrice: Double // gwei
     private var gasLimits: [GasLimit]
     private var gasAmount: Double
     
     private init() {
+        self.gasRecommendedPrice = 10
         self.gasPrice = 10  // Set the default value to 10
         self.gasAmount = 0
         self.gasLimits = []
@@ -87,11 +89,19 @@ class GasDataManager {
             self.gasPrice = gasPrice! * 1000000000
             self.gasPrice.round()
             print("Estimate gas price: \(self.gasPrice)")
+            
+            // set gasRecommendedPrice
+            self.gasRecommendedPrice = self.gasPrice
+
             let copyGasPrice = self.gasPrice
             completionHandler(copyGasPrice, nil)
         }
     }
-    
+
+    func getGasRecommendedPrice() -> Double {
+        return self.gasRecommendedPrice
+    }
+
     func getGasPriceInGwei() -> Double {
         return self.gasPrice
     }

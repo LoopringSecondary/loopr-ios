@@ -276,7 +276,6 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     @IBAction func pressedAdvanceButton(_ sender: UIButton) {
         self.totalMaskView.alpha = 0.75
         let vc = SetGasViewController()
-        vc.recGasPriceInGwei = self.gasPriceInGwei
         vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
         vc.dismissClosure = {
             self.totalMaskView.alpha = 0

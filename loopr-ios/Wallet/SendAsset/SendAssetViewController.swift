@@ -66,9 +66,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
         setBackButton()
         view.theme_backgroundColor = GlobalPicker.backgroundColor
+        self.navigationItem.title = LocalizedString("Send", comment: "")
         
         // First row: token
         headerButton.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
@@ -85,6 +85,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         addressTextField.delegate = self
         addressTextField.tag = 0
         addressTextField.keyboardType = .alphabet
+        addressTextField.keyboardAppearance = Themes.isDark() ? .dark : .default
         addressTextField.font = FontConfigManager.shared.getDigitalFont()
         addressTextField.theme_tintColor = GlobalPicker.contrastTextColor
         addressTextField.placeholder = LocalizedString("Enter the address", comment: "")
@@ -117,17 +118,28 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         // Transaction
         transactionFeeLabel.setTitleCharFont()
         transactionFeeLabel.text = LocalizedString("Transaction Fee", comment: "")
+        transactionFeeLabel.isUserInteractionEnabled = true
+        let transactionFeeLabelTap = UITapGestureRecognizer(target: self, action: #selector(pressedAdvancedButton))
+        transactionFeeLabelTap.numberOfTapsRequired = 1
+        transactionFeeLabel.addGestureRecognizer(transactionFeeLabelTap)
         
         transactionFeeAmountLabel.setTitleCharFont()
         transactionFeeAmountLabel.textAlignment = .right
         transactionFeeAmountLabel.text = ""
         updateTransactionFeeAmountLabel()
+        transactionFeeAmountLabel.isUserInteractionEnabled = true
+        let transactionFeeAmountLabelTap = UITapGestureRecognizer(target: self, action: #selector(pressedAdvancedButton))
+        transactionFeeAmountLabelTap.numberOfTapsRequired = 1
+        transactionFeeAmountLabel.addGestureRecognizer(transactionFeeAmountLabelTap)
+
+        advancedButton.addTarget(self, action: #selector(pressedAdvancedButton), for: .touchUpInside)
         
         scrollView.delegate = self
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(scrollViewTap)
-        scrollView.delaysContentTouches = false
+        // If it's not a table view, no need to set delaysContentTouches = false
+        // scrollView.delaysContentTouches = false
 
         // Send button
         sendButton.title = LocalizedString("Send", comment: "")
@@ -187,6 +199,15 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         } else {
             transactionFeeTipLabel.isHidden = true
         }
+        
+        // TODO: this doesn't work.
+        /*
+        headerButton.applyShadow(withColor: .black)
+        view.bringSubview(toFront: tokenIconImageView)
+        view.bringSubview(toFront: tokenHeaderLabel)
+        view.bringSubview(toFront: tokenTotalAmountLabel)
+        */
+        contentView.applyShadow(withColor: .black)
     }
     
     @IBAction func pressedHeaderButton(_ sender: UIButton) {
@@ -316,10 +337,9 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         return isValid
     }
     
-    @IBAction func pressedAdvancedButton(_ sender: UIButton) {
+    @objc func pressedAdvancedButton() {
         self.totalMaskView.alpha = 0.75
         let vc = SetGasViewController()
-        vc.recGasPriceInGwei = self.gasPriceInGwei
         vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
         vc.dismissClosure = {
             self.totalMaskView.alpha = 0

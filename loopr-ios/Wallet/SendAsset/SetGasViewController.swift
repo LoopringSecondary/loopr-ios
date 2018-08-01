@@ -20,10 +20,12 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
     
     var minGasValue: Double = 1
     var maxGasValue: Double = 0
-    var recGasPriceInGwei: Double = 0
+    private let recGasPriceInGwei: Double = GasDataManager.shared.getGasRecommendedPrice()
     var gasPriceInGwei: Double = GasDataManager.shared.getGasPriceInGwei()
     var stepSlider: StepSlider = StepSlider()
     var dismissClosure: (() -> Void)?
+    
+    var isViewDidAppear: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +37,7 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
         gasValueLabel.setTitleDigitFont()
         gasTipLabel.setSubTitleDigitFont()
         recommandButton.setupSecondary(height: 32)
-        recommandButton.titleLabel?.theme_textColor = ["#000000cc", "#ffffffcc"]
+        recommandButton.titleLabel?.theme_textColor = GlobalPicker.textColor
         recommandButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 12)
         recommandButton.title = LocalizedString("Recommand Price", comment: "")
         
@@ -49,7 +51,7 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
         stepSlider.setIndex(0, animated: false)
         stepSlider.labelFont = FontConfigManager.shared.getRegularFont(size: 12)
         stepSlider.labelColor = UIColor.init(white: 0.6, alpha: 1)
-        stepSlider.labels = ["Slow", "Fast"]
+        stepSlider.labels = [LocalizedString("Slow", comment: ""), LocalizedString("Fast", comment: "")]
         stepSlider.trackHeight = 2
         stepSlider.trackCircleRadius = 3
         stepSlider.trackColor = UIColor.init(white: 0.6, alpha: 1)
@@ -59,20 +61,33 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
         stepSlider.labelOffset = 10
         stepSlider.isDotsInteractionEnabled = true
         stepSlider.adjustLabel = true
-        
+
         containerView.addSubview(stepSlider)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         tap.delegate = self
         view.addGestureRecognizer(tap)
         
-        self.maxGasValue = Double(gasPriceInGwei * 2) <= 20 ? 20 : Double(gasPriceInGwei * 2)
-        update(self.recGasPriceInGwei)
+        self.maxGasValue = Double(recGasPriceInGwei * 2) <= 20 ? 20 : Double(recGasPriceInGwei * 2)
+        update(self.gasPriceInGwei)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if !isViewDidAppear {
+            print(Float(gasPriceInGwei-1)/Float(maxGasValue))
+            stepSlider.setPercentageValue(Float(gasPriceInGwei-1)/Float(maxGasValue-1))
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        isViewDidAppear = true
     }
     
     func update(_ gasPriceInGwei: Double) {
@@ -82,8 +97,11 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
         if let etherPrice = PriceDataManager.shared.getPrice(of: "ETH") {
             let transactionFeeInFiat = totalGasInEther * etherPrice
             gasValueLabel.text = "\(totalGasInEther.withCommas(6)) ETH ≈ \(transactionFeeInFiat.currency)"
-            gasTipLabel.text = "Gas Limit(\(gasLimit)) * Gas Price(\(gasPriceInGwei) Gwei)"
+            gasTipLabel.text = "Gas Limit (\(gasLimit)) * Gas Price (\(gasPriceInGwei) Gwei)"
         }
+        
+        print(Float(gasPriceInGwei-1)/Float(maxGasValue))
+        stepSlider.setPercentageValue(Float(gasPriceInGwei-1)/Float(maxGasValue-1))
     }
     
     func close() {
