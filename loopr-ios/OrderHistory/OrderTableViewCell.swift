@@ -10,24 +10,23 @@ import UIKit
 
 class OrderTableViewCell: UITableViewCell {
 
-    var order: Order?
-    let asset = CurrentAppWalletDataManager.shared
-    let market = MarketDataManager.shared
-    
-    @IBOutlet weak var filledPieChart: CircleChart!
     @IBOutlet weak var tradingPairLabel: UILabel!
     @IBOutlet weak var orderTypeLabel: UILabel!
     @IBOutlet weak var volumeLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var displayLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var seperateLine: UIView!
+    @IBOutlet weak var dateLabel: UILabel!
     
+    var order: Order?
+    let asset = CurrentAppWalletDataManager.shared
+    let market = MarketDataManager.shared
     var pressedCancelButtonClosure: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.theme_backgroundColor = GlobalPicker.backgroundColor
     }
     
     func update() {
@@ -36,27 +35,18 @@ class OrderTableViewCell: UITableViewCell {
         setupVolumeLabel(order: order)
         setupPriceLabel(order: order)
         setupOrderTypeLabel(order: order)
-        setupOrderFilled(order: order)
         setupCancelButton(order: order)
-        seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
     }
     
     func setupCancelButton(order: Order) {
         let (flag, text) = getOrderStatus(order: order)
         if flag {
             cancelButton.isEnabled = true
-            cancelButton.backgroundColor = UIColor.clear
-            cancelButton.layer.borderColor = UIColor.black.cgColor
         } else {
             cancelButton.isEnabled = false
-            cancelButton.backgroundColor = UIColor.buttonBackground
-            cancelButton.layer.borderColor = UIColor.clear.cgColor
         }
         cancelButton.title = text
-        cancelButton.titleColor = UIColor.black
-        cancelButton.layer.borderWidth = 0.5
-        cancelButton.layer.cornerRadius = 15
-        cancelButton.titleLabel?.font = UIFont(name: FontConfigManager.shared.getBold(), size: 12.0)
+        cancelButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 12)
     }
     
     func getOrderStatus(order: Order) -> (Bool, String) {
@@ -115,33 +105,16 @@ class OrderTableViewCell: UITableViewCell {
         orderTypeLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 10)
         orderTypeLabel.borderWidth = 0.5
         if order.originalOrder.side == "buy" {
-            orderTypeLabel.backgroundColor = UIColor.black
-            orderTypeLabel.textColor = UIColor.white
+            orderTypeLabel.backgroundColor = .success
+            orderTypeLabel.textColor = UIColor.text1
         } else if order.originalOrder.side == "sell" {
-            orderTypeLabel.backgroundColor = UIColor.white
-            orderTypeLabel.textColor = UIColor.black
-            orderTypeLabel.borderColor = UIColor.gray
+            orderTypeLabel.backgroundColor = .fail
+            orderTypeLabel.textColor = UIColor.text1
         }
         orderTypeLabel.layer.cornerRadius = 2.0
         orderTypeLabel.layer.masksToBounds = true
     }
     
-    func setupOrderFilled(order: Order) {
-        var percent: Double = 0.0
-        if order.originalOrder.side.lowercased() == "sell" {
-            percent = order.dealtAmountS / order.originalOrder.amountSell
-        } else if order.originalOrder.side.lowercased() == "buy" {
-            percent = order.dealtAmountB / order.originalOrder.amountBuy
-        }
-        filledPieChart.theme_backgroundColor = GlobalPicker.backgroundColor
-        filledPieChart.strokeColor = Themes.isDark() ? UIColor.white.cgColor : UIColor.black.cgColor
-        filledPieChart.textColor = Themes.isDark() ? UIColor.white : UIColor.black
-        filledPieChart.textFont = UIFont(name: FontConfigManager.shared.getLight(), size: 10.0)!
-        filledPieChart.desiredLineWidth = 1
-        filledPieChart.percentage = CGFloat(percent)
-        filledPieChart.update()
-    }
-
     @IBAction func pressedCancelButton(_ sender: Any) {
         if let btnAction = self.pressedCancelButtonClosure {
             btnAction()
