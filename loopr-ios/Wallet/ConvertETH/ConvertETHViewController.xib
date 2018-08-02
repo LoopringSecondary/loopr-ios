@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConvertETHViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="advancedButton" destination="YoF-0D-sj8" id="ffY-Wk-UX3"/>
                 <outlet property="amountBTextField" destination="v3d-HF-Sr1" id="lmw-BI-eA4"/>
                 <outlet property="amountSTextField" destination="vKj-6y-hjH" id="KR9-QK-UN8"/>
                 <outlet property="availableLabel" destination="EIa-aZ-nef" id="dXr-lJ-JW2"/>
@@ -155,9 +156,6 @@
                                     </constraints>
                                     <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                     <state key="normal" image="Arrow-button-right-dark"/>
-                                    <connections>
-                                        <action selector="pressedAdvanceButton:" destination="-1" eventType="touchUpInside" id="SHg-h9-gdl"/>
-                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s5v-5I-uis">
                                     <rect key="frame" x="16" y="264" width="311" height="40"/>

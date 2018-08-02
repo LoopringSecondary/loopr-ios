@@ -24,6 +24,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     @IBOutlet weak var maxButton: UIButton!
     @IBOutlet weak var gasTipLabel: UILabel!
     @IBOutlet weak var gasInfoLabel: UILabel!
+    @IBOutlet weak var advancedButton: UIButton!
     @IBOutlet weak var convertButton: UIButton!
     @IBOutlet weak var totalMaskView: UIView!
     
@@ -68,7 +69,18 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         
         gasTipLabel.setTitleCharFont()
         gasTipLabel.text = LocalizedString("Transaction Fee", comment: "")
+        gasTipLabel.isUserInteractionEnabled = true
+        let transactionFeeLabelTap = UITapGestureRecognizer(target: self, action: #selector(pressedAdvancedButton))
+        transactionFeeLabelTap.numberOfTapsRequired = 1
+        gasTipLabel.addGestureRecognizer(transactionFeeLabelTap)
+        
         gasInfoLabel.setTitleCharFont()
+        gasInfoLabel.isUserInteractionEnabled = true
+        let transactionFeeAmountLabelTap = UITapGestureRecognizer(target: self, action: #selector(pressedAdvancedButton))
+        transactionFeeAmountLabelTap.numberOfTapsRequired = 1
+        gasInfoLabel.addGestureRecognizer(transactionFeeAmountLabelTap)
+        
+        advancedButton.addTarget(self, action: #selector(pressedAdvancedButton), for: .touchUpInside)
         
         convertButton.title = LocalizedString("Yes, convert now!", comment: "")
         convertButton.setupSecondary(height: 40)
@@ -273,7 +285,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         }
     }
     
-    @IBAction func pressedAdvanceButton(_ sender: UIButton) {
+    @objc func pressedAdvancedButton() {
         self.totalMaskView.alpha = 0.75
         let vc = SetGasViewController()
         vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
