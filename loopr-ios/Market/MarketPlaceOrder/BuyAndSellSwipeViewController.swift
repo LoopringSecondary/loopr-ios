@@ -20,12 +20,10 @@ class BuyAndSellSwipeViewController: SwipeViewController {
 
         // Do any additional setup after loading the view.
         setBackButton()
+        self.view.theme_backgroundColor = GlobalPicker.backgroundColor
         self.navigationItem.title = PlaceOrderDataManager.shared.market.description
-
         let initIndex = initialType == .buy ? 0 : 1
-        
         swipeView.reloadData(options: options, default: initIndex)
-        
         for viewController in viewControllers {
             self.addChildViewController(viewController)
         }

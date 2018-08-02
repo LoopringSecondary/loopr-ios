@@ -14,7 +14,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     // container
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var totalMaskView: UIView!
     
     // TokenS
     @IBOutlet weak var tokenSButton: UIButton!
@@ -56,7 +55,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
 
     var activeTextFieldTag = -1
     var stepSlider: StepSlider = StepSlider()
-    
     var isViewDidAppear: Bool = false
     
     // Expires
@@ -313,21 +311,17 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     func pushController() {
         if let order = constructMaker() {
-//            preserveMaker(order: order)
-//            TradeDataManager.shared.isTaker = false
-//            self.totalMaskView.alpha = 0.75
-//            let vc = TradeConfirmationViewController()
-//            vc.order = order
-//            vc.dismissClosure = {
-//                self.totalMaskView.alpha = 0
-//            }
-//            vc.parentNavController = self.navigationController
-//            self.present(vc, animated: true, completion: nil)
-            
-            let vc = OrderDetailViewController()
-            let or = Order(originalOrder: order, orderStatus: .opened)
-            vc.order = or
-            self.navigationController?.pushViewController(vc, animated: true)
+            preserveMaker(order: order)
+            TradeDataManager.shared.isTaker = false
+            let parentView = self.parent!.view!
+            parentView.alpha = 0.25
+            let vc = TradeConfirmationViewController()
+            vc.order = order
+            vc.dismissClosure = {
+                parentView.alpha = 1
+            }
+            vc.parentNavController = self.navigationController
+            self.present(vc, animated: true, completion: nil)
         }
     }
     

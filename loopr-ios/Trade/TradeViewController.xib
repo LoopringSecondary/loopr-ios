@@ -33,7 +33,6 @@
                 <outlet property="sliderView" destination="Niq-X3-TVH" id="9Ps-eM-7cV"/>
                 <outlet property="tokenBButton" destination="cxj-Vc-B9z" id="8oy-cK-BBS"/>
                 <outlet property="tokenSButton" destination="eJV-rg-daP" id="eEE-Uq-o4B"/>
-                <outlet property="totalMaskView" destination="wRo-C7-sUZ" id="MMR-hQ-35O"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -225,10 +224,6 @@
                                         <action selector="pressedNextButton:" destination="-1" eventType="touchUpInside" id="i0X-el-Lcr"/>
                                     </connections>
                                 </button>
-                                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wRo-C7-sUZ">
-                                    <rect key="frame" x="-16" y="-10" width="375" height="647"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </view>
                             </subviews>
                             <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
@@ -289,11 +284,7 @@
                 <constraint firstItem="2G6-mE-e9W" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4Ha-G9-Bta"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="2G6-mE-e9W" secondAttribute="bottom" id="7ug-kF-iqF"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="2G6-mE-e9W" secondAttribute="top" id="QpW-Xx-1pn"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wRo-C7-sUZ" secondAttribute="trailing" id="Sb2-nq-e47"/>
                 <constraint firstItem="2G6-mE-e9W" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="W8o-bq-dkr"/>
-                <constraint firstItem="wRo-C7-sUZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="gnf-X9-uQ9"/>
-                <constraint firstItem="wRo-C7-sUZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pfn-oG-Cmv"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="wRo-C7-sUZ" secondAttribute="bottom" id="xfu-as-g9B"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="69.5" y="125.5"/>
