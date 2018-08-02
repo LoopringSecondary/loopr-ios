@@ -12,18 +12,30 @@ class SettingStyleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var rightLabel: UILabel!
-    @IBOutlet weak var seperateLine: UIView!
+    @IBOutlet weak var seperateLineUp: UIView!
+    @IBOutlet weak var seperateLineDown: UIView!
+    @IBOutlet weak var trailingSeperateLineDown: NSLayoutConstraint!
+    
+    @IBOutlet weak var disclosureIndicator: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        seperateLine.backgroundColor = UIColor.init(rgba: "#E5E7ED")
+        seperateLineUp.backgroundColor = UIColor.dark3
+        seperateLineDown.backgroundColor = UIColor.dark3
+        
+        theme_backgroundColor = GlobalPicker.cardBackgroundColor
 
         leftLabel.textColor = UIColor.init(rgba: "#939BB1")
-        // leftLabel.font = FontConfigManager.shared.getLabelSCFont(size: 14)
+        leftLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
+        leftLabel.theme_textColor = GlobalPicker.textColor
         
-        rightLabel.textColor = UIColor.init(rgba: "#2F384C")
-        // rightLabel.font = FontConfigManager.shared.getLabelSCFont(size: 14)
+        rightLabel.isHidden = true
+        rightLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
+        rightLabel.theme_textColor = GlobalPicker.textLightColor
+
+        disclosureIndicator.theme_image = GlobalPicker.indicator
+        disclosureIndicator.contentMode = .center
     }
 
     class func getCellIdentifier() -> String {
@@ -31,7 +43,7 @@ class SettingStyleTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 49
+        return 51
     }
 
 }

@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Night Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HpL-s0-dS8">
-                        <rect key="frame" x="16" y="11" width="212" height="21"/>
+                        <rect key="frame" x="23" y="11" width="212" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="212" id="cbt-n5-x4Q"/>
                             <constraint firstAttribute="height" constant="21" id="hwt-Aa-oKg"/>
@@ -31,7 +30,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aTd-qa-fYO">
-                        <rect key="frame" x="257" y="6" width="49" height="31"/>
+                        <rect key="frame" x="253" y="6" width="49" height="31"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="47" id="fm1-IS-gqJ"/>
                             <constraint firstAttribute="height" constant="31" id="nYu-ee-gHo"/>
@@ -41,18 +40,39 @@
                             <action selector="toggleNightModeSwitch:" destination="KGk-i7-Jjw" eventType="valueChanged" id="EAb-If-Si2"/>
                         </connections>
                     </switch>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tvw-3y-lWB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="5.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="83B-RO-4AK">
+                        <rect key="frame" x="15" y="44.5" width="305" height="0.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="dPG-i6-Hb8"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="83B-RO-4AK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="5fO-vq-bDh"/>
+                    <constraint firstAttribute="bottom" secondItem="83B-RO-4AK" secondAttribute="bottom" id="GOS-fJ-fLt"/>
                     <constraint firstItem="HpL-s0-dS8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="JW2-ZA-wkf"/>
-                    <constraint firstItem="HpL-s0-dS8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="KlV-sS-xYf"/>
+                    <constraint firstItem="HpL-s0-dS8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="23" id="KlV-sS-xYf"/>
+                    <constraint firstAttribute="trailing" secondItem="83B-RO-4AK" secondAttribute="trailing" id="SF0-Z3-fsf"/>
+                    <constraint firstItem="aTd-qa-fYO" firstAttribute="top" secondItem="Tvw-3y-lWB" secondAttribute="bottom" constant="0.5" id="g02-iE-EV9"/>
+                    <constraint firstItem="Tvw-3y-lWB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="jiY-wC-Xn8"/>
                     <constraint firstItem="aTd-qa-fYO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lcP-ul-oFB"/>
-                    <constraint firstAttribute="trailing" secondItem="aTd-qa-fYO" secondAttribute="trailing" constant="16" id="yfy-xV-5Nf"/>
+                    <constraint firstAttribute="trailing" secondItem="Tvw-3y-lWB" secondAttribute="trailing" id="rks-FN-5X8"/>
+                    <constraint firstItem="Tvw-3y-lWB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="snV-af-gVF"/>
+                    <constraint firstAttribute="trailing" secondItem="aTd-qa-fYO" secondAttribute="trailing" constant="20" id="yfy-xV-5Nf"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="nightModeLabel" destination="HpL-s0-dS8" id="jXW-qw-5qS"/>
                 <outlet property="nightModeSwitch" destination="aTd-qa-fYO" id="Yyf-Id-rlb"/>
+                <outlet property="seperateLineDown" destination="83B-RO-4AK" id="cHx-Bi-kgI"/>
+                <outlet property="seperateLineUp" destination="Tvw-3y-lWB" id="uIx-Zn-Qjq"/>
+                <outlet property="trailingSeperateLineDown" destination="5fO-vq-bDh" id="8Sv-AH-fyY"/>
             </connections>
             <point key="canvasLocation" x="91" y="123.5"/>
         </tableViewCell>

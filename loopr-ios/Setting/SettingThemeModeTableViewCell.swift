@@ -13,9 +13,15 @@ class SettingThemeModeTableViewCell: UITableViewCell {
     @IBOutlet weak var nightModeSwitch: UISwitch!
     @IBOutlet weak var nightModeLabel: UILabel!
     
+    @IBOutlet weak var seperateLineUp: UIView!
+    @IBOutlet weak var seperateLineDown: UIView!
+    @IBOutlet weak var trailingSeperateLineDown: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        seperateLineUp.backgroundColor = UIColor.dark3
+        seperateLineDown.backgroundColor = UIColor.dark3
         
         if Themes.isDark() {
             nightModeSwitch.setOn(true, animated: false)

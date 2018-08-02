@@ -22,6 +22,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationItem.title = LocalizedString("Settings", comment: "")
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
+        settingsTableView.separatorStyle = .none
         settingsTableView.tableFooterView = UIView()
         
         settingsTableView.theme_backgroundColor = GlobalPicker.backgroundColor
@@ -45,11 +46,11 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            return userPreferencesSectionForCell(row: indexPath.row)
+            return userPreferencesSectionForCell(indexPath: indexPath)
         case 1:
-            return tradingSectionForCell(row: indexPath.row)
+            return tradingSectionForCell(indexPath: indexPath)
         case 2:
-            return aboutSectionForCell(row: indexPath.row)
+            return aboutSectionForCell(indexPath: indexPath)
         default:
             return UITableViewCell()
         }
@@ -126,82 +127,146 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     // Sections
-    func userPreferencesSectionForCell(row: Int) -> UITableViewCell {
-        switch row {
+    func userPreferencesSectionForCell(indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
         case 0:
             var currentWalletName = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name
             if currentWalletName == nil {
                 currentWalletName = ""
             }
-            return createDetailTableCell(title: LocalizedString("Manage Wallet", comment: ""))
+            return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Manage Wallet", comment: ""))
         case 1:
-            return createDetailTableCell(title: LocalizedString("Currency", comment: ""))
+            return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Currency", comment: ""))
         case 2:
-            return createDetailTableCell(title: LocalizedString("Language", comment: ""))
+            return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Language", comment: ""))
         case 3:
-            return createThemeMode()
+            return createThemeMode(indexPath: indexPath)
         case 4:
-            return createSettingPasscodeTableView()
+            return createSettingPasscodeTableView(indexPath: indexPath)
         default:
             return UITableViewCell()
         }
         
     }
 
-    func tradingSectionForCell(row: Int) -> UITableViewCell {
-        switch row {
+    func tradingSectionForCell(indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
         case 0:
-            return createDetailTableCell(title: LocalizedString("Contract Version", comment: ""))
+            return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Contract Version", comment: ""))
         case 1:
-            return createDetailTableCell(title: LocalizedString("LRC Fee Ratio", comment: ""))
+            return createDetailTableCell(indexPath: indexPath, title: LocalizedString("LRC Fee Ratio", comment: ""))
         case 2:
-            return createDetailTableCell(title: LocalizedString("Margin Split", comment: ""))
+            return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Margin Split", comment: ""))
         case 3:
-            return createDetailTableCell(title: LocalizedString("Trade FAQ", comment: ""))
+            return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Trade FAQ", comment: ""))
         default:
             return UITableViewCell()
         }
     }
 
-    func aboutSectionForCell(row: Int) -> UITableViewCell {
-        switch row {
+    func aboutSectionForCell(indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
         case 0:
-            return createBasicTableCell(title: LocalizedString("App Version", comment: ""), detailTitle: getAppVersion())
+            var cell = settingsTableView.dequeueReusableCell(withIdentifier: SettingStyleTableViewCell.getCellIdentifier()) as? SettingStyleTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("SettingStyleTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? SettingStyleTableViewCell
+            }
+            
+            cell?.leftLabel.text = title
+            cell?.rightLabel.isHidden = false
+            cell?.disclosureIndicator.isHidden = true
+            if indexPath.row == 0 {
+                cell?.seperateLineUp.isHidden = false
+            } else {
+                cell?.seperateLineUp.isHidden = true
+            }
+            
+            if indexPath.row == sectionRows[indexPath.section]-1 {
+                cell?.trailingSeperateLineDown.constant = 0
+            } else {
+                cell?.trailingSeperateLineDown.constant = 23
+            }
+            cell?.leftLabel.text = LocalizedString("App Version", comment: "")
+            cell?.rightLabel.text = getAppVersion()
+
+            return cell!
         default:
             return UITableViewCell()
         }
     }
     
     // Cell Types
-    func createSettingPasscodeTableView() -> UITableViewCell {
+    func createSettingPasscodeTableView(indexPath: IndexPath) -> UITableViewCell {
         var cell = settingsTableView.dequeueReusableCell(withIdentifier: SettingPasscodeTableViewCell.getCellIdentifier()) as? SettingPasscodeTableViewCell
         if cell == nil {
             let nib = Bundle.main.loadNibNamed("SettingPasscodeTableViewCell", owner: self, options: nil)
             cell = nib![0] as? SettingPasscodeTableViewCell
             cell?.selectionStyle = .none
         }
+
+        if indexPath.row == 0 {
+            cell?.seperateLineUp.isHidden = false
+        } else {
+            cell?.seperateLineUp.isHidden = true
+        }
+        
+        if indexPath.row == sectionRows[indexPath.section]-1 {
+            cell?.trailingSeperateLineDown.constant = 0
+        } else {
+            cell?.trailingSeperateLineDown.constant = 23
+        }
+
         return cell!
     }
     
-    func createThemeMode() -> UITableViewCell {
+    func createThemeMode(indexPath: IndexPath) -> UITableViewCell {
         var cell = settingsTableView.dequeueReusableCell(withIdentifier: SettingThemeModeTableViewCell.getCellIdentifier()) as? SettingThemeModeTableViewCell
         if cell == nil {
             let nib = Bundle.main.loadNibNamed("SettingThemeModeTableViewCell", owner: self, options: nil)
             cell = nib![0] as? SettingThemeModeTableViewCell
             cell?.selectionStyle = .none
         }
+
+        if indexPath.row == 0 {
+            cell?.seperateLineUp.isHidden = false
+        } else {
+            cell?.seperateLineUp.isHidden = true
+        }
+        
+        if indexPath.row == sectionRows[indexPath.section]-1 {
+            cell?.trailingSeperateLineDown.constant = 0
+        } else {
+            cell?.trailingSeperateLineDown.constant = 23
+        }
+
         return cell!
     }
     
-    func createDetailTableCell(title: String) -> UITableViewCell {
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: title)
-        cell.accessoryType = .disclosureIndicator
-        cell.selectionStyle = .blue
-        cell.textLabel?.text = title
-        cell.textLabel?.font = FontConfigManager.shared.getMediumFont(size: 14)
-        cell.textLabel?.textColor = Themes.isDark() ? UIColor.white : UIColor.dark2
-        cell.backgroundColor = Themes.isDark() ? UIColor.dark2 : UIColor.white
-        return cell
+    func createDetailTableCell(indexPath: IndexPath, title: String) -> UITableViewCell {
+        var cell = settingsTableView.dequeueReusableCell(withIdentifier: SettingStyleTableViewCell.getCellIdentifier()) as? SettingStyleTableViewCell
+        if cell == nil {
+            let nib = Bundle.main.loadNibNamed("SettingStyleTableViewCell", owner: self, options: nil)
+            cell = nib![0] as? SettingStyleTableViewCell
+        }
+        
+        cell?.leftLabel.text = title
+        cell?.rightLabel.isHidden = true
+        cell?.disclosureIndicator.isHidden = false
+
+        if indexPath.row == 0 {
+            cell?.seperateLineUp.isHidden = false
+        } else {
+            cell?.seperateLineUp.isHidden = true
+        }
+        
+        if indexPath.row == sectionRows[indexPath.section]-1 {
+            cell?.trailingSeperateLineDown.constant = 0
+        } else {
+            cell?.trailingSeperateLineDown.constant = 23
+        }
+        
+        return cell!
     }
     
     func createBasicTableCell(title: String, detailTitle: String) -> UITableViewCell {

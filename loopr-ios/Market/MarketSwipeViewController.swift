@@ -42,7 +42,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         searchBar.keyboardType = .alphabet
         searchBar.autocapitalizationType = .allCharacters
         searchBar.keyboardAppearance = Themes.isDark() ? .dark : .default
-        searchBar.theme_tintColor = GlobalPicker.textColor
+        searchBar.tintColor = Themes.isDark() ? UIColor.init(rgba: "#383838") : UIColor.white
         searchBar.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffffcc") : UIColor.init(rgba: "#000000cc")
         
         self.navigationItem.setRightBarButton(searchButton, animated: true)

@@ -13,9 +13,15 @@ class SettingPasscodeTableViewCell: UITableViewCell {
     @IBOutlet weak var passcodeLabel: UILabel!
     @IBOutlet weak var passcodeSwitch: UISwitch!
     
+    @IBOutlet weak var seperateLineUp: UIView!
+    @IBOutlet weak var seperateLineDown: UIView!
+    @IBOutlet weak var trailingSeperateLineDown: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        seperateLineUp.backgroundColor = UIColor.dark3
+        seperateLineDown.backgroundColor = UIColor.dark3
         
         passcodeLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
         passcodeLabel.textColor = Themes.isDark() ? UIColor.white : UIColor.dark2
