@@ -120,11 +120,12 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
             return nil
         }
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 45))
-        headerView.backgroundColor = UIColor.white
+        headerView.backgroundColor = UIColor.dark1
         let headerLabel = UILabel(frame: CGRect(x: 15, y: 0, width: view.frame.size.width, height: 45))
-        headerLabel.textColor = UIColor.black.withAlphaComponent(0.3)
+        headerLabel.theme_textColor = GlobalPicker.textLightColor
         headerLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 17)
         headerLabel.text = orderDates[section]
+        headerLabel.textAlignment = .center
         headerView.addSubview(headerLabel)
         return headerView
     }

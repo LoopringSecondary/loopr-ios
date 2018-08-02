@@ -10,6 +10,7 @@ import UIKit
 
 class OrderTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var tradingPairLabel: UILabel!
     @IBOutlet weak var orderTypeLabel: UILabel!
     @IBOutlet weak var volumeLabel: UILabel!
@@ -26,7 +27,18 @@ class OrderTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.selectionStyle = .none
         self.theme_backgroundColor = GlobalPicker.backgroundColor
+        self.baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        self.baseView.applyShadow(withColor: .black)
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        if highlighted {
+            baseView.theme_backgroundColor = GlobalPicker.cardHighLightColor
+        } else {
+            baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        }
     }
     
     func update() {
@@ -36,6 +48,7 @@ class OrderTableViewCell: UITableViewCell {
         setupPriceLabel(order: order)
         setupOrderTypeLabel(order: order)
         setupCancelButton(order: order)
+        setupOrderDate(order: order)
     }
     
     func setupCancelButton(order: Order) {
@@ -46,20 +59,24 @@ class OrderTableViewCell: UITableViewCell {
             cancelButton.isEnabled = false
         }
         cancelButton.title = text
-        cancelButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        cancelButton.titleLabel?.setTitleCharFont()
     }
     
     func getOrderStatus(order: Order) -> (Bool, String) {
         if order.orderStatus == .opened {
             let cancelledAll = UserDefaults.standard.bool(forKey: UserDefaultsKeys.cancelledAll.rawValue)
             if cancelledAll || isOrderCancelling(order: order) {
+                cancelButton.setTitleColor(.pending, for: .normal)
                 return (false, LocalizedString("Cancelling", comment: ""))
             } else {
                 return (true, LocalizedString("Cancel", comment: ""))
             }
-        } else {
-            return (false, order.orderStatus.description)
+        } else if order.orderStatus == .cancelled || order.orderStatus == .expire {
+            cancelButton.setTitleColor(.text1, for: .normal)
+        } else if order.orderStatus == .finished {
+            cancelButton.setTitleColor(.success, for: .normal)
         }
+        return (false, order.orderStatus.description)
     }
     
     func isOrderCancelling(order: Order) -> Bool {
@@ -75,29 +92,26 @@ class OrderTableViewCell: UITableViewCell {
     
     func setupVolumeLabel(order: Order) {
         if order.originalOrder.side.lowercased() == "sell" {
-            volumeLabel.text = "Vol " + order.dealtAmountS.description
+            volumeLabel.text = order.dealtAmountS.withCommas()
+            volumeLabel.textColor = .fail
         } else if order.originalOrder.side.lowercased() == "buy" {
-            volumeLabel.text = "Vol " + order.dealtAmountB.description
+            volumeLabel.textColor = .success
         }
-        volumeLabel.setSubTitleDigitFont()
+        volumeLabel.font = FontConfigManager.shared.getDigitalFont(size: 12)
     }
     
     func setupPriceLabel(order: Order) {
-        var limit: Double = 0
-        let pair = order.originalOrder.market.components(separatedBy: "-")
-        if let price = PriceDataManager.shared.getPrice(of: pair[1]) {
-            if order.originalOrder.side.lowercased() == "sell" {
-                limit = order.originalOrder.amountBuy / order.originalOrder.amountSell
-            } else if order.originalOrder.side.lowercased() == "buy" {
-                limit = order.originalOrder.amountSell / order.originalOrder.amountBuy
-            }
-            priceLabel.text = limit.description
-            displayLabel.text = (limit * price).currency
-        } else {
-            displayLabel.text = "--"
+        var ratio: Double = 0
+        let token = order.originalOrder.market.components(separatedBy: "-")[0]
+        if order.originalOrder.side.lowercased() == "sell" {
+            ratio = order.originalOrder.amountBuy / order.originalOrder.amountSell
+        } else if order.originalOrder.side.lowercased() == "buy" {
+            ratio = order.originalOrder.amountSell / order.originalOrder.amountBuy
         }
-        priceLabel.setTitleDigitFont()
-        displayLabel.setSubTitleDigitFont()
+        priceLabel.text = ratio.withCommas()
+        priceLabel.setSubTitleDigitFont()
+        displayLabel.text = token
+        displayLabel.setTitleDigitFont()
     }
     
     func setupOrderTypeLabel(order: Order) {
@@ -106,13 +120,19 @@ class OrderTableViewCell: UITableViewCell {
         orderTypeLabel.borderWidth = 0.5
         if order.originalOrder.side == "buy" {
             orderTypeLabel.backgroundColor = .success
-            orderTypeLabel.textColor = UIColor.text1
+            orderTypeLabel.textColor = UIColor.text2
         } else if order.originalOrder.side == "sell" {
             orderTypeLabel.backgroundColor = .fail
             orderTypeLabel.textColor = UIColor.text1
         }
         orderTypeLabel.layer.cornerRadius = 2.0
         orderTypeLabel.layer.masksToBounds = true
+    }
+    
+    func setupOrderDate(order: Order) {
+        dateLabel.setSubTitleDigitFont()
+        let since = DateUtil.convertToDate(UInt(order.originalOrder.validSince), format: "yyyy-MM-dd HH:mm")
+        dateLabel.text = since
     }
     
     @IBAction func pressedCancelButton(_ sender: Any) {

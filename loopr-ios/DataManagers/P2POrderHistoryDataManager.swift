@@ -91,7 +91,7 @@ class P2POrderHistoryDataManager {
                 self.dateOrders = [:]
                 for order in orders {
                     let time = UInt(order.originalOrder.validSince)
-                    let valid = DateUtil.convertToDate(time, format: "MM/dd/yyyy")
+                    let valid = DateUtil.convertToDate(time, format: "yyyy-MM-dd")
                     if self.dateOrders[valid] == nil {
                         self.dateOrders[valid] = []
                     }
