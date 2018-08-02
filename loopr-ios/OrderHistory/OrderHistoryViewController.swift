@@ -30,19 +30,11 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         historyTableView.tableFooterView = UIView()
         historyTableView.separatorStyle = .none
         
-        let orderSearchButton = UIButton(type: UIButtonType.custom)
-        let image = UIImage(named: "Order-history-black")
-        orderSearchButton.setBackgroundImage(image, for: .normal)
-        orderSearchButton.setBackgroundImage(image?.alpha(0.3), for: .highlighted)
         let item = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.pressOrderSearchButton(_:)))
         self.navigationItem.setRightBarButton(item, animated: true)
         
         // Add Refresh Control to Table View
-        if #available(iOS 10.0, *) {
-            historyTableView.refreshControl = refreshControl
-        } else {
-            historyTableView.addSubview(refreshControl)
-        }
+        historyTableView.refreshControl = refreshControl
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         getOrderHistoryFromRelay()

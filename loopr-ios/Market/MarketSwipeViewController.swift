@@ -16,9 +16,10 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     
     var options = SwipeViewOptions.getDefault()
     
+    var searchText = ""
     var isSearching = false
     let searchBar = UISearchBar()
-    let orderHistoryButton = UIButton(type: UIButtonType.custom)
+    var searchButton = UIBarButtonItem()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +33,19 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
 
         setupChildViewControllers()
 
-        let image = UIImage(named: "Order-history-black")
-        orderHistoryButton.setBackgroundImage(image, for: .normal)
-        orderHistoryButton.setBackgroundImage(image?.alpha(0.3), for: .highlighted)
-        orderHistoryButton.addTarget(self, action: #selector(self.pressOrderHistoryButton(_:)), for: UIControlEvents.touchUpInside)
-        orderHistoryButton.frame = CGRect(x: 0, y: 0, width: 23, height: 23)
+        searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.pressOrderSearchButton(_:)))
+        
+        searchBar.showsCancelButton = false
+        searchBar.placeholder = LocalizedString("Search", comment: "")
+        searchBar.delegate = self
+        searchBar.searchBarStyle = .minimal
+        searchBar.keyboardType = .alphabet
+        searchBar.autocapitalizationType = .allCharacters
+        searchBar.keyboardAppearance = Themes.isDark() ? .dark : .default
+        searchBar.theme_tintColor = GlobalPicker.textColor
+        searchBar.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffffcc") : UIColor.init(rgba: "#000000cc")
+        
+        self.navigationItem.setRightBarButton(searchButton, animated: true)
     }
 
     func setupChildViewControllers() {
@@ -102,9 +111,9 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         if isSearching {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressSearchCancel))
         } else {
-            let orderHistoryBarButton = UIBarButtonItem(customView: orderHistoryButton)
-            self.navigationItem.rightBarButtonItem = orderHistoryBarButton
-            self.searchBar.text = ""
+            // let orderHistoryBarButton = UIBarButtonItem(customView: orderHistoryButton)
+            // self.navigationItem.rightBarButtonItem = orderHistoryBarButton
+            // self.searchBar.text = ""
         }
     }
     
@@ -130,22 +139,28 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         navigationItem.titleView = searchBarContainer
     }
     
-    @objc func pressOrderHistoryButton(_ button: UIBarButtonItem) {
-        print("pressOrderHistoryButton")
-        let viewController = OrderHistoryViewController()
-        viewController.hidesBottomBarWhenPushed = true
+    @objc func pressOrderSearchButton(_ button: UIBarButtonItem) {
+        let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
+        searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
         
-        // Set endEnditing to true, otherwise the keyboard will trigger a wired animation.
-        navigationController?.view.endEditing(true)
-        self.navigationController?.pushViewController(viewController, animated: true)
+        self.navigationItem.titleView = searchBarContainer
+        // self.navigationItem.leftBarButtonItem = nil
+        // self.navigationItem.hidesBackButton = true
+        
+        let cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressSearchCancel))
+        self.navigationItem.rightBarButtonItems = [cancelBarButton]
+        
+        searchBar.becomeFirstResponder()
     }
     
     @objc func pressSearchCancel(_ button: UIBarButtonItem) {
         print("pressSearchCancel")
-        let orderHistoryBarButton = UIBarButtonItem(customView: orderHistoryButton)
-        self.navigationItem.rightBarButtonItem = orderHistoryBarButton
+        self.navigationItem.rightBarButtonItems = [searchButton]
         searchBar.resignFirstResponder()
         searchBar.text = nil
+        navigationItem.titleView = nil
+        self.navigationItem.title = LocalizedString("Markets", comment: "")
+        isSearching = false
         viewControllers[self.swipeView.currentIndex].searchTextDidUpdate(searchText: "")
     }
 

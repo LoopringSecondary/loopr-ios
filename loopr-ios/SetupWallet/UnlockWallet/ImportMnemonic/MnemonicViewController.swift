@@ -29,7 +29,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
 
         unlockButton.setTitle(LocalizedString("Unlock", comment: ""), for: .normal)
-        unlockButton.setupSecondary()
+        unlockButton.setupSecondary(height: 44)
 
         mnemonicWordTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
         mnemonicWordTextView.cornerRadius = 12

@@ -32,8 +32,8 @@ class TradeSelectionViewController: UIViewController {
         button1.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
         button1.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
         button1.addTarget(self, action: #selector(self.pressedButton1(_:)), for: .touchUpInside)
-        button1.set(image: UIImage.init(named: "Trade-decentralizaed-exchange-dark"), title: LocalizedString("Decentralized Exchange", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
-        button1.set(image: UIImage.init(named: "Trade-decentralizaed-exchange-dark")?.alpha(0.6), title: LocalizedString("Decentralized Exchange", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
+        button1.set(image: UIImage.init(named: "Trade-decentralizaed-exchange-dark"), title: LocalizedString("DEX Trade", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
+        button1.set(image: UIImage.init(named: "Trade-decentralizaed-exchange-dark")?.alpha(0.6), title: LocalizedString("DEX Trade", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         
         button2.cornerRadius = 8
         button2.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 14)

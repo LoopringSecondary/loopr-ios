@@ -10,10 +10,10 @@ import UIKit
 
 extension UISearchBar {
     
-    var textColor:UIColor? {
+    var textColor: UIColor? {
         get {
             if let textField = self.value(forKey: "searchField") as?
-                UITextField  {
+                UITextField {
                 return textField.textColor
             } else {
                 return nil
@@ -22,7 +22,7 @@ extension UISearchBar {
         
         set (newValue) {
             if let textField = self.value(forKey: "searchField") as?
-                UITextField  {
+                UITextField {
                 textField.textColor = newValue
             }
         }
