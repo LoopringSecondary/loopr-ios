@@ -143,7 +143,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
 
         // Send button
         sendButton.title = LocalizedString("Send", comment: "")
-        sendButton.setupSecondary()
+        sendButton.setupSecondary(height: 44)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)

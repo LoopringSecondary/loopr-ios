@@ -138,14 +138,16 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
 
         // Place button
         nextButton.title = LocalizedString("Next", comment: "")
-        nextButton.setupSecondary(height: 40)
+        nextButton.setupSecondary(height: 44)
 
         // Scroll view
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(scrollViewTap)
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: containerView.frame.maxY)
-        scrollView.delaysContentTouches = false
+        
+        self.distance = 0
+        self.scrollViewButtonLayoutConstraint.constant = self.distance
     }
 
     override func didReceiveMemoryWarning() {
@@ -155,8 +157,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.distance = UIScreen.main.bounds.height - containerView.frame.maxY
-        self.scrollViewButtonLayoutConstraint.constant = self.distance
         update()
     }
     
@@ -164,7 +164,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         super.viewWillLayoutSubviews()
         // TODO: current solution is to set the initial value here.
         if !isViewDidAppear {
-            stepSlider.setPercentageValue(0.1)
+            stepSlider.setPercentageValue(0.0)
         }
     }
     

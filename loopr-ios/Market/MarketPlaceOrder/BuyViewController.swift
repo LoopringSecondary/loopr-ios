@@ -97,7 +97,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         priceTextField.setRightPaddingPoints(72)
         priceTextField.contentMode = UIViewContentMode.bottom
         estimateValueInCurrencyLabel.setSubTitleCharFont()
-        sellTipLabel.text = LocalizedString("Sell", comment: "")
+        sellTipLabel.text = LocalizedString("Price", comment: "")
 
         // Second row: TokenB
         amountTextField.delegate = self
@@ -110,7 +110,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         amountTextField.setRightPaddingPoints(72)
         amountTextField.contentMode = UIViewContentMode.bottom
         tipLabel.setSubTitleCharFont()
-        buyTipLabel.text = LocalizedString("Buy", comment: "")
+        buyTipLabel.text = LocalizedString("Amount", comment: "")
         
         // Slider
         stepSlider.frame = sliderView.frame
@@ -154,14 +154,17 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         
         // Place button
         nextButton.title = LocalizedString("Next", comment: "")
-        nextButton.setupSecondary(height: 40)
+        nextButton.setupSecondary(height: 44)
         
         // Scroll view
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(scrollViewTap)
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: containerView.frame.maxY)
-        scrollView.delaysContentTouches = false
+        // scrollView.delaysContentTouches = false
+        
+        self.distance = 0
+        self.scrollViewButtonLayoutConstraint.constant = self.distance
     }
 
     override func didReceiveMemoryWarning() {
@@ -171,8 +174,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.distance = UIScreen.main.bounds.height - containerView.frame.maxY
-        self.scrollViewButtonLayoutConstraint.constant = self.distance
         update()
     }
     
