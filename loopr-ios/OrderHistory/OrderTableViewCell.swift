@@ -120,10 +120,10 @@ class OrderTableViewCell: UITableViewCell {
         orderTypeLabel.borderWidth = 0.5
         if order.originalOrder.side == "buy" {
             orderTypeLabel.backgroundColor = .success
-            orderTypeLabel.textColor = UIColor.text2
+            orderTypeLabel.textColor = .white
         } else if order.originalOrder.side == "sell" {
             orderTypeLabel.backgroundColor = .fail
-            orderTypeLabel.textColor = UIColor.text1
+            orderTypeLabel.textColor = .white
         }
         orderTypeLabel.layer.cornerRadius = 2.0
         orderTypeLabel.layer.masksToBounds = true

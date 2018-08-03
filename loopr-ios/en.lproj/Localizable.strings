@@ -114,6 +114,10 @@
 "1 Month" = "1 Month";
 "Orders" = "Orders";
 "Trades" = "Trades";
+"Open" = "Open";
+"Finished" = "Finished";
+"Cancelled" = "Cancelled";
+"Expired" = "Expired";
 "Cancel All" = "Cancel All";
 "Order Book" = "Order Book";
 "No Data" = "No Data";
