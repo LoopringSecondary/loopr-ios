@@ -9,10 +9,12 @@
 import UIKit
 
 class BuyAndSellSwipeViewController: SwipeViewController {
+    
+    var market: Market!
 
     var initialType: TradeType = .buy
     private var types: [TradeType] = [.buy, .sell]
-    private var viewControllers: [UIViewController] = [BuyViewController(type: .buy), BuyViewController(type: .sell)]
+    private var viewControllers: [UIViewController] = []
     var options = SwipeViewOptions.getDefault()
     
     override func viewDidLoad() {
@@ -23,10 +25,19 @@ class BuyAndSellSwipeViewController: SwipeViewController {
         self.view.theme_backgroundColor = GlobalPicker.backgroundColor
         self.navigationItem.title = PlaceOrderDataManager.shared.market.description
         let initIndex = initialType == .buy ? 0 : 1
-        swipeView.reloadData(options: options, default: initIndex)
+
+        let vc1 = BuyViewController(type: .buy)
+        vc1.market = market
+
+        let vc2 = BuyViewController(type: .sell)
+        vc2.market = market
+
+        viewControllers = [vc1, vc2]
         for viewController in viewControllers {
             self.addChildViewController(viewController)
         }
+
+        swipeView.reloadData(options: options, default: initIndex)
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,7 +85,7 @@ class BuyAndSellSwipeViewController: SwipeViewController {
     
     // MARK: - DataSource
     override func numberOfPages(in swipeView: SwipeView) -> Int {
-        return types.count
+        return viewControllers.count
     }
     
     override func swipeView(_ swipeView: SwipeView, titleForPageAt index: Int) -> String {

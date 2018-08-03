@@ -210,6 +210,12 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         contentView.applyShadow(withColor: .black)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // set contentSize
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 600)
+    }
+    
     @IBAction func pressedHeaderButton(_ sender: UIButton) {
         let vc = TokenSelectTableViewController()
         self.navigationController?.pushViewController(vc, animated: true)
@@ -444,22 +450,20 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             return
         }
         let systemKeyboardHeight = keyboardFrame.cgRectValue.height
-        if #available(iOS 11.0, *) {
-            // Get the the distance from the bottom safe area edge to the bottom of the screen
-            let window = UIApplication.shared.keyWindow
-            let bottomPadding = window?.safeAreaInsets.bottom ?? 0
-            self.scrollViewButtonLayoutConstraint.constant = systemKeyboardHeight - bottomPadding
-            let addressY = addressTextField.frame.minY
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
-                // animation for layout constraint change.
-                self.view.layoutIfNeeded()
-                if addressY - self.scrollView.contentOffset.y < 0 || addressY - self.scrollView.contentOffset.y > self.scrollViewButtonLayoutConstraint.constant {
-                    self.scrollView.setContentOffset(CGPoint.init(x: 0, y: addressY + 30), animated: true)
-                }
-            }, completion: { _ in
-                self.activeTextFieldTag = self.addressTextField.tag
-            })
-        }
+        // Get the the distance from the bottom safe area edge to the bottom of the screen
+        let window = UIApplication.shared.keyWindow
+        let bottomPadding = window?.safeAreaInsets.bottom ?? 0
+        self.scrollViewButtonLayoutConstraint.constant = systemKeyboardHeight - bottomPadding
+        let addressY = addressTextField.frame.minY
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+            // animation for layout constraint change.
+            self.view.layoutIfNeeded()
+            if addressY - self.scrollView.contentOffset.y < 0 || addressY - self.scrollView.contentOffset.y > self.scrollViewButtonLayoutConstraint.constant {
+                self.scrollView.setContentOffset(CGPoint.init(x: 0, y: addressY + 30), animated: true)
+            }
+        }, completion: { _ in
+            self.activeTextFieldTag = self.addressTextField.tag
+        })
     }
     
     @objc func keyboardWillDisappear(notification: NSNotification?) {

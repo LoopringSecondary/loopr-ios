@@ -83,6 +83,7 @@ class MarketDetailViewController: UIViewController {
     @IBAction func pressedSellButton(_ sender: Any) {
         print("pressedSellButton")
         let viewController = BuyAndSellSwipeViewController()
+        viewController.market = market
         viewController.initialType = .sell
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -90,6 +91,7 @@ class MarketDetailViewController: UIViewController {
     @IBAction func pressedBuyButton(_ sender: Any) {
         print("pressedBuyButton")
         let viewController = BuyAndSellSwipeViewController()
+        viewController.market = market
         viewController.initialType = .buy
         self.navigationController?.pushViewController(viewController, animated: true)
     }

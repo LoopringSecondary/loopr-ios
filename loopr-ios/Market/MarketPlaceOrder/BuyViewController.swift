@@ -12,6 +12,8 @@ import StepSlider
 
 class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, StepSliderDelegate {
 
+    var market: Market!
+    
     // container
     @IBOutlet weak var containerView: UIView!
     
@@ -20,7 +22,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var estimateValueInCurrencyLabel: UILabel!
     @IBOutlet weak var sellTipLabel: UILabel!
-    
+
     // TokenB
     @IBOutlet weak var tokenBButton: UIButton!
     @IBOutlet weak var amountTextField: UITextField!
@@ -46,6 +48,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     // Scroll view
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
+    
+    var viewOverLay = UIView()
     
     // Numeric keyboard
     var isNumericKeyboardShow: Bool = false
@@ -204,6 +208,26 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         hideNumericKeyboard()
     }
     
+    @IBAction func pressedUpdatePriceButton(_ sender: Any) {
+        print("pressedUpdatePriceButton")
+        /*
+        let vc = MarketDetailDepthViewController()
+        vc.market = market
+        addChildViewController(vc)
+        vc.view.frame = CGRect(x: 0, y: view.height, width: view.width, height: MarketDetailDepthTableViewCell.getHeight() * 11)
+        view.addSubview(vc.view)
+
+        UIView.animate(withDuration: 0.5) {
+            vc.view.frame = CGRect(x: 0, y: self.view.height - MarketDetailDepthTableViewCell.getHeight() * 11, width: self.view.width, height: MarketDetailDepthTableViewCell.getHeight() * 11)
+        }
+        */
+    }
+
+    @IBAction func pressedUpdateAmountButton(_ sender: Any) {
+        print("pressedUpdateAmountButton")
+        
+    }
+
     @IBAction func pressedExpiresButton(_ sender: UIButton) {
         let dict: [Int: Calendar.Component] = [0: .hour, 1: .day, 2: .month]
         for (index, button) in buttons.enumerated() {

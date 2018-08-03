@@ -67,6 +67,9 @@
                                         <constraint firstAttribute="width" constant="50" id="0pY-A4-E57"/>
                                     </constraints>
                                     <state key="normal" image="Caret-down-dark"/>
+                                    <connections>
+                                        <action selector="pressedUpdatePriceButton:" destination="-1" eventType="touchUpInside" id="6Ha-oY-UqV"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Cv-AI-Sk9">
                                     <rect key="frame" x="16" y="74" width="31" height="14.5"/>
@@ -96,6 +99,9 @@
                                         <constraint firstAttribute="height" constant="50" id="sAy-hT-Wdl"/>
                                     </constraints>
                                     <state key="normal" image="Caret-down-dark"/>
+                                    <connections>
+                                        <action selector="pressedUpdateAmountButton:" destination="-1" eventType="touchUpInside" id="VrL-8t-YNc"/>
+                                    </connections>
                                 </button>
                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUT-ee-RXX">
                                     <rect key="frame" x="16" y="164" width="31" height="14.5"/>
