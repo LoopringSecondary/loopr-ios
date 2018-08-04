@@ -35,9 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
 
-        // Avoid dark shadow on navigation bar during segue transition
-        self.window?.theme_backgroundColor = GlobalPicker.backgroundColor
-        
         AppWalletDataManager.shared.setup()
         CurrentAppWalletDataManager.shared.setup()
         if AppWalletDataManager.shared.getWallets().isEmpty {
@@ -77,7 +74,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func updateTheme() {
         // Setup color in the app.
-        self.window?.backgroundColor = UIColor.white
+        // Avoid dark shadow on navigation bar during segue transition
+        self.window?.theme_backgroundColor = GlobalPicker.backgroundColor
         
         // table cell background color.
         let colorView = UIView()

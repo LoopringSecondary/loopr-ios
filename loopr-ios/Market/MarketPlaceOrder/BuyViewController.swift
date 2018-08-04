@@ -51,6 +51,9 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     
     var viewOverLay = UIView()
     
+    // Drag down to close a present view controller.
+    let interactor = Interactor()
+    
     // Numeric keyboard
     var isNumericKeyboardShow: Bool = false
     var numericKeyboardView: DefaultNumericKeyboard!
@@ -210,17 +213,17 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     
     @IBAction func pressedUpdatePriceButton(_ sender: Any) {
         print("pressedUpdatePriceButton")
-        /*
-        let vc = MarketDetailDepthViewController()
+        
+        let vc = MarketDetailDepthModalViewController()
         vc.market = market
-        addChildViewController(vc)
-        vc.view.frame = CGRect(x: 0, y: view.height, width: view.width, height: MarketDetailDepthTableViewCell.getHeight() * 11)
-        view.addSubview(vc.view)
-
-        UIView.animate(withDuration: 0.5) {
-            vc.view.frame = CGRect(x: 0, y: self.view.height - MarketDetailDepthTableViewCell.getHeight() * 11, width: self.view.width, height: MarketDetailDepthTableViewCell.getHeight() * 11)
-        }
-        */
+        vc.transitioningDelegate = self
+        vc.interactor = self.interactor
+        
+        // vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        
+        self.present(vc, animated: true, completion: {
+            
+        })
     }
 
     @IBAction func pressedUpdateAmountButton(_ sender: Any) {
@@ -558,6 +561,18 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             activeTextField!.text = currentText
         }
     }
+}
+
+extension BuyViewController: UIViewControllerTransitioningDelegate {
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return DismissAnimator()
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactor.hasStarted ? interactor : nil
+    }
+
 }
 
 extension BuyViewController {

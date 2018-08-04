@@ -429,6 +429,8 @@
 		AC9A274120A6144700DB04AC /* OrderNoDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9A273F20A6144700DB04AC /* OrderNoDataTableViewCell.xib */; };
 		AC9ADF91205EE3B900CBE368 /* ConvertETHViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9ADF8F205EE3B900CBE368 /* ConvertETHViewController.swift */; };
 		AC9ADF92205EE3B900CBE368 /* ConvertETHViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9ADF90205EE3B900CBE368 /* ConvertETHViewController.xib */; };
+		AC9DC45321156F3A002D7D23 /* MarketDetailDepthModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC45121156F3A002D7D23 /* MarketDetailDepthModalViewController.swift */; };
+		AC9DC45421156F3A002D7D23 /* MarketDetailDepthModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9DC45221156F3A002D7D23 /* MarketDetailDepthModalViewController.xib */; };
 		ACA677B82079970600D34A2F /* ExportKeystoreSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677B62079970600D34A2F /* ExportKeystoreSwipeViewController.swift */; };
 		ACA677B92079970600D34A2F /* ExportKeystoreSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677B72079970600D34A2F /* ExportKeystoreSwipeViewController.xib */; };
 		ACA677C0207997F400D34A2F /* DisplayKeystoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677BE207997F400D34A2F /* DisplayKeystoreViewController.swift */; };
@@ -962,6 +964,8 @@
 		AC9A273F20A6144700DB04AC /* OrderNoDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderNoDataTableViewCell.xib; sourceTree = "<group>"; };
 		AC9ADF8F205EE3B900CBE368 /* ConvertETHViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertETHViewController.swift; sourceTree = "<group>"; };
 		AC9ADF90205EE3B900CBE368 /* ConvertETHViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConvertETHViewController.xib; sourceTree = "<group>"; };
+		AC9DC45121156F3A002D7D23 /* MarketDetailDepthModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailDepthModalViewController.swift; sourceTree = "<group>"; };
+		AC9DC45221156F3A002D7D23 /* MarketDetailDepthModalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketDetailDepthModalViewController.xib; sourceTree = "<group>"; };
 		ACA677B62079970600D34A2F /* ExportKeystoreSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportKeystoreSwipeViewController.swift; sourceTree = "<group>"; };
 		ACA677B72079970600D34A2F /* ExportKeystoreSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportKeystoreSwipeViewController.xib; sourceTree = "<group>"; };
 		ACA677BE207997F400D34A2F /* DisplayKeystoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayKeystoreViewController.swift; sourceTree = "<group>"; };
@@ -1275,6 +1279,8 @@
 		AC131A1621101AEB001998A0 /* MarketDetailDepth */ = {
 			isa = PBXGroup;
 			children = (
+				AC9DC45121156F3A002D7D23 /* MarketDetailDepthModalViewController.swift */,
+				AC9DC45221156F3A002D7D23 /* MarketDetailDepthModalViewController.xib */,
 				AC131A04210D7A1A001998A0 /* MarketDetailDepthViewController.swift */,
 				AC131A05210D7A1A001998A0 /* MarketDetailDepthViewController.xib */,
 				AC131A0E210ED2BB001998A0 /* MarketDetailDepthTableViewCell.swift */,
@@ -2741,6 +2747,7 @@
 				94C11FDB208C2DE40050E180 /* SettingCurrencyTableViewCell.xib in Resources */,
 				AC31CE3D205B603E00A30335 /* Linotype-DINNextLTPro-LightCondensed.otf in Resources */,
 				945800212058FEB500E08DEF /* tokens.json in Resources */,
+				AC9DC45421156F3A002D7D23 /* MarketDetailDepthModalViewController.xib in Resources */,
 				AC45EFF820D0D9B4004F6EC0 /* my_page.html in Resources */,
 				AC2ACA5220FA0EC3009C77E7 /* Rubik-Italic.ttf in Resources */,
 				AC9A274120A6144700DB04AC /* OrderNoDataTableViewCell.xib in Resources */,
@@ -3022,6 +3029,7 @@
 				AC8DBC6D20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift in Sources */,
 				ACB746E52043C5F5006C2BF5 /* QRCodeViewController.swift in Sources */,
 				ACE6F7242042228A0039273D /* GlobalPicker.swift in Sources */,
+				AC9DC45321156F3A002D7D23 /* MarketDetailDepthModalViewController.swift in Sources */,
 				ACB9117F2026385100F14644 /* SettingNavigationViewController.swift in Sources */,
 				9423F77920C7D688000B6983 /* SignRawTransaction.swift in Sources */,
 				ACC8D0B020CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.swift in Sources */,

@@ -1,48 +1,101 @@
 //
-//  MarketDetailDepthViewController.swift
+//  MarketDetailDepthModalViewController.swift
 //  loopr-ios
 //
-//  Created by xiaoruby on 7/28/18.
+//  Created by xiaoruby on 8/3/18.
 //  Copyright © 2018 Loopring. All rights reserved.
 //
 
 import UIKit
 
-class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-        
+class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    var interactor: Interactor?
+
     var market: Market!
     private var buys: [Depth] = []
     private var sells: [Depth] = []
 
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var headerInfoLabel: UILabel!
+    @IBOutlet weak var headerLastPriceLabel: UILabel!
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.backgroundColor = UIColor.clear // UIColor.black.withAlphaComponent(0.8)
+
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(self.handleGesture(_:)))
+        view.addGestureRecognizer(pan)
+        
+        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        headerView.round(corners: [.topLeft, .topRight], radius: 12)
+
+        headerInfoLabel.theme_textColor = GlobalPicker.textLightColor
+        headerInfoLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
+        headerInfoLabel.text = LocalizedString("Latest Price", comment: "")
+        
+        headerLastPriceLabel.textColor = UIColor.themeGreen
+        headerLastPriceLabel.font = FontConfigManager.shared.getRegularFont(size: 13)
+        // Fake data
+        headerLastPriceLabel.text = "0.18800000LRC  ≈  $0.22"
         
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
+        tableView.isScrollEnabled = false
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
-        
-        getDataFromRelay()
+
+        self.buys = MarketDepthDataManager.shared.getBuys()
+        self.sells = MarketDepthDataManager.shared.getSells()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    func getDataFromRelay() {
-        MarketDepthDataManager.shared.getDepthFromServer(market: market.name, completionHandler: { buys, sells, _ in
-            self.buys = buys
-            self.sells = sells
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        view.backgroundColor = UIColor.clear
+        interactor?.update(0)
+    }
+    
+    @objc func handleGesture(_ sender: UIPanGestureRecognizer) {
+        print("handeGesture")
+        
+        let percentThreshold: CGFloat = 0.3
+        
+        // convert y-position to downward pull progress (percentage)
+        let translation = sender.translation(in: view)
+        let verticalMovement = translation.y / view.bounds.height
+        let downwardMovement = fmaxf(Float(verticalMovement), 0.0)
+        let downwardMovementPercent = fminf(downwardMovement, 1.0)
+        let progress = CGFloat(downwardMovementPercent)
+        
+        guard let interactor = interactor else { return }
+        
+        switch sender.state {
+        case .began:
+            interactor.hasStarted = true
+            dismiss(animated: true, completion: nil)
+        case .changed:
+            interactor.shouldFinish = progress > percentThreshold
+            interactor.update(progress)
+        case .cancelled:
+            interactor.hasStarted = false
+            interactor.cancel()
+        case .ended:
+            interactor.hasStarted = false
+            interactor.shouldFinish
+                ? interactor.finish()
+                : interactor.cancel()
+        default:
+            break
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -67,7 +120,7 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
         label1.text = LocalizedString("Amount", comment: "")
         label1.textAlignment = .left
         baseViewBuy.addSubview(label1)
-
+        
         let label2 = UILabel(frame: CGRect(x: 10, y: 0, width: labelWidth-20, height: 30))
         label2.theme_textColor = GlobalPicker.textLightColor
         label2.font = FontConfigManager.shared.getMediumFont(size: 14)
@@ -96,7 +149,7 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
         
         return headerView
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return buys.count > sells.count ? buys.count : sells.count
     }
@@ -108,7 +161,7 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
             return MarketDetailDepthTableViewCell.getHeight()
         }
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: MarketDetailDepthTableViewCell.getCellIdentifier()) as? MarketDetailDepthTableViewCell
         if cell == nil {
@@ -130,7 +183,8 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
             cell?.baseViewBuy.round(corners: [], radius: 0)
             cell?.baseViewSell.round(corners: [], radius: 0)
         }
-
+        
         return cell!
     }
+
 }
