@@ -13,249 +13,148 @@ import NotificationBannerSwift
 
 class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelegate {
 
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var tokenSell: UIView!
+    @IBOutlet weak var tokenBuy: UIView!
+    @IBOutlet weak var arrowRightImageView: UIImageView!
+    
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var priceValueLabel: UILabel!
+    @IBOutlet weak var LRCFeeLabel: UILabel!
+    @IBOutlet weak var LRCFeeValueLabel: UILabel!
+    @IBOutlet weak var marginSplitLabel: UILabel!
+    @IBOutlet weak var marginSplitValueLabel: UILabel!
+    @IBOutlet weak var validLabel: UILabel!
+    @IBOutlet weak var validValueLabel: UILabel!
+    @IBOutlet weak var gasInfoImage: UIImageView!
+    @IBOutlet weak var gasTipLabel: UILabel!
+    
     @IBOutlet weak var confirmationButton: UIButton!
     @IBOutlet weak var declineButton: UIButton!
     @IBOutlet weak var confirmWidth: NSLayoutConstraint!
     @IBOutlet weak var declineWidth: NSLayoutConstraint!
     
-    var order: OriginalOrder?
-    var type: TradeType = .buy
-    var price: String = "0.0"
-    var message: String = ""
-    var expire: OrderExpire = .oneHour
-    var verifyInfo: [String: Double]?
-    var isSigning: Bool = false
-    
-    // Labels
     var tokenSView: TradeTokenView!
     var tokenBView: TradeTokenView!
-    var arrowRightImageView: UIImageView = UIImageView()
-    // Price
-    var priceLabel: UILabel = UILabel()
-    var priceValueLabel: UILabel = UILabel()
-    var priceTipLabel: UILabel = UILabel()
-    var priceUnderline: UIView = UIView()
-    // Expires
-    var expiresTipLabel: UILabel = UILabel()
-    var expiresInfoLabel: UILabel = UILabel()
-    var expiresUnderline: UIView = UIView()
-    // LRC Fee
-    var feeTipLabel: UILabel = UILabel()
-    var feeInfoLabel: UILabel = UILabel()
-    var feeUnderline: UIView = UIView()
-    // Margin
-    var marginTipLabel: UILabel = UILabel()
-    var marginInfoLabel: UILabel = UILabel()
-    var marginUnderline: UIView = UIView()
-    // Total
-    var totalTipLabel: UILabel = UILabel()
-    var totalInfoLabel: UILabel = UILabel()
-
+    
+    var order: OriginalOrder?
+    var verifyInfo: [String: Double]?
+    var dismissClosure: (() -> Void)?
+    var parentNavController: UINavigationController?
+    var isSigning: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        setBackButton()
-        self.navigationItem.title = LocalizedString("Confirmation", comment: "")
-        if let order = self.order {
-            setupPrice(order: order)
-            setupRows(order: order)
-        }
-        setupButtons()
-    }
-    
-    func setupPrice(order: OriginalOrder) {
-        guard isSigning else { return }
-        if order.side == "buy" {
-            self.price = (order.amountBuy / order.amountSell).withCommas()
-        } else if order.side == "sell" {
-            self.price = (order.amountSell / order.amountBuy).withCommas()
-        }
-    }
-    
-    func setupButtons() {
-        if isSigning {
-            let width = (UIScreen.main.bounds.width - 45) / 2
-            confirmWidth.constant = width
-            declineWidth.constant = width
-            confirmationButton.title = LocalizedString("Accept", comment: "")
-            declineButton.isHidden = false
-            declineButton.title = LocalizedString("Decline", comment: "")
-            declineButton.setupPrimary()
-        } else {
-            confirmationButton.title = LocalizedString("Confirmation", comment: "")
-        }
-        confirmationButton.setupSecondary()
-    }
-  
-    func setupRows(order: OriginalOrder) {
-        let screensize: CGRect = UIScreen.main.bounds
-        let screenWidth = screensize.width
-        let padding: CGFloat = 15
-        let paddingTop: CGFloat = 100
+        self.modalPresentationStyle = .custom
+        self.view.theme_backgroundColor = GlobalPicker.backgroundColor
+        containerView.applyShadow(withColor: .black)
         
-        // labels
-        tokenSView = TradeTokenView(frame: CGRect(x: 10, y: paddingTop, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
-        scrollView.addSubview(tokenSView)
-        tokenBView = TradeTokenView(frame: CGRect(x: (screenWidth+10)/2, y: paddingTop, width: (screenWidth-30)/2, height: 180*UIStyleConfig.scale))
-        scrollView.addSubview(tokenBView)
-        tokenSView.update(type: .sell, symbol: order.tokenSell, amount: order.amountSell)
-        tokenBView.update(type: .buy, symbol: order.tokenBuy, amount: order.amountBuy)
-        arrowRightImageView = UIImageView(frame: CGRect(center: CGPoint(x: screenWidth/2, y: tokenBView.frame.minY + tokenBView.iconImageView.frame.midY), size: CGSize(width: 32*UIStyleConfig.scale, height: 32*UIStyleConfig.scale)))
-        arrowRightImageView.image = UIImage.init(named: "Arrow-right-black")
-        scrollView.addSubview(arrowRightImageView)
+        // TokenView
+        tokenSView = TradeTokenView(frame: tokenSell.frame)
+        tokenBView = TradeTokenView(frame: tokenBuy.frame)
+        containerView.addSubview(tokenSView)
+        containerView.addSubview(tokenBView)
         
-        // 1st row: price
-        priceLabel.setTitleDigitFont()
+        // Price label
         priceLabel.text = LocalizedString("Price", comment: "")
-        priceLabel.frame = CGRect(x: padding, y: tokenSView.frame.maxY + padding*4, width: 150, height: 40)
-        scrollView.addSubview(priceLabel)
-        
-        priceTipLabel.text = "(" + LocalizedString("Irrational", comment: "") + ")"
-        priceTipLabel.textColor = .red
-        priceTipLabel.textAlignment = .right
-        priceTipLabel.setTitleDigitFont()
-        priceTipLabel.frame = CGRect(x: screenWidth - padding - 100, y: priceLabel.frame.minY, width: 100, height: 40)
-        priceTipLabel.isHidden = true
-        scrollView.addSubview(priceTipLabel)
-        
+        priceLabel.setTitleCharFont()
         priceValueLabel.setTitleDigitFont()
-        let tradingPair = order.market.replacingOccurrences(of: "-", with: "/")
         
-        priceValueLabel.text = "\(price) \(tradingPair)"
-        priceValueLabel.textAlignment = .right
-        if !validateRational() {
-            priceTipLabel.isHidden = false
-            priceValueLabel.frame = CGRect(x: priceTipLabel.frame.minX - 200, y: priceLabel.frame.minY, width: 200, height: 40)
-        } else {
-            priceValueLabel.frame = CGRect(x: UIScreen.main.bounds.width - 15 - 200, y: priceLabel.frame.minY, width: 200, height: 40)
-        }
-        scrollView.addSubview(priceValueLabel)
+        // Trading Fee
+        LRCFeeLabel.text = LocalizedString("Trading Fee", comment: "")
+        LRCFeeLabel.setTitleCharFont()
+        LRCFeeValueLabel.setTitleDigitFont()
         
-        priceUnderline.frame = CGRect(x: padding, y: priceLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        priceUnderline.backgroundColor = UIStyleConfig.underlineColor
-        scrollView.addSubview(priceUnderline)
+        // Margin Split
+        marginSplitLabel.text = LocalizedString("Margin Split", comment: "")
+        marginSplitLabel.setTitleCharFont()
+        marginSplitValueLabel.text = SettingDataManager.shared.getMarginSplitDescription()
+        marginSplitValueLabel.setTitleDigitFont()
         
-        // 2nd row: expires
-        expiresTipLabel.setTitleDigitFont()
-        expiresTipLabel.text = LocalizedString("Order Expires in", comment: "")
-        expiresTipLabel.frame = CGRect(x: padding, y: priceLabel.frame.maxY + padding, width: 150, height: 40)
-        scrollView.addSubview(expiresTipLabel)
-        expiresInfoLabel.setTitleDigitFont()
-        expiresInfoLabel.text = self.expire.description
-        expiresInfoLabel.textAlignment = .right
-        expiresInfoLabel.frame = CGRect(x: padding + 150, y: expiresTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
-        scrollView.addSubview(expiresInfoLabel)
-        expiresUnderline.frame = CGRect(x: padding, y: expiresTipLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        expiresUnderline.backgroundColor = UIStyleConfig.underlineColor
-        scrollView.addSubview(expiresUnderline)
+        // TTL label
+        validLabel.setTitleCharFont()
+        validLabel.text = LocalizedString("Time to Live", comment: "")
+        validValueLabel.setTitleDigitFont()
         
-        // 3rd row: lrc fee
-        feeTipLabel.setTitleDigitFont()
-        feeTipLabel.text = LocalizedString("Trading Fee", comment: "")
-        feeTipLabel.frame = CGRect(x: padding, y: expiresTipLabel.frame.maxY + padding, width: 150, height: 40)
-        scrollView.addSubview(feeTipLabel)
-        feeInfoLabel.setTitleDigitFont()
-        if let price = PriceDataManager.shared.getPrice(of: "LRC") {
-            let display = (order.lrcFee * price).currency
-            feeInfoLabel.text = String(format: "%0.3f LRC(≈ \(display))", order.lrcFee)
-        }
-        feeInfoLabel.textAlignment = .right
-        feeInfoLabel.frame = CGRect(x: padding + 150, y: feeTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
-        scrollView.addSubview(feeInfoLabel)
-        feeUnderline.frame = CGRect(x: padding, y: feeTipLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        feeUnderline.backgroundColor = UIStyleConfig.underlineColor
-        scrollView.addSubview(feeUnderline)
+        // Gas label
+        gasTipLabel.setSubTitleCharFont()
+        gasTipLabel.text = LocalizedString("GAS_TIP", comment: "")
         
-        // 4th row: margin split
-        marginTipLabel.setTitleDigitFont()
-        marginTipLabel.text = LocalizedString("Margin Split", comment: "")
-        marginTipLabel.frame = CGRect(x: padding, y: feeTipLabel.frame.maxY + padding, width: 150, height: 40)
-        scrollView.addSubview(marginTipLabel)
-        marginInfoLabel.setTitleDigitFont()
-        marginInfoLabel.text = SettingDataManager.shared.getMarginSplitDescription()
-        marginInfoLabel.textAlignment = .right
-        marginInfoLabel.frame = CGRect(x: padding + 150, y: marginTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
-        scrollView.addSubview(marginInfoLabel)
-        marginUnderline.frame = CGRect(x: padding, y: marginTipLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        marginUnderline.backgroundColor = UIStyleConfig.underlineColor
-        scrollView.addSubview(marginUnderline)
-        
-        // 5th row: total
-        totalTipLabel.setTitleDigitFont()
-        totalTipLabel.text = LocalizedString("Total", comment: "")
-        totalTipLabel.frame = CGRect(x: padding, y: marginTipLabel.frame.maxY + padding, width: 150, height: 40)
-        scrollView.addSubview(totalTipLabel)
-        totalInfoLabel.setTitleDigitFont()
-        totalInfoLabel.text = (order.side.lowercased() == "buy" ? order.amountBuy.description + " " + order.tokenBuy : order.amountSell.description + " " + order.tokenSell)
-        totalInfoLabel.textAlignment = .right
-        totalInfoLabel.frame = CGRect(x: padding + 150, y: totalTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
-        scrollView.addSubview(totalInfoLabel)
-        scrollView.delegate = self
-        scrollView.contentSize = CGSize(width: screenWidth, height: totalTipLabel.frame.maxY + padding)
+        // Tap gesture
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        tap.delegate = self
+        view.addGestureRecognizer(tap)
     }
-    
-    func isBuyingOrder() -> Bool {
-        var result: Bool = false
-        if self.order?.side == "buy" {
-            result = true
-        } else if self.order?.side == "" {
-            result = self.type == .buy
-        }
-        return result
-    }
-
-    func validateRational() -> Bool {
-        let pair = TradeDataManager.shared.tradePair
-        if let price = Double(self.price),
-            let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
-            let header = LocalizedString("Your price is irrational, ", comment: "")
-            let footer = LocalizedString("Do you wish to continue trading or signing with the price?", comment: "")
-            let messageA = LocalizedString("which may cause your asset wastage! ", comment: "")
-            let messageB = LocalizedString("which may cause your order abolished! ", comment: "")
-            if isBuyingOrder() {
-                if price < 0.8 * market.balance {
-                    self.message = header + messageB + footer
-                    return false
-                } else if price > 1.2 * market.balance {
-                    self.message = header + messageA + footer
-                    return false
-                }
-            } else {
-                if price < 0.8 * market.balance {
-                    self.message = header + messageA + footer
-                    return false
-                } else if price > 1.2 * market.balance {
-                    self.message = header + messageB + footer
-                    return false
-                }
-            }
-            return true
-        }
-        return true
-    }
-    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func handleOrder() {
-        if !priceTipLabel.isHidden {
-            let alert = UIAlertController(title: LocalizedString("Please Pay Attention", comment: ""), message: self.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
-                DispatchQueue.main.async {
-                    self.verifyInfo = PlaceOrderDataManager.shared.verify(order: self.order!)
-                    self.handleVerifyInfo()
-                }
-            }))
-            alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
-            }))
-            self.present(alert, animated: true, completion: nil)
-        } else {
-            self.verifyInfo = PlaceOrderDataManager.shared.verify(order: order!)
-            self.handleVerifyInfo()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let order = self.order {
+            updateLabels(order: order)
         }
+        setupButtons()
+    }
+    
+    func setupButtons() {
+        if isSigning {
+            let width = (containerView.frame.width - 60) / 2
+            confirmWidth.constant = width
+            declineWidth.constant = width
+            confirmationButton.title = LocalizedString("Accept", comment: "")
+            declineButton.isHidden = false
+            declineButton.title = LocalizedString("Decline", comment: "")
+            declineButton.setupSecondary(height: 44)
+        } else {
+            confirmationButton.title = LocalizedString("Confirmation", comment: "")
+        }
+        confirmationButton.setupPrimary(height: 44)
+    }
+    
+    func updateLabels(order: OriginalOrder) {
+        tokenSView.update(type: .sell, symbol: order.tokenSell, amount: order.amountSell)
+        tokenBView.update(type: .buy, symbol: order.tokenBuy, amount: order.amountBuy)
+        let price = order.amountBuy / order.amountSell
+        let value = order.side == "buy" ? price : 1 / price
+        priceValueLabel.text = "\(value.withCommas()) \(order.market)"
+        if let price = PriceDataManager.shared.getPrice(of: "LRC") {
+            let total = (price * order.lrcFee).currency
+            LRCFeeValueLabel.text = "\(order.lrcFee)LRC ≈ \(total)"
+        }
+        marginSplitValueLabel.text = SettingDataManager.shared.getMarginSplitDescription()
+        let since = DateUtil.convertToDate(UInt(order.validSince), format: "MM-dd HH:mm")
+        let until = DateUtil.convertToDate(UInt(order.validUntil), format: "MM-dd HH:mm")
+        validValueLabel.text = "\(since) ~ \(until)"
+    }
+    
+    func close() {
+        if let closure = self.dismissClosure {
+            closure()
+        }
+        self.dismiss(animated: true, completion: {
+        })
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        close()
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        let location = touch.location(in: nil)
+        if containerView.frame.contains(location) {
+            return false
+        }
+        return true
+    }
+    
+    func handleOrder() {
+        SVProgressHUD.show(withStatus: LocalizedString("Submitting order", comment: "") + "...")
+        self.verifyInfo = PlaceOrderDataManager.shared.verify(order: order!)
+        self.handleVerifyInfo()
     }
     
     func doSigning() {
@@ -288,19 +187,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     }
     
     func handleSigning() {
-        if !priceTipLabel.isHidden {
-            let alert = UIAlertController(title: LocalizedString("Please Pay Attention", comment: ""), message: self.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
-                DispatchQueue.main.async {
-                    self.doSigning()
-                }
-            }))
-            alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
-            }))
-            self.present(alert, animated: true, completion: nil)
-        } else {
-            self.doSigning()
-        }
+        self.doSigning()
     }
 
     @IBAction func pressedConfirmationButton(_ sender: Any) {
@@ -379,10 +266,9 @@ extension PlaceOrderConfirmationViewController {
     
     func pushController(orderHash: String?) {
         let viewController = ConfirmationResultViewController()
-        viewController.orderHash = orderHash
         viewController.verifyInfo = self.verifyInfo
         viewController.order = isSigning ? AuthorizeDataManager.shared.submitOrder : order
-        self.navigationController?.pushViewController(viewController, animated: true)
+        self.parentNavController?.pushViewController(viewController, animated: true)
     }
     
     func approve() {
@@ -403,7 +289,7 @@ extension PlaceOrderConfirmationViewController {
     
     func approveOnce(token: String) {
         if let toAddress = TokenDataManager.shared.getAddress(by: token) {
-            var error: NSError? = nil
+            var error: NSError?
             let approve = GethBigInt.generate(valueInEther: Double(INT64_MAX), symbol: token)!
             let delegateAddress = GethNewAddressFromHex(RelayAPIConfiguration.delegateAddress, &error)!
             let tokenAddress = GethNewAddressFromHex(toAddress, &error)!
@@ -413,7 +299,7 @@ extension PlaceOrderConfirmationViewController {
     
     func approveTwice(token: String) {
         if let toAddress = TokenDataManager.shared.getAddress(by: token) {
-            var error: NSError? = nil
+            var error: NSError?
             var approve = GethBigInt.generate(valueInEther: 0, symbol: token)!
             let delegateAddress = GethNewAddressFromHex(RelayAPIConfiguration.delegateAddress, &error)!
             let tokenAddress = GethNewAddressFromHex(toAddress, &error)!

@@ -113,7 +113,7 @@ class SendConfirmViewController: UIViewController {
         SVProgressHUD.show(withStatus: "Processing the transaction ...")
         if let toAddress = self.receiveAddress,
             let token = TokenDataManager.shared.getTokenBySymbol(self.sendAsset.symbol) {
-            var error: NSError? = nil
+            var error: NSError?
             let toAddress = GethNewAddressFromHex(toAddress, &error)!
             if token.symbol.uppercased() == "ETH" {
                 let amount = Double(self.sendAmount)!

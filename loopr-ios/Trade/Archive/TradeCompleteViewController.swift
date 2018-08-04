@@ -10,7 +10,7 @@ import UIKit
 
 class TradeCompleteViewController: UIViewController {
 
-    @IBOutlet weak var exchangedLabel: UILabel!
+    @IBOutlet weak var resultHeaderImage: UIImageView!
     @IBOutlet weak var exchangedInfoLabel: UILabel!
     @IBOutlet weak var detailsButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
@@ -32,7 +32,7 @@ class TradeCompleteViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setBackButton()
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         setupErrorInfo()
         setupLabels()
         setupRows()
@@ -43,15 +43,15 @@ class TradeCompleteViewController: UIViewController {
         guard !isBalanceEnough() else { return }
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
-        let padding: CGFloat = 15
+        let padding: CGFloat = 24
         
         // 1st row: need A token
-        needATipLabel.setTitleDigitFont()
+        needATipLabel.setTitleCharFont()
         needATipLabel.text = LocalizedString("You Need More", comment: "")
         needATipLabel.frame = CGRect(x: padding, y: padding, width: 150, height: 40)
         scrollView.addSubview(needATipLabel)
         needAInfoLabel.setTitleDigitFont()
-        needAInfoLabel.textColor = .red
+        needAInfoLabel.textColor = .fail
         needAInfoLabel.text = errorTipInfo[0]
         needAInfoLabel.textAlignment = .right
         needAInfoLabel.frame = CGRect(x: padding + 150, y: needATipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
@@ -64,12 +64,12 @@ class TradeCompleteViewController: UIViewController {
         scrollView.addSubview(needAUnderline)
         
         // 2nd row: need B token
-        needBTipLabel.setTitleDigitFont()
+        needBTipLabel.setTitleCharFont()
         needBTipLabel.text = LocalizedString("You Need More", comment: "")
         needBTipLabel.frame = CGRect(x: padding, y: needATipLabel.frame.maxY + padding, width: 150, height: 40)
         scrollView.addSubview(needBTipLabel)
         needBInfoLabel.setTitleDigitFont()
-        needBInfoLabel.textColor = .red
+        needBInfoLabel.textColor = .fail
         needBInfoLabel.text = errorTipInfo[1]
         needBInfoLabel.textAlignment = .right
         needBInfoLabel.frame = CGRect(x: padding + 150, y: needBTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
@@ -77,15 +77,12 @@ class TradeCompleteViewController: UIViewController {
     }
     
     func setupLabels() {
-        exchangedLabel.font = UIFont(name: FontConfigManager.shared.getBold(), size: 40.0)
-        exchangedLabel.text = LocalizedString("Completed!", comment: "")
-        exchangedLabel.font = FontConfigManager.shared.getRegularFont(size: 20.0)
-        exchangedInfoLabel.textColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1)
+        exchangedInfoLabel.setTitleCharFont()
         if isBalanceEnough() {
-            exchangedLabel.text = LocalizedString("Placed!", comment: "")
+            resultHeaderImage.image = #imageLiteral(resourceName: "Result-header-success")
             exchangedInfoLabel.text = LocalizedString("Congradualations! Your order has been submited!", comment: "")
         } else {
-            exchangedLabel.text = LocalizedString("Attention!", comment: "")
+            resultHeaderImage.image = #imageLiteral(resourceName: "Result-header-fail")
             exchangedInfoLabel.text = LocalizedString("Your order has not been submited! Please make sure you have enough balance to complete the trade.", comment: "")
         }
     }
@@ -96,17 +93,14 @@ class TradeCompleteViewController: UIViewController {
     
     func setupButtons() {
         detailsButton.title = LocalizedString("Check Details", comment: "")
-        detailsButton.setupPrimary()
+        detailsButton.setupPrimary(height: 44)
         if isBalanceEnough() {
-            detailsButton.isEnabled = true
-            detailsButton.backgroundColor = UIColor.white
+            detailsButton.isHidden = false
         } else {
-            detailsButton.isEnabled = false
-            detailsButton.layer.borderColor = UIColor.clear.cgColor
-            detailsButton.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
+            detailsButton.isHidden = true
         }
         doneButton.title = LocalizedString("Done", comment: "")
-        doneButton.setupSecondary()
+        doneButton.titleLabel?.setTitleCharFont()
     }
     
     func setupErrorInfo() {
@@ -136,6 +130,11 @@ class TradeCompleteViewController: UIViewController {
     }
     
     @IBAction func pressedDoneButton(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
+        for controller in self.navigationController!.viewControllers as Array {
+            if controller.isKind(of: TradeViewController.self) {
+                self.navigationController!.popToViewController(controller, animated: true)
+                break
+            }
+        }
     }
 }

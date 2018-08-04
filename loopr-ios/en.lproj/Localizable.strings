@@ -303,6 +303,7 @@
 "Failed to import address. The device has imported the address already." = "Failed to import address. The device has imported the address already.";
 "You are going to clear records of" = "You are going to clear records of";
 "on this device." = "on this device.";
+"Submitting order" = "Submitting order";
 "Approving authorization" = "Approving authorization";
 "Signer address do NOT match the order's, please transfer and try again later" = "Signer address do NOT match the order's, please transfer and try again later";
 "Create_used_in_creating_wallet" = "Create";

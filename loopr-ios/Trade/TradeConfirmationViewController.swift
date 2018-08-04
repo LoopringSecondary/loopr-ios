@@ -213,7 +213,7 @@ extension TradeConfirmationViewController {
     
     func approveOnce(token: String) {
         if let toAddress = TokenDataManager.shared.getAddress(by: token) {
-            var error: NSError? = nil
+            var error: NSError?
             let approve = GethBigInt.generate(valueInEther: Double(INT64_MAX), symbol: token)!
             let delegateAddress = GethNewAddressFromHex(RelayAPIConfiguration.delegateAddress, &error)!
             let tokenAddress = GethNewAddressFromHex(toAddress, &error)!
@@ -223,7 +223,7 @@ extension TradeConfirmationViewController {
     
     func approveTwice(token: String) {
         if let toAddress = TokenDataManager.shared.getAddress(by: token) {
-            var error: NSError? = nil
+            var error: NSError?
             var approve = GethBigInt.generate(valueInEther: 0, symbol: token)!
             let delegateAddress = GethNewAddressFromHex(RelayAPIConfiguration.delegateAddress, &error)!
             let tokenAddress = GethNewAddressFromHex(toAddress, &error)!

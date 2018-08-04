@@ -348,9 +348,13 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
 
     func pushController() {
         if let order = constructOrder() {
-            let viewController = TradeConfirmationViewController()
+            let parentView = self.parent!.view!
+            parentView.alpha = 0.25
+            let viewController = PlaceOrderConfirmationViewController()
             viewController.order = order
-            self.navigationController?.pushViewController(viewController, animated: true)
+            viewController.dismissClosure = { parentView.alpha = 1 }
+            viewController.parentNavController = self.navigationController
+            self.present(viewController, animated: true, completion: nil)
         }
     }
     
