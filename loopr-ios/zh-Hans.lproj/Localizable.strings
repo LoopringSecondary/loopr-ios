@@ -185,6 +185,7 @@
 "Order Detail" = "订单详情";
 "Filled/Amount" = "完成/总额";
 "Status" = "状态";
+"Type" = "类型";
 "Address" = "地址";
 "Trade" = "交易";
 "Go To Trade" = "去交易";

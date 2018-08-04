@@ -56,7 +56,7 @@ class AssetSwipeViewController: SwipeViewController {
         
         // Receive button
         receiveButton.setTitle(LocalizedString("Receive", comment: "") + " " + (asset?.symbol ?? ""), for: .normal)
-        receiveButton.setupSecondary(height: 44, gradientOrientation: .horizontal)
+        receiveButton.setupPrimary(height: 44, gradientOrientation: .horizontal)
         
         // Send button
         sendButton.setTitle(LocalizedString("Send", comment: "") + " " + (asset?.symbol ?? ""), for: .normal)

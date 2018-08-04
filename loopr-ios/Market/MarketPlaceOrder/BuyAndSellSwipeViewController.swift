@@ -50,12 +50,11 @@ class BuyAndSellSwipeViewController: SwipeViewController {
         if Themes.isDark() {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.white
-            // swipeView.reloadData(options: options, default: initIndex)
         } else {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.black
-            // swipeView.reloadData(options: options, default: initIndex)
         }
+        swipeView.reloadData(options: options)
     }
     
     // To avoid gesture conflicts in swiping to back and UISlider

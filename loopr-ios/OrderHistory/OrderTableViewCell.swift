@@ -31,6 +31,7 @@ class OrderTableViewCell: UITableViewCell {
         self.theme_backgroundColor = GlobalPicker.backgroundColor
         self.baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         self.baseView.applyShadow(withColor: .black)
+        cancelButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 14)
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
@@ -59,7 +60,6 @@ class OrderTableViewCell: UITableViewCell {
             cancelButton.isEnabled = false
         }
         cancelButton.title = text
-        cancelButton.titleLabel?.setTitleCharFont()
     }
     
     func getOrderStatus(order: Order) -> (Bool, String) {

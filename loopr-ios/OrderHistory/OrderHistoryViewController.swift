@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -28,6 +29,7 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
     var filteredOrders = [Order]()
     
     var canHideKeyboard = true
+    var blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
     
     convenience init(type: OrderHistorySwipeType) {
         self.init(nibName: nil, bundle: nil)
@@ -61,6 +63,9 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         historyTableView.refreshControl = refreshControl
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        
+        blurVisualEffectView.alpha = 1
+        blurVisualEffectView.frame = UIScreen.main.bounds
         
         let item = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.pressOrderSearchButton(_:)))
         self.navigationItem.setRightBarButton(item, animated: true)
@@ -164,11 +169,6 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
             let nib = Bundle.main.loadNibNamed("OrderTableViewCell", owner: self, options: nil)
             cell = nib![0] as? OrderTableViewCell
         }
-        if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
-            cell?.baseView.round(corners: [.bottomLeft, .bottomRight], radius: 6)
-        } else {
-            cell?.baseView.round(corners: [], radius: 0)
-        }
         let order: Order
         if isSearching {
             order = filteredOrders[indexPath.row]
@@ -176,6 +176,29 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
             order = orders[indexPath.row]
         }
         cell?.order = order
+        cell?.pressedCancelButtonClosure = {
+            self.blurVisualEffectView.alpha = 1.0
+            let title = LocalizedString("You are going to cancel the order.", comment: "")
+            let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.blurVisualEffectView.alpha = 0.0
+                }, completion: {(_) in
+                    self.blurVisualEffectView.removeFromSuperview()
+                })
+                SendCurrentAppWalletDataManager.shared._cancelOrder(order: order.originalOrder, completion: self.completion)
+                self.historyTableView.reloadData()
+            }))
+            alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.blurVisualEffectView.alpha = 0.0
+                }, completion: {(_) in
+                    self.blurVisualEffectView.removeFromSuperview()
+                })
+            }))
+            self.navigationController?.view.addSubview(self.blurVisualEffectView)
+            self.present(alert, animated: true, completion: nil)
+        }
         cell?.update()
         return cell!
     }
@@ -194,5 +217,28 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.view.endEditing(true)
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+extension OrderHistoryViewController {
+    
+    func completion(_ txHash: String?, _ error: Error?) {
+        var title: String = ""
+        guard error == nil && txHash != nil else {
+            DispatchQueue.main.async {
+                title = NSLocalizedString("Order(s) cancel Failed, Please try again.", comment: "")
+                let banner = NotificationBanner.generate(title: title, style: .danger)
+                banner.duration = 5
+                banner.show()
+            }
+            return
+        }
+        DispatchQueue.main.async {
+            print(txHash!)
+            title = NSLocalizedString("Order(s) Cancelled Successful.", comment: "")
+            let banner = NotificationBanner.generate(title: title, style: .success)
+            banner.duration = 5
+            banner.show()
+        }
     }
 }

@@ -104,7 +104,9 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         priceTextField.setLeftPaddingPoints(40)
         priceTextField.setRightPaddingPoints(72)
         priceTextField.contentMode = UIViewContentMode.bottom
+        estimateValueInCurrencyLabel.isHidden = true
         estimateValueInCurrencyLabel.setSubTitleCharFont()
+        sellTipLabel.setTitleCharFont()
         sellTipLabel.text = LocalizedString("Price", comment: "")
 
         // Second row: TokenB
@@ -118,6 +120,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         amountTextField.setRightPaddingPoints(72)
         amountTextField.contentMode = UIViewContentMode.bottom
         tipLabel.setSubTitleCharFont()
+        buyTipLabel.setTitleCharFont()
         buyTipLabel.text = LocalizedString("Amount", comment: "")
         
         // Slider
