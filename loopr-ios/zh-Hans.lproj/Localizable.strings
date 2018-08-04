@@ -114,6 +114,10 @@
 "1 Month" = "1月";
 "Orders" = "订单";
 "Trades" = "历史订单";
+"Open" = "进行中";
+"Finished" = "已成交";
+"Cancelled" = "已取消";
+"Expired" = "已过期";
 "Cancel All" = "取消全部";
 "Order Book" = "最新挂单";
 "No Data" = "暂时没有数据";
@@ -299,6 +303,7 @@
 "Failed to import address. The device has imported the address already." = "导入失败，地址之前已经被导入。";
 "You are going to clear records of" = "您将要清除该手机上";
 "on this device." = "的数据。";
+"Submitting order" = "正在提交订单";
 "Approving authorization" = "正在申请授权";
 "Signer address do NOT match the order's, please transfer and try again later" = "授权方的钱包地址和下单方地址并不匹配，请在更换授权方的地址，确认匹配后再进行授权";
 "Create_used_in_creating_wallet" = "成功创建";

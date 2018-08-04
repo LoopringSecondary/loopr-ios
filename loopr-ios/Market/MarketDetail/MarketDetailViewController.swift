@@ -26,13 +26,13 @@ class MarketDetailViewController: UIViewController {
         setup()
         udpateStarButton()
 
-        // Sell button
-        sellButton.setTitle(LocalizedString("Sell", comment: "") + " " + market.tradingPair.tradingA, for: .normal)
-        sellButton.setupPrimary(height: 44)
-
         // Buy button
         buyButton.setTitle(LocalizedString("Buy", comment: "") + " " + market.tradingPair.tradingA, for: .normal)
-        buyButton.setupSecondary(height: 44)
+        buyButton.setupPrimary(height: 44)
+        
+        // Sell button
+        sellButton.setTitle(LocalizedString("Sell", comment: "") + " " + market.tradingPair.tradingA, for: .normal)
+        sellButton.setupSecondary(height: 44)
         
         marketDetailSwipeViewController.market = market
         addChildViewController(marketDetailSwipeViewController)

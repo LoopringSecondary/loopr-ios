@@ -40,9 +40,9 @@
                     <rect key="frame" x="30" y="81" width="315" height="525"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVt-V6-Y9K">
-                            <rect key="frame" x="40" y="20" width="100" height="160"/>
+                            <rect key="frame" x="0.0" y="20" width="140" height="160"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="100" id="42p-rf-mr6"/>
+                                <constraint firstAttribute="width" constant="140" id="42p-rf-mr6"/>
                             </constraints>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Trade-arrow-dark" translatesAutoresizingMaskIntoConstraints="NO" id="09q-Ad-lb3">
@@ -53,9 +53,9 @@
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ssf-mc-oJt">
-                            <rect key="frame" x="175" y="20" width="100" height="160"/>
+                            <rect key="frame" x="175" y="20" width="140" height="160"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="100" id="Le5-TH-3yW"/>
+                                <constraint firstAttribute="width" constant="140" id="Le5-TH-3yW"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmm-Nj-omT">
@@ -220,12 +220,12 @@
                         <constraint firstAttribute="bottom" secondItem="RXZ-sL-MIg" secondAttribute="bottom" constant="20" id="dj2-oL-kl2"/>
                         <constraint firstItem="PmR-3r-eKe" firstAttribute="top" secondItem="ku3-Jf-VP3" secondAttribute="bottom" constant="1" id="enj-BC-4xS"/>
                         <constraint firstItem="09q-Ad-lb3" firstAttribute="centerY" secondItem="dVt-V6-Y9K" secondAttribute="top" constant="30" id="iZm-pP-QcA"/>
-                        <constraint firstAttribute="trailing" secondItem="ssf-mc-oJt" secondAttribute="trailing" constant="40" id="jgJ-o5-POk"/>
+                        <constraint firstAttribute="trailing" secondItem="ssf-mc-oJt" secondAttribute="trailing" id="jgJ-o5-POk"/>
                         <constraint firstItem="cmm-Nj-omT" firstAttribute="top" secondItem="ssf-mc-oJt" secondAttribute="bottom" constant="20" id="jhZ-ra-FVL"/>
                         <constraint firstAttribute="trailing" secondItem="ku3-Jf-VP3" secondAttribute="trailing" id="qBc-xv-ZwE"/>
                         <constraint firstItem="Sjj-eH-DHu" firstAttribute="top" secondItem="cmm-Nj-omT" secondAttribute="bottom" constant="1" id="toS-PS-Kbu"/>
                         <constraint firstItem="ssf-mc-oJt" firstAttribute="top" secondItem="a9Z-KO-IHW" secondAttribute="top" constant="20" id="wkS-Lc-YdU"/>
-                        <constraint firstItem="dVt-V6-Y9K" firstAttribute="leading" secondItem="a9Z-KO-IHW" secondAttribute="leading" constant="40" id="xjI-Ac-7PZ"/>
+                        <constraint firstItem="dVt-V6-Y9K" firstAttribute="leading" secondItem="a9Z-KO-IHW" secondAttribute="leading" id="xjI-Ac-7PZ"/>
                         <constraint firstItem="PmR-3r-eKe" firstAttribute="leading" secondItem="a9Z-KO-IHW" secondAttribute="leading" id="yhf-S6-cBU"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>

@@ -22,20 +22,14 @@ class OrderDataManager {
         dateOrders = [:]
     }
 
-    func getOrders(hideOtherPairs: Bool, currentMarket: Market, orderStatuses: [OrderStatus]? = nil) -> [Order] {
+    func getOrders(orderStatuses: [OrderStatus]? = nil) -> [Order] {
         guard let orderStatuses = orderStatuses else {
             return orders
         }
         let filteredOrder = orders.filter { (order) -> Bool in
             orderStatuses.contains(order.orderStatus)
         }
-        if hideOtherPairs {
-            return filteredOrder.filter({ (order) -> Bool in
-                order.tradingPairDescription == currentMarket.description
-            })
-        } else {
-            return filteredOrder
-        }
+        return filteredOrder
     }
     
     func getOrders(token: String? = nil) -> [Order] {
@@ -43,8 +37,28 @@ class OrderDataManager {
             return orders
         }
         return orders.filter { (order) -> Bool in
-            let pair = order.originalOrder.market.components(separatedBy: "-")
-            return pair[0].lowercased() == token.lowercased()
+            return order.originalOrder.market.contains(token)
+        }
+    }
+    
+    func getOrders(type: OrderHistorySwipeType = .open) -> [Order] {
+        switch type {
+        case .open:
+            return orders.filter({ (order) -> Bool in
+                return order.orderStatus == .opened
+            })
+        case .finished:
+            return orders.filter({ (order) -> Bool in
+                return order.orderStatus == .finished
+            })
+        case .cancelled:
+            return orders.filter({ (order) -> Bool in
+                return order.orderStatus == .cancelled
+            })
+        case .expried:
+            return orders.filter({ (order) -> Bool in
+                return order.orderStatus == .expire
+            })
         }
     }
     
@@ -92,18 +106,15 @@ class OrderDataManager {
         let defaults = UserDefaults.standard
         var result = defaults.bool(forKey: UserDefaultsKeys.cancelledAll.rawValue)
         guard !result else { return false }
-        let hide = SettingDataManager.shared.getHideOtherPairs()
-        if let market = PlaceOrderDataManager.shared.market {
-            let openOrders = self.getOrders(hideOtherPairs: hide, currentMarket: market, orderStatuses: [.opened])
-            if let cancellingOrders = defaults.stringArray(forKey: UserDefaultsKeys.cancellingOrders.rawValue) {
-                openOrders.forEach { (order) in
-                    if !cancellingOrders.contains(order.originalOrder.hash) {
-                        result = true
-                    }
+        let openOrders = self.getOrders(orderStatuses: [.opened])
+        if let cancellingOrders = defaults.stringArray(forKey: UserDefaultsKeys.cancellingOrders.rawValue) {
+            openOrders.forEach { (order) in
+                if !cancellingOrders.contains(order.originalOrder.hash) {
+                    result = true
                 }
-            } else {
-                result = openOrders.count > 0
             }
+        } else {
+            result = openOrders.count > 0
         }
         return result
     }

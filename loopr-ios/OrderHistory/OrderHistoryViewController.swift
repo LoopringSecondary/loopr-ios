@@ -10,12 +10,38 @@ import UIKit
 
 class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    // These data need to be loaded when viewDidLoad() is called. Users can also pull to refresh the table view.
-    var orderDates: [String] = []
-    var orders: [String: [Order]] = [:]
-
     @IBOutlet weak var historyTableView: UITableView!
-    private let refreshControl = UIRefreshControl()
+
+    // Data source
+    var orders: [Order] = []
+    
+    var type: OrderHistorySwipeType
+    let refreshControl = UIRefreshControl()
+    
+    var viewAppear: Bool = false
+    
+    var didSelectRowClosure: ((Market) -> Void)?
+    var didSelectBlankClosure: (() -> Void)?
+    
+    var searchText: String = ""
+    var isSearching: Bool = false
+    var filteredOrders = [Order]()
+    
+    var canHideKeyboard = true
+    
+    convenience init(type: OrderHistorySwipeType) {
+        self.init(nibName: nil, bundle: nil)
+        self.type = type
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        type = .open
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +55,16 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         historyTableView.delegate = self
         historyTableView.tableFooterView = UIView()
         historyTableView.separatorStyle = .none
+
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 10))
+        historyTableView.tableHeaderView = headerView
+        historyTableView.refreshControl = refreshControl
+        refreshControl.theme_tintColor = GlobalPicker.textColor
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         
         let item = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.pressOrderSearchButton(_:)))
         self.navigationItem.setRightBarButton(item, animated: true)
         
-        // Add Refresh Control to Table View
-        historyTableView.refreshControl = refreshControl
-        refreshControl.theme_tintColor = GlobalPicker.textColor
-        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         getOrderHistoryFromRelay()
     }
     
@@ -60,16 +88,70 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
     func getOrderHistoryFromRelay() {
         OrderDataManager.shared.getOrdersFromServer(completionHandler: { orders, _ in
             DispatchQueue.main.async {
-                self.orders = OrderDataManager.shared.getDateOrders(orderStatuses: [.finished, .cutoff, .cancelled, .expire])
-                self.orderDates = self.orders.keys.sorted(by: >)
+                self.orders = OrderDataManager.shared.getOrders(type: self.type)
                 self.historyTableView.reloadData()
                 self.refreshControl.endRefreshing()
             }
         })
     }
     
+    func reloadAfterSwipeViewUpdated(isSearching: Bool, searchText: String) {
+        orders = OrderDataManager.shared.getOrders(type: self.type)
+        self.isSearching = isSearching
+        self.searchText = searchText.trim()
+        if isSearching {
+            filterContentForSearchText(self.searchText)
+        } else {
+            historyTableView.reloadData()
+            // marketTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
+        }
+    }
+    
+    func searchTextDidUpdate(searchText: String) {
+        self.searchText = searchText.trim()
+        if self.searchText != "" {
+            isSearching = true
+            filterContentForSearchText(self.searchText)
+        } else {
+            isSearching = false
+            historyTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
+        }
+    }
+    
+    // MARK: - Private instance methods
+    
+    func filterContentForSearchText(_ searchText: String) {
+        let newFilteredOrders = OrderDataManager.shared.getOrders(type: self.type).filter { (order) -> Bool in
+            return order.originalOrder.market.lowercased().contains(searchText.lowercased())
+        }
+        filteredOrders = newFilteredOrders
+        if historyTableView.contentOffset.y == 0 {
+            historyTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
+        } else {
+            canHideKeyboard = false
+            _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
+                self.canHideKeyboard = true
+            }
+            
+            historyTableView.reloadData()
+            // tableView.setContentOffset(.zero, animated: false)
+            let topIndex = IndexPath(row: 0, section: 0)
+            historyTableView.scrollToRow(at: topIndex, at: .top, animated: true)
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if canHideKeyboard {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return orders[orderDates[section]]!.count
+        if isSearching {
+            return filteredOrders.count
+        } else {
+            return orders.count
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -82,41 +164,35 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
             let nib = Bundle.main.loadNibNamed("OrderTableViewCell", owner: self, options: nil)
             cell = nib![0] as? OrderTableViewCell
         }
-        cell?.order = orders[orderDates[indexPath.section]]![indexPath.row]
+        if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
+            cell?.baseView.round(corners: [.bottomLeft, .bottomRight], radius: 6)
+        } else {
+            cell?.baseView.round(corners: [], radius: 0)
+        }
+        let order: Order
+        if isSearching {
+            order = filteredOrders[indexPath.row]
+        } else {
+            order = orders[indexPath.row]
+        }
+        cell?.order = order
         cell?.update()
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let order = orders[orderDates[indexPath.section]]![indexPath.row]
+        let order: Order
+        if isSearching {
+            order = filteredOrders[indexPath.row]
+        } else {
+            order = orders[indexPath.row]
+        }
+        
         let viewController = OrderDetailViewController()
         viewController.order = order
         viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.view.endEditing(true)
         self.navigationController?.pushViewController(viewController, animated: true)
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 45
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 45))
-        headerView.backgroundColor = UIColor.white
-        let headerLabel = UILabel(frame: CGRect(x: 15, y: 0, width: view.frame.size.width, height: 45))
-        headerLabel.textColor = UIColor.black.withAlphaComponent(0.3)
-        headerLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 17)
-        headerLabel.text = orderDates[section]
-        headerView.addSubview(headerLabel)
-        return headerView
-    }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return orders.keys.count
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
