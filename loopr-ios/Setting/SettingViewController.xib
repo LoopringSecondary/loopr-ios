@@ -40,39 +40,5 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Eed-51-Itt">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-            <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Eed-51-Itt" id="GXq-Ug-5zq">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </tableViewCellContentView>
-            <point key="canvasLocation" x="408" y="-2"/>
-        </tableViewCell>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="tsb-HS-OWA" detailTextLabel="gMN-T3-qr1" style="IBUITableViewCellStyleValue1" id="Iyt-4V-QnL">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-            <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Iyt-4V-QnL" id="5wf-rH-U0C">
-                <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tsb-HS-OWA">
-                        <rect key="frame" x="16" y="12" width="33.5" height="20.5"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gMN-T3-qr1">
-                        <rect key="frame" x="296" y="12" width="44" height="20.5"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                </subviews>
-            </tableViewCellContentView>
-            <point key="canvasLocation" x="554" y="-74"/>
-        </tableViewCell>
     </objects>
 </document>
