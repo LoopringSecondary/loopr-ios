@@ -19,6 +19,9 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
     @IBOutlet weak var headerLastPriceLabel: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var footerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +49,17 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
 
         self.buys = MarketDepthDataManager.shared.getBuys()
         self.sells = MarketDepthDataManager.shared.getSells()
+        var maxCount = buys.count > sells.count ? buys.count : sells.count
+        if maxCount > 10 {
+            maxCount = 10
+        }
+        tableViewHeight.constant = 41 + MarketDetailDepthTableViewCell.getHeight() * CGFloat(maxCount) + 10
+        
+        footerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        tap.delegate = self
+        view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -125,7 +139,12 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return buys.count > sells.count ? buys.count : sells.count
+        let maxCount = buys.count > sells.count ? buys.count : sells.count
+        if maxCount > 10 {
+            return 10
+        } else {
+            return maxCount
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -161,4 +180,9 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
         return cell!
     }
 
+    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        dismiss(animated: true) {
+            
+        }
+    }
 }

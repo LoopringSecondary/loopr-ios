@@ -16,6 +16,9 @@ class MiniToLargeViewInteractive: UIPercentDrivenInteractiveTransition {
     
     var shouldComplete = false
     var lastProgress: CGFloat?
+
+    // Represents the percentage of the transition that must be completed before allowing to complete.
+    var percentThreshold: CGFloat = 0.3
     
     func attachToViewController(viewController: UIViewController, withView view: UIView, presentViewController: UIViewController?) {
         self.viewController = viewController
@@ -27,8 +30,6 @@ class MiniToLargeViewInteractive: UIPercentDrivenInteractiveTransition {
     @objc func onPan(_ pan: UIPanGestureRecognizer) {
         let translation = pan.translation(in: pan.view?.superview)
         
-        //Represents the percentage of the transition that must be completed before allowing to complete.
-        let percentThreshold: CGFloat = 0.3
         //Represents the difference between progress that is required to trigger the completion of the transition.
         let automaticOverrideThreshold: CGFloat = 0.03
         

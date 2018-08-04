@@ -65,7 +65,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     var buttons: [UIButton] = []
     var intervalValue = 1
     var intervalUnit: Calendar.Component = .hour
-    var distance: CGFloat = 0
     
     // config
     var type: TradeType
@@ -172,10 +171,11 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         scrollViewTap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(scrollViewTap)
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: containerView.frame.maxY)
-        // scrollView.delaysContentTouches = false
         
-        self.distance = 0
-        self.scrollViewButtonLayoutConstraint.constant = self.distance
+        // TODO: This cause wired animation.
+        scrollView.delaysContentTouches = false
+
+        self.scrollViewButtonLayoutConstraint.constant = 0
     }
 
     override func didReceiveMemoryWarning() {
@@ -186,6 +186,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         update()
+        containerView.applyShadow(withColor: .black)
     }
     
     func update() {
@@ -220,14 +221,12 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
 
         let nextViewController = MarketDetailDepthModalViewController()
         nextViewController.market = market
-
-        // nextViewController.rootViewController = self
         nextViewController.transitioningDelegate = self
-
         nextViewController.modalPresentationStyle = .overFullScreen
-        
-        presentInteractor = MiniToLargeViewInteractive()
-        presentInteractor.attachToViewController(viewController: self, withView: view, presentViewController: nextViewController)
+
+        // presentInteractor = MiniToLargeViewInteractive()
+        // presentInteractor.attachToViewController(viewController: self, withView: view, presentViewController: nextViewController)
+
         dismissInteractor = MiniToLargeViewInteractive()
         dismissInteractor.attachToViewController(viewController: nextViewController, withView: nextViewController.view, presentViewController: nil)
         
@@ -282,6 +281,11 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: tokenS) {
             message = "\(title) \(asset.display) \(tokenS)"
             amountTextField.text = (asset.balance * value).withCommas(length)
+            
+            // Only validate when balance is larger than 0.
+            if asset.balance > 0 {
+                _ = validate()
+            }
         } else {
             message = "\(title) 0.0 \(tokenS)"
             amountTextField.text = "0.0"
@@ -289,13 +293,12 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         tipLabel.text = message
         tipLabel.textColor = .text1
         activeTextFieldTag = amountTextField.tag
-        _ = validate()
     }
 
     // To avoid gesture conflicts in swiping to back and UISlider
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if touch.view != nil && touch.view!.isKind(of: UISlider.self) {
-            return false
+        if touch.view != nil && touch.view!.isKind(of: StepSlider.self) {
+            return true
         }
         return true
     }
@@ -578,24 +581,27 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
 }
 
 extension BuyViewController: UIViewControllerTransitioningDelegate {
-    
+    /*
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animator = MiniToLargeViewAnimator()
-        animator.initialY = 10
+        animator.initialY = 0
         animator.transitionType = .Present
         return animator
     }
+    */
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animator = MiniToLargeViewAnimator()
-        animator.initialY = 10
+        animator.initialY = 0
         animator.transitionType = .Dismiss
         return animator
     }
     
+    /*
     func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return presentInteractor
     }
+    */
     
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         // guard !disableInteractivePlayerTransitioning else { return nil }

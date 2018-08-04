@@ -18,11 +18,11 @@ class BaseAnimator: NSObject {
     var transitionType: ModalAnimatedTransitioningType = .Present
     
     func animatePresentingInContext(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController) {
-        NSException(name: NSExceptionName.internalInconsistencyException, reason:"\(#function) must be overridden in a subclass/category", userInfo:nil).raise()
+        NSException(name: NSExceptionName.internalInconsistencyException, reason: "\(#function) must be overridden in a subclass/category", userInfo: nil).raise()
     }
     
     func animateDismissingInContext(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController) {
-        NSException(name: NSExceptionName.internalInconsistencyException, reason:"\(#function) must be overridden in a subclass/category", userInfo:nil).raise()
+        NSException(name: NSExceptionName.internalInconsistencyException, reason: "\(#function) must be overridden in a subclass/category", userInfo: nil).raise()
     }
     
 }
@@ -44,7 +44,7 @@ extension BaseAnimator: UIViewControllerAnimatedTransitioning {
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        NSException(name: NSExceptionName.internalInconsistencyException, reason:"\(#function) must be overridden in a subclass/category", userInfo:nil).raise()
+        NSException(name: NSExceptionName.internalInconsistencyException, reason: "\(#function) must be overridden in a subclass/category", userInfo: nil).raise()
         return 0
     }
 }
