@@ -85,12 +85,31 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
                     if self.isLaunching {
                         self.isLaunching = false
                     }
-                    self.transactions = transactions
+                    self.transactions = self.sortTransactions(transactions)
                     self.tableView.reloadData()
                     self.refreshControl.endRefreshing()
                 }
             }
         }
+    }
+    
+    func sortTransactions(_ transsactions: [Transaction]) -> [Transaction] {
+        var result: [Transaction] = []
+        switch self.type {
+        case .status:
+            result = transsactions.sorted { (tx1, tx2) -> Bool in
+                return tx1.status.description > tx2.status.description
+            }
+        case .type:
+            result = transsactions.sorted { (tx1, tx2) -> Bool in
+                return tx1.type.description < tx2.type.description
+            }
+        default:
+            result = transsactions.sorted { (tx1, tx2) -> Bool in
+                return tx1.createTime > tx2.createTime
+            }
+        }
+        return result
     }
 
     override func didReceiveMemoryWarning() {

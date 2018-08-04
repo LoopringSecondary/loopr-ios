@@ -8,8 +8,6 @@
 
 import UIKit
 import Geth
-import NotificationBannerSwift
-import SVProgressHUD
 import StepSlider
 
 class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, DefaultNumericKeyboardDelegate, NumericKeyboardProtocol, QRCodeScanProtocol, StepSliderDelegate {
@@ -112,7 +110,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         tokenSymbolLabel.theme_textColor = GlobalPicker.contrastTextColor
         tokenSymbolLabel.textAlignment = .right
         
-        transactionFeeTipLabel.setSubTitleCharFont()
+        transactionFeeTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 10)
+        transactionFeeTipLabel.theme_textColor = ["#00000099", "#ffffff66"]
         transactionFeeTipLabel.text = LocalizedString("ETH_TIP", comment: "")
 
         // Transaction

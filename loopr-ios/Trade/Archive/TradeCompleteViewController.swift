@@ -20,9 +20,11 @@ class TradeCompleteViewController: UIViewController {
     var needATipLabel: UILabel = UILabel()
     var needAInfoLabel: UILabel = UILabel()
     var needAUnderline: UIView = UIView()
+    
     // Need TokenB
     var needBTipLabel: UILabel = UILabel()
     var needBInfoLabel: UILabel = UILabel()
+    var needBUnderline: UIView = UIView()
     
     var order: OriginalOrder?
     var errorTipInfo: [String] = []
@@ -60,7 +62,7 @@ class TradeCompleteViewController: UIViewController {
         guard errorTipInfo.count == 2 else { return }
         
         needAUnderline.frame = CGRect(x: padding, y: needATipLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        needAUnderline.backgroundColor = UIStyleConfig.underlineColor
+        needAUnderline.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         scrollView.addSubview(needAUnderline)
         
         // 2nd row: need B token
@@ -74,6 +76,10 @@ class TradeCompleteViewController: UIViewController {
         needBInfoLabel.textAlignment = .right
         needBInfoLabel.frame = CGRect(x: padding + 150, y: needBTipLabel.frame.origin.y, width: screenWidth - padding * 2 - 150, height: 40)
         scrollView.addSubview(needBInfoLabel)
+        
+        needBUnderline.frame = CGRect(x: padding, y: needBTipLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
+        needBUnderline.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        scrollView.addSubview(needBUnderline)
     }
     
     func setupLabels() {

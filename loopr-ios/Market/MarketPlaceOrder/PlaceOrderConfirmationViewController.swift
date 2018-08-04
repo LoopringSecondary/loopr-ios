@@ -123,7 +123,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         priceValueLabel.text = "\(value.withCommas()) \(order.market)"
         if let price = PriceDataManager.shared.getPrice(of: "LRC") {
             let total = (price * order.lrcFee).currency
-            LRCFeeValueLabel.text = "\(order.lrcFee)LRC ≈ \(total)"
+            LRCFeeValueLabel.text = "\(order.lrcFee.withCommas(3))LRC ≈ \(total)"
         }
         marginSplitValueLabel.text = SettingDataManager.shared.getMarginSplitDescription()
         let since = DateUtil.convertToDate(UInt(order.validSince), format: "MM-dd HH:mm")
@@ -131,11 +131,11 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         validValueLabel.text = "\(since) ~ \(until)"
     }
     
-    func close() {
+    func close(_ animated: Bool = true) {
         if let closure = self.dismissClosure {
             closure()
         }
-        self.dismiss(animated: true, completion: {
+        self.dismiss(animated: animated, completion: {
         })
     }
     
@@ -260,11 +260,13 @@ extension PlaceOrderConfirmationViewController {
                 submit()
             }
         } else {
+            SVProgressHUD.dismiss()
             pushController(orderHash: nil)
         }
     }
     
     func pushController(orderHash: String?) {
+        self.close(false)
         let viewController = ConfirmationResultViewController()
         viewController.verifyInfo = self.verifyInfo
         viewController.order = isSigning ? AuthorizeDataManager.shared.submitOrder : order
