@@ -10,8 +10,6 @@ import UIKit
 
 class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var interactor: Interactor?
-
     var market: Market!
     private var buys: [Depth] = []
     private var sells: [Depth] = []
@@ -28,9 +26,6 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.clear // UIColor.black.withAlphaComponent(0.8)
 
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(self.handleGesture(_:)))
-        view.addGestureRecognizer(pan)
-        
         headerView.theme_backgroundColor = GlobalPicker.backgroundColor
         headerView.round(corners: [.topLeft, .topRight], radius: 12)
 
@@ -58,43 +53,22 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        view.backgroundColor = UIColor.clear
-        interactor?.update(0)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // TODO: Improve this UI.
+        UIView.animate(withDuration: 0.3) {
+            self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        }
     }
     
-    @objc func handleGesture(_ sender: UIPanGestureRecognizer) {
-        print("handeGesture")
-        
-        let percentThreshold: CGFloat = 0.3
-        
-        // convert y-position to downward pull progress (percentage)
-        let translation = sender.translation(in: view)
-        let verticalMovement = translation.y / view.bounds.height
-        let downwardMovement = fmaxf(Float(verticalMovement), 0.0)
-        let downwardMovementPercent = fminf(downwardMovement, 1.0)
-        let progress = CGFloat(downwardMovementPercent)
-        
-        guard let interactor = interactor else { return }
-        
-        switch sender.state {
-        case .began:
-            interactor.hasStarted = true
-            dismiss(animated: true, completion: nil)
-        case .changed:
-            interactor.shouldFinish = progress > percentThreshold
-            interactor.update(progress)
-        case .cancelled:
-            interactor.hasStarted = false
-            interactor.cancel()
-        case .ended:
-            interactor.hasStarted = false
-            interactor.shouldFinish
-                ? interactor.finish()
-                : interactor.cancel()
-        default:
-            break
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIView.animate(withDuration: 0.3) {
+            self.view.backgroundColor = UIColor.clear
         }
     }
     

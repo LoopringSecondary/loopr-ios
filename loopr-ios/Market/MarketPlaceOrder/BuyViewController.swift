@@ -52,8 +52,9 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     var viewOverLay = UIView()
     
     // Drag down to close a present view controller.
-    let interactor = Interactor()
-    
+    var presentInteractor: MiniToLargeViewInteractive!
+    var dismissInteractor: MiniToLargeViewInteractive!
+
     // Numeric keyboard
     var isNumericKeyboardShow: Bool = false
     var numericKeyboardView: DefaultNumericKeyboard!
@@ -213,17 +214,23 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     
     @IBAction func pressedUpdatePriceButton(_ sender: Any) {
         print("pressedUpdatePriceButton")
+
+        let nextViewController = MarketDetailDepthModalViewController()
+        nextViewController.market = market
+
+        // nextViewController.rootViewController = self
+        nextViewController.transitioningDelegate = self
+
+        nextViewController.modalPresentationStyle = .overFullScreen
         
-        let vc = MarketDetailDepthModalViewController()
-        vc.market = market
-        vc.transitioningDelegate = self
-        vc.interactor = self.interactor
+        presentInteractor = MiniToLargeViewInteractive()
+        presentInteractor.attachToViewController(viewController: self, withView: view, presentViewController: nextViewController)
+        dismissInteractor = MiniToLargeViewInteractive()
+        dismissInteractor.attachToViewController(viewController: nextViewController, withView: nextViewController.view, presentViewController: nil)
         
-        // vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        
-        self.present(vc, animated: true, completion: {
+        self.present(nextViewController, animated: true) {
             
-        })
+        }
     }
 
     @IBAction func pressedUpdateAmountButton(_ sender: Any) {
@@ -568,13 +575,28 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
 }
 
 extension BuyViewController: UIViewControllerTransitioningDelegate {
-
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let animator = MiniToLargeViewAnimator()
+        animator.initialY = 10
+        animator.transitionType = .Present
+        return animator
+    }
+    
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return DismissAnimator()
+        let animator = MiniToLargeViewAnimator()
+        animator.initialY = 10
+        animator.transitionType = .Dismiss
+        return animator
+    }
+    
+    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return presentInteractor
     }
     
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return interactor.hasStarted ? interactor : nil
+        // guard !disableInteractivePlayerTransitioning else { return nil }
+        return dismissInteractor
     }
 
 }
