@@ -384,3 +384,6 @@
 "Time to Live" = "Time to Live";
 "GAS_TIP" = "Place order will never cost any gas fee";
 "Change" = "Change";
+"Hour" = "Hour";
+"Day" = "Day";
+"Month" = "Month";

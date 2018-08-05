@@ -137,8 +137,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(scrollViewTap)
-        // If it's not a table view, no need to set delaysContentTouches = false
-        // scrollView.delaysContentTouches = false
+        scrollView.delaysContentTouches = false
 
         // Send button
         sendButton.title = LocalizedString("Send", comment: "")

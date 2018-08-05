@@ -16,6 +16,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     
     // container
     @IBOutlet weak var containerView: UIView!
+    var hasShadow: Bool = false
     
     // TokenS
     @IBOutlet weak var tokenSButton: UIButton!
@@ -99,7 +100,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         priceTextField.inputView = UIView()
         priceTextField.font = FontConfigManager.shared.getDigitalFont()
         priceTextField.theme_tintColor = GlobalPicker.contrastTextColor
-        priceTextField.placeholder = LocalizedString("Enter the amount you have", comment: "")
+        priceTextField.placeholder = LocalizedString("", comment: "")
         priceTextField.setLeftPaddingPoints(40)
         priceTextField.setRightPaddingPoints(72)
         priceTextField.contentMode = UIViewContentMode.bottom
@@ -114,7 +115,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         amountTextField.inputView = UIView()
         amountTextField.font = FontConfigManager.shared.getDigitalFont()
         amountTextField.theme_tintColor = GlobalPicker.contrastTextColor
-        amountTextField.placeholder = LocalizedString("Enter the amount you get", comment: "")
+        amountTextField.placeholder = LocalizedString("", comment: "")
         amountTextField.setLeftPaddingPoints(40)
         amountTextField.setRightPaddingPoints(72)
         amountTextField.contentMode = UIViewContentMode.bottom
@@ -186,7 +187,10 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         update()
-        containerView.applyShadow(withColor: .black)
+        if !hasShadow {
+            containerView.applyShadow(withColor: .black)
+            hasShadow = true
+        }
     }
     
     func update() {
@@ -302,7 +306,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     // To avoid gesture conflicts in swiping to back and UISlider
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if touch.view != nil && touch.view!.isKind(of: StepSlider.self) {
-            return true
+            return false
         }
         return true
     }

@@ -384,3 +384,6 @@
 "Time to Live" = "有效期";
 "GAS_TIP" = "下单时不会消耗油费";
 "Change" = "涨跌";
+"Hour" = "小时";
+"Day" = "天";
+"Month" = "月";

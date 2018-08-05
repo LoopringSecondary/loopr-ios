@@ -114,6 +114,8 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
         if cell == nil {
             let nib = Bundle.main.loadNibNamed("MarketDetailDepthTableViewCell", owner: self, options: nil)
             cell = nib![0] as? MarketDetailDepthTableViewCell
+            cell?.fakeBuyButton.isEnabled = false
+            cell?.fakeSellButton.isEnabled = false
         }
         if indexPath.row < buys.count {
             cell?.buyDepth = buys[indexPath.row]

@@ -34,7 +34,7 @@ class TTLViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         pickerView.delegate = self
         pickerView.dataSource = self
         dateDictionary = [0: 23, 1: 30, 2: 12]
-        pickerTitle = ["Hour", "Day", "Month"]
+        pickerTitle = [LocalizedString("Hour", comment: ""), LocalizedString("Day", comment: ""), LocalizedString("Month", comment: "")]
         pickerType = [.hour, .day, .month]
         
         titleLabel.setTitleCharFont()

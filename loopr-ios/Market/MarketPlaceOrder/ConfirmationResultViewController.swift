@@ -34,7 +34,8 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        // self.navigationController?.setNavigationBarHidden(true, animated: false)
+        setBackButton()
         setupErrorInfo()
         setupLabels()
         setupRows()
