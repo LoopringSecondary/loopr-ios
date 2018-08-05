@@ -10,7 +10,8 @@ import UIKit
 import StepSlider
 
 class SetGasViewController: UIViewController, StepSliderDelegate {
-
+    
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var gasValueLabel: UILabel!
@@ -26,12 +27,13 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
     var dismissClosure: (() -> Void)?
     
     var isViewDidAppear: Bool = false
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.modalPresentationStyle = .custom
         // Do any additional setup after loading the view.
+        view.backgroundColor = UIColor.clear
+        
         titleLabel.setTitleCharFont()
         titleLabel.text = LocalizedString("Set Gas", comment: "")
         gasValueLabel.setTitleDigitFont()
@@ -66,7 +68,7 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         tap.delegate = self
-        view.addGestureRecognizer(tap)
+        headerView.addGestureRecognizer(tap)
         
         self.maxGasValue = Double(recGasPriceInGwei * 2) <= 20 ? 20 : Double(recGasPriceInGwei * 2)
         update(self.gasPriceInGwei)
@@ -115,16 +117,9 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         close()
     }
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        let location = touch.location(in: nil)
-        if containerView.frame.contains(location) {
-            return false
-        }
-        return true
-    }
-    
+
     @IBAction func pressedRecommandButton(_ sender: UIButton) {
+        GasDataManager.shared.setGasPrice(in: self.recGasPriceInGwei)
         self.update(self.recGasPriceInGwei)
     }
     

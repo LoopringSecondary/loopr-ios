@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,6 +16,7 @@
                 <outlet property="containerView" destination="P6r-gu-pz5" id="XdA-Ql-hdD"/>
                 <outlet property="gasTipLabel" destination="Kah-Qa-kkg" id="Fc1-He-ABx"/>
                 <outlet property="gasValueLabel" destination="8iv-d9-nYg" id="16h-zL-eL3"/>
+                <outlet property="headerView" destination="RXi-P4-cav" id="yG1-PM-dnU"/>
                 <outlet property="recommandButton" destination="igK-LD-NVw" id="K7q-wK-9Wr"/>
                 <outlet property="titleLabel" destination="6Cw-vD-9gm" id="bk9-BS-xji"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -38,17 +39,6 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvO-r7-bdU" userLabel="Close Button">
-                            <rect key="frame" x="325" y="15" width="34" height="34"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="34" id="L6D-t5-s5W"/>
-                                <constraint firstAttribute="height" constant="34" id="iEv-3w-WNU"/>
-                            </constraints>
-                            <state key="normal" image="Close-dark"/>
-                            <connections>
-                                <action selector="pressedCloseButton:" destination="-1" eventType="touchUpInside" id="ozw-i0-VyB"/>
-                            </connections>
-                        </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfR-fi-BSr">
                             <rect key="frame" x="0.0" y="64" width="375" height="0.5"/>
                             <color key="backgroundColor" name="Color-dark3"/>
@@ -83,7 +73,6 @@
                     <color key="backgroundColor" name="Color-dark2"/>
                     <constraints>
                         <constraint firstItem="pfR-fi-BSr" firstAttribute="leading" secondItem="P6r-gu-pz5" secondAttribute="leading" id="9Wf-We-zrn"/>
-                        <constraint firstItem="pvO-r7-bdU" firstAttribute="centerY" secondItem="6Cw-vD-9gm" secondAttribute="centerY" id="Aa8-XZ-ZCX"/>
                         <constraint firstAttribute="trailing" secondItem="igK-LD-NVw" secondAttribute="trailing" constant="24" id="Bj1-Y7-Z6M"/>
                         <constraint firstAttribute="height" constant="240" id="DQm-X4-do8"/>
                         <constraint firstItem="Kah-Qa-kkg" firstAttribute="leading" secondItem="8iv-d9-nYg" secondAttribute="leading" id="KAD-VL-BgW"/>
@@ -94,7 +83,6 @@
                         <constraint firstItem="8iv-d9-nYg" firstAttribute="leading" secondItem="P6r-gu-pz5" secondAttribute="leading" constant="24" id="i5P-hF-1gm"/>
                         <constraint firstItem="6Cw-vD-9gm" firstAttribute="top" secondItem="P6r-gu-pz5" secondAttribute="top" constant="16" id="lka-qs-iBM"/>
                         <constraint firstItem="Kah-Qa-kkg" firstAttribute="top" secondItem="8iv-d9-nYg" secondAttribute="bottom" constant="16" id="s6f-VR-epn"/>
-                        <constraint firstAttribute="trailing" secondItem="pvO-r7-bdU" secondAttribute="trailing" constant="16" id="uPi-GD-Zna"/>
                         <constraint firstItem="6Cw-vD-9gm" firstAttribute="centerX" secondItem="P6r-gu-pz5" secondAttribute="centerX" id="wzW-Mq-NgI"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
@@ -103,12 +91,33 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RXi-P4-cav">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="499"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvO-r7-bdU" userLabel="Close Button">
+                    <rect key="frame" x="325" y="450" width="34" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="34" id="L6D-t5-s5W"/>
+                        <constraint firstAttribute="height" constant="34" id="iEv-3w-WNU"/>
+                    </constraints>
+                    <state key="normal" image="Close-dark"/>
+                    <connections>
+                        <action selector="pressedCloseButton:" destination="-1" eventType="touchUpInside" id="ozw-i0-VyB"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="P6r-gu-pz5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8xq-dJ-Vs5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pvO-r7-bdU" secondAttribute="trailing" constant="16" id="Cbu-8B-8VO"/>
+                <constraint firstItem="RXi-P4-cav" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Fdk-Ke-aP2"/>
+                <constraint firstItem="RXi-P4-cav" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="LlG-gG-wPz"/>
+                <constraint firstItem="pvO-r7-bdU" firstAttribute="centerY" secondItem="6Cw-vD-9gm" secondAttribute="centerY" id="Lqp-yd-Jxm"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="RXi-P4-cav" secondAttribute="bottom" constant="168" id="RVw-Ry-Vbz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="P6r-gu-pz5" secondAttribute="trailing" id="SzP-0t-r7T"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="P6r-gu-pz5" secondAttribute="bottom" constant="-8" id="e2l-rR-DhD"/>
+                <constraint firstItem="RXi-P4-cav" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="xhd-bW-um9"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="24.5" y="51.5"/>

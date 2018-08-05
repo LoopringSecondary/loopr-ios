@@ -53,7 +53,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     var blurVisualEffectView = UIView()
     
     // Drag down to close a present view controller.
-    var presentInteractor: MiniToLargeViewInteractive!
     var dismissInteractor: MiniToLargeViewInteractive!
 
     // Numeric keyboard

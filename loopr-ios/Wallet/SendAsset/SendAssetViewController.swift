@@ -45,7 +45,10 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
     
     // Mask view
-    @IBOutlet weak var totalMaskView: UIView!
+    var blurVisualEffectView = UIView()
+    
+    // Drag down to close a present view controller.
+    var dismissInteractor: MiniToLargeViewInteractive!
     
     // slider
     var stepSlider: StepSlider = StepSlider()
@@ -174,6 +177,10 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         stepSlider.isDotsInteractionEnabled = true
         stepSlider.adjustLabel = true
         contentView.addSubview(stepSlider)
+        
+        blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        blurVisualEffectView.alpha = 1
+        blurVisualEffectView.frame = UIScreen.main.bounds
     }
 
     override func didReceiveMemoryWarning() {
@@ -342,25 +349,50 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     }
     
     @objc func pressedAdvancedButton() {
-        self.totalMaskView.alpha = 0.75
         let vc = SetGasViewController()
-        vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        vc.transitioningDelegate = self
+        vc.modalPresentationStyle = .overFullScreen
         vc.dismissClosure = {
-            self.totalMaskView.alpha = 0
-            self.gasPriceInGwei = vc.gasPriceInGwei
+            self.gasPriceInGwei = GasDataManager.shared.getGasPriceInGwei()
+            self.updateTransactionFeeAmountLabel()
+
+            UIView.animate(withDuration: 0.1, animations: {
+                self.blurVisualEffectView.alpha = 0.0
+            }, completion: {(_) in
+                self.blurVisualEffectView.removeFromSuperview()
+            })
+        }
+        
+        dismissInteractor = MiniToLargeViewInteractive()
+        dismissInteractor.percentThreshold = 0.2
+        dismissInteractor.dismissClosure = {
+            self.gasPriceInGwei = GasDataManager.shared.getGasPriceInGwei()
             self.updateTransactionFeeAmountLabel()
         }
-        self.present(vc, animated: true, completion: nil)
+        
+        self.present(vc, animated: true) {
+            self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.headerView, presentViewController: nil, backgroundView: self.blurVisualEffectView)
+        }
+        
+        self.navigationController?.view.addSubview(self.blurVisualEffectView)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.blurVisualEffectView.alpha = 1.0
+        }, completion: {(_) in
+            
+        })
     }
     
     func pushController() {
-        totalMaskView.alpha = 0.75
+        // totalMaskView.alpha = 0.75
         let vc = SendConfirmViewController()
         vc.sendAsset = self.asset
         vc.sendAmount = self.amountTextField.text
         vc.receiveAddress = self.addressTextField.text
         vc.gasAmountText = self.transactionFeeAmountLabel.text
-        vc.dismissClosure = { self.totalMaskView.alpha = 0 }
+        vc.dismissClosure = {
+            // TODO: Use dismissInteractor
+            // self.totalMaskView.alpha = 0
+        }
         vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
         vc.parentNavController = self.navigationController
         self.present(vc, animated: true, completion: nil)
@@ -545,4 +577,20 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         activeTextFieldTag = amountTextField.tag
         _ = validate()
     }
+}
+
+extension SendAssetViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let animator = MiniToLargeViewAnimator()
+        animator.initialY = 0
+        animator.transitionType = .Dismiss
+        return animator
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        // guard !disableInteractivePlayerTransitioning else { return nil }
+        return dismissInteractor
+    }
+    
 }

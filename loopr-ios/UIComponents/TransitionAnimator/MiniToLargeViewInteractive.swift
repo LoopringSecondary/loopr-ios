@@ -18,6 +18,7 @@ class MiniToLargeViewInteractive: UIPercentDrivenInteractiveTransition {
     var lastProgress: CGFloat?
     
     weak var backgroundView: UIView?
+    var dismissClosure: (() -> Void)?
 
     // Represents the percentage of the transition that must be completed before allowing to complete.
     var percentThreshold: CGFloat = 0.3
@@ -72,11 +73,15 @@ class MiniToLargeViewInteractive: UIPercentDrivenInteractiveTransition {
                 cancel()
             } else {
                 finish()
+                // call dismiss
                 UIView.animate(withDuration: 0.1, animations: {
                     self.backgroundView?.alpha = 0
                 }, completion: {(_) in
                     self.backgroundView?.removeFromSuperview()
                 })
+                if let closure = self.dismissClosure {
+                    closure()
+                }
             }
             
         default:
