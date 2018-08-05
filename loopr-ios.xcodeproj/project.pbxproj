@@ -552,9 +552,6 @@
 		ACEC977F20AD57F3003F9DEB /* P2POrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEC977D20AD57F3003F9DEB /* P2POrderHistoryViewController.swift */; };
 		ACEC978020AD57F3003F9DEB /* P2POrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACEC977E20AD57F3003F9DEB /* P2POrderHistoryViewController.xib */; };
 		ACEC978220AD6165003F9DEB /* P2POrderHistoryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEC978120AD6165003F9DEB /* P2POrderHistoryDataManager.swift */; };
-		ACEC978620B247F0003F9DEB /* DefaultSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEC978520B247F0003F9DEB /* DefaultSlider.swift */; };
-		ACEC978820B24808003F9DEB /* DefaultSliderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEC978720B24808003F9DEB /* DefaultSliderDelegate.swift */; };
-		ACEC978A20B24818003F9DEB /* TapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEC978920B24818003F9DEB /* TapticEngine.swift */; };
 		ACF06A06204C736A00C3FF86 /* CreateMnemonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF06A05204C736A00C3FF86 /* CreateMnemonicTests.swift */; };
 		ACF71CB42033E723000E7618 /* TradeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */; };
 		ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */; };
@@ -1092,9 +1089,6 @@
 		ACEC977D20AD57F3003F9DEB /* P2POrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P2POrderHistoryViewController.swift; sourceTree = "<group>"; };
 		ACEC977E20AD57F3003F9DEB /* P2POrderHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = P2POrderHistoryViewController.xib; sourceTree = "<group>"; };
 		ACEC978120AD6165003F9DEB /* P2POrderHistoryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P2POrderHistoryDataManager.swift; sourceTree = "<group>"; };
-		ACEC978520B247F0003F9DEB /* DefaultSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSlider.swift; sourceTree = "<group>"; };
-		ACEC978720B24808003F9DEB /* DefaultSliderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSliderDelegate.swift; sourceTree = "<group>"; };
-		ACEC978920B24818003F9DEB /* TapticEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapticEngine.swift; sourceTree = "<group>"; };
 		ACF06A05204C736A00C3FF86 /* CreateMnemonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMnemonicTests.swift; sourceTree = "<group>"; };
 		ACF71CB22033E723000E7618 /* TradeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeTableViewCell.swift; sourceTree = "<group>"; };
 		ACF71CB32033E723000E7618 /* TradeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeTableViewCell.xib; sourceTree = "<group>"; };
@@ -2051,7 +2045,6 @@
 				94231DE920BD66F900A4FDC3 /* PaddingLabel */,
 				9445D54220BA4F3F006045F6 /* Price */,
 				9413F68F20B8028B00524D2D /* Amount */,
-				ACEC978420B247CA003F9DEB /* Slider */,
 				AC76E46E2047F1AE008BA229 /* CircleChart */,
 				ACE6F71A204210E80039273D /* DashedLineView */,
 				ACDBF0FF203FE6F3000F0DEC /* TableViewReorder */,
@@ -2438,16 +2431,6 @@
 				943A9A4020909597008BCBFD /* DefaultWebViewController.xib */,
 			);
 			path = WebViewController;
-			sourceTree = "<group>";
-		};
-		ACEC978420B247CA003F9DEB /* Slider */ = {
-			isa = PBXGroup;
-			children = (
-				ACEC978520B247F0003F9DEB /* DefaultSlider.swift */,
-				ACEC978720B24808003F9DEB /* DefaultSliderDelegate.swift */,
-				ACEC978920B24818003F9DEB /* TapticEngine.swift */,
-			);
-			path = Slider;
 			sourceTree = "<group>";
 		};
 		ACFEFE9620C3389400013921 /* Transaction */ = {
@@ -3032,7 +3015,6 @@
 				ACDBF10C203FEA3E000F0DEC /* ReorderGestureRecognizer.swift in Sources */,
 				AC2ACA652102EBBE009C77E7 /* SettingLanguageTableViewCell.swift in Sources */,
 				ACDBF105203FE7D5000F0DEC /* ReorderSnapshotView.swift in Sources */,
-				ACEC978A20B24818003F9DEB /* TapticEngine.swift in Sources */,
 				94EB84DC2095E69600FFE40E /* AssetCollectionViewCell.swift in Sources */,
 				ACE6F722204221260039273D /* Themes.swift in Sources */,
 				ACB9117C20256BBA00F14644 /* TradingPair.swift in Sources */,
@@ -3138,7 +3120,6 @@
 				AC5288B4208300580002AEAD /* DateUtil.swift in Sources */,
 				940B45222060F67E00ADE2B9 /* PriceDataManager.swift in Sources */,
 				AC9A273D20A577E900DB04AC /* Double+Extension.swift in Sources */,
-				ACEC978820B24808003F9DEB /* DefaultSliderDelegate.swift in Sources */,
 				AC13B30A2054A766008A72C0 /* BuyViewController.swift in Sources */,
 				ACB5DDA2202D6F9400140A09 /* UIViewExtension.swift in Sources */,
 				943C1CAE20CE1E0B008A8CED /* AuthorizeDataManager.swift in Sources */,
@@ -3297,7 +3278,6 @@
 				ACB911552024260E00F14644 /* WalletViewController.swift in Sources */,
 				AC5E0995205F270000801738 /* ScanQRCodeViewController.swift in Sources */,
 				AC31B950204A8DF400B16155 /* Secp256k1.swift in Sources */,
-				ACEC978620B247F0003F9DEB /* DefaultSlider.swift in Sources */,
 				940B452D2061206900ADE2B9 /* Token.swift in Sources */,
 				ACB911A320296B9900F14644 /* OriginalOrder.swift in Sources */,
 				940B451E2060F67E00ADE2B9 /* GenerateWalletDataManager.swift in Sources */,
