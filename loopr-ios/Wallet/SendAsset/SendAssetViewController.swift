@@ -48,7 +48,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     var blurVisualEffectView = UIView()
     
     // Drag down to close a present view controller.
-    var dismissInteractor: MiniToLargeViewInteractive!
+    var dismissInteractor = MiniToLargeViewInteractive()
     
     // slider
     var stepSlider: StepSlider = StepSlider()
@@ -363,7 +363,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             })
         }
         
-        dismissInteractor = MiniToLargeViewInteractive()
         dismissInteractor.percentThreshold = 0.2
         dismissInteractor.dismissClosure = {
             self.gasPriceInGwei = GasDataManager.shared.getGasPriceInGwei()
@@ -583,7 +582,6 @@ extension SendAssetViewController: UIViewControllerTransitioningDelegate {
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animator = MiniToLargeViewAnimator()
-        animator.initialY = 0
         animator.transitionType = .Dismiss
         return animator
     }

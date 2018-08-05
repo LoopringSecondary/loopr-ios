@@ -13,6 +13,7 @@ import NotificationBannerSwift
 class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol {
 
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var tokenSImageView: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var tokenBImageView: UIImageView!
@@ -26,8 +27,13 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     @IBOutlet weak var gasInfoLabel: UILabel!
     @IBOutlet weak var advancedButton: UIButton!
     @IBOutlet weak var convertButton: UIButton!
-    @IBOutlet weak var totalMaskView: UIView!
     
+    // Mask view
+    var blurVisualEffectView = UIView()
+
+    // Drag down to close a present view controller.
+    var dismissInteractor = MiniToLargeViewInteractive()
+
     var asset: Asset?
     var tipMessage: String!
     
@@ -83,7 +89,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         advancedButton.addTarget(self, action: #selector(pressedAdvancedButton), for: .touchUpInside)
         
         convertButton.title = LocalizedString("Yes, convert now!", comment: "")
-        convertButton.setupSecondary(height: 40)
+        convertButton.setupSecondary(height: 44)
         
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
@@ -95,6 +101,10 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
                 self.updateTransactionFeeAmountLabel()
             }
         }
+
+        blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        blurVisualEffectView.alpha = 1
+        blurVisualEffectView.frame = UIScreen.main.bounds
     }
     
     override func didReceiveMemoryWarning() {
@@ -105,6 +115,11 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.update()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        contentView.applyShadow(withColor: .black)
     }
     
     func updateTransactionFeeAmountLabel() {
@@ -286,15 +301,36 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     }
     
     @objc func pressedAdvancedButton() {
-        self.totalMaskView.alpha = 0.75
         let vc = SetGasViewController()
-        vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        vc.transitioningDelegate = self
+        vc.modalPresentationStyle = .overFullScreen
         vc.dismissClosure = {
-            self.totalMaskView.alpha = 0
-            self.gasPriceInGwei = vc.gasPriceInGwei
+            self.gasPriceInGwei = GasDataManager.shared.getGasPriceInGwei()
+            self.updateTransactionFeeAmountLabel()
+            
+            UIView.animate(withDuration: 0.1, animations: {
+                self.blurVisualEffectView.alpha = 0.0
+            }, completion: {(_) in
+                self.blurVisualEffectView.removeFromSuperview()
+            })
+        }
+        
+        dismissInteractor.percentThreshold = 0.2
+        dismissInteractor.dismissClosure = {
+            self.gasPriceInGwei = GasDataManager.shared.getGasPriceInGwei()
             self.updateTransactionFeeAmountLabel()
         }
-        self.present(vc, animated: true, completion: nil)
+        
+        self.present(vc, animated: true) {
+            self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.headerView, presentViewController: nil, backgroundView: self.blurVisualEffectView)
+        }
+        
+        self.navigationController?.view.addSubview(self.blurVisualEffectView)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.blurVisualEffectView.alpha = 1.0
+        }, completion: {(_) in
+            
+        })
     }
     
     @IBAction func pressedConvertButton(_ sender: Any) {
@@ -351,4 +387,18 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             activeTextField!.text = currentText
         }
     }
+}
+
+extension ConvertETHViewController: UIViewControllerTransitioningDelegate {
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let animator = MiniToLargeViewAnimator()
+        animator.transitionType = .Dismiss
+        return animator
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return dismissInteractor
+    }
+
 }

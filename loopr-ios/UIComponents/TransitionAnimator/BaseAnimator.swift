@@ -15,7 +15,7 @@ enum ModalAnimatedTransitioningType {
 
 class BaseAnimator: NSObject {
     
-    var transitionType: ModalAnimatedTransitioningType = .Present
+    var transitionType: ModalAnimatedTransitioningType = .Dismiss
     
     func animatePresentingInContext(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController) {
         NSException(name: NSExceptionName.internalInconsistencyException, reason: "\(#function) must be overridden in a subclass/category", userInfo: nil).raise()
