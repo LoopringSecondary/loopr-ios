@@ -407,7 +407,7 @@ extension WalletViewController: MKDropdownMenuDataSource {
     }
     
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, numberOfRowsInComponent component: Int) -> Int {
-        return 4
+        return 3
     }
 
 }
@@ -443,9 +443,6 @@ extension WalletViewController: MKDropdownMenuDelegate {
         case 2:
             titleLabel.text = LocalizedString("Wallet", comment: "")
             icon = UIImage.init(named: "dropdown-wallet")
-        case 3:
-            titleLabel.text = LocalizedString("Transaction", comment: "")
-            icon = UIImage.init(named: "dropdown-transaction")
         default:
             break
         }
@@ -471,10 +468,6 @@ extension WalletViewController: MKDropdownMenuDelegate {
             self.navigationController?.pushViewController(viewController, animated: true)
         case 2:
             let viewController = SettingManageWalletViewController()
-            viewController.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(viewController, animated: true)
-        case 3:
-            let viewController = OrderHistoryViewController()
             viewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(viewController, animated: true)
         default:

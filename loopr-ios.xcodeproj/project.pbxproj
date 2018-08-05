@@ -123,8 +123,6 @@
 		AC0CD59020D5D6E400ABB7BA /* ImportWalletUsingKeystoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58F20D5D6E400ABB7BA /* ImportWalletUsingKeystoreDataManagerTests.swift */; };
 		AC0CD59220D5E28B00ABB7BA /* ImportWalletUsingMnemonicDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD59120D5E28B00ABB7BA /* ImportWalletUsingMnemonicDataManagerTests.swift */; };
 		AC0CE96D209E4BB60072A6EC /* GethBigIntTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CE96C209E4BB60072A6EC /* GethBigIntTests.swift */; };
-		AC10609D2073475200677D63 /* AddMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10609B2073475200677D63 /* AddMenuTableViewCell.swift */; };
-		AC10609E2073475200677D63 /* AddMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC10609C2073475200677D63 /* AddMenuTableViewCell.xib */; };
 		AC131A06210D7A1A001998A0 /* MarketDetailDepthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC131A04210D7A1A001998A0 /* MarketDetailDepthViewController.swift */; };
 		AC131A07210D7A1A001998A0 /* MarketDetailDepthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC131A05210D7A1A001998A0 /* MarketDetailDepthViewController.xib */; };
 		AC131A0A210D7A33001998A0 /* MarketDetailTradeHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC131A08210D7A33001998A0 /* MarketDetailTradeHistoryViewController.swift */; };
@@ -284,7 +282,6 @@
 		AC37567D2038D80300AADC60 /* PrivateKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC37567B2038D80300AADC60 /* PrivateKeyViewController.xib */; };
 		AC375684203A641200AADC60 /* SelectWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC375682203A641200AADC60 /* SelectWalletViewController.swift */; };
 		AC375685203A641200AADC60 /* SelectWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC375683203A641200AADC60 /* SelectWalletViewController.xib */; };
-		AC387523205F141000A76637 /* AddMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC387522205F141000A76637 /* AddMenuViewController.swift */; };
 		AC3B48832103EA6B008A6771 /* TradeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B48812103EA6B008A6771 /* TradeSelectionViewController.swift */; };
 		AC3B48842103EA6B008A6771 /* TradeSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC3B48822103EA6B008A6771 /* TradeSelectionViewController.xib */; };
 		AC3B48862104383E008A6771 /* UISearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B48852104383E008A6771 /* UISearchBarExtension.swift */; };
@@ -711,8 +708,6 @@
 		AC0CD58F20D5D6E400ABB7BA /* ImportWalletUsingKeystoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingKeystoreDataManagerTests.swift; sourceTree = "<group>"; };
 		AC0CD59120D5E28B00ABB7BA /* ImportWalletUsingMnemonicDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingMnemonicDataManagerTests.swift; sourceTree = "<group>"; };
 		AC0CE96C209E4BB60072A6EC /* GethBigIntTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GethBigIntTests.swift; sourceTree = "<group>"; };
-		AC10609B2073475200677D63 /* AddMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMenuTableViewCell.swift; sourceTree = "<group>"; };
-		AC10609C2073475200677D63 /* AddMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMenuTableViewCell.xib; sourceTree = "<group>"; };
 		AC131A04210D7A1A001998A0 /* MarketDetailDepthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailDepthViewController.swift; sourceTree = "<group>"; };
 		AC131A05210D7A1A001998A0 /* MarketDetailDepthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketDetailDepthViewController.xib; sourceTree = "<group>"; };
 		AC131A08210D7A33001998A0 /* MarketDetailTradeHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailTradeHistoryViewController.swift; sourceTree = "<group>"; };
@@ -832,7 +827,6 @@
 		AC37567B2038D80300AADC60 /* PrivateKeyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivateKeyViewController.xib; sourceTree = "<group>"; };
 		AC375682203A641200AADC60 /* SelectWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletViewController.swift; sourceTree = "<group>"; };
 		AC375683203A641200AADC60 /* SelectWalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWalletViewController.xib; sourceTree = "<group>"; };
-		AC387522205F141000A76637 /* AddMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMenuViewController.swift; sourceTree = "<group>"; };
 		AC3B48812103EA6B008A6771 /* TradeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSelectionViewController.swift; sourceTree = "<group>"; };
 		AC3B48822103EA6B008A6771 /* TradeSelectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeSelectionViewController.xib; sourceTree = "<group>"; };
 		AC3B48852104383E008A6771 /* UISearchBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarExtension.swift; sourceTree = "<group>"; };
@@ -1262,16 +1256,6 @@
 				AC0CD59120D5E28B00ABB7BA /* ImportWalletUsingMnemonicDataManagerTests.swift */,
 			);
 			path = ImportWallet;
-			sourceTree = "<group>";
-		};
-		AC10609F20734E0600677D63 /* AddMenu */ = {
-			isa = PBXGroup;
-			children = (
-				AC387522205F141000A76637 /* AddMenuViewController.swift */,
-				AC10609B2073475200677D63 /* AddMenuTableViewCell.swift */,
-				AC10609C2073475200677D63 /* AddMenuTableViewCell.xib */,
-			);
-			path = AddMenu;
 			sourceTree = "<group>";
 		};
 		AC131A1621101AEB001998A0 /* MarketDetailDepth */ = {
@@ -2137,7 +2121,6 @@
 				AC2ACA5820FA1A5F009C77E7 /* WalletButtonTableViewCell.xib */,
 				ACC8D0A420CC95A00049A741 /* AssetTableViewCell.swift */,
 				ACC8D0A520CC95A00049A741 /* AssetTableViewCell.xib */,
-				AC10609F20734E0600677D63 /* AddMenu */,
 				AC9ADF8E205EE2E800CBE368 /* ConvertETH */,
 				AC5E0DE0203B44EA00AF03C7 /* AddToken */,
 				AC5E3E6D205DFABD0051ACFC /* SendAsset */,
@@ -2754,7 +2737,6 @@
 				9498E3ED2075E27E00BC8B4F /* OrderHistorySearchResultCell.xib in Resources */,
 				AC31CE37205B603600A30335 /* Linotype-DINNextCYR-UltraLight.otf in Resources */,
 				6630916921005B54006DA630 /* AssetSwipeViewController.xib in Resources */,
-				AC10609E2073475200677D63 /* AddMenuTableViewCell.xib in Resources */,
 				AC500BC720B651440073E590 /* SettingSecurityViewController.xib in Resources */,
 				AC31CE77205B996400A30335 /* Roboto-Thin.ttf in Resources */,
 				ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */,
@@ -3063,7 +3045,6 @@
 				AC4F601520773E9D00F1D954 /* EthFunction.swift in Sources */,
 				AC131A10210ED2BB001998A0 /* MarketDetailDepthTableViewCell.swift in Sources */,
 				948BAD8420C4EBFA001F279F /* RawTransaction.swift in Sources */,
-				AC10609D2073475200677D63 /* AddMenuTableViewCell.swift in Sources */,
 				94A39E1320C8E4FE00BC1B72 /* SignStatus.swift in Sources */,
 				ACCCFDCE203BEF2200B98F99 /* UITextFieldExtension.swift in Sources */,
 				AC131A1421101AD0001998A0 /* MarketDetailTradeHistoryTableViewCell.swift in Sources */,
@@ -3108,7 +3089,6 @@
 				940B45242060F67E00ADE2B9 /* TradeDataManager.swift in Sources */,
 				ACB729D4205DE21B00DD4DF3 /* TradeConfirmationViewController.swift in Sources */,
 				94189CC12078B88700AA2CF4 /* OrderSearchResultViewController.swift in Sources */,
-				AC387523205F141000A76637 /* AddMenuViewController.swift in Sources */,
 				94E665E9207234C5001328BF /* OrderTableViewCell.swift in Sources */,
 				AC9280E1202EC53D0009B574 /* TradeNavigationViewController.swift in Sources */,
 				AC5E3E74205E22080051ACFC /* NotificationName.swift in Sources */,
