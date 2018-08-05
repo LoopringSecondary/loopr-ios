@@ -7,22 +7,23 @@
 //
 
 import UIKit
+import StepSlider
 
-class SettingMarginSplitViewController: UIViewController {
+class SettingMarginSplitViewController: UIViewController, StepSliderDelegate {
 
-    var slider = UISlider()
+    var stepSlider = StepSlider()
+    var currentValue: Double = 0
     var currentValueLabel = UILabel()
-    var minLabel = UILabel()
-    var maxLabel = UILabel()
     
-    var saveButton: UIButton = UIButton()
-    
+    var isViewDidAppear: Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         // self.navigationItem.title = LocalizedString("LRC Fee Ratio", comment: "")
         setBackButton()
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
         
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
@@ -33,35 +34,34 @@ class SettingMarginSplitViewController: UIViewController {
         
         currentValueLabel.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 30)
         currentValueLabel.setTitleDigitFont()
-        currentValueLabel.text = LocalizedString("Margin Split", comment: "") + ": \(SettingDataManager.shared.getMarginSplitDescription())"
         view.addSubview(currentValueLabel)
         
-        slider.frame = CGRect(x: padding, y: currentValueLabel.frame.maxY + padding + 10, width: screenWidth-padding*2, height: 20)
-        slider.minimumValue = 0
-        slider.maximumValue = 100
-        slider.value = Float(SettingDataManager.shared.getMarginSplit() * 100.0)
+        stepSlider = StepSlider.init(frame: CGRect(x: padding, y: currentValueLabel.frame.maxY + padding + 10, width: screenWidth-padding*2, height: 20))
+        stepSlider.delegate = self
+        stepSlider.maxCount = 2
+        stepSlider.setIndex(0, animated: false)
+        stepSlider.labelFont = FontConfigManager.shared.getRegularFont(size: 12)
+        stepSlider.labelColor = UIColor.init(white: 0.6, alpha: 1)
+        stepSlider.labels = ["0%", "100%"]
+        stepSlider.trackHeight = 2
+        stepSlider.trackCircleRadius = 3
+        stepSlider.trackColor = UIColor.init(white: 0.6, alpha: 1)
+        stepSlider.tintColor = UIColor.themeGreen
+        stepSlider.sliderCircleRadius = 10
+        stepSlider.sliderCircleColor = UIColor.themeGreen
+        stepSlider.labelOffset = 10
+        stepSlider.isDotsInteractionEnabled = true
+        stepSlider.adjustLabel = true
         
-        slider.isContinuous = true
-        slider.tintColor = UIColor.black
-        slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
-        view.addSubview(slider)
+        currentValue = SettingDataManager.shared.getMarginSplit()
         
-        minLabel.frame = CGRect(x: padding, y: slider.frame.maxY + 10, width: 100, height: 30)
-        minLabel.setTitleDigitFont()
-        minLabel.text = "0%"
-        view.addSubview(minLabel)
+        let roundedStepValue = Int(round(currentValue*100))
+        currentValueLabel.text = LocalizedString("Margin Split", comment: "") + ": \(roundedStepValue)" + NumberFormatter().percentSymbol
         
-        maxLabel.textAlignment = .right
-        maxLabel.frame = CGRect(x: screenWidth-padding-100, y: minLabel.frame.minY, width: 100, height: 30)
-        maxLabel.setTitleDigitFont()
-        maxLabel.text = "100%"
-        view.addSubview(maxLabel)
-        
-        saveButton.setupSecondary()
-        saveButton.setTitle(LocalizedString("Save", comment: ""), for: .normal)
-        saveButton.frame = CGRect(x: padding, y: minLabel.frame.maxY + padding*2 + 10, width: screenWidth - padding*2, height: 47)
-        saveButton.addTarget(self, action: #selector(pressedSaveButton), for: .touchUpInside)
-        view.addSubview(saveButton)
+        view.addSubview(stepSlider)
+
+        let saveButon = UIBarButtonItem(title: LocalizedString("Save", comment: ""), style: UIBarButtonItemStyle.plain, target: self, action: #selector(pressedSaveButton))
+        self.navigationItem.rightBarButtonItem = saveButon
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,25 +69,39 @@ class SettingMarginSplitViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if !isViewDidAppear {
+            print(Float(round(currentValue*100))/100.0)
+            stepSlider.setPercentageValue(Float(round(currentValue*100))/100.0)
+        }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        isViewDidAppear = true
+        print(Float(round(currentValue*100))/100.0)
+        stepSlider.setPercentageValue(Float(round(currentValue*100))/100.0)
+    }
+    
     // To avoid gesture conflicts in swiping to back and UISlider
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if touch.view != nil && touch.view!.isKind(of: UISlider.self) {
+        if touch.view != nil && touch.view!.isKind(of: StepSlider.self) {
             return false
         }
         return true
     }
     
-    @objc func sliderValueDidChange(_ sender: UISlider!) {
-        let step: Float = 1
-        let roundedStepValue = Int(round(sender.value / step))
-        currentValueLabel.text = LocalizedString("Margin Split", comment: "") + ": \(roundedStepValue)" + NumberFormatter().percentSymbol
-    }
-    
     @objc func pressedSaveButton(_ sender: Any) {
-        let step: Float = 1
-        let newValue = Double(round(slider.value / step)) / 100.0
-        SettingDataManager.shared.setMarginSplit(newValue)
+        let roundedStepValue = Int(round(currentValue*100))
+        SettingDataManager.shared.setMarginSplit(Double(roundedStepValue)/100.0)
         self.navigationController?.popViewController(animated: true)
+    }
+
+    func stepSliderValueChanged(_ value: Double) {
+        currentValue = value
+        let roundedStepValue = Int(round(currentValue*100))
+        currentValueLabel.text = LocalizedString("Margin Split", comment: "") + ": \(roundedStepValue)" + NumberFormatter().percentSymbol
     }
 
 }
