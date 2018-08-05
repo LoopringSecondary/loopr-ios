@@ -9,6 +9,7 @@
 import UIKit
 
 protocol MarketDetailDepthModalViewControllerDelegate: class {
+    func dismissedMarketDetailDepthModalViewController()
     func dismissWithSelectedDepth(amount: String, price: String)
 }
 
@@ -75,10 +76,6 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // TODO: Improve this UI.
-        UIView.animate(withDuration: 0.3) {
-            self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -87,9 +84,6 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        UIView.animate(withDuration: 0.3) {
-            self.view.backgroundColor = UIColor.clear
-        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -188,6 +182,7 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
     }
 
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        delegate?.dismissedMarketDetailDepthModalViewController()
         dismiss(animated: true) {
             
         }

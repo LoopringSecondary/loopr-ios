@@ -16,15 +16,19 @@ class MiniToLargeViewInteractive: UIPercentDrivenInteractiveTransition {
     
     var shouldComplete = false
     var lastProgress: CGFloat?
+    
+    weak var backgroundView: UIView?
 
     // Represents the percentage of the transition that must be completed before allowing to complete.
     var percentThreshold: CGFloat = 0.3
     
-    func attachToViewController(viewController: UIViewController, withView view: UIView, presentViewController: UIViewController?) {
+    func attachToViewController(viewController: UIViewController, withView view: UIView, presentViewController: UIViewController?, backgroundView: UIView?) {
         self.viewController = viewController
         self.presentViewController = presentViewController
         pan = UIPanGestureRecognizer(target: self, action: #selector(self.onPan(_:)))
         view.addGestureRecognizer(pan)
+        
+        self.backgroundView = backgroundView
     }
     
     @objc func onPan(_ pan: UIPanGestureRecognizer) {
@@ -68,6 +72,11 @@ class MiniToLargeViewInteractive: UIPercentDrivenInteractiveTransition {
                 cancel()
             } else {
                 finish()
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.backgroundView?.alpha = 0
+                }, completion: {(_) in
+                    self.backgroundView?.removeFromSuperview()
+                })
             }
             
         default:

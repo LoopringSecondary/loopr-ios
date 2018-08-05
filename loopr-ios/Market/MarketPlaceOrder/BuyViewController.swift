@@ -50,7 +50,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
     
-    var viewOverLay = UIView()
+    var blurVisualEffectView = UIView()
     
     // Drag down to close a present view controller.
     var presentInteractor: MiniToLargeViewInteractive!
@@ -182,6 +182,10 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         scrollView.delaysContentTouches = false
 
         self.scrollViewButtonLayoutConstraint.constant = 0
+        
+        blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        blurVisualEffectView.alpha = 1
+        blurVisualEffectView.frame = UIScreen.main.bounds
     }
 
     override func didReceiveMemoryWarning() {
@@ -246,11 +250,18 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         // presentInteractor.attachToViewController(viewController: self, withView: view, presentViewController: nextViewController)
         
         dismissInteractor = MiniToLargeViewInteractive()
-        dismissInteractor.attachToViewController(viewController: nextViewController, withView: nextViewController.view, presentViewController: nil)
+        dismissInteractor.attachToViewController(viewController: nextViewController, withView: nextViewController.view, presentViewController: nil, backgroundView: blurVisualEffectView)
         
         self.present(nextViewController, animated: true) {
             
         }
+        
+        self.navigationController?.view.addSubview(self.blurVisualEffectView)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.blurVisualEffectView.alpha = 1.0
+        }, completion: {(_) in
+            
+        })
     }
 
     @IBAction func pressedExpiresButton(_ sender: UIButton) {
@@ -599,28 +610,14 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
 }
 
 extension BuyViewController: UIViewControllerTransitioningDelegate {
-    /*
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let animator = MiniToLargeViewAnimator()
-        animator.initialY = 0
-        animator.transitionType = .Present
-        return animator
-    }
-    */
-    
+
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animator = MiniToLargeViewAnimator()
         animator.initialY = 0
         animator.transitionType = .Dismiss
         return animator
     }
-    
-    /*
-    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return presentInteractor
-    }
-    */
-    
+
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         // guard !disableInteractivePlayerTransitioning else { return nil }
         return dismissInteractor
@@ -629,10 +626,25 @@ extension BuyViewController: UIViewControllerTransitioningDelegate {
 }
 
 extension BuyViewController: MarketDetailDepthModalViewControllerDelegate {
+    
+    func dismissedMarketDetailDepthModalViewController() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.blurVisualEffectView.alpha = 0.0
+        }, completion: {(_) in
+            self.blurVisualEffectView.removeFromSuperview()
+        })
+    }
+
     func dismissWithSelectedDepth(amount: String, price: String) {
         amountTextField.text = amount
         priceTextField.text = price
         validate()
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            self.blurVisualEffectView.alpha = 0.0
+        }, completion: {(_) in
+            self.blurVisualEffectView.removeFromSuperview()
+        })
     }
 }
 
