@@ -8,8 +8,14 @@
 
 import UIKit
 
-class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+protocol MarketDetailDepthModalViewControllerDelegate: class {
+    func dismissWithSelectedDepth(amount: String, price: String)
+}
 
+class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MarketDetailDepthTableViewCellDelegate {
+
+    weak var delegate: MarketDetailDepthModalViewControllerDelegate?
+    
     var market: Market!
     private var buys: [Depth] = []
     private var sells: [Depth] = []
@@ -38,7 +44,7 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
         
         headerLastPriceLabel.textColor = UIColor.themeGreen
         headerLastPriceLabel.font = FontConfigManager.shared.getRegularFont(size: 13)
-        // Fake data
+        // TODO: Fake data
         headerLastPriceLabel.text = "0.18800000LRC  ≈  $0.22"
         
         tableView.dataSource = self
@@ -160,6 +166,7 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
         if cell == nil {
             let nib = Bundle.main.loadNibNamed("MarketDetailDepthTableViewCell", owner: self, options: nil)
             cell = nib![0] as? MarketDetailDepthTableViewCell
+            cell?.delegate = self
         }
         if indexPath.row < buys.count {
             cell?.buyDepth = buys[indexPath.row]
@@ -185,4 +192,12 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
             
         }
     }
+
+    func clickedMarketDetailDepthTableViewCell(amount: String, price: String) {
+        delegate?.dismissWithSelectedDepth(amount: amount, price: price)
+        dismiss(animated: true) {
+            
+        }
+    }
+
 }

@@ -8,13 +8,23 @@
 
 import UIKit
 
+protocol MarketDetailDepthTableViewCellDelegate: class {
+    // Use String since it's what users see.
+    func clickedMarketDetailDepthTableViewCell(amount: String, price: String)
+}
+
 class MarketDetailDepthTableViewCell: UITableViewCell {
 
+    weak var delegate: MarketDetailDepthTableViewCellDelegate?
+    
     var buyDepth: Depth?
     var sellDepth: Depth?
     
     var baseViewBuy: UIView = UIView()
     var baseViewSell: UIView = UIView()
+    
+    var fakeBuyButton: UIButton = UIButton()
+    var fakeSellButton: UIButton = UIButton()
     
     var label1: UILabel = UILabel()
     var label2: UILabel = UILabel()
@@ -50,6 +60,12 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
         label2.lineBreakMode = .byCharWrapping
         baseViewBuy.addSubview(label2)
         
+        fakeBuyButton.frame = baseViewBuy.frame
+        fakeBuyButton.backgroundColor = UIColor.clear
+        fakeBuyButton.setTitle("", for: .normal)
+        fakeBuyButton.addTarget(self, action: #selector(pressedFakeBuyButton(_:)), for: UIControlEvents.touchUpInside)
+        addSubview(fakeBuyButton)
+        
         baseViewSell.frame = CGRect(x: baseViewBuy.frame.maxX+5, y: baseViewBuy.frame.minY, width: baseViewBuy.width, height: baseViewBuy.height)
         baseViewSell.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         addSubview(baseViewSell)
@@ -67,6 +83,12 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
         label4.textColor = UIColor.themeGreen
         label4.lineBreakMode = .byClipping
         baseViewSell.addSubview(label4)
+        
+        fakeSellButton.frame = baseViewSell.frame
+        fakeSellButton.backgroundColor = UIColor.clear
+        fakeSellButton.setTitle("", for: .normal)
+        fakeSellButton.addTarget(self, action: #selector(pressedFakeSellButton(_:)), for: UIControlEvents.touchUpInside)
+        addSubview(fakeSellButton)
     }
     
     func update() {
@@ -87,6 +109,25 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
         }
     }
 
+    @objc func pressedFakeBuyButton(_ sender: Any) {
+        print("pressedFakeBuyButton")
+        if buyDepth != nil {
+            // TODO: What is the color when a button is highlighed?
+            baseViewBuy.backgroundColor = UIColor.dark3
+            delegate?.clickedMarketDetailDepthTableViewCell(amount: buyDepth!.amountA, price: buyDepth!.price)
+            // delegate?.clickedMarketDetailDepthTableViewCell(amount: Double(buyDepth!.amountA) ?? 0, price: Double(buyDepth!.price) ?? 0)
+        }
+    }
+
+    @objc func pressedFakeSellButton(_ sender: Any) {
+        print("pressedFakeBuyButton")
+        if sellDepth != nil {
+            baseViewSell.backgroundColor = UIColor.dark3
+            delegate?.clickedMarketDetailDepthTableViewCell(amount: sellDepth!.amountA, price: sellDepth!.price)
+            // delegate?.clickedMarketDetailDepthTableViewCell(amount: Double(sellDepth!.amountA) ?? 0, price: Double(sellDepth!.price) ?? 0)
+        }
+    }
+    
     class func getCellIdentifier() -> String {
         return "MarketDetailDepthTableViewCell"
     }

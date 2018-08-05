@@ -218,26 +218,30 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     
     @IBAction func pressedUpdatePriceButton(_ sender: Any) {
         print("pressedUpdatePriceButton")
+        presentMarketDetailDepthModalViewController()
+    }
 
+    @IBAction func pressedUpdateAmountButton(_ sender: Any) {
+        print("pressedUpdateAmountButton")
+        presentMarketDetailDepthModalViewController()
+    }
+    
+    func presentMarketDetailDepthModalViewController() {
         let nextViewController = MarketDetailDepthModalViewController()
         nextViewController.market = market
+        nextViewController.delegate = self
         nextViewController.transitioningDelegate = self
         nextViewController.modalPresentationStyle = .overFullScreen
-
+        
         // presentInteractor = MiniToLargeViewInteractive()
         // presentInteractor.attachToViewController(viewController: self, withView: view, presentViewController: nextViewController)
-
+        
         dismissInteractor = MiniToLargeViewInteractive()
         dismissInteractor.attachToViewController(viewController: nextViewController, withView: nextViewController.view, presentViewController: nil)
         
         self.present(nextViewController, animated: true) {
             
         }
-    }
-
-    @IBAction func pressedUpdateAmountButton(_ sender: Any) {
-        print("pressedUpdateAmountButton")
-        
     }
 
     @IBAction func pressedExpiresButton(_ sender: UIButton) {
@@ -608,6 +612,13 @@ extension BuyViewController: UIViewControllerTransitioningDelegate {
         return dismissInteractor
     }
 
+}
+
+extension BuyViewController: MarketDetailDepthModalViewControllerDelegate {
+    func dismissWithSelectedDepth(amount: String, price: String) {
+        amountTextField.text = amount
+        priceTextField.text = price
+    }
 }
 
 extension BuyViewController {
