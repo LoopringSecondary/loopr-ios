@@ -164,8 +164,13 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         canInfoLabel.setTitleCharFont()
         
         // Place button
-        nextButton.title = LocalizedString("Next", comment: "")
-        nextButton.setupSecondary(height: 44)
+        if type == .buy {
+            nextButton.title = LocalizedString("Buy", comment: "") + " " + market.tradingPair.tradingA
+            nextButton.setupPrimary(height: 44)
+        } else {
+            nextButton.title = LocalizedString("Sell", comment: "") + " " + market.tradingPair.tradingA
+            nextButton.setupSecondary(height: 44)
+        }
         
         // Scroll view
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
@@ -324,16 +329,19 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         var amountBuy, amountSell, lrcFee: Double
         if self.type == .buy {
             side = "buy"
+            tokenBuy = PlaceOrderDataManager.shared.tokenA.symbol
+            tokenSell = PlaceOrderDataManager.shared.tokenB.symbol
             buyNoMoreThanAmountB = true
+            amountBuy = Double(amountTextField.text!)!
+            amountSell = self.orderAmount
         } else {
             side = "sell"
+            tokenBuy = PlaceOrderDataManager.shared.tokenB.symbol
+            tokenSell = PlaceOrderDataManager.shared.tokenA.symbol
             buyNoMoreThanAmountB = false
+            amountBuy = self.orderAmount
+            amountSell = Double(amountTextField.text!)!
         }
-        
-        tokenBuy = self.tokenB
-        tokenSell = self.tokenS
-        amountBuy = self.orderAmount
-        amountSell = Double(amountTextField.text!)!
 
         lrcFee = getLrcFee(amountSell, tokenSell)
         let delegate = RelayAPIConfiguration.delegateAddress
@@ -451,6 +459,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             isValid = validateTokenPrice()
         } else if activeTextFieldTag == amountTextField.tag {
             isValid = validateAmount()
+        } else {
+            isValid = validateTokenPrice() && validateAmount()
         }
         guard isValid else {
             canInfoLabel.text = "-- \(self.tokenB)"
@@ -622,6 +632,7 @@ extension BuyViewController: MarketDetailDepthModalViewControllerDelegate {
     func dismissWithSelectedDepth(amount: String, price: String) {
         amountTextField.text = amount
         priceTextField.text = price
+        validate()
     }
 }
 
