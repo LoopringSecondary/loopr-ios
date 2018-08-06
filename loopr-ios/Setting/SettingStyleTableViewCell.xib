@@ -28,7 +28,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokenest-arrow-right" translatesAutoresizingMaskIntoConstraints="NO" id="y7t-Km-kKB">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y7t-Km-kKB">
                         <rect key="frame" x="276" y="12" width="24" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="hyT-LI-O2O"/>
@@ -87,7 +87,4 @@
             <point key="canvasLocation" x="171" y="152.5"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="Tokenest-arrow-right" width="7" height="12"/>
-    </resources>
 </document>

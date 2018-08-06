@@ -39,7 +39,7 @@ class SettingMarginSplitViewController: UIViewController, StepSliderDelegate {
         stepSlider = StepSlider.init(frame: CGRect(x: padding, y: currentValueLabel.frame.maxY + padding + 10, width: screenWidth-padding*2, height: 20))
         stepSlider.delegate = self
         stepSlider.maxCount = 2
-        stepSlider.setIndex(0, animated: false)
+        // stepSlider.setIndex(0, animated: false)
         stepSlider.labelFont = FontConfigManager.shared.getRegularFont(size: 12)
         stepSlider.labelColor = UIColor.init(white: 0.6, alpha: 1)
         stepSlider.labels = ["0%", "100%"]
@@ -52,13 +52,11 @@ class SettingMarginSplitViewController: UIViewController, StepSliderDelegate {
         stepSlider.labelOffset = 10
         stepSlider.isDotsInteractionEnabled = true
         stepSlider.adjustLabel = true
-        
+
         currentValue = SettingDataManager.shared.getMarginSplit()
-        
+
         let roundedStepValue = Int(round(currentValue*100))
         currentValueLabel.text = LocalizedString("Margin Split", comment: "") + ": \(roundedStepValue)" + NumberFormatter().percentSymbol
-        
-        view.addSubview(stepSlider)
 
         let saveButon = UIBarButtonItem(title: LocalizedString("Save", comment: ""), style: UIBarButtonItemStyle.plain, target: self, action: #selector(pressedSaveButton))
         self.navigationItem.rightBarButtonItem = saveButon
@@ -72,7 +70,7 @@ class SettingMarginSplitViewController: UIViewController, StepSliderDelegate {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         if !isViewDidAppear {
-            print(Float(round(currentValue*100))/100.0)
+            view.addSubview(stepSlider)
             stepSlider.setPercentageValue(Float(round(currentValue*100))/100.0)
         }
     }
@@ -80,7 +78,6 @@ class SettingMarginSplitViewController: UIViewController, StepSliderDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         isViewDidAppear = true
-        print(Float(round(currentValue*100))/100.0)
         stepSlider.setPercentageValue(Float(round(currentValue*100))/100.0)
     }
     
