@@ -41,6 +41,11 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
     // Container
     @IBOutlet weak var canTipLabel: UILabel!
     @IBOutlet weak var canInfoLabel: UILabel!
+    
+    // Sell ratio
+    @IBOutlet weak var sellRatioTipLabel: UILabel!
+    @IBOutlet weak var sellRatioValueLabel: UILabel!
+    @IBOutlet weak var sellRatioButton: UIButton!
 
     // Place button
     @IBOutlet weak var nextButton: UIButton!
@@ -81,6 +86,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         amountSellTextField.setRightPaddingPoints(72)
         amountSellTextField.contentMode = UIViewContentMode.bottom
         estimateValueInCurrency.setSubTitleCharFont()
+        sellTipLabel.setTitleCharFont()
         sellTipLabel.text = LocalizedString("Sell", comment: "")
         
         // Second row: TokenB
@@ -94,6 +100,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         amountBuyTextField.setRightPaddingPoints(72)
         amountBuyTextField.contentMode = UIViewContentMode.bottom
         availableLabel.setSubTitleCharFont()
+        buyTipLabel.setTitleCharFont()
         buyTipLabel.text = LocalizedString("Buy", comment: "")
         
         // Slider
@@ -135,6 +142,12 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         canTipLabel.theme_textColor = GlobalPicker.textLightColor
         canTipLabel.text = LocalizedString("Can Buy", comment: "")
         canInfoLabel.setTitleCharFont()
+        
+        // Sell ratio
+        sellRatioTipLabel.setTitleCharFont()
+        sellRatioTipLabel.text = LocalizedString("Trade Ratio", comment: "")
+        sellRatioValueLabel.setTitleDigitFont()
+        sellRatioValueLabel.text = "100%"
 
         // Place button
         nextButton.title = LocalizedString("Next", comment: "")
@@ -263,6 +276,20 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
             availableLabel.textColor = .fail
             availableLabel.shake()
         }
+    }
+    
+    @IBAction func pressedRatioButton(_ sender: UIButton) {
+        let parentView = self.parent!.view!
+        parentView.alpha = 0.25
+        let vc = TradeRatioViewController()
+        vc.dismissClosure = {
+            parentView.alpha = 1
+            TradeDataManager.shared.sellRatio = vc.sellRatio
+            self.sellRatioValueLabel.text = "\(vc.sellRatio)" + NumberFormatter().percentSymbol
+        }
+        vc.parentNavController = self.navigationController
+        vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        self.present(vc, animated: true, completion: nil)
     }
     
     func present() {

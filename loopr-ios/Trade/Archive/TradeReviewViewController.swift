@@ -105,8 +105,9 @@ class TradeReviewViewController: UIViewController {
     func generateQRCode(order: OriginalOrder) {
         var body = JSON()
         body["type"] = JSON(TradeDataManager.qrcodeType)
-        body["value"] = [TradeDataManager.qrcodeHash: order.hash, TradeDataManager.qrcodeAuth: order.authPrivateKey]
-        
+        body["value"] = [TradeDataManager.qrcodeHash: order.hash,
+                         TradeDataManager.qrcodeAuth: order.authPrivateKey,
+                         TradeDataManager.sellRatio: TradeDataManager.shared.sellRatio]
         do {
             let data = try body.rawData(options: .prettyPrinted)
             let ciContext = CIContext()

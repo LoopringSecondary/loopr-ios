@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,6 +28,9 @@
                 <outlet property="nextButton" destination="Fb9-mL-KG5" id="9JP-fm-qQp"/>
                 <outlet property="scrollView" destination="2G6-mE-e9W" id="mXT-jS-2gr"/>
                 <outlet property="scrollViewButtonLayoutConstraint" destination="7ug-kF-iqF" id="RFv-uP-aPP"/>
+                <outlet property="sellRatioButton" destination="a0T-VM-NU0" id="vMF-DH-yIY"/>
+                <outlet property="sellRatioTipLabel" destination="AoE-MP-EM2" id="rOQ-nA-0xw"/>
+                <outlet property="sellRatioValueLabel" destination="Q5R-iI-uJC" id="Nmy-3s-JC1"/>
                 <outlet property="sellTipLabel" destination="Di1-jg-ePv" id="5VP-Ho-dQe"/>
                 <outlet property="sellTokenLabel" destination="QQK-Xq-OFM" id="v5b-0M-3Su"/>
                 <outlet property="sliderView" destination="Niq-X3-TVH" id="9Ps-eM-7cV"/>
@@ -45,7 +48,7 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k9h-xW-rQZ">
-                            <rect key="frame" x="16" y="10" width="343" height="430"/>
+                            <rect key="frame" x="16" y="10" width="343" height="464"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="POe-BV-ibP">
                                     <rect key="frame" x="16" y="16" width="311" height="50"/>
@@ -211,8 +214,33 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AoE-MP-EM2">
+                                    <rect key="frame" x="16" y="355" width="42" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="0IR-oR-luN"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5R-iI-uJC">
+                                    <rect key="frame" x="253" y="355" width="42" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="Olm-Fn-aHM"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0T-VM-NU0">
+                                    <rect key="frame" x="303" y="363" width="24" height="24"/>
+                                    <state key="normal" image="Arrow-button-right-dark"/>
+                                    <connections>
+                                        <action selector="pressedRatioButton:" destination="-1" eventType="touchUpInside" id="fPH-MS-dyW"/>
+                                    </connections>
+                                </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fb9-mL-KG5">
-                                    <rect key="frame" x="16" y="366" width="311" height="44"/>
+                                    <rect key="frame" x="16" y="400" width="311" height="44"/>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="JK4-jo-UhU"/>
@@ -227,32 +255,39 @@
                             </subviews>
                             <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
+                                <constraint firstItem="a0T-VM-NU0" firstAttribute="centerY" secondItem="Q5R-iI-uJC" secondAttribute="centerY" id="0c7-tY-mdj"/>
                                 <constraint firstItem="GAR-qN-xvf" firstAttribute="leading" secondItem="nYT-au-ghz" secondAttribute="leading" constant="12" id="243-iE-0LA"/>
                                 <constraint firstItem="GAR-qN-xvf" firstAttribute="centerY" secondItem="nYT-au-ghz" secondAttribute="centerY" id="3Ld-Jf-Dj8"/>
-                                <constraint firstAttribute="height" constant="430" id="77L-pZ-Qbu"/>
+                                <constraint firstItem="Fb9-mL-KG5" firstAttribute="top" secondItem="AoE-MP-EM2" secondAttribute="bottom" constant="5" id="5bs-HU-AUC"/>
+                                <constraint firstAttribute="height" constant="464" id="77L-pZ-Qbu"/>
                                 <constraint firstItem="POe-BV-ibP" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="16" id="7XW-hp-wW7"/>
-                                <constraint firstItem="Fb9-mL-KG5" firstAttribute="top" secondItem="Q6B-kI-AAY" secondAttribute="bottom" constant="16" id="8FS-fw-Anl"/>
                                 <constraint firstItem="Niq-X3-TVH" firstAttribute="top" secondItem="nYT-au-ghz" secondAttribute="bottom" constant="40" id="BNF-9P-Wla"/>
                                 <constraint firstItem="nYT-au-ghz" firstAttribute="top" secondItem="POe-BV-ibP" secondAttribute="bottom" constant="40" id="E5R-b4-xTe"/>
                                 <constraint firstAttribute="trailing" secondItem="Fb9-mL-KG5" secondAttribute="trailing" constant="16" id="E5X-cg-VZP"/>
                                 <constraint firstAttribute="trailing" secondItem="nYT-au-ghz" secondAttribute="trailing" constant="16" id="HtZ-go-pmW"/>
                                 <constraint firstItem="eJV-rg-daP" firstAttribute="centerY" secondItem="POe-BV-ibP" secondAttribute="centerY" id="IM2-OK-1b6"/>
                                 <constraint firstAttribute="trailing" secondItem="POe-BV-ibP" secondAttribute="trailing" constant="16" id="LRV-Vp-T5m"/>
+                                <constraint firstItem="a0T-VM-NU0" firstAttribute="trailing" secondItem="Fb9-mL-KG5" secondAttribute="trailing" id="LaI-Ff-XM7"/>
                                 <constraint firstItem="Di1-jg-ePv" firstAttribute="leading" secondItem="POe-BV-ibP" secondAttribute="leading" constant="12" id="LoD-z1-jl4"/>
                                 <constraint firstItem="POe-BV-ibP" firstAttribute="top" secondItem="k9h-xW-rQZ" secondAttribute="top" constant="16" id="MnL-CC-ip6"/>
                                 <constraint firstItem="JUT-ee-RXX" firstAttribute="leading" secondItem="nYT-au-ghz" secondAttribute="leading" id="NTX-vs-J2v"/>
                                 <constraint firstItem="0Cv-AI-Sk9" firstAttribute="top" secondItem="POe-BV-ibP" secondAttribute="bottom" constant="8" id="QtN-PD-uNu"/>
+                                <constraint firstItem="Q5R-iI-uJC" firstAttribute="centerY" secondItem="AoE-MP-EM2" secondAttribute="centerY" id="REL-bz-bHW"/>
                                 <constraint firstItem="eJV-rg-daP" firstAttribute="trailing" secondItem="POe-BV-ibP" secondAttribute="trailing" id="T9B-zS-kft"/>
+                                <constraint firstAttribute="bottom" secondItem="Fb9-mL-KG5" secondAttribute="bottom" constant="20" id="Uc3-iq-c3g"/>
                                 <constraint firstItem="cxj-Vc-B9z" firstAttribute="centerY" secondItem="nYT-au-ghz" secondAttribute="centerY" id="V0I-Zc-4oB"/>
                                 <constraint firstAttribute="trailing" secondItem="Q6B-kI-AAY" secondAttribute="trailing" constant="16" id="Wpr-8d-CCW"/>
                                 <constraint firstItem="cxj-Vc-B9z" firstAttribute="leading" secondItem="bnx-MG-eTh" secondAttribute="trailing" constant="-10" id="ZbQ-SG-RWv"/>
+                                <constraint firstItem="AoE-MP-EM2" firstAttribute="top" secondItem="Q6B-kI-AAY" secondAttribute="bottom" constant="5" id="aRg-Bw-Y1Y"/>
                                 <constraint firstItem="Q6B-kI-AAY" firstAttribute="top" secondItem="bcy-jW-nN7" secondAttribute="bottom" constant="16" id="anK-D8-c55"/>
                                 <constraint firstItem="0Cv-AI-Sk9" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="16" id="bGX-GK-MDO"/>
                                 <constraint firstItem="cxj-Vc-B9z" firstAttribute="trailing" secondItem="nYT-au-ghz" secondAttribute="trailing" id="cfx-hU-1KY"/>
                                 <constraint firstItem="Q6B-kI-AAY" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="16" id="dGz-xa-Tya"/>
+                                <constraint firstItem="AoE-MP-EM2" firstAttribute="leading" secondItem="Fb9-mL-KG5" secondAttribute="leading" id="eUI-Md-dxm"/>
                                 <constraint firstAttribute="trailing" secondItem="Niq-X3-TVH" secondAttribute="trailing" constant="16" id="g8k-pt-KYn"/>
                                 <constraint firstItem="Di1-jg-ePv" firstAttribute="centerY" secondItem="POe-BV-ibP" secondAttribute="centerY" id="gf6-ua-9QR"/>
                                 <constraint firstItem="Fb9-mL-KG5" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="16" id="gkx-hT-CSd"/>
+                                <constraint firstItem="a0T-VM-NU0" firstAttribute="leading" secondItem="Q5R-iI-uJC" secondAttribute="trailing" constant="8" id="hJh-le-R4h"/>
                                 <constraint firstItem="Niq-X3-TVH" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="16" id="jJf-bZ-191"/>
                                 <constraint firstItem="nYT-au-ghz" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="16" id="lwK-nK-ufU"/>
                                 <constraint firstItem="eJV-rg-daP" firstAttribute="leading" secondItem="QQK-Xq-OFM" secondAttribute="trailing" constant="-10" id="ove-8o-YfN"/>
@@ -291,6 +326,7 @@
         </view>
     </objects>
     <resources>
+        <image name="Arrow-button-right-dark" width="24" height="24"/>
         <image name="Caret-down-dark" width="50" height="50"/>
         <namedColor name="Color-dark2">
             <color red="0.16078431372549021" green="0.16078431372549021" blue="0.16078431372549021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

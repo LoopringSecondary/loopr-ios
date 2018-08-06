@@ -15,6 +15,7 @@ class TradeDataManager {
     static let qrcodeType: String = "P2P"
     static let qrcodeHash: String = "Hash"
     static let qrcodeAuth: String = "Auth"
+    static let sellRatio: String = "Ratio"
     
     var state: OrderTradeState
     var orders: [OriginalOrder] = []
@@ -26,6 +27,7 @@ class TradeDataManager {
     var isTaker: Bool = false
     var type: TradeType = .buy
     var makerPrivateKey: String?
+    var sellRatio: Int = 100
     var amountTokenS: Double = 0.0
     var amountTokenB: Double = 0.0
     
@@ -48,12 +50,12 @@ class TradeDataManager {
         state = .empty
         // Get TokenS and TokenB from UserDefaults
         let defaults = UserDefaults.standard
-        var tokenS: Token? = nil
+        var tokenS: Token?
         if let symbol = defaults.string(forKey: UserDefaultsKeys.tradeTokenS.rawValue) {
             tokenS = Token(symbol: symbol)
         }
         self.tokenS = tokenS ?? Token(symbol: "LRC")!
-        var tokenB: Token? = nil
+        var tokenB: Token?
         if let symbol = defaults.string(forKey: UserDefaultsKeys.tradeTokenB.rawValue) {
             tokenB = Token(symbol: symbol)
         }
@@ -98,6 +100,7 @@ class TradeDataManager {
     func handleResult(of scanning: JSON) {
         let makerHash = scanning[TradeDataManager.qrcodeHash].stringValue
         let makerPrivateKey = scanning[TradeDataManager.qrcodeAuth].stringValue
+        let ratio = scanning[TradeDataManager.sellRatio].intValue
         if let maker = getOrder(by: makerHash) {
             let taker = constructTaker(from: maker)
             maker.hash = makerHash
@@ -105,12 +108,13 @@ class TradeDataManager {
             self.orders = []
             self.orders.insert(maker, at: 0)
             self.orders.insert(taker, at: 1)
+            self.sellRatio = ratio
             self.makerPrivateKey = makerPrivateKey
         }
     }
-    
+
     func getOrder(by hash: String) -> OriginalOrder? {
-        var result: OriginalOrder? = nil
+        var result: OriginalOrder?
         let semaphore = DispatchSemaphore(value: 0)        
         LoopringAPIRequest.getOrderByHash(orderHash: hash) { order, error in
             guard error == nil && order != nil else {
@@ -335,7 +339,7 @@ class TradeDataManager {
     }
 
     func generateErrorMessage(errorCode: String) -> Error? {
-        var result: NSError? = nil
+        var result: NSError?
         let code = Int(errorCode) ?? 0
         var userInfo: [String: String] = [:]
         if self.errorMessage.keys.contains(errorCode) {
@@ -351,7 +355,7 @@ class TradeDataManager {
     func _generate(completion: @escaping (String?, Error?) -> Void) -> String? {
         self.signRinghash() // cost time in debug
         let data = encode()
-        var error: NSError? = nil
+        var error: NSError?
         let protocolAddress = GethNewAddressFromHex(RelayAPIConfiguration.protocolAddress, &error)!
         let gasLimit: Int64 = GasDataManager.shared.getGasLimit(by: "submitRing")!
         return SendCurrentAppWalletDataManager.shared._sign(data: data, address: protocolAddress, amount: GethBigInt.init(0), gasLimit: GethBigInt(gasLimit), completion: completion)
@@ -438,7 +442,7 @@ class TradeDataManager {
     }
     
     func calculateGas(for token: String, to amount: Double) -> Double? {
-        var result: Double? = nil
+        var result: Double?
         if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: token) {
             let tokenFrozen = PlaceOrderDataManager.shared.getAllowance(of: token)
             if asset.allowance >= amount + tokenFrozen {
