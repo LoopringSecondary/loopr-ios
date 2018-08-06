@@ -35,7 +35,7 @@ class SendConfirmViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.modalPresentationStyle = .custom
-        view.theme_backgroundColor = GlobalPicker.textColor
+        view.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         
         titleLabel.setTitleCharFont()
         titleLabel.text = LocalizedString("Send Confirmation", comment: "")

@@ -160,7 +160,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         // TODO: unable to add StepSlider in xib. Have to add it here.
         // We also have made some modifications in our repo.
         // https://github.com/xiaowheat/StepSlider
-        stepSlider = StepSlider.init(frame: CGRect(x: 10, y: amountTextField.bottomY + 16, width: contentView.width - 10 * 2, height: 44))
+        stepSlider = StepSlider.init(frame: CGRect(x: 10, y: amountInfoLabel.bottomY + 16, width: contentView.width - 10 * 2, height: 44))
         stepSlider.delegate = self
         stepSlider.maxCount = 4
         stepSlider.labelFont = FontConfigManager.shared.getRegularFont(size: 12)
@@ -193,25 +193,18 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         // TODO: Update the transaction fee is needed. in SendCurrentAppWalletDataManager
         let symbol = SendCurrentAppWalletDataManager.shared.token?.symbol ?? "ETH"
         asset = CurrentAppWalletDataManager.shared.getAsset(symbol: symbol)
-
-        tokenIconImageView.image = asset.icon
-        tokenHeaderLabel.text = asset.symbol
-        tokenTotalAmountLabel.text = "\(asset.display) \(asset.symbol)"
-        tokenSymbolLabel.text = asset.symbol
-        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
-        if asset.symbol.uppercased() == "ETH" {
-            transactionFeeTipLabel.isHidden = false
-        } else {
-            transactionFeeTipLabel.isHidden = true
+        if let asset = self.asset {
+            tokenIconImageView.image = asset.icon
+            tokenHeaderLabel.text = asset.symbol
+            tokenTotalAmountLabel.text = "\(asset.display) \(asset.symbol)"
+            tokenSymbolLabel.text = asset.symbol
+            SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
+            if asset.symbol.uppercased() == "ETH" {
+                transactionFeeTipLabel.isHidden = false
+            } else {
+                transactionFeeTipLabel.isHidden = true
+            }
         }
-        
-        // TODO: this doesn't work.
-        /*
-        headerButton.applyShadow(withColor: .black)
-        view.bringSubview(toFront: tokenIconImageView)
-        view.bringSubview(toFront: tokenHeaderLabel)
-        view.bringSubview(toFront: tokenTotalAmountLabel)
-        */
         contentView.applyShadow(withColor: .black)
     }
     
@@ -268,7 +261,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         if let toAddress = addressTextField.text {
             if !toAddress.isEmpty {
                 if toAddress.isHexAddress() {
-                    var error: NSError? = nil
+                    var error: NSError?
                     if GethNewAddressFromHex(toAddress, &error) != nil {
                         updateLabel(label: addressInfoLabel, text: LocalizedString("Please confirm the address before sending", comment: ""), textColor: .text1)
                         return true
