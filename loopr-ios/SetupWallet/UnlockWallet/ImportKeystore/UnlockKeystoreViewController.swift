@@ -28,29 +28,32 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
 
         unlockButton.setTitle(LocalizedString("Unlock", comment: ""), for: .normal)
-        unlockButton.setupSecondary()
+        unlockButton.setupSecondary(height: 44)
         
-        keystoreContentTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
-        keystoreContentTextView.cornerRadius = 12
+        keystoreContentTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
+        keystoreContentTextView.cornerRadius = 6
         keystoreContentTextView.font = FontConfigManager.shared.getRegularFont()
-        keystoreContentTextView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
+        keystoreContentTextView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        keystoreContentTextView.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffff66") : UIColor.dark3
+        keystoreContentTextView.theme_tintColor = GlobalPicker.textColor
         keystoreContentTextView.delegate = self
         keystoreContentTextView.text = LocalizedString("Please enter the keystore", comment: "")
-        keystoreContentTextView.textColor = .lightGray
-        keystoreContentTextView.tintColor = UIColor.black
         keystoreContentTextView.keyboardAppearance = Themes.isDark() ? .dark : .default
         
         passwordTextField.delegate = self
         passwordTextField.tag = 0
+        passwordTextField.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        passwordTextField.theme_textColor = GlobalPicker.textColor
         passwordTextField.theme_tintColor = GlobalPicker.textColor
         passwordTextField.font = FontConfigManager.shared.getRegularFont()
         passwordTextField.placeholder = LocalizedString("Keystore Password", comment: "")
+        passwordTextField.placeHolderColor = Themes.isDark() ? UIColor.init(rgba: "#ffffff66") : UIColor.dark3
         passwordTextField.contentMode = UIViewContentMode.bottom
         passwordTextField.textContentType = .password
         passwordTextField.isSecureTextEntry = true
         passwordTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: passwordTextField.frame.height))
         passwordTextField.leftViewMode = .always
-        passwordTextField.cornerRadius = 12
+        passwordTextField.cornerRadius = 6
         passwordTextField.keyboardAppearance = Themes.isDark() ? .dark : .default
 
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
@@ -81,15 +84,9 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         }
         
         let keyboardHeight = keyboardFrame.cgRectValue.height
-        
-        if #available(iOS 11.0, *) {
-            // Get the the distance from the bottom safe area edge to the bottom of the screen
-            let window = UIApplication.shared.keyWindow
-            let bottomPadding = window?.safeAreaInsets.bottom
-            unlockButtonBottonLayoutConstraint.constant = keyboardHeight + 16.0 - bottomPadding!
-        } else {
-            unlockButtonBottonLayoutConstraint.constant = keyboardHeight + 16.0
-        }
+        let window = UIApplication.shared.keyWindow
+        let bottomPadding = window?.safeAreaInsets.bottom
+        unlockButtonBottonLayoutConstraint.constant = keyboardHeight + 16.0 - bottomPadding!
     }
     
     @objc func keyboardWillDisappear(notification: NSNotification?) {
@@ -100,15 +97,17 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
     func textViewDidBeginEditing(_ textView: UITextView) {
         if keystoreContentTextView.text == LocalizedString("Please enter the keystore", comment: "") {
             keystoreContentTextView.text = ""
-            keystoreContentTextView.textColor = .black
         }
+        keystoreContentTextView.theme_textColor = GlobalPicker.textColor
         keystoreContentTextView.becomeFirstResponder() // Optional
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if keystoreContentTextView.text == "" {
             keystoreContentTextView.text = LocalizedString("Please enter the keystore", comment: "")
-            keystoreContentTextView.textColor = .lightGray
+            keystoreContentTextView.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffff66") : UIColor.dark3
+        } else {
+            keystoreContentTextView.theme_textColor = GlobalPicker.textColor
         }
         keystoreContentTextView.resignFirstResponder()
     }

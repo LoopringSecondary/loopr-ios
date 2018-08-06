@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please use space to seperate the mnemonic words" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wnQ-al-rIC">
-                    <rect key="frame" x="15" y="35" width="345" height="248"/>
+                    <rect key="frame" x="15" y="28" width="345" height="235"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <color key="tintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -44,10 +44,10 @@
                     </connections>
                 </button>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4pM-2Z-5Ap">
-                    <rect key="frame" x="15" y="291" width="345" height="40"/>
+                    <rect key="frame" x="15" y="273" width="345" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="5mw-NE-BEY"/>
+                        <constraint firstAttribute="height" constant="50" id="5mw-NE-BEY"/>
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -57,11 +57,11 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="T0O-fl-KJI" secondAttribute="bottom" constant="280" id="80I-li-298"/>
-                <constraint firstItem="4pM-2Z-5Ap" firstAttribute="top" secondItem="wnQ-al-rIC" secondAttribute="bottom" constant="8" id="MUF-Q6-RFl"/>
+                <constraint firstItem="4pM-2Z-5Ap" firstAttribute="top" secondItem="wnQ-al-rIC" secondAttribute="bottom" constant="10" id="MUF-Q6-RFl"/>
                 <constraint firstItem="4pM-2Z-5Ap" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="RUH-Br-Vxj"/>
-                <constraint firstItem="wnQ-al-rIC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="UBY-om-phR"/>
+                <constraint firstItem="wnQ-al-rIC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="UBY-om-phR"/>
                 <constraint firstItem="wnQ-al-rIC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="pjD-ZM-Uks"/>
-                <constraint firstItem="T0O-fl-KJI" firstAttribute="top" secondItem="4pM-2Z-5Ap" secondAttribute="bottom" constant="12" id="pxc-t6-ZDS"/>
+                <constraint firstItem="T0O-fl-KJI" firstAttribute="top" secondItem="4pM-2Z-5Ap" secondAttribute="bottom" constant="20" id="pxc-t6-ZDS"/>
                 <constraint firstItem="T0O-fl-KJI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="rlX-jG-n6I"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wnQ-al-rIC" secondAttribute="trailing" constant="15" id="wZj-UN-n3b"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4pM-2Z-5Ap" secondAttribute="trailing" constant="15" id="x2p-wE-o3L"/>

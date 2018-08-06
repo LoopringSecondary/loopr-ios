@@ -32,26 +32,29 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         unlockButton.setupSecondary(height: 44)
 
         mnemonicWordTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
-        mnemonicWordTextView.cornerRadius = 12
+        mnemonicWordTextView.cornerRadius = 6
         mnemonicWordTextView.font = FontConfigManager.shared.getRegularFont()
-        mnemonicWordTextView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
+        mnemonicWordTextView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        mnemonicWordTextView.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffff66") : UIColor.dark3
+        mnemonicWordTextView.theme_tintColor = GlobalPicker.textColor
         mnemonicWordTextView.delegate = self
         mnemonicWordTextView.text = LocalizedString("Please use space to seperate the mnemonic words", comment: "")
-        mnemonicWordTextView.textColor = .lightGray
-        mnemonicWordTextView.tintColor = UIColor.black
         mnemonicWordTextView.keyboardAppearance = Themes.isDark() ? .dark : .default
         
         passwordTextField.delegate = self
         passwordTextField.tag = 0
-        passwordTextField.tintColor = UIColor.black
+        passwordTextField.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        passwordTextField.theme_textColor = GlobalPicker.textColor
+        passwordTextField.theme_tintColor = GlobalPicker.textColor
         passwordTextField.font = FontConfigManager.shared.getRegularFont()
         passwordTextField.placeholder = LocalizedString("Mnemonic Password (optional)", comment: "")
+        passwordTextField.placeHolderColor = Themes.isDark() ? UIColor.init(rgba: "#ffffff66") : UIColor.dark3
         passwordTextField.contentMode = UIViewContentMode.bottom
         passwordTextField.textContentType = .password
         passwordTextField.isSecureTextEntry = true
         passwordTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: passwordTextField.frame.height))
         passwordTextField.leftViewMode = .always
-        passwordTextField.cornerRadius = 12
+        passwordTextField.cornerRadius = 6
         passwordTextField.keyboardAppearance = Themes.isDark() ? .dark : .default
 
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
@@ -91,24 +94,16 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         }
         
         let keyboardHeight = keyboardFrame.cgRectValue.height
+        let window = UIApplication.shared.keyWindow
+        let bottomPadding = window?.safeAreaInsets.bottom
         
-        if #available(iOS 11.0, *) {
-            // Get the the distance from the bottom safe area edge to the bottom of the screen
-            let window = UIApplication.shared.keyWindow
-            let bottomPadding = window?.safeAreaInsets.bottom
-            
-            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
-
-                self.unlockButtonBottonLayoutConstraint.constant = keyboardHeight + 16.0 - bottomPadding!
-                // animation for layout constraint change.
-                self.view.layoutIfNeeded()
-
-            }, completion: { (_) in
-                self.isKeyboardShown = true
-            })
-        } else {
-            unlockButtonBottonLayoutConstraint.constant = keyboardHeight + 16.0
-        }
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+            self.unlockButtonBottonLayoutConstraint.constant = keyboardHeight + 16.0 - bottomPadding!
+            // animation for layout constraint change.
+            self.view.layoutIfNeeded()
+        }, completion: { (_) in
+            self.isKeyboardShown = true
+        })
     }
     
     @objc func systemKeyboardWillDisappear(notification: NSNotification?) {
@@ -120,15 +115,17 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
     func textViewDidBeginEditing(_ textView: UITextView) {
         if mnemonicWordTextView.text == LocalizedString("Please use space to seperate the mnemonic words", comment: "") {
             mnemonicWordTextView.text = ""
-            mnemonicWordTextView.textColor = .black
         }
+        mnemonicWordTextView.theme_textColor = GlobalPicker.textColor
         mnemonicWordTextView.becomeFirstResponder() // Optional
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if mnemonicWordTextView.text == "" {
             mnemonicWordTextView.text = LocalizedString("Please use space to seperate the mnemonic words", comment: "")
-            mnemonicWordTextView.textColor = .lightGray
+            mnemonicWordTextView.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffff66") : UIColor.dark3
+        } else {
+            mnemonicWordTextView.theme_textColor = GlobalPicker.textColor
         }
         mnemonicWordTextView.resignFirstResponder()
     }

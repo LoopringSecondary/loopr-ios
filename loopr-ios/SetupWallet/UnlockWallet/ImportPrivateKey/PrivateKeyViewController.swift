@@ -28,16 +28,16 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
 
         unlockButton.setTitle(LocalizedString("Unlock", comment: ""), for: .normal)
-        unlockButton.setupSecondary()
+        unlockButton.setupSecondary(height: 44)
 
         privateKeyTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
-        privateKeyTextView.cornerRadius = 12
+        privateKeyTextView.cornerRadius = 6
         privateKeyTextView.font = FontConfigManager.shared.getRegularFont()
-        privateKeyTextView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
+        privateKeyTextView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        privateKeyTextView.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffff66") : UIColor.dark3
+        privateKeyTextView.theme_tintColor = GlobalPicker.textColor
         privateKeyTextView.delegate = self
         privateKeyTextView.text = LocalizedString("Please input your private key", comment: "")
-        privateKeyTextView.textColor = .lightGray
-        privateKeyTextView.tintColor = UIColor.black
         privateKeyTextView.keyboardAppearance = Themes.isDark() ? .dark : .default
     }
 
@@ -65,15 +65,9 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
         }
         
         keyboardHeight = keyboardFrame.cgRectValue.height
-        
-        if #available(iOS 11.0, *) {
-            // Get the the distance from the bottom safe area edge to the bottom of the screen
-            let window = UIApplication.shared.keyWindow
-            let bottomPadding = window?.safeAreaInsets.bottom
-            unlockButtonBottonLayoutConstraint.constant = keyboardHeight + 16.0 - bottomPadding!
-        } else {
-            unlockButtonBottonLayoutConstraint.constant = keyboardHeight + 16.0
-        }
+        let window = UIApplication.shared.keyWindow
+        let bottomPadding = window?.safeAreaInsets.bottom
+        unlockButtonBottonLayoutConstraint.constant = keyboardHeight + 16.0 - bottomPadding!
     }
     
     @objc func keyboardWillDisappear(notification: NSNotification?) {
@@ -84,16 +78,17 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if privateKeyTextView.text == LocalizedString("Please input your private key", comment: "") {
             privateKeyTextView.text = ""
-            privateKeyTextView.textColor = .black
         }
+        privateKeyTextView.theme_textColor = GlobalPicker.textColor
         privateKeyTextView.becomeFirstResponder() //Optional
-        // privateKeyTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if privateKeyTextView.text == "" {
             privateKeyTextView.text = LocalizedString("Please input your private key", comment: "")
-            privateKeyTextView.textColor = .lightGray
+            privateKeyTextView.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffff66") : UIColor.dark3
+        } else {
+            privateKeyTextView.theme_textColor = GlobalPicker.textColor
         }
         privateKeyTextView.resignFirstResponder()
     }
