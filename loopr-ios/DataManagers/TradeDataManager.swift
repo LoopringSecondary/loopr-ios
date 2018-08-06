@@ -131,13 +131,15 @@ class TradeDataManager {
         var buyNoMoreThanAmountB: Bool
         var amountBuy, amountSell: Double
         var tokenSell, tokenBuy, market: String
+        let ratio = Double(self.sellRatio / 100)
+        
         
         buyNoMoreThanAmountB = true
         tokenBuy = maker.tokenSell
         tokenSell = maker.tokenBuy
         market = "\(tokenSell)/\(tokenBuy)"
-        amountBuy = maker.amountSell
-        amountSell = maker.amountBuy
+        amountBuy = maker.amountSell * ratio
+        amountSell = maker.amountBuy * ratio
         
         let delegate = RelayAPIConfiguration.delegateAddress
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address

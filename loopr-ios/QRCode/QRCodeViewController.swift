@@ -15,12 +15,13 @@ class QRCodeViewController: UIViewController {
     @IBOutlet weak var receiveQRCodeIconView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var qrcodeImageView: UIImageView!
-    var qrcodeImage: UIImage!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var copyAddressButton: UIButton!
     @IBOutlet weak var saveToAlbumButton: UIButton!
     
+    var qrcodeImage: UIImage!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
