@@ -16,6 +16,8 @@ class TradeSelectionViewController: UIViewController {
     @IBOutlet weak var button4: UIButton!
     @IBOutlet weak var button5: UIButton!
     
+    var isViewDidAppear: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -79,11 +81,14 @@ class TradeSelectionViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        button1.applyShadow(withColor: UIColor.black)
-        button2.applyShadow(withColor: UIColor.black)
-        button3.applyShadow(withColor: UIColor.black)
-        button4.applyShadow(withColor: UIColor.black)
-        button5.applyShadow(withColor: UIColor.black)
+        if !isViewDidAppear {
+            button1.applyShadow(withColor: UIColor.black)
+            button2.applyShadow(withColor: UIColor.black)
+            button3.applyShadow(withColor: UIColor.black)
+            button4.applyShadow(withColor: UIColor.black)
+            button5.applyShadow(withColor: UIColor.black)
+            isViewDidAppear = true
+        }
     }
 
     @objc func pressedButton1(_ button: UIButton) {
