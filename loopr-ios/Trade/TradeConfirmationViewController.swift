@@ -29,6 +29,7 @@ class TradeConfirmationViewController: UIViewController {
     @IBOutlet weak var gasInfoImage: UIImageView!
     @IBOutlet weak var gasTipLabel: UILabel!
     @IBOutlet weak var placeOrderButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     var tokenSView: TradeTokenView!
     var tokenBView: TradeTokenView!
@@ -82,6 +83,7 @@ class TradeConfirmationViewController: UIViewController {
         // Button
         placeOrderButton.setTitle(LocalizedString("Place Order", comment: ""), for: .normal)
         placeOrderButton.setupPrimary(height: 44)
+        cancelButton.setTitle(LocalizedString("Cancel", comment: ""), for: .normal)
         
         // Tap gesture
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
@@ -121,8 +123,12 @@ class TradeConfirmationViewController: UIViewController {
         return true
     }
     
+    @IBAction func pressedCancelButton(_ sender: UIButton) {
+        self.close()
+    }
+    
     func updateLabels(order: OriginalOrder) {
-        let ratio: Double = Double(TradeDataManager.shared.sellRatio / 100)
+        let ratio: Double = isTaker() ? TradeDataManager.shared.sellRatio : 1
         tokenSView.update(type: .sell, symbol: order.tokenSell, amount: order.amountSell * ratio)
         tokenBView.update(type: .buy, symbol: order.tokenBuy, amount: order.amountBuy * ratio)
         let value = order.amountSell / order.amountBuy

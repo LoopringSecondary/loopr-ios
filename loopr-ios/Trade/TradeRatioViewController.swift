@@ -15,7 +15,7 @@ class TradeRatioViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var pickerView: UIPickerView!
     
-    var sellRatio: Int = 100
+    var sellRatio: Double = 1
     var titleArray = [Int]()
     var dismissClosure: (() -> Void)?
     var parentNavController: UINavigationController?
@@ -92,7 +92,7 @@ class TradeRatioViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.sellRatio = titleArray[row]
+        self.sellRatio = Double(titleArray[row]) / Double(100)
     }
 
 }

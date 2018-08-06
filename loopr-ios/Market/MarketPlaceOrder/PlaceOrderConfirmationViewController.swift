@@ -33,6 +33,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     @IBOutlet weak var declineButton: UIButton!
     @IBOutlet weak var confirmWidth: NSLayoutConstraint!
     @IBOutlet weak var declineWidth: NSLayoutConstraint!
+    @IBOutlet weak var cancelButton: UIButton!
     
     var tokenSView: TradeTokenView!
     var tokenBView: TradeTokenView!
@@ -113,6 +114,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
             confirmationButton.title = LocalizedString("Confirmation", comment: "")
         }
         confirmationButton.setupPrimary(height: 44)
+        cancelButton.setTitle(LocalizedString("Cancel", comment: ""), for: .normal)
     }
     
     func updateLabels(order: OriginalOrder) {
@@ -141,6 +143,10 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         close()
+    }
+    
+    @IBAction func pressedCancelButton(_ sender: UIButton) {
+        self.close()
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {

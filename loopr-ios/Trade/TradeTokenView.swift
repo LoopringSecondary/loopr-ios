@@ -19,7 +19,7 @@ import UIKit
     
     override init(frame: CGRect) {
 
-        iconImageView = UIImageView(frame: CGRect(x: 0, y: 10, width: frame.width, height: iconImageWidth*UIStyleConfig.scale))
+        iconImageView = UIImageView(frame: CGRect(x: 0, y: 16, width: frame.width, height: iconImageWidth*UIStyleConfig.scale))
         iconImageView.contentMode = .scaleAspectFit
 
         iconView = IconView(frame: CGRect(x: 0, y: 10, width: frame.width, height: iconImageWidth*UIStyleConfig.scale))
@@ -30,7 +30,7 @@ import UIKit
         titleLabel.textAlignment = .center
         titleLabel.setTitleCharFont()
 
-        amountLabel = UILabel(frame: CGRect(x: 0, y: titleLabel.frame.maxY, width: frame.width, height: 40*UIStyleConfig.scale))
+        amountLabel = UILabel(frame: CGRect(x: 0, y: titleLabel.frame.maxY - 12, width: frame.width, height: 40*UIStyleConfig.scale))
         amountLabel.textAlignment = .center
         amountLabel.setTitleDigitFont()
         

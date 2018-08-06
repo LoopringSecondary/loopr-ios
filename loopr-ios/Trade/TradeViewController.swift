@@ -285,7 +285,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         vc.dismissClosure = {
             parentView.alpha = 1
             TradeDataManager.shared.sellRatio = vc.sellRatio
-            self.sellRatioValueLabel.text = "\(vc.sellRatio)" + NumberFormatter().percentSymbol
+            self.sellRatioValueLabel.text = "\(vc.sellRatio * 100)" + NumberFormatter().percentSymbol
         }
         vc.parentNavController = self.navigationController
         vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)

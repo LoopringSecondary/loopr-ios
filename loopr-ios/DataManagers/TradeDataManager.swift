@@ -27,7 +27,7 @@ class TradeDataManager {
     var isTaker: Bool = false
     var type: TradeType = .buy
     var makerPrivateKey: String?
-    var sellRatio: Int = 100
+    var sellRatio: Double = 1
     var amountTokenS: Double = 0.0
     var amountTokenB: Double = 0.0
     
@@ -100,7 +100,7 @@ class TradeDataManager {
     func handleResult(of scanning: JSON) {
         let makerHash = scanning[TradeDataManager.qrcodeHash].stringValue
         let makerPrivateKey = scanning[TradeDataManager.qrcodeAuth].stringValue
-        let ratio = scanning[TradeDataManager.sellRatio].intValue
+        let ratio = scanning[TradeDataManager.sellRatio].doubleValue
         if let maker = getOrder(by: makerHash) {
             let taker = constructTaker(from: maker)
             maker.hash = makerHash
@@ -131,8 +131,7 @@ class TradeDataManager {
         var buyNoMoreThanAmountB: Bool
         var amountBuy, amountSell: Double
         var tokenSell, tokenBuy, market: String
-        let ratio = Double(self.sellRatio / 100)
-        
+        let ratio = self.sellRatio
         
         buyNoMoreThanAmountB = true
         tokenBuy = maker.tokenSell

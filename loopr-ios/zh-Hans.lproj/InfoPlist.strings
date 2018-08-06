@@ -9,4 +9,3 @@
 NSPhotoLibraryUsageDescription = "保存二维码到相册";
 NSCameraUsageDescription = "使用相机扫描二维码";
 FaceIDUsageDescription = "使用面容ID以解锁您的钱包";
-
