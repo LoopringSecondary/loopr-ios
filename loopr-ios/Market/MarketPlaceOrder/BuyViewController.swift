@@ -123,7 +123,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         buyTipLabel.text = LocalizedString("Amount", comment: "")
         
         // Slider
-        stepSlider.frame = sliderView.frame
+        let screenWidth = UIScreen.main.bounds.width
+        stepSlider.frame = CGRect(x: 16, y: sliderView.frame.minY, width: screenWidth-64, height: 20)
         stepSlider.delegate = self
         stepSlider.maxCount = 4
         stepSlider.labelFont = FontConfigManager.shared.getRegularFont(size: 12)

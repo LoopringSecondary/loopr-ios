@@ -45,11 +45,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         setBackButton()
         setupQRCodeButton()
         
-        tokenSView = TradeTokenView(frame: tokenS.frame)
-        view.addSubview(tokenSView)
-        tokenBView = TradeTokenView(frame: tokenB.frame)
-        view.addSubview(tokenBView)
-        view.bringSubview(toFront: totalMaskView)
+        
         
         statusTipLabel.setTitleCharFont()
         statusTipLabel.text = LocalizedString("Status", comment: "")
@@ -72,13 +68,20 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         dateTipLabel.setTitleCharFont()
         dateTipLabel.text = LocalizedString("Time", comment: "")
         dateInfoLabel.setTitleDigitFont()
-        
-        setup()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    override func viewDidLayoutSubviews() {
+        tokenSView = TradeTokenView(frame: tokenS.frame)
+        view.addSubview(tokenSView)
+        tokenBView = TradeTokenView(frame: tokenB.frame)
+        view.addSubview(tokenBView)
+        view.bringSubview(toFront: totalMaskView)
+        setup()
     }
     
     func setupQRCodeButton() {
