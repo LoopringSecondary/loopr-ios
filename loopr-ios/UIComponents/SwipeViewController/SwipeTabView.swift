@@ -175,7 +175,9 @@ open class SwipeTabView: UIScrollView {
         
         switch options.addition {
         case .underline:
-            underlineBackgroundLineView = UIView(frame: CGRect(x: 0, y: containerHeight, width: frame.width - options.margin * 2, height: options.underlineView.height))
+            let screenWidth = UIScreen.main.bounds.width
+            underlineBackgroundLineView = UIView(frame: CGRect(x: 0, y: containerHeight, width: screenWidth - options.margin * 2, height: options.underlineView.height))
+
             underlineBackgroundLineView.backgroundColor = options.underlineView.backgroundLineColor
             containerView.addSubview(underlineBackgroundLineView)
         case .none:
@@ -226,7 +228,8 @@ open class SwipeTabView: UIScrollView {
             case .segmented:
                 let adjustCellSize: CGSize
                 if #available(iOS 11.0, *), options.isSafeAreaEnabled {
-                    adjustCellSize = CGSize(width: (frame.width - options.margin * 2 - safeAreaInsets.left - safeAreaInsets.right) / CGFloat(itemCount), height: tabItemView.frame.size.height)
+                    let screenWidth = UIScreen.main.bounds.width
+                    adjustCellSize = CGSize(width: (screenWidth - options.margin * 2 - safeAreaInsets.left - safeAreaInsets.right) / CGFloat(itemCount), height: tabItemView.frame.size.height)
                 } else {
                     adjustCellSize = CGSize(width: (frame.width - options.margin * 2) / CGFloat(itemCount), height: tabItemView.frame.size.height)
                 }

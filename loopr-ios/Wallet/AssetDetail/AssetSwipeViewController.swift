@@ -61,10 +61,7 @@ class AssetSwipeViewController: SwipeViewController {
         // Send button
         sendButton.setTitle(LocalizedString("Send", comment: "") + " " + (asset?.symbol ?? ""), for: .normal)
         sendButton.setupSecondary(height: 44, gradientOrientation: .horizontal)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         if Themes.isDark() {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.white
@@ -73,6 +70,10 @@ class AssetSwipeViewController: SwipeViewController {
             options.swipeTabView.itemView.selectedTextColor = UIColor.black
         }
         swipeView.reloadData(options: options, default: swipeView.currentIndex)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {
