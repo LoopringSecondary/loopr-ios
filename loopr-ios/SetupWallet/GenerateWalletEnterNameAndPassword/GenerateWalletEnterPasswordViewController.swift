@@ -55,7 +55,7 @@ class GenerateWalletEnterPasswordViewController: UIViewController, UITextFieldDe
         errorInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         view.addSubview(errorInfoLabel)
 
-        errorInfoLabel.theme_textColor = GlobalPicker.textColor
+        errorInfoLabel.theme_textColor = GlobalPicker.textLightColor
         errorInfoLabel.alpha = 1.0
         errorInfoLabel.text = LocalizedString("The length of password needs to be larger than or equal to 6.", comment: "")
     }
@@ -101,7 +101,7 @@ class GenerateWalletEnterPasswordViewController: UIViewController, UITextFieldDe
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newLength = (textField.text?.utf16.count)! + (string.utf16.count) - range.length
         print("textField shouldChangeCharactersIn \(newLength)")
-        errorInfoLabel.theme_textColor = GlobalPicker.textColor
+        errorInfoLabel.theme_textColor = GlobalPicker.textLightColor
         errorInfoLabel.alpha = 1.0
         errorInfoLabel.text = LocalizedString("The length of password needs to be larger than or equal to 6.", comment: "")
         return true

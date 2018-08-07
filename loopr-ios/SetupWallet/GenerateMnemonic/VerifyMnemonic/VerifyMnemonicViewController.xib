@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="LRR-JP-YtE">
-                    <rect key="frame" x="20" y="591" width="335" height="44"/>
+                    <rect key="frame" x="20" y="618" width="335" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fgs-1m-oEH">
                             <rect key="frame" x="0.0" y="0.0" width="160" height="44"/>
@@ -43,7 +43,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="LRR-JP-YtE" secondAttribute="bottom" constant="32" id="6jV-Ja-Tkc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="LRR-JP-YtE" secondAttribute="bottom" constant="5" id="6jV-Ja-Tkc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LRR-JP-YtE" secondAttribute="trailing" constant="20" id="8RN-wm-Eyr"/>
                 <constraint firstItem="LRR-JP-YtE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="PqQ-xh-z3Q"/>
             </constraints>

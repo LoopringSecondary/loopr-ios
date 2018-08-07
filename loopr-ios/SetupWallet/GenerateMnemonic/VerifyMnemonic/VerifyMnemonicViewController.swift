@@ -47,7 +47,6 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         // Setup UI
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
-        let screenHeight = screensize.height
         
         collectionViewWidth = screenWidth - padding * 2
         collectionViewHeight = CGFloat(sortedMnemonics.count/3) * MnemonicBackupModeCollectionViewCell.getHeight() + 2*padding
@@ -62,10 +61,10 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         
         mnemonicsTextView.frame = CGRect(x: 18, y: 70, width: screenWidth - 2*18, height: 140)
         mnemonicsTextView.font = FontConfigManager.shared.getDigitalFont()
-        mnemonicsTextView.backgroundColor = UIColor.dark2
+        mnemonicsTextView.backgroundColor = UIColor.dark3
         mnemonicsTextView.textColor = UIColor.white.withAlphaComponent(0.8)
         mnemonicsTextView.tintColor = UIColor.white.withAlphaComponent(0.8)
-        mnemonicsTextView.textContainerInset = UIEdgeInsets.init(top: 23, left: 20, bottom: 10, right: 20)
+        mnemonicsTextView.textContainerInset = UIEdgeInsets.init(top: 20, left: 20, bottom: 10, right: 20)
         mnemonicsTextView.cornerRadius = 6
         mnemonicsTextView.isEditable = false
         view.addSubview(mnemonicsTextView)
@@ -114,6 +113,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
             firstAppear = false
         }
         GenerateWalletDataManager.shared.clearUserInputMnemonic()
+        mnemonicsTextView.applyShadow(withColor: .black)
     }
     
     func collectionViewDidSelectItemAt(indexPath: IndexPath) {
