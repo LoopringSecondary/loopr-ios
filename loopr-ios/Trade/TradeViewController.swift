@@ -10,7 +10,7 @@ import UIKit
 import Geth
 import StepSlider
 
-class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, StepSliderDelegate {
+class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, StepSliderDelegate {
     
     // container
     @IBOutlet weak var containerView: UIView!
@@ -104,7 +104,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         buyTipLabel.text = LocalizedString("Buy", comment: "")
         
         // Slider
-        stepSlider.frame = sliderView.frame
+        let screenWidth = UIScreen.main.bounds.width
+        stepSlider.frame = CGRect(x: 15, y: sliderView.frame.minY, width: screenWidth-60, height: 20)
         stepSlider.delegate = self
         stepSlider.maxCount = 4
         stepSlider.labelFont = FontConfigManager.shared.getRegularFont(size: 12)
@@ -154,9 +155,11 @@ class TradeViewController: UIViewController, UITextFieldDelegate, NumericKeyboar
         nextButton.setupSecondary(height: 44)
 
         // Scroll view
+        scrollView.delegate = self
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(scrollViewTap)
+        scrollView.delaysContentTouches = false
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: containerView.frame.maxY)
         
         self.distance = 0

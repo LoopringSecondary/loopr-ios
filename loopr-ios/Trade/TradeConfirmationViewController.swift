@@ -49,12 +49,6 @@ class TradeConfirmationViewController: UIViewController {
         
         containerView.applyShadow(withColor: .black)
         
-        // TokenView
-        tokenSView = TradeTokenView(frame: tokenSell.frame)
-        tokenBView = TradeTokenView(frame: tokenBuy.frame)
-        containerView.addSubview(tokenSView)
-        containerView.addSubview(tokenBView)
-        
         // Price label
         priceLabel.text = LocalizedString("Price", comment: "")
         priceLabel.setTitleCharFont()
@@ -96,8 +90,12 @@ class TradeConfirmationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLayoutSubviews() {
+        // TokenView
+        tokenSView = TradeTokenView(frame: tokenSell.frame)
+        tokenBView = TradeTokenView(frame: tokenBuy.frame)
+        containerView.addSubview(tokenSView)
+        containerView.addSubview(tokenBView)
         if let order = self.order {
             updateLabels(order: order)
         }

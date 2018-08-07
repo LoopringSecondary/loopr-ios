@@ -157,10 +157,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             }
         }
         
-        // TODO: unable to add StepSlider in xib. Have to add it here.
-        // We also have made some modifications in our repo.
-        // https://github.com/xiaowheat/StepSlider
-        stepSlider = StepSlider.init(frame: CGRect(x: 10, y: amountInfoLabel.bottomY + 16, width: contentView.width - 10 * 2, height: 44))
+        let width = UIScreen.main.bounds.width - 60
+        stepSlider = StepSlider.init(frame: CGRect(x: 10, y: amountInfoLabel.bottomY + 15, width: width, height: 20))
         stepSlider.delegate = self
         stepSlider.maxCount = 4
         stepSlider.labelFont = FontConfigManager.shared.getRegularFont(size: 12)
