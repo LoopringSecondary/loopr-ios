@@ -72,13 +72,16 @@ class QRCodeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         qrcodeImageView.image = qrcodeImage
-        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        contentView.applyShadow(withColor: UIColor.black)
+        view.bringSubview(toFront: receiveQRCodeIconView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        contentView.applyShadow(withColor: UIColor.black)
-        view.bringSubview(toFront: receiveQRCodeIconView)
     }
     
     func generateQRCode(from data: Data) {
