@@ -49,7 +49,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         // Do any additional setup after loading the view.
         self.modalPresentationStyle = .custom
         self.view.theme_backgroundColor = GlobalPicker.backgroundColor
-        containerView.applyShadow(withColor: .black)
+        containerView.applyShadow()
         
         // TokenView
         tokenSView = TradeTokenView(frame: tokenSell.frame)

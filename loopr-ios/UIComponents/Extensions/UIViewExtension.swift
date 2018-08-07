@@ -172,4 +172,14 @@ extension UIView {
         self.applyShadow(withColor: colors[1])
     }
 
+    // Used when the view is created in xib.
+    // Putting it in viewDidLoad should work.
+    func applyShadow() {
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 2, height: 2)
+        self.layer.shadowOpacity = 0.3
+        self.layer.shadowRadius = 4
+        self.layer.masksToBounds = true
+        self.clipsToBounds = false
+    }
 }

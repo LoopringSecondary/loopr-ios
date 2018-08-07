@@ -16,7 +16,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     
     // container
     @IBOutlet weak var containerView: UIView!
-    var hasShadow: Bool = false
     
     // TokenS
     @IBOutlet weak var tokenSButton: UIButton!
@@ -186,6 +185,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         blurVisualEffectView.alpha = 1
         blurVisualEffectView.frame = UIScreen.main.bounds
+        
+        containerView.applyShadow()
     }
 
     override func didReceiveMemoryWarning() {
@@ -196,10 +197,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         update()
-        if !hasShadow {
-            containerView.applyShadow(withColor: .black)
-            hasShadow = true
-        }
     }
     
     func update() {
