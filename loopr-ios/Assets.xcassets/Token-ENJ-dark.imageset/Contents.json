@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "DNT.png",
+      "filename" : "ENJ.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "DNT@2x.png",
+      "filename" : "ENJ@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "DNT@3x.png",
+      "filename" : "ENJ@3x.png",
       "scale" : "3x"
     }
   ],

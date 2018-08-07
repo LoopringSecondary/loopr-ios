@@ -622,4 +622,40 @@ class LoopringAPIRequest {
             completionHandler(data!.respond, nil)
         }
     }
+    
+    // City partner
+    static func activateCustumerInvitation(activateCode: String, completionHandler: @escaping (_ result: Bool?, _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        body["params"] = [["device": JSON(UUID().uuidString), "activateCode": activateCode]]
+        body["id"] = JSON(UUID().uuidString)
+        
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                completionHandler(nil, error)
+                return
+            }
+            let json = JSON(data)
+            let result = json["result"].boolValue
+            completionHandler(result, nil)
+        }
+    }
+    
+    static func getCityPartnerStatus(invitationCode: String, completionHandler: @escaping (_ result: CityPartner?, _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        body["params"] = [["invitationCode": invitationCode]]
+        body["id"] = JSON(UUID().uuidString)
+        
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                completionHandler(nil, error)
+                return
+            }
+            let json = JSON(data)
+            let result = json["result"]
+            let partner = CityPartner(json: result)
+            completionHandler(partner, nil)
+        }
+    }
 }

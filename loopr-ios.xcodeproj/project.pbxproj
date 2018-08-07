@@ -60,6 +60,9 @@
 		94768CA1210DCABE00B5977B /* TradeSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94768C9F210DCABE00B5977B /* TradeSwipeViewController.swift */; };
 		94768CA2210DCABE00B5977B /* TradeSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94768CA0210DCABE00B5977B /* TradeSwipeViewController.xib */; };
 		94768CA4210DCB2300B5977B /* TradeSwipeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94768CA3210DCB2300B5977B /* TradeSwipeType.swift */; };
+		948125652119B10B00453225 /* CityPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948125642119B10B00453225 /* CityPartner.swift */; };
+		948125672119B38E00453225 /* CityPartnerDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948125662119B38E00453225 /* CityPartnerDataManager.swift */; };
+		948125692119B59300453225 /* CityPartnerRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948125682119B59300453225 /* CityPartnerRole.swift */; };
 		948952D3205A74BE009B03FE /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948952D2205A74BE009B03FE /* Transaction.swift */; };
 		948BAD8420C4EBFA001F279F /* RawTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948BAD8320C4EBFA001F279F /* RawTransaction.swift */; };
 		949629DB204E836400858F03 /* Depth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DA204E836400858F03 /* Depth.swift */; };
@@ -645,6 +648,9 @@
 		94768C9F210DCABE00B5977B /* TradeSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSwipeViewController.swift; sourceTree = "<group>"; };
 		94768CA0210DCABE00B5977B /* TradeSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeSwipeViewController.xib; sourceTree = "<group>"; };
 		94768CA3210DCB2300B5977B /* TradeSwipeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSwipeType.swift; sourceTree = "<group>"; };
+		948125642119B10B00453225 /* CityPartner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPartner.swift; sourceTree = "<group>"; };
+		948125662119B38E00453225 /* CityPartnerDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPartnerDataManager.swift; sourceTree = "<group>"; };
+		948125682119B59300453225 /* CityPartnerRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPartnerRole.swift; sourceTree = "<group>"; };
 		948952D2205A74BE009B03FE /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		948BAD8320C4EBFA001F279F /* RawTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawTransaction.swift; sourceTree = "<group>"; };
 		949629DA204E836400858F03 /* Depth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Depth.swift; sourceTree = "<group>"; };
@@ -2160,6 +2166,8 @@
 				AC2ACA9D21030775009C77E7 /* TradeFAQPage.swift */,
 				94768CA3210DCB2300B5977B /* TradeSwipeType.swift */,
 				94EE76A32113F21B009D6A90 /* OrderHistorySwipeType.swift */,
+				948125642119B10B00453225 /* CityPartner.swift */,
+				948125682119B59300453225 /* CityPartnerRole.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2186,6 +2194,7 @@
 				941B1EFB209C41BB00710DFF /* GasDataManager.swift */,
 				AC971EC720BB412200EDEDD0 /* AuthenticationDataManager.swift */,
 				943C1CAD20CE1E0B008A8CED /* AuthorizeDataManager.swift */,
+				948125662119B38E00453225 /* CityPartnerDataManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -3084,6 +3093,7 @@
 				94E665E9207234C5001328BF /* OrderTableViewCell.swift in Sources */,
 				AC9280E1202EC53D0009B574 /* TradeNavigationViewController.swift in Sources */,
 				AC5E3E74205E22080051ACFC /* NotificationName.swift in Sources */,
+				948125692119B59300453225 /* CityPartnerRole.swift in Sources */,
 				AC31B95F204A8E4F00B16155 /* WalletDescriptor.swift in Sources */,
 				AC37566D2038D37400AADC60 /* UnlockWalletSwipeViewController.swift in Sources */,
 				949774F021181E38001BF79D /* TradeRatioViewController.swift in Sources */,
@@ -3100,10 +3110,12 @@
 				6630916521002CD1006DA630 /* TxSwipeViewType.swift in Sources */,
 				94BFF9CE21072EA000A0BE8B /* TokenSelectTableViewController.swift in Sources */,
 				AC971EC820BB412300EDEDD0 /* AuthenticationDataManager.swift in Sources */,
+				948125652119B10B00453225 /* CityPartner.swift in Sources */,
 				AC37567C2038D80300AADC60 /* PrivateKeyViewController.swift in Sources */,
 				9475A2EE207EF81300200155 /* OrderDetailViewController.swift in Sources */,
 				ACB41A6C20B54A2D00A92C9D /* AuthenticationNavigationViewController.swift in Sources */,
 				AC2ACA85210305F8009C77E7 /* TradeFAQDetailViewController.swift in Sources */,
+				948125672119B38E00453225 /* CityPartnerDataManager.swift in Sources */,
 				AC9280E7202F5A010009B574 /* UIStyleConfig.swift in Sources */,
 				AC31CE17205A121000A30335 /* NumericKeyboardProtocol.swift in Sources */,
 				AC31CE142057B5A400A30335 /* TradeReviewViewController.swift in Sources */,
