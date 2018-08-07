@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,14 +18,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zT8-yH-tJz">
-                    <rect key="frame" x="20" y="618" width="335" height="44"/>
+                    <rect key="frame" x="20" y="687" width="374" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCY-vc-y8V">
-                            <rect key="frame" x="0.0" y="0.0" width="160" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="179.66666666666666" height="44"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" title="Receive"/>
                             <connections>
@@ -33,7 +33,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQT-u5-1yI">
-                            <rect key="frame" x="175" y="0.0" width="160" height="44"/>
+                            <rect key="frame" x="194.66666666666663" y="0.0" width="179.33333333333337" height="44"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" title="Send"/>
                             <connections>
@@ -43,7 +43,6 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="my4-JF-0j7"/>
-                        <constraint firstItem="WQT-u5-1yI" firstAttribute="width" secondItem="fCY-vc-y8V" secondAttribute="width" id="wUm-TB-cYE"/>
                     </constraints>
                 </stackView>
             </subviews>
