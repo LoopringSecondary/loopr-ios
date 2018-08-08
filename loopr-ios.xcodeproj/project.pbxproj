@@ -236,7 +236,6 @@
 		AC31CE46205B604800A30335 /* Linotype-DINNextW1G-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2D205B5FFF00A30335 /* Linotype-DINNextW1G-Light.otf */; };
 		AC31CE47205B604900A30335 /* Linotype-DINNextW1G-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2D205B5FFF00A30335 /* Linotype-DINNextW1G-Light.otf */; };
 		AC31CE48205B604A00A30335 /* Linotype-DINNextW1G-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE2D205B5FFF00A30335 /* Linotype-DINNextW1G-Light.otf */; };
-		AC31CE4B205B83B600A30335 /* TradeTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31CE4A205B83B600A30335 /* TradeTokenView.swift */; };
 		AC31CE59205B993B00A30335 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE4E205B991A00A30335 /* Roboto-Black.ttf */; };
 		AC31CE5A205B993B00A30335 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE4E205B991A00A30335 /* Roboto-Black.ttf */; };
 		AC31CE5B205B993C00A30335 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31CE4E205B991A00A30335 /* Roboto-Black.ttf */; };
@@ -431,6 +430,8 @@
 		AC9DC45821159084002D7D23 /* MiniToLargeViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC45521159082002D7D23 /* MiniToLargeViewAnimator.swift */; };
 		AC9DC45921159084002D7D23 /* BaseAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC45621159083002D7D23 /* BaseAnimator.swift */; };
 		AC9DC45A21159084002D7D23 /* MiniToLargeViewInteractive.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC45721159083002D7D23 /* MiniToLargeViewInteractive.swift */; };
+		AC9DC45E211AC92C002D7D23 /* TradeViewOnlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC45C211AC92C002D7D23 /* TradeViewOnlyViewController.swift */; };
+		AC9DC45F211AC92C002D7D23 /* TradeViewOnlyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9DC45D211AC92C002D7D23 /* TradeViewOnlyViewController.xib */; };
 		ACA677B82079970600D34A2F /* ExportKeystoreSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677B62079970600D34A2F /* ExportKeystoreSwipeViewController.swift */; };
 		ACA677B92079970600D34A2F /* ExportKeystoreSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677B72079970600D34A2F /* ExportKeystoreSwipeViewController.xib */; };
 		ACA677C0207997F400D34A2F /* DisplayKeystoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677BE207997F400D34A2F /* DisplayKeystoreViewController.swift */; };
@@ -802,7 +803,6 @@
 		AC31CE2E205B5FFF00A30335 /* Linotype-DINNextCYR-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Linotype-DINNextCYR-UltraLight.otf"; sourceTree = "<group>"; };
 		AC31CE2F205B5FFF00A30335 /* Linotype-DIN-Next-LT-Pro-UltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Linotype-DIN-Next-LT-Pro-UltraLight.ttf"; sourceTree = "<group>"; };
 		AC31CE30205B600000A30335 /* Linotype-DINNextLTPro-LightCondensed.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Linotype-DINNextLTPro-LightCondensed.otf"; sourceTree = "<group>"; };
-		AC31CE4A205B83B600A30335 /* TradeTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeTokenView.swift; sourceTree = "<group>"; };
 		AC31CE4D205B991900A30335 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 		AC31CE4E205B991A00A30335 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		AC31CE4F205B991A00A30335 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -959,6 +959,8 @@
 		AC9DC45521159082002D7D23 /* MiniToLargeViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniToLargeViewAnimator.swift; sourceTree = "<group>"; };
 		AC9DC45621159083002D7D23 /* BaseAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAnimator.swift; sourceTree = "<group>"; };
 		AC9DC45721159083002D7D23 /* MiniToLargeViewInteractive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniToLargeViewInteractive.swift; sourceTree = "<group>"; };
+		AC9DC45C211AC92C002D7D23 /* TradeViewOnlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewOnlyViewController.swift; sourceTree = "<group>"; };
+		AC9DC45D211AC92C002D7D23 /* TradeViewOnlyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeViewOnlyViewController.xib; sourceTree = "<group>"; };
 		ACA677B62079970600D34A2F /* ExportKeystoreSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportKeystoreSwipeViewController.swift; sourceTree = "<group>"; };
 		ACA677B72079970600D34A2F /* ExportKeystoreSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportKeystoreSwipeViewController.xib; sourceTree = "<group>"; };
 		ACA677BE207997F400D34A2F /* DisplayKeystoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayKeystoreViewController.swift; sourceTree = "<group>"; };
@@ -1660,17 +1662,6 @@
 			path = SettingWalletDetail;
 			sourceTree = "<group>";
 		};
-		AC69914520AC0F95003593AE /* Archive */ = {
-			isa = PBXGroup;
-			children = (
-				AC31CE122057B5A400A30335 /* TradeReviewViewController.swift */,
-				AC31CE132057B5A400A30335 /* TradeReviewViewController.xib */,
-				AC5E3E69205DEAC00051ACFC /* TradeCompleteViewController.swift */,
-				AC5E3E6A205DEAC00051ACFC /* TradeCompleteViewController.xib */,
-			);
-			path = Archive;
-			sourceTree = "<group>";
-		};
 		AC70E848206604F000451047 /* Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1824,10 +1815,11 @@
 				AC56625920563C05003C925C /* TradeViewController.swift */,
 				AC56625A20563C05003C925C /* TradeViewController.xib */,
 				AC69913920AA6000003593AE /* SwitchTradeToken */,
-				AC31CE4A205B83B600A30335 /* TradeTokenView.swift */,
+				AC9DC45C211AC92C002D7D23 /* TradeViewOnlyViewController.swift */,
+				AC9DC45D211AC92C002D7D23 /* TradeViewOnlyViewController.xib */,
 				ACB729D2205DE21B00DD4DF3 /* TradeConfirmationViewController.swift */,
 				ACB729D3205DE21B00DD4DF3 /* TradeConfirmationViewController.xib */,
-				AC69914520AC0F95003593AE /* Archive */,
+				AC9DC460211AD857002D7D23 /* Archive */,
 				ACEC977D20AD57F3003F9DEB /* P2POrderHistoryViewController.swift */,
 				ACEC977E20AD57F3003F9DEB /* P2POrderHistoryViewController.xib */,
 				94768C9F210DCABE00B5977B /* TradeSwipeViewController.swift */,
@@ -1920,6 +1912,17 @@
 				AC9DC45721159083002D7D23 /* MiniToLargeViewInteractive.swift */,
 			);
 			path = TransitionAnimator;
+			sourceTree = "<group>";
+		};
+		AC9DC460211AD857002D7D23 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				AC31CE122057B5A400A30335 /* TradeReviewViewController.swift */,
+				AC31CE132057B5A400A30335 /* TradeReviewViewController.xib */,
+				AC5E3E69205DEAC00051ACFC /* TradeCompleteViewController.swift */,
+				AC5E3E6A205DEAC00051ACFC /* TradeCompleteViewController.xib */,
+			);
+			path = Archive;
 			sourceTree = "<group>";
 		};
 		ACA677B52079928800D34A2F /* ExportKeystore */ = {
@@ -2710,6 +2713,7 @@
 				AC31CE37205B603600A30335 /* Linotype-DINNextCYR-UltraLight.otf in Resources */,
 				6630916921005B54006DA630 /* AssetSwipeViewController.xib in Resources */,
 				AC500BC720B651440073E590 /* SettingSecurityViewController.xib in Resources */,
+				AC9DC45F211AC92C002D7D23 /* TradeViewOnlyViewController.xib in Resources */,
 				AC31CE77205B996400A30335 /* Roboto-Thin.ttf in Resources */,
 				ACF71CB52033E723000E7618 /* TradeTableViewCell.xib in Resources */,
 				AC54FD88204FC6F8007E1DEB /* OpenSans-Regular.ttf in Resources */,
@@ -3043,7 +3047,6 @@
 				940B45212060F67E00ADE2B9 /* PlaceOrderDataManager.swift in Sources */,
 				ACBA47E6207890910032C2B4 /* SettingManageWalletTableViewCell.swift in Sources */,
 				AC31B94D204A8DF400B16155 /* KeyStore.swift in Sources */,
-				AC31CE4B205B83B600A30335 /* TradeTokenView.swift in Sources */,
 				ACC8D0AA20CCF6C20049A741 /* AssetTransactionTableViewCell.swift in Sources */,
 				ACDA889920F5D899004FA10B /* Localizator.swift in Sources */,
 				AC061939208401EB0060F416 /* MnemonicAddressTableViewCell.swift in Sources */,
@@ -3129,6 +3132,7 @@
 				94768CA1210DCABE00B5977B /* TradeSwipeViewController.swift in Sources */,
 				AC2C93D72105AE97004B8456 /* GenerateWalletEnterRepeatPasswordViewController.swift in Sources */,
 				ACE65E412071F875001EE499 /* MnemonicCollectionViewController.swift in Sources */,
+				AC9DC45E211AC92C002D7D23 /* TradeViewOnlyViewController.swift in Sources */,
 				AC31B93A204A4F9000B16155 /* Language.swift in Sources */,
 				AC500BC620B651440073E590 /* SettingSecurityViewController.swift in Sources */,
 				94E185992051455C00D86FFA /* SimpleRespond.swift in Sources */,

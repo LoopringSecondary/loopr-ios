@@ -31,13 +31,11 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     
     @IBOutlet weak var confirmationButton: UIButton!
     @IBOutlet weak var declineButton: UIButton!
-    @IBOutlet weak var confirmWidth: NSLayoutConstraint!
-    @IBOutlet weak var declineWidth: NSLayoutConstraint!
     @IBOutlet weak var cancelButton: UIButton!
     
-    var tokenSView: TradeTokenView!
-    var tokenBView: TradeTokenView!
-    
+    var tokenSView: TradeViewOnlyViewController = TradeViewOnlyViewController()
+    var tokenBView: TradeViewOnlyViewController = TradeViewOnlyViewController()
+
     var order: OriginalOrder?
     var verifyInfo: [String: Double]?
     var dismissClosure: (() -> Void)?
@@ -50,12 +48,15 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         self.modalPresentationStyle = .custom
         self.view.theme_backgroundColor = GlobalPicker.backgroundColor
         containerView.applyShadow()
-        
+
         // TokenView
-        tokenSView = TradeTokenView(frame: tokenSell.frame)
-        tokenBView = TradeTokenView(frame: tokenBuy.frame)
-        containerView.addSubview(tokenSView)
-        containerView.addSubview(tokenBView)
+        tokenSView.view.frame = CGRect(x: 0, y: 0, width: tokenSell.frame.width, height: tokenSell.frame.height)
+        tokenSell.addSubview(tokenSView.view)
+        tokenSView.view.bindFrameToAnotherView(anotherView: tokenSell)
+        
+        tokenBView.view.frame = CGRect(x: 0, y: 0, width: tokenBuy.frame.width, height: tokenBuy.frame.height)
+        tokenBuy.addSubview(tokenBView.view)
+        tokenBView.view.bindFrameToAnotherView(anotherView: tokenBuy)
         
         // Price label
         priceLabel.text = LocalizedString("Price", comment: "")
@@ -100,12 +101,9 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         }
         setupButtons()
     }
-    
+
     func setupButtons() {
         if isSigning {
-            let width = (containerView.frame.width - 60) / 2
-            confirmWidth.constant = width
-            declineWidth.constant = width
             confirmationButton.title = LocalizedString("Accept", comment: "")
             declineButton.isHidden = false
             declineButton.title = LocalizedString("Decline", comment: "")

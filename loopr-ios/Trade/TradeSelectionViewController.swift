@@ -29,7 +29,7 @@ class TradeSelectionViewController: UIViewController {
         let iconTitlePadding: CGFloat = 14
         
         button1.cornerRadius = 8
-        button1.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 14)
+        button1.titleLabel?.setSubTitleCharFont()
         button1.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
         button1.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
         button1.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
@@ -38,7 +38,7 @@ class TradeSelectionViewController: UIViewController {
         button1.set(image: UIImage.init(named: "Trade-decentralizaed-exchange-dark")?.alpha(0.6), title: LocalizedString("DEX Trade", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         
         button2.cornerRadius = 8
-        button2.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 14)
+        button2.titleLabel?.setSubTitleCharFont()
         button2.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
         button2.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
         button2.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
@@ -47,7 +47,7 @@ class TradeSelectionViewController: UIViewController {
         button2.set(image: UIImage.init(named: "Trade-peer-to-peer-dark")?.alpha(0.6), title: LocalizedString("Peer to Peer", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         
         button3.cornerRadius = 8
-        button3.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 14)
+        button3.titleLabel?.setSubTitleCharFont()
         button3.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
         button3.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
         button3.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
@@ -56,7 +56,7 @@ class TradeSelectionViewController: UIViewController {
         button3.set(image: UIImage.init(named: "Trade-weth-convert-dark")?.alpha(0.6), title: LocalizedString("WETH Convert", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         
         button4.cornerRadius = 8
-        button4.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 14)
+        button4.titleLabel?.setSubTitleCharFont()
         button4.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
         button4.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
         button4.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
@@ -65,7 +65,7 @@ class TradeSelectionViewController: UIViewController {
         button4.set(image: UIImage.init(named: "Trade-scan-code-receipt-dark")?.alpha(0.6), title: LocalizedString("Scan Code Receipt", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         
         button5.cornerRadius = 8
-        button5.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 14)
+        button5.titleLabel?.setSubTitleCharFont()
         button5.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
         button5.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
         button5.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)

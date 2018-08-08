@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -36,10 +36,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0qr-Ib-soK">
-                    <rect key="frame" x="16" y="44" width="160" height="160"/>
+                    <rect key="frame" x="16" y="44" width="143.5" height="160"/>
                     <color key="backgroundColor" name="Color-dark1"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="160" id="E8M-7U-J88"/>
                         <constraint firstAttribute="height" constant="160" id="PPZ-Pq-EX9"/>
                     </constraints>
                 </view>
@@ -51,10 +50,9 @@
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aga-rZ-zkA">
-                    <rect key="frame" x="199" y="44" width="160" height="160"/>
+                    <rect key="frame" x="215.5" y="44" width="143.5" height="160"/>
                     <color key="backgroundColor" name="Color-dark1"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="160" id="RsC-qa-fO6"/>
                         <constraint firstAttribute="height" constant="160" id="wlf-dB-BiQ"/>
                     </constraints>
                 </view>
@@ -190,7 +188,9 @@
                 <constraint firstItem="WKE-bM-3NV" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="KfQ-9N-7UR"/>
                 <constraint firstItem="LF9-Is-NZm" firstAttribute="trailing" secondItem="C6w-nf-dHe" secondAttribute="trailing" constant="-24" id="L0V-3L-xWF"/>
                 <constraint firstItem="zGP-qQ-tcH" firstAttribute="top" secondItem="gIa-ab-3EY" secondAttribute="bottom" constant="16" id="M7d-eE-V3r"/>
+                <constraint firstItem="i1F-nx-83Y" firstAttribute="leading" secondItem="0qr-Ib-soK" secondAttribute="trailing" constant="16" id="OSt-nb-CjP"/>
                 <constraint firstItem="7Fa-If-KlR" firstAttribute="trailing" secondItem="gIa-ab-3EY" secondAttribute="trailing" constant="-24" id="QFN-bS-OlV"/>
+                <constraint firstItem="aga-rZ-zkA" firstAttribute="leading" secondItem="i1F-nx-83Y" secondAttribute="trailing" constant="16" id="QPI-76-W7h"/>
                 <constraint firstItem="q0S-E6-SZq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Qwn-5K-HK6"/>
                 <constraint firstItem="N2W-h9-pmg" firstAttribute="top" secondItem="C6w-nf-dHe" secondAttribute="top" constant="16" id="UfA-IX-CO7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gIa-ab-3EY" secondAttribute="trailing" id="VKu-Mc-CB8"/>

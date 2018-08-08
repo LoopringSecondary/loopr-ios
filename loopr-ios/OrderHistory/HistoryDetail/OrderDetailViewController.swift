@@ -27,8 +27,8 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     
     var order: Order?
     
-    var tokenSView: TradeTokenView!
-    var tokenBView: TradeTokenView!
+    var tokenSView: TradeViewOnlyViewController = TradeViewOnlyViewController()
+    var tokenBView: TradeViewOnlyViewController = TradeViewOnlyViewController()
     
     var marketLabel: UILabel = UILabel()
     var typeLabel: UILabel = UILabel()
@@ -45,7 +45,14 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         setBackButton()
         setupQRCodeButton()
         
+        // TokenView
+        tokenSView.view.frame = CGRect(x: 0, y: 0, width: tokenS.frame.width, height: tokenS.frame.height)
+        tokenS.addSubview(tokenSView.view)
+        tokenSView.view.bindFrameToAnotherView(anotherView: tokenS)
         
+        tokenBView.view.frame = CGRect(x: 0, y: 0, width: tokenB.frame.width, height: tokenB.frame.height)
+        tokenB.addSubview(tokenBView.view)
+        tokenBView.view.bindFrameToAnotherView(anotherView: tokenB)
         
         statusTipLabel.setTitleCharFont()
         statusTipLabel.text = LocalizedString("Status", comment: "")
@@ -76,10 +83,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     }
 
     override func viewDidLayoutSubviews() {
-        tokenSView = TradeTokenView(frame: tokenS.frame)
-        view.addSubview(tokenSView)
-        tokenBView = TradeTokenView(frame: tokenB.frame)
-        view.addSubview(tokenBView)
+        super.viewDidLayoutSubviews()
         view.bringSubview(toFront: totalMaskView)
         setup()
     }

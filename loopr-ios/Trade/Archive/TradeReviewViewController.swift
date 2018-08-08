@@ -20,9 +20,9 @@ class TradeReviewViewController: UIViewController {
     @IBOutlet weak var validTipLabel: UILabel!
     @IBOutlet weak var validInfoLabel: UILabel!
     
-    var tokenSView: TradeTokenView!
-    var tokenBView: TradeTokenView!
-    
+    var tokenSView: TradeViewOnlyViewController = TradeViewOnlyViewController()
+    var tokenBView: TradeViewOnlyViewController = TradeViewOnlyViewController()
+
     // To display QR code
     var qrcodeImageCIImage: CIImage!
     var qrcodeImage: UIImage!
@@ -38,11 +38,14 @@ class TradeReviewViewController: UIViewController {
         self.view.theme_backgroundColor = GlobalPicker.backgroundColor
         self.navigationItem.title = LocalizedString("Order Detail", comment: "")
         
-        // Token views
-        tokenSView = TradeTokenView(frame: tokenS.frame)
-        view.addSubview(tokenSView)
-        tokenBView = TradeTokenView(frame: tokenB.frame)
-        view.addSubview(tokenBView)
+        // TokenView
+        tokenSView.view.frame = CGRect(x: 0, y: 0, width: tokenS.frame.width, height: tokenS.frame.height)
+        tokenS.addSubview(tokenSView.view)
+        tokenSView.view.bindFrameToAnotherView(anotherView: tokenS)
+        
+        tokenBView.view.frame = CGRect(x: 0, y: 0, width: tokenB.frame.width, height: tokenB.frame.height)
+        tokenB.addSubview(tokenBView.view)
+        tokenBView.view.bindFrameToAnotherView(anotherView: tokenB)
         
         // Labels
         statusTipLabel.setTitleCharFont()

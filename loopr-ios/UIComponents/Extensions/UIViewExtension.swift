@@ -182,4 +182,17 @@ extension UIView {
         self.layer.masksToBounds = true
         self.clipsToBounds = false
     }
+    
+    func bindFrameToAnotherView(anotherView: UIView) {
+        guard let _ = self.superview else {
+            print("Error! `superview` was nil – call `addSubview(view: UIView)` before calling `bindFrameToSuperviewBounds()` to fix this.")
+            return
+        }
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.topAnchor.constraint(equalTo: anotherView.topAnchor, constant: 0).isActive = true
+        self.bottomAnchor.constraint(equalTo: anotherView.bottomAnchor, constant: 0).isActive = true
+        self.leadingAnchor.constraint(equalTo: anotherView.leadingAnchor, constant: 0).isActive = true
+        self.trailingAnchor.constraint(equalTo: anotherView.trailingAnchor, constant: 0).isActive = true
+    }
 }

@@ -1,52 +1,49 @@
 //
-//  TradeTokenView.swift
+//  TradeViewOnlyViewController.swift
 //  loopr-ios
 //
-//  Created by xiaoruby on 3/15/18.
+//  Created by xiaoruby on 8/7/18.
 //  Copyright © 2018 Loopring. All rights reserved.
 //
 
 import UIKit
 
-@IBDesignable class TradeTokenView: UIView {
-    
+class TradeViewOnlyViewController: UIViewController {
+
     var iconImageWidth: CGFloat = 40
-    var titleLabel: UILabel
-    var iconImageView: UIImageView
-    var iconView: IconView
-    var amountLabel: UILabel
-    var totalPriceInFiatCurrency: UILabel
-    
-    override init(frame: CGRect) {
 
-        iconImageView = UIImageView(frame: CGRect(x: 0, y: 16, width: frame.width, height: iconImageWidth*UIStyleConfig.scale))
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var iconView: IconView!
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var totalPriceInFiatCurrency: UILabel!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        view.backgroundColor = UIColor.clear
+        
         iconImageView.contentMode = .scaleAspectFit
-
-        iconView = IconView(frame: CGRect(x: 0, y: 10, width: frame.width, height: iconImageWidth*UIStyleConfig.scale))
+        
         iconView.isHidden = true
         iconView.backgroundColor = UIColor.clear
         
-        titleLabel = UILabel(frame: CGRect(x: 0, y: iconImageView.frame.maxY + 16, width: frame.width, height: 40*UIStyleConfig.scale))
         titleLabel.textAlignment = .center
         titleLabel.setTitleCharFont()
-
-        amountLabel = UILabel(frame: CGRect(x: 0, y: titleLabel.frame.maxY - 12, width: frame.width, height: 40*UIStyleConfig.scale))
+        
         amountLabel.textAlignment = .center
         amountLabel.setTitleDigitFont()
         
-        totalPriceInFiatCurrency = UILabel(frame: CGRect(x: 0, y: amountLabel.frame.maxY - 16, width: frame.width, height: 40*UIStyleConfig.scale))
         totalPriceInFiatCurrency.textAlignment = .center
         totalPriceInFiatCurrency.setSubTitleDigitFont()
-
-        super.init(frame: frame)
-
-        addSubview(titleLabel)
-        addSubview(iconImageView)
-        addSubview(iconView)
-        addSubview(amountLabel)
-        addSubview(totalPriceInFiatCurrency)
     }
-    
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
     func updateIcon(symbol: String) {
         let icon = UIImage(named: "Token-\(symbol)-\(Themes.getTheme())") ?? nil
         if icon != nil {
@@ -60,14 +57,14 @@ import UIKit
             iconImageView.isHidden = true
         }
     }
-
+    
     // Used in ConvertETHViewController
     func update(symbol: String) {
         amountLabel.text = symbol
         updateIcon(symbol: symbol)
         totalPriceInFiatCurrency.isHidden = true
     }
-
+    
     // Used in Trade
     func update(type: TradeType, symbol: String, amount: Double) {
         if type == .buy {
@@ -86,10 +83,6 @@ import UIKit
             totalPriceInFiatCurrency.text = 0.0.currency
         }
         updateIcon(symbol: symbol)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
 }

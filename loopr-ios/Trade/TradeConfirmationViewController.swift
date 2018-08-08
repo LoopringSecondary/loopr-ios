@@ -31,8 +31,8 @@ class TradeConfirmationViewController: UIViewController {
     @IBOutlet weak var placeOrderButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
-    var tokenSView: TradeTokenView!
-    var tokenBView: TradeTokenView!
+    var tokenSView: TradeViewOnlyViewController = TradeViewOnlyViewController()
+    var tokenBView: TradeViewOnlyViewController = TradeViewOnlyViewController()
     
     var message: String?
     var order: OriginalOrder?
@@ -46,14 +46,16 @@ class TradeConfirmationViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.modalPresentationStyle = .custom
         self.view.theme_backgroundColor = GlobalPicker.backgroundColor
-        
-        containerView.applyShadow(withColor: .black)
+        containerView.applyShadow()
         
         // TokenView
-        tokenSView = TradeTokenView(frame: tokenSell.frame)
-        tokenBView = TradeTokenView(frame: tokenBuy.frame)
-        containerView.addSubview(tokenSView)
-        containerView.addSubview(tokenBView)
+        tokenSView.view.frame = CGRect(x: 0, y: 0, width: tokenSell.frame.width, height: tokenSell.frame.height)
+        tokenSell.addSubview(tokenSView.view)
+        tokenSView.view.bindFrameToAnotherView(anotherView: tokenSell)
+        
+        tokenBView.view.frame = CGRect(x: 0, y: 0, width: tokenBuy.frame.width, height: tokenBuy.frame.height)
+        tokenBuy.addSubview(tokenBView.view)
+        tokenBView.view.bindFrameToAnotherView(anotherView: tokenBuy)
         
         // Price label
         priceLabel.text = LocalizedString("Price", comment: "")
@@ -199,7 +201,7 @@ extension TradeConfirmationViewController {
     func pushReviewController() {
         let controller = TradeReviewViewController()
         controller.order = self.order
-        self.navigationController?.pushViewController(controller, animated: true)
+        parentNavController?.pushViewController(controller, animated: true)
     }
     
     func approve() {
