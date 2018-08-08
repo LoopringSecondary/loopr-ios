@@ -105,11 +105,11 @@ class TradeConfirmationViewController: UIViewController {
         }
     }
     
-    func close() {
+    func close(_ animated: Bool = true) {
         if let closure = self.dismissClosure {
             closure()
         }
-        self.dismiss(animated: true, completion: {
+        self.dismiss(animated: animated, completion: {
         })
     }
     
@@ -192,16 +192,18 @@ extension TradeConfirmationViewController {
     }
     
     func pushCompleteController() {
+        self.close(false)
         let controller = TradeCompleteViewController()
         controller.order = self.order
         controller.verifyInfo = self.verifyInfo
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.parentNavController?.pushViewController(controller, animated: true)
     }
     
     func pushReviewController() {
+        self.close(false)
         let controller = TradeReviewViewController()
         controller.order = self.order
-        parentNavController?.pushViewController(controller, animated: true)
+        self.parentNavController?.pushViewController(controller, animated: true)
     }
     
     func approve() {

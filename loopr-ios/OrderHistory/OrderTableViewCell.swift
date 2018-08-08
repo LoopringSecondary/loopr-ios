@@ -30,7 +30,7 @@ class OrderTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         self.theme_backgroundColor = GlobalPicker.backgroundColor
         self.baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
-        self.baseView.applyShadow(withColor: .black)
+        self.baseView.applyShadow()
         cancelButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 14)
     }
     
