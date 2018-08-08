@@ -79,6 +79,15 @@ class AppWalletDataManager {
     }
     
     func getWallets() -> [AppWallet] {
+        // Always move the current wallet to the top.
+        if CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil {
+            if let index = appWallets.index(of: CurrentAppWalletDataManager.shared.getCurrentAppWallet()!) {
+                if index != 0 {
+                    let element = appWallets.remove(at: index)
+                    appWallets.insert(element, at: 0)
+                }
+            }
+        }
         return appWallets
     }
     

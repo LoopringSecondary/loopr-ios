@@ -13,6 +13,7 @@ class SettingManageWalletTableViewCell: UITableViewCell {
     var wallet: AppWallet?
     
     @IBOutlet weak var baseView: UIImageView!
+    @IBOutlet weak var selectedIconView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var toatalBalanceLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -29,6 +30,9 @@ class SettingManageWalletTableViewCell: UITableViewCell {
         baseView.image = UIImage(named: "Header-background")
         baseView.contentMode = .scaleToFill
         
+        selectedIconView.image = UIImage(named: "wallet-checked")
+        selectedIconView.contentMode = .scaleToFill
+
         nameLabel.font = FontConfigManager.shared.getRegularFont(size: 16)
         nameLabel.textColor = UIColor.init(white: 1, alpha: 1)
         
@@ -55,11 +59,11 @@ class SettingManageWalletTableViewCell: UITableViewCell {
     }
 
     func setNoCurrentWallet() {
-        
+        selectedIconView.isHidden = true
     }
 
     func setCurrentWallet() {
-        
+        selectedIconView.isHidden = false
     }
 
     class func getCellIdentifier() -> String {

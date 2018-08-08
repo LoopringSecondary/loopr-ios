@@ -14,6 +14,8 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
 
     @IBOutlet weak var importButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
+    
+    var currentWalletAddress: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,11 +44,16 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         createButton.setTitle(LocalizedString("Generate Wallet", comment: ""), for: .normal)
         createButton.setupSecondary(height: 44)
         createButton.addTarget(self, action: #selector(self.pressedCreateButton(_:)), for: .touchUpInside)
+        
+        currentWalletAddress = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        if currentWalletAddress != CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
+            tableView.reloadData()
+            tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: true)
+        }
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,11 +16,18 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="130"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="393" height="129.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="393" height="129.66666666666666"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X5p-rK-vuk">
-                        <rect key="frame" x="15" y="5" width="363" height="119.5"/>
+                        <rect key="frame" x="15" y="5.0000000000000071" width="363" height="119.66666666666669"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5xB-Jl-jPb">
+                        <rect key="frame" x="336" y="20" width="27" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="2tn-Nd-TkX"/>
+                            <constraint firstAttribute="width" constant="27" id="6gh-cU-gRD"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGv-hG-XhK">
                         <rect key="frame" x="20" y="28" width="353" height="19"/>
@@ -41,7 +48,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyx-9l-pQH">
-                        <rect key="frame" x="20" y="88.5" width="353" height="15"/>
+                        <rect key="frame" x="20" y="88.666666666666671" width="353" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="jIa-vw-rRY"/>
                         </constraints>
@@ -54,10 +61,12 @@
                     <constraint firstItem="hGv-hG-XhK" firstAttribute="top" secondItem="X5p-rK-vuk" secondAttribute="top" constant="23" id="DEs-sk-Hhs"/>
                     <constraint firstItem="X5p-rK-vuk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="L7w-sb-C5S"/>
                     <constraint firstAttribute="trailing" secondItem="X5p-rK-vuk" secondAttribute="trailing" constant="15" id="Sdp-jb-Waa"/>
+                    <constraint firstItem="5xB-Jl-jPb" firstAttribute="top" secondItem="X5p-rK-vuk" secondAttribute="top" constant="15" id="VT2-gX-viy"/>
                     <constraint firstAttribute="trailingMargin" secondItem="hGv-hG-XhK" secondAttribute="trailing" id="WXG-95-mHv"/>
                     <constraint firstItem="YhQ-cZ-ccX" firstAttribute="top" secondItem="X5p-rK-vuk" secondAttribute="top" constant="50" id="Zdu-OT-kNk"/>
                     <constraint firstItem="YhQ-cZ-ccX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="bub-CX-3Qy"/>
                     <constraint firstAttribute="trailingMargin" secondItem="kyx-9l-pQH" secondAttribute="trailing" id="dc1-so-9ZB"/>
+                    <constraint firstItem="X5p-rK-vuk" firstAttribute="trailing" secondItem="5xB-Jl-jPb" secondAttribute="trailing" constant="15" id="mQE-uX-O1t"/>
                     <constraint firstItem="X5p-rK-vuk" firstAttribute="bottom" secondItem="kyx-9l-pQH" secondAttribute="bottom" constant="21" id="pu0-n7-Uhd"/>
                     <constraint firstItem="X5p-rK-vuk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="ra4-Zo-EzH"/>
                     <constraint firstItem="kyx-9l-pQH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="tAH-uw-8RW"/>
@@ -71,6 +80,7 @@
                 <outlet property="addressLabel" destination="kyx-9l-pQH" id="EYI-d7-BdL"/>
                 <outlet property="baseView" destination="X5p-rK-vuk" id="XUs-bt-bwT"/>
                 <outlet property="nameLabel" destination="hGv-hG-XhK" id="tXy-He-m7V"/>
+                <outlet property="selectedIconView" destination="5xB-Jl-jPb" id="8Qm-U5-6Aq"/>
                 <outlet property="toatalBalanceLabel" destination="YhQ-cZ-ccX" id="tWI-XE-fDO"/>
             </connections>
             <point key="canvasLocation" x="81.5" y="72"/>
