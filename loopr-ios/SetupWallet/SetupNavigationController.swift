@@ -20,7 +20,7 @@ class SetupNavigationController: UINavigationController {
         navigationBar.isTranslucent = false
         navigationBar.tintColor = UIStyleConfig.defaultTintColor
         
-        let viewController = SetupViewController(nibName: nil, bundle: nil)
+        let viewController = SetupPartnerViewController(nibName: nil, bundle: nil)
         self.setViewControllers([viewController], animated: false)
     }
 

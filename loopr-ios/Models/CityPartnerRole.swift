@@ -10,13 +10,18 @@ import Foundation
 
 enum CityPartnerRole: String, CustomStringConvertible {
     
-    case partner = "Partner"
-    case client = "Client"
+    // city partner: one for one city
+    case cityPartner = "Partner"
+    // city client: many for one city
+    case cityClient = "Client"
+    // common user: as user as before
+    case customer = "Customer"
     
     var description: String {
         switch self {
-        case .partner: return "Partner"
-        case .client: return "Client"
+        case .cityPartner: return "Partner"
+        case .cityClient: return "Client"
+        case .customer: return "Customer"
         }
     }
 }

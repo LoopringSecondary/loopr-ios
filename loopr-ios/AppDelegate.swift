@@ -136,7 +136,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         // Touch ID and Face ID
-        if AuthenticationDataManager.shared.getPasscodeSetting() && !AuthenticationDataManager.shared.hasLogin {
+        if AuthenticationDataManager.shared.getPasscodeSetting() {
             let authenticationViewController: AuthenticationViewController? = AuthenticationViewController(nibName: nil, bundle: nil)
             if let rootViewController = self.window?.rootViewController {
                 rootViewController.present(authenticationViewController!, animated: true) {}

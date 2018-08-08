@@ -389,3 +389,8 @@
 "Month" = "月";
 "Trade Ratio" = "售卖比例";
 "Records" = "订单记录";
+"Customer_Tip" = "我是普通用户";
+"Partner_Tip" = "我是城市合伙人";
+"Code_Tip" = "城市合伙人激活码";
+"Code_Error_Tip" = "您输入的激活码有误，请到下载页面重新获取后，再次尝试";
+"Please input activate code" = "请输入激活码";

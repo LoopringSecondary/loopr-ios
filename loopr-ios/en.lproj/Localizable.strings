@@ -389,3 +389,7 @@
 "Month" = "Month";
 "Trade Ratio" = "Trade Ratio";
 "Records" = "Records";
+"Partner_Tip" = "I am a city partner";
+"Code_Tip" = "Activate Code of City Partner";
+"Code_Error_Tip" = "Your activate code is incorrect, please refetch from our download web page";
+"Please input activate code" = "Please input activate code";

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetupViewController: UIViewController {
+class SetupWalletViewController: UIViewController {
 
     @IBOutlet weak var backgroundImageView: UIImageView!
     
@@ -21,7 +21,8 @@ class SetupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.clear
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        self.setBackButton()
 
         let stringValue = "Loopring Wallet"
         let attrString = NSMutableAttributedString(string: stringValue)
@@ -46,8 +47,6 @@ class SetupViewController: UIViewController {
         generateWalletButton.addTarget(self, action: #selector(generateWalletButtonPressed), for: .touchUpInside)
 
         backgroundImageView.image = UIImage(named: "Background")
-        
-        self.navigationController?.isNavigationBarHidden = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,7 +56,6 @@ class SetupViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
     }
 
     @objc func unlockWalletButtonPressed(_ sender: Any) {

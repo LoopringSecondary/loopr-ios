@@ -28,7 +28,7 @@ class AuthenticationDataManager {
             return false
         }
         let passcodeOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.passcodeOn.rawValue)
-        return passcodeOn
+        return passcodeOn && !hasLogin
     }
     
     func setPasscodeSetting(_ newValue: Bool) {

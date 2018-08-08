@@ -624,7 +624,7 @@ class LoopringAPIRequest {
     }
     
     // City partner
-    static func activateCustumerInvitation(activateCode: String, completionHandler: @escaping (_ result: Bool?, _ error: Error?) -> Void) {
+    static func activateCustumerInvitation(activateCode: String, completionHandler: @escaping (_ result: JSON?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["params"] = [["device": JSON(UUID().uuidString), "activateCode": activateCode]]
         body["id"] = JSON(UUID().uuidString)
@@ -636,7 +636,7 @@ class LoopringAPIRequest {
                 return
             }
             let json = JSON(data)
-            let result = json["result"].boolValue
+            let result = json["result"]
             completionHandler(result, nil)
         }
     }
