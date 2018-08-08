@@ -135,7 +135,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidAppear(animated)
         isListeningSocketIO = true
         CurrentAppWalletDataManager.shared.startGetBalance()
-        processExternalUrl()
         // Add observer.
         NotificationCenter.default.addObserver(self, selector: #selector(balanceResponseReceivedNotification), name: .balanceResponseReceived, object: nil)
     }

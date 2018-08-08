@@ -60,7 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         // manager?.startListening()
-        
         SettingsBundleHelper.setVersionAndBuildNumber()
         return true
     }
@@ -72,6 +71,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let queryArray = url.absoluteString.components(separatedBy: "/")
         let unescaped = queryArray[2].removingPercentEncoding!
         AuthorizeDataManager.shared.process(qrContent: unescaped)
+        if let main = self.window?.rootViewController as? MainTabController {
+            main.processExternalUrl()
+        }
         return true
     }
     

@@ -10,26 +10,31 @@ import UIKit
 import ESTabBarController_swift
 
 class MainTabController: ESTabBarController {
+    
+    var viewController1: UIViewController!
+    var viewController2: UIViewController!
+    var viewController3: UIViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.tabBar.barTintColor = Themes.isDark() ? .dark3 : .white
         
-        // Do any additional setup after loading the view.
-        let v1 = WalletNavigationViewController()
+        // Asset view controller
+        viewController1 = WalletNavigationViewController()
+        viewController1.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Assets"), selectedImage: UIImage(named: "Assets-selected"))
         
-        let newTradeNavigationViewController = UINavigationController()
+        // Trade view controller
+        let viewController2 = UINavigationController()
         let tradeSelectionViewController = TradeSelectionViewController()
-        newTradeNavigationViewController.navigationBar.shadowImage = UIImage()
-        newTradeNavigationViewController.setViewControllers([tradeSelectionViewController], animated: false)
-        newTradeNavigationViewController.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Trade"), selectedImage: UIImage(named: "Trade-selected"))
+        viewController2.navigationBar.shadowImage = UIImage()
+        viewController2.setViewControllers([tradeSelectionViewController], animated: false)
+        viewController2.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Trade"), selectedImage: UIImage(named: "Trade-selected"))
         
-        let v4 = SettingNavigationViewController()
+        // Setting view controller
+        let viewController3 = SettingNavigationViewController()
+        viewController3.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Settings"), selectedImage: UIImage(named: "Settings-selected"))
         
-        v1.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Assets"), selectedImage: UIImage(named: "Assets-selected"))
-        v4.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Settings"), selectedImage: UIImage(named: "Settings-selected"))
-        viewControllers = [v1, newTradeNavigationViewController, v4]
+        viewControllers = [viewController1, viewController2, viewController3]
     }
     
     override func viewWillLayoutSubviews() {
@@ -52,5 +57,10 @@ class MainTabController: ESTabBarController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func processExternalUrl() {
+        if let vc = viewController1 as? WalletNavigationViewController {
+            vc.processExternalUrl()
+        }
+    }
 }

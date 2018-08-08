@@ -10,12 +10,14 @@ import UIKit
 
 class WalletNavigationViewController: UINavigationController {
 
+    var viewController: UIViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         navigationBar.shadowImage = UIImage()
-        let viewController = WalletViewController(nibName: nil, bundle: nil)
+        viewController = WalletViewController(nibName: nil, bundle: nil)
         self.setViewControllers([viewController], animated: false)
         view.theme_backgroundColor = ["#fff", "#000"]
     }
@@ -29,4 +31,9 @@ class WalletNavigationViewController: UINavigationController {
         // Dispose of any resources that can be recreated.
     }
 
+    func processExternalUrl() {
+        if let vc = viewController as? WalletViewController {
+            vc.processExternalUrl()
+        }
+    }
 }
