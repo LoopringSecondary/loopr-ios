@@ -9,7 +9,6 @@ PODS:
   - CryptoSwift (0.8.3)
   - ESTabBarController-swift (2.6.2)
   - Fabric (1.7.9)
-  - FoldingCell (3.0.6)
   - FontBlaster (4.0.3)
   - Geth (1.8.8)
   - lottie-ios (2.5.0)
@@ -38,7 +37,6 @@ DEPENDENCIES:
   - CryptoSwift (= 0.8.3)
   - ESTabBarController-swift
   - Fabric
-  - FoldingCell (= 3.0.6)
   - FontBlaster
   - Geth (= 1.8.8)
   - lottie-ios
@@ -62,7 +60,6 @@ SPEC REPOS:
     - CryptoSwift
     - ESTabBarController-swift
     - Fabric
-    - FoldingCell
     - FontBlaster
     - Geth
     - lottie-ios
@@ -100,7 +97,6 @@ SPEC CHECKSUMS:
   CryptoSwift: 033efc3523865d19cc6ab6612fa17a62613b5dfa
   ESTabBarController-swift: f0a8679e43df1e60b7b36bbcaf1dc98ba6273c7d
   Fabric: a2917d3895e4c1569b9c3170de7320ea1b1e6661
-  FoldingCell: 4848ec8a2056d5751bfb710df14521fc64d48ad7
   FontBlaster: f18031f5dde2ce689f5330e7005edfe3c0815957
   Geth: 483ea44b5f930b72320218290b939ba8e2389aaf
   lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
@@ -119,6 +115,6 @@ SPEC CHECKSUMS:
   SwiftyMarkdown: 743af3e87931391bc4836b825fec3d98785b2e3a
   TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803
 
-PODFILE CHECKSUM: baa39adc7d8b897abb59235df25310210493e9ac
+PODFILE CHECKSUM: 7d81ee4b90684efed1741a6f7aa9ddc7ea7863c6
 
 COCOAPODS: 1.5.0

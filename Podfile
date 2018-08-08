@@ -13,7 +13,6 @@ target 'loopr-ios' do
   pod 'FontBlaster'
   pod 'Socket.IO-Client-Swift', '~> 13.1.0'
   pod 'NotificationBannerSwift'
-  pod 'FoldingCell', '3.0.6'
   pod 'SVProgressHUD'
   pod 'ESTabBarController-swift'
   pod 'SwiftyMarkdown'
