@@ -62,26 +62,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // manager?.startListening()
         
         SettingsBundleHelper.setVersionAndBuildNumber()
-
         return true
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
         if url.host == nil {
-            return true;
+            return true
         }
-        //获取来源应用的Identifier
-        print("来源App：\(options[UIApplicationOpenURLOptionsKey.sourceApplication]!)")
-        
-        //获取url以及参数
-        let urlString = url.absoluteString
-        let queryArray = urlString.components(separatedBy: "/")
-        print(urlString)
-        let alertController = UIAlertController(title: "参数如下", message: "\(queryArray[2])  \(queryArray[3])", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        self.window!.rootViewController!.present(alertController, animated: true, completion: nil)
-        
+        let queryArray = url.absoluteString.components(separatedBy: "/")
+        let unescaped = queryArray[2].removingPercentEncoding!
+        AuthorizeDataManager.shared.process(qrContent: unescaped)
         return true
     }
     

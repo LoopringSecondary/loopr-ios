@@ -29,6 +29,10 @@ class AuthorizeDataManager {
     var convertOwner: String!
     var convertTx: RawTransaction!
     
+    // string & type from request
+    var value: String?
+    var type: QRCodeType?
+    
     func getSubmitOrder(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
         guard let hash = self.submitHash else { return }
         LoopringAPIRequest.notifyStatus(hash: hash, status: .received) { _, _ in }
@@ -213,5 +217,28 @@ class AuthorizeDataManager {
         } else {
             self.authorizeConvert(completion: completion)
         }
+    }
+    
+    func process(qrContent: String) {
+        if QRCodeMethod.isAddress(content: qrContent) {
+            self.type = .address
+        } else if QRCodeMethod.isSubmitOrder(content: qrContent) {
+            self.type = .submitOrder
+        } else if QRCodeMethod.isLogin(content: qrContent) {
+            self.type = .login
+        } else if QRCodeMethod.isCancelOrder(content: qrContent) {
+            self.type = .cancelOrder
+        } else if QRCodeMethod.isConvert(content: qrContent) {
+            self.type = .convert
+        } else if QRCodeMethod.isMnemonicValid(content: qrContent) {
+            self.type = .mnemonic
+        } else if QRCodeMethod.isPrivateKey(content: qrContent) {
+            self.type = .privateKey
+        } else if QRCodeMethod.isP2POrder(content: qrContent) {
+            self.type = .p2pOrder
+        } else {
+            self.type = .undefined
+        }
+        self.value = qrContent
     }
 }

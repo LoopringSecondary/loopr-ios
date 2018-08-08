@@ -135,9 +135,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidAppear(animated)
         isListeningSocketIO = true
         CurrentAppWalletDataManager.shared.startGetBalance()
+        processExternalUrl()
         // Add observer.
         NotificationCenter.default.addObserver(self, selector: #selector(balanceResponseReceivedNotification), name: .balanceResponseReceived, object: nil)
-        // NotificationCenter.default.addObserver(self, selector: #selector(priceQuoteResponseReceivedNotification), name: .priceQuoteResponseReceived, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -145,12 +145,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
         }
-
         CurrentAppWalletDataManager.shared.stopGetBalance()
         isListeningSocketIO = false
         NotificationCenter.default.removeObserver(self, name: .balanceResponseReceived, object: nil)
         NotificationCenter.default.removeObserver(self, name: .priceQuoteResponseReceived, object: nil)
-        
         if let cell = assetTableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? WalletBalanceTableViewCell {
             cell.stopUpdateBalanceLabelTimer()
         }
@@ -161,53 +159,71 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
+    func processExternalUrl() {
+        guard let value = AuthorizeDataManager.shared.value,
+            let type = AuthorizeDataManager.shared.type else { return }
+        self.setResultOfScanningQRCode(valueSent: value, type: type)
+    }
+    
     func setResultOfScanningQRCode(valueSent: String, type: QRCodeType) {
-        if type == .submitOrder {
-            AuthorizeDataManager.shared.getSubmitOrder { (_, error) in
-                guard error == nil, let order = AuthorizeDataManager.shared.submitOrder else { return }
-                DispatchQueue.main.async {
-                    let vc = PlaceOrderConfirmationViewController()
-                    vc.order = order
-                    vc.isSigning = true
-                    self.navigationController?.pushViewController(vc, animated: true)
+        let manager = AuthorizeDataManager.shared
+        if let data = valueSent.data(using: .utf8) {
+            let json = JSON(data)
+            switch type {
+            case .submitOrder:
+                manager.submitHash = json["value"].stringValue
+                manager.getSubmitOrder { (_, error) in
+                    guard error == nil, let order = manager.submitOrder else { return }
+                    DispatchQueue.main.async {
+                        let vc = PlaceOrderConfirmationViewController()
+                        vc.order = order
+                        vc.isSigning = true
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
                 }
-            }
-        } else if type == .login {
-            AuthorizeDataManager.shared._authorizeLogin { (_, error) in
-                let result = error == nil ? true : false
-                DispatchQueue.main.async {
-                    let vc = LoginResultViewController()
-                    vc.result = result
-                    self.navigationController?.pushViewController(vc, animated: true)
+            case .login:
+                manager.loginUUID = json["value"].stringValue
+                manager._authorizeLogin { (_, error) in
+                    let result = error == nil ? true : false
+                    DispatchQueue.main.async {
+                        let vc = LoginResultViewController()
+                        vc.result = result
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
                 }
-            }
-        } else if type == .cancelOrder {
-            AuthorizeDataManager.shared.getCancelOrder { (_, error) in
-                let result = error == nil ? true : false
-                DispatchQueue.main.async {
-                    let vc = LoginResultViewController()
-                    vc.result = result
-                    self.navigationController?.pushViewController(vc, animated: true)
+            case .cancelOrder:
+                manager.cancelHash = json["value"].stringValue
+                manager.getCancelOrder { (_, error) in
+                    let result = error == nil ? true : false
+                    DispatchQueue.main.async {
+                        let vc = LoginResultViewController()
+                        vc.result = result
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
                 }
-            }
-        } else if type == .convert {
-            AuthorizeDataManager.shared.getConvertTx { (_, error) in
-                let result = error == nil ? true : false
-                DispatchQueue.main.async {
-                    let vc = LoginResultViewController()
-                    vc.result = result
-                    self.navigationController?.pushViewController(vc, animated: true)
+            case .convert:
+                manager.convertHash = json["value"].stringValue
+                manager.getConvertTx { (_, error) in
+                    let result = error == nil ? true : false
+                    DispatchQueue.main.async {
+                        let vc = LoginResultViewController()
+                        vc.result = result
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
                 }
+            case .p2pOrder:
+                TradeDataManager.shared.handleResult(of: json["value"])
+                let vc = TradeConfirmationViewController()
+                vc.order = TradeDataManager.shared.orders[1]
+                self.navigationController?.pushViewController(vc, animated: true)
+            case .address:
+                let vc = SendAssetViewController()
+                vc.address = valueSent
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            default:
+                return
             }
-        } else if type == .p2pOrder {
-            let vc = TradeConfirmationViewController()
-            vc.order = TradeDataManager.shared.orders[1]
-            self.navigationController?.pushViewController(vc, animated: true)
-        } else if type == .address {
-            let vc = SendAssetViewController()
-            vc.address = valueSent
-            vc.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

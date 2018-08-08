@@ -53,7 +53,6 @@ enum QRCodeMethod: String {
         if let data = content.data(using: .utf8) {
             let json = JSON(data)
             if json["type"] == "P2P" {
-                TradeDataManager.shared.handleResult(of: json["value"])
                 return true
             }
         }
@@ -77,7 +76,6 @@ enum QRCodeMethod: String {
         if let data = content.data(using: .utf8) {
             let json = JSON(data)
             if json["type"] == "sign" {
-                AuthorizeDataManager.shared.submitHash = json["value"].stringValue
                 return true
             }
         }
@@ -88,7 +86,6 @@ enum QRCodeMethod: String {
         if let data = content.data(using: .utf8) {
             let json = JSON(data)
             if json["type"] == "UUID" {
-                AuthorizeDataManager.shared.loginUUID = json["value"].stringValue
                 return true
             }
         }
@@ -99,7 +96,6 @@ enum QRCodeMethod: String {
         if let data = content.data(using: .utf8) {
             let json = JSON(data)
             if json["type"] == "cancelOrder" {
-                AuthorizeDataManager.shared.cancelHash = json["value"].stringValue
                 return true
             }
         }
@@ -110,7 +106,6 @@ enum QRCodeMethod: String {
         if let data = content.data(using: .utf8) {
             let json = JSON(data)
             if json["type"] == "convert" {
-                AuthorizeDataManager.shared.convertHash = json["value"].stringValue
                 return true
             }
         }
