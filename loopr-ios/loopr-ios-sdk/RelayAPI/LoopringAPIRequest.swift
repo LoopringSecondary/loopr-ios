@@ -8,7 +8,6 @@
 
 import Foundation
 
-// https://github.com/Loopring/relay/blob/wallet_v2/LOOPRING_RELAY_API_SPEC_V2.md#loopring_getorders
 class LoopringAPIRequest {
 
     static func invoke<T: Initable>(method: String, withBody body: inout JSON, _ completionHandler: @escaping (_ response: T?, _ error: Error?) -> Void) {
@@ -626,6 +625,7 @@ class LoopringAPIRequest {
     // City partner
     static func activateCustumerInvitation(activateCode: String, completionHandler: @escaping (_ result: JSON?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
+        body["method"] = "loopring_activateCustumerInvitation"
         body["params"] = [["device": JSON(UUID().uuidString), "activateCode": activateCode]]
         body["id"] = JSON(UUID().uuidString)
         
@@ -636,8 +636,15 @@ class LoopringAPIRequest {
                 return
             }
             let json = JSON(data)
-            let result = json["result"]
-            completionHandler(result, nil)
+            if json["result"] != JSON.null {
+                completionHandler(json["result"], nil)
+            } else if json["error"] != JSON.null {
+                var userInfo: [String: Any] = [:]
+                let code = json["error"]["code"].intValue
+                userInfo["message"] = json["error"]["message"].stringValue
+                let error = NSError(domain: "activateCustumerInvitation", code: code, userInfo: userInfo)
+                completionHandler(nil, error)
+            }
         }
     }
     

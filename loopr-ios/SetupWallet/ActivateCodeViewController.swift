@@ -62,6 +62,7 @@ class ActivateCodeViewController: UIViewController {
             CityPartnerDataManager.shared.submitCode(code: code) { (error) in
                 if error != nil {
                     DispatchQueue.main.async {
+                        self.activateCodeTextField.resignFirstResponder()
                         let title = LocalizedString("Code_Error_Tip", comment: "")
                         let banner = NotificationBanner.generate(title: title, style: .danger)
                         banner.duration = 10
