@@ -15,7 +15,6 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var tokenSImageView: UIImageView!
-    @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var tokenBImageView: UIImageView!
     @IBOutlet weak var amountSTextField: UITextField!
     @IBOutlet weak var tokenSLabel: UILabel!
@@ -27,6 +26,9 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     @IBOutlet weak var gasInfoLabel: UILabel!
     @IBOutlet weak var advancedButton: UIButton!
     @IBOutlet weak var convertButton: UIButton!
+    
+    @IBOutlet weak var infoLabel1: UILabel!
+    @IBOutlet weak var infoLabel2: UILabel!
     
     // Mask view
     var blurVisualEffectView = UIView()
@@ -58,21 +60,25 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         tokenSImageView.image = asset?.icon
         tokenBImageView.image = getAnotherAsset()?.icon
         
-        infoLabel.setSubTitleCharFont()
-        infoLabel.text = LocalizedString("ETH_TIP", comment: "")
-        
         amountSTextField.delegate = self
+        amountSTextField.tintColor = .black
         amountSTextField.inputView = UIView()
+        amountSTextField.text = "0"
         
-        tokenSLabel.theme_textColor = GlobalPicker.contrastTextColor
-        tokenSLabel.font = FontConfigManager.shared.getLightFont(size: 14)
-        tokenBLabel.theme_textColor = GlobalPicker.contrastTextColor
-        tokenBLabel.font = FontConfigManager.shared.getLightFont(size: 14)
+        amountBTextField.delegate = self
+        amountBTextField.tintColor = .black
+        amountBTextField.inputView = UIView()
+        amountBTextField.text = "0"
+
+        tokenSLabel.textColor = UIColor.init(rgba: "#F8F9FA").withAlphaComponent(0.6)
+        tokenSLabel.font = FontConfigManager.shared.getMediumFont(size: 13)
+        tokenBLabel.textColor = UIColor.init(rgba: "#F8F9FA").withAlphaComponent(0.6)
+        tokenBLabel.font = FontConfigManager.shared.getMediumFont(size: 13)
         
         availableLabel.setSubTitleCharFont()
         maxButton.titleLabel?.setSubTitleCharFont()
         maxButton.title = LocalizedString("Max", comment: "")
-        
+
         gasTipLabel.setTitleCharFont()
         gasTipLabel.text = LocalizedString("Transaction Fee", comment: "")
         gasTipLabel.isUserInteractionEnabled = true
@@ -88,6 +94,12 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         
         advancedButton.addTarget(self, action: #selector(pressedAdvancedButton), for: .touchUpInside)
         
+        infoLabel1.setSubTitleCharFont()
+        infoLabel1.text = LocalizedString("1. 转换比例为 1 : 1", comment: "")
+        
+        infoLabel2.setSubTitleCharFont()
+        infoLabel2.text = LocalizedString("2. 系统将保留0.01ETH作为油费，以保证后续可以发送交易", comment: "")
+
         convertButton.title = LocalizedString("Yes, convert now!", comment: "")
         convertButton.setupSecondary(height: 44)
         
@@ -142,16 +154,10 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             if symbol == "ETH" {
                 tokenSLabel.text = "ETH"
                 tokenBLabel.text = "WETH"
-                infoLabel.isHidden = false
             } else if symbol == "WETH" {
                 tokenSLabel.text = "WETH"
                 tokenBLabel.text = "ETH"
-                infoLabel.isHidden = true
             }
-            var width = tokenSLabel.intrinsicContentSize.width + 4
-            amountSTextField.setLeftPaddingPoints(width)
-            width = tokenBLabel.intrinsicContentSize.width + 4
-            amountBTextField.setRightPaddingPoints(width)
         }
     }
     
@@ -181,8 +187,8 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     @IBAction func pressedArrowButton(_ sender: UIButton) {
         if let asset = self.asset {
             self.asset = getAnotherAsset()
-            UIView.transition(with: tokenSImageView, duration: 0.5, options: .transitionCrossDissolve, animations: { self.tokenSImageView.image = self.asset?.icon; self.tokenBImageView.image = asset.icon }, completion: nil)
-            UIView.transition(with: tokenBImageView, duration: 0.5, options: .transitionCrossDissolve, animations: { self.tokenBImageView.image = asset.icon }, completion: nil)
+            UIView.transition(with: tokenSImageView, duration: 0.3, options: .transitionCrossDissolve, animations: { self.tokenSImageView.image = self.asset?.icon; self.tokenBImageView.image = asset.icon }, completion: nil)
+            UIView.transition(with: tokenBImageView, duration: 0.3, options: .transitionCrossDissolve, animations: { self.tokenBImageView.image = asset.icon }, completion: nil)
             update()
             _ = validate()
         }
@@ -195,6 +201,10 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         print("textFieldShouldBeginEditing")
         showNumericKeyboard(textField: textField)
+        if amountSTextField.text == "0" {
+            amountSTextField.text = ""
+            amountBTextField.text = ""
+        }
         return true
     }
 
@@ -216,8 +226,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             let bottomPadding = window?.safeAreaInsets.bottom ?? 0
             let destinateY = height - DefaultNumericKeyboard.height - bottomPadding
             
-            // TODO: improve the animation.
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
                 self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
                 self.scrollView.setContentOffset(CGPoint.zero, animated: false)
             }, completion: { _ in
@@ -231,7 +240,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             let width = self.view.frame.width
             let height = self.view.frame.height
             let destinateY = height
-            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
                 self.view.layoutIfNeeded()
                 self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
             }, completion: { _ in
@@ -357,7 +366,11 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         var currentText = activeTextField!.text ?? ""
         switch (position.row, position.column) {
         case (3, 0):
-            activeTextField!.text = currentText + "."
+            if !currentText.contains(".") {
+                currentText += "."
+                // TODO: add a shake animation to the item at (3, 0)
+            }
+            activeTextField!.text = currentText
         case (3, 1):
             activeTextField!.text = currentText + "0"
         case (3, 2):

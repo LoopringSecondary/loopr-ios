@@ -119,6 +119,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        viewControllers[self.swipeView.currentIndex].searchTextDidUpdate(searchText: "")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -151,6 +152,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         self.navigationItem.rightBarButtonItems = [cancelBarButton]
         
         searchBar.becomeFirstResponder()
+        viewControllers[self.swipeView.currentIndex].searchTextDidUpdate(searchText: "")
     }
     
     @objc func pressSearchCancel(_ button: UIBarButtonItem) {
