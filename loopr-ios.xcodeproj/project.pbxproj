@@ -1810,7 +1810,10 @@
 				AC9DC45D211AC92C002D7D23 /* TradeViewOnlyViewController.xib */,
 				ACB729D2205DE21B00DD4DF3 /* TradeConfirmationViewController.swift */,
 				ACB729D3205DE21B00DD4DF3 /* TradeConfirmationViewController.xib */,
-				AC9DC460211AD857002D7D23 /* Archive */,
+				AC31CE122057B5A400A30335 /* TradeReviewViewController.swift */,
+				AC31CE132057B5A400A30335 /* TradeReviewViewController.xib */,
+				AC5E3E69205DEAC00051ACFC /* TradeCompleteViewController.swift */,
+				AC5E3E6A205DEAC00051ACFC /* TradeCompleteViewController.xib */,
 				ACEC977D20AD57F3003F9DEB /* P2POrderHistoryViewController.swift */,
 				ACEC977E20AD57F3003F9DEB /* P2POrderHistoryViewController.xib */,
 				94768C9F210DCABE00B5977B /* TradeSwipeViewController.swift */,
@@ -1903,17 +1906,6 @@
 				AC9DC45721159083002D7D23 /* MiniToLargeViewInteractive.swift */,
 			);
 			path = TransitionAnimator;
-			sourceTree = "<group>";
-		};
-		AC9DC460211AD857002D7D23 /* Archive */ = {
-			isa = PBXGroup;
-			children = (
-				AC31CE122057B5A400A30335 /* TradeReviewViewController.swift */,
-				AC31CE132057B5A400A30335 /* TradeReviewViewController.xib */,
-				AC5E3E69205DEAC00051ACFC /* TradeCompleteViewController.swift */,
-				AC5E3E6A205DEAC00051ACFC /* TradeCompleteViewController.xib */,
-			);
-			path = Archive;
 			sourceTree = "<group>";
 		};
 		ACA677B52079928800D34A2F /* ExportKeystore */ = {
