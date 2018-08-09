@@ -176,4 +176,12 @@ extension String {
         return self.size(withAttributes: attributes).width
     }
     
+    func trailingZero() -> String {
+        if let value = Double(self) {
+            return String(format: "%g", value)
+        } else {
+            return ""
+        }
+    }
+
 }

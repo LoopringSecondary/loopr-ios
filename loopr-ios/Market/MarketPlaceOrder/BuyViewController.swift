@@ -633,8 +633,8 @@ extension BuyViewController: MarketDetailDepthModalViewControllerDelegate {
     }
 
     func dismissWithSelectedDepth(amount: String, price: String) {
-        amountTextField.text = amount
-        priceTextField.text = price
+        amountTextField.text = amount.trailingZero()
+        priceTextField.text = price.trailingZero()
         validate()
         
         UIView.animate(withDuration: 0.1, animations: {
@@ -643,6 +643,7 @@ extension BuyViewController: MarketDetailDepthModalViewControllerDelegate {
             self.blurVisualEffectView.removeFromSuperview()
         })
     }
+
 }
 
 extension BuyViewController {
