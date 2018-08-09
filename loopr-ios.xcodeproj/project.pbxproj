@@ -435,6 +435,7 @@
 		AC9DC45A21159084002D7D23 /* MiniToLargeViewInteractive.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC45721159083002D7D23 /* MiniToLargeViewInteractive.swift */; };
 		AC9DC45E211AC92C002D7D23 /* TradeViewOnlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC45C211AC92C002D7D23 /* TradeViewOnlyViewController.swift */; };
 		AC9DC45F211AC92C002D7D23 /* TradeViewOnlyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9DC45D211AC92C002D7D23 /* TradeViewOnlyViewController.xib */; };
+		AC9DC462211C0D87002D7D23 /* TradeSelectionNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC461211C0D87002D7D23 /* TradeSelectionNavigationViewController.swift */; };
 		ACA677B82079970600D34A2F /* ExportKeystoreSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677B62079970600D34A2F /* ExportKeystoreSwipeViewController.swift */; };
 		ACA677B92079970600D34A2F /* ExportKeystoreSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677B72079970600D34A2F /* ExportKeystoreSwipeViewController.xib */; };
 		ACA677C0207997F400D34A2F /* DisplayKeystoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677BE207997F400D34A2F /* DisplayKeystoreViewController.swift */; };
@@ -963,6 +964,7 @@
 		AC9DC45721159083002D7D23 /* MiniToLargeViewInteractive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniToLargeViewInteractive.swift; sourceTree = "<group>"; };
 		AC9DC45C211AC92C002D7D23 /* TradeViewOnlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewOnlyViewController.swift; sourceTree = "<group>"; };
 		AC9DC45D211AC92C002D7D23 /* TradeViewOnlyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeViewOnlyViewController.xib; sourceTree = "<group>"; };
+		AC9DC461211C0D87002D7D23 /* TradeSelectionNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSelectionNavigationViewController.swift; sourceTree = "<group>"; };
 		ACA677B62079970600D34A2F /* ExportKeystoreSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportKeystoreSwipeViewController.swift; sourceTree = "<group>"; };
 		ACA677B72079970600D34A2F /* ExportKeystoreSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportKeystoreSwipeViewController.xib; sourceTree = "<group>"; };
 		ACA677BE207997F400D34A2F /* DisplayKeystoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayKeystoreViewController.swift; sourceTree = "<group>"; };
@@ -1797,6 +1799,7 @@
 		AC9280DF202EC5130009B574 /* Trade */ = {
 			isa = PBXGroup;
 			children = (
+				AC9DC461211C0D87002D7D23 /* TradeSelectionNavigationViewController.swift */,
 				AC3B48812103EA6B008A6771 /* TradeSelectionViewController.swift */,
 				AC3B48822103EA6B008A6771 /* TradeSelectionViewController.xib */,
 				AC9280E0202EC53D0009B574 /* TradeNavigationViewController.swift */,
@@ -3088,6 +3091,7 @@
 				ACBA47EA207897C60032C2B4 /* SettingWalletDetailViewController.swift in Sources */,
 				AC54FD92204FD291007E1DEB /* FontConfigManager.swift in Sources */,
 				AC8DBC7720BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift in Sources */,
+				AC9DC462211C0D87002D7D23 /* TradeSelectionNavigationViewController.swift in Sources */,
 				AC4141FD203532ED0089861D /* SwipeViewOptions.swift in Sources */,
 				ACB9119F202967A500F14644 /* OrderStatus.swift in Sources */,
 				AC0CD57D20D21F3C00ABB7BA /* TabBarItemBackgroundContentView.swift in Sources */,

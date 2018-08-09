@@ -24,10 +24,7 @@ class MainTabController: ESTabBarController {
         viewController1.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Assets"), selectedImage: UIImage(named: "Assets-selected"))
         
         // Trade view controller
-        let viewController2 = UINavigationController()
-        let tradeSelectionViewController = TradeSelectionViewController()
-        viewController2.navigationBar.shadowImage = UIImage()
-        viewController2.setViewControllers([tradeSelectionViewController], animated: false)
+        viewController2 = TradeSelectionNavigationViewController()
         viewController2.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Trade"), selectedImage: UIImage(named: "Trade-selected"))
         
         // Setting view controller
