@@ -10,6 +10,7 @@ import Foundation
 
 class RelayAPIConfiguration {
 
+    //    static let baseURL = "http://13.112.62.24/rpc/v2"
     static let baseURL = "https://relay1.loopr.io"
     static let rpcURL = URL(string: baseURL + "/rpc/v2")!
     static let ethURL = URL(string: baseURL + "/eth")!

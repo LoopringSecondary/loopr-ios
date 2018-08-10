@@ -28,6 +28,7 @@ class ActivateCodeViewController: UIViewController {
         titleLabel.setTitleCharFont()
         titleLabel.text = LocalizedString("Code_Tip", comment: "")
         activateCodeTextField.placeholder = LocalizedString("Please input activate code", comment: "")
+        activateCodeTextField.setLeftPaddingPoints(8)
         cancelButton.title = LocalizedString("Cancel", comment: "")
         cancelButton.titleLabel?.setTitleCharFont()
         cancelButton.round(corners: .bottomLeft, radius: 6)
