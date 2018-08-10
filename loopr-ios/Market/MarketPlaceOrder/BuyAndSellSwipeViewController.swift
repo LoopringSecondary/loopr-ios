@@ -22,9 +22,10 @@ class BuyAndSellSwipeViewController: SwipeViewController {
 
         // Do any additional setup after loading the view.
         setBackButton()
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+
         self.view.theme_backgroundColor = GlobalPicker.backgroundColor
         self.navigationItem.title = PlaceOrderDataManager.shared.market.description
-        let initIndex = initialType == .buy ? 0 : 1
 
         let vc1 = BuyViewController(type: .buy)
         vc1.market = market
@@ -37,6 +38,14 @@ class BuyAndSellSwipeViewController: SwipeViewController {
             self.addChildViewController(viewController)
         }
 
+        if Themes.isDark() {
+            options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
+            options.swipeTabView.itemView.selectedTextColor = UIColor.white
+        } else {
+            options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
+            options.swipeTabView.itemView.selectedTextColor = UIColor.black
+        }
+        let initIndex = initialType == .buy ? 0 : 1
         swipeView.reloadData(options: options, default: initIndex)
     }
 
@@ -47,14 +56,6 @@ class BuyAndSellSwipeViewController: SwipeViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if Themes.isDark() {
-            options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
-            options.swipeTabView.itemView.selectedTextColor = UIColor.white
-        } else {
-            options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
-            options.swipeTabView.itemView.selectedTextColor = UIColor.black
-        }
-        swipeView.reloadData(options: options)
     }
     
     // To avoid gesture conflicts in swiping to back and UISlider

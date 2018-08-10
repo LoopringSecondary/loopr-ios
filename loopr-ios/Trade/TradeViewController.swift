@@ -502,7 +502,11 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         var currentText = activeTextField!.text ?? ""
         switch (position.row, position.column) {
         case (3, 0):
-            activeTextField!.text = currentText + "."
+            if !currentText.contains(".") {
+                currentText += "."
+                // TODO: add a shake animation to the item at (3, 0)
+            }
+            activeTextField!.text = currentText
         case (3, 1):
             activeTextField!.text = currentText + "0"
         case (3, 2):

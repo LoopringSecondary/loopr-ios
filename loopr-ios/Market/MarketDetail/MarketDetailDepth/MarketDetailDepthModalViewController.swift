@@ -76,6 +76,7 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        headerView.round(corners: [.topLeft, .topRight], radius: 12)
     }
     
     override func viewDidAppear(_ animated: Bool) {
