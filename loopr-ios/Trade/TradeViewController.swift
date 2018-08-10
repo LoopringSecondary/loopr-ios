@@ -73,6 +73,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
 
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = GlobalPicker.backgroundColor
+        self.navigationItem.title = LocalizedString("P2P Trade", comment: "")
         setBackButton()
 
         // First row: TokenS

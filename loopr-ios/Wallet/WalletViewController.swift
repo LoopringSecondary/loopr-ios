@@ -113,7 +113,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         getBalanceFromRelay()
         SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
         if let cell = assetTableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? WalletBalanceTableViewCell {
@@ -213,6 +213,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             case .p2pOrder:
                 TradeDataManager.shared.handleResult(of: json["value"])
                 let vc = TradeConfirmationViewController()
+                vc.parentNavController = self.navigationController
                 vc.order = TradeDataManager.shared.orders[1]
                 self.navigationController?.pushViewController(vc, animated: true)
             case .address:

@@ -137,7 +137,7 @@ class TradeCompleteViewController: UIViewController {
     
     @IBAction func pressedDoneButton(_ sender: Any) {
         for controller in self.navigationController!.viewControllers as Array {
-            if controller.isKind(of: TradeViewController.self) {
+            if controller.isKind(of: TradeViewController.self) || controller.isKind(of: WalletViewController.self) {
                 self.navigationController!.popToViewController(controller, animated: true)
                 break
             }

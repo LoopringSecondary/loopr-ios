@@ -78,6 +78,15 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             return
         }
         do {
+            // Initialize the video preview layer
+            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+            videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            videoPreviewLayer?.frame = self.scanView.layer.bounds
+            self.scanView.layer.addSublayer(videoPreviewLayer!)
+            
+            // Start video capture.
+            captureSession.startRunning()
+            
             let input = try AVCaptureDeviceInput(device: captureDevice)
             captureSession.addInput(input)
             let captureMetadataOutput = AVCaptureMetadataOutput()
@@ -85,20 +94,14 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             // Set delegate and use the default dispatch queue to execute the call back
             captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
+            let x = scanViewWidth * 0.2, y = scanViewWidth * 0.2
+            let scanRect = CGRect(x: x, y: y, width: scanViewWidth * 0.6, height: scanViewWidth * 0.6)
+            let rectOfInterest = videoPreviewLayer?.metadataOutputRectConverted(fromLayerRect: scanRect)
+            captureMetadataOutput.rectOfInterest = rectOfInterest!
         } catch {
             print(error)
             return
         }
-        
-        // Initialize the video preview layer
-        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        videoPreviewLayer?.frame = self.scanView.layer.bounds
-        self.scanView.layer.addSublayer(videoPreviewLayer!)
-        
-        // Start video capture.
-        captureSession.startRunning()
-        
         self.setupScanLine()
         self.setupBackGroundView()
         self.setupFrameLine()

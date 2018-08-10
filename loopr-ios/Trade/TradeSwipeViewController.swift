@@ -22,6 +22,7 @@ class TradeSwipeViewController: SwipeViewController {
         
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = GlobalPicker.backgroundColor
+        navigationItem.title = LocalizedString("P2P Trade", comment: "")
         setBackButton()
         setupChildViewControllers()
     }

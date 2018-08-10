@@ -44,7 +44,9 @@ class TradeConfirmationViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.setBackButton()
         self.modalPresentationStyle = .custom
+        self.navigationItem.title = LocalizedString("Trade_Confirm", comment: "")
         self.view.theme_backgroundColor = GlobalPicker.backgroundColor
         containerView.applyShadow()
         
@@ -106,11 +108,20 @@ class TradeConfirmationViewController: UIViewController {
     }
     
     func close(_ animated: Bool = true) {
-        if let closure = self.dismissClosure {
-            closure()
+        if let navigation = self.navigationController {
+            for controller in navigation.viewControllers as Array {
+                if controller.isKind(of: WalletViewController.self) {
+                    self.navigationController!.popToViewController(controller, animated: true)
+                    break
+                }
+            }
+        } else {
+            if let closure = self.dismissClosure {
+                closure()
+            }
+            self.dismiss(animated: animated, completion: {
+            })
         }
-        self.dismiss(animated: animated, completion: {
-        })
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {

@@ -169,8 +169,8 @@
 "Your order amount exceeded your asset balance, which cause your order could not be dealt completely. Do you wish to continue trading with the amount?" = "您的下单金额超过您该资产的全部预算，这将导致您的订单无法完全成交。是否仍要以该数额下单或交易？";
 "Please input a valid price" = "请输入有效的价格";
 "Please input a valid amount" = "请输入有效的数额";
-"You are buying" = "预期买入";
-"You are selling" = "预期卖出";
+"Buying" = "买入";
+"Selling" = "卖出";
 "Placed!" = "提交成功";
 "Attention!" = "请注意";
 "Congradualations! Your order has been submited!" = "恭喜！您的订单已被提交！";
@@ -394,3 +394,7 @@
 "Code_Tip" = "城市合伙人激活码";
 "Code_Error_Tip" = "您输入的激活码有误，请到下载页面重新获取后，再次尝试";
 "Please input activate code" = "请输入激活码";
+"Send Confirmation" = "发送确认";
+"Receiver" = "接收方地址";
+"Sender" = "发送方地址";
+"Trade_Confirm" = "交易确认";

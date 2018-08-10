@@ -68,14 +68,16 @@ class TradeViewOnlyViewController: UIViewController {
     // Used in Trade
     func update(type: TradeType, symbol: String, amount: Double) {
         if type == .buy {
+            let title = LocalizedString("Buying", comment: "")
             titleLabel.textColor = .success
-            titleLabel.text = LocalizedString("You are buying", comment: "")
+            titleLabel.text = title + symbol
         } else {
+            let title = LocalizedString("Selling", comment: "")
             titleLabel.textColor = .fail
-            titleLabel.text = LocalizedString("You are selling", comment: "")
+            titleLabel.text = title + symbol
         }
         let length = Asset.getLength(of: symbol) ?? 4
-        amountLabel.text = "\(amount.withCommas(length)) \(symbol)"
+        amountLabel.text = "\(amount.withCommas(length))"
         if let price = PriceDataManager.shared.getPrice(of: symbol) {
             let value: Double = price * amount
             totalPriceInFiatCurrency.text = value.currency

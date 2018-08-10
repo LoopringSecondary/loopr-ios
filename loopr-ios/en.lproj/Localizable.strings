@@ -169,8 +169,8 @@
 "Your order amount exceeded your asset balance, which cause your order could not be dealt completely. Do you wish to continue trading with the amount?" = "Your order amount exceeded your asset amount, which cause your order could not be dealt completely. Do you wish to continue trading with the amount?";
 "Please input a valid price" = "Please input a valid price";
 "Please input a valid amount" = "Please input a valid amount";
-"You are buying" = "You are buying";
-"You are selling" = "You are selling";
+"Buying" = "Buying";
+"Selling" = "Selling";
 "Placed!" = "Placed!";
 "Attention!" = "Attention!";
 "Congradualations! Your order has been submited!" = "Congradualations! Your order has been submited!";
@@ -394,3 +394,7 @@
 "Code_Tip" = "Activate Code of City Partner";
 "Code_Error_Tip" = "Your activate code is incorrect, please refetch from our download web page";
 "Please input activate code" = "Please input activate code";
+"Send Confirmation" = "Send Confirmation";
+"Receiver" = "Receiver";
+"Sender" = "Sender";
+"Trade_Confirm" = "Trade Confirmation";

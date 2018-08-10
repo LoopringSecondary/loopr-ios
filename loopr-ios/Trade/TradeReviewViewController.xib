@@ -38,7 +38,7 @@
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Trade-arrow-dark" translatesAutoresizingMaskIntoConstraints="NO" id="i1F-nx-83Y">
-                    <rect key="frame" x="175.5" y="82" width="24" height="24"/>
+                    <rect key="frame" x="175.5" y="62" width="24" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="EnN-O4-G5p"/>
                         <constraint firstAttribute="width" constant="24" id="SJS-36-vP0"/>
@@ -113,7 +113,7 @@
                 <constraint firstItem="Ufi-Bx-Jal" firstAttribute="leading" secondItem="aoM-he-ey2" secondAttribute="leading" constant="24" id="Abf-bM-e0V"/>
                 <constraint firstItem="eFB-Rc-6X8" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="BcD-LF-pQ4"/>
                 <constraint firstItem="gIa-ab-3EY" firstAttribute="top" secondItem="Qch-cZ-zZk" secondAttribute="bottom" constant="-100" id="CWg-7O-Gp4"/>
-                <constraint firstItem="i1F-nx-83Y" firstAttribute="centerY" secondItem="0qr-Ib-soK" secondAttribute="top" constant="50" id="J1W-iu-PCo"/>
+                <constraint firstItem="i1F-nx-83Y" firstAttribute="centerY" secondItem="0qr-Ib-soK" secondAttribute="top" constant="30" id="J1W-iu-PCo"/>
                 <constraint firstItem="gIa-ab-3EY" firstAttribute="top" secondItem="eFB-Rc-6X8" secondAttribute="bottom" constant="32" id="LMk-Ef-rEK"/>
                 <constraint firstItem="zGP-qQ-tcH" firstAttribute="top" secondItem="gIa-ab-3EY" secondAttribute="bottom" constant="16" id="M7d-eE-V3r"/>
                 <constraint firstItem="7Fa-If-KlR" firstAttribute="trailing" secondItem="gIa-ab-3EY" secondAttribute="trailing" constant="-24" id="QFN-bS-OlV"/>
