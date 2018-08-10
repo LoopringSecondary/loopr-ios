@@ -203,10 +203,11 @@ extension TradeConfirmationViewController {
     }
     
     func pushCompleteController() {
-        self.close(false)
+//        self.close(false)
         let controller = TradeCompleteViewController()
         controller.order = self.order
         controller.verifyInfo = self.verifyInfo
+        controller.hidesBottomBarWhenPushed = true
         self.parentNavController?.pushViewController(controller, animated: true)
     }
     

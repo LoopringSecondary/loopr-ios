@@ -31,23 +31,13 @@ class NumericKeyboardCell: UICollectionViewCell {
     var item: NumericKeyboardItem! {
         didSet {
             button.title = item.title
-            button.titleColor = item.titleColor
+            button.titleColor = UIColor.text1
             button.titleLabel?.font = item.font
             button.image = item.image
-            button.tintColor = item.titleColor
+            button.theme_tintColor = GlobalPicker.textColor
             
-            // Set backgroundColor
-            // item.backgroundColor = UIColor(white: 0.9, alpha: 1)
-            
-            var image = item.backgroundColor.map { UIImage(color: $0) }
-            button.backgroundImage = image
-            
-            // Set backgroundColor
-            item.selectedBackgroundColor = UIColor(white: 0.9, alpha: 1)
-            image = item.selectedBackgroundColor.map { UIImage(color: $0) }
-
-            button.setBackgroundImage(image, for: .highlighted)
-            button.setBackgroundImage(image, for: .selected)
+            button.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
+            button.theme_setBackgroundImage(GlobalPicker.keyboard, forState: .highlighted)
         }
     }
     
