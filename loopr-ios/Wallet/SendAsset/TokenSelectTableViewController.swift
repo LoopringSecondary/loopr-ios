@@ -31,7 +31,7 @@ class TokenSelectTableViewController: UITableViewController, UISearchBarDelegate
         searchBar.delegate = self
         searchBar.searchBarStyle = .minimal
         searchBar.textColor = UIColor.text1
-        
+        searchBar.keyboardAppearance = Themes.isDark() ? .dark : .default
         let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
         searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
         navigationItem.titleView = searchBarContainer

@@ -123,6 +123,7 @@ class OrderHistorySwipeViewController: SwipeViewController, UISearchBarDelegate 
         searchBar.delegate = self
         searchBar.searchBarStyle = .minimal
         searchBar.keyboardType = .alphabet
+        searchBar.keyboardAppearance = Themes.isDark() ? .dark : .default
         searchBar.autocapitalizationType = .allCharacters
         let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
         searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
