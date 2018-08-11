@@ -91,7 +91,6 @@ class AssetSwipeViewController: SwipeViewController {
         for viewController in viewControllers {
             self.addChildViewController(viewController)
         }
-        
         swipeView.reloadData(options: options)
     }
 

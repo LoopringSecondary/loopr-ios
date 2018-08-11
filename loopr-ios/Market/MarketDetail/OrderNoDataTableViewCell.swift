@@ -10,17 +10,16 @@ import UIKit
 
 class OrderNoDataTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var noDataImageView: UIImageView!
     @IBOutlet weak var noDataLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
         selectionStyle = .none
-        
-        noDataLabel.text = LocalizedString("No Data", comment: "")
-        noDataLabel.textColor = UIColor.black
-        noDataLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17.0*UIStyleConfig.scale)        
+        self.backgroundColor = .clear
+        noDataLabel.setTitleCharFont()
+        noDataLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17.0*UIStyleConfig.scale)
     }
     
     class func getCellIdentifier() -> String {
@@ -28,6 +27,6 @@ class OrderNoDataTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 45
+        return 450
     }
 }

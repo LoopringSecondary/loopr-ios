@@ -96,35 +96,49 @@ class MarketDetailTradeHistoryViewController: UIViewController, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return orderFills.count
+        return orderFills.count == 0 ? 1 : orderFills.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
-            return MarketDetailTradeHistoryTableViewCell.getHeight() + 10
+        if orderFills.count == 0 {
+            return OrderNoDataTableViewCell.getHeight() - 200
         } else {
-            return MarketDetailTradeHistoryTableViewCell.getHeight()
+            if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
+                return MarketDetailTradeHistoryTableViewCell.getHeight() + 10
+            } else {
+                return MarketDetailTradeHistoryTableViewCell.getHeight()
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: MarketDetailTradeHistoryTableViewCell.getCellIdentifier()) as? MarketDetailTradeHistoryTableViewCell
-        if cell == nil {
-            let nib = Bundle.main.loadNibNamed("MarketDetailTradeHistoryTableViewCell", owner: self, options: nil)
-            cell = nib![0] as? MarketDetailTradeHistoryTableViewCell
-        }
-        cell?.orderFill = orderFills[indexPath.row]
-        cell?.update()
-        
-        if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
-            cell?.baseViewBuy.round(corners: [.bottomLeft], radius: 6)
-            cell?.baseViewSell.round(corners: [.bottomRight], radius: 6)
+        if orderFills.count == 0 {
+            var cell = tableView.dequeueReusableCell(withIdentifier: OrderNoDataTableViewCell.getCellIdentifier()) as? OrderNoDataTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("OrderNoDataTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? OrderNoDataTableViewCell
+            }
+            cell?.noDataLabel.text = LocalizedString("No_Orderbook_Tip", comment: "")
+            cell?.noDataImageView.image = #imageLiteral(resourceName: "No-data-orderbook")
+            return cell!
         } else {
-            cell?.baseViewBuy.round(corners: [], radius: 0)
-            cell?.baseViewSell.round(corners: [], radius: 0)
+            var cell = tableView.dequeueReusableCell(withIdentifier: MarketDetailTradeHistoryTableViewCell.getCellIdentifier()) as? MarketDetailTradeHistoryTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("MarketDetailTradeHistoryTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? MarketDetailTradeHistoryTableViewCell
+            }
+            cell?.orderFill = orderFills[indexPath.row]
+            cell?.update()
+            
+            if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
+                cell?.baseViewBuy.round(corners: [.bottomLeft], radius: 6)
+                cell?.baseViewSell.round(corners: [.bottomRight], radius: 6)
+            } else {
+                cell?.baseViewBuy.round(corners: [], radius: 0)
+                cell?.baseViewSell.round(corners: [], radius: 0)
+            }
+            return cell!
         }
-        
-        return cell!
     }
 
 }

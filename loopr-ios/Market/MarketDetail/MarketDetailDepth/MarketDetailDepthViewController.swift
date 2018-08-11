@@ -96,43 +96,61 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
         
         return headerView
     }
+    
+    func isTableEmpty() -> Bool {
+        return buys.count == 0 && sells.count == 0
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return buys.count > sells.count ? buys.count : sells.count
+        return isTableEmpty() ? 1 : max(buys.count, sells.count)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
-            return MarketDetailDepthTableViewCell.getHeight() + 10
+        if isTableEmpty() {
+            return OrderNoDataTableViewCell.getHeight() - 200
         } else {
-            return MarketDetailDepthTableViewCell.getHeight()
+            if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
+                return MarketDetailDepthTableViewCell.getHeight() + 10
+            } else {
+                return MarketDetailDepthTableViewCell.getHeight()
+            }
         }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: MarketDetailDepthTableViewCell.getCellIdentifier()) as? MarketDetailDepthTableViewCell
-        if cell == nil {
-            let nib = Bundle.main.loadNibNamed("MarketDetailDepthTableViewCell", owner: self, options: nil)
-            cell = nib![0] as? MarketDetailDepthTableViewCell
-            cell?.fakeBuyButton.isEnabled = false
-            cell?.fakeSellButton.isEnabled = false
-        }
-        if indexPath.row < buys.count {
-            cell?.buyDepth = buys[indexPath.row]
-        }
-        if indexPath.row < sells.count {
-            cell?.sellDepth = sells[indexPath.row]
-        }
-        cell?.update()
-        
-        if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
-            cell?.baseViewBuy.round(corners: [.bottomLeft], radius: 6)
-            cell?.baseViewSell.round(corners: [.bottomRight], radius: 6)
+        if isTableEmpty() {
+            var cell = tableView.dequeueReusableCell(withIdentifier: OrderNoDataTableViewCell.getCellIdentifier()) as? OrderNoDataTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("OrderNoDataTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? OrderNoDataTableViewCell
+            }
+            cell?.noDataLabel.text = LocalizedString("No_Orderbook_Tip", comment: "")
+            cell?.noDataImageView.image = #imageLiteral(resourceName: "No-data-orderbook")
+            return cell!
         } else {
-            cell?.baseViewBuy.round(corners: [], radius: 0)
-            cell?.baseViewSell.round(corners: [], radius: 0)
+            var cell = tableView.dequeueReusableCell(withIdentifier: MarketDetailDepthTableViewCell.getCellIdentifier()) as? MarketDetailDepthTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("MarketDetailDepthTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? MarketDetailDepthTableViewCell
+                cell?.fakeBuyButton.isEnabled = false
+                cell?.fakeSellButton.isEnabled = false
+            }
+            if indexPath.row < buys.count {
+                cell?.buyDepth = buys[indexPath.row]
+            }
+            if indexPath.row < sells.count {
+                cell?.sellDepth = sells[indexPath.row]
+            }
+            cell?.update()
+            
+            if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
+                cell?.baseViewBuy.round(corners: [.bottomLeft], radius: 6)
+                cell?.baseViewSell.round(corners: [.bottomRight], radius: 6)
+            } else {
+                cell?.baseViewBuy.round(corners: [], radius: 0)
+                cell?.baseViewSell.round(corners: [], radius: 0)
+            }
+            return cell!
         }
-
-        return cell!
     }
 }

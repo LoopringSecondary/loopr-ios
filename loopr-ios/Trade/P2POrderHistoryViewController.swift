@@ -112,6 +112,9 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if orders.keys.count == 0 {
+            return OrderNoDataTableViewCell.getHeight()
+        }
         return OrderTableViewCell.getHeight()
     }
     
@@ -137,6 +140,8 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
                 let nib = Bundle.main.loadNibNamed("OrderNoDataTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? OrderNoDataTableViewCell
             }
+            cell?.noDataLabel.text = LocalizedString("No_Order_Tip", comment: "")
+            cell?.noDataImageView.image = #imageLiteral(resourceName: "No-data-order")
             return cell!
         } else {
             var cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.getCellIdentifier()) as? OrderTableViewCell

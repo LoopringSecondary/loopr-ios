@@ -8,13 +8,12 @@
 
 import UIKit
 
-class TradeSelectionViewController: UIViewController, QRCodeScanProtocol {
+class TradeSelectionViewController: UIViewController {
 
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
-    @IBOutlet weak var button5: UIButton!
     
     var isViewDidAppear: Bool = false
     
@@ -61,17 +60,8 @@ class TradeSelectionViewController: UIViewController, QRCodeScanProtocol {
         button4.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
         button4.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
         button4.addTarget(self, action: #selector(self.pressedButton4(_:)), for: .touchUpInside)
-        button4.set(image: UIImage.init(named: "Trade-scan-code-receipt-dark"), title: LocalizedString("Scan Code Receipt", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
-        button4.set(image: UIImage.init(named: "Trade-scan-code-receipt-dark")?.alpha(0.6), title: LocalizedString("Scan Code Receipt", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
-        
-        button5.cornerRadius = 8
-        button5.titleLabel?.setSubTitleCharFont()
-        button5.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
-        button5.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
-        button5.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
-        button5.addTarget(self, action: #selector(self.pressedButton5(_:)), for: .touchUpInside)
-        button5.set(image: UIImage.init(named: "dropdown-transaction"), title: LocalizedString("Orders", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
-        button5.set(image: UIImage.init(named: "dropdown-transaction")?.alpha(0.6), title: LocalizedString("Orders", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
+        button4.set(image: UIImage.init(named: "dropdown-transaction"), title: LocalizedString("Orders", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
+        button4.set(image: UIImage.init(named: "dropdown-transaction")?.alpha(0.6), title: LocalizedString("Orders", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,7 +76,6 @@ class TradeSelectionViewController: UIViewController, QRCodeScanProtocol {
             button2.applyShadow(withColor: UIColor.black)
             button3.applyShadow(withColor: UIColor.black)
             button4.applyShadow(withColor: UIColor.black)
-            button5.applyShadow(withColor: UIColor.black)
             isViewDidAppear = true
         }
     }
@@ -112,83 +101,11 @@ class TradeSelectionViewController: UIViewController, QRCodeScanProtocol {
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
-    
-    @objc func pressedButton4(_ button: UIButton) {
-        print("pressedItem4Button")
-        let viewController = ScanQRCodeViewController()
-        viewController.delegate = self
-        viewController.shouldPop = false
-        viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
 
-    @objc func pressedButton5(_ button: UIButton) {
-        print("pressedButton5")
+    @objc func pressedButton4(_ button: UIButton) {
+        print("pressedButton4")
         let viewController = OrderHistorySwipeViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    func setResultOfScanningQRCode(valueSent: String, type: QRCodeType) {
-        let manager = AuthorizeDataManager.shared
-        if let data = valueSent.data(using: .utf8) {
-            let json = JSON(data)
-            switch type {
-            case .submitOrder:
-                manager.submitHash = json["value"].stringValue
-                manager.getSubmitOrder { (_, error) in
-                    guard error == nil, let order = manager.submitOrder else { return }
-                    DispatchQueue.main.async {
-                        let vc = PlaceOrderConfirmationViewController()
-                        vc.order = order
-                        vc.isSigning = true
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }
-                }
-            case .login:
-                manager.loginUUID = json["value"].stringValue
-                manager._authorizeLogin { (_, error) in
-                    let result = error == nil ? true : false
-                    DispatchQueue.main.async {
-                        let vc = LoginResultViewController()
-                        vc.result = result
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }
-                }
-            case .cancelOrder:
-                manager.cancelHash = json["value"].stringValue
-                manager.getCancelOrder { (_, error) in
-                    let result = error == nil ? true : false
-                    DispatchQueue.main.async {
-                        let vc = LoginResultViewController()
-                        vc.result = result
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }
-                }
-            case .convert:
-                manager.convertHash = json["value"].stringValue
-                manager.getConvertTx { (_, error) in
-                    let result = error == nil ? true : false
-                    DispatchQueue.main.async {
-                        let vc = LoginResultViewController()
-                        vc.result = result
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }
-                }
-            case .p2pOrder:
-                TradeDataManager.shared.handleResult(of: json["value"])
-                let vc = TradeConfirmationViewController()
-                vc.parentNavController = self.navigationController
-                vc.order = TradeDataManager.shared.orders[1]
-                self.navigationController?.pushViewController(vc, animated: true)
-            case .address:
-                let vc = SendAssetViewController()
-                vc.address = valueSent
-                vc.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(vc, animated: true)
-            default:
-                return
-            }
-        }
     }
 }

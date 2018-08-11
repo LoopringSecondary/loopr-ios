@@ -557,7 +557,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         if tokenTotalAmountLabel.frame.maxY < scrollView.contentOffset.y {
             self.navigationItem.title = "\(asset!.display) \(asset!.symbol) Available"
         } else {
-            self.navigationItem.title = ""
+            self.navigationItem.title = LocalizedString("Send", comment: "")
         }
     }
     

@@ -398,3 +398,6 @@
 "Receiver" = "Receiver";
 "Sender" = "Sender";
 "Trade_Confirm" = "Trade Confirmation";
+"No_Order_Tip" ="No order records of your account yet";
+"No_Orderbook_Tip" ="No order books of your account yet";
+"No_Transaction_Tip" ="No transaction records of your account yet";

@@ -155,52 +155,67 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         if isSearching {
             return filteredOrders.count
         } else {
-            return orders.count
+            return orders.count == 0 ? 1 : orders.count
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return OrderTableViewCell.getHeight()
+        if orders.count == 0 {
+            return OrderNoDataTableViewCell.getHeight()
+        } else {
+            return OrderTableViewCell.getHeight()
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.getCellIdentifier()) as? OrderTableViewCell
-        if cell == nil {
-            let nib = Bundle.main.loadNibNamed("OrderTableViewCell", owner: self, options: nil)
-            cell = nib![0] as? OrderTableViewCell
-        }
-        let order: Order
-        if isSearching {
-            order = filteredOrders[indexPath.row]
+        if orders.count == 0 {
+            var cell = tableView.dequeueReusableCell(withIdentifier: OrderNoDataTableViewCell.getCellIdentifier()) as? OrderNoDataTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("OrderNoDataTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? OrderNoDataTableViewCell
+            }
+            cell?.noDataLabel.text = LocalizedString("No_Order_Tip", comment: "")
+            cell?.noDataImageView.image = #imageLiteral(resourceName: "No-data-order")
+            return cell!
         } else {
-            order = orders[indexPath.row]
+            var cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.getCellIdentifier()) as? OrderTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("OrderTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? OrderTableViewCell
+            }
+            let order: Order
+            if isSearching {
+                order = filteredOrders[indexPath.row]
+            } else {
+                order = orders[indexPath.row]
+            }
+            cell?.order = order
+            cell?.pressedCancelButtonClosure = {
+                self.blurVisualEffectView.alpha = 1.0
+                let title = LocalizedString("You are going to cancel the order.", comment: "")
+                let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+                    UIView.animate(withDuration: 0.1, animations: {
+                        self.blurVisualEffectView.alpha = 0.0
+                    }, completion: {(_) in
+                        self.blurVisualEffectView.removeFromSuperview()
+                    })
+                    SendCurrentAppWalletDataManager.shared._cancelOrder(order: order.originalOrder, completion: self.completion)
+                    self.historyTableView.reloadData()
+                }))
+                alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+                    UIView.animate(withDuration: 0.1, animations: {
+                        self.blurVisualEffectView.alpha = 0.0
+                    }, completion: {(_) in
+                        self.blurVisualEffectView.removeFromSuperview()
+                    })
+                }))
+                self.navigationController?.view.addSubview(self.blurVisualEffectView)
+                self.present(alert, animated: true, completion: nil)
+            }
+            cell?.update()
+            return cell!
         }
-        cell?.order = order
-        cell?.pressedCancelButtonClosure = {
-            self.blurVisualEffectView.alpha = 1.0
-            let title = LocalizedString("You are going to cancel the order.", comment: "")
-            let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
-                UIView.animate(withDuration: 0.1, animations: {
-                    self.blurVisualEffectView.alpha = 0.0
-                }, completion: {(_) in
-                    self.blurVisualEffectView.removeFromSuperview()
-                })
-                SendCurrentAppWalletDataManager.shared._cancelOrder(order: order.originalOrder, completion: self.completion)
-                self.historyTableView.reloadData()
-            }))
-            alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
-                UIView.animate(withDuration: 0.1, animations: {
-                    self.blurVisualEffectView.alpha = 0.0
-                }, completion: {(_) in
-                    self.blurVisualEffectView.removeFromSuperview()
-                })
-            }))
-            self.navigationController?.view.addSubview(self.blurVisualEffectView)
-            self.present(alert, animated: true, completion: nil)
-        }
-        cell?.update()
-        return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

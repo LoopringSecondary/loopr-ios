@@ -398,3 +398,6 @@
 "Receiver" = "接收方地址";
 "Sender" = "发送方地址";
 "Trade_Confirm" = "交易确认";
+"No_Order_Tip" ="尚无下单数据记录";
+"No_Orderbook_Tip" ="尚无订单成交记录";
+"No_Transaction_Tip" ="尚无交易数据记录";

@@ -133,22 +133,37 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return transactions.count
+        return transactions.count == 0 ? 1 : transactions.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return AssetTransactionTableViewCell.getHeight()
+        if transactions.count == 0 {
+            return OrderNoDataTableViewCell.getHeight() - 120
+        } else {
+            return AssetTransactionTableViewCell.getHeight()
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: AssetTransactionTableViewCell.getCellIdentifier()) as? AssetTransactionTableViewCell
-        if cell == nil {
-            let nib = Bundle.main.loadNibNamed("AssetTransactionTableViewCell", owner: self, options: nil)
-            cell = nib![0] as? AssetTransactionTableViewCell
+        if transactions.count == 0 {
+            var cell = tableView.dequeueReusableCell(withIdentifier: OrderNoDataTableViewCell.getCellIdentifier()) as? OrderNoDataTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("OrderNoDataTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? OrderNoDataTableViewCell
+            }
+            cell?.noDataLabel.text = LocalizedString("No_Transaction_Tip", comment: "")
+            cell?.noDataImageView.image = #imageLiteral(resourceName: "No-data-transaction")
+            return cell!
+        } else {
+            var cell = tableView.dequeueReusableCell(withIdentifier: AssetTransactionTableViewCell.getCellIdentifier()) as? AssetTransactionTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("AssetTransactionTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? AssetTransactionTableViewCell
+            }
+            cell?.transaction = self.transactions[indexPath.row]
+            cell?.update()
+            return cell!
         }
-        cell?.transaction = self.transactions[indexPath.row]
-        cell?.update()
-        return cell!
     }
 
     func reloadAfterSwipeViewUpdated() {
