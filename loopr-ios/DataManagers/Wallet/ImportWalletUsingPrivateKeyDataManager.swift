@@ -17,7 +17,7 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
     
     // Password is no need
     final let password: String = ""
-
+    
     var address: String
     private var privateKey: String
     private var keystore: String
@@ -28,7 +28,7 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
         privateKey = ""
         keystore = ""
     }
-
+    
     func reset() {
         walletName = ""
         address = ""
@@ -43,7 +43,7 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
     func getPrivateKey() -> String {
         return privateKey
     }
-
+    
     func importWallet(privateKey privateKeyString: String) throws {
         print("Start to unlock a new wallet using the private key")
         let privateKeyData: Data? = Data(hexString: privateKeyString.trim())
@@ -51,14 +51,14 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
             print("Invalid private key")
             throw ImportWalletError.invalidPrivateKey
         }
-
+        
         // Store private key
         privateKey = privateKeyString.trim()
-
+        
         // TODO: move this part to sdk?
         let pubKey = Secp256k1.shared.pubicKey(from: privateKeyData!)
         let keystoreAddress = KeystoreKey.decodeAddress(from: pubKey)
-
+        
         // Store public key
         address = keystoreAddress.eip55String
     }
@@ -67,7 +67,7 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
         if AppWalletDataManager.shared.isDuplicatedAddress(address: address) {
             throw AddWalletError.duplicatedAddress
         }
-
+        
         let newAppWallet = AppWallet(setupWalletMethod: .importUsingPrivateKey, address: address, privateKey: privateKey, password: password, keystoreString: keystore, name: walletName, isVerified: true, active: true)
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
@@ -77,3 +77,4 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
         print("Finished unlocking a new wallet in ImportWalletUsingPrivateKeyDataManager")
     }
 }
+

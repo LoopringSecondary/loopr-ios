@@ -34,7 +34,7 @@ class TradeCompleteViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        setBackToTopViewContollersButton()
         setupErrorInfo()
         setupLabels()
         setupRows()
@@ -106,6 +106,7 @@ class TradeCompleteViewController: UIViewController {
             detailsButton.isHidden = true
         }
         doneButton.title = LocalizedString("Done", comment: "")
+        doneButton.addTarget(self, action: #selector(pressedDoneButton(_:)), for: UIControlEvents.touchUpInside)
         doneButton.titleLabel?.setTitleCharFont()
     }
     
@@ -135,12 +136,28 @@ class TradeCompleteViewController: UIViewController {
         }
     }
     
-    @IBAction func pressedDoneButton(_ sender: Any) {
+    @objc func pressedDoneButton(_ sender: Any) {
         for controller in self.navigationController!.viewControllers as Array {
-            if controller.isKind(of: TradeViewController.self) || controller.isKind(of: WalletViewController.self) {
+            if controller.isKind(of: TradeViewController.self) || controller.isKind(of: WalletViewController.self) || controller.isKind(of: TradeSelectionViewController.self) {
                 self.navigationController!.popToViewController(controller, animated: true)
                 break
             }
         }
+    }
+    
+    // No swipe back
+    func setBackToTopViewContollersButton() {
+        let backButton = UIButton(type: UIButtonType.custom)
+        
+        backButton.theme_setImage(GlobalPicker.back, forState: .normal)
+        backButton.theme_setImage(GlobalPicker.backHighlight, forState: .highlighted)
+        
+        // Default left padding is 20. It should be 12 in our design.
+        backButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -16, bottom: 0, right: 8)
+        backButton.addTarget(self, action: #selector(pressedDoneButton(_:)), for: UIControlEvents.touchUpInside)
+        // The size of the image.
+        backButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        let backBarButton = UIBarButtonItem(customView: backButton)
+        self.navigationItem.leftBarButtonItem = backBarButton
     }
 }

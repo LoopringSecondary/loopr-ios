@@ -12,7 +12,7 @@ import SVProgressHUD
 class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
     
     static let shared = ImportWalletUsingMnemonicDataManager()
-
+    
     var mnemonic: String = ""
     var password: String = ""
     var derivationPathValue = "m/44'/60'/0'/0"
@@ -28,25 +28,22 @@ class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
     func reset() {
         
     }
-
+    
     func isMnemonicValid(mnemonic: String) -> Bool {
         return Mnemonic.isValid(mnemonic)
     }
-
-    func clearAddresses() {
-        selectedKey = 0
-        addresses = []
-    }
-
+    
     func generateAddresses() {
+        selectedKey = 0
+        addresses.removeAll()
+        
         // append "/x"
         let pathValue = derivationPathValue + "/x"
-
+        
+        let wallet = Wallet(mnemonic: mnemonic, password: password, path: pathValue)
         // TODO: in theory, it should generate many many addresses. However, we should only top 100 addresses. Improve in the future.
         for i in 0..<100 {
-            let key = (addresses.count) + i
-            let wallet = Wallet(mnemonic: mnemonic, password: password, path: pathValue)
-            let address = wallet.getKey(at: key).address
+            let address = wallet.getKey(at: i).address
             addresses.append(address)
         }
     }
