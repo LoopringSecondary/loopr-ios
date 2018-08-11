@@ -27,6 +27,7 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
 
         setBackButton()

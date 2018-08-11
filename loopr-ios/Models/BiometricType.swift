@@ -24,20 +24,15 @@ enum BiometricType: CustomStringConvertible {
 
     static func get() -> BiometricType {
         let authContext = LAContext()
-        if #available(iOS 11, *) {
-            _ = authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
-            switch authContext.biometryType {
-            case .none:
-                return .none
-            case .touchID:
-                return .touchID
-            case .faceID:
-                return .faceID
-            }
-        } else {
-            return authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) ? .touchID : .none
+        _ = authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
+        switch authContext.biometryType {
+        case .none:
+            return .none
+        case .touchID:
+            return .touchID
+        case .faceID:
+            return .faceID
         }
     }
 
 }
-

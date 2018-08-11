@@ -117,7 +117,15 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sectionRows[section]
+        if section == 0 {
+            if BiometricType.get() == .none {
+                return 4
+            } else {
+                return 5
+            }
+        } else {
+            return sectionRows[section]
+        }
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

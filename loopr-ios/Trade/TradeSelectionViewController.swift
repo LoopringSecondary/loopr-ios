@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TradeSelectionViewController: UIViewController {
+class TradeSelectionViewController: UIViewController, QRCodeScanProtocol {
 
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
@@ -116,6 +116,7 @@ class TradeSelectionViewController: UIViewController {
     @objc func pressedButton4(_ button: UIButton) {
         print("pressedItem4Button")
         let viewController = ScanQRCodeViewController()
+        viewController.delegate = self
         viewController.shouldPop = false
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
@@ -126,5 +127,68 @@ class TradeSelectionViewController: UIViewController {
         let viewController = OrderHistorySwipeViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func setResultOfScanningQRCode(valueSent: String, type: QRCodeType) {
+        let manager = AuthorizeDataManager.shared
+        if let data = valueSent.data(using: .utf8) {
+            let json = JSON(data)
+            switch type {
+            case .submitOrder:
+                manager.submitHash = json["value"].stringValue
+                manager.getSubmitOrder { (_, error) in
+                    guard error == nil, let order = manager.submitOrder else { return }
+                    DispatchQueue.main.async {
+                        let vc = PlaceOrderConfirmationViewController()
+                        vc.order = order
+                        vc.isSigning = true
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
+            case .login:
+                manager.loginUUID = json["value"].stringValue
+                manager._authorizeLogin { (_, error) in
+                    let result = error == nil ? true : false
+                    DispatchQueue.main.async {
+                        let vc = LoginResultViewController()
+                        vc.result = result
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
+            case .cancelOrder:
+                manager.cancelHash = json["value"].stringValue
+                manager.getCancelOrder { (_, error) in
+                    let result = error == nil ? true : false
+                    DispatchQueue.main.async {
+                        let vc = LoginResultViewController()
+                        vc.result = result
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
+            case .convert:
+                manager.convertHash = json["value"].stringValue
+                manager.getConvertTx { (_, error) in
+                    let result = error == nil ? true : false
+                    DispatchQueue.main.async {
+                        let vc = LoginResultViewController()
+                        vc.result = result
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
+            case .p2pOrder:
+                TradeDataManager.shared.handleResult(of: json["value"])
+                let vc = TradeConfirmationViewController()
+                vc.parentNavController = self.navigationController
+                vc.order = TradeDataManager.shared.orders[1]
+                self.navigationController?.pushViewController(vc, animated: true)
+            case .address:
+                let vc = SendAssetViewController()
+                vc.address = valueSent
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            default:
+                return
+            }
+        }
     }
 }
