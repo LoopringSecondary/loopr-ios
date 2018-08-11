@@ -50,7 +50,7 @@
 "Place Order" = "下单";
 "Confirmation" = "确认";
 "Next" = "下一步";
-"Share the Order" = "分享订单";
+"Share Order" = "分享订单";
 "Close the Order" = "关闭订单";
 "Review" = "Review";
 "Check Details" = "查看详情";
@@ -401,3 +401,4 @@
 "No_Order_Tip" ="尚无下单数据记录";
 "No_Orderbook_Tip" ="尚无订单成交记录";
 "No_Transaction_Tip" ="尚无交易数据记录";
+"Wallet Address QRCode" = "钱包地址二维码";

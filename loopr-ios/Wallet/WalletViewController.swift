@@ -10,7 +10,7 @@ import UIKit
 import NotificationBannerSwift
 import MKDropdownMenu
 
-class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WalletBalanceTableViewCellDelegate, QRCodeScanProtocol {
+class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, QRCodeScanProtocol {
 
     @IBOutlet weak var assetTableView: UITableView!
     private let refreshControl = UIRefreshControl()
@@ -362,27 +362,18 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
+    
+}
 
-    func updateTableView(isHideSmallAsset: Bool) {
-        if !isLaunching {
-            if isHideSmallAsset {
-                var rows: [IndexPath] = []
-                let lastRow = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption().count
-                for i in lastRow..<numberOfRowsInSection1 {
-                    rows.append(IndexPath.init(row: i, section: 1))
-                }
-                self.assetTableView.deleteRows(at: rows, with: .top)
-            } else {
-                var rows: [IndexPath] = []
-                let lastRow = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption().count
-                for i in numberOfRowsInSection1..<lastRow {
-                    rows.append(IndexPath.init(row: i, section: 1))
-                }
-                self.assetTableView.insertRows(at: rows, with: .top)
-            }
+extension WalletViewController: WalletBalanceTableViewCellDelegate {
+    func pressedQACodeButtonInWalletBalanceTableViewCell() {
+        if CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil {
+            let viewController = QRCodeViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            viewController.navigationTitle = LocalizedString("Wallet Address QRCode", comment: "")
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
-    
 }
 
 extension WalletViewController: WalletButtonTableViewCellDelegate {

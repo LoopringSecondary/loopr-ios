@@ -39,7 +39,7 @@ class OrderQRCodeViewController: UIViewController {
         
         saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
         saveToAlbumButton.setupPrimary(height: 42)
-        shareOrderButton.setTitle(LocalizedString("Share the Order", comment: ""), for: .normal)
+        shareOrderButton.setTitle(LocalizedString("Share Order", comment: ""), for: .normal)
         shareOrderButton.setupSecondary(height: 42)
         generateQRCode(order: self.order!)
     }

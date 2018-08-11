@@ -28,7 +28,7 @@ class TickerCharacterLabel: UILabel {
 class TickerLabel: UIView {
     
     var font: UIFont = UIFont.systemFont(ofSize: 30)
-    @IBInspectable var textColor: UIColor = UIColor.black
+    @IBInspectable var textColor: UIColor = UIColor.white
     
     // TODO: This may conflict to isOneDirection
     var scrollDirection: TickerLabelScrollDirection = .up
@@ -63,7 +63,7 @@ class TickerLabel: UIView {
         charactersView.backgroundColor = UIColor.clear
         addSubview(charactersView)
         // font = UIFont.systemFont(ofSize: 36.0)
-        textColor = UIColor.black
+        textColor = UIColor.white
         // animationDuration = 1.0
         
         // setFont(UIFont.systemFont(ofSize: 36.0))

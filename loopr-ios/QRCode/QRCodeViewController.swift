@@ -12,6 +12,8 @@ import NotificationBannerSwift
 
 class QRCodeViewController: UIViewController {
     
+    var navigationTitle = LocalizedString("Receive Code", comment: "")
+    
     @IBOutlet weak var receiveQRCodeIconView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var qrcodeImageView: UIImageView!
@@ -26,7 +28,7 @@ class QRCodeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = LocalizedString("Receive Code", comment: "")
+        self.navigationItem.title = navigationTitle
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         contentView.layer.cornerRadius = 6

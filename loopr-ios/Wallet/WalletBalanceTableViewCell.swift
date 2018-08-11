@@ -9,7 +9,7 @@
 import UIKit
 
 protocol WalletBalanceTableViewCellDelegate: class {
-    func updateTableView(isHideSmallAsset: Bool)
+    func pressedQACodeButtonInWalletBalanceTableViewCell()
 }
 
 class WalletBalanceTableViewCell: UITableViewCell {
@@ -20,6 +20,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
     var baseView: UIImageView = UIImageView()
     let balanceLabel: TickerLabel = TickerLabel()
     let addressLabel: UILabel = UILabel()
+    let qrCodeButton: UIButton = UIButton()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -55,6 +56,11 @@ class WalletBalanceTableViewCell: UITableViewCell {
         addressLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address ?? ""
         addSubview(addressLabel)
         
+        qrCodeButton.frame = CGRect(x: addressLabel.frame.maxX, y: addressLabel.frame.minY + (addressLabel.frame.height-18)*0.5, width: 18, height: 18)
+        qrCodeButton.setImage(UIImage(named: "QRCode-white"), for: .normal)
+        qrCodeButton.addTarget(self, action: #selector(self.pressedQRCodeButton(_:)), for: .touchUpInside)
+        addSubview(qrCodeButton)
+        
         if updateBalanceLabelTimer == nil {
             updateBalanceLabelTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
         }
@@ -62,7 +68,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
     }
 
     private func update() {
-        balanceLabel.textColor = Themes.isDark() ? UIColor.white : UIColor.black
+        balanceLabel.textColor = UIColor.white
         addressLabel.theme_textColor = GlobalPicker.textLightColor
     }
     
@@ -74,7 +80,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
     }
     
     @objc func updateBalance() {
-        balanceLabel.textColor = Themes.isDark() ? UIColor.white : UIColor.black
+        balanceLabel.textColor = UIColor.white
         var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
         balance.insert(" ", at: balance.index(after: balance.startIndex))
         balanceLabel.setText(balance, animated: true)
@@ -92,6 +98,11 @@ class WalletBalanceTableViewCell: UITableViewCell {
             updateBalanceLabelTimer?.invalidate()
             updateBalanceLabelTimer = nil
         }
+    }
+    
+    @objc func pressedQRCodeButton(_ button: UIButton) {
+        print("pressedItem1Button")
+        delegate?.pressedQACodeButtonInWalletBalanceTableViewCell()
     }
 
     class func getCellIdentifier() -> String {

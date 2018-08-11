@@ -50,7 +50,7 @@
 "Place Order" = "Place Order";
 "Confirmation" = "Confirmation";
 "Next" = "Next";
-"Share the Order" = "Share the Order";
+"Share Order" = "Share Order";
 "Close the Order" = "Close the Order";
 "Review" = "Review";
 "Check Details" = "Check Details";
@@ -401,3 +401,4 @@
 "No_Order_Tip" ="No order records of your account yet";
 "No_Orderbook_Tip" ="No order books of your account yet";
 "No_Transaction_Tip" ="No transaction records of your account yet";
+"Wallet Address QRCode" = "Wallet Address QRCode";
