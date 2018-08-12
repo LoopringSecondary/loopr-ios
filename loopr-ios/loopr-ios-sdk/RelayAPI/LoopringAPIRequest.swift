@@ -135,6 +135,9 @@ class LoopringAPIRequest {
                     buyDepths.append(depth)
                 }
             }
+            buyDepths.sort(by: { (a, b) -> Bool in
+                return (Double(a.price) ?? 0) > (Double(b.price) ?? 0)
+            })
             
             let sellContents = offerData["sell"].arrayObject as! [[String]]
             for sellContent in sellContents {
@@ -142,6 +145,9 @@ class LoopringAPIRequest {
                     sellDepths.append(depth)
                 }
             }
+            sellDepths.sort(by: { (a, b) -> Bool in
+                return (Double(a.price) ?? 0) < (Double(b.price) ?? 0)
+            })
             
             completionHandler(buyDepths, sellDepths, nil)
         }

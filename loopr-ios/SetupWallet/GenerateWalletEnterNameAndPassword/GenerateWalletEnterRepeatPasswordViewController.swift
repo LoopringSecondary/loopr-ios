@@ -76,6 +76,7 @@ class GenerateWalletEnterRepeatPasswordViewController: UIViewController, UITextF
         if validPassword {
             GenerateWalletDataManager.shared.setPassword(repeatPasswordTextField.text!)
             let viewController = BackupMnemonicViewController()
+            viewController.mnemonics = GenerateWalletDataManager.shared.getMnemonics()
             self.navigationController?.pushViewController(viewController, animated: true)
         }
 

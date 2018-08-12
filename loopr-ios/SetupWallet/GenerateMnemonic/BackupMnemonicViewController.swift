@@ -40,8 +40,6 @@ class BackupMnemonicViewController: UIViewController {
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         self.navigationItem.title = LocalizedString("Generate Wallet", comment: "")
 
-        mnemonics = GenerateWalletDataManager.shared.getMnemonics()
-
         // Setup UI
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
