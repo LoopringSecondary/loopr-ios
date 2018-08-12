@@ -10,6 +10,17 @@ import UIKit
 
 class SettingStyleTableViewCell: UITableViewCell {
 
+    enum ContentType {
+        case regular
+        case walletName
+        case backupMnemonic
+        case exportPrivateKey
+        case exportKeystore
+        case clearRecords
+    }
+    
+    var contentType: ContentType = .regular
+
     @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var rightLabel: UILabel!
     @IBOutlet weak var seperateLineUp: UIView!

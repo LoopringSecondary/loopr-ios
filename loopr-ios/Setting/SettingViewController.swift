@@ -98,6 +98,11 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             switch indexPath.row {
             case 0:
                 print("contract version")
+                let viewController = DisplayPrivateKeyViewController()
+                viewController.displayValue = RelayAPIConfiguration.protocolAddress
+                viewController.hideCopyButton = true
+                viewController.navigationTitle = LocalizedString("Contract Version", comment: "")
+                self.navigationController?.pushViewController(viewController, animated: true)                
             case 1:
                 print("LRC Fee ratio")
                 let viewController = SettingLRCFeeRatioViewController()
@@ -203,7 +208,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             if indexPath.row == sectionRows[indexPath.section]-1 {
                 cell?.trailingSeperateLineDown.constant = 0
             } else {
-                cell?.trailingSeperateLineDown.constant = 23
+                cell?.trailingSeperateLineDown.constant = 15
             }
             cell?.leftLabel.text = LocalizedString("App Version", comment: "")
             cell?.rightLabel.text = getAppVersion()
@@ -232,7 +237,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         if indexPath.row == sectionRows[indexPath.section]-1 {
             cell?.trailingSeperateLineDown.constant = 0
         } else {
-            cell?.trailingSeperateLineDown.constant = 23
+            cell?.trailingSeperateLineDown.constant = 15
         }
 
         return cell!
@@ -255,7 +260,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         if indexPath.row == sectionRows[indexPath.section]-1 {
             cell?.trailingSeperateLineDown.constant = 0
         } else {
-            cell?.trailingSeperateLineDown.constant = 23
+            cell?.trailingSeperateLineDown.constant = 15
         }
 
         return cell!
@@ -281,7 +286,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         if indexPath.row == sectionRows[indexPath.section]-1 {
             cell?.trailingSeperateLineDown.constant = 0
         } else {
-            cell?.trailingSeperateLineDown.constant = 23
+            cell?.trailingSeperateLineDown.constant = 15
         }
         
         return cell!

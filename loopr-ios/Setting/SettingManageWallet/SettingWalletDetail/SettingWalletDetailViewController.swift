@@ -14,8 +14,8 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     var appWallet: AppWallet!
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var switchWalletButton: UIButton!
 
+    @IBOutlet weak var switchWalletButton: UIButton!
     @IBOutlet weak var shareAddressThroughSMSButton: UIButton!
 
     override func viewDidLoad() {
@@ -23,19 +23,21 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
 
         // Do any additional setup after loading the view.
         setBackButton()
+        self.navigationItem.title = appWallet.name
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
 
+        tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         
         switchWalletButton.title = LocalizedString("Switch to this Wallet", comment: "")
-        switchWalletButton.setupSecondary()
+        switchWalletButton.setupSecondary(height: 44)
         
         shareAddressThroughSMSButton.title = LocalizedString("Share Address through SMS", comment: "")
-        shareAddressThroughSMSButton.setupPrimary()
+        shareAddressThroughSMSButton.setupSecondary(height: 44)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -70,11 +72,20 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return 20
+        }
         return 0
     }
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 20))
+        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        return headerView
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return SettingWalletDetailTableViewCell.getHeight()
+        return SettingStyleTableViewCell.getHeight()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,7 +95,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let cell = tableView.cellForRow(at: indexPath) as? SettingWalletDetailTableViewCell else {
+        guard let cell = tableView.cellForRow(at: indexPath) as? SettingStyleTableViewCell else {
             return
         }
         switch cell.contentType {
@@ -98,7 +109,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
             self.navigationController?.pushViewController(viewController, animated: true)
         case .exportPrivateKey:
             let viewController = DisplayPrivateKeyViewController()
-            viewController.appWallet = appWallet
+            viewController.displayValue = appWallet.privateKey
             self.navigationController?.pushViewController(viewController, animated: true)
         case .exportKeystore:
             let viewController = ExportKeystoreEnterPasswordViewController()

@@ -11,7 +11,12 @@ import NotificationBannerSwift
 
 class DisplayPrivateKeyViewController: UIViewController {
 
-    var appWallet: AppWallet!
+    var navigationTitle = LocalizedString("Export Private Key", comment: "")
+    var copyButtonTitle = LocalizedString("Copy Private Key", comment: "")
+    var bannerMessage = LocalizedString("Copy private key to clipboard successfully!", comment: "")
+    var displayValue: String = ""
+    
+    var hideCopyButton: Bool = false
 
     @IBOutlet weak var privateKeyTextView: UITextView!
     @IBOutlet weak var copyButton: UIButton!
@@ -20,7 +25,7 @@ class DisplayPrivateKeyViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = LocalizedString("Export Private Key", comment: "")
+        self.navigationItem.title = navigationTitle
         setBackButton()
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         privateKeyTextView.contentInset = UIEdgeInsets.init(top: 17, left: 20, bottom: 15, right: 20)
@@ -31,21 +36,27 @@ class DisplayPrivateKeyViewController: UIViewController {
         privateKeyTextView.isEditable = false
         // privateKeyTextView.isScrollEnabled = false
         
-        privateKeyTextView.text = appWallet.privateKey
+        privateKeyTextView.text = displayValue
         
-        copyButton.title = LocalizedString("Copy Private Key", comment: "")
-        copyButton.setupSecondary()
+        copyButton.title = copyButtonTitle
+        copyButton.setupSecondary(height: 44)
+        copyButton.isHidden = hideCopyButton
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        privateKeyTextView.applyShadow()
+    }
 
     @IBAction func pressedCopyButton(_ sender: Any) {
         print("pressedCopyButton")
-        UIPasteboard.general.string = appWallet.privateKey
-        let banner = NotificationBanner.generate(title: "Copy private key to clipboard successfully!", style: .success)
+        UIPasteboard.general.string = displayValue
+        let banner = NotificationBanner.generate(title: bannerMessage, style: .success)
         banner.duration = 1
         banner.show()
     }
