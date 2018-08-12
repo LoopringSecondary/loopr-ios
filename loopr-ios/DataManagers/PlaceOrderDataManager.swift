@@ -27,8 +27,8 @@ class PlaceOrderDataManager {
     var market: Market!
     
     func new(tokenA: String, tokenB: String, market: Market) {
-        self.tokenA = TokenDataManager.shared.getTokenBySymbol(tokenA)!
-        self.tokenB = TokenDataManager.shared.getTokenBySymbol(tokenB)!
+        self.tokenA = TokenDataManager.shared.getTokenBySymbol(tokenA)
+        self.tokenB = TokenDataManager.shared.getTokenBySymbol(tokenB)
         self.market = market
     }
 
@@ -105,7 +105,7 @@ class PlaceOrderDataManager {
     }
     
     func calculateGas(for token: String, to amount: Double, lrcFee: Double) -> Double? {
-        var result: Double? = nil
+        var result: Double?
         if let asset = walletManager.getAsset(symbol: token) {
             if token.uppercased() == "LRC" {
                 let lrcFrozen = getFrozenLRCFeeFromServer()
@@ -132,7 +132,7 @@ class PlaceOrderDataManager {
     }
     
     func calculateGasForLRC(of order: OriginalOrder) -> Double? {
-        var result: Double? = nil
+        var result: Double?
         if let asset = walletManager.getAsset(symbol: "LRC") {
             let lrcAllowance = asset.allowance
             let lrcFee = order.lrcFee

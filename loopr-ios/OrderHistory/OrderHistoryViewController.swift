@@ -20,6 +20,7 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
     let refreshControl = UIRefreshControl()
     
     var viewAppear: Bool = false
+    var isLaunching: Bool = true
     
     var didSelectRowClosure: ((Market) -> Void)?
     var didSelectBlankClosure: (() -> Void)?
@@ -93,6 +94,9 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
     func getOrderHistoryFromRelay() {
         OrderDataManager.shared.getOrdersFromServer(completionHandler: { orders, _ in
             DispatchQueue.main.async {
+                if self.isLaunching {
+                    self.isLaunching = false
+                }
                 self.orders = OrderDataManager.shared.getOrders(type: self.type)
                 self.historyTableView.reloadData()
                 self.refreshControl.endRefreshing()
@@ -151,16 +155,20 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
+    func isTableEmpty() -> Bool {
+        return orders.count == 0 && !isLaunching
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching {
             return filteredOrders.count
         } else {
-            return orders.count == 0 ? 1 : orders.count
+            return isTableEmpty() ? 1 : orders.count
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if orders.count == 0 {
+        if isTableEmpty() {
             return OrderNoDataTableViewCell.getHeight()
         } else {
             return OrderTableViewCell.getHeight()
@@ -168,7 +176,7 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if orders.count == 0 {
+        if isTableEmpty() {
             var cell = tableView.dequeueReusableCell(withIdentifier: OrderNoDataTableViewCell.getCellIdentifier()) as? OrderNoDataTableViewCell
             if cell == nil {
                 let nib = Bundle.main.loadNibNamed("OrderNoDataTableViewCell", owner: self, options: nil)

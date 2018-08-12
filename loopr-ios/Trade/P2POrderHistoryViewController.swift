@@ -84,24 +84,16 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
         })
     }
     
+    func isTableEmpty() -> Bool {
+        return orders.keys.count == 0 && !isLaunching
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        if isLaunching {
-            return 0
-        }
-        if orders.keys.count == 0 {
-            return 1
-        }
-        return orders.keys.count
+        return isTableEmpty() ? 1 : orders.keys.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isLaunching {
-            return 0
-        }
-        if orders.keys.count == 0 {
-            return 1
-        }
-        return orders[orderDates[section]]!.count
+        return isTableEmpty() ? 1 : orders[orderDates[section]]!.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -112,14 +104,14 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if orders.keys.count == 0 {
+        if isTableEmpty() {
             return OrderNoDataTableViewCell.getHeight()
         }
         return OrderTableViewCell.getHeight()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if orders.keys.count == 0 {
+        if isTableEmpty() {
             return nil
         }
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 45))

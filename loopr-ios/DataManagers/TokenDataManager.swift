@@ -55,7 +55,6 @@ class TokenDataManager {
             tokenList = tokenList.filter {$0 != tokenSymbol}
             defaults.set(tokenList, forKey: UserDefaultsKeys.tokenList.rawValue)
         }
-        
     }
 
     // load tokens from json file to avoid http request
@@ -74,7 +73,7 @@ class TokenDataManager {
             })
         }
     }
-    
+
     func loadTokensFromServer() {
         LoopringAPIRequest.getSupportedTokens { (tokens, error) in
             guard let tokens = tokens, error == nil else {
@@ -122,7 +121,7 @@ class TokenDataManager {
     }
 
     func getTokenBySymbol(_ symbol: String) -> Token? {
-        var result: Token? = nil
+        var result: Token?
         for case let token in tokens where token.symbol.lowercased() == symbol.lowercased() {
             result = token
             break
@@ -131,7 +130,7 @@ class TokenDataManager {
     }
     
     func getTokenByAddress(_ address: String) -> Token? {
-        var result: Token? = nil
+        var result: Token?
         for case let token in tokens where token.protocol_value.lowercased() == address.lowercased() {
             result = token
             break
@@ -146,6 +145,4 @@ class TokenDataManager {
             return nil
         }
     }
-    
-
 }

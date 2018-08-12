@@ -132,12 +132,16 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         return 1
     }
     
+    func isTableEmpty() -> Bool {
+        return transactions.count == 0 && !isLaunching
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return transactions.count == 0 ? 1 : transactions.count
+        return isTableEmpty() ? 1 : transactions.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if transactions.count == 0 {
+        if isTableEmpty() {
             return OrderNoDataTableViewCell.getHeight() - 120
         } else {
             return AssetTransactionTableViewCell.getHeight()
@@ -145,7 +149,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if transactions.count == 0 {
+        if isTableEmpty() {
             var cell = tableView.dequeueReusableCell(withIdentifier: OrderNoDataTableViewCell.getCellIdentifier()) as? OrderNoDataTableViewCell
             if cell == nil {
                 let nib = Bundle.main.loadNibNamed("OrderNoDataTableViewCell", owner: self, options: nil)

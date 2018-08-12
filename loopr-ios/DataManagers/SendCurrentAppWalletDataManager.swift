@@ -35,12 +35,12 @@ class SendCurrentAppWalletDataManager {
         if let weth = TokenDataManager.shared.getTokenBySymbol("WETH") {
             address = weth.protocol_value
         }
-        var error: NSError? = nil
+        var error: NSError?
         self.wethAddress = GethNewAddressFromHex(address, &error)
     }
 
     func getProtocolAddress() {
-        var error: NSError? = nil
+        var error: NSError?
         self.protocolAddress = GethNewAddressFromHex(RelayAPIConfiguration.protocolAddress, &error)
     }
     

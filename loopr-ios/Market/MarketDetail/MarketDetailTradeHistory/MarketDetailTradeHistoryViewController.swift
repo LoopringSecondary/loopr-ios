@@ -11,6 +11,7 @@ import UIKit
 class MarketDetailTradeHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var market: Market!
+    var isLaunching: Bool = true
     private var orderFills: [OrderFill] = []
 
     @IBOutlet weak var tableView: UITableView!
@@ -38,6 +39,9 @@ class MarketDetailTradeHistoryViewController: UIViewController, UITableViewDeleg
         MarketTradeHistoryDataManager.shared.getTradeHistoryFromServer(market: market.name, completionHandler: { (orderFills, _) in
             self.orderFills = orderFills
             DispatchQueue.main.async {
+                if self.isLaunching == true {
+                    self.isLaunching = false
+                }
                 self.tableView.reloadData()
             }
         })
@@ -95,12 +99,16 @@ class MarketDetailTradeHistoryViewController: UIViewController, UITableViewDeleg
         return headerView
     }
     
+    func isTableEmpty() -> Bool {
+        return orderFills.count == 0 && !isLaunching
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return orderFills.count == 0 ? 1 : orderFills.count
+        return isTableEmpty() ? 1 : orderFills.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if orderFills.count == 0 {
+        if isTableEmpty() {
             return OrderNoDataTableViewCell.getHeight() - 200
         } else {
             if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
@@ -112,7 +120,7 @@ class MarketDetailTradeHistoryViewController: UIViewController, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if orderFills.count == 0 {
+        if isTableEmpty() {
             var cell = tableView.dequeueReusableCell(withIdentifier: OrderNoDataTableViewCell.getCellIdentifier()) as? OrderNoDataTableViewCell
             if cell == nil {
                 let nib = Bundle.main.loadNibNamed("OrderNoDataTableViewCell", owner: self, options: nil)

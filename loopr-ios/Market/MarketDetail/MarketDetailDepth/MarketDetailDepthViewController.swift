@@ -11,6 +11,7 @@ import UIKit
 class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
     var market: Market!
+    var isLaunching: Bool = true
     private var buys: [Depth] = []
     private var sells: [Depth] = []
 
@@ -40,6 +41,9 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
             self.buys = buys
             self.sells = sells
             DispatchQueue.main.async {
+                if self.isLaunching == true {
+                    self.isLaunching = false
+                }
                 self.tableView.reloadData()
             }
         })
@@ -98,7 +102,7 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func isTableEmpty() -> Bool {
-        return buys.count == 0 && sells.count == 0
+        return buys.count == 0 && sells.count == 0 && !isLaunching
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -45,10 +45,11 @@ class OrderQRCodeViewController: UIViewController {
     }
     
     func generateQRCode(order: OriginalOrder) {
+        guard let privateKey = getOrderDataFromLocal(order: order) else { return }
         var body = JSON()
         body["type"] = JSON(TradeDataManager.qrcodeType)
         body["value"] = [TradeDataManager.qrcodeHash: order.hash,
-                         TradeDataManager.qrcodeAuth: order.authPrivateKey,
+                         TradeDataManager.qrcodeAuth: privateKey,
                          TradeDataManager.sellRatio: TradeDataManager.shared.sellRatio]
         do {
             let data = try body.rawData(options: .prettyPrinted)
