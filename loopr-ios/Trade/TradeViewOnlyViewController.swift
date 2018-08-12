@@ -70,11 +70,11 @@ class TradeViewOnlyViewController: UIViewController {
         if type == .buy {
             let title = LocalizedString("Buying", comment: "")
             titleLabel.textColor = .success
-            titleLabel.text = title + symbol
+            titleLabel.text = title + " " + symbol
         } else {
             let title = LocalizedString("Selling", comment: "")
             titleLabel.textColor = .fail
-            titleLabel.text = title + symbol
+            titleLabel.text = title + " " + symbol
         }
         let length = Asset.getLength(of: symbol) ?? 4
         amountLabel.text = "\(amount.withCommas(length))"

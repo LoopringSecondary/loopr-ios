@@ -145,6 +145,6 @@ class OrderTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 80
+        return 68+8
     }
 }

@@ -33,6 +33,9 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
         historyTableView.delegate = self
         historyTableView.tableFooterView = UIView()
         historyTableView.separatorStyle = .none
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 8))
+        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        historyTableView.tableHeaderView = headerView
         
         // TODO: Add search feature.
         /*
@@ -100,7 +103,7 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
         if orders.keys.count == 0 {
             return 0
         }
-        return 45
+        return 40
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -114,11 +117,11 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
         if isTableEmpty() {
             return nil
         }
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 45))
-        headerView.backgroundColor = UIColor.dark1
-        let headerLabel = UILabel(frame: CGRect(x: 15, y: 0, width: view.frame.size.width, height: 45))
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 40))
+        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        let headerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 40))
         headerLabel.theme_textColor = GlobalPicker.textLightColor
-        headerLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 17)
+        headerLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         headerLabel.text = orderDates[section]
         headerLabel.textAlignment = .center
         headerView.addSubview(headerLabel)

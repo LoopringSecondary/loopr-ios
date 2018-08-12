@@ -56,7 +56,7 @@ class AssetTableViewCell: UITableViewCell {
         symbolLabel.text = ""
         baseView.addSubview(symbolLabel)
         
-        nameLabel.frame = CGRect.init(x: symbolLabel.frame.minX, y: 40, width: 200, height: 27)
+        nameLabel.frame = CGRect.init(x: symbolLabel.frame.minX, y: 38, width: 200, height: 27)
         nameLabel.font = FontConfigManager.shared.getRegularFont(size: 13)
         nameLabel.theme_textColor = GlobalPicker.textLightColor
         nameLabel.text = "ETHETHETHETHETHETHETH"

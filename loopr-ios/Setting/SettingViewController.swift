@@ -13,7 +13,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var settingsTableView: UITableView!
     
     let sectionTitles = [LocalizedString("User Preferences", comment: ""), LocalizedString("Trading", comment: ""), LocalizedString("Security", comment: ""), LocalizedString("About", comment: "")]
-    let sectionRows = [4, 4, 1]
+    let sectionRows = [4, 3, 1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,6 +109,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
             case 3:
+                // TODO: Trade FAQ is not ready.
                 print("Trade FAQ")
                 let viewController = TradeFAQViewController()
                 viewController.hidesBottomBarWhenPushed = true
