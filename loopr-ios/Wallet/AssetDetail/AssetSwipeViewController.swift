@@ -106,6 +106,7 @@ class AssetSwipeViewController: SwipeViewController {
         print("pressedSendButton")
         let viewController = SendAssetViewController()
         viewController.asset = self.asset!
+        SendCurrentAppWalletDataManager.shared.token = TokenDataManager.shared.getTokenBySymbol(self.asset!.symbol)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     

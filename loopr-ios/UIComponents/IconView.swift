@@ -19,7 +19,7 @@ class IconView: UIView {
     var textColor: UIColor = UIColor.white
     
     override func draw(_ rect: CGRect) {
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.clear
         let circleRadius = min(rect.width, rect.height) * 0.5
 
         // Drawing code

@@ -22,10 +22,23 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        selectionStyle = .none
         theme_backgroundColor = GlobalPicker.backgroundColor
         baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
-        symbolLabel.setTitleDigitFont()
-        balanceLabel.setSubTitleDigitFont()
+        iconView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        symbolLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
+        symbolLabel.theme_textColor = GlobalPicker.textColor
+        balanceLabel.font = FontConfigManager.shared.getRegularFont(size: 13)
+        balanceLabel.theme_textColor = GlobalPicker.textLightColor
+        baseView.applyShadow()
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        if highlighted {
+            baseView.theme_backgroundColor = GlobalPicker.cardHighLightColor
+        } else {
+            baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        }
     }
 
     func update() {
@@ -52,7 +65,7 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
     }
 
     class func getHeight() -> CGFloat {
-        return 90
+        return 68+8
     }
 
 }

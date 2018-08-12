@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hsC-RJ-YaX">
-                        <rect key="frame" x="10" y="10" width="375" height="80"/>
+                        <rect key="frame" x="15" y="10" width="365" height="80"/>
                         <color key="backgroundColor" name="Color-dark2"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -29,26 +29,28 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I3A-ZH-o8o">
-                        <rect key="frame" x="26" y="32" width="36" height="36"/>
+                        <rect key="frame" x="35" y="32" width="36" height="36"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="36" id="Ook-HE-37I"/>
                             <constraint firstAttribute="height" constant="36" id="QWc-oJ-EG3"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oaP-al-gyb" customClass="IconView" customModule="loopr_ios" customModuleProvider="target">
-                        <rect key="frame" x="26" y="32" width="36" height="36"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="35" y="32" width="36" height="36"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Li-i8-lBX">
-                        <rect key="frame" x="78" y="29" width="291" height="20.5"/>
+                        <rect key="frame" x="87" y="26" width="277" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="jLi-ML-B9M"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" name="Color-text1"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGn-uX-S7G">
-                        <rect key="frame" x="78" y="50" width="42" height="27"/>
+                        <rect key="frame" x="87" y="48" width="42" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="27" id="SFp-w7-SL2"/>
+                            <constraint firstAttribute="height" constant="15" id="SFp-w7-SL2"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" name="Color-text2"/>
@@ -57,24 +59,24 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="hsC-RJ-YaX" firstAttribute="trailing" secondItem="2Li-i8-lBX" secondAttribute="trailing" constant="16" id="3eH-v7-CmI"/>
-                    <constraint firstItem="I3A-ZH-o8o" firstAttribute="leading" secondItem="hsC-RJ-YaX" secondAttribute="leading" constant="16" id="EH4-Ry-nbv"/>
+                    <constraint firstItem="I3A-ZH-o8o" firstAttribute="leading" secondItem="hsC-RJ-YaX" secondAttribute="leading" constant="20" id="EH4-Ry-nbv"/>
                     <constraint firstItem="oaP-al-gyb" firstAttribute="width" secondItem="I3A-ZH-o8o" secondAttribute="width" id="Eim-X8-uEI"/>
                     <constraint firstItem="I3A-ZH-o8o" firstAttribute="centerY" secondItem="hsC-RJ-YaX" secondAttribute="centerY" id="HAq-UZ-dGJ"/>
                     <constraint firstItem="2Li-i8-lBX" firstAttribute="leading" secondItem="I3A-ZH-o8o" secondAttribute="trailing" constant="16" id="RiJ-u8-BBq"/>
                     <constraint firstItem="oaP-al-gyb" firstAttribute="top" secondItem="I3A-ZH-o8o" secondAttribute="top" id="g77-wZ-gzz"/>
-                    <constraint firstItem="2Li-i8-lBX" firstAttribute="top" secondItem="hsC-RJ-YaX" secondAttribute="top" constant="19" id="gZe-uy-46b"/>
+                    <constraint firstItem="2Li-i8-lBX" firstAttribute="top" secondItem="hsC-RJ-YaX" secondAttribute="top" constant="16" id="gZe-uy-46b"/>
                     <constraint firstItem="oaP-al-gyb" firstAttribute="height" secondItem="I3A-ZH-o8o" secondAttribute="height" id="nfz-10-qlE"/>
                     <constraint firstItem="oaP-al-gyb" firstAttribute="leading" secondItem="I3A-ZH-o8o" secondAttribute="leading" id="ogf-p8-GA3"/>
                     <constraint firstItem="aGn-uX-S7G" firstAttribute="leading" secondItem="2Li-i8-lBX" secondAttribute="leading" id="wj3-Pb-CR5"/>
-                    <constraint firstItem="aGn-uX-S7G" firstAttribute="top" secondItem="hsC-RJ-YaX" secondAttribute="top" constant="40" id="zmE-zX-INd"/>
+                    <constraint firstItem="aGn-uX-S7G" firstAttribute="top" secondItem="hsC-RJ-YaX" secondAttribute="top" constant="38" id="zmE-zX-INd"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="tintColor" name="Color-green"/>
             <constraints>
                 <constraint firstItem="hsC-RJ-YaX" firstAttribute="bottom" secondItem="njF-e1-oar" secondAttribute="bottom" id="3Fb-BU-yDy"/>
                 <constraint firstItem="njF-e1-oar" firstAttribute="top" secondItem="hsC-RJ-YaX" secondAttribute="top" constant="-10" id="TdC-wV-ARS"/>
-                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="hsC-RJ-YaX" secondAttribute="trailing" constant="10" id="gvW-PS-PB2"/>
-                <constraint firstItem="hsC-RJ-YaX" firstAttribute="leading" secondItem="njF-e1-oar" secondAttribute="leading" constant="10" id="lyj-Yd-sf5"/>
+                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="hsC-RJ-YaX" secondAttribute="trailing" constant="15" id="gvW-PS-PB2"/>
+                <constraint firstItem="hsC-RJ-YaX" firstAttribute="leading" secondItem="njF-e1-oar" secondAttribute="leading" constant="15" id="lyj-Yd-sf5"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

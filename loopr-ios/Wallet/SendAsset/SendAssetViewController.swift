@@ -62,7 +62,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     var address: String!
     
     var gasPriceInGwei: Double = GasDataManager.shared.getGasPriceInGwei()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,10 +70,10 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         setBackButton()
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         self.navigationItem.title = LocalizedString("Send", comment: "")
+        contentView.applyShadow()
         
         // First row: token
         headerButton.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
-        headerButton.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
         tokenIconImageView.image = UIImage(named: "ETH")
         tokenHeaderLabel.setTitleDigitFont()
         tokenTotalAmountLabel.textAlignment = .right
@@ -203,7 +203,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                 transactionFeeTipLabel.isHidden = true
             }
         }
-        contentView.applyShadow(withColor: .black)
     }
     
     override func viewDidAppear(_ animated: Bool) {

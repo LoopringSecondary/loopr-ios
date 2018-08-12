@@ -115,7 +115,6 @@ class QRCodeViewController: UIViewController {
     }
 
     @IBAction func pressedCopyAddressButton(_ sender: Any) {
-        let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         print("pressedCopyAddressButton address: \(address)")
         UIPasteboard.general.string = address
         let banner = NotificationBanner.generate(title: "Copy address to clipboard successfully!", style: .success)
