@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -55,7 +55,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stU-tG-vLw">
-                                    <rect key="frame" x="20" y="40" width="42" height="21"/>
+                                    <rect key="frame" x="20" y="40" width="310" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -66,6 +66,7 @@
                                 <constraint firstItem="stU-tG-vLw" firstAttribute="top" secondItem="q0Y-78-4Cl" secondAttribute="top" constant="40" id="1E9-Jz-GHH"/>
                                 <constraint firstAttribute="height" constant="72" id="39n-4g-pof"/>
                                 <constraint firstItem="Qw4-sf-AtU" firstAttribute="leading" secondItem="q0Y-78-4Cl" secondAttribute="leading" constant="20" id="EcS-38-Ohy"/>
+                                <constraint firstAttribute="trailing" secondItem="stU-tG-vLw" secondAttribute="trailing" constant="20" id="Scr-MP-NZq"/>
                                 <constraint firstItem="stU-tG-vLw" firstAttribute="leading" secondItem="q0Y-78-4Cl" secondAttribute="leading" constant="20" id="UP5-SJ-tpG"/>
                                 <constraint firstItem="Qw4-sf-AtU" firstAttribute="top" secondItem="q0Y-78-4Cl" secondAttribute="top" constant="16" id="k1w-Lj-U8n"/>
                             </constraints>
@@ -80,7 +81,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7J-yr-HPI">
-                                    <rect key="frame" x="20" y="40" width="42" height="21"/>
+                                    <rect key="frame" x="20" y="40" width="310" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -93,6 +94,7 @@
                                 <constraint firstItem="I7J-yr-HPI" firstAttribute="top" secondItem="wjW-IH-hI9" secondAttribute="top" constant="40" id="MDt-UF-HDN"/>
                                 <constraint firstItem="I7J-yr-HPI" firstAttribute="leading" secondItem="wjW-IH-hI9" secondAttribute="leading" constant="20" id="XMM-Vm-HuO"/>
                                 <constraint firstItem="AZj-dw-EZp" firstAttribute="leading" secondItem="wjW-IH-hI9" secondAttribute="leading" constant="20" id="oGI-FN-Act"/>
+                                <constraint firstAttribute="trailing" secondItem="I7J-yr-HPI" secondAttribute="trailing" constant="20" id="uui-lq-zqA"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1NA-1O-5sH">

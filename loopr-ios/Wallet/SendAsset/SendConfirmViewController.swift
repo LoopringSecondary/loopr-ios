@@ -35,9 +35,10 @@ class SendConfirmViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.modalPresentationStyle = .custom
-        view.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        view.backgroundColor = .clear
         
-        titleLabel.setTitleCharFont()
+        titleLabel.theme_textColor = GlobalPicker.textColor
+        titleLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
         titleLabel.text = LocalizedString("Send Confirmation", comment: "")
         
         amountLabel.font = FontConfigManager.shared.getDigitalFont()
@@ -47,19 +48,21 @@ class SendConfirmViewController: UIViewController {
         toTipLabel.setTitleCharFont()
         toTipLabel.text = LocalizedString("Receiver", comment: "")
         toInfoLabel.font = FontConfigManager.shared.getLightFont(size: 12)
-        toInfoLabel.theme_textColor = ["#000000cc", "#ffffffcc"]
+        toInfoLabel.theme_textColor = GlobalPicker.textLightColor
         toInfoLabel.text = self.receiveAddress ?? ""
+        toInfoLabel.lineBreakMode = .byTruncatingMiddle
         
         fromTipLabel.setTitleCharFont()
         fromTipLabel.text = LocalizedString("Sender", comment: "")
         fromInfoLabel.font = FontConfigManager.shared.getLightFont(size: 12)
-        fromInfoLabel.theme_textColor = ["#000000cc", "#ffffffcc"]
+        fromInfoLabel.theme_textColor = GlobalPicker.textLightColor
         fromInfoLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
+        fromInfoLabel.lineBreakMode = .byTruncatingMiddle
         
         gasTipLabel.setTitleCharFont()
         gasTipLabel.text = LocalizedString("Transaction Fee", comment: "")
         gasInfoLabel.font = FontConfigManager.shared.getLightFont(size: 12)
-        gasInfoLabel.theme_textColor = ["#000000cc", "#ffffffcc"]
+        gasInfoLabel.theme_textColor = GlobalPicker.textLightColor
         gasInfoLabel.text = gasAmountText
         
         sendButton.setupPrimary(height: 44)
@@ -78,17 +81,7 @@ class SendConfirmViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     func close() {
         if let closure = self.dismissClosure {
             closure()

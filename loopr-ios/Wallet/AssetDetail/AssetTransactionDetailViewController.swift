@@ -65,7 +65,8 @@ class AssetTransactionDetailViewController: UIViewController {
     }
     
     func setupLabels() {
-        titleLabel.setTitleCharFont()
+        titleLabel.theme_textColor = GlobalPicker.textColor
+        titleLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
         titleLabel.text = LocalizedString("Transaction Detail", comment: "")
         typeTipLabel.setTitleCharFont()
         typeInfoLabel.setTitleCharFont()

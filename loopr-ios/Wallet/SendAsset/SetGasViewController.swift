@@ -17,7 +17,8 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
     @IBOutlet weak var gasValueLabel: UILabel!
     @IBOutlet weak var gasTipLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var recommandButton: UIButton!
+    @IBOutlet weak var recommendButton: UIButton!
+    @IBOutlet weak var recommendButtonWidth: NSLayoutConstraint!
     
     var minGasValue: Double = 1
     var maxGasValue: Double = 0
@@ -34,15 +35,25 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.clear
         
-        titleLabel.setTitleCharFont()
+        titleLabel.theme_textColor = GlobalPicker.textColor
+        titleLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
         titleLabel.text = LocalizedString("Set Gas", comment: "")
-        gasValueLabel.setTitleDigitFont()
-        gasTipLabel.setSubTitleDigitFont()
-        recommandButton.setupSecondary(height: 32)
-        recommandButton.titleLabel?.theme_textColor = GlobalPicker.textColor
-        recommandButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 12)
-        recommandButton.title = LocalizedString("Recommand Price", comment: "")
         
+        gasValueLabel.theme_textColor = GlobalPicker.textColor
+        gasValueLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
+        
+        gasTipLabel.setSubTitleDigitFont()
+
+        recommendButton.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
+        recommendButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 13)
+        recommendButton.title = LocalizedString("Recommand Price", comment: "")
+        let language = Bundle.main.preferredLocalizations.first
+        if language == "zh-Hans" {
+            recommendButtonWidth.constant = 80
+        } else {
+            recommendButtonWidth.constant = 120
+        }
+
         closeButton.theme_setImage(GlobalPicker.close, forState: .normal)
         closeButton.theme_setImage(GlobalPicker.closeHighlight, forState: .highlighted)
         closeButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
@@ -84,6 +95,7 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
         if !isViewDidAppear {
             print(Float(gasPriceInGwei-1)/Float(maxGasValue))
             stepSlider.setPercentageValue(Float(gasPriceInGwei-1)/Float(maxGasValue-1))
+            // recommendButton.setupSecondary(height: 32)
         }
     }
     

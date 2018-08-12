@@ -373,19 +373,36 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     }
     
     func pushController() {
-        // totalMaskView.alpha = 0.75
         let vc = SendConfirmViewController()
+        vc.transitioningDelegate = self
+        vc.modalPresentationStyle = .overFullScreen
+        
         vc.sendAsset = self.asset
         vc.sendAmount = self.amountTextField.text
         vc.receiveAddress = self.addressTextField.text
         vc.gasAmountText = self.transactionFeeAmountLabel.text
         vc.dismissClosure = {
-            // TODO: Use dismissInteractor
-            // self.totalMaskView.alpha = 0
+            UIView.animate(withDuration: 0.1, animations: {
+                self.blurVisualEffectView.alpha = 0.0
+            }, completion: {(_) in
+                self.blurVisualEffectView.removeFromSuperview()
+            })
         }
-        vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
-        vc.parentNavController = self.navigationController
-        self.present(vc, animated: true, completion: nil)
+
+        dismissInteractor.percentThreshold = 0.4
+        dismissInteractor.dismissClosure = {
+        }
+        
+        self.present(vc, animated: true) {
+            self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.view, presentViewController: nil, backgroundView: self.blurVisualEffectView)
+        }
+        
+        self.navigationController?.view.addSubview(self.blurVisualEffectView)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.blurVisualEffectView.alpha = 1.0
+        }, completion: {(_) in
+            
+        })
     }
 
     @IBAction func pressedSendButton(_ sender: Any) {
