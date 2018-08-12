@@ -453,7 +453,6 @@
 		ACB41A6C20B54A2D00A92C9D /* AuthenticationNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB41A6B20B54A2C00A92C9D /* AuthenticationNavigationViewController.swift */; };
 		ACB41A6F20B54BB300A92C9D /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB41A6D20B54BB200A92C9D /* AuthenticationViewController.swift */; };
 		ACB41A7020B54BB300A92C9D /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB41A6E20B54BB200A92C9D /* AuthenticationViewController.xib */; };
-		ACB5DD80202AC26000140A09 /* button1.json in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DD7F202AC26000140A09 /* button1.json */; };
 		ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */; };
 		ACB5DD95202C434B00140A09 /* EthereumAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD94202C434B00140A09 /* EthereumAPIRequest.swift */; };
 		ACB5DD98202D5A8400140A09 /* NumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD97202D5A8400140A09 /* NumericKeyboard.swift */; };
@@ -982,7 +981,6 @@
 		ACB41A6B20B54A2C00A92C9D /* AuthenticationNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationNavigationViewController.swift; sourceTree = "<group>"; };
 		ACB41A6D20B54BB200A92C9D /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		ACB41A6E20B54BB200A92C9D /* AuthenticationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationViewController.xib; sourceTree = "<group>"; };
-		ACB5DD7F202AC26000140A09 /* button1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = button1.json; sourceTree = "<group>"; };
 		ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIButtonForUIToolbar.swift; sourceTree = "<group>"; };
 		ACB5DD94202C434B00140A09 /* EthereumAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumAPIRequest.swift; sourceTree = "<group>"; };
 		ACB5DD97202D5A8400140A09 /* NumericKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeyboard.swift; sourceTree = "<group>"; };
@@ -1760,7 +1758,6 @@
 				AC70E848206604F000451047 /* Files */,
 				AC798E4B2022B93A0071D477 /* Assets.xcassets */,
 				AC54FD26204FC61C007E1DEB /* Fonts */,
-				ACB5DD83202ACBF800140A09 /* AfterEffectsAnimations */,
 				AC798E4D2022B93A0071D477 /* LaunchScreen.storyboard */,
 				AC798E502022B93A0071D477 /* Info.plist */,
 				ACDA889720F5D86E004FA10B /* Localizable */,
@@ -1968,14 +1965,6 @@
 				AC9A273F20A6144700DB04AC /* OrderNoDataTableViewCell.xib */,
 			);
 			path = MarketDetail;
-			sourceTree = "<group>";
-		};
-		ACB5DD83202ACBF800140A09 /* AfterEffectsAnimations */ = {
-			isa = PBXGroup;
-			children = (
-				ACB5DD7F202AC26000140A09 /* button1.json */,
-			);
-			path = AfterEffectsAnimations;
 			sourceTree = "<group>";
 		};
 		ACB5DD85202AD74D00140A09 /* UIComponents */ = {
@@ -2575,7 +2564,6 @@
 				ACB911562024260E00F14644 /* WalletViewController.xib in Resources */,
 				AC54FD85204FC6F5007E1DEB /* OpenSans-LightItalic.ttf in Resources */,
 				AC2ACAA621031F66009C77E7 /* fee_1_zh-Hans.md in Resources */,
-				ACB5DD80202AC26000140A09 /* button1.json in Resources */,
 				AC952A152053A84800C78562 /* OrderHistoryViewController.xib in Resources */,
 				ACC8D0A720CC95A00049A741 /* AssetTableViewCell.xib in Resources */,
 				AC31CE71205B995900A30335 /* Roboto-MediumItalic.ttf in Resources */,
@@ -2808,7 +2796,6 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyMarkdown/SwiftyMarkdown.framework",
 				"${BUILT_PRODUCTS_DIR}/TrezorCrypto/TrezorCrypto.framework",
-				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/secp256k1_ios/secp256k1_ios.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -2830,7 +2817,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTheme.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyMarkdown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrezorCrypto.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/secp256k1_ios.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
