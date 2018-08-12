@@ -13,7 +13,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var settingsTableView: UITableView!
     
     let sectionTitles = [LocalizedString("User Preferences", comment: ""), LocalizedString("Trading", comment: ""), LocalizedString("Security", comment: ""), LocalizedString("About", comment: "")]
-    let sectionRows = [5, 4, 1]
+    let sectionRows = [4, 4, 1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,8 +77,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
             case 3:
-                print("No action for theme mode")
-            case 4:
                 print("Touch id")
                 if !AuthenticationDataManager.shared.devicePasscodeEnabled() {
                     let title: String
@@ -132,9 +130,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             if BiometricType.get() == .none {
-                return 4
+                return 3
             } else {
-                return 5
+                return 4
             }
         } else {
             return sectionRows[section]
@@ -161,8 +159,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 2:
             return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Language", comment: ""))
         case 3:
-            return createThemeMode(indexPath: indexPath)
-        case 4:
             return createSettingPasscodeTableView(indexPath: indexPath)
         default:
             return UITableViewCell()
@@ -193,7 +189,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let nib = Bundle.main.loadNibNamed("SettingStyleTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? SettingStyleTableViewCell
             }
-            
+            cell?.selectionStyle = .none
             cell?.leftLabel.text = title
             cell?.rightLabel.isHidden = false
             cell?.disclosureIndicator.isHidden = true
