@@ -32,6 +32,7 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        tableView.delaysContentTouches = false
         
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 5))
         headerView.theme_backgroundColor = GlobalPicker.backgroundColor
