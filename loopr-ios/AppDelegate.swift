@@ -61,6 +61,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         // manager?.startListening()
         SettingsBundleHelper.setVersionAndBuildNumber()
+        
+        // Touch ID and Face ID
+        if AuthenticationDataManager.shared.getPasscodeSetting() && !AuthenticationDataManager.shared.hasLogin {
+            AuthenticationDataManager.shared.hasLogin = true
+            let authenticationViewController: AuthenticationViewController? = AuthenticationViewController(nibName: nil, bundle: nil)
+            authenticationViewController?.needNavigate = true
+            self.window?.rootViewController = authenticationViewController
+        }
+        
         return true
     }
     
@@ -78,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func showNetworkLossBanner() {
-        let banner = NotificationBanner.generate(title: "Sorry, network is lost. Please make sure the internet connection is stable", style: .warning)
+        let banner = NotificationBanner.generate(title: "No network", style: .warning)
         banner.duration = 5.0
         banner.show()
     }
@@ -136,7 +145,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         // Touch ID and Face ID
-        if AuthenticationDataManager.shared.getPasscodeSetting() {
+        if AuthenticationDataManager.shared.getPasscodeSetting() && !AuthenticationDataManager.shared.hasLogin {
             let authenticationViewController: AuthenticationViewController? = AuthenticationViewController(nibName: nil, bundle: nil)
             if let rootViewController = self.window?.rootViewController {
                 rootViewController.present(authenticationViewController!, animated: true) {}

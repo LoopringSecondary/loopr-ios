@@ -13,6 +13,8 @@ class AuthenticationViewController: UIViewController {
     var unlockAppButton = UIButton()
     var backgrondImageView = UIImageView()
 
+    var needNavigate: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,17 +49,29 @@ class AuthenticationViewController: UIViewController {
         let screenHeight = screenSize.height
         let bottomPadding: CGFloat = UIDevice.current.iPhoneX ? 30 : 0
         unlockAppButton.frame = CGRect(x: 15, y: screenHeight - bottomPadding - 47 - 63, width: screenWidth - 15 * 2, height: 47)
-        AuthenticationDataManager.shared.authenticate { (error) in
-            guard error == nil else { return }
-            self.dismiss(animated: true, completion: nil)
-        }
+
+        startAuthentication()
     }
 
     @objc func pressedUnlockAppButton(_ sender: Any) {
         print("pressedUnlockAppButton")
+        startAuthentication()
+    }
+    
+    func startAuthentication() {
         AuthenticationDataManager.shared.authenticate { (error) in
-            guard error == nil else { return }
-            self.dismiss(animated: true, completion: nil)
+            guard error == nil else {
+                print(error.debugDescription)
+                return
+            }
+            if self.needNavigate {
+                DispatchQueue.main.async {
+                    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                    appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+                }
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
 }

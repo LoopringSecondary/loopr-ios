@@ -79,7 +79,20 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             case 3:
                 print("No action for theme mode")
             case 4:
-                print("No action for touch id")
+                print("Touch id")
+                if !AuthenticationDataManager.shared.devicePasscodeEnabled() {
+                    let title: String
+                    if BiometricType.get() == .touchID {
+                        title = LocalizedString("Please turn on Touch ID in settings", comment: "")
+                    } else {
+                        title = LocalizedString("Please turn on Face ID in settings", comment: "")
+                    }
+                    let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: LocalizedString("OK", comment: ""), style: .default, handler: { _ in
+                        
+                    }))
+                    UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+                }
             default:
                 break
             }
