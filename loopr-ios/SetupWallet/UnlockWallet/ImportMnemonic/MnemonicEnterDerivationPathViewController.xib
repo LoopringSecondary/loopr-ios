@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,10 +22,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3G-Sl-0GP">
-                    <rect key="frame" x="15" y="605" width="345" height="47"/>
+                    <rect key="frame" x="48" y="608" width="279" height="44"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="47" id="oEy-nL-aOw"/>
+                        <constraint firstAttribute="height" constant="44" id="oEy-nL-aOw"/>
                     </constraints>
                     <state key="normal" title="Button"/>
                     <connections>
@@ -34,7 +33,7 @@
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TuL-DD-wgX">
-                    <rect key="frame" x="0.0" y="20" width="375" height="573"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="576"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
@@ -43,8 +42,8 @@
                 <constraint firstItem="TuL-DD-wgX" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="4s1-AH-Vel"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="N3G-Sl-0GP" secondAttribute="bottom" constant="15" id="Bbd-Gh-XGw"/>
                 <constraint firstItem="TuL-DD-wgX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ac0-rb-sOL"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="N3G-Sl-0GP" secondAttribute="trailing" constant="15" id="ctk-H7-dmO"/>
-                <constraint firstItem="N3G-Sl-0GP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="e20-y0-ZDp"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="N3G-Sl-0GP" secondAttribute="trailing" constant="48" id="ctk-H7-dmO"/>
+                <constraint firstItem="N3G-Sl-0GP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="e20-y0-ZDp"/>
                 <constraint firstItem="N3G-Sl-0GP" firstAttribute="top" secondItem="TuL-DD-wgX" secondAttribute="bottom" constant="12" id="fvq-c1-SHA"/>
                 <constraint firstItem="TuL-DD-wgX" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jSw-K5-F5M"/>
             </constraints>

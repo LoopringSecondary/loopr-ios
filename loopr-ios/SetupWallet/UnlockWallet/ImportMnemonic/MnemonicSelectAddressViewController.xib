@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,10 +22,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C9Z-bJ-hAS">
-                    <rect key="frame" x="15" y="605" width="345" height="47"/>
+                    <rect key="frame" x="48" y="608" width="279" height="44"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="47" id="Civ-CR-iUH"/>
+                        <constraint firstAttribute="height" constant="44" id="Civ-CR-iUH"/>
                     </constraints>
                     <state key="normal" title="Button"/>
                     <connections>
@@ -34,7 +33,7 @@
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8FI-6i-dBy">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="593"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="596"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
@@ -42,8 +41,8 @@
             <constraints>
                 <constraint firstItem="C9Z-bJ-hAS" firstAttribute="top" secondItem="8FI-6i-dBy" secondAttribute="bottom" constant="12" id="KkL-29-fuN"/>
                 <constraint firstItem="8FI-6i-dBy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="LcC-vL-70Q"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="C9Z-bJ-hAS" secondAttribute="trailing" constant="15" id="MT6-GR-GQa"/>
-                <constraint firstItem="C9Z-bJ-hAS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="XkD-B1-niA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="C9Z-bJ-hAS" secondAttribute="trailing" constant="48" id="MT6-GR-GQa"/>
+                <constraint firstItem="C9Z-bJ-hAS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="XkD-B1-niA"/>
                 <constraint firstItem="8FI-6i-dBy" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Xsl-xq-Hga"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="C9Z-bJ-hAS" secondAttribute="bottom" constant="15" id="snt-QA-5xH"/>
                 <constraint firstItem="8FI-6i-dBy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wtY-CS-FZj"/>

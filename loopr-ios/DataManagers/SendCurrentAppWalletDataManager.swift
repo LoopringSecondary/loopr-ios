@@ -137,11 +137,11 @@ class SendCurrentAppWalletDataManager {
         
         gethAccount = EthAccountCoordinator.default.launch(keystore: gethKeystore, password: wallet!.getKeystorePassword())
     
-        print("current address: \(gethAccount!.getAddress().getHex())")
+        print("keystoreing address: \(gethAccount!.getAddress().getHex())")
         
         guard gethAccount!.getAddress().getHex() == wallet?.address else {
             print("keystoreStringValue: \(keystoreStringValue)")
-            preconditionFailure("Fail to use keystore to get the current wallet address.")
+            preconditionFailure("Fail to use keystore to get the keystoreing address.")
         }
         
         print("################### keystore ###################")

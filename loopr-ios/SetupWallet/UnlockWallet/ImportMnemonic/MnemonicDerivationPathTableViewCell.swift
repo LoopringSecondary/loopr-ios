@@ -14,16 +14,23 @@ class MnemonicDerivationPathTableViewCell: UITableViewCell {
     @IBOutlet weak var pathDescriptionLabel: UILabel!
     
     @IBOutlet weak var seperateLine: UIView!
-
+    @IBOutlet weak var enabledIcon: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        pathValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 17)
-        pathDescriptionLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)
-        pathDescriptionLabel.textColor = UIColor.black.withAlphaComponent(0.6)
+        theme_backgroundColor = GlobalPicker.backgroundColor
+        
+        pathValueLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
+        pathValueLabel.theme_textColor = GlobalPicker.textColor
 
-        seperateLine.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
+        pathDescriptionLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
+        pathDescriptionLabel.theme_textColor = GlobalPicker.textLightColor
+
+        enabledIcon.image = UIImage(named: "enabled-dark")
+        enabledIcon.contentMode = .center
+        seperateLine.backgroundColor = UIColor.dark3
     }
 
     class func getCellIdentifier() -> String {
@@ -31,6 +38,6 @@ class MnemonicDerivationPathTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 64
+        return 65
     }
 }

@@ -19,7 +19,7 @@ class MnemonicEnterDerivationPathViewController: UIViewController, UITableViewDe
                            "m/44'/40'/0'/0",
                            "m/44'/108'/0'/0",
                            "m/44'/163'/0'/0"]
-    let derivationPathDescriptions = ["Loopring Wallet, Metamask, imtoken, TREZOR (ETH)",
+    let derivationPathDescriptions = ["Loopring Wallet, MetaMask, Imtoken, TREZOR (ETH)",
                                       "Ledger (ETH)",
                                       "TREZOR (ETC)",
                                       "Ledger (ETC)",
@@ -38,8 +38,10 @@ class MnemonicEnterDerivationPathViewController: UIViewController, UITableViewDe
         // Do any additional setup after loading the view.
         setBackButton()
         self.navigationItem.title = LocalizedString("Select Your Wallet Type", comment: "")
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        tableView.theme_backgroundColor = GlobalPicker.backgroundColor
 
-        nextButton.setupSecondary()
+        nextButton.setupSecondary(height: 44)
         nextButton.setTitle(LocalizedString("Next", comment: ""), for: .normal)
         
         tableView.delegate = self
@@ -71,9 +73,9 @@ class MnemonicEnterDerivationPathViewController: UIViewController, UITableViewDe
         }
         
         if derivationPaths[indexPath.row] == ImportWalletUsingMnemonicDataManager.shared.derivationPathValue {
-            cell?.accessoryType = .checkmark
+            cell?.enabledIcon.isHidden = false
         } else {
-            cell?.accessoryType = .none
+            cell?.enabledIcon.isHidden = true
         }
         
         cell?.pathValueLabel.text = derivationPaths[indexPath.row]

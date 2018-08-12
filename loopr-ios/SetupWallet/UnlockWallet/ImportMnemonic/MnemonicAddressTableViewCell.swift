@@ -12,14 +12,26 @@ class MnemonicAddressTableViewCell: UITableViewCell {
 
     @IBOutlet weak var indexLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    
+    @IBOutlet weak var seperateLine: UIView!
+    @IBOutlet weak var enabledIcon: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
+        theme_backgroundColor = GlobalPicker.backgroundColor
+        
         indexLabel.textAlignment = .right
-        indexLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
-        addressLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 14)
+        indexLabel.font = FontConfigManager.shared.getMediumFont(size: 13)
+        indexLabel.theme_textColor = GlobalPicker.textLightColor
+
+        addressLabel.font = FontConfigManager.shared.getMediumFont(size: 13)
+        addressLabel.theme_textColor = GlobalPicker.textLightColor
+        
+        enabledIcon.image = UIImage(named: "enabled-dark")
+        enabledIcon.contentMode = .center
+        seperateLine.backgroundColor = UIColor.dark3
     }
     
     class func getCellIdentifier() -> String {
@@ -27,6 +39,6 @@ class MnemonicAddressTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 44
+        return 65
     }
 }

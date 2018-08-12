@@ -19,12 +19,14 @@ class MnemonicSelectAddressViewController: UIViewController, UITableViewDelegate
         // Do any additional setup after loading the view.
         setBackButton()
         self.navigationItem.title = LocalizedString("Select your address", comment: "")
-        
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        tableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
 
-        nextButton.setupSecondary()
+        nextButton.setupSecondary(height: 44)
         nextButton.setTitle(LocalizedString("Next", comment: ""), for: .normal)
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
@@ -57,9 +59,9 @@ class MnemonicSelectAddressViewController: UIViewController, UITableViewDelegate
         cell?.addressLabel.text = ImportWalletUsingMnemonicDataManager.shared.addresses[indexPath.row].eip55String
 
         if ImportWalletUsingMnemonicDataManager.shared.selectedKey == indexPath.row {
-            cell?.accessoryType = .checkmark
+            cell?.enabledIcon.isHidden = false
         } else {
-            cell?.accessoryType = .none
+            cell?.enabledIcon.isHidden = true
         }
 
         return cell!
