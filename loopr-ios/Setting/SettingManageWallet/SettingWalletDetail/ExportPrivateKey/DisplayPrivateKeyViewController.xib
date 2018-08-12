@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRQ-az-2WF">
-                    <rect key="frame" x="15" y="605" width="345" height="47"/>
+                    <rect key="frame" x="48" y="190" width="279" height="47"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="47" id="UNA-fJ-fup"/>
@@ -35,10 +34,10 @@
                     </connections>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="C1Z-Kx-6AI">
-                    <rect key="frame" x="15" y="80" width="345" height="120"/>
+                    <rect key="frame" x="15" y="30" width="345" height="140"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="120" id="2zt-gT-SxS"/>
+                        <constraint firstAttribute="height" constant="140" id="2zt-gT-SxS"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -46,12 +45,12 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="C1Z-Kx-6AI" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="60" id="6ub-8p-fSq"/>
+                <constraint firstItem="C1Z-Kx-6AI" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="6ub-8p-fSq"/>
                 <constraint firstItem="C1Z-Kx-6AI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="9hN-vi-uat"/>
-                <constraint firstItem="ZRQ-az-2WF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="HcJ-3B-Q8q"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ZRQ-az-2WF" secondAttribute="bottom" constant="15" id="bu4-Rh-Mbf"/>
+                <constraint firstItem="ZRQ-az-2WF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="HcJ-3B-Q8q"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="C1Z-Kx-6AI" secondAttribute="trailing" constant="15" id="jgM-yc-ZS6"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZRQ-az-2WF" secondAttribute="trailing" constant="15" id="zhK-hE-MrH"/>
+                <constraint firstItem="ZRQ-az-2WF" firstAttribute="top" secondItem="C1Z-Kx-6AI" secondAttribute="bottom" constant="20" id="mIc-kF-BDk"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZRQ-az-2WF" secondAttribute="trailing" constant="48" id="zhK-hE-MrH"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="129.5"/>

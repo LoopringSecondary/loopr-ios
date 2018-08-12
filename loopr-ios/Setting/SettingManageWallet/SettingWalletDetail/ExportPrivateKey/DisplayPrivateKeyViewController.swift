@@ -22,18 +22,16 @@ class DisplayPrivateKeyViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationItem.title = LocalizedString("Export Private Key", comment: "")
         setBackButton()
-
-        privateKeyTextView.text = appWallet.privateKey
-
-        privateKeyTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
-        // privateKeyTextView.contentOffset = CGPoint(x: 0, y: -10)
-
-        privateKeyTextView.cornerRadius = 12
-        privateKeyTextView.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 18.0)
-        privateKeyTextView.backgroundColor = UIColor.init(rgba: "#F8F8F8")
-        privateKeyTextView.textColor = UIColor.black
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        privateKeyTextView.contentInset = UIEdgeInsets.init(top: 17, left: 20, bottom: 15, right: 20)
+        privateKeyTextView.cornerRadius = 6
+        privateKeyTextView.font = FontConfigManager.shared.getRegularFont(size: 14)
+        privateKeyTextView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        privateKeyTextView.theme_textColor = GlobalPicker.textColor
         privateKeyTextView.isEditable = false
         // privateKeyTextView.isScrollEnabled = false
+        
+        privateKeyTextView.text = appWallet.privateKey
         
         copyButton.title = LocalizedString("Copy Private Key", comment: "")
         copyButton.setupSecondary()

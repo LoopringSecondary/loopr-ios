@@ -83,6 +83,7 @@
 "Please enter a password" = "Please enter a password";
 "Copy address to clipboard successfully!" = "Copy address to clipboard successfully!";
 "Copy keystore to clipboard successfully!" = "Copy keystore to clipboard successfully!";
+"Copy private key to clipboard successfully!" = "Copy private key to clipboard successfully!";
 "Congratulations!" = "Congratulations!";
 "Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage." = "Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage.";
 "Please write them down" = "Please write them down";

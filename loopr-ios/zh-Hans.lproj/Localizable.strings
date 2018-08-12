@@ -83,6 +83,7 @@
 "Please enter a password" = "请输入密码";
 "Copy address to clipboard successfully!" = "成功复制地址到剪切板!";
 "Copy keystore to clipboard successfully!" = "成功复制keystore到剪切板!";
+"Copy private key to clipboard successfully!" = "成功复制钱包私钥到剪切板!";
 "Congratulations!" = "创建成功!";
 "Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage." = "您的钱包已创建成功。为了备份钱包，请花一点时间写下助记词。助记词会用于恢复钱包。请不要分享助记词给任何人，不要存云端。";
 "Please write them down" = "请记下";

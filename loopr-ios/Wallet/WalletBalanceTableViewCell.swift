@@ -56,7 +56,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
         addressLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address ?? ""
         addSubview(addressLabel)
         
-        qrCodeButton.frame = CGRect(x: addressLabel.frame.maxX, y: addressLabel.frame.minY + (addressLabel.frame.height-18)*0.5, width: 18, height: 18)
+        qrCodeButton.frame = CGRect(x: addressLabel.frame.maxX, y: addressLabel.frame.minY + (addressLabel.frame.height-30)*0.5, width: 30, height: 30)
         qrCodeButton.setImage(UIImage(named: "QRCode-white"), for: .normal)
         qrCodeButton.addTarget(self, action: #selector(self.pressedQRCodeButton(_:)), for: .touchUpInside)
         addSubview(qrCodeButton)
