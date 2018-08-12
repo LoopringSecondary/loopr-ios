@@ -231,18 +231,18 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label1.textAlignment = .left
         baseView.addSubview(label1)
 
-        let label2 = UILabel(frame: CGRect(x: label1.frame.maxX, y: 0, width: labelWidth, height: 30))
+        let label2 = UILabel(frame: CGRect(x: UIScreen.main.bounds.width*0.3+35, y: 0, width: labelWidth, height: 30))
         label2.theme_textColor = GlobalPicker.textLightColor
         label2.font = FontConfigManager.shared.getMediumFont(size: 14)
         label2.text = LocalizedString("Price", comment: "")
         label2.textAlignment = .left
         baseView.addSubview(label2)
 
-        let label3 = UILabel(frame: CGRect(x: label2.frame.maxX, y: 0, width: labelWidth, height: 30))
+        let label3 = UILabel(frame: CGRect(x: view.frame.size.width-15-20-10-labelWidth, y: 0, width: labelWidth, height: 30))
         label3.theme_textColor = GlobalPicker.textLightColor
         label3.font = FontConfigManager.shared.getMediumFont(size: 14)
         label3.text = LocalizedString("Change", comment: "")
-        label3.textAlignment = .center
+        label3.textAlignment = .right
         baseView.addSubview(label3)
         
         return headerView

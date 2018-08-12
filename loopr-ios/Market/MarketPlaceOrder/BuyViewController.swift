@@ -122,7 +122,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         amountTextField.theme_tintColor = GlobalPicker.contrastTextColor
         amountTextField.placeholder = LocalizedString("", comment: "")
         amountTextField.setLeftPaddingPoints(40)
-        amountTextField.setRightPaddingPoints(60)
+        amountTextField.setRightPaddingPoints(50)
         amountTextField.textAlignment = .right
         amountTextField.contentMode = UIViewContentMode.bottom
 

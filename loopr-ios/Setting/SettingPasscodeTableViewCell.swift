@@ -24,7 +24,7 @@ class SettingPasscodeTableViewCell: UITableViewCell {
         seperateLineDown.backgroundColor = UIColor.dark3
         
         passcodeLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
-        passcodeLabel.textColor = Themes.isDark() ? UIColor.white : UIColor.dark2
+        passcodeLabel.theme_textColor = GlobalPicker.textColor
         backgroundColor = Themes.isDark() ? UIColor.dark2 : UIColor.white
         
         passcodeLabel.text = BiometricType.get().description

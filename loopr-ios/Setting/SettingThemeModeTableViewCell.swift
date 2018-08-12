@@ -31,7 +31,7 @@ class SettingThemeModeTableViewCell: UITableViewCell {
         nightModeSwitch.tintColor = UIColor(named: "Color-green")!
         nightModeSwitch.transform = CGAffineTransform(scaleX: 0.77, y: 0.77)
         
-        nightModeLabel.textColor = Themes.isDark() ? UIColor.white : UIColor.dark2
+        nightModeLabel.theme_textColor = GlobalPicker.textColor
         backgroundColor = Themes.isDark() ? UIColor.dark2 : UIColor.white
 
         nightModeLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
