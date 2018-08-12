@@ -34,7 +34,6 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         keystoreContentTextView.cornerRadius = 6
         keystoreContentTextView.font = FontConfigManager.shared.getRegularFont()
         keystoreContentTextView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
-        keystoreContentTextView.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffff66") : UIColor.dark3
         keystoreContentTextView.theme_tintColor = GlobalPicker.textColor
         keystoreContentTextView.delegate = self
         keystoreContentTextView.text = LocalizedString("Please enter the keystore", comment: "")
@@ -72,7 +71,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         keystoreContentTextView.resignFirstResponder()
         passwordTextField.resignFirstResponder()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }

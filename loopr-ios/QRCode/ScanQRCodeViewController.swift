@@ -59,6 +59,8 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     var shouldPop = true
     var scanViewWidth: CGFloat = UIScreen.main.bounds.width
     
+    var expectedQRCodeTypes: [QRCodeType] = [.address, .mnemonic, .keystore, .privateKey, .submitOrder, .login, .cancelOrder, .convert, .p2pOrder]
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -226,6 +228,12 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         if presentedViewController != nil {
             return
         }
+
+        guard codeType != .undefined && expectedQRCodeTypes.contains(codeType) else {
+            showAlert(decodedURL: decodedURL)
+            return
+        }
+
         let message = LocalizedString("Do you wish to handle the qrcode?", comment: "")
         let alertPrompt = UIAlertController(title: "\(codeType.detectedDescription)", message: "\(message)", preferredStyle: .actionSheet)
         let messageAttribute = NSMutableAttributedString.init(string: alertPrompt.message!)
@@ -264,25 +272,53 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         return .portrait
     }
     
-    func qrCodeContentDetector (qrContent: String) -> QRCodeType {
-        if QRCodeMethod.isAddress(content: qrContent) {
+    func qrCodeContentDetector(qrContent: String) -> QRCodeType {
+        if expectedQRCodeTypes.contains(.address) && QRCodeMethod.isAddress(content: qrContent) {
             return QRCodeType.address
-        } else if QRCodeMethod.isSubmitOrder(content: qrContent) {
-            return QRCodeType.submitOrder
-        } else if QRCodeMethod.isLogin(content: qrContent) {
-            return QRCodeType.login
-        } else if QRCodeMethod.isCancelOrder(content: qrContent) {
-            return QRCodeType.cancelOrder
-        } else if QRCodeMethod.isConvert(content: qrContent) {
-            return QRCodeType.convert
-        } else if QRCodeMethod.isMnemonicValid(content: qrContent) {
-            return QRCodeType.mnemonic
-        } else if QRCodeMethod.isPrivateKey(content: qrContent) {
-            return QRCodeType.privateKey
-        } else if QRCodeMethod.isP2POrder(content: qrContent) {
-            return QRCodeType.p2pOrder
-        } else {
-            return QRCodeType.undefined
         }
+
+        if expectedQRCodeTypes.contains(.submitOrder) && QRCodeMethod.isSubmitOrder(content: qrContent) {
+            return QRCodeType.submitOrder
+        }
+        
+        if expectedQRCodeTypes.contains(.login) &&  QRCodeMethod.isLogin(content: qrContent) {
+            return QRCodeType.login
+        }
+        
+        if expectedQRCodeTypes.contains(.cancelOrder) && QRCodeMethod.isCancelOrder(content: qrContent) {
+            return QRCodeType.cancelOrder
+        }
+        
+        if expectedQRCodeTypes.contains(.convert) && QRCodeMethod.isConvert(content: qrContent) {
+            return QRCodeType.convert
+        }
+        
+        if expectedQRCodeTypes.contains(.mnemonic) && QRCodeMethod.isMnemonicValid(content: qrContent) {
+            return QRCodeType.mnemonic
+        }
+
+        if expectedQRCodeTypes.contains(.privateKey) && QRCodeMethod.isPrivateKey(content: qrContent) {
+            return QRCodeType.privateKey
+        }
+        
+        if expectedQRCodeTypes.contains(.keystore) && QRCodeMethod.isKeystore(content: qrContent) {
+            return QRCodeType.keystore
+        }
+        
+        if expectedQRCodeTypes.contains(.p2pOrder) && QRCodeMethod.isP2POrder(content: qrContent) {
+            return QRCodeType.p2pOrder
+        }
+
+        return QRCodeType.undefined
+    }
+    
+    func showAlert(decodedURL: String) {
+        let title = LocalizedString("QR Code type doesn't fit here", comment: "")
+        let alertPrompt = UIAlertController(title: title, message: "\(decodedURL)", preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { _ in
+            self.captureSession.startRunning()
+        })
+        alertPrompt.addAction(cancelAction)
+        present(alertPrompt, animated: true, completion: nil)
     }
 }

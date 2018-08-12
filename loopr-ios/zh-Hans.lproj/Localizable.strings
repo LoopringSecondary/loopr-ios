@@ -192,7 +192,7 @@
 "Filled" = "成交率";
 "Date" = "日期";
 "Cancelling" = "取消中";
-"QR Code type doesn't fit here" = "QR Code type doesn't fit here";
+"QR Code type doesn't fit here" = "二维码类型不符";
 "Select HD derivation path" = "Select HD derivation path";
 "Select your address" = "请选择您的地址";
 "Please enter the keystore" = "请输入keystore";

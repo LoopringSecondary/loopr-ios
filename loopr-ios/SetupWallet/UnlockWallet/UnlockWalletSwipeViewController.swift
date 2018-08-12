@@ -64,20 +64,18 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
             if typeFromQRCodeScanning == QRCodeType.privateKey {
                 let controller = self.viewControllers[2] as! PrivateKeyViewController
                 controller.privateKeyTextView.text = valueToDisplay
-                controller.privateKeyTextView.textColor = UIColor.black
+                controller.privateKeyTextView.theme_textColor = GlobalPicker.textColor
                 self.swipeView.jump(to: 2, animated: true)
             } else if typeFromQRCodeScanning == QRCodeType.keystore {
                 let controller = self.viewControllers[1] as! UnlockKeystoreViewController
                 controller.keystoreContentTextView.text = valueToDisplay
-                controller.keystoreContentTextView.textColor = UIColor.black
+                controller.keystoreContentTextView.theme_textColor = GlobalPicker.textColor
                 self.swipeView.jump(to: 1, animated: true)
             } else if typeFromQRCodeScanning == QRCodeType.mnemonic {
                 let controller = self.viewControllers[0] as! MnemonicViewController
                 controller.mnemonicWordTextView.text = valueToDisplay
-                controller.mnemonicWordTextView.textColor = UIColor.black
+                controller.mnemonicWordTextView.theme_textColor = GlobalPicker.textColor
                 self.swipeView.jump(to: 0, animated: true)
-            } else {
-                showAlert(decodedURL: valueToDisplay)
             }
             self.view.setNeedsDisplay()
         }
@@ -86,6 +84,8 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
     @objc func pressScanButton(_ button: UIBarButtonItem) {
         print("pressScanButton")
         let viewController = ScanQRCodeViewController()
+        viewController.expectedQRCodeTypes = [.mnemonic, .keystore, .privateKey]
+        viewController.shouldPop = true
         viewController.delegate = self
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
@@ -132,15 +132,6 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
 
         self.addChildViewController(viewController)
         return viewController
-    }
-    
-    func showAlert(decodedURL: String) {
-        let title = LocalizedString("QR Code type doesn't fit here", comment: "")
-        let alertPrompt = UIAlertController(title: title, message: "\(decodedURL)", preferredStyle: .actionSheet)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
-        alertPrompt.addAction(cancelAction)
-        present(alertPrompt, animated: true, completion: nil)
     }
 
 }

@@ -60,6 +60,9 @@ enum QRCodeMethod: String {
     }
     
     static func isKeystore(content: String) -> Bool {
+        guard content.range(of: "ciphertext") != nil else {
+            return false
+        }
         let jsonData = content.data(using: String.Encoding.utf8)
         if let jsonObject = try? JSONSerialization.jsonObject(with: jsonData!, options: []) {
             if JSONSerialization.isValidJSONObject(jsonObject) {

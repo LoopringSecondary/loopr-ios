@@ -379,6 +379,7 @@ extension WalletViewController: WalletButtonTableViewCellDelegate {
 
     func navigationToScanViewController() {
         let viewController = ScanQRCodeViewController()
+        viewController.expectedQRCodeTypes = [.submitOrder, .login, .cancelOrder, .convert, .p2pOrder, .address]
         viewController.delegate = self
         viewController.shouldPop = false
         viewController.hidesBottomBarWhenPushed = true
@@ -465,6 +466,7 @@ extension WalletViewController: MKDropdownMenuDelegate {
         switch row {
         case 0:
             let viewController = ScanQRCodeViewController()
+            viewController.expectedQRCodeTypes = [.submitOrder, .login, .cancelOrder, .convert, .p2pOrder, .address]
             viewController.delegate = self
             viewController.shouldPop = false
             viewController.hidesBottomBarWhenPushed = true
