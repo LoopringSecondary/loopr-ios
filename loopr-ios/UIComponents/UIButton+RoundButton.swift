@@ -27,4 +27,13 @@ extension UIButton {
         layer.cornerRadius = height * 0.5
         applyGradient(withColors: UIColor.secondary, gradientOrientation: orientation)
     }
+    
+    func setupBlack(height: CGFloat = 48) {
+        clipsToBounds = true
+        setTitleColor(UIColor.white, for: .normal)
+        setTitleColor(UIColor.init(white: 0.5, alpha: 1), for: .highlighted)
+        titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 16)
+        layer.cornerRadius = height * 0.5
+        setBackgroundColor(.dark3, for: .normal)
+    }
 }

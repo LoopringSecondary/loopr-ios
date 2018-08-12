@@ -510,8 +510,6 @@
 		ACBA47EE207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA47EC207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.swift */; };
 		ACBA47EF207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBA47ED207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.xib */; };
 		ACC2A2CF209EC39E00F2B7A1 /* OrderExpire.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC2A2CE209EC39E00F2B7A1 /* OrderExpire.swift */; };
-		ACC8D0A220CC6F080049A741 /* ExportMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8D0A020CC6F080049A741 /* ExportMnemonicViewController.swift */; };
-		ACC8D0A320CC6F080049A741 /* ExportMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC8D0A120CC6F080049A741 /* ExportMnemonicViewController.xib */; };
 		ACC8D0A620CC95A00049A741 /* AssetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8D0A420CC95A00049A741 /* AssetTableViewCell.swift */; };
 		ACC8D0A720CC95A00049A741 /* AssetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC8D0A520CC95A00049A741 /* AssetTableViewCell.xib */; };
 		ACC8D0AA20CCF6C20049A741 /* AssetTransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8D0A820CCF6C20049A741 /* AssetTransactionTableViewCell.swift */; };
@@ -1036,8 +1034,6 @@
 		ACBA47EC207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportKeystoreEnterPasswordViewController.swift; sourceTree = "<group>"; };
 		ACBA47ED207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportKeystoreEnterPasswordViewController.xib; sourceTree = "<group>"; };
 		ACC2A2CE209EC39E00F2B7A1 /* OrderExpire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderExpire.swift; sourceTree = "<group>"; };
-		ACC8D0A020CC6F080049A741 /* ExportMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportMnemonicViewController.swift; sourceTree = "<group>"; };
-		ACC8D0A120CC6F080049A741 /* ExportMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportMnemonicViewController.xib; sourceTree = "<group>"; };
 		ACC8D0A420CC95A00049A741 /* AssetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTableViewCell.swift; sourceTree = "<group>"; };
 		ACC8D0A520CC95A00049A741 /* AssetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetTableViewCell.xib; sourceTree = "<group>"; };
 		ACC8D0A820CCF6C20049A741 /* AssetTransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTransactionTableViewCell.swift; sourceTree = "<group>"; };
@@ -1637,7 +1633,7 @@
 				ACBA47E9207897C60032C2B4 /* SettingWalletDetailViewController.xib */,
 				AC69913A20AA6254003593AE /* SettingWalletDetailViewControllerDataSource.swift */,
 				ACA677D1207D1BF900D34A2F /* ChangeWalletName */,
-				ACC8D09F20CC6EC50049A741 /* ExportMnemonic */,
+				ACC8D09F20CC6EC50049A741 /* ExportMnemonic_Archive */,
 				ACA677C62079D56C00D34A2F /* ExportPrivateKey */,
 				ACA677B52079928800D34A2F /* ExportKeystore */,
 			);
@@ -2213,15 +2209,13 @@
 			path = SettingManageWallet;
 			sourceTree = "<group>";
 		};
-		ACC8D09F20CC6EC50049A741 /* ExportMnemonic */ = {
+		ACC8D09F20CC6EC50049A741 /* ExportMnemonic_Archive */ = {
 			isa = PBXGroup;
 			children = (
-				ACC8D0A020CC6F080049A741 /* ExportMnemonicViewController.swift */,
-				ACC8D0A120CC6F080049A741 /* ExportMnemonicViewController.xib */,
 				ACC8D0AE20CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.swift */,
 				ACC8D0AF20CE22AA0049A741 /* SettingWalletVerifyMnemonicViewController.xib */,
 			);
-			path = ExportMnemonic;
+			path = ExportMnemonic_Archive;
 			sourceTree = "<group>";
 		};
 		ACC8D0AC20CE0E380049A741 /* VerifyMnemonic */ = {
@@ -2651,7 +2645,6 @@
 				ACB9117620255A6600F14644 /* MarketTableViewCell.xib in Resources */,
 				949774F321181EE9001BF79D /* TradeRatioViewController.xib in Resources */,
 				ACB729D5205DE21B00DD4DF3 /* TradeConfirmationViewController.xib in Resources */,
-				ACC8D0A320CC6F080049A741 /* ExportMnemonicViewController.xib in Resources */,
 				94BB338421115FD6002D44DA /* OrderDetailViewController.xib in Resources */,
 				AC5E0992205F256500801738 /* AddTokenViewController.xib in Resources */,
 				AC2ACA5020FA0EC3009C77E7 /* Rubik-Medium.ttf in Resources */,
@@ -2989,7 +2982,6 @@
 				AC9DC45A21159084002D7D23 /* MiniToLargeViewInteractive.swift in Sources */,
 				94116359211AF576001043BF /* SetupPartnerViewController.swift in Sources */,
 				AC45EFEE20D0D474004F6EC0 /* H5DexNavigationController.swift in Sources */,
-				ACC8D0A220CC6F080049A741 /* ExportMnemonicViewController.swift in Sources */,
 				ACDBF101203FE73B000F0DEC /* ReorderController.swift in Sources */,
 				ACB911642024504E00F14644 /* Order.swift in Sources */,
 				ACB8485920BA75E7006B83AD /* SettingPasscodeTableViewCell.swift in Sources */,

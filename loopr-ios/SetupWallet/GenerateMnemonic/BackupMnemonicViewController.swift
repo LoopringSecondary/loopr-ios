@@ -31,6 +31,7 @@ class BackupMnemonicViewController: UIViewController {
     private let buttonPaddingY: CGFloat = 40
     
     private var firstAppear = true
+    var hideButtons: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,10 +86,12 @@ class BackupMnemonicViewController: UIViewController {
         addChildViewController(mnemonicCollectionViewController0)
 
         skipVerifyNowButton.title = LocalizedString("Skip Verification", comment: "Go to VerifyMnemonicViewController")
-        skipVerifyNowButton.setupPrimary(height: 44)
+        skipVerifyNowButton.setupBlack(height: 44)
+        skipVerifyNowButton.isHidden = hideButtons
         
         verifyNowButton.title = LocalizedString("Verify Now", comment: "Go to VerifyMnemonicViewController")
         verifyNowButton.setupSecondary(height: 44)
+        verifyNowButton.isHidden = hideButtons
     }
 
     override func didReceiveMemoryWarning() {
