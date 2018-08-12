@@ -100,7 +100,7 @@ class TradeDataManager {
     func handleResult(of scanning: JSON) {
         let makerHash = scanning[TradeDataManager.qrcodeHash].stringValue
         let makerPrivateKey = scanning[TradeDataManager.qrcodeAuth].stringValue
-        let ratio = scanning[TradeDataManager.sellRatio].doubleValue
+        self.sellRatio = scanning[TradeDataManager.sellRatio].doubleValue
         if let maker = getOrder(by: makerHash) {
             let taker = constructTaker(from: maker)
             maker.hash = makerHash
@@ -108,7 +108,6 @@ class TradeDataManager {
             self.orders = []
             self.orders.insert(maker, at: 0)
             self.orders.insert(taker, at: 1)
-            self.sellRatio = ratio
             self.makerPrivateKey = makerPrivateKey
         }
     }

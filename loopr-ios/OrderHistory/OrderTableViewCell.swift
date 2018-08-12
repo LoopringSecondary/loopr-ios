@@ -22,6 +22,7 @@ class OrderTableViewCell: UITableViewCell {
     var order: Order?
     let asset = CurrentAppWalletDataManager.shared
     let market = MarketDataManager.shared
+    var buttonColor: UIColor?
     var pressedCancelButtonClosure: (() -> Void)?
     
     override func awakeFromNib() {
@@ -32,6 +33,7 @@ class OrderTableViewCell: UITableViewCell {
         self.baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         self.baseView.applyShadow()
         cancelButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        buttonColor = cancelButton.currentTitleColor
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
@@ -54,11 +56,7 @@ class OrderTableViewCell: UITableViewCell {
     
     func setupCancelButton(order: Order) {
         let (flag, text) = getOrderStatus(order: order)
-        if flag {
-            cancelButton.isEnabled = true
-        } else {
-            cancelButton.isEnabled = false
-        }
+        cancelButton.isEnabled = flag
         cancelButton.title = text
     }
     
@@ -69,6 +67,7 @@ class OrderTableViewCell: UITableViewCell {
                 cancelButton.setTitleColor(.pending, for: .normal)
                 return (false, LocalizedString("Cancelling", comment: ""))
             } else {
+                cancelButton.setTitleColor(buttonColor, for: .normal)
                 return (true, LocalizedString("Cancel", comment: ""))
             }
         } else if order.orderStatus == .cancelled || order.orderStatus == .expire {

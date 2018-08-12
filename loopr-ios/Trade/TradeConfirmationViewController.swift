@@ -141,14 +141,13 @@ class TradeConfirmationViewController: UIViewController {
     }
     
     func updateLabels(order: OriginalOrder) {
-        let ratio: Double = isTaker() ? TradeDataManager.shared.sellRatio : 1
-        tokenSView.update(type: .sell, symbol: order.tokenSell, amount: order.amountSell * ratio)
-        tokenBView.update(type: .buy, symbol: order.tokenBuy, amount: order.amountBuy * ratio)
+        tokenSView.update(type: .sell, symbol: order.tokenSell, amount: order.amountSell)
+        tokenBView.update(type: .buy, symbol: order.tokenBuy, amount: order.amountBuy)
         let value = order.amountSell / order.amountBuy
         priceValueLabel.text = "\(value.withCommas()) \(order.market)"
         priceValueLabel.frame = CGRect(x: UIScreen.main.bounds.width - 15 - 200, y: priceLabel.frame.minY, width: 200, height: 40)
         if let price = PriceDataManager.shared.getPrice(of: "LRC") {
-            let total = (price * order.lrcFee * ratio).currency
+            let total = (price * order.lrcFee).currency
             LRCFeeValueLabel.text = "\(order.lrcFee.withCommas(3))LRC ≈ \(total)"
         }
         marginSplitValueLabel.text = SettingDataManager.shared.getMarginSplitDescription()
