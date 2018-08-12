@@ -98,6 +98,7 @@ class AssetSwipeViewController: SwipeViewController {
         print("pressedReceiveButton")
         let viewController = QRCodeViewController()
         viewController.hidesBottomBarWhenPushed = true
+        viewController.address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 

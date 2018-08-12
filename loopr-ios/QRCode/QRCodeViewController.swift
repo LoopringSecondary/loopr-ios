@@ -14,6 +14,9 @@ class QRCodeViewController: UIViewController {
     
     var navigationTitle = LocalizedString("Receive Code", comment: "")
     
+    // Set a default value
+    var address: String = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
+    
     @IBOutlet weak var receiveQRCodeIconView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var qrcodeImageView: UIImageView!
@@ -45,9 +48,9 @@ class QRCodeViewController: UIViewController {
         
         setupShareButton()
         setBackButton()
-        let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
+        
         addressLabel.text = address
-        let data = address?.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
+        let data = address.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
         generateQRCode(from: data!)
     }
 

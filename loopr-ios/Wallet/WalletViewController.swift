@@ -236,6 +236,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil {
             let viewController = QRCodeViewController()
             viewController.hidesBottomBarWhenPushed = true
+            viewController.address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
@@ -367,6 +368,7 @@ extension WalletViewController: WalletBalanceTableViewCellDelegate {
         if CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil {
             let viewController = QRCodeViewController()
             viewController.hidesBottomBarWhenPushed = true
+            viewController.address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
             viewController.navigationTitle = LocalizedString("Wallet Address QRCode", comment: "")
             self.navigationController?.pushViewController(viewController, animated: true)
         }
@@ -387,6 +389,7 @@ extension WalletViewController: WalletButtonTableViewCellDelegate {
         if CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil {
             let viewController = QRCodeViewController()
             viewController.hidesBottomBarWhenPushed = true
+            viewController.address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }

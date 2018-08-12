@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol SettingManageWalletTableViewCellDelegate: class {
+    func pressedQACodeButtonInWalletBalanceTableViewCell(wallet: AppWallet)
+}
+
 class SettingManageWalletTableViewCell: UITableViewCell {
+
+    weak var delegate: SettingManageWalletTableViewCellDelegate?
 
     var wallet: AppWallet?
     
@@ -17,7 +23,8 @@ class SettingManageWalletTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var toatalBalanceLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-
+    @IBOutlet weak var qrCodeButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -41,6 +48,10 @@ class SettingManageWalletTableViewCell: UITableViewCell {
         
         addressLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
         addressLabel.textColor = UIColor.init(white: 1, alpha: 0.6)
+        addressLabel.lineBreakMode = .byTruncatingMiddle
+        
+        qrCodeButton.setImage(UIImage(named: "QRCode-white"), for: .normal)
+        qrCodeButton.addTarget(self, action: #selector(self.pressedQRCodeButton(_:)), for: .touchUpInside)
     }
 
     func update() {
@@ -64,6 +75,13 @@ class SettingManageWalletTableViewCell: UITableViewCell {
 
     func setCurrentWallet() {
         selectedIconView.isHidden = false
+    }
+    
+    @objc func pressedQRCodeButton(_ button: UIButton) {
+        print("pressedItem1Button")
+        if let wallet = wallet {
+            delegate?.pressedQACodeButtonInWalletBalanceTableViewCell(wallet: wallet)
+        }
     }
 
     class func getCellIdentifier() -> String {

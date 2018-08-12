@@ -102,7 +102,7 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
             let nib = Bundle.main.loadNibNamed("SettingManageWalletTableViewCell", owner: self, options: nil)
             cell = nib![0] as? SettingManageWalletTableViewCell
         }
-        
+        cell?.delegate = self
         cell?.wallet = AppWalletDataManager.shared.getWallets()[indexPath.row]
         cell?.update()
         return cell!
@@ -113,5 +113,17 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         let viewController = SettingWalletDetailViewController()
         viewController.appWallet = AppWalletDataManager.shared.getWallets()[indexPath.row]
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+extension SettingManageWalletViewController: SettingManageWalletTableViewCellDelegate {
+    func pressedQACodeButtonInWalletBalanceTableViewCell(wallet: AppWallet) {
+        if CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil {
+            let viewController = QRCodeViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            viewController.address = wallet.address
+            viewController.navigationTitle = LocalizedString("Wallet Address QRCode", comment: "")
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }
