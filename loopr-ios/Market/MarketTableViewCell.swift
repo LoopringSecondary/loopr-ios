@@ -68,7 +68,6 @@ class MarketTableViewCell: UITableViewCell {
             } else {
                 tokenImage.image = UIImage(named: "StarOutline")?.withRenderingMode(.alwaysOriginal)
             }
-
             nameLabel.text = market.description
             nameLabel.setMarket()
             balanceLabel.text = "Vol \(market.volumeInPast24)"

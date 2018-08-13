@@ -109,12 +109,11 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         amountTextField.setLeftPaddingPoints(8)
         amountTextField.setRightPaddingPoints(40)
 
-        tokenSymbolLabel.font = FontConfigManager.shared.getLightFont()
+        tokenSymbolLabel.font = FontConfigManager.shared.getMediumFont()
         tokenSymbolLabel.theme_textColor = GlobalPicker.contrastTextColor
         tokenSymbolLabel.textAlignment = .right
-        
-        transactionFeeTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 10)
-        transactionFeeTipLabel.theme_textColor = ["#00000099", "#ffffff66"]
+
+        transactionFeeTipLabel.setSubTitleCharFont()
         transactionFeeTipLabel.text = LocalizedString("ETH_TIP", comment: "")
 
         // Transaction
@@ -452,7 +451,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         let step: Float = 1
         let roundedStepValue = round(sender.value / step) * step
         gasPriceInGwei = Double(roundedStepValue)
-        
         // Update info
         updateTransactionFeeAmountLabel()
     }

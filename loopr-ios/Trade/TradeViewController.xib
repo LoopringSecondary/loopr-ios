@@ -15,7 +15,6 @@
                 <outlet property="amountBuyTextField" destination="nYT-au-ghz" id="dS8-5G-sxo"/>
                 <outlet property="amountSellTextField" destination="POe-BV-ibP" id="Abf-vU-Zbg"/>
                 <outlet property="availableLabel" destination="JUT-ee-RXX" id="bIM-N7-GUy"/>
-                <outlet property="buyTipLabel" destination="GAR-qN-xvf" id="zDg-jG-mtJ"/>
                 <outlet property="buyTokenLabel" destination="bnx-MG-eTh" id="hAe-tq-PdY"/>
                 <outlet property="canInfoLabel" destination="LWT-yJ-0Yl" id="i4c-UY-ryA"/>
                 <outlet property="canTipLabel" destination="thD-97-26H" id="EpQ-SC-fBk"/>
@@ -31,7 +30,6 @@
                 <outlet property="sellRatioButton" destination="a0T-VM-NU0" id="vMF-DH-yIY"/>
                 <outlet property="sellRatioTipLabel" destination="AoE-MP-EM2" id="rOQ-nA-0xw"/>
                 <outlet property="sellRatioValueLabel" destination="Q5R-iI-uJC" id="Nmy-3s-JC1"/>
-                <outlet property="sellTipLabel" destination="Di1-jg-ePv" id="5VP-Ho-dQe"/>
                 <outlet property="sellTokenLabel" destination="QQK-Xq-OFM" id="v5b-0M-3Su"/>
                 <outlet property="sliderView" destination="Niq-X3-TVH" id="9Ps-eM-7cV"/>
                 <outlet property="tokenBButton" destination="cxj-Vc-B9z" id="8oy-cK-BBS"/>
@@ -59,12 +57,6 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Di1-jg-ePv">
-                                    <rect key="frame" x="27" y="32" width="25" height="18"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" name="Color-dark4"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LRC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQK-Xq-OFM">
                                     <rect key="frame" x="300.33333333333331" y="32" width="28.666666666666686" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -97,12 +89,6 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAR-qN-xvf">
-                                    <rect key="frame" x="27" y="122" width="26.333333333333329" height="18"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" name="Color-dark4"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ARP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnx-MG-eTh">
                                     <rect key="frame" x="300" y="122" width="29" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -256,8 +242,6 @@
                             <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
                                 <constraint firstItem="a0T-VM-NU0" firstAttribute="centerY" secondItem="Q5R-iI-uJC" secondAttribute="centerY" id="0c7-tY-mdj"/>
-                                <constraint firstItem="GAR-qN-xvf" firstAttribute="leading" secondItem="nYT-au-ghz" secondAttribute="leading" constant="12" id="243-iE-0LA"/>
-                                <constraint firstItem="GAR-qN-xvf" firstAttribute="centerY" secondItem="nYT-au-ghz" secondAttribute="centerY" id="3Ld-Jf-Dj8"/>
                                 <constraint firstItem="Fb9-mL-KG5" firstAttribute="top" secondItem="AoE-MP-EM2" secondAttribute="bottom" constant="5" id="5bs-HU-AUC"/>
                                 <constraint firstAttribute="height" constant="464" id="77L-pZ-Qbu"/>
                                 <constraint firstItem="POe-BV-ibP" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="15" id="7XW-hp-wW7"/>
@@ -268,7 +252,6 @@
                                 <constraint firstItem="eJV-rg-daP" firstAttribute="centerY" secondItem="POe-BV-ibP" secondAttribute="centerY" id="IM2-OK-1b6"/>
                                 <constraint firstAttribute="trailing" secondItem="POe-BV-ibP" secondAttribute="trailing" constant="15" id="LRV-Vp-T5m"/>
                                 <constraint firstItem="a0T-VM-NU0" firstAttribute="trailing" secondItem="Fb9-mL-KG5" secondAttribute="trailing" id="LaI-Ff-XM7"/>
-                                <constraint firstItem="Di1-jg-ePv" firstAttribute="leading" secondItem="POe-BV-ibP" secondAttribute="leading" constant="12" id="LoD-z1-jl4"/>
                                 <constraint firstItem="POe-BV-ibP" firstAttribute="top" secondItem="k9h-xW-rQZ" secondAttribute="top" constant="16" id="MnL-CC-ip6"/>
                                 <constraint firstItem="JUT-ee-RXX" firstAttribute="leading" secondItem="nYT-au-ghz" secondAttribute="leading" id="NTX-vs-J2v"/>
                                 <constraint firstItem="0Cv-AI-Sk9" firstAttribute="top" secondItem="POe-BV-ibP" secondAttribute="bottom" constant="8" id="QtN-PD-uNu"/>
@@ -285,7 +268,6 @@
                                 <constraint firstItem="Q6B-kI-AAY" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="15" id="dGz-xa-Tya"/>
                                 <constraint firstItem="AoE-MP-EM2" firstAttribute="leading" secondItem="Fb9-mL-KG5" secondAttribute="leading" id="eUI-Md-dxm"/>
                                 <constraint firstAttribute="trailing" secondItem="Niq-X3-TVH" secondAttribute="trailing" constant="16" id="g8k-pt-KYn"/>
-                                <constraint firstItem="Di1-jg-ePv" firstAttribute="centerY" secondItem="POe-BV-ibP" secondAttribute="centerY" id="gf6-ua-9QR"/>
                                 <constraint firstItem="Fb9-mL-KG5" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="15" id="gkx-hT-CSd"/>
                                 <constraint firstItem="a0T-VM-NU0" firstAttribute="leading" secondItem="Q5R-iI-uJC" secondAttribute="trailing" constant="8" id="hJh-le-R4h"/>
                                 <constraint firstItem="Niq-X3-TVH" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="16" id="jJf-bZ-191"/>
@@ -333,9 +315,6 @@
         </namedColor>
         <namedColor name="Color-dark3">
             <color red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="Color-dark4">
-            <color red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Color-text1">
             <color red="1" green="1" blue="1" alpha="0.80000001192092896" colorSpace="custom" customColorSpace="displayP3"/>

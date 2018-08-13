@@ -19,14 +19,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pe8-N3-lED">
-                        <rect key="frame" x="130" y="195" width="60" height="60"/>
+                        <rect key="frame" x="125" y="190" width="70" height="70"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="60" id="3UO-S5-10P"/>
-                            <constraint firstAttribute="width" constant="60" id="rQG-Tb-qmF"/>
+                            <constraint firstAttribute="height" constant="70" id="3UO-S5-10P"/>
+                            <constraint firstAttribute="width" constant="70" id="rQG-Tb-qmF"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZI-aV-dP4">
-                        <rect key="frame" x="139" y="290" width="42" height="21"/>
+                        <rect key="frame" x="139" y="295" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>

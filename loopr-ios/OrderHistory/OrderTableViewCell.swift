@@ -94,6 +94,7 @@ class OrderTableViewCell: UITableViewCell {
             volumeLabel.text = order.dealtAmountS.withCommas()
             volumeLabel.textColor = .fail
         } else if order.originalOrder.side.lowercased() == "buy" {
+            volumeLabel.text = order.dealtAmountB.withCommas()
             volumeLabel.textColor = .success
         }
         volumeLabel.font = FontConfigManager.shared.getDigitalFont(size: 12)
