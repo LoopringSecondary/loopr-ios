@@ -1409,7 +1409,7 @@
 			path = UnlockWallet;
 			sourceTree = "<group>";
 		};
-		AC375686203A7B0A00AADC60 /* SelectWallet */ = {
+		AC375686203A7B0A00AADC60 /* SelectWallet_Archive */ = {
 			isa = PBXGroup;
 			children = (
 				AC3B488B210525BD008A6771 /* UpdatedSelectWalletViewController.swift */,
@@ -1417,7 +1417,7 @@
 				AC3B488A210525BD008A6771 /* UpdatedSelectWalletTableViewCell.swift */,
 				AC3B4889210525BB008A6771 /* UpdatedSelectWalletTableViewCell.xib */,
 			);
-			path = SelectWallet;
+			path = SelectWallet_Archive;
 			sourceTree = "<group>";
 		};
 		AC4141F120352C130089861D /* SwipeViewController */ = {
@@ -2060,7 +2060,7 @@
 				AC5E0DE0203B44EA00AF03C7 /* AddToken */,
 				AC5E3E6D205DFABD0051ACFC /* SendAsset */,
 				AC5E0DD3203A9D7D00AF03C7 /* AssetDetail */,
-				AC375686203A7B0A00AADC60 /* SelectWallet */,
+				AC375686203A7B0A00AADC60 /* SelectWallet_Archive */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";

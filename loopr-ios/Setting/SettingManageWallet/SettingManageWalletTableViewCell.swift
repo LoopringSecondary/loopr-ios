@@ -36,6 +36,7 @@ class SettingManageWalletTableViewCell: UITableViewCell {
         
         baseView.image = UIImage(named: "Header-background")
         baseView.contentMode = .scaleToFill
+        baseView.clipsToBounds = true
         
         selectedIconView.image = UIImage(named: "wallet-checked")
         selectedIconView.contentMode = .scaleToFill
@@ -59,7 +60,6 @@ class SettingManageWalletTableViewCell: UITableViewCell {
             nameLabel.text = wallet.name
             toatalBalanceLabel.text = wallet.totalCurrency.currency
             addressLabel.text = wallet.address.getAddressFormat(length: 11)
-            setNoCurrentWallet()
             
             if wallet.address == CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address {
                 setCurrentWallet()
@@ -71,10 +71,12 @@ class SettingManageWalletTableViewCell: UITableViewCell {
 
     func setNoCurrentWallet() {
         selectedIconView.isHidden = true
+        baseView.image = UIImage(named: "Header-background")
     }
 
     func setCurrentWallet() {
         selectedIconView.isHidden = false
+        baseView.image = UIImage(named: "wallet-selected-background")
     }
     
     @objc func pressedQRCodeButton(_ button: UIButton) {
