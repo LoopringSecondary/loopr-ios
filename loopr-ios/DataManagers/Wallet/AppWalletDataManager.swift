@@ -79,6 +79,7 @@ class AppWalletDataManager {
     }
     
     func getWallets() -> [AppWallet] {
+        /*
         // Always move the current wallet to the top.
         if CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil {
             if let index = appWallets.index(of: CurrentAppWalletDataManager.shared.getCurrentAppWallet()!) {
@@ -88,6 +89,7 @@ class AppWalletDataManager {
                 }
             }
         }
+        */
         return appWallets
     }
     
@@ -98,10 +100,24 @@ class AppWalletDataManager {
             do {
                 // The try is to prevent a crash when the product name is changed.
                 _ = try unarchiver.decodeTopLevelObject()
-                let appWallets = NSKeyedUnarchiver.unarchiveObject(with: decodedData) as? [AppWallet]
-                if let appWallets = appWallets {
-                    self.appWallets = appWallets
+                let appWalletsFromKeyedUnarchiver = NSKeyedUnarchiver.unarchiveObject(with: decodedData) as? [AppWallet]
+                if let appWalletsFromKeyedUnarchiver = appWalletsFromKeyedUnarchiver {
+                    self.appWallets = appWalletsFromKeyedUnarchiver
                 }
+                
+                // Remove duplicate items
+                var results: [AppWallet] = []
+                for appWallet in self.appWallets {
+                    var found = false
+                    for result in results where appWallet == result {
+                        found = true
+                    }
+                    if !found {
+                        results.append(appWallet)
+                    }
+                }
+                self.appWallets = results
+
             } catch {
                 self.appWallets = []
             }

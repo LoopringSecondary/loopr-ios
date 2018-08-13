@@ -27,9 +27,6 @@ class AppWallet: NSObject, NSCoding {
     final var mnemonics: [String]
     private final let keystoreString: String
     
-    // TODO: For some reaons, we couldn't reuse it. Improve in the future.
-    // private var gethKeystoreObject: GethKeyStore?
-    
     // Only used when the wallet is imported using a private key
     private final let keystorePassword: String = "123456"
     
@@ -117,10 +114,6 @@ class AppWallet: NSObject, NSCoding {
         return password
     }
     
-    static func == (lhs: AppWallet, rhs: AppWallet) -> Bool {
-        return lhs.address == rhs.address && lhs.privateKey == rhs.privateKey
-    }
-    
     func encode(with aCoder: NSCoder) {
         aCoder.encode(setupWalletMethod.rawValue, forKey: "setupWalletMethod")
         aCoder.encode(password, forKey: "password")
@@ -173,4 +166,9 @@ class AppWallet: NSObject, NSCoding {
         }
     }
     
+    // TODO: this doesn't work in result.contains(value)
+    static func == (lhs: AppWallet, rhs: AppWallet) -> Bool {
+        return lhs.address.uppercased() == rhs.address.uppercased() && lhs.privateKey.uppercased() == rhs.privateKey.uppercased()
+    }
+
 }
