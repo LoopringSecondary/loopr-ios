@@ -99,7 +99,7 @@ class TokenDataManager {
     
     func getTokensExcept(for symbol: String) -> [Token] {
         return tokens.filter({ (token) -> Bool in
-            return token.symbol.uppercased() != symbol
+            return token.symbol.uppercased() != symbol.uppercased()
         })
     }
     
@@ -109,7 +109,7 @@ class TokenDataManager {
     
     func getErcTokensExcept(for symbol: String) -> [Token] {
         return getErcTokens().filter({ (token) -> Bool in
-            return token.symbol.uppercased() != symbol
+            return token.symbol.uppercased() != symbol.uppercased()
         })
     }
     func getTokensToAdd() -> [Token] {

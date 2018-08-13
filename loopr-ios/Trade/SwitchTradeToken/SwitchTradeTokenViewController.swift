@@ -166,7 +166,7 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
     }
 
     func filterContentForSearchText(_ searchText: String) {
-        filteredTokens = TokenDataManager.shared.getTokens().filter({(token: Token) -> Bool in
+        filteredTokens = getTokens().filter({(token: Token) -> Bool in
             if token.symbol.range(of: searchText, options: .caseInsensitive) != nil {
                 return true
             } else {
