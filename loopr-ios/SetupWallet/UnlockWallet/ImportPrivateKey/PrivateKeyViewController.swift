@@ -30,7 +30,7 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
         unlockButton.setTitle(LocalizedString("Unlock", comment: ""), for: .normal)
         unlockButton.setupSecondary(height: 44)
 
-        privateKeyTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
+        privateKeyTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 10, bottom: 15, right: 10)
         privateKeyTextView.cornerRadius = 6
         privateKeyTextView.font = FontConfigManager.shared.getRegularFont()
         privateKeyTextView.theme_backgroundColor = GlobalPicker.cardBackgroundColor

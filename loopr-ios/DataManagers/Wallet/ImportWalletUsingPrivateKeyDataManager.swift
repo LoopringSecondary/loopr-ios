@@ -68,7 +68,7 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
             throw AddWalletError.duplicatedAddress
         }
         
-        let newAppWallet = AppWallet(setupWalletMethod: .importUsingPrivateKey, address: address, privateKey: privateKey, password: password, keystoreString: keystore, name: walletName, isVerified: true, active: true)
+        let newAppWallet = AppWallet(setupWalletMethod: .importUsingPrivateKey, address: address, privateKey: privateKey, password: password, keystoreString: keystore, name: walletName.trim(), isVerified: true, active: true)
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
         
@@ -77,4 +77,3 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
         print("Finished unlocking a new wallet in ImportWalletUsingPrivateKeyDataManager")
     }
 }
-

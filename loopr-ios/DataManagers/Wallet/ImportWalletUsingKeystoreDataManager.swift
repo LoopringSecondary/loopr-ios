@@ -86,7 +86,7 @@ class ImportWalletUsingKeystoreDataManager: ImportWalletProtocol {
             throw AddWalletError.duplicatedAddress
         }
 
-        let newAppWallet = AppWallet(setupWalletMethod: .importUsingKeystore, address: address, privateKey: privateKey, password: password, keystoreString: keystore, name: walletName, isVerified: true, active: true)
+        let newAppWallet = AppWallet(setupWalletMethod: .importUsingKeystore, address: address, privateKey: privateKey, password: password, keystoreString: keystore, name: walletName.trim(), isVerified: true, active: true)
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
         // Inform relay

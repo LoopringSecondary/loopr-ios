@@ -31,7 +31,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         unlockButton.setTitle(LocalizedString("Unlock", comment: ""), for: .normal)
         unlockButton.setupSecondary(height: 44)
 
-        mnemonicWordTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
+        mnemonicWordTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 10, bottom: 15, right: 10)
         mnemonicWordTextView.cornerRadius = 6
         mnemonicWordTextView.font = FontConfigManager.shared.getRegularFont()
         mnemonicWordTextView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
