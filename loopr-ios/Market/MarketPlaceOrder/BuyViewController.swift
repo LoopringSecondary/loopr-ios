@@ -208,7 +208,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         update()
@@ -241,7 +241,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             message = "0.0 \(tokenS)"
         }
         canInfoLabel.text = message
-        
         updateMaxBuyValue()
     }
     

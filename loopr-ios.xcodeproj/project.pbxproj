@@ -30,8 +30,6 @@
 		941138C8210F12AD007FDC82 /* TTLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941138C6210F12AD007FDC82 /* TTLViewController.xib */; };
 		94116355211AF512001043BF /* SetupWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94116354211AF512001043BF /* SetupWalletViewController.xib */; };
 		94116357211AF51F001043BF /* SetupWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94116356211AF51F001043BF /* SetupWalletViewController.swift */; };
-		94116359211AF576001043BF /* SetupPartnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94116358211AF576001043BF /* SetupPartnerViewController.swift */; };
-		9411635B211AF58F001043BF /* SetupPartnerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9411635A211AF58F001043BF /* SetupPartnerViewController.xib */; };
 		9411635E211AFA18001043BF /* ActivateCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9411635C211AFA18001043BF /* ActivateCodeViewController.swift */; };
 		9411635F211AFA18001043BF /* ActivateCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9411635D211AFA18001043BF /* ActivateCodeViewController.xib */; };
 		9413F69120B802CB00524D2D /* AmountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9413F69020B802CB00524D2D /* AmountButton.swift */; };
@@ -608,8 +606,6 @@
 		941138C6210F12AD007FDC82 /* TTLViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TTLViewController.xib; sourceTree = "<group>"; };
 		94116354211AF512001043BF /* SetupWalletViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupWalletViewController.xib; sourceTree = "<group>"; };
 		94116356211AF51F001043BF /* SetupWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupWalletViewController.swift; sourceTree = "<group>"; };
-		94116358211AF576001043BF /* SetupPartnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupPartnerViewController.swift; sourceTree = "<group>"; };
-		9411635A211AF58F001043BF /* SetupPartnerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupPartnerViewController.xib; sourceTree = "<group>"; };
 		9411635C211AFA18001043BF /* ActivateCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivateCodeViewController.swift; sourceTree = "<group>"; };
 		9411635D211AFA18001043BF /* ActivateCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivateCodeViewController.xib; sourceTree = "<group>"; };
 		9413F69020B802CB00524D2D /* AmountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountButton.swift; sourceTree = "<group>"; };
@@ -2394,8 +2390,6 @@
 				AC99CF502083E708000AE4BD /* GenerateWalletEnterNameAndPassword */,
 				AC5E0DD2203A848300AF03C7 /* GenerateMnemonic */,
 				AC3756752038D70D00AADC60 /* UnlockWallet */,
-				94116358211AF576001043BF /* SetupPartnerViewController.swift */,
-				9411635A211AF58F001043BF /* SetupPartnerViewController.xib */,
 				9411635C211AFA18001043BF /* ActivateCodeViewController.swift */,
 				9411635D211AFA18001043BF /* ActivateCodeViewController.xib */,
 			);
@@ -2528,7 +2522,6 @@
 				AC4141F0203524280089861D /* MarketSwipeViewController.xib in Resources */,
 				ACA677B92079970600D34A2F /* ExportKeystoreSwipeViewController.xib in Resources */,
 				AC2ACA5420FA0EC3009C77E7 /* Rubik-BlackItalic.ttf in Resources */,
-				9411635B211AF58F001043BF /* SetupPartnerViewController.xib in Resources */,
 				94768CA2210DCABE00B5977B /* TradeSwipeViewController.xib in Resources */,
 				AC8DBC7820BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.xib in Resources */,
 				AC31CE5F205B994200A30335 /* Roboto-Bold.ttf in Resources */,
@@ -2980,7 +2973,6 @@
 				AC131A1421101AD0001998A0 /* MarketDetailTradeHistoryTableViewCell.swift in Sources */,
 				AC2D2C0B2089CE1F00D619AD /* ImportWalletUsingKeystoreDataManager.swift in Sources */,
 				AC9DC45A21159084002D7D23 /* MiniToLargeViewInteractive.swift in Sources */,
-				94116359211AF576001043BF /* SetupPartnerViewController.swift in Sources */,
 				AC45EFEE20D0D474004F6EC0 /* H5DexNavigationController.swift in Sources */,
 				ACDBF101203FE73B000F0DEC /* ReorderController.swift in Sources */,
 				ACB911642024504E00F14644 /* Order.swift in Sources */,

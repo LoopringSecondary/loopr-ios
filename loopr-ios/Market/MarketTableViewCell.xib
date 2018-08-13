@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -24,15 +24,19 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pnm-I2-fhk">
                         <rect key="frame" x="15" y="0.6666666666666643" width="393" height="88.333333333333343"/>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KbS-9j-hkE">
-                        <rect key="frame" x="27" y="38" width="14" height="14"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fy6-Fb-5T2">
+                        <rect key="frame" x="12" y="23" width="44" height="44"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="14" id="40Z-IA-t3a"/>
-                            <constraint firstAttribute="height" constant="14" id="I1s-8S-1D6"/>
+                            <constraint firstAttribute="height" constant="44" id="2IS-7I-dBN"/>
+                            <constraint firstAttribute="width" constant="44" id="4bb-Kp-bQb"/>
                         </constraints>
-                    </imageView>
+                        <state key="normal" image="Star"/>
+                        <connections>
+                            <action selector="pressedFavButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="etV-Os-vbi"/>
+                        </connections>
+                    </button>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MI6-VZ-KdX">
-                        <rect key="frame" x="51" y="15.666666666666668" width="127" height="58.333333333333329"/>
+                        <rect key="frame" x="56" y="15.666666666666668" width="127" height="58.333333333333329"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REP/ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLy-7r-jbc">
                                 <rect key="frame" x="0.0" y="0.0" width="127" height="20.333333333333332"/>
@@ -49,7 +53,7 @@
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JRa-ye-axG">
-                        <rect key="frame" x="178" y="15.666666666666668" width="93" height="58.333333333333329"/>
+                        <rect key="frame" x="183" y="15.666666666666668" width="93" height="58.333333333333329"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0009532" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POG-5X-TsA">
                                 <rect key="frame" x="0.0" y="0.0" width="93" height="20.333333333333332"/>
@@ -90,19 +94,19 @@
                     <constraint firstItem="lsU-Pe-DVm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="59" id="CFJ-sS-3Ds"/>
                     <constraint firstItem="JRa-ye-axG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ido-gA-eAg"/>
                     <constraint firstAttribute="bottom" secondItem="Pnm-I2-fhk" secondAttribute="bottom" constant="0.5" id="KIn-SC-c5U"/>
-                    <constraint firstItem="MI6-VZ-KdX" firstAttribute="leading" secondItem="KbS-9j-hkE" secondAttribute="trailing" constant="10" id="LK9-uI-ga4"/>
-                    <constraint firstItem="KbS-9j-hkE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="NGt-Z3-RXd"/>
+                    <constraint firstItem="fy6-Fb-5T2" firstAttribute="leading" secondItem="Pnm-I2-fhk" secondAttribute="leading" constant="-3" id="Rrs-fF-9US"/>
                     <constraint firstItem="MI6-VZ-KdX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Uyr-G4-BvK"/>
                     <constraint firstItem="Pnm-I2-fhk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="0.5" id="fGf-q9-6Kx"/>
                     <constraint firstAttribute="trailing" secondItem="Pnm-I2-fhk" secondAttribute="trailing" constant="15" id="fq1-Lu-sWb"/>
                     <constraint firstAttribute="trailing" secondItem="lsU-Pe-DVm" secondAttribute="trailing" constant="-59" id="hXI-wT-1Iz"/>
+                    <constraint firstItem="MI6-VZ-KdX" firstAttribute="leading" secondItem="fy6-Fb-5T2" secondAttribute="trailing" id="m8h-hY-szc"/>
                     <constraint firstItem="Pnm-I2-fhk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="qCI-lb-yWd"/>
                     <constraint firstItem="JRa-ye-axG" firstAttribute="leading" secondItem="MI6-VZ-KdX" secondAttribute="trailing" id="qje-x4-v9F"/>
-                    <constraint firstItem="KbS-9j-hkE" firstAttribute="left" secondItem="Pnm-I2-fhk" secondAttribute="left" constant="12" id="u5m-2e-gwy"/>
                     <constraint firstAttribute="bottom" secondItem="lsU-Pe-DVm" secondAttribute="bottom" id="zfR-Xa-mvW"/>
                 </constraints>
             </tableViewCellContentView>
             <constraints>
+                <constraint firstItem="fy6-Fb-5T2" firstAttribute="centerY" secondItem="njF-e1-oar" secondAttribute="centerY" id="4gF-Lo-7d1"/>
                 <constraint firstItem="MI6-VZ-KdX" firstAttribute="height" secondItem="KGk-i7-Jjw" secondAttribute="height" multiplier="0.65" id="AO5-FQ-cRJ"/>
                 <constraint firstItem="JRa-ye-axG" firstAttribute="width" secondItem="KGk-i7-Jjw" secondAttribute="width" multiplier="0.22" id="Lrz-cV-hvt"/>
                 <constraint firstItem="MI6-VZ-KdX" firstAttribute="width" secondItem="KGk-i7-Jjw" secondAttribute="width" multiplier="0.3" id="YCX-Jd-njX"/>
@@ -112,16 +116,17 @@
             <connections>
                 <outlet property="balanceLabel" destination="kQ9-wh-pvu" id="mbn-R0-7Pf"/>
                 <outlet property="baseView" destination="Pnm-I2-fhk" id="0MW-qB-hPT"/>
+                <outlet property="favButton" destination="fy6-Fb-5T2" id="DtL-ct-JjZ"/>
                 <outlet property="marketPriceInBitcoinLabel" destination="POG-5X-TsA" id="OES-Bs-PtE"/>
                 <outlet property="marketPriceInFiatCurrencyLabel" destination="8TL-QV-n4f" id="Aap-DH-Ovl"/>
                 <outlet property="nameLabel" destination="XLy-7r-jbc" id="ug4-Pc-RV8"/>
                 <outlet property="percentageChangeLabel" destination="evx-bi-hhH" id="VfT-Im-Mgt"/>
-                <outlet property="tokenImage" destination="KbS-9j-hkE" id="zrR-gs-Gxg"/>
             </connections>
             <point key="canvasLocation" x="59.5" y="121"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Star" width="14" height="14"/>
         <namedColor name="Seperator">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.10000000149011612" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

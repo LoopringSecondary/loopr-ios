@@ -13,7 +13,7 @@ class MarketTableViewCell: UITableViewCell {
     var market: Market?
 
     @IBOutlet weak var baseView: UIView!
-    @IBOutlet weak var tokenImage: UIImageView!
+    @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var marketPriceInBitcoinLabel: UILabel!
@@ -29,9 +29,6 @@ class MarketTableViewCell: UITableViewCell {
         theme_backgroundColor = GlobalPicker.backgroundColor
         baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         
-        tokenImage.backgroundColor = UIColor.clear
-        tokenImage.contentMode = .center
-
         nameLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
         nameLabel.theme_textColor = GlobalPicker.textColor
         
@@ -60,14 +57,18 @@ class MarketTableViewCell: UITableViewCell {
             baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         }
     }
+    
+    func updateStarButton(market: Market) {
+        if market.isFavorite() {
+            favButton.image = UIImage(named: "Star")?.withRenderingMode(.alwaysOriginal)
+        } else {
+            favButton.image = UIImage(named: "StarOutline")?.withRenderingMode(.alwaysOriginal)
+        }
+    }
 
     func update() {
         if let market = market {
-            if market.isFavorite() {
-                tokenImage.image = UIImage(named: "Star")?.withRenderingMode(.alwaysOriginal)
-            } else {
-                tokenImage.image = UIImage(named: "StarOutline")?.withRenderingMode(.alwaysOriginal)
-            }
+            updateStarButton(market: market)
             nameLabel.text = market.description
             nameLabel.setMarket()
             balanceLabel.text = "Vol \(market.volumeInPast24)"
@@ -76,6 +77,18 @@ class MarketTableViewCell: UITableViewCell {
             percentageChangeLabel.text = market.changeInPat24
             percentageChangeLabel.backgroundColor = UIStyleConfig.getChangeColor(change: market.changeInPat24)
         }
+    }
+    
+    @IBAction func pressedFavButton(_ sender: UIButton) {
+        guard let market = market else {
+            return
+        }
+        if market.isFavorite() {
+            MarketDataManager.shared.removeFavoriteMarket(market: market)
+        } else {
+            MarketDataManager.shared.setFavoriteMarket(market: market)
+        }
+        updateStarButton(market: market)
     }
     
     class func getCellIdentifier() -> String {

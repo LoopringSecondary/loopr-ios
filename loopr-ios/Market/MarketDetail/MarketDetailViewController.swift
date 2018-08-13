@@ -24,7 +24,7 @@ class MarketDetailViewController: UIViewController {
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         setBackButton()
         setup()
-        udpateStarButton()
+        updateStarButton()
 
         // Buy button
         buyButton.setTitle(LocalizedString("Buy", comment: "") + " " + market.tradingPair.tradingA, for: .normal)
@@ -55,7 +55,7 @@ class MarketDetailViewController: UIViewController {
         }
     }
 
-    func udpateStarButton() {
+    func updateStarButton() {
         var icon: UIImage?
         if market!.isFavorite() {
             icon = UIImage(named: "Star")?.withRenderingMode(.alwaysOriginal)
@@ -77,7 +77,7 @@ class MarketDetailViewController: UIViewController {
         } else {
             MarketDataManager.shared.setFavoriteMarket(market: market)
         }
-        udpateStarButton()
+        updateStarButton()
     }
     
     @IBAction func pressedSellButton(_ sender: Any) {
