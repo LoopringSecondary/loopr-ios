@@ -19,14 +19,12 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     @IBOutlet weak var tokenSButton: UIButton!
     @IBOutlet weak var amountSellTextField: UITextField!
     @IBOutlet weak var estimateValueInCurrency: UILabel!
-    @IBOutlet weak var sellTipLabel: UILabel!
     @IBOutlet weak var sellTokenLabel: UILabel!
     
     // TokenB
     @IBOutlet weak var tokenBButton: UIButton!
     @IBOutlet weak var amountBuyTextField: UITextField!
     @IBOutlet weak var availableLabel: UILabel!
-    @IBOutlet weak var buyTipLabel: UILabel!
     @IBOutlet weak var buyTokenLabel: UILabel!
     
     // Slider
@@ -83,12 +81,10 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         amountSellTextField.font = FontConfigManager.shared.getDigitalFont()
         amountSellTextField.theme_tintColor = GlobalPicker.contrastTextColor
         amountSellTextField.placeholder = LocalizedString("Enter the amount you have", comment: "")
-        amountSellTextField.setLeftPaddingPoints(40)
+        amountSellTextField.setLeftPaddingPoints(8)
         amountSellTextField.setRightPaddingPoints(72)
         amountSellTextField.contentMode = UIViewContentMode.bottom
         estimateValueInCurrency.setSubTitleCharFont()
-        sellTipLabel.setTitleCharFont()
-        sellTipLabel.text = LocalizedString("Sell", comment: "")
         
         // Second row: TokenB
         amountBuyTextField.delegate = self
@@ -97,12 +93,10 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         amountBuyTextField.font = FontConfigManager.shared.getDigitalFont()
         amountBuyTextField.theme_tintColor = GlobalPicker.contrastTextColor
         amountBuyTextField.placeholder = LocalizedString("Enter the amount you get", comment: "")
-        amountBuyTextField.setLeftPaddingPoints(40)
+        amountBuyTextField.setLeftPaddingPoints(8)
         amountBuyTextField.setRightPaddingPoints(72)
         amountBuyTextField.contentMode = UIViewContentMode.bottom
         availableLabel.setSubTitleCharFont()
-        buyTipLabel.setTitleCharFont()
-        buyTipLabel.text = LocalizedString("Buy", comment: "")
         
         // Slider
         let screenWidth = UIScreen.main.bounds.width
@@ -134,7 +128,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         buttons = [hourButton, dayButton, monthButton, customButton]
         hourButton.titleLabel?.font = FontConfigManager.shared.getBoldFont()
         buttons.forEach {
-            $0.titleLabel?.font = FontConfigManager.shared.getDigitalFont()
+            $0.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
             $0.theme_setTitleColor(GlobalPicker.textColor, forState: .selected)
             $0.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
         }
@@ -189,6 +183,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         super.viewDidAppear(animated)
         // stepSlider.setPercentageValue(0.1)
         isViewDidAppear = true
+        customButton.round(corners: [.topRight, .bottomRight], radius: 8)
     }
 
     func update(text: String? = nil, color: UIColor? = nil) {

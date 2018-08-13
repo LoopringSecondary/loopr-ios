@@ -128,7 +128,7 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func pressedDetailsButton(_ sender: UIButton) {
         if let original = self.order {
-            let order = Order(originalOrder: original, orderStatus: .opened)
+            let order = Order(originalOrder: original, orderStatus: .opened, dealtAmountB: "0.0", dealtAmountS: "0.0")
             let viewController = OrderDetailViewController()
             viewController.order = order
             viewController.hidesBottomBarWhenPushed = true

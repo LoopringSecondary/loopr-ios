@@ -55,8 +55,8 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
                 iconImageView.isHidden = true
             }
             let balance = CurrentAppWalletDataManager.shared.getBalance(of: token.symbol) ?? 0.0
-            symbolLabel.text = "\(token.symbol) (\(token.source.capitalized))"
-            balanceLabel.text = "\(balance) \(token.symbol)"
+            symbolLabel.text = "\(token.symbol)"
+            balanceLabel.text = "\(balance)"
         }
     }
 

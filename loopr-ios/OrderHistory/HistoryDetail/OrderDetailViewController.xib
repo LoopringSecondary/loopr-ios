@@ -70,9 +70,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LF9-Is-NZm">
-                    <rect key="frame" x="131" y="300" width="220" height="21"/>
+                    <rect key="frame" x="111" y="300" width="240" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="220" id="WFw-pc-u9L"/>
+                        <constraint firstAttribute="width" constant="240" id="WFw-pc-u9L"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
@@ -92,9 +92,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ml-76-5OB">
-                    <rect key="frame" x="131" y="351" width="220" height="21"/>
+                    <rect key="frame" x="111" y="351" width="240" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="220" id="wcY-oo-9yb"/>
+                        <constraint firstAttribute="width" constant="240" id="wcY-oo-9yb"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
@@ -114,9 +114,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmV-Dw-P4V">
-                    <rect key="frame" x="131" y="400" width="220" height="20.5"/>
+                    <rect key="frame" x="111" y="400" width="240" height="20.5"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="220" id="hBl-Ve-Ufe"/>
+                        <constraint firstAttribute="width" constant="240" id="hBl-Ve-Ufe"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
@@ -136,9 +136,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fa-If-KlR">
-                    <rect key="frame" x="131" y="452" width="220" height="21"/>
+                    <rect key="frame" x="111" y="452" width="240" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="220" id="wDU-x8-ltQ"/>
+                        <constraint firstAttribute="width" constant="240" id="wDU-x8-ltQ"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
@@ -158,9 +158,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAs-gE-AFB">
-                    <rect key="frame" x="131" y="501" width="220" height="21"/>
+                    <rect key="frame" x="111" y="501" width="240" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="220" id="LaI-rm-K3i"/>
+                        <constraint firstAttribute="width" constant="240" id="LaI-rm-K3i"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
