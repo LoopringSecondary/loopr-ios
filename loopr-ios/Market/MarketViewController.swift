@@ -224,21 +224,21 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         let labelWidth = (view.frame.size.width-20*2)/3
         
-        let label1 = UILabel(frame: CGRect(x: 20, y: 0, width: labelWidth, height: 30))
+        let label1 = UILabel(frame: CGRect(x: 56, y: 0, width: labelWidth, height: 30))
         label1.theme_textColor = GlobalPicker.textLightColor
         label1.font = FontConfigManager.shared.getMediumFont(size: 14)
         label1.text = LocalizedString("Market", comment: "")
         label1.textAlignment = .left
         baseView.addSubview(label1)
 
-        let label2 = UILabel(frame: CGRect(x: UIScreen.main.bounds.width*0.3+35, y: 0, width: labelWidth, height: 30))
+        let label2 = UILabel(frame: CGRect(x: UIScreen.main.bounds.width*0.3+52, y: 0, width: labelWidth, height: 30))
         label2.theme_textColor = GlobalPicker.textLightColor
         label2.font = FontConfigManager.shared.getMediumFont(size: 14)
         label2.text = LocalizedString("Price", comment: "")
         label2.textAlignment = .left
         baseView.addSubview(label2)
 
-        let label3 = UILabel(frame: CGRect(x: view.frame.size.width-15-20-10-labelWidth, y: 0, width: labelWidth, height: 30))
+        let label3 = UILabel(frame: CGRect(x: view.frame.size.width-64-labelWidth, y: 0, width: labelWidth, height: 30))
         label3.theme_textColor = GlobalPicker.textLightColor
         label3.font = FontConfigManager.shared.getMediumFont(size: 14)
         label3.text = LocalizedString("Change", comment: "")

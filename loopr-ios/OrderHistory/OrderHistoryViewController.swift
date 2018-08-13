@@ -208,8 +208,15 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
                     }, completion: {(_) in
                         self.blurVisualEffectView.removeFromSuperview()
                     })
-                    SendCurrentAppWalletDataManager.shared._cancelOrder(order: order.originalOrder, completion: self.completion)
-                    self.historyTableView.reloadData()
+                    SendCurrentAppWalletDataManager.shared._cancelOrder(order: order.originalOrder, completion: { (txHash, error) in
+                        DispatchQueue.main.async {
+                            if error == nil && txHash != nil {
+                                cell?.isHidden = true
+                                self.historyTableView.reloadData()
+                            }
+                        }
+                        self.completion(txHash, error)
+                    })
                 }))
                 alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
                     UIView.animate(withDuration: 0.1, animations: {

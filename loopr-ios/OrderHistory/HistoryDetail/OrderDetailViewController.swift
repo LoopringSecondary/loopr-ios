@@ -17,6 +17,8 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var statusInfoLabel: UILabel!
     @IBOutlet weak var amountTipLabel: UILabel!
     @IBOutlet weak var amountInfoLabel: UILabel!
+    @IBOutlet weak var lrcFeeTipLabel: UILabel!
+    @IBOutlet weak var lrcFeeInfoLabel: UILabel!
     @IBOutlet weak var filledTipLabel: UILabel!
     @IBOutlet weak var filledInfoLabel: UILabel!
     @IBOutlet weak var idTipLabel: UILabel!
@@ -62,6 +64,10 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         amountTipLabel.setTitleCharFont()
         amountTipLabel.text = LocalizedString("Price", comment: "")
         amountInfoLabel.setTitleDigitFont()
+        
+        lrcFeeTipLabel.setTitleCharFont()
+        lrcFeeTipLabel.text = LocalizedString("Trading Fee", comment: "")
+        lrcFeeInfoLabel.setTitleDigitFont()
         
         filledTipLabel.setTitleCharFont()
         filledTipLabel.text = LocalizedString("Filled", comment: "")
@@ -118,9 +124,14 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     func setup() {
         guard let order = self.order else { return }
         setupTokenViews(order: order)
-        setupOrderFilled(order: order)
         setupOrderAmount(order: order)
+        setupLRCFee(order: order)
+        setupOrderFilled(order: order)
         setupOrderDate(order: order)
+    }
+    
+    func setupLRCFee(order: Order) {
+        lrcFeeInfoLabel.text = "\(order.originalOrder.lrcFee.withCommas(3)) LRC"
     }
     
     func setupTokenViews(order: Order) {

@@ -29,17 +29,17 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
 
         unlockButton.setTitle(LocalizedString("Unlock", comment: ""), for: .normal)
         unlockButton.setupSecondary(height: 44)
-        
-        keystoreContentTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 10, bottom: 15, right: 10)
+
+        keystoreContentTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
         keystoreContentTextView.cornerRadius = 6
         keystoreContentTextView.font = FontConfigManager.shared.getRegularFont()
         keystoreContentTextView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
-        keystoreContentTextView.theme_tintColor = GlobalPicker.textColor
         keystoreContentTextView.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffff66") : UIColor.dark3
+        keystoreContentTextView.theme_tintColor = GlobalPicker.textColor
         keystoreContentTextView.delegate = self
         keystoreContentTextView.text = LocalizedString("Please enter the keystore", comment: "")
         keystoreContentTextView.keyboardAppearance = Themes.isDark() ? .dark : .default
-        
+
         passwordTextField.delegate = self
         passwordTextField.tag = 0
         passwordTextField.theme_backgroundColor = GlobalPicker.cardBackgroundColor
