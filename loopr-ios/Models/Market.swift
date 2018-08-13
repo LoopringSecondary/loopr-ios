@@ -22,9 +22,13 @@ class Market: Equatable, CustomStringConvertible {
     var changeInPat24: String
 
     // loopring_getTickers
-    var open: Double?
-    var close: Double?
-    var last: Double?
+    var open: Double
+    var close: Double
+    var last: Double
+    var low: Double
+    var high: Double
+    var buy: Double
+    var sell: Double
     
     func isFavorite() -> Bool {
         return MarketDataManager.shared.getFavoriteMarketKeys().contains(description)
@@ -58,9 +62,13 @@ class Market: Equatable, CustomStringConvertible {
             return nil
         }
         
-        open = json["open"].double
-        close = json["close"].double
-        last = json["last"].double
+        open = json["open"].double ?? 0.0
+        close = json["close"].double ?? 0.0
+        last = json["last"].double ?? 0.0
+        low = json["low"].double ?? 0.0
+        high = json["high"].double ?? 0.0
+        buy = json["buy"].double ?? 0.0
+        sell = json["sell"].double ?? 0.0
     }
     
     func getExchangeDescription() -> String {

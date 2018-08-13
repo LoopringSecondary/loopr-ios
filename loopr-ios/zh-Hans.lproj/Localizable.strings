@@ -403,3 +403,8 @@
 "No_Orderbook_Tip" ="尚无订单成交记录";
 "No_Transaction_Tip" ="尚无交易数据记录";
 "Wallet Address QRCode" = "钱包地址二维码";
+"24H Change" = "24H 涨跌";
+"24H High" = "24H 最高价";
+"24H Low" = "24H 最低价";
+"24H Volume" = "24H 交易量";
+"Latest Price" = "最新单价";

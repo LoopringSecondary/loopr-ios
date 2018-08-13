@@ -45,15 +45,17 @@ class MarketDetailSwipeViewController: SwipeViewController {
         
         priceInCryptoLabel.font = FontConfigManager.shared.getDigitalFont()
         priceInCryptoLabel.textColor = UIColor.init(white: 1, alpha: 1)
-        priceInCryptoLabel.text = market.balance.withCommas(6)
-        
+        priceInCryptoLabel.text = "\(market.balance.withCommas(6)) \(market.tradingPair.tradingB) ≈ \(market.display.description)"
+
         priceInFiatCurrencyLabel.font = FontConfigManager.shared.getDigitalFont()
         priceInFiatCurrencyLabel.textColor = UIColor.init(white: 1, alpha: 1)
         priceInFiatCurrencyLabel.text = market.display.description
+        priceInFiatCurrencyLabel.isHidden = true
 
         priceChangeIn24HoursLabel.font = FontConfigManager.shared.getDigitalFont()
         priceChangeIn24HoursLabel.textColor = UIColor.init(white: 1, alpha: 1)
         priceChangeIn24HoursLabel.text = market.changeInPat24
+        priceChangeIn24HoursLabel.isHidden = true
         
         hoursChangeInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
         hoursChangeInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.6)
@@ -61,7 +63,7 @@ class MarketDetailSwipeViewController: SwipeViewController {
         
         hoursChangeLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         hoursChangeLabel.textColor = UIColor.init(white: 1, alpha: 0.8)
-        hoursChangeLabel.text = LocalizedString("0.000092350", comment: "")
+        hoursChangeLabel.text = market.changeInPat24
         
         hoursHighInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
         hoursHighInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.6)
@@ -69,7 +71,7 @@ class MarketDetailSwipeViewController: SwipeViewController {
         
         hoursHighLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         hoursHighLabel.textColor = UIColor.init(white: 1, alpha: 0.8)
-        hoursHighLabel.text = LocalizedString("0.000092350", comment: "")
+        hoursHighLabel.text = market.high.withCommas(6)
         
         hoursVolumeInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
         hoursVolumeInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.6)
@@ -85,7 +87,7 @@ class MarketDetailSwipeViewController: SwipeViewController {
         
         hoursLowLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         hoursLowLabel.textColor = UIColor.init(white: 1, alpha: 0.8)
-        hoursLowLabel.text = LocalizedString("0.000085800", comment: "")
+        hoursLowLabel.text = market.low.withCommas(6)
     }
 
     override func didReceiveMemoryWarning() {

@@ -45,8 +45,7 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
         
         headerLastPriceLabel.textColor = UIColor.themeGreen
         headerLastPriceLabel.font = FontConfigManager.shared.getRegularFont(size: 13)
-        // TODO: Fake data
-        headerLastPriceLabel.text = "0.18800000LRC  ≈  $0.22"
+        headerLastPriceLabel.text = "\(market.balance.withCommas(6)) \(market.tradingPair.tradingB) ≈ \(market.display.description)"
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -81,6 +80,7 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        headerView.round(corners: [.topLeft, .topRight], radius: 12)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

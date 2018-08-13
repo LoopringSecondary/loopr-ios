@@ -403,3 +403,8 @@
 "No_Orderbook_Tip" ="No order books of your account yet";
 "No_Transaction_Tip" ="No transaction records of your account yet";
 "Wallet Address QRCode" = "Wallet Address QRCode";
+"24H Change" = "24H Change";
+"24H High" = "24H High";
+"24H Low" = "24H Low";
+"24H Volume" = "24H Volume";
+"Latest Price" = "Latest Price";
