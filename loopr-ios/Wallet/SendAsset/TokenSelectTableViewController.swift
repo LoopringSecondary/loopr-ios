@@ -70,9 +70,9 @@ class TokenSelectTableViewController: UITableViewController, UISearchBarDelegate
         cell?.token = token
         cell?.update()
         if token.symbol == SendCurrentAppWalletDataManager.shared.token?.symbol {
-            cell?.accessoryType = .checkmark
+            cell?.enabledIcon.isHidden = false
         } else {
-            cell?.accessoryType = .none
+            cell?.enabledIcon.isHidden = true
         }
         return cell!
     }
