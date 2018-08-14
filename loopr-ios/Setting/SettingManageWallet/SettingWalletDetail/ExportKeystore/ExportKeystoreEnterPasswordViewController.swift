@@ -15,58 +15,51 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
     var appWallet: AppWallet!
     var keystore: String = ""
 
-    var titleLabel: UILabel =  UILabel()
-
-    var passwordTextField: UITextField = UITextField()
-    var passwordUnderLine: UIView = UIView()
-    var passwordInfoLabel: UILabel = UILabel()
-    var nextButton = UIButton()
-
+    var repeatPasswordTextField: UITextField = UITextField()
+    var continueButton: UIButton = UIButton()
+    var errorInfoLabel: UILabel = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        self.navigationItem.title = LocalizedString("Export Keystore", comment: "")
         setBackButton()
 
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
-        // let screenHeight = screensize.height
         
-        let originY: CGFloat = 30
+        let originY: CGFloat = 80
         let padding: CGFloat = 15
         
-        titleLabel.frame = CGRect(x: padding, y: originY, width: screenWidth - padding * 2, height: 30)
-        titleLabel.font = UIFont.init(name: FontConfigManager.shared.getMedium(), size: 27)
-        titleLabel.text = LocalizedString("Enter password", comment: "")
-        view.addSubview(titleLabel)
+        repeatPasswordTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 40)
         
-        passwordTextField.isSecureTextEntry = true
-        passwordTextField.delegate = self
-        passwordTextField.tag = 1
-        passwordTextField.theme_tintColor = GlobalPicker.textColor
-        passwordTextField.font = FontConfigManager.shared.getDigitalFont(size: 19)
-        passwordTextField.placeholder = ""
-        passwordTextField.contentMode = UIViewContentMode.bottom
-        passwordTextField.frame = CGRect(x: padding, y: titleLabel.frame.maxY + 30, width: screenWidth-padding*2, height: 40)
-        view.addSubview(passwordTextField)
+        repeatPasswordTextField.isSecureTextEntry = true
+        repeatPasswordTextField.delegate = self
+        repeatPasswordTextField.tag = 0
+        repeatPasswordTextField.theme_tintColor = GlobalPicker.textColor
+        repeatPasswordTextField.theme_textColor = GlobalPicker.textColor
+        repeatPasswordTextField.keyboardAppearance = Themes.isDark() ? .dark : .default
+        repeatPasswordTextField.textAlignment = .center
+        repeatPasswordTextField.font = FontConfigManager.shared.getRegularFont(size: 18)
+        repeatPasswordTextField.placeholder = LocalizedString("Enter Password", comment: "")
+        repeatPasswordTextField.setValue(UIColor.init(white: 1, alpha: 0.4), forKeyPath: "_placeholderLabel.textColor")
+        repeatPasswordTextField.contentMode = UIViewContentMode.bottom
+        view.addSubview(repeatPasswordTextField)
         
-        passwordUnderLine.frame = CGRect(x: padding, y: passwordTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        passwordUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
-        view.addSubview(passwordUnderLine)
+        continueButton.frame = CGRect(x: 48, y: 200, width: screenWidth-48*2, height: 44)
+        continueButton.setupSecondary(height: 44)
+        continueButton.setTitle(LocalizedString("Confirm", comment: ""), for: .normal)
+        continueButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
+        view.addSubview(continueButton)
         
-        passwordInfoLabel.frame = CGRect(x: padding, y: passwordTextField.frame.maxY + 9, width: screenWidth - padding * 2, height: 16)
-        passwordInfoLabel.text = LocalizedString("Wrong password", comment: "")
-        passwordInfoLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 16)
-        passwordInfoLabel.textColor = UIStyleConfig.red
-        passwordInfoLabel.alpha = 0.0
-        view.addSubview(passwordInfoLabel)
-
-        nextButton.title = LocalizedString("Next", comment: "")
-        nextButton.setupSecondary()
-        nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
-        nextButton.frame = CGRect(x: padding, y: passwordInfoLabel.frame.maxY + 40, width: screenWidth - padding * 2, height: 47)
-        view.addSubview(nextButton)
+        errorInfoLabel.frame = CGRect(x: padding, y: continueButton.bottomY + 40, width: screenWidth-padding*2, height: 40)
+        errorInfoLabel.textColor = UIColor.themeRed
+        errorInfoLabel.textAlignment = .center
+        errorInfoLabel.alpha = 0.0
+        view.addSubview(errorInfoLabel)
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,17 +69,16 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        passwordTextField.becomeFirstResponder()
+        repeatPasswordTextField.becomeFirstResponder()
     }
 
     @objc func nextButtonPressed(_ sender: Any) {
         print("nextButtonPressed")
-        let password = passwordTextField.text ?? ""
+        let password = repeatPasswordTextField.text ?? ""
 
         guard password != "" else {
-            self.passwordInfoLabel.text = LocalizedString("Please enter a password", comment: "")
-            self.passwordInfoLabel.alpha = 1.0
-            self.passwordInfoLabel.shake()
+            self.errorInfoLabel.alpha = 1.0
+            self.errorInfoLabel.shake()
             return
         }
         
@@ -134,12 +126,12 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
             var validPassword = true
             if password != appWallet.getPassword() {
                 validPassword = false
-                self.passwordInfoLabel.text = LocalizedString("Wrong password", comment: "")
+                self.errorInfoLabel.text = LocalizedString("Wrong password", comment: "")
             }
             
             guard validPassword else {
-                self.passwordInfoLabel.alpha = 1.0
-                self.passwordInfoLabel.shake()
+                self.errorInfoLabel.alpha = 1.0
+                self.errorInfoLabel.shake()
                 return
             }
 
@@ -148,21 +140,18 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if repeatPasswordTextField.isFirstResponder == true {
+            repeatPasswordTextField.placeholder = ""
+        }
+    }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newLength = (textField.text?.utf16.count)! + (string.utf16.count) - range.length
         print("textField shouldChangeCharactersIn \(newLength)")
-        
-        switch textField.tag {
-        case passwordTextField.tag:
-            if newLength > 0 {
-                passwordInfoLabel.alpha = 0.0
-                passwordUnderLine.backgroundColor = UIColor.black
-            } else {
-                passwordUnderLine.backgroundColor = UIColor.black.withAlphaComponent(0.1)
-            }
-        default: ()
-        }
+        errorInfoLabel.alpha = 0.0
+        errorInfoLabel.text = ""
         return true
     }
 
