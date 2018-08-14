@@ -12,17 +12,18 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
 
     var token: Token?
 
-    // TODO: We may deprecate IBOutlet
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var iconView: IconView!
     @IBOutlet weak var symbolLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
+    @IBOutlet weak var enabledIcon: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         selectionStyle = .none
+        accessoryType = .none
         theme_backgroundColor = GlobalPicker.backgroundColor
         baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         iconView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
@@ -30,6 +31,8 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
         symbolLabel.theme_textColor = GlobalPicker.textColor
         balanceLabel.font = FontConfigManager.shared.getRegularFont(size: 13)
         balanceLabel.theme_textColor = GlobalPicker.textLightColor
+        enabledIcon.image = UIImage(named: "enabled-dark")
+        enabledIcon.contentMode = .center
         baseView.applyShadow()
     }
     

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -56,6 +56,13 @@
                         <color key="textColor" name="Color-text2"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kdx-RK-gMn">
+                        <rect key="frame" x="342" y="38" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="d2f-n8-f1a"/>
+                            <constraint firstAttribute="height" constant="24" id="iEk-yX-Suf"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="hsC-RJ-YaX" firstAttribute="trailing" secondItem="2Li-i8-lBX" secondAttribute="trailing" constant="16" id="3eH-v7-CmI"/>
@@ -63,11 +70,13 @@
                     <constraint firstItem="oaP-al-gyb" firstAttribute="width" secondItem="I3A-ZH-o8o" secondAttribute="width" id="Eim-X8-uEI"/>
                     <constraint firstItem="I3A-ZH-o8o" firstAttribute="centerY" secondItem="hsC-RJ-YaX" secondAttribute="centerY" id="HAq-UZ-dGJ"/>
                     <constraint firstItem="2Li-i8-lBX" firstAttribute="leading" secondItem="I3A-ZH-o8o" secondAttribute="trailing" constant="16" id="RiJ-u8-BBq"/>
+                    <constraint firstItem="kdx-RK-gMn" firstAttribute="centerY" secondItem="hsC-RJ-YaX" secondAttribute="centerY" id="aRd-0r-4vf"/>
                     <constraint firstItem="oaP-al-gyb" firstAttribute="top" secondItem="I3A-ZH-o8o" secondAttribute="top" id="g77-wZ-gzz"/>
                     <constraint firstItem="2Li-i8-lBX" firstAttribute="top" secondItem="hsC-RJ-YaX" secondAttribute="top" constant="16" id="gZe-uy-46b"/>
                     <constraint firstItem="oaP-al-gyb" firstAttribute="height" secondItem="I3A-ZH-o8o" secondAttribute="height" id="nfz-10-qlE"/>
                     <constraint firstItem="oaP-al-gyb" firstAttribute="leading" secondItem="I3A-ZH-o8o" secondAttribute="leading" id="ogf-p8-GA3"/>
                     <constraint firstItem="aGn-uX-S7G" firstAttribute="leading" secondItem="2Li-i8-lBX" secondAttribute="leading" id="wj3-Pb-CR5"/>
+                    <constraint firstItem="hsC-RJ-YaX" firstAttribute="trailing" secondItem="kdx-RK-gMn" secondAttribute="trailing" constant="14" id="zku-hi-Cj6"/>
                     <constraint firstItem="aGn-uX-S7G" firstAttribute="top" secondItem="hsC-RJ-YaX" secondAttribute="top" constant="38" id="zmE-zX-INd"/>
                 </constraints>
             </tableViewCellContentView>
@@ -82,6 +91,7 @@
             <connections>
                 <outlet property="balanceLabel" destination="aGn-uX-S7G" id="oUl-Si-yAT"/>
                 <outlet property="baseView" destination="hsC-RJ-YaX" id="bOh-8Q-Ezc"/>
+                <outlet property="enabledIcon" destination="kdx-RK-gMn" id="pdT-VF-puR"/>
                 <outlet property="iconImageView" destination="I3A-ZH-o8o" id="Vq4-8n-wxd"/>
                 <outlet property="iconView" destination="oaP-al-gyb" id="rSu-oF-pYa"/>
                 <outlet property="symbolLabel" destination="2Li-i8-lBX" id="ZNd-16-alI"/>

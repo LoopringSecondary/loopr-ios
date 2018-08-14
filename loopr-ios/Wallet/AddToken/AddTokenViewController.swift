@@ -16,7 +16,6 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
     var isSearching = false
     let searchBar = UISearchBar()
     var searchButton = UIBarButtonItem()
-    var addCustomizedTokenButton = UIBarButtonItem()
     
     var filtedTokens: [Token] = []
     
@@ -35,7 +34,6 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.separatorStyle = .none
 
         searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.pressOrderSearchButton(_:)))
-        // addCustomizedTokenButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
         self.navigationItem.rightBarButtonItems = [searchButton]
         
         searchBar.showsCancelButton = false
