@@ -44,8 +44,9 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
         repeatPasswordTextField.keyboardAppearance = Themes.isDark() ? .dark : .default
         repeatPasswordTextField.textAlignment = .center
         repeatPasswordTextField.font = FontConfigManager.shared.getRegularFont(size: 18)
-        repeatPasswordTextField.placeholder = LocalizedString("Enter Password", comment: "")
-        repeatPasswordTextField.setValue(UIColor.init(white: 1, alpha: 0.4), forKeyPath: "_placeholderLabel.textColor")
+        repeatPasswordTextField.placeholder = LocalizedString("Enter password", comment: "")
+        
+        repeatPasswordTextField.placeHolderColor = UIColor.text1
         repeatPasswordTextField.contentMode = UIViewContentMode.bottom
         view.addSubview(repeatPasswordTextField)
         
@@ -69,7 +70,6 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        repeatPasswordTextField.becomeFirstResponder()
     }
 
     @objc func nextButtonPressed(_ sender: Any) {

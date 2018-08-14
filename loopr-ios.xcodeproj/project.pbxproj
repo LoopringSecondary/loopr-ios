@@ -56,7 +56,6 @@
 		945800212058FEB500E08DEF /* tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = 945800202058FEB500E08DEF /* tokens.json */; };
 		945800232059006200E08DEF /* AssetDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945800222059006200E08DEF /* AssetDataManagerTests.swift */; };
 		94580025205921D600E08DEF /* PriceQuoteDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94580024205921D600E08DEF /* PriceQuoteDataManagerTests.swift */; };
-		946262822112F24E00288C5C /* BuyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 946262812112F24E00288C5C /* BuyViewController.xib */; };
 		9464595E20AA9A4C00574485 /* TradeDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464595D20AA9A4C00574485 /* TradeDataManagerTests.swift */; };
 		94678B2A210D902E00F550D3 /* SendResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94678B28210D902E00F550D3 /* SendResultViewController.swift */; };
 		94678B2B210D902E00F550D3 /* SendResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94678B29210D902E00F550D3 /* SendResultViewController.xib */; };
@@ -99,6 +98,8 @@
 		94D94CE32084A9380000BBC8 /* ConfirmationResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D94CE12084A9380000BBC8 /* ConfirmationResultViewController.swift */; };
 		94DAACB320BBF24B0097707E /* OrderQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DAACB120BBF24B0097707E /* OrderQRCodeViewController.swift */; };
 		94DCE551205FAC07005618E4 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DCE550205FAC07005618E4 /* Trend.swift */; };
+		94DFE4042122BD48000E1831 /* BuyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DFE4022122BD47000E1831 /* BuyViewController.xib */; };
+		94DFE4052122BD48000E1831 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DFE4032122BD47000E1831 /* BuyViewController.swift */; };
 		94E185972051451C00D86FFA /* Initable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185962051451C00D86FFA /* Initable.swift */; };
 		94E185992051455C00D86FFA /* SimpleRespond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185982051455C00D86FFA /* SimpleRespond.swift */; };
 		94E1976E2099A68200E70E42 /* OrderDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E1976D2099A68200E70E42 /* OrderDataManagerTests.swift */; };
@@ -141,7 +142,6 @@
 		AC131A1521101AD0001998A0 /* MarketDetailTradeHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC131A1321101AD0001998A0 /* MarketDetailTradeHistoryTableViewCell.xib */; };
 		AC13B30320548767008A72C0 /* BuyAndSellSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13B30120548767008A72C0 /* BuyAndSellSwipeViewController.swift */; };
 		AC13B30420548767008A72C0 /* BuyAndSellSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC13B30220548767008A72C0 /* BuyAndSellSwipeViewController.xib */; };
-		AC13B30A2054A766008A72C0 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13B3082054A766008A72C0 /* BuyViewController.swift */; };
 		AC13B30E2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13B30C2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift */; };
 		AC147BEA208D0613008D5104 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC147BE9208D0613008D5104 /* UIDeviceExtension.swift */; };
 		AC147BEC208D2E54008D5104 /* ImportWalletError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC147BEB208D2E54008D5104 /* ImportWalletError.swift */; };
@@ -630,7 +630,6 @@
 		945800202058FEB500E08DEF /* tokens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tokens.json; sourceTree = "<group>"; };
 		945800222059006200E08DEF /* AssetDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDataManagerTests.swift; sourceTree = "<group>"; };
 		94580024205921D600E08DEF /* PriceQuoteDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceQuoteDataManagerTests.swift; sourceTree = "<group>"; };
-		946262812112F24E00288C5C /* BuyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyViewController.xib; sourceTree = "<group>"; };
 		9464595D20AA9A4C00574485 /* TradeDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeDataManagerTests.swift; sourceTree = "<group>"; };
 		94678B28210D902E00F550D3 /* SendResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendResultViewController.swift; sourceTree = "<group>"; };
 		94678B29210D902E00F550D3 /* SendResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendResultViewController.xib; sourceTree = "<group>"; };
@@ -673,6 +672,8 @@
 		94D94CE12084A9380000BBC8 /* ConfirmationResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationResultViewController.swift; sourceTree = "<group>"; };
 		94DAACB120BBF24B0097707E /* OrderQRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderQRCodeViewController.swift; sourceTree = "<group>"; };
 		94DCE550205FAC07005618E4 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
+		94DFE4022122BD47000E1831 /* BuyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyViewController.xib; sourceTree = "<group>"; };
+		94DFE4032122BD47000E1831 /* BuyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		94E185962051451C00D86FFA /* Initable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initable.swift; sourceTree = "<group>"; };
 		94E185982051455C00D86FFA /* SimpleRespond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRespond.swift; sourceTree = "<group>"; };
 		94E1976D2099A68200E70E42 /* OrderDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDataManagerTests.swift; sourceTree = "<group>"; };
@@ -715,7 +716,6 @@
 		AC131A1321101AD0001998A0 /* MarketDetailTradeHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketDetailTradeHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		AC13B30120548767008A72C0 /* BuyAndSellSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyAndSellSwipeViewController.swift; sourceTree = "<group>"; };
 		AC13B30220548767008A72C0 /* BuyAndSellSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyAndSellSwipeViewController.xib; sourceTree = "<group>"; };
-		AC13B3082054A766008A72C0 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		AC13B30C2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrderConfirmationViewController.swift; sourceTree = "<group>"; };
 		AC147BE9208D0613008D5104 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		AC147BEB208D2E54008D5104 /* ImportWalletError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletError.swift; sourceTree = "<group>"; };
@@ -1264,9 +1264,9 @@
 			isa = PBXGroup;
 			children = (
 				AC13B30120548767008A72C0 /* BuyAndSellSwipeViewController.swift */,
+				94DFE4032122BD47000E1831 /* BuyViewController.swift */,
+				94DFE4022122BD47000E1831 /* BuyViewController.xib */,
 				AC13B30220548767008A72C0 /* BuyAndSellSwipeViewController.xib */,
-				AC13B3082054A766008A72C0 /* BuyViewController.swift */,
-				946262812112F24E00288C5C /* BuyViewController.xib */,
 				AC13B30C2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift */,
 				94AA0A9D211550440092D2CE /* PlaceOrderConfirmationViewController.xib */,
 				94D94CE12084A9380000BBC8 /* ConfirmationResultViewController.swift */,
@@ -2507,7 +2507,6 @@
 			files = (
 				FF9C7DDA208D55F8004687AD /* Settings.bundle in Resources */,
 				AC8DBC6E20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib in Resources */,
-				946262822112F24E00288C5C /* BuyViewController.xib in Resources */,
 				AC798E4F2022B93A0071D477 /* LaunchScreen.storyboard in Resources */,
 				AC5E0DDF203B447700AF03C7 /* WalletBalanceTableViewCell.xib in Resources */,
 				AC31CE5C205B993E00A30335 /* Roboto-BlackItalic.ttf in Resources */,
@@ -2638,6 +2637,7 @@
 				ACB9119120266EC200F14644 /* AddCustomizedTokenViewController.xib in Resources */,
 				AC2ACA5520FA0EC3009C77E7 /* Rubik-Regular.ttf in Resources */,
 				94116355211AF512001043BF /* SetupWalletViewController.xib in Resources */,
+				94DFE4042122BD48000E1831 /* BuyViewController.xib in Resources */,
 				AC54FD7F204FC6EE007E1DEB /* OpenSans-Italic.ttf in Resources */,
 				AC54FD82204FC6F2007E1DEB /* OpenSans-Light.ttf in Resources */,
 				ACE58B8620BE796A005BC1C8 /* VerifyMnemonicViewController.xib in Resources */,
@@ -3014,7 +3014,6 @@
 				AC5288B4208300580002AEAD /* DateUtil.swift in Sources */,
 				940B45222060F67E00ADE2B9 /* PriceDataManager.swift in Sources */,
 				AC9A273D20A577E900DB04AC /* Double+Extension.swift in Sources */,
-				AC13B30A2054A766008A72C0 /* BuyViewController.swift in Sources */,
 				ACB5DDA2202D6F9400140A09 /* UIViewExtension.swift in Sources */,
 				943C1CAE20CE1E0B008A8CED /* AuthorizeDataManager.swift in Sources */,
 				94B5CA8C204FE8E40081BA93 /* ETH_Transaction.swift in Sources */,
@@ -3124,6 +3123,7 @@
 				948952D3205A74BE009B03FE /* Transaction.swift in Sources */,
 				AC0CD57F20D21F8400ABB7BA /* TabBarItemHighlightableContentView.swift in Sources */,
 				AC2CFAA120BB3BEE00387DB1 /* BiometricType.swift in Sources */,
+				94DFE4052122BD48000E1831 /* BuyViewController.swift in Sources */,
 				AC4B894B2110262B00643910 /* MarketTradeHistoryDataManager.swift in Sources */,
 				AC9DC45821159084002D7D23 /* MiniToLargeViewAnimator.swift in Sources */,
 				94231DEB20BD671700A4FDC3 /* PaddingLabel.swift in Sources */,
