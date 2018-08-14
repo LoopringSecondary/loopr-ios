@@ -21,7 +21,7 @@ extension NotificationBanner {
         } else if style == .danger {
             leftView.image = UIImage(named: "Failed")
         } else if style == .warning {
-            leftView.image = UIImage(named: "Warn")
+            leftView.image = UIImage(named: "Warning")
         }
         let banner = NotificationBanner(attributedTitle: attributeString, leftView: leftView, style: style, colors: NotificationBannerStyle())
         return banner

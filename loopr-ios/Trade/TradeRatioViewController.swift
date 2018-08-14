@@ -28,7 +28,7 @@ class TradeRatioViewController: UIViewController, UIPickerViewDelegate, UIPicker
         self.modalPresentationStyle = .custom
         pickerView.delegate = self
         pickerView.dataSource = self
-        titleArray = Array(stride(from: 5, through: 100, by: 5))
+        titleArray = Array(stride(from: 100, through: 5, by: -5))
         
         titleLabel.setTitleCharFont()
         titleLabel.text = LocalizedString("Trade Ratio", comment: "")
