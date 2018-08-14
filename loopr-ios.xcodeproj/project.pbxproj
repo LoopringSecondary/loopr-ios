@@ -65,7 +65,6 @@
 		94768CA4210DCB2300B5977B /* TradeSwipeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94768CA3210DCB2300B5977B /* TradeSwipeType.swift */; };
 		948125652119B10B00453225 /* CityPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948125642119B10B00453225 /* CityPartner.swift */; };
 		948125672119B38E00453225 /* CityPartnerDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948125662119B38E00453225 /* CityPartnerDataManager.swift */; };
-		948125692119B59300453225 /* CityPartnerRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948125682119B59300453225 /* CityPartnerRole.swift */; };
 		948952D3205A74BE009B03FE /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948952D2205A74BE009B03FE /* Transaction.swift */; };
 		948BAD8420C4EBFA001F279F /* RawTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948BAD8320C4EBFA001F279F /* RawTransaction.swift */; };
 		949629DB204E836400858F03 /* Depth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DA204E836400858F03 /* Depth.swift */; };
@@ -639,7 +638,6 @@
 		94768CA3210DCB2300B5977B /* TradeSwipeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSwipeType.swift; sourceTree = "<group>"; };
 		948125642119B10B00453225 /* CityPartner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPartner.swift; sourceTree = "<group>"; };
 		948125662119B38E00453225 /* CityPartnerDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPartnerDataManager.swift; sourceTree = "<group>"; };
-		948125682119B59300453225 /* CityPartnerRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPartnerRole.swift; sourceTree = "<group>"; };
 		948952D2205A74BE009B03FE /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		948BAD8320C4EBFA001F279F /* RawTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawTransaction.swift; sourceTree = "<group>"; };
 		949629DA204E836400858F03 /* Depth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Depth.swift; sourceTree = "<group>"; };
@@ -2094,7 +2092,6 @@
 				94768CA3210DCB2300B5977B /* TradeSwipeType.swift */,
 				94EE76A32113F21B009D6A90 /* OrderHistorySwipeType.swift */,
 				948125642119B10B00453225 /* CityPartner.swift */,
-				948125682119B59300453225 /* CityPartnerRole.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3004,7 +3001,6 @@
 				94E665E9207234C5001328BF /* OrderTableViewCell.swift in Sources */,
 				AC9280E1202EC53D0009B574 /* TradeNavigationViewController.swift in Sources */,
 				AC5E3E74205E22080051ACFC /* NotificationName.swift in Sources */,
-				948125692119B59300453225 /* CityPartnerRole.swift in Sources */,
 				AC31B95F204A8E4F00B16155 /* WalletDescriptor.swift in Sources */,
 				AC37566D2038D37400AADC60 /* UnlockWalletSwipeViewController.swift in Sources */,
 				949774F021181E38001BF79D /* TradeRatioViewController.swift in Sources */,

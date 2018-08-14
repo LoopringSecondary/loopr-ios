@@ -94,10 +94,12 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         
         advancedButton.addTarget(self, action: #selector(pressedAdvancedButton), for: .touchUpInside)
         
-        infoLabel1.setSubTitleCharFont()
+        infoLabel1.font = FontConfigManager.shared.getCharactorFont(size: 11)
+        infoLabel1.theme_textColor = ["#00000099", "#ffffff66"]
         infoLabel1.text = LocalizedString("1. 转换比例为 1 : 1", comment: "")
         
-        infoLabel2.setSubTitleCharFont()
+        infoLabel2.font = FontConfigManager.shared.getCharactorFont(size: 11)
+        infoLabel2.theme_textColor = ["#00000099", "#ffffff66"]
         infoLabel2.text = LocalizedString("2. 系统将保留0.01ETH作为油费，以保证后续可以发送交易", comment: "")
 
         convertButton.title = LocalizedString("Yes, convert now!", comment: "")

@@ -14,11 +14,6 @@ class CityPartnerDataManager {
     
     var invitationCode: String?
     var partnerAddress: String?
-    var role: CityPartnerRole = .customer
-    
-    func getClientRole() -> CityPartnerRole {
-        return self.role
-    }
     
     func submitCode(code: String, handler: @escaping (_ error: Error?) -> Void) {
         LoopringAPIRequest.activateCustumerInvitation(activateCode: code, completionHandler: { result, error in
@@ -28,19 +23,7 @@ class CityPartnerDataManager {
             }
             self.invitationCode = result["invitationCode"].stringValue
             self.partnerAddress = result["walletAddress"].stringValue
-            self.updateClientRole()
             handler(nil)
         })
-    }
-    
-    func updateClientRole() {
-        let wallets = AppWalletDataManager.shared.getWallets()
-        if wallets.contains(where: { (wallet) -> Bool in
-            return wallet.address.lowercased() == self.partnerAddress?.lowercased()
-        }) {
-            self.role = .cityPartner
-        } else {
-            self.role = .cityClient
-        }
     }
 }
