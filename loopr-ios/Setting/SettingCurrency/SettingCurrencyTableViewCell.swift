@@ -10,8 +10,11 @@ import UIKit
 
 class SettingCurrencyTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var currencyImageView: UIImageView!
     @IBOutlet weak var currencyDisplayLabel: UILabel!
+    @IBOutlet weak var enabledIcon: UIImageView!
+
+    @IBOutlet weak var seperateLineUp: UIView!
+    @IBOutlet weak var seperateLineDown: UIView!
     
     var currency: Currency?
     
@@ -19,11 +22,19 @@ class SettingCurrencyTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
 
+        selectionStyle = .none
+        accessoryType = .none
+        
         currencyDisplayLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
-        currencyDisplayLabel.theme_textColor = GlobalPicker.textColor
+        currencyDisplayLabel.theme_textColor = GlobalPicker.textLightColor
 
         theme_tintColor = GlobalPicker.textColor
         theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        
+        enabledIcon.image = UIImage(named: "enabled-dark")
+        enabledIcon.contentMode = .center
+        seperateLineUp.backgroundColor = UIColor.dark3
+        seperateLineDown.backgroundColor = UIColor.dark3
     }
 
     class func getCellIdentifier() -> String {
@@ -31,13 +42,13 @@ class SettingCurrencyTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 80
+        return 51
     }
     
     func update() {
         if let currency = self.currency {
-            currencyImageView.image = currency.icon
-            currencyDisplayLabel.text = currency.name
+            currencyDisplayLabel.text = currency.description
         }
     }
+
 }

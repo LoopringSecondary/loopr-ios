@@ -9,11 +9,12 @@
 import Foundation
 import UIKit
 
-class Currency: Equatable {
+class Currency: Equatable, CustomStringConvertible {
     
     var locale: String
     let name: String
     let icon: UIImage?
+    var description: String
     
     let map = [
         "en_US": "USD",
@@ -25,13 +26,14 @@ class Currency: Equatable {
         self.name = name
         self.icon = UIImage(named: name)
         self.locale = "en_US"
+        self.description = LocalizedString(name, comment: "")
         map.forEach { (k, v) in
             if v == name {
                 self.locale = k
             }
         }
     }
-    
+
     static func == (lhs: Currency, rhs: Currency) -> Bool {
         return lhs.name == rhs.name
     }

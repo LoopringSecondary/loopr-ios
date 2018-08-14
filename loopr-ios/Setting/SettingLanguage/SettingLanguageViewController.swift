@@ -21,6 +21,7 @@ class SettingLanguageViewController: UIViewController, UITableViewDelegate, UITa
 
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
 
         self.navigationItem.title = LocalizedString("Language", comment: "")
@@ -40,22 +41,29 @@ class SettingLanguageViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return SettingLanguageTableViewCell.getHeight()
+        return SettingCurrencyTableViewCell.getHeight()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: SettingLanguageTableViewCell.getCellIdentifier()) as? SettingLanguageTableViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: SettingCurrencyTableViewCell.getCellIdentifier()) as? SettingCurrencyTableViewCell
         if cell == nil {
-            let nib = Bundle.main.loadNibNamed("SettingLanguageTableViewCell", owner: self, options: nil)
-            cell = nib![0] as? SettingLanguageTableViewCell
+            let nib = Bundle.main.loadNibNamed("SettingCurrencyTableViewCell", owner: self, options: nil)
+            cell = nib![0] as? SettingCurrencyTableViewCell
         }
 
-        cell?.leftLabel.text = languages[indexPath.row].displayName
+        cell?.currencyDisplayLabel.text = languages[indexPath.row].displayName
         
         if SettingDataManager.shared.getCurrentLanguage() == languages[indexPath.row] {
-            cell?.accessoryType = .checkmark
+            cell?.enabledIcon.isHidden = false
         } else {
-            cell?.accessoryType = .none
+            cell?.enabledIcon.isHidden = true
+        }
+        cell?.update()
+        
+        if indexPath.row == 0 {
+            cell?.seperateLineUp.isHidden = false
+        } else {
+            cell?.seperateLineUp.isHidden = true
         }
 
         return cell!

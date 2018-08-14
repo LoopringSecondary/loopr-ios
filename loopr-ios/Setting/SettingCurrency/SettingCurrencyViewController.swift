@@ -21,6 +21,7 @@ class SettingCurrencyViewController: UIViewController, UITableViewDelegate, UITa
         currencies = SettingDataManager.shared.getSupportedCurrencies()
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
         
         self.navigationItem.title = LocalizedString("Currency", comment: "")
@@ -47,15 +48,21 @@ class SettingCurrencyViewController: UIViewController, UITableViewDelegate, UITa
         if cell == nil {
             let nib = Bundle.main.loadNibNamed("SettingCurrencyTableViewCell", owner: self, options: nil)
             cell = nib![0] as? SettingCurrencyTableViewCell
-            cell?.selectionStyle = .none
         }
         cell?.currency = currencies[indexPath.row]
         if SettingDataManager.shared.getCurrentCurrency() == currencies[indexPath.row] {
-            cell?.accessoryType = .checkmark
+            cell?.enabledIcon.isHidden = false
         } else {
-            cell?.accessoryType = .none
+            cell?.enabledIcon.isHidden = true
         }
         cell?.update()
+        
+        if indexPath.row == 0 {
+            cell?.seperateLineUp.isHidden = false
+        } else {
+            cell?.seperateLineUp.isHidden = true
+        }
+
         return cell!
     }
     

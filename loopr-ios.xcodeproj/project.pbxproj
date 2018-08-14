@@ -171,8 +171,6 @@
 		AC2ACA5E21006DB8009C77E7 /* UIViewController+NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2ACA5D21006DB8009C77E7 /* UIViewController+NavigationBar.swift */; };
 		AC2ACA612102E7B2009C77E7 /* SettingStyleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2ACA5F2102E7B1009C77E7 /* SettingStyleTableViewCell.swift */; };
 		AC2ACA622102E7B2009C77E7 /* SettingStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA602102E7B1009C77E7 /* SettingStyleTableViewCell.xib */; };
-		AC2ACA652102EBBE009C77E7 /* SettingLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2ACA632102EBBC009C77E7 /* SettingLanguageTableViewCell.swift */; };
-		AC2ACA662102EBBE009C77E7 /* SettingLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA642102EBBD009C77E7 /* SettingLanguageTableViewCell.xib */; };
 		AC2ACA83210305F8009C77E7 /* TradeFAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2ACA68210305F7009C77E7 /* TradeFAQViewController.swift */; };
 		AC2ACA84210305F8009C77E7 /* TradeFAQTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA69210305F7009C77E7 /* TradeFAQTableViewCell.xib */; };
 		AC2ACA85210305F8009C77E7 /* TradeFAQDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2ACA6A210305F8009C77E7 /* TradeFAQDetailViewController.swift */; };
@@ -747,8 +745,6 @@
 		AC2ACA5D21006DB8009C77E7 /* UIViewController+NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationBar.swift"; sourceTree = "<group>"; };
 		AC2ACA5F2102E7B1009C77E7 /* SettingStyleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingStyleTableViewCell.swift; sourceTree = "<group>"; };
 		AC2ACA602102E7B1009C77E7 /* SettingStyleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingStyleTableViewCell.xib; sourceTree = "<group>"; };
-		AC2ACA632102EBBC009C77E7 /* SettingLanguageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingLanguageTableViewCell.swift; sourceTree = "<group>"; };
-		AC2ACA642102EBBD009C77E7 /* SettingLanguageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingLanguageTableViewCell.xib; sourceTree = "<group>"; };
 		AC2ACA68210305F7009C77E7 /* TradeFAQViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeFAQViewController.swift; sourceTree = "<group>"; };
 		AC2ACA69210305F7009C77E7 /* TradeFAQTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TradeFAQTableViewCell.xib; sourceTree = "<group>"; };
 		AC2ACA6A210305F8009C77E7 /* TradeFAQDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeFAQDetailViewController.swift; sourceTree = "<group>"; };
@@ -1689,8 +1685,6 @@
 			children = (
 				AC76E47120493CAE008BA229 /* SettingLanguageViewController.swift */,
 				AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */,
-				AC2ACA632102EBBC009C77E7 /* SettingLanguageTableViewCell.swift */,
-				AC2ACA642102EBBD009C77E7 /* SettingLanguageTableViewCell.xib */,
 			);
 			path = SettingLanguage;
 			sourceTree = "<group>";
@@ -2604,7 +2598,6 @@
 				ACB729D1205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.xib in Resources */,
 				AC54FD7C204FC6EB007E1DEB /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				AC2C93D42105AE7A004B8456 /* GenerateWalletEnterPasswordViewController.xib in Resources */,
-				AC2ACA662102EBBE009C77E7 /* SettingLanguageTableViewCell.xib in Resources */,
 				AC31CE62205B994700A30335 /* Roboto-BoldItalic.ttf in Resources */,
 				AC2ACA88210305F8009C77E7 /* TradeFAQDetailViewController.xib in Resources */,
 				ACE65E4620720500001EE499 /* MnemonicCollectionViewCell.xib in Resources */,
@@ -2918,7 +2911,6 @@
 				AC3756782038D7E200AADC60 /* UnlockKeystoreViewController.swift in Sources */,
 				ACB5DD95202C434B00140A09 /* EthereumAPIRequest.swift in Sources */,
 				ACDBF10C203FEA3E000F0DEC /* ReorderGestureRecognizer.swift in Sources */,
-				AC2ACA652102EBBE009C77E7 /* SettingLanguageTableViewCell.swift in Sources */,
 				ACDBF105203FE7D5000F0DEC /* ReorderSnapshotView.swift in Sources */,
 				ACE6F722204221260039273D /* Themes.swift in Sources */,
 				ACB9117C20256BBA00F14644 /* TradingPair.swift in Sources */,
