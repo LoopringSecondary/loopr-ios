@@ -69,12 +69,7 @@ class OrderQRCodeViewController: UIViewController {
     
     func getOrderDataFromLocal(order: OriginalOrder) -> String? {
         let defaults = UserDefaults.standard
-        if let orderData = defaults.dictionary(forKey: UserDefaultsKeys.p2pOrder.rawValue) {
-            if let authPrivateKey = orderData[order.hash] as? String {
-                return authPrivateKey
-            }
-        }
-        return nil
+        return defaults.string(forKey: order.hash) ?? nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -84,12 +79,12 @@ class OrderQRCodeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let order = self.order else { return }
+        guard let order = self.order, let image = self.qrcodeImageCIImage else { return }
         generateQRCode(order: order)
         qrcodeImageView.image = qrcodeImage
-        let scaleX = qrcodeImageView.frame.size.width / qrcodeImageCIImage.extent.size.width
-        let scaleY = qrcodeImageView.frame.size.height / qrcodeImageCIImage.extent.size.height
-        let transformedImage = qrcodeImageCIImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
+        let scaleX = qrcodeImageView.frame.size.width / image.extent.size.width
+        let scaleY = qrcodeImageView.frame.size.height / image.extent.size.height
+        let transformedImage = image.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
         qrcodeImageView.image = UIImage.init(ciImage: transformedImage)
     }
     

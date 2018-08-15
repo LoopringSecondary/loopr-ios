@@ -50,7 +50,7 @@ class OriginalOrder {
         let (privateKey, walletAddress) = Wallet.generateRandomWallet()
         self.authAddr = walletAddress
         self.authPrivateKey = privateKey
-        self.walletAddress = RelayAPIConfiguration.orderWalletAddress
+        self.walletAddress = PartnerDataManager.shared.getWalletAddress()
         self.marginSplitPercentage = UInt8(SettingDataManager.shared.getMarginSplit() * 100)
     }
 

@@ -332,7 +332,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     func preserveMaker(order: OriginalOrder) {
         let defaults = UserDefaults.standard
         let orderData = [order.hash: order.authPrivateKey]
-        defaults.set(orderData, forKey: UserDefaultsKeys.p2pOrder.rawValue)
+        defaults.set(order.authPrivateKey, forKey: order.hash)
     }
     
     func pushController() {

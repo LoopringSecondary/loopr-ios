@@ -30,8 +30,6 @@
 		941138C8210F12AD007FDC82 /* TTLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941138C6210F12AD007FDC82 /* TTLViewController.xib */; };
 		94116355211AF512001043BF /* SetupWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94116354211AF512001043BF /* SetupWalletViewController.xib */; };
 		94116357211AF51F001043BF /* SetupWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94116356211AF51F001043BF /* SetupWalletViewController.swift */; };
-		9411635E211AFA18001043BF /* ActivateCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9411635C211AFA18001043BF /* ActivateCodeViewController.swift */; };
-		9411635F211AFA18001043BF /* ActivateCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9411635D211AFA18001043BF /* ActivateCodeViewController.xib */; };
 		9413F69120B802CB00524D2D /* AmountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9413F69020B802CB00524D2D /* AmountButton.swift */; };
 		9413F69520B80E2600524D2D /* AmountStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9413F69420B80E2600524D2D /* AmountStackView.swift */; };
 		9415543920C0F1BF007AAB87 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9415543820C0F1BF007AAB87 /* UILabelExtension.swift */; };
@@ -64,7 +62,7 @@
 		94768CA2210DCABE00B5977B /* TradeSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94768CA0210DCABE00B5977B /* TradeSwipeViewController.xib */; };
 		94768CA4210DCB2300B5977B /* TradeSwipeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94768CA3210DCB2300B5977B /* TradeSwipeType.swift */; };
 		948125652119B10B00453225 /* CityPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948125642119B10B00453225 /* CityPartner.swift */; };
-		948125672119B38E00453225 /* CityPartnerDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948125662119B38E00453225 /* CityPartnerDataManager.swift */; };
+		948125672119B38E00453225 /* PartnerDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948125662119B38E00453225 /* PartnerDataManager.swift */; };
 		948952D3205A74BE009B03FE /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948952D2205A74BE009B03FE /* Transaction.swift */; };
 		948BAD8420C4EBFA001F279F /* RawTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948BAD8320C4EBFA001F279F /* RawTransaction.swift */; };
 		949629DB204E836400858F03 /* Depth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DA204E836400858F03 /* Depth.swift */; };
@@ -603,8 +601,6 @@
 		941138C6210F12AD007FDC82 /* TTLViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TTLViewController.xib; sourceTree = "<group>"; };
 		94116354211AF512001043BF /* SetupWalletViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupWalletViewController.xib; sourceTree = "<group>"; };
 		94116356211AF51F001043BF /* SetupWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupWalletViewController.swift; sourceTree = "<group>"; };
-		9411635C211AFA18001043BF /* ActivateCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivateCodeViewController.swift; sourceTree = "<group>"; };
-		9411635D211AFA18001043BF /* ActivateCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivateCodeViewController.xib; sourceTree = "<group>"; };
 		9413F69020B802CB00524D2D /* AmountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountButton.swift; sourceTree = "<group>"; };
 		9413F69420B80E2600524D2D /* AmountStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountStackView.swift; sourceTree = "<group>"; };
 		9415543820C0F1BF007AAB87 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
@@ -637,7 +633,7 @@
 		94768CA0210DCABE00B5977B /* TradeSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeSwipeViewController.xib; sourceTree = "<group>"; };
 		94768CA3210DCB2300B5977B /* TradeSwipeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSwipeType.swift; sourceTree = "<group>"; };
 		948125642119B10B00453225 /* CityPartner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPartner.swift; sourceTree = "<group>"; };
-		948125662119B38E00453225 /* CityPartnerDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPartnerDataManager.swift; sourceTree = "<group>"; };
+		948125662119B38E00453225 /* PartnerDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerDataManager.swift; sourceTree = "<group>"; };
 		948952D2205A74BE009B03FE /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		948BAD8320C4EBFA001F279F /* RawTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawTransaction.swift; sourceTree = "<group>"; };
 		949629DA204E836400858F03 /* Depth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Depth.swift; sourceTree = "<group>"; };
@@ -2118,7 +2114,7 @@
 				941B1EFB209C41BB00710DFF /* GasDataManager.swift */,
 				AC971EC720BB412200EDEDD0 /* AuthenticationDataManager.swift */,
 				943C1CAD20CE1E0B008A8CED /* AuthorizeDataManager.swift */,
-				948125662119B38E00453225 /* CityPartnerDataManager.swift */,
+				948125662119B38E00453225 /* PartnerDataManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -2381,8 +2377,6 @@
 				AC99CF502083E708000AE4BD /* GenerateWalletEnterNameAndPassword */,
 				AC5E0DD2203A848300AF03C7 /* GenerateMnemonic */,
 				AC3756752038D70D00AADC60 /* UnlockWallet */,
-				9411635C211AFA18001043BF /* ActivateCodeViewController.swift */,
-				9411635D211AFA18001043BF /* ActivateCodeViewController.xib */,
 			);
 			path = SetupWallet;
 			sourceTree = "<group>";
@@ -2657,7 +2651,6 @@
 				AC9DC45F211AC92C002D7D23 /* TradeViewOnlyViewController.xib in Resources */,
 				AC31CE77205B996400A30335 /* Roboto-Thin.ttf in Resources */,
 				AC54FD88204FC6F8007E1DEB /* OpenSans-Regular.ttf in Resources */,
-				9411635F211AFA18001043BF /* ActivateCodeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2939,7 +2932,6 @@
 				AC4F601420773E9D00F1D954 /* EthError.swift in Sources */,
 				94BFF9D221073EE300A0BE8B /* SetGasViewController.swift in Sources */,
 				94678B2A210D902E00F550D3 /* SendResultViewController.swift in Sources */,
-				9411635E211AFA18001043BF /* ActivateCodeViewController.swift in Sources */,
 				AC4142062038B66F0089861D /* AppWallet.swift in Sources */,
 				ACB97C7020715BC100775D4C /* MnemonicQuestion.swift in Sources */,
 				940B45202060F67E00ADE2B9 /* OrderDataManager.swift in Sources */,
@@ -3021,7 +3013,7 @@
 				9475A2EE207EF81300200155 /* OrderDetailViewController.swift in Sources */,
 				ACB41A6C20B54A2D00A92C9D /* AuthenticationNavigationViewController.swift in Sources */,
 				AC2ACA85210305F8009C77E7 /* TradeFAQDetailViewController.swift in Sources */,
-				948125672119B38E00453225 /* CityPartnerDataManager.swift in Sources */,
+				948125672119B38E00453225 /* PartnerDataManager.swift in Sources */,
 				AC9280E7202F5A010009B574 /* UIStyleConfig.swift in Sources */,
 				AC31CE17205A121000A30335 /* NumericKeyboardProtocol.swift in Sources */,
 				AC31CE142057B5A400A30335 /* TradeReviewViewController.swift in Sources */,

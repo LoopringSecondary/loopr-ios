@@ -100,7 +100,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         
         infoLabel2.font = FontConfigManager.shared.getCharactorFont(size: 11)
         infoLabel2.theme_textColor = ["#00000099", "#ffffff66"]
-        infoLabel2.text = LocalizedString("2. 系统将保留0.01ETH作为油费，以保证后续可以发送交易", comment: "")
+        infoLabel2.text = LocalizedString("2. 系统将保留 0.01 ETH 作为油费，以保证后续可以发送交易", comment: "")
 
         convertButton.title = LocalizedString("Yes, convert now!", comment: "")
         convertButton.setupSecondary(height: 44)
@@ -269,7 +269,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     }
     
     func validate() -> GethBigInt? {
-        var result: GethBigInt? = nil
+        var result: GethBigInt?
         if let text = amountSTextField.text,
             let inputAmount = Double(text), let maxAmount = asset?.balance {
             if inputAmount > 0 {

@@ -48,6 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         PriceDataManager.shared.startGetPriceQuote()
         MarketDataManager.shared.startGetTicker()
+        PartnerDataManager.shared.activateInvitation()
+        
         
         OrderDataManager.shared.getOrdersFromServer { (_, _) in }
         

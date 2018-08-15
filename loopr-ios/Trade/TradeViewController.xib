@@ -210,7 +210,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5R-iI-uJC">
-                                    <rect key="frame" x="295.33333333333331" y="355" width="41.666666666666686" height="40"/>
+                                    <rect key="frame" x="291.33333333333331" y="355" width="41.666666666666686" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="Olm-Fn-aHM"/>
                                     </constraints>
@@ -219,7 +219,11 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0T-VM-NU0">
-                                    <rect key="frame" x="345" y="363" width="24" height="24"/>
+                                    <rect key="frame" x="245" y="363" width="124" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="124" id="R2e-sG-8pS"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="88" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" image="Arrow-button-right-dark"/>
                                     <connections>
                                         <action selector="pressedRatioButton:" destination="-1" eventType="touchUpInside" id="fPH-MS-dyW"/>
@@ -269,7 +273,7 @@
                                 <constraint firstItem="AoE-MP-EM2" firstAttribute="leading" secondItem="Fb9-mL-KG5" secondAttribute="leading" id="eUI-Md-dxm"/>
                                 <constraint firstAttribute="trailing" secondItem="Niq-X3-TVH" secondAttribute="trailing" constant="16" id="g8k-pt-KYn"/>
                                 <constraint firstItem="Fb9-mL-KG5" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="15" id="gkx-hT-CSd"/>
-                                <constraint firstItem="a0T-VM-NU0" firstAttribute="leading" secondItem="Q5R-iI-uJC" secondAttribute="trailing" constant="8" id="hJh-le-R4h"/>
+                                <constraint firstItem="a0T-VM-NU0" firstAttribute="leading" secondItem="Q5R-iI-uJC" secondAttribute="trailing" constant="-88" id="hJh-le-R4h"/>
                                 <constraint firstItem="Niq-X3-TVH" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="16" id="jJf-bZ-191"/>
                                 <constraint firstItem="nYT-au-ghz" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="15" id="lwK-nK-ufU"/>
                                 <constraint firstItem="eJV-rg-daP" firstAttribute="leading" secondItem="QQK-Xq-OFM" secondAttribute="trailing" constant="-10" id="ove-8o-YfN"/>

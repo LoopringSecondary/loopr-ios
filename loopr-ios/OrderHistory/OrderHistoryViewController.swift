@@ -204,7 +204,6 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
                     })
                 }))
                 alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
-                    
                 }))
                 self.present(alert, animated: true, completion: nil)
             }

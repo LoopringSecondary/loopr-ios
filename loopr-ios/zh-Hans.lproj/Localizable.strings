@@ -159,7 +159,7 @@
 "50004" = "抱歉，双方订单数额不匹配，请核对后重新下单";
 "50005" = "抱歉，订单信息重复，请核对后重新下单";
 "50006" = "抱歉，订单已过期，请扫描其他二维码后重新下单";
-"50008" = "抱歉，无法获取当前下单信息，，请稍后重试";
+"50008" = "抱歉，无法获取当前下单信息，请稍后重试";
 "Information of two orders not complete" = "Information of two orders not complete";
 "Sorry. Network error, please try again later" = "Sorry. Network error, please try again later";
 "Order Expires in" = "订单有效时间";
