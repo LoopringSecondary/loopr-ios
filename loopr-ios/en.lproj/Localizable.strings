@@ -207,8 +207,8 @@
 "Please input a correct address" = "Please input a correct address";
 "Enable \(transaction.symbol) To Trade" = "Enable \(transaction.symbol) To Trade";
 "Cancel Order(s)" = "Cancel Order(s)";
-"Enter the amount you have" = "Please input the amount you wish to sell";
-"Enter the amount you get" = "Please input the amount you wish to get";
+"Enter the amount you have" = "Amount you wish to sell";
+"Enter the amount you get" = "Amount you wish to get";
 "My Trade from Loopr-iOS" = "My Trade from Loopr-iOS";
 "Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!" = "Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!";
 "However, please make sure you have enough balance to complete the trade." = "However, please make sure you have enough balance to complete the trade.";

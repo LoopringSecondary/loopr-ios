@@ -18,7 +18,6 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
     var orderDates: [String] = []
     var orders: [String: [Order]] = [:]
     private let refreshControl = UIRefreshControl()
-    var blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
     var viewAppear: Bool = false
     
     override func viewDidLoad() {
@@ -51,10 +50,7 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
         historyTableView.refreshControl = refreshControl
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
-        
-        blurVisualEffectView.alpha = 1
-        blurVisualEffectView.frame = UIScreen.main.bounds
-        
+
         getOrderHistoryFromRelay()
     }
     
@@ -147,26 +143,17 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
             let order = orders[orderDates[indexPath.section]]![indexPath.row]
             cell?.order = order
             cell?.pressedCancelButtonClosure = {
-                self.blurVisualEffectView.alpha = 1.0
                 let title = LocalizedString("You are going to cancel the order.", comment: "")
                 let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
-                    UIView.animate(withDuration: 0.1, animations: {
-                        self.blurVisualEffectView.alpha = 0.0
-                    }, completion: {(_) in
-                        self.blurVisualEffectView.removeFromSuperview()
+                    SendCurrentAppWalletDataManager.shared._cancelOrder(order: order.originalOrder, completion: { (txHash, error) in
+                        self.getOrderHistoryFromRelay()
+                        self.completion(txHash, error)
                     })
-                    SendCurrentAppWalletDataManager.shared._cancelOrder(order: order.originalOrder, completion: self.completion)
-                    self.historyTableView.reloadData()
                 }))
                 alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
-                    UIView.animate(withDuration: 0.1, animations: {
-                        self.blurVisualEffectView.alpha = 0.0
-                    }, completion: {(_) in
-                        self.blurVisualEffectView.removeFromSuperview()
-                    })
                 }))
-                self.navigationController?.view.addSubview(self.blurVisualEffectView)
+
                 self.present(alert, animated: true, completion: nil)
             }
             cell?.update()
@@ -209,7 +196,7 @@ extension P2POrderHistoryViewController {
         DispatchQueue.main.async {
             title = LocalizedString("Order(s) cancelled Successful.", comment: "")
             let banner = NotificationBanner.generate(title: title, style: .success)
-            banner.duration = 5
+            banner.duration = 2
             banner.show()
         }
     }

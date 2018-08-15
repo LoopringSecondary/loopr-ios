@@ -30,7 +30,6 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
     var filteredOrders = [Order]()
     
     var canHideKeyboard = true
-    var blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
     
     convenience init(type: OrderHistorySwipeType) {
         self.init(nibName: nil, bundle: nil)
@@ -64,10 +63,7 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         historyTableView.refreshControl = refreshControl
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
-        
-        blurVisualEffectView.alpha = 1
-        blurVisualEffectView.frame = UIScreen.main.bounds
-        
+
         let item = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.pressOrderSearchButton(_:)))
         self.navigationItem.setRightBarButton(item, animated: true)
         
@@ -199,33 +195,17 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
             }
             cell?.order = order
             cell?.pressedCancelButtonClosure = {
-                self.blurVisualEffectView.alpha = 1.0
                 let title = LocalizedString("You are going to cancel the order.", comment: "")
                 let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
-                    UIView.animate(withDuration: 0.1, animations: {
-                        self.blurVisualEffectView.alpha = 0.0
-                    }, completion: {(_) in
-                        self.blurVisualEffectView.removeFromSuperview()
-                    })
                     SendCurrentAppWalletDataManager.shared._cancelOrder(order: order.originalOrder, completion: { (txHash, error) in
-                        DispatchQueue.main.async {
-                            if error == nil && txHash != nil {
-                                cell?.isHidden = true
-                                self.historyTableView.reloadData()
-                            }
-                        }
+                        self.getOrderHistoryFromRelay()
                         self.completion(txHash, error)
                     })
                 }))
                 alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
-                    UIView.animate(withDuration: 0.1, animations: {
-                        self.blurVisualEffectView.alpha = 0.0
-                    }, completion: {(_) in
-                        self.blurVisualEffectView.removeFromSuperview()
-                    })
+                    
                 }))
-                self.navigationController?.view.addSubview(self.blurVisualEffectView)
                 self.present(alert, animated: true, completion: nil)
             }
             cell?.update()
@@ -267,7 +247,7 @@ extension OrderHistoryViewController {
             print(txHash!)
             title = NSLocalizedString("Order(s) Cancelled Successful.", comment: "")
             let banner = NotificationBanner.generate(title: title, style: .success)
-            banner.duration = 5
+            banner.duration = 2
             banner.show()
         }
     }
