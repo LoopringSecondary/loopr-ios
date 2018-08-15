@@ -60,12 +60,14 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         searchBar.showsCancelButton = false
         searchBar.placeholder = LocalizedString("Search", comment: "")
         searchBar.delegate = self
-        searchBar.searchBarStyle = .minimal
+        searchBar.searchBarStyle = .default
         searchBar.keyboardType = .alphabet
         searchBar.autocapitalizationType = .allCharacters
         searchBar.keyboardAppearance = Themes.isDark() ? .dark : .default
         searchBar.theme_tintColor = GlobalPicker.textColor
         searchBar.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffffcc") : UIColor.init(rgba: "#000000cc")
+        searchBar.setTextFieldColor(color: UIColor.dark3)
+
         self.navigationItem.title = LocalizedString("Tokens", comment: "")
     }
     
@@ -100,12 +102,11 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
         
         self.navigationItem.titleView = searchBarContainer
-        // self.navigationItem.leftBarButtonItem = nil
         // self.navigationItem.hidesBackButton = true
-        
+
         let cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressSearchCancel))
         self.navigationItem.rightBarButtonItems = [cancelBarButton]
-        
+
         searchBar.becomeFirstResponder()
     }
     

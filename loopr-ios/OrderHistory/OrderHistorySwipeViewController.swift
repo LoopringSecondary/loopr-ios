@@ -25,22 +25,10 @@ class OrderHistorySwipeViewController: SwipeViewController, UISearchBarDelegate 
         super.viewDidLoad()
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         
-        // setupSearchBar()
+        setupSearchBar()
         setBackButton()
         self.navigationItem.title = LocalizedString("Orders", comment: "")
         setupChildViewControllers()
-        
-        searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.pressOrderSearchButton(_:)))
-        searchBar.showsCancelButton = false
-        searchBar.placeholder = LocalizedString("Search", comment: "")
-        searchBar.delegate = self
-        searchBar.searchBarStyle = .minimal
-        searchBar.keyboardType = .alphabet
-        searchBar.autocapitalizationType = .allCharacters
-        searchBar.keyboardAppearance = Themes.isDark() ? .dark : .default
-        searchBar.tintColor = Themes.isDark() ? UIColor.init(rgba: "#383838") : UIColor.white
-        searchBar.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffffcc") : UIColor.init(rgba: "#000000cc")
-        self.navigationItem.setRightBarButton(searchButton, animated: true)
     }
     
     func setupChildViewControllers() {
@@ -118,16 +106,18 @@ class OrderHistorySwipeViewController: SwipeViewController, UISearchBarDelegate 
     }
     
     func setupSearchBar() {
+        searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.pressOrderSearchButton(_:)))
         searchBar.showsCancelButton = false
         searchBar.placeholder = LocalizedString("Search", comment: "")
         searchBar.delegate = self
-        searchBar.searchBarStyle = .minimal
+        searchBar.searchBarStyle = .default
         searchBar.keyboardType = .alphabet
-        searchBar.keyboardAppearance = Themes.isDark() ? .dark : .default
         searchBar.autocapitalizationType = .allCharacters
-        let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
-        searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
-        navigationItem.titleView = searchBarContainer
+        searchBar.keyboardAppearance = Themes.isDark() ? .dark : .default
+        searchBar.theme_tintColor = GlobalPicker.textColor
+        searchBar.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffffcc") : UIColor.init(rgba: "#000000cc")
+        searchBar.setTextFieldColor(color: UIColor.dark3)
+        self.navigationItem.setRightBarButton(searchButton, animated: true)
     }
     
     @objc func pressOrderSearchButton(_ button: UIBarButtonItem) {

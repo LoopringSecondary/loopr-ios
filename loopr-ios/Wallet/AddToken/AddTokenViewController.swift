@@ -39,12 +39,13 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         searchBar.showsCancelButton = false
         searchBar.placeholder = LocalizedString("Search", comment: "")
         searchBar.delegate = self
-        searchBar.searchBarStyle = .minimal
+        searchBar.searchBarStyle = .default
         searchBar.keyboardType = .alphabet
         searchBar.autocapitalizationType = .allCharacters
         searchBar.keyboardAppearance = Themes.isDark() ? .dark : .default
         searchBar.theme_tintColor = GlobalPicker.textColor
         searchBar.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffffcc") : UIColor.init(rgba: "#000000cc")
+        searchBar.setTextFieldColor(color: UIColor.dark3)
         self.navigationItem.title = LocalizedString("Tokens", comment: "")
     }
 
