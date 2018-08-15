@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
 
+        _ = TokenDataManager.shared.getTokens()
         AppWalletDataManager.shared.setup()
         CurrentAppWalletDataManager.shared.setup()
         if AppWalletDataManager.shared.getWallets().isEmpty {
@@ -44,7 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Get the estimate gas price when launching the app.
         GasDataManager.shared.getEstimateGasPrice { (_, _) in }
         
-        LoopringSocketIORequest.setup()
         PriceDataManager.shared.startGetPriceQuote()
         MarketDataManager.shared.startGetTicker()
         
@@ -69,6 +69,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             authenticationViewController?.needNavigate = true
             self.window?.rootViewController = authenticationViewController
         }
+
+        // Setup socket io at the end of the launch
+        LoopringSocketIORequest.setup()
         
         return true
     }
