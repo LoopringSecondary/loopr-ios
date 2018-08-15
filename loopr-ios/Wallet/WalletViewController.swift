@@ -93,7 +93,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
 
         if self.isLaunching {
-            SVProgressHUD.show(withStatus: " " + LocalizedString("Loading Data", comment: "") + "  ")
+            SVProgressHUD.show(withStatus: LocalizedString("Loading Data", comment: ""))
         }
 
         CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote(address: CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address, completionHandler: { _, error in
