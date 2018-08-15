@@ -50,7 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MarketDataManager.shared.startGetTicker()
         PartnerDataManager.shared.activateInvitation()
         
-        
         OrderDataManager.shared.getOrdersFromServer { (_, _) in }
         
         _ = SettingDataManager.shared.getCurrentLanguage()

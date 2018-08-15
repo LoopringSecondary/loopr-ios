@@ -19,7 +19,7 @@ class OrderNoDataTableViewCell: UITableViewCell {
         selectionStyle = .none
         self.backgroundColor = .clear
         noDataLabel.setTitleCharFont()
-        noDataLabel.font = UIFont(name: FontConfigManager.shared.getLight(), size: 17.0*UIStyleConfig.scale)
+        noDataLabel.setSubTitleCharFont()
     }
     
     class func getCellIdentifier() -> String {

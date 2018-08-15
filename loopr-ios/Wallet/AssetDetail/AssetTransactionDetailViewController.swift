@@ -142,7 +142,7 @@ class AssetTransactionDetailViewController: UIViewController {
     private func udpateCutoffAndCanceledOrder() {
         typeInfoLabel.isHidden = true
         typeTipLabel.textAlignment = .center
-        typeTipLabel.text = LocalizedString("Cancel Order(s)", comment: "")
+        typeTipLabel.text = LocalizedString("Cancel Order", comment: "")
     }
     
     private func updateDefault(tx: Transaction) {

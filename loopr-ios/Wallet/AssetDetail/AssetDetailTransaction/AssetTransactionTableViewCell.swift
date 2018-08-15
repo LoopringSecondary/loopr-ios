@@ -135,7 +135,7 @@ class AssetTransactionTableViewCell: UITableViewCell {
     private func udpateCutoffAndCanceledOrder() {
         amountLabel.isHidden = true
         displayLabel.isHidden = true
-        titleLabel.text = LocalizedString("Cancel Order(s)", comment: "")
+        titleLabel.text = LocalizedString("Cancel Order", comment: "")
     }
     
     private func updateReceived() {

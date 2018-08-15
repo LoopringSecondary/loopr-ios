@@ -135,7 +135,7 @@ class OrderHistorySwipeViewController: SwipeViewController, UISearchBarDelegate 
         searchBar.resignFirstResponder()
         searchBar.text = nil
         navigationItem.titleView = nil
-        self.navigationItem.title = LocalizedString("Markets", comment: "")
+        self.navigationItem.title = LocalizedString("Orders", comment: "")
         isSearching = false
         viewControllers[self.swipeView.currentIndex].searchTextDidUpdate(searchText: "")
     }

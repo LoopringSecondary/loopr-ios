@@ -186,7 +186,7 @@ extension P2POrderHistoryViewController {
         var title: String = ""
         guard error == nil && txHash != nil else {
             DispatchQueue.main.async {
-                title = LocalizedString("Order(s) cancelled Failed, Please try again.", comment: "")
+                title = LocalizedString("Order cancelled Failed, Please try again.", comment: "")
                 let banner = NotificationBanner.generate(title: title, style: .danger)
                 banner.duration = 5
                 banner.show()
@@ -194,7 +194,7 @@ extension P2POrderHistoryViewController {
             return
         }
         DispatchQueue.main.async {
-            title = LocalizedString("Order(s) cancelled Successful.", comment: "")
+            title = LocalizedString("Order cancelled Successful.", comment: "")
             let banner = NotificationBanner.generate(title: title, style: .success)
             banner.duration = 2
             banner.show()

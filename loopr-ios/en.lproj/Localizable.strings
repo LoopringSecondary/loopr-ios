@@ -181,8 +181,8 @@
 "My Trades" = "My Trades";
 "You are going to cancel all open orders." = "You are going to cancel all open orders.";
 "You are going to cancel the order." = "You are going to cancel the order.";
-"Order(s) cancelled Failed, Please try again." =  "Order(s) cancelled Failed, Please try again.";
-"Order(s) cancelled Successful." = "Order(s) cancelled Successful.";
+"Order cancelled Failed, Please try again." =  "Order cancelled Failed, Please try again.";
+"Order cancelled Successful." = "Order cancelled Successful.";
 "Order Detail" = "Order Detail";
 "Filled/Amount" = "Filled/Amount";
 "Status" = "Status";
@@ -206,7 +206,7 @@
 "Gas is..." = "Gas is...";
 "Please input a correct address" = "Please input a correct address";
 "Enable \(transaction.symbol) To Trade" = "Enable \(transaction.symbol) To Trade";
-"Cancel Order(s)" = "Cancel Order(s)";
+"Cancel Order" = "Cancel Order";
 "Enter the amount you have" = "Amount you wish to sell";
 "Enter the amount you get" = "Amount you wish to get";
 "My Trade from Loopr-iOS" = "My Trade from Loopr-iOS";
@@ -272,7 +272,7 @@
 "Completed" = "Completed";
 "Failed" = "Failed";
 "Other" = "Other";
-"Tokens" = "Tokens";
+"Tokens" = "Select Tokens";
 "Convert to WETH" = "Convert to WETH";
 "Convert to ETH" = "Convert to ETH";
 "Confirm Time" = "Confirm Time";
@@ -370,7 +370,8 @@
 "Password can't be empty." = "Password can't be empty.";
 "The length of password needs to be larger than or equal to 6." = "The length of password needs to be larger than or equal to 6.";
 "Password doesn't match" = "Password doesn't match";
-"ETH_TIP" = "We will preserve 0.01 ETH for gas fee of your subsequent transaction";
+"Convert_TIP" = "● Convert Ratio is 1 : 1";
+"ETH_TIP" = "● We will preserve 0.01 ETH for gas fee of your subsequent transaction";
 "Recommand Price" = "Recommand Price";
 "Set Gas" = "Set Gas";
 "Confirm Mnemonic Word" = "Confirm Mnemonic Word";

@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BuyViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="amountTextField" destination="nYT-au-ghz" id="nxV-hv-rqp"/>
+                <outlet property="amountTokenLabel" destination="0Jz-9H-5xg" id="rTz-Of-FdR"/>
                 <outlet property="buyTipLabel" destination="GAR-qN-xvf" id="zDg-jG-mtJ"/>
                 <outlet property="canInfoLabel" destination="LWT-yJ-0Yl" id="i4c-UY-ryA"/>
                 <outlet property="canTipLabel" destination="thD-97-26H" id="EpQ-SC-fBk"/>
@@ -24,6 +25,7 @@
                 <outlet property="monthButton" destination="E5e-WZ-UWW" id="Cab-4a-p3l"/>
                 <outlet property="nextButton" destination="Fb9-mL-KG5" id="9JP-fm-qQp"/>
                 <outlet property="priceTextField" destination="POe-BV-ibP" id="nH3-M3-fQb"/>
+                <outlet property="priceTokenLabel" destination="lJs-6Q-pnw" id="PHF-7e-Baw"/>
                 <outlet property="scrollView" destination="2G6-mE-e9W" id="mXT-jS-2gr"/>
                 <outlet property="scrollViewButtonLayoutConstraint" destination="7ug-kF-iqF" id="RFv-uP-aPP"/>
                 <outlet property="sellTipLabel" destination="Di1-jg-ePv" id="5VP-Ho-dQe"/>
@@ -60,6 +62,12 @@
                                     <color key="textColor" name="Color-dark4"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJs-6Q-pnw">
+                                    <rect key="frame" x="280.33333333333331" y="31.333333333333336" width="41.666666666666686" height="20.333333333333336"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" name="Color-dark4"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJV-rg-daP">
                                     <rect key="frame" x="316" y="16" width="50" height="50"/>
                                     <constraints>
@@ -89,6 +97,12 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAR-qN-xvf">
                                     <rect key="frame" x="28" y="122" width="26.333333333333329" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" name="Color-dark4"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Jz-9H-5xg">
+                                    <rect key="frame" x="280.33333333333331" y="120.99999999999999" width="41.666666666666686" height="20.333333333333329"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" name="Color-dark4"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -235,14 +249,18 @@
                                 <constraint firstItem="0Cv-AI-Sk9" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="16" id="bGX-GK-MDO"/>
                                 <constraint firstItem="cxj-Vc-B9z" firstAttribute="trailing" secondItem="nYT-au-ghz" secondAttribute="trailing" id="cfx-hU-1KY"/>
                                 <constraint firstItem="Q6B-kI-AAY" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="16" id="dGz-xa-Tya"/>
+                                <constraint firstItem="cxj-Vc-B9z" firstAttribute="leading" secondItem="0Jz-9H-5xg" secondAttribute="trailing" constant="-6" id="g6U-tm-aMA"/>
                                 <constraint firstAttribute="trailing" secondItem="Niq-X3-TVH" secondAttribute="trailing" constant="16" id="g8k-pt-KYn"/>
                                 <constraint firstItem="Di1-jg-ePv" firstAttribute="centerY" secondItem="POe-BV-ibP" secondAttribute="centerY" id="gf6-ua-9QR"/>
                                 <constraint firstItem="Fb9-mL-KG5" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="16" id="gkx-hT-CSd"/>
                                 <constraint firstItem="Niq-X3-TVH" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="16" id="jJf-bZ-191"/>
                                 <constraint firstItem="nYT-au-ghz" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="16" id="lwK-nK-ufU"/>
+                                <constraint firstItem="eJV-rg-daP" firstAttribute="leading" secondItem="lJs-6Q-pnw" secondAttribute="trailing" constant="-6" id="nV9-Zl-o5X"/>
                                 <constraint firstAttribute="trailing" secondItem="bcy-jW-nN7" secondAttribute="trailing" constant="16" id="pKP-07-SO2"/>
+                                <constraint firstItem="0Jz-9H-5xg" firstAttribute="centerY" secondItem="GAR-qN-xvf" secondAttribute="centerY" id="qXq-RA-9Iz"/>
                                 <constraint firstItem="JUT-ee-RXX" firstAttribute="top" secondItem="nYT-au-ghz" secondAttribute="bottom" constant="8" id="qjn-cK-eUw"/>
                                 <constraint firstItem="bcy-jW-nN7" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="16" id="rxb-3b-3X1"/>
+                                <constraint firstItem="lJs-6Q-pnw" firstAttribute="centerY" secondItem="Di1-jg-ePv" secondAttribute="centerY" id="ueK-qa-eMn"/>
                                 <constraint firstItem="bcy-jW-nN7" firstAttribute="top" secondItem="Niq-X3-TVH" secondAttribute="bottom" constant="16" id="xcd-KS-jEM"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
@@ -279,6 +297,9 @@
         </namedColor>
         <namedColor name="Color-dark3">
             <color red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="Color-dark4">
+            <color red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Color-dark4">
             <color red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

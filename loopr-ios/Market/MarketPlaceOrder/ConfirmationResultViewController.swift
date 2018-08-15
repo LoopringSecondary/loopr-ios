@@ -127,13 +127,8 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func pressedDetailsButton(_ sender: UIButton) {
-        if let original = self.order {
-            let order = Order(originalOrder: original, orderStatus: .opened, dealtAmountB: "0.0", dealtAmountS: "0.0")
-            let viewController = OrderDetailViewController()
-            viewController.order = order
-            viewController.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(viewController, animated: true)
-        }
+        let vc = OrderHistorySwipeViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func pressedDoneButton(_ sender: Any) {

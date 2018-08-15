@@ -41,7 +41,7 @@ class TokenSelectTableViewController: UITableViewController, UISearchBarDelegate
         searchBar.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffffcc") : UIColor.init(rgba: "#000000cc")
         searchBar.setTextFieldColor(color: UIColor.dark3)
         
-        self.navigationItem.title = LocalizedString("Assets", comment: "")
+        self.navigationItem.title = LocalizedString("Tokens", comment: "")
     }
 
     override func didReceiveMemoryWarning() {

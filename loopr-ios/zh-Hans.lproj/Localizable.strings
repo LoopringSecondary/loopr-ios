@@ -181,8 +181,8 @@
 "My Trades" = "我的历史成交";
 "You are going to cancel all open orders." = "您将取消所有待成交订单。";
 "You are going to cancel the order." = "您将取消该笔订单";
-"Order(s) cancelled Failed, Please try again." =  "订单取消失败，请稍后重试";
-"Order(s) cancelled Successful." = "订单取消成功";
+"Order cancelled Failed, Please try again." =  "订单取消失败，请稍后重试";
+"Order cancelled Successful." = "订单取消成功";
 "Order Detail" = "订单详情";
 "Filled/Amount" = "完成/总额";
 "Status" = "状态";
@@ -206,7 +206,7 @@
 "Gas is..." = "Gas is...";
 "Please input a correct address" = "请输入正确的地址";
 "Enable \(transaction.symbol) To Trade" = "Enable \(transaction.symbol) To Trade";
-"Cancel Order(s)" = "取消订单";
+"Cancel Order" = "取消订单";
 "Enter the amount you have" = "请输入卖出数额";
 "Enter the amount you get" = "请输入买入数额";
 "My Trade from Loopr-iOS" = "My Trade from Loopr-iOS";
@@ -272,7 +272,7 @@
 "Completed" = "成功";
 "Failed" = "失败";
 "Other" = "其他";
-"Tokens" = "代币";
+"Tokens" = "选择代币";
 "Convert to WETH" = "转换为 WETH";
 "Convert to ETH" = "转换为 ETH";
 "Confirm Time" = "确认时间";
@@ -370,7 +370,8 @@
 "Password can't be empty." = "密码不能为空";
 "The length of password needs to be larger than or equal to 6." = "密码长度必须大于或等于6位";
 "Password doesn't match" = "密码不一致";
-"ETH_TIP" = "我们为您保留 0.01 ETH 作为油费以保证后续可以发送交易";
+"Convert_TIP" = "● 转换比例为 1 : 1";
+"ETH_TIP" = "● 我们为您保留 0.01 ETH 作为油费以保证后续可以发送交易";
 "Recommand Price" = "推荐油价";
 "Set Gas" = "设置油费";
 "Confirm Mnemonic Word" = "确认助记词";
