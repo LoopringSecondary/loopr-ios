@@ -151,7 +151,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         buttons = [hourButton, dayButton, monthButton, customButton]
         hourButton.titleLabel?.font = FontConfigManager.shared.getBoldFont()
         buttons.forEach {
-            $0.titleLabel?.font = FontConfigManager.shared.getDigitalFont()
+            $0.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
             $0.theme_setTitleColor(GlobalPicker.textColor, forState: .selected)
             $0.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
         }
@@ -269,7 +269,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     @IBAction func pressedExpiresButton(_ sender: UIButton) {
         let dict: [Int: Calendar.Component] = [0: .hour, 1: .day, 2: .month]
         for (index, button) in buttons.enumerated() {
-            button.titleLabel?.font = FontConfigManager.shared.getDigitalFont()
+            button.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
             button.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
             if button == sender {
                 if index < 3 {

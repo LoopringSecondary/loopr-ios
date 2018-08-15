@@ -141,9 +141,10 @@ class TradeConfirmationViewController: UIViewController {
     }
     
     func updateLabels(order: OriginalOrder) {
-        tokenSView.update(type: .sell, symbol: order.tokenSell, amount: order.amountSell)
         tokenBView.update(type: .buy, symbol: order.tokenBuy, amount: order.amountBuy)
-        let value = order.amountSell / order.amountBuy
+        tokenSView.update(type: .sell, symbol: order.tokenSell, amount: order.amountSell)
+        let price = order.amountBuy / order.amountSell
+        let value = order.side == "buy" ? 1 / price : price
         priceValueLabel.text = "\(value.withCommas()) \(order.market)"
         priceValueLabel.frame = CGRect(x: UIScreen.main.bounds.width - 15 - 200, y: priceLabel.frame.minY, width: 200, height: 40)
         if let price = PriceDataManager.shared.getPrice(of: "LRC") {
@@ -202,7 +203,6 @@ extension TradeConfirmationViewController {
     }
     
     func pushCompleteController() {
-//        self.close(false)
         let controller = TradeCompleteViewController()
         controller.order = self.order
         controller.verifyInfo = self.verifyInfo

@@ -239,7 +239,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     @IBAction func pressedExpiresButton(_ sender: UIButton) {
         let dict: [Int: Calendar.Component] = [0: .hour, 1: .day, 2: .month]
         for (index, button) in buttons.enumerated() {
-            button.titleLabel?.font = FontConfigManager.shared.getDigitalFont()
+            button.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
             button.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
             if button == sender {
                 if index < 3 {

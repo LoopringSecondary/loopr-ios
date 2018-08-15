@@ -17,7 +17,7 @@ class MainTabController: ESTabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBar.barTintColor = Themes.isDark() ? .dark3 : .white
+        self.tabBar.barTintColor = Themes.isDark() ? .dark2 : .white
         
         // Asset view controller
         viewController1 = WalletNavigationViewController()

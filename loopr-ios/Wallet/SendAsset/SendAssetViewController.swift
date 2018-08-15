@@ -74,6 +74,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         
         // First row: token
         headerButton.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
+        headerButton.theme_setBackgroundImage(GlobalPicker.buttonSelected, forState: .highlighted)
         tokenIconImageView.image = UIImage(named: "ETH")
         tokenHeaderLabel.setTitleDigitFont()
         tokenTotalAmountLabel.textAlignment = .right

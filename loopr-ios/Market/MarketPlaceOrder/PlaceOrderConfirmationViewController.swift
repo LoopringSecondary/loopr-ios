@@ -119,7 +119,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         tokenSView.update(type: .sell, symbol: order.tokenSell, amount: order.amountSell)
         tokenBView.update(type: .buy, symbol: order.tokenBuy, amount: order.amountBuy)
         let price = order.amountBuy / order.amountSell
-        let value = order.side == "buy" ? price : 1 / price
+        let value = order.side == "buy" ? 1 / price : price
         priceValueLabel.text = "\(value.withCommas()) \(order.market)"
         if let price = PriceDataManager.shared.getPrice(of: "LRC") {
             let total = (price * order.lrcFee).currency

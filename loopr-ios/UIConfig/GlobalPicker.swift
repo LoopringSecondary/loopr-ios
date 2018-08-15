@@ -42,6 +42,7 @@ enum GlobalPicker {
     
     // button images
     static let button: ThemeImagePicker = ThemeImagePicker(images: getImage(from: UIColor.init(rgba: "#f5f5f5")), getImage(from: UIColor.init(rgba: "#292929")))
+    static let buttonSelected: ThemeImagePicker = ThemeImagePicker(images: getImage(from: UIColor.init(rgba: "#f5f5f5")), getImage(from: UIColor.init(rgba: "#666666")))
     static let buttonHighlight: ThemeImagePicker = ThemeImagePicker(images: #imageLiteral(resourceName: "Header-plain"), #imageLiteral(resourceName: "Header-plain"))
     static let keyboard: ThemeImagePicker = ThemeImagePicker(images: getImage(from: UIColor.init(rgba: "#f5f5f5")), getImage(from: UIColor.init(rgba: "#8f8f8f")))
     static let keyboardHighlight: ThemeImagePicker = ThemeImagePicker(images: getImage(from: UIColor.init(rgba: "#f5f5f5")), getImage(from: UIColor.init(rgba: "#9f9f9f")))
