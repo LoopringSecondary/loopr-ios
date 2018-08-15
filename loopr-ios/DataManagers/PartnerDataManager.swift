@@ -25,8 +25,11 @@ class PartnerDataManager {
             self.partnerAddress = result["walletAddress"].stringValue
         })
     }
-
+    
     func getWalletAddress() -> String {
-        return self.partnerAddress ?? loopringAddress
+        if let address = self.partnerAddress {
+            return address == "" ? loopringAddress : address
+        }
+        return loopringAddress
     }
 }
