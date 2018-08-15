@@ -9,6 +9,7 @@
 import UIKit
 import NotificationBannerSwift
 import MKDropdownMenu
+import SVProgressHUD
 
 class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, QRCodeScanProtocol {
 
@@ -91,6 +92,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return
         }
 
+        if self.isLaunching {
+            SVProgressHUD.show(withStatus: " " + LocalizedString("Loading Data", comment: "") + "  ")
+        }
+
         CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote(address: CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address, completionHandler: { _, error in
             print("receive CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote() in WalletViewController")
             guard error == nil else {
@@ -103,10 +108,14 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             DispatchQueue.main.async {
                 if self.isLaunching {
+                    SVProgressHUD.dismiss()
                     self.isLaunching = false
                 }
                 self.assetTableView.reloadData()
                 self.refreshControl.endRefreshing()
+                
+                // Then get all balance. It takes times.
+                AppWalletDataManager.shared.getAllBalanceFromRelay()
             }
         })
     }

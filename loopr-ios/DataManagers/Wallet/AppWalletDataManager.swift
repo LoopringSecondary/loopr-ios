@@ -21,7 +21,8 @@ class AppWalletDataManager {
     
     func setup() {
         getAppWalletsFromLocalStorage()
-        getAllBalanceFromRelay()
+        // Move this part to WalletViewController to speed up the app launch time.
+        // getAllBalanceFromRelay()
     }
     
     func logout(appWallet: AppWallet) {
