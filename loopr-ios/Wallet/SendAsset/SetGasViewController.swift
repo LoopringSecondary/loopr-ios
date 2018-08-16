@@ -61,6 +61,7 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
         stepSlider.frame = CGRect(x: 15, y: gasTipLabel.bottomY + 24, width: UIScreen.main.bounds.width - 15 * 2, height: 44)
         stepSlider.delegate = self
         stepSlider.maxCount = 2
+        stepSlider.trackCircleRadius = 0
         stepSlider.setIndex(0, animated: false)
         stepSlider.labels = [LocalizedString("Slow", comment: ""), LocalizedString("Fast", comment: "")]
         containerView.addSubview(stepSlider)

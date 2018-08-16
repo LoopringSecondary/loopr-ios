@@ -93,6 +93,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
 
         if self.isLaunching {
+            // Disable user touch when loading data
             SVProgressHUD.show(withStatus: LocalizedString("Loading Data", comment: ""))
         }
 
