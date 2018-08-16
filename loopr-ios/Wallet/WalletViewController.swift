@@ -96,7 +96,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             SVProgressHUD.show(withStatus: LocalizedString("Loading Data", comment: ""))
         }
 
-        CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote(address: CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address, completionHandler: { _, error in
+        CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote(address: CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address, getPrice: self.isLaunching, completionHandler: { _, error in
             print("receive CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote() in WalletViewController")
             guard error == nil else {
                 print("error=\(String(describing: error))")
@@ -122,11 +122,13 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        getBalanceFromRelay()
+        self.navigationItem.title = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? LocalizedString("Wallet", comment: "")
+
         if let cell = assetTableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? WalletBalanceTableViewCell {
+            cell.setup(animated: false)
             cell.startUpdateBalanceLabelTimer()
         }
-        self.navigationItem.title = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? LocalizedString("Wallet", comment: "")
+        getBalanceFromRelay()        
         
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
@@ -325,7 +327,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 cell = nib![0] as? WalletBalanceTableViewCell
                 cell?.delegate = self
             }
-            cell?.setup()
+            cell?.setup(animated: true)
             if isLaunching {
                 cell?.balanceLabel.setText("", animated: false)
             }

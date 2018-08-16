@@ -58,6 +58,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         let alertController = UIAlertController(title: LocalizedString("Switch to this Wallet", comment: ""), message: nil, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
             CurrentAppWalletDataManager.shared.setCurrentAppWallet(self.appWallet)
+            
             // Pop to SettingViewController
             for controller in self.navigationController!.viewControllers as Array {
                 if controller.isKind(of: SettingViewController.self) {
@@ -68,8 +69,12 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
             // Jump to WalletViewController
             let appDelegate = UIApplication.shared.delegate as? AppDelegate
             if let tabBarController = appDelegate?.window?.rootViewController as? UITabBarController {
-                
-                tabBarController.selectedIndex = 0
+                if let fromView = tabBarController.selectedViewController?.view {
+                    let toView = tabBarController.viewControllers![0]
+                    UIView.transition(from: fromView, to: toView.view, duration: 0.3, options: .transitionCrossDissolve, completion: { (_) in
+                        tabBarController.selectedIndex = 0
+                    })
+                }
             }
         })
         alertController.addAction(defaultAction)

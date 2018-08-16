@@ -48,7 +48,7 @@ class CurrentAppWalletDataManager {
         // TODO: This needs to join TokenLists
         self.assetsInHideSmallMode = []
         self.assets = []
-        self.totalCurrencyValue = 0
+        self.totalCurrencyValue = appWallet.totalCurrency
         
         // Init assets using assetSequence in AppWallet
         for symbol in currentAppWallet!.getAssetSequence() {
@@ -252,24 +252,26 @@ class CurrentAppWalletDataManager {
     }
     
     // JSON RPC
-    func getBalanceAndPriceQuote(address: String, completionHandler: @escaping (_ assets: [Asset], _ error: Error?) -> Void) {
+    func getBalanceAndPriceQuote(address: String, getPrice: Bool, completionHandler: @escaping (_ assets: [Asset], _ error: Error?) -> Void) {
         print("getBalanceAndPriceQuote Current address: \(address)")
         
         var localAssets: [Asset] = []
         let dispatchGroup = DispatchGroup()
-        
-        dispatchGroup.enter()
-        let currency = SettingDataManager.shared.getCurrentCurrency().name
-        LoopringAPIRequest.getPriceQuote(currency: currency, completionHandler: { (priceQuote, error) in
-            print("receive LoopringAPIRequest.getPriceQuote ....")
-            guard error == nil else {
-                print("error=\(String(describing: error))")
-                return
-            }
-            PriceDataManager.shared.setPriceQuote(newPriceQuote: priceQuote!)
-            dispatchGroup.leave()
-        })
-        
+
+        if getPrice {
+            dispatchGroup.enter()
+            let currency = SettingDataManager.shared.getCurrentCurrency().name
+            LoopringAPIRequest.getPriceQuote(currency: currency, completionHandler: { (priceQuote, error) in
+                print("receive LoopringAPIRequest.getPriceQuote ....")
+                guard error == nil else {
+                    print("error=\(String(describing: error))")
+                    return
+                }
+                PriceDataManager.shared.setPriceQuote(newPriceQuote: priceQuote!)
+                dispatchGroup.leave()
+            })
+        }
+
         dispatchGroup.enter()
         LoopringAPIRequest.getBalance(owner: address) { assets, error in
             print("receive LoopringAPIRequest.getBalance ...")

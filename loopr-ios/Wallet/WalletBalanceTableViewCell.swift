@@ -71,11 +71,11 @@ class WalletBalanceTableViewCell: UITableViewCell {
         addressLabel.theme_textColor = GlobalPicker.textLightColor
     }
     
-    func setup() {
+    func setup(animated: Bool) {
         addressLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address ?? ""
         var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
         balance.insert(" ", at: balance.index(after: balance.startIndex))
-        balanceLabel.setText(balance, animated: true)
+        balanceLabel.setText(balance, animated: animated)
         balanceLabel.layoutCharacterLabels()
     }
     
