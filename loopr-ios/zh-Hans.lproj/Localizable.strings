@@ -372,6 +372,8 @@
 "Password doesn't match" = "密码不一致";
 "Convert_TIP" = "● 转换比例为 1 : 1";
 "ETH_TIP" = "● 我们为您保留 0.01 ETH 作为油费以保证后续可以发送交易";
+"Convert_Fail_Tip" = "您的账户中油费不足，请稍后重试";
+"Convert_Success_Tip" = "转换成功，交易哈希值 =";
 "Recommand Price" = "推荐油价";
 "Set Gas" = "设置油费";
 "Confirm Mnemonic Word" = "确认助记词";

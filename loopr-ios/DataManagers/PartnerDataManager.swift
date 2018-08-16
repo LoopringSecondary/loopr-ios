@@ -14,7 +14,7 @@ class PartnerDataManager {
     
     var partner: String?
     var partnerAddress: String?
-    let loopringAddress = "0xb94065482ad64d4c2b9252358d746b39e820a582"
+    let loopringAddress = "0x8E63Bb7Af326de3fc6e09F4c8D54A75c6e236abA"
     
     func activateInvitation() {
         LoopringAPIRequest.activateInvitation(completionHandler: { result, error in

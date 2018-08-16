@@ -371,6 +371,8 @@
 "The length of password needs to be larger than or equal to 6." = "The length of password needs to be larger than or equal to 6.";
 "Password doesn't match" = "Password doesn't match";
 "Convert_TIP" = "● Convert Ratio is 1 : 1";
+"Convert_Fail_Tip" = "Insufficient gas in your account. Please retry later";
+"Convert_Success_Tip" = "Convert successfully. Transaction hash =";
 "ETH_TIP" = "● We will preserve 0.01 ETH for gas fee of your subsequent transaction";
 "Recommand Price" = "Recommand Price";
 "Set Gas" = "Set Gas";

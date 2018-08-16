@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -57,23 +57,28 @@
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Fv-RU-Vca">
-                        <rect key="frame" x="35" y="20.5" width="36" height="36"/>
+                        <rect key="frame" x="35" y="21" width="36" height="36"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="36" id="ToL-6Q-4gn"/>
                             <constraint firstAttribute="width" constant="36" id="zsh-fX-IeF"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="weA-aj-kdb" customClass="IconView" customModule="loopr_ios" customModuleProvider="target">
-                        <rect key="frame" x="35" y="20.5" width="36" height="36"/>
+                        <rect key="frame" x="35" y="21" width="36" height="36"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yaw-OA-5yG">
-                        <rect key="frame" x="328" y="23" width="51" height="31"/>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yaw-OA-5yG" customClass="UISwitchCustom" customModule="loopr_ios" customModuleProvider="target">
+                        <rect key="frame" x="328" y="23.5" width="51" height="31"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="31" id="bOx-Rs-mBw"/>
                             <constraint firstAttribute="width" constant="49" id="feS-8C-C8O"/>
                         </constraints>
                         <color key="onTintColor" name="Color-green"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="OffTint">
+                                <color key="value" name="Color-dark4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <action selector="toggledAddSwitch:" destination="KGk-i7-Jjw" eventType="valueChanged" id="PLA-dy-ypI"/>
                         </connections>
@@ -107,6 +112,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="Color-dark4">
+            <color red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="Color-green">
             <color red="0.0039215686274509803" green="0.72549019607843135" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

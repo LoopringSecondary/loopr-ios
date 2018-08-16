@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,13 +19,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CHK-cP-eJl">
-                        <rect key="frame" x="253" y="7" width="49" height="31"/>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CHK-cP-eJl" customClass="UISwitchCustom" customModule="loopr_ios" customModuleProvider="target">
+                        <rect key="frame" x="251" y="6.5" width="51" height="31"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="31" id="BdC-s3-WP3"/>
-                            <constraint firstAttribute="width" constant="47" id="Vlv-dC-8lv"/>
+                            <constraint firstAttribute="width" constant="49" id="Vlv-dC-8lv"/>
                         </constraints>
                         <color key="onTintColor" name="Color-green"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="OffTint">
+                                <color key="value" name="Color-dark4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <action selector="togglePasscodeSwitch:" destination="KGk-i7-Jjw" eventType="valueChanged" id="Kk7-ai-PE2"/>
                         </connections>
@@ -80,6 +85,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="Color-dark4">
+            <color red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="Color-green">
             <color red="0.0039215686274509803" green="0.72549019607843135" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

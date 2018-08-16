@@ -57,6 +57,7 @@
 		9464595E20AA9A4C00574485 /* TradeDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464595D20AA9A4C00574485 /* TradeDataManagerTests.swift */; };
 		94678B2A210D902E00F550D3 /* SendResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94678B28210D902E00F550D3 /* SendResultViewController.swift */; };
 		94678B2B210D902E00F550D3 /* SendResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94678B29210D902E00F550D3 /* SendResultViewController.xib */; };
+		9475502321255A58003CFEBF /* UISwitchExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475502221255A58003CFEBF /* UISwitchExtension.swift */; };
 		9475A2EE207EF81300200155 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475A2EC207EF81300200155 /* OrderDetailViewController.swift */; };
 		94768CA1210DCABE00B5977B /* TradeSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94768C9F210DCABE00B5977B /* TradeSwipeViewController.swift */; };
 		94768CA2210DCABE00B5977B /* TradeSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94768CA0210DCABE00B5977B /* TradeSwipeViewController.xib */; };
@@ -629,6 +630,7 @@
 		9464595D20AA9A4C00574485 /* TradeDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeDataManagerTests.swift; sourceTree = "<group>"; };
 		94678B28210D902E00F550D3 /* SendResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendResultViewController.swift; sourceTree = "<group>"; };
 		94678B29210D902E00F550D3 /* SendResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendResultViewController.xib; sourceTree = "<group>"; };
+		9475502221255A58003CFEBF /* UISwitchExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISwitchExtension.swift; sourceTree = "<group>"; };
 		9475A2EC207EF81300200155 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
 		94768C9F210DCABE00B5977B /* TradeSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSwipeViewController.swift; sourceTree = "<group>"; };
 		94768CA0210DCABE00B5977B /* TradeSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeSwipeViewController.xib; sourceTree = "<group>"; };
@@ -2006,6 +2008,7 @@
 				AC147BE9208D0613008D5104 /* UIDeviceExtension.swift */,
 				9415543820C0F1BF007AAB87 /* UILabelExtension.swift */,
 				AC3B48852104383E008A6771 /* UISearchBarExtension.swift */,
+				9475502221255A58003CFEBF /* UISwitchExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3095,6 +3098,7 @@
 				ACEC977F20AD57F3003F9DEB /* P2POrderHistoryViewController.swift in Sources */,
 				AC72AEE8204F020B00E9D3B0 /* OrderTradeState.swift in Sources */,
 				AC147BEC208D2E54008D5104 /* ImportWalletError.swift in Sources */,
+				9475502321255A58003CFEBF /* UISwitchExtension.swift in Sources */,
 				AC2ACA9C2103075C009C77E7 /* WalletType.swift in Sources */,
 				AC0619422085D01E0060F416 /* SearchBarContainerView.swift in Sources */,
 				AC56625B20563C05003C925C /* TradeViewController.swift in Sources */,

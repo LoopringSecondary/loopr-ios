@@ -253,7 +253,8 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     func completion(_ txHash: String?, _ error: Error?) {
         guard error == nil && txHash != nil else {
             DispatchQueue.main.async {
-                let banner = NotificationBanner.generate(title: "Insufficient funds for gas x price + value", style: .danger)
+                let title = LocalizedString("Convert_Fail_Tip", comment: "")
+                let banner = NotificationBanner.generate(title: title, style: .danger)
                 banner.duration = 3
                 banner.show()
             }
@@ -261,7 +262,8 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         }
         print("Result of transfer is \(txHash!)")
         DispatchQueue.main.async {
-            let banner = NotificationBanner.generate(title: "Success. Result of transfer is \(txHash!)", style: .success)
+            let title = LocalizedString("Convert_Success_Tip", comment: "")
+            let banner = NotificationBanner.generate(title: "\(title) \(txHash!)", style: .success)
             banner.duration = 3
             banner.show()
         }
