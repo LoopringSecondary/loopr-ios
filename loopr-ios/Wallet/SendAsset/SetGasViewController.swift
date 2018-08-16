@@ -58,7 +58,7 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
         closeButton.theme_setImage(GlobalPicker.closeHighlight, forState: .highlighted)
         closeButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
-        stepSlider.frame = CGRect(x: 16, y: gasTipLabel.bottomY + 24, width: UIScreen.main.bounds.width - 16 * 2, height: 44)
+        stepSlider.frame = CGRect(x: 15, y: gasTipLabel.bottomY + 24, width: UIScreen.main.bounds.width - 15 * 2, height: 44)
         stepSlider.delegate = self
         stepSlider.maxCount = 2
         stepSlider.setIndex(0, animated: false)

@@ -29,17 +29,17 @@ class SettingMarginSplitViewController: UIViewController, StepSliderDelegate {
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         
-        let originY: CGFloat = 30
-        let padding: CGFloat = 15
+        let originY: CGFloat = 18
+        let padding: CGFloat = 30
         
-        currentValueLabel.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 30)
+        currentValueLabel.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 22)
         currentValueLabel.setTitleDigitFont()
         view.addSubview(currentValueLabel)
         
-        stepSlider = StepSlider.init(frame: CGRect(x: padding, y: currentValueLabel.frame.maxY + padding + 10, width: screenWidth-padding*2, height: 20))
+        stepSlider.frame = CGRect(x: 24, y: currentValueLabel.frame.maxY + 30, width: screenWidth-24*2, height: 20)
         stepSlider.delegate = self
         stepSlider.maxCount = 2
-        // stepSlider.setIndex(0, animated: false)
+        stepSlider.trackCircleRadius = 0
         stepSlider.labels = ["0%", "100%"]
         currentValue = SettingDataManager.shared.getMarginSplit()
 

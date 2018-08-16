@@ -80,17 +80,6 @@ class AppWalletDataManager {
     }
     
     func getWallets() -> [AppWallet] {
-        /*
-        // Always move the current wallet to the top.
-        if CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil {
-            if let index = appWallets.index(of: CurrentAppWalletDataManager.shared.getCurrentAppWallet()!) {
-                if index != 0 {
-                    let element = appWallets.remove(at: index)
-                    appWallets.insert(element, at: 0)
-                }
-            }
-        }
-        */
         return appWallets
     }
     
@@ -215,23 +204,25 @@ class AppWalletDataManager {
         completionHandler(newAppWallet, nil)
     }
     
-    func getTotalCurrencyValue(address: String, completionHandler: @escaping (_ totalCurrencyValue: Double, _ error: Error?) -> Void) {
+    func getTotalCurrencyValue(address: String, getPrice: Bool, completionHandler: @escaping (_ totalCurrencyValue: Double, _ error: Error?) -> Void) {
         print("getBalanceAndPriceQuote Current address: \(address)")
         
         var localAssets: [Asset] = []
         let dispatchGroup = DispatchGroup()
         
-        dispatchGroup.enter()
-        let currency = SettingDataManager.shared.getCurrentCurrency().name
-        LoopringAPIRequest.getPriceQuote(currency: currency, completionHandler: { (priceQuote, error) in
-            print("receive LoopringAPIRequest.getPriceQuote ....")
-            guard error == nil else {
-                print("error=\(String(describing: error))")
-                return
-            }
-            PriceDataManager.shared.setPriceQuote(newPriceQuote: priceQuote!)
-            dispatchGroup.leave()
-        })
+        if getPrice {
+            dispatchGroup.enter()
+            let currency = SettingDataManager.shared.getCurrentCurrency().name
+            LoopringAPIRequest.getPriceQuote(currency: currency, completionHandler: { (priceQuote, error) in
+                print("receive LoopringAPIRequest.getPriceQuote ....")
+                guard error == nil else {
+                    print("error=\(String(describing: error))")
+                    return
+                }
+                PriceDataManager.shared.setPriceQuote(newPriceQuote: priceQuote!)
+                dispatchGroup.leave()
+            })
+        }
         
         dispatchGroup.enter()
         LoopringAPIRequest.getBalance(owner: address) { assets, error in
@@ -263,13 +254,12 @@ class AppWalletDataManager {
     }
     
     func getAllBalanceFromRelay() {
-        for wallet in AppWalletDataManager.shared.getWallets() {
-            AppWalletDataManager.shared.getTotalCurrencyValue(address: wallet.address, completionHandler: { (totalCurrencyValue, error) in
+        for (index, wallet) in AppWalletDataManager.shared.getWallets().enumerated() {
+            AppWalletDataManager.shared.getTotalCurrencyValue(address: wallet.address, getPrice: index == 0, completionHandler: { (totalCurrencyValue, error) in
                 print("getAllBalanceFromRelay \(totalCurrencyValue)")
                 wallet.totalCurrency = totalCurrencyValue
                 AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: wallet)
             })
         }
     }
-
 }

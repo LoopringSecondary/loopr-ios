@@ -131,7 +131,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         
         // Slider
         let screenWidth = UIScreen.main.bounds.width
-        stepSlider.frame = CGRect(x: 16, y: sliderView.frame.minY, width: screenWidth-64, height: 20)
+        stepSlider.frame = CGRect(x: 15, y: sliderView.frame.minY, width: screenWidth-15*4, height: 20)
         stepSlider.delegate = self
         stepSlider.maxCount = 4
         stepSlider.setIndex(0, animated: false)

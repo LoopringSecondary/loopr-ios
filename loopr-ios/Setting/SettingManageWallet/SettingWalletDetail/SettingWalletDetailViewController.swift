@@ -33,6 +33,10 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 10))
+        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        tableView.tableHeaderView = headerView
+        
         switchWalletButton.title = LocalizedString("Switch to this Wallet", comment: "")
         switchWalletButton.setupSecondary(height: 44)
         

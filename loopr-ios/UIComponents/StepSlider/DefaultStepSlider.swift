@@ -13,7 +13,7 @@ extension StepSlider {
     
     class func getDefault() -> StepSlider {
         let stepSlider = StepSlider()
-        stepSlider.labelFont = FontConfigManager.shared.getRegularFont(size: 12)
+        stepSlider.labelFont = FontConfigManager.shared.getMediumFont(size: 12)
         stepSlider.trackHeight = 2
         stepSlider.trackCircleRadius = 3
         stepSlider.labelColor = UIColor.dark4

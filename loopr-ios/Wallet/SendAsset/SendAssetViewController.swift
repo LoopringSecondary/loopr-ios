@@ -68,6 +68,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         
         // Do any additional setup after loading the view.
         setBackButton()
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         self.navigationItem.title = LocalizedString("Send", comment: "")
         contentView.applyShadow()
@@ -158,8 +160,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             }
         }
         
-        let width = UIScreen.main.bounds.width - 60
-        stepSlider.frame = CGRect(x: 10, y: amountInfoLabel.bottomY + 15, width: width, height: 20)
+        let width = UIScreen.main.bounds.width - 15*4
+        stepSlider.frame = CGRect(x: 15, y: amountInfoLabel.bottomY + 15, width: width, height: 20)
         stepSlider.delegate = self
         stepSlider.maxCount = 4
         stepSlider.setIndex(0, animated: false)

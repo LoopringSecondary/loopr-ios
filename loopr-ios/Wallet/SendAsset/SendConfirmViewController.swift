@@ -103,7 +103,7 @@ class SendConfirmViewController: UIViewController {
     }
     
     @IBAction func pressedSendButton(_ sender: UIButton) {
-        SVProgressHUD.show(withStatus: "Processing the transaction ...")
+        SVProgressHUD.show(withStatus: LocalizedString("Processing the transaction ...", comment: ""))
         if let toAddress = self.receiveAddress,
             let token = TokenDataManager.shared.getTokenBySymbol(self.sendAsset.symbol) {
             var error: NSError?

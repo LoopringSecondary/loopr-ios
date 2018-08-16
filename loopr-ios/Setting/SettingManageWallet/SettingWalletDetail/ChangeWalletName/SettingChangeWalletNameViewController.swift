@@ -35,7 +35,8 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
         nameTextField.theme_tintColor = GlobalPicker.textColor
         nameTextField.theme_textColor = GlobalPicker.textColor
         nameTextField.theme_backgroundColor = GlobalPicker.cardBackgroundColor
-        nameTextField.placeholder = "Enter your wallet name"
+        nameTextField.placeholder = LocalizedString("Wallet Name", comment: "")
+        nameTextField.setValue(UIColor.init(white: 1, alpha: 0.4), forKeyPath: "_placeholderLabel.textColor")
         nameTextField.contentMode = UIViewContentMode.bottom
         nameTextField.keyboardAppearance = Themes.isDark() ? .dark : .default
 

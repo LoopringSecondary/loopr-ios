@@ -327,7 +327,7 @@
 "Create" = "创建";
 "Import" = "导入";
 "gas price" = "油价";
-"Processing the transaction" = "正在处理交易";
+"Processing the transaction ..." = "正在处理交易 ...";
 "Airdrop" = "空投";
 "Trade FAQ" = "交易FAQ";
 "Feedback" = "问题反馈";

@@ -110,12 +110,11 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 if self.isLaunching {
                     SVProgressHUD.dismiss()
                     self.isLaunching = false
+                    // Then get all balance. It takes times.
+                    AppWalletDataManager.shared.getAllBalanceFromRelay()
                 }
                 self.assetTableView.reloadData()
                 self.refreshControl.endRefreshing()
-                
-                // Then get all balance. It takes times.
-                AppWalletDataManager.shared.getAllBalanceFromRelay()
             }
         })
     }

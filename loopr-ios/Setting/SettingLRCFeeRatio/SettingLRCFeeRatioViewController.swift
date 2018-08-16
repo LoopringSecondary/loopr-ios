@@ -30,21 +30,21 @@ class SettingLRCFeeRatioViewController: UIViewController, StepSliderDelegate {
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         
-        let originY: CGFloat = 30
-        let padding: CGFloat = 15
+        let originY: CGFloat = 18
+        let padding: CGFloat = 30
         
-        currentValueLabel.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 30)
+        currentValueLabel.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 22)
         currentValueLabel.setTitleDigitFont()
         currentValueLabel.text = LocalizedString("LRC Fee Ratio", comment: "") + ": \(SettingDataManager.shared.getLrcFeeRatioDescription())"
         view.addSubview(currentValueLabel)
         
         currentValue = SettingDataManager.shared.getLrcFeeRatio()
 
-        stepSlider.frame = CGRect(x: padding, y: currentValueLabel.frame.maxY + padding + 10, width: screenWidth-padding*2, height: 20)
+        stepSlider.frame = CGRect(x: 24, y: currentValueLabel.frame.maxY + 30, width: screenWidth-24*2, height: 20)
         stepSlider.delegate = self
         stepSlider.maxCount = 2
-        // stepSlider.setIndex(0, animated: false)
-        stepSlider.labels = [LocalizedString("slow", comment: ""), LocalizedString("fast", comment: "")]
+        stepSlider.trackCircleRadius = 0
+        stepSlider.labels = [LocalizedString("Slow", comment: ""), LocalizedString("Fast", comment: "")]
         stepSlider.setPercentageValue(Float((currentValue-0.001)/0.049))
 
         let saveButon = UIBarButtonItem(title: LocalizedString("Save", comment: ""), style: UIBarButtonItemStyle.plain, target: self, action: #selector(pressedSaveButton))

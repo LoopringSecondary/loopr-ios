@@ -327,7 +327,7 @@
 "Create" = "Create";
 "Import" = "Import";
 "gas price" = "gas price";
-"Processing the transaction" = "Processing the transaction";
+"Processing the transaction ..." = "Processing the transaction ...";
 "Airdrop" = "Airdrop";
 "Trade FAQ" = "Trade FAQ";
 "Feedback" = "Feedback";

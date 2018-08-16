@@ -69,8 +69,8 @@ class UpdatedSelectWalletViewController: UIViewController, UITableViewDelegate, 
     }
     
     func getAllBalanceFromRelay() {
-        for wallet in AppWalletDataManager.shared.getWallets() {
-            AppWalletDataManager.shared.getTotalCurrencyValue(address: wallet.address, completionHandler: { (totalCurrencyValue, error) in
+        for (index, wallet) in AppWalletDataManager.shared.getWallets().enumerated() {
+            AppWalletDataManager.shared.getTotalCurrencyValue(address: wallet.address, getPrice: index == 0, completionHandler: { (totalCurrencyValue, error) in
                 print("getAllBalanceFromRelay \(totalCurrencyValue)")
                 wallet.totalCurrency = totalCurrencyValue
                 AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: wallet)
