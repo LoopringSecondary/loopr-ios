@@ -11,7 +11,7 @@ import StepSlider
 
 class SettingMarginSplitViewController: UIViewController, StepSliderDelegate {
 
-    var stepSlider = StepSlider()
+    var stepSlider = StepSlider.getDefault()
     var currentValue: Double = 0
     var currentValueLabel = UILabel()
     
@@ -40,19 +40,7 @@ class SettingMarginSplitViewController: UIViewController, StepSliderDelegate {
         stepSlider.delegate = self
         stepSlider.maxCount = 2
         // stepSlider.setIndex(0, animated: false)
-        stepSlider.labelFont = FontConfigManager.shared.getRegularFont(size: 12)
-        stepSlider.labelColor = UIColor.init(white: 0.6, alpha: 1)
         stepSlider.labels = ["0%", "100%"]
-        stepSlider.trackHeight = 2
-        stepSlider.trackCircleRadius = 3
-        stepSlider.trackColor = UIColor.init(white: 0.6, alpha: 1)
-        stepSlider.tintColor = UIColor.themeGreen
-        stepSlider.sliderCircleRadius = 10
-        stepSlider.sliderCircleColor = UIColor.themeGreen
-        stepSlider.labelOffset = 10
-        stepSlider.isDotsInteractionEnabled = true
-        stepSlider.adjustLabel = true
-
         currentValue = SettingDataManager.shared.getMarginSplit()
 
         let roundedStepValue = Int(round(currentValue*100))

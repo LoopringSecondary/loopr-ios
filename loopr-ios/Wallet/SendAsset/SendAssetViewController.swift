@@ -51,7 +51,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     var dismissInteractor = MiniToLargeViewInteractive()
     
     // slider
-    var stepSlider: StepSlider = StepSlider()
+    var stepSlider: StepSlider = StepSlider.getDefault()
     
     // Numeric keyboard
     var isNumericKeyboardShow: Bool = false
@@ -159,22 +159,11 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         }
         
         let width = UIScreen.main.bounds.width - 60
-        stepSlider = StepSlider.init(frame: CGRect(x: 10, y: amountInfoLabel.bottomY + 15, width: width, height: 20))
+        stepSlider.frame = CGRect(x: 10, y: amountInfoLabel.bottomY + 15, width: width, height: 20)
         stepSlider.delegate = self
         stepSlider.maxCount = 4
-        stepSlider.labelFont = FontConfigManager.shared.getRegularFont(size: 12)
-        stepSlider.labelColor = UIColor.init(white: 0.6, alpha: 1)
         stepSlider.setIndex(0, animated: false)
         stepSlider.labels = ["0%", "25%", "50%", "75%", "100%"]
-        stepSlider.trackHeight = 2
-        stepSlider.trackCircleRadius = 3
-        stepSlider.trackColor = UIColor.init(white: 0.6, alpha: 1)
-        stepSlider.tintColor = UIColor.themeGreen
-        stepSlider.sliderCircleRadius = 10
-        stepSlider.sliderCircleColor = UIColor.themeGreen
-        stepSlider.labelOffset = 10
-        stepSlider.isDotsInteractionEnabled = true
-        stepSlider.adjustLabel = true
         contentView.addSubview(stepSlider)
         
         blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)

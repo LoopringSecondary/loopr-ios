@@ -60,7 +60,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     var isNumericKeyboardShow: Bool = false
     var numericKeyboardView: DefaultNumericKeyboard!
     var activeTextFieldTag = -1
-    var stepSlider: StepSlider = StepSlider()
+    var stepSlider: StepSlider = StepSlider.getDefault()
     
     // Expires
     var buttons: [UIButton] = []
@@ -134,19 +134,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         stepSlider.frame = CGRect(x: 16, y: sliderView.frame.minY, width: screenWidth-64, height: 20)
         stepSlider.delegate = self
         stepSlider.maxCount = 4
-        stepSlider.labelFont = FontConfigManager.shared.getRegularFont(size: 12)
-        stepSlider.labelColor = UIColor.init(white: 0.6, alpha: 1)
         stepSlider.setIndex(0, animated: false)
         stepSlider.labels = ["0%", "25%", "50%", "75%", "100%"]
-        stepSlider.trackHeight = 2
-        stepSlider.trackCircleRadius = 3
-        stepSlider.trackColor = UIColor.init(white: 0.6, alpha: 1)
-        stepSlider.tintColor = UIColor.themeGreen
-        stepSlider.sliderCircleRadius = 10
-        stepSlider.sliderCircleColor = UIColor.themeGreen
-        stepSlider.labelOffset = 10
-        stepSlider.isDotsInteractionEnabled = true
-        stepSlider.adjustLabel = true
         containerView.addSubview(stepSlider)
         
         // Buttons

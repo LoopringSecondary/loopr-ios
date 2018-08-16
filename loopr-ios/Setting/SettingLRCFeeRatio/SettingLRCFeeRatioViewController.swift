@@ -12,7 +12,7 @@ import StepSlider
 // It's designed not to merge SettingLRCFeeRatioViewController and SettingMarginSplitViewController
 class SettingLRCFeeRatioViewController: UIViewController, StepSliderDelegate {
 
-    var stepSlider = StepSlider()
+    var stepSlider = StepSlider.getDefault()
     var currentValue: Double = 0
     var currentValueLabel = UILabel()
 
@@ -44,18 +44,7 @@ class SettingLRCFeeRatioViewController: UIViewController, StepSliderDelegate {
         stepSlider.delegate = self
         stepSlider.maxCount = 2
         // stepSlider.setIndex(0, animated: false)
-        stepSlider.labelFont = FontConfigManager.shared.getRegularFont(size: 12)
-        stepSlider.labelColor = UIColor.init(white: 0.6, alpha: 1)
         stepSlider.labels = [LocalizedString("slow", comment: ""), LocalizedString("fast", comment: "")]
-        stepSlider.trackHeight = 2
-        stepSlider.trackCircleRadius = 3
-        stepSlider.trackColor = UIColor.init(white: 0.6, alpha: 1)
-        stepSlider.tintColor = UIColor.themeGreen
-        stepSlider.sliderCircleRadius = 10
-        stepSlider.sliderCircleColor = UIColor.themeGreen
-        stepSlider.labelOffset = 10
-        stepSlider.isDotsInteractionEnabled = true
-        stepSlider.adjustLabel = true
         stepSlider.setPercentageValue(Float((currentValue-0.001)/0.049))
 
         let saveButon = UIBarButtonItem(title: LocalizedString("Save", comment: ""), style: UIBarButtonItemStyle.plain, target: self, action: #selector(pressedSaveButton))

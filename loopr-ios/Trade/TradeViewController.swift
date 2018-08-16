@@ -57,7 +57,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     var numericKeyboardView: DefaultNumericKeyboard!
 
     var activeTextFieldTag = -1
-    var stepSlider: StepSlider = StepSlider()
+    var stepSlider: StepSlider = StepSlider.getDefault()
     var isViewDidAppear: Bool = false
     
     // Expires
@@ -103,19 +103,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         stepSlider.frame = CGRect(x: 15, y: sliderView.frame.minY, width: screenWidth-60, height: 20)
         stepSlider.delegate = self
         stepSlider.maxCount = 4
-        stepSlider.labelFont = FontConfigManager.shared.getRegularFont(size: 12)
-        stepSlider.labelColor = UIColor.init(white: 0.6, alpha: 1)
         stepSlider.setIndex(0, animated: false)
         stepSlider.labels = ["0%", "25%", "50%", "75%", "100%"]
-        stepSlider.trackHeight = 2
-        stepSlider.trackCircleRadius = 3
-        stepSlider.trackColor = UIColor.init(white: 0.6, alpha: 1)
-        stepSlider.tintColor = UIColor.themeGreen
-        stepSlider.sliderCircleRadius = 10
-        stepSlider.sliderCircleColor = UIColor.themeGreen
-        stepSlider.labelOffset = 10
-        stepSlider.isDotsInteractionEnabled = true
-        stepSlider.adjustLabel = true
         containerView.addSubview(stepSlider)
 
         // Buttons

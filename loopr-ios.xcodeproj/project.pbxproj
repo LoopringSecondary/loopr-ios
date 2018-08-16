@@ -427,6 +427,7 @@
 		AC9DC45E211AC92C002D7D23 /* TradeViewOnlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC45C211AC92C002D7D23 /* TradeViewOnlyViewController.swift */; };
 		AC9DC45F211AC92C002D7D23 /* TradeViewOnlyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9DC45D211AC92C002D7D23 /* TradeViewOnlyViewController.xib */; };
 		AC9DC462211C0D87002D7D23 /* TradeSelectionNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC461211C0D87002D7D23 /* TradeSelectionNavigationViewController.swift */; };
+		AC9FFF2121254BAC00957175 /* DefaultStepSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FFF2021254BAC00957175 /* DefaultStepSlider.swift */; };
 		ACA677B82079970600D34A2F /* ExportKeystoreSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677B62079970600D34A2F /* ExportKeystoreSwipeViewController.swift */; };
 		ACA677B92079970600D34A2F /* ExportKeystoreSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677B72079970600D34A2F /* ExportKeystoreSwipeViewController.xib */; };
 		ACA677C0207997F400D34A2F /* DisplayKeystoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677BE207997F400D34A2F /* DisplayKeystoreViewController.swift */; };
@@ -944,6 +945,7 @@
 		AC9DC45C211AC92C002D7D23 /* TradeViewOnlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewOnlyViewController.swift; sourceTree = "<group>"; };
 		AC9DC45D211AC92C002D7D23 /* TradeViewOnlyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeViewOnlyViewController.xib; sourceTree = "<group>"; };
 		AC9DC461211C0D87002D7D23 /* TradeSelectionNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSelectionNavigationViewController.swift; sourceTree = "<group>"; };
+		AC9FFF2021254BAC00957175 /* DefaultStepSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStepSlider.swift; sourceTree = "<group>"; };
 		ACA677B62079970600D34A2F /* ExportKeystoreSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportKeystoreSwipeViewController.swift; sourceTree = "<group>"; };
 		ACA677B72079970600D34A2F /* ExportKeystoreSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportKeystoreSwipeViewController.xib; sourceTree = "<group>"; };
 		ACA677BE207997F400D34A2F /* DisplayKeystoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayKeystoreViewController.swift; sourceTree = "<group>"; };
@@ -1879,6 +1881,14 @@
 			path = TransitionAnimator;
 			sourceTree = "<group>";
 		};
+		AC9FFF1F21254B8C00957175 /* StepSlider */ = {
+			isa = PBXGroup;
+			children = (
+				AC9FFF2021254BAC00957175 /* DefaultStepSlider.swift */,
+			);
+			path = StepSlider;
+			sourceTree = "<group>";
+		};
 		ACA677B52079928800D34A2F /* ExportKeystore */ = {
 			isa = PBXGroup;
 			children = (
@@ -1959,6 +1969,7 @@
 				ACE7742920AA1738002CD727 /* NotificationBanner */,
 				AC9DC45B211596F9002D7D23 /* TransitionAnimator */,
 				AC0619412085D01E0060F416 /* SearchBarContainerView.swift */,
+				AC9FFF1F21254B8C00957175 /* StepSlider */,
 				ACE7742A20AA176A002CD727 /* WebViewController */,
 				ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */,
 				AC70E84D20683C7500451047 /* IconView.swift */,
@@ -3135,6 +3146,7 @@
 				ACB5DDA4202D6FC300140A09 /* UIImageExtension.swift in Sources */,
 				AC31B952204A8DF400B16155 /* Account.swift in Sources */,
 				9498E3EC2075E27E00BC8B4F /* OrderHistorySearchResultCell.swift in Sources */,
+				AC9FFF2121254BAC00957175 /* DefaultStepSlider.swift in Sources */,
 				940B45282060F67E00ADE2B9 /* SetupDataManager.swift in Sources */,
 				AC3B488F210525BE008A6771 /* UpdatedSelectWalletViewController.swift in Sources */,
 				AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */,

@@ -24,7 +24,7 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
     var maxGasValue: Double = 0
     private let recGasPriceInGwei: Double = GasDataManager.shared.getGasRecommendedPrice()
     var gasPriceInGwei: Double = GasDataManager.shared.getGasPriceInGwei()
-    var stepSlider: StepSlider = StepSlider()
+    var stepSlider: StepSlider = StepSlider.getDefault()
     var dismissClosure: (() -> Void)?
     
     var isViewDidAppear: Bool = false
@@ -58,23 +58,11 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
         closeButton.theme_setImage(GlobalPicker.closeHighlight, forState: .highlighted)
         closeButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
-        stepSlider = StepSlider.init(frame: CGRect(x: 16, y: gasTipLabel.bottomY + 24, width: UIScreen.main.bounds.width - 16 * 2, height: 44))
+        stepSlider.frame = CGRect(x: 16, y: gasTipLabel.bottomY + 24, width: UIScreen.main.bounds.width - 16 * 2, height: 44)
         stepSlider.delegate = self
         stepSlider.maxCount = 2
         stepSlider.setIndex(0, animated: false)
-        stepSlider.labelFont = FontConfigManager.shared.getRegularFont(size: 12)
-        stepSlider.labelColor = UIColor.init(white: 0.6, alpha: 1)
         stepSlider.labels = [LocalizedString("Slow", comment: ""), LocalizedString("Fast", comment: "")]
-        stepSlider.trackHeight = 2
-        stepSlider.trackCircleRadius = 3
-        stepSlider.trackColor = UIColor.init(white: 0.6, alpha: 1)
-        stepSlider.tintColor = UIColor.themeGreen
-        stepSlider.sliderCircleRadius = 10
-        stepSlider.sliderCircleColor = UIColor.themeGreen
-        stepSlider.labelOffset = 10
-        stepSlider.isDotsInteractionEnabled = true
-        stepSlider.adjustLabel = true
-
         containerView.addSubview(stepSlider)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
