@@ -11,45 +11,41 @@ import UIKit
 class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelegate {
 
     var appWallet: AppWallet!
-    var nameTextField: UITextField = UITextField()
-    var nameFieldUnderLine: UIView = UIView()
-    var saveButton: UIButton = UIButton()
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var separateLineUp: UIView!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var separateLineDown: UIView!
+
+    var didChangeWalletName: ((_ newWalletName: String) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Setup UI in the scroll view
-        let screensize: CGRect = UIScreen.main.bounds
-        let screenWidth = screensize.width
-        // let screenHeight = screensize.height
-        
-        let originY: CGFloat = 30
-        let padding: CGFloat = 15
-        
         // Do any additional setup after loading the view.
-        self.navigationItem.title = LocalizedString("Change Wallet Name", comment: "")
+        self.navigationItem.title = LocalizedString("Wallet Name", comment: "")
         setBackButton()
-        
+        view.theme_backgroundColor = GlobalPicker.backgroundColor
+
+        contentView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+    
         nameTextField.delegate = self
         nameTextField.tag = 0
-        nameTextField.font = FontConfigManager.shared.getDigitalFont()
+        nameTextField.font = FontConfigManager.shared.getMediumFont(size: 14)
         nameTextField.theme_tintColor = GlobalPicker.textColor
+        nameTextField.theme_textColor = GlobalPicker.textColor
+        nameTextField.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         nameTextField.placeholder = "Enter your wallet name"
         nameTextField.contentMode = UIViewContentMode.bottom
-        nameTextField.frame = CGRect(x: padding, y: originY, width: screenWidth-padding*2, height: 40)
-        self.view.addSubview(nameTextField)
-        
-        nameFieldUnderLine.frame = CGRect(x: padding, y: nameTextField.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        nameFieldUnderLine.backgroundColor = UIColor.black
-        self.view.addSubview(nameFieldUnderLine)
-        
-        saveButton.setupSecondary()
-        saveButton.setTitle(LocalizedString("Save", comment: ""), for: .normal)
-        saveButton.frame = CGRect(x: padding, y: nameFieldUnderLine.frame.maxY + padding*2 + 10, width: screenWidth - padding*2, height: 47)
-        saveButton.addTarget(self, action: #selector(pressedSaveButton), for: .touchUpInside)
-        self.view.addSubview(saveButton)
+        nameTextField.keyboardAppearance = Themes.isDark() ? .dark : .default
+
+        separateLineUp.backgroundColor = UIColor.dark3
+        separateLineDown.backgroundColor = UIColor.dark3
         
         nameTextField.text = appWallet.name
+        
+        let saveButon = UIBarButtonItem(title: LocalizedString("Save", comment: ""), style: UIBarButtonItemStyle.plain, target: self, action: #selector(pressedSaveButton))
+        self.navigationItem.rightBarButtonItem = saveButon
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,9 +65,9 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
             appWallet.name = nameTextField.text!
             let dataManager = AppWalletDataManager.shared
             dataManager.updateAppWalletsInLocalStorage(newAppWallet: appWallet)
+            didChangeWalletName?(appWallet.name)
             self.navigationController?.popViewController(animated: true)
         } else {
-            
             let alertController = UIAlertController(title: "New wallet name can't be empty", message: nil, preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
@@ -80,6 +76,5 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
         }
-
     }
 }

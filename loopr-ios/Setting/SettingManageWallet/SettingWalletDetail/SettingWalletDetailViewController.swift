@@ -101,6 +101,9 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         switch cell.contentType {
         case .walletName:
             let viewController = SettingChangeWalletNameViewController()
+            viewController.didChangeWalletName = { (newWaleltName) in
+                self.navigationItem.title = newWaleltName
+            }
             viewController.appWallet = appWallet
             self.navigationController?.pushViewController(viewController, animated: true)
         case .backupMnemonic:
