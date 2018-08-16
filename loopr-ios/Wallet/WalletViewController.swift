@@ -124,7 +124,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         getBalanceFromRelay()
-        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
         if let cell = assetTableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? WalletBalanceTableViewCell {
             cell.startUpdateBalanceLabelTimer()
         }
@@ -411,7 +410,7 @@ extension WalletViewController: WalletButtonTableViewCellDelegate {
     }
     
     func navigationToTradeViewController() {
-        let viewController = TradeViewController()
+        let viewController = TradeSwipeViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }

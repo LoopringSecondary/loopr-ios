@@ -49,7 +49,6 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
         self.asset = CurrentAppWalletDataManager.shared.getAsset(symbol: "ETH")
         
         self.navigationItem.title = LocalizedString("Convert", comment: "")
@@ -115,7 +114,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
                 self.updateTransactionFeeAmountLabel()
             }
         }
-
+        
         blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         blurVisualEffectView.alpha = 1
         blurVisualEffectView.frame = UIScreen.main.bounds

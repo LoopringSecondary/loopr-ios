@@ -148,6 +148,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if manager?.isReachable == false {
             self.showNetworkLossBanner()
         }
+        
+        // Get nonce from eth, not relay. Cost time maybe.
+        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
 
         // Touch ID and Face ID
         if AuthenticationDataManager.shared.getPasscodeSetting() && !AuthenticationDataManager.shared.hasLogin {

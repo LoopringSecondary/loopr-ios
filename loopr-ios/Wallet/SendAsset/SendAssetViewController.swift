@@ -381,6 +381,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         vc.sendAmount = self.amountTextField.text
         vc.receiveAddress = self.addressTextField.text
         vc.gasAmountText = self.transactionFeeAmountLabel.text
+        vc.parentNavController = self.navigationController
         vc.dismissClosure = {
             UIView.animate(withDuration: 0.1, animations: {
                 self.blurVisualEffectView.alpha = 0.0

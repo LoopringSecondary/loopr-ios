@@ -48,40 +48,27 @@ class SendCurrentAppWalletDataManager {
         self.nonce += 1
     }
 
-    func getNonceFromRelay() {
-        print("Start getNonceFromRelay")
-        let semaphore = DispatchSemaphore(value: 0)
-        if let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
-            LoopringAPIRequest.getNonce(owner: address) { (result, error) in
-                guard error == nil, let data = result else {
-                    return
-                }
-                if let value = Int64(data), self.nonce > value {
-                    self.nonce = value
-                }
-            }
-            semaphore.signal()
-        }
-        _ = semaphore.wait(timeout: .distantFuture)
-    }
-
     func getNonceFromEthereum() {
         if let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
             EthereumAPIRequest.eth_getTransactionCount(data: address, block: BlockTag.pending, completionHandler: { (data, error) in
                 guard error == nil, let data = data else {
                     return
                 }
+                var nonce: Int64
                 if data.respond.isHex() {
-                    self.nonce = Int64(data.respond.dropFirst(2), radix: 16)!
+                    nonce = Int64(data.respond.dropFirst(2), radix: 16)!
                 } else {
-                    self.nonce = Int64(data.respond)!
+                    nonce = Int64(data.respond)!
                 }
+                if nonce > self.nonce {
+                    self.nonce = nonce
+                }
+                print("^^^^^^^^^^^^^^^^^^^^^^self.nonce = \(self.nonce)")
             })
         }
     }
     
     func completeRawTx(_ rawTx: inout RawTransaction) {
-        getNonceFromRelay()
         if self.nonce < rawTx.nonce {
             self.nonce = rawTx.nonce
         }
@@ -89,17 +76,13 @@ class SendCurrentAppWalletDataManager {
     }
     
     func sendTransactionToServer(signedTransaction: String, completion: @escaping (String?, Error?) -> Void) {
-        let start = Date()
         EthereumAPIRequest.eth_sendRawTransaction(data: signedTransaction) { (data, error) in
             guard error == nil && data != nil else {
-                print(error!)
                 completion(nil, error)
                 return
             }
+            self.incrementNonce()
             completion(data!.respond, nil)
-            let end1 = Date()
-            let timeInterval1: Double = end1.timeIntervalSince(start)
-            print("Time to sendTransactionToServer: \(timeInterval1) seconds")
         }
     }
     
@@ -226,7 +209,6 @@ class SendCurrentAppWalletDataManager {
         _transfer(data: data, address: wethAddress!, amount: amount, gasLimit: GethBigInt(gasLimit), completion: completion)
     }
     
-    // contractAddress: token address, delegateAddress: loorping delegate address
     func _approve(tokenAddress: GethAddress, delegateAddress: GethAddress, tokenAmount: GethBigInt, completion: @escaping (String?, Error?) -> Void) {
         guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
@@ -257,7 +239,6 @@ class SendCurrentAppWalletDataManager {
         }
     }
     
-    // tokena: contract addr
     func _cancelOrdersByTokenPair(timestamp: GethBigInt, tokenA: GethAddress, tokenB: GethAddress, completion: @escaping (String?, Error?) -> Void) {
         guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
@@ -308,7 +289,6 @@ class SendCurrentAppWalletDataManager {
     }
     
     func _transfer(data: Data, address: GethAddress, amount: GethBigInt, gasLimit: GethBigInt, completion: @escaping (_ txHash: String?, _ error: Error?) -> Void) {
-        self.getNonceFromRelay()
         let tx = RawTransaction(data: data, to: address, value: amount, gasLimit: gasLimit, gasPrice: GasDataManager.shared.getGasPriceInWei(), nonce: self.nonce)
         let from = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         if let signedTransaction = _sign(data: data, address: address, amount: amount, gasLimit: gasLimit, completion: completion) {
@@ -318,7 +298,6 @@ class SendCurrentAppWalletDataManager {
                 } else {
                     completion(nil, error)
                 }
-                self.nonce += 1
             })
         }
     }
@@ -356,7 +335,6 @@ class SendCurrentAppWalletDataManager {
                 } else {
                     completion(nil, error)
                 }
-                self.nonce += 1
             })
         }
     }
