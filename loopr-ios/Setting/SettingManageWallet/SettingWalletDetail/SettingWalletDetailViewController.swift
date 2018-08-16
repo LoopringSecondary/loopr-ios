@@ -51,9 +51,16 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     }
     
     @IBAction func pressedSwitchWalletButton(_ sender: Any) {
-        print("pressedSwitchWalletButton")
-        CurrentAppWalletDataManager.shared.setCurrentAppWallet(appWallet)
-        self.navigationController?.popViewController(animated: true)
+        let alertController = UIAlertController(title: LocalizedString("Switch to this Wallet", comment: ""), message: nil, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+            CurrentAppWalletDataManager.shared.setCurrentAppWallet(self.appWallet)
+            self.navigationController?.popViewController(animated: true)
+        })
+        alertController.addAction(defaultAction)
+        let cancelAction = UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+        })
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
