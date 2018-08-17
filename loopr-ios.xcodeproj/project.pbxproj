@@ -429,6 +429,12 @@
 		AC9DC45F211AC92C002D7D23 /* TradeViewOnlyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9DC45D211AC92C002D7D23 /* TradeViewOnlyViewController.xib */; };
 		AC9DC462211C0D87002D7D23 /* TradeSelectionNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC461211C0D87002D7D23 /* TradeSelectionNavigationViewController.swift */; };
 		AC9FFF2121254BAC00957175 /* DefaultStepSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FFF2021254BAC00957175 /* DefaultStepSlider.swift */; };
+		AC9FFF252126BDF800957175 /* MarketChangeTokenSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FFF232126BDF800957175 /* MarketChangeTokenSwipeViewController.swift */; };
+		AC9FFF262126BDF800957175 /* MarketChangeTokenSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9FFF242126BDF800957175 /* MarketChangeTokenSwipeViewController.xib */; };
+		AC9FFF292126C05000957175 /* MarketChangeTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FFF272126C05000957175 /* MarketChangeTokenViewController.swift */; };
+		AC9FFF2A2126C05000957175 /* MarketChangeTokenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9FFF282126C05000957175 /* MarketChangeTokenViewController.xib */; };
+		AC9FFF2D2126C07800957175 /* MarketChangeTokenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FFF2B2126C07800957175 /* MarketChangeTokenTableViewCell.swift */; };
+		AC9FFF2E2126C07800957175 /* MarketChangeTokenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9FFF2C2126C07800957175 /* MarketChangeTokenTableViewCell.xib */; };
 		ACA677B82079970600D34A2F /* ExportKeystoreSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677B62079970600D34A2F /* ExportKeystoreSwipeViewController.swift */; };
 		ACA677B92079970600D34A2F /* ExportKeystoreSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677B72079970600D34A2F /* ExportKeystoreSwipeViewController.xib */; };
 		ACA677C0207997F400D34A2F /* DisplayKeystoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677BE207997F400D34A2F /* DisplayKeystoreViewController.swift */; };
@@ -948,6 +954,12 @@
 		AC9DC45D211AC92C002D7D23 /* TradeViewOnlyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeViewOnlyViewController.xib; sourceTree = "<group>"; };
 		AC9DC461211C0D87002D7D23 /* TradeSelectionNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSelectionNavigationViewController.swift; sourceTree = "<group>"; };
 		AC9FFF2021254BAC00957175 /* DefaultStepSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStepSlider.swift; sourceTree = "<group>"; };
+		AC9FFF232126BDF800957175 /* MarketChangeTokenSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketChangeTokenSwipeViewController.swift; sourceTree = "<group>"; };
+		AC9FFF242126BDF800957175 /* MarketChangeTokenSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketChangeTokenSwipeViewController.xib; sourceTree = "<group>"; };
+		AC9FFF272126C05000957175 /* MarketChangeTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketChangeTokenViewController.swift; sourceTree = "<group>"; };
+		AC9FFF282126C05000957175 /* MarketChangeTokenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketChangeTokenViewController.xib; sourceTree = "<group>"; };
+		AC9FFF2B2126C07800957175 /* MarketChangeTokenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketChangeTokenTableViewCell.swift; sourceTree = "<group>"; };
+		AC9FFF2C2126C07800957175 /* MarketChangeTokenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketChangeTokenTableViewCell.xib; sourceTree = "<group>"; };
 		ACA677B62079970600D34A2F /* ExportKeystoreSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportKeystoreSwipeViewController.swift; sourceTree = "<group>"; };
 		ACA677B72079970600D34A2F /* ExportKeystoreSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportKeystoreSwipeViewController.xib; sourceTree = "<group>"; };
 		ACA677BE207997F400D34A2F /* DisplayKeystoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayKeystoreViewController.swift; sourceTree = "<group>"; };
@@ -1262,9 +1274,9 @@
 			isa = PBXGroup;
 			children = (
 				AC13B30120548767008A72C0 /* BuyAndSellSwipeViewController.swift */,
+				AC13B30220548767008A72C0 /* BuyAndSellSwipeViewController.xib */,
 				94DFE4032122BD47000E1831 /* BuyViewController.swift */,
 				94DFE4022122BD47000E1831 /* BuyViewController.xib */,
-				AC13B30220548767008A72C0 /* BuyAndSellSwipeViewController.xib */,
 				AC13B30C2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift */,
 				94AA0A9D211550440092D2CE /* PlaceOrderConfirmationViewController.xib */,
 				94D94CE12084A9380000BBC8 /* ConfirmationResultViewController.swift */,
@@ -1891,6 +1903,19 @@
 			path = StepSlider;
 			sourceTree = "<group>";
 		};
+		AC9FFF222126BDA800957175 /* MarketChangeToken */ = {
+			isa = PBXGroup;
+			children = (
+				AC9FFF232126BDF800957175 /* MarketChangeTokenSwipeViewController.swift */,
+				AC9FFF242126BDF800957175 /* MarketChangeTokenSwipeViewController.xib */,
+				AC9FFF272126C05000957175 /* MarketChangeTokenViewController.swift */,
+				AC9FFF282126C05000957175 /* MarketChangeTokenViewController.xib */,
+				AC9FFF2B2126C07800957175 /* MarketChangeTokenTableViewCell.swift */,
+				AC9FFF2C2126C07800957175 /* MarketChangeTokenTableViewCell.xib */,
+			);
+			path = MarketChangeToken;
+			sourceTree = "<group>";
+		};
 		ACA677B52079928800D34A2F /* ExportKeystore */ = {
 			isa = PBXGroup;
 			children = (
@@ -1938,6 +1963,7 @@
 			isa = PBXGroup;
 			children = (
 				AC23B365210D6213004DC5A9 /* MarketDetailViewController.swift */,
+				AC9FFF222126BDA800957175 /* MarketChangeToken */,
 				AC23B366210D6214004DC5A9 /* MarketDetailViewController.xib */,
 				AC6A3476210D740500AE615B /* MarketDetailSwipeViewController.swift */,
 				AC6A3477210D740500AE615B /* MarketDetailSwipeViewController.xib */,
@@ -2542,12 +2568,14 @@
 				AC54FD79204FC6E8007E1DEB /* OpenSans-ExtraBold.ttf in Resources */,
 				ACB911562024260E00F14644 /* WalletViewController.xib in Resources */,
 				AC54FD85204FC6F5007E1DEB /* OpenSans-LightItalic.ttf in Resources */,
+				AC9FFF2A2126C05000957175 /* MarketChangeTokenViewController.xib in Resources */,
 				AC2ACAA621031F66009C77E7 /* fee_1_zh-Hans.md in Resources */,
 				AC952A152053A84800C78562 /* OrderHistoryViewController.xib in Resources */,
 				ACC8D0A720CC95A00049A741 /* AssetTableViewCell.xib in Resources */,
 				AC31CE71205B995900A30335 /* Roboto-MediumItalic.ttf in Resources */,
 				AC3B48842103EA6B008A6771 /* TradeSelectionViewController.xib in Resources */,
 				ACB41A7020B54BB300A92C9D /* AuthenticationViewController.xib in Resources */,
+				AC9FFF2E2126C07800957175 /* MarketChangeTokenTableViewCell.xib in Resources */,
 				AC6A3479210D740500AE615B /* MarketDetailSwipeViewController.xib in Resources */,
 				AC3B488D210525BE008A6771 /* UpdatedSelectWalletTableViewCell.xib in Resources */,
 				AC0CD58620D2330300ABB7BA /* H5DexViewController.xib in Resources */,
@@ -2617,6 +2645,7 @@
 				ACDA889C20F85F9C004FA10B /* InfoPlist.strings in Resources */,
 				AC68E10320C24BD900BFA837 /* ImportWalletEnterWalletNameViewController.xib in Resources */,
 				ACA677D0207D1BEC00D34A2F /* SettingChangeWalletNameViewController.xib in Resources */,
+				AC9FFF262126BDF800957175 /* MarketChangeTokenSwipeViewController.xib in Resources */,
 				AC798E4C2022B93A0071D477 /* Assets.xcassets in Resources */,
 				AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */,
 				AC131A0B210D7A33001998A0 /* MarketDetailTradeHistoryViewController.xib in Resources */,
@@ -2918,6 +2947,7 @@
 				ACDBF105203FE7D5000F0DEC /* ReorderSnapshotView.swift in Sources */,
 				ACE6F722204221260039273D /* Themes.swift in Sources */,
 				ACB9117C20256BBA00F14644 /* TradingPair.swift in Sources */,
+				AC9FFF2D2126C07800957175 /* MarketChangeTokenTableViewCell.swift in Sources */,
 				AC70E84E20683C7500451047 /* IconView.swift in Sources */,
 				943C1CB220CE26CE008A8CED /* LoginResultViewController.swift in Sources */,
 				ACB5DD9C202D5B8000140A09 /* NumericKeyboardCell.swift in Sources */,
@@ -2957,6 +2987,7 @@
 				94AD1FE5208B910D00C443E6 /* Currency.swift in Sources */,
 				94C5E79D207394F50074B939 /* CustomSearchController.swift in Sources */,
 				ACB911842026388700F14644 /* SettingViewController.swift in Sources */,
+				AC9FFF292126C05000957175 /* MarketChangeTokenViewController.swift in Sources */,
 				AC0CD57B20D21C1100ABB7BA /* TabBarItemBouncesContentView.swift in Sources */,
 				AC46F7762069FB4400CFDC40 /* UIButton+RoundButton.swift in Sources */,
 				ACFEFE9F20C3436000013921 /* loopr_ios.xcdatamodeld in Sources */,
@@ -3094,6 +3125,7 @@
 				ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */,
 				AC5288B5208300580002AEAD /* NetworkingRechabilityManager.swift in Sources */,
 				94768CA4210DCB2300B5977B /* TradeSwipeType.swift in Sources */,
+				AC9FFF252126BDF800957175 /* MarketChangeTokenSwipeViewController.swift in Sources */,
 				ACB911662024505D00F14644 /* OrderFill.swift in Sources */,
 				ACEC977F20AD57F3003F9DEB /* P2POrderHistoryViewController.swift in Sources */,
 				AC72AEE8204F020B00E9D3B0 /* OrderTradeState.swift in Sources */,

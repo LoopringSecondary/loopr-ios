@@ -1,18 +1,18 @@
 //
-//  MarketSwipeViewController.swift
+//  MarketChangeTokenSwipeViewController.swift
 //  loopr-ios
 //
-//  Created by xiaoruby on 2/14/18.
+//  Created by xiaoruby on 8/17/18.
 //  Copyright © 2018 Loopring. All rights reserved.
 //
 
 import UIKit
 
-class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
-    
+class MarketChangeTokenSwipeViewController: SwipeViewController, UISearchBarDelegate {
+
     private var type: MarketSwipeViewType = .favorite
     private var types: [MarketSwipeViewType] = []
-    private var viewControllers: [MarketViewController] = []
+    private var viewControllers: [MarketChangeTokenViewController] = []
     
     var options = SwipeViewOptions.getDefault()
     
@@ -20,45 +20,65 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     var isSearching = false
     let searchBar = UISearchBar()
     var searchButton = UIBarButtonItem()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = GlobalPicker.backgroundColor
-
+        
         setupSearchBar()
-        setBackButton()
+        setupCloseButton()
         self.navigationItem.title = LocalizedString("Markets", comment: "")
-
+        
         setupChildViewControllers()
     }
-
+    
+    func setupCloseButton() {
+        let backButton = UIButton()
+        
+        backButton.setImage(UIImage.init(named: "Close-dark"), for: .normal)
+        
+        // Default left padding is 20. It should be 12 in our design.
+        backButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -16, bottom: 0, right: 8)
+        backButton.addTarget(self, action: #selector(pressedCloseButton(_:)), for: UIControlEvents.touchUpInside)
+        // The size of the image.
+        backButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        let backBarButton = UIBarButtonItem(customView: backButton)
+        self.navigationItem.leftBarButtonItem = backBarButton
+    }
+    
+    @objc func pressedCloseButton(_ button: UIBarButtonItem) {
+        self.dismiss(animated: true) {
+            
+        }
+    }
+    
     func setupChildViewControllers() {
         types = [.favorite, .ETH, .LRC, .all]
         
-        let vc0 = MarketViewController(type: .favorite)
+        let vc0 = MarketChangeTokenViewController(type: .favorite)
         vc0.didSelectRowClosure = { (market) -> Void in
-
+            
         }
         vc0.didSelectBlankClosure = {
             self.searchBar.resignFirstResponder()
         }
-        let vc1 = MarketViewController(type: .ETH)
+        let vc1 = MarketChangeTokenViewController(type: .ETH)
         vc1.didSelectRowClosure = { (market) -> Void in
             
         }
         vc1.didSelectBlankClosure = {
             self.searchBar.resignFirstResponder()
         }
-        let vc2 = MarketViewController(type: .LRC)
+        let vc2 = MarketChangeTokenViewController(type: .LRC)
         vc2.didSelectRowClosure = { (market) -> Void in
             
         }
         vc2.didSelectBlankClosure = {
             self.searchBar.resignFirstResponder()
         }
-        let vc3 = MarketViewController(type: .all)
+        let vc3 = MarketChangeTokenViewController(type: .all)
         vc3.didSelectRowClosure = { (market) -> Void in
             
         }
@@ -69,7 +89,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         for viewController in viewControllers {
             self.addChildViewController(viewController)
         }
-
+        
         if Themes.isDark() {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.white
@@ -86,7 +106,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
             viewControllers[0].viewAppear = true
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -150,7 +170,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         isSearching = false
         viewControllers[self.swipeView.currentIndex].searchTextDidUpdate(searchText: "")
     }
-
+    
     // MARK: - Delegate
     override func swipeView(_ swipeView: SwipeView, viewWillSetupAt currentIndex: Int) {
         // print("will setup SwipeView")
@@ -159,7 +179,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     override func swipeView(_ swipeView: SwipeView, viewDidSetupAt currentIndex: Int) {
         // print("did setup SwipeView")
     }
-
+    
     override func swipeView(_ swipeView: SwipeView, willChangeIndexFrom fromIndex: Int, to toIndex: Int) {
         // print("will change from item \(fromIndex) to item \(toIndex)")
         var isFiltering: Bool = false
@@ -171,13 +191,13 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         let viewController = viewControllers[toIndex]
         viewController.reloadAfterSwipeViewUpdated(isSearching: isFiltering, searchText: searchText)
     }
-
+    
     override func swipeView(_ swipeView: SwipeView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
         // print("did change from item \(fromIndex) to section \(toIndex)")
         viewControllers[fromIndex].viewAppear = false
         viewControllers[toIndex].viewAppear = true
     }
-
+    
     // MARK: - DataSource
     override func numberOfPages(in swipeView: SwipeView) -> Int {
         return viewControllers.count
@@ -186,11 +206,11 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     override func swipeView(_ swipeView: SwipeView, titleForPageAt index: Int) -> String {
         return types[index].description
     }
-
+    
     override func swipeView(_ swipeView: SwipeView, viewControllerForPageAt index: Int) -> UIViewController {
         return viewControllers[index]
     }
-
+    
     // MARK: - SearchBar Delegate
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("searchBar textDidChange \(searchText) \(self.swipeView.currentIndex)")
@@ -200,7 +220,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("searchBarSearchButtonClicked")
     }
-
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         print("searchBarTextDidBeginEditing")
         isSearching = true
@@ -210,7 +230,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         // No need to reload nor call searchTextDidUpdate
         viewControllers[self.swipeView.currentIndex].isSearching = true
     }
-
+    
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         print("searchBarTextDidEndEditing")
     }

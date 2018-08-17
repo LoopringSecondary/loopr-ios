@@ -25,6 +25,7 @@ class MarketTableViewCell: UITableViewCell {
         // Initialization code
 
         selectionStyle = .none
+        accessoryType = .none
 
         theme_backgroundColor = GlobalPicker.backgroundColor
         baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
@@ -46,8 +47,6 @@ class MarketTableViewCell: UITableViewCell {
         percentageChangeLabel.textAlignment = .center
         percentageChangeLabel.cornerRadius = 6
         percentageChangeLabel.clipsToBounds = true
-
-        accessoryType = .none
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
