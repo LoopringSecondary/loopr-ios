@@ -40,7 +40,7 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
         if highlighted {
             baseView.theme_backgroundColor = GlobalPicker.cardHighLightColor
         } else {
-            baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+            // baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         }
     }
 

@@ -73,9 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = authenticationViewController
         }
 
-        // Setup socket io at the end of the launch
-        LoopringSocketIORequest.setup()
-        
         return true
     }
     

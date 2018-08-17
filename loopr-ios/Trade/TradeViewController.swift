@@ -437,20 +437,9 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
             // TODO: improve the animation.
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
                 self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
-            }, completion: { finished in
+            }, completion: { _ in
                 self.isNumericKeyboardShown = true
-                if finished {
-                    if textField.tag == self.amountBuyTextField.tag {
-                        let bottomOffset = CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.size.height)
-                        self.scrollView.setContentOffset(bottomOffset, animated: true)
-                    }
-                }
             })
-        } else {
-            if textField.tag == amountBuyTextField.tag {
-                let bottomOffset = CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.size.height)
-                self.scrollView.setContentOffset(bottomOffset, animated: true)
-            }
         }
     }
     

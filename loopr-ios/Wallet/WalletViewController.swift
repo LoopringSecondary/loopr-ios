@@ -113,6 +113,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.isLaunching = false
                     // Then get all balance. It takes times.
                     AppWalletDataManager.shared.getAllBalanceFromRelay()
+                    // Setup socket io at the end of the launch
+                    LoopringSocketIORequest.setup()
                 }
                 self.assetTableView.reloadData()
                 self.refreshControl.endRefreshing()

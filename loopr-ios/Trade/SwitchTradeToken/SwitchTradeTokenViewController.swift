@@ -168,20 +168,22 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let token: Token
-        if isSearching {
-            token = filteredTokens[indexPath.row]
-        } else {
-            token = self.tokens[indexPath.row]
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            tableView.deselectRow(at: indexPath, animated: true)
+            let token: Token
+            if self.isSearching {
+                token = self.filteredTokens[indexPath.row]
+            } else {
+                token = self.tokens[indexPath.row]
+            }
+            switch self.type {
+            case .tokenS:
+                TradeDataManager.shared.changeTokenS(token)
+            case .tokenB:
+                TradeDataManager.shared.changeTokenB(token)
+            }
+            self.navigationController?.popViewController(animated: true)
         }
-        switch type {
-        case .tokenS:
-            TradeDataManager.shared.changeTokenS(token)
-        case .tokenB:
-            TradeDataManager.shared.changeTokenB(token)
-        }
-        self.navigationController?.popViewController(animated: true)
     }
 
     // MARK: - SearchBar Delegate
