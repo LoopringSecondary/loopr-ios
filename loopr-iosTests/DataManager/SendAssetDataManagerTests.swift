@@ -26,13 +26,4 @@ class SendCurrentAppWalletDataManagerTests: XCTestCase {
         mgr.loadGasLimitsFromJson()
         XCTAssertEqual(mgr.getGasLimits().count, 10)
     }
-    
-    func test() {
-        let start = Date()
-        SendCurrentAppWalletDataManager.shared.getNonceFromRelay()
-        let end = Date()
-        let timeInterval: Double = end.timeIntervalSince(start)
-        print("##########Time to getNonceFromServerSynchronous: \(timeInterval) seconds############")
-    }
-    
 }

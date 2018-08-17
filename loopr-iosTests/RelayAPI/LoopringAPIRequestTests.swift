@@ -301,23 +301,9 @@ class LoopringAPIRequestTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
-    func testNotifyTransactionSubmitted() {
-//        let expectation = XCTestExpectation()
-//        LoopringAPIRequest.notifyTransactionSubmitted(txHash: "0x890db35af7d66d117e4feba62a041fb5ec7d5e432b19c96a090e1ff482d1c5ef", nonce: <#String#>) { (result, error) in
-//            guard error == nil && result != nil else {
-//                print("error=\(String(describing: error))")
-//                XCTFail()
-//                return
-//            }
-//            print(result!)
-//            expectation.fulfill()
-//        }
-//        wait(for: [expectation], timeout: 10.0)
-    }
-    
-    func testGetNonce() {
+    func testAddCustomToken() {
         let expectation = XCTestExpectation()
-        LoopringAPIRequest.getNonce(owner: testAddress) { (result, error) in
+        LoopringAPIRequest.addCustomToken(owner: testAddress, tokenContractAddress: testAddress, symbol: "AAA", decimals: 18) { (result, error) in
             guard error == nil && result != nil else {
                 print("error=\(String(describing: error))")
                 XCTFail()

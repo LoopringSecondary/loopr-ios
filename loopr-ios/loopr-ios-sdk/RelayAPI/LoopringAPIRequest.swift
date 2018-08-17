@@ -553,7 +553,7 @@ class LoopringAPIRequest {
         let delegateAddress = RelayAPIConfiguration.delegateAddress
         body["params"] = [["delegateAddress": delegateAddress, "protocol": protocolValue, "owner": owner, "walletAddress": walletAddress, "tokenS": tokenS, "tokenB": tokenB, "amountS": amountS, "amountB": amountB, "authPrivateKey": authPrivateKey, "authAddr": authAddr, "validSince": validSince, "validUntil": validUntil, "lrcFee": lrcFee, "buyNoMoreThanAmountB": buyNoMoreThanAmountB, "marginSplitPercentage": marginSplitPercentage, "powNonce": powNonce, "orderType": orderType, "v": v, "r": r, "s": s, "makerOrderHash": makerOrderHash]]
         
-        self.invoke(method: "loopring_submitOrder", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
+        self.invoke(method: "loopring_submitOrderForP2P", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
             guard error == nil && data != nil else {
                 completionHandler(nil, error!)
                 return
@@ -632,18 +632,6 @@ class LoopringAPIRequest {
         }
     }
     
-    static func getNonce(owner: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
-        var body: JSON = JSON()
-        body["params"] = [["owner": owner]]
-        self.invoke(method: "loopring_getNonce", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
-            guard error == nil && data != nil else {
-                completionHandler(nil, error!)
-                return
-            }
-            completionHandler(data!.respond, nil)
-        }
-    }
-    
     // City partner
     static func activateInvitation(completionHandler: @escaping (_ result: JSON?, _ error: Error?) -> Void) {
         let url = URL(string: "https://relay1.loopr.io/city_partner/activate_customer")!
@@ -681,6 +669,19 @@ class LoopringAPIRequest {
             let result = json["result"]
             let partner = CityPartner(json: result)
             completionHandler(partner, nil)
+        }
+    }
+    
+    static func addCustomToken(owner: String, tokenContractAddress: String, symbol: String, decimals: Int64, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        body["params"] = [["owner": owner, "tokenContractAddress": tokenContractAddress, "symbol": symbol, "decimals": decimals]]
+        
+        self.invoke(method: "loopring_addCustomToken", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
+            guard error == nil && data != nil else {
+                completionHandler(nil, error!)
+                return
+            }
+            completionHandler(data!.respond, nil)
         }
     }
 }
