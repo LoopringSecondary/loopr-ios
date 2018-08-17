@@ -243,4 +243,20 @@ class PlaceOrderDataManager {
   
         LoopringAPIRequest.submitOrder(owner: order.address, walletAddress: order.walletAddress, tokenS: tokens, tokenB: tokenb, amountS: amountS, amountB: amountB, lrcFee: lrcFee, validSince: validSince, validUntil: validUntil, marginSplitPercentage: order.marginSplitPercentage, buyNoMoreThanAmountB: order.buyNoMoreThanAmountB, authAddr: order.authAddr, authPrivateKey: authPrivateKey, powNonce: powNonce, orderType: order.orderType.rawValue, v: order.v, r: order.r, s: order.s, completionHandler: completion)
     }
+    
+    func _submitOrderForP2P(_ order: OriginalOrder, completion: @escaping (String?, Error?) -> Void) {
+        
+        guard let hash = TradeDataManager.shared.makerHash else { return }
+        let tokens = tokenManager.getAddress(by: order.tokenSell)!
+        let tokenb = tokenManager.getAddress(by: order.tokenBuy)!
+        let amountB = _encodeString(order.amountBuy, order.tokenBuy)
+        let amountS = _encodeString(order.amountSell, order.tokenSell)
+        let lrcFee = _encodeString(order.lrcFee, "LRC")
+        let validSince = order.validSince.hex
+        let validUntil = order.validUntil.hex
+        let authPrivateKey = order.orderType == .marketOrder ? order.authPrivateKey : nil
+        let powNonce = 1
+        
+        LoopringAPIRequest.submitOrderForP2P(owner: order.address, walletAddress: order.walletAddress, tokenS: tokens, tokenB: tokenb, amountS: amountS, amountB: amountB, lrcFee: lrcFee, validSince: validSince, validUntil: validUntil, marginSplitPercentage: order.marginSplitPercentage, buyNoMoreThanAmountB: order.buyNoMoreThanAmountB, authAddr: order.authAddr, authPrivateKey: authPrivateKey, powNonce: powNonce, orderType: order.orderType.rawValue, v: order.v, r: order.r, s: order.s, makerOrderHash: hash, completionHandler: completion)
+    }
 }

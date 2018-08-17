@@ -546,6 +546,22 @@ class LoopringAPIRequest {
         }
     }
     
+    static func submitOrderForP2P(owner: String, walletAddress: String, tokenS: String, tokenB: String, amountS: String, amountB: String, lrcFee: String, validSince: String, validUntil: String, marginSplitPercentage: UInt8, buyNoMoreThanAmountB: Bool, authAddr: String, authPrivateKey: String?, powNonce: Int, orderType: String, v: UInt, r: String, s: String, makerOrderHash: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        
+        var body: JSON = JSON()
+        let protocolValue = RelayAPIConfiguration.protocolAddress
+        let delegateAddress = RelayAPIConfiguration.delegateAddress
+        body["params"] = [["delegateAddress": delegateAddress, "protocol": protocolValue, "owner": owner, "walletAddress": walletAddress, "tokenS": tokenS, "tokenB": tokenB, "amountS": amountS, "amountB": amountB, "authPrivateKey": authPrivateKey, "authAddr": authAddr, "validSince": validSince, "validUntil": validUntil, "lrcFee": lrcFee, "buyNoMoreThanAmountB": buyNoMoreThanAmountB, "marginSplitPercentage": marginSplitPercentage, "powNonce": powNonce, "orderType": orderType, "v": v, "r": r, "s": s, "makerOrderHash": makerOrderHash]]
+        
+        self.invoke(method: "loopring_submitOrder", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
+            guard error == nil && data != nil else {
+                completionHandler(nil, error!)
+                return
+            }
+            completionHandler(data!.respond, nil)
+        }
+    }
+    
     static func cancelOrder(owner: String, type: CancelType, orderHash: String?, cutoff: Int64?, tokenS: String?, tokenB: String?, signature: SignatureData, timestamp: String, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["params"] = [["orderHash": orderHash, "type": type.rawValue, "cutoff": cutoff, "tokenS": tokenS, "tokenB": tokenB, "sign": ["timestamp": timestamp, "v": Int(signature.v)!, "r": signature.r, "s": signature.s, "owner": owner]]]

@@ -271,9 +271,12 @@ extension TradeConfirmationViewController {
                 self.completion(orderHash!, nil)
             }
         } else {
-            PlaceOrderDataManager.shared._submitOrder(self.order!) { (orderHash, error) in
+            PlaceOrderDataManager.shared._submitOrderForP2P(self.order!) { (orderHash, error) in
                 guard error == nil && orderHash != nil else {
-                    self.completion(nil, error!)
+                    let errorCode = (error! as NSError).userInfo["message"] as! String
+                    if let error = TradeDataManager.shared.generateErrorMessage(errorCode: errorCode) {
+                        self.completion(nil, error)
+                    }
                     return
                 }
                 TradeDataManager.shared._submitRing(completion: self.completion)

@@ -26,6 +26,7 @@ class TradeDataManager {
     
     var isTaker: Bool = false
     var type: TradeType = .buy
+    var makerHash: String?
     var makerPrivateKey: String?
     var sellRatio: Double = 1
     var amountTokenS: Double = 0.0
@@ -98,12 +99,11 @@ class TradeDataManager {
     }
     
     func handleResult(of scanning: JSON) {
-        let makerHash = scanning[TradeDataManager.qrcodeHash].stringValue
+        self.makerHash = scanning[TradeDataManager.qrcodeHash].stringValue
         let makerPrivateKey = scanning[TradeDataManager.qrcodeAuth].stringValue
         self.sellRatio = scanning[TradeDataManager.sellRatio].doubleValue
-        if let maker = getOrder(by: makerHash) {
+        if let hash = self.makerHash, let maker = getOrder(by: hash) {
             let taker = constructTaker(from: maker)
-            maker.hash = makerHash
             self.isTaker = true
             self.orders = []
             self.orders.insert(maker, at: 0)
@@ -172,6 +172,7 @@ class TradeDataManager {
         let makerOrderHash = orders[0].hash
         let takerOrderHash = orders[1].hash
         LoopringAPIRequest.submitRing(makerOrderHash: makerOrderHash, takerOrderHash: takerOrderHash, rawTx: rawTx, completionHandler: { (txHash, error) in
+            SendCurrentAppWalletDataManager.shared.incrementNonce()
             guard txHash != nil && error == nil else {
                 let errorCode = (error! as NSError).userInfo["message"] as! String
                 if let error = self.generateErrorMessage(errorCode: errorCode) {
@@ -179,7 +180,6 @@ class TradeDataManager {
                 }
                 return
             }
-            SendCurrentAppWalletDataManager.shared.incrementNonce()
             completion(txHash, nil)
         })
     }
