@@ -55,16 +55,24 @@ class TradeDataManager {
         if let symbol = defaults.string(forKey: UserDefaultsKeys.tradeTokenS.rawValue) {
             tokenS = Token(symbol: symbol)
         }
-        self.tokenS = tokenS ?? Token(symbol: "LRC")!
         var tokenB: Token?
         if let symbol = defaults.string(forKey: UserDefaultsKeys.tradeTokenB.rawValue) {
             tokenB = Token(symbol: symbol)
         }
-        self.tokenB = tokenB ?? Token(symbol: "WETH")!
+
+        // Use default values if loopring_getSupportedTokens returns errors.
+        if tokenS == nil || tokenB == nil {
+            self.tokenS = Token(symbol: "WETH")!
+            self.tokenB = Token(symbol: "LRC")!
+        } else {
+            self.tokenS = tokenS!
+            self.tokenB = tokenB!
+        }
+
         self.updatePair()
         self.setupErrorMessage()
     }
-    
+
     func setupErrorMessage() {
         self.errorMessage = [
             "10001": LocalizedString("10001", comment: ""),

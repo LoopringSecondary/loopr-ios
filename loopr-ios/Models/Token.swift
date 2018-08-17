@@ -34,7 +34,6 @@ class Token: Equatable {
         }
     }
     
-    // TODO: do we need this initialization?
     init?(symbol: String) {
         let token = TokenDataManager.shared.getTokenBySymbol(symbol)
         guard token != nil else {

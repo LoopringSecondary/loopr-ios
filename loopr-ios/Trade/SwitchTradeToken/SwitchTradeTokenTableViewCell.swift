@@ -40,6 +40,14 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
         if highlighted {
             baseView.theme_backgroundColor = GlobalPicker.cardHighLightColor
         } else {
+            baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        }
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        if selected {
+            baseView.theme_backgroundColor = GlobalPicker.cardHighLightColor
+        } else {
             // baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         }
     }
