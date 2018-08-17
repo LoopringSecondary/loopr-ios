@@ -146,7 +146,6 @@ class TradeConfirmationViewController: UIViewController {
         let price = order.amountBuy / order.amountSell
         let value = order.side == "buy" ? 1 / price : price
         priceValueLabel.text = "\(value.withCommas()) \(order.market)"
-        priceValueLabel.frame = CGRect(x: UIScreen.main.bounds.width - 15 - 200, y: priceLabel.frame.minY, width: 200, height: 40)
         if let price = PriceDataManager.shared.getPrice(of: "LRC") {
             let total = (price * order.lrcFee).currency
             LRCFeeValueLabel.text = "\(order.lrcFee.withCommas(3))LRC ≈ \(total)"
