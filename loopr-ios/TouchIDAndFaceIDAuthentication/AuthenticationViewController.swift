@@ -11,6 +11,7 @@ import UIKit
 class AuthenticationViewController: UIViewController {
 
     var unlockAppButton = UIButton()
+    var unlockAppIconButton = UIButton()
     var backgrondImageView = UIImageView()
 
     var needNavigate: Bool = false
@@ -31,7 +32,11 @@ class AuthenticationViewController: UIViewController {
         unlockAppButton.setupSecondary()
         unlockAppButton.addTarget(self, action: #selector(pressedUnlockAppButton), for: .touchUpInside)
         backgrondImageView.addSubview(unlockAppButton)
-
+        
+        unlockAppIconButton.setImage(UIImage.init(named: "auth-icon-dark"), for: .normal)
+        unlockAppIconButton.addTarget(self, action: #selector(pressedUnlockAppButton), for: .touchUpInside)
+        backgrondImageView.addSubview(unlockAppIconButton)
+        
         self.navigationController?.isNavigationBarHidden = true
     }
 
@@ -50,6 +55,8 @@ class AuthenticationViewController: UIViewController {
         let bottomPadding: CGFloat = UIDevice.current.iPhoneX ? 30 : 0
         unlockAppButton.frame = CGRect(x: 15, y: screenHeight - bottomPadding - 47 - 63, width: screenWidth - 15 * 2, height: 47)
 
+        unlockAppIconButton.frame = CGRect(x: (screenWidth-60)*0.5, y: unlockAppButton.frame.minY - 60, width: 60, height: 60)
+        
         startAuthentication()
     }
 

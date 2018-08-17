@@ -63,17 +63,22 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
             for controller in self.navigationController!.viewControllers as Array {
                 if controller.isKind(of: SettingViewController.self) {
                     self.navigationController!.popToViewController(controller, animated: false)
+                    // Jump to WalletViewController
+                    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                    if let tabBarController = appDelegate?.window?.rootViewController as? UITabBarController {
+                        if let fromView = tabBarController.selectedViewController?.view {
+                            let toView = tabBarController.viewControllers![0]
+                            UIView.transition(from: fromView, to: toView.view, duration: 0.3, options: .transitionCrossDissolve, completion: { (_) in
+                                tabBarController.selectedIndex = 0
+                            })
+                        }
+                    }
                     break
                 }
-            }
-            // Jump to WalletViewController
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            if let tabBarController = appDelegate?.window?.rootViewController as? UITabBarController {
-                if let fromView = tabBarController.selectedViewController?.view {
-                    let toView = tabBarController.viewControllers![0]
-                    UIView.transition(from: fromView, to: toView.view, duration: 0.3, options: .transitionCrossDissolve, completion: { (_) in
-                        tabBarController.selectedIndex = 0
-                    })
+                
+                if controller.isKind(of: WalletViewController.self) {
+                    self.navigationController!.popToViewController(controller, animated: true)
+                    break
                 }
             }
         })
