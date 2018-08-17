@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -28,7 +28,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3K2-up-9JE">
-                    <rect key="frame" x="20" y="198" width="374" height="420"/>
+                    <rect key="frame" x="20" y="158" width="374" height="420"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loopr Wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBn-Jl-kW1">
                             <rect key="frame" x="139" y="48" width="96" height="20.666666666666671"/>
@@ -45,17 +45,17 @@
                             </constraints>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jxo-fS-cjo">
-                            <rect key="frame" x="97" y="120" width="180" height="180"/>
+                            <rect key="frame" x="87" y="110" width="200" height="200"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="180" id="H8s-EU-i3X"/>
+                                <constraint firstAttribute="height" constant="200" id="H8s-EU-i3X"/>
                                 <constraint firstAttribute="width" secondItem="Jxo-fS-cjo" secondAttribute="height" id="yLV-La-av1"/>
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NU-nI-gps">
-                            <rect key="frame" x="24" y="346" width="155" height="42"/>
+                            <rect key="frame" x="24" y="348" width="155" height="44"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="42" id="92L-Mo-hdB"/>
+                                <constraint firstAttribute="height" constant="44" id="92L-Mo-hdB"/>
                             </constraints>
                             <state key="normal" title="Save to Album">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -65,10 +65,10 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEl-zM-Ijk">
-                            <rect key="frame" x="199" y="345.66666666666663" width="151" height="42"/>
+                            <rect key="frame" x="199" y="348" width="151" height="44"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="42" id="Npa-bl-3bd"/>
+                                <constraint firstAttribute="height" constant="44" id="Npa-bl-3bd"/>
                             </constraints>
                             <state key="normal" title="Copy Wallet Address">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -81,14 +81,14 @@
                     <color key="backgroundColor" name="Color-dark2"/>
                     <constraints>
                         <constraint firstItem="7NU-nI-gps" firstAttribute="leading" secondItem="3K2-up-9JE" secondAttribute="leading" constant="24" id="5WT-42-Wsd"/>
-                        <constraint firstAttribute="bottom" secondItem="7NU-nI-gps" secondAttribute="bottom" constant="32" id="5of-9T-7IT"/>
+                        <constraint firstAttribute="bottom" secondItem="7NU-nI-gps" secondAttribute="bottom" constant="28" id="5of-9T-7IT"/>
                         <constraint firstAttribute="height" constant="420" id="BMm-wP-MQi"/>
                         <constraint firstItem="Jxo-fS-cjo" firstAttribute="centerY" secondItem="3K2-up-9JE" secondAttribute="centerY" id="Cfz-TQ-nlp"/>
                         <constraint firstItem="qpx-g3-ULm" firstAttribute="centerX" secondItem="Jxo-fS-cjo" secondAttribute="centerX" id="Clf-wr-XNQ"/>
-                        <constraint firstAttribute="bottom" secondItem="mEl-zM-Ijk" secondAttribute="bottom" constant="32" id="JCB-oz-ldm"/>
                         <constraint firstItem="YBn-Jl-kW1" firstAttribute="top" secondItem="3K2-up-9JE" secondAttribute="top" constant="48" id="Qhv-Z3-Xjo"/>
                         <constraint firstItem="qpx-g3-ULm" firstAttribute="centerY" secondItem="Jxo-fS-cjo" secondAttribute="centerY" id="SbS-Ic-3Ha"/>
                         <constraint firstItem="mEl-zM-Ijk" firstAttribute="width" secondItem="3K2-up-9JE" secondAttribute="width" multiplier="0.5" constant="-36" id="Z4N-s9-OhJ"/>
+                        <constraint firstItem="mEl-zM-Ijk" firstAttribute="centerY" secondItem="7NU-nI-gps" secondAttribute="centerY" id="egG-sK-fYO"/>
                         <constraint firstItem="7NU-nI-gps" firstAttribute="width" secondItem="3K2-up-9JE" secondAttribute="width" multiplier="0.5" constant="-32" id="gUx-eW-Dem"/>
                         <constraint firstAttribute="trailing" secondItem="mEl-zM-Ijk" secondAttribute="trailing" constant="24" id="onc-aw-IYj"/>
                     </constraints>
@@ -99,7 +99,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Order-qrcode-icon" translatesAutoresizingMaskIntoConstraints="NO" id="D16-yf-Yzm">
-                    <rect key="frame" x="177" y="168" width="60" height="60"/>
+                    <rect key="frame" x="177" y="128" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="Iaq-os-mtI"/>
                         <constraint firstAttribute="height" constant="60" id="Mux-Ce-3We"/>
@@ -110,14 +110,14 @@
             <constraints>
                 <constraint firstItem="Jxo-fS-cjo" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="5IR-ZJ-9gC"/>
                 <constraint firstItem="3K2-up-9JE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="7Xa-AG-WJP"/>
-                <constraint firstItem="3K2-up-9JE" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="40" id="H2D-M5-1iy"/>
+                <constraint firstItem="3K2-up-9JE" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="H2D-M5-1iy"/>
                 <constraint firstItem="YBn-Jl-kW1" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="OIM-eH-Qic"/>
                 <constraint firstItem="D16-yf-Yzm" firstAttribute="top" secondItem="3K2-up-9JE" secondAttribute="top" constant="-30" id="oTZ-Bu-pxr"/>
                 <constraint firstItem="D16-yf-Yzm" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qRR-WH-vxf"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3K2-up-9JE" secondAttribute="trailing" constant="20" id="toe-kG-wm3"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="32.5" y="123.5"/>
+            <point key="canvasLocation" x="32" y="123"/>
         </view>
     </objects>
     <resources>

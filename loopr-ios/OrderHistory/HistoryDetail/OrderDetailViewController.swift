@@ -25,7 +25,12 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var idInfoLabel: UILabel!
     @IBOutlet weak var dateTipLabel: UILabel!
     @IBOutlet weak var dateInfoLabel: UILabel!
-    @IBOutlet weak var totalMaskView: UIView!
+    
+    // Mask view
+    var blurVisualEffectView = UIView()
+    
+    // Drag down to close a present view controller.
+    var dismissInteractor = MiniToLargeViewInteractive()
     
     var order: Order?
     
@@ -81,6 +86,10 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         dateTipLabel.setTitleCharFont()
         dateTipLabel.text = LocalizedString("Time", comment: "")
         dateInfoLabel.setTitleDigitFont()
+        
+        blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        blurVisualEffectView.alpha = 1
+        blurVisualEffectView.frame = UIScreen.main.bounds
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,7 +99,6 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        view.bringSubview(toFront: totalMaskView)
         setup()
     }
     
@@ -110,14 +118,34 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     
     @objc func pressQRCodeButton(_ sender: UIButton) {
         if let order = self.order {
-            self.totalMaskView.alpha = 0.75
             let vc = OrderQRCodeViewController()
             vc.order = order.originalOrder
+
+            vc.transitioningDelegate = self
+            vc.modalPresentationStyle = .overFullScreen
             vc.dismissClosure = {
-                self.totalMaskView.alpha = 0
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.blurVisualEffectView.alpha = 0.0
+                }, completion: {(_) in
+                    self.blurVisualEffectView.removeFromSuperview()
+                })
             }
-            vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
-            self.present(vc, animated: true, completion: nil)
+            
+            dismissInteractor.percentThreshold = 0.2
+            dismissInteractor.dismissClosure = {
+                
+            }
+            
+            self.present(vc, animated: true) {
+                self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.view, presentViewController: nil, backgroundView: self.blurVisualEffectView)
+            }
+
+            self.navigationController?.view.addSubview(self.blurVisualEffectView)
+            UIView.animate(withDuration: 0.2, animations: {
+                self.blurVisualEffectView.alpha = 1.0
+            }, completion: {(_) in
+                
+            })
         }
     }
     
@@ -169,4 +197,19 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         let until = DateUtil.convertToDate(UInt(originOrder.validUntil), format: "MM-dd HH:mm")
         dateInfoLabel.text = "\(since) ~ \(until)"
     }
+}
+
+extension OrderDetailViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let animator = MiniToLargeViewAnimator()
+        animator.transitionType = .Dismiss
+        return animator
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        // guard !disableInteractivePlayerTransitioning else { return nil }
+        return dismissInteractor
+    }
+
 }

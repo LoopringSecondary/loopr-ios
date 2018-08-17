@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -28,7 +28,6 @@
                 <outlet property="statusTipLabel" destination="N2W-h9-pmg" id="BHx-0L-gEg"/>
                 <outlet property="tokenB" destination="aga-rZ-zkA" id="VBh-4S-jY2"/>
                 <outlet property="tokenS" destination="0qr-Ib-soK" id="9k3-Qf-11U"/>
-                <outlet property="totalMaskView" destination="WKE-bM-3NV" id="zfM-Jm-tJM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -197,10 +196,6 @@
                         <constraint firstAttribute="height" constant="1" id="npY-le-DQJ"/>
                     </constraints>
                 </view>
-                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WKE-bM-3NV">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -214,12 +209,10 @@
                 <constraint firstItem="j6O-SW-7Je" firstAttribute="leading" secondItem="2Gt-ib-BCh" secondAttribute="leading" constant="24" id="A2N-P2-lMF"/>
                 <constraint firstItem="q0S-E6-SZq" firstAttribute="top" secondItem="C6w-nf-dHe" secondAttribute="bottom" constant="50" id="ARt-9c-jpP"/>
                 <constraint firstItem="Ufi-Bx-Jal" firstAttribute="leading" secondItem="aoM-he-ey2" secondAttribute="leading" constant="24" id="Abf-bM-e0V"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="WKE-bM-3NV" secondAttribute="trailing" id="BeV-Ks-TZ3"/>
                 <constraint firstItem="gIa-ab-3EY" firstAttribute="top" secondItem="Qch-cZ-zZk" secondAttribute="bottom" constant="-100" id="CWg-7O-Gp4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="C6w-nf-dHe" secondAttribute="trailing" id="ELU-YQ-SyJ"/>
                 <constraint firstItem="q0S-E6-SZq" firstAttribute="top" secondItem="Vte-K2-HW0" secondAttribute="bottom" constant="-50" id="FZp-gw-RMC"/>
                 <constraint firstItem="i1F-nx-83Y" firstAttribute="centerY" secondItem="0qr-Ib-soK" secondAttribute="top" constant="36" id="J1W-iu-PCo"/>
-                <constraint firstItem="WKE-bM-3NV" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="KfQ-9N-7UR"/>
                 <constraint firstItem="LF9-Is-NZm" firstAttribute="trailing" secondItem="C6w-nf-dHe" secondAttribute="trailing" constant="-24" id="L0V-3L-xWF"/>
                 <constraint firstItem="zGP-qQ-tcH" firstAttribute="top" secondItem="gIa-ab-3EY" secondAttribute="bottom" constant="16" id="M7d-eE-V3r"/>
                 <constraint firstItem="i1F-nx-83Y" firstAttribute="leading" secondItem="0qr-Ib-soK" secondAttribute="trailing" constant="16" id="OSt-nb-CjP"/>
@@ -240,7 +233,6 @@
                 <constraint firstItem="qmV-Dw-P4V" firstAttribute="trailing" secondItem="2Gt-ib-BCh" secondAttribute="trailing" constant="-24" id="ifE-CI-NoB"/>
                 <constraint firstItem="Ufi-Bx-Jal" firstAttribute="top" secondItem="aoM-he-ey2" secondAttribute="bottom" constant="16" id="isS-b0-Jub"/>
                 <constraint firstItem="j6O-SW-7Je" firstAttribute="top" secondItem="2Gt-ib-BCh" secondAttribute="top" constant="16" id="j5E-pi-XrE"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="WKE-bM-3NV" secondAttribute="bottom" id="jEJ-7U-Log"/>
                 <constraint firstItem="LF9-Is-NZm" firstAttribute="top" secondItem="C6w-nf-dHe" secondAttribute="top" constant="16" id="jwT-bY-4u0"/>
                 <constraint firstItem="zGP-qQ-tcH" firstAttribute="leading" secondItem="gIa-ab-3EY" secondAttribute="leading" constant="24" id="k8P-nw-4vW"/>
                 <constraint firstItem="7ml-76-5OB" firstAttribute="top" secondItem="q0S-E6-SZq" secondAttribute="top" constant="16" id="kVx-HZ-AHF"/>
@@ -260,7 +252,6 @@
                 <constraint firstItem="KAs-gE-AFB" firstAttribute="trailing" secondItem="aoM-he-ey2" secondAttribute="trailing" constant="-24" id="vej-Xi-xTe"/>
                 <constraint firstItem="Qch-cZ-zZk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="x9V-g1-D3E"/>
                 <constraint firstItem="GrH-At-QX8" firstAttribute="top" secondItem="Vte-K2-HW0" secondAttribute="top" constant="16" id="xHs-2F-GvT"/>
-                <constraint firstItem="WKE-bM-3NV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xpu-U6-8gS"/>
                 <constraint firstItem="C6w-nf-dHe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="yqy-3P-BJk"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

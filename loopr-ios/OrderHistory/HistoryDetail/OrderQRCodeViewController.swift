@@ -27,8 +27,7 @@ class OrderQRCodeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.modalPresentationStyle = .custom
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.backgroundColor = UIColor.clear
         
         titleLabel.setTitleCharFont()
         titleLabel.text = LocalizedString("Loopr P2P Order", comment: "")
@@ -38,9 +37,9 @@ class OrderQRCodeViewController: UIViewController {
         view.addGestureRecognizer(tap)
         
         saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
-        saveToAlbumButton.setupPrimary(height: 42)
+        saveToAlbumButton.setupPrimary(height: 44)
         shareOrderButton.setTitle(LocalizedString("Share Order", comment: ""), for: .normal)
-        shareOrderButton.setupSecondary(height: 42)
+        shareOrderButton.setupSecondary(height: 44)
         generateQRCode(order: self.order!)
     }
     

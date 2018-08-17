@@ -74,7 +74,7 @@ class MiniToLargeViewAnimator: BaseAnimator {
         if transitionType == .Present {
             return 0.2
         }
-        return transitionContext!.isInteractive ? 0.4 : 0.3
+        return transitionContext!.isInteractive ? 0.2 : 0.2
     }
     
     func fakeMiniView() -> UIView {
