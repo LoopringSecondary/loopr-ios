@@ -192,6 +192,7 @@
 "Go To Trade" = "去交易";
 "Filled" = "成交率";
 "Date" = "日期";
+"Gas" = "油费";
 "Cancelling" = "取消中";
 "QR Code type doesn't fit here" = "二维码类型不符";
 "Select HD derivation path" = "Select HD derivation path";

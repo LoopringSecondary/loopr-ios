@@ -192,6 +192,7 @@
 "Go To Trade" = "Go To Trade";
 "Filled" = "Filled";
 "Date" = "Date";
+"Gas" = "Gas";
 "Cancelling" = "Cancelling";
 "QR Code type doesn't fit here" = "QR Code type doesn't fit here";
 "Select HD derivation path" = "Select HD derivation path";

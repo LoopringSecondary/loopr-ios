@@ -54,7 +54,7 @@ class GasDataManager {
     }
     
     func getGasLimit(by type: String) -> Int64? {
-        var gasLimit: Int64? = nil
+        var gasLimit: Int64?
         for case let gas in gasLimits where gas.type.lowercased() == type.lowercased() {
             gasLimit = gas.gasLimit
             break

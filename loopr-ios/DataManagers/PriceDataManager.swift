@@ -37,7 +37,7 @@ class PriceDataManager {
     }
     
     func getPrice(of symbol: String, by amount: Double) -> String? {
-        var result: String? = nil
+        var result: String?
         if let price = getPrice(of: symbol) {
             result = (price * amount).currency
         }

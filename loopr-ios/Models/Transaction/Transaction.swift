@@ -23,10 +23,12 @@ class Transaction {
     var currency: String
     var createTime: String
     var updateTime: String
+    var gasUsed: Double
+    var gasPriceInGWei: Double
     
     init?(json: JSON) {
         self.currency = "0.0"
-        if let symbol = json["symbol"].string, let value = json["value"].string, let from = json["from"].string, let to = json["to"].string, let owner = json["owner"].string, let txHash = json["txHash"].string {
+        if let symbol = json["symbol"].string, let value = json["value"].string, let from = json["from"].string, let to = json["to"].string, let owner = json["owner"].string, let txHash = json["txHash"].string, let gasUsed = json["gas_used"].string, let gasPrice = json["gas_price"].string {
             self.symbol = symbol
             self.value = value
             if let value = Asset.getAmount(of: symbol, fromWeiAmount: value) {
@@ -43,6 +45,8 @@ class Transaction {
             self.from = from
             self.owner = owner
             self.txHash = txHash
+            self.gasUsed = Double(gasUsed)!
+            self.gasPriceInGWei = Double(gasPrice)! / 1000000000
         } else {
             return nil
         }

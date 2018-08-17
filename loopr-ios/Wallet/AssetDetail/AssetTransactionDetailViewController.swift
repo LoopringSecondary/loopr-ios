@@ -26,6 +26,8 @@ class AssetTransactionDetailViewController: UIViewController {
     @IBOutlet weak var idTipLabel: UILabel!
     @IBOutlet weak var idInfoButton: UIButton!
     @IBOutlet weak var dateContainerView: UIView!
+    @IBOutlet weak var gasTipLabel: UILabel!
+    @IBOutlet weak var gasInfoLabel: UILabel!
     @IBOutlet weak var dateTipLabel: UILabel!
     @IBOutlet weak var dateInfoLabel: UILabel!
     
@@ -79,6 +81,9 @@ class AssetTransactionDetailViewController: UIViewController {
         idTipLabel.setTitleCharFont()
         idTipLabel.text = LocalizedString("ID", comment: "")
         idInfoButton.titleLabel?.setTitleCharFont()
+        gasTipLabel.setTitleCharFont()
+        gasTipLabel.text = LocalizedString("Gas", comment: "")
+        gasInfoLabel.setTitleCharFont()
         dateTipLabel.setTitleCharFont()
         dateTipLabel.text = LocalizedString("Date", comment: "")
         dateInfoLabel.setTitleCharFont()
@@ -173,6 +178,9 @@ class AssetTransactionDetailViewController: UIViewController {
         toInfoButton.title = tx.to
         idInfoButton.title = tx.txHash
         dateInfoLabel.text = tx.createTime
+        let total = tx.gasPriceInGWei * tx.gasUsed / 1000000000
+        let currency = PriceDataManager.shared.getPrice(of: "ETH", by: total)
+        gasInfoLabel.text = "\(total) ETH ≈ \(currency!)"
     }
     
     @IBAction func pressedToButton(_ sender: UIButton) {
