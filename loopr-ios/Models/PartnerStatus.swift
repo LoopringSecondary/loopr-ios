@@ -8,8 +8,8 @@
 
 import Foundation
 
-class CityPartner {
-    
+class PartnerStatus {
+
     var walletAddress: String
     var customerCount: Int
     var received: [String: JSON]

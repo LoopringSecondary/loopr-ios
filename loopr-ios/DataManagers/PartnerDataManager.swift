@@ -12,24 +12,41 @@ class PartnerDataManager {
 
     static let shared = PartnerDataManager()
     
-    var partner: String?
-    var partnerAddress: String?
+    var partnerTo: Partner?
+    var partnerFrom: Partner?
     let loopringAddress = "0x8E63Bb7Af326de3fc6e09F4c8D54A75c6e236abA"
+    let baseUrl = "https://"
     
-    func activateInvitation() {
+    func activatePartner() {
         LoopringAPIRequest.activateInvitation(completionHandler: { result, error in
             guard let result = result, error == nil else {
                 return
             }
-            self.partner = result["cityPartner"].stringValue
-            self.partnerAddress = result["walletAddress"].stringValue
+            self.partnerFrom = result
         })
     }
     
+    func createPartner() {
+        guard let owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address else { return }
+        LoopringAPIRequest.createPartner(owner: owner) { (result, error) in
+            guard let result = result, error == nil else {
+                return
+            }
+            self.partnerTo = result
+        }
+    }
+    
     func getWalletAddress() -> String {
-        if let address = self.partnerAddress {
+        if let address = self.partnerFrom?.walletAddress {
             return address == "" ? loopringAddress : address
         }
         return loopringAddress
+    }
+    
+    func generateUrl() -> String {
+        if let partner = self.partnerTo {
+            return self.baseUrl + partner.partner
+        }
+        return self.baseUrl
     }
 }

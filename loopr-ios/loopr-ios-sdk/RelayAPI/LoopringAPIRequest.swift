@@ -633,8 +633,25 @@ class LoopringAPIRequest {
         }
     }
     
-    // City partner
-    static func activateInvitation(completionHandler: @escaping (_ result: JSON?, _ error: Error?) -> Void) {
+    // Partner
+    static func createPartner(owner: String, completionHandler: @escaping (_ result: Partner?, _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_createCityPartner"
+        body["params"] = [["walletAddress": owner]]
+        body["id"] = JSON(UUID().uuidString)
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                completionHandler(nil, error)
+                return
+            }
+            let json = JSON(data)
+            let result = Partner(json: json["result"])
+            completionHandler(result, nil)
+        }
+    }
+    
+    static func activateInvitation(completionHandler: @escaping (_ result: Partner?, _ error: Error?) -> Void) {
         let url = URL(string: "https://relay1.loopr.io/city_partner/activate_customer")!
         Request.send(body: JSON(), url: url) { data, _, error in
             guard let data = data, error == nil else {
@@ -644,7 +661,8 @@ class LoopringAPIRequest {
             }
             let json = JSON(data)
             if json["result"] != JSON.null {
-                completionHandler(json["result"], nil)
+                let result = Partner(json: json["result"])
+                completionHandler(result, nil)
             } else if json["error"] != JSON.null {
                 var userInfo: [String: Any] = [:]
                 let code = json["error"]["code"].intValue
@@ -655,7 +673,7 @@ class LoopringAPIRequest {
         }
     }
     
-    static func getCityPartnerStatus(invitationCode: String, completionHandler: @escaping (_ result: CityPartner?, _ error: Error?) -> Void) {
+    static func getPartnerStatus(invitationCode: String, completionHandler: @escaping (_ result: PartnerStatus?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["params"] = [["invitationCode": invitationCode]]
         body["id"] = JSON(UUID().uuidString)
@@ -668,7 +686,7 @@ class LoopringAPIRequest {
             }
             let json = JSON(data)
             let result = json["result"]
-            let partner = CityPartner(json: result)
+            let partner = PartnerStatus(json: result)
             completionHandler(partner, nil)
         }
     }

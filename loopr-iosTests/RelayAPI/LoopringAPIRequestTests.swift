@@ -301,6 +301,20 @@ class LoopringAPIRequestTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
+    func testCreatePartner() {
+        let expectation = XCTestExpectation()
+        LoopringAPIRequest.createPartner(owner: testAddress) { (result, error) in
+            guard error == nil && result != nil else {
+                print("error=\(String(describing: error))")
+                XCTFail()
+                return
+            }
+            print(result!)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
     func testAddCustomToken() {
         let expectation = XCTestExpectation()
         LoopringAPIRequest.addCustomToken(owner: testAddress, tokenContractAddress: testAddress, symbol: "AAA", decimals: 18) { (result, error) in

@@ -62,7 +62,7 @@
 		94768CA1210DCABE00B5977B /* TradeSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94768C9F210DCABE00B5977B /* TradeSwipeViewController.swift */; };
 		94768CA2210DCABE00B5977B /* TradeSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94768CA0210DCABE00B5977B /* TradeSwipeViewController.xib */; };
 		94768CA4210DCB2300B5977B /* TradeSwipeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94768CA3210DCB2300B5977B /* TradeSwipeType.swift */; };
-		948125652119B10B00453225 /* CityPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948125642119B10B00453225 /* CityPartner.swift */; };
+		948125652119B10B00453225 /* PartnerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948125642119B10B00453225 /* PartnerStatus.swift */; };
 		948125672119B38E00453225 /* PartnerDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948125662119B38E00453225 /* PartnerDataManager.swift */; };
 		948952D3205A74BE009B03FE /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948952D2205A74BE009B03FE /* Transaction.swift */; };
 		948BAD8420C4EBFA001F279F /* RawTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948BAD8320C4EBFA001F279F /* RawTransaction.swift */; };
@@ -72,6 +72,9 @@
 		949774F321181EE9001BF79D /* TradeRatioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949774F221181EE9001BF79D /* TradeRatioViewController.xib */; };
 		9498E3EC2075E27E00BC8B4F /* OrderHistorySearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9498E3EA2075E27E00BC8B4F /* OrderHistorySearchResultCell.swift */; };
 		9498E3ED2075E27E00BC8B4F /* OrderHistorySearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9498E3EB2075E27E00BC8B4F /* OrderHistorySearchResultCell.xib */; };
+		94A1C0DC2128126D00FD3A1F /* SettingPartnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A1C0DA2128126D00FD3A1F /* SettingPartnerViewController.swift */; };
+		94A1C0DD2128126D00FD3A1F /* SettingPartnerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A1C0DB2128126D00FD3A1F /* SettingPartnerViewController.xib */; };
+		94A1C0DF2128461100FD3A1F /* Partner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A1C0DE2128461100FD3A1F /* Partner.swift */; };
 		94A39E1320C8E4FE00BC1B72 /* SignStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A39E1220C8E4FE00BC1B72 /* SignStatus.swift */; };
 		94AA0A9E211550440092D2CE /* PlaceOrderConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AA0A9D211550440092D2CE /* PlaceOrderConfirmationViewController.xib */; };
 		94AA0AA0211578460092D2CE /* ConfirmationResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AA0A9F211578460092D2CE /* ConfirmationResultViewController.xib */; };
@@ -643,7 +646,7 @@
 		94768C9F210DCABE00B5977B /* TradeSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSwipeViewController.swift; sourceTree = "<group>"; };
 		94768CA0210DCABE00B5977B /* TradeSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeSwipeViewController.xib; sourceTree = "<group>"; };
 		94768CA3210DCB2300B5977B /* TradeSwipeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSwipeType.swift; sourceTree = "<group>"; };
-		948125642119B10B00453225 /* CityPartner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPartner.swift; sourceTree = "<group>"; };
+		948125642119B10B00453225 /* PartnerStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerStatus.swift; sourceTree = "<group>"; };
 		948125662119B38E00453225 /* PartnerDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerDataManager.swift; sourceTree = "<group>"; };
 		948952D2205A74BE009B03FE /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		948BAD8320C4EBFA001F279F /* RawTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawTransaction.swift; sourceTree = "<group>"; };
@@ -653,6 +656,9 @@
 		949774F221181EE9001BF79D /* TradeRatioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TradeRatioViewController.xib; sourceTree = "<group>"; };
 		9498E3EA2075E27E00BC8B4F /* OrderHistorySearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistorySearchResultCell.swift; sourceTree = "<group>"; };
 		9498E3EB2075E27E00BC8B4F /* OrderHistorySearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistorySearchResultCell.xib; sourceTree = "<group>"; };
+		94A1C0DA2128126D00FD3A1F /* SettingPartnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPartnerViewController.swift; sourceTree = "<group>"; };
+		94A1C0DB2128126D00FD3A1F /* SettingPartnerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingPartnerViewController.xib; sourceTree = "<group>"; };
+		94A1C0DE2128461100FD3A1F /* Partner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Partner.swift; sourceTree = "<group>"; };
 		94A39E1220C8E4FE00BC1B72 /* SignStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignStatus.swift; sourceTree = "<group>"; };
 		94AA0A9D211550440092D2CE /* PlaceOrderConfirmationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceOrderConfirmationViewController.xib; sourceTree = "<group>"; };
 		94AA0A9F211578460092D2CE /* ConfirmationResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmationResultViewController.xib; sourceTree = "<group>"; };
@@ -1168,6 +1174,15 @@
 				9445D54520BA4FB3006045F6 /* PriceStackView.swift */,
 			);
 			path = Price;
+			sourceTree = "<group>";
+		};
+		94A1C0D92128122700FD3A1F /* SettingPartner */ = {
+			isa = PBXGroup;
+			children = (
+				94A1C0DA2128126D00FD3A1F /* SettingPartnerViewController.swift */,
+				94A1C0DB2128126D00FD3A1F /* SettingPartnerViewController.xib */,
+			);
+			path = SettingPartner;
 			sourceTree = "<group>";
 		};
 		94AD1FDF208B8F5600C443E6 /* SettingCurrency */ = {
@@ -2133,7 +2148,8 @@
 				AC2ACA9D21030775009C77E7 /* TradeFAQPage.swift */,
 				94768CA3210DCB2300B5977B /* TradeSwipeType.swift */,
 				94EE76A32113F21B009D6A90 /* OrderHistorySwipeType.swift */,
-				948125642119B10B00453225 /* CityPartner.swift */,
+				948125642119B10B00453225 /* PartnerStatus.swift */,
+				94A1C0DE2128461100FD3A1F /* Partner.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2184,6 +2200,7 @@
 		ACB9117D2026381A00F14644 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				94A1C0D92128122700FD3A1F /* SettingPartner */,
 				AC4F863A209D4842002E62AB /* SettingLRCFeeRatio */,
 				AC4F8643209D488F002E62AB /* SettingMarginSplit */,
 				ACB9117E2026385100F14644 /* SettingNavigationViewController.swift */,
@@ -2640,6 +2657,7 @@
 				AC2ACA88210305F8009C77E7 /* TradeFAQDetailViewController.xib in Resources */,
 				ACE65E4620720500001EE499 /* MnemonicCollectionViewCell.xib in Resources */,
 				AC31CE6E205B995500A30335 /* Roboto-Medium.ttf in Resources */,
+				94A1C0DD2128126D00FD3A1F /* SettingPartnerViewController.xib in Resources */,
 				AC5E3E6C205DEAC00051ACFC /* TradeCompleteViewController.xib in Resources */,
 				AC76E47420493CAE008BA229 /* SettingLanguageViewController.xib in Resources */,
 				AC54FD76204FC6E5007E1DEB /* OpenSans-BoldItalic.ttf in Resources */,
@@ -2955,6 +2973,7 @@
 				ACE6F722204221260039273D /* Themes.swift in Sources */,
 				ACB9117C20256BBA00F14644 /* TradingPair.swift in Sources */,
 				AC9FFF2D2126C07800957175 /* MarketChangeTokenTableViewCell.swift in Sources */,
+				94A1C0DF2128461100FD3A1F /* Partner.swift in Sources */,
 				AC70E84E20683C7500451047 /* IconView.swift in Sources */,
 				943C1CB220CE26CE008A8CED /* LoginResultViewController.swift in Sources */,
 				ACB5DD9C202D5B8000140A09 /* NumericKeyboardCell.swift in Sources */,
@@ -3060,7 +3079,7 @@
 				6630916521002CD1006DA630 /* TxSwipeViewType.swift in Sources */,
 				94BFF9CE21072EA000A0BE8B /* TokenSelectTableViewController.swift in Sources */,
 				AC971EC820BB412300EDEDD0 /* AuthenticationDataManager.swift in Sources */,
-				948125652119B10B00453225 /* CityPartner.swift in Sources */,
+				948125652119B10B00453225 /* PartnerStatus.swift in Sources */,
 				AC37567C2038D80300AADC60 /* PrivateKeyViewController.swift in Sources */,
 				9475A2EE207EF81300200155 /* OrderDetailViewController.swift in Sources */,
 				ACB41A6C20B54A2D00A92C9D /* AuthenticationNavigationViewController.swift in Sources */,
@@ -3182,6 +3201,7 @@
 				ACA677CF207D1BEC00D34A2F /* SettingChangeWalletNameViewController.swift in Sources */,
 				AC6A3478210D740500AE615B /* MarketDetailSwipeViewController.swift in Sources */,
 				AC131A06210D7A1A001998A0 /* MarketDetailDepthViewController.swift in Sources */,
+				94A1C0DC2128126D00FD3A1F /* SettingPartnerViewController.swift in Sources */,
 				ACA677B82079970600D34A2F /* ExportKeystoreSwipeViewController.swift in Sources */,
 				6630916821005B54006DA630 /* AssetSwipeViewController.swift in Sources */,
 				ACA677C42079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.swift in Sources */,

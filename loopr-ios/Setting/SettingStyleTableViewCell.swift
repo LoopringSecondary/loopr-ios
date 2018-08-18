@@ -37,7 +37,6 @@ class SettingStyleTableViewCell: UITableViewCell {
         
         theme_backgroundColor = GlobalPicker.cardBackgroundColor
 
-        leftLabel.textColor = UIColor.init(rgba: "#939BB1")
         leftLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
         leftLabel.theme_textColor = GlobalPicker.textColor
         

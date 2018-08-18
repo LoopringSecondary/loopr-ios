@@ -154,7 +154,7 @@
 "10001" = "Sorry, system error, please try again later";
 "50001" = "Sorry, selling order does not exist, could not complete this order";
 "50002" = "Sorry, only p2p order could be submitted, could not complete this order";
-"50003"= "Sorry, selling order already dealt with another buying order, please try with other orders";
+"50003" = "Sorry, selling order already dealt with another buying order, please try with other orders";
 "50004" = "Sorry, selling and buying price did not match between two orders, could not complete this order";
 "50005" = "Sorry, owner of buying order is the same as selling's, could not complete this order";
 "50006" = "Sorry, buying order has been expired, please try with other orders";
@@ -419,3 +419,8 @@
 "Token Symbol" = "Token Symbol";
 "Decimals of Precision" = "Decimals of Precision";
 "Add" = "Add";
+"Partner_Slogan" = "Share the app, you will harvest 20% profit of trading fee";
+"Partner_Title" = "Up Wallet Share";
+"Partner_Tip" = "My spreading income address: ";
+"Partner_Des" = "You will harvest 20% profit of trading fee from all your spreading customers";
+"Partner_Address" = "Your trading fee reciept address is: ";

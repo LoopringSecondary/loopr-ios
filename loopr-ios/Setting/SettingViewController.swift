@@ -13,7 +13,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var settingsTableView: UITableView!
     
     let sectionTitles = [LocalizedString("User Preferences", comment: ""), LocalizedString("Trading", comment: ""), LocalizedString("Security", comment: ""), LocalizedString("About", comment: "")]
-    let sectionRows = [4, 3, 1]
+    let sectionRows = [1, 4, 3, 1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,10 +47,12 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            return userPreferencesSectionForCell(indexPath: indexPath)
+            return partnerSectionForCell(indexPath: indexPath)
         case 1:
-            return tradingSectionForCell(indexPath: indexPath)
+            return userPreferencesSectionForCell(indexPath: indexPath)
         case 2:
+            return tradingSectionForCell(indexPath: indexPath)
+        case 3:
             return aboutSectionForCell(indexPath: indexPath)
         default:
             return UITableViewCell()
@@ -61,6 +63,13 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.section {
         case 0:
+            if indexPath.row == 0 {
+                print("Setting partner")
+                let viewController = SettingPartnerViewController()
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+        case 1:
             switch indexPath.row {
             case 0:
                 print("Setting wallet")
@@ -95,7 +104,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             default:
                 break
             }
-        case 1:
+        case 2:
             switch indexPath.row {
             case 0:
                 print("contract version")
@@ -123,7 +132,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             default:
                 break
             }
-        case 2:
+        case 3:
             // About
             switch indexPath.row {
             default:
@@ -135,7 +144,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        if section == 1 {
             if BiometricType.get() == .none {
                 return 3
             } else {
@@ -147,12 +156,59 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 45))
-        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        var headerView: UIView
+        if section == 1 {
+            headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 48))
+            headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+            let tipLabel = UILabel(frame: CGRect(x: 23, y: 16, width: 120, height: 16))
+            tipLabel.setSubTitleCharFont()
+            tipLabel.text = LocalizedString("Partner_Tip", comment: "")
+            headerView.addSubview(tipLabel)
+            let infoLabel = UILabel(frame: CGRect(x: tipLabel.frame.maxX, y: 16, width: headerView.width - 170, height: 16))
+            infoLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
+            infoLabel.setSubTitleCharFont()
+            infoLabel.lineBreakMode = .byTruncatingMiddle
+            headerView.addSubview(infoLabel)
+        } else {
+            headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 20))
+            headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        }
         return headerView
     }
     
     // Sections
+    func partnerSectionForCell(indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
+        case 0:
+            var cell = settingsTableView.dequeueReusableCell(withIdentifier: SettingStyleTableViewCell.getCellIdentifier()) as? SettingStyleTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("SettingStyleTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? SettingStyleTableViewCell
+            }
+            
+            cell?.leftLabel.textColor = .success
+            cell?.leftLabel.font = FontConfigManager.shared.getCharactorFont(size: 16)
+            cell?.leftLabel.text = LocalizedString("Partner_Slogan", comment: "")
+            cell?.rightLabel.isHidden = true
+            cell?.disclosureIndicator.isHidden = false
+            
+            if indexPath.row == 0 {
+                cell?.seperateLineUp.isHidden = false
+            } else {
+                cell?.seperateLineUp.isHidden = true
+            }
+            
+            if indexPath.row == sectionRows[indexPath.section]-1 {
+                cell?.trailingSeperateLineDown.constant = 0
+            } else {
+                cell?.trailingSeperateLineDown.constant = 15
+            }
+            return cell!
+        default:
+            return UITableViewCell()
+        }
+    }
+    
     func userPreferencesSectionForCell(indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
@@ -310,6 +366,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 0
+        } else if section == 1 {
+            return 48
         } else {
             return 20
         }
