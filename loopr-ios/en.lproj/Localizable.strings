@@ -272,7 +272,9 @@
 "Completed" = "Completed";
 "Failed" = "Failed";
 "Other" = "Other";
-"Tokens" = "Select Tokens";
+"Tokens" = "Tokens";
+"Select Tokens" = "Select Tokens";
+"Custom Token" = "Custom Token";
 "Convert to WETH" = "Convert to WETH";
 "Convert to ETH" = "Convert to ETH";
 "Confirm Time" = "Confirm Time";
@@ -413,3 +415,7 @@
 "CNY" = "CNY";
 "HKD" = "HKD";
 "Loading Data" = "Loading Data";
+"Token Address" = "Token Address";
+"Token Symbol" = "Token Symbol";
+"Decimals of Precision" = "Decimals of Precision";
+"Add" = "Add";

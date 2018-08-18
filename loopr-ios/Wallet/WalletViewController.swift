@@ -484,7 +484,7 @@ extension WalletViewController: MKDropdownMenuDelegate {
             viewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(viewController, animated: true)
         case 1:
-            let viewController = AddTokenViewController()
+            let viewController = AddTokenSwipeViewController()
             viewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(viewController, animated: true)
         case 2:

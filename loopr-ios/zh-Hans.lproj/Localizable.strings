@@ -272,7 +272,9 @@
 "Completed" = "成功";
 "Failed" = "失败";
 "Other" = "其他";
-"Tokens" = "选择代币";
+"Tokens" = "代币";
+"Select Tokens" = "选择代币";
+"Custom Token" = "自定义代币";
 "Convert to WETH" = "转换为 WETH";
 "Convert to ETH" = "转换为 ETH";
 "Confirm Time" = "确认时间";
@@ -413,3 +415,7 @@
 "CNY" = "人民币";
 "HKD" = "港币";
 "Loading Data" = "加载数据中";
+"Token Address" = "代币地址";
+"Token Symbol" = "代币符号";
+"Decimals of Precision" = "小数位";
+"Add" = "添加";

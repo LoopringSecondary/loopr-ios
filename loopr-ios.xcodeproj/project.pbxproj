@@ -435,6 +435,10 @@
 		AC9FFF2A2126C05000957175 /* MarketChangeTokenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9FFF282126C05000957175 /* MarketChangeTokenViewController.xib */; };
 		AC9FFF2D2126C07800957175 /* MarketChangeTokenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FFF2B2126C07800957175 /* MarketChangeTokenTableViewCell.swift */; };
 		AC9FFF2E2126C07800957175 /* MarketChangeTokenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9FFF2C2126C07800957175 /* MarketChangeTokenTableViewCell.xib */; };
+		AC9FFF312127F8CF00957175 /* AddCustomizedTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FFF2F2127F8CF00957175 /* AddCustomizedTokenViewController.swift */; };
+		AC9FFF322127F8CF00957175 /* AddCustomizedTokenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9FFF302127F8CF00957175 /* AddCustomizedTokenViewController.xib */; };
+		AC9FFF352127F93500957175 /* AddTokenSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FFF332127F93500957175 /* AddTokenSwipeViewController.swift */; };
+		AC9FFF362127F93500957175 /* AddTokenSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9FFF342127F93500957175 /* AddTokenSwipeViewController.xib */; };
 		ACA677B82079970600D34A2F /* ExportKeystoreSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677B62079970600D34A2F /* ExportKeystoreSwipeViewController.swift */; };
 		ACA677B92079970600D34A2F /* ExportKeystoreSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677B72079970600D34A2F /* ExportKeystoreSwipeViewController.xib */; };
 		ACA677C0207997F400D34A2F /* DisplayKeystoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677BE207997F400D34A2F /* DisplayKeystoreViewController.swift */; };
@@ -492,8 +496,6 @@
 		ACB911852026388700F14644 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB911832026388700F14644 /* SettingViewController.xib */; };
 		ACB9118C20266A9C00F14644 /* AssetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9118A20266A9C00F14644 /* AssetDetailViewController.swift */; };
 		ACB9118D20266A9C00F14644 /* AssetDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB9118B20266A9C00F14644 /* AssetDetailViewController.xib */; };
-		ACB9119020266EC200F14644 /* AddCustomizedTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9118E20266EC200F14644 /* AddCustomizedTokenViewController.swift */; };
-		ACB9119120266EC200F14644 /* AddCustomizedTokenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB9118F20266EC200F14644 /* AddCustomizedTokenViewController.xib */; };
 		ACB9119520278A4000F14644 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9119420278A4000F14644 /* Request.swift */; };
 		ACB911992027F65800F14644 /* LoopringAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911982027F65800F14644 /* LoopringAPIRequest.swift */; };
 		ACB9119F202967A500F14644 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9119E202967A500F14644 /* OrderStatus.swift */; };
@@ -960,6 +962,10 @@
 		AC9FFF282126C05000957175 /* MarketChangeTokenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketChangeTokenViewController.xib; sourceTree = "<group>"; };
 		AC9FFF2B2126C07800957175 /* MarketChangeTokenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketChangeTokenTableViewCell.swift; sourceTree = "<group>"; };
 		AC9FFF2C2126C07800957175 /* MarketChangeTokenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketChangeTokenTableViewCell.xib; sourceTree = "<group>"; };
+		AC9FFF2F2127F8CF00957175 /* AddCustomizedTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomizedTokenViewController.swift; sourceTree = "<group>"; };
+		AC9FFF302127F8CF00957175 /* AddCustomizedTokenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCustomizedTokenViewController.xib; sourceTree = "<group>"; };
+		AC9FFF332127F93500957175 /* AddTokenSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTokenSwipeViewController.swift; sourceTree = "<group>"; };
+		AC9FFF342127F93500957175 /* AddTokenSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTokenSwipeViewController.xib; sourceTree = "<group>"; };
 		ACA677B62079970600D34A2F /* ExportKeystoreSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportKeystoreSwipeViewController.swift; sourceTree = "<group>"; };
 		ACA677B72079970600D34A2F /* ExportKeystoreSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportKeystoreSwipeViewController.xib; sourceTree = "<group>"; };
 		ACA677BE207997F400D34A2F /* DisplayKeystoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayKeystoreViewController.swift; sourceTree = "<group>"; };
@@ -1017,8 +1023,6 @@
 		ACB911832026388700F14644 /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		ACB9118A20266A9C00F14644 /* AssetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDetailViewController.swift; sourceTree = "<group>"; };
 		ACB9118B20266A9C00F14644 /* AssetDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetDetailViewController.xib; sourceTree = "<group>"; };
-		ACB9118E20266EC200F14644 /* AddCustomizedTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomizedTokenViewController.swift; sourceTree = "<group>"; };
-		ACB9118F20266EC200F14644 /* AddCustomizedTokenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCustomizedTokenViewController.xib; sourceTree = "<group>"; };
 		ACB9119420278A4000F14644 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		ACB911982027F65800F14644 /* LoopringAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopringAPIRequest.swift; sourceTree = "<group>"; };
 		ACB9119E202967A500F14644 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
@@ -1582,12 +1586,14 @@
 		AC5E0DE0203B44EA00AF03C7 /* AddToken */ = {
 			isa = PBXGroup;
 			children = (
-				ACB9118E20266EC200F14644 /* AddCustomizedTokenViewController.swift */,
-				ACB9118F20266EC200F14644 /* AddCustomizedTokenViewController.xib */,
+				AC9FFF332127F93500957175 /* AddTokenSwipeViewController.swift */,
+				AC9FFF342127F93500957175 /* AddTokenSwipeViewController.xib */,
 				AC5E098F205F256500801738 /* AddTokenViewController.swift */,
 				AC5E0990205F256500801738 /* AddTokenViewController.xib */,
 				ACB97C6B20707B6F00775D4C /* AddTokenTableViewCell.swift */,
 				ACB97C6C20707B6F00775D4C /* AddTokenTableViewCell.xib */,
+				AC9FFF2F2127F8CF00957175 /* AddCustomizedTokenViewController.swift */,
+				AC9FFF302127F8CF00957175 /* AddCustomizedTokenViewController.xib */,
 			);
 			path = AddToken;
 			sourceTree = "<group>";
@@ -2637,6 +2643,7 @@
 				AC5E3E6C205DEAC00051ACFC /* TradeCompleteViewController.xib in Resources */,
 				AC76E47420493CAE008BA229 /* SettingLanguageViewController.xib in Resources */,
 				AC54FD76204FC6E5007E1DEB /* OpenSans-BoldItalic.ttf in Resources */,
+				AC9FFF322127F8CF00957175 /* AddCustomizedTokenViewController.xib in Resources */,
 				94AA0AA0211578460092D2CE /* ConfirmationResultViewController.xib in Resources */,
 				940B45292060F67E00ADE2B9 /* gas_limit.json in Resources */,
 				AC31CE65205B994A00A30335 /* Roboto-Italic.ttf in Resources */,
@@ -2659,6 +2666,7 @@
 				AC3756792038D7E200AADC60 /* UnlockKeystoreViewController.xib in Resources */,
 				ACB91172202557B100F14644 /* MarketViewController.xib in Resources */,
 				ACA677C1207997F400D34A2F /* DisplayKeystoreViewController.xib in Resources */,
+				AC9FFF362127F93500957175 /* AddTokenSwipeViewController.xib in Resources */,
 				94678B2B210D902E00F550D3 /* SendResultViewController.xib in Resources */,
 				AC31CE43205B604500A30335 /* Linotype-DINNextLTPro-Regular.otf in Resources */,
 				ACB9117620255A6600F14644 /* MarketTableViewCell.xib in Resources */,
@@ -2668,7 +2676,6 @@
 				AC5E0992205F256500801738 /* AddTokenViewController.xib in Resources */,
 				AC2ACA5020FA0EC3009C77E7 /* Rubik-Medium.ttf in Resources */,
 				AC23B368210D6214004DC5A9 /* MarketDetailViewController.xib in Resources */,
-				ACB9119120266EC200F14644 /* AddCustomizedTokenViewController.xib in Resources */,
 				AC2ACA5520FA0EC3009C77E7 /* Rubik-Regular.ttf in Resources */,
 				94116355211AF512001043BF /* SetupWalletViewController.xib in Resources */,
 				94DFE4042122BD48000E1831 /* BuyViewController.xib in Resources */,
@@ -3086,7 +3093,6 @@
 				ACB5DD9E202D5B8D00140A09 /* NumericKeyboardItem.swift in Sources */,
 				949629DF204E9C9800858F03 /* MinedRing.swift in Sources */,
 				94C11FDA208C2DE40050E180 /* SettingCurrencyTableViewCell.swift in Sources */,
-				ACB9119020266EC200F14644 /* AddCustomizedTokenViewController.swift in Sources */,
 				94C5E79C207394F50074B939 /* CustomSearchBar.swift in Sources */,
 				AC9DC45921159084002D7D23 /* BaseAnimator.swift in Sources */,
 				ACDBF10E203FEBAD000F0DEC /* TableViewReorderDelegate.swift in Sources */,
@@ -3109,6 +3115,7 @@
 				94E185992051455C00D86FFA /* SimpleRespond.swift in Sources */,
 				9457416E20D0D23400110CFD /* CancelType.swift in Sources */,
 				AC31B961204A8E4F00B16155 /* MnemonicWords.swift in Sources */,
+				AC9FFF352127F93500957175 /* AddTokenSwipeViewController.swift in Sources */,
 				AC3756662038CD7E00AADC60 /* SetupNavigationController.swift in Sources */,
 				ACE6F71C204211470039273D /* DashedLineView.swift in Sources */,
 				AC31B94A204A8DF400B16155 /* KeystoreKeyHeader.swift in Sources */,
@@ -3116,6 +3123,7 @@
 				943BDED32056350000D5BF81 /* PriceQuote.swift in Sources */,
 				ACDBF10A203FEA07000F0DEC /* ReorderAutoScroll.swift in Sources */,
 				ACDBF108203FE9D2000F0DEC /* ReorderDestinationRow.swift in Sources */,
+				AC9FFF312127F8CF00957175 /* AddCustomizedTokenViewController.swift in Sources */,
 				ACC8D0A620CC95A00049A741 /* AssetTableViewCell.swift in Sources */,
 				94116357211AF51F001043BF /* SetupWalletViewController.swift in Sources */,
 				ACFEFE9520C337BE00013921 /* PendingTransactionsDataManager.swift in Sources */,

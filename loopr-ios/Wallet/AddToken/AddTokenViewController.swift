@@ -16,9 +16,7 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
     var isSearching = false
     let searchBar = UISearchBar()
     var searchButton = UIBarButtonItem()
-    
     var filtedTokens: [Token] = []
-    
     var canHideKeyboard = true
     
     override func viewDidLoad() {
@@ -32,6 +30,10 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
+        
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 10))
+        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        tableView.tableHeaderView = headerView
 
         searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.pressOrderSearchButton(_:)))
         self.navigationItem.rightBarButtonItems = [searchButton]
@@ -46,7 +48,6 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         searchBar.theme_tintColor = GlobalPicker.textColor
         searchBar.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffffcc") : UIColor.init(rgba: "#000000cc")
         searchBar.setTextFieldColor(color: UIColor.dark3)
-        self.navigationItem.title = LocalizedString("Tokens", comment: "")
     }
 
     override func didReceiveMemoryWarning() {

@@ -52,6 +52,7 @@ class LoopringAPIRequest {
                 let asset = Asset(json: subJson)
                 assets.append(asset)
             }
+            
             completionHandler(assets, error)
         }
     }
