@@ -35,16 +35,6 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 8))
         headerView.theme_backgroundColor = GlobalPicker.backgroundColor
         historyTableView.tableHeaderView = headerView
-        
-        // TODO: Add search feature.
-        /*
-        let orderSearchButton = UIButton(type: UIButtonType.custom)
-        let image = UIImage(named: "Order-history-black")
-        orderSearchButton.setBackgroundImage(image, for: .normal)
-        orderSearchButton.setBackgroundImage(image?.alpha(0.3), for: .highlighted)
-        let item = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.pressOrderSearchButton(_:)))
-        self.navigationItem.setRightBarButton(item, animated: true)
-        */
 
         // Add Refresh Control to Table View
         historyTableView.refreshControl = refreshControl
@@ -52,16 +42,6 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
 
         getOrderHistoryFromRelay()
-    }
-    
-    @objc func pressOrderSearchButton(_ button: UIBarButtonItem) {
-        print("pressOrderSearchButton")        
-        let viewController = OrderSearchViewController()
-        let navigationController = UINavigationController.init(rootViewController: viewController)
-        navigationController.navigationBar.shadowImage = UIImage()
-        navigationController.navigationBar.isTranslucent = false
-        navigationController.navigationBar.tintColor = UIStyleConfig.defaultTintColor
-        self.present(navigationController, animated: true, completion: nil)
     }
     
     @objc private func refreshData(_ sender: Any) {

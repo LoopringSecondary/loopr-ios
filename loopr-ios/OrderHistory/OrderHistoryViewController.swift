@@ -64,22 +64,10 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
 
-        let item = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.pressOrderSearchButton(_:)))
-        self.navigationItem.setRightBarButton(item, animated: true)
+        // let item = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.pressOrderSearchButton(_:)))
+        // self.navigationItem.setRightBarButton(item, animated: true)
         
         getOrderHistoryFromRelay()
-    }
-    
-    @objc func pressOrderSearchButton(_ button: UIBarButtonItem) {
-        print("pressOrderSearchButton")
-
-        let viewController = OrderSearchViewController()
-        // viewController.hidesBottomBarWhenPushed = true
-        let navigationController = UINavigationController.init(rootViewController: viewController)
-        navigationController.navigationBar.shadowImage = UIImage()
-        navigationController.navigationBar.isTranslucent = false
-        navigationController.navigationBar.tintColor = UIStyleConfig.defaultTintColor
-        self.present(navigationController, animated: true, completion: nil)
     }
 
     @objc private func refreshData(_ sender: Any) {
