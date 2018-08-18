@@ -31,7 +31,7 @@ class TradeRatioViewController: UIViewController, UIPickerViewDelegate, UIPicker
         titleArray = Array(stride(from: 100, through: 5, by: -5))
         
         titleLabel.setTitleCharFont()
-        titleLabel.text = LocalizedString("Trade Ratio", comment: "")
+        titleLabel.text = LocalizedString("Minimal Fill", comment: "")
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         tap.delegate = self

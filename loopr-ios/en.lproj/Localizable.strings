@@ -58,7 +58,6 @@
 "Details" = "Transaction Detail";
 "Convert" = "Convert";
 "WETH Convert" = "WETH Convert";
-"Yes, convert now!" = "Yes, convert now!";
 "Convert Successfully." = "Convert Successfully.";
 "Wallet QR Code" = "Wallet QR Code";
 "Order QR Code" = "Order QR Code";
@@ -340,7 +339,6 @@
 "Complete" = "Complete";
 "Recommended Gas" = "Recommended Gas Amount";
 "Save QR code to Photo successfully." = "Save QR code to Photo successfully.";
-"Convert_TipInfo" = "我们为您保留0.01 ETH作为油费以保证后续可以发送交易";
 "Add Token" = "Add Token";
 "Tx_Failed_Result" = "Transaction Failed";
 "Tx_Success_Result" = "Transaction Success";
@@ -371,7 +369,8 @@
 "Password can't be empty." = "Password can't be empty.";
 "The length of password needs to be larger than or equal to 6." = "The length of password needs to be larger than or equal to 6.";
 "Password doesn't match" = "Password doesn't match";
-"Convert_TIP" = "● Convert Ratio is 1 : 1";
+"Convert_DES" = "● Think of it like the coin version of a paper note. The same value, but some machines only take coins. The convertion ration between ETH and WETH is always 1:1, guaranteed by Ethereum.";
+"Convert_TIP" = "● We will preserve 0.01 ETH for gas fee of your subsequent transaction";
 "Convert_Fail_Tip" = "Insufficient gas in your account. Please retry later";
 "Convert_Success_Tip" = "Convert successfully. Transaction hash =";
 "ETH_TIP" = "● We will preserve 0.01 ETH for gas fee of your subsequent transaction";
@@ -392,7 +391,7 @@
 "Hour" = "Hour";
 "Day" = "Day";
 "Month" = "Month";
-"Trade Ratio" = "Trade Ratio";
+"Minimal Fill" = "Minimal Fill";
 "Records" = "Records";
 "Customer_Tip" = "I am a common customer";
 "Partner_Tip" = "I am a city partner";
@@ -403,9 +402,7 @@
 "Receiver" = "Receiver";
 "Sender" = "Sender";
 "Trade_Confirm" = "Trade Confirmation";
-"No_Order_Tip" ="No order records of your account yet";
-"No_Orderbook_Tip" ="No order books of your account yet";
-"No_Transaction_Tip" ="No transaction records of your account yet";
+"No_Data_Tip"= "Data is temporarily unavailable";
 "Wallet Address QRCode" = "Wallet Address QRCode";
 "24H Change" = "24H Change";
 "24H High" = "24H High";

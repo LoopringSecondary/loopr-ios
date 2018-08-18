@@ -58,7 +58,6 @@
 "Details" = "交易详情";
 "Convert" = "转换";
 "WETH Convert" = "WETH转换";
-"Yes, convert now!" = "现在转换!";
 "Convert Successfully." = "转换成功。";
 "Wallet QR Code" = "钱包二维码";
 "Order QR Code" = "订单二维码";
@@ -340,7 +339,6 @@
 "Complete" = "完成";
 "Recommended Gas" = "推荐油费";
 "Save QR code to Photo successfully." = "成功保存二维码到照片应用";
-"Convert_TipInfo" = "我们为您保留0.01 ETH作为油费以保证后续可以发送交易";
 "Add Token" = "添加代币";
 "Tx_Failed_Result" = "交易失败";
 "Tx_Success_Result" = "交易成功";
@@ -371,7 +369,8 @@
 "Password can't be empty." = "密码不能为空";
 "The length of password needs to be larger than or equal to 6." = "密码长度必须大于或等于6位";
 "Password doesn't match" = "密码不一致";
-"Convert_TIP" = "● 转换比例为 1 : 1";
+"Convert_DES" = "● WETH之于ETH, 正如硬币之于等额的纸币。某些场合, 贩卖机只能接受硬币, 因此需要转换。以太坊协议保证: WETH和ETH之间的转换比率为 1 : 1, 且永不改变。";
+"Convert_TIP" = "● 我们为您保留 0.01 ETH 作为油费以保证后续可以发送交易";
 "ETH_TIP" = "● 我们为您保留 0.01 ETH 作为油费以保证后续可以发送交易";
 "Convert_Fail_Tip" = "您的账户中油费不足，请稍后重试";
 "Convert_Success_Tip" = "转换成功，交易哈希值 =";
@@ -392,7 +391,7 @@
 "Hour" = "小时";
 "Day" = "天";
 "Month" = "月";
-"Trade Ratio" = "售卖比例";
+"Minimal Fill" = "最低成交率";
 "Records" = "订单记录";
 "Customer_Tip" = "我是普通用户";
 "Partner_Tip" = "我是城市合伙人";
@@ -403,9 +402,7 @@
 "Receiver" = "接收方地址";
 "Sender" = "发送方地址";
 "Trade_Confirm" = "交易确认";
-"No_Order_Tip" ="尚无下单数据记录";
-"No_Orderbook_Tip" ="尚无订单成交记录";
-"No_Transaction_Tip" ="尚无交易数据记录";
+"No_Data_Tip"= "暂无相关数据";
 "Wallet Address QRCode" = "钱包地址二维码";
 "24H Change" = "24H 涨跌";
 "24H High" = "24H 最高价";

@@ -128,7 +128,7 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
                 let nib = Bundle.main.loadNibNamed("OrderNoDataTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? OrderNoDataTableViewCell
             }
-            cell?.noDataLabel.text = LocalizedString("No_Orderbook_Tip", comment: "")
+            cell?.noDataLabel.text = LocalizedString("No_Data_Tip", comment: "")
             cell?.noDataImageView.image = #imageLiteral(resourceName: "No-data-orderbook")
             return cell!
         } else {

@@ -95,13 +95,13 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         
         infoLabel1.font = FontConfigManager.shared.getCharactorFont(size: 11)
         infoLabel1.theme_textColor = ["#00000099", "#ffffff66"]
-        infoLabel1.text = LocalizedString("Convert_TIP", comment: "")
+        infoLabel1.text = LocalizedString("Convert_DES", comment: "")
         
         infoLabel2.font = FontConfigManager.shared.getCharactorFont(size: 11)
         infoLabel2.theme_textColor = ["#00000099", "#ffffff66"]
-        infoLabel2.text = LocalizedString("ETH_TIP", comment: "")
+        infoLabel2.text = LocalizedString("Convert_TIP", comment: "")
 
-        convertButton.title = LocalizedString("Yes, convert now!", comment: "")
+        convertButton.title = LocalizedString("Convert", comment: "")
         convertButton.setupSecondary(height: 44)
         
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))

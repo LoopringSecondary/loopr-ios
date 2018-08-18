@@ -25,7 +25,7 @@ class MarketDetailViewController: UIViewController {
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         setBackButton()
         setup()
-        updateStarButton()
+        updateHistoryButton()
 
         // Buy button
         buyButton.setTitle(LocalizedString("Buy", comment: "") + " " + market.tradingPair.tradingA, for: .normal)
@@ -71,29 +71,22 @@ class MarketDetailViewController: UIViewController {
         }
     }
 
-    func updateStarButton() {
+    func updateHistoryButton() {
         var icon: UIImage?
-        if market!.isFavorite() {
-            icon = UIImage(named: "Star")?.withRenderingMode(.alwaysOriginal)
+        if Themes.isDark() {
+            icon = UIImage(named: "Order-history-white")?.withRenderingMode(.alwaysOriginal)
         } else {
-            icon = UIImage(named: "StarOutline")?.withRenderingMode(.alwaysOriginal)
+            icon = UIImage(named: "Order-history-white")?.withRenderingMode(.alwaysOriginal)
         }
-        let starButton = UIBarButtonItem(image: icon, style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.pressStarButton(_:)))
+        let starButton = UIBarButtonItem(image: icon, style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.pressHistoryButton(_:)))
         self.navigationItem.rightBarButtonItem = starButton
     }
     
-    @objc func pressStarButton(_ button: UIBarButtonItem) {
+    @objc func pressHistoryButton(_ button: UIBarButtonItem) {
         print("pressStarButton")
-        
-        guard let market = market else {
-            return
-        }
-        if market.isFavorite() {
-            MarketDataManager.shared.removeFavoriteMarket(market: market)
-        } else {
-            MarketDataManager.shared.setFavoriteMarket(market: market)
-        }
-        updateStarButton()
+        let viewController = OrderHistorySwipeViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc func clickNavigationTitleButton(_ button: UIButton) {

@@ -155,7 +155,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
                 let nib = Bundle.main.loadNibNamed("OrderNoDataTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? OrderNoDataTableViewCell
             }
-            cell?.noDataLabel.text = LocalizedString("No_Transaction_Tip", comment: "")
+            cell?.noDataLabel.text = LocalizedString("No_Data_Tip", comment: "")
             cell?.noDataImageView.image = #imageLiteral(resourceName: "No-data-transaction")
             return cell!
         } else {

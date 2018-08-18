@@ -36,10 +36,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     @IBOutlet weak var monthButton: UIButton!
     @IBOutlet weak var customButton: UIButton!
     
-    // Container
-    @IBOutlet weak var canTipLabel: UILabel!
-    @IBOutlet weak var canInfoLabel: UILabel!
-    
     // Sell ratio
     @IBOutlet weak var sellRatioTipLabel: UILabel!
     @IBOutlet weak var sellRatioValueLabel: UILabel!
@@ -122,15 +118,9 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
             $0.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
         }
         
-        // Total
-        canTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 15)
-        canTipLabel.theme_textColor = GlobalPicker.textLightColor
-        canTipLabel.text = LocalizedString("Can Buy", comment: "")
-        canInfoLabel.setTitleCharFont()
-        
         // Sell ratio
         sellRatioTipLabel.setTitleCharFont()
-        sellRatioTipLabel.text = LocalizedString("Trade Ratio", comment: "")
+        sellRatioTipLabel.text = LocalizedString("Minimal Fill", comment: "")
         sellRatioValueLabel.setTitleDigitFont()
         sellRatioValueLabel.text = "100%"
 
@@ -183,13 +173,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         
         if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: tokens) {
             message = "\(title) \(asset.display) \(tokens)"
-            if let prices = PriceDataManager.shared.getPrice(of: tokens),
-               let priceb = PriceDataManager.shared.getPrice(of: tokenb) {
-                let ratio = prices / priceb * asset.balance
-                canInfoLabel.text = "\(ratio.withCommas()) \(tokenb)"
-            } else {
-                canInfoLabel.text = "-- \(tokenb)"
-            }
         } else {
             message = "\(title) 0.0 \(tokens)"
         }

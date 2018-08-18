@@ -42,8 +42,8 @@ class TradeSelectionViewController: UIViewController {
         button2.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
         button2.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
         button2.addTarget(self, action: #selector(self.pressedButton2(_:)), for: .touchUpInside)
-        button2.set(image: UIImage.init(named: "Trade-peer-to-peer-dark"), title: "C2C", titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
-        button2.set(image: UIImage.init(named: "Trade-peer-to-peer-dark")?.alpha(0.6), title: "C2C", titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
+        button2.set(image: UIImage.init(named: "Trade-peer-to-peer-dark"), title: "P2P", titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
+        button2.set(image: UIImage.init(named: "Trade-peer-to-peer-dark")?.alpha(0.6), title: "P2P", titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         
         button3.cornerRadius = 8
         button3.titleLabel?.setSubTitleCharFont()

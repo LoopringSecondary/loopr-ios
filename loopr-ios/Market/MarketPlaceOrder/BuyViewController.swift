@@ -40,10 +40,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     @IBOutlet weak var monthButton: UIButton!
     @IBOutlet weak var customButton: UIButton!
     
-    // Container
-    @IBOutlet weak var canTipLabel: UILabel!
-    @IBOutlet weak var canInfoLabel: UILabel!
-    
     // Place button
     @IBOutlet weak var nextButton: UIButton!
     
@@ -153,12 +149,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             $0.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
         }
         
-        // Total
-        canTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 15)
-        canTipLabel.theme_textColor = GlobalPicker.textLightColor
-        canTipLabel.text = LocalizedString("Can Buy", comment: "")
-        canInfoLabel.setTitleCharFont()
-        
         // Place button
         if type == .buy {
             nextButton.title = LocalizedString("Buy", comment: "") + " " + market.tradingPair.tradingA
@@ -211,10 +201,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             self.tokenB = PlaceOrderDataManager.shared.tokenB.symbol
             self.tokenS = PlaceOrderDataManager.shared.tokenA.symbol
         }
-        
         if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: tokenS) {
             message = "\(title) \(asset.display) \(self.tokenS)"
-            canInfoLabel.text = "-- \(tokenB)"
         } else {
             message = "\(title) 0.0 \(tokenS)"
         }
@@ -416,7 +404,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             if activeTextFieldTag == priceTextField.tag {
                 estimateValueInCurrencyLabel.isHidden = true
             }
-            canInfoLabel.text = "-- \(self.tokenB)"
             return false
         }
     }
@@ -454,7 +441,6 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
                     setupLabels()
                 }
             }
-            canInfoLabel.text = "-- \(self.tokenB)"
             return false
         }
     }
@@ -469,18 +455,14 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             isValid = validateTokenPrice() && validateAmount()
         }
         guard isValid else {
-            canInfoLabel.text = "-- \(self.tokenB)"
             return false
         }
         if validateTokenPrice() && validateAmount() {
             isValid = true
             var total: Double
             total = Double(priceTextField.text!)! * Double(amountTextField.text!)!
-            canInfoLabel.text = "\(total.withCommas()) \(PlaceOrderDataManager.shared.tokenB.symbol)"
             self.orderAmount = total
             setupLabels()
-        } else {
-            canInfoLabel.text = "-- \(self.tokenB)"
         }
         return isValid
     }
