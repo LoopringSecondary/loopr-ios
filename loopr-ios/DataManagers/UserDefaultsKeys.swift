@@ -17,7 +17,6 @@ enum UserDefaultsKeys: String {
     case currentFont = "UserDefaultsKeys.currentcurrentFont"
     case showSmallAssets = "UserDefaultsKeys.showSmallAssets"
     case showOtherPairs = "UserDefaultsKeys.showOtherPairs"
-    case orderHistory = "UserDefaultsKeys.orderHistory"
     
     // Trade. Used in TradeDataManager
     case tradeTokenS = "UserDefaultsKeys.tradeTokenS"
@@ -30,9 +29,6 @@ enum UserDefaultsKeys: String {
     // Market
     case cancelledAll = "UserDefaultsKeys.cancelledAll"
     case cancellingOrders = "UserDefaultsKeys.cancellingOrders"
-    
-    // Transaction
-    case pendingTransactions = "UserDefaultsKeys.pendingTransactions"
 
     // Setting
     case useLrcFeeRatioUserDefineValue = "UserDefaultsKeys.useLrcFeeRatioUserDefineValue"
@@ -42,7 +38,4 @@ enum UserDefaultsKeys: String {
     case marginSplit = "UserDefaultsKeys.marginSplit"
 
     case passcodeOn = "UserDefaultsKeys.passcodeOn"
-    
-    // Tokens
-    case tokenList = "UserDefaultsKeys.tokenList"
 }

@@ -126,15 +126,28 @@ class CurrentAppWalletDataManager {
     func getAssetsWithHideSmallAssetsOption() -> [Asset] {
         if SettingDataManager.shared.getHideSmallAssets() {
             return self.assets.filter({ (asset) -> Bool in
-                return TokenDataManager.shared.getTokenList().contains(asset.symbol) && asset.total > 0.01
+                return currentAppWallet!.tokenList.contains(asset.symbol) && asset.total > 0.01
             }).sorted(by: { (a, b) -> Bool in
-                a.total > b.total
+                if a.total != b.total {
+                    return a.total > b.total
+                } else if a.balance != b.balance {
+                    return a.balance > b.balance
+                } else {
+                    return a.symbol < b.symbol
+                }
             })
         } else {
+            print(currentAppWallet!.tokenList)
             return self.assets.filter({ (asset) -> Bool in
-                return TokenDataManager.shared.getTokenList().contains(asset.symbol) || asset.balance > 0
+                return currentAppWallet!.tokenList.contains(asset.symbol) || asset.balance > 0
             }).sorted(by: { (a, b) -> Bool in
-                a.total > b.total
+                if a.total != b.total {
+                    return a.total > b.total
+                } else if a.balance != b.balance {
+                    return a.balance > b.balance
+                } else {
+                    return a.symbol < b.symbol
+                }
             })
         }
     }
@@ -193,7 +206,7 @@ class CurrentAppWalletDataManager {
                 // non-zero assets
                 if asset.balance > 0 {
                     print(asset.symbol)
-                    TokenDataManager.shared.updateTokenList(tokenSymbol: asset.symbol, add: true)
+                    currentAppWallet!.updateTokenList([asset.symbol], add: true)
                 }
             }
         }

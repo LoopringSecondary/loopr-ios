@@ -79,6 +79,15 @@ class AppWalletDataManager {
         return !results.isEmpty
     }
     
+    func getWallet(address: String) -> AppWallet? {
+        let results = appWallets.filter { $0.address == address }
+        if !results.isEmpty {
+            return results[0]
+        } else {
+            return nil
+        }
+    }
+    
     func getWallets() -> [AppWallet] {
         return appWallets
     }
@@ -193,7 +202,7 @@ class AppWalletDataManager {
             return
         }
         
-        let newAppWallet = AppWallet(setupWalletMethod: setupWalletMethod, address: address.description, privateKey: privateKey.hexString, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: walletName.trim(), isVerified: isVerified, active: true)
+        let newAppWallet = AppWallet(setupWalletMethod: setupWalletMethod, address: address.description, privateKey: privateKey.hexString, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: walletName.trim(), isVerified: isVerified, tokenList: ["ETH", "WETH", "LRC", "USDT"])
         
         // Update the new app wallet in the local storage.
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
@@ -207,6 +216,7 @@ class AppWalletDataManager {
     func getTotalCurrencyValue(address: String, getPrice: Bool, completionHandler: @escaping (_ totalCurrencyValue: Double, _ error: Error?) -> Void) {
         print("getBalanceAndPriceQuote Current address: \(address)")
         
+        let appWallet = getWallet(address: address)
         var localAssets: [Asset] = []
         let dispatchGroup = DispatchGroup()
         
@@ -238,6 +248,7 @@ class AppWalletDataManager {
         dispatchGroup.notify(queue: .main) {
             print("Both functions complete 👍")
             
+            var newTokenList: [String] = []
             var totalCurrencyValue: Double = 0
             for asset in localAssets {
                 // If the price quote is nil, asset won't be updated. Please use getBalanceAndPriceQuote()
@@ -247,8 +258,16 @@ class AppWalletDataManager {
                     asset.currency = total.currency
                     totalCurrencyValue += total
                 }
+                
+                if asset.balance > 0.1 || asset.total > 0.1 {
+                    newTokenList.append(asset.symbol)
+                }
             }
             
+            if appWallet != nil {
+                appWallet!.updateTokenList(newTokenList, add: true)
+            }
+
             completionHandler(totalCurrencyValue, nil)
         }
     }

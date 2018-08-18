@@ -131,7 +131,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.setup(animated: false)
             cell.startUpdateBalanceLabelTimer()
         }
-        getBalanceFromRelay()        
+        getBalanceFromRelay()
         
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
@@ -140,7 +140,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let spaceView = UIImageView.init(image: UIImage.init(named: "dropdown-triangle"))
         spaceView.contentMode = .center
         dropdownMenu.spacerView = spaceView
-        dropdownMenu.spacerViewOffset = UIOffsetMake(self.dropdownMenu.bounds.size.width - 95, 1)
+        dropdownMenu.spacerViewOffset = UIOffset.init(horizontal: self.dropdownMenu.bounds.size.width - 95, vertical: 1)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -235,14 +235,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
-    
-    @objc func clickNavigationTitleButton(_ button: UIButton) {
-        print("select another wallet.")
-        let viewController = UpdatedSelectWalletViewController()
-        viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
+
     @objc func pressQRCodeButton(_ button: UIBarButtonItem) {
         print("pressQRCodeButton")
         if CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil {
@@ -353,9 +346,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell?.update()
             return cell!
         }
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

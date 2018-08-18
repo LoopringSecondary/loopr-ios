@@ -15,46 +15,15 @@ class TokenDataManager {
     
     static let shared = TokenDataManager()
     private var tokens: [Token]
-    
-    // A token is added to tokenList when
-    // 1. the amount is not zero in the device one time.
-    // 2. users enable in AddTokenViewController.
-    // Default value is ["ETH"]
-    private var tokenList: [String]
 
     private init() {
         self.tokens = []
-        self.tokenList = []
         self.loadTokens()
     }
 
     func loadTokens() {
-        getTokenListFromLocalStorage()
         loadTokensFromJson()
         loadTokensFromServer()
-    }
-
-    func getTokenList() -> [String] {
-        return tokenList
-    }
-
-    func getTokenListFromLocalStorage() {
-        let defaults = UserDefaults.standard
-        tokenList = defaults.array(forKey: UserDefaultsKeys.tokenList.rawValue) as? [String] ?? ["ETH", "LRC"]
-        tokenList = Array(NSOrderedSet(array: tokenList)) as! [String]
-    }
-    
-    func updateTokenList(tokenSymbol: String, add: Bool) {
-        let defaults = UserDefaults.standard
-        if add {
-            if !tokenList.contains(tokenSymbol) {
-                tokenList.append(tokenSymbol)
-                defaults.set(tokenList, forKey: UserDefaultsKeys.tokenList.rawValue)
-            }
-        } else {
-            tokenList = tokenList.filter {$0 != tokenSymbol}
-            defaults.set(tokenList, forKey: UserDefaultsKeys.tokenList.rawValue)
-        }
     }
 
     // load tokens from json file to avoid http request
