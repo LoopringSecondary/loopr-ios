@@ -15,6 +15,8 @@ class MarketDetailSwipeViewController: SwipeViewController {
     private var types: [String] = []
     private var viewControllers: [UIViewController] = []
 
+    let vc1 = MarketDetailDepthViewController()
+    let vc2 = MarketDetailTradeHistoryViewController()
     var options = SwipeViewOptions.getDefault()
 
     @IBOutlet weak var baseView: UIView!
@@ -38,6 +40,8 @@ class MarketDetailSwipeViewController: SwipeViewController {
         view.theme_backgroundColor = GlobalPicker.backgroundColor
 
         self.topConstraint = 180
+        types = [LocalizedString("Depth_in_Market_Detail", comment: ""), LocalizedString("Trades_in_Market_Detail", comment: "")]
+        viewControllers = [vc1, vc2]
         setupChildViewControllers()
 
         baseView.cornerRadius = 6
@@ -45,7 +49,6 @@ class MarketDetailSwipeViewController: SwipeViewController {
         
         priceInCryptoLabel.font = FontConfigManager.shared.getDigitalFont()
         priceInCryptoLabel.textColor = UIColor.init(white: 1, alpha: 1)
-        priceInCryptoLabel.text = "\(market.balance.withCommas(6)) \(market.tradingPair.tradingB) ≈ \(market.display.description)"
 
         priceInFiatCurrencyLabel.font = FontConfigManager.shared.getDigitalFont()
         priceInFiatCurrencyLabel.textColor = UIColor.init(white: 1, alpha: 1)
@@ -59,27 +62,23 @@ class MarketDetailSwipeViewController: SwipeViewController {
         
         hoursChangeInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
         hoursChangeInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.6)
-        hoursChangeInfoLabel.text = LocalizedString("24H Change", comment: "")
-        
+
         hoursChangeLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         hoursChangeLabel.textColor = UIColor.init(white: 1, alpha: 0.8)
-        hoursChangeLabel.text = market.changeInPat24
-        
+
         hoursHighInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
         hoursHighInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.6)
         hoursHighInfoLabel.text = LocalizedString("24H High", comment: "")
         
         hoursHighLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         hoursHighLabel.textColor = UIColor.init(white: 1, alpha: 0.8)
-        hoursHighLabel.text = market.high.withCommas(6)
-        
+
         hoursVolumeInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
         hoursVolumeInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.6)
         hoursVolumeInfoLabel.text = LocalizedString("24H Volume", comment: "")
         
         hoursVolumeLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         hoursVolumeLabel.textColor = UIColor.init(white: 1, alpha: 0.8)
-        hoursVolumeLabel.text = "\(market.volumeInPast24) WETH"
         
         hoursLowInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
         hoursLowInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.6)
@@ -87,23 +86,29 @@ class MarketDetailSwipeViewController: SwipeViewController {
         
         hoursLowLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         hoursLowLabel.textColor = UIColor.init(white: 1, alpha: 0.8)
-        hoursLowLabel.text = market.low.withCommas(6)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        priceInCryptoLabel.text = "\(market.balance.withCommas(6)) \(market.tradingPair.tradingB) ≈ \(market.display.description)"
+        hoursChangeLabel.text = market.changeInPat24
+        hoursHighLabel.text = market.high.withCommas(6)
+        hoursVolumeLabel.text = "\(market.volumeInPast24) WETH"
+        hoursLowLabel.text = market.low.withCommas(6)
+        
+        setupChildViewControllers()
+    }
 
     func setupChildViewControllers() {
-        types = [LocalizedString("Depth_in_Market_Detail", comment: ""), LocalizedString("Trades_in_Market_Detail", comment: "")]
-        
-        let vc1 = MarketDetailDepthViewController()
         vc1.market = market
-        let vc2 = MarketDetailTradeHistoryViewController()
         vc2.market = market
-        viewControllers = [vc1, vc2]
-
+        
         if Themes.isDark() {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
             options.swipeTabView.itemView.selectedTextColor = UIColor.white

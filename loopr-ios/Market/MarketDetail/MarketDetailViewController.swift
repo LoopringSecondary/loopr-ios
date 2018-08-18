@@ -17,25 +17,19 @@ class MarketDetailViewController: UIViewController {
     @IBOutlet weak var sellButton: UIButton!
     
     let buttonInNavigationBar =  UIButton()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         setBackButton()
-        setup()
+        setupMarket()
         updateHistoryButton()
 
-        // Buy button
-        buyButton.setTitle(LocalizedString("Buy", comment: "") + " " + market.tradingPair.tradingA, for: .normal)
         buyButton.setupPrimary(height: 44)
-        
-        // Sell button
-        sellButton.setTitle(LocalizedString("Sell", comment: "") + " " + market.tradingPair.tradingA, for: .normal)
         sellButton.setupSecondary(height: 44)
         
-        marketDetailSwipeViewController.market = market
         addChildViewController(marketDetailSwipeViewController)
         view.addSubview(marketDetailSwipeViewController.view)
         marketDetailSwipeViewController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -62,13 +56,20 @@ class MarketDetailViewController: UIViewController {
         
         buttonInNavigationBar.setRightImage(imageName: "Caret-down-dark", imagePaddingTop: 0, imagePaddingLeft: 0, titlePaddingRight: 0)
         // TODO: needs to update the icon. It's too big here.
-        buttonInNavigationBar.title = "         " + market!.description
+        var padding = "  "
+        for _ in 0..<market!.description.count {
+            padding += " "
+        }
+        buttonInNavigationBar.title = padding + market!.description
     }
     
-    func setup() {
-        if let market = market {
-            PlaceOrderDataManager.shared.new(tokenA: market.tradingPair.tradingA, tokenB: market.tradingPair.tradingB, market: market)
-        }
+    func setupMarket() {
+        PlaceOrderDataManager.shared.new(tokenA: market.tradingPair.tradingA, tokenB: market.tradingPair.tradingB, market: market)
+        
+        buyButton.setTitle(LocalizedString("Buy", comment: "") + " " + market.tradingPair.tradingA, for: .normal)
+        sellButton.setTitle(LocalizedString("Sell", comment: "") + " " + market.tradingPair.tradingA, for: .normal)
+        
+        marketDetailSwipeViewController.market = market
     }
 
     func updateHistoryButton() {
@@ -92,13 +93,16 @@ class MarketDetailViewController: UIViewController {
     @objc func clickNavigationTitleButton(_ button: UIButton) {
         print("select another wallet.")
         let viewController = MarketChangeTokenSwipeViewController()
-        // self.navigationController?.pushViewController(viewController, animated: true)
+        viewController.didSelectRowClosure = { (market) -> Void in
+            // Update market
+            self.market = market
+            self.setupMarket()
+        }
 
         let navController = UINavigationController(rootViewController: viewController)
         self.present(navController, animated: true) {
             
         }
-
     }
 
     @IBAction func pressedSellButton(_ sender: Any) {

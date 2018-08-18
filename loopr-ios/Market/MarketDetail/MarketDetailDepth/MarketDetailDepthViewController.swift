@@ -11,6 +11,7 @@ import UIKit
 class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
     var market: Market!
+    var preivousMarketName: String = ""
     var isLaunching: Bool = true
     private var buys: [Depth] = []
     private var sells: [Depth] = []
@@ -35,9 +36,21 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.isLaunching == false && self.preivousMarketName != market.name {
+            buys = []
+            sells = []
+            isLaunching = true
+            tableView.reloadData()
+            getDataFromRelay()
+        }
+    }
 
     func getDataFromRelay() {
         MarketDepthDataManager.shared.getDepthFromServer(market: market.name, completionHandler: { buys, sells, _ in
+            self.preivousMarketName = self.market.name
             self.buys = buys
             self.sells = sells
             DispatchQueue.main.async {

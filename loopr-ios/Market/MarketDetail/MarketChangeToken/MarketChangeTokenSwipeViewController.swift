@@ -21,6 +21,8 @@ class MarketChangeTokenSwipeViewController: SwipeViewController, UISearchBarDele
     let searchBar = UISearchBar()
     var searchButton = UIBarButtonItem()
     
+    var didSelectRowClosure: ((Market) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,32 +57,32 @@ class MarketChangeTokenSwipeViewController: SwipeViewController, UISearchBarDele
     }
     
     func setupChildViewControllers() {
-        types = [.favorite, .ETH, .LRC, .all]
+        types = [.favorite, .ETH, .LRC, .USDT]
         
         let vc0 = MarketChangeTokenViewController(type: .favorite)
         vc0.didSelectRowClosure = { (market) -> Void in
-            
+            self.didSelectRowClosure?(market)
         }
         vc0.didSelectBlankClosure = {
             self.searchBar.resignFirstResponder()
         }
         let vc1 = MarketChangeTokenViewController(type: .ETH)
         vc1.didSelectRowClosure = { (market) -> Void in
-            
+            self.didSelectRowClosure?(market)
         }
         vc1.didSelectBlankClosure = {
             self.searchBar.resignFirstResponder()
         }
         let vc2 = MarketChangeTokenViewController(type: .LRC)
         vc2.didSelectRowClosure = { (market) -> Void in
-            
+            self.didSelectRowClosure?(market)
         }
         vc2.didSelectBlankClosure = {
             self.searchBar.resignFirstResponder()
         }
-        let vc3 = MarketChangeTokenViewController(type: .all)
+        let vc3 = MarketChangeTokenViewController(type: .USDT)
         vc3.didSelectRowClosure = { (market) -> Void in
-            
+            self.didSelectRowClosure?(market)
         }
         vc3.didSelectBlankClosure = {
             self.searchBar.resignFirstResponder()

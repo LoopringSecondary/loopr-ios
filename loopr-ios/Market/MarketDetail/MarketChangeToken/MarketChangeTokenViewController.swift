@@ -17,7 +17,6 @@ class MarketChangeTokenViewController: UIViewController, UITableViewDelegate, UI
     let refreshControl = UIRefreshControl()
     
     var viewAppear: Bool = false
-    var isListeningSocketIO: Bool = false
     
     var didSelectRowClosure: ((Market) -> Void)?
     var didSelectBlankClosure: (() -> Void)?
@@ -52,21 +51,15 @@ class MarketChangeTokenViewController: UIViewController, UITableViewDelegate, UI
         marketTableView.dataSource = self
         marketTableView.delegate = self
         
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 10))
+        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        marketTableView.tableHeaderView = headerView
+        
         marketTableView.tableFooterView = UIView()
         marketTableView.separatorStyle = .none
         let tap = UITapGestureRecognizer(target: self, action: #selector(tableTapped))
         marketTableView.addGestureRecognizer(tap)
-        
-        /*
-         // one part of record
-         marketTableView.estimatedRowHeight = 0
-         marketTableView.estimatedSectionHeaderHeight = 0
-         marketTableView.estimatedSectionFooterHeight = 0
-         */
-        
-        // No need to call here
-        // getMarketsFromRelay()
-        
+
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         marketTableView.theme_backgroundColor = GlobalPicker.backgroundColor
         
@@ -110,22 +103,9 @@ class MarketChangeTokenViewController: UIViewController, UITableViewDelegate, UI
             }
         }
     }
-    
-    @objc func tickerResponseReceivedNotification() {
-        if viewAppear && !isSearching && isListeningSocketIO {
-            print("MarketViewController reload table \(type.description)")
-            marketTableView.reloadData()
-        }
-    }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        isListeningSocketIO = true
-        // We have started startGetTicker() in the AppDelegate. No need to start again
-        // MarketDataManager.shared.startGetTicker()
-        // Add observer.
-        NotificationCenter.default.addObserver(self, selector: #selector(tickerResponseReceivedNotification), name: .tickerResponseReceived, object: nil)
-        
         if type == .favorite {
             marketTableView.reloadData()
         }
@@ -134,9 +114,6 @@ class MarketChangeTokenViewController: UIViewController, UITableViewDelegate, UI
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         isSearching = false
-        isListeningSocketIO = false
-        // MarketDataManager.shared.stopGetTicker()
-        NotificationCenter.default.removeObserver(self, name: .tickerResponseReceived, object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -191,22 +168,13 @@ class MarketChangeTokenViewController: UIViewController, UITableViewDelegate, UI
             marketTableView.scrollToRow(at: topIndex, at: .top, animated: true)
         }
     }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        isListeningSocketIO = false
-        print("scrollViewWillBeginDragging")
-    }
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if canHideKeyboard {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
     }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        isListeningSocketIO = true
-    }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return MarketChangeTokenTableViewCell.getHeight()
     }
@@ -239,6 +207,8 @@ class MarketChangeTokenViewController: UIViewController, UITableViewDelegate, UI
         
         if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
             cell?.baseView.round(corners: [.bottomLeft, .bottomRight], radius: 6)
+        } else if indexPath.row == 0 {
+            cell?.baseView.round(corners: [.topLeft, .topRight], radius: 6)
         } else {
             cell?.baseView.round(corners: [], radius: 0)
         }
@@ -253,16 +223,10 @@ class MarketChangeTokenViewController: UIViewController, UITableViewDelegate, UI
         } else {
             market = MarketDataManager.shared.getMarketsWithoutReordered(type: type)[indexPath.row]
         }
-        if let didSelectRowClosure = self.didSelectRowClosure {
-            didSelectRowClosure(market)
+        self.dismiss(animated: true) {
+            
         }
-        
-        let marketDetailViewController = MarketDetailViewController()
-        marketDetailViewController.market = market
-        marketDetailViewController.hidesBottomBarWhenPushed = true
-        
-        self.navigationController?.view.endEditing(true)
-        self.navigationController?.pushViewController(marketDetailViewController, animated: true)
+        didSelectRowClosure?(market)
     }
 
 }

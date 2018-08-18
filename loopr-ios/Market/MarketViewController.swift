@@ -57,13 +57,6 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let tap = UITapGestureRecognizer(target: self, action: #selector(tableTapped))
         marketTableView.addGestureRecognizer(tap)
 
-        /*
-        // one part of record
-        marketTableView.estimatedRowHeight = 0
-        marketTableView.estimatedSectionHeaderHeight = 0
-        marketTableView.estimatedSectionFooterHeight = 0
-        */
-
         // No need to call here
         // getMarketsFromRelay()
         

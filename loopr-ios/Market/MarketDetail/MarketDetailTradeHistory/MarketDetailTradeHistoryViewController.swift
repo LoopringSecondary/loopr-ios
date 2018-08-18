@@ -11,6 +11,7 @@ import UIKit
 class MarketDetailTradeHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var market: Market!
+    var preivousMarketName: String = ""
     var isLaunching: Bool = true
     private var orderFills: [OrderFill] = []
 
@@ -34,9 +35,17 @@ class MarketDetailTradeHistoryViewController: UIViewController, UITableViewDeleg
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.isLaunching == false && self.preivousMarketName != market.name {
+            getDataFromRelay()
+        }
+    }
 
     func getDataFromRelay() {
         MarketTradeHistoryDataManager.shared.getTradeHistoryFromServer(market: market.name, completionHandler: { (orderFills, _) in
+            self.preivousMarketName = self.market.name
             self.orderFills = orderFills
             DispatchQueue.main.async {
                 if self.isLaunching == true {

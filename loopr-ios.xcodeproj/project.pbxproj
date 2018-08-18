@@ -1963,8 +1963,8 @@
 			isa = PBXGroup;
 			children = (
 				AC23B365210D6213004DC5A9 /* MarketDetailViewController.swift */,
-				AC9FFF222126BDA800957175 /* MarketChangeToken */,
 				AC23B366210D6214004DC5A9 /* MarketDetailViewController.xib */,
+				AC9FFF222126BDA800957175 /* MarketChangeToken */,
 				AC6A3476210D740500AE615B /* MarketDetailSwipeViewController.swift */,
 				AC6A3477210D740500AE615B /* MarketDetailSwipeViewController.xib */,
 				AC131A1621101AEB001998A0 /* MarketDetailDepth */,
