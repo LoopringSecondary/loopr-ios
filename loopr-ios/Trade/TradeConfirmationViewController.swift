@@ -190,7 +190,7 @@ extension TradeConfirmationViewController {
     
     func handleVerifyInfo() {
         if isBalanceEnough() {
-            SVProgressHUD.show(withStatus: "正在撮合并提交P2P订单...")
+            SVProgressHUD.show(withStatus: LocalizedString("Processing the P2P order...", comment: ""))
             if needApprove() {
                 approve()
             } else {
