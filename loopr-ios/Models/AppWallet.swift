@@ -36,9 +36,6 @@ class AppWallet: NSObject, NSCoding {
     // If a wallet is created in the app and the user skip the verification,
     // isVerified is false
     var isVerified: Bool
-    
-    var assetSequence: [String] = []
-    var assetSequenceInHideSmallAssets: [String] = []
 
     // A token is added to tokenList when
     // 1. the amount is not zero in the device one time.
@@ -49,7 +46,7 @@ class AppWallet: NSObject, NSCoding {
     // totalCurrency is not persisted in disk
     var totalCurrency: Double = 0
     
-    init(setupWalletMethod: QRCodeMethod, address: String, privateKey: String, password: String, mnemonics: [String] = [], keystoreString: String, name: String, isVerified: Bool, totalCurrency: Double = 0, assetSequence: [String] = [], assetSequenceInHideSmallAssets: [String] = [], tokenList: [String]) {
+    init(setupWalletMethod: QRCodeMethod, address: String, privateKey: String, password: String, mnemonics: [String] = [], keystoreString: String, name: String, isVerified: Bool, totalCurrency: Double = 0, tokenList: [String]) {
         self.setupWalletMethod = setupWalletMethod
         self.address = address
         self.privateKey = privateKey
@@ -58,9 +55,7 @@ class AppWallet: NSObject, NSCoding {
         self.keystoreString = keystoreString
         self.name = name
         self.isVerified = isVerified
-        self.assetSequence = assetSequence
-        self.assetSequenceInHideSmallAssets = assetSequenceInHideSmallAssets
-        
+
         self.tokenList = tokenList
         
         super.init()
@@ -74,27 +69,7 @@ class AppWallet: NSObject, NSCoding {
             // generateKeystoreInBackground()
         }
     }
-    
-    func getAssetSequence() -> [String] {
-        return assetSequence
-    }
-    
-    func addAssetSequence(symbol: String) {
-        if symbol.trim() != "" && !assetSequence.contains(symbol) {
-            assetSequence.append(symbol)
-        }
-    }
-    
-    func getAssetSequenceInHideSmallAssets() -> [String] {
-        return assetSequenceInHideSmallAssets
-    }
-    
-    func addAssetSequenceInHideSmallAssets(symbol: String) {
-        if symbol.trim() != "" && !assetSequenceInHideSmallAssets.contains(symbol) {
-            assetSequenceInHideSmallAssets.append(symbol)
-        }
-    }
-    
+
     func updateTokenList(_ tokenSymbols: [String], add: Bool) {
         for tokenSymbol in tokenSymbols {
             if add {
@@ -146,8 +121,6 @@ class AppWallet: NSObject, NSCoding {
         aCoder.encode(isVerified, forKey: "isVerified")
         aCoder.encode(mnemonics, forKey: "mnemonics")
         aCoder.encode(keystoreString, forKey: "keystore")
-        aCoder.encode(assetSequence, forKey: "assetSequence")
-        aCoder.encode(assetSequenceInHideSmallAssets, forKey: "assetSequenceInHideSmallAssets")
         aCoder.encode(tokenList, forKey: "tokenList")
     }
     
@@ -167,16 +140,6 @@ class AppWallet: NSObject, NSCoding {
         let mnemonics = aDecoder.decodeObject(forKey: "mnemonics") as? [String]
         
         let keystoreString = aDecoder.decodeObject(forKey: "keystore") as? String
-        
-        let assetSequence = aDecoder.decodeObject(forKey: "assetSequence") as? [String] ?? []
-        let filteredAssetSequence = assetSequence.filter { (item) -> Bool in
-            return item.trim() != ""
-        }
-        
-        let assetSequenceInHideSmallAssets = aDecoder.decodeObject(forKey: "assetSequenceInHideSmallAssets") as? [String] ?? []
-        let filteredAssetSequenceInHideSmallAssets = assetSequenceInHideSmallAssets.filter { (item) -> Bool in
-            return item.trim() != ""
-        }
 
         let tokenList = aDecoder.decodeObject(forKey: "tokenList") as? [String] ?? []
         let filteredTokenList = tokenList.filter { (item) -> Bool in
@@ -188,7 +151,7 @@ class AppWallet: NSObject, NSCoding {
             if keystoreString == "" || !AppWallet.isKeystore(content: keystoreString) {
                 return nil
             }
-            self.init(setupWalletMethod: setupWalletMethod, address: address, privateKey: privateKey, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: name, isVerified: isVerified, assetSequence: unique(filteredAssetSequence), assetSequenceInHideSmallAssets: unique(filteredAssetSequenceInHideSmallAssets), tokenList: unique(filteredTokenList))
+            self.init(setupWalletMethod: setupWalletMethod, address: address, privateKey: privateKey, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: name, isVerified: isVerified, tokenList: unique(filteredTokenList))
         } else {
             return nil
         }

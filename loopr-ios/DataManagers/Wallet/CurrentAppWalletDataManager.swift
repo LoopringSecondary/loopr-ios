@@ -49,26 +49,7 @@ class CurrentAppWalletDataManager {
         self.assetsInHideSmallMode = []
         self.assets = []
         self.totalCurrencyValue = appWallet.totalCurrency
-        
-        // Init assets using assetSequence in AppWallet
-        for symbol in currentAppWallet!.getAssetSequence() {
-            let asset = Asset(symbol: symbol)
-            if let index = assets.index(of: asset) {
-                assets[index] = asset
-            } else {
-                assets.append(asset)
-            }
-        }
-        
-        for symbol in currentAppWallet!.getAssetSequenceInHideSmallAssets() {
-            let asset = Asset(symbol: symbol)
-            if let index = assetsInHideSmallMode.index(of: asset) {
-                assetsInHideSmallMode[index] = asset
-            } else {
-                assetsInHideSmallMode.append(asset)
-            }
-        }
-        
+
         // Get nonce. It's a slow API request.
         SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
         
@@ -163,45 +144,14 @@ class CurrentAppWalletDataManager {
             return
         }
         
-        let sortedAssets = filteredAssets.sorted { (a, b) -> Bool in
-            return a.balance > b.balance
-        }
-        
         totalCurrencyValue = 0
-        for asset in sortedAssets {
+        for asset in filteredAssets {
             // If the price quote is nil, asset won't be updated. Please use getBalanceAndPriceQuote()
             if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
                 let total = asset.balance * price
                 asset.total = total
                 asset.currency = total.currency
                 totalCurrencyValue += total
-                
-                // If the asset is in the array, then replace it.
-                if let index = assets.index(of: asset) {
-                    assets[index] = asset
-                } else {
-                    assets.append(asset)
-                    if currentAppWallet != nil && currentAppWallet!.getAssetSequence().index(of: asset.symbol) == nil {
-                        currentAppWallet!.addAssetSequence(symbol: asset.symbol)
-                    }
-                }
-                
-                // Small assets
-                if asset.total > 0.01 {
-                    if let index = assetsInHideSmallMode.index(of: asset) {
-                        assetsInHideSmallMode[index] = asset
-                    } else {
-                        assetsInHideSmallMode.append(asset)
-                        if currentAppWallet != nil && currentAppWallet!.getAssetSequenceInHideSmallAssets().index(of: asset.symbol) == nil {
-                            currentAppWallet!.addAssetSequenceInHideSmallAssets(symbol: asset.symbol)
-                        }
-                    }
-                } else {
-                    // If it's a small asset and also in assetsInHideSmallMode, remove it from assetsInHideSmallMode
-                    if let index = assetsInHideSmallMode.index(of: asset) {
-                        assetsInHideSmallMode.remove(at: index)
-                    }
-                }
                 
                 // non-zero assets
                 if asset.balance > 0 {
@@ -211,19 +161,15 @@ class CurrentAppWalletDataManager {
             }
         }
         
+        // Update assets
+        self.assets = newAssets
+        
         // Remove small assets
         assetsInHideSmallMode = assetsInHideSmallMode.filter { (asset) -> Bool in
             return asset.total > 0.01
         }
         
         if currentAppWallet != nil {
-            currentAppWallet!.assetSequenceInHideSmallAssets = assetsInHideSmallMode.filter { (asset) -> Bool in
-                return asset.total > 0.01
-                }.map({ (asset) -> String in
-                    return asset.symbol
-                })
-            print(currentAppWallet!.assetSequenceInHideSmallAssets)
-            currentAppWallet!.totalCurrency = totalCurrencyValue
             AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: currentAppWallet!)
         }
     }
