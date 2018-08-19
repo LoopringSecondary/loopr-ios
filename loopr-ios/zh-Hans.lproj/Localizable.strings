@@ -428,3 +428,6 @@
 "Please input a correct address" = "请输入正确的代币合约地址";
 "Please enter the token symbol" = "请输入代币符号";
 "Please input a correct value for deciaml" = "请输入正确的小数点";
+"Convert Confirmation" = "转换确认";
+"Send Token" = "转出代币";
+"Receive Token" = "转入代币";

@@ -36,6 +36,10 @@
 		941B1EFC209C41BC00710DFF /* GasDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B1EFB209C41BB00710DFF /* GasDataManager.swift */; };
 		94231DEB20BD671700A4FDC3 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94231DEA20BD671700A4FDC3 /* PaddingLabel.swift */; };
 		9423F77920C7D688000B6983 /* SignRawTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423F77820C7D688000B6983 /* SignRawTransaction.swift */; };
+		942C49F82129119C008A6B4F /* ConvertETHConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 942C49F72129119C008A6B4F /* ConvertETHConfirmViewController.xib */; };
+		942C49FA212911B0008A6B4F /* ConvertETHConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C49F9212911B0008A6B4F /* ConvertETHConfirmViewController.swift */; };
+		942C49FE21292FF8008A6B4F /* ConvertETHResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 942C49FD21292FF8008A6B4F /* ConvertETHResultViewController.xib */; };
+		942C4A0021293022008A6B4F /* ConvertETHResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C49FF21293022008A6B4F /* ConvertETHResultViewController.swift */; };
 		942FE781210D5A1C005C723D /* SendConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942FE77F210D5A1C005C723D /* SendConfirmViewController.swift */; };
 		942FE782210D5A1C005C723D /* SendConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 942FE780210D5A1C005C723D /* SendConfirmViewController.xib */; };
 		943A9A4120909597008BCBFD /* DefaultWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943A9A3F20909597008BCBFD /* DefaultWebViewController.swift */; };
@@ -612,6 +616,10 @@
 		941B1EFB209C41BB00710DFF /* GasDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasDataManager.swift; sourceTree = "<group>"; };
 		94231DEA20BD671700A4FDC3 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		9423F77820C7D688000B6983 /* SignRawTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignRawTransaction.swift; sourceTree = "<group>"; };
+		942C49F72129119C008A6B4F /* ConvertETHConfirmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConvertETHConfirmViewController.xib; sourceTree = "<group>"; };
+		942C49F9212911B0008A6B4F /* ConvertETHConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertETHConfirmViewController.swift; sourceTree = "<group>"; };
+		942C49FD21292FF8008A6B4F /* ConvertETHResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConvertETHResultViewController.xib; sourceTree = "<group>"; };
+		942C49FF21293022008A6B4F /* ConvertETHResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertETHResultViewController.swift; sourceTree = "<group>"; };
 		942FE77F210D5A1C005C723D /* SendConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendConfirmViewController.swift; sourceTree = "<group>"; };
 		942FE780210D5A1C005C723D /* SendConfirmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendConfirmViewController.xib; sourceTree = "<group>"; };
 		943A9A3F20909597008BCBFD /* DefaultWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultWebViewController.swift; sourceTree = "<group>"; };
@@ -1870,6 +1878,10 @@
 			children = (
 				AC9ADF8F205EE3B900CBE368 /* ConvertETHViewController.swift */,
 				AC9ADF90205EE3B900CBE368 /* ConvertETHViewController.xib */,
+				942C49F9212911B0008A6B4F /* ConvertETHConfirmViewController.swift */,
+				942C49F72129119C008A6B4F /* ConvertETHConfirmViewController.xib */,
+				942C49FF21293022008A6B4F /* ConvertETHResultViewController.swift */,
+				942C49FD21292FF8008A6B4F /* ConvertETHResultViewController.xib */,
 			);
 			path = ConvertETH;
 			sourceTree = "<group>";
@@ -2560,6 +2572,7 @@
 				AC9FFF2A2126C05000957175 /* MarketChangeTokenViewController.xib in Resources */,
 				AC2ACAA621031F66009C77E7 /* fee_1_zh-Hans.md in Resources */,
 				AC952A152053A84800C78562 /* OrderHistoryViewController.xib in Resources */,
+				942C49F82129119C008A6B4F /* ConvertETHConfirmViewController.xib in Resources */,
 				ACC8D0A720CC95A00049A741 /* AssetTableViewCell.xib in Resources */,
 				AC31CE71205B995900A30335 /* Roboto-MediumItalic.ttf in Resources */,
 				AC3B48842103EA6B008A6771 /* TradeSelectionViewController.xib in Resources */,
@@ -2633,6 +2646,7 @@
 				AC31CE65205B994A00A30335 /* Roboto-Italic.ttf in Resources */,
 				AC2ACA5620FA0EC3009C77E7 /* Rubik-BoldItalic.ttf in Resources */,
 				AC2ACA5A20FA1A5F009C77E7 /* WalletButtonTableViewCell.xib in Resources */,
+				942C49FE21292FF8008A6B4F /* ConvertETHResultViewController.xib in Resources */,
 				ACDA889C20F85F9C004FA10B /* InfoPlist.strings in Resources */,
 				AC68E10320C24BD900BFA837 /* ImportWalletEnterWalletNameViewController.xib in Resources */,
 				ACA677D0207D1BEC00D34A2F /* SettingChangeWalletNameViewController.xib in Resources */,
@@ -2917,6 +2931,7 @@
 				AC69913B20AA6254003593AE /* SettingWalletDetailViewControllerDataSource.swift in Sources */,
 				AC5E3E6B205DEAC00051ACFC /* TradeCompleteViewController.swift in Sources */,
 				943A9A4120909597008BCBFD /* DefaultWebViewController.swift in Sources */,
+				942C4A0021293022008A6B4F /* ConvertETHResultViewController.swift in Sources */,
 				AC0CD58120D226C500ABB7BA /* TabBarItemAnimateTipsContentView.swift in Sources */,
 				AC9ADF91205EE3B900CBE368 /* ConvertETHViewController.swift in Sources */,
 				ACB729D0205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.swift in Sources */,
@@ -3178,6 +3193,7 @@
 				942FE781210D5A1C005C723D /* SendConfirmViewController.swift in Sources */,
 				ACDBF103203FE790000F0DEC /* ReorderUITableView.swift in Sources */,
 				AC4F8641209D4889002E62AB /* SettingMarginSplitViewController.swift in Sources */,
+				942C49FA212911B0008A6B4F /* ConvertETHConfirmViewController.swift in Sources */,
 				9413F69520B80E2600524D2D /* AmountStackView.swift in Sources */,
 				ACA677C92079D5A000D34A2F /* DisplayPrivateKeyViewController.swift in Sources */,
 				AC72AEEA204F038300E9D3B0 /* OrderTradeError.swift in Sources */,

@@ -30,6 +30,8 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     @IBOutlet weak var infoLabel1: UILabel!
     @IBOutlet weak var infoLabel2: UILabel!
     
+    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
+    
     // Mask view
     var blurVisualEffectView = UIView()
 
@@ -107,6 +109,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1
         scrollView.addGestureRecognizer(scrollViewTap)
+        scrollViewBottomConstraint.constant = 0
         
         GasDataManager.shared.getEstimateGasPrice { (gasPrice, _) in
             self.gasPriceInGwei = Double(gasPrice)
@@ -128,6 +131,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.update()
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: infoLabel2.frame.maxY+20)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -221,6 +225,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             
             numericKeyboardView = DefaultNumericKeyboard(frame: CGRect(x: 0, y: height, width: width, height: DefaultNumericKeyboard.height))
             numericKeyboardView.delegate = self
+            scrollViewBottomConstraint.constant = DefaultNumericKeyboard.height
             view.addSubview(numericKeyboardView)
             
             let window = UIApplication.shared.keyWindow
@@ -241,6 +246,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             let width = self.view.frame.width
             let height = self.view.frame.height
             let destinateY = height
+            self.scrollViewBottomConstraint.constant = 0
             UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
                 self.view.layoutIfNeeded()
                 self.numericKeyboardView.frame = CGRect(x: 0, y: destinateY, width: width, height: DefaultNumericKeyboard.height)
@@ -346,17 +352,43 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     }
     
     @IBAction func pressedConvertButton(_ sender: Any) {
-        guard let amount = validate() else {
+        guard validate() != nil else {
             availableLabel.textColor = .fail
             availableLabel.text = LocalizedString("Please input a valid amount", comment: "")
             availableLabel.shake()
             return
         }
-        if asset!.symbol.uppercased() == "ETH" {
-            SendCurrentAppWalletDataManager.shared._deposit(amount: amount, completion: completion)
-        } else if asset!.symbol.uppercased() == "WETH" {
-            SendCurrentAppWalletDataManager.shared._withDraw(amount: amount, completion: completion)
+        let vc = ConvertETHConfirmViewController()
+        vc.transitioningDelegate = self
+        vc.modalPresentationStyle = .overFullScreen
+        
+        vc.convertAsset = self.asset
+        vc.otherAsset = self.getAnotherAsset()
+        vc.convertAmount = self.amountSTextField.text
+        vc.gasAmountText = self.gasInfoLabel.text
+        vc.parentNavController = self.navigationController
+        vc.dismissClosure = {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.blurVisualEffectView.alpha = 0.0
+            }, completion: {(_) in
+                self.blurVisualEffectView.removeFromSuperview()
+            })
         }
+        
+        dismissInteractor.percentThreshold = 0.4
+        dismissInteractor.dismissClosure = {
+        }
+        
+        self.present(vc, animated: true) {
+            self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.view, presentViewController: nil, backgroundView: self.blurVisualEffectView)
+        }
+        
+        self.navigationController?.view.addSubview(self.blurVisualEffectView)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.blurVisualEffectView.alpha = 1.0
+        }, completion: {(_) in
+            
+        })
     }
 
     func numericKeyboard(_ numericKeyboard: NumericKeyboard, itemTapped item: NumericKeyboardItem, atPosition position: Position) {

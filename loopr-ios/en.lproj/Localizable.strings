@@ -428,3 +428,6 @@
 "Please input a correct address" = "Please input a correct address";
 "Please enter the token symbol" = "Please enter the token symbol";
 "Please input a correct value for deciaml" = "Please input a correct value for deciaml";
+"Convert Confirmation" = "Convert Confirmation";
+"Send Token" = "Send Token";
+"Receive Token" = "Receive Token";

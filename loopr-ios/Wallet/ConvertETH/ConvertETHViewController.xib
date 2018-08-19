@@ -24,6 +24,7 @@
                 <outlet property="infoLabel2" destination="Hf7-0z-UuP" id="aaV-Lk-N4z"/>
                 <outlet property="maxButton" destination="rab-jy-ic0" id="ohu-ED-H09"/>
                 <outlet property="scrollView" destination="jgg-vL-AdJ" id="CW8-bl-i7y"/>
+                <outlet property="scrollViewBottomConstraint" destination="hvd-vN-pnb" id="3GE-I7-6La"/>
                 <outlet property="tokenBImageView" destination="F55-Wx-ukA" id="lsM-em-mPa"/>
                 <outlet property="tokenBLabel" destination="mwn-89-coj" id="Y4Y-1G-aCd"/>
                 <outlet property="tokenSImageView" destination="h4e-nC-C3F" id="9xm-rW-kJr"/>
@@ -207,10 +208,10 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="4d4-8O-GBA" secondAttribute="trailing" constant="15" id="12v-Oq-L1m"/>
+                        <constraint firstAttribute="bottom" secondItem="Hf7-0z-UuP" secondAttribute="bottom" constant="24" id="SIU-cQ-JDO"/>
                         <constraint firstItem="Hf7-0z-UuP" firstAttribute="leading" secondItem="jgg-vL-AdJ" secondAttribute="leading" constant="15" id="VWf-T2-Qqt"/>
                         <constraint firstItem="Hf7-0z-UuP" firstAttribute="width" secondItem="4d4-8O-GBA" secondAttribute="width" id="aNn-Bk-cyt"/>
                         <constraint firstItem="9ym-1a-nlF" firstAttribute="width" secondItem="4d4-8O-GBA" secondAttribute="width" id="aQc-wJ-xPR"/>
-                        <constraint firstAttribute="bottom" secondItem="4d4-8O-GBA" secondAttribute="bottom" id="ap5-Ah-4KS"/>
                         <constraint firstAttribute="width" secondItem="4d4-8O-GBA" secondAttribute="width" constant="30" id="f4G-nn-b1n"/>
                         <constraint firstItem="Hf7-0z-UuP" firstAttribute="top" secondItem="9ym-1a-nlF" secondAttribute="bottom" constant="16" id="fwy-To-Gg8"/>
                         <constraint firstAttribute="trailing" secondItem="9ym-1a-nlF" secondAttribute="trailing" constant="15" id="o9R-eP-a3Z"/>
@@ -223,9 +224,9 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="jgg-vL-AdJ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="K6N-nq-Tc6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="jgg-vL-AdJ" secondAttribute="bottom" id="hvd-vN-pnb"/>
                 <constraint firstItem="jgg-vL-AdJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kRw-fM-eZE"/>
                 <constraint firstItem="jgg-vL-AdJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lbZ-A9-by3"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="jgg-vL-AdJ" secondAttribute="bottom" id="vT3-wB-H1N"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="34.5" y="105.5"/>
