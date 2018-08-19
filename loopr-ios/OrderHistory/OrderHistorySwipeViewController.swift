@@ -121,11 +121,15 @@ class OrderHistorySwipeViewController: SwipeViewController, UISearchBarDelegate 
     }
     
     @objc func pressOrderSearchButton(_ button: UIBarButtonItem) {
+        let cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressSearchCancel))
+        self.navigationItem.rightBarButtonItems = [cancelBarButton]
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.hidesBackButton = true
+        
         let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
         searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
         self.navigationItem.titleView = searchBarContainer
-        let cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressSearchCancel))
-        self.navigationItem.rightBarButtonItems = [cancelBarButton]
+
         searchBar.becomeFirstResponder()
     }
     
@@ -138,6 +142,7 @@ class OrderHistorySwipeViewController: SwipeViewController, UISearchBarDelegate 
         self.navigationItem.title = LocalizedString("Orders", comment: "")
         isSearching = false
         viewControllers[self.swipeView.currentIndex].searchTextDidUpdate(searchText: "")
+        setBackButton()
     }
     
     // MARK: - Delegate

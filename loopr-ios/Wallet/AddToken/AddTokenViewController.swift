@@ -19,11 +19,14 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
     var filtedTokens: [Token] = []
     var canHideKeyboard = true
     
+    var addTokenButton = UIBarButtonItem()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         setBackButton()
+        self.navigationItem.title = LocalizedString("Add Token", comment: "")
         
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
@@ -36,8 +39,9 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.tableHeaderView = headerView
 
         searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.pressOrderSearchButton(_:)))
-        self.navigationItem.rightBarButtonItems = [searchButton]
-        
+        addTokenButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
+        self.navigationItem.rightBarButtonItems = [addTokenButton, searchButton]
+
         searchBar.showsCancelButton = false
         searchBar.placeholder = LocalizedString("Search", comment: "")
         searchBar.delegate = self
@@ -61,27 +65,27 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @objc func pressOrderSearchButton(_ button: UIBarButtonItem) {
-        let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
-        searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
-        
-        self.navigationItem.titleView = searchBarContainer
-        // self.navigationItem.leftBarButtonItem = nil
-        // self.navigationItem.hidesBackButton = true
-        
         let cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressSearchCancel))
         self.navigationItem.rightBarButtonItems = [cancelBarButton]
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.hidesBackButton = true
+        
+        let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
+        searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
+        self.navigationItem.titleView = searchBarContainer
         
         searchBar.becomeFirstResponder()
     }
     
     @objc func pressSearchCancel(_ button: UIBarButtonItem) {
         print("pressSearchCancel")
-        self.navigationItem.rightBarButtonItems = [searchButton]
+        self.navigationItem.rightBarButtonItems = [addTokenButton, searchButton]
         searchBar.resignFirstResponder()
         searchBar.text = nil
         navigationItem.titleView = nil
         self.navigationItem.title = LocalizedString("Tokens", comment: "")
         searchTextDidUpdate(searchText: "")
+        setBackButton()
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

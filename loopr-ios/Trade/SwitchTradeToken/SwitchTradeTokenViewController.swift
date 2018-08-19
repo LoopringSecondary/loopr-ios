@@ -98,15 +98,15 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     @objc func pressOrderSearchButton(_ button: UIBarButtonItem) {
-        let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
-        searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
-        
-        self.navigationItem.titleView = searchBarContainer
-        // self.navigationItem.hidesBackButton = true
-
         let cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressSearchCancel))
         self.navigationItem.rightBarButtonItems = [cancelBarButton]
-
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.hidesBackButton = true
+        
+        let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
+        searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
+        self.navigationItem.titleView = searchBarContainer
+        
         searchBar.becomeFirstResponder()
     }
     
@@ -118,6 +118,7 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
         navigationItem.titleView = nil
         self.navigationItem.title = LocalizedString("Tokens", comment: "")
         searchTextDidUpdate(searchText: "")
+        setBackButton()
     }
 
     func searchTextDidUpdate(searchText: String) {

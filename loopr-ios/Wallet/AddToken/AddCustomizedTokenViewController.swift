@@ -36,6 +36,9 @@ class AddCustomizedTokenViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setBackButton()
+        self.navigationItem.title = LocalizedString("Add Custom Token", comment: "")
+        
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         contentView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         contentView.cornerRadius = 6
@@ -168,12 +171,12 @@ class AddCustomizedTokenViewController: UIViewController, UITextFieldDelegate {
                     self.decimals = Int64(intValue)
                     return true
                 }
-                let notificationTitle = LocalizedString("Please input an deciaml", comment: "")
+                let notificationTitle = LocalizedString("Please input a correct value for deciaml", comment: "")
                 let banner = NotificationBanner.generate(title: notificationTitle, style: .danger)
                 banner.duration = 1.5
                 banner.show()
             } else {
-                let notificationTitle = LocalizedString("Please enter the token symbol", comment: "")
+                let notificationTitle = LocalizedString("Please input an deciaml", comment: "")
                 let banner = NotificationBanner.generate(title: notificationTitle, style: .danger)
                 banner.duration = 1.5
                 banner.show()

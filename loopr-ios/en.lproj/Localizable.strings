@@ -98,7 +98,6 @@
 "Hide Small Assets" = "Hide Small Assets";
 "Max" = "Max";
 "Amount you want to convert" = "Amount you want to convert";
-"Add Token" = "Add Token";
 "Search" = "Search";
 "Contract Version" = "Contract Version";
 "LRC Fee Ratio" = "LRC Fee Ratio";
@@ -418,9 +417,14 @@
 "Token Address" = "Token Address";
 "Token Symbol" = "Token Symbol";
 "Decimals of Precision" = "Decimals of Precision";
+"Add Custom Token" = "Add Custom Token";
 "Add" = "Add";
 "Partner_Slogan" = "Share the app, you will harvest 20% profit of trading fee";
 "Partner_Title" = "Up Wallet Share";
 "Partner_Tip" = "My spreading income address: ";
 "Partner_Des" = "You will harvest 20% profit of trading fee from all your spreading customers";
 "Partner_Address" = "Your trading fee reciept address is: ";
+"Please enter the token address" = "Please enter the token address";
+"Please input a correct address" = "Please input a correct address";
+"Please enter the token symbol" = "Please enter the token symbol";
+"Please input a correct value for deciaml" = "Please input a correct value for deciaml";

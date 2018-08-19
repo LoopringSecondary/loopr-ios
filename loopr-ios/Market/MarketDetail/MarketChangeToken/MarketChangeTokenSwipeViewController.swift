@@ -148,15 +148,14 @@ class MarketChangeTokenSwipeViewController: SwipeViewController, UISearchBarDele
     }
     
     @objc func pressOrderSearchButton(_ button: UIBarButtonItem) {
-        let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
-        searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
-        
-        self.navigationItem.titleView = searchBarContainer
-        // self.navigationItem.leftBarButtonItem = nil
-        // self.navigationItem.hidesBackButton = true
-        
         let cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressSearchCancel))
         self.navigationItem.rightBarButtonItems = [cancelBarButton]
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.hidesBackButton = true
+        
+        let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
+        searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
+        self.navigationItem.titleView = searchBarContainer
         
         searchBar.becomeFirstResponder()
         viewControllers[self.swipeView.currentIndex].searchTextDidUpdate(searchText: "")
@@ -171,6 +170,7 @@ class MarketChangeTokenSwipeViewController: SwipeViewController, UISearchBarDele
         self.navigationItem.title = LocalizedString("Markets", comment: "")
         isSearching = false
         viewControllers[self.swipeView.currentIndex].searchTextDidUpdate(searchText: "")
+        setBackButton()
     }
     
     // MARK: - Delegate
