@@ -82,13 +82,15 @@ class P2POrderHistoryDataManager {
         return result
     }
     
-    func getOrdersFromServer(completionHandler: @escaping (_ orders: [Order]?, _ error: Error?) -> Void) {
+    func getOrdersFromServer(pageIndex: UInt, pageSize: UInt = 50, completionHandler: @escaping (_ orders: [Order], _ error: Error?) -> Void) {
         if let owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
-            LoopringAPIRequest.getOrders(owner: owner, orderType: OrderType.p2pOrder.rawValue) { orders, error in
+            LoopringAPIRequest.getOrders(owner: owner, orderType: OrderType.p2pOrder.rawValue, pageIndex: pageIndex, pageSize: pageSize) { orders, error in
                 guard let orders = orders, error == nil else {
+                    completionHandler([], error)
                     return
                 }
-                self.dateOrders = [:]
+                // No need to reset
+                // self.dateOrders = [:]
                 for order in orders {
                     let time = UInt(order.originalOrder.validSince)
                     let valid = DateUtil.convertToDate(time, format: "yyyy-MM-dd")

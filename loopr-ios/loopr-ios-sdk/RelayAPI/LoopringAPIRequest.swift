@@ -210,7 +210,7 @@ class LoopringAPIRequest {
     }
     
     // Need update
-    static func getFills(market: String, owner: String?, orderHash: String?, ringHash: String?, pageIndex: UInt = 1, pageSize: UInt = 20, completionHandler: @escaping (_ trades: [Order]?, _ error: Error?) -> Void) {
+    static func getFills(market: String, owner: String?, orderHash: String?, ringHash: String?, pageIndex: UInt = 1, pageSize: UInt = 50, completionHandler: @escaping (_ trades: [Order]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getFills"
         body["params"] = [["market": market, "delegateAddress": RelayAPIConfiguration.delegateAddress, "owner": owner, "orderHash": orderHash, "ringHash": ringHash]]
@@ -287,7 +287,7 @@ class LoopringAPIRequest {
     }
 
     // READY
-    static func getRingMined(ringHash: String? = nil, pageIndex: UInt = 1, pageSize: UInt = 20, completionHandler: @escaping (_ minedRings: [MinedRing]?, _ error: Error?) -> Void) {
+    static func getRingMined(ringHash: String? = nil, pageIndex: UInt = 1, pageSize: UInt = 50, completionHandler: @escaping (_ minedRings: [MinedRing]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getRingMined"
         body["params"] = [["ringHash": ringHash, "delegateAddress": RelayAPIConfiguration.delegateAddress, "pageIndex": pageIndex, "pageSize": pageSize]]
@@ -413,7 +413,7 @@ class LoopringAPIRequest {
     }
     
     // READY
-    static func getTransactions(owner: String, symbol: String, txHash: String? = nil, pageIndex: UInt = 1, pageSize: UInt = 10, completionHandler: @escaping (_ transactions: [Transaction]?, _ error: Error?) -> Void) {
+    static func getTransactions(owner: String, symbol: String, txHash: String? = nil, pageIndex: UInt = 1, pageSize: UInt = 50, completionHandler: @escaping (_ transactions: [Transaction]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getTransactions"
         body["params"] = [["owner": owner, "symbol": symbol, "txHash": txHash, "pageIndex": pageIndex, "pageSize": pageSize, "delegateAddress": RelayAPIConfiguration.delegateAddress]]

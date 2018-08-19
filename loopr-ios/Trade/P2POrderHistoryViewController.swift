@@ -20,6 +20,9 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
     private let refreshControl = UIRefreshControl()
     var viewAppear: Bool = false
     
+    var pageIndex: UInt = 1
+    var hasMoreData: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -50,10 +53,13 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func getOrderHistoryFromRelay() {
-        P2POrderHistoryDataManager.shared.getOrdersFromServer(completionHandler: { orders, _ in
+        P2POrderHistoryDataManager.shared.getOrdersFromServer(pageIndex: self.pageIndex, completionHandler: { orders, _ in
             DispatchQueue.main.async {
                 if self.isLaunching {
                     self.isLaunching = false
+                }
+                if orders.count < 50 {
+                    self.hasMoreData = false
                 }
                 self.orders = P2POrderHistoryDataManager.shared.getDateOrders(orderStatuses: nil)
                 self.orderDates = self.orders.keys.sorted(by: >)
@@ -137,6 +143,13 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
                 self.present(alert, animated: true, completion: nil)
             }
             cell?.update()
+            
+            // Pagination
+            if hasMoreData && indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 && indexPath.section == orders.keys.count - 1 {
+                pageIndex += 1
+                getOrderHistoryFromRelay()
+            }
+            
             return cell!
         }
     }
