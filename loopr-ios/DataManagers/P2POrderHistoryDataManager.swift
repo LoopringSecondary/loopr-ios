@@ -22,6 +22,11 @@ class P2POrderHistoryDataManager {
         dateOrders = [:]
     }
     
+    func getOrderDataFromLocal(originalOrder: OriginalOrder) -> String? {
+        let defaults = UserDefaults.standard
+        return defaults.string(forKey: originalOrder.hash) ?? nil
+    }
+    
     func getOrders(orderStatuses: [OrderStatus]? = nil) -> [Order] {
         guard let orderStatuses = orderStatuses else {
             return orders

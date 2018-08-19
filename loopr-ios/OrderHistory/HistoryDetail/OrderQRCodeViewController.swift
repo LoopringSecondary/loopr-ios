@@ -18,7 +18,7 @@ class OrderQRCodeViewController: UIViewController {
     @IBOutlet weak var saveToAlbumButton: UIButton!
     @IBOutlet weak var shareOrderButton: UIButton!
     
-    var order: OriginalOrder?
+    var originalOrder: OriginalOrder?
     var qrcodeImage: UIImage!
     var qrcodeImageCIImage: CIImage!
     var dismissClosure: (() -> Void)?
@@ -40,14 +40,14 @@ class OrderQRCodeViewController: UIViewController {
         saveToAlbumButton.setupPrimary(height: 44)
         shareOrderButton.setTitle(LocalizedString("Share Order", comment: ""), for: .normal)
         shareOrderButton.setupSecondary(height: 44)
-        generateQRCode(order: self.order!)
+        generateQRCode(originalOrder: self.originalOrder!)
     }
     
-    func generateQRCode(order: OriginalOrder) {
-        guard let privateKey = getOrderDataFromLocal(order: order) else { return }
+    func generateQRCode(originalOrder: OriginalOrder) {
+        guard let privateKey = P2POrderHistoryDataManager.shared.getOrderDataFromLocal(originalOrder: originalOrder) else { return }
         var body = JSON()
         body["type"] = JSON(TradeDataManager.qrcodeType)
-        body["value"] = [TradeDataManager.qrcodeHash: order.hash,
+        body["value"] = [TradeDataManager.qrcodeHash: originalOrder.hash,
                          TradeDataManager.qrcodeAuth: privateKey,
                          TradeDataManager.sellRatio: TradeDataManager.shared.sellRatio]
         do {
@@ -66,11 +66,6 @@ class OrderQRCodeViewController: UIViewController {
         }
     }
     
-    func getOrderDataFromLocal(order: OriginalOrder) -> String? {
-        let defaults = UserDefaults.standard
-        return defaults.string(forKey: order.hash) ?? nil
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -78,8 +73,8 @@ class OrderQRCodeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let order = self.order, let image = self.qrcodeImageCIImage else { return }
-        generateQRCode(order: order)
+        guard let originalOrder = self.originalOrder, let image = self.qrcodeImageCIImage else { return }
+        generateQRCode(originalOrder: originalOrder)
         qrcodeImageView.image = qrcodeImage
         let scaleX = qrcodeImageView.frame.size.width / image.extent.size.width
         let scaleY = qrcodeImageView.frame.size.height / image.extent.size.height

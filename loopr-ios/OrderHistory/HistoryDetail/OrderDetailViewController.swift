@@ -118,8 +118,19 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     
     @objc func pressQRCodeButton(_ sender: UIButton) {
         if let order = self.order {
+            guard P2POrderHistoryDataManager.shared.getOrderDataFromLocal(originalOrder: order.originalOrder) != nil else {
+                // TODO: Not sure about the title.
+                let title = LocalizedString("The P2P order is not created in this iPhone. You can't share the QR code.", comment: "")
+                let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: LocalizedString("OK", comment: ""), style: .default, handler: { _ in
+                    
+                }))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            
             let vc = OrderQRCodeViewController()
-            vc.order = order.originalOrder
+            vc.originalOrder = order.originalOrder
 
             vc.transitioningDelegate = self
             vc.modalPresentationStyle = .overFullScreen

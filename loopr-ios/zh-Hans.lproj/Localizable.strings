@@ -431,3 +431,4 @@
 "Convert Confirmation" = "转换确认";
 "Send Token" = "转出代币";
 "Receive Token" = "转入代币";
+"The P2P order is not created in this iPhone. You can't share the QR code." = "P2P订单不在该手机产生。无法获取二维码。";
