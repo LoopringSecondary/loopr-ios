@@ -8,8 +8,8 @@
 
 import Foundation
 
-class Order {
-    
+class Order: Equatable {
+
     let originalOrder: OriginalOrder
     let orderStatus: OrderStatus
     let dealtAmountB: Double
@@ -55,4 +55,9 @@ class Order {
             tradingPairDescription = "\(originalOrder.tokenBuy)/\(originalOrder.tokenSell)"
         }
     }
+    
+    static func ==(lhs: Order, rhs: Order) -> Bool {
+        return lhs.originalOrder.hash == rhs.originalOrder.hash
+    }
+
 }

@@ -97,7 +97,11 @@ class P2POrderHistoryDataManager {
                     if self.dateOrders[valid] == nil {
                         self.dateOrders[valid] = []
                     }
-                    self.dateOrders[valid]!.append(order)
+                    if let indexOfOrder = self.dateOrders[valid]?.index(of: order) {
+                        self.dateOrders[valid]![indexOfOrder] = order
+                    } else {
+                        self.dateOrders[valid]!.append(order)
+                    }
                 }
                 self.orders = orders
                 completionHandler(orders, error)
