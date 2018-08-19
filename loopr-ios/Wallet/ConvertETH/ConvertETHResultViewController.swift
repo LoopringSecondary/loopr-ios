@@ -30,12 +30,21 @@ class ConvertETHResultViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = GlobalPicker.backgroundColor
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
         doneButton.title = LocalizedString("Done", comment: "")
         doneButton.setupPrimary(height: 44)
         if let asset = self.convertAsset {
             update(asset: asset)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,7 +83,14 @@ class ConvertETHResultViewController: UIViewController {
     }
 
     @IBAction func pressedDoneButton(_ sender: UIButton) {
-        self.navigationController?.popToRootViewController(animated: true)
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        if let tabBarController = appDelegate?.window?.rootViewController as? UITabBarController {
+            if let fromView = tabBarController.selectedViewController?.view {
+                let toView = tabBarController.viewControllers![0]
+                UIView.transition(from: fromView, to: toView.view, duration: 0.3, options: .transitionCrossDissolve, completion: { (_) in
+                    tabBarController.selectedIndex = 0
+                })
+            }
+        }
     }
-    
 }
