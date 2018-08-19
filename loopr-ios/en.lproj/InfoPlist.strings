@@ -8,4 +8,4 @@
 
 NSPhotoLibraryUsageDescription = "Save QR code to the photo library";
 NSCameraUsageDescription = "Use camera to scan QR Code";
-FaceIDUsageDescription = "Use face id to unlock the wallet";
+FaceIDUsageDescription = "Use Face ID to unlock the wallet";

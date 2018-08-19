@@ -75,6 +75,7 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         getOrderHistoryFromRelay()
     }
     
+    // TODO:
     func getOrderHistoryFromRelay() {
         OrderDataManager.shared.getOrdersFromServer(completionHandler: { orders, _ in
             DispatchQueue.main.async {

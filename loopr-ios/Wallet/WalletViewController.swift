@@ -57,9 +57,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         dropdownMenu.backgroundDimmingOpacity = 0
         dropdownMenu.dropdownCornerRadius = 6
         dropdownMenu.dropdownRoundedCorners = UIRectCorner.allCorners
-        dropdownMenu.dropdownBackgroundColor = UIColor.dark3
-        dropdownMenu.rowSeparatorColor = UIColor.dark3
-        dropdownMenu.componentSeparatorColor = UIColor.dark3
+        dropdownMenu.dropdownBackgroundColor = UIColor.dark2
+        dropdownMenu.rowSeparatorColor = UIColor.dark2
+        dropdownMenu.componentSeparatorColor = UIColor.dark2
         dropdownMenu.dropdownShowsTopRowSeparator = false
         dropdownMenu.dropdownShowsBottomRowSeparator = false
         dropdownMenu.dropdownShowsBorder = false
@@ -431,7 +431,7 @@ extension WalletViewController: MKDropdownMenuDelegate {
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         print(row)
         let baseView = UIView(frame: CGRect(x: 0, y: 0, width: 160, height: 50))
-        baseView.backgroundColor = UIColor.dark3
+        baseView.backgroundColor = UIColor.dark2
         
         let iconImageView = UIImageView(frame: CGRect(x: 21, y: 12, width: 24, height: 24))
         iconImageView.contentMode = .scaleAspectFit

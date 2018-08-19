@@ -187,13 +187,14 @@ class AssetTransactionDetailViewController: UIViewController {
         self.close()
         var etherUrl = "https://etherscan.io/address/"
         if let tx = self.transaction {
-            if tx.type == .sent {
-                etherUrl += tx.to
-            } else if tx.type == .received {
+            if tx.type == .received {
                 etherUrl += tx.from
+            } else {
+                etherUrl += tx.to
             }
             if let url = URL(string: etherUrl) {
                 let viewController = DefaultWebViewController()
+                viewController.navigationTitle = "Etherscan.io"
                 viewController.url = url
                 viewController.hidesBottomBarWhenPushed = true
                 self.parentNavController?.pushViewController(viewController, animated: true)

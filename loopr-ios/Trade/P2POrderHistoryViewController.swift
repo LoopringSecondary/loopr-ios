@@ -48,7 +48,8 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     @objc private func refreshData(_ sender: Any) {
-        // Fetch Data
+        pageIndex = 1
+        hasMoreData = true
         getOrderHistoryFromRelay()
     }
     
@@ -61,6 +62,7 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
                 if orders.count < 50 {
                     self.hasMoreData = false
                 }
+                // getDateOrders returns a dict, no need to append array.
                 self.orders = P2POrderHistoryDataManager.shared.getDateOrders(orderStatuses: nil)
                 self.orderDates = self.orders.keys.sorted(by: >)
                 self.historyTableView.reloadData()

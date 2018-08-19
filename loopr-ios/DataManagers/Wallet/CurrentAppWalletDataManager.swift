@@ -99,7 +99,7 @@ class CurrentAppWalletDataManager {
     
     func getAssets(isNotZero: Bool) -> [Asset] {
         return assets.filter({ (asset) -> Bool in
-            asset.total > 0.001
+            asset.total > 0.001 || asset.balance > 0.01
         })
     }
     
@@ -185,11 +185,11 @@ class CurrentAppWalletDataManager {
         LoopringSocketIORequest.endBalance()
     }
     
-    func getTransactionsFromServer(asset: Asset, completionHandler: @escaping (_ transactions: [Transaction], _ error: Error?) -> Void) {
+    func getTransactionsFromServer(asset: Asset, pageIndex: UInt, pageSize: UInt = 50, completionHandler: @escaping (_ transactions: [Transaction], _ error: Error?) -> Void) {
         guard let wallet = currentAppWallet else {
             return
         }
-        LoopringAPIRequest.getTransactions(owner: wallet.address, symbol: asset.symbol, txHash: nil, pageSize: 50, completionHandler: { (transactions, error) in
+        LoopringAPIRequest.getTransactions(owner: wallet.address, symbol: asset.symbol, txHash: nil, pageIndex: pageIndex,  pageSize: pageSize, completionHandler: { (transactions, error) in
             guard error == nil, let transactions = transactions else {
                 return
             }

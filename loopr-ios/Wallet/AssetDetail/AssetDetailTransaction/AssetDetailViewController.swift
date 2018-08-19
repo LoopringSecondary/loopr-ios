@@ -16,10 +16,12 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     var type: TxSwipeViewType
     var viewAppear: Bool = false
     var isLaunching: Bool = true
-    var transactions: [Transaction] = []
     let refreshControl = UIRefreshControl()
-    var contextMenuSourceView: UIView = UIView()
-    
+
+    var transactions: [Transaction] = []
+    var pageIndex: UInt = 1
+    var hasMoreData: Bool = true
+
     convenience init(type: TxSwipeViewType) {
         self.init(nibName: nil, bundle: nil)
         self.type = type
@@ -36,7 +38,9 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        
+        getTransactionsFromRelay()
+
         // Do any additional setup after loading the view.
         setBackButton()
 
@@ -54,30 +58,20 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.theme_backgroundColor = GlobalPicker.backgroundColor
         
         // Add Refresh Control to Table View
-        if #available(iOS 10.0, *) {
-            tableView.refreshControl = refreshControl
-        } else {
-            tableView.addSubview(refreshControl)
-        }
+        tableView.refreshControl = refreshControl
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
     }
     
-    func setup() {
-        // TODO: putting getMarketsFromServer() here may cause a race condition.
-        // It's not perfect, but works. Need improvement in the future.
-        // self.transactions = CurrentAppWalletDataManager.shared.getTransactions()
-        getTransactionsFromRelay()
-    }
-    
     @objc private func refreshData(_ sender: Any) {
-        // Fetch Data
+        pageIndex = 1
+        hasMoreData = true
         getTransactionsFromRelay()
     }
     
     func getTransactionsFromRelay() {
         if let asset = asset {
-            CurrentAppWalletDataManager.shared.getTransactionsFromServer(asset: asset) { (transactions, error) in
+            CurrentAppWalletDataManager.shared.getTransactionsFromServer(asset: asset, pageIndex: pageIndex) { (newTransactions, error) in
                 guard error == nil else {
                     return
                 }
@@ -85,7 +79,14 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
                     if self.isLaunching {
                         self.isLaunching = false
                     }
-                    self.transactions = self.sortTransactions(transactions)
+                    if newTransactions.count < 50 {
+                        self.hasMoreData = false
+                    }
+                    if self.pageIndex == 1 {
+                        self.transactions = self.sortTransactions(newTransactions)
+                    } else {
+                        self.transactions += self.sortTransactions(newTransactions)
+                    }
                     self.tableView.reloadData()
                     self.refreshControl.endRefreshing()
                 }
@@ -166,14 +167,17 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
             }
             cell?.transaction = self.transactions[indexPath.row]
             cell?.update()
+            
+            // Pagination
+            if hasMoreData && indexPath.row == transactions.count - 1 {
+                pageIndex += 1
+                getTransactionsFromRelay()
+            }
+            
             return cell!
         }
     }
 
-    func reloadAfterSwipeViewUpdated() {
-        
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // https://stackoverflow.com/questions/22585416/slow-performance-for-presentviewcontroller-depends-on-complexity-of-presenting
         // https://stackoverflow.com/questions/21075540/presentviewcontrolleranimatedyes-view-will-not-appear-until-user-taps-again

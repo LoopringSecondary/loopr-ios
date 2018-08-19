@@ -54,7 +54,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Use camera to scan QR Code</string>
 	<key>NSFaceIDUsageDescription</key>
-	<string>Use face id to unlock the wallet</string>
+	<string>Use Face ID to unlock the wallet</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Save QR code to the photo library</string>
 	<key>UILaunchStoryboardName</key>
