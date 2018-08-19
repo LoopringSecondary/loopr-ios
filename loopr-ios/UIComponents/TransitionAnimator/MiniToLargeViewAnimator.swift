@@ -56,7 +56,8 @@ class MiniToLargeViewAnimator: BaseAnimator {
         
         let animOptions: UIViewAnimationOptions = transitionContext.isInteractive ? [UIViewAnimationOptions.curveEaseInOut] : []
         
-        UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: animOptions, animations: {
+        // Delay is to fix the shaking animation when users just start to drag the view.
+        UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0.05, options: animOptions, animations: {
             fromVC.view.frame = fromRect
             imageView.alpha = 1
         }) { (finished) in
