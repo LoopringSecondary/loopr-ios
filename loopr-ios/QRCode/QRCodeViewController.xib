@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -70,7 +70,7 @@
                         <constraint firstItem="edC-Mr-nnR" firstAttribute="top" secondItem="qpx-g3-ULm" secondAttribute="bottom" constant="20" id="qwV-jp-Q2n"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Receive-qa-code-icon" translatesAutoresizingMaskIntoConstraints="NO" id="D16-yf-Yzm">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Receive-qrcode-icon-red" translatesAutoresizingMaskIntoConstraints="NO" id="D16-yf-Yzm">
                     <rect key="frame" x="177" y="108" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="Iaq-os-mtI"/>
@@ -124,6 +124,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Receive-qa-code-icon" width="60" height="60"/>
+        <image name="Receive-qrcode-icon-red" width="60" height="60"/>
     </resources>
 </document>

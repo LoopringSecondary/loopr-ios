@@ -439,6 +439,7 @@
 		AC9FFF322127F8CF00957175 /* AddCustomizedTokenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9FFF302127F8CF00957175 /* AddCustomizedTokenViewController.xib */; };
 		AC9FFF352127F93500957175 /* AddTokenSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FFF332127F93500957175 /* AddTokenSwipeViewController.swift */; };
 		AC9FFF362127F93500957175 /* AddTokenSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9FFF342127F93500957175 /* AddTokenSwipeViewController.xib */; };
+		AC9FFF3A212AA7F300957175 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FFF39212AA7F300957175 /* ColorTheme.swift */; };
 		ACA677B82079970600D34A2F /* ExportKeystoreSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677B62079970600D34A2F /* ExportKeystoreSwipeViewController.swift */; };
 		ACA677B92079970600D34A2F /* ExportKeystoreSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677B72079970600D34A2F /* ExportKeystoreSwipeViewController.xib */; };
 		ACA677C0207997F400D34A2F /* DisplayKeystoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677BE207997F400D34A2F /* DisplayKeystoreViewController.swift */; };
@@ -966,6 +967,7 @@
 		AC9FFF302127F8CF00957175 /* AddCustomizedTokenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCustomizedTokenViewController.xib; sourceTree = "<group>"; };
 		AC9FFF332127F93500957175 /* AddTokenSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTokenSwipeViewController.swift; sourceTree = "<group>"; };
 		AC9FFF342127F93500957175 /* AddTokenSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTokenSwipeViewController.xib; sourceTree = "<group>"; };
+		AC9FFF39212AA7F300957175 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		ACA677B62079970600D34A2F /* ExportKeystoreSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportKeystoreSwipeViewController.swift; sourceTree = "<group>"; };
 		ACA677B72079970600D34A2F /* ExportKeystoreSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportKeystoreSwipeViewController.xib; sourceTree = "<group>"; };
 		ACA677BE207997F400D34A2F /* DisplayKeystoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayKeystoreViewController.swift; sourceTree = "<group>"; };
@@ -2335,6 +2337,7 @@
 			children = (
 				AC9280E6202F5A010009B574 /* UIStyleConfig.swift */,
 				ACE6F721204221260039273D /* Themes.swift */,
+				AC9FFF39212AA7F300957175 /* ColorTheme.swift */,
 				ACE6F7232042228A0039273D /* GlobalPicker.swift */,
 				AC54FD91204FD291007E1DEB /* FontConfigManager.swift */,
 			);
@@ -3059,6 +3062,7 @@
 				943C1CAE20CE1E0B008A8CED /* AuthorizeDataManager.swift in Sources */,
 				94B5CA8C204FE8E40081BA93 /* ETH_Transaction.swift in Sources */,
 				6630916521002CD1006DA630 /* TxSwipeViewType.swift in Sources */,
+				AC9FFF3A212AA7F300957175 /* ColorTheme.swift in Sources */,
 				94BFF9CE21072EA000A0BE8B /* TokenSelectTableViewController.swift in Sources */,
 				AC971EC820BB412300EDEDD0 /* AuthenticationDataManager.swift in Sources */,
 				948125652119B10B00453225 /* PartnerStatus.swift in Sources */,

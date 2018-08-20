@@ -37,6 +37,7 @@ class QRCodeViewController: UIViewController {
         contentView.layer.cornerRadius = 6
         contentView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
         
+        receiveQRCodeIconView.image = UIImage(named: "Receive-qrcode-icon" + ColorTheme.getTheme())
         titleLabel.setTitleCharFont()
         addressLabel.setTitleCharFont()
         

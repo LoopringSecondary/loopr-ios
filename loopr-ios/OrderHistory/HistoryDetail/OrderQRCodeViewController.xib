@@ -15,6 +15,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderQRCodeViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="3K2-up-9JE" id="cKL-fm-Vfe"/>
+                <outlet property="qrcodeIconImageView" destination="D16-yf-Yzm" id="ObB-16-VQ0"/>
                 <outlet property="qrcodeImageView" destination="Jxo-fS-cjo" id="Z5I-ZU-tdP"/>
                 <outlet property="saveToAlbumButton" destination="7NU-nI-gps" id="DGU-sp-hLV"/>
                 <outlet property="shareOrderButton" destination="mEl-zM-Ijk" id="gA0-za-0XE"/>
@@ -98,7 +99,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Order-qrcode-icon" translatesAutoresizingMaskIntoConstraints="NO" id="D16-yf-Yzm">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Order-qrcode-icon-red" translatesAutoresizingMaskIntoConstraints="NO" id="D16-yf-Yzm">
                     <rect key="frame" x="177" y="128" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="Iaq-os-mtI"/>
@@ -121,7 +122,7 @@
         </view>
     </objects>
     <resources>
-        <image name="Order-qrcode-icon" width="60" height="60"/>
+        <image name="Order-qrcode-icon-red" width="60" height="60"/>
         <namedColor name="Color-dark2">
             <color red="0.16078431372549021" green="0.16078431372549021" blue="0.16078431372549021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

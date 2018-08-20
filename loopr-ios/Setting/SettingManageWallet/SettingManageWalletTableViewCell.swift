@@ -34,7 +34,7 @@ class SettingManageWalletTableViewCell: UITableViewCell {
         
         theme_backgroundColor = GlobalPicker.backgroundColor
         
-        baseView.image = UIImage(named: "Header-background")
+        baseView.image = UIImage(named: "wallet-background" + ColorTheme.getTheme())
         baseView.contentMode = .scaleToFill
         baseView.clipsToBounds = true
         
@@ -71,12 +71,12 @@ class SettingManageWalletTableViewCell: UITableViewCell {
 
     func setNoCurrentWallet() {
         selectedIconView.isHidden = true
-        baseView.image = UIImage(named: "Header-background")
+        baseView.image = UIImage(named: "wallet-background" + ColorTheme.getTheme())
     }
 
     func setCurrentWallet() {
         selectedIconView.isHidden = false
-        baseView.image = UIImage(named: "wallet-selected-background")
+        baseView.image = UIImage(named: "wallet-selected-background" + ColorTheme.getTheme())
     }
     
     @objc func pressedQRCodeButton(_ button: UIButton) {

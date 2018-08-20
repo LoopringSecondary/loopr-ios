@@ -33,7 +33,6 @@ class SetupWalletViewController: UIViewController {
         taglineLabel.textColor = UIColor.white
 
         unlockWalletButton.title = LocalizedString("Import Wallet", comment: "")
-        // unlockWalletButton.setBackgroundImage(UIImage.init(named: "ImportWalletButtonImage"), for: .normal)
         unlockWalletButton.setupSecondary(height: 50, gradientOrientation: .horizontal)
         
         // This conflicts to UIImage.
@@ -42,7 +41,6 @@ class SetupWalletViewController: UIViewController {
         unlockWalletButton.addTarget(self, action: #selector(unlockWalletButtonPressed), for: .touchUpInside)
 
         generateWalletButton.title = LocalizedString("Generate Wallet", comment: "")
-        // generateWalletButton.setImage(UIImage.init(named: "ImportWalletButtonImage"), for: .normal)
         generateWalletButton.setupSecondary(height: 50, gradientOrientation: .horizontal)
         generateWalletButton.addTarget(self, action: #selector(generateWalletButtonPressed), for: .touchUpInside)
 

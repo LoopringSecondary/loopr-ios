@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ThemeManager.animationDuration = 1.0
         SVProgressHUD.setDefaultStyle(.dark)
         SVProgressHUD.setDefaultMaskType(.clear)
-        SVProgressHUD.setMinimumSize(CGSize(width: 240, height: 110))
+        SVProgressHUD.setMinimumSize(CGSize(width: 240, height: 120))
         
         let initialViewController = MainTabController(nibName: nil, bundle: nil)
         self.window = UIWindow(frame: UIScreen.main.bounds)

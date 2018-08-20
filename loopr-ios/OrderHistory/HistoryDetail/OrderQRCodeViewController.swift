@@ -12,6 +12,8 @@ import NotificationBannerSwift
 
 class OrderQRCodeViewController: UIViewController {
     
+    
+    @IBOutlet weak var qrcodeIconImageView: UIImageView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var qrcodeImageView: UIImageView!
@@ -35,7 +37,9 @@ class OrderQRCodeViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         tap.delegate = self
         view.addGestureRecognizer(tap)
-        
+
+        qrcodeIconImageView.image = UIImage(named: "Order-qrcode-icon" + ColorTheme.getTheme())
+
         saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
         saveToAlbumButton.setupPrimary(height: 44)
         shareOrderButton.setTitle(LocalizedString("Share Order", comment: ""), for: .normal)

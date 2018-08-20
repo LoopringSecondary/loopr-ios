@@ -59,7 +59,7 @@ class MarketTableViewCell: UITableViewCell {
     
     func updateStarButton(market: Market) {
         if market.isFavorite() {
-            favButton.image = UIImage(named: "Star")?.withRenderingMode(.alwaysOriginal)
+            favButton.image = UIImage(named: "Star" + ColorTheme.getTheme())?.withRenderingMode(.alwaysOriginal)
         } else {
             favButton.image = UIImage(named: "StarOutline")?.withRenderingMode(.alwaysOriginal)
         }

@@ -88,7 +88,7 @@ class TradeCompleteViewController: UIViewController {
             resultHeaderImage.image = #imageLiteral(resourceName: "Result-header-success")
             exchangedInfoLabel.text = LocalizedString("Congradualations! Your order has been submited!", comment: "")
         } else {
-            resultHeaderImage.image = #imageLiteral(resourceName: "Result-header-fail")
+            resultHeaderImage.image = UIImage.init(named: "Result-header-fail")
             exchangedInfoLabel.text = LocalizedString("Your order has not been submited! Please make sure you have enough balance to complete the trade.", comment: "")
         }
     }

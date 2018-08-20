@@ -44,7 +44,7 @@ class SendResultViewController: UIViewController {
     
     func update(asset: Asset) {
         if let errorMessage = self.errorMessage {
-            statusIcon.image = #imageLiteral(resourceName: "Result-header-fail")
+            statusIcon.image = UIImage.init(named: "Result-header-fail")
             balanceLabel.textColor = UIColor.fail
             statusInfoLabel.textColor = UIColor.fail
             statusInfoLabel.text = LocalizedString("Failed", comment: "")

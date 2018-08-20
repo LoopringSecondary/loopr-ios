@@ -9,7 +9,7 @@
 import SwiftTheme
 
 enum GlobalPicker {
-    
+
     // Default values
     static let backgroundColor: ThemeColorPicker = ["#f5f5f5", "#222222"]
     static let cardBackgroundColor: ThemeColorPicker = ["#f5f5f5", "#292929"]
