@@ -180,7 +180,7 @@ class AssetTransactionDetailViewController: UIViewController {
         dateInfoLabel.text = tx.createTime
         let total = tx.gasPriceInGWei * tx.gasUsed / 1000000000
         let currency = PriceDataManager.shared.getPrice(of: "ETH", by: total)
-        gasInfoLabel.text = "\(total) ETH ≈ \(currency!)"
+        gasInfoLabel.text = "\(total.withCommas(6)) ETH ≈ \(currency!)"
     }
     
     @IBAction func pressedToButton(_ sender: UIButton) {
