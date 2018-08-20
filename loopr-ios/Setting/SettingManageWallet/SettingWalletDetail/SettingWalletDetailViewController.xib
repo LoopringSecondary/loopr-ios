@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingWalletDetailViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
-                <outlet property="shareAddressThroughSMSButton" destination="0mY-iz-tpL" id="7DV-c9-vzW"/>
                 <outlet property="switchWalletButton" destination="DXI-6a-zb6" id="pPN-vh-gpf"/>
                 <outlet property="tableView" destination="Dhq-y0-wHQ" id="nYG-9P-8Br"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -38,22 +37,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mY-iz-tpL">
-                    <rect key="frame" x="48" y="628" width="318" height="44"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="QEs-I8-gXJ"/>
-                    </constraints>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" title="Button"/>
-                    <connections>
-                        <action selector="pressedShareAddressThroughSMS:" destination="-1" eventType="touchUpInside" id="Ibz-kT-Aha"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0mY-iz-tpL" secondAttribute="trailing" constant="48" id="0Oi-2e-xLh"/>
                 <constraint firstItem="Dhq-y0-wHQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="1e7-1B-Yx8"/>
                 <constraint firstItem="Dhq-y0-wHQ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="6qz-b0-9kI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="DXI-6a-zb6" secondAttribute="bottom" constant="5" id="Hsd-C3-mn0"/>
@@ -61,8 +47,6 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DXI-6a-zb6" secondAttribute="trailing" constant="48" id="MRy-U1-U77"/>
                 <constraint firstItem="Dhq-y0-wHQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="PwG-Dh-oDj"/>
                 <constraint firstItem="DXI-6a-zb6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="UOg-qS-Dk1"/>
-                <constraint firstItem="DXI-6a-zb6" firstAttribute="top" secondItem="0mY-iz-tpL" secondAttribute="bottom" constant="15" id="aiy-RJ-tMl"/>
-                <constraint firstItem="0mY-iz-tpL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="xfl-b3-9Az"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="67.5"/>

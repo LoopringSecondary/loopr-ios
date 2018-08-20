@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,10 +19,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDR-4j-DKe">
-                        <rect key="frame" x="23" y="9.5" width="240" height="30"/>
+                        <rect key="frame" x="23" y="9.5" width="274" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="h44-9o-PwV"/>
-                            <constraint firstAttribute="width" constant="240" id="vaM-UD-cej"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -67,6 +66,7 @@
                     <constraint firstAttribute="trailing" secondItem="V9I-zK-Fep" secondAttribute="trailing" id="ITl-aq-YHd"/>
                     <constraint firstAttribute="trailing" secondItem="EEX-0k-bnJ" secondAttribute="trailing" constant="26" id="Tde-fD-9NN"/>
                     <constraint firstItem="X06-u8-Kye" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Y37-mH-3KM"/>
+                    <constraint firstAttribute="trailing" secondItem="eDR-4j-DKe" secondAttribute="trailing" constant="23" id="Zqc-cd-OPP"/>
                     <constraint firstItem="eDR-4j-DKe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="23" id="fVR-CS-KqL"/>
                     <constraint firstItem="EEX-0k-bnJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kaQ-Bq-YdU"/>
                     <constraint firstItem="X06-u8-Kye" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="nNd-Ls-5US"/>

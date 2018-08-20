@@ -213,7 +213,7 @@
 "However, please make sure you have enough balance to complete the trade." = "However, please make sure you have enough balance to complete the trade.";
 "P2P Order History" = "场外交易记录";
 "Share Address through SMS" = "通过短信分享地址";
-"Clear Records of this Wallet" = "清除该钱包数据";
+"Clear Records of this Wallet" = "删除钱包并清除钱包数据";
 "Amount" = "数量";
 "Setup the wallet name" = "钱包名字";
 "Keystore Password" = "Keystore密码";
