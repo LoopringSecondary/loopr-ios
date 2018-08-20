@@ -47,12 +47,14 @@ class BackupMnemonicViewController: UIViewController {
         
         backgroundImageView1.frame = CGRect(x: 18, y: 10, width: screenWidth - 18 * 2, height: 200)
         backgroundImageView1.backgroundColor = UIColor.clear
-        backgroundImageView1.image = UIImage.init(named: "MnemonicBackgroundImage1")
+        backgroundImageView1.image = UIImage.init(named: "MnemonicBackgroundImage1-yellow")
+        backgroundImageView1.round(corners: [.topLeft, .topRight], radius: 6)
         view.addSubview(backgroundImageView1)
         
         backgroundImageView2.frame = CGRect(x: 18, y: backgroundImageView1.bottomY, width: screenWidth - 18 * 2, height: 200)
         backgroundImageView2.backgroundColor = UIColor.clear
-        backgroundImageView2.image = UIImage.init(named: "MnemonicBackgroundImage2")
+        backgroundImageView2.image = UIImage.init(named: "MnemonicBackgroundImage2-yellow")
+        backgroundImageView2.round(corners: [.bottomLeft, .bottomRight], radius: 6)
         view.addSubview(backgroundImageView2)
         
         titleLabel.frame = CGRect(x: padding, y: 30, width: backgroundImageView1.width - padding * 2, height: 20)

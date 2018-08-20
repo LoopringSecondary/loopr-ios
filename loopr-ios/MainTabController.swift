@@ -21,15 +21,15 @@ class MainTabController: ESTabBarController {
         
         // Asset view controller
         viewController1 = WalletNavigationViewController()
-        viewController1.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Assets"), selectedImage: UIImage(named: "Assets-selected"))
+        viewController1.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Assets"), selectedImage: UIImage(named: "Assets-selected-yellow"))
         
         // Trade view controller
         viewController2 = TradeSelectionNavigationViewController()
-        viewController2.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Trade"), selectedImage: UIImage(named: "Trade-selected"))
+        viewController2.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Trade"), selectedImage: UIImage(named: "Trade-selected-yellow"))
         
         // Setting view controller
         let viewController3 = SettingNavigationViewController()
-        viewController3.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Settings"), selectedImage: UIImage(named: "Settings-selected"))
+        viewController3.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(), title: nil, image: UIImage(named: "Settings"), selectedImage: UIImage(named: "Settings-selected-yellow"))
         
         viewControllers = [viewController1, viewController2, viewController3]
     }
