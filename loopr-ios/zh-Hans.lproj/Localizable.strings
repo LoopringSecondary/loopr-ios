@@ -408,3 +408,4 @@
 "The P2P order is not created in this iPhone. You can't share the QR code." = "P2P订单不在该手机产生。无法获取二维码。";
 "Revealing your mnemonic phrases on web sites is highly dangerous. If the site is compromised or you accidentally visit a phishing website, your assets in all associated addresses can be stolen." = "在网站上上传助记词非常危险，如果网站被黑客攻击或您不小心访问了钓鱼网站，您钱包内的资产将面临巨大的安全风险。";
 "Processing the P2P order..." = "正在撮合并提交P2P订单...";
+"Adding..." = "正在添加...";

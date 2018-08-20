@@ -48,6 +48,7 @@ class LoopringAPIRequest {
             let json = JSON(data)
             var assets: [Asset] = []
             let offerData = json["result"]["tokens"]
+            print(offerData)
             for subJson in offerData.arrayValue {
                 let asset = Asset(json: subJson)
                 assets.append(asset)
