@@ -237,7 +237,7 @@ extension OrderHistoryViewController {
         var title: String = ""
         guard error == nil && txHash != nil else {
             DispatchQueue.main.async {
-                title = NSLocalizedString("Order cancel Failed, Please try again.", comment: "")
+                title = NSLocalizedString("Order cancelled Failed, Please try again.", comment: "")
                 let banner = NotificationBanner.generate(title: title, style: .danger)
                 banner.duration = 5
                 banner.show()
@@ -246,7 +246,7 @@ extension OrderHistoryViewController {
         }
         DispatchQueue.main.async {
             print(txHash!)
-            title = NSLocalizedString("Order Cancelled Successful.", comment: "")
+            title = NSLocalizedString("Order cancelled Successful.", comment: "")
             let banner = NotificationBanner.generate(title: title, style: .success)
             banner.duration = 2
             banner.show()

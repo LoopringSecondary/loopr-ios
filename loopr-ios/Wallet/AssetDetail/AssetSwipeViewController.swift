@@ -38,7 +38,7 @@ class AssetSwipeViewController: SwipeViewController {
         let screenWidth = screensize.width
         
         baseView.frame = CGRect(x: 10, y: 10, width: screenWidth - 20, height: 120)
-        baseView.image = UIImage(named: "Header-plain")
+        baseView.image = UIImage(named: "Header-plain" + ColorTheme.getTheme())!
         baseView.contentMode = .scaleToFill
         view.addSubview(baseView)
         
