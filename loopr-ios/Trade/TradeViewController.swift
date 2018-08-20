@@ -138,6 +138,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         
         self.distance = 0
         self.scrollViewButtonLayoutConstraint.constant = self.distance
+        
+        TradeDataManager.shared.sellRatio = 1
     }
 
     override func didReceiveMemoryWarning() {
@@ -292,7 +294,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         buyNoMoreThanAmountB = false
         let delegate = RelayAPIConfiguration.delegateAddress
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
-        
         let since = Int64(Date().timeIntervalSince1970)
         let until = Int64(Calendar.current.date(byAdding: intervalUnit, value: intervalValue, to: Date())!.timeIntervalSince1970)
         

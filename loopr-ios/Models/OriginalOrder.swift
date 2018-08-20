@@ -67,10 +67,16 @@ class OriginalOrder {
         let amountB = json["amountB"].stringValue
         self.amountBuy = Asset.getAmount(of: self.tokenBuy, fromWeiAmount: amountB) ?? 0.0
         self.buyNoMoreThanAmountB = json["buyNoMoreThanAmountB"].boolValue
-        self.side = json["side"].stringValue
         self.hash = json["hash"].stringValue
-        self.orderType = OrderType(rawValue: json["orderType"].stringValue) ?? OrderType.unknown
-        self.p2pType = P2PType(rawValue: json["p2pSide"].stringValue) ?? P2PType.unknown
+        let orderType = OrderType(rawValue: json["orderType"].stringValue) ?? OrderType.unknown
+        let p2pType = P2PType(rawValue: json["p2pSide"].stringValue) ?? P2PType.unknown
+        if orderType == .p2pOrder {
+            self.side = p2pType == .maker ? "sell" : "buy"
+        } else {
+            self.side = json["side"].stringValue
+        }
+        self.orderType = orderType
+        self.p2pType = p2pType
         self.walletAddress = json["walletAddress"].stringValue
         self.authAddr = json["authAddr"].stringValue
         self.authPrivateKey = json["authPrivateKey"].stringValue
