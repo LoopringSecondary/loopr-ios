@@ -30,7 +30,11 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
     var filteredOrders = [Order]()
     
     var canHideKeyboard = true
-    
+
+    var previousOrderCount: Int = 0
+    var pageIndex: UInt = 1
+    var hasMoreData: Bool = true
+
     convenience init(type: OrderHistorySwipeType) {
         self.init(nibName: nil, bundle: nil)
         self.type = type
@@ -51,7 +55,6 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         historyTableView.theme_backgroundColor = GlobalPicker.backgroundColor
-        self.navigationItem.title = LocalizedString("Order History", comment: "")
         setBackButton()
         historyTableView.dataSource = self
         historyTableView.delegate = self
@@ -64,25 +67,28 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
 
-        // let item = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.pressOrderSearchButton(_:)))
-        // self.navigationItem.setRightBarButton(item, animated: true)
-        
         getOrderHistoryFromRelay()
     }
 
     @objc private func refreshData(_ sender: Any) {
-        // Fetch Data
+        pageIndex = 1
+        hasMoreData = true
         getOrderHistoryFromRelay()
     }
     
-    // TODO:
     func getOrderHistoryFromRelay() {
-        OrderDataManager.shared.getOrdersFromServer(completionHandler: { orders, _ in
+        OrderDataManager.shared.getOrdersFromServer(pageIndex: pageIndex, completionHandler: { _ in
             DispatchQueue.main.async {
                 if self.isLaunching {
                     self.isLaunching = false
                 }
                 self.orders = OrderDataManager.shared.getOrders(type: self.type)
+                if self.previousOrderCount != self.orders.count {
+                    self.hasMoreData = true
+                } else {
+                    self.hasMoreData = false
+                }
+                self.previousOrderCount = self.orders.count
                 self.historyTableView.reloadData()
                 self.refreshControl.endRefreshing()
             }
@@ -197,6 +203,13 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
                 self.present(alert, animated: true, completion: nil)
             }
             cell?.update()
+            
+            // Pagination
+            if hasMoreData && indexPath.row == orders.count - 1 {
+                pageIndex += 1
+                getOrderHistoryFromRelay()
+            }
+
             return cell!
         }
     }

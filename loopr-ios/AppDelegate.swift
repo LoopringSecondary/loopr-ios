@@ -51,9 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MarketDataManager.shared.startGetTicker()
         PartnerDataManager.shared.createPartner()
         PartnerDataManager.shared.activatePartner()
-        
-        OrderDataManager.shared.getOrdersFromServer { (_, _) in }
-        
+
         _ = SettingDataManager.shared.getCurrentLanguage()
 
         let manager = NetworkingReachabilityManager.shared

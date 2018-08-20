@@ -159,6 +159,7 @@ class TradeConfirmationViewController: UIViewController {
     @IBAction func pressedPlaceOrderButton(_ sender: UIButton) {
         self.verifyInfo = TradeDataManager.shared.verify(order: order!)
         self.handleVerifyInfo()
+        P2POrderHistoryDataManager.shared.shouldReloadData = true
     }
 }
 

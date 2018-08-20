@@ -44,7 +44,17 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
 
+        P2POrderHistoryDataManager.shared.shouldReloadData = false
         getOrderHistoryFromRelay()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if P2POrderHistoryDataManager.shared.shouldReloadData {
+            pageIndex = 1
+            hasMoreData = true
+            getOrderHistoryFromRelay()
+        }
     }
     
     @objc private func refreshData(_ sender: Any) {

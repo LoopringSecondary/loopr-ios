@@ -119,23 +119,35 @@ class OrderDataManager {
         return result
     }
 
-    func getOrdersFromServer(completionHandler: @escaping (_ orders: [Order]?, _ error: Error?) -> Void) {
+    func getOrdersFromServer(pageIndex: UInt, pageSize: UInt = 50, completionHandler: @escaping (_ error: Error?) -> Void) {
         if let owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
-            LoopringAPIRequest.getOrders(owner: owner) { orders, error in
+            LoopringAPIRequest.getOrders(owner: owner, pageIndex: pageIndex, pageSize: pageSize) { orders, error in
                 guard let orders = orders, error == nil else {
+                    self.dateOrders = [:]
+                    self.orders = []
+                    completionHandler(error)
                     return
                 }
-                self.dateOrders = [:]
+                // No need to reset
+                // self.dateOrders = [:]
                 for order in orders {
                     let time = UInt(order.originalOrder.validSince)
-                    let valid = DateUtil.convertToDate(time, format: "MM/dd/yyyy")
+                    let valid = DateUtil.convertToDate(time, format: "yyyy-MM-dd")
                     if self.dateOrders[valid] == nil {
                         self.dateOrders[valid] = []
                     }
-                    self.dateOrders[valid]!.append(order)
+                    if let indexOfOrder = self.dateOrders[valid]?.index(of: order) {
+                        self.dateOrders[valid]![indexOfOrder] = order
+                    } else {
+                        self.dateOrders[valid]!.append(order)
+                    }
                 }
-                self.orders = orders
-                completionHandler(orders, error)
+                if pageIndex == 1 {
+                    self.orders = orders
+                } else {
+                    self.orders += orders
+                }
+                completionHandler(error)
             }
         }
     }

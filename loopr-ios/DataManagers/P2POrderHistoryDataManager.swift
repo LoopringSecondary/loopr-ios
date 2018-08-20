@@ -17,6 +17,9 @@ class P2POrderHistoryDataManager {
     private var orders: [Order]
     private var dateOrders: [String: [Order]]
     
+    // changed to true when a P2P order is submitted.
+    var shouldReloadData: Bool = false
+    
     private init() {
         orders = []
         dateOrders = [:]
@@ -91,6 +94,8 @@ class P2POrderHistoryDataManager {
         if let owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
             LoopringAPIRequest.getOrders(owner: owner, orderType: OrderType.p2pOrder.rawValue, pageIndex: pageIndex, pageSize: pageSize) { orders, error in
                 guard let orders = orders, error == nil else {
+                    self.dateOrders = [:]
+                    self.orders = []
                     completionHandler([], error)
                     return
                 }
@@ -108,7 +113,21 @@ class P2POrderHistoryDataManager {
                         self.dateOrders[valid]!.append(order)
                     }
                 }
-                self.orders = orders
+
+                // Sort
+                var newDateOrders: [String: [Order]] = [:]
+                for (date, orders) in self.dateOrders {
+                    newDateOrders[date] = orders.sorted(by: { (a, b) -> Bool in
+                        return a.originalOrder.validSince > b.originalOrder.validSince
+                    })
+                }
+                self.dateOrders = newDateOrders
+                
+                if pageIndex == 1 {
+                    self.orders = orders
+                } else {
+                    self.orders += orders
+                }
                 completionHandler(orders, error)
             }
         }
