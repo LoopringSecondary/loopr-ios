@@ -26,7 +26,7 @@ class PriceDataManager {
     }
     
     func getPrice(of symbol: String) -> Double? {
-        var result: Double? = nil
+        var result: Double?
         if let price = priceQuote {
             for case let token in price.tokens where token.symbol.lowercased() == symbol.lowercased() {
                 result = token.price

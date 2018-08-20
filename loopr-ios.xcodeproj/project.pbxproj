@@ -40,6 +40,7 @@
 		942C49FA212911B0008A6B4F /* ConvertETHConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C49F9212911B0008A6B4F /* ConvertETHConfirmViewController.swift */; };
 		942C49FE21292FF8008A6B4F /* ConvertETHResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 942C49FD21292FF8008A6B4F /* ConvertETHResultViewController.xib */; };
 		942C4A0021293022008A6B4F /* ConvertETHResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C49FF21293022008A6B4F /* ConvertETHResultViewController.swift */; };
+		942C4A02212A9D89008A6B4F /* P2PType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C4A01212A9D89008A6B4F /* P2PType.swift */; };
 		942FE781210D5A1C005C723D /* SendConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942FE77F210D5A1C005C723D /* SendConfirmViewController.swift */; };
 		942FE782210D5A1C005C723D /* SendConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 942FE780210D5A1C005C723D /* SendConfirmViewController.xib */; };
 		943A9A4120909597008BCBFD /* DefaultWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943A9A3F20909597008BCBFD /* DefaultWebViewController.swift */; };
@@ -620,6 +621,7 @@
 		942C49F9212911B0008A6B4F /* ConvertETHConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertETHConfirmViewController.swift; sourceTree = "<group>"; };
 		942C49FD21292FF8008A6B4F /* ConvertETHResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConvertETHResultViewController.xib; sourceTree = "<group>"; };
 		942C49FF21293022008A6B4F /* ConvertETHResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertETHResultViewController.swift; sourceTree = "<group>"; };
+		942C4A01212A9D89008A6B4F /* P2PType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P2PType.swift; sourceTree = "<group>"; };
 		942FE77F210D5A1C005C723D /* SendConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendConfirmViewController.swift; sourceTree = "<group>"; };
 		942FE780210D5A1C005C723D /* SendConfirmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendConfirmViewController.xib; sourceTree = "<group>"; };
 		943A9A3F20909597008BCBFD /* DefaultWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultWebViewController.swift; sourceTree = "<group>"; };
@@ -2130,6 +2132,7 @@
 				94EE76A32113F21B009D6A90 /* OrderHistorySwipeType.swift */,
 				948125642119B10B00453225 /* PartnerStatus.swift */,
 				94A1C0DE2128461100FD3A1F /* Partner.swift */,
+				942C4A01212A9D89008A6B4F /* P2PType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2995,6 +2998,7 @@
 				AC9FFF292126C05000957175 /* MarketChangeTokenViewController.swift in Sources */,
 				AC0CD57B20D21C1100ABB7BA /* TabBarItemBouncesContentView.swift in Sources */,
 				AC46F7762069FB4400CFDC40 /* UIButton+RoundButton.swift in Sources */,
+				942C4A02212A9D89008A6B4F /* P2PType.swift in Sources */,
 				ACFEFE9F20C3436000013921 /* loopr_ios.xcdatamodeld in Sources */,
 				AC4F601520773E9D00F1D954 /* EthFunction.swift in Sources */,
 				AC131A10210ED2BB001998A0 /* MarketDetailDepthTableViewCell.swift in Sources */,

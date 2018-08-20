@@ -151,7 +151,7 @@ class TradeDataManager {
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         let since = maker.validSince
         let until = maker.validUntil
-        var order = OriginalOrder(delegate: delegate, address: address, side: "buy", tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: 0, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: .p2pOrder, market: market)
+        var order = OriginalOrder(delegate: delegate, address: address, side: "buy", tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: 0, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: .p2pOrder, p2pType: .taker, market: market)
         PlaceOrderDataManager.shared.completeOrder(&order)
         return order
     }

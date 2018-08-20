@@ -103,7 +103,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupQRCodeButton() {
-        guard order?.originalOrder.orderType == .p2pOrder && order?.orderStatus == .opened && order?.originalOrder.side == "sell" else {
+        guard order?.originalOrder.orderType == .p2pOrder && order?.orderStatus == .opened && order?.originalOrder.p2pType == .maker else {
             return
         }
         let qrCodebutton = UIButton(type: UIButtonType.custom)

@@ -29,11 +29,12 @@ class OriginalOrder {
     var authAddr: String = ""
     var marginSplitPercentage: UInt8 = 0
     var orderType: OrderType = .marketOrder
+    var p2pType: P2PType = .maker
     var v: UInt = 0
     var r: String = ""
     var s: String = ""
     
-    init(delegate: String, address: String, side: String, tokenS: String, tokenB: String, validSince: Int64, validUntil: Int64, amountBuy: Double, amountSell: Double, lrcFee: Double, buyNoMoreThanAmountB: Bool, orderType: OrderType = .marketOrder, market: String = "") {
+    init(delegate: String, address: String, side: String, tokenS: String, tokenB: String, validSince: Int64, validUntil: Int64, amountBuy: Double, amountSell: Double, lrcFee: Double, buyNoMoreThanAmountB: Bool, orderType: OrderType = .marketOrder, p2pType: P2PType = .maker, market: String = "") {
         self.delegate = delegate
         self.address = address
         self.market = market
@@ -46,6 +47,7 @@ class OriginalOrder {
         self.lrcFee = lrcFee
         self.side = side
         self.orderType = orderType
+        self.p2pType = p2pType
         self.buyNoMoreThanAmountB = buyNoMoreThanAmountB
         let (privateKey, walletAddress) = Wallet.generateRandomWallet()
         self.authAddr = walletAddress
@@ -68,6 +70,7 @@ class OriginalOrder {
         self.side = json["side"].stringValue
         self.hash = json["hash"].stringValue
         self.orderType = OrderType(rawValue: json["orderType"].stringValue) ?? OrderType.unknown
+        self.p2pType = P2PType(rawValue: json["p2pSide"].stringValue) ?? P2PType.unknown
         self.walletAddress = json["walletAddress"].stringValue
         self.authAddr = json["authAddr"].stringValue
         self.authPrivateKey = json["authPrivateKey"].stringValue

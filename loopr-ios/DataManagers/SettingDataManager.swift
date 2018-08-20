@@ -60,7 +60,7 @@ class SettingDataManager {
         if let currencyName = defaults.string(forKey: UserDefaultsKeys.currentCurrency.rawValue) {
             return Currency(name: currencyName)
         } else {
-            return Currency(name: Locale.current.currencyCode!)
+            return Currency(name: "USD")
         }
     }
 
