@@ -51,7 +51,7 @@ class AddTokenTableViewCell: UITableViewCell {
             symbolLabel.text = "\(token.symbol)"
             nameLabel.text = token.source
 
-            if CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.tokenList.contains(token.symbol) {
+            if CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getTokenList().contains(token.symbol) {
                 addSwitch.setOn(true, animated: false)
             } else {
                 addSwitch.setOn(false, animated: false)

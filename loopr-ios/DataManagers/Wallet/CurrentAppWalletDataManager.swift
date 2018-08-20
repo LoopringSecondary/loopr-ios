@@ -105,32 +105,24 @@ class CurrentAppWalletDataManager {
     
     // Used in WalletViewController with hide small assets option
     func getAssetsWithHideSmallAssetsOption() -> [Asset] {
-        if SettingDataManager.shared.getHideSmallAssets() {
-            return self.assets.filter({ (asset) -> Bool in
-                return currentAppWallet!.tokenList.contains(asset.symbol) && asset.total > 0.01
-            }).sorted(by: { (a, b) -> Bool in
-                if a.total != b.total {
-                    return a.total > b.total
-                } else if a.balance != b.balance {
-                    return a.balance > b.balance
-                } else {
-                    return a.symbol < b.symbol
-                }
-            })
-        } else {
-            print(currentAppWallet!.tokenList)
-            return self.assets.filter({ (asset) -> Bool in
-                return currentAppWallet!.tokenList.contains(asset.symbol) || asset.balance > 0
-            }).sorted(by: { (a, b) -> Bool in
-                if a.total != b.total {
-                    return a.total > b.total
-                } else if a.balance != b.balance {
-                    return a.balance > b.balance
-                } else {
-                    return a.symbol < b.symbol
-                }
-            })
-        }
+        print(currentAppWallet!.getTokenList())
+        return self.assets.filter({ (asset) -> Bool in
+            return currentAppWallet!.getTokenList().contains(asset.symbol) || asset.balance > 0.001
+        }).sorted(by: { (a, b) -> Bool in
+            if a.symbol == "ETH" || b.symbol == "ETH" {
+                return a.symbol == "ETH"
+            } else if a.symbol == "WETH" || b.symbol == "WETH" {
+                return a.symbol == "WETH"
+            } else if a.symbol == "LRC" || a.symbol == "LRC" {
+                return a.symbol == "LRC"
+            } else if a.total != b.total {
+                return a.total > b.total
+            } else if a.balance != b.balance {
+                return a.balance > b.balance
+            } else {
+                return a.symbol < b.symbol
+            }
+        })
     }
     
     // TODO: we should simplify this function.

@@ -202,7 +202,7 @@ class AppWalletDataManager {
             return
         }
         
-        let newAppWallet = AppWallet(setupWalletMethod: setupWalletMethod, address: address.description, privateKey: privateKey.hexString, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: walletName.trim(), isVerified: isVerified, tokenList: ["ETH", "WETH", "LRC", "USDT"])
+        let newAppWallet = AppWallet(setupWalletMethod: setupWalletMethod, address: address.description, privateKey: privateKey.hexString, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: walletName.trim(), isVerified: isVerified, tokenList: ["ETH", "WETH", "LRC"])
         
         // Update the new app wallet in the local storage.
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)

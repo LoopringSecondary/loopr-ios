@@ -40,8 +40,8 @@ class AppWallet: NSObject, NSCoding {
     // A token is added to tokenList when
     // 1. the amount is not zero in the device one time.
     // 2. users enable in AddTokenViewController.
-    // Default value is ["ETH", "WETH", "LRC", "USDT"]
-    var tokenList: [String]
+    // Default value is ["ETH", "WETH", "LRC"]
+    private var tokenList: [String]
 
     // totalCurrency is not persisted in disk
     var totalCurrency: Double = 0
@@ -70,6 +70,17 @@ class AppWallet: NSObject, NSCoding {
         }
     }
 
+    func getTokenList() -> [String] {
+        let mustHaveTokens = ["ETH", "WETH", "LRC"].reversed()
+        for mustHaveToken in mustHaveTokens {
+            if let indexOfA = tokenList.index(of: mustHaveToken) {
+                tokenList.remove(at: indexOfA)
+            }
+            tokenList.insert(mustHaveToken, at: 0)
+        }
+        return tokenList
+    }
+    
     func updateTokenList(_ tokenSymbols: [String], add: Bool) {
         for tokenSymbol in tokenSymbols {
             if add {
