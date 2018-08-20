@@ -20,8 +20,6 @@ class OrderTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     
     var order: Order?
-    let asset = CurrentAppWalletDataManager.shared
-    let market = MarketDataManager.shared
     var buttonColor: UIColor?
     var pressedCancelButtonClosure: (() -> Void)?
     
@@ -115,13 +113,14 @@ class OrderTableViewCell: UITableViewCell {
     }
     
     func setupOrderTypeLabel(order: Order) {
-        orderTypeLabel.text = order.originalOrder.side.capitalized
-        orderTypeLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 10)
+        orderTypeLabel.font = FontConfigManager.shared.getLightFont(size: 10)
         orderTypeLabel.borderWidth = 0.5
         if order.originalOrder.side == "buy" {
+            orderTypeLabel.text = LocalizedString("Buy", comment: "")
             orderTypeLabel.backgroundColor = .success
             orderTypeLabel.textColor = .white
         } else if order.originalOrder.side == "sell" {
+            orderTypeLabel.text = LocalizedString("Sell", comment: "")
             orderTypeLabel.backgroundColor = .fail
             orderTypeLabel.textColor = .white
         }

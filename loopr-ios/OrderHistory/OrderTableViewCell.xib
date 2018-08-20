@@ -29,7 +29,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sell" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeE-oF-uld" userLabel="Buy/Sell Label">
-                                <rect key="frame" x="79.5" y="20.5" width="22" height="12"/>
+                                <rect key="frame" x="81.5" y="20.5" width="22" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="0Xl-5I-JyE"/>
                                 </constraints>
@@ -77,7 +77,7 @@
                             <constraint firstItem="PeE-oF-uld" firstAttribute="centerY" secondItem="b3R-8C-EzM" secondAttribute="centerY" id="53w-0P-V1s"/>
                             <constraint firstItem="GHq-wT-pP6" firstAttribute="centerY" secondItem="b3R-8C-EzM" secondAttribute="centerY" id="8Jh-Ub-IdW"/>
                             <constraint firstItem="kdp-5j-eCj" firstAttribute="centerY" secondItem="v7r-jB-3wD" secondAttribute="centerY" id="FUY-6B-JMg"/>
-                            <constraint firstItem="PeE-oF-uld" firstAttribute="leading" secondItem="b3R-8C-EzM" secondAttribute="trailing" id="Iqh-jU-oXD"/>
+                            <constraint firstItem="PeE-oF-uld" firstAttribute="leading" secondItem="b3R-8C-EzM" secondAttribute="trailing" constant="2" id="Iqh-jU-oXD"/>
                             <constraint firstAttribute="trailing" secondItem="SZb-S3-AaP" secondAttribute="trailing" constant="10" id="Jpt-ZR-fEV"/>
                             <constraint firstItem="v7r-jB-3wD" firstAttribute="leading" secondItem="b3R-8C-EzM" secondAttribute="leading" id="OVw-rY-hoP"/>
                             <constraint firstItem="UdG-uX-PiR" firstAttribute="centerY" secondItem="kdp-5j-eCj" secondAttribute="centerY" id="P9J-mU-8R3"/>
