@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewSettingPartnerViewController" customModule="loopr_ios" customModuleProvider="target">
+            <connections>
+                <outlet property="shareButton" destination="zQp-Ws-pHU" id="J0p-Di-Vzi"/>
+                <outlet property="sloganLabel" destination="EPU-IK-OKB" id="GhN-ua-mH7"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="walletAddressLabel" destination="iF3-bu-KE4" id="leU-Ri-Nbs"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPU-IK-OKB">
+                    <rect key="frame" x="40" y="40" width="334" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="103-D4-Y6k"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iF3-bu-KE4">
+                    <rect key="frame" x="40" y="116" width="334" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="zMs-gd-Sgc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQp-Ws-pHU">
+                    <rect key="frame" x="48" y="181" width="318" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="pSJ-4h-1Bc"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="EPU-IK-OKB" secondAttribute="trailing" constant="40" id="9CT-ks-en6"/>
+                <constraint firstItem="iF3-bu-KE4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="LD2-FF-i6e"/>
+                <constraint firstItem="zQp-Ws-pHU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="S8C-wS-il3"/>
+                <constraint firstItem="iF3-bu-KE4" firstAttribute="top" secondItem="EPU-IK-OKB" secondAttribute="bottom" constant="16" id="ccx-Ux-bGT"/>
+                <constraint firstItem="EPU-IK-OKB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="eim-ir-47k"/>
+                <constraint firstItem="EPU-IK-OKB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="fuO-2h-vIc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zQp-Ws-pHU" secondAttribute="trailing" constant="48" id="jdc-QR-Ywe"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iF3-bu-KE4" secondAttribute="trailing" constant="40" id="l7r-rg-mSa"/>
+                <constraint firstItem="zQp-Ws-pHU" firstAttribute="top" secondItem="iF3-bu-KE4" secondAttribute="bottom" constant="30" id="tSL-fc-fmP"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+</document>

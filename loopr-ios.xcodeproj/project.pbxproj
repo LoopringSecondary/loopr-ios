@@ -154,6 +154,8 @@
 		AC23B368210D6214004DC5A9 /* MarketDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC23B366210D6214004DC5A9 /* MarketDetailViewController.xib */; };
 		AC299495212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC299493212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.swift */; };
 		AC299496212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC299494212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.xib */; };
+		AC29949B212BF611005C4D72 /* NewSettingPartnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC299499212BF611005C4D72 /* NewSettingPartnerViewController.swift */; };
+		AC29949C212BF611005C4D72 /* NewSettingPartnerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC29949A212BF611005C4D72 /* NewSettingPartnerViewController.xib */; };
 		AC2ACA4C20FA0EC3009C77E7 /* Rubik-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA4120FA0EC3009C77E7 /* Rubik-MediumItalic.ttf */; };
 		AC2ACA4D20FA0EC3009C77E7 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA4220FA0EC3009C77E7 /* Rubik-Bold.ttf */; };
 		AC2ACA4E20FA0EC3009C77E7 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA4320FA0EC3009C77E7 /* SIL Open Font License.txt */; };
@@ -738,6 +740,8 @@
 		AC23B366210D6214004DC5A9 /* MarketDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketDetailViewController.xib; sourceTree = "<group>"; };
 		AC299493212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTokenNoDataTableViewCell.swift; sourceTree = "<group>"; };
 		AC299494212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTokenNoDataTableViewCell.xib; sourceTree = "<group>"; };
+		AC299499212BF611005C4D72 /* NewSettingPartnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSettingPartnerViewController.swift; sourceTree = "<group>"; };
+		AC29949A212BF611005C4D72 /* NewSettingPartnerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewSettingPartnerViewController.xib; sourceTree = "<group>"; };
 		AC2ACA4120FA0EC3009C77E7 /* Rubik-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-MediumItalic.ttf"; sourceTree = "<group>"; };
 		AC2ACA4220FA0EC3009C77E7 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
 		AC2ACA4320FA0EC3009C77E7 /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
@@ -1181,6 +1185,8 @@
 			children = (
 				94A1C0DA2128126D00FD3A1F /* SettingPartnerViewController.swift */,
 				94A1C0DB2128126D00FD3A1F /* SettingPartnerViewController.xib */,
+				AC299499212BF611005C4D72 /* NewSettingPartnerViewController.swift */,
+				AC29949A212BF611005C4D72 /* NewSettingPartnerViewController.xib */,
 			);
 			path = SettingPartner;
 			sourceTree = "<group>";
@@ -2650,6 +2656,7 @@
 				AC31CE6E205B995500A30335 /* Roboto-Medium.ttf in Resources */,
 				94A1C0DD2128126D00FD3A1F /* SettingPartnerViewController.xib in Resources */,
 				AC5E3E6C205DEAC00051ACFC /* TradeCompleteViewController.xib in Resources */,
+				AC29949C212BF611005C4D72 /* NewSettingPartnerViewController.xib in Resources */,
 				AC76E47420493CAE008BA229 /* SettingLanguageViewController.xib in Resources */,
 				AC54FD76204FC6E5007E1DEB /* OpenSans-BoldItalic.ttf in Resources */,
 				AC9FFF322127F8CF00957175 /* AddCustomizedTokenViewController.xib in Resources */,
@@ -3098,6 +3105,7 @@
 				AC31B94C204A8DF400B16155 /* KeyStore.Error.swift in Sources */,
 				AC31B94E204A8DF400B16155 /* KeystoreKey.swift in Sources */,
 				AC3756732038D64B00AADC60 /* MnemonicViewController.swift in Sources */,
+				AC29949B212BF611005C4D72 /* NewSettingPartnerViewController.swift in Sources */,
 				ACA677C0207997F400D34A2F /* DisplayKeystoreViewController.swift in Sources */,
 				AC3B488E210525BE008A6771 /* UpdatedSelectWalletTableViewCell.swift in Sources */,
 				ACFEFE9820C338BC00013921 /* TxType.swift in Sources */,
