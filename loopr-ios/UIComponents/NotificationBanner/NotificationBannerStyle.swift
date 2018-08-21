@@ -14,7 +14,7 @@ class NotificationBannerStyle: BannerColorsProtocol {
     internal func color(for style: BannerStyle) -> UIColor {
         switch style {
         case .danger:
-            return UIStyleConfig.red
+            return UIColor(named: "Color-red")!  // #FA4A6F
         case .info:
             return UIColor.black
         case .none:
