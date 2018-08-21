@@ -179,9 +179,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // https://stackoverflow.com/questions/22585416/slow-performance-for-presentviewcontroller-depends-on-complexity-of-presenting
-        // https://stackoverflow.com/questions/21075540/presentviewcontrolleranimatedyes-view-will-not-appear-until-user-taps-again
-        // Set animated to false or put self.present in DispatchQueue.main.async
+        guard !isTableEmpty() else { return }
         tableView.deselectRow(at: indexPath, animated: false)
         let transaction = self.transactions[indexPath.row]
         let parentView = self.parent!.view!

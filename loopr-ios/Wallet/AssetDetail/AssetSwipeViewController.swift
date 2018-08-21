@@ -37,9 +37,10 @@ class AssetSwipeViewController: SwipeViewController {
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         
-        baseView.frame = CGRect(x: 10, y: 10, width: screenWidth - 20, height: 120)
-        baseView.image = UIImage(named: "Header-plain" + ColorTheme.getTheme())!
-        baseView.contentMode = .scaleToFill
+        baseView.frame = CGRect(x: 15, y: 15, width: screenWidth - 30, height: 120)
+        baseView.applyGradient(withColors: UIColor.secondary)
+        baseView.layer.cornerRadius = 8
+        baseView.clipsToBounds = true
         view.addSubview(baseView)
         
         balanceLabel.frame = CGRect(x: 10, y: 40, width: screenWidth - 20, height: 36)
