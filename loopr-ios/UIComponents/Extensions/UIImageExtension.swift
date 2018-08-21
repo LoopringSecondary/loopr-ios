@@ -37,4 +37,25 @@ extension UIImage {
         return UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
     }
 
+    func imageOverlayingImages(_ images: [UIImage], scalingBy factors: [CGFloat]? = nil) -> UIImage {
+        let size = self.size
+        let container = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 2.0)
+        UIGraphicsGetCurrentContext()!.interpolationQuality = .high
+        
+        self.draw(in: container)
+        
+        let scaleFactors = factors ?? [CGFloat](repeating: 1.0, count: images.count)
+        
+        // TODO: Hardcode this value now
+        for (image, scaleFactor) in zip(images, scaleFactors) {
+            let topWidth: CGFloat = 151
+            let topHeight: CGFloat = 151
+            let topX: CGFloat = 112
+            let topY: CGFloat = 4054
+            
+            image.draw(in: CGRect(x: topX, y: topY, width: topWidth, height: topHeight), blendMode: .normal, alpha: 1.0)
+        }
+        return UIGraphicsGetImageFromCurrentImageContext()!
+    }
 }
