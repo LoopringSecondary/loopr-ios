@@ -31,7 +31,13 @@ class GenerateWalletDataManager {
     func new() {
         let mnemonicString = Mnemonic.generate(strength: 128)
         let mnemonics = mnemonicString.components(separatedBy: " ")
-        self.mnemonics = mnemonics
+        
+        // TODO: Hack method to avoid duplicate words in mnemonics. Improve in the future.
+        if mnemonics.count == Set(mnemonics).count {
+            new()
+        } else {
+            self.mnemonics = mnemonics
+        }
     }
 
     func setWalletName(_ walletName: String) {
