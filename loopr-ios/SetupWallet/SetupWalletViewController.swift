@@ -22,15 +22,13 @@ class SetupWalletViewController: UIViewController {
         super.viewDidLoad()
 
         view.theme_backgroundColor = GlobalPicker.backgroundColor
-        self.setBackButton()
 
-        let stringValue = "Loopring Wallet"
+        let stringValue = "UP Wallet"
         let attrString = NSMutableAttributedString(string: stringValue)
         attrString.addAttribute(NSAttributedStringKey.kern, value: 2.4, range: NSMakeRange(0, attrString.length))
         taglineLabel.attributedText = attrString
 
         taglineLabel.font = UIFont(name: FontConfigManager.shared.getMedium(), size: 16.0)
-        taglineLabel.textColor = UIColor.white
 
         unlockWalletButton.title = LocalizedString("Import Wallet", comment: "")
         unlockWalletButton.setupSecondary(height: 50, gradientOrientation: .horizontal)

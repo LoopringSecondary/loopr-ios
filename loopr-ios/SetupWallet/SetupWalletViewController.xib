@@ -40,7 +40,7 @@
                         <constraint firstAttribute="height" constant="18" id="Bcg-3S-zuc"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" red="0.99215686274509807" green="0.68235294117647061" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O2E-xb-AW6">
@@ -83,6 +83,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Loopring_logo" width="68" height="80"/>
+        <image name="Loopring_logo" width="73" height="80"/>
     </resources>
 </document>
