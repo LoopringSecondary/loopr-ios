@@ -216,6 +216,7 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        guard !isTableEmpty() else { return }
         let order: Order
         if isSearching {
             order = filteredOrders[indexPath.row]
