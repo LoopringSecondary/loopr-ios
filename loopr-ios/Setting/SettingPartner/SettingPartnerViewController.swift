@@ -12,9 +12,7 @@ import Social
 class SettingPartnerViewController: UIViewController {
     
     @IBOutlet weak var spreadingImageView: UIImageView!
-    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var sloganLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var walletAddressLabel: UILabel!
     
     var qrcodeImageView: UIImageView = UIImageView()
@@ -31,11 +29,8 @@ class SettingPartnerViewController: UIViewController {
         view.theme_backgroundColor = GlobalPicker.backgroundColor
         
         sloganLabel.textColor = .success
-        sloganLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
-        sloganLabel.text = LocalizedString("Partner_Slogan", comment: "")
-        
-        descriptionLabel.setTitleCharFont()
-        descriptionLabel.text = LocalizedString("Partner_Des", comment: "")
+        sloganLabel.font = FontConfigManager.shared.getCharactorFont(size: 18)
+        sloganLabel.text = LocalizedString("Partner_Des", comment: "")
         
         walletAddressLabel.setTitleCharFont()
         let addressTip = LocalizedString("Partner_Address", comment: "")
@@ -49,7 +44,12 @@ class SettingPartnerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func pressedShareButton(_ sender: UIButton) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.openShare()
+    }
+    
+    func openShare() {
         let text = LocalizedString("Partner Download Link", comment: "")
         let image = UIImage(named: "Partner-background")
         let overlayingImage = image?.imageOverlayingImages([qrcodeImage], scalingBy: [1])
