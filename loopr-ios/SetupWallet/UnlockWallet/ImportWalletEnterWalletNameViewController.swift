@@ -171,7 +171,7 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
         } else {
             SetupDataManager.shared.hasPresented = true
             let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+            appDelegate?.window?.rootViewController = MainTabController()
         }
     }
     

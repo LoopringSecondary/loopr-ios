@@ -74,7 +74,7 @@ class AuthenticationViewController: UIViewController {
             if self.needNavigate {
                 DispatchQueue.main.async {
                     let appDelegate = UIApplication.shared.delegate as? AppDelegate
-                    appDelegate?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+                    appDelegate?.window?.rootViewController = MainTabController()
                 }
             } else {
                 self.dismiss(animated: true, completion: nil)
