@@ -65,7 +65,7 @@ class ConvertETHResultViewController: UIViewController {
             balanceLabel.textColor = UIColor.success
             statusInfoLabel.textColor = UIColor.pending
             statusInfoLabel.text = LocalizedString("Pending", comment: "")
-            toTipLabel.text = LocalizedString("To", comment: "")
+            toTipLabel.text = LocalizedString("Receive Token", comment: "")
             toInfoLabel.text = "+\(convertAmount!) \(otherAsset!.symbol)"
         }
         balanceLabel.font = FontConfigManager.shared.getDigitalFont(size: 16)
@@ -83,14 +83,6 @@ class ConvertETHResultViewController: UIViewController {
     }
 
     @IBAction func pressedDoneButton(_ sender: UIButton) {
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        if let tabBarController = appDelegate?.window?.rootViewController as? UITabBarController {
-            if let fromView = tabBarController.selectedViewController?.view {
-                let toView = tabBarController.viewControllers![0]
-                UIView.transition(from: fromView, to: toView.view, duration: 0.3, options: .transitionCrossDissolve, completion: { (_) in
-                    tabBarController.selectedIndex = 0
-                })
-            }
-        }
+        self.navigationController?.popViewController(animated: true)
     }
 }
