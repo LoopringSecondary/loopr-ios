@@ -95,6 +95,13 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
 
     @IBAction func pressedUnlockButton(_ sender: Any) {
         print("pressedUnlockButton")
+        guard privateKeyTextView.text.trim() != "" else {
+            let banner = NotificationBanner.generate(title: LocalizedString("Please input your private key", comment: ""), style: .danger)
+            banner.duration = 1.5
+            banner.show()
+            return
+        }
+        
         do {
             try ImportWalletUsingPrivateKeyDataManager.shared.importWallet(privateKey: privateKeyTextView.text)
             
