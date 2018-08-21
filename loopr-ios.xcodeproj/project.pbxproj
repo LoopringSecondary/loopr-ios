@@ -152,6 +152,8 @@
 		AC1E4BC6204B58D400C6B1FA /* CreatePrivateKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BC5204B58D400C6B1FA /* CreatePrivateKeyTests.swift */; };
 		AC23B367210D6214004DC5A9 /* MarketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC23B365210D6213004DC5A9 /* MarketDetailViewController.swift */; };
 		AC23B368210D6214004DC5A9 /* MarketDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC23B366210D6214004DC5A9 /* MarketDetailViewController.xib */; };
+		AC299495212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC299493212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.swift */; };
+		AC299496212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC299494212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.xib */; };
 		AC2ACA4C20FA0EC3009C77E7 /* Rubik-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA4120FA0EC3009C77E7 /* Rubik-MediumItalic.ttf */; };
 		AC2ACA4D20FA0EC3009C77E7 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA4220FA0EC3009C77E7 /* Rubik-Bold.ttf */; };
 		AC2ACA4E20FA0EC3009C77E7 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA4320FA0EC3009C77E7 /* SIL Open Font License.txt */; };
@@ -734,6 +736,8 @@
 		AC1E4BC5204B58D400C6B1FA /* CreatePrivateKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePrivateKeyTests.swift; sourceTree = "<group>"; };
 		AC23B365210D6213004DC5A9 /* MarketDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailViewController.swift; sourceTree = "<group>"; };
 		AC23B366210D6214004DC5A9 /* MarketDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketDetailViewController.xib; sourceTree = "<group>"; };
+		AC299493212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTokenNoDataTableViewCell.swift; sourceTree = "<group>"; };
+		AC299494212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTokenNoDataTableViewCell.xib; sourceTree = "<group>"; };
 		AC2ACA4120FA0EC3009C77E7 /* Rubik-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-MediumItalic.ttf"; sourceTree = "<group>"; };
 		AC2ACA4220FA0EC3009C77E7 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
 		AC2ACA4320FA0EC3009C77E7 /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
@@ -1588,6 +1592,8 @@
 				AC5E0990205F256500801738 /* AddTokenViewController.xib */,
 				ACB97C6B20707B6F00775D4C /* AddTokenTableViewCell.swift */,
 				ACB97C6C20707B6F00775D4C /* AddTokenTableViewCell.xib */,
+				AC299493212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.swift */,
+				AC299494212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.xib */,
 				AC9FFF2F2127F8CF00957175 /* AddCustomizedTokenViewController.swift */,
 				AC9FFF302127F8CF00957175 /* AddCustomizedTokenViewController.xib */,
 			);
@@ -2661,6 +2667,7 @@
 				AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */,
 				AC131A0B210D7A33001998A0 /* MarketDetailTradeHistoryViewController.xib in Resources */,
 				AC2ACA4C20FA0EC3009C77E7 /* Rubik-MediumItalic.ttf in Resources */,
+				AC299496212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.xib in Resources */,
 				AC78FC36209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib in Resources */,
 				AC31CE40205B604100A30335 /* Linotype-DINNextLTPro-Medium.otf in Resources */,
 				941138C8210F12AD007FDC82 /* TTLViewController.xib in Resources */,
@@ -3134,6 +3141,7 @@
 				AC4141F720352D6B0089861D /* SwipeView.swift in Sources */,
 				94B5CA8A204FB4E20081BA93 /* DefaultBlock.swift in Sources */,
 				AC0CD58520D2330300ABB7BA /* H5DexViewController.swift in Sources */,
+				AC299495212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.swift in Sources */,
 				ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */,
 				AC5288B5208300580002AEAD /* NetworkingRechabilityManager.swift in Sources */,
 				94768CA4210DCB2300B5977B /* TradeSwipeType.swift in Sources */,

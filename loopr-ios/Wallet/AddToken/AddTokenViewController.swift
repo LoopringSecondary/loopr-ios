@@ -98,33 +98,52 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching {
-            return filtedTokens.count
+            return filtedTokens.count == 0 ? 1 : filtedTokens.count
         } else {
             return TokenDataManager.shared.getTokensToAdd().count
         }
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return AddTokenTableViewCell.getHeight()
+        if isSearching && filtedTokens.count == 0 {
+            return SearchTokenNoDataTableViewCell.getHeight()
+        } else {
+            return AddTokenTableViewCell.getHeight()
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: AddTokenTableViewCell.getCellIdentifier()) as? AddTokenTableViewCell
-        if cell == nil {
-            let nib = Bundle.main.loadNibNamed("AddTokenTableViewCell", owner: self, options: nil)
-            cell = nib![0] as? AddTokenTableViewCell
-            cell?.selectionStyle = .none
-        }
-        
-        let token: Token
-        if isSearching {
-            token = filtedTokens[indexPath.row]
+        if isSearching && filtedTokens.count == 0 {
+            var cell = tableView.dequeueReusableCell(withIdentifier: SearchTokenNoDataTableViewCell.getCellIdentifier()) as? SearchTokenNoDataTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("SearchTokenNoDataTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? SearchTokenNoDataTableViewCell
+                cell?.selectionStyle = .none
+            }
+            cell?.pressedAddTokenButtonClosure = {
+                self.searchBar.resignFirstResponder()
+                let viewController = AddCustomizedTokenViewController()
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            return cell!
         } else {
-            token = TokenDataManager.shared.getTokensToAdd()[indexPath.row]
+            var cell = tableView.dequeueReusableCell(withIdentifier: AddTokenTableViewCell.getCellIdentifier()) as? AddTokenTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("AddTokenTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? AddTokenTableViewCell
+                cell?.selectionStyle = .none
+            }
+            
+            let token: Token
+            if isSearching {
+                token = filtedTokens[indexPath.row]
+            } else {
+                token = TokenDataManager.shared.getTokensToAdd()[indexPath.row]
+            }
+            cell?.token = token
+            cell?.update()
+            return cell!
         }
-        cell?.token = token
-        cell?.update()
-        return cell!
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
