@@ -117,12 +117,13 @@ class P2POrderHistoryDataManager {
                 // Sort
                 var newDateOrders: [String: [Order]] = [:]
                 for (date, orders) in self.dateOrders {
-                    newDateOrders[date] = orders.sorted(by: { (a, b) -> Bool in
+                    newDateOrders[date] = orders.filter({ (order) -> Bool in
+                        return order.originalOrder.address.lowercased() == owner.lowercased()
+                    }).sorted(by: { (a, b) -> Bool in
                         return a.originalOrder.validSince > b.originalOrder.validSince
                     })
                 }
-                self.dateOrders = newDateOrders
-                
+                self.dateOrders = newDateOrders.filter { !($0.1.isEmpty) }
                 if pageIndex == 1 {
                     self.orders = orders
                 } else {
