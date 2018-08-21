@@ -50,8 +50,9 @@ class GenerateWalletEnterPasswordViewController: UIViewController, UITextFieldDe
         continueButton.addTarget(self, action: #selector(pressedContinueButton), for: .touchUpInside)
         view.addSubview(continueButton)
 
-        errorInfoLabel.frame = CGRect(x: padding, y: continueButton.bottomY + 40, width: screenWidth-padding*2, height: 40)
+        errorInfoLabel.frame = CGRect(x: 48, y: continueButton.bottomY + 40, width: screenWidth-48*2, height: 50)
         errorInfoLabel.textAlignment = .center
+        errorInfoLabel.numberOfLines = 2
         errorInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         view.addSubview(errorInfoLabel)
 

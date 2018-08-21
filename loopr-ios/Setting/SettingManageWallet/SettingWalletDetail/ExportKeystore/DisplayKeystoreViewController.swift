@@ -52,6 +52,8 @@ class DisplayKeystoreViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         keystoreTextView.applyShadow()
+        keystoreTextView.clipsToBounds = true
+        keystoreTextView.setContentOffset(CGPoint.zero, animated: false)
     }
 
     @IBAction func pressedCopyButton(_ sender: Any) {
