@@ -15,7 +15,7 @@ class PartnerDataManager {
     var partnerTo: Partner?
     var partnerFrom: Partner?
     let loopringAddress = "0x8E63Bb7Af326de3fc6e09F4c8D54A75c6e236abA"
-    let baseUrl = "http://upwallet.io/"
+    let baseUrl = "https://upwallet.io/"
     
     func activatePartner() {
         LoopringAPIRequest.activateInvitation(completionHandler: { result, error in
@@ -45,7 +45,7 @@ class PartnerDataManager {
     
     func generateUrl() -> String {
         if let partner = self.partnerTo {
-            return self.baseUrl + partner.partner
+            return "\(self.baseUrl)?cityPartner=\(partner.partner)"
         }
         return self.baseUrl
     }
