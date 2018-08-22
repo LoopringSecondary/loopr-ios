@@ -22,21 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         Fabric.with([Crashlytics.self])
-        
-        guard let customFont = UIFont(name: "Rubik-Regular", size: UIFont.labelFontSize) else {
-            fatalError("""
-        Failed to load the "CustomFont-Light" font.
-        Make sure the font file is included in the project and the font name is spelled correctly.
-        """
-            )
-        }
-        
+
         FontConfigManager.shared.setup()
         
         Themes.restoreLastTheme()
         updateTheme()
         ThemeManager.animationDuration = 1.0
         SVProgressHUD.setDefaultStyle(.dark)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.native)
         SVProgressHUD.setDefaultMaskType(.clear)
         SVProgressHUD.setMinimumSize(CGSize(width: 240, height: 120))
         
