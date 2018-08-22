@@ -66,6 +66,7 @@ class GenerateWalletEnterNameViewController: UIViewController, UITextFieldDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
+        walletNameTextField.becomeFirstResponder()
     }
 
     @objc func pressedContinueButton(_ sender: Any) {

@@ -75,6 +75,11 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        walletNameTextField.becomeFirstResponder()
+    }
 
     @objc func pressedContinueButton(_ sender: Any) {
         guard !AppWalletDataManager.shared.isNewWalletNameToken(newWalletname: walletNameTextField.text ?? "") else {
