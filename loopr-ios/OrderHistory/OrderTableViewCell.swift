@@ -113,14 +113,14 @@ class OrderTableViewCell: UITableViewCell {
     }
     
     func setupOrderTypeLabel(order: Order) {
-        orderTypeLabel.font = FontConfigManager.shared.getLightFont(size: 10)
+        orderTypeLabel.font = FontConfigManager.shared.getBoldFont(size: 10)
         orderTypeLabel.borderWidth = 0.5
         if order.originalOrder.side == "buy" {
-            orderTypeLabel.text = LocalizedString("Buy", comment: "")
+            orderTypeLabel.text = LocalizedString("B", comment: "")
             orderTypeLabel.backgroundColor = .success
             orderTypeLabel.textColor = .white
         } else if order.originalOrder.side == "sell" {
-            orderTypeLabel.text = LocalizedString("Sell", comment: "")
+            orderTypeLabel.text = LocalizedString("S", comment: "")
             orderTypeLabel.backgroundColor = .fail
             orderTypeLabel.textColor = .white
         }

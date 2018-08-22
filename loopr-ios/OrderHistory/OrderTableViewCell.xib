@@ -28,10 +28,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sell" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeE-oF-uld" userLabel="Buy/Sell Label">
-                                <rect key="frame" x="81.5" y="20.5" width="24" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeE-oF-uld" userLabel="Buy/Sell Label">
+                                <rect key="frame" x="81.5" y="20.5" width="12" height="12"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="0Xl-5I-JyE"/>
+                                    <constraint firstAttribute="width" constant="12" id="0Xl-5I-JyE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
