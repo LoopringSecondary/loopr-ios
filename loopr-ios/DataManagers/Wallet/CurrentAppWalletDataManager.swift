@@ -50,9 +50,11 @@ class CurrentAppWalletDataManager {
         self.assets = []
         self.totalCurrencyValue = appWallet.totalCurrency
 
+        PartnerDataManager.shared.createPartner()
+
         // Get nonce. It's a slow API request.
         SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
-        
+
         // Publish a notification to update UI
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: .currentAppWalletSwitched, object: nil)
