@@ -23,6 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         Fabric.with([Crashlytics.self])
         
+        guard let customFont = UIFont(name: "Rubik-Regular", size: UIFont.labelFontSize) else {
+            fatalError("""
+        Failed to load the "CustomFont-Light" font.
+        Make sure the font file is included in the project and the font name is spelled correctly.
+        """
+            )
+        }
+        
         FontConfigManager.shared.setup()
         
         Themes.restoreLastTheme()

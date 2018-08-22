@@ -9,7 +9,6 @@ target 'loopr-ios' do
   pod 'Charts', '3.0.5'
   pod 'SwiftLint'
   pod 'SwiftTheme'
-  pod 'FontBlaster'
   pod 'Socket.IO-Client-Swift', '~> 13.1.0'
   pod 'NotificationBannerSwift'
   pod 'SVProgressHUD'

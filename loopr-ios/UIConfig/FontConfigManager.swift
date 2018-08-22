@@ -6,14 +6,10 @@
 //  Copyright © 2018 Loopring. All rights reserved.
 //
 
-import FontBlaster
 import Foundation
 import UIKit
 
 enum SupportedFonts: String {
-    case DIN
-    case OpenSans
-    case Roboto
     case Rubik
 }
 
@@ -29,11 +25,6 @@ class FontConfigManager {
     }
     
     func setup() {
-        FontBlaster.debugEnabled = true
-        FontBlaster.blast { (fonts) -> Void in
-            print("Loaded Fonts", fonts)
-        }
-
         UILabel.appearance().font = FontConfigManager.shared.getDigitalFont()
         UIButton.appearance().titleLabel?.font = FontConfigManager.shared.getDigitalFont()
         UITextField.appearance().font = FontConfigManager.shared.getDigitalFont()
@@ -56,24 +47,15 @@ class FontConfigManager {
                 return validFont
             }
         }
-        return SupportedFonts.DIN
+        return SupportedFonts.Rubik
     }
     
     func getCurrentFontName() -> String {
-        if currentFont == .DIN {
-            return "DINNextLTPro-Regular"
-        }
         return "\(currentFont.rawValue)-Regular"
     }
     
     func getMedium() -> String {
         switch currentFont {
-        case .DIN:
-            return "DINNextLTPro-Medium"
-        case .OpenSans:
-            return "OpenSans-SemiBold"
-        case .Roboto:
-            return "Roboto-Medium"
         case .Rubik:
             return "Rubik-Medium"
         }
@@ -86,9 +68,6 @@ class FontConfigManager {
     }
     
     func getLight() -> String {
-        if currentFont == .DIN {
-            return "DINNextLTPro-Light"
-        }
         return "\(currentFont.rawValue)-Light"
     }
     
@@ -99,9 +78,6 @@ class FontConfigManager {
     }
 
     func getRegular() -> String {
-        if currentFont == .DIN {
-            return "DINNextLTPro-Regular"
-        }
         return "\(currentFont.rawValue)-Regular"
     }
     
@@ -112,9 +88,6 @@ class FontConfigManager {
     }
     
     func getBold() -> String {
-        if currentFont == .DIN {
-            return "DIN-Bold"
-        }
         return "\(currentFont.rawValue)-Bold"
     }
     
