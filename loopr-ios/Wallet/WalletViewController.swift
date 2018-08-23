@@ -219,6 +219,17 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         self.navigationController?.pushViewController(vc, animated: true)
                     }
                 }
+                
+            case .approve:
+                manager.approveHash = json["value"].stringValue
+                manager.getApproveTxs { (_, error) in
+                    let result = error == nil ? true : false
+                    DispatchQueue.main.async {
+                        let vc = LoginResultViewController()
+                        vc.result = result
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
             case .p2pOrder:
                 TradeDataManager.shared.handleResult(of: json["value"])
                 let vc = TradeConfirmationViewController()
@@ -381,7 +392,7 @@ extension WalletViewController: WalletButtonTableViewCellDelegate {
 
     func navigationToScanViewController() {
         let viewController = ScanQRCodeViewController()
-        viewController.expectedQRCodeTypes = [.submitOrder, .login, .cancelOrder, .convert, .p2pOrder, .address]
+        viewController.expectedQRCodeTypes = [.submitOrder, .login, .cancelOrder, .convert, .approve, .p2pOrder, .address]
         viewController.delegate = self
         viewController.shouldPop = false
         viewController.hidesBottomBarWhenPushed = true
@@ -468,7 +479,7 @@ extension WalletViewController: MKDropdownMenuDelegate {
         switch row {
         case 0:
             let viewController = ScanQRCodeViewController()
-            viewController.expectedQRCodeTypes = [.submitOrder, .login, .cancelOrder, .convert, .p2pOrder, .address]
+            viewController.expectedQRCodeTypes = [.submitOrder, .login, .cancelOrder, .convert, .approve, .p2pOrder, .address]
             viewController.delegate = self
             viewController.shouldPop = false
             viewController.hidesBottomBarWhenPushed = true
@@ -485,7 +496,7 @@ extension WalletViewController: MKDropdownMenuDelegate {
             break
         }
     }
-        
+
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, backgroundColorForHighlightedRowsInComponent component: Int) -> UIColor? {
         return UIColor.dark4
     }

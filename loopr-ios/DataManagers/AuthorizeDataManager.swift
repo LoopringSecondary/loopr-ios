@@ -29,6 +29,10 @@ class AuthorizeDataManager {
     var convertOwner: String!
     var convertTx: RawTransaction!
     
+    var approveHash: String!
+    var approveOwner: String!
+    var approveTxs: [RawTransaction]!
+    
     // string & type from request
     var value: String?
     var type: QRCodeType?
@@ -58,6 +62,15 @@ class AuthorizeDataManager {
         LoopringAPIRequest.getSignMessage(message: hash) { (data, error) in
             guard let data = data, error == nil else { return }
             self.parseConvertTx(from: data, completion: completion)
+        }
+    }
+    
+    func getApproveTxs(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        guard let hash = self.approveHash else { return }
+        LoopringAPIRequest.notifyStatus(hash: hash, status: .received) { _, _ in }
+        LoopringAPIRequest.getSignMessage(message: hash) { (data, error) in
+            guard let data = data, error == nil else { return }
+            self.parseApproveTxs(from: data, completion: completion)
         }
     }
     
@@ -99,8 +112,20 @@ class AuthorizeDataManager {
         if let data = data.data(using: .utf8) {
             let json = JSON(data)
             self.convertTx = RawTransaction(json: json["tx"])
-            self.convertOwner = json["owner"].stringValue
+            self.convertOwner = json["owner"].string ?? CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
             self._authorizeConvert(completion: completion)
+        }
+    }
+    
+    func parseApproveTxs(from data: String, completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        if let data = data.data(using: .utf8) {
+            let json = JSON(data)
+            approveTxs = []
+            for txJson in json["txs"].arrayValue {
+                approveTxs.append(RawTransaction(json: txJson))
+            }
+            self.approveOwner = json["owner"].string ?? CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
+            self._authorizeApprove(completion: completion)
         }
     }
     
@@ -112,7 +137,7 @@ class AuthorizeDataManager {
         let (signature, _) = web3swift.sign(message: data)
         return signature
     }
-    
+
     func _authorizeOrder(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
         let tokens = Array(signTransactions.keys)
         if self.signTransactions.count == 0 {
@@ -219,6 +244,35 @@ class AuthorizeDataManager {
         }
     }
     
+    func authorizeApprove(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        let error = NSError(domain: "convert", code: 0, userInfo: ["message": "error"])
+        guard let owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address,
+            let hash = self.approveHash, let rawTxs = self.approveTxs else { completion(nil, error); return }
+        guard owner.lowercased() == self.approveOwner.lowercased() else { completion(nil, error); return }
+        if rawTxs.count == 1 {
+            SendCurrentAppWalletDataManager.shared.transferOnce(rawTx: rawTxs[0]) { (_, error) in
+                guard error == nil else { completion(nil, error); return }
+                LoopringAPIRequest.notifyStatus(hash: hash, status: .accept, completionHandler: completion)
+            }
+        } else if rawTxs.count == 2 {
+            SendCurrentAppWalletDataManager.shared.transferTwice(rawTxs: rawTxs) { (_, error) in
+                guard error == nil else { completion(nil, error); return }
+                LoopringAPIRequest.notifyStatus(hash: hash, status: .accept, completionHandler: completion)
+            }
+        }
+    }
+    
+    func _authorizeApprove(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        if AuthenticationDataManager.shared.getPasscodeSetting() {
+            AuthenticationDataManager.shared.authenticate { (error) in
+                guard error == nil else { completion(nil, error); return }
+                self.authorizeApprove(completion: completion)
+            }
+        } else {
+            self.authorizeApprove(completion: completion)
+        }
+    }
+    
     func process(qrContent: String) {
         if QRCodeMethod.isAddress(content: qrContent) {
             self.type = .address
@@ -230,6 +284,8 @@ class AuthorizeDataManager {
             self.type = .cancelOrder
         } else if QRCodeMethod.isConvert(content: qrContent) {
             self.type = .convert
+        } else if QRCodeMethod.isApprove(content: qrContent) {
+            self.type = .approve
         } else if QRCodeMethod.isMnemonicValid(content: qrContent) {
             self.type = .mnemonic
         } else if QRCodeMethod.isPrivateKey(content: qrContent) {

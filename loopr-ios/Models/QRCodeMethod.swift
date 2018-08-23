@@ -105,6 +105,16 @@ enum QRCodeMethod: String {
         return false
     }
     
+    static func isApprove(content: String) -> Bool {
+        if let data = content.data(using: .utf8) {
+            let json = JSON(data)
+            if json["type"] == "approve" {
+                return true
+            }
+        }
+        return false
+    }
+    
     static func isConvert(content: String) -> Bool {
         if let data = content.data(using: .utf8) {
             let json = JSON(data)

@@ -23,6 +23,7 @@ enum QRCodeType: String {
     case submitOrder = "Submit Order"
     case cancelOrder = "Cancel Order"
     case p2pOrder = "P2P Order"
+    case approve = "Approve"
     case undefined = "Undefined"
     
     var detectedDescription: String {
@@ -36,6 +37,7 @@ enum QRCodeType: String {
         case .cancelOrder: return LocalizedString("Cancel message detected", comment: "")
         case .convert: return LocalizedString("Convert message detected", comment: "")
         case .p2pOrder: return LocalizedString("P2P message detected", comment: "")
+        case .approve: return LocalizedString("Approve", comment: "")
         case .undefined: return LocalizedString("Undefined", comment: "")
         }
     }
@@ -59,7 +61,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     var shouldPop = true
     var scanViewWidth: CGFloat = UIScreen.main.bounds.width
     
-    var expectedQRCodeTypes: [QRCodeType] = [.address, .mnemonic, .keystore, .privateKey, .submitOrder, .login, .cancelOrder, .convert, .p2pOrder]
+    var expectedQRCodeTypes: [QRCodeType] = [.address, .mnemonic, .keystore, .privateKey, .submitOrder, .login, .cancelOrder, .convert, .approve, .p2pOrder]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -287,6 +289,10 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         
         if expectedQRCodeTypes.contains(.cancelOrder) && QRCodeMethod.isCancelOrder(content: qrContent) {
             return QRCodeType.cancelOrder
+        }
+        
+        if expectedQRCodeTypes.contains(.approve) && QRCodeMethod.isApprove(content: qrContent) {
+            return QRCodeType.approve
         }
         
         if expectedQRCodeTypes.contains(.convert) && QRCodeMethod.isConvert(content: qrContent) {
