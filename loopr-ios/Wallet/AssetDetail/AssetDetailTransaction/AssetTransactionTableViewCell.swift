@@ -24,12 +24,12 @@ class AssetTransactionTableViewCell: UITableViewCell {
         // Initialization code
         
         selectionStyle = .none
-        theme_backgroundColor = GlobalPicker.backgroundColor
+        theme_backgroundColor = ColorPicker.backgroundColor
     
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         
-        baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        baseView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         baseView.frame = CGRect.init(x: 15, y: 4, width: screenWidth - 15*2, height: AssetTransactionTableViewCell.getHeight() - 8)
         baseView.cornerRadius = 6
         addSubview(baseView)
@@ -72,9 +72,9 @@ class AssetTransactionTableViewCell: UITableViewCell {
 
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         if highlighted {
-            baseView.theme_backgroundColor = GlobalPicker.cardHighLightColor
+            baseView.theme_backgroundColor = ColorPicker.cardHighLightColor
         } else {
-            baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+            baseView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         }
     }
     

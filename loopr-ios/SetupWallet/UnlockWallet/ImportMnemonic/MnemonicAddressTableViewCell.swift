@@ -20,7 +20,7 @@ class MnemonicAddressTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        theme_backgroundColor = GlobalPicker.backgroundColor
+        theme_backgroundColor = ColorPicker.backgroundColor
         
         indexLabel.textAlignment = .right
         indexLabel.font = FontConfigManager.shared.getMediumFont(size: 13)

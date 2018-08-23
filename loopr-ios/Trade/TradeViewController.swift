@@ -66,9 +66,11 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
         self.navigationItem.title = LocalizedString("P2P Trade", comment: "")
         setBackButton()
+        
+        containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
 
         // First row: TokenS
         amountSellTextField.delegate = self
@@ -116,6 +118,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
             $0.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
             $0.theme_setTitleColor(GlobalPicker.textColor, forState: .selected)
             $0.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
+            $0.setBackgroundColor(UIColor.dark3, for: .normal)
         }
         
         // Sell ratio

@@ -26,13 +26,13 @@ class MarketDetailTradeHistoryTableViewCell: UITableViewCell {
         
         clipsToBounds = true
         selectionStyle = .none
-        theme_backgroundColor = GlobalPicker.backgroundColor
+        theme_backgroundColor = ColorPicker.backgroundColor
         
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         
         baseViewBuy.frame = CGRect(x: 15, y: 0, width: (screenWidth - 15*2)*0.5, height: 33+10)
-        baseViewBuy.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        baseViewBuy.theme_backgroundColor = ColorPicker.cardBackgroundColor
         addSubview(baseViewBuy)
         
         label1 = UILabel(frame: CGRect(x: 10, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
@@ -49,7 +49,7 @@ class MarketDetailTradeHistoryTableViewCell: UITableViewCell {
         baseViewBuy.addSubview(label2)
         
         baseViewSell.frame = CGRect(x: baseViewBuy.frame.maxX, y: baseViewBuy.frame.minY, width: baseViewBuy.width, height: baseViewBuy.height)
-        baseViewSell.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        baseViewSell.theme_backgroundColor = ColorPicker.cardBackgroundColor
         addSubview(baseViewSell)
         
         label3 = UILabel(frame: CGRect(x: 10, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))

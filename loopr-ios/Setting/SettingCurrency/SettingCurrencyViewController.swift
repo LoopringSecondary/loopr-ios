@@ -26,8 +26,8 @@ class SettingCurrencyViewController: UIViewController, UITableViewDelegate, UITa
         
         self.navigationItem.title = LocalizedString("Currency", comment: "")
         setBackButton()
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
-        tableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
+        tableView.theme_backgroundColor = ColorPicker.backgroundColor
     }
 
     override func didReceiveMemoryWarning() {

@@ -27,8 +27,8 @@ class OrderTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.selectionStyle = .none
-        self.theme_backgroundColor = GlobalPicker.backgroundColor
-        self.baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        self.theme_backgroundColor = ColorPicker.backgroundColor
+        self.baseView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         self.baseView.applyShadow()
         cancelButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 14)
         buttonColor = cancelButton.currentTitleColor
@@ -36,9 +36,9 @@ class OrderTableViewCell: UITableViewCell {
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         if highlighted {
-            baseView.theme_backgroundColor = GlobalPicker.cardHighLightColor
+            baseView.theme_backgroundColor = ColorPicker.cardHighLightColor
         } else {
-            baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+            baseView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         }
     }
     

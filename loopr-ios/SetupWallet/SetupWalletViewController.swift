@@ -21,7 +21,7 @@ class SetupWalletViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
 
         let stringValue = "UP Wallet"
         let attrString = NSMutableAttributedString(string: stringValue)

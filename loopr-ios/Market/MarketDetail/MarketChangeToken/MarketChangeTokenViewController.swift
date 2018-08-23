@@ -52,7 +52,7 @@ class MarketChangeTokenViewController: UIViewController, UITableViewDelegate, UI
         marketTableView.delegate = self
         
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 10))
-        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        headerView.theme_backgroundColor = ColorPicker.backgroundColor
         marketTableView.tableHeaderView = headerView
         
         marketTableView.tableFooterView = UIView()
@@ -60,8 +60,8 @@ class MarketChangeTokenViewController: UIViewController, UITableViewDelegate, UI
         let tap = UITapGestureRecognizer(target: self, action: #selector(tableTapped))
         marketTableView.addGestureRecognizer(tap)
 
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
-        marketTableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
+        marketTableView.theme_backgroundColor = ColorPicker.backgroundColor
         
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)

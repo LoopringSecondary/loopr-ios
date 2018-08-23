@@ -21,36 +21,36 @@ class TradeSelectionViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
         
         self.navigationItem.title = LocalizedString("Trade", comment: "")
         
         button1.cornerRadius = 8
         button1.titleLabel?.setSubTitleCharFont()
         button1.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
-        button1.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
-        button1.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
+        button1.theme_setBackgroundImage(ColorPicker.button, forState: .normal)
+        button1.theme_setBackgroundImage(ColorPicker.buttonHighlight, forState: .highlighted)
         button1.addTarget(self, action: #selector(self.pressedButton1(_:)), for: .touchUpInside)
         
         button2.cornerRadius = 8
         button2.titleLabel?.setSubTitleCharFont()
         button2.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
-        button2.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
-        button2.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
+        button2.theme_setBackgroundImage(ColorPicker.button, forState: .normal)
+        button2.theme_setBackgroundImage(ColorPicker.buttonHighlight, forState: .highlighted)
         button2.addTarget(self, action: #selector(self.pressedButton2(_:)), for: .touchUpInside)
         
         button3.cornerRadius = 8
         button3.titleLabel?.setSubTitleCharFont()
         button3.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
-        button3.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
-        button3.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
+        button3.theme_setBackgroundImage(ColorPicker.button, forState: .normal)
+        button3.theme_setBackgroundImage(ColorPicker.buttonHighlight, forState: .highlighted)
         button3.addTarget(self, action: #selector(self.pressedButton3(_:)), for: .touchUpInside)
         
         button4.cornerRadius = 8
         button4.titleLabel?.setSubTitleCharFont()
         button4.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
-        button4.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
-        button4.theme_setBackgroundImage(GlobalPicker.buttonHighlight, forState: .highlighted)
+        button4.theme_setBackgroundImage(ColorPicker.button, forState: .normal)
+        button4.theme_setBackgroundImage(ColorPicker.buttonHighlight, forState: .highlighted)
         button4.addTarget(self, action: #selector(self.pressedButton4(_:)), for: .touchUpInside)
     }
 

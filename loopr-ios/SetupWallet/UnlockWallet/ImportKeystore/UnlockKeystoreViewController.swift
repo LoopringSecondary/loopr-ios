@@ -22,7 +22,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
@@ -33,7 +33,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         keystoreContentTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
         keystoreContentTextView.cornerRadius = 6
         keystoreContentTextView.font = FontConfigManager.shared.getRegularFont()
-        keystoreContentTextView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        keystoreContentTextView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         keystoreContentTextView.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffff66") : UIColor.dark3
         keystoreContentTextView.theme_tintColor = GlobalPicker.textColor
         keystoreContentTextView.delegate = self
@@ -42,7 +42,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
 
         passwordTextField.delegate = self
         passwordTextField.tag = 0
-        passwordTextField.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        passwordTextField.theme_backgroundColor = ColorPicker.cardBackgroundColor
         passwordTextField.theme_textColor = GlobalPicker.textColor
         passwordTextField.theme_tintColor = GlobalPicker.textColor
         passwordTextField.font = FontConfigManager.shared.getRegularFont()

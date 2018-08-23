@@ -28,7 +28,7 @@ class SendResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         doneButton.title = LocalizedString("Done", comment: "")
         doneButton.setupPrimary(height: 44)

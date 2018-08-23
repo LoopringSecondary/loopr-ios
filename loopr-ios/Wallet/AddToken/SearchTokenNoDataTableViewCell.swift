@@ -19,7 +19,7 @@ class SearchTokenNoDataTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         selectionStyle = .none
-        theme_backgroundColor = GlobalPicker.backgroundColor
+        theme_backgroundColor = ColorPicker.backgroundColor
         
         noTokenInfoLabel.setTitleCharFont()
         noTokenInfoLabel.text = LocalizedString("No search result", comment: "")

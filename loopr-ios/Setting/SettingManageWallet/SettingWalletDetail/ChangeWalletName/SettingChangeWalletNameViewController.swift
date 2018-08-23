@@ -25,16 +25,16 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
         // Do any additional setup after loading the view.
         self.navigationItem.title = LocalizedString("Wallet Name", comment: "")
         setBackButton()
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
 
-        contentView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        contentView.theme_backgroundColor = ColorPicker.cardBackgroundColor
     
         nameTextField.delegate = self
         nameTextField.tag = 0
         nameTextField.font = FontConfigManager.shared.getMediumFont(size: 14)
         nameTextField.theme_tintColor = GlobalPicker.textColor
         nameTextField.theme_textColor = GlobalPicker.textColor
-        nameTextField.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        nameTextField.theme_backgroundColor = ColorPicker.cardBackgroundColor
         nameTextField.placeholder = LocalizedString("Wallet Name", comment: "")
         nameTextField.setValue(UIColor.init(white: 1, alpha: 0.4), forKeyPath: "_placeholderLabel.textColor")
         nameTextField.contentMode = UIViewContentMode.bottom

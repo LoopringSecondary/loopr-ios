@@ -36,7 +36,7 @@ class NumericKeyboardCell: UICollectionViewCell {
             button.image = item.image
             button.theme_tintColor = GlobalPicker.textColor
             
-            button.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
+            button.theme_setBackgroundImage(ColorPicker.button, forState: .normal)
             button.theme_setBackgroundImage(GlobalPicker.keyboard, forState: .highlighted)
         }
     }

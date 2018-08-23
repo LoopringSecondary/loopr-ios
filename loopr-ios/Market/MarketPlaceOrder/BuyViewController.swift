@@ -88,7 +88,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
 
         // Do any additional setup after loading the view.
         setBackButton()
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
         
         // First row: TokenS
         priceTextField.delegate = self

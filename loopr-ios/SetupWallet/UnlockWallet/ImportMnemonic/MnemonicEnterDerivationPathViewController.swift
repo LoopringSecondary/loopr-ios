@@ -38,8 +38,8 @@ class MnemonicEnterDerivationPathViewController: UIViewController, UITableViewDe
         // Do any additional setup after loading the view.
         setBackButton()
         self.navigationItem.title = LocalizedString("Select Your Wallet Type", comment: "")
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
-        tableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
+        tableView.theme_backgroundColor = ColorPicker.backgroundColor
 
         nextButton.setupSecondary(height: 44)
         nextButton.setTitle(LocalizedString("Next", comment: ""), for: .normal)

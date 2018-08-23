@@ -23,7 +23,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
 
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
@@ -34,7 +34,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         mnemonicWordTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 10, bottom: 15, right: 10)
         mnemonicWordTextView.cornerRadius = 6
         mnemonicWordTextView.font = FontConfigManager.shared.getRegularFont()
-        mnemonicWordTextView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        mnemonicWordTextView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         mnemonicWordTextView.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffff66") : UIColor.dark3
         mnemonicWordTextView.theme_tintColor = GlobalPicker.textColor
         mnemonicWordTextView.delegate = self
@@ -43,7 +43,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         
         passwordTextField.delegate = self
         passwordTextField.tag = 0
-        passwordTextField.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        passwordTextField.theme_backgroundColor = ColorPicker.cardBackgroundColor
         passwordTextField.theme_textColor = GlobalPicker.textColor
         passwordTextField.theme_tintColor = GlobalPicker.textColor
         passwordTextField.font = FontConfigManager.shared.getRegularFont()

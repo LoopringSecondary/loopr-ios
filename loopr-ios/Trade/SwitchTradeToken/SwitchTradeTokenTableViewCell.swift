@@ -24,9 +24,9 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
         // Initialization code
         selectionStyle = .none
         accessoryType = .none
-        theme_backgroundColor = GlobalPicker.backgroundColor
-        baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
-        iconView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        theme_backgroundColor = ColorPicker.backgroundColor
+        baseView.theme_backgroundColor = ColorPicker.cardBackgroundColor
+        iconView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         symbolLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
         symbolLabel.theme_textColor = GlobalPicker.textColor
         balanceLabel.font = FontConfigManager.shared.getRegularFont(size: 13)
@@ -38,17 +38,17 @@ class SwitchTradeTokenTableViewCell: UITableViewCell {
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         if highlighted {
-            baseView.theme_backgroundColor = GlobalPicker.cardHighLightColor
+            baseView.theme_backgroundColor = ColorPicker.cardHighLightColor
         } else {
-            baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+            baseView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         if selected {
-            baseView.theme_backgroundColor = GlobalPicker.cardHighLightColor
+            baseView.theme_backgroundColor = ColorPicker.cardHighLightColor
         } else {
-            // baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+            // baseView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         }
     }
 

@@ -35,7 +35,7 @@ class TradeReviewViewController: UIViewController {
         // Do any additional setup after loading the view.
         setBackButton()
         setupShareButton()
-        self.view.theme_backgroundColor = GlobalPicker.backgroundColor
+        self.view.theme_backgroundColor = ColorPicker.backgroundColor
         self.navigationItem.title = LocalizedString("Order Detail", comment: "")
         
         // TokenView

@@ -27,7 +27,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
         // Initialization code
         
         selectionStyle = .none
-        theme_backgroundColor = GlobalPicker.backgroundColor
+        theme_backgroundColor = ColorPicker.backgroundColor
 
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width

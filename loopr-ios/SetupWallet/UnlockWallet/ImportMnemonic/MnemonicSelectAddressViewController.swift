@@ -19,8 +19,8 @@ class MnemonicSelectAddressViewController: UIViewController, UITableViewDelegate
         // Do any additional setup after loading the view.
         setBackButton()
         self.navigationItem.title = LocalizedString("Select your address", comment: "")
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
-        tableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
+        tableView.theme_backgroundColor = ColorPicker.backgroundColor
         tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
@@ -29,8 +29,8 @@ class MnemonicSelectAddressViewController: UIViewController, UITableViewDelegate
         nextButton.setupSecondary(height: 44)
         nextButton.setTitle(LocalizedString("Next", comment: ""), for: .normal)
 
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
-        tableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
+        tableView.theme_backgroundColor = ColorPicker.backgroundColor
     }
 
     override func didReceiveMemoryWarning() {

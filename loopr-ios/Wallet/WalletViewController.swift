@@ -27,13 +27,13 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
         
         assetTableView.dataSource = self
         assetTableView.delegate = self
 
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
-        footerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        footerView.theme_backgroundColor = ColorPicker.backgroundColor
         assetTableView.tableFooterView = footerView
         assetTableView.separatorStyle = .none
         assetTableView.delaysContentTouches = false
@@ -43,7 +43,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.estimatedSectionHeaderHeight = 0
         assetTableView.estimatedSectionFooterHeight = 0
 
-        assetTableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        assetTableView.theme_backgroundColor = ColorPicker.backgroundColor
 
         let addBarButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
         self.navigationItem.rightBarButtonItem = addBarButton
@@ -76,7 +76,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         frame.origin.y = -frame.size.height
         let backgroundView = UIView(frame: frame)
         backgroundView.autoresizingMask = .flexibleWidth
-        backgroundView.theme_backgroundColor = GlobalPicker.backgroundColor
+        backgroundView.theme_backgroundColor = ColorPicker.backgroundColor
         
         // Adding the view below the refresh control
         assetTableView.insertSubview(backgroundView, at: 0)

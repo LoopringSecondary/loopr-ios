@@ -60,8 +60,8 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // No need to call here
         // getMarketsFromRelay()
         
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
-        marketTableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
+        marketTableView.theme_backgroundColor = ColorPicker.backgroundColor
 
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
@@ -208,10 +208,10 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let screenWidth = view.frame.size.width
 
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30 + 10))
-        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        headerView.theme_backgroundColor = ColorPicker.backgroundColor
 
         let baseView = UIView(frame: CGRect(x: 15, y: 10, width: screenWidth - 15*2, height: 30))
-        baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        baseView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         baseView.round(corners: [.topLeft, .topRight], radius: 6)
         headerView.addSubview(baseView)
 

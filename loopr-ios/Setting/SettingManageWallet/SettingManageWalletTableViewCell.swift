@@ -32,7 +32,7 @@ class SettingManageWalletTableViewCell: UITableViewCell {
         accessoryType = .none
         selectionStyle = .none
         
-        theme_backgroundColor = GlobalPicker.backgroundColor
+        theme_backgroundColor = ColorPicker.backgroundColor
         
         baseView.image = UIImage(named: "wallet-background" + ColorTheme.getTheme())
         baseView.contentMode = .scaleToFill

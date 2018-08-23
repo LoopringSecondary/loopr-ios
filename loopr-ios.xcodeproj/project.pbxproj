@@ -324,6 +324,7 @@
 		AC952A142053A84800C78562 /* OrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC952A122053A84800C78562 /* OrderHistoryViewController.swift */; };
 		AC952A152053A84800C78562 /* OrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC952A132053A84800C78562 /* OrderHistoryViewController.xib */; };
 		AC971EC820BB412300EDEDD0 /* AuthenticationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC971EC720BB412200EDEDD0 /* AuthenticationDataManager.swift */; };
+		AC97BAD2212E928A0013F7B5 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC97BAD1212E928A0013F7B5 /* ColorPicker.swift */; };
 		AC99CF462083DD6A000AE4BD /* MnemonicEnterDerivationPathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC99CF442083DD6A000AE4BD /* MnemonicEnterDerivationPathViewController.swift */; };
 		AC99CF472083DD6A000AE4BD /* MnemonicEnterDerivationPathViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC99CF452083DD6A000AE4BD /* MnemonicEnterDerivationPathViewController.xib */; };
 		AC99CF492083DF25000AE4BD /* ImportWalletUsingMnemonicDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC99CF482083DF25000AE4BD /* ImportWalletUsingMnemonicDataManager.swift */; };
@@ -826,6 +827,7 @@
 		AC952A122053A84800C78562 /* OrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryViewController.swift; sourceTree = "<group>"; };
 		AC952A132053A84800C78562 /* OrderHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistoryViewController.xib; sourceTree = "<group>"; };
 		AC971EC720BB412200EDEDD0 /* AuthenticationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDataManager.swift; sourceTree = "<group>"; };
+		AC97BAD1212E928A0013F7B5 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		AC99CF442083DD6A000AE4BD /* MnemonicEnterDerivationPathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicEnterDerivationPathViewController.swift; sourceTree = "<group>"; };
 		AC99CF452083DD6A000AE4BD /* MnemonicEnterDerivationPathViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicEnterDerivationPathViewController.xib; sourceTree = "<group>"; };
 		AC99CF482083DF25000AE4BD /* ImportWalletUsingMnemonicDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingMnemonicDataManager.swift; sourceTree = "<group>"; };
@@ -2177,6 +2179,7 @@
 				ACE6F721204221260039273D /* Themes.swift */,
 				AC9FFF39212AA7F300957175 /* ColorTheme.swift */,
 				ACE6F7232042228A0039273D /* GlobalPicker.swift */,
+				AC97BAD1212E928A0013F7B5 /* ColorPicker.swift */,
 				AC54FD91204FD291007E1DEB /* FontConfigManager.swift */,
 			);
 			path = UIConfig;
@@ -2859,6 +2862,7 @@
 				ACB5DD9A202D5B7100140A09 /* DefaultNumericKeyboard.swift in Sources */,
 				940B45262060F67E00ADE2B9 /* ConvertDataManager.swift in Sources */,
 				ACB6A1A120966BC0004C64BC /* DefaultNotificationBanner.swift in Sources */,
+				AC97BAD2212E928A0013F7B5 /* ColorPicker.swift in Sources */,
 				ACB5DDA0202D5B9900140A09 /* CGSizeExtension.swift in Sources */,
 				94768CA1210DCABE00B5977B /* TradeSwipeViewController.swift in Sources */,
 				AC2C93D72105AE97004B8456 /* GenerateWalletEnterRepeatPasswordViewController.swift in Sources */,

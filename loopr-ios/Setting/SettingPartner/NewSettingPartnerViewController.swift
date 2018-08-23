@@ -26,7 +26,7 @@ class NewSettingPartnerViewController: UIViewController {
         // Do any additional setup after loading the view.
         setBackButton()
         self.navigationItem.title = LocalizedString("Partner_Title", comment: "")
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
         
         sloganLabel.textColor = .success
         sloganLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)

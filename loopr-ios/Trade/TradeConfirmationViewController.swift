@@ -47,7 +47,7 @@ class TradeConfirmationViewController: UIViewController {
         self.setBackButton()
         self.modalPresentationStyle = .custom
         self.navigationItem.title = LocalizedString("Trade_Confirm", comment: "")
-        self.view.theme_backgroundColor = GlobalPicker.backgroundColor
+        self.view.theme_backgroundColor = ColorPicker.backgroundColor
         containerView.applyShadow()
         
         // TokenView

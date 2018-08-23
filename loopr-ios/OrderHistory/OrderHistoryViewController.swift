@@ -53,8 +53,8 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
-        historyTableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
+        historyTableView.theme_backgroundColor = ColorPicker.backgroundColor
         setBackButton()
         historyTableView.dataSource = self
         historyTableView.delegate = self

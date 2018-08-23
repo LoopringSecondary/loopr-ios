@@ -16,11 +16,11 @@ extension StepSlider {
         stepSlider.labelFont = FontConfigManager.shared.getMediumFont(size: 12)
         stepSlider.trackHeight = 2
         stepSlider.trackCircleRadius = 3
-        stepSlider.labelColor = UIColor.dark4
-        stepSlider.trackColor = UIColor.init(rgba: "#444444")
-        stepSlider.tintColor = UIColor.themeGreen
+        stepSlider.labelColor = UIColor.text1
+        stepSlider.trackColor = UIColor.dark4
+        stepSlider.tintColor = UIColor.themeYellow
         stepSlider.sliderCircleRadius = 8
-        stepSlider.sliderCircleColor = UIColor.themeGreen
+        stepSlider.sliderCircleColor = UIColor.themeYellow
         stepSlider.labelOffset = 10
         stepSlider.isDotsInteractionEnabled = true
         stepSlider.adjustLabel = true

@@ -25,11 +25,11 @@ class AddTokenTableViewCell: UITableViewCell {
         
         baseView.cornerRadius = 6
         baseView.clipsToBounds = true
-        baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        baseView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         
-        theme_backgroundColor = GlobalPicker.backgroundColor
+        theme_backgroundColor = ColorPicker.backgroundColor
         
-        iconView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        iconView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         symbolLabel.setTitleDigitFont()
         nameLabel.setSubTitleDigitFont()
 

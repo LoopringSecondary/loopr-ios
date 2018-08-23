@@ -23,8 +23,8 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         setBackButton()
         self.navigationItem.title = appWallet.name
 
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
-        tableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
+        tableView.theme_backgroundColor = ColorPicker.backgroundColor
 
         tableView.separatorStyle = .none
         tableView.delegate = self
@@ -32,7 +32,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         tableView.tableFooterView = UIView()
         
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 10))
-        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        headerView.theme_backgroundColor = ColorPicker.backgroundColor
         tableView.tableHeaderView = headerView
         
         switchWalletButton.title = LocalizedString("Switch to this Wallet", comment: "")
@@ -108,7 +108,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 20))
-        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        headerView.theme_backgroundColor = ColorPicker.backgroundColor
         return headerView
     }
     

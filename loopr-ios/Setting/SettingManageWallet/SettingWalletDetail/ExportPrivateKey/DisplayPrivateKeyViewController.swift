@@ -27,11 +27,11 @@ class DisplayPrivateKeyViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationItem.title = navigationTitle
         setBackButton()
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
         privateKeyTextView.contentInset = UIEdgeInsets.init(top: 17, left: 20, bottom: 15, right: 20)
         privateKeyTextView.cornerRadius = 6
         privateKeyTextView.font = FontConfigManager.shared.getRegularFont(size: 14)
-        privateKeyTextView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        privateKeyTextView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         privateKeyTextView.theme_textColor = GlobalPicker.textColor
         privateKeyTextView.isEditable = false
         // privateKeyTextView.isScrollEnabled = false

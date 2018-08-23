@@ -20,7 +20,7 @@ class DisplayKeystoreViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
 
         keystoreTextView.contentInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
         // privateKeyTextView.contentOffset = CGPoint(x: 0, y: -10)
@@ -34,7 +34,7 @@ class DisplayKeystoreViewController: UIViewController {
         keystoreTextView.contentInset = UIEdgeInsets.init(top: 17, left: 20, bottom: 15, right: 20)
         keystoreTextView.cornerRadius = 6
         keystoreTextView.font = FontConfigManager.shared.getRegularFont(size: 14)
-        keystoreTextView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        keystoreTextView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         keystoreTextView.theme_textColor = GlobalPicker.textColor
         keystoreTextView.isEditable = false
         

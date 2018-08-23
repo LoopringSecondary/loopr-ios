@@ -35,7 +35,7 @@ class SettingStyleTableViewCell: UITableViewCell {
         seperateLineUp.backgroundColor = UIColor.dark3
         seperateLineDown.backgroundColor = UIColor.dark3
         
-        theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        theme_backgroundColor = ColorPicker.cardBackgroundColor
 
         leftLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
         leftLabel.theme_textColor = GlobalPicker.textColor

@@ -46,7 +46,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.modalPresentationStyle = .custom
-        self.view.theme_backgroundColor = GlobalPicker.backgroundColor
+        self.view.theme_backgroundColor = ColorPicker.backgroundColor
         containerView.applyShadow()
 
         // TokenView

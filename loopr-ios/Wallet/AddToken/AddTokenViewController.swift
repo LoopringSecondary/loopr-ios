@@ -28,14 +28,14 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         setBackButton()
         self.navigationItem.title = LocalizedString("Add Token", comment: "")
         
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
-        tableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
+        tableView.theme_backgroundColor = ColorPicker.backgroundColor
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
         
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 10))
-        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        headerView.theme_backgroundColor = ColorPicker.backgroundColor
         tableView.tableHeaderView = headerView
 
         searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.pressOrderSearchButton(_:)))

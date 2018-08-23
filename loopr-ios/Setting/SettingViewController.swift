@@ -21,11 +21,11 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Do any additional setup after loading the view.
         self.navigationItem.title = LocalizedString("Settings", comment: "")
         
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
         settingsTableView.separatorStyle = .none
         settingsTableView.tableFooterView = UIView()
         
-        settingsTableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        settingsTableView.theme_backgroundColor = ColorPicker.backgroundColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -159,7 +159,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         var headerView: UIView
         if section == 1 {
             headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 48))
-            headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+            headerView.theme_backgroundColor = ColorPicker.backgroundColor
             let tipLabel = UILabel(frame: CGRect(x: 23, y: 16, width: 120, height: 16))
             tipLabel.setSubTitleCharFont()
             tipLabel.text = LocalizedString("Partner_Tip", comment: "")
@@ -171,7 +171,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             headerView.addSubview(infoLabel)
         } else {
             headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 20))
-            headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+            headerView.theme_backgroundColor = ColorPicker.backgroundColor
         }
         return headerView
     }

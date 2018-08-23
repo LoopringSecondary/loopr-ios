@@ -23,7 +23,7 @@ class SettingMarginSplitViewController: UIViewController, StepSliderDelegate {
         // Do any additional setup after loading the view.
         // self.navigationItem.title = LocalizedString("LRC Fee Ratio", comment: "")
         setBackButton()
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
         
         // Setup UI in the scroll view
         let screensize: CGRect = UIScreen.main.bounds

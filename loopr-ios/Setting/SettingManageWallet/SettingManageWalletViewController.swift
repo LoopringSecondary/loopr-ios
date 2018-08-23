@@ -19,8 +19,8 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
-        tableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
+        tableView.theme_backgroundColor = ColorPicker.backgroundColor
 
         self.navigationItem.title = LocalizedString("Manage Wallet", comment: "")
         setBackButton()
@@ -29,11 +29,11 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
-        tableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        tableView.theme_backgroundColor = ColorPicker.backgroundColor
         tableView.delaysContentTouches = false
         
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 5))
-        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        headerView.theme_backgroundColor = ColorPicker.backgroundColor
         tableView.tableHeaderView = headerView
         
         importButton.setTitle(LocalizedString("Import Wallet", comment: ""), for: .normal)

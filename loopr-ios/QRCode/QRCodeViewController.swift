@@ -33,9 +33,9 @@ class QRCodeViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationItem.title = navigationTitle
         
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
         contentView.layer.cornerRadius = 6
-        contentView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        contentView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         
         receiveQRCodeIconView.image = UIImage(named: "Receive-qrcode-icon" + ColorTheme.getTheme())
         titleLabel.setTitleCharFont()

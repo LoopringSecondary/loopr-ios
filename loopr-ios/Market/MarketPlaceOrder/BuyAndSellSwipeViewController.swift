@@ -24,7 +24,7 @@ class BuyAndSellSwipeViewController: SwipeViewController {
         setBackButton()
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 
-        self.view.theme_backgroundColor = GlobalPicker.backgroundColor
+        self.view.theme_backgroundColor = ColorPicker.backgroundColor
         self.navigationItem.title = PlaceOrderDataManager.shared.market.description
 
         let vc1 = BuyViewController(type: .buy)

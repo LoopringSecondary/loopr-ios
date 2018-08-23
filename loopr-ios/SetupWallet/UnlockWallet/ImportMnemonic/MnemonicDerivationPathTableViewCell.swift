@@ -20,7 +20,7 @@ class MnemonicDerivationPathTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        theme_backgroundColor = GlobalPicker.backgroundColor
+        theme_backgroundColor = ColorPicker.backgroundColor
         
         pathValueLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
         pathValueLabel.theme_textColor = GlobalPicker.textColor

@@ -23,7 +23,7 @@ class OrderHistorySwipeViewController: SwipeViewController, UISearchBarDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
         
         setupSearchBar()
         setBackButton()

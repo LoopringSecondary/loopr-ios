@@ -41,7 +41,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         }
 
         setBackButton()
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
         self.navigationItem.title = LocalizedString("Generate Wallet", comment: "")
                 
         // Setup UI

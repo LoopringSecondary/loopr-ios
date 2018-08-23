@@ -22,7 +22,7 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
@@ -33,7 +33,7 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
         privateKeyTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 10, bottom: 15, right: 10)
         privateKeyTextView.cornerRadius = 6
         privateKeyTextView.font = FontConfigManager.shared.getRegularFont()
-        privateKeyTextView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        privateKeyTextView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         privateKeyTextView.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffff66") : UIColor.dark3
         privateKeyTextView.theme_tintColor = GlobalPicker.textColor
         privateKeyTextView.delegate = self

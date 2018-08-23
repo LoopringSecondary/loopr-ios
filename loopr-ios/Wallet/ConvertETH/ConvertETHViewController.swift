@@ -56,7 +56,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         self.navigationItem.title = LocalizedString("Convert", comment: "")
         
         setBackButton()
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
         
         tokenSImageView.image = asset?.icon
         tokenBImageView.image = getAnotherAsset()?.icon

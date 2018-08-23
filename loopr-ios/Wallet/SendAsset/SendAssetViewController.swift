@@ -70,13 +70,15 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         setBackButton()
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
         self.navigationItem.title = LocalizedString("Send", comment: "")
+        
+        contentView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         contentView.applyShadow()
         
         // First row: token
-        headerButton.theme_setBackgroundImage(GlobalPicker.button, forState: .normal)
-        headerButton.theme_setBackgroundImage(GlobalPicker.buttonSelected, forState: .highlighted)
+        headerButton.theme_setBackgroundImage(ColorPicker.button, forState: .normal)
+        headerButton.theme_setBackgroundImage(ColorPicker.buttonHighlight, forState: .highlighted)
         tokenIconImageView.image = UIImage(named: "ETH")
         tokenHeaderLabel.setTitleDigitFont()
         tokenTotalAmountLabel.textAlignment = .right

@@ -54,41 +54,66 @@ extension UIColor {
     class var secondaryHighlight: [UIColor] {
         return [UIColor.init(rgba: "#CF2549"), UIColor.init(rgba: "#8C1CA0")]
     }
-    
+        
     // #F5F5F5
     class var mute: UIColor {
         return UIColor(named: "Color-mute")!
     }
     
-    // #222222
     class var dark1: UIColor {
-        return UIColor(named: "Color-dark1")!
+        switch ColorTheme.current {
+        case .red:
+            // #222222
+            return UIColor(named: "Color-dark1")!
+        case .yellow:
+            return UIColor(rgba: "#16162A")
+        }
     }
     
-    // #292929
     class var dark2: UIColor {
-        return UIColor(named: "Color-dark2")!
+        switch ColorTheme.current {
+        case .red:
+            // #292929
+            return UIColor(named: "Color-dark2")!
+        case .yellow:
+            return UIColor(rgba: "#21203A")
+        }
     }
-    
-    // #383838
+
     class var dark3: UIColor {
-        return UIColor(named: "Color-dark3")!
+        switch ColorTheme.current {
+        case .red:
+            // #383838
+            return UIColor(named: "Color-dark3")!
+        case .yellow:
+            return UIColor(rgba: "#2B2C47")
+        }
     }
     
-    // #666666
     class var dark4: UIColor {
-        return UIColor(named: "Color-dark4")!
+        switch ColorTheme.current {
+        case .red:
+            // #666666
+            return UIColor(named: "Color-dark4")!
+        case .yellow:
+            return UIColor(rgba: "#343653")
+        }
     }
     
     // #888888
     class var dark5: UIColor {
         return UIColor(named: "Color-dark5")!
     }
+    
+    class var themeYellow: UIColor {
+        return UIColor(rgba: "#FDAE25")
+    }
 
     class var themeGreen: UIColor {
         return UIColor(named: "Color-green")!
     }
     
+    // #DD5252
     class var themeRed: UIColor {
         return UIColor(named: "Color-red")!
     }
@@ -108,7 +133,7 @@ extension UIColor {
         return UIColor(named: "Color-red")!
     }
     
-    // FFB832
+    // #FFB832
     class var warn: UIColor {
         return UIColor(named: "Color-yellow")!
     }
@@ -128,7 +153,7 @@ extension UIColor {
     
     class var down: UIColor {
         if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
-            return UIColor(named: "Color-red")!   // #FA4A6F
+            return UIColor(named: "Color-red")!   // #DD5252
         } else {
             return UIColor(named: "Color-green")! // #01B97F
         }

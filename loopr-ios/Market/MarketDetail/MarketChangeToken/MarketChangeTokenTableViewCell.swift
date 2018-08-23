@@ -21,8 +21,8 @@ class MarketChangeTokenTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        theme_backgroundColor = GlobalPicker.backgroundColor
-        baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        theme_backgroundColor = ColorPicker.backgroundColor
+        baseView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         
         nameLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
         nameLabel.theme_textColor = GlobalPicker.textColor
@@ -35,9 +35,9 @@ class MarketChangeTokenTableViewCell: UITableViewCell {
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         if highlighted {
-            baseView.theme_backgroundColor = GlobalPicker.cardHighLightColor
+            baseView.theme_backgroundColor = ColorPicker.cardHighLightColor
         } else {
-            baseView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+            baseView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         }
     }
     

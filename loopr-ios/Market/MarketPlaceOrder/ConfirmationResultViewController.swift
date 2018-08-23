@@ -63,7 +63,7 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
         guard errorTipInfo.count == 2 else { return }
         
         needAUnderline.frame = CGRect(x: padding, y: needATipLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        needAUnderline.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        needAUnderline.theme_backgroundColor = ColorPicker.cardBackgroundColor
         scrollView.addSubview(needAUnderline)
         
         // 2nd row: need B token
@@ -79,7 +79,7 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(needBInfoLabel)
         
         needBUnderline.frame = CGRect(x: padding, y: needBInfoLabel.frame.maxY, width: screenWidth - padding * 2, height: 1)
-        needBUnderline.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        needBUnderline.theme_backgroundColor = ColorPicker.cardBackgroundColor
         scrollView.addSubview(needBUnderline)
     }
     

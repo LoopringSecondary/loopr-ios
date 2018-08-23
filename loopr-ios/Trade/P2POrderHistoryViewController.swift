@@ -27,8 +27,8 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
-        historyTableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
+        historyTableView.theme_backgroundColor = ColorPicker.backgroundColor
         self.navigationItem.title = LocalizedString("P2P Order History", comment: "")
         setBackButton()
         historyTableView.dataSource = self
@@ -36,7 +36,7 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
         historyTableView.tableFooterView = UIView()
         historyTableView.separatorStyle = .none
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 8))
-        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        headerView.theme_backgroundColor = ColorPicker.backgroundColor
         historyTableView.tableHeaderView = headerView
 
         // Add Refresh Control to Table View
@@ -112,7 +112,7 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
             return nil
         }
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 40))
-        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        headerView.theme_backgroundColor = ColorPicker.backgroundColor
         let headerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 40))
         headerLabel.theme_textColor = GlobalPicker.textLightColor
         headerLabel.font = FontConfigManager.shared.getRegularFont(size: 14)

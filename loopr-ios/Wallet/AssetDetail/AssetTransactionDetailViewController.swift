@@ -48,12 +48,12 @@ class AssetTransactionDetailViewController: UIViewController {
         closeButton.theme_setImage(GlobalPicker.closeHighlight, forState: .highlighted)
         closeButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
-        containerView.theme_backgroundColor = GlobalPicker.cardHighLightColor
-        typeContainerView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
-        statusContainerView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
-        toContainerView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
-        idContainerView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
-        dateContainerView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        containerView.theme_backgroundColor = ColorPicker.cardHighLightColor
+        typeContainerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
+        statusContainerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
+        toContainerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
+        idContainerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
+        dateContainerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         tap.delegate = self

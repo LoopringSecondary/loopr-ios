@@ -33,7 +33,7 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
         self.navigationItem.title = LocalizedString("Wallet Name", comment: "")
         setBackButton()
 

@@ -21,12 +21,12 @@ class MarketDetailTradeHistoryViewController: UIViewController, UITableViewDeleg
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
         
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
-        tableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        tableView.theme_backgroundColor = ColorPicker.backgroundColor
 
         getDataFromRelay()
     }
@@ -65,10 +65,10 @@ class MarketDetailTradeHistoryViewController: UIViewController, UITableViewDeleg
         let labelWidth = (screenWidth - 15*2 - 5)*0.5
         
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30 + 10 + 1))
-        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        headerView.theme_backgroundColor = ColorPicker.backgroundColor
         
         let baseViewBuy = UIView(frame: CGRect(x: 15, y: 10, width: (screenWidth - 15*2)*0.5, height: 30))
-        baseViewBuy.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        baseViewBuy.theme_backgroundColor = ColorPicker.cardBackgroundColor
         baseViewBuy.round(corners: [.topLeft], radius: 6)
         headerView.addSubview(baseViewBuy)
         
@@ -87,7 +87,7 @@ class MarketDetailTradeHistoryViewController: UIViewController, UITableViewDeleg
         baseViewBuy.addSubview(label2)
         
         let baseViewSell = UIView(frame: CGRect(x: baseViewBuy.frame.maxX, y: baseViewBuy.frame.minY, width: baseViewBuy.width, height: baseViewBuy.height))
-        baseViewSell.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        baseViewSell.theme_backgroundColor = ColorPicker.cardBackgroundColor
         baseViewSell.round(corners: [.topRight], radius: 6)
         headerView.addSubview(baseViewSell)
         

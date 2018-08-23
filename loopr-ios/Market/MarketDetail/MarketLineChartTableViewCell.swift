@@ -44,7 +44,7 @@ class MarketLineChartTableViewCell: UITableViewCell, ChartViewDelegate {
         super.awakeFromNib()
         // Initialization code
         lineChartView.delegate = self
-        theme_backgroundColor = GlobalPicker.backgroundColor
+        theme_backgroundColor = ColorPicker.backgroundColor
         
         // Label config
         tokenLabel.setTitleDigitFont()
@@ -54,7 +54,7 @@ class MarketLineChartTableViewCell: UITableViewCell, ChartViewDelegate {
         balanceLabel.animationDuration = 0.25
         balanceLabel.textAlignment = NSTextAlignment.center
         balanceLabel.initializeLabel()
-        balanceLabel.theme_backgroundColor = GlobalPicker.backgroundColor
+        balanceLabel.theme_backgroundColor = ColorPicker.backgroundColor
         balanceLabel.setText("23.0", animated: true)
         
         displayLabel.font = UIFont.init(name: FontConfigManager.shared.getLight(), size: 15)

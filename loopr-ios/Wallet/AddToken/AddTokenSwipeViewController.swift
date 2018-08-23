@@ -24,7 +24,7 @@ class AddTokenSwipeViewController: SwipeViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
         self.navigationItem.title = LocalizedString("Tokens", comment: "")
         SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
         setBackButton()

@@ -167,7 +167,6 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="JlJ-XA-Yl0" secondAttribute="bottom" constant="19" id="03f-1R-ZA2"/>
                                 <constraint firstAttribute="trailing" secondItem="Cu0-Ap-5L8" secondAttribute="trailing" constant="15" id="17M-SG-eks"/>

@@ -36,7 +36,7 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.clear // UIColor.black.withAlphaComponent(0.8)
 
-        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        headerView.theme_backgroundColor = ColorPicker.backgroundColor
         headerView.round(corners: [.topLeft, .topRight], radius: 12)
 
         headerInfoLabel.theme_textColor = GlobalPicker.textLightColor
@@ -51,7 +51,7 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
         tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.isScrollEnabled = false
-        tableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        tableView.theme_backgroundColor = ColorPicker.backgroundColor
 
         self.buys = MarketDepthDataManager.shared.getBuys()
         self.sells = MarketDepthDataManager.shared.getSells()
@@ -61,7 +61,7 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
         }
         tableViewHeight.constant = 41 + MarketDetailDepthTableViewCell.getHeight() * CGFloat(maxCount) + 10
         
-        footerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        footerView.theme_backgroundColor = ColorPicker.backgroundColor
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         tap.delegate = self
@@ -96,10 +96,10 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
         let labelWidth = (screenWidth - 15*2 - 5)*0.5
         
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30 + 10 + 1))
-        headerView.theme_backgroundColor = GlobalPicker.backgroundColor
+        headerView.theme_backgroundColor = ColorPicker.backgroundColor
         
         let baseViewBuy = UIView(frame: CGRect(x: 15, y: 10, width: (screenWidth - 15*2 - 5)*0.5, height: 30))
-        baseViewBuy.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        baseViewBuy.theme_backgroundColor = ColorPicker.cardBackgroundColor
         baseViewBuy.round(corners: [.topLeft], radius: 6)
         headerView.addSubview(baseViewBuy)
         
@@ -118,7 +118,7 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
         baseViewBuy.addSubview(label2)
         
         let baseViewSell = UIView(frame: CGRect(x: baseViewBuy.frame.maxX+5, y: baseViewBuy.frame.minY, width: baseViewBuy.width, height: baseViewBuy.height))
-        baseViewSell.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        baseViewSell.theme_backgroundColor = ColorPicker.cardBackgroundColor
         baseViewSell.round(corners: [.topRight], radius: 6)
         headerView.addSubview(baseViewSell)
         

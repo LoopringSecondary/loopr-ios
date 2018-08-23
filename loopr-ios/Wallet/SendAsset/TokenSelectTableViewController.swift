@@ -23,7 +23,7 @@ class TokenSelectTableViewController: UITableViewController, UISearchBarDelegate
         self.setupSearchBar()
         
         self.tableView.separatorStyle = .none
-        self.tableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        self.tableView.theme_backgroundColor = ColorPicker.backgroundColor
     }
     
     func setupSearchBar() {

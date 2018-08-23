@@ -29,7 +29,7 @@ class SettingCurrencyTableViewCell: UITableViewCell {
         currencyDisplayLabel.theme_textColor = GlobalPicker.textLightColor
 
         theme_tintColor = GlobalPicker.textColor
-        theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        theme_backgroundColor = ColorPicker.cardBackgroundColor
         
         enabledIcon.image = UIImage(named: "enabled-dark")
         enabledIcon.contentMode = .center

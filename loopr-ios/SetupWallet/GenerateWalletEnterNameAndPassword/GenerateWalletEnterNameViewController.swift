@@ -20,7 +20,7 @@ class GenerateWalletEnterNameViewController: UIViewController, UITextFieldDelega
         // Generate a new wallet
         _ = GenerateWalletDataManager.shared.new()
         
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
         self.navigationItem.title = LocalizedString("Generate Wallet", comment: "")
         setBackButton()
 

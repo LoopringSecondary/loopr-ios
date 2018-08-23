@@ -25,7 +25,7 @@ extension UIViewController {
     func showNavigationBar() {
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.theme_tintColor = GlobalPicker.textColor
-        self.navigationController?.navigationBar.theme_barTintColor = GlobalPicker.backgroundColor
+        self.navigationController?.navigationBar.theme_barTintColor = ColorPicker.backgroundColor
         self.navigationController?.navigationBar.theme_titleTextAttributes = ThemeDictionaryPicker.pickerWithAttributes(GlobalPicker.titleAttributes)
     }
 }

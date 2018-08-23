@@ -10,6 +10,7 @@ import Foundation
 
 enum ColorTheme: Int {
     
+    // TODO: We will have blue color configuration.
     case red = 0
     case yellow = 1
 

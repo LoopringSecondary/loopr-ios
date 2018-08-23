@@ -98,11 +98,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func updateTheme() {
         // Setup color in the app.
         // Avoid dark shadow on navigation bar during segue transition
-        self.window?.theme_backgroundColor = GlobalPicker.backgroundColor
+        self.window?.theme_backgroundColor = ColorPicker.backgroundColor
         
         // table cell background color.
         let colorView = UIView()
-        colorView.theme_backgroundColor = GlobalPicker.cardHighLightColor
+        colorView.theme_backgroundColor = ColorPicker.cardHighLightColor
         UITableViewCell.appearance().selectedBackgroundView = colorView
         
         // status bar
@@ -113,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         navigationBar.isTranslucent = false
         navigationBar.theme_tintColor = GlobalPicker.barTextColor
-        navigationBar.theme_barTintColor = GlobalPicker.barTintColor
+        navigationBar.theme_barTintColor = ColorPicker.barTintColor
         navigationBar.theme_titleTextAttributes = ThemeDictionaryPicker.pickerWithAttributes(GlobalPicker.titleAttributes)
     }
     

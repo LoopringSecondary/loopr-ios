@@ -44,8 +44,8 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         // Do any additional setup after loading the view.
         setBackButton()
 
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
-        tableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
+        tableView.theme_backgroundColor = ColorPicker.backgroundColor
 
         tableView.dataSource = self
         tableView.delegate = self
@@ -54,8 +54,8 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 8))
         tableView.tableHeaderView = headerView
         
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
-        tableView.theme_backgroundColor = GlobalPicker.backgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
+        tableView.theme_backgroundColor = ColorPicker.backgroundColor
         
         // Add Refresh Control to Table View
         tableView.refreshControl = refreshControl

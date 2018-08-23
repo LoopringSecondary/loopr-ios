@@ -39,8 +39,8 @@ class AddCustomizedTokenViewController: UIViewController, UITextFieldDelegate {
         setBackButton()
         self.navigationItem.title = LocalizedString("Add Custom Token", comment: "")
         
-        view.theme_backgroundColor = GlobalPicker.backgroundColor
-        contentView.theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        view.theme_backgroundColor = ColorPicker.backgroundColor
+        contentView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         contentView.cornerRadius = 6
         contentView.applyShadow()
         

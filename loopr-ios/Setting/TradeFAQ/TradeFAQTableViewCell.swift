@@ -21,7 +21,7 @@ class TradeFAQTableViewCell: UITableViewCell {
         nameLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
         nameLabel.theme_textColor = GlobalPicker.textColor
         
-        theme_backgroundColor = GlobalPicker.cardBackgroundColor
+        theme_backgroundColor = ColorPicker.cardBackgroundColor
     }
 
     class func getCellIdentifier() -> String {
