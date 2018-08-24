@@ -159,6 +159,7 @@ extension KeystoreKey: Codable {
 
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        print(values)
         let altValues = try decoder.container(keyedBy: UppercaseCodingKeys.self)
         address = Address(data: try values.decodeHexString(forKey: .address))
         id = try values.decode(String.self, forKey: .id)

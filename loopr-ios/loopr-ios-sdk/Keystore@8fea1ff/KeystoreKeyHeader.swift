@@ -51,6 +51,7 @@ extension KeystoreKeyHeader: Codable {
         cipher = try values.decode(String.self, forKey: .cipher)
         cipherParams = try values.decode(CipherParams.self, forKey: .cipherParams)
         kdf = try values.decode(String.self, forKey: .kdf)
+        print("kdf: \(kdf)")
         kdfParams = try values.decode(ScryptParams.self, forKey: .kdfParams)
         mac = try values.decodeHexString(forKey: .mac)
     }

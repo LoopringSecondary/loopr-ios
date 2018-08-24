@@ -44,6 +44,7 @@ public final class KeyStore {
                 accountsByAddress[key.address] = account
             } catch {
                 // Ignore invalid keys
+                print("keyDirectory Ignore invalid keys")
             }
         }
 
@@ -56,6 +57,7 @@ public final class KeyStore {
                 accountsByAddress[wd.address] = account
             } catch {
                 // Ignore invalid keys
+                print("walletDirectory Ignore invalid keys")
             }
         }
     }
