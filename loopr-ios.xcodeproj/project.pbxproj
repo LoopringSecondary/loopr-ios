@@ -3204,7 +3204,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/loopr-ios/go-frameworks",
 				);
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
