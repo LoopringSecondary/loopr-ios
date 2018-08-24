@@ -53,10 +53,12 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         // Do any additional setup after loading the view.
         self.asset = CurrentAppWalletDataManager.shared.getAsset(symbol: "ETH")
         
-        self.navigationItem.title = LocalizedString("Convert", comment: "")
-        
         setBackButton()
         view.theme_backgroundColor = ColorPicker.backgroundColor
+        self.navigationItem.title = LocalizedString("Convert", comment: "")
+        
+        contentView.theme_backgroundColor = ColorPicker.cardBackgroundColor
+        contentView.applyShadow()
         
         tokenSImageView.image = asset?.icon
         tokenBImageView.image = getAnotherAsset()?.icon
@@ -136,7 +138,6 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        contentView.applyShadow(withColor: .black)
     }
     
     func updateTransactionFeeAmountLabel() {

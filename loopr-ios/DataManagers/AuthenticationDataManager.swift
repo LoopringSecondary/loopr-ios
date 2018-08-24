@@ -41,11 +41,13 @@ class AuthenticationDataManager {
         var authError: NSError?
         if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
             context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, error in
-                if success {
-                    AuthenticationDataManager.shared.hasLogin = true
-                    completion(nil)
-                } else {
-                    completion(error)
+                DispatchQueue.main.async {
+                    if success {
+                        AuthenticationDataManager.shared.hasLogin = true
+                        completion(nil)
+                    } else {
+                        completion(error)
+                    }
                 }
             }
         } else {
@@ -53,7 +55,9 @@ class AuthenticationDataManager {
             // Could not start authentication. So disable touch id or face id.
             setPasscodeSetting(false)
             AuthenticationDataManager.shared.hasLogin = true
-            completion(nil)
+            DispatchQueue.main.async {
+                completion(nil)
+            }
         }
     }
 }
