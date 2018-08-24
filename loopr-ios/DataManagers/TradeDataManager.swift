@@ -82,6 +82,7 @@ class TradeDataManager {
             "50004": LocalizedString("50004", comment: ""),
             "50005": LocalizedString("50005", comment: ""),
             "50006": LocalizedString("50006", comment: ""),
+            "50007": LocalizedString("50007", comment: ""),
             "50008": LocalizedString("50008", comment: "")
         ]
     }

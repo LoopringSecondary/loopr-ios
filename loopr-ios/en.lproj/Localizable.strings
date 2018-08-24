@@ -159,6 +159,7 @@
 "50004" = "Sorry, selling and buying price did not match between two orders, could not complete this order";
 "50005" = "Sorry, owner of buying order is the same as selling's, could not complete this order";
 "50006" = "Sorry, buying order has been expired, please try with other orders";
+"50007" = "Sorry, undealt amount of order is too small, could not complete this order";
 "50008" = "Sorry, buying order does not exist, could not complete this order";
 "Information of two orders not complete" = "Information of two orders not complete";
 "Sorry. Network error, please try again later" = "Sorry. Network error, please try again later";

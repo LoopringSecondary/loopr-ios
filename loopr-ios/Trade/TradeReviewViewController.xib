@@ -31,7 +31,6 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0qr-Ib-soK">
                     <rect key="frame" x="10" y="60" width="160" height="160"/>
-                    <color key="backgroundColor" name="Color-dark1"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="160" id="E8M-7U-J88"/>
                         <constraint firstAttribute="height" constant="160" id="PPZ-Pq-EX9"/>
@@ -53,7 +52,6 @@
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aga-rZ-zkA">
                     <rect key="frame" x="205" y="60" width="160" height="160"/>
-                    <color key="backgroundColor" name="Color-dark1"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="160" id="RsC-qa-fO6"/>
                         <constraint firstAttribute="height" constant="160" id="wlf-dB-BiQ"/>
@@ -139,9 +137,6 @@
     </objects>
     <resources>
         <image name="Trade-arrow-dark" width="24" height="24"/>
-        <namedColor name="Color-dark1">
-            <color red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
         <namedColor name="Color-dark2">
             <color red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

@@ -48,12 +48,13 @@ class OrderQRCodeViewController: UIViewController {
     }
     
     func generateQRCode(originalOrder: OriginalOrder) {
-        guard let privateKey = P2POrderHistoryDataManager.shared.getOrderDataFromLocal(originalOrder: originalOrder) else { return }
+        guard let data = P2POrderHistoryDataManager.shared.getOrderDataFromLocal(originalOrder: originalOrder) else { return }
         var body = JSON()
+        let array = data.components(separatedBy: "-")
         body["type"] = JSON(TradeDataManager.qrcodeType)
         body["value"] = [TradeDataManager.qrcodeHash: originalOrder.hash,
-                         TradeDataManager.qrcodeAuth: privateKey,
-                         TradeDataManager.sellRatio: TradeDataManager.shared.sellRatio]
+                         TradeDataManager.qrcodeAuth: array[0],
+                         TradeDataManager.sellRatio: array[1]]
         do {
             let data = try body.rawData(options: .prettyPrinted)
             let ciContext = CIContext()

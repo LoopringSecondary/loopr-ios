@@ -307,7 +307,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     
     func preserveMaker(order: OriginalOrder) {
         let defaults = UserDefaults.standard
-        defaults.set(order.authPrivateKey, forKey: order.hash)
+        let ratio = TradeDataManager.shared.sellRatio
+        defaults.set("\(order.authPrivateKey)-\(ratio)", forKey: order.hash)
     }
     
     func pushController() {

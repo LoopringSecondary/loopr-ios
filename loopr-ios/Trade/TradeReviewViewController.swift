@@ -10,7 +10,6 @@ import UIKit
 
 class TradeReviewViewController: UIViewController {
     
-    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var tokenS: UIView!
     @IBOutlet weak var tokenB: UIView!
     @IBOutlet weak var arrowRightImageView: UIImageView!
