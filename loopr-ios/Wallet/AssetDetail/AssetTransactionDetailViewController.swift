@@ -25,9 +25,10 @@ class AssetTransactionDetailViewController: UIViewController {
     @IBOutlet weak var idContainerView: UIView!
     @IBOutlet weak var idTipLabel: UILabel!
     @IBOutlet weak var idInfoButton: UIButton!
-    @IBOutlet weak var dateContainerView: UIView!
+    @IBOutlet weak var gasContainerView: UIView!
     @IBOutlet weak var gasTipLabel: UILabel!
     @IBOutlet weak var gasInfoLabel: UILabel!
+    @IBOutlet weak var dateContainerView: UIView!
     @IBOutlet weak var dateTipLabel: UILabel!
     @IBOutlet weak var dateInfoLabel: UILabel!
     
@@ -48,12 +49,13 @@ class AssetTransactionDetailViewController: UIViewController {
         closeButton.theme_setImage(GlobalPicker.closeHighlight, forState: .highlighted)
         closeButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
-        containerView.theme_backgroundColor = ColorPicker.cardHighLightColor
-        typeContainerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
-        statusContainerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
-        toContainerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
-        idContainerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
-        dateContainerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
+        containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
+        typeContainerView.theme_backgroundColor = ColorPicker.backgroundColor
+        statusContainerView.theme_backgroundColor = ColorPicker.backgroundColor
+        toContainerView.theme_backgroundColor = ColorPicker.backgroundColor
+        idContainerView.theme_backgroundColor = ColorPicker.backgroundColor
+        gasContainerView.theme_backgroundColor = ColorPicker.backgroundColor
+        dateContainerView.theme_backgroundColor = ColorPicker.backgroundColor
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         tap.delegate = self

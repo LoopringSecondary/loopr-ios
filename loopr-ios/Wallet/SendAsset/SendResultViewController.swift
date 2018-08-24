@@ -20,6 +20,11 @@ class SendResultViewController: UIViewController {
     @IBOutlet weak var timeInfoLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
     
+    @IBOutlet weak var seperatorA: UIView!
+    @IBOutlet weak var seperatorB: UIView!
+    @IBOutlet weak var seperatorC: UIView!
+    @IBOutlet weak var seperatorD: UIView!
+    
     var asset: Asset?
     var sendAmount: String!
     var receiveAddress: String!
@@ -30,6 +35,10 @@ class SendResultViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = ColorPicker.backgroundColor
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        let seperators = [seperatorA, seperatorB, seperatorC, seperatorD]
+        seperators.forEach { $0?.theme_backgroundColor = ColorPicker.cardBackgroundColor }
+        
         doneButton.title = LocalizedString("Done", comment: "")
         doneButton.setupPrimary(height: 44)
         if let asset = self.asset {

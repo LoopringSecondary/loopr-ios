@@ -23,6 +23,10 @@ class ConvertETHConfirmViewController: UIViewController {
     @IBOutlet weak var gasInfoLabel: UILabel!
     @IBOutlet weak var convertButton: UIButton!
     
+    @IBOutlet weak var cellA: UIView!
+    @IBOutlet weak var cellB: UIView!
+    @IBOutlet weak var cellC: UIView!
+    
     var convertAsset: Asset!
     var otherAsset: Asset!
     var convertAmount: String!
@@ -36,6 +40,11 @@ class ConvertETHConfirmViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.modalPresentationStyle = .custom
         view.backgroundColor = .clear
+        
+        containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
+        
+        let cells = [cellA, cellB, cellC]
+        cells.forEach { $0?.theme_backgroundColor = ColorPicker.backgroundColor }
         
         titleLabel.theme_textColor = GlobalPicker.textColor
         titleLabel.font = FontConfigManager.shared.getMediumFont(size: 16)

@@ -34,6 +34,7 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
 
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.clear
+        containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         
         titleLabel.theme_textColor = GlobalPicker.textColor
         titleLabel.font = FontConfigManager.shared.getMediumFont(size: 16)

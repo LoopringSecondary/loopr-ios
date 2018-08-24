@@ -25,7 +25,6 @@
                             <constraint firstAttribute="height" constant="31" id="BdC-s3-WP3"/>
                             <constraint firstAttribute="width" constant="49" id="Vlv-dC-8lv"/>
                         </constraints>
-                        <color key="onTintColor" name="Color-green"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="OffTint">
                                 <color key="value" name="Color-dark4"/>
@@ -76,7 +75,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="passcodeLabel" destination="AiE-6M-VW6" id="8Xm-aG-kne"/>
-                <outlet property="passcodeSwitch" destination="CHK-cP-eJl" id="z9B-na-UAo"/>
+                <outlet property="passcodeSwitch" destination="CHK-cP-eJl" id="lFz-kT-iGg"/>
                 <outlet property="seperateLineDown" destination="Z8T-7W-AKs" id="Wzt-Jz-hFd"/>
                 <outlet property="seperateLineUp" destination="VBY-y2-yG9" id="KNx-s9-OeH"/>
                 <outlet property="trailingSeperateLineDown" destination="3tS-3k-r6A" id="okO-az-OLl"/>
@@ -87,9 +86,6 @@
     <resources>
         <namedColor name="Color-dark4">
             <color red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="Color-green">
-            <color red="0.0039215686274509803" green="0.72549019607843135" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

@@ -71,7 +71,6 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" name="Color-dark2"/>
                     <constraints>
                         <constraint firstItem="pfR-fi-BSr" firstAttribute="leading" secondItem="P6r-gu-pz5" secondAttribute="leading" id="9Wf-We-zrn"/>
                         <constraint firstAttribute="trailing" secondItem="igK-LD-NVw" secondAttribute="trailing" constant="15" id="Bj1-Y7-Z6M"/>
@@ -126,9 +125,6 @@
     </objects>
     <resources>
         <image name="Close-dark" width="14" height="14"/>
-        <namedColor name="Color-dark2">
-            <color red="0.16078431372549021" green="0.16078431372549021" blue="0.16078431372549021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
         <namedColor name="Color-dark3">
             <color red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

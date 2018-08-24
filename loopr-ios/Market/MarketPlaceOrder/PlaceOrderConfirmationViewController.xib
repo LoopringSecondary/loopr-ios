@@ -6,7 +6,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,6 +16,10 @@
                 <outlet property="LRCFeeValueLabel" destination="OHS-jw-7B4" id="fOl-oZ-JVG"/>
                 <outlet property="arrowRightImageView" destination="09q-Ad-lb3" id="fpU-k6-DDD"/>
                 <outlet property="cancelButton" destination="85n-Xb-BoI" id="OCS-wn-cEg"/>
+                <outlet property="cellA" destination="cmm-Nj-omT" id="U6Q-Tx-Fv2"/>
+                <outlet property="cellB" destination="Sjj-eH-DHu" id="fxR-Mb-ZaT"/>
+                <outlet property="cellC" destination="ku3-Jf-VP3" id="8ah-iT-HbB"/>
+                <outlet property="cellD" destination="PmR-3r-eKe" id="abk-xe-VgZ"/>
                 <outlet property="confirmationButton" destination="RXZ-sL-MIg" id="VIK-OR-JBJ"/>
                 <outlet property="containerView" destination="a9Z-KO-IHW" id="eu8-ho-rbT"/>
                 <outlet property="declineButton" destination="dho-fi-CNh" id="gOF-Sw-BST"/>
@@ -73,7 +76,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
                                 <constraint firstItem="FfW-mq-KMb" firstAttribute="leading" secondItem="cmm-Nj-omT" secondAttribute="leading" constant="20" id="3aa-e3-mRJ"/>
                                 <constraint firstAttribute="height" constant="50" id="EFG-3G-FRo"/>
@@ -98,7 +100,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="7Te-3F-khz"/>
                                 <constraint firstItem="H3U-QL-csg" firstAttribute="leading" secondItem="Sjj-eH-DHu" secondAttribute="leading" constant="20" id="B5g-yv-Wut"/>
@@ -123,7 +124,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
                                 <constraint firstItem="iVP-4K-k3K" firstAttribute="centerY" secondItem="ku3-Jf-VP3" secondAttribute="centerY" id="Br3-8v-ACM"/>
                                 <constraint firstAttribute="trailing" secondItem="1Iw-mQ-7wJ" secondAttribute="trailing" constant="20" id="Dm2-8i-Z1z"/>
@@ -148,7 +148,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="XZO-Td-h6L" secondAttribute="trailing" constant="20" id="9kN-Xe-ZWk"/>
                                 <constraint firstItem="TSm-eq-o8L" firstAttribute="centerY" secondItem="PmR-3r-eKe" secondAttribute="centerY" id="DFw-x3-WI9"/>
@@ -210,7 +209,6 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" name="Color-dark3"/>
                     <constraints>
                         <constraint firstItem="cmm-Nj-omT" firstAttribute="leading" secondItem="a9Z-KO-IHW" secondAttribute="leading" id="0X6-9v-36T"/>
                         <constraint firstItem="dho-fi-CNh" firstAttribute="leading" secondItem="a9Z-KO-IHW" secondAttribute="leading" constant="20" id="2eY-NE-JOx"/>
@@ -272,11 +270,5 @@
     <resources>
         <image name="Info" width="16" height="16"/>
         <image name="Trade-arrow-dark" width="24" height="24"/>
-        <namedColor name="Color-dark2">
-            <color red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="Color-dark3">
-            <color red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
     </resources>
 </document>

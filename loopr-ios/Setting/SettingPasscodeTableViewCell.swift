@@ -11,8 +11,7 @@ import UIKit
 class SettingPasscodeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var passcodeLabel: UILabel!
-    @IBOutlet weak var passcodeSwitch: UISwitch!
-    
+    @IBOutlet weak var passcodeSwitch: UISwitchCustom!
     @IBOutlet weak var seperateLineUp: UIView!
     @IBOutlet weak var seperateLineDown: UIView!
     @IBOutlet weak var trailingSeperateLineDown: NSLayoutConstraint!
@@ -31,6 +30,8 @@ class SettingPasscodeTableViewCell: UITableViewCell {
         
         passcodeSwitch.transform = CGAffineTransform(scaleX: 0.77, y: 0.77)
         passcodeSwitch.setOn(AuthenticationDataManager.shared.getPasscodeSetting(), animated: false)
+        passcodeSwitch.onTintColor = UIColor.themeYellow
+        passcodeSwitch.OffTint = UIColor.dark4
         
         if AuthenticationDataManager.shared.devicePasscodeEnabled() {
             passcodeSwitch.isHidden = false

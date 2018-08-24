@@ -41,8 +41,8 @@ class SetupWalletViewController: UIViewController {
         generateWalletButton.title = LocalizedString("Generate Wallet", comment: "")
         generateWalletButton.setupSecondary(height: 50, gradientOrientation: .horizontal)
         generateWalletButton.addTarget(self, action: #selector(generateWalletButtonPressed), for: .touchUpInside)
-
-        backgroundImageView.image = UIImage(named: "Background")
+        
+        backgroundImageView.theme_backgroundColor = ColorPicker.backgroundColor
     }
     
     override func didReceiveMemoryWarning() {

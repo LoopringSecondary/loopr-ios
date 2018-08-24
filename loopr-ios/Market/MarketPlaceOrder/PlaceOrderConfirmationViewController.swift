@@ -29,6 +29,11 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     @IBOutlet weak var gasInfoImage: UIImageView!
     @IBOutlet weak var gasTipLabel: UILabel!
     
+    @IBOutlet weak var cellA: UIView!
+    @IBOutlet weak var cellB: UIView!
+    @IBOutlet weak var cellC: UIView!
+    @IBOutlet weak var cellD: UIView!
+    
     @IBOutlet weak var confirmationButton: UIButton!
     @IBOutlet weak var declineButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
@@ -47,6 +52,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         // Do any additional setup after loading the view.
         self.modalPresentationStyle = .custom
         self.view.theme_backgroundColor = ColorPicker.backgroundColor
+        containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         containerView.applyShadow()
 
         // TokenView
@@ -82,6 +88,9 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         // Gas label
         gasTipLabel.setSubTitleCharFont()
         gasTipLabel.text = LocalizedString("GAS_TIP", comment: "")
+        
+        let cells = [cellA, cellB, cellC, cellD]
+        cells.forEach { $0?.theme_backgroundColor = ColorPicker.backgroundColor }
         
         // Tap gesture
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))

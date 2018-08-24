@@ -31,6 +31,11 @@ class TradeConfirmationViewController: UIViewController {
     @IBOutlet weak var placeOrderButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
+    @IBOutlet weak var cellA: UIView!
+    @IBOutlet weak var cellB: UIView!
+    @IBOutlet weak var cellC: UIView!
+    @IBOutlet weak var cellD: UIView!
+    
     var tokenSView: TradeViewOnlyViewController = TradeViewOnlyViewController()
     var tokenBView: TradeViewOnlyViewController = TradeViewOnlyViewController()
     
@@ -48,7 +53,11 @@ class TradeConfirmationViewController: UIViewController {
         self.modalPresentationStyle = .custom
         self.navigationItem.title = LocalizedString("Trade_Confirm", comment: "")
         self.view.theme_backgroundColor = ColorPicker.backgroundColor
+        containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         containerView.applyShadow()
+        
+        let cells = [cellA, cellB, cellC, cellD]
+        cells.forEach { $0?.theme_backgroundColor = ColorPicker.backgroundColor }
         
         // TokenView
         tokenSView.view.frame = CGRect(x: 0, y: 0, width: tokenSell.frame.width, height: tokenSell.frame.height)

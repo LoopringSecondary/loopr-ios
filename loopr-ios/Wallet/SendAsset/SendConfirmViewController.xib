@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,6 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SendConfirmViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="amountLabel" destination="aRi-FH-nkn" id="xGv-Af-EpW"/>
+                <outlet property="cellA" destination="q0Y-78-4Cl" id="wkn-sY-xJ1"/>
+                <outlet property="cellB" destination="wjW-IH-hI9" id="GC9-D6-nkq"/>
+                <outlet property="cellC" destination="1NA-1O-5sH" id="WSe-Ja-YRE"/>
                 <outlet property="containerView" destination="jik-Dk-LzW" id="iw2-UA-s1j"/>
                 <outlet property="fromInfoLabel" destination="I7J-yr-HPI" id="8vK-Dy-Hho"/>
                 <outlet property="fromTipLabel" destination="AZj-dw-EZp" id="9Sd-zG-nRV"/>
@@ -61,7 +63,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
                                 <constraint firstItem="stU-tG-vLw" firstAttribute="top" secondItem="q0Y-78-4Cl" secondAttribute="top" constant="40" id="1E9-Jz-GHH"/>
                                 <constraint firstAttribute="height" constant="72" id="39n-4g-pof"/>
@@ -87,7 +88,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="72" id="4wF-pK-JfG"/>
                                 <constraint firstItem="AZj-dw-EZp" firstAttribute="top" secondItem="wjW-IH-hI9" secondAttribute="top" constant="16" id="HSt-Ce-VJO"/>
@@ -113,7 +113,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
                                 <constraint firstItem="3oI-zL-oH3" firstAttribute="top" secondItem="1NA-1O-5sH" secondAttribute="top" constant="40" id="IxB-Hg-QnW"/>
                                 <constraint firstItem="DJg-0A-RCh" firstAttribute="top" secondItem="1NA-1O-5sH" secondAttribute="top" constant="16" id="VPj-VQ-FHQ"/>
@@ -133,7 +132,6 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" name="Color-dark3"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Tc4-tM-UvL" secondAttribute="trailing" constant="20" id="4Nt-bV-PCX"/>
                         <constraint firstItem="aRi-FH-nkn" firstAttribute="top" secondItem="jik-Dk-LzW" secondAttribute="top" constant="64" id="9B7-18-tkM"/>
@@ -170,12 +168,4 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
-    <resources>
-        <namedColor name="Color-dark2">
-            <color red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="Color-dark3">
-            <color red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-    </resources>
 </document>

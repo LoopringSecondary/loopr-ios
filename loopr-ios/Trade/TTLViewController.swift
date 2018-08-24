@@ -39,6 +39,7 @@ class TTLViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
         titleLabel.setTitleCharFont()
         titleLabel.text = LocalizedString("Time to Live", comment: "")
+        containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         tap.delegate = self

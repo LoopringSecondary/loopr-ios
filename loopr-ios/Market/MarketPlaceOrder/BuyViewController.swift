@@ -89,6 +89,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         // Do any additional setup after loading the view.
         setBackButton()
         view.theme_backgroundColor = ColorPicker.backgroundColor
+        containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         
         // First row: TokenS
         priceTextField.delegate = self
@@ -145,6 +146,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         hourButton.titleLabel?.font = FontConfigManager.shared.getBoldFont()
         buttons.forEach {
             $0.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
+            $0.theme_backgroundColor = ColorPicker.cardHighLightColor
             $0.theme_setTitleColor(GlobalPicker.textColor, forState: .selected)
             $0.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
         }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -73,7 +73,6 @@
                             <constraint firstAttribute="height" constant="31" id="bOx-Rs-mBw"/>
                             <constraint firstAttribute="width" constant="49" id="feS-8C-C8O"/>
                         </constraints>
-                        <color key="onTintColor" name="Color-green"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="OffTint">
                                 <color key="value" name="Color-dark4"/>
@@ -101,7 +100,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="addSwitch" destination="yaw-OA-5yG" id="NhV-BK-FxH"/>
+                <outlet property="addSwitch" destination="yaw-OA-5yG" id="uIP-bi-91H"/>
                 <outlet property="baseView" destination="wE1-vW-cRW" id="Sbu-KH-xtt"/>
                 <outlet property="iconImageView" destination="8Fv-RU-Vca" id="oTz-w2-EmI"/>
                 <outlet property="iconView" destination="weA-aj-kdb" id="UsI-Wa-Vxt"/>
@@ -114,9 +113,6 @@
     <resources>
         <namedColor name="Color-dark4">
             <color red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="Color-green">
-            <color red="0.29803921568627451" green="0.80392156862745101" blue="0.41568627450980394" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

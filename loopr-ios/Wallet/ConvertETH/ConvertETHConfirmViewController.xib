@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,6 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConvertETHConfirmViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="amountLabel" destination="aRi-FH-nkn" id="xGv-Af-EpW"/>
+                <outlet property="cellA" destination="q0Y-78-4Cl" id="5do-Nv-Jft"/>
+                <outlet property="cellB" destination="wjW-IH-hI9" id="FBr-hO-udH"/>
+                <outlet property="cellC" destination="1NA-1O-5sH" id="0SF-P1-MSj"/>
                 <outlet property="containerView" destination="jik-Dk-LzW" id="iw2-UA-s1j"/>
                 <outlet property="convertButton" destination="Tc4-tM-UvL" id="EJR-9t-Dpi"/>
                 <outlet property="fromInfoLabel" destination="I7J-yr-HPI" id="8vK-Dy-Hho"/>
@@ -61,7 +63,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="53" id="39n-4g-pof"/>
                                 <constraint firstItem="Qw4-sf-AtU" firstAttribute="leading" secondItem="q0Y-78-4Cl" secondAttribute="leading" constant="20" id="EcS-38-Ohy"/>
@@ -86,7 +87,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="53" id="4wF-pK-JfG"/>
                                 <constraint firstItem="AZj-dw-EZp" firstAttribute="top" secondItem="wjW-IH-hI9" secondAttribute="top" constant="16" id="HSt-Ce-VJO"/>
@@ -114,7 +114,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
                                 <constraint firstItem="DJg-0A-RCh" firstAttribute="top" secondItem="1NA-1O-5sH" secondAttribute="top" constant="16" id="VPj-VQ-FHQ"/>
                                 <constraint firstItem="DJg-0A-RCh" firstAttribute="leading" secondItem="1NA-1O-5sH" secondAttribute="leading" constant="20" id="cS8-op-GkW"/>
@@ -133,7 +132,6 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" name="Color-dark3"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="3oI-zL-oH3" secondAttribute="trailing" constant="20" id="2VZ-FB-7Nz"/>
                         <constraint firstAttribute="trailing" secondItem="Tc4-tM-UvL" secondAttribute="trailing" constant="20" id="4Nt-bV-PCX"/>
@@ -171,12 +169,4 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
-    <resources>
-        <namedColor name="Color-dark2">
-            <color red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="Color-dark3">
-            <color red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-    </resources>
 </document>

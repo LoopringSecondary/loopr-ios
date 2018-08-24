@@ -26,6 +26,8 @@ class TradeRatioViewController: UIViewController, UIPickerViewDelegate, UIPicker
 
         // Do any additional setup after loading the view.
         self.modalPresentationStyle = .custom
+        containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
+        
         pickerView.delegate = self
         pickerView.dataSource = self
         titleArray = Array(stride(from: 100, through: 5, by: -5))

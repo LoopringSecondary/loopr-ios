@@ -17,7 +17,7 @@ class AddTokenTableViewCell: UITableViewCell {
     @IBOutlet weak var iconView: IconView!
     @IBOutlet weak var symbolLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var addSwitch: UISwitch!
+    @IBOutlet weak var addSwitch: UISwitchCustom!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,6 +34,8 @@ class AddTokenTableViewCell: UITableViewCell {
         nameLabel.setSubTitleDigitFont()
 
         addSwitch.transform = CGAffineTransform(scaleX: 0.77, y: 0.77)
+        addSwitch.onTintColor = UIColor.themeYellow
+        addSwitch.OffTint = UIColor.dark4
     }
 
     func update() {

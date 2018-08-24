@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,9 +13,10 @@
             <connections>
                 <outlet property="closeButton" destination="hk4-Ru-9Dc" id="i38-l2-Xvu"/>
                 <outlet property="containerView" destination="ZcD-NA-lJl" id="Z6a-Mh-NQW"/>
-                <outlet property="dateContainerView" destination="Vmb-8y-4Mt" id="6ma-B3-zaN"/>
+                <outlet property="dateContainerView" destination="S78-pV-cO2" id="LdJ-aF-AIX"/>
                 <outlet property="dateInfoLabel" destination="f3Y-NA-p4G" id="11n-NH-Oit"/>
                 <outlet property="dateTipLabel" destination="A9b-Vb-OSF" id="oO2-kc-EwF"/>
+                <outlet property="gasContainerView" destination="Vmb-8y-4Mt" id="0NR-MO-nsr"/>
                 <outlet property="gasInfoLabel" destination="jDr-6o-sZK" id="TSw-bf-YYu"/>
                 <outlet property="gasTipLabel" destination="OIr-52-XF0" id="3jr-Pb-cMQ"/>
                 <outlet property="idContainerView" destination="PGF-k6-t5f" id="OnE-Pl-JQ6"/>
@@ -79,7 +79,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
                                 <constraint firstItem="KJu-KC-q44" firstAttribute="centerY" secondItem="Zcg-vd-3EG" secondAttribute="centerY" id="4Ke-tF-ScZ"/>
                                 <constraint firstItem="ooK-CY-Usq" firstAttribute="leading" secondItem="Zcg-vd-3EG" secondAttribute="leading" constant="16" id="Iax-gD-8sg"/>
@@ -105,7 +104,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
                                 <constraint firstItem="QFF-Yv-Kgp" firstAttribute="centerY" secondItem="Yr1-av-K4A" secondAttribute="centerY" id="6ZG-Og-WSL"/>
                                 <constraint firstAttribute="height" constant="50" id="87G-qc-iGe"/>
@@ -129,7 +127,6 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="MRc-pg-QPd"/>
                                 <constraint firstItem="2Wa-Ag-OZq" firstAttribute="centerY" secondItem="QGG-D6-mOp" secondAttribute="centerY" id="gkL-l6-n1Y"/>
@@ -153,7 +150,6 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
                                 <constraint firstItem="HU4-hR-cPd" firstAttribute="centerY" secondItem="PGF-k6-t5f" secondAttribute="centerY" id="K0O-8v-UZT"/>
                                 <constraint firstItem="ceR-kL-OiZ" firstAttribute="centerY" secondItem="PGF-k6-t5f" secondAttribute="centerY" id="dhf-g9-6aB"/>
@@ -176,7 +172,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
                                 <constraint firstItem="OIr-52-XF0" firstAttribute="centerY" secondItem="Vmb-8y-4Mt" secondAttribute="centerY" id="KKI-WQ-aiD"/>
                                 <constraint firstAttribute="height" constant="50" id="TVT-0f-mXp"/>
@@ -199,7 +194,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" name="Color-dark2"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="4gl-Rb-DtK"/>
                                 <constraint firstItem="f3Y-NA-p4G" firstAttribute="centerY" secondItem="S78-pV-cO2" secondAttribute="centerY" id="kem-tt-Am5"/>
@@ -207,7 +201,6 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" name="Color-dark3"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="PGF-k6-t5f" secondAttribute="trailing" id="2Zg-Rz-pCE"/>
                         <constraint firstItem="ceR-kL-OiZ" firstAttribute="width" secondItem="2Wa-Ag-OZq" secondAttribute="width" id="4Be-SN-ar3"/>
@@ -269,11 +262,5 @@
     </objects>
     <resources>
         <image name="Close-dark" width="14" height="14"/>
-        <namedColor name="Color-dark2">
-            <color red="0.16078431372549021" green="0.16078431372549021" blue="0.16078431372549021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="Color-dark3">
-            <color red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
     </resources>
 </document>

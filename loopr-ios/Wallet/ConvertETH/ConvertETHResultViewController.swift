@@ -20,6 +20,11 @@ class ConvertETHResultViewController: UIViewController {
     @IBOutlet weak var timeInfoLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
     
+    @IBOutlet weak var seperatorA: UIView!
+    @IBOutlet weak var seperatorB: UIView!
+    @IBOutlet weak var seperatorC: UIView!
+    @IBOutlet weak var seperatorD: UIView!
+    
     var convertAsset: Asset?
     var otherAsset: Asset?
     var convertAmount: String!
@@ -30,6 +35,10 @@ class ConvertETHResultViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = ColorPicker.backgroundColor
+        
+        let seperators = [seperatorA, seperatorB, seperatorC, seperatorD]
+        seperators.forEach { $0?.theme_backgroundColor = ColorPicker.cardBackgroundColor }
+        
         doneButton.title = LocalizedString("Done", comment: "")
         doneButton.setupPrimary(height: 44)
         if let asset = self.convertAsset {

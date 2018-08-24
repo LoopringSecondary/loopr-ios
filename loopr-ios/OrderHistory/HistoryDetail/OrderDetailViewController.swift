@@ -26,6 +26,14 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var dateTipLabel: UILabel!
     @IBOutlet weak var dateInfoLabel: UILabel!
     
+    @IBOutlet weak var seperatorA: UIView!
+    @IBOutlet weak var seperatorB: UIView!
+    @IBOutlet weak var seperatorC: UIView!
+    @IBOutlet weak var seperatorD: UIView!
+    @IBOutlet weak var seperatorE: UIView!
+    @IBOutlet weak var seperatorF: UIView!
+    @IBOutlet weak var seperatorG: UIView!
+    
     // Mask view
     var blurVisualEffectView = UIView()
     
@@ -86,6 +94,9 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         dateTipLabel.setTitleCharFont()
         dateTipLabel.text = LocalizedString("Time", comment: "")
         dateInfoLabel.setTitleDigitFont()
+        
+        let seperators = [seperatorA, seperatorB, seperatorC, seperatorD, seperatorE, seperatorF, seperatorG]
+        seperators.forEach { $0?.theme_backgroundColor = ColorPicker.cardBackgroundColor }
         
         blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         blurVisualEffectView.alpha = 1

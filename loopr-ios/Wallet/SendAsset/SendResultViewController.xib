@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,6 +13,10 @@
             <connections>
                 <outlet property="balanceLabel" destination="Bap-Fn-hPz" id="0MA-Og-ZUd"/>
                 <outlet property="doneButton" destination="WRG-iN-ATb" id="aKA-NB-MVp"/>
+                <outlet property="seperatorA" destination="LKU-4p-WD0" id="sy1-uK-BEX"/>
+                <outlet property="seperatorB" destination="aDf-OG-Czz" id="OCP-oJ-Gvf"/>
+                <outlet property="seperatorC" destination="7zm-Uc-Oyy" id="AVe-jA-4n0"/>
+                <outlet property="seperatorD" destination="oOp-kZ-fl2" id="8c1-sc-275"/>
                 <outlet property="statusIcon" destination="t8y-Zm-ENv" id="GNv-fz-CTL"/>
                 <outlet property="statusInfoLabel" destination="6ac-Lg-hEA" id="Vys-ll-tR3"/>
                 <outlet property="statusTipLabel" destination="D8q-1e-BVH" id="fi1-W1-DF3"/>
@@ -51,7 +54,6 @@
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LKU-4p-WD0">
                     <rect key="frame" x="0.0" y="261" width="414" height="1"/>
-                    <color key="backgroundColor" name="Color-dark3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="8ec-OQ-pkM"/>
                     </constraints>
@@ -73,7 +75,6 @@
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDf-OG-Czz">
                     <rect key="frame" x="0.0" y="315" width="414" height="1"/>
-                    <color key="backgroundColor" name="Color-dark3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="1p9-uZ-3aT"/>
                     </constraints>
@@ -95,7 +96,6 @@
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7zm-Uc-Oyy">
                     <rect key="frame" x="0.0" y="369" width="414" height="1"/>
-                    <color key="backgroundColor" name="Color-dark3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="gtD-d0-xIb"/>
                     </constraints>
@@ -117,7 +117,6 @@
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oOp-kZ-fl2">
                     <rect key="frame" x="0.0" y="423" width="414" height="1"/>
-                    <color key="backgroundColor" name="Color-dark3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="6pa-6f-nbw"/>
                     </constraints>
@@ -133,7 +132,6 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" name="Color-dark2"/>
             <constraints>
                 <constraint firstItem="t8y-Zm-ENv" firstAttribute="top" secondItem="3tz-fu-SwN" secondAttribute="top" constant="45" id="1Ld-zv-uGd"/>
                 <constraint firstItem="3tz-fu-SwN" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="408-xl-Io3"/>
@@ -175,11 +173,5 @@
     </objects>
     <resources>
         <image name="Result-header-bg" width="280" height="180"/>
-        <namedColor name="Color-dark2">
-            <color red="0.16078431372549021" green="0.16078431372549021" blue="0.16078431372549021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="Color-dark3">
-            <color red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
     </resources>
 </document>
