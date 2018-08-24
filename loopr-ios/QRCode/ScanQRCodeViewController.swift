@@ -43,7 +43,7 @@ enum QRCodeType: String {
     }
 }
 
-class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var scanView: UIView!
     @IBOutlet weak var flashButton: UIButton!
@@ -63,12 +63,17 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     
     var expectedQRCodeTypes: [QRCodeType] = [.address, .mnemonic, .keystore, .privateKey, .submitOrder, .login, .cancelOrder, .convert, .approve, .p2pOrder]
 
+    let imagePicker = UIImagePickerController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         setBackButton()
         self.navigationItem.title = LocalizedString("Scan QR Code", comment: "")
+        
+        let albumButton = UIBarButtonItem.init(title: LocalizedString("Album", comment: ""), style: .plain, target: self, action: #selector(self.pressedAlbumButton(_:)))
+        self.navigationItem.rightBarButtonItem = albumButton
         
         scanTipLabel.setTitleDigitFont()
         scanTipLabel.text = LocalizedString("Align QR Code within Frame to Scan", comment: "")
@@ -109,6 +114,8 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         self.setupScanLine()
         self.setupBackGroundView()
         self.setupFrameLine()
+        
+        imagePicker.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,6 +134,15 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         super.viewWillDisappear(animated)
         if captureSession.isRunning == true {
             captureSession.stopRunning()
+        }
+    }
+    
+    @objc func pressedAlbumButton(_ button: UIBarButtonItem) {
+        print("pressedAlbumButton")
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        self.present(imagePicker, animated: true) {
+            
         }
     }
     
@@ -327,4 +343,50 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         alertPrompt.addAction(cancelAction)
         present(alertPrompt, animated: true, completion: nil)
     }
+    
+    // MARK: - UIImagePickerControllerDelegate Methods
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        var stringValue: String?
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            if let features = detectQRCode(pickedImage), !features.isEmpty {
+                for case let row as CIQRCodeFeature in features {
+                    stringValue = row.messageString
+                }
+            }
+        }
+        
+        dismiss(animated: true) {
+            if stringValue != nil {
+                self.captureSession.stopRunning()
+                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                let codeCategory = self.qrCodeContentDetector(qrContent: stringValue!)
+                self.launchApp(decodedURL: stringValue!, codeType: codeCategory)
+            }
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true) {
+            
+        }
+    }
+
+    func detectQRCode(_ image: UIImage?) -> [CIFeature]? {
+        if let image = image, let ciImage = CIImage.init(image: image) {
+            var options: [String: Any]
+            let context = CIContext()
+            options = [CIDetectorAccuracy: CIDetectorAccuracyHigh]
+            let qrDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: context, options: options)
+            if ciImage.properties.keys.contains((kCGImagePropertyOrientation as String)) {
+                options = [CIDetectorImageOrientation: ciImage.properties[(kCGImagePropertyOrientation as String)] ?? 1]
+            } else {
+                options = [CIDetectorImageOrientation: 1]
+            }
+            let features = qrDetector?.features(in: ciImage, options: options)
+            return features
+            
+        }
+        return nil
+    }
+
 }
