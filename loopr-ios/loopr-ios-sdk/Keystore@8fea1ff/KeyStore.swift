@@ -44,16 +44,6 @@ public final class KeyStore {
                 accountsByAddress[key.address] = account
             } catch {
                 // Ignore invalid keys
-                
-                // TODO: Hack method to consider hierarchicalDeterministicWallet type
-                do {
-                    let key = try KeystoreKey(contentsOf: url)
-                    keysByAddress[key.address] = key
-                    let account = Account(address: key.address, type: .hierarchicalDeterministicWallet, url: url)
-                    accountsByAddress[key.address] = account
-                } catch {
-                    // Ignore invalid keys
-                }
             }
         }
 
