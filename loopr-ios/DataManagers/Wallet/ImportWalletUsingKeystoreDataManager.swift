@@ -38,6 +38,16 @@ class ImportWalletUsingKeystoreDataManager: ImportWalletProtocol {
 
     func unlockWallet(keystoreStringValue: String, password: String) throws {
         print("Start to unlock a new wallet using the keystore")
+        
+        let decoder = JSONDecoder()
+        
+        let newkeystoreData: Data = keystoreStringValue.data(using: .utf8)!  // Load keystore data from file?
+        let newkeystore = try decoder.decode(NewKeystore.self, from: newkeystoreData)
+        
+        let privateKey = try newkeystore.privateKey(password: password)
+        
+        print(privateKey)    // Your decrypted private key
+        
         print(keystoreStringValue)
         do {
             // Create two folders

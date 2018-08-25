@@ -144,6 +144,10 @@
 		AC147BEA208D0613008D5104 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC147BE9208D0613008D5104 /* UIDeviceExtension.swift */; };
 		AC147BEC208D2E54008D5104 /* ImportWalletError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC147BEB208D2E54008D5104 /* ImportWalletError.swift */; };
 		AC147BEE208D2FD2008D5104 /* ImportWalletProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC147BED208D2FD2008D5104 /* ImportWalletProtocol.swift */; };
+		AC1B6D7C2130FB510026C1B2 /* NewKeystore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1B6D722130FB510026C1B2 /* NewKeystore.swift */; };
+		AC1B6D7E2130FB510026C1B2 /* Bytes+SecureRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1B6D752130FB510026C1B2 /* Bytes+SecureRandom.swift */; };
+		AC1B6D7F2130FB510026C1B2 /* Secp256k1Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1B6D762130FB510026C1B2 /* Secp256k1Helper.swift */; };
+		AC1B6D802130FB510026C1B2 /* KeystoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1B6D772130FB510026C1B2 /* KeystoreFactory.swift */; };
 		AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */; };
 		AC1E4BBC204B420D00C6B1FA /* KeystoreIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBB204B420D00C6B1FA /* KeystoreIntegrationTests.swift */; };
 		AC1E4BC0204B51AB00C6B1FA /* ImportWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */; };
@@ -642,6 +646,10 @@
 		AC147BE9208D0613008D5104 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		AC147BEB208D2E54008D5104 /* ImportWalletError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletError.swift; sourceTree = "<group>"; };
 		AC147BED208D2FD2008D5104 /* ImportWalletProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletProtocol.swift; sourceTree = "<group>"; };
+		AC1B6D722130FB510026C1B2 /* NewKeystore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewKeystore.swift; sourceTree = "<group>"; };
+		AC1B6D752130FB510026C1B2 /* Bytes+SecureRandom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bytes+SecureRandom.swift"; sourceTree = "<group>"; };
+		AC1B6D762130FB510026C1B2 /* Secp256k1Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secp256k1Helper.swift; sourceTree = "<group>"; };
+		AC1B6D772130FB510026C1B2 /* KeystoreFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeystoreFactory.swift; sourceTree = "<group>"; };
 		AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
 		AC1E4BBB204B420D00C6B1FA /* KeystoreIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeystoreIntegrationTests.swift; sourceTree = "<group>"; };
 		AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletTests.swift; sourceTree = "<group>"; };
@@ -1177,6 +1185,33 @@
 				94AA0A9F211578460092D2CE /* ConfirmationResultViewController.xib */,
 			);
 			path = MarketPlaceOrder;
+			sourceTree = "<group>";
+		};
+		AC1B6D712130FB510026C1B2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				AC1B6D722130FB510026C1B2 /* NewKeystore.swift */,
+				AC1B6D742130FB510026C1B2 /* Toolbox */,
+				AC1B6D772130FB510026C1B2 /* KeystoreFactory.swift */,
+				AC1B6D782130FB510026C1B2 /* Scrypt */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		AC1B6D742130FB510026C1B2 /* Toolbox */ = {
+			isa = PBXGroup;
+			children = (
+				AC1B6D752130FB510026C1B2 /* Bytes+SecureRandom.swift */,
+				AC1B6D762130FB510026C1B2 /* Secp256k1Helper.swift */,
+			);
+			path = Toolbox;
+			sourceTree = "<group>";
+		};
+		AC1B6D782130FB510026C1B2 /* Scrypt */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Scrypt;
 			sourceTree = "<group>";
 		};
 		AC1E4BB9204B2AE200C6B1FA /* RelayAPI */ = {
@@ -2128,6 +2163,7 @@
 			isa = PBXGroup;
 			children = (
 				AC4F5FFF20773E9D00F1D954 /* GethBigInt+Extension.swift */,
+				AC1B6D712130FB510026C1B2 /* Classes */,
 				ACB9119320278A0E00F14644 /* RelayAPI */,
 				AC5442DA2081163D0036A2B4 /* SwiftyJSON@a1700fb */,
 				AC4F5FFA20773E9D00F1D954 /* web3swift@fe0c304 */,
@@ -2764,6 +2800,7 @@
 				AC0CD57B20D21C1100ABB7BA /* TabBarItemBouncesContentView.swift in Sources */,
 				AC46F7762069FB4400CFDC40 /* UIButton+RoundButton.swift in Sources */,
 				942C4A02212A9D89008A6B4F /* P2PType.swift in Sources */,
+				AC1B6D7F2130FB510026C1B2 /* Secp256k1Helper.swift in Sources */,
 				ACFEFE9F20C3436000013921 /* loopr_ios.xcdatamodeld in Sources */,
 				AC4F601520773E9D00F1D954 /* EthFunction.swift in Sources */,
 				AC131A10210ED2BB001998A0 /* MarketDetailDepthTableViewCell.swift in Sources */,
@@ -2837,6 +2874,7 @@
 				AC31CE17205A121000A30335 /* NumericKeyboardProtocol.swift in Sources */,
 				AC31CE142057B5A400A30335 /* TradeReviewViewController.swift in Sources */,
 				9445D54620BA4FB3006045F6 /* PriceStackView.swift in Sources */,
+				AC1B6D7E2130FB510026C1B2 /* Bytes+SecureRandom.swift in Sources */,
 				AC4F601620773E9D00F1D954 /* EthTypeEncoder.swift in Sources */,
 				ACBA47EE207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.swift in Sources */,
 				ACC2A2CF209EC39E00F2B7A1 /* OrderExpire.swift in Sources */,
@@ -2847,6 +2885,7 @@
 				AC9DC462211C0D87002D7D23 /* TradeSelectionNavigationViewController.swift in Sources */,
 				AC4141FD203532ED0089861D /* SwipeViewOptions.swift in Sources */,
 				ACB9119F202967A500F14644 /* OrderStatus.swift in Sources */,
+				AC1B6D7C2130FB510026C1B2 /* NewKeystore.swift in Sources */,
 				AC0CD57D20D21F3C00ABB7BA /* TabBarItemBackgroundContentView.swift in Sources */,
 				ACB9117520255A6600F14644 /* MarketTableViewCell.swift in Sources */,
 				941B1EFC209C41BC00710DFF /* GasDataManager.swift in Sources */,
@@ -2959,6 +2998,7 @@
 				ACB5DDA4202D6FC300140A09 /* UIImageExtension.swift in Sources */,
 				AC31B952204A8DF400B16155 /* Account.swift in Sources */,
 				AC9FFF2121254BAC00957175 /* DefaultStepSlider.swift in Sources */,
+				AC1B6D802130FB510026C1B2 /* KeystoreFactory.swift in Sources */,
 				940B45282060F67E00ADE2B9 /* SetupDataManager.swift in Sources */,
 				AC3B488F210525BE008A6771 /* UpdatedSelectWalletViewController.swift in Sources */,
 				AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */,
