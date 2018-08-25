@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDelegate {
 
@@ -169,6 +170,8 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
     }
 
     func succeedAndExit() {
+        Answers.logSignUp(withMethod: setupWalletMethod.rawValue, success: true, customAttributes: nil)
+
         if SetupDataManager.shared.hasPresented {
             self.dismiss(animated: true, completion: {
                 

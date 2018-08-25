@@ -8,6 +8,7 @@
 
 import UIKit
 import Social
+import Crashlytics
 
 class NewSettingPartnerViewController: UIViewController {
 
@@ -64,6 +65,12 @@ class NewSettingPartnerViewController: UIViewController {
         let activityVC = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
         activityVC.excludedActivityTypes = [.message, .mail, .airDrop]
         activityVC.popoverPresentationController?.sourceView = self.view
+        activityVC.completionWithItemsHandler = {(activity, success, items, error) in
+            print(activity.debugDescription)
+            if success && activity != nil {
+                Answers.logShare(withMethod: "System default share", contentName: "City Partner", contentType: activity!._rawValue as String, contentId: nil, customAttributes: nil)
+            }
+        }
         self.present(activityVC, animated: true, completion: nil)
     }
     
