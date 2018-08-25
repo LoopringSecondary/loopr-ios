@@ -156,7 +156,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
                 self.navigationController?.pushViewController(viewController, animated: true)
             } else {
                 let banner = NotificationBanner.generate(title: "Wrong password", style: .danger)
-                banner.duration = 1.5
+                banner.duration = 2
                 banner.show()
             }
         }

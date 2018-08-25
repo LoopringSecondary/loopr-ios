@@ -19,8 +19,8 @@ extension Notification.Name {
     
     // In-app notifications
     static let currentAppWalletSwitched = Notification.Name("currentAppWalletSwitched")
-    
+    static let needRelaunchCurrentAppWallet = Notification.Name("needRelaunchCurrentAppWallet")
+
     // Need to update UI
     static let languageChanged = NSNotification.Name(rawValue: "languageChanged")
 }
-

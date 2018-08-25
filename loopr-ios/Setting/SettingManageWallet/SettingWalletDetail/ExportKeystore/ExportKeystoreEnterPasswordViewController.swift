@@ -70,6 +70,7 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        repeatPasswordTextField.becomeFirstResponder()
     }
 
     @objc func nextButtonPressed(_ sender: Any) {

@@ -65,6 +65,7 @@ class ImportWalletUsingKeystoreDataManager: ImportWalletProtocol {
             
             print("Complete unlockWallet using keystore")
         } catch {
+            print("Invalid keystore")
             throw ImportWalletError.invalidKeystore
         }
     }

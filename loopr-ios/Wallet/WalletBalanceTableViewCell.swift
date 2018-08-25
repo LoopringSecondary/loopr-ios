@@ -61,7 +61,8 @@ class WalletBalanceTableViewCell: UITableViewCell {
         addSubview(qrCodeButton)
         
         if updateBalanceLabelTimer == nil {
-            updateBalanceLabelTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
+            //  Disable due to socket io is also disabled.
+            // updateBalanceLabelTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
         }
         update()
     }
@@ -89,7 +90,8 @@ class WalletBalanceTableViewCell: UITableViewCell {
     
     func startUpdateBalanceLabelTimer() {
         if updateBalanceLabelTimer == nil {
-            updateBalanceLabelTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
+            //  Disable due to socket io is also disabled.
+            // updateBalanceLabelTimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.updateBalance), userInfo: nil, repeats: true)
         }
     }
 

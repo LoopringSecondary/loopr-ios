@@ -63,6 +63,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
                     if let tabBarController = appDelegate?.window?.rootViewController as? UITabBarController {
                         if let fromView = tabBarController.selectedViewController?.view {
                             let toView = tabBarController.viewControllers![0]
+                            NotificationCenter.default.post(name: .needRelaunchCurrentAppWallet, object: nil)
                             UIView.transition(from: fromView, to: toView.view, duration: 0.3, options: .transitionCrossDissolve, completion: { (_) in
                                 tabBarController.selectedIndex = 0
                             })
@@ -72,6 +73,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
                 }
                 
                 if controller.isKind(of: WalletViewController.self) {
+                    NotificationCenter.default.post(name: .needRelaunchCurrentAppWallet, object: nil)
                     self.navigationController!.popToViewController(controller, animated: true)
                     break
                 }

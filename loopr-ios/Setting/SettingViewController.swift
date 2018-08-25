@@ -24,10 +24,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         view.theme_backgroundColor = ColorPicker.backgroundColor
         settingsTableView.separatorStyle = .none
         settingsTableView.tableFooterView = UIView()
-        
+        settingsTableView.delaysContentTouches = false
         settingsTableView.theme_backgroundColor = ColorPicker.backgroundColor
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         settingsTableView.reloadData()

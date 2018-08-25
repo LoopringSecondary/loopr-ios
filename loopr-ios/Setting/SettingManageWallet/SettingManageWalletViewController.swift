@@ -49,6 +49,7 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         super.viewWillAppear(animated)
         tableView.reloadData()
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        getAllBalanceFromRelay()
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,7 +57,7 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         // Dispose of any resources that can be recreated.
     }
     
-    func getAllBalanceFromRelay() {
+    private func getAllBalanceFromRelay() {
         for (index, wallet) in AppWalletDataManager.shared.getWallets().enumerated() {
             AppWalletDataManager.shared.getTotalCurrencyValue(address: wallet.address, getPrice: index == 0, completionHandler: { (totalCurrencyValue, error) in
                 print("getAllBalanceFromRelay \(totalCurrencyValue)")

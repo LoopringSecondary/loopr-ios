@@ -12,12 +12,14 @@ class SettingCurrencyViewController: UIViewController, UITableViewDelegate, UITa
 
     @IBOutlet weak var tableView: UITableView!
     
+    var localCurrentCurrency: Currency!
     var currencies: [Currency] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        localCurrentCurrency = SettingDataManager.shared.getCurrentCurrency()
         currencies = SettingDataManager.shared.getSupportedCurrencies()
         tableView.dataSource = self
         tableView.delegate = self
@@ -37,21 +39,17 @@ class SettingCurrencyViewController: UIViewController, UITableViewDelegate, UITa
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        LoopringAPIRequest.getTicker { (markets, error) in
-            print("receive LoopringAPIRequest.getMarkets")
-            guard error == nil else {
-                print("error=\(String(describing: error))")
-                return
+        if localCurrentCurrency != SettingDataManager.shared.getCurrentCurrency() {
+            LoopringAPIRequest.getTicker { (markets, error) in
+                print("receive LoopringAPIRequest.getMarkets")
+                guard error == nil else {
+                    print("error=\(String(describing: error))")
+                    return
+                }
+                MarketDataManager.shared.setMarkets(newMarkets: markets)
             }
-            MarketDataManager.shared.setMarkets(newMarkets: markets)
+            NotificationCenter.default.post(name: .needRelaunchCurrentAppWallet, object: nil)
         }
-        
-        CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote(getPrice: true, completionHandler: { _, error in
-            print("receive CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote() in SettingCurrencyViewController")
-            guard error == nil else {
-                return
-            }
-        })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

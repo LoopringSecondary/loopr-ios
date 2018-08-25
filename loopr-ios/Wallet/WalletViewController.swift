@@ -80,6 +80,12 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // Adding the view below the refresh control
         assetTableView.insertSubview(backgroundView, at: 0)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(needRelaunchCurrentAppWalletReceivedNotification), name: .needRelaunchCurrentAppWallet, object: nil)
+    }
+    
+    @objc func needRelaunchCurrentAppWalletReceivedNotification() {
+        self.isLaunching = true
     }
     
     @objc private func refreshData(_ sender: Any) {
