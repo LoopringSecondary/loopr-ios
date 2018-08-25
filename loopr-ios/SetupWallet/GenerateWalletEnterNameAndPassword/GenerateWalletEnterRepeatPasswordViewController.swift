@@ -19,7 +19,7 @@ class GenerateWalletEnterRepeatPasswordViewController: UIViewController, UITextF
 
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = ColorPicker.backgroundColor
-        self.navigationItem.title = LocalizedString("Generate Wallet", comment: "")
+        self.navigationItem.title = LocalizedString("Repeat Password", comment: "")
         setBackButton()
         
         // Setup UI in the scroll view
