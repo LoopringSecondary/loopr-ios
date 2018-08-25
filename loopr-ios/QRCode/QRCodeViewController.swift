@@ -36,6 +36,7 @@ class QRCodeViewController: UIViewController {
         view.theme_backgroundColor = ColorPicker.backgroundColor
         contentView.layer.cornerRadius = 6
         contentView.theme_backgroundColor = ColorPicker.cardBackgroundColor
+        contentView.applyShadow()
         
         receiveQRCodeIconView.image = UIImage(named: "Receive-qrcode-icon" + ColorTheme.getTheme())
         titleLabel.setTitleCharFont()
@@ -82,7 +83,6 @@ class QRCodeViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        contentView.applyShadow(withColor: UIColor.black)
         view.bringSubview(toFront: receiveQRCodeIconView)
     }
     
