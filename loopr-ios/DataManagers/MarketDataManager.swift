@@ -115,13 +115,13 @@ class MarketDataManager {
     }
 
     func setFavoriteMarket(market: Market) {
-        // Update the array in the memory
         favoriteSequence.append(market.description)
+        UserDefaults.standard.set(favoriteSequence, forKey: UserDefaultsKeys.favoriteSequence.rawValue)
     }
     
     func removeFavoriteMarket(market: Market) {
-        // Update the array in the memory
         favoriteSequence = favoriteSequence.filter { $0 != market.description }
+        UserDefaults.standard.set(favoriteSequence, forKey: UserDefaultsKeys.favoriteSequence.rawValue)
     }
     
     func startGetTicker() {
