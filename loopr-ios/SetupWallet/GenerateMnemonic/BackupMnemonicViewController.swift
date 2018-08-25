@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class BackupMnemonicViewController: UIViewController {
 
@@ -151,6 +152,7 @@ class BackupMnemonicViewController: UIViewController {
         let confirmAction = UIAlertAction(title: LocalizedString("Enter Wallet", comment: ""), style: .default, handler: { _ in
             GenerateWalletDataManager.shared.complete(completion: {(appWallet, error) in
                 if error == nil {
+                    Answers.logSignUp(withMethod: QRCodeMethod.create.description + ".skip", success: true, customAttributes: nil)
                     self.dismissGenerateWallet()
                 } else if error == .duplicatedAddress {
                     self.alertForDuplicatedAddress()
@@ -166,15 +168,8 @@ class BackupMnemonicViewController: UIViewController {
     }
 
     func dismissGenerateWallet() {
-        if SetupDataManager.shared.hasPresented {
-            self.dismiss(animated: true, completion: {
-                
-            })
-        } else {
-            SetupDataManager.shared.hasPresented = true
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            appDelegate?.window?.rootViewController = MainTabController()
-        }
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.window?.rootViewController = MainTabController()
     }
     
 }

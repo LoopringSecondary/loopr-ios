@@ -28,13 +28,11 @@ class AppWalletDataManager {
     func logout(appWallet: AppWallet) {
         if let index = appWallets.index(of: appWallet) {
             appWallets.remove(at: index)
-            // TODO: if the size of encodedData is large, the perfomance may drop.
-            DispatchQueue.global().async {
-                let defaults = UserDefaults.standard
-                let encodedData = NSKeyedArchiver.archivedData(withRootObject: AppWalletDataManager.shared.appWallets)
-                defaults.set(encodedData, forKey: UserDefaultsKeys.appWallets.rawValue)
-            }
-            
+            let defaults = UserDefaults.standard
+            let encodedData = NSKeyedArchiver.archivedData(withRootObject: AppWalletDataManager.shared.appWallets)
+            defaults.set(encodedData, forKey: UserDefaultsKeys.appWallets.rawValue)
+            getAppWalletsFromLocalStorage()
+
             // Set the current wallet
             if appWallet == CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
                 if  appWallets.count > 0 {
@@ -67,11 +65,13 @@ class AppWalletDataManager {
     }
     
     func isNewWalletNameToken(newWalletname: String) -> Bool {
+        getAppWalletsFromLocalStorage()
         let results = appWallets.filter { $0.name == newWalletname }
         return !results.isEmpty
     }
     
     func isDuplicatedAddress(address: String) -> Bool {
+        getAppWalletsFromLocalStorage()
         if address.trim() == "" {
             return true
         }

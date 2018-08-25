@@ -174,9 +174,8 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     }
     
     func navigationToSetupNavigationController() {
-        let alertController = UIAlertController(title: "No wallet is found in the device. Navigate to the wallet creation view.", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: LocalizedString("No wallet is found in the device. Navigate to the wallet creation view.", comment: ""), message: nil, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
-            SetupDataManager.shared.hasPresented = false
             UIApplication.shared.keyWindow?.rootViewController = SetupNavigationController(nibName: nil, bundle: nil)
         })
         alertController.addAction(defaultAction)

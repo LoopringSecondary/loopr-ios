@@ -170,17 +170,9 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
     }
 
     func succeedAndExit() {
-        Answers.logSignUp(withMethod: setupWalletMethod.rawValue, success: true, customAttributes: nil)
-
-        if SetupDataManager.shared.hasPresented {
-            self.dismiss(animated: true, completion: {
-                
-            })
-        } else {
-            SetupDataManager.shared.hasPresented = true
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            appDelegate?.window?.rootViewController = MainTabController()
-        }
+        Answers.logSignUp(withMethod: setupWalletMethod.description, success: true, customAttributes: nil)
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.window?.rootViewController = MainTabController()
     }
     
 }

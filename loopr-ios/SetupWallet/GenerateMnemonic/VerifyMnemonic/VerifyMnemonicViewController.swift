@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollectionViewControllerDelegate {
 
@@ -181,6 +182,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         let confirmAction = UIAlertAction(title: LocalizedString("Enter Wallet", comment: ""), style: .default, handler: { _ in
             GenerateWalletDataManager.shared.complete(completion: {(appWallet, error) in
                 if error == nil {
+                    Answers.logSignUp(withMethod: QRCodeMethod.create.description + ".skip", success: true, customAttributes: nil)
                     self.dismissGenerateWallet()
                 } else if error == .duplicatedAddress {
                     self.alertForDuplicatedAddress()
@@ -207,6 +209,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         let confirmAction = UIAlertAction(title: LocalizedString("Enter Wallet", comment: ""), style: .default, handler: { _ in
             GenerateWalletDataManager.shared.complete(completion: {(appWallet, error) in
                 if error == nil {
+                    Answers.logSignUp(withMethod: QRCodeMethod.create.description + ".verified", success: true, customAttributes: nil)
                     self.dismissGenerateWallet()
                 } else if error == .duplicatedAddress {
                     self.alertForDuplicatedAddress()
@@ -222,14 +225,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
     }
     
     func dismissGenerateWallet() {
-        if SetupDataManager.shared.hasPresented {
-            self.dismiss(animated: true, completion: {
-                
-            })
-        } else {
-            SetupDataManager.shared.hasPresented = true
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            appDelegate?.window?.rootViewController = MainTabController()
-        }
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.window?.rootViewController = MainTabController()
     }
 }

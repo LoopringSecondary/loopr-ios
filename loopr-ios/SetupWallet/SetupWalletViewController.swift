@@ -33,9 +33,6 @@ class SetupWalletViewController: UIViewController {
         unlockWalletButton.title = LocalizedString("Import Wallet", comment: "")
         unlockWalletButton.setupSecondary(height: 50, gradientOrientation: .horizontal)
         
-        // This conflicts to UIImage.
-        // unlockWalletButton.set(image: UIImage.init(named: "ImportWalletButtonIcon"), title: LocalizedString("Import Wallet", comment: ""), titlePosition: .right, additionalSpacing: 10, state: .normal)
-
         unlockWalletButton.addTarget(self, action: #selector(unlockWalletButtonPressed), for: .touchUpInside)
 
         generateWalletButton.title = LocalizedString("Generate Wallet", comment: "")

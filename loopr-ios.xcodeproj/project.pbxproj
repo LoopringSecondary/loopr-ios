@@ -21,7 +21,6 @@
 		940B45242060F67E00ADE2B9 /* TradeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45162060F67C00ADE2B9 /* TradeDataManager.swift */; };
 		940B45252060F67E00ADE2B9 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45172060F67C00ADE2B9 /* UserDefaultsKeys.swift */; };
 		940B45262060F67E00ADE2B9 /* ConvertDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45182060F67D00ADE2B9 /* ConvertDataManager.swift */; };
-		940B45282060F67E00ADE2B9 /* SetupDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B451A2060F67D00ADE2B9 /* SetupDataManager.swift */; };
 		940B45292060F67E00ADE2B9 /* gas_limit.json in Resources */ = {isa = PBXBuildFile; fileRef = 940B451B2060F67E00ADE2B9 /* gas_limit.json */; };
 		940B452A2060F67E00ADE2B9 /* MarketDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B451C2060F67E00ADE2B9 /* MarketDataManager.swift */; };
 		940B452B2060F67E00ADE2B9 /* SettingDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B451D2060F67E00ADE2B9 /* SettingDataManager.swift */; };
@@ -523,7 +522,6 @@
 		940B45162060F67C00ADE2B9 /* TradeDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeDataManager.swift; sourceTree = "<group>"; };
 		940B45172060F67C00ADE2B9 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		940B45182060F67D00ADE2B9 /* ConvertDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertDataManager.swift; sourceTree = "<group>"; };
-		940B451A2060F67D00ADE2B9 /* SetupDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupDataManager.swift; sourceTree = "<group>"; };
 		940B451B2060F67E00ADE2B9 /* gas_limit.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gas_limit.json; sourceTree = "<group>"; };
 		940B451C2060F67E00ADE2B9 /* MarketDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDataManager.swift; sourceTree = "<group>"; };
 		940B451D2060F67E00ADE2B9 /* SettingDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDataManager.swift; sourceTree = "<group>"; };
@@ -2032,7 +2030,6 @@
 				940B45142060F67C00ADE2B9 /* PriceDataManager.swift */,
 				AC0CD58A20D393F200ABB7BA /* SendCurrentAppWalletDataManager.swift */,
 				940B451D2060F67E00ADE2B9 /* SettingDataManager.swift */,
-				940B451A2060F67D00ADE2B9 /* SetupDataManager.swift */,
 				940B45162060F67C00ADE2B9 /* TradeDataManager.swift */,
 				ACEC978120AD6165003F9DEB /* P2POrderHistoryDataManager.swift */,
 				940B45172060F67C00ADE2B9 /* UserDefaultsKeys.swift */,
@@ -2991,7 +2988,6 @@
 				AC31B952204A8DF400B16155 /* Account.swift in Sources */,
 				AC9FFF2121254BAC00957175 /* DefaultStepSlider.swift in Sources */,
 				AC1B6D802130FB510026C1B2 /* KeystoreFactory.swift in Sources */,
-				940B45282060F67E00ADE2B9 /* SetupDataManager.swift in Sources */,
 				AC3B488F210525BE008A6771 /* UpdatedSelectWalletViewController.swift in Sources */,
 				AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */,
 				AC4F601120773E9D00F1D954 /* EthAccountCoordinator.swift in Sources */,
