@@ -133,7 +133,6 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        isSearching = false
         isListeningSocketIO = false
         // MarketDataManager.shared.stopGetTicker()
         NotificationCenter.default.removeObserver(self, name: .tickerResponseReceived, object: nil)

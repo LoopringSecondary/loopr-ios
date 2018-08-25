@@ -102,6 +102,9 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // viewControllers[self.swipeView.currentIndex].searchTextDidUpdate(searchText: "")
+        if isSearching {
+            searchBar.becomeFirstResponder()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
