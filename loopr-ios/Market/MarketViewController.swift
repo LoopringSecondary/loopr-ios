@@ -111,6 +111,13 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if type == .favorite {
+            getTickersFromRelay()
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         isListeningSocketIO = true

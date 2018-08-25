@@ -97,7 +97,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             SVProgressHUD.show(withStatus: LocalizedString("Loading Data", comment: ""))
         }
 
-        CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote(address: CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address, getPrice: self.isLaunching, completionHandler: { _, error in
+        CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote(getPrice: true, completionHandler: { _, error in
             print("receive CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote() in WalletViewController")
             guard error == nil else {
                 print("error=\(String(describing: error))")
@@ -131,6 +131,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.setup(animated: false)
             cell.startUpdateBalanceLabelTimer()
         }
+        
+        assetTableView.reloadData()
         getBalanceFromRelay()
         
         let screensize: CGRect = UIScreen.main.bounds
@@ -147,8 +149,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidAppear(animated)
         isListeningSocketIO = true
         CurrentAppWalletDataManager.shared.startGetBalance()
-        // Add observer.
-        NotificationCenter.default.addObserver(self, selector: #selector(balanceResponseReceivedNotification), name: .balanceResponseReceived, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -158,8 +158,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         CurrentAppWalletDataManager.shared.stopGetBalance()
         isListeningSocketIO = false
-        NotificationCenter.default.removeObserver(self, name: .balanceResponseReceived, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .priceQuoteResponseReceived, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -261,22 +259,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if !isDropdownMenuExpanded {
             dropdownMenu.openComponent(0, animated: true)
             isDropdownMenuExpanded = true
-        }
-    }
-
-    @objc func balanceResponseReceivedNotification() {
-        if !isLaunching && isListeningSocketIO {
-            print("balanceResponseReceivedNotification WalletViewController reload table")
-            // assetTableView.reloadData()
-            self.assetTableView.reloadSections(IndexSet(integersIn: 2...2), with: .none)
-        }
-    }
-    
-    @objc func priceQuoteResponseReceivedNotification() {
-        if !isLaunching && isListeningSocketIO {
-            print("priceQuoteResponseReceivedNotification WalletViewController reload table")
-            // assetTableView.reloadData()
-            self.assetTableView.reloadSections(IndexSet(integersIn: 2...2), with: .none)
         }
     }
     

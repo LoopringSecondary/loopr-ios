@@ -35,6 +35,25 @@ class SettingCurrencyViewController: UIViewController, UITableViewDelegate, UITa
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        LoopringAPIRequest.getTicker { (markets, error) in
+            print("receive LoopringAPIRequest.getMarkets")
+            guard error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            MarketDataManager.shared.setMarkets(newMarkets: markets)
+        }
+        
+        CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote(getPrice: true, completionHandler: { _, error in
+            print("receive CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote() in SettingCurrencyViewController")
+            guard error == nil else {
+                return
+            }
+        })
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currencies.count
     }

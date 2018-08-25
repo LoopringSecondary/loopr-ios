@@ -60,6 +60,7 @@ public class LoopringSocketIORequest {
         }
     }
     
+    // TODO: It's disable due to the socket io may cause race condition.
     static func getBalance(owner: String) {
         /*
         var body: JSON = JSON()
@@ -85,7 +86,9 @@ public class LoopringSocketIORequest {
         }
     }
     
+    // TODO: It's disable due to the socket io may cause race condition.
     static func getPriceQuote(currency: String) {
+        /*
         var body: JSON = JSON()
         body["currency"] = JSON(currency)
         if socket.status != .connected {
@@ -95,6 +98,7 @@ public class LoopringSocketIORequest {
         } else {
             self.socket.emit("marketcap_req", body.rawString()!)
         }
+        */
     }
     
     static func endPriceQuote() {
