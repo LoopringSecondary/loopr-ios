@@ -51,7 +51,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.separatorStyle = .none
         
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 8))
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 0))
         tableView.tableHeaderView = headerView
         
         view.theme_backgroundColor = ColorPicker.backgroundColor

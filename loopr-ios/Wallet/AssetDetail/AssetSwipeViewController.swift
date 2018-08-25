@@ -11,7 +11,7 @@ import UIKit
 class AssetSwipeViewController: SwipeViewController {
 
     private var type: TxSwipeViewType = .all
-    private var types: [TxSwipeViewType] = []
+    private var types: [TxSwipeViewType] = [.all]
     private var viewControllers: [AssetDetailViewController] = []
     
     var asset: Asset?
@@ -31,13 +31,15 @@ class AssetSwipeViewController: SwipeViewController {
         view.theme_backgroundColor = ColorPicker.backgroundColor
         self.topConstraint = 140
         self.bottomConstraint = -54
+        options.swipeTabView.height = 0
+        
         setBackButton()
         setupChildViewControllers()
         
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         
-        baseView.frame = CGRect(x: 15, y: 15, width: screenWidth - 30, height: 120)
+        baseView.frame = CGRect(x: 15, y: 10, width: screenWidth - 30, height: 120)
         baseView.applyGradient(withColors: UIColor.secondary)
         baseView.layer.cornerRadius = 8
         baseView.clipsToBounds = true
@@ -83,7 +85,6 @@ class AssetSwipeViewController: SwipeViewController {
     }
     
     func setupChildViewControllers() {
-        types = [.all, .time, .type, .status]
         for (index, type) in types.enumerated() {
             let vc = AssetDetailViewController(type: type)
             vc.asset = self.asset

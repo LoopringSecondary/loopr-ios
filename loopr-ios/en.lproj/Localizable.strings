@@ -347,7 +347,7 @@
 "Password can't be empty." = "Password can't be empty.";
 "The length of password needs to be larger than or equal to 6." = "The length of password needs to be larger than or equal to 6.";
 "Password doesn't match" = "Password doesn't match";
-"Convert_DES" = "● Think of it like the coin version of a paper note. The same value, but some machines only take coins. The convertion ratio between ETH and WETH is always 1:1, guaranteed by Ethereum.";
+"Convert_DES" = "● Think of it like the coin version of a paper note. The same value, but some machines only take coins. The conversion ratio between ETH and WETH is always 1:1, guaranteed by Ethereum.";
 "Convert_TIP" = "● We will preserve 0.01 ETH for gas fee of your subsequent transaction";
 "Convert_Fail_Tip" = "Insufficient gas in your account. Please retry later";
 "Convert_Success_Tip" = "Convert successfully. Transaction hash =";
