@@ -246,29 +246,14 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         if presentedViewController != nil {
             return
         }
-
         guard codeType != .undefined && expectedQRCodeTypes.contains(codeType) else {
             showAlert(decodedURL: decodedURL)
             return
         }
-
-        let message = LocalizedString("Do you wish to handle the qrcode?", comment: "")
-        let alertPrompt = UIAlertController(title: "\(codeType.detectedDescription)", message: "\(message)", preferredStyle: .actionSheet)
-        let messageAttribute = NSMutableAttributedString.init(string: alertPrompt.message!)
-        messageAttribute.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)], range: NSRange(location: 0, length: (alertPrompt.message?.count)!))
-        alertPrompt.setValue(messageAttribute, forKey: "attributedMessage")
-        let cancelAction = UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.cancel, handler: { _ in
-            self.captureSession.startRunning()
-        })
-        let confirmAction = UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default) { _ in
-            self.delegate?.setResultOfScanningQRCode(valueSent: decodedURL, type: codeType)
-            if self.shouldPop {
-                self.navigationController?.popViewController(animated: true)
-            }
+        self.delegate?.setResultOfScanningQRCode(valueSent: decodedURL, type: codeType)
+        if self.shouldPop {
+            self.navigationController?.popViewController(animated: true)
         }
-        alertPrompt.addAction(confirmAction)
-        alertPrompt.addAction(cancelAction)
-        present(alertPrompt, animated: true, completion: nil)
     }
 
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {

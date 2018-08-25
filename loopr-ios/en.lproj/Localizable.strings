@@ -353,7 +353,7 @@
 "Convert_Success_Tip" = "Convert successfully. Transaction hash =";
 "ETH_TIP" = "● We will preserve 0.01 ETH for gas fee of your subsequent transaction";
 "Recommand Price" = "Recommand Price";
-"Set Gas" = "Set Gas";
+"Set Gas" = "Set Gas Price";
 "Confirm Mnemonic Word" = "Confirm Mnemonic Word";
 "DEX Trade" = "DEX Trade";
 "Peer to Peer" = "Peer to Peer";
@@ -380,7 +380,7 @@
 "Receiver" = "Receiver";
 "Sender" = "Sender";
 "Trade_Confirm" = "Trade Confirmation";
-"No_Data_Tip"= "Data is temporarily unavailable";
+"No_Data_Tip"= "No Data available";
 "Wallet Address QRCode" = "Wallet Address QRCode";
 "24H Change" = "24H Change";
 "24H High" = "24H High";

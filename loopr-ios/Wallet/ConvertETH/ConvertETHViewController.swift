@@ -156,13 +156,14 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             let title = LocalizedString("Available Balance", comment: "")
             self.tipMessage = "\(title) \(available.withCommas(6)) \(symbol)"
             availableLabel.text = self.tipMessage
-            
             if symbol == "ETH" {
                 tokenSLabel.text = "ETH"
                 tokenBLabel.text = "WETH"
+                infoLabel2.isHidden = false
             } else if symbol == "WETH" {
                 tokenSLabel.text = "WETH"
                 tokenBLabel.text = "ETH"
+                infoLabel2.isHidden = true
             }
         }
     }

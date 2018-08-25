@@ -31,7 +31,7 @@ class OrderTableViewCell: UITableViewCell {
         self.baseView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         self.baseView.applyShadow()
         cancelButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 14)
-        buttonColor = cancelButton.currentTitleColor
+        buttonColor = UIColor.themeYellow
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {

@@ -353,7 +353,7 @@
 "Convert_Fail_Tip" = "您的账户中油费不足，请稍后重试";
 "Convert_Success_Tip" = "转换成功，交易哈希值 =";
 "Recommand Price" = "推荐油价";
-"Set Gas" = "设置油费";
+"Set Gas" = "设置油价";
 "Confirm Mnemonic Word" = "确认助记词";
 "DEX Trade" = "去中心化交易所";
 "Peer to Peer" = "点对点";
