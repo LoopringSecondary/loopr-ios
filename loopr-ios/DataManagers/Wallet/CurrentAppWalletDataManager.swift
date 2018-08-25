@@ -108,6 +108,15 @@ class CurrentAppWalletDataManager {
     // Used in WalletViewController with hide small assets option
     func getAssetsWithHideSmallAssetsOption() -> [Asset] {
         print(currentAppWallet!.getTokenList())
+        for tokenSymbol in currentAppWallet!.getTokenList() {
+            if let token = TokenDataManager.shared.getTokenBySymbol(tokenSymbol) {
+                let newAsset = Asset(token: token)
+                if !self.assets.contains(newAsset) {
+                    self.assets.append(newAsset)
+                }
+            }
+        }
+
         return self.assets.filter({ (asset) -> Bool in
             return currentAppWallet!.getTokenList().contains(asset.symbol) || asset.balance > 0.001
         }).sorted(by: { (a, b) -> Bool in

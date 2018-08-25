@@ -44,11 +44,11 @@ class Asset: CustomStringConvertible, Equatable {
         }
     }
     
-    init(symbol: String) {
-        self.symbol = symbol
-        self.name = ""
+    init(token: Token) {
+        self.symbol = token.symbol
+        self.name = token.source
         self.enable = true
-        self.description = self.name
+        self.description = self.symbol
         self.balance = 0.0
         self.allowance = 0.0
         self.display = "0.0"
@@ -56,7 +56,7 @@ class Asset: CustomStringConvertible, Equatable {
         self.currency = Double(0).currency
         self.icon = UIImage(named: "Token-\(self.symbol)-\(Themes.getTheme())") ?? nil
     }
-    
+
     static func getLength(of symbol: String) -> Int? {
         var result: Int? = nil
         if let price = PriceDataManager.shared.getPrice(of: symbol) {
