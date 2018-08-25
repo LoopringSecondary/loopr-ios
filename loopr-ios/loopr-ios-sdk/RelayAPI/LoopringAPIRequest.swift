@@ -131,26 +131,26 @@ class LoopringAPIRequest {
             
             let json = JSON(data)
             let offerData = json["result"]["depth"]
-            let buyContents = offerData["buy"].arrayObject as! [[String]]
-            for buyContent in buyContents {
-                if let depth = Depth(market: market, content: buyContent) {
-                    buyDepths.append(depth)
+            if let buyContents = offerData["buy"].arrayObject as? [[String]] {
+                for buyContent in buyContents {
+                    if let depth = Depth(market: market, content: buyContent) {
+                        buyDepths.append(depth)
+                    }
                 }
+                buyDepths.sort(by: { (a, b) -> Bool in
+                    return (Double(a.price) ?? 0) > (Double(b.price) ?? 0)
+                })
             }
-            buyDepths.sort(by: { (a, b) -> Bool in
-                return (Double(a.price) ?? 0) > (Double(b.price) ?? 0)
-            })
-            
-            let sellContents = offerData["sell"].arrayObject as! [[String]]
-            for sellContent in sellContents {
-                if let depth = Depth(market: market, content: sellContent) {
-                    sellDepths.append(depth)
+            if let sellContents = offerData["sell"].arrayObject as? [[String]] {
+                for sellContent in sellContents {
+                    if let depth = Depth(market: market, content: sellContent) {
+                        sellDepths.append(depth)
+                    }
                 }
+                sellDepths.sort(by: { (a, b) -> Bool in
+                    return (Double(a.price) ?? 0) < (Double(b.price) ?? 0)
+                })
             }
-            sellDepths.sort(by: { (a, b) -> Bool in
-                return (Double(a.price) ?? 0) < (Double(b.price) ?? 0)
-            })
-            
             completionHandler(buyDepths, sellDepths, nil)
         }
     }
