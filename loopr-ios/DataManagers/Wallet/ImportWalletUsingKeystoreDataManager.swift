@@ -36,56 +36,34 @@ class ImportWalletUsingKeystoreDataManager: ImportWalletProtocol {
         walletName = ""
     }
 
-    func unlockWallet(keystoreStringValue: String, password: String) throws {
+    func unlockWallet(userInputKeystoreStringValue: String, password: String) throws {
         print("Start to unlock a new wallet using the keystore")
-        
-        let decoder = JSONDecoder()
-        
-        let newkeystoreData: Data = keystoreStringValue.data(using: .utf8)!  // Load keystore data from file?
-        let newkeystore = try decoder.decode(NewKeystore.self, from: newkeystoreData)
-        
-        let privateKey = try newkeystore.privateKey(password: password)
-        
-        print(privateKey)    // Your decrypted private key
-        
-        print(keystoreStringValue)
         do {
-            // Create two folders
-            let fileManager = FileManager.default
+            let decoder = JSONDecoder()
+            let newkeystoreData: Data = userInputKeystoreStringValue.data(using: .utf8)! 
+            let newkeystore = try decoder.decode(NewKeystore.self, from: newkeystoreData)
             
-            let keyDirectory = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("KeyStoreImportWalletUsingKeystoreDataManager")
-            try? fileManager.removeItem(at: keyDirectory)
-            try? fileManager.createDirectory(at: keyDirectory, withIntermediateDirectories: true, attributes: nil)
-            print(keyDirectory)
-            
-            let walletDirectory = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("WalletImportWalletUsingKeystoreDataManager")
-            try? fileManager.removeItem(at: walletDirectory)
-            try? fileManager.createDirectory(at: walletDirectory, withIntermediateDirectories: true, attributes: nil)
-            print(walletDirectory)
-            
-            // Save the keystore string value to keyDirectory
-            let fileURL = keyDirectory.appendingPathComponent("key.json")
-            try keystoreStringValue.write(to: fileURL, atomically: false, encoding: .utf8)
-            let keyStore = try KeyStore(keyDirectory: keyDirectory, walletDirectory: walletDirectory)
-            
-            print(keyStore.accounts.count)
-            guard keyStore.accounts.count > 0 else {
+            let privateKey = try newkeystore.privateKey(password: password)
+            guard let data = Data(hexString: privateKey.toHexString()) else {
+                print("Invalid private key")
                 throw ImportWalletError.invalidKeystore
             }
-            let account = keyStore.accounts[0]
-            print(account.address.description)
             
-            let privateKeyData = try keyStore.exportPrivateKey(account: account, password: password)
-            let privateKeyString = privateKeyData.toHexString()
-            let pubKey = Secp256k1.shared.pubicKey(from: privateKeyData)
-            let keystoreAddress = KeystoreKey.decodeAddress(from: pubKey)
-            
+            print("Re-Generating keystore")
+            let key = try KeystoreKey(password: password, key: data)
+            print("Finished generating keystore")
+            let keystoreData = try JSONEncoder().encode(key)
+            let json = try JSON(data: keystoreData)
+            let keystoreStringValue = json.description
+            print(keystoreStringValue)
+
             // Store values
-            self.address = keystoreAddress.eip55String
-            self.privateKey = privateKeyString
+            self.address = key.address.eip55String
+            self.privateKey = privateKey.toHexString()
             self.keystore = keystoreStringValue
             self.password = password
-
+            
+            print("Complete unlockWallet using keystore")
         } catch {
             throw ImportWalletError.invalidKeystore
         }

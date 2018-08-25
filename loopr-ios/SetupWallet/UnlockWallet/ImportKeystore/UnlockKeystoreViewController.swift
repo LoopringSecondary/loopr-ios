@@ -132,7 +132,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         dispatchGroup.enter()
         DispatchQueue.global().async {
             do {
-                try ImportWalletUsingKeystoreDataManager.shared.unlockWallet(keystoreStringValue: keystoreString, password: password)
+                try ImportWalletUsingKeystoreDataManager.shared.unlockWallet(userInputKeystoreStringValue: keystoreString, password: password)
                 isSucceeded = true
                 dispatchGroup.leave()
             } catch {
