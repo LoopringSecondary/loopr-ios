@@ -22,7 +22,7 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         view.theme_backgroundColor = ColorPicker.backgroundColor
         tableView.theme_backgroundColor = ColorPicker.backgroundColor
 
-        self.navigationItem.title = LocalizedString("Manage Wallet", comment: "")
+        self.navigationItem.title = LocalizedString("Manage Wallets", comment: "")
         setBackButton()
         
         tableView.delegate = self

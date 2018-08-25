@@ -17,9 +17,6 @@ class GenerateWalletEnterNameViewController: UIViewController, UITextFieldDelega
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Generate a new wallet
-        _ = GenerateWalletDataManager.shared.new()
-        
         view.theme_backgroundColor = ColorPicker.backgroundColor
         self.navigationItem.title = LocalizedString("Generate Wallet", comment: "")
         setBackButton()

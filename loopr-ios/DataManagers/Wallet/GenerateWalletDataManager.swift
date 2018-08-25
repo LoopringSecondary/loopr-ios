@@ -28,13 +28,13 @@ class GenerateWalletDataManager {
     }
 
     // Generate a new wallet and store mnemonic in the memory.
-    func new() {
+    func newMnemonics() {
         let mnemonicString = Mnemonic.generate(strength: 128)
         let mnemonics = mnemonicString.components(separatedBy: " ")
         
         // TODO: Hack method to avoid duplicate words in mnemonics. Improve in the future.
         if mnemonics.count != Set(mnemonics).count {
-            new()
+            newMnemonics()
         } else {
             self.mnemonics = mnemonics
         }

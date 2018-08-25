@@ -216,7 +216,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             if currentWalletName == nil {
                 currentWalletName = ""
             }
-            return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Manage Wallet", comment: ""))
+            return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Manage Wallets", comment: ""))
         case 1:
             return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Currency", comment: ""))
         case 2:
