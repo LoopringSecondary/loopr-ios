@@ -393,7 +393,7 @@
 "Loading Data" = "加载数据中";
 "Token Address" = "代币地址";
 "Token Symbol" = "代币符号";
-"Decimals of Precision" = "小数位";
+"Decimals of Precision" = "小数位精确度";
 "Add Custom Token" = "添加自定义代币";
 "Add custom token" = "添加自定义代币";
 "Add" = "添加";
@@ -418,3 +418,8 @@
 "Album" = "相册";
 "Create Password" = "创建密码";
 "UP Wallet" = "UP钱包";
+"Added the token successfully." = "成功添加代币";
+"Failed to add the token." = "添加代币失败";
+"same address was registed" = "代币地址已经注册过";
+"same symbol exist" = "代币符号已经注册过";
+"Decimals of precision must be between 0 and 20" = "小数位精确度必须在0到20之间";

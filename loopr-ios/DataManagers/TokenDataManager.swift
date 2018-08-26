@@ -23,7 +23,7 @@ class TokenDataManager {
 
     func loadTokens() {
         loadTokensFromJson()
-        loadTokensFromServer()
+        loadTokensFromServer(completionHandler: {})
     }
 
     // load tokens from json file to avoid http request
@@ -47,9 +47,10 @@ class TokenDataManager {
         }
     }
 
-    func loadTokensFromServer() {
+    func loadTokensFromServer(completionHandler: @escaping () -> Void) {
         LoopringAPIRequest.getSupportedTokens { (tokens, error) in
             guard let tokens = tokens, error == nil else {
+                completionHandler()
                 return
             }
             for token in tokens {
@@ -62,6 +63,7 @@ class TokenDataManager {
                     }
                 }
             }
+            completionHandler()
         }
     }
 

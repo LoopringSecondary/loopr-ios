@@ -418,3 +418,8 @@
 "Album" = "Album";
 "Create Password" = "Create Password";
 "UP Wallet" = "UP Wallet";
+"Added the token successfully." = "Added the token successfully.";
+"Failed to add the token." = "Failed to add the token.";
+"same address was registed" = "Same address was registed.";
+"same symbol exist" = "same symbol exist";
+"Decimals of precision must be between 0 and 20" = "Decimals of precision must be between 0 and 20";

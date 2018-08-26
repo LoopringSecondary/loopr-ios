@@ -17,6 +17,7 @@ open class DefaultNumericKeyboard: NumericKeyboard, NumericKeyboardDelegate {
     
     open weak var delegate2: DefaultNumericKeyboardDelegate?
     var currentText: String = ""
+    var isIntegerOnly: Bool = false
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,9 +39,13 @@ open class DefaultNumericKeyboard: NumericKeyboard, NumericKeyboardDelegate {
         print("pressed keyboard: (\(position.row), \(position.column))")
         switch (position.row, position.column) {
         case (3, 0):
-            if !currentText.contains(".") {
-                currentText += "."
-                // TODO: add a shake animation to the item at (3, 0)
+            if isIntegerOnly {
+                
+            } else {
+                if !currentText.contains(".") {
+                    currentText += "."
+                    // TODO: add a shake animation to the item at (3, 0)
+                }
             }
         case (3, 1):
             currentText += "0"
@@ -87,7 +92,11 @@ extension DefaultNumericKeyboard: NumericKeyboardDataSource {
         item.title = {
             switch position {
             case (3, 0):
-                return "."
+                if isIntegerOnly {
+                    return ""
+                } else {
+                    return "."
+                }
             case (3, 1):
                 return "0"
             case (3, 2):
@@ -116,6 +125,12 @@ extension DefaultNumericKeyboard: NumericKeyboardDataSource {
             }
         }()
         item.font = font
+
+        if position == (3, 0) {
+            item.backgroundColor = UIColor.clear
+            item.selectedBackgroundColor = UIColor.clear
+        }
+
         return item
     }
     

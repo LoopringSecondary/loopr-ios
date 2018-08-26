@@ -21,6 +21,8 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
     
     var addTokenButton = UIBarButtonItem()
     
+    var numberOfTokens: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,6 +54,8 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         searchBar.theme_tintColor = GlobalPicker.textColor
         searchBar.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffffcc") : UIColor.init(rgba: "#000000cc")
         searchBar.setTextFieldColor(color: UIColor.dark3)
+        
+        numberOfTokens = TokenDataManager.shared.getTokensToAdd().count
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,6 +63,16 @@ class AddTokenViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+        let currentNumberOfTokens = TokenDataManager.shared.getTokensToAdd().count
+        if numberOfTokens != currentNumberOfTokens {
+            let indexPath = IndexPath(row: currentNumberOfTokens-1, section: 0)
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
+    }
+
     @objc func pressAddButton(_ button: UIBarButtonItem) {
         let viewController = AddCustomizedTokenViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
