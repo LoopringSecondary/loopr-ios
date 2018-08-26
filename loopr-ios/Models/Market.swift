@@ -46,7 +46,7 @@ class Market: Equatable, CustomStringConvertible {
         tradingPair = TradingPair(tokens[0], tokens[1])
         description = "\(tokens[0])" + "-" + "\(tokens[1])"
         balance = json["last"].doubleValue
-        volumeInPast24 = json["amount"].doubleValue
+        volumeInPast24 = json["vol"].doubleValue
         
         let change = json["change"].stringValue
         if change.isEmpty || change == "0.00%" {
