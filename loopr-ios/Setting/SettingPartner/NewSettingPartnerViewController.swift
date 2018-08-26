@@ -68,7 +68,7 @@ class NewSettingPartnerViewController: UIViewController {
         activityVC.completionWithItemsHandler = {(activity, success, items, error) in
             print(activity.debugDescription)
             if success && activity != nil {
-                Answers.logShare(withMethod: "System default share", contentName: "City Partner", contentType: activity!._rawValue as String, contentId: nil, customAttributes: nil)
+                Answers.logShare(withMethod: "System default share", contentName: "City Partner", contentType: activity!.rawValue as String, contentId: nil, customAttributes: nil)
             }
         }
         self.present(activityVC, animated: true, completion: nil)

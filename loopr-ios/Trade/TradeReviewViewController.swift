@@ -19,8 +19,16 @@ class TradeReviewViewController: UIViewController {
     @IBOutlet weak var validTipLabel: UILabel!
     @IBOutlet weak var validInfoLabel: UILabel!
     
+    @IBOutlet weak var shareContentView: UIView!
+    @IBOutlet weak var tokenSInShare: UIView!
+    @IBOutlet weak var tokenBInShare: UIView!
+    @IBOutlet weak var qrcodeInShare: UIImageView!
+    @IBOutlet weak var shareImageView: UIImageView!
+    
     var tokenSView: TradeViewOnlyViewController = TradeViewOnlyViewController()
     var tokenBView: TradeViewOnlyViewController = TradeViewOnlyViewController()
+    var tokenSViewInShare: TradeViewOnlyViewController = TradeViewOnlyViewController()
+    var tokenBViewInShare: TradeViewOnlyViewController = TradeViewOnlyViewController()
 
     // To display QR code
     var qrcodeImageCIImage: CIImage!
@@ -46,6 +54,15 @@ class TradeReviewViewController: UIViewController {
         tokenB.addSubview(tokenBView.view)
         tokenBView.view.bindFrameToAnotherView(anotherView: tokenB)
         
+        // TokenView
+        tokenSViewInShare.view.frame = CGRect(x: 0, y: 0, width: tokenSInShare.frame.width, height: tokenSInShare.frame.height)
+        tokenSInShare.addSubview(tokenSViewInShare.view)
+        tokenSViewInShare.view.bindFrameToAnotherView(anotherView: tokenSInShare)
+        
+        tokenBViewInShare.view.frame = CGRect(x: 0, y: 0, width: tokenBInShare.frame.width, height: tokenBInShare.frame.height)
+        tokenBInShare.addSubview(tokenBViewInShare.view)
+        tokenBViewInShare.view.bindFrameToAnotherView(anotherView: tokenBInShare)
+        
         // Labels
         statusTipLabel.setTitleCharFont()
         statusTipLabel.text = LocalizedString("Status", comment: "")
@@ -54,6 +71,8 @@ class TradeReviewViewController: UIViewController {
         validTipLabel.setTitleCharFont()
         validTipLabel.text = LocalizedString("Time to Live", comment: "")
         validInfoLabel.setTitleDigitFont()
+        
+        shareImageView.image = UIImage(named: "Share-order\(ColorTheme.getTheme())")
         
         // Receive order response
         NotificationCenter.default.addObserver(self, selector: #selector(orderResponseReceivedNotification), name: .orderResponseReceived, object: nil)
@@ -77,12 +96,15 @@ class TradeReviewViewController: UIViewController {
         tokenSView.update(type: .sell, symbol: order.tokenSell, amount: order.amountSell)
         tokenBView.update(type: .buy, symbol: order.tokenBuy, amount: order.amountBuy)
         
+        tokenSViewInShare.update(type: .sell, symbol: order.tokenSell, amount: order.amountSell)
+        tokenBViewInShare.update(type: .buy, symbol: order.tokenBuy, amount: order.amountBuy)
+        
         generateQRCode(order: order)
-        qrcodeImageView.image = qrcodeImage
         let scaleX = qrcodeImageView.frame.size.width / qrcodeImageCIImage.extent.size.width
         let scaleY = qrcodeImageView.frame.size.height / qrcodeImageCIImage.extent.size.height
         let transformedImage = qrcodeImageCIImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
         qrcodeImageView.image = UIImage.init(ciImage: transformedImage)
+        qrcodeInShare.image = UIImage.init(ciImage: transformedImage)
         
         statusInfoLabel.textColor = .success
         statusInfoLabel.text = LocalizedString("Open", comment: "")
@@ -128,7 +150,8 @@ class TradeReviewViewController: UIViewController {
 
     @IBAction func pressedShareButton(_ sender: UIButton) {
         let text = LocalizedString("My Trade from Loopr-iOS", comment: "")
-        let png = UIImagePNGRepresentation(qrcodeImage)
+        let image = UIImage.imageWithView(shareContentView)
+        let png = UIImagePNGRepresentation(image)
         let shareAll = [text, png!] as [Any]
         let activityVC = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
         activityVC.popoverPresentationController?.sourceView = self.view

@@ -12,7 +12,6 @@ import NotificationBannerSwift
 
 class OrderQRCodeViewController: UIViewController {
     
-    
     @IBOutlet weak var qrcodeIconImageView: UIImageView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
