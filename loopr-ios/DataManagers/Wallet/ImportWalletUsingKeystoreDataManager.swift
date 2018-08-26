@@ -55,7 +55,6 @@ class ImportWalletUsingKeystoreDataManager: ImportWalletProtocol {
             let keystoreData = try JSONEncoder().encode(key)
             let json = try JSON(data: keystoreData)
             let keystoreStringValue = json.description
-            print(keystoreStringValue)
 
             // Store values
             self.address = key.address.eip55String

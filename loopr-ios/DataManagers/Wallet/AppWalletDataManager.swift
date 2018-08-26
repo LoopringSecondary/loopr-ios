@@ -163,7 +163,6 @@ class AppWalletDataManager {
         
         // Private key
         let privateKey = wallet.getKey(at: key).privateKey
-        print(privateKey.hexString)
         
         // Generate keystore
         var keystoreString: String

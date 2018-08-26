@@ -378,7 +378,6 @@ class TradeDataManager {
         let keystoreData = try! JSONEncoder().encode(key)
         let json = try! JSON(data: keystoreData)
         let keystoreStringValue = json.description
-        print(keystoreStringValue)
         
         // Create key directory
         let fileManager = FileManager.default

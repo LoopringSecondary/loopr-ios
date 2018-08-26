@@ -94,7 +94,6 @@ class SendCurrentAppWalletDataManager {
     
         // Get Keystore string value
         let keystoreStringValue: String = wallet!.getKeystore()
-        print(keystoreStringValue)
         
         // Create key directory
         let fileManager = FileManager.default

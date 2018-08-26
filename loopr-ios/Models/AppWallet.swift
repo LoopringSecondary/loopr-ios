@@ -60,13 +60,9 @@ class AppWallet: NSObject, NSCoding {
         
         super.init()
         
-        print("########################## keystoreString ##########################")
-        print(keystoreString)
-        print("########################## end ##########################")
         if keystoreString == "" || !AppWallet.isKeystore(content: keystoreString) {
             print("Need to generate keystore")
             preconditionFailure("No keystore")
-            // generateKeystoreInBackground()
         }
     }
 
