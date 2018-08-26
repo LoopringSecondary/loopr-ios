@@ -15,6 +15,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     // Header
     @IBOutlet weak var headerButton: UIButton!
     @IBOutlet weak var tokenIconImageView: UIImageView!
+    @IBOutlet weak var iconView: IconView!
+
     @IBOutlet weak var tokenHeaderLabel: UILabel!
     @IBOutlet weak var tokenTotalAmountLabel: UILabel!
     
@@ -187,7 +189,16 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         let symbol = SendCurrentAppWalletDataManager.shared.token?.symbol ?? "ETH"
         asset = CurrentAppWalletDataManager.shared.getAsset(symbol: symbol)
         if let asset = self.asset {
-            tokenIconImageView.image = asset.icon
+            if asset.icon != nil {
+                tokenIconImageView.image = asset.icon
+                tokenIconImageView.isHidden = false
+                iconView.isHidden = true
+            } else {
+                iconView.isHidden = false
+                iconView.symbol = asset.symbol
+                iconView.symbolLabel.text = asset.symbol
+                tokenIconImageView.isHidden = true
+            }
             tokenHeaderLabel.text = asset.symbol
             tokenTotalAmountLabel.text = "\(asset.display) \(asset.symbol)"
             tokenSymbolLabel.text = asset.symbol

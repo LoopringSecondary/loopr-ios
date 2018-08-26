@@ -69,7 +69,7 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
             didChangeWalletName?(appWallet.name)
             self.navigationController?.popViewController(animated: true)
         } else {
-            let alertController = UIAlertController(title: "New wallet name can't be empty", message: nil, preferredStyle: .alert)
+            let alertController = UIAlertController(title: LocalizedString("New wallet name can't be empty", comment: ""), message: nil, preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
                 

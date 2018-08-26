@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,6 +19,7 @@
                 <outlet property="amountTextField" destination="hqf-UR-h9I" id="ib4-RI-tgB"/>
                 <outlet property="contentView" destination="4fJ-P7-xjN" id="ymB-I9-TR1"/>
                 <outlet property="headerButton" destination="cs7-0B-mb8" id="b4d-wL-7TD"/>
+                <outlet property="iconView" destination="iyP-el-1pW" id="HK4-AI-mf4"/>
                 <outlet property="scanButton" destination="aje-gV-Iod" id="x6y-3v-oKF"/>
                 <outlet property="scrollView" destination="MAS-rZ-KS3" id="o9k-5g-0gj"/>
                 <outlet property="scrollViewButtonLayoutConstraint" destination="VRg-I5-bNn" id="AJO-by-ywe"/>
@@ -55,6 +56,10 @@
                                 <action selector="pressedHeaderButton:" destination="-1" eventType="touchUpInside" id="HEw-no-HYo"/>
                             </connections>
                         </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iyP-el-1pW" customClass="IconView" customModule="loopr_ios" customModuleProvider="target">
+                            <rect key="frame" x="31" y="26" width="40" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KFg-R7-dGf">
                             <rect key="frame" x="31" y="26" width="40" height="40"/>
                             <constraints>
@@ -212,15 +217,19 @@
                         <constraint firstItem="KFg-R7-dGf" firstAttribute="leading" secondItem="cs7-0B-mb8" secondAttribute="leading" constant="16" id="4Gt-df-AR3"/>
                         <constraint firstItem="cs7-0B-mb8" firstAttribute="trailing" secondItem="kRA-PO-hpJ" secondAttribute="trailing" constant="10" id="57X-g3-dzq"/>
                         <constraint firstItem="lbg-TB-ZY6" firstAttribute="centerY" secondItem="cs7-0B-mb8" secondAttribute="centerY" id="7Zx-yj-Ia7"/>
+                        <constraint firstItem="iyP-el-1pW" firstAttribute="bottom" secondItem="KFg-R7-dGf" secondAttribute="bottom" id="CEB-P2-7jK"/>
                         <constraint firstItem="7wu-Kz-l6W" firstAttribute="top" secondItem="4fJ-P7-xjN" secondAttribute="bottom" constant="30" id="Glb-Sb-FZ8"/>
                         <constraint firstAttribute="bottom" secondItem="4fJ-P7-xjN" secondAttribute="bottom" constant="75" id="H2z-Ju-I0d"/>
                         <constraint firstItem="cs7-0B-mb8" firstAttribute="leading" secondItem="MAS-rZ-KS3" secondAttribute="leading" constant="15" id="IQY-1n-Guu"/>
                         <constraint firstItem="lbg-TB-ZY6" firstAttribute="leading" secondItem="KFg-R7-dGf" secondAttribute="trailing" constant="16" id="KKY-Kw-CNa"/>
                         <constraint firstItem="cs7-0B-mb8" firstAttribute="width" secondItem="MAS-rZ-KS3" secondAttribute="width" constant="-32" id="Unh-wU-GHz"/>
                         <constraint firstItem="4fJ-P7-xjN" firstAttribute="top" secondItem="cs7-0B-mb8" secondAttribute="bottom" constant="10" id="W4a-K9-vaH"/>
+                        <constraint firstItem="iyP-el-1pW" firstAttribute="leading" secondItem="KFg-R7-dGf" secondAttribute="leading" id="ZOF-2i-0wv"/>
                         <constraint firstItem="7wu-Kz-l6W" firstAttribute="width" secondItem="4fJ-P7-xjN" secondAttribute="width" id="ajP-vR-JAS"/>
+                        <constraint firstItem="iyP-el-1pW" firstAttribute="trailing" secondItem="KFg-R7-dGf" secondAttribute="trailing" id="ih4-Nx-WUL"/>
                         <constraint firstItem="7wu-Kz-l6W" firstAttribute="leading" secondItem="4fJ-P7-xjN" secondAttribute="leading" id="kRM-hb-gAj"/>
                         <constraint firstItem="kRA-PO-hpJ" firstAttribute="leading" secondItem="u7U-ak-0re" secondAttribute="trailing" constant="4" id="mip-id-odr"/>
+                        <constraint firstItem="iyP-el-1pW" firstAttribute="top" secondItem="KFg-R7-dGf" secondAttribute="top" id="qz2-V4-XUV"/>
                         <constraint firstItem="cs7-0B-mb8" firstAttribute="top" secondItem="MAS-rZ-KS3" secondAttribute="top" constant="10" id="rMS-w2-Kdn"/>
                         <constraint firstItem="4fJ-P7-xjN" firstAttribute="leading" secondItem="MAS-rZ-KS3" secondAttribute="leading" constant="15" id="v2w-dw-JhV"/>
                         <constraint firstItem="u7U-ak-0re" firstAttribute="centerY" secondItem="cs7-0B-mb8" secondAttribute="centerY" id="vtY-V3-3Gl"/>
@@ -236,7 +245,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="MAS-rZ-KS3" secondAttribute="bottom" id="VRg-I5-bNn"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="35.5" y="54.5"/>
+            <point key="canvasLocation" x="35" y="54"/>
         </view>
     </objects>
     <resources>
