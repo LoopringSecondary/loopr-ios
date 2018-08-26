@@ -141,12 +141,7 @@ class QRCodeViewController: UIViewController {
     @IBAction func pressedSaveToAlbum(_ sender: Any) {
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         print("pressedSaveToAlbum address: \(address)")
-        copyAddressButton.isHidden = true
-        saveToAlbumButton.isHidden = true
-        let image = UIImage.imageWithView(view)
-        copyAddressButton.isHidden = false
-        saveToAlbumButton.isHidden = false
+        let image = UIImage.imageWithView(shareContentView)
         QRCodeSaveToAlbum.shared.save(image: image)
     }
-
 }

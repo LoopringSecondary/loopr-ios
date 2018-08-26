@@ -145,6 +145,7 @@ class OrderQRCodeViewController: UIViewController {
     }
 
     @IBAction func pressedSaveToAlbum(_ sender: Any) {
-        QRCodeSaveToAlbum.shared.save(image: qrcodeImage)
+        let image = UIImage.imageWithView(shareContentView)
+        QRCodeSaveToAlbum.shared.save(image: image)
     }
 }
