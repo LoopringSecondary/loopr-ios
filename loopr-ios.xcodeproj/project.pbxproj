@@ -968,6 +968,12 @@
 		ACE6F7232042228A0039273D /* GlobalPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalPicker.swift; sourceTree = "<group>"; };
 		ACE6F72520426BAC0039273D /* SettingThemeModeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingThemeModeTableViewCell.swift; sourceTree = "<group>"; };
 		ACE6F72620426BAC0039273D /* SettingThemeModeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingThemeModeTableViewCell.xib; sourceTree = "<group>"; };
+		ACEBB12921336C830037991A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		ACEBB12A21336C840037991A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		ACEBB12B21336C840037991A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		ACEBB12C21336C840037991A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		ACEBB12E21336CD80037991A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		ACEBB13021336CDF0037991A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		ACEC977D20AD57F3003F9DEB /* P2POrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P2POrderHistoryViewController.swift; sourceTree = "<group>"; };
 		ACEC977E20AD57F3003F9DEB /* P2POrderHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = P2POrderHistoryViewController.xib; sourceTree = "<group>"; };
 		ACEC978120AD6165003F9DEB /* P2POrderHistoryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P2POrderHistoryDataManager.swift; sourceTree = "<group>"; };
@@ -2384,6 +2390,7 @@
 				en,
 				Base,
 				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = AC798E362022B93A0071D477;
 			productRefGroup = AC798E402022B93A0071D477 /* Products */;
@@ -3060,6 +3067,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				AC798E492022B93A0071D477 /* Base */,
+				ACEBB12921336C830037991A /* zh-Hant */,
+				ACEBB12E21336CD80037991A /* zh-Hans */,
+				ACEBB13021336CDF0037991A /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -3069,6 +3079,7 @@
 			children = (
 				AC798E4E2022B93A0071D477 /* Base */,
 				ACE5BFA1204543CA005D75DD /* zh-Hans */,
+				ACEBB12A21336C840037991A /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -3078,6 +3089,7 @@
 			children = (
 				ACDA889D20F85F9C004FA10B /* en */,
 				ACDA889F20F85F9E004FA10B /* zh-Hans */,
+				ACEBB12C21336C840037991A /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -3087,6 +3099,7 @@
 			children = (
 				ACE5BFA820466EFD005D75DD /* en */,
 				ACE5BFAA20466F05005D75DD /* zh-Hans */,
+				ACEBB12B21336C840037991A /* zh-Hant */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
