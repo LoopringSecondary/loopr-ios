@@ -70,7 +70,7 @@ class MarketTableViewCell: UITableViewCell {
             updateStarButton(market: market)
             nameLabel.text = market.description
             nameLabel.setMarket()
-            balanceLabel.text = "Vol \(market.volumeInPast24)"
+            balanceLabel.text = "Vol \(market.volumeInPast24.withCommas())"
             marketPriceInBitcoinLabel.text = market.balance.withCommas(6)
             marketPriceInFiatCurrencyLabel.text = market.display.description
             percentageChangeLabel.text = market.changeInPat24
