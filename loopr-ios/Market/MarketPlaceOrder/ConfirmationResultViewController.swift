@@ -35,6 +35,7 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
         
         // Do any additional setup after loading the view.
         // self.navigationController?.setNavigationBarHidden(true, animated: false)
+        view.theme_backgroundColor = ColorPicker.backgroundColor
         setBackButton()
         setupErrorInfo()
         setupLabels()

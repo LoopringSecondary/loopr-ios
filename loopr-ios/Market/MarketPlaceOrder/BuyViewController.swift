@@ -90,7 +90,15 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         setBackButton()
         view.theme_backgroundColor = ColorPicker.backgroundColor
         containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
-        
+
+        buyTipLabel.setTitleDigitFont()
+        buyTipLabel.text = LocalizedString("Amount", comment: "")
+        amountTokenLabel.setTitleDigitFont()
+        amountTokenLabel.text = PlaceOrderDataManager.shared.tokenA.symbol
+        tipLabel.setSubTitleCharFont()
+
+        let textFieldLeftPadding = buyTipLabel.text!.textWidth(font: FontConfigManager.shared.getDigitalFont()) + 16
+
         // First row: TokenS
         priceTextField.delegate = self
         priceTextField.tag = 0
@@ -98,7 +106,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         priceTextField.font = FontConfigManager.shared.getDigitalFont()
         priceTextField.theme_tintColor = GlobalPicker.contrastTextColor
         priceTextField.placeholder = LocalizedString("", comment: "")
-        priceTextField.setLeftPaddingPoints(48)
+        priceTextField.setLeftPaddingPoints(textFieldLeftPadding)
         priceTextField.setRightPaddingPoints(72)
         priceTextField.contentMode = UIViewContentMode.bottom
         
@@ -116,15 +124,9 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         amountTextField.font = FontConfigManager.shared.getDigitalFont()
         amountTextField.theme_tintColor = GlobalPicker.contrastTextColor
         amountTextField.placeholder = LocalizedString("", comment: "")
-        amountTextField.setLeftPaddingPoints(48)
+        amountTextField.setLeftPaddingPoints(textFieldLeftPadding)
         amountTextField.setRightPaddingPoints(72)
         amountTextField.contentMode = UIViewContentMode.bottom
-        
-        buyTipLabel.setTitleDigitFont()
-        buyTipLabel.text = LocalizedString("Amount", comment: "")
-        amountTokenLabel.setTitleDigitFont()
-        amountTokenLabel.text = PlaceOrderDataManager.shared.tokenA.symbol
-        tipLabel.setSubTitleCharFont()
         
         // Slider
         let screenWidth = UIScreen.main.bounds.width
@@ -550,7 +552,9 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         var currentText = activeTextField!.text ?? ""
         switch (position.row, position.column) {
         case (3, 0):
-            activeTextField!.text = currentText + "."
+            if !currentText.contains(".") {
+                activeTextField!.text = currentText + "."
+            }
         case (3, 1):
             activeTextField!.text = currentText + "0"
         case (3, 2):

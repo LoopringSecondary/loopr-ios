@@ -462,7 +462,6 @@ extension WalletViewController: MKDropdownMenuDelegate {
     }
     
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, didSelectRow row: Int, inComponent component: Int) {
-        print(row)
         dropdownMenu.closeAllComponents(animated: false)
         switch row {
         case 0:
