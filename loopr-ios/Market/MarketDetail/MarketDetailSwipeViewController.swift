@@ -99,7 +99,7 @@ class MarketDetailSwipeViewController: SwipeViewController {
         priceInCryptoLabel.text = "\(market.balance.withCommas(6)) \(market.tradingPair.tradingB) ≈ \(market.display.description)"
         hoursChangeLabel.text = market.changeInPat24
         hoursHighLabel.text = market.high.withCommas(6)
-        hoursVolumeLabel.text = "\(market.volumeInPast24) WETH"
+        hoursVolumeLabel.text = "\(market.volumeInPast24) \(market.tradingPair.tradingB)"
         hoursLowLabel.text = market.low.withCommas(6)
         
         setupChildViewControllers()
