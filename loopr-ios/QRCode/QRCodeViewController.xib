@@ -129,7 +129,6 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="Pdu-Qd-opp" firstAttribute="centerX" secondItem="pFr-F3-vQa" secondAttribute="centerX" id="72I-yh-j7C"/>
                         <constraint firstItem="5ZH-4H-Rct" firstAttribute="top" secondItem="Pdu-Qd-opp" secondAttribute="bottom" constant="24" id="JXJ-Df-hwV"/>
@@ -166,6 +165,6 @@
     </objects>
     <resources>
         <image name="Receive-qrcode-icon-red" width="60" height="60"/>
-        <image name="Share-wallet-yellow" width="325" height="521"/>
+        <image name="Share-wallet-yellow" width="315" height="511"/>
     </resources>
 </document>

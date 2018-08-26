@@ -142,7 +142,6 @@
                             </constraints>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="mnn-XJ-Fpw" firstAttribute="centerX" secondItem="1AC-p3-LrF" secondAttribute="centerX" id="0nA-vM-lkQ"/>
                         <constraint firstItem="n0H-Ll-B7k" firstAttribute="top" secondItem="bR3-uC-Ux3" secondAttribute="top" id="41b-fF-IUn"/>
@@ -196,7 +195,7 @@
         </view>
     </objects>
     <resources>
-        <image name="Share-order-yellow" width="325" height="601"/>
+        <image name="Share-order-yellow" width="315" height="591"/>
         <image name="Trade-arrow-dark" width="24" height="24"/>
         <namedColor name="Color-dark2">
             <color red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

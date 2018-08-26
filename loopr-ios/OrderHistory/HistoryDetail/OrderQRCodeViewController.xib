@@ -147,7 +147,6 @@
                             </constraints>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="NI0-dW-Jt4" secondAttribute="trailing" id="35l-Ya-Xa1"/>
                         <constraint firstItem="KKS-zP-B19" firstAttribute="centerX" secondItem="9xo-zK-MvI" secondAttribute="centerX" id="3A9-Uv-QX3"/>
@@ -184,7 +183,7 @@
     </objects>
     <resources>
         <image name="Order-qrcode-icon-red" width="60" height="60"/>
-        <image name="Share-order-yellow" width="325" height="601"/>
+        <image name="Share-order-yellow" width="315" height="591"/>
         <image name="Trade-arrow-dark" width="24" height="24"/>
         <namedColor name="Color-dark2">
             <color red="0.16078431372549021" green="0.16078431372549021" blue="0.16078431372549021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

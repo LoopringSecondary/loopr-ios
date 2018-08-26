@@ -72,6 +72,7 @@ class TradeReviewViewController: UIViewController {
         validTipLabel.text = LocalizedString("Time to Live", comment: "")
         validInfoLabel.setTitleDigitFont()
         
+        shareContentView.theme_backgroundColor = ColorPicker.backgroundColor
         shareImageView.image = UIImage(named: "Share-order\(ColorTheme.getTheme())")
         
         // Receive order response

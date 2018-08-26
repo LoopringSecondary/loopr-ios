@@ -62,6 +62,7 @@ class QRCodeViewController: UIViewController {
         addressLabel.text = address
         addressInShare.text = address
         
+        shareContentView.theme_backgroundColor = ColorPicker.backgroundColor
         shareImageView.image = UIImage(named: "Share-wallet\(ColorTheme.getTheme())")
         
         let data = address.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)

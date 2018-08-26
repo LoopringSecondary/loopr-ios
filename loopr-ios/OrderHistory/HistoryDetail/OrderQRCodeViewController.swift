@@ -55,6 +55,7 @@ class OrderQRCodeViewController: UIViewController {
         tokenBInShare.addSubview(tokenBViewInShare.view)
         tokenBViewInShare.view.bindFrameToAnotherView(anotherView: tokenBInShare)
 
+        shareContentView.theme_backgroundColor = ColorPicker.backgroundColor
         qrcodeIconImageView.image = UIImage(named: "Order-qrcode-icon" + ColorTheme.getTheme())
 
         saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
