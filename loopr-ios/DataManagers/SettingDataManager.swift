@@ -60,7 +60,11 @@ class SettingDataManager {
         if let currencyName = defaults.string(forKey: UserDefaultsKeys.currentCurrency.rawValue) {
             return Currency(name: currencyName)
         } else {
-            return Currency(name: "USD")
+            if getCurrentLanguage() == Language(name: "zh-Hans") {
+                return Currency(name: "CNY")
+            } else {
+                return Currency(name: "USD")
+            }
         }
     }
 
