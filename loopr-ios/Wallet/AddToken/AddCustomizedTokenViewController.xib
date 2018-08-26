@@ -72,7 +72,6 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" name="Color-dark3"/>
                             <constraints>
                                 <constraint firstItem="vQP-tN-0f4" firstAttribute="leading" secondItem="ng1-nh-kjx" secondAttribute="leading" constant="15" id="CPb-pb-xSa"/>
                                 <constraint firstItem="Zbc-Sz-y5l" firstAttribute="top" secondItem="Tst-Wx-qTv" secondAttribute="bottom" constant="10" id="Eij-vF-fxE"/>
@@ -110,9 +109,6 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="Color-dark3">
-            <color red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
         <namedColor name="Color-dark5">
             <color red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

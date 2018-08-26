@@ -45,6 +45,7 @@ class QRCodeViewController: UIViewController {
         
         receiveQRCodeIconView.image = UIImage(named: "Receive-qrcode-icon" + ColorTheme.getTheme())
         titleLabel.setTitleCharFont()
+        titleLabel.text = LocalizedString("UP Wallet", comment: "")
         addressLabel.setTitleCharFont()
         addressInShare.font = FontConfigManager.shared.getCharactorFont(size: 14)
         addressInShare.theme_textColor = GlobalPicker.contrastTextColor

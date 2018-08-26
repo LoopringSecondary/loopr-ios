@@ -398,7 +398,7 @@
 "Add custom token" = "Add custom token";
 "Add" = "Add";
 "Partner_Slogan" = "Share APP, harvest 20% of trading fee";
-"Partner_Title" = "Up Wallet Share";
+"Partner_Title" = "UP Wallet Share";
 "Partner_Tip" = "My income address: ";
 "Partner_Des" = "By sharing the app, you will be awarded 20% of all future trading fees from users acquired by your promotion.";
 "Partner_Address" = "Your trading fee reciept address is: ";
@@ -417,3 +417,4 @@
 "Share App" = "Share App";
 "Album" = "Album";
 "Create Password" = "Create Password";
+"UP Wallet" = "UP Wallet";

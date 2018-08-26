@@ -23,7 +23,7 @@ class SetupWalletViewController: UIViewController {
 
         view.theme_backgroundColor = ColorPicker.backgroundColor
 
-        let stringValue = "UP Wallet"
+        let stringValue = LocalizedString("UP Wallet", comment: "")
         let attrString = NSMutableAttributedString(string: stringValue)
         attrString.addAttribute(NSAttributedStringKey.kern, value: 2.4, range: NSMakeRange(0, attrString.length))
         taglineLabel.attributedText = attrString
