@@ -40,7 +40,7 @@ class OrderQRCodeViewController: UIViewController {
         view.backgroundColor = UIColor.clear
         
         titleLabel.setTitleCharFont()
-        titleLabel.text = LocalizedString("Loopr P2P Order", comment: "")
+        titleLabel.text = LocalizedString("Loopring P2P Order", comment: "")
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         tap.delegate = self

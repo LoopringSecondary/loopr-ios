@@ -423,3 +423,4 @@
 "same address was registed" = "代币地址已经注册过";
 "same symbol exist" = "代币符号已经注册过";
 "Decimals of precision must be between 0 and 20" = "小数位精确度必须在0到20之间";
+"Loopring P2P Order" = "路印P2P订单";
