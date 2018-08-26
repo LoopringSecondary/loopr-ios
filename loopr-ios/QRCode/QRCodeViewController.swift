@@ -25,6 +25,11 @@ class QRCodeViewController: UIViewController {
     @IBOutlet weak var copyAddressButton: UIButton!
     @IBOutlet weak var saveToAlbumButton: UIButton!
     
+    @IBOutlet weak var shareContentView: UIView!
+    @IBOutlet weak var qrcodeInShare: UIImageView!
+    @IBOutlet weak var shareImageView: UIImageView!
+    @IBOutlet weak var addressInShare: UILabel!
+    
     var qrcodeImage: UIImage!
 
     override func viewDidLoad() {
@@ -41,6 +46,8 @@ class QRCodeViewController: UIViewController {
         receiveQRCodeIconView.image = UIImage(named: "Receive-qrcode-icon" + ColorTheme.getTheme())
         titleLabel.setTitleCharFont()
         addressLabel.setTitleCharFont()
+        addressInShare.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        addressInShare.theme_textColor = GlobalPicker.contrastTextColor
         
         copyAddressButton.setTitle(LocalizedString("Copy Address", comment: ""), for: .normal)
         copyAddressButton.setupSecondary(height: 44)
@@ -52,6 +59,10 @@ class QRCodeViewController: UIViewController {
         setBackButton()
         
         addressLabel.text = address
+        addressInShare.text = address
+        
+        shareImageView.image = UIImage(named: "Share-wallet\(ColorTheme.getTheme())")
+        
         let data = address.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
         generateQRCode(from: data!)
     }
@@ -79,6 +90,7 @@ class QRCodeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         qrcodeImageView.image = qrcodeImage
+        qrcodeInShare.image = qrcodeImage
     }
     
     override func viewDidLayoutSubviews() {
@@ -107,7 +119,8 @@ class QRCodeViewController: UIViewController {
     
     @IBAction func pressedShareButton(_ button: UIBarButtonItem) {
         let text = LocalizedString("My wallet address in Loopr", comment: "")
-        let png = UIImagePNGRepresentation(qrcodeImage)
+        let image = UIImage.imageWithView(shareContentView)
+        let png = UIImagePNGRepresentation(image)
         let shareAll = [text, png!] as [Any]
         let activityVC = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
         activityVC.excludedActivityTypes = [.message, .mail]

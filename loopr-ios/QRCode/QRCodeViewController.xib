@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,12 +12,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QRCodeViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="addressInShare" destination="5ZH-4H-Rct" id="5lX-5B-HXJ"/>
                 <outlet property="addressLabel" destination="edC-Mr-nnR" id="9VU-1h-Pcf"/>
                 <outlet property="contentView" destination="3K2-up-9JE" id="cKL-fm-Vfe"/>
                 <outlet property="copyAddressButton" destination="mEl-zM-Ijk" id="sQc-8d-41u"/>
                 <outlet property="qrcodeImageView" destination="Jxo-fS-cjo" id="Z5I-ZU-tdP"/>
+                <outlet property="qrcodeInShare" destination="Pdu-Qd-opp" id="0O9-IM-qg4"/>
                 <outlet property="receiveQRCodeIconView" destination="D16-yf-Yzm" id="XXt-pt-kIc"/>
                 <outlet property="saveToAlbumButton" destination="7NU-nI-gps" id="6Sj-tN-4FF"/>
+                <outlet property="shareContentView" destination="pFr-F3-vQa" id="M9G-Pw-zgD"/>
+                <outlet property="shareImageView" destination="a4M-A3-upP" id="h1c-oz-hBz"/>
                 <outlet property="titleLabel" destination="YBn-Jl-kW1" id="kD3-ht-pcu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -105,16 +109,53 @@
                         <constraint firstAttribute="height" constant="44" id="BqY-kH-lJm"/>
                     </constraints>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pFr-F3-vQa">
+                    <rect key="frame" x="44" y="783" width="325" height="521"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share-wallet-yellow" translatesAutoresizingMaskIntoConstraints="NO" id="a4M-A3-upP">
+                            <rect key="frame" x="0.0" y="0.0" width="325" height="521"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pdu-Qd-opp">
+                            <rect key="frame" x="52.666666666666686" y="205" width="220" height="220"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="220" id="VuK-AD-xe0"/>
+                                <constraint firstAttribute="width" constant="220" id="bY9-MX-RDA"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZH-4H-Rct">
+                            <rect key="frame" x="52" y="449" width="220" height="20.333333333333314"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Pdu-Qd-opp" firstAttribute="centerX" secondItem="pFr-F3-vQa" secondAttribute="centerX" id="72I-yh-j7C"/>
+                        <constraint firstItem="5ZH-4H-Rct" firstAttribute="top" secondItem="Pdu-Qd-opp" secondAttribute="bottom" constant="24" id="JXJ-Df-hwV"/>
+                        <constraint firstItem="5ZH-4H-Rct" firstAttribute="centerX" secondItem="pFr-F3-vQa" secondAttribute="centerX" id="RJe-DQ-isA"/>
+                        <constraint firstAttribute="bottom" secondItem="Pdu-Qd-opp" secondAttribute="bottom" constant="96" id="Stq-OY-86V"/>
+                        <constraint firstAttribute="bottom" secondItem="a4M-A3-upP" secondAttribute="bottom" id="Uvw-l4-qR1"/>
+                        <constraint firstItem="5ZH-4H-Rct" firstAttribute="width" secondItem="Pdu-Qd-opp" secondAttribute="width" id="V5t-uw-YEN"/>
+                        <constraint firstAttribute="height" constant="521" id="cEs-4h-NWy"/>
+                        <constraint firstAttribute="width" constant="325" id="esN-yv-FbR"/>
+                        <constraint firstItem="a4M-A3-upP" firstAttribute="leading" secondItem="pFr-F3-vQa" secondAttribute="leading" id="hCx-3E-Jpq"/>
+                        <constraint firstItem="a4M-A3-upP" firstAttribute="top" secondItem="pFr-F3-vQa" secondAttribute="top" id="mZj-Hf-rEs"/>
+                        <constraint firstAttribute="trailing" secondItem="a4M-A3-upP" secondAttribute="trailing" id="yFx-ur-iaG"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Jxo-fS-cjo" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="5IR-ZJ-9gC"/>
+                <constraint firstItem="pFr-F3-vQa" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="47" id="7LM-Du-eWh"/>
                 <constraint firstItem="3K2-up-9JE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="7Xa-AG-WJP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dkX-dc-W4G" secondAttribute="trailing" constant="20" id="G3r-c0-6k0"/>
                 <constraint firstItem="3K2-up-9JE" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-30" id="H2D-M5-1iy"/>
                 <constraint firstItem="YBn-Jl-kW1" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="OIM-eH-Qic"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="dkX-dc-W4G" secondAttribute="bottom" constant="5" id="VUa-Xh-dof"/>
                 <constraint firstItem="dkX-dc-W4G" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="dkm-vM-CoI"/>
+                <constraint firstItem="pFr-F3-vQa" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="dtK-ES-1UI"/>
                 <constraint firstItem="D16-yf-Yzm" firstAttribute="top" secondItem="3K2-up-9JE" secondAttribute="top" constant="-30" id="oTZ-Bu-pxr"/>
                 <constraint firstItem="D16-yf-Yzm" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qRR-WH-vxf"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3K2-up-9JE" secondAttribute="trailing" constant="30" id="toe-kG-wm3"/>
@@ -125,5 +166,6 @@
     </objects>
     <resources>
         <image name="Receive-qrcode-icon-red" width="60" height="60"/>
+        <image name="Share-wallet-yellow" width="325" height="521"/>
     </resources>
 </document>
