@@ -61,8 +61,10 @@ class SettingDataManager {
             return Currency(name: currencyName)
         } else {
             if getCurrentLanguage() == Language(name: "zh-Hans") {
+                setCurrentCurrency(Currency(name: "CNY"))
                 return Currency(name: "CNY")
             } else {
+                setCurrentCurrency(Currency(name: "USD"))
                 return Currency(name: "USD")
             }
         }
