@@ -19,14 +19,11 @@
 "Sent" = "转出";
 "Scan" = "扫描";
 "Language" = "语言";
-"Create a new wallet" = "创建钱包";
 "Manage Wallets" = "管理钱包";
 "Switch to this Wallet" = "使用该钱包";
 "Import Wallet" = "导入钱包";
 "Enter Wallet" = "进入钱包";
 "Generate Wallet" = "创建钱包";
-"Confirm password" = "重复密码";
-"Confirm your password" = "请输入重复密码";
 "Password" = "密码";
 "Repeat Password" = "确认密码";
 "Enter password" = "请输入密码";
@@ -41,7 +38,6 @@
 "Verify Mnemonic" = "验证助记词";
 "Verify Now" = "马上验证";
 "Skip Verification" = "跳过验证";
-"Verification" = "验证";
 "Copy Address" = "复制地址";
 "Copy Private Key" = "复制私钥";
 "Save to Album" = "保存到相册";
@@ -53,53 +49,40 @@
 "Confirmation" = "确认";
 "Next" = "下一步";
 "Share Order" = "分享订单";
-"Close the Order" = "关闭订单";
 "Review" = "Review";
 "Check Details" = "查看详情";
 "Done" = "返回";
-"Details" = "交易详情";
 "Convert" = "转换";
 "WETH Convert" = "WETH转换";
 "Convert Successfully." = "转换成功。";
-"Wallet QR Code" = "钱包二维码";
-"Order QR Code" = "订单二维码";
+
 "Scan QR Code" = "二维码扫描";
 "QR Code" = "二维码";
-"Export" = "导出";
 "Export Private Key" = "导出私钥";
 "Export Keystore" = "导出Keystore文件";
 "Wallet Name" = "钱包名字";
 "Change Wallet Name" = "更改钱包名字";
-"Exchange" = "交易";
+
 "Search History" = "搜索历史";
 "Invalid mnemonic. Please enter again." = "无法导入助记词。请重新输入。";
 "Invalid private key. Please enter again." = "无法导入私钥。请重新输入。";
 "Invalid keystore. Please enter again." = "Keystore无法导入。请重新输入。";
 "Please enter mnemonic" = "请输入助记词";
 "Please enter private key" = "请输入私钥";
-"Please enter keystore" = "请输入Keystore";
 "Mnemonic Password (optional)" = "助记词密码 (可选)";
-"Please enter a wallet name" = "请输入钱包名字";
-"Please set a password" = "请设置密码";
+
 "Please enter a password" = "请输入密码";
 "Copy address to clipboard successfully!" = "成功复制地址到剪切板!";
 "Copy keystore to clipboard successfully!" = "成功复制keystore到剪切板!";
 "Copy private key to clipboard successfully!" = "成功复制钱包私钥到剪切板!";
 "Congratulations!" = "创建成功!";
-"Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage." = "您的钱包已创建成功。为了备份钱包，请花一点时间写下助记词。助记词会用于恢复钱包。请不要分享助记词给任何人，不要存云端。";
-"Please write them down" = "请记下";
-"Please make sure you have recorded all words safely. Otherwise, you will not be able to go through the verification process, and have to start over." = "请确定您已经妥善保存所有的单词。否则，您将无法通过验证的流程，返回这一页。";
-"Continue" = "下一步";
-"Backup Now" = "开始备份";
-"Please make sure you have backed up mnemonic words." = "请确定您已经备份助记词。";
+
 "Cancel" = "取消";
 "Confirm" = "确定";
-"Next 12 Words" = "下一组12个单词";
-"Previous 12 Words" = "上一组12个单词";
-"Please input the consistant password" = "请输入一致的密码";
+
 "Hide Small Assets" = "隐藏小额资产";
 "Max" = "最大值";
-"Amount you want to convert" = "输入转换的额度";
+
 "Search" = "搜索";
 "Contract Version" = "合约版本";
 "LRC Fee Ratio" = "LRC费用比例";
@@ -120,15 +103,14 @@
 "Cancelled" = "已取消";
 "Expired" = "已过期";
 "Cancel All" = "取消全部";
-"Order Book" = "最新挂单";
-"No Data" = "暂时没有数据";
+
+
 "Copy Private Key" = "复制私钥";
 "Copy Keystore" = "复制Keystore";
 "User Preferences" = "用户设置";
 "Trading" = "交易";
 "Relay" = "中继";
 "About" = "关于";
-"Default Relay" = "默认中继";
 "App Version" = "应用版本";
 "Support" = "帮助";
 "Copyright" = "版权";
@@ -136,15 +118,9 @@
 "Trading Fee" = "撮合费";
 "Fee" = "撮合费";
 "Share Order" = "分享订单";
-"Give your wallet an awesome name" = "给钱包起个名字吧";
-"Please enter a wallet name" = "请输入钱包名字";
-"Invalid wallet name" = "钱包名字无效";
-"Invalid password" = "密码无效";
-"Go Back" = "返回";
-"Select Wallet" = "选择钱包";
-"Choose Wallet" = "选择钱包";
-"Enter" = "进入";
-"Default Relay" = "默认中继";
+
+
+
 "Settings" = "设置";
 "Currency" = "货币";
 "All" = "全部";
@@ -161,20 +137,12 @@
 "50006" = "抱歉，订单已过期，请扫描其他二维码后重新下单";
 "50007" = "抱歉，订单未成交数额过小，已无法下单成交";
 "50008" = "抱歉，无法获取当前下单信息，请稍后重试";
-"Information of two orders not complete" = "Information of two orders not complete";
-"Sorry. Network error, please try again later" = "Sorry. Network error, please try again later";
-"Order Expires in" = "订单有效时间";
-"Your price is irrational, " = "您所设定的价格并不合理，";
-"which may cause your asset wastage! " = "这意味着您的资产或将亏损！";
-"which may cause your order abolished! " = "这意味着您的订单或将无法成交！";
-"Do you wish to continue trading or signing with the price?" = "是否仍要以该价格下单或授权？";
-"Your order amount exceeded your asset balance, which cause your order could not be dealt completely. Do you wish to continue trading with the amount?" = "您的下单金额超过您该资产的全部预算，这将导致您的订单无法完全成交。是否仍要以该数额下单或交易？";
+
+
 "Please input a valid price" = "请输入有效的价格";
 "Please input a valid amount" = "请输入有效的数额";
 "Buying" = "买入";
 "Selling" = "卖出";
-"Placed!" = "提交成功";
-"Attention!" = "请注意";
 "Congratulations! Your order has been submited!" = "恭喜！您的订单已被提交！";
 "Your order has not been submited! Please make sure you have enough balance to complete the trade." = "您的订单未被提交！请确认您的账户中有足够余额以完成该笔订单。";
 "You Need More" = "您尚需";
@@ -196,7 +164,7 @@
 "Gas" = "油费";
 "Cancelling" = "取消中";
 "QR Code type doesn't fit here" = "二维码类型不符";
-"Select HD derivation path" = "Select HD derivation path";
+
 "Select your address" = "请选择您的地址";
 "Please enter the keystore" = "请输入keystore";
 "Please input your private key" = "请输入您的私钥";
@@ -204,18 +172,16 @@
 "Please confirm the address before sending" = "在发送前，请确认地址无误。";
 "Transaction Fee" = "交易费";
 "Advanced" = "高级设置";
-"What is gas?" = "What is gas?";
-"Gas is..." = "Gas is...";
+
+
 "Please input a correct address" = "请输入正确的地址";
-"Enable \(transaction.symbol) To Trade" = "Enable \(transaction.symbol) To Trade";
+
 "Cancel Order" = "取消订单";
 "Enter the amount you have" = "请输入卖出数额";
 "Enter the amount you get" = "请输入买入数额";
-"My Trade from Loopr-iOS" = "My Trade from Loopr-iOS";
-"Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!" = "Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!";
-"However, please make sure you have enough balance to complete the trade." = "However, please make sure you have enough balance to complete the trade.";
+
+
 "P2P Order History" = "场外交易记录";
-"Share Address through SMS" = "通过短信分享地址";
 "Clear Records of this Wallet" = "删除钱包并清除钱包数据";
 "Amount" = "数量";
 "Setup the wallet name" = "钱包名字";
@@ -227,7 +193,7 @@
 "Face ID" = "面容 ID";
 "From" = "发送地址";
 "To" = "接收地址";
-"My wallet address in Loopr" = "我在Loopr里的钱包地址";
+"My wallet address" = "我的钱包地址";
 "Hide Other Pairs" = "隐藏其他交易对";
 "ETH (Excluding for gas)" = "ETH (不含转换油费)";
 "Customer Price" = "用户自定价格";
@@ -258,7 +224,6 @@
 "Enabled" = "授权";
 "to Trade" = "进行撮合交易";
 "Time" = "时间";
-"Loopring DEX Markets" = "Loopring去中心化市场";
 "Reference Markets" = "参考市场";
 "Order Submitted" = "已提交";
 "Order Cancelled" = "已取消";

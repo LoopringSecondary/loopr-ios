@@ -120,7 +120,7 @@ class QRCodeViewController: UIViewController {
     }
     
     @IBAction func pressedShareButton(_ button: UIBarButtonItem) {
-        let text = LocalizedString("My wallet address in Loopr", comment: "")
+        let text = LocalizedString("My wallet address", comment: "")
         let image = UIImage.imageWithView(shareContentView)
         let png = UIImagePNGRepresentation(image)
         let shareAll = [text, png!] as [Any]

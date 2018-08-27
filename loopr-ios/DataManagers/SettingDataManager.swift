@@ -21,9 +21,12 @@ class SettingDataManager {
         let languageNames = Bundle.main.localizations
         let languages = languageNames.filter ({ (languageName) -> Bool in
             return languageName != "Base"
-        }).map { (name) -> Language in
+        }).map ({ (name) -> Language in
             return Language(name: name)
+        }).sorted { (a, b) -> Bool in
+            return a.name < b.name
         }
+
         return languages
     }
     

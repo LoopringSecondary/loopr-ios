@@ -19,14 +19,13 @@
 "Sent" = "Sent";
 "Scan" = "Scan";
 "Language" = "Language";
-"Create a new wallet" = "Create a new wallet";
 "Manage Wallets" = "Manage Wallets";
 "Switch to this Wallet" = "Switch to this Wallet";
 "Import Wallet" = "Import Wallet";
 "Enter Wallet" = "Enter Wallet";
 "Generate Wallet" = "Generate Wallet";
-"Confirm password" = "Confirm password";
-"Confirm your password" = "Confirm your password";
+
+
 "Password" = "Password";
 "Repeat Password" = "Repeat Password";
 "Enter password" = "Enter password";
@@ -41,7 +40,7 @@
 "Verify Mnemonic" = "Verify Mnemonic";
 "Verify Now" = "Verify Now";
 "Skip Verification" = "Skip Verification";
-"Verification" = "Verification";
+
 "Copy Address" = "Copy Address";
 "Copy Private Key" = "Copy Private Key";
 "Save to Album" = "Save to Album";
@@ -53,24 +52,24 @@
 "Confirmation" = "Confirmation";
 "Next" = "Next";
 "Share Order" = "Share Order";
-"Close the Order" = "Close the Order";
+
 "Review" = "Review";
 "Check Details" = "Check Details";
 "Done" = "Done";
-"Details" = "Transaction Detail";
+
 "Convert" = "Convert";
 "WETH Convert" = "WETH Convert";
 "Convert Successfully." = "Convert Successfully.";
-"Wallet QR Code" = "Wallet QR Code";
-"Order QR Code" = "Order QR Code";
+
+
 "Scan QR Code" = "Scan QR Code";
 "QR Code" = "QR Code";
-"Export" = "Export";
+
 "Export Private Key" = "Export Private Key";
 "Export Keystore" = "Export Keystore";
 "Wallet Name" = "Wallet Name";
 "Change Wallet Name" = "Change Wallet Name";
-"Exchange" = "Exchange";
+
 "Search History" = "Search History";
 "Invalid mnemonic. Please enter again." = "Invalid mnemonic. Please enter again.";
 "Invalid private key. Please enter again." = "Invalid private key. Please enter again.";
@@ -79,27 +78,26 @@
 "Please enter private key" = "Please enter private key";
 "Please enter keystore" = "Please enter keystore";
 "Mnemonic Password (optional)" = "Mnemonic Password (optional)";
-"Please enter a wallet name" = "Please enter a wallet name";
-"Please set a password" = "Please set a password";
+
+
 "Please enter a password" = "Please enter a password";
 "Copy address to clipboard successfully!" = "Copy address to clipboard successfully!";
 "Copy keystore to clipboard successfully!" = "Copy keystore to clipboard successfully!";
 "Copy private key to clipboard successfully!" = "Copy private key to clipboard successfully!";
 "Congratulations!" = "Congratulations!";
-"Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage." = "Your wallet has been generated. Please take a moment to backup your wallet by writing mnemonic words down. Mnemonic words are required to resotre your wallet. Please do not share your mnemonic words with anyone, nor save them on cloud storage.";
-"Please write them down" = "Please write them down";
-"Please make sure you have recorded all words safely. Otherwise, you will not be able to go through the verification process, and have to start over." = "Please make sure you have recorded all words safely. Otherwise, you will not be able to go through the verification process, and have to start over.";
-"Continue" = "Continue";
-"Backup Now" = "Backup Now";
-"Please make sure you have backed up mnemonic words." = "Please make sure you have backed up mnemonic words.";
+
+
+
+
+
+
 "Cancel" = "Cancel";
 "Confirm" = "Confirm";
-"Next 12 Words" = "Next 12 Words";
-"Previous 12 Words" = "Previous 12 Words";
-"Please input the consistant password" = "Please input the consistant password";
+
+
 "Hide Small Assets" = "Hide Small Assets";
 "Max" = "Max";
-"Amount you want to convert" = "Amount you want to convert";
+
 "Search" = "Search";
 "Contract Version" = "Contract Version";
 "LRC Fee Ratio" = "LRC Fee Ratio";
@@ -120,15 +118,15 @@
 "Cancelled" = "Cancelled";
 "Expired" = "Expired";
 "Cancel All" = "Cancel All";
-"Order Book" = "Order Book";
-"No Data" = "No Data";
+
+
 "Copy Private Key" = "Copy Private Key";
 "Copy Keystore" = "Copy Keystore";
 "User Preferences" = "User Preferences";
 "Trading" = "Trading";
 "Relay" = "Relay";
 "About" = "About";
-"Default Relay" = "Default Relay";
+
 "App Version" = "App Version";
 "Support" = "Support";
 "Copyright" = "Copyright";
@@ -136,15 +134,15 @@
 "Trading Fee" = "Trading Fee";
 "Fee" = "Fee";
 "Share Order" = "Share Order";
-"Give your wallet an awesome name" = "Give your wallet an awesome name";
-"Please enter a wallet name" = "Please enter a wallet name";
-"Invalid wallet name" = "Invalid wallet name";
-"Invalid password" = "Invalid password";
-"Go Back" = "Go Back";
-"Select Wallet" = "Select Wallet";
-"Choose Wallet" = "Choose Wallet";
-"Enter" = "Enter";
-"Default Relay" = "Default Relay";
+
+
+
+
+
+
+
+
+
 "Settings" = "Settings";
 "Currency" = "Currency";
 "All" = "All";
@@ -161,20 +159,20 @@
 "50006" = "Sorry, buying order has been expired, please try with other orders";
 "50007" = "Sorry, undealt amount of order is too small, could not complete this order";
 "50008" = "Sorry, buying order does not exist, could not complete this order";
-"Information of two orders not complete" = "Information of two orders not complete";
-"Sorry. Network error, please try again later" = "Sorry. Network error, please try again later";
-"Order Expires in" = "Order Expires in";
-"Your price is irrational, " = "Your price is irrational, ";
-"which may cause your asset wastage! " = "which may cause your asset wastage! ";
-"which may cause your order abolished! " = "which may cause your order abolished! ";
-"Do you wish to continue trading or signing with the price?" = "Do you wish to continue trading or signing with the price?";
-"Your order amount exceeded your asset balance, which cause your order could not be dealt completely. Do you wish to continue trading with the amount?" = "Your order amount exceeded your asset amount, which cause your order could not be dealt completely. Do you wish to continue trading with the amount?";
+
+
+
+
+
+
+
+
 "Please input a valid price" = "Please input a valid price";
 "Please input a valid amount" = "Please input a valid amount";
 "Buying" = "Buying";
 "Selling" = "Selling";
-"Placed!" = "Placed!";
-"Attention!" = "Attention!";
+
+
 "Congratulations! Your order has been submited!" = "Congratulations! Your order has been submited!";
 "Your order has not been submited! Please make sure you have enough balance to complete the trade." = "Your order has not been submited! Please make sure you have enough balance to complete the trade.";
 "You Need More" = "You Need More";
@@ -196,7 +194,7 @@
 "Gas" = "Gas";
 "Cancelling" = "Cancelling";
 "QR Code type doesn't fit here" = "QR Code type doesn't fit here";
-"Select HD derivation path" = "Select HD derivation path";
+
 "Select your address" = "Select your address";
 "Please enter the keystore" = "Please enter the keystore";
 "Please input your private key" = "Please input your private key";
@@ -204,18 +202,17 @@
 "Please confirm the address before sending" = "Please confirm the address before sending";
 "Transaction Fee" = "Transaction Fee";
 "Advanced" = "Advanced";
-"What is gas?" = "What is gas?";
-"Gas is..." = "Gas is...";
+
+
 "Please input a correct address" = "Please input a correct address";
-"Enable \(transaction.symbol) To Trade" = "Enable \(transaction.symbol) To Trade";
+
 "Cancel Order" = "Cancel Order";
 "Enter the amount you have" = "Amount you wish to sell";
 "Enter the amount you get" = "Amount you wish to get";
-"My Trade from Loopr-iOS" = "My Trade from Loopr-iOS";
-"Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!" = "Congradualations! You exchanged \(order.amountSell) \(order.tokenSell) with \(order.amountBuy) \(order.tokenBuy)!";
-"However, please make sure you have enough balance to complete the trade." = "However, please make sure you have enough balance to complete the trade.";
+
+
 "P2P Order History" = "P2P Order History";
-"Share Address through SMS" = "Share Address through SMS";
+
 "Clear Records of this Wallet" = "Clear Records of this Wallet";
 "Amount" = "Amount";
 "Setup the wallet name" = "Setup the wallet name";
@@ -228,7 +225,7 @@
 "Face ID" = "Face ID";
 "From" = "From";
 "To" = "To";
-"My wallet address in Loopr" = "My wallet address in Loopr";
+"My wallet address" = "My wallet address";
 "Hide Other Pairs" = "Hide Other Pairs";
 "ETH (Excluding for gas)" = "ETH (Excluding for gas)";
 "Customer Price" = "Customer Price";
@@ -258,7 +255,7 @@
 "Enabled" = "Enabled";
 "to Trade" = "to Trade";
 "Time" = "Time";
-"Loopring DEX Markets" = "Loopring DEX Markets";
+
 "Reference Markets" = "Reference Markets";
 "Order Submitted" = "Submitted";
 "Order Cancelled" = "Cancelled";
@@ -377,7 +374,7 @@
 "Code_Error_Tip" = "Your activate code is incorrect, please refetch from our download web page";
 "Please input activate code" = "Please input activate code";
 "Send Confirmation" = "Send Confirmation";
-"Receiver" = "Receiver";
+
 "Sender" = "Sender";
 "Trade_Confirm" = "Trade Confirmation";
 "No_Data_Tip"= "No Data available";

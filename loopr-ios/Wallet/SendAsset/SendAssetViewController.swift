@@ -232,18 +232,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         }
         _ = validate()
     }
-    
-    @objc func pressedHelpButton(_ sender: Any) {
-        let title = LocalizedString("What is gas?", comment: "")
-        let message = LocalizedString("Gas is...", comment: "") // TODO
-        let alertController = UIAlertController(title: title,
-            message: message,
-            preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .cancel, handler: { _ in
-        })
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
 
     @objc func scrollViewTapped() {
         print("scrollViewTapped")
