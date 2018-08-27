@@ -43,7 +43,7 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
         headerInfoLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
         headerInfoLabel.text = LocalizedString("Latest Price", comment: "")
         
-        headerLastPriceLabel.textColor = UIColor.themeGreen
+        headerLastPriceLabel.textColor = UIColor.success
         headerLastPriceLabel.font = FontConfigManager.shared.getRegularFont(size: 13)
         headerLastPriceLabel.text = "\(market.balance.withCommas(6)) \(market.tradingPair.tradingB) ≈ \(market.display.description)"
         

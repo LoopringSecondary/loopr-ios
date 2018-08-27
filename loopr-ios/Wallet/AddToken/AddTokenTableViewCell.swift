@@ -34,7 +34,7 @@ class AddTokenTableViewCell: UITableViewCell {
         nameLabel.setSubTitleDigitFont()
 
         addSwitch.transform = CGAffineTransform(scaleX: 0.77, y: 0.77)
-        addSwitch.onTintColor = UIColor.themeYellow
+        addSwitch.onTintColor = UIColor.theme
         addSwitch.OffTint = UIColor.dark4
     }
 

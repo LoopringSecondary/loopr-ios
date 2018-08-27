@@ -45,7 +45,7 @@ class QRCodeViewController: UIViewController {
         
         receiveQRCodeIconView.image = UIImage(named: "Receive-qrcode-icon" + ColorTheme.getTheme())
         titleLabel.setTitleCharFont()
-        titleLabel.text = LocalizedString("UP Wallet", comment: "")
+        titleLabel.text = Production.getProduct()
         addressLabel.setTitleCharFont()
         addressInShare.font = FontConfigManager.shared.getCharactorFont(size: 14)
         addressInShare.theme_textColor = GlobalPicker.contrastTextColor
@@ -120,7 +120,7 @@ class QRCodeViewController: UIViewController {
     }
     
     @IBAction func pressedShareButton(_ button: UIBarButtonItem) {
-        let text = LocalizedString("My wallet address", comment: "")
+        let text = LocalizedString("My wallet QRCode", comment: "")
         let image = UIImage.imageWithView(shareContentView)
         let png = UIImagePNGRepresentation(image)
         let shareAll = [text, png!] as [Any]

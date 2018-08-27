@@ -11,7 +11,7 @@ import Photos
 import NotificationBannerSwift
 
 class QRCodeSaveToAlbum: NSObject {
-    static let albumName = "UP Wallet"
+    static let albumName = Production.getProduct()
     static let shared = QRCodeSaveToAlbum()
 
     var assetCollection: PHAssetCollection!

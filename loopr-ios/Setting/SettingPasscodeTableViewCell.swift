@@ -30,7 +30,7 @@ class SettingPasscodeTableViewCell: UITableViewCell {
         
         passcodeSwitch.transform = CGAffineTransform(scaleX: 0.77, y: 0.77)
         passcodeSwitch.setOn(AuthenticationDataManager.shared.getPasscodeSetting(), animated: false)
-        passcodeSwitch.onTintColor = UIColor.themeYellow
+        passcodeSwitch.onTintColor = UIColor.theme
         passcodeSwitch.OffTint = UIColor.dark4
         
         if AuthenticationDataManager.shared.devicePasscodeEnabled() {

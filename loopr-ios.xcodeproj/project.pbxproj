@@ -76,6 +76,7 @@
 		94A1C0DD2128126D00FD3A1F /* SettingPartnerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A1C0DB2128126D00FD3A1F /* SettingPartnerViewController.xib */; };
 		94A1C0DF2128461100FD3A1F /* Partner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A1C0DE2128461100FD3A1F /* Partner.swift */; };
 		94A39E1320C8E4FE00BC1B72 /* SignStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A39E1220C8E4FE00BC1B72 /* SignStatus.swift */; };
+		94A8699021340C7000453F2B /* ProductDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8698F21340C7000453F2B /* ProductDataManager.swift */; };
 		94AA0A9E211550440092D2CE /* PlaceOrderConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AA0A9D211550440092D2CE /* PlaceOrderConfirmationViewController.xib */; };
 		94AA0AA0211578460092D2CE /* ConfirmationResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AA0A9F211578460092D2CE /* ConfirmationResultViewController.xib */; };
 		94AD1FE5208B910D00C443E6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AD1FE4208B910D00C443E6 /* Currency.swift */; };
@@ -569,6 +570,7 @@
 		94A1C0DB2128126D00FD3A1F /* SettingPartnerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingPartnerViewController.xib; sourceTree = "<group>"; };
 		94A1C0DE2128461100FD3A1F /* Partner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Partner.swift; sourceTree = "<group>"; };
 		94A39E1220C8E4FE00BC1B72 /* SignStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignStatus.swift; sourceTree = "<group>"; };
+		94A8698F21340C7000453F2B /* ProductDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDataManager.swift; sourceTree = "<group>"; };
 		94AA0A9D211550440092D2CE /* PlaceOrderConfirmationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceOrderConfirmationViewController.xib; sourceTree = "<group>"; };
 		94AA0A9F211578460092D2CE /* ConfirmationResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmationResultViewController.xib; sourceTree = "<group>"; };
 		94AD1FE4208B910D00C443E6 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
@@ -2024,6 +2026,7 @@
 				AC971EC720BB412200EDEDD0 /* AuthenticationDataManager.swift */,
 				943C1CAD20CE1E0B008A8CED /* AuthorizeDataManager.swift */,
 				948125662119B38E00453225 /* PartnerDataManager.swift */,
+				94A8698F21340C7000453F2B /* ProductDataManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -2735,6 +2738,7 @@
 				ACE6F7242042228A0039273D /* GlobalPicker.swift in Sources */,
 				AC9DC45321156F3A002D7D23 /* MarketDetailDepthModalViewController.swift in Sources */,
 				ACB9117F2026385100F14644 /* SettingNavigationViewController.swift in Sources */,
+				94A8699021340C7000453F2B /* ProductDataManager.swift in Sources */,
 				9423F77920C7D688000B6983 /* SignRawTransaction.swift in Sources */,
 				AC6E95E520313D8A00C6EB7C /* UIApplicationExtension.swift in Sources */,
 				AC4F600D20773E9D00F1D954 /* SignatureData.swift in Sources */,
@@ -3244,8 +3248,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

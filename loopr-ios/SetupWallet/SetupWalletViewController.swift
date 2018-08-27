@@ -23,11 +23,11 @@ class SetupWalletViewController: UIViewController {
 
         view.theme_backgroundColor = ColorPicker.backgroundColor
 
-        let stringValue = LocalizedString("UP Wallet", comment: "")
+        let stringValue = Production.getProduct()
         let attrString = NSMutableAttributedString(string: stringValue)
         attrString.addAttribute(NSAttributedStringKey.kern, value: 2.4, range: NSMakeRange(0, attrString.length))
         taglineLabel.attributedText = attrString
-
+        taglineLabel.textColor = UIColor.theme
         taglineLabel.font = UIFont(name: FontConfigManager.shared.getMedium(), size: 16.0)
 
         unlockWalletButton.title = LocalizedString("Import Wallet", comment: "")

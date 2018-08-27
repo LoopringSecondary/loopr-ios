@@ -47,7 +47,7 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
         addSubview(baseViewBuy)
         
         label1 = UILabel(frame: CGRect(x: 10, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
-        label1.textColor = UIColor.themeRed
+        label1.textColor = UIColor.fail
         label1.font = FontConfigManager.shared.getMediumFont(size: 12)
         label1.textAlignment = .left
         baseViewBuy.addSubview(label1)
@@ -70,7 +70,7 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
         addSubview(baseViewSell)
         
         label3 = UILabel(frame: CGRect(x: 10, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
-        label3.textColor = UIColor.themeGreen
+        label3.textColor = UIColor.success
         label3.font = FontConfigManager.shared.getMediumFont(size: 12)
         label3.textAlignment = .left
         baseViewSell.addSubview(label3)

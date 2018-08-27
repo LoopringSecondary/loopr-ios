@@ -78,7 +78,7 @@ class GenerateWalletEnterPasswordViewController: UIViewController, UITextFieldDe
         if password.trim().count == 0 {
             validPassword = false
             errorInfoLabel.shake()
-            errorInfoLabel.textColor = UIColor.themeRed
+            errorInfoLabel.textColor = UIColor.fail
             errorInfoLabel.alpha = 1.0
             errorInfoLabel.text = LocalizedString("Password can't be empty.", comment: "")
         }
@@ -86,7 +86,7 @@ class GenerateWalletEnterPasswordViewController: UIViewController, UITextFieldDe
         if password.count < 6 {
             validPassword = false
             errorInfoLabel.shake()
-            errorInfoLabel.textColor = UIColor.themeRed
+            errorInfoLabel.textColor = UIColor.fail
             errorInfoLabel.alpha = 1.0
             errorInfoLabel.text = LocalizedString("The length of password needs to be larger than or equal to 6.", comment: "")
         }

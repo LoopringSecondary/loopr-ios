@@ -150,7 +150,7 @@ class TradeReviewViewController: UIViewController {
     }
 
     @IBAction func pressedShareButton(_ sender: UIButton) {
-        let text = LocalizedString("My Trade from Loopr-iOS", comment: "")
+        let text = LocalizedString("My Trade QRCode", comment: "")
         let image = UIImage.imageWithView(shareContentView)
         let png = UIImagePNGRepresentation(image)
         let shareAll = [text, png!] as [Any]

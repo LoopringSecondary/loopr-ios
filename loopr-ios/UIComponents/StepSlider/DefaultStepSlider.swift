@@ -18,9 +18,9 @@ extension StepSlider {
         stepSlider.trackCircleRadius = 3
         stepSlider.labelColor = UIColor.text1
         stepSlider.trackColor = UIColor.dark4
-        stepSlider.tintColor = UIColor.themeYellow
+        stepSlider.tintColor = UIColor.theme
         stepSlider.sliderCircleRadius = 8
-        stepSlider.sliderCircleColor = UIColor.themeYellow
+        stepSlider.sliderCircleColor = UIColor.theme
         stepSlider.labelOffset = 10
         stepSlider.isDotsInteractionEnabled = true
         stepSlider.adjustLabel = true

@@ -57,13 +57,16 @@ class AssetSwipeViewController: SwipeViewController {
         currencyLabel.text = asset?.currency
         view.addSubview(currencyLabel)
         
-        // Receive button
+        // Receive & Send button
         receiveButton.setTitle(LocalizedString("Receive", comment: "") + " " + (asset?.symbol ?? ""), for: .normal)
-        receiveButton.setupPrimary(height: 44, gradientOrientation: .horizontal)
-        
-        // Send button
         sendButton.setTitle(LocalizedString("Send", comment: "") + " " + (asset?.symbol ?? ""), for: .normal)
-        sendButton.setupSecondary(height: 44, gradientOrientation: .horizontal)
+        if ColorTheme.current == .green {
+            receiveButton.setupSecondary(height: 44, gradientOrientation: .horizontal)
+            sendButton.setupPrimary(height: 44, gradientOrientation: .horizontal)
+        } else {
+            receiveButton.setupPrimary(height: 44, gradientOrientation: .horizontal)
+            sendButton.setupSecondary(height: 44, gradientOrientation: .horizontal)
+        }
         
         if Themes.isDark() {
             options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)

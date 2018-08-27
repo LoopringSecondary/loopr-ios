@@ -190,7 +190,7 @@
 "Face ID" = "面容 ID";
 "From" = "发送地址";
 "To" = "接收地址";
-"My wallet address" = "我的钱包地址";
+"My wallet address in Loopr" = "我在Loopr里的钱包地址";
 "Hide Other Pairs" = "隐藏其他交易对";
 "ETH (Excluding for gas)" = "ETH (不含转换油费)";
 "Customer Price" = "用户自定价格";
@@ -360,7 +360,6 @@
 "Share App" = "分享APP";
 "Album" = "相册";
 "Create Password" = "创建密码";
-"UP Wallet" = "UP钱包";
 "Added the token successfully." = "成功添加代币";
 "Failed to add the token." = "添加代币失败";
 "same address was registed" = "代币地址已经注册过";

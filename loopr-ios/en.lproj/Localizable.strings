@@ -272,7 +272,7 @@
 "Export Private Key" = "Export Private Key";
 "Export Keystore" = "Export Keystore";
 "Exporting keystore" = "Exporting keystore";
-"Wallet Name" = "Wallet Name";
+"My Trade from Loopr-iOS" = "My Trade from Loopr-iOS";
 "Change Wallet Name" = "Change Wallet Name";
 "Copy address to clipboard successfully!" = "Copy address to clipboard successfully!";
 "Copy keystore to clipboard successfully!" = "Copy keystore to clipboard successfully!";
@@ -327,6 +327,7 @@
 "Unlock" = "Unlock";
 "Touch ID" = "Touch ID";
 "Face ID" = "Face ID";
+"My wallet address in Loopr" = "My wallet address in Loopr";
 "Please turn on Touch ID in settings" = "Please turn on Touch ID in settings";
 "Please turn on Face ID in settings" = "Please turn on Face ID in settings";
 
@@ -356,14 +357,14 @@
 
 /* Share app page */
 "Partner_Slogan" = "Share APP, harvest 20% of trading fee";
-"Partner_Title" = "UP Wallet Share";
+"Partner_Title" = "Wallet Share";
 "Partner_Tip" = "My income address: ";
 "Partner_Des" = "By sharing the app, you will be awarded 20% of all future trading fees from users acquired by your promotion.";
 "Partner_Address" = "Your trading fee reciept address is: ";
 "Share App" = "Share App";
 
 /* Authorization for integrating other apps */
-"Authorization" = "Authorization";
+"UP Wallet" = "UP Wallet";
 "Approving authorization" = "Approving authorization";
 "Authorize Successfully" = "Authorize Successfully";
 "Authorize Failed" = "Authorize Failed";

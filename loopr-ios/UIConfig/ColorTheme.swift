@@ -13,9 +13,22 @@ enum ColorTheme: Int {
     // TODO: We will have blue color configuration.
     case red = 0
     case yellow = 1
+    case green = 2
+    case blue = 3
 
     // Only need to change this line of code
-    static let current: ColorTheme = .yellow
+    static let current: ColorTheme = getCurrent()
+    
+    static func getCurrent() -> ColorTheme {
+        switch Production.current {
+        case .loopr:
+            return .blue
+        case .upwallet:
+            return .yellow
+        case .vivwallet:
+            return .green
+        }
+    }
     
     static func getTheme() -> String {
         switch current {
@@ -23,7 +36,10 @@ enum ColorTheme: Int {
             return "-red"
         case .yellow:
             return "-yellow"
+        case .green:
+            return "-green"
+        case .blue:
+            return "-blue"
         }
     }
-
 }

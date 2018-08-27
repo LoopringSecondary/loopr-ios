@@ -40,21 +40,32 @@ extension UIColor {
     }
     
     class var primary: [UIColor] {
-        return [UIColor.init(rgba: "#5ED279"), UIColor.init(rgba: "#2AAE49")]
-    }
-    
-    class var primaryHighlight: [UIColor] {
-        return [UIColor.init(rgba: "#3CBA92"), UIColor.init(rgba: "#0BA360")]
+        switch ColorTheme.current {
+        case .red:
+            return [UIColor.init(rgba: "#5ED279"), UIColor.init(rgba: "#2AAE49")]
+        case .yellow:
+            return [UIColor.init(rgba: "#5ED279"), UIColor.init(rgba: "#2AAE49")]
+        case .green:
+            return [UIColor.init(rgba: "#D53535"), UIColor.init(rgba: "#DD5252")]
+        case .blue:
+            return [UIColor.init(rgba: "#5ED279"), UIColor.init(rgba: "#2AAE49")]
+        }
     }
     
     class var secondary: [UIColor] {
-        return [UIColor.init(rgba: "#F8BE1C"), UIColor.init(rgba: "#FFA928")]
+        switch ColorTheme.current {
+        case .red:
+            return [UIColor.init(rgba: "#CE4CE6"), UIColor.init(rgba: "#FA4A6F")]
+        case .yellow:
+            return [UIColor.init(rgba: "#F8BE1C"), UIColor.init(rgba: "#FFA928")]
+        case .green:
+            return [UIColor.init(rgba: "#38B170"), UIColor.init(rgba: "#159763")]
+        case .blue:
+            return [UIColor.init(rgba: "#5ED279"), UIColor.init(rgba: "#2AAE49")]
+        }
+
     }
     
-    class var secondaryHighlight: [UIColor] {
-        return [UIColor.init(rgba: "#CF2549"), UIColor.init(rgba: "#8C1CA0")]
-    }
-        
     // #F5F5F5
     class var mute: UIColor {
         return UIColor(named: "Color-mute")!
@@ -67,6 +78,11 @@ extension UIColor {
             return UIColor(named: "Color-dark1")!
         case .yellow:
             return UIColor(rgba: "#16162A")
+        case .green:
+            // #222222
+            return UIColor(named: "Color-dark1")!
+        case .blue:
+            return UIColor(named: "Color-dark1")!
         }
     }
     
@@ -77,6 +93,11 @@ extension UIColor {
             return UIColor(named: "Color-dark2")!
         case .yellow:
             return UIColor(rgba: "#21203A")
+        case .green:
+            // #292929
+            return UIColor(named: "Color-dark2")!
+        case .blue:
+            return UIColor(named: "Color-dark2")!
         }
     }
 
@@ -87,6 +108,11 @@ extension UIColor {
             return UIColor(named: "Color-dark3")!
         case .yellow:
             return UIColor(rgba: "#2B2C47")
+        case .green:
+            // #383838
+            return UIColor(named: "Color-dark3")!
+        case .blue:
+            return UIColor(named: "Color-dark3")!
         }
     }
     
@@ -97,6 +123,12 @@ extension UIColor {
             return UIColor(named: "Color-dark4")!
         case .yellow:
             return UIColor(rgba: "#343653")
+        case .green:
+            // #666666
+            return UIColor(named: "Color-dark4")!
+        case .blue:
+            // #666666
+            return UIColor(named: "Color-dark4")!
         }
     }
     
@@ -105,17 +137,17 @@ extension UIColor {
         return UIColor(named: "Color-dark5")!
     }
     
-    class var themeYellow: UIColor {
-        return UIColor(rgba: "#FDAE25")
-    }
-
-    class var themeGreen: UIColor {
-        return UIColor(named: "Color-green")!
-    }
-    
-    // #DD5252
-    class var themeRed: UIColor {
-        return UIColor(named: "Color-red")!
+    class var theme: UIColor {
+        switch ColorTheme.current {
+        case .red:
+            return UIColor(rgba: "#EF5395")
+        case .yellow:
+            return UIColor(rgba: "#FDAE25")
+        case .green:
+            return UIColor(rgba: "#38B170")
+        case .blue:
+            return UIColor(named: "Color-red")!
+        }
     }
     
     // #ffffffcc

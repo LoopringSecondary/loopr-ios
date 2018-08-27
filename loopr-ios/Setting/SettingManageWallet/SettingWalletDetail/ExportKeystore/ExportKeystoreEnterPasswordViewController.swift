@@ -57,7 +57,7 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
         view.addSubview(continueButton)
         
         errorInfoLabel.frame = CGRect(x: padding, y: continueButton.bottomY + 40, width: screenWidth-padding*2, height: 40)
-        errorInfoLabel.textColor = UIColor.themeRed
+        errorInfoLabel.textColor = UIColor.fail
         errorInfoLabel.textAlignment = .center
         errorInfoLabel.alpha = 0.0
         view.addSubview(errorInfoLabel)

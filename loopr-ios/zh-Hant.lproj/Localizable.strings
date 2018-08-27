@@ -209,7 +209,7 @@
 "Cancel Order" = "Cancel Order";
 "Enter the amount you have" = "Amount you wish to sell";
 "Enter the amount you get" = "Amount you wish to get";
-
+"My Trade from Loopr-iOS" = "My Trade from Loopr-iOS";
 
 "P2P Order History" = "P2P Order History";
 
@@ -395,7 +395,7 @@
 "Add custom token" = "Add custom token";
 "Add" = "Add";
 "Partner_Slogan" = "Share APP, harvest 20% of trading fee";
-"Partner_Title" = "UP Wallet Share";
+"Partner_Title" = "Wallet Share";
 "Partner_Tip" = "My income address: ";
 "Partner_Des" = "By sharing the app, you will be awarded 20% of all future trading fees from users acquired by your promotion.";
 "Partner_Address" = "Your trading fee reciept address is: ";
@@ -414,7 +414,6 @@
 "Share App" = "Share App";
 "Album" = "Album";
 "Create Password" = "Create Password";
-"UP Wallet" = "UP Wallet";
 "Added the token successfully." = "Added the token successfully.";
 "Failed to add the token." = "Failed to add the token.";
 "same address was registed" = "Same address was registed.";
