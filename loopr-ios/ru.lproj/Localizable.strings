@@ -6,150 +6,217 @@
  Copyright © 2018 Loopring. All rights reserved.
  */
 
-"Night Mode" = "Night Mode";
-"Buy" = "Buy";
-"B" = "B";
-"S" = "S";
-"Bought" = "Bought";
-"Sell" = "Sell";
-"Sold" = "Sold";
+/* App */
+"Loopring P2P Order" = "Loopring P2P Order";
+"UP Wallet" = "UP Wallet";
+
+/* ETH related */
+"Mnemonic" = "Mnemonic";
+"Keystore" = "Keystore";
+"Private Key" = "Private Key";
+"Address" = "Address";
+"gas price" = "gas price";
+"Gas" = "Gas";
+"Tokens" = "Tokens";
+
+/* Wallet home page */
+"Wallet" = "Wallet";
 "Receive" = "Receive";
 "Received" = "Received";
 "Send" = "Send";
 "Sent" = "Sent";
 "Scan" = "Scan";
-"Language" = "Language";
-"Manage Wallets" = "Manage Wallets";
-"Switch to this Wallet" = "Switch to this Wallet";
+"Copy Address" = "Copy Address";
+"Hide Small Assets" = "Hide Small Assets";
+"My Wallet Address" = "My Wallet Address";
+"My wallet address" = "My wallet address";
+
+/* Import wallet and create wallet */
+"Initializing the wallet" = "Initializing the wallet";
 "Import Wallet" = "Import Wallet";
-"Enter Wallet" = "Enter Wallet";
 "Generate Wallet" = "Generate Wallet";
-
-
-"Password" = "Password";
-"Repeat Password" = "Repeat Password";
-"Enter password" = "Enter password";
-"Wrong password" = "Wrong password";
-"Mnemonic" = "Mnemonic";
-"Keystore" = "Keystore";
-"Private Key" = "Private Key";
-"Unlock" = "Unlock";
 "Please input your private key" = "Please input your private key";
 "Please use space to seperate the mnemonic words" = "Please use space to seperate the mnemonic words";
 "Backup Mnemonic" = "Backup Mnemonic";
 "Verify Mnemonic" = "Verify Mnemonic";
 "Verify Now" = "Verify Now";
 "Skip Verification" = "Skip Verification";
-
-"Copy Address" = "Copy Address";
-"Copy Private Key" = "Copy Private Key";
-"Save to Album" = "Save to Album";
-"Market" = "Market";
-"Markets" = "Markets";
-"Order History" = "Order History";
-"Wallet" = "Wallet";
-"Place Order" = "Place Order";
-"Confirmation" = "Confirmation";
-"Next" = "Next";
-"Share Order" = "Share Order";
-
-"Review" = "Review";
-"Check Details" = "Check Details";
-"Done" = "Done";
-
-"Convert" = "Convert";
-"WETH Convert" = "WETH Convert";
-"Convert Successfully." = "Convert Successfully.";
-
-
-"Scan QR Code" = "Scan QR Code";
-"QR Code" = "QR Code";
-
-"Export Private Key" = "Export Private Key";
-"Export Keystore" = "Export Keystore";
-"Wallet Name" = "Wallet Name";
-"Change Wallet Name" = "Change Wallet Name";
-
-"Search History" = "Search History";
 "Invalid mnemonic. Please enter again." = "Invalid mnemonic. Please enter again.";
 "Invalid private key. Please enter again." = "Invalid private key. Please enter again.";
 "Invalid keystore. Please enter again." = "Invalid keystore. Please enter again.";
 "Please enter mnemonic" = "Please enter mnemonic";
 "Please enter private key" = "Please enter private key";
-"Please enter keystore" = "Please enter keystore";
+"Please enter the keystore" = "Please enter the keystore";
+"Please input your private key" = "Please input your private key";
+"Select Your Wallet Type" = "Select Your Wallet Type";
+"Select your address" = "Select your address";
+"Revealing your mnemonic phrases on web sites is highly dangerous. If the site is compromised or you accidentally visit a phishing website, your assets in all associated addresses can be stolen." = "Revealing your mnemonic phrases on web sites is highly dangerous. If the site is compromised or you accidentally visit a phishing website, your assets in all associated addresses can be stolen.";
+"No wallet is found in the device. Navigate to the wallet creation view." = "No wallet is found in the device. Navigate to the wallet creation view.";
+"New Wallet Name" = "New Wallet Name";
+"New wallet name can't be empty" = "New wallet name can't be empty";
+"Confirm Mnemonic Word" = "Confirm Mnemonic Word";
+"Mnemonic doesn't match. Please verify again." = "Mnemonic doesn't match. Please verify again.";
+"Please click words in order to verify your mnemonic." = "Please click words in order to verify your mnemonic.";
+"Your mnemonic has been verified successfully." = "Your mnemonic has been verified successfully.";
+"Importing keystore" = "Importing keystore";
+"The name is token, please try another one." = "The name is token, please try another one.";
+"Failed to import address." = "Failed to import address.";
+"Failed to import address. The device has imported the address already." = "Failed to import address. The device has imported the address already.";
+"Please Verify Your Mnemonic" = "Please Verify Your Mnemonic";
+"Please click words in order." = "Please click words in order.";
+
+/* Password related */
+"Please enter a password" = "Please enter a password";
+"Password" = "Password";
+"Repeat Password" = "Repeat Password";
+"Enter password" = "Enter password";
+"Wrong password" = "Wrong password";
+"Create Password" = "Create Password";
+"Password can't be empty." = "Password can't be empty.";
+"The length of password needs to be larger than or equal to 6." = "The length of password needs to be larger than or equal to 6.";
+"Password doesn't match" = "Password doesn't match";
+"Please enter password" = "Please enter password";
+"Keystore Password" = "Keystore Password";
 "Mnemonic Password (optional)" = "Mnemonic Password (optional)";
 
+/* Add custom token page */
+"Add Token" = "Add Token";
+"Select Tokens" = "Select Tokens";
+"Custom Token" = "Custom Token";
+"Added the token successfully." = "Added the token successfully.";
+"Failed to add the token." = "Failed to add the token.";
+"same address was registed" = "Same address was registed.";
+"same symbol exist" = "same symbol exist";
+"Decimals of precision must be between 0 and 20" = "Decimals of precision must be between 0 and 20";
+"Add Custom Token" = "Add Custom Token";
+"Add custom token" = "Add custom token";
+"Add" = "Add";
+"Please enter the token address" = "Please enter the token address";
+"Please input a correct address" = "Please input a correct address";
+"Please enter the token symbol" = "Please enter the token symbol";
+"Please input a correct value for deciaml" = "Please input a correct value for deciaml";
+"Token Address" = "Token Address";
+"Token Symbol" = "Token Symbol";
+"Decimals of Precision" = "Decimals of Precision";
+"Adding..." = "Adding...";
 
-"Please enter a password" = "Please enter a password";
-"Copy address to clipboard successfully!" = "Copy address to clipboard successfully!";
-"Copy keystore to clipboard successfully!" = "Copy keystore to clipboard successfully!";
-"Copy private key to clipboard successfully!" = "Copy private key to clipboard successfully!";
-"Congratulations!" = "Congratulations!";
-
-
-
-
-
-
-"Cancel" = "Cancel";
-"Confirm" = "Confirm";
-
-
-"Hide Small Assets" = "Hide Small Assets";
+/* DEX Trade page */
+"DEX Trade" = "DEX Trade";
+"P2P Trade" = "P2P Trade";
+"Buy" = "Buy";
+"B" = "B";
+"S" = "S";
+"Bought" = "Bought";
+"Sell" = "Sell";
+"Sold" = "Sold";
+"Buying" = "Buying";
+"Selling" = "Selling";
+"Trade" = "Trade";
+"Market" = "Market";
+"Markets" = "Markets";
+"Order History" = "Order History";
+"Place Order" = "Place Order";
+"Share Order" = "Share Order";
+"Review" = "Review";
+"Check Details" = "Check Details";
+"Done" = "Done";
 "Max" = "Max";
-
-"Search" = "Search";
-"Contract Version" = "Contract Version";
-"LRC Fee Ratio" = "LRC Fee Ratio";
-"Margin Split" = "Margin Split";
-"Total" = "Total";
-"Save" = "Save";
-"Slow" = "Slow";
-"Fast" = "Fast";
-"Enter the amount" = "Enter the amount";
-"1 Hour" = "1 Hour";
-"1 Day" = "1 Day";
-"1 Week" = "1 Week";
-"1 Month" = "1 Month";
-"Orders" = "Orders";
-"Trades" = "Trades";
-"Open" = "Open";
-"Finished" = "Finished";
-"Cancelled" = "Cancelled";
-"Expired" = "Expired";
-"Cancel All" = "Cancel All";
-
-
-"Copy Private Key" = "Copy Private Key";
-"Copy Keystore" = "Copy Keystore";
-"User Preferences" = "User Preferences";
-"Trading" = "Trading";
-"Relay" = "Relay";
-"About" = "About";
-
-"App Version" = "App Version";
-"Support" = "Support";
-"Copyright" = "Copyright";
 "Price" = "Price";
 "Trading Fee" = "Trading Fee";
 "Fee" = "Fee";
-"Share Order" = "Share Order";
+"LRC Fee Ratio" = "LRC Fee Ratio";
+"Margin Split" = "Margin Split";
+"Enter the amount" = "Enter the amount";
+"Orders" = "Orders";
+"Trades" = "Trades";
+"Please input a valid price" = "Please input a valid price";
+"Please input a valid amount" = "Please input a valid amount";
+"You Need More" = "You Need More";
+"24H Change" = "24H Change";
+"24H High" = "24H High";
+"24H Low" = "24H Low";
+"24H Volume" = "24H Volume";
+"Latest Price" = "Latest Price";
+"Receiver" = "Receiver";
+"Sender" = "Sender";
+"Custom" = "Custom";
+"Can Buy" = "Can Buy";
+"Time to Live" = "Time to Live";
+"Change" = "Change";
+"Accept" = "Accept";
+"Decline" = "Decline";
+"Minimal Fill" = "Minimal Fill";
+"Records" = "Records";
+"Depth_in_Market_Detail" = "Depth";
+"Trades_in_Market_Detail" = "Trades";
+"Reference Markets" = "Reference Markets";
+"Recommand Price" = "Recommand Price";
+"Set Gas" = "Set Gas Price";
+"Send Confirmation" = "Send Confirmation";
+"Trade_Confirm" = "Trade Confirmation";
+"Send Token" = "Send Token";
+"Receive Token" = "Receive Token";
+"Processing the transaction ..." = "Processing the transaction ...";
+"Processing the P2P order..." = "Processing the P2P order...";
+"Convert to WETH" = "Convert to WETH";
+"Convert to ETH" = "Convert to ETH";
+"Confirm Time" = "Confirm Time";
+"Transactions" = "Transactions";
+"Enabled" = "Enabled";
+"to Trade" = "to Trade";
+"Time" = "Time";
+"Submitting order" = "Submitting order";
+"Transaction Detail" = "Transaction Detail";
+"Convert Confirmation" = "Convert Confirmation";
+"From" = "From";
+"To" = "To";
+"Hide Other Pairs" = "Hide Other Pairs";
+"ETH (Excluding for gas)" = "ETH (Excluding for gas)";
+"Customer Price" = "Customer Price";
+"Selling Price" = "Selling Price";
+"Buying Price" = "Buying Price";
+"Market Price" = "Market Price";
+"Enter the amount you have" = "Amount you wish to sell";
+"Enter the amount you get" = "Amount you wish to get";
+"P2P Order History" = "P2P Order History";
+"Enter the address" = "Enter the address";
+"Available Balance" = "Available Balance";
+"Transaction Fee" = "Transaction Fee";
 
+/* Trade tips */
+"Convert_DES" = "● Think of it like the coin version of a paper note. The same value, but some machines only take coins. The conversion ratio between ETH and WETH is always 1:1, guaranteed by Ethereum.";
+"Convert_TIP" = "● We will preserve 0.01 ETH for gas fee of your subsequent transaction";
+"ETH_TIP" = "● We will preserve 0.01 ETH for gas fee of your subsequent transaction";
+"Convert_Fail_Tip" = "Insufficient gas in your account. Please retry later";
+"Convert_Success_Tip" = "Convert successfully. Transaction hash =";
+"GAS_TIP" = "Place order will never cost any gas fee";
+"Please confirm the address before sending" = "Please confirm the address before sending";
+"Signer address do NOT match the order's, please transfer and try again later" = "Signer address do NOT match the order's, please transfer and try again later";
+"Please input a correct address" = "Please input a correct address";
+"The P2P order is not created in this iPhone. You can't share the QR code." = "The P2P order is not created in this iPhone. You can't share the QR code.";
 
-
-
-
-
-
-
-
-"Settings" = "Settings";
-"Currency" = "Currency";
-"All" = "All";
-"Favorite" = "Favorite";
-"Align QR Code within Frame to Scan" = "Align QR Code within Frame to Scan";
-"No access to save QR code. Please go to setting to enable the access." = "No access to save QR code. Please go to setting to enable the access.";
-"Failed to sign/encode transaction" = "Failed to sign/encode transaction";
+/* Order status */
+"Open" = "Open";
+"Filled" = "Filled";
+"Finished" = "Finished";
+"Cancelled" = "Cancelled";
+"Expired" = "Expired";
+"Order Submitted" = "Submitted";
+"Order Cancelled" = "Cancelled";
+"Order Completed" = "Completed";
+"Order Expired" = "Expired";
+"Order Locked" = "Locked";
+"Order Unknown" = "Unknown";
+"Unknown" = "Unknown";
+"Order Detail" = "Order Detail";
+"Filled/Amount" = "Filled/Amount";
+"Status" = "Status";
+"Type" = "Type";
+"Undefined" = "Undefined";
+"Pending" = "Pending";
+"Completed" = "Completed";
+"Failed" = "Failed";
+"Other" = "Other";
 "10001" = "Sorry, system error, please try again later";
 "50001" = "Sorry, selling order does not exist, could not complete this order";
 "50002" = "Sorry, only p2p order could be submitted, could not complete this order";
@@ -159,113 +226,122 @@
 "50006" = "Sorry, buying order has been expired, please try with other orders";
 "50007" = "Sorry, undealt amount of order is too small, could not complete this order";
 "50008" = "Sorry, buying order does not exist, could not complete this order";
-
-
-
-
-
-
-
-
-"Please input a valid price" = "Please input a valid price";
-"Please input a valid amount" = "Please input a valid amount";
-"Buying" = "Buying";
-"Selling" = "Selling";
-
-
+"Failed to sign/encode transaction" = "Failed to sign/encode transaction";
 "Congratulations! Your order has been submited!" = "Congratulations! Your order has been submited!";
 "Your order has not been submited! Please make sure you have enough balance to complete the trade." = "Your order has not been submited! Please make sure you have enough balance to complete the trade.";
-"You Need More" = "You Need More";
 
-
+/* Cancel orders */
+"Cancel All" = "Cancel All";
+"Cancel Order" = "Cancel Order";
 "You are going to cancel all open orders." = "You are going to cancel all open orders.";
 "You are going to cancel the order." = "You are going to cancel the order.";
 "Order cancelled Failed, Please try again." =  "Order cancelled Failed, Please try again.";
 "Order cancelled Successful." = "Order cancelled Successful.";
-"Order Detail" = "Order Detail";
-"Filled/Amount" = "Filled/Amount";
-"Status" = "Status";
-"Type" = "Type";
-"Address" = "Address";
-"Trade" = "Trade";
-
-"Filled" = "Filled";
-"Date" = "Date";
-"Gas" = "Gas";
 "Cancelling" = "Cancelling";
-"QR Code type doesn't fit here" = "QR Code type doesn't fit here";
 
-"Select your address" = "Select your address";
-"Please enter the keystore" = "Please enter the keystore";
-"Please input your private key" = "Please input your private key";
-"Enter the address" = "Enter the address";
-"Please confirm the address before sending" = "Please confirm the address before sending";
-"Transaction Fee" = "Transaction Fee";
-"Advanced" = "Advanced";
+/* Convert WETH and ETH */
+"Convert" = "Convert";
+"WETH Convert" = "WETH Convert";
+"Convert Successfully." = "Convert Successfully.";
 
 
-"Please input a correct address" = "Please input a correct address";
-
-"Cancel Order" = "Cancel Order";
-"Enter the amount you have" = "Amount you wish to sell";
-"Enter the amount you get" = "Amount you wish to get";
-
-
-"P2P Order History" = "P2P Order History";
-
-"Clear Records of this Wallet" = "Clear Records of this Wallet";
-"Amount" = "Amount";
-
-"Keystore Password" = "Keystore Password";
+/* Setting page */
+"Night Mode" = "Night Mode";
+"Language" = "Language";
+"Manage Wallets" = "Manage Wallets";
+"Contract Version" = "Contract Version";
+"User Preferences" = "User Preferences";
+"Trading" = "Trading";
+"Relay" = "Relay";
+"About" = "About";
+"App Version" = "App Version";
+"Support" = "Support";
+"Copyright" = "Copyright";
+"Settings" = "Settings";
+"Currency" = "Currency";
+"Airdrop" = "Airdrop";
+"Trade FAQ" = "Trade FAQ";
+"Feedback" = "Feedback";
 "Security" = "Security";
 
+/* Setting page - wallet detail page */
+"Switch to this Wallet" = "Switch to this Wallet";
+"Enter Wallet" = "Enter Wallet";
+"Copy Private Key" = "Copy Private Key";
+"Export Private Key" = "Export Private Key";
+"Export Keystore" = "Export Keystore";
+"Exporting keystore" = "Exporting keystore";
+"Wallet Name" = "Wallet Name";
+"Change Wallet Name" = "Change Wallet Name";
+"Copy address to clipboard successfully!" = "Copy address to clipboard successfully!";
+"Copy keystore to clipboard successfully!" = "Copy keystore to clipboard successfully!";
+"Copy private key to clipboard successfully!" = "Copy private key to clipboard successfully!";
+"Copy Keystore" = "Copy Keystore";
+"Clear Records of this Wallet" = "Clear Records of this Wallet";
+"Backup_Mnemonic_in_SettingManageWallet" = "Backup Mnemonic";
 
-"Authenticate to access your wallet" = "Authenticate to access your wallet";
+
+/* General. Used in different pages. */
+"Confirmation" = "Confirmation";
+"Next" = "Next";
+"Cancel" = "Cancel";
+"Confirm" = "Confirm";
+"Search History" = "Search History";
+"Congratulations!" = "Congratulations!";
+"Search" = "Search";
+"Total" = "Total";
+"Save" = "Save";
+"Slow" = "Slow";
+"Fast" = "Fast";
+"1 Hour" = "1 Hour";
+"1 Day" = "1 Day";
+"1 Week" = "1 Week";
+"1 Month" = "1 Month";
+"Hour" = "Hour";
+"Day" = "Day";
+"Month" = "Month";
+"All" = "All";
+"Favorite" = "Favorite";
+"USD" = "USD";
+"CNY" = "CNY";
+"HKD" = "HKD";
+"Total (yuan)" = "Total (yuan)";
+"Total (USD)" = "Total (USD)";
+"Total Balance" = "Total Balance";
+"Loading Data" = "Loading Data";
+"No search result" = "No search result";
+"No network" = "No network";
+"No_Data_Tip" = "No Data available";
+"Album" = "Album";
+"Create" = "Create";
+"Complete" = "Complete";
+"Amount" = "Amount";
+"Advanced" = "Advanced";
+"Backup" = "Backup";
+"Default" = "Default";
+"Date" = "Date";
+"Back" = "Back";
+
+/* Unlock app using Touch ID or Face ID. */
+"Unlock" = "Unlock";
 "Touch ID" = "Touch ID";
 "Face ID" = "Face ID";
-"From" = "From";
-"To" = "To";
-"My wallet address" = "My wallet address";
-"Hide Other Pairs" = "Hide Other Pairs";
-"ETH (Excluding for gas)" = "ETH (Excluding for gas)";
-"Customer Price" = "Customer Price";
-"Selling Price" = "Selling Price";
-"Buying Price" = "Buying Price";
-"Market Price" = "Market Price";
-"Confirm" = "Confirm";
-"Please Verify Your Mnemonic" = "Please Verify Your Mnemonic";
-"Please click words in order." = "Please click words in order.";
-"Available Balance" = "Available Balance";
+"Please turn on Touch ID in settings" = "Please turn on Touch ID in settings";
+"Please turn on Face ID in settings" = "Please turn on Face ID in settings";
 
 
-"The name is token, please try another one." = "The name is token, please try another one.";
-"Back" = "Back";
-"Undefined" = "Undefined";
-"Pending" = "Pending";
-"Completed" = "Completed";
-"Failed" = "Failed";
-"Other" = "Other";
-"Tokens" = "Tokens";
-"Select Tokens" = "Select Tokens";
-"Custom Token" = "Custom Token";
-"Convert to WETH" = "Convert to WETH";
-"Convert to ETH" = "Convert to ETH";
-"Confirm Time" = "Confirm Time";
-"Transactions" = "Transactions";
-"Enabled" = "Enabled";
-"to Trade" = "to Trade";
-"Time" = "Time";
+/* QR code related */
+"QR Code" = "QR Code";
+"Scan QR Code" = "Scan QR Code";
+"Save to Album" = "Save to Album";
+"Align QR Code within Frame to Scan" = "Align QR Code within Frame to Scan";
+"No access to save QR code. Please go to setting to enable the access." = "No access to save QR code. Please go to setting to enable the access.";
+"QR Code type doesn't fit here" = "QR Code type doesn't fit here";
+"Wallet Address QRCode" = "Wallet Address QRCode";
+"Save QR code to Photo successfully." = "Save QR code to Photo successfully.";
+"Receive Code" = "Receive Code";
 
-"Reference Markets" = "Reference Markets";
-"Order Submitted" = "Submitted";
-"Order Cancelled" = "Cancelled";
-"Order Completed" = "Completed";
-"Order Expired" = "Expired";
-"Order Locked" = "Locked";
-"Order Unknown" = "Unknown";
-"Unknown" = "Unknown";
-"Accept" = "Accept";
-"Decline" = "Decline";
+/* Processing QR code page */
 "Address detected" = "Address detected";
 "Mnemonic detected" = "Mnemonic detected";
 "Keystore detected" = "Keystore detected";
@@ -275,149 +351,27 @@
 "Cancel message detected" = "Cancel message detected";
 "Convert message detected" = "Convert message detected";
 "P2P message detected" = "P2P message detected";
-"Undefined" = "Undefined type of QRCode";
-"Importing keystore" = "Importing keystore";
-"Failed to import address. The device has imported the address already." = "Failed to import address. The device has imported the address already.";
-"You are going to clear records of" = "You are going to clear records of";
-"on this device." = "on this device.";
-"Submitting order" = "Submitting order";
+"Undefined type of QRCode" = "Undefined type of QRCode";
+
+/* Share app page */
+"Partner_Slogan" = "Share APP, harvest 20% of trading fee";
+"Partner_Title" = "Wallet Share";
+"Partner_Tip" = "My income address: ";
+"Partner_Des" = "By sharing the app, you will be awarded 20% of all future trading fees from users acquired by your promotion.";
+"Partner_Address" = "Your trading fee reciept address is: ";
+"Share App" = "Share App";
+
+/* Authorization for integrating other apps */
+"Authorization" = "Authorization";
 "Approving authorization" = "Approving authorization";
-"Signer address do NOT match the order's, please transfer and try again later" = "Signer address do NOT match the order's, please transfer and try again later";
-"Create_used_in_creating_wallet" = "Create";
-"successfully_used_in_creating_wallet" = "successfully";
-
-
-"Select Your Wallet Type" = "Select Your Wallet Type";
-"Mnemonic doesn't match. Please verify again." = "Mnemonic doesn't match. Please verify again.";
-"Please click words in order to verify your mnemonic." = "Please click words in order to verify your mnemonic.";
-"Your mnemonic has been verified successfully." = "Your mnemonic has been verified successfully.";
 "Authorize Successfully" = "Authorize Successfully";
 "Authorize Failed" = "Authorize Failed";
 "Authorize_Successfully" = "Authorization Successful! Please transfer to our website to continue.";
 "Authorize_Failed" = "Authorization failed! Please review your signing data and try again later.";
-"Initializing the wallet" = "Initializing the wallet";
+"Authenticate to access your wallet" = "Authenticate to access your wallet";
 
-"Failed to import address." = "Failed to import address.";
-"Exporting keystore" = "Exporting keystore";
-"Create" = "Create";
-
-"gas price" = "gas price";
-"Processing the transaction ..." = "Processing the transaction ...";
-"Airdrop" = "Airdrop";
-"Trade FAQ" = "Trade FAQ";
-"Feedback" = "Feedback";
-
-
-
-"My Wallet Address" = "My Wallet Address";
-
-"Complete" = "Complete";
-
-"Save QR code to Photo successfully." = "Save QR code to Photo successfully.";
-"Add Token" = "Add Token";
-
-
-"Authorization" = "Authorization";
-
-"No network" = "No network";
-
-"Backup_Mnemonic_in_SettingManageWallet" = "Backup Mnemonic";
-
-
-"Total Balance" = "Total Balance";
-
-"Backup" = "Backup";
-"New Wallet Name" = "New Wallet Name";
-"New wallet name can't be empty" = "New wallet name can't be empty";
-
-"Please enter password" = "Please enter password";
-"P2P Trade" = "P2P Trade";
-
-
-"Total (yuan)" = "Total (yuan)";
-"Total (USD)" = "Total (USD)";
-"No wallet is found in the device. Navigate to the wallet creation view." = "No wallet is found in the device. Navigate to the wallet creation view.";
-"Default" = "Default";
-"Please turn on Touch ID in settings" = "Please turn on Touch ID in settings";
-"Please turn on Face ID in settings" = "Please turn on Face ID in settings";
-"Transaction Detail" = "Transaction Detail";
-"Password can't be empty." = "Password can't be empty.";
-"The length of password needs to be larger than or equal to 6." = "The length of password needs to be larger than or equal to 6.";
-"Password doesn't match" = "Password doesn't match";
-"Convert_DES" = "● Think of it like the coin version of a paper note. The same value, but some machines only take coins. The conversion ratio between ETH and WETH is always 1:1, guaranteed by Ethereum.";
-"Convert_TIP" = "● We will preserve 0.01 ETH for gas fee of your subsequent transaction";
-"Convert_Fail_Tip" = "Insufficient gas in your account. Please retry later";
-"Convert_Success_Tip" = "Convert successfully. Transaction hash =";
-"ETH_TIP" = "● We will preserve 0.01 ETH for gas fee of your subsequent transaction";
-"Recommand Price" = "Recommand Price";
-"Set Gas" = "Set Gas Price";
-"Confirm Mnemonic Word" = "Confirm Mnemonic Word";
-"DEX Trade" = "DEX Trade";
-
-"Scan Code Receipt" = "Scan Code Receipt";
-"Receive Code" = "Receive Code";
-"Depth_in_Market_Detail" = "Depth";
-"Trades_in_Market_Detail" = "Trades";
-"Custom" = "Custom";
-"Can Buy" = "Can Buy";
-"Time to Live" = "Time to Live";
-"GAS_TIP" = "Place order will never cost any gas fee";
-"Change" = "Change";
-"Hour" = "Hour";
-"Day" = "Day";
-"Month" = "Month";
-"Minimal Fill" = "Minimal Fill";
-"Records" = "Records";
-
-
-
-
-
-"Send Confirmation" = "Send Confirmation";
-
-"Sender" = "Sender";
-"Trade_Confirm" = "Trade Confirmation";
-"No_Data_Tip"= "No Data available";
-"Wallet Address QRCode" = "Wallet Address QRCode";
-"24H Change" = "24H Change";
-"24H High" = "24H High";
-"24H Low" = "24H Low";
-"24H Volume" = "24H Volume";
-"Latest Price" = "Latest Price";
-"USD" = "USD";
-"CNY" = "CNY";
-"HKD" = "HKD";
-"Loading Data" = "Loading Data";
-"Token Address" = "Token Address";
-"Token Symbol" = "Token Symbol";
-"Decimals of Precision" = "Decimals of Precision";
-"Add Custom Token" = "Add Custom Token";
-"Add custom token" = "Add custom token";
-"Add" = "Add";
-"Partner_Slogan" = "Share APP, harvest 20% of trading fee";
-"Partner_Title" = "UP Wallet Share";
-"Partner_Tip" = "My income address: ";
-"Partner_Des" = "By sharing the app, you will be awarded 20% of all future trading fees from users acquired by your promotion.";
-"Partner_Address" = "Your trading fee reciept address is: ";
-"Please enter the token address" = "Please enter the token address";
-"Please input a correct address" = "Please input a correct address";
-"Please enter the token symbol" = "Please enter the token symbol";
-"Please input a correct value for deciaml" = "Please input a correct value for deciaml";
-"Convert Confirmation" = "Convert Confirmation";
-"Send Token" = "Send Token";
-"Receive Token" = "Receive Token";
-"The P2P order is not created in this iPhone. You can't share the QR code." = "The P2P order is not created in this iPhone. You can't share the QR code.";
-"Revealing your mnemonic phrases on web sites is highly dangerous. If the site is compromised or you accidentally visit a phishing website, your assets in all associated addresses can be stolen." = "Revealing your mnemonic phrases on web sites is highly dangerous. If the site is compromised or you accidentally visit a phishing website, your assets in all associated addresses can be stolen.";
-"Processing the P2P order..." = "Processing the P2P order...";
-"Adding..." = "Adding...";
-"No search result" = "No search result";
-"Share App" = "Share App";
-"Album" = "Album";
-"Create Password" = "Create Password";
-"UP Wallet" = "UP Wallet";
-"Added the token successfully." = "Added the token successfully.";
-"Failed to add the token." = "Failed to add the token.";
-"same address was registed" = "Same address was registed.";
-"same symbol exist" = "same symbol exist";
-"Decimals of precision must be between 0 and 20" = "Decimals of precision must be between 0 and 20";
-"Loopring P2P Order" = "Loopring P2P Order";
+/* Complicated. Need other info to form a sentence. */
+"Create_used_in_creating_wallet" = "Create";
+"successfully_used_in_creating_wallet" = "successfully";
+"You are going to clear records of" = "You are going to clear records of";
+"on this device." = "on this device.";

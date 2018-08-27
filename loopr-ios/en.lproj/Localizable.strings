@@ -8,6 +8,7 @@
 
 /* App */
 "Loopring P2P Order" = "Loopring P2P Order";
+"UP Wallet" = "UP Wallet";
 
 /* ETH related */
 "Mnemonic" = "Mnemonic";
@@ -271,7 +272,7 @@
 "Export Private Key" = "Export Private Key";
 "Export Keystore" = "Export Keystore";
 "Exporting keystore" = "Exporting keystore";
-"My Trade from Loopr-iOS" = "My Trade from Loopr-iOS";
+"Wallet Name" = "Wallet Name";
 "Change Wallet Name" = "Change Wallet Name";
 "Copy address to clipboard successfully!" = "Copy address to clipboard successfully!";
 "Copy keystore to clipboard successfully!" = "Copy keystore to clipboard successfully!";
@@ -326,10 +327,8 @@
 "Unlock" = "Unlock";
 "Touch ID" = "Touch ID";
 "Face ID" = "Face ID";
-"My wallet address in Loopr" = "My wallet address in Loopr";
 "Please turn on Touch ID in settings" = "Please turn on Touch ID in settings";
 "Please turn on Face ID in settings" = "Please turn on Face ID in settings";
-
 
 /* QR code related */
 "QR Code" = "QR Code";
@@ -363,7 +362,7 @@
 "Share App" = "Share App";
 
 /* Authorization for integrating other apps */
-"UP Wallet" = "UP Wallet";
+"Authorization" = "Authorization";
 "Approving authorization" = "Approving authorization";
 "Authorize Successfully" = "Authorize Successfully";
 "Authorize Failed" = "Authorize Failed";
