@@ -24,7 +24,7 @@ enum QRCodeType: String {
     case cancelOrder = "Cancel Order"
     case p2pOrder = "P2P Order"
     case approve = "Approve"
-    case undefined = "Undefined"
+    case undefined = "Undefined type of QRCode"
     
     var detectedDescription: String {
         switch self {
@@ -38,7 +38,7 @@ enum QRCodeType: String {
         case .convert: return LocalizedString("Convert message detected", comment: "")
         case .p2pOrder: return LocalizedString("P2P message detected", comment: "")
         case .approve: return LocalizedString("Approve", comment: "")
-        case .undefined: return LocalizedString("Undefined", comment: "")
+        case .undefined: return LocalizedString("Undefined type of QRCode", comment: "")
         }
     }
 }

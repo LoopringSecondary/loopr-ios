@@ -146,8 +146,7 @@
 "Congratulations! Your order has been submited!" = "恭喜！您的订单已被提交！";
 "Your order has not been submited! Please make sure you have enough balance to complete the trade." = "您的订单未被提交！请确认您的账户中有足够余额以完成该笔订单。";
 "You Need More" = "您尚需";
-"My Orders" = "我的订单";
-"My Trades" = "我的历史成交";
+
 "You are going to cancel all open orders." = "您将取消所有待成交订单。";
 "You are going to cancel the order." = "您将取消该笔订单";
 "Order cancelled Failed, Please try again." =  "订单取消失败，请稍后重试";
@@ -158,7 +157,7 @@
 "Type" = "类型";
 "Address" = "地址";
 "Trade" = "交易";
-"Go To Trade" = "去交易";
+
 "Filled" = "成交率";
 "Date" = "日期";
 "Gas" = "油费";
@@ -184,10 +183,8 @@
 "P2P Order History" = "场外交易记录";
 "Clear Records of this Wallet" = "删除钱包并清除钱包数据";
 "Amount" = "数量";
-"Setup the wallet name" = "钱包名字";
 "Keystore Password" = "Keystore密码";
 "Security" = "安全性";
-"Security Settings" = "安全性设置";
 "Authenticate to access your wallet" = "验证访问您的钱包";
 "Touch ID" = "触控 ID";
 "Face ID" = "面容 ID";
@@ -205,8 +202,6 @@
 "Please click words in order." = "请按顺序点击助记词。";
 "Market Price" = "最新成交价格";
 "Available Balance" = "可用余额";
-"Please Pay Attention" = "请注意";
-"Irrational" = "设价不合理";
 "The name is token, please try another one." = "钱包名称重复";
 "Back" = "返回";
 "Undefined" = "未定义";
@@ -253,55 +248,43 @@
 "Signer address do NOT match the order's, please transfer and try again later" = "授权方的钱包地址和下单方地址并不匹配，请在更换授权方的地址，确认匹配后再进行授权";
 "Create_used_in_creating_wallet" = "成功创建";
 "successfully_used_in_creating_wallet" = "";
-"Loopr doesn't keep a copy of your mnemonic words. Make sure you back up these information immediately." = "路印钱包不会保存用户的助记词，强烈建议您在线下备份这些信息（不联网的USB硬盘或纸质存储）。";
-"Undo Last Click" = "撤销上一个选择";
 "Select Your Wallet Type" = "请选择您的钱包类型";
 "Mnemonic doesn't match. Please verify again." = "输入的助记词不正确，请重新验证。";
 "Please click words in order to verify your mnemonic." = "请按顺序点击助记词来确认您的助记词。";
 "Your mnemonic has been verified successfully." = "您的助记词已验证成功。";
-"Authorze Successfully" = "授权成功";
-"Authorze Failed" = "授权失败";
-"Authorze_Successfully" = "授权成功，请转至我们的网站服务，进行您的后续操作。";
-"Authorze_Failed" = "授权失败，请核对您的授权数据，确认正确后请重新尝试。";
+"Authorize Successfully" = "授权成功";
+"Authorize Failed" = "授权失败";
+"Authorize_Successfully" = "授权成功，请转至我们的网站服务，进行您的后续操作。";
+"Authorize_Failed" = "授权失败，请核对您的授权数据，确认正确后请重新尝试。";
 "Initializing the wallet" = "钱包正在初始化";
-"Do you wish to handle the qrcode?" = "您是否希望解析该并处理二维码？";
 "Failed to import address." = "导入钱包失败";
 "Exporting keystore" = "正在导出keystore";
 "Create" = "创建";
-"Import" = "导入";
+
 "gas price" = "油价";
 "Processing the transaction ..." = "正在处理交易 ...";
 "Airdrop" = "空投";
 "Trade FAQ" = "交易FAQ";
 "Feedback" = "问题反馈";
-"Settings_in_grid" = "偏好设置";
-"Trading_settings_in_grid" = "交易管理";
-"Quit" = "退出";
+
+
 "My Wallet Address" = "我的钱包地址";
-"Copy" = "复制";
+
 "Complete" = "完成";
-"Recommended Gas" = "推荐油费";
 "Save QR code to Photo successfully." = "成功保存二维码到照片应用";
 "Add Token" = "添加代币";
-"Tx_Failed_Result" = "交易失败";
-"Tx_Success_Result" = "交易成功";
+
 "Authorization" = "授权";
-"Clear" = "清空";
+
 "No network" = "无网络";
-"Wallet Management" = "钱包管理";
 "Backup_Mnemonic_in_SettingManageWallet" = "未备份助记词";
-"File" = "文件";
-"Delete Wallet" = "删除钱包";
 "Total Balance" = "总资产";
-"Update Wallet Name" = "修改钱包名";
 "Backup" = "备份";
 "New Wallet Name" = "新钱包名称";
 "New wallet name can't be empty" = "新钱包名称不能为空";
-"Please Enter Password" = "请输入密码";
+
 "Please enter password" = "请输入密码";
 "P2P Trade" = "场外交易";
-"Convert_to_ETH_in_TradeViewController" = "转换为ETH";
-"Export_Keystore_in_ExportKeystoreSwipeViewController" = "导出Keystore";
 "Total (yuan)" = "总资产 (元)";
 "Total (USD)" = "总资产 (美元)";
 "No wallet is found in the device. Navigate to the wallet creation view." = "该手机已清空所有钱包，跳转到钱包创建页面。";
@@ -321,8 +304,6 @@
 "Set Gas" = "设置油价";
 "Confirm Mnemonic Word" = "确认助记词";
 "DEX Trade" = "去中心化交易所";
-"Peer to Peer" = "点对点";
-"Scan Code Receipt" = "扫描二维码";
 "Receive Code" = "转入二维码";
 "Depth_in_Market_Detail" = "挂单";
 "Trades_in_Market_Detail" = "成交";
@@ -336,11 +317,8 @@
 "Month" = "月";
 "Minimal Fill" = "最低成交率";
 "Records" = "订单记录";
-"Customer_Tip" = "我是普通用户";
-"Partner_Tip" = "我是城市合伙人";
-"Code_Tip" = "城市合伙人激活码";
-"Code_Error_Tip" = "您输入的激活码有误，请到下载页面重新获取后，再次尝试";
-"Please input activate code" = "请输入激活码";
+
+
 "Send Confirmation" = "发送确认";
 "Receiver" = "接收方地址";
 "Sender" = "发送方地址";

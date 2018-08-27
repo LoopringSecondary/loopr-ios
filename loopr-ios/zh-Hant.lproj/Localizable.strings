@@ -176,8 +176,8 @@
 "Congratulations! Your order has been submited!" = "Congratulations! Your order has been submited!";
 "Your order has not been submited! Please make sure you have enough balance to complete the trade." = "Your order has not been submited! Please make sure you have enough balance to complete the trade.";
 "You Need More" = "You Need More";
-"My Orders" = "My Orders";
-"My Trades" = "My Trades";
+
+
 "You are going to cancel all open orders." = "You are going to cancel all open orders.";
 "You are going to cancel the order." = "You are going to cancel the order.";
 "Order cancelled Failed, Please try again." =  "Order cancelled Failed, Please try again.";
@@ -188,7 +188,7 @@
 "Type" = "Type";
 "Address" = "Address";
 "Trade" = "Trade";
-"Go To Trade" = "Go To Trade";
+
 "Filled" = "Filled";
 "Date" = "Date";
 "Gas" = "Gas";
@@ -215,11 +215,11 @@
 
 
 "Amount" = "Amount";
-"Setup the wallet name" = "Setup the wallet name";
+
 "Keystore Password" = "Keystore Password";
 "Security" = "Security";
-"Security Settings" = "Security Settings";
-"Never" = "Never";
+
+
 "Authenticate to access your wallet" = "Authenticate to access your wallet";
 "Touch ID" = "Touch ID";
 "Face ID" = "Face ID";
@@ -236,8 +236,8 @@
 "Please Verify Your Mnemonic" = "Please Verify Your Mnemonic";
 "Please click words in order." = "Please click words in order.";
 "Available Balance" = "Available Balance";
-"Please Pay Attention" = "Please Pay Attention";
-"Irrational" = "Irrational";
+
+
 "The name is token, please try another one." = "The name is token, please try another one.";
 "Back" = "Back";
 "Undefined" = "Undefined";
@@ -285,55 +285,55 @@
 "Signer address do NOT match the order's, please transfer and try again later" = "Signer address do NOT match the order's, please transfer and try again later";
 "Create_used_in_creating_wallet" = "Create";
 "successfully_used_in_creating_wallet" = "successfully";
-"Loopr doesn't keep a copy of your mnemonic words. Make sure you back up these information immediately." = "Loopr doesn't keep a copy of your mnemonic words. Make sure you back up these information immediately.";
-"Undo Last Click" = "Undo Last Click";
+
+
 "Select Your Wallet Type" = "Select Your Wallet Type";
 "Mnemonic doesn't match. Please verify again." = "Mnemonic doesn't match. Please verify again.";
 "Please click words in order to verify your mnemonic." = "Please click words in order to verify your mnemonic.";
 "Your mnemonic has been verified successfully." = "Your mnemonic has been verified successfully.";
-"Authorze Successfully" = "Authorze Successfully";
-"Authorze Failed" = "Authorze Failed";
-"Authorze_Successfully" = "Authorzation Successful! Please transfer to our website to continue.";
-"Authorze_Failed" = "Authorzation failed! Please review your signing data and try again later.";
+"Authorize Successfully" = "Authorize Successfully";
+"Authorize Failed" = "Authorize Failed";
+"Authorize_Successfully" = "Authorization Successful! Please transfer to our website to continue.";
+"Authorize_Failed" = "Authorization failed! Please review your signing data and try again later.";
 "Initializing the wallet" = "Initializing the wallet";
-"Do you wish to handle the qrcode?" = "Do you wish to handle the qrcode?";
+
 "Failed to import address." = "Failed to import address.";
 "Exporting keystore" = "Exporting keystore";
 "Create" = "Create";
-"Import" = "Import";
+
 "gas price" = "gas price";
 "Processing the transaction ..." = "Processing the transaction ...";
 "Airdrop" = "Airdrop";
 "Trade FAQ" = "Trade FAQ";
 "Feedback" = "Feedback";
-"Settings_in_grid" = "App Settings";
-"Trading_settings_in_grid" = "Trading Settings";
-"Quit" = "Quit";
+
+
+
 "My Wallet Address" = "My Wallet Address";
-"Copy" = "Copy";
+
 "Complete" = "Complete";
-"Recommended Gas" = "Recommended Gas Amount";
+
 "Save QR code to Photo successfully." = "Save QR code to Photo successfully.";
 "Add Token" = "Add Token";
-"Tx_Failed_Result" = "Transaction Failed";
-"Tx_Success_Result" = "Transaction Success";
+
+
 "Authorization" = "Authorization";
-"Clear" = "Clear";
+
 "No network" = "No network";
-"Wallet Management" = "Wallet Management";
+
 "Backup_Mnemonic_in_SettingManageWallet" = "Backup Mnemonic";
-"File" = "File";
-"Delete Wallet" = "Delete Wallet";
+
+
 "Total Balance" = "Total Balance";
-"Update Wallet Name" = "Update Wallet Name";
+
 "Backup" = "Backup";
 "New Wallet Name" = "New Wallet Name";
 "New wallet name can't be empty" = "New wallet name can't be empty";
-"Please Enter Password" = "Please Enter Password";
+
 "Please enter password" = "Please enter password";
 "P2P Trade" = "P2P Trade";
-"Convert_to_ETH_in_TradeViewController" = "Convert to ETH";
-"Export_Keystore_in_ExportKeystoreSwipeViewController" = "Export Keystore";
+
+
 "Total (yuan)" = "Total (yuan)";
 "Total (USD)" = "Total (USD)";
 "No wallet is found in the device. Navigate to the wallet creation view." = "No wallet is found in the device. Navigate to the wallet creation view.";
@@ -353,7 +353,7 @@
 "Set Gas" = "Set Gas Price";
 "Confirm Mnemonic Word" = "Confirm Mnemonic Word";
 "DEX Trade" = "DEX Trade";
-"Peer to Peer" = "Peer to Peer";
+
 "Scan Code Receipt" = "Scan Code Receipt";
 "Receive Code" = "Receive Code";
 "Depth_in_Market_Detail" = "Depth";
@@ -368,11 +368,11 @@
 "Month" = "Month";
 "Minimal Fill" = "Minimal Fill";
 "Records" = "Records";
-"Customer_Tip" = "I am a common customer";
-"Partner_Tip" = "I am a city partner";
-"Code_Tip" = "Activate Code of City Partner";
-"Code_Error_Tip" = "Your activate code is incorrect, please refetch from our download web page";
-"Please input activate code" = "Please input activate code";
+
+
+
+
+
 "Send Confirmation" = "Send Confirmation";
 
 "Sender" = "Sender";
