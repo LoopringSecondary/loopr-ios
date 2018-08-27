@@ -20,8 +20,18 @@ class Localizator {
     
     // MARK: - Private properties
     private let userDefaults = UserDefaults.standard
-    private var availableLanguagesArray = ["DeviceLanguage", "en", "zh-Hans", "zh-Hant"]
     private var dicoLocalization: NSDictionary?
+
+    // Supported Languages
+    private var availableLanguagesArray = ["DeviceLanguage", "en", "zh-Hans", "zh-Hant", "ja", "ko", "ru"]
+    static let map = [
+        "en": "English",
+        "zh-Hans": "简体中文",
+        "zh-Hant": "繁體中文",
+        "ja": "日本語",
+        "ko": "한국어",
+        "ru": "русский"
+    ]
     
     private let kSaveLanguageDefaultKey = "kSaveLanguageDefaultKey"
     

@@ -12,18 +12,11 @@ class Language: Equatable {
     
     let name: String
     let displayName: String
-
-    let map = [
-        "en": "English",
-        "zh-Hans": "简体中文",
-        "zh-Hant": "繁體中文",
-    ]
     
     // This function will be called many times.
     init(name: String) {
-        print(name)
         self.name = name
-        if let displayName = map[name] {
+        if let displayName = Localizator.map[name] {
             self.displayName = displayName
         } else {
             self.displayName = "Undefined"
