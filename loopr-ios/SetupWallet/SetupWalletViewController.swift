@@ -22,7 +22,8 @@ class SetupWalletViewController: UIViewController {
         super.viewDidLoad()
 
         view.theme_backgroundColor = ColorPicker.backgroundColor
-
+        loopringLogoImageView.image = UIImage(named: "\(Production.getProduct())_logo")
+        
         let stringValue = Production.getProduct()
         let attrString = NSMutableAttributedString(string: stringValue)
         attrString.addAttribute(NSAttributedStringKey.kern, value: 2.4, range: NSMakeRange(0, attrString.length))
