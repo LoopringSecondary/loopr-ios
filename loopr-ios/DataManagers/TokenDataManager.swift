@@ -66,11 +66,9 @@ class TokenDataManager {
         for wallet in wallets {
             LoopringAPIRequest.getCustomTokens(owner: wallet.address) { (tokens, error) in
                 guard let tokens = tokens, error == nil else {
-                    
                     return
                 }
                 for token in tokens {
-                    print(token.symbol)
                     // Check if the token exists in self.tokens.
                     if !self.tokens.contains(where: { (element) -> Bool in
                         return element.symbol.lowercased() == token.symbol.lowercased()

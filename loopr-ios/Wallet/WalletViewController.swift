@@ -102,7 +102,18 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             // Disable user touch when loading data
             SVProgressHUD.show(withStatus: LocalizedString("Loading Data", comment: ""))
         }
-
+        
+        let dispatchGroup = DispatchGroup()
+        
+        // tokens.json contains 67 tokens.
+        if TokenDataManager.shared.getTokens().count < 70 {
+            dispatchGroup.enter()
+            TokenDataManager.shared.loadTokensFromServer(completionHandler: {
+                dispatchGroup.leave()
+            })
+        }
+        
+        dispatchGroup.enter()
         CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote(getPrice: true, completionHandler: { _, error in
             print("receive CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote() in WalletViewController")
             guard error == nil else {
@@ -113,19 +124,21 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.refreshControl.endRefreshing()
                 return
             }
-            DispatchQueue.main.async {
-                if self.isLaunching {
-                    SVProgressHUD.dismiss()
-                    self.isLaunching = false
-                    // Then get all balance. It takes times.
-                    AppWalletDataManager.shared.getAllBalanceFromRelay()
-                    // Setup socket io at the end of the launch
-                    LoopringSocketIORequest.setup()
-                }
-                self.assetTableView.reloadData()
-                self.refreshControl.endRefreshing()
-            }
+            dispatchGroup.leave()
         })
+        
+        dispatchGroup.notify(queue: .main) {
+            if self.isLaunching {
+                SVProgressHUD.dismiss()
+                self.isLaunching = false
+                // Then get all balance. It takes times.
+                AppWalletDataManager.shared.getAllBalanceFromRelay()
+                // Setup socket io at the end of the launch
+                LoopringSocketIORequest.setup()
+            }
+            self.assetTableView.reloadData()
+            self.refreshControl.endRefreshing()
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
