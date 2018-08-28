@@ -20,7 +20,7 @@ enum ColorTheme: Int {
     static let current: ColorTheme = getCurrent()
     
     static func getCurrent() -> ColorTheme {
-        switch Production.current {
+        switch Production.getCurrent() {
         case .loopr:
             return .blue
         case .upwallet:

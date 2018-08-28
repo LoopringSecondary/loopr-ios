@@ -14,11 +14,20 @@ enum Production: String {
     case loopr = "Loopr Wallet"
     case upwallet = "UP Wallet"
     case vivwallet = "vivwallet"
-    
-    // Only need to change this line of code
-    static let current: Production = .vivwallet
+
+    static func getCurrent() -> Production {
+        if let bundleIdentifier = Bundle.main.bundleIdentifier {
+            print("bundle identifier: \(bundleIdentifier)")
+            if bundleIdentifier == "leaf.prod.app" {
+                return .upwallet
+            } else if bundleIdentifier.contains("viv") {
+                return .vivwallet
+            }
+        }
+        return .loopr
+    }
     
     static func getProduct() -> String {
-        return current.rawValue
+        return getCurrent().rawValue
     }
 }

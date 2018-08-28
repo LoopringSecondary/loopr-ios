@@ -496,6 +496,7 @@
 		09AF2EB7279F5BD504C39C93 /* Pods-loopr-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-iosTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-iosTests/Pods-loopr-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0C8EC92DEC13D2448238E02B /* Pods-loopr-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-ios/Pods-loopr-ios.release.xcconfig"; sourceTree = "<group>"; };
 		1F40868E7899CDB0053DBF0D /* Pods-loopr-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-iosUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-iosUITests/Pods-loopr-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2CB22DE5D166E294F492AF43 /* Pods-loopr-ios.loopr.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-ios.loopr.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-ios/Pods-loopr-ios.loopr.xcconfig"; sourceTree = "<group>"; };
 		313AB53F5B8B485D1FE9A61C /* Pods-loopr-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-iosUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-iosUITests/Pods-loopr-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		39749EB6C85A60ED73F83B9E /* Pods-loopr-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-ios/Pods-loopr-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		5FFC6AA9DC8C999B66FFD8AA /* Pods_loopr_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -503,6 +504,8 @@
 		6630916621005B54006DA630 /* AssetSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetSwipeViewController.swift; sourceTree = "<group>"; };
 		6630916721005B54006DA630 /* AssetSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetSwipeViewController.xib; sourceTree = "<group>"; };
 		69BC13297FDFA52B8E089485 /* Pods-loopr-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-iosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-iosTests/Pods-loopr-iosTests.release.xcconfig"; sourceTree = "<group>"; };
+		6FF46F64FCF9228B0133E117 /* Pods-loopr-iosTests.loopr.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-iosTests.loopr.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-iosTests/Pods-loopr-iosTests.loopr.xcconfig"; sourceTree = "<group>"; };
+		8661C89E9F8F07796FD7DF9D /* Pods-loopr-iosUITests.loopr.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-iosUITests.loopr.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-iosUITests/Pods-loopr-iosUITests.loopr.xcconfig"; sourceTree = "<group>"; };
 		929BB32EF62C4BD6BC1DFC8F /* Pods_loopr_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		940076B120554A4100DDA37D /* LoopringSocketIORequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopringSocketIORequest.swift; sourceTree = "<group>"; };
 		940B44D42060F45B00ADE2B9 /* SendAssetDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendAssetDataManagerTests.swift; sourceTree = "<group>"; };
@@ -587,8 +590,6 @@
 		94C11FD9208C2DE40050E180 /* SettingCurrencyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCurrencyTableViewCell.xib; sourceTree = "<group>"; };
 		94CA6B5820BC037F000E4E8E /* OrderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderType.swift; sourceTree = "<group>"; };
 		94CC15AD2111A46E00B54D71 /* OrderQRCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderQRCodeViewController.xib; path = "loopr-ios/OrderHistory/HistoryDetail/OrderQRCodeViewController.xib"; sourceTree = SOURCE_ROOT; };
-		94D051AB2134F2F0005F92D6 /* loopr-ios copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "loopr-ios copy-Info.plist"; path = "/Users/kenshin/Work/loopring/loopr-ios/loopr-ios copy-Info.plist"; sourceTree = "<absolute>"; };
-		94D053692134F374005F92D6 /* loopr-ios copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "loopr-ios copy2-Info.plist"; path = "/Users/kenshin/Work/loopring/loopr-ios/loopr-ios copy2-Info.plist"; sourceTree = "<absolute>"; };
 		94D94CE12084A9380000BBC8 /* ConfirmationResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationResultViewController.swift; sourceTree = "<group>"; };
 		94DAACB120BBF24B0097707E /* OrderQRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderQRCodeViewController.swift; sourceTree = "<group>"; };
 		94DCE550205FAC07005618E4 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
@@ -994,6 +995,9 @@
 		ACFEFEA120C3792200013921 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		C8BF959C202696A900343B9A /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB375D875A161ED45585D9CD /* Pods-loopr-ios.vivwallet.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-ios.vivwallet.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-ios/Pods-loopr-ios.vivwallet.xcconfig"; sourceTree = "<group>"; };
+		EB11C1F4817BFD28E305586E /* Pods-loopr-iosUITests.vivwallet.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-iosUITests.vivwallet.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-iosUITests/Pods-loopr-iosUITests.vivwallet.xcconfig"; sourceTree = "<group>"; };
+		F163A60E2D8A4C196D353B93 /* Pods-loopr-iosTests.vivwallet.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-iosTests.vivwallet.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-iosTests/Pods-loopr-iosTests.vivwallet.xcconfig"; sourceTree = "<group>"; };
 		FF9C7DD9208D55F8004687AD /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		FF9C7DDB208D59EA004687AD /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1118,6 +1122,12 @@
 				69BC13297FDFA52B8E089485 /* Pods-loopr-iosTests.release.xcconfig */,
 				1F40868E7899CDB0053DBF0D /* Pods-loopr-iosUITests.debug.xcconfig */,
 				313AB53F5B8B485D1FE9A61C /* Pods-loopr-iosUITests.release.xcconfig */,
+				2CB22DE5D166E294F492AF43 /* Pods-loopr-ios.loopr.xcconfig */,
+				DB375D875A161ED45585D9CD /* Pods-loopr-ios.vivwallet.xcconfig */,
+				6FF46F64FCF9228B0133E117 /* Pods-loopr-iosTests.loopr.xcconfig */,
+				F163A60E2D8A4C196D353B93 /* Pods-loopr-iosTests.vivwallet.xcconfig */,
+				8661C89E9F8F07796FD7DF9D /* Pods-loopr-iosUITests.loopr.xcconfig */,
+				EB11C1F4817BFD28E305586E /* Pods-loopr-iosUITests.vivwallet.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1569,8 +1579,6 @@
 				AC798E402022B93A0071D477 /* Products */,
 				970E368BCD1AFC73151579EF /* Pods */,
 				573126224A6973A7617FB170 /* Frameworks */,
-				94D051AB2134F2F0005F92D6 /* loopr-ios copy-Info.plist */,
-				94D053692134F374005F92D6 /* loopr-ios copy2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3189,11 +3197,13 @@
 					"$(PROJECT_DIR)/loopr-ios/go-frameworks",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = leaf.prod.app;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "VIV Wallet";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
@@ -3205,7 +3215,7 @@
 		};
 		94D0536C2134F47C005F92D6 /* vivwallet */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 69BC13297FDFA52B8E089485 /* Pods-loopr-iosTests.release.xcconfig */;
+			baseConfigurationReference = F163A60E2D8A4C196D353B93 /* Pods-loopr-iosTests.vivwallet.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -3228,7 +3238,7 @@
 		};
 		94D0536D2134F47C005F92D6 /* vivwallet */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 313AB53F5B8B485D1FE9A61C /* Pods-loopr-iosUITests.release.xcconfig */;
+			baseConfigurationReference = EB11C1F4817BFD28E305586E /* Pods-loopr-iosUITests.vivwallet.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -3319,11 +3329,13 @@
 					"$(PROJECT_DIR)/loopr-ios/go-frameworks",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = leaf.prod.app;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Loopr;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
@@ -3335,7 +3347,7 @@
 		};
 		94D053722134F49D005F92D6 /* loopr */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 69BC13297FDFA52B8E089485 /* Pods-loopr-iosTests.release.xcconfig */;
+			baseConfigurationReference = 6FF46F64FCF9228B0133E117 /* Pods-loopr-iosTests.loopr.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -3358,7 +3370,7 @@
 		};
 		94D053732134F49D005F92D6 /* loopr */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 313AB53F5B8B485D1FE9A61C /* Pods-loopr-iosUITests.release.xcconfig */;
+			baseConfigurationReference = 8661C89E9F8F07796FD7DF9D /* Pods-loopr-iosUITests.loopr.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -3482,6 +3494,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "UP Wallet";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VALIDATE_PRODUCT = YES;
@@ -3506,11 +3519,13 @@
 					"$(PROJECT_DIR)/loopr-ios/go-frameworks",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = leaf.prod.app;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "UP Wallet";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -3539,11 +3554,13 @@
 					"$(PROJECT_DIR)/loopr-ios/go-frameworks",
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = leaf.prod.app;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "UP Wallet";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
