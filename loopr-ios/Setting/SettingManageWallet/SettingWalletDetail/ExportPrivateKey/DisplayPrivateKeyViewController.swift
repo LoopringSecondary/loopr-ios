@@ -13,7 +13,7 @@ class DisplayPrivateKeyViewController: UIViewController {
 
     var navigationTitle = LocalizedString("Export Private Key", comment: "")
     var copyButtonTitle = LocalizedString("Copy Private Key", comment: "")
-    var bannerMessage = LocalizedString("Copy private key to clipboard successfully!", comment: "")
+    var bannerMessage = LocalizedString("Private key copied to clipboard successfully!", comment: "")
     var displayValue: String = ""
     
     var hideCopyButton: Bool = false

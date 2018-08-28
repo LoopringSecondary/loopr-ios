@@ -69,8 +69,8 @@ class TradeSelectionViewController: UIViewController {
         button2.set(image: UIImage.init(named: "Trade-peer-to-peer-dark"), title: "P2P", titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         button2.set(image: UIImage.init(named: "Trade-peer-to-peer-dark")?.alpha(0.6), title: "P2P", titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         
-        button3.set(image: UIImage.init(named: "Trade-weth-convert-dark"), title: LocalizedString("WETH Convert", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
-        button3.set(image: UIImage.init(named: "Trade-weth-convert-dark")?.alpha(0.6), title: LocalizedString("WETH Convert", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
+        button3.set(image: UIImage.init(named: "Trade-weth-convert-dark"), title: LocalizedString("Convert WETH", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
+        button3.set(image: UIImage.init(named: "Trade-weth-convert-dark")?.alpha(0.6), title: LocalizedString("Convert WETH", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         
         button4.set(image: UIImage.init(named: "dropdown-transaction"), title: LocalizedString("Orders", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         button4.set(image: UIImage.init(named: "dropdown-transaction")?.alpha(0.6), title: LocalizedString("Orders", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)

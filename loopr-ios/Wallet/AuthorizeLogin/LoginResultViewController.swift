@@ -29,10 +29,10 @@ class LoginResultViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if result {
-            resultLabel.text = LocalizedString("Authorize Successfully", comment: "")
+            resultLabel.text = LocalizedString("Authorization Successful", comment: "")
             detailLabel.text = LocalizedString("Authorize_Successfully", comment: "")
         } else {
-            resultLabel.text = LocalizedString("Authorize Failed", comment: "")
+            resultLabel.text = LocalizedString("Authorization Failed", comment: "")
             detailLabel.text = LocalizedString("Authorize_Failed", comment: "")
         }
     }

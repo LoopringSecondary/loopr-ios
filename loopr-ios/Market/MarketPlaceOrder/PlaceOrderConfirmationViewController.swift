@@ -174,7 +174,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         let manager = AuthorizeDataManager.shared
         guard let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address, let hash = manager.submitHash, let order = manager.submitOrder else { return }
         guard address.lowercased() == order.address.lowercased() else {
-            let errorMessage = LocalizedString("Signer address do NOT match the order's, please transfer and try again later", comment: "")
+            let errorMessage = LocalizedString("Signer address does NOT match the order's, please transfer and try again later", comment: "")
             let error = NSError(domain: "approving", code: 0, userInfo: ["message": errorMessage])
             self.completion(nil, error)
             return

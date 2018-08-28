@@ -59,7 +59,7 @@
 "Please click words in order to verify your mnemonic." = "Please click words in order to verify your mnemonic.";
 "Your mnemonic has been verified successfully." = "Your mnemonic has been verified successfully.";
 "Importing keystore" = "Importing keystore";
-"The name is token, please try another one." = "The name is token, please try another one.";
+"The name is taken, please try another one." = "The name is taken, please try another one.";
 "Failed to import address." = "Failed to import address.";
 "Failed to import address. The device has imported the address already." = "Failed to import address. The device has imported the address already.";
 "Please Verify Your Mnemonic" = "Please Verify Your Mnemonic";
@@ -85,8 +85,8 @@
 "Custom Token" = "Custom Token";
 "Added the token successfully." = "Added the token successfully.";
 "Failed to add the token." = "Failed to add the token.";
-"same address was registed" = "Same address was registed.";
-"same symbol exist" = "same symbol exist";
+"same address was registed" = "Same address was already registered.";
+"same symbol exist" = "Same symbol already exists";
 "Decimals of precision must be between 0 and 20" = "Decimals of precision must be between 0 and 20";
 "Add Custom Token" = "Add Custom Token";
 "Add custom token" = "Add custom token";
@@ -94,7 +94,7 @@
 "Please enter the token address" = "Please enter the token address";
 "Please input a correct address" = "Please input a correct address";
 "Please enter the token symbol" = "Please enter the token symbol";
-"Please input a correct value for deciaml" = "Please input a correct value for deciaml";
+"Please input a correct value for decimal" = "Please input a correct value for decimal";
 "Token Address" = "Token Address";
 "Token Symbol" = "Token Symbol";
 "Decimals of Precision" = "Decimals of Precision";
@@ -150,7 +150,7 @@
 "Depth_in_Market_Detail" = "Depth";
 "Trades_in_Market_Detail" = "Trades";
 "Reference Markets" = "Reference Markets";
-"Recommand Price" = "Recommand Price";
+"Recommend Price" = "Recommend Price";
 "Set Gas" = "Set Gas Price";
 "Send Confirmation" = "Send Confirmation";
 "Trade_Confirm" = "Trade Confirmation";
@@ -183,15 +183,16 @@
 "Available Balance" = "Available Balance";
 "Transaction Fee" = "Transaction Fee";
 
+
 /* Trade tips */
 "Convert_DES" = "● Think of it like the coin version of a paper note. The same value, but some machines only take coins. The conversion ratio between ETH and WETH is always 1:1, guaranteed by Ethereum.";
-"Convert_TIP" = "● We will preserve 0.01 ETH for gas fee of your subsequent transaction";
-"ETH_TIP" = "● We will preserve 0.01 ETH for gas fee of your subsequent transaction";
+"Convert_TIP" = "● We will preserve 0.01 ETH for gas fee for your subsequent transaction";
+"ETH_TIP" = "● We will preserve 0.01 ETH for gas fee for your subsequent transaction";
 "Convert_Fail_Tip" = "Insufficient gas in your account. Please retry later";
-"Convert_Success_Tip" = "Convert successfully. Transaction hash =";
-"GAS_TIP" = "Place order will never cost any gas fee";
+"Convert_Success_Tip" = "Conversion successfull. Transaction hash =";
+"GAS_TIP" = "Placing orders will never cost any gas fee";
 "Please confirm the address before sending" = "Please confirm the address before sending";
-"Signer address do NOT match the order's, please transfer and try again later" = "Signer address do NOT match the order's, please transfer and try again later";
+"Signer address does NOT match the order's, please transfer and try again later" = "Signer address does NOT match the order's, please transfer and try again later";
 "Please input a correct address" = "Please input a correct address";
 "The P2P order is not created in this iPhone. You can't share the QR code." = "The P2P order is not created in this iPhone. You can't share the QR code.";
 
@@ -223,26 +224,26 @@
 "50003" = "Sorry, selling order already dealt with another buying order, please try with other orders";
 "50004" = "Sorry, selling and buying price did not match between two orders, could not complete this order";
 "50005" = "Sorry, owner of buying order is the same as selling's, could not complete this order";
-"50006" = "Sorry, buying order has been expired, please try with other orders";
+"50006" = "Sorry, buying order has expired, please try with other orders";
 "50007" = "Sorry, undealt amount of order is too small, could not complete this order";
 "50008" = "Sorry, buying order does not exist, could not complete this order";
 "Failed to sign/encode transaction" = "Failed to sign/encode transaction";
-"Congratulations! Your order has been submited!" = "Congratulations! Your order has been submited!";
-"Your order has not been submited! Please make sure you have enough balance to complete the trade." = "Your order has not been submited! Please make sure you have enough balance to complete the trade.";
+"Congratulations! Your order has been submitted!" = "Congratulations! Your order has been submitted!";
+"Your order has not been submitted! Please make sure you have enough balance to complete the trade." = "Your order has not been submitted! Please make sure you have enough balance to complete the trade.";
 
 /* Cancel orders */
 "Cancel All" = "Cancel All";
 "Cancel Order" = "Cancel Order";
 "You are going to cancel all open orders." = "You are going to cancel all open orders.";
 "You are going to cancel the order." = "You are going to cancel the order.";
-"Order cancelled Failed, Please try again." =  "Order cancelled Failed, Please try again.";
-"Order cancelled Successful." = "Order cancelled Successful.";
-"Cancelling" = "Cancelling";
+"Order cancellation Failed, Please try again." =  "Order cancellation Failed, Please try again.";
+"Order cancellation Successful." = "Order cancellation Successful.";
+"Canceling" = "Canceling";
 
 /* Convert WETH and ETH */
 "Convert" = "Convert";
-"WETH Convert" = "WETH Convert";
-"Convert Successfully." = "Convert Successfully.";
+"Convert WETH" = "Convert WETH";
+"Conversion Successful." = "Conversion Successful.";
 
 
 /* Setting page */
@@ -273,9 +274,9 @@
 "Exporting keystore" = "Exporting keystore";
 "Wallet Name" = "Wallet Name";
 "Change Wallet Name" = "Change Wallet Name";
-"Copy address to clipboard successfully!" = "Copy address to clipboard successfully!";
-"Copy keystore to clipboard successfully!" = "Copy keystore to clipboard successfully!";
-"Copy private key to clipboard successfully!" = "Copy private key to clipboard successfully!";
+"Address copied to clipboard successfully!" = "Address copied to clipboard successfully!";
+"Keystore copied to clipboard successfully!" = "Keystore copied to clipboard successfully!";
+"Private key copied to clipboard successfully!" = "Private key copied to clipboard successfully!";
 "Copy Keystore" = "Copy Keystore";
 "Clear Records of this Wallet" = "Clear Records of this Wallet";
 "Backup_Mnemonic_in_SettingManageWallet" = "Backup Mnemonic";
@@ -329,16 +330,15 @@
 "Please turn on Touch ID in settings" = "Please turn on Touch ID in settings";
 "Please turn on Face ID in settings" = "Please turn on Face ID in settings";
 
-
 /* QR code related */
 "QR Code" = "QR Code";
 "Scan QR Code" = "Scan QR Code";
 "Save to Album" = "Save to Album";
-"Align QR Code within Frame to Scan" = "Align QR Code within Frame to Scan";
-"No access to save QR code. Please go to setting to enable the access." = "No access to save QR code. Please go to setting to enable the access.";
+"Align QR code within frame to scan" = "Align QR code within frame to scan";
+"No access to save QR code. Please go to settings to enable access." = "No access to save QR code. Please go to settings to enable access.";
 "QR Code type doesn't fit here" = "QR Code type doesn't fit here";
-"Wallet Address QRCode" = "Wallet Address QRCode";
-"Save QR code to Photo successfully." = "Save QR code to Photo successfully.";
+"Wallet Address QR Code" = "Wallet Address QR Code";
+"Saved QR code to photos successfully." = "Saved QR code to photos successfully.";
 "Receive Code" = "Receive Code";
 
 /* Processing QR code page */
@@ -354,19 +354,19 @@
 "Undefined type of QRCode" = "Undefined type of QRCode";
 
 /* Share app page */
-"Partner_Slogan" = "Share APP, harvest 20% of trading fee";
+"Partner_Slogan" = "Share app & receive 20% of trading fees";
 "Partner_Title" = "Wallet Share";
 "Partner_Tip" = "My income address: ";
-"Partner_Des" = "By sharing the app, you will be awarded 20% of all future trading fees from users acquired by your promotion.";
-"Partner_Address" = "Your trading fee reciept address is: ";
+"Partner_Des" = "By sharing the app, you will be awarded 20% of all future trading fees from users you refer";
+"Partner_Address" = "Your address for receiving referral trading fees is: ";
 "Share App" = "Share App";
 
 /* Authorization for integrating other apps */
 "Authorization" = "Authorization";
 "Approving authorization" = "Approving authorization";
-"Authorize Successfully" = "Authorize Successfully";
-"Authorize Failed" = "Authorize Failed";
-"Authorize_Successfully" = "Authorization Successful! Please transfer to our website to continue.";
+"Authorization Successful" = "Authorization Successful";
+"Authorization Failed" = "Authorization Failed";
+"Authorize_Successfully" = "Authorization Successful! Please go to our website to continue.";
 "Authorize_Failed" = "Authorization failed! Please review your signing data and try again later.";
 "Authenticate to access your wallet" = "Authenticate to access your wallet";
 

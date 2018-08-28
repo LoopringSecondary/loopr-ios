@@ -47,7 +47,7 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
 
         recommendButton.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
         recommendButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 13)
-        recommendButton.title = LocalizedString("Recommand Price", comment: "")
+        recommendButton.title = LocalizedString("Recommend Price", comment: "")
         let language = Bundle.main.preferredLocalizations.first
         if language == "zh-Hans" {
             recommendButtonWidth.constant = 80

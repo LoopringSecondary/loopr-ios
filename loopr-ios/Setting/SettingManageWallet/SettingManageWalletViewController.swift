@@ -116,7 +116,7 @@ extension SettingManageWalletViewController: SettingManageWalletTableViewCellDel
             let viewController = QRCodeViewController()
             viewController.hidesBottomBarWhenPushed = true
             viewController.address = wallet.address
-            viewController.navigationTitle = LocalizedString("Wallet Address QRCode", comment: "")
+            viewController.navigationTitle = LocalizedString("Wallet Address QR Code", comment: "")
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }

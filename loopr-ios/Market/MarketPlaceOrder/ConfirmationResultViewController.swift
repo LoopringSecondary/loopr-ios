@@ -88,7 +88,7 @@ class ConfirmationResultViewController: UIViewController, UIScrollViewDelegate {
         exchangedInfoLabel.setTitleCharFont()
         if isBalanceEnough() {
             resultHeaderImage.image = #imageLiteral(resourceName: "Result-header-success")
-            exchangedInfoLabel.text = LocalizedString("Congratulations! Your order has been submited!", comment: "")
+            exchangedInfoLabel.text = LocalizedString("Congratulations! Your order has been submitted!", comment: "")
         } else {
             resultHeaderImage.image = UIImage.init(named: "Result-header-fail")
             exchangedInfoLabel.text = LocalizedString("Your order has not been submited! Please make sure you have enough balance to complete the trade.", comment: "")

@@ -85,8 +85,8 @@
 "Custom Token" = "Custom Token";
 "Added the token successfully." = "Added the token successfully.";
 "Failed to add the token." = "Failed to add the token.";
-"Same address was already registered" = "Same address was already registered.";
-"Same symbol already exists" = "Same symbol already exists";
+"same address was registed" = "Same address was already registered.";
+"same symbol exist" = "Same symbol already exists";
 "Decimals of precision must be between 0 and 20" = "Decimals of precision must be between 0 and 20";
 "Add Custom Token" = "Add Custom Token";
 "Add custom token" = "Add custom token";
@@ -242,7 +242,7 @@
 
 /* Convert WETH and ETH */
 "Convert" = "Convert";
-"Convert WETH " = "Convert WETH";
+"Convert WETH" = "Convert WETH";
 "Conversion Successful." = "Conversion Successful.";
 
 
@@ -372,6 +372,6 @@
 
 /* Complicated. Need other info to form a sentence. */
 "Create_used_in_creating_wallet" = "Create";
-"successfully_used_in_creating_wallet" = "Success";
+"successfully_used_in_creating_wallet" = "successfully";
 "You are going to clear records of" = "You are going to clear records of";
 "on this device." = "on this device.";

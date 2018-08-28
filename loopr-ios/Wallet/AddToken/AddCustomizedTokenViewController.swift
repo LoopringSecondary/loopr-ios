@@ -207,7 +207,7 @@ class AddCustomizedTokenViewController: UIViewController, UITextFieldDelegate, D
                         banner.show()
                     }
                 } else {
-                    let notificationTitle = LocalizedString("Please input a correct value for deciaml", comment: "")
+                    let notificationTitle = LocalizedString("Please input a correct value for decimal", comment: "")
                     let banner = NotificationBanner.generate(title: notificationTitle, style: .danger)
                     banner.duration = 1.5
                     banner.show()

@@ -133,7 +133,7 @@ class QRCodeViewController: UIViewController {
     @IBAction func pressedCopyAddressButton(_ sender: Any) {
         print("pressedCopyAddressButton address: \(address)")
         UIPasteboard.general.string = address
-        let banner = NotificationBanner.generate(title: "Copy address to clipboard successfully!", style: .success)
+        let banner = NotificationBanner.generate(title: "Address copied to clipboard successfully!", style: .success)
         banner.duration = 1
         banner.show()
     }

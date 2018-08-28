@@ -59,7 +59,7 @@ class DisplayKeystoreViewController: UIViewController {
     @IBAction func pressedCopyButton(_ sender: Any) {
         print("pressedCopyButton")
         UIPasteboard.general.string = keystore
-        let banner = NotificationBanner.generate(title: "Copy keystore to clipboard successfully!", style: .success)
+        let banner = NotificationBanner.generate(title: "Keystore copied to clipboard successfully!", style: .success)
         banner.duration = 1
         banner.show()
     }

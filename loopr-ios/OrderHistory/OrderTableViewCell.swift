@@ -63,7 +63,7 @@ class OrderTableViewCell: UITableViewCell {
             let cancelledAll = UserDefaults.standard.bool(forKey: UserDefaultsKeys.cancelledAll.rawValue)
             if cancelledAll || isOrderCancelling(order: order) {
                 cancelButton.setTitleColor(.pending, for: .normal)
-                return (false, LocalizedString("Cancelling", comment: ""))
+                return (false, LocalizedString("Canceling", comment: ""))
             } else {
                 cancelButton.setTitleColor(buttonColor, for: .normal)
                 return (true, LocalizedString("Cancel", comment: ""))

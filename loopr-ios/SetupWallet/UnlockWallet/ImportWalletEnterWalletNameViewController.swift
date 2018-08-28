@@ -86,7 +86,7 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
         guard !AppWalletDataManager.shared.isNewWalletNameToken(newWalletname: walletNameTextField.text ?? "") else {
             errorInfoLabel.shake()
             errorInfoLabel.alpha = 1.0
-            errorInfoLabel.text = LocalizedString("The name is token, please try another one.", comment: "")
+            errorInfoLabel.text = LocalizedString("The name is taken, please try another one.", comment: "")
             return
         }
         

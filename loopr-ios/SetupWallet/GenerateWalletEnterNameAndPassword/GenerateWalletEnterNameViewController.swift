@@ -81,7 +81,7 @@ class GenerateWalletEnterNameViewController: UIViewController, UITextFieldDelega
             validWalletName = false
             errorInfoLabel.shake()
             errorInfoLabel.alpha = 1.0
-            errorInfoLabel.text = LocalizedString("The name is token, please try another one.", comment: "")
+            errorInfoLabel.text = LocalizedString("The name is taken, please try another one.", comment: "")
         }
         
         if validWalletName {

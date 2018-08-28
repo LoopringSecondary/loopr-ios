@@ -53,8 +53,8 @@
 "Check Details" = "查看详情";
 "Done" = "返回";
 "Convert" = "转换";
-"WETH Convert" = "WETH转换";
-"Convert Successfully." = "转换成功。";
+"Convert WETH" = "WETH转换";
+"Conversion Successful." = "转换成功。";
 
 "Scan QR Code" = "二维码扫描";
 "QR Code" = "二维码";
@@ -72,9 +72,9 @@
 "Mnemonic Password (optional)" = "助记词密码 (可选)";
 
 "Please enter a password" = "请输入密码";
-"Copy address to clipboard successfully!" = "成功复制地址到剪切板!";
-"Copy keystore to clipboard successfully!" = "成功复制keystore到剪切板!";
-"Copy private key to clipboard successfully!" = "成功复制钱包私钥到剪切板!";
+"Address copied to clipboard successfully!" = "成功复制地址到剪切板!";
+"Keystore copied to clipboard successfully!" = "成功复制keystore到剪切板!";
+"Private key copied to clipboard successfully!" = "成功复制钱包私钥到剪切板!";
 "Congratulations!" = "创建成功!";
 
 "Cancel" = "取消";
@@ -125,7 +125,7 @@
 "Currency" = "货币";
 "All" = "全部";
 "Favorite" = "收藏";
-"Align QR Code within Frame to Scan" = "请将二维码置于扫描框内";
+"Align QR code within frame to scan" = "请将二维码置于扫描框内";
 "No access to save QR code. Please go to setting to enable the access." = "没有权限保存二维码，请到设置修改权限。";
 "Failed to sign/encode transaction" = "编码/签名交易失败";
 "10001" = "抱歉，系统错误，请稍后重试";
@@ -143,14 +143,14 @@
 "Please input a valid amount" = "请输入有效的数额";
 "Buying" = "买入";
 "Selling" = "卖出";
-"Congratulations! Your order has been submited!" = "恭喜！您的订单已被提交！";
+"Congratulations! Your order has been submitted!" = "恭喜！您的订单已被提交！";
 "Your order has not been submited! Please make sure you have enough balance to complete the trade." = "您的订单未被提交！请确认您的账户中有足够余额以完成该笔订单。";
 "You Need More" = "您尚需";
 
 "You are going to cancel all open orders." = "您将取消所有待成交订单。";
 "You are going to cancel the order." = "您将取消该笔订单";
-"Order cancelled Failed, Please try again." =  "订单取消失败，请稍后重试";
-"Order cancelled Successful." = "订单取消成功";
+"Order cancellation Failed, Please try again." =  "订单取消失败，请稍后重试";
+"Order cancellation Successful." = "订单取消成功";
 "Order Detail" = "订单详情";
 "Filled/Amount" = "完成/总额";
 "Status" = "状态";
@@ -161,7 +161,7 @@
 "Filled" = "成交率";
 "Date" = "日期";
 "Gas" = "油费";
-"Cancelling" = "取消中";
+"Canceling" = "取消中";
 "QR Code type doesn't fit here" = "二维码类型不符";
 
 "Select your address" = "请选择您的地址";
@@ -202,7 +202,7 @@
 "Please click words in order." = "请按顺序点击助记词。";
 "Market Price" = "最新成交价格";
 "Available Balance" = "可用余额";
-"The name is token, please try another one." = "钱包名称重复";
+"The name is taken, please try another one." = "钱包名称重复";
 "Back" = "返回";
 "Undefined" = "未定义";
 "Pending" = "待处理";
@@ -245,15 +245,15 @@
 "on this device." = "的数据。";
 "Submitting order" = "正在提交订单";
 "Approving authorization" = "正在申请授权";
-"Signer address do NOT match the order's, please transfer and try again later" = "授权方的钱包地址和下单方地址并不匹配，请在更换授权方的地址，确认匹配后再进行授权";
+"Signer address does NOT match the order's, please transfer and try again later" = "授权方的钱包地址和下单方地址并不匹配，请在更换授权方的地址，确认匹配后再进行授权";
 "Create_used_in_creating_wallet" = "成功创建";
 "successfully_used_in_creating_wallet" = "";
 "Select Your Wallet Type" = "请选择您的钱包类型";
 "Mnemonic doesn't match. Please verify again." = "输入的助记词不正确，请重新验证。";
 "Please click words in order to verify your mnemonic." = "请按顺序点击助记词来确认您的助记词。";
 "Your mnemonic has been verified successfully." = "您的助记词已验证成功。";
-"Authorize Successfully" = "授权成功";
-"Authorize Failed" = "授权失败";
+"Authorization Successful" = "授权成功";
+"Authorization Failed" = "授权失败";
 "Authorize_Successfully" = "授权成功，请转至我们的网站服务，进行您的后续操作。";
 "Authorize_Failed" = "授权失败，请核对您的授权数据，确认正确后请重新尝试。";
 "Initializing the wallet" = "钱包正在初始化";
@@ -271,7 +271,7 @@
 "My Wallet Address" = "我的钱包地址";
 
 "Complete" = "完成";
-"Save QR code to Photo successfully." = "成功保存二维码到照片应用";
+"Saved QR code to photos successfully." = "成功保存二维码到照片应用";
 "Add Token" = "添加代币";
 
 "Authorization" = "授权";
@@ -300,7 +300,7 @@
 "ETH_TIP" = "● 我们为您保留 0.01 ETH 作为油费以保证后续可以发送交易";
 "Convert_Fail_Tip" = "您的账户中油费不足，请稍后重试";
 "Convert_Success_Tip" = "转换成功，交易哈希值 =";
-"Recommand Price" = "推荐油价";
+"Recommend Price" = "推荐油价";
 "Set Gas" = "设置油价";
 "Confirm Mnemonic Word" = "确认助记词";
 "DEX Trade" = "去中心化交易所";
@@ -324,7 +324,7 @@
 "Sender" = "发送方地址";
 "Trade_Confirm" = "交易确认";
 "No_Data_Tip"= "暂无相关数据";
-"Wallet Address QRCode" = "钱包地址二维码";
+"Wallet Address QR Code" = "钱包地址二维码";
 "24H Change" = "24H 涨跌";
 "24H High" = "24H 最高价";
 "24H Low" = "24H 最低价";
@@ -348,7 +348,7 @@
 "Please enter the token address" = "请输入代币合约地址";
 "Please input a correct address" = "请输入正确的代币合约地址";
 "Please enter the token symbol" = "请输入代币符号";
-"Please input a correct value for deciaml" = "请输入正确的小数点";
+"Please input a correct value for decimal" = "请输入正确的小数点";
 "Convert Confirmation" = "转换确认";
 "Send Token" = "转出代币";
 "Receive Token" = "转入代币";

@@ -370,7 +370,7 @@ extension WalletViewController: WalletBalanceTableViewCellDelegate {
             let viewController = QRCodeViewController()
             viewController.hidesBottomBarWhenPushed = true
             viewController.address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
-            viewController.navigationTitle = LocalizedString("Wallet Address QRCode", comment: "")
+            viewController.navigationTitle = LocalizedString("Wallet Address QR Code", comment: "")
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }

@@ -76,7 +76,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         self.navigationItem.rightBarButtonItem = albumButton
         
         scanTipLabel.setTitleDigitFont()
-        scanTipLabel.text = LocalizedString("Align QR Code within Frame to Scan", comment: "")
+        scanTipLabel.text = LocalizedString("Align QR code within frame to scan", comment: "")
         self.flashButton.image = UIImage(named: "TorchOff")
         
         // Get the camera for capturing videos
