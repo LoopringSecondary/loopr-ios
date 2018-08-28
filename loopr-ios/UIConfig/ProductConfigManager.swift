@@ -30,4 +30,15 @@ enum Production: String {
     static func getProduct() -> String {
         return getCurrent().rawValue
     }
+    
+    static func getUrlText() -> String {
+        switch self.current {
+        case .loopr:
+            return "https://loopring.wallet.io"
+        case .upwallet:
+            return "https://upwallet.io"
+        case .vivwallet:
+            return "https://vivwallet.io"
+        }
+    }
 }

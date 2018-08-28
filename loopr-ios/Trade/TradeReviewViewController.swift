@@ -20,10 +20,14 @@ class TradeReviewViewController: UIViewController {
     @IBOutlet weak var validInfoLabel: UILabel!
     
     @IBOutlet weak var shareContentView: UIView!
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tokenSInShare: UIView!
     @IBOutlet weak var tokenBInShare: UIView!
     @IBOutlet weak var qrcodeInShare: UIImageView!
     @IBOutlet weak var shareImageView: UIImageView!
+    @IBOutlet weak var validTipInShare: UILabel!
+    @IBOutlet weak var validInShare: UILabel!
     
     var tokenSView: TradeViewOnlyViewController = TradeViewOnlyViewController()
     var tokenBView: TradeViewOnlyViewController = TradeViewOnlyViewController()
@@ -73,7 +77,15 @@ class TradeReviewViewController: UIViewController {
         validInfoLabel.setTitleDigitFont()
         
         shareContentView.theme_backgroundColor = ColorPicker.backgroundColor
-        shareImageView.image = UIImage(named: "Share-order\(ColorTheme.getTheme())")
+        logoImageView.image = UIImage(named: "\(Production.getProduct())_share_logo")
+        titleLabel.setTitleCharFont()
+        titleLabel.text = Production.getProduct()
+        validTipInShare.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        validTipInShare.theme_textColor = GlobalPicker.contrastTextLightColor
+        validTipInShare.text = "订单有效期"
+        validInShare.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        validInShare.theme_textColor = GlobalPicker.contrastTextColor
+        shareImageView.image = UIImage(named: "Share-order")
         
         // Receive order response
         NotificationCenter.default.addObserver(self, selector: #selector(orderResponseReceivedNotification), name: .orderResponseReceived, object: nil)
@@ -112,6 +124,7 @@ class TradeReviewViewController: UIViewController {
         let since = DateUtil.convertToDate(UInt(order.validSince), format: "MM-dd HH:mm")
         let until = DateUtil.convertToDate(UInt(order.validUntil), format: "MM-dd HH:mm")
         validInfoLabel.text = "\(since) ~ \(until)"
+        validInShare.text = "\(since) ~ \(until)"
     }
     
     func setupShareButton() {
