@@ -127,7 +127,7 @@ extension String {
         }
     }
     
-    var integer: Int? {
+    var hexToInteger: Int? {
         if self.isHex() {
             if self.lowercased().starts(with: "0x") {
                 return Int(self.dropFirst(2), radix: 16)
