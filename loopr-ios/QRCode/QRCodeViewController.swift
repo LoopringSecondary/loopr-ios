@@ -26,6 +26,9 @@ class QRCodeViewController: UIViewController {
     @IBOutlet weak var saveToAlbumButton: UIButton!
     
     @IBOutlet weak var shareContentView: UIView!
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var titleInShare: UILabel!
+    @IBOutlet weak var urlInShare: UILabel!
     @IBOutlet weak var qrcodeInShare: UIImageView!
     @IBOutlet weak var shareImageView: UIImageView!
     @IBOutlet weak var addressInShare: UILabel!
@@ -63,7 +66,12 @@ class QRCodeViewController: UIViewController {
         addressInShare.text = address
         
         shareContentView.theme_backgroundColor = ColorPicker.backgroundColor
-        shareImageView.image = UIImage(named: "Share-wallet\(ColorTheme.getTheme())")
+        logoImageView.image = UIImage(named: "\(Production.getProduct())_share_logo")
+        titleInShare.setTitleCharFont()
+        titleInShare.text = Production.getProduct()
+        urlInShare.setTitleCharFont()
+        urlInShare.text = Production.getUrlText()
+        shareImageView.image = UIImage(named: "Share-wallet")
         
         let data = address.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
         generateQRCode(from: data!)
