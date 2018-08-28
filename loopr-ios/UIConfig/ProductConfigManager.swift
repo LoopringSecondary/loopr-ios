@@ -32,7 +32,7 @@ enum Production: String {
     }
     
     static func getUrlText() -> String {
-        switch self.current {
+        switch getCurrent() {
         case .loopr:
             return "https://loopring.wallet.io"
         case .upwallet:
