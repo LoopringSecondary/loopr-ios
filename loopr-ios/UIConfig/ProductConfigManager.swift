@@ -13,7 +13,7 @@ enum Production: String {
     // TODO: We will have blue color configuration.
     case loopr = "Loopr Wallet"
     case upwallet = "UP Wallet"
-    case vivwallet = "Viv Wallet"
+    case vivwallet = "vivwallet"
     
     // Only need to change this line of code
     static let current: Production = .vivwallet
