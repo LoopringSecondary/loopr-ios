@@ -368,9 +368,32 @@ class LoopringAPIRequest {
         }
     }
     
+    // Please use getCustomTokens rather than getSupportedTokens. getCustomTokens = getSupportedTokens + custom tokens.
     static func getSupportedTokens(completionHandler: @escaping (_ tokens: [Token]?, _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getSupportedTokens"
+        body["id"] = JSON(UUID().uuidString)
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                completionHandler(nil, error)
+                return
+            }
+            var tokens: [Token] = []
+            let json = JSON(data)
+            let offerData = json["result"]
+            for subJson in offerData.arrayValue {
+                let token = Token(json: subJson)
+                tokens.append(token)
+            }
+            completionHandler(tokens, nil)
+        }
+    }
+    
+    static func getCustomTokens(owner: String, completionHandler: @escaping (_ tokens: [Token]?, _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_getCustomTokens"
+        body["params"] = [["owner": owner]]
         body["id"] = JSON(UUID().uuidString)
         Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {

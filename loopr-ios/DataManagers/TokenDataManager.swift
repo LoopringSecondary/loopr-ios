@@ -8,7 +8,6 @@
 
 import Foundation
 
-private let whiteList: [String] = ["BAT", "RDN", "VITE", "WETH", "RHOC", "BNT", "ZRX", "DAI", "REQ", "ARP", "OMG", "IOST", "SNT", "ETH", "LRC", "KNC"]
 private let blackList: [String] = ["BAR", "FOO", "EOS"]
 
 class TokenDataManager {
@@ -24,6 +23,7 @@ class TokenDataManager {
     func loadTokens() {
         loadTokensFromJson()
         loadTokensFromServer(completionHandler: {})
+        loadCustomTokens()
     }
 
     // load tokens from json file to avoid http request
@@ -34,12 +34,6 @@ class TokenDataManager {
             for subJson in json.arrayValue {
                 let token = Token(json: subJson)
                 tokens.append(token)
-                // No whiteList
-                /*
-                if whiteList.contains(token.symbol.uppercased()) {
-                    tokens.append(token)
-                }
-                */
             }
             tokens.sort(by: { (a, b) -> Bool in
                 return a.symbol < b.symbol
@@ -64,6 +58,29 @@ class TokenDataManager {
                 }
             }
             completionHandler()
+        }
+    }
+    
+    func loadCustomTokens() {
+        let wallets = AppWalletDataManager.shared.getWallets()
+        for wallet in wallets {
+            LoopringAPIRequest.getCustomTokens(owner: wallet.address) { (tokens, error) in
+                guard let tokens = tokens, error == nil else {
+                    
+                    return
+                }
+                for token in tokens {
+                    print(token.symbol)
+                    // Check if the token exists in self.tokens.
+                    if !self.tokens.contains(where: { (element) -> Bool in
+                        return element.symbol.lowercased() == token.symbol.lowercased()
+                    }) {
+                        if !blackList.contains(token.symbol.uppercased()) {
+                            self.tokens.append(token)
+                        }
+                    }
+                }
+            }
         }
     }
 

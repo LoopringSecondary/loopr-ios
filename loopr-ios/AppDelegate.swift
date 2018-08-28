@@ -38,8 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
 
-        _ = TokenDataManager.shared.getTokens()
+        // Note: Don't change the following sequence of setup
         AppWalletDataManager.shared.setup()
+        _ = TokenDataManager.shared.getTokens()
         CurrentAppWalletDataManager.shared.setup()
         if AppWalletDataManager.shared.getWallets().isEmpty {
             self.window?.rootViewController = SetupNavigationController(nibName: nil, bundle: nil)
