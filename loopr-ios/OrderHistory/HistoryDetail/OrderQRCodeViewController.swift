@@ -20,10 +20,14 @@ class OrderQRCodeViewController: UIViewController {
     @IBOutlet weak var shareOrderButton: UIButton!
     
     @IBOutlet weak var shareContentView: UIView!
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var titleInShare: UILabel!
     @IBOutlet weak var tokenSInShare: UIView!
     @IBOutlet weak var tokenBInShare: UIView!
     @IBOutlet weak var qrcodeInShare: UIImageView!
     @IBOutlet weak var shareImageView: UIImageView!
+    @IBOutlet weak var validTipInShare: UILabel!
+    @IBOutlet weak var validInShare: UILabel!
     
     var tokenSViewInShare: TradeViewOnlyViewController = TradeViewOnlyViewController()
     var tokenBViewInShare: TradeViewOnlyViewController = TradeViewOnlyViewController()
@@ -56,6 +60,16 @@ class OrderQRCodeViewController: UIViewController {
         tokenBViewInShare.view.bindFrameToAnotherView(anotherView: tokenBInShare)
 
         shareContentView.theme_backgroundColor = ColorPicker.backgroundColor
+        logoImageView.image = UIImage(named: "\(Production.getProduct())_share_logo")
+        titleInShare.setTitleCharFont()
+        titleInShare.text = Production.getProduct()
+        validTipInShare.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        validTipInShare.theme_textColor = GlobalPicker.contrastTextLightColor
+        validTipInShare.text = "订单有效期"
+        validInShare.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        validInShare.theme_textColor = GlobalPicker.contrastTextColor
+        shareImageView.image = UIImage(named: "Share-order")
+        
         qrcodeIconImageView.image = UIImage(named: "Order-qrcode-icon" + ColorTheme.getTheme())
 
         saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
@@ -108,6 +122,10 @@ class OrderQRCodeViewController: UIViewController {
         let transformedImage = image.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
         qrcodeImageView.image = UIImage.init(ciImage: transformedImage)
         qrcodeInShare.image = UIImage.init(ciImage: transformedImage)
+        
+        let since = DateUtil.convertToDate(UInt(originalOrder.validSince), format: "MM-dd HH:mm")
+        let until = DateUtil.convertToDate(UInt(originalOrder.validUntil), format: "MM-dd HH:mm")
+        validInShare.text = "\(since) ~ \(until)"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
