@@ -3204,7 +3204,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = leaf.prod.app;
 				PRODUCT_MODULE_NAME = loopr_ios;
-				PRODUCT_NAME = "VIV Wallet";
+				PRODUCT_NAME = vivwallet;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";

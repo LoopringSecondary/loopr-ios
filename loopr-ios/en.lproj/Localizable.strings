@@ -111,6 +111,8 @@
 "Sold" = "Sold";
 "Buying" = "Buying";
 "Selling" = "Selling";
+"Buy_Tip" = "Buy";
+"Sell_Tip" = "Sell";
 "Trade" = "Trade";
 "Market" = "Market";
 "Markets" = "Markets";

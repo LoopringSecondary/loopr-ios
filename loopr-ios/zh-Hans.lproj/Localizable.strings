@@ -112,6 +112,8 @@
 "Sold" = "卖出";
 "Buying" = "买入";
 "Selling" = "卖出";
+"Buy_Tip" = "买";
+"Sell_Tip" = "卖";
 "Trade" = "交易";
 "Market" = "市场";
 "Markets" = "市场";
