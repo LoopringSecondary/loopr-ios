@@ -91,7 +91,7 @@ class ColorPicker {
     }
 
     class var buttonHighlight: ThemeImagePicker {
-        return ThemeImagePicker(images: UIImage(named: "Button-highlight" + ColorTheme.getTheme())!, UIImage(named: "Button-highlight" + ColorTheme.getTheme())!)
+        return ThemeImagePicker(images: UIImage(named: "Button-highlight" + ColorTheme.getTheme()) ?? UIImage(), UIImage(named: "Button-highlight" + ColorTheme.getTheme()) ?? UIImage())
     }
 
 }
