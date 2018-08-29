@@ -68,7 +68,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        unlockButton.setupSecondary()
+        unlockButton.setupSecondary(height: 44)
     }
 
     override func didReceiveMemoryWarning() {
