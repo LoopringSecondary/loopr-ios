@@ -190,7 +190,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cl9-f9-SIa">
-                            <rect key="frame" x="107.5" y="429" width="160" height="21"/>
+                            <rect key="frame" x="0.0" y="429" width="375" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -238,7 +238,7 @@
                         <constraint firstItem="dfM-bs-Gq5" firstAttribute="bottom" secondItem="6c9-CV-wL0" secondAttribute="bottom" constant="-61" id="RVu-DH-4IJ"/>
                         <constraint firstItem="Nfr-Q1-8Nk" firstAttribute="top" secondItem="xo4-Mh-WeE" secondAttribute="bottom" constant="8" id="TdT-lP-ET0"/>
                         <constraint firstItem="Sco-AV-1Kw" firstAttribute="leading" secondItem="tnG-Gm-ET5" secondAttribute="leading" id="Voo-pR-v0a"/>
-                        <constraint firstItem="cl9-f9-SIa" firstAttribute="width" secondItem="mnn-XJ-Fpw" secondAttribute="width" id="X8J-44-zA9"/>
+                        <constraint firstItem="cl9-f9-SIa" firstAttribute="width" secondItem="6c9-CV-wL0" secondAttribute="width" id="X8J-44-zA9"/>
                         <constraint firstItem="tnG-Gm-ET5" firstAttribute="leading" secondItem="nZH-3U-vMc" secondAttribute="leading" id="XXy-Wm-bqf"/>
                         <constraint firstItem="mnn-XJ-Fpw" firstAttribute="top" secondItem="GEW-NV-tfg" secondAttribute="bottom" constant="24" id="b0f-z2-PYf"/>
                         <constraint firstItem="eUi-SA-9bd" firstAttribute="top" secondItem="Nfr-Q1-8Nk" secondAttribute="bottom" constant="8" id="eq6-36-GqN"/>

@@ -102,6 +102,7 @@
 "Adding..." = "正在添加...";
 
 /* DEX Trade page */
+"Loopring Order" = "路印订单";
 "DEX Trade" = "去中心化交易所";
 "P2P Trade" = "场外交易";
 "Buy" = "买入";
@@ -185,7 +186,7 @@
 "Enter the address" = "请输入地址";
 "Available Balance" = "可用余额";
 "Transaction Fee" = "交易费";
-
+"Loopring_TIP" = "请用支持路印协议的钱包扫码交易";
 
 /* Trade tips */
 "Convert_DES" = "● WETH之于ETH, 正如硬币之于等额的纸币。某些场合, 贩卖机只能接受硬币, 因此需要转换。以太坊协议保证: WETH和ETH之间的转换比率为 1 : 1, 且永不改变。";

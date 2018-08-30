@@ -125,7 +125,7 @@ class TradeReviewViewController: UIViewController {
         loopringTipLabel.theme_textColor = GlobalPicker.contrastTextLightColor
         loopringTipLabel.text = LocalizedString("Loopring_TIP", comment: "")
         
-        productLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        productLabel.font = FontConfigManager.shared.getBoldFont(size: 14)
         productLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
         productLabel.text = Production.getProduct()
         

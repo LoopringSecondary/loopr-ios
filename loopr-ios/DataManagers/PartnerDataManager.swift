@@ -15,7 +15,7 @@ class PartnerDataManager {
     var partnerTo: Partner?
     var partnerFrom: Partner?
     let loopringAddress = "0x8E63Bb7Af326de3fc6e09F4c8D54A75c6e236abA"
-    let baseUrl = "https://upwallet.io/"
+    let baseUrl = Production.getUrlText()
     
     func activatePartner() {
         LoopringAPIRequest.activateInvitation(completionHandler: { result, error in

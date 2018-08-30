@@ -101,6 +101,7 @@
 "Adding..." = "Adding...";
 
 /* DEX Trade page */
+"Loopring Order" = "Loopring Order";
 "DEX Trade" = "DEX Trade";
 "P2P Trade" = "P2P Trade";
 "Buy" = "Buy";
@@ -184,7 +185,7 @@
 "Enter the address" = "Enter the address";
 "Available Balance" = "Available Balance";
 "Transaction Fee" = "Transaction Fee";
-
+"Loopring_TIP" = "请用支持路印协议的钱包扫码交易";
 
 /* Trade tips */
 "Convert_DES" = "● Think of it like the coin version of a paper note. The same value, but some machines only take coins. The conversion ratio between ETH and WETH is always 1:1, guaranteed by Ethereum.";
