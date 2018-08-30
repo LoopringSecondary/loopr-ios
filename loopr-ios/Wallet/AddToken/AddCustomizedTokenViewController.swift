@@ -135,7 +135,7 @@ class AddCustomizedTokenViewController: UIViewController, UITextFieldDelegate, D
                     return
                 }
                 
-                TokenDataManager.shared.loadTokensFromServer(completionHandler: {
+                TokenDataManager.shared.loadCustomTokens(completionHandler: {
                     SVProgressHUD.dismiss()
                     DispatchQueue.main.async {
                         CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.updateTokenList([self.symbol], add: true)

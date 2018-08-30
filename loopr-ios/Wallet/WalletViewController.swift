@@ -108,7 +108,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // tokens.json contains 67 tokens.
         if TokenDataManager.shared.getTokens().count < 70 {
             dispatchGroup.enter()
-            TokenDataManager.shared.loadTokensFromServer(completionHandler: {
+            TokenDataManager.shared.loadCustomTokens(completionHandler: {
                 dispatchGroup.leave()
             })
         }

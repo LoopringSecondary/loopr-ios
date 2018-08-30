@@ -23,7 +23,7 @@ class TokenDataManager {
     func loadTokens() {
         loadTokensFromJson()
         loadTokensFromServer(completionHandler: {})
-        loadCustomTokens()
+        loadCustomTokens(completionHandler: {})
     }
 
     // load tokens from json file to avoid http request
@@ -41,7 +41,7 @@ class TokenDataManager {
         }
     }
 
-    func loadTokensFromServer(completionHandler: @escaping () -> Void) {
+    private func loadTokensFromServer(completionHandler: @escaping () -> Void) {
         LoopringAPIRequest.getSupportedTokens { (tokens, error) in
             guard let tokens = tokens, error == nil else {
                 completionHandler()
@@ -61,11 +61,12 @@ class TokenDataManager {
         }
     }
     
-    func loadCustomTokens() {
+    func loadCustomTokens(completionHandler: @escaping () -> Void) {
         let wallets = AppWalletDataManager.shared.getWallets()
         for wallet in wallets {
             LoopringAPIRequest.getCustomTokens(owner: wallet.address) { (tokens, error) in
                 guard let tokens = tokens, error == nil else {
+                    completionHandler()
                     return
                 }
                 for token in tokens {
@@ -78,6 +79,7 @@ class TokenDataManager {
                         }
                     }
                 }
+                completionHandler()
             }
         }
     }

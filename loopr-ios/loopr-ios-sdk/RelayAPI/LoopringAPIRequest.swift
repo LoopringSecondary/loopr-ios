@@ -717,8 +717,18 @@ class LoopringAPIRequest {
     }
     
     static func addCustomToken(owner: String, tokenContractAddress: String, symbol: String, decimals: Int64, completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        var decimalsString: String = ""
+        if decimals != 1 {
+            decimalsString = "1"
+            for _ in 0..<decimals {
+                decimalsString += "\(0)"
+            }
+        } else {
+            decimalsString = String(decimals)
+        }
+
         var body: JSON = JSON()
-        body["params"] = [["owner": owner, "tokenContractAddress": tokenContractAddress, "symbol": symbol, "decimals": decimals]]
+        body["params"] = [["owner": owner, "tokenContractAddress": tokenContractAddress, "symbol": symbol, "decimals": decimalsString]]
         
         self.invoke(method: "loopring_addCustomToken", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
             guard error == nil && data != nil else {
