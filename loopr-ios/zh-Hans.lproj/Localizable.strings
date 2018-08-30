@@ -341,7 +341,7 @@
 "Align QR code within frame to scan" = "请将二维码置于扫描框内";
 "No access to save QR code. Please go to settings to enable access." = "没有权限保存二维码，请到设置修改权限。";
 "QR Code type doesn't fit here" = "二维码类型不符";
-"Wallet Address QR Code" = "钱包地址二维码";
+"Wallet Address" = "钱包收款地址";
 "Saved QR code to photos successfully." = "成功保存二维码到照片应用";
 "Receive Code" = "转入二维码";
 

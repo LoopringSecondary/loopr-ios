@@ -185,7 +185,7 @@
 "Enter the address" = "Enter the address";
 "Available Balance" = "Available Balance";
 "Transaction Fee" = "Transaction Fee";
-"Loopring_TIP" = "请用支持路印协议的钱包扫码交易";
+"Loopring_TIP" = "Use wallet supporting Loopring protocol to scan";
 
 /* Trade tips */
 "Convert_DES" = "● Think of it like the coin version of a paper note. The same value, but some machines only take coins. The conversion ratio between ETH and WETH is always 1:1, guaranteed by Ethereum.";
@@ -340,7 +340,7 @@
 "Align QR code within frame to scan" = "Align QR code within frame to scan";
 "No access to save QR code. Please go to settings to enable access." = "No access to save QR code. Please go to settings to enable access.";
 "QR Code type doesn't fit here" = "QR Code type doesn't fit here";
-"Wallet Address QR Code" = "Wallet Address QR Code";
+"Wallet Address" = "Wallet Address";
 "Saved QR code to photos successfully." = "Saved QR code to photos successfully.";
 "Receive Code" = "Receive Code";
 

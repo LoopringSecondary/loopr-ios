@@ -27,8 +27,8 @@ class TradeReviewViewController: UIViewController {
     @IBOutlet weak var sellInfoLabel: UILabel!
     @IBOutlet weak var buyTipLabel: UILabel!
     @IBOutlet weak var buyInfoLabel: UILabel!
-    @IBOutlet weak var priceTipLabel: UILabel!
-    @IBOutlet weak var priceInfoLabel: UILabel!
+    @IBOutlet weak var priceBuyLabel: UILabel!
+    @IBOutlet weak var priceSellLabel: UILabel!
     @IBOutlet weak var validTipInShare: UILabel!
     @IBOutlet weak var validInShare: UILabel!
     @IBOutlet weak var loopringTipLabel: UILabel!
@@ -86,32 +86,33 @@ class TradeReviewViewController: UIViewController {
         
         titleLabel.font = FontConfigManager.shared.getCharactorFont(size: 20)
         titleLabel.theme_textColor = GlobalPicker.contrastTextColor
-        titleLabel.text = LocalizedString("Loopring Order", comment: "")  // 这里local
+        titleLabel.text = LocalizedString("Loopring Order", comment: "")
         
         sellTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
         sellTipLabel.theme_textColor = GlobalPicker.contrastTextColor
-        sellTipLabel.text = LocalizedString("Sell_Tip", comment: "") + "\(order.tokenSell)"
+        sellTipLabel.text = LocalizedString("Sell", comment: "")
         var length = Asset.getLength(of: order.tokenSell) ?? 4
         sellInfoLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
         sellInfoLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
-        sellInfoLabel.text = order.amountSell.withCommas(length)
+        sellInfoLabel.text = order.amountSell.withCommas(length)  + " " + order.tokenSell
         
         buyTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
         buyTipLabel.theme_textColor = GlobalPicker.contrastTextColor
-        buyTipLabel.text = LocalizedString("Buy_Tip", comment: "") + "\(order.tokenBuy)"
+        buyTipLabel.text = LocalizedString("Buy", comment: "")
         length = Asset.getLength(of: order.tokenBuy) ?? 4
         buyInfoLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
         buyInfoLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
-        buyInfoLabel.text = order.amountBuy.withCommas(length)
+        buyInfoLabel.text = order.amountBuy.withCommas(length) + " " + order.tokenBuy
        
-        priceTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
-        priceTipLabel.theme_textColor = GlobalPicker.contrastTextColor
-        priceTipLabel.text = LocalizedString("Price", comment: "")
         let price = order.amountBuy / order.amountSell
-        let value = order.side == "buy" ? 1 / price : price
-        priceInfoLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
-        priceInfoLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
-        priceInfoLabel.text = "\(value.withCommas())"
+        priceBuyLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        priceBuyLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        priceBuyLabel.textAlignment = .justified
+        priceBuyLabel.text = "1 \(order.tokenSell) = \(price.withCommas()) \(order.tokenBuy)"
+        priceSellLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        priceSellLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        priceSellLabel.text = "1 \(order.tokenBuy) = \((1/price).withCommas()) \(order.tokenSell)"
+        priceSellLabel.textAlignment = .justified
         
         validTipInShare.font = FontConfigManager.shared.getCharactorFont(size: 12)
         validTipInShare.theme_textColor = GlobalPicker.contrastTextColor
@@ -125,7 +126,7 @@ class TradeReviewViewController: UIViewController {
         loopringTipLabel.theme_textColor = GlobalPicker.contrastTextLightColor
         loopringTipLabel.text = LocalizedString("Loopring_TIP", comment: "")
         
-        productLabel.font = FontConfigManager.shared.getBoldFont(size: 14)
+        productLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         productLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
         productLabel.text = Production.getProduct()
         

@@ -26,12 +26,13 @@ class QRCodeViewController: UIViewController {
     @IBOutlet weak var saveToAlbumButton: UIButton!
     
     @IBOutlet weak var shareContentView: UIView!
-    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var titleInShare: UILabel!
-    @IBOutlet weak var urlInShare: UILabel!
     @IBOutlet weak var qrcodeInShare: UIImageView!
-    @IBOutlet weak var shareImageView: UIImageView!
     @IBOutlet weak var addressInShare: UILabel!
+    @IBOutlet weak var shareImageView: UIImageView!
+    @IBOutlet weak var productLabel: UILabel!
+    @IBOutlet weak var urlInShare: UILabel!
+    @IBOutlet weak var logoImageView: UIImageView!
     
     var qrcodeImage: UIImage!
 
@@ -50,8 +51,6 @@ class QRCodeViewController: UIViewController {
         titleLabel.setTitleCharFont()
         titleLabel.text = Production.getProduct()
         addressLabel.setTitleCharFont()
-        addressInShare.font = FontConfigManager.shared.getCharactorFont(size: 14)
-        addressInShare.theme_textColor = GlobalPicker.contrastTextColor
         
         copyAddressButton.setTitle(LocalizedString("Copy Address", comment: ""), for: .normal)
         copyAddressButton.setupSecondary(height: 44)
@@ -61,17 +60,9 @@ class QRCodeViewController: UIViewController {
         
         setupShareButton()
         setBackButton()
+        setupShareView()
         
         addressLabel.text = address
-        addressInShare.text = address
-        
-        shareContentView.theme_backgroundColor = ColorPicker.backgroundColor
-        logoImageView.image = UIImage(named: "\(Production.getProduct())_share_logo")
-        titleInShare.setTitleCharFont()
-        titleInShare.text = Production.getProduct()
-        urlInShare.setTitleCharFont()
-        urlInShare.text = Production.getUrlText()
-        shareImageView.image = UIImage(named: "Share-wallet")
         
         let data = address.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
         generateQRCode(from: data!)
@@ -80,6 +71,27 @@ class QRCodeViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setupShareView() {
+        shareImageView.image = UIImage(named: "Share-wallet")
+        logoImageView.image = UIImage(named: "\(Production.getProduct())_share_logo")
+        
+        titleInShare.font = FontConfigManager.shared.getCharactorFont(size: 20)
+        titleInShare.theme_textColor = GlobalPicker.contrastTextColor
+        titleInShare.text = LocalizedString("Wallet Address", comment: "")
+        
+        addressInShare.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        addressInShare.theme_textColor = GlobalPicker.contrastTextDarkColor
+        addressInShare.text = address
+        
+        productLabel.font = FontConfigManager.shared.getBoldFont(size: 14)
+        productLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        productLabel.text = Production.getProduct()
+        
+        urlInShare.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        urlInShare.theme_textColor = GlobalPicker.contrastTextColor
+        urlInShare.text = Production.getUrlText()
     }
     
     func setupShareButton() {
