@@ -67,7 +67,6 @@ open class EthAccountCoordinator {
     }
     
     open func launch(keystore: GethKeyStore, password: String) -> GethAccount? {
-        
         _keystore = keystore
         let tmp = getAccount(password)
         if tmp == nil {
@@ -75,7 +74,6 @@ open class EthAccountCoordinator {
         } else {
             print(tmp?.getAddress().getHex())
         }
-        print(password)
         print("in launch")
         _account = _createAccount(keystore, password: password)
         print("current address: \(_account?.getAddress().getHex())")

@@ -125,14 +125,6 @@ class SendCurrentAppWalletDataManager {
             print("keystoreStringValue: \(keystoreStringValue)")
             preconditionFailure("Fail to use keystore to get the keystoreing address.")
         }
-        
-        print("################### keystore ###################")
-        print(wallet!.getKeystore())
-        print("################### end ###################")
-        
-        print("################### keystore password ###################")
-        print(wallet!.getKeystorePassword())
-        print("################### end ###################")
 
         let end = Date()
         let timeInterval: Double = end.timeIntervalSince(start)
