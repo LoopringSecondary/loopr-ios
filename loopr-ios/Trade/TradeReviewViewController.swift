@@ -29,6 +29,10 @@ class TradeReviewViewController: UIViewController {
     @IBOutlet weak var buyInfoLabel: UILabel!
     @IBOutlet weak var priceBuyLabel: UILabel!
     @IBOutlet weak var priceSellLabel: UILabel!
+    @IBOutlet weak var unitBuyLabel: UILabel!
+    @IBOutlet weak var unitSellLabel: UILabel!
+    @IBOutlet weak var buyEqualLabel: UILabel!
+    @IBOutlet weak var sellEqualLabel: UILabel!
     @IBOutlet weak var validTipInShare: UILabel!
     @IBOutlet weak var validInShare: UILabel!
     @IBOutlet weak var loopringTipLabel: UILabel!
@@ -103,16 +107,29 @@ class TradeReviewViewController: UIViewController {
         buyInfoLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
         buyInfoLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
         buyInfoLabel.text = order.amountBuy.withCommas(length) + " " + order.tokenBuy
-       
+        
         let price = order.amountBuy / order.amountSell
+        
+        unitBuyLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        unitBuyLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        unitBuyLabel.text = "1 \(order.tokenSell)"
+        
         priceBuyLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
         priceBuyLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
-        priceBuyLabel.textAlignment = .justified
-        priceBuyLabel.text = "1 \(order.tokenSell) = \(price.withCommas()) \(order.tokenBuy)"
+        priceBuyLabel.text = "\(price.withCommas()) \(order.tokenBuy)"
+        
+        unitSellLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        unitSellLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        unitSellLabel.text = "1 \(order.tokenBuy)"
+        
         priceSellLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
         priceSellLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
-        priceSellLabel.text = "1 \(order.tokenBuy) = \((1/price).withCommas()) \(order.tokenSell)"
-        priceSellLabel.textAlignment = .justified
+        priceSellLabel.text = "\((1/price).withCommas()) \(order.tokenSell)"
+        
+        buyEqualLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        buyEqualLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        sellEqualLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        sellEqualLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
         
         validTipInShare.font = FontConfigManager.shared.getCharactorFont(size: 12)
         validTipInShare.theme_textColor = GlobalPicker.contrastTextColor
