@@ -20,17 +20,25 @@ class OrderQRCodeViewController: UIViewController {
     @IBOutlet weak var shareOrderButton: UIButton!
     
     @IBOutlet weak var shareContentView: UIView!
-    @IBOutlet weak var logoImageView: UIImageView!
-    @IBOutlet weak var titleInShare: UILabel!
-    @IBOutlet weak var tokenSInShare: UIView!
-    @IBOutlet weak var tokenBInShare: UIView!
-    @IBOutlet weak var qrcodeInShare: UIImageView!
     @IBOutlet weak var shareImageView: UIImageView!
+    @IBOutlet weak var titleInShare: UILabel!
+    @IBOutlet weak var qrcodeInShare: UIImageView!
+    @IBOutlet weak var sellTipLabel: UILabel!
+    @IBOutlet weak var sellInfoLabel: UILabel!
+    @IBOutlet weak var buyTipLabel: UILabel!
+    @IBOutlet weak var buyInfoLabel: UILabel!
+    @IBOutlet weak var priceBuyLabel: UILabel!
+    @IBOutlet weak var priceSellLabel: UILabel!
+    @IBOutlet weak var unitBuyLabel: UILabel!
+    @IBOutlet weak var unitSellLabel: UILabel!
+    @IBOutlet weak var buyEqualLabel: UILabel!
+    @IBOutlet weak var sellEqualLabel: UILabel!
     @IBOutlet weak var validTipInShare: UILabel!
     @IBOutlet weak var validInShare: UILabel!
-    
-    var tokenSViewInShare: TradeViewOnlyViewController = TradeViewOnlyViewController()
-    var tokenBViewInShare: TradeViewOnlyViewController = TradeViewOnlyViewController()
+    @IBOutlet weak var loopringTipLabel: UILabel!
+    @IBOutlet weak var productLabel: UILabel!
+    @IBOutlet weak var urlLabel: UILabel!
+    @IBOutlet weak var logoImageView: UIImageView!
     
     var originalOrder: OriginalOrder?
     var qrcodeImage: UIImage!
@@ -51,25 +59,6 @@ class OrderQRCodeViewController: UIViewController {
         view.addGestureRecognizer(tap)
         
         // TokenView
-        tokenSViewInShare.view.frame = CGRect(x: 0, y: 0, width: tokenSInShare.frame.width, height: tokenSInShare.frame.height)
-        tokenSInShare.addSubview(tokenSViewInShare.view)
-        tokenSViewInShare.view.bindFrameToAnotherView(anotherView: tokenSInShare)
-        
-        tokenBViewInShare.view.frame = CGRect(x: 0, y: 0, width: tokenBInShare.frame.width, height: tokenBInShare.frame.height)
-        tokenBInShare.addSubview(tokenBViewInShare.view)
-        tokenBViewInShare.view.bindFrameToAnotherView(anotherView: tokenBInShare)
-
-        shareContentView.theme_backgroundColor = ColorPicker.backgroundColor
-        logoImageView.image = UIImage(named: "\(Production.getProduct())_share_logo")
-        titleInShare.setTitleCharFont()
-        titleInShare.text = Production.getProduct()
-        validTipInShare.font = FontConfigManager.shared.getCharactorFont(size: 14)
-        validTipInShare.theme_textColor = GlobalPicker.contrastTextLightColor
-        validTipInShare.text = "订单有效期"
-        validInShare.font = FontConfigManager.shared.getCharactorFont(size: 14)
-        validInShare.theme_textColor = GlobalPicker.contrastTextColor
-        shareImageView.image = UIImage(named: "Share-order")
-        
         qrcodeIconImageView.image = UIImage(named: "Order-qrcode-icon" + ColorTheme.getTheme())
 
         saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
@@ -77,6 +66,78 @@ class OrderQRCodeViewController: UIViewController {
         shareOrderButton.setTitle(LocalizedString("Share Order", comment: ""), for: .normal)
         shareOrderButton.setupSecondary(height: 44)
         generateQRCode(originalOrder: self.originalOrder!)
+        
+        if let order = self.originalOrder {
+            setupShareView(order: order)
+        }
+    }
+    
+    func setupShareView(order: OriginalOrder) {
+        shareImageView.image = UIImage(named: "Share-order")
+        logoImageView.image = UIImage(named: "\(Production.getProduct())_share_logo")
+        
+        titleInShare.font = FontConfigManager.shared.getCharactorFont(size: 20)
+        titleInShare.theme_textColor = GlobalPicker.contrastTextColor
+        titleInShare.text = LocalizedString("Loopring Order", comment: "")
+        
+        sellTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        sellTipLabel.theme_textColor = GlobalPicker.contrastTextColor
+        sellTipLabel.text = LocalizedString("Sell", comment: "")
+        var length = Asset.getLength(of: order.tokenSell) ?? 4
+        sellInfoLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        sellInfoLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        sellInfoLabel.text = order.amountSell.withCommas(length)  + " " + order.tokenSell
+        
+        buyTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        buyTipLabel.theme_textColor = GlobalPicker.contrastTextColor
+        buyTipLabel.text = LocalizedString("Buy", comment: "")
+        length = Asset.getLength(of: order.tokenBuy) ?? 4
+        buyInfoLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        buyInfoLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        buyInfoLabel.text = order.amountBuy.withCommas(length) + " " + order.tokenBuy
+        
+        let price = order.amountBuy / order.amountSell
+        
+        unitBuyLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        unitBuyLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        unitBuyLabel.text = "1 \(order.tokenSell)"
+        
+        priceBuyLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        priceBuyLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        priceBuyLabel.text = "\(price.withCommas()) \(order.tokenBuy)"
+        
+        unitSellLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        unitSellLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        unitSellLabel.text = "1 \(order.tokenBuy)"
+        
+        priceSellLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        priceSellLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        priceSellLabel.text = "\((1/price).withCommas()) \(order.tokenSell)"
+        
+        buyEqualLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        buyEqualLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        sellEqualLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        sellEqualLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        
+        validTipInShare.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        validTipInShare.theme_textColor = GlobalPicker.contrastTextColor
+        validTipInShare.text = LocalizedString("Time to Live", comment: "")
+        let until = DateUtil.convertToDate(UInt(order.validUntil), format: "MM-dd HH:mm")
+        validInShare.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        validInShare.theme_textColor = GlobalPicker.contrastTextDarkColor
+        validInShare.text = until
+        
+        loopringTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        loopringTipLabel.theme_textColor = GlobalPicker.contrastTextLightColor
+        loopringTipLabel.text = LocalizedString("Loopring_TIP", comment: "")
+        
+        productLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        productLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        productLabel.text = Production.getProduct()
+        
+        urlLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        urlLabel.theme_textColor = GlobalPicker.contrastTextColor
+        urlLabel.text = Production.getUrlText()
     }
     
     func generateQRCode(originalOrder: OriginalOrder) {
@@ -112,9 +173,6 @@ class OrderQRCodeViewController: UIViewController {
         super.viewWillAppear(animated)
         guard let originalOrder = self.originalOrder, let image = self.qrcodeImageCIImage else { return }
         
-        tokenSViewInShare.update(type: .sell, symbol: originalOrder.tokenSell, amount: originalOrder.amountSell)
-        tokenBViewInShare.update(type: .buy, symbol: originalOrder.tokenBuy, amount: originalOrder.amountBuy)
-        
         generateQRCode(originalOrder: originalOrder)
         qrcodeImageView.image = qrcodeImage
         let scaleX = qrcodeImageView.frame.size.width / image.extent.size.width
@@ -122,10 +180,6 @@ class OrderQRCodeViewController: UIViewController {
         let transformedImage = image.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
         qrcodeImageView.image = UIImage.init(ciImage: transformedImage)
         qrcodeInShare.image = UIImage.init(ciImage: transformedImage)
-        
-        let since = DateUtil.convertToDate(UInt(originalOrder.validSince), format: "MM-dd HH:mm")
-        let until = DateUtil.convertToDate(UInt(originalOrder.validUntil), format: "MM-dd HH:mm")
-        validInShare.text = "\(since) ~ \(until)"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
