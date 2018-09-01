@@ -10,7 +10,7 @@ import XCTest
 import Geth
 @testable import loopr_ios
 
-class KeystoreAndWeb3SwiftTests: XCTestCase {
+class _KeystoreAndWeb3SwiftTests: XCTestCase {
 
     override func setUp() {
         super.setUp()

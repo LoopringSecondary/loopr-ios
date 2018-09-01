@@ -22,7 +22,7 @@ class GenerateWalletDataManagerTests: XCTestCase {
     }
     
     func test1() {
-        GenerateWalletDataManager.shared.new()
+        GenerateWalletDataManager.shared.newMnemonics()
         XCTAssertEqual(GenerateWalletDataManager.shared.getMnemonics().count, 12)
         
         XCTAssertFalse(GenerateWalletDataManager.shared.verify())

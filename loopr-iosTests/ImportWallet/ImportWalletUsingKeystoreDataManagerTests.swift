@@ -29,7 +29,7 @@ class ImportWalletUsingKeystoreDataManagerTests: XCTestCase {
         
         AppWalletDataManager.shared.logout(appWallet: appWallet)
         
-        XCTAssertNoThrow(try ImportWalletUsingKeystoreDataManager.shared.unlockWallet(keystoreStringValue: keystoreString, password: "1234567890"))
+        XCTAssertNoThrow(try ImportWalletUsingKeystoreDataManager.shared.unlockWallet(userInputKeystoreStringValue: keystoreString, password: "1234567890"))
         // let address = "0x11381c3a20c2793b9f17502d72bda905e03734f2"
         // let address2 = ImportWalletUsingKeystoreDataManager.shared.address
         // XCTAssertEqual(address, address2)

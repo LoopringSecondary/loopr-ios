@@ -89,7 +89,7 @@ class CreatePrivateKeyTests: XCTestCase {
         XCTAssertEqual(keystoreKey1.address.description, key.address.description)
     }
     
-    func testMeasure() {
+    func _testMeasure() {
         self.measure {
            _ = try! KeystoreKey(password: password)
         }
