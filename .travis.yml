@@ -1,4 +1,4 @@
 language: swift
-xcode_project: loopr-ios.xcodeproj # path to your xcodeproj folder
+xcode_workspace: loopr-ios.xcworkspace # path to your xcodeproj folder
 xcode_scheme: loopr-ios
 xcode_destination: platform=iOS Simulator,OS=11.3,name=iPhone X
