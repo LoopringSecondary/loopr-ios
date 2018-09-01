@@ -60,7 +60,29 @@ class TokenDataManager {
             completionHandler()
         }
     }
-    
+
+    func loadCustomTokensForCurrentWallet(completionHandler: @escaping () -> Void) {
+        if let wallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
+            LoopringAPIRequest.getCustomTokens(owner: wallet.address) { (tokens, error) in
+                guard let tokens = tokens, error == nil else {
+                    completionHandler()
+                    return
+                }
+                for token in tokens {
+                    // Check if the token exists in self.tokens.
+                    if !self.tokens.contains(where: { (element) -> Bool in
+                        return element.symbol.lowercased() == token.symbol.lowercased()
+                    }) {
+                        if !blackList.contains(token.symbol.uppercased()) {
+                            self.tokens.append(token)
+                        }
+                    }
+                }
+                completionHandler()
+            }
+        }
+    }
+
     func loadCustomTokens(completionHandler: @escaping () -> Void) {
         let wallets = AppWalletDataManager.shared.getWallets()
         for wallet in wallets {

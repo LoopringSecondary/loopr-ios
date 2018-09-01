@@ -104,16 +104,15 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         let dispatchGroup = DispatchGroup()
-        /*
+        
         // tokens.json contains 67 tokens.
         if TokenDataManager.shared.getTokens().count < 70 {
             dispatchGroup.enter()
-            TokenDataManager.shared.loadCustomTokens(completionHandler: {
+            TokenDataManager.shared.loadCustomTokensForCurrentWallet(completionHandler: {
                 dispatchGroup.leave()
             })
         }
-        */
-        
+
         dispatchGroup.enter()
         CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote(getPrice: true, completionHandler: { _, error in
             print("receive CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote() in WalletViewController")
