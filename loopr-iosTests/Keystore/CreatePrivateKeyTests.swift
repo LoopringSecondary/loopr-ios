@@ -43,7 +43,7 @@ class CreatePrivateKeyTests: XCTestCase {
         XCTAssertEqual(keystoreKey1.address, keystoneKey2.address)
     }
 
-    func testCreateKey_2() {
+    func _testCreateKey_2() {
         // Generate a key
         let keystoreKey1 = try! KeystoreKey(password: "123456")
         
@@ -56,7 +56,7 @@ class CreatePrivateKeyTests: XCTestCase {
         
         // Private key
         print(decrypted1.hexString)
-
+        
         // If the password is different, then it should return an invalid input error.
         XCTAssertThrowsError(try KeystoreKey(password: "password", key: decrypted1)) { error in
             guard case CryptoSwift.PKCS5.PBKDF2.Error.invalidInput = error else {

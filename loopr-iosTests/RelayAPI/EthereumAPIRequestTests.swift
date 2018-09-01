@@ -71,6 +71,7 @@ class EthereumAPIRequestTests: XCTestCase {
         EthereumAPIRequest.eth_estimateGas(from: nil, to: testAddress, gas: nil, gasPrice: nil, value: nil, data: "0x095ea7b30000000000000000000000004c44d51cf0d35172fce9d69e2beac728de980e9d0000000000000000000000000000000000000000000000000de0b6b3a7640000") { data, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
+                XCTFail()
                 return
             }
             XCTAssertNotNil(data)
@@ -97,9 +98,10 @@ class EthereumAPIRequestTests: XCTestCase {
     
     func testGetTransactionByHash() {
         let expectation = XCTestExpectation()
-        EthereumAPIRequest.eth_getTransactionByHash(data: "0xae9d9173248dfae493662fbb200fe79c36c94163c2c25f068d3114024ed216b5") { data, error in
+        EthereumAPIRequest.eth_getTransactionByHash(data: "0x9e47f07489795b1eada67765e52bd300af1616bb7aa5f0cd0c134ec6ad100b39") { data, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
+                XCTFail()
                 return
             }
             XCTAssertNotNil(data)

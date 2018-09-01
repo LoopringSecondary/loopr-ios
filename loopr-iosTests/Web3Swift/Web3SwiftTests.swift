@@ -52,7 +52,7 @@ class Web3SwiftTests: XCTestCase {
     }
     
     // testKeystore.json and password 123456 will unlock the address 0x7C0C5B3C78f04f4ca42EBFb3cb4EA57D5e549392
-    func testImportWalletUsingKeystore() {
+    func _testImportWalletUsingKeystore() {
         let currentFile = #file
         let keydir = currentFile.replacingOccurrences(of: "Web3SwiftTests.swift", with: "", options: .regularExpression)
         let keystore = GethKeyStore.init(keydir, scryptN: GethLightScryptN, scryptP: GethLightScryptP)!
