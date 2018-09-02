@@ -81,6 +81,7 @@ class SettingLRCFeeRatioViewController: UIViewController, StepSliderDelegate {
     }
 
     @objc func pressedSaveButton(_ sender: Any) {
+        // Format the Double value
         let roundedStepValue = Int(round(currentValue*1000))
         SettingDataManager.shared.setLrcFeeRatio(Double(roundedStepValue)/1000.0)
         self.navigationController?.popViewController(animated: true)
@@ -88,9 +89,9 @@ class SettingLRCFeeRatioViewController: UIViewController, StepSliderDelegate {
 
     func stepSliderValueChanged(_ value: Double) {
         currentValue = (value*49 + 1)/1000
-        let roundedStepValue = Int(round(currentValue*1000))
-        let perMillSymbol = NumberFormatter().perMillSymbol!
-        currentValueLabel.text = LocalizedString("LRC Fee Ratio", comment: "") + ": \(roundedStepValue)\(perMillSymbol)"
+        let roundedStepValue = round(currentValue*1000)/10
+        let percentSymbol = NumberFormatter().percentSymbol!
+        currentValueLabel.text = LocalizedString("LRC Fee Ratio", comment: "") + ": \(roundedStepValue)\(percentSymbol)"
     }
 
 }

@@ -105,10 +105,20 @@ class SettingDataManager {
         defaults.set(showOtherPairs, forKey: UserDefaultsKeys.showOtherPairs.rawValue)
     }
 
+    // between 0.001 - 0.05
     func setLrcFeeRatio(_ newValue: Double) {
+        let lrcFeeRatio: Double
+        if newValue < 0.001 {
+            lrcFeeRatio = 0.001
+        } else if newValue > 0.05 {
+            lrcFeeRatio = 0.05
+        } else {
+            lrcFeeRatio = newValue
+        }
+        
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: UserDefaultsKeys.useLrcFeeRatioUserDefineValue.rawValue)
-        defaults.set(newValue, forKey: UserDefaultsKeys.lrcFeeRatio.rawValue)
+        defaults.set(lrcFeeRatio, forKey: UserDefaultsKeys.lrcFeeRatio.rawValue)
     }
 
     func getLrcFeeRatio() -> Double {
@@ -124,13 +134,23 @@ class SettingDataManager {
     
     func getLrcFeeRatioDescription() -> String {
         let numberFormatter = NumberFormatter()
-        return String(SettingDataManager.shared.getLrcFeeRatio()*1000) + numberFormatter.perMillSymbol
+        return String(SettingDataManager.shared.getLrcFeeRatio()*100) + numberFormatter.percentSymbol
     }
     
+    // between 0.0 - 1.0
     func setMarginSplit(_ newValue: Double) {
+        let marginSplit: Double
+        if newValue < 0.0 {
+            marginSplit = 0.0
+        } else if newValue > 1.0 {
+            marginSplit = 1.0
+        } else {
+            marginSplit = newValue
+        }
+
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: UserDefaultsKeys.useMarginSplitUserDefineValue.rawValue)
-        defaults.set(newValue, forKey: UserDefaultsKeys.marginSplit.rawValue)
+        defaults.set(marginSplit, forKey: UserDefaultsKeys.marginSplit.rawValue)
     }
 
     func getMarginSplit() -> Double {
