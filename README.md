@@ -10,10 +10,6 @@ You can download the app on
   <img src="docs/screenshots/Trade.png" width="300">
 </p>
 
-### Design
-Please refer
-[https://www.dropbox.com/s/znhbbdszw63lq4c/loopring_ios_0317.zip?dl=0](https://www.dropbox.com/s/znhbbdszw63lq4c/loopring_ios_0317.zip?dl=0)
-
 ### Development 
 
 ##### Stack
