@@ -365,6 +365,8 @@
 		ACA677CF207D1BEC00D34A2F /* SettingChangeWalletNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677CD207D1BEB00D34A2F /* SettingChangeWalletNameViewController.swift */; };
 		ACA677D0207D1BEC00D34A2F /* SettingChangeWalletNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA677CE207D1BEB00D34A2F /* SettingChangeWalletNameViewController.xib */; };
 		ACA677D3207DCF1900D34A2F /* RelayAPIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA677D2207DCF1900D34A2F /* RelayAPIConfiguration.swift */; };
+		ACACB8B2213B8E9300F5ACC5 /* PushNotificationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACB8B1213B8E9300F5ACC5 /* PushNotificationDataManager.swift */; };
+		ACACB8B5213B90BF00F5ACC5 /* PushNotificationDeviceDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACB8B4213B90BF00F5ACC5 /* PushNotificationDeviceDataManager.swift */; };
 		ACB1482321057B9300AB2343 /* GenerateWalletEnterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB1482121057B9300AB2343 /* GenerateWalletEnterNameViewController.swift */; };
 		ACB1482421057B9300AB2343 /* GenerateWalletEnterNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB1482221057B9300AB2343 /* GenerateWalletEnterNameViewController.xib */; };
 		ACB41A6C20B54A2D00A92C9D /* AuthenticationNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB41A6B20B54A2C00A92C9D /* AuthenticationNavigationViewController.swift */; };
@@ -867,6 +869,8 @@
 		ACA677CD207D1BEB00D34A2F /* SettingChangeWalletNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingChangeWalletNameViewController.swift; sourceTree = "<group>"; };
 		ACA677CE207D1BEB00D34A2F /* SettingChangeWalletNameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingChangeWalletNameViewController.xib; sourceTree = "<group>"; };
 		ACA677D2207DCF1900D34A2F /* RelayAPIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelayAPIConfiguration.swift; sourceTree = "<group>"; };
+		ACACB8B1213B8E9300F5ACC5 /* PushNotificationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationDataManager.swift; sourceTree = "<group>"; };
+		ACACB8B4213B90BF00F5ACC5 /* PushNotificationDeviceDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationDeviceDataManager.swift; sourceTree = "<group>"; };
 		ACB1482121057B9300AB2343 /* GenerateWalletEnterNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateWalletEnterNameViewController.swift; sourceTree = "<group>"; };
 		ACB1482221057B9300AB2343 /* GenerateWalletEnterNameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenerateWalletEnterNameViewController.xib; sourceTree = "<group>"; };
 		ACB41A6B20B54A2C00A92C9D /* AuthenticationNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationNavigationViewController.swift; sourceTree = "<group>"; };
@@ -1599,6 +1603,7 @@
 				AC5288AF208300570002AEAD /* Utils */,
 				AC798E482022B93A0071D477 /* Main.storyboard */,
 				C8BF959C202696A900343B9A /* MainTabController.swift */,
+				ACACB8B3213B8E9800F5ACC5 /* PushNotification */,
 				AC45EFEC20D0D437004F6EC0 /* H5Dex */,
 				ACB746E22043C5CC006C2BF5 /* QRCode */,
 				ACB97C71207160B300775D4C /* FoundationExtensions */,
@@ -1819,6 +1824,15 @@
 				ACA677CE207D1BEB00D34A2F /* SettingChangeWalletNameViewController.xib */,
 			);
 			path = ChangeWalletName;
+			sourceTree = "<group>";
+		};
+		ACACB8B3213B8E9800F5ACC5 /* PushNotification */ = {
+			isa = PBXGroup;
+			children = (
+				ACACB8B1213B8E9300F5ACC5 /* PushNotificationDataManager.swift */,
+				ACACB8B4213B90BF00F5ACC5 /* PushNotificationDeviceDataManager.swift */,
+			);
+			path = PushNotification;
 			sourceTree = "<group>";
 		};
 		ACB41A6A20B549E400A92C9D /* TouchIDAndFaceIDAuthentication */ = {
@@ -2780,6 +2794,7 @@
 				ACCCFDCE203BEF2200B98F99 /* UITextFieldExtension.swift in Sources */,
 				AC131A1421101AD0001998A0 /* MarketDetailTradeHistoryTableViewCell.swift in Sources */,
 				AC2D2C0B2089CE1F00D619AD /* ImportWalletUsingKeystoreDataManager.swift in Sources */,
+				ACACB8B5213B90BF00F5ACC5 /* PushNotificationDeviceDataManager.swift in Sources */,
 				AC9DC45A21159084002D7D23 /* MiniToLargeViewInteractive.swift in Sources */,
 				AC45EFEE20D0D474004F6EC0 /* H5DexNavigationController.swift in Sources */,
 				ACDBF101203FE73B000F0DEC /* ReorderController.swift in Sources */,
@@ -2959,6 +2974,7 @@
 				AC6A3478210D740500AE615B /* MarketDetailSwipeViewController.swift in Sources */,
 				AC131A06210D7A1A001998A0 /* MarketDetailDepthViewController.swift in Sources */,
 				94A1C0DC2128126D00FD3A1F /* SettingPartnerViewController.swift in Sources */,
+				ACACB8B2213B8E9300F5ACC5 /* PushNotificationDataManager.swift in Sources */,
 				ACA677B82079970600D34A2F /* ExportKeystoreSwipeViewController.swift in Sources */,
 				6630916821005B54006DA630 /* AssetSwipeViewController.swift in Sources */,
 				ACA677C42079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.swift in Sources */,
