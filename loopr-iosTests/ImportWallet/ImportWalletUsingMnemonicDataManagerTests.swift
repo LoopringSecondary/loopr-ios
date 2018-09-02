@@ -28,7 +28,7 @@ class ImportWalletUsingMnemonicDataManagerTests: XCTestCase {
         ImportWalletUsingMnemonicDataManager.shared.generateAddresses()
         ImportWalletUsingMnemonicDataManager.shared.complete { appWallet, error in
             XCTAssertNotNil(appWallet)
-            XCTAssertEqual(appWallet!.address, "0x3572d61b6942f410f3ea43b5c4c2ed5c2c79276e")
+            XCTAssertEqual(appWallet!.address.lowercased(), "0x3572d61b6942f410f3ea43b5c4c2ed5c2c79276e".lowercased())
             SendCurrentAppWalletDataManager.shared._keystore()
         }
     }
