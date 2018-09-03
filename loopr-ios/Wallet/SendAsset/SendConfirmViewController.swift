@@ -75,7 +75,7 @@ class SendConfirmViewController: UIViewController {
         gasInfoLabel.theme_textColor = GlobalPicker.textLightColor
         gasInfoLabel.text = gasAmountText
         
-        sendButton.setupPrimary(height: 44)
+        sendButton.setupSecondary(height: 44)
         sendButton.title = LocalizedString("Send", comment: "")
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
