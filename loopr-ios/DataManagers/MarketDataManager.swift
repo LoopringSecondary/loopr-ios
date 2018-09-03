@@ -45,7 +45,7 @@ class MarketDataManager {
     }
     
     func getTrends(market: String, interval: String = "1Hr") -> [Trend]? {
-        var result: [Trend]? = nil
+        var result: [Trend]?
         result = self.trends.filter { (trend) -> Bool in
             return trend.market.lowercased() == market.lowercased() &&
             trend.intervals.lowercased() == interval.lowercased()

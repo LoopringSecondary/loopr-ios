@@ -20,6 +20,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var priceValueLabel: UILabel!
+    @IBOutlet weak var priceTipLabel: UILabel!
     @IBOutlet weak var LRCFeeLabel: UILabel!
     @IBOutlet weak var LRCFeeValueLabel: UILabel!
     @IBOutlet weak var marginSplitLabel: UILabel!
@@ -38,10 +39,14 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     @IBOutlet weak var declineButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
+    @IBOutlet weak var priceTailing: NSLayoutConstraint!
+    
     var tokenSView: TradeViewOnlyViewController = TradeViewOnlyViewController()
     var tokenBView: TradeViewOnlyViewController = TradeViewOnlyViewController()
 
     var order: OriginalOrder?
+    var price: String? = "0.0"
+    var message: String = ""
     var verifyInfo: [String: Double]?
     var dismissClosure: (() -> Void)?
     var parentNavController: UINavigationController?
@@ -68,6 +73,18 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         priceLabel.text = LocalizedString("Price", comment: "")
         priceLabel.setTitleCharFont()
         priceValueLabel.setTitleDigitFont()
+        
+        priceTipLabel.setTitleCharFont()
+        priceTipLabel.textColor = UIColor.fail
+        priceTipLabel.text = LocalizedString("Irrational", comment: "")
+        
+        if !validateRational() {
+            priceTipLabel.isHidden = false
+            priceTailing.constant = 104
+        } else {
+            priceTipLabel.isHidden = true
+            priceTailing.constant = 20
+        }
         
         // Trading Fee
         LRCFeeLabel.text = LocalizedString("Trading Fee", comment: "")
@@ -109,6 +126,46 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
             updateLabels(order: order)
         }
         setupButtons()
+    }
+    
+    func isBuyingOrder() -> Bool {
+        var result: Bool = false
+        if self.order?.side == "buy" {
+            result = true
+        } else if self.order?.side == "sell" {
+            result = false
+        }
+        return result
+    }
+    
+    func validateRational() -> Bool {
+        let pair = PlaceOrderDataManager.shared.market.name
+        if let price = self.price, let value = Double(price),
+            let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
+            let header = LocalizedString("Your price is irrational, ", comment: "")
+            let footer = LocalizedString("Do you wish to continue trading or signing with the price?", comment: "")
+            let messageA = LocalizedString("which may cause your asset wastage! ", comment: "")
+            let messageB = LocalizedString("which may cause your order abolished! ", comment: "")
+            if isBuyingOrder() {
+                if value < 0.8 * market.balance {
+                    self.message = header + messageB + footer
+                    return false
+                } else if value > 1.2 * market.balance {
+                    self.message = header + messageA + footer
+                    return false
+                }
+            } else {
+                if value < 0.8 * market.balance {
+                    self.message = header + messageA + footer
+                    return false
+                } else if value > 1.2 * market.balance {
+                    self.message = header + messageB + footer
+                    return false
+                }
+            }
+            return true
+        }
+        return true
     }
 
     func setupButtons() {
@@ -165,9 +222,23 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     }
     
     func handleOrder() {
-        SVProgressHUD.show(withStatus: LocalizedString("Submitting order", comment: "") + "...")
-        self.verifyInfo = PlaceOrderDataManager.shared.verify(order: order!)
-        self.handleVerifyInfo()
+        if !priceTipLabel.isHidden {
+            let alert = UIAlertController(title: LocalizedString("Please Pay Attention", comment: ""), message: self.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+                DispatchQueue.main.async {
+                    SVProgressHUD.show(withStatus: LocalizedString("Submitting order", comment: "") + "...")
+                    self.verifyInfo = PlaceOrderDataManager.shared.verify(order: self.order!)
+                    self.handleVerifyInfo()
+                }
+            }))
+            alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            SVProgressHUD.show(withStatus: LocalizedString("Submitting order", comment: "") + "...")
+            self.verifyInfo = PlaceOrderDataManager.shared.verify(order: order!)
+            self.handleVerifyInfo()
+        }
     }
     
     func doSigning() {

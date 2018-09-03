@@ -382,6 +382,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             parentView.alpha = 0.25
             let viewController = PlaceOrderConfirmationViewController()
             viewController.order = order
+            viewController.price = priceTextField.text
             viewController.dismissClosure = { parentView.alpha = 1 }
             viewController.parentNavController = self.navigationController
             self.present(viewController, animated: true, completion: nil)
