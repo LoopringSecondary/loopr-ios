@@ -9,6 +9,7 @@
 import UIKit
 import Geth
 import SVProgressHUD
+import Crashlytics
 
 class SendConfirmViewController: UIViewController {
 
@@ -141,11 +142,21 @@ extension SendConfirmViewController {
             vc.asset = self.sendAsset
             vc.sendAmount = self.sendAmount
             vc.receiveAddress = self.receiveAddress
-            vc.navigationItem.title = "转账"
             if let error = error as NSError?,
                 let json = error.userInfo["message"] as? JSON,
                 let message = json.string {
                 vc.errorMessage = message
+                Answers.logCustomEvent(withName: "Send Token",
+                                       customAttributes: [
+                                            "success": false,
+                                            "token": self.sendAsset.total,
+                                            "amount": Double(self.sendAmount) ?? 0])
+            } else {
+                Answers.logCustomEvent(withName: "Send Token",
+                                       customAttributes: [
+                                            "success": true,
+                                            "token": self.sendAsset.total,
+                                            "amount": Double(self.sendAmount) ?? 0])
             }
             if let closure = self.dismissClosure {
                 closure()
