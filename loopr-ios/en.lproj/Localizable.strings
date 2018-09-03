@@ -283,7 +283,9 @@
 "Copy Keystore" = "Copy Keystore";
 "Clear Records of this Wallet" = "Clear Records of this Wallet";
 "Backup_Mnemonic_in_SettingManageWallet" = "Backup Mnemonic";
-
+"Prevent_Title" = "Do not take photo or capture screen";
+"Prevent_Tip" = "To avoid assets being stolen, please write down private key and keep in safe.";
+"Got it" = "Got it";
 
 /* General. Used in different pages. */
 "Confirmation" = "Confirmation";

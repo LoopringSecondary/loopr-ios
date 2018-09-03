@@ -101,6 +101,8 @@
 		94E185972051451C00D86FFA /* Initable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185962051451C00D86FFA /* Initable.swift */; };
 		94E185992051455C00D86FFA /* SimpleRespond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185982051455C00D86FFA /* SimpleRespond.swift */; };
 		94E1976E2099A68200E70E42 /* OrderDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E1976D2099A68200E70E42 /* OrderDataManagerTests.swift */; };
+		94E49ED4213CE99700CDDA02 /* PreventScreenShotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E49ED2213CE99700CDDA02 /* PreventScreenShotViewController.swift */; };
+		94E49ED5213CE99700CDDA02 /* PreventScreenShotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E49ED3213CE99700CDDA02 /* PreventScreenShotViewController.xib */; };
 		94E665E9207234C5001328BF /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E665E7207234C5001328BF /* OrderTableViewCell.swift */; };
 		94E665EA207234C5001328BF /* OrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E665E8207234C5001328BF /* OrderTableViewCell.xib */; };
 		94EE76A12113F1C5009D6A90 /* OrderHistorySwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EE769F2113F1C5009D6A90 /* OrderHistorySwipeViewController.swift */; };
@@ -599,6 +601,8 @@
 		94E185962051451C00D86FFA /* Initable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initable.swift; sourceTree = "<group>"; };
 		94E185982051455C00D86FFA /* SimpleRespond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRespond.swift; sourceTree = "<group>"; };
 		94E1976D2099A68200E70E42 /* OrderDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDataManagerTests.swift; sourceTree = "<group>"; };
+		94E49ED2213CE99700CDDA02 /* PreventScreenShotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreventScreenShotViewController.swift; sourceTree = "<group>"; };
+		94E49ED3213CE99700CDDA02 /* PreventScreenShotViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreventScreenShotViewController.xib; sourceTree = "<group>"; };
 		94E665E7207234C5001328BF /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		94E665E8207234C5001328BF /* OrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderTableViewCell.xib; sourceTree = "<group>"; };
 		94EE769F2113F1C5009D6A90 /* OrderHistorySwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistorySwipeViewController.swift; sourceTree = "<group>"; };
@@ -1529,6 +1533,8 @@
 				ACA677D1207D1BF900D34A2F /* ChangeWalletName */,
 				ACA677C62079D56C00D34A2F /* ExportPrivateKey */,
 				ACA677B52079928800D34A2F /* ExportKeystore */,
+				94E49ED2213CE99700CDDA02 /* PreventScreenShotViewController.swift */,
+				94E49ED3213CE99700CDDA02 /* PreventScreenShotViewController.xib */,
 			);
 			path = SettingWalletDetail;
 			sourceTree = "<group>";
@@ -2522,6 +2528,7 @@
 				AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */,
 				AC131A0B210D7A33001998A0 /* MarketDetailTradeHistoryViewController.xib in Resources */,
 				AC2ACA4C20FA0EC3009C77E7 /* Rubik-MediumItalic.ttf in Resources */,
+				94E49ED5213CE99700CDDA02 /* PreventScreenShotViewController.xib in Resources */,
 				AC299496212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.xib in Resources */,
 				AC78FC36209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib in Resources */,
 				941138C8210F12AD007FDC82 /* TTLViewController.xib in Resources */,
@@ -2863,6 +2870,7 @@
 				ACB41A6C20B54A2D00A92C9D /* AuthenticationNavigationViewController.swift in Sources */,
 				AC2ACA85210305F8009C77E7 /* TradeFAQDetailViewController.swift in Sources */,
 				948125672119B38E00453225 /* PartnerDataManager.swift in Sources */,
+				94E49ED4213CE99700CDDA02 /* PreventScreenShotViewController.swift in Sources */,
 				AC9280E7202F5A010009B574 /* UIStyleConfig.swift in Sources */,
 				AC31CE17205A121000A30335 /* NumericKeyboardProtocol.swift in Sources */,
 				AC31CE142057B5A400A30335 /* TradeReviewViewController.swift in Sources */,

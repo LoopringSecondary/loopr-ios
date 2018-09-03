@@ -27,7 +27,7 @@ class DefaultWebViewController: UIViewController {
         setBackButton()
         self.navigationItem.title = navigationTitle
         view.theme_backgroundColor = ["#fff", "#000"]
-        progressView.tintColor = UIColor.black
+        progressView.tintColor = UIColor.dark1
         progressView.setProgress(0, animated: false)
         progressView.alpha = 0.0
         

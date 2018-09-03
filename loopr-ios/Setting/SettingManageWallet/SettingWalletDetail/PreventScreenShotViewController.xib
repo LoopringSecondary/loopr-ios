@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PreventScreenShotViewController" customModule="loopr_ios" customModuleProvider="target">
+            <connections>
+                <outlet property="confirmButton" destination="pIS-BO-rYq" id="OqF-de-byx"/>
+                <outlet property="containerView" destination="bb2-R2-LVD" id="8oo-xb-7vX"/>
+                <outlet property="seperator" destination="0Zh-8k-QPZ" id="vM2-Ad-LD4"/>
+                <outlet property="tipInfoLabel" destination="cQz-fj-hrc" id="uCl-I8-rzh"/>
+                <outlet property="titleLabel" destination="v4u-3Q-1qp" id="U2Z-cB-NhV"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bb2-R2-LVD">
+                    <rect key="frame" x="29.5" y="218.5" width="315" height="250"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Prevent-screen-shot" translatesAutoresizingMaskIntoConstraints="NO" id="JJV-0t-8MR">
+                            <rect key="frame" x="137.5" y="32" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="NUr-r5-Qmb"/>
+                                <constraint firstAttribute="height" constant="40" id="QoZ-sU-Kbm"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4u-3Q-1qp">
+                            <rect key="frame" x="136.5" y="84" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如果有人获取您的私钥将会直接获取您的资产！请抄写下私钥并存放在安全的地方。" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQz-fj-hrc">
+                            <rect key="frame" x="48" y="121" width="219" height="50.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Zh-8k-QPZ">
+                            <rect key="frame" x="0.0" y="199" width="315" height="1"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="mj1-Yh-wie"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIS-BO-rYq">
+                            <rect key="frame" x="0.5" y="200" width="315" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="ihW-Ld-fjE"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="pressedConfirmButton:" destination="-1" eventType="touchUpInside" id="2Ra-Fb-aL1"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="cQz-fj-hrc" firstAttribute="leading" secondItem="bb2-R2-LVD" secondAttribute="leading" constant="48" id="6kt-bb-RpX"/>
+                        <constraint firstItem="JJV-0t-8MR" firstAttribute="top" secondItem="bb2-R2-LVD" secondAttribute="top" constant="32" id="Im2-xn-Uzk"/>
+                        <constraint firstItem="pIS-BO-rYq" firstAttribute="top" secondItem="0Zh-8k-QPZ" secondAttribute="bottom" id="NKU-wI-lOR"/>
+                        <constraint firstAttribute="height" constant="250" id="TG9-08-rBq"/>
+                        <constraint firstItem="JJV-0t-8MR" firstAttribute="centerX" secondItem="bb2-R2-LVD" secondAttribute="centerX" id="Wh7-yc-UAW"/>
+                        <constraint firstItem="0Zh-8k-QPZ" firstAttribute="width" secondItem="pIS-BO-rYq" secondAttribute="width" id="Xvq-ad-Fip"/>
+                        <constraint firstItem="pIS-BO-rYq" firstAttribute="width" secondItem="bb2-R2-LVD" secondAttribute="width" id="YlJ-uR-Ya6"/>
+                        <constraint firstItem="pIS-BO-rYq" firstAttribute="centerX" secondItem="bb2-R2-LVD" secondAttribute="centerX" id="bDs-M9-aGg"/>
+                        <constraint firstItem="0Zh-8k-QPZ" firstAttribute="centerX" secondItem="bb2-R2-LVD" secondAttribute="centerX" id="bL3-3p-KOH"/>
+                        <constraint firstAttribute="width" constant="315" id="boT-NG-vCx"/>
+                        <constraint firstAttribute="trailing" secondItem="cQz-fj-hrc" secondAttribute="trailing" constant="48" id="fXh-j2-GFD"/>
+                        <constraint firstAttribute="bottom" secondItem="pIS-BO-rYq" secondAttribute="bottom" id="hve-MW-1tz"/>
+                        <constraint firstItem="v4u-3Q-1qp" firstAttribute="centerX" secondItem="bb2-R2-LVD" secondAttribute="centerX" id="q9H-Bq-Z1g"/>
+                        <constraint firstItem="cQz-fj-hrc" firstAttribute="top" secondItem="v4u-3Q-1qp" secondAttribute="bottom" constant="16" id="wQJ-VE-MKI"/>
+                        <constraint firstItem="v4u-3Q-1qp" firstAttribute="top" secondItem="JJV-0t-8MR" secondAttribute="bottom" constant="12" id="xQa-xB-J1c"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="bb2-R2-LVD" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="0hK-iV-OQg"/>
+                <constraint firstItem="bb2-R2-LVD" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="9FK-Ol-vYf"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Prevent-screen-shot" width="42" height="42"/>
+    </resources>
+</document>

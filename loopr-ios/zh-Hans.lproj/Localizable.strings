@@ -284,7 +284,9 @@
 "Copy Keystore" = "复制Keystore";
 "Clear Records of this Wallet" = "删除钱包并清除钱包数据";
 "Backup_Mnemonic_in_SettingManageWallet" = "未备份助记词";
-
+"Prevent_Title" = "请勿拍照或截图";
+"Prevent_Tip" = "如果有人获取您的私钥将会直接获取您的资产！请抄写下私钥并存放在安全的地方。";
+"Got it" = "知道了";
 
 /* General. Used in different pages. */
 "Confirmation" = "确认";
