@@ -146,16 +146,16 @@ extension SendConfirmViewController {
                 let json = error.userInfo["message"] as? JSON,
                 let message = json.string {
                 vc.errorMessage = message
-                Answers.logCustomEvent(withName: "Send Token",
+                Answers.logCustomEvent(withName: "Send Token v1",
                                        customAttributes: [
-                                            "success": false,
-                                            "token": self.sendAsset.total,
+                                            "success": "false",
+                                            "token": self.sendAsset.symbol,
                                             "amount": Double(self.sendAmount) ?? 0])
             } else {
-                Answers.logCustomEvent(withName: "Send Token",
+                Answers.logCustomEvent(withName: "Send Token v1",
                                        customAttributes: [
-                                            "success": true,
-                                            "token": self.sendAsset.total,
+                                            "success": "true",
+                                            "token": self.sendAsset.symbol,
                                             "amount": Double(self.sendAmount) ?? 0])
             }
             if let closure = self.dismissClosure {
