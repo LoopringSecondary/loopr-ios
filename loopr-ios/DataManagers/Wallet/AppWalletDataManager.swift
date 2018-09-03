@@ -37,7 +37,7 @@ class AppWalletDataManager {
             if appWallet == CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
                 if  appWallets.count > 0 {
                     let appWallet = AppWalletDataManager.shared.appWallets[0]
-                    CurrentAppWalletDataManager.shared.setCurrentAppWallet(appWallet)
+                    CurrentAppWalletDataManager.shared.setCurrentAppWallet(appWallet, completionHandler: {})
                 } else {
                     return
                 }
@@ -218,7 +218,7 @@ class AppWalletDataManager {
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         
         // Set the current AppWallet.
-        CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
+        CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet, completionHandler: {})
         
         completionHandler(newAppWallet, nil)
     }

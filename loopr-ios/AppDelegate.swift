@@ -150,13 +150,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         print("applicationDidBecomeActive")
 
+        // Check network connection.
         let manager = NetworkingReachabilityManager.shared
         if manager?.isReachable == false {
             self.showNetworkLossBanner()
         }
         
         // Get nonce from eth, not relay. Cost time maybe.
-        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
+        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum(completionHandler: {})
 
         // Touch ID and Face ID
         if AuthenticationDataManager.shared.getPasscodeSetting() && !AuthenticationDataManager.shared.hasLogin {

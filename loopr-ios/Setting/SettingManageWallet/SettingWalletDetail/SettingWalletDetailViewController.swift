@@ -52,8 +52,8 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     @IBAction func pressedSwitchWalletButton(_ sender: Any) {
         let alertController = UIAlertController(title: LocalizedString("Switch to this Wallet", comment: ""), message: nil, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
-            CurrentAppWalletDataManager.shared.setCurrentAppWallet(self.appWallet)
-            
+            CurrentAppWalletDataManager.shared.setCurrentAppWallet(self.appWallet, completionHandler: {})
+
             // Pop to SettingViewController
             for controller in self.navigationController!.viewControllers as Array {
                 if controller.isKind(of: SettingViewController.self) {

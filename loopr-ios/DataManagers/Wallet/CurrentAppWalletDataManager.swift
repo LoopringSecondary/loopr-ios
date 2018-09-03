@@ -27,16 +27,16 @@ class CurrentAppWalletDataManager {
         getCurrentAppWalletFromLocalStorage()
     }
     
-    func getCurrentAppWalletFromLocalStorage() {
+    private func getCurrentAppWalletFromLocalStorage() {
         let defaults = UserDefaults.standard
         if let privateKeyString = defaults.string(forKey: UserDefaultsKeys.currentAppWallet.rawValue) {
             for appWallet in AppWalletDataManager.shared.getWallets() where appWallet.privateKey == privateKeyString {
-                setCurrentAppWallet(appWallet)
+                setCurrentAppWallet(appWallet, completionHandler: {})
             }
         }
     }
-    
-    func setCurrentAppWallet(_ appWallet: AppWallet) {
+
+    func setCurrentAppWallet(_ appWallet: AppWallet, completionHandler: @escaping () -> Void) {
         print("setCurrentAppWallet ...")
         let defaults = UserDefaults.standard
         defaults.set(appWallet.privateKey, forKey: UserDefaultsKeys.currentAppWallet.rawValue)
@@ -53,7 +53,7 @@ class CurrentAppWalletDataManager {
         PartnerDataManager.shared.createPartner()
 
         // Get nonce. It's a slow API request.
-        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
+        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum(completionHandler: {})
 
         // Publish a notification to update UI
         DispatchQueue.main.async {
@@ -181,6 +181,7 @@ class CurrentAppWalletDataManager {
         }
     }
     
+    // TODO: disabled due to the networking perform issue.
     func startGetBalance() {
         guard let wallet = currentAppWallet else {
             return
