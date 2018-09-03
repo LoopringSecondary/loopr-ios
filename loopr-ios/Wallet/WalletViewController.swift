@@ -441,7 +441,6 @@ extension WalletViewController: MKDropdownMenuDelegate {
     }
     
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        print(row)
         let baseView = UIView(frame: CGRect(x: 0, y: 0, width: 160, height: 50))
         baseView.backgroundColor = UIColor.dark2
         

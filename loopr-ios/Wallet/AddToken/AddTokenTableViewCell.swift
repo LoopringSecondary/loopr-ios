@@ -53,7 +53,7 @@ class AddTokenTableViewCell: UITableViewCell {
             symbolLabel.text = "\(token.symbol)"
             nameLabel.text = token.source
 
-            if CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getTokenList().contains(token.symbol) {
+            if CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getTokenList().contains(token.symbol) && !CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getManuallyDisabledTokenList().contains(token.symbol) {
                 addSwitch.setOn(true, animated: false)
             } else {
                 addSwitch.setOn(false, animated: false)
@@ -64,10 +64,10 @@ class AddTokenTableViewCell: UITableViewCell {
     @IBAction func toggledAddSwitch(_ sender: Any) {
         if addSwitch.isOn {
             print("toggledAddSwitch ON")
-            CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.updateTokenList([token!.symbol], add: true)
+            CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.updateTokenListManually([token!.symbol], add: true)
         } else {
             print ("toggledAddSwitch OFF")
-            CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.updateTokenList([token!.symbol], add: false)
+            CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.updateTokenListManually([token!.symbol], add: false)
         }
     }
 

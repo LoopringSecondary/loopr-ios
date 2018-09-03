@@ -104,10 +104,11 @@ class CurrentAppWalletDataManager {
             asset.total > 0.001 || asset.balance > 0.01
         })
     }
-    
+
     // Used in WalletViewController with hide small assets option
     func getAssetsWithHideSmallAssetsOption() -> [Asset] {
         print(currentAppWallet!.getTokenList())
+        print(currentAppWallet!.getManuallyDisabledTokenList())
         for tokenSymbol in currentAppWallet!.getTokenList() {
             if let token = TokenDataManager.shared.getTokenBySymbol(tokenSymbol) {
                 let newAsset = Asset(token: token)
@@ -116,9 +117,12 @@ class CurrentAppWalletDataManager {
                 }
             }
         }
-
+        
         return self.assets.filter({ (asset) -> Bool in
             return currentAppWallet!.getTokenList().contains(asset.symbol) || asset.balance > 0.001
+        }).filter({ (asset) -> Bool in
+            // Hide tokens when users manually hide tokens in the token list view.
+            return !currentAppWallet!.getManuallyDisabledTokenList().contains(asset.symbol)
         }).sorted(by: { (a, b) -> Bool in
             if a.symbol == "ETH" || b.symbol == "ETH" {
                 return a.symbol == "ETH"
