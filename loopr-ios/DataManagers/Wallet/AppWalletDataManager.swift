@@ -57,7 +57,7 @@ class AppWalletDataManager {
     
     func isWalletVerified(address: String) -> Bool {
         getAppWalletsFromLocalStorage()
-        let appWallets = self.appWallets.filter { $0.address == address }
+        let appWallets = self.appWallets.filter { $0.address.uppercased() == address.uppercased() }
         if appWallets.count != 1 {
             return false
         }
@@ -75,12 +75,12 @@ class AppWalletDataManager {
         if address.trim() == "" {
             return true
         }
-        let results = appWallets.filter { $0.address == address }
+        let results = appWallets.filter { $0.address.uppercased() == address.uppercased() }
         return !results.isEmpty
     }
     
     func getWallet(address: String) -> AppWallet? {
-        let results = appWallets.filter { $0.address == address }
+        let results = appWallets.filter { $0.address.uppercased() == address.uppercased() }
         if !results.isEmpty {
             return results[0]
         } else {
@@ -89,9 +89,20 @@ class AppWalletDataManager {
     }
     
     func getWallets() -> [AppWallet] {
-        return appWallets
+        // Remove duplicate items
+        var results: [AppWallet] = []
+        for appWallet in self.appWallets {
+            var found = false
+            for result in results where appWallet == result {
+                found = true
+            }
+            if !found {
+                results.append(appWallet)
+            }
+        }
+        return results
     }
-    
+
     func getAppWalletsFromLocalStorage() {
         let defaults = UserDefaults.standard
         if let decodedData = defaults.data(forKey: UserDefaultsKeys.appWallets.rawValue) {
