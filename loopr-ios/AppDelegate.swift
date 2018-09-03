@@ -123,7 +123,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-        print("applicationWillResignActive")
+        let backgroundImage = UIImageView()
+        backgroundImage.tag = 1234
+        backgroundImage.image = UIImage(named: "Background")
+        backgroundImage.frame = self.window!.frame
+        self.window?.addSubview(backgroundImage)
+        self.window?.bringSubview(toFront: backgroundImage)
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -159,6 +164,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let rootViewController = self.window?.rootViewController {
                 rootViewController.present(authenticationViewController!, animated: true) {}
             }
+        }
+        
+        // Remove backgrond image
+        if let backgroundView = self.window?.viewWithTag(1234) {
+            backgroundView.removeFromSuperview()
         }
     }
 
