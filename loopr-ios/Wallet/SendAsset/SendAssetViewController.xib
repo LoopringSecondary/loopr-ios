@@ -58,7 +58,6 @@
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iyP-el-1pW" customClass="IconView" customModule="loopr_ios" customModuleProvider="target">
                             <rect key="frame" x="31" y="26" width="40" height="40"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KFg-R7-dGf">
                             <rect key="frame" x="31" y="26" width="40" height="40"/>
