@@ -59,6 +59,7 @@ class OrderQRCodeViewController: UIViewController {
         view.addGestureRecognizer(tap)
         
         // TokenView
+        contentView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         qrcodeIconImageView.image = UIImage(named: "Order-qrcode-icon" + ColorTheme.getTheme())
 
         saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
