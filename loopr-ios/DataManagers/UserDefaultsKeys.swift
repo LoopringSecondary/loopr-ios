@@ -38,4 +38,7 @@ enum UserDefaultsKeys: String {
     case marginSplit = "UserDefaultsKeys.marginSplit"
 
     case passcodeOn = "UserDefaultsKeys.passcodeOn"
+    
+    // Device token used in push notifications
+    case deviceToken = "UserDefaultsKeys.deviceToken"
 }

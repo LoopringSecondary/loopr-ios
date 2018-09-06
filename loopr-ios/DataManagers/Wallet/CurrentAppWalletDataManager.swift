@@ -59,8 +59,11 @@ class CurrentAppWalletDataManager {
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: .currentAppWalletSwitched, object: nil)
         }
+        
+        // Send a API request to app service
+        PushNotificationDeviceDataManager.shared.register(address: appWallet.address)
     }
-    
+
     func getCurrentAppWallet() -> AppWallet? {
         return currentAppWallet
     }

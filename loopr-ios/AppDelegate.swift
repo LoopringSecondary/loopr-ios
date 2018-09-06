@@ -76,6 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Push notifications
         registerForPushNotifications()
+
         return true
     }
     
@@ -204,6 +205,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let token = tokenParts.joined()
         print("Device Token: \(token)")
+        
+        PushNotificationDeviceDataManager.shared.setDeviceToken(token)
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
