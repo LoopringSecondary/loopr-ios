@@ -38,15 +38,19 @@ class AppWallet: NSObject, NSCoding {
     var isVerified: Bool
 
     // A token is added to tokenList when
-    // 1. the amount is not zero in the device one time.
+    // 1. the amount is not zero in the device one time. It's added automatically in the API response.
+    // or
     // 2. users enable in AddTokenViewController.
     // Default value is ["ETH", "WETH", "LRC"]
     private var tokenList: [String]
+    
+    // It will be removed manually.
+    private var manuallyDisabledTokenList: [String]
 
     // totalCurrency is not persisted in disk
     var totalCurrency: Double = 0
     
-    init(setupWalletMethod: QRCodeMethod, address: String, privateKey: String, password: String, mnemonics: [String] = [], keystoreString: String, name: String, isVerified: Bool, totalCurrency: Double = 0, tokenList: [String]) {
+    init(setupWalletMethod: QRCodeMethod, address: String, privateKey: String, password: String, mnemonics: [String] = [], keystoreString: String, name: String, isVerified: Bool, totalCurrency: Double = 0, tokenList: [String], manuallyDisabledTokenList: [String]) {
         self.setupWalletMethod = setupWalletMethod
         self.address = address
         self.privateKey = privateKey
@@ -57,7 +61,8 @@ class AppWallet: NSObject, NSCoding {
         self.isVerified = isVerified
 
         self.tokenList = tokenList
-        
+        self.manuallyDisabledTokenList = manuallyDisabledTokenList
+
         super.init()
         
         if keystoreString == "" || !AppWallet.isKeystore(content: keystoreString) {
@@ -84,12 +89,38 @@ class AppWallet: NSObject, NSCoding {
                     tokenList.append(tokenSymbol)
                 }
             } else {
-                tokenList = tokenList.filter {$0 != tokenSymbol}
+                
             }
         }
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: self)
     }
     
+    func getManuallyDisabledTokenList() -> [String] {
+        return manuallyDisabledTokenList
+    }
+    
+    // Only used in AddTokenTableViewCell
+    func updateTokenListManually(_ tokenSymbols: [String], add: Bool) {
+        for tokenSymbol in tokenSymbols {
+            if add {
+                if !tokenList.contains(tokenSymbol) {
+                    tokenList.append(tokenSymbol)
+                }
+                if manuallyDisabledTokenList.contains(tokenSymbol) {
+                    manuallyDisabledTokenList = manuallyDisabledTokenList.filter {$0 != tokenSymbol}
+                }
+            } else {
+                tokenList = tokenList.filter {$0 != tokenSymbol}
+                if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokenSymbol) {
+                    if balance > 0.01 {
+                        manuallyDisabledTokenList.append(tokenSymbol)
+                    }
+                }
+            }
+        }
+        AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: self)
+    }
+
     static func isKeystore(content: String) -> Bool {
         let jsonData = content.data(using: String.Encoding.utf8)
         if let jsonObject = try? JSONSerialization.jsonObject(with: jsonData!, options: []) {
@@ -129,6 +160,7 @@ class AppWallet: NSObject, NSCoding {
         aCoder.encode(mnemonics, forKey: "mnemonics")
         aCoder.encode(keystoreString, forKey: "keystore")
         aCoder.encode(tokenList, forKey: "tokenList")
+        aCoder.encode(manuallyDisabledTokenList, forKey: "manuallyDisabledTokenList")
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -148,8 +180,13 @@ class AppWallet: NSObject, NSCoding {
         
         let keystoreString = aDecoder.decodeObject(forKey: "keystore") as? String
 
+        // Token list related
         let tokenList = aDecoder.decodeObject(forKey: "tokenList") as? [String] ?? []
         let filteredTokenList = tokenList.filter { (item) -> Bool in
+            return item.trim() != ""
+        }
+        let manuallyDisabledTokenList = aDecoder.decodeObject(forKey: "manuallyDisabledTokenList") as? [String] ?? []
+        let filteredManuallyDisabledTokenList = manuallyDisabledTokenList.filter { (item) -> Bool in
             return item.trim() != ""
         }
 
@@ -158,7 +195,7 @@ class AppWallet: NSObject, NSCoding {
             if keystoreString == "" || !AppWallet.isKeystore(content: keystoreString) {
                 return nil
             }
-            self.init(setupWalletMethod: setupWalletMethod, address: address, privateKey: privateKey, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: name, isVerified: isVerified, tokenList: unique(filteredTokenList))
+            self.init(setupWalletMethod: setupWalletMethod, address: address, privateKey: privateKey, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: name, isVerified: isVerified, tokenList: unique(filteredTokenList), manuallyDisabledTokenList: unique(filteredManuallyDisabledTokenList))
         } else {
             return nil
         }

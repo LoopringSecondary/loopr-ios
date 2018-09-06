@@ -37,7 +37,7 @@ class AppWalletDataManager {
             if appWallet == CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
                 if  appWallets.count > 0 {
                     let appWallet = AppWalletDataManager.shared.appWallets[0]
-                    CurrentAppWalletDataManager.shared.setCurrentAppWallet(appWallet)
+                    CurrentAppWalletDataManager.shared.setCurrentAppWallet(appWallet, completionHandler: {})
                 } else {
                     return
                 }
@@ -212,13 +212,13 @@ class AppWalletDataManager {
             return
         }
         
-        let newAppWallet = AppWallet(setupWalletMethod: setupWalletMethod, address: address.description, privateKey: privateKey.hexString, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: walletName.trim(), isVerified: isVerified, tokenList: ["ETH", "WETH", "LRC"])
+        let newAppWallet = AppWallet(setupWalletMethod: setupWalletMethod, address: address.description, privateKey: privateKey.hexString, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: walletName.trim(), isVerified: isVerified, tokenList: ["ETH", "WETH", "LRC"], manuallyDisabledTokenList: [])
         
         // Update the new app wallet in the local storage.
         AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
         
         // Set the current AppWallet.
-        CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet)
+        CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet, completionHandler: {})
         
         completionHandler(newAppWallet, nil)
     }

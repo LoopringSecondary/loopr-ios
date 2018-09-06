@@ -27,16 +27,16 @@ class CurrentAppWalletDataManager {
         getCurrentAppWalletFromLocalStorage()
     }
     
-    func getCurrentAppWalletFromLocalStorage() {
+    private func getCurrentAppWalletFromLocalStorage() {
         let defaults = UserDefaults.standard
         if let privateKeyString = defaults.string(forKey: UserDefaultsKeys.currentAppWallet.rawValue) {
             for appWallet in AppWalletDataManager.shared.getWallets() where appWallet.privateKey == privateKeyString {
-                setCurrentAppWallet(appWallet)
+                setCurrentAppWallet(appWallet, completionHandler: {})
             }
         }
     }
-    
-    func setCurrentAppWallet(_ appWallet: AppWallet) {
+
+    func setCurrentAppWallet(_ appWallet: AppWallet, completionHandler: @escaping () -> Void) {
         print("setCurrentAppWallet ...")
         let defaults = UserDefaults.standard
         defaults.set(appWallet.privateKey, forKey: UserDefaultsKeys.currentAppWallet.rawValue)
@@ -53,14 +53,17 @@ class CurrentAppWalletDataManager {
         PartnerDataManager.shared.createPartner()
 
         // Get nonce. It's a slow API request.
-        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
+        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum(completionHandler: {})
 
         // Publish a notification to update UI
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: .currentAppWalletSwitched, object: nil)
         }
+        
+        // Send a API request to app service
+        PushNotificationDeviceDataManager.shared.register(address: appWallet.address)
     }
-    
+
     func getCurrentAppWallet() -> AppWallet? {
         return currentAppWallet
     }
@@ -104,10 +107,11 @@ class CurrentAppWalletDataManager {
             asset.total > 0.001 || asset.balance > 0.01
         })
     }
-    
+
     // Used in WalletViewController with hide small assets option
     func getAssetsWithHideSmallAssetsOption() -> [Asset] {
         print(currentAppWallet!.getTokenList())
+        print(currentAppWallet!.getManuallyDisabledTokenList())
         for tokenSymbol in currentAppWallet!.getTokenList() {
             if let token = TokenDataManager.shared.getTokenBySymbol(tokenSymbol) {
                 let newAsset = Asset(token: token)
@@ -116,9 +120,12 @@ class CurrentAppWalletDataManager {
                 }
             }
         }
-
+        
         return self.assets.filter({ (asset) -> Bool in
             return currentAppWallet!.getTokenList().contains(asset.symbol) || asset.balance > 0.001
+        }).filter({ (asset) -> Bool in
+            // Hide tokens when users manually hide tokens in the token list view.
+            return !currentAppWallet!.getManuallyDisabledTokenList().contains(asset.symbol)
         }).sorted(by: { (a, b) -> Bool in
             if a.symbol == "ETH" || b.symbol == "ETH" {
                 return a.symbol == "ETH"
@@ -177,6 +184,7 @@ class CurrentAppWalletDataManager {
         }
     }
     
+    // TODO: disabled due to the networking perform issue.
     func startGetBalance() {
         guard let wallet = currentAppWallet else {
             return

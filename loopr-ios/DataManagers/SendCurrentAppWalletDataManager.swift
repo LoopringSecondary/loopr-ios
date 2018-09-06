@@ -16,7 +16,10 @@ class SendCurrentAppWalletDataManager {
     // sending token in send controller
     open var token: Token?
     
+    // TODO: Move this to AppWallet class?
+    // The concern is we need to change a lot of code.
     private var nonce: Int64
+
     private var wethAddress: GethAddress?
     private var protocolAddress: GethAddress?
     private var userInfo: [String: Any] = [:]
@@ -48,10 +51,11 @@ class SendCurrentAppWalletDataManager {
         self.nonce += 1
     }
 
-    func getNonceFromEthereum() {
+    func getNonceFromEthereum(completionHandler: @escaping () -> Void) {
         if let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
             EthereumAPIRequest.eth_getTransactionCount(data: address, block: BlockTag.pending, completionHandler: { (data, error) in
                 guard error == nil, let data = data else {
+                    completionHandler()
                     return
                 }
                 var nonce: Int64
@@ -64,6 +68,7 @@ class SendCurrentAppWalletDataManager {
                     self.nonce = nonce
                 }
                 print("^^^^^^^^^^^^^^^^^^^^^^self.nonce = \(self.nonce)")
+                completionHandler()
             })
         }
     }

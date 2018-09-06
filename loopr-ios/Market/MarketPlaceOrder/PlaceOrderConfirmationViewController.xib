@@ -28,6 +28,8 @@
                 <outlet property="marginSplitLabel" destination="iVP-4K-k3K" id="EuE-cZ-1VA"/>
                 <outlet property="marginSplitValueLabel" destination="1Iw-mQ-7wJ" id="Qal-l9-Ju7"/>
                 <outlet property="priceLabel" destination="FfW-mq-KMb" id="bfs-sp-VYu"/>
+                <outlet property="priceTailing" destination="gbk-pr-J5A" id="zQe-eg-EPp"/>
+                <outlet property="priceTipLabel" destination="Kf7-JZ-tKZ" id="NGt-Pp-PTv"/>
                 <outlet property="priceValueLabel" destination="bsH-Zl-V0b" id="iSv-YF-imf"/>
                 <outlet property="tokenBuy" destination="ssf-mc-oJt" id="dgF-Fn-pCT"/>
                 <outlet property="tokenSell" destination="dVt-V6-Y9K" id="0n1-bw-5Nh"/>
@@ -67,10 +69,16 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsH-Zl-V0b">
-                                    <rect key="frame" x="74" y="15" width="260" height="21"/>
+                                    <rect key="frame" x="-10" y="15" width="260" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="260" id="Jf9-66-4vK"/>
                                     </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Irrational)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kf7-JZ-tKZ">
+                                    <rect key="frame" x="254.66666666666671" y="15" width="79.333333333333343" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -81,7 +89,8 @@
                                 <constraint firstAttribute="height" constant="50" id="EFG-3G-FRo"/>
                                 <constraint firstItem="bsH-Zl-V0b" firstAttribute="centerY" secondItem="cmm-Nj-omT" secondAttribute="centerY" id="Ep3-Vy-EbS"/>
                                 <constraint firstItem="FfW-mq-KMb" firstAttribute="centerY" secondItem="cmm-Nj-omT" secondAttribute="centerY" id="HFy-7U-EYz"/>
-                                <constraint firstAttribute="trailing" secondItem="bsH-Zl-V0b" secondAttribute="trailing" constant="20" id="gbk-pr-J5A"/>
+                                <constraint firstItem="Kf7-JZ-tKZ" firstAttribute="centerY" secondItem="bsH-Zl-V0b" secondAttribute="centerY" id="NXE-Po-YJO"/>
+                                <constraint firstAttribute="trailing" secondItem="bsH-Zl-V0b" secondAttribute="trailing" constant="104" id="gbk-pr-J5A"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sjj-eH-DHu">
@@ -246,6 +255,7 @@
                         <constraint firstItem="Sjj-eH-DHu" firstAttribute="top" secondItem="cmm-Nj-omT" secondAttribute="bottom" constant="1" id="toS-PS-Kbu"/>
                         <constraint firstItem="ssf-mc-oJt" firstAttribute="top" secondItem="a9Z-KO-IHW" secondAttribute="top" constant="20" id="wkS-Lc-YdU"/>
                         <constraint firstItem="dVt-V6-Y9K" firstAttribute="leading" secondItem="a9Z-KO-IHW" secondAttribute="leading" constant="20" id="xjI-Ac-7PZ"/>
+                        <constraint firstAttribute="trailing" secondItem="Kf7-JZ-tKZ" secondAttribute="trailing" constant="20" id="ycG-09-Edc"/>
                         <constraint firstItem="PmR-3r-eKe" firstAttribute="leading" secondItem="a9Z-KO-IHW" secondAttribute="leading" id="yhf-S6-cBU"/>
                         <constraint firstItem="85n-Xb-BoI" firstAttribute="centerX" secondItem="a9Z-KO-IHW" secondAttribute="centerX" id="zQ7-7j-98Q"/>
                     </constraints>

@@ -11,10 +11,11 @@ import NotificationBannerSwift
 
 class DisplayKeystoreViewController: UIViewController {
     
-    var keystore: String = ""
-    
     @IBOutlet weak var keystoreTextView: UITextView!
     @IBOutlet weak var copyButton: UIButton!
+    
+    var keystore: String = ""
+    var blurVisualEffectView = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,32 @@ class DisplayKeystoreViewController: UIViewController {
 
         copyButton.title = LocalizedString("Copy Keystore", comment: "")
         copyButton.setupSecondary(height: 44)
+        
+        blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        blurVisualEffectView.alpha = 1
+        blurVisualEffectView.frame = UIScreen.main.bounds
+        
+        displayWarning()
+    }
+    
+    func displayWarning() {
+        let vc = PreventScreenShotViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.dismissClosure = {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.blurVisualEffectView.alpha = 0.0
+            }, completion: { (_) in
+                self.blurVisualEffectView.removeFromSuperview()
+            })
+        }
+        self.present(vc, animated: true, completion: nil)
+        
+        self.navigationController?.view.addSubview(self.blurVisualEffectView)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.blurVisualEffectView.alpha = 1.0
+        }, completion: {(_) in
+            
+        })
     }
 
     override func didReceiveMemoryWarning() {

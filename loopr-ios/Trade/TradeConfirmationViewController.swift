@@ -17,9 +17,9 @@ class TradeConfirmationViewController: UIViewController {
     @IBOutlet weak var tokenSell: UIView!
     @IBOutlet weak var tokenBuy: UIView!
     @IBOutlet weak var arrowRightImageView: UIImageView!
-    
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var priceValueLabel: UILabel!
+    @IBOutlet weak var priceTipLabel: UILabel!
     @IBOutlet weak var LRCFeeLabel: UILabel!
     @IBOutlet weak var LRCFeeValueLabel: UILabel!
     @IBOutlet weak var marginSplitLabel: UILabel!
@@ -35,6 +35,8 @@ class TradeConfirmationViewController: UIViewController {
     @IBOutlet weak var cellB: UIView!
     @IBOutlet weak var cellC: UIView!
     @IBOutlet weak var cellD: UIView!
+    
+    @IBOutlet weak var priceTailing: NSLayoutConstraint!
     
     var tokenSView: TradeViewOnlyViewController = TradeViewOnlyViewController()
     var tokenBView: TradeViewOnlyViewController = TradeViewOnlyViewController()
@@ -72,6 +74,18 @@ class TradeConfirmationViewController: UIViewController {
         priceLabel.text = LocalizedString("Price", comment: "")
         priceLabel.setTitleCharFont()
         priceValueLabel.setTitleDigitFont()
+        
+        priceTipLabel.setTitleCharFont()
+        priceTipLabel.textColor = UIColor.fail
+        priceTipLabel.text = LocalizedString("Irrational", comment: "")
+        
+        if !validateRational() {
+            priceTipLabel.isHidden = false
+            priceTailing.constant = 104
+        } else {
+            priceTipLabel.isHidden = true
+            priceTailing.constant = 20
+        }
         
         // Trading Fee
         LRCFeeLabel.text = LocalizedString("Trading Fee", comment: "")
@@ -114,6 +128,38 @@ class TradeConfirmationViewController: UIViewController {
         if let order = self.order {
             updateLabels(order: order)
         }
+    }
+    
+    func validateRational() -> Bool {
+        guard let order = self.order else { return true }
+        let pair = TradeDataManager.shared.tradePair.replacingOccurrences(of: "/", with: "-")  // "LRC-WETH"
+        let price = order.amountBuy / order.amountSell
+        let value = order.side == "buy" ? 1 / price : price
+        if let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
+            let header = LocalizedString("Your price is irrational, ", comment: "")
+            let footer = LocalizedString("Do you wish to continue trading or signing with the price?", comment: "")
+            let messageA = LocalizedString("which may cause your asset wastage! ", comment: "")
+            let messageB = LocalizedString("which may cause your order abolished! ", comment: "")
+            if order.side == "buy" {
+                if value < 0.8 * market.balance {
+                    self.message = header + messageB + footer
+                    return false
+                } else if value > 1.2 * market.balance {
+                    self.message = header + messageA + footer
+                    return false
+                }
+            } else {
+                if value < 0.8 * market.balance {
+                    self.message = header + messageA + footer
+                    return false
+                } else if value > 1.2 * market.balance {
+                    self.message = header + messageB + footer
+                    return false
+                }
+            }
+            return true
+        }
+        return true
     }
     
     func close(_ animated: Bool = true) {
@@ -166,9 +212,23 @@ class TradeConfirmationViewController: UIViewController {
     }
     
     @IBAction func pressedPlaceOrderButton(_ sender: UIButton) {
-        self.verifyInfo = TradeDataManager.shared.verify(order: order!)
-        self.handleVerifyInfo()
-        P2POrderHistoryDataManager.shared.shouldReloadData = true
+        if !priceTipLabel.isHidden {
+            let alert = UIAlertController(title: LocalizedString("Please Pay Attention", comment: ""), message: self.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+                DispatchQueue.main.async {
+                    self.verifyInfo = TradeDataManager.shared.verify(order: self.order!)
+                    self.handleVerifyInfo()
+                    P2POrderHistoryDataManager.shared.shouldReloadData = true
+                }
+            }))
+            alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.verifyInfo = TradeDataManager.shared.verify(order: order!)
+            self.handleVerifyInfo()
+            P2POrderHistoryDataManager.shared.shouldReloadData = true
+        }
     }
 }
 

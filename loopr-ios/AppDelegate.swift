@@ -13,6 +13,7 @@ import NotificationBannerSwift
 import SVProgressHUD
 import Fabric
 import Crashlytics
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -73,6 +74,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = authenticationViewController
         }
 
+        // Push notifications
+        registerForPushNotifications()
+
         return true
     }
     
@@ -120,7 +124,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-        print("applicationWillResignActive")
+        let backgroundImage = UIImageView()
+        backgroundImage.tag = 1234
+        backgroundImage.image = UIImage(named: "Background")
+        backgroundImage.frame = self.window!.frame
+        self.window?.addSubview(backgroundImage)
+        self.window?.bringSubview(toFront: backgroundImage)
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -142,13 +151,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         print("applicationDidBecomeActive")
 
+        // Check network connection.
         let manager = NetworkingReachabilityManager.shared
         if manager?.isReachable == false {
             self.showNetworkLossBanner()
         }
         
         // Get nonce from eth, not relay. Cost time maybe.
-        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
+        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum(completionHandler: {})
 
         // Touch ID and Face ID
         if AuthenticationDataManager.shared.getPasscodeSetting() && !AuthenticationDataManager.shared.hasLogin {
@@ -157,6 +167,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 rootViewController.present(authenticationViewController!, animated: true) {}
             }
         }
+        
+        // Remove backgrond image
+        if let backgroundView = self.window?.viewWithTag(1234) {
+            backgroundView.removeFromSuperview()
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -164,6 +179,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NetworkingReachabilityManager.shared?.stopListening()
         AuthenticationDataManager.shared.hasLogin = false
         CoreDataManager.shared.saveContext()
+    }
+    
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            print("Permission granted: \(granted)")
+            guard granted else { return }
+            self.getNotificationSettings()
+        }
+    }
+
+    func getNotificationSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            print("Notification settings: \(settings)")
+            guard settings.authorizationStatus == .authorized else { return }
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+    }
+
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let tokenParts = deviceToken.map { data -> String in
+            return String(format: "%02.2hhx", data)
+        }
+        
+        let token = tokenParts.joined()
+        print("Device Token: \(token)")
+        
+        PushNotificationDeviceDataManager.shared.setDeviceToken(token)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register: \(error)")
     }
 
 }

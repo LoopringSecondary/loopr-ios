@@ -187,6 +187,12 @@
 "Available Balance" = "可用余额";
 "Transaction Fee" = "交易费";
 "Loopring_TIP" = "请用支持路印协议的钱包扫码交易";
+"Irrational" = "设价不合理";
+"Please Pay Attention" = "请注意";
+"Your price is irrational, " = "您所设定的价格并不合理，";
+"which may cause your asset wastage! " = "这意味着您的资产或将亏损！";
+"which may cause your order abolished! " = "这意味着您的订单或将无法成交！";
+"Do you wish to continue trading or signing with the price?" = "是否仍要以该价格下单或授权？";
 
 /* Trade tips */
 "Convert_DES" = "● WETH之于ETH, 正如硬币之于等额的纸币。某些场合, 贩卖机只能接受硬币, 因此需要转换。以太坊协议保证: WETH和ETH之间的转换比率为 1 : 1, 且永不改变。";
@@ -284,7 +290,9 @@
 "Copy Keystore" = "复制Keystore";
 "Clear Records of this Wallet" = "删除钱包并清除钱包数据";
 "Backup_Mnemonic_in_SettingManageWallet" = "未备份助记词";
-
+"Prevent_Title" = "请勿拍照或截图";
+"Prevent_Tip" = "如果有人获取您的私钥将会直接获取您的资产！请抄写下私钥并存放在安全的地方。";
+"Got it" = "知道了";
 
 /* General. Used in different pages. */
 "Confirmation" = "确认";

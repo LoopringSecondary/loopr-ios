@@ -185,7 +185,13 @@
 "Enter the address" = "Enter the address";
 "Available Balance" = "Available Balance";
 "Transaction Fee" = "Transaction Fee";
-"Loopring_TIP" = "Use wallet supporting Loopring protocol to scan";
+"Loopring_TIP" = "Please use wallet supporting Loopring protocol to scan";
+"Irrational" = "Irrational";
+"Please Pay Attention" = "Please Pay Attention";
+"Your price is irrational, " = "Your price is irrational, ";
+"which may cause your asset wastage! " = "which may cause your asset wastage! ";
+"which may cause your order abolished! " = "which may cause your order abolished! ";
+"Do you wish to continue trading or signing with the price?" = "Do you wish to continue trading or signing with the price?";
 
 /* Trade tips */
 "Convert_DES" = "● Think of it like the coin version of a paper note. The same value, but some machines only take coins. The conversion ratio between ETH and WETH is always 1:1, guaranteed by Ethereum.";
@@ -283,7 +289,9 @@
 "Copy Keystore" = "Copy Keystore";
 "Clear Records of this Wallet" = "Clear Records of this Wallet";
 "Backup_Mnemonic_in_SettingManageWallet" = "Backup Mnemonic";
-
+"Prevent_Title" = "Do not take photo or capture screen";
+"Prevent_Tip" = "To avoid assets being stolen, please write down private key and keep in safe.";
+"Got it" = "Got it";
 
 /* General. Used in different pages. */
 "Confirmation" = "Confirmation";

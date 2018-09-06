@@ -203,7 +203,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
             tokenHeaderLabel.text = asset.symbol
             tokenTotalAmountLabel.text = "\(asset.display) \(asset.symbol)"
             tokenSymbolLabel.text = asset.symbol
-            SendCurrentAppWalletDataManager.shared.getNonceFromEthereum()
+            SendCurrentAppWalletDataManager.shared.getNonceFromEthereum(completionHandler: {})
             if asset.symbol.uppercased() == "ETH" {
                 transactionFeeTipLabel.isHidden = false
             } else {
