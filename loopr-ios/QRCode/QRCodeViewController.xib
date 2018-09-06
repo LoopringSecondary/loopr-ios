@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,6 +24,7 @@
                 <outlet property="saveToAlbumButton" destination="7NU-nI-gps" id="6Sj-tN-4FF"/>
                 <outlet property="shareContentView" destination="qcy-dU-9is" id="aA2-yW-Axa"/>
                 <outlet property="shareImageView" destination="wYE-is-K9S" id="5af-81-Q3d"/>
+                <outlet property="titleImageInShare" destination="bdi-4D-JYl" id="hyY-dU-xzb"/>
                 <outlet property="titleInShare" destination="z4f-oG-qt8" id="hqu-zv-G5W"/>
                 <outlet property="titleLabel" destination="YBn-Jl-kW1" id="kD3-ht-pcu"/>
                 <outlet property="urlInShare" destination="vjh-GK-Ghk" id="Z3g-cx-96y"/>
@@ -129,6 +130,13 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share-wallet-title" translatesAutoresizingMaskIntoConstraints="NO" id="bdi-4D-JYl">
+                            <rect key="frame" x="127" y="162" width="120" height="19"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="120" id="6G9-le-zDZ"/>
+                                <constraint firstAttribute="height" constant="19" id="gzE-Jq-Wjq"/>
+                            </constraints>
+                        </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7gi-53-CuP">
                             <rect key="frame" x="107.5" y="206.5" width="160" height="160"/>
                             <constraints>
@@ -143,19 +151,19 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16d-CS-pI1">
-                            <rect key="frame" x="59.5" y="466" width="42" height="20.5"/>
+                            <rect key="frame" x="59.5" y="479" width="42" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjh-GK-Ghk">
-                            <rect key="frame" x="59.5" y="491.5" width="42" height="20.5"/>
+                            <rect key="frame" x="59.5" y="501.5" width="42" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KcN-hf-tMl">
-                            <rect key="frame" x="276" y="474" width="40" height="40"/>
+                            <rect key="frame" x="276" y="482" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="Kvc-bT-fcs"/>
                                 <constraint firstAttribute="height" constant="40" id="qV4-ZV-Nc6"/>
@@ -165,15 +173,17 @@
                     <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="z4f-oG-qt8" firstAttribute="centerX" secondItem="qcy-dU-9is" secondAttribute="centerX" id="0Vx-GP-qUP"/>
-                        <constraint firstItem="vjh-GK-Ghk" firstAttribute="bottom" secondItem="wYE-is-K9S" secondAttribute="bottom" constant="-61" id="1LU-ma-XgN"/>
+                        <constraint firstItem="vjh-GK-Ghk" firstAttribute="bottom" secondItem="wYE-is-K9S" secondAttribute="bottom" constant="-51" id="1LU-ma-XgN"/>
                         <constraint firstItem="Gje-DT-3we" firstAttribute="width" secondItem="7gi-53-CuP" secondAttribute="width" id="2h9-L9-Z9T"/>
                         <constraint firstItem="wYE-is-K9S" firstAttribute="centerY" secondItem="qcy-dU-9is" secondAttribute="centerY" id="3aT-uR-uGg"/>
                         <constraint firstItem="Gje-DT-3we" firstAttribute="centerX" secondItem="qcy-dU-9is" secondAttribute="centerX" id="5Ij-6J-Wfh"/>
                         <constraint firstItem="vjh-GK-Ghk" firstAttribute="leading" secondItem="wYE-is-K9S" secondAttribute="leading" constant="59" id="DmI-FN-Co7"/>
                         <constraint firstItem="z4f-oG-qt8" firstAttribute="top" secondItem="wYE-is-K9S" secondAttribute="top" constant="68" id="NoF-44-QTc"/>
                         <constraint firstItem="7gi-53-CuP" firstAttribute="centerX" secondItem="qcy-dU-9is" secondAttribute="centerX" id="Tc5-45-h51"/>
-                        <constraint firstItem="vjh-GK-Ghk" firstAttribute="top" secondItem="16d-CS-pI1" secondAttribute="bottom" constant="5" id="Vod-Sc-EOB"/>
-                        <constraint firstItem="KcN-hf-tMl" firstAttribute="bottom" secondItem="wYE-is-K9S" secondAttribute="bottom" constant="-59" id="jbl-d4-1Ad"/>
+                        <constraint firstItem="vjh-GK-Ghk" firstAttribute="top" secondItem="16d-CS-pI1" secondAttribute="bottom" constant="2" id="Vod-Sc-EOB"/>
+                        <constraint firstItem="bdi-4D-JYl" firstAttribute="top" secondItem="z4f-oG-qt8" secondAttribute="top" id="elp-dL-Cik"/>
+                        <constraint firstItem="bdi-4D-JYl" firstAttribute="centerX" secondItem="qcy-dU-9is" secondAttribute="centerX" id="gHS-oV-d4U"/>
+                        <constraint firstItem="KcN-hf-tMl" firstAttribute="bottom" secondItem="wYE-is-K9S" secondAttribute="bottom" constant="-51" id="jbl-d4-1Ad"/>
                         <constraint firstItem="16d-CS-pI1" firstAttribute="leading" secondItem="vjh-GK-Ghk" secondAttribute="leading" id="m0G-O1-bG6"/>
                         <constraint firstItem="Gje-DT-3we" firstAttribute="top" secondItem="7gi-53-CuP" secondAttribute="bottom" constant="8" id="mf9-E4-swj"/>
                         <constraint firstItem="wYE-is-K9S" firstAttribute="centerX" secondItem="qcy-dU-9is" secondAttribute="centerX" id="poA-Bb-JTd"/>
@@ -205,5 +215,6 @@
     </objects>
     <resources>
         <image name="Receive-qrcode-icon-red" width="60" height="60"/>
+        <image name="Share-wallet-title" width="120" height="19"/>
     </resources>
 </document>

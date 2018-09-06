@@ -27,6 +27,7 @@ class QRCodeViewController: UIViewController {
     
     @IBOutlet weak var shareContentView: UIView!
     @IBOutlet weak var titleInShare: UILabel!
+    @IBOutlet weak var titleImageInShare: UIImageView!
     @IBOutlet weak var qrcodeInShare: UIImageView!
     @IBOutlet weak var addressInShare: UILabel!
     @IBOutlet weak var shareImageView: UIImageView!
@@ -79,13 +80,21 @@ class QRCodeViewController: UIViewController {
         
         titleInShare.font = FontConfigManager.shared.getCharactorFont(size: 20)
         titleInShare.theme_textColor = GlobalPicker.contrastTextColor
-        titleInShare.text = LocalizedString("Wallet Address", comment: "")
+        titleInShare.text = "Loopring"
+        
+        if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
+            titleInShare.isHidden = true
+            titleImageInShare.isHidden = false
+        } else {
+            titleInShare.isHidden = false
+            titleImageInShare.isHidden = true
+        }
         
         addressInShare.font = FontConfigManager.shared.getCharactorFont(size: 12)
         addressInShare.theme_textColor = GlobalPicker.contrastTextDarkColor
         addressInShare.text = address
         
-        productLabel.font = FontConfigManager.shared.getBoldFont(size: 14)
+        productLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         productLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
         productLabel.text = Production.getProduct()
         
