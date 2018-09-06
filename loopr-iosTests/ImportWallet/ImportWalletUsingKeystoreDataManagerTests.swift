@@ -25,7 +25,7 @@ class ImportWalletUsingKeystoreDataManagerTests: XCTestCase {
     func _test1() {
         let keystoreString = "{\"version\":3,\"id\":\"3c343f27-05dd-422d-8704-2ad0b90a5267\",\"address\":\"11381c3a20c2793b9f17502d72bda905e03734f2\",\"Crypto\":{\"ciphertext\":\"4ad2954117ae35e6c2b3d819c7f885841f60b63a7256b18643e79c1451113cd1\",\"cipherparams\":{\"iv\":\"5a1671e36add8e3b3714d114bacdf0ef\"},\"cipher\":\"aes-128-ctr\",\"kdf\":\"scrypt\",\"kdfparams\":{\"dklen\":32,\"salt\":\"54290f8bdb7fceef48ff48e17ab7923143da5004ae273c21d691510645295fa9\",\"n\":1024,\"r\":8,\"p\":1},\"mac\":\"6d5ef298d2834b88d2f4e5f6ee55647324d6c7b51124b65ee139646f48df5a21\"}}"
         
-        let appWallet = AppWallet.init(setupWalletMethod: .importUsingKeystore, address: "0x11381c3a20c2793b9f17502d72bda905e03734f2", privateKey: "720a29425b8122ab0d5bb65c64f64cc6a4103bb19bd4223117606e2cd27c1478", password: "1234567890", keystoreString: keystoreString, name: "hello", isVerified: true, tokenList: [])
+        let appWallet = AppWallet(setupWalletMethod: .importUsingKeystore, address: "0x11381c3a20c2793b9f17502d72bda905e03734f2", privateKey: "720a29425b8122ab0d5bb65c64f64cc6a4103bb19bd4223117606e2cd27c1478", password: "1234567890", keystoreString: keystoreString, name: "hello", isVerified: true, tokenList: [], manuallyDisabledTokenList: [])
         
         AppWalletDataManager.shared.logout(appWallet: appWallet)
         
