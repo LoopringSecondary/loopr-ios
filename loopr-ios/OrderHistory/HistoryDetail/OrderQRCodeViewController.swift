@@ -22,6 +22,7 @@ class OrderQRCodeViewController: UIViewController {
     @IBOutlet weak var shareContentView: UIView!
     @IBOutlet weak var shareImageView: UIImageView!
     @IBOutlet weak var titleInShare: UILabel!
+    @IBOutlet weak var titleImageInShare: UIImageView!
     @IBOutlet weak var qrcodeInShare: UIImageView!
     @IBOutlet weak var sellTipLabel: UILabel!
     @IBOutlet weak var sellInfoLabel: UILabel!
@@ -77,59 +78,66 @@ class OrderQRCodeViewController: UIViewController {
         shareImageView.image = UIImage(named: "Share-order")
         logoImageView.image = UIImage(named: "\(Production.getProduct())_share_logo")
         
-        titleInShare.font = FontConfigManager.shared.getCharactorFont(size: 20)
         titleInShare.theme_textColor = GlobalPicker.contrastTextColor
-        titleInShare.text = LocalizedString("Loopring Order", comment: "")
+        titleInShare.text = "Loopring"
+        
+        if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
+            titleInShare.isHidden = true
+            titleImageInShare.isHidden = false
+        } else {
+            titleInShare.isHidden = false
+            titleImageInShare.isHidden = true
+        }
         
         sellTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
-        sellTipLabel.theme_textColor = GlobalPicker.contrastTextColor
+        sellTipLabel.theme_textColor = GlobalPicker.contrastTextLightColor
         sellTipLabel.text = LocalizedString("Sell", comment: "")
         var length = Asset.getLength(of: order.tokenSell) ?? 4
         sellInfoLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
-        sellInfoLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        sellInfoLabel.theme_textColor = GlobalPicker.contrastTextColor
         sellInfoLabel.text = order.amountSell.withCommas(length)  + " " + order.tokenSell
         
         buyTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
-        buyTipLabel.theme_textColor = GlobalPicker.contrastTextColor
+        buyTipLabel.theme_textColor = GlobalPicker.contrastTextLightColor
         buyTipLabel.text = LocalizedString("Buy", comment: "")
         length = Asset.getLength(of: order.tokenBuy) ?? 4
         buyInfoLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
-        buyInfoLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        buyInfoLabel.theme_textColor = GlobalPicker.contrastTextColor
         buyInfoLabel.text = order.amountBuy.withCommas(length) + " " + order.tokenBuy
         
         let price = order.amountBuy / order.amountSell
         
-        unitBuyLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
-        unitBuyLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        unitBuyLabel.font = FontConfigManager.shared.getCharactorFont(size: 11)
+        unitBuyLabel.theme_textColor = GlobalPicker.contrastTextLightColor
         unitBuyLabel.text = "1 \(order.tokenSell)"
         
-        priceBuyLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
-        priceBuyLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        priceBuyLabel.font = FontConfigManager.shared.getCharactorFont(size: 11)
+        priceBuyLabel.theme_textColor = GlobalPicker.contrastTextColor
         priceBuyLabel.text = "\(price.withCommas()) \(order.tokenBuy)"
         
-        unitSellLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
-        unitSellLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        unitSellLabel.font = FontConfigManager.shared.getCharactorFont(size: 11)
+        unitSellLabel.theme_textColor = GlobalPicker.contrastTextLightColor
         unitSellLabel.text = "1 \(order.tokenBuy)"
         
-        priceSellLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
-        priceSellLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
+        priceSellLabel.font = FontConfigManager.shared.getCharactorFont(size: 11)
+        priceSellLabel.theme_textColor = GlobalPicker.contrastTextColor
         priceSellLabel.text = "\((1/price).withCommas()) \(order.tokenSell)"
         
-        buyEqualLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        buyEqualLabel.font = FontConfigManager.shared.getCharactorFont(size: 11)
         buyEqualLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
-        sellEqualLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        sellEqualLabel.font = FontConfigManager.shared.getCharactorFont(size: 11)
         sellEqualLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
         
-        validTipInShare.font = FontConfigManager.shared.getCharactorFont(size: 12)
-        validTipInShare.theme_textColor = GlobalPicker.contrastTextColor
+        validTipInShare.font = FontConfigManager.shared.getCharactorFont(size: 11)
+        validTipInShare.theme_textColor = GlobalPicker.contrastTextLightColor
         validTipInShare.text = LocalizedString("Time to Live", comment: "")
         let until = DateUtil.convertToDate(UInt(order.validUntil), format: "MM-dd HH:mm")
-        validInShare.font = FontConfigManager.shared.getCharactorFont(size: 12)
-        validInShare.theme_textColor = GlobalPicker.contrastTextDarkColor
+        validInShare.font = FontConfigManager.shared.getCharactorFont(size: 11)
+        validInShare.theme_textColor = GlobalPicker.contrastTextColor
         validInShare.text = until
         
-        loopringTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
-        loopringTipLabel.theme_textColor = GlobalPicker.contrastTextLightColor
+        loopringTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 11)
+        loopringTipLabel.theme_textColor = GlobalPicker.contrastTextExtremeLightColor
         loopringTipLabel.text = LocalizedString("Loopring_TIP", comment: "")
         
         productLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
