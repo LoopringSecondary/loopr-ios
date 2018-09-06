@@ -12,7 +12,7 @@ class PushNotificationDeviceDataManager {
     
     static let shared = PushNotificationDeviceDataManager()
     
-    private final let APNsUrl = "http://app-service.bdgt26mqwd.ap-northeast-1.elasticbeanstalk.com/api/v1/device"
+    private final let APNsUrl = "http://app-service.bdgt26mqwd.ap-northeast-1.elasticbeanstalk.com/api/v1/devices"
     
     private init() {
 
@@ -40,6 +40,15 @@ class PushNotificationDeviceDataManager {
             body["bundleIdentifier"] = JSON(bundleIdentifier)
             body["deviceToken"] = JSON(deviceToken)
             body["address"] = JSON(address)
+            
+            // Different certificats for release and debug
+            #if RELEASE
+                // release only code
+                body["isReleaseMode"] = true
+            #else
+                // debug only code
+                body["isReleaseMode"] = false
+            #endif
 
             Request.send(body: body, url: URL(string: APNsUrl)!) { data, _, error in
                 guard let data = data, error == nil else {
