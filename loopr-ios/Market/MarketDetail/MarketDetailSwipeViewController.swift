@@ -62,6 +62,7 @@ class MarketDetailSwipeViewController: SwipeViewController {
         
         hoursChangeInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
         hoursChangeInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.6)
+        hoursChangeInfoLabel.text = LocalizedString("24H Change", comment: "")
 
         hoursChangeLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         hoursChangeLabel.textColor = UIColor.init(white: 1, alpha: 0.8)

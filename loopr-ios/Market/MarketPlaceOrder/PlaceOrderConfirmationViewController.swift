@@ -23,8 +23,6 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     @IBOutlet weak var priceTipLabel: UILabel!
     @IBOutlet weak var LRCFeeLabel: UILabel!
     @IBOutlet weak var LRCFeeValueLabel: UILabel!
-    @IBOutlet weak var marginSplitLabel: UILabel!
-    @IBOutlet weak var marginSplitValueLabel: UILabel!
     @IBOutlet weak var validLabel: UILabel!
     @IBOutlet weak var validValueLabel: UILabel!
     @IBOutlet weak var gasInfoImage: UIImageView!
@@ -32,7 +30,6 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     
     @IBOutlet weak var cellA: UIView!
     @IBOutlet weak var cellB: UIView!
-    @IBOutlet weak var cellC: UIView!
     @IBOutlet weak var cellD: UIView!
     
     @IBOutlet weak var confirmationButton: UIButton!
@@ -90,13 +87,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         LRCFeeLabel.text = LocalizedString("Trading Fee", comment: "")
         LRCFeeLabel.setTitleCharFont()
         LRCFeeValueLabel.setTitleDigitFont()
-        
-        // Margin Split
-        marginSplitLabel.text = LocalizedString("Margin Split", comment: "")
-        marginSplitLabel.setTitleCharFont()
-        marginSplitValueLabel.text = SettingDataManager.shared.getMarginSplitDescription()
-        marginSplitValueLabel.setTitleDigitFont()
-        
+
         // TTL label
         validLabel.setTitleCharFont()
         validLabel.text = LocalizedString("Time to Live", comment: "")
@@ -106,7 +97,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         gasTipLabel.setSubTitleCharFont()
         gasTipLabel.text = LocalizedString("GAS_TIP", comment: "")
         
-        let cells = [cellA, cellB, cellC, cellD]
+        let cells = [cellA, cellB, cellD]
         cells.forEach { $0?.theme_backgroundColor = ColorPicker.backgroundColor }
         
         // Tap gesture
@@ -191,7 +182,6 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
             let total = (price * order.lrcFee).currency
             LRCFeeValueLabel.text = "\(order.lrcFee.withCommas(3))LRC ≈ \(total)"
         }
-        marginSplitValueLabel.text = SettingDataManager.shared.getMarginSplitDescription()
         let since = DateUtil.convertToDate(UInt(order.validSince), format: "MM-dd HH:mm")
         let until = DateUtil.convertToDate(UInt(order.validUntil), format: "MM-dd HH:mm")
         validValueLabel.text = "\(since) ~ \(until)"
