@@ -57,7 +57,8 @@ extension UIColor {
         case .red:
             return [UIColor.init(rgba: "#CE4CE6"), UIColor.init(rgba: "#FA4A6F")]
         case .yellow:
-            return [UIColor.init(rgba: "#F8BE1C"), UIColor.init(rgba: "#FFA928")]
+            // Updated at 09-07-2018 (ruby)
+            return [UIColor.init(rgba: "#EFC90C"), UIColor.init(rgba: "#FFB528")]
         case .green:
             return [UIColor.init(rgba: "#38B170"), UIColor.init(rgba: "#159763")]
         case .blue:
