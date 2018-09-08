@@ -74,8 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = authenticationViewController
         }
 
-        // Push notifications
-        registerForPushNotifications()
 
         return true
     }
@@ -126,7 +124,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
         let backgroundImage = UIImageView()
         backgroundImage.tag = 1234
-        backgroundImage.image = UIImage(named: "Background")
+        backgroundImage.image = UIImage(named: "Background" + ColorTheme.getTheme())
         backgroundImage.frame = self.window!.frame
         self.window?.addSubview(backgroundImage)
         self.window?.bringSubview(toFront: backgroundImage)
@@ -179,25 +177,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NetworkingReachabilityManager.shared?.stopListening()
         AuthenticationDataManager.shared.hasLogin = false
         CoreDataManager.shared.saveContext()
-    }
-    
-    func registerForPushNotifications() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
-            (granted, error) in
-            print("Permission granted: \(granted)")
-            guard granted else { return }
-            self.getNotificationSettings()
-        }
-    }
-
-    func getNotificationSettings() {
-        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-            print("Notification settings: \(settings)")
-            guard settings.authorizationStatus == .authorized else { return }
-            DispatchQueue.main.async {
-                UIApplication.shared.registerForRemoteNotifications()
-            }
-        }
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

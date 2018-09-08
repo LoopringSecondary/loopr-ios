@@ -30,6 +30,6 @@ class MnemonicBackupModeCollectionViewCell: UICollectionViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 44
+        return 40
     }
 }

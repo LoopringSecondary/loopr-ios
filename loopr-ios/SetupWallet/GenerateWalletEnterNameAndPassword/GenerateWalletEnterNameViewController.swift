@@ -18,7 +18,7 @@ class GenerateWalletEnterNameViewController: UIViewController, UITextFieldDelega
         super.viewDidLoad()
 
         view.theme_backgroundColor = ColorPicker.backgroundColor
-        self.navigationItem.title = LocalizedString("Generate Wallet", comment: "")
+        self.navigationItem.title = LocalizedString("Enter Wallet Name", comment: "")
         setBackButton()
 
         // Setup UI in the scroll view
@@ -48,11 +48,13 @@ class GenerateWalletEnterNameViewController: UIViewController, UITextFieldDelega
         continueButton.addTarget(self, action: #selector(pressedContinueButton), for: .touchUpInside)
         view.addSubview(continueButton)
         
-        errorInfoLabel.frame = CGRect(x: padding, y: continueButton.bottomY + 40, width: screenWidth-padding*2, height: 40)
+        errorInfoLabel.frame = CGRect(x: padding, y: continueButton.bottomY + 40, width: screenWidth-padding*2, height: 17)
         errorInfoLabel.textColor = UIColor.fail
         errorInfoLabel.textAlignment = .center
         errorInfoLabel.alpha = 0.0
         view.addSubview(errorInfoLabel)
+        
+        PushNotificationSettingManager.shared.registerForPushNotifications()
     }
 
     override func didReceiveMemoryWarning() {

@@ -315,6 +315,7 @@
 		AC798E4F2022B93A0071D477 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC798E4D2022B93A0071D477 /* LaunchScreen.storyboard */; };
 		AC798E5A2022B93B0071D477 /* LoopringAPIRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E592022B93B0071D477 /* LoopringAPIRequestTests.swift */; };
 		AC798E652022B93B0071D477 /* loopr_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E642022B93B0071D477 /* loopr_iosUITests.swift */; };
+		AC7BC856214386AF004204D3 /* PushNotificationSettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BC855214386AF004204D3 /* PushNotificationSettingManager.swift */; };
 		AC8DBC6D20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DBC6B20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift */; };
 		AC8DBC6E20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */; };
 		AC8DBC7720BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */; };
@@ -822,6 +823,7 @@
 		AC798E602022B93B0071D477 /* loopr-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "loopr-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC798E642022B93B0071D477 /* loopr_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loopr_iosUITests.swift; sourceTree = "<group>"; };
 		AC798E662022B93B0071D477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC7BC855214386AF004204D3 /* PushNotificationSettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSettingManager.swift; sourceTree = "<group>"; };
 		AC8DBC6B20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicBackupModeCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicBackupModeCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicBackupModeCollectionViewController.swift; sourceTree = "<group>"; };
@@ -1839,6 +1841,7 @@
 			children = (
 				ACACB8B1213B8E9300F5ACC5 /* PushNotificationDataManager.swift */,
 				ACACB8B4213B90BF00F5ACC5 /* PushNotificationDeviceDataManager.swift */,
+				AC7BC855214386AF004204D3 /* PushNotificationSettingManager.swift */,
 			);
 			path = PushNotification;
 			sourceTree = "<group>";
@@ -3022,6 +3025,7 @@
 				AC5E0995205F270000801738 /* ScanQRCodeViewController.swift in Sources */,
 				AC31B950204A8DF400B16155 /* Secp256k1.swift in Sources */,
 				940B452D2061206900ADE2B9 /* Token.swift in Sources */,
+				AC7BC856214386AF004204D3 /* PushNotificationSettingManager.swift in Sources */,
 				ACB911A320296B9900F14644 /* OriginalOrder.swift in Sources */,
 				940B451E2060F67E00ADE2B9 /* GenerateWalletDataManager.swift in Sources */,
 				AC4141EF203524280089861D /* MarketSwipeViewController.swift in Sources */,
@@ -3547,7 +3551,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3559,7 +3563,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

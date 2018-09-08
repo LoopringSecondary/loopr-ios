@@ -282,6 +282,7 @@
 "Export Keystore" = "Export Keystore";
 "Exporting keystore" = "Exporting keystore";
 "Wallet Name" = "Wallet Name";
+"Enter Wallet Name" = "Enter Wallet Name";
 "Change Wallet Name" = "Change Wallet Name";
 "Address copied to clipboard successfully!" = "Address copied to clipboard successfully!";
 "Keystore copied to clipboard successfully!" = "Keystore copied to clipboard successfully!";

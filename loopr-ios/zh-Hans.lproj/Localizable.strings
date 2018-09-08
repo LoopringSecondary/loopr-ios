@@ -39,7 +39,7 @@
 "Please input your private key" = "请输入您的私钥";
 "Please use space to seperate the mnemonic words" = "请用空格隔开助记词";
 "Backup Mnemonic" = "备份助记词";
-"Verify Mnemonic" = "验证助记词";
+"Verify Mnemonic" = "助记词验证";
 "Verify Now" = "马上验证";
 "Skip Verification" = "跳过验证";
 "Invalid mnemonic. Please enter again." = "无法导入助记词。请重新输入。";
@@ -283,6 +283,7 @@
 "Export Keystore" = "导出Keystore文件";
 "Exporting keystore" = "正在导出keystore";
 "Wallet Name" = "钱包名字";
+"Enter Wallet Name" = "输入钱包名字";
 "Change Wallet Name" = "更改钱包名字";
 "Address copied to clipboard successfully!" = "成功复制地址到剪切板!";
 "Keystore copied to clipboard successfully!" = "成功复制keystore到剪切板!";

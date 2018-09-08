@@ -43,7 +43,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
 
         setBackButton()
         view.theme_backgroundColor = ColorPicker.backgroundColor
-        self.navigationItem.title = LocalizedString("Generate Wallet", comment: "")
+        self.navigationItem.title = LocalizedString("Verify Mnemonic", comment: "")
                 
         // Setup UI
         let screensize: CGRect = UIScreen.main.bounds

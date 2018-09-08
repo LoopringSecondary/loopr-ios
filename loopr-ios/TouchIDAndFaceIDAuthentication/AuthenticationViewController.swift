@@ -24,7 +24,7 @@ class AuthenticationViewController: UIViewController {
 
         let screenSize: CGRect = UIScreen.main.bounds
         backgrondImageView.frame = screenSize
-        backgrondImageView.image = UIImage(named: "Background")
+        backgrondImageView.image = UIImage(named: "Background" + ColorTheme.getTheme())
         backgrondImageView.isUserInteractionEnabled = true
         view.addSubview(backgrondImageView)
 

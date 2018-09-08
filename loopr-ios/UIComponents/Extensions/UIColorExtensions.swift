@@ -161,7 +161,7 @@ extension UIColor {
         return UIColor(named: "Color-text2")!
     }
     
-    // #FA4A6F
+    // #DD5252
     class var fail: UIColor {
         return UIColor(named: "Color-red")!
     }

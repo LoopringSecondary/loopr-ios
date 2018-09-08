@@ -50,7 +50,7 @@ class GenerateWalletEnterRepeatPasswordViewController: UIViewController, UITextF
         continueButton.addTarget(self, action: #selector(pressedContinueButton), for: .touchUpInside)
         view.addSubview(continueButton)
         
-        errorInfoLabel.frame = CGRect(x: padding, y: continueButton.bottomY + 40, width: screenWidth-padding*2, height: 40)
+        errorInfoLabel.frame = CGRect(x: padding, y: continueButton.bottomY + 40, width: screenWidth-padding*2, height: 17)
         errorInfoLabel.textColor = UIColor.fail
         errorInfoLabel.textAlignment = .center
         errorInfoLabel.alpha = 0.0

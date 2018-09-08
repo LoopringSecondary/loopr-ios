@@ -40,7 +40,7 @@ class BackupMnemonicViewController: UIViewController {
         // Do any additional setup after loading the view.
         setBackButton()
         view.theme_backgroundColor = ColorPicker.backgroundColor
-        self.navigationItem.title = LocalizedString("Generate Wallet", comment: "")
+        self.navigationItem.title = LocalizedString("Verify Mnemonic", comment: "")
 
         // Setup UI
         let screensize: CGRect = UIScreen.main.bounds
@@ -104,7 +104,14 @@ class BackupMnemonicViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        infoTextView.text = LocalizedString("Revealing your mnemonic phrases on web sites is highly dangerous. If the site is compromised or you accidentally visit a phishing website, your assets in all associated addresses can be stolen.", comment: "")
+        let stringValue = LocalizedString("Revealing your mnemonic phrases on web sites is highly dangerous. If the site is compromised or you accidentally visit a phishing website, your assets in all associated addresses can be stolen.", comment: "")
+        let attributedString = NSMutableAttributedString(string: stringValue)
+        let style = NSMutableParagraphStyle()
+        style.minimumLineHeight = 20
+        attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value: style, range: NSRange(location: 0, length: stringValue.count))
+        attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: stringValue.count))
+        attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.init(name: "Rubik-Italic", size: 14) ?? UIFont.systemFont(ofSize: 14), range: NSRange(location: 0, length: stringValue.count))
+        infoTextView.attributedText = attributedString
 
         // CollectionView won't be layout correctly in viewDidLoad()
         // https://stackoverflow.com/questions/12927027/uicollectionview-flowlayout-not-wrapping-cells-correctly-ios

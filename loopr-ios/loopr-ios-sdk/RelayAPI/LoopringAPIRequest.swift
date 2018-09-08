@@ -404,7 +404,7 @@ class LoopringAPIRequest {
             var tokens: [Token] = []
             let json = JSON(data)
             let offerData = json["result"]
-            print(offerData)
+            // print(offerData)
             for subJson in offerData.arrayValue {
                 let token = Token(json: subJson)
                 tokens.append(token)

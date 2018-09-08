@@ -12,12 +12,12 @@
 		<key>loopr-iosTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>23</integer>
+			<integer>3</integer>
 		</dict>
 		<key>loopr-iosUITests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>24</integer>
+			<integer>4</integer>
 		</dict>
 		<key>loopr.xcscheme_^#shared#^_</key>
 		<dict>
