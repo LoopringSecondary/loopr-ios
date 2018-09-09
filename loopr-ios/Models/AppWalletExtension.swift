@@ -35,10 +35,12 @@ extension AppWallet {
             let timeInterval: Double = end.timeIntervalSince(start)
             print("Time to getNonceFromEthereum: \(timeInterval) seconds")
             
+            // TODO: Answers may not support this feature. 
             Answers.logCustomEvent(withName: "API Performance: getNonceFromEthereum v1",
                                    customAttributes: [
                                     "success": "true",
-                                    "timing": timeInterval])
+                                    "timing (ms)": Int(timeInterval*1000.0)])
+            print(Int(timeInterval*1000.0))
 
             completionHandler()
         })
