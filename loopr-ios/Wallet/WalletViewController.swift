@@ -98,6 +98,11 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return
         }
 
+        // isLaunching is true at any of the following situations:
+        // 1. Launch app
+        // 2. Create wallet
+        // 3. Import wallet
+        // 4. Switch the current wallet.
         if self.isLaunching {
             // Disable user touch when loading data
             SVProgressHUD.show(withStatus: LocalizedString("Loading Data", comment: ""))
