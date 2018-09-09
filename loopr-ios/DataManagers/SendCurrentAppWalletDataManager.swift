@@ -48,7 +48,7 @@ class SendCurrentAppWalletDataManager {
                 completion(nil, error)
                 return
             }
-            CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.incrementNonce()
+            CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.incrementNonce()
             completion(data!.respond, nil)
         }
     }

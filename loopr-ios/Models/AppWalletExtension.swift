@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Crashlytics
 
 extension AppWallet {
 
@@ -14,6 +15,9 @@ extension AppWallet {
         let start = Date()
         EthereumAPIRequest.eth_getTransactionCount(data: address, block: BlockTag.pending, completionHandler: { (data, error) in
             guard error == nil, let data = data else {
+                Answers.logCustomEvent(withName: "API Request Error v1",
+                                       customAttributes: [
+                                        "type": "getNonceFromEthereum"])
                 completionHandler()
                 return
             }
@@ -31,6 +35,11 @@ extension AppWallet {
             let timeInterval: Double = end.timeIntervalSince(start)
             print("Time to getNonceFromEthereum: \(timeInterval) seconds")
             
+            Answers.logCustomEvent(withName: "API Performance: getNonceFromEthereum v1",
+                                   customAttributes: [
+                                    "success": "true",
+                                    "timing": timeInterval])
+
             completionHandler()
         })
     }
