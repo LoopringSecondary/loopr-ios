@@ -391,7 +391,7 @@
 "Authenticate to decline the order" = "Authenticate to decline the order";
 
 /* Complicated. Need other info to form a sentence. */
-"Create_used_in_creating_wallet" = "Create";
-"successfully_used_in_creating_wallet" = "successfully";
+"Create_used_in_creating_wallet" = "Create";  // TODO: Deprecated.
+"successfully_used_in_creating_wallet" = "successfully"; // TODO: Deprecated.
 "You are going to clear records of" = "You are going to clear records of";
 "on this device." = "on this device.";

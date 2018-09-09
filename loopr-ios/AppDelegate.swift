@@ -169,6 +169,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let backgroundView = self.window?.viewWithTag(1234) {
             backgroundView.removeFromSuperview()
         }
+        
+        // Clear the push notification badge count
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

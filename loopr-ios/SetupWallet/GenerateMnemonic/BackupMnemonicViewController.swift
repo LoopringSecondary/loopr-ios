@@ -35,6 +35,8 @@ class BackupMnemonicViewController: UIViewController {
     var hideButtons: Bool = false
     var blurVisualEffectView = UIView()
     
+    var blurVisualEffectView = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -100,6 +102,7 @@ class BackupMnemonicViewController: UIViewController {
         blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         blurVisualEffectView.alpha = 1
         blurVisualEffectView.frame = UIScreen.main.bounds
+
         displayWarning()
         
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
@@ -150,9 +153,41 @@ class BackupMnemonicViewController: UIViewController {
     }
 
     @IBAction func pressedSkipVerifyNowButton(_ sender: Any) {
-        exit()
+        displayWalletCreateSuccessfully()
+    }
+    
+    func displayWalletCreateSuccessfully() {
+        let vc = WalletCreateSuccessfullyPopViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.dismissClosure = {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.blurVisualEffectView.alpha = 0.0
+            }, completion: { (_) in
+                self.blurVisualEffectView.removeFromSuperview()
+            })
+            
+            GenerateWalletDataManager.shared.complete(completion: {(appWallet, error) in
+                if error == nil {
+                    Answers.logSignUp(withMethod: QRCodeMethod.create.description + ".skip", success: true, customAttributes: nil)
+                    self.dismissGenerateWallet()
+                } else if error == .duplicatedAddress {
+                    self.alertForDuplicatedAddress()
+                } else {
+                    self.alertForError()
+                }
+            })
+        }
+        self.present(vc, animated: true, completion: nil)
+        
+        self.navigationController?.view.addSubview(self.blurVisualEffectView)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.blurVisualEffectView.alpha = 1.0
+        }, completion: {(_) in
+            
+        })
     }
 
+    // TODO: Deprecated
     func exit() {
         let header = LocalizedString("Create_used_in_creating_wallet", comment: "used in creating wallet")
         let footer = LocalizedString("successfully_used_in_creating_wallet", comment: "used in creating wallet")

@@ -129,13 +129,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         }
         mnemonicWordTextView.resignFirstResponder()
     }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let newLength = (textField.text?.utf16.count)! + (string.utf16.count) - range.length
-        print("textField shouldChangeCharactersIn \(newLength)")
-        return true
-    }
-    
+
     @IBAction func pressUnlockButton(_ sender: Any) {
         print("pressUnlockButton")
         let password = passwordTextField.text ?? ""
