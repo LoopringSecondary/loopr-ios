@@ -266,7 +266,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
 
     @IBAction func pressedConfirmationButton(_ sender: Any) {
         if AuthenticationDataManager.shared.getPasscodeSetting() {
-            AuthenticationDataManager.shared.authenticate { (error) in
+            AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to confirm the order", comment: "")) { (error) in
                 guard error == nil else { self.completion(nil, error!); return }
                 if self.isSigning {
                     self.handleSigning()
@@ -286,7 +286,8 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     @IBAction func pressedDeclineButton(_ sender: UIButton) {
         guard isSigning, let hash = AuthorizeDataManager.shared.submitHash else { return }
         if AuthenticationDataManager.shared.getPasscodeSetting() {
-            AuthenticationDataManager.shared.authenticate { (error) in
+            // TODO: For decline the order, do we still need to ask authentication?
+            AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to decline the order", comment: "")) { (error) in
                 guard error == nil else { self.completion(nil, error!); return }
                 LoopringAPIRequest.notifyStatus(hash: hash, status: .reject) { (_, _) in
                     DispatchQueue.main.async {

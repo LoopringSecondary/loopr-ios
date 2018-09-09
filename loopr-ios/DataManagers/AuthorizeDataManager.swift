@@ -188,7 +188,7 @@ class AuthorizeDataManager {
 
     func _authorizeLogin(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
         if AuthenticationDataManager.shared.getPasscodeSetting() {
-            AuthenticationDataManager.shared.authenticate { (error) in
+            AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to login", comment: "")) { (error) in
                 guard error == nil else { completion(nil, error); return }
                 self.authorizeLogin(completion: completion)
             }
@@ -213,7 +213,7 @@ class AuthorizeDataManager {
     
     func _authorizeCancel(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
         if AuthenticationDataManager.shared.getPasscodeSetting() {
-            AuthenticationDataManager.shared.authenticate { (error) in
+            AuthenticationDataManager.shared.authenticate(reason: "Authenticate to cancel") { (error) in
                 guard error == nil else { completion(nil, error); return }
                 self.authorizeCancel(completion: completion)
             }
@@ -235,7 +235,7 @@ class AuthorizeDataManager {
     
     func _authorizeConvert(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
         if AuthenticationDataManager.shared.getPasscodeSetting() {
-            AuthenticationDataManager.shared.authenticate { (error) in
+            AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to convert", comment: "")) { (error) in
                 guard error == nil else { completion(nil, error); return }
                 self.authorizeConvert(completion: completion)
             }
@@ -264,7 +264,7 @@ class AuthorizeDataManager {
     
     func _authorizeApprove(completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
         if AuthenticationDataManager.shared.getPasscodeSetting() {
-            AuthenticationDataManager.shared.authenticate { (error) in
+            AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to approve the transaction", comment: "")) { (error) in
                 guard error == nil else { completion(nil, error); return }
                 self.authorizeApprove(completion: completion)
             }

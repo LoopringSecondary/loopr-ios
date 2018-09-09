@@ -137,15 +137,30 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
             viewController.appWallet = appWallet
             self.navigationController?.pushViewController(viewController, animated: true)
         case .backupMnemonic:
-            let viewController = BackupMnemonicViewController()
-            viewController.hideButtons = true
-            viewController.mnemonics = appWallet.mnemonics
-            self.navigationController?.pushViewController(viewController, animated: true)
+            // Ask for device password
+            AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to access your mnemonic", comment: "")) { (error) in
+                guard error == nil else {
+                    print(error.debugDescription)
+                    return
+                }
+                let viewController = BackupMnemonicViewController()
+                viewController.hideButtons = true
+                viewController.mnemonics = self.appWallet.mnemonics
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
         case .exportPrivateKey:
-            let viewController = DisplayPrivateKeyViewController()
-            viewController.displayValue = appWallet.privateKey
-            self.navigationController?.pushViewController(viewController, animated: true)
+            // Ask for device password
+            AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to access your private key", comment: "")) { (error) in
+                guard error == nil else {
+                    print(error.debugDescription)
+                    return
+                }
+                let viewController = DisplayPrivateKeyViewController()
+                viewController.displayValue = self.appWallet.privateKey
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
         case .exportKeystore:
+            // Will ask for device password in ExportKeystoreEnterPasswordViewController
             let viewController = ExportKeystoreEnterPasswordViewController()
             viewController.appWallet = appWallet
             self.navigationController?.pushViewController(viewController, animated: true)

@@ -74,7 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = authenticationViewController
         }
 
-
         return true
     }
     
@@ -179,6 +178,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CoreDataManager.shared.saveContext()
     }
 
+    // Push notifications
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenParts = deviceToken.map { data -> String in
             return String(format: "%02.2hhx", data)
