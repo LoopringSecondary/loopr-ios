@@ -97,7 +97,6 @@ class GenerateWalletEnterRepeatPasswordViewController: UIViewController, UITextF
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newLength = (textField.text?.utf16.count)! + (string.utf16.count) - range.length
-        print("textField shouldChangeCharactersIn \(newLength)")
         errorInfoLabel.alpha = 0.0
         errorInfoLabel.text = ""
         return true
