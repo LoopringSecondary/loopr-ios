@@ -23,9 +23,11 @@ class TradeSwipeViewController: SwipeViewController {
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = ColorPicker.backgroundColor
         navigationItem.title = LocalizedString("P2P Trade", comment: "")
-        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum(completionHandler: {})
         setBackButton()
         setupChildViewControllers()
+        
+        // Get the updated nonce
+        CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.getNonceFromEthereum(completionHandler: {})
     }
     
     override func viewWillAppear(_ animated: Bool) {

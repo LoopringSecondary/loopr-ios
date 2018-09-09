@@ -50,6 +50,8 @@ class AppWallet: NSObject, NSCoding {
     // totalCurrency is not persisted in disk
     var totalCurrency: Double = 0
     
+    var nonce: Int64 = 0
+    
     init(setupWalletMethod: QRCodeMethod, address: String, privateKey: String, password: String, mnemonics: [String] = [], keystoreString: String, name: String, isVerified: Bool, totalCurrency: Double = 0, tokenList: [String], manuallyDisabledTokenList: [String]) {
         self.setupWalletMethod = setupWalletMethod
         self.address = address
@@ -149,7 +151,7 @@ class AppWallet: NSObject, NSCoding {
     func getPassword() -> String {
         return password
     }
-    
+
     func encode(with aCoder: NSCoder) {
         aCoder.encode(setupWalletMethod.rawValue, forKey: "setupWalletMethod")
         aCoder.encode(password, forKey: "password")

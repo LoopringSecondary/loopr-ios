@@ -181,7 +181,7 @@ class TradeDataManager {
         let makerOrderHash = orders[0].hash
         let takerOrderHash = orders[1].hash
         LoopringAPIRequest.submitRing(makerOrderHash: makerOrderHash, takerOrderHash: takerOrderHash, rawTx: rawTx, completionHandler: { (txHash, error) in
-            SendCurrentAppWalletDataManager.shared.incrementNonce()
+            CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.incrementNonce()
             guard txHash != nil && error == nil else {
                 let errorCode = (error! as NSError).userInfo["message"] as! String
                 if let error = self.generateErrorMessage(errorCode: errorCode) {

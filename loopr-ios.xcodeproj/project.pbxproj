@@ -318,6 +318,7 @@
 		AC7BC856214386AF004204D3 /* PushNotificationSettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BC855214386AF004204D3 /* PushNotificationSettingManager.swift */; };
 		AC7BC8592144E102004204D3 /* WalletCreateSuccessfullyPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BC8572144E102004204D3 /* WalletCreateSuccessfullyPopViewController.swift */; };
 		AC7BC85A2144E102004204D3 /* WalletCreateSuccessfullyPopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC7BC8582144E102004204D3 /* WalletCreateSuccessfullyPopViewController.xib */; };
+		AC7BC85C2145B477004204D3 /* AppWalletExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BC85B2145B477004204D3 /* AppWalletExtension.swift */; };
 		AC8DBC6D20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DBC6B20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift */; };
 		AC8DBC6E20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */; };
 		AC8DBC7720BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */; };
@@ -828,6 +829,7 @@
 		AC7BC855214386AF004204D3 /* PushNotificationSettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSettingManager.swift; sourceTree = "<group>"; };
 		AC7BC8572144E102004204D3 /* WalletCreateSuccessfullyPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCreateSuccessfullyPopViewController.swift; sourceTree = "<group>"; };
 		AC7BC8582144E102004204D3 /* WalletCreateSuccessfullyPopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletCreateSuccessfullyPopViewController.xib; sourceTree = "<group>"; };
+		AC7BC85B2145B477004204D3 /* AppWalletExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWalletExtension.swift; sourceTree = "<group>"; };
 		AC8DBC6B20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicBackupModeCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicBackupModeCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicBackupModeCollectionViewController.swift; sourceTree = "<group>"; };
@@ -1996,6 +1998,7 @@
 			children = (
 				ACFEFE9620C3389400013921 /* Transaction */,
 				AC4142052038B66F0089861D /* AppWallet.swift */,
+				AC7BC85B2145B477004204D3 /* AppWalletExtension.swift */,
 				ACB9115F20242E3F00F14644 /* Asset.swift */,
 				940B452C2061206800ADE2B9 /* Token.swift */,
 				ACB911632024504E00F14644 /* Order.swift */,
@@ -2907,6 +2910,7 @@
 				AC29949B212BF611005C4D72 /* NewSettingPartnerViewController.swift in Sources */,
 				ACA677C0207997F400D34A2F /* DisplayKeystoreViewController.swift in Sources */,
 				ACFEFE9820C338BC00013921 /* TxType.swift in Sources */,
+				AC7BC85C2145B477004204D3 /* AppWalletExtension.swift in Sources */,
 				AC2D2C05208882BD00D619AD /* FoundationArray+Extension.swift in Sources */,
 				ACB5DD9E202D5B8D00140A09 /* NumericKeyboardItem.swift in Sources */,
 				949629DF204E9C9800858F03 /* MinedRing.swift in Sources */,

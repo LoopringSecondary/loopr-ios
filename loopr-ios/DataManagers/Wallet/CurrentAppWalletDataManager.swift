@@ -53,7 +53,7 @@ class CurrentAppWalletDataManager {
         PartnerDataManager.shared.createPartner()
 
         // Get nonce. It's a slow API request.
-        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum(completionHandler: {})
+        currentAppWallet!.getNonceFromEthereum(completionHandler: {})
 
         // Publish a notification to update UI
         DispatchQueue.main.async {
@@ -61,7 +61,7 @@ class CurrentAppWalletDataManager {
         }
         
         // Send a API request to app service
-        PushNotificationDeviceDataManager.shared.register(address: appWallet.address)
+        PushNotificationDeviceDataManager.shared.register(address: currentAppWallet!.address)
     }
 
     func getCurrentAppWallet() -> AppWallet? {
@@ -200,7 +200,7 @@ class CurrentAppWalletDataManager {
         guard let wallet = currentAppWallet else {
             return
         }
-        LoopringAPIRequest.getTransactions(owner: wallet.address, symbol: asset.symbol, txHash: nil, pageIndex: pageIndex,  pageSize: pageSize, completionHandler: { (transactions, error) in
+        LoopringAPIRequest.getTransactions(owner: wallet.address, symbol: asset.symbol, txHash: nil, pageIndex: pageIndex, pageSize: pageSize, completionHandler: { (transactions, error) in
             guard error == nil, let transactions = transactions else {
                 return
             }
@@ -222,14 +222,23 @@ class CurrentAppWalletDataManager {
     }
     
     // JSON RPC
-    func getBalanceAndPriceQuote(getPrice: Bool, completionHandler: @escaping (_ assets: [Asset], _ error: Error?) -> Void) {
+    // Ask for three data
+    // 1. get price
+    // 2. get balance
+    // 3. get nonce
+    func getBalanceAndPriceQuoteAndNonce(getPrice: Bool, completionHandler: @escaping (_ assets: [Asset], _ error: Error?) -> Void) {
         let address = self.currentAppWallet!.address
         print("getBalanceAndPriceQuote Current address: \(address)")
         
         var localAssets: [Asset] = []
         let dispatchGroup = DispatchGroup()
-        dispatchGroup.enter()
 
+        dispatchGroup.enter()
+        self.currentAppWallet!.getNonceFromEthereum(completionHandler: {
+            dispatchGroup.leave()
+        })
+
+        dispatchGroup.enter()
         if getPrice {
             let currency = SettingDataManager.shared.getCurrentCurrency().name
             LoopringAPIRequest.getPriceQuote(currency: currency, completionHandler: { (priceQuote, error) in

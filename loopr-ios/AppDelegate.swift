@@ -154,8 +154,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.showNetworkLossBanner()
         }
         
+        // We may need to change this when we implement more push notification related features.
         // Get nonce from eth, not relay. Cost time maybe.
-        SendCurrentAppWalletDataManager.shared.getNonceFromEthereum(completionHandler: {})
+        CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.getNonceFromEthereum(completionHandler: {})
 
         // Touch ID and Face ID
         if AuthenticationDataManager.shared.getPasscodeSetting() && !AuthenticationDataManager.shared.hasLogin {

@@ -16,16 +16,11 @@ class SendCurrentAppWalletDataManager {
     // sending token in send controller
     open var token: Token?
     
-    // TODO: Move this to AppWallet class?
-    // The concern is we need to change a lot of code.
-    private var nonce: Int64
-
     private var wethAddress: GethAddress?
     private var protocolAddress: GethAddress?
     private var userInfo: [String: Any] = [:]
     
     private init() {
-        self.nonce = 0
         self.token = nil
         self.wethAddress = nil
         self.protocolAddress = nil
@@ -46,47 +41,14 @@ class SendCurrentAppWalletDataManager {
         var error: NSError?
         self.protocolAddress = GethNewAddressFromHex(RelayAPIConfiguration.protocolAddress, &error)
     }
-    
-    func incrementNonce() {
-        self.nonce += 1
-    }
 
-    func getNonceFromEthereum(completionHandler: @escaping () -> Void) {
-        if let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
-            EthereumAPIRequest.eth_getTransactionCount(data: address, block: BlockTag.pending, completionHandler: { (data, error) in
-                guard error == nil, let data = data else {
-                    completionHandler()
-                    return
-                }
-                var nonce: Int64
-                if data.respond.isHex() {
-                    nonce = Int64(data.respond.dropFirst(2), radix: 16)!
-                } else {
-                    nonce = Int64(data.respond)!
-                }
-                if nonce > self.nonce {
-                    self.nonce = nonce
-                }
-                print("^^^^^^^^^^^^^^^^^^^^^^self.nonce = \(self.nonce)")
-                completionHandler()
-            })
-        }
-    }
-    
-    func completeRawTx(_ rawTx: inout RawTransaction) {
-        if self.nonce < rawTx.nonce {
-            self.nonce = rawTx.nonce
-        }
-        rawTx.nonce = self.nonce
-    }
-    
     func sendTransactionToServer(signedTransaction: String, completion: @escaping (String?, Error?) -> Void) {
         EthereumAPIRequest.eth_sendRawTransaction(data: signedTransaction) { (data, error) in
             guard error == nil && data != nil else {
                 completion(nil, error)
                 return
             }
-            self.incrementNonce()
+            CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.incrementNonce()
             completion(data!.respond, nil)
         }
     }
@@ -271,7 +233,8 @@ class SendCurrentAppWalletDataManager {
         _keystore()
         let gasPrice = GasDataManager.shared.getGasPriceInWei()
         let password = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.getKeystorePassword()
-        let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: self.nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: password)
+        let nonce = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.nonce
+        let signedTransaction = web3swift.sign(address: address, encodedFunctionData: data, nonce: nonce, amount: amount, gasLimit: gasLimit, gasPrice: gasPrice, password: password)
         do {
             if let signedTransactionData = try signedTransaction?.encodeRLP() {
                 return "0x" + signedTransactionData.hexString
@@ -285,7 +248,8 @@ class SendCurrentAppWalletDataManager {
     }
     
     func _transfer(data: Data, address: GethAddress, amount: GethBigInt, gasLimit: GethBigInt, completion: @escaping (_ txHash: String?, _ error: Error?) -> Void) {
-        let tx = RawTransaction(data: data, to: address, value: amount, gasLimit: gasLimit, gasPrice: GasDataManager.shared.getGasPriceInWei(), nonce: self.nonce)
+        let nonce = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.nonce
+        let tx = RawTransaction(data: data, to: address, value: amount, gasLimit: gasLimit, gasPrice: GasDataManager.shared.getGasPriceInWei(), nonce: nonce)
         let from = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         if let signedTransaction = _sign(data: data, address: address, amount: amount, gasLimit: gasLimit, completion: completion) {
             self.sendTransactionToServer(signedTransaction: signedTransaction, completion: { (txHash, error) in
@@ -322,7 +286,7 @@ class SendCurrentAppWalletDataManager {
     
     func _transfer(rawTx: RawTransaction, completion: @escaping (_ txHash: String?, _ error: Error?) -> Void) {
         var rawTransaction = rawTx
-        completeRawTx(&rawTransaction)
+        CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.completeRawTx(&rawTransaction)
         let from = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         if let signedTransaction = _sign(rawTx: rawTransaction, completion: completion) {
             self.sendTransactionToServer(signedTransaction: signedTransaction, completion: { (txHash, error) in

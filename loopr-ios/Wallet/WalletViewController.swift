@@ -90,10 +90,10 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @objc private func refreshData(_ sender: Any) {
         // Fetch Data
-        getBalanceFromRelay()
+        getDataFromRelay()
     }
     
-    func getBalanceFromRelay() {
+    func getDataFromRelay() {
         guard CurrentAppWalletDataManager.shared.getCurrentAppWallet() != nil else {
             return
         }
@@ -114,7 +114,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
 
         dispatchGroup.enter()
-        CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote(getPrice: true, completionHandler: { _, error in
+        CurrentAppWalletDataManager.shared.getBalanceAndPriceQuoteAndNonce(getPrice: true, completionHandler: { _, error in
             print("receive CurrentAppWalletDataManager.shared.getBalanceAndPriceQuote() in WalletViewController")
             guard error == nil else {
                 print("error=\(String(describing: error))")
@@ -152,7 +152,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         assetTableView.reloadData()
-        getBalanceFromRelay()
+        getDataFromRelay()
         
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
