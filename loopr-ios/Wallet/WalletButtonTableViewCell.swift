@@ -23,6 +23,7 @@ class WalletButtonTableViewCell: UITableViewCell {
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
+    @IBOutlet weak var buttonHeightLayoutConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -62,6 +63,8 @@ class WalletButtonTableViewCell: UITableViewCell {
         button4.addTarget(self, action: #selector(self.pressedButton4(_:)), for: .touchUpInside)
         button4.set(image: UIImage.init(named: "Transaction-sell-dark"), title: "P2P", titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         button4.set(image: UIImage.init(named: "Transaction-sell-dark")?.alpha(0.6), title: "P2P", titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
+        
+        buttonHeightLayoutConstraint.constant = WalletButtonTableViewCell.getButtonHeight()
     }
     
     @objc func pressedButton1(_ button: UIButton) {
@@ -88,8 +91,16 @@ class WalletButtonTableViewCell: UITableViewCell {
         return "WalletBalanceTableViewCell"
     }
     
+    private class func getButtonHeight() -> CGFloat {
+        let screensize: CGRect = UIScreen.main.bounds
+        let screenWidth = screensize.width
+        let buttonHeight = (screenWidth - 15*2 - 10*3)/4.0
+        return buttonHeight
+    }
+    
     class func getHeight() -> CGFloat {
-        return 96
+        // Top padding: 4px. Bottom padding: 12px.
+        return getButtonHeight() + 4 + 12
     }
 
 }

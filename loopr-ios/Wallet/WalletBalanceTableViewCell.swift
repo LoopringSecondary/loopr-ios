@@ -49,7 +49,8 @@ class WalletBalanceTableViewCell: UITableViewCell {
         addSubview(balanceLabel)
 
         addressLabel.frame = CGRect(x: screenWidth*0.25, y: balanceLabel.frame.maxY, width: screenWidth*0.5, height: 30)
-        addressLabel.setSubTitleDigitFont()
+        addressLabel.font = FontConfigManager.shared.getMediumFont(size: 13)
+        addressLabel.textColor = UIColor.init(rgba: "#ffffffcc")
         addressLabel.textAlignment = .center
         addressLabel.numberOfLines = 1
         addressLabel.lineBreakMode = .byTruncatingMiddle
@@ -69,7 +70,6 @@ class WalletBalanceTableViewCell: UITableViewCell {
 
     private func update() {
         balanceLabel.textColor = UIColor.white
-        addressLabel.theme_textColor = GlobalPicker.textLightColor
     }
     
     func setup(animated: Bool) {

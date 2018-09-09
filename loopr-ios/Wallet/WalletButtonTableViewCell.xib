@@ -19,10 +19,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ugw-rL-6uo">
-                        <rect key="frame" x="15" y="4" width="365" height="83.5"/>
+                        <rect key="frame" x="15" y="4" width="365" height="80"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thC-48-TVm">
-                                <rect key="frame" x="0.0" y="0.0" width="84" height="83.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="84" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Button"/>
                                 <userDefinedRuntimeAttributes>
@@ -32,7 +32,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yM-q7-Vnh">
-                                <rect key="frame" x="94" y="0.0" width="83.5" height="83.5"/>
+                                <rect key="frame" x="94" y="0.0" width="83.5" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Button"/>
                                 <userDefinedRuntimeAttributes>
@@ -42,7 +42,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="It5-pY-AwN">
-                                <rect key="frame" x="187.5" y="0.0" width="84" height="83.5"/>
+                                <rect key="frame" x="187.5" y="0.0" width="84" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Button"/>
                                 <userDefinedRuntimeAttributes>
@@ -52,7 +52,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUy-Z9-w5X">
-                                <rect key="frame" x="281.5" y="0.0" width="83.5" height="83.5"/>
+                                <rect key="frame" x="281.5" y="0.0" width="83.5" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Button"/>
                                 <userDefinedRuntimeAttributes>
@@ -62,13 +62,15 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="3T9-O5-Pel"/>
+                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="Ugw-rL-6uo" secondAttribute="trailing" constant="15" id="4db-LE-gaS"/>
                     <constraint firstItem="Ugw-rL-6uo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ScJ-vx-Ldb"/>
                     <constraint firstItem="Ugw-rL-6uo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="ZAN-4z-Pvp"/>
-                    <constraint firstAttribute="bottom" secondItem="Ugw-rL-6uo" secondAttribute="bottom" constant="8" id="kwz-eT-1IA"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -77,6 +79,7 @@
                 <outlet property="button2" destination="5yM-q7-Vnh" id="sGB-fK-Tup"/>
                 <outlet property="button3" destination="It5-pY-AwN" id="OMi-Xu-MMa"/>
                 <outlet property="button4" destination="yUy-Z9-w5X" id="0qB-ev-0Ok"/>
+                <outlet property="buttonHeightLayoutConstraint" destination="3T9-O5-Pel" id="UAm-0l-ewM"/>
             </connections>
         </tableViewCell>
     </objects>
