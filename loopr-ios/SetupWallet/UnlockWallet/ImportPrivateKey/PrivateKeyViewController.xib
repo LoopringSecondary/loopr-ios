@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVD-JS-FJ5">
-                    <rect key="frame" x="48" y="412" width="318" height="44"/>
+                    <rect key="frame" x="48" y="188" width="318" height="44"/>
                     <color key="backgroundColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="Vx5-tC-yFI"/>
@@ -36,9 +36,12 @@
                     </connections>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please input your private key" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ujb-qZ-KOa">
-                    <rect key="frame" x="15" y="28" width="384" height="364"/>
+                    <rect key="frame" x="15" y="28" width="384" height="140"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <color key="tintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="140" id="JfY-6r-mik"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
@@ -47,7 +50,7 @@
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ujb-qZ-KOa" secondAttribute="trailing" constant="15" id="4eM-fK-dZy"/>
                 <constraint firstItem="EVD-JS-FJ5" firstAttribute="top" secondItem="Ujb-qZ-KOa" secondAttribute="bottom" constant="20" id="Cdv-kr-gFY"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="EVD-JS-FJ5" secondAttribute="bottom" constant="280" id="MzE-V2-Nxk"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="EVD-JS-FJ5" secondAttribute="bottom" priority="750" constant="280" id="MzE-V2-Nxk"/>
                 <constraint firstItem="EVD-JS-FJ5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="48" id="Tjg-hX-pnJ"/>
                 <constraint firstItem="Ujb-qZ-KOa" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="Zkb-zr-tkT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="EVD-JS-FJ5" secondAttribute="trailing" constant="48" id="iWO-0v-TOz"/>

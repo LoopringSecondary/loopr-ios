@@ -14,6 +14,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
     @IBOutlet weak var mnemonicWordTextView: UITextView!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    // TODO: may remove this NSLayoutConstraint due to the latest UI requirement.
     @IBOutlet weak var unlockButtonBottonLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var unlockButton: UIButton!
     

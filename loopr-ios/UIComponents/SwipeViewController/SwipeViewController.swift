@@ -11,7 +11,7 @@ import UIKit
 open class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSource {
     
     open var swipeView: SwipeView!
-    open var topConstraint: CGFloat = 0.0
+    open var topConstraint: CGFloat = 10.0
     open var bottomConstraint: CGFloat = 0.0
 
     open override func viewDidLoad() {

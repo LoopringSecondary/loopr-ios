@@ -13,6 +13,8 @@ import SVProgressHUD
 class PrivateKeyViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var privateKeyTextView: UITextView!
+    
+    // TODO: may remove this NSLayoutConstraint due to the latest UI requirement.
     @IBOutlet weak var unlockButtonBottonLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var unlockButton: UIButton!
     
