@@ -24,6 +24,7 @@ class SendConfirmViewController: UIViewController {
     @IBOutlet weak var gasInfoLabel: UILabel!
     @IBOutlet weak var sendButton: UIButton!
     
+    @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var cellA: UIView!
     @IBOutlet weak var cellB: UIView!
     @IBOutlet weak var cellC: UIView!
@@ -45,33 +46,34 @@ class SendConfirmViewController: UIViewController {
         containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         
         let cells = [cellA, cellB, cellC]
-        cells.forEach { $0?.theme_backgroundColor = ColorPicker.backgroundColor }
+        cells.forEach { $0?.theme_backgroundColor = ColorPicker.cardBackgroundColor }
+        cellBackgroundView.theme_backgroundColor = ColorPicker.cardHighLightColor
         
         titleLabel.theme_textColor = GlobalPicker.textColor
         titleLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
         titleLabel.text = LocalizedString("Send Confirmation", comment: "")
         
         amountLabel.font = FontConfigManager.shared.getDigitalFont()
-        amountLabel.textColor = .success
+        amountLabel.textColor = .theme
         amountLabel.text = "\(self.sendAmount!) \(self.sendAsset.symbol)"
         
         toTipLabel.setTitleCharFont()
         toTipLabel.text = LocalizedString("Receiver", comment: "")
-        toInfoLabel.font = FontConfigManager.shared.getLightFont(size: 12)
+        toInfoLabel.font = FontConfigManager.shared.getLightFont(size: 13)
         toInfoLabel.theme_textColor = GlobalPicker.textLightColor
         toInfoLabel.text = self.receiveAddress ?? ""
         toInfoLabel.lineBreakMode = .byTruncatingMiddle
         
         fromTipLabel.setTitleCharFont()
         fromTipLabel.text = LocalizedString("Sender", comment: "")
-        fromInfoLabel.font = FontConfigManager.shared.getLightFont(size: 12)
+        fromInfoLabel.font = FontConfigManager.shared.getLightFont(size: 13)
         fromInfoLabel.theme_textColor = GlobalPicker.textLightColor
         fromInfoLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
         fromInfoLabel.lineBreakMode = .byTruncatingMiddle
         
         gasTipLabel.setTitleCharFont()
         gasTipLabel.text = LocalizedString("Transaction Fee", comment: "")
-        gasInfoLabel.font = FontConfigManager.shared.getLightFont(size: 12)
+        gasInfoLabel.font = FontConfigManager.shared.getLightFont(size: 13)
         gasInfoLabel.theme_textColor = GlobalPicker.textLightColor
         gasInfoLabel.text = gasAmountText
         
