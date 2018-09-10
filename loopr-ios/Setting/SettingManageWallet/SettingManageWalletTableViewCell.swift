@@ -47,8 +47,8 @@ class SettingManageWalletTableViewCell: UITableViewCell {
         toatalBalanceLabel.font = FontConfigManager.shared.getMediumFont(size: 24)
         toatalBalanceLabel.textColor = UIColor.init(white: 1, alpha: 0.9)
         
-        addressLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
-        addressLabel.textColor = UIColor.init(white: 1, alpha: 0.6)
+        addressLabel.font = FontConfigManager.shared.getMediumFont(size: 13)
+        addressLabel.textColor = UIColor.init(rgba: "#ffffffcc")
         addressLabel.lineBreakMode = .byTruncatingMiddle
         
         qrCodeButton.setImage(UIImage(named: "QRCode-white"), for: .normal)

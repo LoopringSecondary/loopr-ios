@@ -40,19 +40,20 @@ class AssetSwipeViewController: SwipeViewController {
         let screenWidth = screensize.width
         
         baseView.frame = CGRect(x: 15, y: 10, width: screenWidth - 30, height: 120)
-        baseView.applyGradient(withColors: UIColor.secondary)
-        baseView.layer.cornerRadius = 8
-        baseView.clipsToBounds = true
+        baseView.image = UIImage(named: "wallet-background" + ColorTheme.getTheme())
+        baseView.contentMode = .scaleToFill
         view.addSubview(baseView)
         
         balanceLabel.frame = CGRect(x: 10, y: 40, width: screenWidth - 20, height: 36)
-        balanceLabel.setHeaderDigitFont()
+        balanceLabel.font = FontConfigManager.shared.getMediumFont(size: 32)
+        balanceLabel.textColor = UIColor.white
         balanceLabel.textAlignment = .center
         balanceLabel.text = asset?.display
         view.addSubview(balanceLabel)
         
         currencyLabel.frame = CGRect(x: 10, y: balanceLabel.frame.maxY, width: screenWidth - 20, height: 30)
-        currencyLabel.setTitleDigitFont()
+        currencyLabel.font = FontConfigManager.shared.getRegularFont(size: 20)
+        currencyLabel.textColor = UIColor.init(rgba: "#ffffffcc")
         currencyLabel.textAlignment = .center
         currencyLabel.text = asset?.currency
         view.addSubview(currencyLabel)

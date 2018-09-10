@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -48,9 +49,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyx-9l-pQH">
-                        <rect key="frame" x="104.66666666666669" y="88.666666666666671" width="184" height="15"/>
+                        <rect key="frame" x="98.666666666666671" y="88.666666666666671" width="196.33333333333331" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="184" id="Hb8-EU-YyK"/>
                             <constraint firstAttribute="height" constant="15" id="jIa-vw-rRY"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -58,7 +58,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uk2-zY-aAx">
-                        <rect key="frame" x="284.66666666666669" y="81" width="30" height="30"/>
+                        <rect key="frame" x="295" y="81" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="C4N-bj-PU1"/>
                             <constraint firstAttribute="height" constant="30" id="hdI-qn-aJD"/>
@@ -75,7 +75,7 @@
                     <constraint firstItem="YhQ-cZ-ccX" firstAttribute="top" secondItem="X5p-rK-vuk" secondAttribute="top" constant="50" id="Zdu-OT-kNk"/>
                     <constraint firstItem="YhQ-cZ-ccX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="bub-CX-3Qy"/>
                     <constraint firstItem="X5p-rK-vuk" firstAttribute="trailing" secondItem="5xB-Jl-jPb" secondAttribute="trailing" constant="15" id="mQE-uX-O1t"/>
-                    <constraint firstItem="uk2-zY-aAx" firstAttribute="leading" secondItem="kyx-9l-pQH" secondAttribute="trailing" constant="-4" id="ovn-fr-zHJ"/>
+                    <constraint firstItem="uk2-zY-aAx" firstAttribute="leading" secondItem="kyx-9l-pQH" secondAttribute="trailing" id="ovn-fr-zHJ"/>
                     <constraint firstItem="X5p-rK-vuk" firstAttribute="bottom" secondItem="kyx-9l-pQH" secondAttribute="bottom" constant="21" id="pu0-n7-Uhd"/>
                     <constraint firstItem="X5p-rK-vuk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="ra4-Zo-EzH"/>
                     <constraint firstAttribute="bottom" secondItem="X5p-rK-vuk" secondAttribute="bottom" constant="5" id="wJS-91-LP7"/>
@@ -84,6 +84,9 @@
                     <constraint firstAttribute="trailingMargin" secondItem="YhQ-cZ-ccX" secondAttribute="trailing" id="z3d-mW-JXQ"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="kyx-9l-pQH" firstAttribute="width" secondItem="njF-e1-oar" secondAttribute="width" multiplier="0.5" id="Ct2-Yg-PbA"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addressLabel" destination="kyx-9l-pQH" id="EYI-d7-BdL"/>
