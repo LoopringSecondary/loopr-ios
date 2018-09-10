@@ -93,11 +93,11 @@ class MarketChangeTokenSwipeViewController: SwipeViewController, UISearchBarDele
         }
         
         if Themes.isDark() {
-            options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
-            options.swipeTabView.itemView.selectedTextColor = UIColor.white
+            options.swipeTabView.itemView.textColor = UIColor(rgba: "#ffffff66")
+            options.swipeTabView.itemView.selectedTextColor = UIColor(rgba: "#ffffffcc")
         } else {
-            options.swipeTabView.itemView.textColor = UIColor.init(white: 0.5, alpha: 1)
-            options.swipeTabView.itemView.selectedTextColor = UIColor.black
+            options.swipeTabView.itemView.textColor = UIColor(rgba: "#00000099")
+            options.swipeTabView.itemView.selectedTextColor = UIColor(rgba: "#000000cc")
         }
         swipeView.reloadData(options: options)
         
