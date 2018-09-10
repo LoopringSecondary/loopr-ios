@@ -56,7 +56,7 @@ class Order: Equatable {
         }
     }
     
-    static func ==(lhs: Order, rhs: Order) -> Bool {
+    static func == (lhs: Order, rhs: Order) -> Bool {
         return lhs.originalOrder.hash == rhs.originalOrder.hash
     }
 
