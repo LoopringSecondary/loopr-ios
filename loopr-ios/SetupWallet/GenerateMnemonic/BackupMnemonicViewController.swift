@@ -34,9 +34,7 @@ class BackupMnemonicViewController: UIViewController {
     private var firstAppear = true
     var hideButtons: Bool = false
     var blurVisualEffectView = UIView()
-    
-    var blurVisualEffectView = UIView()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
