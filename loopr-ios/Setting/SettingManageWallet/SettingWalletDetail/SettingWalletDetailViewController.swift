@@ -50,10 +50,9 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     }
     
     @IBAction func pressedSwitchWalletButton(_ sender: Any) {
-        let alertController = UIAlertController(title: LocalizedString("Switch to this Wallet", comment: ""), message: nil, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
-            CurrentAppWalletDataManager.shared.setCurrentAppWallet(self.appWallet, completionHandler: {})
-
+        CurrentAppWalletDataManager.shared.setCurrentAppWallet(self.appWallet, completionHandler: {})
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             // Pop to SettingViewController
             for controller in self.navigationController!.viewControllers as Array {
                 // Switch the current wallet from setting view
@@ -61,15 +60,10 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
                     self.navigationController!.popToViewController(controller, animated: false)
                     // Jump to WalletViewController
                     let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                    // Post a notification
+                    NotificationCenter.default.post(name: .needRelaunchCurrentAppWallet, object: nil)
                     if let tabBarController = appDelegate?.window?.rootViewController as? UITabBarController {
-                        if let fromView = tabBarController.selectedViewController?.view {
-                            let toView = tabBarController.viewControllers![0]
-                            // Post a notification
-                            NotificationCenter.default.post(name: .needRelaunchCurrentAppWallet, object: nil)
-                            UIView.transition(from: fromView, to: toView.view, duration: 0.3, options: .transitionCrossDissolve, completion: { (_) in
-                                tabBarController.selectedIndex = 0
-                            })
-                        }
+                        tabBarController.selectedIndex = 0
                     }
                     break
                 }
@@ -81,14 +75,9 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
                     break
                 }
             }
-        })
-        alertController.addAction(defaultAction)
-        let cancelAction = UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
-        })
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
+        }
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }

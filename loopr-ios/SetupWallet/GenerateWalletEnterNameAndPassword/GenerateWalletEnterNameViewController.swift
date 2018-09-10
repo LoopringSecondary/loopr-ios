@@ -100,7 +100,6 @@ class GenerateWalletEnterNameViewController: UIViewController, UITextFieldDelega
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let newLength = (textField.text?.utf16.count)! + (string.utf16.count) - range.length
         errorInfoLabel.alpha = 0.0
         errorInfoLabel.text = ""
         return true
