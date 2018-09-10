@@ -15,7 +15,8 @@ class WalletCreateSuccessfullyPopViewController: UIViewController {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
     
-    var dismissClosure: (() -> Void)?
+    var confirmClosure: (() -> Void)?
+    var cancelClosure: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +32,14 @@ class WalletCreateSuccessfullyPopViewController: UIViewController {
 
         infoLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
         infoLabel.textColor = UIColor.success
-        infoLabel.text = LocalizedString("Wallet Create Successull！", comment: "")
+        infoLabel.text = LocalizedString("Wallet Created Successfully!", comment: "")
 
         confirmButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 18)
         confirmButton.tintColor = UIColor.success
         confirmButton.title = LocalizedString("OK, Got It", comment: "")
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tableTapped))
+        view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,9 +48,15 @@ class WalletCreateSuccessfullyPopViewController: UIViewController {
     }
 
     @IBAction func pressedConfirmButton(_ sender: Any) {
-        dismissClosure?()
+        confirmClosure?()
         self.dismiss(animated: true, completion: {
         })
     }
     
+    @objc func tableTapped(tap: UITapGestureRecognizer) {
+        cancelClosure?()
+        self.dismiss(animated: true, completion: {
+        })
+    }
+
 }

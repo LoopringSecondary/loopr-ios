@@ -39,8 +39,8 @@
 "Please use space to seperate the mnemonic words" = "请用空格隔开助记词";
 "Backup Mnemonic" = "备份助记词";
 "Verify Mnemonic" = "助记词验证";
-"Verify Now" = "马上验证";
-"Skip Verification" = "跳过验证";
+"Verify" = "马上验证";
+"Skip" = "跳过验证";
 "Invalid mnemonic. Please enter again." = "无法导入助记词。请重新输入。";
 "Invalid private key. Please enter again." = "无法导入私钥。请重新输入。";
 "Invalid keystore. Please enter again." = "无法导入Keystore。请重新输入。";
@@ -64,6 +64,7 @@
 "Failed to import address. The device has imported the address already." = "导入钱包失败。手机已经导入该地址。";
 "Please Verify Your Mnemonic" = "验证您的钱包助记词";
 "Please click words in order." = "请按顺序点击助记词。";
+"Wallet Created Successfully!" = "钱包创建成功！";
 
 /* Password related */
 "Please enter a password" = "请输入密码";
@@ -391,7 +392,5 @@
 "Authenticate to decline the order" = "验证拒绝交易";
 
 /* Complicated. Need other info to form a sentence. */
-"Create_used_in_creating_wallet" = "成功创建";
-"successfully_used_in_creating_wallet" = "";
 "You are going to clear records of" = "您将要清除该手机上";
 "on this device." = "的数据。";

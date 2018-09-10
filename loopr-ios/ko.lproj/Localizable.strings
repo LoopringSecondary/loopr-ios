@@ -39,8 +39,8 @@
 "Please use space to seperate the mnemonic words" = "Please use space to seperate the mnemonic words";
 "Backup Mnemonic" = "Backup Mnemonic";
 "Verify Mnemonic" = "Verify Mnemonic";
-"Verify Now" = "Verify Now";
-"Skip Verification" = "Skip Verification";
+"Verify" = "Verify";
+"Skip" = "Skip";
 "Invalid mnemonic. Please enter again." = "Invalid mnemonic. Please enter again.";
 "Invalid private key. Please enter again." = "Invalid private key. Please enter again.";
 "Invalid keystore. Please enter again." = "Invalid keystore. Please enter again.";
@@ -371,7 +371,5 @@
 "Authenticate to access your wallet" = "Authenticate to access your wallet";
 
 /* Complicated. Need other info to form a sentence. */
-"Create_used_in_creating_wallet" = "Create";
-"successfully_used_in_creating_wallet" = "successfully";
 "You are going to clear records of" = "You are going to clear records of";
 "on this device." = "on this device.";

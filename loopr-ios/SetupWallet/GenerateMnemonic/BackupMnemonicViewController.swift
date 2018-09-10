@@ -89,11 +89,11 @@ class BackupMnemonicViewController: UIViewController {
         backgroundImageView2.addSubview(mnemonicCollectionViewController0.view)
         addChildViewController(mnemonicCollectionViewController0)
 
-        skipVerifyNowButton.title = LocalizedString("Skip Verification", comment: "Go to VerifyMnemonicViewController")
+        skipVerifyNowButton.title = LocalizedString("Skip", comment: "Go to VerifyMnemonicViewController")
         skipVerifyNowButton.setupBlack(height: 44)
         skipVerifyNowButton.isHidden = hideButtons
         
-        verifyNowButton.title = LocalizedString("Verify Now", comment: "Go to VerifyMnemonicViewController")
+        verifyNowButton.title = LocalizedString("Verify", comment: "Go to VerifyMnemonicViewController")
         verifyNowButton.setupSecondary(height: 44)
         verifyNowButton.isHidden = hideButtons
         
@@ -157,7 +157,7 @@ class BackupMnemonicViewController: UIViewController {
     func displayWalletCreateSuccessfully() {
         let vc = WalletCreateSuccessfullyPopViewController()
         vc.modalPresentationStyle = .overFullScreen
-        vc.dismissClosure = {
+        vc.confirmClosure = {
             UIView.animate(withDuration: 0.1, animations: {
                 self.blurVisualEffectView.alpha = 0.0
             }, completion: { (_) in
@@ -175,6 +175,15 @@ class BackupMnemonicViewController: UIViewController {
                 }
             })
         }
+        
+        vc.cancelClosure = {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.blurVisualEffectView.alpha = 0.0
+            }, completion: { (_) in
+                self.blurVisualEffectView.removeFromSuperview()
+            })
+        }
+        
         self.present(vc, animated: true, completion: nil)
         
         self.navigationController?.view.addSubview(self.blurVisualEffectView)
@@ -183,40 +192,6 @@ class BackupMnemonicViewController: UIViewController {
         }, completion: {(_) in
             
         })
-    }
-
-    // TODO: Deprecated
-    func exit() {
-        let header = LocalizedString("Create_used_in_creating_wallet", comment: "used in creating wallet")
-        let footer = LocalizedString("successfully_used_in_creating_wallet", comment: "used in creating wallet")
-        let attributedString = NSAttributedString(string: header + " " + "\(GenerateWalletDataManager.shared.walletName)" + " " + footer, attributes: [
-            NSAttributedStringKey.font: UIFont.init(name: FontConfigManager.shared.getMedium(), size: 17) ?? UIFont.systemFont(ofSize: 17),
-            NSAttributedStringKey.foregroundColor: UIColor.init(rgba: "#030303")
-            ])
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
-        alertController.setValue(attributedString, forKey: "attributedMessage")
-
-        let backAction = UIAlertAction(title: LocalizedString("Back", comment: ""), style: .default, handler: { _ in
-            alertController.dismiss(animated: true, completion: nil)
-        })
-        alertController.addAction(backAction)
-
-        let confirmAction = UIAlertAction(title: LocalizedString("Enter Wallet", comment: ""), style: .default, handler: { _ in
-            GenerateWalletDataManager.shared.complete(completion: {(appWallet, error) in
-                if error == nil {
-                    Answers.logSignUp(withMethod: QRCodeMethod.create.description + ".skip", success: true, customAttributes: nil)
-                    self.dismissGenerateWallet()
-                } else if error == .duplicatedAddress {
-                    self.alertForDuplicatedAddress()
-                } else {
-                    self.alertForError()
-                }
-            })
-        })
-        alertController.addAction(confirmAction)
-        
-        // Show the UIAlertController
-        self.present(alertController, animated: true, completion: nil)
     }
 
     func dismissGenerateWallet() {

@@ -163,6 +163,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             let tipLabel = UILabel(frame: CGRect(x: 23, y: 16, width: 120, height: 16))
             tipLabel.setSubTitleCharFont()
             tipLabel.text = LocalizedString("Partner_Tip", comment: "")
+            // Update the width programmatically due to different langugages.
+            tipLabel.frame = CGRect(x: 23, y: 16, width: LocalizedString("Partner_Tip", comment: "").textWidth(font: tipLabel.font), height: 16)
             headerView.addSubview(tipLabel)
             let infoLabel = UILabel(frame: CGRect(x: tipLabel.frame.maxX, y: 16, width: headerView.width - 170, height: 16))
             infoLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address

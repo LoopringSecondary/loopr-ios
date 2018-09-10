@@ -39,8 +39,8 @@
 "Please use space to seperate the mnemonic words" = "Please use space to seperate the mnemonic words";
 "Backup Mnemonic" = "Backup Mnemonic";
 "Verify Mnemonic" = "Verify Mnemonic";
-"Verify Now" = "Verify Now";
-"Skip Verification" = "Skip Verification";
+"Verify" = "Verify";
+"Skip" = "Skip";
 "Invalid mnemonic. Please enter again." = "Invalid mnemonic. Please enter again.";
 "Invalid private key. Please enter again." = "Invalid private key. Please enter again.";
 "Invalid keystore. Please enter again." = "Invalid keystore. Please enter again.";
@@ -64,6 +64,7 @@
 "Failed to import address. The device has imported the address already." = "Failed to import address. The device has imported the address already.";
 "Please Verify Your Mnemonic" = "Please Verify Your Mnemonic";
 "Please click words in order." = "Please click words in order.";
+"Wallet Created Successfully!" = "Wallet Created Successfully!";
 
 /* Password related */
 "Please enter a password" = "Please enter a password";
@@ -391,7 +392,5 @@
 "Authenticate to decline the order" = "Authenticate to decline the order";
 
 /* Complicated. Need other info to form a sentence. */
-"Create_used_in_creating_wallet" = "Create";  // TODO: Deprecated.
-"successfully_used_in_creating_wallet" = "successfully"; // TODO: Deprecated.
 "You are going to clear records of" = "You are going to clear records of";
 "on this device." = "on this device.";
