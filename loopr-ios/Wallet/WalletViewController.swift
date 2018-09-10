@@ -134,12 +134,16 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         dispatchGroup.notify(queue: .main) {
             if self.isLaunching {
-                SVProgressHUD.dismiss()
                 self.isLaunching = false
+
                 // Then get all balance. It takes times.
-                AppWalletDataManager.shared.getAllBalanceFromRelay()
+                AppWalletDataManager.shared.getAllBalanceFromRelayInBackgroundThread()
                 // Setup socket io at the end of the launch
                 LoopringSocketIORequest.setup()
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    SVProgressHUD.dismiss()
+                }
             }
             self.assetTableView.reloadData()
             self.refreshControl.endRefreshing()
@@ -148,6 +152,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        assetTableView.isUserInteractionEnabled = true
+
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationItem.title = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? LocalizedString("Wallet", comment: "")
 
@@ -371,6 +377,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else if indexPath.section == 1 {
         
         } else {
+            // Avoid pushing AssetSwipeViewController mutiple times
+            assetTableView.isUserInteractionEnabled = false
+
             tableView.deselectRow(at: indexPath, animated: true)
             let asset = CurrentAppWalletDataManager.shared.getAssetsWithHideSmallAssetsOption()[indexPath.row]
             let viewController = AssetSwipeViewController()

@@ -13,7 +13,6 @@ class AppWalletDataManager {
     
     static let shared = AppWalletDataManager()
     private var appWallets: [AppWallet]
-    private var accountTotalCurrency: Double = 0
     
     private init() {
         appWallets = []
@@ -223,8 +222,8 @@ class AppWalletDataManager {
         completionHandler(newAppWallet, nil)
     }
     
-    func getTotalCurrencyValue(address: String, getPrice: Bool, completionHandler: @escaping (_ totalCurrencyValue: Double, _ error: Error?) -> Void) {
-        print("getBalanceAndPriceQuote Current address: \(address)")
+    func getTotalCurrencyValue(address: String, getPrice: Bool, completionHandlerInBackgroundThread: @escaping (_ totalCurrencyValue: Double, _ error: Error?) -> Void) {
+        print("getTotalCurrencyValue Current address: \(address)")
         
         let appWallet = getWallet(address: address)
         var localAssets: [Asset] = []
@@ -255,7 +254,7 @@ class AppWalletDataManager {
             dispatchGroup.leave()
         }
         
-        dispatchGroup.notify(queue: .main) {
+        dispatchGroup.notify(queue: .global(qos: .background)) {
             print("Both functions complete 👍")
             
             var newTokenList: [String] = []
@@ -278,14 +277,16 @@ class AppWalletDataManager {
                 appWallet!.updateTokenList(newTokenList, add: true)
             }
 
-            completionHandler(totalCurrencyValue, nil)
+            completionHandlerInBackgroundThread(totalCurrencyValue, nil)
         }
     }
     
-    func getAllBalanceFromRelay() {
-        for (index, wallet) in AppWalletDataManager.shared.getWallets().enumerated() {
-            AppWalletDataManager.shared.getTotalCurrencyValue(address: wallet.address, getPrice: index == 0, completionHandler: { (totalCurrencyValue, error) in
-                print("getAllBalanceFromRelay \(totalCurrencyValue)")
+    // Not used in WalletViewController. 
+    func getAllBalanceFromRelayInBackgroundThread() {
+        for wallet in AppWalletDataManager.shared.getWallets() {
+            // Closure is in the background thread.
+            AppWalletDataManager.shared.getTotalCurrencyValue(address: wallet.address, getPrice: false, completionHandlerInBackgroundThread: { (totalCurrencyValue, error) in
+                print("AppWalletDataManager getAllBalanceFromRelay \(totalCurrencyValue)")
                 wallet.totalCurrency = totalCurrencyValue
                 AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: wallet)
             })

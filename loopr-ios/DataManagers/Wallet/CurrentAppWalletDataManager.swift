@@ -228,7 +228,7 @@ class CurrentAppWalletDataManager {
     // 3. get nonce
     func getBalanceAndPriceQuoteAndNonce(getPrice: Bool, completionHandler: @escaping (_ assets: [Asset], _ error: Error?) -> Void) {
         let address = self.currentAppWallet!.address
-        print("getBalanceAndPriceQuote Current address: \(address)")
+        print("getBalanceAndPriceQuoteAndNonce Current address: \(address)")
         
         var localAssets: [Asset] = []
         let dispatchGroup = DispatchGroup()

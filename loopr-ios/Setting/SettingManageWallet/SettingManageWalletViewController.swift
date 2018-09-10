@@ -58,15 +58,17 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
     }
     
     private func getAllBalanceFromRelay() {
-        for (index, wallet) in AppWalletDataManager.shared.getWallets().enumerated() {
-            AppWalletDataManager.shared.getTotalCurrencyValue(address: wallet.address, getPrice: index == 0, completionHandler: { (totalCurrencyValue, error) in
-                print("getAllBalanceFromRelay \(totalCurrencyValue)")
+        for wallet in AppWalletDataManager.shared.getWallets() {
+            AppWalletDataManager.shared.getTotalCurrencyValue(address: wallet.address, getPrice: false, completionHandlerInBackgroundThread: { (totalCurrencyValue, error) in
+                print("SettingManageWalletViewController getAllBalanceFromRelay \(totalCurrencyValue)")
                 wallet.totalCurrency = totalCurrencyValue
                 AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: wallet)
                 
                 // TODO: a hack to reload table view.
                 if totalCurrencyValue > 0 {
-                    self.tableView.reloadData()
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 }
             })
         }
