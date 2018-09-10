@@ -56,7 +56,7 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
         continueButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
         view.addSubview(continueButton)
         
-        errorInfoLabel.frame = CGRect(x: padding, y: continueButton.bottomY + 40, width: screenWidth-padding*2, height: 40)
+        errorInfoLabel.frame = CGRect(x: padding, y: continueButton.bottomY + 40, width: screenWidth-padding*2, height: 17)
         errorInfoLabel.textColor = UIColor.fail
         errorInfoLabel.textAlignment = .center
         errorInfoLabel.alpha = 0.0
@@ -113,9 +113,15 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
             dispatchGroup.notify(queue: .main) {
                 SVProgressHUD.dismiss()
                 if isSucceeded {
-                    let viewController = ExportKeystoreSwipeViewController()
-                    viewController.keystore = self.keystore
-                    self.navigationController?.pushViewController(viewController, animated: true)
+                    AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to access your keystore", comment: "")) { (error) in
+                        guard error == nil else {
+                            print(error.debugDescription)
+                            return
+                        }
+                        let viewController = ExportKeystoreSwipeViewController()
+                        viewController.keystore = self.keystore
+                        self.navigationController?.pushViewController(viewController, animated: true)
+                    }
                 } else {
                     let banner = NotificationBanner.generate(title: "Wrong password", style: .danger)
                     banner.duration = 1.5
@@ -135,10 +141,16 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
                 self.errorInfoLabel.shake()
                 return
             }
-
-            let viewController = ExportKeystoreSwipeViewController()
-            viewController.keystore = appWallet.getKeystore()
-            self.navigationController?.pushViewController(viewController, animated: true)
+            
+            AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to access your keystore", comment: "")) { (error) in
+                guard error == nil else {
+                    print(error.debugDescription)
+                    return
+                }
+                let viewController = ExportKeystoreSwipeViewController()
+                viewController.keystore = self.appWallet.getKeystore()
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
         }
     }
     

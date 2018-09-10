@@ -42,11 +42,16 @@ class DisplayPrivateKeyViewController: UIViewController {
         copyButton.title = copyButtonTitle
         copyButton.setupSecondary(height: 44)
         copyButton.isHidden = hideCopyButton
-        
+
         blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         blurVisualEffectView.alpha = 1
         blurVisualEffectView.frame = UIScreen.main.bounds
+        displayWarning()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
+    }
+    
+    @objc func willEnterForeground() {
         displayWarning()
     }
     

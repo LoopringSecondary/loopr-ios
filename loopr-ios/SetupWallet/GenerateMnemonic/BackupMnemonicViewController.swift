@@ -33,6 +33,7 @@ class BackupMnemonicViewController: UIViewController {
     
     private var firstAppear = true
     var hideButtons: Bool = false
+    var blurVisualEffectView = UIView()
     
     var blurVisualEffectView = UIView()
     
@@ -101,6 +102,10 @@ class BackupMnemonicViewController: UIViewController {
         blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         blurVisualEffectView.alpha = 1
         blurVisualEffectView.frame = UIScreen.main.bounds
+
+        displayWarning()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -136,6 +141,10 @@ class BackupMnemonicViewController: UIViewController {
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+    }
+    
+    @objc func willEnterForeground() {
+        displayWarning()
     }
 
     @IBAction func pressedVerifyNowButton(_ sender: Any) {
@@ -215,6 +224,26 @@ class BackupMnemonicViewController: UIViewController {
     func dismissGenerateWallet() {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         appDelegate?.window?.rootViewController = MainTabController()
+    }
+    
+    func displayWarning() {
+        let vc = PreventScreenShotViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.dismissClosure = {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.blurVisualEffectView.alpha = 0.0
+            }, completion: { (_) in
+                self.blurVisualEffectView.removeFromSuperview()
+            })
+        }
+        self.present(vc, animated: true, completion: nil)
+        
+        self.navigationController?.view.addSubview(self.blurVisualEffectView)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.blurVisualEffectView.alpha = 1.0
+        }, completion: {(_) in
+            
+        })
     }
     
 }

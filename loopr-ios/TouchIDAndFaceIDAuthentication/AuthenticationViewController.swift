@@ -66,7 +66,7 @@ class AuthenticationViewController: UIViewController {
     }
     
     func startAuthentication() {
-        AuthenticationDataManager.shared.authenticate { (error) in
+        AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to access your wallet", comment: "")) { (error) in
             guard error == nil else {
                 print(error.debugDescription)
                 return

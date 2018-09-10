@@ -6,7 +6,6 @@
  Copyright © 2018 Loopring. All rights reserved.
  */
 
-
 /* App */
 "Loopring P2P Order" = "路印P2P订单";
 "UP Wallet" = "UP钱包";
@@ -255,7 +254,6 @@
 "Convert WETH" = "WETH转换";
 "Conversion Successful." = "转换成功。";
 
-
 /* Setting page */
 "Night Mode" = "夜间";
 "Language" = "语言";
@@ -382,6 +380,15 @@
 "Authorize_Successfully" = "授权成功，请转至我们的网站服务，进行您的后续操作。";
 "Authorize_Failed" = "授权失败，请核对您的授权数据，确认正确后请重新尝试。";
 "Authenticate to access your wallet" = "验证访问您的钱包";
+"Authenticate to access your mnemonic" = "验证访问您的助记词";
+"Authenticate to access your private key" = "验证访问您的私钥";
+"Authenticate to access your keystore" = "验证访问您的keystore";
+"Authenticate to login" = "验证登陆";
+"Authenticate to cancel" = "验证取消";
+"Authenticate to convert" = "验证转换";
+"Authenticate to approve the transaction" = "验证授权交易";
+"Authenticate to confirm the order" = "验证确认交易";
+"Authenticate to decline the order" = "验证拒绝交易";
 
 /* Complicated. Need other info to form a sentence. */
 "Create_used_in_creating_wallet" = "成功创建";

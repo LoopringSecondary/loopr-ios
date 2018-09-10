@@ -254,7 +254,6 @@
 "Convert WETH" = "Convert WETH";
 "Conversion Successful." = "Conversion Successful.";
 
-
 /* Setting page */
 "Night Mode" = "Night Mode";
 "Language" = "Language";
@@ -381,6 +380,15 @@
 "Authorize_Successfully" = "Authorization Successful! Please go to our website to continue.";
 "Authorize_Failed" = "Authorization failed! Please review your signing data and try again later.";
 "Authenticate to access your wallet" = "Authenticate to access your wallet";
+"Authenticate to access your mnemonic" = "Authenticate to access your mnemonic";
+"Authenticate to access your private key" = "Authenticate to access your private key";
+"Authenticate to access your keystore" = "Authenticate to access your keystore";
+"Authenticate to login" = "Authenticate to login";
+"Authenticate to cancel" = "Authenticate to cancel";
+"Authenticate to convert" = "Authenticate to convert";
+"Authenticate to approve the transaction" = "Authenticate to approve the transaction";
+"Authenticate to confirm the order" = "Authenticate to confirm the order";
+"Authenticate to decline the order" = "Authenticate to decline the order";
 
 /* Complicated. Need other info to form a sentence. */
 "Create_used_in_creating_wallet" = "Create";  // TODO: Deprecated.

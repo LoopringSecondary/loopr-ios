@@ -35,9 +35,8 @@ class AuthenticationDataManager {
         UserDefaults.standard.set(newValue, forKey: UserDefaultsKeys.passcodeOn.rawValue)
     }
     
-    func authenticate(completion: @escaping (_ error: Error?) -> Void) {
+    func authenticate(reason: String, completion: @escaping (_ error: Error?) -> Void) {
         let context = LAContext()
-        let reason = LocalizedString("Authenticate to access your wallet", comment: "")
         var authError: NSError?
         if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
             context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, error in
