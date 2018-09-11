@@ -32,7 +32,14 @@ class CurrentAppWalletDataManager {
         if let privateKeyString = defaults.string(forKey: UserDefaultsKeys.currentAppWallet.rawValue) {
             for appWallet in AppWalletDataManager.shared.getWallets() where appWallet.privateKey == privateKeyString {
                 setCurrentAppWallet(appWallet, completionHandler: {})
+                return
             }
+        }
+        
+        // If for some reason, privateKeyString is removed. We will use the first AppWallet as the current wallet.
+        if AppWalletDataManager.shared.getWallets().count > 0 {
+            let appWallet = AppWalletDataManager.shared.getWallets()[0]
+            setCurrentAppWallet(appWallet, completionHandler: {})
         }
     }
 
@@ -245,6 +252,7 @@ class CurrentAppWalletDataManager {
                 print("receive LoopringAPIRequest.getPriceQuote ....")
                 guard error == nil else {
                     print("error=\(String(describing: error))")
+                    dispatchGroup.leave()
                     return
                 }
                 PriceDataManager.shared.setPriceQuote(newPriceQuote: priceQuote!)
@@ -253,6 +261,7 @@ class CurrentAppWalletDataManager {
                     print("receive LoopringAPIRequest.getBalance ...")
                     guard error == nil else {
                         print("error=\(String(describing: error))")
+                        dispatchGroup.leave()
                         return
                     }
                     localAssets = assets

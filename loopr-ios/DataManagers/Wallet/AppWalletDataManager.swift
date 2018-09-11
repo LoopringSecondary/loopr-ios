@@ -239,6 +239,7 @@ class AppWalletDataManager {
                 print("receive LoopringAPIRequest.getPriceQuote ....")
                 guard error == nil else {
                     print("error=\(String(describing: error))")
+                    dispatchGroup.leave()
                     return
                 }
                 PriceDataManager.shared.setPriceQuote(newPriceQuote: priceQuote!)
@@ -251,6 +252,7 @@ class AppWalletDataManager {
             print("receive LoopringAPIRequest.getBalance ...")
             guard error == nil else {
                 print("error=\(String(describing: error))")
+                dispatchGroup.leave()
                 return
             }
             localAssets = assets
