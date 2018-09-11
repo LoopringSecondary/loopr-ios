@@ -163,7 +163,8 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             filterContentForSearchText(self.searchText)
         } else {
             isSearching = false
-            marketTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
+            marketTableView.reloadData()
+            // marketTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
         }
     }
 
