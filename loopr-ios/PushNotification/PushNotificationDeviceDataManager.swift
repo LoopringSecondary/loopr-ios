@@ -40,6 +40,8 @@ class PushNotificationDeviceDataManager {
             body["bundleIdentifier"] = JSON(bundleIdentifier)
             body["deviceToken"] = JSON(deviceToken)
             body["address"] = JSON(address)
+            let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+            body["currentInstalledVersion"] = JSON(version)
             
             // Different certificats for release and debug
             #if RELEASE
@@ -51,7 +53,7 @@ class PushNotificationDeviceDataManager {
             #endif
 
             Request.send(body: body, url: URL(string: APNsUrl)!) { data, _, error in
-                guard let data = data, error == nil else {
+                guard let _ = data, error == nil else {
                     print("error=\(String(describing: error))")
                     return
                 }
@@ -60,10 +62,25 @@ class PushNotificationDeviceDataManager {
         }
     }
 
-    // TODO
     func remove(address: String) {
-        if let bundleIdentifier = Bundle.main.bundleIdentifier {
-            
+        if let deviceToken = getDeviceToken() {
+            let deleteUrl = "\(APNsUrl)/\(deviceToken)/\(address)"
+            var request = URLRequest(url: URL(string: deleteUrl)!)
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = "DELETE"
+
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard let _ = data, error == nil else {
+                    print("error=\(String(describing: error))")
+                    return
+                }
+                
+                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                    print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                    print("response = \(String(describing: response))")
+                }
+            }
+            task.resume()
         }
     }
 

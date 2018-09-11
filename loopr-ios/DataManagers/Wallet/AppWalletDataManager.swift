@@ -31,6 +31,9 @@ class AppWalletDataManager {
             let encodedData = NSKeyedArchiver.archivedData(withRootObject: AppWalletDataManager.shared.appWallets)
             defaults.set(encodedData, forKey: UserDefaultsKeys.appWallets.rawValue)
             getAppWalletsFromLocalStorage()
+            
+            // Remove the address from the app service
+            PushNotificationDeviceDataManager.shared.remove(address: appWallet.address)
 
             // Set the current wallet
             if appWallet == CurrentAppWalletDataManager.shared.getCurrentAppWallet() {

@@ -53,8 +53,6 @@ class GenerateWalletEnterNameViewController: UIViewController, UITextFieldDelega
         errorInfoLabel.textAlignment = .center
         errorInfoLabel.alpha = 0.0
         view.addSubview(errorInfoLabel)
-        
-        PushNotificationSettingManager.shared.registerForPushNotifications()
     }
 
     override func didReceiveMemoryWarning() {

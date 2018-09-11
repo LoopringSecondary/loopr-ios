@@ -143,6 +143,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     SVProgressHUD.dismiss()
+                    
+                    // Ask for permission
+                    PushNotificationSettingManager.shared.registerForPushNotifications()
                 }
             }
             self.assetTableView.reloadData()
