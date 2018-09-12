@@ -51,16 +51,6 @@
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>http://app-service.bdgt26mqwd.ap-northeast-1.elasticbeanstalk.com</key>
-			<string></string>
-		</dict>
-	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Use camera to scan QR Code</string>
 	<key>NSFaceIDUsageDescription</key>
