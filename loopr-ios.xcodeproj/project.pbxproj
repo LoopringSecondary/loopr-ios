@@ -40,6 +40,8 @@
 		942C49FE21292FF8008A6B4F /* ConvertETHResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 942C49FD21292FF8008A6B4F /* ConvertETHResultViewController.xib */; };
 		942C4A0021293022008A6B4F /* ConvertETHResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C49FF21293022008A6B4F /* ConvertETHResultViewController.swift */; };
 		942C4A02212A9D89008A6B4F /* P2PType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C4A01212A9D89008A6B4F /* P2PType.swift */; };
+		942E2CAB2148B2E100041733 /* TikcerSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942E2CAA2148B2E100041733 /* TikcerSource.swift */; };
+		942E2CAD2148F15F00041733 /* TickerTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942E2CAC2148F15F00041733 /* TickerTag.swift */; };
 		942FE781210D5A1C005C723D /* SendConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942FE77F210D5A1C005C723D /* SendConfirmViewController.swift */; };
 		942FE782210D5A1C005C723D /* SendConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 942FE780210D5A1C005C723D /* SendConfirmViewController.xib */; };
 		943A9A4120909597008BCBFD /* DefaultWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943A9A3F20909597008BCBFD /* DefaultWebViewController.swift */; };
@@ -543,6 +545,8 @@
 		942C49FD21292FF8008A6B4F /* ConvertETHResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConvertETHResultViewController.xib; sourceTree = "<group>"; };
 		942C49FF21293022008A6B4F /* ConvertETHResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertETHResultViewController.swift; sourceTree = "<group>"; };
 		942C4A01212A9D89008A6B4F /* P2PType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P2PType.swift; sourceTree = "<group>"; };
+		942E2CAA2148B2E100041733 /* TikcerSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TikcerSource.swift; sourceTree = "<group>"; };
+		942E2CAC2148F15F00041733 /* TickerTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerTag.swift; sourceTree = "<group>"; };
 		942FE77F210D5A1C005C723D /* SendConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendConfirmViewController.swift; sourceTree = "<group>"; };
 		942FE780210D5A1C005C723D /* SendConfirmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendConfirmViewController.xib; sourceTree = "<group>"; };
 		943A9A3F20909597008BCBFD /* DefaultWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultWebViewController.swift; sourceTree = "<group>"; };
@@ -2032,6 +2036,8 @@
 				948125642119B10B00453225 /* PartnerStatus.swift */,
 				94A1C0DE2128461100FD3A1F /* Partner.swift */,
 				942C4A01212A9D89008A6B4F /* P2PType.swift */,
+				942E2CAA2148B2E100041733 /* TikcerSource.swift */,
+				942E2CAC2148F15F00041733 /* TickerTag.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2861,6 +2867,7 @@
 				AC5E3E74205E22080051ACFC /* NotificationName.swift in Sources */,
 				AC31B95F204A8E4F00B16155 /* WalletDescriptor.swift in Sources */,
 				AC37566D2038D37400AADC60 /* UnlockWalletSwipeViewController.swift in Sources */,
+				942E2CAD2148F15F00041733 /* TickerTag.swift in Sources */,
 				949774F021181E38001BF79D /* TradeRatioViewController.swift in Sources */,
 				AC31B951204A8DF400B16155 /* DataHex.swift in Sources */,
 				AC4141F520352D300089861D /* SwipeContentScrollView.swift in Sources */,
@@ -3022,6 +3029,7 @@
 				AC0C5C86203D168C00C8618D /* TickerLabel.swift in Sources */,
 				AC13B30E2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift in Sources */,
 				AC4F8638209D483B002E62AB /* SettingLRCFeeRatioViewController.swift in Sources */,
+				942E2CAB2148B2E100041733 /* TikcerSource.swift in Sources */,
 				940076B220554A4100DDA37D /* LoopringSocketIORequest.swift in Sources */,
 				AC0CD57920D21BF100ABB7BA /* TabBarItemBasicContentView.swift in Sources */,
 				C8BF959D202696A900343B9A /* MainTabController.swift in Sources */,
@@ -3570,8 +3578,9 @@
 				PRODUCT_NAME = "UP Wallet";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

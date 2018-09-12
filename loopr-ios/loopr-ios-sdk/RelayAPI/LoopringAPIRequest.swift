@@ -154,6 +154,29 @@ class LoopringAPIRequest {
             completionHandler(buyDepths, sellDepths, nil)
         }
     }
+    
+    static func getTicker(by source: TikcerSource, completionHandler: @escaping (_ markets: [Market], _ error: Error?) -> Void) {
+        var body: JSON = JSON()
+        body["method"] = "loopring_getTickerBySource"
+        body["params"] = [["delegateAddress": RelayAPIConfiguration.delegateAddress, "tickerSource": source.description]]
+        body["id"] = JSON(UUID().uuidString)
+        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            var markets: [Market] = []
+            let json = JSON(data)
+            let offerData = json["result"]
+            
+            for subJson in offerData.arrayValue {
+                if let market = Market(json: subJson) {
+                    markets.append(market)
+                }
+            }
+            completionHandler(markets, nil)
+        }
+    }
 
     // READY
     static func getTicker(completionHandler: @escaping (_ markets: [Market], _ error: Error?) -> Void) {

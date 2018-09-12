@@ -78,10 +78,11 @@ class MarketDataManager {
         return nil
     }
     
-    func getMarketsWithoutReordered(type: MarketSwipeViewType = .all) -> [Market] {
+    func getMarketsWithoutReordered(type: MarketSwipeViewType = .all, tag: TickerTag = .all) -> [Market] {
+        var result: [Market]
         switch type {
         case .favorite:
-            return markets.filter({ (market) -> Bool in
+            result = markets.filter({ (market) -> Bool in
                 return favoriteSequence.contains(market.description)
             })
         case .LRC:
@@ -90,24 +91,30 @@ class MarketDataManager {
             }).sorted { (a, b) -> Bool in
                 return a.description < b.description
             }
-            return sortedMarkets
+            result = sortedMarkets
         case .ETH:
             let sortedMarkets = markets.filter({ (market) -> Bool in
                 return market.tradingPair.tradingB.uppercased() == "ETH" || market.tradingPair.tradingB.uppercased() == "WETH"
             }).sorted { (a, b) -> Bool in
                 return a.description < b.description
             }
-            return sortedMarkets
+            result = sortedMarkets
         case .USDT:
             let sortedMarkets = markets.filter({ (market) -> Bool in
                 return market.tradingPair.tradingB.uppercased() == "USDT"
             }).sorted { (a, b) -> Bool in
                 return a.description < b.description
             }
-            return sortedMarkets
+            result = sortedMarkets
         case .all:
-            return markets
+            result = markets
         }
+        if tag != .all {
+            result = markets.filter({ (market) -> Bool in
+                return market.tag == tag
+            })
+        }
+        return result
     }
 
     func getFavoriteMarketKeys() -> [String] {
@@ -143,8 +150,6 @@ class MarketDataManager {
     func onTickerResponse(json: JSON) {
         var newMarkets: [Market] = []
         for subJson in json.arrayValue {
-            
-            // TODO: This is a very expensive calls.
             if let market = Market(json: subJson) {
                 newMarkets.append(market)
             }

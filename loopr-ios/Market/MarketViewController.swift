@@ -134,7 +134,6 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         isListeningSocketIO = false
-        // MarketDataManager.shared.stopGetTicker()
         NotificationCenter.default.removeObserver(self, name: .tickerResponseReceived, object: nil)
     }
 
@@ -270,7 +269,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell = nib![0] as? MarketTableViewCell
         }
         let market: Market
-        if isSearching {
+        if isSearching && filteredMarkets.count > 0 {
             market = filteredMarkets[indexPath.row]
         } else {
             market = MarketDataManager.shared.getMarketsWithoutReordered(type: type)[indexPath.row]

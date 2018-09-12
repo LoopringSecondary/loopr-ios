@@ -20,6 +20,7 @@ class Market: Equatable, CustomStringConvertible {
     var display: String
     var volumeInPast24: Double
     var changeInPat24: String
+    var tag: TickerTag
 
     // loopring_getTickers
     var open: Double
@@ -47,7 +48,7 @@ class Market: Equatable, CustomStringConvertible {
         description = "\(tokens[0])" + "-" + "\(tokens[1])"
         balance = json["last"].doubleValue
         volumeInPast24 = json["vol"].doubleValue
-        
+        tag = TickerTag(rawValue: json["label"].stringValue) ?? .unknown
         let change = json["change"].stringValue
         if change.isEmpty || change == "0.00%" {
             changeInPat24 = "0.00%"
