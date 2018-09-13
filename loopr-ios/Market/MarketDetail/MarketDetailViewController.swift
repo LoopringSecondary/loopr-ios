@@ -28,10 +28,10 @@ class MarketDetailViewController: UIViewController {
         updateHistoryButton()
         if ColorTheme.current == .green {
             buyButton.setupSecondary(height: 44)
-            sellButton.setupPrimary(height: 44)
+            sellButton.setupPrimary(height: 44, gradientOrientation: .horizontal)
         } else {
             buyButton.setupPrimary(height: 44)
-            sellButton.setupSecondary(height: 44)
+            sellButton.setupRed(height: 44, gradientOrientation: .horizontal)
         }
         
         addChildViewController(marketDetailSwipeViewController)

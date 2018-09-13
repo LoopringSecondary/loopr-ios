@@ -156,10 +156,10 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         // Place button
         if type == .buy {
             nextButton.title = LocalizedString("Buy", comment: "") + " " + market.tradingPair.tradingA
-            nextButton.setupPrimary(height: 44)
+            nextButton.setupPrimary(height: 44, gradientOrientation: .horizontal)
         } else {
             nextButton.title = LocalizedString("Sell", comment: "") + " " + market.tradingPair.tradingA
-            nextButton.setupSecondary(height: 44)
+            nextButton.setupRed(height: 44, gradientOrientation: .horizontal)
         }
         
         // Scroll view

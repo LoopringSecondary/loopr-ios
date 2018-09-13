@@ -106,10 +106,12 @@
 "DEX Trade" = "DEX Trade";
 "P2P Trade" = "P2P Trade";
 "Buy" = "Buy";
+"Buy Price" = "Buy Price";
 "B" = "B";
 "S" = "S";
 "Bought" = "Bought";
 "Sell" = "Sell";
+"Sell Price" = "Sell Price";
 "Sold" = "Sold";
 "Buying" = "Buying";
 "Selling" = "Selling";
