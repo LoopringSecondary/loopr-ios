@@ -297,8 +297,6 @@
 		AC6A3478210D740500AE615B /* MarketDetailSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A3476210D740500AE615B /* MarketDetailSwipeViewController.swift */; };
 		AC6A3479210D740500AE615B /* MarketDetailSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC6A3477210D740500AE615B /* MarketDetailSwipeViewController.xib */; };
 		AC6E95E520313D8A00C6EB7C /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */; };
-		AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */; };
-		AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */; };
 		AC70E84E20683C7500451047 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC70E84D20683C7500451047 /* IconView.swift */; };
 		AC72AED8204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AED6204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift */; };
 		AC72AED9204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC72AED7204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib */; };
@@ -803,8 +801,6 @@
 		AC6A3476210D740500AE615B /* MarketDetailSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailSwipeViewController.swift; sourceTree = "<group>"; };
 		AC6A3477210D740500AE615B /* MarketDetailSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketDetailSwipeViewController.xib; sourceTree = "<group>"; };
 		AC6E95E420313D8A00C6EB7C /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
-		AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketLineChartTableViewCell.swift; sourceTree = "<group>"; };
-		AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketLineChartTableViewCell.xib; sourceTree = "<group>"; };
 		AC70E84D20683C7500451047 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		AC72AED6204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupMnemonicViewController.swift; sourceTree = "<group>"; };
 		AC72AED7204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackupMnemonicViewController.xib; sourceTree = "<group>"; };
@@ -1875,8 +1871,6 @@
 				AC6A3477210D740500AE615B /* MarketDetailSwipeViewController.xib */,
 				AC131A1621101AEB001998A0 /* MarketDetailDepth */,
 				AC131A1721101B00001998A0 /* MarketDetailTradeHistory */,
-				AC6E95F22032C39100C6EB7C /* MarketLineChartTableViewCell.swift */,
-				AC6E95F32032C39100C6EB7C /* MarketLineChartTableViewCell.xib */,
 				AC78FC33209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift */,
 				AC78FC34209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib */,
 				AC9A273E20A6144700DB04AC /* OrderNoDataTableViewCell.swift */,
@@ -2464,7 +2458,6 @@
 				94EE76A22113F1C5009D6A90 /* OrderHistorySwipeViewController.xib in Resources */,
 				ACE5BFA720466EFD005D75DD /* Localizable.strings in Resources */,
 				ACE6F72820426BAC0039273D /* SettingThemeModeTableViewCell.xib in Resources */,
-				AC6E95F52032C39200C6EB7C /* MarketLineChartTableViewCell.xib in Resources */,
 				ACB911852026388700F14644 /* SettingViewController.xib in Resources */,
 				AC56625C20563C05003C925C /* TradeViewController.xib in Resources */,
 				AC2ACA4E20FA0EC3009C77E7 /* SIL Open Font License.txt in Resources */,
@@ -2979,7 +2972,6 @@
 				ACBA47E220788ECD0032C2B4 /* SettingManageWalletViewController.swift in Sources */,
 				ACE65E4520720500001EE499 /* MnemonicCollectionViewCell.swift in Sources */,
 				ACB9117820256B0300F14644 /* Market.swift in Sources */,
-				AC6E95F42032C39200C6EB7C /* MarketLineChartTableViewCell.swift in Sources */,
 				941138C7210F12AD007FDC82 /* TTLViewController.swift in Sources */,
 				94DAACB320BBF24B0097707E /* OrderQRCodeViewController.swift in Sources */,
 				AC2ACA83210305F8009C77E7 /* TradeFAQViewController.swift in Sources */,
