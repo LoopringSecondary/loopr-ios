@@ -28,12 +28,15 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var canHideKeyboard = true
     
-    // TODO: copy data from MarketDataManager.shared.getMarkets()
     var markets = [Market]()
     
     convenience init(type: MarketSwipeViewType) {
         self.init(nibName: nil, bundle: nil)
         self.type = type
+        // TO reduce the number of TableViewCells that are created during init()
+        if self.type == .favorite || self.type == .ETH {
+            markets = MarketDataManager.shared.getMarketsWithoutReordered(type: type)
+        }
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -57,9 +60,6 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let tap = UITapGestureRecognizer(target: self, action: #selector(tableTapped))
         marketTableView.addGestureRecognizer(tap)
 
-        // No need to call here
-        // getMarketsFromRelay()
-        
         view.theme_backgroundColor = ColorPicker.backgroundColor
         marketTableView.theme_backgroundColor = ColorPicker.backgroundColor
 
@@ -97,6 +97,9 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             // We don't any filter in the API requests. So no need to filter the response.
             MarketDataManager.shared.setMarkets(newMarkets: markets)
+            if self.type == .favorite {
+                self.markets = MarketDataManager.shared.getMarketsWithoutReordered(type: .favorite)
+            }
             DispatchQueue.main.async {
                 self.marketTableView.reloadData()
                 self.refreshControl.endRefreshing()
@@ -107,6 +110,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @objc func tickerResponseReceivedNotification() {
         if viewAppear && !isSearching && isListeningSocketIO {
             print("MarketViewController reload table \(type.description)")
+            markets = MarketDataManager.shared.getMarketsWithoutReordered(type: type)
             marketTableView.reloadData()
         }
     }
@@ -255,24 +259,26 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if isSearching {
             return filteredMarkets.count
         } else {
-            return MarketDataManager.shared.getMarketsWithoutReordered(type: type).count
+            return markets.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let spacer = marketTableView.reorder.spacerCell(for: indexPath) {
-            return spacer
-        }
         var cell = tableView.dequeueReusableCell(withIdentifier: MarketTableViewCell.getCellIdentifier()) as? MarketTableViewCell
         if cell == nil {
+            // 37 TableViewCell is created during init()
+            let start = Date()
             let nib = Bundle.main.loadNibNamed("MarketTableViewCell", owner: self, options: nil)
             cell = nib![0] as? MarketTableViewCell
+            let end = Date()
+            let timeInterval: Double = end.timeIntervalSince(start)
+            print("##########Time to generate MarketTableViewCell: \(timeInterval) seconds############")
         }
         let market: Market
         if isSearching && filteredMarkets.count > 0 {
             market = filteredMarkets[indexPath.row]
         } else {
-            market = MarketDataManager.shared.getMarketsWithoutReordered(type: type)[indexPath.row]
+            market = markets[indexPath.row]
         }
         cell?.market = market
         cell?.update()

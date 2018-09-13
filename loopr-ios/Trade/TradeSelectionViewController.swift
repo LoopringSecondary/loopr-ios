@@ -17,6 +17,9 @@ class TradeSelectionViewController: UIViewController {
     
     var isViewDidAppear: Bool = false
     
+    // It's slow to load MarketSwipeViewController. So make a property to store the instance.
+    var marketSwipeViewController: MarketSwipeViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -62,6 +65,8 @@ class TradeSelectionViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        button1.isUserInteractionEnabled = true
+        
         let iconTitlePadding: CGFloat = 14
         button1.set(image: UIImage.init(named: "Trade-decentralizaed-exchange-dark"), title: LocalizedString("DEX Trade", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         button1.set(image: UIImage.init(named: "Trade-decentralizaed-exchange-dark")?.alpha(0.6), title: LocalizedString("DEX Trade", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
@@ -84,14 +89,26 @@ class TradeSelectionViewController: UIViewController {
             button3.applyShadow(withColor: UIColor.black)
             button4.applyShadow(withColor: UIColor.black)
             isViewDidAppear = true
+
+            let start = Date()
+            marketSwipeViewController = MarketSwipeViewController()
+            marketSwipeViewController!.hidesBottomBarWhenPushed = true
+            let end = Date()
+            let timeInterval: Double = end.timeIntervalSince(start)
+            print("##########Time to generate MarketSwipeViewController: \(timeInterval) seconds############")
         }
     }
 
     @objc func pressedButton1(_ button: UIButton) {
         print("pressedItem1Button")
-        let viewController = MarketSwipeViewController(nibName: nil, bundle: nil)
-        viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
+        if marketSwipeViewController != nil {
+            self.navigationController?.pushViewController(marketSwipeViewController!, animated: true)
+        } else {
+            let viewController = MarketSwipeViewController(nibName: nil, bundle: nil)
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+        button1.isUserInteractionEnabled = false
     }
     
     @objc func pressedButton2(_ button: UIButton) {
