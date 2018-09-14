@@ -28,6 +28,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     @IBOutlet weak var gasInfoImage: UIImageView!
     @IBOutlet weak var gasTipLabel: UILabel!
     
+    @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var cellA: UIView!
     @IBOutlet weak var cellB: UIView!
     @IBOutlet weak var cellD: UIView!
@@ -52,8 +53,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.modalPresentationStyle = .custom
-        self.view.theme_backgroundColor = ColorPicker.backgroundColor
+        view.backgroundColor = UIColor.clear
         containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         containerView.applyShadow()
 
@@ -98,7 +98,8 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         gasTipLabel.text = LocalizedString("GAS_TIP", comment: "")
         
         let cells = [cellA, cellB, cellD]
-        cells.forEach { $0?.theme_backgroundColor = ColorPicker.backgroundColor }
+        cells.forEach { $0?.theme_backgroundColor = ColorPicker.cardBackgroundColor }
+        cellBackgroundView.theme_backgroundColor = ColorPicker.cardHighLightColor
         
         // Tap gesture
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))

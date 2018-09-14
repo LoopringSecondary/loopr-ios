@@ -68,7 +68,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     var orderAmount: Double = 0
     var tokenS: String = ""
     var tokenB: String = ""
-
+    
     convenience init(type: TradeType) {
         self.init(nibName: nil, bundle: nil)
         self.type = type
@@ -378,14 +378,35 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
 
     func pushController() {
         if let order = constructOrder() {
-            let parentView = self.parent!.view!
-            parentView.alpha = 0.25
             let viewController = PlaceOrderConfirmationViewController()
             viewController.order = order
             viewController.price = priceTextField.text
-            viewController.dismissClosure = { parentView.alpha = 1 }
-            viewController.parentNavController = self.navigationController
-            self.present(viewController, animated: true, completion: nil)
+            
+            viewController.transitioningDelegate = self
+            viewController.modalPresentationStyle = .overFullScreen
+            viewController.dismissClosure = {
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.blurVisualEffectView.alpha = 0.0
+                }, completion: {(_) in
+                    self.blurVisualEffectView.removeFromSuperview()
+                })
+            }
+            
+            dismissInteractor.percentThreshold = 0.2
+            dismissInteractor.dismissClosure = {
+                
+            }
+            
+            self.present(viewController, animated: true) {
+                self.dismissInteractor.attachToViewController(viewController: viewController, withView: viewController.containerView, presentViewController: nil, backgroundView: self.blurVisualEffectView)
+            }
+            
+            self.navigationController?.view.addSubview(self.blurVisualEffectView)
+            UIView.animate(withDuration: 0.3, animations: {
+                self.blurVisualEffectView.alpha = 1.0
+            }, completion: {(_) in
+                
+            })
         }
     }
     
