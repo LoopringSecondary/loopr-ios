@@ -89,7 +89,8 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func getTickersFromRelay() {
-        LoopringAPIRequest.getTicker { (markets, error) in
+        // TODO: config in setting
+        LoopringAPIRequest.getTicker(by: .coinmarketcap) { (markets, error) in
             print("receive LoopringAPIRequest.getMarkets")
             guard error == nil else {
                 print("error=\(String(describing: error))")
@@ -158,7 +159,6 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             filterContentForSearchText(self.searchText)
         } else {
             marketTableView.reloadData()
-            // marketTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
         }
     }
     
@@ -280,7 +280,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print("##########Time to generate MarketTableViewCell: \(timeInterval) seconds############")
         }
         let market: Market
-        if isSearching && filteredMarkets.count > 0 {
+        if isSearching {
             market = filteredMarkets[indexPath.row]
         } else {
             market = markets[indexPath.row]

@@ -110,7 +110,7 @@ class MarketDataManager {
             result = markets
         }
         if tag != .all {
-            result = markets.filter({ (market) -> Bool in
+            result = result.filter({ (market) -> Bool in
                 return market.tag == tag
             })
         }

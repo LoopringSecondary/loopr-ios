@@ -40,7 +40,8 @@ class SettingCurrencyViewController: UIViewController, UITableViewDelegate, UITa
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         if localCurrentCurrency != SettingDataManager.shared.getCurrentCurrency() {
-            LoopringAPIRequest.getTicker { (markets, error) in
+            // TODO: config in setting
+            LoopringAPIRequest.getTicker(by: .coinmarketcap) { (markets, error) in
                 print("receive LoopringAPIRequest.getMarkets")
                 guard error == nil else {
                     print("error=\(String(describing: error))")

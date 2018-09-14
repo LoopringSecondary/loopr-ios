@@ -85,7 +85,8 @@ class MarketChangeTokenViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func getTickersFromRelay() {
-        LoopringAPIRequest.getTicker { (markets, error) in
+        // TODO: config in setting
+        LoopringAPIRequest.getTicker(by: .coinmarketcap) { (markets, error) in
             print("receive LoopringAPIRequest.getMarkets")
             guard error == nil else {
                 print("error=\(String(describing: error))")
