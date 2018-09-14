@@ -15,9 +15,11 @@ enum GlobalPicker {
     private static let textColors = ["#000000cc", "#ffffffcc"]
     static let textColor = ThemeColorPicker.pickerWithColors(textColors)
     
+    // cc -> 0.8
     private static let contrastTextColors = ["#ffffffcc", "#000000cc"]
     static let contrastTextColor = ThemeColorPicker.pickerWithColors(contrastTextColors)
     
+    // 99 -> 0.6
     static let textLightColor: ThemeColorPicker = ["#00000099", "#ffffff66"]
     static let contrastTextLightColor: ThemeColorPicker = ["#ffffff66", "#00000099"]
     

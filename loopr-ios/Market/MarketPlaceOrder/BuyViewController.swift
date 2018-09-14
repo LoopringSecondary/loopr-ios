@@ -392,6 +392,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
                 })
             }
             
+            dismissInteractor = MiniToLargeViewInteractive()
             dismissInteractor.percentThreshold = 0.2
             dismissInteractor.dismissClosure = {
                 

@@ -62,6 +62,10 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     var intervalUnit: Calendar.Component = .hour
     var distance: CGFloat = 0
     
+    // Drag down to close a present view controller.
+    var blurVisualEffectView = UIView()
+    var dismissInteractor: MiniToLargeViewInteractive!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -143,6 +147,10 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         self.scrollViewButtonLayoutConstraint.constant = self.distance
         
         TradeDataManager.shared.sellRatio = 1
+        
+        blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        blurVisualEffectView.alpha = 1
+        blurVisualEffectView.frame = UIScreen.main.bounds
     }
 
     override func didReceiveMemoryWarning() {
@@ -315,15 +323,37 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         if let order = constructMaker() {
             preserveMaker(order: order)
             TradeDataManager.shared.isTaker = false
-            let parentView = self.parent!.view!
-            parentView.alpha = 0.25
-            let vc = TradeConfirmationViewController()
-            vc.order = order
-            vc.dismissClosure = {
-                parentView.alpha = 1
+            let viewController = TradeConfirmationViewController()
+            viewController.order = order
+            
+            viewController.transitioningDelegate = self
+            viewController.modalPresentationStyle = .overFullScreen
+            viewController.dismissClosure = {
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.blurVisualEffectView.alpha = 0.0
+                }, completion: {(_) in
+                    self.blurVisualEffectView.removeFromSuperview()
+                })
             }
-            vc.parentNavController = self.navigationController
-            self.present(vc, animated: true, completion: nil)
+            
+            dismissInteractor = MiniToLargeViewInteractive()
+            dismissInteractor.percentThreshold = 0.2
+            dismissInteractor.dismissClosure = {
+                
+            }
+            
+            self.present(viewController, animated: true) {
+                self.dismissInteractor.attachToViewController(viewController: viewController, withView: viewController.containerView, presentViewController: nil, backgroundView: self.blurVisualEffectView)
+            }
+            
+            self.navigationController?.view.addSubview(self.blurVisualEffectView)
+            UIView.animate(withDuration: 0.3, animations: {
+                self.blurVisualEffectView.alpha = 1.0
+            }, completion: {(_) in
+                
+            })
+            
+            viewController.parentNavController = self.navigationController
         }
     }
     
@@ -513,4 +543,20 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         activeTextFieldTag = amountSellTextField.tag
         _ = validate()
     }
+}
+
+extension TradeViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let animator = MiniToLargeViewAnimator()
+        animator.initialY = 0
+        animator.transitionType = .Dismiss
+        return animator
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        // guard !disableInteractivePlayerTransitioning else { return nil }
+        return dismissInteractor
+    }
+    
 }

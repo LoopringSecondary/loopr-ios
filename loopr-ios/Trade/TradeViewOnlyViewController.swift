@@ -30,13 +30,16 @@ class TradeViewOnlyViewController: UIViewController {
         iconView.backgroundColor = UIColor.clear
         
         titleLabel.textAlignment = .center
-        titleLabel.setTitleCharFont()
+        titleLabel.font = FontConfigManager.shared.getCharactorFont(size: 13)
+        titleLabel.theme_textColor = ["#000000cc", "#ffffffcc"]
         
         amountLabel.textAlignment = .center
-        amountLabel.setTitleDigitFont()
+        amountLabel.font = FontConfigManager.shared.getCharactorFont(size: 13)
+        amountLabel.theme_textColor = ["#00000099", "#ffffff66"]
         
         totalPriceInFiatCurrency.textAlignment = .center
-        totalPriceInFiatCurrency.setSubTitleDigitFont()
+        totalPriceInFiatCurrency.font = FontConfigManager.shared.getCharactorFont(size: 13)
+        totalPriceInFiatCurrency.theme_textColor = ["#00000099", "#ffffff66"]
     }
 
     override func didReceiveMemoryWarning() {

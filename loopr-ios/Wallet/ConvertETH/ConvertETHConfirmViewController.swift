@@ -23,6 +23,7 @@ class ConvertETHConfirmViewController: UIViewController {
     @IBOutlet weak var gasInfoLabel: UILabel!
     @IBOutlet weak var convertButton: UIButton!
     
+    @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var cellA: UIView!
     @IBOutlet weak var cellB: UIView!
     @IBOutlet weak var cellC: UIView!
@@ -44,7 +45,8 @@ class ConvertETHConfirmViewController: UIViewController {
         containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         
         let cells = [cellA, cellB, cellC]
-        cells.forEach { $0?.theme_backgroundColor = ColorPicker.backgroundColor }
+        cells.forEach { $0?.theme_backgroundColor = ColorPicker.cardBackgroundColor }
+        cellBackgroundView.theme_backgroundColor = ColorPicker.cardHighLightColor
         
         titleLabel.theme_textColor = GlobalPicker.textColor
         titleLabel.font = FontConfigManager.shared.getMediumFont(size: 16)

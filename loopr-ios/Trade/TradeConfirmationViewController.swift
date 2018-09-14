@@ -29,6 +29,7 @@ class TradeConfirmationViewController: UIViewController {
     @IBOutlet weak var placeOrderButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
+    @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var cellA: UIView!
     @IBOutlet weak var cellB: UIView!
     @IBOutlet weak var cellD: UIView!
@@ -49,14 +50,15 @@ class TradeConfirmationViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.setBackButton()
-        self.modalPresentationStyle = .custom
         self.navigationItem.title = LocalizedString("Trade_Confirm", comment: "")
-        self.view.theme_backgroundColor = ColorPicker.backgroundColor
+
+        view.backgroundColor = UIColor.clear
         containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         containerView.applyShadow()
         
         let cells = [cellA, cellB, cellD]
-        cells.forEach { $0?.theme_backgroundColor = ColorPicker.backgroundColor }
+        cells.forEach { $0?.theme_backgroundColor = ColorPicker.cardBackgroundColor }
+        cellBackgroundView.theme_backgroundColor = ColorPicker.cardHighLightColor
         
         // TokenView
         tokenSView.view.frame = CGRect(x: 0, y: 0, width: tokenSell.frame.width, height: tokenSell.frame.height)
@@ -69,8 +71,11 @@ class TradeConfirmationViewController: UIViewController {
         
         // Price label
         priceLabel.text = LocalizedString("Price", comment: "")
-        priceLabel.setTitleCharFont()
-        priceValueLabel.setTitleDigitFont()
+        priceLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        priceLabel.theme_textColor = GlobalPicker.textLightColor
+
+        priceValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        priceValueLabel.theme_textColor = GlobalPicker.textColor
         
         priceTipLabel.setTitleCharFont()
         priceTipLabel.textColor = UIColor.fail
@@ -86,16 +91,23 @@ class TradeConfirmationViewController: UIViewController {
         
         // Trading Fee
         LRCFeeLabel.text = LocalizedString("Trading Fee", comment: "")
-        LRCFeeLabel.setTitleCharFont()
-        LRCFeeValueLabel.setTitleDigitFont()
+        LRCFeeLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        LRCFeeLabel.theme_textColor = GlobalPicker.textLightColor
+        
+        LRCFeeValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        LRCFeeValueLabel.theme_textColor = GlobalPicker.textColor
 
         // TTL label
-        validLabel.setTitleCharFont()
         validLabel.text = LocalizedString("Time to Live", comment: "")
-        validValueLabel.setTitleDigitFont()
+        validLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        validLabel.theme_textColor = GlobalPicker.textLightColor
         
+        validValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        validValueLabel.theme_textColor = GlobalPicker.textColor
+
         // Gas label
-        gasTipLabel.setSubTitleCharFont()
+        gasTipLabel.font = FontConfigManager.shared.getDigitalFont(size: 12)
+        gasTipLabel.theme_textColor = GlobalPicker.textLightColor
         gasTipLabel.text = LocalizedString("GAS_TIP", comment: "")
         
         // Button
@@ -270,7 +282,7 @@ extension TradeConfirmationViewController {
     }
     
     func pushReviewController() {
-        self.close(false)
+        self.close(true)
         let controller = TradeReviewViewController()
         controller.order = self.order
         self.parentNavController?.pushViewController(controller, animated: true)

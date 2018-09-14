@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,6 +14,7 @@
                 <outlet property="amountLabel" destination="aRi-FH-nkn" id="xGv-Af-EpW"/>
                 <outlet property="cellA" destination="q0Y-78-4Cl" id="5do-Nv-Jft"/>
                 <outlet property="cellB" destination="wjW-IH-hI9" id="FBr-hO-udH"/>
+                <outlet property="cellBackgroundView" destination="PcH-dO-DyE" id="DmL-M0-DrX"/>
                 <outlet property="cellC" destination="1NA-1O-5sH" id="0SF-P1-MSj"/>
                 <outlet property="containerView" destination="jik-Dk-LzW" id="iw2-UA-s1j"/>
                 <outlet property="convertButton" destination="Tc4-tM-UvL" id="EJR-9t-Dpi"/>
@@ -47,6 +48,10 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PcH-dO-DyE">
+                            <rect key="frame" x="0.0" y="99.333333333333314" width="354" height="162"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0Y-78-4Cl">
                             <rect key="frame" x="0.0" y="100.33333333333331" width="354" height="53"/>
                             <subviews>
@@ -138,17 +143,21 @@
                         <constraint firstItem="aRi-FH-nkn" firstAttribute="top" secondItem="jik-Dk-LzW" secondAttribute="top" constant="64" id="9B7-18-tkM"/>
                         <constraint firstAttribute="trailing" secondItem="q0Y-78-4Cl" secondAttribute="trailing" id="D2Z-HY-6De"/>
                         <constraint firstAttribute="trailing" secondItem="1NA-1O-5sH" secondAttribute="trailing" id="EMm-G6-xID"/>
+                        <constraint firstItem="PcH-dO-DyE" firstAttribute="bottom" secondItem="1NA-1O-5sH" secondAttribute="bottom" constant="1" id="Fr3-PH-Skc"/>
                         <constraint firstAttribute="height" constant="345" id="JXY-Ub-dCA"/>
                         <constraint firstItem="wjW-IH-hI9" firstAttribute="top" secondItem="q0Y-78-4Cl" secondAttribute="bottom" constant="0.5" id="Mrk-dL-UdZ"/>
                         <constraint firstItem="Tc4-tM-UvL" firstAttribute="leading" secondItem="jik-Dk-LzW" secondAttribute="leading" constant="20" id="OHI-YE-sEA"/>
                         <constraint firstItem="W84-UP-Oli" firstAttribute="top" secondItem="jik-Dk-LzW" secondAttribute="top" constant="24" id="RJI-br-V2s"/>
                         <constraint firstItem="q0Y-78-4Cl" firstAttribute="leading" secondItem="jik-Dk-LzW" secondAttribute="leading" id="XXl-x3-p13"/>
+                        <constraint firstItem="PcH-dO-DyE" firstAttribute="leading" secondItem="q0Y-78-4Cl" secondAttribute="leading" id="ZGg-EP-4Re"/>
                         <constraint firstItem="W84-UP-Oli" firstAttribute="centerX" secondItem="jik-Dk-LzW" secondAttribute="centerX" id="ZbA-z9-Isq"/>
                         <constraint firstAttribute="trailing" secondItem="wjW-IH-hI9" secondAttribute="trailing" id="dZI-MT-E7Z"/>
                         <constraint firstItem="aRi-FH-nkn" firstAttribute="centerX" secondItem="jik-Dk-LzW" secondAttribute="centerX" id="f1d-oB-s0c"/>
                         <constraint firstItem="1NA-1O-5sH" firstAttribute="top" secondItem="wjW-IH-hI9" secondAttribute="bottom" constant="0.5" id="f3F-Mr-lYd"/>
                         <constraint firstItem="q0Y-78-4Cl" firstAttribute="top" secondItem="jik-Dk-LzW" secondAttribute="top" constant="100" id="ij5-lA-EgU"/>
                         <constraint firstItem="wjW-IH-hI9" firstAttribute="leading" secondItem="jik-Dk-LzW" secondAttribute="leading" id="lFl-Ra-cNb"/>
+                        <constraint firstItem="PcH-dO-DyE" firstAttribute="trailing" secondItem="q0Y-78-4Cl" secondAttribute="trailing" id="mxM-Px-qWZ"/>
+                        <constraint firstItem="PcH-dO-DyE" firstAttribute="top" secondItem="q0Y-78-4Cl" secondAttribute="top" constant="-1" id="qf9-hr-aOz"/>
                         <constraint firstItem="Tc4-tM-UvL" firstAttribute="top" secondItem="1NA-1O-5sH" secondAttribute="bottom" constant="20" id="yet-mA-V6a"/>
                         <constraint firstItem="1NA-1O-5sH" firstAttribute="leading" secondItem="jik-Dk-LzW" secondAttribute="leading" id="yle-9n-Pky"/>
                     </constraints>
