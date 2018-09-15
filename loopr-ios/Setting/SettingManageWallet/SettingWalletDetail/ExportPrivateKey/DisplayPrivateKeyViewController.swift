@@ -37,8 +37,6 @@ class DisplayPrivateKeyViewController: UIViewController {
         privateKeyTextView.isEditable = false
         // privateKeyTextView.isScrollEnabled = false
         
-        privateKeyTextView.text = displayValue
-        
         copyButton.title = copyButtonTitle
         copyButton.setupSecondary(height: 44)
         copyButton.isHidden = hideCopyButton
@@ -63,6 +61,7 @@ class DisplayPrivateKeyViewController: UIViewController {
                 self.blurVisualEffectView.alpha = 0.0
             }, completion: { (_) in
                 self.blurVisualEffectView.removeFromSuperview()
+                self.privateKeyTextView.text = self.displayValue
             })
         }
         self.present(vc, animated: true, completion: nil)

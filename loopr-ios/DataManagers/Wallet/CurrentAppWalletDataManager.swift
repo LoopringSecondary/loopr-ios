@@ -29,8 +29,8 @@ class CurrentAppWalletDataManager {
     
     private func getCurrentAppWalletFromLocalStorage() {
         let defaults = UserDefaults.standard
-        if let privateKeyString = defaults.string(forKey: UserDefaultsKeys.currentAppWallet.rawValue) {
-            for appWallet in AppWalletDataManager.shared.getWallets() where appWallet.privateKey == privateKeyString {
+        if let addressString = defaults.string(forKey: UserDefaultsKeys.currentAppWallet.rawValue) {
+            for appWallet in AppWalletDataManager.shared.getWallets() where appWallet.address == addressString {
                 setCurrentAppWallet(appWallet, completionHandler: {})
                 return
             }
@@ -46,7 +46,7 @@ class CurrentAppWalletDataManager {
     func setCurrentAppWallet(_ appWallet: AppWallet, completionHandler: @escaping () -> Void) {
         print("setCurrentAppWallet ...")
         let defaults = UserDefaults.standard
-        defaults.set(appWallet.privateKey, forKey: UserDefaultsKeys.currentAppWallet.rawValue)
+        defaults.set(appWallet.address, forKey: UserDefaultsKeys.currentAppWallet.rawValue)
         currentAppWallet = appWallet
         
         // Update websocket

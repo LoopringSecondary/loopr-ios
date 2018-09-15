@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SVProgressHUD
+import NotificationBannerSwift
 
 class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -147,9 +149,39 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
                     print(error.debugDescription)
                     return
                 }
+
                 let viewController = DisplayPrivateKeyViewController()
-                viewController.displayValue = self.appWallet.privateKey
-                self.navigationController?.pushViewController(viewController, animated: true)
+                var isSucceeded: Bool = false
+                SVProgressHUD.show(withStatus: LocalizedString("Exporting private key", comment: "") + "...")
+                let dispatchGroup = DispatchGroup()
+                dispatchGroup.enter()
+                DispatchQueue.global().async {
+                    do {
+                        let decoder = JSONDecoder()
+                        let newkeystoreData: Data = self.appWallet.getKeystore().data(using: .utf8)!
+                        let newkeystore = try decoder.decode(NewKeystore.self, from: newkeystoreData)
+                        let privateKey = try newkeystore.privateKey(password: self.appWallet.getKeystorePassword())
+                        viewController.displayValue = privateKey.toHexString()
+
+                        isSucceeded = true
+                        dispatchGroup.leave()
+                    } catch {
+                        isSucceeded = false
+                        dispatchGroup.leave()
+                    }
+                }
+                
+                dispatchGroup.notify(queue: .main) {
+                    SVProgressHUD.dismiss()
+                    if isSucceeded {
+                        self.navigationController?.pushViewController(viewController, animated: true)
+                    } else {
+                        let banner = NotificationBanner.generate(title: "Wrong password", style: .danger)
+                        banner.duration = 1.5
+                        banner.show()
+                    }
+                }
+
             }
         case .exportKeystore:
             // Will ask for device password in ExportKeystoreEnterPasswordViewController

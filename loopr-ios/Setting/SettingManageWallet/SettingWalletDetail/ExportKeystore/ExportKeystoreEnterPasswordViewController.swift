@@ -90,7 +90,12 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
             dispatchGroup.enter()
             DispatchQueue.global().async {
                 do {
-                    guard let data = Data(hexString: self.appWallet.privateKey) else {
+                    let decoder = JSONDecoder()
+                    let newkeystoreData: Data = self.appWallet.getKeystore().data(using: .utf8)!
+                    let newkeystore = try decoder.decode(NewKeystore.self, from: newkeystoreData)
+                    let privateKey = try newkeystore.privateKey(password: self.appWallet.getKeystorePassword())
+                    
+                    guard let data = Data(hexString: privateKey.toHexString()) else {
                         print("Invalid private key")
                         return // .failure(KeystoreError.failedToImportPrivateKey)
                     }

@@ -281,6 +281,7 @@
 "Enter Wallet" = "进入钱包";
 "Copy Private Key" = "复制私钥";
 "Export Private Key" = "导出私钥";
+"Exporting private key" = "正在导出私钥";
 "Export Keystore" = "导出Keystore文件";
 "Exporting keystore" = "正在导出keystore";
 "Wallet Name" = "钱包名字";

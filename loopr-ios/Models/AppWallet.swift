@@ -14,14 +14,13 @@ class AppWallet: NSObject, NSCoding {
     final let setupWalletMethod: QRCodeMethod
     
     final let address: String
-    final let privateKey: String
     
     // The password used to get the address and the private key
     // when users use mnemonics and keystore.
     // At the same time, generating a keystore requires password.
     // However, importing a wallet using private key doesn't require password.
     // Use a default password
-    // At this usecase, users won't export keystore
+    // At this usecase, users need to enter a password when exporting keystore
     private final var password: String
     
     final var mnemonics: [String]
@@ -52,10 +51,9 @@ class AppWallet: NSObject, NSCoding {
     
     var nonce: Int64 = 0
     
-    init(setupWalletMethod: QRCodeMethod, address: String, privateKey: String, password: String, mnemonics: [String] = [], keystoreString: String, name: String, isVerified: Bool, totalCurrency: Double = 0, tokenList: [String], manuallyDisabledTokenList: [String]) {
+    init(setupWalletMethod: QRCodeMethod, address: String, password: String, mnemonics: [String] = [], keystoreString: String, name: String, isVerified: Bool, totalCurrency: Double = 0, tokenList: [String], manuallyDisabledTokenList: [String]) {
         self.setupWalletMethod = setupWalletMethod
         self.address = address
-        self.privateKey = privateKey
         self.password = password
         self.mnemonics = mnemonics
         self.keystoreString = keystoreString
@@ -156,7 +154,6 @@ class AppWallet: NSObject, NSCoding {
         aCoder.encode(setupWalletMethod.rawValue, forKey: "setupWalletMethod")
         aCoder.encode(password, forKey: "password")
         aCoder.encode(address, forKey: "address")
-        aCoder.encode(privateKey, forKey: "privateKey")
         aCoder.encode(name, forKey: "name")
         aCoder.encode(isVerified, forKey: "isVerified")
         aCoder.encode(mnemonics, forKey: "mnemonics")
@@ -173,7 +170,6 @@ class AppWallet: NSObject, NSCoding {
         
         let password = aDecoder.decodeObject(forKey: "password") as? String
         let address = aDecoder.decodeObject(forKey: "address") as? String
-        let privateKey = aDecoder.decodeObject(forKey: "privateKey") as? String
         let name = aDecoder.decodeObject(forKey: "name") as? String
         let isVerified = aDecoder.containsValue(forKey: "isVerified") ? aDecoder.decodeBool(forKey: "isVerified") : false
         
@@ -192,12 +188,12 @@ class AppWallet: NSObject, NSCoding {
             return item.trim() != ""
         }
 
-        if let address = address, let privateKey = privateKey, let password = password, let mnemonics = mnemonics, let keystoreString = keystoreString, let name = name {
+        if let address = address, let password = password, let mnemonics = mnemonics, let keystoreString = keystoreString, let name = name {
             // Verify keystore
             if keystoreString == "" || !AppWallet.isKeystore(content: keystoreString) {
                 return nil
             }
-            self.init(setupWalletMethod: setupWalletMethod, address: address, privateKey: privateKey, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: name, isVerified: isVerified, tokenList: unique(filteredTokenList), manuallyDisabledTokenList: unique(filteredManuallyDisabledTokenList))
+            self.init(setupWalletMethod: setupWalletMethod, address: address, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: name, isVerified: isVerified, tokenList: unique(filteredTokenList), manuallyDisabledTokenList: unique(filteredManuallyDisabledTokenList))
         } else {
             return nil
         }
@@ -205,7 +201,7 @@ class AppWallet: NSObject, NSCoding {
     
     // TODO: this doesn't work in result.contains(value)
     static func == (lhs: AppWallet, rhs: AppWallet) -> Bool {
-        return lhs.address.uppercased() == rhs.address.uppercased() && lhs.privateKey.uppercased() == rhs.privateKey.uppercased()
+        return lhs.address.uppercased() == rhs.address.uppercased()
     }
 
 }

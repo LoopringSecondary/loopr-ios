@@ -281,6 +281,7 @@
 "Enter Wallet" = "Enter Wallet";
 "Copy Private Key" = "Copy Private Key";
 "Export Private Key" = "Export Private Key";
+"Exporting private key" = "Exporting private key";
 "Export Keystore" = "Export Keystore";
 "Exporting keystore" = "Exporting keystore";
 "Wallet Name" = "Wallet Name";
