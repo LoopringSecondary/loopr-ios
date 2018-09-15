@@ -68,12 +68,16 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         
         // Price label
         priceLabel.text = LocalizedString("Price", comment: "")
-        priceLabel.setTitleCharFont()
-        priceValueLabel.setTitleDigitFont()
+        priceLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        priceLabel.theme_textColor = GlobalPicker.textLightColor
         
-        priceTipLabel.setTitleCharFont()
+        priceValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        priceValueLabel.theme_textColor = GlobalPicker.textColor
+        
         priceTipLabel.textColor = UIColor.fail
         priceTipLabel.text = LocalizedString("Irrational", comment: "")
+        priceTipLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        priceTipLabel.theme_textColor = GlobalPicker.textColor
         
         if !validateRational() {
             priceTipLabel.isHidden = false
@@ -85,18 +89,25 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         
         // Trading Fee
         LRCFeeLabel.text = LocalizedString("Trading Fee", comment: "")
-        LRCFeeLabel.setTitleCharFont()
-        LRCFeeValueLabel.setTitleDigitFont()
+        LRCFeeLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        LRCFeeLabel.theme_textColor = GlobalPicker.textLightColor
+        
+        LRCFeeValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        LRCFeeValueLabel.theme_textColor = GlobalPicker.textColor
 
         // TTL label
-        validLabel.setTitleCharFont()
         validLabel.text = LocalizedString("Time to Live", comment: "")
-        validValueLabel.setTitleDigitFont()
+        validLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        validLabel.theme_textColor = GlobalPicker.textLightColor
+        
+        validValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        validValueLabel.theme_textColor = GlobalPicker.textColor
         
         // Gas label
-        gasTipLabel.setSubTitleCharFont()
         gasTipLabel.text = LocalizedString("GAS_TIP", comment: "")
-        
+        gasTipLabel.font = FontConfigManager.shared.getDigitalFont(size: 12)
+        gasTipLabel.theme_textColor = GlobalPicker.textLightColor
+
         let cells = [cellA, cellB, cellD]
         cells.forEach { $0?.theme_backgroundColor = ColorPicker.cardBackgroundColor }
         cellBackgroundView.theme_backgroundColor = ColorPicker.cardHighLightColor
@@ -170,7 +181,11 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
             confirmationButton.title = LocalizedString("Confirmation", comment: "")
         }
         confirmationButton.setupPrimary(height: 44)
+
         cancelButton.setTitle(LocalizedString("Cancel", comment: ""), for: .normal)
+        cancelButton.setTitleColor(UIColor.white, for: .normal)
+        cancelButton.setTitleColor(UIColor.init(white: 0.5, alpha: 1), for: .highlighted)
+        cancelButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 16)
     }
     
     func updateLabels(order: OriginalOrder) {

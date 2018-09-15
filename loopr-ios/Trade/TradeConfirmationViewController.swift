@@ -77,9 +77,10 @@ class TradeConfirmationViewController: UIViewController {
         priceValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
         priceValueLabel.theme_textColor = GlobalPicker.textColor
         
-        priceTipLabel.setTitleCharFont()
         priceTipLabel.textColor = UIColor.fail
         priceTipLabel.text = LocalizedString("Irrational", comment: "")
+        priceTipLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        priceTipLabel.theme_textColor = GlobalPicker.textColor
         
         if !validateRational() {
             priceTipLabel.isHidden = false
@@ -113,8 +114,13 @@ class TradeConfirmationViewController: UIViewController {
         // Button
         placeOrderButton.setTitle(LocalizedString("Place Order", comment: ""), for: .normal)
         placeOrderButton.setupPrimary(height: 44)
-        cancelButton.setTitle(LocalizedString("Cancel", comment: ""), for: .normal)
         
+        // Cancel button
+        cancelButton.setTitle(LocalizedString("Cancel", comment: ""), for: .normal)
+        cancelButton.setTitleColor(UIColor.white, for: .normal)
+        cancelButton.setTitleColor(UIColor.init(white: 0.5, alpha: 1), for: .highlighted)
+        cancelButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 16)
+
         // Tap gesture
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         tap.delegate = self

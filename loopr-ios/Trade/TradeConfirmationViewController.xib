@@ -44,7 +44,7 @@
                     <rect key="frame" x="30" y="116.33333333333331" width="354" height="524"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVt-V6-Y9K">
-                            <rect key="frame" x="20" y="20.000000000000014" width="135" height="160"/>
+                            <rect key="frame" x="30" y="20.000000000000014" width="125" height="160"/>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Trade-arrow-dark" translatesAutoresizingMaskIntoConstraints="NO" id="09q-Ad-lb3">
                             <rect key="frame" x="165" y="44.000000000000014" width="24" height="24"/>
@@ -54,7 +54,7 @@
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ssf-mc-oJt">
-                            <rect key="frame" x="199" y="20.000000000000014" width="135" height="160"/>
+                            <rect key="frame" x="199" y="20.000000000000014" width="125" height="160"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oM4-Kj-2aE">
                             <rect key="frame" x="0.0" y="199" width="354" height="154"/>
@@ -171,7 +171,7 @@
                                 <action selector="pressedPlaceOrderButton:" destination="-1" eventType="touchUpInside" id="xs0-B4-tId"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqy-N9-9LW">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqy-N9-9LW">
                             <rect key="frame" x="127" y="471.00000000000006" width="100" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="4ay-tU-gkk"/>
@@ -213,19 +213,19 @@
                         <constraint firstItem="PmR-3r-eKe" firstAttribute="top" secondItem="Sjj-eH-DHu" secondAttribute="bottom" constant="1" id="enj-BC-4xS"/>
                         <constraint firstItem="oM4-Kj-2aE" firstAttribute="trailing" secondItem="cmm-Nj-omT" secondAttribute="trailing" id="h9D-VL-38I"/>
                         <constraint firstItem="09q-Ad-lb3" firstAttribute="centerY" secondItem="dVt-V6-Y9K" secondAttribute="top" constant="36" id="iZm-pP-QcA"/>
-                        <constraint firstAttribute="trailing" secondItem="ssf-mc-oJt" secondAttribute="trailing" constant="20" id="jgJ-o5-POk"/>
+                        <constraint firstAttribute="trailing" secondItem="ssf-mc-oJt" secondAttribute="trailing" constant="30" id="jgJ-o5-POk"/>
                         <constraint firstItem="cmm-Nj-omT" firstAttribute="top" secondItem="ssf-mc-oJt" secondAttribute="bottom" constant="20" id="jhZ-ra-FVL"/>
                         <constraint firstItem="7WD-PG-TuQ" firstAttribute="top" secondItem="PmR-3r-eKe" secondAttribute="bottom" constant="19" id="lB6-ph-0hy"/>
                         <constraint firstItem="dBR-3q-Vsm" firstAttribute="trailing" secondItem="OHS-jw-7B4" secondAttribute="trailing" id="pPx-rY-Fsx"/>
                         <constraint firstItem="XZO-Td-h6L" firstAttribute="width" secondItem="bsH-Zl-V0b" secondAttribute="width" id="rmC-rf-C0a"/>
                         <constraint firstItem="Sjj-eH-DHu" firstAttribute="top" secondItem="cmm-Nj-omT" secondAttribute="bottom" constant="1" id="toS-PS-Kbu"/>
                         <constraint firstItem="ssf-mc-oJt" firstAttribute="top" secondItem="a9Z-KO-IHW" secondAttribute="top" constant="20" id="wkS-Lc-YdU"/>
-                        <constraint firstItem="dVt-V6-Y9K" firstAttribute="leading" secondItem="a9Z-KO-IHW" secondAttribute="leading" constant="20" id="xjI-Ac-7PZ"/>
+                        <constraint firstItem="dVt-V6-Y9K" firstAttribute="leading" secondItem="a9Z-KO-IHW" secondAttribute="leading" constant="30" id="xjI-Ac-7PZ"/>
                         <constraint firstItem="PmR-3r-eKe" firstAttribute="leading" secondItem="a9Z-KO-IHW" secondAttribute="leading" id="yhf-S6-cBU"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="8"/>
+                            <real key="value" value="12"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>

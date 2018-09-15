@@ -56,23 +56,32 @@ class ConvertETHConfirmViewController: UIViewController {
         amountLabel.textColor = .success
         amountLabel.text = "\(self.convertAmount!) \(self.convertAsset.symbol)  →  \(self.otherAsset.symbol)"
         
-        toTipLabel.setTitleCharFont()
         toTipLabel.text = LocalizedString("Receive Token", comment: "")
-        toInfoLabel.setTitleDigitFont()
+        toTipLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        toTipLabel.theme_textColor = GlobalPicker.textLightColor
+        
         toInfoLabel.text = self.otherAsset.symbol
         toInfoLabel.lineBreakMode = .byTruncatingMiddle
+        toInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        toInfoLabel.theme_textColor = GlobalPicker.textColor
         
-        fromTipLabel.setTitleCharFont()
         fromTipLabel.text = LocalizedString("Send Token", comment: "")
-        fromInfoLabel.setTitleDigitFont()
+        fromTipLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        fromTipLabel.theme_textColor = GlobalPicker.textLightColor
+        
         fromInfoLabel.text = self.convertAsset.symbol
         fromInfoLabel.lineBreakMode = .byTruncatingMiddle
+        fromInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        fromInfoLabel.theme_textColor = GlobalPicker.textColor
         
-        gasTipLabel.setTitleCharFont()
         gasTipLabel.text = LocalizedString("Transaction Fee", comment: "")
-        gasInfoLabel.setTitleDigitFont()
-        gasInfoLabel.text = gasAmountText
+        gasTipLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        gasTipLabel.theme_textColor = GlobalPicker.textLightColor
         
+        gasInfoLabel.text = gasAmountText
+        gasInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        gasInfoLabel.theme_textColor = GlobalPicker.textColor
+
         convertButton.setupPrimary(height: 44)
         convertButton.title = LocalizedString("Convert", comment: "")
         
