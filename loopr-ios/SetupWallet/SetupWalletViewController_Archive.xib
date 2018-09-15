@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetupWalletViewController_Archive" customModule="loopr_ios" customModuleProvider="target">
+            <connections>
+                <outlet property="backgroundImageView" destination="XgW-Xq-pDw" id="T97-Ea-shC"/>
+                <outlet property="generateWalletButton" destination="SWo-my-VCK" id="Kdt-Cm-XGo"/>
+                <outlet property="loopringLogoImageView" destination="ndb-6h-SZu" id="a8P-xw-Gbm"/>
+                <outlet property="taglineLabel" destination="Vwj-yH-xwd" id="lnE-Sj-DcW"/>
+                <outlet property="unlockWalletButton" destination="O2E-xb-AW6" id="aEX-GD-UMq"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XgW-Xq-pDw">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oG2-tl-cfz">
+                    <rect key="frame" x="0.0" y="136" width="414" height="344"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ndb-6h-SZu">
+                            <rect key="frame" x="167" y="0.0" width="80" height="80"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="IKt-Nj-CaB"/>
+                                <constraint firstAttribute="height" constant="80" id="XQu-9o-cs0"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O2E-xb-AW6">
+                            <rect key="frame" x="65" y="204" width="284" height="50"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="kV6-T3-HOY"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWo-my-VCK">
+                            <rect key="frame" x="65" y="294" width="284" height="50"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="nRW-oe-ixu"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UP Wallet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwj-yH-xwd">
+                            <rect key="frame" x="65" y="100" width="284" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="18" id="Bcg-3S-zuc"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.99215686274509807" green="0.68235294117647061" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Vwj-yH-xwd" firstAttribute="width" secondItem="O2E-xb-AW6" secondAttribute="width" id="1Sf-0e-uJg"/>
+                        <constraint firstItem="ndb-6h-SZu" firstAttribute="top" secondItem="oG2-tl-cfz" secondAttribute="top" id="1f0-YN-Uqp"/>
+                        <constraint firstAttribute="bottom" secondItem="SWo-my-VCK" secondAttribute="bottom" id="3TG-i5-Ibt"/>
+                        <constraint firstItem="SWo-my-VCK" firstAttribute="leading" secondItem="oG2-tl-cfz" secondAttribute="leading" constant="65" id="3Us-os-fhG"/>
+                        <constraint firstItem="O2E-xb-AW6" firstAttribute="width" secondItem="SWo-my-VCK" secondAttribute="width" id="4oe-nv-jr8"/>
+                        <constraint firstItem="ndb-6h-SZu" firstAttribute="centerX" secondItem="oG2-tl-cfz" secondAttribute="centerX" id="DGJ-8G-fLy"/>
+                        <constraint firstItem="SWo-my-VCK" firstAttribute="centerX" secondItem="oG2-tl-cfz" secondAttribute="centerX" id="FWB-UP-SEE"/>
+                        <constraint firstItem="Vwj-yH-xwd" firstAttribute="top" secondItem="ndb-6h-SZu" secondAttribute="bottom" constant="20" id="Qnd-rO-2rz"/>
+                        <constraint firstItem="Vwj-yH-xwd" firstAttribute="centerX" secondItem="oG2-tl-cfz" secondAttribute="centerX" id="RHf-Av-pNE"/>
+                        <constraint firstAttribute="trailing" secondItem="SWo-my-VCK" secondAttribute="trailing" constant="65" id="UXh-Qy-uBQ"/>
+                        <constraint firstAttribute="height" constant="344" id="jUm-zc-QEo"/>
+                        <constraint firstItem="SWo-my-VCK" firstAttribute="top" secondItem="O2E-xb-AW6" secondAttribute="bottom" constant="40" id="ue1-f1-5v2"/>
+                        <constraint firstItem="O2E-xb-AW6" firstAttribute="centerX" secondItem="oG2-tl-cfz" secondAttribute="centerX" id="vpG-mN-C6Y"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="oG2-tl-cfz" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1I5-Mo-yZr"/>
+                <constraint firstItem="XgW-Xq-pDw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6kB-al-YQw"/>
+                <constraint firstAttribute="trailing" secondItem="XgW-Xq-pDw" secondAttribute="trailing" id="Ie6-Y9-lTp"/>
+                <constraint firstItem="oG2-tl-cfz" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" id="JwI-wR-0Nj"/>
+                <constraint firstItem="oG2-tl-cfz" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-60" id="QCM-Ua-xGr"/>
+                <constraint firstAttribute="bottom" secondItem="XgW-Xq-pDw" secondAttribute="bottom" id="QDb-SN-J8R"/>
+                <constraint firstItem="XgW-Xq-pDw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="iWh-dU-3Bj"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="34" y="54"/>
+        </view>
+    </objects>
+</document>

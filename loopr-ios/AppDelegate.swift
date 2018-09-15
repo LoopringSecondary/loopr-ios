@@ -175,7 +175,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if !backgroundImage.isUIViewAnimating {
                 backgroundImage.isUIViewAnimating = true
                 // The duration here is supported to be shorten than the value in WalletViewController.
-                UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseIn, animations: { () -> Void in
+                let duration: TimeInterval
+                let delay: TimeInterval
+                if AppWalletDataManager.shared.getWallets().isEmpty {
+                    duration = 0.5
+                    delay = 2
+                } else {
+                    duration = 0.5
+                    delay = 0.1
+                }
+                UIView.animate(withDuration: duration, delay: delay, options: .curveEaseIn, animations: { () -> Void in
                     backgroundImage.alpha = 0
                 }, completion: { _ in
                     backgroundImage.isUIViewAnimating = false

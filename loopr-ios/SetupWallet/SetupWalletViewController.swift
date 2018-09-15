@@ -1,56 +1,46 @@
 //
-//  SetupViewController.swift
+//  SetupWalletViewController.swift
 //  loopr-ios
 //
-//  Created by Matthew Cox on 2/4/18.
+//  Created by xiaoruby on 9/15/18.
 //  Copyright © 2018 Loopring. All rights reserved.
 //
 
 import UIKit
 
 class SetupWalletViewController: UIViewController {
-
+    
     @IBOutlet weak var backgroundImageView: UIImageView!
-    
-    @IBOutlet weak var loopringLogoImageView: UIImageView!
-    @IBOutlet weak var taglineLabel: UILabel!
-    
-    @IBOutlet weak var unlockWalletButton: UIButton!
-    @IBOutlet weak var generateWalletButton: UIButton!
 
+    @IBOutlet weak var generateWalletButton: UIButton!
+    @IBOutlet weak var unlockWalletButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.theme_backgroundColor = ColorPicker.backgroundColor
-        loopringLogoImageView.image = UIImage(named: "\(Production.getProduct())_logo")
-        
-        let stringValue = Production.getProduct()
-        let attrString = NSMutableAttributedString(string: stringValue)
-        attrString.addAttribute(NSAttributedStringKey.kern, value: 2.4, range: NSMakeRange(0, attrString.length))
-        taglineLabel.attributedText = attrString
-        taglineLabel.textColor = UIColor.theme
-        taglineLabel.font = UIFont(name: FontConfigManager.shared.getMedium(), size: 16.0)
-
-        unlockWalletButton.title = LocalizedString("Import Wallet", comment: "")
-        unlockWalletButton.setupSecondary(height: 50, gradientOrientation: .horizontal)
-        
-        unlockWalletButton.addTarget(self, action: #selector(unlockWalletButtonPressed), for: .touchUpInside)
-
-        generateWalletButton.title = LocalizedString("Generate Wallet", comment: "")
-        generateWalletButton.setupSecondary(height: 50, gradientOrientation: .horizontal)
-        generateWalletButton.addTarget(self, action: #selector(generateWalletButtonPressed), for: .touchUpInside)
-        
+        // Do any additional setup after loading the view.
         backgroundImageView.theme_backgroundColor = ColorPicker.backgroundColor
-        backgroundImageView.image = UIImage(named: "Background" + ColorTheme.getTheme())
+        // backgroundImageView.image = UIImage(named: "Background" + ColorTheme.getTheme())
+        
+        // This part of elements are not easy to match the value in the design.
+        let iconTitlePadding: CGFloat = 30
+
+        unlockWalletButton.addTarget(self, action: #selector(unlockWalletButtonPressed), for: .touchUpInside)
+        unlockWalletButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        unlockWalletButton.set(image: UIImage(named: "SetupWallet-generate"), title: LocalizedString("Import Wallet", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
+        unlockWalletButton.set(image: UIImage(named: "SetupWallet-generate")?.alpha(0.6), title: LocalizedString("Import Wallet", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
+        unlockWalletButton.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
+        
+        generateWalletButton.addTarget(self, action: #selector(generateWalletButtonPressed), for: .touchUpInside)
+        generateWalletButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        generateWalletButton.set(image: UIImage(named: "SetupWallet-import"), title: LocalizedString("Generate Wallet", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
+        generateWalletButton.set(image: UIImage(named: "SetupWallet-import")?.alpha(0.6), title: LocalizedString("Generate Wallet", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
+        generateWalletButton.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
 
     @objc func unlockWalletButtonPressed(_ sender: Any) {
