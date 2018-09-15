@@ -104,8 +104,28 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // 3. Import wallet
         // 4. Switch the current wallet.
         if self.isLaunching {
-            // Disable user touch when loading data
-            SVProgressHUD.show(withStatus: LocalizedString("Loading Data", comment: ""))
+            // Remove backgrond image
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            if let backgroundImage = appDelegate?.window?.viewWithTag(1234) as? SplashImageView {
+                if !backgroundImage.isUIViewAnimating {
+                    backgroundImage.isUIViewAnimating = true
+                    UIView.animate(withDuration: 1, delay: 0.1, options: .curveEaseIn, animations: { () -> Void in
+                        backgroundImage.alpha = 0
+                    }, completion: { _ in
+                        backgroundImage.isUIViewAnimating = false
+                        backgroundImage.removeFromSuperview()
+                        if self.isLaunching {
+                            SVProgressHUD.show(withStatus: LocalizedString("Loading Data", comment: ""))
+                        }
+                    })
+                } else {
+                    // Disable user touch when loading data
+                    SVProgressHUD.show(withStatus: LocalizedString("Loading Data", comment: ""))
+                }
+            } else {
+                // Disable user touch when loading data
+                SVProgressHUD.show(withStatus: LocalizedString("Loading Data", comment: ""))
+            }
         }
         
         let dispatchGroup = DispatchGroup()

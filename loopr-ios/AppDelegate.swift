@@ -19,6 +19,7 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let backgroundImage = SplashImageView()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -73,13 +74,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             authenticationViewController?.needNavigate = true
             self.window?.rootViewController = authenticationViewController
         }
-        
-        let backgroundImage = UIImageView()
+
         backgroundImage.tag = 1234
         backgroundImage.image = UIImage(named: "Splash\(ColorTheme.getTheme())")
         backgroundImage.frame = self.window!.frame
         self.window?.addSubview(backgroundImage)
         self.window?.bringSubview(toFront: backgroundImage)
+        
         return true
     }
     
@@ -128,10 +129,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
         
-        let backgroundImage = UIImageView()
-        backgroundImage.tag = 1234
-        backgroundImage.image = UIImage(named: "Splash\(ColorTheme.getTheme())")
-        backgroundImage.frame = self.window!.frame
         self.window?.addSubview(backgroundImage)
         self.window?.bringSubview(toFront: backgroundImage)
     }
@@ -174,11 +171,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Remove backgrond image
-        if let backgroundImage = self.window?.viewWithTag(1234) {
-            UIView.animate(withDuration: 1, delay: 1, options: .curveEaseOut, animations: { () -> Void in
-                backgroundImage.alpha = 0 }, completion: { _ in
-                backgroundImage.removeFromSuperview()
-            })
+        if let backgroundImage = self.window?.viewWithTag(1234) as? SplashImageView {
+            if !backgroundImage.isUIViewAnimating {
+                backgroundImage.isUIViewAnimating = true
+                // The duration here is supported to be shorten than the value in WalletViewController.
+                UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseIn, animations: { () -> Void in
+                    backgroundImage.alpha = 0
+                }, completion: { _ in
+                    backgroundImage.isUIViewAnimating = false
+                    backgroundImage.removeFromSuperview()
+                })
+            }
         }
         
         // Clear the push notification badge count
