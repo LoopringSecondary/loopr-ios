@@ -109,7 +109,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if let backgroundImage = appDelegate?.window?.viewWithTag(1234) as? SplashImageView {
                 if !backgroundImage.isUIViewAnimating {
                     backgroundImage.isUIViewAnimating = true
-                    UIView.animate(withDuration: 1, delay: 0.1, options: .curveEaseIn, animations: { () -> Void in
+                    UIView.animate(withDuration: 0.3, delay: 0.8, options: .curveEaseIn, animations: { () -> Void in
                         backgroundImage.alpha = 0
                     }, completion: { _ in
                         backgroundImage.isUIViewAnimating = false

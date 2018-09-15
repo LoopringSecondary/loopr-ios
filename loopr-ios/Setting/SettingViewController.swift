@@ -26,6 +26,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         settingsTableView.tableFooterView = UIView()
         settingsTableView.delaysContentTouches = false
         settingsTableView.theme_backgroundColor = ColorPicker.backgroundColor
+        
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
+        headerView.theme_backgroundColor = ColorPicker.backgroundColor
+        settingsTableView.tableHeaderView = headerView
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -161,14 +165,16 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 48))
             headerView.theme_backgroundColor = ColorPicker.backgroundColor
             let tipLabel = UILabel(frame: CGRect(x: 23, y: 16, width: 120, height: 16))
-            tipLabel.setSubTitleCharFont()
+            tipLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
+            tipLabel.theme_textColor = GlobalPicker.textLightColor
             tipLabel.text = LocalizedString("Partner_Tip", comment: "")
             // Update the width programmatically due to different langugages.
             tipLabel.frame = CGRect(x: 23, y: 16, width: LocalizedString("Partner_Tip", comment: "").textWidth(font: tipLabel.font), height: 16)
             headerView.addSubview(tipLabel)
             let infoLabel = UILabel(frame: CGRect(x: tipLabel.frame.maxX, y: 16, width: headerView.width - 170, height: 16))
             infoLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
-            infoLabel.setSubTitleCharFont()
+            infoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
+            infoLabel.theme_textColor = GlobalPicker.textLightColor
             infoLabel.lineBreakMode = .byTruncatingMiddle
             headerView.addSubview(infoLabel)
         } else {
@@ -189,7 +195,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             
             cell?.leftLabel.textColor = .success
-            cell?.leftLabel.font = FontConfigManager.shared.getCharactorFont(size: 16)
+            cell?.leftLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
             cell?.leftLabel.text = LocalizedString("Partner_Slogan", comment: "")
             cell?.rightLabel.isHidden = true
             cell?.disclosureIndicator.isHidden = false
@@ -371,7 +377,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else if section == 1 {
             return 48
         } else {
-            return 20
+            return 10
         }
     }
 
