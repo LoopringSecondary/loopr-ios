@@ -82,7 +82,6 @@ class BackupMnemonicViewController: UIViewController {
         flowLayout.scrollDirection = .vertical
         
         mnemonicCollectionViewController0 = MnemonicCollectionViewController(collectionViewLayout: flowLayout)
-        // assign first 12 words
         mnemonicCollectionViewController0.mnemonics = mnemonics
         mnemonicCollectionViewController0.view.isHidden = false
         mnemonicCollectionViewController0.view.frame = CGRect(x: 20, y: collectionViewY, width: collectionViewWidth, height: collectionViewHeight)
@@ -96,6 +95,8 @@ class BackupMnemonicViewController: UIViewController {
         verifyNowButton.title = LocalizedString("Verify", comment: "Go to VerifyMnemonicViewController")
         verifyNowButton.setupSecondary(height: 44)
         verifyNowButton.isHidden = hideButtons
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(userDidTakeScreenshot), name: .UIApplicationUserDidTakeScreenshot, object: nil)
         
         blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         blurVisualEffectView.alpha = 1
@@ -143,6 +144,17 @@ class BackupMnemonicViewController: UIViewController {
     
     @objc func willEnterForeground() {
         displayWarning()
+    }
+    
+    // If user takes a screenshot, regenerate new mnemonics
+    @objc func userDidTakeScreenshot() {
+        if !hideButtons {
+            _ = GenerateWalletDataManager.shared.newMnemonics()
+            mnemonics = GenerateWalletDataManager.shared.getMnemonics()
+            mnemonicCollectionViewController0.mnemonics = mnemonics
+            mnemonicCollectionViewController0.collectionView?.reloadData()
+            displayWarning()
+        }
     }
 
     @IBAction func pressedVerifyNowButton(_ sender: Any) {
