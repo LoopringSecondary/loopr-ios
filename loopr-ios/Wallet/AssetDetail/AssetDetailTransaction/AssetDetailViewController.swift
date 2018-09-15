@@ -21,6 +21,12 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     var transactions: [Transaction] = []
     var pageIndex: UInt = 1
     var hasMoreData: Bool = true
+    
+    // Mask view
+    var blurVisualEffectView = UIView()
+    
+    // Drag down to close a present view controller.
+    var dismissInteractor = MiniToLargeViewInteractive()
 
     convenience init(type: TxSwipeViewType) {
         self.init(nibName: nil, bundle: nil)
@@ -61,6 +67,10 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.refreshControl = refreshControl
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        
+        blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        blurVisualEffectView.alpha = 1
+        blurVisualEffectView.frame = UIScreen.main.bounds
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -182,14 +192,51 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         guard !isTableEmpty() else { return }
         tableView.deselectRow(at: indexPath, animated: false)
         let transaction = self.transactions[indexPath.row]
-        let parentView = self.parent!.view!
-        parentView.alpha = 0.25
         
         let vc = AssetTransactionDetailViewController()
         vc.transaction = transaction
-        vc.dismissClosure = { parentView.alpha = 1 }
         vc.parentNavController = self.navigationController
-        vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
-        self.present(vc, animated: true, completion: nil)
+        
+        vc.transitioningDelegate = self
+        vc.modalPresentationStyle = .overFullScreen
+        vc.dismissClosure = {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.blurVisualEffectView.alpha = 0.0
+            }, completion: {(_) in
+                self.blurVisualEffectView.removeFromSuperview()
+            })
+        }
+        
+        dismissInteractor.percentThreshold = 0.2
+        dismissInteractor.dismissClosure = {
+
+        }
+        
+        self.present(vc, animated: true) {
+            self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.view, presentViewController: nil, backgroundView: self.blurVisualEffectView)
+        }
+        
+        self.navigationController?.view.addSubview(self.blurVisualEffectView)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.blurVisualEffectView.alpha = 1.0
+        }, completion: {(_) in
+            
+        })
     }
+
+}
+
+extension AssetDetailViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let animator = MiniToLargeViewAnimator()
+        animator.transitionType = .Dismiss
+        return animator
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        // guard !disableInteractivePlayerTransitioning else { return nil }
+        return dismissInteractor
+    }
+    
 }

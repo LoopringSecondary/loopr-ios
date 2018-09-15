@@ -40,16 +40,15 @@ class AssetTransactionDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.modalPresentationStyle = .custom
+        view.backgroundColor = UIColor.clear
+        containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         
         setBackButton()
         
-        view.theme_backgroundColor = ["#fff", "#000"]
         closeButton.theme_setImage(GlobalPicker.close, forState: .normal)
         closeButton.theme_setImage(GlobalPicker.closeHighlight, forState: .highlighted)
         closeButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
-        containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         typeContainerView.theme_backgroundColor = ColorPicker.backgroundColor
         statusContainerView.theme_backgroundColor = ColorPicker.backgroundColor
         toContainerView.theme_backgroundColor = ColorPicker.backgroundColor
@@ -67,7 +66,7 @@ class AssetTransactionDetailViewController: UIViewController {
             update(transaction: transaction)
         }
     }
-    
+
     func setupLabels() {
         titleLabel.theme_textColor = GlobalPicker.textColor
         titleLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
