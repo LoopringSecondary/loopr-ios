@@ -59,6 +59,7 @@ class SendConfirmViewController: UIViewController {
         
         toTipLabel.setTitleCharFont()
         toTipLabel.text = LocalizedString("Receiver", comment: "")
+        
         toInfoLabel.font = FontConfigManager.shared.getLightFont(size: 13)
         toInfoLabel.theme_textColor = GlobalPicker.textLightColor
         toInfoLabel.text = self.receiveAddress ?? ""

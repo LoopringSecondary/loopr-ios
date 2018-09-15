@@ -90,6 +90,8 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         gasTipLabel.addGestureRecognizer(transactionFeeLabelTap)
         
         gasInfoLabel.setTitleCharFont()
+        gasInfoLabel.textAlignment = .right
+        updateTransactionFeeAmountLabel()
         gasInfoLabel.isUserInteractionEnabled = true
         let transactionFeeAmountLabelTap = UITapGestureRecognizer(target: self, action: #selector(pressedAdvancedButton))
         transactionFeeAmountLabelTap.numberOfTapsRequired = 1

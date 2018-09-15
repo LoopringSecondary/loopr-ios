@@ -89,7 +89,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         tokenTotalAmountLabel.setTitleDigitFont()
         
         // Second row: address
-        addressInfoLabel.setTitleCharFont()
+        addressInfoLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        addressInfoLabel.theme_textColor = GlobalPicker.textLightColor
         addressInfoLabel.text = LocalizedString("Please confirm the address before sending", comment: "")
         
         addressTextField.delegate = self
@@ -105,7 +106,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         addressTextField.setRightPaddingPoints(32)
         
         // Third row: Amount
-        amountInfoLabel.setTitleCharFont()
+        amountInfoLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        amountInfoLabel.theme_textColor = GlobalPicker.textLightColor
         amountInfoLabel.text = 0.0.currency
         
         amountTextField.delegate = self
@@ -122,8 +124,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         tokenSymbolLabel.theme_textColor = GlobalPicker.contrastTextColor
         tokenSymbolLabel.textAlignment = .right
 
-        transactionFeeTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 11)
-        transactionFeeTipLabel.theme_textColor = ["#00000099", "#ffffff66"]
+        transactionFeeTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        transactionFeeTipLabel.theme_textColor = GlobalPicker.textLightColor
         transactionFeeTipLabel.text = LocalizedString("ETH_TIP", comment: "")
 
         // Transaction
@@ -136,7 +138,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         
         transactionFeeAmountLabel.setTitleCharFont()
         transactionFeeAmountLabel.textAlignment = .right
-        transactionFeeAmountLabel.text = ""
         updateTransactionFeeAmountLabel()
         transactionFeeAmountLabel.isUserInteractionEnabled = true
         let transactionFeeAmountLabelTap = UITapGestureRecognizer(target: self, action: #selector(pressedAdvancedButton))
@@ -230,7 +231,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         amountTextField.text = value.withCommas(length)
         if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
             let total = value * price
-            updateLabel(label: amountInfoLabel, text: total.currency, textColor: .text1)
+            updateLabel(label: amountInfoLabel, text: total.currency, textColor: .text2)
         }
         _ = validate()
     }
@@ -256,13 +257,13 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                 if toAddress.isHexAddress() {
                     var error: NSError?
                     if GethNewAddressFromHex(toAddress, &error) != nil {
-                        updateLabel(label: addressInfoLabel, text: LocalizedString("Please confirm the address before sending", comment: ""), textColor: .text1)
+                        updateLabel(label: addressInfoLabel, text: LocalizedString("Please confirm the address before sending", comment: ""), textColor: .text2)
                         return true
                     }
                 }
                 updateLabel(label: addressInfoLabel, text: LocalizedString("Please input a correct address", comment: ""), textColor: .fail)
             } else {
-                updateLabel(label: addressInfoLabel, text: LocalizedString("Please confirm the address before sending", comment: ""), textColor: .text1)
+                updateLabel(label: addressInfoLabel, text: LocalizedString("Please confirm the address before sending", comment: ""), textColor: .text2)
             }
         }
         return false
@@ -305,7 +306,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                         if GethBigInt.generate(valueInEther: amount, symbol: token.symbol) != nil {
                             if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
                                 let display = (amount * price).currency
-                                updateLabel(label: amountInfoLabel, text: display, textColor: .text1)
+                                updateLabel(label: amountInfoLabel, text: display, textColor: .text2)
                                 return true
                             }
                         }
@@ -319,7 +320,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
                 updateLabel(label: amountInfoLabel, text: text, textColor: .fail)
             }
         } else {
-            updateLabel(label: amountInfoLabel, text: 0.0.currency, textColor: .text1)
+            updateLabel(label: amountInfoLabel, text: 0.0.currency, textColor: .text2)
         }
         return false
     }
