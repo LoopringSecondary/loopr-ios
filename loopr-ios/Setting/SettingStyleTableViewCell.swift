@@ -37,7 +37,7 @@ class SettingStyleTableViewCell: UITableViewCell {
         
         theme_backgroundColor = ColorPicker.cardBackgroundColor
 
-        leftLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
+        leftLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         leftLabel.theme_textColor = GlobalPicker.textColor
         
         rightLabel.isHidden = true
