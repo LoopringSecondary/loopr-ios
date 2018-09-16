@@ -182,8 +182,8 @@
 "Selling Price" = "最新卖单价格";
 "Buying Price" = "最新买单价格";
 "Market Price" = "最新市场价格";
-"Enter the amount you have" = "请输入卖出数额";
-"Enter the amount you get" = "请输入买入数额";
+"Amount to sell" = "卖出数额";
+"Amount to buy" = "买入数额";
 "P2P Order History" = "场外交易记录";
 "Enter the address" = "请输入地址";
 "Available Balance" = "可用余额";

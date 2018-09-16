@@ -14,7 +14,9 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     
     // Header
     @IBOutlet weak var headerButton: UIButton!
-    @IBOutlet weak var tradingPairLabel: UILabel!
+    @IBOutlet weak var tradingPairTokenSLabel: UILabel!
+    @IBOutlet weak var tradingPairTokenSLabelWidthLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tradingPairTokenBLabel: UILabel!
     
     // container
     @IBOutlet weak var containerView: UIView!
@@ -80,11 +82,19 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         
         headerButton.clipsToBounds = true
         headerButton.layer.cornerRadius = 6
+        /*
         headerButton.applyGradient(withColors: UIColor.secondary, gradientOrientation: .horizontal)
+        */
+        headerButton.theme_setBackgroundImage(ColorPicker.button, forState: .normal)
+        headerButton.theme_setBackgroundImage(ColorPicker.buttonSelected, forState: .highlighted)
+
         headerButton.addTarget(self, action: #selector(pressedHeaderButton), for: .touchUpInside)
         
-        tradingPairLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
-        tradingPairLabel.textColor = .white
+        tradingPairTokenSLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
+        tradingPairTokenSLabel.theme_textColor = GlobalPicker.textColor
+        
+        tradingPairTokenBLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
+        tradingPairTokenBLabel.theme_textColor = GlobalPicker.textColor
 
         containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
 
@@ -94,11 +104,13 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         amountSellTextField.inputView = UIView()
         amountSellTextField.font = FontConfigManager.shared.getDigitalFont()
         amountSellTextField.theme_tintColor = GlobalPicker.contrastTextColor
-        amountSellTextField.placeholder = LocalizedString("Enter the amount you have", comment: "")
+        amountSellTextField.placeholder = LocalizedString("Amount to sell", comment: "")
         amountSellTextField.setLeftPaddingPoints(8)
         amountSellTextField.setRightPaddingPoints(72)
         amountSellTextField.contentMode = UIViewContentMode.bottom
-        estimateValueInCurrency.setSubTitleCharFont()
+        
+        estimateValueInCurrency.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        estimateValueInCurrency.theme_textColor = GlobalPicker.textLightColor
         
         // Second row: TokenB
         amountBuyTextField.delegate = self
@@ -106,11 +118,13 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         amountBuyTextField.inputView = UIView()
         amountBuyTextField.font = FontConfigManager.shared.getDigitalFont()
         amountBuyTextField.theme_tintColor = GlobalPicker.contrastTextColor
-        amountBuyTextField.placeholder = LocalizedString("Enter the amount you get", comment: "")
+        amountBuyTextField.placeholder = LocalizedString("Amount to buy", comment: "")
         amountBuyTextField.setLeftPaddingPoints(8)
         amountBuyTextField.setRightPaddingPoints(72)
         amountBuyTextField.contentMode = UIViewContentMode.bottom
-        availableLabel.setSubTitleCharFont()
+        
+        availableLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        availableLabel.theme_textColor = GlobalPicker.textLightColor
         
         // Slider
         let screenWidth = UIScreen.main.bounds.width
@@ -129,18 +143,21 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         monthButton.title = LocalizedString("1 Month", comment: "")
         customButton.title = LocalizedString("Custom", comment: "")
         buttons = [hourButton, dayButton, monthButton, customButton]
-        hourButton.titleLabel?.font = FontConfigManager.shared.getBoldFont()
         buttons.forEach {
             $0.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
             $0.theme_setTitleColor(GlobalPicker.textColor, forState: .selected)
             $0.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
             $0.setBackgroundColor(UIColor.dark3, for: .normal)
         }
+        hourButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 13)
         
         // Sell ratio
-        sellRatioTipLabel.setTitleCharFont()
+        sellRatioTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        sellRatioTipLabel.theme_textColor = GlobalPicker.textLightColor
         sellRatioTipLabel.text = LocalizedString("Minimal Fill", comment: "")
-        sellRatioValueLabel.setTitleDigitFont()
+        
+        sellRatioValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        sellRatioValueLabel.theme_textColor = GlobalPicker.textColor
         sellRatioValueLabel.text = "100%"
 
         // Place button
@@ -202,7 +219,9 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         let tokens = TradeDataManager.shared.tokenS.symbol
         let tokenb = TradeDataManager.shared.tokenB.symbol
         
-        tradingPairLabel.text = TradeDataManager.shared.tradePair.replacingOccurrences(of: "/", with: "-")
+        tradingPairTokenSLabel.text = tokens
+        tradingPairTokenSLabelWidthLayoutConstraint.constant = tokens.textWidth(font: tradingPairTokenSLabel.font) + 2
+        tradingPairTokenBLabel.text = tokenb
         
         let title = LocalizedString("Available Balance", comment: "")
         
@@ -214,7 +233,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         buyTokenLabel.text = tokenb
         sellTokenLabel.text = tokens
         estimateValueInCurrency.text = text ?? message
-        estimateValueInCurrency.textColor = color ?? .text1
+        estimateValueInCurrency.textColor = color ?? .text2
         if color == .fail {
             estimateValueInCurrency.shake()
         }
@@ -259,7 +278,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
             button.isSelected = false
         }
         sender.isSelected = true
-        sender.titleLabel?.font = FontConfigManager.shared.getBoldFont()
+        sender.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 13)
     }
     
     @IBAction func pressedNextButton(_ sender: Any) {
@@ -420,7 +439,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
             if let price = PriceDataManager.shared.getPrice(of: tokenb) {
                 let estimateValue: Double = amountBuy * price
                 availableLabel.isHidden = false
-                availableLabel.textColor = .text1
+                availableLabel.textColor = .text2
                 availableLabel.text = "≈\(estimateValue.currency)"
             }
             return true
@@ -561,7 +580,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
             amountSellTextField.text = "0.0"
         }
         estimateValueInCurrency.text = message
-        estimateValueInCurrency.textColor = .text1
+        estimateValueInCurrency.textColor = .text2
         activeTextFieldTag = amountSellTextField.tag
         _ = validate()
     }

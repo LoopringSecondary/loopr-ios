@@ -176,8 +176,8 @@
 "Selling Price" = "Selling Price";
 "Buying Price" = "Buying Price";
 "Market Price" = "Market Price";
-"Enter the amount you have" = "Amount you wish to sell";
-"Enter the amount you get" = "Amount you wish to get";
+"Amount to sell" = "Amount to sell";
+"Amount to buy" = "Amount to buy";
 "P2P Order History" = "P2P Order History";
 "Enter the address" = "Enter the address";
 "Available Balance" = "Available Balance";
