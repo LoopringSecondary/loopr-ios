@@ -55,6 +55,10 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         marketTableView.dataSource = self
         marketTableView.delegate = self
 
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 10))
+        headerView.theme_backgroundColor = ColorPicker.backgroundColor
+        marketTableView.tableHeaderView = headerView
+        
         marketTableView.tableFooterView = UIView()
         marketTableView.separatorStyle = .none
         let tap = UITapGestureRecognizer(target: self, action: #selector(tableTapped))
@@ -211,41 +215,42 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30 + 10
+        return 30+1
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let screenWidth = view.frame.size.width
 
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30 + 10))
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30+1))
         headerView.theme_backgroundColor = ColorPicker.backgroundColor
 
-        let baseView = UIView(frame: CGRect(x: 15, y: 10, width: screenWidth - 15*2, height: 30))
+        let baseView = UIView(frame: CGRect(x: 15, y: 0, width: screenWidth - 15*2, height: 30))
         baseView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         baseView.round(corners: [.topLeft, .topRight], radius: 6)
         headerView.addSubview(baseView)
 
         let labelWidth = (view.frame.size.width-20*2)/3
+        let paddingX: CGFloat = 41
         
-        let label1 = UILabel(frame: CGRect(x: 56, y: 0, width: labelWidth, height: 30))
+        let label1 = UILabel(frame: CGRect(x: paddingX, y: 0, width: labelWidth, height: 30))
         label1.theme_textColor = GlobalPicker.textLightColor
         label1.font = FontConfigManager.shared.getMediumFont(size: 14)
         label1.text = LocalizedString("Market", comment: "")
         label1.textAlignment = .left
         baseView.addSubview(label1)
 
-        let label2 = UILabel(frame: CGRect(x: UIScreen.main.bounds.width*0.3+52, y: 0, width: labelWidth, height: 30))
+        let label2 = UILabel(frame: CGRect(x: UIScreen.main.bounds.width*0.3+paddingX, y: 0, width: labelWidth, height: 30))
         label2.theme_textColor = GlobalPicker.textLightColor
         label2.font = FontConfigManager.shared.getMediumFont(size: 14)
         label2.text = LocalizedString("Price", comment: "")
         label2.textAlignment = .left
         baseView.addSubview(label2)
 
-        let label3 = UILabel(frame: CGRect(x: view.frame.size.width-64-labelWidth, y: 0, width: labelWidth, height: 30))
+        let label3 = UILabel(frame: CGRect(x: baseView.width - 80 - 10, y: 0, width: 80, height: 30))
         label3.theme_textColor = GlobalPicker.textLightColor
         label3.font = FontConfigManager.shared.getMediumFont(size: 14)
         label3.text = LocalizedString("Change", comment: "")
-        label3.textAlignment = .right
+        label3.textAlignment = .center
         baseView.addSubview(label3)
         
         return headerView

@@ -51,7 +51,9 @@ extension UILabel {
         if let text = self.text {
             let range = (text as NSString).range(of: "-\\w*\\d*", options: .regularExpression)
             let attribute = NSMutableAttributedString.init(string: text)
-            attribute.addAttributes([NSAttributedStringKey.font: FontConfigManager.shared.getRegularFont(size: 14)], range: range)
+            attribute.addAttributes([
+                NSAttributedStringKey.font: FontConfigManager.shared.getRegularFont(size: 13),
+                NSAttributedStringKey.foregroundColor: UIColor.text2], range: range)
             self.attributedText = attribute
         }
     }
