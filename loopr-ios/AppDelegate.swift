@@ -77,6 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         backgroundImage.tag = 1234
         backgroundImage.image = UIImage(named: "Splash\(ColorTheme.getTheme())")
+        backgroundImage.contentMode = .scaleAspectFill
         backgroundImage.frame = self.window!.frame
         self.window?.addSubview(backgroundImage)
         self.window?.bringSubview(toFront: backgroundImage)

@@ -12,6 +12,10 @@ import StepSlider
 
 class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, StepSliderDelegate {
     
+    // Header
+    @IBOutlet weak var headerButton: UIButton!
+    @IBOutlet weak var tradingPairLabel: UILabel!
+    
     // container
     @IBOutlet weak var containerView: UIView!
     
@@ -74,6 +78,14 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         self.navigationItem.title = LocalizedString("P2P Trade", comment: "")
         setBackButton()
         
+        headerButton.clipsToBounds = true
+        headerButton.layer.cornerRadius = 6
+        headerButton.applyGradient(withColors: UIColor.secondary, gradientOrientation: .horizontal)
+        headerButton.addTarget(self, action: #selector(pressedHeaderButton), for: .touchUpInside)
+        
+        tradingPairLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
+        tradingPairLabel.textColor = .white
+
         containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
 
         // First row: TokenS
@@ -177,11 +189,21 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         isViewDidAppear = true
         customButton.round(corners: [.topRight, .bottomRight], radius: 8)
     }
+    
+    @objc func pressedHeaderButton() {
+        print("switch tokens in TradeDataManager")
+        
+        TradeDataManager.shared.swapTokenSAndTokenB()
+        update()
+    }
 
     func update(text: String? = nil, color: UIColor? = nil) {
         var message: String = ""
         let tokens = TradeDataManager.shared.tokenS.symbol
         let tokenb = TradeDataManager.shared.tokenB.symbol
+        
+        tradingPairLabel.text = TradeDataManager.shared.tradePair.replacingOccurrences(of: "/", with: "-")
+        
         let title = LocalizedString("Available Balance", comment: "")
         
         if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: tokens) {

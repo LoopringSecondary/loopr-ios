@@ -94,6 +94,12 @@ class TradeDataManager {
     func clear() {
         state = .empty
     }
+    
+    func swapTokenSAndTokenB() {
+        let tmpToken = Token(symbol: tokenB.symbol)!
+        changeTokenB(tokenS)
+        changeTokenS(tmpToken)
+    }
 
     func changeTokenS(_ token: Token) {
         tokenS = token
