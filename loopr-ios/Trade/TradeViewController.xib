@@ -108,9 +108,6 @@
                                         <constraint firstAttribute="width" constant="50" id="0pY-A4-E57"/>
                                     </constraints>
                                     <state key="normal" image="Caret-down-dark"/>
-                                    <connections>
-                                        <action selector="pressedTokenSButton:" destination="-1" eventType="touchUpInside" id="9CZ-c5-www"/>
-                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Cv-AI-Sk9">
                                     <rect key="frame" x="16" y="70" width="31" height="34"/>
@@ -140,9 +137,6 @@
                                         <constraint firstAttribute="height" constant="50" id="sAy-hT-Wdl"/>
                                     </constraints>
                                     <state key="normal" image="Caret-down-dark"/>
-                                    <connections>
-                                        <action selector="pressedTokenBButton:" destination="-1" eventType="touchUpInside" id="r3a-EP-jMP"/>
-                                    </connections>
                                 </button>
                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUT-ee-RXX">
                                     <rect key="frame" x="15" y="154" width="31" height="34"/>

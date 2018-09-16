@@ -112,6 +112,12 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         estimateValueInCurrency.font = FontConfigManager.shared.getCharactorFont(size: 12)
         estimateValueInCurrency.theme_textColor = GlobalPicker.textLightColor
         
+        tokenSButton.addTarget(self, action: #selector(pressedTokenSButton), for: .touchUpInside)
+        let sellTokenLabelTap = UITapGestureRecognizer(target: self, action: #selector(pressedTokenSButton))
+        sellTokenLabelTap.numberOfTapsRequired = 1
+        sellTokenLabel.addGestureRecognizer(sellTokenLabelTap)
+        sellTokenLabel.isUserInteractionEnabled = true
+        
         // Second row: TokenB
         amountBuyTextField.delegate = self
         amountBuyTextField.tag = 1
@@ -126,6 +132,12 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         availableLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
         availableLabel.theme_textColor = GlobalPicker.textLightColor
         
+        tokenBButton.addTarget(self, action: #selector(pressedTokenBButton), for: .touchUpInside)
+        let buyTokenLabelTap = UITapGestureRecognizer(target: self, action: #selector(pressedTokenBButton))
+        buyTokenLabelTap.numberOfTapsRequired = 1
+        buyTokenLabel.addGestureRecognizer(buyTokenLabelTap)
+        buyTokenLabel.isUserInteractionEnabled = true
+
         // Slider
         let screenWidth = UIScreen.main.bounds.width
         stepSlider.frame = CGRect(x: 15, y: sliderView.frame.minY, width: screenWidth-60, height: 20)
@@ -246,7 +258,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         hideNumericKeyboard()
     }
     
-    @IBAction func pressedTokenSButton(_ sender: UIButton) {
+    @objc func pressedTokenSButton() {
         print("pressedSwitchTokenSButton")
         let viewController = SwitchTradeTokenViewController()
         viewController.type = .tokenS
@@ -254,7 +266,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    @IBAction func pressedTokenBButton(_ sender: UIButton) {
+    @objc func pressedTokenBButton() {
         print("pressedSwitchTokenBButton")
         let viewController = SwitchTradeTokenViewController()
         viewController.type = .tokenB
