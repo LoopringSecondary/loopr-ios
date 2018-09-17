@@ -12,7 +12,7 @@ class PushNotificationDeviceDataManager {
     
     static let shared = PushNotificationDeviceDataManager()
     
-    private final let APNsUrl = "http://app-service.bdgt26mqwd.ap-northeast-1.elasticbeanstalk.com/api/v1/devices"
+    private final let APNsUrl = "https://www.loopring.mobi" + "/api/v1/devices"
     
     private init() {
 
