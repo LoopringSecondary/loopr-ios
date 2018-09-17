@@ -120,6 +120,23 @@ class ConvertETHConfirmViewController: UIViewController {
     }
     
     @IBAction func pressedConvertButton(_ sender: UIButton) {
+        if AuthenticationDataManager.shared.getPasscodeSetting() {
+            AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to convert", comment: "")) { (error) in
+                guard error == nil else {
+                    return
+                }
+                self.authorizeToConvert()
+            }
+        } else {
+            self.authorizeToConvert()
+        }
+    }
+
+}
+
+extension ConvertETHConfirmViewController {
+    
+    private func authorizeToConvert() {
         if let amount =  Double(self.convertAmount), let gethAmount = GethBigInt.generate(valueInEther: amount, symbol: self.convertAsset.symbol) {
             if convertAsset?.symbol.uppercased() == "ETH" {
                 SendCurrentAppWalletDataManager.shared._deposit(amount: gethAmount, completion: completion)
@@ -128,9 +145,6 @@ class ConvertETHConfirmViewController: UIViewController {
             }
         }
     }
-}
-
-extension ConvertETHConfirmViewController {
     
     func completion(_ txHash: String?, _ error: Error?) {
         SVProgressHUD.dismiss()

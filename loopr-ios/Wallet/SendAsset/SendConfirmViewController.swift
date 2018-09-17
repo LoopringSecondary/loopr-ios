@@ -116,6 +116,23 @@ class SendConfirmViewController: UIViewController {
     }
     
     @IBAction func pressedSendButton(_ sender: UIButton) {
+        if AuthenticationDataManager.shared.getPasscodeSetting() {
+            AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to send", comment: "")) { (error) in
+                guard error == nil else {
+                    return
+                }
+                self.authorizeToSend()
+            }
+        } else {
+            self.authorizeToSend()
+        }
+    }
+    
+}
+
+extension SendConfirmViewController {
+    
+    private func authorizeToSend() {
         SVProgressHUD.show(withStatus: LocalizedString("Processing the transaction ...", comment: ""))
         if let toAddress = self.receiveAddress,
             let token = TokenDataManager.shared.getTokenBySymbol(self.sendAsset.symbol) {
@@ -133,10 +150,6 @@ class SendConfirmViewController: UIViewController {
             }
         }
     }
-    
-}
-
-extension SendConfirmViewController {
     
     func completion(_ txHash: String?, _ error: Error?) {
         SVProgressHUD.dismiss()

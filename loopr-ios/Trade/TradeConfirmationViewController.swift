@@ -220,6 +220,22 @@ class TradeConfirmationViewController: UIViewController {
     }
     
     @IBAction func pressedPlaceOrderButton(_ sender: UIButton) {
+        if AuthenticationDataManager.shared.getPasscodeSetting() {
+            AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to place the order", comment: "")) { (error) in
+                guard error == nil else {
+                    return
+                }
+                self.authorizeToPlaceOrder()
+            }
+        } else {
+            self.authorizeToPlaceOrder()
+        }
+    }
+}
+
+extension TradeConfirmationViewController {
+    
+    func authorizeToPlaceOrder() {
         if !priceTipLabel.isHidden {
             let alert = UIAlertController(title: LocalizedString("Please Pay Attention", comment: ""), message: self.message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
@@ -238,9 +254,6 @@ class TradeConfirmationViewController: UIViewController {
             P2POrderHistoryDataManager.shared.shouldReloadData = true
         }
     }
-}
-
-extension TradeConfirmationViewController {
     
     func isTaker() -> Bool {
         return TradeDataManager.shared.isTaker

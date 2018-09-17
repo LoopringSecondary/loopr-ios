@@ -131,13 +131,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
         
         // For some reason, SplashImageView doesn't work here. SplashImageView is to used to avoid SVProgress and backgroundImage shows up at the same time.
-        let backgroundImageView = UIImageView()
-        backgroundImageView.tag = 2345
-        backgroundImageView.image = UIImage(named: "Splash\(ColorTheme.getTheme())")
-        backgroundImageView.contentMode = .scaleAspectFill
-        backgroundImageView.frame = self.window!.frame
-        self.window?.addSubview(backgroundImageView)
-        self.window?.bringSubview(toFront: backgroundImageView)
+        
+        if !AuthenticationDataManager.shared.isAuthenticating {
+            let backgroundImageView = UIImageView()
+            backgroundImageView.tag = 2345
+            backgroundImageView.image = UIImage(named: "Splash\(ColorTheme.getTheme())")
+            backgroundImageView.contentMode = .scaleAspectFill
+            backgroundImageView.frame = self.window!.frame
+            self.window?.addSubview(backgroundImageView)
+            self.window?.bringSubview(toFront: backgroundImageView)
+        }
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {

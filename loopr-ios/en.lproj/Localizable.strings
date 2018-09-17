@@ -390,6 +390,8 @@
 "Authenticate to login" = "Authenticate to login";
 "Authenticate to cancel" = "Authenticate to cancel";
 "Authenticate to convert" = "Authenticate to convert";
+"Authenticate to send" = "Authenticate to send";
+"Authenticate to place the order" = "Authenticate to place the order";
 "Authenticate to approve the transaction" = "Authenticate to approve the transaction";
 "Authenticate to confirm the order" = "Authenticate to confirm the order";
 "Authenticate to decline the order" = "Authenticate to decline the order";

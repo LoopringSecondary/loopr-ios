@@ -284,6 +284,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             case .p2pOrder:
                 TradeDataManager.shared.handleResult(of: json["value"])
                 let vc = TradeConfirmationViewController()
+                vc.view.theme_backgroundColor = ColorPicker.backgroundColor
                 vc.parentNavController = self.navigationController
                 vc.order = TradeDataManager.shared.orders[1]
                 self.navigationController?.pushViewController(vc, animated: true)

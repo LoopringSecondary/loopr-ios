@@ -92,6 +92,13 @@ class ConvertETHResultViewController: UIViewController {
     }
 
     @IBAction func pressedDoneButton(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        // Pop to TradeSelectionViewController
+        for controller in self.navigationController!.viewControllers as Array {
+            if controller.isKind(of: TradeSelectionViewController.self) {
+                self.navigationController?.setNavigationBarHidden(false, animated: false)
+                self.navigationController!.popToViewController(controller, animated: true)
+                break
+            }
+        }
     }
 }
