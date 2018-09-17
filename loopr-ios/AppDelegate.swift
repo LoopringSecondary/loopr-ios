@@ -19,7 +19,7 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let backgroundImage = SplashImageView()
+    let splashImageView = SplashImageView()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -75,12 +75,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = authenticationViewController
         }
 
-        backgroundImage.tag = 1234
-        backgroundImage.image = UIImage(named: "Splash\(ColorTheme.getTheme())")
-        backgroundImage.contentMode = .scaleAspectFill
-        backgroundImage.frame = self.window!.frame
-        self.window?.addSubview(backgroundImage)
-        self.window?.bringSubview(toFront: backgroundImage)
+        splashImageView.tag = 1234
+        splashImageView.image = UIImage(named: "Splash\(ColorTheme.getTheme())")
+        splashImageView.contentMode = .scaleAspectFill
+        splashImageView.frame = self.window!.frame
+        self.window?.addSubview(splashImageView)
+        self.window?.bringSubview(toFront: splashImageView)
         
         return true
     }
@@ -130,8 +130,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
         
-        self.window?.addSubview(backgroundImage)
-        self.window?.bringSubview(toFront: backgroundImage)
+        // For some reason, SplashImageView doesn't work here. SplashImageView is to used to avoid SVProgress and backgroundImage shows up at the same time.
+        let backgroundImageView = UIImageView()
+        backgroundImageView.tag = 2345
+        backgroundImageView.image = UIImage(named: "Splash\(ColorTheme.getTheme())")
+        backgroundImageView.contentMode = .scaleAspectFill
+        backgroundImageView.frame = self.window!.frame
+        self.window?.addSubview(backgroundImageView)
+        self.window?.bringSubview(toFront: backgroundImageView)
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -172,9 +178,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Remove backgrond image
-        if let backgroundImage = self.window?.viewWithTag(1234) as? SplashImageView {
-            if !backgroundImage.isUIViewAnimating {
-                backgroundImage.isUIViewAnimating = true
+        if let splashImageView = self.window?.viewWithTag(1234) as? SplashImageView {
+            if !splashImageView.isUIViewAnimating {
+                splashImageView.isUIViewAnimating = true
                 // The duration here is supported to be shorten than the value in WalletViewController.
                 let duration: TimeInterval
                 let delay: TimeInterval
@@ -186,12 +192,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     delay = 0.1
                 }
                 UIView.animate(withDuration: duration, delay: delay, options: .curveEaseIn, animations: { () -> Void in
-                    backgroundImage.alpha = 0
+                    splashImageView.alpha = 0
                 }, completion: { _ in
-                    backgroundImage.isUIViewAnimating = false
-                    backgroundImage.removeFromSuperview()
+                    splashImageView.isUIViewAnimating = false
+                    splashImageView.removeFromSuperview()
                 })
             }
+        }
+        
+        // Remove backgrond image
+        if let backgroundView = self.window?.viewWithTag(2345) {
+            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseIn, animations: { () -> Void in
+                backgroundView.alpha = 0
+            }, completion: { _ in
+                backgroundView.removeFromSuperview()
+            })
         }
         
         // Clear the push notification badge count

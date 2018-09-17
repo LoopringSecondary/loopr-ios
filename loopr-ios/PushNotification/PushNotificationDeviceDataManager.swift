@@ -42,6 +42,7 @@ class PushNotificationDeviceDataManager {
             body["address"] = JSON(address)
             let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
             body["currentInstalledVersion"] = JSON(version)
+            body["currentLanguage"] = JSON(SettingDataManager.shared.getCurrentLanguage().name)
             
             // Different certificats for release and debug
             #if RELEASE

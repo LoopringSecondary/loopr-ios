@@ -55,9 +55,11 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         marketTableView.dataSource = self
         marketTableView.delegate = self
 
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 10))
+        /*
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 0))
         headerView.theme_backgroundColor = ColorPicker.backgroundColor
         marketTableView.tableHeaderView = headerView
+        */
         
         marketTableView.tableFooterView = UIView()
         marketTableView.separatorStyle = .none

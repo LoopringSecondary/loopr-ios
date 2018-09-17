@@ -106,14 +106,14 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if self.isLaunching {
             // Remove backgrond image
             let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            if let backgroundImage = appDelegate?.window?.viewWithTag(1234) as? SplashImageView {
-                if !backgroundImage.isUIViewAnimating {
-                    backgroundImage.isUIViewAnimating = true
+            if let splashImageView = appDelegate?.window?.viewWithTag(1234) as? SplashImageView {
+                if !splashImageView.isUIViewAnimating {
+                    splashImageView.isUIViewAnimating = true
                     UIView.animate(withDuration: 0.3, delay: 0.8, options: .curveEaseIn, animations: { () -> Void in
-                        backgroundImage.alpha = 0
+                        splashImageView.alpha = 0
                     }, completion: { _ in
-                        backgroundImage.isUIViewAnimating = false
-                        backgroundImage.removeFromSuperview()
+                        splashImageView.isUIViewAnimating = false
+                        splashImageView.removeFromSuperview()
                         if self.isLaunching {
                             SVProgressHUD.show(withStatus: LocalizedString("Loading Data", comment: ""))
                         }
