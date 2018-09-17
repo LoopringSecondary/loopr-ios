@@ -25,6 +25,10 @@ class MarketDataManager {
         let defaults = UserDefaults.standard
         favoriteSequence = defaults.array(forKey: UserDefaultsKeys.favoriteSequence.rawValue) as? [String] ?? []
     }
+    
+    func isMarketsEmpty() -> Bool {
+        return markets.isEmpty
+    }
 
     func setMarkets(newMarkets: [Market]) {
         let filteredMarkets = newMarkets.filter { (market) -> Bool in

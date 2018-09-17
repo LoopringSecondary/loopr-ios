@@ -124,7 +124,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if type == .favorite {
+        if type == .favorite || MarketDataManager.shared.isMarketsEmpty() {
             getTickersFromRelay()
         }
     }

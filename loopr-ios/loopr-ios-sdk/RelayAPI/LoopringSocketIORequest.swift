@@ -20,7 +20,7 @@ public class LoopringSocketIORequest {
             // add more requests using socketio here
             // handlers["balance_res"] = [CurrentAppWalletDataManager.shared.onBalanceResponse]
             handlers["marketcap_res"] = [PriceDataManager.shared.onPriceQuoteResponse]
-            handlers["loopringTickers_res"] = [MarketDataManager.shared.onTickerResponse]
+            handlers["tickersOfSource_req"] = [MarketDataManager.shared.onTickerResponse]
             handlers["trends_res"] = [MarketDataManager.shared.onTrendResponse]
             handlers["orderTracing_res"] = [TradeDataManager.shared.onOrderResponse]
             addHandlers(handlers)
@@ -111,7 +111,9 @@ public class LoopringSocketIORequest {
         }
     }
 
+    // TODO: It's disable due to API is changed. not work anymore
     static func getTiker() {
+        /*
         var body: JSON = JSON()
         body["delegateAddress"] = JSON(RelayAPIConfiguration.delegateAddress)
         if socket.status != .connected {
@@ -121,6 +123,7 @@ public class LoopringSocketIORequest {
         } else {
             self.socket.emit("tickersOfSource_req", body.rawString()!)
         }
+        */
     }
     
     static func endTicker() {

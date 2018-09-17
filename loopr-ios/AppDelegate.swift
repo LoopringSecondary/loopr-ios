@@ -49,9 +49,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Get the estimate gas price when launching the app.
         GasDataManager.shared.getEstimateGasPrice { (_, _) in }
-        
+
         PriceDataManager.shared.startGetPriceQuote()
         MarketDataManager.shared.startGetTicker()
+        LoopringAPIRequest.getTicker(by: .coinmarketcap) { (markets, error) in
+            print("AppDelegate receive LoopringAPIRequest.getMarkets")
+            if error == nil {
+                MarketDataManager.shared.setMarkets(newMarkets: markets)
+            }
+        }
+
         PartnerDataManager.shared.createPartner()
         PartnerDataManager.shared.activatePartner()
 
