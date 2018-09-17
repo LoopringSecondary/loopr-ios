@@ -116,20 +116,20 @@ public class LoopringSocketIORequest {
         body["delegateAddress"] = JSON(RelayAPIConfiguration.delegateAddress)
         if socket.status != .connected {
             socket.on(clientEvent: .connect) {_, _ in
-                self.socket.emit("loopringTickers_req", body.rawString()!)
+                self.socket.emit("tickersOfSource_req", body.rawString()!)
             }
         } else {
-            self.socket.emit("loopringTickers_req", body.rawString()!)
+            self.socket.emit("tickersOfSource_req", body.rawString()!)
         }
     }
     
     static func endTicker() {
         if socket.status != .connected {
             socket.on(clientEvent: .connect) {_, _ in
-                self.socket.emit("loopringTickers_end")
+                self.socket.emit("tickersOfSource_end")
             }
         } else {
-            self.socket.emit("loopringTickers_end")
+            self.socket.emit("tickersOfSource_end")
         }
     }
     
