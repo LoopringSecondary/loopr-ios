@@ -65,6 +65,7 @@
 "Please Verify Your Mnemonic" = "验证您的钱包助记词";
 "Please click words in order." = "请按顺序点击助记词。";
 "Wallet Created Successfully!" = "钱包创建成功！";
+"OK, got it" = "好的";
 
 /* Password related */
 "Please enter a password" = "请输入密码";

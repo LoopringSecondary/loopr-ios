@@ -36,7 +36,7 @@ class WalletCreateSuccessfullyPopViewController: UIViewController {
 
         confirmButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 18)
         confirmButton.tintColor = UIColor.success
-        confirmButton.title = LocalizedString("OK, Got It", comment: "")
+        confirmButton.title = LocalizedString("OK, got it", comment: "")
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tableTapped))
         view.addGestureRecognizer(tap)
