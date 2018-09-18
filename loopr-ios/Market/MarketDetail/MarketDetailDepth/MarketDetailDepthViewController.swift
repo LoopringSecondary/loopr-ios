@@ -107,7 +107,7 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
         if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
             label3.text = "\(LocalizedString("Sell Price", comment: ""))(\(market.tradingPair.tradingB))"
         } else {
-            label3.text = "\(LocalizedString("Buy Price", comment: ""))"
+            label3.text = "\(LocalizedString("Sell Price", comment: ""))"
         }
         label3.textAlignment = .left
         baseViewSell.addSubview(label3)
