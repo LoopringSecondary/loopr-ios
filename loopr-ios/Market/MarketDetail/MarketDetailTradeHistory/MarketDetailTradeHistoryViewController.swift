@@ -74,14 +74,14 @@ class MarketDetailTradeHistoryViewController: UIViewController, UITableViewDeleg
         
         let label1 = UILabel(frame: CGRect(x: 10, y: 0, width: labelWidth, height: 30))
         label1.theme_textColor = GlobalPicker.textLightColor
-        label1.font = FontConfigManager.shared.getMediumFont(size: 14)
+        label1.font = FontConfigManager.shared.getMediumFont(size: 12)
         label1.text = LocalizedString("Price", comment: "")
         label1.textAlignment = .left
         baseViewBuy.addSubview(label1)
         
         let label2 = UILabel(frame: CGRect(x: 10, y: 0, width: labelWidth-20, height: 30))
         label2.theme_textColor = GlobalPicker.textLightColor
-        label2.font = FontConfigManager.shared.getMediumFont(size: 14)
+        label2.font = FontConfigManager.shared.getMediumFont(size: 12)
         label2.text = LocalizedString("Amount", comment: "")
         label2.textAlignment = .right
         baseViewBuy.addSubview(label2)
@@ -93,14 +93,14 @@ class MarketDetailTradeHistoryViewController: UIViewController, UITableViewDeleg
         
         let label3 = UILabel(frame: CGRect(x: 10, y: 0, width: baseViewSell.width*0.5-15, height: 30))
         label3.theme_textColor = GlobalPicker.textLightColor
-        label3.font = FontConfigManager.shared.getMediumFont(size: 14)
+        label3.font = FontConfigManager.shared.getMediumFont(size: 12)
         label3.text = LocalizedString("Fee", comment: "")
         label3.textAlignment = .right
         baseViewSell.addSubview(label3)
         
         let label4 = UILabel(frame: CGRect(x: 10, y: 0, width: labelWidth-20, height: 30))
         label4.theme_textColor = GlobalPicker.textLightColor
-        label4.font = FontConfigManager.shared.getMediumFont(size: 14)
+        label4.font = FontConfigManager.shared.getMediumFont(size: 12)
         label4.text = LocalizedString("Time", comment: "")
         label4.textAlignment = .right
         baseViewSell.addSubview(label4)

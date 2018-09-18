@@ -447,7 +447,7 @@ extension PlaceOrderConfirmationViewController {
         }
         DispatchQueue.main.async {
             let banner = NotificationBanner.generate(title: LocalizedString("Congratulations! Your order has been submitted!", comment: ""), style: .success)
-            banner.duration = 10
+            banner.duration = 3
             banner.show()
             self.pushController(orderHash: orderHash!)
         }

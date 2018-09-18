@@ -81,7 +81,11 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
         let label1 = UILabel(frame: CGRect(x: 10, y: 0, width: labelWidth, height: 30))
         label1.theme_textColor = GlobalPicker.textLightColor
         label1.font = FontConfigManager.shared.getMediumFont(size: 12)
-        label1.text = "\(LocalizedString("Buy Price", comment: ""))(\(market.tradingPair.tradingB))"
+        if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
+            label1.text = "\(LocalizedString("Buy Price", comment: ""))(\(market.tradingPair.tradingB))"
+        } else {
+            label1.text = "\(LocalizedString("Buy Price", comment: ""))"
+        }
         label1.textAlignment = .left
         baseViewBuy.addSubview(label1)
 
@@ -100,7 +104,11 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
         let label3 = UILabel(frame: CGRect(x: 10, y: 0, width: labelWidth, height: 30))
         label3.theme_textColor = GlobalPicker.textLightColor
         label3.font = FontConfigManager.shared.getMediumFont(size: 12)
-        label3.text = "\(LocalizedString("Sell Price", comment: ""))(\(market.tradingPair.tradingB))"
+        if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
+            label3.text = "\(LocalizedString("Sell Price", comment: ""))(\(market.tradingPair.tradingB))"
+        } else {
+            label3.text = "\(LocalizedString("Buy Price", comment: ""))"
+        }
         label3.textAlignment = .left
         baseViewSell.addSubview(label3)
         

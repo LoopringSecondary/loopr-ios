@@ -69,31 +69,49 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         tokenB.addSubview(tokenBView.view)
         tokenBView.view.bindFrameToAnotherView(anotherView: tokenB)
         
-        statusTipLabel.setTitleCharFont()
+        statusTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        statusTipLabel.theme_textColor = GlobalPicker.textColor
         statusTipLabel.text = LocalizedString("Status", comment: "")
-        statusInfoLabel.setTitleDigitFont()
+        
+        statusInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        statusInfoLabel.theme_textColor = GlobalPicker.textColor
         statusInfoLabel.text = order?.orderStatus.description
         
-        amountTipLabel.setTitleCharFont()
+        amountTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        amountTipLabel.theme_textColor = GlobalPicker.textColor
         amountTipLabel.text = LocalizedString("Price", comment: "")
-        amountInfoLabel.setTitleDigitFont()
         
-        lrcFeeTipLabel.setTitleCharFont()
+        amountInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        amountInfoLabel.theme_textColor = GlobalPicker.textColor
+        
+        lrcFeeTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        lrcFeeTipLabel.theme_textColor = GlobalPicker.textColor
         lrcFeeTipLabel.text = LocalizedString("Trading Fee", comment: "")
-        lrcFeeInfoLabel.setTitleDigitFont()
+
+        lrcFeeInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        lrcFeeInfoLabel.theme_textColor = GlobalPicker.textColor
         
-        filledTipLabel.setTitleCharFont()
+        filledTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        filledTipLabel.theme_textColor = GlobalPicker.textColor
         filledTipLabel.text = LocalizedString("Filled", comment: "")
-        filledInfoLabel.setTitleDigitFont()
+
+        filledInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        filledInfoLabel.theme_textColor = GlobalPicker.textColor
         
-        idTipLabel.setTitleCharFont()
+        idTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        idTipLabel.theme_textColor = GlobalPicker.textColor
         idTipLabel.text = LocalizedString("ID", comment: "")
-        idInfoLabel.setTitleDigitFont()
+        
+        idInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        idInfoLabel.theme_textColor = GlobalPicker.textColor
         idInfoLabel.text = order?.originalOrder.hash
         
-        dateTipLabel.setTitleCharFont()
+        dateTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        dateTipLabel.theme_textColor = GlobalPicker.textColor
         dateTipLabel.text = LocalizedString("Time", comment: "")
-        dateInfoLabel.setTitleDigitFont()
+        
+        dateInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        dateInfoLabel.theme_textColor = GlobalPicker.textColor
         
         let seperators = [seperatorA, seperatorB, seperatorC, seperatorD, seperatorE, seperatorF, seperatorG]
         seperators.forEach { $0?.theme_backgroundColor = ColorPicker.cardBackgroundColor }

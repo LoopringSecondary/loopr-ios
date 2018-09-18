@@ -71,11 +71,11 @@ class TradeViewOnlyViewController: UIViewController {
     // Used in Trade
     func update(type: TradeType, symbol: String, amount: Double) {
         if type == .buy {
-            let title = LocalizedString("Buying", comment: "")
+            let title = LocalizedString("Buy", comment: "")
             titleLabel.textColor = .success
             titleLabel.text = title + " " + symbol
         } else {
-            let title = LocalizedString("Selling", comment: "")
+            let title = LocalizedString("Sell", comment: "")
             titleLabel.textColor = .fail
             titleLabel.text = title + " " + symbol
         }

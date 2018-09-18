@@ -274,12 +274,8 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         var cell = tableView.dequeueReusableCell(withIdentifier: MarketTableViewCell.getCellIdentifier()) as? MarketTableViewCell
         if cell == nil {
             // 37 TableViewCell is created during init()
-            let start = Date()
             let nib = Bundle.main.loadNibNamed("MarketTableViewCell", owner: self, options: nil)
             cell = nib![0] as? MarketTableViewCell
-            let end = Date()
-            let timeInterval: Double = end.timeIntervalSince(start)
-            print("##########Time to generate MarketTableViewCell: \(timeInterval) seconds############")
         }
         let market: Market
         if isSearching {

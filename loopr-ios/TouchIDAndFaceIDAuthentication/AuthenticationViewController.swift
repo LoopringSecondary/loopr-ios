@@ -36,6 +36,8 @@ class AuthenticationViewController: UIViewController {
         unlockAppIconButton.setImage(UIImage.init(named: "auth-icon-dark"), for: .normal)
         unlockAppIconButton.addTarget(self, action: #selector(pressedUnlockAppButton), for: .touchUpInside)
         backgrondImageView.addSubview(unlockAppIconButton)
+        // TODO: need to consider Face ID
+        unlockAppIconButton.isHidden = true
         
         self.navigationController?.isNavigationBarHidden = true
     }

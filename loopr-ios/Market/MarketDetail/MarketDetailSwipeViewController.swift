@@ -100,7 +100,12 @@ class MarketDetailSwipeViewController: SwipeViewController {
         priceInCryptoLabel.text = "\(market.balance.withCommas(6)) \(market.tradingPair.tradingB) ≈ \(market.display.description)"
         hoursChangeLabel.text = market.changeInPat24
         hoursHighLabel.text = market.high.withCommas(6)
-        hoursVolumeLabel.text = "\(market.volumeInPast24.withCommas(6)) \(market.tradingPair.tradingB)"
+        if market.volumeInPast24 > 1 {
+            let vol = Darwin.round(market.volumeInPast24)
+            hoursVolumeLabel.text = "Vol \(vol.withCommas(0)) \(market.tradingPair.tradingB)"
+        } else {
+            hoursVolumeLabel.text = "Vol \(market.volumeInPast24.withCommas()) \(market.tradingPair.tradingB)"
+        }
         hoursLowLabel.text = market.low.withCommas(6)
         
         setupChildViewControllers()

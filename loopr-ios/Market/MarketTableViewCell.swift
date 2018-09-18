@@ -70,7 +70,13 @@ class MarketTableViewCell: UITableViewCell {
             updateStarButton(market: market)
             nameLabel.text = market.description
             nameLabel.setMarket()
-            balanceLabel.text = "Vol \(market.volumeInPast24.withCommas())"
+            if market.volumeInPast24 > 1 {
+                let vol = Darwin.round(market.volumeInPast24)
+                balanceLabel.text = "Vol \(vol.withCommas(0))"
+            } else {
+                balanceLabel.text = "Vol \(market.volumeInPast24.withCommas())"
+            }
+            
             marketPriceInBitcoinLabel.text = market.balance.withCommas(6)
             marketPriceInFiatCurrencyLabel.text = market.display.description
             percentageChangeLabel.text = market.changeInPat24
