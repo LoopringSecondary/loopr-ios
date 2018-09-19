@@ -89,7 +89,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.addSubview(splashImageView)
         self.window?.bringSubview(toFront: splashImageView)
         
-        PushNotificationDeviceDataManager.shared.testAPI()
+        // Used in vivwallet 0.9.10
+        // PushNotificationDeviceDataManager.shared.testAPI()
 
         return true
     }
