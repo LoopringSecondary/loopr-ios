@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/Loopring/loopr-ios.svg?branch=master)](https://travis-ci.com/Loopring/loopr-ios)
 ### Download
 You can download the app on
-[https://loopring.io/mobile](https://loopring.io/mobile)
+[https://upwallet.io](https://upwallet.io)
 
 <p align="left">
   <img src="docs/screenshots/Market.png" width="300">
