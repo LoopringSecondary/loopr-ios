@@ -3224,7 +3224,7 @@
 		};
 		94D0536B2134F47C005F92D6 /* vivwallet */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C8EC92DEC13D2448238E02B /* Pods-loopr-ios.release.xcconfig */;
+			baseConfigurationReference = DB375D875A161ED45585D9CD /* Pods-loopr-ios.vivwallet.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon${BUNDLE_ID_SUFFIX}";
 				BUNDLE_ID_SUFFIX = .vivwallet;
@@ -3361,7 +3361,7 @@
 		};
 		94D053712134F49D005F92D6 /* loopr */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C8EC92DEC13D2448238E02B /* Pods-loopr-ios.release.xcconfig */;
+			baseConfigurationReference = 2CB22DE5D166E294F492AF43 /* Pods-loopr-ios.loopr.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon${BUNDLE_ID_SUFFIX}";
 				BUNDLE_ID_SUFFIX = .loopr;
