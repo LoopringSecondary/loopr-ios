@@ -22,7 +22,7 @@ class SettingPasscodeTableViewCell: UITableViewCell {
         seperateLineUp.backgroundColor = UIColor.dark3
         seperateLineDown.backgroundColor = UIColor.dark3
         
-        passcodeLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
+        passcodeLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         passcodeLabel.theme_textColor = GlobalPicker.textColor
         backgroundColor = Themes.isDark() ? UIColor.dark2 : UIColor.white
         

@@ -107,12 +107,12 @@
 "DEX Trade" = "去中心化交易所";
 "P2P Trade" = "场外交易";
 "Buy" = "买入";
-"Buy Price" = "买入价格";
+"Buy Price" = "买价";
 "B" = "买";
 "S" = "卖";
 "Bought" = "买入";
 "Sell" = "卖出";
-"Sell Price" = "卖出价格";
+"Sell Price" = "卖价";
 "Sold" = "卖出";
 "Buying" = "买入";
 "Selling" = "卖出";

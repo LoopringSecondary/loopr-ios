@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Crashlytics
 
 class PushNotificationDeviceDataManager {
     
@@ -56,10 +57,23 @@ class PushNotificationDeviceDataManager {
             Request.send(body: body, url: URL(string: APNsUrl)!) { data, _, error in
                 guard let _ = data, error == nil else {
                     print("error=\(String(describing: error))")
+                    Answers.logCustomEvent(withName: "API App Service: PushNotificationDeviceDataManager.register v1",
+                                           customAttributes: [
+                                           "success": "false",
+                                           "hasDeviceToken": "true"])
                     return
                 }
                 print("success")
+                Answers.logCustomEvent(withName: "API App Service: PushNotificationDeviceDataManager.register v1",
+                                       customAttributes: [
+                                       "success": "true",
+                                       "hasDeviceToken": "true"])
             }
+        } else {
+            Answers.logCustomEvent(withName: "API App Service: PushNotificationDeviceDataManager.register v1",
+                                   customAttributes: [
+                                    "success": "false",
+                                    "hasDeviceToken": "false"])
         }
     }
 

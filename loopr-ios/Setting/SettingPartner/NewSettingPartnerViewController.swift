@@ -58,7 +58,7 @@ class NewSettingPartnerViewController: UIViewController {
     
     func openShare() {
         let text = LocalizedString("Partner Download Link", comment: "")
-        let image = UIImage(named: "Partner-background")
+        let image = UIImage(named: "Partner-background" + ColorTheme.getTheme())
         let overlayingImage = image?.imageOverlayingImages([qrcodeImage], scalingBy: [1])
         let png = UIImagePNGRepresentation(overlayingImage!)
         let shareAll = [text, png!] as [Any]
