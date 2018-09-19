@@ -89,6 +89,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.addSubview(splashImageView)
         self.window?.bringSubview(toFront: splashImageView)
         
+        PushNotificationDeviceDataManager.shared.testAPI()
+
         return true
     }
     

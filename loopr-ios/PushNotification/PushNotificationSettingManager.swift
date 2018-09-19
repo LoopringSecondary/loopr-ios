@@ -23,15 +23,14 @@ class PushNotificationSettingManager {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
             (granted, error) in
             print("Permission granted: \(granted)")
-            // TODO: this is not accuracy. Add in the future
-            /*
             Answers.logCustomEvent(withName: "Push Notifications Permission v1",
                                    customAttributes: [
                                    "granted": granted])
-            */
+            /*
             guard granted else {
                 return
             }
+            */
             self.getNotificationSettings()
         }
     }

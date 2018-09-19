@@ -13,10 +13,19 @@ class PushNotificationDeviceDataManager {
     
     static let shared = PushNotificationDeviceDataManager()
     
-    private final let APNsUrl = "https://www.loopring.mobi" + "/api/v1/devices"
-    
     private init() {
 
+    }
+    
+    func testAPI() {
+        let body: JSON = JSON()
+        Request.send(body: body, url: URL(string: "https://www.loopring.mobi/greeting")!) { data, _, error in
+            guard let _ = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            print("success")
+        }
     }
     
     func setDeviceToken(_ deviceToken: String) {
@@ -54,7 +63,7 @@ class PushNotificationDeviceDataManager {
                 body["isReleaseMode"] = false
             #endif
 
-            Request.send(body: body, url: URL(string: APNsUrl)!) { data, _, error in
+            Request.send(body: body, url: URL(string: "https://www.loopring.mobi/api/v1/devices")!) { data, _, error in
                 guard let _ = data, error == nil else {
                     print("error=\(String(describing: error))")
                     Answers.logCustomEvent(withName: "API App Service: PushNotificationDeviceDataManager.register v1",
@@ -79,7 +88,7 @@ class PushNotificationDeviceDataManager {
 
     func remove(address: String) {
         if let deviceToken = getDeviceToken() {
-            let deleteUrl = "\(APNsUrl)/\(deviceToken)/\(address)"
+            let deleteUrl = "https://www.loopring.mobi/api/v1/devices/\(deviceToken)/\(address)"
             var request = URLRequest(url: URL(string: deleteUrl)!)
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpMethod = "DELETE"
