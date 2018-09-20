@@ -136,37 +136,9 @@ class SettingDataManager {
         let numberFormatter = NumberFormatter()
         return String(SettingDataManager.shared.getLrcFeeRatio()*100) + numberFormatter.percentSymbol
     }
-    
-    // between 0.0 - 1.0
-    func setMarginSplit(_ newValue: Double) {
-        let marginSplit: Double
-        if newValue < 0.0 {
-            marginSplit = 0.0
-        } else if newValue > 1.0 {
-            marginSplit = 1.0
-        } else {
-            marginSplit = newValue
-        }
-
-        let defaults = UserDefaults.standard
-        defaults.set(true, forKey: UserDefaultsKeys.useMarginSplitUserDefineValue.rawValue)
-        defaults.set(marginSplit, forKey: UserDefaultsKeys.marginSplit.rawValue)
-    }
 
     func getMarginSplit() -> Double {
-        let defaults = UserDefaults.standard
-        let useMarginSplitUserDefineValue = defaults.bool(forKey: UserDefaultsKeys.useMarginSplitUserDefineValue.rawValue)
-        if useMarginSplitUserDefineValue {
-            let marginSplit = defaults.double(forKey: UserDefaultsKeys.marginSplit.rawValue)
-            return marginSplit
-        } else {
-            return 0.5
-        }
-    }
-
-    func getMarginSplitDescription() -> String {
-        let numberFormatter = NumberFormatter()
-        return String(SettingDataManager.shared.getMarginSplit()*100) + numberFormatter.percentSymbol
+        return 0.5
     }
 
 }

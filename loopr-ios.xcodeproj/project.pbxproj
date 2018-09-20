@@ -268,8 +268,6 @@
 		AC4F601A2077536400F1D954 /* testKeystore.json in Resources */ = {isa = PBXBuildFile; fileRef = AC4F60192077536400F1D954 /* testKeystore.json */; };
 		AC4F8638209D483B002E62AB /* SettingLRCFeeRatioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F8636209D483B002E62AB /* SettingLRCFeeRatioViewController.swift */; };
 		AC4F8639209D483B002E62AB /* SettingLRCFeeRatioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4F8637209D483B002E62AB /* SettingLRCFeeRatioViewController.xib */; };
-		AC4F8641209D4889002E62AB /* SettingMarginSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F863F209D4889002E62AB /* SettingMarginSplitViewController.swift */; };
-		AC4F8642209D4889002E62AB /* SettingMarginSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4F8640209D4889002E62AB /* SettingMarginSplitViewController.xib */; };
 		AC5288B4208300580002AEAD /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B1208300570002AEAD /* DateUtil.swift */; };
 		AC5288B5208300580002AEAD /* NetworkingRechabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B2208300570002AEAD /* NetworkingRechabilityManager.swift */; };
 		AC5442DC2081167E0036A2B4 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5442DB2081167E0036A2B4 /* SwiftyJSON.swift */; };
@@ -774,8 +772,6 @@
 		AC4F60192077536400F1D954 /* testKeystore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testKeystore.json; sourceTree = "<group>"; };
 		AC4F8636209D483B002E62AB /* SettingLRCFeeRatioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLRCFeeRatioViewController.swift; sourceTree = "<group>"; };
 		AC4F8637209D483B002E62AB /* SettingLRCFeeRatioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLRCFeeRatioViewController.xib; sourceTree = "<group>"; };
-		AC4F863F209D4889002E62AB /* SettingMarginSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMarginSplitViewController.swift; sourceTree = "<group>"; };
-		AC4F8640209D4889002E62AB /* SettingMarginSplitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingMarginSplitViewController.xib; sourceTree = "<group>"; };
 		AC5288B1208300570002AEAD /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		AC5288B2208300570002AEAD /* NetworkingRechabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingRechabilityManager.swift; sourceTree = "<group>"; };
 		AC5442DB2081167E0036A2B4 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
@@ -1424,15 +1420,6 @@
 				AC4F8637209D483B002E62AB /* SettingLRCFeeRatioViewController.xib */,
 			);
 			path = SettingLRCFeeRatio;
-			sourceTree = "<group>";
-		};
-		AC4F8643209D488F002E62AB /* SettingMarginSplit */ = {
-			isa = PBXGroup;
-			children = (
-				AC4F863F209D4889002E62AB /* SettingMarginSplitViewController.swift */,
-				AC4F8640209D4889002E62AB /* SettingMarginSplitViewController.xib */,
-			);
-			path = SettingMarginSplit;
 			sourceTree = "<group>";
 		};
 		AC5288AF208300570002AEAD /* Utils */ = {
@@ -2086,7 +2073,6 @@
 			children = (
 				94A1C0D92128122700FD3A1F /* SettingPartner */,
 				AC4F863A209D4842002E62AB /* SettingLRCFeeRatio */,
-				AC4F8643209D488F002E62AB /* SettingMarginSplit */,
 				ACB9117E2026385100F14644 /* SettingNavigationViewController.swift */,
 				ACB911822026388700F14644 /* SettingViewController.swift */,
 				ACB911832026388700F14644 /* SettingViewController.xib */,
@@ -2506,7 +2492,6 @@
 				942FE782210D5A1C005C723D /* SendConfirmViewController.xib in Resources */,
 				AC06193A208401EB0060F416 /* MnemonicAddressTableViewCell.xib in Resources */,
 				ACB746E62043C5F5006C2BF5 /* QRCodeViewController.xib in Resources */,
-				AC4F8642209D4889002E62AB /* SettingMarginSplitViewController.xib in Resources */,
 				ACB1482421057B9300AB2343 /* GenerateWalletEnterNameViewController.xib in Resources */,
 				AC6466092083EE1E00EBEC97 /* MnemonicDerivationPathTableViewCell.xib in Resources */,
 				AC131A07210D7A1A001998A0 /* MarketDetailDepthViewController.xib in Resources */,
@@ -3021,7 +3006,6 @@
 				AC4F601120773E9D00F1D954 /* EthAccountCoordinator.swift in Sources */,
 				942FE781210D5A1C005C723D /* SendConfirmViewController.swift in Sources */,
 				ACDBF103203FE790000F0DEC /* ReorderUITableView.swift in Sources */,
-				AC4F8641209D4889002E62AB /* SettingMarginSplitViewController.swift in Sources */,
 				942C49FA212911B0008A6B4F /* ConvertETHConfirmViewController.swift in Sources */,
 				9413F69520B80E2600524D2D /* AmountStackView.swift in Sources */,
 				ACA677C92079D5A000D34A2F /* DisplayPrivateKeyViewController.swift in Sources */,

@@ -13,7 +13,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var settingsTableView: UITableView!
     
     let sectionTitles = [LocalizedString("User Preferences", comment: ""), LocalizedString("Trading", comment: ""), LocalizedString("Security", comment: ""), LocalizedString("About", comment: "")]
-    let sectionRows = [1, 4, 3, 1]
+    let sectionRows = [1, 4, 2, 1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,11 +123,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
             case 2:
-                print("Margin split")
-                let viewController = SettingMarginSplitViewController()
-                viewController.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(viewController, animated: true)
-            case 3:
                 // TODO: Trade FAQ is not ready.
                 print("Trade FAQ")
                 let viewController = TradeFAQViewController()
@@ -244,8 +239,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 1:
             return createDetailTableCell(indexPath: indexPath, title: LocalizedString("LRC Fee Ratio", comment: ""))
         case 2:
-            return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Margin Split", comment: ""))
-        case 3:
             return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Trade FAQ", comment: ""))
         default:
             return UITableViewCell()
