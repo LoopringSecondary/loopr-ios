@@ -20,28 +20,25 @@ enum UIStyleConfig {
     static let tableCellSelectedBackgroundColor = UIColor.init(red: 220/255.0, green: 220/255.0, blue: 220/255.0, alpha: 1.0)
     static let underlineColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
     static let scale = UIScreen.main.scale / UIScreen.main.nativeScale
-    
-    static let green = UIColor.up
-    static let red = UIColor.down
-        
+      
     static func getChangeColor(change: String, down: Bool? = nil) -> UIColor {
         let firstChar = change.first?.description ?? ""
         // if change == "0.00%", use update
         if firstChar == "" {
             return UIColor.black
         }
-        let language = Bundle.main.preferredLocalizations.first
-        if language == "zh-Hans" {
-            if firstChar == "↓" || firstChar == "+" || down == true {
-                return UIStyleConfig.green
+        let language = SettingDataManager.shared.getCurrentLanguage()
+        if language == Language(name: "zh-Hans") {
+            if firstChar == "↓" || firstChar == "-" || down == true {
+                return UIColor(named: "Color-green")!
             } else {
-                return UIStyleConfig.red
+                return UIColor(named: "Color-red")!
             }
         } else {
             if firstChar == "↓" || firstChar == "-" || down == false {
-                return UIStyleConfig.red
+                return UIColor(named: "Color-red")!
             } else {
-                return UIStyleConfig.green
+                return UIColor(named: "Color-green")!
             }
         }
     }
