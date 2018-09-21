@@ -14,7 +14,8 @@ enum UserDefaultsKeys: String {
     case lastedThemeIndex = "UserDefaultsKeys.lastedThemeIndex"
     case currentLanguage = "UserDefaultsKeys.currentLanguage"
     case currentCurrency = "UserDefaultsKeys.currentCurrency"
-    case currentFont = "UserDefaultsKeys.currentcurrentFont"
+    // Deprecated. Keep these in the code to avoid using them again in the future.
+    // case currentFont = "UserDefaultsKeys.currentcurrentFont"
     case showSmallAssets = "UserDefaultsKeys.showSmallAssets"
     case showOtherPairs = "UserDefaultsKeys.showOtherPairs"
     
