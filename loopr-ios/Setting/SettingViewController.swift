@@ -159,14 +159,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         if section == 1 {
             headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 48))
             headerView.theme_backgroundColor = ColorPicker.backgroundColor
-            let tipLabel = UILabel(frame: CGRect(x: 23, y: 16, width: 120, height: 16))
-            tipLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
-            tipLabel.theme_textColor = GlobalPicker.textLightColor
-            tipLabel.text = LocalizedString("Partner_Tip", comment: "")
-            // Update the width programmatically due to different langugages.
-            tipLabel.frame = CGRect(x: 23, y: 16, width: LocalizedString("Partner_Tip", comment: "").textWidth(font: tipLabel.font), height: 16)
-            headerView.addSubview(tipLabel)
-            let infoLabel = UILabel(frame: CGRect(x: tipLabel.frame.maxX, y: 16, width: headerView.width - 170, height: 16))
+            let infoLabel = UILabel(frame: CGRect(x: 23, y: 16, width: headerView.width - 23*2, height: 16))
             infoLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
             infoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
             infoLabel.theme_textColor = GlobalPicker.textLightColor

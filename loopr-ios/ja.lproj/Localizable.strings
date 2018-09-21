@@ -370,9 +370,8 @@
 "Undefined type of QRCode" = "Undefined type of QRCode";
 
 /* Share app page */
-"Partner_Slogan" = "Share app & receive 20% of trading fees";
+"Partner_Slogan" = "Share this app to receive 20% of trading fees";
 "Partner_Title" = "Wallet Share";
-"Partner_Tip" = "My income address: ";
 "Partner_Des" = "By sharing the app, you will be awarded 20% of all future trading fees from users you refer";
 "Partner_Address" = "Your address for receiving referral trading fees is: ";
 "Share App" = "Share App";
