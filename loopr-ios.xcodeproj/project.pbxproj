@@ -376,10 +376,8 @@
 		ACACB8B5213B90BF00F5ACC5 /* PushNotificationDeviceDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACB8B4213B90BF00F5ACC5 /* PushNotificationDeviceDataManager.swift */; };
 		ACB1482321057B9300AB2343 /* GenerateWalletEnterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB1482121057B9300AB2343 /* GenerateWalletEnterNameViewController.swift */; };
 		ACB1482421057B9300AB2343 /* GenerateWalletEnterNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB1482221057B9300AB2343 /* GenerateWalletEnterNameViewController.xib */; };
-		ACB41A6C20B54A2D00A92C9D /* AuthenticationNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB41A6B20B54A2C00A92C9D /* AuthenticationNavigationViewController.swift */; };
 		ACB41A6F20B54BB300A92C9D /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB41A6D20B54BB200A92C9D /* AuthenticationViewController.swift */; };
 		ACB41A7020B54BB300A92C9D /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB41A6E20B54BB200A92C9D /* AuthenticationViewController.xib */; };
-		ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */; };
 		ACB5DD95202C434B00140A09 /* EthereumAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD94202C434B00140A09 /* EthereumAPIRequest.swift */; };
 		ACB5DD98202D5A8400140A09 /* NumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD97202D5A8400140A09 /* NumericKeyboard.swift */; };
 		ACB5DD9A202D5B7100140A09 /* DefaultNumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5DD99202D5B7100140A09 /* DefaultNumericKeyboard.swift */; };
@@ -888,10 +886,8 @@
 		ACACB8B4213B90BF00F5ACC5 /* PushNotificationDeviceDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationDeviceDataManager.swift; sourceTree = "<group>"; };
 		ACB1482121057B9300AB2343 /* GenerateWalletEnterNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateWalletEnterNameViewController.swift; sourceTree = "<group>"; };
 		ACB1482221057B9300AB2343 /* GenerateWalletEnterNameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenerateWalletEnterNameViewController.xib; sourceTree = "<group>"; };
-		ACB41A6B20B54A2C00A92C9D /* AuthenticationNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationNavigationViewController.swift; sourceTree = "<group>"; };
 		ACB41A6D20B54BB200A92C9D /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		ACB41A6E20B54BB200A92C9D /* AuthenticationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationViewController.xib; sourceTree = "<group>"; };
-		ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIButtonForUIToolbar.swift; sourceTree = "<group>"; };
 		ACB5DD94202C434B00140A09 /* EthereumAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumAPIRequest.swift; sourceTree = "<group>"; };
 		ACB5DD97202D5A8400140A09 /* NumericKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeyboard.swift; sourceTree = "<group>"; };
 		ACB5DD99202D5B7100140A09 /* DefaultNumericKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNumericKeyboard.swift; sourceTree = "<group>"; };
@@ -1858,7 +1854,6 @@
 		ACB41A6A20B549E400A92C9D /* TouchIDAndFaceIDAuthentication */ = {
 			isa = PBXGroup;
 			children = (
-				ACB41A6B20B54A2C00A92C9D /* AuthenticationNavigationViewController.swift */,
 				ACB41A6D20B54BB200A92C9D /* AuthenticationViewController.swift */,
 				ACB41A6E20B54BB200A92C9D /* AuthenticationViewController.xib */,
 			);
@@ -1903,7 +1898,6 @@
 				AC0619412085D01E0060F416 /* SearchBarContainerView.swift */,
 				AC9FFF1F21254B8C00957175 /* StepSlider */,
 				ACE7742A20AA176A002CD727 /* WebViewController */,
-				ACB5DD86202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift */,
 				AC70E84D20683C7500451047 /* IconView.swift */,
 				AC9089F2214D7ABA00F421F1 /* SplashImageView.swift */,
 				AC2ACA5B21005C17009C77E7 /* UIButton+AlignedIcon.swift */,
@@ -2886,7 +2880,6 @@
 				948125652119B10B00453225 /* PartnerStatus.swift in Sources */,
 				AC37567C2038D80300AADC60 /* PrivateKeyViewController.swift in Sources */,
 				9475A2EE207EF81300200155 /* OrderDetailViewController.swift in Sources */,
-				ACB41A6C20B54A2D00A92C9D /* AuthenticationNavigationViewController.swift in Sources */,
 				AC2ACA85210305F8009C77E7 /* TradeFAQDetailViewController.swift in Sources */,
 				948125672119B38E00453225 /* PartnerDataManager.swift in Sources */,
 				94E49ED4213CE99700CDDA02 /* PreventScreenShotViewController.swift in Sources */,
@@ -2958,7 +2951,6 @@
 				94B5CA8A204FB4E20081BA93 /* DefaultBlock.swift in Sources */,
 				AC0CD58520D2330300ABB7BA /* H5DexViewController.swift in Sources */,
 				AC299495212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.swift in Sources */,
-				ACB5DD87202AD76E00140A09 /* CustomUIButtonForUIToolbar.swift in Sources */,
 				AC5288B5208300580002AEAD /* NetworkingRechabilityManager.swift in Sources */,
 				94768CA4210DCB2300B5977B /* TradeSwipeType.swift in Sources */,
 				AC9FFF252126BDF800957175 /* MarketChangeTokenSwipeViewController.swift in Sources */,

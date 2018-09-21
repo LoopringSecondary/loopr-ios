@@ -18,7 +18,7 @@ class SetupNavigationController: UINavigationController {
         // Do any additional setup after loading the view.
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = false
-        navigationBar.tintColor = UIStyleConfig.defaultTintColor
+        navigationBar.tintColor = UIColor.dark1
         
         let viewController = SetupWalletViewController()
         self.setViewControllers([viewController], animated: false)
