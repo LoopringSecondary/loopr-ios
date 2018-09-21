@@ -188,6 +188,15 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
             let viewController = ExportKeystoreEnterPasswordViewController()
             viewController.appWallet = appWallet
             self.navigationController?.pushViewController(viewController, animated: true)
+        
+        case .viewAddressOnEtherscan:
+            if let url = URL(string: "https://etherscan.io/address/\(appWallet.address)") {
+                let viewController = DefaultWebViewController()
+                viewController.navigationTitle = "Etherscan.io"
+                viewController.url = url
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
         case .clearRecords:
             presentAlertControllerToConfirmClearRecords()
         default:

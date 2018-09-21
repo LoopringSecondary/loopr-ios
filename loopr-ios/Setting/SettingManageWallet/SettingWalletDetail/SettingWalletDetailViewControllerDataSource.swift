@@ -13,9 +13,9 @@ extension SettingWalletDetailViewController {
 
     func getNumberOfRowsInWalletSection() -> Int {
         if appWallet.setupWalletMethod == .create || appWallet.setupWalletMethod == .importUsingMnemonic {
-            return 4
+            return 5
         } else {
-            return 3
+            return 4
         }
     }
 
@@ -40,6 +40,9 @@ extension SettingWalletDetailViewController {
                 } else if indexPath.row == 3 {
                     cell?.contentType = .exportKeystore
                     cell?.leftLabel.text = LocalizedString("Export Keystore", comment: "")
+                } else if indexPath.row == 4 {
+                    cell?.contentType = .viewAddressOnEtherscan
+                    cell?.leftLabel.text = LocalizedString("View address on Etherscan", comment: "")
                 }
             } else {
                 if indexPath.row == 0 {
@@ -51,6 +54,9 @@ extension SettingWalletDetailViewController {
                 } else if indexPath.row == 2 {
                     cell?.contentType = .exportKeystore
                     cell?.leftLabel.text = LocalizedString("Export Keystore", comment: "")
+                } else if indexPath.row == 3 {
+                    cell?.contentType = .viewAddressOnEtherscan
+                    cell?.leftLabel.text = LocalizedString("View address on Etherscan", comment: "")
                 }
             }
             

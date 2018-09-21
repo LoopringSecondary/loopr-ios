@@ -16,6 +16,7 @@ class SettingStyleTableViewCell: UITableViewCell {
         case backupMnemonic
         case exportPrivateKey
         case exportKeystore
+        case viewAddressOnEtherscan
         case clearRecords
     }
     
