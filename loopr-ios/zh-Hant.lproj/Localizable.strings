@@ -203,7 +203,7 @@
 "ETH_TIP" = "● We will preserve 0.01 ETH for gas fee for your subsequent transaction";
 "Convert_Fail_Tip" = "Insufficient gas in your account. Please retry later";
 "Convert_Success_Tip" = "Conversion successfull. Transaction hash =";
-"GAS_TIP" = "Placing orders will never cost any gas fee";
+"GAS_TIP" = "Placing order is gas free";
 "Please confirm the address before sending" = "Please confirm the address before sending";
 "Signer address does NOT match the order's, please transfer and try again later" = "Signer address does NOT match the order's, please transfer and try again later";
 "Please input a correct address" = "Please input a correct address";
