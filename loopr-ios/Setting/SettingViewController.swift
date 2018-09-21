@@ -112,11 +112,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             switch indexPath.row {
             case 0:
                 print("contract version")
-                let viewController = DisplayPrivateKeyViewController()
-                viewController.displayValue = RelayAPIConfiguration.protocolAddress
-                viewController.hideCopyButton = true
-                viewController.navigationTitle = LocalizedString("Contract Version", comment: "")
-                self.navigationController?.pushViewController(viewController, animated: true)                
+                let viewController = DisplayContractVersionViewController()
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
             case 1:
                 print("LRC Fee ratio")
                 let viewController = SettingLRCFeeRatioViewController()
