@@ -81,6 +81,8 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         availableLabel.setSubTitleCharFont()
         maxButton.titleLabel?.setSubTitleCharFont()
         maxButton.title = LocalizedString("Max", comment: "")
+        maxButton.setTitleColor(UIColor.theme, for: .normal)
+        maxButton.setTitleColor(UIColor.theme.withAlphaComponent(0.6), for: .highlighted)
 
         gasTipLabel.setTitleCharFont()
         gasTipLabel.text = LocalizedString("Transaction Fee", comment: "")

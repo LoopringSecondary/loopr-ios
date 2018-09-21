@@ -18,7 +18,7 @@ enum OrderHistorySwipeType: String, CustomStringConvertible {
     var description: String {
         switch self {
         case .open: return LocalizedString("Open", comment: "")
-        case .finished: return LocalizedString("Finished", comment: "")
+        case .finished: return LocalizedString("Completed", comment: "")
         case .cancelled: return LocalizedString("Cancelled", comment: "")
         case .expried: return LocalizedString("Expired", comment: "")
         }
