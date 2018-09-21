@@ -27,8 +27,6 @@
 		940B452D2061206900ADE2B9 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B452C2061206800ADE2B9 /* Token.swift */; };
 		941138C7210F12AD007FDC82 /* TimeToLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941138C5210F12AD007FDC82 /* TimeToLiveViewController.swift */; };
 		941138C8210F12AD007FDC82 /* TimeToLiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941138C6210F12AD007FDC82 /* TimeToLiveViewController.xib */; };
-		94116355211AF512001043BF /* SetupWalletViewController_Archive.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94116354211AF512001043BF /* SetupWalletViewController_Archive.xib */; };
-		94116357211AF51F001043BF /* SetupWalletViewController_Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94116356211AF51F001043BF /* SetupWalletViewController_Archive.swift */; };
 		9413F69120B802CB00524D2D /* AmountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9413F69020B802CB00524D2D /* AmountButton.swift */; };
 		9413F69520B80E2600524D2D /* AmountStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9413F69420B80E2600524D2D /* AmountStackView.swift */; };
 		9415543920C0F1BF007AAB87 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9415543820C0F1BF007AAB87 /* UILabelExtension.swift */; };
@@ -530,8 +528,6 @@
 		940B452C2061206800ADE2B9 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		941138C5210F12AD007FDC82 /* TimeToLiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeToLiveViewController.swift; sourceTree = "<group>"; };
 		941138C6210F12AD007FDC82 /* TimeToLiveViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeToLiveViewController.xib; sourceTree = "<group>"; };
-		94116354211AF512001043BF /* SetupWalletViewController_Archive.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupWalletViewController_Archive.xib; sourceTree = "<group>"; };
-		94116356211AF51F001043BF /* SetupWalletViewController_Archive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupWalletViewController_Archive.swift; sourceTree = "<group>"; };
 		9413F69020B802CB00524D2D /* AmountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountButton.swift; sourceTree = "<group>"; };
 		9413F69420B80E2600524D2D /* AmountStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountStackView.swift; sourceTree = "<group>"; };
 		9415543820C0F1BF007AAB87 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
@@ -2311,8 +2307,6 @@
 				AC3756652038CD7E00AADC60 /* SetupNavigationController.swift */,
 				AC120756214DA02300EEDC49 /* SetupWalletViewController.swift */,
 				AC120757214DA02300EEDC49 /* SetupWalletViewController.xib */,
-				94116356211AF51F001043BF /* SetupWalletViewController_Archive.swift */,
-				94116354211AF512001043BF /* SetupWalletViewController_Archive.xib */,
 				AC99CF502083E708000AE4BD /* GenerateWalletEnterNameAndPassword */,
 				AC5E0DD2203A848300AF03C7 /* GenerateMnemonic */,
 				AC3756752038D70D00AADC60 /* UnlockWallet */,
@@ -2557,7 +2551,6 @@
 				AC120759214DA02300EEDC49 /* SetupWalletViewController.xib in Resources */,
 				AC23B368210D6214004DC5A9 /* MarketDetailViewController.xib in Resources */,
 				AC2ACA5520FA0EC3009C77E7 /* Rubik-Regular.ttf in Resources */,
-				94116355211AF512001043BF /* SetupWalletViewController_Archive.xib in Resources */,
 				94DFE4042122BD48000E1831 /* BuyViewController.xib in Resources */,
 				ACE58B8620BE796A005BC1C8 /* VerifyMnemonicViewController.xib in Resources */,
 				AC2ACA5320FA0EC3009C77E7 /* Rubik-LightItalic.ttf in Resources */,
@@ -2945,7 +2938,6 @@
 				ACDBF108203FE9D2000F0DEC /* ReorderDestinationRow.swift in Sources */,
 				AC9FFF312127F8CF00957175 /* AddCustomizedTokenViewController.swift in Sources */,
 				ACC8D0A620CC95A00049A741 /* AssetTableViewCell.swift in Sources */,
-				94116357211AF51F001043BF /* SetupWalletViewController_Archive.swift in Sources */,
 				ACFEFE9520C337BE00013921 /* PendingTransactionsDataManager.swift in Sources */,
 				AC4141F720352D6B0089861D /* SwipeView.swift in Sources */,
 				94B5CA8A204FB4E20081BA93 /* DefaultBlock.swift in Sources */,
