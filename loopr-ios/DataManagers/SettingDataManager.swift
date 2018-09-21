@@ -18,6 +18,7 @@ class SettingDataManager {
 
     // MARK: Language
     func getSupportedLanguages() -> [Language] {
+        /*
         let languageNames = Bundle.main.localizations
         let languages = languageNames.filter ({ (languageName) -> Bool in
             return languageName != "Base"
@@ -26,8 +27,10 @@ class SettingDataManager {
         }).sorted { (a, b) -> Bool in
             return a.name < b.name
         }
-
-        return languages
+        */
+        return Localizator.sharedInstance.getAvailableLanguages().filter({ (language) -> Bool in
+            return language.name != "DeviceLanguage"
+        })
     }
     
     func getCurrentLanguage() -> Language {

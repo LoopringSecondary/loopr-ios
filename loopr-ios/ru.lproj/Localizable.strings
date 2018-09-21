@@ -64,6 +64,8 @@
 "Failed to import address. The device has imported the address already." = "Failed to import address. The device has imported the address already.";
 "Please Verify Your Mnemonic" = "Please Verify Your Mnemonic";
 "Please click words in order." = "Please click words in order.";
+"Wallet Created Successfully!" = "Wallet Created Successfully!";
+"OK, got it" = "OK, got it";
 
 /* Password related */
 "Please enter a password" = "Please enter a password";
@@ -101,16 +103,21 @@
 "Adding..." = "Adding...";
 
 /* DEX Trade page */
+"Loopring Order" = "Loopring Order";
 "DEX Trade" = "DEX Trade";
 "P2P Trade" = "P2P Trade";
 "Buy" = "Buy";
+"Buy Price" = "Buy Price";
 "B" = "B";
 "S" = "S";
 "Bought" = "Bought";
 "Sell" = "Sell";
+"Sell Price" = "Sell Price";
 "Sold" = "Sold";
 "Buying" = "Buying";
 "Selling" = "Selling";
+"Buy_Tip" = "Buy";
+"Sell_Tip" = "Sell";
 "Trade" = "Trade";
 "Market" = "Market";
 "Markets" = "Markets";
@@ -182,7 +189,13 @@
 "Enter the address" = "Enter the address";
 "Available Balance" = "Available Balance";
 "Transaction Fee" = "Transaction Fee";
-
+"Loopring_TIP" = "Please use wallet supporting Loopring protocol to scan";
+"Irrational" = "Irrational";
+"Please Pay Attention" = "Please Pay Attention";
+"Your price is irrational, " = "Your price is irrational, ";
+"which may cause your asset wastage! " = "which may cause your asset wastage! ";
+"which may cause your order abolished! " = "which may cause your order abolished! ";
+"Do you wish to continue trading or signing with the price?" = "Do you wish to continue trading or signing with the price?";
 
 /* Trade tips */
 "Convert_DES" = "● Think of it like the coin version of a paper note. The same value, but some machines only take coins. The conversion ratio between ETH and WETH is always 1:1, guaranteed by Ethereum.";
@@ -245,7 +258,6 @@
 "Convert WETH" = "Convert WETH";
 "Conversion Successful." = "Conversion Successful.";
 
-
 /* Setting page */
 "Night Mode" = "Night Mode";
 "Language" = "Language";
@@ -270,9 +282,11 @@
 "Enter Wallet" = "Enter Wallet";
 "Copy Private Key" = "Copy Private Key";
 "Export Private Key" = "Export Private Key";
+"Exporting private key" = "Exporting private key";
 "Export Keystore" = "Export Keystore";
 "Exporting keystore" = "Exporting keystore";
 "Wallet Name" = "Wallet Name";
+"Enter Wallet Name" = "Enter Wallet Name";
 "Change Wallet Name" = "Change Wallet Name";
 "Address copied to clipboard successfully!" = "Address copied to clipboard successfully!";
 "Keystore copied to clipboard successfully!" = "Keystore copied to clipboard successfully!";
@@ -280,7 +294,9 @@
 "Copy Keystore" = "Copy Keystore";
 "Clear Records of this Wallet" = "Clear Records of this Wallet";
 "Backup_Mnemonic_in_SettingManageWallet" = "Backup Mnemonic";
-
+"Prevent_Title" = "Do not take photo or capture screen";
+"Prevent_Tip" = "To avoid assets being stolen, please write down private key and keep in safe.";
+"Got it" = "Got it";
 
 /* General. Used in different pages. */
 "Confirmation" = "Confirmation";
@@ -369,6 +385,17 @@
 "Authorize_Successfully" = "Authorization Successful! Please go to our website to continue.";
 "Authorize_Failed" = "Authorization failed! Please review your signing data and try again later.";
 "Authenticate to access your wallet" = "Authenticate to access your wallet";
+"Authenticate to access your mnemonic" = "Authenticate to access your mnemonic";
+"Authenticate to access your private key" = "Authenticate to access your private key";
+"Authenticate to access your keystore" = "Authenticate to access your keystore";
+"Authenticate to login" = "Authenticate to login";
+"Authenticate to cancel" = "Authenticate to cancel";
+"Authenticate to convert" = "Authenticate to convert";
+"Authenticate to send" = "Authenticate to send";
+"Authenticate to place the order" = "Authenticate to place the order";
+"Authenticate to approve the transaction" = "Authenticate to approve the transaction";
+"Authenticate to confirm the order" = "Authenticate to confirm the order";
+"Authenticate to decline the order" = "Authenticate to decline the order";
 
 /* Complicated. Need other info to form a sentence. */
 "You are going to clear records of" = "You are going to clear records of";

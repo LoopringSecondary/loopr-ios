@@ -23,6 +23,8 @@ class Localizator {
     private var dicoLocalization: NSDictionary?
 
     // Supported Languages
+    // Remove a localization configuration is too hard. So we keeps localizaed files.
+    /*
     private var availableLanguagesArray = ["DeviceLanguage", "en", "zh-Hans", "zh-Hant", "ja", "ko", "ru"]
     static let map = [
         "en": "English",
@@ -32,7 +34,13 @@ class Localizator {
         "ko": "한국어",
         "ru": "русский"
     ]
-    
+    */
+    private var availableLanguagesArray = ["DeviceLanguage", "en", "zh-Hans"]
+    static let map = [
+        "en": "English",
+        "zh-Hans": "简体中文"
+    ]
+
     private let kSaveLanguageDefaultKey = "kSaveLanguageDefaultKey"
     
     // MARK: - Public properties
@@ -53,8 +61,12 @@ class Localizator {
     
     // MARK: - Public custom getter
     
-    func getArrayAvailableLanguages() -> [String] {
-        return availableLanguagesArray
+    func getAvailableLanguages() -> [Language] {
+        return availableLanguagesArray.map ({ (name) -> Language in
+            return Language(name: name)
+        }).sorted { (a, b) -> Bool in
+            return a.name < b.name
+        }
     }
     
     // MARK: - Private instance methods
