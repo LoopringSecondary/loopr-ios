@@ -275,7 +275,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         self.hideNumericKeyboard()
         let parentView = self.parent!.view!
         parentView.alpha = 0.25
-        let vc = TTLViewController()
+        let vc = TimeToLiveViewController()
         vc.dismissClosure = {
             parentView.alpha = 1
             self.intervalUnit = vc.intervalUnit

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TTLViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class TimeToLiveViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!

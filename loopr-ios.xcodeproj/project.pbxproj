@@ -25,8 +25,8 @@
 		940B452A2060F67E00ADE2B9 /* MarketDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B451C2060F67E00ADE2B9 /* MarketDataManager.swift */; };
 		940B452B2060F67E00ADE2B9 /* SettingDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B451D2060F67E00ADE2B9 /* SettingDataManager.swift */; };
 		940B452D2061206900ADE2B9 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B452C2061206800ADE2B9 /* Token.swift */; };
-		941138C7210F12AD007FDC82 /* TTLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941138C5210F12AD007FDC82 /* TTLViewController.swift */; };
-		941138C8210F12AD007FDC82 /* TTLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941138C6210F12AD007FDC82 /* TTLViewController.xib */; };
+		941138C7210F12AD007FDC82 /* TimeToLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941138C5210F12AD007FDC82 /* TimeToLiveViewController.swift */; };
+		941138C8210F12AD007FDC82 /* TimeToLiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941138C6210F12AD007FDC82 /* TimeToLiveViewController.xib */; };
 		94116355211AF512001043BF /* SetupWalletViewController_Archive.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94116354211AF512001043BF /* SetupWalletViewController_Archive.xib */; };
 		94116357211AF51F001043BF /* SetupWalletViewController_Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94116356211AF51F001043BF /* SetupWalletViewController_Archive.swift */; };
 		9413F69120B802CB00524D2D /* AmountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9413F69020B802CB00524D2D /* AmountButton.swift */; };
@@ -528,8 +528,8 @@
 		940B451C2060F67E00ADE2B9 /* MarketDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDataManager.swift; sourceTree = "<group>"; };
 		940B451D2060F67E00ADE2B9 /* SettingDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDataManager.swift; sourceTree = "<group>"; };
 		940B452C2061206800ADE2B9 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
-		941138C5210F12AD007FDC82 /* TTLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTLViewController.swift; sourceTree = "<group>"; };
-		941138C6210F12AD007FDC82 /* TTLViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TTLViewController.xib; sourceTree = "<group>"; };
+		941138C5210F12AD007FDC82 /* TimeToLiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeToLiveViewController.swift; sourceTree = "<group>"; };
+		941138C6210F12AD007FDC82 /* TimeToLiveViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeToLiveViewController.xib; sourceTree = "<group>"; };
 		94116354211AF512001043BF /* SetupWalletViewController_Archive.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupWalletViewController_Archive.xib; sourceTree = "<group>"; };
 		94116356211AF51F001043BF /* SetupWalletViewController_Archive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupWalletViewController_Archive.swift; sourceTree = "<group>"; };
 		9413F69020B802CB00524D2D /* AmountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountButton.swift; sourceTree = "<group>"; };
@@ -1695,10 +1695,10 @@
 				ACEC977E20AD57F3003F9DEB /* P2POrderHistoryViewController.xib */,
 				94768C9F210DCABE00B5977B /* TradeSwipeViewController.swift */,
 				94768CA0210DCABE00B5977B /* TradeSwipeViewController.xib */,
-				941138C5210F12AD007FDC82 /* TTLViewController.swift */,
-				941138C6210F12AD007FDC82 /* TTLViewController.xib */,
-				949774F221181EE9001BF79D /* TradeRatioViewController.xib */,
+				941138C5210F12AD007FDC82 /* TimeToLiveViewController.swift */,
+				941138C6210F12AD007FDC82 /* TimeToLiveViewController.xib */,
 				949774EE21181E38001BF79D /* TradeRatioViewController.swift */,
+				949774F221181EE9001BF79D /* TradeRatioViewController.xib */,
 			);
 			path = Trade;
 			sourceTree = "<group>";
@@ -2540,7 +2540,7 @@
 				94E49ED5213CE99700CDDA02 /* PreventScreenShotViewController.xib in Resources */,
 				AC299496212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.xib in Resources */,
 				AC78FC36209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib in Resources */,
-				941138C8210F12AD007FDC82 /* TTLViewController.xib in Resources */,
+				941138C8210F12AD007FDC82 /* TimeToLiveViewController.xib in Resources */,
 				AC2ACA4F20FA0EC3009C77E7 /* Rubik-Light.ttf in Resources */,
 				AC13B30420548767008A72C0 /* BuyAndSellSwipeViewController.xib in Resources */,
 				AC31CE152057B5A400A30335 /* TradeReviewViewController.xib in Resources */,
@@ -2973,7 +2973,7 @@
 				ACBA47E220788ECD0032C2B4 /* SettingManageWalletViewController.swift in Sources */,
 				ACE65E4520720500001EE499 /* MnemonicCollectionViewCell.swift in Sources */,
 				ACB9117820256B0300F14644 /* Market.swift in Sources */,
-				941138C7210F12AD007FDC82 /* TTLViewController.swift in Sources */,
+				941138C7210F12AD007FDC82 /* TimeToLiveViewController.swift in Sources */,
 				94DAACB320BBF24B0097707E /* OrderQRCodeViewController.swift in Sources */,
 				AC2ACA83210305F8009C77E7 /* TradeFAQViewController.swift in Sources */,
 				AC5E3E70205DFB700051ACFC /* SendAssetViewController.swift in Sources */,
