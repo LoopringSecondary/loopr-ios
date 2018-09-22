@@ -37,7 +37,7 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
         privateKeyTextView.font = FontConfigManager.shared.getRegularFont()
         privateKeyTextView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         privateKeyTextView.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffff66") : UIColor.dark3
-        privateKeyTextView.theme_tintColor = GlobalPicker.textColor
+        privateKeyTextView.theme_tintColor = GlobalPicker.textLightColor
         privateKeyTextView.delegate = self
         privateKeyTextView.text = LocalizedString("Please input your private key", comment: "")
         privateKeyTextView.keyboardAppearance = Themes.isDark() ? .dark : .default

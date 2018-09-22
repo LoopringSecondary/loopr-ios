@@ -33,7 +33,7 @@ class DisplayPrivateKeyViewController: UIViewController {
         privateKeyTextView.cornerRadius = 6
         privateKeyTextView.font = FontConfigManager.shared.getRegularFont(size: 14)
         privateKeyTextView.theme_backgroundColor = ColorPicker.cardBackgroundColor
-        privateKeyTextView.theme_textColor = GlobalPicker.textColor
+        privateKeyTextView.theme_textColor = GlobalPicker.textLightColor
         privateKeyTextView.isEditable = false
         // privateKeyTextView.isScrollEnabled = false
         
@@ -81,7 +81,6 @@ class DisplayPrivateKeyViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        privateKeyTextView.applyShadow()
     }
 
     @IBAction func pressedCopyButton(_ sender: Any) {

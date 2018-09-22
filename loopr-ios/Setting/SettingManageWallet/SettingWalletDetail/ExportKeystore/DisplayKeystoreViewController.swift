@@ -36,10 +36,10 @@ class DisplayKeystoreViewController: UIViewController {
         keystoreTextView.cornerRadius = 6
         keystoreTextView.font = FontConfigManager.shared.getRegularFont(size: 14)
         keystoreTextView.theme_backgroundColor = ColorPicker.cardBackgroundColor
-        keystoreTextView.theme_textColor = GlobalPicker.textColor
+        keystoreTextView.theme_textColor = GlobalPicker.textLightColor
         keystoreTextView.isEditable = false
         
-        keystoreTextView.text = keystore
+        
 
         copyButton.title = LocalizedString("Copy Keystore", comment: "")
         copyButton.setupSecondary(height: 44)
@@ -64,6 +64,7 @@ class DisplayKeystoreViewController: UIViewController {
                 self.blurVisualEffectView.alpha = 0.0
             }, completion: { (_) in
                 self.blurVisualEffectView.removeFromSuperview()
+                self.keystoreTextView.text = self.keystore
             })
         }
         self.present(vc, animated: true, completion: nil)
@@ -83,7 +84,6 @@ class DisplayKeystoreViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        keystoreTextView.applyShadow()
         keystoreTextView.clipsToBounds = true
         keystoreTextView.setContentOffset(CGPoint.zero, animated: false)
     }

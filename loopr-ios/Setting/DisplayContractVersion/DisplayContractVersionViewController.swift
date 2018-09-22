@@ -25,7 +25,7 @@ class DisplayContractVersionViewController: UIViewController {
         contractVersionTextView.cornerRadius = 6
         contractVersionTextView.font = FontConfigManager.shared.getRegularFont(size: 14)
         contractVersionTextView.theme_backgroundColor = ColorPicker.cardBackgroundColor
-        contractVersionTextView.theme_textColor = GlobalPicker.textColor
+        contractVersionTextView.theme_textColor = GlobalPicker.textLightColor
         contractVersionTextView.isEditable = false
         
         contractVersionTextView.text = RelayAPIConfiguration.protocolAddress
@@ -39,7 +39,6 @@ class DisplayContractVersionViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        contractVersionTextView.applyShadow()
         if url != nil {
             setupSafariButton()
         }
