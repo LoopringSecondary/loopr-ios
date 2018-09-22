@@ -12,7 +12,7 @@ class GenerateWalletEnterPasswordViewController: UIViewController, UITextFieldDe
 
     var passwordTextField: UITextField = UITextField()
     var continueButton: UIButton = UIButton()
-    var errorInfoLabel: UILabel = UILabel()
+    var errorInfoLabel: UITextView = UITextView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +50,10 @@ class GenerateWalletEnterPasswordViewController: UIViewController, UITextFieldDe
         continueButton.addTarget(self, action: #selector(pressedContinueButton), for: .touchUpInside)
         view.addSubview(continueButton)
 
-        errorInfoLabel.frame = CGRect(x: 10, y: continueButton.bottomY + 40, width: screenWidth-10*2, height: 17)
+        errorInfoLabel.frame = CGRect(x: 70, y: continueButton.bottomY + 40, width: screenWidth-70*2, height: 50)
         errorInfoLabel.textAlignment = .center
-        errorInfoLabel.numberOfLines = 2
+        errorInfoLabel.backgroundColor = .clear
+        errorInfoLabel.isUserInteractionEnabled = false
         errorInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         view.addSubview(errorInfoLabel)
 
