@@ -251,7 +251,6 @@
 		AC4142062038B66F0089861D /* AppWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4142052038B66F0089861D /* AppWallet.swift */; };
 		AC45EFEB20D0CCF5004F6EC0 /* AlertForErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC45EFEA20D0CCF5004F6EC0 /* AlertForErrorExtension.swift */; };
 		AC45EFEE20D0D474004F6EC0 /* H5DexNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC45EFED20D0D474004F6EC0 /* H5DexNavigationController.swift */; };
-		AC45EFF820D0D9B4004F6EC0 /* my_page.html in Resources */ = {isa = PBXBuildFile; fileRef = AC45EFF720D0D9B4004F6EC0 /* my_page.html */; };
 		AC46F7762069FB4400CFDC40 /* UIButton+RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC46F7752069FB4400CFDC40 /* UIButton+RoundButton.swift */; };
 		AC4B894B2110262B00643910 /* MarketTradeHistoryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4B894A2110262B00643910 /* MarketTradeHistoryDataManager.swift */; };
 		AC4B894D21103EAF00643910 /* TradeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4B894C21103EAF00643910 /* TradeType.swift */; };
@@ -752,7 +751,6 @@
 		AC4142052038B66F0089861D /* AppWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWallet.swift; sourceTree = "<group>"; };
 		AC45EFEA20D0CCF5004F6EC0 /* AlertForErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertForErrorExtension.swift; sourceTree = "<group>"; };
 		AC45EFED20D0D474004F6EC0 /* H5DexNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5DexNavigationController.swift; sourceTree = "<group>"; };
-		AC45EFF720D0D9B4004F6EC0 /* my_page.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = my_page.html; sourceTree = "<group>"; };
 		AC46F7752069FB4400CFDC40 /* UIButton+RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+RoundButton.swift"; sourceTree = "<group>"; };
 		AC4B894A2110262B00643910 /* MarketTradeHistoryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketTradeHistoryDataManager.swift; sourceTree = "<group>"; };
 		AC4B894C21103EAF00643910 /* TradeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeType.swift; sourceTree = "<group>"; };
@@ -1365,7 +1363,6 @@
 				AC45EFED20D0D474004F6EC0 /* H5DexNavigationController.swift */,
 				AC0CD58320D2330300ABB7BA /* H5DexViewController.swift */,
 				AC0CD58420D2330300ABB7BA /* H5DexViewController.xib */,
-				AC45EFF720D0D9B4004F6EC0 /* my_page.html */,
 			);
 			path = H5Dex;
 			sourceTree = "<group>";
@@ -2559,7 +2556,6 @@
 				94C11FDB208C2DE40050E180 /* SettingCurrencyTableViewCell.xib in Resources */,
 				945800212058FEB500E08DEF /* tokens.json in Resources */,
 				AC9DC45421156F3A002D7D23 /* MarketDetailDepthModalViewController.xib in Resources */,
-				AC45EFF820D0D9B4004F6EC0 /* my_page.html in Resources */,
 				AC2ACA5220FA0EC3009C77E7 /* Rubik-Italic.ttf in Resources */,
 				AC9A274120A6144700DB04AC /* OrderNoDataTableViewCell.xib in Resources */,
 				ACBA47E320788ECD0032C2B4 /* SettingManageWalletViewController.xib in Resources */,
