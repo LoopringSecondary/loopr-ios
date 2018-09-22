@@ -69,7 +69,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 0:
             if indexPath.row == 0 {
                 print("Setting partner")
-                let viewController = NewSettingPartnerViewController()
+                let viewController = SettingPartnerViewController()
                 viewController.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(viewController, animated: true)
             }

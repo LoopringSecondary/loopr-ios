@@ -72,8 +72,6 @@
 		949629DF204E9C9800858F03 /* MinedRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DE204E9C9800858F03 /* MinedRing.swift */; };
 		949774F021181E38001BF79D /* TradeRatioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949774EE21181E38001BF79D /* TradeRatioViewController.swift */; };
 		949774F321181EE9001BF79D /* TradeRatioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949774F221181EE9001BF79D /* TradeRatioViewController.xib */; };
-		94A1C0DC2128126D00FD3A1F /* SettingPartnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A1C0DA2128126D00FD3A1F /* SettingPartnerViewController.swift */; };
-		94A1C0DD2128126D00FD3A1F /* SettingPartnerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A1C0DB2128126D00FD3A1F /* SettingPartnerViewController.xib */; };
 		94A1C0DF2128461100FD3A1F /* Partner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A1C0DE2128461100FD3A1F /* Partner.swift */; };
 		94A39E1320C8E4FE00BC1B72 /* SignStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A39E1220C8E4FE00BC1B72 /* SignStatus.swift */; };
 		94A8699021340C7000453F2B /* ProductConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A8698F21340C7000453F2B /* ProductConfigManager.swift */; };
@@ -162,8 +160,8 @@
 		AC23B368210D6214004DC5A9 /* MarketDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC23B366210D6214004DC5A9 /* MarketDetailViewController.xib */; };
 		AC299495212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC299493212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.swift */; };
 		AC299496212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC299494212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.xib */; };
-		AC29949B212BF611005C4D72 /* NewSettingPartnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC299499212BF611005C4D72 /* NewSettingPartnerViewController.swift */; };
-		AC29949C212BF611005C4D72 /* NewSettingPartnerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC29949A212BF611005C4D72 /* NewSettingPartnerViewController.xib */; };
+		AC29949B212BF611005C4D72 /* SettingPartnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC299499212BF611005C4D72 /* SettingPartnerViewController.swift */; };
+		AC29949C212BF611005C4D72 /* SettingPartnerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC29949A212BF611005C4D72 /* SettingPartnerViewController.xib */; };
 		AC2ACA4C20FA0EC3009C77E7 /* Rubik-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA4120FA0EC3009C77E7 /* Rubik-MediumItalic.ttf */; };
 		AC2ACA4D20FA0EC3009C77E7 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA4220FA0EC3009C77E7 /* Rubik-Bold.ttf */; };
 		AC2ACA4E20FA0EC3009C77E7 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = AC2ACA4320FA0EC3009C77E7 /* SIL Open Font License.txt */; };
@@ -572,8 +570,6 @@
 		949629DE204E9C9800858F03 /* MinedRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinedRing.swift; sourceTree = "<group>"; };
 		949774EE21181E38001BF79D /* TradeRatioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeRatioViewController.swift; sourceTree = "<group>"; };
 		949774F221181EE9001BF79D /* TradeRatioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TradeRatioViewController.xib; sourceTree = "<group>"; };
-		94A1C0DA2128126D00FD3A1F /* SettingPartnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPartnerViewController.swift; sourceTree = "<group>"; };
-		94A1C0DB2128126D00FD3A1F /* SettingPartnerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingPartnerViewController.xib; sourceTree = "<group>"; };
 		94A1C0DE2128461100FD3A1F /* Partner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Partner.swift; sourceTree = "<group>"; };
 		94A39E1220C8E4FE00BC1B72 /* SignStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignStatus.swift; sourceTree = "<group>"; };
 		94A8698F21340C7000453F2B /* ProductConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductConfigManager.swift; sourceTree = "<group>"; };
@@ -662,8 +658,8 @@
 		AC23B366210D6214004DC5A9 /* MarketDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketDetailViewController.xib; sourceTree = "<group>"; };
 		AC299493212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTokenNoDataTableViewCell.swift; sourceTree = "<group>"; };
 		AC299494212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTokenNoDataTableViewCell.xib; sourceTree = "<group>"; };
-		AC299499212BF611005C4D72 /* NewSettingPartnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSettingPartnerViewController.swift; sourceTree = "<group>"; };
-		AC29949A212BF611005C4D72 /* NewSettingPartnerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewSettingPartnerViewController.xib; sourceTree = "<group>"; };
+		AC299499212BF611005C4D72 /* SettingPartnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPartnerViewController.swift; sourceTree = "<group>"; };
+		AC29949A212BF611005C4D72 /* SettingPartnerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingPartnerViewController.xib; sourceTree = "<group>"; };
 		AC2ACA4120FA0EC3009C77E7 /* Rubik-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-MediumItalic.ttf"; sourceTree = "<group>"; };
 		AC2ACA4220FA0EC3009C77E7 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
 		AC2ACA4320FA0EC3009C77E7 /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
@@ -1090,10 +1086,8 @@
 		94A1C0D92128122700FD3A1F /* SettingPartner */ = {
 			isa = PBXGroup;
 			children = (
-				94A1C0DA2128126D00FD3A1F /* SettingPartnerViewController.swift */,
-				94A1C0DB2128126D00FD3A1F /* SettingPartnerViewController.xib */,
-				AC299499212BF611005C4D72 /* NewSettingPartnerViewController.swift */,
-				AC29949A212BF611005C4D72 /* NewSettingPartnerViewController.xib */,
+				AC299499212BF611005C4D72 /* SettingPartnerViewController.swift */,
+				AC29949A212BF611005C4D72 /* SettingPartnerViewController.xib */,
 			);
 			path = SettingPartner;
 			sourceTree = "<group>";
@@ -2510,9 +2504,8 @@
 				AC2C93D42105AE7A004B8456 /* GenerateWalletEnterPasswordViewController.xib in Resources */,
 				AC2ACA88210305F8009C77E7 /* TradeFAQDetailViewController.xib in Resources */,
 				ACE65E4620720500001EE499 /* MnemonicCollectionViewCell.xib in Resources */,
-				94A1C0DD2128126D00FD3A1F /* SettingPartnerViewController.xib in Resources */,
 				AC5E3E6C205DEAC00051ACFC /* TradeCompleteViewController.xib in Resources */,
-				AC29949C212BF611005C4D72 /* NewSettingPartnerViewController.xib in Resources */,
+				AC29949C212BF611005C4D72 /* SettingPartnerViewController.xib in Resources */,
 				AC76E47420493CAE008BA229 /* SettingLanguageViewController.xib in Resources */,
 				AC9FFF322127F8CF00957175 /* AddCustomizedTokenViewController.xib in Resources */,
 				94AA0AA0211578460092D2CE /* ConfirmationResultViewController.xib in Resources */,
@@ -2894,7 +2887,7 @@
 				AC31B94C204A8DF400B16155 /* KeyStore.Error.swift in Sources */,
 				AC31B94E204A8DF400B16155 /* KeystoreKey.swift in Sources */,
 				AC3756732038D64B00AADC60 /* MnemonicViewController.swift in Sources */,
-				AC29949B212BF611005C4D72 /* NewSettingPartnerViewController.swift in Sources */,
+				AC29949B212BF611005C4D72 /* SettingPartnerViewController.swift in Sources */,
 				ACA677C0207997F400D34A2F /* DisplayKeystoreViewController.swift in Sources */,
 				ACFEFE9820C338BC00013921 /* TxType.swift in Sources */,
 				AC7BC85C2145B477004204D3 /* AppWalletExtension.swift in Sources */,
@@ -2988,7 +2981,6 @@
 				ACA677CF207D1BEC00D34A2F /* SettingChangeWalletNameViewController.swift in Sources */,
 				AC6A3478210D740500AE615B /* MarketDetailSwipeViewController.swift in Sources */,
 				AC131A06210D7A1A001998A0 /* MarketDetailDepthViewController.swift in Sources */,
-				94A1C0DC2128126D00FD3A1F /* SettingPartnerViewController.swift in Sources */,
 				ACA677B82079970600D34A2F /* ExportKeystoreSwipeViewController.swift in Sources */,
 				6630916821005B54006DA630 /* AssetSwipeViewController.swift in Sources */,
 				ACA677C42079990A00D34A2F /* DisplayKeystoreInQRCodeViewController.swift in Sources */,
