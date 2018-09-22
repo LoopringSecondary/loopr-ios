@@ -48,6 +48,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     @IBOutlet weak var scanView: UIView!
     @IBOutlet weak var flashButton: UIButton!
     @IBOutlet weak var scanTipLabel: UILabel!
+    @IBOutlet weak var scanTipLabelTopLayoutConstraint: NSLayoutConstraint!
     
     weak var delegate: QRCodeScanProtocol?
     var captureSession = AVCaptureSession()
@@ -77,6 +78,8 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         
         scanTipLabel.setTitleDigitFont()
         scanTipLabel.text = LocalizedString("Align QR code within frame to scan", comment: "")
+        scanTipLabelTopLayoutConstraint.constant = scanViewWidth
+        
         self.flashButton.image = UIImage(named: "TorchOff")
         
         // Get the camera for capturing videos

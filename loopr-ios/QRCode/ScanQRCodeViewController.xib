@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="flashButton" destination="qXk-ds-5sf" id="aIp-tp-9Sl"/>
                 <outlet property="scanTipLabel" destination="8N8-Vh-ho4" id="NeW-Tm-1ne"/>
+                <outlet property="scanTipLabelTopLayoutConstraint" destination="Bdm-pg-WgJ" id="OZM-9G-D8q"/>
                 <outlet property="scanView" destination="03k-W9-LBM" id="Oqf-tE-wtt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -27,13 +28,16 @@
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Align QR Code within Frame to Scan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8N8-Vh-ho4">
-                    <rect key="frame" x="0.0" y="552" width="414" height="21"/>
+                    <rect key="frame" x="0.0" y="428" width="414" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="oDb-if-Zmm"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXk-ds-5sf">
-                    <rect key="frame" x="195" y="613" width="24" height="24"/>
+                    <rect key="frame" x="195" y="522" width="24" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="FP1-Sc-iiU"/>
                         <constraint firstAttribute="width" constant="24" id="adx-VP-RgP"/>
@@ -45,15 +49,16 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="qXk-ds-5sf" firstAttribute="top" secondItem="8N8-Vh-ho4" secondAttribute="bottom" constant="40" id="AH6-T1-FSR"/>
+                <constraint firstItem="qXk-ds-5sf" firstAttribute="top" secondItem="8N8-Vh-ho4" secondAttribute="bottom" constant="60" id="AH6-T1-FSR"/>
                 <constraint firstItem="8N8-Vh-ho4" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="B9r-Ki-k3L"/>
+                <constraint firstItem="8N8-Vh-ho4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="408" id="Bdm-pg-WgJ"/>
                 <constraint firstItem="03k-W9-LBM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FSv-Qk-c5K"/>
                 <constraint firstItem="03k-W9-LBM" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="MWj-5V-YiA"/>
                 <constraint firstItem="8N8-Vh-ho4" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Plk-Bk-NVi"/>
                 <constraint firstItem="03k-W9-LBM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ZjF-om-Tz7"/>
                 <constraint firstItem="03k-W9-LBM" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="gKs-gr-co5"/>
+                <constraint firstItem="8N8-Vh-ho4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-414" id="hjS-Ei-VzF"/>
                 <constraint firstItem="qXk-ds-5sf" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="qPL-1m-pqx"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qXk-ds-5sf" secondAttribute="bottom" constant="99" id="y7g-fQ-TXb"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="53.5"/>
