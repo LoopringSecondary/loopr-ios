@@ -381,8 +381,8 @@
 "Approving authorization" = "正在申请授权";
 "Authorization Successful" = "授权成功";
 "Authorization Failed" = "Authorization Failed";
-"Authorize_Successfully" = "授权成功，请转至我们的网站服务，进行您的后续操作。";
-"Authorize_Failed" = "授权失败，请核对您的授权数据，确认正确后请重新尝试。";
+"Authorize_Successfully" = "请转至我们的网站服务，进行您的后续操作。";
+"Authorize_Failed" = "请核对您的授权数据，确认正确后请重新尝试。";
 "Authenticate to access your wallet" = "验证访问您的钱包";
 "Authenticate to access your mnemonic" = "验证访问您的助记词";
 "Authenticate to access your private key" = "验证访问您的私钥";

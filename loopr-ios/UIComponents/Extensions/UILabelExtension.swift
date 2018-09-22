@@ -10,13 +10,7 @@ import Foundation
 import UIKit
 
 extension UILabel {
-    
-    func setHeaderDigitFont() {
-        let font = FontConfigManager.shared.getDigitalFont(size: 32)
-        self.theme_textColor = ["#000000cc", "#ffffffcc"]
-        self.font = font
-    }
-    
+
     func setTitleDigitFont() {
         let font = FontConfigManager.shared.getDigitalFont()
         self.theme_textColor = ["#000000cc", "#ffffffcc"]
@@ -26,12 +20,6 @@ extension UILabel {
     func setSubTitleDigitFont() {
         let font = FontConfigManager.shared.getDigitalFont(size: 12)
         self.theme_textColor = ["#00000099", "#ffffff66"]
-        self.font = font
-    }
-    
-    func setHeaderCharFont() {
-        let font = FontConfigManager.shared.getCharactorFont(size: 30)
-        self.theme_textColor = ["#000000cc", "#ffffffcc"]
         self.font = font
     }
     
