@@ -70,7 +70,7 @@ class MarketDetailTradeHistoryTableViewCell: UITableViewCell {
         if let orderFill = orderFill {
             label1.text = "\(orderFill.price)"
             label2.text = "\(orderFill.amount)"
-            label3.text = "\(orderFill.lrcFee.withCommas(2)) LRC"
+            label3.text = "\(orderFill.lrcFee.withCommas(2))"
             label4.text = DateUtil.convertToDate(orderFill.createTime, format: "MM-dd HH:mm")
         } else {
             label1.text = ""

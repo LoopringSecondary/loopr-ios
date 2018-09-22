@@ -94,7 +94,7 @@ class MarketDetailTradeHistoryViewController: UIViewController, UITableViewDeleg
         let label3 = UILabel(frame: CGRect(x: 10, y: 0, width: baseViewSell.width*0.5-15, height: 30))
         label3.theme_textColor = GlobalPicker.textLightColor
         label3.font = FontConfigManager.shared.getMediumFont(size: 12)
-        label3.text = LocalizedString("Fee", comment: "")
+        label3.text = LocalizedString("Fee", comment: "") + " (LRC)"
         label3.textAlignment = .right
         baseViewSell.addSubview(label3)
         

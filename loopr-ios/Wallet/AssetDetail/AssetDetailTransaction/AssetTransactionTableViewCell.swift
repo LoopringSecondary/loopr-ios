@@ -92,6 +92,7 @@ class AssetTransactionTableViewCell: UITableViewCell {
             default:
                 updateDefault()
             }
+            amountLabel.textColor = UIStyleConfig.getChangeColor(change: amountLabel.text!)
             typeImageView.image = tx.icon
             dateLabel.text = tx.createTime
             updateStatusImage(transaction: tx)
@@ -107,7 +108,6 @@ class AssetTransactionTableViewCell: UITableViewCell {
             titleLabel.text = LocalizedString("Convert to ETH", comment: "")
         }
         amountLabel.text = "+\(transaction!.value) \(transaction?.symbol ?? " ")"
-        amountLabel.textColor = UIColor.up
         displayLabel.text = transaction!.currency
     }
     
@@ -120,7 +120,6 @@ class AssetTransactionTableViewCell: UITableViewCell {
             titleLabel.text = LocalizedString("Convert to WETH", comment: "")
         }
         amountLabel.text = "-\(transaction!.value) \(transaction?.symbol ?? " ")"
-        amountLabel.textColor = UIColor.down
         displayLabel.text = transaction!.currency
     }
     
@@ -143,7 +142,6 @@ class AssetTransactionTableViewCell: UITableViewCell {
         displayLabel.isHidden = false
         titleLabel.text = transaction!.type.description + " " + transaction!.symbol
         amountLabel.text = "+\(transaction!.value) \(transaction?.symbol ?? " ")"
-        amountLabel.textColor = UIColor.up
         displayLabel.text = transaction!.currency
     }
     
@@ -152,7 +150,6 @@ class AssetTransactionTableViewCell: UITableViewCell {
         displayLabel.isHidden = false
         titleLabel.text = transaction!.type.description + " " + transaction!.symbol
         amountLabel.text = "-\(transaction!.value) \(transaction?.symbol ?? " ")"
-        amountLabel.textColor = UIColor.down
         displayLabel.text = transaction!.currency
     }
     
@@ -161,10 +158,8 @@ class AssetTransactionTableViewCell: UITableViewCell {
         displayLabel.isHidden = false
         if let tx = self.transaction {
             if tx.type == .bought || tx.type == .received {
-                amountLabel.textColor = UIColor.up
                 amountLabel.text = "+\(tx.value) \(tx.symbol)"
             } else if tx.type == .sold || tx.type == .sent {
-                amountLabel.textColor = UIColor.down
                 amountLabel.text = "-\(tx.value) \(tx.symbol)"
             }
             displayLabel.text = tx.currency

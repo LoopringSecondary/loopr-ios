@@ -51,7 +51,7 @@ class Market: Equatable, CustomStringConvertible {
         tag = TickerTag(rawValue: json["label"].stringValue) ?? .unknown
         let change = json["change"].stringValue
         if change.isEmpty || change == "0.00%" {
-            changeInPat24 = "0.00%"
+            changeInPat24 = "—"
         } else if change.first! == "-" {
             changeInPat24 = "↓" + change.dropFirst()
         } else {

@@ -61,28 +61,28 @@ class MarketDetailSwipeViewController: SwipeViewController {
         priceChangeIn24HoursLabel.isHidden = true
         
         hoursChangeInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
-        hoursChangeInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.6)
+        hoursChangeInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.8)
         hoursChangeInfoLabel.text = LocalizedString("24H Change", comment: "")
 
         hoursChangeLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         hoursChangeLabel.textColor = UIColor.init(white: 1, alpha: 1)
 
         hoursHighInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
-        hoursHighInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.6)
+        hoursHighInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.8)
         hoursHighInfoLabel.text = LocalizedString("24H High", comment: "")
         
         hoursHighLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         hoursHighLabel.textColor = UIColor.init(white: 1, alpha: 1)
 
         hoursVolumeInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
-        hoursVolumeInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.6)
+        hoursVolumeInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.8)
         hoursVolumeInfoLabel.text = LocalizedString("24H Volume", comment: "")
         
         hoursVolumeLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         hoursVolumeLabel.textColor = UIColor.init(white: 1, alpha: 1)
         
         hoursLowInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
-        hoursLowInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.6)
+        hoursLowInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.8)
         hoursLowInfoLabel.text = LocalizedString("24H Low", comment: "")
         
         hoursLowLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
