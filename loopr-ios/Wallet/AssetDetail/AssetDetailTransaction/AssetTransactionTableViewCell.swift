@@ -48,7 +48,7 @@ class AssetTransactionTableViewCell: UITableViewCell {
         titleLabel.text = ""
         baseView.addSubview(titleLabel)
         
-        dateLabel.frame = CGRect.init(x: titleLabel.frame.minX, y: 41, width: 200, height: 27)
+        dateLabel.frame = CGRect.init(x: titleLabel.frame.minX, y: 37, width: 200, height: 27)
         dateLabel.font = FontConfigManager.shared.getRegularFont(size: 13)
         dateLabel.theme_textColor = GlobalPicker.textLightColor
         dateLabel.text = "ETHETHETHETHETHETHETH"

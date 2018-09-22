@@ -14,7 +14,6 @@ class BackupMnemonicViewController: UIViewController {
     var mnemonics: [String] = []
 
     var backgroundImageView1 = UIImageView()
-    var titleLabel: UILabel =  UILabel()
     var infoTextView: UITextView = UITextView()
     
     @IBOutlet weak var skipVerifyNowButton: UIButton!
@@ -41,7 +40,7 @@ class BackupMnemonicViewController: UIViewController {
         // Do any additional setup after loading the view.
         setBackButton()
         view.theme_backgroundColor = ColorPicker.backgroundColor
-        self.navigationItem.title = LocalizedString("Verify Mnemonic", comment: "")
+        self.navigationItem.title = LocalizedString("Backup Mnemonic", comment: "")
 
         // Setup UI
         let screensize: CGRect = UIScreen.main.bounds
@@ -58,15 +57,8 @@ class BackupMnemonicViewController: UIViewController {
         backgroundImageView2.image = UIImage.init(named: "MnemonicBackgroundImage2" + ColorTheme.getTheme())
         backgroundImageView2.round(corners: [.bottomLeft, .bottomRight], radius: 6)
         view.addSubview(backgroundImageView2)
-        
-        titleLabel.frame = CGRect(x: padding, y: 30, width: backgroundImageView1.width - padding * 2, height: 20)
-        titleLabel.textColor = UIColor.white
-        titleLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
-        titleLabel.text = LocalizedString("Backup Mnemonic", comment: "")
-        titleLabel.textAlignment = .center
-        backgroundImageView1.addSubview(titleLabel)
-        
-        infoTextView.frame = CGRect(x: 20, y: 65, width: backgroundImageView1.width - 20*2, height: 120)
+
+        infoTextView.frame = CGRect(x: 20, y: 30, width: backgroundImageView1.width - 20*2, height: 120)
         infoTextView.isEditable = false
         infoTextView.textColor = UIColor.white
         infoTextView.backgroundColor = UIColor.clear
@@ -83,7 +75,7 @@ class BackupMnemonicViewController: UIViewController {
         
         mnemonicCollectionViewController0 = MnemonicCollectionViewController(collectionViewLayout: flowLayout)
         mnemonicCollectionViewController0.mnemonics = mnemonics
-        mnemonicCollectionViewController0.view.isHidden = false
+        mnemonicCollectionViewController0.view.isHidden = true
         mnemonicCollectionViewController0.view.frame = CGRect(x: 20, y: collectionViewY, width: collectionViewWidth, height: collectionViewHeight)
         backgroundImageView2.addSubview(mnemonicCollectionViewController0.view)
         addChildViewController(mnemonicCollectionViewController0)
@@ -219,6 +211,7 @@ class BackupMnemonicViewController: UIViewController {
                 self.blurVisualEffectView.alpha = 0.0
             }, completion: { (_) in
                 self.blurVisualEffectView.removeFromSuperview()
+                self.mnemonicCollectionViewController0.view.isHidden = false
             })
         }
         self.present(vc, animated: true, completion: nil)

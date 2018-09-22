@@ -17,7 +17,7 @@ class MnemonicCollectionViewCell: UICollectionViewCell {
         // Initialization code
         mnemonicLabel.layer.cornerRadius = 2
         mnemonicLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
-        mnemonicLabel.theme_textColor = GlobalPicker.textColor
+        mnemonicLabel.textColor = .white
     }
 
     class func getCellIdentifier() -> String {

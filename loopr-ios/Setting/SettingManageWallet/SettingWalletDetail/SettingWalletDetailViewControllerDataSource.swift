@@ -70,9 +70,9 @@ extension SettingWalletDetailViewController {
             if indexPath.row == 0 {
                 cell?.contentType = .clearRecords
                 cell?.leftLabel.text = LocalizedString("Clear Records of this Wallet", comment: "")
-                cell?.leftLabel.theme_textColor = GlobalPicker.textLightColor
-                cell?.leftLabel.textAlignment = .center
-                cell?.disclosureIndicator.isHidden = true
+                cell?.leftLabel.textColor = UIColor.fail
+                cell?.leftLabel.textAlignment = .left
+                // cell?.disclosureIndicator.isHidden = true
                 cell?.trailingSeperateLineDown.constant = 0
             }
         }
