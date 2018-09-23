@@ -42,7 +42,7 @@ extension SettingWalletDetailViewController {
                     cell?.leftLabel.text = LocalizedString("Export Keystore", comment: "")
                 } else if indexPath.row == 4 {
                     cell?.contentType = .viewAddressOnEtherscan
-                    cell?.leftLabel.text = LocalizedString("View address on Etherscan", comment: "")
+                    cell?.leftLabel.text = LocalizedString("View Address on Etherscan", comment: "")
                 }
             } else {
                 if indexPath.row == 0 {
@@ -56,7 +56,7 @@ extension SettingWalletDetailViewController {
                     cell?.leftLabel.text = LocalizedString("Export Keystore", comment: "")
                 } else if indexPath.row == 3 {
                     cell?.contentType = .viewAddressOnEtherscan
-                    cell?.leftLabel.text = LocalizedString("View address on Etherscan", comment: "")
+                    cell?.leftLabel.text = LocalizedString("View Address on Etherscan", comment: "")
                 }
             }
             

@@ -39,8 +39,9 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     // Drag down to close a present view controller.
     var dismissInteractor = MiniToLargeViewInteractive()
 
-    var asset: Asset?
-    var tipMessage: String!
+    // Default values
+    var asset: Asset? = CurrentAppWalletDataManager.shared.getAsset(symbol: "ETH")
+    var tipMessage: String = ""
     
     // Numeric Keyboard
     var isNumericKeyboardShow: Bool = false
@@ -52,8 +53,6 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.asset = CurrentAppWalletDataManager.shared.getAsset(symbol: "ETH")
-        
         setBackButton()
         view.theme_backgroundColor = ColorPicker.backgroundColor
         self.navigationItem.title = LocalizedString("Convert", comment: "")

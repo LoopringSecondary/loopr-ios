@@ -293,6 +293,7 @@
 "Keystore copied to clipboard successfully!" = "Keystore copied to clipboard successfully!";
 "Private key copied to clipboard successfully!" = "Private key copied to clipboard successfully!";
 "Copy Keystore" = "Copy Keystore";
+"View Address on Etherscan" = "View Address on Etherscan";
 "Clear Records of this Wallet" = "Clear Records of this Wallet";
 "Backup_Mnemonic_in_SettingManageWallet" = "Backup Mnemonic";
 "Prevent_Title" = "Do not take photo or capture screen";

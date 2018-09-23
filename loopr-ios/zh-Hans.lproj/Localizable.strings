@@ -293,6 +293,7 @@
 "Keystore copied to clipboard successfully!" = "成功复制keystore到剪切板!";
 "Private key copied to clipboard successfully!" = "成功复制钱包私钥到剪切板!";
 "Copy Keystore" = "复制Keystore";
+"View Address on Etherscan" = "在Etherscan上查看地址";
 "Clear Records of this Wallet" = "删除钱包并清除钱包数据";
 "Backup_Mnemonic_in_SettingManageWallet" = "未备份助记词";
 "Prevent_Title" = "请勿拍照或截图";

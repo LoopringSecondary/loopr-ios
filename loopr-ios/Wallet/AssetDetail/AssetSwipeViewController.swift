@@ -77,6 +77,12 @@ class AssetSwipeViewController: SwipeViewController {
             options.swipeTabView.itemView.selectedTextColor = UIColor(rgba: "#000000cc")
         }
         swipeView.reloadData(options: options, default: swipeView.currentIndex)
+        
+        if asset?.symbol == "ETH" || asset?.symbol == "WETH" {
+            let convertButon = UIBarButtonItem(title: LocalizedString("Convert", comment: ""), style: UIBarButtonItemStyle.plain, target: self, action: #selector(pressedConvertButton))
+            self.navigationItem.rightBarButtonItem = convertButon
+        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,6 +104,13 @@ class AssetSwipeViewController: SwipeViewController {
             self.addChildViewController(viewController)
         }
         swipeView.reloadData(options: options)
+    }
+    
+    @objc func pressedConvertButton() {
+        let viewController = ConvertETHViewController()
+        viewController.asset = CurrentAppWalletDataManager.shared.getAsset(symbol: asset!.symbol)
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
     @IBAction func pressedReceiveButton(_ sender: Any) {
