@@ -77,7 +77,9 @@ class AssetTransactionDetailViewController: UIViewController {
         
         typeTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         typeTipLabel.theme_textColor = GlobalPicker.textLightColor
-        typeInfoLabel.setTitleCharFont()
+
+        typeInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        typeInfoLabel.theme_textColor = GlobalPicker.textColor
         
         statusTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         statusTipLabel.theme_textColor = GlobalPicker.textLightColor
@@ -87,22 +89,27 @@ class AssetTransactionDetailViewController: UIViewController {
         toTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         toTipLabel.theme_textColor = GlobalPicker.textLightColor
         toTipLabel.text = LocalizedString("Address", comment: "")
-        toInfoButton.titleLabel?.setTitleCharFont()
+        toInfoButton.titleLabel?.font = FontConfigManager.shared.getDigitalFont(size: 14)
         
         idTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         idTipLabel.theme_textColor = GlobalPicker.textLightColor
         idTipLabel.text = LocalizedString("TxHash", comment: "")
-        idInfoButton.titleLabel?.setTitleCharFont()
+        
+        idInfoButton.titleLabel?.font = FontConfigManager.shared.getDigitalFont(size: 14)
         
         gasTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         gasTipLabel.theme_textColor = GlobalPicker.textLightColor
         gasTipLabel.text = LocalizedString("Gas", comment: "")
-        gasInfoLabel.setTitleCharFont()
+        
+        gasInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        gasInfoLabel.theme_textColor = GlobalPicker.textColor
         
         dateTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         dateTipLabel.theme_textColor = GlobalPicker.textLightColor
         dateTipLabel.text = LocalizedString("Date", comment: "")
-        dateInfoLabel.setTitleCharFont()
+        
+        dateInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        dateInfoLabel.theme_textColor = GlobalPicker.textColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
