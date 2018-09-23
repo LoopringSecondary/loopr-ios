@@ -18,6 +18,7 @@
 "gas price" = "gas price";
 "Gas" = "Gas";
 "Tokens" = "Tokens";
+"TxHash" = "TxHash";
 
 /* Wallet home page */
 "Wallet" = "Wallet";

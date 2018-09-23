@@ -100,7 +100,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         
         idTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         idTipLabel.theme_textColor = GlobalPicker.textLightColor
-        idTipLabel.text = LocalizedString("ID", comment: "")
+        idTipLabel.text = LocalizedString("TxHash", comment: "")
         
         idInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
         idInfoLabel.theme_textColor = GlobalPicker.textColor

@@ -18,6 +18,7 @@
 "gas price" = "油价";
 "Gas" = "油费";
 "Tokens" = "代币";
+"TxHash" = "交易哈希";
 
 /* Wallet home page */
 "Wallet" = "钱包";

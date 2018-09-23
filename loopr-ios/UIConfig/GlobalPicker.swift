@@ -37,7 +37,7 @@ enum GlobalPicker {
         shadow.shadowOffset = CGSize(width: 0, height: 0)
         return [
             NSAttributedStringKey.foregroundColor: UIColor(rgba: hexString),
-            NSAttributedStringKey.font: FontConfigManager.shared.getDigitalFont(size: 18),
+            NSAttributedStringKey.font: FontConfigManager.shared.getMediumFont(size: 18),
             NSAttributedStringKey.shadow: shadow
         ]
     }

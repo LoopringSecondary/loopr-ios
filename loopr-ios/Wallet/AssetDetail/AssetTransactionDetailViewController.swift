@@ -56,6 +56,7 @@ class AssetTransactionDetailViewController: UIViewController {
         idContainerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         gasContainerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         dateContainerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
+
         cellBackgroundView.theme_backgroundColor = ColorPicker.cardHighLightColor
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
@@ -73,21 +74,33 @@ class AssetTransactionDetailViewController: UIViewController {
         titleLabel.theme_textColor = GlobalPicker.textColor
         titleLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
         titleLabel.text = LocalizedString("Transaction Detail", comment: "")
-        typeTipLabel.setTitleCharFont()
+        
+        typeTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        typeTipLabel.theme_textColor = GlobalPicker.textLightColor
         typeInfoLabel.setTitleCharFont()
-        statusTipLabel.setTitleCharFont()
+        
+        statusTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        statusTipLabel.theme_textColor = GlobalPicker.textLightColor
         statusTipLabel.text = LocalizedString("Status", comment: "")
         statusInfoLabel.setTitleCharFont()
-        toTipLabel.setTitleCharFont()
+        
+        toTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        toTipLabel.theme_textColor = GlobalPicker.textLightColor
         toTipLabel.text = LocalizedString("Address", comment: "")
         toInfoButton.titleLabel?.setTitleCharFont()
-        idTipLabel.setTitleCharFont()
-        idTipLabel.text = LocalizedString("ID", comment: "")
+        
+        idTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        idTipLabel.theme_textColor = GlobalPicker.textLightColor
+        idTipLabel.text = LocalizedString("TxHash", comment: "")
         idInfoButton.titleLabel?.setTitleCharFont()
-        gasTipLabel.setTitleCharFont()
+        
+        gasTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        gasTipLabel.theme_textColor = GlobalPicker.textLightColor
         gasTipLabel.text = LocalizedString("Gas", comment: "")
         gasInfoLabel.setTitleCharFont()
-        dateTipLabel.setTitleCharFont()
+        
+        dateTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        dateTipLabel.theme_textColor = GlobalPicker.textLightColor
         dateTipLabel.text = LocalizedString("Date", comment: "")
         dateInfoLabel.setTitleCharFont()
     }
