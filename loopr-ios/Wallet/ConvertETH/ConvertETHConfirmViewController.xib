@@ -37,19 +37,17 @@
                     <rect key="frame" x="30" y="205.33333333333337" width="354" height="347"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W84-UP-Oli">
-                            <rect key="frame" x="127" y="24.333333333333314" width="100" height="19"/>
+                            <rect key="frame" x="0.0" y="24.333333333333314" width="354" height="19"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="19" id="RYR-An-CIH"/>
-                                <constraint firstAttribute="width" constant="100" id="liQ-P9-VVY"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRi-FH-nkn">
-                            <rect key="frame" x="77" y="62.333333333333343" width="200" height="19"/>
+                            <rect key="frame" x="0.0" y="62.333333333333343" width="354" height="19"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="200" id="Inw-k1-0g3"/>
                                 <constraint firstAttribute="height" constant="19" id="lyx-Qp-WJf"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -148,6 +146,7 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="3oI-zL-oH3" secondAttribute="trailing" constant="20" id="2VZ-FB-7Nz"/>
                         <constraint firstAttribute="trailing" secondItem="Tc4-tM-UvL" secondAttribute="trailing" constant="20" id="4Nt-bV-PCX"/>
+                        <constraint firstAttribute="trailing" secondItem="W84-UP-Oli" secondAttribute="trailing" id="4Qw-5U-osb"/>
                         <constraint firstAttribute="trailing" secondItem="q0Y-78-4Cl" secondAttribute="trailing" id="D2Z-HY-6De"/>
                         <constraint firstAttribute="trailing" secondItem="1NA-1O-5sH" secondAttribute="trailing" id="EMm-G6-xID"/>
                         <constraint firstItem="PcH-dO-DyE" firstAttribute="bottom" secondItem="1NA-1O-5sH" secondAttribute="bottom" constant="1" id="Fr3-PH-Skc"/>
@@ -157,6 +156,7 @@
                         <constraint firstItem="Tc4-tM-UvL" firstAttribute="leading" secondItem="jik-Dk-LzW" secondAttribute="leading" constant="20" id="OHI-YE-sEA"/>
                         <constraint firstItem="W84-UP-Oli" firstAttribute="top" secondItem="jik-Dk-LzW" secondAttribute="top" constant="24" id="RJI-br-V2s"/>
                         <constraint firstItem="q0Y-78-4Cl" firstAttribute="leading" secondItem="jik-Dk-LzW" secondAttribute="leading" id="XXl-x3-p13"/>
+                        <constraint firstAttribute="trailing" secondItem="aRi-FH-nkn" secondAttribute="trailing" id="YaV-RT-9O8"/>
                         <constraint firstItem="PcH-dO-DyE" firstAttribute="leading" secondItem="q0Y-78-4Cl" secondAttribute="leading" id="ZGg-EP-4Re"/>
                         <constraint firstItem="W84-UP-Oli" firstAttribute="centerX" secondItem="jik-Dk-LzW" secondAttribute="centerX" id="ZbA-z9-Isq"/>
                         <constraint firstAttribute="trailing" secondItem="wjW-IH-hI9" secondAttribute="trailing" id="dZI-MT-E7Z"/>
@@ -164,10 +164,12 @@
                         <constraint firstItem="1NA-1O-5sH" firstAttribute="top" secondItem="wjW-IH-hI9" secondAttribute="bottom" constant="0.5" id="f3F-Mr-lYd"/>
                         <constraint firstItem="q0Y-78-4Cl" firstAttribute="top" secondItem="aRi-FH-nkn" secondAttribute="bottom" constant="19" id="ij5-lA-EgU"/>
                         <constraint firstItem="wjW-IH-hI9" firstAttribute="leading" secondItem="jik-Dk-LzW" secondAttribute="leading" id="lFl-Ra-cNb"/>
+                        <constraint firstItem="W84-UP-Oli" firstAttribute="leading" secondItem="jik-Dk-LzW" secondAttribute="leading" id="lcb-ZU-9dO"/>
                         <constraint firstItem="PcH-dO-DyE" firstAttribute="trailing" secondItem="q0Y-78-4Cl" secondAttribute="trailing" id="mxM-Px-qWZ"/>
                         <constraint firstItem="PcH-dO-DyE" firstAttribute="top" secondItem="q0Y-78-4Cl" secondAttribute="top" constant="-1" id="qf9-hr-aOz"/>
                         <constraint firstItem="Tc4-tM-UvL" firstAttribute="top" secondItem="1NA-1O-5sH" secondAttribute="bottom" constant="20" id="yet-mA-V6a"/>
                         <constraint firstItem="1NA-1O-5sH" firstAttribute="leading" secondItem="jik-Dk-LzW" secondAttribute="leading" id="yle-9n-Pky"/>
+                        <constraint firstItem="aRi-FH-nkn" firstAttribute="leading" secondItem="jik-Dk-LzW" secondAttribute="leading" id="ymD-dJ-JqP"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

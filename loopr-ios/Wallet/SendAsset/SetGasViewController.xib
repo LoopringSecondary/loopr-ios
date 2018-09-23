@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,6 +18,7 @@
                 <outlet property="headerView" destination="RXi-P4-cav" id="yG1-PM-dnU"/>
                 <outlet property="recommendButton" destination="igK-LD-NVw" id="K7q-wK-9Wr"/>
                 <outlet property="recommendButtonWidth" destination="FUe-xA-hAZ" id="zkC-xf-yT6"/>
+                <outlet property="seperateLine" destination="pfR-fi-BSr" id="vPD-FE-5oK"/>
                 <outlet property="titleLabel" destination="6Cw-vD-9gm" id="bk9-BS-xji"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -42,7 +42,6 @@
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfR-fi-BSr">
                             <rect key="frame" x="0.0" y="63.999999999999993" width="414" height="0.6666666666666643"/>
-                            <color key="backgroundColor" name="Color-dark3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.5" id="QUK-Jb-nQD"/>
                             </constraints>
@@ -125,8 +124,5 @@
     </objects>
     <resources>
         <image name="Close-dark" width="14" height="14"/>
-        <namedColor name="Color-dark3">
-            <color red="0.2196078431372549" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
     </resources>
 </document>

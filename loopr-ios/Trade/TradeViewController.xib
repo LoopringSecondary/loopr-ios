@@ -30,6 +30,7 @@
                 <outlet property="sellRatioValueLabel" destination="Q5R-iI-uJC" id="Nmy-3s-JC1"/>
                 <outlet property="sellTokenLabel" destination="QQK-Xq-OFM" id="v5b-0M-3Su"/>
                 <outlet property="sliderView" destination="Niq-X3-TVH" id="9Ps-eM-7cV"/>
+                <outlet property="swapTokenButton" destination="zu2-Qr-MOe" id="ZNj-bR-3rj"/>
                 <outlet property="tokenBButton" destination="cxj-Vc-B9z" id="8oy-cK-BBS"/>
                 <outlet property="tokenSButton" destination="eJV-rg-daP" id="eEE-Uq-o4B"/>
                 <outlet property="tradingPairTokenBLabel" destination="fpa-X2-dbz" id="LTt-Wm-ohe"/>
@@ -240,6 +241,13 @@
                                         <action selector="pressedNextButton:" destination="-1" eventType="touchUpInside" id="i0X-el-Lcr"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zu2-Qr-MOe">
+                                    <rect key="frame" x="317" y="70" width="50" height="34"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="50" id="TgJ-Pw-kTJ"/>
+                                    </constraints>
+                                    <state key="normal" image="Convert-button-dark"/>
+                                </button>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="a0T-VM-NU0" firstAttribute="centerY" secondItem="Q5R-iI-uJC" secondAttribute="centerY" id="0c7-tY-mdj"/>
@@ -254,10 +262,12 @@
                                 <constraint firstAttribute="trailing" secondItem="POe-BV-ibP" secondAttribute="trailing" constant="15" id="LRV-Vp-T5m"/>
                                 <constraint firstItem="a0T-VM-NU0" firstAttribute="trailing" secondItem="k9h-xW-rQZ" secondAttribute="trailing" constant="-15" id="LaI-Ff-XM7"/>
                                 <constraint firstItem="POe-BV-ibP" firstAttribute="top" secondItem="k9h-xW-rQZ" secondAttribute="top" constant="20" id="MnL-CC-ip6"/>
+                                <constraint firstItem="zu2-Qr-MOe" firstAttribute="top" secondItem="POe-BV-ibP" secondAttribute="bottom" id="Mvv-mv-deJ"/>
                                 <constraint firstItem="JUT-ee-RXX" firstAttribute="leading" secondItem="nYT-au-ghz" secondAttribute="leading" id="NTX-vs-J2v"/>
                                 <constraint firstItem="0Cv-AI-Sk9" firstAttribute="top" secondItem="POe-BV-ibP" secondAttribute="bottom" id="QtN-PD-uNu"/>
                                 <constraint firstItem="Q5R-iI-uJC" firstAttribute="centerY" secondItem="AoE-MP-EM2" secondAttribute="centerY" id="REL-bz-bHW"/>
                                 <constraint firstItem="Q5R-iI-uJC" firstAttribute="top" secondItem="bcy-jW-nN7" secondAttribute="bottom" constant="10" id="RLD-VN-cmi"/>
+                                <constraint firstAttribute="trailing" secondItem="zu2-Qr-MOe" secondAttribute="trailing" constant="17" id="RRe-EI-fiu"/>
                                 <constraint firstItem="eJV-rg-daP" firstAttribute="trailing" secondItem="POe-BV-ibP" secondAttribute="trailing" id="T9B-zS-kft"/>
                                 <constraint firstAttribute="bottom" secondItem="Fb9-mL-KG5" secondAttribute="bottom" constant="24" id="Uc3-iq-c3g"/>
                                 <constraint firstItem="cxj-Vc-B9z" firstAttribute="centerY" secondItem="nYT-au-ghz" secondAttribute="centerY" id="V0I-Zc-4oB"/>
@@ -277,6 +287,7 @@
                                 <constraint firstItem="bcy-jW-nN7" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="15" id="rxb-3b-3X1"/>
                                 <constraint firstItem="QQK-Xq-OFM" firstAttribute="centerY" secondItem="POe-BV-ibP" secondAttribute="centerY" id="wVm-x2-1hY"/>
                                 <constraint firstItem="bcy-jW-nN7" firstAttribute="top" secondItem="Niq-X3-TVH" secondAttribute="bottom" constant="16" id="xcd-KS-jEM"/>
+                                <constraint firstItem="nYT-au-ghz" firstAttribute="top" secondItem="zu2-Qr-MOe" secondAttribute="bottom" id="yVD-3d-ddb"/>
                                 <constraint firstItem="bnx-MG-eTh" firstAttribute="centerY" secondItem="nYT-au-ghz" secondAttribute="centerY" id="zL4-np-6dd"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>

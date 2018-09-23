@@ -20,6 +20,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     @IBOutlet weak var tokenSLabel: UILabel!
     @IBOutlet weak var amountBTextField: UITextField!
     @IBOutlet weak var tokenBLabel: UILabel!
+    @IBOutlet weak var swapTokenButton: UIButton!
     @IBOutlet weak var availableLabel: UILabel!
     @IBOutlet weak var maxButton: UIButton!
     @IBOutlet weak var gasTipLabel: UILabel!
@@ -72,11 +73,21 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         amountBTextField.tintColor = .black
         amountBTextField.inputView = UIView()
         amountBTextField.text = "0"
-
+        
         tokenSLabel.textColor = UIColor.init(rgba: "#F8F9FA").withAlphaComponent(0.6)
         tokenSLabel.font = FontConfigManager.shared.getMediumFont(size: 13)
         tokenBLabel.textColor = UIColor.init(rgba: "#F8F9FA").withAlphaComponent(0.6)
         tokenBLabel.font = FontConfigManager.shared.getMediumFont(size: 13)
+        
+        swapTokenButton.addTarget(self, action: #selector(pressedArrowButton), for: .touchUpInside)
+        tokenSImageView.isUserInteractionEnabled = true
+        tokenSImageView.addGestureRecognizer(setSwapTokenGestureRecognizer())
+        tokenBImageView.isUserInteractionEnabled = true
+        tokenBImageView.addGestureRecognizer(setSwapTokenGestureRecognizer())
+        tokenSLabel.isUserInteractionEnabled = true
+        tokenSLabel.addGestureRecognizer(setSwapTokenGestureRecognizer())
+        tokenBLabel.isUserInteractionEnabled = true
+        tokenBLabel.addGestureRecognizer(setSwapTokenGestureRecognizer())
         
         availableLabel.setSubTitleCharFont()
         maxButton.titleLabel?.setSubTitleCharFont()
@@ -195,7 +206,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         return ConvertDataManager.shared.getAsset(by: symbol)
     }
     
-    @IBAction func pressedArrowButton(_ sender: UIButton) {
+    @objc func pressedArrowButton() {
         if let asset = self.asset {
             self.asset = getAnotherAsset()
             UIView.transition(with: tokenSImageView, duration: 0.3, options: .transitionCrossDissolve, animations: { self.tokenSImageView.image = self.asset?.icon; self.tokenBImageView.image = asset.icon }, completion: nil)
@@ -203,6 +214,12 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             update()
             _ = validate()
         }
+    }
+    
+    func setSwapTokenGestureRecognizer() -> UITapGestureRecognizer {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(pressedArrowButton))
+        tap.numberOfTapsRequired = 1
+        return tap
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {

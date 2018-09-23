@@ -24,6 +24,7 @@
                 <outlet property="maxButton" destination="rab-jy-ic0" id="ohu-ED-H09"/>
                 <outlet property="scrollView" destination="jgg-vL-AdJ" id="CW8-bl-i7y"/>
                 <outlet property="scrollViewBottomConstraint" destination="hvd-vN-pnb" id="3GE-I7-6La"/>
+                <outlet property="swapTokenButton" destination="Jq3-0H-3ah" id="98i-cN-psh"/>
                 <outlet property="tokenBImageView" destination="F55-Wx-ukA" id="lsM-em-mPa"/>
                 <outlet property="tokenBLabel" destination="mwn-89-coj" id="Y4Y-1G-aCd"/>
                 <outlet property="tokenSImageView" destination="h4e-nC-C3F" id="9xm-rW-kJr"/>
@@ -51,8 +52,11 @@
                                         <constraint firstAttribute="height" constant="40" id="fqc-dq-RoR"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcf-L5-H9B">
-                                    <rect key="frame" x="76" y="93" width="32.666666666666657" height="20.333333333333329"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcf-L5-H9B">
+                                    <rect key="frame" x="67.333333333333329" y="93" width="50" height="20.333333333333329"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="50" id="D0n-bp-NnC"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -73,9 +77,6 @@
                                         <constraint firstAttribute="width" constant="24" id="WeJ-ST-86S"/>
                                     </constraints>
                                     <state key="normal" image="Convert-button-dark"/>
-                                    <connections>
-                                        <action selector="pressedArrowButton:" destination="-1" eventType="touchUpInside" id="eRi-oQ-dEg"/>
-                                    </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F55-Wx-ukA">
                                     <rect key="frame" x="272.33333333333331" y="40" width="40" height="40"/>
@@ -84,8 +85,11 @@
                                         <constraint firstAttribute="width" constant="40" id="yWs-J1-EKu"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwn-89-coj">
-                                    <rect key="frame" x="271.66666666666669" y="93" width="41.666666666666686" height="20.333333333333329"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwn-89-coj">
+                                    <rect key="frame" x="267.66666666666669" y="93" width="50" height="20.333333333333329"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="50" id="BY9-ln-AKn"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>

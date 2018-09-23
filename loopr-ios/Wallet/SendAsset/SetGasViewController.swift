@@ -12,6 +12,7 @@ import StepSlider
 class SetGasViewController: UIViewController, StepSliderDelegate {
     
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var seperateLine: UIView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var gasValueLabel: UILabel!
@@ -35,6 +36,7 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.clear
         containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
+        seperateLine.theme_backgroundColor = ColorPicker.cardHighLightColor
         
         titleLabel.theme_textColor = GlobalPicker.textColor
         titleLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
