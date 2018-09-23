@@ -17,6 +17,8 @@
 "Address" = "地址";
 "gas price" = "油价";
 "Gas" = "油费";
+"Gas Limit" = "油费上限";
+"Gas Price" = "油价";
 "Tokens" = "代币";
 "TxHash" = "交易哈希";
 
@@ -189,7 +191,7 @@
 "P2P Order History" = "场外交易记录";
 "Enter the address" = "请输入地址";
 "Available Balance" = "可用余额";
-"Transaction Fee" = "交易费";
+"Tx Fee Limit" = "交易费上限";
 "Loopring_TIP" = "请用支持路印协议的钱包扫码交易";
 "Irrational" = "设价不合理";
 "Please Pay Attention" = "请注意";

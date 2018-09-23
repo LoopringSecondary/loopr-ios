@@ -130,7 +130,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
 
         // Transaction
         transactionFeeLabel.setTitleCharFont()
-        transactionFeeLabel.text = LocalizedString("Transaction Fee", comment: "")
+        transactionFeeLabel.text = LocalizedString("Tx Fee Limit", comment: "")
         transactionFeeLabel.isUserInteractionEnabled = true
         let transactionFeeLabelTap = UITapGestureRecognizer(target: self, action: #selector(pressedAdvancedButton))
         transactionFeeLabelTap.numberOfTapsRequired = 1

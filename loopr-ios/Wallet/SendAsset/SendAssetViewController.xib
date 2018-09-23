@@ -142,7 +142,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izC-oD-GRt">
-                                    <rect key="frame" x="292" y="253" width="42" height="21"/>
+                                    <rect key="frame" x="302" y="253" width="42" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" name="Color-text1"/>
                                     <nil key="highlightedColor"/>
@@ -180,7 +180,7 @@
                                 <constraint firstItem="hqf-UR-h9I" firstAttribute="leading" secondItem="4fJ-P7-xjN" secondAttribute="leading" constant="15" id="C1b-9C-P9Z"/>
                                 <constraint firstItem="Rte-SL-Gly" firstAttribute="leading" secondItem="hqf-UR-h9I" secondAttribute="leading" id="LHr-qN-xNN"/>
                                 <constraint firstItem="Cu0-Ap-5L8" firstAttribute="leading" secondItem="4fJ-P7-xjN" secondAttribute="leading" constant="15" id="QAX-Zm-yqv"/>
-                                <constraint firstItem="lrj-AR-lcV" firstAttribute="leading" secondItem="izC-oD-GRt" secondAttribute="trailing" id="TqB-HP-d2j"/>
+                                <constraint firstItem="lrj-AR-lcV" firstAttribute="leading" secondItem="izC-oD-GRt" secondAttribute="trailing" constant="-10" id="TqB-HP-d2j"/>
                                 <constraint firstItem="JlJ-XA-Yl0" firstAttribute="top" secondItem="yvt-JE-1ey" secondAttribute="bottom" constant="15" id="ZTg-Sb-2dD"/>
                                 <constraint firstItem="aje-gV-Iod" firstAttribute="centerY" secondItem="Cu0-Ap-5L8" secondAttribute="centerY" id="bSn-N7-rt6"/>
                                 <constraint firstItem="4pS-Um-wzl" firstAttribute="top" secondItem="Cu0-Ap-5L8" secondAttribute="bottom" constant="8" id="gie-cl-tQe"/>

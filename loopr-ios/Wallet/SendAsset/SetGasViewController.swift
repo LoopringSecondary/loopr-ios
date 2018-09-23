@@ -50,8 +50,7 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
         recommendButton.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
         recommendButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 13)
         recommendButton.title = LocalizedString("Recommend Price", comment: "")
-        let language = Bundle.main.preferredLocalizations.first
-        if language == "zh-Hans" {
+        if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
             recommendButtonWidth.constant = 80
         } else {
             recommendButtonWidth.constant = 120
@@ -102,7 +101,7 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
         if let etherPrice = PriceDataManager.shared.getPrice(of: "ETH") {
             let transactionFeeInFiat = totalGasInEther * etherPrice
             gasValueLabel.text = "\(totalGasInEther.withCommas(6)) ETH ≈ \(transactionFeeInFiat.currency)"
-            gasTipLabel.text = "Gas Limit (\(gasLimit)) * Gas Price (\(gasPriceInGwei) Gwei)"
+            gasTipLabel.text = "\(LocalizedString("Gas Limit", comment: "")) (\(gasLimit))  \(LocalizedString("Gas Price", comment: "")) (\(gasPriceInGwei) Gwei)"
         }
         
         print(Float(gasPriceInGwei-1)/Float(maxGasValue))

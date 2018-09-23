@@ -73,7 +73,7 @@ class SendConfirmViewController: UIViewController {
         fromInfoLabel.lineBreakMode = .byTruncatingMiddle
         
         gasTipLabel.setTitleCharFont()
-        gasTipLabel.text = LocalizedString("Transaction Fee", comment: "")
+        gasTipLabel.text = LocalizedString("Tx Fee Limit", comment: "")
         gasInfoLabel.font = FontConfigManager.shared.getLightFont(size: 13)
         gasInfoLabel.theme_textColor = GlobalPicker.textLightColor
         gasInfoLabel.text = gasAmountText

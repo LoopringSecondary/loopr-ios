@@ -95,7 +95,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         maxButton.setTitleColor(UIColor.theme.withAlphaComponent(0.6), for: .highlighted)
 
         gasTipLabel.setTitleCharFont()
-        gasTipLabel.text = LocalizedString("Transaction Fee", comment: "")
+        gasTipLabel.text = LocalizedString("Tx Fee Limit", comment: "")
         gasTipLabel.isUserInteractionEnabled = true
         let transactionFeeLabelTap = UITapGestureRecognizer(target: self, action: #selector(pressedAdvancedButton))
         transactionFeeLabelTap.numberOfTapsRequired = 1

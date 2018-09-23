@@ -74,7 +74,7 @@ class ConvertETHConfirmViewController: UIViewController {
         fromInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
         fromInfoLabel.theme_textColor = GlobalPicker.textColor
         
-        gasTipLabel.text = LocalizedString("Transaction Fee", comment: "")
+        gasTipLabel.text = LocalizedString("Tx Fee Limit", comment: "")
         gasTipLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
         gasTipLabel.theme_textColor = GlobalPicker.textLightColor
         
