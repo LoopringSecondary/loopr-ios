@@ -108,7 +108,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         
         dateTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         dateTipLabel.theme_textColor = GlobalPicker.textLightColor
-        dateTipLabel.text = LocalizedString("Time", comment: "")
+        dateTipLabel.text = LocalizedString("Time to Live", comment: "")
         
         dateInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
         dateInfoLabel.theme_textColor = GlobalPicker.textColor
@@ -219,16 +219,14 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupOrderAmount(order: Order) {
-        var price: Double = 0
-        var unit: String = ""
-        if order.originalOrder.side.lowercased() == "sell" {
-            price = order.originalOrder.amountSell / order.originalOrder.amountBuy
-            unit = "\(order.originalOrder.tokenSell) / \(order.originalOrder.tokenBuy)"
-        } else if order.originalOrder.side.lowercased() == "buy" {
-            price = order.originalOrder.amountBuy / order.originalOrder.amountSell
-            unit = "\(order.originalOrder.tokenBuy) / \(order.originalOrder.tokenSell)"
+        let price = order.originalOrder.amountBuy / order.originalOrder.amountSell
+        if order.originalOrder.side.lowercased() == "buy" {
+            let value = 1 / price
+            amountInfoLabel.text = "\(String(value).trailingZero()) \(order.originalOrder.tokenBuy)/\(order.originalOrder.tokenSell)"
+        } else {
+            let value = price
+            amountInfoLabel.text = "\(String(value).trailingZero()) \(order.originalOrder.tokenSell)/\(order.originalOrder.tokenBuy)"
         }
-        amountInfoLabel.text = "\(price.withCommas()) \(unit)"
     }
     
     func setupOrderDate(order: Order) {

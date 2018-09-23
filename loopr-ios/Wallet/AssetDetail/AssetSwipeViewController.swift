@@ -80,6 +80,7 @@ class AssetSwipeViewController: SwipeViewController {
         
         if asset?.symbol == "ETH" || asset?.symbol == "WETH" {
             let convertButon = UIBarButtonItem(title: LocalizedString("Convert", comment: ""), style: UIBarButtonItemStyle.plain, target: self, action: #selector(pressedConvertButton))
+            convertButon.setTitleTextAttributes([NSAttributedStringKey.font: FontConfigManager.shared.getCharactorFont(size: 14)], for: .normal)
             self.navigationItem.rightBarButtonItem = convertButon
         }
 

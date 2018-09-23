@@ -80,7 +80,7 @@ class TradeViewOnlyViewController: UIViewController {
             titleLabel.text = title + " " + symbol
         }
         let length = Asset.getLength(of: symbol) ?? 4
-        amountLabel.text = "\(amount.withCommas(length))"
+        amountLabel.text = "\(amount.withCommas(length).trailingZero())"
         if let price = PriceDataManager.shared.getPrice(of: symbol) {
             let value: Double = price * amount
             totalPriceInFiatCurrency.text = value.currency

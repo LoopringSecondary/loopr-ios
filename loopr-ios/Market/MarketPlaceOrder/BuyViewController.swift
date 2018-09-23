@@ -65,6 +65,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     
     // config
     var type: TradeType
+    var initialPrice: String?
     var orderAmount: Double = 0
     var tokenS: String = ""
     var tokenB: String = ""
@@ -178,6 +179,10 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         blurVisualEffectView.frame = UIScreen.main.bounds
         
         containerView.applyShadow()
+        
+        if let initialPrice = initialPrice {
+            priceTextField.text = initialPrice.trailingZero()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -408,6 +413,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             }, completion: {(_) in
                 
             })
+            
+            viewController.parentNavController = self.navigationController
         }
     }
     

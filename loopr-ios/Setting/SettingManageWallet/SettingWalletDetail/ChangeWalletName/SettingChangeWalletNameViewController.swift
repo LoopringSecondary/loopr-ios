@@ -46,6 +46,7 @@ class SettingChangeWalletNameViewController: UIViewController, UITextFieldDelega
         nameTextField.text = appWallet.name
         
         let saveButon = UIBarButtonItem(title: LocalizedString("Save", comment: ""), style: UIBarButtonItemStyle.plain, target: self, action: #selector(pressedSaveButton))
+        saveButon.setTitleTextAttributes([NSAttributedStringKey.font: FontConfigManager.shared.getCharactorFont(size: 14)], for: .normal)
         self.navigationItem.rightBarButtonItem = saveButon
     }
     

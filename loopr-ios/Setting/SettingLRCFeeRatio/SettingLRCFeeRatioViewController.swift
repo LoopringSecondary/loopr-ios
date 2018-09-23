@@ -48,6 +48,7 @@ class SettingLRCFeeRatioViewController: UIViewController, StepSliderDelegate {
         stepSlider.setPercentageValue(Float((currentValue-0.001)/0.049))
 
         let saveButon = UIBarButtonItem(title: LocalizedString("Save", comment: ""), style: UIBarButtonItemStyle.plain, target: self, action: #selector(pressedSaveButton))
+        saveButon.setTitleTextAttributes([NSAttributedStringKey.font: FontConfigManager.shared.getCharactorFont(size: 14)], for: .normal)
         self.navigationItem.rightBarButtonItem = saveButon
     }
 

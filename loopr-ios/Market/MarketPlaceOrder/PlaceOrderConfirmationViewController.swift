@@ -68,7 +68,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         
         // Price label
         priceLabel.text = LocalizedString("Price", comment: "")
-        priceLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        priceLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         priceLabel.theme_textColor = GlobalPicker.textLightColor
         
         priceValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
@@ -76,7 +76,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         
         priceTipLabel.textColor = UIColor.fail
         priceTipLabel.text = LocalizedString("Irrational", comment: "")
-        priceTipLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        priceTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         priceTipLabel.theme_textColor = GlobalPicker.textColor
         
         if !validateRational() {
@@ -89,15 +89,15 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         
         // Trading Fee
         LRCFeeLabel.text = LocalizedString("Trading Fee", comment: "")
-        LRCFeeLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        LRCFeeLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         LRCFeeLabel.theme_textColor = GlobalPicker.textLightColor
         
         LRCFeeValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
         LRCFeeValueLabel.theme_textColor = GlobalPicker.textColor
 
         // TTL label
-        validLabel.text = LocalizedString("Time to Live", comment: "")
-        validLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        validLabel.text = LocalizedString("Expiration Time", comment: "")
+        validLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         validLabel.theme_textColor = GlobalPicker.textLightColor
         
         validValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
@@ -105,7 +105,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         
         // Gas label
         gasTipLabel.text = LocalizedString("GAS_TIP", comment: "")
-        gasTipLabel.font = FontConfigManager.shared.getDigitalFont(size: 12)
+        gasTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
         gasTipLabel.theme_textColor = GlobalPicker.textLightColor
 
         let cells = [cellA, cellB, cellD]
@@ -191,16 +191,23 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     func updateLabels(order: OriginalOrder) {
         tokenSView.update(type: .sell, symbol: order.tokenSell, amount: order.amountSell)
         tokenBView.update(type: .buy, symbol: order.tokenBuy, amount: order.amountBuy)
+
         let price = order.amountBuy / order.amountSell
-        let value = order.side == "buy" ? 1 / price : price
-        priceValueLabel.text = "\(value.withCommas()) \(order.market)"
+        if order.side == "buy" {
+            let value = 1 / price
+            priceValueLabel.text = "\(String(value).trailingZero()) \(order.tokenBuy)/\(order.tokenSell)"
+        } else {
+            let value = price
+            priceValueLabel.text = "\(String(value).trailingZero()) \(order.tokenSell)/\(order.tokenBuy)"
+        }
+
         if let price = PriceDataManager.shared.getPrice(of: "LRC") {
             let total = (price * order.lrcFee).currency
-            LRCFeeValueLabel.text = "\(order.lrcFee.withCommas(3))LRC ≈ \(total)"
+            LRCFeeValueLabel.text = "\(order.lrcFee.withCommas(3)) LRC ≈ \(total)"
         }
-        let since = DateUtil.convertToDate(UInt(order.validSince), format: "MM-dd HH:mm")
+        // let since = DateUtil.convertToDate(UInt(order.validSince), format: "MM-dd HH:mm")
         let until = DateUtil.convertToDate(UInt(order.validUntil), format: "MM-dd HH:mm")
-        validValueLabel.text = "\(since) ~ \(until)"
+        validValueLabel.text = "\(until)"
     }
     
     func close(_ animated: Bool = true) {
@@ -446,9 +453,6 @@ extension PlaceOrderConfirmationViewController {
             return
         }
         DispatchQueue.main.async {
-            let banner = NotificationBanner.generate(title: LocalizedString("Congratulations! Your order has been submitted!", comment: ""), style: .success)
-            banner.duration = 3
-            banner.show()
             self.pushController(orderHash: orderHash!)
         }
     }

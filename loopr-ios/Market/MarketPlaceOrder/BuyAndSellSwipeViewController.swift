@@ -13,6 +13,8 @@ class BuyAndSellSwipeViewController: SwipeViewController {
     var market: Market!
 
     var initialType: TradeType = .buy
+    var initialPrice: String?
+    
     private var types: [TradeType] = [.buy, .sell]
     private var viewControllers: [UIViewController] = []
     var options = SwipeViewOptions.getDefault()
@@ -32,6 +34,9 @@ class BuyAndSellSwipeViewController: SwipeViewController {
 
         let vc2 = BuyViewController(type: .sell)
         vc2.market = market
+        
+        vc1.initialPrice = initialPrice
+        vc2.initialPrice = initialPrice
 
         viewControllers = [vc1, vc2]
         for viewController in viewControllers {

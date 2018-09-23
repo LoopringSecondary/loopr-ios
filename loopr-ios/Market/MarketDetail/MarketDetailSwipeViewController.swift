@@ -41,6 +41,7 @@ class MarketDetailSwipeViewController: SwipeViewController {
 
         self.topConstraint = 180
         types = [LocalizedString("Depth_in_Market_Detail", comment: ""), LocalizedString("Trades_in_Market_Detail", comment: "")]
+        vc1.delegate = self
         viewControllers = [vc1, vc2]
         setupChildViewControllers()
 
@@ -138,4 +139,14 @@ class MarketDetailSwipeViewController: SwipeViewController {
         return viewControllers[index]
     }
 
+}
+
+extension MarketDetailSwipeViewController: MarketDetailDepthViewControllerDelegate {
+    func pushWithSelectedDepth(amount: String, price: String, tradeType: TradeType) {
+        let viewController = BuyAndSellSwipeViewController()
+        viewController.market = market
+        viewController.initialType = tradeType
+        viewController.initialPrice = price
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }

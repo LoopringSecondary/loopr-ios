@@ -20,6 +20,7 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
     var market: Market!
     private var buys: [Depth] = []
     private var sells: [Depth] = []
+    private var maxAmountInDepthView: Double = 0
 
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerInfoLabel: UILabel!
@@ -55,6 +56,17 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
 
         self.buys = MarketDepthDataManager.shared.getBuys()
         self.sells = MarketDepthDataManager.shared.getSells()
+
+        if buys.count > 0 && sells.count > 0 {
+            self.maxAmountInDepthView = max(buys[buys.count / 2].amountAInDouble, sells[sells.count / 2].amountAInDouble) * 1.5
+        } else if buys.count > 0 {
+            self.maxAmountInDepthView = buys[buys.count / 2].amountAInDouble * 1.5
+        } else if sells.count > 0 {
+            self.maxAmountInDepthView = sells[sells.count / 2].amountAInDouble * 1.5
+        } else {
+            self.maxAmountInDepthView = 0
+        }
+
         var maxCount = buys.count > sells.count ? buys.count : sells.count
         if maxCount > 10 {
             maxCount = 10
@@ -105,15 +117,19 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
         
         let label1 = UILabel(frame: CGRect(x: 10, y: 0, width: labelWidth, height: 30))
         label1.theme_textColor = GlobalPicker.textLightColor
-        label1.font = FontConfigManager.shared.getMediumFont(size: 14)
-        label1.text = LocalizedString("Buy", comment: "")
+        label1.font = FontConfigManager.shared.getMediumFont(size: 12)
+        if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
+            label1.text = "\(LocalizedString("Buy Price", comment: ""))(\(market.tradingPair.tradingB))"
+        } else {
+            label1.text = "\(LocalizedString("Buy Price", comment: ""))"
+        }
         label1.textAlignment = .left
         baseViewBuy.addSubview(label1)
         
         let label2 = UILabel(frame: CGRect(x: 10, y: 0, width: labelWidth-20, height: 30))
         label2.theme_textColor = GlobalPicker.textLightColor
-        label2.font = FontConfigManager.shared.getMediumFont(size: 14)
-        label2.text = LocalizedString("Amount", comment: "")
+        label2.font = FontConfigManager.shared.getMediumFont(size: 12)
+        label2.text = "\(LocalizedString("Amount", comment: ""))(\(market.tradingPair.tradingA))"
         label2.textAlignment = .right
         baseViewBuy.addSubview(label2)
         
@@ -124,15 +140,19 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
         
         let label3 = UILabel(frame: CGRect(x: 10, y: 0, width: labelWidth, height: 30))
         label3.theme_textColor = GlobalPicker.textLightColor
-        label3.font = FontConfigManager.shared.getMediumFont(size: 14)
-        label3.text = LocalizedString("Sell", comment: "")
+        label3.font = FontConfigManager.shared.getMediumFont(size: 12)
+        if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
+            label3.text = "\(LocalizedString("Sell Price", comment: ""))(\(market.tradingPair.tradingB))"
+        } else {
+            label3.text = "\(LocalizedString("Sell Price", comment: ""))"
+        }
         label3.textAlignment = .left
         baseViewSell.addSubview(label3)
         
         let label4 = UILabel(frame: CGRect(x: 10, y: 0, width: labelWidth-20, height: 30))
         label4.theme_textColor = GlobalPicker.textLightColor
-        label4.font = FontConfigManager.shared.getMediumFont(size: 14)
-        label4.text = LocalizedString("Amount", comment: "")
+        label4.font = FontConfigManager.shared.getMediumFont(size: 12)
+        label4.text = "\(LocalizedString("Amount", comment: ""))(\(market.tradingPair.tradingA))"
         label4.textAlignment = .right
         baseViewSell.addSubview(label4)
         
@@ -161,6 +181,7 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
         if cell == nil {
             let nib = Bundle.main.loadNibNamed("MarketDetailDepthTableViewCell", owner: self, options: nil)
             cell = nib![0] as? MarketDetailDepthTableViewCell
+            cell?.maxAmountInDepthView = maxAmountInDepthView
             cell?.delegate = self
         }
         if indexPath.row < buys.count {
@@ -194,6 +215,10 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
         dismiss(animated: true) {
             
         }
+    }
+
+    func clickedMarketDetailDepthTableViewCell(amount: String, price: String, tradeType: TradeType) {
+        
     }
 
 }

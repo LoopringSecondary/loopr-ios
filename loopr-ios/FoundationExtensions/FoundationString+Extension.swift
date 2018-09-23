@@ -177,10 +177,21 @@ extension String {
     }
     
     func trailingZero() -> String {
-        if let value = Double(self) {
-            return String(format: "%g", value)
+        if self.contains(".") {
+            var value = self
+            while true {
+                if value.last == "0" {
+                    value = String(value.dropLast())
+                } else {
+                    break
+                }
+            }
+            if value.last == "." {
+                value = String(value.dropLast())
+            }
+            return value
         } else {
-            return ""
+            return self
         }
     }
 

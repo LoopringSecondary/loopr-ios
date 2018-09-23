@@ -11,6 +11,7 @@ import UIKit
 protocol MarketDetailDepthTableViewCellDelegate: class {
     // Use String since it's what users see.
     func clickedMarketDetailDepthTableViewCell(amount: String, price: String)
+    func clickedMarketDetailDepthTableViewCell(amount: String, price: String, tradeType: TradeType)
 }
 
 class MarketDetailDepthTableViewCell: UITableViewCell {
@@ -51,7 +52,7 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
         addSubview(baseViewBuy)
         
         depthViewBuy.frame = CGRect(x: 0, y: 0, width: 0, height: baseViewBuy.height)
-        depthViewBuy.backgroundColor = UIColor.success.withAlphaComponent(0.08)
+        depthViewBuy.backgroundColor = UIColor.success.withAlphaComponent(0.1)
         baseViewBuy.addSubview(depthViewBuy)
 
         label1 = UILabel(frame: CGRect(x: 10, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
@@ -78,7 +79,7 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
         addSubview(baseViewSell)
         
         depthViewSell.frame = CGRect(x: 0, y: 0, width: 0, height: baseViewBuy.height)
-        depthViewSell.backgroundColor = UIColor.fail.withAlphaComponent(0.08)
+        depthViewSell.backgroundColor = UIColor.fail.withAlphaComponent(0.1)
         baseViewSell.addSubview(depthViewSell)
         
         label3 = UILabel(frame: CGRect(x: 10, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
@@ -104,7 +105,7 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
     func update() {
         if let buyDepth = buyDepth {
             label1.text = buyDepth.price.toDecimalPlaces(6)
-            label2.text = buyDepth.amountA.toDecimalPlaces(2)
+            label2.text = buyDepth.amountA.toDecimalPlaces(2).trailingZero()
             
             var percentage = (buyDepth.amountAInDouble)/(maxAmountInDepthView)
             if percentage > 1.0 {
@@ -120,7 +121,7 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
         
         if let sellDepth = sellDepth {
             label3.text = sellDepth.price.toDecimalPlaces(6)
-            label4.text = sellDepth.amountA.toDecimalPlaces(2)
+            label4.text = sellDepth.amountA.toDecimalPlaces(2).trailingZero()
             
             var percentage = (sellDepth.amountAInDouble)/(maxAmountInDepthView)
             if percentage > 1.0 {
@@ -138,10 +139,14 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
     @objc func pressedFakeBuyButton(_ sender: Any) {
         print("pressedFakeBuyButton")
         if buyDepth != nil {
-            // TODO: What is the color when a button is highlighed?
             baseViewBuy.backgroundColor = UIColor.dark3
+            UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveLinear, animations: {
+                self.baseViewBuy.theme_backgroundColor = ColorPicker.cardBackgroundColor
+            }, completion: { (_) in
+                
+            })
             delegate?.clickedMarketDetailDepthTableViewCell(amount: buyDepth!.amountA, price: buyDepth!.price)
-            // delegate?.clickedMarketDetailDepthTableViewCell(amount: Double(buyDepth!.amountA) ?? 0, price: Double(buyDepth!.price) ?? 0)
+            delegate?.clickedMarketDetailDepthTableViewCell(amount: buyDepth!.amountA, price: buyDepth!.price, tradeType: .buy)
         }
     }
 
@@ -149,8 +154,13 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
         print("pressedFakeBuyButton")
         if sellDepth != nil {
             baseViewSell.backgroundColor = UIColor.dark3
+            UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveLinear, animations: {
+                self.baseViewSell.theme_backgroundColor = ColorPicker.cardBackgroundColor
+            }, completion: { (_) in
+                
+            })
             delegate?.clickedMarketDetailDepthTableViewCell(amount: sellDepth!.amountA, price: sellDepth!.price)
-            // delegate?.clickedMarketDetailDepthTableViewCell(amount: Double(sellDepth!.amountA) ?? 0, price: Double(sellDepth!.price) ?? 0)
+            delegate?.clickedMarketDetailDepthTableViewCell(amount: sellDepth!.amountA, price: sellDepth!.price, tradeType: .sell)
         }
     }
     

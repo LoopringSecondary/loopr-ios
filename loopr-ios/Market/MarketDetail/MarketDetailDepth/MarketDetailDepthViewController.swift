@@ -8,7 +8,13 @@
 
 import UIKit
 
-class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+protocol MarketDetailDepthViewControllerDelegate: class {
+    func pushWithSelectedDepth(amount: String, price: String, tradeType: TradeType)
+}
+
+class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MarketDetailDepthTableViewCellDelegate {
+    
+    weak var delegate: MarketDetailDepthViewControllerDelegate?
         
     var market: Market!
     var preivousMarketName: String = ""
@@ -168,10 +174,9 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
             var cell = tableView.dequeueReusableCell(withIdentifier: MarketDetailDepthTableViewCell.getCellIdentifier()) as? MarketDetailDepthTableViewCell
             if cell == nil {
                 let nib = Bundle.main.loadNibNamed("MarketDetailDepthTableViewCell", owner: self, options: nil)
-                cell = nib![0] as? MarketDetailDepthTableViewCell
-                cell?.fakeBuyButton.isEnabled = false
-                cell?.fakeSellButton.isEnabled = false                
+                cell = nib![0] as? MarketDetailDepthTableViewCell            
                 cell?.maxAmountInDepthView = maxAmountInDepthView
+                cell?.delegate = self
             }
             if indexPath.row < buys.count {
                 cell?.buyDepth = buys[indexPath.row]
@@ -191,4 +196,15 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
             return cell!
         }
     }
+    
+    func clickedMarketDetailDepthTableViewCell(amount: String, price: String) {
+        
+    }
+    
+    func clickedMarketDetailDepthTableViewCell(amount: String, price: String, tradeType: TradeType) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.delegate?.pushWithSelectedDepth(amount: amount, price: price, tradeType: tradeType)
+        }
+    }
+
 }
