@@ -58,7 +58,7 @@ class MarketDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        buttonInNavigationBar.setRightImage(imageName: "Caret-down-dark", imagePaddingTop: 0, imagePaddingLeft: 0, titlePaddingRight: 0)
+        buttonInNavigationBar.setRightImage(imageName: "Caret-down-dark", imagePaddingTop: 0, imagePaddingLeft: -24, titlePaddingRight: 0)
         // TODO: needs to update the icon. It's too big here.
         var padding = "  "
         for _ in 0..<market!.description.count {

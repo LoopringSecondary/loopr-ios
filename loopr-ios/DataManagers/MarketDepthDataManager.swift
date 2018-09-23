@@ -31,7 +31,6 @@ class MarketDepthDataManager {
     }
 
     func getDepthFromServer(market: String, completionHandler: @escaping (_ buyDepths: [Depth], _ sellDepths: [Depth], _ error: Error?) -> Void) {
-
         LoopringAPIRequest.getDepths(market: market, length: 20) { (buyDepths, sellDepths, error) in
             guard buyDepths != nil && sellDepths != nil && error == nil else { return }
             self.market = market

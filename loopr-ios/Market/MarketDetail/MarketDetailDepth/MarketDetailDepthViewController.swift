@@ -15,6 +15,7 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
     var isLaunching: Bool = true
     private var buys: [Depth] = []
     private var sells: [Depth] = []
+    private var maxAmountInDepthView: Double = 0
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -53,6 +54,17 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
             self.preivousMarketName = self.market.name
             self.buys = buys
             self.sells = sells
+            
+            if buys.count > 0 && sells.count > 0 {
+                self.maxAmountInDepthView = max(buys[buys.count / 2].amountAInDouble, sells[sells.count / 2].amountAInDouble) * 1.5
+            } else if buys.count > 0 {
+                self.maxAmountInDepthView = buys[buys.count / 2].amountAInDouble * 1.5
+            } else if sells.count > 0 {
+                self.maxAmountInDepthView = sells[sells.count / 2].amountAInDouble * 1.5
+            } else {
+                self.maxAmountInDepthView = 0
+            }
+
             DispatchQueue.main.async {
                 if self.isLaunching == true {
                     self.isLaunching = false
@@ -158,7 +170,8 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
                 let nib = Bundle.main.loadNibNamed("MarketDetailDepthTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? MarketDetailDepthTableViewCell
                 cell?.fakeBuyButton.isEnabled = false
-                cell?.fakeSellButton.isEnabled = false
+                cell?.fakeSellButton.isEnabled = false                
+                cell?.maxAmountInDepthView = maxAmountInDepthView
             }
             if indexPath.row < buys.count {
                 cell?.buyDepth = buys[indexPath.row]

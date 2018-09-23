@@ -19,10 +19,14 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
     
     var buyDepth: Depth?
     var sellDepth: Depth?
+    var maxAmountInDepthView: Double = 0
     
     var baseViewBuy: UIView = UIView()
     var baseViewSell: UIView = UIView()
     
+    var depthViewBuy: UIView = UIView()
+    var depthViewSell: UIView = UIView()
+
     var fakeBuyButton: UIButton = UIButton()
     var fakeSellButton: UIButton = UIButton()
     
@@ -46,8 +50,12 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
         baseViewBuy.theme_backgroundColor = ColorPicker.cardBackgroundColor
         addSubview(baseViewBuy)
         
+        depthViewBuy.frame = CGRect(x: 0, y: 0, width: 0, height: baseViewBuy.height)
+        depthViewBuy.backgroundColor = UIColor.success.withAlphaComponent(0.08)
+        baseViewBuy.addSubview(depthViewBuy)
+
         label1 = UILabel(frame: CGRect(x: 10, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
-        label1.textColor = UIColor.fail
+        label1.textColor = UIColor.success
         label1.font = FontConfigManager.shared.getMediumFont(size: 12)
         label1.textAlignment = .left
         baseViewBuy.addSubview(label1)
@@ -69,8 +77,12 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
         baseViewSell.theme_backgroundColor = ColorPicker.cardBackgroundColor
         addSubview(baseViewSell)
         
+        depthViewSell.frame = CGRect(x: 0, y: 0, width: 0, height: baseViewBuy.height)
+        depthViewSell.backgroundColor = UIColor.fail.withAlphaComponent(0.08)
+        baseViewSell.addSubview(depthViewSell)
+        
         label3 = UILabel(frame: CGRect(x: 10, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
-        label3.textColor = UIColor.success
+        label3.textColor = UIColor.fail
         label3.font = FontConfigManager.shared.getMediumFont(size: 12)
         label3.textAlignment = .left
         baseViewSell.addSubview(label3)
@@ -93,17 +105,33 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
         if let buyDepth = buyDepth {
             label1.text = buyDepth.price.toDecimalPlaces(6)
             label2.text = buyDepth.amountA.toDecimalPlaces(2)
+            
+            var percentage = (buyDepth.amountAInDouble)/(maxAmountInDepthView)
+            if percentage > 1.0 {
+                percentage = 1.0
+            }
+            depthViewBuy.frame = CGRect(x: baseViewBuy.width*CGFloat(1.0-percentage), y: 1, width: baseViewBuy.width*CGFloat(percentage), height: MarketDetailDepthTableViewCell.getHeight()-2)
+            
         } else {
             label1.text = ""
             label2.text = ""
+            depthViewBuy.frame = CGRect.zero
         }
         
         if let sellDepth = sellDepth {
             label3.text = sellDepth.price.toDecimalPlaces(6)
             label4.text = sellDepth.amountA.toDecimalPlaces(2)
+            
+            var percentage = (sellDepth.amountAInDouble)/(maxAmountInDepthView)
+            if percentage > 1.0 {
+                percentage = 1.0
+            }
+            depthViewSell.frame = CGRect(x: baseViewSell.width*CGFloat(1.0-percentage), y: 1, width: baseViewSell.width*CGFloat(percentage), height: MarketDetailDepthTableViewCell.getHeight()-2)
+            
         } else {
             label3.text = ""
             label4.text = ""
+            baseViewSell.frame = CGRect.zero
         }
     }
 
