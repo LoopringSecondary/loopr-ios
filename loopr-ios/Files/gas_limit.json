@@ -1,35 +1,35 @@
 [
     {
         "type":"eth_transfer",
-        "gasLimit":24000
+        "gasLimit":21273
     },
     {
         "type":"token_transfer",
-        "gasLimit":200000
+        "gasLimit":100273
     },
     {
         "type":"approve",
-        "gasLimit":200000
+        "gasLimit":100273
     },
     {
         "type":"withdraw",
-        "gasLimit":200000
+        "gasLimit":100273
     },
     {
         "type":"deposit",
-        "gasLimit":200000
+        "gasLimit":100273
     },
     {
         "type":"cancelOrder",
-        "gasLimit":200000
+        "gasLimit":150273
     },
     {
         "type":"cancelAllOrders",
-        "gasLimit":200000
+        "gasLimit":100273
     },
     {
         "type":"cancelOrderByTokenPair",
-        "gasLimit":200000
+        "gasLimit":100273
     },
     {
         "type":"submitRing",
