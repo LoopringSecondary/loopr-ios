@@ -200,6 +200,9 @@
 "which may cause your asset wastage! " = "which may cause your asset wastage! ";
 "which may cause your order abolished! " = "which may cause your order abolished! ";
 "Do you wish to continue trading or signing with the price?" = "Do you wish to continue trading or signing with the price?";
+"Market/Price" = "Market/Price";
+"Amount/Filled" = "Amount/Filled";
+"Status/Date" = "Status/Date";
 
 /* Trade tips */
 "Convert_DES" = "● Think of it like the coin version of a paper note. The same value, but some machines only take coins. The conversion ratio between ETH and WETH is always 1:1, guaranteed by Ethereum.";

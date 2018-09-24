@@ -200,6 +200,9 @@
 "which may cause your asset wastage! " = "这意味着您的资产或将亏损！";
 "which may cause your order abolished! " = "这意味着您的订单或将无法成交！";
 "Do you wish to continue trading or signing with the price?" = "是否仍要以该价格下单或授权？";
+"Market/Price" = "市场对/单价";
+"Amount/Filled" = "数量/成交率";
+"Status/Date" = "状态/时间";
 
 /* Trade tips */
 "Convert_DES" = "● WETH之于ETH, 正如硬币之于等额的纸币。某些场合, 贩卖机只能接受硬币, 因此需要转换。以太坊协议保证: WETH和ETH之间的转换比率为 1 : 1, 且永不改变。";

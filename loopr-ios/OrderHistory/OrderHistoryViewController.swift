@@ -190,7 +190,8 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         label1.textAlignment = .left
         baseView.addSubview(label1)
         
-        let label2 = UILabel(frame: CGRect(x: UIScreen.main.bounds.width*0.3+paddingX, y: 0, width: labelWidth, height: 30))
+        let label2Width = LocalizedString("Amount/Filled", comment: "").textWidth(font: FontConfigManager.shared.getCharactorFont(size: 13))
+        let label2 = UILabel(frame: CGRect(x: (UIScreen.main.bounds.width-15*2)*0.5-label2Width*0.5, y: 0, width: labelWidth, height: 30))
         label2.theme_textColor = GlobalPicker.textLightColor
         label2.font = FontConfigManager.shared.getCharactorFont(size: 13)
         label2.text = LocalizedString("Amount/Filled", comment: "")
