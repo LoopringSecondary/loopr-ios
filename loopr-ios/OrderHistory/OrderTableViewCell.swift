@@ -91,7 +91,7 @@ class OrderTableViewCell: UITableViewCell {
                 return (true, LocalizedString("Cancel", comment: ""))
             }
         } else if order.orderStatus == .cancelled || order.orderStatus == .expire {
-            cancelButton.setTitleColor(.text1, for: .normal)
+            cancelButton.setTitleColor(.text2, for: .normal)
         } else if order.orderStatus == .finished {
             cancelButton.setTitleColor(.success, for: .normal)
         }
@@ -159,7 +159,7 @@ class OrderTableViewCell: UITableViewCell {
     }
     
     func setupOrderDate(order: Order) {
-        let since = DateUtil.convertToDate(UInt(order.originalOrder.validSince), format: "MM-dd HH:mm")
+        let since = DateUtil.convertToDate(UInt(order.originalOrder.validSince), format: "YYYY-MM-dd HH:mm")
         dateLabel.text = since
     }
     

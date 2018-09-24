@@ -208,8 +208,8 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5R-iI-uJC">
-                                    <rect key="frame" x="291.33333333333331" y="296" width="41.666666666666686" height="40"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5R-iI-uJC">
+                                    <rect key="frame" x="309.33333333333331" y="296" width="41.666666666666686" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="Olm-Fn-aHM"/>
                                     </constraints>
@@ -218,11 +218,12 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0T-VM-NU0">
-                                    <rect key="frame" x="245" y="304" width="124" height="24"/>
+                                    <rect key="frame" x="341" y="296" width="40" height="40"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="124" id="R2e-sG-8pS"/>
+                                        <constraint firstAttribute="width" constant="40" id="R2e-sG-8pS"/>
+                                        <constraint firstAttribute="height" constant="40" id="r9O-2Y-KPM"/>
                                     </constraints>
-                                    <inset key="imageEdgeInsets" minX="88" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                     <state key="normal" image="Arrow-button-right-dark"/>
                                     <connections>
                                         <action selector="pressedRatioButton:" destination="-1" eventType="touchUpInside" id="fPH-MS-dyW"/>
@@ -260,7 +261,7 @@
                                 <constraint firstAttribute="trailing" secondItem="nYT-au-ghz" secondAttribute="trailing" constant="15" id="HtZ-go-pmW"/>
                                 <constraint firstItem="eJV-rg-daP" firstAttribute="centerY" secondItem="POe-BV-ibP" secondAttribute="centerY" id="IM2-OK-1b6"/>
                                 <constraint firstAttribute="trailing" secondItem="POe-BV-ibP" secondAttribute="trailing" constant="15" id="LRV-Vp-T5m"/>
-                                <constraint firstItem="a0T-VM-NU0" firstAttribute="trailing" secondItem="k9h-xW-rQZ" secondAttribute="trailing" constant="-15" id="LaI-Ff-XM7"/>
+                                <constraint firstItem="a0T-VM-NU0" firstAttribute="trailing" secondItem="nYT-au-ghz" secondAttribute="trailing" constant="12" id="LaI-Ff-XM7"/>
                                 <constraint firstItem="POe-BV-ibP" firstAttribute="top" secondItem="k9h-xW-rQZ" secondAttribute="top" constant="20" id="MnL-CC-ip6"/>
                                 <constraint firstItem="zu2-Qr-MOe" firstAttribute="top" secondItem="POe-BV-ibP" secondAttribute="bottom" id="Mvv-mv-deJ"/>
                                 <constraint firstItem="JUT-ee-RXX" firstAttribute="leading" secondItem="nYT-au-ghz" secondAttribute="leading" id="NTX-vs-J2v"/>
@@ -278,7 +279,7 @@
                                 <constraint firstItem="AoE-MP-EM2" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="15" id="eUI-Md-dxm"/>
                                 <constraint firstAttribute="trailing" secondItem="Niq-X3-TVH" secondAttribute="trailing" constant="16" id="g8k-pt-KYn"/>
                                 <constraint firstItem="Fb9-mL-KG5" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="35" id="gkx-hT-CSd"/>
-                                <constraint firstItem="a0T-VM-NU0" firstAttribute="leading" secondItem="Q5R-iI-uJC" secondAttribute="trailing" constant="-88" id="hJh-le-R4h"/>
+                                <constraint firstItem="a0T-VM-NU0" firstAttribute="leading" secondItem="Q5R-iI-uJC" secondAttribute="trailing" constant="-10" id="hJh-le-R4h"/>
                                 <constraint firstItem="Niq-X3-TVH" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="16" id="jJf-bZ-191"/>
                                 <constraint firstItem="nYT-au-ghz" firstAttribute="leading" secondItem="k9h-xW-rQZ" secondAttribute="leading" constant="15" id="lwK-nK-ufU"/>
                                 <constraint firstItem="eJV-rg-daP" firstAttribute="leading" secondItem="QQK-Xq-OFM" secondAttribute="trailing" constant="-10" id="ove-8o-YfN"/>
