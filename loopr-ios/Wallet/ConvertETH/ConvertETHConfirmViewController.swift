@@ -57,7 +57,7 @@ class ConvertETHConfirmViewController: UIViewController {
         amountLabel.text = "\(self.convertAmount!) \(self.convertAsset.symbol)  →  \(self.otherAsset.symbol)"
         
         toTipLabel.text = LocalizedString("Receive Token", comment: "")
-        toTipLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        toTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         toTipLabel.theme_textColor = GlobalPicker.textLightColor
         
         toInfoLabel.text = self.otherAsset.symbol
@@ -66,7 +66,7 @@ class ConvertETHConfirmViewController: UIViewController {
         toInfoLabel.theme_textColor = GlobalPicker.textColor
         
         fromTipLabel.text = LocalizedString("Send Token", comment: "")
-        fromTipLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        fromTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         fromTipLabel.theme_textColor = GlobalPicker.textLightColor
         
         fromInfoLabel.text = self.convertAsset.symbol
@@ -75,7 +75,7 @@ class ConvertETHConfirmViewController: UIViewController {
         fromInfoLabel.theme_textColor = GlobalPicker.textColor
         
         gasTipLabel.text = LocalizedString("Tx Fee Limit", comment: "")
-        gasTipLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        gasTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         gasTipLabel.theme_textColor = GlobalPicker.textLightColor
         
         gasInfoLabel.text = gasAmountText
