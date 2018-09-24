@@ -158,6 +158,55 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if orders.count == 0 {
+            return 0
+        }
+        return 30+0.5
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let screenWidth = view.frame.size.width
+        
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30+0.5))
+        headerView.theme_backgroundColor = ColorPicker.backgroundColor
+        
+        let baseView = UIView(frame: CGRect(x: 15, y: 0, width: screenWidth - 15*2, height: 30))
+        baseView.theme_backgroundColor = ColorPicker.cardBackgroundColor
+        baseView.round(corners: [.topLeft, .topRight], radius: 6)
+        headerView.addSubview(baseView)
+        
+        let labelWidth = (view.frame.size.width-15*2)/3
+        let paddingX: CGFloat = 10
+        
+        let label1 = UILabel(frame: CGRect(x: paddingX, y: 0, width: labelWidth, height: 30))
+        label1.theme_textColor = GlobalPicker.textLightColor
+        label1.font = FontConfigManager.shared.getCharactorFont(size: 13)
+        label1.text = LocalizedString("Market/Price", comment: "")
+        label1.textAlignment = .left
+        baseView.addSubview(label1)
+        
+        let label2 = UILabel(frame: CGRect(x: UIScreen.main.bounds.width*0.3+paddingX, y: 0, width: labelWidth, height: 30))
+        label2.theme_textColor = GlobalPicker.textLightColor
+        label2.font = FontConfigManager.shared.getCharactorFont(size: 13)
+        label2.text = LocalizedString("Amount/Filled", comment: "")
+        label2.textAlignment = .left
+        baseView.addSubview(label2)
+        
+        let label3 = UILabel(frame: CGRect(x: baseView.width - labelWidth - 10, y: 0, width: labelWidth, height: 30))
+        label3.theme_textColor = GlobalPicker.textLightColor
+        label3.font = FontConfigManager.shared.getCharactorFont(size: 13)
+        label3.text = LocalizedString("Status/Date", comment: "")
+        label3.textAlignment = .right
+        baseView.addSubview(label3)
+        
+        return headerView
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if isTableEmpty() {
             return OrderNoDataTableViewCell.getHeight()

@@ -29,7 +29,6 @@ class OrderTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         self.theme_backgroundColor = ColorPicker.backgroundColor
         self.baseView.theme_backgroundColor = ColorPicker.cardBackgroundColor
-        self.baseView.applyShadow()
         cancelButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 14)
         buttonColor = UIColor.theme
     }
@@ -83,7 +82,8 @@ class OrderTableViewCell: UITableViewCell {
     
     func setupTradingPairlabel(order: Order) {
         tradingPairLabel.text = order.tradingPairDescription
-        tradingPairLabel.setTitleDigitFont()
+        tradingPairLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        tradingPairLabel.theme_textColor = GlobalPicker.textColor
         tradingPairLabel.setMarket()
     }
     
@@ -145,6 +145,6 @@ class OrderTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 68+8
+        return 68+1
     }
 }

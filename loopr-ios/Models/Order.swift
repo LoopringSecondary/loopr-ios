@@ -29,10 +29,12 @@ class Order: Equatable {
         } else {
             self.price = 0.0
         }
+        
+        // TODO: this is not correct.
         if originalOrder.tokenBuy == "WETH" {
-            tradingPairDescription = "\(originalOrder.tokenSell)/\(originalOrder.tokenBuy)"
+            tradingPairDescription = "\(originalOrder.tokenSell)-\(originalOrder.tokenBuy)"
         } else {
-            tradingPairDescription = "\(originalOrder.tokenBuy)/\(originalOrder.tokenSell)"
+            tradingPairDescription = "\(originalOrder.tokenBuy)-\(originalOrder.tokenSell)"
         }
     }
 
@@ -49,10 +51,11 @@ class Order: Equatable {
             price = 0.0
         }
         
+        // TODO: this is not correct.
         if originalOrder.tokenBuy == "WETH" {
-            tradingPairDescription = "\(originalOrder.tokenSell)/\(originalOrder.tokenBuy)"
+            tradingPairDescription = "\(originalOrder.tokenSell)-\(originalOrder.tokenBuy)"
         } else {
-            tradingPairDescription = "\(originalOrder.tokenBuy)/\(originalOrder.tokenSell)"
+            tradingPairDescription = "\(originalOrder.tokenBuy)-\(originalOrder.tokenSell)"
         }
     }
     

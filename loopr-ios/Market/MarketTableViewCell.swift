@@ -30,7 +30,7 @@ class MarketTableViewCell: UITableViewCell {
         theme_backgroundColor = ColorPicker.backgroundColor
         baseView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         
-        nameLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
+        nameLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
         nameLabel.theme_textColor = GlobalPicker.textColor
         
         balanceLabel.font = FontConfigManager.shared.getRegularFont(size: 13)

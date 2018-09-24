@@ -217,13 +217,13 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30+1
+        return 30+0.5
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let screenWidth = view.frame.size.width
 
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30+1))
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30+0.5))
         headerView.theme_backgroundColor = ColorPicker.backgroundColor
 
         let baseView = UIView(frame: CGRect(x: 15, y: 0, width: screenWidth - 15*2, height: 30))
