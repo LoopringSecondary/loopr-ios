@@ -22,7 +22,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var filledTipLabel: UILabel!
     @IBOutlet weak var filledInfoLabel: UILabel!
     @IBOutlet weak var idTipLabel: UILabel!
-    @IBOutlet weak var idInfoLabel: UILabel!
+    @IBOutlet weak var idInfoButton: UIButton!
     @IBOutlet weak var dateTipLabel: UILabel!
     @IBOutlet weak var dateInfoLabel: UILabel!
     
@@ -73,7 +73,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         statusTipLabel.theme_textColor = GlobalPicker.textLightColor
         statusTipLabel.text = LocalizedString("Status", comment: "")
         
-        statusInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        statusInfoLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         statusInfoLabel.theme_textColor = GlobalPicker.textColor
         statusInfoLabel.text = order?.orderStatus.description
         
@@ -102,10 +102,12 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         idTipLabel.theme_textColor = GlobalPicker.textLightColor
         idTipLabel.text = LocalizedString("TxHash", comment: "")
         
-        idInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
-        idInfoLabel.theme_textColor = GlobalPicker.textColor
-        idInfoLabel.text = order?.originalOrder.hash
-        
+        idInfoButton.titleLabel?.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        idInfoButton.setTitle(order?.originalOrder.hash, for: .normal)
+        idInfoButton.addTarget(self, action: #selector(pressedIdButton), for: .touchUpInside)
+        idInfoButton.setTitleColor(.text1, for: .normal)
+        idInfoButton.isUserInteractionEnabled = false
+
         dateTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         dateTipLabel.theme_textColor = GlobalPicker.textLightColor
         dateTipLabel.text = LocalizedString("Time to Live", comment: "")
@@ -235,6 +237,27 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         let until = DateUtil.convertToDate(UInt(originOrder.validUntil), format: "MM-dd HH:mm")
         dateInfoLabel.text = "\(since) ~ \(until)"
     }
+    
+    @objc func pressedIdButton() {
+        var etherUrl = "https://etherscan.io/tx/"
+        if let txHash = order?.originalOrder.hash {
+            etherUrl += txHash
+            if let url = URL(string: etherUrl) {
+                let viewController = DefaultWebViewController()
+                viewController.navigationTitle = "Etherscan.io"
+                viewController.url = url
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
+            LoopringAPIRequest.getOrderByHash(orderHash: txHash) { (_, _) in
+                
+            }
+        }
+        
+
+    }
+
 }
 
 extension OrderDetailViewController: UIViewControllerTransitioningDelegate {
