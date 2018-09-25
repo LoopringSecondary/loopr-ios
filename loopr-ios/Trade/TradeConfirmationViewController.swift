@@ -10,6 +10,7 @@ import UIKit
 import Geth
 import SVProgressHUD
 import NotificationBannerSwift
+import Crashlytics
 
 class TradeConfirmationViewController: UIViewController {
     
@@ -394,6 +395,10 @@ extension TradeConfirmationViewController {
     func completion(_ orderHash: String?, _ error: Error?) {
         SVProgressHUD.dismiss()
         guard error == nil && orderHash != nil else {
+            Answers.logCustomEvent(withName: "Submit P2P Order v1",
+                                   customAttributes: [
+                                    "success": "false"])
+
             DispatchQueue.main.async {
                 print("TradeViewController \(error.debugDescription)")
                 let message = (error! as NSError).userInfo["message"] as! String
@@ -405,8 +410,16 @@ extension TradeConfirmationViewController {
         }
         DispatchQueue.main.async {
             if !self.isTaker() {
+                Answers.logCustomEvent(withName: "Submit P2P Order v1",
+                                       customAttributes: [
+                                       "success": "true",
+                                       "isTaker": "false"])
                 self.pushReviewController()
             } else {
+                Answers.logCustomEvent(withName: "Submit P2P Order v1",
+                                       customAttributes: [
+                                       "success": "true",
+                                       "isTaker": "true"])
                 self.pushCompleteController()
             }
         }

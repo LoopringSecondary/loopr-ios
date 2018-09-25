@@ -10,6 +10,7 @@ import UIKit
 import Geth
 import SVProgressHUD
 import NotificationBannerSwift
+import Crashlytics
 
 class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelegate {
 
@@ -444,6 +445,10 @@ extension PlaceOrderConfirmationViewController {
     func completion(_ orderHash: String?, _ error: Error?) {
         SVProgressHUD.dismiss()
         guard error == nil && orderHash != nil else {
+            Answers.logCustomEvent(withName: "Submit Market Order v1",
+                                   customAttributes: [
+                                   "success": "false"])
+
             DispatchQueue.main.async {
                 print("PlaceOrderConfirmationViewController \(error.debugDescription)")
                 let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
@@ -452,6 +457,11 @@ extension PlaceOrderConfirmationViewController {
             }
             return
         }
+
+        Answers.logCustomEvent(withName: "Submit Market Order v1",
+                               customAttributes: [
+                               "success": "true"])
+
         DispatchQueue.main.async {
             self.pushController(orderHash: orderHash!)
         }
