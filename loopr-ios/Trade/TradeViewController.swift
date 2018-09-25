@@ -26,8 +26,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     @IBOutlet weak var amountSellTextField: UITextField!
     @IBOutlet weak var estimateValueInCurrency: UILabel!
     @IBOutlet weak var sellTokenLabel: UILabel!
-
-    @IBOutlet weak var swapTokenButton: UIButton!
     
     // TokenB
     @IBOutlet weak var tokenBButton: UIButton!
@@ -91,8 +89,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         headerButton.theme_setBackgroundImage(ColorPicker.buttonSelected, forState: .highlighted)
 
         headerButton.addTarget(self, action: #selector(pressedHeaderButton), for: .touchUpInside)
-
-        swapTokenButton.addTarget(self, action: #selector(pressedHeaderButton), for: .touchUpInside)
 
         tradingPairTokenSLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
         tradingPairTokenSLabel.theme_textColor = GlobalPicker.textColor
