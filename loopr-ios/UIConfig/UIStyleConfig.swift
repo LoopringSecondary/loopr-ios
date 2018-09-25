@@ -17,7 +17,7 @@ enum UIStyleConfig {
         let firstChar = change.first?.description ?? ""
         // if change == "0.00%", use update
         if firstChar == "" {
-            return UIColor.black
+            return UIColor.clear
         }
         let language = SettingDataManager.shared.getCurrentLanguage()
         if language == Language(name: "zh-Hans") {

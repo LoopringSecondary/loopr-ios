@@ -92,7 +92,7 @@ class AssetTransactionTableViewCell: UITableViewCell {
             default:
                 updateDefault()
             }
-            amountLabel.textColor = UIStyleConfig.getChangeColor(change: amountLabel.text!)
+            amountLabel.textColor = UIStyleConfig.getChangeColor(change: amountLabel.text ?? "")
             typeImageView.image = tx.icon
             dateLabel.text = tx.createTime
             updateStatusImage(transaction: tx)
