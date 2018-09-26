@@ -15,6 +15,8 @@ enum SwitchTradeTokenType {
 
 class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
+    var needUpdateClosure: (() -> Void)?
+    
     var tokens: [Token] = []
     var filteredTokens: [Token] = []
     
@@ -183,6 +185,7 @@ class SwitchTradeTokenViewController: UIViewController, UITableViewDelegate, UIT
             case .tokenB:
                 TradeDataManager.shared.changeTokenB(token)
             }
+            self.needUpdateClosure?()
             self.navigationController?.popViewController(animated: true)
         }
     }

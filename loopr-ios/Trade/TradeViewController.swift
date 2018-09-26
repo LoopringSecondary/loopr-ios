@@ -15,8 +15,13 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     // Header
     @IBOutlet weak var headerButton: UIButton!
     @IBOutlet weak var tradingPairTokenSLabel: UILabel!
-    @IBOutlet weak var tradingPairTokenSLabelWidthLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var tradingPairTokenBLabel: UILabel!
+    @IBOutlet weak var swapButton: UIButton!
+    
+    @IBOutlet weak var tradingPairLabelOffsetLayoutConstraint: NSLayoutConstraint!
+    var priceS: Double?
+    @IBOutlet weak var tradingPairTokenSPriceLabel: UILabel!
+    @IBOutlet weak var tradingPairTokenBPriceLabel: UILabel!
     
     // container
     @IBOutlet weak var containerView: UIView!
@@ -82,20 +87,35 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         
         headerButton.clipsToBounds = true
         headerButton.layer.cornerRadius = 6
-        /*
-        headerButton.applyGradient(withColors: UIColor.secondary, gradientOrientation: .horizontal)
-        */
         headerButton.theme_setBackgroundImage(ColorPicker.button, forState: .normal)
         headerButton.theme_setBackgroundImage(ColorPicker.buttonSelected, forState: .highlighted)
-
-        headerButton.addTarget(self, action: #selector(pressedHeaderButton), for: .touchUpInside)
+        headerButton.isUserInteractionEnabled = false
+        
+        swapButton.addTarget(self, action: #selector(pressedHeaderButton), for: .touchUpInside)
 
         tradingPairTokenSLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
         tradingPairTokenSLabel.theme_textColor = GlobalPicker.textColor
         
+        tradingPairTokenSPriceLabel.font = FontConfigManager.shared.getRegularFont(size: 11)
+        tradingPairTokenSPriceLabel.theme_textColor = GlobalPicker.textColor
+        tradingPairTokenSPriceLabel.text = "1LRC ≈ 6.1948 ARP"
+        
         tradingPairTokenBLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
         tradingPairTokenBLabel.theme_textColor = GlobalPicker.textColor
 
+        tradingPairTokenBPriceLabel.font = FontConfigManager.shared.getRegularFont(size: 11)
+        tradingPairTokenBPriceLabel.theme_textColor = GlobalPicker.textColor
+        tradingPairTokenBPriceLabel.text = "1ARP ≈ 0.1316 LRC"
+
+        tradingPairTokenSLabel.isUserInteractionEnabled = true
+        tradingPairTokenSLabel.addGestureRecognizer(setPrefillPriceGestureRecognizer())
+        tradingPairTokenSPriceLabel.isUserInteractionEnabled = true
+        tradingPairTokenSPriceLabel.addGestureRecognizer(setPrefillPriceGestureRecognizer())
+        tradingPairTokenBLabel.isUserInteractionEnabled = true
+        tradingPairTokenBLabel.addGestureRecognizer(setPrefillPriceGestureRecognizer())
+        tradingPairTokenBPriceLabel.isUserInteractionEnabled = true
+        tradingPairTokenBPriceLabel.addGestureRecognizer(setPrefillPriceGestureRecognizer())
+        
         containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
 
         // First row: TokenS
@@ -223,6 +243,10 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         print("switch tokens in TradeDataManager")
         
         TradeDataManager.shared.swapTokenSAndTokenB()
+        // Swap text field values
+        let tmp = amountSellTextField.text
+        amountSellTextField.text = amountBuyTextField.text
+        amountBuyTextField.text = tmp
         update()
     }
 
@@ -232,8 +256,44 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         let tokenb = TradeDataManager.shared.tokenB.symbol
         
         tradingPairTokenSLabel.text = tokens
-        tradingPairTokenSLabelWidthLayoutConstraint.constant = tokens.textWidth(font: tradingPairTokenSLabel.font) + 2
         tradingPairTokenBLabel.text = tokenb
+        
+        // Update the price
+        if let tokenSPrice = PriceDataManager.shared.getPrice(of: tokens), let tokenBPrice = PriceDataManager.shared.getPrice(of: tokenb) {
+            if tokenSPrice > 0 && tokenBPrice > 0 {
+                self.priceS = tokenSPrice/tokenBPrice
+                let priceSString: String
+                if self.priceS! > 1.0 {
+                    priceSString = self.priceS!.withCommas(1)
+                } else {
+                    priceSString = self.priceS!.withCommas(6)
+                }
+                tradingPairTokenSPriceLabel.attributedText = "1 \(tokens) ≈ \(priceSString) \(tokenb)".higlighted(words: [priceSString], attributes: [NSAttributedStringKey.foregroundColor: UIColor.theme])
+                
+                let priceB = 1/self.priceS!
+                let priceBString: String
+                if priceB > 1.0 {
+                    priceBString = priceB.withCommas(1)
+                } else {
+                    priceBString = priceB.withCommas(6)
+                }
+                tradingPairTokenBPriceLabel.attributedText = "1 \(tokenb) ≈ \(priceBString) \(tokens)".higlighted(words: [priceBString], attributes: [NSAttributedStringKey.foregroundColor: UIColor.theme])
+            } else {
+                self.priceS = nil
+            }
+        } else {
+            self.priceS = nil
+        }
+        
+        if self.priceS == nil {
+            tradingPairTokenSPriceLabel.isHidden = true
+            tradingPairTokenBPriceLabel.isHidden = true
+            tradingPairLabelOffsetLayoutConstraint.constant = 0
+        } else {
+            tradingPairTokenSPriceLabel.isHidden = false
+            tradingPairTokenBPriceLabel.isHidden = false
+            tradingPairLabelOffsetLayoutConstraint.constant = 9
+        }
         
         let title = LocalizedString("Available Balance", comment: "")
         
@@ -258,10 +318,30 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         hideNumericKeyboard()
     }
     
+    @objc func pressedPrefillPrice() {
+        print("pressedPrefillPrice")
+        let isSellValid = validateAmountSell()
+        if isSellValid && self.priceS != nil {
+            if self.priceS! > 0, let amounts = amountSellTextField.text, let amountSell = Double(amounts) {
+                amountBuyTextField.text = (amountSell * self.priceS!).withCommas(10).trailingZero()
+            }
+        }
+    }
+    
+    func setPrefillPriceGestureRecognizer() -> UITapGestureRecognizer {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(pressedPrefillPrice))
+        tap.numberOfTapsRequired = 1
+        return tap
+    }
+    
     @objc func pressedTokenSButton() {
         print("pressedSwitchTokenSButton")
         let viewController = SwitchTradeTokenViewController()
         viewController.type = .tokenS
+        viewController.needUpdateClosure = {
+            self.amountSellTextField.text = ""
+            self.amountBuyTextField.text = ""
+        }
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -270,6 +350,10 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         print("pressedSwitchTokenBButton")
         let viewController = SwitchTradeTokenViewController()
         viewController.type = .tokenB
+        viewController.needUpdateClosure = {
+            self.amountSellTextField.text = ""
+            self.amountBuyTextField.text = ""
+        }
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -464,6 +548,9 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         var isValid = false
         if activeTextFieldTag == amountSellTextField.tag {
             isValid = validateAmountSell()
+            
+            // TODO: udpate the price?
+            // pressedPrefillPrice()
         } else if activeTextFieldTag == amountBuyTextField.tag {
             isValid = validateAmountBuy()
         }
