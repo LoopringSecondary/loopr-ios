@@ -6,6 +6,6 @@
  Copyright © 2018 Loopring. All rights reserved.
  */
 
-NSPhotoLibraryUsageDescription = "Save QR code to the photo library";
-NSCameraUsageDescription = "Use camera to scan QR Code";
-FaceIDUsageDescription = "Use Face ID to unlock the wallet";
+NSPhotoLibraryUsageDescription = "保存二維碼到相冊";
+NSCameraUsageDescription = "使用相機掃描二維碼";
+FaceIDUsageDescription = "使用面容ID以解鎖您的錢包";

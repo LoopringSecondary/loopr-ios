@@ -35,10 +35,11 @@ class Localizator {
         "ru": "русский"
     ]
     */
-    private var availableLanguagesArray = ["DeviceLanguage", "en", "zh-Hans"]
+    private var availableLanguagesArray = ["DeviceLanguage", "en", "zh-Hans", "zh-Hant"]
     static let map = [
         "en": "English",
-        "zh-Hans": "简体中文"
+        "zh-Hans": "简体中文",
+        "zh-Hant": "繁體中文"
     ]
 
     private let kSaveLanguageDefaultKey = "kSaveLanguageDefaultKey"
