@@ -75,6 +75,7 @@
 "Password" = "密码";
 "Repeat Password" = "确认密码";
 "Enter password" = "请输入密码";
+"Enter Password" = "请输入密码";
 "Wrong password" = "密码错误";
 "Create Password" = "创建密码";
 "Password can't be empty." = "密码不能为空";

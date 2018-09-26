@@ -39,8 +39,6 @@ class DisplayKeystoreViewController: UIViewController {
         keystoreTextView.theme_textColor = GlobalPicker.textLightColor
         keystoreTextView.isEditable = false
         
-        
-
         copyButton.title = LocalizedString("Copy Keystore", comment: "")
         copyButton.setupSecondary(height: 44)
         

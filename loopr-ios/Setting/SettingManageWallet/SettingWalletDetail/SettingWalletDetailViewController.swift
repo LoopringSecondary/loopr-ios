@@ -131,63 +131,19 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
             viewController.appWallet = appWallet
             self.navigationController?.pushViewController(viewController, animated: true)
         case .backupMnemonic:
-            // Ask for device password
-            AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to access your mnemonic", comment: "")) { (error) in
-                guard error == nil else {
-                    print(error.debugDescription)
-                    return
-                }
-                let viewController = BackupMnemonicViewController()
-                viewController.hideButtons = true
-                viewController.mnemonics = self.appWallet.mnemonics
-                self.navigationController?.pushViewController(viewController, animated: true)
+            if appWallet.setupWalletMethod == .importUsingPrivateKey || (appWallet.setupWalletMethod == .importUsingMnemonic && appWallet.getPassword() == "") {
+                pushToBackupMnemonicViewController()
+            } else {
+                pushToAskPasswordViewController(exportWalletInfoType: .mnemonic)
             }
         case .exportPrivateKey:
-            // Ask for device password
-            AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to access your private key", comment: "")) { (error) in
-                guard error == nil else {
-                    print(error.debugDescription)
-                    return
-                }
-
-                let viewController = DisplayPrivateKeyViewController()
-                var isSucceeded: Bool = false
-                SVProgressHUD.show(withStatus: LocalizedString("Exporting private key", comment: "") + "...")
-                let dispatchGroup = DispatchGroup()
-                dispatchGroup.enter()
-                DispatchQueue.global().async {
-                    do {
-                        let decoder = JSONDecoder()
-                        let newkeystoreData: Data = self.appWallet.getKeystore().data(using: .utf8)!
-                        let newkeystore = try decoder.decode(NewKeystore.self, from: newkeystoreData)
-                        let privateKey = try newkeystore.privateKey(password: self.appWallet.getKeystorePassword())
-                        viewController.displayValue = privateKey.toHexString()
-
-                        isSucceeded = true
-                        dispatchGroup.leave()
-                    } catch {
-                        isSucceeded = false
-                        dispatchGroup.leave()
-                    }
-                }
-                
-                dispatchGroup.notify(queue: .main) {
-                    SVProgressHUD.dismiss()
-                    if isSucceeded {
-                        self.navigationController?.pushViewController(viewController, animated: true)
-                    } else {
-                        let banner = NotificationBanner.generate(title: "Wrong password", style: .danger)
-                        banner.duration = 1.5
-                        banner.show()
-                    }
-                }
-
+            if appWallet.setupWalletMethod == .importUsingPrivateKey || (appWallet.setupWalletMethod == .importUsingMnemonic && appWallet.getPassword() == "") {
+                pushToDisplayPrivateKeyViewController()
+            } else {
+                pushToAskPasswordViewController(exportWalletInfoType: .privateKey)
             }
         case .exportKeystore:
-            // Will ask for device password in ExportKeystoreEnterPasswordViewController
-            let viewController = ExportKeystoreEnterPasswordViewController()
-            viewController.appWallet = appWallet
-            self.navigationController?.pushViewController(viewController, animated: true)
+            pushToAskPasswordViewController(exportWalletInfoType: .keystore)
         
         case .viewAddressOnEtherscan:
             if let url = URL(string: "https://etherscan.io/address/\(appWallet.address)") {
@@ -221,6 +177,71 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         })
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func pushToBackupMnemonicViewController() {
+        // Ask for device password
+        AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to access your mnemonic", comment: "")) { (error) in
+            guard error == nil else {
+                print(error.debugDescription)
+                return
+            }
+            let viewController = BackupMnemonicViewController()
+            viewController.hideButtons = true
+            viewController.mnemonics = self.appWallet.mnemonics
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    
+    func pushToDisplayPrivateKeyViewController() {
+        // Ask for device password
+        AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to access your private key", comment: "")) { (error) in
+            guard error == nil else {
+                print(error.debugDescription)
+                return
+            }
+            
+            let viewController = DisplayPrivateKeyViewController()
+            var isSucceeded: Bool = false
+            SVProgressHUD.show(withStatus: LocalizedString("Exporting private key", comment: "") + "...")
+            let dispatchGroup = DispatchGroup()
+            dispatchGroup.enter()
+            DispatchQueue.global().async {
+                do {
+                    let decoder = JSONDecoder()
+                    let newkeystoreData: Data = self.appWallet.getKeystore().data(using: .utf8)!
+                    let newkeystore = try decoder.decode(NewKeystore.self, from: newkeystoreData)
+                    let privateKey = try newkeystore.privateKey(password: self.appWallet.getKeystorePassword())
+                    viewController.displayValue = privateKey.toHexString()
+                    
+                    isSucceeded = true
+                    dispatchGroup.leave()
+                } catch {
+                    isSucceeded = false
+                    dispatchGroup.leave()
+                }
+            }
+            
+            dispatchGroup.notify(queue: .main) {
+                SVProgressHUD.dismiss()
+                if isSucceeded {
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                } else {
+                    let banner = NotificationBanner.generate(title: "Wrong password", style: .danger)
+                    banner.duration = 1.5
+                    banner.show()
+                }
+            }
+            
+        }
+    }
+    
+    func pushToAskPasswordViewController(exportWalletInfoType: ExportWalletInfoType) {
+        // Will ask for device password in ExportKeystoreEnterPasswordViewController
+        let viewController = ExportKeystoreEnterPasswordViewController()
+        viewController.appWallet = appWallet
+        viewController.exportWalletInfoType = exportWalletInfoType
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func navigationToSetupNavigationController() {

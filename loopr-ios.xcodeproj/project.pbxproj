@@ -429,6 +429,7 @@
 		ACBA47EE207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA47EC207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.swift */; };
 		ACBA47EF207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBA47ED207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.xib */; };
 		ACC2A2CF209EC39E00F2B7A1 /* OrderExpire.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC2A2CE209EC39E00F2B7A1 /* OrderExpire.swift */; };
+		ACC31C78215B552B00582CC0 /* ExportWalletInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC31C77215B552B00582CC0 /* ExportWalletInfoType.swift */; };
 		ACC8D0A620CC95A00049A741 /* AssetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8D0A420CC95A00049A741 /* AssetTableViewCell.swift */; };
 		ACC8D0A720CC95A00049A741 /* AssetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC8D0A520CC95A00049A741 /* AssetTableViewCell.xib */; };
 		ACC8D0AA20CCF6C20049A741 /* AssetTransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC8D0A820CCF6C20049A741 /* AssetTransactionTableViewCell.swift */; };
@@ -934,6 +935,7 @@
 		ACBA47EC207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportKeystoreEnterPasswordViewController.swift; sourceTree = "<group>"; };
 		ACBA47ED207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportKeystoreEnterPasswordViewController.xib; sourceTree = "<group>"; };
 		ACC2A2CE209EC39E00F2B7A1 /* OrderExpire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderExpire.swift; sourceTree = "<group>"; };
+		ACC31C77215B552B00582CC0 /* ExportWalletInfoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportWalletInfoType.swift; sourceTree = "<group>"; };
 		ACC8D0A420CC95A00049A741 /* AssetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTableViewCell.swift; sourceTree = "<group>"; };
 		ACC8D0A520CC95A00049A741 /* AssetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetTableViewCell.xib; sourceTree = "<group>"; };
 		ACC8D0A820CCF6C20049A741 /* AssetTransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTransactionTableViewCell.swift; sourceTree = "<group>"; };
@@ -2016,6 +2018,7 @@
 				942C4A01212A9D89008A6B4F /* P2PType.swift */,
 				942E2CAA2148B2E100041733 /* TikcerSource.swift */,
 				942E2CAC2148F15F00041733 /* TickerTag.swift */,
+				ACC31C77215B552B00582CC0 /* ExportWalletInfoType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2737,6 +2740,7 @@
 				AC31B948204A8DF400B16155 /* Address.swift in Sources */,
 				AC78FC3820A176CE00992AE8 /* MarketDepthDataManager.swift in Sources */,
 				AC68E0FF20C22E8A00BFA837 /* AddWalletError.swift in Sources */,
+				ACC31C78215B552B00582CC0 /* ExportWalletInfoType.swift in Sources */,
 				AC5E0DE4203BC4B100AF03C7 /* FloatLabelTextField.swift in Sources */,
 				FF9C7DDC208D59EA004687AD /* SettingsBundleHelper.swift in Sources */,
 				ACB9119520278A4000F14644 /* Request.swift in Sources */,
@@ -3539,7 +3543,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = s;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3551,7 +3555,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

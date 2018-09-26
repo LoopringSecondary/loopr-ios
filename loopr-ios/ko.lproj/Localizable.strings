@@ -75,6 +75,7 @@
 "Password" = "Password";
 "Repeat Password" = "Repeat Password";
 "Enter password" = "Enter password";
+"Enter Password" = "Enter Password";
 "Wrong password" = "Wrong password";
 "Create Password" = "Create Password";
 "Password can't be empty." = "Password can't be empty.";

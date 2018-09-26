@@ -38,7 +38,7 @@ class PreventScreenShotViewController: UIViewController {
 
         seperator.theme_backgroundColor = ColorPicker.cardHighLightColor
         
-        confirmButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 18)
+        confirmButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 16)
         confirmButton.tintColor = UIColor.fail
         confirmButton.title = LocalizedString("Got it", comment: "")
     }

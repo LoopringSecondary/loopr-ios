@@ -12,6 +12,7 @@ import SVProgressHUD
 
 class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDelegate {
 
+    var exportWalletInfoType: ExportWalletInfoType = .mnemonic
     var appWallet: AppWallet!
     var keystore: String = ""
 
@@ -24,7 +25,7 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
 
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = ColorPicker.backgroundColor
-        self.navigationItem.title = LocalizedString("Export Keystore", comment: "")
+        self.navigationItem.title = LocalizedString("Enter Password", comment: "")
         setBackButton()
 
         // Setup UI in the scroll view
@@ -82,8 +83,11 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
             self.errorInfoLabel.shake()
             return
         }
-        
+
+        // Only for keystore
+        // If a wallet is imported using a private key or mnemonic without passowrd
         if appWallet.setupWalletMethod == .importUsingPrivateKey || (appWallet.setupWalletMethod == .importUsingMnemonic && appWallet.getPassword() == "") {
+
             var isSucceeded: Bool = false
             SVProgressHUD.show(withStatus: LocalizedString("Exporting keystore", comment: "") + "...")
             let dispatchGroup = DispatchGroup()
@@ -118,21 +122,15 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
             dispatchGroup.notify(queue: .main) {
                 SVProgressHUD.dismiss()
                 if isSucceeded {
-                    AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to access your keystore", comment: "")) { (error) in
-                        guard error == nil else {
-                            print(error.debugDescription)
-                            return
-                        }
-                        let viewController = ExportKeystoreSwipeViewController()
-                        viewController.keystore = self.keystore
-                        self.navigationController?.pushViewController(viewController, animated: true)
-                    }
+                    // Use this keystore in the view controller.
+                    self.pushToExportKeystoreSwipeViewController(keystore: self.keystore)
                 } else {
                     let banner = NotificationBanner.generate(title: "Wrong password", style: .danger)
                     banner.duration = 1.5
                     banner.show()
                 }
             }
+
         } else {
             // Validate the password
             var validPassword = true
@@ -146,16 +144,16 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
                 self.errorInfoLabel.shake()
                 return
             }
-            
-            AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to access your keystore", comment: "")) { (error) in
-                guard error == nil else {
-                    print(error.debugDescription)
-                    return
-                }
-                let viewController = ExportKeystoreSwipeViewController()
-                viewController.keystore = self.appWallet.getKeystore()
-                self.navigationController?.pushViewController(viewController, animated: true)
+
+            switch exportWalletInfoType {
+            case .mnemonic:
+                self.pushToBackupMnemonicViewController()
+            case .privateKey:
+                self.pushToDisplayPrivateKeyViewController()
+            case .keystore:
+                self.pushToExportKeystoreSwipeViewController(keystore: self.appWallet.getKeystore())
             }
+
         }
     }
     
@@ -166,10 +164,78 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let newLength = (textField.text?.utf16.count)! + (string.utf16.count) - range.length
         errorInfoLabel.alpha = 0.0
         errorInfoLabel.text = ""
         return true
+    }
+    
+    func pushToBackupMnemonicViewController() {
+        // Ask for device password
+        AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to access your mnemonic", comment: "")) { (error) in
+            guard error == nil else {
+                print(error.debugDescription)
+                return
+            }
+            let viewController = BackupMnemonicViewController()
+            viewController.hideButtons = true
+            viewController.mnemonics = self.appWallet.mnemonics
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    
+    func pushToDisplayPrivateKeyViewController() {
+        // Ask for device password
+        AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to access your private key", comment: "")) { (error) in
+            guard error == nil else {
+                print(error.debugDescription)
+                return
+            }
+            
+            let viewController = DisplayPrivateKeyViewController()
+            var isSucceeded: Bool = false
+            SVProgressHUD.show(withStatus: LocalizedString("Exporting private key", comment: "") + "...")
+            let dispatchGroup = DispatchGroup()
+            dispatchGroup.enter()
+            DispatchQueue.global().async {
+                do {
+                    let decoder = JSONDecoder()
+                    let newkeystoreData: Data = self.appWallet.getKeystore().data(using: .utf8)!
+                    let newkeystore = try decoder.decode(NewKeystore.self, from: newkeystoreData)
+                    let privateKey = try newkeystore.privateKey(password: self.appWallet.getKeystorePassword())
+                    viewController.displayValue = privateKey.toHexString()
+                    
+                    isSucceeded = true
+                    dispatchGroup.leave()
+                } catch {
+                    isSucceeded = false
+                    dispatchGroup.leave()
+                }
+            }
+            
+            dispatchGroup.notify(queue: .main) {
+                SVProgressHUD.dismiss()
+                if isSucceeded {
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                } else {
+                    let banner = NotificationBanner.generate(title: "Wrong password", style: .danger)
+                    banner.duration = 1.5
+                    banner.show()
+                }
+            }
+            
+        }
+    }
+
+    func pushToExportKeystoreSwipeViewController(keystore: String) {
+        AuthenticationDataManager.shared.authenticate(reason: LocalizedString("Authenticate to access your keystore", comment: "")) { (error) in
+            guard error == nil else {
+                print(error.debugDescription)
+                return
+            }
+            let viewController = ExportKeystoreSwipeViewController()
+            viewController.keystore = keystore
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 
 }

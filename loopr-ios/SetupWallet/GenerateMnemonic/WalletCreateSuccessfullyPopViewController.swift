@@ -30,7 +30,7 @@ class WalletCreateSuccessfullyPopViewController: UIViewController {
         
         resultIconImageView.image = UIImage(named: "Result-header-success")
 
-        infoLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
+        infoLabel.font = FontConfigManager.shared.getCharactorFont(size: 16)
         infoLabel.textColor = UIColor.success
         infoLabel.text = LocalizedString("Wallet Created Successfully!", comment: "")
 
