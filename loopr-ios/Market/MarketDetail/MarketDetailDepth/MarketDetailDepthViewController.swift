@@ -22,6 +22,7 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
     private var buys: [Depth] = []
     private var sells: [Depth] = []
     private var maxAmountInDepthView: Double = 0
+    private var minSellPrice: Double = 0
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -69,6 +70,10 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
                 self.maxAmountInDepthView = sells[sells.count / 2].amountAInDouble * 1.5
             } else {
                 self.maxAmountInDepthView = 0
+            }
+            
+            if sells.count > 0 {
+                self.minSellPrice = Double(sells[0].price) ?? 0
             }
 
             DispatchQueue.main.async {
@@ -176,6 +181,7 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
                 let nib = Bundle.main.loadNibNamed("MarketDetailDepthTableViewCell", owner: self, options: nil)
                 cell = nib![0] as? MarketDetailDepthTableViewCell            
                 cell?.maxAmountInDepthView = maxAmountInDepthView
+                cell?.minSellPrice = minSellPrice
                 cell?.delegate = self
             }
             if indexPath.row < buys.count {
@@ -205,6 +211,16 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.delegate?.pushWithSelectedDepth(amount: amount, price: price, tradeType: tradeType)
         }
+    }
+
+    func tappedDepthInfoIcon() {
+        // TODO: need improvement
+        // Putting two tips in the message is too long.
+        let alert = UIAlertController(title: LocalizedString("Order Depth Tips", comment: ""), message: LocalizedString("The depth maybe under matching: Miners may need some time to submit txs to ethereum.", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: LocalizedString("OK", comment: ""), style: .default, handler: { _ in
+
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 
 }

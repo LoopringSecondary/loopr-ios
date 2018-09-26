@@ -215,6 +215,8 @@
 "Signer address does NOT match the order's, please transfer and try again later" = "授权方的钱包地址和下单方地址并不匹配，请在更换授权方的地址，确认匹配后再进行授权";
 "Please input a correct address" = "请输入正确的代币合约地址";
 "The P2P order is not created in this iPhone. You can't share the QR code." = "P2P订单不在该手机产生。无法获取二维码。";
+"Order Depth Tips" = "订单深度提示";
+"The depth maybe under matching: Miners may need some time to submit txs to ethereum." = "该深度可能正在撮合中：矿工需要一些时间提交以太坊交易";
 
 /* Order status */
 "Open" = "进行中";

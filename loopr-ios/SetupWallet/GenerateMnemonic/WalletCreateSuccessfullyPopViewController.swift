@@ -34,7 +34,7 @@ class WalletCreateSuccessfullyPopViewController: UIViewController {
         infoLabel.textColor = UIColor.success
         infoLabel.text = LocalizedString("Wallet Created Successfully!", comment: "")
 
-        confirmButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 18)
+        confirmButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 18)
         confirmButton.tintColor = UIColor.success
         confirmButton.title = LocalizedString("OK, got it", comment: "")
         

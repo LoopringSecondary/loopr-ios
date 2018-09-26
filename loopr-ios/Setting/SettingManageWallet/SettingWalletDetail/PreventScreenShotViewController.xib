@@ -41,7 +41,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如果有人获取您的私钥将会直接获取您的资产！请抄写下私钥并存放在安全的地方。" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQz-fj-hrc">
-                            <rect key="frame" x="48" y="120.99999999999999" width="219" height="50.333333333333329"/>
+                            <rect key="frame" x="30" y="120.99999999999999" width="255" height="50.333333333333329"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -64,7 +64,7 @@
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="cQz-fj-hrc" firstAttribute="leading" secondItem="bb2-R2-LVD" secondAttribute="leading" constant="48" id="6kt-bb-RpX"/>
+                        <constraint firstItem="cQz-fj-hrc" firstAttribute="leading" secondItem="bb2-R2-LVD" secondAttribute="leading" constant="30" id="6kt-bb-RpX"/>
                         <constraint firstItem="JJV-0t-8MR" firstAttribute="top" secondItem="bb2-R2-LVD" secondAttribute="top" constant="32" id="Im2-xn-Uzk"/>
                         <constraint firstItem="pIS-BO-rYq" firstAttribute="top" secondItem="0Zh-8k-QPZ" secondAttribute="bottom" id="NKU-wI-lOR"/>
                         <constraint firstAttribute="height" constant="250" id="TG9-08-rBq"/>
@@ -74,7 +74,7 @@
                         <constraint firstItem="pIS-BO-rYq" firstAttribute="centerX" secondItem="bb2-R2-LVD" secondAttribute="centerX" id="bDs-M9-aGg"/>
                         <constraint firstItem="0Zh-8k-QPZ" firstAttribute="centerX" secondItem="bb2-R2-LVD" secondAttribute="centerX" id="bL3-3p-KOH"/>
                         <constraint firstAttribute="width" constant="315" id="boT-NG-vCx"/>
-                        <constraint firstAttribute="trailing" secondItem="cQz-fj-hrc" secondAttribute="trailing" constant="48" id="fXh-j2-GFD"/>
+                        <constraint firstAttribute="trailing" secondItem="cQz-fj-hrc" secondAttribute="trailing" constant="30" id="fXh-j2-GFD"/>
                         <constraint firstAttribute="bottom" secondItem="pIS-BO-rYq" secondAttribute="bottom" id="hve-MW-1tz"/>
                         <constraint firstItem="v4u-3Q-1qp" firstAttribute="centerX" secondItem="bb2-R2-LVD" secondAttribute="centerX" id="q9H-Bq-Z1g"/>
                         <constraint firstItem="cQz-fj-hrc" firstAttribute="top" secondItem="v4u-3Q-1qp" secondAttribute="bottom" constant="16" id="wQJ-VE-MKI"/>

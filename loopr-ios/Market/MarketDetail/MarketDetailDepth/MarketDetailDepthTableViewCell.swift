@@ -12,6 +12,7 @@ protocol MarketDetailDepthTableViewCellDelegate: class {
     // Use String since it's what users see.
     func clickedMarketDetailDepthTableViewCell(amount: String, price: String)
     func clickedMarketDetailDepthTableViewCell(amount: String, price: String, tradeType: TradeType)
+    func tappedDepthInfoIcon()
 }
 
 class MarketDetailDepthTableViewCell: UITableViewCell {
@@ -21,6 +22,7 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
     var buyDepth: Depth?
     var sellDepth: Depth?
     var maxAmountInDepthView: Double = 0
+    var minSellPrice: Double = 0
     
     var baseViewBuy: UIView = UIView()
     var baseViewSell: UIView = UIView()
@@ -35,6 +37,8 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
     var label2: UILabel = UILabel()
     var label3: UILabel = UILabel()
     var label4: UILabel = UILabel()
+    
+    var depthInfoImageView: UIImageView = UIImageView()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -73,6 +77,17 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
         fakeBuyButton.setTitle("", for: .normal)
         fakeBuyButton.addTarget(self, action: #selector(pressedFakeBuyButton(_:)), for: UIControlEvents.touchUpInside)
         addSubview(fakeBuyButton)
+        
+        // depthInfoImageView is on top of fakeBuyButton
+        depthInfoImageView.image = UIImage(named: "Info-small")
+        depthInfoImageView.contentMode = .center
+        depthInfoImageView.frame = CGRect(x: 100, y: (33-30)*0.5, width: 30, height: 30)
+        fakeBuyButton.addSubview(depthInfoImageView)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        tap.delegate = self
+        depthInfoImageView.isUserInteractionEnabled = true
+        depthInfoImageView.addGestureRecognizer(tap)
         
         baseViewSell.frame = CGRect(x: baseViewBuy.frame.maxX+5, y: baseViewBuy.frame.minY, width: baseViewBuy.width, height: baseViewBuy.height)
         baseViewSell.theme_backgroundColor = ColorPicker.cardBackgroundColor
@@ -113,10 +128,19 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
             }
             depthViewBuy.frame = CGRect(x: baseViewBuy.width*CGFloat(1.0-percentage), y: 1, width: baseViewBuy.width*CGFloat(percentage), height: MarketDetailDepthTableViewCell.getHeight()-2)
             
+            let currentBuyDepthPrice = Double(buyDepth.price) ?? 0
+            if currentBuyDepthPrice > minSellPrice && minSellPrice > 0 {
+                depthInfoImageView.x = (label1.text?.textWidth(font: label1.font))! + label1.x - 4
+                depthInfoImageView.isHidden = false
+            } else {
+                depthInfoImageView.isHidden = true
+            }
+            
         } else {
             label1.text = ""
             label2.text = ""
             depthViewBuy.frame = CGRect.zero
+            depthInfoImageView.isHidden = true
         }
         
         if let sellDepth = sellDepth {
@@ -162,6 +186,12 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
             delegate?.clickedMarketDetailDepthTableViewCell(amount: sellDepth!.amountA, price: sellDepth!.price)
             delegate?.clickedMarketDetailDepthTableViewCell(amount: sellDepth!.amountA, price: sellDepth!.price, tradeType: .sell)
         }
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        // handling code
+        print("handleTap")
+        delegate?.tappedDepthInfoIcon()
     }
     
     class func getCellIdentifier() -> String {

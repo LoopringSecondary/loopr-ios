@@ -221,4 +221,8 @@ class MarketDetailDepthModalViewController: UIViewController, UITableViewDelegat
         
     }
 
+    func tappedDepthInfoIcon() {
+        
+    }
+
 }
