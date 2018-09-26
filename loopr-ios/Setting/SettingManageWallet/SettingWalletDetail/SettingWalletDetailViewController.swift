@@ -165,7 +165,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         let footer = LocalizedString("on this device.", comment: "")
         let alertController = UIAlertController(title: "\(header) \(appWallet.name) \(footer)", message: nil, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
-            AppWalletDataManager.shared.logout(appWallet: self.appWallet)
+            AppWalletDataManager.shared.logout(appWalletToBeDeleted: self.appWallet)
             if AppWalletDataManager.shared.getWallets().isEmpty {
                 self.navigationToSetupNavigationController()
             } else {

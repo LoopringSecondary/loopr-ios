@@ -24,8 +24,9 @@ class AppWalletDataManager {
         // getAllBalanceFromRelay()
     }
     
-    func logout(appWallet: AppWallet) {
-        if let index = appWallets.index(of: appWallet) {
+    func logout(appWalletToBeDeleted: AppWallet) {
+        print("before logout: \(appWallets.count)")
+        if let index = appWallets.index(of: appWalletToBeDeleted) {
             appWallets.remove(at: index)
             let defaults = UserDefaults.standard
             let encodedData = NSKeyedArchiver.archivedData(withRootObject: AppWalletDataManager.shared.appWallets)
@@ -33,17 +34,23 @@ class AppWalletDataManager {
             getAppWalletsFromLocalStorage()
             
             // Remove the address from the app service
-            PushNotificationDeviceDataManager.shared.remove(address: appWallet.address)
+            PushNotificationDeviceDataManager.shared.remove(address: appWalletToBeDeleted.address)
+            
+            print("after logout: \(appWallets.count)")
 
             // Set the current wallet
-            if appWallet == CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
+            if let currentAppWallet = CurrentAppWalletDataManager.shared.getCurrentAppWallet() {
+                if appWalletToBeDeleted == currentAppWallet {
+                    if  appWallets.count > 0 {
+                        CurrentAppWalletDataManager.shared.setCurrentAppWallet(AppWalletDataManager.shared.appWallets[0], completionHandler: {})
+                    }
+                }
+            } else {
                 if  appWallets.count > 0 {
-                    let appWallet = AppWalletDataManager.shared.appWallets[0]
-                    CurrentAppWalletDataManager.shared.setCurrentAppWallet(appWallet, completionHandler: {})
-                } else {
-                    return
+                    CurrentAppWalletDataManager.shared.setCurrentAppWallet(AppWalletDataManager.shared.appWallets[0], completionHandler: {})
                 }
             }
+            
         } else {
             return
         }
