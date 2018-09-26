@@ -27,7 +27,7 @@ class ImportWalletUsingKeystoreDataManagerTests: XCTestCase {
         
         let appWallet = AppWallet(setupWalletMethod: .importUsingKeystore, address: "0x11381c3a20c2793b9f17502d72bda905e03734f2", password: "1234567890", keystoreString: keystoreString, name: "hello", isVerified: true, tokenList: [], manuallyDisabledTokenList: [])
         
-        AppWalletDataManager.shared.logout(appWallet: appWallet)
+        AppWalletDataManager.shared.logout(appWalletToBeDeleted: appWallet)
         
         XCTAssertNoThrow(try ImportWalletUsingKeystoreDataManager.shared.unlockWallet(userInputKeystoreStringValue: keystoreString, password: "1234567890"))
         // let address = "0x11381c3a20c2793b9f17502d72bda905e03734f2"
