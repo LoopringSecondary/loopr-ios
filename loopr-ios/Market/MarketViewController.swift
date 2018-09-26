@@ -35,7 +35,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.type = type
         // TO reduce the number of TableViewCells that are created during init()
         if self.type == .favorite || self.type == .ETH {
-            markets = MarketDataManager.shared.getMarketsWithoutReordered(type: type)
+            markets = MarketDataManager.shared.getMarketsWithoutReordered(type: type, tag: .whiteList)
         }
     }
     
@@ -117,7 +117,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @objc func tickerResponseReceivedNotification() {
         if viewAppear && !isSearching && isListeningSocketIO {
             print("MarketViewController reload table \(type.description)")
-            markets = MarketDataManager.shared.getMarketsWithoutReordered(type: type)
+            markets = MarketDataManager.shared.getMarketsWithoutReordered(type: type, tag: .whiteList)
             marketTableView.reloadData()
         }
     }
@@ -154,7 +154,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func reloadAfterSwipeViewUpdated(isSearching: Bool, searchText: String) {
-        markets = MarketDataManager.shared.getMarketsWithoutReordered(type: type)
+        markets = MarketDataManager.shared.getMarketsWithoutReordered(type: type, tag: .whiteList)
         self.isSearching = isSearching
         self.searchText = searchText.trim()
         if isSearching {

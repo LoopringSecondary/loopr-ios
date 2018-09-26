@@ -155,6 +155,7 @@ class LoopringAPIRequest {
         }
     }
     
+    // Get markets
     static func getTicker(by source: TikcerSource, completionHandler: @escaping (_ markets: [Market], _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getTickerBySource"

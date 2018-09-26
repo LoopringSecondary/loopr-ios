@@ -113,7 +113,9 @@ class MarketDataManager {
         case .all:
             result = markets
         }
-        if tag != .all {
+        
+        // If it's favorite type, return all with favorite.
+        if tag != .all && type != .favorite {
             result = result.filter({ (market) -> Bool in
                 return market.tag == tag
             })
