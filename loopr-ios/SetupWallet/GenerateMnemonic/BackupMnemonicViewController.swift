@@ -58,7 +58,7 @@ class BackupMnemonicViewController: UIViewController {
         backgroundImageView2.round(corners: [.bottomLeft, .bottomRight], radius: 6)
         view.addSubview(backgroundImageView2)
 
-        infoTextView.frame = CGRect(x: 20, y: 30, width: backgroundImageView1.width - 20*2, height: 120)
+        infoTextView.frame = CGRect(x: 20, y: 30, width: backgroundImageView1.width - 20*2, height: 160)
         infoTextView.isEditable = false
         infoTextView.textColor = UIColor.white
         infoTextView.backgroundColor = UIColor.clear
@@ -106,7 +106,7 @@ class BackupMnemonicViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let stringValue = LocalizedString("Revealing your mnemonic phrases on web sites is highly dangerous. If the site is compromised or you accidentally visit a phishing website, your assets in all associated addresses can be stolen.", comment: "")
+        let stringValue = LocalizedString("Please don't show up in public places (prevent cameras from taking photos) or take a screen shot(your operating system may back up images to cloud storage). These operations can bring you huge and irreversible security risks.", comment: "")
         let attributedString = NSMutableAttributedString(string: stringValue)
         let style = NSMutableParagraphStyle()
         style.minimumLineHeight = 20
