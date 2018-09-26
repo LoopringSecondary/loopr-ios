@@ -53,6 +53,7 @@
 "Please input your private key" = "请输入您的私钥";
 "Select Your Wallet Type" = "请选择您的钱包类型";
 "Select your address" = "请选择您的地址";
+"Because you did a screen capture, we have updated the wallet mnemonics for you, and your screenshots have been voided! This is for your asset security." = "因为您做了截屏操作，我们为您更新了钱包助记词，您的截屏已经作废！这是为了您资产安全着想。";
 "Please don't show up in public places (prevent cameras from taking photos) or take a screen shot(your operating system may back up images to cloud storage). These operations can bring you huge and irreversible security risks." = "请不要在公众场所展示(防止摄像头拍照)，也不要截屏(您的操作系统可能会将图片备份到云存储)。这些操作会给您带来巨大而不可逆转的安全隐患。";
 "No wallet is found in the device. Navigate to the wallet creation view." = "该手机已清空所有钱包，跳转到钱包创建页面。";
 "New Wallet Name" = "新钱包名称";

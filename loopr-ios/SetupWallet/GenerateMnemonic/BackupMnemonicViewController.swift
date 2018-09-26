@@ -145,7 +145,7 @@ class BackupMnemonicViewController: UIViewController {
             mnemonics = GenerateWalletDataManager.shared.getMnemonics()
             mnemonicCollectionViewController0.mnemonics = mnemonics
             mnemonicCollectionViewController0.collectionView?.reloadData()
-            displayWarning()
+            displayWarning(tipInfo: LocalizedString("Because you did a screen capture, we have updated the wallet mnemonics for you, and your screenshots have been voided! This is for your asset security.", comment: ""))
         }
     }
 
@@ -203,8 +203,13 @@ class BackupMnemonicViewController: UIViewController {
         appDelegate?.window?.rootViewController = MainTabController()
     }
     
-    func displayWarning() {
+    func displayWarning(tipInfo: String? = nil) {
         let vc = PreventScreenShotViewController()
+        
+        if tipInfo != nil {
+            vc.tipInfo = tipInfo!
+        }
+        
         vc.modalPresentationStyle = .overFullScreen
         vc.dismissClosure = {
             UIView.animate(withDuration: 0.1, animations: {

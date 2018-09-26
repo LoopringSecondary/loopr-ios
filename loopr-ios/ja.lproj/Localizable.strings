@@ -53,6 +53,7 @@
 "Please input your private key" = "Please input your private key";
 "Select Your Wallet Type" = "Select Your Wallet Type";
 "Select your address" = "Select your address";
+"Because you did a screen capture, we have updated the wallet mnemonics for you, and your screenshots have been voided! This is for your asset security." = "Because you did a screen capture, we have updated the wallet mnemonics for you, and your screenshots have been voided! This is for your asset security.";
 "Please don't show up in public places (prevent cameras from taking photos) or take a screen shot(your operating system may back up images to cloud storage). These operations can bring you huge and irreversible security risks." = "Please don't show up in public places (prevent cameras from taking photos) or take a screen shot(your operating system may back up images to cloud storage). These operations can bring you huge and irreversible security risks.";
 "No wallet is found in the device. Navigate to the wallet creation view." = "No wallet is found in the device. Navigate to the wallet creation view.";
 "New Wallet Name" = "New Wallet Name";

@@ -10,6 +10,8 @@ import UIKit
 
 class PreventScreenShotViewController: UIViewController {
     
+    var tipInfo: String = LocalizedString("Prevent_Tip", comment: "")
+
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tipInfoLabel: UILabel!
@@ -34,7 +36,7 @@ class PreventScreenShotViewController: UIViewController {
         
         tipInfoLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         tipInfoLabel.theme_textColor = ["#00000099", "#ffffff66"]
-        tipInfoLabel.text = LocalizedString("Prevent_Tip", comment: "")
+        tipInfoLabel.text = tipInfo
 
         seperator.theme_backgroundColor = ColorPicker.cardHighLightColor
         
