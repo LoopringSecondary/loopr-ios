@@ -66,6 +66,7 @@ class SettingDataManager {
         if let currencyName = defaults.string(forKey: UserDefaultsKeys.currentCurrency.rawValue) {
             return Currency(name: currencyName)
         } else {
+            // TODO: we don't support hongkong dollar now.
             if getCurrentLanguage() == Language(name: "zh-Hans") {
                 setCurrentCurrency(Currency(name: "CNY"))
                 return Currency(name: "CNY")

@@ -81,7 +81,7 @@ class OrderQRCodeViewController: UIViewController {
         titleInShare.theme_textColor = GlobalPicker.contrastTextColor
         titleInShare.text = "Loopring"
         
-        if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
+        if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" || SettingDataManager.shared.getCurrentLanguage().name  == "zh-Hant" {
             titleInShare.isHidden = true
             titleImageInShare.isHidden = false
         } else {

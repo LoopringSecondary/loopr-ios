@@ -92,7 +92,7 @@ class TradeReviewViewController: UIViewController {
         titleLabel.theme_textColor = GlobalPicker.contrastTextColor
         titleLabel.text = "Loopring"
         
-        if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
+        if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" || SettingDataManager.shared.getCurrentLanguage().name  == "zh-Hant" {
             titleLabel.isHidden = true
             titleImageInShare.isHidden = false
         } else {

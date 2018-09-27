@@ -84,7 +84,7 @@ class FontConfigManager {
         let fontSize = size * UIStyleConfig.scale
         if SettingDataManager.shared.getCurrentLanguage().name == "en" {
             font = getMediumFont(size: size)
-        } else if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
+        } else if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" || SettingDataManager.shared.getCurrentLanguage().name  == "zh-Hant" {
             font = UIFont(name: "PingfangSC-Regular", size: fontSize)!
         } else {
             font = UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.medium)

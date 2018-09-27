@@ -176,6 +176,7 @@ extension UIColor {
         return UIColor(named: "Color-green")!
     }
     
+    // HongKong has the same color as Unite States.
     class var up: UIColor {
         if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
             return UIColor(named: "Color-green")! // #01B97F

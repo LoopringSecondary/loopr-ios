@@ -19,6 +19,8 @@ enum UIStyleConfig {
         if firstChar == "" {
             return UIColor.clear
         }
+        
+        // HongKong has the same color as Unite States.
         let language = SettingDataManager.shared.getCurrentLanguage()
         if language == Language(name: "zh-Hans") {
             if firstChar == "↓" || firstChar == "-" || down == true {
