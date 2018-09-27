@@ -58,20 +58,29 @@ class SettingPartnerViewController: UIViewController {
     
     func openShare() {
         let text = LocalizedString("Partner Download Link", comment: "")
-        let image = UIImage(named: "Partner-background" + ColorTheme.getTheme())
-        let overlayingImage = image?.imageOverlayingImages([qrcodeImage], scalingBy: [1])
-        let png = UIImagePNGRepresentation(overlayingImage!)
-        let shareAll = [text, png!] as [Any]
-        let activityVC = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
-        activityVC.excludedActivityTypes = [.message, .mail, .airDrop]
-        activityVC.popoverPresentationController?.sourceView = self.view
-        activityVC.completionWithItemsHandler = {(activity, success, items, error) in
-            print(activity.debugDescription)
-            if success && activity != nil {
-                Answers.logShare(withMethod: "System default share", contentName: "City Partner", contentType: activity!.rawValue as String, contentId: nil, customAttributes: nil)
-            }
+        
+        var image: UIImage?
+        if ColorTheme.getCurrent() == .green {
+            image = UIImage(named: "Partner-background\(ColorTheme.getTheme())")
+        } else if ColorTheme.getCurrent() == .yellow {
+            image = UIImage(named: "Partner-background\(ColorTheme.getTheme())-\(SettingDataManager.shared.getCurrentLanguage().name)")
         }
-        self.present(activityVC, animated: true, completion: nil)
+        
+        if image != nil {
+            let overlayingImage = imageOverlayingImages(parentImage: image!, childImages: [qrcodeImage], scalingBy: [1])
+            let png = UIImagePNGRepresentation(overlayingImage)
+            let shareAll = [text, png!] as [Any]
+            let activityVC = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [.message, .mail, .airDrop]
+            activityVC.popoverPresentationController?.sourceView = self.view
+            activityVC.completionWithItemsHandler = {(activity, success, items, error) in
+                print(activity.debugDescription)
+                if success && activity != nil {
+                    Answers.logShare(withMethod: "System default share", contentName: "City Partner", contentType: activity!.rawValue as String, contentId: nil, customAttributes: nil)
+                }
+            }
+            self.present(activityVC, animated: true, completion: nil)
+        }
     }
     
     func generateQRCode() {
@@ -86,6 +95,28 @@ class SettingPartnerViewController: UIViewController {
             let cgImage = ciContext.createCGImage(upScaledImage!, from: upScaledImage!.extent)
             qrcodeImage = UIImage(cgImage: cgImage!)
         }
+    }
+    
+    func imageOverlayingImages(parentImage: UIImage, childImages: [UIImage], scalingBy factors: [CGFloat]? = nil) -> UIImage {
+        let size = parentImage.size
+        let container = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 2.0)
+        UIGraphicsGetCurrentContext()!.interpolationQuality = .high
+        
+        parentImage.draw(in: container)
+        
+        let scaleFactors = factors ?? [CGFloat](repeating: 1.0, count: childImages.count)
+        
+        // TODO: Hardcode this value now
+        for (image, scaleFactor) in zip(childImages, scaleFactors) {
+            let topWidth: CGFloat = 151
+            let topHeight: CGFloat = 151
+            let topX: CGFloat = 112
+            let topY: CGFloat = size.height - 151 - 209 // 4054
+            
+            image.draw(in: CGRect(x: topX, y: topY, width: topWidth, height: topHeight), blendMode: .normal, alpha: 1.0)
+        }
+        return UIGraphicsGetImageFromCurrentImageContext()!
     }
     
     @objc func pressedShareButton(_ sender: Any) {
