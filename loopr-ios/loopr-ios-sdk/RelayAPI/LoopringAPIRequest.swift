@@ -585,7 +585,7 @@ class LoopringAPIRequest {
         var body: JSON = JSON()
         let protocolValue = RelayAPIConfiguration.protocolAddress
         let delegateAddress = RelayAPIConfiguration.delegateAddress
-        body["params"] = [["delegateAddress": delegateAddress, "protocol": protocolValue, "owner": owner, "walletAddress": walletAddress, "tokenS": tokenS, "tokenB": tokenB, "amountS": amountS, "amountB": amountB, "authPrivateKey": authPrivateKey, "authAddr": authAddr, "validSince": validSince, "validUntil": validUntil, "lrcFee": lrcFee, "buyNoMoreThanAmountB": buyNoMoreThanAmountB, "marginSplitPercentage": marginSplitPercentage, "powNonce": powNonce, "orderType": orderType, "v": v, "r": r, "s": s]]
+        body["params"] = [["delegateAddress": delegateAddress, "protocol": protocolValue, "sourceId": Production.getProduct(), "owner": owner, "walletAddress": walletAddress, "tokenS": tokenS, "tokenB": tokenB, "amountS": amountS, "amountB": amountB, "authPrivateKey": authPrivateKey, "authAddr": authAddr, "validSince": validSince, "validUntil": validUntil, "lrcFee": lrcFee, "buyNoMoreThanAmountB": buyNoMoreThanAmountB, "marginSplitPercentage": marginSplitPercentage, "powNonce": powNonce, "orderType": orderType, "v": v, "r": r, "s": s]]
 
         self.invoke(method: "loopring_submitOrder", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
             guard error == nil && data != nil else {
@@ -601,7 +601,7 @@ class LoopringAPIRequest {
         var body: JSON = JSON()
         let protocolValue = RelayAPIConfiguration.protocolAddress
         let delegateAddress = RelayAPIConfiguration.delegateAddress
-        body["params"] = [["delegateAddress": delegateAddress, "protocol": protocolValue, "owner": owner, "walletAddress": walletAddress, "tokenS": tokenS, "tokenB": tokenB, "amountS": amountS, "amountB": amountB, "authPrivateKey": authPrivateKey, "authAddr": authAddr, "validSince": validSince, "validUntil": validUntil, "lrcFee": lrcFee, "buyNoMoreThanAmountB": buyNoMoreThanAmountB, "marginSplitPercentage": marginSplitPercentage, "powNonce": powNonce, "orderType": orderType, "v": v, "r": r, "s": s, "makerOrderHash": makerOrderHash]]
+        body["params"] = [["delegateAddress": delegateAddress, "protocol": protocolValue, "sourceId": Production.getProduct(), "owner": owner, "walletAddress": walletAddress, "tokenS": tokenS, "tokenB": tokenB, "amountS": amountS, "amountB": amountB, "authPrivateKey": authPrivateKey, "authAddr": authAddr, "validSince": validSince, "validUntil": validUntil, "lrcFee": lrcFee, "buyNoMoreThanAmountB": buyNoMoreThanAmountB, "marginSplitPercentage": marginSplitPercentage, "powNonce": powNonce, "orderType": orderType, "v": v, "r": r, "s": s, "makerOrderHash": makerOrderHash]]
         
         self.invoke(method: "loopring_submitOrderForP2P", withBody: &body) { (_ data: SimpleRespond?, _ error: Error?) in
             guard error == nil && data != nil else {
