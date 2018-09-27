@@ -100,7 +100,7 @@ class TradeConfirmationViewController: UIViewController {
         LRCFeeValueLabel.theme_textColor = GlobalPicker.textColor
 
         // TTL label
-        validLabel.text = LocalizedString("Time to Live", comment: "")
+        validLabel.text = LocalizedString("Expiration Time", comment: "")
         validLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
         validLabel.theme_textColor = GlobalPicker.textLightColor
         
@@ -215,9 +215,9 @@ class TradeConfirmationViewController: UIViewController {
             let total = (price * order.lrcFee).currency
             LRCFeeValueLabel.text = "\(order.lrcFee.withCommas(3))LRC ≈ \(total)"
         }
-        let since = DateUtil.convertToDate(UInt(order.validSince), format: "MM-dd HH:mm")
+        // let since = DateUtil.convertToDate(UInt(order.validSince), format: "MM-dd HH:mm")
         let until = DateUtil.convertToDate(UInt(order.validUntil), format: "MM-dd HH:mm")
-        validValueLabel.text = "\(since) ~ \(until)"
+        validValueLabel.text = "\(until)"
     }
     
     @IBAction func pressedPlaceOrderButton(_ sender: UIButton) {

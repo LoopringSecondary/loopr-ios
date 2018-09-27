@@ -179,7 +179,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
             declineButton.title = LocalizedString("Decline", comment: "")
             declineButton.setupSecondary(height: 44)
         } else {
-            confirmationButton.title = LocalizedString("Confirmation", comment: "")
+            confirmationButton.title = LocalizedString("Confirm", comment: "")
         }
         confirmationButton.setupPrimary(height: 44)
 
