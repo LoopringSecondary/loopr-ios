@@ -114,7 +114,10 @@ class MarketDetailSwipeViewController: SwipeViewController {
 
     func setupChildViewControllers() {
         vc1.market = market
+        vc1.getDataFromRelay()
+
         vc2.market = market
+        vc2.getDataFromRelay()
         
         if Themes.isDark() {
             options.swipeTabView.itemView.textColor = UIColor(rgba: "#ffffff66")
