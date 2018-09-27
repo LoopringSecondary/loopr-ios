@@ -254,8 +254,6 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
                 
             }
         }
-        
-
     }
 
 }

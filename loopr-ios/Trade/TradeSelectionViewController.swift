@@ -10,10 +10,13 @@ import UIKit
 
 class TradeSelectionViewController: UIViewController {
 
+    let tradingCompetitionLink = "https://event.loopring.io/#/20181001"
+
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
+    @IBOutlet weak var button5: UIButton!
     
     var isViewDidAppear: Bool = false
     
@@ -51,6 +54,12 @@ class TradeSelectionViewController: UIViewController {
         button4.theme_setBackgroundImage(ColorPicker.button, forState: .normal)
         button4.theme_setBackgroundImage(ColorPicker.buttonHighlight, forState: .highlighted)
         button4.addTarget(self, action: #selector(self.pressedButton4(_:)), for: .touchUpInside)
+        
+        button5.cornerRadius = 8
+        button5.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
+        button5.theme_setBackgroundImage(ColorPicker.button, forState: .normal)
+        button5.theme_setBackgroundImage(ColorPicker.buttonHighlight, forState: .highlighted)
+        button5.addTarget(self, action: #selector(self.pressedButton5(_:)), for: .touchUpInside)
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,6 +77,7 @@ class TradeSelectionViewController: UIViewController {
         button2.titleLabel?.setSubTitleCharFont()
         button3.titleLabel?.setSubTitleCharFont()
         button4.titleLabel?.setSubTitleCharFont()
+        button5.titleLabel?.setSubTitleCharFont()
 
         let iconTitlePadding: CGFloat = 14
         button1.set(image: UIImage.init(named: "Trade-decentralizaed-exchange-dark"), title: LocalizedString("DEX Trade", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
@@ -81,6 +91,9 @@ class TradeSelectionViewController: UIViewController {
         
         button4.set(image: UIImage.init(named: "dropdown-transaction"), title: LocalizedString("Orders", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         button4.set(image: UIImage.init(named: "dropdown-transaction")?.alpha(0.6), title: LocalizedString("Orders", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
+        
+        button5.set(image: UIImage.init(named: "Trading-competition-dark"), title: LocalizedString("Trading Competition", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
+        button5.set(image: UIImage.init(named: "Trading-competition-dark")?.alpha(0.6), title: LocalizedString("Trading Competition", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -90,6 +103,7 @@ class TradeSelectionViewController: UIViewController {
             button2.applyShadow(withColor: UIColor.black)
             button3.applyShadow(withColor: UIColor.black)
             button4.applyShadow(withColor: UIColor.black)
+            button5.applyShadow(withColor: UIColor.black)
             isViewDidAppear = true
 
             let start = Date()
@@ -134,4 +148,16 @@ class TradeSelectionViewController: UIViewController {
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    @objc func pressedButton5(_ button: UIButton) {
+        print("pressedButton5")
+        if let url = URL(string: tradingCompetitionLink) {
+            let viewController = DefaultWebViewController()
+            viewController.navigationTitle = LocalizedString("Trading Competition", comment: "")
+            viewController.url = url
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+
 }
