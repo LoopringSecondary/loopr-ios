@@ -94,7 +94,15 @@ class ConvertETHResultViewController: UIViewController {
     @IBAction func pressedDoneButton(_ sender: UIButton) {
         // Pop to TradeSelectionViewController
         for controller in self.navigationController!.viewControllers as Array {
+            // Jumps back to the second tab
             if controller.isKind(of: TradeSelectionViewController.self) {
+                self.navigationController?.setNavigationBarHidden(false, animated: false)
+                self.navigationController!.popToViewController(controller, animated: true)
+                break
+            }
+            
+            // Jumps back to asset detail view controller
+            if controller.isKind(of: AssetSwipeViewController.self) {
                 self.navigationController?.setNavigationBarHidden(false, animated: false)
                 self.navigationController!.popToViewController(controller, animated: true)
                 break
