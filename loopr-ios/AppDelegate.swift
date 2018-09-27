@@ -235,6 +235,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // Push notifications
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Answers.logCustomEvent(withName: "didRegisterForRemoteNotificationsWithDeviceToken v1",
+                               customAttributes: [:])
+
         let tokenParts = deviceToken.map { data -> String in
             return String(format: "%02.2hhx", data)
         }
@@ -244,7 +247,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Failed to register: \(error)")
+        print("Failed to register: \(error.localizedDescription)")
+        Answers.logCustomEvent(withName: "didFailToRegisterForRemoteNotificationsWithError v1",
+                               customAttributes: [
+                               "error": error.localizedDescription])
     }
 
 }
