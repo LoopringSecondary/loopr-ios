@@ -300,7 +300,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if isSearching && filteredMarkets.count > 0 {
             market = filteredMarkets[indexPath.row]
         } else {
-            market = MarketDataManager.shared.getMarketsWithoutReordered(type: type)[indexPath.row]
+            market = markets[indexPath.row]
         }
         if let didSelectRowClosure = self.didSelectRowClosure {
             didSelectRowClosure(market)
