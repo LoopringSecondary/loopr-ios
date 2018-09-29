@@ -47,7 +47,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
     
-    var blurVisualEffectView = UIView()
+    var blurVisualEffectView = UIView(frame: .zero)
     
     // Drag down to close a present view controller.
     var dismissInteractor: MiniToLargeViewInteractive!
@@ -103,7 +103,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         // First row: TokenS
         priceTextField.delegate = self
         priceTextField.tag = 0
-        priceTextField.inputView = UIView()
+        priceTextField.inputView = UIView(frame: .zero)
         priceTextField.font = FontConfigManager.shared.getDigitalFont()
         priceTextField.theme_tintColor = GlobalPicker.contrastTextColor
         priceTextField.placeholder = LocalizedString("", comment: "")
@@ -121,7 +121,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         // Second row: TokenB
         amountTextField.delegate = self
         amountTextField.tag = 1
-        amountTextField.inputView = UIView()
+        amountTextField.inputView = UIView(frame: .zero)
         amountTextField.font = FontConfigManager.shared.getDigitalFont()
         amountTextField.theme_tintColor = GlobalPicker.contrastTextColor
         amountTextField.placeholder = LocalizedString("", comment: "")
@@ -295,19 +295,23 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         var message: String = ""
         let length = Asset.getLength(of: tokenS) ?? 4
         let title = LocalizedString("Available Balance", comment: "")
-        if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: tokenS) {
+        let maxPossibleAmount = getMaxPossibleAmount(side: type, tokenBuy: tokenB, tokenSell: tokenS)
+        if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: tokenS), let price = Double(priceTextField.text!) {
             message = "\(title) \(asset.display) \(tokenS)"
-            amountTextField.text = (asset.balance * value).withCommas(length)
-//            // Only validate when balance is larger than 0.
-//            if asset.balance > 0 {
-//                _ = validate()
-//            }
+            switch type {
+            case .buy:
+                let amountToBuy = maxPossibleAmount / price
+                amountTextField.text = (amountToBuy * value).withCommas(length).trailingZero()
+            case .sell:
+                amountTextField.text = (maxPossibleAmount * value).withCommas(length).trailingZero()
+             }
         } else {
             message = "\(title) 0.0 \(tokenS)"
             amountTextField.text = "0.0"
         }
         tipLabel.text = message
         tipLabel.textColor = .text1
+        tipLabel.isHidden = false
         activeTextFieldTag = amountTextField.tag
     }
 
@@ -335,7 +339,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             tokenBuy = PlaceOrderDataManager.shared.tokenA.symbol
             tokenSell = PlaceOrderDataManager.shared.tokenB.symbol
             buyNoMoreThanAmountB = true
-            amountBuy = Double(amountTextField.text!)!
+            amountBuy = Double(amountTextField.text!.removeComma())!
             amountSell = self.orderAmount
         } else {
             side = "sell"
@@ -343,7 +347,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             tokenSell = PlaceOrderDataManager.shared.tokenA.symbol
             buyNoMoreThanAmountB = false
             amountBuy = self.orderAmount
-            amountSell = Double(amountTextField.text!)!
+            amountSell = Double(amountTextField.text!.removeComma())!
         }
 
         lrcFee = getLrcFee(amountSell, tokenSell)
@@ -364,7 +368,9 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         
         let isPriceValid = validateTokenPrice()
         let isAmountValid = validateAmount()
-        if isPriceValid && isAmountValid {
+        
+        // Need to call validate()
+        if isPriceValid && isAmountValid && validate() {
             self.pushController()
         }
         if !isPriceValid {
@@ -419,7 +425,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     }
     
     func validateTokenPrice() -> Bool {
-        if let value = Double(priceTextField.text ?? "0") {
+        if let value = Double(priceTextField.text!.removeComma()) {
             let validate = value > 0.0
             if validate {
                 let tokenBPrice = PriceDataManager.shared.getPrice(of: PlaceOrderDataManager.shared.tokenB.symbol)!
@@ -452,7 +458,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     }
     
     func validateAmount() -> Bool {
-        if let value = Double(amountTextField.text ?? "0") {
+        if let value = Double(amountTextField.text!.removeComma()) {
             let validate = value > 0.0
             if validate {
                 if type == .buy {
@@ -494,7 +500,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         if validateTokenPrice() && validateAmount() {
             isValid = true
             var total: Double
-            total = Double(priceTextField.text!)! * Double(amountTextField.text!)!
+            total = Double(priceTextField.text!.removeComma())! * Double(amountTextField.text!.removeComma())!
             self.orderAmount = total
             setupLabels()
         }
@@ -672,4 +678,43 @@ extension BuyViewController {
         let minLrc = GasDataManager.shared.getGasAmount(by: "lrcFee", in: "LRC") / 2
         return max(result, minLrc)
     }
+    
+    func getMaxPossibleAmount(side: TradeType, tokenBuy: String, tokenSell: String) -> Double {
+        var maxPossibleAmount: Double = 0
+
+        if side == .buy {
+            /*
+            if tokenBuy.uppercased() == "LRC" {
+                
+            } else {
+                
+            }
+            */
+            maxPossibleAmount = CurrentAppWalletDataManager.shared.getAsset(symbol: tokenSell)?.balance ?? 0
+            
+        } else {
+            /*
+            if tokenSell.uppercased() == "LRC" {
+                // This line of code will trigger a Relay API call
+                let lrcFrozen = PlaceOrderDataManager.shared.getFrozenLRCFeeFromServer()
+                let lrcBlance = CurrentAppWalletDataManager.shared.getBalance(of: "LRC")!
+                
+                let lrcFee = getLrcFee(lrcBlance-lrcFrozen, tokenSell)
+                
+                maxPossibleAmount = lrcBlance - lrcFrozen - lrcFee
+                
+            } else {
+                maxPossibleAmount = CurrentAppWalletDataManager.shared.getAsset(symbol: tokenSell)?.balance ?? 0
+            }
+            */
+            maxPossibleAmount = CurrentAppWalletDataManager.shared.getAsset(symbol: tokenSell)?.balance ?? 0
+        }
+        
+        if maxPossibleAmount < 0 {
+            maxPossibleAmount = 0
+        }
+
+        return maxPossibleAmount
+    }
+
 }

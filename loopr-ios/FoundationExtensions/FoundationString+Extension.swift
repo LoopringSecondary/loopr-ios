@@ -194,5 +194,9 @@ extension String {
             return self
         }
     }
+    
+    func removeComma() -> String {
+        return self.replacingOccurrences(of: ",", with: "", options: NSString.CompareOptions.literal, range:nil)
+    }
 
 }
