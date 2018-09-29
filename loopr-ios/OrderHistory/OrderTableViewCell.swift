@@ -128,13 +128,13 @@ class OrderTableViewCell: UITableViewCell {
     func setupPriceLabel(order: Order) {
         let price = order.originalOrder.amountBuy / order.originalOrder.amountSell
         if order.originalOrder.side.lowercased() == "buy" {
-            var value = String(1 / price)
+            var value = (1 / price).withCommas(15).trailingZero()
             if value.count > 9 {
                 value = (1 / price).withCommas(6)
             }
             priceLabel.text = "\(value.trailingZero())"
         } else {
-            var value = String(price)
+            var value = (price).withCommas(15).trailingZero()
             if value.count > 9 {
                 value = (price).withCommas(6)
             }
