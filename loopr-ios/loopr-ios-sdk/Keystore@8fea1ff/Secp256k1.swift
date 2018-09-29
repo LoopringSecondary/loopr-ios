@@ -29,8 +29,8 @@ public final class Secp256k1 {
         _ = privateKey.withUnsafeBytes { key in
             secp256k1_ec_pubkey_create(context, &pubKey, key)
         }
+        var len = pubKeyData.count
         _ = pubKeyData.withUnsafeMutableBytes { (output: UnsafeMutablePointer<UInt8>) in
-            var len = pubKeyData.count
             secp256k1_ec_pubkey_serialize(context, output, &len, &pubKey, UInt32(SECP256K1_EC_UNCOMPRESSED))
         }
         return pubKeyData
