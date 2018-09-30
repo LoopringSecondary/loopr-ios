@@ -57,6 +57,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     var numericKeyboardView: DefaultNumericKeyboard!
     var activeTextFieldTag = -1
     var stepSlider: StepSlider = StepSlider.getDefault()
+    var stepSliderPercentage: Double = 0.0
     
     // Expires
     var buttons: [UIButton] = []
@@ -291,28 +292,39 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         self.present(vc, animated: true, completion: nil)
     }
     
+    // TODO: I agree that the code is very complicated.
     func stepSliderValueChanged(_ value: Double) {
+        stepSliderPercentage = value
+        
         var message: String = ""
         let length = Asset.getLength(of: tokenS) ?? 4
-        let title = LocalizedString("Available Balance", comment: "")
+        
         let maxPossibleAmount = getMaxPossibleAmount(side: type, tokenBuy: tokenB, tokenSell: tokenS)
-        if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: tokenS), let price = Double(priceTextField.text!) {
-            message = "\(title) \(asset.display) \(tokenS)"
-            switch type {
-            case .buy:
-                let amountToBuy = maxPossibleAmount / price
-                amountTextField.text = (amountToBuy * value).withCommas(length).trailingZero()
-            case .sell:
-                amountTextField.text = (maxPossibleAmount * value).withCommas(length).trailingZero()
-             }
+        let price = Double(priceTextField.text!) ?? 0
+        
+        if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: tokenS) {
+            if price > 0 {
+                switch type {
+                case .buy:
+                    let title = LocalizedString("Max Amount to Buy", comment: "")
+                    let amountToBuy = maxPossibleAmount / price
+                    message = "\(title) \(amountToBuy.withCommas(length).trailingZero()) \(tokenB)"
+                    amountTextField.text = (amountToBuy * value).withCommas(length).trailingZero().removeComma()
+                case .sell:
+                    let title = LocalizedString("Available Balance", comment: "")
+                    message = "\(title) \(asset.display) \(tokenS)"
+                    amountTextField.text = (maxPossibleAmount * value).withCommas(length).trailingZero().removeComma()
+                }
+            }
         } else {
+            let title = LocalizedString("Available Balance", comment: "")
             message = "\(title) 0.0 \(tokenS)"
             amountTextField.text = "0.0"
         }
+        
         tipLabel.text = message
         tipLabel.textColor = .text1
         tipLabel.isHidden = false
-        activeTextFieldTag = amountTextField.tag
     }
 
     // To avoid gesture conflicts in swiping to back and UISlider
@@ -449,11 +461,57 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     }
    
     func setupLabels() {
-        if let balance = getBalance() {
-            let title = LocalizedString("Available Balance", comment: "")
-            tipLabel.isHidden = false
-            tipLabel.textColor = .text1
-            tipLabel.text = "\(title) \(balance.withCommas()) \(self.tokenS)"
+        switch type {
+        case .buy:
+            if validateTokenPrice() {
+                let price = Double(priceTextField.text!) ?? 0
+                if price > 0 {
+                    let title = LocalizedString("Max Amount to Buy", comment: "")
+                    let maxPossibleAmount = getMaxPossibleAmount(side: type, tokenBuy: tokenB, tokenSell: tokenS)
+                    let maxAmountToBuy = maxPossibleAmount / price
+                    tipLabel.isHidden = false
+                    tipLabel.textColor = .text1
+                    tipLabel.text = "\(title) \(maxAmountToBuy.withCommas().trailingZero()) \(tokenB)"
+                }
+            }
+            
+        case .sell:
+            if let balance = getBalance() {
+                let title = LocalizedString("Available Balance", comment: "")
+                tipLabel.isHidden = false
+                tipLabel.textColor = .text1
+                tipLabel.text = "\(title) \(balance.withCommas()) \(self.tokenS)"
+            }
+        }
+    }
+    
+    func syncAllTextFieldsAndStepSlider() {
+        guard validateTokenPrice() && validateAmount() else {
+            return
+        }
+
+        if activeTextFieldTag == priceTextField.tag {
+            // Reuse the function
+            stepSliderValueChanged(stepSliderPercentage)
+            
+        } else if activeTextFieldTag == amountTextField.tag {
+            let price = Double(priceTextField.text!) ?? 0
+            let amount = Double(amountTextField.text!.removeComma())!
+            let maxPossibleAmount = getMaxPossibleAmount(side: type, tokenBuy: tokenB, tokenSell: tokenS)
+            var percentage: Double = 0
+            switch type {
+            case .buy:
+                let maxAmountToBuy = maxPossibleAmount / price
+                percentage = amount/maxAmountToBuy
+            case .sell:
+                percentage = amount/maxPossibleAmount
+            }
+            if percentage > 1 {
+                percentage = 1
+            }
+            stepSlider.setPercentageValue(Float(percentage))
+        } else {
+            
         }
     }
     
@@ -461,11 +519,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         if let value = Double(amountTextField.text!.removeComma()) {
             let validate = value > 0.0
             if validate {
-                if type == .buy {
-                    tipLabel.isHidden = true
-                } else {
-                    setupLabels()
-                }
+                setupLabels()
             } else {
                 tipLabel.isHidden = false
                 tipLabel.textColor = .fail
@@ -503,6 +557,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             total = Double(priceTextField.text!.removeComma())! * Double(amountTextField.text!.removeComma())!
             self.orderAmount = total
             setupLabels()
+            syncAllTextFieldsAndStepSlider()
         }
         return isValid
     }
