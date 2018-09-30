@@ -306,7 +306,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             if price > 0 {
                 switch type {
                 case .buy:
-                    let title = LocalizedString("Max Amount to Buy", comment: "")
+                    let title = LocalizedString("Can Buy", comment: "")
                     let amountToBuy = maxPossibleAmount / price
                     message = "\(title) \(amountToBuy.withCommas(length).trailingZero()) \(tokenB)"
                     amountTextField.text = (amountToBuy * value).withCommas(length).trailingZero().removeComma()
@@ -466,7 +466,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             if validateTokenPrice() {
                 let price = Double(priceTextField.text!) ?? 0
                 if price > 0 {
-                    let title = LocalizedString("Max Amount to Buy", comment: "")
+                    let title = LocalizedString("Can Buy", comment: "")
                     let maxPossibleAmount = getMaxPossibleAmount(side: type, tokenBuy: tokenB, tokenSell: tokenS)
                     let maxAmountToBuy = maxPossibleAmount / price
                     tipLabel.isHidden = false
