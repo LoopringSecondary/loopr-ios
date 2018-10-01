@@ -206,6 +206,7 @@
 "Market/Price" = "市场对/单价";
 "Amount/Filled" = "数量/成交率";
 "Status/Date" = "状态/时间";
+"Lrc_Fee_Tip" = "● Loopring 协议最低交易手续费: ";
 
 /* Trade tips */
 "Convert_DES" = "● WETH之于ETH, 正如硬币之于等额的纸币。某些场合, 贩卖机只能接受硬币, 因此需要转换。以太坊协议保证: WETH和ETH之间的转换比率为 1 : 1, 且永不改变。";

@@ -206,6 +206,7 @@
 "Market/Price" = "Market/Price";
 "Amount/Filled" = "Amount/Filled";
 "Status/Date" = "Status/Date";
+"Lrc_Fee_Tip" = "● Min value of Loopring trading fee: ";
 
 /* Trade tips */
 "Convert_DES" = "● Think of it like the coin version of a paper note. The same value, but some machines only take coins. The conversion ratio between ETH and WETH is always 1:1, guaranteed by Ethereum.";
