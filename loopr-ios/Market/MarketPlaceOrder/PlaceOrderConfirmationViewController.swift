@@ -451,7 +451,8 @@ extension PlaceOrderConfirmationViewController {
 
             DispatchQueue.main.async {
                 print("PlaceOrderConfirmationViewController \(error.debugDescription)")
-                let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
+                let message: String = (error! as NSError).userInfo["message"] as? String ?? String(describing: error)
+                let banner = NotificationBanner.generate(title: message, style: .danger)
                 banner.duration = 10
                 banner.show()
             }
