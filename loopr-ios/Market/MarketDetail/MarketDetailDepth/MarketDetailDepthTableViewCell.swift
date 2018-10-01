@@ -65,7 +65,7 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
         label1.textAlignment = .left
         baseViewBuy.addSubview(label1)
         
-        label2 = UILabel(frame: CGRect(x: 10 + (baseViewBuy.width-30)*0.5, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
+        label2 = UILabel(frame: CGRect(x: 10 + 10 + (baseViewBuy.width-30)*0.5, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
         label2.theme_textColor = GlobalPicker.textColor
         label2.font = FontConfigManager.shared.getMediumFont(size: 12)
         label2.textAlignment = .right
@@ -103,7 +103,7 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
         label3.textAlignment = .left
         baseViewSell.addSubview(label3)
         
-        label4 = UILabel(frame: CGRect(x: 10 + (baseViewBuy.width-30)*0.5, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
+        label4 = UILabel(frame: CGRect(x: 10 + 10 + (baseViewBuy.width-30)*0.5, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
         label4.theme_textColor = GlobalPicker.textColor
         label4.font = FontConfigManager.shared.getMediumFont(size: 12)
         label4.textAlignment = .right

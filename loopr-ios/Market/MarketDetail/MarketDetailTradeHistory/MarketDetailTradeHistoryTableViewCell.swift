@@ -35,13 +35,13 @@ class MarketDetailTradeHistoryTableViewCell: UITableViewCell {
         baseViewBuy.theme_backgroundColor = ColorPicker.cardBackgroundColor
         addSubview(baseViewBuy)
         
-        label1 = UILabel(frame: CGRect(x: 10, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
+        label1 = UILabel(frame: CGRect(x: 10, y: 0, width: (baseViewBuy.width-30)*0.7, height: 33))
         label1.theme_textColor = GlobalPicker.textColor
         label1.font = FontConfigManager.shared.getMediumFont(size: 12)
         label1.textAlignment = .left
         baseViewBuy.addSubview(label1)
         
-        label2 = UILabel(frame: CGRect(x: 10 + label1.frame.maxX, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
+        label2 = UILabel(frame: CGRect(x: 10 + 10 + (baseViewBuy.width-30)*0.5, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
         label2.theme_textColor = GlobalPicker.textColor
         label2.font = FontConfigManager.shared.getMediumFont(size: 12)
         label2.textAlignment = .right
@@ -68,7 +68,7 @@ class MarketDetailTradeHistoryTableViewCell: UITableViewCell {
     
     func update() {
         if let orderFill = orderFill {
-            label1.text = "\(orderFill.price)"
+            label1.text = "\(orderFill.price.withCommas(8))"
             label2.text = "\(orderFill.amount)"
             label3.text = "\(orderFill.lrcFee.withCommas(2))"
             label4.text = DateUtil.convertToDate(orderFill.createTime, format: "MM-dd HH:mm")
