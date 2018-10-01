@@ -228,6 +228,7 @@
 "Cancelled" = "已取消";
 "Expired" = "已過期";
 "Order Submitted" = "已提交";
+"Order Wait Matching" = "已提交待撮合";
 "Order Cancelled" = "已取消";
 "Order Completed" = "完全成交";
 "Order Expired" = "已過期";

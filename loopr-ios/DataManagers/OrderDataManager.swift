@@ -45,7 +45,8 @@ class OrderDataManager {
         switch type {
         case .open:
             return orders.filter({ (order) -> Bool in
-                return order.orderStatus == .opened
+                return order.orderStatus == .opened ||
+                       order.orderStatus == .waited
             })
         case .finished:
             return orders.filter({ (order) -> Bool in

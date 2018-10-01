@@ -669,7 +669,8 @@ extension BuyViewController {
             let lrcPrice = PriceDataManager.shared.getPrice(of: "LRC") {
             result = price * amountS * ratio / lrcPrice
         }
-        let minLrc = GasDataManager.shared.getGasAmount(by: "lrcFee", in: "LRC") / 2
+        // do not know what this logic for. temp annotation
+        let minLrc = GasDataManager.shared.getGasAmount(by: "eth_transfer", in: "LRC")
         return max(result, minLrc)
     }
 }
