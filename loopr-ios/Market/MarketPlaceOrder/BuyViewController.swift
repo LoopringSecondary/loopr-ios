@@ -47,7 +47,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
     
-    var blurVisualEffectView = UIView()
+    var blurVisualEffectView = UIView(frame: .zero)
     
     // Drag down to close a present view controller.
     var dismissInteractor: MiniToLargeViewInteractive!
@@ -103,7 +103,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         // First row: TokenS
         priceTextField.delegate = self
         priceTextField.tag = 0
-        priceTextField.inputView = UIView()
+        priceTextField.inputView = UIView(frame: .zero)
         priceTextField.font = FontConfigManager.shared.getDigitalFont()
         priceTextField.theme_tintColor = GlobalPicker.contrastTextColor
         priceTextField.placeholder = LocalizedString("", comment: "")
@@ -121,7 +121,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         // Second row: TokenB
         amountTextField.delegate = self
         amountTextField.tag = 1
-        amountTextField.inputView = UIView()
+        amountTextField.inputView = UIView(frame: .zero)
         amountTextField.font = FontConfigManager.shared.getDigitalFont()
         amountTextField.theme_tintColor = GlobalPicker.contrastTextColor
         amountTextField.placeholder = LocalizedString("", comment: "")

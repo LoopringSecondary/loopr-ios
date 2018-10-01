@@ -35,7 +35,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var seperatorG: UIView!
     
     // Mask view
-    var blurVisualEffectView = UIView()
+    var blurVisualEffectView = UIView(frame: .zero)
     
     // Drag down to close a present view controller.
     var dismissInteractor = MiniToLargeViewInteractive()
@@ -45,12 +45,12 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     var tokenSView: TradeViewOnlyViewController = TradeViewOnlyViewController()
     var tokenBView: TradeViewOnlyViewController = TradeViewOnlyViewController()
     
-    var marketLabel: UILabel = UILabel()
-    var typeLabel: UILabel = UILabel()
+    var marketLabel: UILabel = UILabel(frame: .zero)
+    var typeLabel: UILabel = UILabel(frame: .zero)
     var qrcodeImageView: UIImageView!
     var qrcodeImage: UIImage!
-    var amountLabel: UILabel = UILabel()
-    var displayLabel: UILabel = UILabel()
+    var amountLabel: UILabel = UILabel(frame: .zero)
+    var displayLabel: UILabel = UILabel(frame: .zero)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -224,10 +224,10 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         let price = order.originalOrder.amountBuy / order.originalOrder.amountSell
         if order.originalOrder.side.lowercased() == "buy" {
             let value = 1 / price
-            amountInfoLabel.text = "\(String(value).trailingZero()) \(order.originalOrder.tokenBuy)/\(order.originalOrder.tokenSell)"
+            amountInfoLabel.text = "\(value.withCommas(12).trailingZero()) \(order.originalOrder.tokenBuy)/\(order.originalOrder.tokenSell)"
         } else {
             let value = price
-            amountInfoLabel.text = "\(String(value).trailingZero()) \(order.originalOrder.tokenSell)/\(order.originalOrder.tokenBuy)"
+            amountInfoLabel.text = "\(value.withCommas(12).trailingZero()) \(order.originalOrder.tokenSell)/\(order.originalOrder.tokenBuy)"
         }
     }
     
