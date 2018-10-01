@@ -197,7 +197,8 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         vc.transaction = transaction
         vc.parentNavController = self.navigationController
         
-        vc.transitioningDelegate = self
+        // TODO: drag to dismiss is broken.
+        // vc.transitioningDelegate = self
         vc.modalPresentationStyle = .overFullScreen
         vc.dismissClosure = {
             UIView.animate(withDuration: 0.1, animations: {
@@ -213,7 +214,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
         self.present(vc, animated: true) {
-            self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.view, presentViewController: nil, backgroundView: self.blurVisualEffectView)
+            // self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.view, presentViewController: nil, backgroundView: self.blurVisualEffectView)
         }
         
         self.navigationController?.view.addSubview(self.blurVisualEffectView)
@@ -229,6 +230,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
 extension AssetDetailViewController: UIViewControllerTransitioningDelegate {
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        // TODO: Have to disable this one.
         let animator = MiniToLargeViewAnimator()
         animator.transitionType = .Dismiss
         return animator

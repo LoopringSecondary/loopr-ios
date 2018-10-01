@@ -337,7 +337,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     
     @objc func pressedAdvancedButton() {
         let vc = SetGasViewController()
-        vc.transitioningDelegate = self
+        // vc.transitioningDelegate = self
         vc.modalPresentationStyle = .overFullScreen
         vc.dismissClosure = {
             self.gasPriceInGwei = GasDataManager.shared.getGasPriceInGwei()
@@ -357,7 +357,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         }
         
         self.present(vc, animated: true) {
-            self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.headerView, presentViewController: nil, backgroundView: self.blurVisualEffectView)
+            // self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.headerView, presentViewController: nil, backgroundView: self.blurVisualEffectView)
         }
         
         self.navigationController?.view.addSubview(self.blurVisualEffectView)
@@ -370,7 +370,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     
     func pushController() {
         let vc = SendConfirmViewController()
-        vc.transitioningDelegate = self
+        // vc.transitioningDelegate = self
         vc.modalPresentationStyle = .overFullScreen
         
         vc.sendAsset = self.asset
@@ -391,7 +391,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         }
         
         self.present(vc, animated: true) {
-            self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.view, presentViewController: nil, backgroundView: self.blurVisualEffectView)
+            // self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.view, presentViewController: nil, backgroundView: self.blurVisualEffectView)
         }
         
         self.navigationController?.view.addSubview(self.blurVisualEffectView)

@@ -342,7 +342,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     
     @objc func pressedAdvancedButton() {
         let vc = SetGasViewController()
-        vc.transitioningDelegate = self
+        // vc.transitioningDelegate = self
         vc.modalPresentationStyle = .overFullScreen
         vc.dismissClosure = {
             self.gasPriceInGwei = GasDataManager.shared.getGasPriceInGwei()
@@ -362,7 +362,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         }
         
         self.present(vc, animated: true) {
-            self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.headerView, presentViewController: nil, backgroundView: self.blurVisualEffectView)
+            // self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.headerView, presentViewController: nil, backgroundView: self.blurVisualEffectView)
         }
         
         self.navigationController?.view.addSubview(self.blurVisualEffectView)
@@ -381,7 +381,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
             return
         }
         let vc = ConvertETHConfirmViewController()
-        vc.transitioningDelegate = self
+        // vc.transitioningDelegate = self
         vc.modalPresentationStyle = .overFullScreen
         
         vc.convertAsset = self.asset
@@ -402,7 +402,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         }
         
         self.present(vc, animated: true) {
-            self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.view, presentViewController: nil, backgroundView: self.blurVisualEffectView)
+            // self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.view, presentViewController: nil, backgroundView: self.blurVisualEffectView)
         }
         
         self.navigationController?.view.addSubview(self.blurVisualEffectView)

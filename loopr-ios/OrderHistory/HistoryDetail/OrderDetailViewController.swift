@@ -163,7 +163,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
             let vc = OrderQRCodeViewController()
             vc.originalOrder = order.originalOrder
 
-            vc.transitioningDelegate = self
+            // vc.transitioningDelegate = self
             vc.modalPresentationStyle = .overFullScreen
             vc.dismissClosure = {
                 UIView.animate(withDuration: 0.1, animations: {
@@ -179,7 +179,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
             }
             
             self.present(vc, animated: true) {
-                self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.view, presentViewController: nil, backgroundView: self.blurVisualEffectView)
+                // self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.view, presentViewController: nil, backgroundView: self.blurVisualEffectView)
             }
 
             self.navigationController?.view.addSubview(self.blurVisualEffectView)
