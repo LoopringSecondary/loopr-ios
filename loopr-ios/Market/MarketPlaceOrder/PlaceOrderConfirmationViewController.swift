@@ -196,10 +196,10 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         let price = order.amountBuy / order.amountSell
         if order.side == "buy" {
             let value = 1 / price
-            priceValueLabel.text = "\(String(value).trailingZero()) \(order.tokenBuy)/\(order.tokenSell)"
+            priceValueLabel.text = "\(value.withCommas(12).trailingZero()) \(order.tokenBuy)/\(order.tokenSell)"
         } else {
             let value = price
-            priceValueLabel.text = "\(String(value).trailingZero()) \(order.tokenSell)/\(order.tokenBuy)"
+            priceValueLabel.text = "\(value.withCommas(12).trailingZero()) \(order.tokenSell)/\(order.tokenBuy)"
         }
 
         if let price = PriceDataManager.shared.getPrice(of: "LRC") {
