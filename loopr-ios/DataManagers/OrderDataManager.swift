@@ -107,7 +107,7 @@ class OrderDataManager {
         let defaults = UserDefaults.standard
         var result = defaults.bool(forKey: UserDefaultsKeys.cancelledAll.rawValue)
         guard !result else { return false }
-        let openOrders = self.getOrders(orderStatuses: [.opened])
+        let openOrders = self.getOrders(orderStatuses: [.opened, .waited])
         if let cancellingOrders = defaults.stringArray(forKey: UserDefaultsKeys.cancellingOrders.rawValue) {
             openOrders.forEach { (order) in
                 if !cancellingOrders.contains(order.originalOrder.hash) {

@@ -228,7 +228,7 @@
 "Cancelled" = "Cancelled";
 "Expired" = "Expired";
 "Order Submitted" = "Submitted";
-"Order Wait Matching" = "Wait Matching";
+"Order Wait Matching" = "Waiting";
 "Order Cancelled" = "Cancelled";
 "Order Completed" = "Completed";
 "Order Expired" = "Expired";
