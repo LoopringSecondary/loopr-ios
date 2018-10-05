@@ -100,7 +100,7 @@ class SendCurrentAppWalletDataManager {
 
     func _encodeOrder(order: OriginalOrder) -> Data {
         var data: Data = Data()
-        var error: NSError? = nil
+        var error: NSError?
         var address: GethAddress
         address = GethNewAddressFromHex(order.address, &error)!
         data.append(contentsOf: try! EthTypeEncoder.default.encode(address).bytes)
