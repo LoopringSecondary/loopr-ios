@@ -21,7 +21,7 @@ class IconView: UIView {
         let circleRadius = min(rect.width, rect.height) * 0.5
 
         // Drawing code
-        circleView.frame = CGRect(center: CGPoint(x: rect.midX, y: rect.midY), size: CGSize(width: circleRadius * 2, height: circleRadius * 2))
+        circleView.frame = CGRect(origin: CGPoint(x: rect.midX, y: rect.midY), size: CGSize(width: circleRadius * 2, height: circleRadius * 2))
         circleView.backgroundColor = circleViewColor
         circleView.cornerRadius = circleRadius
         circleView.layer.borderColor = UIColor.text1.cgColor

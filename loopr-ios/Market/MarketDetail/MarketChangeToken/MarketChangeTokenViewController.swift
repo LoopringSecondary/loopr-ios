@@ -189,9 +189,6 @@ class MarketChangeTokenViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let spacer = marketTableView.reorder.spacerCell(for: indexPath) {
-            return spacer
-        }
         var cell = tableView.dequeueReusableCell(withIdentifier: MarketChangeTokenTableViewCell.getCellIdentifier()) as? MarketChangeTokenTableViewCell
         if cell == nil {
             let nib = Bundle.main.loadNibNamed("MarketChangeTokenTableViewCell", owner: self, options: nil)
