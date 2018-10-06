@@ -439,13 +439,6 @@
 		ACCCFDD0203BF1D100B98F99 /* FloatLabelTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCFDCF203BF1D100B98F99 /* FloatLabelTextView.swift */; };
 		ACDA889920F5D899004FA10B /* Localizator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDA889820F5D899004FA10B /* Localizator.swift */; };
 		ACDA889C20F85F9C004FA10B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ACDA889E20F85F9C004FA10B /* InfoPlist.strings */; };
-		ACDBF101203FE73B000F0DEC /* ReorderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF100203FE73B000F0DEC /* ReorderController.swift */; };
-		ACDBF103203FE790000F0DEC /* ReorderUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF102203FE790000F0DEC /* ReorderUITableView.swift */; };
-		ACDBF105203FE7D5000F0DEC /* ReorderSnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF104203FE7D5000F0DEC /* ReorderSnapshotView.swift */; };
-		ACDBF108203FE9D2000F0DEC /* ReorderDestinationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF107203FE9D2000F0DEC /* ReorderDestinationRow.swift */; };
-		ACDBF10A203FEA07000F0DEC /* ReorderAutoScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF109203FEA07000F0DEC /* ReorderAutoScroll.swift */; };
-		ACDBF10C203FEA3E000F0DEC /* ReorderGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF10B203FEA3E000F0DEC /* ReorderGestureRecognizer.swift */; };
-		ACDBF10E203FEBAD000F0DEC /* TableViewReorderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDBF10D203FEBAD000F0DEC /* TableViewReorderDelegate.swift */; };
 		ACE58B8520BE796A005BC1C8 /* VerifyMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE58B8320BE796A005BC1C8 /* VerifyMnemonicViewController.swift */; };
 		ACE58B8620BE796A005BC1C8 /* VerifyMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE58B8420BE796A005BC1C8 /* VerifyMnemonicViewController.xib */; };
 		ACE5BFA720466EFD005D75DD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ACE5BFA920466EFD005D75DD /* Localizable.strings */; };
@@ -946,13 +939,6 @@
 		ACDA889820F5D899004FA10B /* Localizator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizator.swift; sourceTree = "<group>"; };
 		ACDA889D20F85F9C004FA10B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ACDA889F20F85F9E004FA10B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		ACDBF100203FE73B000F0DEC /* ReorderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderController.swift; sourceTree = "<group>"; };
-		ACDBF102203FE790000F0DEC /* ReorderUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderUITableView.swift; sourceTree = "<group>"; };
-		ACDBF104203FE7D5000F0DEC /* ReorderSnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderSnapshotView.swift; sourceTree = "<group>"; };
-		ACDBF107203FE9D2000F0DEC /* ReorderDestinationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderDestinationRow.swift; sourceTree = "<group>"; };
-		ACDBF109203FEA07000F0DEC /* ReorderAutoScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderAutoScroll.swift; sourceTree = "<group>"; };
-		ACDBF10B203FEA3E000F0DEC /* ReorderGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderGestureRecognizer.swift; sourceTree = "<group>"; };
-		ACDBF10D203FEBAD000F0DEC /* TableViewReorderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewReorderDelegate.swift; sourceTree = "<group>"; };
 		ACE58B8320BE796A005BC1C8 /* VerifyMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyMnemonicViewController.swift; sourceTree = "<group>"; };
 		ACE58B8420BE796A005BC1C8 /* VerifyMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerifyMnemonicViewController.xib; sourceTree = "<group>"; };
 		ACE5BFA1204543CA005D75DD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -1876,7 +1862,6 @@
 				9413F68F20B8028B00524D2D /* Amount */,
 				AC76E46E2047F1AE008BA229 /* CircleChart */,
 				ACE6F71A204210E80039273D /* DashedLineView */,
-				ACDBF0FF203FE6F3000F0DEC /* TableViewReorder */,
 				AC4141F120352C130089861D /* SwipeViewController */,
 				ACB5DD96202D5A6D00140A09 /* NumericKeyboard */,
 				ACB5DDA7202D712F00140A09 /* Extensions */,
@@ -2183,28 +2168,6 @@
 				AC0C5C85203D168C00C8618D /* TickerLabel.swift */,
 			);
 			path = TickerLabel;
-			sourceTree = "<group>";
-		};
-		ACDBF0FF203FE6F3000F0DEC /* TableViewReorder */ = {
-			isa = PBXGroup;
-			children = (
-				ACDBF106203FE806000F0DEC /* ReorderController */,
-				ACDBF10D203FEBAD000F0DEC /* TableViewReorderDelegate.swift */,
-			);
-			path = TableViewReorder;
-			sourceTree = "<group>";
-		};
-		ACDBF106203FE806000F0DEC /* ReorderController */ = {
-			isa = PBXGroup;
-			children = (
-				ACDBF100203FE73B000F0DEC /* ReorderController.swift */,
-				ACDBF102203FE790000F0DEC /* ReorderUITableView.swift */,
-				ACDBF104203FE7D5000F0DEC /* ReorderSnapshotView.swift */,
-				ACDBF107203FE9D2000F0DEC /* ReorderDestinationRow.swift */,
-				ACDBF109203FEA07000F0DEC /* ReorderAutoScroll.swift */,
-				ACDBF10B203FEA3E000F0DEC /* ReorderGestureRecognizer.swift */,
-			);
-			path = ReorderController;
 			sourceTree = "<group>";
 		};
 		ACDBF10F203FEC96000F0DEC /* UIConfig */ = {
@@ -2747,8 +2710,6 @@
 				AC76E47320493CAE008BA229 /* SettingLanguageViewController.swift in Sources */,
 				AC3756782038D7E200AADC60 /* UnlockKeystoreViewController.swift in Sources */,
 				ACB5DD95202C434B00140A09 /* EthereumAPIRequest.swift in Sources */,
-				ACDBF10C203FEA3E000F0DEC /* ReorderGestureRecognizer.swift in Sources */,
-				ACDBF105203FE7D5000F0DEC /* ReorderSnapshotView.swift in Sources */,
 				ACE6F722204221260039273D /* Themes.swift in Sources */,
 				ACB9117C20256BBA00F14644 /* TradingPair.swift in Sources */,
 				AC9FFF2D2126C07800957175 /* MarketChangeTokenTableViewCell.swift in Sources */,
@@ -2809,7 +2770,6 @@
 				AC9DC45A21159084002D7D23 /* MiniToLargeViewInteractive.swift in Sources */,
 				AC120758214DA02300EEDC49 /* SetupWalletViewController.swift in Sources */,
 				AC45EFEE20D0D474004F6EC0 /* H5DexNavigationController.swift in Sources */,
-				ACDBF101203FE73B000F0DEC /* ReorderController.swift in Sources */,
 				ACB911642024504E00F14644 /* Order.swift in Sources */,
 				ACB8485920BA75E7006B83AD /* SettingPasscodeTableViewCell.swift in Sources */,
 				AC9280E92030C7440009B574 /* UIColorExtensions.swift in Sources */,
@@ -2900,7 +2860,6 @@
 				949629DF204E9C9800858F03 /* MinedRing.swift in Sources */,
 				94C11FDA208C2DE40050E180 /* SettingCurrencyTableViewCell.swift in Sources */,
 				AC9DC45921159084002D7D23 /* BaseAnimator.swift in Sources */,
-				ACDBF10E203FEBAD000F0DEC /* TableViewReorderDelegate.swift in Sources */,
 				AC4B894D21103EAF00643910 /* TradeType.swift in Sources */,
 				ACA677D3207DCF1900D34A2F /* RelayAPIConfiguration.swift in Sources */,
 				AC72AED8204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift in Sources */,
@@ -2927,8 +2886,6 @@
 				AC31B94A204A8DF400B16155 /* KeystoreKeyHeader.swift in Sources */,
 				AC131A0A210D7A33001998A0 /* MarketDetailTradeHistoryViewController.swift in Sources */,
 				943BDED32056350000D5BF81 /* PriceQuote.swift in Sources */,
-				ACDBF10A203FEA07000F0DEC /* ReorderAutoScroll.swift in Sources */,
-				ACDBF108203FE9D2000F0DEC /* ReorderDestinationRow.swift in Sources */,
 				AC9FFF312127F8CF00957175 /* AddCustomizedTokenViewController.swift in Sources */,
 				ACC8D0A620CC95A00049A741 /* AssetTableViewCell.swift in Sources */,
 				ACFEFE9520C337BE00013921 /* PendingTransactionsDataManager.swift in Sources */,
@@ -2997,7 +2954,6 @@
 				AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */,
 				AC4F601120773E9D00F1D954 /* EthAccountCoordinator.swift in Sources */,
 				942FE781210D5A1C005C723D /* SendConfirmViewController.swift in Sources */,
-				ACDBF103203FE790000F0DEC /* ReorderUITableView.swift in Sources */,
 				942C49FA212911B0008A6B4F /* ConvertETHConfirmViewController.swift in Sources */,
 				9413F69520B80E2600524D2D /* AmountStackView.swift in Sources */,
 				ACA677C92079D5A000D34A2F /* DisplayPrivateKeyViewController.swift in Sources */,
@@ -3543,7 +3499,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3554,8 +3510,9 @@
 				PRODUCT_NAME = "UP Wallet";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

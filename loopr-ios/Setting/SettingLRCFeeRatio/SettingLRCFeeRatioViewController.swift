@@ -14,7 +14,8 @@ class SettingLRCFeeRatioViewController: UIViewController, StepSliderDelegate {
 
     var stepSlider = StepSlider.getDefault()
     var currentValue: Double = 0
-    var currentValueLabel = UILabel()
+    var currentValueLabel = UILabel(frame: .zero)
+    var tipLabel = UILabel(frame: .zero)
 
     var isViewDidAppear: Bool = false
     
@@ -46,6 +47,15 @@ class SettingLRCFeeRatioViewController: UIViewController, StepSliderDelegate {
         stepSlider.trackCircleRadius = 0
         stepSlider.labels = [LocalizedString("Slow", comment: ""), LocalizedString("Fast", comment: "")]
         stepSlider.setPercentageValue(Float((currentValue-0.001)/0.049))
+        
+        tipLabel.frame = CGRect(x: 24, y: stepSlider.frame.maxY + 50, width: screenWidth-24*2, height: 20)
+        tipLabel.font = FontConfigManager.shared.getCharactorFont(size: 11)
+        tipLabel.theme_textColor = ["#00000099", "#ffffff66"]
+        
+        let title = LocalizedString("Lrc_Fee_Tip", comment: "")
+        let amount = GasDataManager.shared.getGasAmount(by: "eth_transfer", in: "LRC")
+        tipLabel.text = "\(title) \(amount.withCommas()) LRC"
+        view.addSubview(tipLabel)
 
         let saveButon = UIBarButtonItem(title: LocalizedString("Save", comment: ""), style: UIBarButtonItemStyle.plain, target: self, action: #selector(pressedSaveButton))
         saveButon.setTitleTextAttributes([NSAttributedStringKey.font: FontConfigManager.shared.getCharactorFont(size: 14)], for: .normal)

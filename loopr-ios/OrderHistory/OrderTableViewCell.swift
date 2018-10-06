@@ -81,7 +81,7 @@ class OrderTableViewCell: UITableViewCell {
     }
     
     func getOrderStatus(order: Order) -> (Bool, String) {
-        if order.orderStatus == .opened {
+        if order.orderStatus == .opened || order.orderStatus == .waited {
             let cancelledAll = UserDefaults.standard.bool(forKey: UserDefaultsKeys.cancelledAll.rawValue)
             if cancelledAll || isOrderCancelling(order: order) {
                 cancelButton.setTitleColor(.pending, for: .normal)

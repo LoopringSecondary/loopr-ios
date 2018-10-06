@@ -463,7 +463,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
             let viewController = TradeConfirmationViewController()
             viewController.order = order
             
-            viewController.transitioningDelegate = self
+            // viewController.transitioningDelegate = self
             viewController.modalPresentationStyle = .overFullScreen
             viewController.dismissClosure = {
                 UIView.animate(withDuration: 0.2, animations: {
@@ -480,7 +480,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
             }
             
             self.present(viewController, animated: true) {
-                self.dismissInteractor.attachToViewController(viewController: viewController, withView: viewController.containerView, presentViewController: nil, backgroundView: self.blurVisualEffectView)
+                // self.dismissInteractor.attachToViewController(viewController: viewController, withView: viewController.containerView, presentViewController: nil, backgroundView: self.blurVisualEffectView)
             }
             
             self.navigationController?.view.addSubview(self.blurVisualEffectView)

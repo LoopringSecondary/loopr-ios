@@ -200,10 +200,10 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         let price = order.amountBuy / order.amountSell
         if order.side == "buy" {
             let value = 1 / price
-            priceValueLabel.text = "\(value.withCommas(8).trailingZero()) \(order.tokenBuy)/\(order.tokenSell)"
+            priceValueLabel.text = "\(value.withCommas(12).trailingZero()) \(order.tokenBuy)/\(order.tokenSell)"
         } else {
             let value = price
-            priceValueLabel.text = "\(value.withCommas(8).trailingZero()) \(order.tokenSell)/\(order.tokenBuy)"
+            priceValueLabel.text = "\(value.withCommas(12).trailingZero()) \(order.tokenSell)/\(order.tokenBuy)"
         }
 
         if let price = PriceDataManager.shared.getPrice(of: "LRC") {
@@ -457,7 +457,8 @@ extension PlaceOrderConfirmationViewController {
 
             DispatchQueue.main.async {
                 print("PlaceOrderConfirmationViewController \(error.debugDescription)")
-                let banner = NotificationBanner.generate(title: String(describing: error), style: .danger)
+                let message: String = (error! as NSError).userInfo["message"] as? String ?? String(describing: error)
+                let banner = NotificationBanner.generate(title: message, style: .danger)
                 banner.duration = 10
                 banner.show()
             }

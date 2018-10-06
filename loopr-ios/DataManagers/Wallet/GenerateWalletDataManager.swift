@@ -32,7 +32,6 @@ class GenerateWalletDataManager {
         let mnemonicString = Mnemonic.generate(strength: 128)
         let mnemonics = mnemonicString.components(separatedBy: " ")
         
-        // TODO: Hack method to avoid duplicate words in mnemonics. Improve in the future.
         if mnemonics.count != Set(mnemonics).count {
             newMnemonics()
         } else {

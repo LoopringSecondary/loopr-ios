@@ -207,6 +207,7 @@
 "Market/Price" = "市場對/價格";
 "Amount/Filled" = "數額/成交率";
 "Status/Date" = "狀態/日期";
+"Lrc_Fee_Tip" = "● Loopring 協議最低交易手續費: ";
 
 /* Trade tips */
 "Convert_DES" = "● WETH之於ETH, 正如硬幣之於等額的紙幣。某些場合, 販賣機只能接受硬幣, 因此需要轉換。以太坊協議保證: WETH和ETH之間的轉換比率固定為 1 : 1。";
@@ -228,7 +229,8 @@
 "Finished" = "已成交";
 "Cancelled" = "已取消";
 "Expired" = "已過期";
-"Order Submitted" = "已提交";
+"Order Submitted" = "掛單中";
+"Order Wait Matching" = "撮合中";
 "Order Cancelled" = "已取消";
 "Order Completed" = "完全成交";
 "Order Expired" = "已過期";

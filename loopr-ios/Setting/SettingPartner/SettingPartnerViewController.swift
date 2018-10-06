@@ -16,7 +16,7 @@ class SettingPartnerViewController: UIViewController {
     @IBOutlet weak var walletAddressLabel: UILabel!
     @IBOutlet weak var shareButton: UIButton!
     
-    var qrcodeImageView: UIImageView = UIImageView()
+    var qrcodeImageView: UIImageView = UIImageView(frame: .zero)
     var qrcodeImage: UIImage!
     var qrcodeImageCIImage: CIImage!
     var sharedImage: UIImage = UIImage()
@@ -107,7 +107,7 @@ class SettingPartnerViewController: UIViewController {
         
         let scaleFactors = factors ?? [CGFloat](repeating: 1.0, count: childImages.count)
         
-        // TODO: Hardcode this value now
+        // Need to keep the bottom distance consistent. 
         for (image, scaleFactor) in zip(childImages, scaleFactors) {
             let topWidth: CGFloat = 151
             let topHeight: CGFloat = 151

@@ -134,7 +134,8 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupQRCodeButton() {
-        guard order?.originalOrder.orderType == .p2pOrder && order?.orderStatus == .opened && order?.originalOrder.p2pType == .maker else {
+        guard order?.originalOrder.orderType == .p2pOrder && (order?.orderStatus == .opened ||
+            order?.orderStatus == .waited) && order?.originalOrder.p2pType == .maker else {
             return
         }
         let qrCodebutton = UIButton(type: UIButtonType.custom)
@@ -163,7 +164,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
             let vc = OrderQRCodeViewController()
             vc.originalOrder = order.originalOrder
 
-            vc.transitioningDelegate = self
+            // vc.transitioningDelegate = self
             vc.modalPresentationStyle = .overFullScreen
             vc.dismissClosure = {
                 UIView.animate(withDuration: 0.1, animations: {
@@ -179,7 +180,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
             }
             
             self.present(vc, animated: true) {
-                self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.view, presentViewController: nil, backgroundView: self.blurVisualEffectView)
+                // self.dismissInteractor.attachToViewController(viewController: vc, withView: vc.view, presentViewController: nil, backgroundView: self.blurVisualEffectView)
             }
 
             self.navigationController?.view.addSubview(self.blurVisualEffectView)
@@ -224,10 +225,10 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         let price = order.originalOrder.amountBuy / order.originalOrder.amountSell
         if order.originalOrder.side.lowercased() == "buy" {
             let value = 1 / price
-            amountInfoLabel.text = "\(value.withCommas(9).trailingZero()) \(order.originalOrder.tokenBuy)/\(order.originalOrder.tokenSell)"
+            amountInfoLabel.text = "\(value.withCommas(12).trailingZero()) \(order.originalOrder.tokenBuy)/\(order.originalOrder.tokenSell)"
         } else {
             let value = price
-            amountInfoLabel.text = "\(value.withCommas(9).trailingZero()) \(order.originalOrder.tokenSell)/\(order.originalOrder.tokenBuy)"
+            amountInfoLabel.text = "\(value.withCommas(12).trailingZero()) \(order.originalOrder.tokenSell)/\(order.originalOrder.tokenBuy)"
         }
     }
     

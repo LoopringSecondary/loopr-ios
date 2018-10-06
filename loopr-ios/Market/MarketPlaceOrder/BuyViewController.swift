@@ -240,11 +240,11 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         let nextViewController = MarketDetailDepthModalViewController()
         nextViewController.market = market
         nextViewController.delegate = self
-        nextViewController.transitioningDelegate = self
+        // nextViewController.transitioningDelegate = self
         nextViewController.modalPresentationStyle = .overFullScreen
         
         dismissInteractor = MiniToLargeViewInteractive()
-        dismissInteractor.attachToViewController(viewController: nextViewController, withView: nextViewController.view, presentViewController: nil, backgroundView: blurVisualEffectView)
+        // dismissInteractor.attachToViewController(viewController: nextViewController, withView: nextViewController.view, presentViewController: nil, backgroundView: blurVisualEffectView)
         
         self.present(nextViewController, animated: true) {
             
@@ -405,7 +405,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             viewController.order = order
             viewController.price = priceTextField.text
             
-            viewController.transitioningDelegate = self
+            // viewController.transitioningDelegate = self
             viewController.modalPresentationStyle = .overFullScreen
             viewController.dismissClosure = {
                 UIView.animate(withDuration: 0.2, animations: {
@@ -422,7 +422,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             }
             
             self.present(viewController, animated: true) {
-                self.dismissInteractor.attachToViewController(viewController: viewController, withView: viewController.containerView, presentViewController: nil, backgroundView: self.blurVisualEffectView)
+                // self.dismissInteractor.attachToViewController(viewController: viewController, withView: viewController.containerView, presentViewController: nil, backgroundView: self.blurVisualEffectView)
             }
             
             self.navigationController?.view.addSubview(self.blurVisualEffectView)
@@ -730,7 +730,8 @@ extension BuyViewController {
             let lrcPrice = PriceDataManager.shared.getPrice(of: "LRC") {
             result = price * amountS * ratio / lrcPrice
         }
-        let minLrc = GasDataManager.shared.getGasAmount(by: "lrcFee", in: "LRC") / 2
+        // do not know what this logic for. temp annotation
+        let minLrc = GasDataManager.shared.getGasAmount(by: "eth_transfer", in: "LRC")
         return max(result, minLrc)
     }
     

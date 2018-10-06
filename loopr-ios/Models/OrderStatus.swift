@@ -11,6 +11,7 @@ enum OrderStatus: String, CustomStringConvertible {
 
     // TODO: What is the status for an open order?
     case opened = "ORDER_OPENED"
+    case waited = "ORDER_WAIT_SUBMIT_RING"
     case finished = "ORDER_FINISHED"
     case cutoff = "ORDER_CUTOFF"
     case cancelled = "ORDER_CANCELLED"
@@ -21,6 +22,7 @@ enum OrderStatus: String, CustomStringConvertible {
     var description: String {
         switch self {
         case .opened: return LocalizedString("Order Submitted", comment: "")
+        case .waited: return LocalizedString("Order Wait Matching", comment: "")
         case .cutoff: return LocalizedString("Order Cancelled", comment: "")
         case .finished: return LocalizedString("Order Completed", comment: "")
         case .cancelled: return LocalizedString("Order Cancelled", comment: "")

@@ -31,7 +31,7 @@ class MiniToLargeViewAnimator: BaseAnimator {
         UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: animOptions, animations: {
             toVC.view.frame = fromRect
             imageView.alpha = 0
-        }) { (finished) in
+        }) { (_) in
             imageView.removeFromSuperview()
             if transitionContext.transitionWasCancelled {
                 transitionContext.completeTransition(false)
@@ -60,7 +60,7 @@ class MiniToLargeViewAnimator: BaseAnimator {
         UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0.05, options: animOptions, animations: {
             fromVC.view.frame = fromRect
             imageView.alpha = 1
-        }) { (finished) in
+        }) { (_) in
             imageView.removeFromSuperview()
             if transitionContext.transitionWasCancelled {
                 transitionContext.completeTransition(false)

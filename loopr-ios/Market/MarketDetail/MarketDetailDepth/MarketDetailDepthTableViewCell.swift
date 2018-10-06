@@ -59,13 +59,13 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
         depthViewBuy.backgroundColor = UIColor.success.withAlphaComponent(0.1)
         baseViewBuy.addSubview(depthViewBuy)
 
-        label1 = UILabel(frame: CGRect(x: 10, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
+        label1 = UILabel(frame: CGRect(x: 10, y: 0, width: (baseViewBuy.width-30)*0.6, height: 33))
         label1.textColor = UIColor.success
         label1.font = FontConfigManager.shared.getMediumFont(size: 12)
         label1.textAlignment = .left
         baseViewBuy.addSubview(label1)
         
-        label2 = UILabel(frame: CGRect(x: 10 + label1.frame.maxX, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
+        label2 = UILabel(frame: CGRect(x: 10 + 10 + (baseViewBuy.width-30)*0.5, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
         label2.theme_textColor = GlobalPicker.textColor
         label2.font = FontConfigManager.shared.getMediumFont(size: 12)
         label2.textAlignment = .right
@@ -97,13 +97,13 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
         depthViewSell.backgroundColor = UIColor.fail.withAlphaComponent(0.1)
         baseViewSell.addSubview(depthViewSell)
         
-        label3 = UILabel(frame: CGRect(x: 10, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
+        label3 = UILabel(frame: CGRect(x: 10, y: 0, width: (baseViewBuy.width-30)*0.6, height: 33))
         label3.textColor = UIColor.fail
         label3.font = FontConfigManager.shared.getMediumFont(size: 12)
         label3.textAlignment = .left
         baseViewSell.addSubview(label3)
         
-        label4 = UILabel(frame: CGRect(x: 10 + label3.frame.maxX, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
+        label4 = UILabel(frame: CGRect(x: 10 + 10 + (baseViewBuy.width-30)*0.5, y: 0, width: (baseViewBuy.width-30)*0.5, height: 33))
         label4.theme_textColor = GlobalPicker.textColor
         label4.font = FontConfigManager.shared.getMediumFont(size: 12)
         label4.textAlignment = .right
@@ -119,7 +119,7 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
     
     func update() {
         if let buyDepth = buyDepth {
-            label1.text = buyDepth.price.toDecimalPlaces(6)
+            label1.text = buyDepth.price.toDecimalPlaces(8)
             label2.text = buyDepth.amountA.toDecimalPlaces(2).trailingZero()
             
             var percentage = (buyDepth.amountAInDouble)/(maxAmountInDepthView)
@@ -144,7 +144,7 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
         }
         
         if let sellDepth = sellDepth {
-            label3.text = sellDepth.price.toDecimalPlaces(6)
+            label3.text = sellDepth.price.toDecimalPlaces(8)
             label4.text = sellDepth.amountA.toDecimalPlaces(2).trailingZero()
             
             var percentage = (sellDepth.amountAInDouble)/(maxAmountInDepthView)

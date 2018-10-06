@@ -21,7 +21,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var numberOfRowsInSection1: Int = 0
     
     var isDropdownMenuExpanded: Bool = false
-    let dropdownMenu = MKDropdownMenu()
+    let dropdownMenu = MKDropdownMenu(frame: .zero)
     
     override func viewDidLoad() {
         super.viewDidLoad()

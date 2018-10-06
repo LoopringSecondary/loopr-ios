@@ -31,7 +31,7 @@ class Asset: CustomStringConvertible, Equatable {
         self.total = 0.0
         self.currency = Double(0).currency
         self.symbol = json["symbol"].string ?? ""
-        self.name = TokenDataManager.shared.getTokenBySymbol(symbol)?.source ?? ""
+        self.name = TokenDataManager.shared.getTokenBySymbol(symbol)?.source.capitalized ?? ""
         self.icon = UIImage(named: "Token-\(self.symbol)-\(Themes.getTheme())") ?? nil
         self.description = self.name
         if let balance = Asset.getAmount(of: symbol, fromWeiAmount: json["balance"].stringValue) {
@@ -58,7 +58,7 @@ class Asset: CustomStringConvertible, Equatable {
     }
 
     static func getLength(of symbol: String) -> Int? {
-        var result: Int? = nil
+        var result: Int?
         if let price = PriceDataManager.shared.getPrice(of: symbol) {
             result = price.ints + 2
         }
@@ -67,7 +67,7 @@ class Asset: CustomStringConvertible, Equatable {
 
     static func getAmount(of symbol: String, fromWeiAmount weiAmount: String) -> Double? {
         var index: String.Index
-        var result: Double? = nil
+        var result: Double?
         // hex string
         if weiAmount.lowercased().starts(with: "0x") {
             let hexString = weiAmount.dropFirst(2)
