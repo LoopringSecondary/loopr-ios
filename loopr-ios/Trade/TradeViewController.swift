@@ -74,7 +74,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     var distance: CGFloat = 0
     
     // Drag down to close a present view controller.
-    var blurVisualEffectView = UIView()
+    var blurVisualEffectView = UIView(frame: .zero)
     var dismissInteractor: MiniToLargeViewInteractive!
     
     override func viewDidLoad() {
@@ -121,7 +121,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         // First row: TokenS
         amountSellTextField.delegate = self
         amountSellTextField.tag = 0
-        amountSellTextField.inputView = UIView()
+        amountSellTextField.inputView = UIView(frame: .zero)
         amountSellTextField.font = FontConfigManager.shared.getDigitalFont()
         amountSellTextField.theme_tintColor = GlobalPicker.contrastTextColor
         amountSellTextField.placeholder = LocalizedString("Amount to sell", comment: "")
@@ -141,7 +141,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         // Second row: TokenB
         amountBuyTextField.delegate = self
         amountBuyTextField.tag = 1
-        amountBuyTextField.inputView = UIView()
+        amountBuyTextField.inputView = UIView(frame: .zero)
         amountBuyTextField.font = FontConfigManager.shared.getDigitalFont()
         amountBuyTextField.theme_tintColor = GlobalPicker.contrastTextColor
         amountBuyTextField.placeholder = LocalizedString("Amount to buy", comment: "")
@@ -247,7 +247,22 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         let tmp = amountSellTextField.text
         amountSellTextField.text = amountBuyTextField.text
         amountBuyTextField.text = tmp
+        
+        // Update labels
         update()
+        
+        // Update slider
+        var stepSliderPercentage: Double = 0
+        let tokens = TradeDataManager.shared.tokenS.symbol
+        if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: tokens), let amountSell = Double(amountSellTextField.text!) {
+            stepSliderPercentage = amountSell/asset.balance
+        } else {
+            stepSliderPercentage = 0
+        }
+        if stepSliderPercentage > 1 {
+            stepSliderPercentage = 1
+        }
+        stepSlider.setPercentageValue(Float(stepSliderPercentage))
     }
 
     func update(text: String? = nil, color: UIColor? = nil) {
@@ -323,7 +338,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         let isSellValid = validateAmountSell()
         if isSellValid && self.priceS != nil {
             if self.priceS! > 0, let amounts = amountSellTextField.text, let amountSell = Double(amounts) {
-                amountBuyTextField.text = (amountSell * self.priceS!).withCommas(10).trailingZero()
+                amountBuyTextField.text = (amountSell * self.priceS!).withCommas(8).trailingZero().removeComma()
             }
         }
     }
@@ -341,6 +356,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         viewController.needUpdateClosure = {
             self.amountSellTextField.text = ""
             self.amountBuyTextField.text = ""
+            self.stepSlider.setPercentageValue(0)
         }
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
@@ -353,6 +369,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         viewController.needUpdateClosure = {
             self.amountSellTextField.text = ""
             self.amountBuyTextField.text = ""
+            self.stepSlider.setPercentageValue(0)
         }
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
@@ -549,11 +566,28 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         if activeTextFieldTag == amountSellTextField.tag {
             isValid = validateAmountSell()
             
-            // TODO: udpate the price?
+            // TODO: update the price?
             // pressedPrefillPrice()
         } else if activeTextFieldTag == amountBuyTextField.tag {
             isValid = validateAmountBuy()
         }
+        guard isValid else {
+            return false
+        }
+        
+        // update slider
+        var stepSliderPercentage: Double = 0
+        if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: TradeDataManager.shared.tokenS.symbol), let amountSell = Double(amountSellTextField.text!) {
+            stepSliderPercentage = amountSell/asset.balance
+        } else {
+            stepSliderPercentage = 0
+        }
+        if stepSliderPercentage > 1 {
+            stepSliderPercentage = 1
+        }
+
+        self.stepSlider.setPercentageValue(Float(stepSliderPercentage))
+
         return isValid
     }
     
@@ -673,7 +707,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         let title = LocalizedString("Available Balance", comment: "")
         if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: tokens) {
             message = "\(title) \(asset.display) \(tokens)"
-            amountSellTextField.text = (asset.balance * value).withCommas(length)
+            amountSellTextField.text = (asset.balance * value).withCommas(length).trailingZero().removeComma()
         } else {
             message = "\(title) 0.0 \(tokens)"
             amountSellTextField.text = "0.0"

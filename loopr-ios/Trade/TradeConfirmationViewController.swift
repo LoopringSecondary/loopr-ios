@@ -213,7 +213,7 @@ class TradeConfirmationViewController: UIViewController {
         priceValueLabel.text = "\(value.withCommas()) \(order.market)"
         if let price = PriceDataManager.shared.getPrice(of: "LRC") {
             let total = (price * order.lrcFee).currency
-            LRCFeeValueLabel.text = "\(order.lrcFee.withCommas(3))LRC ≈ \(total)"
+            LRCFeeValueLabel.text = "\(order.lrcFee.withCommas(3)) LRC ≈ \(total)"
         }
         // let since = DateUtil.convertToDate(UInt(order.validSince), format: "MM-dd HH:mm")
         let until = DateUtil.convertToDate(UInt(order.validUntil), format: "MM-dd HH:mm")
