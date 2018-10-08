@@ -252,17 +252,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         update()
         
         // Update slider
-        var stepSliderPercentage: Double = 0
-        let tokens = TradeDataManager.shared.tokenS.symbol
-        if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: tokens), let amountSell = Double(amountSellTextField.text!) {
-            stepSliderPercentage = amountSell/asset.balance
-        } else {
-            stepSliderPercentage = 0
-        }
-        if stepSliderPercentage > 1 {
-            stepSliderPercentage = 1
-        }
-        stepSlider.setPercentageValue(Float(stepSliderPercentage))
+        updateStepSlider()
     }
 
     func update(text: String? = nil, color: UIColor? = nil) {
@@ -324,6 +314,20 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         if color == .fail {
             estimateValueInCurrency.shake()
         }
+    }
+    
+    func updateStepSlider() {
+        var stepSliderPercentage: Double = 0
+        let tokens = TradeDataManager.shared.tokenS.symbol
+        if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: tokens), let amountSell = Double(amountSellTextField.text!) {
+            stepSliderPercentage = amountSell/asset.balance
+        } else {
+            stepSliderPercentage = 0
+        }
+        if stepSliderPercentage > 1 {
+            stepSliderPercentage = 1
+        }
+        stepSlider.setPercentageValue(Float(stepSliderPercentage))
     }
     
     @objc func scrollViewTapped() {
@@ -576,17 +580,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         }
         
         // update slider
-        var stepSliderPercentage: Double = 0
-        if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: TradeDataManager.shared.tokenS.symbol), let amountSell = Double(amountSellTextField.text!) {
-            stepSliderPercentage = amountSell/asset.balance
-        } else {
-            stepSliderPercentage = 0
-        }
-        if stepSliderPercentage > 1 {
-            stepSliderPercentage = 1
-        }
-
-        self.stepSlider.setPercentageValue(Float(stepSliderPercentage))
+        updateStepSlider()
 
         return isValid
     }
