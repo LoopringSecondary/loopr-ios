@@ -147,14 +147,14 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         monthButton.title = LocalizedString("1 Month", comment: "")
         customButton.title = LocalizedString("Custom", comment: "")
         buttons = [hourButton, dayButton, monthButton, customButton]
-        hourButton.titleLabel?.font = FontConfigManager.shared.getBoldFont()
         buttons.forEach {
             $0.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
             $0.theme_backgroundColor = ColorPicker.cardHighLightColor
             $0.theme_setTitleColor(GlobalPicker.textColor, forState: .selected)
             $0.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
         }
-        
+        hourButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 13)
+
         // Place button
         if type == .buy {
             nextButton.title = LocalizedString("Buy", comment: "") + " " + market.tradingPair.tradingA
@@ -274,7 +274,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             button.isSelected = false
         }
         sender.isSelected = true
-        sender.titleLabel?.font = FontConfigManager.shared.getBoldFont()
+        sender.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 13)
     }
     
     func present() {
