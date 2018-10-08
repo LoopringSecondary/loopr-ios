@@ -210,7 +210,7 @@
 "Lrc_Fee_Tip" = "● Min value of Loopring trading fee: ";
 
 /* Trade tips */
-"Convert_DES" = "● Think of it like the coin version of a paper note. The same value, but some machines only take coins. The conversion ratio between ETH and WETH is always 1:1, guaranteed by Ethereum.";
+"Convert_DES" = "● What is WETH? WETH is \"wrapped ETH\". ETH needs to be \"wrapped\" to be tradable against ERC20 tokens on DEXs. The value of WETH is always 1:1 with ETH, guaranteed by Ethereum.";
 "Convert_TIP" = "● We will preserve 0.01 ETH for gas fee for your subsequent transaction";
 "ETH_TIP" = "● We will preserve 0.01 ETH for gas fee for your subsequent transaction";
 "Convert_Fail_Tip" = "Insufficient gas in your account. Please retry later";
