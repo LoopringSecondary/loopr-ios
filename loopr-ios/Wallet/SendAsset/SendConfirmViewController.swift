@@ -178,6 +178,8 @@ extension SendConfirmViewController {
                 closure()
             }
             self.dismiss(animated: true, completion: nil)
+            
+            // TODO: iOS 12 doesn't work
             self.parentNavController?.pushViewController(vc, animated: true)
         }
     }

@@ -73,9 +73,7 @@ class PlaceOrderDataManager {
             balanceInfo["MINUS_LRC"] = -result
         }
     }
-    
-    // TODO: what usecase needs to include LRC?
-    // TODO: it's better to explicitly define some values.
+
     func checkGasEnough(of order: OriginalOrder, includingLRC: Bool = true) {
         var result: Double = 0
         if let ethBalance = walletManager.getBalance(of: "ETH"),
@@ -182,7 +180,7 @@ class PlaceOrderDataManager {
         }
         return balanceInfo
     }
-    
+
     func getOrderHash(order: OriginalOrder) -> Data {
         var result: Data = Data()
         result.append(contentsOf: order.delegate.hexBytes)

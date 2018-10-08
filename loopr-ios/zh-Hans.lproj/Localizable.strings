@@ -195,6 +195,7 @@
 "P2P Order History" = "场外交易记录";
 "Enter the address" = "请输入地址";
 "Available Balance" = "可用余额";
+"Can Buy" = "可买";
 "Tx Fee Limit" = "交易费上限";
 "Loopring_TIP" = "请用支持路印协议的钱包扫码交易";
 "Irrational" = "设价不合理";
@@ -209,7 +210,7 @@
 "Lrc_Fee_Tip" = "● Loopring 协议最低交易手续费: ";
 
 /* Trade tips */
-"Convert_DES" = "● WETH之于ETH, 正如硬币之于等额的纸币。某些场合, 贩卖机只能接受硬币, 因此需要转换。以太坊协议保证: WETH和ETH之间的转换比率为 1 : 1, 且永不改变。";
+"Convert_DES" = "● 什么是WETH? WETH之于ETH, 正如硬币之于等额的纸币。某些场合, 贩卖机只能接受硬币, 因此需要转换。以太坊协议保证: WETH和ETH之间的转换比率为 1 : 1, 且永不改变。";
 "Convert_TIP" = "● 我们为您保留 0.01 ETH 作为油费以保证后续可以发送交易";
 "ETH_TIP" = "● 我们为您保留 0.01 ETH 作为油费以保证后续可以发送交易";
 "Convert_Fail_Tip" = "您的账户中油费不足，请稍后重试";

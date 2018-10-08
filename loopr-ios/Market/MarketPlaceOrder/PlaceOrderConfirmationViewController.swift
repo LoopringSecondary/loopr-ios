@@ -82,7 +82,11 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         
         if !validateRational() {
             priceTipLabel.isHidden = false
-            priceTailing.constant = 104
+            if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" || SettingDataManager.shared.getCurrentLanguage().name  == "zh-Hant" {
+                priceTailing.constant = 104
+            } else {
+                priceTailing.constant = 94
+            }
         } else {
             priceTipLabel.isHidden = true
             priceTailing.constant = 20
@@ -428,6 +432,7 @@ extension PlaceOrderConfirmationViewController {
         }
     }
     
+    // complete used in getting authorization. After this complete succeeds, it should calls submit()
     func complete(_ txHash: String?, _ error: Error?) {
         SVProgressHUD.dismiss()
         guard error == nil && txHash != nil else {
@@ -442,6 +447,7 @@ extension PlaceOrderConfirmationViewController {
         submit()
     }
     
+    // completion for submitting a market order
     func completion(_ orderHash: String?, _ error: Error?) {
         SVProgressHUD.dismiss()
         guard error == nil && orderHash != nil else {

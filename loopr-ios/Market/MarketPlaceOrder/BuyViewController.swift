@@ -57,6 +57,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     var numericKeyboardView: DefaultNumericKeyboard!
     var activeTextFieldTag = -1
     var stepSlider: StepSlider = StepSlider.getDefault()
+    var stepSliderPercentage: Double = 0.0
     
     // Expires
     var buttons: [UIButton] = []
@@ -146,14 +147,14 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         monthButton.title = LocalizedString("1 Month", comment: "")
         customButton.title = LocalizedString("Custom", comment: "")
         buttons = [hourButton, dayButton, monthButton, customButton]
-        hourButton.titleLabel?.font = FontConfigManager.shared.getBoldFont()
         buttons.forEach {
             $0.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
             $0.theme_backgroundColor = ColorPicker.cardHighLightColor
             $0.theme_setTitleColor(GlobalPicker.textColor, forState: .selected)
             $0.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
         }
-        
+        hourButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 13)
+
         // Place button
         if type == .buy {
             nextButton.title = LocalizedString("Buy", comment: "") + " " + market.tradingPair.tradingA
@@ -273,7 +274,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             button.isSelected = false
         }
         sender.isSelected = true
-        sender.titleLabel?.font = FontConfigManager.shared.getBoldFont()
+        sender.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 13)
     }
     
     func present() {
@@ -291,24 +292,39 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         self.present(vc, animated: true, completion: nil)
     }
     
+    // TODO: I agree that the code is very complicated.
     func stepSliderValueChanged(_ value: Double) {
+        stepSliderPercentage = value
+        
         var message: String = ""
         let length = Asset.getLength(of: tokenS) ?? 4
-        let title = LocalizedString("Available Balance", comment: "")
+        
+        let maxPossibleAmount = getMaxPossibleAmount(side: type, tokenBuy: tokenB, tokenSell: tokenS)
+        let price = Double(priceTextField.text!) ?? 0
+        
         if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: tokenS) {
-            message = "\(title) \(asset.display) \(tokenS)"
-            amountTextField.text = (asset.balance * value).withCommas(length)
-//            // Only validate when balance is larger than 0.
-//            if asset.balance > 0 {
-//                _ = validate()
-//            }
+            if price > 0 {
+                switch type {
+                case .buy:
+                    let title = LocalizedString("Can Buy", comment: "")
+                    let amountToBuy = maxPossibleAmount / price
+                    message = "\(title) \(amountToBuy.withCommas(length).trailingZero()) \(tokenB)"
+                    amountTextField.text = (amountToBuy * value).withCommas(length).trailingZero().removeComma()
+                case .sell:
+                    let title = LocalizedString("Available Balance", comment: "")
+                    message = "\(title) \(asset.display) \(tokenS)"
+                    amountTextField.text = (maxPossibleAmount * value).withCommas(length).trailingZero().removeComma()
+                }
+            }
         } else {
+            let title = LocalizedString("Available Balance", comment: "")
             message = "\(title) 0.0 \(tokenS)"
             amountTextField.text = "0.0"
         }
+        
         tipLabel.text = message
         tipLabel.textColor = .text1
-        activeTextFieldTag = amountTextField.tag
+        tipLabel.isHidden = false
     }
 
     // To avoid gesture conflicts in swiping to back and UISlider
@@ -335,7 +351,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             tokenBuy = PlaceOrderDataManager.shared.tokenA.symbol
             tokenSell = PlaceOrderDataManager.shared.tokenB.symbol
             buyNoMoreThanAmountB = true
-            amountBuy = Double(amountTextField.text!)!
+            amountBuy = Double(amountTextField.text!.removeComma())!
             amountSell = self.orderAmount
         } else {
             side = "sell"
@@ -343,7 +359,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             tokenSell = PlaceOrderDataManager.shared.tokenA.symbol
             buyNoMoreThanAmountB = false
             amountBuy = self.orderAmount
-            amountSell = Double(amountTextField.text!)!
+            amountSell = Double(amountTextField.text!.removeComma())!
         }
 
         lrcFee = getLrcFee(amountSell, tokenSell)
@@ -364,7 +380,9 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         
         let isPriceValid = validateTokenPrice()
         let isAmountValid = validateAmount()
-        if isPriceValid && isAmountValid {
+        
+        // Need to call validate()
+        if isPriceValid && isAmountValid && validate() {
             self.pushController()
         }
         if !isPriceValid {
@@ -419,7 +437,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     }
     
     func validateTokenPrice() -> Bool {
-        if let value = Double(priceTextField.text ?? "0") {
+        if let value = Double(priceTextField.text!.removeComma()) {
             let validate = value > 0.0
             if validate {
                 let tokenBPrice = PriceDataManager.shared.getPrice(of: PlaceOrderDataManager.shared.tokenB.symbol)!
@@ -443,23 +461,65 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     }
    
     func setupLabels() {
-        if let balance = getBalance() {
-            let title = LocalizedString("Available Balance", comment: "")
-            tipLabel.isHidden = false
-            tipLabel.textColor = .text1
-            tipLabel.text = "\(title) \(balance.withCommas()) \(self.tokenS)"
+        switch type {
+        case .buy:
+            if validateTokenPrice() {
+                let price = Double(priceTextField.text!) ?? 0
+                if price > 0 {
+                    let title = LocalizedString("Can Buy", comment: "")
+                    let maxPossibleAmount = getMaxPossibleAmount(side: type, tokenBuy: tokenB, tokenSell: tokenS)
+                    let maxAmountToBuy = maxPossibleAmount / price
+                    tipLabel.isHidden = false
+                    tipLabel.textColor = .text1
+                    tipLabel.text = "\(title) \(maxAmountToBuy.withCommas().trailingZero()) \(tokenB)"
+                }
+            }
+            
+        case .sell:
+            if let balance = getBalance() {
+                let title = LocalizedString("Available Balance", comment: "")
+                tipLabel.isHidden = false
+                tipLabel.textColor = .text1
+                tipLabel.text = "\(title) \(balance.withCommas()) \(self.tokenS)"
+            }
+        }
+    }
+    
+    func syncAllTextFieldsAndStepSlider() {
+        guard validateTokenPrice() && validateAmount() else {
+            return
+        }
+
+        if activeTextFieldTag == priceTextField.tag {
+            // Reuse the function
+            stepSliderValueChanged(stepSliderPercentage)
+            
+        } else if activeTextFieldTag == amountTextField.tag {
+            let price = Double(priceTextField.text!) ?? 0
+            let amount = Double(amountTextField.text!.removeComma())!
+            let maxPossibleAmount = getMaxPossibleAmount(side: type, tokenBuy: tokenB, tokenSell: tokenS)
+            var percentage: Double = 0
+            switch type {
+            case .buy:
+                let maxAmountToBuy = maxPossibleAmount / price
+                percentage = amount/maxAmountToBuy
+            case .sell:
+                percentage = amount/maxPossibleAmount
+            }
+            if percentage > 1 {
+                percentage = 1
+            }
+            stepSlider.setPercentageValue(Float(percentage))
+        } else {
+            
         }
     }
     
     func validateAmount() -> Bool {
-        if let value = Double(amountTextField.text ?? "0") {
+        if let value = Double(amountTextField.text!.removeComma()) {
             let validate = value > 0.0
             if validate {
-                if type == .buy {
-                    tipLabel.isHidden = true
-                } else {
-                    setupLabels()
-                }
+                setupLabels()
             } else {
                 tipLabel.isHidden = false
                 tipLabel.textColor = .fail
@@ -494,9 +554,10 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         if validateTokenPrice() && validateAmount() {
             isValid = true
             var total: Double
-            total = Double(priceTextField.text!)! * Double(amountTextField.text!)!
+            total = Double(priceTextField.text!.removeComma())! * Double(amountTextField.text!.removeComma())!
             self.orderAmount = total
             setupLabels()
+            syncAllTextFieldsAndStepSlider()
         }
         return isValid
     }
@@ -673,4 +734,43 @@ extension BuyViewController {
         let minLrc = GasDataManager.shared.getGasAmount(by: "eth_transfer", in: "LRC")
         return max(result, minLrc)
     }
+    
+    func getMaxPossibleAmount(side: TradeType, tokenBuy: String, tokenSell: String) -> Double {
+        var maxPossibleAmount: Double = 0
+
+        if side == .buy {
+            /*
+            if tokenBuy.uppercased() == "LRC" {
+                
+            } else {
+                
+            }
+            */
+            maxPossibleAmount = CurrentAppWalletDataManager.shared.getAsset(symbol: tokenSell)?.balance ?? 0
+            
+        } else {
+            /*
+            if tokenSell.uppercased() == "LRC" {
+                // This line of code will trigger a Relay API call
+                let lrcFrozen = PlaceOrderDataManager.shared.getFrozenLRCFeeFromServer()
+                let lrcBlance = CurrentAppWalletDataManager.shared.getBalance(of: "LRC")!
+                
+                let lrcFee = getLrcFee(lrcBlance-lrcFrozen, tokenSell)
+                
+                maxPossibleAmount = lrcBlance - lrcFrozen - lrcFee
+                
+            } else {
+                maxPossibleAmount = CurrentAppWalletDataManager.shared.getAsset(symbol: tokenSell)?.balance ?? 0
+            }
+            */
+            maxPossibleAmount = CurrentAppWalletDataManager.shared.getAsset(symbol: tokenSell)?.balance ?? 0
+        }
+        
+        if maxPossibleAmount < 0 {
+            maxPossibleAmount = 0
+        }
+
+        return maxPossibleAmount
+    }
+
 }
