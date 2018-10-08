@@ -154,16 +154,20 @@ class AssetTransactionTableViewCell: UITableViewCell {
     }
     
     private func updateDefault() {
-        amountLabel.isHidden = false
-        displayLabel.isHidden = false
         if let tx = self.transaction {
+            titleLabel.text = tx.type.description + " " + tx.symbol
+            displayLabel.text = tx.currency
+            amountLabel.isHidden = false
+            displayLabel.isHidden = false
+            
             if tx.type == .bought || tx.type == .received {
                 amountLabel.text = "+\(tx.value) \(tx.symbol)"
             } else if tx.type == .sold || tx.type == .sent {
                 amountLabel.text = "-\(tx.value) \(tx.symbol)"
+            } else {
+                amountLabel.isHidden = true
+                displayLabel.isHidden = true
             }
-            displayLabel.text = tx.currency
-            titleLabel.text = tx.type.description + " " + tx.symbol
         }
     }
     
