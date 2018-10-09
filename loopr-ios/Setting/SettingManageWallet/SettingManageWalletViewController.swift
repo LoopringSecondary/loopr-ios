@@ -28,7 +28,7 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-        tableView.tableFooterView = UIView()
+        tableView.tableFooterView = UIView(frame: .zero)
         tableView.theme_backgroundColor = ColorPicker.backgroundColor
         tableView.delaysContentTouches = false
         

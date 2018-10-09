@@ -23,7 +23,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         view.theme_backgroundColor = ColorPicker.backgroundColor
         settingsTableView.separatorStyle = .none
-        settingsTableView.tableFooterView = UIView()
+        settingsTableView.tableFooterView = UIView(frame: .zero)
         settingsTableView.delaysContentTouches = false
         settingsTableView.theme_backgroundColor = ColorPicker.backgroundColor
         
@@ -59,7 +59,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 3:
             return aboutSectionForCell(indexPath: indexPath)
         default:
-            return UITableViewCell()
+            return UITableViewCell(frame: .zero)
         }
     }
     
@@ -153,20 +153,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var headerView: UIView
-        if section == 1 {
-            headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 48))
-            headerView.theme_backgroundColor = ColorPicker.backgroundColor
-            let infoLabel = UILabel(frame: CGRect(x: 23, y: 16, width: headerView.width - 23*2, height: 16))
-            infoLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address
-            infoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
-            infoLabel.theme_textColor = GlobalPicker.textLightColor
-            infoLabel.lineBreakMode = .byTruncatingMiddle
-            headerView.addSubview(infoLabel)
-        } else {
-            headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 20))
-            headerView.theme_backgroundColor = ColorPicker.backgroundColor
-        }
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 20))
+        headerView.theme_backgroundColor = ColorPicker.backgroundColor
         return headerView
     }
     
@@ -199,7 +187,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             return cell!
         default:
-            return UITableViewCell()
+            return UITableViewCell(frame: .zero)
         }
     }
     
@@ -218,7 +206,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 3:
             return createSettingPasscodeTableView(indexPath: indexPath)
         default:
-            return UITableViewCell()
+            return UITableViewCell(frame: .zero)
         }
         
     }
@@ -232,7 +220,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 2:
             return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Trade FAQ", comment: ""))
         default:
-            return UITableViewCell()
+            return UITableViewCell(frame: .zero)
         }
     }
 
@@ -264,7 +252,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
             return cell!
         default:
-            return UITableViewCell()
+            return UITableViewCell(frame: .zero)
         }
     }
     
@@ -358,8 +346,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 0
-        } else if section == 1 {
-            return 48
         } else {
             return 10
         }
