@@ -77,7 +77,7 @@ class MarketTableViewCell: UITableViewCell {
                 balanceLabel.text = "Vol \(market.volumeInPast24.withCommas())"
             }
             
-            marketPriceInBitcoinLabel.text = market.balance.withCommas(6)
+            marketPriceInBitcoinLabel.text = market.balanceWithDecimals
             marketPriceInFiatCurrencyLabel.text = market.display.description
             percentageChangeLabel.text = market.changeInPat24
             percentageChangeLabel.backgroundColor = UIStyleConfig.getChangeColor(change: market.changeInPat24)

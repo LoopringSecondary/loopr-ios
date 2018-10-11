@@ -16,11 +16,15 @@ class Market: Equatable, CustomStringConvertible {
     var icon: UIImage?
     var description: String
     let tradingPair: TradingPair
-    var balance: Double
+    
     var display: String
     var volumeInPast24: Double
     var changeInPat24: String
     var tag: TickerTag
+    
+    var balance: Double
+    var decimals: Int
+    var balanceWithDecimals: String
 
     // loopring_getTickers
     var open: Double
@@ -42,13 +46,19 @@ class Market: Equatable, CustomStringConvertible {
         guard tokens.count == 2 else {
             return nil
         }
+        
+        decimals = json["decimals"].int ?? 8
+        balance = json["last"].doubleValue
+        balanceWithDecimals = balance.withCommas(decimals)
+
         icon = UIImage(named: tokens[0]) ?? nil
-        changeInPat24 = json["change"].stringValue
         tradingPair = TradingPair(tokens[0], tokens[1])
         description = "\(tokens[0])" + "-" + "\(tokens[1])"
-        balance = json["last"].doubleValue
+        
         volumeInPast24 = json["vol"].doubleValue
         tag = TickerTag(rawValue: json["label"].stringValue) ?? .unknown
+        
+        changeInPat24 = json["change"].stringValue
         let change = json["change"].stringValue
         if change.isEmpty || change == "0.00%" {
             changeInPat24 = "—"
@@ -72,6 +82,7 @@ class Market: Equatable, CustomStringConvertible {
         sell = json["sell"].double ?? 0.0
     }
     
+    // TODO: looks like exchange is deprecated
     func getExchangeDescription() -> String {
         switch exchange {
         case "binance":

@@ -47,7 +47,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     @IBOutlet weak var scrollViewButtonLayoutConstraint: NSLayoutConstraint!
     
     // Mask view
-    var blurVisualEffectView = UIView()
+    var blurVisualEffectView = UIView(frame: .zero)
     
     // Drag down to close a present view controller.
     var dismissInteractor = MiniToLargeViewInteractive()
@@ -111,7 +111,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         amountInfoLabel.text = 0.0.currency
         
         amountTextField.delegate = self
-        amountTextField.inputView = UIView()
+        amountTextField.inputView = UIView(frame: .zero)
         amountTextField.tag = 1
         amountTextField.font = FontConfigManager.shared.getDigitalFont()
         amountTextField.theme_tintColor = GlobalPicker.contrastTextColor

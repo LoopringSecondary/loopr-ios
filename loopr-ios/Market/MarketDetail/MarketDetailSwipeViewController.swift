@@ -98,7 +98,7 @@ class MarketDetailSwipeViewController: SwipeViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        priceInCryptoLabel.text = "\(market.balance.withCommas(6)) \(market.tradingPair.tradingB) ≈ \(market.display.description)"
+        priceInCryptoLabel.text = "\(market.balanceWithDecimals) \(market.tradingPair.tradingB) ≈ \(market.display.description)"
         hoursChangeLabel.text = market.changeInPat24
         hoursHighLabel.text =  market.high == 0 ? "-" : market.high.withCommas(6)
         if market.volumeInPast24 > 1 {

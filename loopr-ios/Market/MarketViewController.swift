@@ -61,7 +61,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         marketTableView.tableHeaderView = headerView
         */
         
-        marketTableView.tableFooterView = UIView()
+        marketTableView.tableFooterView = UIView(frame: .zero)
         marketTableView.separatorStyle = .none
         let tap = UITapGestureRecognizer(target: self, action: #selector(tableTapped))
         marketTableView.addGestureRecognizer(tap)
@@ -241,7 +241,7 @@ class MarketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label1.textAlignment = .left
         baseView.addSubview(label1)
 
-        let label2 = UILabel(frame: CGRect(x: UIScreen.main.bounds.width*0.3+paddingX, y: 0, width: labelWidth, height: 30))
+        let label2 = UILabel(frame: CGRect(x: UIScreen.main.bounds.width*0.28+paddingX, y: 0, width: labelWidth, height: 30))
         label2.theme_textColor = GlobalPicker.textLightColor
         label2.font = FontConfigManager.shared.getMediumFont(size: 14)
         label2.text = LocalizedString("Price", comment: "")
