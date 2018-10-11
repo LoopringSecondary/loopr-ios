@@ -744,7 +744,6 @@
 		AC46F7752069FB4400CFDC40 /* UIButton+RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+RoundButton.swift"; sourceTree = "<group>"; };
 		AC4B894A2110262B00643910 /* MarketTradeHistoryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketTradeHistoryDataManager.swift; sourceTree = "<group>"; };
 		AC4B894C21103EAF00643910 /* TradeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeType.swift; sourceTree = "<group>"; };
-		AC4D580D213CCEE600EE658F /* UP Wallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "UP Wallet.entitlements"; sourceTree = "<group>"; };
 		AC4F5FFC20773E9D00F1D954 /* SignatureData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureData.swift; sourceTree = "<group>"; };
 		AC4F5FFD20773E9D00F1D954 /* Sign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sign.swift; sourceTree = "<group>"; };
 		AC4F5FFF20773E9D00F1D954 /* GethBigInt+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GethBigInt+Extension.swift"; sourceTree = "<group>"; };
@@ -978,6 +977,7 @@
 		ACEC977E20AD57F3003F9DEB /* P2POrderHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = P2POrderHistoryViewController.xib; sourceTree = "<group>"; };
 		ACEC978120AD6165003F9DEB /* P2POrderHistoryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P2POrderHistoryDataManager.swift; sourceTree = "<group>"; };
 		ACF06A05204C736A00C3FF86 /* CreateMnemonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMnemonicTests.swift; sourceTree = "<group>"; };
+		ACFD5FB1216F06D500E161EE /* UP Wallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "UP Wallet.entitlements"; sourceTree = "<group>"; };
 		ACFEFE9420C337BD00013921 /* PendingTransactionsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingTransactionsDataManager.swift; sourceTree = "<group>"; };
 		ACFEFE9720C338BC00013921 /* TxType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxType.swift; sourceTree = "<group>"; };
 		ACFEFE9920C338DA00013921 /* TxStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxStatus.swift; sourceTree = "<group>"; };
@@ -1587,7 +1587,7 @@
 		AC798E412022B93A0071D477 /* loopr-ios */ = {
 			isa = PBXGroup;
 			children = (
-				AC4D580D213CCEE600EE658F /* UP Wallet.entitlements */,
+				ACFD5FB1216F06D500E161EE /* UP Wallet.entitlements */,
 				ACCC7EA120828D2E008E58BA /* loopr-ios-sdk */,
 				AC798E422022B93A0071D477 /* AppDelegate.swift */,
 				ACFEFE9D20C3436000013921 /* loopr_ios.xcdatamodeld */,
@@ -3499,7 +3499,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3510,8 +3510,9 @@
 				PRODUCT_NAME = "UP Wallet";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
