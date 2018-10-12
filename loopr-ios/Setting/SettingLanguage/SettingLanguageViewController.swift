@@ -22,7 +22,7 @@ class SettingLanguageViewController: UIViewController, UITableViewDelegate, UITa
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
-        tableView.tableFooterView = UIView()
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
 
         self.navigationItem.title = LocalizedString("Language", comment: "")
         setBackButton()

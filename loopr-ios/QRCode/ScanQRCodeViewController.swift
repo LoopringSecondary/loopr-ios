@@ -55,8 +55,8 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var timer = Timer()
     var scanning: String!
-    var scanLine = UIImageView()
-    var scanQRCodeView = UIView()
+    var scanLine = UIImageView(frame: CGRect.zero)
+    var scanQRCodeView = UIView(frame: CGRect.zero)
     
     var isTorchOn = false
     var shouldPop = true
