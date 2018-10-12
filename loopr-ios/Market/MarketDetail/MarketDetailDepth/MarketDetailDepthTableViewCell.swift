@@ -170,7 +170,8 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
                 
             })
             delegate?.clickedMarketDetailDepthTableViewCell(amount: buyDepth!.amountA, price: buyDepth!.price)
-            delegate?.clickedMarketDetailDepthTableViewCell(amount: buyDepth!.amountA, price: buyDepth!.price, tradeType: .buy)
+            // Jump to sell page
+            delegate?.clickedMarketDetailDepthTableViewCell(amount: buyDepth!.amountA, price: buyDepth!.price, tradeType: .sell)
         }
     }
 
@@ -184,7 +185,8 @@ class MarketDetailDepthTableViewCell: UITableViewCell {
                 
             })
             delegate?.clickedMarketDetailDepthTableViewCell(amount: sellDepth!.amountA, price: sellDepth!.price)
-            delegate?.clickedMarketDetailDepthTableViewCell(amount: sellDepth!.amountA, price: sellDepth!.price, tradeType: .sell)
+            // Jump to buy page
+            delegate?.clickedMarketDetailDepthTableViewCell(amount: sellDepth!.amountA, price: sellDepth!.price, tradeType: .buy)
         }
     }
     
