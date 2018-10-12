@@ -92,6 +92,8 @@ class TradeSelectionViewController: UIViewController {
         button4.set(image: UIImage.init(named: "Trade-order-dark"), title: LocalizedString("Orders", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         button4.set(image: UIImage.init(named: "Trade-order-dark")?.alpha(0.6), title: LocalizedString("Orders", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         
+        // TODO: needs to config through cloud.
+        button5.isHidden = true
         button5.set(image: UIImage.init(named: "Trading-competition-dark"), title: LocalizedString("Trading Competition", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         button5.set(image: UIImage.init(named: "Trading-competition-dark")?.alpha(0.6), title: LocalizedString("Trading Competition", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
     }
@@ -103,7 +105,9 @@ class TradeSelectionViewController: UIViewController {
             button2.applyShadow(withColor: UIColor.black)
             button3.applyShadow(withColor: UIColor.black)
             button4.applyShadow(withColor: UIColor.black)
-            button5.applyShadow(withColor: UIColor.black)
+            
+            // button5.applyShadow(withColor: UIColor.black)
+            
             isViewDidAppear = true
 
             let start = Date()
