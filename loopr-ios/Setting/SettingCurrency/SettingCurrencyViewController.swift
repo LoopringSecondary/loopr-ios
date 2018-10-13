@@ -24,7 +24,7 @@ class SettingCurrencyViewController: UIViewController, UITableViewDelegate, UITa
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
-        tableView.tableFooterView = UIView()
+        tableView.tableFooterView = UIView(frame: .zero)
         
         self.navigationItem.title = LocalizedString("Currency", comment: "")
         setBackButton()
