@@ -10,6 +10,7 @@ import Foundation
 
 enum OrderHistorySwipeType: String, CustomStringConvertible {
     
+    case all = "All"
     case open = "Open"
     case finished = "Finished"
     case cancelled = "Cancelled"
@@ -17,6 +18,7 @@ enum OrderHistorySwipeType: String, CustomStringConvertible {
     
     var description: String {
         switch self {
+        case .all: return LocalizedString("All", comment: "")
         case .open: return LocalizedString("Open", comment: "")
         case .finished: return LocalizedString("Completed", comment: "")
         case .cancelled: return LocalizedString("Cancelled", comment: "")

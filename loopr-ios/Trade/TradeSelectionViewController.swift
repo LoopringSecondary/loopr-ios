@@ -148,7 +148,7 @@ class TradeSelectionViewController: UIViewController {
 
     @objc func pressedButton4(_ button: UIButton) {
         print("pressedButton4")
-        let viewController = OrderHistorySwipeViewController()
+        let viewController = UpdatedOrderHistoryViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }

@@ -15,11 +15,9 @@ class OrderDataManager {
     static let shared = OrderDataManager()
 
     private var orders: [Order]
-    private var dateOrders: [String: [Order]]
 
     private init() {
         orders = []
-        dateOrders = [:]
     }
 
     func getOrders(orderStatuses: [OrderStatus]? = nil) -> [Order] {
@@ -41,8 +39,10 @@ class OrderDataManager {
         }
     }
     
-    func getOrders(type: OrderHistorySwipeType = .open) -> [Order] {
+    func getOrders(type: OrderHistorySwipeType = .all) -> [Order] {
         switch type {
+        case .all:
+            return orders
         case .open:
             return orders.filter({ (order) -> Bool in
                 return order.orderStatus == .opened ||
@@ -62,47 +62,7 @@ class OrderDataManager {
             })
         }
     }
-    
-    func getDateOrders(orderStatuses: [OrderStatus]? = nil) -> [String: [Order]] {
-        guard let orderStatuses = orderStatuses else {
-            return dateOrders
-        }
-        var result: [String: [Order]] = [:]
-        for (date, orders) in dateOrders {
-            var temp: [Order] = []
-            for order in orders {
-                if orderStatuses.contains(where: { (status) -> Bool in
-                    order.orderStatus == status
-                }) {
-                    temp.append(order)
-                }
-            }
-            if !temp.isEmpty {
-                result[date] = temp
-            }
-        }
-        return result
-    }
-    
-    func getDateOrders(tokenSymbol: String? = nil) -> [String: [Order]] {
-        guard let tokenSymbol = tokenSymbol else {
-            return dateOrders
-        }
-        var result: [String: [Order]] = [:]
-        for (date, orders) in dateOrders {
-            for order in orders {
-                let pair = order.originalOrder.market.components(separatedBy: "-")
-                if pair[0].lowercased() == tokenSymbol.lowercased() {
-                    if result[date] == nil {
-                        result[date] = []
-                    }
-                    result[date]!.append(order)
-                }
-            }
-        }
-        return result
-    }
-    
+
     func shouldCancelAll() -> Bool {
         let defaults = UserDefaults.standard
         var result = defaults.bool(forKey: UserDefaultsKeys.cancelledAll.rawValue)
@@ -124,25 +84,11 @@ class OrderDataManager {
         if let owner = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address {
             LoopringAPIRequest.getOrders(owner: owner, pageIndex: pageIndex, pageSize: pageSize) { orders, error in
                 guard let orders = orders, error == nil else {
-                    self.dateOrders = [:]
                     self.orders = []
                     completionHandler(error)
                     return
                 }
-                // No need to reset
-                // self.dateOrders = [:]
-                for order in orders {
-                    let time = UInt(order.originalOrder.validSince)
-                    let valid = DateUtil.convertToDate(time, format: "yyyy-MM-dd")
-                    if self.dateOrders[valid] == nil {
-                        self.dateOrders[valid] = []
-                    }
-                    if let indexOfOrder = self.dateOrders[valid]?.index(of: order) {
-                        self.dateOrders[valid]![indexOfOrder] = order
-                    } else {
-                        self.dateOrders[valid]!.append(order)
-                    }
-                }
+
                 if pageIndex == 1 {
                     self.orders = orders
                 } else {

@@ -1,22 +1,21 @@
 //
-//  OrderHistoryViewController.swift
+//  UpdatedOrderHistoryViewController.swift
 //  loopr-ios
 //
-//  Created by xiaoruby on 3/9/18.
+//  Created by xiaoruby on 10/12/18.
 //  Copyright © 2018 Loopring. All rights reserved.
 //
 
 import UIKit
 import NotificationBannerSwift
 
-class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+class UpdatedOrderHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+
     @IBOutlet weak var historyTableView: UITableView!
 
     // Data source
     var orders: [Order] = []
     
-    var type: OrderHistorySwipeType
     let refreshControl = UIRefreshControl()
     
     var viewAppear: Bool = false
@@ -30,46 +29,95 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
     var filteredOrders = [Order]()
     
     var canHideKeyboard = true
-
+    
     var previousOrderCount: Int = 0
     var pageIndex: UInt = 1
     var hasMoreData: Bool = true
 
-    convenience init(type: OrderHistorySwipeType) {
-        self.init(nibName: nil, bundle: nil)
-        self.type = type
-    }
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        type = .open
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    let searchBar = UISearchBar()
+    var searchButton = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
 
+        // Do any additional setup after loading the view.
+        self.navigationItem.title = LocalizedString("Orders", comment: "")
         view.theme_backgroundColor = ColorPicker.backgroundColor
         historyTableView.theme_backgroundColor = ColorPicker.backgroundColor
+        
+        setupSearchBar()
         setBackButton()
+
         historyTableView.dataSource = self
         historyTableView.delegate = self
         historyTableView.tableFooterView = UIView(frame: .zero)
         historyTableView.separatorStyle = .none
-
+        
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 10))
         historyTableView.tableHeaderView = headerView
         historyTableView.refreshControl = refreshControl
         refreshControl.theme_tintColor = GlobalPicker.textColor
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
-
+        
         getOrderHistoryFromRelay()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isSearching {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressSearchCancel))
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.isSearching = false
+    }
+    
+    func setupSearchBar() {
+        searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.pressOrderSearchButton(_:)))
+        searchBar.showsCancelButton = false
+        searchBar.placeholder = LocalizedString("Search", comment: "")
+        searchBar.delegate = self
+        searchBar.searchBarStyle = .default
+        searchBar.keyboardType = .alphabet
+        searchBar.autocapitalizationType = .allCharacters
+        searchBar.keyboardAppearance = Themes.isDark() ? .dark : .default
+        searchBar.theme_tintColor = GlobalPicker.textColor
+        searchBar.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffffcc") : UIColor.init(rgba: "#000000cc")
+        searchBar.setTextFieldColor(color: UIColor.dark3)
+        self.navigationItem.setRightBarButton(searchButton, animated: true)
+    }
+    
+    @objc func pressOrderSearchButton(_ button: UIBarButtonItem) {
+        let cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressSearchCancel))
+        self.navigationItem.rightBarButtonItems = [cancelBarButton]
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.hidesBackButton = true
+        
+        let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
+        searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
+        self.navigationItem.titleView = searchBarContainer
+        
+        searchBar.becomeFirstResponder()
+    }
+    
+    @objc func pressSearchCancel(_ button: UIBarButtonItem) {
+        print("pressSearchCancel")
+        self.navigationItem.rightBarButtonItems = [searchButton]
+        searchBar.resignFirstResponder()
+        searchBar.text = nil
+        navigationItem.titleView = nil
+        self.navigationItem.title = LocalizedString("Orders", comment: "")
+        isSearching = false
+        searchTextDidUpdate(searchText: "")
+        setBackButton()
+    }
+    
     @objc private func refreshData(_ sender: Any) {
         pageIndex = 1
         hasMoreData = true
@@ -82,7 +130,7 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
                 if self.isLaunching {
                     self.isLaunching = false
                 }
-                self.orders = OrderDataManager.shared.getOrders(type: self.type)
+                self.orders = OrderDataManager.shared.getOrders(type: .all)
                 if self.previousOrderCount != self.orders.count {
                     self.hasMoreData = true
                 } else {
@@ -93,57 +141,6 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
                 self.refreshControl.endRefreshing()
             }
         })
-    }
-    
-    func reloadAfterSwipeViewUpdated(isSearching: Bool, searchText: String) {
-        orders = OrderDataManager.shared.getOrders(type: self.type)
-        self.isSearching = isSearching
-        self.searchText = searchText.trim()
-        if isSearching {
-            filterContentForSearchText(self.searchText)
-        } else {
-            historyTableView.reloadData()
-            // marketTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
-        }
-    }
-    
-    func searchTextDidUpdate(searchText: String) {
-        self.searchText = searchText.trim()
-        if self.searchText != "" {
-            isSearching = true
-            filterContentForSearchText(self.searchText)
-        } else {
-            isSearching = false
-            historyTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
-        }
-    }
-    
-    // MARK: - Private instance methods
-    
-    func filterContentForSearchText(_ searchText: String) {
-        let newFilteredOrders = OrderDataManager.shared.getOrders(type: self.type).filter { (order) -> Bool in
-            return order.originalOrder.market.lowercased().contains(searchText.lowercased())
-        }
-        filteredOrders = newFilteredOrders
-        if historyTableView.contentOffset.y == 0 {
-            historyTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
-        } else {
-            canHideKeyboard = false
-            _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
-                self.canHideKeyboard = true
-            }
-            
-            historyTableView.reloadData()
-            // tableView.setContentOffset(.zero, animated: false)
-            let topIndex = IndexPath(row: 0, section: 0)
-            historyTableView.scrollToRow(at: topIndex, at: .top, animated: true)
-        }
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if canHideKeyboard {
-            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-        }
     }
     
     func isTableEmpty() -> Bool {
@@ -161,7 +158,7 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if orders.count == 0 {
             return 0
@@ -259,7 +256,7 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
                 pageIndex += 1
                 getOrderHistoryFromRelay()
             }
-
+            
             return cell!
         }
     }
@@ -280,9 +277,71 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
         self.navigationController?.view.endEditing(true)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    // MARK: - SearchBar Delegate
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("searchBar textDidChange \(searchText)")
+        searchTextDidUpdate(searchText: searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("searchBarSearchButtonClicked")
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        print("searchBarTextDidBeginEditing")
+        isSearching = true
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.pressSearchCancel))
+        searchBar.becomeFirstResponder()
+        
+        // No need to reload nor call searchTextDidUpdate
+        isSearching = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print("searchBarTextDidEndEditing")
+    }
+
+    func searchTextDidUpdate(searchText: String) {
+        self.searchText = searchText.trim()
+        if self.searchText != "" {
+            isSearching = true
+            filterContentForSearchText(self.searchText)
+        } else {
+            isSearching = false
+            historyTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
+        }
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        let newFilteredOrders = OrderDataManager.shared.getOrders(type: .all).filter { (order) -> Bool in
+            return order.originalOrder.market.lowercased().contains(searchText.lowercased())
+        }
+        filteredOrders = newFilteredOrders
+        if historyTableView.contentOffset.y == 0 {
+            historyTableView.reloadSections(IndexSet(integersIn: 0...0), with: .fade)
+        } else {
+            canHideKeyboard = false
+            _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
+                self.canHideKeyboard = true
+            }
+            
+            historyTableView.reloadData()
+            // tableView.setContentOffset(.zero, animated: false)
+            let topIndex = IndexPath(row: 0, section: 0)
+            historyTableView.scrollToRow(at: topIndex, at: .top, animated: true)
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if canHideKeyboard {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
+    }
+
 }
 
-extension OrderHistoryViewController {
+extension UpdatedOrderHistoryViewController {
     
     func completion(_ txHash: String?, _ error: Error?) {
         var title: String = ""

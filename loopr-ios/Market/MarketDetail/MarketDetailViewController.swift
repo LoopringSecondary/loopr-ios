@@ -89,7 +89,7 @@ class MarketDetailViewController: UIViewController {
     
     @objc func pressHistoryButton(_ button: UIBarButtonItem) {
         print("pressStarButton")
-        let viewController = OrderHistorySwipeViewController()
+        let viewController = UpdatedOrderHistoryViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }

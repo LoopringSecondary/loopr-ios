@@ -458,6 +458,8 @@
 		ACEC978020AD57F3003F9DEB /* P2POrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACEC977E20AD57F3003F9DEB /* P2POrderHistoryViewController.xib */; };
 		ACEC978220AD6165003F9DEB /* P2POrderHistoryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEC978120AD6165003F9DEB /* P2POrderHistoryDataManager.swift */; };
 		ACF06A06204C736A00C3FF86 /* CreateMnemonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF06A05204C736A00C3FF86 /* CreateMnemonicTests.swift */; };
+		ACFD5FB42171B8AB00E161EE /* UpdatedOrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD5FB22171B8AB00E161EE /* UpdatedOrderHistoryViewController.swift */; };
+		ACFD5FB52171B8AB00E161EE /* UpdatedOrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACFD5FB32171B8AB00E161EE /* UpdatedOrderHistoryViewController.xib */; };
 		ACFEFE9520C337BE00013921 /* PendingTransactionsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEFE9420C337BD00013921 /* PendingTransactionsDataManager.swift */; };
 		ACFEFE9820C338BC00013921 /* TxType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEFE9720C338BC00013921 /* TxType.swift */; };
 		ACFEFE9A20C338DA00013921 /* TxStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEFE9920C338DA00013921 /* TxStatus.swift */; };
@@ -978,6 +980,8 @@
 		ACEC978120AD6165003F9DEB /* P2POrderHistoryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P2POrderHistoryDataManager.swift; sourceTree = "<group>"; };
 		ACF06A05204C736A00C3FF86 /* CreateMnemonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMnemonicTests.swift; sourceTree = "<group>"; };
 		ACFD5FB1216F06D500E161EE /* UP Wallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "UP Wallet.entitlements"; sourceTree = "<group>"; };
+		ACFD5FB22171B8AB00E161EE /* UpdatedOrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedOrderHistoryViewController.swift; sourceTree = "<group>"; };
+		ACFD5FB32171B8AB00E161EE /* UpdatedOrderHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedOrderHistoryViewController.xib; sourceTree = "<group>"; };
 		ACFEFE9420C337BD00013921 /* PendingTransactionsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingTransactionsDataManager.swift; sourceTree = "<group>"; };
 		ACFEFE9720C338BC00013921 /* TxType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxType.swift; sourceTree = "<group>"; };
 		ACFEFE9920C338DA00013921 /* TxStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxStatus.swift; sourceTree = "<group>"; };
@@ -1682,6 +1686,8 @@
 			isa = PBXGroup;
 			children = (
 				94E665E42071DFE0001328BF /* HistoryDetail */,
+				ACFD5FB22171B8AB00E161EE /* UpdatedOrderHistoryViewController.swift */,
+				ACFD5FB32171B8AB00E161EE /* UpdatedOrderHistoryViewController.xib */,
 				AC952A122053A84800C78562 /* OrderHistoryViewController.swift */,
 				AC952A132053A84800C78562 /* OrderHistoryViewController.xib */,
 				94E665E7207234C5001328BF /* OrderTableViewCell.swift */,
@@ -2460,6 +2466,7 @@
 				AC99CF472083DD6A000AE4BD /* MnemonicEnterDerivationPathViewController.xib in Resources */,
 				AC2C93D82105AE97004B8456 /* GenerateWalletEnterRepeatPasswordViewController.xib in Resources */,
 				ACB9118D20266A9C00F14644 /* AssetDetailViewController.xib in Resources */,
+				ACFD5FB52171B8AB00E161EE /* UpdatedOrderHistoryViewController.xib in Resources */,
 				AC9ADF92205EE3B900CBE368 /* ConvertETHViewController.xib in Resources */,
 				ACEC978020AD57F3003F9DEB /* P2POrderHistoryViewController.xib in Resources */,
 				AC99CF4F2083E4AF000AE4BD /* MnemonicSelectAddressViewController.xib in Resources */,
@@ -2754,6 +2761,7 @@
 				94AD1FE5208B910D00C443E6 /* Currency.swift in Sources */,
 				ACB911842026388700F14644 /* SettingViewController.swift in Sources */,
 				AC9FFF292126C05000957175 /* MarketChangeTokenViewController.swift in Sources */,
+				ACFD5FB42171B8AB00E161EE /* UpdatedOrderHistoryViewController.swift in Sources */,
 				AC0CD57B20D21C1100ABB7BA /* TabBarItemBouncesContentView.swift in Sources */,
 				AC46F7762069FB4400CFDC40 /* UIButton+RoundButton.swift in Sources */,
 				942C4A02212A9D89008A6B4F /* P2PType.swift in Sources */,
