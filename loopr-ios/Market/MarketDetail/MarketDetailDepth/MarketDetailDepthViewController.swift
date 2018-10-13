@@ -173,7 +173,7 @@ class MarketDetailDepthViewController: UIViewController, UITableViewDelegate, UI
                 cell = nib![0] as? OrderNoDataTableViewCell
             }
             cell?.noDataLabel.text = LocalizedString("No_Data_Tip", comment: "")
-            cell?.noDataImageView.image = #imageLiteral(resourceName: "No-data-orderbook")
+            cell?.noDataImageView.image = UIImage(named: "No-data-orderbook")
             return cell!
         } else {
             var cell = tableView.dequeueReusableCell(withIdentifier: MarketDetailDepthTableViewCell.getCellIdentifier()) as? MarketDetailDepthTableViewCell

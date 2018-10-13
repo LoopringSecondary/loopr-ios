@@ -23,7 +23,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
     var hasMoreData: Bool = true
     
     // Mask view
-    var blurVisualEffectView = UIView()
+    var blurVisualEffectView = UIView(frame: .zero)
     
     // Drag down to close a present view controller.
     var dismissInteractor = MiniToLargeViewInteractive()
@@ -167,7 +167,7 @@ class AssetDetailViewController: UIViewController, UITableViewDelegate, UITableV
                 cell = nib![0] as? OrderNoDataTableViewCell
             }
             cell?.noDataLabel.text = LocalizedString("No_Data_Tip", comment: "")
-            cell?.noDataImageView.image = #imageLiteral(resourceName: "No-data-transaction")
+            cell?.noDataImageView.image = UIImage(named: "No-data-transaction")
             return cell!
         } else {
             var cell = tableView.dequeueReusableCell(withIdentifier: AssetTransactionTableViewCell.getCellIdentifier()) as? AssetTransactionTableViewCell

@@ -224,7 +224,7 @@ class OrderHistoryViewController: UIViewController, UITableViewDelegate, UITable
                 cell = nib![0] as? OrderNoDataTableViewCell
             }
             cell?.noDataLabel.text = LocalizedString("No_Data_Tip", comment: "")
-            cell?.noDataImageView.image = #imageLiteral(resourceName: "No-data-order")
+            cell?.noDataImageView.image = UIImage(named: "No-data-order")
             return cell!
         } else {
             var cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.getCellIdentifier()) as? OrderTableViewCell
