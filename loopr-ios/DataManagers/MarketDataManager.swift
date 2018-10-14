@@ -36,6 +36,17 @@ class MarketDataManager {
         }
         self.markets = filteredMarkets
     }
+    
+    func getDecimals(tokenSymbol: String) -> Int {
+        let filteredMarkets = markets.filter { (market) -> Bool in
+            return market.description != "\(tokenSymbol)-USDT"
+        }
+        guard filteredMarkets.count > 0 else {
+            return 8
+        }
+        
+        return filteredMarkets[0].decimals
+    }
 
     func getBalance(of pair: String) -> Double {
         var result: Double = 0

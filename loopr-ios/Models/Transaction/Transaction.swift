@@ -32,7 +32,7 @@ class Transaction {
             self.symbol = symbol
             self.value = value
             if let value = Asset.getAmount(of: symbol, fromWeiAmount: value) {
-                let length = Asset.getLength(of: symbol) ?? 4
+                let length = MarketDataManager.shared.getDecimals(tokenSymbol: symbol)
                 self.value = value.withCommas(length)
                 if let price = PriceDataManager.shared.getPrice(of: symbol) {
                     let total = price * Double(value)

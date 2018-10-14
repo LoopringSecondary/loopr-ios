@@ -16,12 +16,15 @@ class Asset: CustomStringConvertible, Equatable {
     var name: String
     var icon: UIImage?
     var enable: Bool
-    var balance: Double
+    var balance: Double  // Data from Relay is Hex. Need to transform to decimals
     var display: String
     var allowance: Double
     var total: Double  // total and currency are for the same value.
     var currency: String
     var description: String
+    
+    // Get it from \(symbol)-USDT in loopring_getTickerBySource endpoint.
+    var decimals: Int
     
     init(json: JSON) {
         self.enable = true
@@ -30,15 +33,20 @@ class Asset: CustomStringConvertible, Equatable {
         self.display = "0.0"
         self.total = 0.0
         self.currency = Double(0).currency
+
         self.symbol = json["symbol"].string ?? ""
+        self.decimals = MarketDataManager.shared.getDecimals(tokenSymbol: self.symbol)
+
         self.name = TokenDataManager.shared.getTokenBySymbol(symbol)?.source.capitalized ?? ""
         self.icon = UIImage(named: "Token-\(self.symbol)-\(Themes.getTheme())") ?? nil
         self.description = self.name
+
         if let balance = Asset.getAmount(of: symbol, fromWeiAmount: json["balance"].stringValue) {
             self.balance = balance
-            let length = Asset.getLength(of: symbol) ?? 4
+            let length = self.decimals
             self.display = self.balance.withCommas(length)
         }
+
         if let allowance = Asset.getAmount(of: symbol, fromWeiAmount: json["allowance"].stringValue) {
             self.allowance = allowance
         }
@@ -55,14 +63,7 @@ class Asset: CustomStringConvertible, Equatable {
         self.total = 0.0
         self.currency = Double(0).currency
         self.icon = UIImage(named: "Token-\(self.symbol)-\(Themes.getTheme())") ?? nil
-    }
-
-    static func getLength(of symbol: String) -> Int? {
-        var result: Int?
-        if let price = PriceDataManager.shared.getPrice(of: symbol) {
-            result = price.ints + 2
-        }
-        return result
+        self.decimals = MarketDataManager.shared.getDecimals(tokenSymbol: self.symbol)
     }
 
     static func getAmount(of symbol: String, fromWeiAmount weiAmount: String) -> Double? {

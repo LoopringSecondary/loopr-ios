@@ -79,7 +79,8 @@ class TradeViewOnlyViewController: UIViewController {
             titleLabel.textColor = .fail
             titleLabel.text = title + " " + symbol
         }
-        let length = Asset.getLength(of: symbol) ?? 4
+
+        let length = MarketDataManager.shared.getDecimals(tokenSymbol: symbol)
         amountLabel.text = "\(amount.withCommas(length).trailingZero())"
         if let price = PriceDataManager.shared.getPrice(of: symbol) {
             let value: Double = price * amount

@@ -19,7 +19,7 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let splashImageView = SplashImageView()
+    let splashImageView = SplashImageView(frame: .zero)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -120,7 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.theme_backgroundColor = ColorPicker.backgroundColor
         
         // table cell background color.
-        let colorView = UIView()
+        let colorView = UIView(frame: .zero)
         colorView.theme_backgroundColor = ColorPicker.cardHighLightColor
         UITableViewCell.appearance().selectedBackgroundView = colorView
         
@@ -143,7 +143,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // For some reason, SplashImageView doesn't work here. SplashImageView is to used to avoid SVProgress and backgroundImage shows up at the same time.
         
         if !AuthenticationDataManager.shared.isAuthenticating {
-            let backgroundImageView = UIImageView()
+            let backgroundImageView = UIImageView(frame: .zero)
             backgroundImageView.tag = 2345
             backgroundImageView.image = UIImage(named: "Splash\(ColorTheme.getTheme())")
             backgroundImageView.contentMode = .scaleAspectFill

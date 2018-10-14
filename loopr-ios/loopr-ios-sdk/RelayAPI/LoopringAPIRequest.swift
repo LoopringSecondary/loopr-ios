@@ -182,6 +182,7 @@ class LoopringAPIRequest {
     // READY
     static func getTicker(completionHandler: @escaping (_ markets: [Market], _ error: Error?) -> Void) {
         var body: JSON = JSON()
+        print("WARNING: please use getTicker(by source: TikcerSource, completionHandler: @escaping (_ markets: [Market], _ error: Error?)")
         body["method"] = "loopring_getTicker"
         body["params"] = [["delegateAddress": RelayAPIConfiguration.delegateAddress]]
         body["id"] = JSON(UUID().uuidString)
@@ -205,6 +206,7 @@ class LoopringAPIRequest {
     }
     
     static func getTickers(market: String, completionHandler: @escaping (_ markets: [Market], _ error: Error?) -> Void) {
+        print("WARNING: please use getTicker(by source: TikcerSource, completionHandler: @escaping (_ markets: [Market], _ error: Error?)")
         var body: JSON = JSON()
         body["method"] = "loopring_getTickers"
         body["params"] = [["delegateAddress": RelayAPIConfiguration.delegateAddress, "market": market]]

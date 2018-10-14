@@ -697,7 +697,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     func stepSliderValueChanged(_ value: Double) {
         var message: String = ""
         let tokens = TradeDataManager.shared.tokenS.symbol
-        let length = Asset.getLength(of: tokens) ?? 4
+
+        let length = MarketDataManager.shared.getDecimals(tokenSymbol: tokens)
         let title = LocalizedString("Available Balance", comment: "")
         if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: tokens) {
             message = "\(title) \(asset.display) \(tokens)"

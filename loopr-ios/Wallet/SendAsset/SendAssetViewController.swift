@@ -226,7 +226,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     }
     
     func setResultOfAmount(with percentage: Double) {
-        let length = Asset.getLength(of: asset.symbol) ?? 4
+        let length = MarketDataManager.shared.getDecimals(tokenSymbol: asset.symbol)
         let value = asset.balance * Double(percentage)
         amountTextField.text = value.withCommas(length)
         if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {

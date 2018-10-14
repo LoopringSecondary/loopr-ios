@@ -297,7 +297,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         stepSliderPercentage = value
         
         var message: String = ""
-        let length = Asset.getLength(of: tokenS) ?? 4
+        let length = MarketDataManager.shared.getDecimals(tokenSymbol: tokenS)
         
         let maxPossibleAmount = getMaxPossibleAmount(side: type, tokenBuy: tokenB, tokenSell: tokenS)
         let price = Double(priceTextField.text!) ?? 0

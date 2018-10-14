@@ -103,7 +103,9 @@ class TradeReviewViewController: UIViewController {
         sellTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
         sellTipLabel.theme_textColor = GlobalPicker.contrastTextLightColor
         sellTipLabel.text = LocalizedString("Sell", comment: "")
-        var length = Asset.getLength(of: order.tokenSell) ?? 4
+
+        var length = MarketDataManager.shared.getDecimals(tokenSymbol: order.tokenSell)
+
         sellInfoLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
         sellInfoLabel.theme_textColor = GlobalPicker.contrastTextColor
         sellInfoLabel.text = order.amountSell.withCommas(length)  + " " + order.tokenSell
@@ -111,7 +113,9 @@ class TradeReviewViewController: UIViewController {
         buyTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
         buyTipLabel.theme_textColor = GlobalPicker.contrastTextLightColor
         buyTipLabel.text = LocalizedString("Buy", comment: "")
-        length = Asset.getLength(of: order.tokenBuy) ?? 4
+        
+        length = MarketDataManager.shared.getDecimals(tokenSymbol: order.tokenBuy)
+
         buyInfoLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
         buyInfoLabel.theme_textColor = GlobalPicker.contrastTextColor
         buyInfoLabel.text = order.amountBuy.withCommas(length) + " " + order.tokenBuy
