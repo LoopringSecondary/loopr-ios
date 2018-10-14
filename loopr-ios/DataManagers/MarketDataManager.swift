@@ -110,6 +110,13 @@ class MarketDataManager {
                 return a.description < b.description
             }
             result = sortedMarkets
+        case .TUSD:
+            let sortedMarkets = markets.filter({ (market) -> Bool in
+                return market.tradingPair.tradingB.uppercased() == "TUSD"
+            }).sorted { (a, b) -> Bool in
+                return a.description < b.description
+            }
+            result = sortedMarkets
         case .all:
             result = markets
         }

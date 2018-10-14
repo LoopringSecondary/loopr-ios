@@ -35,7 +35,7 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
     }
 
     func setupChildViewControllers() {
-        types = [.favorite, .ETH, .LRC, .USDT]
+        types = [.favorite, .ETH, .LRC, .TUSD, .USDT]
         
         let vc0 = MarketViewController(type: .favorite)
         vc0.didSelectRowClosure = { (market) -> Void in
@@ -58,14 +58,21 @@ class MarketSwipeViewController: SwipeViewController, UISearchBarDelegate {
         vc2.didSelectBlankClosure = {
             self.searchBar.resignFirstResponder()
         }
-        let vc3 = MarketViewController(type: .USDT)
+        let vc3 = MarketViewController(type: .TUSD)
         vc3.didSelectRowClosure = { (market) -> Void in
             
         }
         vc3.didSelectBlankClosure = {
             self.searchBar.resignFirstResponder()
         }
-        viewControllers = [vc0, vc1, vc2, vc3]
+        let vc4 = MarketViewController(type: .USDT)
+        vc4.didSelectRowClosure = { (market) -> Void in
+            
+        }
+        vc4.didSelectBlankClosure = {
+            self.searchBar.resignFirstResponder()
+        }
+        viewControllers = [vc0, vc1, vc2, vc3, vc4]
         for viewController in viewControllers {
             self.addChildViewController(viewController)
         }

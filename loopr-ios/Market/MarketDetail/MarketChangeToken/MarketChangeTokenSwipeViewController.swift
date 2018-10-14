@@ -37,7 +37,7 @@ class MarketChangeTokenSwipeViewController: SwipeViewController, UISearchBarDele
     }
     
     func setupCloseButton() {
-        let backButton = UIButton()
+        let backButton = UIButton(frame: .zero)
         
         backButton.setImage(UIImage.init(named: "Close-dark"), for: .normal)
         
@@ -57,7 +57,7 @@ class MarketChangeTokenSwipeViewController: SwipeViewController, UISearchBarDele
     }
     
     func setupChildViewControllers() {
-        types = [.favorite, .ETH, .LRC, .USDT]
+        types = [.favorite, .ETH, .LRC, .TUSD, .USDT]
         
         let vc0 = MarketChangeTokenViewController(type: .favorite)
         vc0.didSelectRowClosure = { (market) -> Void in
@@ -80,14 +80,21 @@ class MarketChangeTokenSwipeViewController: SwipeViewController, UISearchBarDele
         vc2.didSelectBlankClosure = {
             self.searchBar.resignFirstResponder()
         }
-        let vc3 = MarketChangeTokenViewController(type: .USDT)
+        let vc3 = MarketChangeTokenViewController(type: .TUSD)
         vc3.didSelectRowClosure = { (market) -> Void in
-            self.didSelectRowClosure?(market)
+            
         }
         vc3.didSelectBlankClosure = {
             self.searchBar.resignFirstResponder()
         }
-        viewControllers = [vc0, vc1, vc2, vc3]
+        let vc4 = MarketChangeTokenViewController(type: .USDT)
+        vc4.didSelectRowClosure = { (market) -> Void in
+            
+        }
+        vc4.didSelectBlankClosure = {
+            self.searchBar.resignFirstResponder()
+        }
+        viewControllers = [vc0, vc1, vc2, vc3, vc4]
         for viewController in viewControllers {
             self.addChildViewController(viewController)
         }
