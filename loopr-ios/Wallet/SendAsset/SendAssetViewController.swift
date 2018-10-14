@@ -224,17 +224,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         let vc = TokenSelectTableViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    func setResultOfAmount(with percentage: Double) {
-        let length = MarketDataManager.shared.getDecimals(tokenSymbol: asset.symbol)
-        let value = asset.balance * Double(percentage)
-        amountTextField.text = value.withCommas(length)
-        if let price = PriceDataManager.shared.getPrice(of: asset.symbol) {
-            let total = value * price
-            updateLabel(label: amountInfoLabel, text: total.currency, textColor: .text2)
-        }
-        _ = validate()
-    }
 
     @objc func scrollViewTapped() {
         print("scrollViewTapped")

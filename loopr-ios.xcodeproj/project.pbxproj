@@ -27,8 +27,6 @@
 		940B452D2061206900ADE2B9 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B452C2061206800ADE2B9 /* Token.swift */; };
 		941138C7210F12AD007FDC82 /* TimeToLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941138C5210F12AD007FDC82 /* TimeToLiveViewController.swift */; };
 		941138C8210F12AD007FDC82 /* TimeToLiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941138C6210F12AD007FDC82 /* TimeToLiveViewController.xib */; };
-		9413F69120B802CB00524D2D /* AmountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9413F69020B802CB00524D2D /* AmountButton.swift */; };
-		9413F69520B80E2600524D2D /* AmountStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9413F69420B80E2600524D2D /* AmountStackView.swift */; };
 		9415543920C0F1BF007AAB87 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9415543820C0F1BF007AAB87 /* UILabelExtension.swift */; };
 		941B1EFC209C41BC00710DFF /* GasDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B1EFB209C41BB00710DFF /* GasDataManager.swift */; };
 		94231DEB20BD671700A4FDC3 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94231DEA20BD671700A4FDC3 /* PaddingLabel.swift */; };
@@ -521,8 +519,6 @@
 		940B452C2061206800ADE2B9 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		941138C5210F12AD007FDC82 /* TimeToLiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeToLiveViewController.swift; sourceTree = "<group>"; };
 		941138C6210F12AD007FDC82 /* TimeToLiveViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeToLiveViewController.xib; sourceTree = "<group>"; };
-		9413F69020B802CB00524D2D /* AmountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountButton.swift; sourceTree = "<group>"; };
-		9413F69420B80E2600524D2D /* AmountStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountStackView.swift; sourceTree = "<group>"; };
 		9415543820C0F1BF007AAB87 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		941B1EFB209C41BB00710DFF /* GasDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasDataManager.swift; sourceTree = "<group>"; };
 		94231DEA20BD671700A4FDC3 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
@@ -1038,15 +1034,6 @@
 				CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9413F68F20B8028B00524D2D /* Amount */ = {
-			isa = PBXGroup;
-			children = (
-				9413F69020B802CB00524D2D /* AmountButton.swift */,
-				9413F69420B80E2600524D2D /* AmountStackView.swift */,
-			);
-			path = Amount;
 			sourceTree = "<group>";
 		};
 		94231DE920BD66F900A4FDC3 /* PaddingLabel */ = {
@@ -1865,7 +1852,6 @@
 				AC0CD58220D2294D00ABB7BA /* TabBarItem */,
 				94231DE920BD66F900A4FDC3 /* PaddingLabel */,
 				9445D54220BA4F3F006045F6 /* Price */,
-				9413F68F20B8028B00524D2D /* Amount */,
 				AC76E46E2047F1AE008BA229 /* CircleChart */,
 				ACE6F71A204210E80039273D /* DashedLineView */,
 				AC4141F120352C130089861D /* SwipeViewController */,
@@ -2803,7 +2789,6 @@
 				AC061939208401EB0060F416 /* MnemonicAddressTableViewCell.swift in Sources */,
 				ACFEFE9A20C338DA00013921 /* TxStatus.swift in Sources */,
 				AC4F600F20773E9D00F1D954 /* GethBigInt+Extension.swift in Sources */,
-				9413F69120B802CB00524D2D /* AmountButton.swift in Sources */,
 				ACE58B8520BE796A005BC1C8 /* VerifyMnemonicViewController.swift in Sources */,
 				94DCE551205FAC07005618E4 /* Trend.swift in Sources */,
 				9415543920C0F1BF007AAB87 /* UILabelExtension.swift in Sources */,
@@ -2963,7 +2948,6 @@
 				AC4F601120773E9D00F1D954 /* EthAccountCoordinator.swift in Sources */,
 				942FE781210D5A1C005C723D /* SendConfirmViewController.swift in Sources */,
 				942C49FA212911B0008A6B4F /* ConvertETHConfirmViewController.swift in Sources */,
-				9413F69520B80E2600524D2D /* AmountStackView.swift in Sources */,
 				ACA677C92079D5A000D34A2F /* DisplayPrivateKeyViewController.swift in Sources */,
 				AC72AEEA204F038300E9D3B0 /* OrderTradeError.swift in Sources */,
 				AC0C5C86203D168C00C8618D /* TickerLabel.swift in Sources */,
