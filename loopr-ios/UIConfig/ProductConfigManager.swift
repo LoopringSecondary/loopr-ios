@@ -41,4 +41,31 @@ enum Production: String {
             return "https://vivwallet.io"
         }
     }
+    
+    static func getSocialMedia() -> [SocialMedia] {
+        switch getCurrent() {
+        case .loopr:
+            return getSocialMediaForLoopr()
+        case .upwallet:
+            return getSocialMediaForUpwallt()
+        case .vivwallet:
+            return getSocialMediaForVivwallet()
+        }
+    }
+    
+    private static func getSocialMediaForLoopr() -> [SocialMedia] {
+        return []
+    }
+    
+    private static func getSocialMediaForUpwallt() -> [SocialMedia] {
+        let twitter = SocialMedia(type: "Twitter", account: "@UpBlockchainOrg", link: "https://twitter.com/UpBlockchainOrg")
+        let instagram = SocialMedia(type: "Instagram", account: "@upwallet", link: "https://www.instagram.com/upwallet")
+        let socialMedia: [SocialMedia] = [twitter, instagram]
+        return socialMedia
+    }
+
+    private static func getSocialMediaForVivwallet() -> [SocialMedia] {
+        return []
+    }
+
 }

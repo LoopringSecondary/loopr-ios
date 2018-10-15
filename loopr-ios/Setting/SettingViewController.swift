@@ -13,7 +13,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var settingsTableView: UITableView!
     
     let sectionTitles = [LocalizedString("User Preferences", comment: ""), LocalizedString("Trading", comment: ""), LocalizedString("Security", comment: ""), LocalizedString("About", comment: "")]
-    let sectionRows = [1, 4, 2, 1]
+    let sectionRows = [1, 4, 2, Production.getSocialMedia().count + 1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,6 +132,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 3:
             // About
             switch indexPath.row {
+            case 0..<Production.getSocialMedia().count:
+                if let url = Production.getSocialMedia()[indexPath.row].url {
+                    UIApplication.shared.open(url)
+                }
             default:
                 break
             }
@@ -226,7 +230,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     func aboutSectionForCell(indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
-        case 0:
+        case 0..<Production.getSocialMedia().count:
+            return createDetailTableCell(indexPath: indexPath, title: Production.getSocialMedia()[indexPath.row].description)
+        case Production.getSocialMedia().count:
             var cell = settingsTableView.dequeueReusableCell(withIdentifier: SettingStyleTableViewCell.getCellIdentifier()) as? SettingStyleTableViewCell
             if cell == nil {
                 let nib = Bundle.main.loadNibNamed("SettingStyleTableViewCell", owner: self, options: nil)
