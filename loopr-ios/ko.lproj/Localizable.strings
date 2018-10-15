@@ -309,9 +309,6 @@
 "Total (USD)" = "총 (USD)";
 "Total Balance" = "총 잔액";
 "Loading Data" = "데이터 로딩중";
-"No search result" = "검색 결과가 없습니다";
-"No network" = "네트워크 불안정";
-"No_Data_Tip" = "목록이 존재하지 않습니다";
 "Album" = "앨범";
 "Create" = "생성";
 "Complete" = "완료";
@@ -321,6 +318,15 @@
 "Default" = "기본";
 "Date" = "날짜";
 "Back" = "뒤로";
+
+/* No data */
+"No search result" = "검색 결과가 없습니다";
+"No network" = "네트워크 불안정";
+"No_Data_Tip" = "목록이 존재하지 않습니다";
+"No-data-orderbook" = "Orderbook is empty";
+"No-data-transaction" = "No trade yet";
+"No-data-order" = "No order yet";
+"No-data-asset" = "No transaction yet";
 
 /* Unlock app using Touch ID or Face ID. */
 "Unlock" = "완료";

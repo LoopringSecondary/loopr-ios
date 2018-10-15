@@ -342,9 +342,6 @@
 "Total (USD)" = "总资产 (美元)";
 "Total Balance" = "总资产";
 "Loading Data" = "加载数据中";
-"No search result" = "无搜索结果";
-"No network" = "无网络";
-"No_Data_Tip" = "暂无相关数据";
 "Album" = "相册";
 "Create" = "创建";
 "Complete" = "完成";
@@ -354,6 +351,15 @@
 "Default" = "默认";
 "Date" = "日期";
 "Back" = "返回";
+
+/* No data */
+"No search result" = "无搜索结果";
+"No network" = "无网络";
+"No_Data_Tip" = "暂无相关数据";
+"No-data-orderbook" = "还没有挂单";
+"No-data-transaction" = "还没有成交记录";
+"No-data-order" = "还没有订单记录";
+"No-data-asset" = "还没有收付账记录";
 
 /* Unlock app using Touch ID or Face ID. */
 "Unlock" = "解锁";

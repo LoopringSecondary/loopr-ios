@@ -342,9 +342,6 @@
 "Total (USD)" = "Total (USD)";
 "Total Balance" = "Total Balance";
 "Loading Data" = "Loading Data";
-"No search result" = "No search result";
-"No network" = "No network";
-"No_Data_Tip" = "No Data available";
 "Album" = "Album";
 "Create" = "Create";
 "Complete" = "Complete";
@@ -354,6 +351,15 @@
 "Default" = "Default";
 "Date" = "Date";
 "Back" = "Back";
+
+/* No data */
+"No search result" = "No search result";
+"No network" = "No network";
+"No_Data_Tip" = "No Data available";
+"No-data-orderbook" = "Orderbook is empty";
+"No-data-transaction" = "No trade yet";
+"No-data-order" = "No order yet";
+"No-data-asset" = "No transaction yet";
 
 /* Unlock app using Touch ID or Face ID. */
 "Unlock" = "Unlock";

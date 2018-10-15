@@ -342,9 +342,6 @@
 "Total (USD)" = "總資產 (美元)";
 "Total Balance" = "總資產";
 "Loading Data" = "加載數據中";
-"No search result" = "無搜尋結果";
-"No network" = "無網絡";
-"No_Data_Tip" = "暫無相關數據";
 "Album" = "相冊";
 "Create" = "創建";
 "Complete" = "完成";
@@ -354,6 +351,15 @@
 "Default" = "默認";
 "Date" = "日期";
 "Back" = "返回";
+
+/* No data */
+"No search result" = "無搜尋結果";
+"No network" = "無網絡";
+"No_Data_Tip" = "暫無相關數據";
+"No-data-orderbook" = "還沒有掛單";
+"No-data-transaction" = "還沒有成交記錄";
+"No-data-order" = "還沒有訂單記錄";
+"No-data-asset" = "還沒有收付賬記錄";
 
 /* Unlock app using Touch ID or Face ID. */
 "Unlock" = "解鎖";

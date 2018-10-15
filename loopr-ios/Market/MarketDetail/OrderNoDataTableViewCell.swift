@@ -18,8 +18,8 @@ class OrderNoDataTableViewCell: UITableViewCell {
         // Initialization code
         selectionStyle = .none
         self.backgroundColor = .clear
-        noDataLabel.setTitleCharFont()
-        noDataLabel.setSubTitleCharFont()
+        noDataLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        noDataLabel.theme_textColor = GlobalPicker.textLightColor
     }
     
     class func getCellIdentifier() -> String {

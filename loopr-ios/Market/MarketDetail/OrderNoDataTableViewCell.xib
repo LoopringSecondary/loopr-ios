@@ -27,7 +27,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZI-aV-dP4">
-                        <rect key="frame" x="26" y="283" width="268" height="20"/>
+                        <rect key="frame" x="26" y="270" width="268" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="d6N-PM-bx5"/>
                         </constraints>
@@ -39,7 +39,7 @@
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="1ZI-aV-dP4" secondAttribute="trailing" constant="10" id="P8F-8o-7lU"/>
                     <constraint firstItem="1ZI-aV-dP4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="Xcs-M4-1Fm"/>
-                    <constraint firstItem="1ZI-aV-dP4" firstAttribute="top" secondItem="Pe8-N3-lED" secondAttribute="bottom" constant="23" id="mmn-Rs-QpA"/>
+                    <constraint firstItem="1ZI-aV-dP4" firstAttribute="top" secondItem="Pe8-N3-lED" secondAttribute="bottom" constant="10" id="mmn-Rs-QpA"/>
                 </constraints>
             </tableViewCellContentView>
             <constraints>
