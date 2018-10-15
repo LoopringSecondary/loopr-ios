@@ -136,4 +136,5 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
         GasDataManager.shared.setGasPrice(in: gasPriceInGwei)
         update(self.gasPriceInGwei)
     }
+
 }

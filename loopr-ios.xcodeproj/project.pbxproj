@@ -314,6 +314,8 @@
 		AC7BC85C2145B477004204D3 /* AppWalletExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BC85B2145B477004204D3 /* AppWalletExtension.swift */; };
 		AC8866992174688500815DD1 /* AppServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8866982174688500815DD1 /* AppServiceManager.swift */; };
 		AC88669B21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC88669A21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift */; };
+		AC88669E2174923800815DD1 /* SetLRCRatioFeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC88669C2174923800815DD1 /* SetLRCRatioFeeViewController.swift */; };
+		AC88669F2174923800815DD1 /* SetLRCRatioFeeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC88669D2174923800815DD1 /* SetLRCRatioFeeViewController.xib */; };
 		AC8DBC6D20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DBC6B20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift */; };
 		AC8DBC6E20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */; };
 		AC8DBC7720BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */; };
@@ -814,6 +816,8 @@
 		AC7BC85B2145B477004204D3 /* AppWalletExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWalletExtension.swift; sourceTree = "<group>"; };
 		AC8866982174688500815DD1 /* AppServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServiceManager.swift; sourceTree = "<group>"; };
 		AC88669A21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewControllerExtensionAppService.swift; sourceTree = "<group>"; };
+		AC88669C2174923800815DD1 /* SetLRCRatioFeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLRCRatioFeeViewController.swift; sourceTree = "<group>"; };
+		AC88669D2174923800815DD1 /* SetLRCRatioFeeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetLRCRatioFeeViewController.xib; sourceTree = "<group>"; };
 		AC8DBC6B20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicBackupModeCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicBackupModeCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicBackupModeCollectionViewController.swift; sourceTree = "<group>"; };
@@ -1177,6 +1181,7 @@
 				AC13B30220548767008A72C0 /* BuyAndSellSwipeViewController.xib */,
 				94DFE4032122BD47000E1831 /* BuyViewController.swift */,
 				94DFE4022122BD47000E1831 /* BuyViewController.xib */,
+				AC8866A02174938000815DD1 /* NoReady SetLRCRatioFeeViewController */,
 				AC13B30C2055A646008A72C0 /* PlaceOrderConfirmationViewController.swift */,
 				94AA0A9D211550440092D2CE /* PlaceOrderConfirmationViewController.xib */,
 				94D94CE12084A9380000BBC8 /* ConfirmationResultViewController.swift */,
@@ -1651,6 +1656,15 @@
 				AC88669A21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift */,
 			);
 			path = AppService;
+			sourceTree = "<group>";
+		};
+		AC8866A02174938000815DD1 /* NoReady SetLRCRatioFeeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AC88669C2174923800815DD1 /* SetLRCRatioFeeViewController.swift */,
+				AC88669D2174923800815DD1 /* SetLRCRatioFeeViewController.xib */,
+			);
+			path = "NoReady SetLRCRatioFeeViewController";
 			sourceTree = "<group>";
 		};
 		AC9280DF202EC5130009B574 /* Trade */ = {
@@ -2481,6 +2495,7 @@
 				ACDA889C20F85F9C004FA10B /* InfoPlist.strings in Resources */,
 				AC68E10320C24BD900BFA837 /* ImportWalletEnterWalletNameViewController.xib in Resources */,
 				ACA677D0207D1BEC00D34A2F /* SettingChangeWalletNameViewController.xib in Resources */,
+				AC88669F2174923800815DD1 /* SetLRCRatioFeeViewController.xib in Resources */,
 				AC9FFF262126BDF800957175 /* MarketChangeTokenSwipeViewController.xib in Resources */,
 				AC798E4C2022B93A0071D477 /* Assets.xcassets in Resources */,
 				AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */,
@@ -2760,6 +2775,7 @@
 				AC0CD57B20D21C1100ABB7BA /* TabBarItemBouncesContentView.swift in Sources */,
 				AC46F7762069FB4400CFDC40 /* UIButton+RoundButton.swift in Sources */,
 				942C4A02212A9D89008A6B4F /* P2PType.swift in Sources */,
+				AC88669E2174923800815DD1 /* SetLRCRatioFeeViewController.swift in Sources */,
 				AC1B6D7F2130FB510026C1B2 /* Secp256k1Helper.swift in Sources */,
 				ACFEFE9F20C3436000013921 /* loopr_ios.xcdatamodeld in Sources */,
 				AC4F601520773E9D00F1D954 /* EthFunction.swift in Sources */,

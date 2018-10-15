@@ -40,6 +40,10 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     @IBOutlet weak var monthButton: UIButton!
     @IBOutlet weak var customButton: UIButton!
     
+    @IBOutlet weak var lrcRatioInfoLabel: UILabel!
+    @IBOutlet weak var lrcRatioValueLabel: UILabel!
+    @IBOutlet weak var lrcRatioButton: UIButton!
+    
     // Place button
     @IBOutlet weak var nextButton: UIButton!
     
@@ -62,7 +66,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     // Expires
     var buttons: [UIButton] = []
     var orderIntervalTime = SettingDataManager.shared.getOrderIntervalTime()
-
+    
     // config
     var type: TradeType
     var initialPrice: String?
@@ -170,7 +174,20 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             customButton.isSelected = true
             customButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 13)
         }
-
+        
+        lrcRatioInfoLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        lrcRatioInfoLabel.theme_textColor = GlobalPicker.textLightColor
+        lrcRatioInfoLabel.text = LocalizedString("LRC Fee Ratio", comment: "")
+        
+        lrcRatioValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        lrcRatioValueLabel.theme_textColor = GlobalPicker.textColor
+        lrcRatioValueLabel.text = SettingDataManager.shared.getLrcFeeRatioDescription()
+        lrcRatioValueLabel.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(pressedLRCRatioButton))
+        lrcRatioValueLabel.addGestureRecognizer(tap)
+        
+        lrcRatioButton.addTarget(self, action: #selector(pressedLRCRatioButton), for: .touchUpInside)
+        
         // Place button
         if type == .buy {
             nextButton.title = LocalizedString("Buy", comment: "") + " " + market.tradingPair.tradingA
@@ -233,6 +250,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             message = "\(title) 0.0 \(tokenS)"
         }
         tipLabel.text = message
+        
+        lrcRatioValueLabel.text = SettingDataManager.shared.getLrcFeeRatioDescription()
     }
     
     @objc func scrollViewTapped() {
@@ -340,6 +359,12 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         tipLabel.text = message
         tipLabel.textColor = .text1
         tipLabel.isHidden = false
+    }
+    
+    @objc func pressedLRCRatioButton() {
+        let viewController = SettingLRCFeeRatioViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
     // To avoid gesture conflicts in swiping to back and UISlider
