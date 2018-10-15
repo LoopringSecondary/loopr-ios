@@ -144,5 +144,30 @@ class SettingDataManager {
     func getMarginSplit() -> Double {
         return 0.5
     }
+    
+    // Set expiration Time
+    func setOrderIntervalTime(_ newIntervalTime: OrderIntervalTime) {
+        let defaults = UserDefaults.standard
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: newIntervalTime)
+        defaults.set(encodedData, forKey: UserDefaultsKeys.orderIntervalTime.rawValue)
+    }
+    
+    func getOrderIntervalTime() -> OrderIntervalTime {
+        let defaults = UserDefaults.standard
+        if let decodedData = defaults.data(forKey: UserDefaultsKeys.orderIntervalTime.rawValue) {
+            let unarchiver = NSKeyedUnarchiver(forReadingWith: decodedData)
+            do {
+                // The try is to prevent a crash when the product name is changed.
+                _ = try unarchiver.decodeTopLevelObject()
+                let orderIntervalTimeFromKeyedUnarchiver = NSKeyedUnarchiver.unarchiveObject(with: decodedData) as? OrderIntervalTime
+                if let orderIntervalTimeFromKeyedUnarchiver = orderIntervalTimeFromKeyedUnarchiver {
+                    return orderIntervalTimeFromKeyedUnarchiver
+                }
+            } catch {
+                // continue
+            }
+        }
+        return OrderIntervalTime(intervalValue: 1, intervalUnit: .hour)
+    }
 
 }

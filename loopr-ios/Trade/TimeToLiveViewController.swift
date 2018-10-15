@@ -19,12 +19,12 @@ class TimeToLiveViewController: UIViewController, UIPickerViewDelegate, UIPicker
     var parentNavController: UINavigationController?
     
     // Data source
-    var dateDictionary: [Int: Int]?
-    var pickerTitle: [String]?
-    var pickerType: [Calendar.Component]?
+    var dateDictionary: [Int: Int] = [0: 23, 1: 30, 2: 12]
+    var pickerTitle: [String] = [LocalizedString("Hour", comment: ""), LocalizedString("Day", comment: ""), LocalizedString("Month", comment: "")]
+    var pickerType: [Calendar.Component] = [.hour, .day, .month]
     
-    var intervalValue = 1
-    var intervalUnit: Calendar.Component = .hour
+    var orderIntervalTime = SettingDataManager.shared.getOrderIntervalTime()
+
     let width: CGFloat = UIScreen.main.bounds.width / 2
     
     override func viewDidLoad() {
@@ -33,9 +33,8 @@ class TimeToLiveViewController: UIViewController, UIPickerViewDelegate, UIPicker
         // Do any additional setup after loading the view.
         pickerView.delegate = self
         pickerView.dataSource = self
-        dateDictionary = [0: 23, 1: 30, 2: 12]
-        pickerTitle = [LocalizedString("Hour", comment: ""), LocalizedString("Day", comment: ""), LocalizedString("Month", comment: "")]
-        pickerType = [.hour, .day, .month]
+        pickerView.selectRow(orderIntervalTime.intervalValue-1, inComponent: 0, animated: true)
+        pickerView.selectRow(pickerType.index(of: orderIntervalTime.intervalUnit) ?? 0, inComponent: 1, animated: true)
         
         titleLabel.setTitleCharFont()
         titleLabel.text = LocalizedString("Time to Live", comment: "")
@@ -81,9 +80,9 @@ class TimeToLiveViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if component == 1 {
-            return pickerTitle!.count
+            return pickerTitle.count
         } else {
-            switch self.intervalUnit {
+            switch orderIntervalTime.intervalUnit {
             case .hour:
                 return 24
             case .day:
@@ -111,16 +110,16 @@ class TimeToLiveViewController: UIViewController, UIPickerViewDelegate, UIPicker
         if component == 0 {
             label.text = "\(row + 1)"
         } else {
-            label.text = pickerTitle![row]
+            label.text = pickerTitle[row]
         }
         return label
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if component == 1 {
-            intervalUnit = pickerType![row]
+            orderIntervalTime.intervalUnit = pickerType[row]
         } else {
-            intervalValue = row + 1
+            orderIntervalTime.intervalValue = row + 1
         }
         pickerView.reloadComponent(0)
     }

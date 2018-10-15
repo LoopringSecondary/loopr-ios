@@ -35,6 +35,8 @@ enum UserDefaultsKeys: String {
     case useLrcFeeRatioUserDefineValue = "UserDefaultsKeys.useLrcFeeRatioUserDefineValue"
     case lrcFeeRatio = "UserDefaultsKeys.lrcFeeRatio"
     
+    case orderIntervalTime = "UserDefaultsKeys.orderIntervalTime"
+    
     // Deprecated. Keep these in the code to avoid using them again in the future.
     // case useMarginSplitUserDefineValue = "UserDefaultsKeys.useMarginSplitUserDefineValue"
     // case marginSplit = "UserDefaultsKeys.marginSplit"

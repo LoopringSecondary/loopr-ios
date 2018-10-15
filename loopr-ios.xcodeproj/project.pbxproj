@@ -456,6 +456,7 @@
 		ACF06A06204C736A00C3FF86 /* CreateMnemonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF06A05204C736A00C3FF86 /* CreateMnemonicTests.swift */; };
 		ACFD5FB42171B8AB00E161EE /* UpdatedOrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD5FB22171B8AB00E161EE /* UpdatedOrderHistoryViewController.swift */; };
 		ACFD5FB52171B8AB00E161EE /* UpdatedOrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACFD5FB32171B8AB00E161EE /* UpdatedOrderHistoryViewController.xib */; };
+		ACFD5FB721740F7500E161EE /* OrderIntervalTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD5FB621740F7400E161EE /* OrderIntervalTime.swift */; };
 		ACFEFE9520C337BE00013921 /* PendingTransactionsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEFE9420C337BD00013921 /* PendingTransactionsDataManager.swift */; };
 		ACFEFE9820C338BC00013921 /* TxType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEFE9720C338BC00013921 /* TxType.swift */; };
 		ACFEFE9A20C338DA00013921 /* TxStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEFE9920C338DA00013921 /* TxStatus.swift */; };
@@ -974,6 +975,7 @@
 		ACFD5FB1216F06D500E161EE /* UP Wallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "UP Wallet.entitlements"; sourceTree = "<group>"; };
 		ACFD5FB22171B8AB00E161EE /* UpdatedOrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedOrderHistoryViewController.swift; sourceTree = "<group>"; };
 		ACFD5FB32171B8AB00E161EE /* UpdatedOrderHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedOrderHistoryViewController.xib; sourceTree = "<group>"; };
+		ACFD5FB621740F7400E161EE /* OrderIntervalTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderIntervalTime.swift; sourceTree = "<group>"; };
 		ACFEFE9420C337BD00013921 /* PendingTransactionsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingTransactionsDataManager.swift; sourceTree = "<group>"; };
 		ACFEFE9720C338BC00013921 /* TxType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxType.swift; sourceTree = "<group>"; };
 		ACFEFE9920C338DA00013921 /* TxStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxStatus.swift; sourceTree = "<group>"; };
@@ -1991,6 +1993,7 @@
 				942E2CAA2148B2E100041733 /* TikcerSource.swift */,
 				942E2CAC2148F15F00041733 /* TickerTag.swift */,
 				ACC31C77215B552B00582CC0 /* ExportWalletInfoType.swift */,
+				ACFD5FB621740F7400E161EE /* OrderIntervalTime.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2720,6 +2723,7 @@
 				94BFF9D221073EE300A0BE8B /* SetGasViewController.swift in Sources */,
 				94678B2A210D902E00F550D3 /* SendResultViewController.swift in Sources */,
 				AC4142062038B66F0089861D /* AppWallet.swift in Sources */,
+				ACFD5FB721740F7500E161EE /* OrderIntervalTime.swift in Sources */,
 				ACB97C7020715BC100775D4C /* MnemonicQuestion.swift in Sources */,
 				940B45202060F67E00ADE2B9 /* OrderDataManager.swift in Sources */,
 				AC5442DC2081167E0036A2B4 /* SwiftyJSON.swift in Sources */,

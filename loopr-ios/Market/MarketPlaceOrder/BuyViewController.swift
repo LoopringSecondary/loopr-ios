@@ -61,9 +61,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     
     // Expires
     var buttons: [UIButton] = []
-    var intervalValue = 1
-    var intervalUnit: Calendar.Component = .hour
-    
+    var orderIntervalTime = SettingDataManager.shared.getOrderIntervalTime()
+
     // config
     var type: TradeType
     var initialPrice: String?
@@ -142,18 +141,35 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         // Buttons
         hourButton.round(corners: [.topLeft, .bottomLeft], radius: 8)
         customButton.round(corners: [.topRight, .bottomRight], radius: 8)
+        
         hourButton.title = LocalizedString("1 Hour", comment: "")
         dayButton.title = LocalizedString("1 Day", comment: "")
         monthButton.title = LocalizedString("1 Month", comment: "")
         customButton.title = LocalizedString("Custom", comment: "")
+        
         buttons = [hourButton, dayButton, monthButton, customButton]
         buttons.forEach {
             $0.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
             $0.theme_backgroundColor = ColorPicker.cardHighLightColor
             $0.theme_setTitleColor(GlobalPicker.textColor, forState: .selected)
             $0.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
+            $0.addTarget(self, action: #selector(pressedExpiresButton), for: .touchUpInside)
         }
-        hourButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 13)
+        // init the UI
+        switch OrderIntervalTime.getUIPosition(orderIntervalTime: self.orderIntervalTime) {
+        case 0:
+            hourButton.isSelected = true
+            hourButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 13)
+        case 1:
+            dayButton.isSelected = true
+            dayButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 13)
+        case 2:
+            monthButton.isSelected = true
+            monthButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 13)
+        default:
+            customButton.isSelected = true
+            customButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 13)
+        }
 
         // Place button
         if type == .buy {
@@ -258,20 +274,19 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         })
     }
 
-    @IBAction func pressedExpiresButton(_ sender: UIButton) {
+    @objc func pressedExpiresButton(_ sender: UIButton) {
         let dict: [Int: Calendar.Component] = [0: .hour, 1: .day, 2: .month]
         for (index, button) in buttons.enumerated() {
-            button.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
-            button.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
             if button == sender {
                 if index < 3 {
-                    self.intervalValue = 1
-                    self.intervalUnit = dict[index]!
+                    self.orderIntervalTime = OrderIntervalTime(intervalValue: 1, intervalUnit: dict[index]!)
+                    SettingDataManager.shared.setOrderIntervalTime(self.orderIntervalTime)
                 } else if index == 3 {
                     self.present()
                 }
             }
             button.isSelected = false
+            button.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
         }
         sender.isSelected = true
         sender.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 13)
@@ -284,8 +299,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         let vc = TimeToLiveViewController()
         vc.dismissClosure = {
             parentView.alpha = 1
-            self.intervalUnit = vc.intervalUnit
-            self.intervalValue = vc.intervalValue
+            self.orderIntervalTime = vc.orderIntervalTime
+            SettingDataManager.shared.setOrderIntervalTime(self.orderIntervalTime)
         }
         vc.parentNavController = self.navigationController
         vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
@@ -366,7 +381,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         let delegate = RelayAPIConfiguration.delegateAddress
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         let since = Int64(Date().timeIntervalSince1970)
-        let until = Int64(Calendar.current.date(byAdding: intervalUnit, value: intervalValue, to: Date())!.timeIntervalSince1970)
+        let until = Int64(Calendar.current.date(byAdding: orderIntervalTime.intervalUnit, value: orderIntervalTime.intervalValue, to: Date())!.timeIntervalSince1970)
         var order = OriginalOrder(delegate: delegate, address: address, side: side, tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB)
         PlaceOrderDataManager.shared.completeOrder(&order)
         return order

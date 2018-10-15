@@ -69,8 +69,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     
     // Expires
     var buttons: [UIButton] = []
-    var intervalValue = 1
-    var intervalUnit: Calendar.Component = .hour
+    var orderIntervalTime = SettingDataManager.shared.getOrderIntervalTime()
+
     var distance: CGFloat = 0
     
     // Drag down to close a present view controller.
@@ -181,7 +181,21 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
             $0.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
             $0.setBackgroundColor(UIColor.dark3, for: .normal)
         }
-        hourButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 13)
+        // init the UI
+        switch OrderIntervalTime.getUIPosition(orderIntervalTime: self.orderIntervalTime) {
+        case 0:
+            hourButton.isSelected = true
+            hourButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 13)
+        case 1:
+            dayButton.isSelected = true
+            dayButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 13)
+        case 2:
+            monthButton.isSelected = true
+            monthButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 13)
+        default:
+            customButton.isSelected = true
+            customButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 13)
+        }
         
         // Sell ratio
         sellRatioTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
@@ -382,17 +396,16 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     @IBAction func pressedExpiresButton(_ sender: UIButton) {
         let dict: [Int: Calendar.Component] = [0: .hour, 1: .day, 2: .month]
         for (index, button) in buttons.enumerated() {
-            button.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
-            button.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
             if button == sender {
                 if index < 3 {
-                    self.intervalValue = 1
-                    self.intervalUnit = dict[index]!
+                    self.orderIntervalTime = OrderIntervalTime(intervalValue: 1, intervalUnit: dict[index]!)
+                    SettingDataManager.shared.setOrderIntervalTime(self.orderIntervalTime)
                 } else if index == 3 {
                     self.present()
                 }
             }
             button.isSelected = false
+            button.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
         }
         sender.isSelected = true
         sender.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 13)
@@ -441,8 +454,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         let vc = TimeToLiveViewController()
         vc.dismissClosure = {
             parentView.alpha = 1
-            self.intervalUnit = vc.intervalUnit
-            self.intervalValue = vc.intervalValue
+            self.orderIntervalTime = vc.orderIntervalTime
+            SettingDataManager.shared.setOrderIntervalTime(self.orderIntervalTime)
         }
         vc.parentNavController = self.navigationController
         vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
@@ -464,7 +477,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         let delegate = RelayAPIConfiguration.delegateAddress
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         let since = Int64(Date().timeIntervalSince1970)
-        let until = Int64(Calendar.current.date(byAdding: intervalUnit, value: intervalValue, to: Date())!.timeIntervalSince1970)
+        let until = Int64(Calendar.current.date(byAdding: orderIntervalTime.intervalUnit, value: orderIntervalTime.intervalValue, to: Date())!.timeIntervalSince1970)
         
         var order = OriginalOrder(delegate: delegate, address: address, side: "sell", tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: 0, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: .p2pOrder, p2pType: .maker, market: market)
         PlaceOrderDataManager.shared.completeOrder(&order)
