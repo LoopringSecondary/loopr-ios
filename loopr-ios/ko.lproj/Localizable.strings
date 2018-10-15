@@ -40,7 +40,7 @@
 "Backup Mnemonic" = "니모닉 백업";
 "Verify Mnemonic" = "니모닉 검증";
 "Verify" = "확인";
-"Skip" = "건너뛰기";
+"Skip_Verification" = "건너뛰기";
 "Invalid mnemonic. Please enter again." = "인식할수 없는 니모닉입니다. 다시 시도해주세요.";
 "Invalid private key. Please enter again." = "인식할수 없는 개인키입니다. 다시 시도해주세요.";
 "Invalid keystore. Please enter again." = "인식할수 없는 키스토어입니다. 다시 시도해주세요.";
@@ -318,6 +318,9 @@
 "Default" = "기본";
 "Date" = "날짜";
 "Back" = "뒤로";
+"A new version of app is ready to update" = "새로운 버전의 앱을 업데이트 할 준비가되었습니다";
+"Update" = "업데이트";
+"Skip_Update" = "건너 뛰기";
 
 /* No data */
 "No search result" = "검색 결과가 없습니다";

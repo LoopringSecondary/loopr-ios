@@ -312,6 +312,8 @@
 		AC7BC8592144E102004204D3 /* WalletCreateSuccessfullyPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BC8572144E102004204D3 /* WalletCreateSuccessfullyPopViewController.swift */; };
 		AC7BC85A2144E102004204D3 /* WalletCreateSuccessfullyPopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC7BC8582144E102004204D3 /* WalletCreateSuccessfullyPopViewController.xib */; };
 		AC7BC85C2145B477004204D3 /* AppWalletExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BC85B2145B477004204D3 /* AppWalletExtension.swift */; };
+		AC8866992174688500815DD1 /* AppServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8866982174688500815DD1 /* AppServiceManager.swift */; };
+		AC88669B21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC88669A21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift */; };
 		AC8DBC6D20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DBC6B20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift */; };
 		AC8DBC6E20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */; };
 		AC8DBC7720BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */; };
@@ -810,6 +812,8 @@
 		AC7BC8572144E102004204D3 /* WalletCreateSuccessfullyPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCreateSuccessfullyPopViewController.swift; sourceTree = "<group>"; };
 		AC7BC8582144E102004204D3 /* WalletCreateSuccessfullyPopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletCreateSuccessfullyPopViewController.xib; sourceTree = "<group>"; };
 		AC7BC85B2145B477004204D3 /* AppWalletExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWalletExtension.swift; sourceTree = "<group>"; };
+		AC8866982174688500815DD1 /* AppServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServiceManager.swift; sourceTree = "<group>"; };
+		AC88669A21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewControllerExtensionAppService.swift; sourceTree = "<group>"; };
 		AC8DBC6B20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicBackupModeCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicBackupModeCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicBackupModeCollectionViewController.swift; sourceTree = "<group>"; };
@@ -1585,6 +1589,7 @@
 				AC5288AF208300570002AEAD /* Utils */,
 				AC798E482022B93A0071D477 /* Main.storyboard */,
 				C8BF959C202696A900343B9A /* MainTabController.swift */,
+				AC8866972174685300815DD1 /* AppService */,
 				ACACB8B3213B8E9800F5ACC5 /* PushNotification */,
 				AC45EFEC20D0D437004F6EC0 /* H5Dex */,
 				ACB746E22043C5CC006C2BF5 /* QRCode */,
@@ -1637,6 +1642,15 @@
 				AC798E662022B93B0071D477 /* Info.plist */,
 			);
 			path = "loopr-iosUITests";
+			sourceTree = "<group>";
+		};
+		AC8866972174685300815DD1 /* AppService */ = {
+			isa = PBXGroup;
+			children = (
+				AC8866982174688500815DD1 /* AppServiceManager.swift */,
+				AC88669A21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift */,
+			);
+			path = AppService;
 			sourceTree = "<group>";
 		};
 		AC9280DF202EC5130009B574 /* Trade */ = {
@@ -2676,6 +2690,7 @@
 				ACB1482321057B9300AB2343 /* GenerateWalletEnterNameViewController.swift in Sources */,
 				AC69913B20AA6254003593AE /* SettingWalletDetailViewControllerDataSource.swift in Sources */,
 				AC5E3E6B205DEAC00051ACFC /* TradeCompleteViewController.swift in Sources */,
+				AC88669B21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift in Sources */,
 				943A9A4120909597008BCBFD /* DefaultWebViewController.swift in Sources */,
 				942C4A0021293022008A6B4F /* ConvertETHResultViewController.swift in Sources */,
 				AC0CD58120D226C500ABB7BA /* TabBarItemAnimateTipsContentView.swift in Sources */,
@@ -2733,6 +2748,7 @@
 				AC5442DC2081167E0036A2B4 /* SwiftyJSON.swift in Sources */,
 				AC45EFEB20D0CCF5004F6EC0 /* AlertForErrorExtension.swift in Sources */,
 				AC3756702038D3ED00AADC60 /* UnlockWalletType.swift in Sources */,
+				AC8866992174688500815DD1 /* AppServiceManager.swift in Sources */,
 				ACB97C6D20707B6F00775D4C /* AddTokenTableViewCell.swift in Sources */,
 				ACB8AD89207F299700B478D6 /* UIViewController+BackButton.swift in Sources */,
 				AC7BC8592144E102004204D3 /* WalletCreateSuccessfullyPopViewController.swift in Sources */,

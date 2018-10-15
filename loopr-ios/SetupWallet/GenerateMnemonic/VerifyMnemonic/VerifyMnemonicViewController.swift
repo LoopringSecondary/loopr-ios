@@ -93,7 +93,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         confirmButton.setupSecondary(height: 44)
         confirmButton.addTarget(self, action: #selector(pressedConfrimButton), for: .touchUpInside)
 
-        skipButton.title = LocalizedString("Skip", comment: "Go to VerifyMnemonicViewController")
+        skipButton.title = LocalizedString("Skip_Verification", comment: "Go to VerifyMnemonicViewController")
         skipButton.setupBlack(height: 44)
         skipButton.addTarget(self, action: #selector(pressedSkipButton), for: .touchUpInside)
         

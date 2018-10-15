@@ -16,18 +16,7 @@ class PushNotificationDeviceDataManager {
     private init() {
 
     }
-    
-    func testAPI() {
-        let body: JSON = JSON()
-        Request.send(body: body, url: URL(string: "https://www.loopring.mobi/greeting")!) { data, _, error in
-            guard let _ = data, error == nil else {
-                print("error=\(String(describing: error))")
-                return
-            }
-            print("success")
-        }
-    }
-    
+
     func setDeviceToken(_ deviceToken: String) {
         let currentDeviceToken = UserDefaults.standard.string(forKey: UserDefaultsKeys.deviceToken.rawValue) ?? ""
         UserDefaults.standard.set(deviceToken, forKey: UserDefaultsKeys.deviceToken.rawValue)

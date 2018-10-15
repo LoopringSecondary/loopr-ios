@@ -166,6 +166,13 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     
                     // Ask for permission
                     PushNotificationSettingManager.shared.registerForPushNotifications()
+                    
+                    // Check app version
+                    AppServiceManager.shared.getLatestAppVersion(completion: {(shouldDisplayUpdateNotification) in
+                        if shouldDisplayUpdateNotification {
+                            self.displayUpdateNotification()
+                        }
+                    })
                 }
             }
             self.assetTableView.reloadData()

@@ -43,7 +43,7 @@
 "Backup Mnemonic" = "備份助記詞";
 "Verify Mnemonic" = "驗證助記詞";
 "Verify" = "馬上驗證";
-"Skip" = "跳過驗證";
+"Skip_Verification" = "跳過驗證";
 "Invalid mnemonic. Please enter again." = "助記詞無效。請重新輸入。";
 "Invalid private key. Please enter again." = "私人鎖匙無效。請重新輸入。";
 "Invalid keystore. Please enter again." = "Keystore無效。請重新輸入。";
@@ -351,6 +351,9 @@
 "Default" = "默認";
 "Date" = "日期";
 "Back" = "返回";
+"A new version of app is ready to update" = "新版本的app已上線";
+"Update" = "更新";
+"Skip_Update" = "跳過";
 
 /* No data */
 "No search result" = "無搜尋結果";

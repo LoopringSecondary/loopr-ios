@@ -54,18 +54,23 @@ enum Production: String {
     }
     
     private static func getSocialMediaForLoopr() -> [SocialMedia] {
-        return []
+        let website = SocialMedia(type: LocalizedString("About", comment: "") + " loopring.wallet.io", account: "", link: getUrlText())
+        let socialMedia: [SocialMedia] = [website]
+        return socialMedia
     }
     
     private static func getSocialMediaForUpwallt() -> [SocialMedia] {
         let twitter = SocialMedia(type: "Twitter", account: "@UpBlockchainOrg", link: "https://twitter.com/UpBlockchainOrg")
         let instagram = SocialMedia(type: "Instagram", account: "@upwallet", link: "https://www.instagram.com/upwallet")
-        let socialMedia: [SocialMedia] = [twitter, instagram]
+        let website = SocialMedia(type: LocalizedString("About", comment: "") + " upwallet.io", account: "", link: getUrlText())
+        let socialMedia: [SocialMedia] = [twitter, instagram, website]
         return socialMedia
     }
 
     private static func getSocialMediaForVivwallet() -> [SocialMedia] {
-        return []
+        let website = SocialMedia(type: LocalizedString("About", comment: "") + " vivwallet.io", account: "", link: getUrlText())
+        let socialMedia: [SocialMedia] = [website]
+        return socialMedia
     }
 
 }

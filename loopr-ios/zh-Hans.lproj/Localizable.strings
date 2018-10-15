@@ -43,7 +43,7 @@
 "Backup Mnemonic" = "备份助记词";
 "Verify Mnemonic" = "助记词验证";
 "Verify" = "马上验证";
-"Skip" = "跳过验证";
+"Skip_Verification" = "跳过验证";
 "Invalid mnemonic. Please enter again." = "无法导入助记词。请重新输入。";
 "Invalid private key. Please enter again." = "无法导入私钥。请重新输入。";
 "Invalid keystore. Please enter again." = "无法导入Keystore。请重新输入。";
@@ -351,6 +351,9 @@
 "Default" = "默认";
 "Date" = "日期";
 "Back" = "返回";
+"A new version of app is ready to update" = "新版本的app已上线";
+"Update" = "更新";
+"Skip_Update" = "跳过";
 
 /* No data */
 "No search result" = "无搜索结果";

@@ -13,13 +13,13 @@ class BackupMnemonicViewController: UIViewController {
 
     var mnemonics: [String] = []
 
-    var backgroundImageView1 = UIImageView()
-    var infoTextView: UITextView = UITextView()
+    var backgroundImageView1 = UIImageView(frame: .zero)
+    var infoTextView: UITextView = UITextView(frame: .zero)
     
     @IBOutlet weak var skipVerifyNowButton: UIButton!
     @IBOutlet weak var verifyNowButton: UIButton!
     
-    var backgroundImageView2 = UIImageView()
+    var backgroundImageView2 = UIImageView(frame: .zero)
     var mnemonicCollectionViewController0: MnemonicCollectionViewController!
 
     var collectionViewY: CGFloat = 200
@@ -32,7 +32,7 @@ class BackupMnemonicViewController: UIViewController {
     
     private var firstAppear = true
     var hideButtons: Bool = false
-    var blurVisualEffectView = UIView()
+    var blurVisualEffectView = UIView(frame: .zero)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +80,7 @@ class BackupMnemonicViewController: UIViewController {
         backgroundImageView2.addSubview(mnemonicCollectionViewController0.view)
         addChildViewController(mnemonicCollectionViewController0)
 
-        skipVerifyNowButton.title = LocalizedString("Skip", comment: "Go to VerifyMnemonicViewController")
+        skipVerifyNowButton.title = LocalizedString("Skip_Verification", comment: "Go to VerifyMnemonicViewController")
         skipVerifyNowButton.setupBlack(height: 44)
         skipVerifyNowButton.isHidden = hideButtons
         

@@ -43,7 +43,7 @@
 "Backup Mnemonic" = "Backup Mnemonic";
 "Verify Mnemonic" = "Verify Mnemonic";
 "Verify" = "Verify";
-"Skip" = "Skip";
+"Skip_Verification" = "Skip";
 "Invalid mnemonic. Please enter again." = "Invalid mnemonic. Please enter again.";
 "Invalid private key. Please enter again." = "Invalid private key. Please enter again.";
 "Invalid keystore. Please enter again." = "Invalid keystore. Please enter again.";
@@ -351,6 +351,9 @@
 "Default" = "Default";
 "Date" = "Date";
 "Back" = "Back";
+"A new version of app is ready to update" = "A new version of app is ready to update";
+"Update" = "Update";
+"Skip_Update" = "Skip";
 
 /* No data */
 "No search result" = "No search result";

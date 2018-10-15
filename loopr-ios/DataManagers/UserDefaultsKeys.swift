@@ -45,4 +45,6 @@ enum UserDefaultsKeys: String {
     
     // Device token used in push notifications
     case deviceToken = "UserDefaultsKeys.deviceToken"
+    
+    case largestSkipBuildVersion = "UserDefaultsKeys.largestSkipBuildVersion"
 }

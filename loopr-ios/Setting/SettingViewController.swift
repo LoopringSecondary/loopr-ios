@@ -254,7 +254,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell?.trailingSeperateLineDown.constant = 15
             }
             cell?.leftLabel.text = LocalizedString("App Version", comment: "")
-            cell?.rightLabel.text = getAppVersion()
+            cell?.rightLabel.text = AppServiceManager.shared.getAppVersionAndBuildVersion()
 
             return cell!
         default:
@@ -361,9 +361,4 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return 51
     }
     
-    func getAppVersion() -> String {
-        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-        let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
-        return version + " (" + build + ")"
-    }
 }
