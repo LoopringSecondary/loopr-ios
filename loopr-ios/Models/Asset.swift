@@ -44,7 +44,14 @@ class Asset: CustomStringConvertible, Equatable {
         if let balance = Asset.getAmount(of: symbol, fromWeiAmount: json["balance"].stringValue) {
             self.balance = balance
             let length = self.decimals
-            self.display = self.balance.withCommas(length)
+            // Displaying "0" in the WalletViewController doesn't look good.
+            if self.balance.truncatingRemainder(dividingBy: 1) == 0 && self.balance > 0 {
+                self.display = self.balance.withCommas(2)
+            } else if self.balance > 0 {
+                self.display = self.balance.withCommas(length).trailingZero()
+            } else {
+                self.display = self.balance.withCommas(length)
+            }
         }
 
         if let allowance = Asset.getAmount(of: symbol, fromWeiAmount: json["allowance"].stringValue) {

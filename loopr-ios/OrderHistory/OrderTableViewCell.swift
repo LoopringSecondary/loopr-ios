@@ -118,27 +118,30 @@ class OrderTableViewCell: UITableViewCell {
             displayLabel.text = order.originalOrder.amountBuy.withCommas().trailingZero()
             volumeLabel.text = ((order.dealtAmountB/order.originalOrder.amountBuy)*100).withCommas(0) + NumberFormatter().percentSymbol
         }
-        if order.orderStatus == .cancelled || order.orderStatus == .expire {
-            volumeLabel.text = " - "
-        } else if order.orderStatus == .finished {
+        if order.orderStatus == .finished {
             volumeLabel.text = "100%"
+        }
+        if volumeLabel.text == "0%" {
+            volumeLabel.text = "0.00%"
         }
     }
     
     func setupPriceLabel(order: Order) {
         let price = order.originalOrder.amountBuy / order.originalOrder.amountSell
+        let decimals = MarketDataManager.shared.getDecimals(tradingPair: order.tradingPairDescription)
+        // TODO: Simplify the followering code.
         if order.originalOrder.side.lowercased() == "buy" {
-            var value = (1 / price).withCommas(15).trailingZero()
+            var value = (1 / price).withCommas(decimals)
             if value.count > 9 {
-                value = (1 / price).withCommas(6)
+                value = (1 / price).withCommas(decimals)
             }
-            priceLabel.text = "\(value.trailingZero())"
+            priceLabel.text = "\(value)"
         } else {
-            var value = (price).withCommas(15).trailingZero()
+            var value = (price).withCommas(decimals)
             if value.count > 9 {
-                value = (price).withCommas(6)
+                value = (price).withCommas(decimals)
             }
-            priceLabel.text = "\(value.trailingZero())"
+            priceLabel.text = "\(value)"
         }
     }
     

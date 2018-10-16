@@ -96,7 +96,7 @@ class OrderQRCodeViewController: UIViewController {
         var length = MarketDataManager.shared.getDecimals(tokenSymbol: order.tokenSell)
         sellInfoLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
         sellInfoLabel.theme_textColor = GlobalPicker.contrastTextColor
-        sellInfoLabel.text = order.amountSell.withCommas(length)  + " " + order.tokenSell
+        sellInfoLabel.text = order.amountSell.withCommas(length).trailingZero()  + " " + order.tokenSell
         
         buyTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
         buyTipLabel.theme_textColor = GlobalPicker.contrastTextLightColor
@@ -105,7 +105,7 @@ class OrderQRCodeViewController: UIViewController {
         length = MarketDataManager.shared.getDecimals(tokenSymbol: order.tokenBuy)
         buyInfoLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
         buyInfoLabel.theme_textColor = GlobalPicker.contrastTextColor
-        buyInfoLabel.text = order.amountBuy.withCommas(length) + " " + order.tokenBuy
+        buyInfoLabel.text = order.amountBuy.withCommas(length).trailingZero() + " " + order.tokenBuy
         
         let price = order.amountBuy / order.amountSell
         

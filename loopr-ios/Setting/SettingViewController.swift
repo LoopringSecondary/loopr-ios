@@ -30,6 +30,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
         headerView.theme_backgroundColor = ColorPicker.backgroundColor
         settingsTableView.tableHeaderView = headerView
+
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
+        footerView.theme_backgroundColor = ColorPicker.backgroundColor
+        settingsTableView.tableFooterView = footerView
     }
 
     override func viewWillAppear(_ animated: Bool) {

@@ -33,7 +33,13 @@ class Transaction {
             self.value = value
             if let value = Asset.getAmount(of: symbol, fromWeiAmount: value) {
                 let length = MarketDataManager.shared.getDecimals(tokenSymbol: symbol)
-                self.value = value.withCommas(length)
+
+                // Displaying "0" in the WalletViewController doesn't look good.
+                self.value = value.withCommas(length).trailingZero()
+                if !self.value.contains(".") {
+                    self.value += ".00"
+                }
+
                 if let price = PriceDataManager.shared.getPrice(of: symbol) {
                     let total = price * Double(value)
                     self.currency = total.currency
