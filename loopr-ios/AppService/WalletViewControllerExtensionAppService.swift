@@ -25,6 +25,7 @@ extension WalletViewController {
             if let url = URL(string: Production.getUrlText()) {
                 UIApplication.shared.open(url)
             }
+            AppServiceManager.shared.setLargestSkipBuildVersion()
             Answers.logCustomEvent(withName: "App Update Notification v1",
                                    customAttributes: [
                                     "update": "true"])
