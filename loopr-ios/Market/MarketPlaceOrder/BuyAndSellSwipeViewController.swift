@@ -27,7 +27,7 @@ class BuyAndSellSwipeViewController: SwipeViewController {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 
         self.view.theme_backgroundColor = ColorPicker.backgroundColor
-        self.navigationItem.title = PlaceOrderDataManager.shared.market.description
+        self.navigationItem.title = PlaceOrderDataManager.shared.market?.description ?? LocalizedString("Trade", comment: "")
 
         let vc1 = BuyViewController(type: .buy)
         vc1.market = market
