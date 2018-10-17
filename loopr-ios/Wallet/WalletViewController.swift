@@ -242,6 +242,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     guard error == nil, let order = manager.submitOrder else { return }
                     DispatchQueue.main.async {
                         let vc = PlaceOrderConfirmationViewController()
+                        vc.view.theme_backgroundColor = ColorPicker.backgroundColor
                         vc.order = order
                         vc.isSigning = true
                         self.navigationController?.pushViewController(vc, animated: true)

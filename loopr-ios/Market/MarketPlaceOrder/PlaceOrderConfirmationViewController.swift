@@ -147,7 +147,12 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     }
     
     func validateRational() -> Bool {
-        let pair = PlaceOrderDataManager.shared.market.name
+        // If we use the app to scan a QR code to authorize a market order on cirular,
+        // PlaceOrderDataManager market is nil
+        guard PlaceOrderDataManager.shared.market != nil else {
+            return true
+        }
+        let pair = PlaceOrderDataManager.shared.market!.name
         if let price = self.price, let value = Double(price),
             let market = MarketDataManager.shared.getMarket(byTradingPair: pair) {
             let header = LocalizedString("Your price is irrational, ", comment: "")
