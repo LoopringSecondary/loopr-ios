@@ -54,6 +54,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        setBackButton()
         view.backgroundColor = UIColor.clear
         containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         containerView.applyShadow()
@@ -224,8 +225,20 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         if let closure = self.dismissClosure {
             closure()
         }
-        self.dismiss(animated: animated, completion: {
-        })
+        
+        if self.navigationController == nil {
+            print("isBeingPresented")
+            self.dismiss(animated: animated, completion: {
+                
+            })
+        } else {
+            for controller in self.navigationController!.viewControllers as Array {
+                if controller.isKind(of: TradeViewController.self) || controller.isKind(of: WalletViewController.self) || controller.isKind(of: TradeSelectionViewController.self) {
+                    self.navigationController!.popToViewController(controller, animated: true)
+                    break
+                }
+            }
+        }
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
