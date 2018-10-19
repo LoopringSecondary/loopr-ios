@@ -75,40 +75,47 @@ class AssetTransactionDetailViewController: UIViewController {
         titleLabel.font = FontConfigManager.shared.getMediumFont(size: 16)
         titleLabel.text = LocalizedString("Transaction Detail", comment: "")
         
-        typeTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        // Row 1
+        typeTipLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         typeTipLabel.theme_textColor = GlobalPicker.textLightColor
 
-        typeInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        typeInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         typeInfoLabel.theme_textColor = GlobalPicker.textColor
         
-        statusTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        // Row 2
+        statusTipLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         statusTipLabel.theme_textColor = GlobalPicker.textLightColor
         statusTipLabel.text = LocalizedString("Status", comment: "")
-        statusInfoLabel.setTitleCharFont()
         
-        toTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        statusInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
+        statusInfoLabel.theme_textColor = GlobalPicker.textColor
+        
+        // Row 3
+        toTipLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         toTipLabel.theme_textColor = GlobalPicker.textLightColor
         toTipLabel.text = LocalizedString("Address", comment: "")
-        toInfoButton.titleLabel?.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        toInfoButton.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 14)
         
-        idTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        // Row 4
+        idTipLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         idTipLabel.theme_textColor = GlobalPicker.textLightColor
         idTipLabel.text = LocalizedString("TxHash", comment: "")
+        idInfoButton.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 14)
         
-        idInfoButton.titleLabel?.font = FontConfigManager.shared.getDigitalFont(size: 14)
-        
-        gasTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        // Row 5
+        gasTipLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         gasTipLabel.theme_textColor = GlobalPicker.textLightColor
         gasTipLabel.text = LocalizedString("Gas", comment: "")
         
-        gasInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        gasInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         gasInfoLabel.theme_textColor = GlobalPicker.textColor
         
-        dateTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        // Row 6
+        dateTipLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         dateTipLabel.theme_textColor = GlobalPicker.textLightColor
         dateTipLabel.text = LocalizedString("Date", comment: "")
         
-        dateInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        dateInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         dateInfoLabel.theme_textColor = GlobalPicker.textColor
     }
     

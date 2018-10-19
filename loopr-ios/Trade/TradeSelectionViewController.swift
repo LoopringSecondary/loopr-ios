@@ -73,11 +73,20 @@ class TradeSelectionViewController: UIViewController {
         button1.isUserInteractionEnabled = true
         
         // Update font
-        button1.titleLabel?.setSubTitleCharFont()
-        button2.titleLabel?.setSubTitleCharFont()
-        button3.titleLabel?.setSubTitleCharFont()
-        button4.titleLabel?.setSubTitleCharFont()
-        button5.titleLabel?.setSubTitleCharFont()
+        button1.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
+        button1.titleLabel?.theme_textColor = GlobalPicker.textLightColor
+        
+        button2.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
+        button2.titleLabel?.theme_textColor = GlobalPicker.textLightColor
+        
+        button3.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
+        button3.titleLabel?.theme_textColor = GlobalPicker.textLightColor
+        
+        button4.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
+        button4.titleLabel?.theme_textColor = GlobalPicker.textLightColor
+        
+        button5.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
+        button5.titleLabel?.theme_textColor = GlobalPicker.textLightColor
 
         let iconTitlePadding: CGFloat = 14
         button1.set(image: UIImage.init(named: "Trade-decentralizaed-exchange-dark"), title: LocalizedString("DEX Trade", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
