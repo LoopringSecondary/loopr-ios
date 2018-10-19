@@ -31,8 +31,8 @@ class TradeViewOnlyViewController: UIViewController {
         
         titleLabel.textAlignment = .center
         titleLabel.font = FontConfigManager.shared.getCharactorFont(size: 13)
-        titleLabel.theme_textColor = ["#000000cc", "#ffffffcc"]
-        
+        titleLabel.theme_textColor = GlobalPicker.textColor
+
         amountLabel.textAlignment = .center
         amountLabel.font = FontConfigManager.shared.getRegularFont(size: 13)
         amountLabel.theme_textColor = GlobalPicker.textLightColor
