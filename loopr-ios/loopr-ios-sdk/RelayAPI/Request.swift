@@ -7,10 +7,14 @@
 //
 
 import Foundation
+import NotificationBannerSwift
+import SVProgressHUD
 
 public typealias CompletionHandler = (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void
 
 class Request {
+    
+    static let banner = NotificationBanner.generate(title: "No network", style: .warning)
     
     static func send(body: JSON, url: URL, completionHandler: @escaping CompletionHandler) {
         var request = URLRequest(url: url)
@@ -26,6 +30,13 @@ class Request {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
+                DispatchQueue.main.async {
+                    if !banner.isDisplaying {
+                        banner.duration = 60.0
+                        banner.show()
+                    }
+                    SVProgressHUD.dismiss()
+                }
                 return
             }
             
