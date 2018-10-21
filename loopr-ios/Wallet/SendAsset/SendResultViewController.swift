@@ -18,7 +18,7 @@ class SendResultViewController: UIViewController {
     @IBOutlet weak var toInfoLabel: UILabel!
     @IBOutlet weak var timeTipLabel: UILabel!
     @IBOutlet weak var timeInfoLabel: UILabel!
-    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var doneButton: GradientButton!
     
     @IBOutlet weak var seperatorA: UIView!
     @IBOutlet weak var seperatorB: UIView!
@@ -40,7 +40,7 @@ class SendResultViewController: UIViewController {
         seperators.forEach { $0?.theme_backgroundColor = ColorPicker.cardBackgroundColor }
         
         doneButton.title = LocalizedString("Done", comment: "")
-        doneButton.setupPrimary(height: 44)
+        doneButton.setPrimaryColor()
         if let asset = self.asset {
             update(asset: asset)
         }

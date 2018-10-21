@@ -13,10 +13,10 @@ class MarketDetailViewController: UIViewController {
     var market: Market!
     var marketDetailSwipeViewController = MarketDetailSwipeViewController()
     
-    @IBOutlet weak var buyButton: UIButton!
-    @IBOutlet weak var sellButton: UIButton!
+    @IBOutlet weak var buyButton: GradientButton!
+    @IBOutlet weak var sellButton: GradientButton!
     
-    let buttonInNavigationBar =  UIButton()
+    let buttonInNavigationBar =  UIButton(frame: .zero)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +27,11 @@ class MarketDetailViewController: UIViewController {
         setupMarket()
         updateHistoryButton()
         if ColorTheme.current == .green {
-            buyButton.setupSecondary(height: 44)
-            sellButton.setupPrimary(height: 44, gradientOrientation: .horizontal)
+            buyButton.setSecondaryColor()
+            sellButton.setPrimaryColor(gradientOrientation: .horizontal)
         } else {
-            buyButton.setupPrimary(height: 44)
-            sellButton.setupRed(height: 44, gradientOrientation: .horizontal)
+            buyButton.setPrimaryColor()
+            sellButton.setRed(gradientOrientation: .horizontal)
         }
         
         addChildViewController(marketDetailSwipeViewController)

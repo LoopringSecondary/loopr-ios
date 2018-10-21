@@ -41,13 +41,12 @@ class MnemonicEnterDerivationPathViewController: UIViewController, UITableViewDe
         view.theme_backgroundColor = ColorPicker.backgroundColor
         tableView.theme_backgroundColor = ColorPicker.backgroundColor
 
-        nextButton.setupSecondary(height: 44)
         nextButton.setTitle(LocalizedString("Next", comment: ""), for: .normal)
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-        tableView.tableFooterView = UIView()
+        tableView.tableFooterView = UIView(frame: .zero)
     }
 
     override func didReceiveMemoryWarning() {

@@ -26,7 +26,7 @@ class AddCustomizedTokenViewController: UIViewController, UITextFieldDelegate, D
     @IBOutlet weak var decimalTextField: UITextField!
     
     // Send button
-    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var sendButton: GradientButton!
     
     // Numeric keyboard
     var isNumericKeyboardShow: Bool = false
@@ -84,7 +84,7 @@ class AddCustomizedTokenViewController: UIViewController, UITextFieldDelegate, D
         
         decimalTextField.delegate = self
         decimalTextField.tag = 2
-        decimalTextField.inputView = UIView()
+        decimalTextField.inputView = UIView(frame: .zero)
         decimalTextField.keyboardAppearance = Themes.isDark() ? .dark : .default
         decimalTextField.font = FontConfigManager.shared.getDigitalFont()
         decimalTextField.theme_tintColor = GlobalPicker.contrastTextColor
@@ -97,7 +97,6 @@ class AddCustomizedTokenViewController: UIViewController, UITextFieldDelegate, D
         
         // Add button
         sendButton.title = LocalizedString("Add", comment: "")
-        sendButton.setupSecondary(height: 44)
         
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1

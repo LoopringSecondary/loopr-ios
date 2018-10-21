@@ -16,12 +16,12 @@ class AssetSwipeViewController: SwipeViewController {
     
     var asset: Asset?
     var options = SwipeViewOptions.getDefault()
-    var baseView: UIImageView = UIImageView()
-    let balanceLabel: UILabel = UILabel()
-    let currencyLabel: UILabel = UILabel()
+    var baseView: UIImageView = UIImageView(frame: .zero)
+    let balanceLabel: UILabel = UILabel(frame: .zero)
+    let currencyLabel: UILabel = UILabel(frame: .zero)
     
-    @IBOutlet weak var receiveButton: UIButton!
-    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var receiveButton: GradientButton!
+    @IBOutlet weak var sendButton: GradientButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,11 +62,9 @@ class AssetSwipeViewController: SwipeViewController {
         receiveButton.setTitle(LocalizedString("Receive", comment: "") + " " + (asset?.symbol ?? ""), for: .normal)
         sendButton.setTitle(LocalizedString("Send", comment: "") + " " + (asset?.symbol ?? ""), for: .normal)
         if ColorTheme.current == .green {
-            receiveButton.setupSecondary(height: 44, gradientOrientation: .horizontal)
-            sendButton.setupPrimary(height: 44, gradientOrientation: .horizontal)
+            sendButton.setPrimaryColor(gradientOrientation: .horizontal)
         } else {
-            receiveButton.setupPrimary(height: 44, gradientOrientation: .horizontal)
-            sendButton.setupSecondary(height: 44, gradientOrientation: .horizontal)
+            receiveButton.setPrimaryColor(gradientOrientation: .horizontal)
         }
         
         if Themes.isDark() {

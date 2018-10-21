@@ -12,10 +12,10 @@ import NotificationBannerSwift
 class DisplayKeystoreViewController: UIViewController {
     
     @IBOutlet weak var keystoreTextView: UITextView!
-    @IBOutlet weak var copyButton: UIButton!
+    @IBOutlet weak var copyButton: GradientButton!
     
     var keystore: String = ""
-    var blurVisualEffectView = UIView()
+    var blurVisualEffectView = UIView(frame: .zero)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,6 @@ class DisplayKeystoreViewController: UIViewController {
         keystoreTextView.isEditable = false
         
         copyButton.title = LocalizedString("Copy Keystore", comment: "")
-        copyButton.setupSecondary(height: 44)
         
         blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         blurVisualEffectView.alpha = 1

@@ -52,19 +52,47 @@ extension UIColor {
         }
     }
     
-    class var secondary: [UIColor] {
+    class var primaryHighlighted: [UIColor] {
         switch ColorTheme.current {
         case .red:
-            return [UIColor.init(rgba: "#CE4CE6"), UIColor.init(rgba: "#FA4A6F")]
+            return [UIColor.init(rgba: "#5ED279"), UIColor.init(rgba: "#2AAE49")]
         case .yellow:
-            // Updated at 09-07-2018 (ruby)
-            return [UIColor.init(rgba: "#EFC90C"), UIColor.init(rgba: "#FFB528")]
+            return [UIColor.init(rgba: "#5ED279"), UIColor.init(rgba: "#2AAE49")]
         case .green:
-            return [UIColor.init(rgba: "#38B170"), UIColor.init(rgba: "#159763")]
+            return [UIColor.init(rgba: "#D53535"), UIColor.init(rgba: "#DD5252")]
         case .blue:
             return [UIColor.init(rgba: "#5ED279"), UIColor.init(rgba: "#2AAE49")]
         }
-
+    }
+    
+    class var secondary: [UIColor] {
+        switch ColorTheme.current {
+        case .red:
+            return [UIColor(rgba: "#CE4CE6"), UIColor(rgba: "#FA4A6F")]
+        case .yellow:
+            // Updated at 09-07-2018 (ruby)
+            return [UIColor(rgba: "#EFC90C"), UIColor(rgba: "#FFB528")]
+        case .green:
+            return [UIColor(rgba: "#38B170"), UIColor(rgba: "#159763")]
+        case .blue:
+            return [UIColor(rgba: "#5ED279"), UIColor(rgba: "#2AAE49")]
+        }
+    }
+    
+    // TODO: Update the hightlighted color
+    class var secondaryHighlighted: [UIColor] {
+        switch ColorTheme.current {
+        case .red:
+            return [UIColor(rgba: "#CE4CE6"), UIColor(rgba: "#FA4A6F")]
+        case .yellow:
+            // Updated at 09-07-2018 (ruby)
+            // TODO: Color is not correct
+            return [UIColor(rgba: "#F4A000"), UIColor(rgba: "#DB8F00")]
+        case .green:
+            return [UIColor(rgba: "#38B170"), UIColor(rgba: "#159763")]
+        case .blue:
+            return [UIColor(rgba: "#5ED279"), UIColor(rgba: "#2AAE49")]
+        }
     }
     
     // #F5F5F5

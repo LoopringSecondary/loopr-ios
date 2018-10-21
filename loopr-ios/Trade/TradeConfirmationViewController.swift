@@ -27,7 +27,7 @@ class TradeConfirmationViewController: UIViewController {
     @IBOutlet weak var validValueLabel: UILabel!
     @IBOutlet weak var gasInfoImage: UIImageView!
     @IBOutlet weak var gasTipLabel: UILabel!
-    @IBOutlet weak var placeOrderButton: UIButton!
+    @IBOutlet weak var placeOrderButton: GradientButton!
     @IBOutlet weak var cancelButton: UIButton!
     
     @IBOutlet weak var cellBackgroundView: UIView!
@@ -114,7 +114,7 @@ class TradeConfirmationViewController: UIViewController {
         
         // Button
         placeOrderButton.setTitle(LocalizedString("Place Order", comment: ""), for: .normal)
-        placeOrderButton.setupPrimary(height: 44)
+        placeOrderButton.setPrimaryColor()
         
         // Cancel button
         cancelButton.setTitle(LocalizedString("Cancel", comment: ""), for: .normal)

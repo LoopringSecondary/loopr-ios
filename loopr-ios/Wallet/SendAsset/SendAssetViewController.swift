@@ -40,7 +40,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     @IBOutlet weak var advancedButton: UIButton!
 
     // Send button
-    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var sendButton: GradientButton!
     
     // Scroll view
     @IBOutlet weak var scrollView: UIScrollView!
@@ -154,7 +154,6 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
 
         // Send button
         sendButton.title = LocalizedString("Send", comment: "")
-        sendButton.setupSecondary(height: 44)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)

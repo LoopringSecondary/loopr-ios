@@ -13,9 +13,9 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
 
     var setupWalletMethod: QRCodeMethod = .create
 
-    var walletNameTextField: UITextField = UITextField()
-    var continueButton: UIButton = UIButton()
-    var errorInfoLabel: UILabel = UILabel()
+    var walletNameTextField: UITextField = UITextField(frame: .zero)
+    var continueButton = GradientButton(frame: .zero)
+    var errorInfoLabel: UILabel = UILabel(frame: .zero)
 
     convenience init(setupWalletMethod: QRCodeMethod) {
         self.init(nibName: "ImportWalletEnterWalletNameViewController", bundle: nil)
@@ -59,8 +59,7 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
         walletNameTextField.contentMode = UIViewContentMode.bottom
         view.addSubview(walletNameTextField)
         
-        continueButton.frame = CGRect(x: 48, y: 200, width: screenWidth-48*2, height: 49)
-        continueButton.setupSecondary()
+        continueButton = GradientButton(frame: CGRect(x: 48, y: 200, width: screenWidth-48*2, height: 49))
         continueButton.setTitle(LocalizedString("Next", comment: ""), for: .normal)
         continueButton.addTarget(self, action: #selector(pressedContinueButton), for: .touchUpInside)
         view.addSubview(continueButton)

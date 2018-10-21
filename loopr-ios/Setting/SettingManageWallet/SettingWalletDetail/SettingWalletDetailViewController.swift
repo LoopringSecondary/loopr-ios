@@ -15,8 +15,7 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
     var appWallet: AppWallet!
 
     @IBOutlet weak var tableView: UITableView!
-
-    @IBOutlet weak var switchWalletButton: UIButton!
+    @IBOutlet weak var switchWalletButton: GradientButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +30,13 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.tableFooterView = UIView()
+        tableView.tableFooterView = UIView(frame: .zero)
         
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 10))
         headerView.theme_backgroundColor = ColorPicker.backgroundColor
         tableView.tableHeaderView = headerView
         
         switchWalletButton.title = LocalizedString("Switch to this Wallet", comment: "")
-        switchWalletButton.setupSecondary(height: 44)
     }
 
     override func viewWillAppear(_ animated: Bool) {

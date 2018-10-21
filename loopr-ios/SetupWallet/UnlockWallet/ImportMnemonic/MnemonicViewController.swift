@@ -16,7 +16,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
     
     // TODO: may remove this NSLayoutConstraint due to the latest UI requirement.
     @IBOutlet weak var unlockButtonBottonLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet weak var unlockButton: UIButton!
+    @IBOutlet weak var unlockButton: GradientButton!
     
     var isKeyboardShown: Bool = false
 
@@ -30,7 +30,6 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         NotificationCenter.default.addObserver(self, selector: #selector(systemKeyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
 
         unlockButton.setTitle(LocalizedString("Unlock", comment: ""), for: .normal)
-        unlockButton.setupSecondary(height: 44)
 
         mnemonicWordTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 10, bottom: 15, right: 10)
         mnemonicWordTextView.cornerRadius = 6
@@ -69,7 +68,6 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        unlockButton.setupSecondary(height: 44)
     }
 
     override func didReceiveMemoryWarning() {

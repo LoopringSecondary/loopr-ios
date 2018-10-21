@@ -10,9 +10,9 @@ import UIKit
 
 class GenerateWalletEnterPasswordViewController: UIViewController, UITextFieldDelegate {
 
-    var passwordTextField: UITextField = UITextField()
-    var continueButton: UIButton = UIButton()
-    var errorInfoLabel: UITextView = UITextView()
+    var passwordTextField: UITextField = UITextField(frame: .zero)
+    var continueButton = GradientButton(frame: .zero)
+    var errorInfoLabel: UITextView = UITextView(frame: .zero)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +44,7 @@ class GenerateWalletEnterPasswordViewController: UIViewController, UITextFieldDe
         passwordTextField.contentMode = UIViewContentMode.bottom
         view.addSubview(passwordTextField)
         
-        continueButton.frame = CGRect(x: 48, y: 200, width: screenWidth-48*2, height: 44)
-        continueButton.setupSecondary(height: 44)
+        continueButton = GradientButton(frame: CGRect(x: 48, y: 200, width: screenWidth-48*2, height: 44))
         continueButton.setTitle(LocalizedString("Next", comment: ""), for: .normal)
         continueButton.addTarget(self, action: #selector(pressedContinueButton), for: .touchUpInside)
         view.addSubview(continueButton)
@@ -106,7 +105,6 @@ class GenerateWalletEnterPasswordViewController: UIViewController, UITextFieldDe
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let newLength = (textField.text?.utf16.count)! + (string.utf16.count) - range.length
         errorInfoLabel.theme_textColor = GlobalPicker.textLightColor
         errorInfoLabel.alpha = 1.0
         errorInfoLabel.text = LocalizedString("The length of password needs to be larger than or equal to 6.", comment: "")

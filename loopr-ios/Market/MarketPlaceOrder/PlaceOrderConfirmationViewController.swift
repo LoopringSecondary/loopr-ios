@@ -34,8 +34,9 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     @IBOutlet weak var cellB: UIView!
     @IBOutlet weak var cellD: UIView!
     
-    @IBOutlet weak var confirmationButton: UIButton!
-    @IBOutlet weak var declineButton: UIButton!
+    @IBOutlet weak var confirmationButton: GradientButton!
+    @IBOutlet weak var declineButton: GradientButton!
+
     @IBOutlet weak var cancelButton: UIButton!
     
     @IBOutlet weak var priceTailing: NSLayoutConstraint!
@@ -187,11 +188,10 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
             confirmationButton.title = LocalizedString("Accept", comment: "")
             declineButton.isHidden = false
             declineButton.title = LocalizedString("Decline", comment: "")
-            declineButton.setupSecondary(height: 44)
         } else {
             confirmationButton.title = LocalizedString("Confirm", comment: "")
         }
-        confirmationButton.setupPrimary(height: 44)
+        confirmationButton.setPrimaryColor()
 
         cancelButton.setTitle(LocalizedString("Cancel", comment: ""), for: .normal)
         cancelButton.setTitleColor(UIColor.white, for: .normal)

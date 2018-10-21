@@ -14,7 +14,7 @@ class SettingPartnerViewController: UIViewController {
 
     @IBOutlet weak var sloganLabel: UILabel!
     @IBOutlet weak var walletAddressLabel: UILabel!
-    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var shareButton: GradientButton!
     
     var qrcodeImageView: UIImageView = UIImageView(frame: .zero)
     var qrcodeImage: UIImage!
@@ -40,7 +40,6 @@ class SettingPartnerViewController: UIViewController {
         walletAddressLabel.numberOfLines = 2
         walletAddressLabel.lineBreakMode = .byTruncatingMiddle
         
-        shareButton.setupSecondary(height: 44)
         shareButton.setTitle(LocalizedString("Share App", comment: ""), for: .normal)
         shareButton.addTarget(self, action: #selector(pressedShareButton), for: .touchUpInside)
         

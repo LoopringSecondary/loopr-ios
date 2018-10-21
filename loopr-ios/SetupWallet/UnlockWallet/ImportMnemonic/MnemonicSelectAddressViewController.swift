@@ -11,7 +11,7 @@ import UIKit
 class MnemonicSelectAddressViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButton: GradientButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +24,8 @@ class MnemonicSelectAddressViewController: UIViewController, UITableViewDelegate
         tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.tableFooterView = UIView()
+        tableView.tableFooterView = UIView(frame: .zero)
 
-        nextButton.setupSecondary(height: 44)
         nextButton.setTitle(LocalizedString("Next", comment: ""), for: .normal)
 
         view.theme_backgroundColor = ColorPicker.backgroundColor

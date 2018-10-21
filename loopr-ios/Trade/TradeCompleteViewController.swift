@@ -12,19 +12,19 @@ class TradeCompleteViewController: UIViewController {
 
     @IBOutlet weak var resultHeaderImage: UIImageView!
     @IBOutlet weak var exchangedInfoLabel: UILabel!
-    @IBOutlet weak var detailsButton: UIButton!
+    @IBOutlet weak var detailsButton: GradientButton!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     
     // Need TokenA
-    var needATipLabel: UILabel = UILabel()
-    var needAInfoLabel: UILabel = UILabel()
-    var needAUnderline: UIView = UIView()
+    var needATipLabel: UILabel = UILabel(frame: .zero)
+    var needAInfoLabel: UILabel = UILabel(frame: .zero)
+    var needAUnderline: UIView = UIView(frame: .zero)
     
     // Need TokenB
-    var needBTipLabel: UILabel = UILabel()
-    var needBInfoLabel: UILabel = UILabel()
-    var needBUnderline: UIView = UIView()
+    var needBTipLabel: UILabel = UILabel(frame: .zero)
+    var needBInfoLabel: UILabel = UILabel(frame: .zero)
+    var needBUnderline: UIView = UIView(frame: .zero)
     
     var order: OriginalOrder?
     var errorTipInfo: [String] = []
@@ -101,7 +101,7 @@ class TradeCompleteViewController: UIViewController {
     
     func setupButtons() {
         detailsButton.title = LocalizedString("Check Details", comment: "")
-        detailsButton.setupPrimary(height: 44)
+        detailsButton.setPrimaryColor()
         if isBalanceEnough() {
             detailsButton.isHidden = false
         } else {

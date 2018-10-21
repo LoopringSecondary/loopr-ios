@@ -17,7 +17,7 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
 
     // TODO: may remove this NSLayoutConstraint due to the latest UI requirement.
     @IBOutlet weak var unlockButtonBottonLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet weak var unlockButton: UIButton!
+    @IBOutlet weak var unlockButton: GradientButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,6 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
 
         unlockButton.setTitle(LocalizedString("Unlock", comment: ""), for: .normal)
-        unlockButton.setupSecondary(height: 44)
 
         keystoreContentTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
         keystoreContentTextView.cornerRadius = 6
