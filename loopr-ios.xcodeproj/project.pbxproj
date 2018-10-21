@@ -264,7 +264,6 @@
 		AC4F8638209D483B002E62AB /* SettingLRCFeeRatioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F8636209D483B002E62AB /* SettingLRCFeeRatioViewController.swift */; };
 		AC4F8639209D483B002E62AB /* SettingLRCFeeRatioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4F8637209D483B002E62AB /* SettingLRCFeeRatioViewController.xib */; };
 		AC5288B4208300580002AEAD /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B1208300570002AEAD /* DateUtil.swift */; };
-		AC5288B5208300580002AEAD /* NetworkingRechabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5288B2208300570002AEAD /* NetworkingRechabilityManager.swift */; };
 		AC5442DC2081167E0036A2B4 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5442DB2081167E0036A2B4 /* SwiftyJSON.swift */; };
 		AC54FD92204FD291007E1DEB /* FontConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54FD91204FD291007E1DEB /* FontConfigManager.swift */; };
 		AC56625B20563C05003C925C /* TradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56625920563C05003C925C /* TradeViewController.swift */; };
@@ -760,7 +759,6 @@
 		AC4F8636209D483B002E62AB /* SettingLRCFeeRatioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLRCFeeRatioViewController.swift; sourceTree = "<group>"; };
 		AC4F8637209D483B002E62AB /* SettingLRCFeeRatioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLRCFeeRatioViewController.xib; sourceTree = "<group>"; };
 		AC5288B1208300570002AEAD /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
-		AC5288B2208300570002AEAD /* NetworkingRechabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingRechabilityManager.swift; sourceTree = "<group>"; };
 		AC5442DB2081167E0036A2B4 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		AC54FD91204FD291007E1DEB /* FontConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontConfigManager.swift; sourceTree = "<group>"; };
 		AC56625920563C05003C925C /* TradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewController.swift; sourceTree = "<group>"; };
@@ -1410,7 +1408,6 @@
 			isa = PBXGroup;
 			children = (
 				AC5288B1208300570002AEAD /* DateUtil.swift */,
-				AC5288B2208300570002AEAD /* NetworkingRechabilityManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2910,7 +2907,6 @@
 				94B5CA8A204FB4E20081BA93 /* DefaultBlock.swift in Sources */,
 				AC0CD58520D2330300ABB7BA /* H5DexViewController.swift in Sources */,
 				AC299495212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.swift in Sources */,
-				AC5288B5208300580002AEAD /* NetworkingRechabilityManager.swift in Sources */,
 				94768CA4210DCB2300B5977B /* TradeSwipeType.swift in Sources */,
 				AC9FFF252126BDF800957175 /* MarketChangeTokenSwipeViewController.swift in Sources */,
 				ACB911662024505D00F14644 /* OrderFill.swift in Sources */,

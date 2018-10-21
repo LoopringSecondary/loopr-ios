@@ -481,7 +481,7 @@ extension WalletViewController: MKDropdownMenuDataSource {
     }
     
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, numberOfRowsInComponent component: Int) -> Int {
-        return 3
+        return 2
     }
 
 }

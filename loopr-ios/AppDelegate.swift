@@ -64,13 +64,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         _ = SettingDataManager.shared.getCurrentLanguage()
 
-        let manager = NetworkingReachabilityManager.shared
-        manager?.listener = { status in
-            print("Network Status Changed: \(status)")
-            if status == NetworkReachabilityStatus.notReachable || status == NetworkReachabilityStatus.unknown {
-                self.showNetworkLossBanner()
-            }
-        }
         // manager?.startListening()
         SettingsBundleHelper.setVersionAndBuildNumber()
         
@@ -162,22 +155,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        let manager = NetworkingReachabilityManager.shared
-        if manager?.isReachable == false {
-            self.showNetworkLossBanner()
-        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         print("applicationDidBecomeActive")
 
-        // Check network connection.
-        let manager = NetworkingReachabilityManager.shared
-        if manager?.isReachable == false {
-            self.showNetworkLossBanner()
-        }
-        
         // We may need to change this when we implement more push notification related features.
         // Get nonce from eth, not relay. Cost time maybe.
         CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.getNonceFromEthereum(completionHandler: {})
@@ -228,7 +211,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        NetworkingReachabilityManager.shared?.stopListening()
         AuthenticationDataManager.shared.hasLogin = false
         CoreDataManager.shared.saveContext()
     }
