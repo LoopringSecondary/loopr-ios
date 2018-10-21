@@ -38,13 +38,13 @@ class WalletBalanceTableViewCell: UITableViewCell {
         addSubview(baseView)
         
         balanceLabel.frame = CGRect(x: 10, y: 40, width: screenWidth - 20, height: 36)
-        balanceLabel.setFont(FontConfigManager.shared.getMediumFont(size: 32))
+        balanceLabel.setFont(FontConfigManager.shared.getMediumFont(size: 32), currencySymbolFont: FontConfigManager.shared.getMediumFont(size: 20))
         balanceLabel.animationDuration = 0.3
         balanceLabel.textAlignment = NSTextAlignment.center
         balanceLabel.initializeLabel()
 
         var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
-        balance.insert(" ", at: balance.index(after: balance.startIndex))
+        // balance.insert(" ", at: balance.index(after: balance.startIndex))
         balanceLabel.setText("\(balance)", animated: false)
         addSubview(balanceLabel)
 
@@ -75,7 +75,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
     func setup(animated: Bool) {
         addressLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address ?? ""
         var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
-        balance.insert(" ", at: balance.index(after: balance.startIndex))
+        // balance.insert(" ", at: balance.index(after: balance.startIndex))
         balanceLabel.setText(balance, animated: animated)
         balanceLabel.layoutCharacterLabels()
     }
