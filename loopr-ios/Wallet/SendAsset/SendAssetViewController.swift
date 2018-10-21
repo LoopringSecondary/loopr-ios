@@ -124,7 +124,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         tokenSymbolLabel.theme_textColor = GlobalPicker.contrastTextColor
         tokenSymbolLabel.textAlignment = .right
 
-        transactionFeeTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        transactionFeeTipLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
         transactionFeeTipLabel.theme_textColor = GlobalPicker.textLightColor
         transactionFeeTipLabel.text = LocalizedString("ETH_TIP", comment: "")
 
