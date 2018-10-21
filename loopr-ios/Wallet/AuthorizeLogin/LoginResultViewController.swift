@@ -12,7 +12,7 @@ class LoginResultViewController: UIViewController {
     
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var doneButton: GradientButton!
     
     var result: Bool = true
     
@@ -29,7 +29,6 @@ class LoginResultViewController: UIViewController {
         detailLabel.theme_textColor = GlobalPicker.textColor
         
         doneButton.title = LocalizedString("Done", comment: "")
-        doneButton.setupSecondary()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -22,8 +22,9 @@ class QRCodeViewController: UIViewController {
     @IBOutlet weak var qrcodeImageView: UIImageView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var copyAddressButton: UIButton!
-    @IBOutlet weak var saveToAlbumButton: UIButton!
+
+    @IBOutlet weak var copyAddressButton: GradientButton!
+    @IBOutlet weak var saveToAlbumButton: GradientButton!
     
     @IBOutlet weak var shareContentView: UIView!
     @IBOutlet weak var titleInShare: UILabel!
@@ -54,10 +55,8 @@ class QRCodeViewController: UIViewController {
         addressLabel.setTitleCharFont()
         
         copyAddressButton.setTitle(LocalizedString("Copy Address", comment: ""), for: .normal)
-        copyAddressButton.setupSecondary(height: 44)
         
         saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
-        saveToAlbumButton.setupSecondary(height: 44)
         
         setupShareButton()
         setBackButton()

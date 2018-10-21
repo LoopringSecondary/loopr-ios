@@ -10,9 +10,9 @@ import UIKit
 
 class GenerateWalletEnterNameViewController: UIViewController, UITextFieldDelegate {
     
-    var walletNameTextField: UITextField = UITextField()
-    var continueButton: UIButton = UIButton()
-    var errorInfoLabel: UILabel = UILabel()
+    var walletNameTextField: UITextField = UITextField(frame: .zero)
+    var continueButton: GradientButton = GradientButton(frame: .zero)
+    var errorInfoLabel: UILabel = UILabel(frame: .zero)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +42,7 @@ class GenerateWalletEnterNameViewController: UIViewController, UITextFieldDelega
         walletNameTextField.contentMode = UIViewContentMode.bottom
         view.addSubview(walletNameTextField)
         
-        continueButton.frame = CGRect(x: 48, y: 200, width: screenWidth-48*2, height: 44)
-        continueButton.setupSecondary(height: 44)
+        continueButton = GradientButton(frame: CGRect(x: 48, y: 200, width: screenWidth-48*2, height: 44))
         continueButton.setTitle(LocalizedString("Next", comment: ""), for: .normal)
         continueButton.addTarget(self, action: #selector(pressedContinueButton), for: .touchUpInside)
         view.addSubview(continueButton)

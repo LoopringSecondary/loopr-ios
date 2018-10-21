@@ -247,7 +247,6 @@
 		AC4142062038B66F0089861D /* AppWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4142052038B66F0089861D /* AppWallet.swift */; };
 		AC45EFEB20D0CCF5004F6EC0 /* AlertForErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC45EFEA20D0CCF5004F6EC0 /* AlertForErrorExtension.swift */; };
 		AC45EFEE20D0D474004F6EC0 /* H5DexNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC45EFED20D0D474004F6EC0 /* H5DexNavigationController.swift */; };
-		AC46F7762069FB4400CFDC40 /* UIButton+RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC46F7752069FB4400CFDC40 /* UIButton+RoundButton.swift */; };
 		AC4B894B2110262B00643910 /* MarketTradeHistoryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4B894A2110262B00643910 /* MarketTradeHistoryDataManager.swift */; };
 		AC4B894D21103EAF00643910 /* TradeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4B894C21103EAF00643910 /* TradeType.swift */; };
 		AC4F600D20773E9D00F1D954 /* SignatureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F5FFC20773E9D00F1D954 /* SignatureData.swift */; };
@@ -315,6 +314,7 @@
 		AC88669B21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC88669A21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift */; };
 		AC88669E2174923800815DD1 /* SetLRCRatioFeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC88669C2174923800815DD1 /* SetLRCRatioFeeViewController.swift */; };
 		AC88669F2174923800815DD1 /* SetLRCRatioFeeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC88669D2174923800815DD1 /* SetLRCRatioFeeViewController.xib */; };
+		AC8866A4217C2D5500815DD1 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8866A3217C2D5500815DD1 /* GradientButton.swift */; };
 		AC8DBC6D20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DBC6B20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift */; };
 		AC8DBC6E20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */; };
 		AC8DBC7720BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */; };
@@ -742,7 +742,6 @@
 		AC4142052038B66F0089861D /* AppWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWallet.swift; sourceTree = "<group>"; };
 		AC45EFEA20D0CCF5004F6EC0 /* AlertForErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertForErrorExtension.swift; sourceTree = "<group>"; };
 		AC45EFED20D0D474004F6EC0 /* H5DexNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5DexNavigationController.swift; sourceTree = "<group>"; };
-		AC46F7752069FB4400CFDC40 /* UIButton+RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+RoundButton.swift"; sourceTree = "<group>"; };
 		AC4B894A2110262B00643910 /* MarketTradeHistoryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketTradeHistoryDataManager.swift; sourceTree = "<group>"; };
 		AC4B894C21103EAF00643910 /* TradeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeType.swift; sourceTree = "<group>"; };
 		AC4F5FFC20773E9D00F1D954 /* SignatureData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureData.swift; sourceTree = "<group>"; };
@@ -816,6 +815,7 @@
 		AC88669A21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewControllerExtensionAppService.swift; sourceTree = "<group>"; };
 		AC88669C2174923800815DD1 /* SetLRCRatioFeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLRCRatioFeeViewController.swift; sourceTree = "<group>"; };
 		AC88669D2174923800815DD1 /* SetLRCRatioFeeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetLRCRatioFeeViewController.xib; sourceTree = "<group>"; };
+		AC8866A3217C2D5500815DD1 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		AC8DBC6B20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicBackupModeCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicBackupModeCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicBackupModeCollectionViewController.swift; sourceTree = "<group>"; };
@@ -1890,8 +1890,8 @@
 				ACE7742A20AA176A002CD727 /* WebViewController */,
 				AC70E84D20683C7500451047 /* IconView.swift */,
 				AC9089F2214D7ABA00F421F1 /* SplashImageView.swift */,
+				AC8866A3217C2D5500815DD1 /* GradientButton.swift */,
 				AC2ACA5B21005C17009C77E7 /* UIButton+AlignedIcon.swift */,
-				AC46F7752069FB4400CFDC40 /* UIButton+RoundButton.swift */,
 				ACB8AD88207F299700B478D6 /* UIViewController+BackButton.swift */,
 				AC2ACA5D21006DB8009C77E7 /* UIViewController+NavigationBar.swift */,
 			);
@@ -2770,7 +2770,6 @@
 				AC9FFF292126C05000957175 /* MarketChangeTokenViewController.swift in Sources */,
 				ACFD5FB42171B8AB00E161EE /* UpdatedOrderHistoryViewController.swift in Sources */,
 				AC0CD57B20D21C1100ABB7BA /* TabBarItemBouncesContentView.swift in Sources */,
-				AC46F7762069FB4400CFDC40 /* UIButton+RoundButton.swift in Sources */,
 				942C4A02212A9D89008A6B4F /* P2PType.swift in Sources */,
 				AC88669E2174923800815DD1 /* SetLRCRatioFeeViewController.swift in Sources */,
 				AC1B6D7F2130FB510026C1B2 /* Secp256k1Helper.swift in Sources */,
@@ -2844,6 +2843,7 @@
 				948125672119B38E00453225 /* PartnerDataManager.swift in Sources */,
 				94E49ED4213CE99700CDDA02 /* PreventScreenShotViewController.swift in Sources */,
 				AC9280E7202F5A010009B574 /* UIStyleConfig.swift in Sources */,
+				AC8866A4217C2D5500815DD1 /* GradientButton.swift in Sources */,
 				AC31CE17205A121000A30335 /* NumericKeyboardProtocol.swift in Sources */,
 				AC31CE142057B5A400A30335 /* TradeReviewViewController.swift in Sources */,
 				9445D54620BA4FB3006045F6 /* PriceStackView.swift in Sources */,

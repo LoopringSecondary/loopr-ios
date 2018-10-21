@@ -26,7 +26,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     @IBOutlet weak var gasTipLabel: UILabel!
     @IBOutlet weak var gasInfoLabel: UILabel!
     @IBOutlet weak var advancedButton: UIButton!
-    @IBOutlet weak var convertButton: UIButton!
+    @IBOutlet weak var convertButton: GradientButton!
     
     @IBOutlet weak var infoLabel1: UILabel!
     @IBOutlet weak var infoLabel2: UILabel!
@@ -34,7 +34,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     
     // Mask view
-    var blurVisualEffectView = UIView()
+    var blurVisualEffectView = UIView(frame: .zero)
 
     // Drag down to close a present view controller.
     var dismissInteractor = MiniToLargeViewInteractive()
@@ -65,12 +65,12 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         
         amountSTextField.delegate = self
         amountSTextField.tintColor = .black
-        amountSTextField.inputView = UIView()
+        amountSTextField.inputView = UIView(frame: .zero)
         amountSTextField.text = "0"
         
         amountBTextField.delegate = self
         amountBTextField.tintColor = .black
-        amountBTextField.inputView = UIView()
+        amountBTextField.inputView = UIView(frame: .zero)
         amountBTextField.text = "0"
         
         tokenSLabel.textColor = UIColor.init(rgba: "#F8F9FA").withAlphaComponent(0.6)
@@ -120,7 +120,6 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         infoLabel2.text = LocalizedString("Convert_TIP", comment: "")
 
         convertButton.title = LocalizedString("Convert", comment: "")
-        convertButton.setupSecondary(height: 44)
         
         let scrollViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         scrollViewTap.numberOfTapsRequired = 1

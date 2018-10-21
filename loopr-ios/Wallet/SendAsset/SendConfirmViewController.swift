@@ -22,7 +22,7 @@ class SendConfirmViewController: UIViewController {
     @IBOutlet weak var fromInfoLabel: UILabel!
     @IBOutlet weak var gasTipLabel: UILabel!
     @IBOutlet weak var gasInfoLabel: UILabel!
-    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var sendButton: GradientButton!
     
     @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var cellA: UIView!
@@ -78,7 +78,6 @@ class SendConfirmViewController: UIViewController {
         gasInfoLabel.theme_textColor = GlobalPicker.textLightColor
         gasInfoLabel.text = gasAmountText
         
-        sendButton.setupSecondary(height: 44)
         sendButton.title = LocalizedString("Send", comment: "")
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))

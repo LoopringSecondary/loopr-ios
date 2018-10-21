@@ -12,15 +12,14 @@ import NotificationBannerSwift
 class DisplayPrivateKeyViewController: UIViewController {
 
     @IBOutlet weak var privateKeyTextView: UITextView!
-    @IBOutlet weak var copyButton: UIButton!
+    @IBOutlet weak var copyButton: GradientButton!
 
     var navigationTitle = LocalizedString("Export Private Key", comment: "")
     var copyButtonTitle = LocalizedString("Copy Private Key", comment: "")
     var bannerMessage = LocalizedString("Private key copied to clipboard successfully!", comment: "")
     var displayValue: String = ""
     
-    var hideCopyButton: Bool = false
-    var blurVisualEffectView = UIView()
+    var blurVisualEffectView = UIView(frame: .zero)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +37,6 @@ class DisplayPrivateKeyViewController: UIViewController {
         // privateKeyTextView.isScrollEnabled = false
         
         copyButton.title = copyButtonTitle
-        copyButton.setupSecondary(height: 44)
-        copyButton.isHidden = hideCopyButton
 
         blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         blurVisualEffectView.alpha = 1

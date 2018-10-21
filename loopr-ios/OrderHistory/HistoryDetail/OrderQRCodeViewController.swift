@@ -16,8 +16,8 @@ class OrderQRCodeViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var qrcodeImageView: UIImageView!
-    @IBOutlet weak var saveToAlbumButton: UIButton!
-    @IBOutlet weak var shareOrderButton: UIButton!
+    @IBOutlet weak var saveToAlbumButton: GradientButton!
+    @IBOutlet weak var shareOrderButton: GradientButton!
     
     @IBOutlet weak var shareContentView: UIView!
     @IBOutlet weak var shareImageView: UIImageView!
@@ -64,9 +64,8 @@ class OrderQRCodeViewController: UIViewController {
         qrcodeIconImageView.image = UIImage(named: "Order-qrcode-icon" + ColorTheme.getTheme())
 
         saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
-        saveToAlbumButton.setupPrimary(height: 44)
+        saveToAlbumButton.setPrimaryColor()
         shareOrderButton.setTitle(LocalizedString("Share Order", comment: ""), for: .normal)
-        shareOrderButton.setupSecondary(height: 44)
         generateQRCode(originalOrder: self.originalOrder!)
         
         if let order = self.originalOrder {

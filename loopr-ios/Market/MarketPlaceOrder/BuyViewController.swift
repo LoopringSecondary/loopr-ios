@@ -45,7 +45,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
     @IBOutlet weak var lrcRatioButton: UIButton!
     
     // Place button
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButton: GradientButton!
     
     // Scroll view
     @IBOutlet weak var scrollView: UIScrollView!
@@ -191,10 +191,10 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         // Place button
         if type == .buy {
             nextButton.title = LocalizedString("Buy", comment: "") + " " + market.tradingPair.tradingA
-            nextButton.setupPrimary(height: 44, gradientOrientation: .horizontal)
+            nextButton.setPrimaryColor(gradientOrientation: .horizontal)
         } else {
             nextButton.title = LocalizedString("Sell", comment: "") + " " + market.tradingPair.tradingA
-            nextButton.setupRed(height: 44, gradientOrientation: .horizontal)
+            nextButton.setRed(gradientOrientation: .horizontal)
         }
         
         // Scroll view

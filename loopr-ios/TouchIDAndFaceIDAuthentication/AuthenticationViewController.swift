@@ -10,9 +10,9 @@ import UIKit
 
 class AuthenticationViewController: UIViewController {
 
-    var unlockAppButton = UIButton()
-    var unlockAppIconButton = UIButton()
-    var backgrondImageView = UIImageView()
+    var unlockAppButton = UIButton(frame: .zero)
+    var unlockAppIconButton = UIButton(frame: .zero)
+    var backgrondImageView = UIImageView(frame: .zero)
 
     var needNavigate: Bool = false
     
@@ -29,13 +29,16 @@ class AuthenticationViewController: UIViewController {
         view.addSubview(backgrondImageView)
 
         unlockAppButton.title = LocalizedString("Unlock", comment: "")
-        unlockAppButton.setupSecondary()
+        unlockAppButton.setTitleColor(UIColor.white, for: .normal)
+        unlockAppButton.setTitleColor(UIColor.init(white: 0.5, alpha: 1), for: .highlighted)
+        unlockAppButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 16)
         unlockAppButton.addTarget(self, action: #selector(pressedUnlockAppButton), for: .touchUpInside)
         backgrondImageView.addSubview(unlockAppButton)
         
         unlockAppIconButton.setImage(UIImage.init(named: "auth-icon-dark"), for: .normal)
         unlockAppIconButton.addTarget(self, action: #selector(pressedUnlockAppButton), for: .touchUpInside)
         backgrondImageView.addSubview(unlockAppIconButton)
+        
         // TODO: need to consider Face ID
         unlockAppIconButton.isHidden = true
         

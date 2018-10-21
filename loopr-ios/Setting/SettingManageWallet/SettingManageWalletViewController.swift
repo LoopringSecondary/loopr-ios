@@ -12,8 +12,8 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
 
     @IBOutlet weak var tableView: UITableView!
 
-    @IBOutlet weak var importButton: UIButton!
-    @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var importButton: GradientButton!
+    @IBOutlet weak var createButton: GradientButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +37,9 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         tableView.tableHeaderView = headerView
         
         importButton.setTitle(LocalizedString("Import Wallet", comment: ""), for: .normal)
-        importButton.setupSecondary(height: 44)
         importButton.addTarget(self, action: #selector(self.pressedImportButton(_:)), for: .touchUpInside)
 
         createButton.setTitle(LocalizedString("Generate Wallet", comment: ""), for: .normal)
-        createButton.setupSecondary(height: 44)
         createButton.addTarget(self, action: #selector(self.pressedCreateButton(_:)), for: .touchUpInside)
     }
     

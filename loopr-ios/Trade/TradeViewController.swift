@@ -53,7 +53,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     @IBOutlet weak var sellRatioButton: UIButton!
 
     // Place button
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButton: GradientButton!
     
     // Scroll view
     @IBOutlet weak var scrollView: UIScrollView!
@@ -208,7 +208,6 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
 
         // Place button
         nextButton.title = LocalizedString("Next", comment: "")
-        nextButton.setupSecondary(height: 44)
 
         // Scroll view
         scrollView.delegate = self

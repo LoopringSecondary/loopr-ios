@@ -16,8 +16,8 @@ class BackupMnemonicViewController: UIViewController {
     var backgroundImageView1 = UIImageView(frame: .zero)
     var infoTextView: UITextView = UITextView(frame: .zero)
     
-    @IBOutlet weak var skipVerifyNowButton: UIButton!
-    @IBOutlet weak var verifyNowButton: UIButton!
+    @IBOutlet weak var skipVerifyNowButton: GradientButton!
+    @IBOutlet weak var verifyNowButton: GradientButton!
     
     var backgroundImageView2 = UIImageView(frame: .zero)
     var mnemonicCollectionViewController0: MnemonicCollectionViewController!
@@ -81,11 +81,10 @@ class BackupMnemonicViewController: UIViewController {
         addChildViewController(mnemonicCollectionViewController0)
 
         skipVerifyNowButton.title = LocalizedString("Skip_Verification", comment: "Go to VerifyMnemonicViewController")
-        skipVerifyNowButton.setupBlack(height: 44)
+        skipVerifyNowButton.setBlack()  // .setupBlack(height: 44)
         skipVerifyNowButton.isHidden = hideButtons
         
         verifyNowButton.title = LocalizedString("Verify", comment: "Go to VerifyMnemonicViewController")
-        verifyNowButton.setupSecondary(height: 44)
         verifyNowButton.isHidden = hideButtons
         
         NotificationCenter.default.addObserver(self, selector: #selector(userDidTakeScreenshot), name: .UIApplicationUserDidTakeScreenshot, object: nil)

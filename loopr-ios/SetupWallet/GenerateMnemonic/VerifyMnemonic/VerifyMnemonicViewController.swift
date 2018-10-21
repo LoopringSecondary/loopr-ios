@@ -13,11 +13,11 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
 
     var sortedMnemonics: [String] = []
 
-    var infoLabel: UILabel = UILabel()
-    var mnemonicsTextView: UITextView = UITextView()
+    var infoLabel: UILabel = UILabel(frame: .zero)
+    var mnemonicsTextView: UITextView = UITextView(frame: .zero)
 
-    @IBOutlet weak var confirmButton: UIButton!
-    @IBOutlet weak var skipButton: UIButton!
+    @IBOutlet weak var confirmButton: GradientButton!
+    @IBOutlet weak var skipButton: GradientButton!
 
     var mnemonicCollectionViewController: MnemonicBackupModeCollectionViewController!
     
@@ -31,7 +31,7 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
     
     private var firstAppear = true
     
-    var blurVisualEffectView = UIView()
+    var blurVisualEffectView = UIView(frame: .zero)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,11 +90,10 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
         addChildViewController(mnemonicCollectionViewController)
         
         confirmButton.title = LocalizedString("Confirm", comment: "Go to VerifyMnemonicViewController")
-        confirmButton.setupSecondary(height: 44)
         confirmButton.addTarget(self, action: #selector(pressedConfrimButton), for: .touchUpInside)
 
         skipButton.title = LocalizedString("Skip_Verification", comment: "Go to VerifyMnemonicViewController")
-        skipButton.setupBlack(height: 44)
+        skipButton.setBlack()
         skipButton.addTarget(self, action: #selector(pressedSkipButton), for: .touchUpInside)
         
         blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)

@@ -21,7 +21,7 @@ class ConvertETHConfirmViewController: UIViewController {
     @IBOutlet weak var fromInfoLabel: UILabel!
     @IBOutlet weak var gasTipLabel: UILabel!
     @IBOutlet weak var gasInfoLabel: UILabel!
-    @IBOutlet weak var convertButton: UIButton!
+    @IBOutlet weak var convertButton: GradientButton!
     
     @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var cellA: UIView!
@@ -82,7 +82,7 @@ class ConvertETHConfirmViewController: UIViewController {
         gasInfoLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
         gasInfoLabel.theme_textColor = GlobalPicker.textColor
 
-        convertButton.setupPrimary(height: 44)
+        convertButton.setPrimaryColor()
         convertButton.title = LocalizedString("Convert", comment: "")
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))

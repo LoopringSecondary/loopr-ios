@@ -16,7 +16,7 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
     
     // TODO: may remove this NSLayoutConstraint due to the latest UI requirement.
     @IBOutlet weak var unlockButtonBottonLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet weak var unlockButton: UIButton!
+    @IBOutlet weak var unlockButton: GradientButton!
     
     var keyboardHeight: CGFloat = 0.0
     
@@ -30,7 +30,6 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
 
         unlockButton.setTitle(LocalizedString("Unlock", comment: ""), for: .normal)
-        unlockButton.setupSecondary(height: 44)
 
         privateKeyTextView.textContainerInset = UIEdgeInsets.init(top: 15, left: 10, bottom: 15, right: 10)
         privateKeyTextView.cornerRadius = 6
