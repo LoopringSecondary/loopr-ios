@@ -116,7 +116,7 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         dateInfoLabel.theme_textColor = GlobalPicker.textColor
         
         let seperators = [seperatorA, seperatorB, seperatorC, seperatorD, seperatorE, seperatorF, seperatorG]
-        seperators.forEach { $0?.theme_backgroundColor = ColorPicker.cardHighLightColor }
+        seperators.forEach { $0?.theme_backgroundColor = ColorPicker.cardBackgroundColor }
         
         blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         blurVisualEffectView.alpha = 1
