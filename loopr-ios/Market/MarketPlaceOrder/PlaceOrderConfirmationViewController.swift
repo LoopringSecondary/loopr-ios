@@ -71,7 +71,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         
         // Price label
         priceLabel.text = LocalizedString("Price", comment: "")
-        priceLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        priceLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         priceLabel.theme_textColor = GlobalPicker.textLightColor
         
         priceValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
@@ -79,7 +79,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         
         priceTipLabel.textColor = UIColor.fail
         priceTipLabel.text = LocalizedString("Irrational", comment: "")
-        priceTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        priceTipLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         priceTipLabel.theme_textColor = GlobalPicker.textColor
         
         if !validateRational() {
@@ -96,7 +96,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         
         // Trading Fee
         LRCFeeLabel.text = LocalizedString("Trading Fee", comment: "")
-        LRCFeeLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        LRCFeeLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         LRCFeeLabel.theme_textColor = GlobalPicker.textLightColor
         
         LRCFeeValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
@@ -104,7 +104,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
 
         // TTL label
         validLabel.text = LocalizedString("Expiration Time", comment: "")
-        validLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        validLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         validLabel.theme_textColor = GlobalPicker.textLightColor
         
         validValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
@@ -112,7 +112,7 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
         
         // Gas label
         gasTipLabel.text = LocalizedString("GAS_TIP", comment: "")
-        gasTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 12)
+        gasTipLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
         gasTipLabel.theme_textColor = GlobalPicker.textLightColor
 
         let cells = [cellA, cellB, cellD]

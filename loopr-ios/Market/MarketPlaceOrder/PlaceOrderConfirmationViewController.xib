@@ -143,15 +143,15 @@
                                 <constraint firstAttribute="height" constant="50" id="l23-JN-azz"/>
                             </constraints>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Info" translatesAutoresizingMaskIntoConstraints="NO" id="bVe-KF-aaG">
-                            <rect key="frame" x="136" y="372.66666666666669" width="16" height="16"/>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Info-small" translatesAutoresizingMaskIntoConstraints="NO" id="bVe-KF-aaG">
+                            <rect key="frame" x="144" y="372.66666666666669" width="16" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="16" id="NrV-bN-GAe"/>
                                 <constraint firstAttribute="height" constant="16" id="gN3-Ip-dGs"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7WD-PG-TuQ">
-                            <rect key="frame" x="156" y="372" width="42" height="17"/>
+                            <rect key="frame" x="164" y="372" width="42" height="17"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="17" id="nU4-eP-0yO"/>
                             </constraints>
@@ -220,7 +220,7 @@
                         <constraint firstItem="Sjj-eH-DHu" firstAttribute="leading" secondItem="a9Z-KO-IHW" secondAttribute="leading" id="YLY-9y-8No"/>
                         <constraint firstItem="OHS-jw-7B4" firstAttribute="width" secondItem="bsH-Zl-V0b" secondAttribute="width" id="ZZ9-WX-NoV"/>
                         <constraint firstAttribute="trailing" secondItem="cmm-Nj-omT" secondAttribute="trailing" id="aUZ-h3-f8K"/>
-                        <constraint firstItem="7WD-PG-TuQ" firstAttribute="centerX" secondItem="a9Z-KO-IHW" secondAttribute="centerX" id="aZV-Hr-zUF"/>
+                        <constraint firstItem="7WD-PG-TuQ" firstAttribute="centerX" secondItem="a9Z-KO-IHW" secondAttribute="centerX" constant="8" id="aZV-Hr-zUF"/>
                         <constraint firstAttribute="height" constant="524" id="bmP-7d-i3P"/>
                         <constraint firstAttribute="trailing" secondItem="Sjj-eH-DHu" secondAttribute="trailing" id="cPU-0o-bTe"/>
                         <constraint firstAttribute="trailing" secondItem="dho-fi-CNh" secondAttribute="trailing" constant="20" id="dPy-Xf-7jZ"/>
@@ -260,7 +260,7 @@
         </view>
     </objects>
     <resources>
-        <image name="Info" width="16" height="16"/>
+        <image name="Info-small" width="36" height="36"/>
         <image name="Trade-arrow-dark" width="24" height="24"/>
     </resources>
 </document>
