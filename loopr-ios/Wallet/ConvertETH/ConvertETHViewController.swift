@@ -111,12 +111,12 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         
         advancedButton.addTarget(self, action: #selector(pressedAdvancedButton), for: .touchUpInside)
         
-        infoLabel1.font = FontConfigManager.shared.getCharactorFont(size: 11)
-        infoLabel1.theme_textColor = ["#00000099", "#ffffff66"]
+        infoLabel1.font = FontConfigManager.shared.getRegularFont(size: 11)
+        infoLabel1.theme_textColor = GlobalPicker.textLightColor
         infoLabel1.text = LocalizedString("Convert_DES", comment: "")
         
-        infoLabel2.font = FontConfigManager.shared.getCharactorFont(size: 11)
-        infoLabel2.theme_textColor = ["#00000099", "#ffffff66"]
+        infoLabel2.font = FontConfigManager.shared.getRegularFont(size: 11)
+        infoLabel2.theme_textColor = GlobalPicker.textLightColor
         infoLabel2.text = LocalizedString("Convert_TIP", comment: "")
 
         convertButton.title = LocalizedString("Convert", comment: "")
