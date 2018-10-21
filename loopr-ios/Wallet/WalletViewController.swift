@@ -46,7 +46,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.theme_backgroundColor = ColorPicker.backgroundColor
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .organize, target: self, action: #selector(self.pressSwitchWallet(_:)))
+        // self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .organize, target: self, action: #selector(self.pressSwitchWallet(_:)))
         
         dropdownMenu.dataSource = self
         dropdownMenu.delegate = self
@@ -481,7 +481,7 @@ extension WalletViewController: MKDropdownMenuDataSource {
     }
     
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, numberOfRowsInComponent component: Int) -> Int {
-        return 2
+        return 3
     }
 
 }
@@ -513,6 +513,9 @@ extension WalletViewController: MKDropdownMenuDelegate {
         case 1:
             titleLabel.text = LocalizedString("Add Token", comment: "")
             icon = UIImage.init(named: "dropdown-add-token")
+        case 2:
+            titleLabel.text = LocalizedString("Wallet", comment: "")
+            icon = UIImage.init(named: "dropdown-wallet")
         default:
             break
         }
@@ -534,6 +537,10 @@ extension WalletViewController: MKDropdownMenuDelegate {
             self.navigationController?.pushViewController(viewController, animated: true)
         case 1:
             let viewController = AddTokenViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        case 2:
+            let viewController = SettingManageWalletViewController()
             viewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(viewController, animated: true)
         default:
