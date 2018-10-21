@@ -72,7 +72,7 @@ class TradeConfirmationViewController: UIViewController {
         
         // Price label
         priceLabel.text = LocalizedString("Price", comment: "")
-        priceLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        priceLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         priceLabel.theme_textColor = GlobalPicker.textLightColor
 
         priceValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
@@ -93,7 +93,7 @@ class TradeConfirmationViewController: UIViewController {
         
         // Trading Fee
         LRCFeeLabel.text = LocalizedString("Trading Fee", comment: "")
-        LRCFeeLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        LRCFeeLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         LRCFeeLabel.theme_textColor = GlobalPicker.textLightColor
         
         LRCFeeValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
@@ -101,14 +101,14 @@ class TradeConfirmationViewController: UIViewController {
 
         // TTL label
         validLabel.text = LocalizedString("Expiration Time", comment: "")
-        validLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
+        validLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         validLabel.theme_textColor = GlobalPicker.textLightColor
         
         validValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
         validValueLabel.theme_textColor = GlobalPicker.textColor
 
         // Gas label
-        gasTipLabel.font = FontConfigManager.shared.getDigitalFont(size: 12)
+        gasTipLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
         gasTipLabel.theme_textColor = GlobalPicker.textLightColor
         gasTipLabel.text = LocalizedString("GAS_TIP", comment: "")
         
