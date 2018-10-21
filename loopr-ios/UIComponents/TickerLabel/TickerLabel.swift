@@ -28,6 +28,8 @@ class TickerCharacterLabel: UILabel {
 class TickerLabel: UIView {
     
     var font: UIFont = UIFont.systemFont(ofSize: 30)
+    var currencySymbolFont: UIFont = UIFont.systemFont(ofSize: 20)
+    
     @IBInspectable var textColor: UIColor = UIColor.white
     
     // TODO: This may conflict to isOneDirection
@@ -199,7 +201,11 @@ class TickerLabel: UIView {
         let characterLabel = TickerCharacterLabel(frame: characterFrame)
         characterLabel.autoresizingMask = [.flexibleHeight, .flexibleRightMargin]
         characterLabel.textAlignment = .center
-        characterLabel.font = font
+        if characterViews.count == 0 {
+            characterLabel.font = currencySymbolFont
+        } else {
+            characterLabel.font = font
+        }
         characterLabel.textColor = textColor
         characterLabel.shadowColor = shadowColor
         characterLabel.shadowOffset = shadowOffset
@@ -208,7 +214,7 @@ class TickerLabel: UIView {
     }
     
     func removeLastCharacterLabel(_ animated: Bool) {
-        var label: TickerCharacterLabel? = nil
+        var label: TickerCharacterLabel?
         if textAlignment == .right {
             label = characterViews.first
         } else {
@@ -296,6 +302,13 @@ class TickerLabel: UIView {
         
         for (index, label) in characterViews.enumerated() {
             characterFrame.size.height = charactersView.bounds.height
+            // The first character is $ or ¥. The size is
+            if index == 0 {
+                let character: String = (text as NSString).substring(with: NSRange(location: 0, length: 1))
+                let characterHeight = character.size(withAttributes: [NSAttributedStringKey.font: currencySymbolFont]).height
+                // 0.4 is value we have to tune
+                characterFrame.size.height = (charactersView.bounds.height-characterHeight)*0.4 + charactersView.bounds.height
+            }
             
             let characterWidth: CGFloat
             if index >= charWidths.count {
@@ -345,13 +358,14 @@ class TickerLabel: UIView {
         }
     }
     
-    func setFont(_ font: UIFont) {
+    // When call setFont, the characterViews is empty.
+    func setFont(_ font: UIFont, currencySymbolFont: UIFont) {
         self.font = font
+        self.currencySymbolFont = currencySymbolFont
         characterWidth = "8".size(withAttributes: [NSAttributedStringKey.font: font]).width
         for characterView in characterViews {
             characterView.font = font
         }
-        
         setNeedsLayout()
         invalidateIntrinsicContentSize()
     }
