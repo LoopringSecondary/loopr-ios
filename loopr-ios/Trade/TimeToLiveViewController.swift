@@ -13,6 +13,7 @@ class TimeToLiveViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var seperateLine: UIView!
     @IBOutlet weak var pickerView: UIPickerView!
     
     var dismissClosure: (() -> Void)?
@@ -29,8 +30,11 @@ class TimeToLiveViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.modalPresentationStyle = .custom
         // Do any additional setup after loading the view.
+        self.modalPresentationStyle = .custom
+
+        seperateLine.theme_backgroundColor = ColorPicker.cardHighLightColor
+        
         pickerView.delegate = self
         pickerView.dataSource = self
         pickerView.selectRow(orderIntervalTime.intervalValue-1, inComponent: 0, animated: true)
