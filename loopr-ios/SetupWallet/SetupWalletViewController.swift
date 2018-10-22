@@ -26,13 +26,13 @@ class SetupWalletViewController: UIViewController {
         let iconTitlePadding: CGFloat = 30
 
         unlockWalletButton.addTarget(self, action: #selector(unlockWalletButtonPressed), for: .touchUpInside)
-        unlockWalletButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        unlockWalletButton.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 14)
         unlockWalletButton.set(image: UIImage(named: "SetupWallet-generate"), title: LocalizedString("Import Wallet", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         unlockWalletButton.set(image: UIImage(named: "SetupWallet-generate")?.alpha(0.6), title: LocalizedString("Import Wallet", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         unlockWalletButton.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
         
         generateWalletButton.addTarget(self, action: #selector(generateWalletButtonPressed), for: .touchUpInside)
-        generateWalletButton.titleLabel?.font = FontConfigManager.shared.getCharactorFont(size: 14)
+        generateWalletButton.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 14)
         generateWalletButton.set(image: UIImage(named: "SetupWallet-import"), title: LocalizedString("Generate Wallet", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .normal)
         generateWalletButton.set(image: UIImage(named: "SetupWallet-import")?.alpha(0.6), title: LocalizedString("Generate Wallet", comment: ""), titlePosition: .bottom, additionalSpacing: iconTitlePadding, state: .highlighted)
         generateWalletButton.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
