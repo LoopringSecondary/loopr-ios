@@ -47,8 +47,6 @@
 		943C1CB220CE26CE008A8CED /* LoginResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943C1CB020CE26CE008A8CED /* LoginResultViewController.swift */; };
 		943C1CB320CE26CE008A8CED /* LoginResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943C1CB120CE26CE008A8CED /* LoginResultViewController.xib */; };
 		943C657A209EEAB6005D6948 /* PlaceOrderDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943C6579209EEAB6005D6948 /* PlaceOrderDataManagerTests.swift */; };
-		9445D54420BA4F63006045F6 /* PriceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9445D54320BA4F63006045F6 /* PriceButton.swift */; };
-		9445D54620BA4FB3006045F6 /* PriceStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9445D54520BA4FB3006045F6 /* PriceStackView.swift */; };
 		9457416E20D0D23400110CFD /* CancelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9457416D20D0D23400110CFD /* CancelType.swift */; };
 		9457417020D0E9CD00110CFD /* CancelOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9457416F20D0E9CD00110CFD /* CancelOrder.swift */; };
 		945800212058FEB500E08DEF /* tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = 945800202058FEB500E08DEF /* tokens.json */; };
@@ -542,8 +540,6 @@
 		943C1CB020CE26CE008A8CED /* LoginResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResultViewController.swift; sourceTree = "<group>"; };
 		943C1CB120CE26CE008A8CED /* LoginResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginResultViewController.xib; sourceTree = "<group>"; };
 		943C6579209EEAB6005D6948 /* PlaceOrderDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrderDataManagerTests.swift; sourceTree = "<group>"; };
-		9445D54320BA4F63006045F6 /* PriceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceButton.swift; sourceTree = "<group>"; };
-		9445D54520BA4FB3006045F6 /* PriceStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceStackView.swift; sourceTree = "<group>"; };
 		9457416D20D0D23400110CFD /* CancelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelType.swift; sourceTree = "<group>"; };
 		9457416F20D0E9CD00110CFD /* CancelOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelOrder.swift; sourceTree = "<group>"; };
 		945800202058FEB500E08DEF /* tokens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tokens.json; sourceTree = "<group>"; };
@@ -1057,15 +1053,6 @@
 				943C1CB120CE26CE008A8CED /* LoginResultViewController.xib */,
 			);
 			path = AuthorizeLogin;
-			sourceTree = "<group>";
-		};
-		9445D54220BA4F3F006045F6 /* Price */ = {
-			isa = PBXGroup;
-			children = (
-				9445D54320BA4F63006045F6 /* PriceButton.swift */,
-				9445D54520BA4FB3006045F6 /* PriceStackView.swift */,
-			);
-			path = Price;
 			sourceTree = "<group>";
 		};
 		94A1C0D92128122700FD3A1F /* SettingPartner */ = {
@@ -1876,7 +1863,6 @@
 			children = (
 				AC0CD58220D2294D00ABB7BA /* TabBarItem */,
 				94231DE920BD66F900A4FDC3 /* PaddingLabel */,
-				9445D54220BA4F3F006045F6 /* Price */,
 				AC76E46E2047F1AE008BA229 /* CircleChart */,
 				ACE6F71A204210E80039273D /* DashedLineView */,
 				AC4141F120352C130089861D /* SwipeViewController */,
@@ -2846,7 +2832,6 @@
 				AC8866A4217C2D5500815DD1 /* GradientButton.swift in Sources */,
 				AC31CE17205A121000A30335 /* NumericKeyboardProtocol.swift in Sources */,
 				AC31CE142057B5A400A30335 /* TradeReviewViewController.swift in Sources */,
-				9445D54620BA4FB3006045F6 /* PriceStackView.swift in Sources */,
 				AC1B6D7E2130FB510026C1B2 /* Bytes+SecureRandom.swift in Sources */,
 				AC4F601620773E9D00F1D954 /* EthTypeEncoder.swift in Sources */,
 				ACBA47EE207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.swift in Sources */,
@@ -2991,7 +2976,6 @@
 				AC4141EF203524280089861D /* MarketSwipeViewController.swift in Sources */,
 				AC06193E208417AF0060F416 /* QRCodeMethod.swift in Sources */,
 				AC2ACA5E21006DB8009C77E7 /* UIViewController+NavigationBar.swift in Sources */,
-				9445D54420BA4F63006045F6 /* PriceButton.swift in Sources */,
 				ACB5DD98202D5A8400140A09 /* NumericKeyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
