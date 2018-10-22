@@ -26,13 +26,9 @@ class MarketDetailViewController: UIViewController {
         setBackButton()
         setupMarket()
         updateHistoryButton()
-        if ColorTheme.current == .green {
-            buyButton.setSecondaryColor()
-            sellButton.setPrimaryColor(gradientOrientation: .horizontal)
-        } else {
-            buyButton.setPrimaryColor()
-            sellButton.setRed(gradientOrientation: .horizontal)
-        }
+
+        buyButton.setGreen()
+        sellButton.setRed()
         
         addChildViewController(marketDetailSwipeViewController)
         view.addSubview(marketDetailSwipeViewController.view)

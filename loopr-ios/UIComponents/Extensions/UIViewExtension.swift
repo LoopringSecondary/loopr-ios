@@ -11,6 +11,7 @@ import UIKit
 typealias GradientPoints = (startPoint: CGPoint, endPoint: CGPoint)
 
 enum GradientOrientation {
+    case bottomLeftTopRight
     case topRightBottomLeft
     case topLeftBottomRight
     case horizontal
@@ -26,6 +27,8 @@ enum GradientOrientation {
     
     var points: GradientPoints {
         switch self {
+        case .bottomLeftTopRight:
+            return (CGPoint(x: 0.0, y: 1), CGPoint(x: 1, y: 0.0))
         case .topRightBottomLeft:
             return (CGPoint(x: 0.0, y: 0.87), CGPoint(x: 0.87, y: 0.0))
         case .topLeftBottomRight:

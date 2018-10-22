@@ -51,6 +51,7 @@ class GenerateWalletEnterNameViewController: UIViewController, UITextFieldDelega
         errorInfoLabel.textColor = UIColor.fail
         errorInfoLabel.textAlignment = .center
         errorInfoLabel.alpha = 0.0
+        errorInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         view.addSubview(errorInfoLabel)
     }
 

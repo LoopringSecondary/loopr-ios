@@ -61,10 +61,11 @@ class AssetSwipeViewController: SwipeViewController {
         // Receive & Send button
         receiveButton.setTitle(LocalizedString("Receive", comment: "") + " " + (asset?.symbol ?? ""), for: .normal)
         sendButton.setTitle(LocalizedString("Send", comment: "") + " " + (asset?.symbol ?? ""), for: .normal)
+
         if ColorTheme.current == .green {
-            sendButton.setPrimaryColor(gradientOrientation: .horizontal)
+            sendButton.setPrimaryColor()
         } else {
-            receiveButton.setPrimaryColor(gradientOrientation: .horizontal)
+            receiveButton.setPrimaryColor()
         }
         
         if Themes.isDark() {
