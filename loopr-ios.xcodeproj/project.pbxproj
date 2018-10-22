@@ -439,6 +439,7 @@
 		ACE58B8520BE796A005BC1C8 /* VerifyMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE58B8320BE796A005BC1C8 /* VerifyMnemonicViewController.swift */; };
 		ACE58B8620BE796A005BC1C8 /* VerifyMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE58B8420BE796A005BC1C8 /* VerifyMnemonicViewController.xib */; };
 		ACE5BFA720466EFD005D75DD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ACE5BFA920466EFD005D75DD /* Localizable.strings */; };
+		ACE6232A217D979A007A60FE /* GradientOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE62329217D979A007A60FE /* GradientOrientation.swift */; };
 		ACE65E3E2071C6FA001EE499 /* Web3SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE65E3D2071C6FA001EE499 /* Web3SwiftTests.swift */; };
 		ACE65E412071F875001EE499 /* MnemonicCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE65E3F2071F875001EE499 /* MnemonicCollectionViewController.swift */; };
 		ACE65E422071F875001EE499 /* MnemonicCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE65E402071F875001EE499 /* MnemonicCollectionViewController.xib */; };
@@ -941,6 +942,7 @@
 		ACE5BFA1204543CA005D75DD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		ACE5BFA820466EFD005D75DD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ACE5BFAA20466F05005D75DD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		ACE62329217D979A007A60FE /* GradientOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientOrientation.swift; sourceTree = "<group>"; };
 		ACE65E3D2071C6FA001EE499 /* Web3SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web3SwiftTests.swift; sourceTree = "<group>"; };
 		ACE65E3F2071F875001EE499 /* MnemonicCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicCollectionViewController.swift; sourceTree = "<group>"; };
 		ACE65E402071F875001EE499 /* MnemonicCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicCollectionViewController.xib; sourceTree = "<group>"; };
@@ -1876,6 +1878,7 @@
 				ACE7742A20AA176A002CD727 /* WebViewController */,
 				AC70E84D20683C7500451047 /* IconView.swift */,
 				AC9089F2214D7ABA00F421F1 /* SplashImageView.swift */,
+				ACE62329217D979A007A60FE /* GradientOrientation.swift */,
 				AC8866A3217C2D5500815DD1 /* GradientButton.swift */,
 				AC2ACA5B21005C17009C77E7 /* UIButton+AlignedIcon.swift */,
 				ACB8AD88207F299700B478D6 /* UIViewController+BackButton.swift */,
@@ -2932,6 +2935,7 @@
 				ACB41A6F20B54BB300A92C9D /* AuthenticationViewController.swift in Sources */,
 				ACEC978220AD6165003F9DEB /* P2POrderHistoryDataManager.swift in Sources */,
 				AC952A142053A84800C78562 /* OrderHistoryViewController.swift in Sources */,
+				ACE6232A217D979A007A60FE /* GradientOrientation.swift in Sources */,
 				ACFEFEA220C3792200013921 /* CoreDataManager.swift in Sources */,
 				AC99CF4E2083E4AF000AE4BD /* MnemonicSelectAddressViewController.swift in Sources */,
 				ACB6A19F20965D94004C64BC /* QRCodeSaveToAlbum.swift in Sources */,
