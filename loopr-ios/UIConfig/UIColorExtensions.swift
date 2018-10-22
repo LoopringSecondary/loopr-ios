@@ -39,14 +39,17 @@ extension UIColor {
         return UIColor(named: "ButtonBackground")!
     }
     
+    // Red color theme and blue color theme are not used.
     class var primary: [UIColor] {
         switch ColorTheme.current {
         case .red:
             return [UIColor.init(rgba: "#5ED279"), UIColor.init(rgba: "#2AAE49")]
         case .yellow:
-            return [UIColor.init(rgba: "#5ED279"), UIColor.init(rgba: "#2AAE49")]
+            // green color
+            return [UIColor.init(rgba: "#5ED279"), UIColor.init(rgba: "#46C767")]
         case .green:
-            return [UIColor.init(rgba: "#D53535"), UIColor.init(rgba: "#DD5252")]
+            // red color
+            return [UIColor.init(rgba: "#DD5252"), UIColor.init(rgba: "#E84F47")]
         case .blue:
             return [UIColor.init(rgba: "#5ED279"), UIColor.init(rgba: "#2AAE49")]
         }
@@ -57,9 +60,11 @@ extension UIColor {
         case .red:
             return [UIColor.init(rgba: "#5ED279"), UIColor.init(rgba: "#2AAE49")]
         case .yellow:
-            return [UIColor.init(rgba: "#5ED279"), UIColor.init(rgba: "#2AAE49")]
+            // green color
+            return [UIColor.init(rgba: "#3FBD5C"), UIColor.init(rgba: "#21A33F")]
         case .green:
-            return [UIColor.init(rgba: "#D53535"), UIColor.init(rgba: "#DD5252")]
+            // red color
+            return [UIColor.init(rgba: "#EC3D3D"), UIColor.init(rgba: "#D83931")]
         case .blue:
             return [UIColor.init(rgba: "#5ED279"), UIColor.init(rgba: "#2AAE49")]
         }
@@ -70,7 +75,6 @@ extension UIColor {
         case .red:
             return [UIColor(rgba: "#CE4CE6"), UIColor(rgba: "#FA4A6F")]
         case .yellow:
-            // Updated at 09-07-2018 (ruby)
             return [UIColor(rgba: "#EFC90C"), UIColor(rgba: "#FFB528")]
         case .green:
             return [UIColor(rgba: "#38B170"), UIColor(rgba: "#159763")]
@@ -79,17 +83,14 @@ extension UIColor {
         }
     }
     
-    // TODO: Update the hightlighted color
     class var secondaryHighlighted: [UIColor] {
         switch ColorTheme.current {
         case .red:
             return [UIColor(rgba: "#CE4CE6"), UIColor(rgba: "#FA4A6F")]
         case .yellow:
-            // Updated at 09-07-2018 (ruby)
-            // TODO: Color is not correct
-            return [UIColor(rgba: "#F4A000"), UIColor(rgba: "#DB8F00")]
+            return [UIColor(rgba: "#F8BE1C"), UIColor(rgba: "#FFA928")]
         case .green:
-            return [UIColor(rgba: "#38B170"), UIColor(rgba: "#159763")]
+            return [UIColor(rgba: "#159763"), UIColor(rgba: "#00965E")]
         case .blue:
             return [UIColor(rgba: "#5ED279"), UIColor(rgba: "#2AAE49")]
         }
@@ -189,7 +190,7 @@ extension UIColor {
         return UIColor(named: "Color-text2")!
     }
     
-    // #DD5252
+    // #E84F47
     class var fail: UIColor {
         return UIColor(named: "Color-red")!
     }
@@ -199,7 +200,7 @@ extension UIColor {
         return UIColor(named: "Color-yellow")!
     }
 
-    // #01B97F
+    // #46C767
     class var success: UIColor {
         return UIColor(named: "Color-green")!
     }

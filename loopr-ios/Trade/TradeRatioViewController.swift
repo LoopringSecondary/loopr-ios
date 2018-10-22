@@ -13,6 +13,7 @@ class TradeRatioViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var seperateLine: UIView!
     @IBOutlet weak var pickerView: UIPickerView!
     
     var sellRatio: Double = 1
@@ -27,7 +28,8 @@ class TradeRatioViewController: UIViewController, UIPickerViewDelegate, UIPicker
         // Do any additional setup after loading the view.
         self.modalPresentationStyle = .custom
         containerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
-        
+        seperateLine.theme_backgroundColor = ColorPicker.cardHighLightColor
+
         pickerView.delegate = self
         pickerView.dataSource = self
         titleArray = Array(stride(from: 100, through: 5, by: -5))
