@@ -206,6 +206,13 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         sellRatioValueLabel.theme_textColor = GlobalPicker.textColor
         sellRatioValueLabel.text = "100%"
 
+        sellRatioValueLabel.isUserInteractionEnabled = true
+        let sellRatioValueLabelTap = UITapGestureRecognizer(target: self, action: #selector(pressedRatioButton))
+        sellRatioValueLabelTap.numberOfTapsRequired = 1
+        sellRatioValueLabel.addGestureRecognizer(sellRatioValueLabelTap)
+        
+        sellRatioButton.addTarget(self, action: #selector(pressedRatioButton), for: .touchUpInside)
+        
         // Place button
         nextButton.title = LocalizedString("Next", comment: "")
 
@@ -432,14 +439,16 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         }
     }
     
-    @IBAction func pressedRatioButton(_ sender: UIButton) {
+    @objc func pressedRatioButton() {
         let parentView = self.parent!.view!
         parentView.alpha = 0.25
         let vc = TradeRatioViewController()
+        // vc.sellRatio = TradeDataManager.shared.sellRatio
         vc.dismissClosure = {
             parentView.alpha = 1
             TradeDataManager.shared.sellRatio = vc.sellRatio
-            self.sellRatioValueLabel.text = "\(vc.sellRatio * 100)" + NumberFormatter().percentSymbol
+            let displaySellRatio = (vc.sellRatio * 100.0).withCommas(0)
+            self.sellRatioValueLabel.text = "\(displaySellRatio)" + NumberFormatter().percentSymbol
         }
         vc.parentNavController = self.navigationController
         vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
