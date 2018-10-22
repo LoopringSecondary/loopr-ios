@@ -296,10 +296,17 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 vc.parentNavController = self.navigationController
                 vc.order = TradeDataManager.shared.orders[1]
                 self.navigationController?.pushViewController(vc, animated: true)
+
             case .address:
                 let vc = SendAssetViewController()
                 vc.address = valueSent
                 vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+
+            case .keystore, .mnemonic, .privateKey:
+                let vc = UnlockWalletSwipeViewController()
+                vc.hidesBottomBarWhenPushed = true
+                vc.setResultOfScanningQRCode(valueSent: valueSent, type: type)
                 self.navigationController?.pushViewController(vc, animated: true)
             default:
                 return
@@ -445,7 +452,7 @@ extension WalletViewController: WalletButtonTableViewCellDelegate {
 
     func navigationToScanViewController() {
         let viewController = ScanQRCodeViewController()
-        viewController.expectedQRCodeTypes = [.submitOrder, .login, .cancelOrder, .convert, .approve, .p2pOrder, .address]
+        viewController.expectedQRCodeTypes = [.mnemonic, .keystore, .privateKey, .submitOrder, .login, .cancelOrder, .convert, .approve, .p2pOrder, .address]
         viewController.delegate = self
         viewController.shouldPop = false
         viewController.hidesBottomBarWhenPushed = true
