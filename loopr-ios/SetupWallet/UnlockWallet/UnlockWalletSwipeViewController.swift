@@ -57,28 +57,29 @@ class UnlockWalletSwipeViewController: SwipeViewController, QRCodeScanProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
         if let valueToDisplay = valueFromQRCodeScanning {
             if typeFromQRCodeScanning == QRCodeType.privateKey {
                 let controller = self.viewControllers[2] as! PrivateKeyViewController
                 controller.privateKeyTextView.text = valueToDisplay
                 controller.privateKeyTextView.theme_textColor = GlobalPicker.textColor
-                self.swipeView.jump(to: 2, animated: true)
+                self.swipeView.jump(to: 2, animated: false)
             } else if typeFromQRCodeScanning == QRCodeType.keystore {
                 let controller = self.viewControllers[1] as! UnlockKeystoreViewController
                 controller.keystoreContentTextView.text = valueToDisplay
                 controller.keystoreContentTextView.theme_textColor = GlobalPicker.textColor
-                self.swipeView.jump(to: 1, animated: true)
+                self.swipeView.jump(to: 1, animated: false)
             } else if typeFromQRCodeScanning == QRCodeType.mnemonic {
                 let controller = self.viewControllers[0] as! MnemonicViewController
                 controller.mnemonicWordTextView.text = valueToDisplay
                 controller.mnemonicWordTextView.theme_textColor = GlobalPicker.textColor
-                self.swipeView.jump(to: 0, animated: true)
+                self.swipeView.jump(to: 0, animated: false)
             }
             self.view.setNeedsDisplay()
         }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     @objc func pressScanButton(_ button: UIBarButtonItem) {
