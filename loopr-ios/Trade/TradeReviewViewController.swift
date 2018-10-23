@@ -41,6 +41,10 @@ class TradeReviewViewController: UIViewController {
     @IBOutlet weak var urlLabel: UILabel!
     @IBOutlet weak var logoImageView: UIImageView!
     
+    @IBOutlet weak var seperateLineA: UIView!
+    @IBOutlet weak var seperateLineB: UIView!
+    @IBOutlet weak var seperateLineC: UIView!
+    
     var tokenSView: TradeViewOnlyViewController = TradeViewOnlyViewController()
     var tokenBView: TradeViewOnlyViewController = TradeViewOnlyViewController()
 
@@ -59,6 +63,10 @@ class TradeReviewViewController: UIViewController {
         self.view.theme_backgroundColor = ColorPicker.backgroundColor
         self.navigationItem.title = LocalizedString("Order Detail", comment: "")
         
+        self.seperateLineA.theme_backgroundColor = ColorPicker.cardBackgroundColor
+        self.seperateLineB.theme_backgroundColor = ColorPicker.cardBackgroundColor
+        self.seperateLineC.theme_backgroundColor = ColorPicker.cardBackgroundColor
+
         // TokenView
         tokenSView.view.frame = CGRect(x: 0, y: 0, width: tokenS.frame.width, height: tokenS.frame.height)
         tokenS.addSubview(tokenSView.view)
@@ -69,13 +77,19 @@ class TradeReviewViewController: UIViewController {
         tokenBView.view.bindFrameToAnotherView(anotherView: tokenB)
         
         // Labels
-        statusTipLabel.setTitleCharFont()
+        statusTipLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
+        statusTipLabel.theme_textColor = GlobalPicker.textLightColor
         statusTipLabel.text = LocalizedString("Status", comment: "")
-        statusInfoLabel.setTitleDigitFont()
-        
-        validTipLabel.setTitleCharFont()
+
+        statusInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
+        statusInfoLabel.theme_textColor = GlobalPicker.textColor
+
+        validTipLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
+        validTipLabel.theme_textColor = GlobalPicker.textLightColor
         validTipLabel.text = LocalizedString("Time to Live", comment: "")
-        validInfoLabel.setTitleDigitFont()
+
+        validInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
+        validInfoLabel.theme_textColor = GlobalPicker.textColor
         
         if let order = self.order {
             setupShareView(order: order)
