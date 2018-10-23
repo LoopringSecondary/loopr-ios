@@ -210,7 +210,7 @@ class TradeConfirmationViewController: UIViewController {
         tokenSView.update(type: .sell, symbol: order.tokenSell, amount: order.amountSell)
         let price = order.amountBuy / order.amountSell
         let value = order.side == "buy" ? 1 / price : price
-        priceValueLabel.text = "\(value.withCommas()) \(order.market)"
+        priceValueLabel.text = "\(value.withCommas(8)) \(order.market)"
         if let price = PriceDataManager.shared.getPrice(of: "LRC") {
             let total = (price * order.lrcFee).currency
             LRCFeeValueLabel.text = "\(order.lrcFee.withCommas(3)) LRC ≈ \(total)"

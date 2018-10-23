@@ -225,10 +225,10 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
         let price = order.originalOrder.amountBuy / order.originalOrder.amountSell
         if order.originalOrder.side.lowercased() == "buy" {
             let value = 1 / price
-            amountInfoLabel.text = "\(value.withCommas(12).trailingZero()) \(order.originalOrder.tokenBuy)/\(order.originalOrder.tokenSell)"
+            amountInfoLabel.text = "\(value.withCommas(8).trailingZero()) \(order.originalOrder.tokenBuy)/\(order.originalOrder.tokenSell)"
         } else {
             let value = price
-            amountInfoLabel.text = "\(value.withCommas(12).trailingZero()) \(order.originalOrder.tokenSell)/\(order.originalOrder.tokenBuy)"
+            amountInfoLabel.text = "\(value.withCommas(8).trailingZero()) \(order.originalOrder.tokenSell)/\(order.originalOrder.tokenBuy)"
         }
     }
     

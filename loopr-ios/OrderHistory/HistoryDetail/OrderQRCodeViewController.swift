@@ -114,7 +114,14 @@ class OrderQRCodeViewController: UIViewController {
         
         priceBuyLabel.font = FontConfigManager.shared.getCharactorFont(size: 11)
         priceBuyLabel.theme_textColor = GlobalPicker.contrastTextColor
-        priceBuyLabel.text = "\(price.withCommas()) \(order.tokenBuy)"
+        var lengthPriceBuy = 6
+        if price > 100 {
+            lengthPriceBuy = 4
+        } else if price < 1 {
+            // 8 is too long
+            lengthPriceBuy = 6
+        }
+        priceBuyLabel.text = "\(price.withCommas(lengthPriceBuy)) \(order.tokenBuy)"
         
         unitSellLabel.font = FontConfigManager.shared.getCharactorFont(size: 11)
         unitSellLabel.theme_textColor = GlobalPicker.contrastTextLightColor
@@ -122,7 +129,14 @@ class OrderQRCodeViewController: UIViewController {
         
         priceSellLabel.font = FontConfigManager.shared.getCharactorFont(size: 11)
         priceSellLabel.theme_textColor = GlobalPicker.contrastTextColor
-        priceSellLabel.text = "\((1/price).withCommas()) \(order.tokenSell)"
+        var lengthPriceSell = 6
+        if (1/price) > 100 {
+            lengthPriceSell = 4
+        } else if (1/price) < 1 {
+            // 8 is too long
+            lengthPriceSell = 6
+        }
+        priceSellLabel.text = "\((1/price).withCommas(lengthPriceSell)) \(order.tokenSell)"
         
         buyEqualLabel.font = FontConfigManager.shared.getCharactorFont(size: 11)
         buyEqualLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
