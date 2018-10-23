@@ -35,7 +35,7 @@ class P2POrderHistoryViewController: UIViewController, UITableViewDelegate, UITa
         setBackButton()
         historyTableView.dataSource = self
         historyTableView.delegate = self
-        historyTableView.tableFooterView = UIView()
+        historyTableView.tableFooterView = UIView(frame: .zero)
         historyTableView.separatorStyle = .none
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 8))
         headerView.theme_backgroundColor = ColorPicker.backgroundColor

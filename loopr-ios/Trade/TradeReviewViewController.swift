@@ -142,7 +142,7 @@ class TradeReviewViewController: UIViewController {
         
         priceBuyLabel.font = FontConfigManager.shared.getCharactorFont(size: 11)
         priceBuyLabel.theme_textColor = GlobalPicker.contrastTextColor
-        priceBuyLabel.text = "\(price.withCommas()) \(order.tokenBuy)"
+        priceBuyLabel.text = "\(price.withCommas(6)) \(order.tokenBuy)"
         
         unitSellLabel.font = FontConfigManager.shared.getCharactorFont(size: 11)
         unitSellLabel.theme_textColor = GlobalPicker.contrastTextLightColor
@@ -150,7 +150,7 @@ class TradeReviewViewController: UIViewController {
         
         priceSellLabel.font = FontConfigManager.shared.getCharactorFont(size: 11)
         priceSellLabel.theme_textColor = GlobalPicker.contrastTextColor
-        priceSellLabel.text = "\((1/price).withCommas()) \(order.tokenSell)"
+        priceSellLabel.text = "\((1/price).withCommas(6)) \(order.tokenSell)"
         
         buyEqualLabel.font = FontConfigManager.shared.getCharactorFont(size: 11)
         buyEqualLabel.theme_textColor = GlobalPicker.contrastTextDarkColor
