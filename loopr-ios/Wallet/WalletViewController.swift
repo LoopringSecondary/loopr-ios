@@ -173,6 +173,13 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                             self.displayUpdateNotification()
                         }
                     })
+                    
+                    // Get user config
+                    AppServiceManager.shared.getUserConfig(completion: { (shouldDisplayUpdateNotification) in
+                        AppServiceManager.shared.updateUserConfig(completion: { (_) in
+                            
+                        })
+                    })
                 }
             }
             self.assetTableView.reloadData()
