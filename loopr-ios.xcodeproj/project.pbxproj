@@ -146,6 +146,7 @@
 		AC1B6D7E2130FB510026C1B2 /* Bytes+SecureRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1B6D752130FB510026C1B2 /* Bytes+SecureRandom.swift */; };
 		AC1B6D7F2130FB510026C1B2 /* Secp256k1Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1B6D762130FB510026C1B2 /* Secp256k1Helper.swift */; };
 		AC1B6D802130FB510026C1B2 /* KeystoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1B6D772130FB510026C1B2 /* KeystoreFactory.swift */; };
+		AC1BDECB2184E149002CF4ED /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1BDECA2184E149002CF4ED /* LocalNotificationManager.swift */; };
 		AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */; };
 		AC1E4BBC204B420D00C6B1FA /* KeystoreIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBB204B420D00C6B1FA /* KeystoreIntegrationTests.swift */; };
 		AC1E4BC0204B51AB00C6B1FA /* ImportWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */; };
@@ -640,6 +641,7 @@
 		AC1B6D752130FB510026C1B2 /* Bytes+SecureRandom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bytes+SecureRandom.swift"; sourceTree = "<group>"; };
 		AC1B6D762130FB510026C1B2 /* Secp256k1Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secp256k1Helper.swift; sourceTree = "<group>"; };
 		AC1B6D772130FB510026C1B2 /* KeystoreFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeystoreFactory.swift; sourceTree = "<group>"; };
+		AC1BDECA2184E149002CF4ED /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
 		AC1E4BBB204B420D00C6B1FA /* KeystoreIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeystoreIntegrationTests.swift; sourceTree = "<group>"; };
 		AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletTests.swift; sourceTree = "<group>"; };
@@ -1829,6 +1831,7 @@
 			children = (
 				ACACB8B4213B90BF00F5ACC5 /* PushNotificationDeviceDataManager.swift */,
 				AC7BC855214386AF004204D3 /* PushNotificationSettingManager.swift */,
+				AC1BDECA2184E149002CF4ED /* LocalNotificationManager.swift */,
 			);
 			path = PushNotification;
 			sourceTree = "<group>";
@@ -2718,6 +2721,7 @@
 				943C1CB220CE26CE008A8CED /* LoginResultViewController.swift in Sources */,
 				ACB5DD9C202D5B8000140A09 /* NumericKeyboardCell.swift in Sources */,
 				AC5E0991205F256500801738 /* AddTokenViewController.swift in Sources */,
+				AC1BDECB2184E149002CF4ED /* LocalNotificationManager.swift in Sources */,
 				AC31B949204A8DF400B16155 /* Scrypt.swift in Sources */,
 				AC8DBC6D20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift in Sources */,
 				ACB746E52043C5F5006C2BF5 /* QRCodeViewController.swift in Sources */,

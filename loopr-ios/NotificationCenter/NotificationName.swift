@@ -22,5 +22,8 @@ extension Notification.Name {
     static let needRelaunchCurrentAppWallet = Notification.Name("needRelaunchCurrentAppWallet")
 
     // Need to update UI
-    static let languageChanged = NSNotification.Name(rawValue: "languageChanged")
+    static let languageChanged = NSNotification.Name("languageChanged")
+    
+    // Publish a local notification to MainTabController
+    static let publishLocalNotificationToMainTabController = NSNotification.Name("publishLocalNotificationToMainTabController")
 }
