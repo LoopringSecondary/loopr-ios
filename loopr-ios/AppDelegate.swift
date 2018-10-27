@@ -25,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         Fabric.with([Crashlytics.self, Answers.self])
         
+        // Fetch data in the background fetch mode.
+        UIApplication.shared.setMinimumBackgroundFetchInterval(10)
+        
         FontConfigManager.shared.setup()
         
         Themes.restoreLastTheme()
@@ -233,6 +236,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Answers.logCustomEvent(withName: "didFailToRegisterForRemoteNotificationsWithError v1",
                                customAttributes: [
                                "error": error.localizedDescription])
+    }
+    
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        Answers.logCustomEvent(withName: "application performFetchWithCompletionHandler v1",
+                               customAttributes: [:])
+
+        print("hello world.")
+        // Example:
+        LocalNotificationManager.shared.publishNotification()
+
+        completionHandler(.newData)
     }
 
 }

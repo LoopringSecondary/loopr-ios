@@ -9,6 +9,7 @@
 import UIKit
 import ESTabBarController_swift
 import UserNotifications
+import Crashlytics
 
 class MainTabController: ESTabBarController, UNUserNotificationCenterDelegate {
     
@@ -35,7 +36,6 @@ class MainTabController: ESTabBarController, UNUserNotificationCenterDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(languageChangedReceivedNotification), name: .languageChanged, object: nil)
 
         NotificationCenter.default.addObserver(self, selector: #selector(localNotificationReceived), name: .publishLocalNotificationToMainTabController, object: nil)
-
     }
     
     override func viewWillLayoutSubviews() {
@@ -52,9 +52,6 @@ class MainTabController: ESTabBarController, UNUserNotificationCenterDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        // Example:
-        LocalNotificationManager.shared.publishNotification()
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,6 +84,9 @@ extension MainTabController {
         
         //displaying the ios local notification when app is in foreground
         completionHandler([.alert, .badge, .sound])
+        
+        Answers.logCustomEvent(withName: "userNotificationCenter v1",
+                               customAttributes: [:])
     }
     
     @objc func localNotificationReceived() {
@@ -94,7 +94,7 @@ extension MainTabController {
         let content = UNMutableNotificationContent()
         
         //adding title, subtitle, body and badge
-        content.title = "Hey this is Simplified iOS"
+        content.title = "Hey"
         content.body = "We are learning about iOS Local Notification"
         content.badge = 1
         
@@ -111,5 +111,6 @@ extension MainTabController {
         UNUserNotificationCenter.current().add(request) { (error) in
             print(error)
         }
+
     }
 }
