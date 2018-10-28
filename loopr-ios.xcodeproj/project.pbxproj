@@ -644,6 +644,7 @@
 		AC1B6D772130FB510026C1B2 /* KeystoreFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeystoreFactory.swift; sourceTree = "<group>"; };
 		AC1BDECA2184E149002CF4ED /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		AC1BDECC218523BB002CF4ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AC1BDECE21853A9F002CF4ED /* UP Wallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "UP Wallet.entitlements"; sourceTree = "<group>"; };
 		AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
 		AC1E4BBB204B420D00C6B1FA /* KeystoreIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeystoreIntegrationTests.swift; sourceTree = "<group>"; };
 		AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletTests.swift; sourceTree = "<group>"; };
@@ -981,7 +982,6 @@
 		ACEC977E20AD57F3003F9DEB /* P2POrderHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = P2POrderHistoryViewController.xib; sourceTree = "<group>"; };
 		ACEC978120AD6165003F9DEB /* P2POrderHistoryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P2POrderHistoryDataManager.swift; sourceTree = "<group>"; };
 		ACF06A05204C736A00C3FF86 /* CreateMnemonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMnemonicTests.swift; sourceTree = "<group>"; };
-		ACFD5FB1216F06D500E161EE /* UP Wallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "UP Wallet.entitlements"; sourceTree = "<group>"; };
 		ACFD5FB22171B8AB00E161EE /* UpdatedOrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedOrderHistoryViewController.swift; sourceTree = "<group>"; };
 		ACFD5FB32171B8AB00E161EE /* UpdatedOrderHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedOrderHistoryViewController.xib; sourceTree = "<group>"; };
 		ACFD5FB621740F7400E161EE /* OrderIntervalTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderIntervalTime.swift; sourceTree = "<group>"; };
@@ -1577,7 +1577,7 @@
 		AC798E412022B93A0071D477 /* loopr-ios */ = {
 			isa = PBXGroup;
 			children = (
-				ACFD5FB1216F06D500E161EE /* UP Wallet.entitlements */,
+				AC1BDECE21853A9F002CF4ED /* UP Wallet.entitlements */,
 				ACCC7EA120828D2E008E58BA /* loopr-ios-sdk */,
 				AC798E422022B93A0071D477 /* AppDelegate.swift */,
 				ACFEFE9D20C3436000013921 /* loopr_ios.xcdatamodeld */,
@@ -3190,7 +3190,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = leaf.prod.app;
+				PRODUCT_BUNDLE_IDENTIFIER = leaf.prod.app.vivwallet;
 				PRODUCT_MODULE_NAME = loopr_ios;
 				PRODUCT_NAME = vivwallet;
 				PROVISIONING_PROFILE = "";
@@ -3327,7 +3327,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = leaf.prod.app;
+				PRODUCT_BUNDLE_IDENTIFIER = leaf.prod.app.loopr;
 				PRODUCT_MODULE_NAME = loopr_ios;
 				PRODUCT_NAME = Loopr;
 				PROVISIONING_PROFILE = "";
