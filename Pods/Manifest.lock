@@ -14,6 +14,9 @@ PODS:
     - FirebaseAnalytics (= 5.1.2)
   - Firebase/CoreOnly (5.8.0):
     - FirebaseCore (= 5.1.3)
+  - Firebase/Messaging (5.8.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.1.2)
   - FirebaseAnalytics (5.1.2):
     - FirebaseCore (~> 5.1)
     - FirebaseInstanceID (~> 3.2)
@@ -28,6 +31,11 @@ PODS:
   - FirebaseInstanceID (3.2.1):
     - FirebaseCore (~> 5.1)
     - GoogleUtilities/Environment (~> 5.2)
+  - FirebaseMessaging (3.1.2):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - GoogleUtilities/Reachability (~> 5.2)
+    - Protobuf (~> 3.1)
   - Geth (1.8.8)
   - GoogleAppMeasurement (5.1.2):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
@@ -61,6 +69,7 @@ PODS:
   - NotificationBannerSwift (1.6.3):
     - MarqueeLabel/Swift
     - SnapKit (~> 4.0)
+  - Protobuf (3.6.1)
   - secp256k1_ios (0.1.3)
   - SipHash (1.2.0)
   - SnapKit (4.0.0)
@@ -82,6 +91,7 @@ DEPENDENCIES:
   - ESTabBarController-swift
   - Fabric
   - Firebase/Core
+  - Firebase/Messaging
   - Geth (= 1.8.8)
   - MKDropdownMenu
   - NotificationBannerSwift
@@ -107,6 +117,7 @@ SPEC REPOS:
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseInstanceID
+    - FirebaseMessaging
     - Geth
     - GoogleAppMeasurement
     - GoogleUtilities
@@ -114,6 +125,7 @@ SPEC REPOS:
     - MKDropdownMenu
     - nanopb
     - NotificationBannerSwift
+    - Protobuf
     - SipHash
     - SnapKit
     - Socket.IO-Client-Swift
@@ -149,6 +161,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: df15839e9c6ca6bd14d2e8ab6b0c672e6c49097e
   FirebaseCore: 27bd80e5bfaaf9552a1f5cacb4c7e8bb925bab22
   FirebaseInstanceID: ea5af6920d0a4a29b40459d055bebe4a6c1333c4
+  FirebaseMessaging: d6feeb06218d2675b4149b0ada925a6b707a74cf
   Geth: 483ea44b5f930b72320218290b939ba8e2389aaf
   GoogleAppMeasurement: fc4a4c3fe0144db9313cbf443ffe62e6b1d6268c
   GoogleUtilities: 6f681e27050c5e130325e89fa0316dfca826f954
@@ -156,6 +169,7 @@ SPEC CHECKSUMS:
   MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   NotificationBannerSwift: b231e4c3244848ef300e1c53ce027b9756b9b06f
+  Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   secp256k1_ios: ac9ef04e761f43c58012b28548afa91493761f17
   SipHash: c6e9e43e9c531b5bc6602545130c26194a6d31ce
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
@@ -168,6 +182,6 @@ SPEC CHECKSUMS:
   SwiftyMarkdown: 743af3e87931391bc4836b825fec3d98785b2e3a
   TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803
 
-PODFILE CHECKSUM: f535711ac433402aaacf4c5629a57361e7a77296
+PODFILE CHECKSUM: 2b39bf5e22f31ceaa5673812e290b38e3642c70d
 
 COCOAPODS: 1.5.0

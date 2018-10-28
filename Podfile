@@ -17,6 +17,7 @@ def shared_pods
     pod 'Fabric'
     pod 'Crashlytics'
     pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
     
     # Pods for keystone
     pod 'Geth', '1.8.8'
