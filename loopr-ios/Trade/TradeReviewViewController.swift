@@ -45,8 +45,8 @@ class TradeReviewViewController: UIViewController {
     @IBOutlet weak var seperateLineB: UIView!
     @IBOutlet weak var seperateLineC: UIView!
     
-    var tokenSView: TradeViewOnlyViewController = TradeViewOnlyViewController()
-    var tokenBView: TradeViewOnlyViewController = TradeViewOnlyViewController()
+    var tokenSView: TokenViewController = TokenViewController()
+    var tokenBView: TokenViewController = TokenViewController()
 
     // To display QR code
     var qrcodeImageCIImage: CIImage!

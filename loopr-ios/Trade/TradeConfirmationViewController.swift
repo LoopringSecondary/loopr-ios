@@ -37,8 +37,8 @@ class TradeConfirmationViewController: UIViewController {
     
     @IBOutlet weak var priceTailing: NSLayoutConstraint!
     
-    var tokenSView: TradeViewOnlyViewController = TradeViewOnlyViewController()
-    var tokenBView: TradeViewOnlyViewController = TradeViewOnlyViewController()
+    var tokenSView: TokenViewController = TokenViewController()
+    var tokenBView: TokenViewController = TokenViewController()
     
     var message: String?
     var order: OriginalOrder?

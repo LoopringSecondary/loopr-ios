@@ -343,8 +343,8 @@
 		AC9DC45821159084002D7D23 /* MiniToLargeViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC45521159082002D7D23 /* MiniToLargeViewAnimator.swift */; };
 		AC9DC45921159084002D7D23 /* BaseAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC45621159083002D7D23 /* BaseAnimator.swift */; };
 		AC9DC45A21159084002D7D23 /* MiniToLargeViewInteractive.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC45721159083002D7D23 /* MiniToLargeViewInteractive.swift */; };
-		AC9DC45E211AC92C002D7D23 /* TradeViewOnlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC45C211AC92C002D7D23 /* TradeViewOnlyViewController.swift */; };
-		AC9DC45F211AC92C002D7D23 /* TradeViewOnlyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9DC45D211AC92C002D7D23 /* TradeViewOnlyViewController.xib */; };
+		AC9DC45E211AC92C002D7D23 /* TokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC45C211AC92C002D7D23 /* TokenViewController.swift */; };
+		AC9DC45F211AC92C002D7D23 /* TokenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9DC45D211AC92C002D7D23 /* TokenViewController.xib */; };
 		AC9DC462211C0D87002D7D23 /* TradeSelectionNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC461211C0D87002D7D23 /* TradeSelectionNavigationViewController.swift */; };
 		AC9FFF2121254BAC00957175 /* DefaultStepSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FFF2021254BAC00957175 /* DefaultStepSlider.swift */; };
 		AC9FFF252126BDF800957175 /* MarketChangeTokenSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FFF232126BDF800957175 /* MarketChangeTokenSwipeViewController.swift */; };
@@ -846,8 +846,8 @@
 		AC9DC45521159082002D7D23 /* MiniToLargeViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniToLargeViewAnimator.swift; sourceTree = "<group>"; };
 		AC9DC45621159083002D7D23 /* BaseAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAnimator.swift; sourceTree = "<group>"; };
 		AC9DC45721159083002D7D23 /* MiniToLargeViewInteractive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniToLargeViewInteractive.swift; sourceTree = "<group>"; };
-		AC9DC45C211AC92C002D7D23 /* TradeViewOnlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewOnlyViewController.swift; sourceTree = "<group>"; };
-		AC9DC45D211AC92C002D7D23 /* TradeViewOnlyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeViewOnlyViewController.xib; sourceTree = "<group>"; };
+		AC9DC45C211AC92C002D7D23 /* TokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenViewController.swift; sourceTree = "<group>"; };
+		AC9DC45D211AC92C002D7D23 /* TokenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TokenViewController.xib; sourceTree = "<group>"; };
 		AC9DC461211C0D87002D7D23 /* TradeSelectionNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSelectionNavigationViewController.swift; sourceTree = "<group>"; };
 		AC9FFF2021254BAC00957175 /* DefaultStepSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStepSlider.swift; sourceTree = "<group>"; };
 		AC9FFF232126BDF800957175 /* MarketChangeTokenSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketChangeTokenSwipeViewController.swift; sourceTree = "<group>"; };
@@ -1668,8 +1668,8 @@
 				AC56625920563C05003C925C /* TradeViewController.swift */,
 				AC56625A20563C05003C925C /* TradeViewController.xib */,
 				AC69913920AA6000003593AE /* SwitchTradeToken */,
-				AC9DC45C211AC92C002D7D23 /* TradeViewOnlyViewController.swift */,
-				AC9DC45D211AC92C002D7D23 /* TradeViewOnlyViewController.xib */,
+				AC9DC45C211AC92C002D7D23 /* TokenViewController.swift */,
+				AC9DC45D211AC92C002D7D23 /* TokenViewController.xib */,
 				ACB729D2205DE21B00DD4DF3 /* TradeConfirmationViewController.swift */,
 				ACB729D3205DE21B00DD4DF3 /* TradeConfirmationViewController.xib */,
 				AC31CE122057B5A400A30335 /* TradeReviewViewController.swift */,
@@ -2530,7 +2530,7 @@
 				ACBA47E320788ECD0032C2B4 /* SettingManageWalletViewController.xib in Resources */,
 				94BFF9CF21072EA000A0BE8B /* TokenSelectTableViewController.xib in Resources */,
 				6630916921005B54006DA630 /* AssetSwipeViewController.xib in Resources */,
-				AC9DC45F211AC92C002D7D23 /* TradeViewOnlyViewController.xib in Resources */,
+				AC9DC45F211AC92C002D7D23 /* TokenViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2895,7 +2895,7 @@
 				94768CA1210DCABE00B5977B /* TradeSwipeViewController.swift in Sources */,
 				AC2C93D72105AE97004B8456 /* GenerateWalletEnterRepeatPasswordViewController.swift in Sources */,
 				ACE65E412071F875001EE499 /* MnemonicCollectionViewController.swift in Sources */,
-				AC9DC45E211AC92C002D7D23 /* TradeViewOnlyViewController.swift in Sources */,
+				AC9DC45E211AC92C002D7D23 /* TokenViewController.swift in Sources */,
 				AC31B93A204A4F9000B16155 /* Language.swift in Sources */,
 				94E185992051455C00D86FFA /* SimpleRespond.swift in Sources */,
 				9457416E20D0D23400110CFD /* CancelType.swift in Sources */,

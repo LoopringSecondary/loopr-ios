@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TradeViewOnlyViewController: UIViewController {
+class TokenViewController: UIViewController {
 
     var iconImageWidth: CGFloat = 40
 
