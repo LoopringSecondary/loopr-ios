@@ -181,6 +181,29 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         })
                     })
                 }
+                
+                // TODO: needs to refactor
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    if UIPasteboard.general.hasStrings {
+                        // Enable string-related control...
+                        if let string = UIPasteboard.general.string {
+                            // use the string here
+                            if QRCodeMethod.isAddress(content: string) && !AppWalletDataManager.shared.isDuplicatedAddress(address: string) {
+                                
+                                let banner = NotificationBanner.generate(title: "Detect address in pasteboard. Do you want to send token to the address?", style: .success, hasLeftImage: false)
+                                banner.duration = 3.0
+                                banner.show()
+                                banner.onTap = {
+                                    let vc = SendAssetViewController()
+                                    vc.address = string
+                                    vc.hidesBottomBarWhenPushed = true
+                                    self.navigationController?.pushViewController(vc, animated: true)
+                                }
+                            }
+                        }
+                    }
+                }
+
             }
             self.assetTableView.reloadData()
             self.refreshControl.endRefreshing()
@@ -216,13 +239,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidAppear(animated)
         isListeningSocketIO = true
         CurrentAppWalletDataManager.shared.startGetBalance()
-        
-        if UIPasteboard.general.hasStrings {
-            // Enable string-related control...
-            if let string = UIPasteboard.general.string {
-                // use the string here
-            }
-        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
