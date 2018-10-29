@@ -216,6 +216,13 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidAppear(animated)
         isListeningSocketIO = true
         CurrentAppWalletDataManager.shared.startGetBalance()
+        
+        if UIPasteboard.general.hasStrings {
+            // Enable string-related control...
+            if let string = UIPasteboard.general.string {
+                // use the string here
+            }
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
