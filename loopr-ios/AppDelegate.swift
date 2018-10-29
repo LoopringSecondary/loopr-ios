@@ -132,13 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
-    
-    func showNetworkLossBanner() {
-        let banner = NotificationBanner.generate(title: "No network", style: .warning)
-        banner.duration = 5.0
-        banner.show()
-    }
-    
+
     func updateTheme() {
         // Setup color in the app.
         // Avoid dark shadow on navigation bar during segue transition
