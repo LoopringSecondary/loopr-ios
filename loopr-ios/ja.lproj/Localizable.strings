@@ -247,6 +247,7 @@
 "Failed" = "Failed";
 "Other" = "Other";
 "10001" = "Sorry, system error, please try again later";
+"32000" = "Sorry, balance is not enough to submit order";
 "50001" = "Sorry, selling order does not exist, could not complete this order";
 "50002" = "Sorry, only p2p order could be submitted, could not complete this order";
 "50003" = "Sorry, selling order already dealt with another buying order, please try with other orders";

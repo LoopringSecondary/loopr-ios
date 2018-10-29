@@ -402,7 +402,15 @@ extension TradeConfirmationViewController {
             DispatchQueue.main.async {
                 print("TradeViewController \(error.debugDescription)")
                 let message = (error! as NSError).userInfo["message"] as! String
-                let banner = NotificationBanner.generate(title: message, style: .danger)
+                
+                let notificationTitle: String
+                if message.contains("balance is not enough to submit order") {
+                    notificationTitle = LocalizedString("32000", comment: "")
+                } else {
+                    notificationTitle = message
+                }
+
+                let banner = NotificationBanner.generate(title: notificationTitle, style: .danger)
                 banner.duration = 5
                 banner.show()
             }
