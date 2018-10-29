@@ -454,6 +454,7 @@
 		ACE6F7242042228A0039273D /* GlobalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F7232042228A0039273D /* GlobalPicker.swift */; };
 		ACE6F72720426BAC0039273D /* SettingThemeModeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F72520426BAC0039273D /* SettingThemeModeTableViewCell.swift */; };
 		ACE6F72820426BAC0039273D /* SettingThemeModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE6F72620426BAC0039273D /* SettingThemeModeTableViewCell.xib */; };
+		ACE9F0462186FB5800695E37 /* WalletViewControllerDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9F0452186FB5700695E37 /* WalletViewControllerDropdownMenu.swift */; };
 		ACEC977F20AD57F3003F9DEB /* P2POrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEC977D20AD57F3003F9DEB /* P2POrderHistoryViewController.swift */; };
 		ACEC978020AD57F3003F9DEB /* P2POrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACEC977E20AD57F3003F9DEB /* P2POrderHistoryViewController.xib */; };
 		ACEC978220AD6165003F9DEB /* P2POrderHistoryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEC978120AD6165003F9DEB /* P2POrderHistoryDataManager.swift */; };
@@ -960,6 +961,7 @@
 		ACE6F7232042228A0039273D /* GlobalPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalPicker.swift; sourceTree = "<group>"; };
 		ACE6F72520426BAC0039273D /* SettingThemeModeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingThemeModeTableViewCell.swift; sourceTree = "<group>"; };
 		ACE6F72620426BAC0039273D /* SettingThemeModeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingThemeModeTableViewCell.xib; sourceTree = "<group>"; };
+		ACE9F0452186FB5700695E37 /* WalletViewControllerDropdownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewControllerDropdownMenu.swift; sourceTree = "<group>"; };
 		ACEBB12921336C830037991A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		ACEBB12A21336C840037991A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		ACEBB12B21336C840037991A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -1956,6 +1958,7 @@
 				ACB911512024254F00F14644 /* WalletNavigationViewController.swift */,
 				ACB911532024260E00F14644 /* WalletViewController.swift */,
 				ACB911542024260E00F14644 /* WalletViewController.xib */,
+				ACE9F0452186FB5700695E37 /* WalletViewControllerDropdownMenu.swift */,
 				AC5E0DDC203B447700AF03C7 /* WalletBalanceTableViewCell.swift */,
 				AC5E0DDD203B447700AF03C7 /* WalletBalanceTableViewCell.xib */,
 				AC2ACA5720FA1A5F009C77E7 /* WalletButtonTableViewCell.swift */,
@@ -2708,6 +2711,7 @@
 				AC69913B20AA6254003593AE /* SettingWalletDetailViewControllerDataSource.swift in Sources */,
 				AC5E3E6B205DEAC00051ACFC /* TradeCompleteViewController.swift in Sources */,
 				AC88669B21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift in Sources */,
+				ACE9F0462186FB5800695E37 /* WalletViewControllerDropdownMenu.swift in Sources */,
 				943A9A4120909597008BCBFD /* DefaultWebViewController.swift in Sources */,
 				942C4A0021293022008A6B4F /* ConvertETHResultViewController.swift in Sources */,
 				AC0CD58120D226C500ABB7BA /* TabBarItemAnimateTipsContentView.swift in Sources */,
