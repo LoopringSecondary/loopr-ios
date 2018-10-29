@@ -62,6 +62,7 @@ class OrderQRCodeViewController: UIViewController {
         view.addGestureRecognizer(tap)
         
         contentView.theme_backgroundColor = ColorPicker.cardBackgroundColor
+        contentView.layer.cornerRadius = 8
         seperateLine.theme_backgroundColor = ColorPicker.cardHighLightColor
 
         qrcodeIconImageView.image = UIImage(named: "Order-qrcode-icon" + ColorTheme.getTheme())

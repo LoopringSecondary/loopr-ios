@@ -54,7 +54,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3K2-up-9JE">
-                    <rect key="frame" x="20" y="158" width="364" height="420"/>
+                    <rect key="frame" x="20" y="153" width="364" height="430"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loopring P2P Order" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBn-Jl-kW1">
                             <rect key="frame" x="111.66666666666666" y="42" width="150.99999999999997" height="20.666666666666671"/>
@@ -78,14 +78,14 @@
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wpj-7S-oaS">
-                            <rect key="frame" x="0.0" y="294" width="364" height="1"/>
+                            <rect key="frame" x="0.0" y="304" width="364" height="1"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="Sfb-S8-6wH"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEl-zM-Ijk" customClass="GradientButton" customModule="loopr_ios" customModuleProvider="target">
-                            <rect key="frame" x="92" y="315" width="180" height="44"/>
+                            <rect key="frame" x="92" y="325" width="180" height="44"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="Npa-bl-3bd"/>
@@ -99,7 +99,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NU-nI-gps">
-                            <rect key="frame" x="92" y="367" width="180" height="44"/>
+                            <rect key="frame" x="92" y="377" width="180" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="92L-Mo-hdB"/>
                                 <constraint firstAttribute="width" constant="180" id="BQG-Bd-zke"/>
@@ -113,10 +113,11 @@
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="420" id="BMm-wP-MQi"/>
-                        <constraint firstAttribute="centerY" secondItem="Jxo-fS-cjo" secondAttribute="centerY" constant="29" id="Cfz-TQ-nlp"/>
+                        <constraint firstItem="Jxo-fS-cjo" firstAttribute="top" secondItem="3K2-up-9JE" secondAttribute="top" constant="96" id="B8l-lE-8aa"/>
+                        <constraint firstAttribute="height" constant="430" id="BMm-wP-MQi"/>
                         <constraint firstItem="qpx-g3-ULm" firstAttribute="centerX" secondItem="Jxo-fS-cjo" secondAttribute="centerX" id="Clf-wr-XNQ"/>
                         <constraint firstAttribute="trailing" secondItem="wpj-7S-oaS" secondAttribute="trailing" id="E5s-b4-qHv"/>
+                        <constraint firstAttribute="bottom" secondItem="wpj-7S-oaS" secondAttribute="bottom" constant="125" id="Ewo-bU-Gza"/>
                         <constraint firstItem="mEl-zM-Ijk" firstAttribute="centerX" secondItem="3K2-up-9JE" secondAttribute="centerX" id="IGO-Ff-7Hc"/>
                         <constraint firstItem="YBn-Jl-kW1" firstAttribute="top" secondItem="3K2-up-9JE" secondAttribute="top" constant="42" id="Qhv-Z3-Xjo"/>
                         <constraint firstItem="qpx-g3-ULm" firstAttribute="centerY" secondItem="Jxo-fS-cjo" secondAttribute="centerY" id="SbS-Ic-3Ha"/>
@@ -124,7 +125,6 @@
                         <constraint firstItem="mEl-zM-Ijk" firstAttribute="top" secondItem="wpj-7S-oaS" secondAttribute="bottom" constant="20" id="da2-NB-P8U"/>
                         <constraint firstItem="wpj-7S-oaS" firstAttribute="leading" secondItem="3K2-up-9JE" secondAttribute="leading" id="eOg-Rp-cNA"/>
                         <constraint firstItem="7NU-nI-gps" firstAttribute="centerX" secondItem="3K2-up-9JE" secondAttribute="centerX" id="hBd-ef-rVX"/>
-                        <constraint firstItem="wpj-7S-oaS" firstAttribute="top" secondItem="3K2-up-9JE" secondAttribute="top" constant="294" id="rAw-n1-swa"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -133,7 +133,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Order-qrcode-icon-red" translatesAutoresizingMaskIntoConstraints="NO" id="D16-yf-Yzm">
-                    <rect key="frame" x="177" y="128" width="60" height="60"/>
+                    <rect key="frame" x="177" y="123" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="Iaq-os-mtI"/>
                         <constraint firstAttribute="height" constant="60" id="Mux-Ce-3We"/>

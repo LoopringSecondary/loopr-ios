@@ -104,14 +104,14 @@
                     <constraints>
                         <constraint firstItem="edC-Mr-nnR" firstAttribute="width" secondItem="qpx-g3-ULm" secondAttribute="width" id="3mO-Sw-HCg"/>
                         <constraint firstAttribute="height" constant="460" id="9vE-dM-NTD"/>
-                        <constraint firstItem="Jxo-fS-cjo" firstAttribute="centerY" secondItem="3K2-up-9JE" secondAttribute="centerY" constant="-49" id="Cfz-TQ-nlp"/>
                         <constraint firstItem="qpx-g3-ULm" firstAttribute="centerX" secondItem="Jxo-fS-cjo" secondAttribute="centerX" id="Clf-wr-XNQ"/>
+                        <constraint firstAttribute="bottom" secondItem="GNo-R5-W3Q" secondAttribute="bottom" constant="125" id="Iej-El-fJx"/>
                         <constraint firstItem="YBn-Jl-kW1" firstAttribute="top" secondItem="3K2-up-9JE" secondAttribute="top" constant="42" id="Qhv-Z3-Xjo"/>
                         <constraint firstItem="qpx-g3-ULm" firstAttribute="centerY" secondItem="Jxo-fS-cjo" secondAttribute="centerY" id="SbS-Ic-3Ha"/>
                         <constraint firstItem="mEl-zM-Ijk" firstAttribute="top" secondItem="GNo-R5-W3Q" secondAttribute="bottom" constant="20" id="WXS-Ff-ISa"/>
-                        <constraint firstItem="GNo-R5-W3Q" firstAttribute="top" secondItem="3K2-up-9JE" secondAttribute="top" constant="334" id="YUS-Jx-45Q"/>
                         <constraint firstItem="7NU-nI-gps" firstAttribute="centerX" secondItem="3K2-up-9JE" secondAttribute="centerX" id="dIj-mi-TsT"/>
                         <constraint firstAttribute="trailing" secondItem="GNo-R5-W3Q" secondAttribute="trailing" id="da5-tu-Pl3"/>
+                        <constraint firstItem="Jxo-fS-cjo" firstAttribute="top" secondItem="3K2-up-9JE" secondAttribute="top" constant="96" id="fqG-4v-6jq"/>
                         <constraint firstItem="edC-Mr-nnR" firstAttribute="centerX" secondItem="3K2-up-9JE" secondAttribute="centerX" id="oPL-Ud-krd"/>
                         <constraint firstItem="edC-Mr-nnR" firstAttribute="top" secondItem="qpx-g3-ULm" secondAttribute="bottom" constant="10" id="qwV-jp-Q2n"/>
                         <constraint firstItem="mEl-zM-Ijk" firstAttribute="centerX" secondItem="3K2-up-9JE" secondAttribute="centerX" id="vTN-IP-yNm"/>

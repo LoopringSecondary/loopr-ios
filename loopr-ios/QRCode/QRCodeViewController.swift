@@ -46,7 +46,7 @@ class QRCodeViewController: UIViewController {
         self.navigationItem.title = navigationTitle
         
         view.theme_backgroundColor = ColorPicker.backgroundColor
-        contentView.layer.cornerRadius = 6
+        contentView.layer.cornerRadius = 8
         contentView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         contentView.applyShadow()
         
@@ -57,9 +57,6 @@ class QRCodeViewController: UIViewController {
         titleLabel.font = FontConfigManager.shared.getRegularFont(size: 16)
         titleLabel.theme_textColor = GlobalPicker.textColor
         titleLabel.text = Production.getProduct()
-        
-        // 191 460 = 651
-        // 525
 
         addressLabel.theme_textColor = GlobalPicker.textColor
         addressLabel.font = UIFont(name: "Menlo", size: 14)
