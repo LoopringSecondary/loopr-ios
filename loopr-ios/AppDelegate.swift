@@ -54,8 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Fabric.with([Crashlytics.self, Answers.self])
         
+        // Background Fetch doesn't work very well and consume a lot of battery.
         // Fetch data in the background fetch mode.
-        UIApplication.shared.setMinimumBackgroundFetchInterval(10)
+        // UIApplication.shared.setMinimumBackgroundFetchInterval(10)
         
         FontConfigManager.shared.setup()
         
@@ -264,18 +265,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Answers.logCustomEvent(withName: "didFailToRegisterForRemoteNotificationsWithError v1",
                                customAttributes: [
                                "error": error.localizedDescription])
-    }
-    
-    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        
-        Answers.logCustomEvent(withName: "application performFetchWithCompletionHandler v1",
-                               customAttributes: [:])
-
-        print("hello world.")
-        // Example:
-        LocalNotificationManager.shared.publishNotification()
-
-        completionHandler(.newData)
     }
 
 }

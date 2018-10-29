@@ -70,10 +70,6 @@
 		<string>Rubik-Regular.ttf</string>
 		<string>Rubik-BoldItalic.ttf</string>
 	</array>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>fetch</string>
-	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
