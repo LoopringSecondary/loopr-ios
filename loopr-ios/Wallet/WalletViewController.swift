@@ -84,6 +84,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.insertSubview(backgroundView, at: 0)
         
         NotificationCenter.default.addObserver(self, selector: #selector(needRelaunchCurrentAppWalletReceivedNotification), name: .needRelaunchCurrentAppWallet, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(processPasteboard), name: .needCheckStringInPasteboard, object: nil)
     }
     
     @objc func needRelaunchCurrentAppWalletReceivedNotification() {
@@ -220,10 +221,6 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidAppear(animated)
         isListeningSocketIO = true
         CurrentAppWalletDataManager.shared.startGetBalance()
-        
-        if !isLaunching {
-            processPasteboard()
-        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -240,20 +237,28 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-    func processPasteboard() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            if UIPasteboard.general.hasStrings {
-                // Enable string-related control...
+    @objc func processPasteboard() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            // Check if the view is visible
+            guard self.isViewLoaded && (self.view.window != nil) else {
+                return
+            }
+
+            // Avoid show banner in isLaunching state.
+            if UIPasteboard.general.hasStrings && !self.isLaunching {
                 if let string = UIPasteboard.general.string {
-                    // use the string here
                     if self.pasteboardValue != string && QRCodeMethod.isAddress(content: string) && !AppWalletDataManager.shared.isDuplicatedAddress(address: string) {
                         // Update
                         self.pasteboardValue = string
                         
-                        let banner = NotificationBanner.generate(title: "Detect address in pasteboard. Do you want to send token to the address?", style: .success, hasLeftImage: false)
-                        banner.duration = 3.0
+                        let banner = NotificationBanner.generate(title: "Send tokens to the address in pasteboard?", style: .success, hasLeftImage: false)
+                        banner.duration = 2
                         banner.show()
                         banner.onTap = {
+                            // Limit to WalletViewController.
+                            guard self.isViewLoaded && (self.view.window != nil) else {
+                                return
+                            }
                             let vc = SendAssetViewController()
                             vc.address = string
                             vc.hidesBottomBarWhenPushed = true

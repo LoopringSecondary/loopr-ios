@@ -113,9 +113,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         splashImageView.frame = self.window!.frame
         self.window?.addSubview(splashImageView)
         self.window?.bringSubview(toFront: splashImageView)
-        
-        // Used in vivwallet 0.9.10
-        // PushNotificationDeviceDataManager.shared.testAPI()
 
         return true
     }
@@ -228,6 +225,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 backgroundView.alpha = 0
             }, completion: { _ in
                 backgroundView.removeFromSuperview()
+                NotificationCenter.default.post(name: .needCheckStringInPasteboard, object: nil)
             })
         }
         
