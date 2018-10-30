@@ -20,7 +20,11 @@ extension Notification.Name {
     // In-app notifications
     static let currentAppWalletSwitched = Notification.Name("currentAppWalletSwitched")
     static let needRelaunchCurrentAppWallet = Notification.Name("needRelaunchCurrentAppWallet")
+    static let needCheckStringInPasteboard = Notification.Name("needCheckStringInPasteboard")
 
     // Need to update UI
-    static let languageChanged = NSNotification.Name(rawValue: "languageChanged")
+    static let languageChanged = NSNotification.Name("languageChanged")
+    
+    // Publish a local notification to MainTabController
+    static let publishLocalNotificationToMainTabController = NSNotification.Name("publishLocalNotificationToMainTabController")
 }

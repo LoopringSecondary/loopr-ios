@@ -13,6 +13,8 @@ import NotificationBannerSwift
 import SVProgressHUD
 import Fabric
 import Crashlytics
+import Firebase
+import FirebaseMessaging
 import UserNotifications
 
 @UIApplicationMain
@@ -20,10 +22,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let splashImageView = SplashImageView(frame: .zero)
-
+    let gcmMessageIDKey = "gcm.message_id"
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Firebase and Fabric
+        FirebaseApp.configure()
+        Messaging.messaging().delegate = self
+        
+        // Register for remote notifications. This shows a permission dialog on first run, to
+        // show the dialog at a more appropriate time move this registration accordingly.
+        // [START register_for_notifications]
+        // For iOS 10 display notification (sent via APNS)
+        UNUserNotificationCenter.current().delegate = self
+        
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: {_, _ in })
+
+        application.registerForRemoteNotifications()
+
+        InstanceID.instanceID().instanceID { (result, error) in
+            if let error = error {
+                print("Error fetching remote instange ID: \(error)")
+            } else if let result = result {
+                print("Remote instance ID token: \(result.token)")
+            }
+        }
+        
         Fabric.with([Crashlytics.self, Answers.self])
+        
+        // Background Fetch doesn't work very well and consume a lot of battery.
+        // Fetch data in the background fetch mode.
+        // UIApplication.shared.setMinimumBackgroundFetchInterval(10)
         
         FontConfigManager.shared.setup()
         
@@ -64,7 +97,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         _ = SettingDataManager.shared.getCurrentLanguage()
 
-        // manager?.startListening()
         SettingsBundleHelper.setVersionAndBuildNumber()
         
         // Touch ID and Face ID
@@ -81,9 +113,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         splashImageView.frame = self.window!.frame
         self.window?.addSubview(splashImageView)
         self.window?.bringSubview(toFront: splashImageView)
-        
-        // Used in vivwallet 0.9.10
-        // PushNotificationDeviceDataManager.shared.testAPI()
 
         return true
     }
@@ -100,13 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
-    
-    func showNetworkLossBanner() {
-        let banner = NotificationBanner.generate(title: "No network", style: .warning)
-        banner.duration = 5.0
-        banner.show()
-    }
-    
+
     func updateTheme() {
         // Setup color in the app.
         // Avoid dark shadow on navigation bar during segue transition
@@ -202,6 +225,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 backgroundView.alpha = 0
             }, completion: { _ in
                 backgroundView.removeFromSuperview()
+                NotificationCenter.default.post(name: .needCheckStringInPasteboard, object: nil)
             })
         }
         

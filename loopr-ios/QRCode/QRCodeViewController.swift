@@ -23,8 +23,9 @@ class QRCodeViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var addressLabel: UILabel!
 
+    @IBOutlet weak var seperateLine: UIView!
     @IBOutlet weak var copyAddressButton: GradientButton!
-    @IBOutlet weak var saveToAlbumButton: GradientButton!
+    @IBOutlet weak var saveToAlbumButton: UIButton!
     
     @IBOutlet weak var shareContentView: UIView!
     @IBOutlet weak var titleInShare: UILabel!
@@ -45,18 +46,27 @@ class QRCodeViewController: UIViewController {
         self.navigationItem.title = navigationTitle
         
         view.theme_backgroundColor = ColorPicker.backgroundColor
-        contentView.layer.cornerRadius = 6
+        contentView.layer.cornerRadius = 8
         contentView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         contentView.applyShadow()
         
+        seperateLine.theme_backgroundColor = ColorPicker.cardHighLightColor
+        
         receiveQRCodeIconView.image = UIImage(named: "Receive-qrcode-icon" + ColorTheme.getTheme())
-        titleLabel.setTitleCharFont()
+
+        titleLabel.font = FontConfigManager.shared.getRegularFont(size: 16)
+        titleLabel.theme_textColor = GlobalPicker.textColor
         titleLabel.text = Production.getProduct()
-        addressLabel.setTitleCharFont()
+
+        addressLabel.theme_textColor = GlobalPicker.textColor
+        addressLabel.font = UIFont(name: "Menlo", size: 14)
         
         copyAddressButton.setTitle(LocalizedString("Copy Address", comment: ""), for: .normal)
         
         saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
+        saveToAlbumButton.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
+        saveToAlbumButton.theme_setTitleColor(GlobalPicker.textDarkColor, forState: .highlighted)
+        saveToAlbumButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 14)
         
         setupShareButton()
         setBackButton()

@@ -30,6 +30,7 @@
 "Hide Small Assets" = "작은 자산 숨기기";
 "My Wallet Address" = "내 지갑 주소";
 "My wallet address" = "내 지갑 주소";
+"Send tokens to the address in pasteboard?" = "Send tokens to the address in pasteboard?";
 
 /* Import wallet and create wallet */
 "Initializing the wallet" = "지갑 초기 설정";
@@ -218,6 +219,7 @@
 "Failed" = "실패";
 "Other" = "기타";
 "10001" = "시스템 오류. 죄송합니다. 다음에 다시 시도해주세요.";
+"32000" = "죄송합니다. 주문 잔액만으로는 주문을 제출할 수 없습니다";
 "50001" = "죄송합니다. 매도 주문이 존재하지 않습니다. 주문을 완료 할 수 없습니다.";
 "50002" = "죄송합니다. P2P 주문만 요청 가능합니다. 주문을 완료 할 수 없습니다.";
 "50003" = "죄송합니다. 매도 주문이 이미 다른 매수 주문과 연결되었습니다. 다시 시도해주세요.";

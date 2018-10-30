@@ -33,6 +33,7 @@
 "Hide Small Assets" = "隱藏小額資產";
 "My Wallet Address" = "我的錢包地址";
 "My wallet address" = "我的錢包地址";
+"Send tokens to the address in pasteboard?" = "發送代幣到剪切板上的地址？";
 
 /* Import wallet and create wallet */
 "Initializing the wallet" = "錢包正在啟動";
@@ -247,6 +248,7 @@
 "Failed" = "失敗";
 "Other" = "其他";
 "10001" = "抱歉，系統錯誤，請稍後重試";
+"32000" = "抱歉，用戶餘額不足或者下單總量已經超過餘額上限";
 "50001" = "抱歉，無法獲取到掃描指示信息";
 "50002" = "抱歉，掃描二維碼指示必須是P2P指示";
 "50003" = "抱歉，掃描到的指示，目前無法完成，請稍後重試";

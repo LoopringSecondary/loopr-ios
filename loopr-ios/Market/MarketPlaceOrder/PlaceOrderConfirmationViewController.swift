@@ -41,8 +41,8 @@ class PlaceOrderConfirmationViewController: UIViewController, UIScrollViewDelega
     
     @IBOutlet weak var priceTailing: NSLayoutConstraint!
     
-    var tokenSView: TradeViewOnlyViewController = TradeViewOnlyViewController()
-    var tokenBView: TradeViewOnlyViewController = TradeViewOnlyViewController()
+    var tokenSView: TokenViewController = TokenViewController()
+    var tokenBView: TokenViewController = TokenViewController()
 
     var order: OriginalOrder?
     var price: String? = "0.0"

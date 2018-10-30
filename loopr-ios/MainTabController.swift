@@ -8,8 +8,10 @@
 
 import UIKit
 import ESTabBarController_swift
+import UserNotifications
+import Crashlytics
 
-class MainTabController: ESTabBarController {
+class MainTabController: ESTabBarController, UNUserNotificationCenterDelegate {
     
     var viewController1: UIViewController!
     var viewController2: UIViewController!
@@ -32,6 +34,8 @@ class MainTabController: ESTabBarController {
         viewControllers = [viewController1, viewController2, viewController3]
         
         NotificationCenter.default.addObserver(self, selector: #selector(languageChangedReceivedNotification), name: .languageChanged, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(localNotificationReceived), name: .publishLocalNotificationToMainTabController, object: nil)
     }
     
     override func viewWillLayoutSubviews() {
@@ -69,5 +73,44 @@ class MainTabController: ESTabBarController {
         if let vc = viewController1 as? WalletNavigationViewController {
             vc.processExternalUrl()
         }
+    }
+    
+}
+
+// Local Notification
+extension MainTabController {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        //displaying the ios local notification when app is in foreground
+        completionHandler([.alert, .badge, .sound])
+        
+        Answers.logCustomEvent(withName: "userNotificationCenter v1",
+                               customAttributes: [:])
+    }
+    
+    @objc func localNotificationReceived() {
+        //creating the notification content
+        let content = UNMutableNotificationContent()
+        
+        //adding title, subtitle, body and badge
+        content.title = "Hey"
+        content.body = "We are learning about iOS Local Notification"
+        content.badge = 1
+        
+        UNUserNotificationCenter.current().delegate = self
+        
+        //getting the notification trigger
+        //it will be called after 5 seconds
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        
+        //getting the notification request
+        let request = UNNotificationRequest(identifier: "leaf.prod.app", content: content, trigger: trigger)
+        
+        //adding the notification to notification center
+        UNUserNotificationCenter.current().add(request) { (error) in
+            print(error)
+        }
+
     }
 }

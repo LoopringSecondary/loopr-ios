@@ -23,6 +23,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var isDropdownMenuExpanded: Bool = false
     let dropdownMenu = MKDropdownMenu(frame: .zero)
     
+    var pasteboardValue: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,6 +84,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.insertSubview(backgroundView, at: 0)
         
         NotificationCenter.default.addObserver(self, selector: #selector(needRelaunchCurrentAppWalletReceivedNotification), name: .needRelaunchCurrentAppWallet, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(processPasteboard), name: .needCheckStringInPasteboard, object: nil)
     }
     
     @objc func needRelaunchCurrentAppWalletReceivedNotification() {
@@ -173,7 +176,16 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                             self.displayUpdateNotification()
                         }
                     })
+                    
+                    // Get user config
+                    AppServiceManager.shared.getUserConfig(completion: { (shouldDisplayUpdateNotification) in
+                        AppServiceManager.shared.updateUserConfig(completion: { (_) in
+                            
+                        })
+                    })
                 }
+                
+                self.processPasteboard()
             }
             self.assetTableView.reloadData()
             self.refreshControl.endRefreshing()
@@ -223,6 +235,39 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func processPasteboard() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            // Check if the view is visible
+            guard self.isViewLoaded && (self.view.window != nil) else {
+                return
+            }
+
+            // Avoid show banner in isLaunching state.
+            if UIPasteboard.general.hasStrings && !self.isLaunching {
+                if let string = UIPasteboard.general.string {
+                    if self.pasteboardValue != string && QRCodeMethod.isAddress(content: string) && !AppWalletDataManager.shared.isDuplicatedAddress(address: string) {
+                        // Update
+                        self.pasteboardValue = string
+                        
+                        let banner = NotificationBanner.generate(title: "Send tokens to the address in pasteboard?", style: .success, hasLeftImage: false)
+                        banner.duration = 2
+                        banner.show()
+                        banner.onTap = {
+                            // Limit to WalletViewController.
+                            guard self.isViewLoaded && (self.view.window != nil) else {
+                                return
+                            }
+                            let vc = SendAssetViewController()
+                            vc.address = string
+                            vc.hidesBottomBarWhenPushed = true
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func processExternalUrl() {
@@ -478,89 +523,6 @@ extension WalletViewController: WalletButtonTableViewCellDelegate {
         let viewController = TradeSwipeViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
-    }
-
-}
-
-extension WalletViewController: MKDropdownMenuDataSource {
-    func numberOfComponents(in dropdownMenu: MKDropdownMenu) -> Int {
-        return 1
-    }
-    
-    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, numberOfRowsInComponent component: Int) -> Int {
-        return 3
-    }
-
-}
-
-extension WalletViewController: MKDropdownMenuDelegate {
-    
-    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, rowHeightForComponent component: Int) -> CGFloat {
-        return 50
-    }
-    
-    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let baseView = UIView(frame: CGRect(x: 0, y: 0, width: 160, height: 50))
-        baseView.backgroundColor = UIColor.dark2
-        
-        let iconImageView = UIImageView(frame: CGRect(x: 21, y: 12, width: 24, height: 24))
-        iconImageView.contentMode = .scaleAspectFit
-        baseView.addSubview(iconImageView)
-        
-        let titleLabel = UILabel(frame: CGRect(x: 55, y: 0, width: 610-55, height: 50))
-        titleLabel.font = FontConfigManager.shared.getRegularFont(size: 16)
-        titleLabel.theme_textColor = GlobalPicker.textColor
-        baseView.addSubview(titleLabel)
-        
-        var icon: UIImage?
-        switch row {
-        case 0:
-            titleLabel.text = LocalizedString("Scan", comment: "")
-            icon = UIImage.init(named: "dropdown-scan")
-        case 1:
-            titleLabel.text = LocalizedString("Add Token", comment: "")
-            icon = UIImage.init(named: "dropdown-add-token")
-        case 2:
-            titleLabel.text = LocalizedString("Wallet", comment: "")
-            icon = UIImage.init(named: "dropdown-wallet")
-        default:
-            break
-        }
-
-        iconImageView.image = icon
-
-        return baseView
-    }
-    
-    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, didSelectRow row: Int, inComponent component: Int) {
-        dropdownMenu.closeAllComponents(animated: false)
-        switch row {
-        case 0:
-            let viewController = ScanQRCodeViewController()
-            viewController.expectedQRCodeTypes = [.submitOrder, .login, .cancelOrder, .convert, .approve, .p2pOrder, .address]
-            viewController.delegate = self
-            viewController.shouldPop = false
-            viewController.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(viewController, animated: true)
-        case 1:
-            let viewController = AddTokenViewController()
-            viewController.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(viewController, animated: true)
-        case 2:
-            let viewController = SettingManageWalletViewController()
-            viewController.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(viewController, animated: true)
-        default:
-            break
-        }
-    }
-
-    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, backgroundColorForHighlightedRowsInComponent component: Int) -> UIColor? {
-        return UIColor.dark4
-    }
-    
-    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, didCloseComponent component: Int) {
-        isDropdownMenuExpanded = false
     }
 
 }

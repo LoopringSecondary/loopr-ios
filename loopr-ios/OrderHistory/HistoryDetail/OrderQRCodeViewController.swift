@@ -16,9 +16,11 @@ class OrderQRCodeViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var qrcodeImageView: UIImageView!
-    @IBOutlet weak var saveToAlbumButton: GradientButton!
-    @IBOutlet weak var shareOrderButton: GradientButton!
     
+    @IBOutlet weak var seperateLine: UIView!
+    @IBOutlet weak var shareOrderButton: GradientButton!
+    @IBOutlet weak var saveToAlbumButton: UIButton!
+
     @IBOutlet weak var shareContentView: UIView!
     @IBOutlet weak var shareImageView: UIImageView!
     @IBOutlet weak var titleInShare: UILabel!
@@ -59,13 +61,19 @@ class OrderQRCodeViewController: UIViewController {
         tap.delegate = self
         view.addGestureRecognizer(tap)
         
-        // TokenView
         contentView.theme_backgroundColor = ColorPicker.cardBackgroundColor
+        contentView.layer.cornerRadius = 8
+        seperateLine.theme_backgroundColor = ColorPicker.cardHighLightColor
+
         qrcodeIconImageView.image = UIImage(named: "Order-qrcode-icon" + ColorTheme.getTheme())
 
-        saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
-        saveToAlbumButton.setPrimaryColor()
         shareOrderButton.setTitle(LocalizedString("Share Order", comment: ""), for: .normal)
+
+        saveToAlbumButton.setTitle(LocalizedString("Save to Album", comment: ""), for: .normal)
+        saveToAlbumButton.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
+        saveToAlbumButton.theme_setTitleColor(GlobalPicker.textDarkColor, forState: .highlighted)
+        saveToAlbumButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 14)
+
         generateQRCode(originalOrder: self.originalOrder!)
         
         if let order = self.originalOrder {

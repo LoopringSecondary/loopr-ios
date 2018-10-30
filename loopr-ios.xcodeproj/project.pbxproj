@@ -146,6 +146,8 @@
 		AC1B6D7E2130FB510026C1B2 /* Bytes+SecureRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1B6D752130FB510026C1B2 /* Bytes+SecureRandom.swift */; };
 		AC1B6D7F2130FB510026C1B2 /* Secp256k1Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1B6D762130FB510026C1B2 /* Secp256k1Helper.swift */; };
 		AC1B6D802130FB510026C1B2 /* KeystoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1B6D772130FB510026C1B2 /* KeystoreFactory.swift */; };
+		AC1BDECB2184E149002CF4ED /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1BDECA2184E149002CF4ED /* LocalNotificationManager.swift */; };
+		AC1BDECD218523BC002CF4ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC1BDECC218523BB002CF4ED /* GoogleService-Info.plist */; };
 		AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */; };
 		AC1E4BBC204B420D00C6B1FA /* KeystoreIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBB204B420D00C6B1FA /* KeystoreIntegrationTests.swift */; };
 		AC1E4BC0204B51AB00C6B1FA /* ImportWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */; };
@@ -341,8 +343,8 @@
 		AC9DC45821159084002D7D23 /* MiniToLargeViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC45521159082002D7D23 /* MiniToLargeViewAnimator.swift */; };
 		AC9DC45921159084002D7D23 /* BaseAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC45621159083002D7D23 /* BaseAnimator.swift */; };
 		AC9DC45A21159084002D7D23 /* MiniToLargeViewInteractive.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC45721159083002D7D23 /* MiniToLargeViewInteractive.swift */; };
-		AC9DC45E211AC92C002D7D23 /* TradeViewOnlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC45C211AC92C002D7D23 /* TradeViewOnlyViewController.swift */; };
-		AC9DC45F211AC92C002D7D23 /* TradeViewOnlyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9DC45D211AC92C002D7D23 /* TradeViewOnlyViewController.xib */; };
+		AC9DC45E211AC92C002D7D23 /* TokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC45C211AC92C002D7D23 /* TokenViewController.swift */; };
+		AC9DC45F211AC92C002D7D23 /* TokenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9DC45D211AC92C002D7D23 /* TokenViewController.xib */; };
 		AC9DC462211C0D87002D7D23 /* TradeSelectionNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DC461211C0D87002D7D23 /* TradeSelectionNavigationViewController.swift */; };
 		AC9FFF2121254BAC00957175 /* DefaultStepSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FFF2021254BAC00957175 /* DefaultStepSlider.swift */; };
 		AC9FFF252126BDF800957175 /* MarketChangeTokenSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9FFF232126BDF800957175 /* MarketChangeTokenSwipeViewController.swift */; };
@@ -452,6 +454,8 @@
 		ACE6F7242042228A0039273D /* GlobalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F7232042228A0039273D /* GlobalPicker.swift */; };
 		ACE6F72720426BAC0039273D /* SettingThemeModeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F72520426BAC0039273D /* SettingThemeModeTableViewCell.swift */; };
 		ACE6F72820426BAC0039273D /* SettingThemeModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE6F72620426BAC0039273D /* SettingThemeModeTableViewCell.xib */; };
+		ACE9F0462186FB5800695E37 /* WalletViewControllerDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9F0452186FB5700695E37 /* WalletViewControllerDropdownMenu.swift */; };
+		ACE9F0482186FD1A00695E37 /* AppDelegateNotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9F0472186FD1A00695E37 /* AppDelegateNotificationExtension.swift */; };
 		ACEC977F20AD57F3003F9DEB /* P2POrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEC977D20AD57F3003F9DEB /* P2POrderHistoryViewController.swift */; };
 		ACEC978020AD57F3003F9DEB /* P2POrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACEC977E20AD57F3003F9DEB /* P2POrderHistoryViewController.xib */; };
 		ACEC978220AD6165003F9DEB /* P2POrderHistoryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEC978120AD6165003F9DEB /* P2POrderHistoryDataManager.swift */; };
@@ -640,6 +644,9 @@
 		AC1B6D752130FB510026C1B2 /* Bytes+SecureRandom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bytes+SecureRandom.swift"; sourceTree = "<group>"; };
 		AC1B6D762130FB510026C1B2 /* Secp256k1Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secp256k1Helper.swift; sourceTree = "<group>"; };
 		AC1B6D772130FB510026C1B2 /* KeystoreFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeystoreFactory.swift; sourceTree = "<group>"; };
+		AC1BDECA2184E149002CF4ED /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		AC1BDECC218523BB002CF4ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AC1BDECE21853A9F002CF4ED /* UP Wallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "UP Wallet.entitlements"; sourceTree = "<group>"; };
 		AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
 		AC1E4BBB204B420D00C6B1FA /* KeystoreIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeystoreIntegrationTests.swift; sourceTree = "<group>"; };
 		AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletTests.swift; sourceTree = "<group>"; };
@@ -841,8 +848,8 @@
 		AC9DC45521159082002D7D23 /* MiniToLargeViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniToLargeViewAnimator.swift; sourceTree = "<group>"; };
 		AC9DC45621159083002D7D23 /* BaseAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAnimator.swift; sourceTree = "<group>"; };
 		AC9DC45721159083002D7D23 /* MiniToLargeViewInteractive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniToLargeViewInteractive.swift; sourceTree = "<group>"; };
-		AC9DC45C211AC92C002D7D23 /* TradeViewOnlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewOnlyViewController.swift; sourceTree = "<group>"; };
-		AC9DC45D211AC92C002D7D23 /* TradeViewOnlyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeViewOnlyViewController.xib; sourceTree = "<group>"; };
+		AC9DC45C211AC92C002D7D23 /* TokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenViewController.swift; sourceTree = "<group>"; };
+		AC9DC45D211AC92C002D7D23 /* TokenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TokenViewController.xib; sourceTree = "<group>"; };
 		AC9DC461211C0D87002D7D23 /* TradeSelectionNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSelectionNavigationViewController.swift; sourceTree = "<group>"; };
 		AC9FFF2021254BAC00957175 /* DefaultStepSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStepSlider.swift; sourceTree = "<group>"; };
 		AC9FFF232126BDF800957175 /* MarketChangeTokenSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketChangeTokenSwipeViewController.swift; sourceTree = "<group>"; };
@@ -955,6 +962,8 @@
 		ACE6F7232042228A0039273D /* GlobalPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalPicker.swift; sourceTree = "<group>"; };
 		ACE6F72520426BAC0039273D /* SettingThemeModeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingThemeModeTableViewCell.swift; sourceTree = "<group>"; };
 		ACE6F72620426BAC0039273D /* SettingThemeModeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingThemeModeTableViewCell.xib; sourceTree = "<group>"; };
+		ACE9F0452186FB5700695E37 /* WalletViewControllerDropdownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewControllerDropdownMenu.swift; sourceTree = "<group>"; };
+		ACE9F0472186FD1A00695E37 /* AppDelegateNotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateNotificationExtension.swift; sourceTree = "<group>"; };
 		ACEBB12921336C830037991A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		ACEBB12A21336C840037991A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		ACEBB12B21336C840037991A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -977,7 +986,6 @@
 		ACEC977E20AD57F3003F9DEB /* P2POrderHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = P2POrderHistoryViewController.xib; sourceTree = "<group>"; };
 		ACEC978120AD6165003F9DEB /* P2POrderHistoryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P2POrderHistoryDataManager.swift; sourceTree = "<group>"; };
 		ACF06A05204C736A00C3FF86 /* CreateMnemonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMnemonicTests.swift; sourceTree = "<group>"; };
-		ACFD5FB1216F06D500E161EE /* UP Wallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "UP Wallet.entitlements"; sourceTree = "<group>"; };
 		ACFD5FB22171B8AB00E161EE /* UpdatedOrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedOrderHistoryViewController.swift; sourceTree = "<group>"; };
 		ACFD5FB32171B8AB00E161EE /* UpdatedOrderHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedOrderHistoryViewController.xib; sourceTree = "<group>"; };
 		ACFD5FB621740F7400E161EE /* OrderIntervalTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderIntervalTime.swift; sourceTree = "<group>"; };
@@ -1573,9 +1581,10 @@
 		AC798E412022B93A0071D477 /* loopr-ios */ = {
 			isa = PBXGroup;
 			children = (
-				ACFD5FB1216F06D500E161EE /* UP Wallet.entitlements */,
+				AC1BDECE21853A9F002CF4ED /* UP Wallet.entitlements */,
 				ACCC7EA120828D2E008E58BA /* loopr-ios-sdk */,
 				AC798E422022B93A0071D477 /* AppDelegate.swift */,
+				ACE9F0472186FD1A00695E37 /* AppDelegateNotificationExtension.swift */,
 				ACFEFE9D20C3436000013921 /* loopr_ios.xcdatamodeld */,
 				AC5288AF208300570002AEAD /* Utils */,
 				AC798E482022B93A0071D477 /* Main.storyboard */,
@@ -1608,6 +1617,7 @@
 				ACDA889E20F85F9C004FA10B /* InfoPlist.strings */,
 				FF9C7DD9208D55F8004687AD /* Settings.bundle */,
 				FF9C7DDB208D59EA004687AD /* SettingsBundleHelper.swift */,
+				AC1BDECC218523BB002CF4ED /* GoogleService-Info.plist */,
 			);
 			path = "loopr-ios";
 			sourceTree = "<group>";
@@ -1660,11 +1670,13 @@
 				AC3B48812103EA6B008A6771 /* TradeSelectionViewController.swift */,
 				AC3B48822103EA6B008A6771 /* TradeSelectionViewController.xib */,
 				AC9280E0202EC53D0009B574 /* TradeNavigationViewController.swift */,
+				94768C9F210DCABE00B5977B /* TradeSwipeViewController.swift */,
+				94768CA0210DCABE00B5977B /* TradeSwipeViewController.xib */,
 				AC56625920563C05003C925C /* TradeViewController.swift */,
 				AC56625A20563C05003C925C /* TradeViewController.xib */,
 				AC69913920AA6000003593AE /* SwitchTradeToken */,
-				AC9DC45C211AC92C002D7D23 /* TradeViewOnlyViewController.swift */,
-				AC9DC45D211AC92C002D7D23 /* TradeViewOnlyViewController.xib */,
+				AC9DC45C211AC92C002D7D23 /* TokenViewController.swift */,
+				AC9DC45D211AC92C002D7D23 /* TokenViewController.xib */,
 				ACB729D2205DE21B00DD4DF3 /* TradeConfirmationViewController.swift */,
 				ACB729D3205DE21B00DD4DF3 /* TradeConfirmationViewController.xib */,
 				AC31CE122057B5A400A30335 /* TradeReviewViewController.swift */,
@@ -1673,8 +1685,6 @@
 				AC5E3E6A205DEAC00051ACFC /* TradeCompleteViewController.xib */,
 				ACEC977D20AD57F3003F9DEB /* P2POrderHistoryViewController.swift */,
 				ACEC977E20AD57F3003F9DEB /* P2POrderHistoryViewController.xib */,
-				94768C9F210DCABE00B5977B /* TradeSwipeViewController.swift */,
-				94768CA0210DCABE00B5977B /* TradeSwipeViewController.xib */,
 				941138C5210F12AD007FDC82 /* TimeToLiveViewController.swift */,
 				941138C6210F12AD007FDC82 /* TimeToLiveViewController.xib */,
 				949774EE21181E38001BF79D /* TradeRatioViewController.swift */,
@@ -1829,6 +1839,7 @@
 			children = (
 				ACACB8B4213B90BF00F5ACC5 /* PushNotificationDeviceDataManager.swift */,
 				AC7BC855214386AF004204D3 /* PushNotificationSettingManager.swift */,
+				AC1BDECA2184E149002CF4ED /* LocalNotificationManager.swift */,
 			);
 			path = PushNotification;
 			sourceTree = "<group>";
@@ -1950,6 +1961,7 @@
 				ACB911512024254F00F14644 /* WalletNavigationViewController.swift */,
 				ACB911532024260E00F14644 /* WalletViewController.swift */,
 				ACB911542024260E00F14644 /* WalletViewController.xib */,
+				ACE9F0452186FB5700695E37 /* WalletViewControllerDropdownMenu.swift */,
 				AC5E0DDC203B447700AF03C7 /* WalletBalanceTableViewCell.swift */,
 				AC5E0DDD203B447700AF03C7 /* WalletBalanceTableViewCell.xib */,
 				AC2ACA5720FA1A5F009C77E7 /* WalletButtonTableViewCell.swift */,
@@ -2346,6 +2358,9 @@
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -2446,6 +2461,7 @@
 				AC2ACA84210305F8009C77E7 /* TradeFAQTableViewCell.xib in Resources */,
 				AC5E0996205F270000801738 /* ScanQRCodeViewController.xib in Resources */,
 				AC4F8639209D483B002E62AB /* SettingLRCFeeRatioViewController.xib in Resources */,
+				AC1BDECD218523BC002CF4ED /* GoogleService-Info.plist in Resources */,
 				943C1CB320CE26CE008A8CED /* LoginResultViewController.xib in Resources */,
 				942FE782210D5A1C005C723D /* SendConfirmViewController.xib in Resources */,
 				AC06193A208401EB0060F416 /* MnemonicAddressTableViewCell.xib in Resources */,
@@ -2520,7 +2536,7 @@
 				ACBA47E320788ECD0032C2B4 /* SettingManageWalletViewController.xib in Resources */,
 				94BFF9CF21072EA000A0BE8B /* TokenSelectTableViewController.xib in Resources */,
 				6630916921005B54006DA630 /* AssetSwipeViewController.xib in Resources */,
-				AC9DC45F211AC92C002D7D23 /* TradeViewOnlyViewController.xib in Resources */,
+				AC9DC45F211AC92C002D7D23 /* TokenViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2555,9 +2571,11 @@
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/MKDropdownMenu/MKDropdownMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -2567,6 +2585,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyMarkdown/SwiftyMarkdown.framework",
 				"${BUILT_PRODUCTS_DIR}/TrezorCrypto/TrezorCrypto.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/secp256k1_ios/secp256k1_ios.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -2575,9 +2594,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MKDropdownMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -2587,6 +2608,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTheme.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyMarkdown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrezorCrypto.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/secp256k1_ios.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2692,6 +2714,7 @@
 				AC69913B20AA6254003593AE /* SettingWalletDetailViewControllerDataSource.swift in Sources */,
 				AC5E3E6B205DEAC00051ACFC /* TradeCompleteViewController.swift in Sources */,
 				AC88669B21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift in Sources */,
+				ACE9F0462186FB5800695E37 /* WalletViewControllerDropdownMenu.swift in Sources */,
 				943A9A4120909597008BCBFD /* DefaultWebViewController.swift in Sources */,
 				942C4A0021293022008A6B4F /* ConvertETHResultViewController.swift in Sources */,
 				AC0CD58120D226C500ABB7BA /* TabBarItemAnimateTipsContentView.swift in Sources */,
@@ -2716,8 +2739,10 @@
 				94A1C0DF2128461100FD3A1F /* Partner.swift in Sources */,
 				AC70E84E20683C7500451047 /* IconView.swift in Sources */,
 				943C1CB220CE26CE008A8CED /* LoginResultViewController.swift in Sources */,
+				ACE9F0482186FD1A00695E37 /* AppDelegateNotificationExtension.swift in Sources */,
 				ACB5DD9C202D5B8000140A09 /* NumericKeyboardCell.swift in Sources */,
 				AC5E0991205F256500801738 /* AddTokenViewController.swift in Sources */,
+				AC1BDECB2184E149002CF4ED /* LocalNotificationManager.swift in Sources */,
 				AC31B949204A8DF400B16155 /* Scrypt.swift in Sources */,
 				AC8DBC6D20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.swift in Sources */,
 				ACB746E52043C5F5006C2BF5 /* QRCodeViewController.swift in Sources */,
@@ -2878,7 +2903,7 @@
 				94768CA1210DCABE00B5977B /* TradeSwipeViewController.swift in Sources */,
 				AC2C93D72105AE97004B8456 /* GenerateWalletEnterRepeatPasswordViewController.swift in Sources */,
 				ACE65E412071F875001EE499 /* MnemonicCollectionViewController.swift in Sources */,
-				AC9DC45E211AC92C002D7D23 /* TradeViewOnlyViewController.swift in Sources */,
+				AC9DC45E211AC92C002D7D23 /* TokenViewController.swift in Sources */,
 				AC31B93A204A4F9000B16155 /* Language.swift in Sources */,
 				94E185992051455C00D86FFA /* SimpleRespond.swift in Sources */,
 				9457416E20D0D23400110CFD /* CancelType.swift in Sources */,
@@ -3152,7 +3177,7 @@
 		};
 		94D0536B2134F47C005F92D6 /* vivwallet */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C8EC92DEC13D2448238E02B /* Pods-loopr-ios.release.xcconfig */;
+			baseConfigurationReference = DB375D875A161ED45585D9CD /* Pods-loopr-ios.vivwallet.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon${BUNDLE_ID_SUFFIX}";
 				BUNDLE_ID_SUFFIX = .vivwallet;
@@ -3173,7 +3198,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = leaf.prod.app;
+				PRODUCT_BUNDLE_IDENTIFIER = leaf.prod.app.vivwallet;
 				PRODUCT_MODULE_NAME = loopr_ios;
 				PRODUCT_NAME = vivwallet;
 				PROVISIONING_PROFILE = "";
@@ -3289,7 +3314,7 @@
 		};
 		94D053712134F49D005F92D6 /* loopr */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C8EC92DEC13D2448238E02B /* Pods-loopr-ios.release.xcconfig */;
+			baseConfigurationReference = 2CB22DE5D166E294F492AF43 /* Pods-loopr-ios.loopr.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon${BUNDLE_ID_SUFFIX}";
 				BUNDLE_ID_SUFFIX = .loopr;
@@ -3310,7 +3335,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = leaf.prod.app;
+				PRODUCT_BUNDLE_IDENTIFIER = leaf.prod.app.loopr;
 				PRODUCT_MODULE_NAME = loopr_ios;
 				PRODUCT_NAME = Loopr;
 				PROVISIONING_PROFILE = "";
@@ -3499,7 +3524,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3510,8 +3535,9 @@
 				PRODUCT_NAME = "UP Wallet";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

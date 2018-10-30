@@ -42,8 +42,8 @@ class OrderDetailViewController: UIViewController, UIScrollViewDelegate {
     
     var order: Order?
     
-    var tokenSView: TradeViewOnlyViewController = TradeViewOnlyViewController()
-    var tokenBView: TradeViewOnlyViewController = TradeViewOnlyViewController()
+    var tokenSView: TokenViewController = TokenViewController()
+    var tokenBView: TokenViewController = TokenViewController()
     
     var marketLabel: UILabel = UILabel(frame: .zero)
     var typeLabel: UILabel = UILabel(frame: .zero)
