@@ -29,6 +29,7 @@
 "Send" = "转出";
 "Sent" = "转出";
 "Scan" = "扫描";
+"Please go to device settings to enable access." = "请到手机设置更改访问权限";
 "Copy Address" = "复制地址";
 "Hide Small Assets" = "隐藏小额资产";
 "My Wallet Address" = "我的钱包地址";

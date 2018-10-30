@@ -29,6 +29,7 @@
 "Send" = "轉出";
 "Sent" = "已轉出";
 "Scan" = "掃描";
+"Please go to device settings to enable access." = "請到手機設置更改訪問權限";
 "Copy Address" = "複製地址";
 "Hide Small Assets" = "隱藏小額資產";
 "My Wallet Address" = "我的錢包地址";
