@@ -26,6 +26,7 @@
 "Send" = "전송";
 "Sent" = "전송된";
 "Scan" = "QR 스캔";
+"Please go to device settings to enable access." = "Please go to device settings to enable access.";
 "Copy Address" = "주소 복사";
 "Hide Small Assets" = "작은 자산 숨기기";
 "My Wallet Address" = "내 지갑 주소";

@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Crashlytics
 
 protocol QRCodeScanProtocol: class {
     func setResultOfScanningQRCode(valueSent: String, type: QRCodeType)
@@ -112,6 +113,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             captureMetadataOutput.rectOfInterest = rectOfInterest!
         } catch {
             print(error)
+            displaySettingNotification()
             return
         }
         self.setupScanLine()
@@ -377,4 +379,15 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         return nil
     }
 
+    func displaySettingNotification() {
+        let alert = UIAlertController(title: LocalizedString("Please go to device settings to enable access.", comment: ""), message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: LocalizedString("OK", comment: ""), style: .default, handler: { _ in
+            AppServiceManager.shared.setLargestSkipBuildVersion()
+            Answers.logCustomEvent(withName: "App Update Notification v1",
+                                   customAttributes: [
+                                    "update": "true"])
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 }
