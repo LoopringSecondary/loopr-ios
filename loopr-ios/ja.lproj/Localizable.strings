@@ -33,6 +33,7 @@
 "Hide Small Assets" = "Hide Small Assets";
 "My Wallet Address" = "My Wallet Address";
 "My wallet address" = "My wallet address";
+"Send tokens to the address in pasteboard?" = "Send tokens to the address in pasteboard?";
 
 /* Import wallet and create wallet */
 "Initializing the wallet" = "Initializing the wallet";

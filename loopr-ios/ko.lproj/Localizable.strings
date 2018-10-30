@@ -30,6 +30,7 @@
 "Hide Small Assets" = "작은 자산 숨기기";
 "My Wallet Address" = "내 지갑 주소";
 "My wallet address" = "내 지갑 주소";
+"Send tokens to the address in pasteboard?" = "Send tokens to the address in pasteboard?";
 
 /* Import wallet and create wallet */
 "Initializing the wallet" = "지갑 초기 설정";

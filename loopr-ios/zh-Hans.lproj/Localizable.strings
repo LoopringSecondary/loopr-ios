@@ -33,6 +33,7 @@
 "Hide Small Assets" = "隐藏小额资产";
 "My Wallet Address" = "我的钱包地址";
 "My wallet address" = "我的钱包地址";
+"Send tokens to the address in pasteboard?" = "发送代币到剪切板上的地址？";
 
 /* Import wallet and create wallet */
 "Initializing the wallet" = "钱包正在初始化";
