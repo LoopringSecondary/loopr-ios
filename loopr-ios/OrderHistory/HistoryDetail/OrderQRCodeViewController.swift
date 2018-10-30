@@ -20,7 +20,7 @@ class OrderQRCodeViewController: UIViewController {
     @IBOutlet weak var seperateLine: UIView!
     @IBOutlet weak var shareOrderButton: GradientButton!
     @IBOutlet weak var saveToAlbumButton: UIButton!
-    
+
     @IBOutlet weak var shareContentView: UIView!
     @IBOutlet weak var shareImageView: UIImageView!
     @IBOutlet weak var titleInShare: UILabel!
@@ -73,7 +73,7 @@ class OrderQRCodeViewController: UIViewController {
         saveToAlbumButton.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
         saveToAlbumButton.theme_setTitleColor(GlobalPicker.textDarkColor, forState: .highlighted)
         saveToAlbumButton.titleLabel?.font = FontConfigManager.shared.getMediumFont(size: 14)
-        
+
         generateQRCode(originalOrder: self.originalOrder!)
         
         if let order = self.originalOrder {
