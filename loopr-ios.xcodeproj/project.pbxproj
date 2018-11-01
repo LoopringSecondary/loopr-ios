@@ -456,6 +456,7 @@
 		ACE6F72820426BAC0039273D /* SettingThemeModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE6F72620426BAC0039273D /* SettingThemeModeTableViewCell.xib */; };
 		ACE9F0462186FB5800695E37 /* WalletViewControllerDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9F0452186FB5700695E37 /* WalletViewControllerDropdownMenu.swift */; };
 		ACE9F0482186FD1A00695E37 /* AppDelegateNotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9F0472186FD1A00695E37 /* AppDelegateNotificationExtension.swift */; };
+		ACE9F04A218AAB4300695E37 /* AppServiceUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9F049218AAB4300695E37 /* AppServiceUserManager.swift */; };
 		ACEC977F20AD57F3003F9DEB /* P2POrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEC977D20AD57F3003F9DEB /* P2POrderHistoryViewController.swift */; };
 		ACEC978020AD57F3003F9DEB /* P2POrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACEC977E20AD57F3003F9DEB /* P2POrderHistoryViewController.xib */; };
 		ACEC978220AD6165003F9DEB /* P2POrderHistoryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEC978120AD6165003F9DEB /* P2POrderHistoryDataManager.swift */; };
@@ -964,6 +965,7 @@
 		ACE6F72620426BAC0039273D /* SettingThemeModeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingThemeModeTableViewCell.xib; sourceTree = "<group>"; };
 		ACE9F0452186FB5700695E37 /* WalletViewControllerDropdownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewControllerDropdownMenu.swift; sourceTree = "<group>"; };
 		ACE9F0472186FD1A00695E37 /* AppDelegateNotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateNotificationExtension.swift; sourceTree = "<group>"; };
+		ACE9F049218AAB4300695E37 /* AppServiceUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServiceUserManager.swift; sourceTree = "<group>"; };
 		ACEBB12921336C830037991A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		ACEBB12A21336C840037991A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		ACEBB12B21336C840037991A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -1649,6 +1651,7 @@
 			isa = PBXGroup;
 			children = (
 				AC8866982174688500815DD1 /* AppServiceManager.swift */,
+				ACE9F049218AAB4300695E37 /* AppServiceUserManager.swift */,
 				AC88669A21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift */,
 			);
 			path = AppService;
@@ -2785,6 +2788,7 @@
 				ACFD5FB42171B8AB00E161EE /* UpdatedOrderHistoryViewController.swift in Sources */,
 				AC0CD57B20D21C1100ABB7BA /* TabBarItemBouncesContentView.swift in Sources */,
 				942C4A02212A9D89008A6B4F /* P2PType.swift in Sources */,
+				ACE9F04A218AAB4300695E37 /* AppServiceUserManager.swift in Sources */,
 				AC88669E2174923800815DD1 /* SetLRCRatioFeeViewController.swift in Sources */,
 				AC1B6D7F2130FB510026C1B2 /* Secp256k1Helper.swift in Sources */,
 				ACFEFE9F20C3436000013921 /* loopr_ios.xcdatamodeld in Sources */,
@@ -3524,7 +3528,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3535,8 +3539,9 @@
 				PRODUCT_NAME = "UP Wallet";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
