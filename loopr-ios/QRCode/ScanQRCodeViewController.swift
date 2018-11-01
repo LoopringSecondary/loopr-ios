@@ -382,7 +382,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     func displaySettingNotification() {
         let alert = UIAlertController(title: LocalizedString("Please go to device settings to enable access.", comment: ""), message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: LocalizedString("OK", comment: ""), style: .default, handler: { _ in
-            AppServiceManager.shared.setLargestSkipBuildVersion()
+            AppServiceUpdateManager.shared.setLargestSkipBuildVersion()
             Answers.logCustomEvent(withName: "App Update Notification v1",
                                    customAttributes: [
                                     "update": "true"])

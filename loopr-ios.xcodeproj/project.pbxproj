@@ -310,7 +310,7 @@
 		AC7BC8592144E102004204D3 /* WalletCreateSuccessfullyPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BC8572144E102004204D3 /* WalletCreateSuccessfullyPopViewController.swift */; };
 		AC7BC85A2144E102004204D3 /* WalletCreateSuccessfullyPopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC7BC8582144E102004204D3 /* WalletCreateSuccessfullyPopViewController.xib */; };
 		AC7BC85C2145B477004204D3 /* AppWalletExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BC85B2145B477004204D3 /* AppWalletExtension.swift */; };
-		AC8866992174688500815DD1 /* AppServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8866982174688500815DD1 /* AppServiceManager.swift */; };
+		AC8866992174688500815DD1 /* AppServiceUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8866982174688500815DD1 /* AppServiceUpdateManager.swift */; };
 		AC88669B21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC88669A21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift */; };
 		AC88669E2174923800815DD1 /* SetLRCRatioFeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC88669C2174923800815DD1 /* SetLRCRatioFeeViewController.swift */; };
 		AC88669F2174923800815DD1 /* SetLRCRatioFeeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC88669D2174923800815DD1 /* SetLRCRatioFeeViewController.xib */; };
@@ -816,7 +816,7 @@
 		AC7BC8572144E102004204D3 /* WalletCreateSuccessfullyPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCreateSuccessfullyPopViewController.swift; sourceTree = "<group>"; };
 		AC7BC8582144E102004204D3 /* WalletCreateSuccessfullyPopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletCreateSuccessfullyPopViewController.xib; sourceTree = "<group>"; };
 		AC7BC85B2145B477004204D3 /* AppWalletExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWalletExtension.swift; sourceTree = "<group>"; };
-		AC8866982174688500815DD1 /* AppServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServiceManager.swift; sourceTree = "<group>"; };
+		AC8866982174688500815DD1 /* AppServiceUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServiceUpdateManager.swift; sourceTree = "<group>"; };
 		AC88669A21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewControllerExtensionAppService.swift; sourceTree = "<group>"; };
 		AC88669C2174923800815DD1 /* SetLRCRatioFeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLRCRatioFeeViewController.swift; sourceTree = "<group>"; };
 		AC88669D2174923800815DD1 /* SetLRCRatioFeeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetLRCRatioFeeViewController.xib; sourceTree = "<group>"; };
@@ -1650,7 +1650,7 @@
 		AC8866972174685300815DD1 /* AppService */ = {
 			isa = PBXGroup;
 			children = (
-				AC8866982174688500815DD1 /* AppServiceManager.swift */,
+				AC8866982174688500815DD1 /* AppServiceUpdateManager.swift */,
 				ACE9F049218AAB4300695E37 /* AppServiceUserManager.swift */,
 				AC88669A21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift */,
 			);
@@ -2777,7 +2777,7 @@
 				AC5442DC2081167E0036A2B4 /* SwiftyJSON.swift in Sources */,
 				AC45EFEB20D0CCF5004F6EC0 /* AlertForErrorExtension.swift in Sources */,
 				AC3756702038D3ED00AADC60 /* UnlockWalletType.swift in Sources */,
-				AC8866992174688500815DD1 /* AppServiceManager.swift in Sources */,
+				AC8866992174688500815DD1 /* AppServiceUpdateManager.swift in Sources */,
 				ACB97C6D20707B6F00775D4C /* AddTokenTableViewCell.swift in Sources */,
 				ACB8AD89207F299700B478D6 /* UIViewController+BackButton.swift in Sources */,
 				AC7BC8592144E102004204D3 /* WalletCreateSuccessfullyPopViewController.swift in Sources */,

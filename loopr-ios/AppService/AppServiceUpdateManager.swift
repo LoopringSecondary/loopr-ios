@@ -8,9 +8,9 @@
 
 import Foundation
 
-class AppServiceManager {
+class AppServiceUpdateManager {
     
-    static let shared = AppServiceManager()
+    static let shared = AppServiceUpdateManager()
 
     var latestBuildVersion: String = "0.0.1"
     var latestBuildDescription: String?

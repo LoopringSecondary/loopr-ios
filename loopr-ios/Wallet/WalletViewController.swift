@@ -171,7 +171,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     PushNotificationSettingManager.shared.registerForPushNotifications()
                     
                     // Check app version
-                    AppServiceManager.shared.getLatestAppVersion(completion: {(shouldDisplayUpdateNotification) in
+                    AppServiceUpdateManager.shared.getLatestAppVersion(completion: {(shouldDisplayUpdateNotification) in
                         if shouldDisplayUpdateNotification {
                             self.displayUpdateNotification()
                         }
