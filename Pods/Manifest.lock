@@ -4,29 +4,30 @@ PODS:
   - Charts (3.0.5):
     - Charts/Core (= 3.0.5)
   - Charts/Core (3.0.5)
-  - Crashlytics (3.10.5):
-    - Fabric (~> 1.7.9)
+  - Crashlytics (3.11.1):
+    - Fabric (~> 1.8.1)
   - CryptoSwift (0.8.3)
-  - ESTabBarController-swift (2.6.2)
-  - Fabric (1.7.9)
+  - ESTabBarController-swift (2.6.4)
+  - Fabric (1.8.2)
   - Geth (1.8.8)
-  - MarqueeLabel/Swift (3.1.6)
+  - MarqueeLabel/Swift (3.2.0)
   - MKDropdownMenu (1.4)
   - NotificationBannerSwift (1.6.3):
     - MarqueeLabel/Swift
     - SnapKit (~> 4.0)
   - secp256k1_ios (0.1.3)
   - SipHash (1.2.0)
-  - SnapKit (4.0.0)
+  - SnapKit (4.2.0)
   - Socket.IO-Client-Swift (13.1.3):
     - Starscream (~> 3.0.2)
-  - Starscream (3.0.5)
+  - Starscream (3.0.6)
   - StepSlider (1.2.1)
   - SVProgressHUD (2.2.5)
   - SwiftLint (0.27.0)
-  - SwiftTheme (0.4.1)
-  - SwiftyMarkdown (0.5.1)
+  - SwiftTheme (0.4.3)
+  - SwiftyMarkdown (0.6.0)
   - TrezorCrypto (0.0.4)
+  - WeChat_SDK (1.8.1)
 
 DEPENDENCIES:
   - BigInt (= 3.0.1)
@@ -37,16 +38,17 @@ DEPENDENCIES:
   - Fabric
   - Geth (= 1.8.8)
   - MKDropdownMenu
-  - NotificationBannerSwift
+  - NotificationBannerSwift (~> 1.6.1)
   - secp256k1_ios (from `https://github.com/shamatar/secp256k1_ios.git`)
   - SipHash (= 1.2.0)
   - Socket.IO-Client-Swift (~> 13.1.0)
-  - "StepSlider (from `git@github.com:xiaowheat/StepSlider.git`)"
+  - StepSlider (from `https://github.com/xiaowheat/StepSlider.git`)
   - SVProgressHUD
   - SwiftLint
   - SwiftTheme
   - SwiftyMarkdown
   - TrezorCrypto (= 0.0.4)
+  - WeChat_SDK (~> 1.8.1)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -69,12 +71,13 @@ SPEC REPOS:
     - SwiftTheme
     - SwiftyMarkdown
     - TrezorCrypto
+    - WeChat_SDK
 
 EXTERNAL SOURCES:
   secp256k1_ios:
     :git: https://github.com/shamatar/secp256k1_ios.git
   StepSlider:
-    :git: "git@github.com:xiaowheat/StepSlider.git"
+    :git: https://github.com/xiaowheat/StepSlider.git
 
 CHECKOUT OPTIONS:
   secp256k1_ios:
@@ -82,31 +85,32 @@ CHECKOUT OPTIONS:
     :git: https://github.com/shamatar/secp256k1_ios.git
   StepSlider:
     :commit: 86ffd212f5822a4c844414052a61b7c0ca95de67
-    :git: "git@github.com:xiaowheat/StepSlider.git"
+    :git: https://github.com/xiaowheat/StepSlider.git
 
 SPEC CHECKSUMS:
   BigInt: 8e8a52161c745cd3ab78e3dc346a9fbee51e6cf6
   Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
-  Crashlytics: 7f2e38d302d9da96475b3d64d86fb29e31a542b7
+  Crashlytics: ca7ab4bc304aa216bdc2e4c1a96389ee77252203
   CryptoSwift: 033efc3523865d19cc6ab6612fa17a62613b5dfa
-  ESTabBarController-swift: f0a8679e43df1e60b7b36bbcaf1dc98ba6273c7d
-  Fabric: a2917d3895e4c1569b9c3170de7320ea1b1e6661
+  ESTabBarController-swift: 58cca4ab7de980657d99a02181c1ff310983e975
+  Fabric: d2b22f443ba195d8a7cc204da230977c72733b40
   Geth: 483ea44b5f930b72320218290b939ba8e2389aaf
-  MarqueeLabel: 0c41f08ef5773e29c0f71064a8fa788a2fd8b365
+  MarqueeLabel: 440a502b91a9179bd98f9fff00ba1150650a1c0e
   MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
   NotificationBannerSwift: b231e4c3244848ef300e1c53ce027b9756b9b06f
   secp256k1_ios: ac9ef04e761f43c58012b28548afa91493761f17
   SipHash: c6e9e43e9c531b5bc6602545130c26194a6d31ce
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Socket.IO-Client-Swift: d30d6fd08a38ad2a182b090936a043bf512ab2de
-  Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   StepSlider: e1c9b8f3363cf87224e19c000abe9f5146f80dd1
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
-  SwiftTheme: 36d71c4eed4b2c401c782cf036e4586c749a8173
-  SwiftyMarkdown: 743af3e87931391bc4836b825fec3d98785b2e3a
+  SwiftTheme: 628345b948068a48d330d76dffb1a990ea5f90aa
+  SwiftyMarkdown: 698fe6b283dddac69747f4e08ed0d067c18e0356
   TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803
+  WeChat_SDK: 681388233ac24a3ed6c4803cb3e0b6d3602050aa
 
-PODFILE CHECKSUM: 7bab5dbc2fb1f3604ad8373601b22275a6e971e9
+PODFILE CHECKSUM: af3c4ded32637a463188f80b572ff37e143eaa67
 
 COCOAPODS: 1.5.0

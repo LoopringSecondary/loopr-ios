@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ThirdPartyViewController" customModule="loopr_ios" customModuleProvider="target">
+            <connections>
+                <outlet property="footerTip" destination="wBN-Ht-lSF" id="eqt-hy-gL8"/>
+                <outlet property="footerTip2" destination="w2S-Jd-MCK" id="h01-sW-bPT"/>
+                <outlet property="loginTitle" destination="X15-pO-7Ra" id="SRX-SG-TZU"/>
+                <outlet property="skipButton" destination="XTJ-TJ-gpR" id="Mb4-ka-QIn"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="wechatButton" destination="D2U-ER-TaM" id="ak0-2a-zKt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X15-pO-7Ra">
+                    <rect key="frame" x="166.5" y="120" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D2U-ER-TaM">
+                    <rect key="frame" x="157.5" y="260" width="60" height="60"/>
+                    <state key="normal" image="Login-wechat"/>
+                    <connections>
+                        <action selector="pressedWechatLogin:" destination="-1" eventType="touchUpInside" id="Bfd-qs-Wnv"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTJ-TJ-gpR">
+                    <rect key="frame" x="164.5" y="472" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="pressedSkipButton:" destination="-1" eventType="touchUpInside" id="qdq-MF-9JF"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBN-Ht-lSF">
+                    <rect key="frame" x="166.5" y="596" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2S-Jd-MCK">
+                    <rect key="frame" x="166.5" y="625" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="wBN-Ht-lSF" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="6Eu-Yc-T6H"/>
+                <constraint firstItem="X15-pO-7Ra" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Ngy-g8-TxT"/>
+                <constraint firstItem="D2U-ER-TaM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="240" id="O1V-mh-f5T"/>
+                <constraint firstItem="D2U-ER-TaM" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="QyK-Pm-lrC"/>
+                <constraint firstItem="X15-pO-7Ra" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="RNL-ka-KXU"/>
+                <constraint firstItem="w2S-Jd-MCK" firstAttribute="centerX" secondItem="wBN-Ht-lSF" secondAttribute="centerX" id="TVR-UK-frw"/>
+                <constraint firstItem="XTJ-TJ-gpR" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="aqO-ou-ULY"/>
+                <constraint firstItem="wBN-Ht-lSF" firstAttribute="bottom" secondItem="w2S-Jd-MCK" secondAttribute="top" constant="-8" id="bd0-yy-Uum"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="XTJ-TJ-gpR" secondAttribute="bottom" constant="165" id="fvh-U5-wb9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="wBN-Ht-lSF" secondAttribute="bottom" constant="50" id="v6H-he-ttQ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Login-wechat" width="60" height="60"/>
+    </resources>
+</document>

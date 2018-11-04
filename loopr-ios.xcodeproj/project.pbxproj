@@ -74,6 +74,8 @@
 		94AA0A9E211550440092D2CE /* PlaceOrderConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AA0A9D211550440092D2CE /* PlaceOrderConfirmationViewController.xib */; };
 		94AA0AA0211578460092D2CE /* ConfirmationResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AA0A9F211578460092D2CE /* ConfirmationResultViewController.xib */; };
 		94AD1FE5208B910D00C443E6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AD1FE4208B910D00C443E6 /* Currency.swift */; };
+		94AEF3B6218AA6A900112AAC /* ThirdPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AEF3B4218AA6A900112AAC /* ThirdPartyViewController.swift */; };
+		94AEF3B7218AA6A900112AAC /* ThirdPartyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AEF3B5218AA6A900112AAC /* ThirdPartyViewController.xib */; };
 		94B5CA8A204FB4E20081BA93 /* DefaultBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5CA89204FB4E20081BA93 /* DefaultBlock.swift */; };
 		94B5CA8C204FE8E40081BA93 /* ETH_Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5CA8B204FE8E40081BA93 /* ETH_Transaction.swift */; };
 		94BB338421115FD6002D44DA /* OrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BB338321115FD6002D44DA /* OrderDetailViewController.xib */; };
@@ -109,6 +111,7 @@
 		AC06193E208417AF0060F416 /* QRCodeMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC06193D208417AF0060F416 /* QRCodeMethod.swift */; };
 		AC061940208469970060F416 /* NotificationBannerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC06193F208469960060F416 /* NotificationBannerStyle.swift */; };
 		AC0619422085D01E0060F416 /* SearchBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0619412085D01E0060F416 /* SearchBarContainerView.swift */; };
+		AC06AB13218EE27700B83C19 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC06AB12218EE27700B83C19 /* keys.plist */; };
 		AC0C5C82203D153F00C8618D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0C5C81203D153F00C8618D /* CoreGraphics.framework */; };
 		AC0C5C84203D154700C8618D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0C5C83203D154700C8618D /* QuartzCore.framework */; };
 		AC0C5C86203D168C00C8618D /* TickerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C5C85203D168C00C8618D /* TickerLabel.swift */; };
@@ -572,6 +575,8 @@
 		94AA0A9D211550440092D2CE /* PlaceOrderConfirmationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceOrderConfirmationViewController.xib; sourceTree = "<group>"; };
 		94AA0A9F211578460092D2CE /* ConfirmationResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmationResultViewController.xib; sourceTree = "<group>"; };
 		94AD1FE4208B910D00C443E6 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		94AEF3B4218AA6A900112AAC /* ThirdPartyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyViewController.swift; sourceTree = "<group>"; };
+		94AEF3B5218AA6A900112AAC /* ThirdPartyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThirdPartyViewController.xib; sourceTree = "<group>"; };
 		94B5CA89204FB4E20081BA93 /* DefaultBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBlock.swift; sourceTree = "<group>"; };
 		94B5CA8B204FE8E40081BA93 /* ETH_Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETH_Transaction.swift; sourceTree = "<group>"; };
 		94BB338321115FD6002D44DA /* OrderDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderDetailViewController.xib; path = "loopr-ios/OrderHistory/HistoryDetail/OrderDetailViewController.xib"; sourceTree = SOURCE_ROOT; };
@@ -606,6 +611,7 @@
 		AC06193D208417AF0060F416 /* QRCodeMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeMethod.swift; sourceTree = "<group>"; };
 		AC06193F208469960060F416 /* NotificationBannerStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBannerStyle.swift; sourceTree = "<group>"; };
 		AC0619412085D01E0060F416 /* SearchBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarContainerView.swift; sourceTree = "<group>"; };
+		AC06AB12218EE27700B83C19 /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		AC0C5C7A203D131200C8618D /* loopr-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "loopr-ios-Bridging-Header.h"; sourceTree = "<group>"; };
 		AC0C5C81203D153F00C8618D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		AC0C5C83203D154700C8618D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1083,6 +1089,15 @@
 				94C11FD9208C2DE40050E180 /* SettingCurrencyTableViewCell.xib */,
 			);
 			path = SettingCurrency;
+			sourceTree = "<group>";
+		};
+		94AEF3B3218AA67B00112AAC /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				94AEF3B4218AA6A900112AAC /* ThirdPartyViewController.swift */,
+				94AEF3B5218AA6A900112AAC /* ThirdPartyViewController.xib */,
+			);
+			path = ThirdParty;
 			sourceTree = "<group>";
 		};
 		94E665E42071DFE0001328BF /* HistoryDetail */ = {
@@ -1581,6 +1596,7 @@
 		AC798E412022B93A0071D477 /* loopr-ios */ = {
 			isa = PBXGroup;
 			children = (
+				94AEF3B3218AA67B00112AAC /* ThirdParty */,
 				AC1BDECE21853A9F002CF4ED /* UP Wallet.entitlements */,
 				ACCC7EA120828D2E008E58BA /* loopr-ios-sdk */,
 				AC798E422022B93A0071D477 /* AppDelegate.swift */,
@@ -1611,6 +1627,7 @@
 				AC54FD26204FC61C007E1DEB /* Fonts */,
 				AC798E4D2022B93A0071D477 /* LaunchScreen.storyboard */,
 				AC798E502022B93A0071D477 /* Info.plist */,
+				AC06AB12218EE27700B83C19 /* keys.plist */,
 				ACDA889720F5D86E004FA10B /* Localizable */,
 				ACE5BFA920466EFD005D75DD /* Localizable.strings */,
 				AC0C5C7A203D131200C8618D /* loopr-ios-Bridging-Header.h */,
@@ -2441,6 +2458,7 @@
 				ACC8D0A720CC95A00049A741 /* AssetTableViewCell.xib in Resources */,
 				AC3B48842103EA6B008A6771 /* TradeSelectionViewController.xib in Resources */,
 				ACB41A7020B54BB300A92C9D /* AuthenticationViewController.xib in Resources */,
+				94AEF3B7218AA6A900112AAC /* ThirdPartyViewController.xib in Resources */,
 				AC9FFF2E2126C07800957175 /* MarketChangeTokenTableViewCell.xib in Resources */,
 				AC6A3479210D740500AE615B /* MarketDetailSwipeViewController.xib in Resources */,
 				AC0CD58620D2330300ABB7BA /* H5DexViewController.xib in Resources */,
@@ -2455,6 +2473,7 @@
 				AC2ACA5120FA0EC3009C77E7 /* Rubik-Black.ttf in Resources */,
 				AC131A1521101AD0001998A0 /* MarketDetailTradeHistoryTableViewCell.xib in Resources */,
 				ACBA47EF207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.xib in Resources */,
+				AC06AB13218EE27700B83C19 /* keys.plist in Resources */,
 				943A9A4220909597008BCBFD /* DefaultWebViewController.xib in Resources */,
 				AC2ACA86210305F8009C77E7 /* TradeFAQViewController.xib in Resources */,
 				94BFF9D321073EE300A0BE8B /* SetGasViewController.xib in Resources */,
@@ -2731,6 +2750,7 @@
 				AC9FFF2D2126C07800957175 /* MarketChangeTokenTableViewCell.swift in Sources */,
 				94A1C0DF2128461100FD3A1F /* Partner.swift in Sources */,
 				AC70E84E20683C7500451047 /* IconView.swift in Sources */,
+				94AEF3B6218AA6A900112AAC /* ThirdPartyViewController.swift in Sources */,
 				943C1CB220CE26CE008A8CED /* LoginResultViewController.swift in Sources */,
 				ACE9F0482186FD1A00695E37 /* AppDelegateNotificationExtension.swift in Sources */,
 				ACB5DD9C202D5B8000140A09 /* NumericKeyboardCell.swift in Sources */,

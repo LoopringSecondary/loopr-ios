@@ -16,7 +16,7 @@ import Crashlytics
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
 
     var window: UIWindow?
     let splashImageView = SplashImageView(frame: .zero)
@@ -40,17 +40,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setDefaultMaskType(.clear)
         SVProgressHUD.setMinimumSize(CGSize(width: 240, height: 120))
         
-        let initialViewController = MainTabController(nibName: nil, bundle: nil)
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
+        self.window?.rootViewController = getRootViewController()
 
         // Note: Don't change the following sequence of setup
         AppWalletDataManager.shared.setup()
         CurrentAppWalletDataManager.shared.setup()
-        if AppWalletDataManager.shared.getWallets().isEmpty {
-            self.window?.rootViewController = SetupNavigationController(nibName: nil, bundle: nil)
-        }
 
         // Get the estimate gas price when launching the app.
         GasDataManager.shared.getEstimateGasPrice { (_, _) in }
@@ -85,7 +81,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         splashImageView.frame = self.window!.frame
         self.window?.addSubview(splashImageView)
         self.window?.bringSubview(toFront: splashImageView)
+        
+        if hasKeysPlist() {
+            print("Found keys.plist")
+            WXApi.registerApp(getWechatAppId()!)
+        }
 
+        return true
+    }
+    
+    func getRootViewController() -> UIViewController {
+        var result: UIViewController
+        if Production.getCurrent() == .upwallet {
+            if UserDefaults.standard.string(forKey: "openid") != nil && hasKeysPlist() {
+                if AppWalletDataManager.shared.getWallets().isEmpty {
+                    result = SetupNavigationController(nibName: nil, bundle: nil)
+                } else {
+                    result = MainTabController(nibName: nil, bundle: nil)
+                }
+            } else {
+                result = ThirdPartyViewController(nibName: nil, bundle: nil)
+            }
+        } else {
+            if AppWalletDataManager.shared.getWallets().isEmpty {
+                result = SetupNavigationController(nibName: nil, bundle: nil)
+            } else {
+                result = MainTabController(nibName: nil, bundle: nil)
+            }
+        }
+        return result
+    }
+    
+    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
+        if hasKeysPlist() && url.scheme == getWechatAppId()! {
+            WXApi.handleOpen(url, delegate: self)
+        }
+        return true
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        if hasKeysPlist() && url.scheme == getWechatAppId()! {
+            WXApi.handleOpen(url, delegate: self)
+        }
+        return true
+    }
+    
+    func application(app: UIApplication, openURL url: URL, options: [String: AnyObject]) -> Bool {
+        if hasKeysPlist() && url.scheme == getWechatAppId()! {
+            return WXApi.handleOpen(url, delegate: self)
+        }
         return true
     }
     
@@ -93,11 +137,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if url.host == nil {
             return true
         }
-        let queryArray = url.absoluteString.components(separatedBy: "/")
-        let unescaped = queryArray[2].removingPercentEncoding!
-        AuthorizeDataManager.shared.process(qrContent: unescaped)
-        if let main = self.window?.rootViewController as? MainTabController {
-            main.processExternalUrl()
+        if hasKeysPlist() && url.scheme == getWechatAppId()! {
+            return WXApi.handleOpen(url, delegate: self)
+        } else {
+            let queryArray = url.absoluteString.components(separatedBy: "/")
+            let unescaped = queryArray[2].removingPercentEncoding!
+            AuthorizeDataManager.shared.process(qrContent: unescaped)
+            if let main = self.window?.rootViewController as? MainTabController {
+                main.processExternalUrl()
+            }
         }
         return true
     }
@@ -125,11 +173,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-        
-        // For some reason, SplashImageView doesn't work here. SplashImageView is to used to avoid SVProgress and backgroundImage shows up at the same time.
-        
         if !AuthenticationDataManager.shared.isAuthenticating {
             let backgroundImageView = UIImageView(frame: .zero)
             backgroundImageView.tag = 2345
@@ -151,7 +194,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
-
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         print("applicationDidBecomeActive")
@@ -229,6 +272,81 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Answers.logCustomEvent(withName: "didFailToRegisterForRemoteNotificationsWithError v1",
                                customAttributes: [
                                "error": error.localizedDescription])
+    }
+    
+    //  微信回调
+    func onResp(_ resp: BaseResp!) {
+        //  微信登录回调
+        if resp.isKind(of: SendAuthResp.self) {
+            let authResp = resp as! SendAuthResp
+            if authResp.errCode == 0, let code = authResp.code, let appid = getWechatAppId(), let secret = getWechatAppSecret() {
+                let parameters = ["appid": appid, "secret": secret, "code": code, "grant_type": "authorization_code"]
+                Request.get("https://api.weixin.qq.com/sns/oauth2/access_token", parameters: parameters) { data, _, error in
+                    guard let data = data, error == nil else {
+                        return
+                    }
+                    let json = JSON(data)
+                    let accessToken = json["access_token"].stringValue
+                    let openID = json["openid"].stringValue
+                    UserDefaults.standard.set(accessToken, forKey: "access_token")
+                    UserDefaults.standard.set(openID, forKey: "openid")
+                    UserDefaults.standard.synchronize()
+                    self.wechatLoginByRequestForUserInfo()
+                }
+            }
+        }
+    }
+    
+    func wechatLoginByRequestForUserInfo() {
+        let accessToken = UserDefaults.standard.string(forKey: "access_token")
+        let openID = UserDefaults.standard.string(forKey: "openid")
+        // 获取用户信息
+        let parameters = ["access_token": accessToken!, "openid": openID!]
+        Request.get("https://api.weixin.qq.com/sns/oauth2/access_token", parameters: parameters) { _, _, error in
+            guard error == nil else { return }
+            DispatchQueue.main.async {
+                if AppWalletDataManager.shared.getWallets().isEmpty {
+                    self.window?.rootViewController = SetupNavigationController(nibName: nil, bundle: nil)
+                } else {
+                    self.window?.rootViewController = MainTabController(nibName: nil, bundle: nil)
+                }
+            }
+        }
+    }
+    
+    // Put keys.plist next to info.plist in Xcode.
+    func hasKeysPlist() -> Bool {
+        if Bundle.main.path(forResource: "keys", ofType: "plist") != nil {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func getWechatAppId() -> String? {
+        var keys: NSDictionary?
+        
+        if let path = Bundle.main.path(forResource: "keys", ofType: "plist") {
+            keys = NSDictionary(contentsOfFile: path)
+        }
+        if let dict = keys {
+            let wechatAppId = dict["wechatAppId"] as? String
+            return wechatAppId
+        }
+        return nil
+    }
+
+    func getWechatAppSecret() -> String? {
+        var keys: NSDictionary?
+        
+        if let path = Bundle.main.path(forResource: "keys", ofType: "plist") {
+            keys = NSDictionary(contentsOfFile: path)
+        }
+        if let dict = keys {
+            let wechatAppId = dict["wechatAppSecret"] as? String
+            return wechatAppId
+        }
+        return nil
     }
 
 }

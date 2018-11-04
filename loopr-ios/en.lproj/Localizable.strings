@@ -10,6 +10,12 @@
 "Loopring P2P Order" = "Loopring P2P Order";
 "UP Wallet" = "UP Wallet";
 
+/* Third party */
+"Third title" = "—— Third Party Authorize ——";
+"Third skip" = "skip";
+"Third tip1" = "Third party authorize, restore your configuration.";
+"Third tip2" = "To prevent losing your app, you could skip it also.";
+
 /* ETH related */
 "Mnemonic" = "Mnemonic";
 "Keystore" = "Keystore";

@@ -49,5 +49,25 @@ class Request {
         }
         task.resume()
     }
+    
+    static func get(_ url: String, parameters: [String: String], completionHandler: @escaping CompletionHandler) {
+        var components = URLComponents(string: url)!
+        components.queryItems = parameters.map { (key, value) in
+            URLQueryItem(name: key, value: value)
+        }
+        components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
+        let request = URLRequest(url: components.url!)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data,                            // is there data
+                let response = response as? HTTPURLResponse,  // is there HTTP response
+                (200 ..< 300) ~= response.statusCode,         // is statusCode 2XX
+                error == nil else {                           // was there no error, otherwise ...
+                    return
+            }
+            let responseObject = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any]
+            completionHandler(data, response, error)
+        }
+        task.resume()
+    }
 
 }

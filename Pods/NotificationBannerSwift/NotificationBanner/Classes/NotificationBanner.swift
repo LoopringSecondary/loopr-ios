@@ -64,9 +64,9 @@ public class NotificationBanner: BaseNotificationBanner {
             contentView.addSubview(leftView)
             
             leftView.snp.makeConstraints({ (make) in
-                make.top.equalToSuperview().offset(20)
-                make.left.equalToSuperview().offset(20)
-                make.bottom.equalToSuperview().offset(-20)
+                make.top.equalToSuperview().offset(10)
+                make.left.equalToSuperview().offset(10)
+                make.bottom.equalToSuperview().offset(-10)
                 make.width.equalTo(leftView.snp.height)
             })
         }
@@ -75,9 +75,9 @@ public class NotificationBanner: BaseNotificationBanner {
             contentView.addSubview(rightView)
             
             rightView.snp.makeConstraints({ (make) in
-                make.top.equalToSuperview().offset(20)
-                make.right.equalToSuperview().offset(-20)
-                make.bottom.equalToSuperview().offset(-20)
+                make.top.equalToSuperview().offset(10)
+                make.right.equalToSuperview().offset(-10)
+                make.bottom.equalToSuperview().offset(-10)
                 make.width.equalTo(rightView.snp.height)
             })
         }

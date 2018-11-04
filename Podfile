@@ -7,15 +7,17 @@ def shared_pods
     pod 'SwiftLint'
     pod 'SwiftTheme'
     pod 'Socket.IO-Client-Swift', '~> 13.1.0'
-    pod 'NotificationBannerSwift'
+    pod 'NotificationBannerSwift', '~> 1.6.1'
     pod 'SVProgressHUD'
     pod 'ESTabBarController-swift'
     pod 'SwiftyMarkdown'
     pod 'MKDropdownMenu'
-    pod 'StepSlider', :git => 'git@github.com:xiaowheat/StepSlider.git'
+    pod 'StepSlider', git: 'https://github.com/xiaowheat/StepSlider.git'
     
     pod 'Fabric'
     pod 'Crashlytics'
+
+    pod 'WeChat_SDK', '~> 1.8.1'
     
     # Pods for keystone
     pod 'Geth', '1.8.8'

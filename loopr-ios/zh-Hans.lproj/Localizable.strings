@@ -10,6 +10,12 @@
 "Loopring P2P Order" = "路印P2P订单";
 "UP Wallet" = "UP钱包";
 
+/* Third party */
+"Third title" = "—— 第三方授权 ——";
+"Third skip" = "跳过";
+"Third tip1" = "第三方授权登录，系统可以保存您的APP配置。";
+"Third tip2" = "防止删除或者更新APP后丢失，您也可以选择跳过。";
+
 /* ETH related */
 "Mnemonic" = "助记词";
 "Keystore" = "Keystore";

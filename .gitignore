@@ -30,3 +30,6 @@ xcuserdata/
 *.ipa
 *.dSYM.zip
 *.dSYM
+
+keys.plist
+Keys.plist
