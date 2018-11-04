@@ -40,7 +40,7 @@ class AssetSwipeViewController: SwipeViewController {
         let screenWidth = screensize.width
         
         baseView.frame = CGRect(x: 15, y: 10, width: screenWidth - 30, height: 120)
-        baseView.image = UIImage(named: "wallet-background" + ColorTheme.getTheme())
+        baseView.image = UIImage(named: "wallet-selected-background" + ColorTheme.getTheme())
         baseView.contentMode = .scaleToFill
         view.addSubview(baseView)
         

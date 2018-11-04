@@ -37,14 +37,15 @@ class SettingManageWalletTableViewCell: UITableViewCell {
         baseView.image = UIImage(named: "wallet-background" + ColorTheme.getTheme())
         baseView.contentMode = .scaleToFill
         baseView.clipsToBounds = true
-        
+        baseView.cornerRadius = 6
+
         selectedIconView.image = UIImage(named: "wallet-checked")
         selectedIconView.contentMode = .scaleToFill
 
         nameLabel.font = FontConfigManager.shared.getRegularFont(size: 16)
         nameLabel.textColor = UIColor.init(white: 1, alpha: 1)
         
-        toatalBalanceLabel.font = FontConfigManager.shared.getMediumFont(size: 24)
+        toatalBalanceLabel.font = FontConfigManager.shared.getMediumFont(size: 32)
         toatalBalanceLabel.textColor = UIColor.init(white: 1, alpha: 0.9)
         
         addressLabel.font = FontConfigManager.shared.getMediumFont(size: 13)
@@ -91,6 +92,6 @@ class SettingManageWalletTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 120+10
+        return 200+10
     }
 }
