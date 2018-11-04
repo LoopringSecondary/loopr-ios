@@ -16,6 +16,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var assetTableView: UITableView!
     private let refreshControl = UIRefreshControl()
 
+    let buttonInNavigationBar =  UIButton(frame: .zero)
+    
     var isLaunching: Bool = true
     var isListeningSocketIO: Bool = false
     var numberOfRowsInSection1: Int = 0
@@ -47,8 +49,14 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         assetTableView.theme_backgroundColor = ColorPicker.backgroundColor
 
+        buttonInNavigationBar.frame = CGRect(x: 0, y: 0, width: 400, height: 40)
+        buttonInNavigationBar.titleLabel?.font = FontConfigManager.shared.getDigitalFont(size: 18)
+        buttonInNavigationBar.theme_setTitleColor(GlobalPicker.barTextColor, forState: .normal)
+        buttonInNavigationBar.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
+        buttonInNavigationBar.addTarget(self, action: #selector(self.clickNavigationTitleButton(_:)), for: .touchUpInside)
+        self.navigationItem.titleView = buttonInNavigationBar
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.pressAddButton(_:)))
-        // self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .organize, target: self, action: #selector(self.pressSwitchWallet(_:)))
         
         dropdownMenu.dataSource = self
         dropdownMenu.delegate = self
@@ -199,7 +207,15 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
         assetTableView.isUserInteractionEnabled = true
 
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        self.navigationItem.title = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? LocalizedString("Wallet", comment: "")
+        
+        let walletName = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name ?? LocalizedString("Wallet", comment: "")
+        buttonInNavigationBar.setRightImage(imageName: "Caret-down-dark", imagePaddingTop: 0, imagePaddingLeft: -24, titlePaddingRight: 0)
+        // TODO: needs to update the icon. It's too big here.
+        var padding = "  "
+        for _ in 0..<walletName.count*2 {
+            padding += "  "
+        }
+        buttonInNavigationBar.title = padding + walletName
 
         if let cell = assetTableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? WalletBalanceTableViewCell {
             cell.setup(animated: false)
@@ -369,6 +385,13 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
             viewController.address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
             self.navigationController?.pushViewController(viewController, animated: true)
         }
+    }
+    
+    @objc func clickNavigationTitleButton(_ button: UIButton) {
+        print("select another wallet.")
+        let viewController = SettingManageWalletViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc func pressSwitchWallet(_ button: UIBarButtonItem) {
