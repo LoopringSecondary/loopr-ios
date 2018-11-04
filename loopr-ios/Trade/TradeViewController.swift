@@ -726,6 +726,12 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: tokens) {
             message = "\(title) \(asset.display) \(tokens)"
             amountSellTextField.text = (asset.balance * value).withCommas(length).trailingZero().removeComma()
+            
+            // validate the text fields.
+            if asset.balance > 0 {
+                _ = validate()
+            }
+            
         } else {
             message = "\(title) 0.0 \(tokens)"
             amountSellTextField.text = "0.0"
@@ -733,7 +739,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         estimateValueInCurrency.text = message
         estimateValueInCurrency.textColor = .text2
         activeTextFieldTag = amountSellTextField.tag
-        _ = validate()
+
     }
 }
 
