@@ -38,7 +38,7 @@ DEPENDENCIES:
   - Fabric
   - Geth (= 1.8.8)
   - MKDropdownMenu
-  - NotificationBannerSwift (~> 1.6.1)
+  - NotificationBannerSwift (~> 1.6.3)
   - secp256k1_ios (from `https://github.com/shamatar/secp256k1_ios.git`)
   - SipHash (= 1.2.0)
   - Socket.IO-Client-Swift (~> 13.1.0)
@@ -111,6 +111,6 @@ SPEC CHECKSUMS:
   TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803
   WeChat_SDK: 681388233ac24a3ed6c4803cb3e0b6d3602050aa
 
-PODFILE CHECKSUM: af3c4ded32637a463188f80b572ff37e143eaa67
+PODFILE CHECKSUM: 6eb5d9f6f04493ce2736372fb272105a2cdce1f6
 
 COCOAPODS: 1.5.0

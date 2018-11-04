@@ -7,7 +7,7 @@ def shared_pods
     pod 'SwiftLint'
     pod 'SwiftTheme'
     pod 'Socket.IO-Client-Swift', '~> 13.1.0'
-    pod 'NotificationBannerSwift', '~> 1.6.1'
+    pod 'NotificationBannerSwift', '~> 1.6.3'
     pod 'SVProgressHUD'
     pod 'ESTabBarController-swift'
     pod 'SwiftyMarkdown'
