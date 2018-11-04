@@ -30,7 +30,7 @@ class DisplayPrivateKeyViewController: UIViewController {
         view.theme_backgroundColor = ColorPicker.backgroundColor
         privateKeyTextView.contentInset = UIEdgeInsets.init(top: 17, left: 20, bottom: 15, right: 20)
         privateKeyTextView.cornerRadius = 6
-        privateKeyTextView.font = FontConfigManager.shared.getRegularFont(size: 14)
+        privateKeyTextView.font = UIFont(name: "Menlo", size: 14)
         privateKeyTextView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         privateKeyTextView.theme_textColor = GlobalPicker.textLightColor
         privateKeyTextView.isEditable = false

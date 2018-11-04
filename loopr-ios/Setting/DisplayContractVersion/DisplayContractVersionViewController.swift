@@ -10,6 +10,7 @@ import UIKit
 
 class DisplayContractVersionViewController: UIViewController {
 
+    @IBOutlet weak var contractVersionLabel: UILabel!
     @IBOutlet weak var contractVersionTextView: UITextView!
 
     var url: URL?
@@ -23,12 +24,14 @@ class DisplayContractVersionViewController: UIViewController {
         view.theme_backgroundColor = ColorPicker.backgroundColor
         contractVersionTextView.contentInset = UIEdgeInsets.init(top: 17, left: 20, bottom: 15, right: 20)
         contractVersionTextView.cornerRadius = 6
-        contractVersionTextView.font = FontConfigManager.shared.getRegularFont(size: 14)
+        contractVersionTextView.font = UIFont(name: "Menlo", size: 14)
         contractVersionTextView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         contractVersionTextView.theme_textColor = GlobalPicker.textLightColor
         contractVersionTextView.isEditable = false
-        
-        contractVersionTextView.text = RelayAPIConfiguration.protocolAddress
+
+        contractVersionLabel.font = UIFont(name: "Menlo", size: 14)
+        contractVersionLabel.theme_textColor = GlobalPicker.textLightColor
+        contractVersionLabel.text = RelayAPIConfiguration.protocolAddress
         url = URL(string: "https://etherscan.io/address/\(RelayAPIConfiguration.protocolAddress)")
     }
 
@@ -42,6 +45,11 @@ class DisplayContractVersionViewController: UIViewController {
         if url != nil {
             setupSafariButton()
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
 
     func setupSafariButton() {

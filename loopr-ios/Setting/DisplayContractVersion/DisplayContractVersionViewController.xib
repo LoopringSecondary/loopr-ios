@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DisplayContractVersionViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
+                <outlet property="contractVersionLabel" destination="q60-vm-K1F" id="We6-vz-FFR"/>
                 <outlet property="contractVersionTextView" destination="JeI-Db-wth" id="tMl-mI-eRI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,14 +31,27 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q60-vm-K1F">
+                    <rect key="frame" x="35" y="47" width="344" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="4w1-s7-Hkv"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="q60-vm-K1F" firstAttribute="leading" secondItem="JeI-Db-wth" secondAttribute="leading" constant="20" id="9gy-hW-v6b"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JeI-Db-wth" secondAttribute="trailing" constant="15" id="AHp-lw-uyU"/>
                 <constraint firstItem="JeI-Db-wth" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="CEE-sc-FxA"/>
                 <constraint firstItem="JeI-Db-wth" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="Thg-PY-HMq"/>
+                <constraint firstItem="q60-vm-K1F" firstAttribute="top" secondItem="JeI-Db-wth" secondAttribute="top" constant="17" id="XYa-ZO-6IT"/>
+                <constraint firstItem="JeI-Db-wth" firstAttribute="trailing" secondItem="q60-vm-K1F" secondAttribute="trailing" constant="20" id="od2-w7-oON"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="137.68115942028987" y="98.641304347826093"/>
         </view>
     </objects>
 </document>
