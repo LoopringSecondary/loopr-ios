@@ -31,3 +31,5 @@ xcuserdata/
 *.dSYM.zip
 *.dSYM
 
+keys.plist
+Keys.plist
