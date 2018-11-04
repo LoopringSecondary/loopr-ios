@@ -147,7 +147,6 @@
 		AC1B6D7F2130FB510026C1B2 /* Secp256k1Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1B6D762130FB510026C1B2 /* Secp256k1Helper.swift */; };
 		AC1B6D802130FB510026C1B2 /* KeystoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1B6D772130FB510026C1B2 /* KeystoreFactory.swift */; };
 		AC1BDECB2184E149002CF4ED /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1BDECA2184E149002CF4ED /* LocalNotificationManager.swift */; };
-		AC1BDECD218523BC002CF4ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC1BDECC218523BB002CF4ED /* GoogleService-Info.plist */; };
 		AC1E4BB8204B28D000C6B1FA /* WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */; };
 		AC1E4BBC204B420D00C6B1FA /* KeystoreIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBB204B420D00C6B1FA /* KeystoreIntegrationTests.swift */; };
 		AC1E4BC0204B51AB00C6B1FA /* ImportWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E4BBF204B51AB00C6B1FA /* ImportWalletTests.swift */; };
@@ -310,7 +309,7 @@
 		AC7BC8592144E102004204D3 /* WalletCreateSuccessfullyPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BC8572144E102004204D3 /* WalletCreateSuccessfullyPopViewController.swift */; };
 		AC7BC85A2144E102004204D3 /* WalletCreateSuccessfullyPopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC7BC8582144E102004204D3 /* WalletCreateSuccessfullyPopViewController.xib */; };
 		AC7BC85C2145B477004204D3 /* AppWalletExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BC85B2145B477004204D3 /* AppWalletExtension.swift */; };
-		AC8866992174688500815DD1 /* AppServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8866982174688500815DD1 /* AppServiceManager.swift */; };
+		AC8866992174688500815DD1 /* AppServiceUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8866982174688500815DD1 /* AppServiceUpdateManager.swift */; };
 		AC88669B21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC88669A21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift */; };
 		AC88669E2174923800815DD1 /* SetLRCRatioFeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC88669C2174923800815DD1 /* SetLRCRatioFeeViewController.swift */; };
 		AC88669F2174923800815DD1 /* SetLRCRatioFeeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC88669D2174923800815DD1 /* SetLRCRatioFeeViewController.xib */; };
@@ -456,6 +455,7 @@
 		ACE6F72820426BAC0039273D /* SettingThemeModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE6F72620426BAC0039273D /* SettingThemeModeTableViewCell.xib */; };
 		ACE9F0462186FB5800695E37 /* WalletViewControllerDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9F0452186FB5700695E37 /* WalletViewControllerDropdownMenu.swift */; };
 		ACE9F0482186FD1A00695E37 /* AppDelegateNotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9F0472186FD1A00695E37 /* AppDelegateNotificationExtension.swift */; };
+		ACE9F04A218AAB4300695E37 /* AppServiceUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9F049218AAB4300695E37 /* AppServiceUserManager.swift */; };
 		ACEC977F20AD57F3003F9DEB /* P2POrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEC977D20AD57F3003F9DEB /* P2POrderHistoryViewController.swift */; };
 		ACEC978020AD57F3003F9DEB /* P2POrderHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACEC977E20AD57F3003F9DEB /* P2POrderHistoryViewController.xib */; };
 		ACEC978220AD6165003F9DEB /* P2POrderHistoryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEC978120AD6165003F9DEB /* P2POrderHistoryDataManager.swift */; };
@@ -645,7 +645,6 @@
 		AC1B6D762130FB510026C1B2 /* Secp256k1Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secp256k1Helper.swift; sourceTree = "<group>"; };
 		AC1B6D772130FB510026C1B2 /* KeystoreFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeystoreFactory.swift; sourceTree = "<group>"; };
 		AC1BDECA2184E149002CF4ED /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
-		AC1BDECC218523BB002CF4ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AC1BDECE21853A9F002CF4ED /* UP Wallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "UP Wallet.entitlements"; sourceTree = "<group>"; };
 		AC1E4BB7204B28CF00C6B1FA /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
 		AC1E4BBB204B420D00C6B1FA /* KeystoreIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeystoreIntegrationTests.swift; sourceTree = "<group>"; };
@@ -815,7 +814,7 @@
 		AC7BC8572144E102004204D3 /* WalletCreateSuccessfullyPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCreateSuccessfullyPopViewController.swift; sourceTree = "<group>"; };
 		AC7BC8582144E102004204D3 /* WalletCreateSuccessfullyPopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletCreateSuccessfullyPopViewController.xib; sourceTree = "<group>"; };
 		AC7BC85B2145B477004204D3 /* AppWalletExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWalletExtension.swift; sourceTree = "<group>"; };
-		AC8866982174688500815DD1 /* AppServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServiceManager.swift; sourceTree = "<group>"; };
+		AC8866982174688500815DD1 /* AppServiceUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServiceUpdateManager.swift; sourceTree = "<group>"; };
 		AC88669A21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewControllerExtensionAppService.swift; sourceTree = "<group>"; };
 		AC88669C2174923800815DD1 /* SetLRCRatioFeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLRCRatioFeeViewController.swift; sourceTree = "<group>"; };
 		AC88669D2174923800815DD1 /* SetLRCRatioFeeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetLRCRatioFeeViewController.xib; sourceTree = "<group>"; };
@@ -964,6 +963,7 @@
 		ACE6F72620426BAC0039273D /* SettingThemeModeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingThemeModeTableViewCell.xib; sourceTree = "<group>"; };
 		ACE9F0452186FB5700695E37 /* WalletViewControllerDropdownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewControllerDropdownMenu.swift; sourceTree = "<group>"; };
 		ACE9F0472186FD1A00695E37 /* AppDelegateNotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateNotificationExtension.swift; sourceTree = "<group>"; };
+		ACE9F049218AAB4300695E37 /* AppServiceUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServiceUserManager.swift; sourceTree = "<group>"; };
 		ACEBB12921336C830037991A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		ACEBB12A21336C840037991A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		ACEBB12B21336C840037991A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -1617,7 +1617,6 @@
 				ACDA889E20F85F9C004FA10B /* InfoPlist.strings */,
 				FF9C7DD9208D55F8004687AD /* Settings.bundle */,
 				FF9C7DDB208D59EA004687AD /* SettingsBundleHelper.swift */,
-				AC1BDECC218523BB002CF4ED /* GoogleService-Info.plist */,
 			);
 			path = "loopr-ios";
 			sourceTree = "<group>";
@@ -1648,7 +1647,8 @@
 		AC8866972174685300815DD1 /* AppService */ = {
 			isa = PBXGroup;
 			children = (
-				AC8866982174688500815DD1 /* AppServiceManager.swift */,
+				AC8866982174688500815DD1 /* AppServiceUpdateManager.swift */,
+				ACE9F049218AAB4300695E37 /* AppServiceUserManager.swift */,
 				AC88669A21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift */,
 			);
 			path = AppService;
@@ -2461,7 +2461,6 @@
 				AC2ACA84210305F8009C77E7 /* TradeFAQTableViewCell.xib in Resources */,
 				AC5E0996205F270000801738 /* ScanQRCodeViewController.xib in Resources */,
 				AC4F8639209D483B002E62AB /* SettingLRCFeeRatioViewController.xib in Resources */,
-				AC1BDECD218523BC002CF4ED /* GoogleService-Info.plist in Resources */,
 				943C1CB320CE26CE008A8CED /* LoginResultViewController.xib in Resources */,
 				942FE782210D5A1C005C723D /* SendConfirmViewController.xib in Resources */,
 				AC06193A208401EB0060F416 /* MnemonicAddressTableViewCell.xib in Resources */,
@@ -2571,11 +2570,9 @@
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/MKDropdownMenu/MKDropdownMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -2585,7 +2582,6 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyMarkdown/SwiftyMarkdown.framework",
 				"${BUILT_PRODUCTS_DIR}/TrezorCrypto/TrezorCrypto.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/secp256k1_ios/secp256k1_ios.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -2594,11 +2590,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MKDropdownMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -2608,7 +2602,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTheme.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyMarkdown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrezorCrypto.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/secp256k1_ios.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2774,7 +2767,7 @@
 				AC5442DC2081167E0036A2B4 /* SwiftyJSON.swift in Sources */,
 				AC45EFEB20D0CCF5004F6EC0 /* AlertForErrorExtension.swift in Sources */,
 				AC3756702038D3ED00AADC60 /* UnlockWalletType.swift in Sources */,
-				AC8866992174688500815DD1 /* AppServiceManager.swift in Sources */,
+				AC8866992174688500815DD1 /* AppServiceUpdateManager.swift in Sources */,
 				ACB97C6D20707B6F00775D4C /* AddTokenTableViewCell.swift in Sources */,
 				ACB8AD89207F299700B478D6 /* UIViewController+BackButton.swift in Sources */,
 				AC7BC8592144E102004204D3 /* WalletCreateSuccessfullyPopViewController.swift in Sources */,
@@ -2785,6 +2778,7 @@
 				ACFD5FB42171B8AB00E161EE /* UpdatedOrderHistoryViewController.swift in Sources */,
 				AC0CD57B20D21C1100ABB7BA /* TabBarItemBouncesContentView.swift in Sources */,
 				942C4A02212A9D89008A6B4F /* P2PType.swift in Sources */,
+				ACE9F04A218AAB4300695E37 /* AppServiceUserManager.swift in Sources */,
 				AC88669E2174923800815DD1 /* SetLRCRatioFeeViewController.swift in Sources */,
 				AC1B6D7F2130FB510026C1B2 /* Secp256k1Helper.swift in Sources */,
 				ACFEFE9F20C3436000013921 /* loopr_ios.xcdatamodeld in Sources */,

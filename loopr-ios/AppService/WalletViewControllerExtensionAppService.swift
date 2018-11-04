@@ -15,7 +15,7 @@ extension WalletViewController {
     func displayUpdateNotification() {
         let alert = UIAlertController(title: LocalizedString("A new version of app is ready to update", comment: ""), message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: LocalizedString("Skip_Update", comment: ""), style: .default, handler: { _ in
-            AppServiceManager.shared.setLargestSkipBuildVersion()
+            AppServiceUpdateManager.shared.setLargestSkipBuildVersion()
             Answers.logCustomEvent(withName: "App Update Notification v1",
                                    customAttributes: [
                                     "update": "false"])
@@ -25,7 +25,7 @@ extension WalletViewController {
             if let url = URL(string: Production.getUrlText()) {
                 UIApplication.shared.open(url)
             }
-            AppServiceManager.shared.setLargestSkipBuildVersion()
+            AppServiceUpdateManager.shared.setLargestSkipBuildVersion()
             Answers.logCustomEvent(withName: "App Update Notification v1",
                                    customAttributes: [
                                     "update": "true"])

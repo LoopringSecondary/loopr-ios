@@ -258,7 +258,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell?.trailingSeperateLineDown.constant = 15
             }
             cell?.leftLabel.text = LocalizedString("App Version", comment: "")
-            cell?.rightLabel.text = AppServiceManager.shared.getAppVersionAndBuildVersion()
+            cell?.rightLabel.text = AppServiceUpdateManager.shared.getAppVersionAndBuildVersion()
 
             return cell!
         default:

@@ -24,14 +24,13 @@ class MarketDetailSwipeViewController: SwipeViewController {
     @IBOutlet weak var priceInCryptoLabel: UILabel!
     @IBOutlet weak var priceInFiatCurrencyLabel: UILabel!
     @IBOutlet weak var priceChangeIn24HoursLabel: UILabel!
+    
+    @IBOutlet weak var hoursChangeInfoLabelWidthLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var hoursChangeInfoLabel: UILabel!
     @IBOutlet weak var hoursChangeLabel: UILabel!
-    @IBOutlet weak var hoursHighInfoLabel: UILabel!
-    @IBOutlet weak var hoursHighLabel: UILabel!
+    
     @IBOutlet weak var hoursVolumeInfoLabel: UILabel!
     @IBOutlet weak var hoursVolumeLabel: UILabel!
-    @IBOutlet weak var hoursLowInfoLabel: UILabel!
-    @IBOutlet weak var hoursLowLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,55 +38,41 @@ class MarketDetailSwipeViewController: SwipeViewController {
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = ColorPicker.backgroundColor
 
-        self.topConstraint = 180
+        self.topConstraint = 120
         types = [LocalizedString("Depth_in_Market_Detail", comment: ""), LocalizedString("Trades_in_Market_Detail", comment: "")]
         vc1.delegate = self
         viewControllers = [vc1, vc2]
         setupChildViewControllers()
 
         baseView.cornerRadius = 6
-        baseView.applyGradient(withColors: UIColor.secondary, gradientOrientation: .horizontal)
+        baseView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         
-        priceInCryptoLabel.font = FontConfigManager.shared.getDigitalFont()
+        priceInCryptoLabel.font = FontConfigManager.shared.getRegularFont(size: 16)
         priceInCryptoLabel.textColor = UIColor.init(white: 1, alpha: 1)
 
-        priceInFiatCurrencyLabel.font = FontConfigManager.shared.getDigitalFont()
+        priceInFiatCurrencyLabel.font = FontConfigManager.shared.getRegularFont(size: 18)
         priceInFiatCurrencyLabel.textColor = UIColor.init(white: 1, alpha: 1)
         priceInFiatCurrencyLabel.text = market.display.description
         priceInFiatCurrencyLabel.isHidden = true
 
-        priceChangeIn24HoursLabel.font = FontConfigManager.shared.getDigitalFont()
+        priceChangeIn24HoursLabel.font = FontConfigManager.shared.getRegularFont(size: 18)
         priceChangeIn24HoursLabel.textColor = UIColor.init(white: 1, alpha: 1)
         priceChangeIn24HoursLabel.text = market.changeInPat24
         priceChangeIn24HoursLabel.isHidden = true
-        
-        hoursChangeInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
-        hoursChangeInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.8)
-        hoursChangeInfoLabel.text = LocalizedString("24H Change", comment: "")
 
-        hoursChangeLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
+        hoursChangeInfoLabel.text = LocalizedString("24H Change", comment: "") + ": "
+        hoursChangeInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
+        hoursChangeInfoLabel.theme_textColor = GlobalPicker.textColor
+
+        hoursChangeLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
         hoursChangeLabel.textColor = UIColor.init(white: 1, alpha: 1)
 
-        hoursHighInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
-        hoursHighInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.8)
-        hoursHighInfoLabel.text = LocalizedString("24H High", comment: "")
-        
-        hoursHighLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
-        hoursHighLabel.textColor = UIColor.init(white: 1, alpha: 1)
-
+        hoursVolumeInfoLabel.text = LocalizedString("24H Volume", comment: "") + ": "
         hoursVolumeInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
-        hoursVolumeInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.8)
-        hoursVolumeInfoLabel.text = LocalizedString("24H Volume", comment: "")
+        hoursVolumeInfoLabel.theme_textColor = GlobalPicker.textColor
         
-        hoursVolumeLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
+        hoursVolumeLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
         hoursVolumeLabel.textColor = UIColor.init(white: 1, alpha: 1)
-        
-        hoursLowInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
-        hoursLowInfoLabel.textColor = UIColor.init(white: 1, alpha: 0.8)
-        hoursLowInfoLabel.text = LocalizedString("24H Low", comment: "")
-        
-        hoursLowLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
-        hoursLowLabel.textColor = UIColor.init(white: 1, alpha: 1)
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,16 +83,20 @@ class MarketDetailSwipeViewController: SwipeViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        let hoursChangeWidth = hoursChangeInfoLabel.text!.widthOfString(usingFont: hoursChangeInfoLabel.font)
+        let volumeChangeWidth = hoursChangeInfoLabel.text!.widthOfString(usingFont: hoursVolumeLabel.font)
+        hoursChangeInfoLabelWidthLayoutConstraint.constant = max(hoursChangeWidth, volumeChangeWidth) + 10
+        
         priceInCryptoLabel.text = "\(market.balanceWithDecimals) \(market.tradingPair.tradingB) ≈ \(market.display.description)"
+        priceInCryptoLabel.textColor = UIStyleConfig.getChangeColor(change: market.changeInPat24)
+
         hoursChangeLabel.text = market.changeInPat24
-        hoursHighLabel.text =  market.high == 0 ? "-" : market.high.withCommas(6)
         if market.volumeInPast24 > 1 {
             let vol = Darwin.round(market.volumeInPast24)
-            hoursVolumeLabel.text = "Vol \(vol.withCommas(0)) \(market.tradingPair.tradingB)"
+            hoursVolumeLabel.text = "\(vol.withCommas(0)) \(market.tradingPair.tradingB)"
         } else {
-            hoursVolumeLabel.text = "Vol \(market.volumeInPast24.withCommas()) \(market.tradingPair.tradingB)"
+            hoursVolumeLabel.text = "\(market.volumeInPast24.withCommas()) \(market.tradingPair.tradingB)"
         }
-        hoursLowLabel.text = market.low == 0 ? "-" : market.low.withCommas(6)
         
         setupChildViewControllers()
     }

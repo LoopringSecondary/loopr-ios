@@ -339,7 +339,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     func updateStepSlider() {
         var stepSliderPercentage: Double = 0
         let tokens = TradeDataManager.shared.tokenS.symbol
-        if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: tokens), let amountSell = Double(amountSellTextField.text!) {
+        if let asset = CurrentAppWalletDataManager.shared.getAsset(symbol: tokens), let amountSell = Double(amountSellTextField.text!), asset.balance > 0 {
             stepSliderPercentage = amountSell/asset.balance
         } else {
             stepSliderPercentage = 0
@@ -687,7 +687,9 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
             }
             activeTextField!.text = currentText
         case (3, 1):
-            activeTextField!.text = currentText + "0"
+            if currentText.count > 0 {
+                activeTextField!.text = currentText + "0"
+            }
         case (3, 2):
             if currentText.count > 0 {
                 currentText = String(currentText.dropLast())
