@@ -40,14 +40,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         SVProgressHUD.setDefaultMaskType(.clear)
         SVProgressHUD.setMinimumSize(CGSize(width: 240, height: 120))
         
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.makeKeyAndVisible()
-        self.window?.rootViewController = getRootViewController()
-
         // Note: Don't change the following sequence of setup
         AppWalletDataManager.shared.setup()
         CurrentAppWalletDataManager.shared.setup()
 
+        // Setting RootViewController must be after AppWalletDataManager.shared.setup()
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.makeKeyAndVisible()
+        self.window?.rootViewController = getRootViewController()
+        
         // Get the estimate gas price when launching the app.
         GasDataManager.shared.getEstimateGasPrice { (_, _) in }
 
