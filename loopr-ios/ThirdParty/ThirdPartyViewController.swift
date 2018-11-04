@@ -22,7 +22,7 @@ class ThirdPartyViewController: UIViewController {
         view.theme_backgroundColor = ColorPicker.backgroundColor
         loginTitle.setTitleCharFont()
         loginTitle.text = LocalizedString("Third title", comment: "")
-        skipButton.titleLabel?.setSubTitleCharFont()
+        skipButton.titleLabel?.setTitleCharFont()
         skipButton.title = LocalizedString("Third skip", comment: "")
         skipButton.setTitleColor(.theme, for: .normal)
         footerTip.setSubTitleCharFont()
