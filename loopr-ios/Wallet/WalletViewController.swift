@@ -178,11 +178,13 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     })
                     
                     // Get user config
+                    /*
                     AppServiceUserManager.shared.getUserConfig(completion: { (shouldDisplayUpdateNotification) in
                         AppServiceUserManager.shared.updateUserConfig(completion: { (_) in
                             
                         })
                     })
+                    */
                 }
                 
                 self.processPasteboard()
