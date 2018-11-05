@@ -13,9 +13,9 @@ class TradeDataManager {
     
     static let shared = TradeDataManager()
     static let qrcodeType: String = "P2P"
-    static let qrcodeHash: String = "Hash"
-    static let qrcodeAuth: String = "Auth"
-    static let sellRatio: String = "Ratio"
+    static let qrcodeHash: String = "hash"
+    static let qrcodeAuth: String = "auth"
+    static let sellCount: String = "count"
     
     var state: OrderTradeState
     var orders: [OriginalOrder] = []
@@ -28,7 +28,7 @@ class TradeDataManager {
     var type: TradeType = .buy
     var makerHash: String?
     var makerPrivateKey: String?
-    var sellRatio: Double = 1
+    var sellCount: Int = 1
     var amountTokenS: Double = 0.0
     var amountTokenB: Double = 0.0
     
@@ -116,7 +116,7 @@ class TradeDataManager {
     func handleResult(of scanning: JSON) {
         self.makerHash = scanning[TradeDataManager.qrcodeHash].stringValue
         let makerPrivateKey = scanning[TradeDataManager.qrcodeAuth].stringValue
-        self.sellRatio = scanning[TradeDataManager.sellRatio].doubleValue
+        self.sellCount = scanning[TradeDataManager.sellCount].intValue
         if let hash = self.makerHash, let maker = getOrder(by: hash) {
             let taker = constructTaker(from: maker)
             self.isTaker = true
@@ -145,14 +145,13 @@ class TradeDataManager {
         var buyNoMoreThanAmountB: Bool
         var amountBuy, amountSell: Double
         var tokenSell, tokenBuy, market: String
-        let ratio = self.sellRatio
         
         buyNoMoreThanAmountB = true
         tokenBuy = maker.tokenSell
         tokenSell = maker.tokenBuy
         market = "\(tokenSell)/\(tokenBuy)"
-        amountBuy = maker.amountSell * ratio
-        amountSell = maker.amountBuy * ratio
+        amountBuy = maker.amountSell / Double(sellCount)
+        amountSell = maker.amountBuy / Double(sellCount)
         
         let delegate = RelayAPIConfiguration.delegateAddress
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address

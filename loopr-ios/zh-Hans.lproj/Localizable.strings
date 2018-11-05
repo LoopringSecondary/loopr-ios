@@ -167,7 +167,7 @@
 "Change" = "涨跌";
 "Accept" = "允许授权";
 "Decline" = "拒绝授权";
-"Minimal Fill" = "最低成交率";
+"Minimal Count" = "订单拆分份数";
 "Records" = "订单记录";
 "Depth_in_Market_Detail" = "挂单";
 "Trades_in_Market_Detail" = "成交";
@@ -216,6 +216,7 @@
 "Amount/Filled" = "数量/成交率";
 "Status/Date" = "状态/时间";
 "Lrc_Fee_Tip" = "● Loopring 协议最低交易手续费: ";
+"Part" = "份";
 
 /* Trade tips */
 "Convert_DES" = "● 什么是WETH? WETH之于ETH, 正如硬币之于等额的纸币。某些场合, 贩卖机只能接受硬币, 因此需要转换。以太坊协议保证: WETH和ETH之间的转换比率为 1 : 1, 且永不改变。";

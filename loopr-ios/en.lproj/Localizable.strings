@@ -167,7 +167,7 @@
 "Change" = "Change";
 "Accept" = "Accept";
 "Decline" = "Decline";
-"Minimal Fill" = "Minimal Fill";
+"Minimal Count" = "Minimal Count";
 "Records" = "Records";
 "Depth_in_Market_Detail" = "Depth";
 "Trades_in_Market_Detail" = "Trades";
@@ -216,6 +216,7 @@
 "Amount/Filled" = "Amount/Filled";
 "Status/Date" = "Status/Date";
 "Lrc_Fee_Tip" = "● Min value of Loopring trading fee: ";
+"Part" = "part";
 
 /* Trade tips */
 "Convert_DES" = "● What is WETH? WETH is \"wrapped ETH\". ETH needs to be \"wrapped\" to be tradable against ERC20 tokens on DEXs. The value of WETH is always 1:1 with ETH, guaranteed by Ethereum.";

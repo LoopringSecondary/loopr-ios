@@ -97,6 +97,7 @@
 		94E185972051451C00D86FFA /* Initable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185962051451C00D86FFA /* Initable.swift */; };
 		94E185992051455C00D86FFA /* SimpleRespond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E185982051455C00D86FFA /* SimpleRespond.swift */; };
 		94E1976E2099A68200E70E42 /* OrderDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E1976D2099A68200E70E42 /* OrderDataManagerTests.swift */; };
+		94E40F36219018B90042614F /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94E40F35219018B90042614F /* keys.plist */; };
 		94E49ED4213CE99700CDDA02 /* PreventScreenShotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E49ED2213CE99700CDDA02 /* PreventScreenShotViewController.swift */; };
 		94E49ED5213CE99700CDDA02 /* PreventScreenShotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E49ED3213CE99700CDDA02 /* PreventScreenShotViewController.xib */; };
 		94E665E9207234C5001328BF /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E665E7207234C5001328BF /* OrderTableViewCell.swift */; };
@@ -320,7 +321,6 @@
 		AC8DBC6E20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */; };
 		AC8DBC7720BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */; };
 		AC8DBC7820BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8DBC7620BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.xib */; };
-		AC907A5D218EF60200E76EAA /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC907A5C218EF60200E76EAA /* keys.plist */; };
 		AC9089F3214D7ABB00F421F1 /* SplashImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9089F2214D7ABA00F421F1 /* SplashImageView.swift */; };
 		AC9280DD202E0F9F0009B574 /* EthereumAPIRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280DC202E0F9F0009B574 /* EthereumAPIRequestTests.swift */; };
 		AC9280E1202EC53D0009B574 /* TradeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280E0202EC53D0009B574 /* TradeNavigationViewController.swift */; };
@@ -597,6 +597,7 @@
 		94E185962051451C00D86FFA /* Initable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initable.swift; sourceTree = "<group>"; };
 		94E185982051455C00D86FFA /* SimpleRespond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRespond.swift; sourceTree = "<group>"; };
 		94E1976D2099A68200E70E42 /* OrderDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDataManagerTests.swift; sourceTree = "<group>"; };
+		94E40F35219018B90042614F /* keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = keys.plist; path = ../../../../Desktop/keys.plist; sourceTree = "<group>"; };
 		94E49ED2213CE99700CDDA02 /* PreventScreenShotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreventScreenShotViewController.swift; sourceTree = "<group>"; };
 		94E49ED3213CE99700CDDA02 /* PreventScreenShotViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreventScreenShotViewController.xib; sourceTree = "<group>"; };
 		94E665E7207234C5001328BF /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
@@ -827,7 +828,6 @@
 		AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicBackupModeCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicBackupModeCollectionViewController.swift; sourceTree = "<group>"; };
 		AC8DBC7620BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicBackupModeCollectionViewController.xib; sourceTree = "<group>"; };
-		AC907A5C218EF60200E76EAA /* keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		AC9089F2214D7ABA00F421F1 /* SplashImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashImageView.swift; sourceTree = "<group>"; };
 		AC9280DC202E0F9F0009B574 /* EthereumAPIRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumAPIRequestTests.swift; sourceTree = "<group>"; };
 		AC9280E0202EC53D0009B574 /* TradeNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeNavigationViewController.swift; sourceTree = "<group>"; };
@@ -1625,7 +1625,7 @@
 				AC54FD26204FC61C007E1DEB /* Fonts */,
 				AC798E4D2022B93A0071D477 /* LaunchScreen.storyboard */,
 				AC798E502022B93A0071D477 /* Info.plist */,
-				AC907A5C218EF60200E76EAA /* keys.plist */,
+				94E40F35219018B90042614F /* keys.plist */,
 				ACDA889720F5D86E004FA10B /* Localizable */,
 				ACE5BFA920466EFD005D75DD /* Localizable.strings */,
 				AC0C5C7A203D131200C8618D /* loopr-ios-Bridging-Header.h */,
@@ -2470,7 +2470,7 @@
 				AC2ACA5120FA0EC3009C77E7 /* Rubik-Black.ttf in Resources */,
 				AC131A1521101AD0001998A0 /* MarketDetailTradeHistoryTableViewCell.xib in Resources */,
 				ACBA47EF207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.xib in Resources */,
-				AC907A5D218EF60200E76EAA /* keys.plist in Resources */,
+				94E40F36219018B90042614F /* keys.plist in Resources */,
 				943A9A4220909597008BCBFD /* DefaultWebViewController.xib in Resources */,
 				AC2ACA86210305F8009C77E7 /* TradeFAQViewController.xib in Resources */,
 				94BFF9D321073EE300A0BE8B /* SetGasViewController.xib in Resources */,

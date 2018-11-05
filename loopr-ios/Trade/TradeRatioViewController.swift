@@ -16,11 +16,12 @@ class TradeRatioViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var seperateLine: UIView!
     @IBOutlet weak var pickerView: UIPickerView!
     
-    var sellRatio: Double = 1
+    var sellCount: Int = 1
     var titleArray = [Int]()
+    var digitArray = [Int]()
     var dismissClosure: (() -> Void)?
     var parentNavController: UINavigationController?
-    let width: CGFloat = UIScreen.main.bounds.width / 2
+    let width: CGFloat = UIScreen.main.bounds.width / 8
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +33,10 @@ class TradeRatioViewController: UIViewController, UIPickerViewDelegate, UIPicker
 
         pickerView.delegate = self
         pickerView.dataSource = self
-        titleArray = Array(stride(from: 100, through: 5, by: -5))
-        
+        titleArray = Array(0...9)
+        digitArray = [Int](repeating: 0, count: 4)
         titleLabel.setTitleCharFont()
-        titleLabel.text = LocalizedString("Minimal Fill", comment: "")
+        titleLabel.text = LocalizedString("Minimal Count", comment: "")
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         tap.delegate = self
@@ -72,11 +73,11 @@ class TradeRatioViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return 4
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 20
+        return 10
     }
     
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
@@ -91,12 +92,12 @@ class TradeRatioViewController: UIViewController, UIPickerViewDelegate, UIPicker
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: 40))
         label.textAlignment = .center
         label.setTitleDigitFont()
-        label.text = "\(titleArray[row])" + NumberFormatter().percentSymbol
+        label.text = "\(titleArray[row])"
         return label
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.sellRatio = Double(titleArray[row]) / Double(100)
+        digitArray[component] = row
+        self.sellCount = digitArray[0] * 1000 + digitArray[1] * 100 + digitArray[2] * 10 + digitArray[3]
     }
-
 }

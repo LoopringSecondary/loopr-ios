@@ -179,7 +179,7 @@ class OrderQRCodeViewController: UIViewController {
         body["type"] = JSON(TradeDataManager.qrcodeType)
         body["value"] = [TradeDataManager.qrcodeHash: originalOrder.hash,
                          TradeDataManager.qrcodeAuth: array[0],
-                         TradeDataManager.sellRatio: array[1]]
+                         TradeDataManager.sellCount: array[1]]
         do {
             let data = try body.rawData(options: .prettyPrinted)
             let ciContext = CIContext()
