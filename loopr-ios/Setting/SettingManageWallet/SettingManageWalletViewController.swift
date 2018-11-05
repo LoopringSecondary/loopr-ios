@@ -36,8 +36,7 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         headerView.theme_backgroundColor = ColorPicker.backgroundColor
         tableView.tableHeaderView = headerView
         
-        let iconTitlePadding: CGFloat = 14
-        // importButton.setTitle(LocalizedString("Import Wallet", comment: ""), for: .normal)
+        let iconTitlePadding: CGFloat = 20
         importButton.addTarget(self, action: #selector(self.pressedImportButton(_:)), for: .touchUpInside)
         importButton.set(image: UIImage.init(named: "SetupWallet-import")?.alpha(0.6), title: LocalizedString("Import Wallet", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .highlighted)
         importButton.set(image: UIImage.init(named: "SetupWallet-import"), title: LocalizedString("Import Wallet", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .normal)
@@ -45,7 +44,6 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         importButton.titleLabel?.theme_textColor = GlobalPicker.textLightColor
         importButton.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
 
-        // createButton.setTitle(LocalizedString("Generate Wallet", comment: ""), for: .normal)
         createButton.addTarget(self, action: #selector(self.pressedCreateButton(_:)), for: .touchUpInside)
         createButton.set(image: UIImage.init(named: "SetupWallet-generate")?.alpha(0.6), title: LocalizedString("Generate Wallet", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .highlighted)
         createButton.set(image: UIImage.init(named: "SetupWallet-generate"), title: LocalizedString("Generate Wallet", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .normal)
