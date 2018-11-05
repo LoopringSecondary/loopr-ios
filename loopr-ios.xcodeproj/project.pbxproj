@@ -111,7 +111,6 @@
 		AC06193E208417AF0060F416 /* QRCodeMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC06193D208417AF0060F416 /* QRCodeMethod.swift */; };
 		AC061940208469970060F416 /* NotificationBannerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC06193F208469960060F416 /* NotificationBannerStyle.swift */; };
 		AC0619422085D01E0060F416 /* SearchBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0619412085D01E0060F416 /* SearchBarContainerView.swift */; };
-		AC06AB13218EE27700B83C19 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC06AB12218EE27700B83C19 /* keys.plist */; };
 		AC0C5C82203D153F00C8618D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0C5C81203D153F00C8618D /* CoreGraphics.framework */; };
 		AC0C5C84203D154700C8618D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0C5C83203D154700C8618D /* QuartzCore.framework */; };
 		AC0C5C86203D168C00C8618D /* TickerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C5C85203D168C00C8618D /* TickerLabel.swift */; };
@@ -321,6 +320,7 @@
 		AC8DBC6E20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */; };
 		AC8DBC7720BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */; };
 		AC8DBC7820BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8DBC7620BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.xib */; };
+		AC907A5D218EF60200E76EAA /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC907A5C218EF60200E76EAA /* keys.plist */; };
 		AC9089F3214D7ABB00F421F1 /* SplashImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9089F2214D7ABA00F421F1 /* SplashImageView.swift */; };
 		AC9280DD202E0F9F0009B574 /* EthereumAPIRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280DC202E0F9F0009B574 /* EthereumAPIRequestTests.swift */; };
 		AC9280E1202EC53D0009B574 /* TradeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9280E0202EC53D0009B574 /* TradeNavigationViewController.swift */; };
@@ -420,7 +420,6 @@
 		ACB911A320296B9900F14644 /* OriginalOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB911A220296B9900F14644 /* OriginalOrder.swift */; };
 		ACB97C6D20707B6F00775D4C /* AddTokenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB97C6B20707B6F00775D4C /* AddTokenTableViewCell.swift */; };
 		ACB97C6E20707B6F00775D4C /* AddTokenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB97C6C20707B6F00775D4C /* AddTokenTableViewCell.xib */; };
-		ACB97C7020715BC100775D4C /* MnemonicQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB97C6F20715BC100775D4C /* MnemonicQuestion.swift */; };
 		ACB97C73207160E100775D4C /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB97C72207160E100775D4C /* Int+Extension.swift */; };
 		ACBA47E220788ECD0032C2B4 /* SettingManageWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA47E020788ECD0032C2B4 /* SettingManageWalletViewController.swift */; };
 		ACBA47E320788ECD0032C2B4 /* SettingManageWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBA47E120788ECD0032C2B4 /* SettingManageWalletViewController.xib */; };
@@ -611,7 +610,6 @@
 		AC06193D208417AF0060F416 /* QRCodeMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeMethod.swift; sourceTree = "<group>"; };
 		AC06193F208469960060F416 /* NotificationBannerStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBannerStyle.swift; sourceTree = "<group>"; };
 		AC0619412085D01E0060F416 /* SearchBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarContainerView.swift; sourceTree = "<group>"; };
-		AC06AB12218EE27700B83C19 /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		AC0C5C7A203D131200C8618D /* loopr-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "loopr-ios-Bridging-Header.h"; sourceTree = "<group>"; };
 		AC0C5C81203D153F00C8618D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		AC0C5C83203D154700C8618D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -829,6 +827,7 @@
 		AC8DBC6C20BE8B0C007AC862 /* MnemonicBackupModeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicBackupModeCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC8DBC7520BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicBackupModeCollectionViewController.swift; sourceTree = "<group>"; };
 		AC8DBC7620BE8C13007AC862 /* MnemonicBackupModeCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicBackupModeCollectionViewController.xib; sourceTree = "<group>"; };
+		AC907A5C218EF60200E76EAA /* keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		AC9089F2214D7ABA00F421F1 /* SplashImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashImageView.swift; sourceTree = "<group>"; };
 		AC9280DC202E0F9F0009B574 /* EthereumAPIRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumAPIRequestTests.swift; sourceTree = "<group>"; };
 		AC9280E0202EC53D0009B574 /* TradeNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeNavigationViewController.swift; sourceTree = "<group>"; };
@@ -928,7 +927,6 @@
 		ACB911A220296B9900F14644 /* OriginalOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginalOrder.swift; sourceTree = "<group>"; };
 		ACB97C6B20707B6F00775D4C /* AddTokenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTokenTableViewCell.swift; sourceTree = "<group>"; };
 		ACB97C6C20707B6F00775D4C /* AddTokenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTokenTableViewCell.xib; sourceTree = "<group>"; };
-		ACB97C6F20715BC100775D4C /* MnemonicQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicQuestion.swift; sourceTree = "<group>"; };
 		ACB97C72207160E100775D4C /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		ACBA47E020788ECD0032C2B4 /* SettingManageWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingManageWalletViewController.swift; sourceTree = "<group>"; };
 		ACBA47E120788ECD0032C2B4 /* SettingManageWalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingManageWalletViewController.xib; sourceTree = "<group>"; };
@@ -1627,7 +1625,7 @@
 				AC54FD26204FC61C007E1DEB /* Fonts */,
 				AC798E4D2022B93A0071D477 /* LaunchScreen.storyboard */,
 				AC798E502022B93A0071D477 /* Info.plist */,
-				AC06AB12218EE27700B83C19 /* keys.plist */,
+				AC907A5C218EF60200E76EAA /* keys.plist */,
 				ACDA889720F5D86E004FA10B /* Localizable */,
 				ACE5BFA920466EFD005D75DD /* Localizable.strings */,
 				AC0C5C7A203D131200C8618D /* loopr-ios-Bridging-Header.h */,
@@ -2019,7 +2017,6 @@
 				94E185982051455C00D86FFA /* SimpleRespond.swift */,
 				943BDED22056350000D5BF81 /* PriceQuote.swift */,
 				94DCE550205FAC07005618E4 /* Trend.swift */,
-				ACB97C6F20715BC100775D4C /* MnemonicQuestion.swift */,
 				94AD1FE4208B910D00C443E6 /* Currency.swift */,
 				AC2CFAA020BB3BEE00387DB1 /* BiometricType.swift */,
 				AC06193D208417AF0060F416 /* QRCodeMethod.swift */,
@@ -2473,7 +2470,7 @@
 				AC2ACA5120FA0EC3009C77E7 /* Rubik-Black.ttf in Resources */,
 				AC131A1521101AD0001998A0 /* MarketDetailTradeHistoryTableViewCell.xib in Resources */,
 				ACBA47EF207932DA0032C2B4 /* ExportKeystoreEnterPasswordViewController.xib in Resources */,
-				AC06AB13218EE27700B83C19 /* keys.plist in Resources */,
+				AC907A5D218EF60200E76EAA /* keys.plist in Resources */,
 				943A9A4220909597008BCBFD /* DefaultWebViewController.xib in Resources */,
 				AC2ACA86210305F8009C77E7 /* TradeFAQViewController.xib in Resources */,
 				94BFF9D321073EE300A0BE8B /* SetGasViewController.xib in Resources */,
@@ -2782,7 +2779,6 @@
 				94678B2A210D902E00F550D3 /* SendResultViewController.swift in Sources */,
 				AC4142062038B66F0089861D /* AppWallet.swift in Sources */,
 				ACFD5FB721740F7500E161EE /* OrderIntervalTime.swift in Sources */,
-				ACB97C7020715BC100775D4C /* MnemonicQuestion.swift in Sources */,
 				940B45202060F67E00ADE2B9 /* OrderDataManager.swift in Sources */,
 				AC5442DC2081167E0036A2B4 /* SwiftyJSON.swift in Sources */,
 				AC45EFEB20D0CCF5004F6EC0 /* AlertForErrorExtension.swift in Sources */,
@@ -3538,7 +3534,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3549,8 +3545,9 @@
 				PRODUCT_NAME = "UP Wallet";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

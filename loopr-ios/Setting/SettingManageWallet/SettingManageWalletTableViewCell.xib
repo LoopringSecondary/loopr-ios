@@ -45,15 +45,12 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhQ-cZ-ccX">
-                        <rect key="frame" x="20" y="77" width="353" height="38"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pcl-Bg-jxF" customClass="TickerLabel" customModule="loopr_ios" customModuleProvider="target">
+                        <rect key="frame" x="20" y="83" width="353" height="38"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="38" id="X8f-o6-stP"/>
+                            <constraint firstAttribute="height" constant="38" id="6yo-Zy-1Gh"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyx-9l-pQH">
                         <rect key="frame" x="98.333333333333329" y="163.66666666666666" width="196.33333333333337" height="15"/>
                         <constraints>
@@ -64,7 +61,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uk2-zY-aAx">
-                        <rect key="frame" x="294.66666666666669" y="156.33333333333334" width="30" height="30"/>
+                        <rect key="frame" x="290.66666666666669" y="156.33333333333334" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="C4N-bj-PU1"/>
                             <constraint firstAttribute="height" constant="30" id="hdI-qn-aJD"/>
@@ -73,22 +70,22 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="kyx-9l-pQH" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="5M2-rH-i6M"/>
+                    <constraint firstItem="pcl-Bg-jxF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="CNc-5I-maR"/>
                     <constraint firstItem="hGv-hG-XhK" firstAttribute="top" secondItem="X5p-rK-vuk" secondAttribute="top" constant="23" id="DEs-sk-Hhs"/>
                     <constraint firstItem="X5p-rK-vuk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="L7w-sb-C5S"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="pcl-Bg-jxF" secondAttribute="trailing" id="MRc-gN-XGf"/>
                     <constraint firstAttribute="trailing" secondItem="X5p-rK-vuk" secondAttribute="trailing" constant="15" id="Sdp-jb-Waa"/>
                     <constraint firstAttribute="trailingMargin" secondItem="hGv-hG-XhK" secondAttribute="trailing" id="WXG-95-mHv"/>
-                    <constraint firstItem="YhQ-cZ-ccX" firstAttribute="top" secondItem="X5p-rK-vuk" secondAttribute="top" constant="72" id="Zdu-OT-kNk"/>
-                    <constraint firstItem="YhQ-cZ-ccX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="bub-CX-3Qy"/>
+                    <constraint firstItem="pcl-Bg-jxF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="72" id="fmT-VK-rVK"/>
                     <constraint firstItem="X5p-rK-vuk" firstAttribute="trailing" secondItem="5xB-Jl-jPb" secondAttribute="trailing" constant="25" id="mQE-uX-O1t"/>
                     <constraint firstItem="5xN-ie-Phh" firstAttribute="centerY" secondItem="hGv-hG-XhK" secondAttribute="centerY" id="nMy-fL-rjr"/>
-                    <constraint firstItem="uk2-zY-aAx" firstAttribute="leading" secondItem="kyx-9l-pQH" secondAttribute="trailing" id="ovn-fr-zHJ"/>
+                    <constraint firstItem="uk2-zY-aAx" firstAttribute="leading" secondItem="kyx-9l-pQH" secondAttribute="trailing" constant="-4" id="ovn-fr-zHJ"/>
                     <constraint firstItem="X5p-rK-vuk" firstAttribute="bottom" secondItem="kyx-9l-pQH" secondAttribute="bottom" constant="26" id="pu0-n7-Uhd"/>
                     <constraint firstItem="X5p-rK-vuk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="ra4-Zo-EzH"/>
                     <constraint firstAttribute="bottom" secondItem="X5p-rK-vuk" secondAttribute="bottom" constant="5" id="wJS-91-LP7"/>
                     <constraint firstItem="5xB-Jl-jPb" firstAttribute="centerY" secondItem="hGv-hG-XhK" secondAttribute="centerY" id="wYX-FN-eSq"/>
                     <constraint firstItem="hGv-hG-XhK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="49" id="xFz-mp-oM1"/>
                     <constraint firstItem="uk2-zY-aAx" firstAttribute="centerY" secondItem="kyx-9l-pQH" secondAttribute="centerY" id="xkH-Ho-YWh"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="YhQ-cZ-ccX" secondAttribute="trailing" id="z3d-mW-JXQ"/>
                     <constraint firstItem="5xN-ie-Phh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="25" id="zHz-Pa-Jdv"/>
                 </constraints>
             </tableViewCellContentView>
@@ -102,7 +99,7 @@
                 <outlet property="nameLabel" destination="hGv-hG-XhK" id="tXy-He-m7V"/>
                 <outlet property="qrCodeButton" destination="uk2-zY-aAx" id="SoF-SZ-YwP"/>
                 <outlet property="selectedIconView" destination="5xB-Jl-jPb" id="8Qm-U5-6Aq"/>
-                <outlet property="toatalBalanceLabel" destination="YhQ-cZ-ccX" id="tWI-XE-fDO"/>
+                <outlet property="totalBalanceLabel" destination="pcl-Bg-jxF" id="TLI-12-S8E"/>
             </connections>
             <point key="canvasLocation" x="81.5" y="72"/>
         </tableViewCell>

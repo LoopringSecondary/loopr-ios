@@ -12,8 +12,8 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
 
     @IBOutlet weak var tableView: UITableView!
 
-    @IBOutlet weak var importButton: GradientButton!
-    @IBOutlet weak var createButton: GradientButton!
+    @IBOutlet weak var importButton: UIButton!
+    @IBOutlet weak var createButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +36,22 @@ class SettingManageWalletViewController: UIViewController, UITableViewDelegate, 
         headerView.theme_backgroundColor = ColorPicker.backgroundColor
         tableView.tableHeaderView = headerView
         
-        importButton.setTitle(LocalizedString("Import Wallet", comment: ""), for: .normal)
+        let iconTitlePadding: CGFloat = 14
+        // importButton.setTitle(LocalizedString("Import Wallet", comment: ""), for: .normal)
         importButton.addTarget(self, action: #selector(self.pressedImportButton(_:)), for: .touchUpInside)
+        importButton.set(image: UIImage.init(named: "SetupWallet-import")?.alpha(0.6), title: LocalizedString("Import Wallet", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .highlighted)
+        importButton.set(image: UIImage.init(named: "SetupWallet-import"), title: LocalizedString("Import Wallet", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .normal)
+        importButton.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
+        importButton.titleLabel?.theme_textColor = GlobalPicker.textLightColor
+        importButton.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
 
-        createButton.setTitle(LocalizedString("Generate Wallet", comment: ""), for: .normal)
+        // createButton.setTitle(LocalizedString("Generate Wallet", comment: ""), for: .normal)
         createButton.addTarget(self, action: #selector(self.pressedCreateButton(_:)), for: .touchUpInside)
+        createButton.set(image: UIImage.init(named: "SetupWallet-generate")?.alpha(0.6), title: LocalizedString("Generate Wallet", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .highlighted)
+        createButton.set(image: UIImage.init(named: "SetupWallet-generate"), title: LocalizedString("Generate Wallet", comment: ""), titlePosition: .right, additionalSpacing: iconTitlePadding, state: .normal)
+        createButton.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 13)
+        createButton.titleLabel?.theme_textColor = GlobalPicker.textLightColor
+        createButton.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {

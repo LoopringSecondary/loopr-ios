@@ -43,8 +43,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
         balanceLabel.textAlignment = NSTextAlignment.center
         balanceLabel.initializeLabel()
 
-        var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
-        // balance.insert(" ", at: balance.index(after: balance.startIndex))
+        let balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
         balanceLabel.setText("\(balance)", animated: false)
         addSubview(balanceLabel)
 
@@ -56,8 +55,8 @@ class WalletBalanceTableViewCell: UITableViewCell {
         addressLabel.lineBreakMode = .byTruncatingMiddle
         addSubview(addressLabel)
         
-        qrCodeButton.frame = CGRect(x: addressLabel.frame.maxX, y: addressLabel.frame.minY + (addressLabel.frame.height-30)*0.5, width: 30, height: 30)
-        qrCodeButton.setImage(UIImage(named: "QRCode-white"), for: .normal)
+        qrCodeButton.frame = CGRect(x: addressLabel.frame.maxX - 4, y: addressLabel.frame.minY + (addressLabel.frame.height-30)*0.5, width: 30, height: 30)
+        qrCodeButton.setImage(UIImage(named: "QRCode-white-small"), for: .normal)
         qrCodeButton.addTarget(self, action: #selector(self.pressedQRCodeButton(_:)), for: .touchUpInside)
         addSubview(qrCodeButton)
         
@@ -74,8 +73,7 @@ class WalletBalanceTableViewCell: UITableViewCell {
     
     func setup(animated: Bool) {
         addressLabel.text = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.address ?? ""
-        var balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
-        // balance.insert(" ", at: balance.index(after: balance.startIndex))
+        let balance = CurrentAppWalletDataManager.shared.getTotalAssetCurrencyFormmat()
         balanceLabel.setText(balance, animated: animated)
         balanceLabel.layoutCharacterLabels()
     }
