@@ -11,10 +11,10 @@
 "UP Wallet" = "UP Wallet";
 
 /* Third party */
-"Third title" = "—— Third Party Authorize ——";
+"Third title" = "— Third Party Authorization —";
 "Third skip" = "skip";
-"Third tip1" = "Third party authorize, restore your configuration.";
-"Third tip2" = "To prevent losing your app, you could skip it also.";
+"Third tip1" = "Authorize third party to remember your ";
+"Third tip2" = "setting configurations. You can also skip this.";
 
 /* ETH related */
 "Mnemonic" = "Mnemonic";
