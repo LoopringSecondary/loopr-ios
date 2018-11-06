@@ -16,7 +16,8 @@ class TradeRatioViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var seperateLine: UIView!
     @IBOutlet weak var pickerView: UIPickerView!
     
-    var sellCount: Int = 1
+    // Get the init value from TradeDataManager.
+    var sellCount: Int = TradeDataManager.shared.sellCount
     var titleArray = [Int]()
     var digitArray = [Int]()
     var dismissClosure: (() -> Void)?
@@ -37,6 +38,18 @@ class TradeRatioViewController: UIViewController, UIPickerViewDelegate, UIPicker
         digitArray = [Int](repeating: 0, count: 4)
         titleLabel.setTitleCharFont()
         titleLabel.text = LocalizedString("Minimal Count", comment: "")
+        
+        digitArray[3] = sellCount%10
+        pickerView.selectRow(digitArray[3], inComponent: 3, animated: true)
+        
+        digitArray[2] = (sellCount/10)%10
+        pickerView.selectRow(digitArray[2], inComponent: 2, animated: true)
+        
+        digitArray[1] = (sellCount/100)%10
+        pickerView.selectRow(digitArray[1], inComponent: 1, animated: true)
+
+        digitArray[0] = (sellCount/1000)%10
+        pickerView.selectRow(digitArray[0], inComponent: 0, animated: true)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         tap.delegate = self
@@ -99,5 +112,8 @@ class TradeRatioViewController: UIViewController, UIPickerViewDelegate, UIPicker
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         digitArray[component] = row
         self.sellCount = digitArray[0] * 1000 + digitArray[1] * 100 + digitArray[2] * 10 + digitArray[3]
+        if self.sellCount == 0 {
+            self.sellCount = 1
+        }
     }
 }
