@@ -93,15 +93,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
     
     func getRootViewController() -> UIViewController {
         var result: UIViewController
-        if Production.getCurrent() == .upwallet {
-            if UserDefaults.standard.string(forKey: "openid") != nil && hasKeysPlist() {
-                if AppWalletDataManager.shared.getWallets().isEmpty {
-                    result = SetupNavigationController(nibName: nil, bundle: nil)
-                } else {
-                    result = MainTabController(nibName: nil, bundle: nil)
-                }
-            } else {
+        if Production.getCurrent() == .upwallet && hasKeysPlist() {
+            // UserDefaults.standard.string(forKey: "openid") != nil
+            if AppWalletDataManager.shared.getWallets().isEmpty {
                 result = ThirdPartyViewController(nibName: nil, bundle: nil)
+            } else {
+                result = MainTabController(nibName: nil, bundle: nil)
             }
         } else {
             if AppWalletDataManager.shared.getWallets().isEmpty {
