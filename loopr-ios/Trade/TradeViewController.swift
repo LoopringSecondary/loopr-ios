@@ -541,7 +541,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         let title = LocalizedString("Available Balance", comment: "")
         if let amounts = amountSellTextField.text, let amountSell = Double(amounts) {
             if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
-                if amountSell > balance {
+                if amountSell > balance || balance == 0 {
                     update(text: nil, color: .fail)
                     return false
                 } else {
