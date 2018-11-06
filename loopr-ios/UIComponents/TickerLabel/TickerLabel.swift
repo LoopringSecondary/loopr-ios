@@ -307,7 +307,13 @@ class TickerLabel: UIView {
                 let character: String = (text as NSString).substring(with: NSRange(location: 0, length: 1))
                 let characterHeight = character.size(withAttributes: [NSAttributedStringKey.font: currencySymbolFont]).height
                 // 0.4 is value we have to tune
-                characterFrame.size.height = (charactersView.bounds.height-characterHeight)*0.4 + charactersView.bounds.height
+                var factor: CGFloat = 0.4
+                if character == "$" {
+                    factor = 0.3
+                } else if character == "¥" {
+                    factor = 0.4
+                }
+                characterFrame.size.height = (charactersView.bounds.height-characterHeight)*factor + charactersView.bounds.height
             }
             
             let characterWidth: CGFloat

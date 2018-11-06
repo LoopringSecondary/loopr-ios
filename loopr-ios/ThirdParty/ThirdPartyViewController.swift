@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class ThirdPartyViewController: UIViewController {
     
@@ -22,7 +23,7 @@ class ThirdPartyViewController: UIViewController {
         view.theme_backgroundColor = ColorPicker.backgroundColor
         loginTitle.setTitleCharFont()
         loginTitle.text = LocalizedString("Third title", comment: "")
-        skipButton.titleLabel?.setSubTitleCharFont()
+        skipButton.titleLabel?.setTitleCharFont()
         skipButton.title = LocalizedString("Third skip", comment: "")
         skipButton.setTitleColor(.theme, for: .normal)
         footerTip.setSubTitleCharFont()
@@ -38,6 +39,10 @@ class ThirdPartyViewController: UIViewController {
         if !WXApi.send(req) {
             print("weixin sendreq failed")
         }
+        
+        Answers.logCustomEvent(withName: "Wechat Login v1",
+                               customAttributes: [
+                               "skip": "false"])
     }
     
     @IBAction func pressedSkipButton(_ sender: Any) {
@@ -48,6 +53,9 @@ class ThirdPartyViewController: UIViewController {
             vc = MainTabController(nibName: nil, bundle: nil)
         }
         self.present(vc, animated: true, completion: nil)
+        Answers.logCustomEvent(withName: "Wechat Login v1",
+                               customAttributes: [
+                               "skip": "true"])
     }
     
 }

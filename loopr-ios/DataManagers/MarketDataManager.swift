@@ -23,7 +23,14 @@ class MarketDataManager {
         trends = []
 
         let defaults = UserDefaults.standard
-        favoriteSequence = defaults.array(forKey: UserDefaultsKeys.favoriteSequence.rawValue) as? [String] ?? []
+        
+        // If users have never set or remove favorite market pair, use the default values "LRC-WETH"
+        if defaults.array(forKey: UserDefaultsKeys.favoriteSequence.rawValue) as? [String] == nil {
+            favoriteSequence = ["LRC-WETH"]
+            UserDefaults.standard.set(favoriteSequence, forKey: UserDefaultsKeys.favoriteSequence.rawValue)
+        } else {
+            favoriteSequence = defaults.array(forKey: UserDefaultsKeys.favoriteSequence.rawValue) as? [String] ?? []
+        }
     }
     
     func isMarketsEmpty() -> Bool {

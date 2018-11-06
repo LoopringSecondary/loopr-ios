@@ -10,6 +10,12 @@
 "Loopring P2P Order" = "루프링 P2P 주문";
 "UP Wallet" = "UP Wallet";
 
+/* Third party */
+"Third title" = "— Third Party Authorization —";
+"Third skip" = "skip";
+"Third tip1" = "Authorize third party to remember your ";
+"Third tip2" = "setting configurations. You can also skip this.";
+
 /* ETH related */
 "Mnemonic" = "니모닉";
 "Keystore" = "키스토어";

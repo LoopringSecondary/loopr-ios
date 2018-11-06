@@ -17,7 +17,8 @@ class AppServiceUserManager {
     }
 
     // Endpoint /api/v1/users
-    func getUserConfig(completion: @escaping (_ shouldDisplayUpdateNotification: Bool) -> Void) {
+    // Not used in the version 0.9.16
+    private func getUserConfig(completion: @escaping (_ shouldDisplayUpdateNotification: Bool) -> Void) {
         // Example
         let account_token = "1234567"
         let url = URL(string: "https://www.loopring.mobi/api/v1/users?account_token=\(account_token)")
@@ -38,12 +39,21 @@ class AppServiceUserManager {
     
     // use POST to update user config.
     func updateUserConfig(completion: @escaping (_ shouldDisplayUpdateNotification: Bool) -> Void) {
+        let openid = UserDefaults.standard.string(forKey: "openid") ?? ""
+
+        // Avoid nil nor empty string
+        guard openid != "" else {
+            completion(false)
+            return
+        }
+
         // Example to update the user config.
         var body = JSON()
-        body["account_token"] = "1234567"
-        body["language"] = "zh-Hans"
-        body["currency"] = "USD"
-        
+        body["account_token"] = JSON(openid)
+        body["language"] = JSON(SettingDataManager.shared.getCurrentLanguage().name)
+        body["currency"] = JSON(SettingDataManager.shared.getCurrentCurrency().name)
+        body["lrc_fee_ratio"] = JSON(SettingDataManager.shared.getLrcFeeRatio())
+
         var request = URLRequest(url: URL(string: "https://www.loopring.mobi/api/v1/users")!)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"

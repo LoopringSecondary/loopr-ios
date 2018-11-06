@@ -228,7 +228,7 @@ class TradeReviewViewController: UIViewController {
         body["type"] = JSON(TradeDataManager.qrcodeType)
         body["value"] = [TradeDataManager.qrcodeHash: order.hash,
                          TradeDataManager.qrcodeAuth: order.authPrivateKey,
-                         TradeDataManager.sellRatio: TradeDataManager.shared.sellRatio]
+                         TradeDataManager.sellCount: TradeDataManager.shared.sellCount]
         do {
             let data = try body.rawData(options: .prettyPrinted)
             let ciContext = CIContext()

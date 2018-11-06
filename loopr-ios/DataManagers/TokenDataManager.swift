@@ -130,13 +130,6 @@ class TokenDataManager {
 
     func getTokensToAdd() -> [Token] {
         return tokens
-        /*
-        let notZeroAssets = CurrentAppWalletDataManager.shared.getAssets(isNotZero: true)
-        let symbols = notZeroAssets.map { $0.symbol }
-        return tokens.filter({ (token) -> Bool in
-            return !symbols.contains(token.symbol)
-        })
-        */
     }
 
     func getTokenBySymbol(_ symbol: String) -> Token? {

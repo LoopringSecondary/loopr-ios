@@ -10,6 +10,12 @@
 "Loopring P2P Order" = "路印P2P指示";
 "UP Wallet" = "UP錢包";
 
+/* Third party */
+"Third title" = "—— 第三方授權 ——";
+"Third skip" = "跳過";
+"Third tip1" = "第三方授權登錄，系統可以保存您的APP配置。";
+"Third tip2" = "防止刪除或者更新APP後丟失，您也可以選擇跳過。";
+
 /* ETH related */
 "Mnemonic" = "助記詞";
 "Keystore" = "Keystore";
@@ -161,7 +167,7 @@
 "Change" = "變動";
 "Accept" = "接受";
 "Decline" = "拒絕";
-"Minimal Fill" = "最低成交率";
+"Minimal Fill" = "訂單拆分份數";
 "Records" = "記錄";
 "Depth_in_Market_Detail" = "掛單";
 "Trades_in_Market_Detail" = "成交";
@@ -210,6 +216,7 @@
 "Amount/Filled" = "數額/成交率";
 "Status/Date" = "狀態/日期";
 "Lrc_Fee_Tip" = "● Loopring 協議最低交易手續費: ";
+"Part" = "份";
 
 /* Trade tips */
 "Convert_DES" = "● 什麼是WETH? WETH之於ETH, 正如硬幣之於等額的紙幣。某些場合, 販賣機只能接受硬幣, 因此需要轉換。以太坊協議保證: WETH和ETH之間的轉換比率固定為 1 : 1。";

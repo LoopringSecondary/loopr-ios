@@ -178,13 +178,9 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     })
                     
                     // Get user config
-                    /*
-                    AppServiceUserManager.shared.getUserConfig(completion: { (shouldDisplayUpdateNotification) in
-                        AppServiceUserManager.shared.updateUserConfig(completion: { (_) in
-                            
-                        })
+                    AppServiceUserManager.shared.updateUserConfig(completion: { (_) in
+                        
                     })
-                    */
                 }
                 
                 self.processPasteboard()
@@ -254,7 +250,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         self.pasteboardValue = string
                         
                         let banner = NotificationBanner.generate(title: "Send tokens to the address in pasteboard?", style: .success, hasLeftImage: false)
-                        banner.duration = 2
+                        banner.duration = 4
                         banner.show()
                         banner.onTap = {
                             // Limit to WalletViewController.

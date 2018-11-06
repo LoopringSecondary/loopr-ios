@@ -48,31 +48,31 @@ class MarketDetailSwipeViewController: SwipeViewController {
         baseView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         
         priceInCryptoLabel.font = FontConfigManager.shared.getRegularFont(size: 16)
-        priceInCryptoLabel.textColor = UIColor.init(white: 1, alpha: 1)
+        priceInCryptoLabel.theme_textColor = GlobalPicker.textColor
 
         priceInFiatCurrencyLabel.font = FontConfigManager.shared.getRegularFont(size: 18)
-        priceInFiatCurrencyLabel.textColor = UIColor.init(white: 1, alpha: 1)
+        priceInFiatCurrencyLabel.theme_textColor = GlobalPicker.textColor
         priceInFiatCurrencyLabel.text = market.display.description
         priceInFiatCurrencyLabel.isHidden = true
 
         priceChangeIn24HoursLabel.font = FontConfigManager.shared.getRegularFont(size: 18)
-        priceChangeIn24HoursLabel.textColor = UIColor.init(white: 1, alpha: 1)
+        priceChangeIn24HoursLabel.theme_textColor = GlobalPicker.textColor
         priceChangeIn24HoursLabel.text = market.changeInPat24
         priceChangeIn24HoursLabel.isHidden = true
 
         hoursChangeInfoLabel.text = LocalizedString("24H Change", comment: "") + ": "
         hoursChangeInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
-        hoursChangeInfoLabel.theme_textColor = GlobalPicker.textColor
+        hoursChangeInfoLabel.theme_textColor = GlobalPicker.textLightColor
 
         hoursChangeLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
-        hoursChangeLabel.textColor = UIColor.init(white: 1, alpha: 1)
+        hoursChangeLabel.theme_textColor = GlobalPicker.textLightColor
 
         hoursVolumeInfoLabel.text = LocalizedString("24H Volume", comment: "") + ": "
         hoursVolumeInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
-        hoursVolumeInfoLabel.theme_textColor = GlobalPicker.textColor
+        hoursVolumeInfoLabel.theme_textColor = GlobalPicker.textLightColor
         
         hoursVolumeLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
-        hoursVolumeLabel.textColor = UIColor.init(white: 1, alpha: 1)
+        hoursVolumeLabel.theme_textColor = GlobalPicker.textLightColor
     }
 
     override func didReceiveMemoryWarning() {

@@ -87,7 +87,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WF-a8-yG5">
-                            <rect key="frame" x="72" y="71" width="292" height="14"/>
+                            <rect key="frame" x="75" y="71" width="289" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="14" id="ATg-JZ-DV6"/>
                             </constraints>
@@ -105,7 +105,7 @@
                         <constraint firstItem="2Iu-zS-qKG" firstAttribute="top" secondItem="o7L-cg-Wiq" secondAttribute="top" constant="51" id="NwH-fP-5MB"/>
                         <constraint firstItem="JAR-bm-ilF" firstAttribute="top" secondItem="o7L-cg-Wiq" secondAttribute="top" constant="71" id="PLk-xR-Tat"/>
                         <constraint firstItem="JAR-bm-ilF" firstAttribute="leading" secondItem="PE9-iS-tjI" secondAttribute="leading" id="YOz-IQ-VBd"/>
-                        <constraint firstItem="4WF-a8-yG5" firstAttribute="leading" secondItem="2Iu-zS-qKG" secondAttribute="leading" id="a00-Ra-WHL"/>
+                        <constraint firstItem="4WF-a8-yG5" firstAttribute="leading" secondItem="2Iu-zS-qKG" secondAttribute="leading" constant="3" id="a00-Ra-WHL"/>
                         <constraint firstItem="tsp-v0-htl" firstAttribute="top" secondItem="o7L-cg-Wiq" secondAttribute="top" constant="15" id="ddB-7k-vKl"/>
                         <constraint firstAttribute="trailing" secondItem="4WF-a8-yG5" secondAttribute="trailing" constant="20" id="dyn-w1-Fxw"/>
                         <constraint firstItem="PE9-iS-tjI" firstAttribute="top" secondItem="o7L-cg-Wiq" secondAttribute="top" constant="51" id="k7E-BT-GVv"/>

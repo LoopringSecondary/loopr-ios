@@ -200,11 +200,11 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         // Sell ratio
         sellRatioTipLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
         sellRatioTipLabel.theme_textColor = GlobalPicker.textLightColor
-        sellRatioTipLabel.text = LocalizedString("Minimal Fill", comment: "")
+        sellRatioTipLabel.text = LocalizedString("Minimal Count", comment: "")
         
         sellRatioValueLabel.font = FontConfigManager.shared.getDigitalFont(size: 14)
         sellRatioValueLabel.theme_textColor = GlobalPicker.textColor
-        sellRatioValueLabel.text = "100%"
+        sellRatioValueLabel.text = "1 " + LocalizedString("Part", comment: "")
 
         sellRatioValueLabel.isUserInteractionEnabled = true
         let sellRatioValueLabelTap = UITapGestureRecognizer(target: self, action: #selector(pressedRatioButton))
@@ -227,7 +227,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         self.distance = 0
         self.scrollViewButtonLayoutConstraint.constant = self.distance
         
-        TradeDataManager.shared.sellRatio = 1
+        TradeDataManager.shared.sellCount = 1
         
         blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         blurVisualEffectView.alpha = 1
@@ -446,9 +446,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         // vc.sellRatio = TradeDataManager.shared.sellRatio
         vc.dismissClosure = {
             parentView.alpha = 1
-            TradeDataManager.shared.sellRatio = vc.sellRatio
-            let displaySellRatio = (vc.sellRatio * 100.0).withCommas(0)
-            self.sellRatioValueLabel.text = "\(displaySellRatio)" + NumberFormatter().percentSymbol
+            TradeDataManager.shared.sellCount = vc.sellCount
+            self.sellRatioValueLabel.text = "\(vc.sellCount) " + LocalizedString("Part", comment: "")
         }
         vc.parentNavController = self.navigationController
         vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
@@ -494,8 +493,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     
     func preserveMaker(order: OriginalOrder) {
         let defaults = UserDefaults.standard
-        let ratio = TradeDataManager.shared.sellRatio
-        defaults.set("\(order.authPrivateKey)-\(ratio)", forKey: order.hash)
+        let count = TradeDataManager.shared.sellCount
+        defaults.set("\(order.authPrivateKey)-\(count)", forKey: order.hash)
     }
     
     func pushController() {
@@ -542,7 +541,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         let title = LocalizedString("Available Balance", comment: "")
         if let amounts = amountSellTextField.text, let amountSell = Double(amounts) {
             if let balance = CurrentAppWalletDataManager.shared.getBalance(of: tokens) {
-                if amountSell > balance {
+                if amountSell > balance || balance == 0 {
                     update(text: nil, color: .fail)
                     return false
                 } else {

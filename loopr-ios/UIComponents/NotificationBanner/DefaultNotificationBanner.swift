@@ -18,6 +18,7 @@ extension NotificationBanner {
         var leftView: UIImageView?
         if hasLeftImage {
             leftView = UIImageView(frame: CGRect(x: 5, y: 5, width: 10, height: 10))
+            leftView?.contentMode = .right
             if style == .success {
                 leftView?.image = UIImage(named: "Successed")
             } else if style == .danger {

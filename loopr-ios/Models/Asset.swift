@@ -38,6 +38,9 @@ class Asset: CustomStringConvertible, Equatable {
         self.decimals = MarketDataManager.shared.getDecimals(tokenSymbol: self.symbol)
 
         self.name = TokenDataManager.shared.getTokenBySymbol(symbol)?.source.capitalized ?? ""
+        if self.symbol == "WETH" {
+            self.name = "Wrapped ETH"
+        }
         self.icon = UIImage(named: "Token-\(self.symbol)-\(Themes.getTheme())") ?? nil
         self.description = self.name
 
