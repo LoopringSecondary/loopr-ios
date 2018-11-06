@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,9 +28,9 @@
                     <rect key="frame" x="49.666666666666657" y="238" width="315" height="260"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHm-1j-haF">
-                            <rect key="frame" x="0.0" y="193" width="315" height="22"/>
+                            <rect key="frame" x="0.0" y="188" width="315" height="32"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="22" id="29p-qb-iJg"/>
+                                <constraint firstAttribute="height" constant="32" id="29p-qb-iJg"/>
                             </constraints>
                             <state key="normal" title="Button"/>
                             <connections>
@@ -44,7 +45,7 @@
                             </constraints>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Result-header-bg" translatesAutoresizingMaskIntoConstraints="NO" id="rgW-UR-ngc">
-                            <rect key="frame" x="44" y="24" width="228" height="155"/>
+                            <rect key="frame" x="43.333333333333343" y="24" width="228.00000000000003" height="155"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="155" id="UhD-uY-AO4"/>
                                 <constraint firstAttribute="width" constant="228" id="mM9-OW-L7y"/>
@@ -67,7 +68,7 @@
                         <constraint firstAttribute="trailing" secondItem="dqP-aT-Gc8" secondAttribute="trailing" id="AJd-nE-Cr7"/>
                         <constraint firstAttribute="trailing" secondItem="YHm-1j-haF" secondAttribute="trailing" id="EaL-d6-Iao"/>
                         <constraint firstItem="dqP-aT-Gc8" firstAttribute="top" secondItem="LWA-Mp-3qM" secondAttribute="top" constant="132" id="JXv-Xz-aUj"/>
-                        <constraint firstAttribute="bottom" secondItem="YHm-1j-haF" secondAttribute="bottom" constant="45" id="R56-hD-Ydj"/>
+                        <constraint firstAttribute="bottom" secondItem="YHm-1j-haF" secondAttribute="bottom" constant="40" id="R56-hD-Ydj"/>
                         <constraint firstItem="IeJ-o0-Vt2" firstAttribute="centerX" secondItem="LWA-Mp-3qM" secondAttribute="centerX" id="Rh5-2h-gDW"/>
                         <constraint firstItem="YHm-1j-haF" firstAttribute="leading" secondItem="LWA-Mp-3qM" secondAttribute="leading" id="YCF-hm-u0u"/>
                         <constraint firstItem="IeJ-o0-Vt2" firstAttribute="top" secondItem="LWA-Mp-3qM" secondAttribute="top" constant="52" id="YFC-7O-B3X"/>

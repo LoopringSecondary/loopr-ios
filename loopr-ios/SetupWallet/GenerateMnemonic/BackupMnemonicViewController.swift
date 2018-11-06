@@ -34,6 +34,8 @@ class BackupMnemonicViewController: UIViewController {
     var hideButtons: Bool = false
     var blurVisualEffectView = UIView(frame: .zero)
 
+    private var canDisplayWarning: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -134,6 +136,10 @@ class BackupMnemonicViewController: UIViewController {
     }
     
     @objc func willEnterForeground() {
+        // If only BackupMnemonicViewController on the top.
+        guard canDisplayWarning else {
+            return
+        }
         displayWarning()
     }
     
@@ -198,6 +204,7 @@ class BackupMnemonicViewController: UIViewController {
     }
 
     func dismissGenerateWallet() {
+        canDisplayWarning = false
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         appDelegate?.window?.rootViewController = MainTabController()
     }
