@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class ThirdPartyViewController: UIViewController {
     
@@ -38,6 +39,10 @@ class ThirdPartyViewController: UIViewController {
         if !WXApi.send(req) {
             print("weixin sendreq failed")
         }
+        
+        Answers.logCustomEvent(withName: "Wechat Login v1",
+                               customAttributes: [
+                               "skip": "false"])
     }
     
     @IBAction func pressedSkipButton(_ sender: Any) {
@@ -48,6 +53,9 @@ class ThirdPartyViewController: UIViewController {
             vc = MainTabController(nibName: nil, bundle: nil)
         }
         self.present(vc, animated: true, completion: nil)
+        Answers.logCustomEvent(withName: "Wechat Login v1",
+                               customAttributes: [
+                               "skip": "true"])
     }
     
 }
