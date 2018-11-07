@@ -14,7 +14,8 @@ public typealias CompletionHandler = (_ data: Data?, _ response: URLResponse?, _
 
 class Request {
     
-    static let banner = NotificationBanner.generate(title: "No network", style: .warning)
+    static var hasNetworkErrorBannerShown: Bool = false
+    static let banner = NotificationBanner.generate(title: "Network Error", style: .warning)
     
     static func send(body: JSON, url: URL, completionHandler: @escaping CompletionHandler) {
         var request = URLRequest(url: url)
@@ -31,9 +32,10 @@ class Request {
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 DispatchQueue.main.async {
-                    if !banner.isDisplaying {
-                        banner.duration = 60.0
+                    if !banner.isDisplaying && !hasNetworkErrorBannerShown {
+                        banner.duration = 10.0
                         banner.show()
+                        hasNetworkErrorBannerShown = true
                     }
                     SVProgressHUD.dismiss()
                 }

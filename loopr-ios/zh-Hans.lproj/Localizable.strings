@@ -367,7 +367,7 @@
 
 /* No data */
 "No search result" = "无搜索结果";
-"No network" = "无网络";
+"Network Error" = "网络出错";
 "No_Data_Tip" = "暂无相关数据";
 "No-data-orderbook" = "还没有挂单";
 "No-data-transaction" = "还没有成交记录";

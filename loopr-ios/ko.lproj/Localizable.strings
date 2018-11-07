@@ -333,7 +333,7 @@
 
 /* No data */
 "No search result" = "검색 결과가 없습니다";
-"No network" = "네트워크 불안정";
+"Network Error" = "네트워크 불안정";
 "No_Data_Tip" = "목록이 존재하지 않습니다";
 "No-data-orderbook" = "Orderbook is empty";
 "No-data-transaction" = "No trade yet";
