@@ -367,7 +367,7 @@
 
 /* No data */
 "No search result" = "無搜尋結果";
-"No network" = "無網絡";
+"Network Error" = "網絡出錯";
 "No_Data_Tip" = "暫無相關數據";
 "No-data-orderbook" = "還沒有掛單";
 "No-data-transaction" = "還沒有成交記錄";

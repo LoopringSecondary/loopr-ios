@@ -366,7 +366,7 @@
 
 /* No data */
 "No search result" = "No search result";
-"No network" = "No network";
+"Network Error" = "Network Error";
 "No_Data_Tip" = "No Data available";
 "No-data-orderbook" = "Orderbook is empty";
 "No-data-transaction" = "No trade yet";
