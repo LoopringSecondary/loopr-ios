@@ -14,8 +14,7 @@ enum UserDefaultsKeys: String {
     case lastedThemeIndex = "UserDefaultsKeys.lastedThemeIndex"
     case currentLanguage = "UserDefaultsKeys.currentLanguage"
     case currentCurrency = "UserDefaultsKeys.currentCurrency"
-    // Deprecated. Keep these in the code to avoid using them again in the future.
-    // case currentFont = "UserDefaultsKeys.currentcurrentFont"
+
     case showSmallAssets = "UserDefaultsKeys.showSmallAssets"
     case showOtherPairs = "UserDefaultsKeys.showOtherPairs"
     
@@ -40,10 +39,6 @@ enum UserDefaultsKeys: String {
     case lrcFeeRatio = "UserDefaultsKeys.lrcFeeRatio"
     
     case orderIntervalTime = "UserDefaultsKeys.orderIntervalTime"
-    
-    // Deprecated. Keep these in the code to avoid using them again in the future.
-    // case useMarginSplitUserDefineValue = "UserDefaultsKeys.useMarginSplitUserDefineValue"
-    // case marginSplit = "UserDefaultsKeys.marginSplit"
 
     case passcodeOn = "UserDefaultsKeys.passcodeOn"
     
@@ -51,4 +46,10 @@ enum UserDefaultsKeys: String {
     case deviceToken = "UserDefaultsKeys.deviceToken"
     
     case largestSkipBuildVersion = "UserDefaultsKeys.largestSkipBuildVersion"
+
+    // MARK: - Deprecated
+    // Keep these in the code to avoid using them again in the future.
+    // case currentFont = "UserDefaultsKeys.currentcurrentFont"
+    // case useMarginSplitUserDefineValue = "UserDefaultsKeys.useMarginSplitUserDefineValue"
+    // case marginSplit = "UserDefaultsKeys.marginSplit"
 }
