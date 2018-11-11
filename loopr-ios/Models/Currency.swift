@@ -16,14 +16,25 @@ class Currency: Equatable, CustomStringConvertible {
     let icon: UIImage?
     var description: String
     
+    // Remove "zh_HK": "HKD" for now
     let map = [
         "en_US": "USD",
-        "zh_CN": "CNY",
-        "zh_HK": "HKD"
+        "zh_CN": "CNY"
     ]
     
     init(name: String) {
-        self.name = name
+        if Array(map.values).contains(name) {
+            self.name = name
+        } else {
+            if SettingDataManager.shared.getCurrentLanguage() == Language(name: "zh-Hans") {
+                self.name = "CNY"
+                SettingDataManager.shared.setCurrentCurrency(Currency(name: "CNY"))
+            } else {
+                self.name = "USD"
+                SettingDataManager.shared.setCurrentCurrency(Currency(name: "USD"))
+            }
+        }
+
         self.icon = UIImage(named: name)
         self.locale = "en_US"
         self.description = LocalizedString(name, comment: "")
