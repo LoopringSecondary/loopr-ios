@@ -178,9 +178,32 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     })
                     
                     // Get user config
-                    AppServiceUserManager.shared.updateUserConfig(completion: { (_) in
-                        
+                    AppServiceUserManager.shared.getUserConfig(completion: { (config, _) in
+                        if let config = config {
+                            let configuration = JSON.init(parseJSON: config.rawString()!)
+                            
+                            // Updating language or currency will trigger a sequence of API requests.
+                            if SettingDataManager.shared.getCurrentLanguage().name != configuration["language"].stringValue {
+                                _ = SetLanguage(configuration["language"].stringValue)
+                            }
+                            
+                            if SettingDataManager.shared.getCurrentCurrency().name != configuration["currency"].stringValue {
+                                SettingDataManager.shared.setCurrentCurrency(Currency(name: configuration["currency"].stringValue))
+                                NotificationCenter.default.post(name: .needRelaunchCurrentAppWallet, object: nil)
+                            }
+                        }
                     })
+                    
+                    // TODO: this move to setting page.
+                    var config = JSON()
+                    if let openID = UserDefaults.standard.string(forKey: UserDefaultsKeys.openID.rawValue) {
+                        if !openID.isEmpty {
+                            config["userId"] = JSON(openID)
+                            config["currency"] = JSON(SettingDataManager.shared.getCurrentCurrency().name)
+                            config["language"] = JSON(SettingDataManager.shared.getCurrentLanguage().name)
+                            AppServiceUserManager.shared.updateUserConfig(openID: openID, config: config, completion: {_, _ in })
+                        }
+                    }
                 }
                 
                 self.processPasteboard()

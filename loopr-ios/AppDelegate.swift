@@ -180,6 +180,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
             self.window?.addSubview(backgroundImageView)
             self.window?.bringSubview(toFront: backgroundImageView)
         }
+        // applicationWillResignActive should be as simple as possible.
+        // iPhone may kill the process if it takes too mucy time.
         var config = JSON()
         if let openID = UserDefaults.standard.string(forKey: UserDefaultsKeys.openID.rawValue) {
             if !openID.isEmpty {
@@ -309,18 +311,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         configuration["userId"] = JSON(openID)
         configuration["language"] = JSON(SettingDataManager.shared.getCurrentLanguage().name)
         configuration["currency"] = JSON(SettingDataManager.shared.getCurrentCurrency().name)
-        AppServiceUserManager.shared.getUserConfig(openID: openID) { (config, _) in
+        AppServiceUserManager.shared.getUserConfig(completion: { (config, _) in
             if config == JSON.null {
                 AppServiceUserManager.shared.updateUserConfig(openID: openID, config: configuration, completion: {_, _ in })
             } else if let config = config {
+                // TODO: force wrap here will cause a crash.
                 configuration = JSON.init(parseJSON: config.rawString()!)
+                
+                // TODO: If the www.loopring.mobi/api/v1/users doesn't use a config with language or currency,
+                // This part will crash.
                 _ = SetLanguage(configuration["language"].stringValue)
                 SettingDataManager.shared.setCurrentCurrency(Currency(name: configuration["currency"].stringValue))
             }
             self.wechatLoginByRequestForUserInfo(openID: openID, accessToken: accessToken)
-        }
+        })
     }
     
+    // This should not be in synchronizeWithCloud
     func wechatLoginByRequestForUserInfo(openID: String, accessToken: String) {
         // 获取用户信息
         let parameters = ["access_token": accessToken, "openid": openID]
