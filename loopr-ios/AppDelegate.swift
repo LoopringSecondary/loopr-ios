@@ -182,10 +182,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         }
         var config = JSON()
         if let openID = UserDefaults.standard.string(forKey: UserDefaultsKeys.openID.rawValue) {
-            config["userId"] = JSON(openID)
-            config["currency"] = JSON(SettingDataManager.shared.getCurrentCurrency().name)
-            config["language"] = JSON(SettingDataManager.shared.getCurrentLanguage().name)
-            AppServiceUserManager.shared.updateUserConfig(openID: openID, config: config, completion: {_, _ in })
+            if !openID.isEmpty {
+                config["userId"] = JSON(openID)
+                config["currency"] = JSON(SettingDataManager.shared.getCurrentCurrency().name)
+                config["language"] = JSON(SettingDataManager.shared.getCurrentLanguage().name)
+                AppServiceUserManager.shared.updateUserConfig(openID: openID, config: config, completion: {_, _ in })
+            }
         }
     }
 
@@ -311,8 +313,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
             if config == JSON.null {
                 AppServiceUserManager.shared.updateUserConfig(openID: openID, config: configuration, completion: {_, _ in })
             } else if let config = config {
-                _ = SetLanguage(config["language"].stringValue)
-                SettingDataManager.shared.setCurrentCurrency(Currency(name: config["currency"].stringValue))
+                configuration = JSON.init(parseJSON: config.rawString()!)
+                _ = SetLanguage(configuration["language"].stringValue)
+                SettingDataManager.shared.setCurrentCurrency(Currency(name: configuration["currency"].stringValue))
             }
             self.wechatLoginByRequestForUserInfo(openID: openID, accessToken: accessToken)
         }

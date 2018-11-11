@@ -37,9 +37,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         settingsTableView.tableFooterView = footerView
         
         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.thirdParty.rawValue) {
-            thirdPartyButton.title = "third"
+            thirdPartyButton.title = LocalizedString("Third", comment: "")
         } else {
-            thirdPartyButton.title = "unthird"
+            thirdPartyButton.title = LocalizedString("Unthird", comment: "")
         }
     }
 
@@ -377,11 +377,12 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             let vc = ThirdPartyViewController()
             self.present(vc, animated: true, completion: nil)
         } else if let openID = UserDefaults.standard.string(forKey: UserDefaultsKeys.openID.rawValue) {
-            let title = LocalizedString("Third party tip", comment: "")
-            let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+            let title = LocalizedString("Third party title", comment: "")
+            let message = LocalizedString("Third party message", comment: "")
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
                 DispatchQueue.main.async {
-                    self.thirdPartyButton.title = "third"
+                    self.thirdPartyButton.title = LocalizedString("Third", comment: "")
                 }
                 UserDefaults.standard.set(true, forKey: UserDefaultsKeys.thirdParty.rawValue)
                 AppServiceUserManager.shared.deleteUserConfig(openID: openID, completion: { _, _ in })

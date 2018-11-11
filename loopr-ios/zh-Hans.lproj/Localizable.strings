@@ -16,6 +16,11 @@
 "Third tip1" = "第三方授权登录，系统可以保存您的APP配置。";
 "Third tip2" = "防止删除或者更新APP后丢失，您也可以选择跳过。";
 
+"Third party title" = "退出第三方授权";
+"Third party message" = "退出授权将移除您所有已绑定的设置，是否继续？";
+"Third" = "授权";
+"Unthird" = "退出授权";
+
 /* ETH related */
 "Mnemonic" = "助记词";
 "Keystore" = "Keystore";
