@@ -92,18 +92,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
     }
     
     func getRootViewController() -> UIViewController {
-        var result: UIViewController
-        if Production.getCurrent() == .upwallet && hasKeysPlist() {
-            // UserDefaults.standard.string(forKey: "openid") != nil
-            if AppWalletDataManager.shared.getWallets().isEmpty {
+        var result: UIViewController = SetupNavigationController(nibName: nil, bundle: nil)
+        if Production.getCurrent() == .upwallet {
+            if UserDefaults.standard.bool(forKey: UserDefaultsKeys.thirdParty.rawValue) ||
+               UserDefaults.standard.string(forKey: UserDefaultsKeys.openID.rawValue) != nil {
+                if !AppWalletDataManager.shared.getWallets().isEmpty {
+                    result = MainTabController(nibName: nil, bundle: nil)
+                }
+            } else if hasKeysPlist() {
                 result = ThirdPartyViewController(nibName: nil, bundle: nil)
-            } else {
-                result = MainTabController(nibName: nil, bundle: nil)
             }
         } else {
-            if AppWalletDataManager.shared.getWallets().isEmpty {
-                result = SetupNavigationController(nibName: nil, bundle: nil)
-            } else {
+            if !AppWalletDataManager.shared.getWallets().isEmpty {
                 result = MainTabController(nibName: nil, bundle: nil)
             }
         }
@@ -179,6 +179,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
             backgroundImageView.frame = self.window!.frame
             self.window?.addSubview(backgroundImageView)
             self.window?.bringSubview(toFront: backgroundImageView)
+        }
+        var config = JSON()
+        if let openID = UserDefaults.standard.string(forKey: UserDefaultsKeys.openID.rawValue) {
+            config["userId"] = JSON(openID)
+            config["currency"] = JSON(SettingDataManager.shared.getCurrentCurrency().name)
+            config["language"] = JSON(SettingDataManager.shared.getCurrentLanguage().name)
+            AppServiceUserManager.shared.updateUserConfig(openID: openID, config: config, completion: {_, _ in })
         }
     }
 
@@ -286,20 +293,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
                     let json = JSON(data)
                     let accessToken = json["access_token"].stringValue
                     let openID = json["openid"].stringValue
-                    UserDefaults.standard.set(accessToken, forKey: "access_token")
-                    UserDefaults.standard.set(openID, forKey: "openid")
+                    UserDefaults.standard.set(openID, forKey: UserDefaultsKeys.openID.rawValue)
+                    UserDefaults.standard.set(false, forKey: UserDefaultsKeys.thirdParty.rawValue)
                     UserDefaults.standard.synchronize()
-                    self.wechatLoginByRequestForUserInfo()
+                    self.synchronizeWithCloud(openID: openID, accessToken: accessToken)
                 }
             }
         }
     }
     
-    func wechatLoginByRequestForUserInfo() {
-        let accessToken = UserDefaults.standard.string(forKey: "access_token")
-        let openID = UserDefaults.standard.string(forKey: "openid")
+    func synchronizeWithCloud(openID: String, accessToken: String) {
+        var configuration = JSON()
+        configuration["userId"] = JSON(openID)
+        configuration["language"] = JSON(SettingDataManager.shared.getCurrentLanguage().name)
+        configuration["currency"] = JSON(SettingDataManager.shared.getCurrentCurrency().name)
+        AppServiceUserManager.shared.getUserConfig(openID: openID) { (config, _) in
+            if config == JSON.null {
+                AppServiceUserManager.shared.updateUserConfig(openID: openID, config: configuration, completion: {_, _ in })
+            } else if let config = config {
+                _ = SetLanguage(config["language"].stringValue)
+                SettingDataManager.shared.setCurrentCurrency(Currency(name: config["currency"].stringValue))
+            }
+            self.wechatLoginByRequestForUserInfo(openID: openID, accessToken: accessToken)
+        }
+    }
+    
+    func wechatLoginByRequestForUserInfo(openID: String, accessToken: String) {
         // 获取用户信息
-        let parameters = ["access_token": accessToken!, "openid": openID!]
+        let parameters = ["access_token": accessToken, "openid": openID]
         Request.get("https://api.weixin.qq.com/sns/oauth2/access_token", parameters: parameters) { _, _, error in
             guard error == nil else { return }
             DispatchQueue.main.async {

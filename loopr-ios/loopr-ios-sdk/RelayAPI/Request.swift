@@ -17,7 +17,7 @@ class Request {
     static var hasNetworkErrorBannerShown: Bool = false
     static let banner = NotificationBanner.generate(title: "Network Error", style: .warning)
     
-    static func send(body: JSON, url: URL, completionHandler: @escaping CompletionHandler) {
+    static func post(body: JSON, url: URL, completionHandler: @escaping CompletionHandler) {
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
@@ -66,7 +66,32 @@ class Request {
                 error == nil else {                           // was there no error, otherwise ...
                     return
             }
-            let responseObject = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any]
+            completionHandler(data, response, error)
+        }
+        task.resume()
+    }
+    
+    static func delete(body: JSON, url: URL, completionHandler: @escaping CompletionHandler) {
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "DELETE"
+        
+        do {
+            try request.httpBody = body.rawData()
+        } catch {
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(String(describing: response))")
+            }
+            
             completionHandler(data, response, error)
         }
         task.resume()

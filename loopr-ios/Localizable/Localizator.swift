@@ -99,7 +99,7 @@ class Localizator {
         }
     }
     
-    fileprivate func setLanguage(_ newLanguage: String) -> Bool {
+    func setLanguage(_ newLanguage: String) -> Bool {
         if (newLanguage == updatedLanguage) || !availableLanguagesArray.contains(newLanguage) {
             return false
         }

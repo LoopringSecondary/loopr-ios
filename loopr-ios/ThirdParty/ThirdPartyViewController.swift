@@ -52,6 +52,7 @@ class ThirdPartyViewController: UIViewController {
         } else {
             vc = MainTabController(nibName: nil, bundle: nil)
         }
+        UserDefaults.standard.set(true, forKey: UserDefaultsKeys.thirdParty.rawValue)
         self.present(vc, animated: true, completion: nil)
         Answers.logCustomEvent(withName: "Wechat Login v1",
                                customAttributes: [
