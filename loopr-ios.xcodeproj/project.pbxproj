@@ -289,6 +289,7 @@
 		AC69914420ABCBB3003593AE /* SignHashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69914320ABCBB3003593AE /* SignHashTests.swift */; };
 		AC6A3478210D740500AE615B /* MarketDetailSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A3476210D740500AE615B /* MarketDetailSwipeViewController.swift */; };
 		AC6A3479210D740500AE615B /* MarketDetailSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC6A3477210D740500AE615B /* MarketDetailSwipeViewController.xib */; };
+		AC6E83042198F70900ABCE58 /* AppDelegateThirdPartyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E83032198F70900ABCE58 /* AppDelegateThirdPartyExtension.swift */; };
 		AC70E84E20683C7500451047 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC70E84D20683C7500451047 /* IconView.swift */; };
 		AC72AED8204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC72AED6204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift */; };
 		AC72AED9204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC72AED7204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib */; };
@@ -790,6 +791,7 @@
 		AC69914320ABCBB3003593AE /* SignHashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignHashTests.swift; sourceTree = "<group>"; };
 		AC6A3476210D740500AE615B /* MarketDetailSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailSwipeViewController.swift; sourceTree = "<group>"; };
 		AC6A3477210D740500AE615B /* MarketDetailSwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketDetailSwipeViewController.xib; sourceTree = "<group>"; };
+		AC6E83032198F70900ABCE58 /* AppDelegateThirdPartyExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateThirdPartyExtension.swift; sourceTree = "<group>"; };
 		AC70E84D20683C7500451047 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		AC72AED6204C8AAD00E9D3B0 /* BackupMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupMnemonicViewController.swift; sourceTree = "<group>"; };
 		AC72AED7204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackupMnemonicViewController.xib; sourceTree = "<group>"; };
@@ -1599,6 +1601,7 @@
 				ACCC7EA120828D2E008E58BA /* loopr-ios-sdk */,
 				AC798E422022B93A0071D477 /* AppDelegate.swift */,
 				ACE9F0472186FD1A00695E37 /* AppDelegateNotificationExtension.swift */,
+				AC6E83032198F70900ABCE58 /* AppDelegateThirdPartyExtension.swift */,
 				ACFEFE9D20C3436000013921 /* loopr_ios.xcdatamodeld */,
 				AC5288AF208300570002AEAD /* Utils */,
 				AC798E482022B93A0071D477 /* Main.storyboard */,
@@ -2935,6 +2938,7 @@
 				ACB911662024505D00F14644 /* OrderFill.swift in Sources */,
 				ACEC977F20AD57F3003F9DEB /* P2POrderHistoryViewController.swift in Sources */,
 				AC72AEE8204F020B00E9D3B0 /* OrderTradeState.swift in Sources */,
+				AC6E83042198F70900ABCE58 /* AppDelegateThirdPartyExtension.swift in Sources */,
 				AC147BEC208D2E54008D5104 /* ImportWalletError.swift in Sources */,
 				9475502321255A58003CFEBF /* UISwitchExtension.swift in Sources */,
 				AC2ACA9C2103075C009C77E7 /* WalletType.swift in Sources */,
