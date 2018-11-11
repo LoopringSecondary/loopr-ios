@@ -98,8 +98,9 @@ class Localizator {
             return NSLocalizedString(key, comment: key)
         }
     }
-    
-    func setLanguage(_ newLanguage: String) -> Bool {
+
+    // Use SetLanguage() to update the language
+    fileprivate func setLanguage(_ newLanguage: String) -> Bool {
         if (newLanguage == updatedLanguage) || !availableLanguagesArray.contains(newLanguage) {
             return false
         }
@@ -109,8 +110,10 @@ class Localizator {
             UserDefaults.standard.set([newLanguage], forKey: "AppleLanguages")
             UserDefaults.standard.synchronize()
             
-            // runtime
-            NotificationCenter.default.post(name: .languageChanged, object: nil)
+            // runtime at main thread.
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .languageChanged, object: nil)
+            }
             return true
         }
         return false
