@@ -12,7 +12,7 @@ class AppServiceUserManager {
     
     static let shared = AppServiceUserManager()
     
-    let BAK_URL = "http://10.137.107.10:5000/api/v1/users"
+    let BAK_URL = "https://www.loopring.mobi/api/v1/users"
 
     typealias CompletionHandler = (_ data: JSON?, _ error: Error?) -> Void
 
@@ -27,7 +27,7 @@ class AppServiceUserManager {
         Request.get(BAK_URL, parameters: parameters) { data, _, error in
             guard let data = data, error == nil else { return }
             let json = JSON(data)
-            completion(json["config"], nil)
+            completion(json["message"]["config"], nil)
         }
     }
     
