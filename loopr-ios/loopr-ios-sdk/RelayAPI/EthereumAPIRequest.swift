@@ -28,7 +28,7 @@ class EthereumAPIRequest {
         body["jsonrpc"] = JSON("2.0")
         body["id"] = JSON(UUID().uuidString)
         
-        Request.send(body: body, url: RelayAPIConfiguration.ethURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.ethURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)

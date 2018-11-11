@@ -11,73 +11,48 @@ import Foundation
 class AppServiceUserManager {
     
     static let shared = AppServiceUserManager()
+    
+    let BAK_URL = "http://10.137.107.10:5000/api/v1/users"
+
+    typealias CompletionHandler = (_ data: JSON?, _ error: Error?) -> Void
 
     private init() {
         
     }
 
     // Endpoint /api/v1/users
-    // Not used in the version 0.9.16
-    private func getUserConfig(completion: @escaping (_ shouldDisplayUpdateNotification: Bool) -> Void) {
+    func getUserConfig(openID: String, completion: @escaping CompletionHandler) {
         // Example
-        let account_token = "1234567"
-        let url = URL(string: "https://www.loopring.mobi/api/v1/users?account_token=\(account_token)")
-        let task = URLSession.shared.dataTask(with: url! as URL) { data, _, error in
-            guard let data = data, error == nil else {
-                print("error=\(String(describing: error))")
-                return
-            }
+        let parameters = ["account_token": openID]
+        Request.get(BAK_URL, parameters: parameters) { data, _, error in
+            guard let data = data, error == nil else { return }
             let json = JSON(data)
-            let language = json["language"].string
-            let currency = json["currency"].string
-            print("language: \(String(describing: language))")
-            print("currency: \(String(describing: currency))")
-            completion(true)
+            completion(json["config"], nil)
         }
-        task.resume()
     }
     
     // use POST to update user config.
-    func updateUserConfig(completion: @escaping (_ shouldDisplayUpdateNotification: Bool) -> Void) {
-        let openid = UserDefaults.standard.string(forKey: "openid") ?? ""
-
-        // Avoid nil nor empty string
-        guard openid != "" else {
-            completion(false)
-            return
-        }
-
+    func updateUserConfig(openID: String, config: JSON, completion: @escaping CompletionHandler) {
+        
         // Example to update the user config.
         var body = JSON()
-        body["account_token"] = JSON(openid)
-        body["language"] = JSON(SettingDataManager.shared.getCurrentLanguage().name)
-        body["currency"] = JSON(SettingDataManager.shared.getCurrentCurrency().name)
-        body["lrc_fee_ratio"] = JSON(SettingDataManager.shared.getLrcFeeRatio())
-
-        var request = URLRequest(url: URL(string: "https://www.loopring.mobi/api/v1/users")!)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
+        body["account_token"] = JSON(openID)
+        body["config"] = config
         
-        do {
-            try request.httpBody = body.rawData()
-        } catch {
-            return
+        Request.post(body: body, url: URL.init(string: BAK_URL)!) { data, _, error in
+            guard let data = data, error == nil else { return }
+            let json = JSON(data)
+            completion(json["config"], nil)
         }
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
-                print("error=\(String(describing: error))")
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(String(describing: response))")
-            }
-            
-            completion(false)
-        }
-        task.resume()
     }
-
+    
+    func deleteUserConfig(openID: String, completion: @escaping CompletionHandler) {
+        var body = JSON()
+        body["account_token"] = JSON(openID)
+        Request.delete(body: body, url: URL.init(string: BAK_URL)!) { (data, _, error) in
+            guard let data = data, error == nil else { return }
+            let json = JSON(data)
+            completion(json["config"], nil)
+        }
+    }
 }

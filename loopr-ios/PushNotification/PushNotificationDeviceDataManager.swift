@@ -52,7 +52,7 @@ class PushNotificationDeviceDataManager {
                 body["isReleaseMode"] = false
             #endif
 
-            Request.send(body: body, url: URL(string: "https://www.loopring.mobi/api/v1/devices")!) { data, _, error in
+            Request.post(body: body, url: URL(string: "https://www.loopring.mobi/api/v1/devices")!) { data, _, error in
                 guard let _ = data, error == nil else {
                     print("error=\(String(describing: error))")
                     Answers.logCustomEvent(withName: "API App Service: PushNotificationDeviceDataManager.register v1",

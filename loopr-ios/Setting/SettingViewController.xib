@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingViewController" customModule="loopr_ios" customModuleProvider="target">
             <connections>
                 <outlet property="settingsTableView" destination="OKf-sZ-zE1" id="sF4-RW-yNj"/>
+                <outlet property="thirdPartyButton" destination="Qdb-XZ-hfV" id="rDG-9e-c5b"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,20 +23,34 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OKf-sZ-zE1">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="575"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="y9S-qH-tOw"/>
                         <outlet property="delegate" destination="-1" id="0B5-iZ-yby"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdb-XZ-hfV" customClass="GradientButton" customModule="loopr_ios" customModuleProvider="target">
+                    <rect key="frame" x="32" y="599" width="311" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="y1s-Id-yuC"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="pressedThirdPartyButton:" destination="-1" eventType="touchUpInside" id="cuC-kW-Vjs"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Qdb-XZ-hfV" firstAttribute="top" secondItem="OKf-sZ-zE1" secondAttribute="bottom" constant="24" id="0AD-ll-R6Z"/>
                 <constraint firstItem="OKf-sZ-zE1" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="DsK-xJ-gxq"/>
-                <constraint firstItem="OKf-sZ-zE1" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="Y7a-yO-nwE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Qdb-XZ-hfV" secondAttribute="trailing" constant="32" id="JYH-OX-LLb"/>
+                <constraint firstItem="OKf-sZ-zE1" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="-92" id="Y7a-yO-nwE"/>
+                <constraint firstItem="Qdb-XZ-hfV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="agh-mm-Fzg"/>
                 <constraint firstItem="OKf-sZ-zE1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cIF-LG-0cM"/>
                 <constraint firstItem="OKf-sZ-zE1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="d1X-LM-yN3"/>
+                <constraint firstItem="Qdb-XZ-hfV" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="jFI-YH-AQZ"/>
                 <constraint firstItem="OKf-sZ-zE1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lu8-N8-8tE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

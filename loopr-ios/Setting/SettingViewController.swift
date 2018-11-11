@@ -11,6 +11,7 @@ import UIKit
 class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var settingsTableView: UITableView!
+    @IBOutlet weak var thirdPartyButton: GradientButton!
     
     let sectionTitles = [LocalizedString("User Preferences", comment: ""), LocalizedString("Trading", comment: ""), LocalizedString("Security", comment: ""), LocalizedString("About", comment: "")]
     let sectionRows = [1, 4, 2, Production.getSocialMedia().count + 1]
@@ -34,6 +35,12 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
         footerView.theme_backgroundColor = ColorPicker.backgroundColor
         settingsTableView.tableFooterView = footerView
+        
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.thirdParty.rawValue) {
+            thirdPartyButton.title = "third"
+        } else {
+            thirdPartyButton.title = "unthird"
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -365,4 +372,23 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return 51
     }
     
+    @IBAction func pressedThirdPartyButton(_ sender: GradientButton) {
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.thirdParty.rawValue) {
+            let vc = ThirdPartyViewController()
+            self.present(vc, animated: true, completion: nil)
+        } else if let openID = UserDefaults.standard.string(forKey: UserDefaultsKeys.openID.rawValue) {
+            let title = LocalizedString("Third party tip", comment: "")
+            let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
+                DispatchQueue.main.async {
+                    self.thirdPartyButton.title = "third"
+                }
+                UserDefaults.standard.set(true, forKey: UserDefaultsKeys.thirdParty.rawValue)
+                AppServiceUserManager.shared.deleteUserConfig(openID: openID, completion: { _, _ in })
+            }))
+            alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
 }

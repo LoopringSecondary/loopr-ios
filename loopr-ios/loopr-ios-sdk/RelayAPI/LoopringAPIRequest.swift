@@ -13,7 +13,7 @@ class LoopringAPIRequest {
     static func invoke<T: Initable>(method: String, withBody body: inout JSON, _ completionHandler: @escaping (_ response: T?, _ error: Error?) -> Void) {
         body["method"] = JSON(method)
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -39,7 +39,7 @@ class LoopringAPIRequest {
         body["params"] = [["delegateAddress": RelayAPIConfiguration.delegateAddress, "owner": owner]]
         body["id"] = JSON(UUID().uuidString)
         
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler([], error)
@@ -66,7 +66,7 @@ class LoopringAPIRequest {
         body["params"] = [["owner": owner, "orderHash": orderHash, "delegateAddress": RelayAPIConfiguration.delegateAddress, "status": status, "market": market, "side": side, "orderType": orderType, "pageIndex": pageIndex, "pageSize": pageSize]]
         body["id"] = JSON(UUID().uuidString)
         
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler([], error)
@@ -94,7 +94,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_getOrderByHash"
         body["params"] = [["orderHash": orderHash]]
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -119,7 +119,7 @@ class LoopringAPIRequest {
         body["params"] = [["delegateAddress": RelayAPIConfiguration.delegateAddress, "market": market, "length": length]]
         body["id"] = JSON(UUID().uuidString)
         
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, nil, error)
@@ -161,7 +161,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_getTickerBySource"
         body["params"] = [["delegateAddress": RelayAPIConfiguration.delegateAddress, "tickerSource": source.description]]
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
@@ -187,7 +187,7 @@ class LoopringAPIRequest {
         body["params"] = [["delegateAddress": RelayAPIConfiguration.delegateAddress]]
         body["id"] = JSON(UUID().uuidString)
         
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
@@ -212,7 +212,7 @@ class LoopringAPIRequest {
         body["params"] = [["delegateAddress": RelayAPIConfiguration.delegateAddress, "market": market]]
         body["id"] = JSON(UUID().uuidString)
         
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
@@ -242,7 +242,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_getFills"
         body["params"] = [["market": market, "delegateAddress": RelayAPIConfiguration.delegateAddress, "owner": owner, "orderHash": orderHash, "ringHash": ringHash]]
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
@@ -272,7 +272,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_getLatestFills"
         body["params"] = [["market": market, "delegateAddress": RelayAPIConfiguration.delegateAddress, "side": side]]
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
@@ -295,7 +295,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_getTrend"
         body["params"] = [["market": market, "interval": interval, "delegateAddress": RelayAPIConfiguration.delegateAddress]]
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -320,7 +320,7 @@ class LoopringAPIRequest {
         body["params"] = [["ringHash": ringHash, "delegateAddress": RelayAPIConfiguration.delegateAddress, "pageIndex": pageIndex, "pageSize": pageSize]]
         body["id"] = JSON(UUID().uuidString)
         
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -343,7 +343,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_getCutoff"
         body["params"] = [["delegateAddress": RelayAPIConfiguration.delegateAddress, "address": address, "blockNumber": blockNumber]]
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
@@ -361,7 +361,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_getPriceQuote"
         body["params"] = [["currency": currency, "delegateAddress": RelayAPIConfiguration.delegateAddress]]
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -381,7 +381,7 @@ class LoopringAPIRequest {
         body["params"] = [["owner": owner, "token": token, "delegateAddress": RelayAPIConfiguration.delegateAddress]]
         body["id"] = JSON(UUID().uuidString)
 
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
@@ -399,7 +399,7 @@ class LoopringAPIRequest {
         var body: JSON = JSON()
         body["method"] = "loopring_getSupportedTokens"
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -421,7 +421,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_getCustomTokens"
         body["params"] = [["owner": owner]]
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -445,7 +445,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_getSupportedMarket"
         body["params"] = [["delegateAddress": RelayAPIConfiguration.delegateAddress]]
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -470,7 +470,7 @@ class LoopringAPIRequest {
         body["params"] = [["owner": owner, "symbol": symbol, "txHash": txHash, "pageIndex": pageIndex, "pageSize": pageSize, "delegateAddress": RelayAPIConfiguration.delegateAddress]]
         body["id"] = JSON(UUID().uuidString)
         
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -497,7 +497,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_unlockWallet"
         body["params"] = [["owner": owner]]
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -513,7 +513,7 @@ class LoopringAPIRequest {
         var body: JSON = JSON()
         body["method"] = "loopring_getEstimateGasPrice"
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -534,7 +534,7 @@ class LoopringAPIRequest {
         body["params"] = [["owner": owner, "delegateAddress": RelayAPIConfiguration.delegateAddress]]
         body["id"] = JSON(UUID().uuidString)
         
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -553,7 +553,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_getPortfolio"
         body["params"] = [["owner": owner]]
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -571,7 +571,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_notifyTransactionSubmitted"
         body["params"] = [["hash": txHash, "nonce": rawTx.nonce.hex, "to": rawTx.to, "value": rawTx.value, "gasPrice": rawTx.gasPrice, "gas": rawTx.gasLimit, "input": rawTx.data, "from": from]]
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { _, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { _, _, error in
             guard error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -645,7 +645,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_getTempStore"
         body["params"] = [["key": hash]]
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -690,7 +690,7 @@ class LoopringAPIRequest {
         body["method"] = "loopring_createCityPartner"
         body["params"] = [["walletAddress": owner]]
         body["id"] = JSON(UUID().uuidString)
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -704,7 +704,7 @@ class LoopringAPIRequest {
     
     static func activateInvitation(completionHandler: @escaping (_ result: Partner?, _ error: Error?) -> Void) {
         let url = URL(string: "https://relay1.loopr.io/city_partner/activate_customer")!
-        Request.send(body: JSON(), url: url) { data, _, error in
+        Request.post(body: JSON(), url: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
@@ -729,7 +729,7 @@ class LoopringAPIRequest {
         body["params"] = [["invitationCode": invitationCode]]
         body["id"] = JSON(UUID().uuidString)
         
-        Request.send(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
+        Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 completionHandler(nil, error)
