@@ -12,7 +12,27 @@ import Crashlytics
 import UserNotifications
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
+
+    // Push notifications
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Answers.logCustomEvent(withName: "didRegisterForRemoteNotificationsWithDeviceToken v1",
+                               customAttributes: [:])
+        
+        let tokenParts = deviceToken.map { data -> String in
+            return String(format: "%02.2hhx", data)
+        }
+        let token = tokenParts.joined()
+        print("Device Token: \(token)")
+        PushNotificationDeviceDataManager.shared.setDeviceToken(token)
+    }
     
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register: \(error.localizedDescription)")
+        Answers.logCustomEvent(withName: "didFailToRegisterForRemoteNotificationsWithError v1",
+                               customAttributes: [
+                                "error": error.localizedDescription])
+    }
+
     // Receive displayed notifications for iOS 10 devices.
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
