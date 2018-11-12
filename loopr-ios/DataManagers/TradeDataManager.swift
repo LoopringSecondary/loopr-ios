@@ -250,7 +250,8 @@ class TradeDataManager {
             result.append(amountBuy)
             result.append(GethBigInt.init(order.validSince))
             result.append(GethBigInt.init(order.validUntil))
-            result.append(GethBigInt.init(0))
+            let lrcFee = GethBigInt.generate(valueInEther: order.lrcFee, symbol: "LRC")!
+            result.append(lrcFee)
             result.append(amountSell) // rateAmountSell = amountSell
         }
         return result
@@ -258,8 +259,8 @@ class TradeDataManager {
     
     func generateMargin() -> [Any] {
         var result: [Any] = []
-        for _ in orders {
-            let margin = Int64(SettingDataManager.shared.getMarginSplit() * 100)
+        for order in orders {
+            let margin = Int64(order.marginSplitPercentage)
             result.append(GethBigInt.init(margin))
         }
         return result
