@@ -11,10 +11,9 @@ import UIKit
 class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var settingsTableView: UITableView!
-    @IBOutlet weak var thirdPartyButton: GradientButton!
     
     let sectionTitles = [LocalizedString("User Preferences", comment: ""), LocalizedString("Trading", comment: ""), LocalizedString("Security", comment: ""), LocalizedString("About", comment: "")]
-    let sectionRows = [1, 4, 2, Production.getSocialMedia().count + 1]
+    let sectionRows = [1, 5, 2, Production.getSocialMedia().count + 1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +34,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
         footerView.theme_backgroundColor = ColorPicker.backgroundColor
         settingsTableView.tableFooterView = footerView
-        
-        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.thirdParty.rawValue) {
-            thirdPartyButton.title = LocalizedString("Third", comment: "")
-        } else {
-            thirdPartyButton.title = LocalizedString("Unthird", comment: "")
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -85,40 +78,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
         case 1:
-            switch indexPath.row {
-            case 0:
-                print("Setting wallet")
-                let viewController = SettingManageWalletViewController()
-                viewController.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(viewController, animated: true)
-            case 1:
-                print("Setting currency")
-                let viewController = SettingCurrencyViewController()
-                viewController.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(viewController, animated: true)
-            case 2:
-                print("Setting language")
-                let viewController = SettingLanguageViewController()
-                viewController.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(viewController, animated: true)
-            case 3:
-                print("Touch id")
-                if !AuthenticationDataManager.shared.devicePasscodeEnabled() {
-                    let title: String
-                    if BiometricType.get() == .touchID {
-                        title = LocalizedString("Please turn on Touch ID in settings", comment: "")
-                    } else {
-                        title = LocalizedString("Please turn on Face ID in settings", comment: "")
-                    }
-                    let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: LocalizedString("OK", comment: ""), style: .default, handler: { _ in
-                        
-                    }))
-                    UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
-                }
-            default:
-                break
-            }
+            userPreferencesSectionForCellDidSelected(indexPath: indexPath)
         case 2:
             switch indexPath.row {
             case 0:
@@ -156,11 +116,12 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // 
         if section == 1 {
             if BiometricType.get() == .none {
-                return 3
-            } else {
                 return 4
+            } else {
+                return 5
             }
         } else {
             return sectionRows[section]
@@ -207,23 +168,118 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func userPreferencesSectionForCell(indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            var currentWalletName = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name
-            if currentWalletName == nil {
-                currentWalletName = ""
+        if BiometricType.get() == .none {
+            switch indexPath.row {
+            case 0:
+                var currentWalletName = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name
+                if currentWalletName == nil {
+                    currentWalletName = ""
+                }
+                return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Manage Wallets", comment: ""))
+            case 1:
+                return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Currency", comment: ""))
+            case 2:
+                return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Language", comment: ""))
+            case 3:
+                let title: String
+                if UserDefaults.standard.bool(forKey: UserDefaultsKeys.thirdParty.rawValue) {
+                    title = LocalizedString("Third", comment: "")
+                } else {
+                    title = LocalizedString("Unthird", comment: "")
+                }
+                return createDetailTableCell(indexPath: indexPath, title: title)
+            default:
+                return UITableViewCell(frame: .zero)
             }
-            return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Manage Wallets", comment: ""))
-        case 1:
-            return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Currency", comment: ""))
-        case 2:
-            return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Language", comment: ""))
-        case 3:
-            return createSettingPasscodeTableView(indexPath: indexPath)
-        default:
-            return UITableViewCell(frame: .zero)
+        } else {
+            switch indexPath.row {
+            case 0:
+                var currentWalletName = CurrentAppWalletDataManager.shared.getCurrentAppWallet()?.name
+                if currentWalletName == nil {
+                    currentWalletName = ""
+                }
+                return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Manage Wallets", comment: ""))
+            case 1:
+                return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Currency", comment: ""))
+            case 2:
+                return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Language", comment: ""))
+            case 3:
+                return createSettingPasscodeTableView(indexPath: indexPath)
+            case 4:
+                let title: String
+                if UserDefaults.standard.bool(forKey: UserDefaultsKeys.thirdParty.rawValue) {
+                    title = LocalizedString("Third", comment: "")
+                } else {
+                    title = LocalizedString("Unthird", comment: "")
+                }
+                return createDetailTableCell(indexPath: indexPath, title: title)
+            default:
+                return UITableViewCell(frame: .zero)
+            }
         }
-        
+    }
+
+    func userPreferencesSectionForCellDidSelected(indexPath: IndexPath) {
+        if BiometricType.get() == .none {
+            switch indexPath.row {
+            case 0:
+                print("Setting wallet")
+                let viewController = SettingManageWalletViewController()
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            case 1:
+                print("Setting currency")
+                let viewController = SettingCurrencyViewController()
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            case 2:
+                print("Setting language")
+                let viewController = SettingLanguageViewController()
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            case 3:
+                pressedThirdPartyButton()
+            default:
+                break
+            }
+        } else {
+            switch indexPath.row {
+            case 0:
+                print("Setting wallet")
+                let viewController = SettingManageWalletViewController()
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            case 1:
+                print("Setting currency")
+                let viewController = SettingCurrencyViewController()
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            case 2:
+                print("Setting language")
+                let viewController = SettingLanguageViewController()
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(viewController, animated: true)
+            case 3:
+                print("Touch id")
+                if !AuthenticationDataManager.shared.devicePasscodeEnabled() {
+                    let title: String
+                    if BiometricType.get() == .touchID {
+                        title = LocalizedString("Please turn on Touch ID in settings", comment: "")
+                    } else {
+                        title = LocalizedString("Please turn on Face ID in settings", comment: "")
+                    }
+                    let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: LocalizedString("OK", comment: ""), style: .default, handler: { _ in
+                        
+                    }))
+                    UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+                }
+            case 4:
+                pressedThirdPartyButton()
+            default:
+                break
+            }
+        }
     }
 
     func tradingSectionForCell(indexPath: IndexPath) -> UITableViewCell {
@@ -372,19 +428,20 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return 51
     }
     
-    @IBAction func pressedThirdPartyButton(_ sender: GradientButton) {
+    func pressedThirdPartyButton() {
         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.thirdParty.rawValue) {
             let vc = ThirdPartyViewController()
+            vc.fromSettingViewController = true
             self.present(vc, animated: true, completion: nil)
         } else if let openID = UserDefaults.standard.string(forKey: UserDefaultsKeys.openID.rawValue) {
             let title = LocalizedString("Third party title", comment: "")
             let message = LocalizedString("Third party message", comment: "")
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: LocalizedString("Confirm", comment: ""), style: .default, handler: { _ in
-                DispatchQueue.main.async {
-                    self.thirdPartyButton.title = LocalizedString("Third", comment: "")
-                }
                 UserDefaults.standard.set(true, forKey: UserDefaultsKeys.thirdParty.rawValue)
+                DispatchQueue.main.async {
+                    self.settingsTableView.reloadData()
+                }
                 AppServiceUserManager.shared.deleteUserConfig(openID: openID, completion: { _, _ in })
             }))
             alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
@@ -392,4 +449,5 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.present(alert, animated: true, completion: nil)
         }
     }
+
 }

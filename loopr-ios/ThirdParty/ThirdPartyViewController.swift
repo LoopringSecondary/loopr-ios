@@ -17,6 +17,8 @@ class ThirdPartyViewController: UIViewController {
     @IBOutlet weak var footerTip: UILabel!
     @IBOutlet weak var footerTip2: UILabel!
     
+    var fromSettingViewController: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -46,6 +48,13 @@ class ThirdPartyViewController: UIViewController {
     }
     
     @IBAction func pressedSkipButton(_ sender: Any) {
+        if fromSettingViewController {
+            self.dismiss(animated: true) {
+                
+            }
+            return
+        }
+        
         var vc: UIViewController
         if AppWalletDataManager.shared.getWallets().isEmpty {
             vc = SetupNavigationController(nibName: nil, bundle: nil)
