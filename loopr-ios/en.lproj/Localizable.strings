@@ -15,10 +15,10 @@
 "Third skip" = "skip";
 "Third tip1" = "Authorize third party to remember your ";
 "Third tip2" = "setting configurations. You can also skip this.";
-"Third party title" = "Quit third party Authorize";
-"Third party message" = "It will erase all your binding settings, Do you wish to continue?";
-"Third" = "Authorize";
-"Unthird" = "Quit Authorization";
+"Third party title" = "Quit third party authorization";
+"Third party message" = "It will erase all your binding settings. Do you want to continue?";
+"Third" = "Authorize third party account";
+"Unthird" = "Quit third party authorization";
 
 /* ETH related */
 "Mnemonic" = "Mnemonic";
