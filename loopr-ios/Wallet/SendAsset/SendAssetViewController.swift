@@ -138,7 +138,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         
         transactionFeeAmountLabel.setTitleCharFont()
         transactionFeeAmountLabel.textAlignment = .right
-        updateTransactionFeeAmountLabel()
+
         transactionFeeAmountLabel.isUserInteractionEnabled = true
         let transactionFeeAmountLabelTap = UITapGestureRecognizer(target: self, action: #selector(pressedAdvancedButton))
         transactionFeeAmountLabelTap.numberOfTapsRequired = 1
@@ -189,6 +189,8 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         // TODO: Update the transaction fee is needed. in SendCurrentAppWalletDataManager
         let symbol = SendCurrentAppWalletDataManager.shared.token?.symbol ?? "ETH"
         asset = CurrentAppWalletDataManager.shared.getAsset(symbol: symbol)
+        updateTransactionFeeAmountLabel()
+
         if let asset = self.asset {
             if asset.icon != nil {
                 tokenIconImageView.image = asset.icon
@@ -325,6 +327,11 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     
     @objc func pressedAdvancedButton() {
         let vc = SetGasViewController()
+        if asset.symbol == "ETH" {
+            vc.gasLimitType = "eth_transfer"
+        } else {
+            vc.gasLimitType = "token_transfer"
+        }
         // vc.transitioningDelegate = self
         vc.modalPresentationStyle = .overFullScreen
         vc.dismissClosure = {
@@ -445,9 +452,15 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
     func updateTransactionFeeAmountLabel() {
         let amountInEther = gasPriceInGwei / 1000000000
         if let etherPrice = PriceDataManager.shared.getPrice(of: "ETH") {
-            let amont = amountInEther * Double(GasDataManager.shared.getGasLimit(by: "token_transfer")!)
-            let transactionFeeInFiat = amont * etherPrice
-            transactionFeeAmountLabel.text = "\(amont.withCommas(6)) ETH ≈ \(transactionFeeInFiat.currency)"
+            let gasLimit: Int64
+            if asset.symbol == "ETH" {
+                gasLimit = GasDataManager.shared.getGasLimit(by: "eth_transfer")!
+            } else {
+                gasLimit = GasDataManager.shared.getGasLimit(by: "token_transfer")!
+            }
+            let amount = amountInEther * Double(gasLimit)
+            let transactionFeeInFiat = amount * etherPrice
+            transactionFeeAmountLabel.text = "\(amount.withCommas(6)) ETH ≈ \(transactionFeeInFiat.currency)"
         }
     }
     

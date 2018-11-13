@@ -156,9 +156,9 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     func updateTransactionFeeAmountLabel() {
         let amountInEther = gasPriceInGwei / 1000000000
         if let etherPrice = PriceDataManager.shared.getPrice(of: "ETH") {
-            let amont = amountInEther * Double(GasDataManager.shared.getGasLimit(by: "token_transfer")!)
-            let transactionFeeInFiat = amont * etherPrice
-            gasInfoLabel.text = "\(amont.withCommas(6)) ETH ≈ \(transactionFeeInFiat.currency)"
+            let amount = amountInEther * Double(GasDataManager.shared.getGasLimit(by: "deposit")!)
+            let transactionFeeInFiat = amount * etherPrice
+            gasInfoLabel.text = "\(amount.withCommas(6)) ETH ≈ \(transactionFeeInFiat.currency)"
         }
     }
     
@@ -341,6 +341,7 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
     
     @objc func pressedAdvancedButton() {
         let vc = SetGasViewController()
+        vc.gasLimitType = "deposit"
         // vc.transitioningDelegate = self
         vc.modalPresentationStyle = .overFullScreen
         vc.dismissClosure = {

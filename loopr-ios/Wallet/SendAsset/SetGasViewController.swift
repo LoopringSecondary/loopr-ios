@@ -21,6 +21,8 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
     @IBOutlet weak var recommendButton: UIButton!
     @IBOutlet weak var recommendButtonWidth: NSLayoutConstraint!
     
+    var gasLimitType: String = "token_transfer"
+    
     var minGasValue: Double = 1
     var maxGasValue: Double = 0
     private let recGasPriceInGwei: Double = GasDataManager.shared.getGasRecommendedPrice()
@@ -96,7 +98,7 @@ class SetGasViewController: UIViewController, StepSliderDelegate {
     
     func update(_ gasPriceInGwei: Double) {
         let amountInEther = gasPriceInGwei / 1000000000
-        let gasLimit = Double(GasDataManager.shared.getGasLimit(by: "token_transfer")!)
+        let gasLimit = Double(GasDataManager.shared.getGasLimit(by: gasLimitType)!)
         let totalGasInEther = amountInEther * gasLimit
         if let etherPrice = PriceDataManager.shared.getPrice(of: "ETH") {
             let transactionFeeInFiat = totalGasInEther * etherPrice
