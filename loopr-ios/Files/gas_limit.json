@@ -33,10 +33,10 @@
     },
     {
         "type":"submitRing",
-        "gasLimit":500000
+        "gasLimit":400000
     },
     {
         "type":"lrcFee",
-        "gasLimit":500000
+        "gasLimit":400000
     }
 ]
