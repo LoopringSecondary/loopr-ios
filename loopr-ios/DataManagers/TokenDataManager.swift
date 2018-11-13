@@ -33,7 +33,9 @@ class TokenDataManager {
             let json = JSON(parseJSON: jsonString!)
             for subJson in json.arrayValue {
                 let token = Token(json: subJson)
-                tokens.append(token)
+                if !blackList.contains(token.symbol.uppercased()) {
+                    tokens.append(token)
+                }
             }
             tokens.sort(by: { (a, b) -> Bool in
                 return a.symbol < b.symbol
