@@ -10,8 +10,6 @@ import Foundation
 
 enum Production: String {
     
-    // TODO: We will have blue color configuration.
-    case loopr = "Loopr Wallet"
     case upwallet = "UP Wallet"
     case vivwallet = "vivwallet"
 
@@ -24,7 +22,7 @@ enum Production: String {
                 return .vivwallet
             }
         }
-        return .loopr
+        return .upwallet
     }
     
     static func getProduct() -> String {
@@ -33,8 +31,6 @@ enum Production: String {
     
     static func getUrlText() -> String {
         switch getCurrent() {
-        case .loopr:
-            return "https://loopring.wallet.io"
         case .upwallet:
             return "https://upwallet.io"
         case .vivwallet:
@@ -44,21 +40,13 @@ enum Production: String {
     
     static func getSocialMedia() -> [SocialMedia] {
         switch getCurrent() {
-        case .loopr:
-            return getSocialMediaForLoopr()
         case .upwallet:
             return getSocialMediaForUpwallt()
         case .vivwallet:
             return getSocialMediaForVivwallet()
         }
     }
-    
-    private static func getSocialMediaForLoopr() -> [SocialMedia] {
-        let website = SocialMedia(type: LocalizedString("About", comment: "") + " loopring.wallet.io", account: "", link: getUrlText())
-        let socialMedia: [SocialMedia] = [website]
-        return socialMedia
-    }
-    
+
     private static func getSocialMediaForUpwallt() -> [SocialMedia] {
         let twitter = SocialMedia(type: "Twitter", account: "@UpBlockchainOrg", link: "https://twitter.com/UpBlockchainOrg")
         let instagram = SocialMedia(type: "Instagram", account: "@upwallet", link: "https://www.instagram.com/upwallet")
