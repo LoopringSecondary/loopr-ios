@@ -21,8 +21,6 @@ enum ColorTheme: Int {
     
     static func getCurrent() -> ColorTheme {
         switch Production.getCurrent() {
-        case .loopr:
-            return .blue
         case .upwallet:
             return .yellow
         case .vivwallet:
