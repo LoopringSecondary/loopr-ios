@@ -29,7 +29,8 @@
 #include "ripemd160.h"
 #include "memzero.h"
 
-static const int8_t b58digits_map[] = {
+const char b58digits_ordered[] = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+const int8_t b58digits_map[] = {
 	-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
 	-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
 	-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
@@ -43,6 +44,11 @@ static const int8_t b58digits_map[] = {
 bool b58tobin(void *bin, size_t *binszp, const char *b58)
 {
 	size_t binsz = *binszp;
+
+	if (binsz == 0) {
+		return false;
+	}
+
 	const unsigned char *b58u = (const unsigned char*)b58;
 	unsigned char *binu = bin;
 	size_t outisz = (binsz + 3) / 4;
@@ -114,8 +120,13 @@ bool b58tobin(void *bin, size_t *binszp, const char *b58)
 	binu = bin;
 	for (i = 0; i < binsz; ++i)
 	{
-		if (binu[i])
+		if (binu[i]) {
+			if (zerocount > i) {
+				/* result too large */
+				return false;
+			}
 			break;
+		}
 		--*binszp;
 	}
 	*binszp += zerocount;
@@ -131,7 +142,6 @@ int b58check(const void *bin, size_t binsz, HasherType hasher_type, const char *
 	if (binsz < 4)
 		return -4;
 	hasher_Raw(hasher_type, bin, binsz - 4, buf);
-	hasher_Raw(hasher_type, buf, 32, buf);
 	if (memcmp(&binc[binsz - 4], buf, 4))
 		return -1;
 
@@ -143,8 +153,6 @@ int b58check(const void *bin, size_t binsz, HasherType hasher_type, const char *
 
 	return binc[0];
 }
-
-static const char b58digits_ordered[] = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
 
 bool b58enc(char *b58, size_t *b58sz, const void *data, size_t binsz)
 {
@@ -197,7 +205,6 @@ int base58_encode_check(const uint8_t *data, int datalen, HasherType hasher_type
 	uint8_t *hash = buf + datalen;
 	memcpy(buf, data, datalen);
 	hasher_Raw(hasher_type, data, datalen, hash);
-	hasher_Raw(hasher_type, hash, 32, hash);
 	size_t res = strsize;
 	bool success = b58enc(str, &res, buf, datalen + 4);
 	memzero(buf, sizeof(buf));
