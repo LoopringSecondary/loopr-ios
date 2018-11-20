@@ -26,7 +26,7 @@ PODS:
   - SwiftLint (0.27.0)
   - SwiftTheme (0.4.3)
   - SwiftyMarkdown (0.6.0)
-  - TrezorCrypto (0.0.4)
+  - TrezorCrypto (0.0.9)
   - WeChat_SDK (1.8.1)
 
 DEPENDENCIES:
@@ -47,11 +47,11 @@ DEPENDENCIES:
   - SwiftLint
   - SwiftTheme
   - SwiftyMarkdown
-  - TrezorCrypto (= 0.0.4)
+  - TrezorCrypto (= 0.0.9)
   - WeChat_SDK (~> 1.8.1)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - BigInt
     - Charts
     - Crashlytics
@@ -108,9 +108,9 @@ SPEC CHECKSUMS:
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
   SwiftTheme: 628345b948068a48d330d76dffb1a990ea5f90aa
   SwiftyMarkdown: 698fe6b283dddac69747f4e08ed0d067c18e0356
-  TrezorCrypto: 7f87a2296cf13872b21565c29fd9f7882dd00803
+  TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
   WeChat_SDK: 681388233ac24a3ed6c4803cb3e0b6d3602050aa
 
-PODFILE CHECKSUM: 6eb5d9f6f04493ce2736372fb272105a2cdce1f6
+PODFILE CHECKSUM: 02fc17beaa27d591db90f18181a8d29777876104
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
