@@ -14,6 +14,11 @@ import Crashlytics
 // ESTabBarController
 class MainTabController: UITabBarController, UNUserNotificationCenterDelegate {
     
+    // We have to use this method due to a UI bug in iOS 12.
+    static func instantiate() -> MainTabController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabController") as! MainTabController
+    }
+    
     var viewController1: UIViewController!
     var viewController2: UIViewController!
     var viewController3: UIViewController!

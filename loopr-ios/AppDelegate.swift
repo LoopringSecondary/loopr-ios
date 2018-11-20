@@ -97,14 +97,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
             if UserDefaults.standard.bool(forKey: UserDefaultsKeys.thirdParty.rawValue) ||
                UserDefaults.standard.string(forKey: UserDefaultsKeys.openID.rawValue) != nil {
                 if !AppWalletDataManager.shared.getWallets().isEmpty {
-                    result = MainTabController(nibName: nil, bundle: nil)
+                    result = MainTabController.instantiate()
                 }
             } else if hasKeysPlist() {
                 result = ThirdPartyViewController(nibName: nil, bundle: nil)
             }
         } else {
             if !AppWalletDataManager.shared.getWallets().isEmpty {
-                result = MainTabController(nibName: nil, bundle: nil)
+                result = MainTabController.instantiate()
             }
         }
         return result

@@ -59,7 +59,7 @@ class ThirdPartyViewController: UIViewController {
         if AppWalletDataManager.shared.getWallets().isEmpty {
             vc = SetupNavigationController(nibName: nil, bundle: nil)
         } else {
-            vc = MainTabController(nibName: nil, bundle: nil)
+            vc = MainTabController.instantiate()
         }
         UserDefaults.standard.set(true, forKey: UserDefaultsKeys.thirdParty.rawValue)
         self.present(vc, animated: true, completion: nil)

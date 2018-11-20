@@ -64,7 +64,7 @@ extension AppDelegate {
                 if AppWalletDataManager.shared.getWallets().isEmpty {
                     self.window?.rootViewController = SetupNavigationController(nibName: nil, bundle: nil)
                 } else {
-                    self.window?.rootViewController = MainTabController(nibName: nil, bundle: nil)
+                    self.window?.rootViewController = MainTabController.instantiate()
                 }
             }
         }

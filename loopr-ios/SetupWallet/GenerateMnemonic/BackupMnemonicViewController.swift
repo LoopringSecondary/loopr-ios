@@ -206,7 +206,7 @@ class BackupMnemonicViewController: UIViewController {
     func dismissGenerateWallet() {
         canDisplayWarning = false
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        appDelegate?.window?.rootViewController = MainTabController()
+        appDelegate?.window?.rootViewController = MainTabController.instantiate()
     }
     
     func displayWarning(tipInfo: String? = nil) {
