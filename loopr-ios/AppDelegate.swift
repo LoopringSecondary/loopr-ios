@@ -180,17 +180,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
             self.window?.addSubview(backgroundImageView)
             self.window?.bringSubview(toFront: backgroundImageView)
         }
-        // applicationWillResignActive should be as simple as possible.
-        // iPhone may kill the process if it takes too mucy time.
-        var config = JSON()
-        if let openID = UserDefaults.standard.string(forKey: UserDefaultsKeys.openID.rawValue) {
-            if !openID.isEmpty {
-                config["userId"] = JSON(openID)
-                config["currency"] = JSON(SettingDataManager.shared.getCurrentCurrency().name)
-                config["language"] = JSON(SettingDataManager.shared.getCurrentLanguage().name)
-                AppServiceUserManager.shared.updateUserConfig(openID: openID, config: config, completion: {_, _ in })
-            }
-        }
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
