@@ -7,11 +7,12 @@
 //
 
 import UIKit
-import ESTabBarController_swift
 import UserNotifications
 import Crashlytics
+// import ESTabBarController_swift
 
-class MainTabController: ESTabBarController, UNUserNotificationCenterDelegate {
+// ESTabBarController
+class MainTabController: UITabBarController, UNUserNotificationCenterDelegate {
     
     var viewController1: UIViewController!
     var viewController2: UIViewController!
@@ -19,6 +20,9 @@ class MainTabController: ESTabBarController, UNUserNotificationCenterDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let selectedColor = Themes.isDark() ? UIColor.white : UIColor.black
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: selectedColor], for: .selected)
         self.tabBar.barTintColor = Themes.isDark() ? .dark2 : .white
         
         // Asset view controller
@@ -60,9 +64,16 @@ class MainTabController: ESTabBarController, UNUserNotificationCenterDelegate {
     }
     
     func setTabBarItems() {
+        // ESTabBarController_swift doesn't work in iOS 12.1. However, it worked in in 12.0 and previous versions.
+        /*
         viewController1.tabBarItem = ESTabBarItem(TabBarItemBouncesContentView(frame: .zero), title: LocalizedString("Wallet", comment: ""), image: UIImage(named: "Assets"), selectedImage: UIImage(named: "Assets-selected" + ColorTheme.getTheme()))
         viewController2.tabBarItem = ESTabBarItem.init(TabBarItemBouncesContentView(frame: .zero), title: LocalizedString("Trade", comment: ""), image: UIImage(named: "Trade"), selectedImage: UIImage(named: "Trade-selected" + ColorTheme.getTheme()))
         viewController3.tabBarItem = ESTabBarItem(TabBarItemBouncesContentView(frame: .zero), title: LocalizedString("Settings", comment: ""), image: UIImage(named: "Settings"), selectedImage: UIImage(named: "Settings-selected" + ColorTheme.getTheme()))
+        */
+
+        viewController1.tabBarItem = UITabBarItem(title: LocalizedString("Wallet", comment: ""), image: UIImage(named: "Assets")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), selectedImage: UIImage(named: "Assets-selected" + ColorTheme.getTheme())?.withRenderingMode(UIImageRenderingMode.alwaysOriginal))
+        viewController2.tabBarItem = UITabBarItem.init(title: LocalizedString("Trade", comment: ""), image: UIImage(named: "Trade")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), selectedImage: UIImage(named: "Trade-selected" + ColorTheme.getTheme())?.withRenderingMode(UIImageRenderingMode.alwaysOriginal))
+        viewController3.tabBarItem = UITabBarItem(title: LocalizedString("Settings", comment: ""), image: UIImage(named: "Settings")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), selectedImage: UIImage(named: "Settings-selected" + ColorTheme.getTheme())?.withRenderingMode(UIImageRenderingMode.alwaysOriginal))
     }
     
     @objc func languageChangedReceivedNotification() {
