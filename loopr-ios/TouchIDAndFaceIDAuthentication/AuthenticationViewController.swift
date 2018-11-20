@@ -79,7 +79,7 @@ class AuthenticationViewController: UIViewController {
             if self.needNavigate {
                 DispatchQueue.main.async {
                     let appDelegate = UIApplication.shared.delegate as? AppDelegate
-                    appDelegate?.window?.rootViewController = MainTabController()
+                    appDelegate?.window?.rootViewController = MainTabController.instantiate()
                 }
             } else {
                 self.dismiss(animated: true, completion: nil)

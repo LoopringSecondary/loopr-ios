@@ -169,7 +169,7 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
     func succeedAndExit() {
         Answers.logSignUp(withMethod: setupWalletMethod.description, success: true, customAttributes: nil)
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        appDelegate?.window?.rootViewController = MainTabController()
+        appDelegate?.window?.rootViewController = MainTabController.instantiate()
     }
     
 }

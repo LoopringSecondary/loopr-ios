@@ -219,6 +219,6 @@ class VerifyMnemonicViewController: UIViewController, MnemonicBackupModeCollecti
 
     func dismissGenerateWallet() {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        appDelegate?.window?.rootViewController = MainTabController()
+        appDelegate?.window?.rootViewController = MainTabController.instantiate()
     }
 }
