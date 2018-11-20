@@ -1,9 +1,9 @@
 PODS:
   - BigInt (3.0.1):
     - SipHash (~> 1.2)
-  - Charts (3.0.5):
-    - Charts/Core (= 3.0.5)
-  - Charts/Core (3.0.5)
+  - Charts (3.2.1):
+    - Charts/Core (= 3.2.1)
+  - Charts/Core (3.2.1)
   - Crashlytics (3.11.1):
     - Fabric (~> 1.8.1)
   - CryptoSwift (0.8.3)
@@ -31,7 +31,7 @@ PODS:
 
 DEPENDENCIES:
   - BigInt (= 3.0.1)
-  - Charts (= 3.0.5)
+  - Charts (= 3.2.1)
   - Crashlytics
   - CryptoSwift (= 0.8.3)
   - ESTabBarController-swift
@@ -89,7 +89,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   BigInt: 8e8a52161c745cd3ab78e3dc346a9fbee51e6cf6
-  Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
+  Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
   Crashlytics: ca7ab4bc304aa216bdc2e4c1a96389ee77252203
   CryptoSwift: 033efc3523865d19cc6ab6612fa17a62613b5dfa
   ESTabBarController-swift: 58cca4ab7de980657d99a02181c1ff310983e975
@@ -111,6 +111,6 @@ SPEC CHECKSUMS:
   TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
   WeChat_SDK: 681388233ac24a3ed6c4803cb3e0b6d3602050aa
 
-PODFILE CHECKSUM: 02fc17beaa27d591db90f18181a8d29777876104
+PODFILE CHECKSUM: be829efa158ef44d518c7a5a96e943f3e03fb044
 
 COCOAPODS: 1.5.3

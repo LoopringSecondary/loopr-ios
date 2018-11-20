@@ -3,7 +3,7 @@ platform :ios, '11.0'
 
 def shared_pods
     # Pods for loopr-ios
-    pod 'Charts', '3.0.5'
+    pod 'Charts', '3.2.1'
     pod 'SwiftLint'
     pod 'SwiftTheme'
     pod 'Socket.IO-Client-Swift', '~> 13.1.0'

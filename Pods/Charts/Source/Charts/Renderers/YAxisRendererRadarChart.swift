@@ -60,9 +60,9 @@ open class YAxisRendererRadarChart: YAxisRenderer
         
         if intervalSigDigit > 5
         {
-            // Use one order of magnitude higher, to avoid intervals like 0.9 or
-            // 90
-            interval = floor(10 * intervalMagnitude)
+            // Use one order of magnitude higher, to avoid intervals like 0.9 or 90
+            // if it's 0.0 after floor(), we use the old value
+            interval = floor(10.0 * intervalMagnitude) == 0.0 ? interval : floor(10.0 * intervalMagnitude)
         }
         
         let centeringEnabled = axis.isCenterAxisLabelsEnabled
@@ -181,6 +181,9 @@ open class YAxisRendererRadarChart: YAxisRenderer
         
         let from = yAxis.isDrawBottomYLabelEntryEnabled ? 0 : 1
         let to = yAxis.isDrawTopYLabelEntryEnabled ? yAxis.entryCount : (yAxis.entryCount - 1)
+
+        let alignment: NSTextAlignment = yAxis.labelAlignment
+        let xOffset: CGFloat = yAxis.labelXOffset
         
         for j in stride(from: from, to: to, by: 1)
         {
@@ -193,11 +196,11 @@ open class YAxisRendererRadarChart: YAxisRenderer
             ChartUtils.drawText(
                 context: context,
                 text: label,
-                point: CGPoint(x: p.x + 10.0, y: p.y - labelLineHeight),
-                align: .left,
+                point: CGPoint(x: p.x + xOffset, y: p.y - labelLineHeight),
+                align: alignment,
                 attributes: [
-                    NSAttributedStringKey.font: labelFont,
-                    NSAttributedStringKey.foregroundColor: labelTextColor
+                    NSAttributedString.Key.font: labelFont,
+                    NSAttributedString.Key.foregroundColor: labelTextColor
                 ])
         }
     }
