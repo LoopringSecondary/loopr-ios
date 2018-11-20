@@ -60,6 +60,19 @@ class AppServiceUserManager {
         }
     }
     
+    func updateUserConfigWithUserDefaults() {
+        var config = JSON()
+        if let openID = UserDefaults.standard.string(forKey: UserDefaultsKeys.openID.rawValue) {
+            if !openID.isEmpty {
+                config["userId"] = JSON(openID)
+                config["currency"] = JSON(SettingDataManager.shared.getCurrentCurrency().name)
+                print("Post: " + SettingDataManager.shared.getCurrentCurrency().name)
+                config["language"] = JSON(SettingDataManager.shared.getCurrentLanguage().name)
+                AppServiceUserManager.shared.updateUserConfig(openID: openID, config: config, completion: {_, _ in })
+            }
+        }
+    }
+    
     // use POST to update user config.
     func updateUserConfig(openID: String, config: JSON, completion: @escaping CompletionHandler) {
         var body = JSON()

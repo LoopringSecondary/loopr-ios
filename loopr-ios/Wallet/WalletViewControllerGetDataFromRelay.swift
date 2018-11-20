@@ -105,22 +105,13 @@ extension WalletViewController {
                             }
                             
                             if SettingDataManager.shared.getCurrentCurrency().name != configuration["currency"].stringValue {
-                                SettingDataManager.shared.setCurrentCurrency(Currency(name: configuration["currency"].stringValue))
+                                let currency = Currency(name: configuration["currency"].stringValue)
+                                print("receive: " + currency.name)
+                                SettingDataManager.shared.setCurrentCurrency(currency)
                                 NotificationCenter.default.post(name: .needRelaunchCurrentAppWallet, object: nil)
                             }
                         }
                     })
-                    
-                    // TODO: this move to setting page.
-                    var config = JSON()
-                    if let openID = UserDefaults.standard.string(forKey: UserDefaultsKeys.openID.rawValue) {
-                        if !openID.isEmpty {
-                            config["userId"] = JSON(openID)
-                            config["currency"] = JSON(SettingDataManager.shared.getCurrentCurrency().name)
-                            config["language"] = JSON(SettingDataManager.shared.getCurrentLanguage().name)
-                            AppServiceUserManager.shared.updateUserConfig(openID: openID, config: config, completion: {_, _ in })
-                        }
-                    }
                 }
                 
                 self.processPasteboard()

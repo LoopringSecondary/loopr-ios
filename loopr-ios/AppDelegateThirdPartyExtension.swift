@@ -33,7 +33,7 @@ extension AppDelegate {
         }
     }
     
-    func synchronizeWithCloud(openID: String, accessToken: String) {
+    private func synchronizeWithCloud(openID: String, accessToken: String) {
         var configuration = JSON()
         configuration["userId"] = JSON(openID)
         configuration["language"] = JSON(SettingDataManager.shared.getCurrentLanguage().name)

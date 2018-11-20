@@ -109,6 +109,8 @@ class Localizator {
             // Update the setting. It only works when the application is restarted.
             UserDefaults.standard.set([newLanguage], forKey: "AppleLanguages")
             UserDefaults.standard.synchronize()
+
+            AppServiceUserManager.shared.updateUserConfigWithUserDefaults()
             
             // runtime at main thread.
             DispatchQueue.main.async {
