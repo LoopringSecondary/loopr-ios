@@ -10,8 +10,8 @@ import UIKit
 
 class MnemonicDerivationPathTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var pathValueLabel: UILabel!
     @IBOutlet weak var pathDescriptionLabel: UILabel!
+    @IBOutlet weak var pathValueLabel: UILabel!
     
     @IBOutlet weak var seperateLine: UIView!
     @IBOutlet weak var enabledIcon: UIImageView!
@@ -22,11 +22,11 @@ class MnemonicDerivationPathTableViewCell: UITableViewCell {
         
         theme_backgroundColor = ColorPicker.backgroundColor
         
-        pathValueLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
-        pathValueLabel.theme_textColor = GlobalPicker.textColor
-
-        pathDescriptionLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
-        pathDescriptionLabel.theme_textColor = GlobalPicker.textLightColor
+        pathDescriptionLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
+        pathDescriptionLabel.theme_textColor = GlobalPicker.textColor
+        
+        pathValueLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
+        pathValueLabel.theme_textColor = GlobalPicker.textLightColor
 
         enabledIcon.image = UIImage(named: "enabled-dark")
         enabledIcon.contentMode = .center
