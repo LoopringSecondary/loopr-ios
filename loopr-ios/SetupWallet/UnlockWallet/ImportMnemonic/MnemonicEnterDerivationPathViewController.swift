@@ -10,25 +10,6 @@ import UIKit
 
 class MnemonicEnterDerivationPathViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let derivationPaths = ["m/44'/60'/0'/0",
-                           "m/44'/60'/0'",
-                           "m/44'/61'/0'/0",
-                           "m/44'/60'/160720'/0'",
-                           "m/0'/0'/0'",
-                           "m/44'/1'/0'/0",
-                           "m/44'/40'/0'/0",
-                           "m/44'/108'/0'/0",
-                           "m/44'/163'/0'/0"]
-    let derivationPathDescriptions = ["Loopring Wallet, MetaMask, Imtoken, TREZOR (ETH)",
-                                      "Ledger (ETH)",
-                                      "TREZOR (ETC)",
-                                      "Ledger (ETC)",
-                                      "SingularDTV",
-                                      "Network: Testnets",
-                                      "Network: Expanse",
-                                      "Network: Ubiq",
-                                      "Network: Ellaism"]
-
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nextButton: UIButton!
 
@@ -55,7 +36,7 @@ class MnemonicEnterDerivationPathViewController: UIViewController, UITableViewDe
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return derivationPaths.count
+        return WalletType.getList().count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -71,21 +52,21 @@ class MnemonicEnterDerivationPathViewController: UIViewController, UITableViewDe
             cell?.tintColor = UIColor.black
         }
         
-        if derivationPaths[indexPath.row] == ImportWalletUsingMnemonicDataManager.shared.derivationPathValue {
+        if WalletType.getList()[indexPath.row] == ImportWalletUsingMnemonicDataManager.shared.walletType {
             cell?.enabledIcon.isHidden = false
         } else {
             cell?.enabledIcon.isHidden = true
         }
-        
-        cell?.pathValueLabel.text = derivationPaths[indexPath.row]
-        cell?.pathDescriptionLabel.text = derivationPathDescriptions[indexPath.row]
+
+        cell?.pathDescriptionLabel.text = WalletType.getList()[indexPath.row].name
+        cell?.pathValueLabel.text = WalletType.getList()[indexPath.row].derivationPath
 
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        ImportWalletUsingMnemonicDataManager.shared.derivationPathValue = derivationPaths[indexPath.row]
+        ImportWalletUsingMnemonicDataManager.shared.walletType = WalletType.getList()[indexPath.row]
         tableView.reloadData()
     }
     
