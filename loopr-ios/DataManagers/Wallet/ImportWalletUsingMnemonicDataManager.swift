@@ -15,9 +15,11 @@ class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
     
     var mnemonic: String = ""
     var password: String = ""
-    var derivationPathValue = "m/44'/60'/0'/0"
+    private var derivationPathValue = "m/44'/60'/0'/0"
     var selectedKey: Int = 0
     var addresses: [Address] = []
+    
+    var walletType: WalletType = WalletType.getLoopringWallet()
     
     var walletName: String = ""
     
@@ -33,14 +35,27 @@ class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
         return Mnemonic.isValid(mnemonic)
     }
     
+    func setWalletType(newWalletType: WalletType) {
+        self.walletType = newWalletType
+        derivationPathValue = walletType.derivationPath
+    }
+    
     func generateAddresses() {
         selectedKey = 0
         addresses.removeAll()
         
         // append "/x"
         let pathValue = derivationPathValue + "/x"
+        let wallet: Wallet
         
-        let wallet = Wallet(mnemonic: mnemonic, password: password, path: pathValue)
+        // imToken wallet doesn't use password to get ETH addresses.
+        // password won't be changed as users may try different wallet types.
+        if walletType == WalletType.getImtokenWallet() {
+            wallet = Wallet(mnemonic: mnemonic, password: "", path: pathValue)
+        } else {
+            wallet = Wallet(mnemonic: mnemonic, password: password, path: pathValue)
+        }
+
         // TODO: in theory, it should generate many many addresses. However, we should only top 100 addresses. Improve in the future.
         for i in 0..<100 {
             let address = wallet.getKey(at: i).address
@@ -54,6 +69,12 @@ class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
         
         SVProgressHUD.show(withStatus: LocalizedString("Initializing the wallet", comment: "") + "...")
         DispatchQueue.global().async {
+            
+            // imToken wallet doesn't use password to get ETH addresses.
+            if self.walletType == WalletType.getImtokenWallet() {
+                self.password = ""
+            }
+
             AppWalletDataManager.shared.addWallet(setupWalletMethod: .importUsingMnemonic, walletName: self.walletName, mnemonics: self.mnemonic.components(separatedBy: " "), password: self.password, derivationPath: pathValue, key: self.selectedKey, isVerified: true, completionHandler: {(appWallet, error) in
                 if error == nil {
                     // Inform relay
