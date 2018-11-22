@@ -8,6 +8,7 @@
 
 import UIKit
 import Geth
+import BigInt
 import StepSlider
 
 class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, StepSliderDelegate {
@@ -386,6 +387,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         var buyNoMoreThanAmountB: Bool
         var side, tokenSell, tokenBuy: String
         var amountBuy, amountSell, lrcFee: Double
+        var amountB, amountS: BigInt
         if self.type == .buy {
             side = "buy"
             tokenBuy = PlaceOrderDataManager.shared.tokenA.symbol
@@ -393,6 +395,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             buyNoMoreThanAmountB = true
             amountBuy = Double(amountTextField.text!.removeComma())!
             amountSell = self.orderAmount
+            amountB = BigInt.generate(from: amountBuy, by: PlaceOrderDataManager.shared.tokenA.decimals)
+            amountS = BigInt.generate(from: amountSell, by: PlaceOrderDataManager.shared.tokenB.decimals)
         } else {
             side = "sell"
             tokenBuy = PlaceOrderDataManager.shared.tokenB.symbol
@@ -400,6 +404,8 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
             buyNoMoreThanAmountB = false
             amountBuy = self.orderAmount
             amountSell = Double(amountTextField.text!.removeComma())!
+            amountB = BigInt.generate(from: amountBuy, by: PlaceOrderDataManager.shared.tokenB.decimals)
+            amountS = BigInt.generate(from: amountSell, by: PlaceOrderDataManager.shared.tokenA.decimals)
         }
 
         lrcFee = getLrcFee(amountSell, tokenSell)
@@ -407,7 +413,7 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         let since = Int64(Date().timeIntervalSince1970)
         let until = Int64(Calendar.current.date(byAdding: orderIntervalTime.intervalUnit, value: orderIntervalTime.intervalValue, to: Date())!.timeIntervalSince1970)
-        var order = OriginalOrder(delegate: delegate, address: address, side: side, tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB)
+        var order = OriginalOrder(delegate: delegate, address: address, side: side, tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: lrcFee, buyNoMoreThanAmountB: buyNoMoreThanAmountB, amountS: amountS, amountB: amountB)
         PlaceOrderDataManager.shared.completeOrder(&order)
         return order
     }

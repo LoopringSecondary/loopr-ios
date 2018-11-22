@@ -76,6 +76,7 @@
 		94AD1FE5208B910D00C443E6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AD1FE4208B910D00C443E6 /* Currency.swift */; };
 		94AEF3B6218AA6A900112AAC /* ThirdPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AEF3B4218AA6A900112AAC /* ThirdPartyViewController.swift */; };
 		94AEF3B7218AA6A900112AAC /* ThirdPartyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AEF3B5218AA6A900112AAC /* ThirdPartyViewController.xib */; };
+		94B35BB021A55A0200F6B708 /* BigInt+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B35BAF21A55A0200F6B708 /* BigInt+Extension.swift */; };
 		94B5CA8A204FB4E20081BA93 /* DefaultBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5CA89204FB4E20081BA93 /* DefaultBlock.swift */; };
 		94B5CA8C204FE8E40081BA93 /* ETH_Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5CA8B204FE8E40081BA93 /* ETH_Transaction.swift */; };
 		94BB338421115FD6002D44DA /* OrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BB338321115FD6002D44DA /* OrderDetailViewController.xib */; };
@@ -577,6 +578,7 @@
 		94AD1FE4208B910D00C443E6 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		94AEF3B4218AA6A900112AAC /* ThirdPartyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyViewController.swift; sourceTree = "<group>"; };
 		94AEF3B5218AA6A900112AAC /* ThirdPartyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThirdPartyViewController.xib; sourceTree = "<group>"; };
+		94B35BAF21A55A0200F6B708 /* BigInt+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BigInt+Extension.swift"; sourceTree = "<group>"; };
 		94B5CA89204FB4E20081BA93 /* DefaultBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBlock.swift; sourceTree = "<group>"; };
 		94B5CA8B204FE8E40081BA93 /* ETH_Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETH_Transaction.swift; sourceTree = "<group>"; };
 		94BB338321115FD6002D44DA /* OrderDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderDetailViewController.xib; path = "loopr-ios/OrderHistory/HistoryDetail/OrderDetailViewController.xib"; sourceTree = SOURCE_ROOT; };
@@ -2128,6 +2130,7 @@
 				AC9A273C20A577E900DB04AC /* Double+Extension.swift */,
 				AC06193B208404FA0060F416 /* FoundationString+Extension.swift */,
 				AC2D2C04208882BD00D619AD /* FoundationArray+Extension.swift */,
+				94B35BAF21A55A0200F6B708 /* BigInt+Extension.swift */,
 			);
 			path = FoundationExtensions;
 			sourceTree = "<group>";
@@ -2730,6 +2733,7 @@
 				942C4A0021293022008A6B4F /* ConvertETHResultViewController.swift in Sources */,
 				AC0CD58120D226C500ABB7BA /* TabBarItemAnimateTipsContentView.swift in Sources */,
 				AC9ADF91205EE3B900CBE368 /* ConvertETHViewController.swift in Sources */,
+				94B35BB021A55A0200F6B708 /* BigInt+Extension.swift in Sources */,
 				ACB729D0205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.swift in Sources */,
 				AC13B30320548767008A72C0 /* BuyAndSellSwipeViewController.swift in Sources */,
 				94EE76A42113F21B009D6A90 /* OrderHistorySwipeType.swift in Sources */,

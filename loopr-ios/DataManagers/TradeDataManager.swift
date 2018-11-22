@@ -8,6 +8,7 @@
 
 import Foundation
 import Geth
+import BigInt
 
 class TradeDataManager {
     
@@ -143,6 +144,7 @@ class TradeDataManager {
 
     func constructTaker(from maker: OriginalOrder) -> OriginalOrder {
         var buyNoMoreThanAmountB: Bool
+        var amountB, amountS: BigInt
         var amountBuy, amountSell: Double
         var tokenSell, tokenBuy, market: String
         
@@ -150,14 +152,23 @@ class TradeDataManager {
         tokenBuy = maker.tokenSell
         tokenSell = maker.tokenBuy
         market = "\(tokenSell)/\(tokenBuy)"
-        amountBuy = maker.amountSell / Double(sellCount)
-        amountSell = maker.amountBuy / Double(sellCount)
+        amountB = maker.amountS / BigInt(sellCount)
+        if maker.amountB % BigInt(sellCount) == 0 {
+            amountS = maker.amountB / BigInt(sellCount)
+        } else {
+            amountS = maker.amountB / BigInt(sellCount) + 1
+        }
+        
+        let tokenB = TokenDataManager.shared.getTokenBySymbol(maker.tokenSell)!
+        let tokenS = TokenDataManager.shared.getTokenBySymbol(maker.tokenBuy)!
+        amountBuy = amountB.toDouble(by: tokenB.decimals)
+        amountSell = amountS.toDouble(by: tokenS.decimals)
         
         let delegate = RelayAPIConfiguration.delegateAddress
         let address = CurrentAppWalletDataManager.shared.getCurrentAppWallet()!.address
         let since = maker.validSince
         let until = maker.validUntil
-        var order = OriginalOrder(delegate: delegate, address: address, side: "buy", tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: 0, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: .p2pOrder, p2pType: .taker, market: market)
+        var order = OriginalOrder(delegate: delegate, address: address, side: "buy", tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: 0, buyNoMoreThanAmountB: buyNoMoreThanAmountB, amountS: amountS, amountB: amountB, orderType: .p2pOrder, p2pType: .taker, market: market)
         PlaceOrderDataManager.shared.completeOrder(&order)
         return order
     }
@@ -244,9 +255,9 @@ class TradeDataManager {
     func generateValues() -> [Any] {
         var result: [Any] = []
         for order in orders {
-            let amountSell = GethBigInt.generate(valueInEther: order.amountSell, symbol: order.tokenSell)!
+            let amountSell = order.amountS.toEth()
             result.append(amountSell)
-            let amountBuy = GethBigInt.generate(valueInEther: order.amountBuy, symbol: order.tokenBuy)!
+            let amountBuy = order.amountB.toEth()
             result.append(amountBuy)
             result.append(GethBigInt.init(order.validSince))
             result.append(GethBigInt.init(order.validUntil))

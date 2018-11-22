@@ -97,53 +97,6 @@ class SendCurrentAppWalletDataManager {
         let timeInterval: Double = end.timeIntervalSince(start)
         print("Time to _keystore: \(timeInterval) seconds")
     }
-
-    func _encodeOrder(order: OriginalOrder) -> Data {
-        var data: Data = Data()
-        var error: NSError?
-        var address: GethAddress
-        address = GethNewAddressFromHex(order.address, &error)!
-        data.append(contentsOf: try! EthTypeEncoder.default.encode(address).bytes)
-        let tokens = TokenDataManager.shared.getAddress(by: order.tokenSell)
-        address = GethNewAddressFromHex(tokens, &error)!
-        data.append(contentsOf: try! EthTypeEncoder.default.encode(address).bytes)
-        let tokenb = TokenDataManager.shared.getAddress(by: order.tokenBuy)
-        address = GethNewAddressFromHex(tokenb, &error)!
-        data.append(contentsOf: try! EthTypeEncoder.default.encode(address).bytes)
-        address = GethNewAddressFromHex(order.walletAddress, &error)!
-        data.append(contentsOf: try! EthTypeEncoder.default.encode(address).bytes)
-        address = GethNewAddressFromHex(order.authAddr, &error)!
-        data.append(contentsOf: try! EthTypeEncoder.default.encode(address).bytes)
-        
-        var value = GethBigInt.generate(valueInEther: order.amountSell, symbol: order.tokenSell)!
-        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
-        value = GethBigInt.generate(valueInEther: order.amountBuy, symbol: order.tokenBuy)!
-        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
-        value = GethBigInt.init(order.validSince)
-        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
-        value = GethBigInt.init(order.validUntil)
-        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
-        value = GethBigInt.generate(valueInEther: order.lrcFee, symbol: "LRC")!
-        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
-        
-        if order.buyNoMoreThanAmountB {
-            value = GethBigInt.generate(valueInEther: order.amountBuy, symbol: order.tokenBuy)!
-        } else {
-            value = GethBigInt.generate(valueInEther: order.amountSell, symbol: order.tokenSell)!
-        }
-        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
-        value = GethBigInt.init(order.buyNoMoreThanAmountB ? 1 : 0)
-        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
-        value = GethBigInt.init(Int64(order.marginSplitPercentage))
-        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
-        value = GethBigInt.init(Int64(order.v))
-        data.append(contentsOf: try! EthTypeEncoder.default.encode(value).bytes)
-        data.append(contentsOf: order.r.hexBytes)
-        data.append(contentsOf: order.s.hexBytes)
-        
-        data = Data("0x8c59f7ca".hexBytes) + data
-        return data
-    }
     
     // convert weth -> eth
     func _withDraw(amount: GethBigInt, completion: @escaping (String?, Error?) -> Void) {

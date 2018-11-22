@@ -8,6 +8,7 @@
 
 import UIKit
 import Geth
+import BigInt
 import StepSlider
 
 class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate, NumericKeyboardDelegate, NumericKeyboardProtocol, StepSliderDelegate {
@@ -471,6 +472,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     
     func constructMaker() -> OriginalOrder? {
         var buyNoMoreThanAmountB: Bool
+        var amountB, amountS: BigInt
         var amountBuy, amountSell: Double
         var tokenSell, tokenBuy, market: String
         
@@ -479,6 +481,8 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         market = "\(tokenSell)/\(tokenBuy)"
         amountBuy = Double(amountBuyTextField.text!)!
         amountSell = Double(amountSellTextField.text!)!
+        amountB = BigInt.generate(from: amountBuy, by: TradeDataManager.shared.tokenB.decimals)
+        amountS = BigInt.generate(from: amountSell, by: TradeDataManager.shared.tokenS.decimals)
         
         buyNoMoreThanAmountB = false
         let delegate = RelayAPIConfiguration.delegateAddress
@@ -486,7 +490,7 @@ class TradeViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         let since = Int64(Date().timeIntervalSince1970)
         let until = Int64(Calendar.current.date(byAdding: orderIntervalTime.intervalUnit, value: orderIntervalTime.intervalValue, to: Date())!.timeIntervalSince1970)
         
-        var order = OriginalOrder(delegate: delegate, address: address, side: "sell", tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: 0, buyNoMoreThanAmountB: buyNoMoreThanAmountB, orderType: .p2pOrder, p2pType: .maker, market: market)
+        var order = OriginalOrder(delegate: delegate, address: address, side: "sell", tokenS: tokenSell, tokenB: tokenBuy, validSince: since, validUntil: until, amountBuy: amountBuy, amountSell: amountSell, lrcFee: 0, buyNoMoreThanAmountB: buyNoMoreThanAmountB, amountS: amountS, amountB: amountB, orderType: .p2pOrder, p2pType: .maker, market: market)
         PlaceOrderDataManager.shared.completeOrder(&order)
         return order
     }

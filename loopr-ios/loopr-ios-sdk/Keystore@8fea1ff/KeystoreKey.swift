@@ -180,12 +180,3 @@ extension KeystoreKey: Codable {
         try container.encode(version, forKey: .version)
     }
 }
-
-private extension String {
-    func drop0x() -> String {
-        if hasPrefix("0x") {
-            return String(dropFirst(2))
-        }
-        return self
-    }
-}
