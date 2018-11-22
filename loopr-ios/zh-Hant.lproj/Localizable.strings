@@ -64,7 +64,7 @@
 "Please enter the keystore" = "請輸入keystore";
 "Please input your private key" = "請輸入您的私人鎖匙";
 "Select Your Wallet Type" = "請選擇您的錢包類型";
-"Select your address" = "請選擇您的地址";
+"Select Your Address" = "請選擇您的地址";
 "Because you did a screen capture, we have updated the wallet mnemonics for you, and your screenshots have been voided! This is for your asset security." = "因為您做了截屏操作，我們為您更新了錢包助記詞，為了您的資產安全著想，您的截屏已經作廢！";
 "Please don't show up in public places (prevent cameras from taking photos) or take a screen shot(your operating system may back up images to cloud storage). These operations can bring you huge and irreversible security risks." = "請不要在公眾場所展示(防止攝像頭拍照)，也不要截屏(您的操作系統可能會將圖片備份到雲端存儲)。這些操作會給您帶來巨大而不可逆轉的安全隱患。";
 "No wallet is found in the device. Navigate to the wallet creation view." = "此手機已清空所有錢包，跳轉到錢包創建頁面。";
