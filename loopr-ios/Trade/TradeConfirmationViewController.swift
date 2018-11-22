@@ -175,7 +175,7 @@ class TradeConfirmationViewController: UIViewController {
     func close(_ animated: Bool = true) {
         if let navigation = self.navigationController {
             for controller in navigation.viewControllers as Array {
-                if controller.isKind(of: WalletViewController.self) {
+                if controller.isKind(of: TradeSwipeViewController.self) || controller.isKind(of: WalletViewController.self) {
                     self.navigationController!.popToViewController(controller, animated: true)
                     break
                 }
