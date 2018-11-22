@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BigInt
 
 class OriginalOrder {
 
@@ -16,11 +17,13 @@ class OriginalOrder {
     var market: String = ""
     var tokenBuy: String = ""
     var tokenSell: String = ""
-    var amountBuy: Double = 0.0
-    var amountSell: Double = 0.0
+    var amountB: BigInt = 0 // use for sign order & submit
+    var amountBuy: Double = 0.0 // use for display & check
+    var amountS: BigInt = 0 // use for sign order & submit
+    var amountSell: Double = 0.0 // use for display & check
     var validSince: Int64 = 0
     var validUntil: Int64 = 0
-    var lrcFee: Double = 0.0
+    var lrcFee: Double = 0
     var buyNoMoreThanAmountB: Bool = false
     var side: String = ""
     var hash: String = ""
@@ -34,7 +37,7 @@ class OriginalOrder {
     var r: String = ""
     var s: String = ""
     
-    init(delegate: String, address: String, side: String, tokenS: String, tokenB: String, validSince: Int64, validUntil: Int64, amountBuy: Double, amountSell: Double, lrcFee: Double, buyNoMoreThanAmountB: Bool, orderType: OrderType = .marketOrder, p2pType: P2PType = .maker, market: String = "") {
+    init(delegate: String, address: String, side: String, tokenS: String, tokenB: String, validSince: Int64, validUntil: Int64, amountBuy: Double, amountSell: Double, lrcFee: Double, buyNoMoreThanAmountB: Bool, amountS: BigInt? = nil, amountB: BigInt? = nil, orderType: OrderType = .marketOrder, p2pType: P2PType = .maker, market: String = "") {
         self.delegate = delegate
         self.address = address
         self.market = market
@@ -54,6 +57,8 @@ class OriginalOrder {
         self.authPrivateKey = privateKey
         self.walletAddress = PartnerDataManager.shared.getWalletAddress()
         self.marginSplitPercentage = UInt8(SettingDataManager.shared.getMarginSplit() * 100)
+        self.amountS = amountS ?? BigInt(0)
+        self.amountB = amountB ?? BigInt(0)
     }
 
     init(json: JSON) {
@@ -66,6 +71,8 @@ class OriginalOrder {
         self.amountSell = Asset.getAmount(of: self.tokenSell, fromWeiAmount: amountS) ?? 0.0
         let amountB = json["amountB"].stringValue
         self.amountBuy = Asset.getAmount(of: self.tokenBuy, fromWeiAmount: amountB) ?? 0.0
+        self.amountS = BigInt(amountS.drop0x(), radix: 16) ?? 0
+        self.amountB = BigInt(amountB.drop0x(), radix: 16) ?? 0
         self.buyNoMoreThanAmountB = json["buyNoMoreThanAmountB"].boolValue
         self.hash = json["hash"].stringValue
         let orderType = OrderType(rawValue: json["orderType"].stringValue) ?? OrderType.unknown

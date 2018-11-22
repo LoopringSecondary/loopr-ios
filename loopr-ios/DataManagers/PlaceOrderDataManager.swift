@@ -8,6 +8,7 @@
 
 import Foundation
 import Geth
+import BigInt
 
 class PlaceOrderDataManager {
     
@@ -191,8 +192,8 @@ class PlaceOrderDataManager {
         result.append(contentsOf: tokenb.hexBytes)
         result.append(contentsOf: order.walletAddress.hexBytes)
         result.append(contentsOf: order.authAddr.hexBytes)
-        result.append(contentsOf: _encode(order.amountSell, order.tokenSell))
-        result.append(contentsOf: _encode(order.amountBuy, order.tokenBuy))
+        result.append(contentsOf: _encode(order.amountS))
+        result.append(contentsOf: _encode(order.amountB))
         result.append(contentsOf: _encode(order.validSince))
         result.append(contentsOf: _encode(order.validUntil))
         result.append(contentsOf: _encode(order.lrcFee, "LRC"))
@@ -200,6 +201,11 @@ class PlaceOrderDataManager {
         result.append(contentsOf: flag)
         result.append(contentsOf: [order.marginSplitPercentage])
         return result
+    }
+    
+    func _encode(_ amount: BigInt) -> [UInt8] {
+        let bigInt = amount.toEth()
+        return try! EthTypeEncoder.default.encode(bigInt).bytes
     }
     
     func _encode(_ amount: Double, _ token: String) -> [UInt8] {
@@ -231,8 +237,8 @@ class PlaceOrderDataManager {
     func _submitOrder(_ order: OriginalOrder, completion: @escaping (String?, Error?) -> Void) {
         let tokens = tokenManager.getAddress(by: order.tokenSell)!
         let tokenb = tokenManager.getAddress(by: order.tokenBuy)!
-        let amountB = _encodeString(order.amountBuy, order.tokenBuy)
-        let amountS = _encodeString(order.amountSell, order.tokenSell)
+        let amountB = order.amountB.toHex()
+        let amountS = order.amountS.toHex()
         let lrcFee = _encodeString(order.lrcFee, "LRC")
         let validSince = order.validSince.hex
         let validUntil = order.validUntil.hex
@@ -247,8 +253,8 @@ class PlaceOrderDataManager {
         guard let hash = TradeDataManager.shared.makerHash else { return }
         let tokens = tokenManager.getAddress(by: order.tokenSell)!
         let tokenb = tokenManager.getAddress(by: order.tokenBuy)!
-        let amountB = _encodeString(order.amountBuy, order.tokenBuy)
-        let amountS = _encodeString(order.amountSell, order.tokenSell)
+        let amountB = order.amountB.toHex()
+        let amountS = order.amountS.toHex()
         let lrcFee = _encodeString(order.lrcFee, "LRC")
         let validSince = order.validSince.hex
         let validUntil = order.validUntil.hex

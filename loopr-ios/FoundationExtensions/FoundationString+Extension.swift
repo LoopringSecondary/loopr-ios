@@ -199,4 +199,10 @@ extension String {
         return self.replacingOccurrences(of: ",", with: "", options: NSString.CompareOptions.literal, range:nil)
     }
 
+    func drop0x() -> String {
+        if hasPrefix("0x") {
+            return String(dropFirst(2))
+        }
+        return self
+    }
 }
