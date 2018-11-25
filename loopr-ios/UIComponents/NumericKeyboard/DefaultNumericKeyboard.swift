@@ -43,7 +43,11 @@ open class DefaultNumericKeyboard: NumericKeyboard, NumericKeyboardDelegate {
                 
             } else {
                 if !currentText.contains(".") {
-                    currentText += "."
+                    if currentText == "" {
+                        currentText = "0."
+                    } else {
+                        currentText += "."
+                    }
                     // TODO: add a shake animation to the item at (3, 0)
                 }
             }
@@ -52,6 +56,9 @@ open class DefaultNumericKeyboard: NumericKeyboard, NumericKeyboardDelegate {
         case (3, 2):
             if currentText.count > 0 {
                 currentText = String(currentText.dropLast())
+                if currentText == "0" {
+                    currentText = ""
+                }
             }
         default:
             let itemValue = position.row * 3 + position.column + 1

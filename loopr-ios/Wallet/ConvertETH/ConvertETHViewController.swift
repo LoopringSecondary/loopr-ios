@@ -424,7 +424,11 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         switch (position.row, position.column) {
         case (3, 0):
             if !currentText.contains(".") {
-                currentText += "."
+                if currentText == "" {
+                    currentText = "0."
+                } else {
+                    currentText += "."
+                }
                 // TODO: add a shake animation to the item at (3, 0)
             }
             activeTextField!.text = currentText
@@ -433,6 +437,9 @@ class ConvertETHViewController: UIViewController, UITextFieldDelegate, NumericKe
         case (3, 2):
             if currentText.count > 0 {
                 currentText = String(currentText.dropLast())
+                if currentText == "0" {
+                    currentText = ""
+                }
             }
             activeTextField!.text = currentText
         default:
