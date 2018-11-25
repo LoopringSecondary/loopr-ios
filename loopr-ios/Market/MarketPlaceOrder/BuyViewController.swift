@@ -690,13 +690,20 @@ class BuyViewController: UIViewController, UITextFieldDelegate, UIScrollViewDele
         switch (position.row, position.column) {
         case (3, 0):
             if !currentText.contains(".") {
-                activeTextField!.text = currentText + "."
+                if currentText == "" {
+                    activeTextField!.text = "0."
+                } else {
+                    activeTextField!.text = currentText + "."
+                }
             }
         case (3, 1):
             activeTextField!.text = currentText + "0"
         case (3, 2):
             if currentText.count > 0 {
                 currentText = String(currentText.dropLast())
+                if currentText == "0" {
+                    currentText = ""
+                }
             }
             activeTextField!.text = currentText
         default:
