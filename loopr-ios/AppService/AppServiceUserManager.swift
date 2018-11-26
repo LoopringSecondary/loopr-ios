@@ -12,12 +12,16 @@ class AppServiceUserManager {
     
     static let shared = AppServiceUserManager()
     
-    let BAK_URL = "https://www.loopring.mobi/api/v1/users"
+    let BAK_URL = "https://www.loopring.mobi/rpc/v1/user"
+    
+    let GET_URL, ADD_URL, DEL_URL: String
 
     typealias CompletionHandler = (_ data: JSON?, _ error: Error?) -> Void
 
     private init() {
-        
+        GET_URL = BAK_URL + "getUser"
+        ADD_URL = BAK_URL + "addUser"
+        DEL_URL = BAK_URL + "deleteUser"
     }
 
     // Endpoint /api/v1/users
@@ -25,35 +29,27 @@ class AppServiceUserManager {
         // Always get openid from UserDefaultsKeys
         if let openID = UserDefaults.standard.string(forKey: UserDefaultsKeys.openID.rawValue) {
             let parameters = ["account_token": openID]
-            Request.get(BAK_URL, parameters: parameters) { data, _, error in
+            Request.get(GET_URL, parameters: parameters) { data, _, error in
                 guard let data = data, error == nil else {
-                    print("Endpoint /api/v1/users GET failed")
+                    print("Endpoint /rpc/v1/user GET failed")
                     completion(nil, NSError())
                     return
                 }
-                
-                // Parse response
-                let json = JSON(data)
-                let messageString = json["message"].string ?? ""
-                if let dataFromString = messageString.data(using: String.Encoding.utf8, allowLossyConversion: false) {
-                    do {
-                        let json = try JSON(data: dataFromString)
-                        let config = json["config"].stringValue
-                        
-                        let configString = JSON(config).string ?? ""
-                        if let configData = configString.data(using: String.Encoding.utf8, allowLossyConversion: false) {
-                            let configJson = try JSON(data: configData)
-                            
-                            // Parse successfully.
+                do {
+                    // Parse response
+                    let json = JSON(data)
+                    if json["success"].boolValue {
+                        if let configString = json["message"]["config"].string,
+                           let configData = configString.data(using: String.Encoding.utf8, allowLossyConversion: false) {
+                           let configJson = try JSON(data: configData)
                             completion(configJson, nil)
                         }
-                    } catch {
-                        
+                    } else {
+                        completion(nil, NSError())
                     }
+                } catch {
+                    
                 }
-                
-                // Parse fails
-                completion(nil, NSError())
             }
         } else {
             completion(nil, NSError())
@@ -68,35 +64,32 @@ class AppServiceUserManager {
                 config["currency"] = JSON(SettingDataManager.shared.getCurrentCurrency().name)
                 print("Post: " + SettingDataManager.shared.getCurrentCurrency().name)
                 config["language"] = JSON(SettingDataManager.shared.getCurrentLanguage().name)
-                AppServiceUserManager.shared.updateUserConfig(openID: openID, config: config, completion: {_, _ in })
+                AppServiceUserManager.shared.updateUserConfig(openID: openID, config: config)
             }
         }
     }
     
     // use POST to update user config.
-    func updateUserConfig(openID: String, config: JSON, completion: @escaping CompletionHandler) {
+    func updateUserConfig(openID: String, config: JSON) {
         var body = JSON()
         body["account_token"] = JSON(openID)
-        body["config"] = config
-        
-        Request.post(body: body, url: URL.init(string: BAK_URL)!) { data, _, error in
-            guard let data = data, error == nil else {
-                print("Endpoint /api/v1/users POST failed")
-                completion(nil, NSError())
+        let configString = config.rawString(.utf8, options: .init(rawValue: 0)) ?? ""
+        body["config"] = JSON(configString)
+        Request.post(body: body, url: URL.init(string: ADD_URL)!) { _, _, error in
+            guard error == nil else {
+                print("Endpoint /rpc/v1/user POST failed")
                 return
             }
-            let json = JSON(data)
-            completion(json["config"], nil)
         }
     }
     
-    func deleteUserConfig(openID: String, completion: @escaping CompletionHandler) {
-        var body = JSON()
-        body["account_token"] = JSON(openID)
-        Request.delete(body: body, url: URL.init(string: BAK_URL)!) { (data, _, error) in
-            guard let data = data, error == nil else { return }
-            let json = JSON(data)
-            completion(json["config"], nil)
+    func deleteUserConfig(openID: String) {
+        let parameters = ["account_token": openID]
+        Request.delete(DEL_URL, parameters: parameters) { (_, _, error) in
+            guard error == nil else {
+                print("Endpoint /rpc/v1/user DELETE failed")
+                return
+            }
         }
     }
 }

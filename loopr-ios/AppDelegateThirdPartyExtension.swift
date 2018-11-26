@@ -39,11 +39,10 @@ extension AppDelegate {
         configuration["language"] = JSON(SettingDataManager.shared.getCurrentLanguage().name)
         configuration["currency"] = JSON(SettingDataManager.shared.getCurrentCurrency().name)
         AppServiceUserManager.shared.getUserConfig(completion: { (config, _) in
-            if config == JSON.null {
-                AppServiceUserManager.shared.updateUserConfig(openID: openID, config: configuration, completion: {_, _ in })
-            } else if let config = config {
-                // TODO: force wrap here will cause a crash.
-                configuration = JSON.init(parseJSON: config.rawString()!)
+            if config == nil {
+                AppServiceUserManager.shared.updateUserConfig(openID: openID, config: configuration)
+            } else if let configString = config?.rawString() {
+                configuration = JSON.init(parseJSON: configString)
                 
                 // TODO: If the www.loopring.mobi/api/v1/users doesn't use a config with language or currency,
                 // This part will crash.

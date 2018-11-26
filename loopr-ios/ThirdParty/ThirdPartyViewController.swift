@@ -41,10 +41,7 @@ class ThirdPartyViewController: UIViewController {
         if !WXApi.send(req) {
             print("weixin sendreq failed")
         }
-        
-        Answers.logCustomEvent(withName: "Wechat Login v1",
-                               customAttributes: [
-                               "skip": "false"])
+        Answers.logCustomEvent(withName: "Wechat Login v1", customAttributes: ["skip": "false"])
     }
     
     @IBAction func pressedSkipButton(_ sender: Any) {
@@ -63,9 +60,7 @@ class ThirdPartyViewController: UIViewController {
         }
         UserDefaults.standard.set(true, forKey: UserDefaultsKeys.thirdParty.rawValue)
         self.present(vc, animated: true, completion: nil)
-        Answers.logCustomEvent(withName: "Wechat Login v1",
-                               customAttributes: [
-                               "skip": "true"])
+        Answers.logCustomEvent(withName: "Wechat Login v1", customAttributes: ["skip": "true"])
     }
     
 }
