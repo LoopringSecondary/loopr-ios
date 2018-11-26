@@ -442,7 +442,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 DispatchQueue.main.async {
                     self.settingsTableView.reloadData()
                 }
-                AppServiceUserManager.shared.deleteUserConfig(openID: openID, completion: { _, _ in })
+                AppServiceUserManager.shared.deleteUserConfig(openID: openID)
             }))
             alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
             }))

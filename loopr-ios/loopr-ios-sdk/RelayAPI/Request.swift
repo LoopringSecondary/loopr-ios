@@ -71,30 +71,23 @@ class Request {
         task.resume()
     }
     
-    static func delete(body: JSON, url: URL, completionHandler: @escaping CompletionHandler) {
-        var request = URLRequest(url: url)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "DELETE"
-        
-        do {
-            try request.httpBody = body.rawData()
-        } catch {
-            return
+    static func delete(_ url: String, parameters: [String: String], completionHandler: @escaping CompletionHandler) {
+        var components = URLComponents(string: url)!
+        components.queryItems = parameters.map { (key, value) in
+            URLQueryItem(name: key, value: value)
         }
-        
+        components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
+        var request = URLRequest(url: components.url!)
+        request.httpMethod = "DELETE"
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
-                print("error=\(String(describing: error))")
-                return
+            guard let data = data,                            // is there data
+                let response = response as? HTTPURLResponse,  // is there HTTP response
+                (200 ..< 300) ~= response.statusCode,         // is statusCode 2XX
+                error == nil else {                           // was there no error, otherwise ...
+                    return
             }
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(String(describing: response))")
-            }
-            
             completionHandler(data, response, error)
         }
         task.resume()
     }
-
 }
