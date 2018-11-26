@@ -33,7 +33,7 @@ class AppServiceUpdateManager {
 
     func getLatestAppVersion(completion: @escaping (_ shouldDisplayUpdateNotification: Bool) -> Void) {
         // Seprate from Request.
-        let url = URL(string: "http://10.137.110.6:5000/rpc/v1/version/ios/getLatest")
+        let url = URL(string: "https://www.loopring.mobi/rpc/v1/version/ios/getLatest")
         let task = URLSession.shared.dataTask(with: url! as URL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
