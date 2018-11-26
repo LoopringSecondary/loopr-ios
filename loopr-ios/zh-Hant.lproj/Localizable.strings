@@ -413,6 +413,7 @@
 "Partner_Des" = "分享APP，將獲得推廣的新用戶未來所有訂單撮合手續費20%收益，多推廣多獲利";
 "Partner_Address" = "您的分潤收款地址為: ";
 "Share App" = "分享APP";
+"Share" = "分享";
 
 /* Authorization for integrating other apps */
 "Authorization" = "授權";

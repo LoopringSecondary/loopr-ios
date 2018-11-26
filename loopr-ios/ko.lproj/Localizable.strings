@@ -380,6 +380,7 @@
 "Partner_Des" = "UP Wallet 앱을 공유하시면, 초대된 유저의 차후 거래로부터 20%의 추천인 수수료를 지급받을 수 있습니다";
 "Partner_Address" = "추천인 수수료가 전송되는 주소: ";
 "Share App" = "앱 공유하기";
+"Share" = "Share";
 
 /* Authorization for integrating other apps */
 "Authorization" = "승인";

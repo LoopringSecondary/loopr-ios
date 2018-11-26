@@ -412,6 +412,7 @@
 "Partner_Des" = "By sharing the app, you will be awarded 20% of all future trading fees from users you refer";
 "Partner_Address" = "Your address for receiving referral trading fees is: ";
 "Share App" = "Share App";
+"Share" = "Share";
 
 /* Authorization for integrating other apps */
 "Authorization" = "Authorization";

@@ -124,6 +124,8 @@ class AssetTransactionDetailViewController: UIViewController {
         
         // Row 7
         shareButton.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 14)
+        shareButton.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
+        shareButton.theme_setTitleColor(GlobalPicker.textLightColor, forState: .highlighted)
         shareButton.title = LocalizedString("Share", comment: "")
     }
     
