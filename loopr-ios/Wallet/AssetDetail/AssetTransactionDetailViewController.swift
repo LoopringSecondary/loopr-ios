@@ -31,6 +31,9 @@ class AssetTransactionDetailViewController: UIViewController {
     @IBOutlet weak var dateContainerView: UIView!
     @IBOutlet weak var dateTipLabel: UILabel!
     @IBOutlet weak var dateInfoLabel: UILabel!
+    @IBOutlet weak var shareContainerView: UIView!
+    @IBOutlet weak var shareButton: UIButton!
+
     @IBOutlet weak var cellBackgroundView: UIView!
     
     var transaction: Transaction?
@@ -56,6 +59,7 @@ class AssetTransactionDetailViewController: UIViewController {
         idContainerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         gasContainerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         dateContainerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
+        shareContainerView.theme_backgroundColor = ColorPicker.cardBackgroundColor
 
         cellBackgroundView.theme_backgroundColor = ColorPicker.cardHighLightColor
         
@@ -117,6 +121,10 @@ class AssetTransactionDetailViewController: UIViewController {
         
         dateInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         dateInfoLabel.theme_textColor = GlobalPicker.textColor
+        
+        // Row 7
+        shareButton.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 14)
+        shareButton.title = LocalizedString("Share", comment: "")
     }
     
     override func viewWillAppear(_ animated: Bool) {
