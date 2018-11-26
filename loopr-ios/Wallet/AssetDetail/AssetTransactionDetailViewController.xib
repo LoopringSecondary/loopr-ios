@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,6 +24,8 @@
                 <outlet property="idContainerView" destination="PGF-k6-t5f" id="OnE-Pl-JQ6"/>
                 <outlet property="idInfoButton" destination="ceR-kL-OiZ" id="Iow-hI-WhF"/>
                 <outlet property="idTipLabel" destination="HU4-hR-cPd" id="8b8-3i-GhQ"/>
+                <outlet property="shareButton" destination="Les-fw-XQU" id="wDx-I8-h4T"/>
+                <outlet property="shareContainerView" destination="0Mr-a0-KwY" id="2hm-dk-qdV"/>
                 <outlet property="statusContainerView" destination="Yr1-av-K4A" id="bEO-FZ-yed"/>
                 <outlet property="statusInfoLabel" destination="QFF-Yv-Kgp" id="FCl-Uc-4ZU"/>
                 <outlet property="statusTipLabel" destination="wK9-SI-lyF" id="ex4-ub-Lr8"/>
@@ -43,7 +45,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZcD-NA-lJl">
-                    <rect key="frame" x="0.0" y="287" width="375" height="380"/>
+                    <rect key="frame" x="0.0" y="236" width="375" height="431"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqe-rh-wRK">
                             <rect key="frame" x="166.5" y="5" width="42" height="50"/>
@@ -63,7 +65,7 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5X-Gx-e0z">
-                            <rect key="frame" x="0.0" y="59" width="375" height="307"/>
+                            <rect key="frame" x="0.0" y="59" width="375" height="358"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zcg-vd-3EG">
@@ -206,8 +208,25 @@
                                 <constraint firstItem="A9b-Vb-OSF" firstAttribute="centerY" secondItem="S78-pV-cO2" secondAttribute="centerY" id="uOG-9Z-1TZ"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Mr-a0-KwY">
+                            <rect key="frame" x="0.0" y="366" width="375" height="50"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Les-fw-XQU">
+                                    <rect key="frame" x="50" y="10" width="275" height="30"/>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="Les-fw-XQU" firstAttribute="top" secondItem="0Mr-a0-KwY" secondAttribute="top" constant="10" id="7oD-Pz-kaF"/>
+                                <constraint firstAttribute="trailing" secondItem="Les-fw-XQU" secondAttribute="trailing" constant="50" id="RCJ-fc-e3L"/>
+                                <constraint firstAttribute="bottom" secondItem="Les-fw-XQU" secondAttribute="bottom" constant="10" id="V7C-dB-69m"/>
+                                <constraint firstItem="Les-fw-XQU" firstAttribute="leading" secondItem="0Mr-a0-KwY" secondAttribute="leading" constant="50" id="dU2-z8-gHp"/>
+                                <constraint firstAttribute="height" constant="50" id="pyD-kZ-qH6"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="0Mr-a0-KwY" firstAttribute="leading" secondItem="ZcD-NA-lJl" secondAttribute="leading" id="2Q8-mM-fgK"/>
                         <constraint firstAttribute="trailing" secondItem="PGF-k6-t5f" secondAttribute="trailing" id="2Zg-Rz-pCE"/>
                         <constraint firstItem="ceR-kL-OiZ" firstAttribute="width" secondItem="2Wa-Ag-OZq" secondAttribute="width" id="4Be-SN-ar3"/>
                         <constraint firstItem="HU4-hR-cPd" firstAttribute="leading" secondItem="ooK-CY-Usq" secondAttribute="leading" id="4rb-lT-12f"/>
@@ -217,9 +236,11 @@
                         <constraint firstItem="b5X-Gx-e0z" firstAttribute="leading" secondItem="ZcD-NA-lJl" secondAttribute="leading" id="BUY-BJ-FEQ"/>
                         <constraint firstAttribute="trailing" secondItem="Vmb-8y-4Mt" secondAttribute="trailing" id="Bna-g5-G6a"/>
                         <constraint firstItem="2Wa-Ag-OZq" firstAttribute="trailing" secondItem="QFF-Yv-Kgp" secondAttribute="trailing" id="EZV-Lj-3v5"/>
+                        <constraint firstItem="0Mr-a0-KwY" firstAttribute="top" secondItem="S78-pV-cO2" secondAttribute="bottom" constant="1" id="Ekw-gu-buJ"/>
                         <constraint firstItem="jDr-6o-sZK" firstAttribute="trailing" secondItem="KJu-KC-q44" secondAttribute="trailing" id="Evf-L8-5oz"/>
                         <constraint firstItem="euZ-pS-OQW" firstAttribute="leading" secondItem="wK9-SI-lyF" secondAttribute="leading" id="Gtd-nM-Hp7"/>
                         <constraint firstItem="QFF-Yv-Kgp" firstAttribute="width" secondItem="KJu-KC-q44" secondAttribute="width" id="Hef-RU-vzx"/>
+                        <constraint firstAttribute="trailing" secondItem="0Mr-a0-KwY" secondAttribute="trailing" id="Hha-3h-S98"/>
                         <constraint firstItem="f3Y-NA-p4G" firstAttribute="width" secondItem="jDr-6o-sZK" secondAttribute="width" id="HzD-XR-Dhv"/>
                         <constraint firstItem="QFF-Yv-Kgp" firstAttribute="trailing" secondItem="KJu-KC-q44" secondAttribute="trailing" id="IBc-Uw-gty"/>
                         <constraint firstItem="Vmb-8y-4Mt" firstAttribute="top" secondItem="PGF-k6-t5f" secondAttribute="bottom" constant="1" id="IOc-hr-3y1"/>
@@ -227,6 +248,7 @@
                         <constraint firstItem="wK9-SI-lyF" firstAttribute="leading" secondItem="ooK-CY-Usq" secondAttribute="leading" id="Kmg-PP-VI7"/>
                         <constraint firstItem="S78-pV-cO2" firstAttribute="leading" secondItem="ZcD-NA-lJl" secondAttribute="leading" id="NUM-7e-xfb"/>
                         <constraint firstItem="Yr1-av-K4A" firstAttribute="leading" secondItem="ZcD-NA-lJl" secondAttribute="leading" id="R0d-4G-bXk"/>
+                        <constraint firstItem="0Mr-a0-KwY" firstAttribute="bottom" secondItem="b5X-Gx-e0z" secondAttribute="bottom" constant="-1" id="Rye-0j-T7X"/>
                         <constraint firstAttribute="trailing" secondItem="Yr1-av-K4A" secondAttribute="trailing" id="THr-Ug-O5P"/>
                         <constraint firstItem="Zcg-vd-3EG" firstAttribute="top" secondItem="ZcD-NA-lJl" secondAttribute="top" constant="60" id="U43-f4-cDM"/>
                         <constraint firstItem="sqe-rh-wRK" firstAttribute="top" secondItem="ZcD-NA-lJl" secondAttribute="top" constant="5" id="VL6-tn-AfQ"/>
@@ -247,8 +269,7 @@
                         <constraint firstItem="A9b-Vb-OSF" firstAttribute="leading" secondItem="ooK-CY-Usq" secondAttribute="leading" id="oBG-DK-7LH"/>
                         <constraint firstItem="2Wa-Ag-OZq" firstAttribute="width" secondItem="QFF-Yv-Kgp" secondAttribute="width" id="oxz-2X-UKg"/>
                         <constraint firstItem="S78-pV-cO2" firstAttribute="centerX" secondItem="ZcD-NA-lJl" secondAttribute="centerX" id="rDg-fQ-NlF"/>
-                        <constraint firstItem="b5X-Gx-e0z" firstAttribute="bottom" secondItem="S78-pV-cO2" secondAttribute="bottom" constant="1" id="rIm-at-N59"/>
-                        <constraint firstAttribute="height" constant="380" id="suU-Ks-c5d"/>
+                        <constraint firstAttribute="height" constant="431" id="suU-Ks-c5d"/>
                         <constraint firstAttribute="trailing" secondItem="Zcg-vd-3EG" secondAttribute="trailing" id="uMo-rQ-PO8"/>
                         <constraint firstItem="jDr-6o-sZK" firstAttribute="width" secondItem="ceR-kL-OiZ" secondAttribute="width" id="zSn-Ej-wRX"/>
                     </constraints>
@@ -267,7 +288,7 @@
                 <constraint firstAttribute="bottom" secondItem="ZcD-NA-lJl" secondAttribute="bottom" id="xJu-dr-7Dc"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="34.5" y="124.5"/>
+            <point key="canvasLocation" x="34.399999999999999" y="123.68815592203899"/>
         </view>
     </objects>
     <resources>
