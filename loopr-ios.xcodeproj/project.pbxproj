@@ -106,6 +106,8 @@
 		94EE76A22113F1C5009D6A90 /* OrderHistorySwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94EE76A02113F1C5009D6A90 /* OrderHistorySwipeViewController.xib */; };
 		94EE76A42113F21B009D6A90 /* OrderHistorySwipeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EE76A32113F21B009D6A90 /* OrderHistorySwipeType.swift */; };
 		9AACD1A68297585D93FB6182 /* Pods_loopr_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFC6AA9DC8C999B66FFD8AA /* Pods_loopr_iosTests.framework */; };
+		9BC2886921ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC2886721ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.swift */; };
+		9BC2886A21ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BC2886821ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.xib */; };
 		AC061939208401EB0060F416 /* MnemonicAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC061937208401EB0060F416 /* MnemonicAddressTableViewCell.swift */; };
 		AC06193A208401EB0060F416 /* MnemonicAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC061938208401EB0060F416 /* MnemonicAddressTableViewCell.xib */; };
 		AC06193C208404FA0060F416 /* FoundationString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC06193B208404FA0060F416 /* FoundationString+Extension.swift */; };
@@ -607,6 +609,8 @@
 		94EE769F2113F1C5009D6A90 /* OrderHistorySwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistorySwipeViewController.swift; sourceTree = "<group>"; };
 		94EE76A02113F1C5009D6A90 /* OrderHistorySwipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistorySwipeViewController.xib; sourceTree = "<group>"; };
 		94EE76A32113F21B009D6A90 /* OrderHistorySwipeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistorySwipeType.swift; sourceTree = "<group>"; };
+		9BC2886721ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailSummaryTableViewCell.swift; sourceTree = "<group>"; };
+		9BC2886821ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketDetailSummaryTableViewCell.xib; sourceTree = "<group>"; };
 		AC061937208401EB0060F416 /* MnemonicAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicAddressTableViewCell.swift; sourceTree = "<group>"; };
 		AC061938208401EB0060F416 /* MnemonicAddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MnemonicAddressTableViewCell.xib; sourceTree = "<group>"; };
 		AC06193B208404FA0060F416 /* FoundationString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoundationString+Extension.swift"; sourceTree = "<group>"; };
@@ -1877,6 +1881,8 @@
 			children = (
 				AC23B365210D6213004DC5A9 /* MarketDetailViewController.swift */,
 				AC23B366210D6214004DC5A9 /* MarketDetailViewController.xib */,
+				9BC2886721ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.swift */,
+				9BC2886821ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.xib */,
 				AC9FFF222126BDA800957175 /* MarketChangeToken */,
 				AC6A3476210D740500AE615B /* MarketDetailSwipeViewController.swift */,
 				AC6A3477210D740500AE615B /* MarketDetailSwipeViewController.xib */,
@@ -2529,6 +2535,7 @@
 				941138C8210F12AD007FDC82 /* TimeToLiveViewController.xib in Resources */,
 				AC2ACA4F20FA0EC3009C77E7 /* Rubik-Light.ttf in Resources */,
 				AC13B30420548767008A72C0 /* BuyAndSellSwipeViewController.xib in Resources */,
+				9BC2886A21ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.xib in Resources */,
 				AC31CE152057B5A400A30335 /* TradeReviewViewController.xib in Resources */,
 				AC3756792038D7E200AADC60 /* UnlockKeystoreViewController.xib in Resources */,
 				ACB91172202557B100F14644 /* MarketViewController.xib in Resources */,
@@ -2930,6 +2937,7 @@
 				AC31B94A204A8DF400B16155 /* KeystoreKeyHeader.swift in Sources */,
 				AC131A0A210D7A33001998A0 /* MarketDetailTradeHistoryViewController.swift in Sources */,
 				943BDED32056350000D5BF81 /* PriceQuote.swift in Sources */,
+				9BC2886921ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.swift in Sources */,
 				AC9FFF312127F8CF00957175 /* AddCustomizedTokenViewController.swift in Sources */,
 				ACC8D0A620CC95A00049A741 /* AssetTableViewCell.swift in Sources */,
 				ACFEFE9520C337BE00013921 /* PendingTransactionsDataManager.swift in Sources */,
@@ -3551,7 +3559,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "loopr-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3563,7 +3571,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "loopr-ios/loopr-ios-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

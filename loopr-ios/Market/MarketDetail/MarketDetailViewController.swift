@@ -8,10 +8,12 @@
 
 import UIKit
 
-class MarketDetailViewController: UIViewController {
+class MarketDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var market: Market!
     var marketDetailSwipeViewController = MarketDetailSwipeViewController()
+    
+    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var buyButton: GradientButton!
     @IBOutlet weak var sellButton: GradientButton!
@@ -30,14 +32,21 @@ class MarketDetailViewController: UIViewController {
         buyButton.setGreen()
         sellButton.setRed()
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.theme_backgroundColor = ColorPicker.backgroundColor
+        tableView.separatorStyle = .none
+        /*
         addChildViewController(marketDetailSwipeViewController)
         view.addSubview(marketDetailSwipeViewController.view)
+        
         marketDetailSwipeViewController.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint(item: marketDetailSwipeViewController.view, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 0.0).isActive = true
         NSLayoutConstraint(item: marketDetailSwipeViewController.view, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 0.0).isActive = true
         NSLayoutConstraint(item: marketDetailSwipeViewController.view, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0.0).isActive = true
         NSLayoutConstraint(item: marketDetailSwipeViewController.view, attribute: .bottom, relatedBy: .equal, toItem: buyButton, attribute: .top, multiplier: 1.0, constant: -5.0).isActive = true
-        
+        */
+ 
         buttonInNavigationBar.frame = CGRect(x: 0, y: 0, width: 400, height: 40)
         buttonInNavigationBar.titleLabel?.font = FontConfigManager.shared.getDigitalFont(size: 18)
         buttonInNavigationBar.theme_setTitleColor(GlobalPicker.barTextColor, forState: .normal)
@@ -120,4 +129,25 @@ class MarketDetailViewController: UIViewController {
         viewController.initialType = .buy
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            var cell = tableView.dequeueReusableCell(withIdentifier: MarketDetailSummaryTableViewCell.getCellIdentifier()) as? MarketDetailSummaryTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("MarketDetailSummaryTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? MarketDetailSummaryTableViewCell
+            }
+            cell?.setup()
+            return cell!
+        } else {
+            return UITableViewCell()
+        }
+        
+        
+    }
+
 }
