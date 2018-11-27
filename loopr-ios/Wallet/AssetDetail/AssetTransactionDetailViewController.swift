@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Social
 
 class AssetTransactionDetailViewController: UIViewController {
 
@@ -127,6 +128,7 @@ class AssetTransactionDetailViewController: UIViewController {
         shareButton.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
         shareButton.theme_setTitleColor(GlobalPicker.textLightColor, forState: .highlighted)
         shareButton.title = LocalizedString("Share", comment: "")
+        shareButton.addTarget(self, action: #selector(pressedShareButton(_:)), for: UIControlEvents.touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -253,6 +255,20 @@ class AssetTransactionDetailViewController: UIViewController {
                 viewController.url = url
                 viewController.hidesBottomBarWhenPushed = true
                 self.parentNavController?.pushViewController(viewController, animated: true)
+            }
+        }
+    }
+    
+    @objc func pressedShareButton(_ sender: UIButton) {
+        var etherUrl = "https://etherscan.io/tx/"
+        if let tx = self.transaction {
+            etherUrl += tx.txHash
+            if let url = URL(string: etherUrl) {
+                let text = url.absoluteString
+                let shareAll = [text] as [Any]
+                let activityVC = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
+                activityVC.popoverPresentationController?.sourceView = self.view
+                self.present(activityVC, animated: true, completion: nil)
             }
         }
     }
