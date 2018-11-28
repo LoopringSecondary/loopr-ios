@@ -130,24 +130,30 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            var cell = tableView.dequeueReusableCell(withIdentifier: MarketDetailSummaryTableViewCell.getCellIdentifier()) as? MarketDetailSummaryTableViewCell
-            if cell == nil {
-                let nib = Bundle.main.loadNibNamed("MarketDetailSummaryTableViewCell", owner: self, options: nil)
-                cell = nib![0] as? MarketDetailSummaryTableViewCell
-            }
-            cell?.setup()
-            return cell!
+        if indexPath.section == 0 {
+            return getMarketDetailSummaryTableViewCell()
         } else {
             return UITableViewCell()
         }
-        
-        
+    }
+    
+    func getMarketDetailSummaryTableViewCell() -> MarketDetailSummaryTableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: MarketDetailSummaryTableViewCell.getCellIdentifier()) as? MarketDetailSummaryTableViewCell
+        if cell == nil {
+            let nib = Bundle.main.loadNibNamed("MarketDetailSummaryTableViewCell", owner: self, options: nil)
+            cell = nib![0] as? MarketDetailSummaryTableViewCell
+        }
+        cell?.setup(market: market)
+        return cell!
     }
 
 }
