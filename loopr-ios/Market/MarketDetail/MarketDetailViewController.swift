@@ -8,10 +8,20 @@
 
 import UIKit
 
-class MarketDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MarketDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MarketDetailDepthTableViewCellDelegate {
 
     var market: Market!
     var marketDetailSwipeViewController = MarketDetailSwipeViewController()
+    
+    // Depth
+    var preivousMarketName: String = ""
+    var minSellPrice: Double = 0
+    var buys: [Depth] = []
+    var sells: [Depth] = []
+    var maxAmountInDepthView: Double = 0
+    
+    // Trade History
+    var orderFills: [OrderFill] = []
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -36,16 +46,6 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         tableView.dataSource = self
         tableView.theme_backgroundColor = ColorPicker.backgroundColor
         tableView.separatorStyle = .none
-        /*
-        addChildViewController(marketDetailSwipeViewController)
-        view.addSubview(marketDetailSwipeViewController.view)
-        
-        marketDetailSwipeViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: marketDetailSwipeViewController.view, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 0.0).isActive = true
-        NSLayoutConstraint(item: marketDetailSwipeViewController.view, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 0.0).isActive = true
-        NSLayoutConstraint(item: marketDetailSwipeViewController.view, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0.0).isActive = true
-        NSLayoutConstraint(item: marketDetailSwipeViewController.view, attribute: .bottom, relatedBy: .equal, toItem: buyButton, attribute: .top, multiplier: 1.0, constant: -5.0).isActive = true
-        */
  
         buttonInNavigationBar.frame = CGRect(x: 0, y: 0, width: 400, height: 40)
         buttonInNavigationBar.titleLabel?.font = FontConfigManager.shared.getDigitalFont(size: 18)
@@ -53,6 +53,20 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         buttonInNavigationBar.setTitleColor(UIColor.init(white: 0.8, alpha: 1), for: .highlighted)
         buttonInNavigationBar.addTarget(self, action: #selector(self.clickNavigationTitleButton(_:)), for: .touchUpInside)
         self.navigationItem.titleView = buttonInNavigationBar
+        
+        getDepthFromRelay()
+        self.buys = MarketDepthDataManager.shared.getBuys()
+        self.sells = MarketDepthDataManager.shared.getSells()
+        
+        if buys.count > 0 && sells.count > 0 {
+            self.maxAmountInDepthView = max(buys[buys.count / 2].amountAInDouble, sells[sells.count / 2].amountAInDouble) * 1.5
+        } else if buys.count > 0 {
+            self.maxAmountInDepthView = buys[buys.count / 2].amountAInDouble * 1.5
+        } else if sells.count > 0 {
+            self.maxAmountInDepthView = sells[sells.count / 2].amountAInDouble * 1.5
+        } else {
+            self.maxAmountInDepthView = 0
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -131,22 +145,56 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return getNumberOfRowsInDepthSection()
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0:
+            return MarketDetailSummaryTableViewCell.getHeight()
+        case 1:
+            return MarketDetailDepthTableViewCell.getHeight()
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             return getMarketDetailSummaryTableViewCell()
+        } else if indexPath.section == 1 {
+            return getMarketDetailDepthTableViewCell(cellForRowAt: indexPath)
         } else {
             return UITableViewCell()
         }
     }
     
-    func getMarketDetailSummaryTableViewCell() -> MarketDetailSummaryTableViewCell {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return getHeightForHeaderInSection()
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 1 {
+            return getHeaderViewInDepthSection()
+        }
+        return nil
+    }
+    
+    private func getMarketDetailSummaryTableViewCell() -> MarketDetailSummaryTableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: MarketDetailSummaryTableViewCell.getCellIdentifier()) as? MarketDetailSummaryTableViewCell
         if cell == nil {
             let nib = Bundle.main.loadNibNamed("MarketDetailSummaryTableViewCell", owner: self, options: nil)
