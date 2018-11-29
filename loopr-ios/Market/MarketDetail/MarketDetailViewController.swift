@@ -1,5 +1,5 @@
 //
-//  MarketDetailSwipeViewController.swift
+//  MarketDetailViewController.swift
 //  loopr-ios
 //
 //  Created by xiaoruby on 7/28/18.
@@ -12,6 +12,8 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
 
     var market: Market!
     var marketDetailSwipeViewController = MarketDetailSwipeViewController()
+    
+    var swipeViewIndex: Int = 0
     
     // Depth
     var preivousMarketName: String = ""
@@ -67,6 +69,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         } else {
             self.maxAmountInDepthView = 0
         }
+        
+        getTradeHistoryFromRelay()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -93,6 +98,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         sellButton.setTitle(LocalizedString("Sell", comment: "") + " " + market.tradingPair.tradingA, for: .normal)
         
         marketDetailSwipeViewController.market = market
+        addChildViewController(marketDetailSwipeViewController)
     }
 
     func updateHistoryButton() {
@@ -145,7 +151,29 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 1:
+            return getHeightForHeaderInSwipeSection()
+        case 2:
+            return swipeViewIndex == 0 ? getHeightForHeaderInSectionDepth() : getHeightForHeaderInSectionTradeHistory()
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 1:
+            return getHeaderViewInSwipeSection()
+        case 2:
+            return swipeViewIndex == 0 ? getHeaderViewInSectionDepth() : getHeaderViewInSectionTradeHistory()
+        default:
+            return nil
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -153,7 +181,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         case 0:
             return 1
         case 1:
-            return getNumberOfRowsInDepthSection()
+            return 0
+        case 2:
+            return swipeViewIndex == 0 ? getNumberOfRowsInSectionDepth() : getNumberOfRowsInSectionTradeHistory()
         default:
             return 0
         }
@@ -163,37 +193,24 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         switch indexPath.section {
         case 0:
             return MarketDetailSummaryTableViewCell.getHeight()
-        case 1:
-            return MarketDetailDepthTableViewCell.getHeight()
+        case 2:
+            return swipeViewIndex == 0 ? MarketDetailDepthTableViewCell.getHeight() : MarketDetailTradeHistoryTableViewCell.getHeight()
         default:
             return 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+        switch indexPath.section {
+        case 0:
             return getMarketDetailSummaryTableViewCell()
-        } else if indexPath.section == 1 {
-            return getMarketDetailDepthTableViewCell(cellForRowAt: indexPath)
-        } else {
+        case 2:
+            return swipeViewIndex == 0 ? getMarketDetailDepthTableViewCell(cellForRowAt: indexPath) : getMarketDetailTradeHistoryTableViewCell(cellForRowAt: indexPath)
+        default:
             return UITableViewCell()
         }
     }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 1 {
-            return getHeightForHeaderInSection()
-        }
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 1 {
-            return getHeaderViewInDepthSection()
-        }
-        return nil
-    }
-    
+
     private func getMarketDetailSummaryTableViewCell() -> MarketDetailSummaryTableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: MarketDetailSummaryTableViewCell.getCellIdentifier()) as? MarketDetailSummaryTableViewCell
         if cell == nil {
