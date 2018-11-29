@@ -108,6 +108,7 @@
 		9AACD1A68297585D93FB6182 /* Pods_loopr_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFC6AA9DC8C999B66FFD8AA /* Pods_loopr_iosTests.framework */; };
 		9BA3014621B06A1300E55E49 /* MarketDetailViewControllerDepth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA3014521B06A1300E55E49 /* MarketDetailViewControllerDepth.swift */; };
 		9BA3014821B0954600E55E49 /* MarketDetailViewControllerTradeHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA3014721B0954600E55E49 /* MarketDetailViewControllerTradeHistory.swift */; };
+		9BA3014A21B097D100E55E49 /* MarketDetailViewControllerSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA3014921B097D100E55E49 /* MarketDetailViewControllerSwipe.swift */; };
 		9BC2886921ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC2886721ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.swift */; };
 		9BC2886A21ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BC2886821ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.xib */; };
 		AC061939208401EB0060F416 /* MnemonicAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC061937208401EB0060F416 /* MnemonicAddressTableViewCell.swift */; };
@@ -613,6 +614,7 @@
 		94EE76A32113F21B009D6A90 /* OrderHistorySwipeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistorySwipeType.swift; sourceTree = "<group>"; };
 		9BA3014521B06A1300E55E49 /* MarketDetailViewControllerDepth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailViewControllerDepth.swift; sourceTree = "<group>"; };
 		9BA3014721B0954600E55E49 /* MarketDetailViewControllerTradeHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailViewControllerTradeHistory.swift; sourceTree = "<group>"; };
+		9BA3014921B097D100E55E49 /* MarketDetailViewControllerSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailViewControllerSwipe.swift; sourceTree = "<group>"; };
 		9BC2886721ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		9BC2886821ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketDetailSummaryTableViewCell.xib; sourceTree = "<group>"; };
 		AC061937208401EB0060F416 /* MnemonicAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicAddressTableViewCell.swift; sourceTree = "<group>"; };
@@ -1140,6 +1142,34 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9BA3014B21B097DB00E55E49 /* MarketDetailViewControllerExtension */ = {
+			isa = PBXGroup;
+			children = (
+				9BA3014921B097D100E55E49 /* MarketDetailViewControllerSwipe.swift */,
+				9BA3014521B06A1300E55E49 /* MarketDetailViewControllerDepth.swift */,
+				9BA3014721B0954600E55E49 /* MarketDetailViewControllerTradeHistory.swift */,
+			);
+			path = MarketDetailViewControllerExtension;
+			sourceTree = "<group>";
+		};
+		9BA3014C21B0B12B00E55E49 /* Out-of-date */ = {
+			isa = PBXGroup;
+			children = (
+				AC131A04210D7A1A001998A0 /* MarketDetailDepthViewController.swift */,
+				AC131A05210D7A1A001998A0 /* MarketDetailDepthViewController.xib */,
+			);
+			path = "Out-of-date";
+			sourceTree = "<group>";
+		};
+		9BA3014D21B0B13E00E55E49 /* Out-of-date */ = {
+			isa = PBXGroup;
+			children = (
+				AC131A08210D7A33001998A0 /* MarketDetailTradeHistoryViewController.swift */,
+				AC131A09210D7A33001998A0 /* MarketDetailTradeHistoryViewController.xib */,
+			);
+			path = "Out-of-date";
+			sourceTree = "<group>";
+		};
 		AC0CD58220D2294D00ABB7BA /* TabBarItem */ = {
 			isa = PBXGroup;
 			children = (
@@ -1175,8 +1205,7 @@
 			children = (
 				AC9DC45121156F3A002D7D23 /* MarketDetailDepthModalViewController.swift */,
 				AC9DC45221156F3A002D7D23 /* MarketDetailDepthModalViewController.xib */,
-				AC131A04210D7A1A001998A0 /* MarketDetailDepthViewController.swift */,
-				AC131A05210D7A1A001998A0 /* MarketDetailDepthViewController.xib */,
+				9BA3014C21B0B12B00E55E49 /* Out-of-date */,
 				AC131A0E210ED2BB001998A0 /* MarketDetailDepthTableViewCell.swift */,
 				AC131A0F210ED2BB001998A0 /* MarketDetailDepthTableViewCell.xib */,
 			);
@@ -1186,8 +1215,7 @@
 		AC131A1721101B00001998A0 /* MarketDetailTradeHistory */ = {
 			isa = PBXGroup;
 			children = (
-				AC131A08210D7A33001998A0 /* MarketDetailTradeHistoryViewController.swift */,
-				AC131A09210D7A33001998A0 /* MarketDetailTradeHistoryViewController.xib */,
+				9BA3014D21B0B13E00E55E49 /* Out-of-date */,
 				AC131A1221101AD0001998A0 /* MarketDetailTradeHistoryTableViewCell.swift */,
 				AC131A1321101AD0001998A0 /* MarketDetailTradeHistoryTableViewCell.xib */,
 			);
@@ -1885,8 +1913,7 @@
 			children = (
 				AC23B365210D6213004DC5A9 /* MarketDetailViewController.swift */,
 				AC23B366210D6214004DC5A9 /* MarketDetailViewController.xib */,
-				9BA3014521B06A1300E55E49 /* MarketDetailViewControllerDepth.swift */,
-				9BA3014721B0954600E55E49 /* MarketDetailViewControllerTradeHistory.swift */,
+				9BA3014B21B097DB00E55E49 /* MarketDetailViewControllerExtension */,
 				9BC2886721ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.swift */,
 				9BC2886821ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.xib */,
 				AC9FFF222126BDA800957175 /* MarketChangeToken */,
@@ -2831,6 +2858,7 @@
 				AC45EFEE20D0D474004F6EC0 /* H5DexNavigationController.swift in Sources */,
 				ACB911642024504E00F14644 /* Order.swift in Sources */,
 				ACB8485920BA75E7006B83AD /* SettingPasscodeTableViewCell.swift in Sources */,
+				9BA3014A21B097D100E55E49 /* MarketDetailViewControllerSwipe.swift in Sources */,
 				AC9280E92030C7440009B574 /* UIColorExtensions.swift in Sources */,
 				AC4141F920352DA70089861D /* SwipeTabView.swift in Sources */,
 				AC4141F320352C460089861D /* SwipeViewController.swift in Sources */,

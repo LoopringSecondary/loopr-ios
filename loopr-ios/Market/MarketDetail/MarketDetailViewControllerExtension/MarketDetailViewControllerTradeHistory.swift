@@ -25,15 +25,15 @@ extension MarketDetailViewController {
         })
     }
     
-    func getNumberOfRowsInTradeHistorySection() -> Int {
+    func getNumberOfRowsInSectionTradeHistory() -> Int {
         return orderFills.count
     }
     
-    func getHeightForHeaderInTradeHistorySection() -> CGFloat {
+    func getHeightForHeaderInSectionTradeHistory() -> CGFloat {
         return 30 + 10 + 1
     }
     
-    func getHeaderViewInTradeHistorySection() -> UIView {
+    func getHeaderViewInSectionTradeHistory() -> UIView {
         let screenWidth = view.frame.size.width
         let labelWidth = (screenWidth - 15*2 - 5)*0.5
         

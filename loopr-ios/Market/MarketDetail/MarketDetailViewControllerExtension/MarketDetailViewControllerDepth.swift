@@ -41,7 +41,7 @@ extension MarketDetailViewController {
         })
     }
     
-    func getNumberOfRowsInDepthSection() -> Int {
+    func getNumberOfRowsInSectionDepth() -> Int {
         let maxCount = buys.count > sells.count ? buys.count : sells.count
         if maxCount > 10 {
             return 10
@@ -50,11 +50,11 @@ extension MarketDetailViewController {
         }
     }
     
-    func getHeightForHeaderInSection() -> CGFloat {
+    func getHeightForHeaderInSectionDepth() -> CGFloat {
         return 30 + 10 + 1
     }
     
-    func getHeaderViewInDepthSection() -> UIView {
+    func getHeaderViewInSectionDepth() -> UIView {
         let screenWidth = view.frame.size.width
         let labelWidth = (screenWidth - 15*2 - 5)*0.5
         
