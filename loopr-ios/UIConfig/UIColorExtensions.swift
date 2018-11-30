@@ -222,6 +222,22 @@ extension UIColor {
         }
     }
     
+    class var upInChart: UIColor {
+        if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
+            return UIColor(rgba: "#FF6960")   // #FF6960, red
+        } else {
+            return UIColor(rgba: "#00BD9A") // #00BD9A, green
+        }
+    }
+    
+    class var downInChart: UIColor {
+        if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
+            return UIColor(rgba: "#00BD9A") // #00BD9A, green
+        } else {
+            return UIColor(rgba: "#FF6960")   // #FF6960, red
+        }
+    }
+    
     // FFB832
     class var pending: UIColor {
         return UIColor(named: "Color-yellow")!

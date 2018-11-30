@@ -15,6 +15,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     var swipeViewIndex: Int = 0
     
+    // Chart
+    var trends: [Trend] = []
+    
     // Depth
     var preivousMarketName: String = ""
     var minSellPrice: Double = 0
@@ -72,6 +75,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         
         getTradeHistoryFromRelay()
 
+        MarketDataManager.shared.getTrendsFromServer(market: market.name, interval: "1Day", completionHandler: { (trends, _) in
+            self.trends = trends ?? []
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -151,14 +157,14 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
-        case 1:
-            return getHeightForHeaderInSwipeSection()
         case 2:
+            return getHeightForHeaderInSwipeSection()
+        case 3:
             return swipeViewIndex == 0 ? getHeightForHeaderInSectionDepth() : getHeightForHeaderInSectionTradeHistory()
         default:
             return 0
@@ -167,9 +173,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
-        case 1:
-            return getHeaderViewInSwipeSection()
         case 2:
+            return getHeaderViewInSwipeSection()
+        case 3:
             return swipeViewIndex == 0 ? getHeaderViewInSectionDepth() : getHeaderViewInSectionTradeHistory()
         default:
             return nil
@@ -181,8 +187,10 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         case 0:
             return 1
         case 1:
-            return 0
+            return 1
         case 2:
+            return 0
+        case 3:
             return swipeViewIndex == 0 ? getNumberOfRowsInSectionDepth() : getNumberOfRowsInSectionTradeHistory()
         default:
             return 0
@@ -193,7 +201,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         switch indexPath.section {
         case 0:
             return MarketDetailSummaryTableViewCell.getHeight()
-        case 2:
+        case 1:
+            return MarketDetailPriceChartTableViewCell.getHeight()
+        case 3:
             return swipeViewIndex == 0 ? MarketDetailDepthTableViewCell.getHeight() : MarketDetailTradeHistoryTableViewCell.getHeight()
         default:
             return 0
@@ -204,7 +214,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         switch indexPath.section {
         case 0:
             return getMarketDetailSummaryTableViewCell()
-        case 2:
+        case 1:
+            return getMarketDetailPriceChartTableViewCell()
+        case 3:
             return swipeViewIndex == 0 ? getMarketDetailDepthTableViewCell(cellForRowAt: indexPath) : getMarketDetailTradeHistoryTableViewCell(cellForRowAt: indexPath)
         default:
             return UITableViewCell()

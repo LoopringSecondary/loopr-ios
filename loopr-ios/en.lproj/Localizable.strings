@@ -173,7 +173,7 @@
 "Decline" = "Decline";
 "Minimal Count" = "Minimal Count";
 "Records" = "Records";
-"Depth_in_Market_Detail" = "Depth";
+"Depth_in_Market_Detail" = "Orderbook";
 "Trades_in_Market_Detail" = "Trades";
 "Reference Markets" = "Reference Markets";
 "Recommend Price" = "Recommend Price";
