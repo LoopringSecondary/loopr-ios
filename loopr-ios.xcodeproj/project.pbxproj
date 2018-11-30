@@ -109,6 +109,9 @@
 		9BA3014621B06A1300E55E49 /* MarketDetailViewControllerDepth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA3014521B06A1300E55E49 /* MarketDetailViewControllerDepth.swift */; };
 		9BA3014821B0954600E55E49 /* MarketDetailViewControllerTradeHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA3014721B0954600E55E49 /* MarketDetailViewControllerTradeHistory.swift */; };
 		9BA3014A21B097D100E55E49 /* MarketDetailViewControllerSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA3014921B097D100E55E49 /* MarketDetailViewControllerSwipe.swift */; };
+		9BA3015021B0B63400E55E49 /* MarketDetailPriceChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA3014E21B0B63400E55E49 /* MarketDetailPriceChartTableViewCell.swift */; };
+		9BA3015121B0B63400E55E49 /* MarketDetailPriceChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BA3014F21B0B63400E55E49 /* MarketDetailPriceChartTableViewCell.xib */; };
+		9BA3015521B0EBC000E55E49 /* MarketDetailViewControllerChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA3015421B0EBC000E55E49 /* MarketDetailViewControllerChart.swift */; };
 		9BC2886921ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC2886721ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.swift */; };
 		9BC2886A21ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BC2886821ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.xib */; };
 		AC061939208401EB0060F416 /* MnemonicAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC061937208401EB0060F416 /* MnemonicAddressTableViewCell.swift */; };
@@ -615,6 +618,9 @@
 		9BA3014521B06A1300E55E49 /* MarketDetailViewControllerDepth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailViewControllerDepth.swift; sourceTree = "<group>"; };
 		9BA3014721B0954600E55E49 /* MarketDetailViewControllerTradeHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailViewControllerTradeHistory.swift; sourceTree = "<group>"; };
 		9BA3014921B097D100E55E49 /* MarketDetailViewControllerSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailViewControllerSwipe.swift; sourceTree = "<group>"; };
+		9BA3014E21B0B63400E55E49 /* MarketDetailPriceChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailPriceChartTableViewCell.swift; sourceTree = "<group>"; };
+		9BA3014F21B0B63400E55E49 /* MarketDetailPriceChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketDetailPriceChartTableViewCell.xib; sourceTree = "<group>"; };
+		9BA3015421B0EBC000E55E49 /* MarketDetailViewControllerChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailViewControllerChart.swift; sourceTree = "<group>"; };
 		9BC2886721ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		9BC2886821ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketDetailSummaryTableViewCell.xib; sourceTree = "<group>"; };
 		AC061937208401EB0060F416 /* MnemonicAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicAddressTableViewCell.swift; sourceTree = "<group>"; };
@@ -1148,6 +1154,7 @@
 				9BA3014921B097D100E55E49 /* MarketDetailViewControllerSwipe.swift */,
 				9BA3014521B06A1300E55E49 /* MarketDetailViewControllerDepth.swift */,
 				9BA3014721B0954600E55E49 /* MarketDetailViewControllerTradeHistory.swift */,
+				9BA3015421B0EBC000E55E49 /* MarketDetailViewControllerChart.swift */,
 			);
 			path = MarketDetailViewControllerExtension;
 			sourceTree = "<group>";
@@ -1913,6 +1920,8 @@
 			children = (
 				AC23B365210D6213004DC5A9 /* MarketDetailViewController.swift */,
 				AC23B366210D6214004DC5A9 /* MarketDetailViewController.xib */,
+				9BA3014E21B0B63400E55E49 /* MarketDetailPriceChartTableViewCell.swift */,
+				9BA3014F21B0B63400E55E49 /* MarketDetailPriceChartTableViewCell.xib */,
 				9BA3014B21B097DB00E55E49 /* MarketDetailViewControllerExtension */,
 				9BC2886721ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.swift */,
 				9BC2886821ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.xib */,
@@ -2541,6 +2550,7 @@
 				AC72AED9204C8AAD00E9D3B0 /* BackupMnemonicViewController.xib in Resources */,
 				AC2ACAA221031AC2009C77E7 /* fee_0_zh-Hans.md in Resources */,
 				ACB729D1205DC27800DD4DF3 /* SwitchTradeTokenTableViewCell.xib in Resources */,
+				9BA3015121B0B63400E55E49 /* MarketDetailPriceChartTableViewCell.xib in Resources */,
 				AC2C93D42105AE7A004B8456 /* GenerateWalletEnterPasswordViewController.xib in Resources */,
 				AC2ACA88210305F8009C77E7 /* TradeFAQDetailViewController.xib in Resources */,
 				ACE65E4620720500001EE499 /* MnemonicCollectionViewCell.xib in Resources */,
@@ -2872,6 +2882,7 @@
 				ACB9118C20266A9C00F14644 /* AssetDetailViewController.swift in Sources */,
 				94D94CE32084A9380000BBC8 /* ConfirmationResultViewController.swift in Sources */,
 				AC4141FF20356A4D0089861D /* MarketSwipeViewType.swift in Sources */,
+				9BA3015021B0B63400E55E49 /* MarketDetailPriceChartTableViewCell.swift in Sources */,
 				AC0CD58B20D393F300ABB7BA /* SendCurrentAppWalletDataManager.swift in Sources */,
 				940B45212060F67E00ADE2B9 /* PlaceOrderDataManager.swift in Sources */,
 				ACBA47E6207890910032C2B4 /* SettingManageWalletTableViewCell.swift in Sources */,
@@ -3014,6 +3025,7 @@
 				948952D3205A74BE009B03FE /* Transaction.swift in Sources */,
 				AC0CD57F20D21F8400ABB7BA /* TabBarItemHighlightableContentView.swift in Sources */,
 				AC2CFAA120BB3BEE00387DB1 /* BiometricType.swift in Sources */,
+				9BA3015521B0EBC000E55E49 /* MarketDetailViewControllerChart.swift in Sources */,
 				94DFE4052122BD48000E1831 /* BuyViewController.swift in Sources */,
 				AC4B894B2110262B00643910 /* MarketTradeHistoryDataManager.swift in Sources */,
 				AC9DC45821159084002D7D23 /* MiniToLargeViewAnimator.swift in Sources */,
