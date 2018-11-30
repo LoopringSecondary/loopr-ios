@@ -45,17 +45,17 @@ class MarketDetailSummaryTableViewCell: UITableViewCell {
         
         hoursChangeInfoLabel.text = LocalizedString("24H Change", comment: "") + ": "
         hoursChangeInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
-        hoursChangeInfoLabel.theme_textColor = GlobalPicker.textLightColor
+        hoursChangeInfoLabel.theme_textColor = GlobalPicker.textColor
         
         hoursChangeLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
-        hoursChangeLabel.theme_textColor = GlobalPicker.textLightColor
+        hoursChangeLabel.theme_textColor = GlobalPicker.textColor
         
         hoursVolumeInfoLabel.text = LocalizedString("24H Volume", comment: "") + ": "
         hoursVolumeInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
-        hoursVolumeInfoLabel.theme_textColor = GlobalPicker.textLightColor
+        hoursVolumeInfoLabel.theme_textColor = GlobalPicker.textColor
         
         hoursVolumeLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
-        hoursVolumeLabel.theme_textColor = GlobalPicker.textLightColor
+        hoursVolumeLabel.theme_textColor = GlobalPicker.textColor
     }
     
     func setup(market: Market) {
