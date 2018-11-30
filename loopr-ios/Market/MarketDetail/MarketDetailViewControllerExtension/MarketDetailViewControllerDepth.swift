@@ -17,11 +17,11 @@ extension MarketDetailViewController {
             self.sells = sells
             
             if buys.count > 0 && sells.count > 0 {
-                self.maxAmountInDepthView = max(buys[buys.count / 2].amountAInDouble, sells[sells.count / 2].amountAInDouble) * 1.5
+                self.maxAmountInDepthView = max(buys[buys.count / 2].amountAInDouble, sells[sells.count / 2].amountAInDouble) * 4
             } else if buys.count > 0 {
-                self.maxAmountInDepthView = buys[buys.count / 2].amountAInDouble * 1.5
+                self.maxAmountInDepthView = buys[buys.count / 2].amountAInDouble * 4
             } else if sells.count > 0 {
-                self.maxAmountInDepthView = sells[sells.count / 2].amountAInDouble * 1.5
+                self.maxAmountInDepthView = sells[sells.count / 2].amountAInDouble * 4
             } else {
                 self.maxAmountInDepthView = 0
             }

@@ -44,9 +44,11 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         var upVals: [BarChartDataEntry] = []
         var downVals: [BarChartDataEntry] = []
         
+        /*
         trends = trends.filter { (trend) -> Bool in
             return trend.vol > 0
         }
+        */
         
         for (i, trend) in trends.enumerated() {
             let dataEntry = BarChartDataEntry(x: Double(i), y: trend.vol)
