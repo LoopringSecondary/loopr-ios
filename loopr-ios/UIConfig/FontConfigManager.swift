@@ -18,7 +18,7 @@ class FontConfigManager {
 
     static let shared = FontConfigManager()
     
-    var currentFont: SupportedFonts = .System
+    var currentFont: SupportedFonts = .Rubik
     
     private init() {
         
