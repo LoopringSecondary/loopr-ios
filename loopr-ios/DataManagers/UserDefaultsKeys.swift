@@ -34,6 +34,8 @@ enum UserDefaultsKeys: String {
     case cancelledAll = "UserDefaultsKeys.cancelledAll"
     case cancellingOrders = "UserDefaultsKeys.cancellingOrders"
 
+    case trendInterval = "UserDefaultsKeys.trendInterval"
+    
     // Setting
     case useLrcFeeRatioUserDefineValue = "UserDefaultsKeys.useLrcFeeRatioUserDefineValue"
     case lrcFeeRatio = "UserDefaultsKeys.lrcFeeRatio"

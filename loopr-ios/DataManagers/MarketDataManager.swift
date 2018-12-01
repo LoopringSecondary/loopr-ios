@@ -77,26 +77,7 @@ class MarketDataManager {
         return result
     }
     
-    // TODO: deprecated
-    private func getTrends(market: String, interval: String = "1Day") -> [Trend]? {
-        var result: [Trend]?
-        result = self.trends.filter { (trend) -> Bool in
-            return trend.market.lowercased() == market.lowercased() &&
-            trend.intervals.lowercased() == interval.lowercased()
-        }
-        if result?.count == 0 {
-            // TODO: how to handle here?
-            self.getTrendsFromServer(market: market, interval: interval, completionHandler: { (trends, error) in
-                guard error == nil else {
-                    return
-                }
-                result = trends
-            })
-        }
-        return result
-    }
-    
-    func getTrendsFromServer(market: String, interval: String = "1Hr", completionHandler: @escaping (_ trends: [Trend]?, _ error: Error?) -> Void) {
+    func getTrendsFromServer(market: String, interval: String, completionHandler: @escaping (_ trends: [Trend]?, _ error: Error?) -> Void) {
         LoopringAPIRequest.getTrend(market: market, interval: interval, completionHandler: { (trends, error) in
             guard error == nil else {
                 return
@@ -181,15 +162,7 @@ class MarketDataManager {
     func stopGetTicker() {
         LoopringSocketIORequest.endTicker()
     }
-    
-    func startGetTrend(market: String, interval: String = "1Hr") {
-        LoopringSocketIORequest.getTrend(market: market, interval: interval)
-    }
-    
-    func stopGetTrend() {
-        LoopringSocketIORequest.endTrend()
-    }
-    
+
     func onTickerResponse(json: JSON) {
         var newMarkets: [Market] = []
         for subJson in json.arrayValue {
@@ -201,12 +174,23 @@ class MarketDataManager {
         NotificationCenter.default.post(name: .tickerResponseReceived, object: nil)
     }
     
+    // TODO: deprecate socker io to get trends
+    func startGetTrend(market: String, interval: String) {
+        LoopringSocketIORequest.getTrend(market: market, interval: interval)
+    }
+    
+    func stopGetTrend() {
+        LoopringSocketIORequest.endTrend()
+    }
+    
     func onTrendResponse(json: JSON) {
+        /*
         trends = []
         for subJson in json.arrayValue {
             let trend = Trend(json: subJson)
             trends.append(trend)
         }
         NotificationCenter.default.post(name: .trendResponseReceived, object: nil)
+        */
     }
 }
