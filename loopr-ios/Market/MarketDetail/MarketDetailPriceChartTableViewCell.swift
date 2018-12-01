@@ -47,11 +47,7 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         seperateLine2.theme_backgroundColor = ColorPicker.cardHighLightColor
         seperateLine3.theme_backgroundColor = ColorPicker.cardHighLightColor
         seperateLine4.theme_backgroundColor = ColorPicker.cardHighLightColor
-        
-        // Hide seperateLine0 and seperateLine4
-        seperateLine0.theme_backgroundColor = ColorPicker.backgroundColor
-        seperateLine4.theme_backgroundColor = ColorPicker.backgroundColor
-        
+
         priceCandleStickChartViewTitle.text = LocalizedString("Kline Chart", comment: "") + ": "
         priceCandleStickChartViewTitle.font = FontConfigManager.shared.getRegularFont(size: 12)
         priceCandleStickChartViewTitle.theme_textColor = GlobalPicker.textColor
@@ -161,7 +157,7 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 275
+        return 285
     }
 
 }

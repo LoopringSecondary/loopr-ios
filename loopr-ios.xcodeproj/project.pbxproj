@@ -29,7 +29,6 @@
 		941138C8210F12AD007FDC82 /* TimeToLiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941138C6210F12AD007FDC82 /* TimeToLiveViewController.xib */; };
 		9415543920C0F1BF007AAB87 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9415543820C0F1BF007AAB87 /* UILabelExtension.swift */; };
 		941B1EFC209C41BC00710DFF /* GasDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941B1EFB209C41BB00710DFF /* GasDataManager.swift */; };
-		94231DEB20BD671700A4FDC3 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94231DEA20BD671700A4FDC3 /* PaddingLabel.swift */; };
 		9423F77920C7D688000B6983 /* SignRawTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9423F77820C7D688000B6983 /* SignRawTransaction.swift */; };
 		942C49F82129119C008A6B4F /* ConvertETHConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 942C49F72129119C008A6B4F /* ConvertETHConfirmViewController.xib */; };
 		942C49FA212911B0008A6B4F /* ConvertETHConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C49F9212911B0008A6B4F /* ConvertETHConfirmViewController.swift */; };
@@ -322,6 +321,7 @@
 		AC7BC8592144E102004204D3 /* WalletCreateSuccessfullyPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BC8572144E102004204D3 /* WalletCreateSuccessfullyPopViewController.swift */; };
 		AC7BC85A2144E102004204D3 /* WalletCreateSuccessfullyPopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC7BC8582144E102004204D3 /* WalletCreateSuccessfullyPopViewController.xib */; };
 		AC7BC85C2145B477004204D3 /* AppWalletExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BC85B2145B477004204D3 /* AppWalletExtension.swift */; };
+		AC865C1021B32962000BFBCA /* TrendInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC865C0F21B32962000BFBCA /* TrendInterval.swift */; };
 		AC8866992174688500815DD1 /* AppServiceUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8866982174688500815DD1 /* AppServiceUpdateManager.swift */; };
 		AC88669B21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC88669A21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift */; };
 		AC88669E2174923800815DD1 /* SetLRCRatioFeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC88669C2174923800815DD1 /* SetLRCRatioFeeViewController.swift */; };
@@ -539,7 +539,6 @@
 		941138C6210F12AD007FDC82 /* TimeToLiveViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeToLiveViewController.xib; sourceTree = "<group>"; };
 		9415543820C0F1BF007AAB87 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		941B1EFB209C41BB00710DFF /* GasDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasDataManager.swift; sourceTree = "<group>"; };
-		94231DEA20BD671700A4FDC3 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		9423F77820C7D688000B6983 /* SignRawTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignRawTransaction.swift; sourceTree = "<group>"; };
 		942C49F72129119C008A6B4F /* ConvertETHConfirmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConvertETHConfirmViewController.xib; sourceTree = "<group>"; };
 		942C49F9212911B0008A6B4F /* ConvertETHConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertETHConfirmViewController.swift; sourceTree = "<group>"; };
@@ -839,6 +838,7 @@
 		AC7BC8572144E102004204D3 /* WalletCreateSuccessfullyPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCreateSuccessfullyPopViewController.swift; sourceTree = "<group>"; };
 		AC7BC8582144E102004204D3 /* WalletCreateSuccessfullyPopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletCreateSuccessfullyPopViewController.xib; sourceTree = "<group>"; };
 		AC7BC85B2145B477004204D3 /* AppWalletExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWalletExtension.swift; sourceTree = "<group>"; };
+		AC865C0F21B32962000BFBCA /* TrendInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendInterval.swift; sourceTree = "<group>"; };
 		AC8866982174688500815DD1 /* AppServiceUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServiceUpdateManager.swift; sourceTree = "<group>"; };
 		AC88669A21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewControllerExtensionAppService.swift; sourceTree = "<group>"; };
 		AC88669C2174923800815DD1 /* SetLRCRatioFeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLRCRatioFeeViewController.swift; sourceTree = "<group>"; };
@@ -1070,14 +1070,6 @@
 				CBFBD618D375438178B6033F /* Pods_loopr_iosUITests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		94231DE920BD66F900A4FDC3 /* PaddingLabel */ = {
-			isa = PBXGroup;
-			children = (
-				94231DEA20BD671700A4FDC3 /* PaddingLabel.swift */,
-			);
-			path = PaddingLabel;
 			sourceTree = "<group>";
 		};
 		943C1CAF20CE269B008A8CED /* AuthorizeLogin */ = {
@@ -1942,7 +1934,6 @@
 			isa = PBXGroup;
 			children = (
 				AC0CD58220D2294D00ABB7BA /* TabBarItem */,
-				94231DE920BD66F900A4FDC3 /* PaddingLabel */,
 				AC76E46E2047F1AE008BA229 /* CircleChart */,
 				ACE6F71A204210E80039273D /* DashedLineView */,
 				AC4141F120352C130089861D /* SwipeViewController */,
@@ -2070,6 +2061,7 @@
 				94E185982051455C00D86FFA /* SimpleRespond.swift */,
 				943BDED22056350000D5BF81 /* PriceQuote.swift */,
 				94DCE550205FAC07005618E4 /* Trend.swift */,
+				AC865C0F21B32962000BFBCA /* TrendInterval.swift */,
 				94AD1FE4208B910D00C443E6 /* Currency.swift */,
 				AC2CFAA020BB3BEE00387DB1 /* BiometricType.swift */,
 				AC06193D208417AF0060F416 /* QRCodeMethod.swift */,
@@ -2805,6 +2797,7 @@
 				AC70E84E20683C7500451047 /* IconView.swift in Sources */,
 				94AEF3B6218AA6A900112AAC /* ThirdPartyViewController.swift in Sources */,
 				943C1CB220CE26CE008A8CED /* LoginResultViewController.swift in Sources */,
+				AC865C1021B32962000BFBCA /* TrendInterval.swift in Sources */,
 				ACE9F0482186FD1A00695E37 /* AppDelegateNotificationExtension.swift in Sources */,
 				ACB5DD9C202D5B8000140A09 /* NumericKeyboardCell.swift in Sources */,
 				AC5E0991205F256500801738 /* AddTokenViewController.swift in Sources */,
@@ -3029,7 +3022,6 @@
 				94DFE4052122BD48000E1831 /* BuyViewController.swift in Sources */,
 				AC4B894B2110262B00643910 /* MarketTradeHistoryDataManager.swift in Sources */,
 				AC9DC45821159084002D7D23 /* MiniToLargeViewAnimator.swift in Sources */,
-				94231DEB20BD671700A4FDC3 /* PaddingLabel.swift in Sources */,
 				940B452B2060F67E00ADE2B9 /* SettingDataManager.swift in Sources */,
 				ACB41A6F20B54BB300A92C9D /* AuthenticationViewController.swift in Sources */,
 				ACEC978220AD6165003F9DEB /* P2POrderHistoryDataManager.swift in Sources */,
