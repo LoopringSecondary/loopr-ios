@@ -161,7 +161,7 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 285
+        return 275
     }
 
 }
