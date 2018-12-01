@@ -161,6 +161,8 @@
 "24H High" = "24H High";
 "24H Low" = "24H Low";
 "24H Volume" = "24H Volume";
+"Kline Chart" = "Kline Chart";
+"Volume" = "Volume";
 "Latest Price" = "Latest Price";
 "Receiver" = "Receiver";
 "Sender" = "Sender";

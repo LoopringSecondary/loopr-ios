@@ -11,12 +11,22 @@ import Charts
 
 class MarketDetailPriceChartTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var priceCandleStickChartViewTitle: UILabel!
     @IBOutlet weak var priceCandleStickChartView: CandleStickChartView!
+
+    @IBOutlet weak var transactionBarChartViewTitle: UILabel!
     @IBOutlet weak var transactionBarChartView: BarChartView!
     
     // Empty bar doesn't look good. There is also an min step value in the bar.
     // So add a min value in bar and use a UIView to shorten the height.
     @IBOutlet weak var transactionBarChartViewBottomLine: UIView!
+    
+    // SeperateLines
+    @IBOutlet weak var seperateLine0: UIView!
+    @IBOutlet weak var seperateLine1: UIView!
+    @IBOutlet weak var seperateLine2: UIView!
+    @IBOutlet weak var seperateLine3: UIView!
+    @IBOutlet weak var seperateLine4: UIView!
     
     let barCount: Int = 30
     
@@ -32,12 +42,30 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         theme_backgroundColor = ColorPicker.backgroundColor
         transactionBarChartViewBottomLine.theme_backgroundColor = ColorPicker.backgroundColor
 
+        seperateLine0.theme_backgroundColor = ColorPicker.cardHighLightColor
+        seperateLine1.theme_backgroundColor = ColorPicker.cardHighLightColor
+        seperateLine2.theme_backgroundColor = ColorPicker.cardHighLightColor
+        seperateLine3.theme_backgroundColor = ColorPicker.cardHighLightColor
+        seperateLine4.theme_backgroundColor = ColorPicker.cardHighLightColor
+        
+        // Hide seperateLine0 and seperateLine4
+        seperateLine0.theme_backgroundColor = ColorPicker.backgroundColor
+        seperateLine4.theme_backgroundColor = ColorPicker.backgroundColor
+        
+        priceCandleStickChartViewTitle.text = LocalizedString("Kline Chart", comment: "") + ": "
+        priceCandleStickChartViewTitle.font = FontConfigManager.shared.getRegularFont(size: 12)
+        priceCandleStickChartViewTitle.theme_textColor = GlobalPicker.textColor
+        
         priceCandleStickChartView.minOffset = 0
         priceCandleStickChartView.isUserInteractionEnabled = false
         priceCandleStickChartView.xAxis.enabled = false
         priceCandleStickChartView.leftAxis.enabled = false
         priceCandleStickChartView.rightAxis.enabled = false
         priceCandleStickChartView.legend.enabled = false
+        
+        transactionBarChartViewTitle.text = LocalizedString("Volume", comment: "") + ": "
+        transactionBarChartViewTitle.font = FontConfigManager.shared.getRegularFont(size: 12)
+        transactionBarChartViewTitle.theme_textColor = GlobalPicker.textColor
         
         transactionBarChartView.minOffset = 0
         transactionBarChartView.isUserInteractionEnabled = false
@@ -133,7 +161,7 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 160 + 80
+        return 285
     }
 
 }

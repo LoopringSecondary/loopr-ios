@@ -148,6 +148,8 @@
 "24H High" = "24시간 내 최고가";
 "24H Low" = "24시간 내 최저가";
 "24H Volume" = "24시간 내 총 주문량";
+"Kline Chart" = "Kline Chart";
+"Volume" = "Volume";
 "Latest Price" = "최근 가격";
 "Receiver" = "수신인";
 "Sender" = "전송인";

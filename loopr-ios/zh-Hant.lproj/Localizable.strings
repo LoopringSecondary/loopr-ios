@@ -161,6 +161,8 @@
 "24H High" = "24H 最高價";
 "24H Low" = "24H 最低價";
 "24H Volume" = "24H 成交量";
+"Kline Chart" = "K線圖";
+"Volume" = "成交量";
 "Latest Price" = "最新價格";
 "Receiver" = "接收方地址";
 "Sender" = "發送方地址";
