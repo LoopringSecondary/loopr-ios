@@ -93,18 +93,20 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         priceCandleStickChartViewTitle.theme_textColor = GlobalPicker.textColor
         
         priceCandleStickChartView.minOffset = 0
-        priceCandleStickChartView.isUserInteractionEnabled = false
+        // priceCandleStickChartView.isUserInteractionEnabled = false
         priceCandleStickChartView.xAxis.enabled = false
         priceCandleStickChartView.leftAxis.enabled = false
         priceCandleStickChartView.rightAxis.enabled = false
         priceCandleStickChartView.legend.enabled = false
+        priceCandleStickChartView.highlightPerDragEnabled = true
+        priceCandleStickChartView.delegate = self
         
         transactionBarChartViewTitle.text = LocalizedString("Volume", comment: "") + ": "
         transactionBarChartViewTitle.font = FontConfigManager.shared.getRegularFont(size: 12)
         transactionBarChartViewTitle.theme_textColor = GlobalPicker.textColor
         
         transactionBarChartView.minOffset = 0
-        transactionBarChartView.isUserInteractionEnabled = false
+        // transactionBarChartView.isUserInteractionEnabled = false
         transactionBarChartView.highlightFullBarEnabled = false
         transactionBarChartView.xAxis.enabled = false
         transactionBarChartView.drawValueAboveBarEnabled = false
@@ -118,10 +120,41 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         print(trends.count)
         self.trends = trends
         
-        setDataForTransactionBarChartView()
         setDataForPriceCandleStickChartView()
+        setDataForTransactionBarChartView()
     }
     
+    func setDataForPriceCandleStickChartView() {
+        var upVals: [CandleChartDataEntry] = []
+        
+        for (i, trend) in trends.enumerated() {
+            let dataEntry = CandleChartDataEntry(x: Double(i), shadowH: trend.high, shadowL: trend.low, open: trend.open, close: trend.close)
+            upVals.append(dataEntry)
+        }
+        
+        let set1 = CandleChartDataSet(values: upVals, label: "Data Set")
+        set1.axisDependency = .left
+        set1.setColor(UIColor(white: 80/255, alpha: 1))
+        set1.drawIconsEnabled = false
+        // set1.shadowColor = .darkGray
+        set1.shadowColorSameAsCandle = true
+        set1.shadowWidth = barWidth
+        set1.decreasingColor = UIColor.upInChart
+        set1.decreasingFilled = true
+        set1.increasingColor = UIColor.downInChart
+        set1.increasingFilled = true
+        set1.neutralColor = UIColor.upInChart
+        set1.drawHorizontalHighlightIndicatorEnabled = false
+        set1.drawVerticalHighlightIndicatorEnabled = true
+        set1.highlightColor = UIColor.blue
+        
+        let data = CandleChartData(dataSet: set1)
+        for set in data.dataSets {
+            set.drawValuesEnabled = false
+        }
+        priceCandleStickChartView.data = data
+    }
+
     func setDataForTransactionBarChartView() {
         var upVals: [BarChartDataEntry] = []
         var downVals: [BarChartDataEntry] = []
@@ -166,34 +199,6 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         transactionBarChartView.data = data
     }
     
-    func setDataForPriceCandleStickChartView() {
-        var upVals: [CandleChartDataEntry] = []
-        
-        for (i, trend) in trends.enumerated() {
-            let dataEntry = CandleChartDataEntry(x: Double(i), shadowH: trend.high, shadowL: trend.low, open: trend.open, close: trend.close)
-            upVals.append(dataEntry)
-        }
-
-        let set1 = CandleChartDataSet(values: upVals, label: "Data Set")
-        set1.axisDependency = .left
-        set1.setColor(UIColor(white: 80/255, alpha: 1))
-        set1.drawIconsEnabled = false
-        // set1.shadowColor = .darkGray
-        set1.shadowColorSameAsCandle = true
-        set1.shadowWidth = barWidth
-        set1.decreasingColor = UIColor.upInChart
-        set1.decreasingFilled = true
-        set1.increasingColor = UIColor.downInChart
-        set1.increasingFilled = true
-        set1.neutralColor = UIColor.upInChart
-        
-        let data = CandleChartData(dataSet: set1)
-        for set in data.dataSets {
-            set.drawValuesEnabled = false
-        }
-        priceCandleStickChartView.data = data
-    }
-    
     @objc func pressedRangeButton(_ sender: UIButton) {
         let dict: [Int: TrendRange] = [
             0: .oneDay,
@@ -220,6 +225,14 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
     
     class func getHeight() -> CGFloat {
         return 285 + 20 + 10
+    }
+
+}
+
+extension MarketDetailPriceChartTableViewCell: ChartViewDelegate {
+    
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        print("chartValueSelected")
     }
 
 }
