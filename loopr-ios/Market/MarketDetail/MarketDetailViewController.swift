@@ -256,4 +256,7 @@ extension MarketDetailViewController: MarketDetailPriceChartTableViewCellDelegat
         })
     }
 
+    func trendDidHighlight(trend: Trend) {
+        
+    }
 }

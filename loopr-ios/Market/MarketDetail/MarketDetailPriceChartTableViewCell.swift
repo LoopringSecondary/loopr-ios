@@ -11,6 +11,7 @@ import Charts
 
 protocol MarketDetailPriceChartTableViewCellDelegate: class {
     func trendRangeUpdated(newTrendRange: TrendRange)
+    func trendDidHighlight(trend: Trend)
 }
 
 class MarketDetailPriceChartTableViewCell: UITableViewCell {
@@ -29,12 +30,9 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
     @IBOutlet weak var priceCandleStickChartViewTitle: UILabel!
     @IBOutlet weak var priceCandleStickChartView: CandleStickChartView!
 
+    // Use CandleStickChartView, rather than BarChartView for a consistent UI.
     @IBOutlet weak var transactionBarChartViewTitle: UILabel!
-    @IBOutlet weak var transactionBarChartView: BarChartView!
-    
-    // Empty bar doesn't look good. There is also an min step value in the bar.
-    // So add a min value in bar and use a UIView to shorten the height.
-    @IBOutlet weak var transactionBarChartViewBottomLine: UIView!
+    @IBOutlet weak var transactionBarChartView: CandleStickChartView!
     
     // SeperateLines
     @IBOutlet weak var seperateLine0: UIView!
@@ -53,7 +51,6 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         // Initialization code
         selectionStyle = .none
         theme_backgroundColor = ColorPicker.backgroundColor
-        transactionBarChartViewBottomLine.theme_backgroundColor = ColorPicker.backgroundColor
 
         oneDayRangeButton.title = LocalizedString("1D", comment: "")
         oneWeekRangeButton.title = LocalizedString("1W", comment: "")
@@ -93,7 +90,6 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         priceCandleStickChartViewTitle.theme_textColor = GlobalPicker.textColor
         
         priceCandleStickChartView.minOffset = 0
-        // priceCandleStickChartView.isUserInteractionEnabled = false
         priceCandleStickChartView.xAxis.enabled = false
         priceCandleStickChartView.leftAxis.enabled = false
         priceCandleStickChartView.rightAxis.enabled = false
@@ -106,13 +102,12 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         transactionBarChartViewTitle.theme_textColor = GlobalPicker.textColor
         
         transactionBarChartView.minOffset = 0
-        // transactionBarChartView.isUserInteractionEnabled = false
-        transactionBarChartView.highlightFullBarEnabled = false
         transactionBarChartView.xAxis.enabled = false
-        transactionBarChartView.drawValueAboveBarEnabled = false
         transactionBarChartView.leftAxis.enabled = false
         transactionBarChartView.rightAxis.enabled = false
         transactionBarChartView.legend.enabled = false
+        transactionBarChartView.highlightPerDragEnabled = true
+        transactionBarChartView.delegate = self
     }
 
     func setup(trends: [Trend]) {
@@ -124,6 +119,27 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         setDataForTransactionBarChartView()
     }
     
+    func GenerateCandleChartDataSet(values: [CandleChartDataEntry]) -> CandleChartDataSet {
+        let set = CandleChartDataSet(values: values, label: nil)
+        set.axisDependency = .left
+        set.setColor(UIColor(white: 80/255, alpha: 1))
+        set.drawIconsEnabled = false
+        // set1.shadowColor = .darkGray
+        set.shadowColorSameAsCandle = true
+        set.shadowWidth = barWidth
+        set.decreasingColor = UIColor.upInChart
+        set.decreasingFilled = true
+        set.increasingColor = UIColor.downInChart
+        set.increasingFilled = true
+        set.neutralColor = UIColor.upInChart
+        set.drawHorizontalHighlightIndicatorEnabled = false
+        set.drawVerticalHighlightIndicatorEnabled = true
+        set.highlightColor = UIColor.text2
+        set.highlightLineWidth = 1
+        
+        return set
+    }
+    
     func setDataForPriceCandleStickChartView() {
         var upVals: [CandleChartDataEntry] = []
         
@@ -132,23 +148,8 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
             upVals.append(dataEntry)
         }
         
-        let set1 = CandleChartDataSet(values: upVals, label: "Data Set")
-        set1.axisDependency = .left
-        set1.setColor(UIColor(white: 80/255, alpha: 1))
-        set1.drawIconsEnabled = false
-        // set1.shadowColor = .darkGray
-        set1.shadowColorSameAsCandle = true
-        set1.shadowWidth = barWidth
-        set1.decreasingColor = UIColor.upInChart
-        set1.decreasingFilled = true
-        set1.increasingColor = UIColor.downInChart
-        set1.increasingFilled = true
-        set1.neutralColor = UIColor.upInChart
-        set1.drawHorizontalHighlightIndicatorEnabled = false
-        set1.drawVerticalHighlightIndicatorEnabled = true
-        set1.highlightColor = UIColor.blue
-        
-        let data = CandleChartData(dataSet: set1)
+        let set = GenerateCandleChartDataSet(values: upVals)
+        let data = CandleChartData(dataSet: set)
         for set in data.dataSets {
             set.drawValuesEnabled = false
         }
@@ -156,8 +157,7 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
     }
 
     func setDataForTransactionBarChartView() {
-        var upVals: [BarChartDataEntry] = []
-        var downVals: [BarChartDataEntry] = []
+        var upVals: [CandleChartDataEntry] = []
 
         // If all trends don't have any volume, hide the bar chart.
         let trendsWithNoVol = trends.filter { $0.vol > 0 }
@@ -169,30 +169,20 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         }
         
         for (i, trend) in trends.enumerated() {
-            var vol = trend.vol
+            let dataEntry: CandleChartDataEntry
             if trend.vol == 0 {
-                vol = 0.001
-            }
-            let dataEntry = BarChartDataEntry(x: Double(i), y: vol)
-
-            // align with decreasingColor in CandleStickChartView
-            if trend.open >= trend.close {
-                upVals.append(dataEntry)
+                dataEntry = CandleChartDataEntry(x: Double(i), shadowH: 0, shadowL: 0, open: 0, close: 0)
+            } else if trend.open <= trend.close {
+                dataEntry = CandleChartDataEntry(x: Double(i), shadowH: 0, shadowL: trend.vol, open: 0, close: trend.vol)
             } else {
-                downVals.append(dataEntry)
+                dataEntry = CandleChartDataEntry(x: Double(i), shadowH: trend.vol, shadowL: 0, open: trend.vol, close: 0)
             }
+            upVals.append(dataEntry)
         }
-
-        let upDataSet: BarChartDataSet = BarChartDataSet(values: upVals, label: nil)
-        upDataSet.setColor(UIColor.upInChart)
         
-        let downDataSet: BarChartDataSet = BarChartDataSet(values: downVals, label: nil)
-        downDataSet.setColor(UIColor.downInChart)
+        let upDataSet = GenerateCandleChartDataSet(values: upVals)
         
-        let data = BarChartData(dataSet: upDataSet)
-        data.addDataSet(downDataSet)
-        data.barWidth = Double(barWidth)
-        
+        let data = CandleChartData(dataSet: upDataSet)
         for set in data.dataSets {
             set.drawValuesEnabled = false
         }
@@ -232,7 +222,14 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
 extension MarketDetailPriceChartTableViewCell: ChartViewDelegate {
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        print("chartValueSelected")
+        priceCandleStickChartViewTitle.isHidden = true
+        transactionBarChartViewTitle.isHidden = true
+        
+        priceCandleStickChartView.highlightValue(x: highlight.x, dataSetIndex: highlight.dataSetIndex, callDelegate: false)
+        transactionBarChartView.highlightValue(x: highlight.x, dataSetIndex: highlight.dataSetIndex, callDelegate: false)
+        
+        let trend = self.trends[Int(highlight.x)]
+        delegate?.trendDidHighlight(trend: trend)
     }
 
 }

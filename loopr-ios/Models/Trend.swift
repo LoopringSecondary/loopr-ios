@@ -35,12 +35,12 @@ class Trend {
         self.createTime = json["createTime"].uIntValue
         
         // Have to tune the data to avoid abnormal market orders.
-        if high > 1.25 * max(open, close) {
-            high = 1.25 * max(open, close)
+        if high > 2 * max(open, close) {
+            high = 2 * max(open, close)
         }
         
-        if low < 0.8 * min(open, close) {
-            low = 0.8 * min(open, close)
+        if low < 0.5 * min(open, close) {
+            low = 0.5 * min(open, close)
         }
 	}
 }
