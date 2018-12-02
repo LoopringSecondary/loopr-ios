@@ -81,7 +81,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         // 2 year range, use 1 week interval, 104 counts
         
         MarketDataManager.shared.getTrendsFromServer(market: market.name, trendRange: TrendRange.oneMonth, completionHandler: { (trends, _) in
-            self.trends = trends ?? []
+            self.trends = trends
         })
     }
 

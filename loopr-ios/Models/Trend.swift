@@ -16,9 +16,9 @@ class Trend {
     let end: UInt
     let intervals: String
     let open: Double
-    let low: Double
+    var low: Double
     let createTime: UInt
-    let high: Double
+    var high: Double
     let vol: Double
 
 	init(json: JSON) {
@@ -33,5 +33,14 @@ class Trend {
         self.start = json["start"].uIntValue
         self.end = json["end"].uIntValue
         self.createTime = json["createTime"].uIntValue
+        
+        // Have to tune the data to avoid abnormal market orders.
+        if high > 1.25 * max(open, close) {
+            high = 1.25 * max(open, close)
+        }
+        
+        if low < 0.8 * min(open, close) {
+            low = 0.8 * min(open, close)
+        }
 	}
 }
