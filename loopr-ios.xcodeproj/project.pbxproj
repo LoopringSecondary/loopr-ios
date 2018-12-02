@@ -127,8 +127,6 @@
 		AC0CD57D20D21F3C00ABB7BA /* TabBarItemBackgroundContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD57C20D21F3C00ABB7BA /* TabBarItemBackgroundContentView.swift */; };
 		AC0CD57F20D21F8400ABB7BA /* TabBarItemHighlightableContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD57E20D21F8400ABB7BA /* TabBarItemHighlightableContentView.swift */; };
 		AC0CD58120D226C500ABB7BA /* TabBarItemAnimateTipsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58020D226C500ABB7BA /* TabBarItemAnimateTipsContentView.swift */; };
-		AC0CD58520D2330300ABB7BA /* H5DexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58320D2330300ABB7BA /* H5DexViewController.swift */; };
-		AC0CD58620D2330300ABB7BA /* H5DexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0CD58420D2330300ABB7BA /* H5DexViewController.xib */; };
 		AC0CD58920D38E2900ABB7BA /* GenerateWalletDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58820D38E2900ABB7BA /* GenerateWalletDataManagerTests.swift */; };
 		AC0CD58B20D393F300ABB7BA /* SendCurrentAppWalletDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58A20D393F200ABB7BA /* SendCurrentAppWalletDataManager.swift */; };
 		AC0CD58E20D3967700ABB7BA /* ImportWalletUsingPrivateKeyDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD58D20D3967700ABB7BA /* ImportWalletUsingPrivateKeyDataManagerTests.swift */; };
@@ -256,7 +254,6 @@
 		AC4141FF20356A4D0089861D /* MarketSwipeViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4141FE20356A4D0089861D /* MarketSwipeViewType.swift */; };
 		AC4142062038B66F0089861D /* AppWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4142052038B66F0089861D /* AppWallet.swift */; };
 		AC45EFEB20D0CCF5004F6EC0 /* AlertForErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC45EFEA20D0CCF5004F6EC0 /* AlertForErrorExtension.swift */; };
-		AC45EFEE20D0D474004F6EC0 /* H5DexNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC45EFED20D0D474004F6EC0 /* H5DexNavigationController.swift */; };
 		AC4B894B2110262B00643910 /* MarketTradeHistoryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4B894A2110262B00643910 /* MarketTradeHistoryDataManager.swift */; };
 		AC4B894D21103EAF00643910 /* TradeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4B894C21103EAF00643910 /* TradeType.swift */; };
 		AC4F600D20773E9D00F1D954 /* SignatureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F5FFC20773E9D00F1D954 /* SignatureData.swift */; };
@@ -637,8 +634,6 @@
 		AC0CD57C20D21F3C00ABB7BA /* TabBarItemBackgroundContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemBackgroundContentView.swift; sourceTree = "<group>"; };
 		AC0CD57E20D21F8400ABB7BA /* TabBarItemHighlightableContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemHighlightableContentView.swift; sourceTree = "<group>"; };
 		AC0CD58020D226C500ABB7BA /* TabBarItemAnimateTipsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemAnimateTipsContentView.swift; sourceTree = "<group>"; };
-		AC0CD58320D2330300ABB7BA /* H5DexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5DexViewController.swift; sourceTree = "<group>"; };
-		AC0CD58420D2330300ABB7BA /* H5DexViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = H5DexViewController.xib; sourceTree = "<group>"; };
 		AC0CD58820D38E2900ABB7BA /* GenerateWalletDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateWalletDataManagerTests.swift; sourceTree = "<group>"; };
 		AC0CD58A20D393F200ABB7BA /* SendCurrentAppWalletDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendCurrentAppWalletDataManager.swift; sourceTree = "<group>"; };
 		AC0CD58D20D3967700ABB7BA /* ImportWalletUsingPrivateKeyDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletUsingPrivateKeyDataManagerTests.swift; sourceTree = "<group>"; };
@@ -767,7 +762,6 @@
 		AC4141FE20356A4D0089861D /* MarketSwipeViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketSwipeViewType.swift; sourceTree = "<group>"; };
 		AC4142052038B66F0089861D /* AppWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWallet.swift; sourceTree = "<group>"; };
 		AC45EFEA20D0CCF5004F6EC0 /* AlertForErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertForErrorExtension.swift; sourceTree = "<group>"; };
-		AC45EFED20D0D474004F6EC0 /* H5DexNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5DexNavigationController.swift; sourceTree = "<group>"; };
 		AC4B894A2110262B00643910 /* MarketTradeHistoryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketTradeHistoryDataManager.swift; sourceTree = "<group>"; };
 		AC4B894C21103EAF00643910 /* TradeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeType.swift; sourceTree = "<group>"; };
 		AC4F5FFC20773E9D00F1D954 /* SignatureData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureData.swift; sourceTree = "<group>"; };
@@ -1386,16 +1380,6 @@
 			path = SwipeViewController;
 			sourceTree = "<group>";
 		};
-		AC45EFEC20D0D437004F6EC0 /* H5Dex */ = {
-			isa = PBXGroup;
-			children = (
-				AC45EFED20D0D474004F6EC0 /* H5DexNavigationController.swift */,
-				AC0CD58320D2330300ABB7BA /* H5DexViewController.swift */,
-				AC0CD58420D2330300ABB7BA /* H5DexViewController.xib */,
-			);
-			path = H5Dex;
-			sourceTree = "<group>";
-		};
 		AC4F5FFA20773E9D00F1D954 /* web3swift@fe0c304 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1645,7 +1629,6 @@
 				C8BF959C202696A900343B9A /* MainTabController.swift */,
 				AC8866972174685300815DD1 /* AppService */,
 				ACACB8B3213B8E9800F5ACC5 /* PushNotification */,
-				AC45EFEC20D0D437004F6EC0 /* H5Dex */,
 				ACB746E22043C5CC006C2BF5 /* QRCode */,
 				ACB97C71207160B300775D4C /* FoundationExtensions */,
 				ACDBF10F203FEC96000F0DEC /* UIConfig */,
@@ -2504,7 +2487,6 @@
 				94AEF3B7218AA6A900112AAC /* ThirdPartyViewController.xib in Resources */,
 				AC9FFF2E2126C07800957175 /* MarketChangeTokenTableViewCell.xib in Resources */,
 				AC6A3479210D740500AE615B /* MarketDetailSwipeViewController.xib in Resources */,
-				AC0CD58620D2330300ABB7BA /* H5DexViewController.xib in Resources */,
 				94AA0A9E211550440092D2CE /* PlaceOrderConfirmationViewController.xib in Resources */,
 				AC3756742038D64B00AADC60 /* MnemonicViewController.xib in Resources */,
 				ACB97C6E20707B6F00775D4C /* AddTokenTableViewCell.xib in Resources */,
@@ -2858,7 +2840,6 @@
 				ACACB8B5213B90BF00F5ACC5 /* PushNotificationDeviceDataManager.swift in Sources */,
 				AC9DC45A21159084002D7D23 /* MiniToLargeViewInteractive.swift in Sources */,
 				AC120758214DA02300EEDC49 /* SetupWalletViewController.swift in Sources */,
-				AC45EFEE20D0D474004F6EC0 /* H5DexNavigationController.swift in Sources */,
 				ACB911642024504E00F14644 /* Order.swift in Sources */,
 				ACB8485920BA75E7006B83AD /* SettingPasscodeTableViewCell.swift in Sources */,
 				9BA3014A21B097D100E55E49 /* MarketDetailViewControllerSwipe.swift in Sources */,
@@ -2982,7 +2963,6 @@
 				ACFEFE9520C337BE00013921 /* PendingTransactionsDataManager.swift in Sources */,
 				AC4141F720352D6B0089861D /* SwipeView.swift in Sources */,
 				94B5CA8A204FB4E20081BA93 /* DefaultBlock.swift in Sources */,
-				AC0CD58520D2330300ABB7BA /* H5DexViewController.swift in Sources */,
 				AC299495212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.swift in Sources */,
 				94768CA4210DCB2300B5977B /* TradeSwipeType.swift in Sources */,
 				AC9FFF252126BDF800957175 /* MarketChangeTokenSwipeViewController.swift in Sources */,
