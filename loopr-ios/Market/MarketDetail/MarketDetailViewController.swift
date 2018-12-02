@@ -75,7 +75,12 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         
         getTradeHistoryFromRelay()
 
-        MarketDataManager.shared.getTrendsFromServer(market: market.name, interval: "1Day", completionHandler: { (trends, _) in
+        // 1 day range, use 1 hour interval, 24 counts
+        // 1 month range, use 1 day interval, 30 counts
+        // 1 year range, use 1 week interval, 52 counts
+        // 2 year range, use 1 week interval, 104 counts
+        
+        MarketDataManager.shared.getTrendsFromServer(market: market.name, interval: TrendInterval.oneDay.description, completionHandler: { (trends, _) in
             self.trends = trends ?? []
         })
     }
@@ -231,6 +236,24 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         }
         cell?.setup(market: market)
         return cell!
+    }
+
+}
+
+extension MarketDetailViewController: MarketDetailPriceChartTableViewCellDelegate {
+
+    func trendIntervalUpdated(newTrendInterval: TrendInterval) {
+        MarketDataManager.shared.getTrendsFromServer(market: market.name, interval: newTrendInterval.description, completionHandler: { (trends, _) in
+            self.trends = trends ?? []
+            DispatchQueue.main.async {
+                /*
+                 if self.isLaunching == true {
+                 self.isLaunching = false
+                 }
+                 */
+                self.tableView.reloadData()
+            }
+        })
     }
 
 }

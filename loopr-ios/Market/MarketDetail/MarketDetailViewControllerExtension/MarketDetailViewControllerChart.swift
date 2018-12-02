@@ -19,6 +19,7 @@ extension MarketDetailViewController {
         if cell == nil {
             let nib = Bundle.main.loadNibNamed("MarketDetailPriceChartTableViewCell", owner: self, options: nil)
             cell = nib![0] as? MarketDetailPriceChartTableViewCell
+            cell?.delegate = self
         }
         cell?.setup(trends: trends)
         return cell!

@@ -14,12 +14,47 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MarketDetailPriceChartTableViewCell" rowHeight="241" id="KGk-i7-Jjw" customClass="MarketDetailPriceChartTableViewCell" customModule="loopr_ios" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="285"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="320"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="284.66666666666669"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="319.66666666666669"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="fah-5B-8bA">
+                        <rect key="frame" x="15" y="290" width="384" height="20"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6d-uu-IIg">
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="fa4-Fv-YGc"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Myl-OB-ubf">
+                                <rect key="frame" x="86" y="0.0" width="40" height="20"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uc1-kc-8Qq">
+                                <rect key="frame" x="172" y="0.0" width="40" height="20"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kE8-OB-Nn5">
+                                <rect key="frame" x="258" y="0.0" width="40" height="20"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pge-DX-btu">
+                                <rect key="frame" x="344" y="0.0" width="40" height="20"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="88p-tz-KZh"/>
+                            <constraint firstItem="Myl-OB-ubf" firstAttribute="width" secondItem="e6d-uu-IIg" secondAttribute="width" id="B0z-Ns-aON"/>
+                            <constraint firstItem="Uc1-kc-8Qq" firstAttribute="width" secondItem="e6d-uu-IIg" secondAttribute="width" id="HY1-a2-jYx"/>
+                            <constraint firstItem="pge-DX-btu" firstAttribute="width" secondItem="e6d-uu-IIg" secondAttribute="width" id="W29-og-gbK"/>
+                            <constraint firstItem="kE8-OB-Nn5" firstAttribute="width" secondItem="e6d-uu-IIg" secondAttribute="width" id="tdr-kw-sTC"/>
+                        </constraints>
+                    </stackView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cxh-Sy-6Re">
                         <rect key="frame" x="15" y="30" width="384" height="160"/>
                         <subviews>
@@ -85,7 +120,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C17-QB-yeY" customClass="BarChartView" customModule="Charts">
-                        <rect key="frame" x="15" y="215" width="384" height="70"/>
+                        <rect key="frame" x="15" y="205" width="384" height="70"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="70" id="ZBG-VH-cD6"/>
@@ -93,13 +128,13 @@
                         <viewLayoutGuide key="safeArea" id="wkd-Ea-x2d"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKS-Nh-lu7">
-                        <rect key="frame" x="35" y="194.66666666666666" width="41.666666666666657" height="20.333333333333343"/>
+                        <rect key="frame" x="35" y="184.66666666666666" width="41.666666666666657" height="20.333333333333343"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GDQ-iE-XUs">
-                        <rect key="frame" x="15" y="280" width="384" height="5"/>
+                        <rect key="frame" x="15" y="270" width="384" height="5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="5" id="qPY-4n-Ctz"/>
                         </constraints>
@@ -117,16 +152,23 @@
                     <constraint firstAttribute="trailing" secondItem="W85-Em-AtG" secondAttribute="trailing" constant="15" id="NgX-ul-UTO"/>
                     <constraint firstItem="qKS-Nh-lu7" firstAttribute="leading" secondItem="C17-QB-yeY" secondAttribute="leading" constant="20" id="Y9q-Kv-RYs"/>
                     <constraint firstItem="C17-QB-yeY" firstAttribute="bottom" secondItem="GDQ-iE-XUs" secondAttribute="bottom" id="axD-SM-Ykd"/>
-                    <constraint firstItem="C17-QB-yeY" firstAttribute="top" secondItem="W85-Em-AtG" secondAttribute="bottom" constant="25" id="dXw-Ka-OWk"/>
+                    <constraint firstAttribute="trailing" secondItem="fah-5B-8bA" secondAttribute="trailing" constant="15" id="brL-fO-TxK"/>
+                    <constraint firstItem="C17-QB-yeY" firstAttribute="top" secondItem="W85-Em-AtG" secondAttribute="bottom" constant="15" id="dXw-Ka-OWk"/>
                     <constraint firstItem="cxh-Sy-6Re" firstAttribute="top" secondItem="W85-Em-AtG" secondAttribute="top" id="gYP-WI-jNo"/>
                     <constraint firstItem="cxh-Sy-6Re" firstAttribute="trailing" secondItem="W85-Em-AtG" secondAttribute="trailing" id="hJ9-ma-mbv"/>
                     <constraint firstAttribute="trailing" secondItem="GDQ-iE-XUs" secondAttribute="trailing" constant="15" id="iKp-Xm-hgc"/>
                     <constraint firstAttribute="trailing" secondItem="C17-QB-yeY" secondAttribute="trailing" constant="15" id="kvw-g0-Vgs"/>
                     <constraint firstItem="W85-Em-AtG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="lIS-8f-vaG"/>
+                    <constraint firstItem="fah-5B-8bA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="qa4-0B-WWz"/>
+                    <constraint firstItem="fah-5B-8bA" firstAttribute="top" secondItem="C17-QB-yeY" secondAttribute="bottom" constant="15" id="sC0-CZ-ZFG"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="allRangeButton" destination="pge-DX-btu" id="hoT-xe-hyh"/>
+                <outlet property="oneDayRangeButton" destination="e6d-uu-IIg" id="V7X-jR-ue2"/>
+                <outlet property="oneMonthRangeButton" destination="Myl-OB-ubf" id="XkD-uZ-83V"/>
+                <outlet property="oneYearRangeButton" destination="Uc1-kc-8Qq" id="PzF-fD-uKK"/>
                 <outlet property="priceCandleStickChartView" destination="W85-Em-AtG" id="RhA-x9-bMb"/>
                 <outlet property="priceCandleStickChartViewTitle" destination="YZw-f8-o9j" id="f6h-vp-S61"/>
                 <outlet property="seperateLine0" destination="yyM-Jn-OFn" id="Xnw-5t-NCR"/>
@@ -137,8 +179,9 @@
                 <outlet property="transactionBarChartView" destination="C17-QB-yeY" id="u8E-rb-tWR"/>
                 <outlet property="transactionBarChartViewBottomLine" destination="GDQ-iE-XUs" id="MFZ-CB-sji"/>
                 <outlet property="transactionBarChartViewTitle" destination="qKS-Nh-lu7" id="aZl-Qh-2rv"/>
+                <outlet property="twoYearsRangeButton" destination="kE8-OB-Nn5" id="Snk-ks-IC8"/>
             </connections>
-            <point key="canvasLocation" x="47.826086956521742" y="10.597826086956523"/>
+            <point key="canvasLocation" x="38" y="-97"/>
         </tableViewCell>
     </objects>
 </document>
