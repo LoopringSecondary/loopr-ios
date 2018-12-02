@@ -30,16 +30,20 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6q8-Aa-uHk">
+                                <rect key="frame" x="68.666666666666671" y="0.0" width="40" height="20"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Myl-OB-ubf">
-                                <rect key="frame" x="86" y="0.0" width="40" height="20"/>
+                                <rect key="frame" x="137.66666666666666" y="0.0" width="40" height="20"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8H-Fs-I1J">
+                                <rect key="frame" x="206.33333333333334" y="0.0" width="40" height="20"/>
                                 <state key="normal" title="Button"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uc1-kc-8Qq">
-                                <rect key="frame" x="172" y="0.0" width="40" height="20"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kE8-OB-Nn5">
-                                <rect key="frame" x="258" y="0.0" width="40" height="20"/>
+                                <rect key="frame" x="275.33333333333331" y="0.0" width="40" height="20"/>
                                 <state key="normal" title="Button"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pge-DX-btu">
@@ -51,8 +55,9 @@
                             <constraint firstAttribute="height" constant="20" id="88p-tz-KZh"/>
                             <constraint firstItem="Myl-OB-ubf" firstAttribute="width" secondItem="e6d-uu-IIg" secondAttribute="width" id="B0z-Ns-aON"/>
                             <constraint firstItem="Uc1-kc-8Qq" firstAttribute="width" secondItem="e6d-uu-IIg" secondAttribute="width" id="HY1-a2-jYx"/>
+                            <constraint firstItem="6q8-Aa-uHk" firstAttribute="width" secondItem="e6d-uu-IIg" secondAttribute="width" id="ImE-fR-mJE"/>
                             <constraint firstItem="pge-DX-btu" firstAttribute="width" secondItem="e6d-uu-IIg" secondAttribute="width" id="W29-og-gbK"/>
-                            <constraint firstItem="kE8-OB-Nn5" firstAttribute="width" secondItem="e6d-uu-IIg" secondAttribute="width" id="tdr-kw-sTC"/>
+                            <constraint firstItem="K8H-Fs-I1J" firstAttribute="width" secondItem="e6d-uu-IIg" secondAttribute="width" id="rw5-S7-NqB"/>
                         </constraints>
                     </stackView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cxh-Sy-6Re">
@@ -168,6 +173,7 @@
                 <outlet property="allRangeButton" destination="pge-DX-btu" id="hoT-xe-hyh"/>
                 <outlet property="oneDayRangeButton" destination="e6d-uu-IIg" id="V7X-jR-ue2"/>
                 <outlet property="oneMonthRangeButton" destination="Myl-OB-ubf" id="XkD-uZ-83V"/>
+                <outlet property="oneWeekRangeButton" destination="6q8-Aa-uHk" id="QNz-ft-X1o"/>
                 <outlet property="oneYearRangeButton" destination="Uc1-kc-8Qq" id="PzF-fD-uKK"/>
                 <outlet property="priceCandleStickChartView" destination="W85-Em-AtG" id="RhA-x9-bMb"/>
                 <outlet property="priceCandleStickChartViewTitle" destination="YZw-f8-o9j" id="f6h-vp-S61"/>
@@ -176,10 +182,10 @@
                 <outlet property="seperateLine2" destination="mEe-wr-AGC" id="isP-Z0-X0e"/>
                 <outlet property="seperateLine3" destination="h0i-En-u9c" id="5mK-0K-kqd"/>
                 <outlet property="seperateLine4" destination="SvB-Ie-Vxb" id="1Fh-r2-T3O"/>
+                <outlet property="threeMonthRangeButton" destination="K8H-Fs-I1J" id="YqC-bd-CcK"/>
                 <outlet property="transactionBarChartView" destination="C17-QB-yeY" id="u8E-rb-tWR"/>
                 <outlet property="transactionBarChartViewBottomLine" destination="GDQ-iE-XUs" id="MFZ-CB-sji"/>
                 <outlet property="transactionBarChartViewTitle" destination="qKS-Nh-lu7" id="aZl-Qh-2rv"/>
-                <outlet property="twoYearsRangeButton" destination="kE8-OB-Nn5" id="Snk-ks-IC8"/>
             </connections>
             <point key="canvasLocation" x="38" y="-97"/>
         </tableViewCell>

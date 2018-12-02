@@ -80,7 +80,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         // 1 year range, use 1 week interval, 52 counts
         // 2 year range, use 1 week interval, 104 counts
         
-        MarketDataManager.shared.getTrendsFromServer(market: market.name, interval: TrendInterval.oneDay.description, completionHandler: { (trends, _) in
+        MarketDataManager.shared.getTrendsFromServer(market: market.name, trendRange: TrendRange.oneMonth, completionHandler: { (trends, _) in
             self.trends = trends ?? []
         })
     }
@@ -242,9 +242,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
 
 extension MarketDetailViewController: MarketDetailPriceChartTableViewCellDelegate {
 
-    func trendIntervalUpdated(newTrendInterval: TrendInterval) {
-        MarketDataManager.shared.getTrendsFromServer(market: market.name, interval: newTrendInterval.description, completionHandler: { (trends, _) in
-            self.trends = trends ?? []
+    func trendRangeUpdated(newTrendRange: TrendRange) {
+        MarketDataManager.shared.getTrendsFromServer(market: market.name, trendRange: newTrendRange, completionHandler: { (trends, _) in
+            self.trends = trends
             DispatchQueue.main.async {
                 /*
                  if self.isLaunching == true {

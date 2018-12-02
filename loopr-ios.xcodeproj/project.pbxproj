@@ -319,6 +319,7 @@
 		AC7BC85A2144E102004204D3 /* WalletCreateSuccessfullyPopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC7BC8582144E102004204D3 /* WalletCreateSuccessfullyPopViewController.xib */; };
 		AC7BC85C2145B477004204D3 /* AppWalletExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BC85B2145B477004204D3 /* AppWalletExtension.swift */; };
 		AC865C1021B32962000BFBCA /* TrendInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC865C0F21B32962000BFBCA /* TrendInterval.swift */; };
+		AC865C1221B3989A000BFBCA /* TrendRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC865C1121B3989A000BFBCA /* TrendRange.swift */; };
 		AC8866992174688500815DD1 /* AppServiceUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8866982174688500815DD1 /* AppServiceUpdateManager.swift */; };
 		AC88669B21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC88669A21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift */; };
 		AC88669E2174923800815DD1 /* SetLRCRatioFeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC88669C2174923800815DD1 /* SetLRCRatioFeeViewController.swift */; };
@@ -833,6 +834,7 @@
 		AC7BC8582144E102004204D3 /* WalletCreateSuccessfullyPopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletCreateSuccessfullyPopViewController.xib; sourceTree = "<group>"; };
 		AC7BC85B2145B477004204D3 /* AppWalletExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWalletExtension.swift; sourceTree = "<group>"; };
 		AC865C0F21B32962000BFBCA /* TrendInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendInterval.swift; sourceTree = "<group>"; };
+		AC865C1121B3989A000BFBCA /* TrendRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendRange.swift; sourceTree = "<group>"; };
 		AC8866982174688500815DD1 /* AppServiceUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServiceUpdateManager.swift; sourceTree = "<group>"; };
 		AC88669A21747B4B00815DD1 /* WalletViewControllerExtensionAppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewControllerExtensionAppService.swift; sourceTree = "<group>"; };
 		AC88669C2174923800815DD1 /* SetLRCRatioFeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLRCRatioFeeViewController.swift; sourceTree = "<group>"; };
@@ -2045,6 +2047,7 @@
 				943BDED22056350000D5BF81 /* PriceQuote.swift */,
 				94DCE550205FAC07005618E4 /* Trend.swift */,
 				AC865C0F21B32962000BFBCA /* TrendInterval.swift */,
+				AC865C1121B3989A000BFBCA /* TrendRange.swift */,
 				94AD1FE4208B910D00C443E6 /* Currency.swift */,
 				AC2CFAA020BB3BEE00387DB1 /* BiometricType.swift */,
 				AC06193D208417AF0060F416 /* QRCodeMethod.swift */,
@@ -2994,6 +2997,7 @@
 				AC99CF492083DF25000AE4BD /* ImportWalletUsingMnemonicDataManager.swift in Sources */,
 				94E185972051451C00D86FFA /* Initable.swift in Sources */,
 				ACE6F7182041FDAD0039273D /* AssetTransactionDetailViewController.swift in Sources */,
+				AC865C1221B3989A000BFBCA /* TrendRange.swift in Sources */,
 				AC31B95D204A8E4F00B16155 /* DerivationPath.swift in Sources */,
 				948952D3205A74BE009B03FE /* Transaction.swift in Sources */,
 				AC0CD57F20D21F8400ABB7BA /* TabBarItemHighlightableContentView.swift in Sources */,

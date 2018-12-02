@@ -77,12 +77,16 @@ class MarketDataManager {
         return result
     }
     
-    func getTrendsFromServer(market: String, interval: String, completionHandler: @escaping (_ trends: [Trend]?, _ error: Error?) -> Void) {
-        LoopringAPIRequest.getTrend(market: market, interval: interval, completionHandler: { (trends, error) in
+    func getTrendsFromServer(market: String, trendRange: TrendRange, completionHandler: @escaping (_ trends: [Trend], _ error: Error?) -> Void) {
+        LoopringAPIRequest.getTrend(market: market, interval: trendRange.getTrendInterval().description, completionHandler: { (trends, error) in
             guard error == nil else {
                 return
             }
-            completionHandler(trends, nil)
+            if trends.count >= trendRange.getCount() {
+                completionHandler(Array(trends[0..<trendRange.getCount()]), nil)
+            } else {
+                completionHandler(trends, nil)
+            }
         })
     }
     
