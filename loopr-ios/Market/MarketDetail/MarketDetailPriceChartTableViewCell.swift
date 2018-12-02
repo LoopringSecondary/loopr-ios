@@ -10,7 +10,7 @@ import UIKit
 import Charts
 
 protocol MarketDetailPriceChartTableViewCellDelegate: class {
-    func trendIntervalUpdated(newTrendInterval: TrendInterval)
+    func trendRangeUpdated(newTrendRange: TrendRange)
 }
 
 class MarketDetailPriceChartTableViewCell: UITableViewCell {
@@ -20,9 +20,10 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
     var rangeButtons: [UIButton] = []
 
     @IBOutlet weak var oneDayRangeButton: UIButton!
+    @IBOutlet weak var oneWeekRangeButton: UIButton!
     @IBOutlet weak var oneMonthRangeButton: UIButton!
+    @IBOutlet weak var threeMonthRangeButton: UIButton!
     @IBOutlet weak var oneYearRangeButton: UIButton!
-    @IBOutlet weak var twoYearsRangeButton: UIButton!
     @IBOutlet weak var allRangeButton: UIButton!
     
     @IBOutlet weak var priceCandleStickChartViewTitle: UILabel!
@@ -42,8 +43,6 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
     @IBOutlet weak var seperateLine3: UIView!
     @IBOutlet weak var seperateLine4: UIView!
     
-    let barCount: Int = 30
-    
     // TODO: need to find params for the width in CandleStickChartView
     let barWidth: CGFloat = 0.8
     
@@ -57,12 +56,13 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         transactionBarChartViewBottomLine.theme_backgroundColor = ColorPicker.backgroundColor
 
         oneDayRangeButton.title = LocalizedString("1D", comment: "")
+        oneWeekRangeButton.title = LocalizedString("1W", comment: "")
         oneMonthRangeButton.title = LocalizedString("1M", comment: "")
+        threeMonthRangeButton.title = LocalizedString("3M", comment: "")
         oneYearRangeButton.title = LocalizedString("1Y", comment: "")
-        twoYearsRangeButton.title = LocalizedString("2Y", comment: "")
         allRangeButton.title = LocalizedString("All", comment: "")
 
-        rangeButtons = [oneDayRangeButton, oneMonthRangeButton, oneYearRangeButton, twoYearsRangeButton, allRangeButton]
+        rangeButtons = [oneDayRangeButton, oneWeekRangeButton, oneMonthRangeButton, threeMonthRangeButton, oneYearRangeButton, allRangeButton]
         rangeButtons.forEach {
             $0.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 12)
             
@@ -77,7 +77,7 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         }
         
         // Selected range button
-        oneDayRangeButton.isSelected = true
+        oneMonthRangeButton.isSelected = true
 
         seperateLine0.theme_backgroundColor = ColorPicker.cardHighLightColor
         seperateLine1.theme_backgroundColor = ColorPicker.cardHighLightColor
@@ -126,11 +126,16 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         var upVals: [BarChartDataEntry] = []
         var downVals: [BarChartDataEntry] = []
 
+        // If all trends don't have any volume, hide the bar chart.
+        let trendsWithNoVol = trends.filter { $0.vol > 0 }
+        if trendsWithNoVol.count == 0 {
+            transactionBarChartView.isHidden = true
+            return
+        } else {
+            transactionBarChartView.isHidden = false
+        }
+        
         for (i, trend) in trends.enumerated() {
-            if upVals.count + downVals.count > barCount {
-                break
-            }
-
             var vol = trend.vol
             if trend.vol == 0 {
                 vol = 0.001
@@ -165,9 +170,6 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         var upVals: [CandleChartDataEntry] = []
         
         for (i, trend) in trends.enumerated() {
-            if upVals.count > barCount {
-                break
-            }
             let dataEntry = CandleChartDataEntry(x: Double(i), shadowH: trend.high, shadowL: trend.low, open: trend.open, close: trend.close)
             upVals.append(dataEntry)
         }
@@ -193,18 +195,19 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
     }
     
     @objc func pressedRangeButton(_ sender: UIButton) {
-        let dict: [Int: TrendInterval] = [
-            0: .oneHour,
-            1: .oneDay,
-            2: .oneWeek,
-            3: .oneWeek,
-            4: .oneWeek
+        let dict: [Int: TrendRange] = [
+            0: .oneDay,
+            1: .oneWeek,
+            2: .oneMonth,
+            3: .threeMonths,
+            4: .oneYear,
+            5: .all
         ]
         
         for (index, button) in rangeButtons.enumerated() {
             if button == sender {
                 print(".....")
-                delegate?.trendIntervalUpdated(newTrendInterval: dict[index]!)
+                delegate?.trendRangeUpdated(newTrendRange: dict[index]!)
             }
             button.isSelected = false
         }

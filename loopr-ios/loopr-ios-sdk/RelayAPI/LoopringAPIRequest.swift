@@ -290,7 +290,7 @@ class LoopringAPIRequest {
     }
     
     // READY
-    static func getTrend(market: String, interval: String, completionHandler: @escaping (_ trends: [Trend]?, _ error: Error?) -> Void) {
+    static func getTrend(market: String, interval: String, completionHandler: @escaping (_ trends: [Trend], _ error: Error?) -> Void) {
         var body: JSON = JSON()
         body["method"] = "loopring_getTrend"
         body["params"] = [["market": market, "interval": interval, "delegateAddress": RelayAPIConfiguration.delegateAddress]]
@@ -298,7 +298,7 @@ class LoopringAPIRequest {
         Request.post(body: body, url: RelayAPIConfiguration.rpcURL) { data, _, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
-                completionHandler(nil, error)
+                completionHandler([], error)
                 return
             }
             var trends: [Trend] = []
