@@ -9,8 +9,22 @@
 import UIKit
 import Charts
 
+protocol MarketDetailPriceChartTableViewCellDelegate: class {
+    func trendIntervalUpdated(newTrendInterval: TrendInterval)
+}
+
 class MarketDetailPriceChartTableViewCell: UITableViewCell {
 
+    weak var delegate: MarketDetailPriceChartTableViewCellDelegate?
+    
+    var rangeButtons: [UIButton] = []
+
+    @IBOutlet weak var oneDayRangeButton: UIButton!
+    @IBOutlet weak var oneMonthRangeButton: UIButton!
+    @IBOutlet weak var oneYearRangeButton: UIButton!
+    @IBOutlet weak var twoYearsRangeButton: UIButton!
+    @IBOutlet weak var allRangeButton: UIButton!
+    
     @IBOutlet weak var priceCandleStickChartViewTitle: UILabel!
     @IBOutlet weak var priceCandleStickChartView: CandleStickChartView!
 
@@ -42,12 +56,38 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         theme_backgroundColor = ColorPicker.backgroundColor
         transactionBarChartViewBottomLine.theme_backgroundColor = ColorPicker.backgroundColor
 
+        oneDayRangeButton.title = LocalizedString("1D", comment: "")
+        oneMonthRangeButton.title = LocalizedString("1M", comment: "")
+        oneYearRangeButton.title = LocalizedString("1Y", comment: "")
+        twoYearsRangeButton.title = LocalizedString("2Y", comment: "")
+        allRangeButton.title = LocalizedString("All", comment: "")
+
+        rangeButtons = [oneDayRangeButton, oneMonthRangeButton, oneYearRangeButton, twoYearsRangeButton, allRangeButton]
+        rangeButtons.forEach {
+            $0.titleLabel?.font = FontConfigManager.shared.getRegularFont(size: 12)
+            
+            $0.setBackgroundColor(UIColor.theme, for: .selected)
+            // $0.setBackgroundColor(UIColor.theme, for: .normal)
+            $0.setBackgroundColor(UIColor.clear, for: .normal)
+
+            $0.theme_setTitleColor(GlobalPicker.textColor, forState: .selected)
+            $0.theme_setTitleColor(GlobalPicker.textLightColor, forState: .normal)
+            $0.round(corners: .allCorners, radius: 6)
+            $0.addTarget(self, action: #selector(pressedRangeButton), for: .touchUpInside)
+        }
+        
+        // Selected range button
+        oneDayRangeButton.isSelected = true
+
         seperateLine0.theme_backgroundColor = ColorPicker.cardHighLightColor
         seperateLine1.theme_backgroundColor = ColorPicker.cardHighLightColor
         seperateLine2.theme_backgroundColor = ColorPicker.cardHighLightColor
         seperateLine3.theme_backgroundColor = ColorPicker.cardHighLightColor
         seperateLine4.theme_backgroundColor = ColorPicker.cardHighLightColor
 
+        // priceCandleStickChartViewTitle.isHidden = true
+        // transactionBarChartViewTitle.isHidden = true
+        
         priceCandleStickChartViewTitle.text = LocalizedString("Kline Chart", comment: "") + ": "
         priceCandleStickChartViewTitle.font = FontConfigManager.shared.getRegularFont(size: 12)
         priceCandleStickChartViewTitle.theme_textColor = GlobalPicker.textColor
@@ -152,12 +192,31 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         priceCandleStickChartView.data = data
     }
     
+    @objc func pressedRangeButton(_ sender: UIButton) {
+        let dict: [Int: TrendInterval] = [
+            0: .oneHour,
+            1: .oneDay,
+            2: .oneWeek,
+            3: .oneWeek,
+            4: .oneWeek
+        ]
+        
+        for (index, button) in rangeButtons.enumerated() {
+            if button == sender {
+                print(".....")
+                delegate?.trendIntervalUpdated(newTrendInterval: dict[index]!)
+            }
+            button.isSelected = false
+        }
+        sender.isSelected = true
+    }
+    
     class func getCellIdentifier() -> String {
         return "MarketDetailPriceChartTableViewCell"
     }
     
     class func getHeight() -> CGFloat {
-        return 285
+        return 285 + 20 + 10
     }
 
 }
