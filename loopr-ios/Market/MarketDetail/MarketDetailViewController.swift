@@ -261,8 +261,13 @@ extension MarketDetailViewController: MarketDetailPriceChartTableViewCellDelegat
         if let cell = tableView.cellForRow(at: indexPath) as? MarketDetailSummaryTableViewCell {
             if trend != nil {
                 cell.setHighlighted(trend: trend!)
+                tableView.isScrollEnabled = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    self.tableView.isScrollEnabled = true
+                }
             } else {
                 cell.setup(market: market)
+                tableView.isScrollEnabled = true
             }
         }
     }
