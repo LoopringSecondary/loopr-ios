@@ -150,6 +150,10 @@
 "24H Volume" = "24시간 내 총 주문량";
 "Kline Chart" = "Kline Chart";
 "Volume" = "Volume";
+"Open_in_chart_view" = "Open";
+"Close_in_chart_view" = "Close";
+"High_in_chart_view" = "High";
+"Low_in_chart_view" = "Low";
 "Latest Price" = "최근 가격";
 "Receiver" = "수신인";
 "Sender" = "전송인";

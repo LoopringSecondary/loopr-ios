@@ -163,6 +163,10 @@
 "24H Volume" = "24H 交易量";
 "Kline Chart" = "K线图";
 "Volume" = "交易量";
+"Open_in_chart_view" = "开盘";
+"Close_in_chart_view" = "收盘";
+"High_in_chart_view" = "最高";
+"Low_in_chart_view" = "最低";
 "Latest Price" = "最新单价";
 "Receiver" = "接收方地址";
 "Sender" = "发送方地址";

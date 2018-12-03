@@ -82,10 +82,11 @@ class MarketDataManager {
             guard error == nil else {
                 return
             }
+            
             if trends.count >= trendRange.getCount() {
-                completionHandler(Array(trends[0..<trendRange.getCount()]), nil)
+                completionHandler(Array(trends[0..<trendRange.getCount()].reversed()), nil)
             } else {
-                completionHandler(trends, nil)
+                completionHandler(trends.reversed(), nil)
             }
         })
     }

@@ -10,6 +10,8 @@ import UIKit
 
 class MarketDetailSummaryTableViewCell: UITableViewCell {
 
+    var market: Market?
+    
     // Base View
     @IBOutlet weak var baseView: UIView!
     
@@ -29,6 +31,7 @@ class MarketDetailSummaryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var openInfoLabel: UILabel!
     @IBOutlet weak var openLabel: UILabel!
+    @IBOutlet weak var emptyLabel1: UILabel!
     @IBOutlet weak var closeInfoLabel: UILabel!
     @IBOutlet weak var closeLabel: UILabel!
     
@@ -86,7 +89,7 @@ class MarketDetailSummaryTableViewCell: UITableViewCell {
         highlightView.cornerRadius = 6
         highlightView.theme_backgroundColor = ColorPicker.cardBackgroundColor
         
-        openInfoLabel.text = LocalizedString("Open", comment: "")
+        openInfoLabel.text = LocalizedString("Open_in_chart_view", comment: "")
         openInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
         openInfoLabel.theme_textColor = GlobalPicker.textLightColor
         
@@ -95,7 +98,7 @@ class MarketDetailSummaryTableViewCell: UITableViewCell {
         openLabel.theme_textColor = GlobalPicker.textColor
         openLabel.textAlignment = .right
         
-        closeInfoLabel.text = LocalizedString("Close", comment: "")
+        closeInfoLabel.text = LocalizedString("Close_in_chart_view", comment: "")
         closeInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
         closeInfoLabel.theme_textColor = GlobalPicker.textLightColor
         
@@ -104,7 +107,7 @@ class MarketDetailSummaryTableViewCell: UITableViewCell {
         closeLabel.theme_textColor = GlobalPicker.textColor
         closeLabel.textAlignment = .right
         
-        highInfoLabel.text = LocalizedString("High", comment: "")
+        highInfoLabel.text = LocalizedString("High_in_chart_view", comment: "")
         highInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
         highInfoLabel.theme_textColor = GlobalPicker.textLightColor
         
@@ -113,7 +116,7 @@ class MarketDetailSummaryTableViewCell: UITableViewCell {
         highLabel.theme_textColor = GlobalPicker.textColor
         highLabel.textAlignment = .right
         
-        lowInfoLabel.text = LocalizedString("Low", comment: "")
+        lowInfoLabel.text = LocalizedString("Low_in_chart_view", comment: "")
         lowInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
         lowInfoLabel.theme_textColor = GlobalPicker.textLightColor
         
@@ -122,7 +125,7 @@ class MarketDetailSummaryTableViewCell: UITableViewCell {
         lowLabel.theme_textColor = GlobalPicker.textColor
         lowLabel.textAlignment = .right
         
-        volInfoLabel.text = LocalizedString("Vol", comment: "")
+        volInfoLabel.text = LocalizedString("Volume", comment: "")
         volInfoLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
         volInfoLabel.theme_textColor = GlobalPicker.textLightColor
         
@@ -142,8 +145,10 @@ class MarketDetailSummaryTableViewCell: UITableViewCell {
     }
     
     func setup(market: Market) {
-        baseView.isHidden = false
-        highlightView.isHidden = true
+        self.baseView.isHidden = false
+        self.highlightView.isHidden = true
+        
+        self.market = market
 
         priceInFiatCurrencyLabel.text = market.display.description
         priceChangeIn24HoursLabel.text = market.changeInPat24
@@ -156,17 +161,23 @@ class MarketDetailSummaryTableViewCell: UITableViewCell {
         priceInCryptoLabel.textColor = UIStyleConfig.getChangeColor(change: market.changeInPat24)
         
         hoursChangeLabel.text = market.changeInPat24
+        
+        var tradeSymbol = market.tradingPair.tradingB
+        if tradeSymbol == "WETH" {
+            tradeSymbol = "ETH"
+        }
+
         if market.volumeInPast24 > 1 {
             let vol = Darwin.round(market.volumeInPast24)
-            hoursVolumeLabel.text = "\(vol.withCommas(0)) \(market.tradingPair.tradingB)"
+            hoursVolumeLabel.text = "\(vol.withCommas(0)) \(tradeSymbol)"
         } else {
-            hoursVolumeLabel.text = "\(market.volumeInPast24.withCommas()) \(market.tradingPair.tradingB)"
+            hoursVolumeLabel.text = "\(market.volumeInPast24.withCommas()) \(tradeSymbol)"
         }
     }
     
     func setHighlighted(trend: Trend) {
-        baseView.isHidden = true
-        highlightView.isHidden = false
+        self.baseView.isHidden = true
+        self.highlightView.isHidden = false
 
         openLabel.text = trend.open.withCommas(8)
         closeLabel.text = trend.close.withCommas(8)
@@ -176,9 +187,18 @@ class MarketDetailSummaryTableViewCell: UITableViewCell {
         
         if trend.vol > 1 {
             let vol = Darwin.round(trend.vol)
-            volLabel.text = "\(vol.withCommas(0))"
+            volLabel.text = "\(vol.withCommas(2))"
         } else {
-            volLabel.text = "\(trend.vol.withCommas())"
+            // TODO: the commas here looks like wired. Always get three digitals.
+            volLabel.text = "\(trend.vol.withCommas(4))"
+        }
+        
+        if market != nil {
+            var tradeSymbol = market!.tradingPair.tradingB
+            if tradeSymbol == "WETH" {
+                tradeSymbol = "ETH"
+            }
+            volLabel.text = "\(volLabel.text!) \(tradeSymbol)"
         }
         
         changeLabel.text = trend.changeInString
