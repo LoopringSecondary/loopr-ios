@@ -256,10 +256,14 @@ extension MarketDetailViewController: MarketDetailPriceChartTableViewCellDelegat
         })
     }
 
-    func trendDidHighlight(trend: Trend) {
+    func trendDidHighlight(trend: Trend?) {
         let indexPath = IndexPath(row: 0, section: 0)
         if let cell = tableView.cellForRow(at: indexPath) as? MarketDetailSummaryTableViewCell {
-            
+            if trend != nil {
+                cell.setHighlighted(trend: trend!)
+            } else {
+                cell.setup(market: market)
+            }
         }
     }
 }

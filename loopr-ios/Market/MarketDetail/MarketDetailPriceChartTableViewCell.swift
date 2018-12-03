@@ -11,7 +11,7 @@ import Charts
 
 protocol MarketDetailPriceChartTableViewCellDelegate: class {
     func trendRangeUpdated(newTrendRange: TrendRange)
-    func trendDidHighlight(trend: Trend)
+    func trendDidHighlight(trend: Trend?)
 }
 
 class MarketDetailPriceChartTableViewCell: UITableViewCell {
@@ -128,6 +128,8 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         
         setDataForPriceCandleStickChartView()
         setDataForTransactionBarChartView()
+        
+        clearHighlight()
     }
     
     func GenerateCandleChartDataSet(values: [CandleChartDataEntry]) -> CandleChartDataSet {
@@ -249,6 +251,8 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         
         priceCandleStickChartView.highlightValues([])
         transactionBarChartView.highlightValues([])
+        
+        delegate?.trendDidHighlight(trend: nil)
     }
     
     class func getCellIdentifier() -> String {

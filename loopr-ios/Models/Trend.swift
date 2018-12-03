@@ -20,6 +20,9 @@ class Trend {
     let createTime: UInt
     var high: Double
     let vol: Double
+    
+    let change: Double
+    let changeInString: String
 
 	init(json: JSON) {
 		self.amount = json["amount"].doubleValue
@@ -41,6 +44,15 @@ class Trend {
         
         if low < 0.5 * min(open, close) {
             low = 0.5 * min(open, close)
+        }
+        
+        change = (self.open - self.close) / self.open
+        if change == 0 {
+            changeInString = "—"
+        } else if change < 0 {
+            changeInString = "↓\(NSString(format: "%.2f", change*100))%"
+        } else {
+            changeInString = "↑\(NSString(format: "%.2f", change*100))%"
         }
 	}
     
