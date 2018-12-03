@@ -46,7 +46,7 @@ class Trend {
             low = 0.5 * min(open, close)
         }
         
-        change = (self.open - self.close) / self.open
+        change = (self.close - self.open) / self.open
         if change == 0 {
             changeInString = "—"
         } else if change < 0 {
@@ -56,18 +56,36 @@ class Trend {
         }
 	}
     
+    // Need to consider Chinese and English.
     func getTimeRangeString() -> String {
         if intervals == "1Hr" || intervals == "2Hr" || intervals == "4Hr" {
-            let startString = DateUtil.convertToDate(start, format: "MMM dd HH:mm")
             let endString = DateUtil.convertToDate(end, format: "HH:mm")
-            return "\(startString) - \(endString)"
+            let startString: String
+            if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
+                startString = DateUtil.convertToDate(start, format: "MM-dd HH:mm")
+                return "\(startString) ~ \(endString)"
+            } else {
+                startString = DateUtil.convertToDate(start, format: "MMM dd HH:mm")
+                return "\(startString) - \(endString)"
+            }
         } else if intervals == "1Day" {
-            let format = "MMM dd, yyyy"
+            let format: String
+            if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
+                format = "yyyy-MM-dd"
+            } else {
+                format = "MMM dd, yyyy"
+            }
             return DateUtil.convertToDate(end, format: format)
         } else if intervals == "1Week" {
-            let startString = DateUtil.convertToDate(start, format: "yyyy MMM dd")
-            let endString = DateUtil.convertToDate(end, format: "MMM dd")
-            return "\(startString) - \(endString)"
+            if SettingDataManager.shared.getCurrentLanguage().name == "zh-Hans" {
+                let startString = DateUtil.convertToDate(start, format: "yyyy-MM-dd")
+                let endString = DateUtil.convertToDate(end, format: "MM-dd")
+                return "\(startString) ~ \(endString)"
+            } else {
+                let startString = DateUtil.convertToDate(start, format: "yyyy MMM dd")
+                let endString = DateUtil.convertToDate(end, format: "MMM dd")
+                return "\(startString) - \(endString)"
+            }
         }
         return ""
     }

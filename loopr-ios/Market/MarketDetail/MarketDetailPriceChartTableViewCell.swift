@@ -19,6 +19,7 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
     weak var delegate: MarketDetailPriceChartTableViewCellDelegate?
     
     var rangeButtons: [UIButton] = []
+    var selectedRangeButtonIndex: Int = 2
 
     @IBOutlet weak var oneDayRangeButton: UIButton!
     @IBOutlet weak var oneWeekRangeButton: UIButton!
@@ -140,9 +141,9 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         // set1.shadowColor = .darkGray
         set.shadowColorSameAsCandle = true
         set.shadowWidth = barWidth
-        set.decreasingColor = UIColor.upInChart
+        set.decreasingColor = UIColor.downInChart
         set.decreasingFilled = true
-        set.increasingColor = UIColor.downInChart
+        set.increasingColor = UIColor.upInChart
         set.increasingFilled = true
         set.neutralColor = UIColor.upInChart
         set.drawHorizontalHighlightIndicatorEnabled = false
@@ -175,17 +176,17 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         // If all trends don't have any volume, hide the bar chart.
         let trendsWithNoVol = trends.filter { $0.vol > 0 }
         if trendsWithNoVol.count == 0 {
-            transactionBarChartView.isHidden = true
-            return
+            // transactionBarChartView.isHidden = true
+            // return
         } else {
-            transactionBarChartView.isHidden = false
+            // transactionBarChartView.isHidden = false
         }
         
         for (i, trend) in trends.enumerated() {
             let dataEntry: CandleChartDataEntry
             if trend.vol == 0 {
                 dataEntry = CandleChartDataEntry(x: Double(i), shadowH: 0, shadowL: 0, open: 0, close: 0)
-            } else if trend.open <= trend.close {
+            } else if trend.change > 0 {
                 dataEntry = CandleChartDataEntry(x: Double(i), shadowH: 0, shadowL: trend.vol, open: 0, close: trend.vol)
             } else {
                 dataEntry = CandleChartDataEntry(x: Double(i), shadowH: trend.vol, shadowL: 0, open: trend.vol, close: 0)
@@ -214,9 +215,16 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         
         for (index, button) in rangeButtons.enumerated() {
             if button == sender {
-                print(".....")
                 delegate?.trendRangeUpdated(newTrendRange: dict[index]!)
                 clearHighlight()
+
+                // Need to hide label.
+                selectedRangeButtonIndex = index
+                if index == 4 || index == 5 {
+                    transactionBarChartViewTitle.isHidden = true
+                } else {
+                    transactionBarChartViewTitle.isHidden = false
+                }
             }
             button.isSelected = false
         }
@@ -244,7 +252,11 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
     
     func clearHighlight() {
         priceCandleStickChartViewTitle.isHidden = false
-        transactionBarChartViewTitle.isHidden = false
+        if selectedRangeButtonIndex == 4 || selectedRangeButtonIndex == 5 {
+            transactionBarChartViewTitle.isHidden = true
+        } else {
+            transactionBarChartViewTitle.isHidden = false
+        }
         
         hightlightLabel.text = ""
         hightlightLabel.isHidden = true
@@ -260,7 +272,7 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
     }
     
     class func getHeight() -> CGFloat {
-        return 285 + 20 + 10
+        return 295
     }
 
 }

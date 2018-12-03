@@ -163,6 +163,10 @@
 "24H Volume" = "24H Volume";
 "Kline Chart" = "Kline Chart";
 "Volume" = "Volume";
+"Open_in_chart_view" = "Open";
+"Close_in_chart_view" = "Close";
+"High_in_chart_view" = "High";
+"Low_in_chart_view" = "Low";
 "Latest Price" = "Latest Price";
 "Receiver" = "Receiver";
 "Sender" = "Sender";
