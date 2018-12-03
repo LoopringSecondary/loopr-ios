@@ -73,11 +73,7 @@ class CurrentAppWalletDataManager {
     func getCurrentAppWallet() -> AppWallet? {
         return currentAppWallet
     }
-    
-    func getTotalAsset() -> Double {
-        return totalCurrencyValue
-    }
-    
+
     func getAsset(symbol: String) -> Asset? {
         let result: Asset? = nil
         for asset in self.assets {
@@ -93,6 +89,10 @@ class CurrentAppWalletDataManager {
             return asset.balance
         }
         return nil
+    }
+    
+    func getTotalAsset() -> Double {
+        return totalCurrencyValue
     }
     
     func getTotalAssetCurrencyFormmat() -> String {

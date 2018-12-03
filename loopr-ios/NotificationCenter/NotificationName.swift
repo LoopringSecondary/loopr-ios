@@ -24,6 +24,7 @@ extension Notification.Name {
 
     // Need to update UI
     static let languageChanged = NSNotification.Name("languageChanged")
+    static let showTradingFeatureChanged = NSNotification.Name("showTradingFeatureChanged")
     
     // Publish a local notification to MainTabController
     static let publishLocalNotificationToMainTabController = NSNotification.Name("publishLocalNotificationToMainTabController")

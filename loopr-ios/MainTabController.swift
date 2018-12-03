@@ -39,11 +39,15 @@ class MainTabController: UITabBarController, UNUserNotificationCenterDelegate {
         // Setting view controller
         viewController3 = SettingNavigationViewController()
 
-        setTabBarItems()        
-        viewControllers = [viewController1, viewController2, viewController3]
+        setTabBarItems()
+        if FeatureConfigDataManager.shared.getShowTradingFeature() {
+            viewControllers = [viewController1, viewController2, viewController3]
+        } else {
+            viewControllers = [viewController1, viewController3]
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(languageChangedReceivedNotification), name: .languageChanged, object: nil)
-
+        NotificationCenter.default.addObserver(self, selector: #selector(showTradingFeatureChangedReceivedNotification(notification:)), name: .showTradingFeatureChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(localNotificationReceived), name: .publishLocalNotificationToMainTabController, object: nil)
     }
     
@@ -67,7 +71,7 @@ class MainTabController: UITabBarController, UNUserNotificationCenterDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     func setTabBarItems() {
         // ESTabBarController_swift doesn't work in iOS 12.1. However, it worked in in 12.0 and previous versions.
         /*
@@ -83,6 +87,17 @@ class MainTabController: UITabBarController, UNUserNotificationCenterDelegate {
     
     @objc func languageChangedReceivedNotification() {
         setTabBarItems()
+    }
+    
+    @objc func showTradingFeatureChangedReceivedNotification(notification: NSNotification) {
+        if let showTradingFeature: Bool = notification.userInfo?["showTradingFeature"] as? Bool {
+            if showTradingFeature {
+                viewControllers = [viewController1, viewController2, viewController3]
+            } else {
+                viewControllers = [viewController1, viewController3]
+            }
+        }
+        
     }
     
     func processExternalUrl() {

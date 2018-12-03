@@ -90,6 +90,18 @@ class WalletButtonTableViewCell: UITableViewCell {
         print("pressedItem4Button")
         delegate?.navigationToTradeViewController()
     }
+    
+    func setup(showTradingFeature: Bool, isLaunching: Bool) {
+        button1.isHidden = isLaunching
+        button2.isHidden = isLaunching
+        button3.isHidden = isLaunching
+
+        if showTradingFeature {
+            button4.isHidden = isLaunching
+        } else {
+            button4.isHidden = true
+        }
+    }
 
     class func getCellIdentifier() -> String {
         return "WalletBalanceTableViewCell"

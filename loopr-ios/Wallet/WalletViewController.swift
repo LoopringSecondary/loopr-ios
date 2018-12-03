@@ -25,6 +25,8 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var pasteboardValue: String = ""
     
+    var showTradingFeature: Bool = FeatureConfigDataManager.shared.getShowTradingFeature()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -352,6 +354,7 @@ class WalletViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 cell = nib![0] as? WalletButtonTableViewCell
                 cell?.delegate = self
             }
+            cell?.setup(showTradingFeature: showTradingFeature, isLaunching: self.isLaunching)
             return cell!
         } else {
             var cell = tableView.dequeueReusableCell(withIdentifier: AssetTableViewCell.getCellIdentifier()) as? AssetTableViewCell

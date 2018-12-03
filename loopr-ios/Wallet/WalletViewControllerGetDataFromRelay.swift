@@ -73,6 +73,16 @@ extension WalletViewController {
         })
         
         dispatchGroup.notify(queue: .main) {
+            // Show trading feature
+            if !self.showTradingFeature && CurrentAppWalletDataManager.shared.getTotalAsset() > FeatureConfigDataManager.shared.minValue {
+                self.showTradingFeature = true
+                
+                // TODO: don't use user default for now. Will add later.
+                // FeatureConfigDataManager.shared.setShowTradingFeature(true)
+                let dict = ["showTradingFeature": true]
+                NotificationCenter.default.post(name: .showTradingFeatureChanged, object: nil, userInfo: dict)
+            }
+
             if self.isLaunching {
                 self.isLaunching = false
                 
