@@ -46,6 +46,8 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
     
     var trends: [Trend] = []
     
+    var hightlightLabel = UILabel()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -95,6 +97,7 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         priceCandleStickChartView.rightAxis.enabled = false
         priceCandleStickChartView.legend.enabled = false
         priceCandleStickChartView.highlightPerDragEnabled = true
+        priceCandleStickChartView.doubleTapToZoomEnabled = false
         priceCandleStickChartView.delegate = self
         
         transactionBarChartViewTitle.text = LocalizedString("Volume", comment: "") + ": "
@@ -107,7 +110,15 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         transactionBarChartView.rightAxis.enabled = false
         transactionBarChartView.legend.enabled = false
         transactionBarChartView.highlightPerDragEnabled = true
+        transactionBarChartView.doubleTapToZoomEnabled = false
         transactionBarChartView.delegate = self
+        
+        hightlightLabel.text = LocalizedString("", comment: "") + ": "
+        hightlightLabel.font = FontConfigManager.shared.getRegularFont(size: 12)
+        hightlightLabel.theme_textColor = GlobalPicker.textColor
+        hightlightLabel.textAlignment = .center
+        addSubview(hightlightLabel)
+        hightlightLabel.isHidden = true
     }
 
     func setup(trends: [Trend]) {
@@ -134,7 +145,7 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
         set.neutralColor = UIColor.upInChart
         set.drawHorizontalHighlightIndicatorEnabled = false
         set.drawVerticalHighlightIndicatorEnabled = true
-        set.highlightColor = UIColor.text2
+        set.highlightColor = UIColor.theme
         set.highlightLineWidth = 1
         
         return set
@@ -203,10 +214,41 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
             if button == sender {
                 print(".....")
                 delegate?.trendRangeUpdated(newTrendRange: dict[index]!)
+                clearHighlight()
             }
             button.isSelected = false
         }
         sender.isSelected = true
+    }
+    
+    func updateHighlightLabel(trend: Trend, highlight: Highlight) {
+        let chartWidth = priceCandleStickChartView.width
+        let barWidth = chartWidth/CGFloat(trends.count)
+
+        hightlightLabel.text = trend.getTimeRangeString()
+        
+        // Adjust the frame for edge cases.
+        let textWidth = hightlightLabel.text!.widthOfString(usingFont: hightlightLabel.font)
+        var labelX: CGFloat = priceCandleStickChartView.x+barWidth*0.5+barWidth*CGFloat(highlight.x)-textWidth*0.5
+        if labelX < priceCandleStickChartView.x {
+            labelX = priceCandleStickChartView.x
+        } else if labelX + textWidth > UIScreen.main.bounds.width - priceCandleStickChartView.x {
+            labelX = UIScreen.main.bounds.width - textWidth - priceCandleStickChartView.x
+        }
+        hightlightLabel.frame = CGRect(x: labelX, y: 10, width: textWidth, height: 20)
+
+        hightlightLabel.isHidden = false
+    }
+    
+    func clearHighlight() {
+        priceCandleStickChartViewTitle.isHidden = false
+        transactionBarChartViewTitle.isHidden = false
+        
+        hightlightLabel.text = ""
+        hightlightLabel.isHidden = true
+        
+        priceCandleStickChartView.highlightValues([])
+        transactionBarChartView.highlightValues([])
     }
     
     class func getCellIdentifier() -> String {
@@ -228,8 +270,14 @@ extension MarketDetailPriceChartTableViewCell: ChartViewDelegate {
         priceCandleStickChartView.highlightValue(x: highlight.x, dataSetIndex: highlight.dataSetIndex, callDelegate: false)
         transactionBarChartView.highlightValue(x: highlight.x, dataSetIndex: highlight.dataSetIndex, callDelegate: false)
         
-        let trend = self.trends[Int(highlight.x)]
+        let trend = trends[Int(highlight.x)]
         delegate?.trendDidHighlight(trend: trend)
+        
+        updateHighlightLabel(trend: trend, highlight: highlight)
+    }
+    
+    func chartValueNothingSelected(_ chartView: ChartViewBase) {
+        clearHighlight()
     }
 
 }
