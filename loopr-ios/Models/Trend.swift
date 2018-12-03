@@ -43,4 +43,21 @@ class Trend {
             low = 0.5 * min(open, close)
         }
 	}
+    
+    func getTimeRangeString() -> String {
+        if intervals == "1Hr" || intervals == "2Hr" || intervals == "4Hr" {
+            let startString = DateUtil.convertToDate(start, format: "MMM dd HH:mm")
+            let endString = DateUtil.convertToDate(end, format: "HH:mm")
+            return "\(startString) - \(endString)"
+        } else if intervals == "1Day" {
+            let format = "MMM dd, yyyy"
+            return DateUtil.convertToDate(end, format: format)
+        } else if intervals == "1Week" {
+            let startString = DateUtil.convertToDate(start, format: "yyyy MMM dd")
+            let endString = DateUtil.convertToDate(end, format: "MMM dd")
+            return "\(startString) - \(endString)"
+        }
+        return ""
+    }
+
 }

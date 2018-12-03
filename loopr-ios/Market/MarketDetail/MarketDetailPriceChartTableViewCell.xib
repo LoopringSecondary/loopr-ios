@@ -125,10 +125,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C17-QB-yeY" customClass="CandleStickChartView" customModule="Charts">
-                        <rect key="frame" x="15" y="190" width="384" height="70"/>
+                        <rect key="frame" x="15" y="190" width="384" height="60"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="70" id="ZBG-VH-cD6"/>
+                            <constraint firstAttribute="height" constant="60" id="ZBG-VH-cD6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wkd-Ea-x2d"/>
                     </view>
@@ -156,7 +156,7 @@
                     <constraint firstAttribute="trailing" secondItem="C17-QB-yeY" secondAttribute="trailing" constant="15" id="kvw-g0-Vgs"/>
                     <constraint firstItem="W85-Em-AtG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="lIS-8f-vaG"/>
                     <constraint firstItem="fah-5B-8bA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="qa4-0B-WWz"/>
-                    <constraint firstItem="fah-5B-8bA" firstAttribute="top" secondItem="C17-QB-yeY" secondAttribute="bottom" constant="15" id="sC0-CZ-ZFG"/>
+                    <constraint firstItem="fah-5B-8bA" firstAttribute="top" secondItem="C17-QB-yeY" secondAttribute="bottom" constant="25" id="sC0-CZ-ZFG"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
