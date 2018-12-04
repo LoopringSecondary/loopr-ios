@@ -145,7 +145,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             
             cell?.leftLabel.textColor = .success
-            cell?.leftLabel.font = FontConfigManager.shared.getCharactorFont(size: 14)
+            cell?.leftLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
             cell?.leftLabel.text = LocalizedString("Partner_Slogan", comment: "")
             cell?.rightLabel.isHidden = true
             cell?.disclosureIndicator.isHidden = false
