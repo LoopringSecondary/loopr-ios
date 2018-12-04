@@ -76,6 +76,7 @@ extension WalletViewController {
             // Show trading feature
             if !self.showTradingFeature && CurrentAppWalletDataManager.shared.getTotalAsset() > FeatureConfigDataManager.shared.minValue {
                 self.showTradingFeature = true
+                FeatureConfigDataManager.shared.setShowTradingFeature(true)
                 
                 // TODO: don't use user default for now. Will add later.
                 // FeatureConfigDataManager.shared.setShowTradingFeature(true)
