@@ -13,6 +13,7 @@ class FeatureConfigDataManager {
     static let shared = FeatureConfigDataManager()
     
     let minValue: Double = 30
+    private var showTradingFeature: Bool = false
     
     private init() {
         
@@ -26,15 +27,21 @@ class FeatureConfigDataManager {
             return true
         }
         
+        return showTradingFeature
+        /*
         let defaults = UserDefaults.standard
         // If the value is absent or can't be converted to a BOOL, NO will be returned.
         let showTradingFeature = defaults.bool(forKey: UserDefaultsKeys.showTradingFeature.rawValue)
         return showTradingFeature
+        */
     }
     
     func setShowTradingFeature(_ newValue: Bool) {
+        showTradingFeature = newValue
+        /*
         let defaults = UserDefaults.standard
         defaults.set(newValue, forKey: UserDefaultsKeys.showSmallAssets.rawValue)
+        */
     }
 
 }

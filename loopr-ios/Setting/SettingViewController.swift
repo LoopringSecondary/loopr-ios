@@ -116,12 +116,28 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // 
-        if section == 1 {
-            if BiometricType.get() == .none {
-                return 4
+        if section == 0 {
+            if FeatureConfigDataManager.shared.getShowTradingFeature() {
+                return 1
             } else {
-                return 5
+                return 0
+            }
+        } else if section == 1 {
+            var numberOfRows: Int = 0
+            if BiometricType.get() == .none {
+                numberOfRows = 4
+            } else {
+                numberOfRows = 5
+            }
+            if !FeatureConfigDataManager.shared.getShowTradingFeature() {
+                numberOfRows -= 1
+            }
+            return numberOfRows
+        } else if section == 2 {
+            if FeatureConfigDataManager.shared.getShowTradingFeature() {
+                return 2
+            } else {
+                return 0
             }
         } else {
             return sectionRows[section]
@@ -418,6 +434,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
+            return 0
+        } else if (section == 1 || section == 3) && !FeatureConfigDataManager.shared.getShowTradingFeature() {
             return 0
         } else {
             return 10
