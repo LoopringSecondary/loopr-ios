@@ -34,7 +34,7 @@ class SettingThemeModeTableViewCell: UITableViewCell {
         nightModeLabel.theme_textColor = GlobalPicker.textColor
         backgroundColor = Themes.isDark() ? UIColor.dark2 : UIColor.white
 
-        nightModeLabel.font = FontConfigManager.shared.getMediumFont(size: 14)
+        nightModeLabel.font = FontConfigManager.shared.getRegularFont(size: 14)
         nightModeLabel.text = LocalizedString("Night Mode", comment: "")
     }
 
