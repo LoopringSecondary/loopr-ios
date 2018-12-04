@@ -94,6 +94,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
     func getRootViewController() -> UIViewController {
         var result: UIViewController = SetupNavigationController(nibName: nil, bundle: nil)
         if Production.getCurrent() == .upwallet {
+            // TODO: Disable third party in App Store version.
+            /*
             if UserDefaults.standard.bool(forKey: UserDefaultsKeys.thirdParty.rawValue) ||
                UserDefaults.standard.string(forKey: UserDefaultsKeys.openID.rawValue) != nil {
                 if !AppWalletDataManager.shared.getWallets().isEmpty {
@@ -101,6 +103,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
                 }
             } else if hasKeysPlist() {
                 result = ThirdPartyViewController(nibName: nil, bundle: nil)
+            }
+            */
+            if !AppWalletDataManager.shared.getWallets().isEmpty {
+                result = MainTabController.instantiate()
             }
         } else {
             if !AppWalletDataManager.shared.getWallets().isEmpty {

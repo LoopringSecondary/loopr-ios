@@ -132,6 +132,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             if !FeatureConfigDataManager.shared.getShowTradingFeature() {
                 numberOfRows -= 1
             }
+            
+            // TODO: Disable third party in App Store version.
+            numberOfRows -= 1
+            
             return numberOfRows
         } else if section == 2 {
             if FeatureConfigDataManager.shared.getShowTradingFeature() {
@@ -446,6 +450,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return 51
     }
     
+    // TODO: Disable third party in App Store version.
     func pressedThirdPartyButton() {
         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.thirdParty.rawValue) {
             let vc = ThirdPartyViewController()
