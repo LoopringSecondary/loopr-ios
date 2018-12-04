@@ -18,6 +18,8 @@ enum Production: String {
             print("bundle identifier: \(bundleIdentifier)")
             if bundleIdentifier == "leaf.prod.app" {
                 return .upwallet
+            } else if bundleIdentifier == "io.upwallet.app" {
+                return .upwallet
             } else if bundleIdentifier.contains("viv") {
                 return .vivwallet
             }
