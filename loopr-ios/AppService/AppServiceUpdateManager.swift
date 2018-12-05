@@ -32,6 +32,10 @@ class AppServiceUpdateManager {
     }
 
     func getLatestAppVersion(completion: @escaping (_ shouldDisplayUpdateNotification: Bool) -> Void) {
+        guard let bundleIdentifier = Bundle.main.bundleIdentifier, bundleIdentifier == "leaf.prod.app" else {
+            return
+        }
+        
         // Seprate from Request.
         let url = URL(string: "https://www.loopring.mobi/rpc/v1/version/ios/getLatest")
         let task = URLSession.shared.dataTask(with: url! as URL) { data, _, error in
