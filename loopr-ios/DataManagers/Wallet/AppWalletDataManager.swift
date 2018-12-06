@@ -157,7 +157,7 @@ class AppWalletDataManager {
     }
     
     // Used in GenerateWallet and ImportMnemonic
-    func addWallet(setupWalletMethod: QRCodeMethod, walletName: String, mnemonics: [String], password: String, derivationPath: String, key: Int, isVerified: Bool, completionHandler: @escaping (_ appWallet: AppWallet?, _ error: AddWalletError?) -> Void) {
+    func addWallet(setupWalletMethod: QRCodeMethod, walletName: String, mnemonics: [String], password: String, devicePassword: String, derivationPath: String, key: Int, isVerified: Bool, completionHandler: @escaping (_ appWallet: AppWallet?, _ error: AddWalletError?) -> Void) {
         guard key >= 0 else {
             completionHandler(nil, AddWalletError.invalidInput)
             return
@@ -221,13 +221,23 @@ class AppWalletDataManager {
             return
         }
         
-        let newAppWallet = AppWallet(setupWalletMethod: setupWalletMethod, address: address.description, password: password, mnemonics: mnemonics, keystoreString: keystoreString, name: walletName.trim(), isVerified: isVerified, tokenList: ["ETH", "WETH", "LRC"], manuallyDisabledTokenList: [])
+        var newAppWallet: AppWallet?
+        if setupWalletMethod == .create {
+            newAppWallet = AppWallet(setupWalletMethod: setupWalletMethod, address: address.description, password: password, devicePassword: "", mnemonics: mnemonics, keystoreString: keystoreString, name: walletName.trim(), isVerified: isVerified, tokenList: ["ETH", "WETH", "LRC"], manuallyDisabledTokenList: [])
+        } else if setupWalletMethod == .importUsingMnemonic {
+            newAppWallet = AppWallet(setupWalletMethod: setupWalletMethod, address: address.description, password: password, devicePassword: "", mnemonics: mnemonics, keystoreString: keystoreString, name: walletName.trim(), isVerified: isVerified, tokenList: ["ETH", "WETH", "LRC"], manuallyDisabledTokenList: [])
+        }
+        
+        guard newAppWallet != nil else {
+            completionHandler(nil, AddWalletError.invalidInput)
+            return
+        }
         
         // Update the new app wallet in the local storage.
-        AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
+        AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet!)
         
         // Set the current AppWallet.
-        CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet, completionHandler: {})
+        CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet!, completionHandler: {})
         
         completionHandler(newAppWallet, nil)
     }

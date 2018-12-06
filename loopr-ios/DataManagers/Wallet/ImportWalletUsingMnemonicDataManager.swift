@@ -15,6 +15,8 @@ class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
     
     var mnemonic: String = ""
     var password: String = ""
+    // If password is empty, devicePassword will become required.
+    var devicePassword: String = ""
     private var derivationPathValue = "m/44'/60'/0'/0"
     var selectedKey: Int = 0
     var addresses: [Address] = []
@@ -75,7 +77,7 @@ class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
                 self.password = ""
             }
 
-            AppWalletDataManager.shared.addWallet(setupWalletMethod: .importUsingMnemonic, walletName: self.walletName, mnemonics: self.mnemonic.components(separatedBy: " "), password: self.password, derivationPath: pathValue, key: self.selectedKey, isVerified: true, completionHandler: {(appWallet, error) in
+            AppWalletDataManager.shared.addWallet(setupWalletMethod: .importUsingMnemonic, walletName: self.walletName, mnemonics: self.mnemonic.components(separatedBy: " "), password: self.password, devicePassword: self.devicePassword, derivationPath: pathValue, key: self.selectedKey, isVerified: true, completionHandler: {(appWallet, error) in
                 if error == nil {
                     // Inform relay
                     LoopringAPIRequest.unlockWallet(owner: appWallet!.address) { (_, _) in }
