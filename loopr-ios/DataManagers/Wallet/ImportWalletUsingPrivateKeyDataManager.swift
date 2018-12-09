@@ -16,9 +16,7 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
     static let shared = ImportWalletUsingPrivateKeyDataManager()
     
     var walletName: String
-    
-    // Password is no need
-    final let password: String = ""
+
     var devicePassword: String = ""
     
     var address: String
@@ -82,7 +80,7 @@ class ImportWalletUsingPrivateKeyDataManager: ImportWalletProtocol {
                 let json = try JSON(data: keystoreData)
                 self.keystore = json.description
                 
-                let newAppWallet = AppWallet(setupWalletMethod: .importUsingPrivateKey, address: self.address, password: self.password, devicePassword: self.devicePassword, keystoreString: self.keystore, name: self.walletName.trim(), isVerified: true, tokenList: ["ETH", "WETH", "LRC"], manuallyDisabledTokenList: [])
+                let newAppWallet = AppWallet(setupWalletMethod: .importUsingPrivateKey, address: self.address, password: "", devicePassword: self.devicePassword, keystoreString: self.keystore, name: self.walletName.trim(), isVerified: true, tokenList: ["ETH", "WETH", "LRC"], manuallyDisabledTokenList: [])
                 AppWalletDataManager.shared.updateAppWalletsInLocalStorage(newAppWallet: newAppWallet)
                 CurrentAppWalletDataManager.shared.setCurrentAppWallet(newAppWallet, completionHandler: {})
                 
