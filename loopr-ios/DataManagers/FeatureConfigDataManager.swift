@@ -24,6 +24,7 @@ class FeatureConfigDataManager {
         let version = "1.3.1"
         let currentBuildVersion = AppServiceUpdateManager.shared.getBuildVersion()
         if version.compare(currentBuildVersion, options: .numeric) == .orderedDescending {
+            // If version is less than 1.3.1, always return true
             return true
         }
         

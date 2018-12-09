@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Crashlytics
 
 class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDelegate {
 
@@ -88,58 +87,65 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
             errorInfoLabel.text = LocalizedString("The name is taken, please try another one.", comment: "")
             return
         }
-        
-        do {
-            switch setupWalletMethod {
-            case .importUsingMnemonic:
-                if !validation() {
-                    return
-                }
-                walletNameTextField.resignFirstResponder()
-                ImportWalletUsingMnemonicDataManager.shared.walletName = walletNameTextField.text!
-                importUsingMnemonic()
-                return
-                
-            case .importUsingKeystore:
-                if !validation() {
-                    return
-                }
-                walletNameTextField.resignFirstResponder()
-                ImportWalletUsingKeystoreDataManager.shared.walletName = walletNameTextField.text!
-                try ImportWalletUsingKeystoreDataManager.shared.complete()
-                
-            case .importUsingPrivateKey:
-                if !validation() {
-                    return
-                }
-                walletNameTextField.resignFirstResponder()
-                ImportWalletUsingPrivateKeyDataManager.shared.walletName = walletNameTextField.text!
-                try ImportWalletUsingPrivateKeyDataManager.shared.complete()
-            default:
+
+        switch setupWalletMethod {
+        case .importUsingMnemonic:
+            if !validation() {
                 return
             }
-        } catch AddWalletError.duplicatedAddress {
-            alertForDuplicatedAddress()
+            walletNameTextField.resignFirstResponder()
+            ImportWalletUsingMnemonicDataManager.shared.walletName = walletNameTextField.text!
+            importUsingMnemonic()
             return
-        } catch {
-            alertForError()
+            
+        case .importUsingKeystore:
+            if !validation() {
+                return
+            }
+            walletNameTextField.resignFirstResponder()
+            ImportWalletUsingKeystoreDataManager.shared.walletName = walletNameTextField.text!
+            do {
+                try ImportWalletUsingKeystoreDataManager.shared.complete()
+                succeedAndExit(setupWalletMethod: setupWalletMethod)
+            } catch AddWalletError.duplicatedAddress {
+                alertForDuplicatedAddress()
+            } catch {
+                alertForError()
+            }
             return
-        }
-
-        // Exit the whole importing process
-        succeedAndExit()
+            
+        case .importUsingPrivateKey:
+            if !validation() {
+                return
+            }
+            walletNameTextField.resignFirstResponder()
+            ImportWalletUsingPrivateKeyDataManager.shared.walletName = walletNameTextField.text!
+            
+            let viewController = SetupWalletEnterPasswordViewController(setupWalletMethod: .importUsingPrivateKey)
+            self.navigationController?.pushViewController(viewController, animated: true)
+            return
+            
+        default:
+            return
+        }        
     }
     
     func importUsingMnemonic() {
-        ImportWalletUsingMnemonicDataManager.shared.complete(completion: {(appWallet, error) in
-            if error == nil {
-                self.succeedAndExit()
-            } else if error == .duplicatedAddress {
-                self.alertForDuplicatedAddress()
-            } else {
-                self.alertForError()
-            }
-        })
+        // If password is empty, then ask user to enter a password.
+        if ImportWalletUsingMnemonicDataManager.shared.password == "" {
+            let viewController = SetupWalletEnterPasswordViewController(setupWalletMethod: .importUsingMnemonic)
+            self.navigationController?.pushViewController(viewController, animated: true)
+        } else {
+            ImportWalletUsingMnemonicDataManager.shared.complete(completion: {(appWallet, error) in
+                if error == nil {
+                    self.succeedAndExit(setupWalletMethod: self.setupWalletMethod)
+                } else if error == .duplicatedAddress {
+                    self.alertForDuplicatedAddress()
+                } else {
+                    self.alertForError()
+                }
+            })
+        }
     }
 
     func validation() -> Bool {
@@ -166,10 +172,4 @@ class ImportWalletEnterWalletNameViewController: UIViewController, UITextFieldDe
         return true
     }
 
-    func succeedAndExit() {
-        Answers.logSignUp(withMethod: setupWalletMethod.description, success: true, customAttributes: nil)
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        appDelegate?.window?.rootViewController = MainTabController.instantiate()
-    }
-    
 }

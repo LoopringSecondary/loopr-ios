@@ -73,7 +73,9 @@ class ImportWalletUsingMnemonicDataManager: ImportWalletProtocol {
         DispatchQueue.global().async {
             
             // imToken wallet doesn't use password to get ETH addresses.
+            // The password will be used as devicePassword.
             if self.walletType == WalletType.getImtokenWallet() {
+                self.devicePassword = self.password
                 self.password = ""
             }
 

@@ -83,10 +83,22 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
             return
         }
 
+        let version = "1.3.1"
+        let currentBuildVersion = AppServiceUpdateManager.shared.getBuildVersion()
+        if version.compare(currentBuildVersion, options: .numeric) == .orderedDescending {
+            // If version is less than 1.3.1
+            backCompatibility(password: password)
+        } else {
+            currentVersion(password: password)
+        }
+
+    }
+    
+    // TODO: will be deprecated after some weeks.
+    func backCompatibility(password: String) {
         // Only for keystore
         // If a wallet is imported using a private key or mnemonic without passowrd
         if appWallet.setupWalletMethod == .importUsingPrivateKey || (appWallet.setupWalletMethod == .importUsingMnemonic && appWallet.getPassword() == "") {
-
             var isSucceeded: Bool = false
             SVProgressHUD.show(withStatus: LocalizedString("Exporting keystore", comment: "") + "...")
             let dispatchGroup = DispatchGroup()
@@ -102,14 +114,14 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
                         print("Invalid private key")
                         return // .failure(KeystoreError.failedToImportPrivateKey)
                     }
-
+                    
                     print("Generating keystore")
                     let key = try KeystoreKey(password: password, key: data)
                     print("Finished generating keystore")
                     let keystoreData = try JSONEncoder().encode(key)
                     let json = try JSON(data: keystoreData)
                     self.keystore = json.description
-
+                    
                     isSucceeded = true
                     dispatchGroup.leave()
                 } catch {
@@ -129,7 +141,7 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
                     banner.show()
                 }
             }
-
+            
         } else {
             // Validate the password
             var validPassword = true
@@ -143,7 +155,7 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
                 self.errorInfoLabel.shake()
                 return
             }
-
+            
             switch exportWalletInfoType {
             case .mnemonic:
                 self.pushToBackupMnemonicViewController()
@@ -152,7 +164,31 @@ class ExportKeystoreEnterPasswordViewController: UIViewController, UITextFieldDe
             case .keystore:
                 self.pushToExportKeystoreSwipeViewController(keystore: self.appWallet.getKeystore())
             }
-
+            
+        }
+    }
+    
+    func currentVersion(password: String) {
+        // Validate the password
+        var validPassword = true
+        if password != appWallet.getKeystorePassword() {
+            validPassword = false
+            self.errorInfoLabel.text = LocalizedString("Wrong password", comment: "")
+        }
+        
+        guard validPassword else {
+            self.errorInfoLabel.alpha = 1.0
+            self.errorInfoLabel.shake()
+            return
+        }
+        
+        switch exportWalletInfoType {
+        case .mnemonic:
+            self.pushToBackupMnemonicViewController()
+        case .privateKey:
+            self.pushToDisplayPrivateKeyViewController()
+        case .keystore:
+            self.pushToExportKeystoreSwipeViewController(keystore: self.appWallet.getKeystore())
         }
     }
     

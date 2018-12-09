@@ -74,7 +74,7 @@ public class Wallet {
         */
         
         // takes less than 0.5 seconds
-        let password = "12345678"
+        let password = "12345678"  // salt
         let mnemonic = Mnemonic.generate(strength: 128)
         let wallet = Wallet(mnemonic: mnemonic, password: password)
         

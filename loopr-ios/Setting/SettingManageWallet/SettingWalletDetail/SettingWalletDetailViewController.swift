@@ -129,17 +129,11 @@ class SettingWalletDetailViewController: UIViewController, UITableViewDelegate, 
             viewController.appWallet = appWallet
             self.navigationController?.pushViewController(viewController, animated: true)
         case .backupMnemonic:
-            if appWallet.setupWalletMethod == .importUsingPrivateKey || (appWallet.setupWalletMethod == .importUsingMnemonic && appWallet.getPassword() == "") {
-                pushToBackupMnemonicViewController()
-            } else {
-                pushToAskPasswordViewController(exportWalletInfoType: .mnemonic)
-            }
+            pushToAskPasswordViewController(exportWalletInfoType: .mnemonic)
+
         case .exportPrivateKey:
-            if appWallet.setupWalletMethod == .importUsingPrivateKey || (appWallet.setupWalletMethod == .importUsingMnemonic && appWallet.getPassword() == "") {
-                pushToDisplayPrivateKeyViewController()
-            } else {
-                pushToAskPasswordViewController(exportWalletInfoType: .privateKey)
-            }
+            pushToAskPasswordViewController(exportWalletInfoType: .privateKey)
+
         case .exportKeystore:
             pushToAskPasswordViewController(exportWalletInfoType: .keystore)
         

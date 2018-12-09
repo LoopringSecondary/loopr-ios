@@ -86,7 +86,7 @@ class GenerateWalletEnterNameViewController: UIViewController, UITextFieldDelega
         
         if validWalletName {
             GenerateWalletDataManager.shared.setWalletName(walletNameTextField.text!)
-            let viewController = GenerateWalletEnterPasswordViewController()
+            let viewController = SetupWalletEnterPasswordViewController(setupWalletMethod: .create)
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }

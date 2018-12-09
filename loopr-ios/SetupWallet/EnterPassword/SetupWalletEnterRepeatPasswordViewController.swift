@@ -8,11 +8,26 @@
 
 import UIKit
 
-class GenerateWalletEnterRepeatPasswordViewController: UIViewController, UITextFieldDelegate {
+class SetupWalletEnterRepeatPasswordViewController: UIViewController, UITextFieldDelegate {
+
+    var setupWalletMethod: QRCodeMethod = .create
 
     var repeatPasswordTextField: UITextField = UITextField(frame: .zero)
     var continueButton = GradientButton(frame: .zero)
     var errorInfoLabel: UILabel = UILabel(frame: .zero)
+
+    convenience init(setupWalletMethod: QRCodeMethod) {
+        self.init(nibName: nil, bundle: nil)
+        self.setupWalletMethod = setupWalletMethod
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,25 +82,58 @@ class GenerateWalletEnterRepeatPasswordViewController: UIViewController, UITextF
     }
     
     @objc func pressedContinueButton(_ sender: Any) {
-        var validPassword = true
-        
         let password = repeatPasswordTextField.text ?? ""
-        if password != GenerateWalletDataManager.shared.password {
-            validPassword = false
-            errorInfoLabel.shake()
-            errorInfoLabel.alpha = 1.0
-            errorInfoLabel.text = LocalizedString("Password doesn't match", comment: "")
-        }
         
-        if validPassword {
-            GenerateWalletDataManager.shared.setPassword(repeatPasswordTextField.text!)
-            let viewController = BackupMnemonicViewController()
-            // Generate a new wallet every time.
-            _ = GenerateWalletDataManager.shared.newMnemonics()
-            viewController.mnemonics = GenerateWalletDataManager.shared.getMnemonics()
-            self.navigationController?.pushViewController(viewController, animated: true)
+        switch setupWalletMethod {
+        case .create:
+            if password != GenerateWalletDataManager.shared.password {
+                showErrorInfoLabel()
+            } else {
+                GenerateWalletDataManager.shared.setPassword(repeatPasswordTextField.text!)
+                let viewController = BackupMnemonicViewController()
+                // Generate a new wallet every time.
+                _ = GenerateWalletDataManager.shared.newMnemonics()
+                viewController.mnemonics = GenerateWalletDataManager.shared.getMnemonics()
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+        case .importUsingMnemonic:
+            // If this part of code is executed, it means using mnemonic without password.
+            if password != ImportWalletUsingMnemonicDataManager.shared.devicePassword {
+                showErrorInfoLabel()
+            } else {
+                ImportWalletUsingMnemonicDataManager.shared.complete(completion: {(_, error) in
+                    if error == nil {
+                        self.succeedAndExit(setupWalletMethod: self.setupWalletMethod)
+                    } else if error == .duplicatedAddress {
+                        self.alertForDuplicatedAddress()
+                    } else {
+                        self.alertForError()
+                    }
+                })
+            }
+        case .importUsingPrivateKey:
+            if password != ImportWalletUsingPrivateKeyDataManager.shared.devicePassword {
+                showErrorInfoLabel()
+            } else {
+                ImportWalletUsingPrivateKeyDataManager.shared.complete { (_, error) in
+                    if error == nil {
+                        self.succeedAndExit(setupWalletMethod: self.setupWalletMethod)
+                    } else if error == .duplicatedAddress {
+                        self.alertForDuplicatedAddress()
+                    } else {
+                        self.alertForError()
+                    }
+                }
+            }
+        default:
+            return
         }
-
+    }
+    
+    func showErrorInfoLabel() {
+        errorInfoLabel.shake()
+        errorInfoLabel.alpha = 1.0
+        errorInfoLabel.text = LocalizedString("Password doesn't match", comment: "")
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
