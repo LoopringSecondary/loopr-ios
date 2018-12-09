@@ -17,6 +17,11 @@ class SetupWalletEnterRepeatPasswordViewController: UIViewController, UITextFiel
     var errorInfoLabel: UILabel = UILabel(frame: .zero)
 
     convenience init(setupWalletMethod: QRCodeMethod) {
+        let validOptions: [QRCodeMethod] = [.create, .importUsingMnemonic, .importUsingPrivateKey]
+        guard validOptions.contains(setupWalletMethod) else {
+            preconditionFailure("Invalid setupWalletMethod")
+        }
+
         self.init(nibName: nil, bundle: nil)
         self.setupWalletMethod = setupWalletMethod
     }
