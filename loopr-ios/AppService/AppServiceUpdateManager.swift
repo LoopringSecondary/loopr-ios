@@ -32,6 +32,7 @@ class AppServiceUpdateManager {
     }
 
     func getLatestAppVersion(completion: @escaping (_ shouldDisplayUpdateNotification: Bool) -> Void) {
+        // Only apply for psy version, excluding app store version.
         guard let bundleIdentifier = Bundle.main.bundleIdentifier, bundleIdentifier == "leaf.prod.app" else {
             return
         }
