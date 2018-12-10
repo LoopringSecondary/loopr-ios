@@ -21,6 +21,10 @@ class FeatureConfigDataManager {
     
     // TODO: improve this feature.
     func getShowTradingFeature() -> Bool {
+        guard Production.isAppStoreVersion() else {
+            return true
+        }
+        
         let version = "1.3.1"
         let currentBuildVersion = AppServiceUpdateManager.shared.getBuildVersion()
         if version.compare(currentBuildVersion, options: .numeric) == .orderedDescending {
@@ -38,6 +42,10 @@ class FeatureConfigDataManager {
     }
     
     func setShowTradingFeature(_ newValue: Bool) {
+        guard Production.isAppStoreVersion() else {
+            return
+        }
+
         showTradingFeature = newValue
         /*
         let defaults = UserDefaults.standard
