@@ -276,8 +276,6 @@
 		AC76E4702047F1D3008BA229 /* CircleChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76E46F2047F1D3008BA229 /* CircleChart.swift */; };
 		AC76E47320493CAE008BA229 /* SettingLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76E47120493CAE008BA229 /* SettingLanguageViewController.swift */; };
 		AC76E47420493CAE008BA229 /* SettingLanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */; };
-		AC78FC35209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78FC33209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift */; };
-		AC78FC36209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC78FC34209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib */; };
 		AC78FC3820A176CE00992AE8 /* MarketDepthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78FC3720A176CE00992AE8 /* MarketDepthDataManager.swift */; };
 		AC798E432022B93A0071D477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC798E422022B93A0071D477 /* AppDelegate.swift */; };
 		AC798E4A2022B93A0071D477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC798E482022B93A0071D477 /* Main.storyboard */; };
@@ -783,8 +781,6 @@
 		AC76E46F2047F1D3008BA229 /* CircleChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleChart.swift; sourceTree = "<group>"; };
 		AC76E47120493CAE008BA229 /* SettingLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageViewController.swift; sourceTree = "<group>"; };
 		AC76E47220493CAE008BA229 /* SettingLanguageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLanguageViewController.xib; sourceTree = "<group>"; };
-		AC78FC33209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelAllOpenOrdersTableViewCell.swift; sourceTree = "<group>"; };
-		AC78FC34209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CancelAllOpenOrdersTableViewCell.xib; sourceTree = "<group>"; };
 		AC78FC3720A176CE00992AE8 /* MarketDepthDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDepthDataManager.swift; sourceTree = "<group>"; };
 		AC798E3F2022B93A0071D477 /* UP Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UP Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC798E422022B93A0071D477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1814,8 +1810,6 @@
 				ACAE97D521BE039000885D2C /* MarketDetailSwipeSection */,
 				AC131A1621101AEB001998A0 /* MarketDetailDepth */,
 				AC131A1721101B00001998A0 /* MarketDetailTradeHistory */,
-				AC78FC33209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift */,
-				AC78FC34209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib */,
 				AC9A273E20A6144700DB04AC /* OrderNoDataTableViewCell.swift */,
 				AC9A273F20A6144700DB04AC /* OrderNoDataTableViewCell.xib */,
 			);
@@ -2557,7 +2551,6 @@
 				94E49ED5213CE99700CDDA02 /* PreventScreenShotViewController.xib in Resources */,
 				AC299496212BE32E005C4D72 /* SearchTokenNoDataTableViewCell.xib in Resources */,
 				ACEC99BB21C6194B0081C57E /* MnemonicSelectAddressViewController.xib in Resources */,
-				AC78FC36209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.xib in Resources */,
 				ACEC99BF21C6194B0081C57E /* MnemonicViewController.xib in Resources */,
 				ACEC99B621C6194B0081C57E /* ImportWalletEnterWalletNameViewController.xib in Resources */,
 				941138C8210F12AD007FDC82 /* TimeToLiveViewController.xib in Resources */,
@@ -2819,7 +2812,6 @@
 				AC131A0D210E49FF001998A0 /* DefaultSwipeViewOptions.swift in Sources */,
 				AC3B48832103EA6B008A6771 /* TradeSelectionViewController.swift in Sources */,
 				ACB9116E2025575A00F14644 /* MarketNavigationViewController.swift in Sources */,
-				AC78FC35209FECB800992AE8 /* CancelAllOpenOrdersTableViewCell.swift in Sources */,
 				AC2ACA9E21030775009C77E7 /* TradeFAQPage.swift in Sources */,
 				AC4F601420773E9D00F1D954 /* EthError.swift in Sources */,
 				94BFF9D221073EE300A0BE8B /* SetGasViewController.swift in Sources */,
