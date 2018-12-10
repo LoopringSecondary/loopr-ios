@@ -116,6 +116,7 @@ extension MarketDetailViewController {
             let nib = Bundle.main.loadNibNamed("MarketDetailDepthTableViewCell", owner: self, options: nil)
             cell = nib![0] as? MarketDetailDepthTableViewCell
             cell?.maxAmountInDepthView = maxAmountInDepthView
+            cell?.minSellPrice = minSellPrice
             cell?.delegate = self
         }
         if indexPath.row < buys.count {
