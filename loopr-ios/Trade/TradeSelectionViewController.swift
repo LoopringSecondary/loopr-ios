@@ -29,8 +29,6 @@ class TradeSelectionViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.theme_backgroundColor = ColorPicker.backgroundColor
         
-        self.navigationItem.title = LocalizedString("Trade", comment: "")
-        
         button1.cornerRadius = 8
         button1.theme_setTitleColor(GlobalPicker.textColor, forState: .normal)
         button1.theme_setBackgroundImage(ColorPicker.button, forState: .normal)
@@ -69,6 +67,8 @@ class TradeSelectionViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationItem.title = LocalizedString("Trade", comment: "")
         
         button1.isUserInteractionEnabled = true
         
