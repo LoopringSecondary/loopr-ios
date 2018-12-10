@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum MarketDetailSection: Int {
+    case depthAndTradeHistory = 3
+}
+
 class MarketDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MarketDetailDepthTableViewCellDelegate {
 
     var market: Market!
@@ -24,9 +28,11 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     var buys: [Depth] = []
     var sells: [Depth] = []
     var maxAmountInDepthView: Double = 0
+    var isDepthLaunching: Bool = true
     
     // Trade History
     var orderFills: [OrderFill] = []
+    var isTradeHistoryLaunching: Bool = true
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -169,7 +175,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         switch section {
         case 2:
             return getHeightForHeaderInSwipeSection()
-        case 3:
+        case MarketDetailSection.depthAndTradeHistory.rawValue:
             return swipeViewIndex == 0 ? getHeightForHeaderInSectionDepth() : getHeightForHeaderInSectionTradeHistory()
         default:
             return 0
@@ -180,7 +186,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         switch section {
         case 2:
             return getHeaderViewInSwipeSection()
-        case 3:
+        case MarketDetailSection.depthAndTradeHistory.rawValue:
             return swipeViewIndex == 0 ? getHeaderViewInSectionDepth() : getHeaderViewInSectionTradeHistory()
         default:
             return nil
@@ -195,7 +201,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             return 1
         case 2:
             return 0
-        case 3:
+        case MarketDetailSection.depthAndTradeHistory.rawValue:
             return swipeViewIndex == 0 ? getNumberOfRowsInSectionDepth() : getNumberOfRowsInSectionTradeHistory()
         default:
             return 0
@@ -208,8 +214,8 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             return MarketDetailSummaryTableViewCell.getHeight()
         case 1:
             return MarketDetailPriceChartTableViewCell.getHeight()
-        case 3:
-            return swipeViewIndex == 0 ? MarketDetailDepthTableViewCell.getHeight() : MarketDetailTradeHistoryTableViewCell.getHeight()
+        case MarketDetailSection.depthAndTradeHistory.rawValue:
+            return swipeViewIndex == 0 ? getHeightForRowAtSectionDepth(indexPath: indexPath) : getHeightForRowAtSectionTradeHistory(indexPath: indexPath)
         default:
             return 0
         }
@@ -221,7 +227,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             return getMarketDetailSummaryTableViewCell()
         case 1:
             return getMarketDetailPriceChartTableViewCell()
-        case 3:
+        case MarketDetailSection.depthAndTradeHistory.rawValue:
             return swipeViewIndex == 0 ? getMarketDetailDepthTableViewCell(cellForRowAt: indexPath) : getMarketDetailTradeHistoryTableViewCell(cellForRowAt: indexPath)
         default:
             return UITableViewCell()

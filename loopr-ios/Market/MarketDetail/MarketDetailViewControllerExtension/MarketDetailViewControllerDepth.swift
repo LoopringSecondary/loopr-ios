@@ -31,22 +31,40 @@ extension MarketDetailViewController {
             }
             
             DispatchQueue.main.async {
-                /*
-                if self.isLaunching == true {
-                    self.isLaunching = false
+                if self.isDepthLaunching == true {
+                    self.isDepthLaunching = false
                 }
-                 */
                 self.tableView.reloadData()
             }
         })
     }
     
+    private func isDepthEmpty() -> Bool {
+        return buys.count == 0 && sells.count == 0 && !isDepthLaunching
+    }
+    
     func getNumberOfRowsInSectionDepth() -> Int {
+        guard !isDepthEmpty() else {
+            return 1
+        }
+        
         let maxCount = buys.count > sells.count ? buys.count : sells.count
         if maxCount > 10 {
             return 10
         } else {
             return maxCount
+        }
+    }
+    
+    func getHeightForRowAtSectionDepth(indexPath: IndexPath) -> CGFloat {
+        if isDepthEmpty() {
+            return OrderNoDataTableViewCell.getHeight() - 200
+        } else {
+            if indexPath.row == tableView.numberOfRows(inSection: MarketDetailSection.depthAndTradeHistory.rawValue) - 1 {
+                return MarketDetailDepthTableViewCell.getHeight() + 10
+            } else {
+                return MarketDetailDepthTableViewCell.getHeight()
+            }
         }
     }
     
@@ -110,31 +128,42 @@ extension MarketDetailViewController {
         return headerView
     }
     
-    func getMarketDetailDepthTableViewCell(cellForRowAt indexPath: IndexPath) -> MarketDetailDepthTableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: MarketDetailDepthTableViewCell.getCellIdentifier()) as? MarketDetailDepthTableViewCell
-        if cell == nil {
-            let nib = Bundle.main.loadNibNamed("MarketDetailDepthTableViewCell", owner: self, options: nil)
-            cell = nib![0] as? MarketDetailDepthTableViewCell
-            cell?.maxAmountInDepthView = maxAmountInDepthView
-            cell?.minSellPrice = minSellPrice
-            cell?.delegate = self
-        }
-        if indexPath.row < buys.count {
-            cell?.buyDepth = buys[indexPath.row]
-        }
-        if indexPath.row < sells.count {
-            cell?.sellDepth = sells[indexPath.row]
-        }
-        cell?.update()
-        
-        if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
-            cell?.baseViewBuy.round(corners: [.bottomLeft], radius: 6)
-            cell?.baseViewSell.round(corners: [.bottomRight], radius: 6)
+    func getMarketDetailDepthTableViewCell(cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if isDepthEmpty() {
+            var cell = tableView.dequeueReusableCell(withIdentifier: OrderNoDataTableViewCell.getCellIdentifier()) as? OrderNoDataTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("OrderNoDataTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? OrderNoDataTableViewCell
+            }
+            cell?.noDataLabel.text = LocalizedString("No-data-orderbook", comment: "")
+            cell?.noDataImageView.image = UIImage(named: "No-data-orderbook")
+            return cell!
         } else {
-            cell?.baseViewBuy.round(corners: [], radius: 0)
-            cell?.baseViewSell.round(corners: [], radius: 0)
+            var cell = tableView.dequeueReusableCell(withIdentifier: MarketDetailDepthTableViewCell.getCellIdentifier()) as? MarketDetailDepthTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("MarketDetailDepthTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? MarketDetailDepthTableViewCell
+                cell?.maxAmountInDepthView = maxAmountInDepthView
+                cell?.minSellPrice = minSellPrice
+                cell?.delegate = self
+            }
+            if indexPath.row < buys.count {
+                cell?.buyDepth = buys[indexPath.row]
+            }
+            if indexPath.row < sells.count {
+                cell?.sellDepth = sells[indexPath.row]
+            }
+            cell?.update()
+            
+            if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
+                cell?.baseViewBuy.round(corners: [.bottomLeft], radius: 6)
+                cell?.baseViewSell.round(corners: [.bottomRight], radius: 6)
+            } else {
+                cell?.baseViewBuy.round(corners: [], radius: 0)
+                cell?.baseViewSell.round(corners: [], radius: 0)
+            }
+            return cell!
         }
-        return cell!
     }
     
     func clickedMarketDetailDepthTableViewCell(amount: String, price: String) {

@@ -15,18 +15,35 @@ extension MarketDetailViewController {
             self.preivousMarketName = self.market.name
             self.orderFills = orderFills
             DispatchQueue.main.async {
-                /*
-                if self.isLaunching == true {
-                    self.isLaunching = false
+                if self.isTradeHistoryLaunching == true {
+                    self.isTradeHistoryLaunching = false
                 }
-                */
                 self.tableView.reloadData()
             }
         })
     }
     
+    private func isTradeHistoryEmpty() -> Bool {
+        return orderFills.count == 0 && !isTradeHistoryLaunching
+    }
+    
     func getNumberOfRowsInSectionTradeHistory() -> Int {
+        guard !isTradeHistoryEmpty() else {
+            return 1
+        }
         return orderFills.count
+    }
+    
+    func getHeightForRowAtSectionTradeHistory(indexPath: IndexPath) -> CGFloat {
+        if isTradeHistoryEmpty() {
+            return OrderNoDataTableViewCell.getHeight() - 200
+        } else {
+            if indexPath.row == tableView.numberOfRows(inSection: MarketDetailSection.depthAndTradeHistory.rawValue) - 1 {
+                return MarketDetailTradeHistoryTableViewCell.getHeight() + 10
+            } else {
+                return MarketDetailTradeHistoryTableViewCell.getHeight()
+            }
+        }
     }
     
     func getHeightForHeaderInSectionTradeHistory() -> CGFloat {
@@ -81,23 +98,34 @@ extension MarketDetailViewController {
         return headerView
     }
 
-    func getMarketDetailTradeHistoryTableViewCell(cellForRowAt indexPath: IndexPath) -> MarketDetailTradeHistoryTableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: MarketDetailTradeHistoryTableViewCell.getCellIdentifier()) as? MarketDetailTradeHistoryTableViewCell
-        if cell == nil {
-            let nib = Bundle.main.loadNibNamed("MarketDetailTradeHistoryTableViewCell", owner: self, options: nil)
-            cell = nib![0] as? MarketDetailTradeHistoryTableViewCell
-        }
-        cell?.orderFill = orderFills[indexPath.row]
-        cell?.update()
-        
-        if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
-            cell?.baseViewBuy.round(corners: [.bottomLeft], radius: 6)
-            cell?.baseViewSell.round(corners: [.bottomRight], radius: 6)
+    func getMarketDetailTradeHistoryTableViewCell(cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if isTradeHistoryEmpty() {
+            var cell = tableView.dequeueReusableCell(withIdentifier: OrderNoDataTableViewCell.getCellIdentifier()) as? OrderNoDataTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("OrderNoDataTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? OrderNoDataTableViewCell
+            }
+            cell?.noDataLabel.text = LocalizedString("No-data-transaction", comment: "")
+            cell?.noDataImageView.image = UIImage(named: "No-data-transaction")
+            return cell!
         } else {
-            cell?.baseViewBuy.round(corners: [], radius: 0)
-            cell?.baseViewSell.round(corners: [], radius: 0)
+            var cell = tableView.dequeueReusableCell(withIdentifier: MarketDetailTradeHistoryTableViewCell.getCellIdentifier()) as? MarketDetailTradeHistoryTableViewCell
+            if cell == nil {
+                let nib = Bundle.main.loadNibNamed("MarketDetailTradeHistoryTableViewCell", owner: self, options: nil)
+                cell = nib![0] as? MarketDetailTradeHistoryTableViewCell
+            }
+            cell?.orderFill = orderFills[indexPath.row]
+            cell?.update()
+            
+            if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
+                cell?.baseViewBuy.round(corners: [.bottomLeft], radius: 6)
+                cell?.baseViewSell.round(corners: [.bottomRight], radius: 6)
+            } else {
+                cell?.baseViewBuy.round(corners: [], radius: 0)
+                cell?.baseViewSell.round(corners: [], radius: 0)
+            }
+            return cell!
         }
-        return cell!
     }
 
 }
