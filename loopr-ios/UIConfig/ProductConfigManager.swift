@@ -26,16 +26,7 @@ enum Production: String {
         }
         return .upwallet
     }
-    
-    static func isAppStoreVersion() -> Bool {
-        if let bundleIdentifier = Bundle.main.bundleIdentifier {
-            if bundleIdentifier == "io.upwallet.app" {
-                return true
-            }
-        }
-        return false
-    }
-    
+
     static func getProduct() -> String {
         return getCurrent().rawValue
     }
