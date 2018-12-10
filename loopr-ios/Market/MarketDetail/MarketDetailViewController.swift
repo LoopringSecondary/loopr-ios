@@ -87,9 +87,9 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
         // 1 year range, use 1 week interval, 52 counts
         // 2 year range, use 1 week interval, 104 counts
         
-        MarketDataManager.shared.getTrendsFromServer(market: market.name, trendRange: TrendRange.oneMonth, completionHandler: { (trends, _) in
-            self.trends = trends
-        })
+        MarketDataManager.shared.getAllTrends(market: market.name) { (_) in
+            self.trends = MarketDataManager.shared.getTrends(trendRange: TrendRange.oneMonth)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -250,17 +250,8 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
 extension MarketDetailViewController: MarketDetailPriceChartTableViewCellDelegate {
 
     func trendRangeUpdated(newTrendRange: TrendRange) {
-        MarketDataManager.shared.getTrendsFromServer(market: market.name, trendRange: newTrendRange, completionHandler: { (trends, _) in
-            self.trends = trends
-            DispatchQueue.main.async {
-                /*
-                 if self.isLaunching == true {
-                 self.isLaunching = false
-                 }
-                 */
-                self.tableView.reloadData()
-            }
-        })
+        self.trends = MarketDataManager.shared.getTrends(trendRange: newTrendRange)
+        self.tableView.reloadData()
     }
 
     func trendDidHighlight(trend: Trend?) {

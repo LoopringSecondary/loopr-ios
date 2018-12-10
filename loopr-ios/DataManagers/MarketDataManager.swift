@@ -12,15 +12,25 @@ class MarketDataManager {
     
     static let shared = MarketDataManager()
     
-    private var trends: [Trend]
+    // For a specified market
+    private var oneHourTrends: [Trend]
+    private var twoHoursTrends: [Trend]
+    private var fourHoursTrends: [Trend]
+    private var oneDayTrends: [Trend]
+    private var oneWeekTrends: [Trend]
+    
     private var markets: [Market]
-    private var currentAppWallet: AppWallet?
     
     private var favoriteSequence: [String]
     
     private init() {
         markets = []
-        trends = []
+
+        oneHourTrends = []
+        twoHoursTrends = []
+        fourHoursTrends = []
+        oneDayTrends = []
+        oneWeekTrends = []
 
         let defaults = UserDefaults.standard
         
@@ -77,18 +87,83 @@ class MarketDataManager {
         return result
     }
     
-    func getTrendsFromServer(market: String, trendRange: TrendRange, completionHandler: @escaping (_ trends: [Trend], _ error: Error?) -> Void) {
-        LoopringAPIRequest.getTrend(market: market, interval: trendRange.getTrendInterval().description, completionHandler: { (trends, error) in
-            guard error == nil else {
-                return
-            }
-            
-            if trends.count >= trendRange.getCount() {
-                completionHandler(Array(trends[0..<trendRange.getCount()].reversed()), nil)
+    func getAllTrends(market: String, completionHandler: @escaping (_ error: Error?) -> Void) {
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        LoopringAPIRequest.getTrend(market: market, interval: TrendInterval.oneHour.description, completionHandler: { (trends, error) in
+            if error != nil {
+                self.oneHourTrends = []
             } else {
-                completionHandler(trends.reversed(), nil)
+                self.oneHourTrends = trends
             }
+            dispatchGroup.leave()
         })
+
+        dispatchGroup.enter()
+        LoopringAPIRequest.getTrend(market: market, interval: TrendInterval.twoHours.description, completionHandler: { (trends, error) in
+            if error != nil {
+                self.twoHoursTrends = []
+            } else {
+                self.twoHoursTrends = trends
+            }
+            dispatchGroup.leave()
+        })
+        
+        dispatchGroup.enter()
+        LoopringAPIRequest.getTrend(market: market, interval: TrendInterval.fourHours.description, completionHandler: { (trends, error) in
+            if error != nil {
+                self.fourHoursTrends = []
+            } else {
+                self.fourHoursTrends = trends
+            }
+            dispatchGroup.leave()
+        })
+        
+        dispatchGroup.enter()
+        LoopringAPIRequest.getTrend(market: market, interval: TrendInterval.oneDay.description, completionHandler: { (trends, error) in
+            if error != nil {
+                self.oneDayTrends = []
+            } else {
+                self.oneDayTrends = trends
+            }
+            dispatchGroup.leave()
+        })
+        
+        dispatchGroup.enter()
+        LoopringAPIRequest.getTrend(market: market, interval: TrendInterval.oneWeek.description, completionHandler: { (trends, error) in
+            if error != nil {
+                self.oneWeekTrends = []
+            } else {
+                self.oneWeekTrends = trends
+            }
+            dispatchGroup.leave()
+        })
+        
+        dispatchGroup.notify(queue: .main) {
+            completionHandler(nil)
+        }
+    }
+    
+    func getTrends(trendRange: TrendRange) -> [Trend] {
+        var trends: [Trend] = []
+        switch trendRange.getTrendInterval() {
+        case .oneHour:
+            trends = oneHourTrends
+        case .twoHours:
+            trends = twoHoursTrends
+        case .fourHours:
+            trends = fourHoursTrends
+        case .oneDay:
+            trends = oneDayTrends
+        case .oneWeek:
+            trends = oneWeekTrends
+        }
+        if trends.count >= trendRange.getCount() {
+            return Array(trends[0..<trendRange.getCount()].reversed())
+        } else {
+            return trends.reversed()
+        }
     }
     
     func getMarket(byTradingPair tradingPair: String) -> Market? {
