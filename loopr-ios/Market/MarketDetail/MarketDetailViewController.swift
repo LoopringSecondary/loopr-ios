@@ -9,6 +9,7 @@
 import UIKit
 
 enum MarketDetailSection: Int {
+    case swipe = 2
     case depthAndTradeHistory = 3
 }
 
@@ -173,7 +174,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
-        case 2:
+        case MarketDetailSection.swipe.rawValue:
             return getHeightForHeaderInSwipeSection()
         case MarketDetailSection.depthAndTradeHistory.rawValue:
             return swipeViewIndex == 0 ? getHeightForHeaderInSectionDepth() : getHeightForHeaderInSectionTradeHistory()
@@ -184,7 +185,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
-        case 2:
+        case MarketDetailSection.swipe.rawValue:
             return getHeaderViewInSwipeSection()
         case MarketDetailSection.depthAndTradeHistory.rawValue:
             return swipeViewIndex == 0 ? getHeaderViewInSectionDepth() : getHeaderViewInSectionTradeHistory()
@@ -199,7 +200,7 @@ class MarketDetailViewController: UIViewController, UITableViewDelegate, UITable
             return 1
         case 1:
             return 1
-        case 2:
+        case MarketDetailSection.swipe.rawValue:
             return 0
         case MarketDetailSection.depthAndTradeHistory.rawValue:
             return swipeViewIndex == 0 ? getNumberOfRowsInSectionDepth() : getNumberOfRowsInSectionTradeHistory()

@@ -305,7 +305,6 @@ class LoopringAPIRequest {
             let json = JSON(data)
             let offerData = json["result"]
             for subJson in offerData.arrayValue {
-                print(subJson)
                 let trend = Trend(json: subJson)
                 trends.append(trend)
             }
