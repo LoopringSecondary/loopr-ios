@@ -173,15 +173,6 @@ class MarketDetailPriceChartTableViewCell: UITableViewCell {
     func setDataForTransactionBarChartView() {
         var upVals: [CandleChartDataEntry] = []
 
-        // If all trends don't have any volume, hide the bar chart.
-        let trendsWithNoVol = trends.filter { $0.vol > 0 }
-        if trendsWithNoVol.count == 0 {
-            // transactionBarChartView.isHidden = true
-            // return
-        } else {
-            // transactionBarChartView.isHidden = false
-        }
-        
         for (i, trend) in trends.enumerated() {
             let dataEntry: CandleChartDataEntry
             if trend.vol == 0 {
