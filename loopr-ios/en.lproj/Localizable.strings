@@ -96,7 +96,7 @@
 "Password doesn't match" = "Password doesn't match";
 "Please enter password" = "Please enter password";
 "Keystore Password" = "Keystore Password";
-"Mnemonic Password (optional)" = "Mnemonic Password (optional)";
+"Mnemonic Password" = "Mnemonic Password";
 
 /* Add custom token page */
 "Add Token" = "Add Token";

@@ -10,8 +10,7 @@ import UIKit
 
 // Only three cases:
 // 1. create wallet
-// 2. import mnemonic without password
-// 3. import private key
+// 2. import private key
 class SetupWalletEnterPasswordViewController: UIViewController, UITextFieldDelegate {
 
     var setupWalletMethod: QRCodeMethod = .create
@@ -21,7 +20,7 @@ class SetupWalletEnterPasswordViewController: UIViewController, UITextFieldDeleg
     var errorInfoLabel: UITextView = UITextView(frame: .zero)
     
     convenience init(setupWalletMethod: QRCodeMethod) {
-        let validOptions: [QRCodeMethod] = [.create, .importUsingMnemonic, .importUsingPrivateKey]
+        let validOptions: [QRCodeMethod] = [.create, .importUsingPrivateKey]
         guard validOptions.contains(setupWalletMethod) else {
             preconditionFailure("Invalid setupWalletMethod")
         }
@@ -120,10 +119,6 @@ class SetupWalletEnterPasswordViewController: UIViewController, UITextFieldDeleg
             case .create:
                 GenerateWalletDataManager.shared.setPassword(passwordTextField.text!)
                 let viewController = SetupWalletEnterRepeatPasswordViewController(setupWalletMethod: .create)
-                self.navigationController?.pushViewController(viewController, animated: true)
-            case .importUsingMnemonic:
-                ImportWalletUsingMnemonicDataManager.shared.devicePassword = passwordTextField.text!
-                let viewController = SetupWalletEnterRepeatPasswordViewController(setupWalletMethod: .importUsingMnemonic)
                 self.navigationController?.pushViewController(viewController, animated: true)
             case .importUsingPrivateKey:
                 ImportWalletUsingPrivateKeyDataManager.shared.devicePassword = passwordTextField.text!

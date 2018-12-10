@@ -114,7 +114,6 @@ class UnlockKeystoreViewController: UIViewController, UITextViewDelegate, UIText
     
     @IBAction func pressedUnlockButton(_ sender: Any) {
         print("pressedUnlockButton")
-        // TODO: Use notificatino to require
         let password = passwordTextField.text ?? ""
         guard password != "" else {
             let notificationTitle = LocalizedString("Please enter a password", comment: "")

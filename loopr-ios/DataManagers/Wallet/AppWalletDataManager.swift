@@ -199,7 +199,6 @@ class AppWalletDataManager {
             if password == "" {
                 localPassword = devicePassword
             }
-
             let key = try KeystoreKey(password: localPassword, key: data)
             
             let end = Date()

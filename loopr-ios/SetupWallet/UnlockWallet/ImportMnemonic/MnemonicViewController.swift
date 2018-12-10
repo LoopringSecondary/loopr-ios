@@ -47,7 +47,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
         passwordTextField.theme_textColor = GlobalPicker.textColor
         passwordTextField.theme_tintColor = GlobalPicker.textColor
         passwordTextField.font = FontConfigManager.shared.getRegularFont()
-        passwordTextField.placeholder = LocalizedString("Mnemonic Password (optional)", comment: "")
+        passwordTextField.placeholder = LocalizedString("Mnemonic Password", comment: "")
         passwordTextField.placeHolderColor = Themes.isDark() ? UIColor.init(rgba: "#ffffff66") : UIColor.dark3
         passwordTextField.contentMode = UIViewContentMode.bottom
         passwordTextField.textContentType = .password
@@ -131,9 +131,7 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
 
     @IBAction func pressUnlockButton(_ sender: Any) {
         print("pressUnlockButton")
-        let password = passwordTextField.text ?? ""
         let mnemonic = mnemonicWordTextView.text.trim()
-
         guard Mnemonic.isValid(mnemonic) else {
             let notificationTitle = LocalizedString("Invalid mnemonic. Please enter again.", comment: "")
             let banner = NotificationBanner.generate(title: notificationTitle, style: .danger)
@@ -142,6 +140,15 @@ class MnemonicViewController: UIViewController, UITextViewDelegate, UITextFieldD
             return
         }
         
+        let password = passwordTextField.text ?? ""
+        guard password != "" else {
+            let notificationTitle = LocalizedString("Please enter a password", comment: "")
+            let banner = NotificationBanner.generate(title: notificationTitle, style: .danger)
+            banner.duration = 1.5
+            banner.show()
+            return
+        }
+
         ImportWalletUsingMnemonicDataManager.shared.mnemonic = mnemonicWordTextView.text.trim()
         ImportWalletUsingMnemonicDataManager.shared.password = password
 

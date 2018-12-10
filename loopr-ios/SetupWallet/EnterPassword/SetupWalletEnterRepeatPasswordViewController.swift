@@ -17,7 +17,7 @@ class SetupWalletEnterRepeatPasswordViewController: UIViewController, UITextFiel
     var errorInfoLabel: UILabel = UILabel(frame: .zero)
 
     convenience init(setupWalletMethod: QRCodeMethod) {
-        let validOptions: [QRCodeMethod] = [.create, .importUsingMnemonic, .importUsingPrivateKey]
+        let validOptions: [QRCodeMethod] = [.create, .importUsingPrivateKey]
         guard validOptions.contains(setupWalletMethod) else {
             preconditionFailure("Invalid setupWalletMethod")
         }
@@ -100,21 +100,6 @@ class SetupWalletEnterRepeatPasswordViewController: UIViewController, UITextFiel
                 _ = GenerateWalletDataManager.shared.newMnemonics()
                 viewController.mnemonics = GenerateWalletDataManager.shared.getMnemonics()
                 self.navigationController?.pushViewController(viewController, animated: true)
-            }
-        case .importUsingMnemonic:
-            // If this part of code is executed, it means using mnemonic without password.
-            if password != ImportWalletUsingMnemonicDataManager.shared.devicePassword {
-                showErrorInfoLabel()
-            } else {
-                ImportWalletUsingMnemonicDataManager.shared.complete(completion: {(_, error) in
-                    if error == nil {
-                        self.succeedAndExit(setupWalletMethod: self.setupWalletMethod)
-                    } else if error == .duplicatedAddress {
-                        self.alertForDuplicatedAddress()
-                    } else {
-                        self.alertForError()
-                    }
-                })
             }
         case .importUsingPrivateKey:
             if password != ImportWalletUsingPrivateKeyDataManager.shared.devicePassword {

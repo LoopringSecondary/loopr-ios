@@ -96,7 +96,7 @@
 "Password doesn't match" = "密碼不相符";
 "Please enter password" = "請輸入密碼";
 "Keystore Password" = "Keystore密碼";
-"Mnemonic Password (optional)" = "助記詞密碼(可選擇)";
+"Mnemonic Password" = "助記詞密碼";
 
 /* Add custom token page */
 "Add Token" = "添加代幣";

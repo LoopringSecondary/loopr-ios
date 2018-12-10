@@ -89,7 +89,7 @@
 "Password doesn't match" = "비밀번호가 맞지 않습니다";
 "Please enter password" = "비밀번호를 입력해주세요";
 "Keystore Password" = "키스토어 비밀번호";
-"Mnemonic Password (optional)" = "니모닉 비밀번호 (선택 사항)";
+"Mnemonic Password" = "니모닉 비밀번호";
 
 /* Add custom token page */
 "Add Token" = "토큰 입력";

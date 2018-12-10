@@ -24,7 +24,7 @@ class WalletType: Equatable {
         return WalletType(name: "Loopring Wallet", derivationPath: "m/44'/60'/0'/0")
     }
     
-    class func getImtokenWallet() -> WalletType {
+    private class func getImtokenWallet() -> WalletType {
         return WalletType(name: "imToken", derivationPath: "m/44'/60'/0'/0")
     }
     

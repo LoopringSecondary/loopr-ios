@@ -32,6 +32,7 @@ class AppWallet: NSObject, NSCoding {
     private final let keystorePassword: String = "123456"
     */
 
+    // If the password is empty and the devicePassword is not, the wallet type is other wallets.
     private final var devicePassword: String
     
     // The wallet name in the app. Users can update later.
