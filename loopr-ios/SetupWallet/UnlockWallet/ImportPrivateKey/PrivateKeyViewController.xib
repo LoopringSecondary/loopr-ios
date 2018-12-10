@@ -36,7 +36,7 @@
                         <action selector="pressedUnlockButton:" destination="-1" eventType="touchUpInside" id="1Qg-D6-GgN"/>
                     </connections>
                 </button>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please input your private key" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ujb-qZ-KOa">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please enter your private key" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ujb-qZ-KOa">
                     <rect key="frame" x="15" y="28" width="384" height="140"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <color key="tintColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -44,7 +44,7 @@
                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="140" id="JfY-6r-mik"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <textInputTraits key="textInputTraits"/>
                 </textView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

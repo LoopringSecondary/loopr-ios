@@ -47,7 +47,7 @@
 "Initializing the wallet" = "지갑 초기 설정";
 "Import Wallet" = "지갑 불러오기";
 "Generate Wallet" = "지갑 생성하기";
-"Please input your private key" = "개인키를 입력해주세요";
+"Please enter your private key" = "개인키를 입력해주세요";
 "Please use space to seperate the mnemonic words" = "니모닉 낱말을 구분하기 위해서 꼭 띄어쓰기를 해주세요";
 "Backup Mnemonic" = "니모닉 백업";
 "Verify Mnemonic" = "니모닉 검증";
@@ -59,7 +59,7 @@
 "Please enter mnemonic" = "니모닉을 입력해주세요";
 "Please enter private key" = "개인키를 입력해주세요";
 "Please enter the keystore" = "키스토어를 입력해주세요";
-"Please input your private key" = "개인키를 입력해주세요";
+"Please enter your private key" = "개인키를 입력해주세요";
 "Select Your Wallet Type" = "지갑을 선택해주세요";
 "Select Your Address" = "주소를 선택해주세요";
 "Revealing your mnemonic phrases on web sites is highly dangerous. If the site is compromised or you accidentally visit a phishing website, your assets in all associated addresses can be stolen." = "온라인 상에서 개인 니모닉을 공개하는 행동은 매우 위험합니다. 해당 웹사이트가 해킹 위험에 노출되거나, 실수로라도 피싱 웹사이트에 정보가 공개된다면 지갑 안의 자산들이 도난 당할 수 있습니다.";

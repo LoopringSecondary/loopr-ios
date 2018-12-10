@@ -50,7 +50,7 @@
 "Initializing the wallet" = "Initializing the wallet";
 "Import Wallet" = "Import Wallet";
 "Generate Wallet" = "Generate Wallet";
-"Please input your private key" = "Please input your private key";
+"Please enter your private key" = "Please enter your private key";
 "Please use space to seperate the mnemonic words" = "Please use space to seperate the mnemonic words";
 "Backup Mnemonic" = "Backup Mnemonic";
 "Verify Mnemonic" = "Verify Mnemonic";
@@ -62,7 +62,7 @@
 "Please enter mnemonic" = "Please enter mnemonic";
 "Please enter private key" = "Please enter private key";
 "Please enter the keystore" = "Please enter the keystore";
-"Please input your private key" = "Please input your private key";
+"Please enter your private key" = "Please enter your private key";
 "Select Your Wallet Type" = "Select Your Wallet Type";
 "Select Your Address" = "Select Your Address";
 "Because you did a screen capture, we have updated the wallet mnemonics for you, and your screenshots have been voided! This is for your asset security." = "Because you did a screen capture, we have updated the wallet mnemonics for you, and your screenshots have been voided! This is for your asset security.";

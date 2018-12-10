@@ -38,7 +38,7 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
         privateKeyTextView.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffff66") : UIColor.dark3
         privateKeyTextView.theme_tintColor = GlobalPicker.textLightColor
         privateKeyTextView.delegate = self
-        privateKeyTextView.text = LocalizedString("Please input your private key", comment: "")
+        privateKeyTextView.text = LocalizedString("Please enter your private key", comment: "")
         privateKeyTextView.keyboardAppearance = Themes.isDark() ? .dark : .default
     }
 
@@ -77,7 +77,7 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if privateKeyTextView.text == LocalizedString("Please input your private key", comment: "") {
+        if privateKeyTextView.text == LocalizedString("Please enter your private key", comment: "") {
             privateKeyTextView.text = ""
         }
         privateKeyTextView.theme_textColor = GlobalPicker.textColor
@@ -86,7 +86,7 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if privateKeyTextView.text == "" {
-            privateKeyTextView.text = LocalizedString("Please input your private key", comment: "")
+            privateKeyTextView.text = LocalizedString("Please enter your private key", comment: "")
             privateKeyTextView.textColor = Themes.isDark() ? UIColor.init(rgba: "#ffffff66") : UIColor.dark3
         } else {
             privateKeyTextView.theme_textColor = GlobalPicker.textColor
@@ -97,7 +97,7 @@ class PrivateKeyViewController: UIViewController, UITextViewDelegate {
     @IBAction func pressedUnlockButton(_ sender: Any) {
         print("pressedUnlockButton")
         guard privateKeyTextView.text.trim() != "" else {
-            let banner = NotificationBanner.generate(title: LocalizedString("Please input your private key", comment: ""), style: .danger)
+            let banner = NotificationBanner.generate(title: LocalizedString("Please enter your private key", comment: ""), style: .danger)
             banner.duration = 1.5
             banner.show()
             return

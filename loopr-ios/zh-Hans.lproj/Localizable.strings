@@ -50,7 +50,7 @@
 "Initializing the wallet" = "钱包正在初始化";
 "Import Wallet" = "导入钱包";
 "Generate Wallet" = "创建钱包";
-"Please input your private key" = "请输入您的私钥";
+"Please enter your private key" = "请输入您的私钥";
 "Please use space to seperate the mnemonic words" = "请用空格隔开助记词";
 "Backup Mnemonic" = "备份助记词";
 "Verify Mnemonic" = "助记词验证";
@@ -62,7 +62,7 @@
 "Please enter mnemonic" = "请输入助记词";
 "Please enter private key" = "请输入私钥";
 "Please enter the keystore" = "请输入keystore";
-"Please input your private key" = "请输入您的私钥";
+"Please enter your private key" = "请输入您的私钥";
 "Select Your Wallet Type" = "请选择您的钱包类型";
 "Select Your Address" = "请选择您的地址";
 "Because you did a screen capture, we have updated the wallet mnemonics for you, and your screenshots have been voided! This is for your asset security." = "因为您做了截屏操作，我们为您更新了钱包助记词，您的截屏已经作废！这是为了您资产安全着想。";
