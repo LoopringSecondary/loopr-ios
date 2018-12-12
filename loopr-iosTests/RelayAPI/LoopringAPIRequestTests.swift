@@ -121,18 +121,7 @@ class LoopringAPIRequestTests: XCTestCase {
     
     // getTrend may be updated.
     func _testGetTrend() {
-        let expectation = XCTestExpectation()
-        LoopringAPIRequest.getTrend(market: "LRC-WETH", interval: "2Hr") { trends, error in
-            guard error == nil else {
-                print("error=\(String(describing: error))")
-                XCTFail()
-                return
-            }
-            XCTAssertNotNil(trends)
-            XCTAssertNotEqual(trends!.count, 0)
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 10.0)
+        
     }
 
     func testGetRingMined() {

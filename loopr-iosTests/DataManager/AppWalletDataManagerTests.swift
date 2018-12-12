@@ -57,5 +57,7 @@ class AppWalletDataManagerTests: XCTestCase {
         XCTAssertEqual(currentWallet?.address, "0xD964210243c83e4eA59D357824356493c21F8842")
         */
     }
+    
+    
 
 }
