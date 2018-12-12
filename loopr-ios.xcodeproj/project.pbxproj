@@ -11,6 +11,7 @@
 		6630916821005B54006DA630 /* AssetSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6630916621005B54006DA630 /* AssetSwipeViewController.swift */; };
 		6630916921005B54006DA630 /* AssetSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6630916721005B54006DA630 /* AssetSwipeViewController.xib */; };
 		940076B220554A4100DDA37D /* LoopringSocketIORequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940076B120554A4100DDA37D /* LoopringSocketIORequest.swift */; };
+		9401C4D321C0F89E00A01E0B /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 9401C4D221C0F89E00A01E0B /* data.json */; };
 		940B44D52060F45B00ADE2B9 /* SendAssetDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B44D42060F45B00ADE2B9 /* SendAssetDataManagerTests.swift */; };
 		940B451E2060F67E00ADE2B9 /* GenerateWalletDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45102060F67B00ADE2B9 /* GenerateWalletDataManager.swift */; };
 		940B451F2060F67E00ADE2B9 /* AppWalletDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B45112060F67B00ADE2B9 /* AppWalletDataManager.swift */; };
@@ -515,6 +516,7 @@
 		8661C89E9F8F07796FD7DF9D /* Pods-loopr-iosUITests.loopr.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loopr-iosUITests.loopr.xcconfig"; path = "Pods/Target Support Files/Pods-loopr-iosUITests/Pods-loopr-iosUITests.loopr.xcconfig"; sourceTree = "<group>"; };
 		929BB32EF62C4BD6BC1DFC8F /* Pods_loopr_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loopr_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		940076B120554A4100DDA37D /* LoopringSocketIORequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopringSocketIORequest.swift; sourceTree = "<group>"; };
+		9401C4D221C0F89E00A01E0B /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		940B44D42060F45B00ADE2B9 /* SendAssetDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendAssetDataManagerTests.swift; sourceTree = "<group>"; };
 		940B45102060F67B00ADE2B9 /* GenerateWalletDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateWalletDataManager.swift; sourceTree = "<group>"; };
 		940B45112060F67B00ADE2B9 /* AppWalletDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppWalletDataManager.swift; sourceTree = "<group>"; };
@@ -1500,6 +1502,7 @@
 		AC70E848206604F000451047 /* Files */ = {
 			isa = PBXGroup;
 			children = (
+				9401C4D221C0F89E00A01E0B /* data.json */,
 				945800202058FEB500E08DEF /* tokens.json */,
 				940B451B2060F67E00ADE2B9 /* gas_limit.json */,
 			);
@@ -2559,6 +2562,7 @@
 				9BC2886A21ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.xib in Resources */,
 				AC31CE152057B5A400A30335 /* TradeReviewViewController.xib in Resources */,
 				ACB91172202557B100F14644 /* MarketViewController.xib in Resources */,
+				9401C4D321C0F89E00A01E0B /* data.json in Resources */,
 				ACA677C1207997F400D34A2F /* DisplayKeystoreViewController.xib in Resources */,
 				94678B2B210D902E00F550D3 /* SendResultViewController.xib in Resources */,
 				ACB9117620255A6600F14644 /* MarketTableViewCell.xib in Resources */,
