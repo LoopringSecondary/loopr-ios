@@ -16,7 +16,7 @@ def shared_pods
     
     pod 'Fabric'
     pod 'Crashlytics'
-
+    pod 'lottie-ios'
     pod 'WeChat_SDK', '~> 1.8.1'
     
     # Pods for keystone

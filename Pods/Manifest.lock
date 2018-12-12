@@ -4,12 +4,13 @@ PODS:
   - Charts (3.2.1):
     - Charts/Core (= 3.2.1)
   - Charts/Core (3.2.1)
-  - Crashlytics (3.11.1):
-    - Fabric (~> 1.8.1)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
   - CryptoSwift (0.8.3)
   - ESTabBarController-swift (2.6.4)
-  - Fabric (1.8.2)
+  - Fabric (1.9.0)
   - Geth (1.8.8)
+  - lottie-ios (2.5.2)
   - MarqueeLabel/Swift (3.2.0)
   - MKDropdownMenu (1.4)
   - NotificationBannerSwift (1.6.3):
@@ -23,7 +24,7 @@ PODS:
   - Starscream (3.0.6)
   - StepSlider (1.2.1)
   - SVProgressHUD (2.2.5)
-  - SwiftLint (0.27.0)
+  - SwiftLint (0.29.1)
   - SwiftTheme (0.4.3)
   - SwiftyMarkdown (0.6.0)
   - TrezorCrypto (0.0.9)
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - ESTabBarController-swift
   - Fabric
   - Geth (= 1.8.8)
+  - lottie-ios
   - MKDropdownMenu
   - NotificationBannerSwift (~> 1.6.3)
   - secp256k1_ios (from `https://github.com/shamatar/secp256k1_ios.git`)
@@ -51,7 +53,7 @@ DEPENDENCIES:
   - WeChat_SDK (~> 1.8.1)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - BigInt
     - Charts
     - Crashlytics
@@ -59,6 +61,7 @@ SPEC REPOS:
     - ESTabBarController-swift
     - Fabric
     - Geth
+    - lottie-ios
     - MarqueeLabel
     - MKDropdownMenu
     - NotificationBannerSwift
@@ -90,11 +93,12 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   BigInt: 8e8a52161c745cd3ab78e3dc346a9fbee51e6cf6
   Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
-  Crashlytics: ca7ab4bc304aa216bdc2e4c1a96389ee77252203
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   CryptoSwift: 033efc3523865d19cc6ab6612fa17a62613b5dfa
   ESTabBarController-swift: 58cca4ab7de980657d99a02181c1ff310983e975
-  Fabric: d2b22f443ba195d8a7cc204da230977c72733b40
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   Geth: 483ea44b5f930b72320218290b939ba8e2389aaf
+  lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
   MarqueeLabel: 440a502b91a9179bd98f9fff00ba1150650a1c0e
   MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
   NotificationBannerSwift: b231e4c3244848ef300e1c53ce027b9756b9b06f
@@ -105,12 +109,12 @@ SPEC CHECKSUMS:
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   StepSlider: e1c9b8f3363cf87224e19c000abe9f5146f80dd1
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
+  SwiftLint: 6772320e40b52049053a518c17db9b0634a0b45a
   SwiftTheme: 628345b948068a48d330d76dffb1a990ea5f90aa
   SwiftyMarkdown: 698fe6b283dddac69747f4e08ed0d067c18e0356
   TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
   WeChat_SDK: 681388233ac24a3ed6c4803cb3e0b6d3602050aa
 
-PODFILE CHECKSUM: be829efa158ef44d518c7a5a96e943f3e03fb044
+PODFILE CHECKSUM: e2abda97115a7d6e733b85b870f31cad1b42d7df
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.5.0

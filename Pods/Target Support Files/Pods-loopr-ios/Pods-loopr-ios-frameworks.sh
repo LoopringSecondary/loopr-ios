@@ -159,6 +159,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyMarkdown/SwiftyMarkdown.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TrezorCrypto/TrezorCrypto.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/secp256k1_ios/secp256k1_ios.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -178,6 +179,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyMarkdown/SwiftyMarkdown.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TrezorCrypto/TrezorCrypto.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/secp256k1_ios/secp256k1_ios.framework"
 fi
 if [[ "$CONFIGURATION" == "loopr" ]]; then
@@ -197,6 +199,7 @@ if [[ "$CONFIGURATION" == "loopr" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyMarkdown/SwiftyMarkdown.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TrezorCrypto/TrezorCrypto.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/secp256k1_ios/secp256k1_ios.framework"
 fi
 if [[ "$CONFIGURATION" == "vivwallet" ]]; then
@@ -216,6 +219,7 @@ if [[ "$CONFIGURATION" == "vivwallet" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyMarkdown/SwiftyMarkdown.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TrezorCrypto/TrezorCrypto.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/secp256k1_ios/secp256k1_ios.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
