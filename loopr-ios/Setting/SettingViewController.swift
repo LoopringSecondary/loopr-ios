@@ -134,7 +134,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             
             // TODO: Disable third party in App Store version.
-            numberOfRows -= 1
+            // numberOfRows -= 1
             
             return numberOfRows
         } else if section == 2 {
