@@ -50,7 +50,7 @@
 "Initializing the wallet" = "Initializing the wallet";
 "Import Wallet" = "Import Wallet";
 "Generate Wallet" = "Generate Wallet";
-"Please input your private key" = "Please input your private key";
+"Please enter your private key" = "Please enter your private key";
 "Please use space to seperate the mnemonic words" = "Please use space to seperate the mnemonic words";
 "Backup Mnemonic" = "Backup Mnemonic";
 "Verify Mnemonic" = "Verify Mnemonic";
@@ -62,7 +62,7 @@
 "Please enter mnemonic" = "Please enter mnemonic";
 "Please enter private key" = "Please enter private key";
 "Please enter the keystore" = "Please enter the keystore";
-"Please input your private key" = "Please input your private key";
+"Please enter your private key" = "Please enter your private key";
 "Select Your Wallet Type" = "Select Your Wallet Type";
 "Select Your Address" = "Select Your Address";
 "Because you did a screen capture, we have updated the wallet mnemonics for you, and your screenshots have been voided! This is for your asset security." = "Because you did a screen capture, we have updated the wallet mnemonics for you, and your screenshots have been voided! This is for your asset security.";
@@ -96,7 +96,7 @@
 "Password doesn't match" = "Password doesn't match";
 "Please enter password" = "Please enter password";
 "Keystore Password" = "Keystore Password";
-"Mnemonic Password (optional)" = "Mnemonic Password (optional)";
+"Mnemonic Password" = "Mnemonic Password";
 
 /* Add custom token page */
 "Add Token" = "Add Token";
@@ -118,6 +118,14 @@
 "Token Symbol" = "Token Symbol";
 "Decimals of Precision" = "Decimals of Precision";
 "Adding..." = "Adding...";
+
+/* Add contact page */
+"Add Contact" = "Add Contact";
+"Contact Name" = "Name";
+"Contact Address" = "Address";
+"Contact Note" = "Note, e.g. salary (optional)";
+"Contact Input" = "Please input a valid name";
+"QRCode error tip" = "Please make sure the QR code is type of wallet address.";
 
 /* DEX Trade page */
 "Loopring Order" = "Loopring Order";

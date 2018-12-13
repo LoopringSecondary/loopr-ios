@@ -63,6 +63,9 @@
 		948125672119B38E00453225 /* PartnerDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948125662119B38E00453225 /* PartnerDataManager.swift */; };
 		948952D3205A74BE009B03FE /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948952D2205A74BE009B03FE /* Transaction.swift */; };
 		948BAD8420C4EBFA001F279F /* RawTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948BAD8320C4EBFA001F279F /* RawTransaction.swift */; };
+		949253BC21C267D2000032E9 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949253BA21C267D2000032E9 /* AddContactViewController.swift */; };
+		949253BD21C267D2000032E9 /* AddContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949253BB21C267D2000032E9 /* AddContactViewController.xib */; };
+		949253BF21C27CA2000032E9 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949253BE21C27CA2000032E9 /* Contact.swift */; };
 		949629DB204E836400858F03 /* Depth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DA204E836400858F03 /* Depth.swift */; };
 		949629DF204E9C9800858F03 /* MinedRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DE204E9C9800858F03 /* MinedRing.swift */; };
 		949774F021181E38001BF79D /* TradeRatioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949774EE21181E38001BF79D /* TradeRatioViewController.swift */; };
@@ -572,6 +575,9 @@
 		948125662119B38E00453225 /* PartnerDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerDataManager.swift; sourceTree = "<group>"; };
 		948952D2205A74BE009B03FE /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		948BAD8320C4EBFA001F279F /* RawTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawTransaction.swift; sourceTree = "<group>"; };
+		949253BA21C267D2000032E9 /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
+		949253BB21C267D2000032E9 /* AddContactViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddContactViewController.xib; sourceTree = "<group>"; };
+		949253BE21C27CA2000032E9 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		949629DA204E836400858F03 /* Depth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Depth.swift; sourceTree = "<group>"; };
 		949629DE204E9C9800858F03 /* MinedRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinedRing.swift; sourceTree = "<group>"; };
 		949774EE21181E38001BF79D /* TradeRatioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeRatioViewController.swift; sourceTree = "<group>"; };
@@ -1079,6 +1085,15 @@
 			path = AuthorizeLogin;
 			sourceTree = "<group>";
 		};
+		949253B921C267B6000032E9 /* AddContact */ = {
+			isa = PBXGroup;
+			children = (
+				949253BA21C267D2000032E9 /* AddContactViewController.swift */,
+				949253BB21C267D2000032E9 /* AddContactViewController.xib */,
+			);
+			path = AddContact;
+			sourceTree = "<group>";
+		};
 		94A1C0D92128122700FD3A1F /* SettingPartner */ = {
 			isa = PBXGroup;
 			children = (
@@ -1508,6 +1523,7 @@
 		AC5E3E6D205DFABD0051ACFC /* SendAsset */ = {
 			isa = PBXGroup;
 			children = (
+				949253B921C267B6000032E9 /* AddContact */,
 				AC5E3E6E205DFB700051ACFC /* SendAssetViewController.swift */,
 				AC5E3E6F205DFB700051ACFC /* SendAssetViewController.xib */,
 				94BFF9CC21072EA000A0BE8B /* TokenSelectTableViewController.swift */,
@@ -2029,6 +2045,7 @@
 				AC4142052038B66F0089861D /* AppWallet.swift */,
 				AC7BC85B2145B477004204D3 /* AppWalletExtension.swift */,
 				ACB9115F20242E3F00F14644 /* Asset.swift */,
+				949253BE21C27CA2000032E9 /* Contact.swift */,
 				940B452C2061206800ADE2B9 /* Token.swift */,
 				ACB911632024504E00F14644 /* Order.swift */,
 				ACB911A220296B9900F14644 /* OriginalOrder.swift */,
@@ -2541,6 +2558,7 @@
 				94AA0AA0211578460092D2CE /* ConfirmationResultViewController.xib in Resources */,
 				940B45292060F67E00ADE2B9 /* gas_limit.json in Resources */,
 				AC2ACA5620FA0EC3009C77E7 /* Rubik-BoldItalic.ttf in Resources */,
+				949253BD21C267D2000032E9 /* AddContactViewController.xib in Resources */,
 				AC2ACA5A20FA1A5F009C77E7 /* WalletButtonTableViewCell.xib in Resources */,
 				942C49FE21292FF8008A6B4F /* ConvertETHResultViewController.xib in Resources */,
 				ACDA889C20F85F9C004FA10B /* InfoPlist.strings in Resources */,
@@ -2774,6 +2792,7 @@
 				AC68E0FF20C22E8A00BFA837 /* AddWalletError.swift in Sources */,
 				ACC31C78215B552B00582CC0 /* ExportWalletInfoType.swift in Sources */,
 				FF9C7DDC208D59EA004687AD /* SettingsBundleHelper.swift in Sources */,
+				949253BF21C27CA2000032E9 /* Contact.swift in Sources */,
 				ACB9119520278A4000F14644 /* Request.swift in Sources */,
 				AC76E47320493CAE008BA229 /* SettingLanguageViewController.swift in Sources */,
 				AC3756782038D7E200AADC60 /* UnlockKeystoreViewController.swift in Sources */,
@@ -2948,6 +2967,7 @@
 				AC9089F3214D7ABB00F421F1 /* SplashImageView.swift in Sources */,
 				ACB5DD9A202D5B7100140A09 /* DefaultNumericKeyboard.swift in Sources */,
 				940B45262060F67E00ADE2B9 /* ConvertDataManager.swift in Sources */,
+				949253BC21C267D2000032E9 /* AddContactViewController.swift in Sources */,
 				ACB6A1A120966BC0004C64BC /* DefaultNotificationBanner.swift in Sources */,
 				AC97BAD2212E928A0013F7B5 /* ColorPicker.swift in Sources */,
 				ACB5DDA0202D5B9900140A09 /* CGSizeExtension.swift in Sources */,
@@ -3242,7 +3262,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K46AVDG9WW;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3381,7 +3401,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K46AVDG9WW;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3581,7 +3601,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K46AVDG9WW;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3616,7 +3636,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K46AVDG9WW;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

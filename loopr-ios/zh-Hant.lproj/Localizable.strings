@@ -50,7 +50,7 @@
 "Initializing the wallet" = "錢包正在啟動";
 "Import Wallet" = "導入錢包";
 "Generate Wallet" = "創建錢包";
-"Please input your private key" = "請輸入您的私人鎖匙";
+"Please enter your private key" = "請輸入您的私人鎖匙";
 "Please use space to seperate the mnemonic words" = "請用空格隔開助記詞";
 "Backup Mnemonic" = "備份助記詞";
 "Verify Mnemonic" = "驗證助記詞";
@@ -62,7 +62,7 @@
 "Please enter mnemonic" = "請輸入助記詞";
 "Please enter private key" = "請輸入私人鎖匙";
 "Please enter the keystore" = "請輸入keystore";
-"Please input your private key" = "請輸入您的私人鎖匙";
+"Please enter your private key" = "請輸入您的私人鎖匙";
 "Select Your Wallet Type" = "請選擇您的錢包類型";
 "Select Your Address" = "請選擇您的地址";
 "Because you did a screen capture, we have updated the wallet mnemonics for you, and your screenshots have been voided! This is for your asset security." = "因為您做了截屏操作，我們為您更新了錢包助記詞，為了您的資產安全著想，您的截屏已經作廢！";
@@ -96,7 +96,7 @@
 "Password doesn't match" = "密碼不相符";
 "Please enter password" = "請輸入密碼";
 "Keystore Password" = "Keystore密碼";
-"Mnemonic Password (optional)" = "助記詞密碼(可選擇)";
+"Mnemonic Password" = "助記詞密碼";
 
 /* Add custom token page */
 "Add Token" = "添加代幣";
@@ -118,6 +118,14 @@
 "Token Symbol" = "代幣符號";
 "Decimals of Precision" = "小數位精確度";
 "Adding..." = "正在添加...";
+
+/* Add contact page */
+"Add Contact" = "添咖聯系人";
+"Contact Name" = "聯系人名稱";
+"Contact Address" = "聯系人的址";
+"Contact Note" = "備主，如：蘄資（可選）";
+"Contact Input" = "請輸入正確的聯系人名稱";
+"QRCode error tip" = "請掃描錢包地址類型的二維碼";
 
 /* DEX Trade page */
 "Loopring Order" = "路印訂單";

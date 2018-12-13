@@ -25,8 +25,8 @@ enum UserDefaultsKeys: String {
     // Wallet
     case currentAppWallet = "UserDefaultsKeys.currentAppWallet"
     case appWallets = "UserDefaultsKeys.appWallets"
-    
     case showTradingFeature = "UserDefaultsKeys.showTradingFeature"
+    case userContacts = "UserDefaultsKeys.userContacts"
     
     // ThirdParty
     case thirdParty = "UserDefaultsKeys.thirdParty"

@@ -427,7 +427,7 @@ extension WalletViewController: WalletButtonTableViewCellDelegate {
     }
     
     func navigationToTradeViewController() {
-        let viewController = TradeSwipeViewController()
+        let viewController = AddContactViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
