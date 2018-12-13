@@ -29,7 +29,10 @@ enum UserDefaultsKeys: String {
     case showTradingFeature = "UserDefaultsKeys.showTradingFeature"
     
     // ThirdParty
+    // thirdParty is used to check whether users has skip the third party
     case thirdParty = "UserDefaultsKeys.thirdParty"
+    
+    // openID is used to track the uuid of a user. should not be limited to WeChat account
     case openID = "UserDefaultsKeys.openid"
     
     // Market

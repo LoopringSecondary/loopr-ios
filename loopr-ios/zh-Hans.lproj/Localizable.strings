@@ -19,6 +19,7 @@
 "Third party message" = "退出授权将移除您所有已绑定的设置，是否继续？";
 "Third" = "第三方授权登录";
 "Unthird" = "退出第三方授权登录";
+"Failed to open WeChat" = "打开微信失败";
 
 /* ETH related */
 "Mnemonic" = "助记词";

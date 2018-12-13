@@ -202,10 +202,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 return createDetailTableCell(indexPath: indexPath, title: LocalizedString("Language", comment: ""))
             case 3:
                 let title: String
-                if UserDefaults.standard.bool(forKey: UserDefaultsKeys.thirdParty.rawValue) {
-                    title = LocalizedString("Third", comment: "")
-                } else {
+                if let _ = UserDefaults.standard.string(forKey: UserDefaultsKeys.openID.rawValue) {
                     title = LocalizedString("Unthird", comment: "")
+                } else {
+                    title = LocalizedString("Third", comment: "")
                 }
                 return createDetailTableCell(indexPath: indexPath, title: title)
             default:
@@ -227,10 +227,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 return createSettingPasscodeTableView(indexPath: indexPath)
             case 4:
                 let title: String
-                if UserDefaults.standard.bool(forKey: UserDefaultsKeys.thirdParty.rawValue) {
-                    title = LocalizedString("Third", comment: "")
-                } else {
+                if let _ = UserDefaults.standard.string(forKey: UserDefaultsKeys.openID.rawValue) {
                     title = LocalizedString("Unthird", comment: "")
+                } else {
+                    title = LocalizedString("Third", comment: "")
                 }
                 return createDetailTableCell(indexPath: indexPath, title: title)
             default:
@@ -449,14 +449,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 51
     }
-    
-    // TODO: Disable third party in App Store version.
+
     func pressedThirdPartyButton() {
-        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.thirdParty.rawValue) {
-            let vc = ThirdPartyViewController()
-            vc.fromSettingViewController = true
-            self.present(vc, animated: true, completion: nil)
-        } else if let openID = UserDefaults.standard.string(forKey: UserDefaultsKeys.openID.rawValue) {
+        if let openID = UserDefaults.standard.string(forKey: UserDefaultsKeys.openID.rawValue) {
             let title = LocalizedString("Third party title", comment: "")
             let message = LocalizedString("Third party message", comment: "")
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -470,6 +465,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             alert.addAction(UIAlertAction(title: LocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
             }))
             self.present(alert, animated: true, completion: nil)
+        } else {
+            let vc = ThirdPartyViewController()
+            vc.fromSettingViewController = true
+            self.present(vc, animated: true, completion: nil)
         }
     }
 

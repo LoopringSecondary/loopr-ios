@@ -19,6 +19,7 @@
 "Third party message" = "It will erase all your binding settings. Do you want to continue?";
 "Third" = "Authorize third party account";
 "Unthird" = "Quit third party authorization";
+"Failed to open WeChat" = "Failed to open WeChat";
 
 /* ETH related */
 "Mnemonic" = "니모닉";

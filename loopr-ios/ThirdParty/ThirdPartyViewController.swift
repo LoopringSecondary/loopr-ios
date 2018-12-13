@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import NotificationBannerSwift
 
 class ThirdPartyViewController: UIViewController {
     
@@ -40,6 +41,7 @@ class ThirdPartyViewController: UIViewController {
         req.state = "App"
         if !WXApi.send(req) {
             print("weixin sendreq failed")
+            displayWechatLoginFailNotification()
         }
         Answers.logCustomEvent(withName: "Wechat Login v1", customAttributes: ["skip": "false"])
     }
@@ -63,4 +65,9 @@ class ThirdPartyViewController: UIViewController {
         Answers.logCustomEvent(withName: "Wechat Login v1", customAttributes: ["skip": "true"])
     }
     
+    func displayWechatLoginFailNotification() {
+        let banner = NotificationBanner.generate(title: "Failed to open WeChat", style: .danger)
+        banner.duration = 1
+        banner.show()
+    }
 }
