@@ -46,13 +46,16 @@ class PushNotificationDeviceDataManager {
             // Different certificats for release and debug
             #if RELEASE
                 // release only code
+                guard bundleIdentifier == "io.upwallet.app" else {
+                    return
+                }
                 body["isReleaseMode"] = true
             #else
                 // debug only code
                 body["isReleaseMode"] = false
             #endif
 
-            Request.post(body: body, url: URL(string: "https://www.loopring.mobi/api/v1/devices")!) { data, _, error in
+            Request.post(body: body, url: URL(string: "https://www.loopring.mobi/api/v1/devices")!, showFailureBannerNotification: false) { data, _, error in
                 guard let _ = data, error == nil else {
                     print("error=\(String(describing: error))")
                     Answers.logCustomEvent(withName: "API App Service: PushNotificationDeviceDataManager.register v1",
