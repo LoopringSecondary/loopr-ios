@@ -70,6 +70,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         
         // Do any additional setup after loading the view.
         setBackButton()
+        setNavigationBarItem()
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
         view.theme_backgroundColor = ColorPicker.backgroundColor
@@ -177,6 +178,12 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         blurVisualEffectView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         blurVisualEffectView.alpha = 1
         blurVisualEffectView.frame = UIScreen.main.bounds
+    }
+    
+    func setNavigationBarItem() {
+        let icon = UIImage.init(named: "dropdown-scan")
+        let button = UIBarButtonItem(image: icon, style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.pressedScanButton))
+        self.navigationItem.rightBarButtonItem = button
     }
 
     override func didReceiveMemoryWarning() {
@@ -425,7 +432,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         addressTextField.text = valueSent
     }
     
-    @IBAction func pressedScanButton(_ sender: UIButton) {
+    @objc func pressedScanButton(_ sender: UIButton) {
         let viewController = ScanQRCodeViewController()
         viewController.delegate = self
         viewController.hidesBottomBarWhenPushed = true

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -110,7 +110,7 @@
                                         <constraint firstAttribute="width" constant="50" id="jfF-hc-SSh"/>
                                         <constraint firstAttribute="height" constant="50" id="l5B-du-OxP"/>
                                     </constraints>
-                                    <state key="normal" image="Scan-light"/>
+                                    <state key="normal" image="Contact-light"/>
                                     <connections>
                                         <action selector="pressedScanButton:" destination="-1" eventType="touchUpInside" id="WGw-QF-JE6"/>
                                     </connections>
@@ -250,7 +250,7 @@
     </objects>
     <resources>
         <image name="Arrow-button-right-dark" width="24" height="24"/>
-        <image name="Scan-light" width="50" height="50"/>
+        <image name="Contact-light" width="24" height="22"/>
         <namedColor name="Color-dark1">
             <color red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
