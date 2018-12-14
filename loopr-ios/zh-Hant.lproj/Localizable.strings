@@ -120,6 +120,14 @@
 "Decimals of Precision" = "小數位精確度";
 "Adding..." = "正在添加...";
 
+/* Add contact page */
+"Add Contact" = "添咖聯系人";
+"Contact Name" = "聯系人名稱";
+"Contact Address" = "聯系人的址";
+"Contact Note" = "備主，如：蘄資（可選）";
+"Contact Input" = "請輸入正確的聯系人名稱";
+"QRCode error tip" = "請掃描錢包地址類型的二維碼";
+
 /* DEX Trade page */
 "Loopring Order" = "路印訂單";
 "DEX Trade" = "去中心化交易所";

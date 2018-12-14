@@ -64,6 +64,8 @@
 		948125652119B10B00453225 /* PartnerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948125642119B10B00453225 /* PartnerStatus.swift */; };
 		948125672119B38E00453225 /* PartnerDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948125662119B38E00453225 /* PartnerDataManager.swift */; };
 		948952D3205A74BE009B03FE /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948952D2205A74BE009B03FE /* Transaction.swift */; };
+		948B418D21C34B0700594E1A /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948B418B21C34B0700594E1A /* AddContactViewController.swift */; };
+		948B418E21C34B0700594E1A /* AddContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 948B418C21C34B0700594E1A /* AddContactViewController.xib */; };
 		948BAD8420C4EBFA001F279F /* RawTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948BAD8320C4EBFA001F279F /* RawTransaction.swift */; };
 		949629DB204E836400858F03 /* Depth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DA204E836400858F03 /* Depth.swift */; };
 		949629DF204E9C9800858F03 /* MinedRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949629DE204E9C9800858F03 /* MinedRing.swift */; };
@@ -570,6 +572,8 @@
 		948125642119B10B00453225 /* PartnerStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerStatus.swift; sourceTree = "<group>"; };
 		948125662119B38E00453225 /* PartnerDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerDataManager.swift; sourceTree = "<group>"; };
 		948952D2205A74BE009B03FE /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		948B418B21C34B0700594E1A /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
+		948B418C21C34B0700594E1A /* AddContactViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddContactViewController.xib; sourceTree = "<group>"; };
 		948BAD8320C4EBFA001F279F /* RawTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawTransaction.swift; sourceTree = "<group>"; };
 		949629DA204E836400858F03 /* Depth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Depth.swift; sourceTree = "<group>"; };
 		949629DE204E9C9800858F03 /* MinedRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinedRing.swift; sourceTree = "<group>"; };
@@ -1073,6 +1077,15 @@
 			path = AuthorizeLogin;
 			sourceTree = "<group>";
 		};
+		949253C021C28C9F000032E9 /* AddContact */ = {
+			isa = PBXGroup;
+			children = (
+				948B418B21C34B0700594E1A /* AddContactViewController.swift */,
+				948B418C21C34B0700594E1A /* AddContactViewController.xib */,
+			);
+			path = AddContact;
+			sourceTree = "<group>";
+		};
 		94A1C0D92128122700FD3A1F /* SettingPartner */ = {
 			isa = PBXGroup;
 			children = (
@@ -1453,6 +1466,7 @@
 		AC5E3E6D205DFABD0051ACFC /* SendAsset */ = {
 			isa = PBXGroup;
 			children = (
+				949253C021C28C9F000032E9 /* AddContact */,
 				AC5E3E6E205DFB700051ACFC /* SendAssetViewController.swift */,
 				AC5E3E6F205DFB700051ACFC /* SendAssetViewController.xib */,
 				94BFF9CC21072EA000A0BE8B /* TokenSelectTableViewController.swift */,
@@ -1933,6 +1947,7 @@
 				AC4142052038B66F0089861D /* AppWallet.swift */,
 				AC7BC85B2145B477004204D3 /* AppWalletExtension.swift */,
 				ACB9115F20242E3F00F14644 /* Asset.swift */,
+				9401C4D421C11CBF00A01E0B /* Contact.swift */,
 				940B452C2061206800ADE2B9 /* Token.swift */,
 				ACB911632024504E00F14644 /* Order.swift */,
 				ACB911A220296B9900F14644 /* OriginalOrder.swift */,
@@ -1974,7 +1989,6 @@
 				ACC31C77215B552B00582CC0 /* ExportWalletInfoType.swift */,
 				ACFD5FB621740F7400E161EE /* OrderIntervalTime.swift */,
 				ACFD5FB8217448E200E161EE /* SocialMedia.swift */,
-				9401C4D421C11CBF00A01E0B /* Contact.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2565,6 +2579,7 @@
 				9BC2886A21ADEAE000221CF3 /* MarketDetailSummaryTableViewCell.xib in Resources */,
 				AC31CE152057B5A400A30335 /* TradeReviewViewController.xib in Resources */,
 				ACB91172202557B100F14644 /* MarketViewController.xib in Resources */,
+				948B418E21C34B0700594E1A /* AddContactViewController.xib in Resources */,
 				9401C4D321C0F89E00A01E0B /* data.json in Resources */,
 				ACA677C1207997F400D34A2F /* DisplayKeystoreViewController.xib in Resources */,
 				94678B2B210D902E00F550D3 /* SendResultViewController.xib in Resources */,
@@ -3064,6 +3079,7 @@
 				940B451E2060F67E00ADE2B9 /* GenerateWalletDataManager.swift in Sources */,
 				AC4141EF203524280089861D /* MarketSwipeViewController.swift in Sources */,
 				AC06193E208417AF0060F416 /* QRCodeMethod.swift in Sources */,
+				948B418D21C34B0700594E1A /* AddContactViewController.swift in Sources */,
 				AC2ACA5E21006DB8009C77E7 /* UIViewController+NavigationBar.swift in Sources */,
 				ACB5DD98202D5A8400140A09 /* NumericKeyboard.swift in Sources */,
 			);

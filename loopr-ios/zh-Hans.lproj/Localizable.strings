@@ -120,6 +120,14 @@
 "Decimals of Precision" = "小数位精确度";
 "Adding..." = "正在添加...";
 
+/* Add contact page */
+"Add Contact" = "添加联系人";
+"Contact Name" = "联系人名称";
+"Contact Address" = "联系人地址";
+"Contact Note" = "备注，如：薪资（可选）";
+"Contact Input" = "请输入正确的联系人名称";
+"QRCode error tip" = "请扫描钱包地址类型的二维码";
+
 /* DEX Trade page */
 "Loopring Order" = "路印订单";
 "DEX Trade" = "去中心化交易所";

@@ -8,24 +8,38 @@
 
 import Foundation
 
-class Contact: CustomStringConvertible {
+class Contact: NSObject, NSCoding {
     var name: String
     var address: String
     var note: String
     var tag: String
-    var description: String
     
-    init(name: String, address: String, note: String = "") {
+    init(name: String, address: String, note: String) {
         self.name = name
         self.address = address
         self.note = note
         self.tag = ""
-        self.description = "\(name) \(address)"
+        super.init()
         self.tag = initialChar(name)
     }
     
+    // MARK: - NSCoding
+    required init(coder aDecoder: NSCoder) {
+        name = aDecoder.decodeObject(forKey: "name") as! String
+        address = aDecoder.decodeObject(forKey: "address") as! String
+        note = aDecoder.decodeObject(forKey: "note") as! String
+        tag = aDecoder.decodeObject(forKey: "tag") as! String
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(address, forKey: "address")
+        aCoder.encode(note, forKey: "note")
+        aCoder.encode(tag, forKey: "tag")
+    }
+    
     func initialChar(_ Chinese: String) -> String {
-        let temp:CFMutableString = CFStringCreateMutableCopy(nil, 0, Chinese as CFString);
+        let temp = CFStringCreateMutableCopy(nil, 0, Chinese as CFString)
         CFStringTransform(temp, nil, kCFStringTransformToLatin, false)
         CFStringTransform(temp, nil, kCFStringTransformStripCombiningMarks, false)
         guard let cfString = CFStringCreateWithSubstring(nil, temp, CFRangeMake(0, 1)) else { return "#"}

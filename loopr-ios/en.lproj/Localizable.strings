@@ -120,6 +120,14 @@
 "Decimals of Precision" = "Decimals of Precision";
 "Adding..." = "Adding...";
 
+/* Add contact page */
+"Add Contact" = "Add Contact";
+"Contact Name" = "Name";
+"Contact Address" = "Address";
+"Contact Note" = "Note, e.g. salary (optional)";
+"Contact Input" = "Please input a valid name";
+"QRCode error tip" = "Please make sure the QR code is type of wallet address.";
+
 /* DEX Trade page */
 "Loopring Order" = "Loopring Order";
 "DEX Trade" = "DEX Trade";
