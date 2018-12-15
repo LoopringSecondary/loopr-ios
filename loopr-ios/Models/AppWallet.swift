@@ -178,6 +178,7 @@ class AppWallet: NSObject, NSCoding {
         let password = aDecoder.decodeObject(forKey: "password") as? String
         
         // Before 1.3.2, devicePassword is not available, use keystorePassword at that time.
+        // devicePassword is also used to decode keystore file.
         let devicePassword = aDecoder.decodeObject(forKey: "devicePassword") as? String ?? "123456"
         
         let address = aDecoder.decodeObject(forKey: "address") as? String
