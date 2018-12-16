@@ -1592,7 +1592,7 @@
 				AC798E482022B93A0071D477 /* Main.storyboard */,
 				C8BF959C202696A900343B9A /* MainTabController.swift */,
 				AC8866972174685300815DD1 /* AppService */,
-				ACACB8B3213B8E9800F5ACC5 /* PushNotification */,
+				ACACB8B3213B8E9800F5ACC5 /* PushNotificationService */,
 				ACB746E22043C5CC006C2BF5 /* QRCode */,
 				ACB97C71207160B300775D4C /* FoundationExtensions */,
 				ACDBF10F203FEC96000F0DEC /* UIConfig */,
@@ -1787,14 +1787,14 @@
 			path = ChangeWalletName;
 			sourceTree = "<group>";
 		};
-		ACACB8B3213B8E9800F5ACC5 /* PushNotification */ = {
+		ACACB8B3213B8E9800F5ACC5 /* PushNotificationService */ = {
 			isa = PBXGroup;
 			children = (
 				ACACB8B4213B90BF00F5ACC5 /* PushNotificationDeviceDataManager.swift */,
 				AC7BC855214386AF004204D3 /* PushNotificationSettingManager.swift */,
 				AC1BDECA2184E149002CF4ED /* LocalNotificationManager.swift */,
 			);
-			path = PushNotification;
+			path = PushNotificationService;
 			sourceTree = "<group>";
 		};
 		ACAE97D521BE039000885D2C /* MarketDetailSwipeSection */ = {

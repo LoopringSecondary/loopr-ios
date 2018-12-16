@@ -13,6 +13,9 @@ class PushNotificationDeviceDataManager {
     
     static let shared = PushNotificationDeviceDataManager()
     
+    private let registerURL = URL(string: "https://www.loopring.mobi/rpc/v1/device/addDevice")!
+    private let removeURL = URL(string: "https://www.loopring.mobi/rpc/v1/device/deleteDevice")!
+    
     private init() {
 
     }
@@ -36,12 +39,12 @@ class PushNotificationDeviceDataManager {
         // If we can get the device token, it means users enable push notifications
         if let bundleIdentifier = Bundle.main.bundleIdentifier, let deviceToken = getDeviceToken() {
             var body: JSON = JSON()
-            body["bundleIdentifier"] = JSON(bundleIdentifier)
-            body["deviceToken"] = JSON(deviceToken)
+            body["bundle_identifier"] = JSON(bundleIdentifier)
+            body["device_token"] = JSON(deviceToken)
             body["address"] = JSON(address)
             let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-            body["currentInstalledVersion"] = JSON(version)
-            body["currentLanguage"] = JSON(SettingDataManager.shared.getCurrentLanguage().name)
+            body["current_installed_version"] = JSON(version)
+            body["current_language"] = JSON(SettingDataManager.shared.getCurrentLanguage().name)
             
             // Different certificats for release and debug
             #if RELEASE
@@ -55,8 +58,8 @@ class PushNotificationDeviceDataManager {
                 body["isReleaseMode"] = false
             #endif
 
-            Request.post(body: body, url: URL(string: "https://www.loopring.mobi/api/v1/devices")!, showFailureBannerNotification: false) { data, _, error in
-                guard let _ = data, error == nil else {
+            Request.post(body: body, url: registerURL, showFailureBannerNotification: false) { data, _, error in
+                guard data != nil, error == nil else {
                     print("error=\(String(describing: error))")
                     Answers.logCustomEvent(withName: "API App Service: PushNotificationDeviceDataManager.register v1",
                                            customAttributes: [
