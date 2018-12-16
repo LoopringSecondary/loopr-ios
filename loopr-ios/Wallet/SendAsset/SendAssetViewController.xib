@@ -110,7 +110,7 @@
                                         <constraint firstAttribute="width" constant="50" id="jfF-hc-SSh"/>
                                         <constraint firstAttribute="height" constant="50" id="l5B-du-OxP"/>
                                     </constraints>
-                                    <state key="normal" image="Contact-light"/>
+                                    <state key="normal" image="Scan-light"/>
                                     <connections>
                                         <action selector="pressedScanButton:" destination="-1" eventType="touchUpInside" id="WGw-QF-JE6"/>
                                     </connections>
@@ -250,7 +250,7 @@
     </objects>
     <resources>
         <image name="Arrow-button-right-dark" width="24" height="24"/>
-        <image name="Contact-light" width="24" height="22"/>
+        <image name="Scan-light" width="50" height="50"/>
         <namedColor name="Color-dark1">
             <color red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

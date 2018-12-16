@@ -70,7 +70,7 @@ class SendAssetViewController: UIViewController, UITextFieldDelegate, UIScrollVi
         
         // Do any additional setup after loading the view.
         setBackButton()
-        setNavigationBarItem()
+        // setNavigationBarItem()
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
         view.theme_backgroundColor = ColorPicker.backgroundColor
